@@ -237,7 +237,7 @@ src/db/
 |---|---|---|---|---|---|---|---|---|
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
-| TASK-005 | 3.6 / 3.8 | B | 待审查 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | `PENDING` |
+| TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
 
 > TASK-003-B 由用户明确分配给 B 执行；本记录不改变 0.3、0.5 的既有 Owner。
 
@@ -309,9 +309,9 @@ src/db/
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
-| 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 待审查 |
+| 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 已完成 |
 | 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |
-| 3.8    | 主系统响应式 / 无障碍               | A      | P2     | 3.1-3.7  | 待审查 |
+| 3.8    | 主系统响应式 / 无障碍               | A      | P2     | 3.1-3.7  | 已完成 |
 
 ## 4. Planner / 地图 / 路线生成（A 全责）
 
