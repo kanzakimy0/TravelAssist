@@ -1,31 +1,27 @@
 import Link from "next/link";
 
-import { ButtonLink } from "@/components/ui/button";
-
 import styles from "../start-flow.module.css";
-import { StepProgress } from "./step-progress";
 
-interface StartFlowHeaderProps {
-  currentStep: number;
-}
-
-export function StartFlowHeader({ currentStep }: StartFlowHeaderProps) {
+export function StartFlowHeader() {
   return (
     <header className={styles.header}>
       <Link className={styles.brand} href="/">
-        TravelAssist
+        <span aria-hidden="true" className={styles.brandMark} />
+        <span>TravelAssist</span>
       </Link>
-      <StepProgress currentStep={currentStep} />
-      <ButtonLink
-        aria-label="返回 TravelAssist 首页"
-        className={styles.headerHomeLink}
-        href="/"
-        size="small"
-        variant="ghost"
-      >
-        <span aria-hidden="true">←</span>
-        <span>返回首页</span>
-      </ButtonLink>
+      <div className={styles.headerActions}>
+        <label className={styles.languageSelect}>
+          <span className={styles.srOnly}>语言</span>
+          <select aria-label="界面语言" defaultValue="zh-CN">
+            <option value="zh-CN">中文</option>
+            <option value="ja-JP">日本語</option>
+            <option value="en-US">English</option>
+          </select>
+        </label>
+        <button aria-label="用户账户" className={styles.avatar} type="button">
+          旅
+        </button>
+      </div>
     </header>
   );
 }
