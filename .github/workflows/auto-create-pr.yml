@@ -1,0 +1,86 @@
+name: Auto-create feature pull requests
+
+on:
+  push:
+    branches:
+      - "feature/**"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-create-pr-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  create-and-merge:
+    name: Create and merge feature pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create pull request when needed
+        id: pull-request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_BRANCH: ${{ github.ref_name }}
+          HEAD_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pr_url="$(
+            gh pr list \
+              --repo "$GITHUB_REPOSITORY" \
+              --base develop \
+              --head "$HEAD_BRANCH" \
+              --state open \
+              --limit 1 \
+              --json url \
+              --jq '.[0].url // empty'
+          )"
+
+          if [[ -z "$pr_url" ]]; then
+            encoded_head="${HEAD_BRANCH//\//%2F}"
+            pr_title="$(
+              gh api \
+                "repos/$GITHUB_REPOSITORY/compare/develop...$encoded_head" \
+                --jq '.commits[0].commit.message | split("\n")[0]'
+            )"
+
+            if [[ -z "$pr_title" ]]; then
+              pr_title="Merge $HEAD_BRANCH into develop"
+            fi
+
+            printf -v pr_body \
+              'This pull request was created automatically after a push to `%s`.\n\nBase: `develop`  \nHead commit: `%s`' \
+              "$HEAD_BRANCH" \
+              "$HEAD_SHA"
+
+            pr_url="$(
+              gh pr create \
+                --repo "$GITHUB_REPOSITORY" \
+                --base develop \
+                --head "$HEAD_BRANCH" \
+                --title "$pr_title" \
+                --body "$pr_body"
+            )"
+            echo "Created $pr_url"
+          else
+            echo "Using existing $pr_url"
+          fi
+
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Merge when repository rules allow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ steps.pull-request.outputs.url }}
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          if gh pr merge "$PR_URL" --repo "$GITHUB_REPOSITORY" --merge; then
+            echo "Merged $PR_URL"
+          else
+            echo "Pull request is not mergeable yet. The repository auto-merge workflow will retry after later PR, review, or check events."
+          fi

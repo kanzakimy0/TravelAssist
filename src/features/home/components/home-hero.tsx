@@ -16,7 +16,7 @@ export function HomeHero() {
         <div className={styles.actionRow}>
           <HeroStartButton />
           <span className={styles.futureNote} id="start-flow-note">
-            规划入口即将开放
+            约 2 分钟完成首次需求
           </span>
         </div>
       </FloatingPanel>
