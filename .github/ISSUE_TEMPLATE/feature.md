@@ -1,10 +1,20 @@
 ---
-name: 功能开发任务
-about: TravelAssist 功能、页面、架构或数据任务
-title: "[Phase X][A/B] "
+name: 开发任务
+about: TravelAssist 功能、页面、设计、架构或工程管理 Task
+title: "[TASK-XXX-A/B] "
 labels: ""
 assignees: ""
 ---
+
+## Metadata
+
+- Task ID: `TASK-XXX-A/B`
+- Owner: A / B
+- Status: 待开始
+- WBS: `<WBS ID>`
+- Task File: `docs/tasks/TASK-xxx-*.md`
+- Feature Branch: `feature/a-xxx` / `feature/b-xxx`
+- Depends On: None / `TASK-XXX-A/B`
 
 ## 目标
 

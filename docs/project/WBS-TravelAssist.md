@@ -223,13 +223,21 @@ src/db/
 |---|---|---|---|---|---|
 | 0.1 | GitHub 仓库与 `develop` 工作流建立 | A | P0 | - | 已完成 |
 | 0.2 | A/B feature 分支规则 | A+B | P0 | 0.1 | 已完成 |
-| 0.3 | Task 文件编号与存档规范 | A | P0 | 0.1 | 进行中 |
+| 0.3 | Task 文件编号与存档规范 | A | P0 | 0.1 | 待审查 |
 | 0.4 | WBS 主表建立 | A | P0 | 0.1 | 已完成 |
-| 0.5 | GitHub Issue / PR 模板 | A | P1 | 0.3 | 未开始 |
+| 0.5 | GitHub Issue / PR 模板 | A | P1 | 0.3 | 待审查 |
 | 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
-| 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 进行中 |
+| 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 待审查 |
 | 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
 | 0.9 | 跨模块 Contract 交接规则 | A+B | P0 | 0.8 | 未开始 |
+
+### 当前 Task 追踪记录
+
+| Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
+|---|---|---|---|---|---|---|---|---|
+| TASK-003-B | 0.7（关联 0.3、0.5） | B | 待审查 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
+
+> TASK-003-B 由用户明确分配给 B 执行；本记录不改变 0.3、0.5 的既有 Owner。
 
 ## 1. 产品、交互与画面设计
 
