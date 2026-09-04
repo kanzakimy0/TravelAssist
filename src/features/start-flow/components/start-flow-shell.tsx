@@ -1,278 +1,304 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { FormEvent } from "react";
 
-import { Button, ButtonLink } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { FloatingPanel } from "@/components/ui/floating-panel";
 
 import {
-  hasValidationErrors,
-  normalizeDestination,
-  validateCompanions,
-  validateDestination,
-  validateTiming,
-} from "../lib/validation";
-import type {
-  CompanionErrors,
-  CompanionField,
-  TimingErrors,
-} from "../lib/validation";
-import {
-  applyStartFlowDraftPatch,
-  createStartFlowDraft,
+  applyTripWizardDraftPatch,
+  calculateDurationDays,
+  createTripWizardDraft,
 } from "../model/start-flow-draft";
 import type {
-  StartFlowDraftPatch,
-  StartFlowTiming,
+  AnchorType,
+  BudgetLevel,
+  DateMode,
+  Familiarity,
+  Interest,
+  TransportMode,
+  TravelStyleKey,
+  TripParty,
+  TripWizardDraft,
+  TripWizardDraftPatch,
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
-import { CompanionsStep } from "./companions-step";
-import { ConstraintsStep } from "./constraints-step";
-import { DestinationStep } from "./destination-step";
-import { ReadyState } from "./ready-state";
-import { ReviewStep } from "./review-step";
+import { FamiliarityStep } from "./familiarity-step";
+import { PreferencesStep } from "./preferences-step";
 import { StartFlowHeader } from "./start-flow-header";
-import { TimingStep } from "./timing-step";
+import { StepProgress } from "./step-progress";
+import { TripBasicsStep } from "./trip-basics-step";
 
-type StepIndex = 0 | 1 | 2 | 3 | 4;
+type StepIndex = 0 | 1 | 2;
 
-interface FlowErrors {
-  companions: CompanionErrors;
-  destination?: string;
-  timing: TimingErrors;
+interface StoredWizardState {
+  currentStep: StepIndex;
+  draft: TripWizardDraft;
+  version: 1;
 }
 
 interface StartFlowShellProps {
-  initialDraft?: StartFlowDraftPatch;
+  initialDraft?: TripWizardDraftPatch;
 }
 
-const EMPTY_ERRORS: FlowErrors = {
-  companions: {},
-  timing: {},
-};
+const STORAGE_KEY = "travelassist.trip-wizard.v1";
+
+function isStepIndex(value: unknown): value is StepIndex {
+  return value === 0 || value === 1 || value === 2;
+}
+
+function subscribeToHydration() {
+  return () => undefined;
+}
+
+function readStoredState(
+  initialDraft?: TripWizardDraftPatch,
+): StoredWizardState {
+  const fallback: StoredWizardState = {
+    currentStep: 0,
+    draft: createTripWizardDraft(initialDraft),
+    version: 1,
+  };
+
+  try {
+    const storedValue = window.localStorage.getItem(STORAGE_KEY);
+    if (!storedValue) {
+      return fallback;
+    }
+
+    const stored = JSON.parse(storedValue) as Partial<StoredWizardState>;
+    return {
+      currentStep: isStepIndex(stored.currentStep) ? stored.currentStep : 0,
+      draft: createTripWizardDraft(stored.draft ?? initialDraft),
+      version: 1,
+    };
+  } catch {
+    window.localStorage.removeItem(STORAGE_KEY);
+    return fallback;
+  }
+}
 
 export function StartFlowShell({ initialDraft }: StartFlowShellProps) {
-  const [currentStep, setCurrentStep] = useState<StepIndex>(0);
-  const [draft, setDraft] = useState(() => createStartFlowDraft(initialDraft));
-  const [errors, setErrors] = useState<FlowErrors>(EMPTY_ERRORS);
-  const [isReady, setIsReady] = useState(false);
+  const hasHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false,
+  );
 
+  if (!hasHydrated) {
+    return (
+      <div className={styles.flowLayout}>
+        <StartFlowHeader />
+        <FloatingPanel className={styles.flowPanel}>
+          <p className={styles.loadingState}>正在恢复旅行草稿…</p>
+        </FloatingPanel>
+      </div>
+    );
+  }
+
+  return <HydratedStartFlow initialDraft={initialDraft} />;
+}
+
+function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
+  const [initialState] = useState(() => readStoredState(initialDraft));
+  const [currentStep, setCurrentStep] = useState<StepIndex>(
+    initialState.currentStep,
+  );
+  const [draft, setDraft] = useState(initialState.draft);
+  const [notice, setNotice] = useState("");
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const destinationInputRef = useRef<HTMLInputElement>(null);
-  const startDateInputRef = useRef<HTMLInputElement>(null);
-  const endDateInputRef = useRef<HTMLInputElement>(null);
-  const durationInputRef = useRef<HTMLInputElement>(null);
-  const adultMaleInputRef = useRef<HTMLInputElement>(null);
-  const adultFemaleInputRef = useRef<HTMLInputElement>(null);
-  const childInputRef = useRef<HTMLInputElement>(null);
-  const infantInputRef = useRef<HTMLInputElement>(null);
 
-  const companionInputRefs = {
-    adultMale: adultMaleInputRef,
-    adultFemale: adultFemaleInputRef,
-    child: childInputRef,
-    infant: infantInputRef,
-  };
+  useEffect(() => {
+    const stored: StoredWizardState = {
+      currentStep,
+      draft,
+      version: 1,
+    };
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+  }, [currentStep, draft]);
 
   useEffect(() => {
     headingRef.current?.focus();
-  }, [currentStep, isReady]);
+  }, [currentStep]);
 
-  function updateDraft(patch: StartFlowDraftPatch) {
-    setDraft((currentDraft) => applyStartFlowDraftPatch(currentDraft, patch));
+  function updateDraft(patch: TripWizardDraftPatch) {
+    setDraft((currentDraft) => applyTripWizardDraftPatch(currentDraft, patch));
   }
 
   function goToStep(step: StepIndex) {
-    setErrors(EMPTY_ERRORS);
+    setNotice("");
     setCurrentStep(step);
   }
 
-  function handleDestinationChange(value: string) {
-    updateDraft({ destination: value });
-    setErrors((current) => ({ ...current, destination: undefined }));
-  }
+  function handleInterestCycle(interest: Interest) {
+    const isLiked = draft.likes.includes(interest);
+    const isDisliked = draft.dislikes.includes(interest);
 
-  function handleTimingChange<Field extends keyof StartFlowTiming>(
-    field: Field,
-    value: StartFlowTiming[Field],
-  ) {
-    updateDraft({ timing: { [field]: value } });
-    setErrors((current) => ({
-      ...current,
-      timing: { ...current.timing, [field]: undefined },
-    }));
-  }
-
-  function handleCompanionChange(field: CompanionField, value: number) {
-    updateDraft({ companions: { [field]: value } });
-    setErrors((current) => ({
-      ...current,
-      companions: {
-        ...current.companions,
-        [field]: undefined,
-        group: undefined,
-      },
-    }));
-  }
-
-  function validateCurrentStep() {
-    if (currentStep === 0) {
-      const destinationError = validateDestination(draft.destination);
-      if (destinationError) {
-        setErrors((current) => ({
-          ...current,
-          destination: destinationError,
-        }));
-        destinationInputRef.current?.focus();
-        return false;
+    if (!isLiked && !isDisliked) {
+      if (draft.likes.length >= 3) {
+        setNotice("喜欢的兴趣最多选择 3 个。可先取消一个再继续选择。");
+        return;
       }
-
-      updateDraft({ destination: normalizeDestination(draft.destination) });
-      return true;
+      updateDraft({ likes: [...draft.likes, interest] });
+      setNotice("");
+      return;
     }
 
-    if (currentStep === 1) {
-      const timingErrors = validateTiming(draft.timing);
-      if (hasValidationErrors(timingErrors)) {
-        setErrors((current) => ({ ...current, timing: timingErrors }));
-        if (timingErrors.startDate) {
-          startDateInputRef.current?.focus();
-        } else if (timingErrors.endDate) {
-          endDateInputRef.current?.focus();
-        } else {
-          durationInputRef.current?.focus();
-        }
-        return false;
+    if (isLiked) {
+      if (draft.dislikes.length >= 3) {
+        updateDraft({ likes: draft.likes.filter((item) => item !== interest) });
+        setNotice("不喜欢的兴趣已满 3 个，本项已恢复为中性。");
+        return;
       }
-
-      return true;
+      updateDraft({
+        dislikes: [...draft.dislikes, interest],
+        likes: draft.likes.filter((item) => item !== interest),
+      });
+      setNotice("");
+      return;
     }
 
-    if (currentStep === 2) {
-      const companionErrors = validateCompanions(draft.companions);
-      if (hasValidationErrors(companionErrors)) {
-        setErrors((current) => ({
-          ...current,
-          companions: companionErrors,
-        }));
-        const invalidField = (
-          ["adultMale", "adultFemale", "child", "infant"] as const
-        ).find((field) => companionErrors[field]);
-        companionInputRefs[invalidField ?? "adultMale"].current?.focus();
-        return false;
-      }
+    updateDraft({
+      dislikes: draft.dislikes.filter((item) => item !== interest),
+    });
+    setNotice("");
+  }
 
-      return true;
-    }
+  function handleExactDateChange(field: "departure" | "return", value: string) {
+    const exactDeparture = field === "departure" ? value : draft.exactDeparture;
+    const exactReturn = field === "return" ? value : draft.exactReturn;
+    updateDraft({
+      exactDeparture,
+      exactReturn,
+      durationDays: calculateDurationDays(exactDeparture, exactReturn),
+    });
+  }
 
-    return true;
+  function toggleArrayValue<T extends string>(values: T[], value: T) {
+    return values.includes(value)
+      ? values.filter((item) => item !== value)
+      : [...values, value];
+  }
+
+  function saveDraft(message = "草稿已保存") {
+    const stored: StoredWizardState = {
+      currentStep,
+      draft,
+      version: 1,
+    };
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+    setNotice(message);
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!validateCurrentStep()) {
+    if (currentStep === 0 && !draft.familiarity) {
+      setNotice("请选择你对日本的熟悉程度后再继续。");
       return;
     }
 
-    if (currentStep === 3) {
-      updateDraft({ hardConstraintsNote: draft.hardConstraintsNote.trim() });
-      goToStep(4);
+    if (currentStep < 2) {
+      goToStep((currentStep + 1) as StepIndex);
       return;
     }
 
-    if (currentStep === 4) {
-      setIsReady(true);
-      return;
-    }
-
-    goToStep((currentStep + 1) as StepIndex);
-  }
-
-  function handlePrevious() {
-    if (currentStep > 0) {
-      goToStep((currentStep - 1) as StepIndex);
-    }
+    saveDraft("前三步已保存；行程生成将在后续任务中开放。");
   }
 
   return (
     <div className={styles.flowLayout}>
-      <StartFlowHeader currentStep={currentStep} />
+      <StartFlowHeader />
       <FloatingPanel className={styles.flowPanel}>
-        {isReady ? (
-          <ReadyState
-            headingRef={headingRef}
-            onReturnToReview={() => setIsReady(false)}
-          />
-        ) : (
-          <form className={styles.form} noValidate onSubmit={handleSubmit}>
-            {currentStep === 0 ? (
-              <DestinationStep
-                error={errors.destination}
-                headingRef={headingRef}
-                inputRef={destinationInputRef}
-                onChange={handleDestinationChange}
-                value={draft.destination}
-              />
-            ) : null}
-            {currentStep === 1 ? (
-              <TimingStep
-                durationInputRef={durationInputRef}
-                endDateInputRef={endDateInputRef}
-                errors={errors.timing}
-                headingRef={headingRef}
-                onChange={handleTimingChange}
-                startDateInputRef={startDateInputRef}
-                timing={draft.timing}
-              />
-            ) : null}
-            {currentStep === 2 ? (
-              <CompanionsStep
-                errors={errors.companions}
-                headingRef={headingRef}
-                inputRefs={companionInputRefs}
-                onChange={handleCompanionChange}
-                value={draft.companions}
-              />
-            ) : null}
-            {currentStep === 3 ? (
-              <ConstraintsStep
-                headingRef={headingRef}
-                onChange={(value) =>
-                  updateDraft({ hardConstraintsNote: value })
-                }
-                value={draft.hardConstraintsNote}
-              />
-            ) : null}
-            {currentStep === 4 ? (
-              <ReviewStep
-                draft={draft}
-                headingRef={headingRef}
-                onEdit={(step) => goToStep(step as StepIndex)}
-              />
-            ) : null}
+        <StepProgress currentStep={currentStep} />
+        <form className={styles.form} noValidate onSubmit={handleSubmit}>
+          {currentStep === 0 ? (
+            <FamiliarityStep
+              headingRef={headingRef}
+              onChange={(value: Familiarity) => {
+                updateDraft({ familiarity: value });
+                setNotice("");
+              }}
+              value={draft.familiarity}
+            />
+          ) : null}
+          {currentStep === 1 ? (
+            <PreferencesStep
+              dislikes={draft.dislikes}
+              headingRef={headingRef}
+              likes={draft.likes}
+              notice={notice}
+              onInterestCycle={handleInterestCycle}
+              onStyleChange={(key: TravelStyleKey, value: number) =>
+                updateDraft({ travelStyle: { [key]: value } })
+              }
+              travelStyle={draft.travelStyle}
+            />
+          ) : null}
+          {currentStep === 2 ? (
+            <TripBasicsStep
+              draft={draft}
+              headingRef={headingRef}
+              onAnchorToggle={(value: AnchorType) =>
+                updateDraft({
+                  anchors: toggleArrayValue(draft.anchors, value),
+                })
+              }
+              onBudgetChange={(value: BudgetLevel) =>
+                updateDraft({ budget: value })
+              }
+              onDateModeChange={(value: DateMode) =>
+                updateDraft({ dateMode: value })
+              }
+              onDestinationToggle={(value: string) =>
+                updateDraft({
+                  destinations: toggleArrayValue(draft.destinations, value),
+                })
+              }
+              onExactDateChange={handleExactDateChange}
+              onPartyChange={(key: keyof TripParty, value: number) =>
+                updateDraft({ party: { [key]: value } })
+              }
+              onPlannedDateChange={(field, value) =>
+                updateDraft(
+                  field === "departure"
+                    ? { plannedDeparture: value }
+                    : { plannedReturn: value },
+                )
+              }
+              onTransportChange={(value: TransportMode) =>
+                updateDraft({ transport: value })
+              }
+            />
+          ) : null}
 
-            <div className={styles.actions}>
-              {currentStep === 0 ? (
-                <ButtonLink href="/" variant="secondary">
-                  返回首页
-                </ButtonLink>
-              ) : (
-                <Button onClick={handlePrevious} variant="secondary">
-                  上一步
-                </Button>
-              )}
-              <Button type="submit">
-                {currentStep === 4 ? "确认信息" : "下一步"}
-                <span aria-hidden="true">{currentStep === 4 ? "✓" : "→"}</span>
-              </Button>
-            </div>
-          </form>
-        )}
+          {currentStep !== 1 ? (
+            <p aria-live="polite" className={styles.formNotice}>
+              {notice}
+            </p>
+          ) : null}
+          <div className={styles.actions}>
+            <Button
+              disabled={currentStep === 0}
+              onClick={() => goToStep((currentStep - 1) as StepIndex)}
+              variant="secondary"
+            >
+              <span aria-hidden="true">←</span>
+              上一步
+            </Button>
+            <Button className={styles.primaryAction} type="submit">
+              {currentStep === 2 ? "保存本次旅行" : "下一步"}
+              <span aria-hidden="true">→</span>
+            </Button>
+            <Button onClick={() => saveDraft()} variant="ghost">
+              保存草稿
+            </Button>
+          </div>
+        </form>
       </FloatingPanel>
       <p className={styles.privacyNote}>
-        本次填写只保留在当前页面，刷新后会重置。
+        草稿仅保存在当前浏览器，可随时返回继续填写。
       </p>
     </div>
   );
