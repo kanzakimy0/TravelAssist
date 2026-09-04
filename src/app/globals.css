@@ -1,5 +1,58 @@
 @import "tailwindcss";
 
+:root {
+  /*
+   * Provisional implementation tokens for the first UI validation pass.
+   * Their semantic roles are stable; the visual values are not final brand decisions.
+   */
+  --color-bg-canvas: #f4efe9;
+  --color-bg-elevated: rgb(255 255 255 / 78%);
+  --color-bg-overlay: rgb(250 251 253 / 94%);
+  --color-bg-muted: rgb(236 239 246 / 84%);
+  --color-text-primary: #252d43;
+  --color-text-secondary: #656d7e;
+  --color-text-on-accent: #ffffff;
+  --color-border-subtle: rgb(255 255 255 / 72%);
+  --color-border-strong: rgb(67 77 105 / 18%);
+  --color-accent-primary: #56658f;
+  --color-accent-primary-hover: #49577e;
+  --color-accent-secondary: #c9788b;
+  --color-focus-ring: #33456f;
+  --color-scrim: rgb(31 38 58 / 8%);
+
+  --color-scene-sky-start: #f7f1ea;
+  --color-scene-sky-middle: #e8edf7;
+  --color-scene-sky-end: #efe7f3;
+  --color-scene-sun: #e79983;
+  --color-scene-glow: rgb(255 239 218 / 72%);
+  --color-scene-mountain-far: #dfe5ef;
+  --color-scene-mountain-near: #cfd8e7;
+  --color-scene-route: #b86f83;
+  --color-scene-route-muted: #7f8eb1;
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-pill: 999rem;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+
+  --elevation-card: 0 0.75rem 2rem rgb(39 50 74 / 10%);
+  --elevation-panel: 0 1rem 3rem rgb(39 50 74 / 15%);
+  --elevation-popover: 0 1.25rem 4rem rgb(32 42 67 / 20%);
+
+  --motion-fast: 140ms;
+  --motion-normal: 240ms;
+  --motion-slow: 900ms;
+}
+
 *,
 *::before,
 *::after {
@@ -8,15 +61,25 @@
 
 html {
   min-width: 320px;
-  background: #f5f5f4;
+  background: var(--color-bg-canvas);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: #f5f5f4;
-  color: #171717;
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Hiragino Sans",
+    "Yu Gothic UI",
+    sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -26,4 +89,19 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
