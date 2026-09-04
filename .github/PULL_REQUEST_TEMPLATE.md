@@ -1,6 +1,16 @@
+## Tracking
+
+- Task ID: `TASK-XXX-A/B`
+- Issue: Closes #<issue-number>
+- Task File: `docs/tasks/TASK-xxx-*.md`
+- Feature Branch: `feature/a-xxx` / `feature/b-xxx`
+- Validation: Passed / Failed（详见“如何验证”）
+- WBS: `<WBS ID>`
+- WBS Sync: Updated / Pending / Blocked
+
 ## 关联 Issue
 
-Closes #
+Closes #<issue-number>
 
 ## 本次修改
 
