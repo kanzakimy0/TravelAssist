@@ -1,11 +1,14 @@
 import type { RefObject } from "react";
 
 import type {
-  AnchorType,
+  BudgetDetails,
   BudgetLevel,
   DateMode,
+  TransportDetails,
   TransportMode,
+  TravelerDetails,
   TripParty,
+  TripAnchors,
   TripWizardDraft,
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
@@ -19,27 +22,35 @@ import { TransportSelector } from "./transport-selector";
 interface TripBasicsStepProps {
   draft: TripWizardDraft;
   headingRef: RefObject<HTMLHeadingElement | null>;
-  onAnchorToggle: (value: AnchorType) => void;
+  onAnchorsChange: (value: TripAnchors) => void;
   onBudgetChange: (value: BudgetLevel) => void;
+  onBudgetDetailsChange: (patch: Partial<BudgetDetails>) => void;
   onDateModeChange: (mode: DateMode) => void;
   onDestinationToggle: (destination: string) => void;
   onExactDateChange: (field: "departure" | "return", value: string) => void;
   onPartyChange: (key: keyof TripParty, value: number) => void;
   onPlannedDateChange: (field: "departure" | "return", value: string) => void;
+  onPrefecturesChange: (values: string[]) => void;
   onTransportChange: (value: TransportMode) => void;
+  onTransportDetailsChange: (patch: Partial<TransportDetails>) => void;
+  onTravelerDetailsChange: (patch: Partial<TravelerDetails>) => void;
 }
 
 export function TripBasicsStep({
   draft,
   headingRef,
-  onAnchorToggle,
+  onAnchorsChange,
   onBudgetChange,
+  onBudgetDetailsChange,
   onDateModeChange,
   onDestinationToggle,
   onExactDateChange,
   onPartyChange,
   onPlannedDateChange,
+  onPrefecturesChange,
   onTransportChange,
+  onTransportDetailsChange,
+  onTravelerDetailsChange,
 }: TripBasicsStepProps) {
   return (
     <section aria-labelledby="trip-basics-title" className={styles.step}>
@@ -68,19 +79,33 @@ export function TripBasicsStep({
       />
       <div className={styles.basicsRow}>
         <DestinationGrid
+          onPrefecturesChange={onPrefecturesChange}
           onToggle={onDestinationToggle}
+          selectedPrefectures={draft.selectedPrefectures}
           values={draft.destinations}
         />
         <TransportSelector
+          details={draft.transportDetails}
           onChange={onTransportChange}
+          onDetailsChange={onTransportDetailsChange}
           value={draft.transport}
         />
       </div>
       <div className={styles.basicsRow}>
-        <PartyCounter onChange={onPartyChange} value={draft.party} />
-        <BudgetSelector onChange={onBudgetChange} value={draft.budget} />
+        <PartyCounter
+          details={draft.travelerDetails}
+          onChange={onPartyChange}
+          onDetailsChange={onTravelerDetailsChange}
+          value={draft.party}
+        />
+        <BudgetSelector
+          details={draft.budgetDetails}
+          onChange={onBudgetChange}
+          onDetailsChange={onBudgetDetailsChange}
+          value={draft.budget}
+        />
       </div>
-      <AnchorActions onToggle={onAnchorToggle} values={draft.anchors} />
+      <AnchorActions onChange={onAnchorsChange} value={draft.anchors} />
     </section>
   );
 }

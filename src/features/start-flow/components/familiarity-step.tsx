@@ -2,6 +2,7 @@ import type { RefObject } from "react";
 
 import type { Familiarity } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { InfoPopover } from "./info-popover";
 
 const OPTIONS: Array<{
   id: Familiarity;
@@ -52,9 +53,12 @@ export function FamiliarityStep({
       >
         你对日本有多熟悉？
       </h1>
-      <p className={styles.stepDescription}>
-        选择最接近你的选项，我们会调整推荐的深度与说明方式。
-      </p>
+      <div className={styles.descriptionWithInfo}>
+        <p className={styles.stepDescription}>
+          选择最接近你的选项，我们会调整推荐的深度与说明方式。
+        </p>
+        <InfoPopover text="熟悉度只用于调节路线说明、经典景点占比与小众程度，不会限制你选择任何地区。" />
+      </div>
       <div className={styles.familiarityGrid} role="radiogroup">
         {OPTIONS.map((option) => {
           const selected = value === option.id;

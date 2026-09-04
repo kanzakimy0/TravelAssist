@@ -23,20 +23,24 @@ const METHOD_ITEMS = [
 
 interface PreferencesStepProps {
   dislikes: Interest[];
+  interestDetails: Partial<Record<Interest, string[]>>;
   headingRef: RefObject<HTMLHeadingElement | null>;
   likes: Interest[];
   notice: string;
   onInterestCycle: (interest: Interest) => void;
+  onInterestDetailsChange: (interest: Interest, values: string[]) => void;
   onStyleChange: (key: TravelStyleKey, value: number) => void;
   travelStyle: TravelStyleValues;
 }
 
 export function PreferencesStep({
   dislikes,
+  interestDetails,
   headingRef,
   likes,
   notice,
   onInterestCycle,
+  onInterestDetailsChange,
   onStyleChange,
   travelStyle,
 }: PreferencesStepProps) {
@@ -55,9 +59,11 @@ export function PreferencesStep({
         用一级兴趣与六条旅行风格滑轨，勾勒这趟旅程的方向。
       </p>
       <InterestGrid
+        details={interestDetails}
         dislikes={dislikes}
         likes={likes}
         onCycle={onInterestCycle}
+        onDetailsChange={onInterestDetailsChange}
       />
       <p aria-live="polite" className={styles.inlineNotice}>
         {notice}

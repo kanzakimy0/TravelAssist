@@ -3,6 +3,16 @@ import type {
   TravelStyleValues,
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { InfoPopover } from "./info-popover";
+
+const STYLE_HELP: Record<TravelStyleKey, string> = {
+  pace: "控制每天安排的密度与留白。",
+  depth: "决定是覆盖代表景点，还是为单个体验留出更多时间。",
+  discovery: "调节经典名所与在地小众地点的比例。",
+  movement: "决定是否频繁更换住宿城市。",
+  coverage: "控制单一区域深度与多区域覆盖之间的平衡。",
+  priority: "影响交通、住宿和体验升级的取舍。",
+};
 
 interface StyleItem {
   key: TravelStyleKey;
@@ -29,7 +39,10 @@ export function TravelStyleGroup({
       {items.map((item) => (
         <label className={styles.styleSlider} key={item.key}>
           <span className={styles.sliderLabels}>
-            <span>{item.left}</span>
+            <span className={styles.sliderLabelWithInfo}>
+              {item.left}
+              <InfoPopover text={STYLE_HELP[item.key]} />
+            </span>
             <span>{item.right}</span>
           </span>
           <span className={styles.rangeWrap}>

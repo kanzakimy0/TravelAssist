@@ -1,5 +1,10 @@
-import type { TripParty } from "../model/start-flow-draft";
+"use client";
+
+import { useState } from "react";
+
+import type { TravelerDetails, TripParty } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { TravelerDetailModal } from "./detail-modals";
 
 const PARTY_ITEMS: Array<{ key: keyof TripParty; label: string }> = [
   { key: "adults", label: "成人" },
@@ -9,11 +14,20 @@ const PARTY_ITEMS: Array<{ key: keyof TripParty; label: string }> = [
 ];
 
 interface PartyCounterProps {
+  details: TravelerDetails;
   onChange: (key: keyof TripParty, value: number) => void;
+  onDetailsChange: (patch: Partial<TravelerDetails>) => void;
   value: TripParty;
 }
 
-export function PartyCounter({ onChange, value }: PartyCounterProps) {
+export function PartyCounter({
+  details,
+  onChange,
+  onDetailsChange,
+  value,
+}: PartyCounterProps) {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <fieldset className={styles.choiceGroup}>
       <legend>同行人员</legend>
@@ -45,6 +59,21 @@ export function PartyCounter({ onChange, value }: PartyCounterProps) {
           </div>
         ))}
       </div>
+      <button
+        aria-haspopup="dialog"
+        className={styles.detailTrigger}
+        onClick={() => setShowDetails(true)}
+        type="button"
+      >
+        补充儿童 / 老人详情 →
+      </button>
+      {showDetails ? (
+        <TravelerDetailModal
+          onChange={onDetailsChange}
+          onClose={() => setShowDetails(false)}
+          value={details}
+        />
+      ) : null}
     </fieldset>
   );
 }
