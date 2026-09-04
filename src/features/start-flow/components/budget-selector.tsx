@@ -1,5 +1,10 @@
-import type { BudgetLevel } from "../model/start-flow-draft";
+"use client";
+
+import { useState } from "react";
+
+import type { BudgetDetails, BudgetLevel } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { BudgetDetailModal } from "./detail-modals";
 
 const OPTIONS: Array<{
   id: BudgetLevel;
@@ -13,11 +18,20 @@ const OPTIONS: Array<{
 ];
 
 interface BudgetSelectorProps {
+  details: BudgetDetails;
   onChange: (value: BudgetLevel) => void;
+  onDetailsChange: (patch: Partial<BudgetDetails>) => void;
   value: BudgetLevel;
 }
 
-export function BudgetSelector({ onChange, value }: BudgetSelectorProps) {
+export function BudgetSelector({
+  details,
+  onChange,
+  onDetailsChange,
+  value,
+}: BudgetSelectorProps) {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <fieldset className={styles.choiceGroup}>
       <legend>预算范围</legend>
@@ -37,6 +51,21 @@ export function BudgetSelector({ onChange, value }: BudgetSelectorProps) {
           </button>
         ))}
       </div>
+      <button
+        aria-haspopup="dialog"
+        className={styles.detailTrigger}
+        onClick={() => setShowDetails(true)}
+        type="button"
+      >
+        设置预算详情 →
+      </button>
+      {showDetails ? (
+        <BudgetDetailModal
+          onChange={onDetailsChange}
+          onClose={() => setShowDetails(false)}
+          value={details}
+        />
+      ) : null}
     </fieldset>
   );
 }

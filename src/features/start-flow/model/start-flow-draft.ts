@@ -90,6 +90,8 @@ export type DateMode = "exact" | "planned" | "undecided";
 export type TransportMode = "recommended" | "public" | "driving" | "mixed";
 export type BudgetLevel = "economy" | "standard" | "comfort" | "premium";
 export type AnchorType = "flight" | "hotel" | "activity";
+export type RouteTransportMode =
+  "train" | "shinkansen" | "drive" | "flight" | "ferry";
 export type TravelStyleKey =
   "pace" | "depth" | "discovery" | "movement" | "coverage" | "priority";
 
@@ -109,6 +111,116 @@ export interface TripParty {
   seniors: number;
 }
 
+export interface TransportDetails {
+  railFirst: boolean;
+  busAcceptable: boolean;
+  fewerTransfers: boolean;
+  lessWalking: boolean;
+  shinkansenFirst: boolean;
+  useHighways: boolean;
+  mountainRoads: boolean;
+  nightDriving: boolean;
+  maxDrivingHours: string;
+  snowDriving: boolean;
+  intercityRail: boolean;
+  suburbanDriving: boolean;
+  autoCombine: boolean;
+}
+
+export interface TravelerDetails {
+  childAge: string;
+  childSeat: boolean;
+  infantAge: string;
+  stroller: boolean;
+  crib: boolean;
+  seniorWalking: "standard" | "light" | "limited";
+  reduceStairs: boolean;
+  restFrequency: "standard" | "often" | "frequent";
+}
+
+export interface BudgetDetails {
+  totalBudget: string;
+  perPersonBudget: string;
+  lodgingPerNight: string;
+  diningPerDay: string;
+  paidAttractions: "low" | "medium" | "high";
+  experienceUpgrade: "no" | "maybe" | "yes";
+}
+
+export interface FlightAnchor {
+  id: string;
+  source: "manual" | "lookup" | "paste" | "ai";
+  departureAirport: string;
+  arrivalAirport: string;
+  date: string;
+  departureTime: string;
+  flightNumber: string;
+}
+
+export interface HotelAnchor {
+  id: string;
+  source: "manual" | "poi" | "paste" | "ai";
+  hotelName: string;
+  city: string;
+  checkIn: string;
+  checkOut: string;
+  address: string;
+}
+
+export interface ActivityAnchor {
+  id: string;
+  source: "manual" | "lookup" | "paste" | "ai";
+  activityName: string;
+  date: string;
+  time: string;
+  location: string;
+  fixed: boolean;
+  nonCancellable: boolean;
+}
+
+export interface TripAnchors {
+  flights: FlightAnchor[];
+  hotels: HotelAnchor[];
+  activities: ActivityAnchor[];
+}
+
+export interface GenerationStatus {
+  state: "idle" | "generating" | "complete";
+  activeStage: number;
+  runId: number;
+}
+
+export interface RouteNode {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+}
+
+export interface RouteSegment {
+  from: string;
+  to: string;
+  mode: RouteTransportMode;
+}
+
+export interface GeneratedPlan {
+  id: string;
+  name: "经典均衡" | "深度慢游" | "高效探索";
+  recommendation: string;
+  tagline: string;
+  days: number;
+  locations: string[];
+  interests: string[];
+  attractionDensity: string;
+  movementIntensity: string;
+  budgetLevel: string;
+  imagePosition: string;
+  route: {
+    nodes: RouteNode[];
+    segments: RouteSegment[];
+  };
+}
+
 export interface TripWizardDraft {
   familiarity: Familiarity | null;
   likes: Interest[];
@@ -121,17 +233,41 @@ export interface TripWizardDraft {
   plannedReturn: string;
   durationDays: number | null;
   destinations: string[];
+  selectedPrefectures: string[];
   transport: TransportMode;
+  transportDetails: TransportDetails;
   party: TripParty;
+  travelerDetails: TravelerDetails;
   budget: BudgetLevel;
-  anchors: AnchorType[];
+  budgetDetails: BudgetDetails;
+  interestDetails: Partial<Record<Interest, string[]>>;
+  anchors: TripAnchors;
+  generationStatus: GenerationStatus;
+  generatedPlans: GeneratedPlan[];
+  selectedPlanId: string | null;
 }
 
 export type TripWizardDraftPatch = Partial<
-  Omit<TripWizardDraft, "travelStyle" | "party">
+  Omit<
+    TripWizardDraft,
+    | "travelStyle"
+    | "party"
+    | "transportDetails"
+    | "travelerDetails"
+    | "budgetDetails"
+    | "interestDetails"
+    | "anchors"
+    | "generationStatus"
+  >
 > & {
   travelStyle?: Partial<TravelStyleValues>;
   party?: Partial<TripParty>;
+  transportDetails?: Partial<TransportDetails>;
+  travelerDetails?: Partial<TravelerDetails>;
+  budgetDetails?: Partial<BudgetDetails>;
+  interestDetails?: Partial<Record<Interest, string[]>>;
+  anchors?: Partial<TripAnchors> | AnchorType[];
+  generationStatus?: Partial<GenerationStatus>;
 };
 
 const EMPTY_TRIP_WIZARD_DRAFT: TripWizardDraft = {
@@ -153,16 +289,77 @@ const EMPTY_TRIP_WIZARD_DRAFT: TripWizardDraft = {
   plannedReturn: "",
   durationDays: null,
   destinations: [],
+  selectedPrefectures: [],
   transport: "recommended",
+  transportDetails: {
+    railFirst: true,
+    busAcceptable: true,
+    fewerTransfers: false,
+    lessWalking: false,
+    shinkansenFirst: false,
+    useHighways: true,
+    mountainRoads: true,
+    nightDriving: false,
+    maxDrivingHours: "4",
+    snowDriving: false,
+    intercityRail: true,
+    suburbanDriving: true,
+    autoCombine: true,
+  },
   party: {
     adults: 1,
     children: 0,
     infants: 0,
     seniors: 0,
   },
+  travelerDetails: {
+    childAge: "",
+    childSeat: false,
+    infantAge: "",
+    stroller: false,
+    crib: false,
+    seniorWalking: "standard",
+    reduceStairs: false,
+    restFrequency: "standard",
+  },
   budget: "standard",
-  anchors: [],
+  budgetDetails: {
+    totalBudget: "",
+    perPersonBudget: "",
+    lodgingPerNight: "",
+    diningPerDay: "",
+    paidAttractions: "medium",
+    experienceUpgrade: "maybe",
+  },
+  interestDetails: {},
+  anchors: {
+    flights: [],
+    hotels: [],
+    activities: [],
+  },
+  generationStatus: {
+    state: "idle",
+    activeStage: 0,
+    runId: 0,
+  },
+  generatedPlans: [],
+  selectedPlanId: null,
 };
+
+function normalizeAnchors(
+  anchors: TripWizardDraftPatch["anchors"],
+  fallback: TripAnchors,
+): TripAnchors {
+  if (!anchors || Array.isArray(anchors)) {
+    return fallback;
+  }
+
+  return {
+    flights: anchors.flights ?? fallback.flights,
+    hotels: anchors.hotels ?? fallback.hotels,
+    activities: anchors.activities ?? fallback.activities,
+  };
+}
 
 export function applyTripWizardDraftPatch(
   draft: TripWizardDraft,
@@ -178,6 +375,27 @@ export function applyTripWizardDraftPatch(
     party: {
       ...draft.party,
       ...patch.party,
+    },
+    transportDetails: {
+      ...draft.transportDetails,
+      ...patch.transportDetails,
+    },
+    travelerDetails: {
+      ...draft.travelerDetails,
+      ...patch.travelerDetails,
+    },
+    budgetDetails: {
+      ...draft.budgetDetails,
+      ...patch.budgetDetails,
+    },
+    interestDetails: {
+      ...draft.interestDetails,
+      ...patch.interestDetails,
+    },
+    anchors: normalizeAnchors(patch.anchors, draft.anchors),
+    generationStatus: {
+      ...draft.generationStatus,
+      ...patch.generationStatus,
     },
   };
 }

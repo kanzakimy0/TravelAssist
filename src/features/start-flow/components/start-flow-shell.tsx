@@ -1,18 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { FloatingPanel } from "@/components/ui/floating-panel";
 
+import { GENERATED_PLANS } from "../model/generated-plans";
 import {
   applyTripWizardDraftPatch,
   calculateDurationDays,
   createTripWizardDraft,
 } from "../model/start-flow-draft";
 import type {
-  AnchorType,
   BudgetLevel,
   DateMode,
   Familiarity,
@@ -25,17 +24,19 @@ import type {
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { FamiliarityStep } from "./familiarity-step";
+import { GenerationStep } from "./generation-step";
+import { PlanSelectionStep } from "./plan-selection-step";
 import { PreferencesStep } from "./preferences-step";
 import { StartFlowHeader } from "./start-flow-header";
 import { StepProgress } from "./step-progress";
 import { TripBasicsStep } from "./trip-basics-step";
 
-type StepIndex = 0 | 1 | 2;
+type StepIndex = 0 | 1 | 2 | 3;
 
 interface StoredWizardState {
   currentStep: StepIndex;
   draft: TripWizardDraft;
-  version: 1;
+  version: 2;
 }
 
 interface StartFlowShellProps {
@@ -45,7 +46,7 @@ interface StartFlowShellProps {
 const STORAGE_KEY = "travelassist.trip-wizard.v1";
 
 function isStepIndex(value: unknown): value is StepIndex {
-  return value === 0 || value === 1 || value === 2;
+  return value === 0 || value === 1 || value === 2 || value === 3;
 }
 
 function subscribeToHydration() {
@@ -58,21 +59,39 @@ function readStoredState(
   const fallback: StoredWizardState = {
     currentStep: 0,
     draft: createTripWizardDraft(initialDraft),
-    version: 1,
+    version: 2,
   };
 
   try {
     const storedValue = window.localStorage.getItem(STORAGE_KEY);
-    if (!storedValue) {
-      return fallback;
-    }
+    if (!storedValue) return fallback;
 
     const stored = JSON.parse(storedValue) as Partial<StoredWizardState>;
-    return {
-      currentStep: isStepIndex(stored.currentStep) ? stored.currentStep : 0,
-      draft: createTripWizardDraft(stored.draft ?? initialDraft),
-      version: 1,
-    };
+    const currentStep = isStepIndex(stored.currentStep)
+      ? stored.currentStep
+      : 0;
+    let draft = createTripWizardDraft(stored.draft ?? initialDraft);
+
+    if (currentStep === 3 && draft.generationStatus.state === "idle") {
+      draft = applyTripWizardDraftPatch(draft, {
+        generationStatus: {
+          state: "generating",
+          activeStage: 0,
+          runId: draft.generationStatus.runId + 1,
+        },
+      });
+    }
+    if (
+      currentStep === 3 &&
+      draft.generationStatus.state === "complete" &&
+      draft.generatedPlans.length === 0
+    ) {
+      draft = applyTripWizardDraftPatch(draft, {
+        generatedPlans: GENERATED_PLANS,
+      });
+    }
+
+    return { currentStep, draft, version: 2 };
   } catch {
     window.localStorage.removeItem(STORAGE_KEY);
     return fallback;
@@ -110,17 +129,42 @@ function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    const stored: StoredWizardState = {
-      currentStep,
-      draft,
-      version: 1,
-    };
+    const stored: StoredWizardState = { currentStep, draft, version: 2 };
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
   }, [currentStep, draft]);
 
   useEffect(() => {
     headingRef.current?.focus();
-  }, [currentStep]);
+  }, [currentStep, draft.generationStatus.state]);
+
+  useEffect(() => {
+    if (currentStep !== 3 || draft.generationStatus.state !== "generating") {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setDraft((currentDraft) => {
+        const stage = currentDraft.generationStatus.activeStage;
+        if (stage >= 5) {
+          return applyTripWizardDraftPatch(currentDraft, {
+            generatedPlans: GENERATED_PLANS,
+            selectedPlanId: null,
+            generationStatus: { state: "complete", activeStage: 5 },
+          });
+        }
+        return applyTripWizardDraftPatch(currentDraft, {
+          generationStatus: { activeStage: stage + 1 },
+        });
+      });
+    }, 720);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    currentStep,
+    draft.generationStatus.activeStage,
+    draft.generationStatus.runId,
+    draft.generationStatus.state,
+  ]);
 
   function updateDraft(patch: TripWizardDraftPatch) {
     setDraft((currentDraft) => applyTripWizardDraftPatch(currentDraft, patch));
@@ -182,120 +226,163 @@ function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
   }
 
   function saveDraft(message = "草稿已保存") {
-    const stored: StoredWizardState = {
-      currentStep,
-      draft,
-      version: 1,
-    };
+    const stored: StoredWizardState = { currentStep, draft, version: 2 };
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
     setNotice(message);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function startGeneration() {
+    setNotice("");
+    setCurrentStep(3);
+    updateDraft({
+      generatedPlans: [],
+      selectedPlanId: null,
+      generationStatus: {
+        state: "generating",
+        activeStage: 0,
+        runId: draft.generationStatus.runId + 1,
+      },
+    });
+  }
 
+  function handleSubmit() {
     if (currentStep === 0 && !draft.familiarity) {
       setNotice("请选择你对日本的熟悉程度后再继续。");
       return;
     }
-
     if (currentStep < 2) {
       goToStep((currentStep + 1) as StepIndex);
       return;
     }
-
-    saveDraft("前三步已保存；行程生成将在后续任务中开放。");
+    startGeneration();
   }
+
+  const showPlans =
+    currentStep === 3 &&
+    draft.generationStatus.state === "complete" &&
+    draft.generatedPlans.length > 0;
 
   return (
     <div className={styles.flowLayout}>
       <StartFlowHeader />
       <FloatingPanel className={styles.flowPanel}>
         <StepProgress currentStep={currentStep} />
-        <form className={styles.form} noValidate onSubmit={handleSubmit}>
-          {currentStep === 0 ? (
-            <FamiliarityStep
-              headingRef={headingRef}
-              onChange={(value: Familiarity) => {
-                updateDraft({ familiarity: value });
-                setNotice("");
-              }}
-              value={draft.familiarity}
-            />
-          ) : null}
-          {currentStep === 1 ? (
-            <PreferencesStep
-              dislikes={draft.dislikes}
-              headingRef={headingRef}
-              likes={draft.likes}
-              notice={notice}
-              onInterestCycle={handleInterestCycle}
-              onStyleChange={(key: TravelStyleKey, value: number) =>
-                updateDraft({ travelStyle: { [key]: value } })
-              }
-              travelStyle={draft.travelStyle}
-            />
-          ) : null}
-          {currentStep === 2 ? (
-            <TripBasicsStep
-              draft={draft}
-              headingRef={headingRef}
-              onAnchorToggle={(value: AnchorType) =>
-                updateDraft({
-                  anchors: toggleArrayValue(draft.anchors, value),
-                })
-              }
-              onBudgetChange={(value: BudgetLevel) =>
-                updateDraft({ budget: value })
-              }
-              onDateModeChange={(value: DateMode) =>
-                updateDraft({ dateMode: value })
-              }
-              onDestinationToggle={(value: string) =>
-                updateDraft({
-                  destinations: toggleArrayValue(draft.destinations, value),
-                })
-              }
-              onExactDateChange={handleExactDateChange}
-              onPartyChange={(key: keyof TripParty, value: number) =>
-                updateDraft({ party: { [key]: value } })
-              }
-              onPlannedDateChange={(field, value) =>
-                updateDraft(
-                  field === "departure"
-                    ? { plannedDeparture: value }
-                    : { plannedReturn: value },
-                )
-              }
-              onTransportChange={(value: TransportMode) =>
-                updateDraft({ transport: value })
-              }
-            />
-          ) : null}
 
-          {currentStep !== 1 ? (
-            <p aria-live="polite" className={styles.formNotice}>
-              {notice}
-            </p>
-          ) : null}
-          <div className={styles.actions}>
-            <Button
-              disabled={currentStep === 0}
-              onClick={() => goToStep((currentStep - 1) as StepIndex)}
-              variant="secondary"
-            >
-              <span aria-hidden="true">←</span>
-              上一步
-            </Button>
-            <Button className={styles.primaryAction} type="submit">
-              {currentStep === 2 ? "保存本次旅行" : "下一步"}
-              <span aria-hidden="true">→</span>
-            </Button>
-            <Button onClick={() => saveDraft()} variant="ghost">
-              保存草稿
-            </Button>
+        {currentStep <= 2 ? (
+          <div className={styles.form}>
+            {currentStep === 0 ? (
+              <FamiliarityStep
+                headingRef={headingRef}
+                onChange={(value: Familiarity) => {
+                  updateDraft({ familiarity: value });
+                  setNotice("");
+                }}
+                value={draft.familiarity}
+              />
+            ) : null}
+            {currentStep === 1 ? (
+              <PreferencesStep
+                dislikes={draft.dislikes}
+                headingRef={headingRef}
+                interestDetails={draft.interestDetails}
+                likes={draft.likes}
+                notice={notice}
+                onInterestCycle={handleInterestCycle}
+                onInterestDetailsChange={(interest, values) =>
+                  updateDraft({ interestDetails: { [interest]: values } })
+                }
+                onStyleChange={(key: TravelStyleKey, value: number) =>
+                  updateDraft({ travelStyle: { [key]: value } })
+                }
+                travelStyle={draft.travelStyle}
+              />
+            ) : null}
+            {currentStep === 2 ? (
+              <TripBasicsStep
+                draft={draft}
+                headingRef={headingRef}
+                onAnchorsChange={(anchors) => updateDraft({ anchors })}
+                onBudgetChange={(value: BudgetLevel) =>
+                  updateDraft({ budget: value })
+                }
+                onBudgetDetailsChange={(patch) =>
+                  updateDraft({ budgetDetails: patch })
+                }
+                onDateModeChange={(value: DateMode) =>
+                  updateDraft({ dateMode: value })
+                }
+                onDestinationToggle={(value: string) =>
+                  updateDraft({
+                    destinations: toggleArrayValue(draft.destinations, value),
+                  })
+                }
+                onExactDateChange={handleExactDateChange}
+                onPartyChange={(key: keyof TripParty, value: number) =>
+                  updateDraft({ party: { [key]: value } })
+                }
+                onPlannedDateChange={(field, value) =>
+                  updateDraft(
+                    field === "departure"
+                      ? { plannedDeparture: value }
+                      : { plannedReturn: value },
+                  )
+                }
+                onPrefecturesChange={(values) =>
+                  updateDraft({ selectedPrefectures: values })
+                }
+                onTransportChange={(value: TransportMode) =>
+                  updateDraft({ transport: value })
+                }
+                onTransportDetailsChange={(patch) =>
+                  updateDraft({ transportDetails: patch })
+                }
+                onTravelerDetailsChange={(patch) =>
+                  updateDraft({ travelerDetails: patch })
+                }
+              />
+            ) : null}
+
+            {currentStep !== 1 ? (
+              <p aria-live="polite" className={styles.formNotice}>
+                {notice}
+              </p>
+            ) : null}
+            <div className={styles.actions}>
+              <Button
+                disabled={currentStep === 0}
+                onClick={() => goToStep((currentStep - 1) as StepIndex)}
+                variant="secondary"
+              >
+                <span aria-hidden="true">←</span>
+                上一步
+              </Button>
+              <Button className={styles.primaryAction} onClick={handleSubmit}>
+                {currentStep === 2 ? "生成方案" : "下一步"}
+                <span aria-hidden="true">→</span>
+              </Button>
+              <Button onClick={() => saveDraft()} variant="ghost">
+                保存草稿
+              </Button>
+            </div>
           </div>
-        </form>
+        ) : null}
+
+        {currentStep === 3 && !showPlans ? (
+          <GenerationStep
+            activeStage={draft.generationStatus.activeStage}
+            headingRef={headingRef}
+          />
+        ) : null}
+        {showPlans ? (
+          <PlanSelectionStep
+            headingRef={headingRef}
+            onBack={() => goToStep(2)}
+            onRegenerate={startGeneration}
+            onSelect={(selectedPlanId) => updateDraft({ selectedPlanId })}
+            plans={draft.generatedPlans}
+            selectedPlanId={draft.selectedPlanId}
+          />
+        ) : null}
       </FloatingPanel>
       <p className={styles.privacyNote}>
         草稿仅保存在当前浏览器，可随时返回继续填写。

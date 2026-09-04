@@ -1,14 +1,28 @@
+"use client";
+
+import { useState } from "react";
+
 import { INTERESTS } from "../model/start-flow-draft";
 import type { Interest } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { InterestDetailModal } from "./interest-detail-modal";
 
 interface InterestGridProps {
   dislikes: Interest[];
   likes: Interest[];
   onCycle: (interest: Interest) => void;
+  details: Partial<Record<Interest, string[]>>;
+  onDetailsChange: (interest: Interest, values: string[]) => void;
 }
 
-export function InterestGrid({ dislikes, likes, onCycle }: InterestGridProps) {
+export function InterestGrid({
+  details,
+  dislikes,
+  likes,
+  onCycle,
+  onDetailsChange,
+}: InterestGridProps) {
+  const [detailInterest, setDetailInterest] = useState<Interest | null>(null);
   return (
     <div className={styles.interestSection}>
       <div className={styles.sectionHeadingRow}>
@@ -32,23 +46,41 @@ export function InterestGrid({ dislikes, likes, onCycle }: InterestGridProps) {
                 : "未选择";
 
           return (
-            <button
-              aria-label={`${interest}，当前${stateLabel}；点击切换`}
-              className={styles.interestCard}
-              data-preference={preference}
-              key={interest}
-              onClick={() => onCycle(interest)}
-              type="button"
-            >
-              <span>{interest}</span>
-              <small>{stateLabel}</small>
-            </button>
+            <div className={styles.interestCardWrap} key={interest}>
+              <button
+                aria-label={`${interest}，当前${stateLabel}；点击切换`}
+                className={styles.interestCard}
+                data-preference={preference}
+                onClick={() => onCycle(interest)}
+                type="button"
+              >
+                <span>{interest}</span>
+                <small>{stateLabel}</small>
+              </button>
+              <button
+                aria-label={`设置${interest}详细偏好`}
+                className={styles.interestDetailTrigger}
+                data-filled={(details[interest]?.length ?? 0) > 0}
+                onClick={() => setDetailInterest(interest)}
+                type="button"
+              >
+                {(details[interest]?.length ?? 0) > 0 ? "已细化" : "细化"}
+              </button>
+            </div>
           );
         })}
       </div>
       <p className={styles.interestHint}>
         点击卡片依次切换：喜欢 → 不喜欢 → 中性。
       </p>
+      {detailInterest ? (
+        <InterestDetailModal
+          interest={detailInterest}
+          onClose={() => setDetailInterest(null)}
+          onConfirm={(values) => onDetailsChange(detailInterest, values)}
+          values={details[detailInterest] ?? []}
+        />
+      ) : null}
     </div>
   );
 }

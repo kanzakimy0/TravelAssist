@@ -1,5 +1,6 @@
 import type { DateMode } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { CalendarPopover } from "./calendar-popover";
 
 interface ExpandableDateSelectorProps {
   dateMode: DateMode | null;
@@ -56,30 +57,20 @@ export function ExpandableDateSelector({
           {dateMode === "exact" ? (
             <div className={styles.dateInlineFields}>
               <span aria-hidden="true" className={styles.dateDivider} />
-              <label>
-                <span>出发日期</span>
-                <input
-                  onChange={(event) =>
-                    onExactDateChange("departure", event.target.value)
-                  }
-                  type="date"
-                  value={exactDeparture}
-                />
-              </label>
+              <CalendarPopover
+                label="出发日期"
+                onChange={(value) => onExactDateChange("departure", value)}
+                value={exactDeparture}
+              />
               <span aria-hidden="true" className={styles.dateArrow}>
                 →
               </span>
-              <label>
-                <span>返回日期</span>
-                <input
-                  min={exactDeparture || undefined}
-                  onChange={(event) =>
-                    onExactDateChange("return", event.target.value)
-                  }
-                  type="date"
-                  value={exactReturn}
-                />
-              </label>
+              <CalendarPopover
+                label="返回日期"
+                min={exactDeparture || undefined}
+                onChange={(value) => onExactDateChange("return", value)}
+                value={exactReturn}
+              />
             </div>
           ) : null}
         </div>

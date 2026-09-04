@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import styles from "../start-flow.module.css";
+import { MoreRegionsModal } from "./more-regions-modal";
 
 const PRIMARY_DESTINATIONS = [
   "东京",
@@ -14,18 +15,20 @@ const PRIMARY_DESTINATIONS = [
   "冲绳",
 ] as const;
 
-const MORE_DESTINATIONS = ["东北", "北陆", "中国地区", "四国"] as const;
-
 interface DestinationGridProps {
+  onPrefecturesChange: (values: string[]) => void;
   onToggle: (destination: string) => void;
+  selectedPrefectures: string[];
   values: string[];
 }
 
-export function DestinationGrid({ onToggle, values }: DestinationGridProps) {
+export function DestinationGrid({
+  onPrefecturesChange,
+  onToggle,
+  selectedPrefectures,
+  values,
+}: DestinationGridProps) {
   const [showMore, setShowMore] = useState(false);
-  const hasMoreSelection = MORE_DESTINATIONS.some((item) =>
-    values.includes(item),
-  );
 
   return (
     <fieldset className={styles.choiceGroup}>
@@ -44,30 +47,28 @@ export function DestinationGrid({ onToggle, values }: DestinationGridProps) {
           </button>
         ))}
         <button
-          aria-expanded={showMore}
-          aria-pressed={hasMoreSelection}
+          aria-haspopup="dialog"
+          aria-pressed={selectedPrefectures.length > 0}
           className={styles.compactChoice}
-          data-selected={hasMoreSelection}
-          onClick={() => setShowMore((current) => !current)}
+          data-selected={selectedPrefectures.length > 0}
+          onClick={() => setShowMore(true)}
           type="button"
         >
           更多地区
+          {selectedPrefectures.length ? ` · ${selectedPrefectures.length}` : ""}
         </button>
       </div>
+      {selectedPrefectures.length ? (
+        <p className={styles.destinationSummary}>
+          更多地区：{selectedPrefectures.join("、")}
+        </p>
+      ) : null}
       {showMore ? (
-        <div className={styles.moreDestinations}>
-          {MORE_DESTINATIONS.map((destination) => (
-            <button
-              aria-pressed={values.includes(destination)}
-              data-selected={values.includes(destination)}
-              key={destination}
-              onClick={() => onToggle(destination)}
-              type="button"
-            >
-              {destination}
-            </button>
-          ))}
-        </div>
+        <MoreRegionsModal
+          onClose={() => setShowMore(false)}
+          onConfirm={onPrefecturesChange}
+          selected={selectedPrefectures}
+        />
       ) : null}
     </fieldset>
   );
