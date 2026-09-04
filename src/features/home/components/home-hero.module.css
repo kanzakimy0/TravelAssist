@@ -1,56 +1,63 @@
 .hero {
-  width: min(43rem, 56vw);
-}
-
-.panel {
-  padding: clamp(var(--space-8), 4.5vw, calc(var(--space-12) * 1.25));
-  border-radius: var(--radius-xl);
+  width: min(64rem, 72vw);
+  color: #202c3c;
+  text-shadow: 0 2px 1.75rem rgb(255 255 255 / 48%);
 }
 
 .eyebrow {
-  margin: 0 0 var(--space-6);
-  color: var(--color-text-secondary);
-  font-size: 0.8125rem;
+  margin: 0 0 var(--space-4);
+  color: #34465a;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
 }
 
 .title {
   margin: 0;
-  color: var(--color-text-primary);
-  font-size: clamp(2.75rem, 4.25vw, 4.5rem);
-  font-weight: 780;
-  letter-spacing: -0.055em;
-  line-height: 1.1;
-}
-
-.title span {
-  display: block;
+  color: #17283a;
+  font-size: clamp(3.25rem, 6.2vw, 6.5rem);
+  font-weight: 760;
+  letter-spacing: -0.065em;
+  line-height: 1.04;
+  white-space: nowrap;
 }
 
 .description {
-  max-width: 32rem;
-  margin: var(--space-6) 0 0;
-  color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
-  line-height: 1.75;
+  margin: var(--space-5, 1.25rem) 0 0;
+  color: #455365;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
 }
 
 .actionRow {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  margin-top: var(--space-8);
+  gap: var(--space-3);
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
-.futureNote {
-  color: var(--color-text-secondary);
-  font-size: 0.75rem;
+.loginAction {
+  min-width: 5.5rem;
+  color: #344357;
+  opacity: 0.82 !important;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (max-width: 64rem) {
   .hero {
-    width: min(40rem, 72vw);
+    width: min(54rem, 82vw);
   }
 }
 
@@ -59,26 +66,29 @@
     width: 100%;
   }
 
-  .panel {
-    padding: var(--space-8) var(--space-6);
-    border-radius: var(--radius-lg);
-  }
-
   .eyebrow {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
+    font-size: 0.6875rem;
   }
 
   .title {
-    font-size: clamp(2.25rem, 11vw, 3.25rem);
+    max-width: 8em;
+    font-size: clamp(2.75rem, 13vw, 4rem);
+    line-height: 1.02;
+    white-space: normal;
   }
 
   .description {
-    margin-top: var(--space-4);
+    margin-top: var(--space-3);
   }
 
   .actionRow {
-    align-items: flex-start;
-    flex-direction: column;
     margin-top: var(--space-6);
+  }
+
+  .loginAction {
+    min-width: auto;
+    padding-right: var(--space-4);
+    padding-left: var(--space-4);
   }
 }

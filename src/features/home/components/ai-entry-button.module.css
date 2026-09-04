@@ -2,19 +2,21 @@
   position: fixed;
   right: var(--space-8);
   bottom: var(--space-8);
-  z-index: 5;
+  z-index: 6;
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  min-height: 5.5rem;
-  padding: var(--space-3) var(--space-6) var(--space-3) var(--space-3);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-overlay);
-  color: var(--color-text-primary);
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  min-height: 4rem;
+  padding: var(--space-2);
+  border: 1px solid rgb(255 255 255 / 58%);
+  border-radius: var(--radius-pill);
+  background: rgb(248 245 237 / 88%);
+  color: #263447;
   box-shadow: var(--elevation-panel);
-  backdrop-filter: blur(1.25rem) saturate(118%);
-  -webkit-backdrop-filter: blur(1.25rem) saturate(118%);
+  backdrop-filter: blur(0.75rem) saturate(108%);
+  -webkit-backdrop-filter: blur(0.75rem) saturate(108%);
   cursor: pointer;
   transition:
     transform var(--motion-fast) ease,
@@ -34,17 +36,17 @@
 .icon {
   display: grid;
   flex: 0 0 auto;
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 3rem;
+  height: 3rem;
   place-items: center;
   border-radius: var(--radius-pill);
-  background: var(--color-accent-secondary);
+  background: #b6503f;
   color: var(--color-text-on-accent);
 }
 
 .icon svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1.625rem;
+  height: 1.625rem;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -53,43 +55,28 @@
 }
 
 .copy {
-  display: grid;
-  gap: var(--space-1);
-  text-align: left;
-}
-
-.copy strong {
-  font-size: 0.9375rem;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
-}
-
-.label {
-  color: var(--color-text-secondary);
-  font-size: 0.75rem;
-  font-weight: 650;
 }
 
 @media (max-width: 40rem) {
   .button {
-    right: var(--space-4);
-    bottom: var(--space-4);
+    right: max(var(--space-4), env(safe-area-inset-right));
+    bottom: max(var(--space-4), env(safe-area-inset-bottom));
+    width: 4rem;
+    height: 4rem;
     min-height: auto;
     padding: var(--space-2);
     border-radius: var(--radius-pill);
   }
 
   .icon {
-    width: 3.25rem;
-    height: 3.25rem;
-  }
-
-  .copy {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    white-space: nowrap;
+    width: 3rem;
+    height: 3rem;
   }
 }

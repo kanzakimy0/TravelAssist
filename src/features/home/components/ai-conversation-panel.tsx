@@ -27,9 +27,9 @@ export function AIConversationPanel({
     >
       <div className={styles.header}>
         <div>
-          <p className={styles.eyebrow}>AI ASSISTANT</p>
+          <p className={styles.eyebrow}>TRAVELASSIST AI</p>
           <h2 className={styles.title} id={titleId}>
-            想从哪里出发？
+            你好，想去哪里？
           </h2>
         </div>
         <Button
@@ -44,28 +44,20 @@ export function AIConversationPanel({
         </Button>
       </div>
 
-      <div className={styles.preview}>
-        <span className={styles.status}>界面预览</span>
-        <p>
-          直接描述目的地、时间和同行人。AI
-          服务尚未连接，本面板当前仅用于验证交互与布局。
-        </p>
-      </div>
-
       <div className={styles.composer}>
-        <label className={styles.label} htmlFor={`${id}-input`}>
-          旅行想法
+        <label className={styles.srOnly} htmlFor={`${id}-input`}>
+          告诉 AI 你的旅行想法
         </label>
         <textarea
-          disabled
           id={`${id}-input`}
-          placeholder="例如：秋天想和家人去京都慢慢走走"
-          rows={3}
+          placeholder="例如：秋天想去京都慢慢走走……"
+          rows={4}
         />
-        <Button disabled size="medium">
+        <Button aria-label="发送（AI 服务尚未接入）" disabled size="medium">
           发送
         </Button>
       </div>
+      <p className={styles.note}>AI 服务将在后续接入</p>
     </FloatingPanel>
   );
 }

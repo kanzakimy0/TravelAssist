@@ -1,14 +1,14 @@
-import { CompactTopNav } from "./components/compact-top-nav";
-import { DynamicBackgroundLayer } from "./components/dynamic-background-layer";
+import { CompactHeader } from "./components/compact-header";
 import { HomeAIAssistant } from "./components/home-ai-assistant";
 import { HomeHero } from "./components/home-hero";
+import { ImmersiveBackground } from "./components/immersive-background";
 import styles from "./home-page.module.css";
 
 export function HomePage() {
   return (
     <main className={styles.home}>
-      <DynamicBackgroundLayer />
-      <CompactTopNav />
+      <ImmersiveBackground />
+      <CompactHeader />
       <div className={styles.content}>
         <HomeHero />
       </div>

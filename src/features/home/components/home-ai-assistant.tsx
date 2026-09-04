@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { AIConversationPanel } from "./ai-conversation-panel";
 import { AIEntryButton } from "./ai-entry-button";
+import styles from "./home-ai-assistant.module.css";
 
 const PANEL_ID = "home-ai-conversation-panel";
 
@@ -44,16 +45,25 @@ export function HomeAIAssistant() {
   return (
     <>
       {isOpen ? (
-        <AIConversationPanel
-          closeButtonRef={closeButtonRef}
-          id={PANEL_ID}
-          onClose={() => setIsOpen(false)}
-        />
+        <>
+          <button
+            aria-label="关闭 AI 助手"
+            className={styles.backdrop}
+            onClick={() => setIsOpen(false)}
+            tabIndex={-1}
+            type="button"
+          />
+          <AIConversationPanel
+            closeButtonRef={closeButtonRef}
+            id={PANEL_ID}
+            onClose={() => setIsOpen(false)}
+          />
+        </>
       ) : null}
       <AIEntryButton
         aria-controls={PANEL_ID}
         aria-expanded={isOpen}
-        aria-label={isOpen ? "AI 助手已展开" : "打开 AI 助手：直接告诉我想去哪"}
+        aria-label={isOpen ? "AI 助手已展开" : "打开 AI 助手"}
         onClick={() => setIsOpen(true)}
         ref={entryButtonRef}
       />
