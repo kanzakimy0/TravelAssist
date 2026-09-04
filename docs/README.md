@@ -37,6 +37,12 @@
 - [两人开发分工与接手机制](planning/team-allocation.md) — A 70% / B 30%、Issue、分支、PR 与临时接手机制
 - [开发 WBS](planning/development-wbs.md) — Phase 0 / Web MVP 执行顺序、A/B 分工、DoD 与 Codex/GPT 通用执行提示
 
+### Web 工程
+
+- [开发环境配置](development/setup.md) — Requirements、安装、启动、验证与 Git workflow
+- [Web 工程架构](architecture/web-architecture.md) — App Router 源码边界与未来 App 共用代码原则
+- [技术架构规划](architecture/README.md) — 后续需要冻结的系统、数据与 API 架构文档
+
 ---
 
 ## 2. 设计图
@@ -66,6 +72,7 @@ TravelAssist/
 └─ docs/
    ├─ README.md
    ├─ product/
+   │  ├─ README.md
    │  ├─ product-overview.md
    │  └─ feature-list.md
    ├─ ui/
@@ -78,6 +85,11 @@ TravelAssist/
    ├─ ai/
    │  └─ trip-generation-flow.md
    ├─ architecture/
+   │  ├─ README.md
+   │  └─ web-architecture.md
+   ├─ development/
+   │  └─ setup.md
+   ├─ design/
    │  └─ README.md
    ├─ planning/
    │  ├─ team-allocation.md
