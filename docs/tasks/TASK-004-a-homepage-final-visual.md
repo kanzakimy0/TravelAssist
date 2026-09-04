@@ -4,7 +4,7 @@
 
 - Task ID: `TASK-004-A`
 - Owner: `A`
-- Status: 待验收
+- Status: 已完成
 - WBS: `1.4 / 1.16`
 - GitHub Issue: `#20`
 - Branch: `feature/a-homepage-final-visual`
@@ -22,7 +22,7 @@
 - Manual Validation: `/`, `/start`, CTA navigation, AI open/close, Escape and focus restore passed
 - Responsive Validation: `1600x900 / 1440x900 / 1024x768 / 390x844` passed
 - Media Validation: poster active; WebM/MP4 sources are conditionally enabled when authorized files exist
-- Current Review State: implementation complete, PR #23 awaiting review and merge
+- Current Review State: accepted and merged into `develop` via PR #23
 
 ---
 

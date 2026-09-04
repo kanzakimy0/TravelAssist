@@ -236,7 +236,7 @@ src/db/
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
-| TASK-004-A | 1.4 / 1.16 | A | 待审查 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
+| TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 
 > TASK-003-B 由用户明确分配给 B 执行；本记录不改变 0.3、0.5 的既有 Owner。
 
@@ -249,7 +249,7 @@ src/db/
 | 1.1    | 产品定位与核心价值主张                    | A      | P0     | -                 | 进行中 |
 | 1.2    | 用户旅程 / 核心使用流程                   | A      | P0     | 1.1               | 进行中 |
 | 1.3    | 页面分类与 A/B 模块归属                   | A      | P0     | 1.2               | 进行中 |
-| 1.4    | 网站首页设计冻结 v1                       | A      | P1     | 1.3               | 待审查 |
+| 1.4    | 网站首页设计冻结 v1                       | A      | P1     | 1.3               | 已完成 |
 | 1.5    | Planner 主画面冻结 v1                     | A      | P0     | 1.3               | 进行中 |
 | 1.6    | 底部时间轴设计冻结                        | A      | P0     | 1.5               | 进行中 |
 | 1.7    | Planner 右侧临时设置 / 快速调整设计       | A      | P0     | 1.5               | 进行中 |
@@ -259,7 +259,7 @@ src/db/
 | 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | A      | P1     | 1.4,1.5           | 未开始 |
 | 1.14   | 主系统响应式布局规则                      | A      | P1     | 1.13              | 未开始 |
 | 1.15   | MVP 功能范围冻结                          | A      | P0     | 1.1-1.14          | 未开始 |
-| 1.16   | 网站入口详细画面设计                      | A      | P1     | 1.4,1.13          | 待审查 |
+| 1.16   | 网站入口详细画面设计                      | A      | P1     | 1.4,1.13          | 已完成 |
 | 1.17   | 地图 + 时间轴 + 推荐右栏详细画面设计      | A      | P0     | 1.5,1.6,1.11,1.12 | 未开始 |
 | 1.18   | 路线生成 / 重新规划 / 方案切换交互设计    | A      | P0     | 1.17              | 未开始 |
 | 1.19   | AI 旅行助手主画面设计                     | A      | P1     | 1.5               | 未开始 |
