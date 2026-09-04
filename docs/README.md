@@ -1,6 +1,14 @@
 # TravelAssist 文档索引
 
-> 本目录是 TravelAssist 的正式设计与开发依据。聊天中的讨论只有在整理进 `docs/` 或 GitHub Issue 后，才视为可执行规格。
+> 本目录是 TravelAssist 的正式设计与开发依据。聊天中的讨论只有在整理进 `docs/`、`assets/design/` 或 GitHub Issue 后，才视为可执行 / 可追踪规格。
+
+## 0. 项目主档
+
+- [项目决策与设计总档](decisions/project-design-master.md) — 截至 2026-09-04 的产品、页面、偏好、AI、视觉、开发、协作和未确定事项总览
+- [已确认设计决策](decisions/confirmed-decisions.md) — 只记录已经可以作为开发依据的正式决定
+- [设计图资产索引](../assets/design/README.md) — 首页、行程工作区、偏好面板、AI 数据流 SVG 概念图
+
+---
 
 ## 1. 核心设计书
 
@@ -14,6 +22,7 @@
 - [页面设计一览](ui/page-overview.md) — 页面分类和第一阶段核心页面
 - [首页设计](ui/home-page.md) — 首页入口、AI 浮层、视觉方向
 - [行程主页面详细设计](ui/trip-planner.md) — 地图、时间轴、右侧设置和多方案推荐
+- [UI Design System](ui/design-system.md) — 视觉原则、语义 Token、核心组件、地图浮层、响应式与可访问性基线
 
 ### 偏好系统
 
@@ -28,47 +37,71 @@
 - [两人开发分工与接手机制](planning/team-allocation.md) — A 70% / B 30%、Issue、分支、PR 与临时接手机制
 - [开发 WBS](planning/development-wbs.md) — Phase 0 / Web MVP 执行顺序、A/B 分工、DoD 与 Codex/GPT 通用执行提示
 
-### 决策记录
+---
 
-- [已确认设计决策](decisions/confirmed-decisions.md) — 只记录已经可以作为开发依据的正式决定
+## 2. 设计图
+
+GitHub 可直接预览：
+
+- [首页概念图](../assets/design/home-concept.svg)
+- [行程主工作区概念图](../assets/design/trip-planner-concept.svg)
+- [三级偏好面板概念图](../assets/design/preference-panel-concept.svg)
+- [AI → Trip State 数据流图](../assets/design/ai-trip-flow.svg)
+
+> 设计图负责表达布局和视觉关系；业务规则以对应 Markdown 为准。
 
 ---
 
-## 2. 目录结构
+## 3. 目录结构
 
 ```text
-docs/
-├─ README.md
-├─ product/
-│  ├─ product-overview.md
-│  └─ feature-list.md
-├─ ui/
-│  ├─ page-overview.md
-│  ├─ home-page.md
-│  └─ trip-planner.md
-├─ preferences/
-│  └─ preference-system.md
-├─ ai/
-│  └─ trip-generation-flow.md
-├─ architecture/        # 后续：技术架构、数据结构、API、状态管理
-├─ planning/
-│  ├─ team-allocation.md
-│  └─ development-wbs.md
-└─ decisions/
-   └─ confirmed-decisions.md
+TravelAssist/
+├─ assets/
+│  └─ design/
+│     ├─ README.md
+│     ├─ home-concept.svg
+│     ├─ trip-planner-concept.svg
+│     ├─ preference-panel-concept.svg
+│     └─ ai-trip-flow.svg
+└─ docs/
+   ├─ README.md
+   ├─ product/
+   │  ├─ product-overview.md
+   │  └─ feature-list.md
+   ├─ ui/
+   │  ├─ page-overview.md
+   │  ├─ home-page.md
+   │  ├─ trip-planner.md
+   │  └─ design-system.md
+   ├─ preferences/
+   │  └─ preference-system.md
+   ├─ ai/
+   │  └─ trip-generation-flow.md
+   ├─ architecture/
+   │  └─ README.md
+   ├─ planning/
+   │  ├─ team-allocation.md
+   │  └─ development-wbs.md
+   └─ decisions/
+      ├─ confirmed-decisions.md
+      └─ project-design-master.md
 ```
 
 ---
 
-## 3. 文档状态规则
+## 4. 文档状态规则
 
 ### 已冻结
 
 已经可以交给 Codex / 开发人员直接实现。
 
-### 候选 / 方向
+### 方向已定
 
-已经形成产品方向，但具体枚举、数值或 UI 细节尚未最终确认。
+产品或视觉方向已经形成，但具体技术、Token、枚举或数值尚未最终冻结。
+
+### 候选
+
+讨论过并保留，但不允许实现者将其默认升级为正式规则。
 
 ### 未确定事项
 
@@ -76,7 +109,7 @@ docs/
 
 ---
 
-## 4. 开发前阅读顺序
+## 5. 开发前阅读顺序
 
 每个开发任务建议按以下顺序读取：
 
@@ -85,44 +118,51 @@ README.md
   ↓
 CONTRIBUTING.md
   ↓
+docs/decisions/project-design-master.md
+  ↓
 docs/product/product-overview.md
   ↓
 对应专题设计文档
+  ↓
+相关 assets/design 设计图（UI 任务）
   ↓
 GitHub Issue
   ↓
 开始实现
 ```
 
-如果 Issue 与设计书冲突：
+如果 Issue、设计图与设计书冲突：
 
-1. 暂停实现冲突部分。
-2. 在 Issue 中指出冲突。
-3. 更新正式设计文档。
-4. 再继续开发。
+1. 以最新正式专题 Markdown / 已确认决策为最高产品依据。
+2. 暂停实现冲突部分。
+3. 在 Issue 中指出冲突。
+4. 更新设计文档 / 设计图。
+5. 再继续开发。
 
 ---
 
-## 5. 当前优先补充文档
+## 6. 当前优先补充文档
 
-下一阶段建议继续形成：
+下一阶段继续冻结技术规格：
 
 1. `architecture/system-overview.md` — Web / App / Backend / AI / Map 总体技术架构
 2. `architecture/trip-state.md` — Trip State 数据结构
 3. `architecture/preference-state.md` — Preference State 数据结构
 4. `architecture/api-design.md` — 核心 API 边界
-5. `ui/design-system.md` — 色彩、圆角、字体、间距、浮层和地图组件规范
 
-这些项目已经开始转化为 GitHub Issues，执行顺序见 `planning/development-wbs.md`。
+UI Design System 已建立 v0.1，最终颜色、字体、圆角、地图覆盖层等 Token 在 UI 实装验证后继续冻结。
+
+这些项目已经转化为 GitHub Issues，执行顺序见 `planning/development-wbs.md`。
 
 ---
 
-## 6. 文档维护规则
+## 7. 文档维护规则
 
-- 优先使用 Markdown。
+- 优先使用 Markdown；图形优先保存可版本管理的 SVG，最终视觉稿可追加 PNG / JPG / Figma 导出。
 - 一个主题尽量一个文件。
 - 已确定规则明确标注为“已冻结”。
 - 尚未决定的问题统一放在“未确定事项”。
 - 修改产品设计时同步更新 `docs/`，不只保留在聊天记录里。
+- 视觉方向变化时同步更新 `assets/design/`。
 - 影响实现的设计修改应同步更新对应 GitHub Issue。
 - Codex 不得自行补充未确认的产品业务规则。
