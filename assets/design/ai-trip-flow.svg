@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs><filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#2d3546" flood-opacity="0.14"/></filter></defs>
+  <rect width="1400" height="900" fill="#f1f3f7"/>
+  <text x="70" y="70" font-family="Arial" font-size="30" font-weight="700" fill="#30384b">AI → Trip / Preference State → 全视图同步</text>
+  <text x="70" y="105" font-family="Arial" font-size="16" fill="#777e8d">AI 是自然语言编排层，不是独立事实源</text>
+
+  <g filter="url(#s)" font-family="Arial">
+    <rect x="90" y="190" width="220" height="110" rx="26" fill="#ffffff"/><text x="138" y="230" font-size="16" fill="#7a8190">用户输入</text><text x="122" y="266" font-size="20" font-weight="700" fill="#3a4255">自然语言需求</text>
+    <rect x="390" y="190" width="220" height="110" rx="26" fill="#f1ecf6"/><text x="422" y="230" font-size="16" fill="#74667f">AI 解释层</text><text x="423" y="266" font-size="20" font-weight="700" fill="#524661">意图 / 条件提取</text>
+    <rect x="690" y="190" width="220" height="110" rx="26" fill="#edf0f8"/><text x="724" y="230" font-size="16" fill="#66718c">结构化 Patch</text><text x="720" y="266" font-size="20" font-weight="700" fill="#46516e">Trip + Preference</text>
+    <rect x="990" y="190" width="220" height="110" rx="26" fill="#faf0f1"/><text x="1016" y="230" font-size="16" fill="#83666d">规则检查</text><text x="1027" y="266" font-size="20" font-weight="700" fill="#6f5058">冲突 / 硬限制</text>
+  </g>
+  <g stroke="#939bab" stroke-width="4" fill="none"><path d="M310 245 H390"/><path d="M610 245 H690"/><path d="M910 245 H990"/></g>
+  <g fill="#939bab"><path d="M382 236 L398 245 L382 254Z"/><path d="M682 236 L698 245 L682 254Z"/><path d="M982 236 L998 245 L982 254Z"/></g>
+
+  <g filter="url(#s)" font-family="Arial">
+    <rect x="510" y="390" width="380" height="120" rx="32" fill="#58658b"/>
+    <text x="626" y="432" font-size="17" fill="#e5e8f2">唯一业务事实源</text>
+    <text x="607" y="474" font-size="28" font-weight="700" fill="#ffffff">Trip / Preference State</text>
+  </g>
+  <path d="M1100 300 C1100 360 940 390 850 415" fill="none" stroke="#939bab" stroke-width="4"/><path d="M858 404 L842 418 L863 421Z" fill="#939bab"/>
+
+  <g font-family="Arial" filter="url(#s)">
+    <rect x="90" y="650" width="220" height="100" rx="25" fill="#ffffff"/><text x="155" y="691" font-size="15" fill="#7a8190">地图</text><text x="128" y="725" font-size="20" font-weight="700" fill="#3b4457">路线 / 点位 / 区域</text>
+    <rect x="350" y="650" width="220" height="100" rx="25" fill="#ffffff"/><text x="407" y="691" font-size="15" fill="#7a8190">时间轴</text><text x="397" y="725" font-size="20" font-weight="700" fill="#3b4457">连续行程节奏</text>
+    <rect x="610" y="650" width="220" height="100" rx="25" fill="#ffffff"/><text x="652" y="691" font-size="15" fill="#7a8190">推荐方案</text><text x="654" y="725" font-size="20" font-weight="700" fill="#3b4457">Plan 1 / 2 / 3</text>
+    <rect x="870" y="650" width="220" height="100" rx="25" fill="#ffffff"/><text x="934" y="691" font-size="15" fill="#7a8190">设置面板</text><text x="921" y="725" font-size="20" font-weight="700" fill="#3b4457">结构化可编辑</text>
+    <rect x="1130" y="650" width="190" height="100" rx="25" fill="#ffffff"/><text x="1195" y="691" font-size="15" fill="#7a8190">AI</text><text x="1174" y="725" font-size="20" font-weight="700" fill="#3b4457">解释变化</text>
+  </g>
+
+  <g stroke="#8e97a9" stroke-width="4" fill="none">
+    <path d="M700 510 V580 H200 V650"/><path d="M700 580 H460 V650"/><path d="M700 580 V650"/><path d="M700 580 H980 V650"/><path d="M700 580 H1225 V650"/>
+  </g>
+  <g fill="#8e97a9"><path d="M191 638 L200 654 L209 638Z"/><path d="M451 638 L460 654 L469 638Z"/><path d="M691 638 L700 654 L709 638Z"/><path d="M971 638 L980 654 L989 638Z"/><path d="M1216 638 L1225 654 L1234 638Z"/></g>
+
+  <path d="M1225 650 C1320 560 1300 410 1160 360" fill="none" stroke="#c77d8a" stroke-width="4" stroke-dasharray="9 7"/>
+  <text x="1150" y="450" font-family="Arial" font-size="15" fill="#8a5c66">用户继续自然语言修改</text>
+  <text x="70" y="845" font-family="Arial" font-size="15" fill="#737b8b">规则：不重复询问已知信息 · 不静默违反硬限制 · 不让聊天文本成为唯一事实源 · 修改后地图/时间轴/方案同步</text>
+</svg>
