@@ -258,13 +258,8 @@ AI 按钮的尺寸、位置和圆形结构不变。
 
 ```css
 font-family:
-  "Noto Serif SC",
-  "Noto Serif CJK SC",
-  "Songti SC",
-  "STSong",
-  "Yu Mincho",
-  "Hiragino Mincho ProN",
-  serif;
+  "Noto Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "Yu Mincho",
+  "Hiragino Mincho ProN", serif;
 ```
 
 不要仅为了这个 Task 引入大型字体包。
@@ -529,13 +524,16 @@ Closes #24
 # TASK-004.1-A Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Prerequisite
+
 - TASK-004-A merged into develop:
 - base commit:
 
 ## Tracking
+
 - Task: TASK-004.1-A
 - WBS: 1.4 / 1.13 / 1.16
 - Issue: #24
@@ -545,6 +543,7 @@ Completed / Partially Completed / Blocked
 - WBS updated:
 
 ## Framework Preservation
+
 - homepage layout changed: No
 - background composition changed: No
 - motion changed: No
@@ -552,6 +551,7 @@ Completed / Partially Completed / Blocked
 - AI position/size changed: No
 
 ## Palette
+
 - page / overlay:
 - primary text:
 - secondary text:
@@ -560,24 +560,28 @@ Completed / Partially Completed / Blocked
 - borders / shadows:
 
 ## Typography
+
 - headline font stack:
 - UI font stack:
 - headline weight:
 - readability:
 
 ## Preserved Behaviour
+
 - /start:
 - AI shell:
 - reduced motion:
 - WebM / MP4 / poster:
 
 ## Responsive Validation
+
 - 1600x900:
 - 1440x900:
 - 1024x768:
 - 390x844:
 
 ## Validation
+
 - lint:
 - typecheck:
 - format:
@@ -586,12 +590,15 @@ Completed / Partially Completed / Blocked
 - console errors:
 
 ## Dependencies Added
+
 - None / ...
 
 ## Problems Found
+
 - ...
 
 ## Ready For Review
+
 Yes / No
 ```
 

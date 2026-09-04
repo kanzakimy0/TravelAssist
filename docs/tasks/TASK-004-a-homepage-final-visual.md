@@ -2,13 +2,27 @@
 
 ## Metadata
 
-- Task ID: TASK-004-A
-- Owner: A
-- Status: Planned
-- GitHub Issue: #20
+- Task ID: `TASK-004-A`
+- Owner: `A`
+- Status: 待验收
+- WBS: `1.4 / 1.16`
+- GitHub Issue: `#20`
+- Branch: `feature/a-homepage-final-visual`
 - Depends On: Task 3 / Issue #15 merged into `develop`
-- Feature Branch: `feature/a-homepage-final-visual`
+- Commit: `bfa5081`
+- Pull Request: `#23`
 - Canonical Design: P01 主入口首页 V4｜沉浸式动态背景主设计方案
+
+---
+
+## Delivery Record
+
+- Review Date: `2026-09-05`
+- Automated Validation: `lint / typecheck / format:check / build` passed
+- Manual Validation: `/`, `/start`, CTA navigation, AI open/close, Escape and focus restore passed
+- Responsive Validation: `1600x900 / 1440x900 / 1024x768 / 390x844` passed
+- Media Validation: poster active; WebM/MP4 sources are conditionally enabled when authorized files exist
+- Current Review State: implementation complete, PR #23 awaiting review and merge
 
 ---
 
@@ -453,7 +467,7 @@ Hero 从旧版“半透明大卡片”进一步简化。
 不要使用：
 
 ```html
-<a href="#">
+<a href="#"></a>
 ```
 
 优先保持 Server Component 可用导航方式，例如 Next.js `Link`。
@@ -678,7 +692,7 @@ AI panel open/close state
 不要把 HomePage 整体加上：
 
 ```ts
-"use client"
+"use client";
 ```
 
 除非有无法避免且明确解释的原因。
@@ -690,7 +704,7 @@ AI panel open/close state
 必须支持：
 
 ```css
-@media (prefers-reduced-motion: reduce)
+@media (prefers-reduced-motion: reduce);
 ```
 
 对于 reduced motion 用户：
@@ -1106,13 +1120,16 @@ Task: TASK-004-A
 # Task 4 Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Prerequisite
+
 - Task 3 merged into develop:
 - base commit:
 
 ## Tracking
+
 - Task: TASK-004-A
 - Issue: #20
 - Branch:
@@ -1120,6 +1137,7 @@ Completed / Partially Completed / Blocked
 - Pushed:
 
 ## Homepage Final Visual
+
 - headline:
 - primary CTA:
 - secondary action:
@@ -1127,6 +1145,7 @@ Completed / Partially Completed / Blocked
 - AI entry:
 
 ## Background
+
 - implementation:
 - WebM:
 - MP4 fallback:
@@ -1136,11 +1155,13 @@ Completed / Partially Completed / Blocked
 - reduced motion behavior:
 
 ## Preserved From Task 3
+
 - `/start` route:
 - CTA navigation:
 - Start Flow:
 
 ## AI Shell
+
 - panel preserved:
 - keyboard:
 - Escape:
@@ -1148,23 +1169,27 @@ Completed / Partially Completed / Blocked
 - real AI calls added: No
 
 ## Responsive Validation
+
 - 1600x900:
 - 1440x900:
 - 1024x768:
 - 390x844:
 
 ## Accessibility
+
 - keyboard:
 - focus-visible:
 - reduced motion:
 - decorative background semantics:
 
 ## Performance
+
 - poster first render:
 - layout shift:
 - media loading:
 
 ## Validation
+
 - lint:
 - typecheck:
 - format check:
@@ -1173,24 +1198,30 @@ Completed / Partially Completed / Blocked
 - console errors:
 
 ## Dependencies Added
+
 - None / ...
 
 ## Media Assets Added
+
 - None / list with source/license
 
 ## Existing Content Preserved
+
 - Start Flow:
 - design system:
 - AI shell:
 - docs:
 
 ## Problems Found
+
 - ...
 
 ## Ready For Pull Request
+
 Yes / No
 
 ## Pull Request
+
 - URL / Not created
 ```
 
