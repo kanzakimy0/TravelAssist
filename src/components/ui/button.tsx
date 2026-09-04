@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { forwardRef } from "react";
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ComponentProps } from "react";
 
 import styles from "./button.module.css";
 
@@ -9,6 +10,21 @@ type ButtonSize = "small" | "medium" | "large";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+}
+
+export type ButtonLinkProps = ComponentProps<typeof Link> & {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+};
+
+function getButtonClassName(
+  variant: ButtonVariant,
+  size: ButtonSize,
+  className?: string,
+) {
+  return [styles.button, styles[variant], styles[size], className]
+    .filter(Boolean)
+    .join(" ");
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,10 +38,24 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) {
-    const classes = [styles.button, styles[variant], styles[size], className]
-      .filter(Boolean)
-      .join(" ");
-
-    return <button className={classes} ref={ref} type={type} {...props} />;
+    return (
+      <button
+        className={getButtonClassName(variant, size, className)}
+        ref={ref}
+        type={type}
+        {...props}
+      />
+    );
   },
 );
+
+export function ButtonLink({
+  className,
+  size = "medium",
+  variant = "primary",
+  ...props
+}: ButtonLinkProps) {
+  return (
+    <Link className={getButtonClassName(variant, size, className)} {...props} />
+  );
+}
