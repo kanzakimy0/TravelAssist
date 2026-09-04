@@ -1,12 +1,12 @@
 .panel {
   position: fixed;
   right: var(--space-8);
-  bottom: calc(var(--space-12) * 3);
-  z-index: 4;
+  bottom: 7.25rem;
+  z-index: 5;
   width: min(26rem, calc(100vw - var(--space-8) * 2));
   padding: var(--space-6);
   border-radius: var(--radius-lg);
-  background: var(--color-bg-overlay);
+  background: rgb(250 248 242 / 97%);
   box-shadow: var(--elevation-popover);
   animation: panel-enter var(--motion-normal) ease-out;
 }
@@ -40,43 +40,23 @@
   font-weight: 400;
 }
 
-.preview {
-  margin-top: var(--space-6);
-  padding: var(--space-4);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-md);
-  background: var(--color-bg-muted);
-}
-
-.preview p {
-  margin: var(--space-3) 0 0;
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.65;
-}
-
-.status {
-  display: inline-flex;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-pill);
-  background: var(--color-bg-elevated);
-  color: var(--color-text-primary);
-  font-size: 0.6875rem;
-  font-weight: 750;
-}
-
 .composer {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-3);
-  margin-top: var(--space-4);
+  margin-top: var(--space-6);
 }
 
-.label {
-  grid-column: 1 / -1;
-  color: var(--color-text-secondary);
-  font-size: 0.75rem;
-  font-weight: 700;
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .composer textarea {
@@ -85,14 +65,25 @@
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
-  background: var(--color-bg-elevated);
-  color: var(--color-text-secondary);
+  background: rgb(255 255 255 / 68%);
+  color: var(--color-text-primary);
   line-height: 1.5;
 }
 
 .composer textarea::placeholder {
   color: var(--color-text-secondary);
   opacity: 0.72;
+}
+
+.composer textarea:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.note {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.6875rem;
 }
 
 @keyframes panel-enter {
@@ -105,13 +96,14 @@
 @media (max-width: 40rem) {
   .panel {
     right: var(--space-3);
-    bottom: calc(var(--space-12) * 2);
+    bottom: calc(5.5rem + env(safe-area-inset-bottom));
     left: var(--space-3);
     width: auto;
     max-height: calc(100svh - var(--space-12) * 2.5);
     overflow-y: auto;
     padding: var(--space-4);
     border-radius: var(--radius-lg);
+    background: #faf8f2;
   }
 
   .composer {

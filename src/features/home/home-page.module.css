@@ -4,7 +4,7 @@
   min-height: 100svh;
   overflow: hidden;
   isolation: isolate;
-  background: var(--color-bg-canvas);
+  background: #d9d6cb;
 }
 
 .content {
@@ -16,7 +16,8 @@
   align-items: center;
   width: min(100%, 100rem);
   margin: 0 auto;
-  padding: calc(var(--space-12) * 3) var(--space-12) calc(var(--space-12) * 2);
+  padding: clamp(8rem, 15vh, 11rem) clamp(2rem, 6vw, 6rem)
+    clamp(7.5rem, 13vh, 10rem);
   pointer-events: none;
 }
 
@@ -34,7 +35,6 @@
 @media (max-width: 40rem) {
   .content {
     align-items: end;
-    padding: calc(var(--space-12) * 2.5) var(--space-4)
-      calc(var(--space-12) * 2.25);
+    padding: 7rem var(--space-5, 1.25rem) 7.75rem;
   }
 }
