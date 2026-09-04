@@ -238,7 +238,7 @@ src/db/
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
-| TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 待审查 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | PENDING | PENDING |
+| TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 已完成 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | `31982a3` | #32 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 

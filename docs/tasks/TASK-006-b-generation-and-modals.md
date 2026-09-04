@@ -4,13 +4,13 @@
 
 - Task ID: `TASK-006`
 - Owner: `B`
-- Status: 待验收
+- Status: 已完成
 - WBS: `3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14`
 - GitHub Issue: `#31`
 - Branch: `feature/b-generation-and-modals`
 - Depends On: `TASK-005`（已通过 PR #29 合入 `develop`）
-- Commit: `PENDING`
-- Pull Request: `PENDING`
+- Commit: `31982a3`
+- Pull Request: `#32`
 
 ## Source of Truth
 
@@ -33,6 +33,8 @@ GitHub Issue #31 是本任务唯一正式规格来源。本文件只记录交付
   - 返回、重新生成与刷新不会清除已有草稿状态
   - 没有发现 hydration 或 Next 开发问题提示
 - Storage: `localStorage` key `travelassist.trip-wizard.v1`，兼容 TASK-005 已有草稿
+- Merge: PR #32 已合入 `develop`，merge commit `5bf85a8`
+- Current Review State: accepted and merged into `develop` via PR #32
 
 ## Scope Boundary
 
