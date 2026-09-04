@@ -1,0 +1,146 @@
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(
+    138deg,
+    var(--color-scene-sky-start) 0%,
+    var(--color-scene-sky-middle) 55%,
+    var(--color-scene-sky-end) 100%
+  );
+}
+
+.glow {
+  position: absolute;
+  top: -18%;
+  left: 20%;
+  width: 62vw;
+  height: 62vw;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(
+    circle,
+    var(--color-scene-glow) 0%,
+    transparent 68%
+  );
+  filter: blur(1rem);
+  animation: glow-breathe 12s ease-in-out infinite alternate;
+}
+
+.sun {
+  position: absolute;
+  top: 10%;
+  right: 14%;
+  width: clamp(4.5rem, 8vw, 8rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-pill);
+  background: var(--color-scene-sun);
+  box-shadow: 0 0 5rem var(--color-scene-glow);
+  opacity: 0.7;
+  animation: sun-drift 14s ease-in-out infinite alternate;
+}
+
+.landscape,
+.route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.landscape {
+  animation: landscape-drift 18s ease-in-out infinite alternate;
+}
+
+.mountainFar {
+  fill: var(--color-scene-mountain-far);
+}
+
+.mountainNear {
+  fill: var(--color-scene-mountain-near);
+  opacity: 0.78;
+}
+
+.horizonLine {
+  fill: none;
+  stroke: var(--color-scene-route-muted);
+  stroke-width: 6;
+  opacity: 0.26;
+}
+
+.route {
+  fill: var(--color-scene-route);
+  opacity: 0.56;
+}
+
+.route path {
+  fill: none;
+  stroke: var(--color-scene-route);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 18 14;
+  animation: route-travel 18s linear infinite;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--color-scrim), transparent 55%),
+    linear-gradient(180deg, transparent 65%, var(--color-scrim));
+}
+
+@keyframes glow-breathe {
+  to {
+    transform: translate3d(4%, 3%, 0) scale(1.08);
+    opacity: 0.78;
+  }
+}
+
+@keyframes sun-drift {
+  to {
+    transform: translate3d(-0.75rem, 0.5rem, 0) scale(1.03);
+  }
+}
+
+@keyframes landscape-drift {
+  to {
+    transform: translate3d(-1%, 0.5%, 0) scale(1.02);
+  }
+}
+
+@keyframes route-travel {
+  to {
+    stroke-dashoffset: -128;
+  }
+}
+
+@media (max-width: 40rem) {
+  .glow {
+    top: 4%;
+    left: -26%;
+    width: 110vw;
+    height: 110vw;
+  }
+
+  .sun {
+    top: 15%;
+    right: 12%;
+  }
+
+  .landscape,
+  .route {
+    width: 178%;
+    max-width: none;
+    transform: translateX(-34%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .sun,
+  .landscape,
+  .route path {
+    animation: none;
+  }
+}

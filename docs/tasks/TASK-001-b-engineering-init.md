@@ -105,3 +105,20 @@ Next.js App Router、TypeScript、ESLint、npm scripts、基础响应式首页�
 ## Next Task
 
 Ready for TASK-002。
+
+## Develop Reconciliation
+
+- Merged `origin/develop` at `c76af49` into `feature/b-project-init`.
+- Resolved all 11 add/add conflicts in favor of the canonical `origin/develop` versions.
+- Kept A's engineering configuration, Tailwind/Prettier setup, design tokens, and homepage foundation.
+- Removed B's obsolete `next.config.ts` and unused `src/components/site-header.tsx`.
+- The final tree differs from `origin/develop` only by `.nvmrc` and this B Task record.
+
+### Post-merge Validation
+
+- `npm ci`: Passed; 0 vulnerabilities.
+- `npm run lint`: Passed.
+- `npm run typecheck`: Passed.
+- `npm run format:check`: Passed.
+- `npm run build`: Passed.
+- Known install notices: ESLint 9.39.5 is deprecated upstream, and npm did not run the unapproved optional `unrs-resolver` postinstall script. These dependencies come from the current `origin/develop`; no dependency versions were changed during reconciliation.

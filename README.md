@@ -49,3 +49,70 @@ fix/*                 # Bug 修复
 ## 当前状态
 
 项目处于产品设计冻结与工程初始化阶段，页面结构、偏好系统、AI 行程规划交互和两人协作方式已形成初步方案，后续将逐步转化为正式设计规格和 GitHub Issues。
+
+## Development
+
+### Requirements
+
+- Node.js 20.9 or newer
+- npm
+- Git
+
+### Install
+
+```bash
+npm install
+```
+
+### Run
+
+```bash
+npm run dev
+```
+
+The local site is available at [http://localhost:3000](http://localhost:3000).
+
+### Build
+
+```bash
+npm run build
+npm run start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+### Typecheck
+
+```bash
+npm run typecheck
+```
+
+### Format
+
+```bash
+npm run format
+npm run format:check
+```
+
+## Project Structure
+
+```text
+src/
+├── app/          # Next.js routes, layouts, and global styles
+├── components/   # Reusable UI, layout, and common components
+├── features/     # Domain-oriented product features
+├── lib/          # Shared utilities and integration infrastructure
+├── hooks/        # Reusable React hooks
+├── types/        # Shared TypeScript types and contracts
+├── data/         # Static and local data
+├── constants/    # Shared constants
+└── styles/       # Shared style assets
+```
+
+See [the development setup guide](docs/development/setup.md) and [the Web architecture guide](docs/architecture/web-architecture.md) for more detail.
+
+具体地图、AI、数据库、认证与状态管理技术选型将在后续任务中确定。

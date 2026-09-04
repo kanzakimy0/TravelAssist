@@ -1,16 +1,17 @@
 # Dependencies
-node_modules/
+/node_modules
 
 # Next.js build output
-.next/
-out/
-build/
+/.next
+/out
 
 # Test coverage
-coverage/
+/coverage
 
-# Local environment files
-.env*
+# Environment files (the documented template remains tracked)
+.env
+.env.local
+.env.*.local
 !.env.example
 
 # Logs
@@ -19,17 +20,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# Operating system and editor files
+# Editors and operating systems
 .DS_Store
 Thumbs.db
 *.swp
+.idea/
+.vscode/
 
-# Vercel
-.vercel/
-
-# Certificates
-*.pem
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

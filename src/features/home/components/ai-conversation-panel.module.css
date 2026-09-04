@@ -1,0 +1,126 @@
+.panel {
+  position: fixed;
+  right: var(--space-8);
+  bottom: calc(var(--space-12) * 3);
+  z-index: 4;
+  width: min(26rem, calc(100vw - var(--space-8) * 2));
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-overlay);
+  box-shadow: var(--elevation-popover);
+  animation: panel-enter var(--motion-normal) ease-out;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--color-accent-primary);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 1.375rem;
+  letter-spacing: -0.03em;
+}
+
+.closeButton {
+  width: 2.5rem;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.preview {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-muted);
+}
+
+.preview p {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.status {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  font-size: 0.6875rem;
+  font-weight: 750;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.label {
+  grid-column: 1 / -1;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.composer textarea {
+  min-width: 0;
+  resize: none;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.composer textarea::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.72;
+}
+
+@keyframes panel-enter {
+  from {
+    transform: translateY(var(--space-3)) scale(0.98);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 40rem) {
+  .panel {
+    right: var(--space-3);
+    bottom: calc(var(--space-12) * 2);
+    left: var(--space-3);
+    width: auto;
+    max-height: calc(100svh - var(--space-12) * 2.5);
+    overflow-y: auto;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+  }
+
+  .composer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}
