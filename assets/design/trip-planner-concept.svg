@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#26344b" flood-opacity="0.18"/></filter>
+    <linearGradient id="map" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef1f5"/><stop offset="1" stop-color="#e3e8f0"/></linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#map)"/>
+  <!-- map roads -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M20 230 C260 190 330 320 510 260 S780 140 980 220 S1260 340 1580 250" stroke="#ffffff" stroke-width="30" opacity="0.95"/>
+    <path d="M80 770 C250 650 330 600 560 630 S830 760 1060 630 S1320 530 1580 580" stroke="#ffffff" stroke-width="24"/>
+    <path d="M260 0 C300 180 380 320 330 480 S300 720 430 900" stroke="#ffffff" stroke-width="20"/>
+    <path d="M760 0 C700 180 690 330 780 460 S910 720 850 900" stroke="#ffffff" stroke-width="18"/>
+  </g>
+  <g stroke="#cbd3df" stroke-width="3" fill="none" opacity="0.8">
+    <path d="M20 230 C260 190 330 320 510 260 S780 140 980 220 S1260 340 1580 250"/>
+    <path d="M80 770 C250 650 330 600 560 630 S830 760 1060 630 S1320 530 1580 580"/>
+  </g>
+  <!-- lodging and meal zones -->
+  <ellipse cx="890" cy="510" rx="150" ry="95" fill="#d98895" opacity="0.18" stroke="#c36679" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="822" y="515" font-family="Arial" font-size="18" fill="#8b4c5b">推荐住宿区域</text>
+  <ellipse cx="470" cy="505" rx="105" ry="70" fill="#d5a662" opacity="0.22" stroke="#b98b4d" stroke-width="3" stroke-dasharray="9 7"/>
+  <text x="420" y="510" font-family="Arial" font-size="16" fill="#835f2f">午餐区域</text>
+  <ellipse cx="1080" cy="650" rx="110" ry="70" fill="#8b77ad" opacity="0.16" stroke="#765c9a" stroke-width="3" stroke-dasharray="9 7"/>
+  <text x="1028" y="655" font-family="Arial" font-size="16" fill="#604b80">晚餐区域</text>
+
+  <!-- active trip route -->
+  <path d="M180 605 C300 520 350 425 500 390 S700 300 825 350 S1020 430 1165 320" fill="none" stroke="#6676aa" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 1"/>
+  <path d="M500 390 C560 485 650 530 760 520" fill="none" stroke="#c87d88" stroke-width="7" stroke-linecap="round"/>
+  <path d="M760 520 C870 535 945 575 1065 650" fill="none" stroke="#8c76aa" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- pins -->
+  <g filter="url(#s)">
+    <circle cx="180" cy="605" r="29" fill="#ffffff"/><circle cx="180" cy="605" r="18" fill="#6676aa"/>
+    <circle cx="500" cy="390" r="34" fill="#ffffff"/><circle cx="500" cy="390" r="22" fill="#c87d88"/>
+    <circle cx="760" cy="520" r="34" fill="#ffffff"/><circle cx="760" cy="520" r="22" fill="#6676aa"/>
+    <circle cx="1165" cy="320" r="34" fill="#ffffff"/><circle cx="1165" cy="320" r="22" fill="#8c76aa"/>
+  </g>
+  <text x="145" y="655" font-family="Arial" font-size="15" fill="#3e4658">京都站</text>
+  <text x="455" y="352" font-family="Arial" font-size="16" font-weight="700" fill="#3e4658">清水寺</text>
+  <text x="710" y="480" font-family="Arial" font-size="16" font-weight="700" fill="#3e4658">祇园</text>
+  <text x="1105" y="280" font-family="Arial" font-size="16" font-weight="700" fill="#3e4658">伏见稻荷</text>
+
+  <!-- compact top status -->
+  <g filter="url(#s)"><rect x="42" y="34" width="820" height="72" rx="27" fill="#ffffff" fill-opacity="0.88"/></g>
+  <text x="78" y="78" font-family="Arial" font-size="23" font-weight="700" fill="#2f374a">京都 · 3天2晚</text>
+  <text x="260" y="78" font-family="Arial" font-size="16" fill="#697184">2 成人 · 平衡 · 少换乘</text>
+  <rect x="708" y="52" width="122" height="38" rx="19" fill="#eef0f6"/><text x="742" y="77" font-family="Arial" font-size="15" fill="#4f5870">详细设置</text>
+
+  <!-- right embedded panel -->
+  <g filter="url(#s)"><rect x="1196" y="36" width="364" height="704" rx="34" fill="#ffffff" fill-opacity="0.9"/></g>
+  <text x="1230" y="84" font-family="Arial" font-size="21" font-weight="700" fill="#2f374a">旅行设置</text>
+  <rect x="1226" y="108" width="302" height="104" rx="22" fill="#f4f5f9"/>
+  <text x="1250" y="141" font-family="Arial" font-size="14" fill="#767c8b">同行人</text><text x="1250" y="174" font-family="Arial" font-size="18" font-weight="700" fill="#3b4356">成人 2 · 小孩 0 · 婴儿 0</text>
+  <text x="1250" y="197" font-family="Arial" font-size="14" fill="#7b8190">节奏 平衡 · 少换乘</text>
+
+  <text x="1230" y="254" font-family="Arial" font-size="17" font-weight="700" fill="#333b4e">推荐方案</text>
+  <rect x="1226" y="274" width="302" height="202" rx="24" fill="#eceefa" stroke="#7e89b2" stroke-width="2"/>
+  <text x="1250" y="311" font-family="Arial" font-size="14" fill="#687292">推荐 1</text>
+  <text x="1250" y="343" font-family="Arial" font-size="21" font-weight="700" fill="#343d56">经典与轻松平衡</text>
+  <text x="1250" y="375" font-family="Arial" font-size="15" fill="#667087">D1 东山 · D2 岚山 · D3 伏见</text>
+  <text x="1250" y="401" font-family="Arial" font-size="15" fill="#667087">电车 + 步行 · 少换乘</text>
+  <text x="1250" y="436" font-family="Arial" font-size="14" fill="#535d73">推荐理由：路线连贯，步行量适中</text>
+  <rect x="1226" y="494" width="302" height="78" rx="22" fill="#f6f6f8"/><text x="1250" y="526" font-family="Arial" font-size="15" fill="#737887">推荐 2</text><text x="1250" y="552" font-family="Arial" font-size="18" font-weight="700" fill="#394154">更轻松 · 少步行</text>
+  <rect x="1226" y="588" width="302" height="78" rx="22" fill="#f6f6f8"/><text x="1250" y="620" font-family="Arial" font-size="15" fill="#737887">推荐 3</text><text x="1250" y="646" font-family="Arial" font-size="18" font-weight="700" fill="#394154">景点优先 · 内容丰富</text>
+
+  <!-- bottom timeline -->
+  <g filter="url(#s)"><rect x="42" y="758" width="1518" height="108" rx="30" fill="#ffffff" fill-opacity="0.93"/></g>
+  <line x1="100" y1="815" x2="1120" y2="815" stroke="#c8ced9" stroke-width="4"/>
+  <g font-family="Arial" fill="#434b5d">
+    <circle cx="125" cy="815" r="11" fill="#6676aa"/><text x="96" y="796" font-size="14">09:00</text><text x="84" y="846" font-size="15">清水寺</text>
+    <circle cx="330" cy="815" r="9" fill="#9d7caa"/><text x="290" y="796" font-size="14">10:30</text><text x="282" y="846" font-size="15">步行 15分</text>
+    <circle cx="535" cy="815" r="11" fill="#d1a05f"/><text x="505" y="796" font-size="14">12:00</text><text x="493" y="846" font-size="15">午餐区域</text>
+    <circle cx="750" cy="815" r="9" fill="#6676aa"/><text x="720" y="796" font-size="14">13:10</text><text x="700" y="846" font-size="15">电车 20分</text>
+    <circle cx="965" cy="815" r="11" fill="#c87d88"/><text x="935" y="796" font-size="14">14:00</text><text x="920" y="846" font-size="15">伏见稻荷</text>
+  </g>
+  <text x="1190" y="822" font-family="Arial" font-size="17" font-weight="700" fill="#4d566b">Day 1 / 3</text>
+  <rect x="1422" y="785" width="96" height="54" rx="27" fill="#d27f8e"/><text x="1452" y="818" font-family="Arial" font-size="17" font-weight="700" fill="#ffffff">AI</text>
+  <text x="42" y="891" font-family="Arial" font-size="14" fill="#777e8e">Concept only · map-first · 3:1 embedded panel · recommendation 1 expanded · timeline dock · 3-day mock for density testing</text>
+</svg>
