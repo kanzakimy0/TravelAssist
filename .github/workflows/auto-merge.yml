@@ -1,0 +1,52 @@
+name: Auto-merge pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+  pull_request_review:
+    types: [submitted, dismissed]
+  check_suite:
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+concurrency:
+  group: auto-merge-pull-requests
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    name: Merge eligible pull requests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge every eligible non-draft pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          gh pr list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --limit 100 \
+            --json number,isDraft \
+            --jq '.[] | select(.isDraft == false) | .number' |
+          while read -r pr_number; do
+            if [[ -z "$pr_number" ]]; then
+              continue
+            fi
+
+            if gh pr merge \
+              "$pr_number" \
+              --repo "$GITHUB_REPOSITORY" \
+              --merge; then
+              echo "Merged pull request #$pr_number."
+            else
+              echo "Pull request #$pr_number is not eligible yet; it will be retried on the next pull request, review, or check event."
+            fi
+          done
