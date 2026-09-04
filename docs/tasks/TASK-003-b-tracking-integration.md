@@ -9,8 +9,8 @@
 - GitHub Issue: #18
 - Branch: `feature/task-003-b-tracking-integration`
 - Depends On: TASK-002-B
-- Commit: PENDING
-- Pull Request: PENDING
+- Commit: `b591030bfa1d61f3e55274c73032f3f5f4ce3955`
+- Pull Request: #21
 
 ## Objective
 
@@ -18,8 +18,8 @@
 
 ## Preflight
 
-- Latest `origin/develop`: `9f87a0d45addb86370d20b25935128234d86129b`
-- Latest A task: 未发现已进入 `origin/develop` 的 A Task 文件；A 最近合并 PR #17，完成初始旅行需求流程和自动创建 PR workflow。
+- Latest integrated `origin/develop`: `cd03364282e727fdb335b8bb2e5f6660f4c0668f`（初始分支基线为 `9f87a0d45addb86370d20b25935128234d86129b`）。
+- Latest A task: 未发现已进入 `origin/develop` 的 A Task 文件；A 最近通过 PR #19 合入 WBS v0.4 责任边界，PR #17 完成初始旅行需求流程和自动创建 PR workflow。
 - Latest B task: `TASK-002-b-engineering-baseline.md`，状态 Completed。
 - WBS: 正式 `docs/project/WBS-TravelAssist.md` 已进入 `develop`；本 Task 不合并 `origin/docs/wbs-codex-sync`。
 - Issue / PR template: 已存在，但缺少统一 Task ID、WBS、Task File 等追踪字段。
@@ -65,7 +65,7 @@
 
 ### Task.md
 
-待验收；Issue、WBS 和分支已关联，Commit 与 PR 待创建。
+待验收；Issue、WBS、分支、主 Commit 和 PR #21 已关联。
 
 ### GitHub Issue
 
@@ -73,7 +73,7 @@ Issue #18 已创建并同步为 Open / Review。
 
 ### WBS
 
-正式 WBS 已记录 TASK-003-B，主 WBS 为 0.7，关联 0.3 和 0.5，状态为待审查。
+正式 WBS v0.4 已记录 TASK-003-B，主 WBS 为 0.7，关联 0.3 和 0.5，状态为待审查。
 
 ## Workflow Decision
 
@@ -83,6 +83,8 @@ Issue #18 已创建并同步为 Open / Review。
 
 - `npm install` 有一条非阻塞 allow-scripts 提示：`unrs-resolver@1.12.2` 的安装脚本尚未批准；未擅自修改依赖安全策略。
 - `develop` 中新合入的正式 WBS 原本不符合 Prettier；已沿用现有手工维护文档策略加入 `.prettierignore`，避免无关全文件重排。
+
+- PR #21 因执行期间 WBS v0.4 合入 `develop` 出现冲突；已以 v0.4 为准保留新责任边界，并重新叠加本 Task 的最小追踪记录。
 
 ## Result
 

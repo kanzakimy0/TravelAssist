@@ -1,10 +1,10 @@
 # TravelAssist 可记录 WBS（Master）
 
-> 版本：v0.3  
+> 版本：v0.4  
 > 更新日期：2026-09-04  
 > 适用阶段：Web 优先，移动 App 后续  
 > 开发方式：A 主开发约 70%，B 协作约 30%，ChatGPT / Codex 辅助开发  
-> **v0.3 分工原则：B 主责全部客户界面的画面设计与前端实现；A 主责主系统界面及其余全部核心/工程工作。**
+> **v0.4 分工原则：A 负责旅行主系统（网站入口、地图、路线/行程生成、主规划画面及对应开发）；B 负责用户通过头像进入的个人中心（账户、个人管理、偏好、同行人、保存/历史等界面及对应开发）。**
 
 ---
 
@@ -25,130 +25,193 @@
 
 ### 1.2 GitHub 记录原则
 
-1. 每个可开发工作项都分配唯一 WBS ID。
-2. 真正进入开发前，建立对应 `TASK-xxx-*.md`。
-3. **生成新 Task 前，先检查 GitHub 上已经备份的 A / B Task，确认依赖与编号不冲突。**
-4. Task 文件统一保存到 `docs/tasks/`。
-5. 每个开发 Task 原则上对应一个 GitHub Issue。
-6. 使用独立 feature 分支，不直接修改 `develop`。
-7. 完成后以 Pull Request 合并到 `develop`。
-8. PR 合并并验收通过后，WBS 才标记为 `已完成`。
-9. 所有重要设计变更同步到 `docs/design/` 或对应设计文档。
-10. Task、Result、WBS 都必须备份到 GitHub。
-11. 新 Task 分配负责人时，必须先应用本文件的 A/B 界面责任边界。
-12. 已经正式开始的 Task 原则上不中途换负责人；未开始 Task 按 v0.3 新规则重新分配。
+1. 每个正式工作项必须有唯一 WBS ID。
+2. 进入开发前建立对应 `TASK-xxx-*.md`，统一存放在 `docs/tasks/`。
+3. 生成新 Task 前，必须检查 GitHub 上最新 A/B Task、Issue、PR 和 `origin/develop`。
+4. 每个开发 Task 原则上对应一个 GitHub Issue 和一个独立 feature 分支。
+5. 不直接在 `develop` 上做功能开发。
+6. Task、Result、WBS 都必须备份到 GitHub。
+7. Codex 返回结果前必须更新本 WBS。
+8. 实现完成但 PR 未合并：`待审查`；PR 合并并验收通过：`已完成`。
+9. 新 Task 分配负责人时，必须先应用 v0.4 的“旅行主系统 / 个人中心”责任边界。
+10. 本次 v0.4 明确覆盖 v0.3 中“所有客户可见界面都归 B”的旧规则。
 
 ---
 
-## 2. A / B 长期责任边界（v0.3）
+# 2. A / B 长期责任边界（v0.4）
 
-### 2.1 B：客户界面 Owner
+## 2.1 A：旅行主系统 Owner
 
-B 主责所有直接面向旅行用户的画面设计与前端实现，包括：
+A 负责用户进入网站后，用来“规划旅行”的主系统画面与对应开发工程。
 
-- 首页 / Landing / 导航栏 / 客户侧 App Shell
-- 登录、注册、账户资料等客户侧画面
-- 行程规划主画面
-- 客户地图画面中的可视控件、Pin、区域、路线呈现
-- 底部时间轴及行程卡片
-- 右侧详细设置、偏好设置、同行人设置
-- 推荐方案展示与方案切换交互
-- AI 对话面板的客户侧 UI
-- 客户行程详情、历史、保存结果等画面
-- Loading / Empty / Error / Skeleton 等客户侧状态画面
-- 客户侧响应式、可访问性、视觉一致性
-- Web MVP 后的 Mobile 客户界面设计与实现
+### A 负责的画面
 
-B 默认不负责：
+- 网站首页 / Landing / 动画背景
+- 顶部主导航、主 App Shell
+- 「让我们开始吧」入口
+- 首页登录按钮 / 头像入口在主系统中的位置与触发
+- 目的地输入、日期输入、开始规划入口
+- 地图主画面
+- 景点 Pin、住宿区、餐饮区等地图可视化
+- 多日路线、步行/电车/公交等交通路线呈现
+- 行程生成 / 路线生成主画面
+- 底部时间轴
+- 推荐方案 1/2/3
+- 行程方案切换
+- 主规划画面中的快速调整与临时设置
+- AI 旅行助手主对话界面
+- AI 修改行程、重新规划、推荐理由等主系统交互
+- 主系统 Loading / Empty / Error / 响应式
 
-- 后端、数据库、Schema、API 服务
-- AI Prompt / Tool / Agent 核心逻辑
-- 地图 Provider、路线计算、POI 数据服务
-- Planner 核心状态模型和业务编排
-- CI/CD、工程规范、安全、监控、部署
-- 主系统 / 管理后台界面
+### A 负责的开发工程
 
-除非 Task 明确授权，B 不直接改上述核心模块。
+- Planner 状态模型 / Store / Day Plan Core
+- Trip Plan / Route / POI 等主系统核心 Schema
+- 地图 Provider、POI Provider、Route / Transit Provider
+- 路线计算、地点搜索、POI 详情、缓存和降级
+- 推荐排序与行程生成逻辑
+- AI Prompt / Tool / Action / Agent / 行程生成修改逻辑
+- 主系统对应 API、Service、Contract
+- 主系统单元测试、集成测试和 E2E
+- 全局工程架构、Node/npm/TypeScript、Lint、CI/CD
+- 全局日志、安全、性能、监控、部署、发布
 
-### 2.2 A：主系统 + 核心工程 Owner
+> 原则：**用户正在“规划旅行”的页面和功能，默认归 A。**
 
-A 主责除客户界面之外的全部工作，包括：
+---
 
-- 产品规则、MVP 范围和最终架构决策
-- 主系统 / 管理后台的画面设计与前端实现
-- Backend / DB / Authentication 核心
-- 数据 Schema、迁移、持久化
-- AI 能力、Prompt、Tool Calling、行程生成与修改逻辑
-- 地图 / POI / Route Provider 与数据服务
-- Planner 状态模型、业务编排、推荐算法
-- 工程初始化、版本、Lint、CI、测试框架
-- 安全、性能、日志、监控、部署、发布
-- Web 与 Mobile 的共享核心能力
-- B 客户 UI 所消费的数据接口 / Type / Contract
+## 2.2 B：用户个人中心 Owner
 
-### 2.3 A/B 交界规则
+B 负责用户点击头像后进入的“自己的界面”，以及个人资料、管理和长期偏好相关功能。
 
-一个客户功能如果同时包含 UI 与核心逻辑，应拆成两个 Task：
+### B 负责的画面
+
+- 头像菜单 / Personal Center 入口后的界面
+- 登录、注册、忘记密码等账户流程页面
+- 个人中心首页
+- 用户资料 / Profile
+- 账户设置 / 安全设置
+- 偏好管理中心
+- 旅行偏好大/中/小项目编辑
+- 同行人资料管理
+- 预算、住宿、餐饮、移动、活动等长期偏好设置
+- 用户保存的行程
+- 行程历史 / 草稿 / 收藏
+- 用户自己的行程管理界面
+- AI 会话历史（如果放在个人中心）
+- 个人数据管理 / 删除账户
+- 个人中心 Loading / Empty / Error / 响应式
+
+### B 负责的开发工程
+
+- User / Profile 模块
+- Authentication 用户流程实现
+- Preference Schema / Preset / 持久化
+- Companion 数据与 API
+- 用户账户 / 偏好 / 个人管理相关 API
+- 保存行程 / 历史 / 草稿 / 收藏的持久化与个人管理 API
+- Personal Center 状态管理
+- B 模块自己的单元测试、集成测试和 E2E
+
+> 原则：**用户点击头像后，为“管理自己”而使用的页面和功能，默认归 B。**
+
+---
+
+## 2.3 A/B 边界实例
+
+### 首页 + 登录
 
 ```text
-A Task：Schema / API / State / Service / Contract
-↓
-B Task：Customer UI / Interaction / Responsive / Visual QA
+A：主页、Header、登录按钮/头像入口的位置和视觉
+B：登录页、注册页、账户 Session 用户流程、个人中心
 ```
 
-例如“AI 修改行程”：
+### 偏好
 
 ```text
-A：AI Action + Planner State + API Contract
-B：AI 对话中的修改确认、结果展示、状态反馈 UI
+B：偏好 Schema + 持久化 + 个人中心偏好编辑 UI
+A：Planner 读取 B 提供的偏好 Contract，并用于行程生成/推荐
 ```
 
-例如“地图路线”：
+### 保存行程
 
 ```text
-A：路线 Provider + Route Schema + 计算/缓存
-B：路线在客户地图和时间轴中的视觉呈现
+A：生成 Trip Plan，并定义可保存的 Trip Contract
+B：保存/读取/历史/草稿/收藏，以及个人中心的行程管理 UI
+A：Planner 中的“保存”按钮调用 B 提供的保存 Contract
 ```
 
-### 2.4 建议代码责任边界
-
-最终目录以 WBS 2.6 架构冻结为准，建议方向：
+### 地图与路线
 
 ```text
-B Owner
-src/app/(customer)/
-src/features/customer-ui/
-src/components/customer/
+A：地图 UI + Provider + Route Schema + 路线生成 + 可视化 + 时间轴
+B：不负责地图/路线主系统，除非未来个人中心需要一个只读小地图组件
+```
 
+### AI
+
+```text
+A：主系统 AI 对话、Prompt、Action、修改行程和推荐理由
+B：个人中心中的 AI 历史/个人数据管理（如实现）
+```
+
+---
+
+## 2.4 跨模块工程规则
+
+1. 主系统和个人中心尽量分目录、分 Task、分 Branch。
+2. A/B 不同时修改同一高冲突文件。
+3. A 负责全局架构与共享基础设施。
+4. B 可以独立拥有个人中心模块内部的前端、API、Schema 和测试。
+5. A 主系统需要用户偏好/账户数据时，通过 B 模块公开 Contract 消费，不直接绕过模块边界。
+6. B 保存行程时，通过 A 定义的 Trip Plan Contract 消费主系统数据。
+7. 跨模块 Contract 变更必须在 Task 中明确双方影响。
+
+建议目录方向：
+
+```text
 A Owner
-src/app/(system)/
-src/features/system/
-src/server/
+src/app/(main)/
+src/features/planner/
+src/features/map/
+src/features/routing/
+src/features/ai/
 src/core/
-src/lib/ai/
 src/lib/maps/
 src/lib/routing/
+src/lib/ai/
+
+B Owner
+src/app/(account)/
+src/features/personal-center/
+src/features/profile/
+src/features/preferences/
+src/features/companions/
+src/features/trip-library/
+
+Shared / A architecture review
+src/shared/
+src/types/
+src/server/
 src/db/
 ```
 
-共享 Type / Contract 由 A 定义，B 消费；需要变更共享 Contract 时由 A 先修改或 Review。
-
 ---
 
-## 3. 项目级里程碑
+# 3. 项目级里程碑
 
 | Milestone | 名称 | 目标 | 负责人 | 状态 |
 |---|---|---|---|---|
-| M0 | 工程基础完成 | 两台电脑稳定开发、测试、提交 PR | A 主 / B 完成工作站初始化 | 进行中 |
-| M1 | 产品与画面设计冻结 v1 | 产品规则 + 客户界面 + 主系统界面边界明确 | A 核心 / B 客户画面 | 进行中 |
-| M2 | 客户 Web Shell 完成 | 首页、导航、登录入口、AI 入口可用 | B | 未开始 |
-| M3 | 行程规划 MVP | B 完成客户界面，A 完成 Planner/地图/推荐核心 | A+B | 未开始 |
-| M4 | AI 助手 MVP | A 完成 AI 核心，B 完成客户对话体验 | A+B | 未开始 |
-| M5 | 数据与账户完成 | 用户、行程、偏好、保存/读取完整 | A 核心 / B 客户画面 | 未开始 |
-| M6 | Web MVP 可发布 | 核心流程端到端可用 | A+B | 未开始 |
-| M7 | 主系统 MVP | 管理、配置、运营、监控基础可用 | A | 未开始 |
-| M8 | Web Beta | 测试、监控、SEO、性能、安全完善 | A 主 / B 客户 UI QA | 未开始 |
-| M9 | Mobile App | 复用核心能力开发移动客户界面 | A 核心 / B 客户画面 | 未开始 |
+| M0 | 工程基础完成 | A/B 均可稳定开发、测试、PR | A 主 / B 工作站初始化 | 进行中 |
+| M1 | 画面与模块边界冻结 v1 | 主系统与个人中心设计边界明确 | A+B | 进行中 |
+| M2 | 网站入口 / Main Shell | 首页、导航、入口、头像跳转可用 | A | 未开始 |
+| M3 | Planner / 地图 / 路线 MVP | 主规划系统可生成并展示行程 | A | 未开始 |
+| M4 | 个人中心 MVP | 账户、偏好、同行人、行程管理可用 | B | 未开始 |
+| M5 | AI 助手 MVP | AI 可生成并修改行程 | A | 未开始 |
+| M6 | A/B 数据联动完成 | 偏好输入 Planner、Trip 保存个人中心 | A+B | 未开始 |
+| M7 | Web MVP 可发布 | 端到端主流程通过 | A+B | 未开始 |
+| M8 | Web Beta | 测试、安全、性能、监控完善 | A 主 / B 模块 QA | 未开始 |
+| M9 | Mobile App | 延续相同 A/B 模块边界 | A+B | 未开始 |
 
 ---
 
@@ -165,69 +228,60 @@ src/db/
 | 0.5 | GitHub Issue / PR 模板 | A | P1 | 0.3 | 待审查 |
 | 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
 | 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 待审查 |
-| 0.8 | A/B 客户界面责任边界固化 | A | P0 | 0.4 | 进行中 |
-| 0.9 | UI/Core 接口交接规则 | A | P1 | 0.8 | 未开始 |
+| 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
+| 0.9 | 跨模块 Contract 交接规则 | A+B | P0 | 0.8 | 未开始 |
 
 ### 当前 Task 追踪记录
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-003-B | 0.7（关联 0.3、0.5） | B | 待审查 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | PENDING | PENDING |
+| TASK-003-B | 0.7（关联 0.3、0.5） | B | 待审查 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 
 > TASK-003-B 由用户明确分配给 B 执行；本记录不改变 0.3、0.5 的既有 Owner。
 
 ## 1. 产品、交互与画面设计
 
-### 1A. 产品规则与数据设计
+### 1A. 旅行主系统画面设计（A）
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
 | 1.1 | 产品定位与核心价值主张 | A | P0 | - | 进行中 |
 | 1.2 | 用户旅程 / 核心使用流程 | A | P0 | 1.1 | 进行中 |
-| 1.3 | 页面分类一览与客户/系统归属 | A | P0 | 1.2 | 进行中 |
-| 1.8 | 同行人数据模型 | A | P1 | 1.2 | 进行中 |
-| 1.9 | 偏好大/中/小项目完整表 | A | P0 | 1.2 | 进行中 |
-| 1.10 | 景点与活动标签系统 | A | P1 | 1.9 | 未开始 |
+| 1.3 | 页面分类与 A/B 模块归属 | A | P0 | 1.2 | 进行中 |
+| 1.4 | 网站首页设计冻结 v1 | A | P1 | 1.3 | 进行中 |
+| 1.5 | Planner 主画面冻结 v1 | A | P0 | 1.3 | 进行中 |
+| 1.6 | 底部时间轴设计冻结 | A | P0 | 1.5 | 进行中 |
+| 1.7 | Planner 右侧临时设置 / 快速调整设计 | A | P0 | 1.5 | 进行中 |
+| 1.10 | 景点与活动标签 / 主系统展示规则 | A | P1 | 1.5 | 未开始 |
+| 1.11 | 推荐方案 1/2/3 展示结构 | A | P1 | 1.5 | 未开始 |
+| 1.12 | 地图视觉 / Pin / 区域 / 路线规范 | A | P0 | 1.5 | 未开始 |
+| 1.13 | 主系统 Design Token / 色彩 / 字体 / 圆角 | A | P1 | 1.4,1.5 | 未开始 |
+| 1.14 | 主系统响应式布局规则 | A | P1 | 1.13 | 未开始 |
 | 1.15 | MVP 功能范围冻结 | A | P0 | 1.1-1.14 | 未开始 |
-| 1.16 | 客户界面 / 主系统界面边界冻结 | A | P0 | 1.3 | 进行中 |
-| 1.31 | 客户 UI 与核心接口 Contract 规范 | A | P0 | 1.16,2.6 | 未开始 |
+| 1.16 | 网站入口详细画面设计 | A | P1 | 1.4,1.13 | 未开始 |
+| 1.17 | 地图 + 时间轴 + 推荐右栏详细画面设计 | A | P0 | 1.5,1.6,1.11,1.12 | 未开始 |
+| 1.18 | 路线生成 / 重新规划 / 方案切换交互设计 | A | P0 | 1.17 | 未开始 |
+| 1.19 | AI 旅行助手主画面设计 | A | P1 | 1.5 | 未开始 |
+| 1.20 | 主系统 Loading / Empty / Error / Skeleton | A | P1 | 1.13 | 未开始 |
 
-### 1B. 客户界面画面设计（B 主责）
-
-| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
-|---|---|---|---|---|---|
-| 1.4 | 客户首页设计冻结 v1 | B | P1 | 1.3 | 进行中 |
-| 1.5 | 客户行程规划主画面冻结 v1 | B | P0 | 1.3 | 进行中 |
-| 1.6 | 客户底部时间轴设计冻结 | B | P0 | 1.5 | 进行中 |
-| 1.7 | 客户右侧设置面板三层结构设计 | B | P0 | 1.5,1.9 | 进行中 |
-| 1.11 | 客户推荐方案 1/2/3 展示结构 | B | P1 | 1.5 | 未开始 |
-| 1.12 | 客户地图视觉 / Pin / 区域标记规范 | B | P1 | 1.5 | 未开始 |
-| 1.13 | 客户界面 Design Token / 色彩 / 字体 / 圆角 | B | P1 | 1.4,1.5 | 未开始 |
-| 1.14 | 客户界面响应式布局规则 | B | P1 | 1.5,1.13 | 未开始 |
-| 1.17 | 客户界面 Screen Inventory | B | P0 | 1.16 | 未开始 |
-| 1.18 | 首页详细画面设计 | B | P1 | 1.4,1.13 | 未开始 |
-| 1.19 | 登录 / 注册 / 账户详细画面设计 | B | P1 | 1.17 | 未开始 |
-| 1.20 | Planner 地图 + 时间轴 + 右栏详细画面设计 | B | P0 | 1.5-1.7 | 未开始 |
-| 1.21 | 偏好 / 同行人 / 快速设置详细画面设计 | B | P0 | 1.7,1.9 | 未开始 |
-| 1.22 | AI 对话客户侧详细画面设计 | B | P1 | 1.17 | 未开始 |
-| 1.23 | 行程详情 / 历史 / 保存结果画面设计 | B | P1 | 1.17 | 未开始 |
-| 1.24 | Loading / Empty / Error / Skeleton 画面规范 | B | P1 | 1.13 | 未开始 |
-| 1.25 | 客户界面 Desktop / Tablet / Mobile 响应式稿 | B | P1 | 1.14,1.18-1.24 | 未开始 |
-| 1.32 | 客户界面设计评审与 Freeze v1 | A+B | P0 | 1.18-1.25 | 未开始 |
-
-### 1C. 主系统界面画面设计（A 主责）
+### 1B. 用户个人中心画面设计（B）
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 1.26 | 主系统 Information Architecture | A | P1 | 1.16 | 未开始 |
-| 1.27 | 主系统 Dashboard 画面设计 | A | P2 | 1.26 | 未开始 |
-| 1.28 | 用户 / 行程管理画面设计 | A | P2 | 1.26 | 未开始 |
-| 1.29 | AI / Provider / 配置管理画面设计 | A | P2 | 1.26 | 未开始 |
-| 1.30 | 监控 / 运营 / Feedback 画面设计 | A | P2 | 1.26 | 未开始 |
+| 1.21 | 个人中心 Information Architecture | B | P0 | 1.3 | 未开始 |
+| 1.22 | 头像菜单 / Personal Center Shell 设计 | B | P0 | 1.21 | 未开始 |
+| 1.23 | 登录 / 注册 / 找回密码画面设计 | B | P1 | 1.21 | 未开始 |
+| 1.24 | Profile / 账户设置画面设计 | B | P1 | 1.21 | 未开始 |
+| 1.25 | 偏好管理中心画面设计 | B | P0 | 1.21 | 未开始 |
+| 1.26 | 同行人管理画面设计 | B | P1 | 1.25 | 未开始 |
+| 1.27 | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B | P0 | 1.21 | 未开始 |
+| 1.28 | 账户安全 / 数据删除画面设计 | B | P1 | 1.24 | 未开始 |
+| 1.29 | 个人中心响应式 / 状态画面规范 | B | P1 | 1.22-1.28 | 未开始 |
+| 1.30 | 个人中心设计 Freeze v1 | A+B | P0 | 1.22-1.29 | 未开始 |
 
 ## 2. 工程初始化与基础架构
 
-> v0.3 起：除已开始的 B 工作站初始化外，工程类工作原则上由 A 负责。
+> 跨模块基础设施默认由 A 负责；B 已开始的工作站初始化继续由 B 完成。
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
@@ -236,160 +290,148 @@ src/db/
 | 2.3 | Node / npm / TypeScript 版本固定 | A | P0 | 2.1 | 未开始 |
 | 2.4 | ESLint / Prettier / EditorConfig | A | P1 | 2.1 | 未开始 |
 | 2.5 | 环境变量规范 | A | P0 | 2.1 | 未开始 |
-| 2.6 | 目录架构冻结 | A | P0 | 2.1 | 未开始 |
-| 2.7 | 客户界面 UI 组件库 / Design Token 实现 | B | P1 | 1.13,2.6 | 未开始 |
+| 2.6 | 目录架构 + A/B 模块边界冻结 | A | P0 | 2.1,0.8 | 未开始 |
+| 2.7 | Shared UI / Contract 基础 | A | P1 | 2.6 | 未开始 |
 | 2.8 | GitHub Actions CI | A | P1 | 2.3,2.4 | 未开始 |
 | 2.9 | 单元测试框架 | A | P1 | 2.1 | 未开始 |
 | 2.10 | E2E 测试框架 | A | P2 | 2.1 | 未开始 |
 | 2.11 | Error / Logging 基础 | A | P2 | 2.6 | 未开始 |
 | 2.12 | Feature Flag 基础 | A | P3 | 2.6 | 未开始 |
 
-## 3. 客户 Web Shell / 首页 / 导航（B 主责）
+## 3. 网站入口与主系统 Shell（A）
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 3.1 | 客户侧全局 Layout / Header | B | P1 | 1.13,2.7 | 未开始 |
-| 3.2 | 首页动画背景区域 | B | P1 | 1.18 | 未开始 |
-| 3.3 | 「让我们开始吧」主入口 UI | B | P0 | 3.1 | 未开始 |
-| 3.4 | 登录入口 / 认证客户 UI | B | P1 | 1.19,3.1 | 未开始 |
-| 3.5 | 右下 AI 悬浮按钮 | B | P1 | 3.1 | 未开始 |
-| 3.6 | AI 对话抽屉 / 浮层 UI | B | P1 | 1.22,3.5 | 未开始 |
-| 3.7 | 客户侧 Loading / Empty / Error 状态 | B | P1 | 1.24,3.1 | 未开始 |
-| 3.8 | 客户侧无障碍与键盘交互 | B | P2 | 3.1-3.7 | 未开始 |
-| 3.9 | 客户侧响应式实现 | B | P1 | 1.25,3.1-3.7 | 未开始 |
+| 3.1 | 全局 Main Layout / Header | A | P1 | 1.13,2.7 | 未开始 |
+| 3.2 | 首页动画背景区域 | A | P1 | 1.16 | 未开始 |
+| 3.3 | 「让我们开始吧」主入口 | A | P0 | 3.1 | 未开始 |
+| 3.4 | 登录按钮 / 头像入口在主系统中的实现 | A | P1 | 3.1,5.3 | 未开始 |
+| 3.5 | AI 悬浮入口 | A | P1 | 3.1 | 未开始 |
+| 3.6 | 目的地 / 日期 / 开始规划入口 | A | P0 | 3.1 | 未开始 |
+| 3.7 | 主系统 Loading / Empty / Error | A | P1 | 1.20,3.1 | 未开始 |
+| 3.8 | 主系统响应式 / 无障碍 | A | P2 | 3.1-3.7 | 未开始 |
 
-## 4. 行程规划核心
-
-### 4A. 客户 Planner 界面（B）
+## 4. Planner / 地图 / 路线生成（A 全责）
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 4.1 | Planner 页面整体 Grid | B | P0 | 1.20,3.1 | 未开始 |
-| 4.2 | 客户地图容器与基础控件 UI | B | P0 | 4.1,7.1 | 未开始 |
-| 4.3 | 景点 Pin 组件 | B | P1 | 4.2,1.12 | 未开始 |
-| 4.4 | 住宿区域覆盖层 UI | B | P1 | 4.2,1.12 | 未开始 |
-| 4.5 | 餐饮区域覆盖层 UI | B | P1 | 4.2,1.12 | 未开始 |
-| 4.6 | 多日路线视觉显示 | B | P0 | 4.2,7.8 | 未开始 |
-| 4.7 | 交通方式视觉显示 | B | P0 | 4.6 | 未开始 |
-| 4.8 | 底部时间轴基础 UI | B | P0 | 1.20,4.1 | 未开始 |
-| 4.9 | 时间轴景点卡片 | B | P1 | 4.8 | 未开始 |
-| 4.10 | 时间轴交通段 | B | P1 | 4.8 | 未开始 |
-| 4.11 | 时间轴餐饮段 | B | P1 | 4.8 | 未开始 |
-| 4.12 | 时间轴住宿段 | B | P1 | 4.8 | 未开始 |
-| 4.13 | 右侧推荐方案列表 UI | B | P0 | 1.11,4.1 | 未开始 |
-| 4.14 | 客户侧方案切换交互 | B | P0 | 4.13,4.6,4.8 | 未开始 |
-| 4.18 | Planner UI 接入 A 提供的 Contract | B | P0 | 4.17 | 未开始 |
-
-### 4B. Planner 核心（A）
-
-| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
-|---|---|---|---|---|---|
+| 4.1 | Planner 页面整体 Grid | A | P0 | 1.17,3.1 | 未开始 |
+| 4.2 | 地图容器与基础控件 | A | P0 | 4.1,7.1 | 未开始 |
+| 4.3 | 景点 Pin 组件 | A | P1 | 4.2,1.12 | 未开始 |
+| 4.4 | 住宿区域覆盖层 | A | P1 | 4.2,1.12 | 未开始 |
+| 4.5 | 餐饮区域覆盖层 | A | P1 | 4.2,1.12 | 未开始 |
+| 4.6 | 多日路线视觉显示 | A | P0 | 4.2,7.8 | 未开始 |
+| 4.7 | 交通方式视觉显示 | A | P0 | 4.6 | 未开始 |
+| 4.8 | 底部时间轴基础 | A | P0 | 1.17,4.1 | 未开始 |
+| 4.9 | 时间轴景点卡片 | A | P1 | 4.8 | 未开始 |
+| 4.10 | 时间轴交通段 | A | P1 | 4.8 | 未开始 |
+| 4.11 | 时间轴餐饮段 | A | P1 | 4.8 | 未开始 |
+| 4.12 | 时间轴住宿段 | A | P1 | 4.8 | 未开始 |
+| 4.13 | 推荐方案列表 | A | P0 | 1.11,4.1 | 未开始 |
+| 4.14 | 方案切换 / 重新规划交互 | A | P0 | 4.13,4.6,4.8 | 未开始 |
 | 4.15 | Planner 状态模型 / Store | A | P0 | 2.6,5.11 | 未开始 |
-| 4.16 | Planner 业务编排 / Day Plan Core | A | P0 | 4.15,7.x | 未开始 |
-| 4.17 | Planner UI Data / Action Contract | A | P0 | 4.15,4.16 | 未开始 |
+| 4.16 | Day Plan / Itinerary Core | A | P0 | 4.15,7.x | 未开始 |
+| 4.17 | Trip Plan / Planner Contract | A | P0 | 4.15,4.16 | 未开始 |
+| 4.18 | Planner 读取用户偏好 Contract | A | P0 | 4.15,5.14 | 未开始 |
+| 4.19 | Planner 调用保存行程 Contract | A | P1 | 4.17,5.19 | 未开始 |
 
-## 5. 偏好与详细设置系统
+## 5. 用户个人中心 / 管理 / 偏好（B 全责）
 
-### 5A. 客户偏好界面（B）
-
-| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
-|---|---|---|---|---|---|
-| 5.1 | 快速设置层 UI | B | P0 | 1.21,4.1 | 未开始 |
-| 5.2 | 中项目展开层 UI | B | P0 | 5.1 | 未开始 |
-| 5.3 | 小项目详细层 UI | B | P1 | 5.2 | 未开始 |
-| 5.4 | 同行人设置 UI | B | P0 | 1.8,1.21 | 未开始 |
-| 5.5 | 移动偏好 UI | B | P1 | 1.9,5.2 | 未开始 |
-| 5.6 | 景点与活动偏好 UI | B | P0 | 1.9,1.10 | 未开始 |
-| 5.7 | 拍照 / 体验倾向 UI | B | P2 | 1.10,5.6 | 未开始 |
-| 5.8 | 餐饮偏好 UI | B | P1 | 1.9 | 未开始 |
-| 5.9 | 住宿偏好 UI | B | P1 | 1.9 | 未开始 |
-| 5.10 | 预算偏好 UI | B | P1 | 1.9 | 未开始 |
-| 5.14 | 偏好 UI 接入数据 Contract | B | P0 | 5.13 | 未开始 |
-
-### 5B. 偏好核心（A）
+### 5A. Personal Center UI
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 5.11 | 偏好数据 Schema | A | P0 | 1.9 | 未开始 |
-| 5.12 | 默认值 / 快速 Preset / 规则 | A | P1 | 5.11 | 未开始 |
-| 5.13 | 偏好数据读取 / 写入 Contract | A | P0 | 5.11,8.4 | 未开始 |
+| 5.1 | Personal Center Shell / Navigation | B | P0 | 1.22,2.6 | 未开始 |
+| 5.2 | 头像菜单与个人中心跳转目标 | B | P0 | 5.1 | 未开始 |
+| 5.3 | 登录 / 注册 / Session 用户流程 | B | P0 | 1.23,8.3 | 未开始 |
+| 5.4 | Profile / 账户设置 UI | B | P1 | 1.24,5.1 | 未开始 |
+| 5.5 | 偏好管理中心 UI | B | P0 | 1.25,5.1 | 未开始 |
+| 5.6 | 同行人管理 UI | B | P1 | 1.26,5.5 | 未开始 |
+| 5.7 | 移动偏好 UI | B | P1 | 5.5 | 未开始 |
+| 5.8 | 景点 / 活动偏好 UI | B | P0 | 5.5 | 未开始 |
+| 5.9 | 餐饮 / 住宿 / 预算偏好 UI | B | P1 | 5.5 | 未开始 |
+| 5.10 | 保存行程 / 历史 / 草稿 / 收藏 UI | B | P0 | 1.27,5.1 | 未开始 |
+| 5.20 | 个人中心 Loading / Empty / Error / Responsive | B | P1 | 1.29,5.1 | 未开始 |
 
-## 6. AI 旅行助手
+### 5B. Personal Center Data / API
 
-### 6A. AI 核心（A）
+| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
+|---|---|---|---|---|---|
+| 5.11 | Preference Schema | B | P0 | 1.25,8.1 | 未开始 |
+| 5.12 | Companion Schema | B | P1 | 1.26,8.1 | 未开始 |
+| 5.13 | Preference Preset / 默认值 | B | P1 | 5.11 | 未开始 |
+| 5.14 | Planner 可读取的 Preference Contract | B | P0 | 5.11,5.16 | 未开始 |
+| 5.15 | Profile / Account API | B | P1 | 8.2,8.3 | 未开始 |
+| 5.16 | Preference 持久化 API | B | P0 | 5.11,8.1 | 未开始 |
+| 5.17 | Companion 持久化 API | B | P1 | 5.12,8.1 | 未开始 |
+| 5.18 | 保存行程 / 历史 / 草稿数据模型 | B | P0 | 4.17,8.1 | 未开始 |
+| 5.19 | Trip Save / Read / History Contract | B | P0 | 5.18 | 未开始 |
+| 5.21 | 用户数据删除 / 账户删除 | B | P1 | 5.15-5.19 | 未开始 |
+
+## 6. AI 旅行助手（A 全责，个人历史除外）
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
 | 6.1 | AI 能力边界定义 | A | P0 | 1.15 | 未开始 |
-| 6.2 | 对话消息数据模型 | A | P0 | 3.6 | 未开始 |
-| 6.3 | Prompt / System Instruction v1 | A | P0 | 6.1,5.11 | 未开始 |
+| 6.2 | 主系统 AI 对话消息模型 | A | P0 | 3.5 | 未开始 |
+| 6.3 | Prompt / System Instruction v1 | A | P0 | 6.1,5.14 | 未开始 |
 | 6.4 | AI API 接入层 | A | P0 | 2.5,6.3 | 未开始 |
-| 6.5 | AI 读取用户偏好 | A | P0 | 5.11,6.4 | 未开始 |
-| 6.6 | AI 修改偏好 Action | A | P0 | 6.5 | 未开始 |
+| 6.5 | AI 读取用户偏好 | A | P0 | 5.14,6.4 | 未开始 |
+| 6.6 | AI 修改 Planner / 临时条件 Action | A | P0 | 6.5,4.15 | 未开始 |
 | 6.7 | AI 生成初始行程 | A | P0 | 6.4,7.x | 未开始 |
 | 6.8 | AI 局部修改行程 | A | P0 | 6.7,4.15 | 未开始 |
-| 6.10 | AI 错误 / 降级逻辑 | A | P1 | 6.4 | 未开始 |
+| 6.9 | 推荐原因展示 | A | P1 | 6.7,1.19 | 未开始 |
+| 6.10 | AI Loading / Error / 降级 | A | P1 | 6.4 | 未开始 |
 | 6.11 | AI 成本 / Token 监控 | A | P2 | 6.4 | 未开始 |
 | 6.12 | AI 结果质量测试集 | A | P1 | 6.7 | 未开始 |
-| 6.14 | AI UI Action / Result Contract | A | P0 | 6.6-6.8 | 未开始 |
+| 6.13 | AI 主对话 UI / 修改确认 / 成功反馈 | A | P0 | 1.19,6.6 | 未开始 |
+| 6.14 | 个人中心 AI 历史（可选） | B | P3 | 6.2,5.1 | 未开始 |
 
-### 6B. AI 客户界面（B）
-
-| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
-|---|---|---|---|---|---|
-| 6.9 | AI 推荐原因展示 UI | B | P1 | 6.7,1.22 | 未开始 |
-| 6.13 | AI Loading / Error / 修改确认 / 成功反馈 UI | B | P1 | 1.22,6.14 | 未开始 |
-| 6.15 | AI 对话 UI 接入 Action Contract | B | P0 | 3.6,6.14 | 未开始 |
-
-## 7. 地图、地点、路线与推荐数据（A 主责）
+## 7. 地图、地点、路线与推荐（A 全责）
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
 | 7.1 | 地图 Provider 选型 | A | P0 | 1.12 | 未开始 |
 | 7.2 | Places / POI Provider 选型 | A | P0 | 1.10 | 未开始 |
-| 7.3 | Route / Transit Provider 选型 | A | P0 | 1.9 | 未开始 |
-| 7.4 | POI 标准数据 Schema | A | P0 | 7.2 | 未开始 |
-| 7.5 | 路线数据 Schema | A | P0 | 7.3 | 未开始 |
+| 7.3 | Route / Transit Provider 选型 | A | P0 | 4.7 | 未开始 |
+| 7.4 | POI 标准 Schema | A | P0 | 7.2 | 未开始 |
+| 7.5 | Route Schema | A | P0 | 7.3 | 未开始 |
 | 7.6 | 地点搜索 API | A | P0 | 7.2,7.4 | 未开始 |
 | 7.7 | POI 详情 API | A | P1 | 7.4 | 未开始 |
 | 7.8 | 路线计算 API | A | P0 | 7.3,7.5 | 未开始 |
-| 7.9 | 推荐打分 v1 | A | P0 | 5.11,7.4 | 未开始 |
+| 7.9 | 推荐打分 v1 | A | P0 | 5.14,7.4 | 未开始 |
 | 7.10 | 缓存策略 | A | P1 | 7.6-7.8 | 未开始 |
 | 7.11 | Provider 失败降级 | A | P1 | 7.6-7.8 | 未开始 |
-| 7.12 | 客户地图消费 Contract | A | P0 | 7.4-7.8 | 未开始 |
 
-## 8. 后端、账户与数据持久化（A 主责）
+## 8. 数据库与认证基础
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 8.1 | Backend / DB 方案选型 | A | P0 | 2.6 | 未开始 |
-| 8.2 | User Schema | A | P0 | 8.1 | 未开始 |
-| 8.3 | Authentication 核心 | A | P0 | 8.1 | 未开始 |
-| 8.4 | Preference 持久化 | A | P1 | 5.11,8.2 | 未开始 |
-| 8.5 | Trip Schema | A | P0 | 4.15,8.1 | 未开始 |
-| 8.6 | 行程保存 / 读取 API | A | P0 | 8.5 | 未开始 |
-| 8.7 | 行程版本 / 草稿 | A | P2 | 8.6 | 未开始 |
-| 8.8 | AI 会话保存 | A | P2 | 6.2,8.2 | 未开始 |
-| 8.9 | 数据删除 / 账户删除 | A | P1 | 8.3-8.8 | 未开始 |
-| 8.10 | DB Migration 规范 | A | P1 | 8.1 | 未开始 |
-| 8.11 | 客户账户 / 行程 UI 数据 Contract | A | P0 | 8.3,8.6 | 未开始 |
+| 8.1 | DB / ORM / Migration 总体方案 | A | P0 | 2.6 | 未开始 |
+| 8.2 | User / Profile Schema | B | P0 | 8.1 | 未开始 |
+| 8.3 | Authentication 核心 | B | P0 | 8.1 | 未开始 |
+| 8.4 | DB Migration 全局规范 | A | P1 | 8.1 | 未开始 |
+| 8.5 | 主系统 Trip Plan Schema | A | P0 | 4.17,8.1 | 未开始 |
+| 8.6 | B 个人中心数据 Migration | B | P1 | 5.11,5.12,5.18,8.4 | 未开始 |
+| 8.7 | AI 会话主系统存储策略 | A | P2 | 6.2,8.1 | 未开始 |
+| 8.8 | 个人 AI 历史关联 | B | P3 | 6.14,8.2,8.7 | 未开始 |
 
 ## 9. 质量、测试、安全与性能
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 9.1 | 单元测试基线 | A | P1 | 2.9 | 未开始 |
-| 9.2 | Planner 核心集成测试 | A | P1 | 4.15-4.17,5.11-5.13 | 未开始 |
+| 9.1 | 测试框架与全局基线 | A | P1 | 2.9,2.10 | 未开始 |
+| 9.2 | Planner / Map / Route 单元与集成测试 | A | P1 | 4.x,7.x | 未开始 |
 | 9.3 | AI 集成测试 | A | P1 | 6.x | 未开始 |
-| 9.4 | E2E 主流程自动化 | A | P1 | 3.x-8.x | 未开始 |
-| 9.5 | Web 性能预算 | A | P2 | 4.x | 未开始 |
-| 9.6 | API Rate Limit | A | P1 | 6.4,7.x | 未开始 |
-| 9.7 | Security Headers / CSP | A | P1 | 3.1 | 未开始 |
-| 9.8 | Secret 扫描 | A | P1 | 2.8 | 未开始 |
-| 9.9 | 错误监控 | A | P2 | 2.11 | 未开始 |
-| 9.10 | 客户界面跨浏览器 / 响应式 QA | B | P1 | 3.x-6.x | 未开始 |
-| 9.11 | 客户界面视觉回归检查 | B | P2 | 2.7,3.x-6.x | 未开始 |
-| 9.12 | 客户界面可访问性 QA | B | P2 | 3.8 | 未开始 |
+| 9.4 | 主系统 E2E | A | P1 | 3.x,4.x,6.x,7.x | 未开始 |
+| 9.5 | 个人中心单元 / 集成测试 | B | P1 | 5.x,8.2,8.3 | 未开始 |
+| 9.6 | 个人中心 E2E | B | P1 | 5.x | 未开始 |
+| 9.7 | 跨模块 E2E：偏好→Planner | A+B | P0 | 4.18,5.14 | 未开始 |
+| 9.8 | 跨模块 E2E：Planner→保存→个人中心 | A+B | P0 | 4.19,5.19 | 未开始 |
+| 9.9 | API Rate Limit / Security Headers / CSP | A | P1 | 6.4,7.x | 未开始 |
+| 9.10 | Secret 扫描 / 全局安全 | A | P1 | 2.8 | 未开始 |
+| 9.11 | 性能预算 / 错误监控 | A | P2 | 2.11 | 未开始 |
+| 9.12 | B 模块响应式 / 可访问性 QA | B | P2 | 5.20 | 未开始 |
 
 ## 10. 发布与运营准备（A 主责）
 
@@ -399,173 +441,146 @@ src/db/
 | 10.2 | 自动部署 | A | P1 | 2.8,10.1 | 未开始 |
 | 10.3 | Domain / HTTPS | A | P1 | 10.1 | 未开始 |
 | 10.4 | Analytics | A | P2 | 3.x | 未开始 |
-| 10.5 | SEO / Metadata 技术实现 | A | P2 | 3.x | 未开始 |
-| 10.6 | 隐私政策 / Terms | A | P1 | 8.x | 未开始 |
-| 10.7 | Beta Feedback 数据流程 | A | P2 | 10.1 | 未开始 |
-| 10.8 | MVP Release Checklist | A | P0 | 9.x,10.x | 未开始 |
+| 10.5 | SEO / Metadata | A | P2 | 3.x | 未开始 |
+| 10.6 | 隐私政策 / Terms | A | P1 | 5.21,8.x | 未开始 |
+| 10.7 | Beta Feedback 流程 | A | P2 | 10.1 | 未开始 |
+| 10.8 | MVP Release Checklist | A+B | P0 | 9.x,10.x | 未开始 |
 
 ## 11. Mobile App（Web MVP 后）
 
-| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
-|---|---|---|---|---|---|
-| 11.1 | Mobile 技术方案选型 | A | P2 | M6 | 未开始 |
-| 11.2 | API 与 Web 解耦检查 | A | P1 | 11.1 | 未开始 |
-| 11.3 | Mobile 客户界面 Design System | B | P2 | 1.13,11.1 | 未开始 |
-| 11.4 | Mobile 登录 / 账户客户 UI | B | P2 | 8.3,11.3 | 未开始 |
-| 11.5 | Mobile 行程查看 / 编辑 UI | B | P2 | 8.6,11.3 | 未开始 |
-| 11.6 | Mobile 地图 / 路线客户 UI | B | P2 | 7.x,11.3 | 未开始 |
-| 11.7 | Mobile AI 对话客户 UI | B | P2 | 6.x,11.3 | 未开始 |
-| 11.8 | Push Notification 核心 | A | P3 | 11.1 | 未开始 |
-| 11.9 | App Store / Play 发布 | A | P2 | 11.3-11.8 | 未开始 |
-| 11.10 | Mobile 核心集成 / Native 能力 / 数据层 | A | P1 | 11.1,11.2 | 未开始 |
-
-## 12. 主系统界面（A 全责）
+> Mobile 延续相同分工，不再按“前端/后端”切，而按“主旅行系统/个人中心”切。
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 |---|---|---|---|---|---|
-| 12.1 | 主系统 Shell / Navigation | A | P2 | 1.26,2.6 | 未开始 |
-| 12.2 | Dashboard | A | P2 | 12.1 | 未开始 |
-| 12.3 | 用户管理 | A | P2 | 8.2,12.1 | 未开始 |
-| 12.4 | 行程管理 / 调试查看 | A | P2 | 8.5,12.1 | 未开始 |
-| 12.5 | POI / 内容 / Provider 管理 | A | P2 | 7.x,12.1 | 未开始 |
-| 12.6 | AI Prompt / Model / Tool 配置管理 | A | P2 | 6.x,12.1 | 未开始 |
-| 12.7 | 监控 / 错误 / API 成本视图 | A | P2 | 6.11,9.9,12.1 | 未开始 |
-| 12.8 | Feedback / 运营管理 | A | P3 | 10.7,12.1 | 未开始 |
-| 12.9 | 主系统权限 / Role | A | P2 | 8.3,12.1 | 未开始 |
-| 12.10 | Audit Log / 管理操作记录 | A | P2 | 12.1 | 未开始 |
+| 11.1 | Mobile 技术方案选型 / Shared Core | A | P2 | M7 | 未开始 |
+| 11.2 | Mobile 主旅行入口 / 地图 / Planner | A | P1 | 11.1 | 未开始 |
+| 11.3 | Mobile Route / AI 主系统 | A | P1 | 11.1 | 未开始 |
+| 11.4 | Mobile 个人中心 Shell | B | P2 | 11.1 | 未开始 |
+| 11.5 | Mobile Profile / Account | B | P2 | 11.4 | 未开始 |
+| 11.6 | Mobile Preferences / Companions | B | P2 | 11.4 | 未开始 |
+| 11.7 | Mobile Saved Trips / History | B | P2 | 11.4 | 未开始 |
+| 11.8 | Push / Native / Release 基础 | A | P2 | 11.1 | 未开始 |
+| 11.9 | App Store / Play 发布 | A | P2 | 11.2-11.8 | 未开始 |
 
 ---
 
-# 5. 新 Task 自动分配规则
+# 5. 新 Task 自动分配规则（v0.4）
 
 生成任何新 Task 前按以下顺序判断：
 
-1. 先检查 GitHub 上最新 WBS、A/B Task、Issue、PR。
-2. 判断工作项是否直接属于客户可见界面。
-3. **客户可见画面设计 / 前端交互 → B。**
-4. **主系统界面 → A。**
-5. **Backend / AI / Data / State / Provider / Infra / CI / Test / Deploy → A。**
-6. 混合任务必须尽量拆成 `A-core` + `B-customer-ui` 两个 Task。
-7. A Task 优先先定义稳定 Contract，再让 B 接 UI。
-8. 不允许 A/B 同时修改同一高冲突核心文件，除非 Task 明确安排。
-9. 已开始 Task 不因 v0.3 强制换人；后续尚未开始工作按新规则执行。
+1. 读取 GitHub 最新 WBS、Task、Issue、PR、`develop`。
+2. 判断该工作属于“旅行主系统”还是“用户个人中心”。
+3. **网站入口 / Planner / 地图 / 路线 / 行程生成 / 推荐 / 主 AI → A。**
+4. **头像进入后的账户 / Profile / 管理 / 偏好 / 同行人 / 保存历史 → B。**
+5. 对应模块的前端、API、Schema、状态、测试原则上由同一 Owner 负责。
+6. 全局工程架构、CI/CD、安全、部署、共享基础设施默认 A。
+7. 跨 A/B 模块的功能必须通过明确 Contract 连接。
+8. 不允许因为“这是客户可见页面”就自动分给 B；必须看它属于主旅行系统还是个人中心。
+9. 已创建但尚未真正执行的 Task，按 v0.4 重新分配；正在执行的 Task如与新边界严重冲突，应在下一 Task 切换到正确 Owner，并避免中途造成代码冲突。
 
-### 推荐 Task 命名
+### Task 命名建议
 
 ```text
-TASK-xxx-a-<core-or-system-name>.md
-TASK-xxx-b-<customer-ui-name>.md
+TASK-xxx-a-main-<name>.md
+TASK-xxx-b-account-<name>.md
 
-feature/a-<core-or-system-name>
-feature/b-<customer-ui-name>
+feature/a-main-<name>
+feature/b-account-<name>
 ```
 
 ---
 
-# 6. Codex 返回结果时自动更新 WBS（强制规则）
-
-> 本规则适用于 A、B 两台工作站上的所有 Codex Task。Codex 不得只返回执行结果而不更新 WBS。
-
-## 6.1 核心流程
+# 6. Codex 返回结果时自动更新 WBS（强制）
 
 ```text
 读取 Task
 ↓
-检查 GitHub 上最新 A/B Task、Issue、PR、develop
+检查 GitHub 最新 A/B Task / Issue / PR / develop
 ↓
 读取 docs/project/WBS-TravelAssist.md
 ↓
-确认 WBS ID + Owner 是否符合 v0.3 责任边界
+确认 WBS ID 与 Owner 是否符合 v0.4
 ↓
-执行开发 / 测试 / 文档修改
+执行开发 / 测试
 ↓
-判断最终执行状态
+更新 WBS
 ↓
-更新 WBS 对应行
+更新 Result
 ↓
-更新 Task Result
+git add / commit / push
 ↓
-git add
-↓
-git commit
-↓
-git push
-↓
-最后才向用户输出 Codex Result
+最后返回 Codex Result
 ```
 
-**任务完成 = 工作完成 + 测试完成 + WBS 更新完成 + GitHub 推送完成。**
+### 状态映射
 
-## 6.2 状态映射
-
-- Task 正式启动：`进行中`
-- Codex 返回 `Blocked`：`阻塞`
+- 正式启动：`进行中`
+- Blocked：`阻塞`
 - 实现完成但 PR 未合并：`待审查`
-- PR 已合并 `develop` 且验收通过：`已完成`
+- PR 合并 `develop` 且验收通过：`已完成`
 
-不得因为 Codex 本地返回 `Completed` 就直接把 WBS 写成 `已完成`。
-
-## 6.3 Mandatory WBS Update
+### Mandatory WBS Update
 
 ```md
 ## Mandatory WBS Update
 
 Before returning the final Task Result:
 
-1. Read `docs/project/WBS-TravelAssist.md` from the latest repository state.
-2. Confirm this Task's WBS ID and owner against the A/B responsibility rules.
-3. Update the WBS based on the actual execution result.
-4. If blocked, set status to `阻塞` and record the reason.
-5. If implementation is complete but PR is not merged, set status to `待审查`.
-6. Only set status to `已完成` after merge to `develop` and acceptance passes.
-7. Record Issue, branch, commit and PR when available.
-8. Include the WBS update in the same Task commit whenever possible.
-9. Push the WBS update to GitHub.
-10. Include a `WBS Update` section in the final Codex result.
+1. Read the latest `docs/project/WBS-TravelAssist.md`.
+2. Confirm the Task owner using v0.4 responsibility rules:
+   - A = main travel system (entry, planner, map, routing, itinerary, AI).
+   - B = personal center (account, profile, management, preferences, companions, saved/history).
+3. Update status, Issue, branch, commit, PR and blockers.
+4. If implementation is complete but PR is not merged, set `待审查`.
+5. Only set `已完成` after merge to `develop` and acceptance passes.
+6. Commit and push the WBS update before returning the final result.
 
 Do not return a complete Task Result without WBS synchronization.
 ```
 
 ---
 
-# 7. 当前重新分配后的优先队列
-
-> 现有已启动任务保持原负责人；尚未开始任务按 v0.3 分工。
+# 7. v0.4 重新分配后的优先队列
 
 | 顺序 | WBS ID | 工作项 | 负责人 |
 |---:|---|---|---|
-| 1 | 2.1 | A 工程初始化 PR 合并 / 验收 | A |
-| 2 | 2.2 | B 工作站工程初始化 / 验证完成 | B |
-| 3 | 2.3 | Node / npm / TypeScript 版本固定 | A |
-| 4 | 2.4 | ESLint / Prettier / EditorConfig | A |
-| 5 | 2.6 | 目录架构 + A/B 代码责任边界冻结 | A |
-| 6 | 1.15 | MVP Scope v1 冻结 | A |
-| 7 | 1.16 | 客户 / 主系统界面边界冻结 | A |
-| 8 | 1.17 | 客户界面 Screen Inventory | B |
-| 9 | 1.13 | 客户 Design Token | B |
-| 10 | 1.18 | 首页详细画面设计 | B |
-| 11 | 1.20 | Planner 详细画面设计 | B |
-| 12 | 1.21 | 偏好设置详细画面设计 | B |
-| 13 | 1.22 | AI 对话详细画面设计 | B |
-| 14 | 1.31 | 客户 UI / 核心 Contract 规范 | A |
-| 15 | 2.7 | 客户 UI 组件库 | B |
-| 16 | 4.15 | Planner 核心状态模型 | A |
-| 17 | 3.1 | 客户 Web Shell | B |
+| 1 | 2.1 | A 工程初始化 PR / 验收 | A |
+| 2 | 2.2 | B 工作站初始化 / 验证完成 | B |
+| 3 | 2.6 | 目录架构 + A/B 模块边界冻结 | A |
+| 4 | 1.15 | MVP Scope v1 | A |
+| 5 | 1.16 | 网站入口详细设计 | A |
+| 6 | 1.17 | Planner / 地图 / 时间轴详细设计 | A |
+| 7 | 1.18 | 路线生成 / 方案切换交互设计 | A |
+| 8 | 1.21 | 个人中心 IA | B |
+| 9 | 1.22 | 头像 / Personal Center Shell 设计 | B |
+| 10 | 1.25 | 偏好管理中心设计 | B |
+| 11 | 1.27 | 保存行程 / 历史管理设计 | B |
+| 12 | 3.1 | Main Shell | A |
+| 13 | 4.15 | Planner State / Core | A |
+| 14 | 7.1-7.3 | Map / POI / Route Provider 选型 | A |
+| 15 | 5.1 | Personal Center Shell 实现 | B |
+| 16 | 5.11 | Preference Schema | B |
+| 17 | 5.14 | Preference Contract | B |
+| 18 | 4.18 | Planner 接入 Preference Contract | A |
 
-### 并行建议
-
-A 与 B 后续尽量形成双轨：
+### 并行开发模式
 
 ```text
-A：Core / Backend / AI / Data / System
-B：Customer Design / Customer Frontend
+A 主线：Website Entry → Planner → Map → Route → Itinerary → AI
+B 主线：Avatar → Personal Center → Account → Preferences → Saved Trips
 ```
 
-B 等待 A 的核心接口时，不去抢 A 的核心任务；优先继续客户画面设计、组件库、响应式和独立客户 UI。
+这样 A/B 可以长期并行，交叉点主要只有：
+
+```text
+B Preference Contract → A Planner
+A Trip Plan Contract → B Saved Trips
+B Auth/User Session → A Header/Avatar Entry
+```
 
 ---
 
-# 8. 单个 WBS 项目记录模板
+# 8. 单个 WBS / Task 记录模板
 
 ```md
 ## WBS Record
@@ -573,8 +588,8 @@ B 等待 A 的核心接口时，不去抢 A 的核心任务；优先继续客户
 - WBS ID:
 - Task ID:
 - Title:
-- Owner:
-- Reviewer:
+- Owner: A / B
+- Responsibility: Main Travel System / Personal Center / Shared Infra
 - Priority:
 - Status:
 - Dependency:
@@ -583,9 +598,6 @@ B 等待 A 的核心接口时，不去抢 A 的核心任务；优先继续客户
 - Pull Request:
 - Start Date:
 - Completed Date:
-
-### Responsibility Type
-- Customer UI / System UI / Core / Infra:
 
 ### Scope
 -
@@ -603,6 +615,7 @@ B 等待 A 的核心接口时，不去抢 A 的核心任务；优先继续客户
 - Commit:
 - Tests:
 - Problems:
+- WBS Updated: Yes / No
 - Next Task:
 ```
 
@@ -610,19 +623,15 @@ B 等待 A 的核心接口时，不去抢 A 的核心任务；优先继续客户
 
 # 9. 项目统一 Codex 工作原则
 
-1. 开始新 Task 前检查 GitHub 上已有 A/B Task。
-2. 检查 `origin/develop` 最新状态和前置依赖。
-3. 一个正式 Task 必须对应 WBS ID。
-4. 一个正式 Task 原则上对应一个 GitHub Issue。
-5. 使用独立 feature 分支，不直接修改 `develop`。
-6. Task 文件必须备份 GitHub。
-7. Codex Result / Result 文件必须备份 GitHub。
-8. Codex 返回结果之前必须更新 WBS。
-9. 实现完成但未 merge：WBS = `待审查`。
-10. 被依赖阻塞：WBS = `阻塞`。
-11. PR 合并并验收通过：WBS = `已完成`。
-12. WBS 修改应和该 Task 的最后一次提交一起 push。
-13. 下一项 Task 生成前，以 GitHub 上最新 WBS 为准。
-14. **B 默认只接客户界面设计/前端相关 Task。**
-15. **A 默认接主系统界面和所有 Core / Backend / AI / Data / Infra Task。**
-16. 混合需求优先拆成 A Core + B Customer UI，避免所有权模糊。
+1. 开始 Task 前检查最新 GitHub 状态。
+2. 一个正式 Task 必须对应 WBS ID。
+3. 原则上一个 Task 对应一个 Issue 和一个 feature 分支。
+4. 不直接在 `develop` 上开发功能。
+5. Task / Result / WBS 全部备份 GitHub。
+6. Codex 最终返回前强制更新 WBS。
+7. `待审查` 与 `已完成` 必须严格区分。
+8. **A 默认处理主旅行系统：入口、Planner、地图、路线、行程生成、推荐、AI。**
+9. **B 默认处理个人中心：账户、Profile、管理、偏好、同行人、保存/历史。**
+10. 开发工程同样按照上述模块划分，不再简单按“前端 B / 后端 A”分配。
+11. Shared Infra / CI / Deployment 默认 A。
+12. 跨模块只通过明确 Contract 交接，减少 A/B 同文件冲突。
