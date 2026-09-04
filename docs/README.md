@@ -26,6 +26,7 @@
 ### 开发规划
 
 - [两人开发分工与接手机制](planning/team-allocation.md) — A 70% / B 30%、Issue、分支、PR 与临时接手机制
+- [开发 WBS](planning/development-wbs.md) — Phase 0 / Web MVP 执行顺序、A/B 分工、DoD 与 Codex/GPT 通用执行提示
 
 ### 决策记录
 
@@ -51,7 +52,8 @@ docs/
 │  └─ trip-generation-flow.md
 ├─ architecture/        # 后续：技术架构、数据结构、API、状态管理
 ├─ planning/
-│  └─ team-allocation.md
+│  ├─ team-allocation.md
+│  └─ development-wbs.md
 └─ decisions/
    └─ confirmed-decisions.md
 ```
@@ -110,7 +112,8 @@ GitHub Issue
 3. `architecture/preference-state.md` — Preference State 数据结构
 4. `architecture/api-design.md` — 核心 API 边界
 5. `ui/design-system.md` — 色彩、圆角、字体、间距、浮层和地图组件规范
-6. `planning/development-wbs.md` — Phase 0 / MVP / Beta 的开发 WBS
+
+这些项目已经开始转化为 GitHub Issues，执行顺序见 `planning/development-wbs.md`。
 
 ---
 
