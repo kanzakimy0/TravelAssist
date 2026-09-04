@@ -4,13 +4,13 @@
 
 - Task ID: `TASK-005`
 - Owner: `B`
-- Status: 待验收
+- Status: 已完成
 - WBS: `3.6 / 3.8`
 - GitHub Issue: `#28`
 - Branch: `feature/b-trip-wizard-step1-3`
 - Depends On: None specified in Issue #28; based on `origin/develop` at `12d9fdd`
 - Commit: `70b08a8`
-- Pull Request: `PENDING`
+- Pull Request: `#29`
 
 ## Source of Truth
 
@@ -35,6 +35,7 @@ GitHub Issue #28 is the only normative product and interaction specification for
   - no browser console or hydration errors found
 - Storage: `localStorage` key `travelassist.trip-wizard.v1`
 - Scope Boundary: no AI generation, map planner, or external booking integration added
+- Current Review State: accepted and merged into `develop` via PR #29
 
 ## Ownership Note
 
