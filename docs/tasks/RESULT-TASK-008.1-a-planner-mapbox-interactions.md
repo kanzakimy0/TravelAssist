@@ -15,8 +15,8 @@ Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；WBS 为待审查
 - Issue: [#60](https://github.com/kanzakimy0/TravelAssist/issues/60)
 - Task File: `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`
 - Branch: `feature/a-planner-mapbox-interactions`
-- Commit: 待实现提交后补齐。
-- PR: 待创建 → develop；使用 Draft 保留审查，不自行合并。
+- Commit: 实现 `673ab6aa9a5a8aa58e8838f6200d5ca77981ea1e`；无冲突集成提交 `8682ed293d19115f173f81c995739f8199f1d33a`，同步 develop `fd5e4492f202c07567593199baadd25425190367`。最终追踪文档提交见 PR head；已验收的实现、tests、依赖在文档同步后未变化。
+- PR: [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) → develop；Open / Draft，保留审查，未合并。
 - WBS updated: Yes；4.2–4.5、4.8–4.9、4.11–4.13、7.1 的本 Task 子集待审查；4.6 / 4.14 / 4.15 完整能力仍进行中。
 
 ## Mapbox
@@ -84,12 +84,13 @@ Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；WBS 为待审查
 - npm ci: Passed；362 packages，0 vulnerabilities。
 - lint: Passed。
 - typecheck: Passed。
-- format: 本 Task 修改文件 Passed；全仓仅既有 `docs/ui/companion-management.md`、`docs/ui/planner-map-interaction-booking-mapbox.md` 失败，未改无关设计文档。
+- format: 本 Task 修改文件 Passed；同步最新 develop 后，全仓 7 份既有上游文档失败，均与 origin/develop 内容相同，未越界格式化：`docs/ai/trip-judgement-two-phase.md`、`docs/architecture/db-orm-migration-standards.md`、`docs/tasks/TASK-009-a-db-foundation.md`、`docs/ui/companion-management.md`、`docs/ui/personal-center-responsive-states.md`、`docs/ui/planner-map-interaction-booking-mapbox.md`、`docs/ui/trip-detail.md`。
 - tests: 50/50 Passed；`node --experimental-strip-types --test tests/task-007*.test.mjs tests/task-008*.test.mjs`。其中本 Task 20 项，既有向导 / Planner 30 项。
 - build: Passed；/planner 无 Token 仍静态预渲染成功。
 - diff-check: Passed。
 - console/hydration: 生产 Chromium 实际交互 error / warn 为空；早期发现并修复 SVG title 多文本片段导致的 hydration mismatch，复验无此问题。
 - 浏览器：单日 / 三日 / 全行程的六个 Tab、范围与城市聚焦、地图 ↔ 时间轴、景点两级详情及加入 / 替换 / 锁定 / 移出、酒店与餐厅区域 / 推荐 / 详情、加入预约、渠道选择、餐厅改时、全部预约完成、Mock 重新规划、方案切换、更多设置、Escape / 焦点恢复、七个指定视口已实测。
+- 最终构建复验：丸之内花庭酒店连续 3 晚只增加 1 项待预约；全行程东京为 3 晚，河口湖 / 箱根为 0 晚，右侧摘要同步；console / hydration 无新增错误。
 
 ## Scope Preserved
 
@@ -104,7 +105,7 @@ Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；WBS 为待审查
 ## Problems / Blockers
 
 - 无本 Task Mock 功能阻塞；live Mapbox 验收未执行，原因是本机没有 Token。已按 Task 的无 Token 路径验证，不硬编码凭证。
-- 两份全仓 Prettier 基线文档例外如上；npm 既有 ESLint 版本退役提示、unrs-resolver 安装脚本审批提示、Node 测试的 MODULE_TYPELESS_PACKAGE_JSON 警告未通过修改无关配置掩盖。
+- 七份全仓 Prettier 基线文档例外如上；npm 既有 ESLint 版本退役提示、unrs-resolver 安装脚本审批提示、Node 测试的 MODULE_TYPELESS_PACKAGE_JSON 警告未通过修改无关配置掩盖。
 - 本仓 feature push 会自动创建并合并 PR，非 Draft PR 也会自动合并。本次提交附 `[skip ci]`，PR 保持 Draft；本地质量验证照常执行，未修改工作流。远端 CI 跳过不能表述为 CI 已通过。
 - 历史 Blocked Result 来自 PR #59 未合并阶段；本结果替换该过期状态，前置合并已核实。
 - 验收环境为当前 Chromium 与 viewport 模拟；未声称其他浏览器 / 真实触屏 / live Provider 验收。localhost:3000 已重新启动当前 feature 代码预览，生产验收使用 localhost:3002。

@@ -3,7 +3,7 @@
 > Task ID：`TASK-008.1`  
 > Owner：`A`  
 > Responsibility：Main Travel System / Planner / Map  
-> Status：`待审查 / Implementation complete; PR pending`\
+> Status：`待审查 / Implementation complete; PR #69 Draft`\
 > GitHub Issue：`#60`  
 > Task File：`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`  
 > Design Source：`docs/ui/planner-map-interaction-booking-mapbox.md`  
@@ -1259,3 +1259,13 @@ Yes / No
 ```
 
 完成 TASK-008.1 后停止，不继续真实 Route / Transit / Provider API Task。
+
+## 执行追踪（2026-09-05）
+
+- Issue：[#60](https://github.com/kanzakimy0/TravelAssist/issues/60)；状态待审查，尚未合并。
+- Branch：`feature/a-planner-mapbox-interactions` → `develop`。
+- 实现 Commit：`673ab6aa9a5a8aa58e8838f6200d5ca77981ea1e`。
+- 最新 develop 集成基线：`fd5e4492f202c07567593199baadd25425190367`；无冲突同步提交：`8682ed293d19115f173f81c995739f8199f1d33a`。上游仅文档变化，已验收的实现文件未变化。
+- PR：[#69](https://github.com/kanzakimy0/TravelAssist/pull/69)，Draft 防止仓库自动合并；后续追踪文档提交以 PR head 为准。
+- Result：`docs/tasks/RESULT-TASK-008.1-a-planner-mapbox-interactions.md`；WBS 与 Issue / PR 同步为待审查。
+- 本 Task 的 Mock 验收已完成；live Mapbox 未验证（token unavailable）；全仓 7 份上游既有格式例外详见 Result。本任务没有提交真实 Token 或接入范围外服务。

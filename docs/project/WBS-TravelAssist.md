@@ -244,19 +244,20 @@ src/db/
 | WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
-| TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 待审查 | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | 待提交 | 待创建 → develop |
+| TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 待审查 | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) Draft → develop |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 
 ### TASK-008.1 执行记录（2026-09-05）
 
 - Owner：A；Issue #60；Status：待审查（实现与 Mock 验收完成，PR 尚未合并）。
-- Task：`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`；Branch：`feature/a-planner-mapbox-interactions`；Commit / PR：待提交创建后补齐。
+- Task：`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`；Branch：`feature/a-planner-mapbox-interactions`；实现 Commit：`673ab6aa9a5a8aa58e8838f6200d5ca77981ea1e`；PR：[#69](https://github.com/kanzakimy0/TravelAssist/pull/69)，Open / Draft 防止自动合并，代码可供审查；追踪文档提交以 PR head 为准。
 - PR #59 合并提交 `1a4201b3181460977c4f16b0c34f60c353751687` 已是 origin/develop 祖先；从 clean 基线 `8159c177b732606c4d1bd7433241677c5fdd8a27` 创建分支。历史 Blocked 条件已解除。
+- 交付前无冲突同步最新 develop `fd5e4492f202c07567593199baadd25425190367`，集成提交 `8682ed293d19115f173f81c995739f8199f1d33a`；保留其他 Owner 的最新文档状态，未启动后续 Task。
 - 范围：4.2–4.6、4.8–4.9、4.11–4.15 的 Mapbox / Mock 交互子集，7.1 冻结 Mapbox；真实 POI / Route / Transit / Booking / AI / Auth / DB 不在范围，不误报完整业务能力完成。
 - 4.2–4.5、4.8–4.9、4.11–4.13 与 7.1 的本次 UI / Mapbox 子集待审查；4.6 / 4.14 / 4.15 完整业务继续进行中，真实路线、重新规划、最终跨模块 Store / Contract 未完成。TASK-008 原 UI shell 已完成的历史记录不变。
 - 3 个 GeoJSON Source / 13 个角色图层、单日 / 三日 / 城市全行程、两级地点 / 区域详情、统一 TripItem 预约与固定时段保护已实现。无 token fallback 全流程通过，live Mapbox 未验证（token unavailable）。
-- 50 项 tests、lint / typecheck / build、七个视口与键盘 / Escape / 焦点恢复通过；npm ci 无漏洞。全仓格式仅既有两份文档失败，本 Task 文件独立格式检查通过。最终证据见 `docs/tasks/RESULT-TASK-008.1-a-planner-mapbox-interactions.md`。
+- 50 项 tests、lint / typecheck / build、七个视口与键盘 / Escape / 焦点恢复通过；npm ci 无漏洞。全仓格式有 7 份上游既有文档失败，本 Task 文件独立格式检查通过。最终证据与例外清单见 `docs/tasks/RESULT-TASK-008.1-a-planner-mapbox-interactions.md`。提交附 `[skip ci]`，未将远端 CI 跳过表述为通过。
 
 ## 1. 产品、交互与画面设计
 
