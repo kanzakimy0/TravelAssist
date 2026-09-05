@@ -16,8 +16,8 @@ Completed — TASK-008 Mock UI shell 已实现并验证，待审查、未合并�
 - Issue: [#51](https://github.com/kanzakimy0/TravelAssist/issues/51)
 - Task File: `docs/tasks/TASK-008-a-trip-planner-shell.md`
 - Branch: `feature/a-trip-planner-shell-v2`
-- Commit: `e4648c031817816fb1cbd0dc44552a542d108c91`（实现）；本 Result / WBS 另行跟踪提交。
-- PR: 待创建 Draft PR → develop；未合并。
+- Commit: `e4648c031817816fb1cbd0dc44552a542d108c91`（实现）；`f9028d84e48266e5c626414d541331b7bfd5e009`（验收记录）；最终追踪提交以 PR head 为准。
+- PR: [#59](https://github.com/kanzakimy0/TravelAssist/pull/59)，Open / Draft → develop；未合并。
 - WBS updated: Yes；TASK-008 行与关联设计 / 实现项已记录真实范围。
 
 ## Route
@@ -73,7 +73,7 @@ Completed — TASK-008 Mock UI shell 已实现并验证，待审查、未合并�
 - npm ci: Passed，360 packages；未修改 lockfile 或安装策略。
 - lint: Passed。
 - typecheck: Passed。
-- format:check: 本 Task 修改文件全部 Passed。全仓最新基线仅 `docs/ui/companion-management.md` 失败；已单独对 origin/develop 内容运行 Prettier 证明原有问题，未修改 B 文档。本 Task 的原 Task File 格式交接已处理。
+- format:check: 本 Task 受检文件全部 Passed；WBS 按仓库既有 `.prettierignore` 保留表格风格，diff check 通过。全仓最新基线仅 `docs/ui/companion-management.md` 失败；已单独对 origin/develop 内容运行 Prettier 证明原有问题，未修改 B 文档。本 Task 的原 Task File 格式交接已处理。
 - build: Passed，`/planner` 静态预渲染；使用生产服务实际验收。
 - diff check: Passed。
 - console: 生产 Planner 实际交互检查 error / warn 日志为空。
