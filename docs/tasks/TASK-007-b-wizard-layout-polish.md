@@ -6,6 +6,8 @@
 - Owner: B 工作站（客户界面）
 - Status: 待审查（v1.0～v1.3 与指定背景已完成；未合并）
 - GitHub Issue: [#35](https://github.com/kanzakimy0/TravelAssist/issues/35)
+- Pull Request: [#61](https://github.com/kanzakimy0/TravelAssist/pull/61)（Open / Draft，未合并）
+- Background Commit: `25a08054ae85d05082961d80033618dc0aab45db`
 - Base Branch: `develop`
 - Base Commit: `6b0677e21c0f0089f1612a5f39f43ac8e2dde82f`
 - Latest Synced Base: `f9297e5`（合并提交 `c86f592`，保留本地 TASK-007 与最新个人中心成果；未合入 TASK-008 功能分支）
@@ -231,7 +233,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - [x] v1.3：全局小问号、默认关闭、悬停 / Focus / Escape / 触屏交互与主题浮层。
 - [x] lint / typecheck / build / 21 项 tests / 本任务文件格式通过；全仓格式基线例外见最新验收。
 - [x] 草稿恢复与相关二级弹窗回归验证完成。
-- [ ] 无无关配置更改，Task / WBS / Issue / PR 同步。
+- [x] 无无关配置更改，Task / WBS / Issue / PR 同步。
 
 ## Git 工作流
 
@@ -379,6 +381,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - 实际 UI 前进、返回、重新生成、刷新仍保留既有兴趣、地区、同行人和日期模式；浏览器 error / warn 日志为空，未观察到 hydration error。触屏真机与未实测尺寸不声明通过。
 - 3000 端口已从旧生产快照切换为 TASK-007 开发预览：`http://127.0.0.1:3000/start`。`/planner` 仍属于独立 TASK-008 分支，未进行跨任务整合。
 - 发布使用 `[skip ci]` 避免 feature push 自动合并流程；本地质量检查全部执行。PR 保留 Draft 防止另一个自动合并工作流触发，不改工作流配置、不直接写 develop。实现 Ready For Review: Yes，等待审查。
+- 已推送 `feature/b-wizard-layout-polish`，PR [#61](https://github.com/kanzakimy0/TravelAssist/pull/61) 关联 Issue #35；背景实现提交 `25a0805`，后续文档追踪提交以 PR head 为准。Issue 保持 open / 待审查，未宣称已合入 develop。
 
 ## Changed Files
 
