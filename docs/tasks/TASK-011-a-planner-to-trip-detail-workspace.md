@@ -11,7 +11,7 @@
 - Depends On:
   - `TASK-008.3-A / Issue #77` merged into `develop`
   - `TASK-010-A / Issue #78` merged into `develop`
-- Commit: `PENDING（完成提交后回填）`
+- Commit: `7629c8c0d8952420154ee4b9c42ebc11823ac131`
 - Pull Request: `PENDING（Draft，防止仓库自动合并工作流违反本 Task）`
 - Design Source: `docs/ui/trip-detail.md` v2.0
 - Supporting Design:
