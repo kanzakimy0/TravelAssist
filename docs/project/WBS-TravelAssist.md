@@ -246,7 +246,7 @@ src/db/
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 待审查（Partially Completed；参考图待确认，v0.3 新交互未纳入） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `7e8db2a`（实现），`45c3c3f` / `b35abce`（同步文档） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) Draft，未合并；五尺寸截图及 Result 已记录 |
-| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 阻塞（#77 的 PR #85 为 Draft 且未合并；#78 仍为 Planned、无实现 PR） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `PENDING`（前置未满足，未创建实现分支） | `PENDING` | `PENDING`（仅同步 Blocked 追踪记录） |
+| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 阻塞（#77 的 PR #85 为 Draft 且未合并；#78 仍为 Planned、无实现 PR） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | 实现 `PENDING`；追踪 `docs/a-task-011-blocked-tracking` | 实现 `PENDING`；`081f4c0`（阻塞追踪） | [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) Draft / docs-only；实现 PR `PENDING` |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 

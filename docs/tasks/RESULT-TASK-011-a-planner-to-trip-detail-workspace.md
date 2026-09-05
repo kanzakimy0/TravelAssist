@@ -28,7 +28,7 @@ Not created. `feature/a-planner-to-trip-detail-workspace` 必须等 #77 与 #78 
 ## Commit SHA
 
 - TASK-011 implementation commit: `PENDING`
-- Blocked tracking commit: recorded by the docs-only tracking PR
+- Blocked tracking commit: `081f4c06cd00b4196707515d753e1b627f3ec105`
 
 ## Changed Files
 
@@ -50,7 +50,7 @@ Not run — 硬性前置未满足，Task 明确要求在创建实现分支及修
 ## Pull Request
 
 - TASK-011 implementation PR: `PENDING`
-- Blocked tracking PR: recorded after creation; docs only, does not satisfy or replace TASK-011 implementation PR
+- Blocked tracking PR: [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) — Open / Draft / docs only; it does not satisfy or replace the TASK-011 implementation PR
 
 ## GitHub Issue
 
