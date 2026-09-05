@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { mockPersonalUser } from "../constants/personal-navigation";
@@ -32,8 +33,15 @@ export function PersonalSidebar() {
         </span>
       </Link>
       <PersonalPrimaryNav />
-      {/* Reserved crop for the approved Sidebar artwork; no generated/downloaded asset. */}
-      <div className={styles.sidebarArtworkArea} aria-hidden="true" />
+      <div className={styles.sidebarArtworkArea} aria-hidden="true">
+        <Image
+          src="/media/personal-center/sidebar-torii-watercolor.svg"
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 18vw, 100vw"
+          style={{ objectFit: "cover", objectPosition: "center 60%" }}
+        />
+      </div>
     </aside>
   );
 }
