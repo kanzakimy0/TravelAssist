@@ -48,6 +48,7 @@ Auth、Session、Avatar Popover、Logout、API、DB、Planner、Map、AI、Main 
 - Sidebar / TopActions / 背景 / 内容容器跨页面保持挂载，只替换页面内容。
 - Yuki 明确标记为 Mock 用户。通知、右上头像菜单、继续规划仅保留未开放视觉，不接入真实业务。
 - 首页提供下一次旅行、三张示例旅行卡片、旅行灵感 / 我的收藏 / 目的地探索。旅行照片只读复用现有 `public/media/home/home-hero-poster.webp`，全部为静态 Mock。
+- 首页主图与三个桌面首屏 Mock 封面显式使用 `loading="eager"`。这些封面复用同一素材；消除 Next 开发模式对复用图片的 LCP 懒加载提示。后续真实旅行列表应按可见区域恢复各自图片的加载策略。
 - 侧栏保留圆角、裁切和轻 CSS 背景插画区域；不下载或生成素材。
 - 桌面 Sidebar 宽度为 17.5%，内容独立滚动；窄屏采用基础换行布局，不定义最终移动导航。
 - 未修改 A 主系统、其他 Task、共享样式、package.json 或 package-lock.json；未新增依赖。
