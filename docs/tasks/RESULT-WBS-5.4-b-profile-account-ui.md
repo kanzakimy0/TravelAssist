@@ -175,7 +175,8 @@ git diff --check
 - Commit: `ef31dafbe61e1c006c752ec07f160d47d4639b2f`
 - Commit message: `feat(WBS-5.4-B): implement profile account UI`
 - Develop documentation integration: `21828aa269d3ece01f2d39ca0f013f8b4c5f1220`
-- Push: 待最终追踪提交后执行并回读；以 PR head 和最终回复为准。
+- Push: 成功，已推送到 `origin/feature/b-account-wbs-5-4-profile-account-ui`。
+- Upload readback: GitHub API 实际回读追踪提交 `a505acf567c3e481969f7a1d2436c48e5283c561` 的全部 36 个变更文件，blob ID 全部与本地一致（含 14 张截图）。后续只补记本核验结果。
 - PR: https://github.com/kanzakimy0/TravelAssist/pull/76
 - PR State: Draft / Open
 - Merge Commit: None（指 PR 合入 develop；上方集成提交仅为 develop → feature）
