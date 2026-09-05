@@ -16,7 +16,7 @@ import {
 const read = (path) => readFileSync(resolve(root, path), "utf8");
 
 function evaluate(path, env = {}, imports = {}) {
-  const module = { exports: {} };
+  const evaluatedModule = { exports: {} };
   const code = ts.transpileModule(read(path), {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
@@ -24,8 +24,8 @@ function evaluate(path, env = {}, imports = {}) {
     },
   }).outputText;
   runInNewContext(code, {
-    module,
-    exports: module.exports,
+    module: evaluatedModule,
+    exports: evaluatedModule.exports,
     process: { env },
     require: (id) => {
       if (id === "server-only") return {};
@@ -33,7 +33,7 @@ function evaluate(path, env = {}, imports = {}) {
       return imports[id];
     },
   });
-  return module.exports;
+  return evaluatedModule.exports;
 }
 
 test("DB import is inert, missing DATABASE_URL fails only on use", () => {
