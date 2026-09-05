@@ -239,7 +239,7 @@ src/db/
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
 | TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 已完成 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | `31982a3` | #32 |
-| TASK-007 | 3.6 / 3.8（Step 1–5 版式修正，含 v1.0～v1.3） | B | 部分完成（v1.2 / v1.3 已验证，指定背景原图待提供） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `a438b86`（仅本地） | 未创建，避免自动合入未完成版本 |
+| TASK-007 | 3.6 / 3.8（Step 1–5 版式修正，含 v1.0～v1.3） | B | 待审查（指定背景已接入，21 项测试与三种视口五步复验通过） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `a438b86`（布局）；原图接入提交见关联 PR | 待创建 Draft，禁止自动合并 |
 | WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
 | WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |

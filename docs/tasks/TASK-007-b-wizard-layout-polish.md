@@ -4,11 +4,11 @@
 
 - Repository: `kanzakimy0/TravelAssist`
 - Owner: B 工作站（客户界面）
-- Status: Partially Completed / Blocked（v1.2 / v1.3 补充已完成；TASK-007 指定背景原图待提供）
+- Status: 待审查（v1.0～v1.3 与指定背景已完成；未合并）
 - GitHub Issue: [#35](https://github.com/kanzakimy0/TravelAssist/issues/35)
 - Base Branch: `develop`
 - Base Commit: `6b0677e21c0f0089f1612a5f39f43ac8e2dde82f`
-- Latest Synced Base: `3449e8983f5fd3260cb5fd871f296d0022b575ae`（合并提交 `32eb1a2`，保留本地 TASK-007 与远程个人中心成果）
+- Latest Synced Base: `f9297e5`（合并提交 `c86f592`，保留本地 TASK-007 与最新个人中心成果；未合入 TASK-008 功能分支）
 - Feature Branch: `feature/b-wizard-layout-polish`
 - WBS: 3.6 / 3.8（Step 1–5 版式修正）
 - Depends On: TASK-005 / TASK-006
@@ -212,7 +212,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 ## 验收清单
 
 - [x] TASK-005、TASK-006 已合入后开始，初始工作树干净。
-- [ ] Step 1～5 使用指定统一背景《樱花海岸与富士山列车夕照》。
+- [x] Step 1～5 使用指定统一背景《樱花海岸与富士山列车夕照》。
 - [x] 五步主面板尺寸相同。
 - [x] 所有“你”改为“您”。
 - [x] 标题左留白至少两倍，标题/内容/操作同基线且左右对称。
@@ -229,7 +229,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - [x] v1.2：Step 2 两个同级标题完全一致、滑轨目标长度增加 50%。
 - [x] v1.2：八个地区象征图标、Anchor 标题层级、居中生成组合。
 - [x] v1.3：全局小问号、默认关闭、悬停 / Focus / Escape / 触屏交互与主题浮层。
-- [ ] lint / typecheck / format:check / build / 相关 tests 通过。
+- [x] lint / typecheck / build / 21 项 tests / 本任务文件格式通过；全仓格式基线例外见最新验收。
 - [x] 草稿恢复与相关二级弹窗回归验证完成。
 - [ ] 无无关配置更改，Task / WBS / Issue / PR 同步。
 
@@ -356,21 +356,39 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 
 桌面实测覆盖高度 720px 及以上；更低高度 / 非默认缩放 / 触屏实机不声明已完成渲染实测。指定背景的最终裁切验收仍待原图。
 
-## 未完成项与发布限制（当前）
+## 原阻塞记录（已由下方原图接入验收解除）
 
 1. **指定背景原图未取得**：用户提供的 ChatGPT 签名链接返回 403；浏览器也未能加载。已请求可读本地图片路径。旧海岸列车图只保留为现状，未称其为指定背景，未通过该验收项。
 2. **窄屏阻塞已解除**：已在实际 390×844 视口完成五步及控件验收。拿到指定原图后仍需复查其裁切及可识别性。
 3. **尚未 push / 创建 PR**：仓库 `feature/**` 推送会自动创建并尝试合并 PR，指定背景验收未完成时不触发该工作流。不改自动化配置、不直接写入 develop。
 
-本任务保持部分完成 / 阻塞状态，Issue #35 继续打开；拿到背景并完成剩余验收后，再推送指定分支并创建关联 Issue #35 的 PR。
+以上为原图到达前的历史状态，以下列最新验收为准。
+
+## 指定原图接入与最终验收（2026-09-05，最新）
+
+- 用户直接提供 PNG 原图，已确认包含樱花、海岸、富士山、列车与夕照；旧签名链接失效不再构成阻塞。
+- 原图逐字节复制到 `public/media/start/sakura-coast-fuji-train-sunset.png`，1672×941、2,707,795 bytes；来源与 SHA-256 记录于同目录 README。没有重绘、改色、重新生成或破坏性裁切。
+- 唯一渲染代码变化是共用 `.backdrop` 的背景 URL。五步均读取同一图片；保持现有 overlay、玻璃面板、背景定位、reduced-motion 和全部布局 / 业务行为。首页 poster 与个人中心资源不变。
+- 原图的完整构图保存在仓库中。横图按现有 `cover` 规则适配视口，竖屏只显示较窄局部；玻璃面板覆盖部分景物。不声称每个视口都能同时完整展示所有景物，也没有拉伸图片或为不同 Step 换图。
+- 从干净工作区恢复原 TASK-007 分支，安全同步最新 `origin/develop`（`f9297e5`）；TASK-005 / TASK-006 祖先关系仍满足。未把 TASK-007 混入 TASK-008 PR。
+- `npm run lint`、`npm run typecheck`、`npm run build`、21/21 tests、本任务文件 Prettier、`git diff --check` 通过。首次类型检查引用上一个分支的 Planner 生成类型；重启开发服务并重新构建后已刷新，不修改配置或业务代码绕过。
+- 全仓 `format:check` 仅失败于最新 develop 中已有的 4 份文档：`docs/tasks/TASK-008-a-trip-planner-shell.md`、`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`、`docs/ui/companion-management.md`、`docs/ui/planner-map-interaction-booking-mapbox.md`。分别从 origin/develop 原文复现，未修改无关任务文档。
+- 桌面 1440×900：逐一验证 Step 1～5，面板均为 1216×797.93；背景 URL 一致，无页面 / 内容区溢出。
+- 短桌面 1280×720：逐一验证 Step 1～5，面板均为 1216×630.72；全部内容在框内，无页面 / 内容区溢出。
+- 手机 390×844：逐一验证 Step 1～5，面板均为 377.20×737.93；无页面横向或额外纵向溢出，必要内容保留面板内部滚动，生成页无内部滚动。
+- 实际 UI 前进、返回、重新生成、刷新仍保留既有兴趣、地区、同行人和日期模式；浏览器 error / warn 日志为空，未观察到 hydration error。触屏真机与未实测尺寸不声明通过。
+- 3000 端口已从旧生产快照切换为 TASK-007 开发预览：`http://127.0.0.1:3000/start`。`/planner` 仍属于独立 TASK-008 分支，未进行跨任务整合。
+- 发布使用 `[skip ci]` 避免 feature push 自动合并流程；本地质量检查全部执行。PR 保留 Draft 防止另一个自动合并工作流触发，不改工作流配置、不直接写 develop。实现 Ready For Review: Yes，等待审查。
 
 ## Changed Files
 
-40 个文件（TASK-007 累计，含 v1.0～v1.3；不包含指定背景，原图仍待提供；不计同步合入的个人中心成果）：
+43 个文件（TASK-007 累计，含 v1.0～v1.3、指定原图、来源记录与背景回归测试；不计同步合入的个人中心成果）：
 
 - `docs/project/WBS-TravelAssist.md`
 - `docs/tasks/TASK-007-b-wizard-layout-polish.md`
 - `docs/ui/help-icons.md`
+- `public/media/start/sakura-coast-fuji-train-sunset.png`
+- `public/media/start/README.md`
 - `src/components/ui/info-popover.tsx`
 - `src/components/ui/info-popover.module.css`
 - `src/components/ui/info-popover-position.ts`
@@ -408,6 +426,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - `src/features/start-flow/themed-popover.module.css`
 - `tests/task-007-calendar.test.mjs`
 - `tests/task-007-info-popover.test.mjs`
+- `tests/task-007-background.test.mjs`
 
 ## Result Format
 
