@@ -57,6 +57,8 @@
 
 开发态 before / after 均有原有 Mapbox “container should be empty” warning，以及截图引起的 GPU ReadPixels 性能 warning；没有将这些 warning 抹去或声称全无日志。fallback 中 `net::ERR_FAILED` 是主动断网产生的预期资源错误，不是应用异常。
 
+本地生产构建另跑相同五视口和全部交互，[记录](production-checks.json)中无 Mapbox 容器 warning、console error、pageerror 或 hydration error；仅保留 GPU / preload warning。同步上游 v0.3 文档后应用代码与该生产验收版本相同。
+
 ## 视觉实现边界
 
 - 主要 POI 没有图片字段，按 Task 允许的路径使用本地单色地标圆形占位图标（64px / 白圈4px），不伪造远程照片。近邻图标由 Mapbox 避让，缩放或选中可提高优先级；全部地点仍可通过等价列表操作。
