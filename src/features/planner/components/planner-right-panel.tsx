@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, type Dispatch } from "react";
 import { Button } from "@/components/ui/button";
-import type { MockPlan, PlannerSettings } from "../model/planner-types";
+import type { MockPlan } from "../model/planner-types";
+import type { TripState, TripAction } from "../model/trip-model";
 import { TripQuickSettings } from "./trip-quick-settings";
 import { MoreTripSettingsPopover } from "./more-trip-settings-popover";
 import { PlanRecommendationList } from "./plan-recommendation-list";
@@ -10,8 +11,8 @@ import styles from "../planner.module.css";
 export function PlannerRightPanel({
   plans,
   plan,
-  settings,
-  onChange,
+  state,
+  dispatch,
   onPlan,
   moreOpen,
   onMore,
@@ -23,8 +24,8 @@ export function PlannerRightPanel({
 }: {
   plans: MockPlan[];
   plan: MockPlan;
-  settings: PlannerSettings;
-  onChange: (key: keyof PlannerSettings, value: string) => void;
+  state: TripState;
+  dispatch: Dispatch<TripAction>;
   onPlan: (plan: MockPlan) => void;
   moreOpen: boolean;
   onMore: (open: boolean) => void;
@@ -46,16 +47,7 @@ export function PlannerRightPanel({
           <span className={styles.eyebrow}>YOUR JOURNEY</span>
           <h2 id="settings-title">让旅程，更合您心意</h2>
         </div>
-        <TripQuickSettings
-          settings={settings}
-          onChange={onChange}
-          dayCount={plan.days.length}
-          nightCount={
-            plan.days.filter((day) =>
-              day.stops.some((stop) => stop.kind === "stay"),
-            ).length
-          }
-        />
+        <TripQuickSettings state={state} dispatch={dispatch} />
         <div className={styles.settingsActions}>
           <Button
             variant="secondary"
@@ -86,8 +78,8 @@ export function PlannerRightPanel({
         {moreOpen && (
           <MoreTripSettingsPopover
             trigger={moreTrigger}
-            settings={settings}
-            onChange={onChange}
+            state={state}
+            dispatch={dispatch}
             onClose={() => onMore(false)}
           />
         )}

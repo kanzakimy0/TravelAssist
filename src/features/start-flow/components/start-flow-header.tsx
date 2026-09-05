@@ -18,9 +18,13 @@ export function StartFlowHeader() {
             <option value="en-US">English</option>
           </select>
         </label>
-        <button aria-label="用户账户" className={styles.avatar} type="button">
+        <Link
+          aria-label="前往个人中心"
+          className={styles.avatar}
+          href="/personal-center"
+        >
           旅
-        </button>
+        </Link>
       </div>
     </header>
   );

@@ -1,8 +1,20 @@
-import { useEffect, useEffectEvent, useRef, useState } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  type Dispatch,
+} from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { mountMapbox, schematicLayout } from "../map/map-provider";
 import type { MapSession } from "../map/map-provider";
-import type { Coordinates, MapView } from "../model/trip-model";
+import type {
+  Coordinates,
+  MapView,
+  TripState,
+  TripAction,
+} from "../model/trip-model";
+import { MapQuickCard } from "./map-quick-card";
 import {
   isLandmark,
   landmarkKey,
@@ -16,11 +28,15 @@ export function PlannerMapShell({
   onSelect,
   terrain,
   travelHints,
+  state,
+  dispatch,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
   travelHints: Record<string, string>;
+  state: TripState;
+  dispatch: Dispatch<TripAction>;
 }) {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const container = useRef<HTMLDivElement>(null);
@@ -33,6 +49,22 @@ export function PlannerMapShell({
       : "未配置 Mapbox Token · 可操作示意地图",
   );
   const select = useEffectEvent(onSelect);
+  const dismiss = useEffectEvent(() =>
+    dispatch({ type: "ui", patch: { inspection: null } }),
+  );
+  const [anchor, setAnchor] = useState<{ x: number; y: number } | null>(null);
+  const [bounds, setBounds] = useState({ width: 1000, height: 600 });
+  useEffect(() => {
+    if (!container.current) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setBounds({
+        width: entry.contentRect.width,
+        height: entry.contentRect.height,
+      }),
+    );
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     let cancelled = false;
     if (!container.current || !token) return;
@@ -42,6 +74,8 @@ export function PlannerMapShell({
       (id, itemId) => select(id, itemId),
       setMapStatus,
       () => hints.current,
+      () => dismiss(),
+      setAnchor,
     )
       .then((mounted) => {
         if (cancelled) mounted?.destroy();
@@ -65,6 +99,20 @@ export function PlannerMapShell({
     session.current?.update(view);
   }, [view, travelHints]);
   const live = mapStatus.startsWith("Mapbox 底图");
+  const layout = schematicLayout(view, bounds.width, bounds.height);
+  const feature = view.places.find(
+    (p) =>
+      (p.tripItemId && p.tripItemId === view.selectedTripItemId) ||
+      p.id === state.ui.inspection?.id,
+  );
+  const position = feature
+    ? layout.positions.find((p) => p.id === feature.id)?.label
+    : undefined;
+  const fallbackAnchor =
+    position ??
+    (view.focus
+      ? layout.project(view.focus)
+      : [bounds.width / 2, bounds.height / 2]);
   return (
     <div
       className={styles.mapCanvas}
@@ -83,6 +131,9 @@ export function PlannerMapShell({
           onSelect={onSelect}
           terrain={terrain}
           travelHints={travelHints}
+          onDismiss={() =>
+            dispatch({ type: "ui", patch: { inspection: null } })
+          }
         />
       )}
       <div className={styles.mapInfo}>
@@ -124,6 +175,20 @@ export function PlannerMapShell({
           ))}
         </div>
       </details>
+      {state.ui.inspection && state.ui.inspection.level !== "detail" && (
+        <MapQuickCard
+          key={state.ui.inspection.id}
+          state={state}
+          dispatch={dispatch}
+          bounds={bounds}
+          anchor={
+            live && anchor
+              ? anchor
+              : { x: fallbackAnchor[0], y: fallbackAnchor[1] }
+          }
+          onClose={() => dispatch({ type: "ui", patch: { inspection: null } })}
+        />
+      )}
     </div>
   );
 }
@@ -132,11 +197,13 @@ function SchematicMap({
   onSelect,
   terrain,
   travelHints,
+  onDismiss,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
   travelHints: Record<string, string>;
+  onDismiss: () => void;
 }) {
   const svg = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ width: 1000, height: 600 });
@@ -159,6 +226,9 @@ function SchematicMap({
       className={styles.mapSvg}
       aria-label="行程示意地图，路线非真实道路"
       role="group"
+      onClick={(e) => {
+        if (!(e.target as Element).closest('[role="button"]')) onDismiss();
+      }}
     >
       <defs>
         <pattern

@@ -1,0 +1,346 @@
+.detailFields,
+.settingsSections,
+.preferenceEditor {
+  display: grid;
+  gap: 12px;
+}
+.detailFields {
+  margin-top: 12px;
+}
+.detailFields button,
+.preferenceEditor > button,
+.dayInput button {
+  border: 1px solid #e2d8cd;
+  border-radius: 12px;
+  background: #fcf8f1;
+  padding: 8px 12px;
+  color: #384955;
+  cursor: pointer;
+}
+.stepper {
+  display: grid;
+  grid-template-columns: 1fr 36px 28px 36px;
+  align-items: center;
+  gap: 8px;
+}
+.stepper output {
+  text-align: center;
+}
+.settingsSection {
+  border: 1px solid #e9dfd5;
+  border-radius: 16px;
+  padding: 12px;
+  background: #fffaf280;
+}
+.settingsSection h3 {
+  margin: 0;
+  font-size: 15px;
+}
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+.settingsSections input[type="range"] {
+  accent-color: #bd6758;
+  padding: 0;
+  width: 100%;
+}
+.dayInput {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+  margin-top: 12px;
+}
+.dayInput input {
+  width: 90px;
+  border: 1px solid #ddd2c8;
+  border-radius: 10px;
+  padding: 8px;
+}
+.bands {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+.timelineViewport {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.axis,
+.bandRow {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 12px;
+}
+.axisTrack {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #6c777b;
+}
+.bandMeta {
+  font-size: 10px;
+  line-height: 1.45;
+  color: #637077;
+}
+.bandMeta button {
+  background: none;
+  padding: 0;
+  border: 0;
+  color: #384955;
+  font-weight: 650;
+  cursor: pointer;
+}
+.bandMeta p {
+  margin: 0;
+}
+.track {
+  position: relative;
+  min-height: 80px;
+  border-bottom: 1px solid #d9cabe;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(25% - 1px),
+    #9a857215 calc(25% - 1px) 25%
+  );
+}
+.bands[data-compare="true"] {
+  gap: 3px;
+}
+.bands[data-compare="true"] .axis,
+.bands[data-compare="true"] > .bandHint {
+  line-height: 12px;
+}
+.bands[data-compare="true"] .axis,
+.bands[data-compare="true"] .bandRow {
+  grid-template-columns: 200px minmax(0, 1fr);
+}
+.bands[data-compare="true"] .bandMeta {
+  font-size: 9px;
+  line-height: 12px;
+  white-space: nowrap;
+}
+.bands[data-compare="true"] .track {
+  min-height: 28px;
+}
+.segment {
+  position: absolute;
+  top: 2px;
+  height: 62px;
+  min-width: 0;
+  padding: 4px 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid #d4c7ba;
+  border-radius: 9px;
+  background: #f5ede0;
+  color: #364950;
+  cursor: pointer;
+  text-align: left;
+}
+.segment strong,
+.segment small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.segment strong {
+  font-size: 12px;
+}
+.segment small {
+  font-size: 10px;
+}
+.segment[data-kind="restaurant"] {
+  background: #f1dfd4;
+}
+.segment[data-kind="hotel"] {
+  background: #e3e6df;
+}
+.segment[data-kind="movement"],
+.segment[data-kind="transport"] {
+  background: #dce4e5;
+}
+.segment[data-kind="movement"] {
+  top: 67px;
+  height: 8px;
+  padding: 0;
+  border-radius: 5px;
+}
+.segment[aria-pressed="true"] {
+  outline: 2px solid #b56151;
+  outline-offset: 1px;
+  z-index: 2;
+}
+.segment[data-risk="true"] {
+  border-style: dashed;
+  border-color: #b86652;
+}
+.bands[data-compare="true"] .segment {
+  height: 19px;
+  padding: 1px 2px;
+  border-radius: 6px;
+}
+.bands[data-compare="true"] .segment[data-kind="movement"] {
+  top: 23px;
+  height: 4px;
+}
+.bands[data-compare="true"] .segment small {
+  display: none;
+}
+.bands[data-compare="true"] .segment strong {
+  font-size: 10px;
+}
+.bandHint {
+  font-size: 10px;
+  color: #70736f;
+  margin: 0;
+}
+.bandHint button {
+  border: 0;
+  background: transparent;
+  color: #a35445;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.preferenceEditor [aria-label$="快速设置"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.preferenceEditor [aria-label$="快速设置"] button {
+  width: auto;
+  min-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 18px;
+}
+.morphCard {
+  position: absolute;
+  z-index: 18;
+  overflow: auto;
+  border: 1px solid #e2d4c7;
+  border-radius: 22px;
+  background: #fffbf2f5;
+  box-shadow: 0 12px 36px #53443829;
+  backdrop-filter: blur(16px);
+  color: #384955;
+  animation: cardMorph 420ms ease both;
+}
+.morphContent {
+  padding: 16px;
+  animation: cardContent 120ms 300ms ease both;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.morphContent header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: start;
+}
+.morphContent h3 {
+  margin: 3px 0;
+  font-size: 18px;
+}
+.morphContent p {
+  margin: 9px 0;
+}
+.morphContent button {
+  border: 1px solid #e1d5c9;
+  border-radius: 10px;
+  padding: 7px 10px;
+  background: #fffdf8;
+  color: #4c514e;
+  cursor: pointer;
+}
+.morphContent header button {
+  min-width: 32px;
+}
+.localJudgement {
+  padding: 9px;
+  border-radius: 12px;
+  background: #eee7db80;
+}
+.localJudgement h4 {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 500;
+  color: #746c64;
+}
+.localJudgement ul {
+  margin: 5px 0 0;
+  padding-left: 16px;
+}
+.areaCandidates {
+  display: grid;
+  gap: 7px;
+  margin: 12px 0;
+}
+.areaCandidates button {
+  display: grid;
+  gap: 3px;
+  text-align: left;
+}
+@keyframes cardMorph {
+  0%,
+  23% {
+    clip-path: circle(22px at var(--anchor-x) var(--anchor-y));
+    opacity: 0.7;
+  }
+  52% {
+    clip-path: circle(26px at var(--anchor-x) var(--anchor-y));
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(700px at var(--anchor-x) var(--anchor-y));
+  }
+}
+@keyframes cardContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .morphCard {
+    animation: cardContent 120ms ease both;
+  }
+  .morphContent {
+    animation: none;
+  }
+}
+@media (max-width: 767px) {
+  .timelineViewport .bands {
+    min-width: 680px;
+  }
+}
+@media (max-width: 767px) {
+  .axis,
+  .bandRow {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 7px;
+  }
+  .track {
+    min-height: 84px;
+  }
+  .segment strong {
+    font-size: 10px;
+  }
+  .bandMeta {
+    font-size: 9px;
+  }
+  .bands[data-compare="true"] .axis,
+  .bands[data-compare="true"] .bandRow {
+    grid-template-columns: 1fr;
+  }
+  .bands[data-compare="true"] .bandMeta {
+    white-space: normal;
+  }
+  .bands[data-compare="true"] .axis > small {
+    display: none;
+  }
+}

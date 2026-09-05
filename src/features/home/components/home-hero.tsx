@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 
 import { HeroStartButton } from "./hero-start-button";
@@ -23,6 +25,12 @@ export function HomeHero() {
         >
           登录
         </Button>
+        <Link className={styles.personalCenterLink} href="/personal-center">
+          <span aria-hidden="true" className={styles.personalCenterAvatar}>
+            旅
+          </span>
+          <span>个人中心</span>
+        </Link>
       </div>
       <span className={styles.srOnly} id="start-flow-note">
         进入旅行需求填写流程

@@ -108,14 +108,65 @@ export type TripState = {
   areas: PlannerArea[];
   ui: TripUi;
   settings: PlannerSettings;
+  configuration: TripConfiguration;
   notice: string;
 };
+export type PreferenceGroup =
+  | "sights"
+  | "food"
+  | "stay"
+  | "movement"
+  | "timing"
+  | "queues"
+  | "photography"
+  | "bookings"
+  | "weather"
+  | "luggage"
+  | "needs"
+  | "constraints";
+export type TripConfiguration = {
+  travelers: {
+    adultMale: number;
+    adultFemale: number;
+    child: number;
+    infant: number;
+  };
+  returnDate: string;
+  preferences: Partial<
+    Record<
+      PreferenceGroup,
+      { quick: string[]; details: Record<string, string> }
+    >
+  >;
+  budget: number;
+  pace: number;
+  alternatives: string[];
+};
 export type TripAction =
+  | {
+      type: "travelers";
+      key: keyof TripConfiguration["travelers"];
+      value: number;
+    }
+  | { type: "dates"; departure: string; returning: string }
+  | {
+      type: "preference";
+      group: PreferenceGroup;
+      quick?: string[];
+      detail?: { key: string; value: string };
+    }
+  | { type: "level"; key: "budget" | "pace"; value: number }
+  | { type: "alternative"; id: string }
   | { type: "range"; mode: RangeMode; start?: number; totalDays?: number }
   | { type: "plan"; id: string }
   | { type: "focusDay"; day: number }
   | { type: "select"; id: string }
-  | { type: "inspect"; id: string; level?: "quick" | "detail" | "area" }
+  | {
+      type: "inspect";
+      id: string;
+      level?: "quick" | "detail" | "area";
+      day?: number;
+    }
   | { type: "ui"; patch: Partial<TripUi> }
   | { type: "setting"; key: keyof PlannerSettings; value: string }
   | {
@@ -240,6 +291,18 @@ export function makeTripState(
     places,
     areas,
     settings: { ...settings },
+    configuration: {
+      travelers: { adultMale: 1, adultFemale: 1, child: 0, infant: 0 },
+      returnDate: isoDay(settings.startDate, plans[0].days.length),
+      preferences: {
+        sights: { quick: ["自然风光", "经典地标"], details: {} },
+        food: { quick: ["当地料理", "日料"], details: {} },
+        stay: { quick: ["舒适型", "靠近车站"], details: {} },
+      },
+      budget: 1,
+      pace: 2,
+      alternatives: [],
+    },
     notice: "本地示例 · 路线、价格、天气及预约均为 Mock",
     ui: {
       currentPlanId: plans[0].id,
@@ -317,7 +380,7 @@ export function presentationPlan(
           name: item.title,
           time: item.startTime,
           kind: kindFor(item.type),
-          duration: `${place.duration} 分 · ${reservationLabel(item)}`,
+          duration: `${minutes(item.endTime) - minutes(item.startTime)} 分 · ${reservationLabel(item)}`,
           fixed: item.fixedTime,
           next: item.next,
           x: (place.coordinates[0] - 138.4) * 500,
@@ -364,39 +427,315 @@ export function timeConflicts(plan: TripPlan, item: TripItem, time: string) {
     )
     .map((other) => other.title);
 }
+// An interval edit is atomic across plans. Never silently discard even an unlocked item.
+export function changeTripDates(
+  state: TripState,
+  departure: string,
+  returning: string,
+): TripState {
+  const valid = (s: string) =>
+    /^\d{4}-\d{2}-\d{2}$/.test(s) &&
+    Number.isFinite(Date.parse(s)) &&
+    new Date(s).toISOString().slice(0, 10) === s;
+  const fail = (notice: string) => ({ ...state, notice });
+  if (!valid(departure) || !valid(returning))
+    return fail("请输入有效的出发与返回日期。");
+  const count =
+    Math.round((Date.parse(returning) - Date.parse(departure)) / 86400000) + 1;
+  if (count < 1 || count > 60)
+    return fail("本地示例支持 1–60 天，返回日期不能早于出发日期。");
+  if (
+    departure !== state.settings.startDate &&
+    state.plans.some((p) =>
+      p.items.some(
+        (i) =>
+          i.fixedTime ||
+          i.locked ||
+          ["booked", "ticketed"].includes(i.reservationStatus),
+      ),
+    )
+  )
+    return fail("已有固定或已确认预约，改期需先核对；原日期与全部安排已保留。");
+  const outside = state.plans
+    .flatMap((p) => p.items)
+    .find((i) => i.endDay > count || (i.type === "hotel" && i.endDay >= count));
+  if (outside)
+    return fail(
+      `${outside.title} 的 Day / 酒店退房超出新日期范围；请先核对或调整安排，未删除任何数据。`,
+    );
+  const plans = state.plans.map((p) => ({
+    ...p,
+    days: Array.from({ length: count }, (_, index) => {
+      const day = index + 1,
+        existing = p.days[index],
+        last = p.days.at(-1)!;
+      return existing
+        ? { ...existing, date: isoDay(departure, day) }
+        : {
+            ...last,
+            day,
+            date: isoDay(departure, day),
+            title: "自由安排（未生成路线）",
+            movement: [],
+            weather: ["天气未查询"],
+          };
+    }),
+    items: p.items.map((i) => ({ ...i, date: isoDay(departure, i.day) })),
+  }));
+  return {
+    ...state,
+    plans,
+    settings: { ...state.settings, startDate: departure },
+    configuration: { ...state.configuration, returnDate: returning },
+    ui: {
+      ...state.ui,
+      selectedDay: Math.min(count, state.ui.selectedDay),
+      focusedDay: Math.min(count, state.ui.focusedDay),
+      threeDayStart: Math.min(Math.max(1, count - 2), state.ui.threeDayStart),
+      rangeMode:
+        count < 3 && state.ui.rangeMode === "threeDays"
+          ? "day"
+          : state.ui.rangeMode,
+      inspection: null,
+    },
+    notice: `已同步 ${count} 天 ${count - 1} 晚；新增日期留空，未自动生成路线。`,
+  };
+}
+export function confirmedStay(plan: TripPlan, night: number) {
+  return plan.items.find(
+    (i) =>
+      i.type === "hotel" &&
+      i.day <= night &&
+      i.endDay >= night &&
+      i.reservationStatus === "booked",
+  );
+}
+export function visibleAreas(state: TripState) {
+  const plan = currentPlan(state);
+  return state.areas.filter(
+    (a) =>
+      a.day <= plan.days.length &&
+      (a.type !== "hotelArea" ||
+        (a.day < plan.days.length && !confirmedStay(plan, a.day))),
+  );
+}
+export type MapObjectType =
+  | "itinerary-point"
+  | "recommended-poi"
+  | "recommended-dining-area"
+  | "recommended-stay-area"
+  | "confirmed-stay-point"
+  | "confirmed-restaurant-point"
+  | "transport-node";
+export function mapObjectType(state: TripState, id: string): MapObjectType {
+  const area = state.areas.find((a) => a.id === id);
+  if (area)
+    return area.type === "hotelArea"
+      ? "recommended-stay-area"
+      : "recommended-dining-area";
+  const item = currentPlan(state).items.find((i) => i.placeId === id);
+  const place = state.places.find((p) => p.id === id);
+  if (place?.type === "transport") return "transport-node";
+  if (item?.reservationStatus === "booked" && item.type === "hotel")
+    return "confirmed-stay-point";
+  if (item?.reservationStatus === "booked" && item.type === "restaurant")
+    return "confirmed-restaurant-point";
+  return item ? "itinerary-point" : "recommended-poi";
+}
+export type TimeSegment = {
+  id: string;
+  itemId: string;
+  kind: PlaceType | "movement";
+  title: string;
+  start: number;
+  end: number;
+  risk: boolean;
+};
+export function dayTimeBand(plan: TripPlan, day: number) {
+  const items = itemsForDay(plan, day);
+  const segments: TimeSegment[] = [];
+  let walking = 0;
+  items.forEach((item, index) => {
+    const start = minutes(item.startTime),
+      end = minutes(item.endTime);
+    if (end <= start) return;
+    const next = items[index + 1];
+    const match = item.next?.match(/(?:(\d+)\s*小时\s*)?(\d+)?\s*分/);
+    const travel = match
+      ? Number(match[1] ?? 0) * 60 + Number(match[2] ?? 0)
+      : 0;
+    const risk = Boolean(next && end + travel > minutes(next.startTime));
+    segments.push({
+      id: item.id,
+      itemId: item.id,
+      kind: item.type,
+      title: item.title,
+      start,
+      end,
+      risk,
+    });
+    if (next && travel > 0) {
+      // Keep the supplied duration, including conflicts; never compress to fit the next booking.
+      segments.push({
+        id: `${item.id}-movement`,
+        itemId: item.id,
+        kind: "movement",
+        title: item.next!,
+        start: end,
+        end: end + travel,
+        risk,
+      });
+      if (item.next?.includes("步行")) walking += travel;
+    }
+  });
+  const start = segments.length ? Math.min(...segments.map((s) => s.start)) : 0;
+  const end = segments.length ? Math.max(...segments.map((s) => s.end)) : 0;
+  const movement = segments
+    .filter((s) => s.kind === "movement" || s.kind === "transport")
+    .reduce((sum, s) => sum + s.end - s.start, 0);
+  const activity = segments
+    .filter((s) => s.kind !== "movement" && s.kind !== "transport")
+    .reduce((sum, s) => sum + s.end - s.start, 0);
+  return {
+    day,
+    start,
+    end,
+    segments,
+    movement,
+    activity,
+    walking,
+    bookings: items.filter((i) =>
+      ["booked", "ticketed"].includes(i.reservationStatus),
+    ).length,
+    intensity:
+      segments.some((s) => s.risk) || activity + movement > 600
+        ? "较紧"
+        : "适中",
+    suggestion: segments.some((s) => s.risk)
+      ? "本地规则：核对重叠时段，保留固定预约。"
+      : "本地规则：保留空档作为休息与弹性缓冲。",
+  };
+}
+export function timeBandPosition(
+  start: number,
+  end: number,
+  axisStart: number,
+  axisEnd: number,
+) {
+  const span = Math.max(1, axisEnd - axisStart);
+  return {
+    left: `${(100 * (start - axisStart)) / span}%`,
+    width: `${(100 * (end - start)) / span}%`,
+  };
+}
 export function tripReducer(state: TripState, action: TripAction): TripState {
   const plan = currentPlan(state);
+  if (action.type === "travelers") {
+    if (
+      !Number.isInteger(action.value) ||
+      action.value < 0 ||
+      action.value > 20
+    )
+      return state;
+    const travelers = {
+      ...state.configuration.travelers,
+      [action.key]: action.value,
+    };
+    if (Object.values(travelers).every((n) => n === 0))
+      return { ...state, notice: "至少保留一位同行人。" };
+    const labels = {
+      adultMale: "成人男性",
+      adultFemale: "成人女性",
+      child: "儿童",
+      infant: "婴儿",
+    };
+    return {
+      ...state,
+      configuration: { ...state.configuration, travelers },
+      settings: {
+        ...state.settings,
+        travelers: Object.entries(travelers)
+          .filter(([, n]) => n)
+          .map(([key, n]) => `${labels[key as keyof typeof labels]} ${n}`)
+          .join(" · "),
+      },
+    };
+  }
+  if (action.type === "preference") {
+    const previous = state.configuration.preferences[action.group] ?? {
+      quick: [],
+      details: {},
+    };
+    const next = {
+      quick: action.quick ?? previous.quick,
+      details: action.detail
+        ? {
+            ...previous.details,
+            [action.detail.key]: action.detail.value.slice(0, 160),
+          }
+        : previous.details,
+    };
+    return {
+      ...state,
+      configuration: {
+        ...state.configuration,
+        preferences: {
+          ...state.configuration.preferences,
+          [action.group]: next,
+        },
+      },
+      settings: {
+        ...state.settings,
+        [action.group]: next.quick.join(" · ") || "未限定",
+      },
+    };
+  }
+  if (action.type === "level") {
+    const labels =
+      action.key === "budget"
+        ? ["节省", "中等", "宽松", "高预算"]
+        : ["很轻松", "轻松", "适中", "紧凑", "很紧凑"];
+    if (!Number.isInteger(action.value) || !labels[action.value]) return state;
+    return {
+      ...state,
+      configuration: { ...state.configuration, [action.key]: action.value },
+      settings: { ...state.settings, [action.key]: labels[action.value] },
+    };
+  }
+  if (action.type === "alternative") {
+    if (!state.places.some((p) => p.id === action.id)) return state;
+    const ids = state.configuration.alternatives;
+    return {
+      ...state,
+      configuration: {
+        ...state.configuration,
+        alternatives: ids.includes(action.id)
+          ? ids.filter((id) => id !== action.id)
+          : [...ids, action.id],
+      },
+      notice: "已更新本次旅行备选；未改变正式路线。",
+    };
+  }
+  if (action.type === "dates")
+    return changeTripDates(state, action.departure, action.returning);
   if (action.type === "ui")
     return { ...state, ui: { ...state.ui, ...action.patch } };
   if (action.type === "setting") {
-    if (action.key === "startDate" && !/^\d{4}-\d{2}-\d{2}$/.test(action.value))
-      return state;
-    if (
-      action.key === "startDate" &&
-      state.plans.some((p) =>
-        p.items.some((item) =>
-          ["booked", "ticketed"].includes(item.reservationStatus),
-        ),
+    if (action.key === "startDate") {
+      if (
+        !/^\d{4}-\d{2}-\d{2}$/.test(action.value) ||
+        !Number.isFinite(Date.parse(action.value))
       )
-    )
-      return {
-        ...state,
-        notice:
-          "已有方案含已确认预约，改期需另行核对；示例不自动移动已订日期。",
-      };
+        return state;
+      return changeTripDates(
+        state,
+        action.value,
+        isoDay(action.value, plan.days.length),
+      );
+    }
     return {
       ...state,
       settings: { ...state.settings, [action.key]: action.value },
-      plans:
-        action.key === "startDate"
-          ? state.plans.map((p) => ({
-              ...p,
-              items: p.items.map((item) => ({
-                ...item,
-                date: isoDay(action.value, item.day),
-              })),
-            }))
-          : state.plans,
     };
   }
   if (action.type === "range") {
@@ -461,6 +800,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           ui: {
             ...state.ui,
             selectedTripItemId: item.id,
+            inspection: null,
             focusRevision: state.ui.focusRevision + 1,
             focusedDay: item.day,
             activeBottomTab: "itinerary",
@@ -477,7 +817,11 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
         inspection: { id: action.id, level: action.level ?? "quick" },
         focusRevision: state.ui.focusRevision + 1,
         selectedTripItemId: item?.id ?? null,
-        focusedDay: item?.day ?? state.ui.focusedDay,
+        focusedDay:
+          action.day ??
+          item?.day ??
+          state.areas.find((a) => a.id === action.id)?.day ??
+          state.ui.focusedDay,
         activeBottomTab: item ? "itinerary" : state.ui.activeBottomTab,
       },
     };
@@ -490,6 +834,16 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   if (action.type === "add") {
     const place = state.places.find((p) => p.id === action.placeId);
     if (!place || !plan.days.some((d) => d.day === action.day)) return state;
+    if (
+      place.type === "hotel" &&
+      (!Number.isInteger(action.nights ?? 1) ||
+        (action.nights ?? 1) < 1 ||
+        action.day + (action.nights ?? 1) > plan.days.length)
+    )
+      return {
+        ...state,
+        notice: "酒店退房不能晚于返回日期；请先延长旅行日期或减少晚数。",
+      };
     const existing = plan.items.find(
       (item) =>
         item.placeId === place.id &&
@@ -776,10 +1130,29 @@ export function mapView(state: TripState): MapView {
   } else {
     for (const day of days) {
       const items = itemsForDay(plan, day.day);
+      const departureStay = confirmedStay(plan, day.day - 1);
+      if (departureStay && !items.some((i) => i.id === departureStay.id)) {
+        const hotel = placeById.get(departureStay.placeId)!;
+        places.push({
+          id: `${hotel.id}-departure-d${day.day}`,
+          tripItemId: departureStay.id,
+          type: "hotel",
+          name: hotel.name,
+          coordinates: hotel.coordinates,
+          day: day.day,
+          tripStatus: "selected",
+          reservationStatus: "booked",
+          label: `D${day.day} 出发 · ${hotel.name}`,
+          color: day.color,
+        });
+      }
       if (items.length > 1)
         routes.push({
           id: `day-${day.day}`,
-          coordinates: items.map(point),
+          coordinates: [
+            ...(departureStay ? [point(departureStay)] : []),
+            ...items.map(point),
+          ],
           day: day.day,
           label: `D${day.day} ${day.title}`,
           color: day.color,
@@ -895,7 +1268,7 @@ export function mapView(state: TripState): MapView {
     routes,
     areas: all
       ? []
-      : state.areas
+      : visibleAreas(state)
           .filter((a) => days.some((d) => d.day === a.day))
           .map(({ id, name, type, coordinates, polygon }) => ({
             id,
