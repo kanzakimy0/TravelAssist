@@ -7,7 +7,7 @@
 - Responsibility: `Personal Center`
 - WBS: `5.4`（主执行）+ `5.1 / 5.2` completed-task visual refresh
 - Canonical GitHub Issue: `#75`
-- Status: `In Progress / Rebuild`
+- Status: `Awaiting Visual Review`
 - Local Workspace: `F:\TravelAssist`
 - Base: latest `origin/develop`
 - Proposed Branch: `feature/b-account-wbs-5-4-photoreal-rebuild-v2`

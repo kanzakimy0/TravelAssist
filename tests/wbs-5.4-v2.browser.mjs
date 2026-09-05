@@ -105,9 +105,11 @@ try {
   });
   const page = await context.newPage();
   attachDiagnostics(page, "functional");
-  await page.goto(`${baseUrl}/personal-center/account`, {
+  await page.goto(`${baseUrl}/personal-center`, {
     waitUntil: "networkidle",
   });
+  await page.getByRole("link", { name: "账户", exact: true }).click();
+  await page.getByRole("heading", { name: "账户", exact: true }).waitFor();
 
   await page.getByRole("button", { name: "编辑资料" }).click();
   const nickname = page.getByLabel(/昵称/);
@@ -213,6 +215,11 @@ try {
   await unsavedDialog.waitFor();
   await unsavedDialog.getByRole("button", { name: "继续编辑" }).click();
   await page.keyboard.press("Escape");
+
+  await page.evaluate(() => window.history.back());
+  await unsavedDialog.waitFor();
+  await unsavedDialog.getByRole("button", { name: "继续编辑" }).click();
+  assert.match(page.url(), /\/personal-center\/account$/);
 
   await page.getByRole("button", { name: "取消" }).last().click();
   if ((await avatarTrigger.getAttribute("aria-expanded")) === "true") {
