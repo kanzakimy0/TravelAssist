@@ -45,7 +45,7 @@ export function PersonalHomePreview() {
           alt="海岸、列车与远山的旅行示例照片"
           fill
           sizes="(max-width: 760px) 100vw, 80vw"
-          preload
+          loading="eager"
           className={styles.heroPhoto}
         />
         <div className={styles.heroShade} />
@@ -99,6 +99,7 @@ export function PersonalHomePreview() {
                   alt=""
                   fill
                   sizes="(max-width: 760px) 100vw, 26vw"
+                  loading="eager"
                   style={{ objectPosition: trip.position }}
                 />
                 <span className={styles.tripStatus}>{trip.status}</span>
