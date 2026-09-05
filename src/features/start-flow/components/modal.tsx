@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 import styles from "../start-flow.module.css";
 
@@ -21,24 +22,27 @@ export function Modal({
   wide = false,
 }: ModalProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const titleId = `modal-${title.replace(/\s/g, "-")}`;
+  const titleId = useId();
+  const dialogRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const previousFocus =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const page = document.querySelector("main");
+    const previousInert = page?.inert ?? false;
+    if (page) page.inert = true;
     closeButtonRef.current?.focus();
+    return () => {
+      if (page) page.inert = previousInert;
+      previousFocus?.focus({ preventScroll: true });
+    };
+  }, []);
 
-    function handleEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
-
-  return (
+  return createPortal(
     <div
-      className={styles.modalBackdrop}
+      className={`${styles.overlayTheme} ${styles.modalBackdrop}`}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -47,6 +51,31 @@ export function Modal({
       role="presentation"
     >
       <section
+        ref={dialogRef}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            event.stopPropagation();
+            onClose();
+          }
+          if (event.key === "Tab") {
+            const controls = Array.from(
+              dialogRef.current?.querySelectorAll<HTMLElement>(
+                "button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex='0']",
+              ) ?? [],
+            );
+            const first = controls[0];
+            const last = controls.at(-1);
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault();
+              last?.focus();
+            }
+            if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first?.focus();
+            }
+          }
+        }}
         aria-labelledby={titleId}
         aria-modal="true"
         className={styles.modal}
@@ -70,6 +99,7 @@ export function Modal({
         </header>
         <div className={styles.modalBody}>{children}</div>
       </section>
-    </div>
+    </div>,
+    document.body,
   );
 }

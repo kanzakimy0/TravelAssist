@@ -34,16 +34,16 @@ export function TravelStyleGroup({
   values,
 }: TravelStyleGroupProps) {
   return (
-    <fieldset className={styles.styleGroup}>
-      <legend>{title}</legend>
+    <section aria-label={title} className={styles.styleGroup} role="group">
+      <h3>{title}</h3>
       {items.map((item) => (
-        <label className={styles.styleSlider} key={item.key}>
-          <span className={styles.sliderLabels}>
-            <span className={styles.sliderLabelWithInfo}>
-              {item.left}
-              <InfoPopover text={STYLE_HELP[item.key]} />
-            </span>
-            <span>{item.right}</span>
+        <div className={styles.styleSlider} key={item.key}>
+          <span className={styles.sliderLeftLabel}>
+            {item.left}
+            <InfoPopover
+              label={`${item.left}与${item.right}说明`}
+              text={STYLE_HELP[item.key]}
+            />
           </span>
           <span className={styles.rangeWrap}>
             <input
@@ -63,8 +63,9 @@ export function TravelStyleGroup({
               ))}
             </span>
           </span>
-        </label>
+          <span className={styles.sliderRightLabel}>{item.right}</span>
+        </div>
       ))}
-    </fieldset>
+    </section>
   );
 }

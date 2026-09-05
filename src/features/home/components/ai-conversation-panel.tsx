@@ -29,7 +29,7 @@ export function AIConversationPanel({
         <div>
           <p className={styles.eyebrow}>TRAVELASSIST AI</p>
           <h2 className={styles.title} id={titleId}>
-            你好，想去哪里？
+            您好，想去哪里？
           </h2>
         </div>
         <Button
@@ -46,7 +46,7 @@ export function AIConversationPanel({
 
       <div className={styles.composer}>
         <label className={styles.srOnly} htmlFor={`${id}-input`}>
-          告诉 AI 你的旅行想法
+          告诉 AI 您的旅行想法
         </label>
         <textarea
           id={`${id}-input`}

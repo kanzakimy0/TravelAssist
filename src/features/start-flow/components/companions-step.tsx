@@ -42,7 +42,7 @@ export function CompanionsStep({
         这次和谁一起出发？
       </h1>
       <p className={styles.stepDescription}>
-        只记录同行人数，不会自动判断你们的旅行类型。
+        只记录同行人数，不会自动判断您们的旅行类型。
       </p>
       <fieldset
         aria-describedby={errors.group ? "companions-error" : undefined}

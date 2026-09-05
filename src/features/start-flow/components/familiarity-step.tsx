@@ -2,6 +2,8 @@ import type { RefObject } from "react";
 
 import type { Familiarity } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { SectionHeader } from "./section-header";
+import { WizardStepBody } from "./wizard-step-body";
 import { InfoPopover } from "./info-popover";
 
 const OPTIONS: Array<{
@@ -44,45 +46,48 @@ export function FamiliarityStep({
 }: FamiliarityStepProps) {
   return (
     <section aria-labelledby="familiarity-title" className={styles.step}>
-      <p className={styles.eyebrow}>STEP 1 · 日本熟悉度</p>
-      <h1
-        className={styles.stepTitle}
+      <SectionHeader
+        eyebrow="STEP 1 · 日本熟悉度"
         id="familiarity-title"
-        ref={headingRef}
-        tabIndex={-1}
+        title="您对日本有多熟悉？"
+        headingRef={headingRef}
       >
-        你对日本有多熟悉？
-      </h1>
-      <div className={styles.descriptionWithInfo}>
-        <p className={styles.stepDescription}>
-          选择最接近你的选项，我们会调整推荐的深度与说明方式。
-        </p>
-        <InfoPopover text="熟悉度只用于调节路线说明、经典景点占比与小众程度，不会限制你选择任何地区。" />
-      </div>
-      <div className={styles.familiarityGrid} role="radiogroup">
-        {OPTIONS.map((option) => {
-          const selected = value === option.id;
-          return (
-            <button
-              aria-checked={selected}
-              className={styles.familiarityCard}
-              data-selected={selected}
-              key={option.id}
-              onClick={() => onChange(option.id)}
-              role="radio"
-              type="button"
-            >
-              <span>
-                <strong>{option.title}</strong>
-                <small>{option.description}</small>
-              </span>
-              <span aria-hidden="true" className={styles.selectionMark}>
-                {selected ? "✓" : ""}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+        <div className={styles.descriptionWithInfo}>
+          <p className={styles.stepDescription}>
+            选择最接近您的选项，我们会调整推荐的深度与说明方式。
+          </p>
+          <InfoPopover
+            label="日本熟悉度说明"
+            text="熟悉度用于调整经典景点占比与介绍深度，不限制您选择任何地区。"
+          />
+        </div>
+      </SectionHeader>
+      <WizardStepBody>
+        <div className={styles.familiarityGrid} role="radiogroup">
+          {OPTIONS.map((option) => {
+            const selected = value === option.id;
+            return (
+              <button
+                aria-checked={selected}
+                className={styles.familiarityCard}
+                data-selected={selected}
+                key={option.id}
+                onClick={() => onChange(option.id)}
+                role="radio"
+                type="button"
+              >
+                <span>
+                  <strong>{option.title}</strong>
+                  <small>{option.description}</small>
+                </span>
+                <span aria-hidden="true" className={styles.selectionMark}>
+                  {selected ? "✓" : ""}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </WizardStepBody>
     </section>
   );
 }

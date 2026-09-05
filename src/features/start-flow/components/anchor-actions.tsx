@@ -18,7 +18,7 @@ import { Modal } from "./modal";
 const OPTIONS: Array<{ id: AnchorType; label: string }> = [
   { id: "flight", label: "机票" },
   { id: "hotel", label: "酒店" },
-  { id: "activity", label: "活动" },
+  { id: "activity", label: "已订活动" },
 ];
 
 interface AnchorActionsProps {
@@ -106,20 +106,22 @@ export function AnchorActions({ onChange, value }: AnchorActionsProps) {
   }
 
   return (
-    <fieldset className={styles.anchorGroup}>
-      <legend>已有确定安排</legend>
-      <div className={styles.anchorActions}>
-        {OPTIONS.map((option) => (
-          <button
-            data-selected={counts[option.id] > 0}
-            key={option.id}
-            onClick={() => setActiveType(option.id)}
-            type="button"
-          >
-            ＋ 添加{option.label}
-            {counts[option.id] ? ` (${counts[option.id]})` : ""}
-          </button>
-        ))}
+    <section className={styles.anchorGroup} aria-labelledby="anchor-title">
+      <div className={styles.anchorActionRow}>
+        <h2 id="anchor-title">已有确定安排？</h2>
+        <div className={styles.anchorActions}>
+          {OPTIONS.map((option) => (
+            <button
+              data-selected={counts[option.id] > 0}
+              key={option.id}
+              onClick={() => setActiveType(option.id)}
+              type="button"
+            >
+              ＋ 添加{option.label}
+              {counts[option.id] ? ` (${counts[option.id]})` : ""}
+            </button>
+          ))}
+        </div>
       </div>
       {Object.values(counts).some(Boolean) ? (
         <p className={styles.anchorPlaceholder} role="status">
@@ -135,7 +137,7 @@ export function AnchorActions({ onChange, value }: AnchorActionsProps) {
           type={activeType}
         />
       ) : null}
-    </fieldset>
+    </section>
   );
 }
 

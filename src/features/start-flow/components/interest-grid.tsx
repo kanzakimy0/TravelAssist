@@ -6,8 +6,11 @@ import { INTERESTS } from "../model/start-flow-draft";
 import type { Interest } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { InterestDetailModal } from "./interest-detail-modal";
+import { InfoPopover } from "./info-popover";
+import { INTEREST_ICONS, WizardIcon } from "./wizard-icon";
 
 interface InterestGridProps {
+  notice?: string;
   dislikes: Interest[];
   likes: Interest[];
   onCycle: (interest: Interest) => void;
@@ -16,6 +19,7 @@ interface InterestGridProps {
 }
 
 export function InterestGrid({
+  notice,
   details,
   dislikes,
   likes,
@@ -26,7 +30,13 @@ export function InterestGrid({
   return (
     <div className={styles.interestSection}>
       <div className={styles.sectionHeadingRow}>
-        <h2>你的兴趣</h2>
+        <h2 className={styles.labelWithInfo}>
+          您的兴趣{" "}
+          <InfoPopover
+            label="兴趣细分说明"
+            text="喜欢与不喜欢各可选三项。点击“细化”可补充具体偏好，也可留空。"
+          />
+        </h2>
         <p>
           喜欢 {likes.length}/3 · 不喜欢 {dislikes.length}/3
         </p>
@@ -54,7 +64,10 @@ export function InterestGrid({
                 onClick={() => onCycle(interest)}
                 type="button"
               >
-                <span>{interest}</span>
+                <span className={styles.iconText}>
+                  <WizardIcon name={INTEREST_ICONS[interest]} />
+                  {interest}
+                </span>
                 <small>{stateLabel}</small>
               </button>
               <button
@@ -70,8 +83,12 @@ export function InterestGrid({
           );
         })}
       </div>
-      <p className={styles.interestHint}>
-        点击卡片依次切换：喜欢 → 不喜欢 → 中性。
+      <p
+        className={styles.interestHint}
+        aria-live="polite"
+        data-notice={!!notice}
+      >
+        {notice || "点击卡片依次切换：喜欢 → 不喜欢 → 中性。"}
       </p>
       {detailInterest ? (
         <InterestDetailModal
