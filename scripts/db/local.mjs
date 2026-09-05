@@ -16,7 +16,8 @@ export function redact(text) {
 }
 
 export function assertLocalEndpoint(endpoint) {
-  if (/^(unix:\/\/\/|npipe:\/\/)/.test(endpoint)) return;
+  if (/^unix:\/\/\/[^/]/.test(endpoint)) return;
+  if (/^npipe:\/\/\/\/\.\/pipe\/[\w./-]+$/.test(endpoint)) return;
   let parsed;
   try {
     parsed = new URL(endpoint);
@@ -104,6 +105,28 @@ export function commandArgs(command, extras = []) {
   return commands[command];
 }
 
+export function publicStatus(raw) {
+  const status = JSON.parse(raw);
+  // Never log the CLI credential object (including JWT/S3 signing secrets).
+  const safe = {};
+  for (const key of ["API_URL", "REST_URL", "STUDIO_URL", "MAILPIT_URL"]) {
+    const value = status[key];
+    if (typeof value !== "string") continue;
+    const url = new URL(value);
+    if (
+      !["http:", "https:"].includes(url.protocol) ||
+      !["127.0.0.1", "localhost", "[::1]"].includes(url.hostname) ||
+      url.username ||
+      url.password ||
+      url.search ||
+      url.hash
+    )
+      throw new Error("Local status contains an unexpected service URL.");
+    safe[key] = value;
+  }
+  return JSON.stringify({ state: "running", services: safe }, null, 2);
+}
+
 function runCli(args, capture = false) {
   // CLI operations are explicitly local, and never read Next's .env.local.
   const env = {
@@ -125,8 +148,13 @@ function runCli(args, capture = false) {
     timeout: 15 * 60 * 1000,
     maxBuffer: 16 * 1024 * 1024,
   });
-  if (result.stderr) process.stderr.write(redact(result.stderr));
-  if (!capture && result.stdout) process.stdout.write(redact(result.stdout));
+  // Successful start prints connection credentials in a human-readable table.
+  // Suppress that table entirely; db:status offers a small endpoint-only view.
+  const credentialOutput = args[0] === "start" || args[0] === "status";
+  if (result.stderr && !credentialOutput)
+    process.stderr.write(redact(result.stderr));
+  if (!capture && result.stdout && !credentialOutput)
+    process.stdout.write(redact(result.stdout));
   if (result.error || result.status !== 0)
     throw new Error(
       `Local Supabase command failed (exit ${result.status ?? "unavailable"}).`,
@@ -177,7 +205,12 @@ export async function main(command, extras = []) {
   if (command !== "migration-new") localDocker();
   if (command === "types" || command === "types-check")
     return generateTypes(command === "types-check");
-  runCli(args);
+  const output = runCli(args);
+  if (command === "start")
+    process.stdout.write(
+      "Local Supabase started. Credentials are not logged.\n",
+    );
+  if (command === "status") process.stdout.write(`${publicStatus(output)}\n`);
   if (command === "reset") await generateTypes();
 }
 

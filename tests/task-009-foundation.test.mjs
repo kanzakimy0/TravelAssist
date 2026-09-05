@@ -8,6 +8,7 @@ import {
   assertLocalEndpoint,
   commandArgs,
   formattedTypes,
+  publicStatus,
   redact,
   root,
 } from "../scripts/db/local.mjs";
@@ -212,6 +213,8 @@ test("Docker endpoint guard rejects cloud/SSH and accepts local sockets only", (
     assert.doesNotThrow(() => assertLocalEndpoint(endpoint));
   for (const endpoint of [
     "ssh://remote",
+    "npipe:////remote/pipe/docker_engine",
+    "unix:////remote/docker.sock",
     "tcp://prod.example:2375",
     "tcp://127.0.0.1.evil:2375",
     "invalid",
@@ -224,6 +227,29 @@ test("CLI logging redacts connection strings and keys", () => {
     "postgresql://user:sample@localhost/db sb_secret_NOT_REAL sb_publishable_NOT_REAL eyJfake.payload.signature",
   );
   assert.doesNotMatch(text, /sample|NOT_REAL|eyJfake/);
+});
+
+test("local status publishes endpoint-only data, not JWT or storage credentials", () => {
+  const output = publicStatus(
+    JSON.stringify({
+      API_URL: "http://127.0.0.1:54321",
+      JWT_SECRET: "unit-test-private-value",
+      S3_PROTOCOL_SECRET_ACCESS_KEY: "unit-test-storage-value",
+      DB_URL: "postgresql://user:password@localhost:54322/postgres",
+    }),
+  );
+  assert.match(output, /127\.0\.0\.1/);
+  assert.doesNotMatch(output, /SECRET|unit-test|password|postgresql/);
+  for (const url of [
+    "https://remote.example",
+    "http://localhost/?key=private",
+    "http://user:password@localhost/",
+  ]) {
+    assert.throws(
+      () => publicStatus(JSON.stringify({ API_URL: url })),
+      /unexpected service URL/,
+    );
+  }
 });
 
 test("failed type generation cannot become a hand-written generated file", async () => {
