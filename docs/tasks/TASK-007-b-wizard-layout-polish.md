@@ -4,15 +4,16 @@
 
 - Repository: `kanzakimy0/TravelAssist`
 - Owner: B 工作站（客户界面）
-- Status: Partially Completed / Blocked（TASK-007.1 版式补充已完成；TASK-007 指定背景原图待提供）
+- Status: Partially Completed / Blocked（v1.2 / v1.3 补充已完成；TASK-007 指定背景原图待提供）
 - GitHub Issue: [#35](https://github.com/kanzakimy0/TravelAssist/issues/35)
 - Base Branch: `develop`
 - Base Commit: `6b0677e21c0f0089f1612a5f39f43ac8e2dde82f`
+- Latest Synced Base: `3449e8983f5fd3260cb5fd871f296d0022b575ae`（合并提交 `32eb1a2`，保留本地 TASK-007 与远程个人中心成果）
 - Feature Branch: `feature/b-wizard-layout-polish`
 - WBS: 3.6 / 3.8（Step 1–5 版式修正）
 - Depends On: TASK-005 / TASK-006
 - 正式规格来源：用户提供的《TravelAssist｜Step 1–5 统一版式与交互修正规范 v1.0》及随附 TASK-007 执行要求。本文归档该定稿，不从旧任务推测新设计。
-- 最新覆盖来源：用户提供的 TASK-007.1《TravelAssist｜Step 1–5 补充修正规范 v1.1》，并入本 Task、Issue #35 与现有 feature 分支；同名条目以 v1.1 为准。
+- 最新覆盖来源：用户提供的《Step 1–5 补充修正规范 v1.2》与《全局说明图标交互规范 v1.3》，并入本 Task、Issue #35 与现有 feature 分支；对应条目覆盖 v1.0 / v1.1。
 
 ## 前置依赖
 
@@ -176,6 +177,38 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 
 以上八项补充结论直接并入 TASK-007，不新建不相关的分支或重写已确认业务逻辑。v1.0 的统一背景、框体、四步进度、数据持久化等未被覆盖的要求继续生效。
 
+## 补充修正规范 v1.2（最新布局基准）
+
+- Step 2“您的兴趣”与“您喜欢怎么玩”使用完全相同的字号、字重、行高、左侧起始位置和标题间距；保持与页面主标题的层级关系。按当前“您的兴趣”的字号统一，并采用 Semibold / Bold。
+- 六条滑轨在 v1.1 基础上加长约 50%，仍是左标签 / 中间五档滑轨 / 右标签。六条同长、节点等距、两组卡片等宽，分组标题留在各自框内。滑轨不铺满卡片，窄屏优先避免标签挤压与溢出。
+- Step 3 改为可辨认的地区地标单色模型，不用普通城市 / 山形代替。图标和文字整体居中，线宽与体量统一。
+
+| 地区        | 本次采用的单色象征物                                           |
+| ----------- | -------------------------------------------------------------- |
+| 东京        | 东京塔轮廓                                                     |
+| 大阪 / 关西 | 道顿堀：戎桥、河道、两侧招牌轮廓（优先方案；未改用备选海游馆） |
+| 北海道      | 札幌钟楼                                                       |
+| 京都        | 伏见稻荷鸟居                                                   |
+| 中部        | 白川乡合掌造                                                   |
+| 九州        | 樱岛火山                                                       |
+| 冲绳        | 首里城                                                         |
+| 更多地区    | 日本地图 + 加号                                                |
+
+- “已有确定安排？”与“同行人员”字号、字重相同，作为正式分区标题；保持左标题、右侧三个操作卡一行排列，不增加白条。
+- Step 4 主标题、副标题、日式插画及六阶段组成水平居中的视觉组合；列表整体居中，行内文字可左对齐。进度块不做过宽外框，保持上下留白与无桌面竖向滚动。
+- 继续保留五步固定面板、统一背景、对称留白与现有草稿 / 生成逻辑；Step 4 的居中是对旧左对齐规则的明确例外。
+
+## 全局说明图标规范 v1.3
+
+完整定稿与复用方式归档于 [全局说明图标交互规范](../ui/help-icons.md)。覆盖所有旧问号规则，适用于 Step 1～5、弹窗、Popover、下拉及后续同系列页面。
+
+- 小型单色 `?` 为相邻文字字号的约 80%，暖灰色，不抢标题层级。
+- 默认仅图标，不自动弹出、不常驻、不改变页面高度。
+- 桌面 hover / focus 延迟约 150–250ms 打开，移开约 100–150ms 关闭；实现固定 200ms / 125ms。
+- Tab 可聚焦、Focus 显示说明、Escape 关闭；触屏点按打开，再次点按或点击空白关闭。
+- 暖白半透明、轻 blur、小圆角、极浅阴影、深墨蓝正文；宽度约 240–320px，内容优先 1～3 行。
+- 基本帮助用 Tooltip，不用大型 Modal；真正的选择 / 填写功能保留原弹窗。
+
 ## 验收清单
 
 - [x] TASK-005、TASK-006 已合入后开始，初始工作树干净。
@@ -193,6 +226,9 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - [x] v1.1：中间区域上下留白、桌面密度控制、透明底部按钮区。
 - [x] v1.1：Step 2 强化小节标题、分组标题入卡、六条短滑轨左右标签同排。
 - [x] v1.1：Step 3 选项居中，同行人员功能排列不变。
+- [x] v1.2：Step 2 两个同级标题完全一致、滑轨目标长度增加 50%。
+- [x] v1.2：八个地区象征图标、Anchor 标题层级、居中生成组合。
+- [x] v1.3：全局小问号、默认关闭、悬停 / Focus / Escape / 触屏交互与主题浮层。
 - [ ] lint / typecheck / format:check / build / 相关 tests 通过。
 - [x] 草稿恢复与相关二级弹窗回归验证完成。
 - [ ] 无无关配置更改，Task / WBS / Issue / PR 同步。
@@ -250,7 +286,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 
 全仓格式问题位于 `docs/ui/authentication.md`、`docs/ui/personal-center-shell.md`、`docs/ui/personal-center.md`。对 `origin/develop` 原文的 Prettier 检查同样返回失败，本任务未改这些文件。
 
-## v1.1 实现与验收（2026-09-05）
+## v1.1 实现与验收历史（2026-09-05，对应条目由 v1.2 / v1.3 覆盖）
 
 - 实现提交：`d8e7ae11d325873b05bc1e8d5c9c8e3563d89292`，仅本地。
 - 新增 `WizardStepBody`，五步复用同一“标题 / 操作内容 / 底部按钮”空间分配；沿用 v1.0 水平基线与对称内边距。
@@ -284,6 +320,42 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - 全仓 `npm run format:check` 仍仅报前述 3 份非本任务文档的已有格式问题；未擅自修改。
 - 此轮桌面实测覆盖高度 720px 及以上；更低高度 / 非默认缩放未声明通过。
 
+## v1.2 / v1.3 实现与验收（2026-09-05，当前）
+
+- 实现提交：`a438b86c627b8e8d548a44c8d6d6148eb58dde57`，仅本地。
+- 同步前工作树干净。读取并合入最新 `origin/develop`（`3449e89`），保留 TASK-005/006 依赖。唯一合并冲突为 WBS 两个新增任务行，已同时保留 TASK-007 与 WBS-5.1-B，未覆盖个人中心成果。
+- Step 2 两个小节标题共用 14.4px / 700 / 18.72px，左侧基线相同，使用相同标题容器与间距。
+- 六条滑轨目标 144px → 216px（+50%）；1496px、1280px 和 853px 桌面宽度均实测 216px。390px 手机视口按可用空间缩为约 168.17px（原约 118.56px），六条仍同长，标签没有横向溢出。
+- 地区图标为八种独立 SVG 模型；桌面常规尺寸 20px，统一 24×24 viewBox、1.5 线宽和单色。大阪采用道顿堀桥 / 河道 / 招牌，不再复用城堡图标。
+- “已有确定安排？”与“同行人员”均为 12.8px / 820 / 19.2px，保留左标题右三按钮。
+- Step 4 标题、副标题、装饰性山景列车 SVG、六阶段及说明组成居中组合；阶段列表按实际内容宽度居中，不改状态推进逻辑。装饰 SVG 不是指定全局背景的替代品。
+- 新增全局 `InfoPopover` 与独立交互控制器；旧向导路径兼容转出。说明使用 portal，保持页面高度与布局不变；不替代选项 / 表单 Modal。
+
+### 验证结果
+
+| 检查                                     | 结果                                                                                                              |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `npm run lint`                           | 通过                                                                                                              |
+| `npm run typecheck`                      | 通过；同步新增个人中心路由后重新构建，刷新生成的类型，不改配置                                                    |
+| `npm run build`                          | 通过，首页、`/start` 和已合入个人中心路由均构建成功                                                               |
+| 日历 + InfoPopover tests                 | 19/19 通过（7 项日历 + 12 项说明交互 / 定位）；沿用 Node 测试能力，无新增依赖                                     |
+| 本任务文件 Prettier / `git diff --check` | 通过                                                                                                              |
+| 全仓 `format:check`                      | 基线已有 4 份文档未通过，见下文                                                                                   |
+| 桌面五步                                 | 1440×900、1280×720、1024×768、853×1272、768×720 全部逐步检查：同框、控件在框内、无横向溢出、无页面 / 内容竖向滚动 |
+| Step 4 水平居中                          | 1440px 视口中标题容器、插画与阶段列表中心均为 x≈720；阶段列表内容宽约 205.96px                                    |
+| 手机五步                                 | 390×844：面板均约 377.20×737.93；必要内容可滚动到全部操作，无额外外层滚动或横向溢出；生成页无需滚动               |
+| 问号比例 / 默认状态                      | 已检查位置字号比例均为 0.8；初始无 Tooltip，浮层宽度 288px                                                        |
+| 鼠标与键盘                               | 鼠标进入无需点击即可展开、移开关闭；Tab 聚焦后展开、Esc 关闭且焦点保持                                            |
+| 嵌套弹窗                                 | 第一次 Esc 仅关闭说明，第二次关闭兴趣弹窗，触发按钮焦点恢复正常                                                   |
+| 触屏交互                                 | 控制器自动测试覆盖不触发 hover、首次点按打开、再次点按关闭及外部关闭；未将桌面鼠标点击冒充实机触屏测试            |
+| 延迟与清理                               | 自动测试覆盖 200ms 打开、125ms 隐藏、快速移开取消、浮层可停留、Escape 取消及卸载定时器清理                        |
+| 草稿                                     | 滑轨第 3 档改为第 4 档，刷新后恢复第 4 档；验收后恢复原值。前进 / 返回 / 生成保留既有日期与偏好                   |
+| 浏览器日志                               | 无 console / hydration error                                                                                      |
+
+本轮格式基线问题为 `docs/ui/authentication.md`、`docs/ui/personal-center-shell.md`、`docs/ui/personal-center.md`、`docs/ui/profile-account.md`。前三份是此前已记录问题；第四份随最新 develop 合入，并已从其远程原文复现格式失败，未改这些无关文件。
+
+桌面实测覆盖高度 720px 及以上；更低高度 / 非默认缩放 / 触屏实机不声明已完成渲染实测。指定背景的最终裁切验收仍待原图。
+
 ## 未完成项与发布限制（当前）
 
 1. **指定背景原图未取得**：用户提供的 ChatGPT 签名链接返回 403；浏览器也未能加载。已请求可读本地图片路径。旧海岸列车图只保留为现状，未称其为指定背景，未通过该验收项。
@@ -294,10 +366,15 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 
 ## Changed Files
 
-33 个文件（TASK-007 含 TASK-007.1；不包含指定背景，原图仍待提供）：
+40 个文件（TASK-007 累计，含 v1.0～v1.3；不包含指定背景，原图仍待提供；不计同步合入的个人中心成果）：
 
 - `docs/project/WBS-TravelAssist.md`
 - `docs/tasks/TASK-007-b-wizard-layout-polish.md`
+- `docs/ui/help-icons.md`
+- `src/components/ui/info-popover.tsx`
+- `src/components/ui/info-popover.module.css`
+- `src/components/ui/info-popover-position.ts`
+- `src/components/ui/info-popover-interaction.ts`
 - `src/features/home/components/ai-conversation-panel.tsx`
 - `src/features/start-flow/components/anchor-actions.tsx`
 - `src/features/start-flow/components/budget-selector.tsx`
@@ -308,6 +385,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - `src/features/start-flow/components/expandable-date-selector.tsx`
 - `src/features/start-flow/components/familiarity-step.tsx`
 - `src/features/start-flow/components/generation-step.tsx`
+- `src/features/start-flow/components/info-popover.tsx`
 - `src/features/start-flow/components/interest-detail-modal.tsx`
 - `src/features/start-flow/components/interest-grid.tsx`
 - `src/features/start-flow/components/modal.tsx`
@@ -329,6 +407,7 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - `src/features/start-flow/start-flow.module.css`
 - `src/features/start-flow/themed-popover.module.css`
 - `tests/task-007-calendar.test.mjs`
+- `tests/task-007-info-popover.test.mjs`
 
 ## Result Format
 

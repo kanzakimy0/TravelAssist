@@ -239,7 +239,7 @@ src/db/
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
 | TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 已完成 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | `31982a3` | #32 |
-| TASK-007（含 007.1） | 3.6 / 3.8（Step 1–5 版式修正） | B | 部分完成（007.1 已完成，指定背景原图待提供） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `d8e7ae1`（仅本地） | 未创建，避免自动合入未完成版本 |
+| TASK-007 | 3.6 / 3.8（Step 1–5 版式修正，含 v1.0～v1.3） | B | 部分完成（v1.2 / v1.3 已验证，指定背景原图待提供） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `a438b86`（仅本地） | 未创建，避免自动合入未完成版本 |
 | WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
