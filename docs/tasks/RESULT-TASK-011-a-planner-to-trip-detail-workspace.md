@@ -4,6 +4,10 @@
 
 用户已明确授权合并阻塞追踪记录。Docs-only PR [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 已合入 `develop`，merge commit `7e86725a4ad4f47fcdd376d98cd61080012d286f`。该合并只同步 WBS / Result，不解除 #77、#78 前置条件；TASK-011-A 继续保持 Blocked，且仍未创建实现分支。
 
+## Blocked Recheck — 2026-09-06
+
+再次从最新 `origin/develop` 执行完整前置复核。最新 SHA 为 `43c518d02acb45ff77fd6134c2837ea81e2523f5`；TASK-008.3-A 的 PR #85 仍为 Open / Draft / `merged: false`，TASK-010-A / Issue #78 仍为 Open / Planned 且没有实现 PR。阻塞条件没有解除；本轮未创建 TASK-011 实现分支，未修改业务代码。
+
 ## Status
 
 Blocked — TASK-011-A 的两个硬性前置均未合入 `origin/develop`。已按 Task 规则停止；未创建实现分支，未修改业务代码，未运行实现验收。
@@ -21,7 +25,9 @@ TASK-011-A / Issue #86 保持 Open / Blocked / Planned，与 Task 的 `阻塞` �
 
 ## Base Commit
 
-Latest checked `origin/develop`: `cf5c408eb7fbe81407262efd15d499461752374a`
+Latest checked `origin/develop`: `43c518d02acb45ff77fd6134c2837ea81e2523f5`
+
+Original blocked audit base: `cf5c408eb7fbe81407262efd15d499461752374a`
 
 ## Feature Branch
 
