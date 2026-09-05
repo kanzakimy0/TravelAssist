@@ -241,6 +241,8 @@ src/db/
 | TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 已完成 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | `31982a3` | #32 |
 | TASK-007 | 3.6 / 3.8（Step 1–5 版式修正，含 v1.0～v1.3） | B | 部分完成（v1.2 / v1.3 已验证，指定背景原图待提供） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `a438b86`（仅本地） | 未创建，避免自动合入未完成版本 |
 | WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
+| WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
+| WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 
@@ -277,9 +279,9 @@ src/db/
 | 1.22   | 头像菜单 / Personal Center Shell 设计 | B      | P0     | 1.21      | 已完成 |
 | 1.23   | 登录 / 注册 / 找回密码画面设计        | B      | P1     | 1.21      | 已完成 |
 | 1.24   | Profile / 账户设置画面设计            | B      | P1     | 1.21      | 已完成 |
-| 1.25   | 偏好管理中心画面设计                  | B      | P0     | 1.21      | 进行中 |
-| 1.26   | 同行人管理画面设计                    | B      | P1     | 1.25      | 未开始 |
-| 1.27   | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B      | P0     | 1.21      | 未开始 |
+| 1.25   | 偏好管理中心画面设计                  | B      | P0     | 1.21      | 已完成 |
+| 1.26   | 同行人管理画面设计                    | B      | P1     | 1.25      | 已完成 |
+| 1.27   | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B      | P0     | 1.21      | 进行中 |
 | 1.28   | 账户安全 / 数据删除画面设计           | B      | P1     | 1.24      | 未开始 |
 | 1.29   | 个人中心响应式 / 状态画面规范         | B      | P1     | 1.22-1.28 | 未开始 |
 | 1.30   | 个人中心设计 Freeze v1                | A+B    | P0     | 1.22-1.29 | 未开始 |
@@ -290,18 +292,18 @@ src/db/
 
 | WBS ID | 工作项                           | 负责人 | 优先级 | 依赖    | 状态   |
 | ------ | -------------------------------- | ------ | ------ | ------- | ------ |
-| 2.1    | A 工程初始化 Task                | A      | P0     | 0.3     | 待审查 |
-| 2.2    | B 工程初始化 / 工作站验证        | B      | P0     | 0.2     | 进行中 |
-| 2.3    | Node / npm / TypeScript 版本固定 | A      | P0     | 2.1     | 未开始 |
-| 2.4    | ESLint / Prettier / EditorConfig | A      | P1     | 2.1     | 未开始 |
-| 2.5    | 环境变量规范                     | A      | P0     | 2.1     | 未开始 |
+| 2.1    | A 工程初始化 Task                | A      | P0     | 0.3     | 已完成 |
+| 2.2    | B 工程初始化 / 工作站验证        | B      | P0     | 0.2     | 已完成 |
+| 2.3    | Node / npm / TypeScript 版本固定 | A      | P0     | 2.1     | 已完成 |
+| 2.4    | ESLint / Prettier / EditorConfig | A      | P1     | 2.1     | 已完成 |
+| 2.5    | 环境变量规范                     | A      | P0     | 2.1     | 已完成 |
 | 2.6    | 目录架构 + A/B 模块边界冻结      | A      | P0     | 2.1,0.8 | 已完成 |
-| 2.7    | Shared UI / Contract 基础        | A      | P1     | 2.6     | 未开始 |
-| 2.8    | GitHub Actions CI                | A      | P1     | 2.3,2.4 | 未开始 |
-| 2.9    | 单元测试框架                     | A      | P1     | 2.1     | 未开始 |
-| 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 未开始 |
-| 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 未开始 |
-| 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 未开始 |
+| 2.7    | Shared UI / Contract 基础        | A      | P1     | 2.6     | 已完成 |
+| 2.8    | GitHub Actions CI                | A      | P1     | 2.3,2.4 | 已完成 |
+| 2.9    | 单元测试框架                     | A      | P1     | 2.1     | 已完成 |
+| 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
+| 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
+| 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
 
 ## 3. 网站入口与主系统 Shell（A）
 
@@ -347,7 +349,7 @@ src/db/
 | WBS ID | 工作项                                        | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | --------------------------------------------- | ------ | ------ | -------- | ------ |
 | 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
-| 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 未开始 |
+| 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 已完成 |
 | 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
 | 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 未开始 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 未开始 |

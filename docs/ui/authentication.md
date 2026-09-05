@@ -637,13 +637,13 @@ AuthLayout
 
 后续：
 
-| WBS | 内容 |
-|---|---|
-| 5.3 | 登录 / 注册 / Session 用户流程实现 |
-| 8.2 | User / Profile Schema |
-| 8.3 | Authentication 核心 |
-| 1.24 | Profile / 账户设置画面设计 |
-| 1.28 | 账户安全 / 数据删除画面设计 |
+| WBS  | 内容                                        |
+| ---- | ------------------------------------------- |
+| 5.3  | 登录 / 注册 / Session 用户流程实现          |
+| 8.2  | User / Profile Schema                       |
+| 8.3  | Authentication 核心                         |
+| 1.24 | Profile / 账户设置画面设计                  |
+| 1.28 | 账户安全 / 数据删除画面设计                 |
 | 1.29 | Auth / Personal Center 响应式及通用状态规范 |
 
 ---

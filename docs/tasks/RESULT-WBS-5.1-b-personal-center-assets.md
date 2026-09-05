@@ -5,48 +5,57 @@
 - Parent Task: WBS-5.1-B
 - WBS ID: 5.1
 - Owner: B
-- Existing Issue: #34
-- Branch: `feature/b-account-wbs-5-1-personal-center-assets`
-- Status: 待审查
+- Existing Issue: #34（Closed / Completed）
+- Asset branch: `feature/b-account-wbs-5-1-visual-assets-final`
+- Asset PR: #47
+- Asset commit: `8b36c4abb57c98f7ecaa5b0454a7cd6494108381`
+- Asset merge commit: `fb4b421c495beb56127ad0d8c2db83ba4b1e3c48`
+- Status: 已完成
 
 ## Purpose
 
-补齐 WBS 5.1 原实现中唯一明确记录为 pending 的正式 Personal Center Sidebar artwork，并将其接入现有 Shell。
+补齐并冻结 WBS 5.1 Personal Center Shell 的正式视觉素材，让后续 Codex 只负责引用指定素材和视觉还原，不再自行设计。
 
-## Asset Scope
+## Delivered asset set
 
-Added production asset:
+### Existing Sidebar artwork
 
 - `public/media/personal-center/sidebar-torii-watercolor.svg`
+- `assets/design/personal-center/sidebar-torii-watercolor.svg`
 
-Added design asset documentation:
+### Newly frozen main content surface texture
 
-- `assets/design/personal-center/README.md`
+- `public/media/personal-center/personal-center-surface-texture.svg`
+- `assets/design/personal-center/personal-center-surface-texture.svg`
 
-Updated runtime integration:
+### Handoff documentation
 
-- `src/features/personal-center/components/personal-sidebar.tsx`
+- `docs/project/WBS-5.1-PERSONAL-CENTER-ASSET-AUDIT.md`
+- `docs/tasks/CODEX-WBS-5.1-VISUAL-INTEGRATION.md`
+- `docs/project/WBS-5.1-ASSET-SYNC.md`
 
-## Design Compliance
+## Design compliance
 
-The artwork follows the frozen 1.21 / 1.22 direction:
+The new content surface texture follows frozen 1.21 / 1.22 direction:
 
-- vermilion torii
-- lake / water
-- distant generic mountains
-- restrained cherry blossoms
-- subtle seigaiha / washi texture
-- warm, low-saturation palette
-- no text / slogan / calligraphy
-- no large Fuji, temple or pagoda background
-- stays inside the Sidebar crop area
+- warm ivory / off-white base
+- extremely faint washi texture
+- soft sakura-pink watercolor haze
+- restrained petals
+- localized low-contrast seigaiha
+- sparse warm-gold dust
+- no large Fuji / torii / temple / pagoda
+- no calligraphy, slogan or decorative copy
+- must remain visually behind cards, forms and text
 
-## Asset Boundary
+## Asset boundary
 
-No raster files were added for navigation icons, notification, avatar shell, buttons, focus states or card surfaces. Those remain code-driven inline SVG/CSS as required by the existing 5.1 implementation.
+No raster/UI-image assets are introduced for navigation icons, notification, avatar shell, chevrons, buttons, hover / active / focus states, cards, borders, shadows or radius. Those remain component / inline SVG / CSS / Design Token driven.
 
-The mock travel-photo cards remain on the existing authorized Home poster; final destination photography belongs to later Trip/Profile content tasks rather than WBS 5.1 Shell.
+TravelAssist final logo is not frozen by WBS 5.1. Mock trip photography remains content-fixture territory and is not converted into Shell brand assets.
 
-## Result
+## Final Result
 
-The previously recorded `Artwork asset pending` blocker is resolved on this branch. WBS 5.1 remains `待审查` until the follow-up PR is merged and the existing global format-check baseline decision is resolved.
+The remaining WBS 5.1 Shell-level visual asset has been frozen and merged to `develop` through PR #47. The asset audit and Codex handoff are also in the repository.
+
+The canonical master WBS already records 5.1 as `已完成`; this follow-up preserves that completed state and does not modify any other WBS item or runtime UI code.
