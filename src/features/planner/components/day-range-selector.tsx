@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import type { PlannerAction } from "../model/planner-state";
-import { threeDayWindows } from "../model/planner-state";
 import type { PlannerUiState } from "../model/planner-types";
 import { PlannerPopover } from "./planner-popover";
 import styles from "../planner.module.css";
+import ui from "../planner-interactions.module.css";
 
 export function DayRangeSelector({
   state,
@@ -17,8 +17,19 @@ export function DayRangeSelector({
   const [menu, setMenu] = useState<"day" | "threeDays" | null>(null);
   const dayTrigger = useRef<HTMLButtonElement>(null);
   const threeTrigger = useRef<HTMLButtonElement>(null);
+  const [inputOpen, setInputOpen] = useState(false);
+  const [inputDay, setInputDay] = useState("1");
+  const max = Math.max(1, totalDays - (menu === "threeDays" ? 2 : 0));
+  const current =
+    menu === "threeDays" ? state.threeDayStart : state.selectedDay;
+  const first = Math.max(1, Math.min(current - 1, max - 2));
   return (
-    <div className={styles.dayRange} role="group" aria-label="地图日程范围">
+    <div
+      className={styles.dayRange}
+      role="group"
+      aria-label="地图日程范围"
+      data-range-mode={state.rangeMode}
+    >
       <button
         type="button"
         ref={dayTrigger}
@@ -55,7 +66,7 @@ export function DayRangeSelector({
         }}
       >
         {state.rangeMode === "threeDays"
-          ? `Day ${state.threeDayStart}–${state.threeDayStart + 2} ▾`
+          ? `从第${state.threeDayStart}天开始 ▾`
           : "3日"}
       </button>
       <button
@@ -76,13 +87,10 @@ export function DayRangeSelector({
           onClose={() => setMenu(null)}
         >
           <div className={styles.dayChoices}>
-            {(menu === "day"
-              ? Array.from({ length: totalDays }, (_, index) => ({
-                  start: index + 1,
-                  end: index + 1,
-                }))
-              : threeDayWindows(totalDays)
-            ).map(({ start, end }) => (
+            {Array.from(
+              { length: Math.min(3, max) },
+              (_, index) => first + index,
+            ).map((start) => (
               <button
                 type="button"
                 key={start}
@@ -96,10 +104,49 @@ export function DayRangeSelector({
                   setMenu(null);
                 }}
               >
-                {menu === "day" ? `第${start}天` : `第${start}–${end}天`}
+                {start}
               </button>
             ))}
+            <button
+              type="button"
+              aria-expanded={inputOpen}
+              onClick={() => {
+                setInputDay(String(current));
+                setInputOpen(!inputOpen);
+              }}
+            >
+              输入
+            </button>
           </div>
+          {inputOpen && (
+            <form
+              className={ui.dayInput}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const start = Number(inputDay);
+                if (Number.isInteger(start) && start >= 1 && start <= max) {
+                  dispatch({ type: "range", mode: menu, start, totalDays });
+                  setMenu(null);
+                  setInputOpen(false);
+                }
+              }}
+            >
+              <label>
+                第 N 天（1–{max}）
+                <input
+                  required
+                  aria-label="输入 Day"
+                  type="number"
+                  min={1}
+                  max={max}
+                  step={1}
+                  value={inputDay}
+                  onChange={(e) => setInputDay(e.target.value)}
+                />
+              </label>
+              <button type="submit">确认范围</button>
+            </form>
+          )}
         </PlannerPopover>
       )}
     </div>

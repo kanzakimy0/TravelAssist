@@ -1,10 +1,11 @@
 # TASK-008.3-A — Planner v0.3 交互升级
 
 ## Metadata
+
 - Task ID: `TASK-008.3`
 - Owner: `A`
 - Issue: `#77`
-- Status: `Planned`
+- Status: `进行中`
 - Depends On: `TASK-008.2-A / #73` merged into `develop`
 - Design Source: `docs/ui/trip-planner.md` v0.3
 - Branch: `feature/a-planner-v03-interactions`
@@ -28,13 +29,17 @@ git log --oneline -15
 ## 3. 右侧上半部
 
 ### 同行人
+
 与 Start Step 3 一致：成人男性、成人女性、儿童、婴儿；每类独立数量下拉/Stepper，摘要同步。
 
 ### 旅行日期
+
 改为出发日期 + 返回日期区间；自动重算天数/夜数并检查固定预约、酒店夜数、Day 越界。
 
 ### 景点 / 餐饮 / 住宿三级偏好
+
 统一：
+
 1. Level 1 卡片摘要
 2. Level 2 快速设置 Chips
 3. Level 3 `更多设置` 二级浮层
@@ -87,6 +92,7 @@ compareEnd = 三天最晚结束
 ## 8. 地图对象 Morph 详情
 
 至少支持：
+
 - itinerary-point
 - recommended-poi
 - recommended-dining-area
@@ -111,6 +117,7 @@ compareEnd = 三天最晚结束
 ## 10. 已确定住宿强规则
 
 某晚住宿确认后：
+
 - 隐藏该晚 `recommended-stay-area`；
 - 转为 `confirmed-stay-point`；
 - 底部住宿块显示具体酒店；

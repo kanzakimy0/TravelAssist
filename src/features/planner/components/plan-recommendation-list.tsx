@@ -61,13 +61,8 @@ export function PlanRecommendationList({
               </span>
               <strong>{plan.name}</strong>
               <small>
-                {plan.days.length}天
-                {
-                  plan.days.filter((day) =>
-                    day.stops.some((stop) => stop.kind === "stay"),
-                  ).length
-                }
-                晚 · {plan.summary}
+                {plan.days.length}天{Math.max(0, plan.days.length - 1)}晚 ·{" "}
+                {plan.summary}
               </small>
             </span>
             <PlannerIcon name="chevron" />

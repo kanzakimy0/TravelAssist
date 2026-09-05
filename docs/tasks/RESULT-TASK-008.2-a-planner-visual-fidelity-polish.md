@@ -1,5 +1,9 @@
 # TASK-008.2-A Result
 
+## Merge Addendum — 2026-09-05
+
+用户确认当前纯视觉范围并授权合并。PR [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop，merge `627b73ae50697ad69ff979ea664ac2e1e60a14e7`；Issue #73 已关闭。合并前 head `9187f622d1ad80e59d78de661dcab5b023dc055c`，53/53 本地回归通过。下文是原提交时的验收记录，Draft / 未合并状态已被本附录替代；参考图缺失等限制仍然保留，不声称最终参考图验收。v0.3 新交互正式由 TASK-008.3 / #77 承接。
+
 ## Status
 
 Partially Completed — 本次纯视觉实现、测试与实际页面对比已完成；未收到定稿参考图，且提交前上游新增 v0.3 业务 / 交互设计，需要确认范围，不声称完整满足 v0.3。

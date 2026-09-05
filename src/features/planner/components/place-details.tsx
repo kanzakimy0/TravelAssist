@@ -5,6 +5,7 @@ import {
   itemsForDay,
   isoDay,
   reservationLabel,
+  visibleAreas,
 } from "../model/trip-model";
 import type {
   PlannerPlace,
@@ -102,14 +103,14 @@ export function PlaceActions({
             aria-label="入住晚数"
             type="number"
             min="1"
-            max={plan.days.length - day + 1}
+            max={Math.max(1, plan.days.length - day)}
             value={nights}
             onChange={(e) =>
               setNights(
                 Math.max(
                   1,
                   Math.min(
-                    plan.days.length - day + 1,
+                    Math.max(1, plan.days.length - day),
                     Number(e.target.value) || 1,
                   ),
                 ),
@@ -397,7 +398,7 @@ export function PlaceDetails({
             <section>
               <h3>附近餐饮与住宿</h3>
               <div className={styles.placeActions}>
-                {state.areas
+                {visibleAreas(state)
                   .filter((a) => a.day === day)
                   .map((a) => (
                     <button

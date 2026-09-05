@@ -15,6 +15,7 @@ import {
   reservationLabel,
   tripReducer,
   timeConflicts,
+  isoDay,
 } from "../src/features/planner/model/trip-model.ts";
 import {
   bindMap,
@@ -207,7 +208,14 @@ test("hotel areas and food areas have three canonical local recommendations each
   }
 });
 test("a three-night hotel is one booking, displayed on every relevant night", () => {
-  const state = add(fixture(), "hotelArea-1-1", { nights: 3 }),
+  // v0.3 return-date validation: three nights require a fourth (checkout) day.
+  const base = fixture();
+  const extended = tripReducer(base, {
+    type: "dates",
+    departure: base.settings.startDate,
+    returning: isoDay(base.settings.startDate, 4),
+  });
+  const state = add(extended, "hotelArea-1-1", { nights: 3 }),
     plan = currentPlan(state);
   const hotels = plan.items.filter((i) => i.type === "hotel");
   assert.equal(hotels.length, 1);

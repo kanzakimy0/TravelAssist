@@ -706,9 +706,13 @@
   border: 0;
   border-radius: 11px;
   padding: 8px 4px;
-  min-height: 42px;
+  min-height: 36px;
   background: transparent;
-  font-size: 13px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.dayRange[data-range-mode="threeDays"] {
+  width: 132px;
 }
 .dayRange > button[aria-pressed="true"] {
   background: var(--planner-accent-soft);
@@ -1013,6 +1017,22 @@
   padding: 3px;
   border-radius: 10px;
 }
+@media (min-width: 768px) and (max-height: 850px) {
+  .bottomPanel[data-bottom-range="threeDays"] {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .bottomPanel[data-bottom-range="threeDays"] .executionSummary {
+    min-height: 18px;
+  }
+  .bottomPanel[data-bottom-range="threeDays"] .bottomTabs button {
+    min-height: 36px;
+    padding-block: 4px;
+  }
+  .bottomPanel[data-bottom-range="threeDays"] .tabContent {
+    padding: 1px;
+  }
+}
 .timeline {
   list-style: none;
   margin: 0;
@@ -1121,6 +1141,9 @@
 }
 .popover {
   position: fixed;
+  margin: 0;
+  inset: auto;
+  color: inherit;
   z-index: 30;
   width: min(440px, calc(100vw - 24px));
   max-height: calc(100dvh - 24px);
@@ -1131,6 +1154,14 @@
   background: var(--color-bg-overlay);
   box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
   backdrop-filter: blur(10px);
+}
+/* A filtered ancestor would make a nested fixed surface relative to its scroll
+   box. Only the outer surface drops blur while its detail surface is open. */
+.popover:has(.popover) {
+  backdrop-filter: none;
+}
+.rightSlot:has(.popover) {
+  z-index: 40;
 }
 .popoverHeader,
 .overlayHeader {
