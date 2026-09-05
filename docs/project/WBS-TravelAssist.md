@@ -244,8 +244,19 @@ src/db/
 | WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
+| TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 待审查 | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | 待提交 | 待创建 → develop |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
+
+### TASK-008.1 执行记录（2026-09-05）
+
+- Owner：A；Issue #60；Status：待审查（实现与 Mock 验收完成，PR 尚未合并）。
+- Task：`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`；Branch：`feature/a-planner-mapbox-interactions`；Commit / PR：待提交创建后补齐。
+- PR #59 合并提交 `1a4201b3181460977c4f16b0c34f60c353751687` 已是 origin/develop 祖先；从 clean 基线 `8159c177b732606c4d1bd7433241677c5fdd8a27` 创建分支。历史 Blocked 条件已解除。
+- 范围：4.2–4.6、4.8–4.9、4.11–4.15 的 Mapbox / Mock 交互子集，7.1 冻结 Mapbox；真实 POI / Route / Transit / Booking / AI / Auth / DB 不在范围，不误报完整业务能力完成。
+- 4.2–4.5、4.8–4.9、4.11–4.13 与 7.1 的本次 UI / Mapbox 子集待审查；4.6 / 4.14 / 4.15 完整业务继续进行中，真实路线、重新规划、最终跨模块 Store / Contract 未完成。TASK-008 原 UI shell 已完成的历史记录不变。
+- 3 个 GeoJSON Source / 13 个角色图层、单日 / 三日 / 城市全行程、两级地点 / 区域详情、统一 TripItem 预约与固定时段保护已实现。无 token fallback 全流程通过，live Mapbox 未验证（token unavailable）。
+- 50 项 tests、lint / typecheck / build、七个视口与键盘 / Escape / 焦点恢复通过；npm ci 无漏洞。全仓格式仅既有两份文档失败，本 Task 文件独立格式检查通过。最终证据见 `docs/tasks/RESULT-TASK-008.1-a-planner-mapbox-interactions.md`。
 
 ## 1. 产品、交互与画面设计
 
@@ -324,20 +335,20 @@ src/db/
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖         | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------ | ------ |
 | 4.1    | Planner 页面整体 Grid         | A      | P0     | 1.17,3.1     | 已完成 |
-| 4.2    | 地图容器与基础控件            | A      | P0     | 4.1,7.1      | 进行中 |
-| 4.3    | 景点 Pin 组件                 | A      | P1     | 4.2,1.12     | 未开始 |
-| 4.4    | 住宿区域覆盖层                | A      | P1     | 4.2,1.12     | 未开始 |
-| 4.5    | 餐饮区域覆盖层                | A      | P1     | 4.2,1.12     | 未开始 |
+| 4.2    | 地图容器与基础控件            | A      | P0     | 4.1,7.1      | 待审查 |
+| 4.3    | 景点 Pin 组件                 | A      | P1     | 4.2,1.12     | 待审查 |
+| 4.4    | 住宿区域覆盖层                | A      | P1     | 4.2,1.12     | 待审查 |
+| 4.5    | 餐饮区域覆盖层                | A      | P1     | 4.2,1.12     | 待审查 |
 | 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中 |
 | 4.7    | 交通方式视觉显示              | A      | P0     | 4.6          | 未开始 |
-| 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 已完成 |
-| 4.9    | 时间轴景点卡片                | A      | P1     | 4.8          | 未开始 |
+| 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 待审查 |
+| 4.9    | 时间轴景点卡片                | A      | P1     | 4.8          | 待审查 |
 | 4.10   | 时间轴交通段                  | A      | P1     | 4.8          | 未开始 |
-| 4.11   | 时间轴餐饮段                  | A      | P1     | 4.8          | 未开始 |
-| 4.12   | 时间轴住宿段                  | A      | P1     | 4.8          | 未开始 |
-| 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 已完成 |
+| 4.11   | 时间轴餐饮段                  | A      | P1     | 4.8          | 待审查 |
+| 4.12   | 时间轴住宿段                  | A      | P1     | 4.8          | 待审查 |
+| 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 待审查 |
 | 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中 |
-| 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 未开始 |
+| 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 进行中 |
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 未开始 |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 未开始 |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
@@ -399,7 +410,7 @@ src/db/
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
-| 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 未开始 |
+| 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 待审查 |
 | 7.2    | Places / POI Provider 选型    | A      | P0     | 1.10     | 未开始 |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 未开始 |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |

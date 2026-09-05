@@ -38,11 +38,13 @@ function QuickCard({
   settings,
   onChange,
   dayCount,
+  nightCount,
 }: {
   field: (typeof fields)[number];
   settings: PlannerSettings;
   onChange: (key: keyof PlannerSettings, value: string) => void;
   dayCount: number;
+  nightCount: number;
 }) {
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -68,7 +70,7 @@ function QuickCard({
         </strong>
         {isDate && (
           <small>
-            {dayCount}天{dayCount - 1}晚 · 示例
+            {dayCount}天{nightCount}晚 · 示例
           </small>
         )}
       </button>
@@ -123,6 +125,7 @@ export function TripQuickSettings(props: {
   settings: PlannerSettings;
   onChange: (key: keyof PlannerSettings, value: string) => void;
   dayCount: number;
+  nightCount: number;
 }) {
   return (
     <>
