@@ -1,5 +1,9 @@
 # TASK-011-A Result
 
+## Tracking Merge Addendum — 2026-09-06
+
+用户已明确授权合并阻塞追踪记录。Docs-only PR [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 已合入 `develop`，merge commit `7e86725a4ad4f47fcdd376d98cd61080012d286f`。该合并只同步 WBS / Result，不解除 #77、#78 前置条件；TASK-011-A 继续保持 Blocked，且仍未创建实现分支。
+
 ## Status
 
 Blocked — TASK-011-A 的两个硬性前置均未合入 `origin/develop`。已按 Task 规则停止；未创建实现分支，未修改业务代码，未运行实现验收。
@@ -29,6 +33,7 @@ Not created. `feature/a-planner-to-trip-detail-workspace` 必须等 #77 与 #78 
 
 - TASK-011 implementation commit: `PENDING`
 - Blocked tracking commit: `081f4c06cd00b4196707515d753e1b627f3ec105`
+- Blocked tracking merge: `7e86725a4ad4f47fcdd376d98cd61080012d286f`
 
 ## Changed Files
 
@@ -50,7 +55,7 @@ Not run — 硬性前置未满足，Task 明确要求在创建实现分支及修
 ## Pull Request
 
 - TASK-011 implementation PR: `PENDING`
-- Blocked tracking PR: [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) — Open / Draft / docs only; it does not satisfy or replace the TASK-011 implementation PR
+- Blocked tracking PR: [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) — Merged / docs only; it does not satisfy or replace the TASK-011 implementation PR
 
 ## GitHub Issue
 
