@@ -247,6 +247,7 @@ src/db/
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
 | TASK-008.3 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner v0.3 交互） | A | 待审查（实现与本地验收完成） | #77 | `docs/tasks/TASK-008.3-a-planner-v03-interactions.md` | `feature/a-planner-v03-interactions` | `5893255`（实现），`871d2e1`（同步 develop 文档） | [#85](https://github.com/kanzakimy0/TravelAssist/pull/85) Draft，未合并；64/64 tests，五尺寸 Mapbox/fallback、比例时间带/Morph/酒店联动通过；全仓格式基线15份例外见 Result |
+| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 阻塞（#77 的 PR #85 为 Draft 且未合并；#78 仍为 Planned、无实现 PR） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | 实现 `PENDING`；追踪 `docs/a-task-011-blocked-tracking` | 实现 `PENDING`；`081f4c0`（阻塞追踪），`7e86725`（追踪合并） | [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) docs-only，已合入 develop；实现 PR `PENDING` |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 
