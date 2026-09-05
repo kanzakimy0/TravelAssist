@@ -14,8 +14,11 @@
 - **Execution Branch:** `fix/b-wbs-5-2-problem-cleanup`
 - **Task File:** `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md`
 - **Handoff Record:** `docs/project/WBS-5.2-PROBLEM-HANDOFF.md`
-- **Issue:** 执行时搜索；若不存在则创建 `[Follow-up][WBS 5.2][B] Resolve baseline problems`
-- **Status:** Ready to Execute
+- **Issue:** [#56](https://github.com/kanzakimy0/TravelAssist/issues/56)
+- **Status:** 待验收
+- **Base Commit:** `96a88297196cced771f7e3bb753ade4f17f96d05`
+- **Commit:** PENDING
+- **Pull Request:** PENDING
 
 ---
 
@@ -314,18 +317,21 @@ Prerequisite: B 5.2 reusable Avatar Popover 已完成
 ## Resolved by B
 
 ### Prettier
+
 - file:
 - result:
 
 ## Remaining A / Shared Infra
 
 ### npm allowScripts
+
 - status:
 - evidence:
 - suggested owner:
 - suggested WBS:
 
 ### favicon
+
 - status:
 - evidence:
 - suggested owner:
@@ -334,12 +340,15 @@ Prerequisite: B 5.2 reusable Avatar Popover 已完成
 ## Deferred by Design
 
 ### Real Logout
+
 - target: 5.3 / 8.3
 
 ### Main Header Integration
+
 - target: 3.4
 
 ### Safari / Firefox
+
 - current evidence:
 - target QA: 9.12
 
@@ -506,13 +515,16 @@ PR Body 必须包含：
 
 ```md
 ## Parent
+
 - WBS 5.2 remains completed
 - Issue #50 remains closed
 
 ## Resolved
+
 - B-owned Prettier baseline files
 
 ## Not Modified / Handed Off
+
 - TASK-008-A formatting
 - npm allowScripts policy
 - favicon
@@ -521,6 +533,7 @@ PR Body 必须包含：
 - Safari real-device QA
 
 ## Safety
+
 - Other Task files modified: No
 - Runtime source modified: No
 - package.json / lock modified: No
@@ -558,37 +571,42 @@ PR Body 必须包含：
 # WBS-5.2-B Problems Cleanup Result
 
 ## Status
+
 Completed / Awaiting Review / Blocked
 
 ## Parent
+
 - WBS 5.2: 已完成（unchanged）
 - Issue #50: Closed（unchanged）
 
 ## Base Commit
+
 -
 
 ## Follow-up Issue
+
 -
 
 ## Resolved by B
 
-| Problem | Result |
-|---|---|
-| B-owned Prettier baseline | |
-| Runtime regression smoke | |
+| Problem                   | Result |
+| ------------------------- | ------ |
+| B-owned Prettier baseline |        |
+| Runtime regression smoke  |        |
 
 ## Handoff
 
-| Problem | Owner | Target WBS | Status |
-|---|---|---|---|
-| TASK-008-A formatting | A | TASK-008-A owner | |
-| npm allowScripts | A / Shared Infra | 2.x | |
-| favicon 404 | A | 3.1 / 10.5 | |
-| Safari / Firefox QA | B QA | 9.12 | |
-| Real Logout | B | 5.3 / 8.3 | |
-| A Header integration | A | 3.4 | |
+| Problem               | Owner            | Target WBS       | Status |
+| --------------------- | ---------------- | ---------------- | ------ |
+| TASK-008-A formatting | A                | TASK-008-A owner |        |
+| npm allowScripts      | A / Shared Infra | 2.x              |        |
+| favicon 404           | A                | 3.1 / 10.5       |        |
+| Safari / Firefox QA   | B QA             | 9.12             |        |
+| Real Logout           | B                | 5.3 / 8.3        |        |
+| A Header integration  | A                | 3.4              |        |
 
 ## Validation
+
 - npm install:
 - lint:
 - typecheck:
@@ -599,12 +617,14 @@ Completed / Awaiting Review / Blocked
 - runtime smoke:
 
 ## Git
+
 - Branch:
 - Commit:
 - PR:
 - Merge Commit:
 
 ## Ownership Safety
+
 - A Task modified: No
 - Other B Task modified: No
 - Runtime source modified: No
@@ -612,6 +632,7 @@ Completed / Awaiting Review / Blocked
 - WBS 5.2 reopened: No
 
 ## Next
+
 Stop. Do not automatically start 5.5.
 ```
 
@@ -629,3 +650,55 @@ Stop. Do not automatically start 5.5.
 - 3.4 A Header
 
 下一项必须重新检查最新 develop / WBS / Task / Issue / PR 后再开始。
+
+---
+
+# Execution Record
+
+## Preflight
+
+- 执行日期：2026-09-05；Workspace：F:\TravelAssist。
+- 初始工作区 clean，origin 正确；fetch --all --prune 与 develop pull --ff-only 成功。
+- Base：96a88297196cced771f7e3bb753ade4f17f96d05（PR #55，仅新增本 Follow-up 定义）。沿用当前 Task，不覆盖历史 Task。
+- 最新 A Task：TASK-008-A / Issue #51，Planned；最近 B 已完成任务：WBS-5.2-B / Issue #50 Closed。
+- 搜索 cleanup / baseline problems Issue、打开的 PR 和远程分支，无等价执行任务；新建独立 Issue #56 和 fix/b-wbs-5-2-problem-cleanup 分支。
+- WBS 5.2 保持已完成，Issue #50 保持 Closed。根据现有 task-tracking.md，仅新增 Follow-up 独立 tracking row，不修改父项或任何其他 WBS 状态。
+
+## Validation Evidence
+
+| Check                | Result             | Evidence                                                                                     |
+| -------------------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| npm install          | Passed             | exit 0；361 packages；0 vulnerabilities；allowScripts 提示仍存在                             |
+| npm run lint         | Passed             | exit 0，无 warning                                                                           |
+| npm run typecheck    | Passed             | exit 0                                                                                       |
+| npm run format:check | Baseline exception | exit 1，清理后仅剩 A-owned TASK-008-a-trip-planner-shell.md                                  |
+| B-owned Prettier     | Passed             | 七个精确路径全部通过，未使用全仓 write                                                       |
+| Markdown semantics   | Passed             | 七份格式预览及落盘结果 AST 与 Base 完全相同（仅忽略 position）                               |
+| npm run build        | Passed             | exit 0；9 个静态页面生成；无 build warning                                                   |
+| git diff --check     | Passed             | 无空白错误                                                                                   |
+| Runtime source diff  | None               | src / public / package.json / package-lock.json / .npmrc 与 Base 一致                        |
+| Other Task diff      | None               | 父 Task、TASK-008-A 与其他 A/B Task 未修改                                                   |
+| Runtime smoke        | Passed             | Edge 152.0.4191.62，1440×900 / 320×740，全部五个目标及开关/外部点击/Esc/焦点/disabled Logout |
+| Cross-browser        | Deferred 9.12      | Firefox / WebKit 二进制未安装，未增加任何依赖                                                |
+
+### Resource check
+
+favicon 显式 HTTP/fetch 请求仍为 404；浏览器 Resource Timing 记录的桌面 28 条、窄屏 26 条资源中，仅 /favicon.ico 失败。无其他资源 404、无阻塞 page error。具体归属和后续处理见 [WBS-5.2-PROBLEM-HANDOFF.md](../project/WBS-5.2-PROBLEM-HANDOFF.md)。
+
+### Audit scope
+
+- 七个既有 B 文档仅 Prettier 格式变化，共 107 行替换，内容/设计语义/状态不变。
+- 当前 Follow-up Task 沿用 PR #55 的原任务定义，只更新自身元数据、格式与执行结果。
+- 新增 Handoff；共享 WBS 仅新增当前 Follow-up tracking row，父 5.2 与其他 WBS 状态不变。
+- npm 提示、favicon、A TASK-008 格式属于 Owner handoff；Logout / A Header 属于 Deferred by design，均未伪装成已修复。
+- 本机非提交 smoke 脚本与 JSON 证据：F:\TravelAssist\node_modules\.cache\wbs-5.2-followup\。该脚本使用现有 bundled Playwright，不是新增工程依赖或 runtime 源码。
+
+## Delivery
+
+- Status: Awaiting Review；本地验收完成，等待提交、PR 合并及最终状态同步。
+- Commit: PENDING
+- Pull Request: PENDING
+- Parent WBS 5.2: 已完成（unchanged）
+- Parent Issue #50: Closed（unchanged）
+- Follow-up Issue #56: Open / 待验收。
+- Next: Stop. Do not automatically start 5.5 / 5.3 / 9.12 / 3.4.

@@ -18,32 +18,32 @@
 
 本次不只读取旧审计结论，同时读取了 WBS、设计书、实际 SVG 与页面源码。
 
-| 依据 | 仓库路径 / 记录 |
-| --- | --- |
-| Master WBS | `docs/project/WBS-TravelAssist.md` |
-| 个人中心 IA / 视觉规则 | `docs/ui/personal-center.md` |
-| Shell 冻结设计 | `docs/ui/personal-center-shell.md` |
-| 原 5.1 交付与历史验收 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` |
-| 已有素材审计 | `docs/project/WBS-5.1-PERSONAL-CENTER-ASSET-AUDIT.md` |
-| 已有素材完成记录 | `docs/project/WBS-5.1-ASSET-SYNC.md` |
-| 已有接入要求 | `docs/tasks/CODEX-WBS-5.1-VISUAL-INTEGRATION.md` |
-| Shell / Sidebar / Home 源码 | `src/features/personal-center/components/` |
-| 运行时局部样式 | `src/features/personal-center/personal-center.module.css` |
-| Agent / 追踪规则 | `AGENTS.md`、`docs/development/task-tracking.md` |
-| 实际可用检查命令 | `package.json` |
+| 依据                        | 仓库路径 / 记录                                                 |
+| --------------------------- | --------------------------------------------------------------- |
+| Master WBS                  | `docs/project/WBS-TravelAssist.md`                              |
+| 个人中心 IA / 视觉规则      | `docs/ui/personal-center.md`                                    |
+| Shell 冻结设计              | `docs/ui/personal-center-shell.md`                              |
+| 原 5.1 交付与历史验收       | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` |
+| 已有素材审计                | `docs/project/WBS-5.1-PERSONAL-CENTER-ASSET-AUDIT.md`           |
+| 已有素材完成记录            | `docs/project/WBS-5.1-ASSET-SYNC.md`                            |
+| 已有接入要求                | `docs/tasks/CODEX-WBS-5.1-VISUAL-INTEGRATION.md`                |
+| Shell / Sidebar / Home 源码 | `src/features/personal-center/components/`                      |
+| 运行时局部样式              | `src/features/personal-center/personal-center.module.css`       |
+| Agent / 追踪规则            | `AGENTS.md`、`docs/development/task-tracking.md`                |
+| 实际可用检查命令            | `package.json`                                                  |
 
 ## 3. 素材盘点：缺文件与缺接入分开处理
 
-| 项目 | 实际状态 | 本次处理 / 后续动作 |
-| --- | --- | --- |
-| Sidebar 鸟居、水面、远山、少量樱花插画 | 正式 SVG 已存在，1200 × 800；Sidebar 已通过 next/image 引用 | 复用；验收不同高度下的裁切和导航空间 |
-| 主内容暖米白 / 和纸 / 淡粉纹理 | 正式 SVG 已存在，1920 × 1080；主区域仍使用原 CSS 渐变 | **不再生成图片；由 Codex 接入现有 SVG** |
-| 设计源文件 | 两项源文件均在 `assets/design/personal-center/` 中登记 | 保留，不新建第二套来源 |
-| 五项导航、铃铛、Chevron、更多功能图标 | 已有组件 / inline SVG 实现 | 继续用代码，不制作按钮截图或位图 |
-| Avatar | 当前是 Mock 用户首字母占位 | 不是 Shell 图片阻塞；真实头像由账户 / Profile 任务处理 |
-| 品牌 Logo | 当前为品牌文字和代码图标；原审计记录正式 Logo 未冻结 | 不在 5.1 中擅自设计正式品牌资产 |
-| Hero 与三张旅行卡片 | 同用 `/media/home/home-hero-poster.webp`，明确为 Mock | 不是 5.1 的素材缺失；独立目的地封面仍属于后续内容完善 |
-| Loading / Empty / Error 状态插画 | 不在本次 Shell 素材冻结范围内 | 按 1.29 / 5.20 后续设计与实现，不在这里临时扩项 |
+| 项目                                   | 实际状态                                                    | 本次处理 / 后续动作                                    |
+| -------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------ |
+| Sidebar 鸟居、水面、远山、少量樱花插画 | 正式 SVG 已存在，1200 × 800；Sidebar 已通过 next/image 引用 | 复用；验收不同高度下的裁切和导航空间                   |
+| 主内容暖米白 / 和纸 / 淡粉纹理         | 正式 SVG 已存在，1920 × 1080；主区域仍使用原 CSS 渐变       | **不再生成图片；由 Codex 接入现有 SVG**                |
+| 设计源文件                             | 两项源文件均在 `assets/design/personal-center/` 中登记      | 保留，不新建第二套来源                                 |
+| 五项导航、铃铛、Chevron、更多功能图标  | 已有组件 / inline SVG 实现                                  | 继续用代码，不制作按钮截图或位图                       |
+| Avatar                                 | 当前是 Mock 用户首字母占位                                  | 不是 Shell 图片阻塞；真实头像由账户 / Profile 任务处理 |
+| 品牌 Logo                              | 当前为品牌文字和代码图标；原审计记录正式 Logo 未冻结        | 不在 5.1 中擅自设计正式品牌资产                        |
+| Hero 与三张旅行卡片                    | 同用 `/media/home/home-hero-poster.webp`，明确为 Mock       | 不是 5.1 的素材缺失；独立目的地封面仍属于后续内容完善  |
+| Loading / Empty / Error 状态插画       | 不在本次 Shell 素材冻结范围内                               | 按 1.29 / 5.20 后续设计与实现，不在这里临时扩项        |
 
 ### 运行时路径
 
@@ -56,11 +56,11 @@
 
 ### 本次读到的运行时文件指纹
 
-| 文件 | Git blob SHA |
-| --- | --- |
-| `sidebar-torii-watercolor.svg` | `848044d7ebb7d71a4175aab93dd8cdd3dd7efba7` |
+| 文件                                  | Git blob SHA                               |
+| ------------------------------------- | ------------------------------------------ |
+| `sidebar-torii-watercolor.svg`        | `848044d7ebb7d71a4175aab93dd8cdd3dd7efba7` |
 | `personal-center-surface-texture.svg` | `53d5234c9b39fc42a7873db2b352ef25eea66753` |
-| `personal-center.module.css` | `939d6a536e124eca9248454dcbcca76091f6429d` |
+| `personal-center.module.css`          | `939d6a536e124eca9248454dcbcca76091f6429d` |
 
 指纹只用于锁定本次审查版本，不要求 Codex 回退后续合法提交。
 
@@ -92,17 +92,17 @@
 
 ## 5. Codex 就绪判断
 
-| 条件 | 结论 |
-| --- | --- |
-| 设计依据 | 1.21 / 1.22 已有冻结文档 |
-| 正式图片 | 两项已在 develop，可直接引用 |
-| 代码落点 | 已确定为 B 的个人中心组件和局部 CSS |
-| 原 5.1 状态 | WBS 为已完成；本次不回退原历史记录 |
-| 同类进行中工作 | 本次查询未发现指向 develop 的开放 PR；未发现匹配 5.1 的开放 Issue。执行前仍须重新查询 |
-| 业务依赖 | 此次静态视觉完善不应引入认证、API、数据库或 Planner 接线 |
-| 自动检查 | 仓库已有 lint、typecheck、format:check、build 脚本 |
-| 浏览器验证 | 必须在 Codex 可用环境重新执行；本轮没有执行 |
-| 环境权限 | Codex 所在工作区需能读取最新仓库、安装锁定依赖、启动浏览器；本次没有核实您的 Codex 环境配置 |
+| 条件           | 结论                                                                                        |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| 设计依据       | 1.21 / 1.22 已有冻结文档                                                                    |
+| 正式图片       | 两项已在 develop，可直接引用                                                                |
+| 代码落点       | 已确定为 B 的个人中心组件和局部 CSS                                                         |
+| 原 5.1 状态    | WBS 为已完成；本次不回退原历史记录                                                          |
+| 同类进行中工作 | 本次查询未发现指向 develop 的开放 PR；未发现匹配 5.1 的开放 Issue。执行前仍须重新查询       |
+| 业务依赖       | 此次静态视觉完善不应引入认证、API、数据库或 Planner 接线                                    |
+| 自动检查       | 仓库已有 lint、typecheck、format:check、build 脚本                                          |
+| 浏览器验证     | 必须在 Codex 可用环境重新执行；本轮没有执行                                                 |
+| 环境权限       | Codex 所在工作区需能读取最新仓库、安装锁定依赖、启动浏览器；本次没有核实您的 Codex 环境配置 |
 
 **结论：素材与任务边界层面可开始；执行环境可用性和最终视觉合格与否仍需实际运行验证。**
 

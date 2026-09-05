@@ -10,11 +10,11 @@ WBS 5.1 不需要重新设计页面，也不需要为所有 UI 元素制作位�
 
 ### 已有且可继续使用
 
-| 素材 | GitHub 路径 | 状态 |
-|---|---|---|
-| Sidebar 鸟居水景插画 | `public/media/personal-center/sidebar-torii-watercolor.svg` | 已有正式运行时素材 |
-| Sidebar 鸟居设计源 | `assets/design/personal-center/sidebar-torii-watercolor.svg` | 已有 |
-| Home poster（仅 Mock 内容临时复用） | `public/media/home/home-hero-poster.webp` | 已有，但不属于 5.1 正式 Shell 素材 |
+| 素材                                | GitHub 路径                                                  | 状态                               |
+| ----------------------------------- | ------------------------------------------------------------ | ---------------------------------- |
+| Sidebar 鸟居水景插画                | `public/media/personal-center/sidebar-torii-watercolor.svg`  | 已有正式运行时素材                 |
+| Sidebar 鸟居设计源                  | `assets/design/personal-center/sidebar-torii-watercolor.svg` | 已有                               |
+| Home poster（仅 Mock 内容临时复用） | `public/media/home/home-hero-poster.webp`                    | 已有，但不属于 5.1 正式 Shell 素材 |
 
 ## 真正缺失的 5.1 正式素材
 
