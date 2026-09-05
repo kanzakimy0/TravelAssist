@@ -1,5 +1,7 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { mockPersonalUser } from "@/features/personal-center/constants/personal-navigation";
 import { Dialog } from "./dialog";
 import styles from "../profile.module.css";
 
@@ -12,10 +14,22 @@ export function Avatar({
 }) {
   return (
     <span className={styles.avatar}>
-      {value && value !== "default" ? (
+      {value === mockPersonalUser.avatar ? (
+        <Image
+          src={mockPersonalUser.avatar}
+          alt="Yuki 的演示头像"
+          fill
+          sizes="80px"
+          className={styles.avatarPhoto}
+        />
+      ) : value && value !== "default" ? (
         // A blob URL is a local preview, deliberately not sent to the Next image optimizer.
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={value} alt="个人头像本地预览" />
+        <img
+          src={value}
+          alt="个人头像本地预览"
+          className={styles.avatarPhoto}
+        />
       ) : value === "default" ? (
         <span aria-label="默认头像">{initial}</span>
       ) : (
@@ -97,7 +111,7 @@ export function AvatarEditor({
       return;
     }
     const url = URL.createObjectURL(file);
-    const probe = new Image();
+    const probe = new window.Image();
     probe.src = url;
     try {
       await probe.decode();

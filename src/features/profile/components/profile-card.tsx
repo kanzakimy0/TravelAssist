@@ -20,7 +20,7 @@ const initialProfile: Profile = {
   gender: "女",
   region: "日本",
   city: "东京",
-  avatar: "default",
+  avatar: mockPersonalUser.avatar,
 };
 const labels = {
   nickname: "昵称",

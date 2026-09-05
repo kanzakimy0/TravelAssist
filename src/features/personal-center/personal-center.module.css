@@ -75,15 +75,11 @@
   letter-spacing: -0.04em;
 }
 
-.brandMark {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
+.brandLogo {
+  position: relative;
+  width: min(100%, 190px);
+  height: 64px;
   flex-shrink: 0;
-  border-radius: 50%;
-  color: var(--pc-accent-primary);
-  background: var(--pc-accent-soft);
 }
 
 .userSummary {
@@ -97,14 +93,21 @@
 
 .avatar,
 .smallAvatar {
+  position: relative;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  overflow: hidden;
   border: 1px solid #e3c6b6;
   border-radius: 50%;
   background: linear-gradient(145deg, #f7ddcb, #edd0c9);
   color: #704c40;
   font-family: var(--pc-font-heading);
+}
+
+.identityPhoto {
+  object-fit: cover;
+  object-position: 50% 40%;
 }
 
 .avatar {
@@ -424,7 +427,7 @@
 .heroPhoto {
   z-index: -2;
   object-fit: cover;
-  object-position: 65% 65%;
+  object-position: 65% 50%;
 }
 
 .heroShade {
@@ -546,6 +549,9 @@
 }
 
 .tripCard {
+  position: relative;
+  display: flex;
+  min-height: clamp(230px, 27vh, 310px);
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--pc-border-subtle);
@@ -563,10 +569,17 @@
 }
 
 .tripCover {
-  position: relative;
-  height: clamp(110px, 13vh, 158px);
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   background: #e7ddce;
+}
+
+.tripCover::after {
+  position: absolute;
+  inset: 34% 0 0;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgb(25 25 27 / 80%));
 }
 
 .tripCover img {
@@ -575,6 +588,7 @@
 
 .tripStatus {
   position: absolute;
+  z-index: 1;
   top: 12px;
   left: 12px;
   padding: 3px 10px;
@@ -585,7 +599,12 @@
 }
 
 .tripCardBody {
-  padding: 16px;
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  width: 100%;
+  padding: 24px 20px 20px;
+  color: #fff;
 }
 
 .tripCardBody > div,
@@ -604,7 +623,7 @@
 
 .tripCardBody span,
 .tripCardBody p {
-  color: var(--pc-text-secondary);
+  color: rgb(255 255 255 / 88%);
   font-size: 12px;
 }
 
@@ -740,15 +759,16 @@ a.featureCard:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .tripCover {
-    height: 150px;
+  .tripCard {
+    min-height: 240px;
   }
 
   .heroShade {
     background: linear-gradient(
       90deg,
-      rgb(255 248 234 / 94%),
-      rgb(255 248 234 / 68%)
+      rgb(255 248 234 / 96%) 0%,
+      rgb(255 248 234 / 78%) 55%,
+      rgb(255 248 234 / 10%) 100%
     );
   }
 
