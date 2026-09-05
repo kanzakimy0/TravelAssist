@@ -240,6 +240,7 @@ src/db/
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
 | TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 已完成 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | `31982a3` | #32 |
 | TASK-007（含 007.1） | 3.6 / 3.8（Step 1–5 版式修正） | B | 部分完成（007.1 已完成，指定背景原图待提供） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `d8e7ae1`（仅本地） | 未创建，避免自动合入未完成版本 |
+| WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 
@@ -275,8 +276,8 @@ src/db/
 | 1.21   | 个人中心 Information Architecture     | B      | P0     | 1.3       | 已完成 |
 | 1.22   | 头像菜单 / Personal Center Shell 设计 | B      | P0     | 1.21      | 已完成 |
 | 1.23   | 登录 / 注册 / 找回密码画面设计        | B      | P1     | 1.21      | 已完成 |
-| 1.24   | Profile / 账户设置画面设计            | B      | P1     | 1.21      | 未开始 |
-| 1.25   | 偏好管理中心画面设计                  | B      | P0     | 1.21      | 未开始 |
+| 1.24   | Profile / 账户设置画面设计            | B      | P1     | 1.21      | 已完成 |
+| 1.25   | 偏好管理中心画面设计                  | B      | P0     | 1.21      | 进行中 |
 | 1.26   | 同行人管理画面设计                    | B      | P1     | 1.25      | 未开始 |
 | 1.27   | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B      | P0     | 1.21      | 未开始 |
 | 1.28   | 账户安全 / 数据删除画面设计           | B      | P1     | 1.24      | 未开始 |
@@ -345,7 +346,7 @@ src/db/
 
 | WBS ID | 工作项                                        | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | --------------------------------------------- | ------ | ------ | -------- | ------ |
-| 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 未开始 |
+| 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
 | 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 未开始 |
 | 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
 | 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 未开始 |
