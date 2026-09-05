@@ -25,7 +25,7 @@ import {
   presentationPlan,
   tripReducer,
 } from "../model/trip-model";
-import type { PlannerSettings, StopKind } from "../model/planner-types";
+import type { StopKind } from "../model/planner-types";
 import { PlannerMapShell } from "./planner-map-shell";
 import { MapLayerToolbar } from "./map-layer-toolbar";
 import { DayRangeSelector } from "./day-range-selector";
@@ -60,7 +60,6 @@ export function PlannerPage() {
   });
   // Compatibility adapter for the established shell controls; no second selection state.
   const state = { ...trip.ui, selectedStopId: trip.ui.selectedTripItemId };
-  const settings = trip.settings;
   function dispatch(action: PlannerAction) {
     if (action.type === "range") dispatchTrip(action);
     else if (action.type === "plan")
@@ -141,9 +140,6 @@ export function PlannerPage() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  function changeSetting(key: keyof PlannerSettings, value: string) {
-    dispatchTrip({ type: "setting", key, value });
-  }
   function replan() {
     setRefreshing(true);
     timer.current = setTimeout(() => {
@@ -165,14 +161,15 @@ export function PlannerPage() {
       type: "inspect",
       id: item?.placeId ?? id,
       level: view.areas.some((a) => a.id === id) ? "area" : "quick",
+      day: feature?.day,
     });
   }
   const rightContent = (
     <PlannerRightPanel
       plans={trip.plans.map((p) => presentationPlan(trip, p))}
       plan={datedPlan}
-      settings={settings}
-      onChange={changeSetting}
+      state={trip}
+      dispatch={dispatchTrip}
       onPlan={(next) => {
         dispatch({ type: "plan", plan: next });
       }}
@@ -234,6 +231,8 @@ export function PlannerPage() {
       >
         <div className={styles.mapWorkspace}>
           <PlannerMapShell
+            state={trip}
+            dispatch={dispatchTrip}
             view={view}
             travelHints={Object.fromEntries(
               plan.items
@@ -345,7 +344,7 @@ export function PlannerPage() {
           {bottomContent}
         </PlannerOverlay>
       )}
-      {trip.ui.inspection && (
+      {trip.ui.inspection?.level === "detail" && (
         <PlaceDetails state={trip} dispatch={dispatchTrip} />
       )}
       {trip.ui.bookingOpen && (

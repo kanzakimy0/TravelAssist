@@ -8,9 +8,11 @@ import {
   presentationPlan,
   rangeDays,
   reservationLabel,
+  visibleAreas,
 } from "../model/trip-model";
 import type { TripAction, TripDay, TripState } from "../model/trip-model";
 import { ItineraryTimeline } from "./itinerary-timeline";
+import { ProportionalTimeline } from "./proportional-timeline";
 import { PlannerIcon } from "./planner-icon";
 import styles from "../planner.module.css";
 
@@ -119,7 +121,9 @@ export function BottomExecutionPanel({
         aria-labelledby={`tab-${tab}`}
         tabIndex={0}
       >
-        {mode === "day" ? (
+        {tab === "itinerary" && mode !== "all" ? (
+          <ProportionalTimeline state={state} dispatch={dispatch} />
+        ) : mode === "day" ? (
           <DayContent
             state={state}
             day={focused}
@@ -386,7 +390,7 @@ function DayContent({
               {i.startTime} {i.title} · {reservationLabel(i)}
             </button>
           ))}
-        {state.areas
+        {visibleAreas(state)
           .filter((a) => a.day === day.day)
           .map((a) => (
             <button

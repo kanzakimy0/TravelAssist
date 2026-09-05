@@ -6,7 +6,7 @@
 > Target Branch: `develop`  
 > Feature Branch: `feature/a-planner-visual-fidelity-polish`
 
-> 执行状态（2026-09-05）：待审查 / Partially Completed。已提交纯视觉实现与五尺寸对比证据；待补充定稿参考图并确认执行期间新增 v0.3 设计的范围差异。未合并。完整追踪见 [Result](RESULT-TASK-008.2-a-planner-visual-fidelity-polish.md)。以下正式规格保留，不将后续业务要求自动纳入本 Task。
+> 执行状态（2026-09-05）：用户确认当前纯视觉范围并授权合并；PR #83 已合入 develop（`627b73a`）。原定稿参考图限制留档，v0.3 新交互由 TASK-008.3 / #77 承接。完整追踪见 [Result](RESULT-TASK-008.2-a-planner-visual-fidelity-polish.md)。以下正式规格保留。
 
 ## 1. 任务目标
 

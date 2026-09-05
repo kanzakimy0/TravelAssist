@@ -352,6 +352,8 @@ export async function mountMapbox(
   select: (id: string, tripItemId?: string) => void,
   status: (message: string) => void,
   getTravelHints: () => Record<string, string> = () => ({}),
+  dismiss: () => void = () => {},
+  onAnchor: (point: { x: number; y: number } | null) => void = () => {},
 ): Promise<MapSession | null> {
   if (!token?.trim()) return null;
   const { installMapArtwork, warmMapStyle, travelBubbles } =
@@ -428,7 +430,13 @@ export async function mountMapbox(
           ? properties.tripItemId
           : undefined,
       );
+    else dismiss();
   });
+  function publishAnchor() {
+    if (ready && !destroyed)
+      onAnchor(latest?.focus ? map.project(latest.focus) : null);
+  }
+  map.on("move", publishAnchor);
   map.on("mousemove", (event) => {
     if (ready && !destroyed)
       map.getCanvas().style.cursor = map.queryRenderedFeatures(event.point, {
@@ -443,6 +451,7 @@ export async function mountMapbox(
   );
   function updateView(view: MapView) {
     controller.update(view);
+    publishAnchor();
     const data: Collection = {
       type: "FeatureCollection",
       features: travelBubbles(view, getTravelHints()).map((b) => ({
