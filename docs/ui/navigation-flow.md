@@ -80,7 +80,7 @@ Personal Center 返回首页：
 → /
 ```
 
-不再额外增加：
+这是 Personal Center 返回产品首页的唯一标准入口；不再额外增加：
 
 ```text
 “返回 TravelAssist”
@@ -162,7 +162,7 @@ UI Step 3
 
 ### 7.1 Logo
 
-TravelAssist Logo 是 Personal Center 返回产品首页的标准入口：
+TravelAssist Logo 是 Personal Center 返回产品首页的**唯一标准入口**：
 
 ```text
 TravelAssist Logo → /
