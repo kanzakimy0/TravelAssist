@@ -252,6 +252,112 @@
   font-size: 19px;
 }
 
+/* WBS 5.2 only: native top layer avoids changing the accepted Shell overflow. */
+.avatarTrigger:not(:disabled) {
+  cursor: pointer;
+}
+
+.avatarTrigger:hover,
+.avatarTrigger[aria-expanded="true"] {
+  background: var(--pc-accent-soft);
+}
+
+.avatarPopover {
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  width: min(292px, calc(100vw - 32px));
+  margin: 0;
+  padding: 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 18px;
+  color: var(--pc-text-primary);
+  background: var(--pc-bg-card);
+  box-shadow: 0 12px 32px rgb(113 78 59 / 14%);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.avatarPopoverIdentity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 8px 14px;
+}
+
+.avatarMenuList {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.avatarMenuList > li:first-child {
+  margin-bottom: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--pc-border-subtle);
+}
+
+.avatarMenuAccount {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--pc-border-subtle);
+}
+
+.avatarMenuLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.avatarMenuLink > svg {
+  flex-shrink: 0;
+}
+
+.avatarMenuLink > svg:last-child:not(:first-child) {
+  margin-left: auto;
+}
+
+.avatarMenuLink[data-primary],
+.avatarMenuLink:hover,
+.avatarMenuLink:focus-visible {
+  color: var(--pc-nav-active-text);
+  background: var(--pc-nav-active-bg);
+}
+
+.avatarMenuLink:hover,
+.avatarMenuLink:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.avatarLogout {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--pc-text-secondary);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+}
+
+.avatarLogout small {
+  font-size: 11px;
+}
+
 .contentArea {
   flex: 1;
   min-width: 0;
