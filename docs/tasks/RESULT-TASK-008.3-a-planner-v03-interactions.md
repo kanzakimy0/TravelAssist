@@ -1,5 +1,9 @@
 # TASK-008.3-A Result
 
+## Merge Preparation Addendum — 2026-09-06
+
+用户已授权合并 #77。PR #85 已在隔离工作树安全同步最新 `origin/develop` `43c518d02acb45ff77fd6134c2837ea81e2523f5`，仅 `docs/project/WBS-TravelAssist.md` 发生冲突并保留双方正确追踪记录；应用代码无冲突。集成提交为 `004c40b`。重新验证结果：npm ci、lint、typecheck、build、64/64 Node tests、改动文件 Prettier、diff-check 全部通过。全仓 format-check 仍只有 17 份未由本 Task 修改的上游文档例外；最新 develop 相对原 PR 只增加文档，因此既有五尺寸真实 Mapbox / fallback 浏览器验收仍适用于相同应用树。
+
 ## Status
 
 Completed — 实现与本地验收完成，待审查 / 未合并。全仓格式检查存在 15 份未修改的上游文档基线例外；本 Task 文件格式通过。未自动 merge，未继续 TASK-010。
@@ -18,7 +22,7 @@ TASK-008.2 / Issue #73 对应 PR [#83](https://github.com/kanzakimy0/TravelAssis
 - Feature Branch: `feature/a-planner-v03-interactions` → `develop`。
 - Implementation Commit: `58932555d26b4ef5fd98848e836e985848508066`。
 - Documentation Integration Commit: `871d2e1964d28bbeef43424394f157e2532c2247`。
-- PR: [#85](https://github.com/kanzakimy0/TravelAssist/pull/85)，Open / Draft / 未合并。Result 与状态回填提交仅更新追踪文档；最新 head 以 PR Commits 为准。
+- PR: [#85](https://github.com/kanzakimy0/TravelAssist/pull/85)，待合并。Result 与状态回填提交仅更新追踪文档；最新 head 以 PR Commits 为准。
 - WBS: [Master WBS](../project/WBS-TravelAssist.md) TASK-008.3 行为待审查；没有把真实 Route / AI / DB 标为完成。
 
 ## Changed Files

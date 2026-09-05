@@ -5,11 +5,12 @@
 - Task ID: `TASK-008.3`
 - Owner: `A`
 - Issue: `#77`
-- Status: `待审查`（实现与本地验收完成；PR #85 Draft，未合并）
+- Status: `待审查`（实现与最新 develop 集成验收完成；PR #85 待合并）
 - Depends On: `TASK-008.2-A / #73` merged into `develop`
 - Design Source: `docs/ui/trip-planner.md` v0.3
 - Branch: `feature/a-planner-v03-interactions`
 - Implementation: `58932555d26b4ef5fd98848e836e985848508066`
+- Latest Develop Integration: `004c40b`（基线 `43c518d`）
 - PR: [#85](https://github.com/kanzakimy0/TravelAssist/pull/85)
 - Result: [TASK-008.3-A Result](RESULT-TASK-008.3-a-planner-v03-interactions.md)
 
