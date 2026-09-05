@@ -176,8 +176,10 @@
 
 .sidebarArtworkArea {
   position: relative;
-  flex: 1 0 160px;
-  min-height: 160px;
+  /* Match the approved 1200x800 artwork so cover preserves the full scene. */
+  flex: 0 0 auto;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
   max-height: 350px;
   margin-top: auto;
   overflow: hidden;
