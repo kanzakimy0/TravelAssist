@@ -2,7 +2,8 @@
 
 > Task ID：`TASK-008`  
 > Owner：`A`  
-> Status：`Planned / Ready to Execute after preflight`  
+> Status：`待审查 / UI shell implemented and verified; not merged`
+>
 > GitHub Issue：`#51`  
 > Task File：`docs/tasks/TASK-008-a-trip-planner-shell.md`  
 > Feature Branch：`feature/a-trip-planner-shell-v2`  
@@ -434,7 +435,7 @@ Day 1–3 ▼
 即：
 
 ```ts
-windowCount = max(totalDays - 3 + 1, 0)
+windowCount = max(totalDays - 3 + 1, 0);
 ```
 
 至少通过 unit test 或独立 5-Day fixture 的交互验证证明该逻辑不是只为 3 天 Mock 写死。
@@ -921,12 +922,7 @@ type PlannerUiState = {
   threeDayStart: number;
   selectedStopId: string | null;
   activeBottomTab:
-    | "itinerary"
-    | "movement"
-    | "booking"
-    | "weather"
-    | "stayFood"
-    | "details";
+    "itinerary" | "movement" | "booking" | "weather" | "stayFood" | "details";
   isLayerToolbarCollapsed: boolean;
   isMoreSettingsOpen: boolean;
   isRightPanelOverlayOpen: boolean;
@@ -1125,48 +1121,48 @@ git push -u origin feature/a-trip-planner-shell-v2
 
 只有以下全部满足，TASK-008 才能进入 Ready For Review：
 
-- [ ] 从最新 `origin/develop` 开 feature branch
-- [ ] 已读取 `trip-planner.md v0.2`
-- [ ] 没有按旧 Issue #9 实现旧布局
-- [ ] Planner route 可独立访问
-- [ ] 地图工作区 ≈75%
-- [ ] 右侧栏 ≈25%
-- [ ] 右侧栏到底部
-- [ ] 右侧上下 ≈1:1 且紧贴
-- [ ] 底部栏 ≈页面高 25%
-- [ ] 地图左上无行程概览
-- [ ] 左侧地图工具栏可隐藏
-- [ ] 1日 / 第N天交互完成
-- [ ] 3日 / 从第N天开始的3天交互完成
-- [ ] 全日交互完成
-- [ ] 5天 fixture 验证 3日窗口算法
-- [ ] 同行人 / 日期两卡完成
-- [ ] 景点 / 餐饮 / 住宿三卡完成
-- [ ] 更多行程设置默认关闭
-- [ ] More Settings 以 Popover 打开，不造成布局位移
-- [ ] 重新生成路线按钮始终存在
-- [ ] 重新生成路线仅使用明确 Mock 状态
-- [ ] 推荐方案为 3 个横条
-- [ ] 当前方案有完整外框与文字标签
-- [ ] 切换方案同步 Mock 地图 / 底部
-- [ ] 底部 6 Tab 完成
-- [ ] 5 个非默认 Tab 有真实 Mock 内容
-- [ ] Map ↔ Timeline 选中状态双向联动
-- [ ] 右栏响应式折叠完成
-- [ ] 底栏响应式折叠完成
-- [ ] Mobile 无横向溢出
-- [ ] Keyboard / Focus / Escape 基础通过
-- [ ] npm ci 通过
-- [ ] lint 通过
-- [ ] typecheck 通过
-- [ ] build 通过
-- [ ] diff check 通过
-- [ ] format 状态有记录
-- [ ] 无真实 Map / Route / AI / Auth / DB
-- [ ] `/start` 未修改
-- [ ] B Personal Center 未越界修改
-- [ ] WBS 已更新
-- [ ] Task / Issue / Branch / Commit / PR 信息一致
+- [x] 从最新 `origin/develop` 开 feature branch
+- [x] 已读取 `trip-planner.md v0.2`
+- [x] 没有按旧 Issue #9 实现旧布局
+- [x] Planner route 可独立访问
+- [x] 地图工作区 ≈75%
+- [x] 右侧栏 ≈25%
+- [x] 右侧栏到底部
+- [x] 右侧上下 ≈1:1 且紧贴
+- [x] 底部栏 ≈页面高 25%
+- [x] 地图左上无行程概览
+- [x] 左侧地图工具栏可隐藏
+- [x] 1日 / 第N天交互完成
+- [x] 3日 / 从第N天开始的3天交互完成
+- [x] 全日交互完成
+- [x] 5天 fixture 验证 3日窗口算法
+- [x] 同行人 / 日期两卡完成
+- [x] 景点 / 餐饮 / 住宿三卡完成
+- [x] 更多行程设置默认关闭
+- [x] More Settings 以 Popover 打开，不造成布局位移
+- [x] 重新生成路线按钮始终存在
+- [x] 重新生成路线仅使用明确 Mock 状态
+- [x] 推荐方案为 3 个横条
+- [x] 当前方案有完整外框与文字标签
+- [x] 切换方案同步 Mock 地图 / 底部
+- [x] 底部 6 Tab 完成
+- [x] 5 个非默认 Tab 有真实 Mock 内容
+- [x] Map ↔ Timeline 选中状态双向联动
+- [x] 右栏响应式折叠完成
+- [x] 底栏响应式折叠完成
+- [x] Mobile 无横向溢出
+- [x] Keyboard / Focus / Escape 基础通过
+- [x] npm ci 通过
+- [x] lint 通过
+- [x] typecheck 通过
+- [x] build 通过
+- [x] diff check 通过
+- [x] format 状态有记录
+- [x] 无真实 Map / Route / AI / Auth / DB
+- [x] `/start` 未修改
+- [x] B Personal Center 未越界修改
+- [x] WBS 已更新
+- [x] Task / Issue / Branch / Commit / PR 信息一致
 
 ---
 
@@ -1176,15 +1172,18 @@ git push -u origin feature/a-trip-planner-shell-v2
 # TASK-008-A Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Prerequisite
+
 - base commit:
 - trip-planner spec:
 - TASK-006 merged:
 - TASK-007 required: No
 
 ## Tracking
+
 - Issue: #51
 - Task File: docs/tasks/TASK-008-a-trip-planner-shell.md
 - Branch:
@@ -1193,9 +1192,11 @@ Completed / Partially Completed / Blocked
 - WBS updated:
 
 ## Route
+
 - planner route:
 
 ## Implemented
+
 - Planner layout:
 - Mock map:
 - left toolbar:
@@ -1210,12 +1211,14 @@ Completed / Partially Completed / Blocked
 - responsive collapse:
 
 ## Ratio Validation
+
 - 1600×900 right panel:
 - 1440×900 right panel:
 - upper/lower ratio:
 - bottom panel height:
 
 ## Responsive Validation
+
 - 1600×900:
 - 1440×900:
 - 1280×800:
@@ -1225,6 +1228,7 @@ Completed / Partially Completed / Blocked
 - 1440×650:
 
 ## Accessibility
+
 - keyboard:
 - focus-visible:
 - Escape:
@@ -1232,6 +1236,7 @@ Completed / Partially Completed / Blocked
 - tabs / selectors:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1242,6 +1247,7 @@ Completed / Partially Completed / Blocked
 - hydration:
 
 ## Scope Preserved
+
 - real map provider not added:
 - real route API not added:
 - AI/Auth/DB not added:
@@ -1249,14 +1255,17 @@ Completed / Partially Completed / Blocked
 - B account files untouched:
 
 ## WBS
+
 - tracking row:
 - design items:
 - implementation items:
 
 ## Problems / Blockers
+
 - ...
 
 ## Ready For Review
+
 Yes / No
 ```
 
@@ -1277,3 +1286,11 @@ TASK-008 完成后停止。
 - TASK-009
 
 等待 Review / 下一条正式 Task。
+
+## 执行结果（2026-09-05）
+
+- Result：[TASK-008-A Result](./RESULT-TASK-008-a-trip-planner-shell.md)。
+- Issue：[#51](https://github.com/kanzakimy0/TravelAssist/issues/51)。
+- PR：[#59](https://github.com/kanzakimy0/TravelAssist/pull/59)，Open / Draft，未合并。
+- 实现提交：`e4648c031817816fb1cbd0dc44552a542d108c91`；验收记录：`f9028d84e48266e5c626414d541331b7bfd5e009`。
+- WBS：待审查。Ready For Review: Yes（实现）；为避免既有自动合并流程，保留 Draft，等待维护者审查。
