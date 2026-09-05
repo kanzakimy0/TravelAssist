@@ -293,7 +293,7 @@ src/db/
 | 2.3    | Node / npm / TypeScript 版本固定 | A      | P0     | 2.1     | 未开始 |
 | 2.4    | ESLint / Prettier / EditorConfig | A      | P1     | 2.1     | 未开始 |
 | 2.5    | 环境变量规范                     | A      | P0     | 2.1     | 未开始 |
-| 2.6    | 目录架构 + A/B 模块边界冻结      | A      | P0     | 2.1,0.8 | 未开始 |
+| 2.6    | 目录架构 + A/B 模块边界冻结      | A      | P0     | 2.1,0.8 | 已完成 |
 | 2.7    | Shared UI / Contract 基础        | A      | P1     | 2.6     | 未开始 |
 | 2.8    | GitHub Actions CI                | A      | P1     | 2.3,2.4 | 未开始 |
 | 2.9    | 单元测试框架                     | A      | P1     | 2.1     | 未开始 |
