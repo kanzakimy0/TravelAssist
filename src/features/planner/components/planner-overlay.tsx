@@ -10,7 +10,7 @@ export function PlannerOverlay({
   children,
 }: {
   title: string;
-  kind: "right" | "bottom";
+  kind: "right" | "bottom" | "quick" | "detail";
   onClose: () => void;
   children: ReactNode;
 }) {
@@ -18,7 +18,8 @@ export function PlannerOverlay({
   useEffect(() => {
     const element = dialog.current;
     const previous =
-      document.activeElement instanceof HTMLElement
+      document.activeElement instanceof HTMLElement ||
+      document.activeElement instanceof SVGElement
         ? document.activeElement
         : null;
     element?.showModal();

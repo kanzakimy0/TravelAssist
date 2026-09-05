@@ -1,202 +1,318 @@
-import type { CSSProperties } from "react";
-import type { MockDay, StopKind } from "../model/planner-types";
-import { mapBounds } from "../model/planner-state";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { mountMapbox, schematicLayout } from "../map/map-provider";
+import type { MapSession } from "../map/map-provider";
+import type { Coordinates, MapView } from "../model/trip-model";
 import styles from "../planner.module.css";
 
-// Replace this renderer in a future Map Provider task; selection and trip data stay in the page.
 export function PlannerMapShell({
-  days,
-  selectedStopId,
-  onSelectStop,
-  layers,
+  view,
+  onSelect,
   terrain,
-  planName,
 }: {
-  days: MockDay[];
-  selectedStopId: string | null;
-  onSelectStop: (id: string) => void;
-  layers: StopKind[];
+  view: MapView;
+  onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
-  planName: string;
 }) {
-  const bounds = mapBounds(days);
-  const visibleStops = days
-    .flatMap((day) => day.stops)
-    .filter((stop) => layers.includes(stop.kind) || stop.id === selectedStopId);
-  function pinOffset(id: string, x: number, y: number) {
-    const shared = visibleStops.filter((stop) => stop.x === x && stop.y === y);
-    // Separate stops at the same place on different days without changing route geometry.
-    return (
-      (shared.findIndex((stop) => stop.id === id) - (shared.length - 1) / 2) *
-      36
-    );
-  }
-  const pointStyle = (x: number, y: number) => ({
-    left: `${((x - bounds.x) / bounds.width) * 100}%`,
-    top: `${((y - bounds.y) / bounds.height) * 100}%`,
-  });
+  const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const container = useRef<HTMLDivElement>(null);
+  const session = useRef<MapSession | null>(null);
+  const latest = useRef(view);
+  const [mapStatus, setMapStatus] = useState(
+    token
+      ? "正在加载 Mapbox · 暂用示意地图"
+      : "未配置 Mapbox Token · 可操作示意地图",
+  );
+  const select = useEffectEvent(onSelect);
+  useEffect(() => {
+    let cancelled = false;
+    if (!container.current || !token) return;
+    mountMapbox(
+      container.current,
+      token,
+      (id, itemId) => select(id, itemId),
+      setMapStatus,
+    )
+      .then((mounted) => {
+        if (cancelled) mounted?.destroy();
+        else {
+          session.current = mounted;
+          mounted?.update(latest.current);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setMapStatus("底图暂不可用 · 已切换可操作示意地图");
+      });
+    return () => {
+      cancelled = true;
+      session.current?.destroy();
+      session.current = null;
+    };
+  }, [token]);
+  useEffect(() => {
+    latest.current = view;
+    session.current?.update(view);
+  }, [view]);
+  const live = mapStatus.startsWith("Mapbox 底图");
   return (
     <div
       className={styles.mapCanvas}
-      data-map-plan={planName}
-      data-map-days={days.map((day) => day.day).join(",")}
-      aria-label={`${planName}示意地图`}
+      data-map-range={view.range}
+      data-map-engine={live ? "mapbox" : "fallback"}
     >
-      <svg
-        className={styles.mapSvg}
-        viewBox={`${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`}
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <defs>
-          <pattern
-            id="planner-grid"
-            width="34"
-            height="34"
-            patternUnits="userSpaceOnUse"
-            patternTransform="rotate(-18)"
-          >
-            <path
-              d="M0 0H34V34"
-              fill="none"
-              stroke="#d8d0c6"
-              strokeWidth="1"
-              opacity=".38"
-            />
-          </pattern>
-        </defs>
-        <rect width="1000" height="600" fill="#f0ece3" />
-        <path
-          d="M910 230Q870 285 917 340L938 370 890 420 960 475 1000 480V600H500Q540 550 580 560L670 540 710 560 745 515 790 490 810 430 860 385 840 310Z"
-          fill="#d9e4e6"
-        />
-        <path
-          d="M80 0Q40 180 130 235T220 410L400 555 490 470 430 340 510 190 430 0Z"
-          fill={terrain ? "#e3e3d6" : "#efebe4"}
-        />
-        {terrain && (
-          <g fill="none" stroke="#cfcfc0" opacity=".58" strokeWidth="1.5">
-            <path d="M70 40Q350 10 340 155T220 380T430 565M120 30Q420 30 395 165T275 375T460 530M90 120Q305 90 265 210T200 330M410 160Q535 270 470 380T550 560M360 80Q470 170 430 240" />
-            <path d="M450 375Q590 315 670 390T590 525M420 380Q590 290 710 390T620 555" />
-          </g>
-        )}
-        <path
-          d="M520 0H1000V520L780 480 690 380 550 330Z"
-          fill="url(#planner-grid)"
-        />
-        <g fill="none" stroke="#fffcf7" strokeWidth="10">
-          <path d="M0 260Q235 140 345 180T610 200L910 330M240 600Q380 320 490 360T730 410L1000 500M650 0Q640 180 685 225T880 390" />
-          <path
-            d="m620 30 240 320M560 100l310 120M590 290l270-210M615 460l245-100"
-            strokeWidth="5"
-          />
-        </g>
-        <g fill="none" stroke="#d0c5b6" strokeWidth="1.5">
-          <path d="M0 260Q235 140 345 180T610 200L910 330M240 600Q380 320 490 360T730 410L1000 500M650 0Q640 180 685 225T880 390" />
-        </g>
-        <path
-          d="M280 125q-70 3-70 30t90 0 65-10-85-20M507 453q-20 20-4 52t27-8-3-40Z"
-          fill="#c9dde0"
-          stroke="#b4cbd0"
-          strokeWidth="2"
-        />
-        <path d="m315 365 45-80 49 80Z" fill="#c0c6c4" />
-        <path d="m346 310 14-25 15 25-14-8Z" fill="#fffcf7" />
-        <g fill="#85877e" fontSize="15" letterSpacing="5">
-          <text x="400" y="75">
-            山梨
-          </text>
-          <text x="580" y="315">
-            神奈川
-          </text>
-          <text x="915" y="525">
-            東京湾
-          </text>
-          <text x="150" y="480">
-            静岡
-          </text>
-        </g>
-        {days.map((day) => (
-          <polyline
-            key={day.day}
-            data-route-day={day.day}
-            points={day.stops.map((stop) => `${stop.x},${stop.y}`).join(" ")}
-            fill="none"
-            stroke={day.color}
-            strokeWidth="3.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            vectorEffect="non-scaling-stroke"
-            opacity=".88"
-          />
-        ))}
-      </svg>
-      <div className={styles.placeNames} aria-hidden="true">
-        {[
-          ["东京", 790, 220],
-          ["河口湖", 295, 95],
-          ["富士山", 360, 380],
-          ["箱根", 565, 480],
-        ].map(([name, x, y]) => (
-          <span key={name} style={pointStyle(Number(x), Number(y))}>
-            {name}
-          </span>
-        ))}
-      </div>
-      {days.flatMap((day) =>
-        day.stops
-          .filter(
-            (stop) => layers.includes(stop.kind) || stop.id === selectedStopId,
-          )
-          .map((stop) => (
-            <button
-              key={stop.id}
-              type="button"
-              className={styles.mapPin}
-              style={
-                {
-                  ...pointStyle(stop.x, stop.y),
-                  marginLeft: pinOffset(stop.id, stop.x, stop.y),
-                  "--route-color": day.color,
-                } as CSSProperties
-              }
-              aria-label={`地图 Day ${day.day} ${stop.time} ${stop.name}`}
-              aria-pressed={stop.id === selectedStopId}
-              data-stop-id={stop.id}
-              onClick={() => onSelectStop(stop.id)}
-            >
-              <span className={styles.pinNumber}>
-                {day.day}.{day.stops.indexOf(stop) + 1}
-              </span>
-              <span className={styles.pinLabel}>{stop.name}</span>
-            </button>
-          )),
+      <div
+        ref={container}
+        className={styles.mapboxHost}
+        aria-label="Mapbox 地图；键盘操作请使用地图地点列表"
+        style={{ visibility: live ? "visible" : "hidden" }}
+      />
+      {!live && (
+        <SchematicMap view={view} onSelect={onSelect} terrain={terrain} />
       )}
-      {layers.includes("transport") &&
-        days.map((day) => {
-          const start = day.stops[0];
-          const end = day.stops[1];
-          return (
-            <span
-              key={day.day}
-              className={styles.transportLabel}
-              style={pointStyle((start.x + end.x) / 2, (start.y + end.y) / 2)}
-            >
-              {start.next} · Day {day.day}
-            </span>
-          );
-        })}
-      <div className={styles.mapLegend}>
-        {days.map((day) => (
-          <span key={day.day}>
-            <i style={{ background: day.color }} />
-            Day {day.day} · {day.date}
-          </span>
-        ))}
+      <div className={styles.mapInfo}>
+        <p role="status">{mapStatus}</p>
+        <small>
+          {view.range === "all"
+            ? "城市 / 住宿结构 / 城际移动"
+            : "实线：当前范围 · 浅灰：相邻衔接 · 空心：备选"}{" "}
+          · 非真实路线
+        </small>
       </div>
-      <p className={styles.mapDisclaimer}>
-        示意地图 · 非真实比例 / 路线 / 实时数据
-      </p>
+      <details className={styles.mapList}>
+        <summary>
+          地图地点列表 · {view.places.length + view.areas.length}
+        </summary>
+        <div role="group" aria-label="地图等价操作列表">
+          {view.areas.map((area) => (
+            <button
+              key={area.id}
+              type="button"
+              onClick={() => onSelect(area.id)}
+            >
+              {area.name} · 查看区域推荐
+            </button>
+          ))}
+          {view.places.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              aria-pressed={Boolean(
+                p.focused ||
+                (p.tripItemId && p.tripItemId === view.selectedTripItemId),
+              )}
+              onClick={() => onSelect(p.id, p.tripItemId)}
+            >
+              {p.label} · {p.tripStatus === "recommended" ? "备选" : "行程内"}
+              {p.tripItemId === view.selectedTripItemId ? " · 已选中" : ""}
+            </button>
+          ))}
+        </div>
+      </details>
     </div>
+  );
+}
+function SchematicMap({
+  view,
+  onSelect,
+  terrain,
+}: {
+  view: MapView;
+  onSelect: (id: string, tripItemId?: string) => void;
+  terrain: boolean;
+}) {
+  const svg = useRef<SVGSVGElement>(null);
+  const [size, setSize] = useState({ width: 1000, height: 600 });
+  useEffect(() => {
+    if (!svg.current) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      if (width > 0 && height > 0) setSize({ width, height });
+    });
+    observer.observe(svg.current);
+    return () => observer.disconnect();
+  }, []);
+  const { project, positions } = schematicLayout(view, size.width, size.height);
+  const path = (points: Coordinates[]) =>
+    points.map((p, i) => `${i ? "L" : "M"}${project(p).join(",")}`).join(" ");
+  return (
+    <svg
+      ref={svg}
+      viewBox={`0 0 ${size.width} ${size.height}`}
+      className={styles.mapSvg}
+      aria-label="行程示意地图，路线非真实道路"
+      role="group"
+    >
+      <defs>
+        <pattern
+          id="planner-paper-grid"
+          width="55"
+          height="45"
+          patternUnits="userSpaceOnUse"
+        >
+          <path d="M55 0H0V45" fill="none" stroke="#d6cbbd" strokeWidth="0.8" />
+        </pattern>
+      </defs>
+      <rect
+        width={size.width}
+        height={size.height}
+        fill={terrain ? "#eee9df" : "#faf6ef"}
+      />
+      {terrain && (
+        <>
+          <path d="M0 0H620Q660 110 480 190T170 340L0 290Z" fill="#dfe3d9" />
+          <path d="M640 600Q580 420 800 370T1000 200V600Z" fill="#d5e0df" />
+          <rect
+            width={size.width}
+            height={size.height}
+            fill="url(#planner-paper-grid)"
+          />
+          <path
+            d="M0 270Q320 200 440 350T1000 430"
+            stroke="#fffaf1"
+            strokeWidth="16"
+            fill="none"
+          />
+        </>
+      )}
+      {view.routes.map((route) => (
+        <path
+          key={route.id}
+          data-route-role={route.context ? "context" : "selected"}
+          data-route-id={route.id}
+          d={path(route.coordinates)}
+          fill="none"
+          stroke={route.color}
+          strokeWidth={route.context ? 3.2 : 5}
+          opacity={route.context ? 0.25 : 0.85}
+          strokeLinecap="round"
+        >
+          <title>{route.label}</title>
+        </path>
+      ))}
+      {view.areas.map((area) => (
+        <g
+          key={area.id}
+          role="button"
+          tabIndex={0}
+          aria-label={`查看${area.name}`}
+          onClick={() => onSelect(area.id)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onSelect(area.id);
+            }
+          }}
+          className={styles.svgFeature}
+        >
+          <path
+            d={path(area.polygon) + "Z"}
+            fill={area.type === "hotelArea" ? "#b8a38e" : "#d1a493"}
+            fillOpacity="0.3"
+            stroke="#8a7264"
+            strokeDasharray="4 3"
+          />
+          <text
+            x={project(area.coordinates)[0]}
+            y={project(area.coordinates)[1] - 20}
+            textAnchor="middle"
+            className={styles.areaLabel}
+          >
+            {area.name}
+          </text>
+        </g>
+      ))}
+      {positions.map((p) => (
+        <line
+          key={`leader-${p.id}`}
+          x1={p.origin[0]}
+          y1={p.origin[1]}
+          x2={p.label[0]}
+          y2={p.label[1]}
+          stroke="#968679"
+          strokeWidth="1"
+          strokeDasharray="2 3"
+          opacity="0.7"
+          pointerEvents="none"
+        />
+      ))}
+      {view.places.map((p, i) => {
+        const [x, y] = positions[i].label,
+          selected = Boolean(
+            p.focused ||
+            (p.tripItemId && p.tripItemId === view.selectedTripItemId),
+          );
+        return (
+          <g
+            key={p.id}
+            role="button"
+            tabIndex={0}
+            data-map-stop={p.tripItemId}
+            aria-label={`${p.label}${selected ? " · 已选中" : ""}`}
+            aria-pressed={selected}
+            onClick={() => onSelect(p.id, p.tripItemId)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelect(p.id, p.tripItemId);
+              }
+            }}
+            className={styles.svgFeature}
+          >
+            <rect
+              x={x - 78}
+              y={y - 21}
+              width="156"
+              height="52"
+              rx="8"
+              fill="#fffaf2"
+              fillOpacity="0.78"
+            />
+            {selected && (
+              <circle
+                cx={x}
+                cy={y}
+                r="18"
+                fill="none"
+                stroke="#a74739"
+                strokeWidth="3"
+              />
+            )}
+            <circle
+              cx={x}
+              cy={y}
+              r={p.type === "city" ? 12 : 9}
+              fill={p.tripStatus === "recommended" ? "#e9e4db" : "#fffaf4"}
+              stroke={p.color}
+              strokeWidth="2.5"
+            />
+            <text
+              x={x}
+              y={y + 3}
+              textAnchor="middle"
+              fontSize="9"
+              fill="#343e48"
+            >
+              {p.tripStatus === "recommended" ? "+" : p.day}
+            </text>
+            <text
+              x={x}
+              y={y + 25}
+              textAnchor="middle"
+              className={styles.pinText}
+            >
+              {p.label}
+            </text>
+            {p.reservationStatus && p.reservationStatus !== "not_required" && (
+              <text x={x + 14} y={y - 7} fontSize="14" fill="#914737">
+                {["booked", "ticketed"].includes(p.reservationStatus)
+                  ? "✓"
+                  : "!"}
+              </text>
+            )}
+            <title>{`${p.name} · ${p.reservationStatus ?? p.tripStatus}`}</title>
+          </g>
+        );
+      })}
+    </svg>
   );
 }

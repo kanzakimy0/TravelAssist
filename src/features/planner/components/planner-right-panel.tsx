@@ -18,6 +18,8 @@ export function PlannerRightPanel({
   refreshing,
   status,
   onReplan,
+  pendingCount,
+  onBooking,
 }: {
   plans: MockPlan[];
   plan: MockPlan;
@@ -29,6 +31,8 @@ export function PlannerRightPanel({
   refreshing: boolean;
   status: string;
   onReplan: () => void;
+  pendingCount: number;
+  onBooking: () => void;
 }) {
   const moreTrigger = useRef<HTMLButtonElement>(null);
   return (
@@ -46,6 +50,11 @@ export function PlannerRightPanel({
           settings={settings}
           onChange={onChange}
           dayCount={plan.days.length}
+          nightCount={
+            plan.days.filter((day) =>
+              day.stops.some((stop) => stop.kind === "stay"),
+            ).length
+          }
         />
         <div className={styles.settingsActions}>
           <Button
@@ -87,6 +96,8 @@ export function PlannerRightPanel({
         plans={plans}
         selectedId={plan.id}
         onSelect={onPlan}
+        pendingCount={pendingCount}
+        onBooking={onBooking}
       />
     </div>
   );

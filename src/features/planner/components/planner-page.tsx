@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   useEffect,
+  useMemo,
   useReducer,
   useRef,
   useState,
@@ -13,12 +14,17 @@ import {
   initialPlannerSettings,
   plannerMockPlans,
 } from "../data/planner-mock-data";
+import type { PlannerAction } from "../model/planner-state";
+import { makePlannerCatalog } from "../data/planner-catalog";
 import {
-  dateForDay,
-  initialPlannerState,
-  plannerReducer,
-  visibleDays,
-} from "../model/planner-state";
+  currentPlan,
+  kindFor,
+  makeTripState,
+  mapView,
+  pendingItems,
+  presentationPlan,
+  tripReducer,
+} from "../model/trip-model";
 import type { PlannerSettings, StopKind } from "../model/planner-types";
 import { PlannerMapShell } from "./planner-map-shell";
 import { MapLayerToolbar } from "./map-layer-toolbar";
@@ -27,6 +33,8 @@ import { PlannerRightPanel } from "./planner-right-panel";
 import { BottomExecutionPanel } from "./bottom-execution-panel";
 import { PlannerOverlay } from "./planner-overlay";
 import { PlannerIcon } from "./planner-icon";
+import { PlaceDetails } from "./place-details";
+import { BookingChecklist } from "./booking-checklist";
 import styles from "../planner.module.css";
 
 function subscribeViewport(callback: () => void) {
@@ -41,8 +49,37 @@ function serverViewport() {
 }
 
 export function PlannerPage() {
-  const [state, dispatch] = useReducer(plannerReducer, initialPlannerState);
-  const [settings, setSettings] = useState(initialPlannerSettings);
+  const [trip, dispatchTrip] = useReducer(tripReducer, undefined, () => {
+    const { places, areas } = makePlannerCatalog(plannerMockPlans);
+    return makeTripState(
+      plannerMockPlans,
+      places,
+      areas,
+      initialPlannerSettings,
+    );
+  });
+  // Compatibility adapter for the established shell controls; no second selection state.
+  const state = { ...trip.ui, selectedStopId: trip.ui.selectedTripItemId };
+  const settings = trip.settings;
+  function dispatch(action: PlannerAction) {
+    if (action.type === "range") dispatchTrip(action);
+    else if (action.type === "plan")
+      dispatchTrip({ type: "plan", id: action.plan.id });
+    else if (action.type === "stop")
+      dispatchTrip({ type: "select", id: action.id });
+    else {
+      const { selectedStopId, ...patch } = action.patch;
+      dispatchTrip({
+        type: "ui",
+        patch: {
+          ...patch,
+          ...(selectedStopId !== undefined
+            ? { selectedTripItemId: selectedStopId }
+            : {}),
+        },
+      });
+    }
+  }
   const [layers, setLayers] = useState<StopKind[]>([
     "sight",
     "transport",
@@ -52,8 +89,6 @@ export function PlannerPage() {
   ]);
   const [terrain, setTerrain] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [status, setStatus] = useState("本地示例 · 未接入真实路线 / AI");
-  const [executionDay, setExecutionDay] = useState(1);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const viewport = useSyncExternalStore(
     subscribeViewport,
@@ -63,23 +98,23 @@ export function PlannerPage() {
   const [rightCollapsed, bottomCollapsed] = viewport
     .split(":")
     .map((value) => value === "true");
-  const plan =
-    plannerMockPlans.find((item) => item.id === state.currentPlanId) ??
-    plannerMockPlans[0];
-  const datedPlan = {
-    ...plan,
-    days: plan.days.map((day) => ({
-      ...day,
-      date: dateForDay(settings.startDate, day.day),
-    })),
-  };
-  const days = visibleDays(datedPlan.days, state);
-  const selectedDay = days.find((day) =>
-    day.stops.some((stop) => stop.id === state.selectedStopId),
-  )?.day;
-  const activeDay =
-    selectedDay ??
-    (days.some((day) => day.day === executionDay) ? executionDay : days[0].day);
+  const plan = currentPlan(trip);
+  const datedPlan = presentationPlan(trip);
+  const view = useMemo(() => {
+    const next = mapView(trip);
+    return {
+      ...next,
+      places: next.places.filter(
+        (p) =>
+          p.type === "city" ||
+          layers.includes(kindFor(p.type)) ||
+          p.tripItemId === trip.ui.selectedTripItemId,
+      ),
+      areas: next.areas.filter((a) =>
+        layers.includes(a.type === "hotelArea" ? "stay" : "food"),
+      ),
+    };
+  }, [trip, layers]);
   useEffect(
     () => () => {
       if (timer.current) clearTimeout(timer.current);
@@ -91,8 +126,8 @@ export function PlannerPage() {
     function onResize() {
       const next = viewportSnapshot();
       if (next !== previous) {
-        dispatch({
-          type: "patch",
+        dispatchTrip({
+          type: "ui",
           patch: {
             isMoreSettingsOpen: false,
             isRightPanelOverlayOpen: false,
@@ -107,57 +142,58 @@ export function PlannerPage() {
   }, []);
 
   function changeSetting(key: keyof PlannerSettings, value: string) {
-    setSettings((current) => ({ ...current, [key]: value }));
+    dispatchTrip({ type: "setting", key, value });
   }
   function replan() {
     setRefreshing(true);
-    setStatus("正在刷新示例路线…（Mock 演示）");
     timer.current = setTimeout(() => {
       setRefreshing(false);
-      setStatus(
-        `示例路线预览已刷新 · ${settings.travelers} / ${settings.pace}，未进行真实计算`,
-      );
+      dispatchTrip({ type: "replan" });
     }, 900);
   }
-  function selectStop(id: string, fromMap = false) {
+  function selectStop(id: string) {
     dispatch({ type: "stop", id });
-    if (fromMap && bottomCollapsed)
-      dispatch({ type: "patch", patch: { isBottomPanelOverlayOpen: true } });
+  }
+  function selectMapFeature(id: string, tripItemId?: string) {
+    const feature = view.places.find((p) => p.id === id);
+    if (feature?.type === "city") {
+      dispatchTrip({ type: "focusDay", day: feature.day! });
+      return;
+    }
+    const item = plan.items.find((i) => i.id === tripItemId);
+    dispatchTrip({
+      type: "inspect",
+      id: item?.placeId ?? id,
+      level: view.areas.some((a) => a.id === id) ? "area" : "quick",
+    });
   }
   const rightContent = (
     <PlannerRightPanel
-      plans={plannerMockPlans}
+      plans={trip.plans.map((p) => presentationPlan(trip, p))}
       plan={datedPlan}
       settings={settings}
       onChange={changeSetting}
       onPlan={(next) => {
         dispatch({ type: "plan", plan: next });
-        setStatus("已切换示例方案 · 地图与底栏同步更新");
       }}
       moreOpen={state.isMoreSettingsOpen}
       onMore={(open) =>
         dispatch({ type: "patch", patch: { isMoreSettingsOpen: open } })
       }
       refreshing={refreshing}
-      status={status}
+      status={refreshing ? "正在刷新示例路线…（Mock 演示）" : trip.notice}
       onReplan={replan}
+      pendingCount={pendingItems(plan).length}
+      onBooking={() =>
+        dispatchTrip({ type: "ui", patch: { bookingOpen: true } })
+      }
     />
   );
   const bottomContent = (
     <BottomExecutionPanel
-      days={days}
-      activeDay={activeDay}
-      onDay={(day) => {
-        setExecutionDay(day);
-        dispatch({ type: "patch", patch: { selectedStopId: null } });
-      }}
-      tab={state.activeBottomTab}
-      onTab={(tab) =>
-        dispatch({ type: "patch", patch: { activeBottomTab: tab } })
-      }
-      selectedStopId={state.selectedStopId}
+      state={trip}
+      dispatch={dispatchTrip}
       onSelect={selectStop}
-      planName={plan.name}
     />
   );
   return (
@@ -189,12 +225,9 @@ export function PlannerPage() {
       >
         <div className={styles.mapWorkspace}>
           <PlannerMapShell
-            days={days}
-            selectedStopId={state.selectedStopId}
-            onSelectStop={(id) => selectStop(id, true)}
-            layers={layers}
+            view={view}
+            onSelect={selectMapFeature}
             terrain={terrain}
-            planName={plan.name}
           />
           <MapLayerToolbar
             collapsed={state.isLayerToolbarCollapsed}
@@ -263,7 +296,7 @@ export function PlannerPage() {
             }
           >
             <PlannerIcon name="clock" />
-            查看当天安排
+            查看行程安排
           </Button>
         )}
       </main>
@@ -297,6 +330,12 @@ export function PlannerPage() {
         >
           {bottomContent}
         </PlannerOverlay>
+      )}
+      {trip.ui.inspection && (
+        <PlaceDetails state={trip} dispatch={dispatchTrip} />
+      )}
+      {trip.ui.bookingOpen && (
+        <BookingChecklist state={trip} dispatch={dispatchTrip} />
       )}
     </div>
   );

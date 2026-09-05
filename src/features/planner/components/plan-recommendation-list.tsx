@@ -6,10 +6,14 @@ export function PlanRecommendationList({
   plans,
   selectedId,
   onSelect,
+  pendingCount,
+  onBooking,
 }: {
   plans: MockPlan[];
   selectedId: string;
   onSelect: (plan: MockPlan) => void;
+  pendingCount: number;
+  onBooking: () => void;
 }) {
   return (
     <section
@@ -62,9 +66,16 @@ export function PlanRecommendationList({
           </button>
         ))}
       </div>
-      <p className={styles.recommendationNote}>
-        地图看空间，右侧选方案，底部看当天安排。
-      </p>
+      <div className={styles.currentBooking} data-current-booking>
+        <span role="status">
+          {pendingCount
+            ? `当前方案 · 待预约 ${pendingCount} 项`
+            : "✓ 关键预约已完成"}
+        </span>
+        <button type="button" onClick={onBooking}>
+          完成预约
+        </button>
+      </div>
     </section>
   );
 }
