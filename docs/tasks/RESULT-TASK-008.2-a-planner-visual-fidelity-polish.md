@@ -9,8 +9,8 @@ Partially Completed — 本次纯视觉实现、测试与实际页面对比已�
 - Issue: [#73](https://github.com/kanzakimy0/TravelAssist/issues/73)，保持 Open / 待审查。
 - Task File: [TASK-008.2](TASK-008.2-a-planner-visual-fidelity-polish.md)。
 - Branch: `feature/a-planner-visual-fidelity-polish` → `develop`。
-- Commit: `7e8db2a`（实现），`45c3c3f`（同步上游文档，无应用代码变化）。原始 base `147a7a0e38c5652922c7cb9b81f23a58c127acd7`；集成 develop `5d2f7e002e925f4c7703f92afc3191379e51b8e2`。
-- PR: 发布后回填，保持 Draft，不自动合并。
+- Commit: `7e8db2a9379f5cd5c09316f3da51ffc8b9d4c3ad`（实现），`45c3c3f` / `b35abce`（两次同步上游文档，无应用代码变化）。原始 base `147a7a0e38c5652922c7cb9b81f23a58c127acd7`；最终集成 develop `ae33409`。完整文档提交链见 PR Commits。
+- PR: [#83](https://github.com/kanzakimy0/TravelAssist/pull/83)，Open / Draft / 未合并，不自动合并。
 - WBS updated: Yes；新增本 Task 待审查记录，不改真实 Route / AI / DB 完成状态。
 
 ## Visual Changes
@@ -80,7 +80,8 @@ Partially Completed — 本次纯视觉实现、测试与实际页面对比已�
 - 主要地点采用 Task 明确允许的图标占位，而非尚不存在的实景图片；近邻标记按缩放避让，移动 fallback 展开工具栏时可用隐藏按钮 / 等价列表避免遮挡。
 - Header 无现成搜索业务，按 Task 第4节架构例外保留可用导航；未增加无功能输入框。
 - 方案横条依可用高度约82–96px，保留三条、1:1和预约入口；未机械撑至建议108–128px而裁切内容。
-- 全仓格式共9份上游文档例外：原有 `docs/ai/trip-judgement-two-phase.md`、`docs/architecture/db-orm-migration-standards.md`、`docs/tasks/TASK-009-a-db-foundation.md`、`docs/ui/companion-management.md`、`docs/ui/personal-center-responsive-states.md`、`docs/ui/planner-map-interaction-booking-mapbox.md`、`docs/ui/trip-detail.md`，以及本次同步新带入的 `docs/tasks/TASK-WBS-5.4-b-profile-account-ui.md`、`docs/assets/personal-center-generated-images-20260905.md`；均与 origin/develop 一致。
+- 全仓格式共13份上游文档例外：原有 `docs/ai/trip-judgement-two-phase.md`、`docs/architecture/db-orm-migration-standards.md`、`docs/tasks/TASK-009-a-db-foundation.md`、`docs/ui/companion-management.md`、`docs/ui/personal-center-responsive-states.md`、`docs/ui/planner-map-interaction-booking-mapbox.md`、`docs/ui/trip-detail.md`；两次同步带入 `docs/tasks/TASK-WBS-5.4-b-profile-account-ui.md`、`docs/assets/personal-center-generated-images-20260905.md`、`docs/tasks/TASK-008.3-a-planner-v03-interactions.md`、`docs/tasks/TASK-010-a-main-flow-navigation.md`、`docs/tasks/TASK-010-b-personal-center-navigation.md`、`docs/ui/navigation-flow.md`。全部与已 fetch 的 origin/develop `ae33409` 一致，未修改无关格式。
+- 同步时上游新增 TASK-008.3 / TASK-010 文档，只原样集成，不开始这些任务；本次 localhost:3000 已恢复当前 feature，`/planner`、`/start`、`/personal-center` 均返回 HTTP 200。
 - 为遵守不合并要求，提交使用 `[skip ci]` 防止仓库自动创建并合并 feature PR，手动创建 Draft PR；未更改工作流。远端 CI 跳过不计为通过。
 
 ## Ready For Visual Review
