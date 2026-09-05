@@ -4,15 +4,15 @@
 
 - Task ID: `TASK-011-A`
 - Owner: `A`
-- Status: `阻塞`
+- Status: `待验收`
 - WBS: `1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15`
 - GitHub Issue: `#86`
 - Branch: `feature/a-planner-to-trip-detail-workspace`
 - Depends On:
   - `TASK-008.3-A / Issue #77` merged into `develop`
   - `TASK-010-A / Issue #78` merged into `develop`
-- Commit: `PENDING`
-- Pull Request: `PENDING`
+- Commit: `PENDING（完成提交后回填）`
+- Pull Request: `PENDING（Draft，防止仓库自动合并工作流违反本 Task）`
 - Design Source: `docs/ui/trip-detail.md` v2.0
 - Supporting Design:
   - `docs/ui/trip-planner.md`
@@ -832,6 +832,7 @@ Mobile：
 新增/更新测试至少覆盖：
 
 ### State / URL
+
 - default `/planner` = Planner；
 - `view=detail` = Detail；
 - valid/invalid `day`；
@@ -839,6 +840,7 @@ Mobile：
 - refresh。
 
 ### Map
+
 - detail hides range selector；
 - current route active；
 - adjacent route gray；
@@ -846,12 +848,14 @@ Mobile：
 - Day switch。
 
 ### Sidebar
+
 - AI counts；
 - reservation status independent from AI status；
 - day summary mapping；
 - hotel/dining/reservation/transport groups。
 
 ### Rail
+
 - day selector；
 - node status；
 - alternating bubbles；
@@ -861,6 +865,7 @@ Mobile：
 - item selection。
 
 ### Modal
+
 - click open；
 - outside close；
 - Esc close；
@@ -868,6 +873,7 @@ Mobile：
 - edit UI。
 
 ### Accessibility
+
 - keyboard；
 - aria label；
 - status not color-only；
@@ -902,11 +908,13 @@ git diff --check
 必须用真实浏览器检查：
 
 ### Planner
+
 - 原 Planner 仍正常；
 - `1日/3日/全日` 仍只在 Planner；
 - recommended plans / preferences 不回归。
 
 ### Transition
+
 - 点击进入 Detail；
 - 地图不闪切；
 - URL 更新；
@@ -914,6 +922,7 @@ git diff --check
 - Forward 回 Detail。
 
 ### Detail
+
 - map style；
 - day selector；
 - rail；

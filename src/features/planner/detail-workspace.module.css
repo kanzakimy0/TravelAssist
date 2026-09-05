@@ -1,0 +1,732 @@
+.sidebar,
+.bottomPanel {
+  width: 100%;
+  height: 100%;
+  color: var(--color-text-primary);
+  background: rgb(255 252 247 / 96%);
+}
+
+.sidebar {
+  padding: 18px;
+  overflow: auto;
+  border-left: 1px solid var(--planner-border);
+  scrollbar-color: #d3b7ad transparent;
+}
+
+.sidebarHeader span,
+.sectionHeading span {
+  color: var(--color-accent-primary);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.sidebarHeader h2 {
+  margin: 4px 0 2px;
+  font-family: Georgia, "Noto Serif SC", serif;
+  font-size: 25px;
+}
+
+.sidebarHeader p,
+.weather,
+.detailGroup small,
+.dialogNotice {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.statusGrid article {
+  min-width: 0;
+  padding: 9px 5px;
+  border: 1px solid var(--planner-border);
+  border-radius: 12px;
+  background: #fffdf9;
+  text-align: center;
+}
+
+.statusGrid article[data-tone="normal"] {
+  background: #edf5ef;
+}
+
+.statusGrid article[data-tone="warning"] {
+  background: #fff5d9;
+}
+
+.statusGrid article[data-tone="error"] {
+  background: #fae6e3;
+}
+
+.statusGrid article[data-tone="reservation"] {
+  background: #eef0f7;
+}
+
+.statusGrid strong,
+.statusGrid span {
+  display: block;
+}
+
+.statusGrid strong {
+  font-size: 19px;
+}
+
+.statusGrid span {
+  margin-top: 2px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.summaryCard,
+.detailGroup,
+.adjustmentPreview {
+  margin-top: 10px;
+  border: 1px solid var(--planner-border);
+  border-radius: 15px;
+  background: #fffdf9;
+  box-shadow: 0 5px 16px rgb(94 74 65 / 5%);
+}
+
+.summaryCard {
+  padding: 12px;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sectionHeading h3 {
+  margin: 2px 0 0;
+  font-size: 15px;
+}
+
+.sampleBadge {
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: var(--planner-accent-soft);
+  font-size: 9px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.weather {
+  margin-top: 7px;
+}
+
+.metricGrid,
+.expenseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin: 10px 0 0;
+}
+
+.metricGrid div,
+.expenseGrid div {
+  min-width: 0;
+  padding: 7px;
+  border-radius: 9px;
+  background: #f7f2ec;
+}
+
+.metricGrid dt,
+.expenseGrid dt {
+  color: var(--color-text-secondary);
+  font-size: 9px;
+}
+
+.metricGrid dd,
+.expenseGrid dd {
+  margin: 2px 0 0;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.detailGroup {
+  padding: 0 11px 10px;
+}
+
+.detailGroup summary {
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.executionList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.executionList article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #f8f3ed;
+  font-size: 9px;
+}
+
+.executionList strong {
+  font-size: 11px;
+}
+
+.executionList button,
+.locateList button {
+  padding: 3px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.locateList {
+  display: grid;
+  gap: 4px;
+}
+
+.locateList button {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+  background: #f8f3ed;
+  font-size: 9px;
+}
+
+.locateList button strong {
+  font-size: 10px;
+}
+
+.reminders {
+  display: grid;
+  gap: 3px;
+  margin: 8px 0 0;
+  padding-left: 16px;
+  color: var(--color-text-secondary);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.aiActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.aiActions button,
+.adjustmentPreview button,
+.itemDialog button,
+.addButton {
+  min-height: 38px;
+  border: 1px solid #e3c9be;
+  border-radius: 11px;
+  background: var(--planner-accent-soft);
+  color: var(--color-accent-primary);
+  font-weight: 750;
+}
+
+.aiActions button:last-child {
+  border-color: var(--color-accent-primary);
+  background: var(--color-accent-primary);
+  color: #fffdf8;
+}
+
+.saveStatus {
+  min-height: 1.2em;
+  margin: 6px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+}
+
+.adjustmentPreview {
+  padding: 11px;
+}
+
+.adjustmentPreview h3 {
+  margin: 0 0 7px;
+  font-size: 13px;
+}
+
+.adjustmentPreview p {
+  margin: 4px 0;
+  font-size: 10px;
+}
+
+.adjustmentPreview strong {
+  display: inline-block;
+  min-width: 65px;
+  color: var(--color-accent-primary);
+}
+
+.adjustmentPreview div {
+  display: flex;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.adjustmentPreview button {
+  flex: 1;
+  min-height: 32px;
+  font-size: 10px;
+}
+
+.bottomPanel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  padding: 10px 14px 8px;
+  overflow: hidden;
+  border: 1px solid var(--planner-border);
+  border-radius: var(--planner-radius-panel);
+  box-shadow: var(--planner-shadow);
+}
+
+.daySelector {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 76px 8px 0;
+  scrollbar-width: thin;
+}
+
+.daySelector button {
+  display: grid;
+  min-width: 160px;
+  padding: 7px 12px;
+  border: 1px solid var(--planner-border);
+  border-radius: 12px;
+  background: #fffdf9;
+  color: inherit;
+  text-align: left;
+}
+
+.daySelector button[aria-pressed="true"] {
+  border-color: var(--color-accent-primary);
+  background: var(--planner-accent-soft);
+  box-shadow: inset 0 -2px var(--color-accent-primary);
+}
+
+.daySelector strong {
+  font-size: 12px;
+}
+
+.daySelector span {
+  margin-top: 1px;
+  color: var(--color-text-secondary);
+  font-size: 9px;
+}
+
+.railViewport {
+  min-height: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.railTrack {
+  position: relative;
+  width: max(100%, 1050px);
+  height: 155px;
+}
+
+.railLine {
+  position: absolute;
+  top: 76px;
+  right: 18px;
+  left: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, #d9cbc3, #c35a4b, #d9cbc3);
+}
+
+.railItem {
+  position: absolute;
+  top: 0;
+  left: clamp(72px, var(--rail-position), calc(100% - 72px));
+  width: 0;
+  height: 150px;
+}
+
+.statusNode {
+  position: absolute;
+  z-index: 2;
+  top: 69px;
+  left: -7px;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #fffdf9;
+  border-radius: 50%;
+  background: #87978d;
+  box-shadow: 0 0 0 1px rgb(79 68 62 / 22%);
+}
+
+.statusNode[data-status="warning"] {
+  background: #d49a31;
+}
+
+.statusNode[data-status="error"] {
+  background: #c84f43;
+}
+
+.railBubble {
+  position: absolute;
+  left: -62px;
+  display: grid;
+  width: 124px;
+  min-height: 59px;
+  padding: 7px 9px;
+  border: 1px solid rgb(99 84 75 / 12%);
+  border-radius: 12px;
+  color: #35414c;
+  text-align: left;
+  box-shadow: 0 4px 11px rgb(74 56 48 / 7%);
+}
+
+.railItem[data-lane="above"] .railBubble {
+  top: 3px;
+}
+
+.railItem[data-lane="below"] .railBubble {
+  top: 91px;
+}
+
+.railBubble[data-kind="attraction"] {
+  background: rgb(221 241 234 / 92%);
+}
+
+.railBubble[data-kind="restaurant"] {
+  background: rgb(250 228 205 / 92%);
+}
+
+.railBubble[data-kind="transport"],
+.railBubble[data-kind="parking"] {
+  background: rgb(220 233 247 / 92%);
+}
+
+.railBubble[data-kind="hotel"] {
+  background: rgb(244 221 233 / 92%);
+}
+
+.railBubble[data-kind="activity"] {
+  background: rgb(234 225 245 / 92%);
+}
+
+.railBubble[data-kind="task"],
+.railBubble[data-kind="custom"] {
+  background: rgb(229 234 239 / 92%);
+}
+
+.railBubble[aria-pressed="true"] {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+.railBubble time,
+.railBubble strong,
+.railBubble span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.railBubble time {
+  color: var(--color-accent-primary);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.railBubble strong {
+  font-size: 11px;
+}
+
+.railBubble span {
+  color: var(--color-text-secondary);
+  font-size: 9px;
+}
+
+.addButton {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  z-index: 4;
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.itemDialog {
+  width: min(680px, calc(100vw - 32px));
+  max-height: min(760px, calc(100dvh - 32px));
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--planner-border);
+  border-radius: 22px;
+  background: rgb(255 252 247 / 98%);
+  color: var(--color-text-primary);
+  box-shadow: 0 28px 90px rgb(45 37 33 / 30%);
+}
+
+.itemDialog::backdrop {
+  background: rgb(40 35 32 / 38%);
+  backdrop-filter: blur(3px);
+}
+
+.itemDialog form {
+  padding: 20px;
+}
+
+.itemDialog header,
+.itemDialog footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.itemDialog header span {
+  color: var(--color-accent-primary);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.itemDialog h2 {
+  margin: 3px 0 0;
+  font-size: 24px;
+}
+
+.itemDialog header > button {
+  width: 38px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.dialogStatus {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.dialogStatus span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #edf5ef;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.dialogStatus span[data-status="warning"] {
+  background: #fff2cc;
+}
+
+.dialogStatus span[data-status="error"] {
+  background: #fae2de;
+}
+
+.dialogStatus span[data-reservation="unknown"] {
+  background: #eef0f7;
+}
+
+.dialogSection {
+  margin-top: 12px;
+  padding: 13px;
+  border: 1px solid var(--planner-border);
+  border-radius: 14px;
+  background: #fffdf9;
+}
+
+.dialogSection h3 {
+  margin: 0 0 9px;
+  font-size: 14px;
+}
+
+.dialogSection p,
+.dialogSection dl {
+  margin: 5px 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.dialogSection dl div {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.dialogSection dt {
+  color: var(--color-text-secondary);
+}
+
+.dialogSection dd {
+  margin: 0;
+}
+
+.editGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 9px;
+}
+
+.editGrid label {
+  display: grid;
+  gap: 5px;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+}
+
+.editGrid input,
+.editGrid select,
+.editGrid textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid var(--planner-border);
+  border-radius: 10px;
+  background: #fffdf9;
+  color: var(--color-text-primary);
+  font: inherit;
+}
+
+.editGrid textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.fullField {
+  grid-column: 1 / -1;
+}
+
+.itemDialog footer {
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.itemDialog footer button {
+  flex: 1;
+  min-width: 120px;
+  padding: 7px 10px;
+}
+
+.itemDialog footer button:first-child,
+.itemDialog footer button:last-child {
+  border-color: var(--color-accent-primary);
+  background: var(--color-accent-primary);
+  color: #fffdf8;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1199px) {
+  .sidebar {
+    min-height: 100%;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .statusGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bottomPanel {
+    min-height: calc(100dvh - 70px);
+    overflow: auto;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .railViewport {
+    overflow: visible;
+  }
+
+  .railTrack {
+    display: grid;
+    width: 100%;
+    height: auto;
+    gap: 8px;
+    padding: 8px 0 72px 22px;
+  }
+
+  .railLine {
+    top: 0;
+    right: auto;
+    bottom: 60px;
+    left: 11px;
+    width: 2px;
+    height: auto;
+  }
+
+  .railItem {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .statusNode {
+    top: 23px;
+    left: -18px;
+  }
+
+  .railItem .railBubble,
+  .railItem[data-lane="above"] .railBubble,
+  .railItem[data-lane="below"] .railBubble {
+    position: static;
+    width: 100%;
+    min-height: 62px;
+  }
+
+  .addButton {
+    position: fixed;
+    top: auto;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .editGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .editGrid label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .itemDialog form {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .railViewport,
+  .railBubble {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}

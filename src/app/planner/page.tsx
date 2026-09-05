@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { PlannerPage } from "@/features/planner/components/planner-page";
 
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PlannerPage />;
+  return (
+    <Suspense fallback={<main aria-busy="true">正在加载旅行工作区…</main>}>
+      <PlannerPage />
+    </Suspense>
+  );
 }

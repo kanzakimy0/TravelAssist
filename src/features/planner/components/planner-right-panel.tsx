@@ -21,6 +21,7 @@ export function PlannerRightPanel({
   onReplan,
   pendingCount,
   onBooking,
+  onOpenDetail,
 }: {
   plans: MockPlan[];
   plan: MockPlan;
@@ -34,6 +35,7 @@ export function PlannerRightPanel({
   onReplan: () => void;
   pendingCount: number;
   onBooking: () => void;
+  onOpenDetail: () => void;
 }) {
   const moreTrigger = useRef<HTMLButtonElement>(null);
   return (
@@ -75,6 +77,14 @@ export function PlannerRightPanel({
         <p className={styles.mockStatus} role="status">
           {status}
         </p>
+        <Button
+          className={styles.openDetailButton}
+          onClick={onOpenDetail}
+          size="small"
+        >
+          进入行程详情
+          <PlannerIcon name="chevron" />
+        </Button>
         {moreOpen && (
           <MoreTripSettingsPopover
             trigger={moreTrigger}

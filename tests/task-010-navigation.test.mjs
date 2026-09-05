@@ -27,11 +27,11 @@ test("the temporary bridge maps each generated preview to one planner plan", () 
 });
 
 test("main-flow links use real destinations and keep login disabled", async () => {
-  const [home, startHeader, plans, planner] = await Promise.all([
+  const [home, startHeader, plans, plannerWorkspace] = await Promise.all([
     read("../src/features/home/components/home-hero.tsx"),
     read("../src/features/start-flow/components/start-flow-header.tsx"),
     read("../src/features/start-flow/components/plan-selection-step.tsx"),
-    read("../src/features/planner/components/planner-page.tsx"),
+    read("../src/features/planner/components/trip-workspace.tsx"),
   ]);
 
   assert.match(home, /href="\/personal-center"/);
@@ -40,8 +40,8 @@ test("main-flow links use real destinations and keep login disabled", async () =
   assert.match(startHeader, /href="\/personal-center"/);
   assert.match(plans, /href="\/planner"/);
   assert.match(plans, /使用此方案并进入地图/);
-  assert.match(planner, /href="\/start">新建旅行/);
-  assert.match(planner, /href="\/personal-center"/);
+  assert.match(plannerWorkspace, /href="\/start">新建旅行/);
+  assert.match(plannerWorkspace, /href="\/personal-center"/);
 });
 
 test("deep-link entry overrides only the step while preserving the single draft store", async () => {
