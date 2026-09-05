@@ -7,7 +7,13 @@
 - Owner: `B`
 - Responsibility: `Personal Center`
 - Priority: `P1`
-- Status: `Ready / 可开始`
+- Status: `进行中`
+- Issue: [#75](https://github.com/kanzakimy0/TravelAssist/issues/75)（Open）
+- Base Commit: `bc0b8d7ee712c3bb9d123e137551ca87d5216599`
+- Execution Branch: `feature/b-account-wbs-5-4-profile-account-ui`
+- Preflight: 1.24 / 5.1 已完成；没有重复实现，PR #74 仅为已合并 Task 文档。
+- Engineering note: develop 没有 npm test 脚本；不修改 A 全局工程配置，实际记录该命令结果并以现有 Node runner 执行测试。
+- PR safety: 首次追踪提交附 [skip ci]，随后创建 Draft，防止现有 feature 自动合并工作流误合并；不更改工作流。
 - Depends On: `1.24`, `5.1`
 - Dependency Status: 两项均已完成
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -131,6 +137,7 @@ Issue Body 至少包含：
 
 ```md
 ## Metadata
+
 - Task ID: WBS-5.4-B
 - WBS ID: 5.4
 - Owner: B
@@ -140,6 +147,7 @@ Issue Body 至少包含：
 - Status: 进行中
 
 ## Objective
+
 Implement the frozen Profile / Account overview UI inside the existing Personal Center Shell using local UI state only. No Auth / DB / API.
 ```
 
@@ -806,73 +814,86 @@ Issue = Closed
 # WBS-5.4-B Result
 
 ## Status
+
 Completed / Awaiting Review / Blocked
 
 ## GitHub Preflight
+
 - latest develop:
 - dependency 1.24:
 - dependency 5.1:
 - duplicate task found: Yes / No
 
 ## Issue
+
 - Number:
 - State:
 - URL:
 
 ## Base Commit
+
 -
 
 ## Feature Branch
+
 `feature/b-account-wbs-5-4-profile-account-ui`
 
 ## Created
+
 -
 
 ## Modified
+
 -
 
 ## Profile UI
-| Behavior | Result |
-|---|---|
-| View mode | |
-| Edit mode | |
-| Nickname required | |
-| Cancel | |
-| Save feedback | |
-| Avatar local preview | |
-| Avatar restore/delete | |
+
+| Behavior              | Result |
+| --------------------- | ------ |
+| View mode             |        |
+| Edit mode             |        |
+| Nickname required     |        |
+| Cancel                |        |
+| Save feedback         |        |
+| Avatar local preview  |        |
+| Avatar restore/delete |        |
 
 ## Contact / Settings
-| Behavior | Result |
-|---|---|
-| Contact read-only | |
-| Verified status | |
-| General settings | |
-| Region suggestions no forced overwrite | |
+
+| Behavior                               | Result |
+| -------------------------------------- | ------ |
+| Contact read-only                      |        |
+| Verified status                        |        |
+| General settings                       |        |
+| Region suggestions no forced overwrite |        |
 
 ## Emergency Contact
-| Behavior | Result |
-|---|---|
-| Empty | |
-| Add | |
-| Edit | |
-| Delete confirm | |
-| Validation | |
+
+| Behavior       | Result |
+| -------------- | ------ |
+| Empty          |        |
+| Add            |        |
+| Edit           |        |
+| Delete confirm |        |
+| Validation     |        |
 
 ## Navigation
-| Behavior | Result |
-|---|---|
-| Unsaved guard Sidebar | |
-| Unsaved guard Avatar menu | |
-| Security entry | |
-| Privacy entry | |
-| Booking sync entry | |
+
+| Behavior                  | Result |
+| ------------------------- | ------ |
+| Unsaved guard Sidebar     |        |
+| Unsaved guard Avatar menu |        |
+| Security entry            |        |
+| Privacy entry             |        |
+| Booking sync entry        |        |
 
 ## Persistence Boundary
+
 - Profile persistence: Mock / in-memory only
 - Auth / API / DB added: No
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -883,12 +904,14 @@ Completed / Awaiting Review / Blocked
 - browser acceptance:
 
 ## Ownership Safety
+
 - A Task modified: No
 - Other B Task modified: No
 - A Main System modified: No
 - DB/Auth implemented: No
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -896,14 +919,17 @@ Completed / Awaiting Review / Blocked
 - Merge Commit:
 
 ## Three-way Sync
+
 - Task.md:
 - Issue:
 - WBS 5.4:
 
 ## Problems
+
 None / details
 
 ## Next
+
 Stop. Do not automatically start WBS 5.5 / 5.3 / 8.2 / 8.3.
 ```
 
