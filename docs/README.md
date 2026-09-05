@@ -31,6 +31,14 @@
 ### AI
 
 - [AI 行程生成与调整流程](ai/trip-generation-flow.md) — 从自然语言到 Trip / Preference State，再到地图与时间轴的流程
+- [AI 行程双阶段判断规格](ai/trip-judgement-two-phase.md) — 行程前 Planning Review 与 T-48h 后 Execution Monitor 的判断规则
+
+### 技术架构
+
+- [Web 工程架构](architecture/web-architecture.md) — App Router 源码边界与未来 App 共用代码原则
+- [DB / ORM / Migration 总体方案](architecture/db-orm-migration-standards.md) — Supabase PostgreSQL、Drizzle、RLS、PostGIS 与 Migration 全局规范
+- [方案数据模型与 AI 接管架构设计书](architecture/trip-plan-data-ai-takeover.md) — Trip / Plan / Day / Item、版本、ChangeSet、Runtime、Booking、多人同步、离线与 AI 接管边界
+- [技术架构规划](architecture/README.md) — 已建立与后续待冻结的架构专题索引
 
 ### 开发规划
 
@@ -40,8 +48,6 @@
 ### Web 工程
 
 - [开发环境配置](development/setup.md) — Requirements、安装、启动、验证与 Git workflow
-- [Web 工程架构](architecture/web-architecture.md) — App Router 源码边界与未来 App 共用代码原则
-- [技术架构规划](architecture/README.md) — 后续需要冻结的系统、数据与 API 架构文档
 
 ---
 
@@ -83,10 +89,13 @@ TravelAssist/
    ├─ preferences/
    │  └─ preference-system.md
    ├─ ai/
-   │  └─ trip-generation-flow.md
+   │  ├─ trip-generation-flow.md
+   │  └─ trip-judgement-two-phase.md
    ├─ architecture/
    │  ├─ README.md
-   │  └─ web-architecture.md
+   │  ├─ web-architecture.md
+   │  ├─ db-orm-migration-standards.md
+   │  └─ trip-plan-data-ai-takeover.md
    ├─ development/
    │  └─ setup.md
    ├─ design/
@@ -158,13 +167,15 @@ GitHub Issue
 下一阶段继续冻结技术规格：
 
 1. `architecture/system-overview.md` — Web / App / Backend / AI / Map 总体技术架构
-2. `architecture/trip-state.md` — Trip State 数据结构
-3. `architecture/preference-state.md` — Preference State 数据结构
-4. `architecture/api-design.md` — 核心 API 边界
+2. `architecture/preference-state.md` — Preference State 数据结构
+3. `architecture/api-design.md` — 核心 API 详细边界
+4. App 阶段再补充 Offline SQLite Schema / Merge Algorithm
+
+原计划的 `architecture/trip-state.md` 核心职责已经由 `architecture/trip-plan-data-ai-takeover.md` 覆盖，不再作为一个独立前置缺口。
 
 UI Design System 已建立 v0.1，最终颜色、字体、圆角、地图覆盖层等 Token 在 UI 实装验证后继续冻结。
 
-这些项目已经转化为 GitHub Issues，执行顺序见 `planning/development-wbs.md`。
+这些项目应按 `planning/development-wbs.md` 与对应 GitHub Issues 的执行顺序推进。
 
 ---
 
