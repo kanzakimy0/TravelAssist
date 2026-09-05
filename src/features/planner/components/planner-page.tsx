@@ -208,12 +208,21 @@ export function PlannerPage() {
           </span>
           TravelAssist
         </Link>
+        <nav className={styles.headerNav} aria-label="Planner 导航">
+          <Link href="/start">新旅行</Link>
+          <Link href="/planner" aria-current="page">
+            AI 行程规划
+          </Link>
+        </nav>
         <div className={styles.headerTitle}>
           <h1>东京与富士山的三日慢叙</h1>
-          <span>PLANNER / 示例预览</span>
+          <span>示例行程</span>
         </div>
         <Link className={styles.accountLink} href="/personal-center">
-          个人中心 <PlannerIcon name="users" />
+          <span>个人中心</span>
+          <span className={styles.avatar}>
+            <PlannerIcon name="users" />
+          </span>
         </Link>
       </header>
       <main
@@ -226,6 +235,11 @@ export function PlannerPage() {
         <div className={styles.mapWorkspace}>
           <PlannerMapShell
             view={view}
+            travelHints={Object.fromEntries(
+              plan.items
+                .filter((item) => item.next)
+                .map((item) => [item.id, item.next!]),
+            )}
             onSelect={selectMapFeature}
             terrain={terrain}
           />

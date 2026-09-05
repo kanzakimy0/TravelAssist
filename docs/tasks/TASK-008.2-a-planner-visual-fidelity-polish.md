@@ -6,6 +6,8 @@
 > Target Branch: `develop`  
 > Feature Branch: `feature/a-planner-visual-fidelity-polish`
 
+> 执行状态（2026-09-05）：待审查 / Partially Completed。已提交纯视觉实现与五尺寸对比证据；待补充定稿参考图并确认执行期间新增 v0.3 设计的范围差异。未合并。完整追踪见 [Result](RESULT-TASK-008.2-a-planner-visual-fidelity-polish.md)。以下正式规格保留，不将后续业务要求自动纳入本 Task。
+
 ## 1. 任务目标
 
 在 **不改动 TASK-008 / TASK-008.1 已完成业务逻辑与状态模型** 的前提下，对 `/planner` 做一轮纯视觉/布局精修，使当前实际页面从“灰白后台工具感”明显靠近用户定稿的预想图：
@@ -704,9 +706,11 @@ Closes #73
 # TASK-008.2-A Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Tracking
+
 - Issue: #73
 - Task File: docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md
 - Branch:
@@ -715,6 +719,7 @@ Completed / Partially Completed / Blocked
 - WBS updated:
 
 ## Visual Changes
+
 - Header:
 - Map style:
 - POI markers:
@@ -729,12 +734,14 @@ Completed / Partially Completed / Blocked
 - palette cleanup:
 
 ## Ratio Measurements
+
 - 1600×900 right panel:
 - 1440×900 right panel:
 - upper/lower:
 - bottom height:
 
 ## Screenshot Validation
+
 - 1600×900:
 - 1440×900:
 - 1280×800:
@@ -742,6 +749,7 @@ Completed / Partially Completed / Blocked
 - 390×844:
 
 ## Regression Validation
+
 - day range:
 - plan switching:
 - More Settings:
@@ -750,6 +758,7 @@ Completed / Partially Completed / Blocked
 - responsive:
 
 ## Automated Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -760,6 +769,7 @@ Completed / Partially Completed / Blocked
 - console/hydration:
 
 ## Scope Preserved
+
 - state/schema unchanged:
 - Mapbox boundary unchanged:
 - no new API/AI/Auth/DB:
@@ -767,9 +777,11 @@ Completed / Partially Completed / Blocked
 - B files untouched:
 
 ## Remaining Visual Gaps
+
 - ...
 
 ## Ready For Visual Review
+
 Yes / No
 ```
 

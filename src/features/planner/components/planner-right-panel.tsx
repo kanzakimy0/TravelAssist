@@ -72,7 +72,7 @@ export function PlannerRightPanel({
           <Button
             variant="secondary"
             size="small"
-            className={styles.settingsButton}
+            className={`${styles.settingsButton} ${styles.replanButton}`}
             onClick={onReplan}
             disabled={refreshing}
           >
