@@ -1,0 +1,144 @@
+.field {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--wizard-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.fieldButton {
+  display: inline-flex;
+  min-width: 7.6rem;
+  min-height: 2.2rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--wizard-border);
+  border-radius: 0.65rem;
+  background: rgb(255 253 249 / 72%);
+  color: var(--wizard-ink);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.fieldButton[aria-expanded="true"] {
+  border-color: var(--wizard-coral);
+  background: var(--wizard-blush);
+}
+.surface {
+  position: fixed;
+  z-index: 80;
+  width: min(20rem, calc(100vw - 1.5rem));
+  max-height: calc(100svh - 1.5rem);
+  overflow: auto;
+  padding: 0.85rem;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(255 250 244 / 95%);
+  color: var(--wizard-ink);
+  box-shadow:
+    0 1rem 3rem rgb(68 42 33 / 22%),
+    inset 0 1px rgb(255 255 255 / 80%);
+  backdrop-filter: blur(1.25rem);
+  scrollbar-width: thin;
+}
+.surface button {
+  border: 0;
+  border-radius: 0.65rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.surface button:hover:not(:disabled) {
+  background: var(--wizard-blush);
+}
+.surface button:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+.surface button:focus-visible,
+.fieldButton:focus-visible {
+  outline: 2px solid var(--wizard-coral);
+  outline-offset: 2px;
+}
+.calendarHeader,
+.calendarFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.calendarHeader strong {
+  font-size: 0.85rem;
+}
+.calendarHeader button {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.35rem;
+}
+.weekdays,
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.2rem;
+}
+.weekdays {
+  margin: 0.6rem 0 0.4rem;
+  color: var(--wizard-muted);
+  font-size: 0.7rem;
+  text-align: center;
+}
+.calendarGrid button {
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 0;
+}
+.calendarGrid button[data-outside="true"] {
+  color: var(--wizard-muted);
+}
+.calendarGrid button[aria-current="date"] {
+  box-shadow: inset 0 0 0 1px var(--wizard-coral);
+}
+.calendarGrid button[aria-pressed="true"] {
+  background: var(--wizard-coral-dark);
+  color: #fffaf5;
+}
+.calendarFooter {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--wizard-border);
+}
+.calendarFooter button {
+  padding: 0.45rem 0.7rem;
+  color: var(--wizard-coral-dark);
+}
+.options {
+  display: grid;
+  gap: 0.15rem;
+  max-height: min(23rem, calc(100svh - 4rem));
+  overflow-y: auto;
+}
+.options button {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.7rem;
+  text-align: left;
+}
+.options button[aria-selected="true"] {
+  background: var(--wizard-blush);
+  color: var(--wizard-coral-dark);
+}
+@media (max-width: 34rem) {
+  .field {
+    gap: 0.2rem;
+  }
+  .fieldButton {
+    min-width: 6.9rem;
+  }
+}

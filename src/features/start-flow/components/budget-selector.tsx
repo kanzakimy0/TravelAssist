@@ -5,16 +5,19 @@ import { useState } from "react";
 import type { BudgetDetails, BudgetLevel } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { BudgetDetailModal } from "./detail-modals";
+import { SquareOptionCard } from "./square-option-card";
+import type { WizardIconName } from "./wizard-icon";
 
 const OPTIONS: Array<{
   id: BudgetLevel;
   label: string;
   description: string;
+  icon: WizardIconName;
 }> = [
-  { id: "economy", label: "经济", description: "精打细算" },
-  { id: "standard", label: "标准", description: "均衡舒适" },
-  { id: "comfort", label: "舒适", description: "体验优先" },
-  { id: "premium", label: "高端", description: "品质享受" },
+  { id: "economy", label: "经济", description: "精打细算", icon: "coin" },
+  { id: "standard", label: "标准", description: "均衡舒适", icon: "balance" },
+  { id: "comfort", label: "舒适", description: "体验优先", icon: "comfort" },
+  { id: "premium", label: "高端", description: "品质享受", icon: "diamond" },
 ];
 
 interface BudgetSelectorProps {
@@ -35,20 +38,20 @@ export function BudgetSelector({
   return (
     <fieldset className={styles.choiceGroup}>
       <legend>预算范围</legend>
-      <div className={styles.budgetGrid}>
+      <div
+        className={styles.budgetGrid}
+        role="radiogroup"
+        aria-label="预算范围"
+      >
         {OPTIONS.map((option) => (
-          <button
-            aria-checked={value === option.id}
-            className={styles.budgetChoice}
-            data-selected={value === option.id}
+          <SquareOptionCard
+            selected={value === option.id}
             key={option.id}
             onClick={() => onChange(option.id)}
-            role="radio"
-            type="button"
-          >
-            <strong>{option.label}</strong>
-            <small>{option.description}</small>
-          </button>
+            label={option.label}
+            description={option.description}
+            icon={option.icon}
+          />
         ))}
       </div>
       <button

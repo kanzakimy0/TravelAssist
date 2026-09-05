@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import styles from "../start-flow.module.css";
 import { MoreRegionsModal } from "./more-regions-modal";
+import { DESTINATION_ICONS, WizardIcon } from "./wizard-icon";
 
 const PRIMARY_DESTINATIONS = [
   "东京",
@@ -43,7 +44,10 @@ export function DestinationGrid({
             onClick={() => onToggle(destination)}
             type="button"
           >
-            {destination}
+            <span className={styles.iconText}>
+              <WizardIcon name={DESTINATION_ICONS[destination]} />
+              {destination}
+            </span>
           </button>
         ))}
         <button
@@ -54,8 +58,13 @@ export function DestinationGrid({
           onClick={() => setShowMore(true)}
           type="button"
         >
-          更多地区
-          {selectedPrefectures.length ? ` · ${selectedPrefectures.length}` : ""}
+          <span className={styles.iconText}>
+            <WizardIcon name="map" />
+            更多地区
+            {selectedPrefectures.length
+              ? ` · ${selectedPrefectures.length}`
+              : ""}
+          </span>
         </button>
       </div>
       {selectedPrefectures.length ? (

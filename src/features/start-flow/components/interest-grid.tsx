@@ -6,6 +6,7 @@ import { INTERESTS } from "../model/start-flow-draft";
 import type { Interest } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { InterestDetailModal } from "./interest-detail-modal";
+import { INTEREST_ICONS, WizardIcon } from "./wizard-icon";
 
 interface InterestGridProps {
   dislikes: Interest[];
@@ -26,7 +27,7 @@ export function InterestGrid({
   return (
     <div className={styles.interestSection}>
       <div className={styles.sectionHeadingRow}>
-        <h2>你的兴趣</h2>
+        <h2>您的兴趣</h2>
         <p>
           喜欢 {likes.length}/3 · 不喜欢 {dislikes.length}/3
         </p>
@@ -54,7 +55,10 @@ export function InterestGrid({
                 onClick={() => onCycle(interest)}
                 type="button"
               >
-                <span>{interest}</span>
+                <span className={styles.iconText}>
+                  <WizardIcon name={INTEREST_ICONS[interest]} />
+                  {interest}
+                </span>
                 <small>{stateLabel}</small>
               </button>
               <button

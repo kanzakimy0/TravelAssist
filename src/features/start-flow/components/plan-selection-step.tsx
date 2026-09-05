@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 import type { GeneratedPlan } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { SectionHeader } from "./section-header";
 import { RouteMiniMap } from "./route-mini-map";
 
 interface PlanSelectionStepProps {
@@ -28,18 +29,16 @@ export function PlanSelectionStep({
       aria-labelledby="plans-title"
       className={`${styles.step} ${styles.plansStep}`}
     >
-      <p className={styles.eyebrow}>STEP 4 · 生成方案</p>
-      <h1
-        className={styles.stepTitle}
+      <SectionHeader
+        eyebrow="STEP 4 · 生成方案"
         id="plans-title"
-        ref={headingRef}
-        tabIndex={-1}
+        title="为您准备了 3 个旅行方案"
+        headingRef={headingRef}
       >
-        为你准备了 3 个旅行方案
-      </h1>
-      <p className={styles.stepDescription}>
-        从节奏、移动方式与体验密度不同的路线中，选择最接近你的一个。
-      </p>
+        <p className={styles.stepDescription}>
+          从节奏、移动方式与体验密度不同的路线中，选择最接近您的一个。
+        </p>
+      </SectionHeader>
       <div className={styles.planGrid}>
         {plans.map((plan) => {
           const selected = selectedPlanId === plan.id;

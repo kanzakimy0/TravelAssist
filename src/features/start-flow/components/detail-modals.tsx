@@ -270,7 +270,7 @@ export function BudgetDetailModal({
 }: DetailModalProps<BudgetDetails>) {
   return (
     <Modal
-      description="金额可按你习惯的币种填写，仅作为后续方案约束。"
+      description="金额可按您习惯的币种填写，仅作为后续方案约束。"
       onClose={onClose}
       title="预算详情"
     >

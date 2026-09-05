@@ -12,6 +12,7 @@ import type {
   TripWizardDraft,
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { SectionHeader } from "./section-header";
 import { AnchorActions } from "./anchor-actions";
 import { BudgetSelector } from "./budget-selector";
 import { DestinationGrid } from "./destination-grid";
@@ -54,18 +55,16 @@ export function TripBasicsStep({
 }: TripBasicsStepProps) {
   return (
     <section aria-labelledby="trip-basics-title" className={styles.step}>
-      <p className={styles.eyebrow}>STEP 3 · 本次旅行</p>
-      <h1
-        className={styles.stepTitle}
+      <SectionHeader
+        eyebrow="STEP 3 · 本次旅行"
         id="trip-basics-title"
-        ref={headingRef}
-        tabIndex={-1}
+        title="这次旅行怎么安排？"
+        headingRef={headingRef}
       >
-        这次旅行怎么安排？
-      </h1>
-      <p className={styles.stepDescription}>
-        告诉我们时间、地点与同行方式，先把这趟旅行的轮廓定下来。
-      </p>
+        <p className={styles.stepDescription}>
+          告诉我们时间、地点与同行方式，先把这趟旅行的轮廓定下来。
+        </p>
+      </SectionHeader>
       <ExpandableDateSelector
         dateMode={draft.dateMode}
         durationDays={draft.durationDays}

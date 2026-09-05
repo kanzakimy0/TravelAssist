@@ -6,6 +6,7 @@ import type {
   TravelStyleValues,
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
+import { SectionHeader } from "./section-header";
 import { InterestGrid } from "./interest-grid";
 import { TravelStyleGroup } from "./travel-style-group";
 
@@ -46,18 +47,16 @@ export function PreferencesStep({
 }: PreferencesStepProps) {
   return (
     <section aria-labelledby="preferences-title" className={styles.step}>
-      <p className={styles.eyebrow}>STEP 2 · 旅行偏好</p>
-      <h1
-        className={styles.stepTitle}
+      <SectionHeader
+        eyebrow="STEP 2 · 旅行偏好"
         id="preferences-title"
-        ref={headingRef}
-        tabIndex={-1}
+        title="您对什么感兴趣？"
+        headingRef={headingRef}
       >
-        你对什么感兴趣？
-      </h1>
-      <p className={styles.stepDescription}>
-        用一级兴趣与六条旅行风格滑轨，勾勒这趟旅程的方向。
-      </p>
+        <p className={styles.stepDescription}>
+          用一级兴趣与六条旅行风格滑轨，勾勒这趟旅程的方向。
+        </p>
+      </SectionHeader>
       <InterestGrid
         details={interestDetails}
         dislikes={dislikes}
@@ -69,7 +68,7 @@ export function PreferencesStep({
         {notice}
       </p>
       <div className={styles.styleSection}>
-        <h2>你喜欢怎么玩？</h2>
+        <h2>您喜欢怎么玩？</h2>
         <div className={styles.styleGroups}>
           <TravelStyleGroup
             items={[...PACE_ITEMS]}

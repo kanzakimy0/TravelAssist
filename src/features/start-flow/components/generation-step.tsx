@@ -1,6 +1,7 @@
 import type { RefObject } from "react";
 
 import styles from "../start-flow.module.css";
+import { SectionHeader } from "./section-header";
 
 const STAGES = [
   "分析偏好",
@@ -26,18 +27,16 @@ export function GenerationStep({
       aria-live="polite"
       className={`${styles.step} ${styles.generationStep}`}
     >
-      <p className={styles.eyebrow}>STEP 4 · 生成方案</p>
-      <h1
-        className={styles.stepTitle}
+      <SectionHeader
+        eyebrow="STEP 4 · 生成方案"
         id="generation-title"
-        ref={headingRef}
-        tabIndex={-1}
+        title="正在为您规划旅行…"
+        headingRef={headingRef}
       >
-        正在为你规划旅行…
-      </h1>
-      <p className={styles.stepDescription}>
-        根据你的偏好，生成最合适的行程方案。
-      </p>
+        <p className={styles.stepDescription}>
+          根据您的偏好，生成最合适的行程方案
+        </p>
+      </SectionHeader>
       <ol className={styles.generationStages}>
         {STAGES.map((stage, index) => {
           const status =
@@ -60,7 +59,7 @@ export function GenerationStep({
         })}
       </ol>
       <p className={styles.generationNote}>
-        方案会综合你的草稿与确定安排，生成期间可放心返回调整。
+        方案会综合您的草稿与确定安排，生成期间可放心返回调整。
       </p>
     </section>
   );

@@ -52,7 +52,7 @@ export function InterestDetailModal({
 
   return (
     <Modal
-      description="可选填更具体的偏好，让后续方案更贴近你。"
+      description="可选填更具体的偏好，让后续方案更贴近您。"
       onClose={onClose}
       title={`${interest}偏好`}
     >
