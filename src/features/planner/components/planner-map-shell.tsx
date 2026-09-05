@@ -3,21 +3,30 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { mountMapbox, schematicLayout } from "../map/map-provider";
 import type { MapSession } from "../map/map-provider";
 import type { Coordinates, MapView } from "../model/trip-model";
+import {
+  isLandmark,
+  landmarkKey,
+  landmarkPaths,
+  travelBubbles,
+} from "../map/map-visuals";
 import styles from "../planner.module.css";
 
 export function PlannerMapShell({
   view,
   onSelect,
   terrain,
+  travelHints,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
+  travelHints: Record<string, string>;
 }) {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const container = useRef<HTMLDivElement>(null);
   const session = useRef<MapSession | null>(null);
   const latest = useRef(view);
+  const hints = useRef(travelHints);
   const [mapStatus, setMapStatus] = useState(
     token
       ? "正在加载 Mapbox · 暂用示意地图"
@@ -32,6 +41,7 @@ export function PlannerMapShell({
       token,
       (id, itemId) => select(id, itemId),
       setMapStatus,
+      () => hints.current,
     )
       .then((mounted) => {
         if (cancelled) mounted?.destroy();
@@ -51,8 +61,9 @@ export function PlannerMapShell({
   }, [token]);
   useEffect(() => {
     latest.current = view;
+    hints.current = travelHints;
     session.current?.update(view);
-  }, [view]);
+  }, [view, travelHints]);
   const live = mapStatus.startsWith("Mapbox 底图");
   return (
     <div
@@ -67,7 +78,12 @@ export function PlannerMapShell({
         style={{ visibility: live ? "visible" : "hidden" }}
       />
       {!live && (
-        <SchematicMap view={view} onSelect={onSelect} terrain={terrain} />
+        <SchematicMap
+          view={view}
+          onSelect={onSelect}
+          terrain={terrain}
+          travelHints={travelHints}
+        />
       )}
       <div className={styles.mapInfo}>
         <p role="status">{mapStatus}</p>
@@ -115,10 +131,12 @@ function SchematicMap({
   view,
   onSelect,
   terrain,
+  travelHints,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
+  travelHints: Record<string, string>;
 }) {
   const svg = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ width: 1000, height: 600 });
@@ -149,18 +167,26 @@ function SchematicMap({
           height="45"
           patternUnits="userSpaceOnUse"
         >
-          <path d="M55 0H0V45" fill="none" stroke="#d6cbbd" strokeWidth="0.8" />
+          <path
+            d="M55 0H0V45"
+            fill="none"
+            stroke="#dbdacf"
+            strokeWidth="0.35"
+          />
         </pattern>
       </defs>
       <rect
         width={size.width}
         height={size.height}
-        fill={terrain ? "#eee9df" : "#faf6ef"}
+        fill={terrain ? "#efeee3" : "#faf6ef"}
       />
       {terrain && (
         <>
           <path d="M0 0H620Q660 110 480 190T170 340L0 290Z" fill="#dfe3d9" />
-          <path d="M640 600Q580 420 800 370T1000 200V600Z" fill="#d5e0df" />
+          <path
+            d={`M${size.width * 0.55} ${size.height}Q${size.width * 0.5} ${size.height * 0.65} ${size.width * 0.8} ${size.height * 0.6}T${size.width} ${size.height * 0.3}V${size.height}Z`}
+            fill="#cbdcdb"
+          />
           <rect
             width={size.width}
             height={size.height}
@@ -260,10 +286,10 @@ function SchematicMap({
           >
             <rect
               x={x - 78}
-              y={y - 21}
+              y={y + (isLandmark(p) ? 34 : 14)}
               width="156"
-              height="52"
-              rx="8"
+              height="25"
+              rx="12"
               fill="#fffaf2"
               fillOpacity="0.78"
             />
@@ -271,7 +297,7 @@ function SchematicMap({
               <circle
                 cx={x}
                 cy={y}
-                r="18"
+                r={isLandmark(p) ? 34 : 18}
                 fill="none"
                 stroke="#a74739"
                 strokeWidth="3"
@@ -280,11 +306,23 @@ function SchematicMap({
             <circle
               cx={x}
               cy={y}
-              r={p.type === "city" ? 12 : 9}
+              r={isLandmark(p) ? 29 : 9}
               fill={p.tripStatus === "recommended" ? "#e9e4db" : "#fffaf4"}
-              stroke={p.color}
-              strokeWidth="2.5"
+              stroke={isLandmark(p) ? "#fffdf8" : "#b66c5d"}
+              strokeWidth={isLandmark(p) ? 4 : 2.5}
             />
+            {isLandmark(p) && (
+              <g
+                transform={`translate(${x - 23} ${y - 23}) scale(.72)`}
+                fill="none"
+                stroke="#687b71"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d={landmarkPaths[landmarkKey(p.name)]} />
+              </g>
+            )}
             <text
               x={x}
               y={y + 3}
@@ -292,11 +330,15 @@ function SchematicMap({
               fontSize="9"
               fill="#343e48"
             >
-              {p.tripStatus === "recommended" ? "+" : p.day}
+              {isLandmark(p)
+                ? ""
+                : p.tripStatus === "recommended"
+                  ? "+"
+                  : p.day}
             </text>
             <text
               x={x}
-              y={y + 25}
+              y={y + (isLandmark(p) ? 51 : 31)}
               textAnchor="middle"
               className={styles.pinText}
             >
@@ -310,6 +352,29 @@ function SchematicMap({
               </text>
             )}
             <title>{`${p.name} · ${p.reservationStatus ?? p.tripStatus}`}</title>
+          </g>
+        );
+      })}
+      {travelBubbles(view, travelHints).map((b) => {
+        const [x, y] = project(b.coordinates);
+        return (
+          <g
+            key={b.id}
+            transform={`translate(${x} ${y + 22})`}
+            pointerEvents="none"
+          >
+            <rect
+              x="-66"
+              y="-14"
+              width="132"
+              height="28"
+              rx="14"
+              fill="#fffdf8"
+              stroke="#e3d9cf"
+            />
+            <text textAnchor="middle" y="4" fill="#45535a" fontSize="12">
+              {b.label}
+            </text>
           </g>
         );
       })}

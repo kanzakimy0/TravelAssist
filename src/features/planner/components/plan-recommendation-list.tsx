@@ -22,8 +22,8 @@ export function PlanRecommendationList({
       aria-labelledby="recommendations-title"
     >
       <div className={styles.sectionTitle}>
-        <h2 id="recommendations-title">换一种方式，遇见日本</h2>
-        <p>3 个示例方案 · 随心切换</p>
+        <h2 id="recommendations-title">推荐方案</h2>
+        <p>3 个方案 · 随心切换</p>
       </div>
       <div className={styles.planList}>
         {plans.map((plan, index) => (
@@ -60,7 +60,15 @@ export function PlanRecommendationList({
                 {selectedId === plan.id && <b>当前方案</b>}
               </span>
               <strong>{plan.name}</strong>
-              <small>{plan.summary}</small>
+              <small>
+                {plan.days.length}天
+                {
+                  plan.days.filter((day) =>
+                    day.stops.some((stop) => stop.kind === "stay"),
+                  ).length
+                }
+                晚 · {plan.summary}
+              </small>
             </span>
             <PlannerIcon name="chevron" />
           </button>
