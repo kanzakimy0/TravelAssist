@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；WBS 为待审查，尚未合入 develop。
+Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；已获用户授权，PR #69 已合入 develop；WBS 为已完成（本轮 Mock 子集）。
 
 ## Prerequisite
 
@@ -16,8 +16,8 @@ Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；WBS 为待审查
 - Task File: `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`
 - Branch: `feature/a-planner-mapbox-interactions`
 - Commit: 实现 `673ab6aa9a5a8aa58e8838f6200d5ca77981ea1e`；无冲突集成提交 `8682ed293d19115f173f81c995739f8199f1d33a`，同步 develop `fd5e4492f202c07567593199baadd25425190367`。最终追踪文档提交见 PR head；已验收的实现、tests、依赖在文档同步后未变化。
-- PR: [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) → develop；Open / Draft，保留审查，未合并。
-- WBS updated: Yes；4.2–4.5、4.8–4.9、4.11–4.13、7.1 的本 Task 子集待审查；4.6 / 4.14 / 4.15 完整能力仍进行中。
+- PR: [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) → develop；Merged，合并提交 `f5d5ef249022d74cc89c8300bb8622e85220eda5`，验收 head `36c73c32f004fcb27e7b214d8d6278790c04373f`。
+- WBS updated: Yes；4.2–4.5、4.8–4.9、4.11–4.13、7.1 的本 Task 子集已完成；4.6 / 4.14 / 4.15 完整能力仍进行中。
 
 ## Mapbox
 
@@ -106,11 +106,11 @@ Completed — 本轮 Mapbox 边界与 Mock 交互实现完成；WBS 为待审查
 
 - 无本 Task Mock 功能阻塞；live Mapbox 验收未执行，原因是本机没有 Token。已按 Task 的无 Token 路径验证，不硬编码凭证。
 - 七份全仓 Prettier 基线文档例外如上；npm 既有 ESLint 版本退役提示、unrs-resolver 安装脚本审批提示、Node 测试的 MODULE_TYPELESS_PACKAGE_JSON 警告未通过修改无关配置掩盖。
-- 本仓 feature push 会自动创建并合并 PR，非 Draft PR 也会自动合并。本次提交附 `[skip ci]`，PR 保持 Draft；本地质量验证照常执行，未修改工作流。远端 CI 跳过不能表述为 CI 已通过。
+- 发布历史：初始提交附 `[skip ci]` 并以 Draft 防止仓库自动合并；2026-09-05 用户明确授权合并后，重新核验 head / develop、无冲突、lint / typecheck / 50 tests / diff-check，通过后解除 Draft 并合并 #69。未修改工作流、未 force push；远端自动合并工作流成功不代表产品质量 CI，跳过也不计为通过。
 - 历史 Blocked Result 来自 PR #59 未合并阶段；本结果替换该过期状态，前置合并已核实。
 - 验收环境为当前 Chromium 与 viewport 模拟；未声称其他浏览器 / 真实触屏 / live Provider 验收。localhost:3000 已重新启动当前 feature 代码预览，生产验收使用 localhost:3002。
 - 完成后停止，不继续 Provider / Route / Transit / AI / Auth / DB 或 TASK-009。
 
 ## Ready For Review
 
-Yes — 本轮代码与 Mock 验收可供审查；Draft 仅用于防止自动合并，不表示已验证真实 Mapbox 服务。
+Yes — 用户已授权合并，PR #69 已合入 develop。合并后实现 / 测试 / 依赖与验收 head 无差异；此前 build / 浏览器验收仍适用。live Mapbox 未验证的限制保持不变。
