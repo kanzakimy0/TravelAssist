@@ -7,7 +7,12 @@
 - Owner: `B`
 - Responsibility: `Personal Center`
 - Priority: `P1`
-- Status: `进行中`
+- Status: `待审查`
+- Implementation Commit: `ef31dafbe61e1c006c752ec07f160d47d4639b2f`
+- Pull Request: [#76](https://github.com/kanzakimy0/TravelAssist/pull/76)（Draft / Open，不自动合并）
+- Result: [WBS-5.4-B Result](RESULT-WBS-5.4-b-profile-account-ui.md)
+- Validation: lint / typecheck / build / 56 Node tests / Edge 五个视口通过；npm test 缺脚本及全仓 13 份上游格式例外详见 Result，不改其他 Owner 文件。
+- Persistence: Mock / in-memory only
 - Issue: [#75](https://github.com/kanzakimy0/TravelAssist/issues/75)（Open）
 - Base Commit: `bc0b8d7ee712c3bb9d123e137551ca87d5216599`
 - Execution Branch: `feature/b-account-wbs-5-4-profile-account-ui`

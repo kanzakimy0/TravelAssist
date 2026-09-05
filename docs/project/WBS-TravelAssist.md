@@ -235,7 +235,7 @@ src/db/
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| WBS-5.4-B | 5.4 | B | 进行中 | #75 | `docs/tasks/TASK-WBS-5.4-b-profile-account-ui.md` | `feature/b-account-wbs-5-4-profile-account-ui` | `215b790`（启动） | #76 Draft |
+| WBS-5.4-B | 5.4 | B | 待审查 | #75 Open | `docs/tasks/TASK-WBS-5.4-b-profile-account-ui.md` | `feature/b-account-wbs-5-4-profile-account-ui` | `ef31daf`（实现）；`21828aa`（同步） | #76 Draft / Open |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -367,7 +367,7 @@ src/db/
 | 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
 | 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 已完成 |
 | 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
-| 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 进行中 |
+| 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 待审查 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 未开始 |
 | 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 未开始 |
 | 5.7    | 移动偏好 UI                                   | B      | P1     | 5.5      | 未开始 |
