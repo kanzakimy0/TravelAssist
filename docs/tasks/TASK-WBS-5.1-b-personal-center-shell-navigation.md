@@ -5,7 +5,7 @@
 - Task ID: WBS-5.1-B
 - WBS ID: 5.1
 - Owner: B
-- Status: 待审查
+- Status: 已完成
 - GitHub Issue: #34
 - Branch: `feature/b-account-wbs-5-1-personal-center-shell`
 - Base Commit: `6b0677e21c0f0089f1612a5f39f43ac8e2dde82f`
@@ -89,11 +89,15 @@ Auth、Session、Avatar Popover、Logout、API、DB、Planner、Map、AI、Main 
 
 WBS 5.1 实现已通过 PR #36 合入 develop，拉取后重新执行五路由、导航、布局和滚动验证均通过。远程新增的 WBS 1.24 进行中状态已原样合入，没有覆盖。未开发 5.2 或其他后续业务。
 
-最终状态保留 **待审查 / Awaiting Review**：全仓 format:check 仍存在以下原有基线失败，需要用户确认是否作为本任务验收例外，或另行授权修复；不擅自标记完整验收通过，不关闭 Issue #34。PR 自动合并不等于所有验收项已经通过。
+最终状态：**已完成 / Completed**。用户通过《WBS-5.1-B 验收通过与最终同步指令》并在对话中确认验收，接受下述既有格式问题为基线例外；保留原始验证结果，不将全仓 format:check 的 Failed 改写为 Passed。
+
+Accepted with baseline format exception; unrelated pre-existing design-document formatting failures do not block WBS 5.1.
+
+Shell 实现最终合并提交：`1c7c608acc82ea53934b9f20e480e24ed7aa89f3`。本次只读同步最新 develop `c5bedf732728b77b68e07ca6d9a6ee5eff4fd27d`，在 `feature/b-account-wbs-5-1-final-sync` 分支定点更新本 Task 和 WBS 5.1；未执行 5.2。
 
 已知限制与原有基线问题：
 
-- Artwork asset pending：仓库暂无正式 Personal Center 侧栏插画，保留 CSS 背景区域。
+- Shell 初次交付时的 Artwork asset pending 属于已允许的占位策略，不阻塞验收。最新 develop 已通过独立素材后续 PR #39–#44 接入侧栏插画（见 `docs/project/WBS-5.1-ASSET-SYNC.md`）；本次保留其成果，不改动素材、代码或其他 Task 记录。
 - 全仓 format:check 的三个失败文件为 `docs/ui/authentication.md`、`docs/ui/personal-center-shell.md`、`docs/ui/personal-center.md`。通过 `git show` 读取 Base Commit 的内容调用相同 Prettier 检查，三份原始文件均不通过，确认不是本 Task 引入；遵循范围限制保持原样，没有修改格式检查配置。
 - `npm install` 提示 `unrs-resolver@1.12.2` 的 install script 尚未获 npm allowScripts 批准；没有擅自批准或变更安装策略。安装、lint、typecheck、build 均成功，0 vulnerabilities。
 - 浏览器自动请求 `/favicon.ico` 返回 404；Base Commit 中 `src/app/favicon.ico` 和 `public/favicon.ico` 均不存在。作为原有非阻塞资源问题记录，不修改全局图标；除该条外无 console error / pageerror。
@@ -116,8 +120,8 @@ WBS 5.1 实现已通过 PR #36 合入 develop，拉取后重新执行五路由�
 
 ## WBS Sync
 
-5.1 → 待审查；当前 Task Tracking Record 记录实际 Commit / PR。功能虽已合并，但等待全仓格式基线问题的验收决定；不修改其他 WBS 行。
+Completed：WBS 5.1 与 WBS-5.1-B 当前 Task Tracking Record → 已完成。保留原有 Issue / Branch / Commit / PR 信息，不修改其他 WBS 行。
 
 ## Issue Sync
 
-#34 Open / 待审查；明确记录 PR 已合并与全仓格式检查尚未通过。用户确认验收例外或授权修复后，再同步为已完成。
+Completed：Issue #34 → Closed（reason: completed）；追加用户验收通过与基线格式例外说明，保留原始验证结果及素材后续记录。
