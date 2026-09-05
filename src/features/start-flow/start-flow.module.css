@@ -9,6 +9,7 @@
   --wizard-border: rgb(111 78 68 / 16%);
   --wizard-glass: rgb(255 250 244 / 86%);
   --wizard-inset: clamp(2.5rem, 6vw, 5rem);
+  --wizard-body-gap: 1.5rem;
   color: var(--wizard-ink);
 }
 
@@ -43,6 +44,7 @@
 
 .flowLayout {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: 1rem;
   width: min(calc(100% - 3rem), 76rem);
@@ -124,6 +126,7 @@
   flex-direction: column;
   align-self: center;
   width: 100%;
+  min-width: 0;
   height: 100%;
   min-height: 0;
   max-height: 47rem;
@@ -137,6 +140,7 @@
 }
 
 .wizardContent {
+  position: relative;
   min-height: 0;
   flex: 1;
   padding: 0 var(--wizard-inset) 0.25rem;
@@ -149,6 +153,16 @@
 
 .sectionHeader {
   width: 100%;
+  flex: 0 0 auto;
+}
+
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  margin-block: var(--wizard-body-gap);
 }
 
 .loadingState {
@@ -229,6 +243,8 @@
 }
 
 .step {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -255,7 +271,7 @@
 }
 
 .stepDescription {
-  margin: 0.45rem 0 1.15rem;
+  margin: 0.45rem 0 0;
   color: var(--wizard-muted);
   font-size: 0.88rem;
   line-height: 1.55;
@@ -265,7 +281,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
-  margin: 2.1rem 0 0;
+  margin: 0;
 }
 
 .familiarityCard {
@@ -348,6 +364,12 @@
   font-size: 0.9rem;
 }
 
+.styleSection h2 {
+  font-size: 1.35rem;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
 .sectionHeadingRow p,
 .interestHint,
 .inlineNotice,
@@ -412,6 +434,11 @@
   margin-top: 0.35rem;
 }
 
+.interestHint[data-notice="true"] {
+  color: var(--wizard-coral-dark);
+  font-weight: 700;
+}
+
 .inlineNotice {
   min-height: 1rem;
   margin-top: 0.25rem;
@@ -420,7 +447,7 @@
 }
 
 .styleSection {
-  margin-top: 0.45rem;
+  margin-top: 1rem;
 }
 
 .styleGroups {
@@ -449,6 +476,13 @@
   background: rgb(255 253 249 / 55%);
 }
 
+.styleGroup h3 {
+  margin: 0 0 0.2rem;
+  color: var(--wizard-ink);
+  font-size: 0.8rem;
+  font-weight: 820;
+}
+
 .styleGroup legend,
 .choiceGroup legend,
 .dateFieldset legend,
@@ -459,21 +493,31 @@
   font-weight: 820;
 }
 
-.styleGroup legend {
-  padding: 0 0.2rem;
-}
-
 .styleSlider {
   display: grid;
-  gap: 0.2rem;
+  grid-template-columns: 4.75rem minmax(3rem, 9rem) 4.1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.sliderLabels {
+.sliderLeftLabel,
+.sliderRightLabel {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
   color: var(--wizard-muted);
   font-size: 0.66rem;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.sliderLeftLabel {
+  justify-content: flex-end;
+}
+
+.sliderRightLabel {
+  justify-content: flex-start;
 }
 
 .rangeWrap {
@@ -703,7 +747,7 @@
 
 .durationNote {
   position: absolute;
-  top: 0;
+  top: -1.7rem;
   right: 0;
   padding: 0.16rem 0.55rem;
   border-radius: 999rem;
@@ -746,6 +790,19 @@
   font-size: 0.71rem;
   font-weight: 720;
   cursor: pointer;
+}
+
+.destinationGrid .compactChoice,
+.squareOptionCard,
+.anchorActions button {
+  text-align: center;
+}
+
+.destinationGrid .compactChoice,
+.anchorActions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .compactChoice[data-selected="true"],
@@ -870,6 +927,10 @@
   text-align: center;
 }
 
+.formNotice:empty {
+  display: none;
+}
+
 .actions {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -882,11 +943,9 @@
 
 .actions,
 .planFooterActions {
-  position: sticky;
-  z-index: 3;
-  bottom: 0;
-  background: rgb(255 250 244 / 94%);
-  backdrop-filter: blur(0.8rem);
+  position: static;
+  flex: 0 0 auto;
+  background: transparent;
 }
 
 .actions > :first-child {
@@ -1047,7 +1106,6 @@
   }
 
   .familiarityGrid {
-    margin-top: 1.2rem;
     gap: 0.6rem;
   }
 
@@ -1176,13 +1234,7 @@
   transform: translateX(-50%);
 }
 
-.sliderLabelWithInfo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.sliderLabelWithInfo .infoPopoverContent {
+.sliderLeftLabel .infoPopoverContent {
   left: 0;
   transform: none;
 }
@@ -1588,7 +1640,7 @@
   display: grid;
   gap: 0;
   padding: 0;
-  margin: 2rem 0 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -1771,7 +1823,7 @@
 
 .planFacts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.35rem 0.55rem;
   margin: 0.55rem 0 0;
 }
@@ -1926,6 +1978,261 @@
 
   .regionTabs {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop density is budgeted to the viewport; controls must fit, not scroll. */
+@media (min-width: 48rem) {
+  .page {
+    --wizard-body-gap: 1.5rem;
+    --wizard-square-size: 5rem;
+  }
+
+  .flowLayout {
+    gap: 0.65rem;
+    width: min(calc(100% - 2rem), 76rem);
+    padding-block: 0.75rem max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .flowPanel {
+    max-height: 54rem;
+    padding-block: 1.25rem;
+  }
+
+  .wizardContent {
+    overflow: visible;
+    padding-bottom: 0;
+    scrollbar-gutter: auto;
+  }
+
+  .form,
+  .wizardContent > .step {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .form > .step {
+    min-height: 0;
+    flex: 1;
+  }
+
+  .interestGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .styleGroups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .basicsRow {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+
+  .dateModeRow {
+    flex-wrap: nowrap;
+  }
+
+  .dateModeOption,
+  .dateModeOption[data-expanded="true"] {
+    width: auto;
+    min-width: 5rem;
+    flex-wrap: nowrap;
+  }
+
+  .dateInlineFields {
+    width: auto;
+    flex-wrap: nowrap;
+    padding: 0 0.7rem 0 0;
+  }
+
+  .dateDivider {
+    display: block;
+  }
+
+  .interestCardWrap .interestCard {
+    min-height: 2.8rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 3.1rem 0.4rem 0.65rem;
+  }
+
+  .interestCardWrap .interestCard small {
+    position: static;
+  }
+
+  .interestDetailTrigger {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .squareOptionCard {
+    max-width: var(--wizard-square-size);
+    justify-self: center;
+  }
+
+  .basicsRow {
+    padding-block: 0.55rem;
+  }
+
+  .planGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .planCard:last-child {
+    grid-column: auto;
+  }
+
+  .planImage {
+    min-height: 3rem;
+    padding: 0.45rem;
+  }
+
+  .planCardBody > p {
+    min-height: 0;
+  }
+}
+
+/* Short laptop screens retain the same controls and stage, with quieter copy. */
+@media (min-width: 48rem) and (max-height: 800px) {
+  .page {
+    --wizard-body-gap: 1.25rem;
+    --wizard-square-size: 4rem;
+  }
+
+  .flowLayout {
+    gap: 0.5rem;
+  }
+
+  .flowPanel {
+    padding-block: 0.75rem;
+  }
+
+  .headerActions .avatar,
+  .headerActions .languageSelect select {
+    min-height: 2rem;
+  }
+
+  .avatar {
+    width: 2rem;
+  }
+  .progressNav {
+    margin-bottom: 0.75rem;
+  }
+  .progressNumber {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .progressItem:not(:last-child)::after {
+    top: 0.85rem;
+  }
+  .stepTitle {
+    font-size: 2rem;
+  }
+  .sectionHeader .eyebrow,
+  .sectionHeader .stepDescription {
+    display: none;
+  }
+
+  .interestCardWrap .interestCard {
+    min-height: 2.25rem;
+    padding-block: 0.25rem;
+  }
+
+  .interestGrid {
+    gap: 0.3rem;
+  }
+  .sectionHeadingRow {
+    margin-bottom: 0.35rem;
+  }
+  .styleSection {
+    margin-top: 0.75rem;
+  }
+  .styleSection h2 {
+    font-size: 1.25rem;
+  }
+  .styleGroup {
+    gap: 0.35rem;
+    padding-block: 0.55rem;
+  }
+  .dateFieldset {
+    margin-bottom: 0.45rem;
+  }
+  .basicsRow {
+    padding-block: 0.3rem;
+  }
+
+  .destinationGrid .compactChoice,
+  .partyRow {
+    min-height: 2rem;
+  }
+  .destinationGrid .compactChoice {
+    padding: 0.3rem 0.2rem;
+    font-size: 0.64rem;
+  }
+  .destinationGrid .iconText {
+    gap: 0.25rem;
+  }
+  .destinationGrid .wizardIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+  .choiceGroup legend {
+    margin-bottom: 0.4rem;
+  }
+  .formNotice {
+    min-height: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+  .dateModeOption {
+    min-height: 2.75rem;
+  }
+  .dateModeOption > button {
+    min-height: 2.65rem;
+  }
+  .generationStages li {
+    min-height: 3rem;
+  }
+
+  .planImage {
+    min-height: 2.2rem;
+    padding: 0.3rem 0.45rem;
+  }
+  .planCardBody {
+    padding: 0.55rem 0.65rem;
+  }
+  .planCardBody > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .planTags {
+    margin-top: 0.3rem;
+  }
+  .planTags span {
+    padding-block: 0.12rem;
+  }
+  .planFacts {
+    gap: 0.15rem 0.35rem;
+    margin-top: 0.35rem;
+  }
+  .routeMiniMap {
+    margin-top: 0.35rem;
+  }
+  .planSelectButton {
+    min-height: 2.25rem;
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+  }
+  .actions,
+  .planFooterActions {
+    padding-top: 0.55rem;
+  }
+  .actions button,
+  .planFooterActions button {
+    min-height: 2.5rem;
   }
 }
 

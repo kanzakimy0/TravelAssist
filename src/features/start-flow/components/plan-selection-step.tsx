@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import type { GeneratedPlan } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
+import { WizardStepBody } from "./wizard-step-body";
 import { RouteMiniMap } from "./route-mini-map";
 
 interface PlanSelectionStepProps {
@@ -39,69 +40,71 @@ export function PlanSelectionStep({
           从节奏、移动方式与体验密度不同的路线中，选择最接近您的一个。
         </p>
       </SectionHeader>
-      <div className={styles.planGrid}>
-        {plans.map((plan) => {
-          const selected = selectedPlanId === plan.id;
-          return (
-            <article
-              className={styles.planCard}
-              data-selected={selected}
-              key={plan.id}
-            >
-              <div
-                aria-hidden="true"
-                className={styles.planImage}
-                style={{ backgroundPosition: plan.imagePosition }}
+      <WizardStepBody>
+        <div className={styles.planGrid}>
+          {plans.map((plan) => {
+            const selected = selectedPlanId === plan.id;
+            return (
+              <article
+                className={styles.planCard}
+                data-selected={selected}
+                key={plan.id}
               >
-                <span>{plan.recommendation}</span>
-              </div>
-              <div className={styles.planCardBody}>
-                <div className={styles.planTitleRow}>
-                  <h2>{plan.name}</h2>
-                  <strong>{plan.days} 天</strong>
-                </div>
-                <p>{plan.tagline}</p>
-                <div className={styles.planTags}>
-                  {plan.interests.map((interest) => (
-                    <span key={interest}>{interest}</span>
-                  ))}
-                </div>
-                <dl className={styles.planFacts}>
-                  <div>
-                    <dt>城市</dt>
-                    <dd>{plan.locations.join(" · ")}</dd>
-                  </div>
-                  <div>
-                    <dt>景点密度</dt>
-                    <dd>{plan.attractionDensity}</dd>
-                  </div>
-                  <div>
-                    <dt>移动强度</dt>
-                    <dd>{plan.movementIntensity}</dd>
-                  </div>
-                  <div>
-                    <dt>预算</dt>
-                    <dd>{plan.budgetLevel}</dd>
-                  </div>
-                </dl>
-                <RouteMiniMap
-                  nodes={plan.route.nodes}
-                  segments={plan.route.segments}
-                />
-                <Button
-                  aria-pressed={selected}
-                  className={styles.planSelectButton}
-                  onClick={() => onSelect(plan.id)}
-                  variant={selected ? "primary" : "secondary"}
+                <div
+                  aria-hidden="true"
+                  className={styles.planImage}
+                  style={{ backgroundPosition: plan.imagePosition }}
                 >
-                  {selected ? "已选择这个方案" : "查看这个方案"}
-                  <span aria-hidden="true">→</span>
-                </Button>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+                  <span>{plan.recommendation}</span>
+                </div>
+                <div className={styles.planCardBody}>
+                  <div className={styles.planTitleRow}>
+                    <h2>{plan.name}</h2>
+                    <strong>{plan.days} 天</strong>
+                  </div>
+                  <p>{plan.tagline}</p>
+                  <div className={styles.planTags}>
+                    {plan.interests.map((interest) => (
+                      <span key={interest}>{interest}</span>
+                    ))}
+                  </div>
+                  <dl className={styles.planFacts}>
+                    <div>
+                      <dt>城市</dt>
+                      <dd>{plan.locations.join(" · ")}</dd>
+                    </div>
+                    <div>
+                      <dt>景点密度</dt>
+                      <dd>{plan.attractionDensity}</dd>
+                    </div>
+                    <div>
+                      <dt>移动强度</dt>
+                      <dd>{plan.movementIntensity}</dd>
+                    </div>
+                    <div>
+                      <dt>预算</dt>
+                      <dd>{plan.budgetLevel}</dd>
+                    </div>
+                  </dl>
+                  <RouteMiniMap
+                    nodes={plan.route.nodes}
+                    segments={plan.route.segments}
+                  />
+                  <Button
+                    aria-pressed={selected}
+                    className={styles.planSelectButton}
+                    onClick={() => onSelect(plan.id)}
+                    variant={selected ? "primary" : "secondary"}
+                  >
+                    {selected ? "已选择这个方案" : "查看这个方案"}
+                    <span aria-hidden="true">→</span>
+                  </Button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </WizardStepBody>
       <div className={styles.planFooterActions}>
         <Button onClick={onBack} variant="secondary">
           ← 返回调整

@@ -2,6 +2,7 @@ import type { RefObject } from "react";
 
 import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
+import { WizardStepBody } from "./wizard-step-body";
 
 const STAGES = [
   "分析偏好",
@@ -37,30 +38,32 @@ export function GenerationStep({
           根据您的偏好，生成最合适的行程方案
         </p>
       </SectionHeader>
-      <ol className={styles.generationStages}>
-        {STAGES.map((stage, index) => {
-          const status =
-            index < activeStage
-              ? "complete"
-              : index === activeStage
-                ? "current"
-                : "pending";
-          return (
-            <li data-status={status} key={stage}>
-              <span aria-hidden="true" className={styles.generationMarker}>
-                {status === "complete" ? "✓" : index + 1}
-              </span>
-              <span>
-                <strong>{stage}</strong>
-                {status === "current" ? <small>正在处理</small> : null}
-              </span>
-            </li>
-          );
-        })}
-      </ol>
-      <p className={styles.generationNote}>
-        方案会综合您的草稿与确定安排，生成期间可放心返回调整。
-      </p>
+      <WizardStepBody>
+        <ol className={styles.generationStages}>
+          {STAGES.map((stage, index) => {
+            const status =
+              index < activeStage
+                ? "complete"
+                : index === activeStage
+                  ? "current"
+                  : "pending";
+            return (
+              <li data-status={status} key={stage}>
+                <span aria-hidden="true" className={styles.generationMarker}>
+                  {status === "complete" ? "✓" : index + 1}
+                </span>
+                <span>
+                  <strong>{stage}</strong>
+                  {status === "current" ? <small>正在处理</small> : null}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+        <p className={styles.generationNote}>
+          方案会综合您的草稿与确定安排，生成期间可放心返回调整。
+        </p>
+      </WizardStepBody>
     </section>
   );
 }

@@ -3,6 +3,7 @@ import type { RefObject } from "react";
 import type { Familiarity } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
+import { WizardStepBody } from "./wizard-step-body";
 import { InfoPopover } from "./info-popover";
 
 const OPTIONS: Array<{
@@ -58,30 +59,32 @@ export function FamiliarityStep({
           <InfoPopover text="熟悉度只用于调节路线说明、经典景点占比与小众程度，不会限制您选择任何地区。" />
         </div>
       </SectionHeader>
-      <div className={styles.familiarityGrid} role="radiogroup">
-        {OPTIONS.map((option) => {
-          const selected = value === option.id;
-          return (
-            <button
-              aria-checked={selected}
-              className={styles.familiarityCard}
-              data-selected={selected}
-              key={option.id}
-              onClick={() => onChange(option.id)}
-              role="radio"
-              type="button"
-            >
-              <span>
-                <strong>{option.title}</strong>
-                <small>{option.description}</small>
-              </span>
-              <span aria-hidden="true" className={styles.selectionMark}>
-                {selected ? "✓" : ""}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      <WizardStepBody>
+        <div className={styles.familiarityGrid} role="radiogroup">
+          {OPTIONS.map((option) => {
+            const selected = value === option.id;
+            return (
+              <button
+                aria-checked={selected}
+                className={styles.familiarityCard}
+                data-selected={selected}
+                key={option.id}
+                onClick={() => onChange(option.id)}
+                role="radio"
+                type="button"
+              >
+                <span>
+                  <strong>{option.title}</strong>
+                  <small>{option.description}</small>
+                </span>
+                <span aria-hidden="true" className={styles.selectionMark}>
+                  {selected ? "✓" : ""}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </WizardStepBody>
     </section>
   );
 }

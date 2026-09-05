@@ -7,6 +7,7 @@ import type {
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
+import { WizardStepBody } from "./wizard-step-body";
 import { InterestGrid } from "./interest-grid";
 import { TravelStyleGroup } from "./travel-style-group";
 
@@ -57,33 +58,33 @@ export function PreferencesStep({
           用一级兴趣与六条旅行风格滑轨，勾勒这趟旅程的方向。
         </p>
       </SectionHeader>
-      <InterestGrid
-        details={interestDetails}
-        dislikes={dislikes}
-        likes={likes}
-        onCycle={onInterestCycle}
-        onDetailsChange={onInterestDetailsChange}
-      />
-      <p aria-live="polite" className={styles.inlineNotice}>
-        {notice}
-      </p>
-      <div className={styles.styleSection}>
-        <h2>您喜欢怎么玩？</h2>
-        <div className={styles.styleGroups}>
-          <TravelStyleGroup
-            items={[...PACE_ITEMS]}
-            onChange={onStyleChange}
-            title="旅行节奏"
-            values={travelStyle}
-          />
-          <TravelStyleGroup
-            items={[...METHOD_ITEMS]}
-            onChange={onStyleChange}
-            title="旅行方式"
-            values={travelStyle}
-          />
+      <WizardStepBody>
+        <InterestGrid
+          notice={notice}
+          details={interestDetails}
+          dislikes={dislikes}
+          likes={likes}
+          onCycle={onInterestCycle}
+          onDetailsChange={onInterestDetailsChange}
+        />
+        <div className={styles.styleSection}>
+          <h2>您喜欢怎么玩？</h2>
+          <div className={styles.styleGroups}>
+            <TravelStyleGroup
+              items={[...PACE_ITEMS]}
+              onChange={onStyleChange}
+              title="旅行节奏"
+              values={travelStyle}
+            />
+            <TravelStyleGroup
+              items={[...METHOD_ITEMS]}
+              onChange={onStyleChange}
+              title="旅行方式"
+              values={travelStyle}
+            />
+          </div>
         </div>
-      </div>
+      </WizardStepBody>
     </section>
   );
 }

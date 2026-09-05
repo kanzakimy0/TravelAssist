@@ -9,6 +9,7 @@ import { InterestDetailModal } from "./interest-detail-modal";
 import { INTEREST_ICONS, WizardIcon } from "./wizard-icon";
 
 interface InterestGridProps {
+  notice?: string;
   dislikes: Interest[];
   likes: Interest[];
   onCycle: (interest: Interest) => void;
@@ -17,6 +18,7 @@ interface InterestGridProps {
 }
 
 export function InterestGrid({
+  notice,
   details,
   dislikes,
   likes,
@@ -74,8 +76,12 @@ export function InterestGrid({
           );
         })}
       </div>
-      <p className={styles.interestHint}>
-        点击卡片依次切换：喜欢 → 不喜欢 → 中性。
+      <p
+        className={styles.interestHint}
+        aria-live="polite"
+        data-notice={!!notice}
+      >
+        {notice || "点击卡片依次切换：喜欢 → 不喜欢 → 中性。"}
       </p>
       {detailInterest ? (
         <InterestDetailModal

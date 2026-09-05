@@ -13,6 +13,7 @@ import type {
 } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
+import { WizardStepBody } from "./wizard-step-body";
 import { AnchorActions } from "./anchor-actions";
 import { BudgetSelector } from "./budget-selector";
 import { DestinationGrid } from "./destination-grid";
@@ -65,46 +66,48 @@ export function TripBasicsStep({
           告诉我们时间、地点与同行方式，先把这趟旅行的轮廓定下来。
         </p>
       </SectionHeader>
-      <ExpandableDateSelector
-        dateMode={draft.dateMode}
-        durationDays={draft.durationDays}
-        exactDeparture={draft.exactDeparture}
-        exactReturn={draft.exactReturn}
-        onDateModeChange={onDateModeChange}
-        onExactDateChange={onExactDateChange}
-        onPlannedDateChange={onPlannedDateChange}
-        plannedDeparture={draft.plannedDeparture}
-        plannedReturn={draft.plannedReturn}
-      />
-      <div className={styles.basicsRow}>
-        <DestinationGrid
-          onPrefecturesChange={onPrefecturesChange}
-          onToggle={onDestinationToggle}
-          selectedPrefectures={draft.selectedPrefectures}
-          values={draft.destinations}
+      <WizardStepBody>
+        <ExpandableDateSelector
+          dateMode={draft.dateMode}
+          durationDays={draft.durationDays}
+          exactDeparture={draft.exactDeparture}
+          exactReturn={draft.exactReturn}
+          onDateModeChange={onDateModeChange}
+          onExactDateChange={onExactDateChange}
+          onPlannedDateChange={onPlannedDateChange}
+          plannedDeparture={draft.plannedDeparture}
+          plannedReturn={draft.plannedReturn}
         />
-        <TransportSelector
-          details={draft.transportDetails}
-          onChange={onTransportChange}
-          onDetailsChange={onTransportDetailsChange}
-          value={draft.transport}
-        />
-      </div>
-      <div className={styles.basicsRow}>
-        <PartyCounter
-          details={draft.travelerDetails}
-          onChange={onPartyChange}
-          onDetailsChange={onTravelerDetailsChange}
-          value={draft.party}
-        />
-        <BudgetSelector
-          details={draft.budgetDetails}
-          onChange={onBudgetChange}
-          onDetailsChange={onBudgetDetailsChange}
-          value={draft.budget}
-        />
-      </div>
-      <AnchorActions onChange={onAnchorsChange} value={draft.anchors} />
+        <div className={styles.basicsRow}>
+          <DestinationGrid
+            onPrefecturesChange={onPrefecturesChange}
+            onToggle={onDestinationToggle}
+            selectedPrefectures={draft.selectedPrefectures}
+            values={draft.destinations}
+          />
+          <TransportSelector
+            details={draft.transportDetails}
+            onChange={onTransportChange}
+            onDetailsChange={onTransportDetailsChange}
+            value={draft.transport}
+          />
+        </div>
+        <div className={styles.basicsRow}>
+          <PartyCounter
+            details={draft.travelerDetails}
+            onChange={onPartyChange}
+            onDetailsChange={onTravelerDetailsChange}
+            value={draft.party}
+          />
+          <BudgetSelector
+            details={draft.budgetDetails}
+            onChange={onBudgetChange}
+            onDetailsChange={onBudgetDetailsChange}
+            value={draft.budget}
+          />
+        </div>
+        <AnchorActions onChange={onAnchorsChange} value={draft.anchors} />
+      </WizardStepBody>
     </section>
   );
 }
