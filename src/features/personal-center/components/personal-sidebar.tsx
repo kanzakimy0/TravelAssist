@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { mockPersonalUser } from "../constants/personal-navigation";
 import styles from "../personal-center.module.css";
-import { PersonalIcon } from "./personal-icon";
 import { PersonalPrimaryNav } from "./personal-primary-nav";
 
 export function PersonalSidebar() {
@@ -14,10 +13,15 @@ export function PersonalSidebar() {
         className={styles.brand}
         aria-label="TravelAssist 个人中心首页"
       >
-        <span className={styles.brandMark}>
-          <PersonalIcon name="compass" />
+        <span className={styles.brandLogo} aria-hidden="true">
+          <Image
+            src="/media/personal-center/travelassist-logo-torii.png"
+            alt=""
+            fill
+            sizes="190px"
+            style={{ objectFit: "contain", objectPosition: "left center" }}
+          />
         </span>
-        <span>TravelAssist</span>
       </Link>
       <Link
         href="/personal-center/account"
@@ -25,7 +29,13 @@ export function PersonalSidebar() {
         aria-label={`${mockPersonalUser.name}（Mock 用户）的账户`}
       >
         <span className={styles.avatar} aria-hidden="true">
-          {mockPersonalUser.initial}
+          <Image
+            src={mockPersonalUser.avatar}
+            alt=""
+            fill
+            sizes="52px"
+            className={styles.identityPhoto}
+          />
         </span>
         <span className={styles.userText}>
           <strong>{mockPersonalUser.name}</strong>

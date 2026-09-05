@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ComponentPropsWithRef } from "react";
 import { avatarMenuItems } from "../constants/avatar-menu";
@@ -19,7 +20,13 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
     <div {...props} popover="auto" className={styles.avatarPopover}>
       <div className={styles.avatarPopoverIdentity}>
         <span className={styles.smallAvatar} aria-hidden="true">
-          {mockPersonalUser.initial}
+          <Image
+            src={mockPersonalUser.avatar}
+            alt=""
+            fill
+            sizes="38px"
+            className={styles.identityPhoto}
+          />
         </span>
         <div className={styles.userText}>
           <strong>{mockPersonalUser.name}</strong>

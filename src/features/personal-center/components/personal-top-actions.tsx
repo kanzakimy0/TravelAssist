@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { mockPersonalUser } from "../constants/personal-navigation";
@@ -97,7 +98,13 @@ export function PersonalTopActions() {
         aria-label={`${isOpen ? "关闭" : "打开"}账户菜单，${mockPersonalUser.name}（${mockPersonalUser.label}）`}
       >
         <span className={styles.smallAvatar} aria-hidden="true">
-          {mockPersonalUser.initial}
+          <Image
+            src={mockPersonalUser.avatar}
+            alt=""
+            fill
+            sizes="38px"
+            className={styles.identityPhoto}
+          />
         </span>
         <PersonalIcon name="chevron" width="16" height="16" />
       </button>
