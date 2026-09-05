@@ -15,10 +15,10 @@
 - **Task File:** `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md`
 - **Handoff Record:** `docs/project/WBS-5.2-PROBLEM-HANDOFF.md`
 - **Issue:** [#56](https://github.com/kanzakimy0/TravelAssist/issues/56)
-- **Status:** 待验收
+- **Status:** 已完成
 - **Base Commit:** `96a88297196cced771f7e3bb753ade4f17f96d05`
-- **Commit:** PENDING
-- **Pull Request:** PENDING
+- **Commit:** `08a06a6b5fb6ee96a9234da7b8904f0c05465c5f`
+- **Pull Request:** [#57](https://github.com/kanzakimy0/TravelAssist/pull/57)（Merged）
 
 ---
 
@@ -544,24 +544,24 @@ PR Body 必须包含：
 
 # 20. Acceptance Criteria
 
-- [ ] 最新 develop 已读取
-- [ ] WBS 5.2 保持已完成
-- [ ] Issue #50 保持 Closed
-- [ ] 7 个 B-owned baseline 文档若仍失败，已仅做 Prettier 修复
-- [ ] B-owned 文档 Prettier 全部 Passed
-- [ ] TASK-008-A 未修改
-- [ ] npm allowScripts 未擅自批准
-- [ ] favicon 未由 B 随意修改
-- [ ] Logout 未伪造
-- [ ] A Header 未修改
-- [ ] Cross-browser 如可用已补测；否则明确 Deferred 9.12
-- [ ] Handoff 文档已生成
-- [ ] lint Passed
-- [ ] typecheck Passed
-- [ ] build Passed
-- [ ] git diff --check Passed
-- [ ] runtime source diff = none
-- [ ] Other Task files modified = No
+- [x] 最新 develop 已读取
+- [x] WBS 5.2 保持已完成
+- [x] Issue #50 保持 Closed
+- [x] 7 个 B-owned baseline 文档若仍失败，已仅做 Prettier 修复
+- [x] B-owned 文档 Prettier 全部 Passed
+- [x] TASK-008-A 未修改
+- [x] npm allowScripts 未擅自批准
+- [x] favicon 未由 B 随意修改
+- [x] Logout 未伪造
+- [x] A Header 未修改
+- [x] Cross-browser 如可用已补测；否则明确 Deferred 9.12
+- [x] Handoff 文档已生成
+- [x] lint Passed
+- [x] typecheck Passed
+- [x] build Passed
+- [x] git diff --check Passed
+- [x] runtime source diff = none
+- [x] Other Task files modified = No
 
 ---
 
@@ -695,10 +695,16 @@ favicon 显式 HTTP/fetch 请求仍为 404；浏览器 Resource Timing 记录的
 
 ## Delivery
 
-- Status: Awaiting Review；本地验收完成，等待提交、PR 合并及最终状态同步。
-- Commit: PENDING
-- Pull Request: PENDING
+- Status: Completed；PR #57 已合并，已拉取 develop 并通过合并后内容一致性和格式复核。
+- Commit: 08a06a6b5fb6ee96a9234da7b8904f0c05465c5f
+- Message: chore(WBS-5.2-B): clean baseline docs and record handoffs
+- Push: 成功，origin/fix/b-wbs-5-2-problem-cleanup。
+- Pull Request: [#57](https://github.com/kanzakimy0/TravelAssist/pull/57)，Merged。
+- Merge Commit: 48c57c3fddeb1139121b07e2e8f739fd0aff35f3。
+- 合并后确认 src / public / package 文件及 TASK-008-A 无变化；本次十个文档 Prettier Passed。上游同期 2561df1 的 1.26 状态变更完整保留，并非本 Follow-up 修改。
+- 本次最终回填仅更新当前 Follow-up Task 与自身 tracking row；不修改父 Task、Handoff 归属或任何其他 WBS 状态。
 - Parent WBS 5.2: 已完成（unchanged）
 - Parent Issue #50: Closed（unchanged）
-- Follow-up Issue #56: Open / 待验收。
+- Follow-up Issue #56: Closed；已追加包含 Branch / Commit / PR / Validation / Result 的完成评论。
+- 临时开发服务已停止，3000 端口无监听。
 - Next: Stop. Do not automatically start 5.5 / 5.3 / 9.12 / 3.4.
