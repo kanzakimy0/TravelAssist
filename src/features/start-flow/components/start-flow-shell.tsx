@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
-import { FloatingPanel } from "@/components/ui/floating-panel";
 
 import { GENERATED_PLANS } from "../model/generated-plans";
 import {
@@ -27,9 +26,8 @@ import { FamiliarityStep } from "./familiarity-step";
 import { GenerationStep } from "./generation-step";
 import { PlanSelectionStep } from "./plan-selection-step";
 import { PreferencesStep } from "./preferences-step";
-import { StartFlowHeader } from "./start-flow-header";
-import { StepProgress } from "./step-progress";
 import { TripBasicsStep } from "./trip-basics-step";
+import { WizardLayout } from "./wizard-layout";
 
 type StepIndex = 0 | 1 | 2 | 3;
 
@@ -107,12 +105,9 @@ export function StartFlowShell({ initialDraft }: StartFlowShellProps) {
 
   if (!hasHydrated) {
     return (
-      <div className={styles.flowLayout}>
-        <StartFlowHeader />
-        <FloatingPanel className={styles.flowPanel}>
-          <p className={styles.loadingState}>正在恢复旅行草稿…</p>
-        </FloatingPanel>
-      </div>
+      <WizardLayout currentStep={0}>
+        <p className={styles.loadingState}>正在恢复旅行草稿…</p>
+      </WizardLayout>
     );
   }
 
@@ -134,7 +129,8 @@ function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
   }, [currentStep, draft]);
 
   useEffect(() => {
-    headingRef.current?.focus();
+    headingRef.current?.focus({ preventScroll: true });
+    headingRef.current?.closest("[data-wizard-content]")?.scrollTo(0, 0);
   }, [currentStep, draft.generationStatus.state]);
 
   useEffect(() => {
@@ -247,7 +243,7 @@ function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
 
   function handleSubmit() {
     if (currentStep === 0 && !draft.familiarity) {
-      setNotice("请选择你对日本的熟悉程度后再继续。");
+      setNotice("请选择您对日本的熟悉程度后再继续。");
       return;
     }
     if (currentStep < 2) {
@@ -263,130 +259,122 @@ function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
     draft.generatedPlans.length > 0;
 
   return (
-    <div className={styles.flowLayout}>
-      <StartFlowHeader />
-      <FloatingPanel className={styles.flowPanel}>
-        <StepProgress currentStep={currentStep} />
+    <WizardLayout currentStep={currentStep}>
+      {currentStep <= 2 ? (
+        <div className={styles.form}>
+          {currentStep === 0 ? (
+            <FamiliarityStep
+              headingRef={headingRef}
+              onChange={(value: Familiarity) => {
+                updateDraft({ familiarity: value });
+                setNotice("");
+              }}
+              value={draft.familiarity}
+            />
+          ) : null}
+          {currentStep === 1 ? (
+            <PreferencesStep
+              dislikes={draft.dislikes}
+              headingRef={headingRef}
+              interestDetails={draft.interestDetails}
+              likes={draft.likes}
+              notice={notice}
+              onInterestCycle={handleInterestCycle}
+              onInterestDetailsChange={(interest, values) =>
+                updateDraft({ interestDetails: { [interest]: values } })
+              }
+              onStyleChange={(key: TravelStyleKey, value: number) =>
+                updateDraft({ travelStyle: { [key]: value } })
+              }
+              travelStyle={draft.travelStyle}
+            />
+          ) : null}
+          {currentStep === 2 ? (
+            <TripBasicsStep
+              draft={draft}
+              headingRef={headingRef}
+              onAnchorsChange={(anchors) => updateDraft({ anchors })}
+              onBudgetChange={(value: BudgetLevel) =>
+                updateDraft({ budget: value })
+              }
+              onBudgetDetailsChange={(patch) =>
+                updateDraft({ budgetDetails: patch })
+              }
+              onDateModeChange={(value: DateMode) =>
+                updateDraft({ dateMode: value })
+              }
+              onDestinationToggle={(value: string) =>
+                updateDraft({
+                  destinations: toggleArrayValue(draft.destinations, value),
+                })
+              }
+              onExactDateChange={handleExactDateChange}
+              onPartyChange={(key: keyof TripParty, value: number) =>
+                updateDraft({ party: { [key]: value } })
+              }
+              onPlannedDateChange={(field, value) =>
+                updateDraft(
+                  field === "departure"
+                    ? { plannedDeparture: value }
+                    : { plannedReturn: value },
+                )
+              }
+              onPrefecturesChange={(values) =>
+                updateDraft({ selectedPrefectures: values })
+              }
+              onTransportChange={(value: TransportMode) =>
+                updateDraft({ transport: value })
+              }
+              onTransportDetailsChange={(patch) =>
+                updateDraft({ transportDetails: patch })
+              }
+              onTravelerDetailsChange={(patch) =>
+                updateDraft({ travelerDetails: patch })
+              }
+            />
+          ) : null}
 
-        {currentStep <= 2 ? (
-          <div className={styles.form}>
-            {currentStep === 0 ? (
-              <FamiliarityStep
-                headingRef={headingRef}
-                onChange={(value: Familiarity) => {
-                  updateDraft({ familiarity: value });
-                  setNotice("");
-                }}
-                value={draft.familiarity}
-              />
-            ) : null}
-            {currentStep === 1 ? (
-              <PreferencesStep
-                dislikes={draft.dislikes}
-                headingRef={headingRef}
-                interestDetails={draft.interestDetails}
-                likes={draft.likes}
-                notice={notice}
-                onInterestCycle={handleInterestCycle}
-                onInterestDetailsChange={(interest, values) =>
-                  updateDraft({ interestDetails: { [interest]: values } })
-                }
-                onStyleChange={(key: TravelStyleKey, value: number) =>
-                  updateDraft({ travelStyle: { [key]: value } })
-                }
-                travelStyle={draft.travelStyle}
-              />
-            ) : null}
-            {currentStep === 2 ? (
-              <TripBasicsStep
-                draft={draft}
-                headingRef={headingRef}
-                onAnchorsChange={(anchors) => updateDraft({ anchors })}
-                onBudgetChange={(value: BudgetLevel) =>
-                  updateDraft({ budget: value })
-                }
-                onBudgetDetailsChange={(patch) =>
-                  updateDraft({ budgetDetails: patch })
-                }
-                onDateModeChange={(value: DateMode) =>
-                  updateDraft({ dateMode: value })
-                }
-                onDestinationToggle={(value: string) =>
-                  updateDraft({
-                    destinations: toggleArrayValue(draft.destinations, value),
-                  })
-                }
-                onExactDateChange={handleExactDateChange}
-                onPartyChange={(key: keyof TripParty, value: number) =>
-                  updateDraft({ party: { [key]: value } })
-                }
-                onPlannedDateChange={(field, value) =>
-                  updateDraft(
-                    field === "departure"
-                      ? { plannedDeparture: value }
-                      : { plannedReturn: value },
-                  )
-                }
-                onPrefecturesChange={(values) =>
-                  updateDraft({ selectedPrefectures: values })
-                }
-                onTransportChange={(value: TransportMode) =>
-                  updateDraft({ transport: value })
-                }
-                onTransportDetailsChange={(patch) =>
-                  updateDraft({ transportDetails: patch })
-                }
-                onTravelerDetailsChange={(patch) =>
-                  updateDraft({ travelerDetails: patch })
-                }
-              />
-            ) : null}
-
-            {currentStep !== 1 ? (
-              <p aria-live="polite" className={styles.formNotice}>
-                {notice}
-              </p>
-            ) : null}
-            <div className={styles.actions}>
-              <Button
-                disabled={currentStep === 0}
-                onClick={() => goToStep((currentStep - 1) as StepIndex)}
-                variant="secondary"
-              >
-                <span aria-hidden="true">←</span>
-                上一步
-              </Button>
-              <Button className={styles.primaryAction} onClick={handleSubmit}>
-                {currentStep === 2 ? "生成方案" : "下一步"}
-                <span aria-hidden="true">→</span>
-              </Button>
-              <Button onClick={() => saveDraft()} variant="ghost">
-                保存草稿
-              </Button>
-            </div>
+          {currentStep !== 1 ? (
+            <p aria-live="polite" className={styles.formNotice}>
+              {notice}
+            </p>
+          ) : null}
+          <div className={styles.actions}>
+            <Button
+              disabled={currentStep === 0}
+              onClick={() => goToStep((currentStep - 1) as StepIndex)}
+              variant="secondary"
+            >
+              <span aria-hidden="true">←</span>
+              上一步
+            </Button>
+            <Button className={styles.primaryAction} onClick={handleSubmit}>
+              {currentStep === 2 ? "生成方案" : "下一步"}
+              <span aria-hidden="true">→</span>
+            </Button>
+            <Button onClick={() => saveDraft()} variant="ghost">
+              保存草稿
+            </Button>
           </div>
-        ) : null}
+        </div>
+      ) : null}
 
-        {currentStep === 3 && !showPlans ? (
-          <GenerationStep
-            activeStage={draft.generationStatus.activeStage}
-            headingRef={headingRef}
-          />
-        ) : null}
-        {showPlans ? (
-          <PlanSelectionStep
-            headingRef={headingRef}
-            onBack={() => goToStep(2)}
-            onRegenerate={startGeneration}
-            onSelect={(selectedPlanId) => updateDraft({ selectedPlanId })}
-            plans={draft.generatedPlans}
-            selectedPlanId={draft.selectedPlanId}
-          />
-        ) : null}
-      </FloatingPanel>
-      <p className={styles.privacyNote}>
-        草稿仅保存在当前浏览器，可随时返回继续填写。
-      </p>
-    </div>
+      {currentStep === 3 && !showPlans ? (
+        <GenerationStep
+          activeStage={draft.generationStatus.activeStage}
+          headingRef={headingRef}
+        />
+      ) : null}
+      {showPlans ? (
+        <PlanSelectionStep
+          headingRef={headingRef}
+          onBack={() => goToStep(2)}
+          onRegenerate={startGeneration}
+          onSelect={(selectedPlanId) => updateDraft({ selectedPlanId })}
+          plans={draft.generatedPlans}
+          selectedPlanId={draft.selectedPlanId}
+        />
+      ) : null}
+    </WizardLayout>
   );
 }

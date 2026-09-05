@@ -1,4 +1,5 @@
-.page {
+.page,
+.overlayTheme {
   --wizard-ink: #283342;
   --wizard-muted: #6f6a68;
   --wizard-coral: #d86657;
@@ -7,6 +8,12 @@
   --wizard-cream: #fffaf2;
   --wizard-border: rgb(111 78 68 / 16%);
   --wizard-glass: rgb(255 250 244 / 86%);
+  --wizard-inset: clamp(2.5rem, 6vw, 5rem);
+  --wizard-body-gap: 1.5rem;
+  color: var(--wizard-ink);
+}
+
+.page {
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
@@ -22,7 +29,8 @@
   background:
     linear-gradient(110deg, rgb(66 45 36 / 42%), rgb(255 231 218 / 18%)),
     linear-gradient(to bottom, rgb(255 246 235 / 12%), rgb(72 48 39 / 22%)),
-    url("/media/home/home-hero-poster.webp") center 47% / cover no-repeat;
+    url("/media/start/sakura-coast-fuji-train-sunset.png") center 47% / cover
+      no-repeat;
   transform: scale(1.015);
 }
 
@@ -37,11 +45,11 @@
 
 .flowLayout {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
   gap: 1rem;
   width: min(calc(100% - 3rem), 76rem);
-  min-height: 100vh;
-  min-height: 100svh;
+  height: 100svh;
   margin: 0 auto;
   padding: 1.25rem 0 max(1rem, env(safe-area-inset-bottom));
 }
@@ -115,10 +123,15 @@
 }
 
 .flowPanel {
+  display: flex;
+  flex-direction: column;
   align-self: center;
   width: 100%;
-  min-height: min(47rem, calc(100svh - 7rem));
-  padding: clamp(1.25rem, 2.4vw, 2rem) clamp(1.25rem, 3vw, 2.5rem);
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  max-height: 47rem;
+  padding: clamp(1.25rem, 2.4vw, 2rem) 0;
   border-color: rgb(255 255 255 / 58%);
   background: var(--wizard-glass);
   box-shadow:
@@ -127,9 +140,35 @@
   backdrop-filter: blur(1.5rem) saturate(112%);
 }
 
+.wizardContent {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  padding: 0 var(--wizard-inset) 0.25rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin;
+  scrollbar-color: #cbb4a9 transparent;
+}
+
+.sectionHeader {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  margin-block: var(--wizard-body-gap);
+}
+
 .loadingState {
   display: grid;
-  min-height: calc(min(47rem, 100svh - 7rem) - 4rem);
+  min-height: 100%;
   place-items: center;
   margin: 0;
   color: var(--wizard-muted);
@@ -137,7 +176,8 @@
 }
 
 .progressNav {
-  width: min(100%, 48rem);
+  flex: 0 0 auto;
+  width: min(calc(100% - 2 * var(--wizard-inset)), 48rem);
   margin: 0 auto 1.25rem;
 }
 
@@ -199,11 +239,13 @@
 
 .form {
   display: flex;
-  min-height: calc(min(47rem, 100svh - 7rem) - 6rem);
+  min-height: 100%;
   flex-direction: column;
 }
 
 .step {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -230,7 +272,7 @@
 }
 
 .stepDescription {
-  margin: 0.45rem 0 1.15rem;
+  margin: 0.45rem 0 0;
   color: var(--wizard-muted);
   font-size: 0.88rem;
   line-height: 1.55;
@@ -240,8 +282,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
-  max-width: 58rem;
-  margin: 2.1rem auto 0;
+  margin: 0;
 }
 
 .familiarityCard {
@@ -282,7 +323,8 @@
 
 .familiarityCard strong {
   margin-bottom: 0.45rem;
-  font-size: 1rem;
+  font-size: 2rem;
+  line-height: 1.35;
 }
 
 .familiarityCard small {
@@ -321,6 +363,8 @@
   margin: 0;
   color: var(--wizard-ink);
   font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .sectionHeadingRow p,
@@ -345,7 +389,8 @@
   display: flex;
   min-height: 3.1rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
   gap: 0.4rem;
   padding: 0.55rem 0.7rem;
   border: 1px solid var(--wizard-border);
@@ -386,6 +431,11 @@
   margin-top: 0.35rem;
 }
 
+.interestHint[data-notice="true"] {
+  color: var(--wizard-coral-dark);
+  font-weight: 700;
+}
+
 .inlineNotice {
   min-height: 1rem;
   margin-top: 0.25rem;
@@ -394,14 +444,14 @@
 }
 
 .styleSection {
-  margin-top: 0.45rem;
+  margin-top: 1rem;
 }
 
 .styleGroups {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
-  margin-top: 0.45rem;
+  margin-top: 0;
 }
 
 .styleGroup,
@@ -417,37 +467,56 @@
 .styleGroup {
   display: grid;
   gap: 0.55rem;
-  padding: 0.7rem 0.85rem;
+  padding: 0.7rem 0.75rem;
   border: 1px solid var(--wizard-border);
   border-radius: 1rem;
   background: rgb(255 253 249 / 55%);
 }
 
-.styleGroup legend,
-.choiceGroup legend,
-.dateFieldset legend,
-.anchorGroup legend {
-  padding: 0;
+.styleGroup h3 {
+  margin: 0 0 0.2rem;
   color: var(--wizard-ink);
   font-size: 0.8rem;
   font-weight: 820;
 }
 
-.styleGroup legend {
-  padding: 0 0.2rem;
+.styleGroup legend,
+.choiceGroup legend,
+.dateFieldset legend,
+.anchorGroup legend,
+.anchorActionRow h2 {
+  padding: 0;
+  color: var(--wizard-ink);
+  font-size: 0.8rem;
+  font-weight: 820;
+  line-height: 1.5;
 }
 
 .styleSlider {
   display: grid;
-  gap: 0.2rem;
+  grid-template-columns: 3.65rem minmax(3rem, 13.5rem) 2.7rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.sliderLabels {
+.sliderLeftLabel,
+.sliderRightLabel {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
   color: var(--wizard-muted);
   font-size: 0.66rem;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.sliderLeftLabel {
+  justify-content: flex-end;
+}
+
+.sliderRightLabel {
+  justify-content: flex-start;
 }
 
 .rangeWrap {
@@ -586,6 +655,53 @@
   padding-right: 0.7rem;
 }
 
+.wizardIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  color: #856a5d;
+}
+
+.iconText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.squareOptionCard {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.2rem;
+  border: 1px solid var(--wizard-border);
+  border-radius: 0.72rem;
+  background: rgb(255 253 249 / 66%);
+  color: var(--wizard-ink);
+  font-size: 0.71rem;
+  cursor: pointer;
+}
+
+.squareOptionCard strong {
+  font-weight: 720;
+}
+
+.squareOptionCard[data-selected="true"] {
+  border-color: var(--wizard-coral);
+  background: var(--wizard-blush);
+  color: var(--wizard-coral-dark);
+}
+
+.squareOptionCard:focus-visible {
+  outline: 3px solid rgb(216 102 87 / 30%);
+  outline-offset: 2px;
+}
+
 .dateDivider {
   width: 1px;
   height: 1.5rem;
@@ -630,7 +746,7 @@
 
 .durationNote {
   position: absolute;
-  top: 0;
+  top: -1.7rem;
   right: 0;
   padding: 0.16rem 0.55rem;
   border-radius: 999rem;
@@ -656,7 +772,7 @@
 .transportGrid,
 .budgetGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.4rem;
 }
 
@@ -673,6 +789,19 @@
   font-size: 0.71rem;
   font-weight: 720;
   cursor: pointer;
+}
+
+.destinationGrid .compactChoice,
+.squareOptionCard,
+.anchorActions button {
+  text-align: center;
+}
+
+.destinationGrid .compactChoice,
+.anchorActions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .compactChoice[data-selected="true"],
@@ -763,7 +892,21 @@
 
 .anchorActions {
   display: flex;
+  justify-content: flex-end;
   gap: 0.5rem;
+}
+
+.anchorActionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.anchorActionRow h2 {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.8rem;
 }
 
 .anchorActions button {
@@ -783,6 +926,10 @@
   text-align: center;
 }
 
+.formNotice:empty {
+  display: none;
+}
+
 .actions {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -791,6 +938,13 @@
   padding-top: 0.8rem;
   margin-top: auto;
   border-top: 1px solid rgb(111 78 68 / 11%);
+}
+
+.actions,
+.planFooterActions {
+  position: static;
+  flex: 0 0 auto;
+  background: transparent;
 }
 
 .actions > :first-child {
@@ -863,12 +1017,15 @@
 }
 
 @media (max-width: 48rem) {
+  .page {
+    --wizard-inset: 2.4rem;
+  }
   .flowLayout {
     width: min(calc(100% - 1.25rem), 44rem);
   }
 
   .flowPanel {
-    padding: 1.2rem;
+    padding: 1.2rem 0;
   }
 
   .progressLabel {
@@ -906,6 +1063,9 @@
 }
 
 @media (max-width: 34rem) {
+  .page {
+    --wizard-inset: 1.6rem;
+  }
   .flowLayout {
     gap: 0.65rem;
     width: min(calc(100% - 0.8rem), 32rem);
@@ -922,8 +1082,7 @@
   }
 
   .flowPanel {
-    min-height: calc(100svh - 6rem);
-    padding: 1rem 0.8rem;
+    padding: 1rem 0;
     border-radius: 1.5rem;
   }
 
@@ -946,12 +1105,15 @@
   }
 
   .familiarityGrid {
-    grid-template-columns: 1fr;
-    margin-top: 1.2rem;
+    gap: 0.6rem;
   }
 
   .familiarityCard {
     min-height: 6rem;
+    padding: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
   .sectionHeadingRow {
@@ -960,13 +1122,18 @@
     gap: 0.2rem;
   }
 
-  .interestCard {
-    align-items: flex-start;
-    flex-direction: column;
+  .destinationGrid {
+    gap: 0.3rem;
   }
 
-  .destinationGrid {
-    grid-template-columns: repeat(4, minmax(3.6rem, 1fr));
+  .destinationGrid .iconText {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .destinationGrid .compactChoice {
+    font-size: 0.65rem;
+    padding: 0.5rem 0.15rem;
   }
 
   .partyGrid {
@@ -974,23 +1141,28 @@
   }
 
   .anchorActions {
-    display: grid;
-    grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 
   .anchorActions button {
     min-width: 0;
+    font-size: 0.65rem;
+    padding: 0.45rem 0.35rem;
+  }
+
+  .anchorActionRow {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .anchorActionRow h2 {
+    flex: 0 1 4rem;
+    padding-top: 0.4rem;
   }
 
   .actions {
-    position: sticky;
-    z-index: 3;
-    bottom: -1rem;
     grid-template-columns: 1fr 1.4fr 1fr;
-    margin-right: -0.8rem;
-    margin-left: -0.8rem;
-    padding: 0.8rem;
-    background: linear-gradient(to top, #fffaf3 76%, rgb(255 250 243 / 65%));
+    gap: 0.4rem;
   }
 
   .actions button {
@@ -1015,60 +1187,22 @@
   display: flex;
   align-items: flex-start;
   gap: 0.45rem;
+  font-size: 0.88rem;
 }
 
-.infoPopover {
-  position: relative;
-  z-index: 5;
-  flex: 0 0 auto;
-}
-
-.infoPopover summary {
-  display: grid;
-  width: 1.15rem;
-  height: 1.15rem;
-  place-items: center;
-  border: 1px solid rgb(189 79 67 / 35%);
-  border-radius: 50%;
-  background: rgb(255 250 244 / 86%);
-  color: var(--wizard-coral-dark);
-  font-size: 0.66rem;
-  font-weight: 850;
-  list-style: none;
-  cursor: pointer;
-}
-
-.infoPopover summary::-webkit-details-marker {
-  display: none;
-}
-
-.infoPopoverContent {
-  position: absolute;
-  z-index: 10;
-  width: min(15rem, calc(100vw - 3rem));
-  top: calc(100% + 0.45rem);
-  left: 50%;
-  padding: 0.65rem 0.75rem;
-  border: 1px solid rgb(111 78 68 / 16%);
-  border-radius: 0.75rem;
-  background: rgb(255 252 247 / 96%);
-  color: var(--wizard-muted);
-  box-shadow: 0 0.8rem 2rem rgb(55 36 29 / 18%);
-  font-size: 0.7rem;
-  font-weight: 600;
-  line-height: 1.5;
-  transform: translateX(-50%);
-}
-
-.sliderLabelWithInfo {
+.labelWithInfo {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
-.sliderLabelWithInfo .infoPopoverContent {
-  left: 0;
-  transform: none;
+.modalHelpLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .interestCardWrap {
@@ -1078,12 +1212,21 @@
 
 .interestCardWrap .interestCard {
   width: 100%;
-  padding-right: 3.4rem;
+  height: 100%;
+  min-height: 4rem;
+  align-items: flex-start;
+  padding: 0.6rem 0.7rem 1.65rem;
+}
+
+.interestCardWrap .interestCard small {
+  position: absolute;
+  bottom: 0.55rem;
+  left: 0.7rem;
 }
 
 .interestDetailTrigger {
   position: absolute;
-  top: 50%;
+  bottom: 0.4rem;
   right: 0.45rem;
   padding: 0.16rem 0.32rem;
   border: 0;
@@ -1093,7 +1236,6 @@
   font-size: 0.58rem;
   font-weight: 760;
   cursor: pointer;
-  transform: translateY(-50%);
 }
 
 .interestDetailTrigger[data-filled="true"] {
@@ -1456,15 +1598,15 @@
 }
 
 .generationStep {
-  width: min(100%, 43rem);
-  margin: 2.25rem auto 0;
+  width: 100%;
+  margin: 0;
 }
 
 .generationStages {
   display: grid;
   gap: 0;
   padding: 0;
-  margin: 2rem 0 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -1647,7 +1789,7 @@
 
 .planFacts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.35rem 0.55rem;
   margin: 0.55rem 0 0;
 }
@@ -1803,9 +1945,333 @@
   .regionTabs {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
 
-  .generationStep {
-    margin-top: 1rem;
+/* Desktop density is budgeted to the viewport; controls must fit, not scroll. */
+@media (min-width: 48rem) {
+  .page {
+    --wizard-body-gap: 1.5rem;
+    --wizard-square-size: 5rem;
+  }
+
+  .flowLayout {
+    gap: 0.65rem;
+    width: min(calc(100% - 2rem), 76rem);
+    padding-block: 0.75rem max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .flowPanel {
+    max-height: 54rem;
+    padding-block: 1.25rem;
+  }
+
+  .wizardContent {
+    overflow: visible;
+    padding-bottom: 0;
+    scrollbar-gutter: auto;
+  }
+
+  .form,
+  .wizardContent > .step {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .form > .step {
+    min-height: 0;
+    flex: 1;
+  }
+
+  .interestGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .styleGroups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .basicsRow {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+
+  .dateModeRow {
+    flex-wrap: nowrap;
+  }
+
+  .dateModeOption,
+  .dateModeOption[data-expanded="true"] {
+    width: auto;
+    min-width: 5rem;
+    flex-wrap: nowrap;
+  }
+
+  .dateInlineFields {
+    width: auto;
+    flex-wrap: nowrap;
+    padding: 0 0.7rem 0 0;
+  }
+
+  .dateDivider {
+    display: block;
+  }
+
+  .interestCardWrap .interestCard {
+    min-height: 2.8rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 3.1rem 0.4rem 0.65rem;
+  }
+
+  .interestCardWrap .interestCard small {
+    position: static;
+  }
+
+  .interestDetailTrigger {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .squareOptionCard {
+    max-width: var(--wizard-square-size);
+    justify-self: center;
+  }
+
+  .basicsRow {
+    padding-block: 0.55rem;
+  }
+
+  .planGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .planCard:last-child {
+    grid-column: auto;
+  }
+
+  .planImage {
+    min-height: 3rem;
+    padding: 0.45rem;
+  }
+
+  .planCardBody > p {
+    min-height: 0;
+  }
+}
+
+/* Short laptop screens retain the same controls and stage, with quieter copy. */
+@media (min-width: 48rem) and (max-height: 800px) {
+  .page {
+    --wizard-body-gap: 1.25rem;
+    --wizard-square-size: 4rem;
+  }
+
+  .flowLayout {
+    gap: 0.5rem;
+  }
+
+  .flowPanel {
+    padding-block: 0.75rem;
+  }
+
+  .headerActions .avatar,
+  .headerActions .languageSelect select {
+    min-height: 2rem;
+  }
+
+  .avatar {
+    width: 2rem;
+  }
+  .progressNav {
+    margin-bottom: 0.75rem;
+  }
+  .progressNumber {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .progressItem:not(:last-child)::after {
+    top: 0.85rem;
+  }
+  .stepTitle {
+    font-size: 2rem;
+  }
+  .sectionHeader .eyebrow,
+  .sectionHeader .stepDescription {
+    display: none;
+  }
+
+  .interestCardWrap .interestCard {
+    min-height: 2.25rem;
+    padding-block: 0.25rem;
+  }
+
+  .interestGrid {
+    gap: 0.3rem;
+  }
+  .sectionHeadingRow {
+    margin-bottom: 0.35rem;
+  }
+  .styleSection {
+    margin-top: 0.75rem;
+  }
+  .styleGroup {
+    gap: 0.35rem;
+    padding-block: 0.55rem;
+  }
+  .dateFieldset {
+    margin-bottom: 0.45rem;
+  }
+  .basicsRow {
+    padding-block: 0.3rem;
+  }
+
+  .destinationGrid .compactChoice,
+  .partyRow {
+    min-height: 2rem;
+  }
+  .destinationGrid .compactChoice {
+    padding: 0.3rem 0.2rem;
+    font-size: 0.64rem;
+  }
+  .destinationGrid .iconText {
+    gap: 0.25rem;
+  }
+  .destinationGrid .wizardIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+  .choiceGroup legend {
+    margin-bottom: 0.4rem;
+  }
+  .formNotice {
+    min-height: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+  .dateModeOption {
+    min-height: 2.75rem;
+  }
+  .dateModeOption > button {
+    min-height: 2.65rem;
+  }
+  .generationStages li {
+    min-height: 3rem;
+  }
+
+  .planImage {
+    min-height: 2.2rem;
+    padding: 0.3rem 0.45rem;
+  }
+  .planCardBody {
+    padding: 0.55rem 0.65rem;
+  }
+  .planCardBody > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .planTags {
+    margin-top: 0.3rem;
+  }
+  .planTags span {
+    padding-block: 0.12rem;
+  }
+  .planFacts {
+    gap: 0.15rem 0.35rem;
+    margin-top: 0.35rem;
+  }
+  .routeMiniMap {
+    margin-top: 0.35rem;
+  }
+  .planSelectButton {
+    min-height: 2.25rem;
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+  }
+  .actions,
+  .planFooterActions {
+    padding-top: 0.55rem;
+  }
+  .actions button,
+  .planFooterActions button {
+    min-height: 2.5rem;
+  }
+}
+
+/* Step 4 is a centered composition inside the shared, unchanged outer stage. */
+.generationStep {
+  justify-content: center;
+}
+
+.generationStep .sectionHeader {
+  text-align: center;
+}
+
+.generationStep .eyebrow {
+  display: none;
+}
+
+.generationStep .stepDescription,
+.descriptionWithInfo .stepDescription {
+  display: block;
+}
+
+.generationStep .stepBody {
+  align-items: center;
+  flex: 0 0 auto;
+  margin-block: 1rem;
+}
+
+.generationArtwork {
+  flex: 0 0 auto;
+  width: 15rem;
+  height: 4.5rem;
+  margin-bottom: 0.75rem;
+  color: #977664;
+}
+
+.generationStages {
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.generationStages .generationStageLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.generationNote {
+  max-width: 24rem;
+  margin: 0.5rem auto 0;
+  text-align: center;
+}
+
+.destinationGrid .wizardIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 48rem) and (max-height: 800px) {
+  .generationStep .stepBody {
+    margin-block: 0.75rem;
+  }
+  .generationArtwork {
+    height: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .generationStages li {
+    min-height: 2.45rem;
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 56rem) {
+  .destinationGrid .wizardIcon {
+    width: 1.1rem;
+    height: 1.1rem;
   }
 }
 

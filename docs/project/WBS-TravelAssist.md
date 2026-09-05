@@ -239,6 +239,7 @@ src/db/
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
 | TASK-006 | 3.6 / 3.8（扩展），关联 1.11 / 1.18 / 4.13 / 4.14 | B | 已完成 | #31 | `docs/tasks/TASK-006-b-generation-and-modals.md` | `feature/b-generation-and-modals` | `31982a3` | #32 |
+| TASK-007 | 3.6 / 3.8（Step 1–5 版式修正，含 v1.0～v1.3） | B | 已完成（定稿背景已接入；用户授权合并，21 项测试通过） | #35 | `docs/tasks/TASK-007-b-wizard-layout-polish.md` | `feature/b-wizard-layout-polish` | `a438b86`（布局）；`25a0805`（背景）；`28a0ec8`（合并） | #61 已合入 develop |
 | WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
 | WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
@@ -281,8 +282,8 @@ src/db/
 | 1.24   | Profile / 账户设置画面设计            | B      | P1     | 1.21      | 已完成 |
 | 1.25   | 偏好管理中心画面设计                  | B      | P0     | 1.21      | 已完成 |
 | 1.26   | 同行人管理画面设计                    | B      | P1     | 1.25      | 已完成 |
-| 1.27   | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B      | P0     | 1.21      | 进行中 |
-| 1.28   | 账户安全 / 数据删除画面设计           | B      | P1     | 1.24      | 未开始 |
+| 1.27   | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B      | P0     | 1.21      | 已完成 |
+| 1.28   | 账户安全 / 数据删除画面设计           | B      | P1     | 1.24      | 已完成 |
 | 1.29   | 个人中心响应式 / 状态画面规范         | B      | P1     | 1.22-1.28 | 未开始 |
 | 1.30   | 个人中心设计 Freeze v1                | A+B    | P0     | 1.22-1.29 | 未开始 |
 
@@ -382,7 +383,7 @@ src/db/
 | 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 未开始 |
 | 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 未开始 |
 | 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 未开始 |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 未开始 |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3 | 未开始 |
 | 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 未开始 |
 | 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 未开始 |
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 未开始 |

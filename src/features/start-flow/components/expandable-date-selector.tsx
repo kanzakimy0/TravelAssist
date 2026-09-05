@@ -1,6 +1,8 @@
 import type { DateMode } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { CalendarPopover } from "./calendar-popover";
+import { PlannedDatePopover } from "./planned-date-popover";
+import { InfoPopover } from "./info-popover";
 
 interface ExpandableDateSelectorProps {
   dateMode: DateMode | null;
@@ -41,7 +43,13 @@ export function ExpandableDateSelector({
 }: ExpandableDateSelectorProps) {
   return (
     <fieldset className={styles.dateFieldset}>
-      <legend>旅行日期</legend>
+      <legend>
+        旅行日期{" "}
+        <InfoPopover
+          label="旅行日期说明"
+          text="具体日期用于计算天数；计划日期可填写大致时间，暂未决定也能继续。"
+        />
+      </legend>
       <div className={styles.dateModeRow}>
         <div
           className={styles.dateModeOption}
@@ -88,37 +96,21 @@ export function ExpandableDateSelector({
           {dateMode === "planned" ? (
             <div className={styles.dateInlineFields}>
               <span aria-hidden="true" className={styles.dateDivider} />
-              <label>
-                <span>计划出发</span>
-                <select
-                  onChange={(event) =>
-                    onPlannedDateChange("departure", event.target.value)
-                  }
-                  value={plannedDeparture}
-                >
-                  <option value="">选择时间</option>
-                  {PLAN_OPTIONS.map((option) => (
-                    <option key={option}>{option}</option>
-                  ))}
-                </select>
-              </label>
+              <PlannedDatePopover
+                label="计划出发"
+                options={PLAN_OPTIONS}
+                value={plannedDeparture}
+                onChange={(value) => onPlannedDateChange("departure", value)}
+              />
               <span aria-hidden="true" className={styles.dateArrow}>
                 →
               </span>
-              <label>
-                <span>计划返回</span>
-                <select
-                  onChange={(event) =>
-                    onPlannedDateChange("return", event.target.value)
-                  }
-                  value={plannedReturn}
-                >
-                  <option value="">选择时间</option>
-                  {PLAN_OPTIONS.map((option) => (
-                    <option key={option}>{option}</option>
-                  ))}
-                </select>
-              </label>
+              <PlannedDatePopover
+                label="计划返回"
+                options={PLAN_OPTIONS}
+                value={plannedReturn}
+                onChange={(value) => onPlannedDateChange("return", value)}
+              />
             </div>
           ) : null}
         </div>

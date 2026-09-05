@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import type { Interest } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { Modal } from "./modal";
+import { InfoPopover } from "./info-popover";
 
 const DETAIL_OPTIONS: Record<Interest, string[]> = {
   自然风景: ["山岳", "海岸", "湖泊", "森林", "花田"],
@@ -52,10 +53,17 @@ export function InterestDetailModal({
 
   return (
     <Modal
-      description="可选填更具体的偏好，让后续方案更贴近你。"
+      description="可选填更具体的偏好，让后续方案更贴近您。"
       onClose={onClose}
       title={`${interest}偏好`}
     >
+      <p className={styles.modalHelpLabel}>
+        选择具体偏好{" "}
+        <InfoPopover
+          label="具体偏好选择说明"
+          text="可多选，也可以不选。确认后保存到草稿；取消不会改变已有偏好。"
+        />
+      </p>
       <div className={styles.selectionModalGrid}>
         {DETAIL_OPTIONS[interest].map((option) => (
           <label className={styles.toggleField} key={option}>

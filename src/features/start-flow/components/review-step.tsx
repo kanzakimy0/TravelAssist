@@ -80,7 +80,7 @@ export function ReviewStep({ draft, headingRef, onEdit }: ReviewStepProps) {
         确认一下这次旅行
       </h1>
       <p className={styles.stepDescription}>
-        这些信息将成为后续行程规划的起点，你还可以返回任意一步修改。
+        这些信息将成为后续行程规划的起点，您还可以返回任意一步修改。
       </p>
       <dl className={styles.reviewList}>
         {sections.map((section) => (
