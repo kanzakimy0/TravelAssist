@@ -40,6 +40,7 @@ Not created. `feature/a-planner-to-trip-detail-workspace` 必须等 #77 与 #78 
 - TASK-011 implementation commit: `PENDING`
 - Blocked tracking commit: `081f4c06cd00b4196707515d753e1b627f3ec105`
 - Blocked tracking merge: `7e86725a4ad4f47fcdd376d98cd61080012d286f`
+- 2026-09-06 recheck commit: `a4bedddbc60e9f768329a1687132f5ac27fd3246`
 
 ## Changed Files
 
@@ -62,6 +63,7 @@ Not run — 硬性前置未满足，Task 明确要求在创建实现分支及修
 
 - TASK-011 implementation PR: `PENDING`
 - Blocked tracking PR: [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) — Merged / docs only; it does not satisfy or replace the TASK-011 implementation PR
+- 2026-09-06 recheck PR: [#100](https://github.com/kanzakimy0/TravelAssist/pull/100) — Open / Draft / docs only; do not merge automatically
 
 ## GitHub Issue
 
