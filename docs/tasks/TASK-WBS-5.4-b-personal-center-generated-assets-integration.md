@@ -12,7 +12,11 @@
 - **Target implementation branch:** `feature/b-account-wbs-5-4-profile-account-ui`
 - **Reference:** `docs/assets/personal-center-generated-images-20260905.md`
 - **Manifest:** `docs/assets/personal-center-generated-images-20260905.manifest.json`
-- **Status:** `Ready / 可执行`
+- **Status:** `Blocked / 素材交付包缺失`
+- **Execution develop:** `d42fa5b0f7b0ba95698efaf64dea7a6890dc9dc3`
+- **Develop merge into feature:** `f69f5f6572f8f4a9d870f9cd94920434026db6d3`
+- **Asset Gate:** 6 个 source + 6 个 runtime 全部缺失；F:\TravelAssist 内未找到同名交付文件。未修改页面、未重新生成、未用替代图片。
+- **Result:** [Generated Asset Integration Result](RESULT-WBS-5.4-b-personal-center-generated-assets-integration.md)
 
 > 本 Task 是现有 WBS-5.4-B 的视觉素材实装补充，不创建新的 WBS 状态，不重新打开已完成的 5.1 / 5.2，也不创建新的 implementation PR。最终改动继续进入现有 Draft PR #76，等待用户视觉验收后再决定是否合并。
 
@@ -629,12 +633,14 @@ Manifest:
 `docs/assets/personal-center-generated-images-20260905.manifest.json`
 
 Integrated:
+
 - Kyoto Hero
 - Kyoto / Osaka / Hokkaido equal trip cards
 - Yuki demo avatar in Sidebar / TopActions / Popover / Profile current state
 - Personal Center-only torii TravelAssist logo
 
 Safety:
+
 - 5.1 remains completed
 - 5.2 remains completed
 - no Auth / DB / API
@@ -658,37 +664,44 @@ docs/tasks/RESULT-WBS-5.4-b-personal-center-generated-assets-integration.md
 # WBS-5.4-B Generated Asset Integration Result
 
 ## Status
+
 Completed / Awaiting Visual Review / Blocked
 
 ## Git Sync
+
 - develop pulled:
 - develop SHA:
 - feature branch:
 - merge develop into feature:
 
 ## Asset Verification
+
 | Asset | Source SHA256 | Runtime SHA256 | Git blob | Result |
-|---|---|---|---|---|
+| ----- | ------------- | -------------- | -------- | ------ |
 
 ## 5.1 Rendering
+
 - Hero:
 - Equal trip cards:
 - More Features:
 - Old Home poster still referenced by Personal Center: Yes/No
 
 ## 5.2 Rendering
+
 - Sidebar avatar:
 - Top-right avatar:
 - Popover avatar:
 - Existing interaction regression:
 
 ## 5.4 Rendering
+
 - Account UI present:
 - Current avatar:
 - Local preview:
 - Delete / restore default:
 
 ## Responsive
+
 - 1920x1080:
 - 1440x900:
 - 1280x720:
@@ -696,6 +709,7 @@ Completed / Awaiting Visual Review / Blocked
 - 320x740:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -707,6 +721,7 @@ Completed / Awaiting Visual Review / Blocked
 - console:
 
 ## Ownership Safety
+
 - A files modified: No
 - Other Task files modified: No
 - 5.1 reopened: No
@@ -714,12 +729,14 @@ Completed / Awaiting Visual Review / Blocked
 - Auth/DB/API modified: No
 
 ## GitHub
+
 - Commit(s):
 - Push:
 - Issue #75:
 - Draft PR #76:
 
 ## Next
+
 Await user visual acceptance. Do not merge automatically.
 ```
 
