@@ -7,7 +7,7 @@
 > Responsibility：`Shared Infra`  
 > WBS：`8.1 / 8.4`  
 > Priority：`P0`  
-> Status：`In Progress / 进行中`\
+> Status：`Partially Completed / 本机 Docker 验收阻塞`\
 > GitHub Issue：`#64`  
 > Proposed Branch：`feature/a-db-foundation`  
 > Created：2026-09-05

@@ -38,7 +38,9 @@ by checkouts using this config; do not run competing checkouts simultaneously.
 Scripts reject extra flags (including `--linked`, `--db-url`, project refs and
 arbitrary paths) and remote Docker endpoints. They never load `.env.local` or
 pass cloud Supabase/PG credentials to the CLI. Do not expose Docker or the local
-stack on an untrusted network. Logs redact connection URLs, JWTs and API keys.
+stack on an untrusted network. Start suppresses the credential table; status
+whitelists only loopback service URLs, never JWT/S3/signing secrets. Other CLI
+logs redact connection URLs, JWTs and API keys.
 
 ## Migration workflow
 

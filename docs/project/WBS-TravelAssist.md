@@ -235,7 +235,7 @@ src/db/
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-009 | 8.1 / 8.4 | A | 进行中 | #64 | `docs/tasks/TASK-009-a-db-foundation.md` | `feature/a-db-foundation` | 待提交 | 待创建（Draft，不自动合并） |
+| TASK-009 | 8.1 / 8.4 | A | 进行中（Partially Completed；本机 Docker 验收阻塞） | #64 | `docs/tasks/TASK-009-a-db-foundation.md` / `docs/tasks/RESULT-TASK-009-a-db-foundation.md` | `feature/a-db-foundation` | `3529c130039dfe2d73b3226d11c0d556a6349a0a`（实现；追踪提交见 PR） | [#72](https://github.com/kanzakimy0/TravelAssist/pull/72)（Draft，不自动合并） |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
