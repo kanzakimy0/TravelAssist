@@ -26,6 +26,7 @@
 - 搜索全部 Issue 标题、打开的 PR、所有远程分支文件，未发现等价 5.2 工作；各分支现存 TopActions 均为同一 disabled 占位版本。
 - Issue #50 为本次新建；未覆盖历史分支或其他 Task。
 - 执行期间 develop 新增 2d26861 / 4e62ec0：Planner v0.2 设计和 TASK-008-A（Planned，Issue #51）。仅上游文档变化，无个人中心代码重叠；合并后已保留并复核，不执行其任务指令。
+- 最终拉取至 10a62d5bee07da8dc2d58e4ae7d86eba197f8b86，包含上游新增 preference-center.md 与工程 WBS 状态同步；这些均非本 Task 修改。再次确认 src / package.json / package-lock.json 与已验收的 6f25b25 一致。
 
 ## Scope
 
@@ -64,7 +65,7 @@ Auth / Session / 真实 Logout、A Header、通知、5.1 视觉、各管理页�
 | npm install          | Passed               | up to date，361 packages，0 vulnerabilities；allow-scripts 历史提示见 Problems |
 | npm run lint         | Passed               | exit 0，无 lint warning                                                        |
 | npm run typecheck    | Passed               | exit 0                                                                         |
-| npm run format:check | Baseline exception   | exit 1；初验 6 个，合并后 7 个未修改的上游文档                                 |
+| npm run format:check | Baseline exception   | exit 1；初验 6 个，84f977e 复验 7 个，10a62d5 最终复验 8 个未修改的上游文档    |
 | Task scoped Prettier | Passed               | 全部 6 个新增/修改文件（含共享 WBS）通过                                       |
 | npm run build        | Passed               | 9 个静态页面生成成功，无 build warning                                         |
 | git diff --check     | Passed               | 无空白错误                                                                     |
@@ -126,7 +127,7 @@ Auth / Session / 真实 Logout、A Header、通知、5.1 视觉、各管理页�
 ## Problems
 
 - 全仓 Prettier 例外：docs/project/WBS-5.1-PERSONAL-CENTER-ASSET-AUDIT.md、docs/project/WBS-5.1-VISUAL-READINESS-RECHECK-2026-09-05.md、docs/ui/authentication.md、docs/ui/personal-center-shell.md、docs/ui/personal-center.md、docs/ui/profile-account.md。均未修改，不为通过检查而重排其他文档。
-- 合并后上游新增 docs/tasks/TASK-008-a-trip-planner-shell.md 也被 Prettier 报告，最终共 7 个基线文档；不修改 A 的 Task。
+- 合并后上游新增 docs/tasks/TASK-008-a-trip-planner-shell.md 也被 Prettier 报告（84f977e 时共 7 个）；最终拉取的 docs/ui/preference-center.md 同样被报告，10a62d5 时共 8 个基线文档。均保留，不修改其他 Task / 设计书。
 - npm 11.16.0 提示 unrs-resolver@1.12.2 install script 尚未列入 allowScripts；安装与全部构建检查成功，未擅自批准脚本或改安装策略。
 - 浏览器仅有既存 /favicon.ico 404，本 Task 不修改全局图标。
 - 本实现使用原生 Popover API，针对支持该标准的现代浏览器；实际执行的是 Edge，未声称完成 Safari / Firefox 真机验收。
@@ -156,8 +157,10 @@ Completed。PR #52 已于 2026-09-05 合并到 develop，merge commit 为 84f977
 
 ## Issue Sync
 
-Issue #50：已满足关闭条件；本次 docs-only 同步合入 develop 后追加完成评论并关闭，最终由 GitHub Issue 实际 Closed 状态核验。
+Issue #50：PR #53 完成记录合并后已追加完成评论并关闭，GitHub 实际状态核验为 Closed。完成记录提交 25b8bc7667bdbf5a2eb766b6a8acafb9cdeeb342，PR #53 merge commit 为 56d38d86153ed0580526089480846b58dced6e90；此后仅补记新到达的上游文档基线信息。
 
 ## Next B WBS Item
 
 重新读取合并后的 WBS：建议下一 Task 为 5.4 Profile / 账户设置 UI，其依赖 1.24、5.1 均已完成。5.3 仍依赖未完成的 8.3；5.5 / 5.11 仍受 1.25 等依赖约束。仅建议，不创建或执行后续 Task；正式开始前仍须重新检查最新 develop / WBS / Tasks / Issues / PRs。
+
+最终 10a62d5 快照中，新增 preference-center.md 自述设计冻结，但 WBS 1.25 仍为进行中；不越权修改该状态，开始 5.5 前应先协调确认其追踪状态。5.4 的上述依赖结论仍成立。
