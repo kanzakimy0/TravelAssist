@@ -1,13 +1,24 @@
 # TASK-010-A — 主系统页面连接闭环
 
 ## Metadata
+
 - Task ID: `TASK-010-A`
 - Owner: `A`
 - Issue: `#78`
-- Status: `Planned`
+- Status: `Ready for Review`
 - Depends On: `TASK-008.3-A / #77` merged
 - Design Source: `docs/ui/navigation-flow.md` v1.1
 - Branch: `feature/a-main-flow-navigation`
+
+## Implementation Record
+
+- Base: `d5511f078b1e43efa0666e58dcf4c545fbbba273`
+- Commit: `PENDING`
+- Pull Request: `PENDING`
+- Verification: lint, typecheck, 68 tests, build, changed-file format,
+  diff-check, and browser QA at 1440×900 / 1024×768 / 390×844 passed.
+- Repository-wide format gate retains 17 pre-existing documentation-only
+  exceptions recorded in the Result; no exception is changed by this task.
 
 ## 1. 目标
 
@@ -49,6 +60,7 @@
 保持极简首页，不做大型 Navbar。
 
 新增轻量：
+
 - `个人中心 / 头像（Mock）` → `/personal-center`
 
 真实 Login 仍保持未接 Auth 的边界，不能把 Personal Center Mock 入口伪装成“已登录成功”。
@@ -138,6 +150,7 @@ currentStep 3 = 生成方案
 ```
 
 必须保留选择意图，可使用：
+
 - query；
 - 现有 localStorage selectedPlanId；
 - 明确命名的 temporary Mock adapter。
@@ -145,6 +158,7 @@ currentStep 3 = 生成方案
 Planner 至少能映射到对应的三个预览方案之一。
 
 禁止：
+
 - 复制第二套 Trip State；
 - 将 Start Draft 冒充最终 Contract；
 - 为导航写真实数据库。
@@ -154,10 +168,12 @@ Planner 至少能映射到对应的三个预览方案之一。
 ## 7. Planner Header
 
 保留：
+
 - Brand → `/`
 - Personal Center → `/personal-center`
 
 补充：
+
 - A 主系统 `新建旅行` → 标准 `/start`
 
 注意：本轮只明确 **B Personal Center 的“开始新旅行”直达 Step 3**。Planner 自身的新建入口仍走标准 Start Flow，除非后续产品决策另行修改。
@@ -171,11 +187,13 @@ Planner 至少能映射到对应的三个预览方案之一。
 验证：
 
 ### 标准首次流程
+
 ```text
 / → /start → /planner
 ```
 
 ### Personal Center 快捷新建流程
+
 ```text
 /personal-center
 → /start?entry=step3
@@ -183,6 +201,7 @@ Planner 至少能映射到对应的三个预览方案之一。
 ```
 
 检查：
+
 - browser back / forward；
 - Step 3 深链接不产生 redirect loop；
 - selected plan Mock bridge 不造成 redirect loop；
@@ -246,6 +265,7 @@ git diff --check
 ```
 
 浏览器至少验证：
+
 - 1440×900；
 - 1024×768；
 - 390×844。

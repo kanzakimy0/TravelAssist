@@ -1,4 +1,5 @@
 import type { RefObject } from "react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
@@ -14,6 +15,7 @@ interface PlanSelectionStepProps {
   onBack: () => void;
   onRegenerate: () => void;
   onSelect: (planId: string) => void;
+  onUsePlan: (planId: string) => void;
   plans: GeneratedPlan[];
   selectedPlanId: string | null;
 }
@@ -23,6 +25,7 @@ export function PlanSelectionStep({
   onBack,
   onRegenerate,
   onSelect,
+  onUsePlan,
   plans,
   selectedPlanId,
 }: PlanSelectionStepProps) {
@@ -118,6 +121,16 @@ export function PlanSelectionStep({
                     {selected ? "已选择这个方案" : "查看这个方案"}
                     <span aria-hidden="true">→</span>
                   </Button>
+                  {selected ? (
+                    <Link
+                      className={styles.planUseLink}
+                      href="/planner"
+                      onClick={() => onUsePlan(plan.id)}
+                    >
+                      使用此方案并进入地图
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : null}
                 </div>
               </article>
             );
