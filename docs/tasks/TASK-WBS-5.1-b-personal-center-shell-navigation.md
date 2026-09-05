@@ -10,8 +10,9 @@
 - Branch: `feature/b-account-wbs-5-1-personal-center-shell`
 - Base Commit: `6b0677e21c0f0089f1612a5f39f43ac8e2dde82f`
 - Depends On: 1.22, 2.6
-- Commit: PENDING
-- Pull Request: PENDING
+- Commit: `53525ebd37c1281f9aaa838c08aed0129f30c6d0`
+- Pull Request: #36（Merged）
+- Merge Commit: `c2c71ac32c73a946755613282dbbd1d3f387f644`
 
 ## Objective
 
@@ -85,7 +86,9 @@ Auth、Session、Avatar Popover、Logout、API、DB、Planner、Map、AI、Main 
 
 ## Result
 
-WBS 5.1 实现和范围内功能验收完成，等待 PR 合并。未开发 5.2 或其他后续业务。
+WBS 5.1 实现已通过 PR #36 合入 develop，拉取后重新执行五路由、导航、布局和滚动验证均通过。远程新增的 WBS 1.24 进行中状态已原样合入，没有覆盖。未开发 5.2 或其他后续业务。
+
+最终状态保留 **待审查 / Awaiting Review**：全仓 format:check 仍存在以下原有基线失败，需要用户确认是否作为本任务验收例外，或另行授权修复；不擅自标记完整验收通过，不关闭 Issue #34。PR 自动合并不等于所有验收项已经通过。
 
 已知限制与原有基线问题：
 
@@ -96,16 +99,24 @@ WBS 5.1 实现和范围内功能验收完成，等待 PR 合并。未开发 5.2 
 
 ## Commit
 
-PENDING
+- Implementation: `53525ebd37c1281f9aaa838c08aed0129f30c6d0`
+- Message: `feat(WBS-5.1-B): implement personal center shell navigation`
+- Develop baseline sync: `3032c8e6fe99d8aceee335585292c0e8a2ddab70`，保留 `74c5e32` 的 WBS 1.24 更新。
+- Push: 成功，仅推送指定 Feature 分支。
 
 ## Pull Request
 
-PENDING
+- [PR #36](https://github.com/kanzakimy0/TravelAssist/pull/36)
+- Title: `feat(WBS-5.1-B): implement personal center shell navigation`
+- Base: develop
+- State: Merged（仓库现有自动工作流）
+- Merge Commit: `c2c71ac32c73a946755613282dbbd1d3f387f644`
+- PR 包含 `Closes #34`、完整范围、验收结果及原有格式失败说明。
 
 ## WBS Sync
 
-5.1 → 待审查；仅增加当前 Task Tracking Record，不修改其他 WBS 行。
+5.1 → 待审查；当前 Task Tracking Record 记录实际 Commit / PR。功能虽已合并，但等待全仓格式基线问题的验收决定；不修改其他 WBS 行。
 
 ## Issue Sync
 
-#34 Open / 待审查；PR 合并并验收后同步为已完成。
+#34 Open / 待审查；明确记录 PR 已合并与全仓格式检查尚未通过。用户确认验收例外或授权修复后，再同步为已完成。
