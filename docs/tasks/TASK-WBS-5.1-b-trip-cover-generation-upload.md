@@ -6,7 +6,7 @@
 
 - Task ID: `WBS-5.1-B-COVERS`
 - Owner: B
-- Status: 待开始
+- Status: 待验收
 - WBS: 5.1（completed-task asset follow-up；不回退父项状态）
 - GitHub Issue: #70
 - Task File: `docs/tasks/TASK-WBS-5.1-b-trip-cover-generation-upload.md`
@@ -16,7 +16,7 @@
 - Reviewed develop: `fd5e4492f202c07567593199baadd25425190367`
 - Reviewed asset head: `2040c1c8a33e2372160ca46c66474994844cd022`
 - Commit: PENDING（指本 Task 的素材实现提交，不是本文档上传提交）
-- Master WBS Sync: PENDING（执行启动时只新增本 Task 追踪行）
+- Master WBS Sync: 本 Task 追踪行待审查；父项及其他行不变
 - Result File: `docs/tasks/RESULT-WBS-5.1-b-trip-cover-generation-upload.md`（执行时创建）
 
 ## 1. 目标与范围
@@ -29,12 +29,12 @@
 
 ### 必须交付
 
-| 文件 | 场景与用途 | 尺寸 | 大小上限 |
-| --- | --- | --- | --- |
-| `izu-hero-soft.webp` | 伊豆下一次旅行 Hero | 1920 × 720 | 450 KiB |
-| `izu-card-soft.webp` | 伊豆旅行卡片 | 960 × 600 | 240 KiB |
-| `coast-card-soft.webp` | 海岸慢游卡片 | 960 × 600 | 240 KiB |
-| `weekend-card-soft.webp` | 周末旅行卡片；京都街景示例 | 960 × 600 | 240 KiB |
+| 文件                     | 场景与用途                 | 尺寸       | 大小上限 |
+| ------------------------ | -------------------------- | ---------- | -------- |
+| `izu-hero-soft.webp`     | 伊豆下一次旅行 Hero        | 1920 × 720 | 450 KiB  |
+| `izu-card-soft.webp`     | 伊豆旅行卡片               | 960 × 600  | 240 KiB  |
+| `coast-card-soft.webp`   | 海岸慢游卡片               | 960 × 600  | 240 KiB  |
+| `weekend-card-soft.webp` | 周末旅行卡片；京都街景示例 | 960 × 600  | 240 KiB  |
 
 三个独立原始场景导出四个文件；Hero 与伊豆卡允许共用同一张伊豆原图。不得将同一照片裁切四次冒充三个独立场景。
 
