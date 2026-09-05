@@ -25,11 +25,14 @@
 
 ## Commit SHA
 
-`7629c8c0d8952420154ee4b9c42ebc11823ac131`
+- Implementation: `7629c8c0d8952420154ee4b9c42ebc11823ac131`
+- Verification tracking: `a940a418e4226c352aa271c9d6109bc5b684d775`
 
 ## Pull Request
 
-`PENDING（将创建为 Draft，防止仓库现有 auto-create / auto-merge 工作流违反 TASK-011 的 no-auto-merge 约束）`
+[PR #102 — TASK-011-A Planner to trip detail workspace](https://github.com/kanzakimy0/TravelAssist/pull/102) — Open / Draft。
+
+Draft 是有意的：仓库现有 `auto-create-pr.yml` / `auto-merge.yml` 会自动合并每个非 Draft feature PR，而 TASK-011 明确禁止自动 merge。
 
 Target: `develop`
 
