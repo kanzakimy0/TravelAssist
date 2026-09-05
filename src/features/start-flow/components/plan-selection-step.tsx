@@ -7,6 +7,7 @@ import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
 import { WizardStepBody } from "./wizard-step-body";
 import { RouteMiniMap } from "./route-mini-map";
+import { InfoPopover } from "./info-popover";
 
 interface PlanSelectionStepProps {
   headingRef: RefObject<HTMLHeadingElement | null>;
@@ -74,15 +75,33 @@ export function PlanSelectionStep({
                       <dd>{plan.locations.join(" · ")}</dd>
                     </div>
                     <div>
-                      <dt>景点密度</dt>
+                      <dt>
+                        景点密度{" "}
+                        <InfoPopover
+                          label={`${plan.name}景点密度说明`}
+                          text="描述每天安排的密集程度，不代表精确的景点数量。"
+                        />
+                      </dt>
                       <dd>{plan.attractionDensity}</dd>
                     </div>
                     <div>
-                      <dt>移动强度</dt>
+                      <dt>
+                        移动强度{" "}
+                        <InfoPopover
+                          label={`${plan.name}移动强度说明`}
+                          text="综合跨城次数与交通距离，帮助您判断旅途是否轻松。"
+                        />
+                      </dt>
                       <dd>{plan.movementIntensity}</dd>
                     </div>
                     <div>
-                      <dt>预算</dt>
+                      <dt>
+                        预算{" "}
+                        <InfoPopover
+                          label={`${plan.name}预算说明`}
+                          text="这是相对消费档位，不是实时价格或预订报价。"
+                        />
+                      </dt>
                       <dd>{plan.budgetLevel}</dd>
                     </div>
                   </dl>

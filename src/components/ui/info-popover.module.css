@@ -1,0 +1,58 @@
+.trigger[data-info-trigger] {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 0.1em 0.2em;
+  border: 0;
+  border-radius: 0.2em;
+  background: transparent;
+  color: #7c7a7b;
+  font-family: inherit;
+  font-size: 0.8em;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: help;
+}
+
+/* A usable hit target without enlarging the glyph or changing line height. */
+.trigger::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 24px);
+  height: max(100%, 24px);
+  transform: translate(-50%, -50%);
+  content: "";
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  color: #38424f;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #a99b8e;
+  outline-offset: 3px;
+}
+
+.surface {
+  position: fixed;
+  z-index: 100;
+  width: min(18rem, calc(100vw - 1.5rem));
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgb(111 78 68 / 12%);
+  border-radius: 0.6rem;
+  background: rgb(255 250 244 / 95%);
+  color: #283342;
+  box-shadow: 0 0.35rem 1rem rgb(55 36 29 / 10%);
+  backdrop-filter: blur(0.65rem);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  pointer-events: auto;
+}

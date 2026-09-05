@@ -2,6 +2,7 @@ import type { DateMode } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { CalendarPopover } from "./calendar-popover";
 import { PlannedDatePopover } from "./planned-date-popover";
+import { InfoPopover } from "./info-popover";
 
 interface ExpandableDateSelectorProps {
   dateMode: DateMode | null;
@@ -42,7 +43,13 @@ export function ExpandableDateSelector({
 }: ExpandableDateSelectorProps) {
   return (
     <fieldset className={styles.dateFieldset}>
-      <legend>旅行日期</legend>
+      <legend>
+        旅行日期{" "}
+        <InfoPopover
+          label="旅行日期说明"
+          text="具体日期用于计算天数；计划日期可填写大致时间，暂未决定也能继续。"
+        />
+      </legend>
       <div className={styles.dateModeRow}>
         <div
           className={styles.dateModeOption}

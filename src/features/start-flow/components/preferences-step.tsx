@@ -68,7 +68,9 @@ export function PreferencesStep({
           onDetailsChange={onInterestDetailsChange}
         />
         <div className={styles.styleSection}>
-          <h2>您喜欢怎么玩？</h2>
+          <div className={styles.sectionHeadingRow}>
+            <h2>您喜欢怎么玩</h2>
+          </div>
           <div className={styles.styleGroups}>
             <TravelStyleGroup
               items={[...PACE_ITEMS]}

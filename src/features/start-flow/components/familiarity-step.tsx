@@ -56,7 +56,10 @@ export function FamiliarityStep({
           <p className={styles.stepDescription}>
             选择最接近您的选项，我们会调整推荐的深度与说明方式。
           </p>
-          <InfoPopover text="熟悉度只用于调节路线说明、经典景点占比与小众程度，不会限制您选择任何地区。" />
+          <InfoPopover
+            label="日本熟悉度说明"
+            text="熟悉度用于调整经典景点占比与介绍深度，不限制您选择任何地区。"
+          />
         </div>
       </SectionHeader>
       <WizardStepBody>

@@ -6,6 +6,7 @@ import type { BudgetDetails, BudgetLevel } from "../model/start-flow-draft";
 import styles from "../start-flow.module.css";
 import { BudgetDetailModal } from "./detail-modals";
 import { SquareOptionCard } from "./square-option-card";
+import { InfoPopover } from "./info-popover";
 import type { WizardIconName } from "./wizard-icon";
 
 const OPTIONS: Array<{
@@ -37,7 +38,13 @@ export function BudgetSelector({
 
   return (
     <fieldset className={styles.choiceGroup}>
-      <legend>预算范围</legend>
+      <legend>
+        预算范围{" "}
+        <InfoPopover
+          label="预算范围说明"
+          text="预算档位用于平衡住宿、餐饮与体验，可在详情中补充金额和优先项。"
+        />
+      </legend>
       <div
         className={styles.budgetGrid}
         role="radiogroup"

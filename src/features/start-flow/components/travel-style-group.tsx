@@ -40,7 +40,10 @@ export function TravelStyleGroup({
         <div className={styles.styleSlider} key={item.key}>
           <span className={styles.sliderLeftLabel}>
             {item.left}
-            <InfoPopover text={STYLE_HELP[item.key]} />
+            <InfoPopover
+              label={`${item.left}与${item.right}说明`}
+              text={STYLE_HELP[item.key]}
+            />
           </span>
           <span className={styles.rangeWrap}>
             <input

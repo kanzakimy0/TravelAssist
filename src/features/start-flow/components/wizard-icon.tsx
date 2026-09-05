@@ -40,6 +40,22 @@ const PATHS = {
   diamond: "m3 8 4-5h10l4 5-9 13L3 8ZM3 8h18M7 3l5 18 5-18",
   calendar:
     "M3 5h18v16H3V5ZM7 2v6M17 2v6M3 10h18M7 14h.01M12 14h.01M17 14h.01M7 18h.01M12 18h.01",
+  tokyoTower:
+    "M12 1v4M10 5h4M11 5 5 22M13 5l6 17M4 22h16M8 13h8M7 17h10M9 9h6M9 13l7 4M15 13l-7 4M9 22l3-5 3 5",
+  dotonbori:
+    "M2 21c3-2 5 2 8 0s5 2 12 0M3 15h18M5 15v3M19 15v3M6 15c3-4 9-4 12 0M2 12V5h5v6M3.5 7h2M9 10V2h7v9M11 4h3M11 6l2 2 2-2M19 12V4h3v9M20 7h1",
+  sapporoClockTower:
+    "M2 21h20M4 21V12h16v9M2 12l5-4h3M14 8h3l5 4M9 10V5h6v5M8 5l4-4 4 4M13.5 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M12 6.5v1h1M7 15v3M17 15v3M10 21v-6h4v6",
+  inariTorii:
+    "M2 4c6 2 14 2 20 0M3 8h18M6 5v17M18 5v17M4 22h4M16 22h4M9 11h6M10 12v9M14 12v9M10 15h4M12 6v2",
+  shirakawaGo:
+    "M2 16 10 2l6 14M5 16v6h9v-6M4 16 10 5l4 8M10 2l12 14h-6M14 16v6h6v-6M3 22h18M8 22v-5h3v5M10 9v3M17 17v2",
+  sakurajima:
+    "M2 19 8 10l3 2 3-3 8 10M2 22c4-2 6 2 10 0s6 2 10 0M8 10l6-1M11 7c-3-3 3-3 0-6M16 7c-2-2 2-3 0-5M6 17l2-2M16 15l2 2",
+  shuriCastle:
+    "M2 21h20M4 21v-7h16v7M2 14c4 0 7-3 10-5 3 2 6 5 10 5M5 9c3 0 5-2 7-5 2 3 4 5 7 5M7 9v3M17 9v3M5 17h14M8 21v-4M16 21v-4M11 21v-4M13 21v-4M10 3h4",
+  japanPlus:
+    "m17 2 5 2-2 4-4-1-2-3 3-2ZM15 9l2 1-3 5-5 3-2-1 4-3 2-4 2-1ZM7 18l-3 4-2-2 2-3 3 1ZM9 20h3M19 15v7M15.5 18.5h7M2 13h.01",
 } as const;
 
 export type WizardIconName = keyof typeof PATHS;
@@ -64,19 +80,20 @@ export const INTEREST_ICONS: Record<Interest, WizardIconName> = {
 };
 
 export const DESTINATION_ICONS: Record<string, WizardIconName> = {
-  东京: "tower",
-  "大阪/关西": "castle",
-  北海道: "snow",
-  京都: "torii",
-  中部: "mountain",
-  九州: "onsen",
-  冲绳: "waves",
+  东京: "tokyoTower",
+  "大阪/关西": "dotonbori",
+  北海道: "sapporoClockTower",
+  京都: "inariTorii",
+  中部: "shirakawaGo",
+  九州: "sakurajima",
+  冲绳: "shuriCastle",
 };
 
 export function WizardIcon({ name }: { name: WizardIconName }) {
   return (
     <svg
       aria-hidden="true"
+      data-wizard-icon={name}
       className={styles.wizardIcon}
       fill="none"
       viewBox="0 0 24 24"

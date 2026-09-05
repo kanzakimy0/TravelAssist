@@ -59,7 +59,7 @@ export function DestinationGrid({
           type="button"
         >
           <span className={styles.iconText}>
-            <WizardIcon name="map" />
+            <WizardIcon name="japanPlus" />
             更多地区
             {selectedPrefectures.length
               ? ` · ${selectedPrefectures.length}`

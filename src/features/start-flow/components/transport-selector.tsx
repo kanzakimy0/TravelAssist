@@ -9,6 +9,7 @@ import type {
 import styles from "../start-flow.module.css";
 import { TransportDetailModal } from "./detail-modals";
 import { SquareOptionCard } from "./square-option-card";
+import { InfoPopover } from "./info-popover";
 import type { WizardIconName } from "./wizard-icon";
 
 const OPTIONS: Array<{
@@ -39,7 +40,13 @@ export function TransportSelector({
 
   return (
     <fieldset className={styles.choiceGroup}>
-      <legend>交通方式</legend>
+      <legend>
+        交通方式{" "}
+        <InfoPopover
+          label="交通方式高级设置说明"
+          text="先选择主要交通方式，再通过“设置交通详情”补充通票、自驾与混合交通偏好。"
+        />
+      </legend>
       <div
         className={styles.transportGrid}
         role="radiogroup"
