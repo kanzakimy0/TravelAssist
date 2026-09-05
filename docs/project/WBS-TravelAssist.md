@@ -245,7 +245,7 @@ src/db/
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
-| WBS-5.1-B-COVERS | 5.1（素材补充） | B | 待审查 | #70 | `docs/tasks/TASK-WBS-5.1-b-trip-cover-generation-upload.md` | `assets/b-personal-center-identity-20260905` | PENDING | #68 |
+| WBS-5.1-B-COVERS | 5.1（素材补充） | B | 待审查 | #70 | `docs/tasks/TASK-WBS-5.1-b-trip-cover-generation-upload.md` | `assets/b-personal-center-identity-20260905` | `6b269406bf21c7464162afd77c65b25d9fb78b87` | #68 Draft |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 

@@ -13,11 +13,11 @@
 - Branch: `assets/b-personal-center-identity-20260905`
 - Pull Request: #68（既有 Draft，接续交付，不创建重复素材 PR）
 - Depends On: 已有封面脚本与三个身份 SVG 可读取；不依赖 PR #68 先合并
-- Reviewed develop: `fd5e4492f202c07567593199baadd25425190367`
-- Reviewed asset head: `2040c1c8a33e2372160ca46c66474994844cd022`
-- Commit: PENDING（指本 Task 的素材实现提交，不是本文档上传提交）
+- Reviewed develop: `04472e3d75b3f28f4972e9efd5cba2812cab22a5`（执行期间普通 merge 同步；启动基线为 fd5e449）
+- Reviewed asset head: `202f588f5b2135a9dd4d568a5f742113a8b6c7a8`（启动实际远端头）
+- Commit: `6b269406bf21c7464162afd77c65b25d9fb78b87`（四张真实封面与校验的素材实现提交）
 - Master WBS Sync: 本 Task 追踪行待审查；父项及其他行不变
-- Result File: `docs/tasks/RESULT-WBS-5.1-b-trip-cover-generation-upload.md`（执行时创建）
+- Result File: `docs/tasks/RESULT-WBS-5.1-b-trip-cover-generation-upload.md`（已创建；真实上传与回读通过）
 
 ## 1. 目标与范围
 

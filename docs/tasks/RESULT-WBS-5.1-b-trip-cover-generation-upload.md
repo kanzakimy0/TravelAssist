@@ -1,10 +1,10 @@
 # WBS-5.1-B-COVERS Result
 
-- Status: 待验收（素材检查通过；上传回读待执行）
+- Status: 待验收（素材制作、视觉检查、GitHub 上传及回读均通过；非已合并或网页验收）
 - Issue: #70（Open）
 - Branch: `assets/b-personal-center-identity-20260905`
-- Base: `fd5e4492f202c07567593199baadd25425190367`（最新 develop，已包含在素材分支）
-- Implementation Commit: PENDING（提交后补实际 SHA，不使用 Task 上传提交冒充）
+- Base: `04472e3d75b3f28f4972e9efd5cba2812cab22a5`（普通 merge 同步的 develop；启动基线 fd5e449）
+- Implementation Commit: `6b269406bf21c7464162afd77c65b25d9fb78b87`
 - PR: [#68](https://github.com/kanzakimy0/TravelAssist/pull/68)（Draft）
 - Original scenes verified: 3/3
 - WebP covers generated: 4/4
@@ -20,7 +20,7 @@
 | `coast-card-soft.webp`   | 960×600  | 64886  | `755527c8c5b3f6bf52f22d3fb0ee2d062a85c50addb53bbe0d5ecd3c28628ec1` |
 | `weekend-card-soft.webp` | 960×600  | 115076 | `ec2641ca8dfc7d1e016e389bdade4c1256ab7ed6ee7f73349b35cbc10f909bf6` |
 
-其他实际文件：`manifest.json`、`ATTRIBUTION.md`；`docs/qa/WBS-5.1-B-COVERS/preview.jpg`、`README.md`、`checks.json`。远端回读证据在 push 后追加。
+其他实际文件：`manifest.json`、`ATTRIBUTION.md`；`docs/qa/WBS-5.1-B-COVERS/preview.jpg`、`README.md`、`checks.json`、`remote-readback.json`。
 
 ## Validation
 
@@ -32,7 +32,7 @@
 - Visual review: Passed；实际打开四张成品与预览，对照原图。保留摄影细节，未烘焙 UI；京都仅周末示例。见 [逐张记录与预览](../qa/WBS-5.1-B-COVERS/README.md)。
 - Task-scoped format / git diff --check: Passed。本 Task 新增及独占的 JSON/MD 格式全部通过；Master WBS 在 origin/develop 和当前工作区均有既有 Prettier 格式问题，本次只新增一行，不越界重排。去除该行后的 WBS 与基线逐行一致。
 - Website lint / typecheck / build / browser acceptance: 各项均 Not run — asset-only。
-- GitHub upload + readback: PENDING（未以本地成功代替上传）。
+- GitHub upload + readback: Passed。首次真实上传并回读 head `5090c92ad2e778774982f910a1b920afc538bac8`：使用 GitHub Contents API 按提交 SHA 回读 14 个文件，Base64 解码后的 bytes / SHA-256 / Git blob 均与本地一致。证据：[remote-readback.json](../qa/WBS-5.1-B-COVERS/remote-readback.json)。此证据固定记录该历史 head，不自称包含后续追踪文档修订；后续提交不改变四张 WebP、manifest、ATTRIBUTION 或预览，最终 head 的再次回读结果同步至 Issue #70 / PR #68。
 
 ## Tracking and boundaries
 
@@ -50,5 +50,6 @@
 2. 海岸原图的已知 SHA-1 完全匹配，但 Pillow 识别为两帧 MPO。仅该源增加明确格式/帧数记录并选用原尺寸主帧，保留原校验并添加正反向测试；未更换来源或删除校验。
 3. 修正脚本自动写死许可日期为显式核验日期，未核验时 null；新增日期测试。预览仍标明不是网页截图。
 4. Task 启动时已新增进行中 WBS 行并同步 Issue #70；父项及其他人任务不回退。PR #69 与 Issue #67/#64 只读核对，不修改。
+5. 执行期间 A 的 PR #69 和追踪 PR #71 先后合入 develop。普通 merge 同步 f5d5ef2、04472e3，仅解决 WBS 相邻行冲突，保留 A 的最新已完成行及本 Task 独立待审查行。所有其他 WBS 行与最终同步基线完全一致；网站代码与依赖的上游变化是同步带入，不是本 Task 实装。未在本 Task 运行网站构建或安装新 Node 依赖。
 
 完成本次上传与追踪后停止；不继续执行网页接入。

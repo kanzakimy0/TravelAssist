@@ -54,8 +54,8 @@ $env:PYTHONPYCACHEPREFIX = Join-Path $coverWork 'pycache'
 ## 格式、范围与发布
 
 - 本 Task 新增及独占 JSON/MD 的 Prettier 检查与 `git diff --check` 均通过。Master WBS 在 origin/develop 和工作区都存在既有格式问题；只新增本行，未重排旧表。没有声称全仓格式通过。
-- Master WBS 只新增本 Task 一行。原文件去除此行后必须与启动基线逐行相等，保留父 5.1/5.2 及所有其他 Task 状态；不为格式要求重排其他行。
-- 既有身份标志、默认头像、鸟居、纹理、首页及 Step 1–5 素材、`src/`、package 文件均保持不变。
+- Master WBS 只新增本 Task 一行。执行期间普通 merge 同步 A 的 PR #69/#71；去除此行后与最终同步基线 `04472e3` 逐行相等，保留父 5.1/5.2 及所有其他 Task 最新状态；不为格式要求重排其他行。
+- 既有身份标志、默认头像、鸟居、纹理、首页及 Step 1–5 素材与启动素材头相比均保持不变；`src/`、package 文件与最终同步 develop 相同，本 Task 未作运行时代码或依赖修改。
 - 网站 lint：Not run — asset-only；typecheck：Not run — asset-only；build：Not run — asset-only；浏览器验收：Not run — asset-only。
-- GitHub 上传后以提交 SHA 调用 Contents API，解码远端 Base64，并逐一比较实际 bytes、SHA-256 与 Git blob。回读记录位于后续发布的 [remote-readback.json](remote-readback.json)，不以本地文件存在代替上传证明。
+- GitHub 首次上传后的 head `5090c92ad2e778774982f910a1b920afc538bac8` 已通过 Contents API 回读 14 个文件；远端 Base64 解码后实际 bytes、SHA-256、Git blob 全部与本地一致，证据见 [remote-readback.json](remote-readback.json)。证据注明历史 head；后续追踪修订不改变成品，最终 head 再次回读结果附在 Issue #70 / PR #68，不制造证据文件包含自身提交 SHA 的循环引用。
 - 完整追踪：[Result](../../tasks/RESULT-WBS-5.1-b-trip-cover-generation-upload.md)。保持 Issue Open / PR Draft / WBS 待审查；网页未接入，未合并 develop。
