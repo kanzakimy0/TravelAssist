@@ -4,9 +4,10 @@
 
 - Repository: `kanzakimy0/TravelAssist`
 - Owner: B 工作站（客户界面）
-- Status: 待审查（v1.0～v1.3 与指定背景已完成；未合并）
+- Status: 已完成（v1.0～v1.3 与指定背景已完成；PR #61 已合入 develop）
 - GitHub Issue: [#35](https://github.com/kanzakimy0/TravelAssist/issues/35)
-- Pull Request: [#61](https://github.com/kanzakimy0/TravelAssist/pull/61)（Open / Draft，未合并）
+- Pull Request: [#61](https://github.com/kanzakimy0/TravelAssist/pull/61)（Merged，2026-09-05）
+- Merge Commit: `28a0ec874583d336859025087d3f8bad32c6ab53`
 - Background Commit: `25a08054ae85d05082961d80033618dc0aab45db`
 - Base Branch: `develop`
 - Base Commit: `6b0677e21c0f0089f1612a5f39f43ac8e2dde82f`
@@ -382,6 +383,14 @@ Step 1～5 以及后续同系列页面统一使用 **《樱花海岸与富士山
 - 3000 端口已从旧生产快照切换为 TASK-007 开发预览：`http://127.0.0.1:3000/start`。`/planner` 仍属于独立 TASK-008 分支，未进行跨任务整合。
 - 发布使用 `[skip ci]` 避免 feature push 自动合并流程；本地质量检查全部执行。PR 保留 Draft 防止另一个自动合并工作流触发，不改工作流配置、不直接写 develop。实现 Ready For Review: Yes，等待审查。
 - 已推送 `feature/b-wizard-layout-polish`，PR [#61](https://github.com/kanzakimy0/TravelAssist/pull/61) 关联 Issue #35；背景实现提交 `25a0805`，后续文档追踪提交以 PR head 为准。Issue 保持 open / 待审查，未宣称已合入 develop。
+
+## 合并完成记录（2026-09-05）
+
+- 用户明确授权合并后，检查 PR #61 head 为 `d1acf85`、无冲突，最新 develop 的未同步差异仅文档；未绕过合并保护或审查要求。
+- 将 PR 从 Draft 改为 Ready，并使用预期 head SHA 保护执行合并。GitHub 确认 Merged，合并提交 `28a0ec874583d336859025087d3f8bad32c6ab53`。
+- 本地 develop 已快进到合并版本，运行代码 / public / tests / dependencies 与验收版本无差异，21 项测试再次通过。上文保留 Draft 与未合并说明是交付历史，已由本次用户授权与实际合并覆盖。
+- Task / WBS / Issue #35 同步为已完成；追踪文档通过独立分支与 PR 更新，不直接提交 develop。
+- localhost:3000 开发预览继续使用合入 develop 的向导与指定原图；TASK-008 PR #59 未合并，未进行跨任务功能整合。
 
 ## Changed Files
 
