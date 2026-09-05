@@ -73,6 +73,7 @@ function QuickCard({
             {dayCount}天{nightCount}晚 · 示例
           </small>
         )}
+        <PlannerIcon name="chevron" className={styles.quickChevron} />
       </button>
       {open && (
         <PlannerPopover

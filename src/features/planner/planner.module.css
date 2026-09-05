@@ -1,16 +1,19 @@
 .planner {
-  /* Scoped provisional tokens: account-page warmth, Planner's dark blue-gray text. */
+  /* Planner-only palette; never leaks into the wizard or personal center. */
   --color-bg-canvas: #faf6ef;
   --color-bg-elevated: #fffcf7;
   --color-bg-overlay: rgb(255 252 247 / 97%);
   --color-text-primary: #343e48;
   --color-text-secondary: #706e6d;
   --color-border-strong: #e4d9d0;
-  --color-accent-primary: #a74739;
-  --color-accent-primary-hover: #913c30;
+  --color-accent-primary: #b95649;
+  --color-accent-primary-hover: #a04439;
   --color-focus-ring: #914737;
-  --planner-accent-soft: #f9e7e0;
-  --planner-shadow: 0 8px 28px rgb(113 78 59 / 7%);
+  --planner-accent-soft: #faeeeb;
+  --planner-radius-card: 16px;
+  --planner-radius-panel: 20px;
+  --planner-border: rgb(199 176 168 / 35%);
+  --planner-shadow: 0 8px 24px rgb(94 74 65 / 7%);
   height: 100dvh;
   overflow: hidden;
   color: var(--color-text-primary);
@@ -444,7 +447,7 @@
   top: 12px;
 }
 .header {
-  height: 64px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -457,33 +460,37 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 19px;
-  font-weight: 650;
+  font-size: 23px;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 .brand > span {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--planner-accent-soft);
   color: var(--color-accent-primary);
 }
 .headerTitle {
   display: flex;
-  gap: 18px;
-  align-items: baseline;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 24px;
+  background: #f7f0e9;
+  margin-left: auto;
 }
 .headerTitle h1 {
   margin: 0;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
 }
 .headerTitle > span {
   color: var(--color-text-secondary);
-  font-size: 10px;
-  letter-spacing: 1.4px;
+  font-size: 11px;
+  letter-spacing: 0;
 }
 .accountLink {
   display: flex;
@@ -492,10 +499,10 @@
   font-size: 13px;
 }
 .workspace {
-  height: calc(100dvh - 64px);
+  height: calc(100dvh - 68px);
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) 25dvh;
+  grid-template-rows: minmax(0, 1fr) calc(25dvh + 14px);
   position: relative;
   min-height: 0;
 }
@@ -520,6 +527,8 @@
   min-width: 0;
   min-height: 0;
   z-index: 2;
+  padding: 0 18px 14px;
+  background: #eeeae1;
 }
 .mapCanvas {
   width: 100%;
@@ -641,8 +650,9 @@
 }
 .toolbar {
   position: absolute;
-  top: 26px;
-  left: 20px;
+  top: 18px;
+  left: 18px;
+  width: 84px;
   z-index: 5;
   background: var(--color-bg-overlay);
   border: 1px solid var(--color-border-strong);
@@ -654,16 +664,19 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 9px;
+  gap: 4px;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 48px;
+  padding: 4px;
   border: 0;
   background: transparent;
   border-radius: 10px;
   font-size: 12px;
-  text-align: left;
+  text-align: center;
 }
 .toolbar button[aria-pressed="true"] {
-  background: #f3eee7;
+  background: var(--planner-accent-soft);
 }
 .toolbar button[aria-pressed="false"] {
   color: #8b8780;
@@ -676,8 +689,9 @@
 }
 .dayRange {
   position: absolute;
-  top: 26px;
-  right: 16px;
+  top: 18px;
+  right: 18px;
+  width: 90px;
   z-index: 6;
   display: flex;
   flex-direction: column;
@@ -691,9 +705,10 @@
 .dayRange > button {
   border: 0;
   border-radius: 11px;
-  padding: 9px 12px;
+  padding: 8px 4px;
+  min-height: 42px;
   background: transparent;
-  font-size: 12px;
+  font-size: 13px;
 }
 .dayRange > button[aria-pressed="true"] {
   background: var(--planner-accent-soft);
@@ -710,25 +725,36 @@
 }
 .quickSettings,
 .recommendations {
-  padding: clamp(16px, 1.6vw, 28px);
+  padding: 16px 18px;
   min-height: 0;
   min-width: 0;
 }
 .quickSettings {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 1.6vh, 18px);
+  gap: 12px;
+  justify-content: center;
 }
 .recommendations {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   border-top: 1px solid var(--color-border-strong);
   background: rgb(249 238 231 / 35%);
 }
+.recommendations .sectionTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.recommendations .sectionTitle p {
+  margin: 0;
+  white-space: nowrap;
+}
 .sectionTitle h2 {
   font-size: clamp(15px, 1.18vw, 19px);
-  font-weight: 650;
+  font-weight: 700;
   margin: 0;
   letter-spacing: 0.4px;
 }
@@ -739,7 +765,7 @@
 }
 .eyebrow {
   display: block;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--color-text-secondary);
   margin-bottom: 6px;
@@ -747,7 +773,7 @@
 .quickPair,
 .quickTriple {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 .quickPair {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -759,10 +785,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  padding: 12px;
+  gap: 6px;
+  padding: 10px 12px;
+  position: relative;
   border-radius: 16px;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--planner-border);
   background: var(--color-bg-elevated);
   text-align: left;
   box-shadow: 0 3px 10px rgb(113 78 59 / 3%);
@@ -774,33 +801,40 @@
   display: flex;
   gap: 6px;
   align-items: center;
-  color: var(--color-text-secondary);
-  font-size: 11px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 700;
   white-space: nowrap;
 }
 .quickLabel svg {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
 }
 .quickCard strong {
   font-size: 12px;
-  line-height: 1.65;
-  font-weight: 600;
+  line-height: 1.5;
+  font-weight: 500;
   overflow-wrap: anywhere;
 }
 .quickCard small {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-secondary);
 }
 .quickTriple .quickCard {
-  padding: 12px 9px;
+  padding: 10px;
+  height: 104px;
+  gap: 4px;
 }
 .quickTriple .quickLabel {
   flex-direction: column;
   align-items: flex-start;
 }
 .quickTriple .quickCard strong {
-  font-size: 11px;
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .settingsActions {
   display: grid;
@@ -808,9 +842,10 @@
   gap: 8px;
 }
 .planner .settingsButton {
-  min-height: 42px;
+  height: 46px;
+  min-height: 46px;
   padding: 8px 5px;
-  font-size: 11px;
+  font-size: 13px;
   border-radius: 12px;
   gap: 5px;
   line-height: 1.3;
@@ -825,7 +860,7 @@
   flex-shrink: 0;
 }
 .mockStatus {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-secondary);
   min-height: 30px;
   margin: 0;
@@ -838,7 +873,7 @@
 .planList {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
   flex: 1;
   min-height: 0;
 }
@@ -847,7 +882,7 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--planner-border);
   border-radius: 17px;
   padding: 10px;
   background: var(--color-bg-elevated);
@@ -855,13 +890,13 @@
   min-height: 0;
 }
 .planRow[aria-pressed="true"] {
-  border: 2px solid #b3715f;
+  border: 2px solid var(--color-accent-primary);
   padding: 9px;
   background: #fff8f2;
 }
 .planThumbnail {
-  width: 62px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 12px;
   flex-shrink: 0;
 }
@@ -873,7 +908,7 @@
   flex: 1;
 }
 .planNumber {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--color-text-secondary);
   display: flex;
   align-items: center;
@@ -881,17 +916,21 @@
   gap: 4px;
 }
 .planNumber b {
-  font-size: 9px;
+  font-size: 10px;
   color: var(--color-accent-primary);
 }
 .planText strong {
-  font-size: 12px;
-  font-weight: 650;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1.5;
 }
 .planText small {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .planRow > svg:last-child {
   width: 14px;
@@ -908,17 +947,17 @@
   flex-direction: column;
   min-width: 0;
   background: rgb(255 252 247 / 96%);
-  border-top: 1px solid var(--color-border-strong);
-  border-radius: 24px 24px 0 0;
-  padding: 12px 24px 10px;
-  box-shadow: 0 -5px 20px rgb(80 65 50 / 4%);
+  border: 1px solid var(--planner-border);
+  border-radius: var(--planner-radius-panel);
+  padding: 10px 18px 8px;
+  box-shadow: var(--planner-shadow);
 }
 .executionSummary {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  min-height: 28px;
+  min-height: 22px;
 }
 .executionDays {
   display: flex;
@@ -940,21 +979,26 @@
 }
 .todayStatus {
   color: var(--color-text-secondary);
-  font-size: 10px;
+  font-size: 11px;
 }
 .bottomTabs {
   display: flex;
-  gap: clamp(16px, 3vw, 48px);
+  gap: clamp(16px, 2.5vw, 40px);
   border-bottom: 1px solid #eae0d6;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .bottomTabs button {
-  padding: 7px 1px;
+  padding: 8px 1px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
   border: 0;
   border-bottom: 2px solid transparent;
   background: transparent;
   color: var(--color-text-secondary);
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 600;
   white-space: nowrap;
 }
 .bottomTabs button[aria-selected="true"] {
@@ -972,37 +1016,42 @@
 .timeline {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 14px 0 0;
   display: flex;
   width: 100%;
-  min-width: 660px;
-  height: 100%;
+  min-width: 940px;
+  height: 100px;
   align-items: flex-start;
 }
 .timeline li {
   flex: 1;
-  min-width: 0;
+  min-width: 150px;
   position: relative;
 }
 .timeline li:not(:last-child)::before {
   content: "";
   position: absolute;
   left: 50%;
-  top: 41px;
+  top: 4px;
   width: 100%;
   height: 1px;
-  background: #d9c6b9;
+  background: #dcaea1;
 }
 .timeline button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  width: 100%;
-  border: 1px solid transparent;
-  background: transparent;
-  border-radius: 12px;
-  padding: 3px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  gap: 3px 6px;
+  width: min(160px, calc(100% - 14px));
+  margin-inline: auto;
+  margin-top: 14px;
+  height: 82px;
+  text-align: left;
+  border: 1px solid var(--planner-border);
+  background: #fffaf4;
+  border-radius: var(--planner-radius-card);
+  padding: 7px;
   position: relative;
 }
 .timeline button[aria-pressed="true"] {
@@ -1010,16 +1059,20 @@
   background: #f9e9df;
 }
 .timeline time {
-  font-size: 11px;
+  font-size: 12px;
+  grid-column: 2;
   font-weight: 650;
 }
 .timelineDot {
-  width: 26px;
-  height: 26px;
+  position: absolute;
+  top: -15px;
+  left: calc(50% - 5px);
+  width: 9px;
+  height: 9px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 1px solid #d9c6b9;
+  border: 2px solid #bc7163;
   background: #fffcf7;
 }
 .timelineDot svg {
@@ -1027,20 +1080,25 @@
   height: 15px;
 }
 .timeline strong {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  grid-column: 2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .timeline small {
-  font-size: 9px;
+  grid-column: 1 / -1;
+  font-size: 11px;
   color: var(--color-text-secondary);
 }
 .nextLeg {
   position: absolute;
-  top: 25px;
-  left: calc(50% + 22px);
-  width: calc(100% - 44px);
+  top: -6px;
+  left: calc(50% + 9px);
+  width: calc(100% - 25px);
   text-align: center;
-  font-size: 8px;
+  font-size: 10px;
   color: var(--color-text-secondary);
   white-space: nowrap;
   pointer-events: none;
@@ -1218,14 +1276,136 @@
   height: calc(100% - 60px);
   border-radius: 0;
 }
+.headerNav {
+  display: flex;
+  gap: 28px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.headerNav a[aria-current] {
+  color: var(--color-accent-primary);
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9ece3;
+  border: 3px solid #fffdf8;
+}
+.quickPair .quickCard {
+  height: 86px;
+  gap: 3px;
+}
+.quickPair .quickCard strong {
+  font-size: 12px;
+}
+.quickChevron {
+  position: absolute;
+  right: 8px;
+  top: 13px;
+  width: 13px;
+  height: 13px;
+  color: #9a958e;
+}
+.quickTriple .quickChevron {
+  display: none;
+}
+.quickTriple .quickLabel {
+  gap: 5px;
+  font-size: 13px;
+}
+.quickTriple .quickLabel svg {
+  width: 22px;
+  height: 22px;
+}
+.planner .replanButton {
+  background: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: #fffdf8;
+}
+.planner .replanButton:hover {
+  background: var(--color-accent-primary-hover);
+}
+.planDuration {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.currentBooking {
+  font-size: 12px;
+}
+.currentBooking button {
+  font-size: 12px;
+}
+.rangeHeading {
+  font-size: 13px;
+}
+.timelineDayHeading {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 10px;
+  min-height: 22px;
+}
+.timelineDayHeading > strong {
+  font-size: 14px;
+}
+.timelineDayHeading > span {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.timelineArtwork {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 34px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e9eade;
+  display: grid;
+  place-items: center;
+  color: #697a72;
+}
+.timeline button[aria-pressed="true"] .timelineDot {
+  background: var(--color-accent-primary);
+}
+.mapInfo {
+  max-width: calc(100% - 170px);
+  font-size: 11px;
+}
+.mapInfo small {
+  font-size: 10px;
+}
+.mapList {
+  font-size: 12px;
+}
+.toolbar > button {
+  border: 1px solid var(--planner-border);
+  border-radius: 12px;
+  background: #fffdf8;
+}
+.toolbar > button > span:last-child {
+  display: none;
+}
+.toolbar:has(> button[aria-expanded="false"]) {
+  width: 52px;
+  padding: 4px;
+}
+.toolbar:has(> button[aria-expanded="false"]) > button {
+  min-height: 40px;
+}
+.toolbarItems button[aria-pressed="true"] svg {
+  color: var(--color-accent-primary);
+}
+
 @media (max-width: 1350px) and (min-width: 1200px) {
   .quickSettings,
   .recommendations {
     padding: 16px;
   }
   .planThumbnail {
-    width: 45px;
-    height: 55px;
+    width: 64px;
+    height: 70px;
   }
   .planRow {
     gap: 7px;
@@ -1235,7 +1415,8 @@
     padding: 7px;
   }
   .planText small {
-    font-size: 9px;
+    font-size: 11px;
+    -webkit-line-clamp: 1;
   }
   .quickCard {
     padding: 10px;
@@ -1244,13 +1425,39 @@
     gap: 9px;
   }
   .quickTriple .quickLabel {
-    flex-direction: row;
+    flex-direction: column;
     gap: 4px;
-    font-size: 10px;
+    font-size: 13px;
   }
   .quickTriple .quickLabel svg {
+    width: 22px;
+    height: 22px;
+  }
+  .header {
+    gap: 20px;
+  }
+  .headerTitle {
+    display: none;
+  }
+  .accountLink {
+    margin-left: auto;
+  }
+  .planner .settingsButton {
+    font-size: 12px;
+  }
+  .settingsButton svg {
     width: 13px;
     height: 13px;
+  }
+  .quickSettings,
+  .recommendations {
+    padding: 14px;
+  }
+  .planText strong {
+    font-size: 13px;
+  }
+  .recommendations {
+    gap: 8px;
   }
 }
 @media (max-height: 740px) and (min-width: 1200px) {
@@ -1313,7 +1520,7 @@
     top: 16px;
   }
   .toolbar button {
-    padding: 8px;
+    padding: 4px;
     font-size: 11px;
     gap: 6px;
   }
@@ -1343,7 +1550,14 @@
     gap: 6px;
   }
   .bottomTabs button {
-    font-size: 10px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .bottomTabs {
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
   }
   .todayStatus {
     display: none;
@@ -1362,6 +1576,7 @@
     flex-direction: column;
     height: auto;
     gap: 8px;
+    padding: 0;
   }
   .timeline li {
     width: 100%;
@@ -1378,10 +1593,21 @@
     text-align: left;
     gap: 3px 10px;
     padding: 7px;
+    width: 100%;
+    height: auto;
+    min-height: 86px;
+    margin: 0;
   }
   .timelineDot {
     grid-column: 2;
     grid-row: 1 / 3;
+    position: static;
+  }
+  .timelineArtwork {
+    display: none;
+  }
+  .timeline time {
+    grid-column: 1;
   }
   .timeline strong {
     grid-column: 3;
@@ -1389,10 +1615,77 @@
   .timeline small {
     grid-column: 3;
   }
+  .headerNav {
+    display: none;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+  .toolbar {
+    width: 76px;
+  }
+  .toolbarItems button {
+    min-height: 46px;
+  }
+  .dayRange {
+    width: 82px;
+    right: 12px;
+  }
+  .rightPanel .quickSettings,
+  .rightPanel .recommendations {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .overlay .rightPanel {
+    min-height: 760px;
+  }
+  .planThumbnail {
+    width: 76px;
+    height: 76px;
+  }
   .nextLeg {
     display: none;
   }
   .popover {
     padding: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .headerTitle {
+    display: none;
+  }
+  .accountLink {
+    margin-left: auto;
+  }
+}
+@media (min-width: 1200px) and (max-height: 740px) {
+  .quickPair .quickCard {
+    height: 70px;
+  }
+  .quickTriple .quickCard {
+    height: 80px;
+  }
+  .quickLabel {
+    font-size: 13px;
+  }
+  .planThumbnail {
+    width: 64px;
+    height: 60px;
+  }
+  .quickSettings {
+    justify-content: flex-start;
+  }
+}
+@media (min-width: 768px) and (max-height: 840px) {
+  .timeline {
+    padding-top: 10px;
+  }
+  .timeline button {
+    height: 76px;
+    margin-top: 12px;
+  }
+  .timelineDot {
+    top: -13px;
   }
 }

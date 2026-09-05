@@ -11,6 +11,7 @@ import {
 } from "../model/trip-model";
 import type { TripAction, TripDay, TripState } from "../model/trip-model";
 import { ItineraryTimeline } from "./itinerary-timeline";
+import { PlannerIcon } from "./planner-icon";
 import styles from "../planner.module.css";
 
 export const bottomTabs = [
@@ -66,7 +67,7 @@ export function BottomExecutionPanel({
       <div className={styles.executionSummary}>
         <strong className={styles.rangeHeading}>
           {mode === "day"
-            ? `Day ${focused.day} · 当天执行`
+            ? `Day ${focused.day} · ${presentationPlan(state).days.find((day) => day.day === focused.day)!.date} · ${focused.city}`
             : mode === "threeDays"
               ? `Day ${days[0].day}–${days.at(-1)!.day} · 三日衔接`
               : "全行程 · 城市与旅行结构"}
@@ -93,6 +94,20 @@ export function BottomExecutionPanel({
             onKeyDown={(e) => tabKey(e, index)}
             onClick={() => changeTab(id)}
           >
+            <PlannerIcon
+              name={
+                (
+                  [
+                    "clock",
+                    "transport",
+                    "booking",
+                    "sun",
+                    "stay",
+                    "layers",
+                  ] as const
+                )[index]
+              }
+            />
             {label}
           </button>
         ))}

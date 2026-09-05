@@ -105,19 +105,78 @@ export const plannerLayers: LayerSpecification[] = [
     source: "planner-places",
     filter: ["==", ["get", "type"], type],
     paint: {
-      "circle-radius": type === "city" ? 10 : 7,
+      "circle-radius": 7,
       "circle-color": ["case", ["get", "recommended"], "#f2ede5", "#fffaf4"],
       "circle-stroke-color": ["get", "color"],
       "circle-stroke-width": 2,
     },
   })),
   {
+    id: "landmark-artwork",
+    type: "symbol",
+    source: "planner-places",
+    filter: [
+      "all",
+      ["!", ["get", "recommended"]],
+      ["in", ["get", "type"], ["literal", ["city", "attraction", "activity"]]],
+    ],
+    layout: {
+      "icon-image": [
+        "case",
+        [
+          "any",
+          ["in", "晴空塔", ["get", "label"]],
+          ["in", "东京", ["get", "label"]],
+          ["in", "银座", ["get", "label"]],
+        ],
+        "landmark-tower",
+        [
+          "any",
+          ["in", "寺", ["get", "label"]],
+          ["in", "神社", ["get", "label"]],
+        ],
+        "landmark-temple",
+        ["in", "湖", ["get", "label"]],
+        "landmark-lake",
+        [
+          "any",
+          ["in", "山", ["get", "label"]],
+          ["in", "箱根", ["get", "label"]],
+        ],
+        "landmark-mountain",
+        "landmark-village",
+      ],
+      "icon-allow-overlap": false,
+      "icon-padding": 5,
+      "symbol-sort-key": ["case", ["get", "selected"], 0, 1],
+      "text-field": ["get", "label"],
+      "text-size": 13,
+      "text-anchor": "top",
+      "text-offset": [0, 2.7],
+      "text-max-width": 12,
+    },
+    paint: {
+      "text-color": "#343e48",
+      "text-halo-color": "#fffaf4",
+      "text-halo-width": 2,
+    },
+  },
+  {
     id: "selected-feature",
     type: "circle",
     source: "planner-places",
     filter: ["==", ["get", "selected"], true],
     paint: {
-      "circle-radius": 13,
+      "circle-radius": [
+        "case",
+        [
+          "in",
+          ["get", "type"],
+          ["literal", ["city", "attraction", "activity"]],
+        ],
+        33,
+        13,
+      ],
       "circle-color": "rgba(0,0,0,0)",
       "circle-stroke-color": "#a74739",
       "circle-stroke-width": 3,
@@ -127,10 +186,23 @@ export const plannerLayers: LayerSpecification[] = [
     id: "place-labels",
     type: "symbol",
     source: "planner-places",
+    filter: [
+      "any",
+      ["get", "recommended"],
+      [
+        "!",
+        [
+          "in",
+          ["get", "type"],
+          ["literal", ["city", "attraction", "activity"]],
+        ],
+      ],
+    ],
     layout: {
       "text-field": ["get", "label"],
-      "text-size": 12,
-      "text-offset": [0, 1.6],
+      "text-size": 13,
+      "text-variable-anchor": ["bottom", "top", "left", "right"],
+      "text-radial-offset": 2.5,
       "text-anchor": "top",
       "text-max-width": 13,
     },
@@ -279,8 +351,11 @@ export async function mountMapbox(
   token: string | undefined,
   select: (id: string, tripItemId?: string) => void,
   status: (message: string) => void,
+  getTravelHints: () => Record<string, string> = () => ({}),
 ): Promise<MapSession | null> {
   if (!token?.trim()) return null;
+  const { installMapArtwork, warmMapStyle, travelBubbles } =
+    await import("./map-visuals");
   const mapbox = (await import("mapbox-gl")).default;
   if (!mapbox.supported()) throw new Error("WebGL unavailable");
   const map = new mapbox.Map({
@@ -316,11 +391,19 @@ export async function mountMapbox(
   const observer = new ResizeObserver(() => controller.resize());
   observer.observe(container);
   map.on("error", fail); // Deliberately do not log raw SDK errors / URLs containing the token.
-  map.on("load", () => {
+  map.on("load", async () => {
+    if (destroyed) return;
+    try {
+      warmMapStyle(map);
+      await installMapArtwork(map, () => !destroyed);
+    } catch {
+      fail();
+      return;
+    }
     if (destroyed) return;
     clearTimeout(timer);
     ready = true;
-    if (latest) controller.update(latest);
+    if (latest) updateView(latest);
     status("Mapbox 底图 · 行程、价格及预约为示例");
   });
   const clickable = plannerLayers
@@ -358,10 +441,43 @@ export async function mountMapbox(
     new mapbox.NavigationControl({ showCompass: false }),
     "bottom-right",
   );
+  function updateView(view: MapView) {
+    controller.update(view);
+    const data: Collection = {
+      type: "FeatureCollection",
+      features: travelBubbles(view, getTravelHints()).map((b) => ({
+        type: "Feature",
+        properties: { label: b.label },
+        geometry: { type: "Point", coordinates: b.coordinates },
+      })),
+    };
+    const source = map.getSource("planner-travel-hints") as
+      GeoJSONSource | undefined;
+    if (source) source.setData(data);
+    else {
+      map.addSource("planner-travel-hints", { type: "geojson", data });
+      map.addLayer({
+        id: "travel-hints",
+        type: "symbol",
+        source: "planner-travel-hints",
+        layout: {
+          "text-field": ["get", "label"],
+          "text-size": 12,
+          "icon-image": "travel-capsule",
+          "icon-text-fit": "both",
+          "icon-text-fit-padding": [7, 12, 7, 12],
+        },
+        paint: { "text-color": "#45535a" },
+      });
+    }
+    // Give trip artwork priority over base-map labels, while still allowing
+    // the SDK to de-clutter nearby landmarks together with their own labels.
+    map.moveLayer("landmark-artwork");
+  }
   return {
     update(view) {
       latest = view;
-      if (ready && !destroyed) controller.update(view);
+      if (ready && !destroyed) updateView(view);
     },
     destroy: cleanup,
   };
