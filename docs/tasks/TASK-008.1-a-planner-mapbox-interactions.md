@@ -3,7 +3,7 @@
 > Task ID：`TASK-008.1`  
 > Owner：`A`  
 > Responsibility：Main Travel System / Planner / Map  
-> Status：`Planned / Blocked until TASK-008 merged`  
+> Status：`待审查 / Implementation complete; PR #69 Draft`\
 > GitHub Issue：`#60`  
 > Task File：`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`  
 > Design Source：`docs/ui/planner-map-interaction-booking-mapbox.md`  
@@ -52,7 +52,7 @@ TASK-008-A 当前：
 
 - Issue：#51
 - PR：#59
-- 状态：Open / Draft / 未合并
+- 状态：已合并至 develop（PR #59，`1a4201b3181460977c4f16b0c34f60c353751687`；2026-09-05 已验证祖先关系）
 
 执行 TASK-008.1 前必须：
 
@@ -777,14 +777,14 @@ TASK-008 的 6 Tab 外框保留。
 
 必须升级 `1日 / 3日 / 全日` 内容。
 
-| Tab | 1日 | 3日 | 全日 |
-|---|---|---|---|
-| 行程 | 小时级时间轴 | 3 个日程块 | 城市 / 行程段 |
-| 移动 | 当天主要移动 | 每日主交通 / 跨日 | 跨城长距离 |
-| 预约·票务 | 当天详细订单 | 3 日关键预约 | 全程结构性预约 |
-| 天气·备选 | 当天执行 | 三日比较 | 全程风险摘要 |
-| 住宿·餐饮 | 当晚 / 当餐 | 三日衔接 | 住宿结构 / 特别餐 |
-| 详细 | 当天深度 | 三日分析 | 全程健康检查 |
+| Tab       | 1日          | 3日               | 全日              |
+| --------- | ------------ | ----------------- | ----------------- |
+| 行程      | 小时级时间轴 | 3 个日程块        | 城市 / 行程段     |
+| 移动      | 当天主要移动 | 每日主交通 / 跨日 | 跨城长距离        |
+| 预约·票务 | 当天详细订单 | 3 日关键预约      | 全程结构性预约    |
+| 天气·备选 | 当天执行     | 三日比较          | 全程风险摘要      |
+| 住宿·餐饮 | 当晚 / 当餐  | 三日衔接          | 住宿结构 / 特别餐 |
+| 详细      | 当天深度     | 三日分析          | 全程健康检查      |
 
 至少使用 Mock 数据真实切换，不允许所有范围显示同一份文本。
 
@@ -1159,14 +1159,17 @@ docs/tasks/RESULT-TASK-008.1-a-planner-mapbox-interactions.md
 # TASK-008.1-A Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Prerequisite
+
 - TASK-008 PR #59 merged:
 - base commit:
 - design source found:
 
 ## Tracking
+
 - Issue: #60
 - Task File: docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md
 - Branch:
@@ -1175,6 +1178,7 @@ Completed / Partially Completed / Blocked
 - WBS updated:
 
 ## Mapbox
+
 - mapbox-gl installed:
 - token env:
 - real token committed: No
@@ -1183,12 +1187,14 @@ Completed / Partially Completed / Blocked
 - map re-created on range switch: No
 
 ## Range Modes
+
 - 1-day:
 - adjacent context gray routes:
 - 3-day:
 - all-trip:
 
 ## Details
+
 - attraction quick card:
 - attraction detail:
 - hotel area detail:
@@ -1197,6 +1203,7 @@ Completed / Partially Completed / Blocked
 - restaurant recommendations:
 
 ## Reservation State
+
 - add reservation:
 - bottom itinerary status:
 - booking tab:
@@ -1206,11 +1213,13 @@ Completed / Partially Completed / Blocked
 - replan protection:
 
 ## State Integrity
+
 - single source:
 - tripItemId map/timeline sync:
 - provider raw data leaked into map: No
 
 ## Responsive
+
 - 1600×900:
 - 1440×900:
 - 1280×800:
@@ -1220,6 +1229,7 @@ Completed / Partially Completed / Blocked
 - 1440×650:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1230,6 +1240,7 @@ Completed / Partially Completed / Blocked
 - console/hydration:
 
 ## Scope Preserved
+
 - real Booking/Agoda not added:
 - real restaurant providers not added:
 - real attraction providers not added:
@@ -1239,10 +1250,22 @@ Completed / Partially Completed / Blocked
 - B files untouched:
 
 ## Problems / Blockers
+
 - ...
 
 ## Ready For Review
+
 Yes / No
 ```
 
 完成 TASK-008.1 后停止，不继续真实 Route / Transit / Provider API Task。
+
+## 执行追踪（2026-09-05）
+
+- Issue：[#60](https://github.com/kanzakimy0/TravelAssist/issues/60)；状态待审查，尚未合并。
+- Branch：`feature/a-planner-mapbox-interactions` → `develop`。
+- 实现 Commit：`673ab6aa9a5a8aa58e8838f6200d5ca77981ea1e`。
+- 最新 develop 集成基线：`fd5e4492f202c07567593199baadd25425190367`；无冲突同步提交：`8682ed293d19115f173f81c995739f8199f1d33a`。上游仅文档变化，已验收的实现文件未变化。
+- PR：[#69](https://github.com/kanzakimy0/TravelAssist/pull/69)，Draft 防止仓库自动合并；后续追踪文档提交以 PR head 为准。
+- Result：`docs/tasks/RESULT-TASK-008.1-a-planner-mapbox-interactions.md`；WBS 与 Issue / PR 同步为待审查。
+- 本 Task 的 Mock 验收已完成；live Mapbox 未验证（token unavailable）；全仓 7 份上游既有格式例外详见 Result。本任务没有提交真实 Token 或接入范围外服务。
