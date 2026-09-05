@@ -13,7 +13,7 @@
 ## Implementation Record
 
 - Base: `d5511f078b1e43efa0666e58dcf4c545fbbba273`
-- Commit: `PENDING`
+- Commit: `2284591`
 - Pull Request: `PENDING`
 - Verification: lint, typecheck, 68 tests, build, changed-file format,
   diff-check, and browser QA at 1440×900 / 1024×768 / 390×844 passed.
