@@ -109,6 +109,13 @@
   padding: 0 2.15rem 0 0.9rem;
   border-radius: 999rem;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.avatar:focus-visible,
+.planUseLink:focus-visible {
+  outline: 3px solid rgb(208 85 70 / 32%);
+  outline-offset: 3px;
 }
 
 .avatar {
@@ -1881,6 +1888,23 @@
 .planSelectButton {
   width: 100%;
   margin-top: 0.55rem;
+}
+
+.planUseLink {
+  display: flex;
+  width: 100%;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--wizard-accent);
+  color: #fffaf4;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 0.55rem 1.35rem rgb(170 66 52 / 22%);
 }
 
 .planFooterActions {

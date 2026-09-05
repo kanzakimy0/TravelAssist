@@ -3,6 +3,11 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  persistPlannerPlanSelection,
+  startEntryStep,
+} from "@/features/navigation/main-flow-navigation";
+import type { StartEntry } from "@/features/navigation/main-flow-navigation";
 
 import { GENERATED_PLANS } from "../model/generated-plans";
 import {
@@ -38,6 +43,7 @@ interface StoredWizardState {
 }
 
 interface StartFlowShellProps {
+  entry?: StartEntry;
   initialDraft?: TripWizardDraftPatch;
 }
 
@@ -53,6 +59,7 @@ function subscribeToHydration() {
 
 function readStoredState(
   initialDraft?: TripWizardDraftPatch,
+  entry: StartEntry = null,
 ): StoredWizardState {
   const fallback: StoredWizardState = {
     currentStep: 0,
@@ -62,7 +69,12 @@ function readStoredState(
 
   try {
     const storedValue = window.localStorage.getItem(STORAGE_KEY);
-    if (!storedValue) return fallback;
+    if (!storedValue) {
+      return {
+        ...fallback,
+        currentStep: startEntryStep(entry) ?? fallback.currentStep,
+      };
+    }
 
     const stored = JSON.parse(storedValue) as Partial<StoredWizardState>;
     const currentStep = isStepIndex(stored.currentStep)
@@ -89,14 +101,24 @@ function readStoredState(
       });
     }
 
-    return { currentStep, draft, version: 2 };
+    return {
+      currentStep: startEntryStep(entry) ?? currentStep,
+      draft,
+      version: 2,
+    };
   } catch {
     window.localStorage.removeItem(STORAGE_KEY);
-    return fallback;
+    return {
+      ...fallback,
+      currentStep: startEntryStep(entry) ?? fallback.currentStep,
+    };
   }
 }
 
-export function StartFlowShell({ initialDraft }: StartFlowShellProps) {
+export function StartFlowShell({
+  entry = null,
+  initialDraft,
+}: StartFlowShellProps) {
   const hasHydrated = useSyncExternalStore(
     subscribeToHydration,
     () => true,
@@ -111,11 +133,14 @@ export function StartFlowShell({ initialDraft }: StartFlowShellProps) {
     );
   }
 
-  return <HydratedStartFlow initialDraft={initialDraft} />;
+  return <HydratedStartFlow entry={entry} initialDraft={initialDraft} />;
 }
 
-function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
-  const [initialState] = useState(() => readStoredState(initialDraft));
+function HydratedStartFlow({
+  entry = null,
+  initialDraft,
+}: StartFlowShellProps) {
+  const [initialState] = useState(() => readStoredState(initialDraft, entry));
   const [currentStep, setCurrentStep] = useState<StepIndex>(
     initialState.currentStep,
   );
@@ -371,6 +396,10 @@ function HydratedStartFlow({ initialDraft }: StartFlowShellProps) {
           onBack={() => goToStep(2)}
           onRegenerate={startGeneration}
           onSelect={(selectedPlanId) => updateDraft({ selectedPlanId })}
+          onUsePlan={(selectedPlanId) => {
+            updateDraft({ selectedPlanId });
+            persistPlannerPlanSelection(selectedPlanId);
+          }}
           plans={draft.generatedPlans}
           selectedPlanId={draft.selectedPlanId}
         />

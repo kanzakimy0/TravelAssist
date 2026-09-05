@@ -10,6 +10,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import { Button } from "@/components/ui/button";
+import { readPlannerPlanSelection } from "@/features/navigation/main-flow-navigation";
 import {
   initialPlannerSettings,
   plannerMockPlans,
@@ -121,6 +122,12 @@ export function PlannerPage() {
     [],
   );
   useEffect(() => {
+    const selectedPlanId = readPlannerPlanSelection();
+    if (selectedPlanId) {
+      dispatchTrip({ type: "plan", id: selectedPlanId });
+    }
+  }, []);
+  useEffect(() => {
     let previous = viewportSnapshot();
     function onResize() {
       const next = viewportSnapshot();
@@ -206,7 +213,7 @@ export function PlannerPage() {
           TravelAssist
         </Link>
         <nav className={styles.headerNav} aria-label="Planner 导航">
-          <Link href="/start">新旅行</Link>
+          <Link href="/start">新建旅行</Link>
           <Link href="/planner" aria-current="page">
             AI 行程规划
           </Link>
