@@ -397,6 +397,7 @@ git diff --check
 ### 必看画面
 
 #### Personal Center Home
+
 - Shell
 - Sidebar
 - Torii
@@ -405,12 +406,14 @@ git diff --check
 - More Features 3 cards
 
 #### Avatar Popover
+
 - Open
 - Edge position
 - Mobile
 - focus / Esc
 
 #### Account
+
 - View state
 - Edit state
 - Avatar flow
@@ -515,21 +518,25 @@ feature/b-account-wbs-5-4-photoreal-rebuild-v2
 # WBS-5.4-B-V2 Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Prerequisite
+
 - origin/develop base:
 - PR #76 ignored as superseded: Yes / No
 - overlapping B PR checked:
 - local assets preserved:
 
 ## Asset Verification
+
 - required files:
 - SHA-256:
 - decode:
 - manifest:
 
 ## Tracking
+
 - Issue: #75
 - Task File:
 - Branch:
@@ -539,6 +546,7 @@ Completed / Partially Completed / Blocked
 - WBS updated:
 
 ## WBS 5.1 Visual Refresh
+
 - sidebar torii:
 - sakura overlay:
 - paper surface:
@@ -546,10 +554,12 @@ Completed / Partially Completed / Blocked
 - feature cards:
 
 ## WBS 5.2 Visual Refresh
+
 - avatar popover:
 - interactions preserved:
 
 ## WBS 5.4 Reimplementation
+
 - profile view/edit:
 - avatar flow:
 - contact summary:
@@ -559,6 +569,7 @@ Completed / Partially Completed / Blocked
 - account entries:
 
 ## Visual Validation
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -567,6 +578,7 @@ Completed / Partially Completed / Blocked
 - evidence paths:
 
 ## Functional Regression
+
 - five nav routes:
 - avatar popover:
 - edit/save/cancel:
@@ -575,6 +587,7 @@ Completed / Partially Completed / Blocked
 - back/forward:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -584,6 +597,7 @@ Completed / Partially Completed / Blocked
 - diff check:
 
 ## Scope Preserved
+
 - PR #76 not merged/cherry-picked:
 - rejected generated assets not used:
 - A main system untouched:
@@ -592,9 +606,11 @@ Completed / Partially Completed / Blocked
 - WBS 5.1 / 5.2 unchanged as completed:
 
 ## Problems / Blockers
+
 - ...
 
 ## Ready For Visual Review
+
 Yes / No
 ```
 

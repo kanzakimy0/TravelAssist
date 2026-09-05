@@ -125,6 +125,13 @@ export function PersonalHomePreview() {
         </div>
         <div className={styles.featureGrid}>
           <div className={styles.featureCard}>
+            <Image
+              src="/media/personal-center/photoreal-v3/feature-card-inspiration-photo.png"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 100vw, 28vw"
+              className={styles.featureDecoration}
+            />
             <span className={styles.featureIcon}>
               <PersonalIcon name="compass" />
             </span>
@@ -135,6 +142,13 @@ export function PersonalHomePreview() {
             </div>
           </div>
           <Link href="/personal-center/trips" className={styles.featureCard}>
+            <Image
+              src="/media/personal-center/photoreal-v3/feature-card-favorites-photo.png"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 100vw, 28vw"
+              className={styles.featureDecoration}
+            />
             <span className={styles.featureIcon}>
               <PersonalIcon name="heart" />
             </span>
@@ -145,6 +159,13 @@ export function PersonalHomePreview() {
             <PersonalIcon name="arrow" width="18" />
           </Link>
           <div className={styles.featureCard}>
+            <Image
+              src="/media/personal-center/photoreal-v3/feature-card-discovery-photo.png"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 100vw, 28vw"
+              className={styles.featureDecoration}
+            />
             <span className={styles.featureIcon}>
               <PersonalIcon name="pin" />
             </span>

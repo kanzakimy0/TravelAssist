@@ -5,10 +5,16 @@ import { usePathname } from "next/navigation";
 
 import { personalNavigation } from "../constants/personal-navigation";
 import styles from "../personal-center.module.css";
+import { usePersonalNavigationGuard } from "./navigation-guard-context";
 import { PersonalIcon } from "./personal-icon";
 
-export function PersonalPrimaryNav() {
+export function PersonalPrimaryNav({
+  onNavigate,
+}: {
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
+  const { requestNavigation } = usePersonalNavigationGuard();
 
   return (
     <nav aria-label="个人中心" className={styles.navigation}>
@@ -24,6 +30,9 @@ export function PersonalPrimaryNav() {
                 href={href}
                 className={styles.navLink}
                 aria-current={active ? "page" : undefined}
+                onNavigate={(event) => {
+                  if (!requestNavigation(href, event)) onNavigate?.();
+                }}
               >
                 <PersonalIcon name={icon} />
                 <span>{label}</span>

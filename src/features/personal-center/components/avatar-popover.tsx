@@ -3,6 +3,7 @@ import type { ComponentPropsWithRef } from "react";
 import { avatarMenuItems } from "../constants/avatar-menu";
 import { mockPersonalUser } from "../constants/personal-navigation";
 import styles from "../personal-center.module.css";
+import { usePersonalNavigationGuard } from "./navigation-guard-context";
 import { PersonalIcon } from "./personal-icon";
 
 type AvatarPopoverProps = Pick<
@@ -15,6 +16,8 @@ type AvatarPopoverProps = Pick<
 // The host owns its trigger, positioning and focus; B owns content and targets.
 // Import from a client host and provide the Personal Center semantic tokens.
 export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
+  const { requestNavigation } = usePersonalNavigationGuard();
+
   return (
     <div {...props} popover="auto" className={styles.avatarPopover}>
       <div className={styles.avatarPopoverIdentity}>
@@ -37,7 +40,10 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
             >
               <Link
                 href={item.href}
-                onNavigate={onNavigate}
+                onNavigate={(event) => {
+                  if (requestNavigation(item.href, event)) return;
+                  onNavigate();
+                }}
                 className={styles.avatarMenuLink}
                 data-primary={item.icon === "home" || undefined}
               >

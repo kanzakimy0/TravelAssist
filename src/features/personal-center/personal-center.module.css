@@ -56,13 +56,46 @@
 }
 
 .sidebar {
+  position: relative;
+  z-index: 4;
+  min-width: 0;
+  min-height: 0;
+  border-right: 1px solid var(--pc-border-subtle);
+  background: var(--pc-bg-sidebar);
+}
+
+.sidebarPanel {
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 0;
   padding: clamp(20px, 2.2vw, 40px) clamp(16px, 1.6vw, 32px) 0;
   overflow-y: auto;
-  border-right: 1px solid var(--pc-border-subtle);
-  background: var(--pc-bg-sidebar);
+  isolation: isolate;
+}
+
+.compactTopBar,
+.drawerBackdrop {
+  display: none;
+}
+
+.sakuraOverlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: min(65%, 220px);
+  max-height: 120px;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.28;
+}
+
+.sakuraOverlay img {
+  object-fit: contain;
+  object-position: left top;
 }
 
 .brand {
@@ -176,49 +209,47 @@
 
 .sidebarArtworkArea {
   position: relative;
-  /* Match the approved 1200x800 artwork so cover preserves the full scene. */
   flex: 0 0 auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1;
   min-height: 0;
-  max-height: 350px;
+  max-height: 320px;
   margin-top: auto;
   overflow: hidden;
   border-radius: 28px 28px 0 0;
-  background:
-    radial-gradient(
-      ellipse at 85% 45%,
-      rgb(235 191 182 / 20%),
-      transparent 60%
-    ),
-    linear-gradient(
-      180deg,
-      transparent 15%,
-      rgb(218 224 216 / 22%) 70%,
-      rgb(211 219 214 / 28%)
-    );
+  background: linear-gradient(180deg, transparent, rgb(245 229 219 / 42%));
 }
 
-.sidebarArtworkArea::after {
-  position: absolute;
-  inset: 65% 0 0;
-  content: "";
-  background: repeating-radial-gradient(
-    ellipse at 50% 110%,
-    transparent 0 15px,
-    rgb(136 161 154 / 8%) 16px 17px,
-    transparent 18px 30px
-  );
+.sidebarArtworkArea img {
+  object-fit: contain;
+  object-position: 50% 100%;
 }
 
 .main {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
   min-height: 0;
-  background:
-    radial-gradient(ellipse at 98% 0%, rgb(241 205 197 / 25%), transparent 42%),
-    radial-gradient(ellipse at 5% 85%, rgb(238 215 197 / 18%), transparent 40%),
-    var(--pc-bg-canvas);
+  overflow: hidden;
+  background-color: var(--pc-bg-canvas);
+  background-image:
+    linear-gradient(rgb(250 246 239 / 25%), rgb(250 246 239 / 25%)),
+    url("/media/personal-center/photoreal-v3/personal-center-paper-surface.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.main::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: url("/media/personal-center/photoreal-v3/personal-center-photo-corners.png")
+    center bottom / contain no-repeat;
 }
 
 .topActions {
@@ -613,14 +644,29 @@
 }
 
 .featureCard {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
   min-width: 0;
+  min-height: 112px;
   padding: 20px;
+  overflow: hidden;
   border: 1px solid var(--pc-border-subtle);
   border-radius: 18px;
   background: rgb(255 252 247 / 65%);
+  isolation: isolate;
+}
+
+.featureCard > :not(.featureDecoration) {
+  position: relative;
+  z-index: 1;
+}
+
+.featureDecoration {
+  z-index: -1;
+  object-fit: contain;
+  object-position: right center;
 }
 
 a.featureCard:hover {
@@ -662,6 +708,78 @@ a.featureCard:hover {
   font-size: 11px;
 }
 
+.unsavedDialog {
+  width: min(440px, calc(100vw - 32px));
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--pc-border-subtle, #e9dcd1);
+  border-radius: 24px;
+  color: var(--pc-text-primary, #383632);
+  background: var(--pc-bg-card, #fffcf7);
+  box-shadow: 0 24px 70px rgb(69 45 34 / 24%);
+  font-family: "Segoe UI", "Hiragino Sans", "Microsoft YaHei", sans-serif;
+}
+
+.unsavedDialog::backdrop {
+  background: rgb(44 33 27 / 36%);
+  backdrop-filter: blur(3px);
+}
+
+.unsavedDialogBody {
+  display: flex;
+  gap: 16px;
+  padding: 28px 28px 20px;
+}
+
+.unsavedMark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  color: var(--pc-accent-primary, #a74739);
+  background: var(--pc-accent-soft, #f9e7e0);
+  font-weight: 700;
+}
+
+.unsavedDialog h2 {
+  margin: 0;
+  font-family: var(--pc-font-heading, serif);
+  font-size: 22px;
+}
+
+.unsavedDialog p {
+  margin: 6px 0 0;
+  color: var(--pc-text-secondary, #70665f);
+  font-size: 14px;
+}
+
+.unsavedDialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 28px 24px;
+  border-top: 1px solid var(--pc-border-subtle, #e9dcd1);
+}
+
+.unsavedDialogActions button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--pc-border-subtle, #e9dcd1);
+  border-radius: 14px;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.unsavedDialogActions button:last-child {
+  border-color: var(--pc-accent-primary, #a74739);
+  color: #fffaf6;
+  background: var(--pc-accent-primary, #a74739);
+}
+
 .placeholder {
   min-height: 260px;
   padding: clamp(24px, 4vw, 64px);
@@ -688,47 +806,252 @@ a.featureCard:hover {
   }
 }
 
-/* Basic narrow-screen fallback only; final mobile navigation belongs to 5.20. */
-@media (max-width: 760px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .shell {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
+  .sidebarPanel {
+    padding: 24px 12px 0;
+  }
+
+  .brand,
+  .userSummary,
+  .navLink {
+    justify-content: center;
+  }
+
+  .brand > span:last-child,
+  .userText,
+  .navLink > span:not(.activeMarker) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .userSummary {
+    margin: 28px 0 24px;
+  }
+
+  .avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .navLink {
+    padding-inline: 10px;
+  }
+
+  .activeMarker,
+  .sakuraOverlay,
+  .sidebarArtworkArea {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
   .shell {
     display: block;
-    height: auto;
-    min-height: 100dvh;
-    overflow: visible;
   }
 
   .sidebar {
-    padding: 20px;
+    z-index: auto;
+    height: 64px;
     border-right: 0;
     border-bottom: 1px solid var(--pc-border-subtle);
   }
 
-  .userSummary {
-    margin: 20px 0;
+  .compactTopBar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 64px;
+    padding: 8px 24px;
+    background: rgb(252 248 241 / 94%);
+    backdrop-filter: blur(12px);
   }
 
-  .navigation ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .drawerTrigger {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--pc-border-subtle);
+    border-radius: 14px;
+    color: var(--pc-text-primary);
+    background: var(--pc-bg-card);
   }
 
-  .navLink {
+  .compactBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+
+  .sidebarPanel {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(80vw, 360px);
+    height: auto;
+    padding: 28px 24px 0;
+    border-right: 1px solid var(--pc-border-subtle);
+    background: var(--pc-bg-sidebar);
+    box-shadow: 20px 0 60px rgb(62 45 36 / 18%);
+    transform: translateX(-105%);
+    transition: transform 180ms ease;
+  }
+
+  .sidebar[data-drawer-open] .sidebarPanel {
+    transform: translateX(0);
+  }
+
+  .drawerBackdrop {
+    position: fixed;
+    z-index: 45;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgb(44 33 27 / 34%);
+  }
+
+  .topActions {
+    position: absolute;
+    z-index: 43;
+    top: 8px;
+    right: 20px;
+    height: 48px;
+    padding: 0;
+  }
+
+  .main {
+    z-index: auto;
+    height: calc(100dvh - 64px);
+  }
+
+  .contentArea {
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .shell {
+    display: block;
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    z-index: auto;
+    height: 64px;
+    border-right: 0;
+    border-bottom: 1px solid var(--pc-border-subtle);
+  }
+
+  .compactTopBar {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 8px 16px;
+    background: rgb(252 248 241 / 94%);
+    backdrop-filter: blur(12px);
+  }
+
+  .compactBrand {
+    display: flex;
+    align-items: center;
     gap: 8px;
-    padding-inline: 10px;
-    font-size: 14px;
+    max-width: calc(100vw - 128px);
+    font-size: 16px;
+    font-weight: 600;
   }
 
+  .compactBrand .brandMark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .drawerTrigger,
+  .sidebarPanel > .brand,
+  .sidebarPanel > .userSummary,
+  .sakuraOverlay,
   .sidebarArtworkArea {
     display: none;
   }
 
+  .sidebarPanel {
+    display: contents;
+  }
+
+  .navigation {
+    position: fixed;
+    z-index: 40;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--pc-border-subtle);
+    background: rgb(255 252 247 / 96%);
+    box-shadow: 0 -8px 26px rgb(89 61 47 / 8%);
+    backdrop-filter: blur(14px);
+  }
+
+  .navigation ul {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  .navLink {
+    display: grid;
+    place-items: center;
+    gap: 1px;
+    min-width: 0;
+    min-height: 52px;
+    padding: 4px 1px;
+    border-radius: 14px;
+    font-size: 10px;
+    line-height: 1.25;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .navLink svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .activeMarker {
+    display: none;
+  }
+
   .topActions {
-    height: 64px;
-    padding-inline: 20px;
+    position: fixed;
+    z-index: 42;
+    top: 8px;
+    right: 10px;
+    height: 48px;
+    gap: 4px;
+    padding: 0;
+  }
+
+  .main {
+    z-index: auto;
+    height: calc(100dvh - 64px);
   }
 
   .contentArea {
-    overflow: visible;
-    padding: 0 20px 32px;
+    overflow-y: auto;
+    padding: 20px 16px calc(96px + env(safe-area-inset-bottom));
   }
 
   .home {
@@ -754,5 +1077,25 @@ a.featureCard:hover {
 
   .heroContent h2 {
     gap: 14px;
+  }
+
+  .featureCard {
+    min-height: 108px;
+  }
+
+  .unsavedDialogActions {
+    flex-direction: column-reverse;
+  }
+
+  .unsavedDialogActions button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebarPanel,
+  .navLink,
+  .tripCard {
+    transition: none;
   }
 }
