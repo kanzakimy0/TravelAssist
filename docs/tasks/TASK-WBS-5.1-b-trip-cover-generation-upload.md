@@ -6,18 +6,18 @@
 
 - Task ID: `WBS-5.1-B-COVERS`
 - Owner: B
-- Status: 待验收
+- Status: 取消（2026-09-05 用户指出本步骤执行错误，要求清除本次产物）
 - WBS: 5.1（completed-task asset follow-up；不回退父项状态）
 - GitHub Issue: #70
 - Task File: `docs/tasks/TASK-WBS-5.1-b-trip-cover-generation-upload.md`
 - Branch: `assets/b-personal-center-identity-20260905`
 - Pull Request: #68（既有 Draft，接续交付，不创建重复素材 PR）
 - Depends On: 已有封面脚本与三个身份 SVG 可读取；不依赖 PR #68 先合并
-- Reviewed develop: `04472e3d75b3f28f4972e9efd5cba2812cab22a5`（执行期间普通 merge 同步；启动基线为 fd5e449）
-- Reviewed asset head: `202f588f5b2135a9dd4d568a5f742113a8b6c7a8`（启动实际远端头）
-- Commit: `6b269406bf21c7464162afd77c65b25d9fb78b87`（四张真实封面与校验的素材实现提交）
-- Master WBS Sync: 本 Task 追踪行待审查；父项及其他行不变
-- Result File: `docs/tasks/RESULT-WBS-5.1-b-trip-cover-generation-upload.md`（已创建；真实上传与回读通过）
+- Reviewed develop: `fd5e4492f202c07567593199baadd25425190367`
+- Reviewed asset head: `2040c1c8a33e2372160ca46c66474994844cd022`
+- Commit: 本次交付已撤销，无有效素材交付；历史实现为 `6b26940`，历史交付头为 `a2d1fea`
+- Master WBS Sync: 本 Task 新增追踪行已移除；父项及其他 Task 保留
+- Result File: 已按用户要求移除本次生成的 Result、QA 与封面；下文仅保留原任务规格，不再执行
 
 ## 1. 目标与范围
 
@@ -29,12 +29,12 @@
 
 ### 必须交付
 
-| 文件                     | 场景与用途                 | 尺寸       | 大小上限 |
-| ------------------------ | -------------------------- | ---------- | -------- |
-| `izu-hero-soft.webp`     | 伊豆下一次旅行 Hero        | 1920 × 720 | 450 KiB  |
-| `izu-card-soft.webp`     | 伊豆旅行卡片               | 960 × 600  | 240 KiB  |
-| `coast-card-soft.webp`   | 海岸慢游卡片               | 960 × 600  | 240 KiB  |
-| `weekend-card-soft.webp` | 周末旅行卡片；京都街景示例 | 960 × 600  | 240 KiB  |
+| 文件 | 场景与用途 | 尺寸 | 大小上限 |
+| --- | --- | --- | --- |
+| `izu-hero-soft.webp` | 伊豆下一次旅行 Hero | 1920 × 720 | 450 KiB |
+| `izu-card-soft.webp` | 伊豆旅行卡片 | 960 × 600 | 240 KiB |
+| `coast-card-soft.webp` | 海岸慢游卡片 | 960 × 600 | 240 KiB |
+| `weekend-card-soft.webp` | 周末旅行卡片；京都街景示例 | 960 × 600 | 240 KiB |
 
 三个独立原始场景导出四个文件；Hero 与伊豆卡允许共用同一张伊豆原图。不得将同一照片裁切四次冒充三个独立场景。
 

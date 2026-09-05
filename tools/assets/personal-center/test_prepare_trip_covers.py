@@ -4,7 +4,6 @@ import io
 import json
 import tempfile
 import unittest
-from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -13,16 +12,6 @@ import prepare_trip_covers as prep
 
 
 class CoverTests(unittest.TestCase):
-    def test_review_date_accepts_actual_iso_date(self):
-        value = date.today().isoformat()
-        self.assertEqual(prep.review_date(value), value)
-
-    def test_review_date_rejects_invalid_or_future_dates(self):
-        for value in ("2026-02-30", "20260905", "not-verified",
-                      (date.today() + timedelta(days=1)).isoformat()):
-            with self.subTest(value=value), self.assertRaises(ValueError):
-                prep.review_date(value)
-
     def test_download_host_allowlist(self):
         self.assertTrue(prep.permitted(prep.SOURCES[0]["url"]))
         for url in ("http://upload.wikimedia.org/x", "https://upload.wikimedia.org.evil/x",
@@ -56,34 +45,6 @@ class CoverTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "hash mismatch"):
             prep.validate(data, source)
 
-    def mpo_fixture(self):
-        primary = Image.new("RGB", (100, 70), (60, 140, 190))
-        secondary = Image.new("RGB", (100, 70), (180, 90, 50))
-        buffer = io.BytesIO()
-        primary.save(buffer, "MPO", save_all=True, append_images=[secondary])
-        data = buffer.getvalue()
-        source = {"id": "test-mpo", "bytes": len(data), "size": [100, 70],
-                  "sha1": hashlib.sha1(data).hexdigest(), "pillow_format": "MPO", "frames": 2}
-        return data, source
-
-    def test_reviewed_mpo_uses_primary_frame(self):
-        data, source = self.mpo_fixture()
-        prep.validate(data, source)
-        result = prep.rgb_source(data)
-        self.assertEqual(result.size, (100, 70))
-        self.assertLess(result.getpixel((0, 0))[0], 100)
-
-    def test_unreviewed_mpo_and_wrong_frame_count_rejected(self):
-        data, source = self.mpo_fixture()
-        for altered in (dict(source, pillow_format="JPEG"), dict(source, frames=1)):
-            with self.subTest(source=altered), self.assertRaisesRegex(ValueError, "format or dimensions"):
-                prep.validate(data, altered)
-
-    def test_mpo_hash_mismatch_still_rejected(self):
-        data, source = self.mpo_fixture()
-        with self.assertRaisesRegex(ValueError, "hash mismatch"):
-            prep.validate(data, dict(source, sha1="0" * 40))
-
     def test_existing_output_is_untouched(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -114,8 +75,7 @@ class CoverTests(unittest.TestCase):
                 data = buffer.getvalue()
                 (cache / (original["id"] + ".jpg")).write_bytes(data)
                 fixtures.append(dict(original, size=[2000, 1400], bytes=len(data),
-                                     sha1=hashlib.sha1(data).hexdigest(),
-                                     pillow_format="JPEG", frames=1))
+                                     sha1=hashlib.sha1(data).hexdigest()))
             with patch.object(prep, "SOURCES", tuple(fixtures)), patch.object(prep, "download") as network:
                 prep.run(root / "output", cache, True, 1)
                 network.assert_not_called()
@@ -123,19 +83,12 @@ class CoverTests(unittest.TestCase):
             self.assertEqual(manifest["cover_files"], 4)
             self.assertEqual(manifest["scenes"], 3)
             self.assertEqual(manifest["status"], "GENERATED_PENDING_VISUAL_REVIEW")
-            self.assertTrue(all(s["license_page_checked"] is None for s in manifest["sources"]))
             for file in manifest["files"]:
                 data = (root / "output" / file["file"]).read_bytes()
                 self.assertEqual(hashlib.sha256(data).hexdigest(), file["sha256"])
                 with Image.open(io.BytesIO(data)) as image:
                     self.assertEqual(image.size, (file["width"], file["height"]))
-            reviewed = date.today().isoformat()
-            with patch.object(prep, "SOURCES", tuple(fixtures)), patch.object(prep, "download") as network:
-                prep.run(root / "reviewed-output", cache, True, 1, reviewed)
-                network.assert_not_called()
-            checked = json.loads((root / "reviewed-output" / "manifest.json").read_text())
-            self.assertTrue(all(s["license_page_checked"] == reviewed for s in checked["sources"]))
-            # These temporary folders are discarded, not published as photo delivery.
+            # This temporary folder is discarded, not published as photo delivery.
 
 
 if __name__ == "__main__":

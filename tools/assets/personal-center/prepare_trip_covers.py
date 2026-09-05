@@ -13,7 +13,7 @@ import json
 import sys
 import tempfile
 import warnings
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
@@ -41,9 +41,6 @@ SOURCES = (
         "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Shirahama-kaigan_%28Izu%29.JPG",
         "size": [6016, 4000], "bytes": 4218401,
         "sha1": "a3ec6a018cf0d516e2ebd90f4a0f551718b386a6",
-        # This exact SHA-1-pinned JPEG contains MPF data: Pillow identifies MPO.
-        # Export only the full-resolution primary frame, never the secondary image.
-        "pillow_format": "MPO", "frames": 2,
     },
     {
         "id": "weekend", "author": "Sorasak", "title": "Kyoto, Japan",
@@ -99,17 +96,13 @@ def validate(data: bytes, source: dict) -> None:
     if source["sha1"] and hashlib.sha1(data).hexdigest() != source["sha1"]:
         raise ValueError(f"{source['id']}: published source hash mismatch")
     with Image.open(io.BytesIO(data)) as image:
-        if (not data.startswith(b"\xff\xd8\xff")
-                or image.format != source.get("pillow_format", "JPEG")
-                or getattr(image, "n_frames", 1) != source.get("frames", 1)
-                or list(image.size) != source["size"]):
+        if image.format != "JPEG" or list(image.size) != source["size"]:
             raise ValueError(f"{source['id']}: original format or dimensions changed")
         image.verify()
 
 
 def rgb_source(data: bytes) -> Image.Image:
     with Image.open(io.BytesIO(data)) as opened:
-        opened.seek(0)  # Explicit primary JPEG frame for the reviewed coast MPO.
         opened.load()
         image = ImageOps.exif_transpose(opened)
         profile = image.info.get("icc_profile")
@@ -151,17 +144,7 @@ def encode(image: Image.Image, budget: int) -> tuple[bytes, int]:
     raise ValueError("Cover exceeds the byte budget; review composition rather than lowering quality blindly")
 
 
-def review_date(value: str) -> str:
-    reviewed = date.fromisoformat(value)
-    if reviewed.isoformat() != value or reviewed > date.today():
-        raise ValueError("License review date must be YYYY-MM-DD and not in the future")
-    return value
-
-
-def run(output: Path, cache: Path, offline: bool, timeout: float,
-        license_checked_date: str | None = None) -> None:
-    if license_checked_date is not None:
-        review_date(license_checked_date)
+def run(output: Path, cache: Path, offline: bool, timeout: float) -> None:
     if not features.check("webp"):
         raise ValueError("This Pillow installation has no WebP encoder")
     if output.exists():
@@ -212,11 +195,10 @@ def run(output: Path, cache: Path, offline: bool, timeout: float,
                            "ivory_blend": 0.04, "ivory": "#FAF6EF"},
             "sources": [dict(s, license="CC0-1.0", license_url=LICENSE,
                              sha256=hashlib.sha256(source_data[s["id"]]).hexdigest(),
-                             license_page_checked=license_checked_date) for s in SOURCES],
+                             license_page_checked="2026-09-05") for s in SOURCES],
             "notes": ["Real photographs adapted for Mock travel cards, not user photographs.",
                       "Inspect source licenses and crops before website integration.",
                       "Kyoto source has dimensions/length checks but no pre-pinned hash.",
-                      "Coast is a SHA-1-pinned JPEG/MPO; only primary frame 0 is used.",
                       "Untagged original color profiles are treated as sRGB."],
         }
         (stage / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -228,7 +210,7 @@ def run(output: Path, cache: Path, offline: bool, timeout: float,
         (stage / "ATTRIBUTION.md").write_text("\n".join(credits), encoding="utf-8")
         sheet = Image.new("RGB", (1000, 760), "#FAF6EF")
         draw = ImageDraw.Draw(sheet)
-        draw.text((20, 15), "DERIVATIVE PREVIEW - not a website screenshot", fill="#383632")
+        draw.text((20, 15), "DERIVATIVE PREVIEW - pending visual review, not a website screenshot", fill="#383632")
         for index, (name, image) in enumerate(previews):
             x, y = 20 + (index % 2) * 500, 50 + (index // 2) * 350
             thumbnail = ImageOps.contain(image, (460, 290))
@@ -247,14 +229,11 @@ def main() -> int:
     parser.add_argument("--cache", type=Path, required=True, help="Private source cache outside version control")
     parser.add_argument("--offline", action="store_true", help="Only use the exact originals already in cache")
     parser.add_argument("--timeout", type=float, default=35)
-    parser.add_argument("--license-checked-date", type=review_date,
-                        help="Actual YYYY-MM-DD file-page review date; omit if not verified")
     args = parser.parse_args()
     if args.timeout <= 0:
         parser.error("--timeout must be positive")
     try:
-        run(args.output.resolve(), args.cache.resolve(), args.offline, args.timeout,
-            args.license_checked_date)
+        run(args.output.resolve(), args.cache.resolve(), args.offline, args.timeout)
     except Exception as error:
         print(f"NOT COMPLETE: {error}", file=sys.stderr)
         return 1
