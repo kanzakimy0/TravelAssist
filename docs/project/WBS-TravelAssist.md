@@ -243,7 +243,7 @@ src/db/
 | WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
 | WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
-| TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 待审查（UI shell 完成，未合并） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`f9028d8`（验收） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59)（Draft 防误合并） |
+| TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 
@@ -323,19 +323,19 @@ src/db/
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖         | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------ | ------ |
-| 4.1    | Planner 页面整体 Grid         | A      | P0     | 1.17,3.1     | 待审查 |
+| 4.1    | Planner 页面整体 Grid         | A      | P0     | 1.17,3.1     | 已完成 |
 | 4.2    | 地图容器与基础控件            | A      | P0     | 4.1,7.1      | 进行中 |
 | 4.3    | 景点 Pin 组件                 | A      | P1     | 4.2,1.12     | 未开始 |
 | 4.4    | 住宿区域覆盖层                | A      | P1     | 4.2,1.12     | 未开始 |
 | 4.5    | 餐饮区域覆盖层                | A      | P1     | 4.2,1.12     | 未开始 |
 | 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中 |
 | 4.7    | 交通方式视觉显示              | A      | P0     | 4.6          | 未开始 |
-| 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 待审查 |
+| 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 已完成 |
 | 4.9    | 时间轴景点卡片                | A      | P1     | 4.8          | 未开始 |
 | 4.10   | 时间轴交通段                  | A      | P1     | 4.8          | 未开始 |
 | 4.11   | 时间轴餐饮段                  | A      | P1     | 4.8          | 未开始 |
 | 4.12   | 时间轴住宿段                  | A      | P1     | 4.8          | 未开始 |
-| 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 待审查 |
+| 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 已完成 |
 | 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中 |
 | 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 未开始 |
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 未开始 |
@@ -653,9 +653,10 @@ B Auth/User Session → A Header/Avatar Entry
 - Owner：A；Issue #51；实现提交 `e4648c031817816fb1cbd0dc44552a542d108c91`。
 - 初始基线 `96a8829`；开发期间安全快进同步至 `6e5132b323c5f215a6c1d430eb702c076d8915ac`。TASK-006 PR #32 合并提交 `5bf85a8` 为基线祖先；TASK-007 不是依赖。
 - 正式规格：`docs/ui/trip-planner.md v0.2`。1.5 / 1.6 / 1.7 / 1.11 的页面结构设计已随 v0.2 合入；1.14 只验证本 Planner 的响应式，1.17 的真实地图细节、1.18 的真实重规划反馈仍待后续任务，保持进行中。
-- 4.1 / 4.8 / 4.13：独立 `/planner` Grid、六 Tab 执行栏、三条推荐方案的 UI shell 已完成，未合并，状态待审查。
+- 4.1 / 4.8 / 4.13：独立 `/planner` Grid、六 Tab 执行栏、三条推荐方案的 UI shell 已完成，并经用户明确授权通过 PR #59 合入 develop。
 - 4.2 / 4.6 / 4.14：仅本地 SVG 地图、多日路线、方案切换与 Mock 刷新交互完成；真实 Map / Route Provider 和真实重规划未接入，保持进行中，不标记完整业务已完成。
 - 7 个指定视口均通过；1600×900 右栏 400px、1440×900 右栏 360px（均 25%）；右栏上下各 418px，底栏 225px。右栏在宽度 <1200px 折叠；底栏在高度 <700px 或宽度 <768px 折叠。
 - npm ci / lint / typecheck / build / diff check 通过；9 项 Node 单元测试通过；生产预览无 console / hydration 错误。本 Task 修改文件格式通过；全仓仅最新 develop 的 `docs/ui/companion-management.md` 格式失败，不越界修改。
 - 详细证据：`docs/tasks/RESULT-TASK-008-a-trip-planner-shell.md`。不修改 `/start`、B 账户文件或工程配置；不接真实 Provider / AI / Auth / DB；完成后停止。
-- 发布保护：仓库现有 feature push 会自动创建并合并 PR。本 Task 明确禁止合并，因此提交附 `[skip ci]` 仅跳过该 push 自动化，所有验证在本地执行；PR 保持 Draft 防止另一个 auto-merge 工作流将其合入。不修改工作流，不 force push。
+- 发布历史：最初提交附 `[skip ci]` 并保留 Draft 防止误合并；用户后续明确授权后，先同步最新 develop 并完成整合验证，再解除 Draft 合并。未修改工作流、未 force push。
+- 最终合并：PR #59，`1a4201b3181460977c4f16b0c34f60c353751687`；集成验收 head `8920695`。lint / typecheck / build / 30 项 tests / 本任务格式 / diff check 通过；Planner、向导、个人中心浏览器复验通过。当前全仓格式的三份基线文档例外详见 Result。未启动 TASK-008.1。

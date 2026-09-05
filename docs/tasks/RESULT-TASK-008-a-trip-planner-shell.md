@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed — TASK-008 Mock UI shell 已实现并验证，待审查、未合并。
+Completed — TASK-008 Mock UI shell 已实现、验证，并按用户明确授权合入 develop。
 
 ## Prerequisite
 
@@ -17,7 +17,7 @@ Completed — TASK-008 Mock UI shell 已实现并验证，待审查、未合并�
 - Task File: `docs/tasks/TASK-008-a-trip-planner-shell.md`
 - Branch: `feature/a-trip-planner-shell-v2`
 - Commit: `e4648c031817816fb1cbd0dc44552a542d108c91`（实现）；`f9028d84e48266e5c626414d541331b7bfd5e009`（验收记录）；最终追踪提交以 PR head 为准。
-- PR: [#59](https://github.com/kanzakimy0/TravelAssist/pull/59)，Open / Draft → develop；未合并。
+- PR: [#59](https://github.com/kanzakimy0/TravelAssist/pull/59)，Merged → develop；merge `1a4201b3181460977c4f16b0c34f60c353751687`。
 - WBS updated: Yes；TASK-008 行与关联设计 / 实现项已记录真实范围。
 
 ## Route
@@ -91,13 +91,13 @@ Completed — TASK-008 Mock UI shell 已实现并验证，待审查、未合并�
 
 ## WBS
 
-- tracking row: TASK-008 / Owner A / Issue #51 / 对应 Task / branch / implementation commit；待审查，未合并。
+- tracking row: TASK-008 / Owner A / Issue #51 / 对应 Task / branch / implementation commit；已合并，已完成。
 - design items: 1.5 / 1.6 / 1.7 / 1.11 按已合入的 v0.2 页面结构记录设计完成；1.14 / 1.17 / 1.18 保持进行中，并说明仅完成 Planner 布局 / UI 验证。
-- implementation items: 4.1 / 4.8 / 4.13 UI shell 待审查；4.2 / 4.6 / 4.14 仍为进行中，真实 Provider / 重规划未完成。
+- implementation items: 4.1 / 4.8 / 4.13 UI shell 已完成；4.2 / 4.6 / 4.14 仍为进行中，真实 Provider / 重规划未完成。
 
 ## Problems / Blockers
 
-- 无 TASK-008 功能阻塞；全仓格式检查存在上述单个 B 基线文档问题。
+- 无 TASK-008 功能阻塞；初次交付存在上述单个 B 基线文档格式问题，合并时最新基线情况见下方记录。
 - npm 的 ESLint 版本退役提示、unrs-resolver allowScripts 提示与 Node 测试的 MODULE_TYPELESS_PACKAGE_JSON 提示均已记录；未改变安装审批或全局配置。
 - 发布保护：当前仓库 `feature/**` push 自动创建并立即合并 PR，另有非 Draft PR 自动合并流程。本 Task 明确要求不自行合并，因此提交包含 `[skip ci]`，只跳过 push 自动合并流程；本地质量检查均照常执行，PR 保持 Draft。参见 [GitHub 跳过工作流文档](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs)。未禁用 / 修改任何仓库工作流。Review 完成后的合并由维护者决定，不自动改为非 Draft。
 - 实测环境：当前桌面 Chromium 浏览器及 viewport 调整；未声称 Safari / Firefox / 真实触屏设备验收。
@@ -105,4 +105,14 @@ Completed — TASK-008 Mock UI shell 已实现并验证，待审查、未合并�
 
 ## Ready For Review
 
-Yes — 实现与验收完成；GitHub PR 保持 Draft 仅用于防止仓库自动合并，并不代表继续开发下一任务。
+Yes — 实现与验收完成，并已按用户明确授权合并。原 Draft / 不合并说明保留为交付历史。
+
+## 合并集成复验（2026-09-05）
+
+- 用户明确要求合并 PR #59；先检查工作区、远端 PR 与 develop。无文本冲突，没有 review change request；随后同步最新 develop（含已合并 TASK-007），head `89206953e5178e53dad032d8e9c1cda4bfac9949`。
+- lint / typecheck / build / 本任务文件 Prettier / diff check 全部通过；TASK-007 的 21 项测试与 Planner 的 9 项测试合计 30/30 通过。
+- 浏览器复验 Planner 的地图点选与时间线同步、三方案切换、六个底栏 Tab、更多设置 / Escape、个人中心入口；新版 /start 标题、指定背景与原草稿仍正常，无横向溢出或 console / hydration error。
+- 全仓 format:check 当前仅有 3 份上游基线文档失败：`docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md`、`docs/ui/companion-management.md`、`docs/ui/planner-map-interaction-booking-mapbox.md`；未修改无关文档。
+- 解除 Draft 后使用 expected head SHA 执行合并，GitHub 确认 PR #59 Merged；merge `1a4201b3181460977c4f16b0c34f60c353751687`。
+- 本地 develop 已同步，源码 / public / tests / dependencies 与上述集成验收版本无差异。Task / Result / WBS 的完成记录经独立文档 PR 更新，不直接提交 develop。
+- 本次只完成 TASK-008 合并与追踪。TASK-008.1 的 PR #59 前置条件已满足，但未开始 TASK-008.1 实现，未触碰其历史 Blocked Result。

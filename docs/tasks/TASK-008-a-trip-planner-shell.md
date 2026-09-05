@@ -2,7 +2,7 @@
 
 > Task ID：`TASK-008`  
 > Owner：`A`  
-> Status：`待审查 / UI shell implemented and verified; not merged`
+> Status：`已完成 / UI shell merged into develop via PR #59`
 >
 > GitHub Issue：`#51`  
 > Task File：`docs/tasks/TASK-008-a-trip-planner-shell.md`  
@@ -1291,6 +1291,8 @@ TASK-008 完成后停止。
 
 - Result：[TASK-008-A Result](./RESULT-TASK-008-a-trip-planner-shell.md)。
 - Issue：[#51](https://github.com/kanzakimy0/TravelAssist/issues/51)。
-- PR：[#59](https://github.com/kanzakimy0/TravelAssist/pull/59)，Open / Draft，未合并。
+- PR：[#59](https://github.com/kanzakimy0/TravelAssist/pull/59)，Merged into develop（2026-09-05）。
 - 实现提交：`e4648c031817816fb1cbd0dc44552a542d108c91`；验收记录：`f9028d84e48266e5c626414d541331b7bfd5e009`。
-- WBS：待审查。Ready For Review: Yes（实现）；为避免既有自动合并流程，保留 Draft，等待维护者审查。
+- WBS：已完成（UI shell 范围）。用户明确授权后解除 Draft 并合并；合并提交 `1a4201b3181460977c4f16b0c34f60c353751687`。
+- 合并前安全同步最新 develop（含 TASK-007 已合入的新向导与指定背景），head `8920695`。lint / typecheck / build / 30 项 tests / 本任务 Prettier / diff check 均通过；Planner、个人中心、向导浏览器集成复验通过。
+- 原 Draft / 不合并说明是交付时限制，已由本次明确授权覆盖。未开始 TASK-008.1，不接真实 Mapbox / Route / Transit / AI / Auth / DB。
