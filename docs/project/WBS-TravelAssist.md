@@ -15,7 +15,7 @@
 - Validation：npm ci / lint / typecheck / build / diff-check 通过；npm test --if-present 无配置测试（未运行），另外显式运行 123/123 Node tests；76/76 Logo QA、四动作 / Guard / 历史 / 键盘四尺寸通过，0 新 console / hydration error。全库格式 26 项既有基线异常逐项比对未变且独立复验失败，本任务文件通过（WBS 维持已有格式排除）。
 
 > 版本：v0.4  
-> 更新日期：2026-09-06
+> 更新日期：2026-09-07
 > 适用阶段：Web 优先，移动 App 后续  
 > 开发方式：A 主开发约 70%，B 协作约 30%，ChatGPT / Codex 辅助开发  
 > **v0.4 分工原则：A 负责旅行主系统（网站入口、地图、路线/行程生成、主规划画面及对应开发）；B 负责用户通过头像进入的个人中心（账户、个人管理、偏好、同行人、保存/历史等界面及对应开发）。**
@@ -273,8 +273,11 @@ src/db/
 | TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 已完成（主流程导航闭环已合入） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591`（实现），`445150f`（追踪），`550a2b8`（合并） | [#101](https://github.com/kanzakimy0/TravelAssist/pull/101) 已合入 develop；Issue #78 已关闭 |
 | TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 已合并（TASK-010-B 本轮仅复验导航；窄屏返回入口待对应任务复核） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `b3d411b`（合入 head），`4c1d9bb`（合并） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) 已合入 develop；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
 | TASK-012-A | 1.5 / 1.6 / 1.7 / 1.14 / 4.1 / 4.8 / 4.14 / 4.15（v0.5 UI 子集） | A | 已完成（用户授权当前实现范围；1180px Drawer 与原侧栏规格差异保留） | #111 | `docs/tasks/TASK-012-a-planner-v05-visual-secondary-panels.md` | `feature/a-planner-v05-visual-secondary-panels` | `e835e75`（验收 head），`66b7ca6`（合并，文件树相同） | [#124](https://github.com/kanzakimy0/TravelAssist/pull/124) 已合入 develop；139 tests、六尺寸双地图 QA、48 Logo QA 通过；冻结推荐卡未改 |
+| TASK-014-B | 1.10 | B | 进行中 | #158 | `docs/tasks/TASK-014-b-wbs-1-10-attraction-activity-display-rules.md` | `feature/b-wbs-1-10-attraction-activity-display-rules` | `d8fa812`（启动文档 head） | - |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
+>
+> TASK-014-B / WBS 1.10 于 2026-09-07 由用户明确改派给 B。该单项例外只改变 WBS 1.10 的 Owner，不重写 v0.4 的长期“Main Travel System 默认归 A”规则。
 
 ### TASK-008.1 执行记录（2026-09-05）
 
@@ -302,7 +305,7 @@ src/db/
 | 1.5    | Planner 主画面冻结 v1                     | A      | P0     | 1.3               | 已完成 |
 | 1.6    | 底部时间轴设计冻结                        | A      | P0     | 1.5               | 已完成 |
 | 1.7    | Planner 右侧临时设置 / 快速调整设计       | A      | P0     | 1.5               | 已完成 |
-| 1.10   | 景点与活动标签 / 主系统展示规则           | A      | P1     | 1.5               | 未开始 |
+| 1.10   | 景点与活动标签 / 主系统展示规则           | B      | P1     | 1.5               | 进行中 |
 | 1.11   | 推荐方案 1/2/3 展示结构                   | A      | P1     | 1.5               | 已完成 |
 | 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | A      | P0     | 1.5               | 未开始 |
 | 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | A      | P1     | 1.4,1.5           | 未开始 |
@@ -696,7 +699,7 @@ B Auth/User Session → A Header/Avatar Entry
 - 初始基线 `96a8829`；开发期间安全快进同步至 `6e5132b323c5f215a6c1d430eb702c076d8915ac`。TASK-006 PR #32 合并提交 `5bf85a8` 为基线祖先；TASK-007 不是依赖。
 - 正式规格：`docs/ui/trip-planner.md v0.2`。1.5 / 1.6 / 1.7 / 1.11 的页面结构设计已随 v0.2 合入；1.14 只验证本 Planner 的响应式，1.17 的真实地图细节、1.18 的真实重规划反馈仍待后续任务，保持进行中。
 - 4.1 / 4.8 / 4.13：独立 `/planner` Grid、六 Tab 执行栏、三条推荐方案的 UI shell 已完成，并经用户明确授权通过 PR #59 合入 develop。
-- 4.2 / 4.6 / 4.14：仅本地 SVG 地图、多日路线、方案切换与 Mock 刷新交互完成；真实 Map / Route Provider 和真实重规划未接入，保持进行中，不标记完整业务已完成。
+- 4.2 / 4.6 / 4.14：仅本地 SVG 地图、多日路线、方案切换与 Mock 刷新交互完成；真实 Map / Route Provider 和真实重规划未接入，保持进行中，不标记完整业务能力完成。
 - 7 个指定视口均通过；1600×900 右栏 400px、1440×900 右栏 360px（均 25%）；右栏上下各 418px，底栏 225px。右栏在宽度 <1200px 折叠；底栏在高度 <700px 或宽度 <768px 折叠。
 - npm ci / lint / typecheck / build / diff check 通过；9 项 Node 单元测试通过；生产预览无 console / hydration 错误。本 Task 修改文件格式通过；全仓仅最新 develop 的 `docs/ui/companion-management.md` 格式失败，不越界修改。
 - 详细证据：`docs/tasks/RESULT-TASK-008-a-trip-planner-shell.md`。不修改 `/start`、B 账户文件或工程配置；不接真实 Provider / AI / Auth / DB；完成后停止。
