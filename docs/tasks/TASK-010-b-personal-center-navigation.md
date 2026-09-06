@@ -10,8 +10,8 @@
 - Issue: `#79`
 - Status: `待验收`
 - WBS: `3.1 / 5.1 / 5.10 / 5.20`（仅本任务导航子集）
-- Commit: `PENDING`
-- Pull Request: `PENDING`
+- Commit: `0e581513e72b5890b77bf74f6f369fc73f6538f0`（实现提交）
+- Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Open Draft → develop
 - Specification Source: 文档 Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`
 - Supersedes: 本文件 v1.0 未执行版本；**不创建重复 Personal Center 导航 Task**
 - Depends On:
@@ -378,28 +378,28 @@ git diff --check
 
 ## 12. Acceptance Criteria
 
-- [ ] 首页 TravelAssist Logo / Wordmark 是 `Link → /`
-- [ ] Start Logo 继续 `→ /`
-- [ ] Planner Logo 继续 `→ /`
-- [ ] Personal Center Desktop Logo `→ /`
-- [ ] Personal Center Mobile / Compact Logo `→ /`
-- [ ] Personal Center 所有当前子路由均继承该规则
-- [ ] `我的首页`仍 `→ /personal-center`
-- [ ] Personal Home `继续规划 → /planner`
-- [ ] Personal Home `开始新旅行 → /start?entry=step3`
-- [ ] Trips `开始新旅行 → /start?entry=step3`
-- [ ] Trips `返回当前规划 → /planner`
-- [ ] `/start?entry=step3`实测进入 UI Step 3
-- [ ] Avatar Popover 没有重复首页入口
-- [ ] Account 子入口和返回账户不回归
-- [ ] 未保存 Guard 不回归
-- [ ] 不修改 Planner / TASK-011-A 高冲突文件
-- [ ] 新增独立导航测试
-- [ ] Browser QA 覆盖四种尺寸
-- [ ] lint / typecheck / tests / build / diff-check 通过
-- [ ] Mock、disabled、外部待合并状态均诚实标注
-- [ ] Result、Issue、WBS、Branch、Commit、PR 一致
-- [ ] PR 保持 Draft，等待用户审查，不自动 merge
+- [x] 首页 TravelAssist Logo / Wordmark 是 `Link → /`
+- [x] Start Logo 继续 `→ /`
+- [x] Planner Logo 继续 `→ /`
+- [x] Personal Center Desktop Logo `→ /`
+- [x] Personal Center Mobile / Compact Logo `→ /`
+- [x] Personal Center 所有当前子路由均继承该规则
+- [x] `我的首页`仍 `→ /personal-center`
+- [x] Personal Home `继续规划 → /planner`
+- [x] Personal Home `开始新旅行 → /start?entry=step3`
+- [x] Trips `开始新旅行 → /start?entry=step3`
+- [x] Trips `返回当前规划 → /planner`
+- [x] `/start?entry=step3`实测进入 UI Step 3
+- [x] Avatar Popover 没有重复首页入口
+- [x] Account 子入口和返回账户不回归
+- [x] 未保存 Guard 不回归
+- [x] 不修改 Planner / TASK-011-A 高冲突文件
+- [x] 新增独立导航测试
+- [x] Browser QA 覆盖四种尺寸
+- [x] lint / typecheck / tests / build / diff-check 通过
+- [x] Mock、disabled、外部待合并状态均诚实标注
+- [x] Result、Issue、WBS、Branch、Commit、PR 一致
+- [x] PR 保持 Draft，等待用户审查，不自动 merge
 
 ---
 
@@ -429,3 +429,7 @@ Not implemented / Non-goal
 - TASK-011-A / PR #102 当时的真实状态
 
 完成后停止，不自动合并。
+
+## Execution Record — 2026-09-06
+
+自身范围已实现，状态为待验收；74/74 tests、44/44 Logo QA、四尺寸 Guard / history / keyboard / account 回归通过。全库 format:check 有 21 个逐项核对的既有基线例外，未写为 Passed。完整证据与分类见 `RESULT-TASK-010-b-personal-center-navigation.md`。PR #102 / #106 仍未合并；PR #108 保持 Draft，不自动 merge。

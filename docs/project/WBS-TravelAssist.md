@@ -3,7 +3,7 @@
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 
 - WBS：3.1 / 5.1 / 5.10 / 5.20 的导航子集；Owner：A+B / Shared Navigation。
-- Status：待审查；Issue：#79；Branch：`fix/shared-global-logo-navigation`；Commit：PENDING；Draft PR：PENDING。
+- Status：待审查；Issue：#79；Branch：`fix/shared-global-logo-navigation`；实现 Commit：`0e581513e72b5890b77bf74f6f369fc73f6538f0`；Draft PR：[#108](https://github.com/kanzakimy0/TravelAssist/pull/108) → develop（Open / Draft，不合并）。
 - Base：`a567dffc5930523cb0917889abab9ac9b8cebf19`（origin/develop）；文档来源：Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`。未从文档分支开发。
 - Scope：首页 Logo 链接化、Personal Center 双端 GuardedLink Logo → `/`、Personal Home / Trips 四个主流程出口。原 WBS 5.1 已合并成果不回退；5.10 / 5.20 的完整业务状态不因导航子集完成而提前完成。
 - Dependency：TASK-010-A / #78 / PR #101 已合并；TASK-011-A / #86 / Draft PR #102 独立待合并，Planner → Detail 不计为本任务完成。

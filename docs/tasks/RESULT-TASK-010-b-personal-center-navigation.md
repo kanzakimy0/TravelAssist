@@ -11,8 +11,8 @@
 - WBS: 3.1 / 5.1 / 5.10 / 5.20，仅导航子集，不提前完成完整业务。
 - Base Commit: `a567dffc5930523cb0917889abab9ac9b8cebf19`
 - Branch: `fix/shared-global-logo-navigation`
-- Implementation Commit: PENDING
-- Draft Pull Request: PENDING → develop
+- Implementation Commit: `0e581513e72b5890b77bf74f6f369fc73f6538f0`
+- Draft Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Open Draft → develop；后续提交仅补齐本 Task 的追踪文档，最终交付 head 以该 PR 为准。
 - TASK-010-A / #78 / PR #101: 已合并；merge commit `550a2b8b066111996bfc78894ce4f17dafc0dafe` 已确认是 origin/develop 祖先，Step 3 deep-link 可用。
 - 文档 PR #106: Open / Draft / 未合并，head `533801b320f48371fda0dac4f3747594ec6df2f2`。完整读取该分支的 Task v1.1、navigation-flow v1.2 和 2026-09-06 audit；只将本 Task 最新定义与执行记录同步到功能分支。导航规范和历史审计仍由文档 PR #106 承接。
 - 开发基线始终为最新 develop，没有从文档分支或 PR #102 分支叠加。原工作区有既有 Planner 改动，本次在独立 clean worktree 开发，原改动完整保留。
