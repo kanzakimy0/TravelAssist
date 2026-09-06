@@ -2,7 +2,7 @@
 
 ## Status
 
-Awaiting Review
+Completed
 
 ## Dependency Gate
 
@@ -20,14 +20,16 @@ Awaiting Review
 
 ## Tracking
 
-- Issue: [#107](https://github.com/kanzakimy0/TravelAssist/issues/107)（Open）。
+- Issue: [#107](https://github.com/kanzakimy0/TravelAssist/issues/107)（Closed；用户验收通过）。
 - Task File: `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.6-b-companion-management-ui.md`
 - Branch: `feature/b-account-wbs-5-6-companion-management-ui`
-- Implementation Commit: `PENDING`
-- Final Head: `PENDING`
-- Draft PR: `PENDING`
-- WBS updated: WBS 5.6 与唯一 WBS-5.6-B tracking record 已更新为待审查。
+- Implementation Commit: `ff9c9330ee8bd90caeeedf8c54f9b266058d4054`
+- Final Head: `ff9c9330ee8bd90caeeedf8c54f9b266058d4054`
+- Implementation PR: [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) 已合入 `develop`。
+- Merge Commit: `ff66aec1654664faf83c70861c3fe1bb2cbf44df`
+- User Acceptance: 通过（2026-09-06）。
+- WBS updated: WBS 5.6 与唯一 WBS-5.6-B tracking record 已更新为已完成。
 
 ## Companion Overview
 
@@ -107,6 +109,7 @@ Awaiting Review
 - Account: Passed。
 - unsaved guard: Drawer close、Escape、Sidebar、Avatar Popover、beforeunload 与 focus return 通过。
 - console / hydration: 无本 Task blocking error、hydration error 或 React warning；仅忽略 Task 明确允许记录的既有 `/favicon.ico` 404。
+- user acceptance: Passed；用户在 `http://localhost:3000/personal-center/companions` 验证添加同行人、删除同行人、加入组合、新建组合与编辑组合后确认通过。
 
 ## Validation
 
@@ -133,23 +136,23 @@ Awaiting Review
 ## Git
 
 - Branch: `feature/b-account-wbs-5-6-companion-management-ui`
-- Commit: `PENDING`
-- Push: `PENDING`
-- PR: Draft / Open `PENDING`
-- Merge Commit: None；禁止自动合并。
+- Commit: `ff9c9330ee8bd90caeeedf8c54f9b266058d4054`
+- Push: Success。
+- PR: [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) Merged。
+- Merge Commit: `ff66aec1654664faf83c70861c3fe1bb2cbf44df`。
 
 ## Three-way Sync
 
-- Task: 待验收。
-- Issue: #107 Open。
-- WBS 5.6: 待审查。
-- PR: Draft / Open（创建后回填）。
+- Task: 已完成。
+- Issue: #107 Closed。
+- WBS 5.6: 已完成。
+- PR: #117 已合入 `develop`。
 
 ## Problems
 
 - 仓库级 Prettier 基线仍有 22 个既有非本 Task 文件失败；本 Task 定向格式检查通过。
 - Windows sandbox screenshot viewer 无法直接读取 `F:`，但 Playwright 五视口 DOM / geometry / interaction QA 与截图生成均成功。
-- 仓库 `feature/**` push workflow 会尝试自动建 PR 并合并；发布将先安全建立远端 ref 与 Draft PR，再推送 tracking 更新，避免重演非 Draft 自动合并。
+- 仓库 `feature/**` 自动化在 PR #117 转为 Ready 后完成合并；未执行 force push、历史改写或安全规则绕过。
 
 ## Next
 

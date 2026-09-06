@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center`
 - Priority: `P1`
-- Status: `待验收`
+- Status: `已完成`
 - Depends On: `1.26`, `5.5`
 - Dependency State at execution:
   - `1.26 = 已完成`
@@ -20,8 +20,10 @@
 - Proposed Issue: `[WBS 5.6][B] 同行人管理 UI`
 - Task File: `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.6-b-companion-management-ui.md`
-- Implementation Commit: `PENDING`
-- Pull Request: Draft PR `PENDING`
+- Implementation Commit: `ff9c9330ee8bd90caeeedf8c54f9b266058d4054`
+- Pull Request: [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) 已合入 `develop`
+- Merge Commit: `ff66aec1654664faf83c70861c3fe1bb2cbf44df`
+- User Acceptance: `通过（2026-09-06）`
 
 > 本 Task 可以提前存档，但不得绕过 WBS 5.5 前置。只有 5.5 已合入 `develop` 且验收为“已完成”后，5.6 才能进入“进行中”。
 
