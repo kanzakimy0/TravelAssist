@@ -4,12 +4,13 @@
 
 - WBS：3.1 / 5.1 / 5.10 / 5.20 的导航子集；Owner：A+B / Shared Navigation。
 - Status：待审查；Issue：#79；Branch：`fix/shared-global-logo-navigation`；实现 Commit：`0e581513e72b5890b77bf74f6f369fc73f6538f0`；Draft PR：[#108](https://github.com/kanzakimy0/TravelAssist/pull/108) → develop（Open / Draft，不合并）。
-- Base：`a567dffc5930523cb0917889abab9ac9b8cebf19`（origin/develop）；文档来源：Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`。未从文档分支开发。
+- Integrated develop：`2acafe631960fdb63b50b56df081154b0e3e0b59`（PR #109）；无冲突同步 `c507d092ec9cbed66c202642a5dc979e08d9bad0` 后重验，新增 7 个偏好分类 Logo QA；上游业务不计本 Task 实现。
+- Initial Base：`a567dffc5930523cb0917889abab9ac9b8cebf19`（origin/develop）；文档来源：Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`。未从文档分支开发。
 - Scope：首页 Logo 链接化、Personal Center 双端 GuardedLink Logo → `/`、Personal Home / Trips 四个主流程出口。原 WBS 5.1 已合并成果不回退；5.10 / 5.20 的完整业务状态不因导航子集完成而提前完成。
 - Dependency：TASK-010-A / #78 / PR #101 已合并；TASK-011-A / #86 / Draft PR #102 独立待合并，Planner → Detail 不计为本任务完成。
 - Conflict guard：不修改 Planner 目录、Planner page、`tests/task-010-navigation.test.mjs`；不 cherry-pick PR #102。
 - Result：`docs/tasks/RESULT-TASK-010-b-personal-center-navigation.md`；验收证据：`docs/qa/TASK-010-B/`。不自动合并。
-- Validation：npm ci / lint / typecheck / build / diff-check 通过；npm test --if-present 无配置测试（未运行），另外显式运行 74/74 Node tests；44/44 Logo QA、四动作 / Guard / 历史 / 键盘四尺寸通过，0 新 console / hydration error。全库格式 21 项既有基线异常逐项比对未变，本任务文件通过（WBS 维持已有格式排除）。
+- Validation：npm ci / lint / typecheck / build / diff-check 通过；npm test --if-present 无配置测试（未运行），另外显式运行 81/81 Node tests；72/72 Logo QA、四动作 / Guard / 历史 / 键盘四尺寸通过，0 新 console / hydration error。全库格式 21 项既有基线异常逐项比对未变，本任务文件通过（WBS 维持已有格式排除）。
 
 > 版本：v0.4  
 > 更新日期：2026-09-05

@@ -21,6 +21,15 @@ const routes = [
   "/personal-center/account/security",
   "/personal-center/account/privacy",
   "/personal-center/account/booking-sync",
+  ...[
+    "mobility",
+    "attractions",
+    "dining",
+    "accommodation",
+    "budget",
+    "experience",
+    "advanced",
+  ].map((category) => `/personal-center/preferences/${category}`),
 ];
 const browser = await chromium.launch({
   headless: true,
@@ -188,4 +197,6 @@ await writeFile(
     2,
   ) + "\n",
 );
-console.log(JSON.stringify({ logoChecks: 44, viewports: 4, errors }));
+console.log(
+  JSON.stringify({ logoChecks: routes.length * 4, viewports: 4, errors }),
+);

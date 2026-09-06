@@ -9,10 +9,11 @@
 - Issue: [#79](https://github.com/kanzakimy0/TravelAssist/issues/79)
 - Owner: A+B / Shared Navigation
 - WBS: 3.1 / 5.1 / 5.10 / 5.20，仅导航子集，不提前完成完整业务。
-- Base Commit: `a567dffc5930523cb0917889abab9ac9b8cebf19`
+- Initial Base Commit: `a567dffc5930523cb0917889abab9ac9b8cebf19`
+- Integrated develop: `2acafe631960fdb63b50b56df081154b0e3e0b59`（交付前新合入 PR #109）；无冲突同步提交 `c507d092ec9cbed66c202642a5dc979e08d9bad0`，整合后重新验收。
 - Branch: `fix/shared-global-logo-navigation`
 - Implementation Commit: `0e581513e72b5890b77bf74f6f369fc73f6538f0`
-- Draft Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Open Draft → develop；后续提交仅补齐本 Task 的追踪文档，最终交付 head 以该 PR 为准。
+- Draft Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Open Draft → develop；整合与追踪提交均在同一分支，最终交付 head 以该 PR 为准。
 - TASK-010-A / #78 / PR #101: 已合并；merge commit `550a2b8b066111996bfc78894ce4f17dafc0dafe` 已确认是 origin/develop 祖先，Step 3 deep-link 可用。
 - 文档 PR #106: Open / Draft / 未合并，head `533801b320f48371fda0dac4f3747594ec6df2f2`。完整读取该分支的 Task v1.1、navigation-flow v1.2 和 2026-09-06 audit；只将本 Task 最新定义与执行记录同步到功能分支。导航规范和历史审计仍由文档 PR #106 承接。
 - 开发基线始终为最新 develop，没有从文档分支或 PR #102 分支叠加。原工作区有既有 Planner 改动，本次在独立 clean worktree 开发，原改动完整保留。
@@ -20,7 +21,7 @@
 ## Implemented by TASK-010-B v1.1
 
 - 首页 Brand 改为语义化 `Link href="/"`，可访问名称为 `TravelAssist 首页`；保留原图形、文字、尺寸、位置和样式，未修改首页 CSS、Hero、背景、语言或 AI 面板。
-- Personal Center Desktop 与 Compact Brand 改为 `GuardedLink → /`；继承所有 8 个当前 Personal Center 路由，未保存时保留取消 / 放弃修改保护。
+- Personal Center Desktop 与 Compact Brand 改为 `GuardedLink → /`；继承原 8 个及最新 develop 增加的 7 个偏好分类 Personal Center 路由，未保存时保留取消 / 放弃修改保护。
 - Personal Home 主动作 `继续规划 → /planner`、次动作 `开始新旅行 → /start?entry=step3`；明确当前为示例规划，尚未接入真实保存行程。
 - Trips placeholder 新增 `开始新旅行 → /start?entry=step3` 与 `返回当前规划 → /planner`，说明不存在真实保存列表。
 - `PersonalPlaceholder` 增加可选 actions，Preferences / Companions 不增加无关按钮。
@@ -72,14 +73,16 @@ Auth / Session / Logout、Saved Trips backend / DB、Profile Preference 预填�
 | `npm run lint`                                | Passed                                                                              |
 | `npm run typecheck`                           | Passed                                                                              |
 | `npm run test --if-present`                   | Exit 0，但仓库无 npm test script，属于未运行测试，不写 Passed                       |
-| `node --test` + 全部 `tests/*.test.mjs`       | 74/74 Passed，含新增 2 项导航契约测试                                               |
+| `node --test` + 全部 `tests/*.test.mjs`       | 81/81 Passed，含新增 2 项导航契约测试                                               |
 | `npm run format:check`                        | Failed：21 个 origin/develop 既有文件，逐项核对内容相同且基线同样格式失败；详见下方 |
 | Task-owned 格式检查                           | Passed；WBS 按既有 `.prettierignore` 排除，未扩大 ignore 或格式化无关文档           |
-| `npm run build`                               | Passed，13 个静态页面及现有动态 /start；本地生产预览验收                            |
+| `npm run build`                               | Passed，20 个预生成页面及现有动态 /start；本地生产预览验收                          |
 | `git diff --check`                            | Passed                                                                              |
-| 浏览器 Logo QA                                | 44/44，11 路由 × 4 视口                                                             |
+| 浏览器 Logo QA                                | 72/72，原 11 路由 + PR #109 新增 7 个偏好分类路由，四视口共 72 次                   |
 | 四个动作 / 历史 / Account 子页 / Guard / 键盘 | 四视口全部 Passed                                                                   |
-| Console / hydration / 横向溢出                | 0 新 error；11 路由四视口无文档横向溢出                                             |
+| Console / hydration / 横向溢出                | 0 新 error；18 路由四视口无文档横向溢出                                             |
+
+整合 PR #109 后第一次 typecheck 命中旧 `.next/types`（新增分类路由未生成）；执行 build 重新生成后 typecheck 通过，未改上游源码或配置。上游新增偏好业务仅同步与复验，不计为本 Task 实现。
 
 Node 测试输出既有 MODULE_TYPELESS_PACKAGE_JSON 提示；未为消除警告改工程配置。Planner 使用无 Token fallback 验收，本次不改地图实现。
 
@@ -99,13 +102,15 @@ Node 测试输出既有 MODULE_TYPELESS_PACKAGE_JSON 提示；未为消除警告
 | `/personal-center/account/privacy`      | Logo → / | Logo → / | Logo → / | Logo → / |
 | `/personal-center/account/booking-sync` | Logo → / | Logo → / | Logo → / | Logo → / |
 
+补充 7 路由 `/personal-center/preferences/{mobility,attractions,dining,accommodation,budget,experience,advanced}` 的 Logo 四尺寸通过（28/28）。原要求矩阵 44/44 通过，总计 72/72。
+
 证据：[QA report](../qa/TASK-010-B/report.json)、同目录 `{width}x{height}-home.png` / `-trips.png` / `-guard.png`。
 
 复跑：先 `npm run build`、`npm start -- -p 3112`；设置本机可用 `PLAYWRIGHT_MODULE` 和 `CHROME_EXE` 后运行 `node tools/qa/task-010-b-navigation-check.mjs`。默认仅访问本机 3112；未改变用户 localhost:3000 服务。
 
 ### Existing format baseline exceptions
 
-以下 21 个文件逐项与 `origin/develop:a567dff` 比较内容完全相同（仅规范化 Git CRLF/LF）；基线本身也未通过当前 Prettier。原 Task v1.0 是第 22 个失败文件，本次同步 v1.1 后已格式化通过。
+以下 21 个文件逐项与 `origin/develop`（`2acafe6`） 比较内容完全相同（仅规范化 Git CRLF/LF）；基线本身也未通过当前 Prettier。原 Task v1.0 是第 22 个失败文件，本次同步 v1.1 后已格式化通过。
 
 1. `docs/README.md`
 2. `docs/ai/trip-judgement-two-phase.md`
@@ -120,7 +125,7 @@ Node 测试输出既有 MODULE_TYPELESS_PACKAGE_JSON 提示；未为消除警告
 11. `docs/tasks/TASK-WBS-5.4-b-personal-center-generated-assets-integration.md`
 12. `docs/tasks/TASK-WBS-5.4-b-profile-account-ui.md`
 13. `docs/tasks/TASK-WBS-5.5-b-preference-center-ui-amendment-local-assets.md`
-14. `docs/tasks/TASK-WBS-5.5-b-preference-center-ui.md`
+14. `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md`
 15. `docs/ui/companion-management.md`
 16. `docs/ui/navigation-flow.md`
 17. `docs/ui/personal-center-responsive-states.md`

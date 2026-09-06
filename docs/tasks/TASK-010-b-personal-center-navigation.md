@@ -432,4 +432,6 @@ Not implemented / Non-goal
 
 ## Execution Record — 2026-09-06
 
-自身范围已实现，状态为待验收；74/74 tests、44/44 Logo QA、四尺寸 Guard / history / keyboard / account 回归通过。全库 format:check 有 21 个逐项核对的既有基线例外，未写为 Passed。完整证据与分类见 `RESULT-TASK-010-b-personal-center-navigation.md`。PR #102 / #106 仍未合并；PR #108 保持 Draft，不自动 merge。
+自身范围已实现，状态为待验收；81/81 tests、72/72 Logo QA、四尺寸 Guard / history / keyboard / account 回归通过。全库 format:check 有 21 个逐项核对的既有基线例外，未写为 Passed。完整证据与分类见 `RESULT-TASK-010-b-personal-center-navigation.md`。PR #102 / #106 仍未合并；PR #108 保持 Draft，不自动 merge。
+
+交付前 develop 合入 PR #109，已安全同步 `2acafe631960fdb63b50b56df081154b0e3e0b59` 并重新验证：81 项测试、72 次 Logo QA（原矩阵 44 次 + 新增偏好分类 28 次）。初次 typecheck 的旧路由类型缓存已由 build 重生成并复测通过。PR #102 仍为外部待合并项。
