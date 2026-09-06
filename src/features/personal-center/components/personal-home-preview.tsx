@@ -7,30 +7,32 @@ import { PersonalIcon } from "./personal-icon";
 // Static presentation fixtures only, not a Trip model or saved user data.
 const previewTrips = [
   {
-    destination: "伊豆",
+    destination: "京都",
     duration: "3天2晚",
-    date: "2026.10.16 — 10.18",
+    date: "10月18日 — 10月20日",
     status: "即将到来",
-    position: "70% 60%",
+    cover: "/media/personal-center/trip-kyoto-gion.webp",
+    position: "60% 50%",
   },
   {
-    destination: "海岸慢游",
-    duration: "2天1晚",
-    date: "日期待定",
-    status: "规划中",
-    position: "25% 45%",
+    destination: "大阪",
+    duration: "4天3晚",
+    date: "11月12日 — 11月15日",
+    status: "计划中",
+    cover: "/media/personal-center/trip-osaka-castle.webp",
+    position: "65% 45%",
   },
   {
-    destination: "周末小旅行",
-    duration: "2天1晚",
-    date: "2026.08.15 — 08.16",
-    status: "已完成",
-    position: "100% 75%",
+    destination: "北海道",
+    duration: "5天4晚",
+    date: "收藏于 8月3日",
+    status: "收藏",
+    cover: "/media/personal-center/trip-hokkaido-winter.webp",
+    position: "50% 55%",
   },
 ] as const;
 
-// Reuse the repository's existing travel photo as a clearly labelled Mock cover.
-const previewCover = "/media/home/home-hero-poster.webp";
+const heroCover = "/media/personal-center/hero-kyoto-sakura.webp";
 
 export function PersonalHomePreview() {
   return (
@@ -41,23 +43,23 @@ export function PersonalHomePreview() {
       </div>
       <section aria-labelledby="next-trip-title" className={styles.nextTrip}>
         <Image
-          src={previewCover}
-          alt="海岸、列车与远山的旅行示例照片"
+          src={heroCover}
+          alt="京都樱花街巷与八坂塔的旅行示例照片"
           fill
           sizes="(max-width: 760px) 100vw, 80vw"
-          loading="eager"
+          preload
           className={styles.heroPhoto}
         />
         <div className={styles.heroShade} />
         <div className={styles.heroContent}>
           <p className={styles.eyebrow}>下一次旅行</p>
           <h2 id="next-trip-title">
-            伊豆<span>3天2晚</span>
+            京都<span>3天2晚</span>
           </h2>
           <ul className={styles.tripMeta}>
             <li>
               <PersonalIcon name="calendar" />
-              2026.10.16 — 10.18
+              10月18日 — 10月20日
             </li>
             <li>
               <PersonalIcon name="people" />2 人同行
@@ -69,7 +71,7 @@ export function PersonalHomePreview() {
           </ul>
           <div className={styles.heroAction}>
             <button type="button" disabled className={styles.planButton}>
-              继续规划
+              查看行程
               <PersonalIcon name="arrow" width="18" />
             </button>
             <span>即将开放</span>
@@ -95,7 +97,7 @@ export function PersonalHomePreview() {
             >
               <div className={styles.tripCover}>
                 <Image
-                  src={previewCover}
+                  src={trip.cover}
                   alt=""
                   fill
                   sizes="(max-width: 760px) 100vw, 26vw"
@@ -125,6 +127,13 @@ export function PersonalHomePreview() {
         </div>
         <div className={styles.featureGrid}>
           <div className={styles.featureCard}>
+            <Image
+              src="/media/personal-center/feature-card-inspiration-bg.png"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 100vw, 28vw"
+              className={styles.featureDecoration}
+            />
             <span className={styles.featureIcon}>
               <PersonalIcon name="compass" />
             </span>
@@ -135,6 +144,13 @@ export function PersonalHomePreview() {
             </div>
           </div>
           <Link href="/personal-center/trips" className={styles.featureCard}>
+            <Image
+              src="/media/personal-center/feature-card-favorites-bg.png"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 100vw, 28vw"
+              className={styles.featureDecoration}
+            />
             <span className={styles.featureIcon}>
               <PersonalIcon name="heart" />
             </span>
@@ -145,6 +161,13 @@ export function PersonalHomePreview() {
             <PersonalIcon name="arrow" width="18" />
           </Link>
           <div className={styles.featureCard}>
+            <Image
+              src="/media/personal-center/feature-card-discovery-bg.png"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 100vw, 28vw"
+              className={styles.featureDecoration}
+            />
             <span className={styles.featureIcon}>
               <PersonalIcon name="pin" />
             </span>
