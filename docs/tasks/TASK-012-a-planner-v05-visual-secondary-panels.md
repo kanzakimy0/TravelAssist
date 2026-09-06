@@ -15,6 +15,7 @@
 - Planned Branch：`feature/a-planner-v05-visual-secondary-panels`
 - Target Branch：`develop`
 - Base Commit：`4c1d9bbf1311a10b1e9db5bde00fe2e7b12fccab`
+- Integrated develop：`e725d21821107414a4551427d315aa55cfab7903`；集成提交 `0b93d57`，无冲突，114/114 tests 及构建复验通过。
 - Commit：`64e53b3b3d8c5adeaeb867d00e8d581384a6f2c2`（实现；追踪提交见 PR）
 - Pull Request：[\#124](https://github.com/kanzakimy0/TravelAssist/pull/124)（保持 Draft，不自动合并）
 - Planned Result：`docs/tasks/RESULT-TASK-012-a-planner-v05-visual-secondary-panels.md`
