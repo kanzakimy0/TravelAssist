@@ -43,9 +43,9 @@ export function PersonalSidebar() {
           <PersonalIcon name={drawerOpen ? "close" : "menu"} />
         </button>
         <GuardedLink
-          href="/personal-center"
+          href="/"
           className={styles.compactBrand}
-          aria-label="TravelAssist 个人中心首页"
+          aria-label="TravelAssist 首页"
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.compactBrandLogo} aria-hidden="true">
@@ -69,9 +69,9 @@ export function PersonalSidebar() {
           />
         </div>
         <GuardedLink
-          href="/personal-center"
+          href="/"
           className={styles.brand}
-          aria-label="TravelAssist 个人中心首页"
+          aria-label="TravelAssist 首页"
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.brandLogo} aria-hidden="true">
