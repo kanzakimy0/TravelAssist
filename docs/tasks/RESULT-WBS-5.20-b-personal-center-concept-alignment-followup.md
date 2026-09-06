@@ -12,8 +12,8 @@
 - Issue: #149（Open）
 - Task File: `docs/tasks/TASK-WBS-5.20-b-personal-center-concept-alignment-followup.md`
 - Branch: `fix/b-wbs-5-20-personal-center-concept-alignment`
-- Implementation Commit: PENDING
-- Pull Request: PENDING
+- Implementation Commit: `ea10d79ffd6b54f527dc2ff547d6b2fb0b80b7e4`
+- Pull Request: #150（Draft / Open）
 - Merge Commit: PENDING
 
 ## Delivered

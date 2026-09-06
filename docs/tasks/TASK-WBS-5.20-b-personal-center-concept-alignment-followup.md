@@ -9,8 +9,8 @@
 - GitHub Issue: `#149`
 - Branch: `fix/b-wbs-5-20-personal-center-concept-alignment`
 - Depends On: `WBS-5.4-B-V2 / WBS-5.5-B / WBS-5.6-B / WBS-5.10-B / WBS-5.20-B`
-- Commit: PENDING
-- Pull Request: PENDING
+- Commit: `ea10d79ffd6b54f527dc2ff547d6b2fb0b80b7e4`
+- Pull Request: `#150`
 - Result: `docs/tasks/RESULT-WBS-5.20-b-personal-center-concept-alignment-followup.md`
 
 ## Background
