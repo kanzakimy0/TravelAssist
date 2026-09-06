@@ -5,15 +5,18 @@
 - Task ID：`TASK-012-A`
 - Owner：`A / Main Travel System`
 - GitHub Issue：`#111`
-- Status：`Blocked — 等待 TASK-011-A / PR #102 合并`
+- Status：`阻塞`（实现已交付；1180px 侧栏与推荐卡尺寸冻结冲突待确认）
 - Design Source：`docs/ui/planner-right-panel-secondary-tabs.md` v0.5
 - Design Freeze Commit：`adb0ec680f96857ca5ace4ccd54979d2dd3ddee2`
 - Depends On：
   - `TASK-008.3-A / PR #85`：已合并；
-  - `TASK-011-A / Issue #86 / PR #102`：当前 Open / Draft / 未合并；
+  - `TASK-011-A / Issue #86 / PR #102`：已合并到 develop（4c1d9bb），集成验证通过；
   - `TASK-010-A/B` 的 Logo → `/` 导航契约：必须保留。
 - Planned Branch：`feature/a-planner-v05-visual-secondary-panels`
 - Target Branch：`develop`
+- Base Commit：`4c1d9bbf1311a10b1e9db5bde00fe2e7b12fccab`
+- Commit：PENDING
+- Pull Request：PENDING（保持 Draft，不自动合并）
 - Planned Result：`docs/tasks/RESULT-TASK-012-a-planner-v05-visual-secondary-panels.md`
 - WBS：Planner / 地图 / 路线主系统的视觉整合、右侧设置与底部执行信息精修
 
@@ -985,14 +988,17 @@ feature/a-planner-v05-visual-secondary-panels → develop
 # TASK-012-A Result
 
 ## Status
+
 Completed / Blocked
 
 ## Prerequisite
+
 - TASK-011 PR #102 merged: Yes / No
 - Base commit:
 - Design source:
 
 ## Tracking
+
 - Issue: #111
 - Task File:
 - Branch:
@@ -1001,6 +1007,7 @@ Completed / Blocked
 - WBS updated: Yes / No
 
 ## Implemented
+
 - Top shell / gradient
 - Map controls
 - Right settings
@@ -1010,11 +1017,13 @@ Completed / Blocked
 - State and navigation preservation
 
 ## Frozen Area Verification
+
 - Recommendation component changed: Yes / No
 - Visible structure changed: Yes / No
 - Screenshot regression:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1027,6 +1036,7 @@ Completed / Blocked
 ## Known Limitations
 
 ## Ready For Review
+
 Yes / No
 ```
 

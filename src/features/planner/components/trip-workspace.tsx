@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { WorkspaceHeader } from "./workspace-header";
 import type { Dispatch, ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -56,30 +56,7 @@ export function TripWorkspace({
       <a href="#planner-workspace" className={styles.skipLink}>
         跳到旅行工作区
       </a>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}>
-          <span>
-            <PlannerIcon name="map" />
-          </span>
-          TravelAssist
-        </Link>
-        <nav className={styles.headerNav} aria-label="Planner 导航">
-          <Link href="/start">新建旅行</Link>
-          <Link href="/planner" aria-current={detail ? undefined : "page"}>
-            AI 行程规划
-          </Link>
-        </nav>
-        <div className={styles.headerTitle}>
-          <h1>东京与富士山的三日慢叙</h1>
-          <span>{detail ? "正式行程详情 · 本地示例" : "示例行程"}</span>
-        </div>
-        <Link className={styles.accountLink} href="/personal-center">
-          <span>个人中心</span>
-          <span className={styles.avatar}>
-            <PlannerIcon name="users" />
-          </span>
-        </Link>
-      </header>
+      <WorkspaceHeader />
       <main
         id="planner-workspace"
         tabIndex={-1}
