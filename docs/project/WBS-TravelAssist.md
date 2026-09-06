@@ -1,5 +1,17 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
+
+- WBS：3.1 / 5.1 / 5.10 / 5.20 的导航子集；Owner：A+B / Shared Navigation。
+- Status：待审查；Issue：#79；Branch：`fix/shared-global-logo-navigation`；实现 Commit：`0e581513e72b5890b77bf74f6f369fc73f6538f0`；Draft PR：[#108](https://github.com/kanzakimy0/TravelAssist/pull/108) → develop（Open / Draft，不合并）。
+- Integrated develop：`8b83628f60e7dd2a07231a59ca448c4dc5af510d`；无冲突同步 `fcd934e6d13d21f9aea0736385038a8c1336a5fe`，复验提交 `fe17962532f705556c3ca69c0871f593d366acfa`；复用现有分支 / PR，未重复实现，上游业务不计本 Task 实现。
+- Initial Base：`a567dffc5930523cb0917889abab9ac9b8cebf19`（origin/develop）；文档来源：Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`。未从文档分支开发。
+- Scope：首页 Logo 链接化、Personal Center 双端 GuardedLink Logo → `/`、Personal Home / Trips 四个主流程出口。原 WBS 5.1 已合并成果不回退；5.10 / 5.20 的完整业务状态不因导航子集完成而提前完成。
+- Dependency：TASK-010-A / #78 / PR #101、TASK-011-A / #86 / PR #102 均已合并；后者 merge `4c1d9bb` 是本基线祖先。Detail Logo 四尺寸通过，1440 / 1024 返回 Planner 保留 Map DOM；390 / 320 的上游导航隐藏，返回入口不可用，保留为受保护范围的遗留问题，不计通过。
+- Conflict guard：不修改 Planner 目录、Planner page、`tests/task-010-navigation.test.mjs`；不 cherry-pick PR #102。
+- Result：`docs/tasks/RESULT-TASK-010-b-personal-center-navigation.md`；验收证据：`docs/qa/TASK-010-B/`。不自动合并。
+- Validation：npm ci / lint / typecheck / build / diff-check 通过；npm test --if-present 无配置测试（未运行），另外显式运行 123/123 Node tests；76/76 Logo QA、四动作 / Guard / 历史 / 键盘四尺寸通过，0 新 console / hydration error。全库格式 26 项既有基线异常逐项比对未变且独立复验失败，本任务文件通过（WBS 维持已有格式排除）。
+
 > 版本：v0.4  
 > 更新日期：2026-09-06
 > 适用阶段：Web 优先，移动 App 后续  
@@ -252,7 +264,7 @@ src/db/
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
 | TASK-008.3 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner v0.3 交互） | A | 已完成 | #77 | `docs/tasks/TASK-008.3-a-planner-v03-interactions.md` | `feature/a-planner-v03-interactions` | `5893255`（实现），`004c40b`（同步），`f0c435a`（验收记录），`d5511f0`（合并） | [#85](https://github.com/kanzakimy0/TravelAssist/pull/85) 已合入 develop；64/64 tests、build、五尺寸 Mapbox/fallback 证据有效 |
 | TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 已完成（主流程导航闭环已合入） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591`（实现），`445150f`（追踪），`550a2b8`（合并） | [#101](https://github.com/kanzakimy0/TravelAssist/pull/101) 已合入 develop；Issue #78 已关闭 |
-| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 待审查（Detail Workspace 完成；真实 Provider / AI / DB 不在范围） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `7629c8c`（实现），`a940a41`（验证追踪） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) Draft；防止仓库自动合并；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
+| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 已合并（TASK-010-B 本轮仅复验导航；窄屏返回入口待对应任务复核） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `b3d411b`（合入 head），`4c1d9bb`（合并） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) 已合入 develop；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 

@@ -552,12 +552,13 @@
 
 .heroAction {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
   margin-top: 28px;
 }
 
-.planButton {
+.shell .planButton {
   display: flex;
   align-items: center;
   gap: 18px;
@@ -574,6 +575,19 @@
 .heroAction > span {
   color: var(--pc-text-secondary);
   font-size: 12px;
+}
+
+.shell .secondaryAction {
+  color: var(--pc-text-primary);
+  background: var(--pc-bg-card);
+  border-color: var(--pc-border-subtle);
+}
+
+.navigationNote {
+  margin-top: 10px;
+  max-width: 32rem;
+  font-size: 12px;
+  color: var(--pc-text-secondary);
 }
 
 .sectionHeading {
