@@ -5,7 +5,8 @@
 - Task ID：`TASK-012-A`
 - Owner：`A / Main Travel System`
 - GitHub Issue：`#111`
-- Status：`待验收`（用户明确授权按当前实现合并；1180px 保留 Drawer，原侧栏条目差异留档）
+- Status：`已完成`（用户授权的当前实现范围已合并；1180px 保留 Drawer，原侧栏条目差异留档）
+- Merge Commit：`66b7ca621b24ed6c973f6a0e6cb3591b3515165f`；验收 head `e835e75be5ecc226ac33df205f9216c91969544a`，两者文件树相同。PR #124 已合入 develop，Issue #111 完成。
 - Design Source：`docs/ui/planner-right-panel-secondary-tabs.md` v0.5
 - Design Freeze Commit：`adb0ec680f96857ca5ace4ccd54979d2dd3ddee2`
 - Depends On：
