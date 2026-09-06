@@ -27,6 +27,9 @@ export function PlannerPopover({
     const element = surface.current;
     const button = trigger.current;
     if (!element || !button) return;
+    // The top layer keeps viewport coordinates independent of animated,
+    // filtered or scroll-clipped ancestors, including nested detail menus.
+    element.showPopover();
     function position() {
       if (!element || !button) return;
       const rect = button.getBoundingClientRect();
@@ -82,6 +85,7 @@ export function PlannerPopover({
       window.removeEventListener("resize", position);
       document.removeEventListener("scroll", position, true);
       observer.disconnect();
+      if (element.matches(":popover-open")) element.hidePopover();
       button.focus({ preventScroll: true });
     };
   }, [trigger, compact]);
@@ -89,6 +93,7 @@ export function PlannerPopover({
     <div
       id={id}
       ref={surface}
+      popover="manual"
       data-planner-popover
       data-compact={compact || undefined}
       role="dialog"

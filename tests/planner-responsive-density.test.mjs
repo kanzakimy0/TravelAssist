@@ -5,6 +5,20 @@ import test from "node:test";
 const source = (path) =>
   readFile(new URL(`../src/features/planner/${path}`, import.meta.url), "utf8");
 
+test("planner menus escape transformed and clipped ancestors through the top layer", async () => {
+  const popover = await source("components/planner-popover.tsx");
+  assert.match(popover, /popover="manual"/);
+  assert.ok(
+    popover.indexOf("element.showPopover()") <
+      popover.indexOf("function position()"),
+  );
+  assert.match(popover, /element.hidePopover\(\)/);
+  assert.match(
+    await source("planner.module.css"),
+    /\.popover::backdrop\s*\{\s*pointer-events: none;/,
+  );
+});
+
 test("desktop execution dock uses a true quarter viewport without Day summary", async () => {
   const css = await source("planner.module.css");
   assert.match(css, /grid-template-rows: minmax\(0, 1fr\) 25dvh/);

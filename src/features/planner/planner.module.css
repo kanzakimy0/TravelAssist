@@ -1237,10 +1237,9 @@
   box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
   backdrop-filter: blur(10px);
 }
-/* A filtered ancestor would make a nested fixed surface relative to its scroll
-   box. Only the outer surface drops blur while its detail surface is open. */
-.popover:has(.popover) {
-  backdrop-filter: none;
+/* Manual popovers use the top layer; outside clicks still reach the page. */
+.popover::backdrop {
+  pointer-events: none;
 }
 .rightSlot:has(.popover) {
   z-index: 40;

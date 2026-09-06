@@ -12,6 +12,15 @@
 
 ## Implemented / Updated Visual Contract
 
+### Quick popover visibility correction — 2026-09-06
+
+- 用户复验发现五张快速卡片点击后看不到子菜单。复现：普通动效下父级 `workspace-view-enter` 的 `animation-fill-mode: both` 保留 transform，使 fixed 弹层误用父级坐标系；1440px 窗口中同行人弹层 x≈1713px。嵌套弹层也受祖先定位/裁切影响。
+- 之前的 reduced-motion 交互测试和 DOM 存在性不足以证明普通动效下可见；本条明确更正之前的过宽验收结论。
+- PlannerPopover 改用浏览器 manual popover top layer，保留 DOM/样式继承及原定位、紧凑宽度、外侧关闭、Escape、焦点恢复；不关闭页面动画，不改变业务字段或偏好保存方式。
+- 新浏览器检查：1440×900 / 1280×800 / 1024×768 / 390×844 / 320×740 × 普通/减少动效，五张一级卡片与三类二级设置共 80 次弹层检查通过；逐项断言视口内边界和真实点击命中，实际增减人数、切换偏好、应用日期、编辑二级末尾输入及 Escape/焦点恢复。
+- lint / typecheck / build / 171 Node tests 通过；真实 Mapbox + forced fallback 工作台与既有交互回归通过。无新增依赖或业务改动。预览 3113 已更新，补入原 Draft PR #139，未合并。
+- 证据：[弹层可见性报告](../qa/planner-density/quick-popovers/report.json)；脚本 `tools/qa/planner-quick-popovers-check.mjs`。后文 170 tests 为本修复前的历史结果。
+
 1. 桌面执行栏高度为真正 `25dvh`，去掉原 200–252px 上下限；左侧贴窗口、底部贴窗口、右侧贴右栏。大屏 2560×1440 时高 360px，1920×1080 时 270px；1440×900 时 225px。
 2. 删除页签上方的 Day / 天气汇总行与多余 padding。保留时间轴内部必要日期和时长语义，不删除行程数据；六 Tab 名称与行为不变。
 3. 时间轴使用可伸缩网格和节点高度，保留真实时长比例；移动链卡片均分剩余宽度，字号、内距随窗口伸缩。小屏底部抽屉保留既有交互，时间轴也填充可用高度，不强塞为触控不可用的 25dvh。

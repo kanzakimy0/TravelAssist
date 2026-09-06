@@ -4,6 +4,8 @@ Issue #135 / TASK-012-A follow-up。比较基线 `c88d338`（已合并 v0.5）�
 
 ## Reports
 
+- [快速卡片与二级弹层：五尺寸 × 两种动效，视口边界/点击/编辑/焦点检查](quick-popovers/report.json)。此项补足旧测试 reduced-motion 掩盖普通动效祖先 transform 的缺口；不能仅用 DOM 存在判断弹层可用。
+
 - [九视口真实地图 + 冻结区域比较](mapbox/report.json)
 - [九视口 fallback + 冻结区域比较](fallback/report.json)
 - [最终生产构建九视口真实地图](production/mapbox/report.json)

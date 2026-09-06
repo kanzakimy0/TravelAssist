@@ -2,6 +2,8 @@
 
 ## TASK-012-A 响应式密度补修（2026-09-06）
 
+- 用户复验补修：右栏五卡/三级偏好弹层移至 top layer，修正普通动效下 fixed 坐标越界；五尺寸 × 两种动效共 80 次真实可见/可点击/编辑/焦点检查通过，171 tests / lint / typecheck / build 通过；继续使用 Draft PR #139，状态待审查。原 reduced-motion/DOM 检查未覆盖该缺陷，完整更正与证据见 Result。
+
 - Issue：#135；Owner：A；WBS：1.5 / 1.6 / 1.7 / 4.1 / 4.8 / 4.14（既有 Planner UI 补修）。
 - 状态：待审查；历史 TASK-012-A / #111 / PR #124 的已合并状态不变。
 - 基线：`c88d3381685615fcd0e1dd9e3217bd871e50c2ac`；分支：`codex/planner-responsive-density` → `develop`。
