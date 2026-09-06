@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Preferences`
 - Priority: `P1`
-- Status: `待审查（待用户验收）`
+- Status: `已完成（用户验收通过；问题后续独立修正）`
 - Depends On: `5.5`
 - Dependency State: `5.5 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -16,8 +16,10 @@
 - Implementation Branch: `feature/b-account-wbs-5-9-dining-accommodation-budget-ui`
 - Proposed Issue: `[WBS 5.9][B] 餐饮 / 住宿 / 预算偏好 UI`
 - GitHub Issue: `#138`
-- Implementation Commit: `PENDING（提交后返回实际值）`
-- Pull Request: `PENDING（push 后由仓库自动化创建）`
+- Implementation Commit: `060289fdb1d4c4f93eac4bfb7f50f46dc54ecd2e`
+- Pull Request: `#140（已合入 develop）`
+- Merge Commit: `3abde3df75735bb7cedda363514024a0b51d6528`
+- Acceptance: `2026-09-06 用户验收通过；已知问题后续以独立 Task 修正`
 - Task File: `docs/tasks/TASK-WBS-5.9-b-dining-accommodation-budget-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.9-b-dining-accommodation-budget-ui.md`
 

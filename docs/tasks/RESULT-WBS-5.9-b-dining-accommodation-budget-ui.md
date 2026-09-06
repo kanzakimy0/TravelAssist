@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed / 实现与本地验证完成，等待用户验收。WBS 5.9 保持 `待审查`，Task 保持 `待审查（待用户验收）`，Issue #138 保持 Open。
+Completed / 实现 PR #140 已合入 `develop`，用户于 2026-09-06 验收通过。WBS 5.9 与 Task 已完成，Issue #138 已关闭；用户确认已知问题后续通过独立 Task 修正。
 
 ## Preflight
 
@@ -14,15 +14,16 @@ Completed / 实现与本地验证完成，等待用户验收。WBS 5.9 保持 `�
 
 ## Tracking
 
-- Issue: `#138`，Open
+- Issue: `#138`，Closed
 - Task File: `docs/tasks/TASK-WBS-5.9-b-dining-accommodation-budget-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.9-b-dining-accommodation-budget-ui.md`
 - Branch: `feature/b-account-wbs-5-9-dining-accommodation-budget-ui`
-- Implementation Commit: `PENDING（本提交；提交后返回实际 SHA）`
-- Final Head: `PENDING（push 后核对）`
-- PR: `PENDING（push 后由仓库自动化创建）`
-- Merge Commit: `PENDING`
-- WBS updated: 5.9 = `待审查`；Task = `待审查（待用户验收）`
+- Implementation Commit: `060289fdb1d4c4f93eac4bfb7f50f46dc54ecd2e`
+- Final Head: `060289fdb1d4c4f93eac4bfb7f50f46dc54ecd2e`
+- PR: `#140`，已合入 `develop`
+- Merge Commit: `3abde3df75735bb7cedda363514024a0b51d6528`
+- WBS updated: 5.9 = `已完成`；Task = `已完成（用户验收通过；问题后续独立修正）`
+- User Acceptance: `2026-09-06 验收通过；已知问题后续修改`
 
 ## Dining UI
 
@@ -125,19 +126,20 @@ Completed / 实现与本地验证完成，等待用户验收。WBS 5.9 保持 `�
 
 ## Git
 
-- Commit: `PENDING（本提交；提交后返回实际 SHA）`
-- Push: `PENDING`
-- PR: `PENDING`
-- Merge behavior: 未主动开启 auto-merge；push 后以仓库既有自动化实际行为为准
-- latest origin/develop: `85cd0b1ca95bca4db867bab901c86f2a794fbbed`
-- unpushed commits: 提交前为 0；push 后复核
-- tracked working tree: 提交前仅当前 WBS-5.9-B 目标文件有差异
+- Commit: `060289fdb1d4c4f93eac4bfb7f50f46dc54ecd2e`
+- Push: 成功
+- PR: `#140`，Merged
+- Merge behavior: 实现分支由仓库自动化创建并合入 PR #140；未 force push、rebase 或 squash
+- latest origin/develop: `3abde3df75735bb7cedda363514024a0b51d6528`，包含实现提交
+- unpushed commits: 无
+- tracked working tree: clean（验收 tracking 收尾前仅保留三项受保护 untracked 文件）
 - preserved untracked files: `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py`
 
 ## Problems
 
 - 全仓 Prettier 的 25 个历史 baseline 文件仍失败；当前 Task targeted format 通过，按范围规则未修改这些文件。
 - Node 全仓测试输出既有 MODULE_TYPELESS_PACKAGE_JSON 性能提示；187 项测试全部通过，且未修改 package 配置。
+- 用户已先行验收通过；已知不足不在本次验收收尾中修改，后续应以独立 Task 处理。
 
 ## Next
 
