@@ -2,7 +2,9 @@
 
 ## Status
 
-Awaiting Review
+Completed
+
+User acceptance passed on 2026-09-06.
 
 ## Coordination Gate
 
@@ -18,14 +20,15 @@ Awaiting Review
 
 ## Tracking
 
-- Issue: [#105](https://github.com/kanzakimy0/TravelAssist/issues/105)（Open）
+- Issue: [#105](https://github.com/kanzakimy0/TravelAssist/issues/105)（Closed / completed）
 - Task File: `docs/tasks/TASK-WBS-5.5-b-preference-center-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.5-b-preference-center-ui.md`
 - Branch: `feature/b-account-wbs-5-5-preference-center-ui`
-- Implementation Commit: `PENDING`
-- Final Head: `PENDING`
-- Draft PR: `PENDING`
-- WBS updated: 5.5 与唯一 `WBS-5.5-B` tracking record 已更新为待审查。
+- Implementation Commit: `7484fafa61839e50507b70fbb02f811a8d44632d`
+- Final Head: `7484fafa61839e50507b70fbb02f811a8d44632d`
+- Pull Request: [#109](https://github.com/kanzakimy0/TravelAssist/pull/109)（Merged）
+- Merge Commit: `2acafe631960fdb63b50b56df081154b0e3e0b59`
+- WBS updated: 5.5 与唯一 `WBS-5.5-B` tracking record 已更新为已完成。
 
 ## Overview UI
 
@@ -153,17 +156,17 @@ Awaiting Review
 ## Git
 
 - Branch: `feature/b-account-wbs-5-5-preference-center-ui`
-- Commit: `PENDING`
-- Push: `PENDING`
-- PR: `PENDING`
-- Merge Commit: None；按用户要求不自动合并。
+- Commit: `7484fafa61839e50507b70fbb02f811a8d44632d`
+- Push: Completed。
+- PR: [#109](https://github.com/kanzakimy0/TravelAssist/pull/109)（Merged）
+- Merge Commit: `2acafe631960fdb63b50b56df081154b0e3e0b59`；由仓库既有 `auto-create-pr.yml` 自动创建并合并，执行者未手动合并。
 
 ## Three-way Sync
 
-- Task: 待验收。
-- Issue: #105 Open。
-- WBS 5.5: 待审查。
-- PR: Draft / Open（创建后回填）。
+- Task: 已完成。
+- Issue: #105 Closed。
+- WBS 5.5: 已完成。
+- PR: #109 Merged。
 
 ## Problems
 
