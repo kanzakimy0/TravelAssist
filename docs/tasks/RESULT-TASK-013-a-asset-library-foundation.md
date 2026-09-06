@@ -12,8 +12,8 @@ Completed — implementation and local validation complete; **待验收 / WBS �
 - Precreated branch head: `e3eb761491d8469ad39dacb820f36f05d986d4e8`.
 - Actual base / pre-delivery develop: `edd91cfdaea209c629d0fe6bd01a45788f5df803` (2026-09-07).
 - Existing branch safely fast-forwarded to latest develop, no rebase / force push.
-- Commit(s): PENDING (filled after implementation commit).
-- Draft PR: PENDING (created after push; no implementation PR existed at start).
+- Commit(s): `4c56dacd1ace2f4849a8dadf24663fd8ca728dcc` (implementation and validation); subsequent documentation-only tracking commit is the PR head, also recorded in Issue #112.
+- Draft PR: [#166](https://github.com/kanzakimy0/TravelAssist/pull/166), Open / Draft, not merged. Branch push confirmed; no implementation PR existed at start.
 - User's dirty Planner workspaces and live 3113 preview remain untouched; implementation used a separate worktree.
 
 ## Conflict Audit
