@@ -10,7 +10,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Preferences`
 - Priority: `P0`
-- Status: `Ready / 可开始`
+- Status: `进行中`
 - Dependency: `5.5`
 - Dependency State: `5.5 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -255,14 +255,14 @@ advanced
 
 语义：
 
-| 维度 | 代表内容 |
-|---|---|
-| 自然 | 山川、湖泊、海岸、公园、自然景观 |
-| 历史 | 古迹、历史建筑、遗址、寺社、博物馆等历史内容 |
-| 人文 | 街区、市场、当地生活、社区文化、传统生活方式 |
-| 艺术 | 美术馆、设计、建筑、演出、艺术空间 |
-| 摄影 | 取景价值、摄影体验、光线 / 景观导向活动 |
-| 活动体验 | 手作、户外、节庆、娱乐、参与式体验 |
+| 维度     | 代表内容                                     |
+| -------- | -------------------------------------------- |
+| 自然     | 山川、湖泊、海岸、公园、自然景观             |
+| 历史     | 古迹、历史建筑、遗址、寺社、博物馆等历史内容 |
+| 人文     | 街区、市场、当地生活、社区文化、传统生活方式 |
+| 艺术     | 美术馆、设计、建筑、演出、艺术空间           |
+| 摄影     | 取景价值、摄影体验、光线 / 景观导向活动      |
+| 活动体验 | 手作、户外、节庆、娱乐、参与式体验           |
 
 禁止增加第 7 个正式大维度。
 
@@ -511,11 +511,7 @@ Recommendation
 
 ```ts
 type AttractionPreferenceLevel =
-  | "veryLike"
-  | "like"
-  | "neutral"
-  | "dislike"
-  | "unset";
+  "veryLike" | "like" | "neutral" | "dislike" | "unset";
 ```
 
 状态至少包含：
@@ -1108,6 +1104,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 ## Status
 
 ## Preflight
+
 - origin/develop base:
 - dependency 5.5:
 - duplicate Task:
@@ -1115,6 +1112,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -1126,6 +1124,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - WBS updated:
 
 ## Attraction / Activity UI
+
 - generic shell replaced:
 - current summary:
 - six frozen dimensions:
@@ -1134,6 +1133,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - candidate future controls added:
 
 ## State Boundary
+
 - Persistence:
 - Formal Preference Schema:
 - Planner Contract:
@@ -1142,12 +1142,14 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - overview cross-route synchronization:
 
 ## Save Flow
+
 - Save:
 - Cancel:
 - Restore:
 - dirty detection:
 
 ## Local Asset Discovery
+
 - scan roots:
 - candidates found:
 - selected:
@@ -1155,6 +1157,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - provenance:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -1163,6 +1166,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - horizontal overflow:
 
 ## Regression
+
 - Preference overview:
 - Mobility 5.7:
 - other category shells:
@@ -1171,6 +1175,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - Avatar Popover:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1183,6 +1188,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - browser QA:
 
 ## Ownership Safety
+
 - A Task modified:
 - Other B Task modified:
 - 5.7 code/status changed:
@@ -1193,6 +1199,7 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - shared Shell modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -1203,9 +1210,11 @@ docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md
 - preserved untracked files:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start WBS 5.9 / 5.11 / 5.16.
 ```
 

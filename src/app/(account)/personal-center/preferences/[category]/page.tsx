@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { AttractionActivityPreferencePage } from "@/features/preferences/attraction-activity-preference-page";
 import { PreferenceCategoryPage } from "@/features/preferences/preference-category-page";
 import { MobilityPreferencePage } from "@/features/preferences/mobility-preference-page";
 import {
@@ -37,6 +38,7 @@ export default async function PreferenceCategoryRoute({
   if (!isRouteKey(category)) notFound();
 
   if (category === "mobility") return <MobilityPreferencePage />;
+  if (category === "attractions") return <AttractionActivityPreferencePage />;
 
   return (
     <PreferenceCategoryPage
