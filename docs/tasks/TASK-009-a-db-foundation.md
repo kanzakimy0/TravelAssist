@@ -1,4 +1,5 @@
 # TravelAssist — TASK-009-A
+
 ## Supabase PostgreSQL / Drizzle / Migration 数据库基础搭建
 
 > Task ID：`TASK-009`  
@@ -6,7 +7,7 @@
 > Responsibility：`Shared Infra`  
 > WBS：`8.1 / 8.4`  
 > Priority：`P0`  
-> Status：`Planned`  
+> Status：`Partially Completed / 本机 Docker 验收阻塞`\
 > GitHub Issue：`#64`  
 > Proposed Branch：`feature/a-db-foundation`  
 > Created：2026-09-05
@@ -794,15 +795,18 @@ docs/tasks/RESULT-TASK-009-a-db-foundation.md
 # TASK-009-A Result
 
 ## Status
+
 Completed / Partially Completed / Blocked
 
 ## Prerequisite
+
 - TASK-008.1 merged into develop:
 - Issue #60 state:
 - base commit:
 - working tree clean before start:
 
 ## Tracking
+
 - WBS: 8.1 / 8.4
 - Issue: #64
 - Task File: docs/tasks/TASK-009-a-db-foundation.md
@@ -813,6 +817,7 @@ Completed / Partially Completed / Blocked
 - WBS updated:
 
 ## Versions Added
+
 - Supabase CLI:
 - @supabase/supabase-js:
 - @supabase/ssr:
@@ -821,6 +826,7 @@ Completed / Partially Completed / Blocked
 - PostgreSQL driver:
 
 ## Repository Foundation
+
 - supabase config:
 - migrations path:
 - seed:
@@ -830,12 +836,14 @@ Completed / Partially Completed / Blocked
 - generated types:
 
 ## Migration
+
 - migration file:
 - PostGIS enabled:
 - second Drizzle migration history created: No
 - drizzle-kit push used on remote: No
 
 ## Local Database Validation
+
 - Docker:
 - db:start:
 - db:reset:
@@ -846,6 +854,7 @@ Completed / Partially Completed / Blocked
 - db:stop:
 
 ## CI
+
 - workflow/file:
 - local DB only:
 - production credentials required: No
@@ -853,6 +862,7 @@ Completed / Partially Completed / Blocked
 - result:
 
 ## Environment / Security
+
 - .env.example updated:
 - real secrets committed: No
 - DATABASE_URL exposed to client: No
@@ -860,6 +870,7 @@ Completed / Partially Completed / Blocked
 - build requires cloud DB: No
 
 ## Application Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -868,6 +879,7 @@ Completed / Partially Completed / Blocked
 - git diff --check:
 
 ## Scope Preserved
+
 - User/Profile Schema added: No
 - Auth flow added: No
 - Preference/Companion Schema added: No
@@ -877,9 +889,11 @@ Completed / Partially Completed / Blocked
 - production DB modified: No
 
 ## Problems / Blockers
+
 - ...
 
 ## Ready For Review
+
 Yes / No
 ```
 

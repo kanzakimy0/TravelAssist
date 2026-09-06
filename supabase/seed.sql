@@ -1,0 +1,2 @@
+-- Intentionally empty. TASK-009 has no business tables or seed records.
+-- Never place users, credentials, bookings, payment data or PII here.

@@ -9,13 +9,34 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
+    "db:start": "node scripts/db/local.mjs start",
+    "db:stop": "node scripts/db/local.mjs stop",
+    "db:status": "node scripts/db/local.mjs status",
+    "db:reset": "node scripts/db/local.mjs reset",
+    "db:lint": "node scripts/db/local.mjs lint",
+    "db:test": "node scripts/db/local.mjs test",
+    "db:smoke": "node scripts/db/local.mjs test",
+    "db:types": "node scripts/db/local.mjs types",
+    "db:types:check": "node scripts/db/local.mjs types-check",
+    "db:migration:new": "node scripts/db/local.mjs migration-new",
+    "db:foundation:test": "node --test tests/task-009*.test.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "0.12.6",
+    "@supabase/supabase-js": "2.115.0",
+    "drizzle-orm": "0.45.2",
     "mapbox-gl": "^3.30.0",
     "next": "16.3.4",
+    "postgres": "3.4.9",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "server-only": "0.0.1"
+  },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "0.25.12"
+    }
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
@@ -23,9 +44,11 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "drizzle-kit": "0.31.10",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.4",
     "prettier": "3.9.6",
+    "supabase": "2.116.0",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3"
   }

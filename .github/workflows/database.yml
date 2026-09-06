@@ -1,0 +1,76 @@
+name: Local database foundation
+
+on:
+  pull_request:
+    branches: [develop]
+    paths:
+      - "supabase/**"
+      - "scripts/db/**"
+      - "src/db/**"
+      - "src/lib/supabase/**"
+      - "src/types/database.generated.ts"
+      - "tests/task-009*"
+      - "drizzle.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".env.example"
+      - ".nvmrc"
+      - ".github/workflows/database.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: local-db-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  migration-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SUPABASE_TELEMETRY_DISABLED: "1"
+      DO_NOT_TRACK: "1"
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Foundation guards (no database)
+        run: npm run db:foundation:test
+      - name: Start ephemeral Local Supabase
+        run: npm run db:start
+      - name: Replay SQL migrations and generate types
+        run: npm run db:reset
+      - name: Lint public application schema
+        run: npm run db:lint
+      - name: Verify PostGIS in the database
+        run: npm run db:test
+      - name: Preserve CLI-generated types for review
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: local-database-types
+          path: src/types/database.generated.ts
+          if-no-files-found: error
+          retention-days: 7
+      - name: Enforce committed generated types
+        run: |
+          npm run db:types:check
+          git ls-files --error-unmatch src/types/database.generated.ts
+          git diff --exit-code -- src/types/database.generated.ts
+      - name: Validate application boundaries without cloud credentials
+        run: |
+          npm run lint
+          npm run typecheck
+          npm run build
+      - name: Local status (credentials redacted)
+        run: npm run db:status
+      - name: Stop this runner's local stack
+        if: always()
+        run: npm run db:stop
