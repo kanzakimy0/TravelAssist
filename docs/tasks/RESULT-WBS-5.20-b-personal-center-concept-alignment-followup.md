@@ -2,19 +2,20 @@
 
 ## Status
 
-`待验收 / 待合并`。用户已逐页确认当前视觉结果可接受；实现、静态测试、生产构建与浏览器回归均通过。等待实现 PR 合入 `develop` 后执行最终 tracking closeout。
+`已完成`。用户已逐页确认当前视觉结果可接受；实现、静态测试、生产构建与浏览器回归均通过。PR #150 已合入 `develop`，最终 tracking closeout 已执行。
 
 ## Tracking
 
 - Task ID: `WBS-5.20-B-FOLLOWUP`
 - WBS: `5.20（completed-task UI follow-up；关联 5.4 / 5.5 / 5.6 / 5.10）`
 - Owner: B
-- Issue: #149（Open）
+- Issue: #149（完成评论发布后关闭）
 - Task File: `docs/tasks/TASK-WBS-5.20-b-personal-center-concept-alignment-followup.md`
 - Branch: `fix/b-wbs-5-20-personal-center-concept-alignment`
 - Implementation Commit: `ea10d79ffd6b54f527dc2ff547d6b2fb0b80b7e4`
-- Pull Request: #150（Draft / Open）
-- Merge Commit: PENDING
+- Pull Request: #150（Merged）
+- Merge Commit: `9d3694691d1ae7d1fcdbe21a2569d833dca1b34f`
+- Closeout Pull Request: PENDING
 
 ## Delivered
 
@@ -60,4 +61,4 @@
 
 ## Next
 
-Push feature branch, create the PR to `develop`, merge after checks, then complete the tracking closeout and close Issue #149. Do not start another WBS.
+Publish the final Issue comment, close Issue #149, merge the tracking-only closeout PR, then stop. Do not start another WBS.

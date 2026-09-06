@@ -4,13 +4,15 @@
 
 - Task ID: `WBS-5.20-B-FOLLOWUP`
 - Owner: B
-- Status: 待验收
+- Status: 已完成
 - WBS: `5.20（completed-task UI follow-up；关联 5.4 / 5.5 / 5.6 / 5.10）`
 - GitHub Issue: `#149`
 - Branch: `fix/b-wbs-5-20-personal-center-concept-alignment`
 - Depends On: `WBS-5.4-B-V2 / WBS-5.5-B / WBS-5.6-B / WBS-5.10-B / WBS-5.20-B`
 - Commit: `ea10d79ffd6b54f527dc2ff547d6b2fb0b80b7e4`
 - Pull Request: `#150`
+- Merge Commit: `9d3694691d1ae7d1fcdbe21a2569d833dca1b34f`
+- Closeout Pull Request: PENDING
 - Result: `docs/tasks/RESULT-WBS-5.20-b-personal-center-concept-alignment-followup.md`
 
 ## Background
@@ -53,8 +55,8 @@
 - [x] 旅行偏好顶部页面操作与全局通知/账户工具栏不重叠。
 - [x] 主要桌面和移动尺寸无横向溢出。
 - [x] 既有页面交互与导航保护保持有效。
-- [ ] PR 已合入 `develop`。
-- [ ] Issue / Task / Result / WBS 完成态已同步。
+- [x] PR 已合入 `develop`。
+- [x] Issue / Task / Result / WBS 完成态已同步。
 
 ## Validation
 
@@ -76,6 +78,6 @@
 - `C:/Users/Administrator/.codex/visualizations/2026/09/05/01a07167-d0d7-75a0-85de-5e63712fc6e9/preference-header-actions-clear`
 - `C:/Users/Administrator/.codex/visualizations/2026/09/05/01a07167-d0d7-75a0-85de-5e63712fc6e9/personal-center-concept-closeout`
 
-## Completion Rule
+## Completion
 
-用户已完成视觉验收，但在 PR 合入 `develop` 前 Task 保持“待验收”、WBS follow-up 保持“待审查”、Issue #149 保持 Open。合并后补齐真实 Commit、PR 与 merge commit，再将本记录、Result 和 WBS follow-up 同步为已完成并关闭 Issue。
+用户已完成视觉验收。PR #150 已通过仓库自动化以普通 merge commit 合入 `develop`；未使用 squash、rebase 或 force push。最终 closeout 补齐真实 Commit、PR 与 merge commit，并在完成评论发布后关闭 Issue #149。
