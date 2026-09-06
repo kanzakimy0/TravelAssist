@@ -11,12 +11,14 @@
 - Status: `待验收`
 - WBS: `3.1 / 5.1 / 5.10 / 5.20`（仅本任务导航子集）
 - Commit: `0e581513e72b5890b77bf74f6f369fc73f6538f0`（实现提交）
+- Revalidation Commit: `fe17962532f705556c3ca69c0871f593d366acfa`
+- Integrated develop: `8b83628f60e7dd2a07231a59ca448c4dc5af510d`（安全同步提交 `fcd934e6d13d21f9aea0736385038a8c1336a5fe`）
 - Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Open Draft → develop
 - Specification Source: 文档 Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`
 - Supersedes: 本文件 v1.0 未执行版本；**不创建重复 Personal Center 导航 Task**
 - Depends On:
   - `TASK-010-A / Issue #78 / PR #101` 已合入 `develop`，依赖已满足
-  - `TASK-011-A / Issue #86 / Draft PR #102` 独立进行；本 Task 不修改其 Planner 高冲突文件
+  - `TASK-011-A / Issue #86 / PR #102` 已合并（`4c1d9bb`）；本 Task 不修改其 Planner 高冲突文件，只复验导航
 - Design Source:
   - `docs/ui/navigation-flow.md` v1.2
   - `docs/ui/navigation-transition-audit-2026-09-06.md`
@@ -64,6 +66,8 @@
 ---
 
 ## 3. Current Audit Snapshot
+
+以下为文档 PR #106 编写时的历史快照；本次最新执行状态以 Metadata 和文末执行记录为准，PR #102 已合并。
 
 ### Already Complete on `develop`
 
@@ -432,6 +436,6 @@ Not implemented / Non-goal
 
 ## Execution Record — 2026-09-06
 
-自身范围已实现，状态为待验收；81/81 tests、72/72 Logo QA、四尺寸 Guard / history / keyboard / account 回归通过。全库 format:check 有 21 个逐项核对的既有基线例外，未写为 Passed。完整证据与分类见 `RESULT-TASK-010-b-personal-center-navigation.md`。PR #102 / #106 仍未合并；PR #108 保持 Draft，不自动 merge。
+自身范围已实现，状态为待验收。复用原分支和 Draft PR #108，未重复创建或重建实现。最新 develop `8b83628` 已安全同步；123/123 tests、76/76 Logo QA、四尺寸 Guard / history / keyboard / account 回归通过。全库 format:check 有 26 个逐项核对的既有基线例外，未写为 Passed。本任务文件格式通过。完整证据与分类见 `RESULT-TASK-010-b-personal-center-navigation.md`。
 
-交付前 develop 合入 PR #109，已安全同步 `2acafe631960fdb63b50b56df081154b0e3e0b59` 并重新验证：81 项测试、72 次 Logo QA（原矩阵 44 次 + 新增偏好分类 28 次）。初次 typecheck 的旧路由类型缓存已由 build 重生成并复测通过。PR #102 仍为外部待合并项。
+PR #102 已合并，Detail Logo 四尺寸通过；1440 / 1024 的返回 Planner 与共享 Map DOM 生命周期通过。390 / 320 的原有 Header 隐藏导航，返回 Planner 不可用，记录为受保护 Planner 范围的上游缺口，未计为通过，也未越界修复。文档 PR #106 仍未合并；PR #108 保持 Draft，不自动 merge。原工作区未提交修改及其他预览保持不变。
