@@ -351,15 +351,19 @@
 }
 
 .checkboxCard {
+  position: relative;
   justify-content: flex-start;
   cursor: pointer;
 }
 
 .checkboxCard input {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  top: 50%;
+  left: 14px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  transform: translateY(-50%);
   opacity: 0;
 }
 
