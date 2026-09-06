@@ -9,7 +9,9 @@ if (!playwrightPath) throw new Error("CODEX_PLAYWRIGHT_PATH is required");
 const { chromium } = require(playwrightPath);
 
 const baseUrl = process.env.WBS_BASE_URL ?? "http://localhost:3000";
-const evidenceDir = path.resolve("docs/evidence/WBS-5.7-B/mobility");
+const evidenceDir = path.resolve(
+  process.env.WBS_EVIDENCE_DIR ?? "docs/evidence/WBS-5.7-B/mobility",
+);
 await mkdir(evidenceDir, { recursive: true });
 
 const viewports = [
@@ -81,6 +83,27 @@ try {
     await page.getByText("平衡 · 少换乘 · 少步行", { exact: true }).waitFor();
     assert.equal(await page.getByRole("radio").count(), 3);
     assert.equal(await page.getByRole("checkbox").count(), 3);
+    const checkboxGeometry = await page
+      .getByRole("checkbox")
+      .evaluateAll((checkboxes) =>
+        checkboxes.map((checkbox) => {
+          const input = checkbox.getBoundingClientRect();
+          const card = checkbox.parentElement?.getBoundingClientRect();
+          return {
+            contained:
+              Boolean(card) &&
+              input.top >= card.top - 1 &&
+              input.bottom <= card.bottom + 1 &&
+              input.left >= card.left - 1 &&
+              input.right <= card.right + 1,
+          };
+        }),
+      );
+    assert.equal(
+      checkboxGeometry.every((item) => item.contained),
+      true,
+      `${label}: checkbox focus target must stay inside its card`,
+    );
     assert.equal(await page.locator('button[aria-pressed="true"]').count(), 2);
     const heroImage = page.locator("main img").first();
     await heroImage.waitFor();
@@ -105,6 +128,21 @@ try {
     await page.screenshot({
       path: path.join(evidenceDir, `${label}-bottom.png`),
     });
+    if (width <= 390) {
+      const publicTransitLabel = page.getByText("不乘坐公共交通", {
+        exact: true,
+      });
+      await publicTransitLabel.click();
+      const selectedCard = await page
+        .getByRole("checkbox", { name: /不乘坐公共交通/ })
+        .evaluate((checkbox) =>
+          checkbox.parentElement?.getBoundingClientRect().toJSON(),
+        );
+      assert.ok(
+        selectedCard && selectedCard.bottom > 64 && selectedCard.top < height,
+        `${label}: checkbox focus must not jump content to a phantom position`,
+      );
+    }
     await context.close();
   }
 
