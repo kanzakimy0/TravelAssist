@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Trip Library`
 - Priority: `P0`
-- Status: `Ready / 可开始`
+- Status: `待审查`
 - Depends On: `1.27, 5.1`
 - Dependency State at authoring: `1.27 = 已完成`, `5.1 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -16,6 +16,7 @@
 - Authoring Base: `dc65b8c5324ef18e7af08d0788f9b0aa993c52af` or newer `origin/develop`
 - Proposed Implementation Branch: `feature/b-account-wbs-5-10-trip-library-ui`
 - Proposed Issue: `[WBS 5.10][B] 我的旅行 / Trip Library UI`
+- GitHub Issue: `#143`
 - Task File: `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.10-b-trip-library-ui.md`
 
@@ -697,6 +698,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 ## Status
 
 ## Preflight
+
 - origin/develop base:
 - dependency 1.27:
 - dependency 5.1:
@@ -706,6 +708,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -717,6 +720,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - WBS updated:
 
 ## Trip Library
+
 - placeholder replaced:
 - tabs:
 - search:
@@ -725,6 +729,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - new trip route:
 
 ## Next Trip Hero
+
 - shown on:
 - trip summary:
 - booking completion:
@@ -732,18 +737,21 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - planner bridge:
 
 ## Trip Cards
+
 - trip status:
 - reservation summary:
 - partner branding boundary:
 - more menu:
 
 ## Drafts
+
 - continue planning:
 - normal delete:
 - external reservation warning:
 - partner cancellation triggered:
 
 ## History
+
 - year grouping:
 - recap:
 - copy trip:
@@ -751,6 +759,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - favorite toggle:
 
 ## Favorites
+
 - category filters:
 - view detail:
 - remove favorite:
@@ -758,6 +767,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - booking / price behavior:
 
 ## State Boundary
+
 - Persistence:
 - Trip Data Model 5.18:
 - Trip Save/Read Contract 5.19:
@@ -767,6 +777,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - network writes:
 
 ## Local Assets
+
 - scan roots:
 - candidates:
 - selected:
@@ -774,12 +785,14 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - provenance:
 
 ## Empty States
+
 - no trips:
 - no drafts:
 - no history:
 - no favorites:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -790,6 +803,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - horizontal overflow:
 
 ## Regression
+
 - Personal Home:
 - Preferences:
 - Companions:
@@ -800,6 +814,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - Avatar Popover / Sidebar:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -812,6 +827,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - browser QA:
 
 ## Ownership Safety
+
 - A Task modified:
 - TASK-010-B modified:
 - Other B Task modified:
@@ -824,6 +840,7 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - shared Shell modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -834,9 +851,11 @@ PR：`feat(WBS-5.10-B): implement trip library UI`，base `develop`。
 - preserved untracked files:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start WBS 5.18 / 5.19 / 5.20.
 ```
 
