@@ -5,7 +5,7 @@
 - Task ID：`TASK-012-A`
 - Owner：`A / Main Travel System`
 - GitHub Issue：`#111`
-- Status：`阻塞`（实现已交付；1180px 侧栏与推荐卡尺寸冻结冲突待确认）
+- Status：`待验收`（用户明确授权按当前实现合并；1180px 保留 Drawer，原侧栏条目差异留档）
 - Design Source：`docs/ui/planner-right-panel-secondary-tabs.md` v0.5
 - Design Freeze Commit：`adb0ec680f96857ca5ace4ccd54979d2dd3ddee2`
 - Depends On：
@@ -17,7 +17,8 @@
 - Base Commit：`4c1d9bbf1311a10b1e9db5bde00fe2e7b12fccab`
 - Integrated develop：`e725d21821107414a4551427d315aa55cfab7903`；集成提交 `0b93d57`，无冲突，114/114 tests 及构建复验通过。
 - Commit：`64e53b3b3d8c5adeaeb867d00e8d581384a6f2c2`（实现；追踪提交见 PR）
-- Pull Request：[\#124](https://github.com/kanzakimy0/TravelAssist/pull/124)（保持 Draft，不自动合并）
+- Pull Request：[\#124](https://github.com/kanzakimy0/TravelAssist/pull/124)（本次用户明确授权合并）
+- Merge revalidation：整合 develop `364ed22`；139 tests、lint / typecheck / build / diff-check、六尺寸双地图 QA 与 48 次 Logo QA 通过。推荐卡 geometry/content 冻结不变。1180px 保留 Drawer，不声称原侧栏验收通过；下文不得自行合并的规则不覆盖此次用户明确合并授权。
 - Planned Result：`docs/tasks/RESULT-TASK-012-a-planner-v05-visual-secondary-panels.md`
 - WBS：Planner / 地图 / 路线主系统的视觉整合、右侧设置与底部执行信息精修
 

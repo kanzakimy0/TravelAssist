@@ -2,7 +2,18 @@
 
 ## Status
 
-Blocked — 实现与自动化回归已交付，1180px 侧栏要求与推荐方案尺寸冻结的冲突尚待用户确认。暂时保留基线 Drawer，不擅自改变推荐卡。PR 保持 Draft，不自动合并。
+待验收 — 用户在说明 PR #124 状态及 1180px 差异后明确要求合并。按当前实现保留 Drawer 与冻结推荐卡；原 1180px 桌面侧栏条目仍不写为通过。完成整合复验后执行本次明确授权合并，不扩展到其他任务。
+
+## Authorized Merge Revalidation — 2026-09-06
+
+- Latest integrated develop: `364ed22ea3a15a9c802de39420b5b2d5f6daefed`；integration commit `04b2386`。
+- 仅 WBS 追踪冲突，保留 TASK-010-B / TASK-011 / Personal Center 最新记录；未回退 Logo 导航。独立 TASK-010-B 契约改为读取已存在的 WorkspaceHeader。
+- lint / typecheck / build / **139 tests** / diff-check 通过。
+- 六视口真实 Mapbox 和 forced fallback 复验通过；推荐区域及卡片 geometry/content 与冻结基线完全相同，组件源码对 develop 无差异。
+- 双引擎设置草稿、取消保存、影响预览、键盘焦点、Map ↔ Bottom、预约手动确认、六 Tab、多日范围与 Planner → Detail 地图生命周期复验通过。
+- 补验 12 路由 × 四尺寸 Logo：**48/48**，包含 Planner / Detail 与 Personal Center。
+- 本 Task 文件格式通过；当前全仓 **26** 项未修改基线格式异常，逐项核对与 origin/develop 一致。下方 114 tests / 27 warnings 是之前交付的历史结果。
+- 1180px 保留 Drawer 为此次按现状合并的明确记录，不宣称原侧栏要求通过；无 Secret / Token / 依赖或新业务 API 提交。
 
 ## Prerequisite
 
@@ -63,4 +74,4 @@ Blocked — 实现与自动化回归已交付，1180px 侧栏要求与推荐方�
 
 ## Ready For Review
 
-No — Draft 已供查看；1180px 规范冲突需确认后再完成正式验收。
+Yes — 用户明确要求按当前实现合并，整合复验已通过；1180px 原侧栏条目差异保留，不改写为通过。
