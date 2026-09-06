@@ -2,7 +2,7 @@
 
 ## Status
 
-`待审查`。实现、自动化测试、生产构建与浏览器响应式 QA 已完成；Issue #146 保持 Open，等待用户验收。
+`已完成`。实现已通过自动化测试、生产构建、浏览器响应式 QA 与用户验收；PR #147 已合入 develop，Issue #146 已关闭。
 
 ## Preflight
 
@@ -15,15 +15,15 @@
 
 ## Tracking
 
-- Issue: #146（Open）
+- Issue: #146（Closed）
 - Task File: `docs/tasks/TASK-WBS-5.20-b-personal-center-responsive-states.md`
 - Result File: `docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md`
 - Branch: `feature/b-account-wbs-5-20-personal-center-responsive-states`
 - Implementation Commit: `d50d1f53916ddc07c26037f74f26fb65579904aa`
-- Final Head: Result / tracking commit；以推送后的远端 branch head 为准
-- PR: 推送后由仓库自动化确认
-- Merge Commit: 推送后由仓库自动化确认
-- WBS updated: WBS 5.20 与 WBS-5.20-B 均为 `待审查`，未提前标记完成
+- Final Head: `24a273a07cecafed82ce78f4e5a815a8f92359c2`
+- PR: #147 已合入 develop
+- Merge Commit: `8e046329af870df7f63686648cfca21d241b7218`
+- WBS updated: WBS 5.20 与 WBS-5.20-B 均为 `已完成（用户验收通过）`
 
 ## Responsive Shell
 
@@ -136,12 +136,12 @@
 ## Git
 
 - Commit: `d50d1f53916ddc07c26037f74f26fb65579904aa`（implementation）
-- Push: 待本 Result / tracking commit 完成后一次性推送
-- PR: 推送后由仓库自动化确认
-- Merge behavior: 不主动开启 auto-merge；若仓库自动合入，仍保持 WBS / Task 待审查与 Issue Open
-- latest origin/develop: `3ecb5be81af5b681da68b8c024ad99fcbb71ae94`（实现基线）
-- unpushed commits: 推送前为 implementation + Result / tracking；推送后复核
-- tracked working tree: Result 提交后复核
+- Push: 成功；远端 implementation branch head 为 `24a273a07cecafed82ce78f4e5a815a8f92359c2`
+- PR: #147，Merged
+- Merge behavior: 仓库自动化合入；未主动开启 auto-merge
+- latest origin/develop: `8e046329af870df7f63686648cfca21d241b7218`（实现合并时）
+- unpushed commits: implementation branch 为 0
+- tracked working tree: implementation 完成时 clean
 - preserved untracked files: `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py`
 
 ## Problems

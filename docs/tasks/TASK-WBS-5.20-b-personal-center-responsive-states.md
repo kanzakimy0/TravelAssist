@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Shared State & Responsive QA`
 - Priority: `P1`
-- Status: `待审查`
+- Status: `已完成`
 - Depends On: `1.29, 5.1`
 - Dependency State at authoring: `1.29 = 已完成`, `5.1 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -1320,37 +1320,37 @@ Issue #146 = Closed
 
 # 45. Acceptance Checklist
 
-- [ ] latest develop synced
-- [ ] 1.29 = 已完成
-- [ ] 5.1 = 已完成
-- [ ] no duplicate full WBS-5.20 implementation
-- [ ] four breakpoint modes preserved
-- [ ] 1280 / 1279 boundary passed
-- [ ] 1024 / 1023 boundary passed
-- [ ] 768 / 767 boundary passed
-- [ ] Compact Rail visible Hover/Focus tooltip
-- [ ] Tablet Drawer focus trap
-- [ ] Tablet Drawer focus return
-- [ ] Tablet Drawer scroll lock
-- [ ] Mobile 5-item bottom nav
-- [ ] Mobile safe area / no overlap
-- [ ] route-level Loading skeleton
-- [ ] route-level recoverable Error UI
-- [ ] reusable Empty state
-- [ ] reusable Module Error
-- [ ] Offline presentation
-- [ ] Auth-expired presentation only
-- [ ] Permission presentation only
-- [ ] Reduced Motion respected
-- [ ] touch targets >=44px
-- [ ] no document horizontal overflow
-- [ ] text expansion sanity
-- [ ] existing unsaved guard works in all responsive nav modes
-- [ ] 5.4–5.10 business logic unchanged
-- [ ] no Auth / API / DB / persistence
-- [ ] no Service Worker / PWA
-- [ ] no package/dependency changes
-- [ ] Task / Issue / WBS / PR synchronized
+- [x] latest develop synced
+- [x] 1.29 = 已完成
+- [x] 5.1 = 已完成
+- [x] no duplicate full WBS-5.20 implementation
+- [x] four breakpoint modes preserved
+- [x] 1280 / 1279 boundary passed
+- [x] 1024 / 1023 boundary passed
+- [x] 768 / 767 boundary passed
+- [x] Compact Rail visible Hover/Focus tooltip
+- [x] Tablet Drawer focus trap
+- [x] Tablet Drawer focus return
+- [x] Tablet Drawer scroll lock
+- [x] Mobile 5-item bottom nav
+- [x] Mobile safe area / no overlap
+- [x] route-level Loading skeleton
+- [x] route-level recoverable Error UI
+- [x] reusable Empty state
+- [x] reusable Module Error
+- [x] Offline presentation
+- [x] Auth-expired presentation only
+- [x] Permission presentation only
+- [x] Reduced Motion respected
+- [x] touch targets >=44px
+- [x] no document horizontal overflow
+- [x] text expansion sanity
+- [x] existing unsaved guard works in all responsive nav modes
+- [x] 5.4–5.10 business logic unchanged
+- [x] no Auth / API / DB / persistence
+- [x] no Service Worker / PWA
+- [x] no package/dependency changes
+- [x] Task / Issue / WBS / PR synchronized
 
 ---
 
