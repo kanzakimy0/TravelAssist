@@ -7,11 +7,12 @@
 - Owner: `B`
 - Responsibility: `Personal Center`
 - Priority: `P1`
-- Status: `Blocked / Waiting for WBS 5.5`
+- Status: `已完成`
 - Depends On: `1.26`, `5.5`
-- Dependency State at authoring:
+- Dependency State at execution:
   - `1.26 = 已完成`
-  - `5.5 = 未开始`
+  - `5.5 = 已完成`
+- GitHub Issue: `#107`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
 - Workspace: `F:\TravelAssist`
 - Base Branch: `develop`
@@ -19,6 +20,10 @@
 - Proposed Issue: `[WBS 5.6][B] 同行人管理 UI`
 - Task File: `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.6-b-companion-management-ui.md`
+- Implementation Commit: `ff9c9330ee8bd90caeeedf8c54f9b266058d4054`
+- Pull Request: [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) 已合入 `develop`
+- Merge Commit: `ff66aec1654664faf83c70861c3fe1bb2cbf44df`
+- User Acceptance: `通过（2026-09-06）`
 
 > 本 Task 可以提前存档，但不得绕过 WBS 5.5 前置。只有 5.5 已合入 `develop` 且验收为“已完成”后，5.6 才能进入“进行中”。
 
@@ -459,14 +464,14 @@ full-height sheet / full-screen dialog
 
 至少支持：
 
-| 字段 | 必填 |
-|---|---|
-| 昵称 / 称呼 | 是 |
-| 关系 | 否 |
-| 出生日期 | 否 |
-| 年龄层 | 是 |
-| 性别 | 否 |
-| 头像 | 否 |
+| 字段        | 必填 |
+| ----------- | ---- |
+| 昵称 / 称呼 | 是   |
+| 关系        | 否   |
+| 出生日期    | 否   |
+| 年龄层      | 是   |
+| 性别        | 否   |
+| 头像        | 否   |
 
 必填只通过 `*` + accessible required 语义表达，不要到处显示“可选”。
 
@@ -1241,21 +1246,25 @@ Planner Companion integration
 # WBS-5.6-B Result
 
 ## Status
+
 Completed / Partially Completed / Awaiting Review / Blocked
 
 ## Dependency Gate
+
 - WBS 1.26:
 - WBS 5.5:
 - latest develop:
 - gate passed:
 
 ## Preflight
+
 - duplicate Task:
 - duplicate Issue:
 - duplicate PR:
 - base commit:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -1266,6 +1275,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - WBS updated:
 
 ## Companion Overview
+
 - summary:
 - self card:
 - companion list:
@@ -1273,6 +1283,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - empty state:
 
 ## Companion Editor
+
 - add:
 - edit:
 - required validation:
@@ -1283,6 +1294,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - self delete blocked:
 
 ## Travel Needs
+
 - mobility:
 - dining summary:
 - activity preference:
@@ -1290,6 +1302,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - sensitive list exposure:
 
 ## Frequent Groups
+
 - create:
 - edit:
 - member selection:
@@ -1297,11 +1310,13 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - Planner integration:
 
 ## Special Needs Summary
+
 - counts:
 - people drill-down:
 - sensitive details hidden:
 
 ## State Boundary
+
 - Persistence:
 - Companion Schema:
 - Companion API:
@@ -1309,6 +1324,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - localStorage / Cookie:
 
 ## Local Asset Discovery
+
 - scan roots:
 - candidates:
 - selected:
@@ -1317,6 +1333,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - decode / browser load:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -1325,6 +1342,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - horizontal overflow:
 
 ## Functional Regression
+
 - five nav routes:
 - Avatar Popover:
 - Home:
@@ -1334,6 +1352,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - console / hydration:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1345,6 +1364,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - diff-check:
 
 ## Ownership Safety
+
 - A Task modified:
 - Other B Task modified:
 - 5.5 implementation modified:
@@ -1354,6 +1374,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - other WBS status changed:
 
 ## Git
+
 - Branch:
 - Commit:
 - Push:
@@ -1361,15 +1382,18 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - Merge Commit:
 
 ## Three-way Sync
+
 - Task:
 - Issue:
 - WBS 5.6:
 - PR:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start 5.12 / 5.17 or Planner companion integration.
 ```
 

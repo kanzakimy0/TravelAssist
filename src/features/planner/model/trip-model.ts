@@ -181,6 +181,13 @@ export type TripAction =
   | { type: "lock"; id: string }
   | { type: "provider"; id: string; providerId: string }
   | { type: "complete"; id: string; time: string }
+  | {
+      type: "detailEdit";
+      id: string;
+      title: string;
+      startTime: string;
+      endTime: string;
+    }
   | { type: "replan" };
 
 export const cityFixtures: { name: string; coordinates: Coordinates }[] = [
@@ -953,6 +960,55 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   }
   const item = plan.items.find((i) => i.id === action.id);
   if (!item) return state;
+  if (action.type === "detailEdit") {
+    const title = action.title.trim();
+    const validTime = /^([01]\d|2[0-3]):[0-5]\d$/;
+    if (
+      !title ||
+      !validTime.test(action.startTime) ||
+      !validTime.test(action.endTime) ||
+      minutes(action.startTime) >= minutes(action.endTime)
+    ) {
+      return {
+        ...state,
+        notice: "本地检查：名称必填，结束时间必须晚于开始时间。",
+      };
+    }
+    if (item.fixedTime || item.locked) {
+      return {
+        ...state,
+        notice: "本地检查：固定或锁定项目需先解除锁定，未修改正式时间。",
+      };
+    }
+    const conflicts = itemsForDay(plan, item.day).filter(
+      (other) =>
+        other.id !== item.id &&
+        other.type !== "hotel" &&
+        minutes(other.startTime) < minutes(action.endTime) &&
+        minutes(other.endTime) > minutes(action.startTime),
+    );
+    if (conflicts.length) {
+      return {
+        ...state,
+        notice: `本地检查：与 ${conflicts.map((other) => other.title).join("、")} 时间重叠，未保存。`,
+      };
+    }
+    return updatePlan(
+      state,
+      plan.items.map((candidate) =>
+        candidate.id === item.id
+          ? {
+              ...candidate,
+              title,
+              startTime: action.startTime,
+              endTime: action.endTime,
+            }
+          : candidate,
+      ),
+      "本地草稿已更新；尚未同步云端或运行真实 AI。",
+      { selectedTripItemId: item.id },
+    );
+  }
   if (action.type === "lock")
     return updatePlan(
       state,
