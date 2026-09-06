@@ -2,7 +2,7 @@
 
 ## Status
 
-`待审查`。Trip Library UI 已实现，Issue #143 保持 Open；用户验收前不标记为已完成。
+`已完成`。Trip Library UI 已合入 develop，用户于 2026-09-06 验收通过，Issue #143 已关闭。
 
 ## Preflight
 
@@ -16,15 +16,15 @@
 
 ## Tracking
 
-- Issue: #143（Open）
+- Issue: #143（Closed）
 - Task File: `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.10-b-trip-library-ui.md`
 - Branch: `feature/b-account-wbs-5-10-trip-library-ui`
 - Implementation Commit: `e40141ef6e394e9d9a3b30757af19eedeaeaa0b6`
-- Final Head: 包含本 Result 的首次推送分支头；准确 SHA 以最终返回和 GitHub head 为准
-- PR: 首次推送后由仓库自动化创建；准确编号以最终返回为准
-- Merge Commit: 用户验收前不作为完成依据；若仓库自动合入则仅记录事实
-- WBS updated: 5.10 与 WBS-5.10-B 均为 `待审查`，未标记完成
+- Final Head: `9b58bb7a323fc9ac63e854e8f17c9a940fc6e77a`
+- PR: #144 已合入 develop
+- Merge Commit: `5ad23e4b0815601b978249b217d7b8a520f19819`
+- WBS updated: 5.10 与 WBS-5.10-B 均为 `已完成（用户验收通过）`
 
 ## Trip Library
 
@@ -149,12 +149,12 @@
 ## Git
 
 - Commit: `e40141ef6e394e9d9a3b30757af19eedeaeaa0b6`（implementation）
-- Push: 首次 push 后核验并在最终返回记录
-- PR: 首次 push 后核验并在最终返回记录
-- Merge behavior: 不主动开启 auto-merge；如仓库自动化合入，仅记录事实且状态仍为待审查
-- latest origin/develop: `8c0c889`（提交前）
-- unpushed commits: push 后核验
-- tracked working tree: Result 提交后核验
+- Push: 成功；远端 implementation branch head 为 `9b58bb7a323fc9ac63e854e8f17c9a940fc6e77a`
+- PR: #144，Merged
+- Merge behavior: 仓库自动化合入；未主动开启 auto-merge
+- latest origin/develop: `5ad23e4b0815601b978249b217d7b8a520f19819`（实现合并时）
+- unpushed commits: implementation branch 为 0
+- tracked working tree: implementation 完成时 clean
 - preserved untracked files: `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py`
 
 ## Problems

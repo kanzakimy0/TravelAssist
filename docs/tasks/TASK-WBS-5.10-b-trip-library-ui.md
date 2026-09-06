@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Trip Library`
 - Priority: `P0`
-- Status: `待审查`
+- Status: `已完成（用户验收通过）`
 - Depends On: `1.27, 5.1`
 - Dependency State at authoring: `1.27 = 已完成`, `5.1 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -17,6 +17,7 @@
 - Proposed Implementation Branch: `feature/b-account-wbs-5-10-trip-library-ui`
 - Proposed Issue: `[WBS 5.10][B] 我的旅行 / Trip Library UI`
 - GitHub Issue: `#143`
+- User Acceptance: `通过（2026-09-06）`
 - Task File: `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.10-b-trip-library-ui.md`
 
