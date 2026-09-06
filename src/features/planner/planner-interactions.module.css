@@ -67,6 +67,64 @@
   max-width: 100%;
   overflow-x: auto;
 }
+@media (min-width: 768px) {
+  .timelineViewport {
+    height: 100%;
+    min-height: 0;
+  }
+  .timelineViewport .bands {
+    height: 100%;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(4px, 0.7dvh, 10px);
+  }
+  .timelineViewport .bands[data-compare="true"] {
+    grid-template-rows: auto repeat(3, minmax(0, 1fr)) auto;
+    gap: 3px;
+  }
+  .timelineViewport .axis,
+  .timelineViewport .bandRow {
+    grid-template-columns: clamp(150px, 13vw, 270px) minmax(0, 1fr);
+    min-height: 0;
+  }
+  .timelineViewport .track {
+    min-height: 0;
+    height: 100%;
+  }
+  .timelineViewport .segment {
+    height: calc(100% - 18px);
+    padding: clamp(4px, 0.6dvh, 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .timelineViewport .segment[data-kind="movement"] {
+    top: auto;
+    bottom: 3px;
+    height: 8px;
+    padding: 0;
+  }
+  .timelineViewport .bands[data-compare="true"] .segment {
+    height: calc(100% - 8px);
+    padding: 1px 3px;
+  }
+  .timelineViewport .bands[data-compare="true"] .segment[data-kind="movement"] {
+    height: 4px;
+    bottom: 0;
+    padding: 0;
+  }
+  .timelineViewport .segment strong {
+    font-size: clamp(12px, 0.95vw, 20px);
+  }
+  .timelineViewport .segment small,
+  .timelineViewport .bandMeta {
+    font-size: clamp(10px, 0.72vw, 15px);
+  }
+  .timelineViewport .axisTrack,
+  .timelineViewport .bandHint {
+    font-size: clamp(10px, 0.7vw, 14px);
+    margin: 0;
+  }
+}
 .axis,
 .bandRow {
   display: grid;
@@ -314,8 +372,32 @@
   }
 }
 @media (max-width: 767px) {
+  .timelineViewport {
+    height: 100%;
+    min-height: 0;
+  }
   .timelineViewport .bands {
     min-width: 680px;
+    height: 100%;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+  .timelineViewport .bands[data-compare="true"] {
+    grid-template-rows: auto repeat(3, minmax(0, 1fr)) auto;
+  }
+  .timelineViewport .track {
+    min-height: 0;
+    height: 100%;
+  }
+  .timelineViewport .segment {
+    height: calc(100% - 18px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .timelineViewport .segment[data-kind="movement"] {
+    top: auto;
+    bottom: 3px;
+    height: 8px;
   }
 }
 @media (max-width: 767px) {

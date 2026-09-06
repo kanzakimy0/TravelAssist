@@ -2,7 +2,7 @@
 .topFade {
   position: absolute;
   inset: 0 0 auto auto;
-  width: min(620px, 44vw);
+  width: calc(25vw + 42px);
   height: 76px;
   background: linear-gradient(90deg, transparent, #fffcf7e8 72%, #fffcf7);
   pointer-events: none;
@@ -11,11 +11,17 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 6px;
   margin-left: auto;
+  width: calc(25vw - 32px);
+  min-width: 0;
+  position: absolute;
+  right: 16px;
 }
 .search {
-  width: clamp(300px, 25vw, 390px);
+  flex: 1;
+  width: 0;
+  min-width: 0;
   height: 44px;
   display: flex;
   align-items: center;
@@ -29,7 +35,8 @@
   flex: 1;
   border: 0;
   background: transparent;
-  padding: 10px 16px;
+  padding: 10px 8px;
+  font-size: clamp(12px, 0.85vw, 16px);
   outline-offset: -3px;
 }
 .search button,
@@ -142,14 +149,14 @@
   display: grid;
   grid-template-columns: minmax(0, 24fr) minmax(0, 53fr) minmax(0, 23fr);
   gap: 14px;
-  font-size: 12px;
+  font-size: clamp(12px, 0.85vw, 18px);
 }
 .secondary > section,
 .secondary > aside {
   min-width: 0;
   min-height: 0;
   overflow: auto;
-  padding: 6px 10px;
+  padding: clamp(6px, 0.8dvh, 14px) clamp(8px, 0.8vw, 20px);
 }
 .secondary > section + section,
 .secondary > aside {
@@ -157,22 +164,22 @@
 }
 .secondary h3 {
   margin: 0 0 6px;
-  font-size: 15px;
+  font-size: clamp(15px, 1.1vw, 23px);
 }
 .secondary h4 {
   margin: 4px 0;
-  font-size: 12px;
+  font-size: clamp(12px, 0.9vw, 19px);
 }
 .secondary p {
   margin: 4px 0;
 }
 .secondary small {
   color: #74736d;
-  font-size: 10px;
+  font-size: clamp(10px, 0.75vw, 15px);
 }
 .secondary button {
-  font-size: 11px;
-  padding: 5px 8px;
+  font-size: clamp(11px, 0.85vw, 17px);
+  padding: clamp(5px, 0.7dvh, 12px) clamp(8px, 0.7vw, 18px);
 }
 .secondary [data-item] {
   display: block;
@@ -188,16 +195,18 @@
 .metrics strong {
   display: block;
   color: #a25245;
-  font-size: 20px;
+  font-size: clamp(20px, 1.8vw, 36px);
 }
 .chain {
   display: flex;
   gap: 8px;
   overflow-x: auto;
   padding-bottom: 6px;
+  width: 100%;
+  min-height: clamp(90px, 11dvh, 190px);
 }
 .chain button {
-  flex: 0 0 155px;
+  flex: 1 0 130px;
   text-align: left;
 }
 .chain strong,
@@ -240,6 +249,9 @@
   background: #aab5b5;
 }
 @media (max-width: 1199px) {
+  .headerActions {
+    width: min(390px, calc(100vw - 240px));
+  }
   .topFade {
     width: 65vw;
   }
@@ -247,8 +259,10 @@
 @media (max-width: 767px) {
   .headerActions {
     gap: 2px;
+    width: auto;
   }
   .search {
+    flex: none;
     width: 38px;
     border: 0;
     background: #fffcf7c0;

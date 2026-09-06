@@ -9,12 +9,14 @@ export function PlannerPopover({
   trigger,
   onClose,
   children,
+  compact = false,
 }: {
   id: string;
   title: string;
   trigger: RefObject<HTMLButtonElement | null>;
   onClose: () => void;
   children: ReactNode;
+  compact?: boolean;
 }) {
   const surface = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
@@ -28,6 +30,7 @@ export function PlannerPopover({
     function position() {
       if (!element || !button) return;
       const rect = button.getBoundingClientRect();
+      if (compact) element.style.width = `${rect.width}px`;
       const width = element.offsetWidth;
       const below = window.innerHeight - rect.bottom - 20;
       const above = Math.min(window.innerHeight - 24, rect.top - 20);
@@ -81,22 +84,25 @@ export function PlannerPopover({
       observer.disconnect();
       button.focus({ preventScroll: true });
     };
-  }, [trigger]);
+  }, [trigger, compact]);
   return (
     <div
       id={id}
       ref={surface}
       data-planner-popover
+      data-compact={compact || undefined}
       role="dialog"
       aria-label={title}
       className={styles.popover}
     >
-      <header className={styles.popoverHeader}>
-        <h2>{title}</h2>
-        <button type="button" onClick={onClose} aria-label={`关闭${title}`}>
-          <PlannerIcon name="close" />
-        </button>
-      </header>
+      {!compact && (
+        <header className={styles.popoverHeader}>
+          <h2>{title}</h2>
+          <button type="button" onClick={onClose} aria-label={`关闭${title}`}>
+            <PlannerIcon name="close" />
+          </button>
+        </header>
+      )}
       {children}
     </div>
   );

@@ -187,8 +187,8 @@ try {
   await button("输入").click();
   await page.getByLabel("输入 Day", { exact: true }).fill("5");
   await button("确认范围").click();
-  assert.equal(await button("从第5天开始 ▾").count(), 1);
-  await button("从第5天开始 ▾").click();
+  assert.equal(await button("D5-D7 ▾").count(), 1);
+  await button("D5-D7 ▾").click();
   await button("输入").click();
   await page.getByLabel("输入 Day", { exact: true }).fill("1");
   await button("确认范围").click();

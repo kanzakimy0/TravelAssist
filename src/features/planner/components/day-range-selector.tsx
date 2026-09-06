@@ -66,7 +66,7 @@ export function DayRangeSelector({
         }}
       >
         {state.rangeMode === "threeDays"
-          ? `从第${state.threeDayStart}天开始 ▾`
+          ? `D${state.threeDayStart}-D${state.threeDayStart + 2} ▾`
           : "3日"}
       </button>
       <button
@@ -82,6 +82,7 @@ export function DayRangeSelector({
       {menu && (
         <PlannerPopover
           id="day-choices"
+          compact
           title={menu === "day" ? "选择一天" : "选择连续三天"}
           trigger={menu === "day" ? dayTrigger : threeTrigger}
           onClose={() => setMenu(null)}
@@ -104,7 +105,7 @@ export function DayRangeSelector({
                   setMenu(null);
                 }}
               >
-                {start}
+                {menu === "day" ? `第${start}天` : `D${start}-D${start + 2}`}
               </button>
             ))}
             <button
