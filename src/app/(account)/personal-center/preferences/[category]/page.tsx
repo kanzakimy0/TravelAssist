@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { PreferenceCategoryPage } from "@/features/preferences/preference-category-page";
+import { MobilityPreferencePage } from "@/features/preferences/mobility-preference-page";
 import {
   createDefaultPreferenceState,
   getCategory,
@@ -34,6 +35,8 @@ export default async function PreferenceCategoryRoute({
 }: PageProps<"/personal-center/preferences/[category]">) {
   const { category } = await params;
   if (!isRouteKey(category)) notFound();
+
+  if (category === "mobility") return <MobilityPreferencePage />;
 
   return (
     <PreferenceCategoryPage
