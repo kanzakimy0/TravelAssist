@@ -7,14 +7,14 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Preferences`
 - Priority: `P1`
-- Status: `Ready / 可开始`
+- Status: `已完成`
 - Depends On: `5.5`
 - Dependency State at authoring: `5.5 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
 - Workspace: `F:\TravelAssist`
 - Base Branch: `develop`
-- Proposed Implementation Branch: `feature/b-account-wbs-5-7-mobility-preference-ui`
-- Proposed Issue: `[WBS 5.7][B] 移动偏好 UI`
+- Branch: `feature/b-account-wbs-5-7-mobility-preference-ui`
+- GitHub Issue: `#123`
 - Task File: `docs/tasks/TASK-WBS-5.7-b-mobility-preference-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.7-b-mobility-preference-ui.md`
 
@@ -375,7 +375,7 @@ UI 必须：
 可增加 pure function：
 
 ```ts
-getMobilityWarnings(state)
+getMobilityWarnings(state);
 ```
 
 仅返回已知规则的 presentation warning。
@@ -838,9 +838,11 @@ docs/tasks/RESULT-WBS-5.7-b-mobility-preference-ui.md
 # WBS-5.7-B Result
 
 ## Status
+
 Completed / Awaiting Review / Partially Completed / Blocked
 
 ## Preflight
+
 - origin/develop base:
 - dependency 5.5:
 - duplicate Task:
@@ -848,6 +850,7 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -858,6 +861,7 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - WBS updated:
 
 ## Mobility UI
+
 - generic shell replaced:
 - current summary:
 - preset selector:
@@ -867,11 +871,13 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - save / cancel / restore:
 
 ## Conflict UX
+
 - lessWalking + noPublicTransit:
 - redundancy notice:
 - silent state mutation: No
 
 ## State Boundary
+
 - Persistence:
 - Formal Preference Schema:
 - Planner Contract:
@@ -880,12 +886,14 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - overview cross-route synchronization:
 
 ## Unsaved Guard
+
 - back to preferences:
 - Sidebar:
 - Avatar Popover:
 - beforeunload:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -894,6 +902,7 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - horizontal overflow:
 
 ## Regression
+
 - Preference overview:
 - other category shells:
 - Companions:
@@ -901,6 +910,7 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - Avatar Popover:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -913,6 +923,7 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - browser QA:
 
 ## Ownership Safety
+
 - A Task modified:
 - Other B Task modified:
 - 5.5 status changed:
@@ -923,15 +934,18 @@ Completed / Awaiting Review / Partially Completed / Blocked
 - shared Shell modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
 - Merge behavior:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start WBS 5.8 / 5.9 / 5.11 / 5.16.
 ```
 

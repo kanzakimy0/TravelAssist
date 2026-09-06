@@ -10,6 +10,9 @@ const browser = await chromium.launch({
 });
 const out = "docs/qa/TASK-012",
   report = [];
+const base = process.env.TASK_012_QA_URL || "http://127.0.0.1:3112";
+if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
+  throw new Error("Local QA only");
 try {
   for (const fallback of [false, true]) {
     const page = await browser.newPage({
@@ -21,7 +24,7 @@ try {
       await page.route("https://api.mapbox.com/**", (route) =>
         route.abort("failed"),
       );
-    await page.goto("http://127.0.0.1:3112/planner");
+    await page.goto(base + "/planner");
     await page
       .locator('[data-map-engine="' + (fallback ? "fallback" : "mapbox") + '"]')
       .waitFor({ timeout: 45000 });
