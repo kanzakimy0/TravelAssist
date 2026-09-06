@@ -12,7 +12,7 @@
 - Commit: `ea10d79ffd6b54f527dc2ff547d6b2fb0b80b7e4`
 - Pull Request: `#150`
 - Merge Commit: `9d3694691d1ae7d1fcdbe21a2569d833dca1b34f`
-- Closeout Pull Request: PENDING
+- Closeout Pull Request: `#151`
 - Result: `docs/tasks/RESULT-WBS-5.20-b-personal-center-concept-alignment-followup.md`
 
 ## Background
@@ -80,4 +80,4 @@
 
 ## Completion
 
-用户已完成视觉验收。PR #150 已通过仓库自动化以普通 merge commit 合入 `develop`；未使用 squash、rebase 或 force push。最终 closeout 补齐真实 Commit、PR 与 merge commit，并在完成评论发布后关闭 Issue #149。
+用户已完成视觉验收。PR #150 已通过仓库自动化以普通 merge commit 合入 `develop`；未使用 squash、rebase 或 force push。最终 closeout 已补齐真实 Commit、PR 与 merge commit；Issue #149 已发布完成评论并关闭，tracking-only PR #151 负责将完成态同步回 `develop`。

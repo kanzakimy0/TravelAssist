@@ -9,13 +9,14 @@
 - Task ID: `WBS-5.20-B-FOLLOWUP`
 - WBS: `5.20（completed-task UI follow-up；关联 5.4 / 5.5 / 5.6 / 5.10）`
 - Owner: B
-- Issue: #149（完成评论发布后关闭）
+- Issue: #149（Closed / Completed）
 - Task File: `docs/tasks/TASK-WBS-5.20-b-personal-center-concept-alignment-followup.md`
 - Branch: `fix/b-wbs-5-20-personal-center-concept-alignment`
 - Implementation Commit: `ea10d79ffd6b54f527dc2ff547d6b2fb0b80b7e4`
 - Pull Request: #150（Merged）
 - Merge Commit: `9d3694691d1ae7d1fcdbe21a2569d833dca1b34f`
-- Closeout Pull Request: PENDING
+- Closeout Commit: `d7bc976a46a8ff9564944b000afd0dfc67c7ab0e`
+- Closeout Pull Request: #151
 
 ## Delivered
 
@@ -61,4 +62,4 @@
 
 ## Next
 
-Publish the final Issue comment, close Issue #149, merge the tracking-only closeout PR, then stop. Do not start another WBS.
+Merge the tracking-only closeout PR, then stop. Do not start another WBS.
