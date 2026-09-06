@@ -7,7 +7,7 @@
 - GitHub Issue: [#135](https://github.com/kanzakimy0/TravelAssist/issues/135)。
 - Branch: `codex/planner-responsive-density` → `develop`。
 - Initial Base: `c88d3381685615fcd0e1dd9e3217bd871e50c2ac`。
-- Implementation Commit: `660af61`；Integrated Validation Commit: `bcc898f2edda6f1b0822e7ed3162ecd55927637f`（无冲突集成最新 develop `4161a8a`，保留新的 Personal Center 成果）。Draft PR: PENDING。
+- Implementation Commit: `660af61`；Integrated Validation Commit: `bcc898f2edda6f1b0822e7ed3162ecd55927637f`（无冲突集成验证时 develop `4161a8a`，保留新的 Personal Center 成果）。Draft PR: [#139](https://github.com/kanzakimy0/TravelAssist/pull/139)。
 - 来源：用户本轮逐项布局反馈及 Issue #135；这是已合并 TASK-012-A 的独立补修，不重写 #111 / PR #124 的历史验收结论。
 
 ## Implemented / Updated Visual Contract
@@ -44,5 +44,5 @@
 ## Delivery
 
 - Preview: [3113 Planner](http://127.0.0.1:3113/planner)，已切换为本补修的生产构建，不是旧开发分支。
-- Draft PR: PENDING；不自动合并。
+- Draft PR: [#139](https://github.com/kanzakimy0/TravelAssist/pull/139)；Issue #135 Open / Review；不自动合并。
 - 后续：用户视觉审查后再决定合并；不继续其他任务。
