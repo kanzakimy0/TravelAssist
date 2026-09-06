@@ -1,7 +1,8 @@
 # TravelAssist 页面连接与主流程导航规范
 
-> 状态：v1.1 / 2026-09-05 修正版  
-> 范围：首页、Start Flow、Planner、Personal Center 及其现有子页面
+> 状态：v1.2 / 2026-09-06 全局 Logo 与迁移闭环修正版  
+> 范围：首页、Start Flow、Planner / Detail Workspace、Personal Center 及当前已存在子页面  
+> 核心决策：**所有页面中的 TravelAssist 产品 Logo / Brand 点击后统一进入产品首页 `/`。**
 
 ## 1. 当前实际路由
 
@@ -14,36 +15,111 @@
    ├─ /personal-center/preferences
    ├─ /personal-center/companions
    └─ /personal-center/account
+      ├─ /personal-center/account/security
+      ├─ /personal-center/account/privacy
+      └─ /personal-center/account/booking-sync
 ```
 
-Start Flow 当前仍是单一路由 `/start`，Step 1–4 是该页面内部状态，不拆成独立 page route。
+补充状态：
+
+- Start Flow 仍是单一路由 `/start`，UI Step 1–4 是页面内部状态，不拆成独立 page route。
+- Planner 与 Detail 设计为同一 Trip Workspace 的两种模式；Detail 当前由 `TASK-011-A / Issue #86 / Draft PR #102` 承接，在其合入 `develop` 前不得视为已完成。
+- Auth、旅行灵感、目的地探索、分享页等尚未形成当前可运行路由，不在本轮伪造空白页面。
 
 ---
 
-## 2. 当前连接审计
+## 2. 全局 TravelAssist Logo 契约
 
-| 来源 | 目标 | 当前状态 | 结论 |
+### 2.1 唯一目标
+
+所有页面中作为产品品牌入口出现的：
+
+- TravelAssist 图形 Logo；
+- TravelAssist Wordmark；
+- Desktop Brand；
+- Mobile / Compact Brand；
+- Auth Shell Brand（未来）；
+- Planner / Detail Workspace Brand；
+
+点击后统一：
+
+```text
+TravelAssist Logo / Brand → /
+```
+
+首页自身 Logo 也使用真实语义链接：
+
+```text
+/ 上点击 TravelAssist Logo → /
+```
+
+这允许统一组件、统一可访问性和统一自动化测试；不得因为“已经在首页”而把 Logo 改成不可点击的 `div`。
+
+### 2.2 不属于本规则的图形
+
+以下不被视为 TravelAssist 产品 Logo：
+
+- Partner / OTA Logo；
+- 地图 POI 图标；
+- 用户头像；
+- 行程封面图；
+- 纯装饰鸟居、樱花、水彩纹理；
+- 景点、酒店、餐厅品牌标识。
+
+它们的点击行为由各自业务定义，不得错误跳回首页。
+
+### 2.3 首页返回入口原则
+
+- TravelAssist Logo 是全局稳定的产品首页入口。
+- Personal Center 不额外增加“返回 TravelAssist”或“返回首页”菜单项。
+- Account 子页可保留“返回账户”等模块级返回按钮；这不与 Logo 返回产品首页冲突。
+- 存在未保存修改时，Logo 导航必须继续通过现有 Navigation Guard，不得静默丢失数据。
+- Desktop、窄屏和 Mobile 均必须有可见、键盘可达的 Logo。
+- 使用 `Link` 或语义等价导航，不使用点击 `div`，不使用 `href="#"`。
+
+---
+
+## 3. 2026-09-06 当前连接审计
+
+| 来源 | 目标 | `develop` 当前状态 | 结论 |
 |---|---|---|---|
-| 首页 `/` 主 CTA | `/start` | 已连接 | 保留 |
-| 首页 `/` | `/personal-center` | 缺失 | 补充轻量头像/个人中心 Mock 入口；不得伪造 Auth |
-| 首页登录按钮 | Auth | disabled | 保持真实 Auth 边界 |
+| 首页 TravelAssist Logo | `/` | **不是链接** | 缺失，必须修正 |
+| 首页主 CTA | `/start` | 已连接 | 保留 |
+| 首页个人中心入口 | `/personal-center` | 已连接 | 保留 |
+| 首页登录按钮 | Auth | disabled | 当前无 Auth，保持真实边界 |
 | `/start` Logo | `/` | 已连接 | 保留 |
-| `/start` 头像 | `/personal-center` | 仅 button，无目标 | 补充 |
-| `/start` 方案结果 | `/planner` | 缺失 | 选中方案后必须有“使用此方案并进入地图” |
-| `/planner` Brand | `/` | 已连接 | 保留 |
-| `/planner` | `/personal-center` | 已连接 | 保留 |
-| `/planner` | `/start` | 缺少明显新建入口 | A 主系统新建入口仍可进入标准 `/start` 流程 |
-| Personal Center 内部五项 | 各子路由 | 已连接 | 保留 |
-| Personal Center TravelAssist Logo | `/` | 当前指向 `/personal-center` | **改为 `/`，这是 Personal Center 返回产品首页的标准入口** |
-| Personal Home“继续规划” | `/planner` | disabled | 补充 Mock 当前行程入口 |
-| Personal Home“开始新旅行” | Start Step 3 | 缺失 | **直接进入 Start Flow Step 3，不从 Step 1 开始** |
-| `/personal-center/trips`“开始新旅行” | Start Step 3 | placeholder 死端 | **同样直接进入 Step 3** |
+| `/start` 头像 | `/personal-center` | 已连接 | 保留 |
+| Start Step 上一步 / 下一步 / 生成 | 同页 Step 状态 | 已连接 | 保留，不拆路由 |
+| `/start` 方案结果 | `/planner` | 已连接 | 保留 |
+| `/start?entry=step3` | UI Step 3 | 已连接 | 保留 |
+| `/planner` Logo | `/` | 已连接 | 保留 |
+| `/planner` 新建旅行 | `/start` | 已连接 | 保留 |
+| `/planner` 个人中心 | `/personal-center` | 已连接 | 保留 |
+| Planner → Detail | `/planner?view=detail&day=N` | `develop` 未完成；Draft PR #102 已实现 | 由 TASK-011-A 继续承接，不在本轮重复修改 Planner |
+| Detail Logo | `/` | 仅存在于 Draft PR #102 | PR 合入后复验 |
+| Personal Center Desktop Logo | `/` | 当前错误指向 `/personal-center` | 缺失，必须修正 |
+| Personal Center Mobile Logo | `/` | 当前错误指向 `/personal-center` | 缺失，必须修正 |
+| Personal Center 五项一级导航 | 各子路由 | 已连接 | 保留 |
+| Personal Home 继续规划 | `/planner` | Hero 按钮 disabled | 缺失，必须修正 |
+| Personal Home 开始新旅行 | `/start?entry=step3` | 不存在 | 缺失，必须补充 |
+| Personal Home 查看全部 | `/personal-center/trips` | 已连接 | 保留 |
+| Personal Home 旅行卡 | `/personal-center/trips` | 已连接 | 当前为 Mock 入口，保留 |
+| Trips 开始新旅行 | `/start?entry=step3` | 页面只有占位文案 | 缺失，必须补充 |
+| Trips 返回当前规划 | `/planner` | 页面只有占位文案 | 缺失，必须补充 |
+| Account 三个子入口 | Security / Privacy / Booking Sync | 已连接 | 保留 |
+| Account 子页返回账户 | `/personal-center/account` | 已连接 | 保留 |
+| Avatar Popover 内部导航 | Personal Center 子路由 | 已连接 | 保留；不得增加重复首页项 |
+
+总体结论：
+
+> **当前迁移按钮尚未全部完成。**  
+> TASK-010-A 主流程已完成；剩余明确缺口是首页 Logo、Personal Center 双端 Logo、Personal Home 两个主流程动作和 Trips 占位页两个出口。Planner → Detail 已由独立 TASK-011-A / Draft PR #102 实现，等待合入后才能计为完成。
 
 ---
 
-## 3. 目标主流程
+## 4. 目标主流程
 
-标准首次进入流程：
+### 4.1 首次规划
 
 ```text
 首页 /
@@ -55,248 +131,218 @@ Step 2
 Step 3
   ↓
 生成 / 选择方案
-  ↓
+  ↓ 使用此方案并进入地图
 Planner /planner
 ```
 
-已经进入 Personal Center 的用户，新建旅行采用快捷入口：
+### 4.2 Personal Center 快速新建旅行
 
 ```text
 Personal Center
   ↓ 开始新旅行
-Start /start?entry=step3
+/start?entry=step3
   ↓
-Step 3（目的地 / 日期 / 同行人 / 交通 / 预算 / 已确定安排）
+Start Flow UI Step 3
   ↓
 生成 / 选择方案
   ↓
 Planner
 ```
 
-Personal Center 返回首页：
+### 4.3 继续已有 Mock 规划
 
 ```text
-点击 TravelAssist Logo
-→ /
+Personal Home
+  ↓ 继续规划
+/planner
 ```
 
-这是 Personal Center 返回产品首页的唯一标准入口；不再额外增加：
+### 4.4 Planner 与正式行程详情
 
 ```text
-“返回 TravelAssist”
-“返回首页”
+Planner
+  ↓ 进入行程详情
+/planner?view=detail&day=N
+
+Detail Mode
+  ↓ 返回规划 / AI 行程规划
+/planner
 ```
 
-之类的菜单项。
+该部分由 TASK-011-A 管理。TASK-010-B v1.1 只复验，不改写其 Planner 状态、地图和 URL Contract。
+
+### 4.5 任意页面返回产品首页
+
+```text
+任意当前页面
+  ↓ TravelAssist Logo
+/
+```
 
 ---
 
-## 4. 首页规则
+## 5. 首页规则
 
-首页保持极简，不增加传统大型 Navbar。
-
-- 主 CTA → `/start`，从 Step 1 开始，保留。
-- 当前未接真实 Auth，因此“登录”不能假装完成登录。
-- 可新增轻量“个人中心 / 头像（Mock）”入口 → `/personal-center`。
-- 未来真实 Session 接入后，由登录态决定显示 Login 或 Avatar。
-
-首页的“开始规划”与 Personal Center 的“开始新旅行”语义不同：
-
-- 首页首次入口：从 Step 1 开始；
-- Personal Center 新建旅行：直接进入 Step 3。
+- TravelAssist Logo 必须是 `Link href="/"`。
+- 主 CTA → `/start`，从 Step 1 开始。
+- Personal Center / Avatar Mock 入口 → `/personal-center`。
+- 当前未接真实 Auth，“登录”不得伪装成可用。
+- 语言选择和 AI 面板属于同页交互，不建立假路由。
+- 首页 Logo 的链接化不得改变首页视觉尺寸、构图和背景。
 
 ---
 
-## 5. Start Flow 规则
+## 6. Start Flow 规则
 
 - Logo → `/`。
 - 头像 → `/personal-center`。
-- Step 1–3 现有内容不因导航 Task 被重写。
-- 方案生成完成并选中后出现 `使用此方案并进入地图` → `/planner`。
-- 最终 Trip Contract 未完成前，仅允许使用明确的 Mock bridge 传递方案选择；不得复制第二套业务数据模型。
-
-### 5.1 Step 3 深链接契约
-
-A 主系统必须提供稳定入口：
-
-```text
-/start?entry=step3
-```
-
-语义：
-
-> 进入现有 Start Flow，但初始显示用户界面上的 **Step 3**。
-
-注意当前代码内部 `currentStep` 是从 0 开始计数，因此：
-
-```text
-UI Step 3
-= internal currentStep 2
-```
-
-路由层不得把 `step3` 错映射到生成页。
-
-### 5.2 深链接处理原则
-
-- `entry=step3` 只决定进入位置，不创建第二套路由页面。
-- 不复制 `TripBasicsStep`。
-- 不新建 `/start/step3` 页面。
-- 页面刷新后仍应保持合理的 Step 3 入口语义。
+- `上一步 / 下一步 / 生成方案 / 返回调整 / 重新生成`属于同一路由内状态变化。
+- 选中方案后，`使用此方案并进入地图` → `/planner`。
+- `/start?entry=step3` 直接显示 UI Step 3；UI Step 3 对应内部 `currentStep = 2`。
+- 不新建 `/start/step3`，不复制 `TripBasicsStep`。
 - 无效 `entry` 参数回退标准 `/start` 流程。
-- 未来如果 Profile Preference Contract 完成，可在此入口预填长期偏好；当前 Task 不伪造该数据联动。
-
-对于现有本地草稿如何复用 / 清理，只能采用明确、可测试的规则，不得因为深链接破坏普通 `/start` 的草稿恢复。
+- query 只决定入口，不进入正式 Trip State。
 
 ---
 
-## 6. Planner 规则
+## 7. Planner / Detail 规则
 
-- Brand → `/`。
-- Personal Center → `/personal-center`。
-- A 主系统自己的 `新建旅行` 入口暂保持进入标准 `/start`；本轮只明确 B Personal Center 的新建旅行直达 Step 3。
-- 导航 Task 不改写 Mapbox、Trip State、预约或 Planner v0.3 业务。
+### Planner
+
+- Logo → `/`。
+- `新建旅行` → `/start`。
+- `个人中心` → `/personal-center`。
+- 更多设置、方案切换、日程范围、底栏 Tab、地图对象详情属于工作区内交互。
+- Planner → Detail 由 TASK-011-A 提供，不由本轮重复实现。
+
+### Detail
+
+- 与 Planner 共用同一个 TravelAssist Logo → `/`。
+- Detail 是 Trip Workspace Mode，不重新建立第二套产品 Shell。
+- Day 切换、时间轴气泡、项目 Modal、AI 检查属于同页交互。
+- 返回 Planner 使用明确模式切换或 `/planner`，不得依赖浏览器 Back 作为唯一出口。
 
 ---
 
-## 7. Personal Center 规则
+## 8. Personal Center 规则
 
-### 7.1 Logo
+### 8.1 Logo
 
-TravelAssist Logo 是 Personal Center 返回产品首页的**唯一标准入口**：
+Desktop 与 Mobile / Compact 的 TravelAssist Logo 都必须：
 
 ```text
-TravelAssist Logo → /
+→ /
 ```
 
 `我的首页` 继续：
 
 ```text
-/personal-center
+→ /personal-center
 ```
 
-两者语义必须分离。
+二者语义严格分离。
 
-### 7.2 Personal Home
+### 8.2 Personal Home
 
 ```text
 继续规划 → /planner
 开始新旅行 → /start?entry=step3
+查看全部 → /personal-center/trips
 ```
 
-其中“开始新旅行”必须显示 Start Flow 的 UI Step 3。
+当前数据仍是 Mock 时，必须明确标注，不得声称真实 Saved Trip 已接入。
 
-### 7.3 Trips 页面
+### 8.3 Trips 占位页
 
-真实 Saved Trips 尚未实现时，placeholder 至少提供：
+真实 Trip Library 未实现前，至少提供：
 
 ```text
 开始新旅行 → /start?entry=step3
 返回当前规划 → /planner
 ```
 
-### 7.4 Avatar Popover
+占位页必须说明没有真实保存列表，但不得成为导航死端。
 
-保留 Personal Center 内部账户导航。
+### 8.4 Preferences / Companions
 
-**不额外增加“返回 TravelAssist / 返回首页”菜单项。**
+当前仍可为占位页面，但：
 
-返回产品首页统一通过 Logo 完成。
+- 必须继续复用 Personal Center Shell；
+- Logo → `/`；
+- 一级导航可返回其他 Personal Center 页面；
+- 具体分类详情与编辑入口由各自 WBS / Task 实现，不在导航修复 Task 中伪造。
 
-在窄屏 / Mobile 下如果桌面 Sidebar 收起，也必须保留一个可见的 TravelAssist Logo，并仍由该 Logo → `/`；不要改成额外文字菜单。
+### 8.5 Account
 
-所有 Mock 入口必须明确不代表真实保存 / 登录状态。
+- 账户概览的三个入口分别进入 Security、Privacy、Booking Sync。
+- 子页面保留 `返回账户`。
+- 所有页面共用 Shell Logo → `/`。
+- 未保存修改时，Logo、Sidebar 和 Avatar 导航继续经过 Guard。
 
----
+### 8.6 Avatar Popover
 
-## 8. A / B 接口责任
-
-由于 `/start` 属于 A 主系统，而 Personal Center 属于 B：
-
-### A / TASK-010-A
-负责实现：
-
-```text
-/start?entry=step3
-→ Start Flow UI Step 3
-```
-
-并保证普通：
-
-```text
-/start
-→ Step 1
-```
-
-行为不回归。
-
-### B / TASK-010-B
-只负责链接到已经约定的目标：
-
-```text
-/start?entry=step3
-```
-
-B 不修改：
-
-- `src/features/start-flow/`
-- Start Flow State
-- query 解析逻辑
-
-因此推荐合并顺序：
-
-```text
-TASK-010-A
-→ TASK-010-B
-```
-
-或者并行开发但 **A 的 deep-link contract 必须先合入 develop，B 才能做最终验收**。
+- 保留 Personal Center 内部快捷导航。
+- 不增加“返回首页 / 返回 TravelAssist”菜单项。
+- Logo 是唯一标准的全局首页返回入口。
 
 ---
 
-## 9. 数据桥接原则
-
-Start → Planner 当前只解决“用户选择后能进入相应 Planner 预览”。
+## 9. 数据与实现边界
 
 允许：
 
-- query parameter；
-- 现有 local/session storage 的 selectedPlanId；
-- 显式临时 adapter。
+- Next.js `Link`；
+- 现有 `GuardedLink`；
+- 现有 query parameter；
+- 现有 Mock selected plan adapter；
+- 新增独立导航回归测试。
 
 禁止：
 
 - 新建第二套 Trip State；
-- 把 Start Draft 当最终 Trip Contract；
-- 为导航直接写真实数据库。
-
-`entry=step3` 是导航入口参数，不是业务 Trip State 字段。
+- 写真实数据库；
+- 伪造 Auth / Session / Saved Trips；
+- 为尚未开发功能创建空路由；
+- 为解决 Logo 导航改写 Planner Map、Trip State 或 Detail Workspace；
+- 与 Draft PR #102 同时修改其高冲突 Planner 文件；
+- 在 Avatar Popover 增加重复首页菜单。
 
 ---
 
-## 10. 可访问性
+## 10. 可访问性与历史记录
 
-- 所有导航使用 Link 或语义按钮。
-- 不使用 `href="#"`。
-- Keyboard 可达、focus-visible 清晰。
+- Logo 必须有明确可访问名称，如 `TravelAssist 首页` 或 `返回 TravelAssist 首页`。
+- 导航使用 `Link` / `GuardedLink`，不使用 `onClick` 的非语义容器。
+- Keyboard 可达，`focus-visible` 清晰。
 - Back / Forward 正常。
 - Mobile 无横向溢出。
-- Disabled 功能不能伪装成可用导航。
-- Step 3 深链接进入后，焦点应落到 Step 3 的合理标题 / 首个主要交互区域。
+- Disabled 功能必须明确说明原因，不能伪装成可用链接。
+- 页面内 Skip Link（例如 `#planner-workspace`）允许保留；禁止的是无目标 `href="#"`。
+- Logo 导航触发未保存保护时，确认框必须可取消且不丢失当前修改。
 
 ---
 
-## 11. Owner 边界
+## 11. Owner 与任务边界
 
-A：
-- 首页；
-- Start 主流程；
-- `/start?entry=step3` 深链接；
-- Planner；
-- 主系统 Header / 入口。
+### A
 
-B：
-- Personal Center 内部页面；
-- Logo 返回 `/`；
-- `开始新旅行` 调用 A 提供的 Step 3 深链接。
+- 首页 Logo 链接化；
+- Start / Planner / Detail Logo 与主流程复验；
+- TASK-011-A 的 Planner → Detail 实现。
 
-实现继续拆分为 TASK-010-A / TASK-010-B，避免 A/B 同时修改高冲突文件。
+### B
+
+- Personal Center Desktop / Mobile Logo；
+- Personal Home 主流程动作；
+- Trips 占位页出口；
+- Personal Center Guard / responsive / internal navigation。
+
+### Shared
+
+- 全路由导航审计；
+- 独立回归测试；
+- 文档和 Result；
+- 合并前冲突检查。
+
+执行 Task：`docs/tasks/TASK-010-b-personal-center-navigation.md` v1.1。  
+TASK-010-A 已完成；TASK-011-A 独立继续，禁止重复开发。
