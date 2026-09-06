@@ -6,7 +6,7 @@ Awaiting Review
 
 ## Preflight
 
-- origin/develop base: `718d57ad1631c6517d49c697ce9a0c516fcab806`。
+- origin/develop base: implementation started from `718d57ad1631c6517d49c697ce9a0c516fcab806`；pre-publish sync merged latest `e725d21821107414a4551427d315aa55cfab7903` without history rewrite。
 - dependency 5.5: Passed；Master WBS 为已完成。
 - duplicate Task: No；使用唯一正式 Task `TASK-WBS-5.7-b-mobility-preference-ui.md`。
 - duplicate Issue: No；使用唯一 Open Issue #123。
@@ -19,7 +19,7 @@ Awaiting Review
 - Result File: `docs/tasks/RESULT-WBS-5.7-b-mobility-preference-ui.md`
 - Branch: `feature/b-account-wbs-5-7-mobility-preference-ui`
 - Implementation Commit: `ab7969741bdcc932a97745c7c6df44815fba5b66`
-- Final Head: tracking commit containing this Result；以最终 Git / PR Result 为准。
+- Final Head: publication candidate after tracking / develop sync；以最终 Git / PR Result 为准。
 - PR: publication pending；目标 `develop ← feature/b-account-wbs-5-7-mobility-preference-ui`。
 - WBS updated: WBS 5.7 与唯一 WBS-5.7-B tracking record 已更新为待审查；未标记已完成。
 
@@ -100,7 +100,7 @@ Awaiting Review
 
 ## Git
 
-- Commit: `ab7969741bdcc932a97745c7c6df44815fba5b66`（implementation）；tracking commit 待创建。
+- Commit: `ab7969741bdcc932a97745c7c6df44815fba5b66`（implementation）；`d21dbdd96b65debfc9c9159e45b931c7cf039042`（tracking）；`9c093bcd72c375f35aec94c7b27ba459744e5345`（latest develop sync merge）。
 - Push: Pending。
 - PR: Pending。
 - Merge behavior: 仓库 `feature/**` push workflow 已确认会自动建 PR 并尝试合并；不修改 workflow、不主动启用 auto-merge，若自动合并仍保持 Issue Open / WBS 待审查直至用户验收。
