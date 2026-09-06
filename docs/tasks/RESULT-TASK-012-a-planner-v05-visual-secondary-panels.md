@@ -2,7 +2,9 @@
 
 ## Status
 
-待验收 — 用户在说明 PR #124 状态及 1180px 差异后明确要求合并。按当前实现保留 Drawer 与冻结推荐卡；原 1180px 桌面侧栏条目仍不写为通过。完成整合复验后执行本次明确授权合并，不扩展到其他任务。
+已完成（用户授权的当前实现范围）— PR #124 已合入 develop，merge `66b7ca621b24ed6c973f6a0e6cb3591b3515165f`。验收 head `e835e75be5ecc226ac33df205f9216c91969544a` 与合并文件树相同。保留 Drawer 与冻结推荐卡；原 1180px 桌面侧栏条目仍不写为通过，不宣称全部原规格无差异。
+
+Issue #111：Closed / Completed。Task / Result / WBS 已同步。以下历史 Blocked / Draft 文字为最初交付记录，由本次用户明确授权合并的实际状态取代；未执行 TASK-013 或合并其他任务。3113 预览已切换为合并后的 Planner v0.5 与最新导航整合版本。
 
 ## Authorized Merge Revalidation — 2026-09-06
 
