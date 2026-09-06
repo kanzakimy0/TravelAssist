@@ -101,11 +101,11 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 
 ## Git
 
-- Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`（implementation）；`6c4e129`（初始 Result）；`da4cfd7`（合并最新 develop）
+- Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`（implementation）；`6c4e129`（初始 Result）；`da4cfd7`（runtime 基线整合）；`53dce26`（最终 docs-only 同步）
 - Push: `PENDING`
 - PR: `PENDING`
 - Merge behavior: 不主动开启 auto-merge；仓库现有 feature workflow 可能在 push 后自动创建并合入
-- latest origin/develop: `66b7ca621b24ed6c973f6a0e6cb3591b3515165f`；已由 merge commit `da4cfd75903b93f68d6fc098062d6a792b0d1967` 整合并复验
+- latest origin/develop: `d5b22ddc5ff26f0205146b3d63607c66c5c7ef51`；已由 merge commit `53dce26f2ec0e51667830dbf05c4fa0b1ad92ffb` 整合；其相对已复验 runtime 基线仅新增 TASK-012 docs/QA closeout
 - unpushed commits: push 前为 implementation + tracking；push 后由最终 Result 核对
 - tracked working tree: tracking commit 后核对
 - preserved untracked files: `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py`
