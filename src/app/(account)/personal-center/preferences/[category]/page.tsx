@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AttractionActivityPreferencePage } from "@/features/preferences/attraction-activity-preference-page";
+import {
+  AccommodationPreferencePage,
+  BudgetPreferencePage,
+  DiningPreferencePage,
+} from "@/features/preferences/dining-accommodation-budget-preference-page";
 import { PreferenceCategoryPage } from "@/features/preferences/preference-category-page";
 import { MobilityPreferencePage } from "@/features/preferences/mobility-preference-page";
 import {
@@ -39,6 +44,9 @@ export default async function PreferenceCategoryRoute({
 
   if (category === "mobility") return <MobilityPreferencePage />;
   if (category === "attractions") return <AttractionActivityPreferencePage />;
+  if (category === "dining") return <DiningPreferencePage />;
+  if (category === "accommodation") return <AccommodationPreferencePage />;
+  if (category === "budget") return <BudgetPreferencePage />;
 
   return (
     <PreferenceCategoryPage

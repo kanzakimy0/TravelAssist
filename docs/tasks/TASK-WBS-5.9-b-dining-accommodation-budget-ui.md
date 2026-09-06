@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Preferences`
 - Priority: `P1`
-- Status: `Ready / 可开始`
+- Status: `待审查（待用户验收）`
 - Depends On: `5.5`
 - Dependency State: `5.5 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -15,6 +15,9 @@
 - Base Branch: `develop`
 - Implementation Branch: `feature/b-account-wbs-5-9-dining-accommodation-budget-ui`
 - Proposed Issue: `[WBS 5.9][B] 餐饮 / 住宿 / 预算偏好 UI`
+- GitHub Issue: `#138`
+- Implementation Commit: `PENDING（提交后返回实际值）`
+- Pull Request: `PENDING（push 后由仓库自动化创建）`
 - Task File: `docs/tasks/TASK-WBS-5.9-b-dining-accommodation-budget-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.9-b-dining-accommodation-budget-ui.md`
 
@@ -180,6 +183,7 @@ Restore：恢复当前页 UI fixture，只改 draft。
 每项使用 presentation-only 三段式，例如 `重视 / 一般 / 不特别`。
 
 说明：
+
 - 交通便利：重视住宿区域与交通节点/行程区域的便利性。
 - 舒适度：只表达整体舒适偏好，不等价于星级、房间面积、床型。
 - 少换酒店：多日行程更倾向减少住宿更换次数。
@@ -212,6 +216,7 @@ Restore：恢复当前页 UI fixture，只改 draft。
 当前不要擅自增加交通、购物、餐饮、机票、纪念品等正式预算分配类别。
 
 Summary 示例：
+
 - `中等预算 · 更愿意花在住宿和体验`
 - `中等预算 · 更愿意花在住宿`
 - `中等预算`
@@ -225,12 +230,15 @@ Summary 示例：
 不得在本 Task 冻结为正式业务枚举：
 
 ### Dining
+
 菜系、餐饮预算、用餐时间、儿童友好、特殊饮食明细
 
 ### Accommodation
+
 星级、房型、住宿预算、品牌、设施
 
 ### Budget
+
 更多分配类别、精确金额、货币、按日预算
 
 允许页面显示一句低优先级说明：`更多详细偏好将在 Preference Schema / Master Data 冻结后继续开放。`
@@ -252,6 +260,7 @@ Get-ChildItem -Path . -Recurse -File -Include *.png,*.jpg,*.jpeg,*.webp,*.svg |
 ```
 
 优先复用已有：
+
 - `/media/personal-center/preferences/category-dining.png`
 - `/media/personal-center/preferences/category-accommodation.webp`
 - `/media/personal-center/preferences/category-budget.png`
@@ -268,6 +277,7 @@ Get-ChildItem -Path . -Recurse -File -Include *.png,*.jpg,*.jpeg,*.webp,*.svg |
 不要做成后台表格。
 
 必须验证：
+
 - 标题层级
 - radio/segmented 可访问语义
 - selected state 不只靠颜色
@@ -298,6 +308,7 @@ src/features/preferences/
 允许 5.9 内部共享小组件，但不要重构 5.7 / 5.8。
 
 主要允许：
+
 - `src/app/(account)/personal-center/preferences/[category]/page.tsx`
 - `src/features/preferences/dining-*`
 - `src/features/preferences/accommodation-*`
@@ -307,6 +318,7 @@ src/features/preferences/
 - 当前 Task / Result / evidence / WBS 5.9
 
 默认禁止：
+
 - `src/features/preferences/mobility-preference-*`
 - `src/features/preferences/attraction-activity-preference-*`
 - Planner / Map / Home / Start / Profile / Companions
@@ -319,6 +331,7 @@ src/features/preferences/
 ## 14. Explicit Out of Scope
 
 禁止提前实现：
+
 - WBS 5.10
 - WBS 5.11 Preference Schema
 - WBS 5.13 Preset
@@ -333,6 +346,7 @@ src/features/preferences/
 - 正式 Master Data
 
 Result 必须写：
+
 - `Persistence: Mock / in-memory only`
 - `Formal Preference Schema: Not implemented`
 - `Planner Contract: Not implemented`
@@ -344,6 +358,7 @@ Result 必须写：
 至少覆盖：
 
 ### Dining
+
 1. 默认 fixture
 2. 当地料理倾向
 3. 小店倾向
@@ -352,12 +367,14 @@ Result 必须写：
 6. 无明显偏好
 
 ### Accommodation
+
 7. 交通便利
 8. 舒适度
 9. 少换酒店
 10. summary
 
 ### Budget
+
 11. 总体消费倾向
 12. 住宿分配 toggle
 13. 体验分配 toggle
@@ -365,6 +382,7 @@ Result 必须写：
 15. summary 不含具体金额
 
 ### Shared
+
 16. Save
 17. Cancel
 18. Restore
@@ -378,6 +396,7 @@ Result 必须写：
 ## 16. Browser / Responsive QA
 
 完整测试：
+
 - `/personal-center/preferences/dining`
 - `/personal-center/preferences/accommodation`
 - `/personal-center/preferences/budget`
@@ -385,6 +404,7 @@ Result 必须写：
 每页测试修改、Save、Cancel、Restore、返回、Sidebar、Avatar Popover、beforeunload。
 
 回归：
+
 - Preference Overview
 - Mobility 5.7
 - Attractions 5.8
@@ -394,6 +414,7 @@ Result 必须写：
 - Account
 
 视口：
+
 - 1920×1080
 - 1440×900
 - 1280×720
@@ -447,11 +468,13 @@ Base：`develop`
 仓库存在 feature push 自动建 PR / 自动合并。不得修改 workflow，也不得主动开启 auto-merge。
 
 如果自动合入但用户未验收：
+
 - WBS 5.9 = `待审查`
 - Task = `待审查`
 - Issue = Open
 
 只有代码进入 develop + 用户验收通过后：
+
 - WBS 5.9 = `已完成`
 - Task = `已完成`
 - Issue = Closed
@@ -468,6 +491,7 @@ Base：`develop`
 ## Status
 
 ## Preflight
+
 - origin/develop base:
 - dependency 5.5:
 - duplicate Task:
@@ -475,6 +499,7 @@ Base：`develop`
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -486,6 +511,7 @@ Base：`develop`
 - WBS updated:
 
 ## Dining UI
+
 - generic shell replaced:
 - current summary:
 - local cuisine:
@@ -494,6 +520,7 @@ Base：`develop`
 - unfrozen detailed enum added:
 
 ## Accommodation UI
+
 - generic shell replaced:
 - current summary:
 - transport convenience:
@@ -502,6 +529,7 @@ Base：`develop`
 - star/room formal enum added:
 
 ## Budget UI
+
 - generic shell replaced:
 - overall spending tendency:
 - accommodation allocation:
@@ -509,6 +537,7 @@ Base：`develop`
 - exact Trip amount added:
 
 ## State Boundary
+
 - Persistence:
 - Formal Preference Schema:
 - Planner Contract:
@@ -517,6 +546,7 @@ Base：`develop`
 - overview cross-route synchronization:
 
 ## Save Flow
+
 - Dining:
 - Accommodation:
 - Budget:
@@ -525,6 +555,7 @@ Base：`develop`
 - dirty detection:
 
 ## Local Asset Discovery
+
 - scan roots:
 - candidates found:
 - dining selected:
@@ -534,6 +565,7 @@ Base：`develop`
 - provenance:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -542,6 +574,7 @@ Base：`develop`
 - horizontal overflow:
 
 ## Regression
+
 - Preference overview:
 - Mobility 5.7:
 - Attractions 5.8:
@@ -552,6 +585,7 @@ Base：`develop`
 - Avatar Popover:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -564,6 +598,7 @@ Base：`develop`
 - browser QA:
 
 ## Ownership Safety
+
 - A Task modified:
 - Other B Task modified:
 - 5.7 changed:
@@ -575,6 +610,7 @@ Base：`develop`
 - shared Shell modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -585,9 +621,11 @@ Base：`develop`
 - preserved untracked files:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start WBS 5.10 / 5.11 / 5.16.
 ```
 
