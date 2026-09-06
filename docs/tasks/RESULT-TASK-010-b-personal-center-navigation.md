@@ -2,7 +2,17 @@
 
 ## Status
 
-待验收 / WBS 待审查。TASK-010-B 自身范围完成，复用已有 Draft PR #108，不自动合并。全仓格式存在核实过的基线例外；不宣称全产品导航无遗留问题。
+已完成 / WBS 导航子集已完成。PR #108 已经用户明确授权合入 develop；范围外问题和基线格式例外保留。
+
+## Merge Closeout — 2026-09-06
+
+- PR #108: Merged；Issue #79: Closed / Completed。
+- Merge: `f105253b1f700f67fd97d8c9eb03a9c85000d699`。
+- Final integrated develop: `e052d93ee02cfbd8dfa661f9e82e365783b3489a`；验收 head: `a4306e28a165b00bf01a7278d1c8c6750619ebbc`。合并树与验收 head 完全相同。
+- lint / typecheck / build / 123 tests / 76 Logo QA / diff-check 再次通过；无新增 console / hydration error。
+- 全仓格式现有 27 个基线异常：下方原 26 项，加 `docs/tasks/TASK-WBS-5.8-b-attraction-activity-preference-ui.md`。逐项与当前基线一致且基线自身格式失败；本 Task 文件通过。
+- 既有手机 Detail 返回入口问题未修改，不计为已解决；不影响本 Task 全部 Logo / 四动作 / Guard 验收。
+- 以下保留合并前验收历史；原待审查 / Draft 状态由本节的实际合并记录取代。本次不合并其他待审业务或文档 PR，不继续后续任务。
 
 ## Tracking / Prerequisites
 
