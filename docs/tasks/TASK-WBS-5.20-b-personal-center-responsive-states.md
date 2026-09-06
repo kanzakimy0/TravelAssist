@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Shared State & Responsive QA`
 - Priority: `P1`
-- Status: `Ready / 可开始`
+- Status: `待审查`
 - Depends On: `1.29, 5.1`
 - Dependency State at authoring: `1.29 = 已完成`, `5.1 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -1370,6 +1370,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 ## Status
 
 ## Preflight
+
 - origin/develop base:
 - dependency 1.29:
 - dependency 5.1:
@@ -1378,6 +1379,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -1389,7 +1391,8 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - WBS updated:
 
 ## Responsive Shell
-- >=1280 full sidebar:
+
+- > =1280 full sidebar:
 - 1024–1279 compact rail:
 - rail tooltip hover:
 - rail tooltip focus:
@@ -1402,6 +1405,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - safe area:
 
 ## Shared States
+
 - Page Loading:
 - Skeleton:
 - Empty:
@@ -1413,6 +1417,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - Action feedback:
 
 ## State Boundary
+
 - Real Auth integration:
 - Automatic offline detection:
 - Offline-first storage:
@@ -1421,6 +1426,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - Service Worker:
 
 ## Accessibility
+
 - keyboard:
 - focus-visible:
 - drawer focus trap:
@@ -1430,6 +1436,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - live feedback:
 
 ## Responsive QA
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -1443,6 +1450,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - horizontal overflow:
 
 ## Route Regression
+
 - Personal Home:
 - Trips:
 - Preferences Overview:
@@ -1458,6 +1466,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - Navigation Guard:
 
 ## Business Freeze
+
 - 5.4 behavior changed:
 - 5.5 behavior changed:
 - 5.6 behavior changed:
@@ -1467,6 +1476,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - 5.10 behavior changed:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1479,6 +1489,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - browser QA:
 
 ## Ownership Safety
+
 - A Task modified:
 - Other B Task modified:
 - Planner / Start modified:
@@ -1488,6 +1499,7 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - workflow modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -1498,15 +1510,18 @@ docs/tasks/RESULT-WBS-5.20-b-personal-center-responsive-states.md
 - preserved untracked files:
 
 ## Problems
+
 -
 
 ## Deferred
+
 - Real Auth expiry integration:
 - Provider authorization integration:
 - Offline-first data strategy:
 - Reservation Hub state integration:
 
 ## Next
+
 Stop. Do not automatically start another WBS.
 ```
 
