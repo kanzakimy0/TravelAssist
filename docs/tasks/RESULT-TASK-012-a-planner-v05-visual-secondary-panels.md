@@ -16,8 +16,8 @@ Blocked — 实现与自动化回归已交付，1180px 侧栏要求与推荐方�
 - Issue: #111。
 - Task File: `docs/tasks/TASK-012-a-planner-v05-visual-secondary-panels.md`。
 - Branch: `feature/a-planner-v05-visual-secondary-panels`。
-- Commits: PENDING（提交后补入真实实现 SHA）。
-- Pull Request: PENDING（Draft → develop）。
+- Commits: `64e53b3b3d8c5adeaeb867d00e8d581384a6f2c2`（实现）；后续追踪提交见 PR head。
+- Pull Request: [#124](https://github.com/kanzakimy0/TravelAssist/pull/124)（Draft → develop）。
 - WBS updated: Yes；TASK-011 已完成，TASK-012 阻塞 / 实现待审查。
 - TASK-011 最终集成验证提交 `b3d411b`，合并 `4c1d9bb`；其 Task / Result / WBS 合并状态同步纳入本次文档追踪。
 
