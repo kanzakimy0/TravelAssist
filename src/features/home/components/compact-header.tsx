@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 import styles from "./compact-header.module.css";
 
 function Brand() {
   return (
-    <div aria-label="TravelAssist" className={styles.brand}>
+    <Link href="/" aria-label="TravelAssist 首页" className={styles.brand}>
       <span aria-hidden="true" className={styles.brandMark} />
       <span>TravelAssist</span>
-    </div>
+    </Link>
   );
 }
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import styles from "../personal-center.module.css";
 import { PersonalIcon } from "./personal-icon";
+import { GuardedLink } from "./guarded-link";
 
 // Static presentation fixtures only, not a Trip model or saved user data.
 const previewTrips = [
@@ -70,12 +71,20 @@ export function PersonalHomePreview() {
             </li>
           </ul>
           <div className={styles.heroAction}>
-            <button type="button" disabled className={styles.planButton}>
-              查看行程
+            <GuardedLink href="/planner" className={styles.planButton}>
+              继续规划
               <PersonalIcon name="arrow" width="18" />
-            </button>
-            <span>即将开放</span>
+            </GuardedLink>
+            <GuardedLink
+              href="/start?entry=step3"
+              className={`${styles.planButton} ${styles.secondaryAction}`}
+            >
+              开始新旅行
+            </GuardedLink>
           </div>
+          <p className={styles.navigationNote}>
+            继续规划将打开当前示例规划，尚未接入真实保存行程。
+          </p>
         </div>
       </section>
 
