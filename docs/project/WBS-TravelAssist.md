@@ -267,6 +267,7 @@ src/db/
 | TASK-008.3 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner v0.3 交互） | A | 已完成 | #77 | `docs/tasks/TASK-008.3-a-planner-v03-interactions.md` | `feature/a-planner-v03-interactions` | `5893255`（实现），`004c40b`（同步），`f0c435a`（验收记录），`d5511f0`（合并） | [#85](https://github.com/kanzakimy0/TravelAssist/pull/85) 已合入 develop；64/64 tests、build、五尺寸 Mapbox/fallback 证据有效 |
 | TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 已完成（主流程导航闭环已合入） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591`（实现），`445150f`（追踪），`550a2b8`（合并） | [#101](https://github.com/kanzakimy0/TravelAssist/pull/101) 已合入 develop；Issue #78 已关闭 |
 | TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 已合并（TASK-010-B 本轮仅复验导航；窄屏返回入口待对应任务复核） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `b3d411b`（合入 head），`4c1d9bb`（合并） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) 已合入 develop；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
+| TASK-012-A | 1.5 / 1.6 / 1.7 / 1.14 / 4.1 / 4.8 / 4.14 / 4.15（v0.5 UI 子集） | A | 待审查（用户授权按当前实现合并；1180px 保留 Drawer，原侧栏验收差异留档） | #111 | `docs/tasks/TASK-012-a-planner-v05-visual-secondary-panels.md` | `feature/a-planner-v05-visual-secondary-panels` | `64e53b3`（实现），最新整合与验证见 Result | [#124](https://github.com/kanzakimy0/TravelAssist/pull/124)；保留冻结推荐方案，等待合并前复验 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 

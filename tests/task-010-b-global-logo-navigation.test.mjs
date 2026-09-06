@@ -44,7 +44,7 @@ test("product brands target home, both account variants retain GuardedLink", asy
   for (const file of [
     "src/features/home/components/compact-header.tsx",
     "src/features/start-flow/components/start-flow-header.tsx",
-    "src/features/planner/components/trip-workspace.tsx",
+    "src/features/planner/components/workspace-header.tsx",
   ]) {
     const brands = links(await read(file)).filter((link) =>
       `${link.text} ${link["aria-label"]}`.includes("TravelAssist"),

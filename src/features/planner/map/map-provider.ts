@@ -449,6 +449,10 @@ export async function mountMapbox(
     new mapbox.NavigationControl({ showCompass: false }),
     "bottom-right",
   );
+  map.addControl(
+    new mapbox.ScaleControl({ maxWidth: 100, unit: "metric" }),
+    "bottom-right",
+  );
   function updateView(view: MapView) {
     controller.update(view);
     publishAnchor();

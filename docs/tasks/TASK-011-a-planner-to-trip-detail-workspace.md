@@ -4,7 +4,7 @@
 
 - Task ID: `TASK-011-A`
 - Owner: `A`
-- Status: `待验收`
+- Status: `已完成`（用户授权合并，集成验收通过）
 - WBS: `1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15`
 - GitHub Issue: `#86`
 - Branch: `feature/a-planner-to-trip-detail-workspace`
@@ -12,7 +12,7 @@
   - `TASK-008.3-A / Issue #77` merged into `develop`
   - `TASK-010-A / Issue #78` merged into `develop`
 - Commit: `7629c8c0d8952420154ee4b9c42ebc11823ac131`
-- Pull Request: [#102](https://github.com/kanzakimy0/TravelAssist/pull/102)（Draft，防止仓库自动合并工作流违反本 Task）
+- Pull Request: [#102](https://github.com/kanzakimy0/TravelAssist/pull/102)（已合并，merge `4c1d9bb`；最终集成验证提交 `b3d411b`）
 - Design Source: `docs/ui/trip-detail.md` v2.0
 - Supporting Design:
   - `docs/ui/trip-planner.md`

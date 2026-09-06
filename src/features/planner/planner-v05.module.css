@@ -1,0 +1,303 @@
+/* v0.5 components only. Recommendation cards deliberately retain their existing CSS. */
+.topFade {
+  position: absolute;
+  inset: 0 0 auto auto;
+  width: min(620px, 44vw);
+  height: 76px;
+  background: linear-gradient(90deg, transparent, #fffcf7e8 72%, #fffcf7);
+  pointer-events: none;
+  z-index: -1;
+}
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+.search {
+  width: clamp(300px, 25vw, 390px);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  background: #fffdf9ed;
+  border: 1px solid #e5d7cd80;
+  border-radius: 28px;
+  box-shadow: 0 4px 18px #7763540a;
+}
+.search input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 10px 16px;
+  outline-offset: -3px;
+}
+.search button,
+.headerIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: #384955;
+  padding: 8px;
+  cursor: pointer;
+}
+.workbench {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 60px);
+  min-height: 0;
+}
+.workbenchBody {
+  display: grid;
+  grid-template-columns: 184px minmax(0, 1fr);
+  min-height: 0;
+  flex: 1;
+}
+.categories {
+  padding: 18px 12px;
+  background: #f7eee780;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 1px solid #e6d9cf80;
+}
+.categories button {
+  text-align: left;
+}
+.workbench button,
+.secondary button {
+  border: 1px solid #e4d7cc;
+  border-radius: 11px;
+  padding: 8px 12px;
+  color: #384955;
+  background: #fffcf7;
+  cursor: pointer;
+}
+.workbench button[aria-current],
+.secondary button[aria-pressed="true"] {
+  color: #aa5246;
+  border-color: #c98273;
+  background: #faeeeb;
+}
+.settingsContent {
+  padding: 20px 24px;
+  overflow: auto;
+  min-width: 0;
+}
+.settingsContent h3,
+.impact h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+.settingsContent section {
+  border-top: 1px solid #e8dcd080;
+  margin-top: 20px;
+}
+.settingsContent > label {
+  margin: 22px 0;
+}
+.settingsContent input[type="range"] {
+  accent-color: #b95649;
+}
+.workbench footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-top: 1px solid #e4d7cc80;
+}
+.workbench footer > span {
+  margin-right: auto;
+  font-size: 12px;
+}
+.workbench footer button:last-child {
+  background: #b95649;
+  color: white;
+  border-color: #b95649;
+}
+.impact {
+  padding: 20px 28px;
+  overflow: auto;
+}
+.impact section {
+  padding: 8px 16px;
+  margin: 14px 0;
+  background: #f7eee780;
+  border-radius: 14px;
+}
+.impact h4 {
+  margin: 8px 0;
+}
+.eyebrow {
+  color: #8f746a;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.secondary {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 24fr) minmax(0, 53fr) minmax(0, 23fr);
+  gap: 14px;
+  font-size: 12px;
+}
+.secondary > section,
+.secondary > aside {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 6px 10px;
+}
+.secondary > section + section,
+.secondary > aside {
+  border-left: 1px solid #e5d9cd80;
+}
+.secondary h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+.secondary h4 {
+  margin: 4px 0;
+  font-size: 12px;
+}
+.secondary p {
+  margin: 4px 0;
+}
+.secondary small {
+  color: #74736d;
+  font-size: 10px;
+}
+.secondary button {
+  font-size: 11px;
+  padding: 5px 8px;
+}
+.secondary [data-item] {
+  display: block;
+  width: 100%;
+  margin-bottom: 6px;
+  text-align: left;
+}
+.metrics {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.metrics strong {
+  display: block;
+  color: #a25245;
+  font-size: 20px;
+}
+.chain {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.chain button {
+  flex: 0 0 155px;
+  text-align: left;
+}
+.chain strong,
+.chain small {
+  display: block;
+}
+.summaryRing {
+  border: 4px solid #e8d7ca;
+  border-top-color: #b95649;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+.selectedHint {
+  font-size: 11px;
+  color: #9a5045;
+}
+.healthBar {
+  display: flex;
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e5e5dc;
+  margin: 10px 0;
+}
+.healthBar span {
+  background: #c59b8e;
+}
+.healthBar span + span {
+  background: #aab5b5;
+}
+@media (max-width: 1199px) {
+  .topFade {
+    width: 65vw;
+  }
+}
+@media (max-width: 767px) {
+  .headerActions {
+    gap: 2px;
+  }
+  .search {
+    width: 38px;
+    border: 0;
+    background: #fffcf7c0;
+  }
+  .search input {
+    width: 0;
+    padding: 0;
+  }
+  .search:focus-within {
+    position: absolute;
+    right: 95px;
+    width: calc(100vw - 115px);
+  }
+  .search:focus-within input {
+    padding: 8px;
+    width: auto;
+  }
+  .headerIcon {
+    padding: 3px;
+  }
+  .workbenchBody {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+  .categories {
+    padding: 10px 6px;
+    gap: 5px;
+  }
+  .categories button {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
+  .settingsContent {
+    padding: 14px;
+  }
+  .workbench footer {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+  .secondary {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 8px;
+  }
+  .secondary > aside,
+  .secondary > section {
+    border-left: 0;
+    overflow: visible;
+  }
+  .chain button {
+    flex-basis: 145px;
+  }
+}
