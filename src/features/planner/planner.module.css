@@ -874,6 +874,40 @@
   overflow: hidden;
   flex-shrink: 0;
 }
+
+.planner .openDetailButton {
+  width: 100%;
+  min-height: 40px;
+  margin-top: 6px;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--color-accent-primary);
+  color: #fffdf8;
+}
+
+.viewTransition {
+  width: 100%;
+  height: 100%;
+  animation: workspace-view-enter 220ms ease both;
+}
+
+@keyframes workspace-view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewTransition {
+    animation: none;
+  }
+}
 .planList {
   display: grid;
   grid-template-rows: repeat(3, 1fr);

@@ -1,22 +1,37 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   useEffect,
-  useMemo,
   useReducer,
   useRef,
   useState,
   useSyncExternalStore,
 } from "react";
-import { Button } from "@/components/ui/button";
+
 import { readPlannerPlanSelection } from "@/features/navigation/main-flow-navigation";
+
 import {
   initialPlannerSettings,
   plannerMockPlans,
 } from "../data/planner-mock-data";
-import type { PlannerAction } from "../model/planner-state";
 import { makePlannerCatalog } from "../data/planner-catalog";
+import {
+  DETAIL_DRAFT_STORAGE_KEY,
+  detailDaySummary,
+  detailMapView,
+  detailRailItems,
+  detailUrl,
+  emptyDetailDraft,
+  parseDetailDay,
+  parseDetailDraft,
+  parseWorkspaceMode,
+} from "../model/detail-workspace";
+import type {
+  DetailDraftItem,
+  DetailRailItem,
+} from "../model/detail-workspace";
+import type { PlannerAction } from "../model/planner-state";
 import {
   currentPlan,
   kindFor,
@@ -27,29 +42,38 @@ import {
   tripReducer,
 } from "../model/trip-model";
 import type { StopKind } from "../model/planner-types";
-import { PlannerMapShell } from "./planner-map-shell";
-import { MapLayerToolbar } from "./map-layer-toolbar";
-import { DayRangeSelector } from "./day-range-selector";
-import { PlannerRightPanel } from "./planner-right-panel";
-import { BottomExecutionPanel } from "./bottom-execution-panel";
-import { PlannerOverlay } from "./planner-overlay";
-import { PlannerIcon } from "./planner-icon";
-import { PlaceDetails } from "./place-details";
+import { AddTripItemDialog, TripItemDialog } from "./trip-item-dialog";
 import { BookingChecklist } from "./booking-checklist";
-import styles from "../planner.module.css";
+import { BottomExecutionPanel } from "./bottom-execution-panel";
+import { DayRangeSelector } from "./day-range-selector";
+import { DetailExecutionRail } from "./detail-execution-rail";
+import { DetailSidebar } from "./detail-sidebar";
+import { PlaceDetails } from "./place-details";
+import { PlannerRightPanel } from "./planner-right-panel";
+import { TripWorkspace } from "./trip-workspace";
 
 function subscribeViewport(callback: () => void) {
   window.addEventListener("resize", callback);
   return () => window.removeEventListener("resize", callback);
 }
+
 function viewportSnapshot() {
   return `${window.innerWidth < 1200}:${window.innerHeight < 700 || window.innerWidth < 768}`;
 }
+
 function serverViewport() {
   return "false:false";
 }
 
+function clockTime(value: number) {
+  const normalized = Math.max(0, Math.min(23 * 60 + 59, value));
+  return `${String(Math.floor(normalized / 60)).padStart(2, "0")}:${String(normalized % 60).padStart(2, "0")}`;
+}
+
 export function PlannerPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const mode = parseWorkspaceMode(searchParams.get("view"));
   const [trip, dispatchTrip] = useReducer(tripReducer, undefined, () => {
     const { places, areas } = makePlannerCatalog(plannerMockPlans);
     return makeTripState(
@@ -59,8 +83,66 @@ export function PlannerPage() {
       initialPlannerSettings,
     );
   });
-  // Compatibility adapter for the established shell controls; no second selection state.
-  const state = { ...trip.ui, selectedStopId: trip.ui.selectedTripItemId };
+  const [layers, setLayers] = useState<StopKind[]>([
+    "sight",
+    "transport",
+    "stay",
+    "food",
+    "booking",
+  ]);
+  const [terrain, setTerrain] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [detailDraft, setDetailDraft] = useState(emptyDetailDraft);
+  const [detailDraftReady, setDetailDraftReady] = useState(false);
+  const [saveStatus, setSaveStatus] = useState("本地草稿 · 已自动保存");
+  const [checkStatus, setCheckStatus] =
+    useState("本地规则检查完成 · 非实时 AI");
+  const [adjustmentOpen, setAdjustmentOpen] = useState(false);
+  const [dialogItemId, setDialogItemId] = useState<string | null>(null);
+  const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
+  const [addOpen, setAddOpen] = useState(false);
+  const [addTrigger, setAddTrigger] = useState<HTMLElement | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const viewport = useSyncExternalStore(
+    subscribeViewport,
+    viewportSnapshot,
+    serverViewport,
+  );
+  const [rightCollapsed, bottomCollapsed] = viewport
+    .split(":")
+    .map((value) => value === "true");
+  const plan = currentPlan(trip);
+  const detailDay = parseDetailDay(searchParams.get("day"), plan.days.length);
+  const datedPlan = presentationPlan(trip);
+
+  const railItems = detailRailItems(
+    trip,
+    detailDay,
+    detailDraft.items,
+    detailDraft.completedIds,
+  );
+  const summary = detailDaySummary(trip, detailDay, railItems);
+  const selectedDialogItem = railItems.find((item) => item.id === dialogItemId);
+  const viewForMode =
+    mode === "detail" ? detailMapView(trip, detailDay) : mapView(trip);
+  const visibleView = {
+    ...viewForMode,
+    places: viewForMode.places.filter(
+      (place) =>
+        place.type === "city" ||
+        layers.includes(kindFor(place.type)) ||
+        place.tripItemId === trip.ui.selectedTripItemId,
+    ),
+    areas: viewForMode.areas.filter((area) =>
+      layers.includes(area.type === "hotelArea" ? "stay" : "food"),
+    ),
+  };
+
+  // Compatibility adapter for the established planner controls; no second store.
+  const plannerUi = {
+    ...trip.ui,
+    selectedStopId: trip.ui.selectedTripItemId,
+  };
   function dispatch(action: PlannerAction) {
     if (action.type === "range") dispatchTrip(action);
     else if (action.type === "plan")
@@ -80,41 +162,7 @@ export function PlannerPage() {
       });
     }
   }
-  const [layers, setLayers] = useState<StopKind[]>([
-    "sight",
-    "transport",
-    "stay",
-    "food",
-    "booking",
-  ]);
-  const [terrain, setTerrain] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const viewport = useSyncExternalStore(
-    subscribeViewport,
-    viewportSnapshot,
-    serverViewport,
-  );
-  const [rightCollapsed, bottomCollapsed] = viewport
-    .split(":")
-    .map((value) => value === "true");
-  const plan = currentPlan(trip);
-  const datedPlan = presentationPlan(trip);
-  const view = useMemo(() => {
-    const next = mapView(trip);
-    return {
-      ...next,
-      places: next.places.filter(
-        (p) =>
-          p.type === "city" ||
-          layers.includes(kindFor(p.type)) ||
-          p.tripItemId === trip.ui.selectedTripItemId,
-      ),
-      areas: next.areas.filter((a) =>
-        layers.includes(a.type === "hotelArea" ? "stay" : "food"),
-      ),
-    };
-  }, [trip, layers]);
+
   useEffect(
     () => () => {
       if (timer.current) clearTimeout(timer.current);
@@ -123,10 +171,47 @@ export function PlannerPage() {
   );
   useEffect(() => {
     const selectedPlanId = readPlannerPlanSelection();
-    if (selectedPlanId) {
-      dispatchTrip({ type: "plan", id: selectedPlanId });
-    }
+    if (selectedPlanId) dispatchTrip({ type: "plan", id: selectedPlanId });
   }, []);
+  useEffect(() => {
+    const loadTimer = window.setTimeout(() => {
+      setDetailDraft(
+        parseDetailDraft(window.localStorage.getItem(DETAIL_DRAFT_STORAGE_KEY)),
+      );
+      setDetailDraftReady(true);
+    }, 0);
+    return () => window.clearTimeout(loadTimer);
+  }, []);
+  useEffect(() => {
+    if (!detailDraftReady) return;
+    const saveTimer = window.setTimeout(() => {
+      try {
+        window.localStorage.setItem(
+          DETAIL_DRAFT_STORAGE_KEY,
+          JSON.stringify(detailDraft),
+        );
+        setSaveStatus("本地草稿 · 已自动保存");
+      } catch {
+        setSaveStatus("本地草稿 · 保存失败");
+      }
+    }, 450);
+    return () => window.clearTimeout(saveTimer);
+  }, [detailDraft, detailDraftReady]);
+  useEffect(() => {
+    if (mode !== "detail") return;
+    if (trip.ui.rangeMode !== "day" || trip.ui.selectedDay !== detailDay) {
+      dispatchTrip({ type: "range", mode: "day", start: detailDay });
+    }
+  }, [detailDay, mode, trip.ui.rangeMode, trip.ui.selectedDay]);
+  useEffect(() => {
+    if (mode !== "detail") return;
+    const focusTimer = window.setTimeout(() => {
+      document
+        .querySelector<HTMLElement>("[data-detail-heading]")
+        ?.focus({ preventScroll: true });
+    }, 0);
+    return () => window.clearTimeout(focusTimer);
+  }, [detailDay, mode]);
   useEffect(() => {
     let previous = viewportSnapshot();
     function onResize() {
@@ -154,33 +239,95 @@ export function PlannerPage() {
       dispatchTrip({ type: "replan" });
     }, 900);
   }
-  function selectStop(id: string) {
-    dispatch({ type: "stop", id });
-  }
+
   function selectMapFeature(id: string, tripItemId?: string) {
-    const feature = view.places.find((p) => p.id === id);
+    const feature = visibleView.places.find((place) => place.id === id);
     if (feature?.type === "city") {
       dispatchTrip({ type: "focusDay", day: feature.day! });
       return;
     }
-    const item = plan.items.find((i) => i.id === tripItemId);
+    const item = plan.items.find((candidate) => candidate.id === tripItemId);
+    if (mode === "detail" && item) {
+      dispatchTrip({ type: "select", id: item.id });
+      return;
+    }
     dispatchTrip({
       type: "inspect",
       id: item?.placeId ?? id,
-      level: view.areas.some((a) => a.id === id) ? "area" : "quick",
+      level: visibleView.areas.some((area) => area.id === id)
+        ? "area"
+        : "quick",
       day: feature?.day,
     });
   }
-  const rightContent = (
+
+  function selectDetailDay(day: number) {
+    router.push(detailUrl(day), { scroll: false });
+  }
+
+  function selectDetailItem(item: DetailRailItem, trigger: HTMLElement) {
+    if (!item.draft) dispatchTrip({ type: "select", id: item.id });
+    setDialogTrigger(trigger);
+    setDialogItemId(item.id);
+  }
+
+  function updateDraftItem(
+    id: string,
+    patch: Pick<DetailDraftItem, "title" | "startTime" | "endTime">,
+  ) {
+    mutateDetailDraft((current) => ({
+      ...current,
+      items: current.items.map((item) =>
+        item.id === id ? { ...item, ...patch } : item,
+      ),
+    }));
+  }
+
+  function mutateDetailDraft(
+    update: (
+      current: ReturnType<typeof emptyDetailDraft>,
+    ) => ReturnType<typeof emptyDetailDraft>,
+  ) {
+    setSaveStatus("本地草稿 · 保存中…");
+    setDetailDraft(update);
+  }
+
+  function applyAdjustment() {
+    const target = railItems.find(
+      (item) => item.aiStatus !== "normal" && !item.fixed,
+    );
+    const end = target?.startTime ?? "13:00";
+    const [hours, minute] = end.split(":").map(Number);
+    const start = clockTime(hours * 60 + minute - 15);
+    mutateDetailDraft((current) => ({
+      ...current,
+      items: [
+        ...current.items.filter(
+          (item) => item.id !== `detail-adjustment-${detailDay}`,
+        ),
+        {
+          id: `detail-adjustment-${detailDay}`,
+          day: detailDay,
+          title: "预约前缓冲",
+          startTime: start,
+          endTime: end,
+          type: "task",
+          note: "来自 AI 调整预览的本地模拟建议",
+        },
+      ],
+    }));
+    setCheckStatus("模拟建议已应用到本地草稿 · 未运行真实 AI");
+    setAdjustmentOpen(false);
+  }
+
+  const plannerRight = (
     <PlannerRightPanel
-      plans={trip.plans.map((p) => presentationPlan(trip, p))}
+      plans={trip.plans.map((candidate) => presentationPlan(trip, candidate))}
       plan={datedPlan}
       state={trip}
       dispatch={dispatchTrip}
-      onPlan={(next) => {
-        dispatch({ type: "plan", plan: next });
-      }}
-      moreOpen={state.isMoreSettingsOpen}
+      onPlan={(next) => dispatch({ type: "plan", plan: next })}
+      moreOpen={plannerUi.isMoreSettingsOpen}
       onMore={(open) =>
         dispatch({ type: "patch", patch: { isMoreSettingsOpen: open } })
       }
@@ -191,172 +338,152 @@ export function PlannerPage() {
       onBooking={() =>
         dispatchTrip({ type: "ui", patch: { bookingOpen: true } })
       }
+      onOpenDetail={() =>
+        router.push(detailUrl(trip.ui.selectedDay), { scroll: false })
+      }
     />
   );
-  const bottomContent = (
+  const plannerBottom = (
     <BottomExecutionPanel
       state={trip}
       dispatch={dispatchTrip}
-      onSelect={selectStop}
+      onSelect={(id) => dispatch({ type: "stop", id })}
     />
   );
+  const detailRight = (
+    <DetailSidebar
+      state={trip}
+      summary={summary}
+      items={railItems}
+      onLocate={(id) => dispatchTrip({ type: "select", id })}
+      onRecheck={() => {
+        setCheckStatus("模拟 AI 检查已更新 · 无实时 Provider 数据");
+      }}
+      checkStatus={`${checkStatus} · ${saveStatus}`}
+      adjustmentOpen={adjustmentOpen}
+      onToggleAdjustment={() => setAdjustmentOpen((open) => !open)}
+      onApplyAdjustment={applyAdjustment}
+    />
+  );
+  const detailBottom = (
+    <DetailExecutionRail
+      plan={plan}
+      day={detailDay}
+      items={railItems}
+      selectedId={trip.ui.selectedTripItemId}
+      onDay={selectDetailDay}
+      onItem={selectDetailItem}
+      onAdd={(trigger) => {
+        setAddTrigger(trigger);
+        setAddOpen(true);
+      }}
+    />
+  );
+
   return (
-    <div className={styles.planner} data-planner>
-      <a href="#planner-workspace" className={styles.skipLink}>
-        跳到旅行工作区
-      </a>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}>
-          <span>
-            <PlannerIcon name="map" />
-          </span>
-          TravelAssist
-        </Link>
-        <nav className={styles.headerNav} aria-label="Planner 导航">
-          <Link href="/start">新建旅行</Link>
-          <Link href="/planner" aria-current="page">
-            AI 行程规划
-          </Link>
-        </nav>
-        <div className={styles.headerTitle}>
-          <h1>东京与富士山的三日慢叙</h1>
-          <span>示例行程</span>
-        </div>
-        <Link className={styles.accountLink} href="/personal-center">
-          <span>个人中心</span>
-          <span className={styles.avatar}>
-            <PlannerIcon name="users" />
-          </span>
-        </Link>
-      </header>
-      <main
-        id="planner-workspace"
-        tabIndex={-1}
-        className={styles.workspace}
-        data-right-collapsed={rightCollapsed}
-        data-bottom-collapsed={bottomCollapsed}
-      >
-        <div className={styles.mapWorkspace}>
-          <PlannerMapShell
-            state={trip}
-            dispatch={dispatchTrip}
-            view={view}
-            travelHints={Object.fromEntries(
-              plan.items
-                .filter((item) => item.next)
-                .map((item) => [item.id, item.next!]),
-            )}
-            onSelect={selectMapFeature}
-            terrain={terrain}
-          />
-          <MapLayerToolbar
-            collapsed={state.isLayerToolbarCollapsed}
-            onCollapse={() =>
-              dispatch({
-                type: "patch",
-                patch: {
-                  isLayerToolbarCollapsed: !state.isLayerToolbarCollapsed,
-                },
-              })
-            }
-            visible={layers}
-            onToggle={(kind) =>
-              setLayers((current) =>
-                current.includes(kind)
-                  ? current.filter((item) => item !== kind)
-                  : [...current, kind],
-              )
-            }
-            terrain={terrain}
-            onTerrain={() => setTerrain(!terrain)}
-          />
-          <DayRangeSelector
-            state={state}
-            totalDays={plan.days.length}
-            dispatch={dispatch}
-          />
-        </div>
-        {!rightCollapsed && (
-          <aside className={styles.rightSlot} aria-label="旅行设置与方案">
-            {rightContent}
-          </aside>
+    <>
+      <TripWorkspace
+        mode={mode}
+        trip={trip}
+        dispatch={dispatchTrip}
+        view={visibleView}
+        travelHints={Object.fromEntries(
+          plan.items
+            .filter((item) => item.next)
+            .map((item) => [item.id, item.next!]),
         )}
-        {!bottomCollapsed && (
-          <div className={styles.bottomSlot}>{bottomContent}</div>
-        )}
-        {rightCollapsed && (
-          <Button
-            className={styles.openRight}
-            variant="secondary"
-            size="small"
-            aria-haspopup="dialog"
-            aria-expanded={state.isRightPanelOverlayOpen}
-            onClick={() =>
-              dispatch({
-                type: "patch",
-                patch: { isRightPanelOverlayOpen: true },
-              })
-            }
-          >
-            <PlannerIcon name="settings" />
-            旅行设置与方案
-          </Button>
-        )}
-        {bottomCollapsed && (
-          <Button
-            className={styles.openBottom}
-            variant="secondary"
-            aria-haspopup="dialog"
-            aria-expanded={state.isBottomPanelOverlayOpen}
-            onClick={() =>
-              dispatch({
-                type: "patch",
-                patch: { isBottomPanelOverlayOpen: true },
-              })
-            }
-          >
-            <PlannerIcon name="clock" />
-            查看行程安排
-          </Button>
-        )}
-      </main>
-      {rightCollapsed && state.isRightPanelOverlayOpen && (
-        <PlannerOverlay
-          kind="right"
-          title="旅行设置与方案"
-          onClose={() =>
-            dispatch({
-              type: "patch",
-              patch: {
-                isRightPanelOverlayOpen: false,
-                isMoreSettingsOpen: false,
-              },
-            })
-          }
-        >
-          {rightContent}
-        </PlannerOverlay>
-      )}
-      {bottomCollapsed && state.isBottomPanelOverlayOpen && (
-        <PlannerOverlay
-          kind="bottom"
-          title="当天安排"
-          onClose={() =>
-            dispatch({
-              type: "patch",
-              patch: { isBottomPanelOverlayOpen: false },
-            })
-          }
-        >
-          {bottomContent}
-        </PlannerOverlay>
-      )}
-      {trip.ui.inspection?.level === "detail" && (
+        onSelectMapFeature={selectMapFeature}
+        layers={layers}
+        onToggleLayer={(kind) =>
+          setLayers((current) =>
+            current.includes(kind)
+              ? current.filter((item) => item !== kind)
+              : [...current, kind],
+          )
+        }
+        terrain={terrain}
+        onToggleTerrain={() => setTerrain((current) => !current)}
+        dayRange={
+          mode === "planner" ? (
+            <DayRangeSelector
+              state={plannerUi}
+              totalDays={plan.days.length}
+              dispatch={dispatch}
+            />
+          ) : null
+        }
+        rightContent={mode === "planner" ? plannerRight : detailRight}
+        bottomContent={mode === "planner" ? plannerBottom : detailBottom}
+        rightCollapsed={rightCollapsed}
+        bottomCollapsed={bottomCollapsed}
+      />
+
+      {mode === "planner" && trip.ui.inspection?.level === "detail" ? (
         <PlaceDetails state={trip} dispatch={dispatchTrip} />
-      )}
-      {trip.ui.bookingOpen && (
+      ) : null}
+      {mode === "planner" && trip.ui.bookingOpen ? (
         <BookingChecklist state={trip} dispatch={dispatchTrip} />
-      )}
-    </div>
+      ) : null}
+      {mode === "detail" && selectedDialogItem ? (
+        <TripItemDialog
+          item={selectedDialogItem}
+          trigger={dialogTrigger}
+          onClose={() => setDialogItemId(null)}
+          onSave={(patch) => {
+            if (selectedDialogItem.draft) {
+              updateDraftItem(selectedDialogItem.id, patch);
+            } else {
+              dispatchTrip({
+                type: "detailEdit",
+                id: selectedDialogItem.id,
+                ...patch,
+              });
+            }
+            setCheckStatus("本地轻量检查已运行 · 未调用真实 AI");
+          }}
+          onLock={() => {
+            if (!selectedDialogItem.draft) {
+              dispatchTrip({ type: "lock", id: selectedDialogItem.id });
+            }
+          }}
+          onDelete={() => {
+            if (selectedDialogItem.draft) {
+              mutateDetailDraft((current) => ({
+                ...current,
+                items: current.items.filter(
+                  (item) => item.id !== selectedDialogItem.id,
+                ),
+              }));
+            } else {
+              dispatchTrip({ type: "remove", id: selectedDialogItem.id });
+            }
+            setDialogItemId(null);
+          }}
+          onComplete={() => {
+            mutateDetailDraft((current) => ({
+              ...current,
+              completedIds: Array.from(
+                new Set([...current.completedIds, selectedDialogItem.id]),
+              ),
+            }));
+            setDialogItemId(null);
+          }}
+        />
+      ) : null}
+      {mode === "detail" && addOpen ? (
+        <AddTripItemDialog
+          day={detailDay}
+          trigger={addTrigger}
+          onClose={() => setAddOpen(false)}
+          onAdd={(item) => {
+            mutateDetailDraft((current) => ({
+              ...current,
+              items: [...current.items, item],
+            }));
+            setAddOpen(false);
+          }}
+        />
+      ) : null}
+    </>
   );
 }

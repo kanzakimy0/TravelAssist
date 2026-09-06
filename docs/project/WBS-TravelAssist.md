@@ -1,7 +1,7 @@
 # TravelAssist 可记录 WBS（Master）
 
 > 版本：v0.4  
-> 更新日期：2026-09-05
+> 更新日期：2026-09-06
 > 适用阶段：Web 优先，移动 App 后续  
 > 开发方式：A 主开发约 70%，B 协作约 30%，ChatGPT / Codex 辅助开发  
 > **v0.4 分工原则：A 负责旅行主系统（网站入口、地图、路线/行程生成、主规划画面及对应开发）；B 负责用户通过头像进入的个人中心（账户、个人管理、偏好、同行人、保存/历史等界面及对应开发）。**
@@ -249,8 +249,8 @@ src/db/
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
 | TASK-008.3 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner v0.3 交互） | A | 已完成 | #77 | `docs/tasks/TASK-008.3-a-planner-v03-interactions.md` | `feature/a-planner-v03-interactions` | `5893255`（实现），`004c40b`（同步），`f0c435a`（验收记录），`d5511f0`（合并） | [#85](https://github.com/kanzakimy0/TravelAssist/pull/85) 已合入 develop；64/64 tests、build、五尺寸 Mapbox/fallback 证据有效 |
-| TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 待审查（主流程导航闭环完成；用户已授权合并 #78） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591` | `PENDING` → develop；68/68 tests、build、三尺寸浏览器 QA 通过 |
-| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 阻塞（#77 已合并；等待 #78 实现并合入 develop） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | 实现 `PENDING`；追踪 `docs/a-task-011-blocked-tracking` | 实现 `PENDING`；`081f4c0`（阻塞追踪），`7e86725`（追踪合并） | [#91](https://github.com/kanzakimy0/TravelAssist/pull/91) docs-only，已合入 develop；实现 PR `PENDING` |
+| TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 已完成（主流程导航闭环已合入） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591`（实现），`445150f`（追踪），`550a2b8`（合并） | [#101](https://github.com/kanzakimy0/TravelAssist/pull/101) 已合入 develop；Issue #78 已关闭 |
+| TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 待审查（Detail Workspace 完成；真实 Provider / AI / DB 不在范围） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `7629c8c`（实现），`a940a41`（验证追踪） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) Draft；防止仓库自动合并；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 
