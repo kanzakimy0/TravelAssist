@@ -10,7 +10,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Preferences`
 - Priority: `P0`
-- Status: `进行中`
+- Status: `待验收`
 - Dependency: `5.5`
 - Dependency State: `5.5 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
@@ -20,6 +20,9 @@
 - Issue: `#128 — [WBS 5.8][B] 景点 / 活动偏好 UI`
 - Task File: `docs/tasks/TASK-WBS-5.8-b-attraction-activity-preference-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md`
+- Implementation Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`
+- Pull Request: `PENDING`
+- Merge Commit: `PENDING`
 
 ---
 
