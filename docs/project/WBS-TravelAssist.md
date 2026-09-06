@@ -243,6 +243,7 @@ src/db/
 | WBS-5.1-B | 5.1 | B | 已完成 | #34 | `docs/tasks/TASK-WBS-5.1-b-personal-center-shell-navigation.md` | `feature/b-account-wbs-5-1-personal-center-shell` | `53525eb` | #36 |
 | WBS-5.2-B | 5.2 | B | 已完成 | #50 | `docs/tasks/TASK-WBS-5.2-b-avatar-menu-navigation.md` | `feature/b-account-wbs-5-2-avatar-menu` | `6f25b25` | #52 |
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
+| WBS-5.4-B-V2 | 5.4（关联 5.1 / 5.2 completed-task visual refresh） | B | 待审查（实现与五尺寸验收完成；待用户视觉验收及合并） | #75 | `docs/tasks/TASK-WBS-5.4-b-personal-center-visual-rebuild-v2.md` | `feature/b-account-wbs-5-4-photoreal-rebuild-v2` | `c2adaf7` | [#98](https://github.com/kanzakimy0/TravelAssist/pull/98) Draft，未合并 |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
@@ -370,7 +371,7 @@ src/db/
 | 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
 | 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 已完成 |
 | 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
-| 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 未开始 |
+| 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 待审查 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 未开始 |
 | 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 未开始 |
 | 5.7    | 移动偏好 UI                                   | B      | P1     | 5.5      | 未开始 |
