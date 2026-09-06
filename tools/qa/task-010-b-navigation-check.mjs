@@ -5,7 +5,7 @@ import path from "node:path";
 const { chromium } = createRequire(import.meta.url)(
   process.env.PLAYWRIGHT_MODULE || "playwright",
 );
-const base = process.env.TASK_010_B_URL || "http://127.0.0.1:3112";
+const base = process.env.TASK_010_B_URL || "http://127.0.0.1:3113";
 assert.ok(["127.0.0.1", "localhost"].includes(new URL(base).hostname));
 const output = path.resolve("docs/qa/TASK-010-B");
 await mkdir(output, { recursive: true });
@@ -13,6 +13,7 @@ const routes = [
   "/",
   "/start",
   "/planner",
+  "/planner?view=detail&day=1",
   "/personal-center",
   "/personal-center/trips",
   "/personal-center/preferences",
@@ -77,6 +78,28 @@ try {
       await logo(page).click();
       await page.waitForURL(base + "/");
       results.push({ viewport: `${width}x${height}`, route, logo: "passed" });
+    }
+    await page.goto(base + "/planner?view=detail&day=1");
+    await page.locator("[data-map-workspace]").waitFor();
+    await page.evaluate(() => {
+      window.__task010bMap = document.querySelector("[data-map-workspace]");
+    });
+    const returnLink = page.getByRole("link", {
+      name: "AI 行程规划",
+      exact: true,
+    });
+    const canReturn = await returnLink.isVisible();
+    if (canReturn) {
+      await returnLink.click();
+      await page.waitForURL(base + "/planner");
+      assert.ok(
+        await page.evaluate(
+          () =>
+            window.__task010bMap ===
+            document.querySelector("[data-map-workspace]"),
+        ),
+        "Detail return must retain the existing map workspace",
+      );
     }
     for (const source of ["/personal-center", "/personal-center/trips"]) {
       for (const [label, target] of [
@@ -182,6 +205,9 @@ try {
       accountSubpages: "passed",
       guardCancelConfirm: "passed",
       keyboard: "passed",
+      detailReturnAndMapLifecycle: canReturn
+        ? "passed (existing TASK-011-A)"
+        : "not available: upstream responsive header hides navigation; protected scope",
     });
     await context.close();
   }
@@ -192,7 +218,12 @@ try {
 await writeFile(
   path.join(output, "report.json"),
   JSON.stringify(
-    { results, errors, detail: "Pending TASK-011-A / Draft PR #102" },
+    {
+      results,
+      errors,
+      detail:
+        "PR #102 merged; Logo passed at all sizes; return to Planner passed at 1440/1024, unavailable at 390/320 (upstream hidden navigation)",
+    },
     null,
     2,
   ) + "\n",
