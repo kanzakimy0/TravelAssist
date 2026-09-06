@@ -2,7 +2,7 @@
 
 ## Status
 
-Awaiting Review
+Completed
 
 ## Preflight
 
@@ -14,14 +14,24 @@ Awaiting Review
 
 ## Tracking
 
-- Issue: [#123](https://github.com/kanzakimy0/TravelAssist/issues/123)（Open；等待用户验收）。
+- Issue: [#123](https://github.com/kanzakimy0/TravelAssist/issues/123)（用户验收通过；tracking closeout 合并后关闭）。
 - Task File: `docs/tasks/TASK-WBS-5.7-b-mobility-preference-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.7-b-mobility-preference-ui.md`
 - Branch: `feature/b-account-wbs-5-7-mobility-preference-ui`
 - Implementation Commit: `ab7969741bdcc932a97745c7c6df44815fba5b66`
-- Final Head: publication candidate after tracking / develop sync；以最终 Git / PR Result 为准。
-- PR: publication pending；目标 `develop ← feature/b-account-wbs-5-7-mobility-preference-ui`。
-- WBS updated: WBS 5.7 与唯一 WBS-5.7-B tracking record 已更新为待审查；未标记已完成。
+- Final Head: `e544bc5aa36ab82acb1baa5ab253f1e9437fb2a8`（implementation PR head）。
+- PR: [#125](https://github.com/kanzakimy0/TravelAssist/pull/125) 已合入 `develop`；Merge Commit `8b83628f60e7dd2a07231a59ca448c4dc5af510d`。
+- WBS updated: WBS 5.7 与唯一 WBS-5.7-B tracking record 已更新为已完成（用户验收通过）。
+
+## Acceptance Fix
+
+- User Acceptance: Passed（2026-09-06）。
+- Defect: 在缩放 / 小视口下点击“不乘坐公共交通”时，绝对定位的隐藏 checkbox 焦点会产生幽灵滚动范围和大块空白。
+- Fix Branch: `fix/wbs-5-7-checkbox-focus-scroll`
+- Fix Commit: `ddf0abafe7d94b20870600c87a66fd57c26f80ab`
+- Fix PR: [#126](https://github.com/kanzakimy0/TravelAssist/pull/126) 已合入 `develop`。
+- Fix Merge Commit: `cabb4874d4c27f0909011af76c7ca13f79288c22`
+- Regression: checkbox 焦点目标固定在选项卡内部；390×844、320×740 与 125% 缩放等效场景均通过。
 
 ## Mobility UI
 
@@ -85,7 +95,7 @@ Awaiting Review
 - Node tests: Passed，30 / 30（WBS-5.5 回归 7；WBS-5.7-B 23）。
 - build: Passed；Next.js 16.3.4，mobility 动态参数路由 SSG 成功。
 - diff-check: Passed。
-- browser QA: Passed；真实本地 Edge、5 个指定 viewport、完整功能与回归路径。
+- browser QA: Passed；真实本地 Edge、5 个指定 viewport、完整功能与回归路径；验收修复后新增 checkbox focus geometry 与小视口跳屏回归并通过。
 
 ## Ownership Safety
 
@@ -100,16 +110,17 @@ Awaiting Review
 
 ## Git
 
-- Commit: `ab7969741bdcc932a97745c7c6df44815fba5b66`（implementation）；`d21dbdd96b65debfc9c9159e45b931c7cf039042`（tracking）；`9c093bcd72c375f35aec94c7b27ba459744e5345`（latest develop sync merge）。
-- Push: Pending。
-- PR: Pending。
-- Merge behavior: 仓库 `feature/**` push workflow 已确认会自动建 PR 并尝试合并；不修改 workflow、不主动启用 auto-merge，若自动合并仍保持 Issue Open / WBS 待审查直至用户验收。
+- Commit: `ab7969741bdcc932a97745c7c6df44815fba5b66`（implementation）；`ddf0abafe7d94b20870600c87a66fd57c26f80ab`（acceptance fix）。
+- Push: Success；implementation 与 acceptance fix 分支均已推送。
+- PR: [#125](https://github.com/kanzakimy0/TravelAssist/pull/125) 与 [#126](https://github.com/kanzakimy0/TravelAssist/pull/126) 均已合入 `develop`。
+- Merge behavior: 仓库自动化在 PR 创建后自动完成合并；未 force push、未改写历史、未修改或绕过 workflow / security rules。
 
 ## Problems
 
 - 全仓 Prettier 存在 26 个既有非本 Task baseline 文件；本 Task 定向检查通过。
 - 浏览器测试脚本热更新后的首轮回归出现一次开发态 HMR hydration 日志；服务器稳定后原样重跑无 console / hydration / asset error。
 - Windows screenshot viewer 因沙箱初始化错误不可用；Playwright/Edge 的 DOM、资源、交互、几何检查与 10 张证据截图均成功。
+- 仓库 PR 自动化在人工操作前自动合并 #125 / #126；实际状态已如实记录，用户验收后才执行完成状态 closeout。
 
 ## Next
 

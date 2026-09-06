@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Personal Center / Preferences`
 - Priority: `P1`
-- Status: `待审查`
+- Status: `已完成`
 - Depends On: `5.5`
 - Dependency State at authoring: `5.5 = 已完成`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
