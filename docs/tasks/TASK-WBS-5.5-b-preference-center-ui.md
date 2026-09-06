@@ -15,7 +15,8 @@
 - Proposed Branch: `feature/b-account-wbs-5-5-preference-center-ui`
 - Proposed Issue: `[WBS 5.5][B] 偏好管理中心 UI`
 - Result File: `docs/tasks/RESULT-WBS-5.5-b-preference-center-ui.md`
-- Status: `Ready after coordination gate`
+- Status: `待验收`
+- GitHub Issue: `#105`
 
 ---
 
@@ -880,19 +881,23 @@ Issue = Closed
 # WBS-5.5-B Result
 
 ## Status
+
 Completed / Partially Completed / Awaiting Review / Blocked
 
 ## Coordination Gate
+
 - WBS 5.4 final state:
 - sequential execution satisfied:
 
 ## Preflight
+
 - origin/develop base:
 - duplicate Task:
 - duplicate Issue:
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -903,6 +908,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - WBS updated:
 
 ## Overview UI
+
 - Placeholder removed:
 - Header:
 - Attraction Radar:
@@ -913,6 +919,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - Reset:
 
 ## Radar Semantics
+
 - attraction axes:
 - travel-style axes:
 - semantic levels:
@@ -921,6 +928,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - accessibility:
 
 ## Category Navigation
+
 - mobility:
 - attractions:
 - dining:
@@ -931,6 +939,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - detailed editing implemented: No
 
 ## State Boundary
+
 - Persistence:
 - Schema Contract:
 - API / DB / Auth:
@@ -938,16 +947,19 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - Trip temporary preference isolation:
 
 ## Empty / Partial
+
 - empty:
 - partial:
 - unset semantics:
 
 ## Visual Asset Gate
+
 - approved preference-specific photos:
 - asset source / manifest:
 - final photography acceptance:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -956,6 +968,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - horizontal overflow:
 
 ## Functional Regression
+
 - Personal Center navigation:
 - Avatar Popover:
 - Home:
@@ -964,6 +977,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - hydration:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -975,6 +989,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - diff-check:
 
 ## Ownership Safety
+
 - A Task modified:
 - Other B Task modified:
 - Profile 5.4 files modified:
@@ -984,6 +999,7 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - WBS 5.1 / 5.2 status changed:
 
 ## Git
+
 - Branch:
 - Commit:
 - Push:
@@ -991,15 +1007,18 @@ Completed / Partially Completed / Awaiting Review / Blocked
 - Merge Commit:
 
 ## Three-way Sync
+
 - Task:
 - Issue:
 - WBS 5.5:
 - PR:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start 5.6 / 5.7 / 5.8 / 5.9 / 5.11 / 5.16.
 ```
 
