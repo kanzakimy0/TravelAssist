@@ -193,6 +193,10 @@
   object-fit: cover;
 }
 
+.currentAvatarPhoto {
+  object-position: 50% 40%;
+}
+
 .avatarDetails > strong {
   font-size: 15px;
 }
@@ -886,4 +890,714 @@
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Account concept alignment: compact four-card composition above Account & Data. */
+.accountPage {
+  position: relative;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.pageHeader {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.accountGrid,
+.sideColumn {
+  display: contents;
+}
+
+.profileCard {
+  grid-column: 1 / 9;
+  grid-row: 1;
+}
+
+.contactCard {
+  grid-column: 9 / 13;
+  grid-row: 1;
+}
+
+.settingsCard {
+  grid-column: 6 / 13;
+  grid-row: 2;
+}
+
+.emergencySection {
+  grid-column: 1 / 6;
+  grid-row: 2;
+}
+
+.accountPage > section[aria-labelledby="account-entry-title"] {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 8px;
+}
+
+.card {
+  padding: 14px 16px;
+  border-radius: 17px;
+  background: rgb(255 253 250 / 88%);
+  box-shadow: 0 7px 22px rgb(113 78 59 / 5%);
+}
+
+.cardHeading {
+  align-items: center;
+  min-height: 26px;
+  margin-bottom: 10px;
+}
+
+.cardHeading h2 {
+  font-family: "Segoe UI", "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.cardEyebrow,
+.dirtyHint,
+.readOnlyNote {
+  display: none;
+}
+
+.headingWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.headingWithIcon > svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: #25363b;
+}
+
+.headingWithIcon > svg:nth-of-type(2) {
+  width: 14px;
+  height: 14px;
+  color: var(--pc-text-secondary);
+}
+
+.headingNote {
+  color: var(--pc-text-secondary);
+  font-size: 10px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.profileCard {
+  position: relative;
+  min-height: 246px;
+  padding-right: 18px;
+}
+
+.avatarRow {
+  position: absolute;
+  top: 52px;
+  left: 22px;
+  display: flex;
+  width: 124px;
+  padding: 0;
+  border: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.profileAvatar {
+  width: 100px;
+  height: 100px;
+  border: 0;
+  box-shadow: none;
+}
+
+.currentAvatarPhoto {
+  object-position: center;
+}
+
+.avatarDetails {
+  width: 100%;
+}
+
+.avatarDetails > strong,
+.avatarDetails > p {
+  display: none;
+}
+
+.avatarActions {
+  position: relative;
+  display: block;
+}
+
+.fileButton {
+  width: 100%;
+  min-height: 30px;
+  padding: 4px 10px;
+  border-color: #ff8b7c;
+  border-radius: 8px;
+  color: #ef5c4e;
+  background: rgb(255 255 255 / 72%);
+  font-size: 11px;
+}
+
+.fileButton svg {
+  position: absolute;
+  top: -51px;
+  right: -1px;
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border-radius: 50%;
+  color: white;
+  background: #46545b;
+  box-sizing: border-box;
+}
+
+.avatarActions button {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+}
+
+.profileFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, 42px);
+  gap: 6px 14px;
+  margin: 0 0 0 166px;
+}
+
+.profileFields > :nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.profileFields > :nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.profileFields > :nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.profileFields > :nth-child(4) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.profileFields > :nth-child(5) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.profileFields > :nth-child(6) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.formField {
+  gap: 2px;
+}
+
+.formField > label,
+.settingRow > label {
+  color: #5e6668;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.formField input,
+.formField select,
+.settingRow select {
+  min-height: 27px;
+  height: 27px;
+  padding: 2px 9px;
+  border-color: #d9dedc;
+  border-radius: 7px;
+  background: rgb(255 255 255 / 65%);
+  font-size: 11px;
+}
+
+.fieldError {
+  position: absolute;
+  margin-top: 40px !important;
+  font-size: 10px !important;
+}
+
+.saveBar {
+  position: relative;
+  z-index: 2;
+  grid-column: 1 / 9;
+  grid-row: 1;
+  align-self: end;
+  justify-self: end;
+  width: 180px;
+  margin: 0 18px 12px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.saveBar > span {
+  display: none;
+}
+
+.saveBar > div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.saveBar button {
+  min-height: 31px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+}
+
+.saveBar button:last-child {
+  border-color: #f15f53;
+  background: linear-gradient(135deg, #ff7165, #ef5147);
+}
+
+.contactCard {
+  min-height: 246px;
+}
+
+.contactList {
+  gap: 8px;
+}
+
+.contactList > div {
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 9px;
+  min-height: 51px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 58%);
+}
+
+.contactIcon,
+.securityIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #f05a4e;
+  background: #ffebe7;
+}
+
+.contactIcon svg,
+.securityIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contactText {
+  min-width: 0;
+}
+
+.contactList dt {
+  color: #313b3e;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.contactList dd {
+  color: #222b2e;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.verifiedBadge {
+  padding: 0;
+  color: #16a66a;
+  background: transparent;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.securityEntry {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 9px;
+  min-height: 51px;
+  margin-top: 8px;
+  padding: 7px 9px;
+  border-radius: 10px;
+  background: rgb(242 244 243 / 76%);
+}
+
+.securityIcon {
+  color: #22353d;
+  background: #f8fbfa;
+}
+
+.securityEntry strong,
+.securityEntry small {
+  display: block;
+}
+
+.securityEntry strong {
+  font-size: 11px;
+}
+
+.securityEntry small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.securityEntry > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.emergencySection,
+.settingsCard {
+  min-height: 180px;
+}
+
+.emergencySection {
+  display: flex;
+  flex-direction: column;
+}
+
+.emergencySection .cardHeading {
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.contactCards {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+
+.emergencyCard {
+  min-height: 53px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: rgb(255 255 255 / 55%);
+}
+
+.emergencyCard::before {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  content: "♙";
+  color: #677176;
+  background: #eef1f0;
+}
+
+.emergencyCard > div:first-child {
+  margin-right: auto;
+}
+
+.emergencyCard h3 {
+  font-size: 11px;
+}
+
+.emergencyCard p,
+.emergencyCard span {
+  font-size: 9px;
+}
+
+.emergencyCard > div:last-child {
+  gap: 4px;
+}
+
+.emergencyCard button {
+  display: grid;
+  place-items: center;
+  min-height: 28px;
+  width: 28px;
+  padding: 0;
+  border: 0;
+  color: #44545b;
+}
+
+.emergencyCard button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.emergencyCard .dangerButton {
+  color: #ff4f46 !important;
+}
+
+.emergencySection .secondaryButton {
+  width: 100%;
+  min-height: 37px;
+  margin-top: auto;
+  border: 1px dashed #ff8e80;
+  border-radius: 8px;
+  color: #ef5b4c;
+  background: transparent;
+  font-size: 10px;
+}
+
+.emptyContact {
+  min-height: 62px;
+  padding: 8px;
+  border-radius: 9px;
+}
+
+.settingsCard .cardHeading {
+  justify-content: flex-start;
+  margin-bottom: 11px;
+}
+
+.settingsList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, 26px);
+  column-gap: 28px;
+  row-gap: 5px;
+}
+
+.settingRow {
+  grid-template-columns: 75px minmax(0, 1fr);
+  gap: 7px;
+  min-height: 26px;
+  border: 0;
+}
+
+.settingRow:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.settingRow:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.settingRow:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.settingRow:nth-child(4) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.settingRow:nth-child(5) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.settingRow:nth-child(6) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.settingRow:nth-child(7) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.settingRow select {
+  min-height: 25px;
+  height: 25px;
+  padding: 1px 7px;
+  text-align: left;
+  font-size: 10px;
+}
+
+.recommendation {
+  position: absolute;
+  z-index: 3;
+  right: 16px;
+  bottom: 12px;
+  width: min(360px, calc(100% - 32px));
+  margin: 0;
+  padding: 10px;
+}
+
+.accountEntries {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1180px) {
+  .accountPage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profileCard {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contactCard {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .emergencySection {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .settingsCard {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .accountPage > section[aria-labelledby="account-entry-title"] {
+    grid-column: 1;
+    grid-row: 5;
+  }
+
+  .profileCard,
+  .contactCard,
+  .emergencySection,
+  .settingsCard {
+    min-height: auto;
+  }
+
+  .saveBar {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .profileCard {
+    min-height: auto;
+    padding-bottom: 64px;
+  }
+
+  .avatarRow {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+
+  .profileFields {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    margin: 0;
+  }
+
+  .profileFields > :nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .saveBar {
+    position: relative;
+    bottom: auto;
+    grid-area: profile;
+    align-self: end;
+    width: calc(100% - 32px);
+    margin: 0 16px 14px;
+  }
+
+  .settingsList {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .settingRow:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .headingNote {
+    white-space: normal;
+  }
+
+  .accountEntries {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.profileHeadingActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.profileHeadingActions .editButton,
+.profileHeadingActions .savedFeedback {
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-size: 10px;
+}
+
+.profileHeadingActions .savedFeedback {
+  background: transparent;
+}
+
+.profileHeadingActions .editButton svg,
+.profileHeadingActions .savedFeedback svg {
+  width: 14px;
+  height: 14px;
+}
+
+.profileAvatar .currentAvatarPhoto {
+  object-position: 50% 48%;
+}
+
+.avatarRow:has(.profileAvatar[data-kind="local"]) .avatarActions,
+.avatarRow:has(.profileAvatar[data-kind="default"]) .avatarActions {
+  display: grid;
+  gap: 4px;
+}
+
+.avatarRow:has(.profileAvatar[data-kind="local"]) .avatarActions button,
+.avatarRow:has(.profileAvatar[data-kind="default"])
+  .avatarActions
+  button:last-child {
+  position: static;
+  width: 100%;
+  height: auto;
+  min-height: 27px;
+  padding: 3px 7px;
+  overflow: visible;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 7px;
+  clip-path: none;
+  font-size: 9px;
+}
+
+.avatarRow:has(.profileAvatar[data-kind="local"]) .avatarActions button svg,
+.avatarRow:has(.profileAvatar[data-kind="default"])
+  .avatarActions
+  button:last-child
+  svg {
+  width: 13px;
+  height: 13px;
 }

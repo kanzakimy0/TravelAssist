@@ -11,4 +11,5 @@ export const mockPersonalUser = {
   name: "Yuki",
   initial: "Y",
   label: "Mock 用户",
+  avatar: "/media/personal-center/avatar-yuki.webp",
 };

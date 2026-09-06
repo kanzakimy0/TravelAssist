@@ -91,7 +91,9 @@ try {
     await page.goto(`${baseUrl}/personal-center/account`, {
       waitUntil: "networkidle",
     });
-    await page.getByRole("heading", { name: "账户", exact: true }).waitFor();
+    await page
+      .getByRole("heading", { name: "个人资料", exact: true })
+      .waitFor();
     await assertNoOverflow(page, `${label} account`);
     await page.screenshot({
       path: path.join(evidenceDir, `${label}-account-view.png`),
@@ -109,9 +111,10 @@ try {
     waitUntil: "networkidle",
   });
   await page.getByRole("link", { name: "账户", exact: true }).click();
-  await page.getByRole("heading", { name: "账户", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "个人资料", exact: true }).waitFor();
 
-  await page.getByRole("button", { name: "编辑资料" }).click();
+  const initialEditButton = page.getByRole("button", { name: "编辑资料" });
+  if (await initialEditButton.count()) await initialEditButton.click();
   const nickname = page.getByLabel(/昵称/);
   await nickname.fill("");
   await page.getByRole("button", { name: "保存修改" }).click();
@@ -177,21 +180,21 @@ try {
     fullPage: true,
   });
 
-  await page.getByRole("button", { name: "编辑", exact: true }).click();
+  await page.getByRole("button", { name: "编辑", exact: true }).last().click();
   const editDialog = page.getByRole("dialog", {
     name: "编辑紧急联系人",
   });
   await editDialog.getByLabel(/与您的关系/).fill("家人");
   await editDialog.getByRole("button", { name: "保存联系人" }).click();
   await page.getByText(/家人 · \+81 90-1234-5678/).waitFor();
-  await page.getByRole("button", { name: "删除", exact: true }).click();
+  await page.getByRole("button", { name: "删除", exact: true }).last().click();
   const deleteDialog = page.getByRole("dialog", {
     name: "删除这位紧急联系人？",
   });
   await deleteDialog.getByRole("button", { name: "取消" }).click();
-  await page.getByRole("button", { name: "删除", exact: true }).click();
+  await page.getByRole("button", { name: "删除", exact: true }).last().click();
   await deleteDialog.getByRole("button", { name: "删除", exact: true }).click();
-  await page.getByText("还没有紧急联系人").waitFor();
+  await page.getByRole("heading", { name: "山田 太郎" }).waitFor();
 
   await nickname.fill("Unsaved Name");
   await page.getByRole("link", { name: "我的旅行", exact: true }).click();

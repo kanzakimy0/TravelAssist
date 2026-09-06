@@ -5,7 +5,7 @@ import test from "node:test";
 const read = (path) =>
   readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
-test("photoreal-v3 assets are wired to the Personal Center visual layer", () => {
+test("approved concept assets are wired to the Personal Center visual layer", () => {
   const sidebar = read(
     "src/features/personal-center/components/personal-sidebar.tsx",
   );
@@ -16,13 +16,26 @@ test("photoreal-v3 assets are wired to the Personal Center visual layer", () => 
     "src/features/personal-center/personal-center.module.css",
   );
 
-  assert.match(sidebar, /sidebar-torii-photo\.webp/);
-  assert.match(sidebar, /sidebar-sakura-photo-overlay\.png/);
-  assert.match(shellStyles, /personal-center-paper-surface\.webp/);
-  assert.match(shellStyles, /personal-center-photo-corners\.png/);
+  assert.match(sidebar, /sidebar-torii-watercolor-v2\.png/);
+  assert.match(sidebar, /sidebar-shell-ornament-top\.png/);
+  assert.match(sidebar, /travelassist-logo-torii\.png/);
+  const identity = read("src/features/personal-center/constants/personal-navigation.ts");
+  assert.match(identity, /avatar-yuki\.webp/);
+  assert.match(sidebar, /mockPersonalUser\.avatar/);
+  assert.match(shellStyles, /personal-center-surface-texture-v2\.png/);
+  assert.match(shellStyles, /personal-center-corner-decorations\.png/);
+  assert.match(home, /hero-kyoto-sakura\.webp/);
+  assert.match(home, /trip-kyoto-gion\.webp/);
+  assert.match(home, /trip-osaka-castle\.webp/);
+  assert.match(home, /trip-hokkaido-winter\.webp/);
   for (const name of ["inspiration", "favorites", "discovery"]) {
-    assert.match(home, new RegExp(`feature-card-${name}-photo\\.png`));
+    assert.match(home, new RegExp(`feature-card-${name}-bg\\.png`));
   }
+  assert.doesNotMatch(home, /home-hero-poster\.webp/);
+  assert.doesNotMatch(
+    `${sidebar}\n${home}\n${shellStyles}`,
+    /personal-center\/photoreal-v3/,
+  );
 });
 
 test("Profile Account remains explicit in-memory UI with required flows", () => {

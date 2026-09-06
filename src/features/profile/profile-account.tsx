@@ -67,22 +67,22 @@ const settingsFields = [
   {
     key: "currency",
     label: "默认货币",
-    options: ["JPY ¥", "CNY ¥", "EUR €", "USD $"],
+    options: ["JPY (¥)", "CNY (¥)", "EUR (€)", "USD ($)"],
   },
   {
     key: "distanceUnit",
     label: "距离单位",
-    options: ["km", "mi"],
+    options: ["公里 (km)", "英里 (mi)"],
   },
   {
     key: "temperatureUnit",
     label: "温度单位",
-    options: ["°C", "°F"],
+    options: ["摄氏度 (°C)", "华氏度 (°F)"],
   },
   {
     key: "timeFormat",
     label: "时间格式",
-    options: ["24 小时", "12 小时"],
+    options: ["24 小时制 (13:00)", "12 小时制 (1:00 PM)"],
   },
 ] as const;
 
@@ -119,7 +119,7 @@ export function ProfileAccount() {
   const [draft, setDraft] = useState<AccountDraft>(() =>
     cloneDraft(initialAccountDraft),
   );
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(true);
   const [displayNameError, setDisplayNameError] = useState("");
   const [avatarError, setAvatarError] = useState("");
   const [saveFeedback, setSaveFeedback] = useState(false);
@@ -319,33 +319,34 @@ export function ProfileAccount() {
           <h1>账户</h1>
           <span>管理您的个人资料与基本设置</span>
         </div>
-        <div className={styles.headerActions} aria-live="polite">
-          {saveFeedback ? (
-            <span className={styles.savedFeedback}>
-              <PersonalIcon name="check" /> 已保存
-            </span>
-          ) : null}
-          {!isEditing ? (
-            <button
-              type="button"
-              className={styles.editButton}
-              onClick={beginEditing}
-            >
-              <PersonalIcon name="edit" />
-              编辑资料
-            </button>
-          ) : null}
-        </div>
       </header>
 
       <div className={styles.accountGrid}>
         <section className={`${styles.card} ${styles.profileCard}`}>
           <div className={styles.cardHeading}>
-            <div>
-              <p className={styles.cardEyebrow}>PROFILE</p>
+            <div className={styles.headingWithIcon}>
+              <PersonalIcon name="account" />
               <h2>个人资料</h2>
             </div>
-            {dirty ? <span className={styles.dirtyHint}>尚未保存</span> : null}
+            <div className={styles.profileHeadingActions} aria-live="polite">
+              {saveFeedback ? (
+                <span className={styles.savedFeedback}>
+                  <PersonalIcon name="check" /> 已保存
+                </span>
+              ) : null}
+              {!isEditing ? (
+                <button
+                  type="button"
+                  className={styles.editButton}
+                  onClick={beginEditing}
+                >
+                  <PersonalIcon name="edit" />
+                  编辑资料
+                </button>
+              ) : dirty ? (
+                <span className={styles.dirtyHint}>尚未保存</span>
+              ) : null}
+            </div>
           </div>
 
           <div className={styles.avatarRow}>
@@ -359,7 +360,13 @@ export function ProfileAccount() {
                   unoptimized
                 />
               ) : draft.avatar.kind === "current" ? (
-                <span aria-label="当前 Mock 头像">Y</span>
+                <Image
+                  src="/media/personal-center/avatar-yuki.webp"
+                  alt="当前 Mock 头像"
+                  fill
+                  sizes="96px"
+                  className={styles.currentAvatarPhoto}
+                />
               ) : (
                 <PersonalIcon name="account" width="38" height="38" />
               )}
@@ -451,8 +458,8 @@ export function ProfileAccount() {
                       }
                     >
                       <option value="">未设置</option>
-                      <option>女性</option>
-                      <option>男性</option>
+                      <option>女</option>
+                      <option>男</option>
                       <option>非二元性别</option>
                       <option>不愿透露</option>
                     </select>
@@ -510,37 +517,47 @@ export function ProfileAccount() {
         </section>
 
         <div className={styles.sideColumn}>
-          <section className={styles.card}>
+          <section className={`${styles.card} ${styles.contactCard}`}>
             <div className={styles.cardHeading}>
-              <div>
-                <p className={styles.cardEyebrow}>CONTACT</p>
+              <div className={styles.headingWithIcon}>
+                <PersonalIcon name="privacy" />
                 <h2>联系方式</h2>
               </div>
             </div>
             <dl className={styles.contactList}>
               <div>
-                <dt>Email</dt>
-                <dd>yu***@gmail.com</dd>
+                <span className={styles.contactIcon}>
+                  <PersonalIcon name="mail" />
+                </span>
+                <span className={styles.contactText}>
+                  <dt>邮箱</dt>
+                  <dd>yu***@gmail.com</dd>
+                </span>
                 <span className={styles.verifiedBadge}>
                   <PersonalIcon name="check" /> 已验证
                 </span>
               </div>
               <div>
-                <dt>Phone</dt>
-                <dd>+81 •••• 1234</dd>
+                <span className={styles.contactIcon}>
+                  <PersonalIcon name="phone" />
+                </span>
+                <span className={styles.contactText}>
+                  <dt>手机</dt>
+                  <dd>+81 **** 1234</dd>
+                </span>
                 <span className={styles.verifiedBadge}>
                   <PersonalIcon name="check" /> 已验证
                 </span>
               </div>
             </dl>
-            <p className={styles.readOnlyNote}>联系方式为只读摘要。</p>
           </section>
 
-          <section className={styles.card}>
+          <section className={`${styles.card} ${styles.settingsCard}`}>
             <div className={styles.cardHeading}>
-              <div>
-                <p className={styles.cardEyebrow}>GENERAL</p>
+              <div className={styles.headingWithIcon}>
+                <PersonalIcon name="settings" />
                 <h2>基本设置</h2>
+                <span className={styles.headingNote}>设置您的显示偏好。</span>
               </div>
             </div>
             <div className={styles.settingsList}>
@@ -595,19 +612,14 @@ export function ProfileAccount() {
 
       <section className={`${styles.card} ${styles.emergencySection}`}>
         <div className={styles.cardHeading}>
-          <div>
-            <p className={styles.cardEyebrow}>EMERGENCY</p>
+          <div className={styles.headingWithIcon}>
+            <PersonalIcon name="account" />
             <h2>紧急联系人</h2>
+            <PersonalIcon name="info" />
+            <span className={styles.headingNote}>
+              在您需要帮助时，我们可以更快地联系到您（非必填）。
+            </span>
           </div>
-          <button
-            ref={addContactRef}
-            type="button"
-            className={styles.secondaryButton}
-            onClick={openAddContact}
-          >
-            <PersonalIcon name="plus" />
-            添加紧急联系人
-          </button>
         </div>
         {draft.contacts.length === 0 ? (
           <div className={styles.emptyContact}>
@@ -636,20 +648,31 @@ export function ProfileAccount() {
                     type="button"
                     onClick={() => openEditContact(contact, index)}
                   >
-                    编辑
+                    <PersonalIcon name="edit" />
+                    <span className={styles.srOnly}>编辑</span>
                   </button>
                   <button
                     type="button"
                     className={styles.dangerButton}
                     onClick={() => setDeleteContactIndex(index)}
                   >
-                    删除
+                    <PersonalIcon name="trash" />
+                    <span className={styles.srOnly}>删除</span>
                   </button>
                 </div>
               </article>
             ))}
           </div>
         )}
+        <button
+          ref={addContactRef}
+          type="button"
+          className={styles.secondaryButton}
+          onClick={openAddContact}
+        >
+          <PersonalIcon name="plus" />
+          添加紧急联系人
+        </button>
       </section>
 
       <section aria-labelledby="account-entry-title">

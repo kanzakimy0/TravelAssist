@@ -85,12 +85,11 @@
   z-index: -1;
   top: 0;
   left: 0;
-  width: min(65%, 220px);
-  max-height: 120px;
-  aspect-ratio: 3 / 2;
+  width: 100%;
+  aspect-ratio: 3 / 1;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.28;
+  opacity: 0.82;
 }
 
 .sakuraOverlay img {
@@ -106,6 +105,29 @@
   font-size: clamp(17px, 1.25vw, 23px);
   font-weight: 600;
   letter-spacing: -0.04em;
+}
+
+.brandLogo,
+.compactBrandLogo {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+
+.brandLogo {
+  width: min(100%, 190px);
+  height: 52px;
+}
+
+.compactBrandLogo {
+  width: 150px;
+  height: 36px;
+}
+
+.brandLogo img,
+.compactBrandLogo img {
+  object-fit: contain;
+  object-position: left center;
 }
 
 .brandMark {
@@ -130,7 +152,10 @@
 
 .avatar,
 .smallAvatar {
+  position: relative;
   display: grid;
+  overflow: hidden;
+  isolation: isolate;
   place-items: center;
   flex-shrink: 0;
   border: 1px solid #e3c6b6;
@@ -144,6 +169,11 @@
   width: 52px;
   height: 52px;
   font-size: 26px;
+}
+
+.identityPhoto {
+  object-fit: cover;
+  object-position: 50% 40%;
 }
 
 .userText {
@@ -220,8 +250,8 @@
 }
 
 .sidebarArtworkArea img {
-  object-fit: contain;
-  object-position: 50% 100%;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .main {
@@ -234,8 +264,8 @@
   overflow: hidden;
   background-color: var(--pc-bg-canvas);
   background-image:
-    linear-gradient(rgb(250 246 239 / 25%), rgb(250 246 239 / 25%)),
-    url("/media/personal-center/photoreal-v3/personal-center-paper-surface.webp");
+    linear-gradient(rgb(250 246 239 / 10%), rgb(250 246 239 / 10%)),
+    url("/media/personal-center/personal-center-surface-texture-v2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -248,7 +278,7 @@
   inset: 0;
   content: "";
   pointer-events: none;
-  background: url("/media/personal-center/photoreal-v3/personal-center-photo-corners.png")
+  background: url("/media/personal-center/personal-center-corner-decorations.png")
     center bottom / contain no-repeat;
 }
 
@@ -455,7 +485,7 @@
 .heroPhoto {
   z-index: -2;
   object-fit: cover;
-  object-position: 65% 65%;
+  object-position: 65% 50%;
 }
 
 .heroShade {
@@ -577,6 +607,9 @@
 }
 
 .tripCard {
+  position: relative;
+  display: flex;
+  min-height: clamp(230px, 27vh, 310px);
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--pc-border-subtle);
@@ -594,10 +627,17 @@
 }
 
 .tripCover {
-  position: relative;
-  height: clamp(110px, 13vh, 158px);
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   background: #e7ddce;
+}
+
+.tripCover::after {
+  position: absolute;
+  inset: 34% 0 0;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgb(25 25 27 / 80%));
 }
 
 .tripCover img {
@@ -606,6 +646,7 @@
 
 .tripStatus {
   position: absolute;
+  z-index: 1;
   top: 12px;
   left: 12px;
   padding: 3px 10px;
@@ -616,7 +657,12 @@
 }
 
 .tripCardBody {
-  padding: 16px;
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  width: 100%;
+  padding: 24px 20px 20px;
+  color: #fff;
 }
 
 .tripCardBody > div,
@@ -635,7 +681,7 @@
 
 .tripCardBody span,
 .tripCardBody p {
-  color: var(--pc-text-secondary);
+  color: rgb(255 255 255 / 88%);
   font-size: 12px;
 }
 
@@ -821,7 +867,6 @@ a.featureCard:hover {
     justify-content: center;
   }
 
-  .brand > span:last-child,
   .userText,
   .navLink > span:not(.activeMarker) {
     position: absolute;
@@ -830,6 +875,11 @@ a.featureCard:hover {
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
+  }
+
+  .brandLogo {
+    width: 64px;
+    height: 44px;
   }
 
   .userSummary {
@@ -1063,15 +1113,16 @@ a.featureCard:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .tripCover {
-    height: 150px;
+  .tripCard {
+    min-height: 220px;
   }
 
   .heroShade {
     background: linear-gradient(
       90deg,
-      rgb(255 248 234 / 94%),
-      rgb(255 248 234 / 68%)
+      rgb(255 248 234 / 94%) 0%,
+      rgb(255 248 234 / 68%) 58%,
+      rgb(255 248 234 / 10%) 100%
     );
   }
 

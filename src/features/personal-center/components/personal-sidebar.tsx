@@ -48,20 +48,24 @@ export function PersonalSidebar() {
           aria-label="TravelAssist 个人中心首页"
           onNavigate={() => setDrawerOpen(false)}
         >
-          <span className={styles.brandMark}>
-            <PersonalIcon name="compass" />
+          <span className={styles.compactBrandLogo} aria-hidden="true">
+            <Image
+              src="/media/personal-center/travelassist-logo-torii.png"
+              alt=""
+              fill
+              sizes="150px"
+            />
           </span>
-          <span>TravelAssist</span>
         </GuardedLink>
       </div>
 
       <div id="personal-sidebar-panel" className={styles.sidebarPanel}>
         <div className={styles.sakuraOverlay} aria-hidden="true">
           <Image
-            src="/media/personal-center/photoreal-v3/sidebar-sakura-photo-overlay.png"
+            src="/media/personal-center/sidebar-shell-ornament-top.png"
             alt=""
             fill
-            sizes="220px"
+            sizes="340px"
           />
         </div>
         <GuardedLink
@@ -70,10 +74,14 @@ export function PersonalSidebar() {
           aria-label="TravelAssist 个人中心首页"
           onNavigate={() => setDrawerOpen(false)}
         >
-          <span className={styles.brandMark}>
-            <PersonalIcon name="compass" />
+          <span className={styles.brandLogo} aria-hidden="true">
+            <Image
+              src="/media/personal-center/travelassist-logo-torii.png"
+              alt=""
+              fill
+              sizes="190px"
+            />
           </span>
-          <span>TravelAssist</span>
         </GuardedLink>
         <GuardedLink
           href="/personal-center/account"
@@ -82,7 +90,13 @@ export function PersonalSidebar() {
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.avatar} aria-hidden="true">
-            {mockPersonalUser.initial}
+            <Image
+              src={mockPersonalUser.avatar}
+              alt=""
+              fill
+              sizes="52px"
+              className={styles.identityPhoto}
+            />
           </span>
           <span className={styles.userText}>
             <strong>{mockPersonalUser.name}</strong>
@@ -92,7 +106,7 @@ export function PersonalSidebar() {
         <PersonalPrimaryNav onNavigate={() => setDrawerOpen(false)} />
         <div className={styles.sidebarArtworkArea} aria-hidden="true">
           <Image
-            src="/media/personal-center/photoreal-v3/sidebar-torii-photo.webp"
+            src="/media/personal-center/sidebar-torii-watercolor-v2.png"
             alt=""
             fill
             sizes="(min-width: 1280px) 18vw, 360px"
