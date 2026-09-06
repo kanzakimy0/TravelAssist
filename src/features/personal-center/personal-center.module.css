@@ -203,7 +203,12 @@
   list-style: none;
 }
 
+.navigation li {
+  position: relative;
+}
+
 .navLink {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -215,6 +220,11 @@
   transition:
     background var(--motion-fast),
     border-color var(--motion-fast);
+}
+
+.railTooltip,
+.mobileNavLabel {
+  display: none;
 }
 
 .navLink:hover {
@@ -873,6 +883,7 @@ a.featureCard:hover {
 
   .sidebarPanel {
     padding: 24px 12px 0;
+    overflow: visible;
   }
 
   .brand,
@@ -882,7 +893,7 @@ a.featureCard:hover {
   }
 
   .userText,
-  .navLink > span:not(.activeMarker) {
+  .navLabel {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -907,6 +918,37 @@ a.featureCard:hover {
 
   .navLink {
     padding-inline: 10px;
+  }
+
+  .railTooltip {
+    position: absolute;
+    z-index: 70;
+    top: 50%;
+    left: calc(100% + 14px);
+    display: block;
+    width: max-content;
+    max-width: 220px;
+    padding: 8px 12px;
+    transform: translate(-6px, -50%);
+    border: 1px solid var(--pc-border-subtle);
+    border-radius: 10px;
+    color: var(--pc-text-primary);
+    background: var(--pc-bg-card);
+    box-shadow: 0 10px 26px rgb(70 45 32 / 16%);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+      opacity var(--motion-fast),
+      transform var(--motion-fast);
+  }
+
+  .navLink:hover .railTooltip,
+  .navLink:focus-visible .railTooltip {
+    transform: translate(0, -50%);
+    opacity: 1;
   }
 
   .activeMarker,
@@ -973,6 +1015,7 @@ a.featureCard:hover {
     box-shadow: 20px 0 60px rgb(62 45 36 / 18%);
     transform: translateX(-105%);
     transition: transform 180ms ease;
+    overscroll-behavior: contain;
   }
 
   .sidebar[data-drawer-open] .sidebarPanel {
@@ -1094,6 +1137,14 @@ a.featureCard:hover {
     height: 20px;
   }
 
+  .navLabel {
+    display: none;
+  }
+
+  .mobileNavLabel {
+    display: inline;
+  }
+
   .activeMarker {
     display: none;
   }
@@ -1116,6 +1167,18 @@ a.featureCard:hover {
   .contentArea {
     overflow-y: auto;
     padding: 20px 16px calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .contentArea :is(input, select, textarea) {
+    font-size: max(16px, 1em) !important;
+  }
+
+  .contentArea :is(button, a[href], summary, select) {
+    min-height: 44px;
+  }
+
+  .contentArea label:has(input:is([type="checkbox"], [type="radio"])) {
+    min-height: 44px;
   }
 
   .home {
@@ -1158,9 +1221,12 @@ a.featureCard:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sidebarPanel,
-  .navLink,
-  .tripCard {
-    transition: none;
+  .shell *,
+  .shell *::before,
+  .shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

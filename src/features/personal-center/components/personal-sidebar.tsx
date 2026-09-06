@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { mockPersonalUser } from "../constants/personal-navigation";
@@ -10,18 +11,95 @@ import { PersonalIcon } from "./personal-icon";
 import { PersonalPrimaryNav } from "./personal-primary-nav";
 
 export function PersonalSidebar() {
+  const pathname = usePathname();
+
+  return <PersonalSidebarContent key={pathname} />;
+}
+
+function PersonalSidebarContent() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [tabletDrawerMode, setTabletDrawerMode] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1023px)",
+    );
+    const updateMode = () => {
+      setTabletDrawerMode(query.matches);
+      if (!query.matches) setDrawerOpen(false);
+    };
+    updateMode();
+    query.addEventListener("change", updateMode);
+    return () => query.removeEventListener("change", updateMode);
+  }, []);
 
   useEffect(() => {
     if (!drawerOpen) return;
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setDrawerOpen(false);
-      menuButtonRef.current?.focus();
+    const panel = panelRef.current;
+    const content = document.getElementById("personal-content");
+    if (!panel) return;
+
+    const previousDocumentOverflow = document.documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousContentOverflow = content?.style.overflow ?? "";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    if (content) content.style.overflow = "hidden";
+    document.body.dataset.personalDrawerOpen = "true";
+
+    const getFocusable = () =>
+      Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => !element.hasAttribute("inert"));
+
+    const initialFocusFrame = window.requestAnimationFrame(() => {
+      panel.querySelector<HTMLElement>("[data-personal-nav-item]")?.focus();
+    });
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const openDialog =
+        document.querySelector<HTMLDialogElement>("dialog[open]");
+      if (openDialog && !panel.contains(openDialog)) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setDrawerOpen(false);
+        window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = getFocusable();
+      if (!focusable.length) {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && (active === first || !panel.contains(active))) {
+        event.preventDefault();
+        last.focus();
+      } else if (
+        !event.shiftKey &&
+        (active === last || !panel.contains(active))
+      ) {
+        event.preventDefault();
+        first.focus();
+      }
     };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.cancelAnimationFrame(initialFocusFrame);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.documentElement.style.overflow = previousDocumentOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      if (content) content.style.overflow = previousContentOverflow;
+      delete document.body.dataset.personalDrawerOpen;
+    };
   }, [drawerOpen]);
 
   return (
@@ -59,7 +137,17 @@ export function PersonalSidebar() {
         </GuardedLink>
       </div>
 
-      <div id="personal-sidebar-panel" className={styles.sidebarPanel}>
+      <div
+        ref={panelRef}
+        id="personal-sidebar-panel"
+        className={styles.sidebarPanel}
+        role={drawerOpen ? "dialog" : undefined}
+        aria-modal={drawerOpen ? true : undefined}
+        aria-label={drawerOpen ? "个人中心导航" : undefined}
+        aria-hidden={tabletDrawerMode && !drawerOpen ? true : undefined}
+        inert={tabletDrawerMode && !drawerOpen ? true : undefined}
+        tabIndex={drawerOpen ? -1 : undefined}
+      >
         <div className={styles.sakuraOverlay} aria-hidden="true">
           <Image
             src="/media/personal-center/sidebar-shell-ornament-top.png"
