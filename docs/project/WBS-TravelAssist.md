@@ -245,6 +245,7 @@ src/db/
 | WBS-5.2-B-FOLLOWUP | 5.2（completed-task follow-up） | B | 已完成 | #56 | `docs/tasks/TASK-WBS-5.2-b-problem-cleanup-followup.md` | `fix/b-wbs-5-2-problem-cleanup` | `08a06a6` | #57 |
 | WBS-5.4-B-V2 | 5.4（关联 5.1 / 5.2 completed-task visual refresh） | B | 已完成（用户视觉验收通过并授权合并） | #75 | `docs/tasks/TASK-WBS-5.4-b-personal-center-visual-rebuild-v2.md` | `feature/b-account-wbs-5-4-photoreal-rebuild-v2` | `7b47f05`（最终实现），`1082e10`（合并） | [#98](https://github.com/kanzakimy0/TravelAssist/pull/98) 已合入 develop |
 | WBS-5.5-B | 5.5 | B | 已完成（用户验收通过） | #105 | `docs/tasks/TASK-WBS-5.5-b-preference-center-ui.md` | `feature/b-account-wbs-5-5-preference-center-ui` | `7484faf`（实现），`2acafe63`（合并） | [#109](https://github.com/kanzakimy0/TravelAssist/pull/109) 已合入 develop |
+| WBS-5.6-B | 5.6 | B | 已完成（用户验收通过） | #107 | `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md` | `feature/b-account-wbs-5-6-companion-management-ui` | `ff9c933`（实现），`ff66aec1`（合并） | [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) 已合入 develop |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
@@ -306,7 +307,7 @@ src/db/
 | 1.27   | 保存行程 / 历史 / 草稿 / 收藏管理设计 | B      | P0     | 1.21      | 已完成 |
 | 1.28   | 账户安全 / 数据删除画面设计           | B      | P1     | 1.24      | 已完成 |
 | 1.29   | 个人中心响应式 / 状态画面规范         | B      | P1     | 1.22-1.28 | 已完成 |
-| 1.30   | 个人中心设计 Freeze v1                | A+B    | P0     | 1.22-1.29 | 进行中 |
+| 1.30   | 个人中心设计 Freeze v1                | A+B    | P0     | 1.22-1.29 | 已完成 |
 
 ## 2. 工程初始化与基础架构
 
@@ -375,7 +376,7 @@ src/db/
 | 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
 | 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 已完成 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 已完成 |
-| 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 未开始 |
+| 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 已完成 |
 | 5.7    | 移动偏好 UI                                   | B      | P1     | 5.5      | 未开始 |
 | 5.8    | 景点 / 活动偏好 UI                            | B      | P0     | 5.5      | 未开始 |
 | 5.9    | 餐饮 / 住宿 / 预算偏好 UI                     | B      | P1     | 5.5      | 未开始 |
@@ -488,7 +489,7 @@ src/db/
 | 11.5   | Mobile Profile / Account           | B      | P2     | 11.4      | 未开始 |
 | 11.6   | Mobile Preferences / Companions    | B      | P2     | 11.4      | 未开始 |
 | 11.7   | Mobile Saved Trips / History       | B      | P2     | 11.4      | 未开始 |
-| 11.8   | Push / Native / Release 基础       | A      | P2     | 11.1     | 未开始 |
+| 11.8   | Push / Native / Release 基础       | A      | P2     | 11.1      | 未开始 |
 | 11.9   | App Store / Play 发布              | A      | P2     | 11.2-11.8 | 未开始 |
 
 ---
