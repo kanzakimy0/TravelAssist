@@ -1,5 +1,17 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-012-A 响应式密度补修（2026-09-06）
+
+- 子菜单重设计追加：同行人数量卡、日期区间日历、37 个快捷选项分组、54 个详细字段三分区表单；范围限五卡子菜单，模型/工作台/推荐卡不变。178 tests、五尺寸 × 双动效菜单编辑/日历草稿与保护检查通过；设计 `docs/ui/planner-quick-settings-menus.md`，证据 `docs/qa/planner-density/menu-redesign/`，仍待审查 / Draft PR #139。
+
+- 用户复验补修：右栏五卡/三级偏好弹层移至 top layer，修正普通动效下 fixed 坐标越界；五尺寸 × 两种动效共 80 次真实可见/可点击/编辑/焦点检查通过，171 tests / lint / typecheck / build 通过；继续使用 Draft PR #139，状态待审查。原 reduced-motion/DOM 检查未覆盖该缺陷，完整更正与证据见 Result。
+
+- Issue：#135；Owner：A；WBS：1.5 / 1.6 / 1.7 / 4.1 / 4.8 / 4.14（既有 Planner UI 补修）。
+- 状态：待审查；历史 TASK-012-A / #111 / PR #124 的已合并状态不变。
+- 基线：`c88d3381685615fcd0e1dd9e3217bd871e50c2ac`；分支：`codex/planner-responsive-density` → `develop`。
+- 范围：实际 25dvh 贴边底栏、移除顶部 Day summary、响应式内容、紧凑日期菜单、图层控件、快速设置与全宽详情入口、搜索边界及右侧渐变；推荐方案冻结，无业务/API 扩展。
+- Task / Result：`docs/tasks/RESULT-TASK-012-a-responsive-density-followup.md`；实现 `660af61`，集成验收 `bcc898f`（同步验证时 develop `4161a8a`）；170 tests / lint / typecheck / build、九视口双地图几何及截图、六视口 Detail 回归通过；[Draft PR #139](https://github.com/kanzakimy0/TravelAssist/pull/139)；不自动合并。
+
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 
 - Merge closeout：用户明确授权后，PR #108 已合入 develop，merge `f105253b1f700f67fd97d8c9eb03a9c85000d699`；Issue #79 Closed。最终基线 `e052d93`，验收 head `a4306e2`，合并树相同；123 tests / 76 Logo QA / lint / typecheck / build / diff-check 复验通过。全仓格式 27 项均为核实过的基线异常（原 26 项加 TASK-WBS-5.8 文档）。下方历史基线记录保留，最新状态以本条为准。手机 Detail 返回入口仍是上游范围外缺口。

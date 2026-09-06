@@ -4,7 +4,6 @@ import {
   currentPlan,
   cityStays,
   stayNights,
-  presentationPlan,
   rangeDays,
 } from "../model/trip-model";
 import type { TripAction, TripState } from "../model/trip-model";
@@ -32,7 +31,6 @@ export function BottomExecutionPanel({
   const plan = currentPlan(state),
     days = rangeDays(state),
     tab = state.ui.activeBottomTab;
-  const focused = days.find((d) => d.day === state.ui.focusedDay) ?? days[0];
   const mode = state.ui.rangeMode;
   const changeTab = (tab: BottomTab) =>
     dispatch({ type: "ui", patch: { activeBottomTab: tab } });
@@ -62,19 +60,6 @@ export function BottomExecutionPanel({
       aria-label="范围执行面板"
       data-bottom-plan={plan.name}
     >
-      <div className={styles.executionSummary}>
-        <strong className={styles.rangeHeading}>
-          {mode === "day"
-            ? `Day ${focused.day} · ${presentationPlan(state).days.find((day) => day.day === focused.day)!.date} · ${focused.city}`
-            : mode === "threeDays"
-              ? `Day ${days[0].day}–${days.at(-1)!.day} · 三日衔接`
-              : "全行程 · 城市与旅行结构"}
-        </strong>
-        <span className={styles.todayStatus}>
-          {mode === "day" ? focused.weather[0] : "范围切换不改变当前方案与预约"}{" "}
-          · Mock
-        </span>
-      </div>
       <div
         className={styles.bottomTabs}
         role="tablist"

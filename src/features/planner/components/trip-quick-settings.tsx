@@ -6,9 +6,10 @@ import {
 } from "../model/trip-model";
 import { PlannerIcon } from "./planner-icon";
 import { PlannerPopover } from "./planner-popover";
-import { PreferenceEditor } from "./preference-editor";
+import { QuickPreferenceMenu } from "./quick-preference-menu";
+import { QuickDateMenu } from "./quick-date-menu";
 import styles from "../planner.module.css";
-import ui from "../planner-interactions.module.css";
+import menu from "../quick-settings-menu.module.css";
 
 const fields = [
   { key: "travelers", title: "同行人", icon: "users" },
@@ -24,51 +25,6 @@ const travelerLabels = {
   infant: "婴儿",
 };
 
-function DateEditor({
-  state,
-  dispatch,
-}: {
-  state: TripState;
-  dispatch: Dispatch<TripAction>;
-}) {
-  const [departure, setDeparture] = useState(state.settings.startDate);
-  const [returning, setReturning] = useState(state.configuration.returnDate);
-  return (
-    <form
-      className={ui.detailFields}
-      onSubmit={(e) => {
-        e.preventDefault();
-        dispatch({ type: "dates", departure, returning });
-      }}
-    >
-      <label className={styles.field}>
-        出发日期
-        <input
-          required
-          type="date"
-          value={departure}
-          onChange={(e) => setDeparture(e.target.value)}
-        />
-      </label>
-      <label className={styles.field}>
-        返回日期
-        <input
-          required
-          type="date"
-          value={returning}
-          min={departure}
-          onChange={(e) => setReturning(e.target.value)}
-        />
-      </label>
-      <p className={styles.hint}>
-        支持 1–60 天；固定预约、酒店退房或 Day
-        越界时会保留原行程。新增日期为空白安排。
-      </p>
-      <button type="submit">应用日期区间</button>
-      <p role="status">{state.notice}</p>
-    </form>
-  );
-}
 function QuickCard({
   field,
   state,
@@ -125,59 +81,95 @@ function QuickCard({
           title={field.title}
           trigger={trigger}
           onClose={() => setOpen(false)}
+          className={menu.menu}
+          placement="side"
         >
           {field.key === "dates" ? (
-            <DateEditor state={state} dispatch={dispatch} />
+            <QuickDateMenu state={state} dispatch={dispatch} />
           ) : field.key === "travelers" ? (
-            <div className={ui.detailFields}>
-              {(
-                Object.entries(travelerLabels) as [
-                  keyof typeof travelerLabels,
-                  string,
-                ][]
-              ).map(([key, label]) => (
-                <div className={ui.stepper} key={key}>
-                  <span>{label}</span>
-                  <button
-                    type="button"
-                    aria-label={"减少" + label}
-                    disabled={state.configuration.travelers[key] === 0}
-                    onClick={() =>
-                      dispatch({
-                        type: "travelers",
-                        key,
-                        value: state.configuration.travelers[key] - 1,
-                      })
-                    }
-                  >
-                    −
-                  </button>
-                  <output aria-label={label + "人数"}>
-                    {state.configuration.travelers[key]}
-                  </output>
-                  <button
-                    type="button"
-                    aria-label={"增加" + label}
-                    disabled={state.configuration.travelers[key] === 20}
-                    onClick={() =>
-                      dispatch({
-                        type: "travelers",
-                        key,
-                        value: state.configuration.travelers[key] + 1,
-                      })
-                    }
-                  >
-                    ＋
-                  </button>
-                </div>
-              ))}
-              <p role="status">{state.notice}</p>
+            <div className={menu.body}>
+              <div className={menu.intro}>
+                <span className={menu.kicker}>一起出发 · 当前旅行</span>
+                <p>这次旅程，有谁和您同行？</p>
+              </div>
+              <div className={menu.selectionSummary}>
+                <span>
+                  共{" "}
+                  <strong>
+                    {Object.values(state.configuration.travelers).reduce(
+                      (sum, n) => sum + n,
+                      0,
+                    )}
+                  </strong>{" "}
+                  位同行人
+                </span>
+                <small>人数调整即时同步</small>
+              </div>
+              <div className={menu.travelerRows}>
+                {(
+                  Object.entries(travelerLabels) as [
+                    keyof typeof travelerLabels,
+                    string,
+                  ][]
+                ).map(([key, label]) => (
+                  <div className={menu.travelerRow} key={key}>
+                    <span className={menu.travelerIcon}>
+                      <PlannerIcon name="users" />
+                    </span>
+                    <strong>{label}</strong>
+                    <div className={menu.stepper}>
+                      <button
+                        type="button"
+                        aria-label={"减少" + label}
+                        disabled={state.configuration.travelers[key] === 0}
+                        onClick={() =>
+                          dispatch({
+                            type: "travelers",
+                            key,
+                            value: state.configuration.travelers[key] - 1,
+                          })
+                        }
+                      >
+                        −
+                      </button>
+                      <output aria-label={label + "人数"}>
+                        {state.configuration.travelers[key]}
+                      </output>
+                      <button
+                        type="button"
+                        aria-label={"增加" + label}
+                        disabled={state.configuration.travelers[key] === 20}
+                        onClick={() =>
+                          dispatch({
+                            type: "travelers",
+                            key,
+                            value: state.configuration.travelers[key] + 1,
+                          })
+                        }
+                      >
+                        ＋
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <footer className={menu.footer}>
+                <small role="status">{state.notice}</small>
+                <button
+                  type="button"
+                  className={menu.primary}
+                  onClick={() => setOpen(false)}
+                >
+                  完成
+                </button>
+              </footer>
             </div>
           ) : (
-            <PreferenceEditor
+            <QuickPreferenceMenu
               group={field.key}
               state={state}
               dispatch={dispatch}
+              onClose={() => setOpen(false)}
             />
           )}
         </PlannerPopover>

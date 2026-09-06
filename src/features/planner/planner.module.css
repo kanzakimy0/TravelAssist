@@ -530,7 +530,7 @@
   height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) calc(clamp(200px, 25dvh, 252px) + 14px);
+  grid-template-rows: minmax(0, 1fr) 25dvh;
   position: relative;
   min-height: 0;
 }
@@ -543,6 +543,7 @@
   overflow: hidden;
 }
 .rightSlot {
+  position: relative;
   padding-top: 68px;
   grid-column: 2;
   grid-row: 1 / -1;
@@ -557,7 +558,7 @@
   min-width: 0;
   min-height: 0;
   z-index: 2;
-  padding: 0 18px 14px;
+  padding: 0;
   background: #faf3ed;
 }
 .bottomSlot::before {
@@ -566,7 +567,7 @@
   left: 0;
   right: 0;
   bottom: 100%;
-  height: 44px;
+  height: 24px;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
@@ -732,6 +733,7 @@
   margin-top: 6px;
 }
 .dayRange {
+  --day-menu-width: 78px;
   position: absolute;
   top: 86px;
   right: 18px;
@@ -754,9 +756,6 @@
   background: transparent;
   font-size: 12px;
   white-space: nowrap;
-}
-.dayRange[data-range-mode="threeDays"] {
-  width: 132px;
 }
 .dayRange > button[aria-pressed="true"] {
   background: var(--planner-accent-soft);
@@ -1238,10 +1237,9 @@
   box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
   backdrop-filter: blur(10px);
 }
-/* A filtered ancestor would make a nested fixed surface relative to its scroll
-   box. Only the outer surface drops blur while its detail surface is open. */
-.popover:has(.popover) {
-  backdrop-filter: none;
+/* Manual popovers use the top layer; outside clicks still reach the page. */
+.popover::backdrop {
+  pointer-events: none;
 }
 .rightSlot:has(.popover) {
   z-index: 40;
@@ -1743,6 +1741,7 @@
     min-height: 46px;
   }
   .dayRange {
+    --day-menu-width: 70px;
     width: 82px;
     right: 12px;
   }
@@ -1806,7 +1805,10 @@
 
 /* v0.5: scoped upper panel and overlays; recommendation selectors frozen. */
 .quickSettings {
-  gap: 8px;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1.05fr) auto auto auto;
+  gap: clamp(6px, 0.85dvh, 14px);
+  container-type: size;
 }
 .quickSettings .eyebrow {
   display: none;
@@ -1819,25 +1821,28 @@
   clip-path: inset(50%);
 }
 .quickPair .quickCard {
-  height: 96px;
+  height: 100%;
+  min-height: 0;
   justify-content: center;
 }
 .quickPair .quickLabel {
-  font-size: 15px;
+  font-size: clamp(13px, 4cqw, 22px);
 }
 .quickPair .quickLabel svg {
-  width: 30px;
-  height: 30px;
+  width: clamp(22px, 7cqw, 38px);
+  height: clamp(22px, 7cqw, 38px);
 }
 .quickPair .quickCard strong {
-  font-size: 13px;
+  font-size: clamp(12px, 3.5cqw, 18px);
 }
 .quickTriple .quickCard {
-  height: 96px;
+  height: 100%;
+  min-height: 0;
+  justify-content: center;
 }
 .quickTriple .quickLabel {
   flex-direction: row;
-  font-size: 13px;
+  font-size: clamp(12px, 3.5cqw, 18px);
   gap: 3px;
 }
 .quickTriple .quickLabel svg {
@@ -1846,17 +1851,111 @@
   flex-shrink: 0;
 }
 .planner .settingsButton {
-  height: 48px;
-  min-height: 48px;
+  height: clamp(38px, 5.2dvh, 62px);
+  min-height: 38px;
 }
 .quickSettings .mockStatus {
   min-height: 16px;
   font-size: 10px;
 }
 .planner .openDetailButton {
-  min-height: 34px;
-  height: 34px;
+  min-height: 40px;
+  height: clamp(40px, 5.8dvh, 72px);
+  width: 100%;
+  align-self: stretch;
+  font-size: clamp(14px, 4cqw, 20px);
+  font-weight: 700;
+  border-radius: 12px;
+  background: var(--color-accent-primary);
+  color: #fffaf6;
+  box-shadow: 0 5px 14px #a8564526;
   margin-top: 0;
+}
+
+/* Compact map controls; match the trigger instead of a full form popover. */
+.popover[data-compact] {
+  width: var(--day-menu-width, 78px);
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: 12px;
+}
+.popover[data-compact] .dayChoices {
+  gap: 3px;
+}
+.popover[data-compact] .dayChoices button {
+  padding: 6px 2px;
+  min-height: 32px;
+  text-align: center;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.popover[data-compact] form {
+  display: grid;
+  gap: 4px;
+  margin-top: 6px;
+}
+.popover[data-compact] label {
+  min-width: 0;
+  font-size: 10px;
+}
+.popover[data-compact] input,
+.popover[data-compact] form button {
+  width: 100%;
+  padding: 5px 2px;
+  font-size: 11px;
+}
+.toolbarItems .moreLayerButton {
+  border: 1px solid var(--planner-border);
+  background: var(--color-bg-overlay);
+}
+.toolbarToggle[aria-expanded="true"] svg {
+  transform: rotate(-90deg);
+}
+
+/* The dock meets the viewport and right rail; no extra Day heading or rim. */
+.bottomSlot .bottomPanel {
+  padding: 0;
+  border-radius: 18px 0 0;
+  border: 0;
+  overflow: hidden;
+}
+.bottomPanel .bottomTabs {
+  margin: 0;
+  gap: 0;
+  flex-shrink: 0;
+}
+.bottomPanel .bottomTabs button {
+  min-height: clamp(42px, 5.5dvh, 64px);
+  font-size: clamp(13px, 1.05vw, 20px);
+  padding: 7px 2px;
+}
+.bottomPanel .tabContent {
+  padding: clamp(6px, 1dvh, 14px) clamp(8px, 1vw, 20px);
+  border-radius: 0;
+}
+.bottomPanel .rangeCards {
+  min-height: 100%;
+}
+.rightSlot::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  width: 42px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--color-bg-canvas));
+}
+.quickSettings .quickPair,
+.quickSettings .quickTriple {
+  min-height: 0;
+  gap: clamp(6px, 2cqw, 12px);
+}
+.quickSettings .quickCard {
+  padding: clamp(6px, 2.5cqw, 16px);
+}
+.quickSettings .quickTriple strong {
+  font-size: clamp(12px, 3.4cqw, 17px);
 }
 .openRight {
   top: 84px;

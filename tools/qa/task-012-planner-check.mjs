@@ -7,7 +7,7 @@ const base = process.env.TASK_012_QA_URL || "http://127.0.0.1:3112";
 if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
   throw new Error("Local QA only");
 const live = process.env.TASK_012_LIVE === "1";
-const out = "docs/qa/TASK-012";
+const out = process.env.TASK_012_QA_OUT || "docs/qa/TASK-012";
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_EXE,
@@ -132,7 +132,7 @@ try {
     }));
     const before = JSON.parse(
       await readFile(
-        out + "/recommendations-before-" + width + ".json",
+        "docs/qa/TASK-012/recommendations-before-" + width + ".json",
         "utf8",
       ),
     );
@@ -196,10 +196,7 @@ try {
         "none",
       );
       const h = (await bottom.boundingBox()).height;
-      assert.ok(
-        Math.abs(h - Math.min(252, Math.max(200, height * 0.25))) <= 1,
-        "bottom fixed25dvh " + h,
-      );
+      assert.ok(Math.abs(h - height * 0.25) <= 1, "bottom fixed25dvh " + h);
     }
     for (const [label, id] of [
       ["移动", "movement"],
