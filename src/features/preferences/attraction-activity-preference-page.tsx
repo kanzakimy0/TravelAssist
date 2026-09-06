@@ -87,9 +87,35 @@ export function AttractionActivityPreferencePage() {
         </GuardedLink>
       </header>
 
+      <nav className={styles.hierarchyMenu} aria-label="景点偏好三级菜单">
+        <a href="#attraction-overview">
+          <span>Level 1 · 大项目</span>
+          <strong>景点与活动</strong>
+          <small>查看当前长期偏好摘要</small>
+        </a>
+        <span className={styles.hierarchyConnector} aria-hidden="true">
+          →
+        </span>
+        <a href="#attraction-quick-settings">
+          <span>Level 2 · 中项目</span>
+          <strong>六维快速设置</strong>
+          <small>用四个等级表达直观喜好</small>
+        </a>
+        <span className={styles.hierarchyConnector} aria-hidden="true">
+          →
+        </span>
+        <a href="#attraction-detail-settings">
+          <span>Level 3 · 小项目</span>
+          <strong>体验详细设置</strong>
+          <small>调整已确认的行为与限制</small>
+        </a>
+      </nav>
+
       <section
-        className={styles.summaryCard}
+        id="attraction-overview"
+        className={`${styles.summaryCard} ${styles.scrollTarget}`}
         aria-labelledby="attraction-summary-title"
+        data-preference-level="large"
       >
         <Image
           src="/media/personal-center/preferences/category-attractions.webp"
@@ -100,19 +126,26 @@ export function AttractionActivityPreferencePage() {
         />
         <div className={styles.summaryShade} />
         <div className={styles.summaryContent}>
-          <span className={styles.scopeBadge}>仅长期默认 · 页面内存</span>
+          <span className={styles.scopeBadge}>大项目 · 景点与活动</span>
           <p id="attraction-summary-title">当前景点偏好</p>
           <h2 aria-live="polite">{summary}</h2>
           <span>摘要只展示最多三项“很喜欢 / 喜欢”，并随当前草稿实时变化。</span>
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="dimension-title">
+      <section
+        id="attraction-quick-settings"
+        className={`${styles.section} ${styles.scrollTarget}`}
+        aria-labelledby="dimension-title"
+        data-preference-level="middle"
+      >
         <div className={styles.sectionHeading}>
-          <SectionMark>01</SectionMark>
+          <SectionMark>中</SectionMark>
           <div>
-            <h2 id="dimension-title">景点偏好六个维度</h2>
-            <p>为每个维度选择一个直观等级；没有选择时保留为“未设置”。</p>
+            <h2 id="dimension-title">中项目 · 六维快速设置</h2>
+            <p>
+              常用修改在这一层完成；为每个维度选择直观等级，未选择时保留为“未设置”。
+            </p>
           </div>
         </div>
 
@@ -172,49 +205,61 @@ export function AttractionActivityPreferencePage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="photo-title">
-        <div className={styles.sectionHeading}>
-          <SectionMark>02</SectionMark>
-          <div>
-            <h2 id="photo-title">拍照体验详细偏好</h2>
-            <p>只记录是否希望在长期默认里主动安排拍照体验。</p>
-          </div>
-        </div>
-        <label className={styles.photoPreference}>
-          <input
-            type="checkbox"
-            checked={draft.photoExperience}
-            onChange={() => {
-              setSavedMessage(false);
-              setDraft(togglePhotoExperience);
-            }}
-          />
-          <span className={styles.checkboxMark} aria-hidden="true">
-            ✓
-          </span>
-          <span>
-            <strong>旅行中希望主动安排拍照体验</strong>
-            <small>更重视取景价值、光线条件和拍照停留体验。</small>
-          </span>
-        </label>
-      </section>
-
       <section
-        className={`${styles.section} ${styles.detailScopeSection}`}
-        aria-labelledby="boundary-title"
+        id="attraction-detail-settings"
+        className={`${styles.section} ${styles.detailScopeSection} ${styles.scrollTarget}`}
+        aria-labelledby="detail-title"
+        data-preference-level="small"
       >
         <div className={styles.sectionHeading}>
-          <SectionMark>03</SectionMark>
+          <SectionMark>小</SectionMark>
           <div>
-            <h2 id="boundary-title">更多详细偏好</h2>
-            <p>分清长期默认、单次旅行与同行人偏好，再进入更细的设置。</p>
+            <h2 id="detail-title">小项目 · 详细设置</h2>
+            <p>普通用户可以不修改这一层；目前只开放已经确认的详细行为偏好。</p>
+          </div>
+        </div>
+
+        <div className={styles.detailPreferenceBlock}>
+          <div className={styles.detailSubheading}>
+            <span>当前已确认</span>
+            <div>
+              <h3 id="photo-title">拍照体验</h3>
+              <p>只记录是否希望在长期默认里主动安排拍照体验。</p>
+            </div>
+          </div>
+          <label className={styles.photoPreference}>
+            <input
+              type="checkbox"
+              checked={draft.photoExperience}
+              onChange={() => {
+                setSavedMessage(false);
+                setDraft(togglePhotoExperience);
+              }}
+            />
+            <span className={styles.checkboxMark} aria-hidden="true">
+              ✓
+            </span>
+            <span>
+              <strong>旅行中希望主动安排拍照体验</strong>
+              <small>更重视取景价值、光线条件和拍照停留体验。</small>
+            </span>
+          </label>
+        </div>
+
+        <div className={styles.boundaryHeading}>
+          <span className={styles.boundaryIcon} aria-hidden="true">
+            <PreferenceIcon name="settings" />
+          </span>
+          <div>
+            <h3 id="boundary-title">更多详细设置边界</h3>
+            <p>
+              A 的 Level 3 还覆盖单次旅行条件；Personal Center
+              只保存已确认的长期默认。
+            </p>
           </div>
         </div>
 
         <div className={styles.scopeStatement}>
-          <span className={styles.boundaryIcon} aria-hidden="true">
-            <PreferenceIcon name="settings" />
-          </span>
           <div>
             <p>本页负责</p>
             <h3>“我通常喜欢怎样的景点与活动”</h3>
@@ -226,13 +271,13 @@ export function AttractionActivityPreferencePage() {
 
         <div className={styles.scopeGrid}>
           <article className={styles.scopeCard} data-scope="available">
-            <span className={styles.scopeCardBadge}>本页已提供</span>
-            <h3>长期景点偏好</h3>
-            <p>用于表达可复用的个人默认，不绑定某一次行程。</p>
+            <span className={styles.scopeCardBadge}>三级菜单已映射</span>
+            <h3>从摘要逐层深入</h3>
+            <p>页面按照 A 的统一结构组织，不把所有选项一次展开。</p>
             <ul>
-              <li>六维喜好的四级快速设置</li>
-              <li>拍照体验详细偏好</li>
-              <li>摘要、恢复默认、取消与保存</li>
+              <li>大项目：当前景点与活动摘要</li>
+              <li>中项目：六维喜好快速设置</li>
+              <li>小项目：拍照体验详细设置</li>
             </ul>
           </article>
 

@@ -259,13 +259,28 @@ test("page renders the frozen photo preference and explicit boundaries", () => {
   assert.match(page, /<dt>Planner Contract<\/dt>[\s\S]*Not implemented/);
 });
 
+test("page maps the A and B three-level preference hierarchy", () => {
+  const page = read(
+    "src/features/preferences/attraction-activity-preference-page.tsx",
+  );
+  assert.match(page, /aria-label="景点偏好三级菜单"/);
+  assert.match(page, /Level 1 · 大项目[\s\S]*景点与活动/);
+  assert.match(page, /Level 2 · 中项目[\s\S]*六维快速设置/);
+  assert.match(page, /Level 3 · 小项目[\s\S]*体验详细设置/);
+  assert.match(page, /data-preference-level="large"/);
+  assert.match(page, /data-preference-level="middle"/);
+  assert.match(page, /data-preference-level="small"/);
+});
+
 test("detail scope separates long-term trip companion and future concepts", () => {
   const page = read(
     "src/features/preferences/attraction-activity-preference-page.tsx",
   );
   assert.match(page, /“我通常喜欢怎样的景点与活动”/);
   assert.match(page, /data-scope="available"/);
-  assert.match(page, /六维喜好的四级快速设置/);
+  assert.match(page, /大项目：当前景点与活动摘要/);
+  assert.match(page, /中项目：六维喜好快速设置/);
+  assert.match(page, /小项目：拍照体验详细设置/);
   assert.match(page, /data-scope="trip"/);
   assert.match(page, /必去 \/ 希望去 \/ 可去 \/ 不去与具体地点锁定/);
   assert.match(page, /日出、日落、夜景、黄金时段与拍照停留/);

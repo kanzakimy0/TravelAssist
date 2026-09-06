@@ -85,8 +85,23 @@ try {
     assert.equal(await page.getByRole("radio").count(), 24, label);
     assert.equal(await page.getByRole("checkbox").count(), 1, label);
     await page
-      .getByRole("heading", { name: "更多详细偏好", exact: true })
+      .getByRole("heading", { name: "小项目 · 详细设置", exact: true })
       .waitFor();
+    const hierarchyMenu = page.getByRole("navigation", {
+      name: "景点偏好三级菜单",
+    });
+    assert.equal(await hierarchyMenu.getByRole("link").count(), 3, label);
+    assert.deepEqual(
+      await hierarchyMenu
+        .getByRole("link")
+        .evaluateAll((links) => links.map((link) => link.getAttribute("href"))),
+      [
+        "#attraction-overview",
+        "#attraction-quick-settings",
+        "#attraction-detail-settings",
+      ],
+      label,
+    );
     assert.equal(await page.locator("article[data-scope]").count(), 4, label);
     await page
       .getByText("候选范围，不是当前已保存字段。", { exact: true })
@@ -177,6 +192,33 @@ try {
   await page.goto(`${baseUrl}/personal-center/preferences/attractions`, {
     waitUntil: "networkidle",
   });
+
+  const functionalHierarchyMenu = page.getByRole("navigation", {
+    name: "景点偏好三级菜单",
+  });
+  for (const target of [
+    "attraction-quick-settings",
+    "attraction-detail-settings",
+    "attraction-overview",
+  ]) {
+    await functionalHierarchyMenu.locator(`a[href="#${target}"]`).click();
+    assert.equal(new URL(page.url()).hash, `#${target}`);
+    assert.equal(
+      await page.locator(`#${target}`).evaluate((element) => {
+        const targetRect = element.getBoundingClientRect();
+        const contentRect = document
+          .querySelector("#personal-content")
+          ?.getBoundingClientRect();
+        return Boolean(
+          contentRect &&
+          targetRect.top >= contentRect.top - 2 &&
+          targetRect.top < contentRect.bottom,
+        );
+      }),
+      true,
+      `${target}: menu target should scroll into the content viewport`,
+    );
+  }
 
   const natureVeryLike = page.getByRole("radio", {
     name: "自然：很喜欢",
