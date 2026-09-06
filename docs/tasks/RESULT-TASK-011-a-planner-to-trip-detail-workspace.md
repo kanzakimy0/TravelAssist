@@ -1,5 +1,9 @@
 # TASK-011-A Result
 
+## Authorized merge recheck — 2026-09-06
+
+用户已明确授权合并 PR #102 后重试 TASK-012。合并前无冲突同步最新 develop `e7bb67ff36f5a2bf51dd98c9884c84c5efcebd89`；npm ci / build / lint / typecheck 通过，87/87 Node tests 通过，1440×900 / 1180×800 / 390×844 Planner → Detail、同一 Map DOM、Back / Forward、Dialog / Draft 回归通过。未新增业务改动；以下为原始交付记录，最终合并 SHA 由 GitHub PR #102 提供。
+
 ## Status
 
 待验收 — TASK-011-A 实现与本地验收完成，等待 Draft PR Review / 合入 `develop`。未自动 merge。
