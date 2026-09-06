@@ -4,6 +4,8 @@ Issue #135 / TASK-012-A follow-up。比较基线 `c88d338`（已合并 v0.5）�
 
 ## Reports
 
+- [五卡菜单重设计：分区/原字段遍历/日历/草稿/两种动效](menu-redesign/report.json)，截图 `menu-redesign/1440-*-quick.png`、`390-*-quick.png`；设计说明见 `docs/ui/planner-quick-settings-menus.md`。这是顶层定位修复之后的新增界面，不覆盖之前截图的历史含义。
+
 - [快速卡片与二级弹层：五尺寸 × 两种动效，视口边界/点击/编辑/焦点检查](quick-popovers/report.json)。此项补足旧测试 reduced-motion 掩盖普通动效祖先 transform 的缺口；不能仅用 DOM 存在判断弹层可用。
 
 - [九视口真实地图 + 冻结区域比较](mapbox/report.json)

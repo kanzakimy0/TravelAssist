@@ -10,6 +10,8 @@ export function PlannerPopover({
   onClose,
   children,
   compact = false,
+  className,
+  placement = "anchor",
 }: {
   id: string;
   title: string;
@@ -17,6 +19,8 @@ export function PlannerPopover({
   onClose: () => void;
   children: ReactNode;
   compact?: boolean;
+  className?: string;
+  placement?: "anchor" | "side";
 }) {
   const surface = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
@@ -35,6 +39,19 @@ export function PlannerPopover({
       const rect = button.getBoundingClientRect();
       if (compact) element.style.width = `${rect.width}px`;
       const width = element.offsetWidth;
+      if (placement === "side") {
+        element.style.maxHeight = `${Math.min(680, window.innerHeight - 24)}px`;
+        const rail = button
+          .closest("[data-right-panel]")
+          ?.getBoundingClientRect();
+        const left =
+          window.innerWidth >= 768 && rail
+            ? rail.left - width - 12
+            : rect.right - width;
+        element.style.left = `${Math.max(12, Math.min(left, window.innerWidth - width - 12))}px`;
+        element.style.top = `${Math.max(12, Math.min(rect.top, window.innerHeight - element.offsetHeight - 12))}px`;
+        return;
+      }
       const below = window.innerHeight - rect.bottom - 20;
       const above = Math.min(window.innerHeight - 24, rect.top - 20);
       const placeBelow =
@@ -88,7 +105,7 @@ export function PlannerPopover({
       if (element.matches(":popover-open")) element.hidePopover();
       button.focus({ preventScroll: true });
     };
-  }, [trigger, compact]);
+  }, [trigger, compact, placement]);
   return (
     <div
       id={id}
@@ -98,7 +115,7 @@ export function PlannerPopover({
       data-compact={compact || undefined}
       role="dialog"
       aria-label={title}
-      className={styles.popover}
+      className={`${styles.popover} ${className ?? ""}`}
     >
       {!compact && (
         <header className={styles.popoverHeader}>

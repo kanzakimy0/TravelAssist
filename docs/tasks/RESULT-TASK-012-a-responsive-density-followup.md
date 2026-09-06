@@ -12,6 +12,16 @@
 
 ## Implemented / Updated Visual Contract
 
+### Quick menu redesign — 2026-09-06（最新）
+
+- 用户追加五卡子菜单重设计；正式呈现规范：[Planner 顶部五卡子菜单](../ui/planner-quick-settings-menus.md)。沿用原字段/即时同步语义，不重做业务。
+- 同行人：总人数与四行数量卡；日期：双端输入、可键盘操作的单月区间日历、天数/晚数摘要，保留日期草稿应用与固定预约保护。
+- 景点/餐饮/住宿：37 个快捷选项按主题分组，54 个详细字段分别放入三个分区，桌面双列/手机单列；填写进度、明确“即时同步”说明、完成/返回动作。工作台旧编辑器不变。
+- 菜单宽度 520px 上限，桌面优先放在右栏旁；移动端视口内显示，保留 top layer 修复及焦点恢复，标题/动作区吸附。
+- lint / typecheck / build / 178 Node tests 通过；新增七项原字段无遗漏/无重复及填写进度测试。
+- 五尺寸 × 两种动效共 80 次菜单边界/点击/编辑/关闭/焦点检查通过；遍历全部 54 个详细字段，验证分区切换保值；额外验证日历键盘、换月 Tab 入口、关闭未应用的日期草稿和预约保护。双地图现有交互回归通过。
+- 证据：[重设计截图与报告](../qa/planner-density/menu-redesign/report.json)。3113 已更新；继续补入原 Draft PR #139，不自动合并。之前的 170/171 tests 为前轮历史结果。
+
 ### Quick popover visibility correction — 2026-09-06
 
 - 用户复验发现五张快速卡片点击后看不到子菜单。复现：普通动效下父级 `workspace-view-enter` 的 `animation-fill-mode: both` 保留 transform，使 fixed 弹层误用父级坐标系；1440px 窗口中同行人弹层 x≈1713px。嵌套弹层也受祖先定位/裁切影响。

@@ -2,6 +2,8 @@
 
 ## TASK-012-A 响应式密度补修（2026-09-06）
 
+- 子菜单重设计追加：同行人数量卡、日期区间日历、37 个快捷选项分组、54 个详细字段三分区表单；范围限五卡子菜单，模型/工作台/推荐卡不变。178 tests、五尺寸 × 双动效菜单编辑/日历草稿与保护检查通过；设计 `docs/ui/planner-quick-settings-menus.md`，证据 `docs/qa/planner-density/menu-redesign/`，仍待审查 / Draft PR #139。
+
 - 用户复验补修：右栏五卡/三级偏好弹层移至 top layer，修正普通动效下 fixed 坐标越界；五尺寸 × 两种动效共 80 次真实可见/可点击/编辑/焦点检查通过，171 tests / lint / typecheck / build 通过；继续使用 Draft PR #139，状态待审查。原 reduced-motion/DOM 检查未覆盖该缺陷，完整更正与证据见 Result。
 
 - Issue：#135；Owner：A；WBS：1.5 / 1.6 / 1.7 / 4.1 / 4.8 / 4.14（既有 Planner UI 补修）。

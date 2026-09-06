@@ -7,7 +7,8 @@ const { chromium } = createRequire(import.meta.url)(
 );
 const base = process.env.PLANNER_QA_URL || "http://127.0.0.1:3113";
 assert.ok(["localhost", "127.0.0.1"].includes(new URL(base).hostname));
-const out = "docs/qa/planner-density/quick-popovers";
+const out =
+  process.env.PLANNER_QA_OUT || "docs/qa/planner-density/quick-popovers";
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_EXE,
@@ -85,10 +86,12 @@ try {
       ]) {
         const trigger = page
           .locator("[data-right-upper]")
-          .getByRole("button", { name: new RegExp(title) });
+          .getByRole("button", { name: new RegExp("^" + title) });
         await trigger.click();
         const surface = page.locator("#quick-" + key);
         await visibleSurface(surface, page);
+        if (reducedMotion === "no-preference" && [1440, 390].includes(width))
+          await page.screenshot({ path: `${out}/${width}-${key}-quick.png` });
         if (key === "travelers") {
           const count = surface.getByLabel("成人男性人数", { exact: true });
           const n = Number(await count.innerText());
@@ -100,6 +103,63 @@ try {
             .getByRole("button", { name: "减少成人男性", exact: true })
             .click();
         } else if (key === "dates") {
+          if (
+            width === 1440 &&
+            (await surface.locator("[data-date]").count())
+          ) {
+            const departureInput = surface.getByLabel("出发日期", {
+              exact: true,
+            });
+            const returnInput = surface.getByLabel("返回日期", { exact: true });
+            const originalDeparture = await departureInput.inputValue();
+            const originalReturn = await returnInput.inputValue();
+            const originalSummary = await trigger.innerText();
+            const later = new Date(originalReturn + "T12:00:00Z");
+            later.setUTCDate(later.getUTCDate() + 2);
+            const extended = later.toISOString().slice(0, 10);
+            await surface.locator(`[data-date="${originalDeparture}"]`).click();
+            await surface.locator(`[data-date="${originalReturn}"]`).focus();
+            await page.keyboard.press("ArrowRight");
+            await page.keyboard.press("ArrowRight");
+            await page.keyboard.press("Enter");
+            assert.equal(await returnInput.inputValue(), extended);
+            assert.equal(
+              await trigger.innerText(),
+              originalSummary,
+              "calendar edits stay draft",
+            );
+            await page.keyboard.press("Escape");
+            await trigger.click();
+            assert.equal(
+              await returnInput.inputValue(),
+              originalReturn,
+              "closing without apply discards date draft",
+            );
+            await returnInput.fill(originalDeparture);
+            await surface
+              .getByRole("button", { name: "应用日期区间", exact: true })
+              .click();
+            assert.match(await surface.innerText(), /超出/);
+            assert.equal(
+              await trigger.innerText(),
+              originalSummary,
+              "protected dates retained",
+            );
+            await returnInput.fill(originalReturn);
+            await surface
+              .getByRole("button", { name: "下个月", exact: true })
+              .click();
+            assert.equal(
+              await surface
+                .locator('[data-date][tabindex="0"]:enabled')
+                .count(),
+              1,
+              "calendar keeps a keyboard entry after month change",
+            );
+            await surface
+              .getByRole("button", { name: "上个月", exact: true })
+              .click();
+          }
           await surface.getByLabel("出发日期", { exact: true }).focus();
           await surface
             .getByRole("button", { name: "应用日期区间", exact: true })
@@ -116,6 +176,39 @@ try {
           await detailTrigger.click();
           const detail = page.locator("#preference-detail-" + key);
           await visibleSurface(detail, page);
+          const sections = detail
+            .getByRole("group", { name: "详细设置分区" })
+            .locator("button");
+          if (await sections.count()) {
+            const initialField = detail.locator("input").first();
+            const initialValue = await initialField.inputValue();
+            await initialField.fill("跨分区保留测试");
+            await sections.last().click();
+            await sections.first().click();
+            assert.equal(await initialField.inputValue(), "跨分区保留测试");
+            await initialField.fill(initialValue);
+            const fieldLabels = new Set();
+            for (let index = 0; index < (await sections.count()); index++) {
+              await sections.nth(index).click();
+              await visibleSurface(detail, page);
+              const fields = detail.locator("input");
+              for (let i = 0; i < (await fields.count()); i++) {
+                const field = fields.nth(i);
+                fieldLabels.add(
+                  await field.evaluate((e) => e.parentElement.textContent),
+                );
+                const old = await field.inputValue();
+                await field.fill("分区编辑验证");
+                await field.fill(old);
+              }
+            }
+            assert.equal(
+              fieldLabels.size,
+              key === "stay" ? 20 : 17,
+              "all original fields remain reachable",
+            );
+            await sections.first().click();
+          }
           const input = detail.locator("input").last();
           const original = await input.inputValue();
           await input.fill("弹层交互验收");
