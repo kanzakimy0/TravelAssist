@@ -8,12 +8,14 @@
   - A：只处理首页 Brand 的一文件窄范围修正，并复验主系统
   - B：处理 Personal Center Logo 与主流程入口
 - Issue: `#79`
-- Status: `待验收`
+- Status: `已完成`
 - WBS: `3.1 / 5.1 / 5.10 / 5.20`（仅本任务导航子集）
 - Commit: `0e581513e72b5890b77bf74f6f369fc73f6538f0`（实现提交）
 - Revalidation Commit: `fe17962532f705556c3ca69c0871f593d366acfa`
 - Integrated develop: `8b83628f60e7dd2a07231a59ca448c4dc5af510d`（安全同步提交 `fcd934e6d13d21f9aea0736385038a8c1336a5fe`）
-- Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Open Draft → develop
+- Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Merged → develop
+- Merge Commit: `f105253b1f700f67fd97d8c9eb03a9c85000d699`（用户明确授权合并）
+- Merge Acceptance: 基线 `e052d93`，验收 head `a4306e2`；lint / typecheck / build / 123 tests / 76 Logo QA / diff-check 通过。合并树与验收 head 相同。全仓格式 27 项既有基线例外（原 26 项加 TASK-WBS-5.8 文档）独立核实；本任务文件通过。下方原“保持 Draft”是授权前历史规则，现已由用户明确合并授权解除。
 - Specification Source: 文档 Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`
 - Supersedes: 本文件 v1.0 未执行版本；**不创建重复 Personal Center 导航 Task**
 - Depends On:

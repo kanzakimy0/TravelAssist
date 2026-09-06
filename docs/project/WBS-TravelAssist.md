@@ -2,8 +2,10 @@
 
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 
+- Merge closeout：用户明确授权后，PR #108 已合入 develop，merge `f105253b1f700f67fd97d8c9eb03a9c85000d699`；Issue #79 Closed。最终基线 `e052d93`，验收 head `a4306e2`，合并树相同；123 tests / 76 Logo QA / lint / typecheck / build / diff-check 复验通过。全仓格式 27 项均为核实过的基线异常（原 26 项加 TASK-WBS-5.8 文档）。下方历史基线记录保留，最新状态以本条为准。手机 Detail 返回入口仍是上游范围外缺口。
+
 - WBS：3.1 / 5.1 / 5.10 / 5.20 的导航子集；Owner：A+B / Shared Navigation。
-- Status：待审查；Issue：#79；Branch：`fix/shared-global-logo-navigation`；实现 Commit：`0e581513e72b5890b77bf74f6f369fc73f6538f0`；Draft PR：[#108](https://github.com/kanzakimy0/TravelAssist/pull/108) → develop（Open / Draft，不合并）。
+- Status：已完成（仅导航子集）；Issue：#79；Branch：`fix/shared-global-logo-navigation`；实现 Commit：`0e581513e72b5890b77bf74f6f369fc73f6538f0`；PR：[#108](https://github.com/kanzakimy0/TravelAssist/pull/108) → develop（已合并，用户明确授权）。
 - Integrated develop：`8b83628f60e7dd2a07231a59ca448c4dc5af510d`；无冲突同步 `fcd934e6d13d21f9aea0736385038a8c1336a5fe`，复验提交 `fe17962532f705556c3ca69c0871f593d366acfa`；复用现有分支 / PR，未重复实现，上游业务不计本 Task 实现。
 - Initial Base：`a567dffc5930523cb0917889abab9ac9b8cebf19`（origin/develop）；文档来源：Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`。未从文档分支开发。
 - Scope：首页 Logo 链接化、Personal Center 双端 GuardedLink Logo → `/`、Personal Home / Trips 四个主流程出口。原 WBS 5.1 已合并成果不回退；5.10 / 5.20 的完整业务状态不因导航子集完成而提前完成。
