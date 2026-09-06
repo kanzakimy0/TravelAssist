@@ -80,10 +80,10 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 - npm ci: 通过；362 packages，0 vulnerabilities；仅有既有 allow-scripts 提示
 - lint: 通过
 - typecheck: 通过
-- format:check: 历史 baseline 仍有 27 个非本 Task 文件未格式化；仅记录，未越界修改
+- format:check: 最新 develop 的历史 baseline 仍有 25 个非本 Task 文件未格式化；仅记录，未越界修改
 - targeted format: 当前 Task 源码、路由、测试与 Task 文件通过
 - tests-if-present: 通过（仓库未定义 test script，命令正常退出）
-- Node tests: 147 / 147 通过；其中 WBS-5.8-B 26 项
+- Node tests: 165 / 165 通过；其中 WBS-5.8-B 26 项
 - build: 通过；`/personal-center/preferences/attractions` SSG 成功
 - diff-check: 通过
 - browser QA: 通过；五尺寸、六维 / 四等级、摘要、拍照 toggle、Save / Cancel / Restore、dirty guard、回归、无新增 404、无 React / hydration / blocking console error、Save 无网络写请求
@@ -101,18 +101,18 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 
 ## Git
 
-- Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`（implementation）；tracking commit `PENDING`
+- Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`（implementation）；`6c4e129`（初始 Result）；`da4cfd7`（合并最新 develop）
 - Push: `PENDING`
 - PR: `PENDING`
 - Merge behavior: 不主动开启 auto-merge；仓库现有 feature workflow 可能在 push 后自动创建并合入
-- latest origin/develop: `e052d93ee02cfbd8dfa661f9e82e365783b3489a`（提交前基线）
+- latest origin/develop: `66b7ca621b24ed6c973f6a0e6cb3591b3515165f`；已由 merge commit `da4cfd75903b93f68d6fc098062d6a792b0d1967` 整合并复验
 - unpushed commits: push 前为 implementation + tracking；push 后由最终 Result 核对
 - tracked working tree: tracking commit 后核对
 - preserved untracked files: `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py`
 
 ## Problems
 
-- 全仓 Prettier 的 27 个历史 baseline 文件仍失败；当前 Task targeted format 通过，按范围规则未修改这些文件。
+- 全仓 Prettier 的 25 个历史 baseline 文件仍失败；当前 Task targeted format 通过，按范围规则未修改这些文件。
 - Node 全仓测试输出既有 MODULE_TYPELESS_PACKAGE_JSON 性能提示；测试全部通过，且未修改 package 配置。
 
 ## Next
