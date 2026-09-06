@@ -373,9 +373,15 @@
   line-height: 1.55;
 }
 
-.boundaryCard {
+.detailScopeSection {
+  background:
+    radial-gradient(circle at 93% 4%, rgb(231 238 225 / 65%), transparent 28%),
+    rgb(255 252 247 / 93%);
+}
+
+.scopeStatement {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
   min-width: 0;
   padding: 17px 19px;
@@ -400,34 +406,158 @@
   height: 21px;
 }
 
-.boundaryCard > div {
+.scopeStatement > div {
   min-width: 0;
 }
 
-.boundaryCard h2 {
+.scopeStatement p {
+  margin: 0 0 2px;
+  color: var(--attraction-sage);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.scopeStatement h3 {
   margin: 0;
   font-family: var(--pc-font-heading);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 650;
 }
 
-.boundaryCard p,
-.boundaryCard li {
+.scopeStatement span {
+  display: block;
+  margin-top: 4px;
   color: var(--pc-text-secondary);
   font-size: 11px;
   line-height: 1.65;
 }
 
-.boundaryCard p {
-  margin: 3px 0 0;
+.scopeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 13px;
 }
 
-.boundaryCard ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px 20px;
-  margin: 8px 0 0;
+.scopeCard {
+  min-width: 0;
+  padding: 17px 18px;
+  border: 1px solid #e5d9d0;
+  border-radius: 18px;
+  background: rgb(255 253 249 / 92%);
+}
+
+.scopeCard[data-scope="available"] {
+  border-color: #dcb7ab;
+  background: linear-gradient(145deg, #fffdf9, #fbede7);
+}
+
+.scopeCard[data-scope="trip"] {
+  border-color: #ddcfb7;
+  background: linear-gradient(145deg, #fffdf9, #fbf5e8);
+}
+
+.scopeCard[data-scope="companion"] {
+  border-color: #d6ddcf;
+  background: linear-gradient(145deg, #fffdf9, #f2f6ee);
+}
+
+.scopeCard[data-scope="future"] {
+  border-style: dashed;
+  background: rgb(250 248 244 / 78%);
+}
+
+.scopeCardBadge {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: var(--attraction-coral-deep);
+  background: rgb(248 230 223 / 88%);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.scopeCard[data-scope="trip"] .scopeCardBadge {
+  color: #765d32;
+  background: #f3ead5;
+}
+
+.scopeCard[data-scope="companion"] .scopeCardBadge {
+  color: #51634d;
+  background: #e4ebdf;
+}
+
+.scopeCard[data-scope="future"] .scopeCardBadge {
+  color: var(--pc-text-secondary);
+  background: #efeae4;
+}
+
+.scopeCard h3 {
+  margin: 10px 0 0;
+  font-family: var(--pc-font-heading);
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.scopeCard p,
+.scopeCard li,
+.scopeCard small {
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.scopeCard p {
+  margin: 4px 0 0;
+}
+
+.scopeCard ul {
+  display: grid;
+  gap: 3px;
+  margin: 9px 0 0;
   padding-left: 17px;
+}
+
+.scopeCard small {
+  display: block;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px solid rgb(116 92 73 / 10%);
+  font-weight: 650;
+}
+
+.contractGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 13px 0 0;
+}
+
+.contractGrid > div {
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid #e3dcd4;
+  border-radius: 14px;
+  background: rgb(255 253 250 / 82%);
+}
+
+.contractGrid dt {
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contractGrid dd {
+  margin: 4px 0 0;
+  color: var(--pc-text-primary);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
 }
 
 .actionBar {
@@ -514,9 +644,12 @@
     min-height: 188px;
   }
 
-  .boundaryCard ul {
-    display: grid;
-    gap: 2px;
+  .scopeGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contractGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .actionBar {
@@ -571,7 +704,8 @@
     left: 14px;
   }
 
-  .boundaryCard {
+  .scopeStatement,
+  .scopeCard {
     padding-inline: 15px;
   }
 }

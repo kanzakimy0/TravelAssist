@@ -251,9 +251,29 @@ test("page renders the frozen photo preference and explicit boundaries", () => {
   );
   assert.match(page, /旅行中希望主动安排拍照体验/);
   assert.match(page, /更重视取景价值、光线条件和拍照停留体验。/);
-  assert.match(page, /Persistence: Mock \/ in-memory only/);
-  assert.match(page, /Formal Preference Schema: Not implemented/);
-  assert.match(page, /Planner Contract: Not implemented/);
+  assert.match(page, /<dt>Persistence<\/dt>[\s\S]*Mock \/ in-memory only/);
+  assert.match(
+    page,
+    /<dt>Formal Preference Schema<\/dt>[\s\S]*Not implemented/,
+  );
+  assert.match(page, /<dt>Planner Contract<\/dt>[\s\S]*Not implemented/);
+});
+
+test("detail scope separates long-term trip companion and future concepts", () => {
+  const page = read(
+    "src/features/preferences/attraction-activity-preference-page.tsx",
+  );
+  assert.match(page, /“我通常喜欢怎样的景点与活动”/);
+  assert.match(page, /data-scope="available"/);
+  assert.match(page, /六维喜好的四级快速设置/);
+  assert.match(page, /data-scope="trip"/);
+  assert.match(page, /必去 \/ 希望去 \/ 可去 \/ 不去与具体地点锁定/);
+  assert.match(page, /日出、日落、夜景、黄金时段与拍照停留/);
+  assert.match(page, /不会从本页写入或反向覆盖长期偏好/);
+  assert.match(page, /data-scope="companion"/);
+  assert.match(page, /与当前用户的长期偏好分开/);
+  assert.match(page, /data-scope="future"/);
+  assert.match(page, /候选范围，不是当前已保存字段/);
 });
 
 test("implementation reuses the repository attraction image", () => {

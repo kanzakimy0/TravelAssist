@@ -199,22 +199,92 @@ export function AttractionActivityPreferencePage() {
         </label>
       </section>
 
-      <section className={styles.boundaryCard} aria-labelledby="boundary-title">
-        <span className={styles.boundaryIcon} aria-hidden="true">
-          <PreferenceIcon name="settings" />
-        </span>
-        <div>
-          <h2 id="boundary-title">更多详细设置边界</h2>
-          <p>
-            本页不冻结尚未确认的细分类，也不保存具体 Trip / POI 的“必去 / 希望去
-            / 可去 / 不去”。
-          </p>
-          <ul>
-            <li>Persistence: Mock / in-memory only</li>
-            <li>Formal Preference Schema: Not implemented</li>
-            <li>Planner Contract: Not implemented</li>
-          </ul>
+      <section
+        className={`${styles.section} ${styles.detailScopeSection}`}
+        aria-labelledby="boundary-title"
+      >
+        <div className={styles.sectionHeading}>
+          <SectionMark>03</SectionMark>
+          <div>
+            <h2 id="boundary-title">更多详细偏好</h2>
+            <p>分清长期默认、单次旅行与同行人偏好，再进入更细的设置。</p>
+          </div>
         </div>
+
+        <div className={styles.scopeStatement}>
+          <span className={styles.boundaryIcon} aria-hidden="true">
+            <PreferenceIcon name="settings" />
+          </span>
+          <div>
+            <p>本页负责</p>
+            <h3>“我通常喜欢怎样的景点与活动”</h3>
+            <span>
+              六个维度用于快速表达喜好，拍照体验是当前已确认的详细行为偏好。
+            </span>
+          </div>
+        </div>
+
+        <div className={styles.scopeGrid}>
+          <article className={styles.scopeCard} data-scope="available">
+            <span className={styles.scopeCardBadge}>本页已提供</span>
+            <h3>长期景点偏好</h3>
+            <p>用于表达可复用的个人默认，不绑定某一次行程。</p>
+            <ul>
+              <li>六维喜好的四级快速设置</li>
+              <li>拍照体验详细偏好</li>
+              <li>摘要、恢复默认、取消与保存</li>
+            </ul>
+          </article>
+
+          <article className={styles.scopeCard} data-scope="trip">
+            <span className={styles.scopeCardBadge}>具体旅行中设置</span>
+            <h3>Trip / POI 临时条件</h3>
+            <p>这些条件依赖目的地、日期与当天安排，应在 Planner 中调整。</p>
+            <ul>
+              <li>必去 / 希望去 / 可去 / 不去与具体地点锁定</li>
+              <li>日出、日落、夜景、黄金时段与拍照停留</li>
+              <li>人流、排队、天气、室内外与游览顺序</li>
+            </ul>
+            <small>不会从本页写入或反向覆盖长期偏好。</small>
+          </article>
+
+          <article className={styles.scopeCard} data-scope="companion">
+            <span className={styles.scopeCardBadge}>同行人单独管理</span>
+            <h3>同行人的个人倾向</h3>
+            <p>同行人喜欢拍照、户外或博物馆等信息属于各自资料。</p>
+            <ul>
+              <li>与当前用户的长期偏好分开</li>
+              <li>组合出行时作为同行人信息使用</li>
+            </ul>
+          </article>
+
+          <article className={styles.scopeCard} data-scope="future">
+            <span className={styles.scopeCardBadge}>设计冻结后开放</span>
+            <h3>候选详细范围</h3>
+            <p>设计书已提出方向，但尚未形成正式 Preference Master Data。</p>
+            <ul>
+              <li>景点类别、活动形式与行为目的</li>
+              <li>强度、时间适配、热门 / 小众倾向</li>
+              <li>更多文化、自然、购物与娱乐细分类</li>
+            </ul>
+            <small>候选范围，不是当前已保存字段。</small>
+          </article>
+        </div>
+
+        <dl className={styles.contractGrid} aria-label="当前实现边界">
+          <div>
+            <dt>Persistence</dt>
+            <dd>Mock / in-memory only</dd>
+          </div>
+          <div>
+            <dt>Formal Preference Schema</dt>
+            <dd>Not implemented</dd>
+          </div>
+          <div>
+            <dt>Planner Contract</dt>
+            <dd>Not implemented</dd>
+          </div>
+        </dl>
       </section>
 
       <footer className={styles.actionBar}>

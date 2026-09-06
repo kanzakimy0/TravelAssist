@@ -84,6 +84,18 @@ try {
     assert.equal(await page.getByRole("radiogroup").count(), 6, label);
     assert.equal(await page.getByRole("radio").count(), 24, label);
     assert.equal(await page.getByRole("checkbox").count(), 1, label);
+    await page
+      .getByRole("heading", { name: "更多详细偏好", exact: true })
+      .waitFor();
+    assert.equal(await page.locator("article[data-scope]").count(), 4, label);
+    await page
+      .getByText("候选范围，不是当前已保存字段。", { exact: true })
+      .waitFor();
+    assert.equal(
+      await page.locator("article[data-scope] button").count(),
+      0,
+      `${label}: informational scope cards must not expose fake controls`,
+    );
     assert.equal(
       await page.locator('article[data-dimension="nature"]').count(),
       1,
