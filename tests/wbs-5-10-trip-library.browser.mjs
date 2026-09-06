@@ -19,6 +19,7 @@ const viewports = [
   [1440, 900],
   [1280, 720],
   [1024, 768],
+  [938, 882],
   [768, 1024],
   [390, 844],
   [320, 740],
@@ -58,6 +59,45 @@ async function assertNoOverflow(page, label) {
   );
 }
 
+async function assertDesktopTabsFit(page, label, width) {
+  if (width < 1280) return;
+  for (const tabName of ["全部", "即将出发", "草稿", "历史", "收藏"]) {
+    await page.getByRole("tab", { name: new RegExp(`^${tabName}`) }).click();
+    const overflow = await page
+      .locator("#personal-content")
+      .evaluate((element) => element.scrollHeight - element.clientHeight);
+    assert.ok(
+      overflow <= 1,
+      `${label} ${tabName}: vertical overflow ${overflow}px`,
+    );
+    const clippedCards = await page
+      .locator("article")
+      .evaluateAll((cards) =>
+        cards
+          .map((card) => card.scrollHeight - card.clientHeight)
+          .filter((cardOverflow) => cardOverflow > 1),
+      );
+    assert.deepEqual(clippedCards, [], `${label} ${tabName}: clipped cards`);
+  }
+}
+
+async function assertHeaderActionsDoNotOverlap(page, label, width) {
+  if (width < 768) return;
+  const newTrip = page.getByRole("link", { name: "新建旅程", exact: true });
+  const accountMenu = page.getByRole("button", { name: /账户菜单/ });
+  const [newTripBox, accountBox] = await Promise.all([
+    newTrip.boundingBox(),
+    accountMenu.boundingBox(),
+  ]);
+  assert.ok(newTripBox && accountBox, `${label}: missing header actions`);
+  const overlaps =
+    newTripBox.x < accountBox.x + accountBox.width &&
+    newTripBox.x + newTripBox.width > accountBox.x &&
+    newTripBox.y < accountBox.y + accountBox.height &&
+    newTripBox.y + newTripBox.height > accountBox.y;
+  assert.equal(overlaps, false, `${label}: new trip overlaps account avatar`);
+}
+
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 try {
   for (const [width, height] of viewports) {
@@ -79,12 +119,16 @@ try {
         .getAttribute("href"),
       "/start?entry=step3",
     );
+    await assertHeaderActionsDoNotOverlap(page, label, width);
     await page
       .getByRole("heading", { name: "京都春日漫游", exact: true })
       .waitFor();
-    await page
-      .getByText("Persistence: Mock / in-memory only", { exact: true })
-      .waitFor();
+    assert.equal(
+      await page
+        .getByText("Persistence: Mock / in-memory only", { exact: true })
+        .count(),
+      1,
+    );
     await assertNoOverflow(page, label);
     await page.screenshot({
       path: path.join(evidenceDir, `${width}x${height}-top.png`),
@@ -95,6 +139,7 @@ try {
     await page.screenshot({
       path: path.join(evidenceDir, `${width}x${height}-bottom.png`),
     });
+    await assertDesktopTabsFit(page, label, width);
     await context.close();
   }
 

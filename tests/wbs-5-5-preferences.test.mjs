@@ -145,3 +145,19 @@ test("overview exposes required content without persistence or schema expansion"
     /localStorage|sessionStorage|fetch\(|cookies?\(|prisma|supabase|route\.ts/i,
   );
 });
+
+test("overview keeps the supplied concept hierarchy compact and readable", () => {
+  const center = read("src/features/preferences/preference-center.tsx");
+  const radar = read("src/features/preferences/preference-radar.tsx");
+  const css = read("src/features/preferences/preference-center.module.css");
+
+  assert.match(center, /className=\{styles\.titleFlower\}/);
+  assert.match(center, /className=\{styles\.categoryArtwork\}/);
+  assert.match(center, /className=\{styles\.preferenceActions\}/);
+  assert.match(center, /更多详细设置/);
+  assert.match(radar, /className=\{styles\.radarStory\}/);
+  assert.match(css, /\.radarLabel\s*\{[^}]*fill: #3f3935;/s);
+  assert.match(css, /\.radarLabel\s*\{[^}]*font-size: 14px;/s);
+  assert.match(css, /\.radarLabel\s*\{[^}]*font-weight: 760;/s);
+  assert.match(css, /@media \(min-width: 861px\) and \(max-height: 950px\)/);
+});

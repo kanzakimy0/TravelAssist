@@ -175,8 +175,14 @@ test("favorites expose exactly six filters and can filter or remove", () => {
 test("route replaces the placeholder and page declares required UI boundaries", () => {
   const route = read("src/app/(account)/personal-center/trips/page.tsx");
   const page = read("src/features/trip-library/trip-library-page.tsx");
+  const styles = read("src/features/trip-library/trip-library.module.css");
   assert.match(route, /<TripLibraryPage \/>/);
   assert.doesNotMatch(route, /PersonalPlaceholder/);
+  assert.match(page, /data-trip-library-page/);
+  assert.match(page, /data-active-tab=\{activeTab\}/);
+  assert.match(styles, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /\.draftCard:first-child/);
+  assert.match(styles, /grid-column: 1 \/ -1/);
   for (const copy of [
     "Persistence: Mock / in-memory only",
     "WBS 5.18 Trip 数据聚合与映射：未实现",

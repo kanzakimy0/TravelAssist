@@ -290,11 +290,22 @@ export function TripLibraryPage() {
   };
 
   return (
-    <div className={styles.page}>
+    <div
+      className={styles.page}
+      data-trip-library-page
+      data-active-tab={activeTab}
+    >
       <header className={styles.pageHeader}>
         <div>
+          <i
+            className={styles.titleFlower}
+            data-title-flower
+            aria-hidden="true"
+          >
+            ✿
+          </i>
           <p className={styles.eyebrow}>TRIP LIBRARY</p>
-          <h1>我的旅行</h1>
+          <h1 data-primary-page-title>我的旅行</h1>
           <p>管理行程、预订与收藏</p>
         </div>
         <GuardedLink className={styles.newTripButton} href={newTripHref}>
@@ -424,6 +435,7 @@ export function TripLibraryPage() {
           visibleTrips.length ? (
             <section
               className={styles.librarySection}
+              data-library-section="active"
               aria-labelledby="active-trip-heading"
             >
               <div className={styles.sectionHeading}>
@@ -469,6 +481,7 @@ export function TripLibraryPage() {
         {activeTab === "all" && visibleHistory.length ? (
           <section
             className={styles.librarySection}
+            data-library-section="recent"
             aria-labelledby="recent-trip-heading"
           >
             <div className={styles.sectionHeading}>
@@ -501,6 +514,7 @@ export function TripLibraryPage() {
           visibleDrafts.length ? (
             <section
               className={styles.librarySection}
+              data-library-section="drafts"
               aria-labelledby="draft-heading"
             >
               <div className={styles.sectionHeading}>
@@ -569,6 +583,7 @@ export function TripLibraryPage() {
           visibleHistory.length ? (
             <section
               className={styles.librarySection}
+              data-library-section="history"
               aria-labelledby="history-heading"
             >
               <div className={styles.sectionHeading}>
@@ -643,6 +658,7 @@ export function TripLibraryPage() {
         {activeTab === "favorites" ? (
           <section
             className={styles.librarySection}
+            data-library-section="favorites"
             aria-labelledby="favorite-heading"
           >
             <div className={styles.sectionHeading}>

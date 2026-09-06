@@ -29,7 +29,26 @@
   letter-spacing: 0.03em;
 }
 .pageHeader h1 {
-  font-size: clamp(28px, 2.5vw, 40px);
+  font-size: clamp(2rem, 2.5vw, 2.55rem);
+  line-height: 1.12;
+}
+.pageHeader > div:first-child {
+  position: relative;
+  padding-left: 58px;
+}
+.titleFlower {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  width: 42px;
+  transform: translateY(-50%);
+  color: #ef8f9c;
+  font-family: var(--pc-font-heading);
+  font-size: 42px;
+  font-style: normal;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 4px 14px rgb(224 116 131 / 18%);
 }
 .pageHeader > div > p:last-child,
 .sectionHeading > span,
@@ -796,6 +815,13 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .pageHeader {
+    box-sizing: border-box;
+    padding-right: clamp(144px, 17vw, 168px);
+  }
+}
+
 @media (max-width: 767px) {
   .page {
     gap: 18px;
@@ -889,5 +915,513 @@
   }
   .dialogActions {
     display: grid;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page[data-trip-library-page] {
+    position: relative;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding-bottom: 0;
+    grid-template-columns: minmax(315px, 1fr) minmax(420px, 0.9fr);
+    grid-template-rows: clamp(102px, 12vh, 116px) 44px minmax(0, 1fr);
+    gap: 8px 12px;
+  }
+
+  .page[data-trip-library-page] .pageHeader {
+    min-height: 0;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 6px 8px;
+  }
+
+  .page[data-trip-library-page] .titleFlower {
+    top: 0;
+    transform: none;
+  }
+
+  .page[data-trip-library-page] .pageHeader .eyebrow,
+  .page[data-trip-library-page] .sectionHeading .eyebrow {
+    display: none;
+  }
+
+  .page[data-trip-library-page] .pageHeader h1 {
+    font-size: clamp(2rem, 2.5vw, 2.55rem);
+    line-height: 1.12;
+  }
+
+  .page[data-trip-library-page] .pageHeader > div > p:last-child {
+    font-size: 0.82rem;
+  }
+
+  .page[data-trip-library-page] .newTripButton {
+    min-height: 40px;
+    align-self: flex-end;
+    padding: 8px 18px;
+  }
+
+  .page[data-trip-library-page] .tabs {
+    min-height: 0;
+    grid-column: 1;
+    grid-row: 2;
+    overflow: hidden;
+  }
+
+  .page[data-trip-library-page] .tabs > div {
+    gap: 2px;
+  }
+
+  .page[data-trip-library-page] .tabs button {
+    min-height: 44px;
+    flex: 1;
+    padding: 6px 10px;
+    font-size: 0.82rem;
+  }
+
+  .page[data-trip-library-page] .tabs button span {
+    display: none;
+  }
+
+  .page[data-trip-library-page] .toolbar {
+    min-height: 0;
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-columns: minmax(150px, 1fr) 124px 132px;
+    gap: 7px;
+  }
+
+  .page[data-trip-library-page] .toolbar input,
+  .page[data-trip-library-page] .toolbar select {
+    min-height: 40px;
+    padding-block: 7px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+  }
+
+  .page[data-trip-library-page] .searchField > span:not(.srOnly) {
+    top: 4px;
+  }
+
+  .page[data-trip-library-page] .feedback {
+    position: absolute;
+    z-index: 8;
+    top: clamp(64px, 8vh, 76px);
+    right: 8px;
+    max-width: min(520px, 60%);
+    margin: 0;
+    box-shadow: 0 10px 26px rgb(70 45 32 / 12%);
+  }
+
+  .page[data-trip-library-page] .panel {
+    height: 100%;
+    min-height: 0;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .page[data-active-tab="all"] .panel,
+  .page[data-active-tab="upcoming"] .panel {
+    grid-template-rows: minmax(230px, 1.15fr) minmax(220px, 1fr);
+  }
+
+  .page[data-active-tab="all"] .librarySection[data-library-section="recent"] {
+    display: none;
+  }
+
+  .page[data-trip-library-page] .boundaryNote {
+    display: none;
+  }
+
+  .page[data-trip-library-page] .nextTripHero {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1.02fr) minmax(330px, 0.98fr);
+    border-radius: 20px;
+  }
+
+  .page[data-trip-library-page] .heroImage {
+    min-height: 0;
+  }
+
+  .page[data-trip-library-page] .heroBody {
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  .page[data-trip-library-page] .heroBody h2 {
+    font-size: clamp(1.55rem, 2vw, 2.15rem);
+  }
+
+  .page[data-trip-library-page] .heroMeta {
+    gap: 4px 12px;
+    margin: 5px 0 8px;
+    font-size: 0.72rem;
+  }
+
+  .page[data-trip-library-page] .reservation {
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+
+  .page[data-trip-library-page] .categorySummary {
+    gap: 4px;
+  }
+
+  .page[data-trip-library-page] .categorySummary li {
+    padding: 4px;
+  }
+
+  .page[data-trip-library-page] .heroBody > .primaryButton {
+    min-height: 34px;
+    padding: 6px 16px;
+  }
+
+  .page[data-trip-library-page] .librarySection {
+    height: 100%;
+    min-height: 0;
+    gap: 7px;
+  }
+
+  .page[data-trip-library-page] .sectionHeading {
+    min-height: 25px;
+  }
+
+  .page[data-trip-library-page] .sectionHeading h2 {
+    font-size: 1rem;
+  }
+
+  .page[data-trip-library-page] .sectionHeading > span {
+    font-size: 0.7rem;
+  }
+
+  .page[data-trip-library-page] .librarySection[data-library-section="active"] {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .page[data-trip-library-page] .cardGrid {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .page[data-trip-library-page] .tripCard {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(72px, 40%) minmax(0, 1fr);
+    border-radius: 16px;
+  }
+
+  .page[data-trip-library-page] .cardImage {
+    min-height: 0;
+  }
+
+  .page[data-trip-library-page] .tripCardBody {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    padding: 8px 10px;
+  }
+
+  .page[data-trip-library-page] .cardTitleLine p {
+    display: none;
+  }
+
+  .page[data-trip-library-page] .cardTitleLine h3 {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+
+  .page[data-trip-library-page] .moreMenu summary {
+    width: 30px;
+    height: 30px;
+  }
+
+  .page[data-trip-library-page] .moreMenu > div {
+    top: 30px;
+  }
+
+  .page[data-trip-library-page] .tripDate {
+    gap: 5px;
+    margin-top: 3px;
+    font-size: 0.66rem;
+  }
+
+  .page[data-trip-library-page] .tripDate svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .page[data-trip-library-page] .compactReservation {
+    gap: 3px;
+    margin-block: 5px;
+  }
+
+  .page[data-trip-library-page] .compactReservation .categorySummary,
+  .page[data-trip-library-page] .compactReservation > p {
+    display: none;
+  }
+
+  .page[data-trip-library-page] .completionLine {
+    font-size: 0.66rem;
+  }
+
+  .page[data-trip-library-page] .compactReservation progress {
+    height: 5px;
+  }
+
+  .page[data-trip-library-page] .tripCardBody > .primaryButton {
+    min-height: 30px;
+    margin-top: auto;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .page[data-trip-library-page] .librarySection[data-library-section="drafts"],
+  .page[data-trip-library-page] .librarySection[data-library-section="history"],
+  .page[data-trip-library-page]
+    .librarySection[data-library-section="favorites"] {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .page[data-trip-library-page] .draftGrid {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: minmax(230px, 1.2fr) minmax(190px, 1fr);
+    gap: 10px;
+  }
+
+  .page[data-trip-library-page] .draftCard {
+    height: 100%;
+    min-height: 0;
+    border-radius: 16px;
+  }
+
+  .page[data-trip-library-page] .draftCard:first-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    grid-template-columns: minmax(260px, 43%) minmax(0, 1fr);
+  }
+
+  .page[data-trip-library-page] .draftCard:not(:first-child) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(76px, 42%) minmax(0, 1fr);
+  }
+
+  .page[data-trip-library-page] .draftImage {
+    min-height: 0;
+  }
+
+  .page[data-trip-library-page] .draftBody {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .page[data-trip-library-page] .draftCard:not(:first-child) .draftBody {
+    padding: 8px 10px;
+  }
+
+  .page[data-trip-library-page] .draftCard:not(:first-child) .draftChip {
+    margin-bottom: 3px;
+  }
+
+  .page[data-trip-library-page] .draftBody h3 {
+    font-size: 1rem;
+  }
+
+  .page[data-trip-library-page] .draftBody > p {
+    margin-top: 5px;
+    font-size: 0.7rem;
+  }
+
+  .page[data-trip-library-page] .draftCard:not(:first-child) .draftBody > p {
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .page[data-trip-library-page] .cardActions {
+    margin-top: auto;
+  }
+
+  .page[data-trip-library-page] .cardActions > * {
+    min-height: 34px;
+    padding: 6px 11px;
+    font-size: 0.72rem;
+  }
+
+  .page[data-trip-library-page] .draftCard:not(:first-child) .cardActions > * {
+    min-height: 30px;
+    padding: 4px 8px;
+    font-size: 0.67rem;
+  }
+
+  .page[data-trip-library-page] .timeline {
+    display: grid;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: clamp(270px, 42vh, 340px);
+    gap: 10px;
+  }
+
+  .page[data-trip-library-page] .yearGroup {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .page[data-trip-library-page] .yearGroup > h3 {
+    position: static;
+    padding-top: 0;
+    font-size: 1rem;
+  }
+
+  .page[data-trip-library-page] .historyGrid,
+  .page[data-trip-library-page] .historyCard {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .page[data-trip-library-page] .historyCard {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(86px, 43%) minmax(0, 1fr);
+    border-radius: 16px;
+  }
+
+  .page[data-trip-library-page] .historyImage {
+    min-height: 0;
+  }
+
+  .page[data-trip-library-page] .historyCard > div:last-child {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .page[data-trip-library-page] .historyCard h4 {
+    margin: 2px 0 5px;
+    font-size: 0.92rem;
+  }
+
+  .page[data-trip-library-page] .historyCard p {
+    font-size: 0.67rem;
+  }
+
+  .page[data-trip-library-page] .historyActions {
+    margin-top: auto;
+  }
+
+  .page[data-trip-library-page] .historyActions button {
+    min-height: 30px;
+    padding: 5px 9px;
+    font-size: 0.68rem;
+  }
+
+  .page[data-trip-library-page]
+    .librarySection[data-library-section="favorites"] {
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+
+  .page[data-trip-library-page] .filterChips {
+    gap: 6px;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  .page[data-trip-library-page] .filterChips button {
+    min-height: 34px;
+    flex: 1;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .page[data-trip-library-page] .favoriteGrid {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .page[data-trip-library-page] .favoriteCard {
+    display: grid;
+    height: 100%;
+    min-height: 0;
+    grid-template-rows: minmax(70px, 42%) minmax(0, 1fr);
+    border-radius: 16px;
+  }
+
+  .page[data-trip-library-page] .favoriteImage {
+    min-height: 0;
+  }
+
+  .page[data-trip-library-page] .favoriteBody {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    padding: 8px 10px;
+  }
+
+  .page[data-trip-library-page] .favoriteBody h3 {
+    margin-top: 1px;
+    font-size: 0.85rem;
+  }
+
+  .page[data-trip-library-page] .favoriteBody > p {
+    margin-top: 2px;
+    overflow: hidden;
+    font-size: 0.65rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .page[data-trip-library-page] .favoriteActions {
+    flex-wrap: nowrap;
+    gap: 4px;
+    margin-top: auto;
+  }
+
+  .page[data-trip-library-page] .favoriteActions button {
+    min-height: 28px;
+    padding: 4px 7px;
+    font-size: 0.65rem;
+  }
+
+  .page[data-trip-library-page] .favoriteActions .removeFavorite {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 780px) {
+  .page[data-trip-library-page]
+    .librarySection[data-library-section="active"]
+    .tripCardBody
+    > .primaryButton {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .pageHeader > div:first-child {
+    padding-left: 42px;
+  }
+
+  .titleFlower {
+    left: 2px;
+    width: 28px;
+    font-size: 30px;
+    text-shadow: 0 3px 10px rgb(224 116 131 / 18%);
   }
 }
