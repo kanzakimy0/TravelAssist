@@ -3,10 +3,10 @@
 ## TASK-012-A 响应式密度补修（2026-09-06）
 
 - Issue：#135；Owner：A；WBS：1.5 / 1.6 / 1.7 / 4.1 / 4.8 / 4.14（既有 Planner UI 补修）。
-- 状态：进行中；历史 TASK-012-A / #111 / PR #124 的已合并状态不变。
+- 状态：待审查；历史 TASK-012-A / #111 / PR #124 的已合并状态不变。
 - 基线：`c88d3381685615fcd0e1dd9e3217bd871e50c2ac`；分支：`codex/planner-responsive-density` → `develop`。
 - 范围：实际 25dvh 贴边底栏、移除顶部 Day summary、响应式内容、紧凑日期菜单、图层控件、快速设置与全宽详情入口、搜索边界及右侧渐变；推荐方案冻结，无业务/API 扩展。
-- Task / Result：`docs/tasks/RESULT-TASK-012-a-responsive-density-followup.md`；Commit / Draft PR：PENDING；不自动合并。
+- Task / Result：`docs/tasks/RESULT-TASK-012-a-responsive-density-followup.md`；实现 `660af61`，集成验收 `bcc898f`（同步最新 develop `4161a8a`）；170 tests / lint / typecheck / build、九视口双地图几何及截图、六视口 Detail 回归通过；Draft PR：PENDING；不自动合并。
 
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 

@@ -7,7 +7,7 @@
 - GitHub Issue: [#135](https://github.com/kanzakimy0/TravelAssist/issues/135)。
 - Branch: `codex/planner-responsive-density` → `develop`。
 - Initial Base: `c88d3381685615fcd0e1dd9e3217bd871e50c2ac`。
-- Commit / Draft PR: PENDING。
+- Implementation Commit: `660af61`；Integrated Validation Commit: `bcc898f2edda6f1b0822e7ed3162ecd55927637f`（无冲突集成最新 develop `4161a8a`，保留新的 Personal Center 成果）。Draft PR: PENDING。
 - 来源：用户本轮逐项布局反馈及 Issue #135；这是已合并 TASK-012-A 的独立补修，不重写 #111 / PR #124 的历史验收结论。
 
 ## Implemented / Updated Visual Contract
@@ -33,7 +33,7 @@
 
 - npm ci：通过，362 packages，0 vulnerabilities；npm 有既有 ESLint 生命周期及 install-script 审批提示，未改配置。
 - lint / typecheck / build / git diff --check：通过。
-- npm run test --if-present：无 test script；另显式运行全部 Node tests，当前 168/168 通过，包含 3 项新增布局契约测试。
+- npm run test --if-present：无 test script；另显式运行全部 Node tests，初轮 168/168，集成最新 develop 后 170/170 通过，包含 3 项本补修新增布局契约测试。
 - format：修改的代码、测试及新文档单独通过；全仓 format:check 有 25 项未修改的基线异常，不表示全仓格式通过，不批量格式化历史文档。
 - 2560×1440 / 1920×1080 / 1600×900 / 1440×900 / 1280×800 / 1180×800 / 1024×768 / 390×844 / 320×740：真实 Mapbox + forced fallback 的控件、六 Tab、宽高和推荐卡对比通过。
 - 生产预览另跑九视口真实地图尺寸/截图检查，并复用 TASK-012 六视口测试验证设置与 Planner → Detail 实际 Mapbox canvas 未重建；双引擎交互回归通过。
