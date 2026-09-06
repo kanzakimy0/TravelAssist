@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成；Issue #128 保持 Open，WBS 5.8 与 Task 保持待审查 / 待验收。
+Completed / 用户验收通过。实现 PR #133 与验收修正 PR #134 均已合入 `develop`；Issue #128 已关闭，WBS 5.8 与 Task 已完成。用户确认不足项后续再以独立 follow-up 处理。
 
 ## Preflight
 
@@ -14,15 +14,17 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 
 ## Tracking
 
-- Issue: `#128`，Open
+- Issue: `#128`，Closed
 - Task File: `docs/tasks/TASK-WBS-5.8-b-attraction-activity-preference-ui.md`
 - Result File: `docs/tasks/RESULT-WBS-5.8-b-attraction-activity-preference-ui.md`
-- Branch: `feature/b-account-wbs-5-8-attraction-activity-preference-ui`
+- Branch: `feature/b-account-wbs-5-8-attraction-activity-preference-ui`（实现）；`fix/wbs-5-8-attraction-detail-preferences`（验收修正）
 - Implementation Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`
-- Final Head: `PENDING`（本 Result 所在 tracking commit 完成后由分支 head 确认）
-- PR: `PENDING`
-- Merge Commit: `PENDING`
-- WBS updated: 5.8 = `待审查`；Task = `待验收`
+- Acceptance Fix Commits: `e346935cbfaca13cafecf12927fcba1db3e75015`、`4666db3a8fd3d6358a2547fe0adc72ae2644df51`
+- Final Accepted Head: `4666db3a8fd3d6358a2547fe0adc72ae2644df51`
+- PR: `#133`（实现）、`#134`（验收修正），均已合入 `develop`
+- Merge Commit: `c88d3381685615fcd0e1dd9e3217bd871e50c2ac`（实现）、`29a9528f5bafc8f15cf6bf49eb65b2737516ab3c`（验收修正）
+- WBS updated: 5.8 = `已完成`；Task = `已完成`
+- User Acceptance: `2026-09-06 验收通过`
 
 ## Attraction / Activity UI
 
@@ -32,6 +34,7 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 - quick preference levels: 很喜欢 / 喜欢 / 一般 / 不喜欢；内部 `unset` 与 `dislike` 独立
 - photo experience: 已实现“旅行中希望主动安排拍照体验”开关与冻结说明
 - candidate future controls added: 否；仅说明未冻结细分类和 Trip / POI 优先级不在本页保存
+- A/B hierarchy alignment: 已按照“大项目摘要 → 中项目快速设置 → 小项目详细设置”提供三个真实页内导航目标；设置边界并入小项目，不形成第四个业务层级
 
 ## State Boundary
 
@@ -83,10 +86,10 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 - format:check: 最新 develop 的历史 baseline 仍有 25 个非本 Task 文件未格式化；仅记录，未越界修改
 - targeted format: 当前 Task 源码、路由、测试与 Task 文件通过
 - tests-if-present: 通过（仓库未定义 test script，命令正常退出）
-- Node tests: 165 / 165 通过；其中 WBS-5.8-B 26 项
+- Node tests: 167 / 167 通过；其中 WBS-5.8-B 28 项
 - build: 通过；`/personal-center/preferences/attractions` SSG 成功
 - diff-check: 通过
-- browser QA: 通过；五尺寸、六维 / 四等级、摘要、拍照 toggle、Save / Cancel / Restore、dirty guard、回归、无新增 404、无 React / hydration / blocking console error、Save 无网络写请求
+- browser QA: 通过；五尺寸、三级菜单真实点击 / 滚动定位、六维 / 四等级、摘要、拍照 toggle、Save / Cancel / Restore、dirty guard、回归、无新增 404、无 React / hydration / blocking console error、Save 无网络写请求
 
 ## Ownership Safety
 
@@ -101,13 +104,13 @@ Completed / 待用户验收。实现、自动化验证与浏览器 QA 已完成�
 
 ## Git
 
-- Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`（implementation）；`6c4e129`（初始 Result）；`da4cfd7`（runtime 基线整合）；`53dce26`（最终 docs-only 同步）
-- Push: `PENDING`
-- PR: `PENDING`
-- Merge behavior: 不主动开启 auto-merge；仓库现有 feature workflow 可能在 push 后自动创建并合入
-- latest origin/develop: `d5b22ddc5ff26f0205146b3d63607c66c5c7ef51`；已由 merge commit `53dce26f2ec0e51667830dbf05c4fa0b1ad92ffb` 整合；其相对已复验 runtime 基线仅新增 TASK-012 docs/QA closeout
-- unpushed commits: push 前为 implementation + tracking；push 后由最终 Result 核对
-- tracked working tree: tracking commit 后核对
+- Commit: `1c8effd2d8556fbb8b5136afe410d7925100e5b1`（implementation）；`681b600`（implementation final head）；`e346935` / `4666db3`（验收修正）
+- Push: 成功
+- PR: `#133` 与 `#134` 均已合入 `develop`
+- Merge behavior: 实现分支由仓库自动化建立并合入 PR #133；验收修正使用不触发 `feature/**` 规则的独立 fix 分支，并在用户验收后正常合入 PR #134；无 force push / rebase / squash
+- latest origin/develop: `29a9528f5bafc8f15cf6bf49eb65b2737516ab3c`，包含最终验收修正
+- unpushed commits: 无
+- tracked working tree: clean（仅保留三项受保护 untracked 文件）
 - preserved untracked files: `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py`
 
 ## Problems
