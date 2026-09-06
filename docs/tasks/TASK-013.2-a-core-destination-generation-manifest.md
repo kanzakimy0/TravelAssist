@@ -6,8 +6,8 @@
 - Owner：`A`
 - Responsibility：`Shared Asset Content Planning`
 - Priority：`P1`
-- Status：`待开始（前置阻塞）`
-- WBS：预定 `2.15`；若已占用则使用下一个可用工程基础 ID
+- Status：`阻塞（2026-09-07：父任务实现与验收缺失）`
+- WBS：`2.15`（阻塞；已核对未占用）
 - GitHub Issue：`#152`
 - Branch：`feature/a-core-destination-generation-manifest`
 - Branch Base at Creation：`develop@0317b7ce755f201b8e5c40d9498a30f2c72f1a56`
@@ -19,6 +19,8 @@
 - Codex Command：`docs/tasks/CODEX-TASK-013.2-a-generation-manifest-command.md`
 - Result：`docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`
 - PR：完成后创建 Draft PR → `develop`
+
+执行审计：`origin/develop@efd4661867b239ef2f87a417b95fc7dab856822f`；#112 / #116 均 Open，仅规格文档 PR 已合并。父 Result、Registry、Profile、Variant 与夜间流水线不存在。仅记录 Blocked，不生成生产单或创建实现 PR；完整证据见本 Task Result。
 
 ---
 

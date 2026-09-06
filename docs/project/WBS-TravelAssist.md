@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-013.2-A 前置阻塞审计（2026-09-07）
+
+- WBS 2.15 / Issue #152 / Branch `feature/a-core-destination-generation-manifest`：阻塞。actual develop `efd4661867b239ef2f87a417b95fc7dab856822f`。
+- #112 / #116 Open；仅父任务规格 PR #113–#115 / #118–#120 已合并。父 Result、Asset Registry、尺寸 Profile、Variant Registry、夜间流水线及父 WBS 已完成记录均缺失。
+- Seed 300 / S100 / A200 / quota9000；批次 CSV 40 / max10 / max420 / variants9600 只读验证通过。没有生成 Manifest / Jobs / Batch JSON，未开始实现。
+- Result：`docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`。仅文档记录提交，SHA 见 Issue #152；不创建实现 PR，不自动合并，不轮询等待。
+
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 
 - Merge closeout：用户明确授权后，PR #108 已合入 develop，merge `f105253b1f700f67fd97d8c9eb03a9c85000d699`；Issue #79 Closed。最终基线 `e052d93`，验收 head `a4306e2`，合并树相同；123 tests / 76 Logo QA / lint / typecheck / build / diff-check 复验通过。全仓格式 27 项均为核实过的基线异常（原 26 项加 TASK-WBS-5.8 文档）。下方历史基线记录保留，最新状态以本条为准。手机 Detail 返回入口仍是上游范围外缺口。
@@ -249,6 +256,7 @@ src/db/
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-013.2-A | 2.15 | A | 阻塞（#112 / #116 实现及验收缺失） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | 仅 Blocked 文档；SHA 见 Issue #152 | 不创建实现 PR |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -347,6 +355,7 @@ src/db/
 | 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
+| 2.15 | 全球核心目的地素材生成单（300目的地 / 9,000景点） | A | P1 | 2.13,2.14 | 阻塞 |
 
 ## 3. 网站入口与主系统 Shell（A）
 
