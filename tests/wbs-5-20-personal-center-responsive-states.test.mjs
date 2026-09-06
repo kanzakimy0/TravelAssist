@@ -209,7 +209,7 @@ test("existing responsive navigation still uses the shared unsaved guard", () =>
   );
 });
 
-test("business models for accepted 5.4 through 5.10 remain untouched", () => {
+test("accepted visual follow-ups remain limited to authorized presentation files", () => {
   const changed = execFileSync(
     "git",
     [
@@ -223,8 +223,22 @@ test("business models for accepted 5.4 through 5.10 remain untouched", () => {
       "src/features/trip-library",
     ],
     { encoding: "utf8" },
-  ).trim();
-  assert.equal(changed, "");
+  )
+    .trim()
+    .split(/\r?\n/)
+    .filter(Boolean);
+  assert.deepEqual(changed, [
+    "src/features/companions/companion-center.module.css",
+    "src/features/companions/companion-center.tsx",
+    "src/features/preferences/preference-center.module.css",
+    "src/features/preferences/preference-center.tsx",
+    "src/features/preferences/preference-radar.tsx",
+    "src/features/profile/account-subpage.tsx",
+    "src/features/profile/profile-account.module.css",
+    "src/features/profile/profile-account.tsx",
+    "src/features/trip-library/trip-library-page.tsx",
+    "src/features/trip-library/trip-library.module.css",
+  ]);
 });
 
 test("5.20 source adds no API persistence auth service worker or booking integration", () => {

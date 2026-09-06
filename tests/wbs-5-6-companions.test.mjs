@@ -203,8 +203,12 @@ test("Trip snapshots are isolated copies and never write back to long-term state
 
 test("runtime stays page-scoped and mock-only", () => {
   const center = read("src/features/companions/companion-center.tsx");
+  const styles = read("src/features/companions/companion-center.module.css");
   const route = read("src/app/(account)/personal-center/companions/page.tsx");
   assert.doesNotMatch(route, /PersonalPlaceholder/);
+  assert.match(center, /data-companion-page/);
+  assert.match(center, /className=\{styles\.addCompanionCard\}/);
+  assert.match(styles, /grid-template-columns: repeat\(5, minmax\(0, 1fr\)\)/);
   assert.match(center, /usePersonalNavigationGuard/);
   assert.match(center, /beforeunload|setIsDirty/);
   assert.match(center, /恢复默认头像/);

@@ -9,7 +9,9 @@ if (!playwrightPath) throw new Error("CODEX_PLAYWRIGHT_PATH is required");
 const { chromium } = require(playwrightPath);
 
 const baseUrl = process.env.WBS_BASE_URL ?? "http://localhost:3000";
-const evidenceDir = path.resolve("docs/evidence/WBS-5.5-B/preferences");
+const evidenceDir = path.resolve(
+  process.env.WBS_EVIDENCE_DIR ?? "docs/evidence/WBS-5.5-B/preferences",
+);
 await mkdir(evidenceDir, { recursive: true });
 
 const viewports = [
@@ -79,10 +81,46 @@ try {
       .waitFor();
     assert.equal(await page.locator('svg[role="img"]').count(), 2);
     assert.equal(
-      await page.locator('a[href^="/personal-center/preferences/"]').count(),
-      7,
+      await page
+        .locator(
+          '[aria-labelledby="category-title"] a[href^="/personal-center/preferences/"]',
+        )
+        .count(),
+      6,
     );
     await assertNoOverflow(page, label);
+
+    if (
+      (width === 1920 && height === 1080) ||
+      (width === 1440 && height === 900)
+    ) {
+      const overviewLayout = await page.evaluate(() => {
+        const content = document.querySelector("#personal-content");
+        const actions = document.querySelector('[aria-label="偏好管理操作"]');
+        const actionRect = actions?.getBoundingClientRect();
+        const radarLabels = [...document.querySelectorAll("svg text")].map(
+          (element) => getComputedStyle(element),
+        );
+        return {
+          contentOverflow:
+            (content?.scrollHeight ?? 0) - (content?.clientHeight ?? 0),
+          actionsBottom: actionRect?.bottom ?? Number.POSITIVE_INFINITY,
+          labelMinimumSize: Math.min(
+            ...radarLabels.map((style) => Number.parseFloat(style.fontSize)),
+          ),
+          labelsDark: radarLabels.every(
+            (style) => style.fill === "rgb(63, 57, 53)",
+          ),
+        };
+      });
+      assert.ok(
+        overviewLayout.contentOverflow <= 1,
+        `${label} should fit the complete overview without inner scrolling`,
+      );
+      assert.ok(overviewLayout.actionsBottom <= height);
+      assert.ok(overviewLayout.labelMinimumSize >= 14);
+      assert.equal(overviewLayout.labelsDark, true);
+    }
 
     const mainImages = page.locator("main img");
     for (let index = 0; index < (await mainImages.count()); index += 1) {
@@ -171,11 +209,12 @@ try {
   });
 
   await page.reload({ waitUntil: "networkidle" });
-  await page.getByRole("link", { name: /移动/ }).click();
-  await page.getByRole("heading", { name: "移动", exact: true }).waitFor();
   await page
-    .getByText("铁路优先 · 少换乘 · 步行中等", { exact: true })
-    .waitFor();
+    .locator('a[href="/personal-center/preferences/mobility"]')
+    .first()
+    .click();
+  await page.getByRole("heading", { name: "移动偏好", exact: true }).waitFor();
+  await page.getByText("平衡 · 少换乘 · 少步行", { exact: true }).waitFor();
   await page.getByRole("link", { name: "返回旅行偏好" }).click();
   await page.getByRole("heading", { name: "旅行偏好", exact: true }).waitFor();
 
