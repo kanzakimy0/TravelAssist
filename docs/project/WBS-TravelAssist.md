@@ -268,7 +268,7 @@ src/db/
 | WBS-5.5-B | 5.5 | B | 已完成（用户验收通过） | #105 | `docs/tasks/TASK-WBS-5.5-b-preference-center-ui.md` | `feature/b-account-wbs-5-5-preference-center-ui` | `7484faf`（实现），`2acafe63`（合并） | [#109](https://github.com/kanzakimy0/TravelAssist/pull/109) 已合入 develop |
 | WBS-5.6-B | 5.6 | B | 已完成（用户验收通过） | #107 | `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md` | `feature/b-account-wbs-5-6-companion-management-ui` | `ff9c933`（实现），`ff66aec1`（合并） | [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) 已合入 develop |
 | WBS-5.7-B | 5.7 | B | 已完成（用户验收通过） | #123 | `docs/tasks/TASK-WBS-5.7-b-mobility-preference-ui.md` | `feature/b-account-wbs-5-7-mobility-preference-ui`；`fix/wbs-5-7-checkbox-focus-scroll` | `ab79697`（实现），`ddf0aba`（验收修复），`8b83628` / `cabb487`（合并） | [#125](https://github.com/kanzakimy0/TravelAssist/pull/125) 实现、[#126](https://github.com/kanzakimy0/TravelAssist/pull/126) 验收修复，均已合入 develop |
-| WBS-5.8-B | 5.8 | B | 已完成（用户验收通过） | #128 | `docs/tasks/TASK-WBS-5.8-b-attraction-activity-preference-ui.md` | `feature/b-account-wbs-5-8-attraction-activity-preference-ui`；`fix/wbs-5-8-checkbox-focus-scroll` | `1c8effd`（实现），`4666db3`（验收修正），`c88d338` / `29a9528`（合并） | [#133](https://github.com/kanzakimy0/TravelAssist/pull/133) 实现、[#134](https://github.com/kanzakimy0/TravelAssist/pull/134) 验收修正，均已合入 develop |
+| WBS-5.8-B | 5.8 | B | 已完成（用户验收通过） | #128 | `docs/tasks/TASK-WBS-5.8-b-attraction-activity-preference-ui.md` | `feature/b-account-wbs-5-8-attraction-activity-preference-ui`；`fix/wbs-5-8-attraction-detail-preferences` | `1c8effd`（实现），`4666db3`（验收修正），`c88d338` / `29a9528`（合并） | [#133](https://github.com/kanzakimy0/TravelAssist/pull/133) 实现、[#134](https://github.com/kanzakimy0/TravelAssist/pull/134) 验收修正，均已合入 develop |
 | WBS-5.9-B | 5.9 | B | 已完成（用户验收通过；问题后续独立修正） | #138 | `docs/tasks/TASK-WBS-5.9-b-dining-accommodation-budget-ui.md` | `feature/b-account-wbs-5-9-dining-accommodation-budget-ui` | `060289f`（实现），`3abde3d`（合并） | [#140](https://github.com/kanzakimy0/TravelAssist/pull/140) 已合入 develop |
 | WBS-5.10-B | 5.10 | B | 已完成（用户验收通过） | #143 | `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md` | `feature/b-account-wbs-5-10-trip-library-ui` | `e40141e`（实现），`9b58bb7`（Result），`5ad23e4`（合并） | [#144](https://github.com/kanzakimy0/TravelAssist/pull/144) 已合入 develop；Issue #143 已关闭 |
 | WBS-5.20-B | 5.20 | B | 已完成（用户验收通过） | #146 | `docs/tasks/TASK-WBS-5.20-b-personal-center-responsive-states.md` | `feature/b-account-wbs-5-20-personal-center-responsive-states` | `d50d1f5`（实现），`24a273a`（Result），`8e04632`（合并） | [#147](https://github.com/kanzakimy0/TravelAssist/pull/147) 已合入 develop；Issue #146 已关闭 |
@@ -417,7 +417,7 @@ src/db/
 ### 5B. Personal Center Data / API
 
 | WBS ID | 工作项                               | 负责人 | 优先级 | 依赖      | 状态   |
-| ------ | ------------------------------------ | ------ | --------- | ------ |
+| ------ | ------------------------------------ | ------ | ------ | --------- | ------ |
 | 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 未开始 |
 | 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 未开始 |
 | 5.13   | Preference Preset / 默认值           | B      | P1     | 5.11      | 未开始 |
