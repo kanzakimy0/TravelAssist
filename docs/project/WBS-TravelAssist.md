@@ -1,5 +1,9 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-013-A 合并验收收尾（2026-09-07）
+
+用户明确授权“合并后执行”TASK-013.1。父任务 PR #166 已合入 develop，merge `aee2eaec3ac841395de1737a3042a112ad6fa6ea`；与验收 head `34928c57cd4f0b3cc80bb27e93701b11021fb181` 文件树完全相同。assets:validate / 44 项专项测试合并前再次通过；原 267 tests、lint/typecheck/build、69 SVG 浏览器验证有效。2.13 / TASK-013-A 已完成；Issue #112 同步最终验收。下方初次交付记录保留为历史，当前状态以本条和追踪表为准。013.1 尚需单独执行，不提前标记其完成。
+
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 
 - Merge closeout：用户明确授权后，PR #108 已合入 develop，merge `f105253b1f700f67fd97d8c9eb03a9c85000d699`；Issue #79 Closed。最终基线 `e052d93`，验收 head `a4306e2`，合并树相同；123 tests / 76 Logo QA / lint / typecheck / build / diff-check 复验通过。全仓格式 27 项均为核实过的基线异常（原 26 项加 TASK-WBS-5.8 文档）。下方历史基线记录保留，最新状态以本条为准。手机 Detail 返回入口仍是上游范围外缺口。
@@ -251,7 +255,7 @@ src/db/
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-013-A | 2.13 | A | 待审查 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166)（Draft → develop） |
+| TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -353,7 +357,7 @@ src/db/
 | 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
-| 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 待审查 |
+| 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
 
 ## 3. 网站入口与主系统 Shell（A）
 
