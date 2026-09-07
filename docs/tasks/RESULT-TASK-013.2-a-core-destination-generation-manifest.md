@@ -2,144 +2,196 @@
 
 ## Status
 
-Blocked
+**Blocked** — TASK-013.1-A / PR #172 is still Open / Draft / unmerged and has
+not completed final acceptance in develop. No production manifest implementation.
 
-2026-09-08 JST 范围修正完成，但实现前置仍未满足。`TASK-013.1-A` 的 PR #172 当前仍为 Open / Draft / unmerged，因此本 Task 不进入 9,000 景点 Manifest 实现。
-
----
-
-## Scope Correction
-
-旧版 TASK-013.2-A 错误地定义为“全球核心目的地素材生成单”。该范围已于 2026-09-08 废止并改为 **Japan-only**。
-
-已修正：
-
-- Task 标题与范围 → 日本国内；
-- Design → 日本国内；
-- Codex command → 日本国内；
-- Seed → 300 个目的地全部改为日本；
-- Batch → 40 批全部改为 `JP-*`；
-- 强制增加 47 都道府县覆盖验证；
-- 强制禁止 non-JP country、non-`jp-` destination ID、non-`JP-` batch ID；
-- 海外扩展推迟到未来独立 Task。
-
----
+Checked on 2026-09-08 JST. Only the current **Japan-only** specification is valid;
+the old international seed/batch scope is revoked and was not restored.
 
 ## Prerequisites
 
-当前已确认：
+Actual origin/develop: `e98a715a11e4a4ee9bdc196854558a5a02b1753c`.
 
-- `TASK-013-A` 已由父任务链记录为已接受；
-- `TASK-013.1-A` / Issue #116 尚未最终完成；
-- PR #172：Open / Draft / unmerged；
-- 因此 TASK-013.2-A 继续 Blocked。
+| Requirement                                                        | Observed result                                                                                                       |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| TASK-013-A / #112 merged and accepted                              | PASS: #112 Closed/completed; PR #166 merge `aee2eaec3ac841395de1737a3042a112ad6fa6ea`; Result/WBS closeout in develop |
+| Asset Manifest / Registry / rights rules                           | PASS: manifest, src/data/assets registry and asset-library-strategy present                                           |
+| WBS 2.13 complete                                                  | PASS                                                                                                                  |
+| TASK-013.1-A / #116 merged and accepted                            | FAIL: #116 Open; PR #172 Open / Draft / unmerged                                                                      |
+| Parent head included in develop                                    | FAIL: `7fad82b4bf3ea294395a7377c9817d1e38657de2` is not a develop ancestor                                            |
+| Size Profile / Variant Registry / nightly pipeline / parent Result | FAIL: required implementation files absent from develop                                                               |
+| WBS 2.14 complete                                                  | FAIL: no completed 2.14 row in develop; parent PR reports 待审查                                                      |
 
-不轮询、不等待、不猜测父任务 Schema、不创建实现 PR。
+Missing from develop:
 
----
+- `docs/assets/catalog/asset-size-profiles.v1.json`
+- `docs/assets/catalog/asset-variants.v1.json`
+- `src/data/assets/asset-variants.ts`
+- `tools/assets/run-assets-nightly.mjs`
+- `docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`
 
-## Japan-only Seed Validation
+A design document such as asset-variant-sizing-spec is not the missing executable
+profile/registry. Parent PR's test evidence is not merged/final acceptance.
 
-修正后的冻结目标：
+## Tracking
 
-```text
-destinations = 300
-unique destination IDs = 300
-country_code JP = 300
-non-JP = 0
-destination IDs with jp- prefix = 300
-S = 100
-A = 200
-S quota = 40
-A quota = 25
-attraction quota total = 9,000
-```
+- Issue: [#152](https://github.com/kanzakimy0/TravelAssist/issues/152), Open / Blocked.
+- Parents: [#112](https://github.com/kanzakimy0/TravelAssist/issues/112) and [#116](https://github.com/kanzakimy0/TravelAssist/issues/116).
+- Blocking PR: [#172](https://github.com/kanzakimy0/TravelAssist/pull/172), Open / Draft / unmerged.
+- Branch: `feature/a-core-destination-generation-manifest`.
+- Remote Japan-only specification head: `d587415`; existing clean task worktree
+  safely fast-forwarded to it before updating this record.
+- WBS: 2.15 — 日本国内核心目的地素材生成单（300目的地 / 9,000景点）.
+- This is blocked documentation, not implementation or acceptance.
 
-旧 Seed 中韩国、中国、东南亚、欧洲、美洲、中东、大洋洲目的地已从该 Seed 删除。
+## Conflict Audit
 
----
+- Existing task worktree was clean; other dirty Planner worktrees and live preview untouched.
+- No merging/cherry-picking parent implementation, guessed schema or package-lock changes.
+- This branch's old WBS snapshot is not used to infer current parent acceptance;
+  actual origin/develop and GitHub states above are authoritative.
+- Only this Task's Result, blocked metadata and WBS 2.15 tracking updated.
+- No force push, reset, clean, image download, generated binaries or implementation PR.
 
-## Batch Validation
+## Japan-only Audit
 
-修正后的批次：
+Read the complete latest remote Codex command, Task, design, 300-row Seed and
+40-row Batch CSV. Existing remote Japan-only corrections preserved byte-for-byte.
 
-```text
-JP-S-01 .. JP-S-10 = 10 batches
-JP-A-01 .. JP-A-30 = 30 batches
-total = 40 batches
-```
+Read-only input assertions:
 
-总量：
+| Assertion            | Observed |
+| -------------------- | -------: |
+| JP country rows      |      300 |
+| non-JP rows          |        0 |
+| jp-* destination IDs |      300 |
+| JP-* batch IDs       |       40 |
+| Invalid region codes |        0 |
 
-```text
-destinations = 300
-attractions = 9,000
-city variants = 600
-attraction variants = 9,000
-expected variants = 9,600
-max destinations per batch = 10
-max expected variants per batch = 420
-```
+These are **input syntax/count checks**, not completed geographic entity or
+prefecture enrichment. No country codes/names were relabeled to disguise overseas
+entities. No old overseas data was restored.
 
-旧全球批次 ID 已废止。
+## Seed Validation
 
----
+Read-only CSV checks: 300 rows / 300 unique IDs; S=100, A=200; all S quotas 40,
+all A quotas 25; attraction quota total=9,000. Eight allowed region codes only.
+Seed unchanged in this execution.
 
 ## Prefecture Coverage
 
-实现阶段必须在 Destination Manifest 中加入：
+**Not verified.** Input Seed has no prefecture fields; no mapping or coverage
+report was generated because the prerequisite gate failed.
 
-```text
-prefecture_code
-prefecture_name_ja
-prefecture_name_en
-coverage_note
-```
+`prefecture_count` and `missing_prefectures`: unknown/not evaluated, **not**
+claimed as 47/0. Required future acceptance remains 47 covered / 0 missing.
 
-并生成：
+## Batch Validation
 
-```text
-docs/assets/generated/prefecture-coverage.md
-```
+Read-only CSV checks: 40 unique JP batches, ordered 1..40; JP-S-01..JP-S-10 and
+JP-A-01..JP-A-30. Seed membership matches every batch's destination/quota totals.
 
-验收条件：
+- Destinations: 300; attractions: 9,000.
+- Planned city variants: 600; attraction variants: 9,000; total: 9,600.
+- Maximum destinations per batch: 10; maximum base outputs per batch: 420.
+- No batch JSON built. Execution order follows latest Japan-only CSV, not the
+  superseded international version.
 
-```text
-prefecture_count = 47
-missing_prefectures = 0
-```
+## Destination Manifest
 
----
+Not generated. Target remains 300 verified Japanese destinations with prefecture
+fields; no names, coordinates or provider IDs fabricated.
 
-## Files Updated in Scope Correction
+## Attraction Manifest
 
-```text
-docs/assets/catalog/core-destination-generation-seed.v1.csv
-docs/assets/catalog/core-destination-generation-batches.v1.csv
-docs/assets/core-destination-generation-plan.md
-docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md
-docs/tasks/CODEX-TASK-013.2-a-generation-manifest-command.md
-docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md
-```
+Not generated, including unresolved slots. Target remains 9,000 Japanese
+entities or explicitly unresolved slots after prerequisites pass.
 
-Issue #152 同步改为 Japan-only。
+## Source Jobs
 
----
+Not generated. Actual new jobs: 0; future target: 9,300.
 
-## Next Executable Condition
+## Variant Matrix
 
-只有 `TASK-013.1-A` 合并到 `develop` 且最终验收通过后，才重新执行 TASK-013.2-A。
+Not generated. Actual new expectations: 0; future target: 9,600
+(md=300, lg=300, sm=9,000).
 
-首次允许准备的 batch：
+## Prompts
 
-```text
-JP-S-01
-```
+Not generated; no AI/provider invocation. All five source modes and authenticity/
+rights requirements in the Japan-only specification remain mandatory.
 
-默认仍使用：
+## Cost / Storage
 
-```text
-RUN_MODE=manifest
-```
+No generation/acquisition requests or new image binaries. Provider budget and
+storage estimate not evaluated; not claiming free future production.
 
-不得直接批量生成或下载图片。
+## Reports
+
+Only this blocked Result updated. No generated coverage/unresolved/duplicate/
+rights/cost reports or production batch files created.
+
+## Validation
+
+- Remote fetch, complete instruction reads, Git ancestry/file-presence audit:
+  completed.
+- Read-only Seed/Batch counts and membership assertions: passed as reported.
+- Manifest build/validate, deterministic second build, asset pipeline tests,
+  npm ci, lint/typecheck/build: **not run**, because Task requires stopping before
+  implementation when a parent is unmerged.
+- Documentation formatting and diff checks run before commit.
+- No polling or waiting for parent merge; no bypass. Skipped automatic workflows
+  are not passing CI evidence.
+
+## Files Changed
+
+This execution only:
+
+- `docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`
+- `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md`
+- `docs/project/WBS-TravelAssist.md`
+
+The six upstream Japan-only scope-correction files were pulled, not reimplemented;
+Seed/Batch/Design/Codex command contents remain identical to `d587415`.
+
+## WBS Update
+
+2.15 remains **阻塞**; its current name is corrected to
+**日本国内核心目的地素材生成单（300目的地 / 9,000景点）**.
+The previous claim that #112 was missing is superseded by this audit: #112 is
+complete; #116 / PR #172 remains the blocker. No other Owner status is rewritten.
+
+## First Executable Batch
+
+None currently executable. After parent merge **and final acceptance**, the first
+permitted preparation is `JP-S-01`; normal task mode remains `RUN_MODE=manifest`.
+No `batch-prepare` or `batch-execute` performed.
+
+## Commit(s)
+
+Documentation-only TASK-013.2-A commit on the requested branch; exact final SHA
+is recorded in Issue #152 (avoids circular self-SHA in this file). Commit includes
+`[skip ci]` to skip push workflows. This alone does not protect against the
+repository's pull_request_target auto-merge workflow: existing PR #187 was also
+converted to Draft before pushing this documentation update.
+
+## Draft PR
+
+**No new PR created**, as required by the failed prerequisite gate. A pre-existing
+automation-created documentation PR [#187](https://github.com/kanzakimy0/TravelAssist/pull/187)
+was discovered Open / non-Draft / unmerged and converted to **Draft** to prevent
+automatic merging. It remains blocked documentation/scope corrections, not a
+completed implementation. No conflicts resolved or parent code integrated.
+PR #172 is the blocking parent.
+
+## Follow-ups
+
+Complete review, merge and final acceptance of TASK-013.1-A / #116 / PR #172;
+ensure profile, registry, nightly pipeline, Result and completed WBS 2.14 appear
+in develop. Then re-run the latest Japan-only TASK-013.2 command.
+
+## Known Limitations
+
+No manifest, source jobs, variants or batch JSON has been produced. Japan-only
+input counts do not establish 47-prefecture coverage, resolved entities or rights
+clearance. This run stops at Blocked; no automatic merge or subsequent task.

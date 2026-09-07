@@ -17,6 +17,7 @@
 - Design：`docs/assets/core-destination-generation-plan.md`
 - Codex Command：`docs/tasks/CODEX-TASK-013.2-a-generation-manifest-command.md`
 - Result：`docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`
+- Latest prerequisite audit：2026-09-08 JST；actual develop `e98a715a11e4a4ee9bdc196854558a5a02b1753c`；#112 已完成，#116 / PR #172 仍 Open / Draft / 未合并，保持 Blocked。只更新阻塞追踪，不生成 Manifest、不创建实现 PR；提交 SHA 见 Issue #152。
 
 > 2026-09-08 范围修正：旧版“全球核心目的地”定义无效。本 Task 从现在起只允许日本境内目的地。
 
