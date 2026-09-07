@@ -5,6 +5,7 @@ import type {
 } from "mapbox-gl";
 import type { FeatureCollection, LineString, Point, Polygon } from "geojson";
 import type { Coordinates, MapView } from "../model/trip-model";
+import { destinationArtwork } from "../data/planner-artwork";
 
 type Properties = Record<string, string | number | boolean>;
 export type Collection = FeatureCollection<
@@ -43,6 +44,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
           tripItemId: place.tripItemId ?? "",
           type: place.type,
           label: place.label,
+          artworkKey: destinationArtwork(place.name, place.type)?.id ?? "",
           color: place.color,
           recommended: place.tripStatus === "recommended",
           status: place.reservationStatus ?? "not_required",
@@ -123,6 +125,8 @@ export const plannerLayers: LayerSpecification[] = [
     layout: {
       "icon-image": [
         "case",
+        ["!=", ["get", "artworkKey"], ""],
+        ["concat", "editorial-", ["get", "artworkKey"]],
         [
           "any",
           ["in", "晴空塔", ["get", "label"]],

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 const { chromium } = createRequire(import.meta.url)(
   process.env.PLAYWRIGHT_MODULE || "playwright",
 );
@@ -8,8 +8,9 @@ const browser = await chromium.launch({
   executablePath: process.env.CHROME_EXE,
   headless: true,
 });
-const out = "docs/qa/TASK-012",
+const out = process.env.TASK_012_QA_OUT || "docs/qa/TASK-012",
   report = [];
+await mkdir(out, { recursive: true });
 const base = process.env.TASK_012_QA_URL || "http://127.0.0.1:3112";
 if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
   throw new Error("Local QA only");

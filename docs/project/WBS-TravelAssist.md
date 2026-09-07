@@ -1,5 +1,120 @@
 # TravelAssist 可记录 WBS（Master）
 
+## WBS 9.12 用户验收与合并收尾（2026-09-07）
+
+- 用户明确确认“验收通过”并随后授权合并；PR #184 已合入 develop，merge `89fd34aed29779ce15720d240727c7f65fd7b7bc`。
+- WBS 9.12 的响应式 / 可访问性 QA 范围已完成，状态更新为“已完成（用户验收通过）”；Issue #181 按任务约束保持 Open。
+- Firefox / WebKit 因当前环境无既有 runtime、Safari 因无真机而保留 Deferred，不将其写为 PASS；本收尾仅更新追踪文档，不扩大业务范围。
+- 不继续 5.11 / 5.12 / 8.2 / 8.3 / 5.3 / 5.16 / 5.17 / 9.5 / 9.6。
+
+## PR #139 用户授权合并收尾（2026-09-07）
+
+- 用户在冲突解决后明确授权“合并”；PR #139 已合入 develop，merge `1b14963962138f452ff53d8008934d372e677b21`。Issue #135 / TASK-012-A follow-up 当前授权补修范围已完成；下方 Draft、待审查、未合并说明均为阶段历史，不代表最新状态。
+- 最终验收 head `d0c3fd6ca28c2affd4702aacdaa2a753f8d06edf` 与 GitHub 合并提交的 Git tree 完全相同（`ab5e181374b2938b60611d49b65709f809de5eed`）；343 tests、lint / typecheck / build、素材校验及集成浏览器 smoke 结果适用于合并树。
+- 未把未接入的真实路线 / 预约 / AI / DB 或真实 Mapbox 令牌配置标为完成；4.14 等更大业务项保持原状态。31 份基线格式问题仍保留。
+- 交付 / 冲突 Result 已同步最终合并状态；仅做追踪文档收尾，不改业务代码，不继续后续 Task。
+
+## PR #139 冲突解决与 develop 同步（2026-09-07）
+
+- 用户授权“处理冲突”；将 `origin/develop` 的 `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031` 合入 `codex/planner-responsive-density`，合并提交 `ed86578a43096f0fd045f9cb19a1eb7c5d6ffffd`；保持 Draft PR #139，不合并 PR、不改 develop。
+- 唯一冲突为本文件顶部双方新增记录；完整保留 Planner / Detail 各阶段记录，以及 develop 的 WBS-0.9-B / TASK-013-A 收尾与后续追踪表更新，没有选择整份 ours / theirs 覆盖。
+- Planner / Start 业务代码与上传快照一致；个人中心 / 偏好 / 同行人 / 账户 / 旅行库 / 素材 Registry 和依赖清单与 develop 一致。
+- 集成验证：343 tests、lint / typecheck / build、assets:validate、冲突文件格式与相对 develop 的 diff check 通过。31 个全仓格式异常及六份上游文档的 Markdown 换行尾空格保持原样。浏览器确认 Planner → Detail → 返回推荐、个人旅行库 → 新建旅程 Step 3 正常，未见 console / hydration 错误。
+- 状态仍待验收 / 待审查；详细记录与已知限制见 `docs/tasks/RESULT-PR-139-develop-conflict-resolution.md`。下方快照阶段“冲突尚未处理”记录为历史，以本节为准。
+
+## 当前 Planner / Detail 内容统一打包交付（2026-09-07）
+
+- 用户授权将当前内容打包上传 GitHub；沿用 Issue #135、`codex/planner-responsive-density` 和 Draft PR #139 → develop，不自动合并。
+- 汇总此前所有本地修正：共享项目详情、浏览器保存、详情总览 / 预约演示、方案 / 备用景点与交通联动、快捷菜单、Step 手机适配、背景与五张 AI 插画、配套测试和历次 QA 证据。
+- 当前状态：待验收 / 待审查；770 个文件的快照提交 `28a1666012deb75e3ff5cc81c1d9412bc3da89ab` 已推送到 origin 同名分支。以下阶段记录的“未上传”属于当时历史状态，最新交付以 `docs/tasks/RESULT-planner-current-snapshot-2026-09-07.md` 为准。
+- lint / typecheck / build / 243 tests / 本次文件格式 / diff check 通过；全仓仍有 25 个未修改的基线格式问题。PR 与最新 develop 有冲突，本次只交付快照，未处理集成冲突，不标记 develop 已完成。
+
+## Planner 现有插画接入（2026-09-07，本地待审查）
+
+- 按用户授权接入 5 张已有 AI 插画：东京塔、晴空塔、浅草寺、富士山 / 河口湖、箱根 / 芦之湖。覆盖匹配地图标记、三方案缩略图与共享项目详情；保留 AI 标识与缺图 fallback，不替换无明确匹配的酒店、餐厅或其他景点。
+- 243 tests、lint / typecheck / build、本次文件格式与 diff check 通过；1280×720 浏览器验证图片加载、单日 / 全日、Planner / Detail 详情联动。预览仍缺 Mapbox Token，真实底图未浏览器实测，不将素材接入等同于底图恢复。
+- 3113 已重建并重启；未提交 / 推送 / 合并，不改变 TASK-013 系列或既有 Issue / PR 状态。Result：`docs/tasks/RESULT-planner-artwork-integration.md`。
+
+## 等大折叠卡与共享景点分栏追加（2026-09-06）
+
+- 最新覆盖：下方提醒 / 预约向上展开为主卡同宽同高，不移动邻卡或增高底栏；Planner / Detail 地图统一保留 2/3，右侧 1/3 景点详情，手机保留浮层。
+- 198 tests、lint / typecheck / build、两页五尺寸及保存保护回归通过。见 `docs/tasks/RESULT-shared-sight-panel.md`。3113 已更新；未提交 / 推送 / 合并，不改变正式任务状态。
+
+## Detail 紧凑行程栏与景点分栏追加（2026-09-06）
+
+- 覆盖下述三层常展开布局：底栏恢复 25dvh，卡宽缩为约 2/3，类别色区分；提醒 / 预约点击向上展开，无需预约及无可用渠道占位隐藏。
+- 桌面景点点击后原地图等分为地图 / 景点详情，保持同一 Map 生命周期；手机用详情浮层，图层栏恢复 Planner 同款纵向样式。
+- 198 tests、lint / typecheck / build 及五尺寸浏览器验收通过，保存保护回归通过。见 `docs/tasks/RESULT-detail-compact-board.md`。3113 已更新，未提交 / 推送 / 合并，不改变既有正式任务状态。
+
+## Detail 等宽三层执行卡片追加（2026-09-06）
+
+- 全部项目等距置于时间轴下，三层圆角方卡分别承载行程、提醒处理、预约；预约入列 / 手动确认 / 取消记录 / 消息草稿 / 受保护酒店替换已接入。仅详情展开栏加高，保留收起及返回 / 保存。
+- 194 tests、lint / typecheck / build 通过；五尺寸卡片与预约 / 保存恢复验收、四尺寸保存保护回归通过。见 `docs/tasks/RESULT-detail-itinerary-board.md`。3113 已更新，未提交 / 推送 / 合并。
+
+## Planner 快速设置深入菜单追加（2026-09-06）
+
+- 保留五卡二级设计；景点 / 餐饮 / 住宿深入菜单改为分组点选，分别仅留 2 / 1 / 1 项可选手动填写。草稿取消、Esc、应用和旧值保留；同行人数和日历不变。
+- 191 tests / lint / typecheck / build 通过，四尺寸菜单交互和五卡位置稳定性验证通过。Result：`docs/tasks/RESULT-planner-detail-choices.md`。3113 已更新，未提交 / 推送 / 合并，不改变既有 Issue / PR 状态。
+
+## Planner / Detail 旅景玻璃背景追加（2026-09-06）
+
+- 按用户图片复用现有高清樱花海岸富士山列车背景；外层面板与留白半透明、卡片维持高遮盖度，地图不替换为图片。范围仅共享 Planner / Detail 工作区。
+- 四尺寸前后截图与几何比较通过，推荐卡尺寸完全一致；真实 Mapbox 显示、fallback 下六 Tab / 加号 / 设置 / Detail 入口回归通过。187 tests / lint / typecheck / build / 本轮格式 / diff-check 通过。
+- 3113 已更新，本地未提交/未推送/未合并，保持既有 Issue / PR 状态。Result：`docs/tasks/RESULT-planner-scenery.md`；证据 `docs/qa/planner-scenery/`。
+
+## Planner 职责拆分 / 底部内容重排追加（2026-09-06）
+
+- 六选单最新交互：默认收起，点击当前选单等宽向上延伸；展开时不显示“详细信息”及重复图标，说明内容利用原标签空间，仅保留底部 28px 收起箭头区域。收起后恢复原选单名称与向上箭头。内容加入实际景点与指标解释，覆盖此前独立 330px 小窗规则。四尺寸六栏衔接和下方执行区尺寸回归通过，187 tests / lint / typecheck / build 通过；3113 已更新，仍未提交/合并。
+- 时间轴追加：Planner 单日 / 三日只展示景点，与 Detail 共用时间卡轨道；Detail 保留完整项目并显示绿 ✓ / 黄 ! / 红 × 状态圆点。五尺寸浏览器检查、状态变化和冲突保护通过，188 tests / lint / typecheck / build 通过。见 `docs/tasks/RESULT-planner-shared-timeline.md`；3113 已更新，未提交/合并。
+
+- 最新补修：摘要窗宽缩至 330px，说明默认折叠；移动段改为独立三等分卡片，每卡“接受 / 忽略 / 加号”，更多决定五项。四尺寸三等分、独立状态、弹窗尺寸与焦点验证通过，187 tests / lint / typecheck / build 通过；3113 已更新，仍未提交或合并。
+
+- 用户追加范围：Planner 不办理预约，仅推荐区域与理由；酒店/餐厅候选与预约转入 Detail。同行人补老人；更多设置靠近入口；六 Tab 单日摘要改为可折叠浮层；移动三段、预约待购票筛选、备选影响预览、住宿餐饮三分区。
+- 状态：本地实现并验收，尚未 commit / push / merge；分支 `codex/planner-responsive-density`。保留此前全部未提交改动，不改变 Issue #135 / Draft PR #139 已推送范围或任何正式 Task 完成状态。
+- 验证：187 tests、lint / typecheck / build / 本次文件格式 / diff-check 通过；1440/1024/390/320 四尺寸六 Tab、老人、设置取消、嵌套 Escape、Planner → Detail 预约入口通过；四尺寸浏览器保存、放弃修改、并发写入/容量失败保护和 Map 生命周期回归通过。
+- Result：`docs/tasks/RESULT-planner-panel-boundaries.md`；证据 `docs/qa/planner-panel-boundaries/`；生产预览已更新至 3113。
+
+## 方案入口 / 快捷弹层稳定性追加（2026-09-06）
+
+- 本地已实现，尚未 commit / push / merge；保持既有 PR 状态。方案卡单按钮先选择、再以“进入详细路线”进入 Planner；删除额外地图入口。固定侧向快捷弹层的打开基准位置，小屏搜索改为独立下方浮层。
+- 已复现住宿详细分区切换导致 82px 跳动、390/320px 搜索覆盖 Logo；四尺寸修复验证与三方案 × 三尺寸跳转通过，184 tests / lint / typecheck / build / 改动文件格式 / diff-check 通过。
+- Result：`docs/tasks/RESULT-plan-entry-popup-stability.md`；证据 `docs/qa/planner-stability/`；3113 已更新。
+
+## Step 1–5 手机优化追加（2026-09-06）
+
+- 用户追加范围：仅优化手机竖屏/横屏的向导布局、日期与弹窗可用性；保留横向四步、背景、兴趣/滑轨/目的地数量及草稿模型，不改 Planner 业务。
+- 状态：本地实现并验收，尚未 commit / push / merge；不改变正式 Task / PR 的状态。
+- 验证：30 张生产预览截图、四尺寸交互回归、184 tests、lint / typecheck / build / diff-check 通过；1440×900 Step 1/2/3/5 前后 PNG 完全一致。
+- Result：`docs/tasks/RESULT-start-mobile.md`；证据：`docs/qa/start-mobile/production-layout/`、`docs/qa/start-mobile/production-interactions/`；预览 `http://127.0.0.1:3113/start`。
+
+## Detail 浏览器保存追加（2026-09-06）
+
+- 操作布局追加：返回/保存位于新增行程左侧；手动或响应式收起后保留贴底操作栏，支持展开。六尺寸布局验收与原保存保护回归；仍为本地未提交追加，不改 PR 合并状态。
+
+- 用户确认先实现浏览器保存，不接数据库。状态：本地待验收，尚未 commit / push / merge；不改变任何正式数据库 WBS 的完成状态。
+- 范围：详情显式保存、Planner 只应用调整、返回/放弃/保存失败保护、刷新与打开已保存副本。保持既有共享 Workspace / Map 生命周期和推荐方案结构。
+- Result：`docs/tasks/RESULT-browser-trip-save.md`；证据 `docs/qa/browser-trip-save/`。前序 PR #139 / Issue #135 的已推送记录保持原状。
+
+## TASK-012-A 响应式密度补修（2026-09-06）
+
+- 子菜单重设计追加：同行人数量卡、日期区间日历、37 个快捷选项分组、54 个详细字段三分区表单；范围限五卡子菜单，模型/工作台/推荐卡不变。178 tests、五尺寸 × 双动效菜单编辑/日历草稿与保护检查通过；设计 `docs/ui/planner-quick-settings-menus.md`，证据 `docs/qa/planner-density/menu-redesign/`，仍待审查 / Draft PR #139。
+
+- 用户复验补修：右栏五卡/三级偏好弹层移至 top layer，修正普通动效下 fixed 坐标越界；五尺寸 × 两种动效共 80 次真实可见/可点击/编辑/焦点检查通过，171 tests / lint / typecheck / build 通过；继续使用 Draft PR #139，状态待审查。原 reduced-motion/DOM 检查未覆盖该缺陷，完整更正与证据见 Result。
+
+- Issue：#135；Owner：A；WBS：1.5 / 1.6 / 1.7 / 4.1 / 4.8 / 4.14（既有 Planner UI 补修）。
+- 状态：待审查；历史 TASK-012-A / #111 / PR #124 的已合并状态不变。
+- 基线：`c88d3381685615fcd0e1dd9e3217bd871e50c2ac`；分支：`codex/planner-responsive-density` → `develop`。
+- 范围：实际 25dvh 贴边底栏、移除顶部 Day summary、响应式内容、紧凑日期菜单、图层控件、快速设置与全宽详情入口、搜索边界及右侧渐变；推荐方案冻结，无业务/API 扩展。
+- Task / Result：`docs/tasks/RESULT-TASK-012-a-responsive-density-followup.md`；实现 `660af61`，集成验收 `bcc898f`（同步验证时 develop `4161a8a`）；170 tests / lint / typecheck / build、九视口双地图几何及截图、六视口 Detail 回归通过；[Draft PR #139](https://github.com/kanzakimy0/TravelAssist/pull/139)；不自动合并。
+
+## WBS-0.9-B 执行记录（2026-09-07）
+
+- 用户明确将 WBS 0.9「跨模块 Contract 交接规则」改派给 B 并要求立即执行；0.8 仍为进行中，因此 0.9 以“规则先行、与 0.8 并行”完成，不重新划分 A/B 业务 Owner。
+- Owner：B；Status：待审查；Issue：#168（Open）。正式规范：`docs/architecture/cross-module-contract-handoff.md`；Result：`docs/tasks/RESULT-WBS-0.9-b-contract-handoff-rules.md`。
+- Kickoff 分支 `feature/b-wbs-0-9-contract-handoff-rules` 因仓库 `feature/**` 自动化被自动创建并合入 PR #169/#170；#170 merge `707bcc8d2af14a86032181be63573beb3aea3e17` 只代表初稿进入 develop，不代表用户最终验收。
+- 最终收尾使用 `review/b-wbs-0-9-contract-handoff-finalize`，Draft PR [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) → develop，避免 `feature/**` 自动合并；在用户验收前不合并、不关闭 #168、不标记已完成。
+- 仓库审计确认：当前无 `src/shared/contracts/**`；`src/types/` 仅 `.gitkeep`；Preference 模型、Planner runtime/presentation model、Trip Library ViewModel 均保持模块内部，0.9 不提前实现 5.14 / 4.17 / 5.19 runtime Contract。
+
 ## TASK-013-A 合并验收收尾（2026-09-07）
 
 用户明确授权“合并后执行”TASK-013.1。父任务 PR #166 已合入 develop，merge `aee2eaec3ac841395de1737a3042a112ad6fa6ea`；与验收 head `34928c57cd4f0b3cc80bb27e93701b11021fb181` 文件树完全相同。assets:validate / 44 项专项测试合并前再次通过；原 267 tests、lint/typecheck/build、69 SVG 浏览器验证有效。2.13 / TASK-013-A 已完成；Issue #112 同步最终验收。下方初次交付记录保留为历史，当前状态以本条和追踪表为准。013.1 尚需单独执行，不提前标记其完成。
@@ -247,7 +362,7 @@ src/db/
 | 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
 | 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 已完成 |
 | 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
-| 0.9 | 跨模块 Contract 交接规则 | A+B | P0 | 0.8 | 未开始 |
+| 0.9 | 跨模块 Contract 交接规则 | B | P0 | 0.8 | 待审查 |
 
 ### 当前 Task 追踪记录
 
@@ -255,6 +370,7 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
 | TASK-013.1-A | 2.14 | A | 待审查 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | `b1d06e8`（实现；追踪提交见 PR head） | [#172](https://github.com/kanzakimy0/TravelAssist/pull/172) Draft / Open |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
@@ -274,6 +390,7 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 | WBS-5.10-B | 5.10 | B | 已完成（用户验收通过） | #143 | `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md` | `feature/b-account-wbs-5-10-trip-library-ui` | `e40141e`（实现），`9b58bb7`（Result），`5ad23e4`（合并） | [#144](https://github.com/kanzakimy0/TravelAssist/pull/144) 已合入 develop；Issue #143 已关闭 |
 | WBS-5.20-B | 5.20 | B | 已完成（用户验收通过） | #146 | `docs/tasks/TASK-WBS-5.20-b-personal-center-responsive-states.md` | `feature/b-account-wbs-5-20-personal-center-responsive-states` | `d50d1f5`（实现），`24a273a`（Result），`8e04632`（合并） | [#147](https://github.com/kanzakimy0/TravelAssist/pull/147) 已合入 develop；Issue #146 已关闭 |
 | WBS-5.20-B-FOLLOWUP | 5.20（completed-task UI follow-up；关联 5.4 / 5.5 / 5.6 / 5.10） | B | 已完成（用户验收通过） | #149 Closed | `docs/tasks/TASK-WBS-5.20-b-personal-center-concept-alignment-followup.md` | `fix/b-wbs-5-20-personal-center-concept-alignment` | `ea10d79`（实现），`0bc357a`（tracking），`9d36946`（合并），`d7bc976`（closeout） | [#150](https://github.com/kanzakimy0/TravelAssist/pull/150) 已合入 develop；[#151](https://github.com/kanzakimy0/TravelAssist/pull/151) closeout |
+| TASK-WBS-9.12-B | 9.12 | B | 已完成（用户验收通过） | #181 | `docs/tasks/TASK-WBS-9.12-b-personal-center-responsive-accessibility-qa.md`（远端 Task 分支） | `fix/b-account-wbs-9-12-responsive-accessibility-qa` | `8285665`（实现与专项 QA），`492929f`（Result / tracking），`89fd34a`（合并） | [#184](https://github.com/kanzakimy0/TravelAssist/pull/184) 已合入 develop；Issue 保持 Open |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
@@ -302,6 +419,17 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 
 ## 1. 产品、交互与画面设计
 
+### Planner 用户补充：方案 / 备用景点与移动重构（本地待审查）
+
+- 对应 4.4 / 4.5 / 4.8 / 4.15 的本地交互子集；不将真实路线 Provider 或完整业务状态标记完成。
+- 行程总览将餐宿两栏空间归入行程建议；四状态卡恢复柔和配色。单日餐宿、整体比例和 25dvh 底栏保留。
+- Planner 行程采用上方方案景点 / 下方备用，可双向移动；交通页使用紧凑地点及可编辑移动段，保留锁定与预约保护。
+- 最新视觉补充：交通框改为窄底长侧边的竖向长方形（约 0.74 宽高比，至少 72px 宽）；名称框仍为淡色小正方形并保留至少 44px 点击区域。缩小连接间距、取消行程组自动撑开，名称保留 11px / 500 字重；六尺寸比例与文字容纳检查通过，不修改功能或底栏高度。
+- 交通颜色 / 联动补充：九种模式底色，问题卡保留半边交通色，另一半用红 / 黄对角区分本地冲突与待核对。时间修改重判风险，增删或换地点只作相邻连接失效；未连接收费路线 API，也未将本地检查标成真实路况。
+- 备用与交通修改按方案隔离，地图联动，仅详情显式浏览器保存。未接实时路线 / 预约 / AI / 数据库。
+- 239 项测试、lint / typecheck / build、本次格式和 diff 检查通过；六尺寸浏览器、双色风险切换及保存刷新复验通过。全仓格式仍有 52 份既有问题。
+- Result：`docs/tasks/RESULT-planner-route-board-overview.md`；本轮未提交 / 推送 / 合并，保留用户工作区已有改动。
+
 ### 1A. 旅行主系统画面设计（A）
 
 | WBS ID | 工作项                                    | 负责人 | 优先级 | 依赖              | 状态   |
@@ -315,8 +443,8 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 | 1.7    | Planner 右侧临时设置 / 快速调整设计       | A      | P0     | 1.5               | 已完成 |
 | 1.10   | 景点与活动标签 / 主系统展示规则           | B      | P1     | 1.5               | 待审查 |
 | 1.11   | 推荐方案 1/2/3 展示结构                   | A      | P1     | 1.5               | 已完成 |
-| 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | A      | P0     | 1.5               | 未开始 |
-| 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | A      | P1     | 1.4,1.5           | 未开始 |
+| 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | B      | P0     | 1.5               | 待审查 |
+| 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | B      | P1     | 1.4,1.5           | 待审查 |
 | 1.14   | 主系统响应式布局规则                      | A      | P1     | 1.13              | 进行中 |
 | 1.15   | MVP 功能范围冻结                          | A      | P0     | 1.1-1.14          | 未开始 |
 | 1.16   | 网站入口详细画面设计                      | A      | P1     | 1.4,1.13          | 已完成 |
@@ -438,7 +566,7 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 | 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 未开始 |
 | 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 未开始 |
 | 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 未开始 |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3 | 未开始 |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 未开始 |
 | 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 未开始 |
 | 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 未开始 |
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 未开始 |
@@ -494,7 +622,7 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
 | 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
-| 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 未开始 |
+| 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 
 ## 10. 发布与运营准备（A 主责）
 

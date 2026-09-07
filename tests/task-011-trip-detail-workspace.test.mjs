@@ -32,11 +32,8 @@ const {
   parseDetailDraft,
   parseWorkspaceMode,
 } = await import("../src/features/planner/model/detail-workspace.ts");
-import {
-  currentPlan,
-  makeTripState,
-  tripReducer,
-} from "../src/features/planner/model/trip-model.ts";
+const { currentPlan, makeTripState, tripReducer } =
+  await import("../src/features/planner/model/trip-model.ts");
 
 function fixture() {
   const { places, areas } = makePlannerCatalog(plannerMockPlans);
@@ -144,6 +141,19 @@ test("AI judgement and reservation judgement remain independent", () => {
     ),
     true,
   );
+});
+
+test("existing overlapping data produces an error status without marking a reservation confirmed", () => {
+  const state = fixture();
+  const plan = currentPlan(state);
+  const lake = plan.items.find(
+    (item) => item.day === 2 && item.type === "attraction",
+  );
+  lake.startTime = "08:30";
+  const judged = detailRailItems(state, 2).find((item) => item.id === lake.id);
+  assert.equal(judged.aiStatus, "error");
+  assert.match(judged.aiReason, /时间重叠/);
+  assert.equal(lake.reservationStatus, "not_required");
 });
 
 test("day summary exposes time, constraints, independent counts and all expense groups", () => {
@@ -301,10 +311,44 @@ test("workspace source keeps one map shell and separates planner/detail slots", 
   assert.equal((page.match(/<PlannerMapShell/g) ?? []).length, 0);
   assert.match(workspace, /data-map-workspace/);
   assert.match(page, /mode === "planner" \? \(/);
-  assert.match(page, /mode === "planner" \? plannerRight : detailRight/);
+  assert.match(
+    page,
+    /rightContent=\{[\s\S]*?mode === "planner"[\s\S]*?plannerRight[\s\S]*?detailRight/,
+  );
   assert.match(page, /mode === "planner" \? plannerBottom : detailBottom/);
-  assert.match(rail, /data-status=\{item\.aiStatus\}/);
-  assert.match(rail, /data-lane=\{index % 2 \? "below" : "above"\}/);
+  const track = await readFile(
+    new URL(
+      "../src/features/planner/components/trip-timeline-track.tsx",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(rail, /<DetailItineraryBoard/);
+  assert.match(track, /data-status=\{sightsOnly \? "sight" : item\.aiStatus\}/);
+  assert.match(track, /data-lane=\{index % 2 \? "below" : "above"\}/);
+  assert.match(track, /normal: \{ symbol: "✓", label: "正常" \}/);
+  assert.match(track, /warning: \{ symbol: "!", label: "需确认" \}/);
+  assert.match(track, /error: \{ symbol: "×", label: "有冲突" \}/);
   assert.doesNotMatch(rail, /<img/);
+  const plannerTimeline = await readFile(
+    new URL(
+      "../src/features/planner/components/proportional-timeline.tsx",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  // Planner now has planned/reserve rows; Detail retains its execution track.
+  assert.match(plannerTimeline, /<PlannerRouteBoard/);
+  const routeBoard = await readFile(
+    new URL(
+      "../src/features/planner/components/planner-route-board.tsx",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(routeBoard, /data-sight-row="planned"/);
+  assert.match(routeBoard, /data-sight-row="reserve"/);
+  assert.match(routeBoard, /all\.filter\(isPlannerSight\)/);
+  assert.match(routeBoard, /type: "select", id: item\.id/);
   assert.match(css, /prefers-reduced-motion: reduce/);
 });

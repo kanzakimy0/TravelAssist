@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   color: var(--color-text-primary);
-  background: rgb(255 252 247 / 96%);
+  background: transparent;
 }
 
 .sidebar {
@@ -232,7 +232,106 @@
 
 .aiActions button,
 .adjustmentPreview button,
-.itemDialog button,
+.itemDialog button {
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #ddc5b8;
+  border-radius: 10px;
+  background: #fffaf5;
+  color: #805646;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.statusNode[data-status="sight"] {
+  width: 12px;
+  height: 12px;
+  left: -6px;
+  background: #c35a4b;
+}
+.sightsTimeline {
+  display: flex;
+  height: 100%;
+  min-height: 130px;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.sightsDay {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 100%;
+  min-width: 0;
+}
+.sightsTimeline[data-compare="true"] .sightsDay {
+  flex: 1 0 480px;
+  border-right: 1px solid #ddc7ba;
+}
+.sightsDayLabel {
+  align-self: flex-start;
+  border: 0;
+  padding: 0 12px;
+  background: transparent;
+  color: #9d6453;
+  font-size: 11px;
+  cursor: pointer;
+}
+.sightsDay .railViewport {
+  flex: 1;
+}
+.sightsDay .railTrack {
+  width: max(100%, 520px);
+  height: 100%;
+  min-height: 130px;
+}
+.sightsDay .railLine {
+  top: 50%;
+}
+.sightsDay .railItem {
+  height: 100%;
+}
+.sightsDay .statusNode {
+  top: calc(50% - 5px);
+}
+.sightsDay .railBubble {
+  min-height: 50px;
+  padding: 5px 9px;
+}
+.sightsDay .railItem[data-lane="above"] .railBubble {
+  top: auto;
+  bottom: calc(50% + 12px);
+}
+.sightsDay .railItem[data-lane="below"] .railBubble {
+  top: calc(50% + 12px);
+}
+.railEmpty {
+  padding: 18px;
+  color: #60594f;
+  font-size: 13px;
+}
+@media (max-width: 767px) {
+  .sightsTimeline {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+  .sightsDay .railTrack {
+    width: 100%;
+    height: auto;
+  }
+  .sightsDay .railLine {
+    top: 0;
+  }
+  .sightsDay .railItem {
+    height: auto;
+  }
+  .sightsDay .statusNode {
+    top: 24px;
+    left: -17px;
+  }
+}
 .addButton {
   min-height: 38px;
   border: 1px solid #e3c9be;
@@ -291,7 +390,7 @@
   position: relative;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  padding: 10px 14px 8px;
+  padding: 6px 14px 4px;
   overflow: hidden;
   border: 1px solid var(--planner-border);
   border-radius: var(--planner-radius-panel);
@@ -302,8 +401,37 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding: 0 76px 8px 0;
+  padding: 0 0 6px;
+  min-width: 0;
   scrollbar-width: thin;
+}
+.projectTypes {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid #e1cdbb;
+  border-radius: 12px;
+}
+.projectTypes legend {
+  padding: 0 5px;
+  font-size: 12px;
+  font-weight: 650;
+}
+.projectTypes button {
+  padding: 8px 3px;
+  border: 1px solid #e2cdbb;
+  border-radius: 8px;
+  background: #fffaf3;
+  color: #755344;
+  cursor: pointer;
+}
+.projectTypes button[aria-pressed="true"] {
+  background: #b6604f;
+  border-color: #b6604f;
+  color: white;
 }
 
 .daySelector button {
@@ -343,12 +471,13 @@
 .railTrack {
   position: relative;
   width: max(100%, 1050px);
-  height: 155px;
+  height: 100%;
+  min-height: 120px;
 }
 
 .railLine {
   position: absolute;
-  top: 76px;
+  top: 50%;
   right: 18px;
   left: 18px;
   height: 2px;
@@ -360,24 +489,31 @@
   top: 0;
   left: clamp(72px, var(--rail-position), calc(100% - 72px));
   width: 0;
-  height: 150px;
+  height: 100%;
 }
 
 .statusNode {
   position: absolute;
   z-index: 2;
-  top: 69px;
-  left: -7px;
-  width: 15px;
-  height: 15px;
-  border: 3px solid #fffdf9;
+  top: calc(50% - 11px);
+  left: -12px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fffdf9;
   border-radius: 50%;
-  background: #87978d;
+  background: #38765a;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
   box-shadow: 0 0 0 1px rgb(79 68 62 / 22%);
 }
 
 .statusNode[data-status="warning"] {
-  background: #d49a31;
+  background: #f0c356;
+  color: #59400b;
 }
 
 .statusNode[data-status="error"] {
@@ -389,8 +525,8 @@
   left: -62px;
   display: grid;
   width: 124px;
-  min-height: 59px;
-  padding: 7px 9px;
+  min-height: 48px;
+  padding: 5px 9px;
   border: 1px solid rgb(99 84 75 / 12%);
   border-radius: 12px;
   color: #35414c;
@@ -399,11 +535,11 @@
 }
 
 .railItem[data-lane="above"] .railBubble {
-  top: 3px;
+  bottom: calc(50% + 13px);
 }
 
 .railItem[data-lane="below"] .railBubble {
-  top: 91px;
+  top: calc(50% + 13px);
 }
 
 .railBubble[data-kind="attraction"] {
@@ -461,12 +597,49 @@
 }
 
 .addButton {
-  position: absolute;
-  top: 10px;
-  right: 14px;
+  position: static;
   z-index: 4;
   min-height: 38px;
   padding: 0 12px;
+  white-space: nowrap;
+}
+
+.railHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+.railHeader .daySelector {
+  flex: 1;
+}
+.railActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.minimizeButton {
+  height: 38px;
+  width: 28px;
+  border: 1px solid var(--planner-border);
+  border-radius: 10px;
+  background: #fffaf5;
+  color: #384955;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .railHeader {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .railHeader .daySelector {
+    flex-basis: calc(100% - 28px);
+    min-width: 0;
+  }
+  .railActions {
+    margin-left: auto;
+  }
 }
 
 .itemDialog {
@@ -655,7 +828,7 @@
   }
 
   .bottomPanel {
-    min-height: calc(100dvh - 70px);
+    min-height: 0;
     overflow: auto;
     border: 0;
     border-radius: 0;
@@ -691,8 +864,8 @@
   }
 
   .statusNode {
-    top: 23px;
-    left: -18px;
+    top: 19px;
+    left: -23px;
   }
 
   .railItem .railBubble,
@@ -704,10 +877,18 @@
   }
 
   .addButton {
-    position: fixed;
-    top: auto;
-    right: 18px;
-    bottom: 18px;
+    position: static;
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .railActions {
+    width: 100%;
+    gap: 4px;
+  }
+  .minimizeButton {
+    flex-shrink: 0;
+    width: 24px;
   }
 
   .editGrid {
@@ -729,4 +910,46 @@
     scroll-behavior: auto;
     transition: none;
   }
+}
+.projectLocation {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #d8c8b8;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff8ed;
+}
+.projectLocation h3 {
+  margin: 0;
+  font-size: 14px;
+}
+.projectLocation > div[role="group"],
+.coordinateFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.locationCandidates {
+  display: grid;
+  gap: 5px;
+}
+.locationCandidates button {
+  text-align: left;
+}
+.locationCandidates small {
+  display: block;
+  font-size: 10px;
+  margin-top: 3px;
+}
+.projectLocation button[aria-pressed="true"] {
+  background: #f3d1be;
+  border-color: #a7523f;
+}
+.conflictTest {
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px dashed #bd6759;
+  border-radius: 9px;
+  font-size: 12px;
+  color: #9b3f34;
 }

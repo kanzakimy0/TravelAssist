@@ -18,10 +18,30 @@ import {
 } from "../data/planner-preferences";
 import { PlannerOverlay } from "./planner-overlay";
 import { PreferenceEditor } from "./preference-editor";
-import styles from "../planner.module.css";
-import ui from "../planner-v05.module.css";
+import { PlannerIcon } from "./planner-icon";
+import ui from "../more-trip-settings.module.css";
+
+const categoryIcons = [
+  "settings",
+  "transport",
+  "clock",
+  "sun",
+  "sight",
+  "users",
+  "booking",
+] as const;
+const categoryHints = [
+  "留出舒适的预算，也留一点自由探索的时间。",
+  "少走一点、少换乘一点，让移动更适合您的体力。",
+  "安排出发、用餐和休息，找到舒服的一天。",
+  "考虑排队与天气，让旅行多一些从容。",
+  "为喜欢的风景和体验，预留值得停下来的时间。",
+  "照顾行李、同行人的需要与出行便利。",
+  "核对不可变动的安排，为后续规划留好边界。",
+];
 
 export function MoreTripSettingsPopover({
+  trigger,
   state,
   dispatch,
   onClose,
@@ -61,6 +81,8 @@ export function MoreTripSettingsPopover({
       kind="settings"
       title={showPreview ? "重新规划影响预览" : "更多行程设置"}
       onClose={onClose}
+      anchor={trigger}
+      className={ui.dialog}
     >
       <div
         className={ui.workbench}
@@ -106,6 +128,12 @@ export function MoreTripSettingsPopover({
           </div>
         ) : (
           <>
+            <div className={ui.summary}>
+              <span>
+                <PlannerIcon name="map" /> 本次旅行偏好
+              </span>
+              <span>应用设置不自动重排路线</span>
+            </div>
             <div className={ui.workbenchBody}>
               <nav aria-label="行程设置分类" className={ui.categories}>
                 {settingsCategories.map((item, index) => (
@@ -115,22 +143,32 @@ export function MoreTripSettingsPopover({
                     aria-current={index === category ? "true" : undefined}
                     onClick={() => setCategory(index)}
                   >
-                    {item.title}
+                    <PlannerIcon name={categoryIcons[index]} />
+                    <span>{item.title}</span>
+                    <PlannerIcon name="chevron" className={ui.navArrow} />
                   </button>
                 ))}
               </nav>
-              <div className={ui.settingsContent}>
-                <h3>{settingsCategories[category].title}</h3>
-                <p className={styles.hint}>
-                  仅编辑草稿；保存不会自动改变路线。已确认预约和固定安排始终受保护。
+              <div className={ui.settingsContent} key={category}>
+                <p className={ui.eyebrow}>
+                  旅行偏好 / {String(category + 1).padStart(2, "0")}
                 </p>
+                <h3>{settingsCategories[category].title}</h3>
+                <p className={ui.hint}>{categoryHints[category]}</p>
                 {category === 0 &&
                   (["budget", "pace"] as const).map((key) => {
                     const labels = key === "budget" ? budgetLabels : paceLabels;
                     return (
-                      <label className={styles.field} key={key}>
-                        {key === "budget" ? "预算" : "旅行节奏"} ·{" "}
-                        {labels[settingsDraft[key]]}
+                      <label className={ui.levelCard} key={key}>
+                        <span className={ui.levelHeading}>
+                          <span>
+                            <PlannerIcon
+                              name={key === "budget" ? "settings" : "clock"}
+                            />
+                            {key === "budget" ? "每日预算" : "旅行节奏"}
+                          </span>
+                          <strong>{labels[settingsDraft[key]]}</strong>
+                        </span>
                         <input
                           aria-label={
                             key === "budget" ? "预算档位" : "旅行节奏档位"
@@ -149,6 +187,10 @@ export function MoreTripSettingsPopover({
                             })
                           }
                         />
+                        <span className={ui.rangeEnds}>
+                          <span>{labels[0]}</span>
+                          <span>{labels.at(-1)}</span>
+                        </span>
                         <small>
                           {key === "budget"
                             ? dailyBudgets[settingsDraft.budget] +
@@ -167,9 +209,14 @@ export function MoreTripSettingsPopover({
                       group={group}
                       state={draftState}
                       dispatch={draftDispatch}
+                      inlineDetails
                     />
                   </section>
                 ))}
+                <p className={ui.protection}>
+                  <PlannerIcon name="booking" />
+                  固定安排始终受保护，正式保存请进入行程详情。
+                </p>
               </div>
             </div>
             <footer>
@@ -189,7 +236,7 @@ export function MoreTripSettingsPopover({
                   onClose();
                 }}
               >
-                保存设置
+                应用设置
               </button>
             </footer>
           </>
