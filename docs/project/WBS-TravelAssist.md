@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## WBS 9.12 用户验收与合并收尾（2026-09-07）
+
+- 用户明确确认“验收通过”并随后授权合并；PR #184 已合入 develop，merge `89fd34aed29779ce15720d240727c7f65fd7b7bc`。
+- WBS 9.12 的响应式 / 可访问性 QA 范围已完成，状态更新为“已完成（用户验收通过）”；Issue #181 按任务约束保持 Open。
+- Firefox / WebKit 因当前环境无既有 runtime、Safari 因无真机而保留 Deferred，不将其写为 PASS；本收尾仅更新追踪文档，不扩大业务范围。
+- 不继续 5.11 / 5.12 / 8.2 / 8.3 / 5.3 / 5.16 / 5.17 / 9.5 / 9.6。
+
 ## PR #139 用户授权合并收尾（2026-09-07）
 
 - 用户在冲突解决后明确授权“合并”；PR #139 已合入 develop，merge `1b14963962138f452ff53d8008934d372e677b21`。Issue #135 / TASK-012-A follow-up 当前授权补修范围已完成；下方 Draft、待审查、未合并说明均为阶段历史，不代表最新状态。
@@ -382,7 +389,7 @@ src/db/
 | WBS-5.10-B | 5.10 | B | 已完成（用户验收通过） | #143 | `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md` | `feature/b-account-wbs-5-10-trip-library-ui` | `e40141e`（实现），`9b58bb7`（Result），`5ad23e4`（合并） | [#144](https://github.com/kanzakimy0/TravelAssist/pull/144) 已合入 develop；Issue #143 已关闭 |
 | WBS-5.20-B | 5.20 | B | 已完成（用户验收通过） | #146 | `docs/tasks/TASK-WBS-5.20-b-personal-center-responsive-states.md` | `feature/b-account-wbs-5-20-personal-center-responsive-states` | `d50d1f5`（实现），`24a273a`（Result），`8e04632`（合并） | [#147](https://github.com/kanzakimy0/TravelAssist/pull/147) 已合入 develop；Issue #146 已关闭 |
 | WBS-5.20-B-FOLLOWUP | 5.20（completed-task UI follow-up；关联 5.4 / 5.5 / 5.6 / 5.10） | B | 已完成（用户验收通过） | #149 Closed | `docs/tasks/TASK-WBS-5.20-b-personal-center-concept-alignment-followup.md` | `fix/b-wbs-5-20-personal-center-concept-alignment` | `ea10d79`（实现），`0bc357a`（tracking），`9d36946`（合并），`d7bc976`（closeout） | [#150](https://github.com/kanzakimy0/TravelAssist/pull/150) 已合入 develop；[#151](https://github.com/kanzakimy0/TravelAssist/pull/151) closeout |
-| TASK-WBS-9.12-B | 9.12 | B | 待审查 | #181 | `docs/tasks/TASK-WBS-9.12-b-personal-center-responsive-accessibility-qa.md`（远端 Task 分支） | `fix/b-account-wbs-9-12-responsive-accessibility-qa` | `8285665`（实现与专项 QA），`492929f`（Result / tracking） | [#184](https://github.com/kanzakimy0/TravelAssist/pull/184) Draft；Issue 保持 Open |
+| TASK-WBS-9.12-B | 9.12 | B | 已完成（用户验收通过） | #181 | `docs/tasks/TASK-WBS-9.12-b-personal-center-responsive-accessibility-qa.md`（远端 Task 分支） | `fix/b-account-wbs-9-12-responsive-accessibility-qa` | `8285665`（实现与专项 QA），`492929f`（Result / tracking），`89fd34a`（合并） | [#184](https://github.com/kanzakimy0/TravelAssist/pull/184) 已合入 develop；Issue 保持 Open |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
@@ -613,7 +620,7 @@ src/db/
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
 | 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
-| 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 待审查 |
+| 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 
 ## 10. 发布与运营准备（A 主责）
 

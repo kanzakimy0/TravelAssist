@@ -2,11 +2,11 @@
 
 ## Status
 
-- WBS 9.12: 待审查
+- WBS 9.12: 已完成（用户验收通过）
 - Issue: #181（保持 Open）
-- Draft PR: [#184](https://github.com/kanzakimy0/TravelAssist/pull/184)（base: develop）
-- Merge: 未执行
-- User acceptance: 待完成
+- Pull Request: [#184](https://github.com/kanzakimy0/TravelAssist/pull/184) 已合入 develop
+- Merge: `89fd34aed29779ce15720d240727c7f65fd7b7bc`
+- User acceptance: 通过（2026-09-07）
 
 ## Base / Branch / Commits
 
@@ -174,4 +174,4 @@ Edge 与 Chromium 均真实执行以下 12 个 viewport：
 - 未修改 src/features/planner/**、src/features/home/**、src/features/start-flow/**，未修改 Map / Route / AI、Auth Core、DB / API / Persistence、Provider / Booking / Payment 或 A-owned Task。
 - WBS 5.4–5.10 与 5.20 的已冻结业务语义保持不变。
 - Firefox / WebKit / Safari real-device 项明确 Deferred；不得据此写 PASS。
-- PR 合入 develop 且用户验收通过前，WBS 9.12 不得标记为“已完成”，Issue #181 不得关闭。
+- PR 已合入 develop 且用户验收通过，WBS 9.12 已标记为“已完成”；Issue #181 依照任务约束保持 Open。
