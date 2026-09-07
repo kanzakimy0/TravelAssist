@@ -4,7 +4,7 @@
 
 - 用户授权将当前内容打包上传 GitHub；沿用 Issue #135、`codex/planner-responsive-density` 和 Draft PR #139 → develop，不自动合并。
 - 汇总此前所有本地修正：共享项目详情、浏览器保存、详情总览 / 预约演示、方案 / 备用景点与交通联动、快捷菜单、Step 手机适配、背景与五张 AI 插画、配套测试和历次 QA 证据。
-- 当前状态：待验收 / 待审查，上传确认待记录。以下阶段记录的“未上传”属于当时历史状态，最新交付以 `docs/tasks/RESULT-planner-current-snapshot-2026-09-07.md` 为准。
+- 当前状态：待验收 / 待审查；770 个文件的快照提交 `28a1666012deb75e3ff5cc81c1d9412bc3da89ab` 已推送到 origin 同名分支。以下阶段记录的“未上传”属于当时历史状态，最新交付以 `docs/tasks/RESULT-planner-current-snapshot-2026-09-07.md` 为准。
 - lint / typecheck / build / 243 tests / 本次文件格式 / diff check 通过；全仓仍有 25 个未修改的基线格式问题。PR 与最新 develop 有冲突，本次只交付快照，未处理集成冲突，不标记 develop 已完成。
 
 ## Planner 现有插画接入（2026-09-07，本地待审查）

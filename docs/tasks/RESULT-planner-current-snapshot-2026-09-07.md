@@ -10,8 +10,9 @@
 - Pull Request: #139 → `develop`，保持 Draft
 - 上传前 HEAD: `1bcd820957cc6a6f0b58f4914e0a0110163304dc`
 - 本次读取的 origin/develop: `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031`
-- Snapshot Commit: PENDING
-- Delivery: 已整理并验证，待上传确认
+- Snapshot Commit: `28a1666012deb75e3ff5cc81c1d9412bc3da89ab`
+- Delivery: 已正常推送到 origin 同名分支（未 force push），770 个文件的快照已上传；本记录的最终状态同步另作文档提交。
+- Source ZIP: https://github.com/kanzakimy0/TravelAssist/archive/28a1666012deb75e3ff5cc81c1d9412bc3da89ab.zip
 
 本记录统一汇总此前用户在本分支确认的连续修正。各阶段 Result 中“本地未上传”等说明是当时状态；本次最终发布状态以本记录与 PR #139 为准，不将历史截图当作最新画面，也不将未合并代码标记为 develop 已完成。
 
