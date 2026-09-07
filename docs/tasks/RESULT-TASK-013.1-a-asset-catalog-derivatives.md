@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed — implementation and local acceptance complete; **待验收 / Draft publication PENDING**, not merged. No auto-merge. The initial blocked attempt is preserved in commit `3517054`; the user subsequently authorized merging the parent and continuing this task.
+Completed — implementation and local acceptance complete; **待验收 / Draft PR #172**, not merged. No auto-merge. The initial blocked attempt is preserved in commit `3517054`; the user subsequently authorized merging the parent and continuing this task.
 
 ## Prerequisite
 
@@ -20,8 +20,8 @@ Completed — implementation and local acceptance complete; **待验收 / Draft 
 - Actual implementation base / develop at execution: `c38d8c87ab8acd2b10551e6dfefb0398968264ae`.
 - Latest integrated develop: `707bcc8d2af14a86032181be63573beb3aea3e17`; two new B governance documents preserved without edits.
 - Safe parent/develop integration: `3fa1ca3`; no rebase, force push, reset, clean or cherry-pick.
-- Implementation commit: PENDING.
-- Draft PR: PENDING.
+- Implementation commit: `b1d06e8ca8f230f69f1cd995871c99646f569f43`; final documentation tracking commit is the PR head and is recorded in Issue #116.
+- Draft PR: [#172](https://github.com/kanzakimy0/TravelAssist/pull/172), Open / Draft, not merged.
 
 ## Conflict Audit
 

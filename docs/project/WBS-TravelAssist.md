@@ -256,7 +256,7 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
-| TASK-013.1-A | 2.14 | A | 待审查 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | PENDING | PENDING（保持 Draft） |
+| TASK-013.1-A | 2.14 | A | 待审查 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | `b1d06e8`（实现；追踪提交见 PR head） | [#172](https://github.com/kanzakimy0/TravelAssist/pull/172) Draft / Open |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |

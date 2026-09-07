@@ -20,7 +20,8 @@
 - Design Source：`docs/assets/asset-variant-sizing-spec.md` v1.0
 - Codex Command：`docs/tasks/CODEX-TASK-013.1-a-nightly-command.md`
 - Result File：`docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`
-- Pull Request：完成后创建 Draft PR → `develop`
+- Commit：`b1d06e8ca8f230f69f1cd995871c99646f569f43`（实现；最终追踪提交见 PR head / Issue #116）
+- Pull Request：[Draft PR #172](https://github.com/kanzakimy0/TravelAssist/pull/172) → `develop`，Open / Draft，未合并
 
 ---
 
@@ -1363,9 +1364,9 @@ Completed / Blocked / Partial
 - [x] format 真实记录；
 - [x] WBS 更新；
 - [x] Result 提交；
-- [ ] Issue #116 更新；
-- [ ] Branch push；
-- [ ] Draft PR 创建；
+- [x] Issue #116 更新；
+- [x] Branch push；
+- [x] Draft PR 创建；
 - [x] 未自动 merge。
 
 ---
