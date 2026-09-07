@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "sourceMaxBytes": 52428800,
+  "sourceMaxPixels": 80000000,
+  "singleObjectMaxBytes": 20971520,
+  "batchSoftBytes": 52428800,
+  "batchHardBytes": 104857600,
+  "concurrency": 2,
+  "maxConcurrency": 4,
+  "retries": 1,
+  "staleLockHours": 12,
+  "roleAliases": {
+    "poi-categories": "poi_category_icon",
+    "transport": "transport_icon",
+    "map-markers": "map_marker",
+    "placeholders": "placeholder",
+    "states": "state_illustration",
+    "destination_placeholder": "placeholder",
+    "desktop-hero": "destination_hero",
+    "mobile-hero": "destination_hero",
+    "area-cover": "region_cover",
+    "poi-image": "poi_photo",
+    "landmark-symbol": "state_illustration"
+  },
+  "rasterRoles": {
+    "home_background": [
+      "sm",
+      "md",
+      "lg",
+      "background-desktop",
+      "background-mobile"
+    ],
+    "wizard_background": [
+      "sm",
+      "md",
+      "lg",
+      "background-desktop",
+      "background-mobile"
+    ],
+    "destination_hero": [
+      "sm",
+      "md",
+      "lg",
+      "hero-desktop",
+      "hero-mobile",
+      "share-og"
+    ],
+    "region_cover": [
+      "sm",
+      "md",
+      "lg",
+      "region-tile",
+      "card-landscape",
+      "card-square"
+    ],
+    "poi_photo": [
+      "sm",
+      "md",
+      "lg",
+      "card-landscape",
+      "card-wide",
+      "card-square",
+      "map-popup",
+      "timeline-thumb",
+      "search-thumb",
+      "map-pin-thumb"
+    ],
+    "hotel_photo": [
+      "sm",
+      "md",
+      "lg",
+      "card-landscape",
+      "card-wide",
+      "card-square",
+      "map-popup",
+      "timeline-thumb",
+      "search-thumb"
+    ],
+    "restaurant_photo": [
+      "sm",
+      "md",
+      "lg",
+      "card-landscape",
+      "card-wide",
+      "card-square",
+      "map-popup",
+      "timeline-thumb",
+      "search-thumb"
+    ],
+    "activity_photo": [
+      "sm",
+      "md",
+      "lg",
+      "card-landscape",
+      "card-wide",
+      "card-square",
+      "map-popup",
+      "timeline-thumb",
+      "search-thumb"
+    ],
+    "trip_share_cover": ["sm", "md", "lg", "share-og"],
+    "profile_cover": ["sm", "md", "lg", "card-wide"],
+    "brand_mark": ["favicon-32", "apple-touch-180", "pwa-192", "pwa-512"],
+    "placeholder": [
+      "sm",
+      "md",
+      "lg",
+      "card-landscape",
+      "card-wide",
+      "card-square",
+      "map-popup",
+      "timeline-thumb",
+      "search-thumb"
+    ],
+    "state_illustration": ["sm", "md", "lg", "state-panel"]
+  },
+  "vectorRoles": {
+    "ui_icon": [
+      "icon-sm",
+      "icon-md",
+      "icon-lg",
+      "map-control",
+      "navigation",
+      "feature"
+    ],
+    "transport_icon": [
+      "icon-sm",
+      "icon-md",
+      "icon-lg",
+      "map-control",
+      "navigation",
+      "feature"
+    ],
+    "poi_category_icon": [
+      "icon-sm",
+      "icon-md",
+      "icon-lg",
+      "map-control",
+      "navigation",
+      "feature"
+    ],
+    "map_marker": [
+      "marker-sm",
+      "marker-md",
+      "marker-lg",
+      "marker-selected",
+      "marker-cluster"
+    ],
+    "placeholder": [
+      "illustration-sm",
+      "illustration-md",
+      "illustration-lg",
+      "state-panel"
+    ],
+    "state_illustration": [
+      "illustration-sm",
+      "illustration-md",
+      "illustration-lg",
+      "state-panel"
+    ],
+    "brand_mark": ["icon-sm", "icon-md", "icon-lg"]
+  },
+  "notes": [
+    "Only manifest-approved local sources with explicit rights may derive.",
+    "No profile_cover mobile background unless explicitly requested in presentation.additionalProfiles.",
+    "Brand outputs require presentation.brandIconSource=true.",
+    "safeArea is a normalized rectangle {x,y,width,height}; impossible crops are unavailable.",
+    "Generated/report data is excluded from its own reference inputs to keep scans deterministic."
+  ]
+}

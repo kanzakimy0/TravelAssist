@@ -366,12 +366,13 @@ src/db/
 
 ### 当前 Task 追踪记录
 
-- TASK-013-A：待审查；Issue #112；`feature/a-asset-library-foundation`；Base `edd91cfdaea209c629d0fe6bd01a45788f5df803`；实现 Commit `4c56dacd1ace2f4849a8dadf24663fd8ca728dcc`；Draft PR [#166](https://github.com/kanzakimy0/TravelAssist/pull/166)；Result：`docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md`。64 通用 SVG + 5 目的地占位 / 125 待采购需求；44 专项测试、267 全仓 Node tests、lint / typecheck / build 通过。全仓格式 27 项既有上游异常已核对，本 Task 文件通过。既有页面及受保护素材只读；不自动合并，未执行 013.1 / 013.2。
+TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整合 develop `e98a715`（无冲突）；重建清单为 1,141 sources / 3,550 logical variants / 0 新增图片字节，51 专项与父素材测试、lint/typecheck/build 通过，30 项既有 develop 格式例外逐份核实，重复运行与浏览器证据更新。当前仍待合并验收，完成后再进入 013.2。旧 311 sources / 1,060 variants 属于 2026-09-07 历史。Result：`docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`；业务 UI 与原图未修改。
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
+| TASK-013.1-A | 2.14 | A | 待审查 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | `b1d06e8`（实现；追踪提交见 PR head） | [#172](https://github.com/kanzakimy0/TravelAssist/pull/172) Draft / Open |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -486,6 +487,7 @@ src/db/
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
 | 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
+| 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 待审查 |
 
 ## 3. 网站入口与主系统 Shell（A）
 

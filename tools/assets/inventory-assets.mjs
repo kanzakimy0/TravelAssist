@@ -44,6 +44,7 @@ export function inventory() {
       IMAGE_EXT.has(extname(p).toLowerCase()) &&
       !p.startsWith("public/media/shared/") &&
       !p.startsWith("public/media/destinations/") &&
+      !p.startsWith("public/media/generated/") &&
       !p.startsWith("assets/design/asset-library/"),
   );
   const texts = [
