@@ -3,8 +3,9 @@
 ## Tracking
 
 - Source: 用户授权“处理冲突”，2026-09-07。
-- Status: 待验收 / WBS 待审查。
-- Issue: #135；PR: #139 → develop，保持 Draft，不合并 PR。
+- Status: 已完成（当前授权补修与冲突解决范围）。
+- Issue: #135；PR: #139 已按用户后续“合并”授权合入 develop。
+- Final merge: `1b14963962138f452ff53d8008934d372e677b21`；其 Git tree 与通过验证的 `d0c3fd6ca28c2affd4702aacdaa2a753f8d06edf` 完全一致（`ab5e181374b2938b60611d49b65709f809de5eed`）。
 - Feature: `codex/planner-responsive-density`。
 - Pre-integration feature head: `a07b4493e0d80e4498fc020f6c59a523d75b102b`。
 - Integrated develop: `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031`。
@@ -41,7 +42,7 @@ No blanket `ours` / `theirs`, rebase, reset, cherry-pick, force push or business
 - Real Mapbox cannot be browser-tested in this preview without its token. Interactive fallback works; token configuration was not changed.
 - This is a bounded integration smoke, not a rerun of all historical responsive screenshots or every booking/save interaction. Unit coverage and the unchanged Planner/Start tree are checked independently.
 - No real booking, price search, paid routing, AI, auth or database behavior added.
-- PR remains Draft and Issue #135 remains open. Resolution does not authorize merge into develop or final business acceptance.
+- The conflict-resolution turn did not authorize merging. The user subsequently explicitly requested the merge, which is now complete. This closes the current follow-up scope only, not deferred provider or cloud functionality.
 
 ## Relationship to the upload snapshot
 

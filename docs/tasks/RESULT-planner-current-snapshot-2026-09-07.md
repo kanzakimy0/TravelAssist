@@ -4,17 +4,17 @@
 
 - Task ID: TASK-012-A follow-up / 用户连续追加修正
 - Owner: A
-- Status: 待验收（本次打包上传，不合并）
+- Status: 已完成（打包后按用户后续授权解决冲突并合并）
 - GitHub Issue: #135
 - Branch: `codex/planner-responsive-density`
-- Pull Request: #139 → `develop`，保持 Draft
+- Pull Request: #139 已合入 `develop`，merge `1b14963962138f452ff53d8008934d372e677b21`
 - 上传前 HEAD: `1bcd820957cc6a6f0b58f4914e0a0110163304dc`
 - 本次读取的 origin/develop: `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031`
 - Snapshot Commit: `28a1666012deb75e3ff5cc81c1d9412bc3da89ab`
 - Delivery: 已正常推送到 origin 同名分支（未 force push），770 个文件的快照已上传；本记录的最终状态同步另作文档提交。
 - Source ZIP: https://github.com/kanzakimy0/TravelAssist/archive/28a1666012deb75e3ff5cc81c1d9412bc3da89ab.zip
 
-本记录统一汇总此前用户在本分支确认的连续修正。各阶段 Result 中“本地未上传”等说明是当时状态；本次最终发布状态以本记录与 PR #139 为准，不将历史截图当作最新画面，也不将未合并代码标记为 develop 已完成。
+本记录统一汇总此前用户在本分支确认的连续修正。各阶段 Result 中“本地未上传”等说明是当时状态；本次最终发布状态以本记录与 PR #139 为准，不将历史截图当作最新画面。用户后续授权的冲突解决与合并现已完成；合并树与最终通过验证的 head `d0c3fd6` 完全相同。下方“冲突待处理”等打包阶段说明保留为历史。
 
 ## 打包范围
 
