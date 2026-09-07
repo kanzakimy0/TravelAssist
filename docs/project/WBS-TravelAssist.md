@@ -366,7 +366,7 @@ src/db/
 
 ### 当前 Task 追踪记录
 
-TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 已合并并验收；执行基线 `c38d8c8`，后安全同步 `707bcc8`。311 sources、1,060 logical variants、0 新增图片字节（无合规照片被擅自批准）；51 专项 / 318 全仓测试、lint / typecheck / build、no-op / resume 通过，28 项上游格式例外已核实。013.1 待审查，最终 PR 保持 Draft；Result：`docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`。不修改业务 UI，不执行 013.2。
+TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整合 develop `e98a715`（无冲突）；重建清单为 1,141 sources / 3,550 logical variants / 0 新增图片字节，51 专项与父素材测试、lint/typecheck/build 通过，30 项既有 develop 格式例外逐份核实，重复运行与浏览器证据更新。当前仍待合并验收，完成后再进入 013.2。旧 311 sources / 1,060 variants 属于 2026-09-07 历史。Result：`docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`；业务 UI 与原图未修改。
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|

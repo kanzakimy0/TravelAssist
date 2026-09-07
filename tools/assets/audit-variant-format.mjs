@@ -3,7 +3,9 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { ROOT, document } from "./variant-common.mjs";
-const base = "707bcc8d2af14a86032181be63573beb3aea3e17";
+const base =
+  process.env.ASSET_ACCEPTANCE_BASE ??
+  "707bcc8d2af14a86032181be63573beb3aea3e17";
 let output = "",
   exitCode = 0;
 try {

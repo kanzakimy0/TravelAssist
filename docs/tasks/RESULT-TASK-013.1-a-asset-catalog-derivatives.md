@@ -2,7 +2,21 @@
 
 ## Status
 
-Completed — implementation and local acceptance complete; **待验收 / Draft PR #172**, not merged. No auto-merge. The initial blocked attempt is preserved in commit `3517054`; the user subsequently authorized merging the parent and continuing this task.
+Completed implementation; **待验收 / PR #172**, pending merge. On 2026-09-08 the user explicitly authorized acceptance, merge and continuation of TASK-013.2. Current rerun evidence below supersedes the historical 2026-09-07 delivery counts.
+
+## Acceptance rerun — 2026-09-08
+
+- Integrated actual develop `e98a715a11e4a4ee9bdc196854558a5a02b1753c` in merge `4ea365d`; no conflicts and no rewritten history.
+- Refreshed full inventory: 1,141 sources / 1,141 unique paths / 0 uncatalogued; 320,963,446 original bytes. Scope: runtime 74, protected legacy 32, design 16, preview 6, documentation 1,013. Referenced 179 / orphan 962; 46 protected; 72 exact duplicate groups; 125 unresolved references.
+- 69 approved SVG sources / 364 vector tokens. 1,062 unapproved rasters / 3,186 unavailable S/M/L records. Total logical variants 3,550; eligible raster 0; new physical files/bytes 0; processing errors 0. No rights promoted.
+- Clean install passes (362 packages; audit 0 vulnerabilities). Latest integrated pipeline passes catalog, derive, verify, review, 51 variant tests, 44 parent tests, lint, build and typecheck.
+- Full format check fails on **30 unchanged develop documents**, verified individually against the current base. Exact list: `docs/assets/generated/variant-format-baseline.json`. The acceptance audit accepts an explicit base through `ASSET_ACCEPTANCE_BASE`, retaining its historical default.
+- Repeated normal runs skip 1,141 unchanged sources, write 0 files/bytes and have no canonical differences. Full normal/second/resume evidence is recorded in `docs/assets/generated/variant-repeat-verification.json`; nightly truthfully returns nonzero for the independently verified format debt.
+- Desktop 1440×1000 and mobile 390×844 offline browser review repeated: 433 images decoded each, no failed images, overflow, page errors or external requests; screenshots visually inspected.
+- Full repository tests initially include a B QA working-tree scope assertion that rejects uncommitted A documentation. Re-run on the final clean committed tree before merge; do not weaken that unrelated test.
+- No differences from develop in `src/features`, `src/app`, original `public` assets or Personal Center source assets. Existing dirty UI worktrees and preview remain untouched.
+
+The following delivery sections preserve historical implementation context; current inventory and format totals are those above and in the regenerated reports.
 
 ## Prerequisite
 

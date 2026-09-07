@@ -9,11 +9,11 @@ Mode: resume. Required validation failures exit nonzero; unchanged upstream form
   "account": {
     "newBytes": 0,
     "written": 0,
-    "skippedUnchanged": 311,
-    "resumeRecovered": 311,
+    "skippedUnchanged": 1141,
+    "resumeRecovered": 1141,
     "sourceChanged": 0,
     "unnecessaryRegenerated": 0,
-    "previousLogicalCount": 1060
+    "previousLogicalCount": 3550
   },
   "protection": {
     "modified": 0,
