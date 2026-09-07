@@ -4,7 +4,7 @@
 
 - WBS 9.12: 待审查
 - Issue: #181（保持 Open）
-- Draft PR: 待创建
+- Draft PR: [#184](https://github.com/kanzakimy0/TravelAssist/pull/184)（base: develop）
 - Merge: 未执行
 - User acceptance: 待完成
 
@@ -13,7 +13,8 @@
 - Base: origin/develop@99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031
 - Branch: fix/b-account-wbs-9-12-responsive-accessibility-qa
 - Implementation / QA commit: 8285665
-- Result / tracking commit: 本文件提交
+- Initial Result / tracking commit: 492929f
+- PR tracking sync: 本提交（branch HEAD）
 
 ## Dependency Gate
 
