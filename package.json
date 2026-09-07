@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "assets:core-manifest": "node tools/assets/build-core-generation-manifest.mjs",
+    "assets:core-batches": "node tools/assets/export-core-generation-batches.mjs",
+    "assets:core-estimate": "node tools/assets/estimate-core-generation-cost.mjs",
+    "assets:core-validate": "node tools/assets/validate-core-generation-manifest.mjs",
+    "test:core-generation": "node --test tests/task-013-2-core-generation-manifest.test.mjs",
     "assets:catalog": "node tools/assets/build-full-catalog.mjs",
     "assets:derive": "node tools/assets/generate-asset-derivatives.mjs",
     "assets:verify-variants": "node tools/assets/verify-asset-derivatives.mjs",

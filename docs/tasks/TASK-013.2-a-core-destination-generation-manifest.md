@@ -6,7 +6,7 @@
 - Owner：`A`
 - Responsibility：`Shared Asset Content Planning`
 - Priority：`P1`
-- Status：`Blocked / 等待 TASK-013.1-A 合并验收`
+- Status：`Partial / 待审查（生产清单完成，实体解析未完成）`
 - WBS：`2.15`
 - GitHub Issue：`#152`
 - Branch：`feature/a-core-destination-generation-manifest`
@@ -17,7 +17,7 @@
 - Design：`docs/assets/core-destination-generation-plan.md`
 - Codex Command：`docs/tasks/CODEX-TASK-013.2-a-generation-manifest-command.md`
 - Result：`docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`
-- Latest prerequisite audit：2026-09-08 JST；actual develop `e98a715a11e4a4ee9bdc196854558a5a02b1753c`；#112 已完成，#116 / PR #172 仍 Open / Draft / 未合并，保持 Blocked。只更新阻塞追踪，不生成 Manifest、不创建实现 PR；提交 SHA 见 Issue #152。
+- Latest prerequisite audit：2026-09-08 JST；actual develop `95311fcbdc3432eb4b75cb0644cad7783fad7415`；#112、#116 已合并并最终验收（PR #172 / #188）。300目的地、9000 unresolved 槽位、9300 jobs、9600 variants、40批次已生成；47县覆盖，实体和权利仍待审核。Draft PR #187，不自动合并；提交 SHA 见 Issue #152 与 Result。
 
 > 2026-09-08 范围修正：旧版“全球核心目的地”定义无效。本 Task 从现在起只允许日本境内目的地。
 
