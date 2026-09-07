@@ -2,7 +2,8 @@
 
 ## Metadata / Status
 
-- Task ID: TASK-012-A follow-up；Owner: A；Status: 待验收。
+- Task ID: TASK-012-A follow-up；Owner: A；Status: 已完成（当前用户授权范围）。
+- Merge closeout（2026-09-07）：用户明确授权合并；PR #139 → develop 已合入，merge `1b14963962138f452ff53d8008934d372e677b21`，最终验收 head `d0c3fd6`，两者 Git tree 完全相同。343 tests / lint / typecheck / build / assets:validate 与集成浏览器 smoke 通过；31 份基线格式例外及真实 Mapbox Token 缺失保持已知限制。下述 Draft / 待审查及早期范围是历史记录，当前连续补修范围见 `RESULT-planner-current-snapshot-2026-09-07.md` 与 `RESULT-PR-139-develop-conflict-resolution.md`。
 - WBS: 1.5 / 1.6 / 1.7 / 4.1 / 4.8 / 4.14（Planner UI 补修）。
 - GitHub Issue: [#135](https://github.com/kanzakimy0/TravelAssist/issues/135)。
 - Branch: `codex/planner-responsive-density` → `develop`。

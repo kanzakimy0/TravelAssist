@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## PR #139 用户授权合并收尾（2026-09-07）
+
+- 用户在冲突解决后明确授权“合并”；PR #139 已合入 develop，merge `1b14963962138f452ff53d8008934d372e677b21`。Issue #135 / TASK-012-A follow-up 当前授权补修范围已完成；下方 Draft、待审查、未合并说明均为阶段历史，不代表最新状态。
+- 最终验收 head `d0c3fd6ca28c2affd4702aacdaa2a753f8d06edf` 与 GitHub 合并提交的 Git tree 完全相同（`ab5e181374b2938b60611d49b65709f809de5eed`）；343 tests、lint / typecheck / build、素材校验及集成浏览器 smoke 结果适用于合并树。
+- 未把未接入的真实路线 / 预约 / AI / DB 或真实 Mapbox 令牌配置标为完成；4.14 等更大业务项保持原状态。31 份基线格式问题仍保留。
+- 交付 / 冲突 Result 已同步最终合并状态；仅做追踪文档收尾，不改业务代码，不继续后续 Task。
+
 ## PR #139 冲突解决与 develop 同步（2026-09-07）
 
 - 用户授权“处理冲突”；将 `origin/develop` 的 `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031` 合入 `codex/planner-responsive-density`，合并提交 `ed86578a43096f0fd045f9cb19a1eb7c5d6ffffd`；保持 Draft PR #139，不合并 PR、不改 develop。
