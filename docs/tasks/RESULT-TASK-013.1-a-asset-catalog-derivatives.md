@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed implementation; **待验收 / PR #172**, pending merge. On 2026-09-08 the user explicitly authorized acceptance, merge and continuation of TASK-013.2. Current rerun evidence below supersedes the historical 2026-09-07 delivery counts.
+**Completed / 已完成**. On 2026-09-08 the user explicitly authorized acceptance, merge and continuation of TASK-013.2. PR #172 merged as `b635465c623a4e628c9c9986253ee9266be39541`; its file tree is identical to accepted head `2cb487284572a24eaf6f4cc5ab98a5099501f23a`. Current rerun evidence below supersedes the historical 2026-09-07 delivery counts and Draft status.
 
 ## Acceptance rerun — 2026-09-08
 
@@ -13,10 +13,12 @@ Completed implementation; **待验收 / PR #172**, pending merge. On 2026-09-08 
 - Full format check fails on **30 unchanged develop documents**, verified individually against the current base. Exact list: `docs/assets/generated/variant-format-baseline.json`. The acceptance audit accepts an explicit base through `ASSET_ACCEPTANCE_BASE`, retaining its historical default.
 - Repeated normal runs skip 1,141 unchanged sources, write 0 files/bytes and have no canonical differences. Full normal/second/resume evidence is recorded in `docs/assets/generated/variant-repeat-verification.json`; nightly truthfully returns nonzero for the independently verified format debt.
 - Desktop 1440×1000 and mobile 390×844 offline browser review repeated: 433 images decoded each, no failed images, overflow, page errors or external requests; screenshots visually inspected.
-- Full repository tests initially include a B QA working-tree scope assertion that rejects uncommitted A documentation. Re-run on the final clean committed tree before merge; do not weaken that unrelated test.
+- Full repository tests on the clean committed acceptance tree: **406/406 passed**, no skips. The initial B QA working-tree scope failure during uncommitted A edits resolved after commit; no unrelated test changed.
 - No differences from develop in `src/features`, `src/app`, original `public` assets or Personal Center source assets. Existing dirty UI worktrees and preview remain untouched.
 
 The following delivery sections preserve historical implementation context; current inventory and format totals are those above and in the regenerated reports.
+
+Final tracking: Issue #116 completed; WBS 2.14 / Task 已完成. Documentation closeout branch `codex/task-0131-final-acceptance`; final closeout Commit/PR are recorded in Issue #116. TASK-013.2 can begin only after this completed WBS/Result record reaches develop. No production photographs were approved by this acceptance.
 
 ## Prerequisite
 
