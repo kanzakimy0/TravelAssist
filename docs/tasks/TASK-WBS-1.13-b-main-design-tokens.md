@@ -4,9 +4,10 @@
 - Owner：B（用户明确要求在未开始时直接执行；A 保留后续主系统实装责任）
 - Responsibility：Main Travel System / Design Specification
 - Priority：P1
-- 状态：进行中
+- 状态：待审查（设计已交付；未实装）
 - 开始日期：2026-09-07（Asia/Tokyo）
 - Issue：#178
+- Draft PR：#179
 - Branch：`docs/b-wbs-1-13-main-design-tokens`
 - Base：`develop@85675375a52a1bb1adaf37d9b8ea0a48a467eae1`
 - 依赖：1.4、1.5 已完成
@@ -53,10 +54,10 @@
 4. 冻结 radius scale 与组件映射。
 5. 明确 surface / border / shadow / focus / motion 的支持 Token。
 6. 给出现有 provisional / local tokens 的迁移映射与冲突裁决。
-7. 明确地图路线色、交通色、预约与风险状态不被品牌色覆盖。
+7. 明确地图路线色、交通方式、预约与风险状态不被品牌色覆盖。
 8. 明确 Personal Center `--pc-*` 保持其模块 ownership；本项只提供共享色系对齐建议。
-9. 输出验收矩阵和后续工程实现边界。
-10. 同步 Master WBS、Issue、Result、Draft PR 为待审查。
+9. 输出验收矩阵和后续实现边界。
+10. Task / Design / Result / Issue / Draft PR 已同步；Master WBS 的最终完成态在用户验收合并时收尾，避免未验收设计进入 `develop` 主表完成态。
 
 ## 保护边界
 
@@ -80,17 +81,19 @@
 
 ## 验收条件
 
-- [ ] 主系统颜色使用稳定语义名称，不再以 `blue/pink/gray` 命名业务 Token。
-- [ ] 白底/暖白底正文与主要控件文字满足可读性目标；对比计算有记录。
-- [ ] 珊瑚朱红只承担品牌/选择/主动作，不承担 success / warning / danger。
-- [ ] Serif 只用于少量人文/Editorial 标题；数据密集 UI 继续 Sans。
-- [ ] 中/日/英混排有明确 fallback，不依赖新增字体文件。
-- [ ] Radius scale 能覆盖按钮、卡片、面板、Popover、Dialog、Pin Quick Card。
-- [ ] Home / Start / Planner 当前局部值都有明确映射，不要求本 Task 改代码。
-- [ ] Personal Center 与主系统色系协调，但不越权改 `--pc-*`。
-- [ ] 1.14 / 1.20 可以直接引用本文，不重复定义颜色、字体和圆角。
-- [ ] Task / Design / Result / WBS / Issue / Draft PR 同步为待审查。
+- [x] 主系统颜色使用稳定语义名称，不再以 `blue/pink/gray` 命名业务 Token。
+- [x] 白底/暖白底正文与主要控件文字满足设计可读性目标；对比计算有记录。
+- [x] 珊瑚朱红只承担品牌/选择/主动作，不承担 success / warning / danger。
+- [x] Serif 只用于少量人文/Editorial 标题；数据密集 UI 继续 Sans。
+- [x] 中/日/英混排有明确 fallback，不依赖新增字体文件。
+- [x] Radius scale 能覆盖按钮、卡片、面板、Popover、Dialog、Pin Quick Card。
+- [x] Home / Start / Planner 当前局部值都有明确映射，不要求本 Task 改代码。
+- [x] Personal Center 与主系统色系协调，但不越权改 `--pc-*`。
+- [x] 1.14 / 1.20 可以直接引用本文，不重复定义颜色、字体和圆角。
+- [x] Task / Design / Result / Issue / Draft PR 已同步为待审查。
+- [ ] 用户验收并授权合并。
+- [ ] 合并后 Master WBS 完成态与 Issue closeout。
 
 ## 完成规则
 
-设计交付后状态为“待审查”。只有用户验收并合入 `develop` 后才标记“已完成”。本任务不用 Codex；后续真正把 Token 写入 CSS / Tailwind / Components 时另建工程实现 Task。
+当前为“设计已交付 / 待审查”，不是“已完成”。只有用户验收并合入 `develop` 后才标记“已完成”。本任务不用 Codex；后续真正把 Token 写入 CSS / Tailwind / Components 时另建 A 的工程实现 Task。
