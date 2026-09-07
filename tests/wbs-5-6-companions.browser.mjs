@@ -8,7 +8,9 @@ const playwrightPath = process.env.CODEX_PLAYWRIGHT_PATH;
 if (!playwrightPath) throw new Error("CODEX_PLAYWRIGHT_PATH is required");
 const { chromium } = require(playwrightPath);
 const baseUrl = process.env.WBS_BASE_URL ?? "http://localhost:3000";
-const evidenceDir = path.resolve("docs/evidence/WBS-5.6-B/companions");
+const evidenceDir = path.resolve(
+  process.env.WBS_EVIDENCE_DIR ?? "docs/evidence/WBS-5.6-B/companions",
+);
 await mkdir(evidenceDir, { recursive: true });
 
 const viewports = [
@@ -55,6 +57,15 @@ async function assertNoOverflow(page, label) {
   );
 }
 
+async function assertDesktopCompanionPageFits(page, label, width) {
+  if (width < 1280) return;
+  const overflow = await page.evaluate(() => {
+    const content = document.getElementById("personal-content");
+    return content ? content.scrollHeight - content.clientHeight : 0;
+  });
+  assert.ok(overflow <= 1, `${label}: vertical overflow ${overflow}px`);
+}
+
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 try {
   for (const [width, height] of viewports) {
@@ -73,6 +84,7 @@ try {
     assert.equal(await page.getByText("本人", { exact: true }).count(), 1);
     assert.equal(await page.getByLabel("删除同行人 Yuki").count(), 0);
     await assertNoOverflow(page, label);
+    await assertDesktopCompanionPageFits(page, label, width);
     await page.screenshot({
       path: path.join(evidenceDir, `${label}-overview.png`),
       fullPage: true,

@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## PR #139 冲突解决与 develop 同步（2026-09-07）
+
+- 用户授权“处理冲突”；将 `origin/develop` 的 `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031` 合入 `codex/planner-responsive-density`，保持 Draft PR #139，不合并 PR、不改 develop。
+- 唯一冲突为本文件顶部双方新增记录；完整保留 Planner / Detail 各阶段记录，以及 develop 的 WBS-0.9-B / TASK-013-A 收尾与后续追踪表更新，没有选择整份 ours / theirs 覆盖。
+- Planner / Start 业务代码与上传快照一致；个人中心 / 偏好 / 同行人 / 账户 / 旅行库 / 素材 Registry 和依赖清单与 develop 一致。
+- 集成验证：343 tests、lint / typecheck / build、assets:validate、冲突文件格式与相对 develop 的 diff check 通过。31 个全仓格式异常及六份上游文档的 Markdown 换行尾空格保持原样。浏览器确认 Planner → Detail → 返回推荐、个人旅行库 → 新建旅程 Step 3 正常，未见 console / hydration 错误。
+- 状态仍待验收 / 待审查；详细记录与已知限制见 `docs/tasks/RESULT-PR-139-develop-conflict-resolution.md`。下方快照阶段“冲突尚未处理”记录为历史，以本节为准。
+
 ## 当前 Planner / Detail 内容统一打包交付（2026-09-07）
 
 - 用户授权将当前内容打包上传 GitHub；沿用 Issue #135、`codex/planner-responsive-density` 和 Draft PR #139 → develop，不自动合并。
@@ -85,6 +93,18 @@
 - 范围：实际 25dvh 贴边底栏、移除顶部 Day summary、响应式内容、紧凑日期菜单、图层控件、快速设置与全宽详情入口、搜索边界及右侧渐变；推荐方案冻结，无业务/API 扩展。
 - Task / Result：`docs/tasks/RESULT-TASK-012-a-responsive-density-followup.md`；实现 `660af61`，集成验收 `bcc898f`（同步验证时 develop `4161a8a`）；170 tests / lint / typecheck / build、九视口双地图几何及截图、六视口 Detail 回归通过；[Draft PR #139](https://github.com/kanzakimy0/TravelAssist/pull/139)；不自动合并。
 
+## WBS-0.9-B 执行记录（2026-09-07）
+
+- 用户明确将 WBS 0.9「跨模块 Contract 交接规则」改派给 B 并要求立即执行；0.8 仍为进行中，因此 0.9 以“规则先行、与 0.8 并行”完成，不重新划分 A/B 业务 Owner。
+- Owner：B；Status：待审查；Issue：#168（Open）。正式规范：`docs/architecture/cross-module-contract-handoff.md`；Result：`docs/tasks/RESULT-WBS-0.9-b-contract-handoff-rules.md`。
+- Kickoff 分支 `feature/b-wbs-0-9-contract-handoff-rules` 因仓库 `feature/**` 自动化被自动创建并合入 PR #169/#170；#170 merge `707bcc8d2af14a86032181be63573beb3aea3e17` 只代表初稿进入 develop，不代表用户最终验收。
+- 最终收尾使用 `review/b-wbs-0-9-contract-handoff-finalize`，Draft PR [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) → develop，避免 `feature/**` 自动合并；在用户验收前不合并、不关闭 #168、不标记已完成。
+- 仓库审计确认：当前无 `src/shared/contracts/**`；`src/types/` 仅 `.gitkeep`；Preference 模型、Planner runtime/presentation model、Trip Library ViewModel 均保持模块内部，0.9 不提前实现 5.14 / 4.17 / 5.19 runtime Contract。
+
+## TASK-013-A 合并验收收尾（2026-09-07）
+
+用户明确授权“合并后执行”TASK-013.1。父任务 PR #166 已合入 develop，merge `aee2eaec3ac841395de1737a3042a112ad6fa6ea`；与验收 head `34928c57cd4f0b3cc80bb27e93701b11021fb181` 文件树完全相同。assets:validate / 44 项专项测试合并前再次通过；原 267 tests、lint/typecheck/build、69 SVG 浏览器验证有效。2.13 / TASK-013-A 已完成；Issue #112 同步最终验收。下方初次交付记录保留为历史，当前状态以本条和追踪表为准。013.1 尚需单独执行，不提前标记其完成。
+
 ## TASK-010-B v1.1 — 全局 Logo / Personal Center 导航（2026-09-06）
 
 - Merge closeout：用户明确授权后，PR #108 已合入 develop，merge `f105253b1f700f67fd97d8c9eb03a9c85000d699`；Issue #79 Closed。最终基线 `e052d93`，验收 head `a4306e2`，合并树相同；123 tests / 76 Logo QA / lint / typecheck / build / diff-check 复验通过。全仓格式 27 项均为核实过的基线异常（原 26 项加 TASK-WBS-5.8 文档）。下方历史基线记录保留，最新状态以本条为准。手机 Detail 返回入口仍是上游范围外缺口。
@@ -100,7 +120,7 @@
 - Validation：npm ci / lint / typecheck / build / diff-check 通过；npm test --if-present 无配置测试（未运行），另外显式运行 123/123 Node tests；76/76 Logo QA、四动作 / Guard / 历史 / 键盘四尺寸通过，0 新 console / hydration error。全库格式 26 项既有基线异常逐项比对未变且独立复验失败，本任务文件通过（WBS 维持已有格式排除）。
 
 > 版本：v0.4  
-> 更新日期：2026-09-06
+> 更新日期：2026-09-07
 > 适用阶段：Web 优先，移动 App 后续  
 > 开发方式：A 主开发约 70%，B 协作约 30%，ChatGPT / Codex 辅助开发  
 > **v0.4 分工原则：A 负责旅行主系统（网站入口、地图、路线/行程生成、主规划画面及对应开发）；B 负责用户通过头像进入的个人中心（账户、个人管理、偏好、同行人、保存/历史等界面及对应开发）。**
@@ -328,12 +348,16 @@ src/db/
 | 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
 | 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 已完成 |
 | 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
-| 0.9 | 跨模块 Contract 交接规则 | A+B | P0 | 0.8 | 未开始 |
+| 0.9 | 跨模块 Contract 交接规则 | B | P0 | 0.8 | 待审查 |
 
 ### 当前 Task 追踪记录
 
+- TASK-013-A：待审查；Issue #112；`feature/a-asset-library-foundation`；Base `edd91cfdaea209c629d0fe6bd01a45788f5df803`；实现 Commit `4c56dacd1ace2f4849a8dadf24663fd8ca728dcc`；Draft PR [#166](https://github.com/kanzakimy0/TravelAssist/pull/166)；Result：`docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md`。64 通用 SVG + 5 目的地占位 / 125 待采购需求；44 专项测试、267 全仓 Node tests、lint / typecheck / build 通过。全仓格式 27 项既有上游异常已核对，本 Task 文件通过。既有页面及受保护素材只读；不自动合并，未执行 013.1 / 013.2。
+
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
+| TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -347,6 +371,10 @@ src/db/
 | WBS-5.6-B | 5.6 | B | 已完成（用户验收通过） | #107 | `docs/tasks/TASK-WBS-5.6-b-companion-management-ui.md` | `feature/b-account-wbs-5-6-companion-management-ui` | `ff9c933`（实现），`ff66aec1`（合并） | [#117](https://github.com/kanzakimy0/TravelAssist/pull/117) 已合入 develop |
 | WBS-5.7-B | 5.7 | B | 已完成（用户验收通过） | #123 | `docs/tasks/TASK-WBS-5.7-b-mobility-preference-ui.md` | `feature/b-account-wbs-5-7-mobility-preference-ui`；`fix/wbs-5-7-checkbox-focus-scroll` | `ab79697`（实现），`ddf0aba`（验收修复），`8b83628` / `cabb487`（合并） | [#125](https://github.com/kanzakimy0/TravelAssist/pull/125) 实现、[#126](https://github.com/kanzakimy0/TravelAssist/pull/126) 验收修复，均已合入 develop |
 | WBS-5.8-B | 5.8 | B | 已完成（用户验收通过） | #128 | `docs/tasks/TASK-WBS-5.8-b-attraction-activity-preference-ui.md` | `feature/b-account-wbs-5-8-attraction-activity-preference-ui`；`fix/wbs-5-8-attraction-detail-preferences` | `1c8effd`（实现），`4666db3`（验收修正），`c88d338` / `29a9528`（合并） | [#133](https://github.com/kanzakimy0/TravelAssist/pull/133) 实现、[#134](https://github.com/kanzakimy0/TravelAssist/pull/134) 验收修正，均已合入 develop |
+| WBS-5.9-B | 5.9 | B | 已完成（用户验收通过；问题后续独立修正） | #138 | `docs/tasks/TASK-WBS-5.9-b-dining-accommodation-budget-ui.md` | `feature/b-account-wbs-5-9-dining-accommodation-budget-ui` | `060289f`（实现），`3abde3d`（合并） | [#140](https://github.com/kanzakimy0/TravelAssist/pull/140) 已合入 develop |
+| WBS-5.10-B | 5.10 | B | 已完成（用户验收通过） | #143 | `docs/tasks/TASK-WBS-5.10-b-trip-library-ui.md` | `feature/b-account-wbs-5-10-trip-library-ui` | `e40141e`（实现），`9b58bb7`（Result），`5ad23e4`（合并） | [#144](https://github.com/kanzakimy0/TravelAssist/pull/144) 已合入 develop；Issue #143 已关闭 |
+| WBS-5.20-B | 5.20 | B | 已完成（用户验收通过） | #146 | `docs/tasks/TASK-WBS-5.20-b-personal-center-responsive-states.md` | `feature/b-account-wbs-5-20-personal-center-responsive-states` | `d50d1f5`（实现），`24a273a`（Result），`8e04632`（合并） | [#147](https://github.com/kanzakimy0/TravelAssist/pull/147) 已合入 develop；Issue #146 已关闭 |
+| WBS-5.20-B-FOLLOWUP | 5.20（completed-task UI follow-up；关联 5.4 / 5.5 / 5.6 / 5.10） | B | 已完成（用户验收通过） | #149 Closed | `docs/tasks/TASK-WBS-5.20-b-personal-center-concept-alignment-followup.md` | `fix/b-wbs-5-20-personal-center-concept-alignment` | `ea10d79`（实现），`0bc357a`（tracking），`9d36946`（合并），`d7bc976`（closeout） | [#150](https://github.com/kanzakimy0/TravelAssist/pull/150) 已合入 develop；[#151](https://github.com/kanzakimy0/TravelAssist/pull/151) closeout |
 | TASK-008 | 1.5 / 1.6 / 1.7 / 1.11 / 1.14 / 1.17 / 1.18；4.1 / 4.8 / 4.13；4.14 UI shell | A | 已完成（UI shell 已合并；真实 Provider 不在范围） | #51 | `docs/tasks/TASK-008-a-trip-planner-shell.md` | `feature/a-trip-planner-shell-v2` | `e4648c0`（实现），`8920695`（集成验收），`1a4201b`（合并） | [#59](https://github.com/kanzakimy0/TravelAssist/pull/59) 已合入 develop |
 | TASK-008.1 | 4.2–4.6 / 4.8–4.9 / 4.11–4.15；7.1（Mapbox / Mock 子集） | A | 已完成（Mapbox / Mock 子集） | #60 | `docs/tasks/TASK-008.1-a-planner-mapbox-interactions.md` | `feature/a-planner-mapbox-interactions` | `673ab6a`（实现），`8682ed2`（集成），`f5d5ef2`（合并） | [#69](https://github.com/kanzakimy0/TravelAssist/pull/69) 已合入 develop |
 | TASK-008.2 | 1.5 / 1.6 / 1.7 / 1.14；4.1（Planner 纯视觉精修） | A | 已合并（用户确认的纯视觉范围；参考图限制留档） | #73 | `docs/tasks/TASK-008.2-a-planner-visual-fidelity-polish.md` | `feature/a-planner-visual-fidelity-polish` | `627b73a`（merge），`7e8db2a`（实现） | [#83](https://github.com/kanzakimy0/TravelAssist/pull/83) 已合入 develop；v0.3 新交互转 TASK-008.3 |
@@ -354,8 +382,11 @@ src/db/
 | TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 已完成（主流程导航闭环已合入） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591`（实现），`445150f`（追踪），`550a2b8`（合并） | [#101](https://github.com/kanzakimy0/TravelAssist/pull/101) 已合入 develop；Issue #78 已关闭 |
 | TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 已合并（TASK-010-B 本轮仅复验导航；窄屏返回入口待对应任务复核） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `b3d411b`（合入 head），`4c1d9bb`（合并） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) 已合入 develop；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
 | TASK-012-A | 1.5 / 1.6 / 1.7 / 1.14 / 4.1 / 4.8 / 4.14 / 4.15（v0.5 UI 子集） | A | 已完成（用户授权当前实现范围；1180px Drawer 与原侧栏规格差异保留） | #111 | `docs/tasks/TASK-012-a-planner-v05-visual-secondary-panels.md` | `feature/a-planner-v05-visual-secondary-panels` | `e835e75`（验收 head），`66b7ca6`（合并，文件树相同） | [#124](https://github.com/kanzakimy0/TravelAssist/pull/124) 已合入 develop；139 tests、六尺寸双地图 QA、48 Logo QA 通过；冻结推荐卡未改 |
+| TASK-014-B | 1.10 | B | 待审查（设计已上传并自动合入 develop，待用户验收） | #158 | `docs/tasks/TASK-014-b-wbs-1-10-attraction-activity-display-rules.md` | `feature/b-wbs-1-10-attraction-activity-display-rules` | `c1bddd70`（设计）；`e9c113d9`（自动合并） | [#163](https://github.com/kanzakimy0/TravelAssist/pull/163) 自动合入 develop |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
+>
+> TASK-014-B / WBS 1.10 于 2026-09-07 由用户明确改派给 B。该单项例外只改变 WBS 1.10 的 Owner，不重写 v0.4 的长期“Main Travel System 默认归 A”规则。WBS 1.10 为设计规格项，由 ChatGPT 直接完成，不需要 Codex；主设计 PR #163 已被仓库自动化合并，但在用户验收前保持 `待审查`。
 
 ### TASK-008.1 执行记录（2026-09-05）
 
@@ -394,10 +425,10 @@ src/db/
 | 1.5    | Planner 主画面冻结 v1                     | A      | P0     | 1.3               | 已完成 |
 | 1.6    | 底部时间轴设计冻结                        | A      | P0     | 1.5               | 已完成 |
 | 1.7    | Planner 右侧临时设置 / 快速调整设计       | A      | P0     | 1.5               | 已完成 |
-| 1.10   | 景点与活动标签 / 主系统展示规则           | A      | P1     | 1.5               | 未开始 |
+| 1.10   | 景点与活动标签 / 主系统展示规则           | B      | P1     | 1.5               | 待审查 |
 | 1.11   | 推荐方案 1/2/3 展示结构                   | A      | P1     | 1.5               | 已完成 |
-| 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | A      | P0     | 1.5               | 未开始 |
-| 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | A      | P1     | 1.4,1.5           | 未开始 |
+| 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | B      | P0     | 1.5               | 待审查 |
+| 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | B      | P1     | 1.4,1.5           | 待审查 |
 | 1.14   | 主系统响应式布局规则                      | A      | P1     | 1.13              | 进行中 |
 | 1.15   | MVP 功能范围冻结                          | A      | P0     | 1.1-1.14          | 未开始 |
 | 1.16   | 网站入口详细画面设计                      | A      | P1     | 1.4,1.13          | 已完成 |
@@ -439,6 +470,7 @@ src/db/
 | 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
+| 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
 
 ## 3. 网站入口与主系统 Shell（A）
 
@@ -491,9 +523,9 @@ src/db/
 | 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 已完成 |
 | 5.7    | 移动偏好 UI                                   | B      | P1     | 5.5      | 已完成 |
 | 5.8    | 景点 / 活动偏好 UI                            | B      | P0     | 5.5      | 已完成 |
-| 5.9    | 餐饮 / 住宿 / 预算偏好 UI                     | B      | P1     | 5.5      | 未开始 |
-| 5.10   | 保存行程 / 历史 / 草稿 / 收藏 UI              | B      | P0     | 1.27,5.1 | 未开始 |
-| 5.20   | 个人中心 Loading / Empty / Error / Responsive | B      | P1     | 1.29,5.1 | 未开始 |
+| 5.9    | 餐饮 / 住宿 / 预算偏好 UI                     | B      | P1     | 5.5      | 已完成 |
+| 5.10   | 保存行程 / 历史 / 草稿 / 收藏 UI              | B      | P0     | 1.27,5.1 | 已完成 |
+| 5.20   | 个人中心 Loading / Empty / Error / Responsive | B      | P1     | 1.29,5.1 | 已完成 |
 
 ### 5B. Personal Center Data / API
 
@@ -517,7 +549,7 @@ src/db/
 | 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 未开始 |
 | 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 未开始 |
 | 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 未开始 |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3 | 未开始 |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 未开始 |
 | 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 未开始 |
 | 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 未开始 |
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 未开始 |
@@ -788,7 +820,7 @@ B Auth/User Session → A Header/Avatar Entry
 - 初始基线 `96a8829`；开发期间安全快进同步至 `6e5132b323c5f215a6c1d430eb702c076d8915ac`。TASK-006 PR #32 合并提交 `5bf85a8` 为基线祖先；TASK-007 不是依赖。
 - 正式规格：`docs/ui/trip-planner.md v0.2`。1.5 / 1.6 / 1.7 / 1.11 的页面结构设计已随 v0.2 合入；1.14 只验证本 Planner 的响应式，1.17 的真实地图细节、1.18 的真实重规划反馈仍待后续任务，保持进行中。
 - 4.1 / 4.8 / 4.13：独立 `/planner` Grid、六 Tab 执行栏、三条推荐方案的 UI shell 已完成，并经用户明确授权通过 PR #59 合入 develop。
-- 4.2 / 4.6 / 4.14：仅本地 SVG 地图、多日路线、方案切换与 Mock 刷新交互完成；真实 Map / Route Provider 和真实重规划未接入，保持进行中，不标记完整业务已完成。
+- 4.2 / 4.6 / 4.14：仅本地 SVG 地图、多日路线、方案切换与 Mock 刷新交互完成；真实 Map / Route Provider 和真实重规划未接入，保持进行中，不标记完整业务能力完成。
 - 7 个指定视口均通过；1600×900 右栏 400px、1440×900 右栏 360px（均 25%）；右栏上下各 418px，底栏 225px。右栏在宽度 <1200px 折叠；底栏在高度 <700px 或宽度 <768px 折叠。
 - npm ci / lint / typecheck / build / diff check 通过；9 项 Node 单元测试通过；生产预览无 console / hydration 错误。本 Task 修改文件格式通过；全仓仅最新 develop 的 `docs/ui/companion-management.md` 格式失败，不越界修改。
 - 详细证据：`docs/tasks/RESULT-TASK-008-a-trip-planner-shell.md`。不修改 `/start`、B 账户文件或工程配置；不接真实 Provider / AI / Auth / DB；完成后停止。

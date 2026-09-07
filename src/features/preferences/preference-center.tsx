@@ -26,12 +26,22 @@ export function PreferenceCenter() {
   }, [resetOpen]);
 
   return (
-    <div className={styles.preferencePage}>
+    <div className={styles.preferencePage} data-preference-page>
       <header className={styles.pageHeader}>
-        <div>
-          <p>PREFERENCE PORTRAIT</p>
-          <h1>旅行偏好</h1>
-          <span>查看并管理 TravelAssist 用来理解您的长期旅行方式。</span>
+        <div className={styles.headerTitleRow}>
+          <span
+            className={styles.titleFlower}
+            data-title-flower
+            aria-hidden="true"
+          >
+            ✿
+          </span>
+          <div>
+            <h1 data-primary-page-title>旅行偏好</h1>
+            <span>
+              这些是您长期的默认偏好，将在未来的行程规划中为您提供更个性化的推荐。
+            </span>
+          </div>
         </div>
         <div className={styles.headerActions}>
           <Link
@@ -58,12 +68,16 @@ export function PreferenceCenter() {
           description="您更容易被哪些目的地体验吸引"
           axes={preferences.attractions}
           image="/media/personal-center/preferences/radar-attractions.webp"
+          icon="attractions"
+          summary="偏爱自然、历史与摄影，也喜欢有人文气息的目的地。"
         />
         <PreferenceRadar
           title="旅行风格画像"
           description="您喜欢怎样安排与感受一段旅程"
           axes={preferences.travelStyle}
           image="/media/personal-center/preferences/radar-travel-style.webp"
+          icon="experience"
+          summary="喜欢轻松、有计划的旅程，也愿意体验当地文化与深度探索。"
         />
       </section>
 
@@ -124,13 +138,14 @@ export function PreferenceCenter() {
               href={category.route}
               className={styles.categoryCard}
             >
-              <Image
-                src={category.image}
-                alt=""
-                fill
-                sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-              <span className={styles.categoryOverlay} aria-hidden="true" />
+              <span className={styles.categoryArtwork} aria-hidden="true">
+                <Image
+                  src={category.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 600px) 35vw, (max-width: 860px) 20vw, 120px"
+                />
+              </span>
               <span className={styles.categoryIcon} aria-hidden="true">
                 <PreferenceIcon name={category.icon} />
               </span>
@@ -144,6 +159,36 @@ export function PreferenceCenter() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className={styles.preferenceActions} aria-label="偏好管理操作">
+        <Link
+          href="/personal-center/preferences/advanced"
+          className={styles.preferenceAction}
+        >
+          <span className={styles.actionIcon} aria-hidden="true">
+            <PreferenceIcon name="settings" />
+          </span>
+          <strong>更多详细设置</strong>
+          <small>调整更细致的偏好选项，让推荐更符合您的需求。</small>
+          <span className={styles.actionArrow} aria-hidden="true">
+            <PreferenceIcon name="arrow" />
+          </span>
+        </Link>
+        <button
+          type="button"
+          className={styles.preferenceAction}
+          onClick={() => setResetOpen(true)}
+        >
+          <span className={styles.actionIcon} aria-hidden="true">
+            <PreferenceIcon name="reset" />
+          </span>
+          <strong>重置偏好</strong>
+          <small>将所有偏好恢复为默认设置。</small>
+          <span className={styles.actionArrow} aria-hidden="true">
+            <PreferenceIcon name="arrow" />
+          </span>
+        </button>
       </section>
 
       {resetOpen ? (

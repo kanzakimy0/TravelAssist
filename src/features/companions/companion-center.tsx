@@ -266,26 +266,20 @@ export function CompanionCenter() {
   );
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-companion-page>
       <header className={styles.pageHeader}>
         <div>
+          <i
+            className={styles.titleFlower}
+            data-title-flower
+            aria-hidden="true"
+          >
+            ✿
+          </i>
           <p>TRAVEL COMPANIONS</p>
-          <h1>同行人</h1>
+          <h1 data-primary-page-title>同行人</h1>
           <span>管理常用同行人，创建旅行时快速选择。</span>
         </div>
-        <button
-          type="button"
-          className={styles.primaryButton}
-          onClick={(event) =>
-            openCompanionEditor(
-              createEmptyCompanionDraft(),
-              event.currentTarget,
-            )
-          }
-          aria-label="添加同行人"
-        >
-          <span aria-hidden="true">＋</span> 添加同行人
-        </button>
       </header>
 
       <section className={styles.summaryCard} aria-labelledby="summary-title">
@@ -309,6 +303,7 @@ export function CompanionCenter() {
           <button
             type="button"
             className={styles.primaryButton}
+            aria-label="添加同行人"
             onClick={(event) =>
               openCompanionEditor(
                 createEmptyCompanionDraft(),
@@ -376,6 +371,21 @@ export function CompanionCenter() {
               }}
             />
           ))}
+          <button
+            type="button"
+            className={styles.addCompanionCard}
+            onClick={(event) =>
+              openCompanionEditor(
+                createEmptyCompanionDraft(),
+                event.currentTarget,
+              )
+            }
+            aria-label="从卡片添加同行人"
+          >
+            <span aria-hidden="true">＋</span>
+            <strong>添加同行人</strong>
+            <small>记录亲友信息，让下一次旅行更简单</small>
+          </button>
         </div>
         {additionalCompanions.length === 0 ? (
           <div className={styles.emptyState}>

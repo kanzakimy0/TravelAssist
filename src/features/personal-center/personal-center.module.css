@@ -203,7 +203,12 @@
   list-style: none;
 }
 
+.navigation li {
+  position: relative;
+}
+
 .navLink {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -215,6 +220,11 @@
   transition:
     background var(--motion-fast),
     border-color var(--motion-fast);
+}
+
+.railTooltip,
+.mobileNavLabel {
+  display: none;
 }
 
 .navLink:hover {
@@ -866,6 +876,307 @@ a.featureCard:hover {
   }
 }
 
+@media (min-width: 1280px) {
+  .shell {
+    grid-template-columns: clamp(216px, 15.5vw, 288px) minmax(0, 1fr);
+    gap: clamp(18px, 1.5vw, 28px);
+    padding: clamp(18px, 1.5vw, 28px);
+    background-color: var(--pc-bg-canvas);
+    background-image:
+      linear-gradient(rgb(250 246 239 / 8%), rgb(250 246 239 / 8%)),
+      url("/media/personal-center/personal-center-surface-texture-v2.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .sidebar {
+    overflow: hidden;
+    border: 1px solid rgb(220 183 163 / 72%);
+    border-radius: 22px;
+    background: rgb(252 248 241 / 82%);
+    box-shadow: 0 18px 48px rgb(113 78 59 / 10%);
+    backdrop-filter: blur(8px);
+  }
+
+  .sidebarPanel {
+    padding: clamp(18px, 1.5vw, 28px) clamp(14px, 1.35vw, 24px) 0;
+  }
+
+  .brandLogo {
+    width: min(100%, 174px);
+    height: 46px;
+  }
+
+  .userSummary {
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    margin: clamp(14px, 2vh, 22px) 4px clamp(12px, 1.8vh, 20px);
+    text-align: center;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .userText {
+    gap: 0;
+  }
+
+  .userText > span {
+    display: none;
+  }
+
+  .navigation ul {
+    gap: 3px;
+  }
+
+  .navLink {
+    min-height: 44px;
+    padding: 8px 12px;
+    border-radius: 16px;
+  }
+
+  .sidebarArtworkArea {
+    width: calc(100% + clamp(28px, 2.7vw, 48px));
+    max-height: 276px;
+    margin-inline: calc(clamp(14px, 1.35vw, 24px) * -1);
+    border-radius: 0;
+  }
+
+  .main {
+    background: transparent;
+  }
+
+  .main::before {
+    display: none;
+  }
+
+  .topActions {
+    height: 48px;
+    gap: 10px;
+    padding: 2px clamp(16px, 2vw, 32px);
+  }
+
+  .main:has(.home) .topActions {
+    height: 48px;
+  }
+
+  .main:has([data-account-page]) .topActions,
+  .main:has([data-account-subpage]) .topActions,
+  .main:has([data-preference-page]) .topActions {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+  }
+
+  .main:has([data-companion-page]) .topActions {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+  }
+
+  .main:has([data-trip-library-page]) .topActions {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+  }
+
+  .main:has([data-account-page]) .contentArea,
+  .main:has([data-account-subpage]) .contentArea,
+  .main:has([data-preference-page]) .contentArea {
+    padding-top: 0;
+  }
+
+  .main:has([data-companion-page]) .contentArea {
+    padding-top: 0;
+  }
+
+  .main:has([data-trip-library-page]) .contentArea {
+    padding-top: 0;
+  }
+
+  .main:has([data-account-page]) .contentInner,
+  .main:has([data-account-subpage]) .contentInner,
+  .main:has([data-preference-page]) .contentInner {
+    height: 100%;
+  }
+
+  .main:has([data-companion-page]) .contentInner {
+    height: 100%;
+  }
+
+  .main:has([data-trip-library-page]) .contentInner {
+    height: 100%;
+  }
+
+  .contentArea {
+    padding: 0 clamp(16px, 2vw, 32px) 16px;
+    scrollbar-gutter: auto;
+  }
+
+  .main:has(.home) .contentArea {
+    padding-top: 14px;
+    padding-bottom: 2px;
+  }
+
+  .contentInner {
+    max-width: 1460px;
+  }
+
+  .home {
+    position: relative;
+    gap: 20px;
+  }
+
+  .home > .pageHeading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    border: 0;
+    white-space: nowrap;
+  }
+
+  .nextTrip {
+    min-height: clamp(245px, 34vh, 360px);
+    border-radius: 22px;
+  }
+
+  .heroContent {
+    padding: clamp(22px, 2vw, 32px);
+  }
+
+  .eyebrow {
+    margin-bottom: 4px;
+  }
+
+  .heroContent h2 {
+    gap: 16px;
+    margin-bottom: 10px;
+    font-size: clamp(34px, 2.5vw, 46px);
+  }
+
+  .heroContent h2 span {
+    font-size: 18px;
+  }
+
+  .tripMeta {
+    gap: 6px 16px;
+  }
+
+  .heroAction {
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .shell .planButton {
+    min-height: 40px;
+    padding: 7px 18px;
+    border-radius: 12px;
+  }
+
+  .navigationNote {
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  .sectionHeading {
+    margin-bottom: 10px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 20px;
+  }
+
+  .textLink {
+    min-height: 30px;
+  }
+
+  .tripGrid,
+  .featureGrid {
+    gap: 12px;
+  }
+
+  .tripCard {
+    min-height: clamp(170px, 24vh, 250px);
+    border-radius: 16px;
+  }
+
+  .tripStatus {
+    top: 8px;
+    left: 8px;
+  }
+
+  .tripCardBody {
+    padding: 18px 14px 12px;
+  }
+
+  .tripCardBody p {
+    margin-top: 3px;
+  }
+
+  .featureCard {
+    min-height: clamp(96px, 13vh, 135px);
+    padding: 14px 16px;
+    border-radius: 15px;
+  }
+
+  .featureIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .featureCard p {
+    margin-top: 1px;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 780px) {
+  .main:has(.home) .topActions {
+    height: 48px;
+  }
+
+  .home {
+    gap: 12px;
+  }
+
+  .nextTrip {
+    min-height: clamp(220px, 25vh, 260px);
+  }
+
+  .sectionHeading {
+    margin-bottom: 6px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 18px;
+  }
+
+  .tripCard {
+    min-height: clamp(148px, 17vh, 180px);
+  }
+
+  .featureCard {
+    min-height: 84px;
+    padding: 12px 14px;
+  }
+
+  .featureIcon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 @media (min-width: 1024px) and (max-width: 1279px) {
   .shell {
     grid-template-columns: 88px minmax(0, 1fr);
@@ -873,6 +1184,7 @@ a.featureCard:hover {
 
   .sidebarPanel {
     padding: 24px 12px 0;
+    overflow: visible;
   }
 
   .brand,
@@ -882,7 +1194,7 @@ a.featureCard:hover {
   }
 
   .userText,
-  .navLink > span:not(.activeMarker) {
+  .navLabel {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -907,6 +1219,37 @@ a.featureCard:hover {
 
   .navLink {
     padding-inline: 10px;
+  }
+
+  .railTooltip {
+    position: absolute;
+    z-index: 70;
+    top: 50%;
+    left: calc(100% + 14px);
+    display: block;
+    width: max-content;
+    max-width: 220px;
+    padding: 8px 12px;
+    transform: translate(-6px, -50%);
+    border: 1px solid var(--pc-border-subtle);
+    border-radius: 10px;
+    color: var(--pc-text-primary);
+    background: var(--pc-bg-card);
+    box-shadow: 0 10px 26px rgb(70 45 32 / 16%);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+      opacity var(--motion-fast),
+      transform var(--motion-fast);
+  }
+
+  .navLink:hover .railTooltip,
+  .navLink:focus-visible .railTooltip {
+    transform: translate(0, -50%);
+    opacity: 1;
   }
 
   .activeMarker,
@@ -973,6 +1316,7 @@ a.featureCard:hover {
     box-shadow: 20px 0 60px rgb(62 45 36 / 18%);
     transform: translateX(-105%);
     transition: transform 180ms ease;
+    overscroll-behavior: contain;
   }
 
   .sidebar[data-drawer-open] .sidebarPanel {
@@ -989,7 +1333,7 @@ a.featureCard:hover {
   }
 
   .topActions {
-    position: absolute;
+    position: fixed;
     z-index: 43;
     top: 8px;
     right: 20px;
@@ -1094,6 +1438,14 @@ a.featureCard:hover {
     height: 20px;
   }
 
+  .navLabel {
+    display: none;
+  }
+
+  .mobileNavLabel {
+    display: inline;
+  }
+
   .activeMarker {
     display: none;
   }
@@ -1116,6 +1468,18 @@ a.featureCard:hover {
   .contentArea {
     overflow-y: auto;
     padding: 20px 16px calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .contentArea :is(input, select, textarea) {
+    font-size: max(16px, 1em) !important;
+  }
+
+  .contentArea :is(button, a[href], summary, select) {
+    min-height: 44px;
+  }
+
+  .contentArea label:has(input:is([type="checkbox"], [type="radio"])) {
+    min-height: 44px;
   }
 
   .home {
@@ -1158,9 +1522,12 @@ a.featureCard:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sidebarPanel,
-  .navLink,
-  .tripCard {
-    transition: none;
+  .shell *,
+  .shell *::before,
+  .shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

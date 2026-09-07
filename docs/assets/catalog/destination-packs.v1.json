@@ -1,0 +1,2850 @@
+{
+  "schemaVersion": 1,
+  "packs": [
+    {
+      "id": "jp-tokyo",
+      "country": "JP",
+      "type": "city",
+      "names": {
+        "zh-CN": "东京",
+        "ja-JP": "東京",
+        "en": "Tokyo"
+      },
+      "description": "Phase 1 fallback and procurement pack; no verified documentary photos acquired.",
+      "theme": {
+        "surface": "#fbf4ea",
+        "accent": "#d97b70",
+        "ink": "#475665",
+        "gradient": ["#fbf4ea", "#f4dfd9"]
+      },
+      "slots": {
+        "desktopHero": [
+          {
+            "requestId": "jp-tokyo-desktop-hero-001",
+            "assetId": "destination.jp.tokyo.desktop-hero.request.001",
+            "role": "desktop-hero",
+            "names": {
+              "zh-CN": "东京 · desktop-hero 需求 1",
+              "ja-JP": "東京 · desktop-hero 素材枠 1",
+              "en": "Tokyo · desktop-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-desktop-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1920,
+              "height": 1080
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "mobileHero": [
+          {
+            "requestId": "jp-tokyo-mobile-hero-001",
+            "assetId": "destination.jp.tokyo.mobile-hero.request.001",
+            "role": "mobile-hero",
+            "names": {
+              "zh-CN": "东京 · mobile-hero 需求 1",
+              "ja-JP": "東京 · mobile-hero 素材枠 1",
+              "en": "Tokyo · mobile-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-mobile-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1080,
+              "height": 1440
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "areaCovers": [
+          {
+            "requestId": "jp-tokyo-area-cover-001",
+            "assetId": "destination.jp.tokyo.area-cover.request.001",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "东京 · area-cover 需求 1",
+              "ja-JP": "東京 · area-cover 素材枠 1",
+              "en": "Tokyo · area-cover request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-area-cover-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-area-cover-002",
+            "assetId": "destination.jp.tokyo.area-cover.request.002",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "东京 · area-cover 需求 2",
+              "ja-JP": "東京 · area-cover 素材枠 2",
+              "en": "Tokyo · area-cover request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-area-cover-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-area-cover-003",
+            "assetId": "destination.jp.tokyo.area-cover.request.003",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "东京 · area-cover 需求 3",
+              "ja-JP": "東京 · area-cover 素材枠 3",
+              "en": "Tokyo · area-cover request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-area-cover-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "landmarkSymbols": [
+          {
+            "requestId": "jp-tokyo-landmark-symbol-001",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.001",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "浅草寺",
+              "ja-JP": "浅草寺",
+              "en": "Senso-ji"
+            },
+            "entity": {
+              "type": "poi_candidate",
+              "id": "jp-tokyo-sensoji"
+            },
+            "resolution": "candidate_requires_verification",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Candidate name occurs in src/features/planner/data/planner-catalog.ts at baseline; translations and identity require editorial verification. No coordinate/provider ID asserted."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-002",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.002",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京晴空塔",
+              "ja-JP": "東京スカイツリー",
+              "en": "Tokyo Skytree"
+            },
+            "entity": {
+              "type": "poi_candidate",
+              "id": "jp-tokyo-tokyo-skytree"
+            },
+            "resolution": "candidate_requires_verification",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Candidate name occurs in src/features/planner/data/planner-catalog.ts at baseline; translations and identity require editorial verification. No coordinate/provider ID asserted."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-003",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.003",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京 · landmark-symbol 需求 3",
+              "ja-JP": "東京 · landmark-symbol 素材枠 3",
+              "en": "Tokyo · landmark-symbol request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-landmark-symbol-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-004",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.004",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京 · landmark-symbol 需求 4",
+              "ja-JP": "東京 · landmark-symbol 素材枠 4",
+              "en": "Tokyo · landmark-symbol request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-landmark-symbol-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-005",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.005",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京 · landmark-symbol 需求 5",
+              "ja-JP": "東京 · landmark-symbol 素材枠 5",
+              "en": "Tokyo · landmark-symbol request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-landmark-symbol-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-006",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.006",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京 · landmark-symbol 需求 6",
+              "ja-JP": "東京 · landmark-symbol 素材枠 6",
+              "en": "Tokyo · landmark-symbol request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-landmark-symbol-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-007",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.007",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京 · landmark-symbol 需求 7",
+              "ja-JP": "東京 · landmark-symbol 素材枠 7",
+              "en": "Tokyo · landmark-symbol request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-landmark-symbol-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-landmark-symbol-008",
+            "assetId": "destination.jp.tokyo.landmark-symbol.request.008",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "东京 · landmark-symbol 需求 8",
+              "ja-JP": "東京 · landmark-symbol 素材枠 8",
+              "en": "Tokyo · landmark-symbol request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-landmark-symbol-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "poiImages": [
+          {
+            "requestId": "jp-tokyo-poi-image-001",
+            "assetId": "destination.jp.tokyo.poi-image.request.001",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 1",
+              "ja-JP": "東京 · poi-image 素材枠 1",
+              "en": "Tokyo · poi-image request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-002",
+            "assetId": "destination.jp.tokyo.poi-image.request.002",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 2",
+              "ja-JP": "東京 · poi-image 素材枠 2",
+              "en": "Tokyo · poi-image request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-003",
+            "assetId": "destination.jp.tokyo.poi-image.request.003",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 3",
+              "ja-JP": "東京 · poi-image 素材枠 3",
+              "en": "Tokyo · poi-image request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-004",
+            "assetId": "destination.jp.tokyo.poi-image.request.004",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 4",
+              "ja-JP": "東京 · poi-image 素材枠 4",
+              "en": "Tokyo · poi-image request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-005",
+            "assetId": "destination.jp.tokyo.poi-image.request.005",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 5",
+              "ja-JP": "東京 · poi-image 素材枠 5",
+              "en": "Tokyo · poi-image request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-006",
+            "assetId": "destination.jp.tokyo.poi-image.request.006",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 6",
+              "ja-JP": "東京 · poi-image 素材枠 6",
+              "en": "Tokyo · poi-image request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-007",
+            "assetId": "destination.jp.tokyo.poi-image.request.007",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 7",
+              "ja-JP": "東京 · poi-image 素材枠 7",
+              "en": "Tokyo · poi-image request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-008",
+            "assetId": "destination.jp.tokyo.poi-image.request.008",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 8",
+              "ja-JP": "東京 · poi-image 素材枠 8",
+              "en": "Tokyo · poi-image request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-009",
+            "assetId": "destination.jp.tokyo.poi-image.request.009",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 9",
+              "ja-JP": "東京 · poi-image 素材枠 9",
+              "en": "Tokyo · poi-image request 9"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-009"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-010",
+            "assetId": "destination.jp.tokyo.poi-image.request.010",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 10",
+              "ja-JP": "東京 · poi-image 素材枠 10",
+              "en": "Tokyo · poi-image request 10"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-010"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-011",
+            "assetId": "destination.jp.tokyo.poi-image.request.011",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 11",
+              "ja-JP": "東京 · poi-image 素材枠 11",
+              "en": "Tokyo · poi-image request 11"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-011"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-tokyo-poi-image-012",
+            "assetId": "destination.jp.tokyo.poi-image.request.012",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "东京 · poi-image 需求 12",
+              "ja-JP": "東京 · poi-image 素材枠 12",
+              "en": "Tokyo · poi-image request 12"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-tokyo-poi-image-012"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ]
+      },
+      "fallbacks": {
+        "generic": "destination.jp.tokyo.placeholder.default.001",
+        "categories": {}
+      },
+      "completion": {
+        "approvedPlaceholders": 1,
+        "requestedAssets": 25,
+        "acquiredAssets": 0
+      },
+      "rightsSummary": {
+        "approved": 1,
+        "providerOnly": 0,
+        "acquisitionRequired": 25
+      },
+      "lastReviewedAt": "2026-09-07"
+    },
+    {
+      "id": "jp-kyoto",
+      "country": "JP",
+      "type": "city",
+      "names": {
+        "zh-CN": "京都",
+        "ja-JP": "京都",
+        "en": "Kyoto"
+      },
+      "description": "Phase 1 fallback and procurement pack; no verified documentary photos acquired.",
+      "theme": {
+        "surface": "#fbf4ea",
+        "accent": "#d97b70",
+        "ink": "#475665",
+        "gradient": ["#fbf4ea", "#f4dfd9"]
+      },
+      "slots": {
+        "desktopHero": [
+          {
+            "requestId": "jp-kyoto-desktop-hero-001",
+            "assetId": "destination.jp.kyoto.desktop-hero.request.001",
+            "role": "desktop-hero",
+            "names": {
+              "zh-CN": "京都 · desktop-hero 需求 1",
+              "ja-JP": "京都 · desktop-hero 素材枠 1",
+              "en": "Kyoto · desktop-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-desktop-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1920,
+              "height": 1080
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "mobileHero": [
+          {
+            "requestId": "jp-kyoto-mobile-hero-001",
+            "assetId": "destination.jp.kyoto.mobile-hero.request.001",
+            "role": "mobile-hero",
+            "names": {
+              "zh-CN": "京都 · mobile-hero 需求 1",
+              "ja-JP": "京都 · mobile-hero 素材枠 1",
+              "en": "Kyoto · mobile-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-mobile-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1080,
+              "height": 1440
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "areaCovers": [
+          {
+            "requestId": "jp-kyoto-area-cover-001",
+            "assetId": "destination.jp.kyoto.area-cover.request.001",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "京都 · area-cover 需求 1",
+              "ja-JP": "京都 · area-cover 素材枠 1",
+              "en": "Kyoto · area-cover request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-area-cover-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-area-cover-002",
+            "assetId": "destination.jp.kyoto.area-cover.request.002",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "京都 · area-cover 需求 2",
+              "ja-JP": "京都 · area-cover 素材枠 2",
+              "en": "Kyoto · area-cover request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-area-cover-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-area-cover-003",
+            "assetId": "destination.jp.kyoto.area-cover.request.003",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "京都 · area-cover 需求 3",
+              "ja-JP": "京都 · area-cover 素材枠 3",
+              "en": "Kyoto · area-cover request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-area-cover-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "landmarkSymbols": [
+          {
+            "requestId": "jp-kyoto-landmark-symbol-001",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.001",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 1",
+              "ja-JP": "京都 · landmark-symbol 素材枠 1",
+              "en": "Kyoto · landmark-symbol request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-002",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.002",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 2",
+              "ja-JP": "京都 · landmark-symbol 素材枠 2",
+              "en": "Kyoto · landmark-symbol request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-003",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.003",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 3",
+              "ja-JP": "京都 · landmark-symbol 素材枠 3",
+              "en": "Kyoto · landmark-symbol request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-004",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.004",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 4",
+              "ja-JP": "京都 · landmark-symbol 素材枠 4",
+              "en": "Kyoto · landmark-symbol request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-005",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.005",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 5",
+              "ja-JP": "京都 · landmark-symbol 素材枠 5",
+              "en": "Kyoto · landmark-symbol request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-006",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.006",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 6",
+              "ja-JP": "京都 · landmark-symbol 素材枠 6",
+              "en": "Kyoto · landmark-symbol request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-007",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.007",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 7",
+              "ja-JP": "京都 · landmark-symbol 素材枠 7",
+              "en": "Kyoto · landmark-symbol request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-landmark-symbol-008",
+            "assetId": "destination.jp.kyoto.landmark-symbol.request.008",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "京都 · landmark-symbol 需求 8",
+              "ja-JP": "京都 · landmark-symbol 素材枠 8",
+              "en": "Kyoto · landmark-symbol request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-landmark-symbol-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "poiImages": [
+          {
+            "requestId": "jp-kyoto-poi-image-001",
+            "assetId": "destination.jp.kyoto.poi-image.request.001",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 1",
+              "ja-JP": "京都 · poi-image 素材枠 1",
+              "en": "Kyoto · poi-image request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-002",
+            "assetId": "destination.jp.kyoto.poi-image.request.002",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 2",
+              "ja-JP": "京都 · poi-image 素材枠 2",
+              "en": "Kyoto · poi-image request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-003",
+            "assetId": "destination.jp.kyoto.poi-image.request.003",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 3",
+              "ja-JP": "京都 · poi-image 素材枠 3",
+              "en": "Kyoto · poi-image request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-004",
+            "assetId": "destination.jp.kyoto.poi-image.request.004",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 4",
+              "ja-JP": "京都 · poi-image 素材枠 4",
+              "en": "Kyoto · poi-image request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-005",
+            "assetId": "destination.jp.kyoto.poi-image.request.005",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 5",
+              "ja-JP": "京都 · poi-image 素材枠 5",
+              "en": "Kyoto · poi-image request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-006",
+            "assetId": "destination.jp.kyoto.poi-image.request.006",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 6",
+              "ja-JP": "京都 · poi-image 素材枠 6",
+              "en": "Kyoto · poi-image request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-007",
+            "assetId": "destination.jp.kyoto.poi-image.request.007",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 7",
+              "ja-JP": "京都 · poi-image 素材枠 7",
+              "en": "Kyoto · poi-image request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-008",
+            "assetId": "destination.jp.kyoto.poi-image.request.008",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 8",
+              "ja-JP": "京都 · poi-image 素材枠 8",
+              "en": "Kyoto · poi-image request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-009",
+            "assetId": "destination.jp.kyoto.poi-image.request.009",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 9",
+              "ja-JP": "京都 · poi-image 素材枠 9",
+              "en": "Kyoto · poi-image request 9"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-009"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-010",
+            "assetId": "destination.jp.kyoto.poi-image.request.010",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 10",
+              "ja-JP": "京都 · poi-image 素材枠 10",
+              "en": "Kyoto · poi-image request 10"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-010"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-011",
+            "assetId": "destination.jp.kyoto.poi-image.request.011",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 11",
+              "ja-JP": "京都 · poi-image 素材枠 11",
+              "en": "Kyoto · poi-image request 11"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-011"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-kyoto-poi-image-012",
+            "assetId": "destination.jp.kyoto.poi-image.request.012",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "京都 · poi-image 需求 12",
+              "ja-JP": "京都 · poi-image 素材枠 12",
+              "en": "Kyoto · poi-image request 12"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-kyoto-poi-image-012"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ]
+      },
+      "fallbacks": {
+        "generic": "destination.jp.kyoto.placeholder.default.001",
+        "categories": {}
+      },
+      "completion": {
+        "approvedPlaceholders": 1,
+        "requestedAssets": 25,
+        "acquiredAssets": 0
+      },
+      "rightsSummary": {
+        "approved": 1,
+        "providerOnly": 0,
+        "acquisitionRequired": 25
+      },
+      "lastReviewedAt": "2026-09-07"
+    },
+    {
+      "id": "jp-osaka",
+      "country": "JP",
+      "type": "city",
+      "names": {
+        "zh-CN": "大阪",
+        "ja-JP": "大阪",
+        "en": "Osaka"
+      },
+      "description": "Phase 1 fallback and procurement pack; no verified documentary photos acquired.",
+      "theme": {
+        "surface": "#fbf4ea",
+        "accent": "#d97b70",
+        "ink": "#475665",
+        "gradient": ["#fbf4ea", "#f4dfd9"]
+      },
+      "slots": {
+        "desktopHero": [
+          {
+            "requestId": "jp-osaka-desktop-hero-001",
+            "assetId": "destination.jp.osaka.desktop-hero.request.001",
+            "role": "desktop-hero",
+            "names": {
+              "zh-CN": "大阪 · desktop-hero 需求 1",
+              "ja-JP": "大阪 · desktop-hero 素材枠 1",
+              "en": "Osaka · desktop-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-desktop-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1920,
+              "height": 1080
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "mobileHero": [
+          {
+            "requestId": "jp-osaka-mobile-hero-001",
+            "assetId": "destination.jp.osaka.mobile-hero.request.001",
+            "role": "mobile-hero",
+            "names": {
+              "zh-CN": "大阪 · mobile-hero 需求 1",
+              "ja-JP": "大阪 · mobile-hero 素材枠 1",
+              "en": "Osaka · mobile-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-mobile-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1080,
+              "height": 1440
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "areaCovers": [
+          {
+            "requestId": "jp-osaka-area-cover-001",
+            "assetId": "destination.jp.osaka.area-cover.request.001",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "大阪 · area-cover 需求 1",
+              "ja-JP": "大阪 · area-cover 素材枠 1",
+              "en": "Osaka · area-cover request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-area-cover-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-area-cover-002",
+            "assetId": "destination.jp.osaka.area-cover.request.002",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "大阪 · area-cover 需求 2",
+              "ja-JP": "大阪 · area-cover 素材枠 2",
+              "en": "Osaka · area-cover request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-area-cover-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-area-cover-003",
+            "assetId": "destination.jp.osaka.area-cover.request.003",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "大阪 · area-cover 需求 3",
+              "ja-JP": "大阪 · area-cover 素材枠 3",
+              "en": "Osaka · area-cover request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-area-cover-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "landmarkSymbols": [
+          {
+            "requestId": "jp-osaka-landmark-symbol-001",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.001",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 1",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 1",
+              "en": "Osaka · landmark-symbol request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-002",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.002",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 2",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 2",
+              "en": "Osaka · landmark-symbol request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-003",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.003",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 3",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 3",
+              "en": "Osaka · landmark-symbol request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-004",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.004",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 4",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 4",
+              "en": "Osaka · landmark-symbol request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-005",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.005",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 5",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 5",
+              "en": "Osaka · landmark-symbol request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-006",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.006",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 6",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 6",
+              "en": "Osaka · landmark-symbol request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-007",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.007",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 7",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 7",
+              "en": "Osaka · landmark-symbol request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-landmark-symbol-008",
+            "assetId": "destination.jp.osaka.landmark-symbol.request.008",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "大阪 · landmark-symbol 需求 8",
+              "ja-JP": "大阪 · landmark-symbol 素材枠 8",
+              "en": "Osaka · landmark-symbol request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-landmark-symbol-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "poiImages": [
+          {
+            "requestId": "jp-osaka-poi-image-001",
+            "assetId": "destination.jp.osaka.poi-image.request.001",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 1",
+              "ja-JP": "大阪 · poi-image 素材枠 1",
+              "en": "Osaka · poi-image request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-002",
+            "assetId": "destination.jp.osaka.poi-image.request.002",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 2",
+              "ja-JP": "大阪 · poi-image 素材枠 2",
+              "en": "Osaka · poi-image request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-003",
+            "assetId": "destination.jp.osaka.poi-image.request.003",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 3",
+              "ja-JP": "大阪 · poi-image 素材枠 3",
+              "en": "Osaka · poi-image request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-004",
+            "assetId": "destination.jp.osaka.poi-image.request.004",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 4",
+              "ja-JP": "大阪 · poi-image 素材枠 4",
+              "en": "Osaka · poi-image request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-005",
+            "assetId": "destination.jp.osaka.poi-image.request.005",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 5",
+              "ja-JP": "大阪 · poi-image 素材枠 5",
+              "en": "Osaka · poi-image request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-006",
+            "assetId": "destination.jp.osaka.poi-image.request.006",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 6",
+              "ja-JP": "大阪 · poi-image 素材枠 6",
+              "en": "Osaka · poi-image request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-007",
+            "assetId": "destination.jp.osaka.poi-image.request.007",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 7",
+              "ja-JP": "大阪 · poi-image 素材枠 7",
+              "en": "Osaka · poi-image request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-008",
+            "assetId": "destination.jp.osaka.poi-image.request.008",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 8",
+              "ja-JP": "大阪 · poi-image 素材枠 8",
+              "en": "Osaka · poi-image request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-009",
+            "assetId": "destination.jp.osaka.poi-image.request.009",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 9",
+              "ja-JP": "大阪 · poi-image 素材枠 9",
+              "en": "Osaka · poi-image request 9"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-009"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-010",
+            "assetId": "destination.jp.osaka.poi-image.request.010",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 10",
+              "ja-JP": "大阪 · poi-image 素材枠 10",
+              "en": "Osaka · poi-image request 10"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-010"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-011",
+            "assetId": "destination.jp.osaka.poi-image.request.011",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 11",
+              "ja-JP": "大阪 · poi-image 素材枠 11",
+              "en": "Osaka · poi-image request 11"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-011"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-osaka-poi-image-012",
+            "assetId": "destination.jp.osaka.poi-image.request.012",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "大阪 · poi-image 需求 12",
+              "ja-JP": "大阪 · poi-image 素材枠 12",
+              "en": "Osaka · poi-image request 12"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-osaka-poi-image-012"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ]
+      },
+      "fallbacks": {
+        "generic": "destination.jp.osaka.placeholder.default.001",
+        "categories": {}
+      },
+      "completion": {
+        "approvedPlaceholders": 1,
+        "requestedAssets": 25,
+        "acquiredAssets": 0
+      },
+      "rightsSummary": {
+        "approved": 1,
+        "providerOnly": 0,
+        "acquisitionRequired": 25
+      },
+      "lastReviewedAt": "2026-09-07"
+    },
+    {
+      "id": "jp-fuji-hakone",
+      "country": "JP",
+      "type": "destination-cluster",
+      "names": {
+        "zh-CN": "富士山—河口湖—箱根",
+        "ja-JP": "富士山・河口湖・箱根",
+        "en": "Mount Fuji–Kawaguchiko–Hakone"
+      },
+      "description": "Phase 1 fallback and procurement pack; no verified documentary photos acquired.",
+      "theme": {
+        "surface": "#fbf4ea",
+        "accent": "#d97b70",
+        "ink": "#475665",
+        "gradient": ["#fbf4ea", "#f4dfd9"]
+      },
+      "slots": {
+        "desktopHero": [
+          {
+            "requestId": "jp-fuji-hakone-desktop-hero-001",
+            "assetId": "destination.jp.fuji-hakone.desktop-hero.request.001",
+            "role": "desktop-hero",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · desktop-hero 需求 1",
+              "ja-JP": "富士山・河口湖・箱根 · desktop-hero 素材枠 1",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · desktop-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-desktop-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1920,
+              "height": 1080
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "mobileHero": [
+          {
+            "requestId": "jp-fuji-hakone-mobile-hero-001",
+            "assetId": "destination.jp.fuji-hakone.mobile-hero.request.001",
+            "role": "mobile-hero",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · mobile-hero 需求 1",
+              "ja-JP": "富士山・河口湖・箱根 · mobile-hero 素材枠 1",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · mobile-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-mobile-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1080,
+              "height": 1440
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "areaCovers": [
+          {
+            "requestId": "jp-fuji-hakone-area-cover-001",
+            "assetId": "destination.jp.fuji-hakone.area-cover.request.001",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · area-cover 需求 1",
+              "ja-JP": "富士山・河口湖・箱根 · area-cover 素材枠 1",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · area-cover request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-area-cover-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-area-cover-002",
+            "assetId": "destination.jp.fuji-hakone.area-cover.request.002",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · area-cover 需求 2",
+              "ja-JP": "富士山・河口湖・箱根 · area-cover 素材枠 2",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · area-cover request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-area-cover-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-area-cover-003",
+            "assetId": "destination.jp.fuji-hakone.area-cover.request.003",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · area-cover 需求 3",
+              "ja-JP": "富士山・河口湖・箱根 · area-cover 素材枠 3",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · area-cover request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-area-cover-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "landmarkSymbols": [
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-001",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.001",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "河口湖湖畔",
+              "ja-JP": "河口湖畔",
+              "en": "Lake Kawaguchi shore"
+            },
+            "entity": {
+              "type": "poi_candidate",
+              "id": "jp-fuji-hakone-lake-kawaguchi"
+            },
+            "resolution": "candidate_requires_verification",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Candidate name occurs in src/features/planner/data/planner-catalog.ts at baseline; translations and identity require editorial verification. No coordinate/provider ID asserted."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-002",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.002",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士急乐园",
+              "ja-JP": "富士急ハイランド",
+              "en": "Fuji-Q Highland"
+            },
+            "entity": {
+              "type": "poi_candidate",
+              "id": "jp-fuji-hakone-fuji-q-highland"
+            },
+            "resolution": "candidate_requires_verification",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Candidate name occurs in src/features/planner/data/planner-catalog.ts at baseline; translations and identity require editorial verification. No coordinate/provider ID asserted."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-003",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.003",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · landmark-symbol 需求 3",
+              "ja-JP": "富士山・河口湖・箱根 · landmark-symbol 素材枠 3",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · landmark-symbol request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-landmark-symbol-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-004",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.004",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · landmark-symbol 需求 4",
+              "ja-JP": "富士山・河口湖・箱根 · landmark-symbol 素材枠 4",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · landmark-symbol request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-landmark-symbol-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-005",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.005",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · landmark-symbol 需求 5",
+              "ja-JP": "富士山・河口湖・箱根 · landmark-symbol 素材枠 5",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · landmark-symbol request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-landmark-symbol-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-006",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.006",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · landmark-symbol 需求 6",
+              "ja-JP": "富士山・河口湖・箱根 · landmark-symbol 素材枠 6",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · landmark-symbol request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-landmark-symbol-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-007",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.007",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · landmark-symbol 需求 7",
+              "ja-JP": "富士山・河口湖・箱根 · landmark-symbol 素材枠 7",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · landmark-symbol request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-landmark-symbol-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-landmark-symbol-008",
+            "assetId": "destination.jp.fuji-hakone.landmark-symbol.request.008",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · landmark-symbol 需求 8",
+              "ja-JP": "富士山・河口湖・箱根 · landmark-symbol 素材枠 8",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · landmark-symbol request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-landmark-symbol-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "poiImages": [
+          {
+            "requestId": "jp-fuji-hakone-poi-image-001",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.001",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 1",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 1",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-002",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.002",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 2",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 2",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-003",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.003",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 3",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 3",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-004",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.004",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 4",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 4",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-005",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.005",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 5",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 5",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-006",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.006",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 6",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 6",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-007",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.007",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 7",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 7",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-008",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.008",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 8",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 8",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-009",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.009",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 9",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 9",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 9"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-009"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-010",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.010",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 10",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 10",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 10"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-010"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-011",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.011",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 11",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 11",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 11"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-011"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-fuji-hakone-poi-image-012",
+            "assetId": "destination.jp.fuji-hakone.poi-image.request.012",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "富士山—河口湖—箱根 · poi-image 需求 12",
+              "ja-JP": "富士山・河口湖・箱根 · poi-image 素材枠 12",
+              "en": "Mount Fuji–Kawaguchiko–Hakone · poi-image request 12"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-fuji-hakone-poi-image-012"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ]
+      },
+      "fallbacks": {
+        "generic": "destination.jp.fuji-hakone.placeholder.default.001",
+        "categories": {}
+      },
+      "completion": {
+        "approvedPlaceholders": 1,
+        "requestedAssets": 25,
+        "acquiredAssets": 0
+      },
+      "rightsSummary": {
+        "approved": 1,
+        "providerOnly": 0,
+        "acquisitionRequired": 25
+      },
+      "lastReviewedAt": "2026-09-07"
+    },
+    {
+      "id": "jp-hokkaido",
+      "country": "JP",
+      "type": "region",
+      "names": {
+        "zh-CN": "北海道",
+        "ja-JP": "北海道",
+        "en": "Hokkaido"
+      },
+      "description": "Phase 1 fallback and procurement pack; no verified documentary photos acquired.",
+      "theme": {
+        "surface": "#fbf4ea",
+        "accent": "#d97b70",
+        "ink": "#475665",
+        "gradient": ["#fbf4ea", "#f4dfd9"]
+      },
+      "slots": {
+        "desktopHero": [
+          {
+            "requestId": "jp-hokkaido-desktop-hero-001",
+            "assetId": "destination.jp.hokkaido.desktop-hero.request.001",
+            "role": "desktop-hero",
+            "names": {
+              "zh-CN": "北海道 · desktop-hero 需求 1",
+              "ja-JP": "北海道 · desktop-hero 素材枠 1",
+              "en": "Hokkaido · desktop-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-desktop-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1920,
+              "height": 1080
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "mobileHero": [
+          {
+            "requestId": "jp-hokkaido-mobile-hero-001",
+            "assetId": "destination.jp.hokkaido.mobile-hero.request.001",
+            "role": "mobile-hero",
+            "names": {
+              "zh-CN": "北海道 · mobile-hero 需求 1",
+              "ja-JP": "北海道 · mobile-hero 素材枠 1",
+              "en": "Hokkaido · mobile-hero request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-mobile-hero-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 1080,
+              "height": 1440
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "areaCovers": [
+          {
+            "requestId": "jp-hokkaido-area-cover-001",
+            "assetId": "destination.jp.hokkaido.area-cover.request.001",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "北海道 · area-cover 需求 1",
+              "ja-JP": "北海道 · area-cover 素材枠 1",
+              "en": "Hokkaido · area-cover request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-area-cover-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-area-cover-002",
+            "assetId": "destination.jp.hokkaido.area-cover.request.002",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "北海道 · area-cover 需求 2",
+              "ja-JP": "北海道 · area-cover 素材枠 2",
+              "en": "Hokkaido · area-cover request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-area-cover-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-area-cover-003",
+            "assetId": "destination.jp.hokkaido.area-cover.request.003",
+            "role": "area-cover",
+            "names": {
+              "zh-CN": "北海道 · area-cover 需求 3",
+              "ja-JP": "北海道 · area-cover 素材枠 3",
+              "en": "Hokkaido · area-cover request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-area-cover-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 960,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "landmarkSymbols": [
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-001",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.001",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 1",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 1",
+              "en": "Hokkaido · landmark-symbol request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-002",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.002",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 2",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 2",
+              "en": "Hokkaido · landmark-symbol request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-003",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.003",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 3",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 3",
+              "en": "Hokkaido · landmark-symbol request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-004",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.004",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 4",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 4",
+              "en": "Hokkaido · landmark-symbol request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-005",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.005",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 5",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 5",
+              "en": "Hokkaido · landmark-symbol request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-006",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.006",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 6",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 6",
+              "en": "Hokkaido · landmark-symbol request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-007",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.007",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 7",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 7",
+              "en": "Hokkaido · landmark-symbol request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-landmark-symbol-008",
+            "assetId": "destination.jp.hokkaido.landmark-symbol.request.008",
+            "role": "landmark-symbol",
+            "names": {
+              "zh-CN": "北海道 · landmark-symbol 需求 8",
+              "ja-JP": "北海道 · landmark-symbol 素材枠 8",
+              "en": "Hokkaido · landmark-symbol request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-landmark-symbol-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 640
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ],
+        "poiImages": [
+          {
+            "requestId": "jp-hokkaido-poi-image-001",
+            "assetId": "destination.jp.hokkaido.poi-image.request.001",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 1",
+              "ja-JP": "北海道 · poi-image 素材枠 1",
+              "en": "Hokkaido · poi-image request 1"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-001"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-002",
+            "assetId": "destination.jp.hokkaido.poi-image.request.002",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 2",
+              "ja-JP": "北海道 · poi-image 素材枠 2",
+              "en": "Hokkaido · poi-image request 2"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-002"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-003",
+            "assetId": "destination.jp.hokkaido.poi-image.request.003",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 3",
+              "ja-JP": "北海道 · poi-image 素材枠 3",
+              "en": "Hokkaido · poi-image request 3"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-003"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-004",
+            "assetId": "destination.jp.hokkaido.poi-image.request.004",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 4",
+              "ja-JP": "北海道 · poi-image 素材枠 4",
+              "en": "Hokkaido · poi-image request 4"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-004"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-005",
+            "assetId": "destination.jp.hokkaido.poi-image.request.005",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 5",
+              "ja-JP": "北海道 · poi-image 素材枠 5",
+              "en": "Hokkaido · poi-image request 5"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-005"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-006",
+            "assetId": "destination.jp.hokkaido.poi-image.request.006",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 6",
+              "ja-JP": "北海道 · poi-image 素材枠 6",
+              "en": "Hokkaido · poi-image request 6"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-006"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-007",
+            "assetId": "destination.jp.hokkaido.poi-image.request.007",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 7",
+              "ja-JP": "北海道 · poi-image 素材枠 7",
+              "en": "Hokkaido · poi-image request 7"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-007"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-008",
+            "assetId": "destination.jp.hokkaido.poi-image.request.008",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 8",
+              "ja-JP": "北海道 · poi-image 素材枠 8",
+              "en": "Hokkaido · poi-image request 8"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-008"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-009",
+            "assetId": "destination.jp.hokkaido.poi-image.request.009",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 9",
+              "ja-JP": "北海道 · poi-image 素材枠 9",
+              "en": "Hokkaido · poi-image request 9"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-009"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-010",
+            "assetId": "destination.jp.hokkaido.poi-image.request.010",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 10",
+              "ja-JP": "北海道 · poi-image 素材枠 10",
+              "en": "Hokkaido · poi-image request 10"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-010"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-011",
+            "assetId": "destination.jp.hokkaido.poi-image.request.011",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 11",
+              "ja-JP": "北海道 · poi-image 素材枠 11",
+              "en": "Hokkaido · poi-image request 11"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-011"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          },
+          {
+            "requestId": "jp-hokkaido-poi-image-012",
+            "assetId": "destination.jp.hokkaido.poi-image.request.012",
+            "role": "poi-image",
+            "names": {
+              "zh-CN": "北海道 · poi-image 需求 12",
+              "ja-JP": "北海道 · poi-image 素材枠 12",
+              "en": "Hokkaido · poi-image request 12"
+            },
+            "entity": {
+              "type": "asset_request",
+              "id": "jp-hokkaido-poi-image-012"
+            },
+            "resolution": "unresolved",
+            "target": {
+              "width": 640,
+              "height": 360
+            },
+            "status": "acquisition_required",
+            "notes": "Unresolved role/area requirement, NOT a real POI entity. Pack destination is supported by start-flow generated-plans/japan-regions and trip-library fixtures; identify subject and verify names before acquisition."
+          }
+        ]
+      },
+      "fallbacks": {
+        "generic": "destination.jp.hokkaido.placeholder.default.001",
+        "categories": {}
+      },
+      "completion": {
+        "approvedPlaceholders": 1,
+        "requestedAssets": 25,
+        "acquiredAssets": 0
+      },
+      "rightsSummary": {
+        "approved": 1,
+        "providerOnly": 0,
+        "acquisitionRequired": 25
+      },
+      "lastReviewedAt": "2026-09-07"
+    }
+  ]
+}
