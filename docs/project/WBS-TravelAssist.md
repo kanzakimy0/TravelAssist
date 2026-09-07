@@ -251,12 +251,12 @@ src/db/
 
 ### 当前 Task 追踪记录
 
-TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 已合并（`aee2eae`），验收收尾 PR #167 已合并，基线 `origin/develop@c38d8c87ab8acd2b10551e6dfefb0398968264ae`。父任务验收与 2.13 已完成；013.1 进行中，仅使用现有任务分支安全同步最新 develop，不修改业务 UI。
+TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 / #167 已合并并验收；执行基线 `c38d8c8`，后安全同步 `707bcc8`。311 sources、1,060 logical variants、0 新增图片字节（无合规照片被擅自批准）；51 专项 / 318 全仓测试、lint / typecheck / build、no-op / resume 通过，28 项上游格式例外已核实。013.1 待审查，最终 PR 保持 Draft；Result：`docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`。不修改业务 UI，不执行 013.2。
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
-| TASK-013.1-A | 2.14 | A | 进行中 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | PENDING | PENDING（保持 Draft） |
+| TASK-013.1-A | 2.14 | A | 待审查 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | PENDING | PENDING（保持 Draft） |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -359,7 +359,7 @@ TASK-013.1-A：2026-09-07 用户授权合并父任务后继续。PR #166 已合�
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
 | 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
-| 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 进行中 |
+| 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 待审查 |
 
 ## 3. 网站入口与主系统 Shell（A）
 

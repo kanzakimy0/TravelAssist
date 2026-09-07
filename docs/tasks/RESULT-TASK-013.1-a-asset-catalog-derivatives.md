@@ -2,108 +2,173 @@
 
 ## Status
 
-Blocked — TASK-013-A implementation PR #166 is still Draft / Open and unmerged; merge plus final acceptance are mandatory. No implementation, dependency installation, polling or waiting performed.
+Completed — implementation and local acceptance complete; **待验收 / Draft publication PENDING**, not merged. No auto-merge. The initial blocked attempt is preserved in commit `3517054`; the user subsequently authorized merging the parent and continuing this task.
 
 ## Prerequisite
 
-Checked 2026-09-07 against `origin/develop@edd91cfdaea209c629d0fe6bd01a45788f5df803`.
-
-| Gate                            | Actual result                                                                                                                                                                    |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A: Parent Result on develop     | Missing `docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md`                                                                                                               |
-| B: Parent library on develop    | Missing actual asset manifest, `src/data/assets/`, `tools/assets/`, `public/media/shared/`; existing core-generation seed CSVs do not satisfy this gate                          |
-| C: Parent implementation merged | [PR #166](https://github.com/kanzakimy0/TravelAssist/pull/166) Open, Draft=true, merged=false; head `34928c57cd4f0b3cc80bb27e93701b11021fb181`                                   |
-| D: Parent final acceptance      | [Issue #112](https://github.com/kanzakimy0/TravelAssist/issues/112) Open; latest comments record implementation delivered / awaiting acceptance, not merged and finally accepted |
-| E: Parent WBS completed         | TASK-013-A / 2.13 completion is absent on develop; PR #166 carries 待审查, not 已完成                                                                                            |
-
-Parent merge SHA: N/A. A GitHub test-merge ref, if present, is not an actual merge.
+- TASK-013-A / [Issue #112](https://github.com/kanzakimy0/TravelAssist/issues/112): Closed / completed, final acceptance recorded.
+- Parent [PR #166](https://github.com/kanzakimy0/TravelAssist/pull/166): merged as `aee2eaec3ac841395de1737a3042a112ad6fa6ea`.
+- Acceptance closeout [PR #167](https://github.com/kanzakimy0/TravelAssist/pull/167): merged as `c38d8c87ab8acd2b10551e6dfefb0398968264ae`.
+- Parent Result, actual manifest / registry / tools / shared assets are present on develop. WBS 2.13 is 已完成. All five gates A–E passed before implementation.
 
 ## Tracking
 
-- Issue: [#116](https://github.com/kanzakimy0/TravelAssist/issues/116), Open / Blocked.
-- WBS: 2.14 reserved as 阻塞, dependency 2.13; ID unused on the checked develop.
-- Existing remote branch: `feature/a-asset-catalog-derivatives`.
-- Documentation branch base at this check: `59a145d23b5adf877bbe9cdccce83dbc6ffc3c06`.
-- Develop SHA at execution: `edd91cfdaea209c629d0fe6bd01a45788f5df803`.
-- Commit(s): documentation-only result/tracking commit, exact SHA recorded in Issue #116 after commit; no implementation commit.
-- Draft PR: none created for implementation.
-- Existing remote task branch checked out in an isolated worktree for this record only. No continuation on `feature/a-asset-library-foundation`, no copied parent schema, no merge of latest develop before the prerequisite gate passes.
+- Issue: [#116](https://github.com/kanzakimy0/TravelAssist/issues/116), Open.
+- WBS: 2.14, dependency 2.13; no occupied ID overwritten.
+- Branch: `feature/a-asset-catalog-derivatives` → `develop`.
+- Historical documentation branch base: `4c1d9bbf1311a10b1e9db5bde00fe2e7b12fccab`.
+- Actual implementation base / develop at execution: `c38d8c87ab8acd2b10551e6dfefb0398968264ae`.
+- Latest integrated develop: `707bcc8d2af14a86032181be63573beb3aea3e17`; two new B governance documents preserved without edits.
+- Safe parent/develop integration: `3fa1ca3`; no rebase, force push, reset, clean or cherry-pick.
+- Implementation commit: PENDING.
+- Draft PR: PENDING.
 
 ## Conflict Audit
 
-Parent Issue #112, its comments, Issue #116 and PR #166 checked once; prerequisite failure ends implementation preflight. Full implementation-path owner audit deferred until the gate passes. Existing Planner workspaces and server 3113 untouched. Shared package / lock / runtime files were not edited.
+Open PRs #139, #106, #76, #72 and #68 checked, including changed-file lists. #72 overlaps package / lock files; this task only adds seven asset scripts and exact development dependency sharp 0.35.4. No DB dependencies are copied, deleted or updated. The lock change promotes the already present sharp version from optional-only to an explicit dev dependency; no package upgrades.
+
+#68 owns separate Personal Center asset tools. #76 assets are read-only. Existing WBS owners/statuses remain intact. New #168 / merged #169–170 add governance docs only. Existing dirty Planner worktrees and the live 3113 preview are untouched. No UI, route, background, map or user-state files changed.
 
 ## Full Asset Inventory
 
-Not run. Scanned/catalog/runtime/design/preview/referenced/orphan/unknown/protected/duplicate source counts and total source bytes are **not measured**, not zero or claimed complete.
+| Measure                          |          Actual |
+| -------------------------------- | --------------: |
+| Scanned / catalog / unique paths | 311 / 311 / 311 |
+| Uncatalogued                     |               0 |
+| Source bytes                     |     113,837,642 |
+| Runtime-source scope             |              69 |
+| Legacy-protected scope           |              32 |
+| Design-source scope              |              16 |
+| Preview-only scope               |               6 |
+| Documentation-only scope         |             188 |
+| Referenced / orphan              |       171 / 140 |
+| Manifested / unmanifested        |        69 / 242 |
+| Protected across all scopes      |              46 |
+| Exact source duplicate groups    |              16 |
+
+Scope counts are mutually exclusive; protected is an overlapping flag. Metadata includes two asset-manifest JSON files. All documentation images are included, including unreferenced evidence. Symlinks and generated files are excluded from sources by safety policy. Literal imports / require / URL / CSS / Markdown / HTML and manifest references are recorded with source lines. There are 112 unresolved historical or computed references, not 112 proven broken runtime images. No deletion is inferred from orphan status.
 
 ## Eligibility
 
-Not evaluated. No parent schema imported from its unmerged branch. No source rights changed.
+- Eligible production raster: **0**. Existing photographs do not have approved parent-manifest grants; no authorization has been invented.
+- 242 unmanifested-review-required files: 232 rasters, eight SVGs and two metadata documents.
+- 69 approved SVG sources: vector-token-only, not raster-eligible.
+- Animated / video / font sources: 0 / 0 / 0 in this actual repository inventory; registration-only behavior tested.
+- Nonlocal catalog: 125 acquisition-required requests; provider-only 0. They are not counted as fictitious local source files.
+- Unknown role, unsupported format, no cache/derivative permission, expired/rejected grants, corrupt data and byte/pixel limits have machine-readable block reasons.
 
 ## S / M / L
 
-Not implemented or executed. Physical / alias / unavailable counts not measured; no no-upscale proof claimed.
+| Profile | Physical | Alias | Unavailable |
+| ------- | -------: | ----: | ----------: |
+| sm      |        0 |     0 |         232 |
+| md      |        0 |     0 |         232 |
+| lg      |        0 |     0 |         232 |
+
+All eligible-production-source resolution equations are 0 = 0. The 696 unavailable rows deliberately expose legacy raster gaps rather than disappearing from expected counts. Actual processing is tested with temporary artificial-color raster fixtures: S/M/L, source-limited aliases, identical encodings, independent-source duplicates and undersized special profiles. A 120×80 fixture remains 120×80, with one physical generic file and two degraded aliases; no enlargement.
 
 ## Special Profiles
 
-Not implemented. Expected, physical, alias, review and unavailable counts not calculated.
+21 raster profiles are defined: three generic plus 18 role-specific profiles (Hero/background desktop/mobile, region tile, three cards, map popup/pin, timeline/search, share JPEG, favicon/touch/PWA PNG and state panel). All dimensions/quality/budgets live in the single profile JSON.
+
+Applicable production raster special expectations / physical / aliases / review / unavailable: **0 / 0 / 0 / 0 / 0**, because no local raster has an approved, declared parent role. This is not a claim that special photos were delivered. Complete role mappings, actual WebP/JPEG/PNG encoding, explicit brand selection, safe padding, focal crop and missing-special fallback are exercised by tests.
 
 ## Vector Tokens
 
-Not implemented. No copied SVG files or display-token registry generated.
+- 38 POI/transport icons × six tokens = 228.
+- 12 markers × five tokens = 60.
+- 19 placeholders/state illustrations × four tokens = 76.
+- **364 tokens**, referring to 69 original SVGs; no duplicated SVG files.
+- Total logical variants: **1,060 = 364 vector-token + 696 unavailable**. Physical / alias / source-provided are zero in the production catalog.
+- Eight unregistered legacy SVGs remain review-required source records, not silently approved display assets.
 
 ## Generated Output
 
-This attempt created **0 physical variants / 0 generated bytes**. Output root not created. No largest-file or processing-budget result claimed.
+- Production physical files: **0**; generated binary bytes: **0**; largest generated file: N/A.
+- Root policy: `public/media/generated/v1/{stable-asset-key}/{profile}.{ext}`.
+- Soft budget 50 MiB, hard 100 MiB; object cap 20 MiB and per-profile caps enforced.
+- Original source total is not newly added Git data. Synthetic test binaries and browser screenshots live in ignored temporary directories, not Git.
+- No new runtime photographs, AI images, downloads or cloud/CDN objects.
 
 ## Rights / Privacy
 
-No images read for processing, downloaded, transformed or relicensed. No metadata stripping / GPS verification executed. No secret or private source included.
+Scanning preserves parent rights and the 22 legacy AI/illustrative source labels; discovered metadata does not approve derivatives. Provider-only/acquisition/unknown/rejected/expired sources cannot emit runtime derivative paths. Runtime lookup rechecks expiry and both sides of aliases.
+
+Synthetic fixtures with test-only GPS / camera serial EXIF were actually encoded and decoded: outputs contain no EXIF/XMP/IPTC, and keep only built-in sRGB ICC. Auto-orientation verified. Missing focal point cover is review_required with runtimeUsable=false; impossible protected safe areas stay unavailable/review. No face recognition, token, cookie, private license file or third-party hotlink was added.
 
 ## Original Protection
 
-This attempt changed **0 source images**, deleted **0**, renamed **0**. Only the three tracking documents listed below were edited. Pipeline source snapshot / full protected SHA audit not run; do not interpret the absence of processing as a completed pipeline test.
+Source modified **0**; deleted **0**; renamed **0**; protected SHA changed **0**. All 311 source hashes are compared before/after night runs. Git diff against integrated develop is empty for public originals, design Personal Center assets, src/features and src/app. Parents' actual manifest/rights records are unchanged.
 
 ## Nightly Behavior
 
-Not run: concurrency, checkpoint, retries, resume, first run, second no-op and lock tests. No automation or wait was created.
+Default concurrency 2, configurable 1–4; sharp worker concurrency 1 and cache 64 MiB. Source limit 50 MiB / 80 MP; one retry per profile. Atomic writes, ignored checkpoint, per-source progress, SHA/policy/encoding cache, no automatic unknown-file pruning.
+
+Normal execution, --resume, --rebuild, --dry-run and --verify-only are available. Young/live/cross-host locks cannot be stolen; stale recovery requires >12h and a dead local PID. Controlled interruption resumes without regenerating the completed source. Two independent byte-identical sources canonicalize to one physical file and resume with zero writes.
+
+Initial and second complete nightly runs: sourceChanged=0, unnecessaryRegenerated=0, skippedUnchanged=311 after the initial catalog/derive pass. Required formatting failure deliberately returns exit 1, not a false green. Final integrated first / second / resume runs all completed: 19 canonical output files compared byte-for-byte, zero changes; resumeRecovered=311. Evidence: `docs/assets/generated/variant-repeat-verification.json`.
 
 ## Reports
 
-Only this Blocked Result created. Full checklist, usage, matrix, orphan, duplicate, missing, oversize, focal review, errors and variant HTML reports were not generated.
+Generated under `docs/assets/generated/`: all-assets-checklist, usage report, orphan list, variant matrix/statistics, duplicate, missing, oversize, focal review, processing errors CSV and nightly summary. Current processing errors **0**, source oversize **0**, focal-review production items **0**, duplicate physical outputs **0**.
+
+Offline `assets/design/asset-library/previews/variant-review.html`: 1440×1000 and 390×844; 433 images decoded on each, zero failed images, zero horizontal overflow, zero page errors and zero external requests. Desktop/mobile screenshots were visually inspected and remain ignored. Committed browser and formatting JSON audits accompany the reports.
 
 ## Validation
 
-- Passed: Git status / current branch, fetch all with prune, latest develop SHA / log / containing-branch inspection.
-- Passed: required parent file/tree lookup and WBS completion lookup; findings are missing prerequisites, not passing acceptance.
-- Read: complete TASK-013.1-A and Codex command; remote task blob equals develop task blob (`945535cfbcc5c99283fbd9a024c996fbc01617d6`). Issue #116 read completely. Parent Issue state/comments and PR status verified.
-- Existing task branch fast-forward pull: already up to date; clean before documentation changes.
-- New Result Markdown formatting and `git diff --check`: passed before documentation commit. Existing Task/WBS document formatting preserved; no full-project formatting pass claimed.
-- **Not run due to hard gate:** `npm ci`, sharp install, `npm audit`, `assets:catalog`, `assets:derive`, `assets:verify-variants`, `assets:review`, `assets:nightly` first/second, resume, `test:asset-variants`, parent `assets:validate` / `test:assets`, lint, typecheck, full format check and build.
+| Command / check                                  | Actual result                                                                                                                  |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| npm ci (before and after sharp)                  | Passed, 362 installed packages; existing ESLint deprecation / unapproved unrs-resolver postinstall warning preserved           |
+| npm install --save-dev --save-exact sharp@0.35.4 | Passed; only new direct dependency, Apache-2.0                                                                                 |
+| npm audit                                        | Passed, 0 vulnerabilities                                                                                                      |
+| assets:catalog                                   | Passed, 311 sources / 100% coverage                                                                                            |
+| assets:derive                                    | Passed, 1,060 logical entries / 0 processing errors                                                                            |
+| assets:verify-variants                           | Passed, 0 errors                                                                                                               |
+| assets:review                                    | Passed; JSON/CSV/Markdown/HTML generated                                                                                       |
+| assets:nightly normal / second                   | Processing, tests, parent validation, lint, build, typecheck passed; exit 1 for unchanged upstream format exceptions           |
+| test:asset-variants                              | 51/51 passed, no skipped tests                                                                                                 |
+| assets:validate / test:assets                    | Passed: 194 parent entries / 0 errors; 44/44 tests                                                                             |
+| All repository Node tests                        | 318/318 passed, no skipped tests                                                                                               |
+| lint                                             | Passed                                                                                                                         |
+| typecheck                                        | Passed after build supplies Next route types                                                                                   |
+| format:check                                     | Failed: 28 unchanged upstream documents on latest integrated develop; individually confirmed identical and failing on baseline |
+| Task-owned formatting                            | Passed; WBS remains under existing repository exclusion                                                                        |
+| build                                            | Passed; 21 static generation outputs; no cloud connection                                                                      |
+| git diff --check                                 | Passed                                                                                                                         |
+| Browser                                          | Two viewports / 433 decoded images each / no errors                                                                            |
+
+Exact 28 format exceptions: `docs/assets/generated/variant-format-baseline.json`. The two newly integrated B governance documents explain the increase from 26 to 28. No unrelated owner files were reformatted. Earlier clean-install typecheck saw missing generated PageProps in an unchanged route; build generated those types, and subsequent typecheck passed without configuration changes.
+
+CI is not claimed passed. All pushed commit subjects include [skip ci] to avoid the existing feature-push auto-create-and-merge workflow; publication is a manually created Draft PR. Workflows were not modified.
 
 ## Files Changed
 
-1. `docs/tasks/RESULT-TASK-013.1-a-asset-catalog-derivatives.md`
-2. `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` — metadata only
-3. `docs/project/WBS-TravelAssist.md` — this task's blocked record only
+- Seven npm asset scripts; exact sharp development dependency / lock; ignored checkpoint, fixture and temporary-file patterns.
+- Two profile/policy JSON files, source JSON/CSV, usage map and variants JSON.
+- Additive source/variant/responsive TypeScript API and optional safeArea/brand/profile presentation fields; existing parent API remains intact.
+- Full scanner, guarded processor, verifier, report renderer, nightly entry and explicit acceptance utilities; parent legacy inventory excludes generated derivatives.
+- 51 dedicated tests using actual temporary encoded images.
+- Review HTML and all generated audit reports; Task / Result / WBS tracking.
+- No business UI, source image, production secret, Provider, AI, Auth or DB change.
 
 ## WBS Update
 
-2.14 and TASK-013.1-A tracking recorded as **阻塞**, not 进行中 / 待审查 / 已完成. Parent status not changed. Existing documentation branch predates latest develop; unrelated old rows retained without claiming they are the current master state. Do not merge this old document branch over newer WBS records; safely integrate develop after the prerequisite is met.
-
-## Commit(s)
-
-Documentation-only commit pushed to the existing task branch; exact SHA recorded in Issue #116. Subject includes `[skip ci]` to prevent the repository's feature-push auto-create-and-merge workflow. Skipped CI is not passed CI.
-
-## Draft PR
-
-None created. Parent PR #166 remains Draft / Open; no merge performed.
+2.14 was marked 进行中 only after the parent merged and was accepted. Now 2.14 is 待审查 and Task is 待验收; it must not be 已完成 until this PR is merged and accepted. Parent 2.13 remains 已完成; unrelated WBS entries preserved.
 
 ## Follow-ups
 
-First review, explicitly authorize merge, merge and finally accept TASK-013-A / PR #166. Synchronize Issue #112, parent Result and WBS 2.13 to completion on develop. Then rerun all five gates and full TASK-013.1 implementation preflight. No automatic polling.
+1. Review the Draft, profiles, rights gates and offline preview; do not auto-merge.
+2. Approve/obtain legitimate source photographs through a separate asset acquisition task before processing production rasters.
+3. Review the 242 unmanifested sources and 112 unresolved references; never delete them based only on this inventory.
+4. Resolve the independently documented upstream format debt.
+5. TASK-013.2 must wait for this parent to merge and pass acceptance. It was not executed.
 
 ## Known Limitations
 
-TASK-013.1 has not been implemented. Parent implementation exists only on its feature branch; successful parent local tests are not evidence of merge/final acceptance. No pipeline, variant completeness, determinism or runtime safety results are claimed for this blocked attempt.
+- This is a functioning pipeline, not a delivered photographic collection. Zero eligible production raster is an honest rights outcome, not simulated image completion.
+- Static usage extraction cannot prove all dynamic construction. Root metadata and unreferenced documentation visuals are cataloged conservatively.
+- Approved SVGs use display bounds and must preserve intrinsic aspect ratio in future consumers.
+- Profile versions and source-policy hashes govern caching. Originals are only audited, not migrated; stale/unknown outputs are reported instead of auto-pruned.
+- Normal failures remove their own temporary writes; abrupt OS termination may leave ignored fragments and a lock requiring the documented safe recovery checks.
+- No existing page consumes the new runtime API yet. CDN acquisition, storage, visual approval and future consumer integration remain separate tasks.
+- Full nightly exit status stays nonzero for the 28 verified upstream format exceptions; no exception is silently treated as Passed.

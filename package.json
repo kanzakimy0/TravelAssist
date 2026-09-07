@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "assets:catalog": "node tools/assets/build-full-catalog.mjs",
+    "assets:derive": "node tools/assets/generate-asset-derivatives.mjs",
+    "assets:verify-variants": "node tools/assets/verify-asset-derivatives.mjs",
+    "assets:review": "node tools/assets/generate-variant-review.mjs",
+    "assets:nightly": "node tools/assets/run-assets-nightly.mjs",
+    "assets:nightly:resume": "node tools/assets/run-assets-nightly.mjs --resume",
+    "test:asset-variants": "node --test tests/task-013-1-asset-variants.test.mjs",
     "assets:inventory": "node tools/assets/inventory-assets.mjs",
     "assets:validate": "node tools/assets/validate-asset-library.mjs",
     "assets:index": "node tools/assets/generate-asset-index.mjs",
@@ -30,6 +37,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.4",
     "prettier": "3.9.6",
+    "sharp": "0.35.4",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3"
   }
