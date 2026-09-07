@@ -12,6 +12,7 @@ import {
 import { PlaceActions } from "./place-details";
 import ui from "../planner-interactions.module.css";
 import styles from "../planner.module.css";
+import { useWorkspaceCapabilities } from "./workspace-capabilities";
 
 export function MapQuickCard({
   state,
@@ -26,6 +27,7 @@ export function MapQuickCard({
   bounds: { width: number; height: number };
   onClose: () => void;
 }) {
+  const { canBook, enterDetail } = useWorkspaceCapabilities();
   const surface = useRef<HTMLDivElement>(null);
   const closing = useRef(false);
   const previousFocus = useRef<HTMLElement | SVGElement | null>(null);
@@ -149,22 +151,29 @@ export function MapQuickCard({
             <p>
               {area.access} · {area.tradeoff}
             </p>
-            <div className={ui.areaCandidates}>
-              {area.recommendationIds.slice(0, 4).map((id) => {
-                const candidate = state.places.find((p) => p.id === id)!;
-                return (
-                  <button type="button" key={id} onClick={() => detail(id)}>
-                    <strong>{candidate.name}</strong>
-                    <small>
-                      {candidate.tags.slice(0, 2).join(" · ")} · 查看详细
-                    </small>
-                  </button>
-                );
-              })}
-            </div>
+            {canBook && (
+              <div className={ui.areaCandidates}>
+                {area.recommendationIds.slice(0, 4).map((id) => {
+                  const candidate = state.places.find((p) => p.id === id)!;
+                  return (
+                    <button type="button" key={id} onClick={() => detail(id)}>
+                      <strong>{candidate.name}</strong>
+                      <small>
+                        {candidate.tags.slice(0, 2).join(" · ")} · 查看详细
+                      </small>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
             <button type="button" onClick={() => detail(area.id)}>
-              查看区域详细与候选对比 →
+              {canBook ? "查看区域详细与候选对比 →" : "查看区域与推荐理由 →"}
             </button>
+            {!canBook && (
+              <button type="button" onClick={enterDetail}>
+                进入详情选择与预约
+              </button>
+            )}
           </>
         ) : (
           <>

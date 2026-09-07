@@ -86,9 +86,7 @@ try {
         .locator("article")
         .filter({ hasText: "深度慢游" });
       await selectedCard.getByRole("button", { name: "查看这个方案" }).click();
-      await selectedCard
-        .getByRole("link", { name: "使用此方案并进入地图" })
-        .click();
+      await selectedCard.getByRole("button", { name: "进入详细路线" }).click();
       await page.waitForURL(`${baseUrl}/planner`);
       await page
         .getByRole("button", { name: /当前方案 深度体验之旅/ })

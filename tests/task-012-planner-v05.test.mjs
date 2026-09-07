@@ -32,6 +32,26 @@ function fixture() {
   const { places, areas } = makePlannerCatalog(plannerMockPlans);
   return makeTripState(plannerMockPlans, places, areas, initialPlannerSettings);
 }
+test("ticket tab excludes hotels, restaurants, completed tickets and unknown offers", () => {
+  const state = fixture();
+  for (const item of secondaryPanelModel(state).tickets) {
+    assert.ok(["attraction", "activity", "transport"].includes(item.type));
+    assert.ok(
+      !["booked", "ticketed", "cancelled"].includes(item.reservationStatus),
+    );
+  }
+  const unknown = {
+    ...state,
+    places: state.places.map((place) => ({
+      ...place,
+      bookingOptions: place.bookingOptions.map((option) => ({
+        ...option,
+        availabilityStatus: "unknown",
+      })),
+    })),
+  };
+  assert.deepEqual(secondaryPanelModel(unknown).tickets, []);
+});
 test("TASK-012 exactly seven settings categories", () =>
   assert.equal(settingsCategories.length, 7));
 test("draft edits do not mutate opening snapshot", () => {
@@ -93,6 +113,63 @@ test("mock replan clears pending and preserves every item", () => {
   const n = tripReducer(s, { type: "replan" });
   assert.equal(pendingSettingsCount(n), 0);
   assert.deepEqual(n.plans, s.plans);
+});
+
+test("breakfast selection does not overwrite an existing lunch or duplicate itself", () => {
+  const s = fixture();
+  const lunch = currentPlan(s).items.find(
+    (i) => i.type === "restaurant" && Number(i.startTime.slice(0, 2)) >= 11,
+  );
+  assert.ok(lunch);
+  const action = {
+    type: "add",
+    placeId: lunch.placeId,
+    day: lunch.day,
+    reservation: false,
+    mealSlot: "breakfast",
+  };
+  const next = tripReducer(s, action);
+  assert.deepEqual(
+    currentPlan(next).items.find((i) => i.id === lunch.id),
+    lunch,
+  );
+  const breakfast = currentPlan(next).items.find(
+    (i) => i.placeId === lunch.placeId && i.startTime === "07:00",
+  );
+  assert.ok(breakfast);
+  assert.notEqual(breakfast.id, lunch.id);
+  assert.equal(
+    currentPlan(tripReducer(next, action)).items.length,
+    currentPlan(next).items.length,
+  );
+});
+
+test("dinner selection preserves confirmed meals in another slot", () => {
+  const s = fixture();
+  const lunch = currentPlan(s).items.find(
+    (i) =>
+      i.type === "restaurant" &&
+      Number(i.startTime.slice(0, 2)) >= 11 &&
+      Number(i.startTime.slice(0, 2)) < 16,
+  );
+  assert.ok(lunch);
+  lunch.locked = true;
+  const next = tripReducer(s, {
+    type: "add",
+    placeId: lunch.placeId,
+    day: lunch.day,
+    reservation: false,
+    mealSlot: "dinner",
+  });
+  assert.deepEqual(
+    currentPlan(next).items.find((i) => i.id === lunch.id),
+    lunch,
+  );
+  assert.ok(
+    currentPlan(next).items.some(
+      (i) => i.placeId === lunch.placeId && i.startTime === "18:00",
+    ),
+  );
 });
 test("all six tabs survive map selection and inspection", () => {
   for (const tab of [
@@ -156,12 +233,28 @@ test("confirmed hotel hides recommended area and remains protected", () => {
     !visibleAreas(s).some((a) => a.type === "hotelArea" && a.day === hotel.day),
   );
 });
-test("recommendation component is byte-for-byte frozen from merged baseline", async () => {
+test("recommendation structure stays frozen except approved artwork and the detail booking footer", async () => {
   const file = "src/features/planner/components/plan-recommendation-list.tsx";
   const base = execFileSync("git", ["show", "4c1d9bb:" + file], {
     encoding: "utf8",
   }).replaceAll("\r\n", "\n");
-  assert.equal((await readFile(file, "utf8")).replaceAll("\r\n", "\n"), base);
+  const current = (await readFile(file, "utf8")).replaceAll("\r\n", "\n");
+  assert.ok(current.includes("到详情管理预约"));
+  const svg = base.match(/<svg[\s\S]*?<\/svg>/)[0];
+  const normalize = (text) => text.replace(/\s+/g, "");
+  assert.equal(
+    normalize(current.match(/<svg[\s\S]*?<\/svg>/)[0]),
+    normalize(svg),
+  );
+  // The user separately authorized replacing thumbnails with five existing AI
+  // illustrations. Freeze everything else, including selection and card order.
+  const withoutArtwork = current
+    .split("\nfunction PlanThumbnail(")[0]
+    .replace(/^import \{ planArtwork \}.*\n/m, "")
+    .replace(/^import \{ PlannerArtworkImage \}.*\n/m, "")
+    .replace(/\{planArtwork\(plan\.id\)\s*\?\s*\([\s\S]*?\)\s*\}/, svg)
+    .replace("到详情管理预约", "完成预约");
+  assert.equal(normalize(withoutArtwork), normalize(base));
 });
 test("v05 does not reintroduce legacy conditions entry", async () => {
   for (const file of [

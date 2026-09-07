@@ -2308,3 +2308,403 @@
     transition: none;
   }
 }
+
+/* Phone stage: only the content scrolls; progress and actions stay reachable. */
+@media (max-width: 47.999rem), (max-width: 64rem) and (max-height: 30rem) {
+  .headerActions .languageSelect select {
+    min-height: 2.75rem;
+    padding-inline: 0.65rem;
+    font-size: 1rem;
+  }
+
+  .avatar {
+    width: 2.75rem;
+    min-height: 2.75rem;
+  }
+
+  .detailTrigger {
+    min-height: 2.75rem;
+    font-size: 0.78rem;
+  }
+
+  .page {
+    --wizard-inset: clamp(1rem, 4vw, 1.75rem);
+    --wizard-body-gap: 1.25rem;
+    min-height: 100dvh;
+  }
+
+  .flowLayout {
+    width: calc(100% - 0.75rem);
+    height: 100dvh;
+    gap: 0.5rem;
+    padding-block: max(0.5rem, env(safe-area-inset-top))
+      max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .flowPanel {
+    max-height: none;
+    padding-block: 1rem 0.65rem;
+    border-radius: 1.5rem;
+  }
+
+  .progressNav {
+    flex: 0 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  .wizardContent {
+    overflow: hidden;
+    scrollbar-gutter: auto;
+    padding-bottom: 0;
+  }
+
+  .form {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .form > .step,
+  .plansStep > .stepBody,
+  .generationStep {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scroll-padding-block: 0.5rem;
+  }
+
+  .form > .step {
+    grid-row: 1;
+    padding: 0.2rem;
+  }
+
+  .stepBody {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+
+  .sectionHeader {
+    flex: 0 0 auto;
+  }
+
+  .stepTitle {
+    font-size: clamp(1.45rem, 6vw, 1.9rem);
+    line-height: 1.35;
+  }
+
+  .stepDescription {
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .familiarityGrid {
+    gap: 0.65rem;
+  }
+
+  .familiarityCard {
+    min-height: 9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.85rem;
+  }
+
+  .familiarityCard strong {
+    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
+    line-height: 1.45;
+  }
+
+  .familiarityCard small {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .selectionMark {
+    align-self: flex-end;
+    flex-shrink: 0;
+  }
+
+  .sectionHeadingRow h2,
+  .styleSection h2 {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .interestGrid {
+    gap: 0.5rem;
+  }
+
+  .interestCardWrap .interestCard {
+    min-height: 5.25rem;
+    padding: 0.7rem 0.6rem 2.9rem;
+    font-size: 0.8rem;
+  }
+
+  .interestCard small {
+    bottom: 1rem;
+    left: 0.6rem;
+  }
+
+  .interestDetailTrigger {
+    right: 0.25rem;
+    bottom: 0.25rem;
+    min-width: 2.75rem;
+    min-height: 2.5rem;
+    padding: 0.4rem;
+    font-size: 0.72rem;
+  }
+
+  .styleGroups,
+  .basicsRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .styleGroup {
+    padding: 0.85rem 0.65rem;
+  }
+
+  .styleSlider {
+    grid-template-columns: 4.3rem minmax(0, 13.5rem) 3rem;
+    gap: 0.35rem;
+  }
+
+  .sliderLeftLabel,
+  .sliderRightLabel {
+    font-size: 0.72rem;
+  }
+
+  .rangeWrap,
+  .rangeWrap input,
+  .rangeDots {
+    height: 2.75rem;
+  }
+
+  .dateModeRow {
+    gap: 0.4rem;
+  }
+
+  .dateModeOption {
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  .dateModeOption > button {
+    width: 100%;
+    min-height: 2.75rem;
+    padding-inline: 0.4rem;
+  }
+
+  .dateModeOption[data-expanded="true"] {
+    flex-basis: 100%;
+  }
+
+  .dateInlineFields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0 0.6rem 0.7rem;
+  }
+
+  .durationNote {
+    position: static;
+    width: 100%;
+    margin-top: 0.4rem;
+  }
+
+  .basicsRow {
+    gap: 1.25rem;
+    padding-block: 1.1rem;
+  }
+
+  .destinationGrid .compactChoice {
+    min-height: 4.5rem;
+    padding: 0.55rem 0.1rem;
+    font-size: 0.7rem;
+  }
+
+  .destinationGrid .iconText {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .squareOptionCard {
+    font-size: 0.75rem;
+  }
+
+  .partyGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .partyRow {
+    min-height: 3.5rem;
+    font-size: 0.85rem;
+  }
+
+  .counter button,
+  .modalClose {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .anchorActionRow {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .anchorActionRow h2 {
+    flex-basis: 100%;
+  }
+
+  .anchorActions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  .anchorActions button {
+    min-width: 0;
+    min-height: 3rem;
+    padding: 0.4rem 0.15rem;
+    font-size: 0.72rem;
+  }
+
+  .formNotice {
+    grid-row: 2;
+    margin-block: 0.3rem;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .actions {
+    grid-row: 3;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 0.35rem;
+    margin-top: 0;
+    padding-top: 0.6rem;
+  }
+
+  .actions button {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+    padding-inline: 0.25rem;
+    font-size: 0.78rem;
+  }
+
+  .privacyNote {
+    margin: 0;
+    font-size: 0.65rem;
+  }
+
+  .generationStep,
+  .plansStep {
+    height: 100%;
+  }
+
+  .generationStep {
+    justify-content: flex-start;
+  }
+
+  .generationStep .sectionHeader {
+    margin-top: auto;
+  }
+
+  .generationStep .stepBody {
+    margin-bottom: auto;
+    padding-bottom: 1rem;
+  }
+
+  .plansStep > .stepBody {
+    flex: 1 1 0;
+    margin-block: 0.8rem;
+    padding: 0.2rem;
+  }
+
+  .planGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .planCardBody {
+    padding: 1rem;
+  }
+
+  .planCardBody > p,
+  .planFacts dd {
+    font-size: 0.82rem;
+  }
+
+  .planTags span,
+  .planFacts dt {
+    font-size: 0.72rem;
+  }
+
+  .planSelectButton,
+  .planUseLink {
+    min-height: 2.75rem;
+    font-size: 0.85rem;
+  }
+
+  .planUseLink {
+    background: var(--wizard-coral-dark);
+  }
+
+  .planFooterActions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 0;
+    padding-top: 0.6rem;
+  }
+
+  .planFooterActions button {
+    min-width: 0;
+    min-height: 2.75rem;
+    padding-inline: 0.4rem;
+    font-size: 0.78rem;
+  }
+
+  .modalBackdrop {
+    padding: max(0.5rem, env(safe-area-inset-top)) 0.5rem
+      max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(
+      100dvh - 1rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+
+  .modalHeader {
+    flex: 0 0 auto;
+    gap: 0.5rem;
+  }
+
+  .modalBody {
+    min-height: 0;
+    max-height: none;
+    overscroll-behavior: contain;
+  }
+
+  .modalField input,
+  .modalField select,
+  .searchField input {
+    min-width: 0;
+    min-height: 2.75rem;
+    font-size: 1rem;
+  }
+
+  .modalActions {
+    flex-wrap: wrap;
+  }
+
+  .modalActions button,
+  .detailToggleGrid label,
+  .prefectureList label {
+    min-height: 2.75rem;
+  }
+}
