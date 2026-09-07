@@ -8,6 +8,7 @@ import {
   type TripItem,
   type TripState,
 } from "./trip-model";
+import { plannerMovementLegs } from "./planner-route";
 
 export const settingsCategories = [
   { title: "预算与节奏", groups: [] },
@@ -23,6 +24,11 @@ function settingsEntries(config: TripConfiguration) {
   return Object.fromEntries([
     ["budget", String(config.budget)],
     ["pace", String(config.pace)],
+    ["returnDate", config.returnDate],
+    ...Object.entries(config.travelers).map(([key, value]) => [
+      "travelers." + key,
+      String(value),
+    ]),
     ...Object.entries(config.preferences).flatMap(([group, value]) => [
       [group + ".quick", [...value.quick].sort().join("|")],
       ...Object.entries(value.details).map(([key, text]) => [
@@ -73,18 +79,10 @@ export function secondaryPanelModel(state: TripState) {
     days = rangeDays(state);
   const rows = days.map((day) => {
     const items = itemsForDay(plan, day.day);
-    const legs = items.slice(0, -1).map((from, index) => {
-      const to = items[index + 1];
-      const gap = Math.max(0, minutes(to.startTime) - minutes(from.endTime));
-      return {
-        id: from.id,
-        from,
-        to,
-        minutes: gap,
-        label: from.next ?? "接驳方式待核对",
-        warning: gap < 15 ? "固定安排前请核对接驳缓冲" : "时刻与票价待核对",
-      };
-    });
+    const legs = plannerMovementLegs(plan, day.day).map((leg) => ({
+      ...leg,
+      warning: leg.riskReason,
+    }));
     return {
       day,
       items,
@@ -119,11 +117,24 @@ export function secondaryPanelModel(state: TripState) {
     )
     .sort((a, b) => a.day - b.day || a.startTime.localeCompare(b.startTime));
   const selected = plan.items.find((i) => i.id === state.ui.selectedTripItemId);
+  const tickets = items.filter(
+    (item) =>
+      ["attraction", "activity", "transport"].includes(item.type) &&
+      !["booked", "ticketed", "cancelled"].includes(item.reservationStatus) &&
+      state.places
+        .find((place) => place.id === item.placeId)
+        ?.bookingOptions.some(
+          (option) =>
+            option.availabilityStatus === "available" ||
+            option.availabilityStatus === "limited",
+        ),
+  );
   return {
     plan,
     rows,
     items,
     bookings,
+    tickets,
     selected,
     areas: visibleAreas(state).filter((a) => days.some((d) => d.day === a.day)),
     protected: items.filter(isProtectedItem),

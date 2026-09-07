@@ -1,6 +1,7 @@
 import { useRef, useState, type Dispatch } from "react";
 import {
   currentPlan,
+  tripReducer,
   type TripAction,
   type TripState,
 } from "../model/trip-model";
@@ -23,34 +24,50 @@ const travelerLabels = {
   adultFemale: "成人女性",
   child: "儿童",
   infant: "婴儿",
+  seniors: "老人",
 };
 
 function QuickCard({
   field,
-  state,
-  dispatch,
+  state: liveState,
+  dispatch: commit,
 }: {
   field: (typeof fields)[number];
   state: TripState;
   dispatch: Dispatch<TripAction>;
 }) {
   const [open, setOpen] = useState(false);
+  const [draft, setDraft] = useState<TripState | null>(null);
+  const state = open ? (draft ?? liveState) : liveState;
+  function dispatch(action: TripAction) {
+    if (action.type === "dates") {
+      const next = tripReducer(liveState, action);
+      if (next.plans !== liveState.plans) {
+        commit(action);
+        setOpen(false);
+      } else setDraft(next);
+    } else setDraft((current) => tripReducer(current ?? liveState, action));
+  }
+  function apply() {
+    commit({ type: "saveSettings", configuration: state.configuration });
+    setOpen(false);
+  }
   const trigger = useRef<HTMLButtonElement>(null);
   const count = currentPlan(state).days.length;
   const summary =
     field.key === "dates"
-      ? state.settings.startDate.slice(5) +
+      ? liveState.settings.startDate.slice(5) +
         "–" +
-        state.configuration.returnDate.slice(5)
+        liveState.configuration.returnDate.slice(5)
       : field.key === "travelers"
-        ? Object.entries(state.configuration.travelers)
+        ? Object.entries(liveState.configuration.travelers)
             .filter(([, n]) => n)
             .map(
               ([key, n]) =>
                 travelerLabels[key as keyof typeof travelerLabels] + " " + n,
             )
             .join(" · ")
-        : state.configuration.preferences[field.key]?.quick
+        : liveState.configuration.preferences[field.key]?.quick
             .slice(0, 3)
             .join(" · ") || "未限定";
   return (
@@ -61,7 +78,13 @@ function QuickCard({
         ref={trigger}
         aria-expanded={open}
         aria-controls={open ? "quick-" + field.key : undefined}
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          setDraft({
+            ...structuredClone(liveState),
+            notice: "应用前不会改变当前行程。",
+          });
+          setOpen(!open);
+        }}
       >
         <span className={styles.quickLabel}>
           <PlannerIcon name={field.icon} />
@@ -85,7 +108,11 @@ function QuickCard({
           placement="side"
         >
           {field.key === "dates" ? (
-            <QuickDateMenu state={state} dispatch={dispatch} />
+            <QuickDateMenu
+              state={state}
+              dispatch={dispatch}
+              onCancel={() => setOpen(false)}
+            />
           ) : field.key === "travelers" ? (
             <div className={menu.body}>
               <div className={menu.intro}>
@@ -103,7 +130,7 @@ function QuickCard({
                   </strong>{" "}
                   位同行人
                 </span>
-                <small>人数调整即时同步</small>
+                <small>老人单独计数，请勿重复计入成人</small>
               </div>
               <div className={menu.travelerRows}>
                 {(
@@ -155,12 +182,11 @@ function QuickCard({
               </div>
               <footer className={menu.footer}>
                 <small role="status">{state.notice}</small>
-                <button
-                  type="button"
-                  className={menu.primary}
-                  onClick={() => setOpen(false)}
-                >
-                  完成
+                <button type="button" onClick={() => setOpen(false)}>
+                  取消
+                </button>
+                <button type="button" className={menu.primary} onClick={apply}>
+                  应用设置
                 </button>
               </footer>
             </div>
@@ -169,7 +195,8 @@ function QuickCard({
               group={field.key}
               state={state}
               dispatch={dispatch}
-              onClose={() => setOpen(false)}
+              onClose={apply}
+              onCancel={() => setOpen(false)}
             />
           )}
         </PlannerPopover>

@@ -8,6 +8,7 @@
   box-shadow: 0 18px 64px #55412b26;
   overscroll-behavior: contain;
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }
 .menu > header {
   position: sticky;
@@ -176,6 +177,79 @@
 .sectionNav small {
   display: block;
   font-size: 10px;
+}
+.detailBody {
+  gap: 14px;
+}
+.optionGroups {
+  display: grid;
+  gap: 14px;
+}
+.optionGroup {
+  min-width: 0;
+  margin: 0;
+  padding: 10px 12px 12px;
+  border: 1px solid #e6dbce;
+  border-radius: 15px;
+  background: #fffdf8;
+}
+.optionGroup legend {
+  max-width: 100%;
+  padding: 0 5px;
+  font-size: 13px;
+  font-weight: 650;
+  color: #475b59;
+}
+.optionGroup .chips button {
+  min-height: 34px;
+  padding: 7px 9px;
+  font-size: 12px;
+}
+.optionGroup .field {
+  margin-top: 10px;
+}
+.optionGroup .chips button[data-unset="true"][aria-pressed="true"] {
+  background: #f4efe8;
+  border-color: #ddd4c8;
+  color: #797870;
+}
+.optionGroup .chips button[data-unset="true"] .check {
+  color: #a79d91;
+}
+.optionGroup > small {
+  display: block;
+  margin-top: 8px;
+}
+.legacyValue {
+  overflow-wrap: anywhere;
+  padding: 8px;
+  border-radius: 8px;
+  background: #f5eee5;
+  font-size: 12px;
+}
+.legacyValue button {
+  display: block;
+  border: 0;
+  padding: 4px 0;
+  background: transparent;
+  color: #a95346;
+  text-decoration: underline;
+}
+.detailFooter {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.detailFooter > div {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+.cancel {
+  border: 1px solid #e1d4c7;
+  border-radius: 12px;
+  background: #fffdf9;
+  padding: 10px 16px;
+  color: #60594f;
 }
 .fieldGrid {
   display: grid;
@@ -357,6 +431,9 @@
   height: 28px;
 }
 @media (max-width: 480px) {
+  .optionGroup .chips button {
+    min-height: 40px;
+  }
   .menu {
     border-radius: 20px;
   }

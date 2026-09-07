@@ -38,8 +38,9 @@ test("main-flow links use real destinations and keep login disabled", async () =
   assert.match(home, /disabled/);
   assert.match(startHeader, /href="\/"/);
   assert.match(startHeader, /href="\/personal-center"/);
-  assert.match(plans, /href="\/planner"/);
-  assert.match(plans, /使用此方案并进入地图/);
+  assert.match(plans, /router\.push\("\/planner"\)/);
+  assert.match(plans, /进入详细路线/);
+  assert.doesNotMatch(plans, /使用此方案并进入地图|已选择这个方案/);
   assert.match(plannerWorkspace, /href="\/"/);
   assert.match(plannerWorkspace, /href="\/personal-center"/);
 });

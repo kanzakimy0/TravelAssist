@@ -4,7 +4,7 @@
   inset: 0 0 auto auto;
   width: calc(25vw + 42px);
   height: 76px;
-  background: linear-gradient(90deg, transparent, #fffcf7e8 72%, #fffcf7);
+  background: linear-gradient(90deg, transparent, #fffcf7a3 72%, #fffcf7b3);
   pointer-events: none;
   z-index: -1;
 }
@@ -19,6 +19,7 @@
   right: 16px;
 }
 .search {
+  position: relative;
   flex: 1;
   width: 0;
   min-width: 0;
@@ -29,6 +30,19 @@
   border: 1px solid #e5d7cd80;
   border-radius: 28px;
   box-shadow: 0 4px 18px #7763540a;
+}
+.searchNotice {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #fffaf2;
+  color: #756356;
+  box-shadow: 0 3px 12px #58412b12;
+  font-size: 11px;
+  line-height: 1.5;
 }
 .search input {
   min-width: 0;
@@ -49,6 +63,27 @@
   color: #384955;
   padding: 8px;
   cursor: pointer;
+}
+
+.searchPanel {
+  display: grid;
+  gap: 12px;
+}
+.searchPanel label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+.searchPanel input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #e5d7cd;
+  border-radius: 12px;
+  background: #fffdf9;
+  color: #384955;
+  font-size: 16px;
 }
 .workbench {
   display: flex;
@@ -72,6 +107,11 @@
 }
 .categories button {
   text-align: left;
+}
+.categories button span {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-right: 5px;
 }
 .workbench button,
 .secondary button {
@@ -99,8 +139,11 @@
   font-size: 20px;
 }
 .settingsContent section {
-  border-top: 1px solid #e8dcd080;
-  margin-top: 20px;
+  border: 1px solid #e8dcd080;
+  border-radius: 16px;
+  background: #fffaf5;
+  padding: 12px;
+  margin-top: 14px;
 }
 .settingsContent > label {
   margin: 22px 0;
@@ -147,7 +190,7 @@
   height: 100%;
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 24fr) minmax(0, 53fr) minmax(0, 23fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
   gap: 14px;
   font-size: clamp(12px, 0.85vw, 18px);
 }
@@ -191,6 +234,12 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+.alternativeChoices {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 .metrics strong {
   display: block;
@@ -256,6 +305,13 @@
     width: 65vw;
   }
 }
+@media (min-width: 768px) and (max-width: 1199px) {
+  :global([data-planner]):has(:global([data-detail-map-inspector]))
+    .headerActions {
+    right: calc(100vw / 3 + 12px);
+    width: min(390px, calc(100vw * 2 / 3 - 240px));
+  }
+}
 @media (max-width: 767px) {
   .headerActions {
     gap: 2px;
@@ -268,17 +324,7 @@
     background: #fffcf7c0;
   }
   .search input {
-    width: 0;
-    padding: 0;
-  }
-  .search:focus-within {
-    position: absolute;
-    right: 95px;
-    width: calc(100vw - 115px);
-  }
-  .search:focus-within input {
-    padding: 8px;
-    width: auto;
+    display: none;
   }
   .headerIcon {
     padding: 3px;

@@ -1,0 +1,158 @@
+.actions {
+  position: absolute;
+  z-index: 13;
+  top: 78px;
+  left: 102px;
+  max-width: calc(75vw - 220px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #e7d7ccaa;
+  border-radius: 18px;
+  background: #fffcf3ed;
+  box-shadow: 0 6px 24px #59483a12;
+  color: #384955;
+}
+.actions button,
+.detailActions button,
+.confirm button {
+  border: 1px solid #e6d8cd;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #fffaf5;
+  color: #384955;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.actions .primary,
+.detailActions .primary,
+.confirm .primary {
+  color: #fff;
+  background: #cd6456;
+  border-color: #cd6456;
+}
+.actions button:disabled,
+.detailActions button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.actions small {
+  flex-basis: 100%;
+  max-width: 380px;
+  font-size: 11px;
+  padding: 0 4px;
+}
+.confirm {
+  padding: 20px;
+  max-width: 480px;
+}
+.confirm p {
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+.confirm footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.error {
+  color: #a23d32;
+}
+
+.detailActions {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px 6px;
+  min-width: 0;
+  color: #384955;
+}
+.detailActions button {
+  height: 38px;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+.detailActions small {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  line-height: 1.35;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.withCollapsedBar[data-view="detail"][data-bottom-collapsed="true"] {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.collapsedBar {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 8px 14px max(6px, env(safe-area-inset-bottom));
+  border-top: 1px solid #e6d8cd;
+  background: var(--workspace-glass, #fffcf7);
+  backdrop-filter: blur(6px);
+  z-index: 12;
+}
+.expandOnly {
+  display: contents;
+}
+.collapsedBar .expandButton {
+  margin-right: auto;
+  min-height: 38px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+@media (max-width: 767px) {
+  .detailActions {
+    gap: 4px;
+  }
+  .detailActions button {
+    font-size: 11px;
+    padding: 0 6px;
+  }
+  .detailActions small {
+    max-width: 195px;
+    font-size: 9px;
+  }
+  .collapsedBar {
+    gap: 5px;
+    padding-inline: 8px;
+  }
+  .collapsedBar .expandButton {
+    font-size: 11px;
+    padding-inline: 5px;
+  }
+}
+@media (max-width: 1199px) {
+  .actions {
+    max-width: calc(100vw - 220px);
+  }
+}
+@media (max-width: 767px) {
+  .actions {
+    top: 136px;
+    left: 72px;
+    right: 12px;
+    max-width: none;
+    gap: 6px;
+    padding: 7px;
+  }
+  .actions button {
+    flex: 1;
+    padding: 9px 6px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .actions small {
+    font-size: 10px;
+  }
+  .confirm footer {
+    flex-direction: column;
+  }
+}

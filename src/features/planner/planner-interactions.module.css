@@ -67,6 +67,29 @@
   max-width: 100%;
   overflow-x: auto;
 }
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .bandMeta,
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .axis
+  > :first-child {
+  display: none;
+}
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .axis,
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .bandRow {
+  grid-template-columns: minmax(0, 1fr);
+}
+.timelineViewport[data-compact-summary="true"]
+  .bands[data-compare="true"]
+  .bandMeta
+  p {
+  display: none;
+}
 @media (min-width: 768px) {
   .timelineViewport {
     height: 100%;

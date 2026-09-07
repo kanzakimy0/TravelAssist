@@ -11,9 +11,11 @@ import menu from "../quick-settings-menu.module.css";
 export function QuickDateMenu({
   state,
   dispatch,
+  onCancel,
 }: {
   state: TripState;
   dispatch: Dispatch<TripAction>;
+  onCancel?: () => void;
 }) {
   const [departure, setDeparture] = useState(state.settings.startDate);
   const [returning, setReturning] = useState(state.configuration.returnDate);
@@ -194,6 +196,11 @@ export function QuickDateMenu({
       </p>
       <footer className={menu.footer}>
         <small role="status">{state.notice}</small>
+        {onCancel && (
+          <button type="button" onClick={onCancel}>
+            取消
+          </button>
+        )}
         <button type="submit" className={menu.primary} disabled={!valid}>
           应用日期区间
         </button>

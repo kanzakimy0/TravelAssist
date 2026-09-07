@@ -1,22 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {
-  landmarkKey,
-  isLandmark,
-  travelBubbles,
-  warmMapStyle,
-} from "../src/features/planner/map/map-visuals.ts";
+import "./register-planner-ts.mjs";
+const { landmarkKey, isLandmark, travelBubbles, warmMapStyle } =
+  await import("../src/features/planner/map/map-visuals.ts");
 import {
   plannerMockPlans,
   initialPlannerSettings,
 } from "../src/features/planner/data/planner-mock-data.ts";
 import { makePlannerCatalog } from "../src/features/planner/data/planner-catalog.ts";
-import {
-  makeTripState,
-  currentPlan,
-  mapView,
-  tripReducer,
-} from "../src/features/planner/model/trip-model.ts";
+const { makeTripState, currentPlan, mapView, tripReducer } =
+  await import("../src/features/planner/model/trip-model.ts");
 const { places, areas } = makePlannerCatalog(plannerMockPlans);
 const state = makeTripState(
   plannerMockPlans,

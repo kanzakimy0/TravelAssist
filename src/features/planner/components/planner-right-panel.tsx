@@ -23,6 +23,7 @@ export function PlannerRightPanel({
   pendingCount,
   onBooking,
   onOpenDetail,
+  detailReady = true,
 }: {
   plans: MockPlan[];
   plan: MockPlan;
@@ -37,6 +38,7 @@ export function PlannerRightPanel({
   pendingCount: number;
   onBooking: () => void;
   onOpenDetail: () => void;
+  detailReady?: boolean;
 }) {
   const moreTrigger = useRef<HTMLButtonElement>(null);
   const [preview, setPreview] = useState(false);
@@ -93,6 +95,7 @@ export function PlannerRightPanel({
         <Button
           className={styles.openDetailButton}
           onClick={onOpenDetail}
+          disabled={!detailReady}
           size="small"
         >
           进入行程详情

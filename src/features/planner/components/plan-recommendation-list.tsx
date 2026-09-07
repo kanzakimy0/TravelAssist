@@ -1,4 +1,6 @@
 import type { MockPlan } from "../model/planner-types";
+import { planArtwork } from "../data/planner-artwork";
+import { PlannerArtworkImage } from "./planner-artwork";
 import { PlannerIcon } from "./planner-icon";
 import styles from "../planner.module.css";
 
@@ -34,26 +36,16 @@ export function PlanRecommendationList({
             aria-pressed={selectedId === plan.id}
             onClick={() => onSelect(plan)}
           >
-            <svg
-              className={styles.planThumbnail}
-              viewBox="0 0 100 90"
-              aria-hidden="true"
-            >
-              <rect width="100" height="90" rx="14" fill="#eee9df" />
-              <path d="M0 60q25-30 50 0t50 0v30H0" fill="#dce4e3" />
-              <path d="m15 56 25-32 30 32Z" fill="#c5c9c3" />
-              {plan.days.map((day) => (
-                <polyline
-                  key={day.day}
-                  points={day.stops
-                    .map((stop) => `${8 + stop.x / 12},${8 + stop.y / 8}`)
-                    .join(" ")}
-                  stroke={day.color}
-                  strokeWidth="2"
-                  fill="none"
-                />
-              ))}
-            </svg>
+            {planArtwork(plan.id) ? (
+              <PlannerArtworkImage
+                artwork={planArtwork(plan.id)!}
+                className={styles.planThumbnail}
+                sizes="80px"
+                fallback={<PlanThumbnail plan={plan} />}
+              />
+            ) : (
+              <PlanThumbnail plan={plan} />
+            )}
             <span className={styles.planText}>
               <span className={styles.planNumber}>
                 方案 0{index + 1}
@@ -76,9 +68,34 @@ export function PlanRecommendationList({
             : "✓ 关键预约已完成"}
         </span>
         <button type="button" onClick={onBooking}>
-          完成预约
+          到详情管理预约
         </button>
       </div>
     </section>
+  );
+}
+
+function PlanThumbnail({ plan }: { plan: MockPlan }) {
+  return (
+    <svg
+      className={styles.planThumbnail}
+      viewBox="0 0 100 90"
+      aria-hidden="true"
+    >
+      <rect width="100" height="90" rx="14" fill="#eee9df" />
+      <path d="M0 60q25-30 50 0t50 0v30H0" fill="#dce4e3" />
+      <path d="m15 56 25-32 30 32Z" fill="#c5c9c3" />
+      {plan.days.map((day) => (
+        <polyline
+          key={day.day}
+          points={day.stops
+            .map((stop) => `${8 + stop.x / 12},${8 + stop.y / 8}`)
+            .join(" ")}
+          stroke={day.color}
+          strokeWidth="2"
+          fill="none"
+        />
+      ))}
+    </svg>
   );
 }

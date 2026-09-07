@@ -8,6 +8,7 @@ import {
 import type { TripAction, TripState } from "../model/trip-model";
 import { PlannerPopover } from "./planner-popover";
 import { PlannerIcon } from "./planner-icon";
+import { QuickPreferenceDetails } from "./quick-preference-details";
 import menu from "../quick-settings-menu.module.css";
 
 export function QuickPreferenceMenu({
@@ -15,14 +16,15 @@ export function QuickPreferenceMenu({
   state,
   dispatch,
   onClose,
+  onCancel,
 }: {
   group: QuickPreferenceGroup;
   state: TripState;
   dispatch: Dispatch<TripAction>;
   onClose: () => void;
+  onCancel?: () => void;
 }) {
   const [detail, setDetail] = useState(false);
-  const [section, setSection] = useState(0);
   const trigger = useRef<HTMLButtonElement>(null);
   const definition = preferenceDefinitions[group];
   const layout = quickMenuSections[group];
@@ -41,7 +43,7 @@ export function QuickPreferenceMenu({
         <span>
           已选 <strong>{value.quick.length}</strong> 项
         </span>
-        <small>点选即时同步，不会自动重排路线</small>
+        <small>仅编辑草稿，点击应用后生效；不会自动重排路线</small>
       </div>
       {layout.quick.map((part) => (
         <section className={menu.group} key={part.title}>
@@ -92,8 +94,13 @@ export function QuickPreferenceMenu({
       </button>
       <footer className={menu.footer}>
         <small>仅用于本次旅行</small>
+        {onCancel && (
+          <button type="button" onClick={onCancel}>
+            取消
+          </button>
+        )}
         <button type="button" className={menu.primary} onClick={onClose}>
-          完成
+          应用设置
         </button>
       </footer>
       {detail && (
@@ -105,69 +112,23 @@ export function QuickPreferenceMenu({
           className={menu.menu}
           placement="side"
         >
-          <div className={menu.body}>
-            <div className={menu.intro}>
-              <span className={menu.kicker}>
-                偏好细节 · {completed}/{definition.details.length}
-              </span>
-              <p>按主题补充要求；留空代表未限定。</p>
-            </div>
-            <div
-              className={menu.sectionNav}
-              role="group"
-              aria-label="详细设置分区"
-            >
-              {layout.details.map((part, index) => (
-                <button
-                  type="button"
-                  key={part.title}
-                  aria-pressed={section === index}
-                  onClick={() => setSection(index)}
-                >
-                  {part.title}
-                  <small>
-                    {part.keys.filter((k) => value.details[k]?.trim()).length}/
-                    {part.keys.length}
-                  </small>
-                </button>
-              ))}
-            </div>
-            <section
-              className={menu.detailSection}
-              aria-label={layout.details[section].title}
-            >
-              <h3>{layout.details[section].title}</h3>
-              <div className={menu.fieldGrid}>
-                {layout.details[section].keys.map((key) => (
-                  <label className={menu.field} key={key}>
-                    {key}
-                    <input
-                      maxLength={160}
-                      placeholder="未限定 · 可填写具体要求"
-                      value={value.details[key] ?? ""}
-                      onChange={(e) =>
-                        dispatch({
-                          type: "preference",
-                          group,
-                          detail: { key, value: e.target.value },
-                        })
-                      }
-                    />
-                  </label>
-                ))}
-              </div>
-            </section>
-            <footer className={menu.footer}>
-              <small>输入即时同步 · 不执行真实查询</small>
-              <button
-                className={menu.primary}
-                type="button"
-                onClick={() => setDetail(false)}
-              >
-                返回快速设置
-              </button>
-            </footer>
-          </div>
+          <QuickPreferenceDetails
+            group={group}
+            initial={value.details}
+            onCancel={() => setDetail(false)}
+            onApply={(details) => {
+              for (const key of definition.details) {
+                if ((details[key] ?? "") !== (value.details[key] ?? "")) {
+                  dispatch({
+                    type: "preference",
+                    group,
+                    detail: { key, value: details[key] ?? "" },
+                  });
+                }
+              }
+              setDetail(false);
+            }}
+          />
         </PlannerPopover>
       )}
     </div>

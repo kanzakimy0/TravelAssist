@@ -1,0 +1,436 @@
+.context {
+  width: min(330px, calc(100vw - 24px));
+  padding: 10px;
+  border: 1px solid #e6d9cc;
+  border-radius: 16px;
+  background: #fffaf4f5;
+  color: #354650;
+  box-shadow: 0 12px 42px #59473522;
+}
+.contextGrid {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.contextGrid section {
+  min-width: 0;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f5eee6;
+}
+.contextGrid h3,
+.contextGrid p {
+  margin: 4px 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.contextGrid strong {
+  font-size: 17px;
+  color: #a65749;
+}
+.context > p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.contextToggle {
+  border: 0;
+  padding: 4px 12px;
+  background: transparent;
+  color: #a65749;
+  font-size: 12px;
+  cursor: pointer;
+}
+.context > header {
+  margin-bottom: 8px;
+}
+.context > header h2 {
+  font-size: 13px;
+}
+.context > header button {
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  padding: 5px;
+}
+.contextGrid section {
+  padding: 6px;
+  border-radius: 9px;
+}
+.contextGrid h3 {
+  font-size: 11px;
+  margin: 2px 0;
+  line-height: 1.4;
+}
+.contextGrid strong {
+  font-size: 15px;
+}
+.contextNotes {
+  margin-top: 7px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.contextNotes summary {
+  cursor: pointer;
+  color: #8f6b5b;
+}
+.contextNotes p {
+  margin: 6px 0;
+}
+.context > p {
+  font-size: 11px;
+  margin: 5px 0 0;
+}
+.tabCell {
+  position: relative;
+  min-width: 0;
+}
+.tabCell.tabCell > [role="tab"] {
+  width: 100%;
+  height: 100%;
+  padding-right: 24px;
+  padding-left: 6px;
+}
+.tabCell[data-expanded="true"] > [role="tab"] {
+  background: #fffaf4;
+  border-left: 1px solid #ddc7ba;
+  border-right: 1px solid #ddc7ba;
+}
+.tabCell[data-expanded="true"] > [role="tab"] > svg {
+  visibility: hidden;
+}
+.tabCell .tabFold.tabFold {
+  position: absolute;
+  right: 1px;
+  bottom: 2px;
+  width: 24px;
+  height: 24px;
+  min-width: 0;
+  min-height: 0;
+  padding: 3px;
+  border: 0;
+  background: transparent;
+  color: #9d6453;
+  cursor: pointer;
+}
+.tabFold svg {
+  width: 14px;
+  height: 14px;
+  transform: rotate(-90deg);
+}
+.tabFold[data-open="true"] svg {
+  transform: rotate(90deg);
+}
+.expandedTab {
+  padding: 10px;
+  border: 1px solid #ddc7ba;
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  background: #fffaf4;
+  color: #354650;
+  box-shadow: 0 -6px 22px #59473514;
+  scrollbar-width: thin;
+}
+.expandedTab .detailDay {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 650;
+  color: #9d6453;
+}
+.tabFacts {
+  display: grid;
+  gap: 7px;
+}
+.tabFacts section {
+  padding-left: 8px;
+  border-left: 2px solid #dec6b8;
+}
+.tabFacts section:nth-child(2) {
+  border-color: #a9b8b4;
+}
+.tabFacts h3 {
+  display: inline;
+  margin: 0 6px 0 0;
+  font-size: 11px;
+  font-weight: 500;
+}
+.tabFacts strong {
+  font-size: 13px;
+  color: #9f5748;
+}
+.tabFacts p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #60594f;
+}
+.expandedTab > p[role="status"] {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+}
+@media (max-width: 767px) {
+  .tabCell {
+    flex: 0 0 108px;
+  }
+  .tabCell.tabCell > [role="tab"] {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .tabCell > [role="tab"] > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .expandedTab {
+    padding: 8px;
+  }
+  .tabFacts section {
+    padding-left: 5px;
+  }
+}
+.movement {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(270px, 1fr);
+  height: 100%;
+  min-height: 0;
+  gap: 10px;
+  overflow: auto;
+  padding: 1px 1px 3px;
+  scroll-snap-type: x proximity;
+}
+.movementCard {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+  min-height: 144px;
+  border: 1px solid #e6d9cc;
+  border-radius: 14px;
+  background: #fffcf7;
+  color: #354650;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+.movementCard[data-selected="true"] {
+  border-color: #c88172;
+}
+.movementCard > section {
+  min-height: 0;
+  padding: 4px 10px;
+}
+.movementCard > section + section {
+  border-top: 1px solid #e6d9cc80;
+}
+.legContent {
+  display: flex;
+  align-items: center;
+}
+.legContent button {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  display: grid;
+  gap: 2px;
+}
+.legContent small {
+  font-size: 10px;
+  line-height: 12px;
+  color: #796f65;
+}
+.legContent strong {
+  font-size: 12px;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.legAdvice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  background: #f9f1e970;
+}
+.legAdvice span {
+  font-size: 10px;
+  line-height: 12px;
+  color: #93705e;
+}
+.legAdvice p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 15px;
+}
+.legDecision {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+.quickDecisions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 28px;
+  gap: 6px;
+}
+.quickDecisions button {
+  min-height: 26px;
+  padding: 2px 5px;
+  border: 1px solid #ddcfc2;
+  background: #fffdf9;
+  color: #53615e;
+  border-radius: 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.quickDecisions button[aria-pressed="true"],
+.decisionMenu button[aria-pressed="true"] {
+  background: #fbeae4;
+  border-color: #c88172;
+  color: #a14f42;
+}
+.quickDecisions .moreDecision {
+  font-size: 18px;
+  line-height: 20px;
+  padding: 0;
+}
+.legDecision > small {
+  font-size: 10px;
+  line-height: 10px;
+  color: #8a796a;
+}
+.decisionMenu {
+  width: min(280px, calc(100vw - 24px));
+  padding: 12px;
+  border-radius: 16px;
+  background: #fffaf4f5;
+}
+.decisionMenu > header h2 {
+  font-size: 14px;
+}
+.decisionMenu > p {
+  margin: 6px 0 10px;
+  font-size: 12px;
+}
+.decisionMenu > div {
+  display: grid;
+  gap: 5px;
+}
+.decisionMenu > div button {
+  min-height: 32px;
+  border: 1px solid #e4d7cc;
+  border-radius: 9px;
+  padding: 6px 10px;
+  background: #fffcf7;
+  color: #354650;
+  text-align: left;
+  cursor: pointer;
+}
+.decisionMenu > small {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #8a796a;
+}
+.areaColumns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  height: 100%;
+  gap: 10px;
+}
+.areaColumns > section {
+  overflow: auto;
+  border: 1px solid #e6d9cc;
+  border-radius: 14px;
+  padding: 12px;
+  background: #fffaf3b3;
+}
+.areaColumns h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+.areaColumns p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.areaColumns button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid #e6d9cc;
+  border-radius: 10px;
+  background: #fffdf8;
+  color: #354650;
+  cursor: pointer;
+}
+.empty {
+  padding: 18px;
+  font-size: 14px;
+}
+.detailTabs {
+  height: 100%;
+  min-height: 0;
+}
+@media (max-width: 767px) {
+  .context {
+    padding: 10px;
+  }
+  .contextGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .contextGrid section {
+    padding: 7px;
+  }
+  .contextGrid h3,
+  .contextGrid p {
+    font-size: 11px;
+  }
+  .movement {
+    height: 246px;
+    grid-auto-columns: min(84vw, 310px);
+  }
+  .movementCard {
+    min-height: 240px;
+  }
+  .movementCard > section {
+    padding: 8px 10px;
+  }
+  .legContent strong {
+    white-space: normal;
+  }
+  .legContent strong,
+  .legAdvice p {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .legContent small,
+  .legAdvice span {
+    font-size: 11px;
+    line-height: 14px;
+  }
+  .quickDecisions {
+    grid-template-columns: 1fr 1fr 40px;
+  }
+  .quickDecisions button {
+    min-height: 40px;
+  }
+  .legDecision > small {
+    margin-top: 4px;
+    line-height: 13px;
+  }
+  .decisionMenu > div button {
+    min-height: 40px;
+  }
+  .areaColumns {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}

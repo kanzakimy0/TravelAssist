@@ -168,7 +168,7 @@ try {
       await page.screenshot({
         path: out + "/planner-more-settings-1440x900.png",
       });
-    await page.getByRole("button", { name: "保存设置", exact: true }).click();
+    await page.getByRole("button", { name: "应用设置", exact: true }).click();
     await page
       .getByRole("button", { name: "预览 1 项变更", exact: true })
       .click();

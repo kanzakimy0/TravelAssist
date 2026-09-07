@@ -8,10 +8,12 @@ const source = (path) =>
 test("planner menus escape transformed and clipped ancestors through the top layer", async () => {
   const popover = await source("components/planner-popover.tsx");
   assert.match(popover, /popover="manual"/);
+  const reveal = popover.slice(popover.indexOf("function reveal()"));
   assert.ok(
-    popover.indexOf("element.showPopover()") <
-      popover.indexOf("function position()"),
+    reveal.indexOf("element.showPopover()") < reveal.indexOf("position();"),
   );
+  assert.match(reveal, /parentDialog && !parentDialog.open/);
+  assert.match(reveal, /new MutationObserver\(reveal\)/);
   assert.match(popover, /element.hidePopover\(\)/);
   assert.match(
     await source("planner.module.css"),
