@@ -18,6 +18,9 @@ import {
 
 const routeKeys = [...preferenceCategoryKeys, "advanced"] as const;
 type RouteKey = (typeof routeKeys)[number];
+type PreferenceCategoryRouteProps = {
+  params: Promise<{ category: string }>;
+};
 
 function isRouteKey(value: string): value is RouteKey {
   return routeKeys.includes(value as RouteKey);
@@ -29,7 +32,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps<"/personal-center/preferences/[category]">): Promise<Metadata> {
+}: PreferenceCategoryRouteProps): Promise<Metadata> {
   const { category } = await params;
   if (!isRouteKey(category)) return { title: "旅行偏好" };
   const item = getCategory(createDefaultPreferenceState(), category);
@@ -38,7 +41,7 @@ export async function generateMetadata({
 
 export default async function PreferenceCategoryRoute({
   params,
-}: PageProps<"/personal-center/preferences/[category]">) {
+}: PreferenceCategoryRouteProps) {
   const { category } = await params;
   if (!isRouteKey(category)) notFound();
 
