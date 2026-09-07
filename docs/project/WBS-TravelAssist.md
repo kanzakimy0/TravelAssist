@@ -233,8 +233,11 @@ src/db/
 
 ### 当前 Task 追踪记录
 
+TASK-013.1-A：2026-09-07 前置检查为阻塞。实际 `origin/develop@edd91cfdaea209c629d0fe6bd01a45788f5df803`；父任务 Issue #112 Open / PR #166 Draft Open 未合并，父 Result / Registry 不在 develop，2.13 未同步完成。仅在已有文档分支记录，不在旧父分支实现；不自动合并。本分支 WBS 其余旧记录不覆盖最新 develop，解除阻塞后必须安全同步再实施。
+
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-013.1-A | 2.14 | A | 阻塞 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | 本次仅文档记录，SHA 见 Issue #116 | 不创建实现 PR |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -325,6 +328,7 @@ src/db/
 | 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
+| 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13（尚未合入） | 阻塞 |
 
 ## 3. 网站入口与主系统 Shell（A）
 

@@ -6,7 +6,9 @@
 - Owner：`A`
 - Responsibility：`Shared Infrastructure / Asset Pipeline`
 - Priority：`P1`
-- Status：`待开始（前置阻塞）`
+- Status：`阻塞`（2026-09-07：父任务 PR #166 仍为 Draft / Open，未合入 develop）
+- Latest Prerequisite Check：`origin/develop@edd91cfdaea209c629d0fe6bd01a45788f5df803`
+- Execution：仅 Blocked Result / WBS / Issue 追踪，无实现或依赖安装
 - WBS：`2.14`（预定；若被占用则使用下一个可用工程基础 ID）
 - Depends On：`TASK-013-A` / Issue `#112` 已合并到 `develop` 且验收完成
 - GitHub Issue：`#116`
