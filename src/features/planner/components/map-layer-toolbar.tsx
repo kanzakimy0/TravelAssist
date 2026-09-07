@@ -48,6 +48,7 @@ export function MapLayerToolbar({
           <button
             type="button"
             ref={trigger}
+            className={styles.moreLayerButton}
             aria-expanded={more}
             onClick={() => setMore(!more)}
           >
@@ -64,6 +65,7 @@ export function MapLayerToolbar({
         }}
         aria-expanded={!collapsed}
         aria-label={collapsed ? "展开地图工具" : "收起地图工具"}
+        className={styles.toolbarToggle}
       >
         <PlannerIcon name={collapsed ? "layers" : "chevron"} />
       </button>

@@ -156,6 +156,7 @@ function HydratedStartFlow({
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
     headingRef.current?.closest("[data-wizard-content]")?.scrollTo(0, 0);
+    headingRef.current?.closest("section")?.scrollTo(0, 0);
   }, [currentStep, draft.generationStatus.state]);
 
   useEffect(() => {

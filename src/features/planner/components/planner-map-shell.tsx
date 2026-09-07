@@ -15,6 +15,8 @@ import type {
   TripAction,
 } from "../model/trip-model";
 import { MapQuickCard } from "./map-quick-card";
+import { destinationArtwork } from "../data/planner-artwork";
+import { SvgPlannerArtwork } from "./planner-artwork";
 import {
   isLandmark,
   landmarkKey,
@@ -30,6 +32,7 @@ export function PlannerMapShell({
   travelHints,
   state,
   dispatch,
+  suppressQuickCard = false,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
@@ -37,6 +40,7 @@ export function PlannerMapShell({
   travelHints: Record<string, string>;
   state: TripState;
   dispatch: Dispatch<TripAction>;
+  suppressQuickCard?: boolean;
 }) {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const container = useRef<HTMLDivElement>(null);
@@ -142,7 +146,7 @@ export function PlannerMapShell({
           {view.range === "all"
             ? "城市 / 住宿结构 / 城际移动"
             : "实线：当前范围 · 浅灰：相邻衔接 · 空心：备选"}{" "}
-          · 非真实路线
+          · 非真实路线 · 景点图片为 AI 插画，非实景照片
         </small>
       </div>
       <details className={styles.mapList}>
@@ -187,20 +191,24 @@ export function PlannerMapShell({
           ◎
         </button>
       )}
-      {state.ui.inspection && state.ui.inspection.level !== "detail" && (
-        <MapQuickCard
-          key={state.ui.inspection.id}
-          state={state}
-          dispatch={dispatch}
-          bounds={bounds}
-          anchor={
-            live && anchor
-              ? anchor
-              : { x: fallbackAnchor[0], y: fallbackAnchor[1] }
-          }
-          onClose={() => dispatch({ type: "ui", patch: { inspection: null } })}
-        />
-      )}
+      {!suppressQuickCard &&
+        state.ui.inspection &&
+        state.ui.inspection.level !== "detail" && (
+          <MapQuickCard
+            key={state.ui.inspection.id}
+            state={state}
+            dispatch={dispatch}
+            bounds={bounds}
+            anchor={
+              live && anchor
+                ? anchor
+                : { x: fallbackAnchor[0], y: fallbackAnchor[1] }
+            }
+            onClose={() =>
+              dispatch({ type: "ui", patch: { inspection: null } })
+            }
+          />
+        )}
     </div>
   );
 }
@@ -404,6 +412,13 @@ function SchematicMap({
               >
                 <path d={landmarkPaths[landmarkKey(p.name)]} />
               </g>
+            )}
+            {isLandmark(p) && (
+              <SvgPlannerArtwork
+                artwork={destinationArtwork(p.name, p.type)}
+                x={x}
+                y={y}
+              />
             )}
             <text
               x={x}

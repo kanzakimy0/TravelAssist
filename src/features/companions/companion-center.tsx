@@ -89,7 +89,9 @@ export function CompanionCenter() {
   const drawerRef = useRef<HTMLElement>(null);
   const deleteCancelRef = useRef<HTMLButtonElement>(null);
   const discardContinueRef = useRef<HTMLButtonElement>(null);
+  const addCompanionRef = useRef<HTMLButtonElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const confirmReturnFocusRef = useRef<HTMLElement | null>(null);
   const { setIsDirty } = usePersonalNavigationGuard();
 
   const counts = useMemo(() => countCompanions(companions), [companions]);
@@ -103,6 +105,7 @@ export function CompanionCenter() {
   const editorDirty = editor
     ? JSON.stringify(editor.draft) !== editor.initial
     : false;
+  const editorOpen = editor !== null;
 
   useEffect(() => setIsDirty(editorDirty), [editorDirty, setIsDirty]);
   useEffect(() => () => setIsDirty(false), [setIsDirty]);
@@ -122,8 +125,22 @@ export function CompanionCenter() {
     window.requestAnimationFrame(() => returnFocusRef.current?.focus());
   }, [setIsDirty]);
 
+  const closeDeleteConfirmation = useCallback(() => {
+    const focusTarget = returnFocusRef.current;
+    setDeleteTarget(null);
+    window.requestAnimationFrame(() => focusTarget?.focus());
+  }, []);
+
+  const closeDiscardConfirmation = useCallback(() => {
+    const focusTarget = confirmReturnFocusRef.current;
+    confirmReturnFocusRef.current = null;
+    setDiscardOpen(false);
+    window.requestAnimationFrame(() => focusTarget?.focus());
+  }, []);
+
   const requestEditorClose = useCallback(() => {
     if (editorDirty) {
+      confirmReturnFocusRef.current = document.activeElement as HTMLElement;
       setDiscardOpen(true);
       return;
     }
@@ -131,10 +148,16 @@ export function CompanionCenter() {
   }, [closeEditor, editorDirty]);
 
   useEffect(() => {
-    if (!editor) return;
+    if (!editorOpen) return;
     const drawer = drawerRef.current;
     const focusTarget = drawer?.querySelector<HTMLElement>("[data-autofocus]");
-    window.requestAnimationFrame(() => focusTarget?.focus());
+    const focusFrame = window.requestAnimationFrame(() => focusTarget?.focus());
+    return () => window.cancelAnimationFrame(focusFrame);
+  }, [editorOpen]);
+
+  useEffect(() => {
+    if (!editorOpen) return;
+    const drawer = drawerRef.current;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (discardOpen || deleteTarget) return;
@@ -167,7 +190,7 @@ export function CompanionCenter() {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
     };
-  }, [discardOpen, deleteTarget, editor, requestEditorClose]);
+  }, [discardOpen, deleteTarget, editorOpen, requestEditorClose]);
 
   useEffect(() => {
     if (deleteTarget) deleteCancelRef.current?.focus();
@@ -258,7 +281,7 @@ export function CompanionCenter() {
     );
     setNotice(`${deleteTarget.displayName} 已从同行人中删除`);
     setDeleteTarget(null);
-    window.requestAnimationFrame(() => returnFocusRef.current?.focus());
+    window.requestAnimationFrame(() => addCompanionRef.current?.focus());
   };
 
   const selectedNeedSummary = specialNeeds.find(
@@ -301,6 +324,7 @@ export function CompanionCenter() {
         </dl>
         <div className={styles.summaryActions}>
           <button
+            ref={addCompanionRef}
             type="button"
             className={styles.primaryButton}
             aria-label="添加同行人"
@@ -876,7 +900,26 @@ export function CompanionCenter() {
             aria-labelledby="delete-title"
             aria-describedby="delete-description"
             onKeyDown={(event) => {
-              if (event.key === "Escape") setDeleteTarget(null);
+              if (event.key === "Escape") {
+                event.preventDefault();
+                closeDeleteConfirmation();
+                return;
+              }
+              if (event.key !== "Tab") return;
+              const buttons = [
+                ...event.currentTarget.querySelectorAll<HTMLButtonElement>(
+                  "button:not([disabled])",
+                ),
+              ];
+              const first = buttons[0];
+              const last = buttons[buttons.length - 1];
+              if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last?.focus();
+              } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first?.focus();
+              }
             }}
           >
             <span className={styles.warningIcon} aria-hidden="true">
@@ -891,12 +934,7 @@ export function CompanionCenter() {
                 ref={deleteCancelRef}
                 type="button"
                 className={styles.secondaryButton}
-                onClick={() => {
-                  setDeleteTarget(null);
-                  window.requestAnimationFrame(() =>
-                    returnFocusRef.current?.focus(),
-                  );
-                }}
+                onClick={closeDeleteConfirmation}
               >
                 取消
               </button>
@@ -919,12 +957,35 @@ export function CompanionCenter() {
             role="alertdialog"
             aria-modal="true"
             aria-labelledby="discard-title"
+            aria-describedby="discard-description"
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.preventDefault();
+                closeDiscardConfirmation();
+                return;
+              }
+              if (event.key !== "Tab") return;
+              const buttons = [
+                ...event.currentTarget.querySelectorAll<HTMLButtonElement>(
+                  "button:not([disabled])",
+                ),
+              ];
+              const first = buttons[0];
+              const last = buttons[buttons.length - 1];
+              if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last?.focus();
+              } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first?.focus();
+              }
+            }}
           >
             <span className={styles.warningIcon} aria-hidden="true">
               !
             </span>
             <h2 id="discard-title">您还有尚未保存的修改。</h2>
-            <p>关闭后，本次修改将不会保留。</p>
+            <p id="discard-description">关闭后，本次修改将不会保留。</p>
             <div>
               <button
                 type="button"
@@ -937,7 +998,7 @@ export function CompanionCenter() {
                 ref={discardContinueRef}
                 type="button"
                 className={styles.primaryButton}
-                onClick={() => setDiscardOpen(false)}
+                onClick={closeDiscardConfirmation}
               >
                 继续编辑
               </button>

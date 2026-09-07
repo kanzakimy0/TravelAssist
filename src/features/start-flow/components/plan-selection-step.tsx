@@ -1,5 +1,5 @@
 import type { RefObject } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
@@ -29,6 +29,7 @@ export function PlanSelectionStep({
   plans,
   selectedPlanId,
 }: PlanSelectionStepProps) {
+  const router = useRouter();
   return (
     <section
       aria-labelledby="plans-title"
@@ -115,22 +116,19 @@ export function PlanSelectionStep({
                   <Button
                     aria-pressed={selected}
                     className={styles.planSelectButton}
-                    onClick={() => onSelect(plan.id)}
+                    onClick={() => {
+                      if (selected) {
+                        onUsePlan(plan.id);
+                        router.push("/planner");
+                      } else {
+                        onSelect(plan.id);
+                      }
+                    }}
                     variant={selected ? "primary" : "secondary"}
                   >
-                    {selected ? "已选择这个方案" : "查看这个方案"}
+                    {selected ? "进入详细路线" : "查看这个方案"}
                     <span aria-hidden="true">→</span>
                   </Button>
-                  {selected ? (
-                    <Link
-                      className={styles.planUseLink}
-                      href="/planner"
-                      onClick={() => onUsePlan(plan.id)}
-                    >
-                      使用此方案并进入地图
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  ) : null}
                 </div>
               </article>
             );

@@ -1,4 +1,5 @@
 import type { Map as MapboxMap } from "mapbox-gl";
+import { mapArtworkUrl, plannerArtwork } from "../data/planner-artwork";
 import type {
   Coordinates,
   MapView,
@@ -112,4 +113,82 @@ export async function installMapArtwork(
       });
     }),
   );
+  // Optional local art must never make an otherwise working basemap fail.
+  // Install all requested keys even when the optimized image cannot be loaded.
+  await Promise.all(
+    Object.values(plannerArtwork).map(async (artwork) => {
+      let img: HTMLImageElement;
+      let illustrative = true;
+      try {
+        img = await loadArtworkImage(mapArtworkUrl(artwork));
+      } catch {
+        illustrative = false;
+        const svg = images.find(
+          ([key]) => key === `landmark-${artwork.fallback}`,
+        )![1];
+        img = await loadArtworkImage(
+          `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`,
+        );
+      }
+      if (!active()) return;
+      const canvas = document.createElement("canvas");
+      canvas.width = canvas.height = 128;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      if (illustrative) {
+        ctx.fillStyle = "#fffdf8";
+        ctx.beginPath();
+        ctx.arc(64, 62, 60, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(64, 62, 56, 0, Math.PI * 2);
+        ctx.clip();
+        const side = Math.min(img.naturalWidth, img.naturalHeight);
+        ctx.drawImage(
+          img,
+          (img.naturalWidth - side) / 2,
+          (img.naturalHeight - side) / 2,
+          side,
+          side,
+          8,
+          6,
+          112,
+          112,
+        );
+        ctx.restore();
+        ctx.fillStyle = "#fffaf0e8";
+        ctx.fillRect(47, 96, 34, 19);
+        ctx.fillStyle = "#514b42";
+        ctx.font = "14px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("AI", 64, 111);
+      } else ctx.drawImage(img, 0, 0, 128, 128);
+      map.addImage(
+        `editorial-${artwork.id}`,
+        ctx.getImageData(0, 0, 128, 128),
+        { pixelRatio: 2 },
+      );
+    }),
+  );
+}
+
+function loadArtworkImage(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    const timer = setTimeout(() => {
+      image.onload = image.onerror = null;
+      image.src = "";
+      reject(new Error("Local artwork timeout"));
+    }, 6000);
+    image.onload = () => {
+      clearTimeout(timer);
+      resolve(image);
+    };
+    image.onerror = () => {
+      clearTimeout(timer);
+      reject(new Error("Local artwork unavailable"));
+    };
+    image.src = src;
+  });
 }

@@ -5,7 +5,7 @@
   --color-bg-elevated: #fffcf7;
   --color-bg-overlay: rgb(255 252 247 / 97%);
   --color-text-primary: #343e48;
-  --color-text-secondary: #706e6d;
+  --color-text-secondary: #62584f;
   --color-border-strong: #e4d9d0;
   --color-accent-primary: #b95649;
   --color-accent-primary-hover: #a04439;
@@ -15,10 +15,14 @@
   --planner-radius-panel: 20px;
   --planner-border: rgb(199 176 168 / 35%);
   --planner-shadow: 0 8px 24px rgb(94 74 65 / 7%);
+  --workspace-scenery: url("/media/start/sakura-coast-fuji-train-sunset.png");
+  --workspace-glass: rgb(255 249 241 / 72%);
   height: 100dvh;
   overflow: hidden;
   color: var(--color-text-primary);
-  background: var(--color-bg-canvas);
+  background:
+    linear-gradient(rgb(255 247 237 / 12%), rgb(255 237 222 / 16%)),
+    var(--workspace-scenery) center / cover no-repeat;
   font-family: "Segoe UI", "Hiragino Sans", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -324,17 +328,68 @@
 }
 .placeRecommendations {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: 8px;
   gap: 12px;
 }
 .placeRecommendations > article {
+  scroll-snap-align: start;
+  min-width: 0;
   padding: 10px;
   border: 1px solid #e6d8cc;
   border-radius: 16px;
   background: #fffaf4;
 }
+.recommendationRow {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e2cebd;
+  border-radius: 14px;
+  background: #fffaf4;
+}
+.recommendationRow .placeArtwork {
+  width: 66px;
+  height: 76px;
+  margin: 0;
+  border-radius: 9px;
+}
+.recommendationRow h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #354650;
+}
+.recommendationRow p {
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 5px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recommendationRow small {
+  font-size: 10px;
+  color: #7a695d;
+}
+.recommendationActions,
+.recommendationActions .placeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+.recommendationActions .placeActions {
+  margin-top: 0;
+}
+.recommendationRow .recommendationActions button {
+  min-height: 30px;
+  padding: 5px 7px;
+  font-size: 11px;
+}
 .placeRecommendations .placeArtwork {
-  height: 100px;
+  height: 76px;
   margin: 0;
 }
 .placeRecommendations p {
@@ -409,7 +464,6 @@
     bottom: 140px;
     left: 12px;
   }
-  .placeRecommendations,
   .offerList {
     grid-template-columns: 1fr;
   }
@@ -435,7 +489,7 @@
     flex-basis: auto;
   }
   .placeRecommendations .placeArtwork {
-    height: 130px;
+    height: 76px;
   }
 }
 .planner :is(button, a, input, [tabindex]):focus-visible {
@@ -530,7 +584,7 @@
   height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) calc(clamp(200px, 25dvh, 252px) + 14px);
+  grid-template-rows: minmax(0, 1fr) 25dvh;
   position: relative;
   min-height: 0;
 }
@@ -543,12 +597,15 @@
   overflow: hidden;
 }
 .rightSlot {
+  position: relative;
   padding-top: 68px;
   grid-column: 2;
   grid-row: 1 / -1;
   min-width: 0;
   min-height: 0;
   z-index: 3;
+  background: var(--workspace-glass);
+  backdrop-filter: blur(4px) saturate(0.85);
 }
 .bottomSlot {
   position: relative;
@@ -557,8 +614,9 @@
   min-width: 0;
   min-height: 0;
   z-index: 2;
-  padding: 0 18px 14px;
-  background: #faf3ed;
+  padding: 0;
+  background: var(--workspace-glass);
+  backdrop-filter: blur(4px) saturate(0.85);
 }
 .bottomSlot::before {
   content: "";
@@ -566,12 +624,12 @@
   left: 0;
   right: 0;
   bottom: 100%;
-  height: 44px;
+  height: 24px;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
     rgb(250 243 237 / 0%),
-    rgb(250 243 237 / 92%)
+    rgb(255 249 241 / 72%)
   );
 }
 .mapCanvas {
@@ -732,6 +790,7 @@
   margin-top: 6px;
 }
 .dayRange {
+  --day-menu-width: 78px;
   position: absolute;
   top: 86px;
   right: 18px;
@@ -755,9 +814,6 @@
   font-size: 12px;
   white-space: nowrap;
 }
-.dayRange[data-range-mode="threeDays"] {
-  width: 132px;
-}
 .dayRange > button[aria-pressed="true"] {
   background: var(--planner-accent-soft);
   color: var(--color-accent-primary);
@@ -769,7 +825,7 @@
   display: grid;
   grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
   border-left: 1px solid var(--color-border-strong);
-  background: var(--color-bg-canvas);
+  background: transparent;
 }
 .quickSettings,
 .recommendations {
@@ -788,7 +844,7 @@
   flex-direction: column;
   gap: 10px;
   border-top: 1px solid var(--color-border-strong);
-  background: rgb(249 238 231 / 35%);
+  background: rgb(255 242 232 / 18%);
 }
 .recommendations .sectionTitle {
   display: flex;
@@ -838,7 +894,7 @@
   position: relative;
   border-radius: 16px;
   border: 1px solid var(--planner-border);
-  background: var(--color-bg-elevated);
+  background: rgb(255 252 247 / 94%);
   text-align: left;
   box-shadow: 0 3px 10px rgb(113 78 59 / 3%);
 }
@@ -967,7 +1023,7 @@
   border: 1px solid var(--planner-border);
   border-radius: 17px;
   padding: 10px;
-  background: var(--color-bg-elevated);
+  background: rgb(255 252 247 / 92%);
   text-align: left;
   min-height: 0;
 }
@@ -1028,7 +1084,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background: rgb(255 252 247 / 96%);
+  background: transparent;
   border: 1px solid var(--planner-border);
   border-radius: var(--planner-radius-panel);
   padding: 10px 18px 8px;
@@ -1238,10 +1294,9 @@
   box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
   backdrop-filter: blur(10px);
 }
-/* A filtered ancestor would make a nested fixed surface relative to its scroll
-   box. Only the outer surface drops blur while its detail surface is open. */
-.popover:has(.popover) {
-  backdrop-filter: none;
+/* Manual popovers use the top layer; outside clicks still reach the page. */
+.popover::backdrop {
+  pointer-events: none;
 }
 .rightSlot:has(.popover) {
   z-index: 40;
@@ -1337,6 +1392,17 @@
   top: 16px;
   box-shadow: var(--planner-shadow);
 }
+.workspace:has([data-detail-map-inspector]) .openRight {
+  right: calc(100% / 3 + 12px);
+}
+@media (max-width: 767px) {
+  .workspace:has([data-detail-map-inspector]) .openRight {
+    top: auto;
+    bottom: 78px;
+    right: 12px;
+    z-index: 13;
+  }
+}
 .workspace[data-right-collapsed="true"] .dayRange {
   top: 72px;
 }
@@ -1370,6 +1436,27 @@
 }
 .overlay::backdrop {
   background: rgb(45 39 36 / 28%);
+}
+.overlay[data-kind="right"],
+.overlay[data-kind="bottom"] {
+  background:
+    linear-gradient(rgb(255 249 241 / 78%), rgb(255 249 241 / 78%)),
+    var(--workspace-scenery) center / cover no-repeat;
+  border-color: rgb(255 251 244 / 70%);
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .rightSlot,
+  .bottomSlot,
+  .overlay[data-kind="right"],
+  .overlay[data-kind="bottom"] {
+    background: #fffaf3;
+    backdrop-filter: none;
+  }
+  .quickCard,
+  .planRow {
+    background: #fffcf7;
+  }
 }
 .overlayHeader {
   padding: 14px 18px;
@@ -1743,6 +1830,7 @@
     min-height: 46px;
   }
   .dayRange {
+    --day-menu-width: 70px;
     width: 82px;
     right: 12px;
   }
@@ -1806,7 +1894,10 @@
 
 /* v0.5: scoped upper panel and overlays; recommendation selectors frozen. */
 .quickSettings {
-  gap: 8px;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1.05fr) auto auto auto;
+  gap: clamp(6px, 0.85dvh, 14px);
+  container-type: size;
 }
 .quickSettings .eyebrow {
   display: none;
@@ -1819,25 +1910,28 @@
   clip-path: inset(50%);
 }
 .quickPair .quickCard {
-  height: 96px;
+  height: 100%;
+  min-height: 0;
   justify-content: center;
 }
 .quickPair .quickLabel {
-  font-size: 15px;
+  font-size: clamp(13px, 4cqw, 22px);
 }
 .quickPair .quickLabel svg {
-  width: 30px;
-  height: 30px;
+  width: clamp(22px, 7cqw, 38px);
+  height: clamp(22px, 7cqw, 38px);
 }
 .quickPair .quickCard strong {
-  font-size: 13px;
+  font-size: clamp(12px, 3.5cqw, 18px);
 }
 .quickTriple .quickCard {
-  height: 96px;
+  height: 100%;
+  min-height: 0;
+  justify-content: center;
 }
 .quickTriple .quickLabel {
   flex-direction: row;
-  font-size: 13px;
+  font-size: clamp(12px, 3.5cqw, 18px);
   gap: 3px;
 }
 .quickTriple .quickLabel svg {
@@ -1846,17 +1940,111 @@
   flex-shrink: 0;
 }
 .planner .settingsButton {
-  height: 48px;
-  min-height: 48px;
+  height: clamp(38px, 5.2dvh, 62px);
+  min-height: 38px;
 }
 .quickSettings .mockStatus {
   min-height: 16px;
   font-size: 10px;
 }
 .planner .openDetailButton {
-  min-height: 34px;
-  height: 34px;
+  min-height: 40px;
+  height: clamp(40px, 5.8dvh, 72px);
+  width: 100%;
+  align-self: stretch;
+  font-size: clamp(14px, 4cqw, 20px);
+  font-weight: 700;
+  border-radius: 12px;
+  background: var(--color-accent-primary);
+  color: #fffaf6;
+  box-shadow: 0 5px 14px #a8564526;
   margin-top: 0;
+}
+
+/* Compact map controls; match the trigger instead of a full form popover. */
+.popover[data-compact] {
+  width: var(--day-menu-width, 78px);
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: 12px;
+}
+.popover[data-compact] .dayChoices {
+  gap: 3px;
+}
+.popover[data-compact] .dayChoices button {
+  padding: 6px 2px;
+  min-height: 32px;
+  text-align: center;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.popover[data-compact] form {
+  display: grid;
+  gap: 4px;
+  margin-top: 6px;
+}
+.popover[data-compact] label {
+  min-width: 0;
+  font-size: 10px;
+}
+.popover[data-compact] input,
+.popover[data-compact] form button {
+  width: 100%;
+  padding: 5px 2px;
+  font-size: 11px;
+}
+.toolbarItems .moreLayerButton {
+  border: 1px solid var(--planner-border);
+  background: var(--color-bg-overlay);
+}
+.toolbarToggle[aria-expanded="true"] svg {
+  transform: rotate(-90deg);
+}
+
+/* The dock meets the viewport and right rail; no extra Day heading or rim. */
+.bottomSlot .bottomPanel {
+  padding: 0;
+  border-radius: 18px 0 0;
+  border: 0;
+  overflow: hidden;
+}
+.bottomPanel .bottomTabs {
+  margin: 0;
+  gap: 0;
+  flex-shrink: 0;
+}
+.bottomPanel .bottomTabs button {
+  min-height: clamp(42px, 5.5dvh, 64px);
+  font-size: clamp(13px, 1.05vw, 20px);
+  padding: 7px 2px;
+}
+.bottomPanel .tabContent {
+  padding: clamp(6px, 1dvh, 14px) clamp(8px, 1vw, 20px);
+  border-radius: 0;
+}
+.bottomPanel .rangeCards {
+  min-height: 100%;
+}
+.rightSlot::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  width: 42px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, rgb(255 249 241 / 72%));
+}
+.quickSettings .quickPair,
+.quickSettings .quickTriple {
+  min-height: 0;
+  gap: clamp(6px, 2cqw, 12px);
+}
+.quickSettings .quickCard {
+  padding: clamp(6px, 2.5cqw, 16px);
+}
+.quickSettings .quickTriple strong {
+  font-size: clamp(12px, 3.4cqw, 17px);
 }
 .openRight {
   top: 84px;

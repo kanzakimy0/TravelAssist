@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import "./register-planner-ts.mjs";
 import {
   plannerMockPlans,
   initialPlannerSettings,
 } from "../src/features/planner/data/planner-mock-data.ts";
 import { makePlannerCatalog } from "../src/features/planner/data/planner-catalog.ts";
-import {
+const {
   currentPlan,
   itemsForDay,
   makeTripState,
@@ -16,14 +17,9 @@ import {
   tripReducer,
   timeConflicts,
   isoDay,
-} from "../src/features/planner/model/trip-model.ts";
-import {
-  bindMap,
-  mapCollections,
-  mountMapbox,
-  plannerLayers,
-  schematicLayout,
-} from "../src/features/planner/map/map-provider.ts";
+} = await import("../src/features/planner/model/trip-model.ts");
+const { bindMap, mapCollections, mountMapbox, plannerLayers, schematicLayout } =
+  await import("../src/features/planner/map/map-provider.ts");
 
 function fixture() {
   const { places, areas } = makePlannerCatalog(plannerMockPlans);
