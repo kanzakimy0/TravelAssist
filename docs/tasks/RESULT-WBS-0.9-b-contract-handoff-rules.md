@@ -17,6 +17,9 @@ WBS 0.9 的规则制定与仓库审计已完成。最终收尾 PR 保持 Draft�
 - Kickoff branch: `feature/b-wbs-0-9-contract-handoff-rules`
 - Final review branch: `review/b-wbs-0-9-contract-handoff-finalize`
 - Final review PR: `#171`（Draft → `develop`）
+- Spec commit: `e8fbb45cf479814c6505f83bc719c4944288227e`
+- Result commit: `300973dc7ca6ed7dfccbf31b2f5f283f922545b6`（initial Result）
+- WBS sync commit: `ce93b5d8131508ad459bd5d73c38a9d44b421f61`
 - Spec: `docs/architecture/cross-module-contract-handoff.md`
 - Task: `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md`
 - Result: `docs/tasks/RESULT-WBS-0.9-b-contract-handoff-rules.md`
