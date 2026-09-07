@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "db:start": "node tools/db/local.mjs start",
+    "db:stop": "node tools/db/local.mjs stop",
+    "db:status": "node tools/db/local.mjs status",
+    "db:reset": "node tools/db/local.mjs reset",
+    "db:types": "node tools/db/local.mjs types",
+    "test:db-foundation": "node --test tests/task-015-db-foundation.test.mjs",
     "assets:inventory": "node tools/assets/inventory-assets.mjs",
     "assets:validate": "node tools/assets/validate-asset-library.mjs",
     "assets:index": "node tools/assets/generate-asset-index.mjs",
@@ -15,11 +21,20 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\""
   },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "0.25.12"
+    }
+  },
   "dependencies": {
+    "@supabase/supabase-js": "2.115.0",
+    "drizzle-orm": "0.45.2",
     "mapbox-gl": "^3.30.0",
     "next": "16.3.4",
+    "postgres": "3.4.9",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
@@ -27,9 +42,11 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "drizzle-kit": "0.31.10",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.4",
     "prettier": "3.9.6",
+    "supabase": "2.116.0",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3"
   }

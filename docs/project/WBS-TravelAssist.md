@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-015-A 数据库基础交付（2026-09-08）
+
+- WBS 8.1 / 8.4；Owner A；Issue #173；分支 `feature/a-db-orm-migration-foundation`。
+- 基线 `e98a715a11e4a4ee9bdc196854558a5a02b1753c`；WBS 2.6 已完成；独立干净 worktree，不改现有 Planner 工作区。
+- 状态：待审查（静态实现；DB runtime blocked）。遵守冻结 bootstrap plan：SQL Migration 唯一历史、Supabase CLI Runner、Drizzle 仅 Server Query Layer；无业务表、Auth 或远端项目。
+- 旧 TASK-009 / PR #72 为未合并 Draft，仅记录重叠，不整体合入、不改写旧任务历史。本机 Docker 缺失，运行验收与静态实现分别报告。
+- npm ci / lint / typecheck / 空 DB 环境 build / 13 项 DB 测试通过，依赖审计 0；全仓测试提交后复验。30 个既有文档格式问题逐一核对与 develop 一致；不将 Docker / PostGIS / 真实类型生成标为通过。
+- Result：`docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md`；Commit / Draft PR 待填写。保持 Draft，不自动合并、不继续后续 WBS。
+
 ## WBS 9.12 用户验收与合并收尾（2026-09-07）
 
 - 用户明确确认“验收通过”并随后授权合并；PR #184 已合入 develop，merge `89fd34aed29779ce15720d240727c7f65fd7b7bc`。
@@ -370,6 +379,7 @@ src/db/
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-015-A | 8.1 / 8.4 | A | 待审查（静态实现；DB runtime blocked） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | PENDING | PENDING（必须 Draft，不自动合并） |
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
@@ -596,10 +606,10 @@ src/db/
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖               | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------------ | ------ |
-| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 未开始 |
+| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 待审查 |
 | 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 未开始 |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 未开始 |
-| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 未开始 |
+| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 待审查 |
 | 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 未开始 |
 | 8.7    | AI 会话主系统存储策略         | A      | P2     | 6.2,8.1            | 未开始 |

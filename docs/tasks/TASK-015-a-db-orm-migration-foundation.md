@@ -6,11 +6,22 @@
 > Priority：P0  
 > Base at creation：`develop@707bcc8d2af14a86032181be63573beb3aea3e17`  
 > Branch：`feature/a-db-orm-migration-foundation`  
-> Status：Ready to Start  
+> Status：待验收（静态基础已实现；DB runtime verification blocked）
+>
 > Design：`docs/architecture/db-orm-migration-standards.md`  
 > Freeze Plan：`docs/architecture/db-foundation-bootstrap-plan.md`
 
 ---
+
+## Execution Record — 2026-09-08
+
+- Issue: #173; WBS: 8.1 / 8.4; implementation owner: A.
+- Base: `e98a715a11e4a4ee9bdc196854558a5a02b1753c`; isolated clean worktree.
+- Branch: `feature/a-db-orm-migration-foundation`; Commit / Draft PR: PENDING.
+- Static implementation complete; Docker unavailable. No PostGIS DDL or fabricated generated types committed.
+- Result: `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md`.
+- Old TASK-009 / PR #72 remains unmerged; not imported or closed by this task.
+- Do not merge or begin subsequent WBS until separate authorization and acceptance.
 
 ## 1. Objective
 
@@ -664,21 +675,37 @@ docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md
 # TASK-015-A Result
 
 ## Status
+
 ## Base / Branch / Commits
+
 ## Issue / PR
+
 ## Installed Packages and Resolved Versions
+
 ## Supabase CLI
+
 ## Files Added / Changed
+
 ## Migration History
+
 ## Drizzle Foundation
+
 ## Environment Variable Contract
+
 ## Generated Types
+
 ## Docker Preflight
+
 ## DB Runtime Validation
+
 ## Tests
+
 ## Security / Secret Scan
+
 ## WBS Update
+
 ## Explicitly Not Implemented
+
 ## Remaining Blockers
 ```
 
