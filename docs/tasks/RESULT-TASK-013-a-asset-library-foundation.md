@@ -2,7 +2,7 @@
 
 ## Status
 
-Completed — implementation and local validation complete; **待验收 / WBS 待审查**. Draft PR is not merge acceptance. No automatic merge. TASK-013.1 and TASK-013.2 were not executed.
+Completed — **已完成**. On 2026-09-07 the user explicitly authorized merging the parent and continuing TASK-013.1. PR #166 merged as `aee2eaec3ac841395de1737a3042a112ad6fa6ea`; its tree is identical to validated head `34928c57cd4f0b3cc80bb27e93701b11021fb181`. Pre-merge asset validation (194 entries / 0 errors) and 44/44 asset tests passed again. Existing 267-test / lint / typecheck / build / browser evidence applies to the identical tree. WBS 2.13 and Issue #112 completion are synchronized by the merge closeout. The initial Draft delivery record below is retained as history, not the current PR state. No TASK-013.1/013.2 implementation is part of this parent Result.
 
 ## Tracking
 
@@ -128,7 +128,7 @@ CI is **not claimed passed**. Push subjects include `[skip ci]` to avoid the exi
 
 ## WBS Update
 
-2.13 and Task tracking: **待审查**. Task.md: **待验收**. Issue #112 remains Open. Merge and final acceptance are required before marking completed or unblocking TASK-013.1.
+2.13 and Task tracking: **已完成** after user-authorized PR #166 merge and final verification. Task.md and Issue #112 completion synchronized; the initial review-stage entries above are historical. TASK-013.1 must reread the actual merged schema before implementation.
 
 ## Follow-ups
 

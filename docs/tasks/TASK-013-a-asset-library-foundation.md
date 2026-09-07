@@ -5,7 +5,8 @@
 - Task ID：`TASK-013-A`
 - Owner：`A`
 - Priority：`P1`
-- Status：`待验收`（WBS：待审查；实现完成，不代表已合并验收）
+- Status：`已完成`（2026-09-07 用户明确授权合并，PR #166 已合入，合并树与验收 head 相同）
+- Merge SHA：`aee2eaec3ac841395de1737a3042a112ad6fa6ea`
 - Actual Base：`edd91cfdaea209c629d0fe6bd01a45788f5df803`（安全快进同步）
 - Commit：`4c56dacd1ace2f4849a8dadf24663fd8ca728dcc`（实现；后续提交仅同步追踪记录）
 - WBS：新增 `2.13 — 素材库 / Asset Registry 基础`（依赖 `2.6 / 2.7`）
@@ -15,7 +16,7 @@
 - Task File：`docs/tasks/TASK-013-a-asset-library-foundation.md`
 - Design Source：`docs/assets/asset-library-strategy.md` v1.0
 - Result File：`docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md`
-- Pull Request：[#166](https://github.com/kanzakimy0/TravelAssist/pull/166)，Draft / Open → `develop`，不得自动合并
+- Pull Request：[#166](https://github.com/kanzakimy0/TravelAssist/pull/166)，用户授权后已合入 `develop`
 
 ---
 
