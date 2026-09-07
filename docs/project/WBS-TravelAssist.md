@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## WBS-0.9-B 执行记录（2026-09-07）
+
+- 用户明确将 WBS 0.9「跨模块 Contract 交接规则」改派给 B 并要求立即执行；0.8 仍为进行中，因此 0.9 以“规则先行、与 0.8 并行”完成，不重新划分 A/B 业务 Owner。
+- Owner：B；Status：待审查；Issue：#168（Open）。正式规范：`docs/architecture/cross-module-contract-handoff.md`；Result：`docs/tasks/RESULT-WBS-0.9-b-contract-handoff-rules.md`。
+- Kickoff 分支 `feature/b-wbs-0-9-contract-handoff-rules` 因仓库 `feature/**` 自动化被自动创建并合入 PR #169/#170；#170 merge `707bcc8d2af14a86032181be63573beb3aea3e17` 只代表初稿进入 develop，不代表用户最终验收。
+- 最终收尾使用 `review/b-wbs-0-9-contract-handoff-finalize`，Draft PR [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) → develop，避免 `feature/**` 自动合并；在用户验收前不合并、不关闭 #168、不标记已完成。
+- 仓库审计确认：当前无 `src/shared/contracts/**`；`src/types/` 仅 `.gitkeep`；Preference 模型、Planner runtime/presentation model、Trip Library ViewModel 均保持模块内部，0.9 不提前实现 5.14 / 4.17 / 5.19 runtime Contract。
+
 ## TASK-013-A 合并验收收尾（2026-09-07）
 
 用户明确授权“合并后执行”TASK-013.1。父任务 PR #166 已合入 develop，merge `aee2eaec3ac841395de1737a3042a112ad6fa6ea`；与验收 head `34928c57cd4f0b3cc80bb27e93701b11021fb181` 文件树完全相同。assets:validate / 44 项专项测试合并前再次通过；原 267 tests、lint/typecheck/build、69 SVG 浏览器验证有效。2.13 / TASK-013-A 已完成；Issue #112 同步最终验收。下方初次交付记录保留为历史，当前状态以本条和追踪表为准。013.1 尚需单独执行，不提前标记其完成。
@@ -247,7 +255,7 @@ src/db/
 | 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
 | 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 已完成 |
 | 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
-| 0.9 | 跨模块 Contract 交接规则 | A+B | P0 | 0.8 | 未开始 |
+| 0.9 | 跨模块 Contract 交接规则 | B | P0 | 0.8 | 待审查 |
 
 ### 当前 Task 追踪记录
 
@@ -255,6 +263,7 @@ src/db/
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
@@ -436,7 +445,7 @@ src/db/
 | 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 未开始 |
 | 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 未开始 |
 | 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 未开始 |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3 | 未开始 |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 未开始 |
 | 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 未开始 |
 | 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 未开始 |
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 未开始 |
