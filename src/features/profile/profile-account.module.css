@@ -1091,6 +1091,8 @@
   overflow: hidden;
   border: 0;
   clip-path: inset(50%);
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .profileFields {
@@ -1571,6 +1573,8 @@
   border: 1px solid var(--pc-border-subtle);
   border-radius: 7px;
   clip-path: none;
+  visibility: visible;
+  pointer-events: auto;
   font-size: 9px;
 }
 
@@ -3190,6 +3194,12 @@
 }
 
 @media (max-width: 767px) {
+  .accountPage .emergencyCard button {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   .pageHeader > div:first-child {
     padding-left: 42px;
   }
