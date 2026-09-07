@@ -47,10 +47,30 @@
 .pageHeader h1 {
   margin: 0;
   font-family: var(--pc-font-heading);
-  font-size: clamp(30px, 3vw, 42px);
+  font-size: clamp(2rem, 2.5vw, 2.55rem);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.12;
   letter-spacing: 0.04em;
+}
+
+.pageHeader > div:first-child {
+  position: relative;
+  padding-left: 58px;
+}
+
+.titleFlower {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  width: 42px;
+  transform: translateY(-50%);
+  color: #ef8f9c;
+  font-family: var(--pc-font-heading);
+  font-size: 42px;
+  font-style: normal;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 4px 14px rgb(224 116 131 / 18%);
 }
 
 .pageHeader > div:first-child > span {
@@ -1198,8 +1218,7 @@
   background: rgb(255 255 255 / 58%);
 }
 
-.contactIcon,
-.securityIcon {
+.contactIcon {
   display: grid;
   place-items: center;
   width: 34px;
@@ -1209,8 +1228,7 @@
   background: #ffebe7;
 }
 
-.contactIcon svg,
-.securityIcon svg {
+.contactIcon svg {
   width: 18px;
   height: 18px;
 }
@@ -1237,43 +1255,6 @@
   background: transparent;
   font-size: 10px;
   font-weight: 650;
-}
-
-.securityEntry {
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr) 16px;
-  align-items: center;
-  gap: 9px;
-  min-height: 51px;
-  margin-top: 8px;
-  padding: 7px 9px;
-  border-radius: 10px;
-  background: rgb(242 244 243 / 76%);
-}
-
-.securityIcon {
-  color: #22353d;
-  background: #f8fbfa;
-}
-
-.securityEntry strong,
-.securityEntry small {
-  display: block;
-}
-
-.securityEntry strong {
-  font-size: 11px;
-}
-
-.securityEntry small {
-  margin-top: 2px;
-  color: var(--pc-text-secondary);
-  font-size: 9px;
-}
-
-.securityEntry > svg {
-  width: 16px;
-  height: 16px;
 }
 
 .emergencySection,
@@ -1600,4 +1581,1623 @@
   svg {
   width: 13px;
   height: 13px;
+}
+
+@media (min-width: 1280px) {
+  .accountPage[data-account-page] {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows:
+      clamp(54px, 7vh, 74px)
+      minmax(252px, 1.45fr)
+      minmax(186px, 1fr)
+      minmax(132px, 0.72fr);
+    gap: 12px;
+    padding-bottom: 0;
+  }
+
+  .accountPage[data-account-page] .pageHeader {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-items: center;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    padding: 6px 8px;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .accountPage[data-account-page] .titleFlower {
+    top: 0;
+    transform: none;
+  }
+
+  .accountPage[data-account-page] .pageHeader p {
+    display: none;
+  }
+
+  .accountPage[data-account-page] .pageHeader h1 {
+    font-size: clamp(2rem, 2.5vw, 2.55rem);
+    line-height: 1.12;
+  }
+
+  .accountPage[data-account-page] .pageHeader > div:first-child > span {
+    margin-top: 2px;
+    font-size: 13px;
+  }
+
+  .accountPage[data-account-page] .profileCard {
+    grid-row: 2;
+    min-height: 0;
+  }
+
+  .accountPage[data-account-page] .contactCard {
+    display: flex;
+    grid-row: 2;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .accountPage[data-account-page] .emergencySection,
+  .accountPage[data-account-page] .settingsCard {
+    grid-row: 3;
+    min-height: 0;
+  }
+
+  .accountPage[data-account-page]
+    > section[aria-labelledby="account-entry-title"] {
+    display: flex;
+    grid-row: 4;
+    min-height: 0;
+    margin-top: 0;
+    flex-direction: column;
+  }
+
+  .accountPage[data-account-page] .saveBar {
+    grid-row: 2;
+  }
+
+  .accountPage[data-account-page] .contactList {
+    display: grid;
+    flex: 1;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .accountPage[data-account-page] .contactList > div {
+    min-height: 0;
+  }
+
+  .accountPage[data-account-page] .settingsCard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accountPage[data-account-page] .settingsList {
+    flex: 1;
+    grid-template-rows: repeat(4, minmax(26px, 1fr));
+  }
+
+  .accountPage[data-account-page] .accountEntries {
+    flex: 1;
+    align-items: stretch;
+  }
+
+  .accountPage[data-account-page] .accountEntry {
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 800px) {
+  .accountPage[data-account-page] .card {
+    padding: 18px 20px;
+    border-radius: 20px;
+  }
+
+  .accountPage[data-account-page] .cardHeading {
+    min-height: 30px;
+    margin-bottom: 12px;
+  }
+
+  .accountPage[data-account-page] .cardHeading h2 {
+    font-size: 16px;
+  }
+
+  .accountPage[data-account-page] .headingNote {
+    font-size: 11px;
+  }
+
+  .accountPage[data-account-page] .avatarRow {
+    top: 60px;
+    left: 28px;
+    width: 132px;
+  }
+
+  .accountPage[data-account-page] .profileAvatar {
+    width: 108px;
+    height: 108px;
+  }
+
+  .accountPage[data-account-page] .profileFields {
+    grid-template-rows: repeat(4, 44px);
+    gap: 8px 16px;
+    margin-left: 176px;
+  }
+
+  .accountPage[data-account-page] .formField > label,
+  .accountPage[data-account-page] .settingRow > label {
+    font-size: 11px;
+  }
+
+  .accountPage[data-account-page] .formField input,
+  .accountPage[data-account-page] .formField select,
+  .accountPage[data-account-page] .settingRow select {
+    min-height: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .accountPage[data-account-page] .contactList > div {
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .accountPage[data-account-page] .contactIcon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .accountPage[data-account-page] .contactIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .accountPage[data-account-page] .contactList dt {
+    font-size: 13px;
+  }
+
+  .accountPage[data-account-page] .contactList dd {
+    font-size: 12px;
+  }
+
+  .accountPage[data-account-page] .verifiedBadge {
+    font-size: 11px;
+  }
+
+  .accountPage[data-account-page] .emergencyCard {
+    min-height: 64px;
+    padding: 10px 12px;
+  }
+
+  .accountPage[data-account-page] .emergencyCard h3 {
+    font-size: 12px;
+  }
+
+  .accountPage[data-account-page] .emergencyCard p,
+  .accountPage[data-account-page] .emergencyCard span {
+    font-size: 10px;
+  }
+
+  .accountPage[data-account-page] .emergencySection .secondaryButton {
+    min-height: 42px;
+    font-size: 11px;
+  }
+
+  .accountPage[data-account-page] .settingsList {
+    grid-template-rows: repeat(4, minmax(30px, 1fr));
+    row-gap: 6px;
+  }
+
+  .accountPage[data-account-page] .settingRow {
+    min-height: 30px;
+  }
+
+  .accountPage[data-account-page] .sectionHeading {
+    margin-bottom: 12px;
+  }
+
+  .accountPage[data-account-page] .accountEntry {
+    padding: 16px;
+    border-radius: 18px;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 780px) {
+  .accountPage[data-account-page] .sectionHeading {
+    margin-bottom: 6px;
+  }
+
+  .accountPage[data-account-page] .sectionHeading h2 {
+    font-size: 19px;
+  }
+
+  .accountPage[data-account-page] .accountEntry {
+    padding: 9px 12px;
+  }
+
+  .accountPage[data-account-page] .entryIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  .accountPage[data-account-page] .accountEntry strong {
+    font-size: 13px;
+  }
+
+  .accountPage[data-account-page] .accountEntry small {
+    font-size: 10px;
+  }
+}
+
+/* Account suite concept alignment: overview plus security, privacy and sync screens. */
+.accountSubpage {
+  --account-success: #26815e;
+  --account-success-soft: #e7f5ed;
+  --account-danger: #b8302c;
+  --account-danger-soft: #fff0ed;
+
+  position: relative;
+  display: grid;
+  min-width: 0;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.accountSubpage button,
+.accountSubpage input {
+  font: inherit;
+}
+
+.accountSubpage button {
+  cursor: pointer;
+}
+
+.accountSubpage :is(button, input, a):focus-visible {
+  outline: 3px solid var(--pc-focus-ring);
+  outline-offset: 3px;
+}
+
+.subpageHeader {
+  min-width: 0;
+  padding: 4px 8px;
+}
+
+.subpageHeader nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: var(--pc-text-secondary);
+  font-size: 12px;
+}
+
+.subpageHeader nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.subpageHeader nav svg {
+  width: 16px;
+  height: 16px;
+}
+
+.subpageHeader > p {
+  margin: 0 0 4px;
+  color: var(--pc-accent-primary);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+}
+
+.subpageHeader h1 {
+  margin: 0;
+  font-family: var(--pc-font-heading);
+  font-size: clamp(32px, 3vw, 44px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0.04em;
+}
+
+.subpageHeader > span {
+  display: block;
+  margin-top: 6px;
+  color: var(--pc-text-secondary);
+  font-size: 14px;
+}
+
+.subpageBody {
+  display: grid;
+  min-width: 0;
+  gap: 14px;
+}
+
+.subpageCard,
+.connectionCard {
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 22px;
+  background: rgb(255 253 249 / 90%);
+  box-shadow: 0 9px 28px rgb(91 62 47 / 6%);
+  backdrop-filter: blur(8px);
+}
+
+.subpageSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.subpageSectionTitle > span:last-child {
+  min-width: 0;
+}
+
+.subpageSectionTitle strong,
+.subpageSectionTitle small {
+  display: block;
+}
+
+.subpageSectionTitle strong {
+  font-family: var(--pc-font-heading);
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.subpageSectionTitle small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.subpageIcon,
+.methodBrand {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  color: #e8564e;
+  background: #ffebe7;
+}
+
+.subpageIcon svg,
+.methodBrand svg {
+  width: 20px;
+  height: 20px;
+}
+
+.statusBadge,
+.neutralBadge,
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  color: var(--account-success);
+  background: var(--account-success-soft);
+}
+
+.neutralBadge {
+  color: #68757a;
+  background: #edf0ef;
+}
+
+.currentBadge {
+  color: #ed4d46;
+  background: #ffe8e4;
+}
+
+.protectionCard {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.protectionStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-height: 58px;
+}
+
+.protectionStats > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 3px 10px;
+  padding: 4px 22px;
+  border-left: 1px solid var(--pc-border-subtle);
+}
+
+.protectionStats .subpageIcon {
+  grid-row: 1 / 3;
+}
+
+.protectionStats strong {
+  font-size: 13px;
+}
+
+.protectionStats > div > span:last-child:not(.subpageIcon) {
+  color: var(--pc-text-secondary);
+  font-size: 12px;
+}
+
+.securityColumns {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 0;
+  gap: 14px;
+}
+
+.securityColumns > .subpageCard {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.methodList,
+.deviceList,
+.activityList {
+  min-height: 0;
+  margin-top: 12px;
+}
+
+.methodList > div,
+.deviceList > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 6px 0;
+  border-top: 1px solid var(--pc-border-subtle);
+}
+
+.methodList > div:first-child,
+.deviceList > div:first-child {
+  border-top: 0;
+}
+
+.methodList .subpageIcon,
+.deviceList .subpageIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+.methodList strong,
+.methodList small,
+.deviceList strong,
+.deviceList small {
+  display: block;
+}
+
+.methodList strong,
+.deviceList strong {
+  font-size: 12px;
+}
+
+.methodList small,
+.deviceList small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 10px;
+}
+
+.methodList button,
+.deviceList button,
+.securityColumns > .subpageCard > button,
+.connectionCard button {
+  min-height: 32px;
+  padding: 5px 12px;
+  border: 1px solid #ddcec4;
+  border-radius: 9px;
+  color: var(--pc-text-primary);
+  background: rgb(255 255 255 / 65%);
+  font-size: 10px;
+}
+
+.securityColumns > .subpageCard > button {
+  width: 100%;
+  margin-top: auto;
+  color: var(--account-danger);
+  border-color: #ef958e;
+}
+
+.activityCard {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.activityList {
+  display: grid;
+  margin-top: 0;
+}
+
+.activityList > div {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 0.6fr) minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  border-top: 1px solid var(--pc-border-subtle);
+  font-size: 10px;
+}
+
+.activityList > div:first-child {
+  border-top: 0;
+}
+
+.activityList svg {
+  width: 16px;
+  height: 16px;
+}
+
+.activityList span,
+.activityList time {
+  color: var(--pc-text-secondary);
+}
+
+.privacyView {
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.85fr);
+}
+
+.dataOverviewCard {
+  grid-column: 1;
+}
+
+.exportCard {
+  grid-column: 2;
+}
+
+.dataCategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.dataCategoryGrid > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 62px;
+  padding: 9px 12px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 58%);
+}
+
+.dataCategoryGrid > div:nth-last-child(-n + 3) {
+  grid-column: span 1;
+}
+
+.dataCategoryGrid > div:nth-child(5) {
+  grid-column: 1;
+}
+
+.dataCategoryGrid .subpageIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+.dataCategoryGrid strong,
+.dataCategoryGrid small {
+  display: block;
+}
+
+.dataCategoryGrid strong {
+  font-size: 12px;
+}
+
+.dataCategoryGrid small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.dataCategoryGrid > div > svg {
+  width: 15px;
+  height: 15px;
+}
+
+.exportCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.exportCard > p {
+  margin: 12px 0;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.exportCard > button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: linear-gradient(135deg, #ff6960, #ef4d48);
+  font-weight: 700;
+}
+
+.exportStates {
+  display: grid;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--pc-border-subtle);
+}
+
+.exportStates > span {
+  margin-bottom: 4px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.exportStates > div {
+  display: grid;
+  grid-template-columns: auto 76px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  border-top: 1px solid rgb(228 214 205 / 65%);
+  font-size: 9px;
+}
+
+.exportStates i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #a4adb0;
+}
+
+.exportStates i[data-tone="pending"] {
+  background: #f0a21b;
+}
+
+.exportStates i[data-tone="ready"] {
+  background: #25a56c;
+}
+
+.exportStates small {
+  color: var(--pc-text-secondary);
+}
+
+.dataManagementCard,
+.dangerZone {
+  grid-column: 1 / -1;
+}
+
+.managementLinks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.managementLinks > :is(a, button) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 10px 13px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 14px;
+  color: inherit;
+  background: rgb(255 255 255 / 54%);
+  text-align: left;
+}
+
+.managementLinks strong,
+.managementLinks small {
+  display: block;
+}
+
+.managementLinks strong {
+  font-size: 12px;
+}
+
+.managementLinks small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.dangerZone {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  border-color: #f1beb8;
+  background: rgb(255 244 241 / 80%);
+}
+
+.dangerZone > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.dangerZone strong,
+.dangerZone small {
+  display: block;
+}
+
+.dangerZone small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 10px;
+}
+
+.dangerZone a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 6px 16px;
+  border: 1px solid #e95e57;
+  border-radius: 10px;
+  color: var(--account-danger);
+  white-space: nowrap;
+}
+
+.dangerZone a svg {
+  width: 16px;
+  height: 16px;
+}
+
+.connectionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-height: 0;
+  gap: 14px;
+}
+
+.connectionCard {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.connectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.providerLogo {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  color: #0b468d;
+  background: #e9f1fa;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.connectionHeading > span:last-child {
+  min-width: 0;
+}
+
+.connectionHeading strong,
+.connectionHeading small {
+  display: block;
+}
+
+.connectionHeading strong {
+  font-size: 15px;
+}
+
+.connectionHeading small {
+  margin-top: 5px;
+}
+
+.connectionCard > p {
+  margin: 11px 0 0;
+  color: var(--pc-text-secondary);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.connectionCard .syncTime {
+  color: #52666d;
+  font-size: 11px;
+}
+
+.connectionCard > div:last-child {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.connectionCard > div:last-child button:only-child {
+  grid-column: 1 / -1;
+}
+
+.connectionCard > div:last-child button:last-child:not(:only-child) {
+  color: #e94f47;
+  border-color: #f2bbb5;
+}
+
+.importCard {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.importGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.importGrid > button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px 13px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 14px;
+  color: inherit;
+  background: rgb(255 255 255 / 56%);
+  text-align: left;
+}
+
+.importGrid .subpageIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 13px;
+}
+
+.importGrid strong,
+.importGrid small {
+  display: block;
+}
+
+.importGrid strong {
+  font-size: 12px;
+}
+
+.importGrid small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.importNotes {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 18px;
+  margin-top: auto;
+  padding-top: 12px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.importNotes span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.importNotes svg {
+  width: 15px;
+  height: 15px;
+}
+
+.deleteView {
+  gap: 12px;
+}
+
+.deleteWarning {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  border-color: #f0bbb5;
+  background: rgb(255 247 244 / 88%);
+}
+
+.deleteWarning > .subpageIcon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  color: white;
+  background: #e94b45;
+}
+
+.deleteWarning h2 {
+  margin: 0;
+  color: var(--account-danger);
+  font-family: var(--pc-font-heading);
+  font-size: 18px;
+}
+
+.deleteWarning p {
+  margin: 7px 0 10px;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.deleteWarning > div > div {
+  display: grid;
+  gap: 3px;
+  padding: 10px 14px;
+  border: 1px solid #efcfaa;
+  border-radius: 12px;
+  color: #8f4b29;
+  background: #fff7e9;
+  font-size: 10px;
+}
+
+.reservationWarning {
+  position: relative;
+}
+
+.reservationWarning > a {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e94d46;
+  font-size: 11px;
+}
+
+.reservationWarning > a svg {
+  width: 15px;
+  height: 15px;
+}
+
+.reservationSummary {
+  display: grid;
+  grid-template-columns: 1.1fr repeat(3, 0.8fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.reservationSummary span {
+  display: grid;
+  align-content: center;
+  min-height: 56px;
+  padding: 8px 12px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 13px;
+  background: rgb(255 255 255 / 58%);
+}
+
+.reservationSummary strong,
+.reservationSummary small {
+  display: block;
+}
+
+.reservationSummary strong {
+  font-size: 11px;
+}
+
+.reservationSummary small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.deleteExport {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.deleteExport > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 6px 16px;
+  border: 1px solid #ea5a54;
+  border-radius: 10px;
+  color: #d5413b;
+  background: transparent;
+}
+
+.deleteConfirm {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr) auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.deleteConfirm > label:first-child {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+}
+
+.deleteConfirm input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.deleteConfirm strong,
+.deleteConfirm small {
+  display: block;
+}
+
+.deleteConfirm small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+}
+
+.deleteConfirm > label:nth-child(2) {
+  display: grid;
+  gap: 5px;
+  color: var(--pc-text-secondary);
+  font-size: 10px;
+}
+
+.deleteConfirm > label:nth-child(2) input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #ddcec4;
+  border-radius: 9px;
+  background: rgb(255 255 255 / 68%);
+}
+
+.deleteConfirm > div {
+  display: flex;
+  gap: 8px;
+}
+
+.deleteConfirm > div :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 6px 16px;
+  border: 1px solid #dfcec4;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.deleteConfirm > div button {
+  color: white;
+  border-color: var(--account-danger);
+  background: var(--account-danger);
+}
+
+.deleteConfirm > div button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.subpageNotice {
+  position: fixed;
+  z-index: 80;
+  right: 24px;
+  bottom: 24px;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 11px 15px;
+  border-radius: 12px;
+  color: #fff;
+  background: #35484b;
+  box-shadow: 0 12px 30px rgb(38 46 48 / 20%);
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.subpageNotice:empty {
+  display: none;
+}
+
+.subpageBoundary {
+  margin: 0;
+  color: var(--pc-text-secondary);
+  font-size: 9px;
+  text-align: right;
+}
+
+@media (min-width: 1280px) {
+  .accountPage[data-account-page] {
+    grid-template-rows:
+      clamp(102px, 12vh, 116px)
+      minmax(282px, 1.45fr)
+      minmax(132px, 0.68fr)
+      minmax(102px, 0.5fr);
+  }
+
+  .accountPage[data-account-page] .profileCard {
+    grid-column: 1 / 5;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accountPage[data-account-page] .contactCard {
+    grid-column: 5 / 9;
+    grid-row: 2;
+  }
+
+  .accountPage[data-account-page] .settingsCard {
+    grid-column: 9 / 13;
+    grid-row: 2;
+  }
+
+  .accountPage[data-account-page] .emergencySection {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .accountPage[data-account-page]
+    > section[aria-labelledby="account-entry-title"] {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
+  .accountPage[data-account-page] .avatarRow {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto minmax(0, 1fr);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--pc-border-subtle);
+    flex-direction: initial;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .accountPage[data-account-page] .profileAvatar {
+    width: 82px;
+    height: 82px;
+  }
+
+  .accountPage[data-account-page] .avatarDetails > strong,
+  .accountPage[data-account-page] .avatarDetails > p {
+    display: block;
+  }
+
+  .accountPage[data-account-page] .avatarDetails > p {
+    margin: 2px 0 8px;
+    font-size: 10px;
+  }
+
+  .accountPage[data-account-page] .fileButton {
+    width: min(150px, 100%);
+  }
+
+  .accountPage[data-account-page] .fileButton svg {
+    position: static;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    color: currentColor;
+    background: transparent;
+  }
+
+  .accountPage[data-account-page] .profileFields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(34px, 1fr));
+    gap: 7px 12px;
+    margin: 12px 0 0;
+    flex: 1;
+  }
+
+  .accountPage[data-account-page] .profileFields > :nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .accountPage[data-account-page] .valueField {
+    gap: 1px;
+    padding: 5px 7px;
+    border-radius: 9px;
+    background: rgb(255 255 255 / 52%);
+  }
+
+  .accountPage[data-account-page] .valueField > span {
+    font-size: 9px;
+  }
+
+  .accountPage[data-account-page] .valueField > strong {
+    min-height: 0;
+    font-size: 11px;
+  }
+
+  .accountPage[data-account-page] .contactList {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .accountPage[data-account-page] .settingsList {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(7, minmax(27px, 1fr));
+    gap: 4px;
+  }
+
+  .accountPage[data-account-page] .settingRow:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .accountPage[data-account-page] .settingRow {
+    grid-template-columns: 82px minmax(0, 1fr);
+  }
+
+  .accountPage[data-account-page] .emergencySection {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 18px;
+  }
+
+  .accountPage[data-account-page] .emergencySection .cardHeading {
+    grid-column: 1 / -1;
+  }
+
+  .accountPage[data-account-page] .contactCards,
+  .accountPage[data-account-page] .emptyContact {
+    grid-column: 1;
+    align-self: stretch;
+  }
+
+  .accountPage[data-account-page] .emergencyCard {
+    height: 100%;
+    min-height: 58px;
+  }
+
+  .accountPage[data-account-page] .emergencySection .secondaryButton {
+    grid-column: 2;
+    grid-row: 2;
+    width: auto;
+    min-width: 170px;
+    margin: 0;
+    padding-inline: 18px;
+  }
+
+  .accountPage[data-account-page] .saveBar {
+    grid-column: 1 / 5;
+    grid-row: 2;
+    align-self: end;
+    justify-self: center;
+    width: min(220px, calc(100% - 32px));
+    margin: 0 0 12px;
+  }
+
+  .accountPage[data-account-page]:has(.saveBar) .profileCard {
+    padding-bottom: 54px;
+  }
+
+  .accountSubpage {
+    height: 100%;
+    min-height: 0;
+    grid-template-rows: clamp(92px, 11vh, 118px) minmax(0, 1fr);
+    gap: 12px;
+    padding-bottom: 0;
+  }
+
+  .subpageHeader {
+    min-height: 0;
+    padding: 5px 10px;
+  }
+
+  .subpageHeader > p {
+    display: none;
+  }
+
+  .subpageHeader h1 {
+    font-size: clamp(30px, 2.4vw, 38px);
+  }
+
+  .subpageHeader > span {
+    margin-top: 3px;
+    font-size: 13px;
+  }
+
+  .subpageBody {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .securityView {
+    grid-template-rows:
+      minmax(92px, 0.55fr)
+      minmax(256px, 1.55fr)
+      minmax(100px, 0.62fr);
+  }
+
+  .privacyView {
+    grid-template-rows:
+      minmax(278px, 1.55fr)
+      minmax(118px, 0.66fr)
+      minmax(78px, 0.44fr);
+  }
+
+  .bookingView {
+    grid-template-rows: minmax(220px, 1fr) minmax(240px, 1.08fr);
+  }
+
+  .deleteView {
+    grid-template-rows:
+      minmax(142px, 1fr)
+      minmax(122px, 0.8fr)
+      minmax(72px, 0.48fr)
+      minmax(94px, 0.62fr);
+  }
+
+  .subpageBoundary {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) and (max-height: 780px) {
+  .subpageCard,
+  .connectionCard {
+    padding: 12px 15px;
+    border-radius: 17px;
+  }
+
+  .subpageSectionTitle strong {
+    font-size: 15px;
+  }
+
+  .subpageIcon,
+  .methodBrand {
+    width: 32px;
+    height: 32px;
+    border-radius: 11px;
+  }
+
+  .methodList,
+  .deviceList {
+    margin-top: 7px;
+  }
+
+  .methodList > div,
+  .deviceList > div {
+    min-height: 39px;
+    padding: 3px 0;
+  }
+
+  .activityList > div {
+    min-height: 26px;
+  }
+
+  .dataCategoryGrid {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .dataCategoryGrid > div {
+    min-height: 48px;
+    padding: 5px 8px;
+  }
+
+  .managementLinks {
+    margin-top: 7px;
+  }
+
+  .managementLinks > :is(a, button),
+  .importGrid > button {
+    min-height: 50px;
+  }
+
+  .connectionCard > p {
+    margin-top: 7px;
+  }
+
+  .connectionCard > div:last-child {
+    padding-top: 7px;
+  }
+
+  .importGrid {
+    gap: 7px;
+    margin-top: 8px;
+  }
+
+  .deleteWarning > .subpageIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .deleteWarning p {
+    margin: 4px 0 6px;
+    line-height: 1.4;
+  }
+
+  .reservationSummary {
+    margin-top: 7px;
+  }
+
+  .reservationSummary span {
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .accountSubpage {
+    padding-bottom: 18px;
+  }
+
+  .securityColumns,
+  .privacyView,
+  .connectionGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dataOverviewCard,
+  .exportCard,
+  .dataManagementCard,
+  .dangerZone {
+    grid-column: 1;
+  }
+
+  .activityCard,
+  .dangerZone {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .connectionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .connectionCard:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .subpageBoundary {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .subpageHeader {
+    padding: 0;
+  }
+
+  .subpageHeader h1 {
+    font-size: 30px;
+  }
+
+  .subpageCard,
+  .connectionCard {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .protectionCard,
+  .protectionStats,
+  .connectionGrid,
+  .dataCategoryGrid,
+  .managementLinks,
+  .importGrid,
+  .reservationSummary,
+  .deleteConfirm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .protectionStats > div {
+    padding: 8px 0;
+    border-top: 1px solid var(--pc-border-subtle);
+    border-left: 0;
+  }
+
+  .methodList > div,
+  .deviceList > div {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .methodList > div > button {
+    grid-column: 2 / -1;
+    width: 100%;
+  }
+
+  .activityCard {
+    display: block;
+  }
+
+  .activityList > div {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 8px 0;
+  }
+
+  .activityList > div > span {
+    grid-column: 2;
+  }
+
+  .activityList > div > time {
+    grid-column: 2;
+  }
+
+  .managementLinks {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dangerZone > div,
+  .deleteExport {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dangerZone a,
+  .deleteExport > button {
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .connectionCard:last-child {
+    grid-column: 1;
+  }
+
+  .importNotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .reservationWarning > a {
+    position: static;
+    margin-top: 12px;
+  }
+
+  .deleteWarning {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .deleteConfirm > div {
+    display: grid;
+  }
+}
+
+@media (max-width: 767px) {
+  .pageHeader > div:first-child {
+    padding-left: 42px;
+  }
+
+  .titleFlower {
+    left: 2px;
+    width: 28px;
+    font-size: 30px;
+    text-shadow: 0 3px 10px rgb(224 116 131 / 18%);
+  }
 }

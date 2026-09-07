@@ -10,6 +10,7 @@ import {
   radarPolygonPoints,
   type RadarAxis,
 } from "./preference-model";
+import { PreferenceIcon } from "./preference-icon";
 import styles from "./preference-center.module.css";
 
 const gridLevels = [0.25, 0.5, 0.75, 1];
@@ -26,11 +27,15 @@ export function PreferenceRadar({
   description,
   axes,
   image,
+  icon,
+  summary,
 }: {
   title: string;
   description: string;
   axes: RadarAxis[];
   image: string;
+  icon: "attractions" | "experience";
+  summary: string;
 }) {
   const [activeAxisId, setActiveAxisId] = useState<string | null>(
     axes[0]?.id ?? null,
@@ -42,13 +47,12 @@ export function PreferenceRadar({
   return (
     <article className={styles.radarCard}>
       <div className={styles.radarHeading}>
+        <span className={styles.radarTitleIcon} aria-hidden="true">
+          <PreferenceIcon name={icon} />
+        </span>
         <div>
-          <p>LONG-TERM PORTRAIT</p>
           <h2>{title}</h2>
           <span>{description}</span>
-        </div>
-        <div className={styles.radarArtwork} aria-hidden="true">
-          <Image src={image} alt="" fill sizes="132px" />
         </div>
       </div>
 
@@ -136,11 +140,17 @@ export function PreferenceRadar({
           })}
         </svg>
 
-        <div className={styles.radarReading} aria-live="polite">
-          <span>{activeAxis?.label ?? "画像维度"}</span>
-          <strong>
-            {activeAxis ? levelLabel(activeAxis.level) : "未设置"}
-          </strong>
+        <div className={styles.radarStory}>
+          <div className={styles.radarArtwork} aria-hidden="true">
+            <Image src={image} alt="" fill sizes="280px" />
+          </div>
+          <p>{summary}</p>
+          <div className={styles.radarReading} aria-live="polite">
+            <span>{activeAxis?.label ?? "画像维度"}</span>
+            <strong>
+              {activeAxis ? levelLabel(activeAxis.level) : "未设置"}
+            </strong>
+          </div>
         </div>
       </div>
     </article>

@@ -94,8 +94,9 @@ function QuickCard({
                 travelerLabels[key as keyof typeof travelerLabels] + " " + n,
             )
             .join(" · ")
-        : state.configuration.preferences[field.key]?.quick.join(" · ") ||
-          "未限定";
+        : state.configuration.preferences[field.key]?.quick
+            .slice(0, 3)
+            .join(" · ") || "未限定";
   return (
     <>
       <button

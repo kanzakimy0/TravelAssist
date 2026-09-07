@@ -175,6 +175,18 @@ export function PlannerMapShell({
           ))}
         </div>
       </details>
+      {live && (
+        <button
+          type="button"
+          className={styles.locateMap}
+          aria-label="定位当前日"
+          onClick={() =>
+            dispatch({ type: "focusDay", day: state.ui.focusedDay })
+          }
+        >
+          ◎
+        </button>
+      )}
       {state.ui.inspection && state.ui.inspection.level !== "detail" && (
         <MapQuickCard
           key={state.ui.inspection.id}

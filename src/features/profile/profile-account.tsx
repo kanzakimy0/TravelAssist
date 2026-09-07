@@ -119,7 +119,7 @@ export function ProfileAccount() {
   const [draft, setDraft] = useState<AccountDraft>(() =>
     cloneDraft(initialAccountDraft),
   );
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const [displayNameError, setDisplayNameError] = useState("");
   const [avatarError, setAvatarError] = useState("");
   const [saveFeedback, setSaveFeedback] = useState(false);
@@ -312,12 +312,21 @@ export function ProfileAccount() {
   const recommendation = regionRecommendations[draft.settings.region];
 
   return (
-    <div className={styles.accountPage}>
+    <div className={styles.accountPage} data-account-page>
       <header className={styles.pageHeader}>
         <div>
+          <i
+            className={styles.titleFlower}
+            data-title-flower
+            aria-hidden="true"
+          >
+            ✿
+          </i>
           <p>Personal profile</p>
-          <h1>账户</h1>
-          <span>管理您的个人资料与基本设置</span>
+          <h1 data-primary-page-title>账户</h1>
+          <span>
+            管理您的个人资料与基本设置，让 TravelAssist 更好地为您服务。
+          </span>
         </div>
       </header>
 
@@ -372,14 +381,10 @@ export function ProfileAccount() {
               )}
             </div>
             <div className={styles.avatarDetails}>
-              <strong>
-                {draft.avatar.kind === "local"
-                  ? "本地预览"
-                  : draft.avatar.kind === "current"
-                    ? "当前头像"
-                    : "默认头像"}
-              </strong>
-              <p>图片仅在本页内预览，不会上传网络。</p>
+              <strong>{draft.profile.displayName}</strong>
+              <p>
+                {draft.profile.countryRegion} · {draft.profile.city}
+              </p>
               <div className={styles.avatarActions}>
                 <label className={styles.fileButton}>
                   <PersonalIcon name="camera" />
@@ -677,7 +682,7 @@ export function ProfileAccount() {
 
       <section aria-labelledby="account-entry-title">
         <div className={styles.sectionHeading}>
-          <p>更多账户管理</p>
+          <p>其他设置</p>
           <h2 id="account-entry-title">账户与数据</h2>
         </div>
         <div className={styles.accountEntries}>

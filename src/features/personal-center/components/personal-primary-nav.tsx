@@ -19,10 +19,11 @@ export function PersonalPrimaryNav({
   return (
     <nav aria-label="个人中心" className={styles.navigation}>
       <ul>
-        {personalNavigation.map(({ href, label, icon }) => {
+        {personalNavigation.map(({ href, label, mobileLabel, icon }, index) => {
           const active =
             pathname === href ||
             (href !== "/personal-center" && pathname.startsWith(`${href}/`));
+          const tooltipId = `personal-nav-tooltip-${index}`;
 
           return (
             <li key={href}>
@@ -30,12 +31,22 @@ export function PersonalPrimaryNav({
                 href={href}
                 className={styles.navLink}
                 aria-current={active ? "page" : undefined}
+                aria-describedby={tooltipId}
+                data-personal-nav-item
                 onNavigate={(event) => {
                   if (!requestNavigation(href, event)) onNavigate?.();
                 }}
               >
                 <PersonalIcon name={icon} />
-                <span>{label}</span>
+                <span className={styles.navLabel}>{label}</span>
+                <span className={styles.mobileNavLabel}>{mobileLabel}</span>
+                <span
+                  id={tooltipId}
+                  role="tooltip"
+                  className={styles.railTooltip}
+                >
+                  {label}
+                </span>
                 {active ? (
                   <span className={styles.activeMarker} aria-hidden="true" />
                 ) : null}

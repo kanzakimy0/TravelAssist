@@ -1,4 +1,5 @@
-import { useRef, type Dispatch } from "react";
+import { useRef, useState, type Dispatch } from "react";
+import { pendingSettingsCount } from "../model/secondary-panels";
 import { Button } from "@/components/ui/button";
 import type { MockPlan } from "../model/planner-types";
 import type { TripState, TripAction } from "../model/trip-model";
@@ -38,6 +39,8 @@ export function PlannerRightPanel({
   onOpenDetail: () => void;
 }) {
   const moreTrigger = useRef<HTMLButtonElement>(null);
+  const [preview, setPreview] = useState(false);
+  const pending = pendingSettingsCount(state);
   return (
     <div className={styles.rightPanel} data-right-panel>
       <section
@@ -58,7 +61,10 @@ export function PlannerRightPanel({
             ref={moreTrigger}
             aria-expanded={moreOpen}
             aria-controls={moreOpen ? "more-trip-settings" : undefined}
-            onClick={() => onMore(!moreOpen)}
+            onClick={() => {
+              setPreview(false);
+              onMore(!moreOpen);
+            }}
           >
             <PlannerIcon name="settings" />
             更多行程设置
@@ -67,11 +73,18 @@ export function PlannerRightPanel({
             variant="secondary"
             size="small"
             className={`${styles.settingsButton} ${styles.replanButton}`}
-            onClick={onReplan}
+            onClick={() => {
+              setPreview(true);
+              onMore(true);
+            }}
             disabled={refreshing}
           >
             <PlannerIcon name="refresh" />
-            重新生成路线
+            {refreshing
+              ? "刷新中…"
+              : pending
+                ? `预览 ${pending} 项变更`
+                : "重新生成路线"}
           </Button>
         </div>
         <p className={styles.mockStatus} role="status">
@@ -90,7 +103,12 @@ export function PlannerRightPanel({
             trigger={moreTrigger}
             state={state}
             dispatch={dispatch}
-            onClose={() => onMore(false)}
+            onClose={() => {
+              setPreview(false);
+              onMore(false);
+            }}
+            preview={preview}
+            onGenerate={onReplan}
           />
         )}
       </section>

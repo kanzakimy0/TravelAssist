@@ -10,7 +10,7 @@ export function PlannerOverlay({
   children,
 }: {
   title: string;
-  kind: "right" | "bottom" | "quick" | "detail";
+  kind: "right" | "bottom" | "quick" | "detail" | "settings";
   onClose: () => void;
   children: ReactNode;
 }) {
@@ -34,6 +34,27 @@ export function PlannerOverlay({
       className={styles.overlay}
       data-kind={kind}
       aria-label={title}
+      onKeyDown={(event) => {
+        if (event.key !== "Tab") return;
+        const focusable = Array.from(
+          event.currentTarget.querySelectorAll<HTMLElement>(
+            'button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), a[href], [tabindex="0"]',
+          ),
+        ).filter((element) => element.getClientRects().length > 0);
+        const first = focusable[0],
+          last = focusable.at(-1);
+        if (!first || !last) {
+          event.preventDefault();
+          return;
+        }
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }}
       onCancel={(event) => {
         event.preventDefault();
         onClose();

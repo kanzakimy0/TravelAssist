@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "assets:inventory": "node tools/assets/inventory-assets.mjs",
+    "assets:validate": "node tools/assets/validate-asset-library.mjs",
+    "assets:index": "node tools/assets/generate-asset-index.mjs",
+    "test:assets": "node --test tests/task-013-assets.test.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

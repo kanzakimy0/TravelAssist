@@ -109,6 +109,7 @@ export type TripState = {
   ui: TripUi;
   settings: PlannerSettings;
   configuration: TripConfiguration;
+  pendingSettingsBaseline?: TripConfiguration;
   notice: string;
 };
 export type PreferenceGroup =
@@ -143,6 +144,7 @@ export type TripConfiguration = {
   alternatives: string[];
 };
 export type TripAction =
+  | { type: "saveSettings"; configuration: TripConfiguration }
   | {
       type: "travelers";
       key: keyof TripConfiguration["travelers"];
@@ -637,6 +639,41 @@ export function timeBandPosition(
 }
 export function tripReducer(state: TripState, action: TripAction): TripState {
   const plan = currentPlan(state);
+  if (action.type === "saveSettings") {
+    // Reuse established setters so compatibility summaries and canonical values agree.
+    let committed = tripReducer(state, {
+      type: "level",
+      key: "budget",
+      value: action.configuration.budget,
+    });
+    committed = tripReducer(committed, {
+      type: "level",
+      key: "pace",
+      value: action.configuration.pace,
+    });
+    for (const [group, value] of Object.entries(
+      action.configuration.preferences,
+    )) {
+      committed = tripReducer(committed, {
+        type: "preference",
+        group: group as PreferenceGroup,
+        quick: value.quick,
+      });
+      for (const [key, text] of Object.entries(value.details)) {
+        committed = tripReducer(committed, {
+          type: "preference",
+          group: group as PreferenceGroup,
+          detail: { key, value: text },
+        });
+      }
+    }
+    return {
+      ...committed,
+      pendingSettingsBaseline:
+        state.pendingSettingsBaseline ?? structuredClone(state.configuration),
+      notice: "偏好已保存；正式路线未改变。请预览变更后重新规划。",
+    };
+  }
   if (action.type === "travelers") {
     if (
       !Number.isInteger(action.value) ||
@@ -810,7 +847,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
             inspection: null,
             focusRevision: state.ui.focusRevision + 1,
             focusedDay: item.day,
-            activeBottomTab: "itinerary",
+            activeBottomTab: state.ui.activeBottomTab,
           },
         }
       : state;
@@ -829,13 +866,14 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           item?.day ??
           state.areas.find((a) => a.id === action.id)?.day ??
           state.ui.focusedDay,
-        activeBottomTab: item ? "itinerary" : state.ui.activeBottomTab,
+        activeBottomTab: state.ui.activeBottomTab,
       },
     };
   }
   if (action.type === "replan")
     return {
       ...state,
+      pendingSettingsBaseline: undefined,
       notice: `示例路线预览已刷新；保留 ${plan.items.filter((i) => i.fixedTime || i.locked).length} 项固定安排与全部预约，未进行真实计算。`,
     };
   if (action.type === "add") {

@@ -6,7 +6,7 @@
 
 ## Status
 
-待验收 — TASK-011-A 实现与本地验收完成，等待 Draft PR Review / 合入 `develop`。未自动 merge。
+已完成 — 用户授权后 PR #102 已合入 `develop`，合并提交 `4c1d9bbf1311a10b1e9db5bde00fe2e7b12fccab`。合并前集成验证提交 `b3d411b`；以下原始交付记录保留供审计。
 
 ## Prerequisite Check
 

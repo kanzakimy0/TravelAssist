@@ -1,207 +1,353 @@
-# TASK-010-B — Personal Center 反向导航与继续规划入口
+# TASK-010-B v1.1 — 全页面 Logo 返回首页与剩余迁移闭环
 
 ## Metadata
+
 - Task ID: `TASK-010-B`
-- Owner: `B`
+- Revision: `v1.1 / 2026-09-06`
+- Owner: `A+B / Shared Navigation`
+  - A：只处理首页 Brand 的一文件窄范围修正，并复验主系统
+  - B：处理 Personal Center Logo 与主流程入口
 - Issue: `#79`
-- Status: `Planned`
-- Depends On: `TASK-010-A / #78` deep-link contract available on develop for final acceptance
-- Design Source: `docs/ui/navigation-flow.md` v1.1
-- Branch: `feature/b-personal-center-navigation`
-
-## 1. 目标
-
-让 Personal Center 不再成为与主系统割裂的信息岛，补齐：
-
-- 点击 TravelAssist Logo 返回首页；
-- 继续当前规划；
-- 从 Personal Center 开始一趟新旅行时直接进入 Start Flow **Step 3**。
-
-只修改 Personal Center 自己的导航与现有 Mock 页面入口，不修改 A 的 Planner / Start 业务。
-
----
-
-## 2. 当前实际状态
-
-已存在：
-- `/personal-center`
-- `/personal-center/trips`
-- `/personal-center/preferences`
-- `/personal-center/companions`
-- `/personal-center/account`
-
-内部五项导航正常。
-
-缺失：
-- TravelAssist Logo 回全局首页；
-- Personal Home `继续规划`；
-- `开始新旅行`；
-- Trips placeholder 的主系统出口。
+- Status: `已完成`
+- WBS: `3.1 / 5.1 / 5.10 / 5.20`（仅本任务导航子集）
+- Commit: `0e581513e72b5890b77bf74f6f369fc73f6538f0`（实现提交）
+- Revalidation Commit: `fe17962532f705556c3ca69c0871f593d366acfa`
+- Integrated develop: `8b83628f60e7dd2a07231a59ca448c4dc5af510d`（安全同步提交 `fcd934e6d13d21f9aea0736385038a8c1336a5fe`）
+- Pull Request: [#108](https://github.com/kanzakimy0/TravelAssist/pull/108) / Merged → develop
+- Merge Commit: `f105253b1f700f67fd97d8c9eb03a9c85000d699`（用户明确授权合并）
+- Merge Acceptance: 基线 `e052d93`，验收 head `a4306e2`；lint / typecheck / build / 123 tests / 76 Logo QA / diff-check 通过。合并树与验收 head 相同。全仓格式 27 项既有基线例外（原 26 项加 TASK-WBS-5.8 文档）独立核实；本任务文件通过。下方原“保持 Draft”是授权前历史规则，现已由用户明确合并授权解除。
+- Specification Source: 文档 Draft PR #106 / `533801b320f48371fda0dac4f3747594ec6df2f2`
+- Supersedes: 本文件 v1.0 未执行版本；**不创建重复 Personal Center 导航 Task**
+- Depends On:
+  - `TASK-010-A / Issue #78 / PR #101` 已合入 `develop`，依赖已满足
+  - `TASK-011-A / Issue #86 / PR #102` 已合并（`4c1d9bb`）；本 Task 不修改其 Planner 高冲突文件，只复验导航
+- Design Source:
+  - `docs/ui/navigation-flow.md` v1.2
+  - `docs/ui/navigation-transition-audit-2026-09-06.md`
+- Branch: `fix/shared-global-logo-navigation`
+- Base Branch: `develop`
+- Merge Policy: 建 Draft PR；不得自动 merge
 
 ---
 
-## 3. Sidebar / Mobile Brand
+## 1. Objective
 
-当前 TravelAssist Brand 指向 `/personal-center`。
-
-修改为：
+完成当前可运行页面中剩余的导航缺口，并固化以下全局产品规则：
 
 ```text
-TravelAssist Logo → /
+所有页面中的 TravelAssist 产品 Logo / Brand
+→ /
 ```
 
-同时：
+同时补齐 Personal Center 到 Start / Planner 的主流程出口。
 
-```text
-我的首页 → /personal-center
-```
+本 Task 完成后：
 
-继续由现有 primary nav 承担。
-
-这两个入口必须语义分离。
-
-### 3.1 首页返回唯一规则
-
-**Personal Center 返回产品首页只通过 TravelAssist Logo。**
-
-不要新增：
-
-- `返回 TravelAssist`
-- `返回首页`
-- Home menu item
-
-等第二套首页返回入口。
-
-如果 Mobile / 窄屏不显示桌面 Sidebar，也必须在移动布局中保留一个可见 TravelAssist Logo，并让该 Logo → `/`。
+- 首页 Logo 可点击并保持在 `/`；
+- Start / Planner Logo 的既有 `/` 行为不回归；
+- Personal Center Desktop 与 Mobile Logo 都返回 `/`；
+- Personal Home 可继续当前规划或快速开始新旅行；
+- Trips 占位页不再是导航死端；
+- Account、Preferences、Companions 等 Personal Center 页面自动继承统一 Logo；
+- 不伪造 Auth、Saved Trips、数据库或未开发页面；
+- 不重复开发 TASK-011-A 的 Planner → Detail。
 
 ---
 
-## 4. Personal Home
+## 2. Why This Is a Revision, Not a New Duplicate Task
 
-将目前 disabled 的：
+原 `TASK-010-B` / Issue #79 尚未执行，其核心缺口仍存在：
+
+- Personal Center Logo 目标错误；
+- Personal Home 继续规划 disabled；
+- Personal Home 缺少开始新旅行；
+- Trips placeholder 没有出口。
+
+2026-09-06 新增决策要求首页自身 Logo 也必须是 `/` 链接。因此将原 Task 升级为 v1.1，并增加一个严格受限的 A 文件例外，而不是再建立一份与 Issue #79 重叠的新任务。
+
+---
+
+## 3. Current Audit Snapshot
+
+以下为文档 PR #106 编写时的历史快照；本次最新执行状态以 Metadata 和文末执行记录为准，PR #102 已合并。
+
+### Already Complete on `develop`
+
+- 首页 `让我们开始吧` → `/start`
+- 首页个人中心 → `/personal-center`
+- Start Logo → `/`
+- Start 头像 → `/personal-center`
+- `/start?entry=step3` → UI Step 3
+- Start 方案 → `/planner`
+- Planner Logo → `/`
+- Planner `新建旅行` → `/start`
+- Planner Personal Center → `/personal-center`
+- Personal Center 五项一级导航
+- Account 三个子入口
+- Account 子页 `返回账户`
+
+### Missing on `develop`
+
+- 首页 TravelAssist Brand 仍是不可点击 `div`
+- Personal Center Desktop Logo → `/personal-center`
+- Personal Center Mobile Logo → `/personal-center`
+- Personal Home Hero 主按钮 disabled
+- Personal Home 没有 `开始新旅行`
+- Trips 页面只有纯文字 placeholder
+- Planner → Detail 未在 `develop`；Draft PR #102 独立等待合入
+
+---
+
+## 4. Scope A — Home Logo
+
+允许修改：
 
 ```text
-继续规划
+src/features/home/components/compact-header.tsx
+src/features/home/components/compact-header.module.css   # 仅在 Link 默认样式需要复位时
 ```
 
-改为可用 Link：
+要求：
+
+1. 将首页 `Brand` 从不可点击容器改成真实链接：
+
+   ```text
+   TravelAssist Logo / Wordmark → /
+   ```
+
+2. 推荐可访问名称：
+
+   ```text
+   aria-label="TravelAssist 首页"
+   ```
+
+3. 保留当前 Logo 图形、文字、尺寸、位置、布局和视觉。
+4. 不修改 Hero、背景、语言菜单、AI 面板。
+5. 首页点击 Logo 后 URL 仍为 `/`；不创建额外页面。
+
+---
+
+## 5. Scope B — Personal Center Shared Logo
+
+修改：
+
+```text
+src/features/personal-center/components/personal-sidebar.tsx
+```
+
+当前 Desktop 与 Compact Brand 都指向：
+
+```text
+/personal-center
+```
+
+全部改为：
+
+```text
+/
+```
+
+要求：
+
+- Desktop Brand → `/`
+- Mobile / Compact Brand → `/`
+- `我的首页`仍 → `/personal-center`
+- 继续使用 `GuardedLink`
+- 未保存修改时必须触发现有 Navigation Guard
+- 更新 `aria-label`，明确是返回 TravelAssist 产品首页
+- 不新增“返回首页”文字菜单
+- 不修改 Sidebar 插画和视觉布局
+
+该共享改动应覆盖：
+
+```text
+/personal-center
+/personal-center/trips
+/personal-center/preferences
+/personal-center/companions
+/personal-center/account
+/personal-center/account/security
+/personal-center/account/privacy
+/personal-center/account/booking-sync
+```
+
+---
+
+## 6. Scope C — Personal Home Main Actions
+
+修改：
+
+```text
+src/features/personal-center/components/personal-home-preview.tsx
+src/features/personal-center/personal-center.module.css  # 仅动作布局所需
+```
+
+将当前 disabled Hero 动作调整为两个真实动作：
 
 ```text
 继续规划 → /planner
-```
-
-辅助说明明确这是当前 Mock 行程预览，不能暗示 Saved Trip 已接入。
-
-新增：
-
-```text
 开始新旅行 → /start?entry=step3
 ```
 
-注意：**不是 `/start` 普通 Step 1 入口。**
+规则：
 
-`开始新旅行` 的产品语义是：
-
-> 用户已经在 Personal Center 中，直接进入新旅行的 Step 3（目的地 / 日期 / 同行人 / 交通 / 预算 / 已确定安排），跳过前面的首次熟悉度与兴趣引导。
-
-现有：
-
-```text
-查看全部 → /personal-center/trips
-```
-
-保留。
+- `继续规划`作为当前 Mock 行程的主要动作；
+- `开始新旅行`为次级动作；
+- 明确标注当前行程为 Mock / 示例，不暗示 Saved Trip 已接入；
+- 保留 `查看全部 → /personal-center/trips`；
+- 保留旅行卡 → `/personal-center/trips`；
+- `旅行灵感`与`目的地探索`仍可显示“即将开放”，不得创建假路由；
+- `我的收藏`现阶段继续进入 Trips，不在本 Task 发明筛选 Contract。
 
 ---
 
-## 5. Trips Placeholder
+## 7. Scope D — Trips Placeholder Exit
 
-真实 Saved Trips 尚未实现前，至少提供两个动作：
+优先用可复用但不过度抽象的方式，为 Trips 占位页加入：
 
 ```text
 开始新旅行 → /start?entry=step3
 返回当前规划 → /planner
 ```
 
-页面明确：
-- 当前没有真实保存列表；
-- 这些只是导航入口；
-- 不伪造数据库内容。
-
-不得把 `开始新旅行` 链到普通 `/start`。
-
----
-
-## 6. Avatar Popover
-
-内部五项目标继续保留。
-
-**不要新增 `返回 TravelAssist / 返回首页` 菜单项。**
-
-首页返回统一由 TravelAssist Logo 完成。
-
-如果移动端需要全局品牌入口，应显示 Logo，而不是新增文本导航项。
-
----
-
-## 7. 与 A 的 Deep-Link Contract
-
-B 不负责实现 Step 3 路由解析。
-
-B 只调用 A 提供的稳定入口：
+允许修改：
 
 ```text
-/start?entry=step3
+src/app/(account)/personal-center/trips/page.tsx
+src/features/personal-center/components/personal-placeholder.tsx
+src/features/personal-center/personal-center.module.css
 ```
 
-A / TASK-010-A 负责保证：
+实现选择：
+
+- 可以让 `PersonalPlaceholder`支持可选 actions；
+- 或只在 Trips 页面建立一个专用轻量 Empty State；
+- 不得迫使 Preferences / Companions 出现不适合它们的按钮。
+
+文案必须说明：
+
+- 真实 Saved Trips 尚未接入；
+- 当前动作只是进入新建流程或返回当前 Mock 规划；
+- 不伪造行程列表、数量、数据库保存状态。
+
+---
+
+## 8. Planner / Detail Conflict Guard
+
+当前存在：
 
 ```text
-/start?entry=step3
-→ Start Flow UI Step 3
+TASK-011-A
+Issue #86
+Draft PR #102
+branch: feature/a-planner-to-trip-detail-workspace
 ```
 
-当前 Start Flow 内部是 0-based，UI Step 3 对应 `currentStep = 2`，但 B 不依赖内部实现。
+该 PR 修改 Planner 高冲突文件和 `tests/task-010-navigation.test.mjs`。
 
-### 7.1 依赖规则
+本 Task：
 
-B 可以先完成自己的 Link 代码，但最终验收前必须确认 TASK-010-A 的 deep-link contract 已合入 develop。
+- **不得修改 `src/features/planner/**`**
+- **不得修改 `src/app/planner/page.tsx`**
+- **不得修改 `tests/task-010-navigation.test.mjs`**
+- 不得 cherry-pick、重写或覆盖 PR #102
+- 新增独立测试文件，例如：
 
-B 禁止修改：
+  ```text
+  tests/task-010-b-global-logo-navigation.test.mjs
+  ```
+
+若 PR #102 在本 Task 执行期间合入：
+
+1. 安全同步最新 `origin/develop`；
+2. 运行 Detail 路由 Logo 与返回 Planner 的回归；
+3. 不把 TASK-011-A 的成果写成 TASK-010-B 自己实现。
+
+若 PR #102 仍为 Draft / 未合入：
+
+- Result 明确写 `Planner → Detail: Pending TASK-011-A`；
+- TASK-010-B 可完成自身范围；
+- 不把全产品迁移状态冒充为 100% 完成。
+
+---
+
+## 9. Tests
+
+新增独立导航测试，至少覆盖：
+
+### Static / Contract
+
+- 首页 Brand 包含 `href="/"`。
+- Start Brand 保持 `href="/"`。
+- Planner Brand 保持 `href="/"`。
+- Personal Center Desktop Brand 包含 `href="/"`。
+- Personal Center Compact Brand 包含 `href="/"`。
+- Personal Center `我的首页`仍为 `/personal-center`。
+- Personal Home：
+  - `继续规划` → `/planner`
+  - `开始新旅行` → `/start?entry=step3`
+- Trips：
+  - `开始新旅行` → `/start?entry=step3`
+  - `返回当前规划` → `/planner`
+- Avatar Popover 不包含新增的“返回首页 / 返回 TravelAssist”项。
+- 无无目标 `href="#"`。
+- Auth 仍未被伪造启用。
+
+### Browser QA
+
+逐页点击可见 Logo 并确认最终 URL `/`：
 
 ```text
-src/features/start-flow/
+/
+/start
+/planner
+/personal-center
+/personal-center/trips
+/personal-center/preferences
+/personal-center/companions
+/personal-center/account
+/personal-center/account/security
+/personal-center/account/privacy
+/personal-center/account/booking-sync
 ```
 
-去“修好” Step 3 跳转。
+Detail 路由：
+
+```text
+/planner?view=detail&day=1
+```
+
+只在 TASK-011-A 已合入当前基线时纳入通过项；否则记录为外部待合并项。
+
+验证 Personal Home 与 Trips 的四个新动作，以及：
+
+- Back / Forward；
+- Keyboard Tab / Enter；
+- focus-visible；
+- 未保存 Guard；
+- Desktop / Mobile Logo 可见；
+- 无横向溢出；
+- 控制台无新增 error / hydration error。
+
+尺寸：
+
+```text
+1440×900
+1024×768
+390×844
+320×740
+```
 
 ---
 
-## 8. 必须保留
-
-- active nav；
-- aria-current；
-- account / preferences / companions / trips 路由；
-- avatar popover close / Esc / focus restore；
-- responsive；
-- Personal Center 现有视觉体系。
-
----
-
-## 9. 不包含
-
-- Auth / Session / Logout；
-- Saved Trip backend；
-- Planner source；
-- Start source；
-- Preference / Companion 业务实现；
-- Profile Preference → Step 3 的真实预填逻辑。
-
----
-
-## 10. 验证
+## 10. Validation Commands
 
 ```bash
+git fetch origin
+git switch develop
+git pull --ff-only origin develop
+git status --short
+
 npm ci
 npm run lint
 npm run typecheck
@@ -211,28 +357,87 @@ npm run build
 git diff --check
 ```
 
-浏览器验证：
+如果全仓 `format:check`存在未由本 Task 引入的基线异常：
 
-```text
-Personal Center Logo → /
-Personal Home 继续规划 → /planner
-Personal Home 开始新旅行 → /start?entry=step3 → UI Step 3
-Trips 开始新旅行 → /start?entry=step3 → UI Step 3
-Trips 返回当前规划 → /planner
-```
-
-并验证：
-- back / forward；
-- 1440×900；
-- 390×844；
-- 320×740；
-- Mobile 有可见 Logo 返回首页；
-- Avatar Popover 没有重复“返回首页”项。
+- 必须逐项与 `origin/develop`比较；
+- 只允许记录真实基线；
+- Task-owned 文件必须全部通过；
+- 不得把 skipped 或基线失败写成 passed。
 
 ---
 
-## 11. Tracking
+## 11. Non-goals
 
-最终更新 WBS / Result，Issue #79 与 Task / Branch / Commit / PR 一致；不自动 merge。
+- Auth / Session / Logout
+- Saved Trips backend / DB
+- Profile Preference 自动预填
+- Preferences / Companions 正文功能
+- Trip Library 正式列表
+- 旅行灵感 / 目的地探索
+- Planner / Detail 功能开发
+- Mapbox / Trip State / Route 重构
+- 真实 AI / Weather / Traffic / Reservation Provider
+- Partner Logo 跳转规则
+- 视觉重做
 
-完成后停止。
+---
+
+## 12. Acceptance Criteria
+
+- [x] 首页 TravelAssist Logo / Wordmark 是 `Link → /`
+- [x] Start Logo 继续 `→ /`
+- [x] Planner Logo 继续 `→ /`
+- [x] Personal Center Desktop Logo `→ /`
+- [x] Personal Center Mobile / Compact Logo `→ /`
+- [x] Personal Center 所有当前子路由均继承该规则
+- [x] `我的首页`仍 `→ /personal-center`
+- [x] Personal Home `继续规划 → /planner`
+- [x] Personal Home `开始新旅行 → /start?entry=step3`
+- [x] Trips `开始新旅行 → /start?entry=step3`
+- [x] Trips `返回当前规划 → /planner`
+- [x] `/start?entry=step3`实测进入 UI Step 3
+- [x] Avatar Popover 没有重复首页入口
+- [x] Account 子入口和返回账户不回归
+- [x] 未保存 Guard 不回归
+- [x] 不修改 Planner / TASK-011-A 高冲突文件
+- [x] 新增独立导航测试
+- [x] Browser QA 覆盖四种尺寸
+- [x] lint / typecheck / tests / build / diff-check 通过
+- [x] Mock、disabled、外部待合并状态均诚实标注
+- [x] Result、Issue、WBS、Branch、Commit、PR 一致
+- [x] PR 保持 Draft，等待用户审查，不自动 merge
+
+---
+
+## 13. Tracking and Final Result
+
+完成时创建：
+
+```text
+docs/tasks/RESULT-TASK-010-b-personal-center-navigation.md
+```
+
+Result 必须分开列出：
+
+```text
+Implemented by TASK-010-B v1.1
+Verified existing navigation
+Pending external task / PR
+Not implemented / Non-goal
+```
+
+更新：
+
+- Issue #79
+- WBS Task 追踪
+- Branch / Commit / Draft PR
+- 验证命令与浏览器证据
+- TASK-011-A / PR #102 当时的真实状态
+
+完成后停止，不自动合并。
+
+## Execution Record — 2026-09-06
+
+自身范围已实现，状态为待验收。复用原分支和 Draft PR #108，未重复创建或重建实现。最新 develop `8b83628` 已安全同步；123/123 tests、76/76 Logo QA、四尺寸 Guard / history / keyboard / account 回归通过。全库 format:check 有 26 个逐项核对的既有基线例外，未写为 Passed。本任务文件格式通过。完整证据与分类见 `RESULT-TASK-010-b-personal-center-navigation.md`。
+
+PR #102 已合并，Detail Logo 四尺寸通过；1440 / 1024 的返回 Planner 与共享 Map DOM 生命周期通过。390 / 320 的原有 Header 隐藏导航，返回 Planner 不可用，记录为受保护 Planner 范围的上游缺口，未计为通过，也未越界修复。文档 PR #106 仍未合并；PR #108 保持 Draft，不自动 merge。原工作区未提交修改及其他预览保持不变。

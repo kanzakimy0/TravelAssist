@@ -6,9 +6,9 @@
 - Owner：`A`
 - Responsibility：`Shared Infrastructure / Asset Pipeline`
 - Priority：`P1`
-- Status：`阻塞`（2026-09-07：父任务 PR #166 仍为 Draft / Open，未合入 develop）
-- Latest Prerequisite Check：`origin/develop@edd91cfdaea209c629d0fe6bd01a45788f5df803`
-- Execution：仅 Blocked Result / WBS / Issue 追踪，无实现或依赖安装
+- Status：`进行中`（2026-09-07：用户授权合并父任务；PR #166 / #167 已合并并验收）
+- Latest Prerequisite Check：`origin/develop@c38d8c87ab8acd2b10551e6dfefb0398968264ae`
+- Execution：前置 A–E 已满足；在原任务分支安全合入最新 develop 后实施，最终 PR 保持 Draft
 - WBS：`2.14`（预定；若被占用则使用下一个可用工程基础 ID）
 - Depends On：`TASK-013-A` / Issue `#112` 已合并到 `develop` 且验收完成
 - GitHub Issue：`#116`

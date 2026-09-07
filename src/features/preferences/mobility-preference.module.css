@@ -1,0 +1,610 @@
+.page {
+  --mobility-coral: #a74739;
+  --mobility-coral-deep: #8f392f;
+  --mobility-coral-soft: #f8e6df;
+  --mobility-sage: #6f806d;
+  display: grid;
+  gap: 20px;
+  padding-bottom: 12px;
+}
+
+.page button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.page :is(a, button, input):focus-visible {
+  outline: 3px solid var(--pc-focus-ring);
+  outline-offset: 3px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 72px;
+}
+
+.pageHeader p {
+  margin: 0 0 3px;
+  color: var(--pc-accent-primary);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+}
+
+.pageHeader h1 {
+  margin: 0;
+  font-family: var(--pc-font-heading);
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.pageHeader > div > span {
+  display: block;
+  margin-top: 6px;
+  color: var(--pc-text-secondary);
+  font-size: 14px;
+}
+
+.backLink,
+.restoreButton,
+.cancelButton,
+.saveButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 9px 15px;
+  border-radius: 13px;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.backLink {
+  border: 1px solid var(--pc-border-subtle);
+  color: var(--pc-text-primary);
+  background: rgb(255 252 247 / 88%);
+}
+
+.backLink svg,
+.restoreButton svg {
+  width: 17px;
+  height: 17px;
+}
+
+.summaryCard {
+  position: relative;
+  min-height: 208px;
+  overflow: hidden;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 26px;
+  background: #eadfcf;
+  box-shadow: var(--pc-shadow);
+  isolation: isolate;
+}
+
+.summaryCard > img {
+  z-index: -2;
+  object-fit: cover;
+  object-position: center 52%;
+  filter: saturate(0.78) contrast(0.93);
+}
+
+.summaryShade {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(255 250 244 / 98%) 0%,
+    rgb(255 250 244 / 92%) 38%,
+    rgb(255 250 244 / 34%) 76%,
+    rgb(255 250 244 / 12%) 100%
+  );
+}
+
+.summaryContent {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  width: min(660px, 75%);
+  min-height: 208px;
+  padding: 26px clamp(24px, 3vw, 42px);
+}
+
+.scopeBadge {
+  padding: 4px 10px;
+  border: 1px solid #dec8b9;
+  border-radius: 999px;
+  color: var(--mobility-coral-deep);
+  background: rgb(255 250 246 / 84%);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.summaryContent p {
+  margin: 16px 0 2px;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.summaryContent h2 {
+  margin: 0;
+  font-family: var(--pc-font-heading);
+  font-size: clamp(24px, 2.7vw, 34px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.summaryContent > span:last-child {
+  margin-top: 8px;
+  color: var(--pc-text-secondary);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.section {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 24px;
+  background: rgb(255 252 247 / 91%);
+  box-shadow: 0 9px 28px rgb(113 78 59 / 5%);
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 17px;
+}
+
+.sectionMark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 12px 12px 6px 12px;
+  color: var(--mobility-coral-deep);
+  background: var(--mobility-coral-soft);
+  font-family: var(--pc-font-heading);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  font-family: var(--pc-font-heading);
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.sectionHeading p {
+  margin: 3px 0 0;
+  color: var(--pc-text-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.presetCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 3px 10px;
+  min-width: 0;
+  min-height: 92px;
+  padding: 16px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 18px;
+  color: var(--pc-text-primary);
+  background: #fffaf5;
+  text-align: left;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.presetCard:hover {
+  transform: translateY(-1px);
+  border-color: #dcb3a8;
+}
+
+.presetCard[data-selected] {
+  border-color: #cf8f80;
+  background: linear-gradient(145deg, #fff9f5, #f8e7df);
+}
+
+.radioDot {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1.5px solid #bea99d;
+  border-radius: 50%;
+  background: #fffdfa;
+}
+
+.presetCard[data-selected] .radioDot {
+  border: 5px solid var(--mobility-coral);
+}
+
+.presetCard strong,
+.presetCard small {
+  display: block;
+  min-width: 0;
+}
+
+.presetCard strong {
+  font-size: 15px;
+}
+
+.presetCard small {
+  grid-column: 2;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.preferenceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.optionList {
+  display: grid;
+  gap: 9px;
+}
+
+.toggleCard,
+.checkboxCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  min-height: 68px;
+  padding: 12px 14px;
+  border: 1px solid #eadfd6;
+  border-radius: 16px;
+  color: var(--pc-text-primary);
+  background: #fffdf9;
+  text-align: left;
+}
+
+.toggleCard > span:first-child,
+.checkboxCard > span:last-child {
+  min-width: 0;
+}
+
+.toggleCard strong,
+.toggleCard small,
+.checkboxCard strong,
+.checkboxCard small {
+  display: block;
+}
+
+.toggleCard strong,
+.checkboxCard strong {
+  font-size: 14px;
+}
+
+.toggleCard small,
+.checkboxCard small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.toggleCard[aria-pressed="true"] {
+  border-color: #d8ada1;
+  background: #fff8f4;
+}
+
+.switch {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #d8d0ca;
+  transition: background 150ms ease;
+}
+
+.switch > span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(59 43 35 / 18%);
+  transition: transform 150ms ease;
+}
+
+.toggleCard[aria-pressed="true"] .switch {
+  background: var(--mobility-coral);
+}
+
+.toggleCard[aria-pressed="true"] .switch > span {
+  transform: translateX(18px);
+}
+
+.checkboxCard {
+  position: relative;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.checkboxCard input {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.checkboxMark {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  border: 1.5px solid #ccb8ac;
+  border-radius: 7px;
+  color: transparent;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.checkboxCard:has(input:checked) {
+  border-color: #d8ada1;
+  background: #fff8f4;
+}
+
+.checkboxCard input:checked + .checkboxMark {
+  border-color: var(--mobility-coral);
+  color: #fff;
+  background: var(--mobility-coral);
+}
+
+.checkboxCard:has(input:focus-visible) {
+  outline: 3px solid var(--pc-focus-ring);
+  outline-offset: 3px;
+}
+
+.noticeRegion {
+  display: grid;
+  gap: 9px;
+}
+
+.notice,
+.scopeNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #e2d5ca;
+  border-radius: 17px;
+  background: rgb(255 252 247 / 88%);
+}
+
+.notice[data-tone="warning"] {
+  border-color: #e2bea0;
+  background: #fff5e9;
+}
+
+.notice[data-tone="info"] {
+  border-color: #cbd8c5;
+  background: #f3f6ef;
+}
+
+.noticeIcon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  color: #87552e;
+  background: #f4ddbf;
+  font-weight: 800;
+}
+
+.notice[data-tone="info"] .noticeIcon {
+  color: #52654f;
+  background: #dce6d6;
+  font-family: var(--pc-font-heading);
+}
+
+.notice strong,
+.notice small,
+.scopeNote strong,
+.scopeNote small {
+  display: block;
+}
+
+.notice strong,
+.scopeNote strong {
+  font-size: 13px;
+}
+
+.notice small,
+.scopeNote small {
+  margin-top: 2px;
+  color: var(--pc-text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.scopeNote svg {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  color: var(--mobility-coral);
+}
+
+.actionBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 20px;
+  background: rgb(255 252 247 / 94%);
+  box-shadow: 0 10px 36px rgb(72 48 38 / 12%);
+  backdrop-filter: blur(14px);
+}
+
+.restoreButton,
+.cancelButton {
+  border: 1px solid var(--pc-border-subtle);
+  color: var(--pc-text-primary);
+  background: #fffdf9;
+}
+
+.restoreButton {
+  color: var(--mobility-coral-deep);
+}
+
+.changeState {
+  flex: 1;
+  color: var(--pc-text-secondary);
+  font-size: 12px;
+  text-align: center;
+}
+
+.actionBar > div {
+  display: flex;
+  gap: 9px;
+}
+
+.saveButton {
+  border: 1px solid var(--mobility-coral);
+  color: #fff;
+  background: var(--mobility-coral);
+  box-shadow: 0 7px 16px rgb(146 59 48 / 18%);
+}
+
+.saveButton:hover {
+  background: var(--mobility-coral-deep);
+}
+
+@media (max-width: 900px) {
+  .preferenceGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .pageHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .summaryCard,
+  .summaryContent {
+    min-height: 222px;
+  }
+
+  .summaryContent {
+    width: 100%;
+  }
+
+  .summaryShade {
+    background: linear-gradient(
+      90deg,
+      rgb(255 250 244 / 97%),
+      rgb(255 250 244 / 77%)
+    );
+  }
+
+  .presetGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .presetCard {
+    min-height: 80px;
+  }
+
+  .actionBar {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .changeState {
+    order: -1;
+    width: 100%;
+    flex-basis: 100%;
+    text-align: left;
+  }
+
+  .actionBar > div {
+    flex: 1;
+  }
+
+  .actionBar > div > button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 390px) {
+  .page {
+    gap: 16px;
+  }
+
+  .backLink {
+    width: 100%;
+  }
+
+  .section {
+    padding: 18px 15px;
+    border-radius: 20px;
+  }
+
+  .summaryContent {
+    padding-inline: 18px;
+  }
+
+  .toggleCard,
+  .checkboxCard {
+    padding-inline: 12px;
+  }
+
+  .restoreButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presetCard,
+  .switch,
+  .switch > span {
+    transition: none;
+  }
+}

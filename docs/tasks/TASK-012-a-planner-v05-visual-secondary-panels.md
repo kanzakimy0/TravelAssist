@@ -5,15 +5,21 @@
 - Task ID：`TASK-012-A`
 - Owner：`A / Main Travel System`
 - GitHub Issue：`#111`
-- Status：`Blocked — 等待 TASK-011-A / PR #102 合并`
+- Status：`已完成`（用户授权的当前实现范围已合并；1180px 保留 Drawer，原侧栏条目差异留档）
+- Merge Commit：`66b7ca621b24ed6c973f6a0e6cb3591b3515165f`；验收 head `e835e75be5ecc226ac33df205f9216c91969544a`，两者文件树相同。PR #124 已合入 develop，Issue #111 完成。
 - Design Source：`docs/ui/planner-right-panel-secondary-tabs.md` v0.5
 - Design Freeze Commit：`adb0ec680f96857ca5ace4ccd54979d2dd3ddee2`
 - Depends On：
   - `TASK-008.3-A / PR #85`：已合并；
-  - `TASK-011-A / Issue #86 / PR #102`：当前 Open / Draft / 未合并；
+  - `TASK-011-A / Issue #86 / PR #102`：已合并到 develop（4c1d9bb），集成验证通过；
   - `TASK-010-A/B` 的 Logo → `/` 导航契约：必须保留。
 - Planned Branch：`feature/a-planner-v05-visual-secondary-panels`
 - Target Branch：`develop`
+- Base Commit：`4c1d9bbf1311a10b1e9db5bde00fe2e7b12fccab`
+- Integrated develop：`e725d21821107414a4551427d315aa55cfab7903`；集成提交 `0b93d57`，无冲突，114/114 tests 及构建复验通过。
+- Commit：`64e53b3b3d8c5adeaeb867d00e8d581384a6f2c2`（实现；追踪提交见 PR）
+- Pull Request：[\#124](https://github.com/kanzakimy0/TravelAssist/pull/124)（本次用户明确授权合并）
+- Merge revalidation：整合 develop `364ed22`；139 tests、lint / typecheck / build / diff-check、六尺寸双地图 QA 与 48 次 Logo QA 通过。推荐卡 geometry/content 冻结不变。1180px 保留 Drawer，不声称原侧栏验收通过；下文不得自行合并的规则不覆盖此次用户明确合并授权。
 - Planned Result：`docs/tasks/RESULT-TASK-012-a-planner-v05-visual-secondary-panels.md`
 - WBS：Planner / 地图 / 路线主系统的视觉整合、右侧设置与底部执行信息精修
 
@@ -985,14 +991,17 @@ feature/a-planner-v05-visual-secondary-panels → develop
 # TASK-012-A Result
 
 ## Status
+
 Completed / Blocked
 
 ## Prerequisite
+
 - TASK-011 PR #102 merged: Yes / No
 - Base commit:
 - Design source:
 
 ## Tracking
+
 - Issue: #111
 - Task File:
 - Branch:
@@ -1001,6 +1010,7 @@ Completed / Blocked
 - WBS updated: Yes / No
 
 ## Implemented
+
 - Top shell / gradient
 - Map controls
 - Right settings
@@ -1010,11 +1020,13 @@ Completed / Blocked
 - State and navigation preservation
 
 ## Frozen Area Verification
+
 - Recommendation component changed: Yes / No
 - Visible structure changed: Yes / No
 - Screenshot regression:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -1027,6 +1039,7 @@ Completed / Blocked
 ## Known Limitations
 
 ## Ready For Review
+
 Yes / No
 ```
 

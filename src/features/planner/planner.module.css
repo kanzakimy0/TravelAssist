@@ -1,4 +1,5 @@
 .planner {
+  position: relative;
   /* Planner-only palette; never leaks into the wizard or personal center. */
   --color-bg-canvas: #faf6ef;
   --color-bg-elevated: #fffcf7;
@@ -22,9 +23,29 @@
   font-size: 14px;
   line-height: 1.5;
 }
-.mapboxHost {
+.mapCanvas .mapboxHost {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.mapCanvas :global(.mapboxgl-ctrl-bottom-right) {
+  bottom: 52px;
+  right: 10px;
+}
+.locateMap {
+  position: absolute;
+  right: 20px;
+  bottom: 200px;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d8d0c5;
+  border-radius: 8px;
+  background: #fffcf7;
+  color: #384955;
+  font-size: 20px;
+  box-shadow: var(--planner-shadow);
 }
 .mapInfo {
   position: absolute;
@@ -447,14 +468,21 @@
   top: 12px;
 }
 .header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 12;
+  pointer-events: none;
   height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   padding: 0 28px;
-  border-bottom: 1px solid var(--color-border-strong);
-  background: #fffcf7;
+  border-bottom: 0;
+  background: transparent;
+}
+.header > :not([aria-hidden="true"]) {
+  pointer-events: auto;
 }
 .brand {
   display: flex;
@@ -499,10 +527,10 @@
   font-size: 13px;
 }
 .workspace {
-  height: calc(100dvh - 68px);
+  height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) calc(25dvh + 14px);
+  grid-template-rows: minmax(0, 1fr) calc(clamp(200px, 25dvh, 252px) + 14px);
   position: relative;
   min-height: 0;
 }
@@ -515,6 +543,7 @@
   overflow: hidden;
 }
 .rightSlot {
+  padding-top: 68px;
   grid-column: 2;
   grid-row: 1 / -1;
   min-width: 0;
@@ -522,13 +551,28 @@
   z-index: 3;
 }
 .bottomSlot {
+  position: relative;
   grid-column: 1;
   grid-row: 2;
   min-width: 0;
   min-height: 0;
   z-index: 2;
   padding: 0 18px 14px;
-  background: #eeeae1;
+  background: #faf3ed;
+}
+.bottomSlot::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 44px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgb(250 243 237 / 0%),
+    rgb(250 243 237 / 92%)
+  );
 }
 .mapCanvas {
   width: 100%;
@@ -650,9 +694,9 @@
 }
 .toolbar {
   position: absolute;
-  top: 18px;
+  top: 86px;
   left: 18px;
-  width: 84px;
+  width: 60px;
   z-index: 5;
   background: var(--color-bg-overlay);
   border: 1px solid var(--color-border-strong);
@@ -689,7 +733,7 @@
 }
 .dayRange {
   position: absolute;
-  top: 18px;
+  top: 86px;
   right: 18px;
   width: 90px;
   z-index: 6;
@@ -1020,12 +1064,16 @@
   font-size: 11px;
 }
 .bottomTabs {
-  display: flex;
-  gap: clamp(16px, 2.5vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
   border-bottom: 1px solid #eae0d6;
   margin-bottom: 4px;
 }
 .bottomTabs button {
+  justify-content: center;
+  border-radius: 0;
+  border-right: 1px solid #e8dfd780;
   padding: 8px 1px;
   min-height: 44px;
   display: flex;
@@ -1040,6 +1088,7 @@
   white-space: nowrap;
 }
 .bottomTabs button[aria-selected="true"] {
+  background: #faeeeb80;
   color: var(--color-accent-primary);
   border-bottom-color: var(--color-accent-primary);
   font-weight: 750;
@@ -1578,11 +1627,11 @@
     gap: 6px;
   }
   .workspace {
-    height: calc(100dvh - 60px);
+    height: 100dvh;
   }
   .toolbar {
     left: 12px;
-    top: 16px;
+    top: 82px;
   }
   .toolbar button {
     padding: 4px;
@@ -1688,7 +1737,7 @@
     height: 36px;
   }
   .toolbar {
-    width: 76px;
+    width: 60px;
   }
   .toolbarItems button {
     min-height: 46px;
@@ -1752,5 +1801,107 @@
   }
   .timelineDot {
     top: -13px;
+  }
+}
+
+/* v0.5: scoped upper panel and overlays; recommendation selectors frozen. */
+.quickSettings {
+  gap: 8px;
+}
+.quickSettings .eyebrow {
+  display: none;
+}
+.quickSettings > .sectionTitle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.quickPair .quickCard {
+  height: 96px;
+  justify-content: center;
+}
+.quickPair .quickLabel {
+  font-size: 15px;
+}
+.quickPair .quickLabel svg {
+  width: 30px;
+  height: 30px;
+}
+.quickPair .quickCard strong {
+  font-size: 13px;
+}
+.quickTriple .quickCard {
+  height: 96px;
+}
+.quickTriple .quickLabel {
+  flex-direction: row;
+  font-size: 13px;
+  gap: 3px;
+}
+.quickTriple .quickLabel svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.planner .settingsButton {
+  height: 48px;
+  min-height: 48px;
+}
+.quickSettings .mockStatus {
+  min-height: 16px;
+  font-size: 10px;
+}
+.planner .openDetailButton {
+  min-height: 34px;
+  height: 34px;
+  margin-top: 0;
+}
+.openRight {
+  top: 84px;
+}
+.workspace[data-right-collapsed="true"] .dayRange {
+  top: 138px;
+}
+.overlay[data-kind="settings"] {
+  width: min(820px, calc(75vw - 48px));
+  height: min(640px, calc(100dvh - 112px));
+  max-height: calc(100dvh - 112px);
+  inset: 80px auto auto max(24px, calc((75vw - 820px) / 2));
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 16px 60px rgb(50 40 30 / 15%);
+}
+.overlay[data-kind="settings"]::backdrop {
+  background: linear-gradient(to right, #302e2929 0 75%, transparent 75%);
+}
+@media (max-width: 1199px) {
+  .overlay[data-kind="settings"] {
+    width: min(820px, calc(100vw - 32px));
+    inset: 70px auto auto 16px;
+  }
+  .overlay[data-kind="settings"]::backdrop {
+    background: #302e2929;
+  }
+}
+@media (max-width: 767px) {
+  .bottomTabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+  }
+  .bottomTabs button {
+    min-width: 108px;
+  }
+  .overlay[data-kind="settings"] {
+    inset: auto 0 0;
+    width: 100%;
+    height: 85dvh;
+    max-height: 85dvh;
+    border-radius: 22px 22px 0 0;
+  }
+  .quickTriple .quickLabel {
+    flex-direction: row;
   }
 }
