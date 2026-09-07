@@ -247,8 +247,11 @@ src/db/
 
 ### 当前 Task 追踪记录
 
+- TASK-013-A：待审查；Issue #112；`feature/a-asset-library-foundation`；Base `edd91cfdaea209c629d0fe6bd01a45788f5df803`；实现 Commit `4c56dacd1ace2f4849a8dadf24663fd8ca728dcc`；Draft PR [#166](https://github.com/kanzakimy0/TravelAssist/pull/166)；Result：`docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md`。64 通用 SVG + 5 目的地占位 / 125 待采购需求；44 专项测试、267 全仓 Node tests、lint / typecheck / build 通过。全仓格式 27 项既有上游异常已核对，本 Task 文件通过。既有页面及受保护素材只读；不自动合并，未执行 013.1 / 013.2。
+
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-013-A | 2.13 | A | 待审查 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166)（Draft → develop） |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -350,6 +353,7 @@ src/db/
 | 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
+| 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 待审查 |
 
 ## 3. 网站入口与主系统 Shell（A）
 

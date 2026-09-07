@@ -5,7 +5,9 @@
 - Task ID：`TASK-013-A`
 - Owner：`A`
 - Priority：`P1`
-- Status：`待执行`
+- Status：`待验收`（WBS：待审查；实现完成，不代表已合并验收）
+- Actual Base：`edd91cfdaea209c629d0fe6bd01a45788f5df803`（安全快进同步）
+- Commit：`4c56dacd1ace2f4849a8dadf24663fd8ca728dcc`（实现；后续提交仅同步追踪记录）
 - WBS：新增 `2.13 — 素材库 / Asset Registry 基础`（依赖 `2.6 / 2.7`）
 - GitHub Issue：`#112`
 - Branch：`feature/a-asset-library-foundation`
@@ -13,7 +15,7 @@
 - Task File：`docs/tasks/TASK-013-a-asset-library-foundation.md`
 - Design Source：`docs/assets/asset-library-strategy.md` v1.0
 - Result File：`docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md`
-- Pull Request：完成实现后创建 Draft PR → `develop`
+- Pull Request：[#166](https://github.com/kanzakimy0/TravelAssist/pull/166)，Draft / Open → `develop`，不得自动合并
 
 ---
 
@@ -285,11 +287,11 @@ src/data/assets/index.ts
 至少导出：
 
 ```ts
-getAssetById(id)
-getDestinationPack(id)
-listAssetsByType(type)
-resolveAssetFallback(request)
-isRuntimeUsable(asset)
+getAssetById(id);
+getDestinationPack(id);
+listAssetsByType(type);
+resolveAssetFallback(request);
+isRuntimeUsable(asset);
 ```
 
 要求：
@@ -872,9 +874,11 @@ docs/tasks/RESULT-TASK-013-a-asset-library-foundation.md
 # TASK-013-A Result
 
 ## Status
+
 Completed / Blocked
 
 ## Tracking
+
 - Issue
 - WBS
 - Branch
@@ -883,11 +887,13 @@ Completed / Blocked
 - Draft PR
 
 ## Conflict Audit
+
 - Open Tasks / PRs checked
 - Protected paths
 - Conflicts / resolutions
 
 ## Legacy Inventory
+
 - files
 - total bytes
 - referenced assets
@@ -896,6 +902,7 @@ Completed / Blocked
 - missing metadata
 
 ## Shared Assets
+
 - POI icons: x/24
 - Transport icons: x/14
 - Markers: x/12
@@ -903,6 +910,7 @@ Completed / Blocked
 - States: x/6
 
 ## Destination Packs
+
 - Tokyo
 - Kyoto
 - Osaka
@@ -911,6 +919,7 @@ Completed / Blocked
 - acquisition backlog rows
 
 ## Rights Summary
+
 - approved
 - provider-only
 - acquisition-required
@@ -918,10 +927,12 @@ Completed / Blocked
 - rejected / expired
 
 ## Registry / Fallback
+
 - exported APIs
 - tested cases
 
 ## Validation
+
 - inventory
 - index
 - assets:validate
@@ -932,6 +943,7 @@ Completed / Blocked
 - build
 
 ## Size / Duplication
+
 - new bytes
 - largest files
 - duplicate groups
@@ -952,28 +964,28 @@ Completed / Blocked
 
 ## 15. Definition of Done
 
-- [ ] 已审计现有素材与代码引用；
-- [ ] 受保护路径未删除、未重命名、未覆盖；
-- [ ] `legacy-inventory.v1.json` 完成；
-- [ ] `asset-manifest.v1.json` 完成；
-- [ ] `destination-packs.v1.json` 完成；
-- [ ] `acquisition-backlog.v1.csv` 至少 125 行数据；
-- [ ] 64 项全局 SVG 全部完成且非复制改名；
-- [ ] 5 项 destination symbolic placeholder 完成；
-- [ ] Registry 与 fallback 完成；
-- [ ] Validator / inventory / index 工具完成；
-- [ ] duplicate、size、index 报告生成；
-- [ ] 无新增 npm 依赖；
-- [ ] 无来源不明 raster；
-- [ ] `assets:validate` 通过；
-- [ ] `test:assets` 通过；
-- [ ] lint / typecheck / build 通过；
-- [ ] format 状态准确记录；
-- [ ] WBS 更新；
-- [ ] Result 提交；
-- [ ] Branch push；
-- [ ] Draft PR 创建并关联 Issue #112；
-- [ ] 未自动 merge。
+- [x] 已审计现有素材与代码引用；
+- [x] 受保护路径未删除、未重命名、未覆盖；
+- [x] `legacy-inventory.v1.json` 完成；
+- [x] `asset-manifest.v1.json` 完成；
+- [x] `destination-packs.v1.json` 完成；
+- [x] `acquisition-backlog.v1.csv` 至少 125 行数据；
+- [x] 64 项全局 SVG 全部完成且非复制改名；
+- [x] 5 项 destination symbolic placeholder 完成；
+- [x] Registry 与 fallback 完成；
+- [x] Validator / inventory / index 工具完成；
+- [x] duplicate、size、index 报告生成；
+- [x] 无新增 npm 依赖；
+- [x] 无来源不明 raster；
+- [x] `assets:validate` 通过；
+- [x] `test:assets` 通过；
+- [x] lint / typecheck / build 通过；
+- [x] format 状态准确记录；
+- [x] WBS 更新；
+- [x] Result 提交；
+- [x] Branch push；
+- [x] Draft PR 创建并关联 Issue #112；
+- [x] 未自动 merge。
 
 ---
 
