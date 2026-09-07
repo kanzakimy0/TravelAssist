@@ -15,13 +15,13 @@ database runtime acceptance remains blocked. Not fully DB-verified; keep Draft.
   behind and zero ahead; safely fast-forwarded before implementation.
 - Isolated worktree was clean. Existing dirty Planner checkouts and port 3113
   preview were not switched, rebuilt or modified.
-- Implementation commit: PENDING; tracking head is recorded on the PR to avoid
+- Implementation commit: `4605378593ed0f2935567849fe593f8ec37b1932`; tracking head is recorded on the PR to avoid
   a circular self-SHA in this file.
 
 ## Issue / PR
 
 - Issue: [#173](https://github.com/kanzakimy0/TravelAssist/issues/173), Open.
-- Draft PR → develop: PENDING. No auto-merge or Ready action authorized.
+- Draft PR → develop: [#186](https://github.com/kanzakimy0/TravelAssist/pull/186), Open / Draft / unmerged. No auto-merge or Ready action authorized.
 - WBS 2.6 is complete; database standards, frozen plan, contract handoff,
   version pinning and environment rules exist on the verified base.
 - Overlap audit: old [TASK-009 PR #72](https://github.com/kanzakimy0/TravelAssist/pull/72)
@@ -162,12 +162,13 @@ results. No stack was started by this task; no containers were left running by i
 - New `npm run test:db-foundation`: **13/13 PASS**.
 - Full Node suite: initial dirty-worktree run 366/367 passed; the one failure was
   the existing WBS 9.12 test that restricts _all uncommitted files_ to its old B
-  task allowlist. No tests weakened. Clean-commit rerun: PENDING.
-- `git diff --check`: final verification PENDING.
+  task allowlist. No tests weakened. Clean implementation commit rerun (including
+  the later config-loader test): **368/368 PASS**, zero skipped/failed.
+- `git diff --check`: PASS, including comparison against origin/develop.
 - Full `format:check`: 30 pre-existing document failures; all 30 are unchanged
   from develop and individually fail formatting on the base too. TASK-015's own
   previously unformatted task document is now formatted. Changed-file format:
-  final verification PENDING.
+  PASS (WBS follows its existing repository formatting exclusion; diff check passes).
 - No runtime/CI result is implied by static tests. Existing automation unchanged;
   skipped workflows are not claimed as CI passes.
 
@@ -211,6 +212,9 @@ production/staging projects/secrets/migrations, extra ORM, UI changes or subsequ
 1. Local Docker runtime is required for actual startup/reset/PostGIS/types/cleanup
    acceptance. No complete database acceptance claim until these are verified.
 2. Full-repository formatting retains 30 verified upstream document exceptions.
-3. Draft PR and clean-commit validation tracking will be filled before handoff.
+
+Delivery tracking: Draft PR #186 created and implementation uploaded. All final
+tracking commits also use `[skip ci]`; the PR records the actual final head. This
+does not bypass runtime acceptance or authorize merging. Issue #173 remains Open.
 
 Stop after TASK-015. Do not merge or start the next WBS.

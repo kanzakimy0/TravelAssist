@@ -17,8 +17,9 @@
 
 - Issue: #173; WBS: 8.1 / 8.4; implementation owner: A.
 - Base: `e98a715a11e4a4ee9bdc196854558a5a02b1753c`; isolated clean worktree.
-- Branch: `feature/a-db-orm-migration-foundation`; Commit / Draft PR: PENDING.
+- Branch: `feature/a-db-orm-migration-foundation`; implementation commit: `4605378593ed0f2935567849fe593f8ec37b1932`; Draft PR: [#186](https://github.com/kanzakimy0/TravelAssist/pull/186).
 - Static implementation complete; Docker unavailable. No PostGIS DDL or fabricated generated types committed.
+- Validation: 368/368 tests on clean implementation commit; lint, typecheck, empty-DB-env build, changed-file formatting and diff checks passed. Full format check retains 30 independently verified upstream document exceptions.
 - Result: `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md`.
 - Old TASK-009 / PR #72 remains unmerged; not imported or closed by this task.
 - Do not merge or begin subsequent WBS until separate authorization and acceptance.
