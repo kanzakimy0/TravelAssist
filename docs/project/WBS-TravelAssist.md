@@ -1,5 +1,9 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-013.1-A 最终验收（2026-09-08）
+
+用户授权验收合并。PR #172 已合入 develop，merge `b635465c623a4e628c9c9986253ee9266be39541`，文件树与验收 head `2cb487284572a24eaf6f4cc5ab98a5099501f23a` 相同。1,141 sources / 3,550 logical variants / 0 新增图片字节；406 全仓测试、素材校验、lint/typecheck/build、两次完整运行 no-op 和 resume、双尺寸浏览器验收通过。30 份既有 develop 文档格式问题如实记录，未伪报通过。2.14 / TASK-013.1-A 已完成；Issue #116 与 Result 同步。下方旧 Draft / 待审查描述为历史，由本记录及追踪表覆盖。013.2 须在此完成记录合入 develop 后单独开始，维持 Japan-only。
+
 ## WBS 9.12 用户验收与合并收尾（2026-09-07）
 
 - 用户明确确认“验收通过”并随后授权合并；PR #184 已合入 develop，merge `89fd34aed29779ce15720d240727c7f65fd7b7bc`。
@@ -372,7 +376,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 |---|---|---|---|---|---|---|---|---|
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
-| TASK-013.1-A | 2.14 | A | 待审查 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | `b1d06e8`（实现；追踪提交见 PR head） | [#172](https://github.com/kanzakimy0/TravelAssist/pull/172) Draft / Open |
+| TASK-013.1-A | 2.14 | A | 已完成 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | `2cb4872`（验收）；`b635465`（合并） | [#172](https://github.com/kanzakimy0/TravelAssist/pull/172) Merged |
 | TASK-003-B | 0.7（关联 0.3、0.5） | B | 已完成 | #18 | `docs/tasks/TASK-003-b-tracking-integration.md` | `feature/task-003-b-tracking-integration` | `b591030` | #21 |
 | TASK-004-A | 1.4 / 1.16 | A | 已完成 | #20 | `docs/tasks/TASK-004-a-homepage-final-visual.md` | `feature/a-homepage-final-visual` | `bfa5081` | #23 |
 | TASK-005 | 3.6 / 3.8 | B | 已完成 | #28 | `docs/tasks/TASK-005-b-trip-wizard-step1-3.md` | `feature/b-trip-wizard-step1-3` | `70b08a8` | #29 |
@@ -487,7 +491,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
 | 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
-| 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 待审查 |
+| 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 已完成 |
 
 ## 3. 网站入口与主系统 Shell（A）
 
