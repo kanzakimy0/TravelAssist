@@ -137,7 +137,7 @@ prefecture_count = 47；missing_prefectures = 0。
 
 ## Commit(s)
 
-集成最新验收基线：`2faed32`。实现和最终记录提交 SHA 见 Issue #152 与 Draft PR #187 的提交记录；Result 不伪造尚未产生的自引用 SHA。
+集成最新验收基线：`2faed32`。实现提交：`d3fe001ab5d544cd52362ca3df065678785ea721`。后续仅更新追踪记录的提交 SHA 见 Issue #152 与 Draft PR #187，避免 Result 自引用 SHA。
 
 ## Draft PR
 
