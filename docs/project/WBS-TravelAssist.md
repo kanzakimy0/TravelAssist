@@ -2,7 +2,7 @@
 
 ## PR #139 冲突解决与 develop 同步（2026-09-07）
 
-- 用户授权“处理冲突”；将 `origin/develop` 的 `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031` 合入 `codex/planner-responsive-density`，保持 Draft PR #139，不合并 PR、不改 develop。
+- 用户授权“处理冲突”；将 `origin/develop` 的 `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031` 合入 `codex/planner-responsive-density`，合并提交 `ed86578a43096f0fd045f9cb19a1eb7c5d6ffffd`；保持 Draft PR #139，不合并 PR、不改 develop。
 - 唯一冲突为本文件顶部双方新增记录；完整保留 Planner / Detail 各阶段记录，以及 develop 的 WBS-0.9-B / TASK-013-A 收尾与后续追踪表更新，没有选择整份 ours / theirs 覆盖。
 - Planner / Start 业务代码与上传快照一致；个人中心 / 偏好 / 同行人 / 账户 / 旅行库 / 素材 Registry 和依赖清单与 develop 一致。
 - 集成验证：343 tests、lint / typecheck / build、assets:validate、冲突文件格式与相对 develop 的 diff check 通过。31 个全仓格式异常及六份上游文档的 Markdown 换行尾空格保持原样。浏览器确认 Planner → Detail → 返回推荐、个人旅行库 → 新建旅程 Step 3 正常，未见 console / hydration 错误。

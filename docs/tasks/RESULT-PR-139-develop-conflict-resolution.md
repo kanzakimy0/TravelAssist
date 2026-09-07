@@ -9,7 +9,7 @@
 - Pre-integration feature head: `a07b4493e0d80e4498fc020f6c59a523d75b102b`。
 - Integrated develop: `99f3ddb7d6bad0c5d1bf0937b310be6acc7bb031`。
 - Common ancestor: `4161a8a5f0430382331dfff3565eeed7c4bb721b`。
-- Integration commit: PENDING（完成验证后记录）。
+- Integration commit: `ed86578a43096f0fd045f9cb19a1eb7c5d6ffffd`，双父提交保留原功能分支和 develop 历史；本文的最终 SHA 同步另作文档提交。
 
 ## Conflict and resolution
 
