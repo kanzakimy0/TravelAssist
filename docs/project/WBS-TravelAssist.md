@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-021-A Route System Stage Gate（2026-09-09）
+
+- 7.3 / A / [#229](https://github.com/kanzakimy0/TravelAssist/issues/229)：进行中（官方研究）→ **待确认 / 阻塞**；7.5 / 7.8 保持未开始。四候选官方矩阵已完成，但日本班次覆盖、套餐报价、Mapbox 混合展示和数据保留许可未共同满足 Gate，未冻结 Provider。
+- 基线及提交前复查 `origin/develop@74bc3cccf8bcfd603706e2b96d4072076191f308`；独立分支 `codex/a-route-system-mainline`。TASK-019 实际 Draft #227、B Draft #221 均未合并；TASK-020 Issue #228 Open/Ready。原工作区修改保留，未叠分支或更改业务代码。
+- 正式 [Task](https://github.com/kanzakimy0/TravelAssist/blob/bbe077a22d5b57fe0752a868d5b135c57454fc77/docs/tasks/TASK-021-a-route-system-mainline.md)；[来源矩阵](../architecture/route-provider-selection.md)；[Result](../tasks/RESULT-TASK-021-a-route-system-mainline.md)。Commit / Draft PR：PENDING（发布后同步）。Issue 保持 Open/Blocked；仅研究与追踪文档，不自动 merge，不启动后续阶段。
+
 ## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
 
 - 用户批准修复 A 范围审计的全部七项确认问题；Issue [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)。基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `codex/a-planner-audit-fixes`。
@@ -487,6 +493,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-021-A | 7.3（7.5/7.8 未开始） | A | 待确认 / 阻塞 | #229 Open | `docs/tasks/TASK-021-a-route-system-mainline.md`（spec `bbe077a`） / `docs/tasks/RESULT-TASK-021-a-route-system-mainline.md` | `codex/a-route-system-mainline` | PENDING | PENDING（保持 Draft，不自动合并） |
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
@@ -759,7 +766,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2    | Places / POI Provider 选型    | A      | P0     | 1.10     | 未开始 |
-| 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 未开始 |
+| 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认 / 阻塞（TASK-021-A / #229；官方研究完成，套餐/授权/预算 Gate 未通过） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 未开始 |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
