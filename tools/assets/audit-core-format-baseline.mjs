@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { format } from "prettier";
 import { ROOT, read, write } from "./asset-utils.mjs";
-const base = "95311fcbdc3432eb4b75cb0644cad7783fad7415";
+const base =
+  process.env.CORE_ACCEPTANCE_BASE ??
+  "95311fcbdc3432eb4b75cb0644cad7783fad7415";
 let log = "",
   exit = 0;
 try {
