@@ -127,12 +127,139 @@ export type Database = {
         };
         Relationships: [];
       };
+      travel_preferences: {
+        Row: {
+          created_at: string;
+          owner_user_id: string;
+          payload: Json;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          owner_user_id: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          owner_user_id?: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      trip_drafts: {
+        Row: {
+          created_at: string;
+          creation_key: string;
+          facts: Json;
+          id: string;
+          owner_user_id: string;
+          progress: Json;
+          revision: number;
+          status: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          creation_key: string;
+          facts: Json;
+          id?: string;
+          owner_user_id: string;
+          progress: Json;
+          revision?: number;
+          status?: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          creation_key?: string;
+          facts?: Json;
+          id?: string;
+          owner_user_id?: string;
+          progress?: Json;
+          revision?: number;
+          status?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      trip_preference_overrides: {
+        Row: {
+          created_at: string;
+          owner_user_id: string;
+          payload: Json;
+          revision: number;
+          trip_draft_id: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          owner_user_id: string;
+          payload?: Json;
+          revision?: number;
+          trip_draft_id: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          owner_user_id?: string;
+          payload?: Json;
+          revision?: number;
+          trip_draft_id?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trip_preference_overrides_draft_fk";
+            columns: ["owner_user_id", "trip_draft_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_drafts";
+            referencedColumns: ["owner_user_id", "id"];
+          },
+        ];
+      };
+      trip_preference_snapshots: {
+        Row: {
+          created_at: string;
+          owner_user_id: string;
+          payload: Json;
+          source_preference_revision: number;
+          trip_draft_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          owner_user_id: string;
+          payload: Json;
+          source_preference_revision: number;
+          trip_draft_id: string;
+        };
+        Update: {
+          created_at?: string;
+          owner_user_id?: string;
+          payload?: Json;
+          source_preference_revision?: number;
+          trip_draft_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trip_preference_snapshots_draft_fk";
+            columns: ["owner_user_id", "trip_draft_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_drafts";
+            referencedColumns: ["owner_user_id", "id"];
+          },
+        ];
+      };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
     };
     Enums: {
       [_ in never]: never;

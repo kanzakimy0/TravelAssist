@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test:preferences": "node --test tests/task-017-persistence.test.mjs",
+    "test:preferences:db": "node --conditions=react-server --import ./tests/register-preference-ts.mjs --test --test-concurrency=1 tests/task-017-persistence.runtime.mjs tests/task-017-api.runtime.mjs",
     "db:start": "node tools/db/local.mjs start",
     "db:stop": "node tools/db/local.mjs stop",
     "db:status": "node tools/db/local.mjs status",

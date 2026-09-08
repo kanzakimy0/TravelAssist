@@ -17,7 +17,12 @@ import * as schema from "../src/db/schema/index.ts";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const require = createRequire(import.meta.url);
-const tables = Object.values(schema).map(getTableConfig);
+// Keep this historical suite scoped to its three profile domains.
+const tables = [
+  schema.profiles,
+  schema.profileSettings,
+  schema.emergencyContacts,
+].map(getTableConfig);
 const dialect = new PgDialect();
 const ident = (value) => '"' + value.replaceAll('"', '""') + '"';
 
