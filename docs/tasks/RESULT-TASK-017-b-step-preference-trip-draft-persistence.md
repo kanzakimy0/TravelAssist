@@ -27,7 +27,7 @@ Read the full remote command and Task at spec SHA `67587d5b55facfd0c773953e84daa
 - Spec branch: `task/b-step-preference-trip-draft-persistence` (not the implementation base).
 - Audit-only branch: `codex/task-017-b-prerequisite-audit`, created from clean latest develop in an independent worktree.
 - Implementation branch `feature/b-step-preference-trip-draft-persistence`: not created.
-- Commit / Draft PR: pending publication of this docs-only audit; not an implementation PR.
+- Audit commit: `8b32a0632e3a7a806c30d2aa66c314131253d4a2`; subsequent tracking-only commit is the head of [Draft PR #213](https://github.com/kanzakimy0/TravelAssist/pull/213), targeting develop. This is not an implementation PR and is not merged.
 - Existing preview worktree, untracked `.cache/`, original user worktree, local environment and browser drafts are untouched.
 
 ## Step Mapping

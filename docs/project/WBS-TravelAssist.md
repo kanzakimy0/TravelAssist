@@ -5,7 +5,7 @@
 - #207 / B：Blocked。实际基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；远端规格 `67587d5b55facfd0c773953e84daa9d3598a3ad5`。PR #186 已合并，所需 DB 路径齐全；TASK-016-B 的已完成状态保持不变。
 - 直接阻塞为 5.18：4.17 仍未开始，无可依赖的正式 Trip Plan / Planner Contract；现有 Planner 类型明确为本地交互模型，不得作为服务器契约。未建立 itinerary/day/item 主系统表，不代做 A 的 8.5。
 - 5.11 / 5.16 保持未开始，不擅自增加 4.17 依赖；本轮依远端 Codex 前置分支门槛停止，仅做文档审计。未创建 `feature/b-step-preference-trip-draft-persistence`。
-- Result：`docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`；审计分支 `codex/task-017-b-prerequisite-audit`；Commit / docs-only Draft PR 待发布。Issue 保持 Open；不标记最终完成，不自动合并。
+- Result：`docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`；审计分支 `codex/task-017-b-prerequisite-audit`；审计提交 `8b32a06`，后续仅同步追踪；[Draft PR #213](https://github.com/kanzakimy0/TravelAssist/pull/213) → develop，仅文档、未合并。Issue 保持 Open；不标记最终完成，不自动合并。
 
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
