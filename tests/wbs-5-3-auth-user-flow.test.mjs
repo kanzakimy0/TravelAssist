@@ -162,6 +162,25 @@ test("WBS-5.3 Auth navigation has inline pending feedback without bypassing serv
   assert.match(css, /\.navigationHint\s*\{[^}]*position: absolute;/s);
   assert.match(css, /\.loginForm \.formFooter a\s*\{[^}]*font-weight: 700;/s);
 });
+test("WBS-5.3 Auth surfaces reuse artwork, clip decoration and preserve autofill accessibility", () => {
+  const css = read("src/features/auth/auth.module.css");
+  assert.match(css, /personal-center-surface-texture-v2\.png/);
+  assert.match(
+    css,
+    /\.ornament\s*\{[^}]*overflow: hidden;[^}]*border-top-right-radius: calc\(var\(--auth-card-radius\) - 1px\)/s,
+  );
+  assert.doesNotMatch(css, /\.card\s*\{[^}]*overflow:\s*hidden/s);
+  assert.match(
+    css,
+    /input:is\(:autofill, :-webkit-autofill\)\s*\{[^}]*box-shadow:[^;]*inset;/s,
+  );
+  assert.match(css, /@media \(forced-colors: active\)/);
+  assert.match(form, /autoComplete="email"/);
+  assert.match(
+    form,
+    /autoComplete=\{isNew \? "new-password" : "current-password"\}/,
+  );
+});
 test("WBS-5.3 legal names, no fictional legal links, accessible status and secret-safe forms", () => {
   assert.match(form, /《服务条款》和《隐私政策》/);
   assert.match(form, /WBS 10.6/);
