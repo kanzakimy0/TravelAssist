@@ -6,6 +6,16 @@
 
 ## Preflight
 
+### Onsite acceptance follow-up — logout presentation (2026-09-08)
+
+- User requested removing the visible “仅退出当前会话” subtitle and adding mouse feedback. Implemented in `8733fe74de278262bd5f1bdf01ba2dbbe4cfd28d`: a single-line logout icon/menu item, coral hover background, pressed inset border, keyboard focus ring and disabled feedback. The actual Core `scope: "local"` behavior is unchanged; no all-device claim added.
+- Current-task tests now verify the real local-signout invariant rather than requiring the removed subtitle. Targeted Node 11/11; isolated actual-CSS Chromium checks at 1440/390/320px PASS (44px target, hover, pressed, keyboard focus, disabled). This presentation harness does not authenticate or claim a new Auth E2E pass.
+- lint/typecheck/build/changed-file format/diff-check/client-bundle audit PASS. WSL full Node suite 632/632 PASS. Windows full Node suite 629/632: three existing asset inventory/protection failures referencing four unchanged SVG files; `git ls-files --eol` shows index LF / Windows working tree CRLF. Assets and old tests were not modified to suppress the failures.
+- Evidence: `logout-lint.log`, `logout-typecheck.log`, `logout-all-tests.log`, `logout-all-tests-wsl.log`, `logout-build.log`, `logout-client-audit.log` under the existing evidence directory. Initial isolated-test focus setup and disabled cursor specificity failures were corrected before the final three-size PASS.
+- Site preview rebuilt/restarted at the same loopback address without resetting DB, deleting users or altering sessions. The user's manually created account remains intact.
+- Important acceptance finding, NOT fixed by this styling change: user opening the confirmation email in a new tab encountered `callback_failed`, then repeated links returned `otp_expired`; confirmed email existed without a session. User subsequently confirmed email/password login succeeds. The “我已确认邮箱，继续” path lacks useful no-session feedback. Exact callback cause remains unproven; cross-tab/session handling and recovery feedback still need investigation/fix. Earlier automated same-context results must not be presented as final user acceptance of this path.
+- PR #222 remains Draft; Issue #219 Open; WBS 5.3 remains 待审查. No merge or next Task.
+
 - Executed, in order in `F:\TravelAssist`: `git status --short --untracked-files=all`, `git branch --show-current`, `git fetch --all --prune`, `git switch develop`, `git pull --ff-only origin develop`, `git rev-parse origin/develop`, `git log --oneline -15 origin/develop`.
 - origin/develop base: `18afee5f02ed45505b81636f7b25b568270b2bf9`; main checkout fast-forwarded without discarding user files, then the requested feature branch was created from this base.
 - dependency 1.23: 已完成. dependency 8.3: 已完成. PR #218 merge `7f805e0a1b3b6bc650293a33363c6c22cde6a360` is an ancestor (actual merge-base check exit 0).
