@@ -27,6 +27,8 @@ import {
   type WorkingDraft,
 } from "../model/working-drafts";
 import { originalRecommendation } from "../model/recommendation-actions";
+import { initializeHotelEndpoints } from "../model/planner-timeline";
+import { consumePlannerPlanSelection } from "../../navigation/main-flow-navigation";
 
 export function useBrowserTrip({
   trip,
@@ -54,6 +56,8 @@ export function useBrowserTrip({
   const [error, setError] = useState("");
   const [overwritePending, setOverwritePending] = useState(false);
   const [entryPlanId, setEntryPlanId] = useState<string | null>(null);
+  const [entryFromWizard, setEntryFromWizard] = useState(false);
+  const incomingSnapshot = useRef<TripSnapshot | null>(null);
   const [archivedDrafts, setArchivedDrafts] = useState<WorkingDraft[]>([]);
   const overwriteLeave = useRef(false);
   const expectedRaw = useRef<string | null>(null);
@@ -68,6 +72,10 @@ export function useBrowserTrip({
     const timer = window.setTimeout(() => {
       initialized.current = true;
       try {
+        const incomingPlanId = consumePlannerPlanSelection();
+        const incoming = incomingPlanId
+          ? { ...trip, ui: { ...trip.ui, currentPlanId: incomingPlanId } }
+          : null;
         const raw = window.localStorage.getItem(SAVED_TRIP_KEY);
         expectedRaw.current = raw;
         const existing = parseSavedTrip(raw, trip);
@@ -93,13 +101,26 @@ export function useBrowserTrip({
           setDraft(structuredClone(snapshot.draft));
           setBaseline(snapshot);
           setStatus("已载入上次保存 · 仅此浏览器");
+          if (incoming) {
+            incomingSnapshot.current = tripSnapshot(
+              incoming,
+              emptyDetailDraft(),
+            );
+            setEntryFromWizard(true);
+            setEntryPlanId(incoming.ui.currentPlanId);
+          }
         } else {
-          const legacy = parseDetailDraft(
-            window.localStorage.getItem(DETAIL_DRAFT_STORAGE_KEY),
-          );
+          const legacy = incoming
+            ? emptyDetailDraft()
+            : parseDetailDraft(
+                window.localStorage.getItem(DETAIL_DRAFT_STORAGE_KEY),
+              );
+          if (incoming) restore(incoming);
           setDraft(legacy);
-          if (mode === "detail") setBaseline(tripSnapshot(trip, legacy));
-          if (mode === "detail") setEntryPlanId(trip.ui.currentPlanId);
+          if (mode === "detail")
+            setBaseline(tripSnapshot(incoming ?? trip, legacy));
+          if (mode === "detail")
+            setEntryPlanId(incoming?.ui.currentPlanId ?? trip.ui.currentPlanId);
           setStatus(
             raw && !existing
               ? "保存记录无效，原记录未改动"
@@ -130,7 +151,7 @@ export function useBrowserTrip({
     }
     const selected = { ...trip, ui: { ...trip.ui, currentPlanId: planId } };
     if (trip.ui.currentPlanId !== planId) restore(selected);
-    setBaseline(tripSnapshot(selected, draft));
+    // Entering Detail is navigation, not a save. Keep the last saved baseline.
     onLeave?.();
     setError("");
     setStatus(
@@ -306,9 +327,12 @@ export function useBrowserTrip({
 
   return {
     entryPlanId,
+    entryFromWizard,
     archivedDrafts,
     cancelEntry: () => {
       setEntryPlanId(null);
+      setEntryFromWizard(false);
+      incomingSnapshot.current = null;
       setError("");
       if (mode === "detail" && !trip.workingPlanId)
         router.replace("/planner", { scroll: false });
@@ -343,7 +367,10 @@ export function useBrowserTrip({
     ) => {
       if (!trip.plans.some((p) => p.id === planId)) return false;
       const switching = Boolean(
-        trip.workingPlanId && (trip.workingPlanId !== planId || fromDraft),
+        trip.workingPlanId &&
+        (trip.workingPlanId !== planId ||
+          fromDraft ||
+          incomingSnapshot.current),
       );
       if (switching && !overwrite) return false;
       try {
@@ -374,8 +401,11 @@ export function useBrowserTrip({
       const chosen: TripState = {
         ...trip,
         ...(fromDraft ? restoreTrip(trip, fromDraft.snapshot) : {}),
+        ...(!fromDraft && incomingSnapshot.current
+          ? restoreTrip(trip, incomingSnapshot.current)
+          : {}),
         workingPlanId: planId,
-        ...(!fromDraft && switching
+        ...(!fromDraft && !incomingSnapshot.current && switching
           ? {
               plans: trip.plans.map((p) =>
                 p.id === trip.workingPlanId
@@ -387,9 +417,19 @@ export function useBrowserTrip({
         ui: { ...trip.ui, currentPlanId: planId, focusedDay: 1 },
       };
       const nextDraft =
-        fromDraft?.snapshot.draft ?? (switching ? emptyDetailDraft() : draft);
-      if (!save(overwrite, tripSnapshot(chosen, nextDraft), true)) return false;
+        fromDraft?.snapshot.draft ??
+        (switching || incomingSnapshot.current ? emptyDetailDraft() : draft);
+      if (
+        !save(
+          overwrite,
+          tripSnapshot(initializeHotelEndpoints(chosen, planId), nextDraft),
+          true,
+        )
+      )
+        return false;
       setEntryPlanId(null);
+      setEntryFromWizard(false);
+      incomingSnapshot.current = null;
       onLeave?.();
       router.push(detailUrl(1), { scroll: false });
       return true;

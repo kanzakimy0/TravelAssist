@@ -6,6 +6,13 @@
 - 四个 Auth 页面、真实核心调用、可信 Personal Center 保护与当前 Session 退出已实现。Chromium / Microsoft Edge 各 50 项布局与真实 Local Auth UI 流程、TASK-018 16/16、全仓 Node 631/631、lint/typecheck/build 与客户端 Secret 检查通过；27 份历史格式失败逐字节等同执行基线，未越界修改。外部 OAuth/SMS/email delivery、真机键盘、Legal 10.6 仍 Deferred。
 - Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result：`docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`。Issue #219 保持 Open，[Draft PR #222](https://github.com/kanzakimy0/TravelAssist/pull/222) 未合并；未获用户最终视觉验收，不标记已完成。不开展 3.4 / 5.15 / 5.21 或其他 Task。以下 Auth/UI 未启动表述为历史，以本节和当前 5.3 行为准。
 
+## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
+
+- 用户批准修复 A 范围审计的全部七项确认问题；Issue [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)。基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `codex/a-planner-audit-fixes`。
+- 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46：本次七项审计修复已完成；用户明确批准合并，PR #224 合并提交 `654dad9b8a4dbd9afb909e46f375872a7ede69d6` 已进入 develop，文件树与已验收 head `3db5f71` 完全一致。631/631 tests、lint/typecheck/build、diff 检查通过；28 份历史格式问题与基线一致，未新增。
+- 覆盖保存基线、向导/旧保存冲突、还原日期范围、交通冲突检查、取消后确认解除固定、完成检查缺失餐宿、真实 Mapbox 图层。保持布局和 B 任务边界，不接真实 AI/预约/云保存。
+- Task：`docs/tasks/TASK-planner-audit-fixes.md`；Result：`docs/tasks/RESULT-planner-audit-fixes.md`。实现 `ecbf022`；[PR #224](https://github.com/kanzakimy0/TravelAssist/pull/224) Merged；Issue #223 Closed / 已完成。`codex/a-planner-audit-closeout` 仅同步验收记录，不继续下一任务。
+
 ## TASK-018-B Authentication Core（2026-09-08）
 
 - 8.3 / B / #214：已完成；用户明确授权“开始现场验收，验收通过后自动合并并更新WBS”，本轮真实验收通过后 PR #218 已合入 develop。执行基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；独立 F 盘承载 WSL Worktree，分支 `feature/b-authentication-core`。状态按未开始 → 进行中 → 待审查 → 验收且合并后已完成推进。
@@ -493,6 +500,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-PLANNER-INTEGRATION-A | 4.37/4.38/4.40/4.41；7.12 | A | 已完成（UI/本地Mock） | #203 | `docs/tasks/TASK-planner-local-integration.md` | `codex/planner-local-integration-20260908` | `0006814`（实现；后续仅追踪同步） | [#204](https://github.com/kanzakimy0/TravelAssist/pull/204) Merged；随#211整合验收，561测试通过 |
 | TASK-TRIP-PREPARATION-A | 4.42–4.45 | A | 已完成（本地Mock） | #205 | `docs/tasks/TASK-trip-preparation.md` | `codex/trip-completion-flight-workspace` | `8e4a497`；整合 `13a316a` | #206 / #211 Merged |
 | TASK-PLANNER-TRACK-A | 4.46 | A | 已完成（本地Mock） | #210 | `docs/tasks/TASK-planner-track-actions.md` | `codex/planner-independent-tracks-plan-actions` | `5879444`；整合 `7c4bcbe`；合入 `13a316a` | #211 Merged |
+| TASK-PLANNER-AUDIT-A | 4.2/4.25/4.26/4.32/4.42/4.46 | A | 已完成（七项审计修复合并验收） | #223 Closed | `docs/tasks/TASK-planner-audit-fixes.md` | `codex/a-planner-audit-fixes` | `ecbf022`（实现）；`654dad9`（合并）；后续仅文档收尾 | [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) Merged |
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |

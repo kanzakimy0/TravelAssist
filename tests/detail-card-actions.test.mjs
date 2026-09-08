@@ -103,7 +103,7 @@ function article(html, id) {
     html.split(`data-detail-column="${id}"`)[1]?.split("</article>")[0] ?? ""
   );
 }
-test("agree changes actual project time and resolves the overlap without editing others", () => {
+test("agree resolves the overlap but retains unverified transport warning", () => {
   const state = fixture(),
     before = structuredClone(state),
     draft = emptyDetailDraft();
@@ -117,12 +117,9 @@ test("agree changes actual project time and resolves the overlap without editing
   assert.equal(edited.endTime, "12:00");
   assert.equal(
     view(after).items.find((i) => i.id === target.id).aiStatus,
-    "normal",
+    "warning",
   );
-  assert.doesNotMatch(
-    article(view(after).html, target.id),
-    /data-status-action/,
-  );
+  assert.match(article(view(after).html, target.id), /data-status-action/);
   assert.deepEqual(
     currentPlan(after).items.filter((i) => i.id !== target.id),
     currentPlan(before).items.filter((i) => i.id !== target.id),

@@ -9,8 +9,6 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { readPlannerPlanSelection } from "@/features/navigation/main-flow-navigation";
-
 import {
   initialPlannerSettings,
   plannerMockPlans,
@@ -225,7 +223,9 @@ export function PlannerPage() {
   const switchingPlan = Boolean(
     planAction?.kind === "save" &&
     trip.workingPlanId &&
-    (trip.workingPlanId !== planAction.id || planAction.draftId),
+    (trip.workingPlanId !== planAction.id ||
+      planAction.draftId ||
+      browserTrip.entryFromWizard),
   );
   function closePlanAction() {
     setPlanAction(null);
@@ -321,10 +321,6 @@ export function PlannerPage() {
     },
     [],
   );
-  useEffect(() => {
-    const selectedPlanId = readPlannerPlanSelection();
-    if (selectedPlanId) dispatchTrip({ type: "plan", id: selectedPlanId });
-  }, []);
   useEffect(() => {
     if (mode !== "detail") return;
     if (trip.ui.rangeMode !== "day" || trip.ui.selectedDay !== detailDay) {
@@ -964,9 +960,11 @@ export function PlannerPage() {
           title={
             planAction.kind === "restore"
               ? "还原推荐方案？"
-              : switchingPlan
-                ? "切换工作方案？"
-                : "保存方案并进入详情"
+              : browserTrip.entryFromWizard
+                ? "接收向导选择的新方案？"
+                : switchingPlan
+                  ? "切换工作方案？"
+                  : "保存方案并进入详情"
           }
           onClose={closePlanAction}
           className={localSave.planConfirmation}
@@ -980,9 +978,11 @@ export function PlannerPage() {
             <p>
               {planAction.kind === "restore"
                 ? "还原此方案的原始推荐路线、项目时间、备用项目、交通修改及名称。其他方案、个人偏好、独立新增的详情项目与已保存版本不变。此操作不取消真实预约；请确认是否放弃此方案的路线修改。"
-                : switchingPlan
-                  ? "切换后，原工作方案的未保留修改将被废弃，新方案成为唯一工作中方案。建议先保存为浏览器草稿，可通过草稿列表恢复；不会取消外部预约。"
-                  : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
+                : browserTrip.entryFromWizard
+                  ? "向导选择了一个新方案，浏览器仍保留原工作行程。确认后将载入新的示例方案；不是把旧行程改名，也不会自动覆盖旧方案。建议先归档原工作方案，取消则继续原行程。"
+                  : switchingPlan
+                    ? "切换后，原工作方案的未保留修改将被废弃，新方案成为唯一工作中方案。建议先保存为浏览器草稿，可通过草稿列表恢复；不会取消外部预约。"
+                    : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
             </p>
             {switchingPlan && (
               <label>
@@ -1089,7 +1089,14 @@ export function PlannerPage() {
                 },
               });
             setCompletionOpen(false);
-            if (issue.flightId || !issue.itemId) openFlight(issue.flightId);
+            if (issue.arrangement)
+              openMissing(
+                issue.arrangement.day,
+                issue.arrangement.kind,
+                issue.arrangement.slot,
+              );
+            else if (issue.flightId || !issue.itemId)
+              openFlight(issue.flightId);
             else {
               const item = allRailItems.find((i) => i.id === issue.itemId);
               if (item) openProject(item);

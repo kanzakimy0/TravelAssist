@@ -47,6 +47,7 @@ export function PlannerMapShell({
   const session = useRef<MapSession | null>(null);
   const latest = useRef(view);
   const hints = useRef(travelHints);
+  const geography = useRef(terrain);
   const [mapStatus, setMapStatus] = useState(
     token
       ? "正在加载 Mapbox · 暂用示意地图"
@@ -86,6 +87,7 @@ export function PlannerMapShell({
         if (cancelled) mounted?.destroy();
         else {
           session.current = mounted;
+          mounted?.setTerrain(geography.current);
           mounted?.update(latest.current);
         }
       })
@@ -98,6 +100,10 @@ export function PlannerMapShell({
       session.current = null;
     };
   }, [token]);
+  useEffect(() => {
+    geography.current = terrain;
+    session.current?.setTerrain(terrain);
+  }, [terrain]);
   useEffect(() => {
     latest.current = view;
     hints.current = travelHints;
