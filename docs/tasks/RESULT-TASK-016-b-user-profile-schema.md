@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation and Local validation **PASS**. Delivery is being prepared as a Draft PR; WBS 8.2 is **待审查**, not finally completed. No merge or user-acceptance claim.
+Implementation and Local validation **PASS**; delivered in [Draft PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209). WBS 8.2 is **待审查**, not finally completed. No merge or user-acceptance claim. Full-format baseline exceptions are reported below, not counted as PASS.
 
 ## Prerequisite / source / tracking
 
@@ -10,7 +10,7 @@ Implementation and Local validation **PASS**. Delivery is being prepared as a Dr
 - [PR #186](https://github.com/kanzakimy0/TravelAssist/pull/186) was verified MERGED before creating the implementation branch; merged at 2026-09-08T08:06:08Z, commit `24dff4e3b74dfe01c369d2c149d37eba86ad6472`.
 - Latest fetched origin/develop base: **eccfd9e81a66a099f73eea0154b329db2025695e**. Verified the merge is an ancestor and all seven required foundation paths exist. Refetched before publication: base unchanged.
 - Branch: `feature/b-user-profile-schema`; no duplicate implementation branch/PR existed at kickoff.
-- Implementation commit / Draft PR: pending publication; recorded below after creation.
+- Implementation commit: `27a7ba8ca675235aed6f5aacf8431511edf727bb`; [Draft PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209), `feature/b-user-profile-schema` → `develop`, Open / Draft / unmerged. Subsequent tracking-only commit is visible in the PR head.
 - Read the complete remote Task, Codex command and business schema roadmap on `origin/task/b-user-profile-schema`; read Issue #200 and all mandated architecture/UI/WBS/TASK-015 documents from the merged develop state. The task spec remains on its official spec branch, not overwritten by this result.
 - Read the installed Next.js 16.3.4 client-boundary guides before code changes. No Next.js API/UI changes.
 
@@ -18,6 +18,7 @@ Implementation and Local validation **PASS**. Delivery is being prepared as a Dr
 
 - Original `F:\TravelAssist` remains develop at `b77e745342a91724c869887c1355a105c2b6397d`. README.txt, asset-contact-sheet.jpg and publish_assets.py were not edited, deleted or staged.
 - Execution Worktree: `/home/oydl/TravelAssist-task016-b`, in `TravelAssist-Ubuntu` / Ubuntu 24.04.4 WSL2. Its independent common Git directory is `/home/oydl/.local/share/travelassist-db-acceptance/repository-bundle.git`.
+- Publication Worktree: `F:\TravelAssist-task016-b`, checked out from a verified bundle of the exact tested implementation commit. Publication reused Windows Git credentials; no credentials were copied into WSL. Original develop Worktree remained untouched.
 - The Worktree was created from the verified latest origin/develop using a verified incremental Git bundle, not from an unmerged foundation branch or cherry-picks. Previous runtime-acceptance Worktrees remain untouched.
 - Ubuntu storage: `F:\WSL\TravelAssistUbuntu\ext4.vhdx`; Docker storage remains on F:. No new C: browser/runtime/database installation.
 - Node v24.18.0; npm 11.16.0; Docker client/server 29.7.2; Supabase CLI 2.116.0; PostgreSQL 17.6. Reused previously verified Linux user-space Node and Unix socket `unix:///var/run/docker.sock`.
@@ -101,7 +102,7 @@ All required Personal Center routes appear in the successful build, including ho
 ## Security / scope guard / limits
 
 - Auth identity remains auth.users. No password, token, OAuth, verified email/phone identity truth or service Secret duplicated in profiles/settings. Emergency email/phone are contact details only.
-- No actual keys/URLs/passwords copied from private env files or CLI credential output. Changed-file credential-pattern scan passed; actual built client chunks contain no DB credential markers, DB driver or schema trigger code. The narrow scan is not presented as an exhaustive security audit.
+- No actual keys/URLs/passwords copied from private env files or CLI credential output. Changed-file credential-pattern scan passed, including all 13 committed task files before publication; actual built client chunks contain no DB credential markers, DB driver or schema trigger code. The narrow scan is not presented as an exhaustive security audit.
 - No Auth/Login/Session/Cookie, Profile API, Preference, Companion, Trip, POI, storage upload, notification, account deletion/export or UI implementation. No cloud/Staging/Production connection.
 - Language/timezone/country/currency checks enforce bounded standard-shaped identifiers, not a frozen registry of all currently assigned codes. Full locale/IANA/number validation and fallback resolution belong to future API work. Gender choices and initialization/signup strategy remain unfrozen.
 - This PR is additive but introduces private grants/policies and cascade behavior that require review. A shared/deployed migration is immutable; later fixes require a new forward migration, not editing this history. Do not reset a database containing valuable data.

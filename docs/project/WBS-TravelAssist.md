@@ -4,7 +4,7 @@
 
 - 8.2 / B / #200：待审查。#186 已合并且七项基础路径通过复检；从最新 origin/develop `eccfd9e` 创建独立 Worktree，分支 `feature/b-user-profile-schema`。
 - 仅新增 profiles / profile_settings / emergency_contacts；SQL 唯一历史、owner-only RLS、Drizzle mirror、真实 generated types。25 项真实数据库测试、507 项全仓 Node 测试、lint/typecheck/无 Secret build 与客户端泄漏检查通过；27 份既有格式问题保持原样。
-- Result：`docs/tasks/RESULT-TASK-016-b-user-profile-schema.md`。实现 Commit / Draft PR 发布后补齐；不自动合并，不将 8.2 标为已完成。
+- Result：`docs/tasks/RESULT-TASK-016-b-user-profile-schema.md`。实现 Commit `27a7ba8ca675235aed6f5aacf8431511edf727bb`；[Draft PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209) → develop，Issue #200 保持 Open；不自动合并，不将 8.2 标为已完成。
 - 8.1/8.4 及既有 UI 已完成状态不变；Auth / 8.3 / 5.3、Preference、Companion、Trip、POI 和其他 Task 均未启动。下方 8.2 可开始/未实施描述为启动前历史，以本节和当前追踪行为准。
 
 ## TASK-015-A 已合并验收 / B前置解除（2026-09-08）
@@ -440,7 +440,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
 | TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
-| TASK-016-B | 8.2 | B | 待审查（实现及真实 Local 验证通过） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 基线 `eccfd9e`；实现待发布 | PENDING（将创建 Draft） |
+| TASK-016-B | 8.2 | B | 待审查（实现及真实 Local 验证通过） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 基线 `eccfd9e`；实现 `27a7ba8` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Draft |
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
