@@ -112,8 +112,27 @@ test("WBS-5.3 signout preserves error and dirty-state confirmation", () => {
   assert.match(menu, /authRequest\("signout"\)/);
   assert.match(menu, /if \(!result.ok\)/);
   assert.match(menu, /isDirty && !discard/);
-  assert.match(menu, /仅退出当前会话/);
+  assert.doesNotMatch(menu, /仅退出当前会话/);
+  assert.match(menu, /<PersonalIcon name="logout"/);
+  assert.match(read("src/lib/auth/core.ts"), /signOut\(\{ scope: "local" \}\)/);
   assert.doesNotMatch(menu, /全部设备退出/);
+});
+test("WBS-5.3 logout has hover, pressed, keyboard and disabled feedback", () => {
+  const css = read("src/features/personal-center/personal-center.module.css");
+  assert.match(
+    css,
+    /\.avatarLogout\s*\{[^}]*min-height: 44px;[^}]*cursor: pointer;/s,
+  );
+  assert.match(
+    css,
+    /\.avatarLogout:not\(:disabled\):hover,\s*\.avatarLogout:focus-visible\s*\{[^}]*background:/s,
+  );
+  assert.match(css, /\.avatarLogout:focus-visible\s*\{[^}]*outline: 3px/s);
+  assert.match(
+    css,
+    /\.avatarLogout:not\(:disabled\):active\s*\{[^}]*box-shadow:/s,
+  );
+  assert.match(css, /\.avatarLogout:disabled\s*\{[^}]*cursor: wait;/s);
 });
 test("WBS-5.3 legal names, no fictional legal links, accessible status and secret-safe forms", () => {
   assert.match(form, /《服务条款》和《隐私政策》/);

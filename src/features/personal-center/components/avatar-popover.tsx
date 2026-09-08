@@ -98,8 +98,8 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
         aria-label="退出登录"
         aria-busy={pending}
       >
+        <PersonalIcon name="logout" />
         <span>{pending ? "正在退出…" : "退出登录"}</span>
-        <small>仅退出当前会话</small>
       </button>
       {confirmDiscard && (
         <div role="group" aria-label="确认放弃未保存修改并退出">
