@@ -52,7 +52,7 @@ const simplified = Object.fromEntries(
 export const toSimplified = (s) =>
   [...s].map((c) => simplified[c] ?? c).join("");
 const sourceURL = (e) =>
-  e
+  e && Number.isSafeInteger(e.revision) && e.revision > 0
     ? `https://www.wikidata.org/w/index.php?title=${e.id}&oldid=${e.revision}`
     : "";
 const unique = (xs) => [...new Set(xs)];
@@ -183,18 +183,21 @@ export function resolveRows(baseline, data = inputs()) {
       (!Number.isFinite(sourceCoord.precision) || sourceCoord.precision <= 0)
     )
       reasons.push("unknown_coordinate_precision");
-    const coord = reasons.some((r) =>
-      [
-        "conflicting_representative_coordinates",
-        "unknown_coordinate_precision",
-      ].includes(r),
-    )
-      ? null
-      : sourceCoord;
+    const coord =
+      !sourceURL(e) ||
+      reasons.some((r) =>
+        [
+          "conflicting_representative_coordinates",
+          "unknown_coordinate_precision",
+        ].includes(r),
+      )
+        ? null
+        : sourceCoord;
     const type = candidate?.type ?? "other_review_required";
     const scope = scopeFor(type, en, e?.id);
     if (!scope) reasons.push("coverage_scope_not_verified");
     const source = sourceURL(e);
+    if (e && !source) reasons.push("unpinned_source_revision");
     const officialSource = officialMatch.find(
       (m) => m.prefecture_code === primary,
     );
@@ -265,6 +268,7 @@ export function resolveRows(baseline, data = inputs()) {
       retrieved_date: snapshot.retrieved_date,
       identity_verified:
         !!candidate &&
+        !!source &&
         !review.hold[base.destination_id] &&
         !candidate.reasons.some((r) =>
           [
@@ -463,6 +467,28 @@ export function createResolution(baseline, data = inputs()) {
     }
   const contract = result.rows.map((r) => ({
     destination_id: r.destination_id,
+    scope_type: r.entity_type,
+    parent_entity_ids: r.parent_destination_id ? [r.parent_destination_id] : [],
+    prefecture_ids: unique(
+      [
+        r.prefecture_code,
+        ...result.evidence.find((e) => e.destination_id === r.destination_id)
+          .secondary_prefectures,
+      ].filter(Boolean),
+    ),
+    cross_prefecture:
+      result.evidence.find((e) => e.destination_id === r.destination_id)
+        .secondary_prefectures.length > 0,
+    coverage_note: r.coverage_scope || null,
+    boundary_source: null,
+    boundary_status: "official_scope_review_required",
+    center_rule:
+      result.evidence.find((e) => e.destination_id === r.destination_id)
+        .coordinate?.interpretation ?? null,
+    poi_inclusion_rule:
+      "Require reviewed source-backed containment in the named entity; generic scope prose is not final evidence.",
+    poi_exclusion_rule:
+      "Exclude unproven containment and other islands/municipalities outside the reviewed scope; do not infer boundaries from center radius.",
     coverage_scope: r.coverage_scope || null,
     prefecture_code: r.prefecture_code || null,
     secondary_prefectures: result.evidence.find(
@@ -767,7 +793,12 @@ export function validateResolution(r) {
         row.entity_type,
         entityType(entity, r.data.snapshot.entities),
       );
-      assert.equal(e.source_url, sourceURL(entity));
+      assert.equal(e.source_url, sourceURL(entity) || null);
+      if (e.source_url) {
+        assert(Number.isSafeInteger(entity.revision) && entity.revision > 0);
+        assert.equal(e.entity_revision, entity.revision);
+        assert.match(e.source_url, /[?&]oldid=[1-9][0-9]*$/);
+      }
       assert.equal(row.prefecture_code, e.primary_prefecture ?? "");
       assert.equal(
         row.coverage_scope,

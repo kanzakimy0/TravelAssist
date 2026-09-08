@@ -59,7 +59,8 @@ for (const path of paths) {
   assert.equal(baselineExit, 1, "Not baseline format debt: " + path);
 }
 write(
-  "docs/assets/generated/core-generation-format-baseline.json",
+  process.env.ASSET_FORMAT_REPORT ??
+    "docs/assets/generated/core-generation-format-baseline.json",
   await format(
     JSON.stringify({
       base,
