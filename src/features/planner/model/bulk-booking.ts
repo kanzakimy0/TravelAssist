@@ -7,6 +7,7 @@ export type BookingReviewRow = {
   time: string;
   type: string;
   nights: number;
+  selectedProviderId?: string;
   offers: { providerId: string; name: string; price: number; terms: string }[];
 };
 export type BookingReview = {
@@ -16,6 +17,34 @@ export type BookingReview = {
   travelers: string;
   rows: BookingReviewRow[];
 };
+
+/** Unselected rows use the cheapest comparable fixture, never a live-price claim. */
+export function selectedBookingOffer(row: BookingReviewRow) {
+  return (
+    row.offers.find((offer) => offer.providerId === row.selectedProviderId) ??
+    [...row.offers].sort(
+      (a, b) => a.price - b.price || a.providerId.localeCompare(b.providerId),
+    )[0]
+  );
+}
+export function selectBookingProviders(
+  review: BookingReview,
+  choices: Record<string, string>,
+): BookingReview {
+  return {
+    ...review,
+    rows: review.rows.map((row) => {
+      const offer = selectedBookingOffer({
+        ...row,
+        selectedProviderId: choices[row.id],
+      });
+      return {
+        ...row,
+        ...(offer ? { selectedProviderId: offer.providerId } : {}),
+      };
+    }),
+  };
+}
 
 // These are existing catalog fixtures, never live offers or a bookable quote.
 // No reducer writes, network requests, checkout URLs, or payment side effects.

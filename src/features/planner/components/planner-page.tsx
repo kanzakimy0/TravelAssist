@@ -991,7 +991,7 @@ export function PlannerPage() {
                   checked={archiveBeforeSwitch}
                   onChange={(e) => setArchiveBeforeSwitch(e.target.checked)}
                 />
-                先把原工作方案存为草稿（推荐）
+                <span>先把原工作方案存为草稿（推荐）</span>
               </label>
             )}
             {planAction.kind === "save" &&
@@ -1004,7 +1004,7 @@ export function PlannerPage() {
                     checked={planOverwrite}
                     onChange={(e) => setPlanOverwrite(e.target.checked)}
                   />
-                  我确认切换工作方案并替换当前保存记录
+                  <span>我确认切换工作方案并替换当前保存记录</span>
                 </label>
               )}
             {planAction.kind === "save" && browserTrip.error && (

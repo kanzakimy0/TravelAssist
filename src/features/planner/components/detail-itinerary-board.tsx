@@ -281,7 +281,9 @@ export function DetailItineraryBoard({
                   !items.some(
                     (item) =>
                       item.type === kind &&
-                      (!slot || mealSlotFor(item.startTime) === slot),
+                      (!slot ||
+                        mealSlotFor(item.startTime, item.planningSlot) ===
+                          slot),
                   ),
               )
               .map(({ kind, label, slot, time }) => {

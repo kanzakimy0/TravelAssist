@@ -68,11 +68,21 @@ dialog.planConfirmation[data-kind="quick"] {
   white-space: normal;
 }
 .planConfirmation label {
-  display: flex;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
   align-items: flex-start;
   gap: 8px;
   line-height: 1.6;
   margin-bottom: 16px;
+}
+.planConfirmation label input[type="checkbox"] {
+  appearance: auto;
+  width: 16px;
+  height: 16px;
+  min-height: 0;
+  padding: 0;
+  margin: 0.3em 0 0;
+  accent-color: #bb5b49;
 }
 .confirm button:disabled {
   opacity: 0.5;

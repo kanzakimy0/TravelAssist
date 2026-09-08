@@ -184,6 +184,32 @@ try {
       exact: true,
     });
     await switching.waitFor();
+    const checks = await switching
+      .locator('label input[type="checkbox"]')
+      .evaluateAll((es) =>
+        es.map((e) => {
+          const r = e.getBoundingClientRect(),
+            t = e.nextElementSibling.getBoundingClientRect();
+          return {
+            width: r.width,
+            height: r.height,
+            left: r.left,
+            textLeft: t.left,
+            delta: r.top - t.top,
+          };
+        }),
+      );
+    assert.ok(
+      checks.every(
+        (r) =>
+          r.width === 16 &&
+          r.height === 16 &&
+          r.textLeft > r.left + 16 &&
+          r.delta >= 0 &&
+          r.delta < 8,
+      ),
+      JSON.stringify(checks),
+    );
     await switching.getByRole("button", { name: "取消", exact: true }).click();
     assert.equal(
       await working.getByText("当前工作中方案", { exact: true }).count(),

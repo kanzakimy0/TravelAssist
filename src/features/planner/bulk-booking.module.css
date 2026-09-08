@@ -46,12 +46,27 @@
   gap: 6px;
   margin-top: 9px;
 }
-.offers > div {
+.offers > button {
   display: grid;
   gap: 5px;
   padding: 8px;
   background: #f2ece2;
   border-radius: 8px;
+  border: 1px solid #ddcfc0;
+  color: inherit;
+  text-align: left;
+  min-width: 0;
+  cursor: pointer;
+}
+.offers > button[aria-pressed="true"] {
+  background: #fff0e9;
+  border-color: #bc5748;
+  box-shadow: inset 0 0 0 1px #bc5748;
+  color: #8a392f;
+}
+.offers > button:focus-visible {
+  outline: 2px solid #bc5748;
+  outline-offset: 2px;
 }
 .offers small {
   font-size: 10px;

@@ -8,7 +8,11 @@ import {
   reservationLabel,
 } from "./trip-model";
 import type { MapView, PlaceType, TripItem, TripState } from "./trip-model";
-import { scheduleConflicts, validateSchedule } from "./schedule-check";
+import {
+  scheduleConflicts,
+  validateSchedule,
+  mealTimeWarning,
+} from "./schedule-check";
 import { plannerMovementLegs } from "./planner-route";
 import { validPreparations, type Preparation } from "./trip-preparation";
 
@@ -62,6 +66,7 @@ export interface DetailDraftState {
 }
 
 export interface DetailRailItem {
+  planningSlot?: string;
   completed?: boolean;
   id: string;
   day: number;
@@ -255,6 +260,7 @@ export function detailRailItems(
       day,
       title: item.title,
       startTime: item.startTime,
+      planningSlot: item.planningSlot,
       endTime: item.endTime,
       type: item.type,
       typeLabel: typeLabels[item.type],
@@ -313,6 +319,11 @@ export function detailRailItems(
         aiStatus: "error" as const,
         aiReason: `从 ${incoming.from.title} 的交通预计 ${incoming.duration} 分 + 缓冲 ${incoming.buffer} 分，超出 ${incoming.gap} 分空档。时间未自动调整，请核对。`,
       };
+    const mealWarning = mealTimeWarning(
+      items.find((i) => i.id === item.id) ?? item,
+    );
+    if (mealWarning && item.aiStatus !== "error")
+      return { ...item, aiStatus: "warning" as const, aiReason: mealWarning };
     const previous = combined
       .filter(
         (i) =>

@@ -132,7 +132,7 @@ export function PlaceActions({
       (i.day === day || place.type === "hotel") &&
       (!state.ui.mealSlot ||
         place.type !== "restaurant" ||
-        mealSlotFor(i.startTime) === state.ui.mealSlot),
+        mealSlotFor(i.startTime, i.planningSlot) === state.ui.mealSlot),
   );
   const [nights, setNights] = useState(1);
   if (!canBook && ["hotel", "restaurant"].includes(place.type))

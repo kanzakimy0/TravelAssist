@@ -20,6 +20,7 @@ import type { MovementEdit, PlannerRouteAction } from "./planner-route";
 import {
   applyTimelineAction,
   initializeHotelEndpoints,
+  routineSlotFor,
   type TimelineAction,
   type RoutineSlot,
 } from "./planner-timeline";
@@ -27,7 +28,9 @@ import {
 // TASK-008.1 local interaction model, NOT the final cross-module Trip Contract.
 export type Coordinates = [number, number];
 export type MealSlot = "breakfast" | "lunch" | "dinner";
-export function mealSlotFor(time: string): MealSlot {
+export function mealSlotFor(time: string, slot?: string): MealSlot {
+  if (slot === "breakfast" || slot === "lunch" || slot === "dinner")
+    return slot;
   const hour = Number(time.split(":")[0]);
   return hour < 11 ? "breakfast" : hour < 16 ? "lunch" : "dinner";
 }
@@ -1062,7 +1065,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
         item.placeId === place.id &&
         (!action.mealSlot ||
           place.type !== "restaurant" ||
-          mealSlotFor(item.startTime) === action.mealSlot) &&
+          mealSlotFor(item.startTime, item.planningSlot) === action.mealSlot) &&
         (place.type === "hotel" || item.day === action.day),
     );
     if (existing) {
@@ -1091,7 +1094,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
             i.type === place.type &&
             (!action.mealSlot ||
               place.type !== "restaurant" ||
-              mealSlotFor(i.startTime) === action.mealSlot) &&
+              mealSlotFor(i.startTime, i.planningSlot) === action.mealSlot) &&
             (place.type === "hotel" || place.type === "restaurant"),
         );
     if (
@@ -1128,6 +1131,11 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           : action.day,
       date: isoDay(state.settings.startDate, action.day),
       startTime: time,
+      planningSlot:
+        place.type === "restaurant"
+          ? (action.mealSlot ??
+            (placeholder ? routineSlotFor(placeholder) : mealSlotFor(time)))
+          : undefined,
       endTime: timeAfter(time, place.duration),
       title: place.name,
       type: place.type,
@@ -1218,6 +1226,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           ? {
               ...candidate,
               title,
+              planningSlot: routineSlotFor(candidate),
               startTime: action.startTime,
               endTime: action.endTime,
             }
@@ -1379,6 +1388,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   const changed = {
     ...item,
     startTime: action.time,
+    planningSlot: routineSlotFor(item),
     endTime: timeAfter(
       action.time,
       minutes(item.endTime) - minutes(item.startTime),

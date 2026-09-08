@@ -10,7 +10,11 @@ import {
 } from "./trip-model";
 import { plannerMovementLegs } from "./planner-route";
 import { routineSlotFor } from "./planner-timeline";
-import { validateSchedule, scheduleConflicts } from "./schedule-check";
+import {
+  validateSchedule,
+  scheduleConflicts,
+  mealTimeWarning,
+} from "./schedule-check";
 
 export const settingsCategories = [
   { title: "预算与节奏", groups: [] },
@@ -109,6 +113,7 @@ export function secondaryPanelModel(state: TripState) {
               ? `与 ${overlaps.map((i) => i.title).join("、")} 重叠`
               : ""),
           item.planningPlaceholder ? "具体地点尚未确定" : "",
+          mealTimeWarning(item),
         ]
           .filter(Boolean)
           .join("；");

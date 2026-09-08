@@ -284,7 +284,7 @@ export function PlannerSightTimeline({
     pickup?.target?.to === "reserve"
       ? "移到备用，保留资料"
       : pickup?.target?.startMinute !== undefined
-        ? `预计放下：${displayTimelineTime(timelineClock(pickup.target.startMinute)).replace(":", "时")}分 · 每5分钟吸附`
+        ? `${displayTimelineTime(timelineClock(pickup.target.startMinute)).replace(":", "时")}分`
         : pickup?.target?.afterId
           ? `插在 ${planned.find((i) => i.id === pickup.target?.afterId)?.title ?? "前一项"} 后，结束时间 +15 分钟`
           : "放在当天开头";
@@ -303,11 +303,13 @@ export function PlannerSightTimeline({
             <small>
               第{day}天 · {planned.length}项
             </small>
-            <span title="先拖动安排，时间冲突留到详情核对">按时间定位</span>
+            <span title="先拖动安排，时间冲突留到详情核对">
+              拖到下轨，移入备用
+            </span>
           </h3>
           <h3 id={`reserves-${day}`}>
             备用项目<small>{reserve.length}项</small>
-            <span>拖到上轨 ↑</span>
+            <span>拖到上轨移入行程</span>
           </h3>
         </div>
       )}
@@ -469,8 +471,6 @@ export function PlannerSightTimeline({
             aria-hidden="true"
             data-drop-minute={pickup.target?.startMinute}
           >
-            {pickup.title}
-            <br />
             {pickup.target ? targetText : "拖到时间轴选择时间"}
           </div>,
           pickup.portalTarget ?? document.body,

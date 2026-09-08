@@ -117,7 +117,7 @@ export function PlannerRouteBoard({
         {state.notice ||
           (movement
             ? "修改方式、预计时长与缓冲，不会自动移动已确定的项目。"
-            : "上下拖拽调整 · 时间轴每5分钟吸附 · 详情核对可行性")}
+            : "上下拖拽调整 · 拖动查看落点时间 · 详情核对可行性")}
       </p>
     </div>
   );

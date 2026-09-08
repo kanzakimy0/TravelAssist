@@ -48,23 +48,21 @@ export function AreaRecommendations({
                   第{row.day.day}天 · {row.day.city}
                 </small>
                 <div className={ui.areaChoices}>
-                  {mealAreaChoices(state, row.day.day, slot === "hotel").map(
-                    (choice) => (
-                      <AreaChoice
-                        key={choice.id}
-                        choice={choice}
-                        id={`${slot}-${row.day.day}-${choice.id}`}
-                        onInspect={() =>
-                          dispatch({
-                            type: "inspect",
-                            id: choice.id,
-                            level: choice.level,
-                            day: row.day.day,
-                          })
-                        }
-                      />
-                    ),
-                  )}
+                  {mealAreaChoices(state, row.day.day, slot).map((choice) => (
+                    <AreaChoice
+                      key={choice.id}
+                      choice={choice}
+                      id={`${slot}-${row.day.day}-${choice.id}`}
+                      onInspect={() =>
+                        dispatch({
+                          type: "inspect",
+                          id: choice.id,
+                          level: choice.level,
+                          day: row.day.day,
+                        })
+                      }
+                    />
+                  ))}
                 </div>
               </div>
             ))}

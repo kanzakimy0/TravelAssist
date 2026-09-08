@@ -25,7 +25,7 @@ export function overviewEntries(
     time: item.startTime,
     title:
       item.type === "restaurant"
-        ? `${{ breakfast: "早餐", lunch: "午餐", dinner: "晚餐" }[mealSlotFor(item.startTime)]} · ${item.title}`
+        ? `${{ breakfast: "早餐", lunch: "午餐", dinner: "晚餐" }[mealSlotFor(item.startTime, item.planningSlot)]} · ${item.title}`
         : item.type === "hotel"
           ? `住宿 · ${item.title}`
           : item.title,
@@ -44,7 +44,9 @@ export function overviewEntries(
   ] as const) {
     if (
       !items.some(
-        (i) => i.type === "restaurant" && mealSlotFor(i.startTime) === slot,
+        (i) =>
+          i.type === "restaurant" &&
+          mealSlotFor(i.startTime, i.planningSlot) === slot,
       )
     )
       entries.push({
