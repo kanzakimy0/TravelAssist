@@ -2,7 +2,7 @@
 
 ## 当前整合发布（2026-09-08）
 
-用户已授权上传并合并。TASK-PLANNER-TRACK-A / #210 正在整合 PR #204 / #206 和最新 develop eccfd9e；4.46 待验收。下方发布受阻、未上传、旧数据库阻塞文字是历史记录，本节与当前追踪行优先。保留 TASK-015 已完成及 B Engine 任务，不合并其他无关分支。
+PR #211 已合入 develop：`13a316a408d2be58f8319efc68d88aa555e39884`，完整包含 PR #204 / #206（GitHub已确认两者Merged）。#203/#205/#210的UI与本地Mock范围已验收；4.37/4.38/4.40–4.46/7.12改为已完成。561测试及整合浏览器验收通过；27份未修改历史格式问题如实保留。数据库已完成、B Engine规划及日本素材Partial门槛不变。下方本地未上传/旧Draft记录为历史，以本节及追踪行优先。
 
 
 ## 独立滑轨与方案保存还原（2026-09-08）
@@ -458,7 +458,9 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
 | TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
-| TASK-PLANNER-INTEGRATION-A | 4.37/4.38/4.40/4.41；7.12 | A | 待审查（本地改动整合） | #203 | `docs/tasks/TASK-planner-local-integration.md` | `codex/planner-local-integration-20260908` | `0006814`（实现；后续仅追踪同步） | [#204](https://github.com/kanzakimy0/TravelAssist/pull/204) Draft，未合并；521测试通过，Mapbox本地实测通过 |
+| TASK-PLANNER-INTEGRATION-A | 4.37/4.38/4.40/4.41；7.12 | A | 已完成（UI/本地Mock） | #203 | `docs/tasks/TASK-planner-local-integration.md` | `codex/planner-local-integration-20260908` | `0006814`（实现；后续仅追踪同步） | [#204](https://github.com/kanzakimy0/TravelAssist/pull/204) Merged；随#211整合验收，561测试通过 |
+| TASK-TRIP-PREPARATION-A | 4.42–4.45 | A | 已完成（本地Mock） | #205 | `docs/tasks/TASK-trip-preparation.md` | `codex/trip-completion-flight-workspace` | `8e4a497`；整合 `13a316a` | #206 / #211 Merged |
+| TASK-PLANNER-TRACK-A | 4.46 | A | 已完成（本地Mock） | #210 | `docs/tasks/TASK-planner-track-actions.md` | `codex/planner-independent-tracks-plan-actions` | `5879444`；整合 `7c4bcbe`；合入 `13a316a` | #211 Merged |
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 可开始（#186已合并，B复检后实施） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING（未实施） | PENDING |
 
@@ -639,16 +641,16 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.34 | 六 Tab 上伸摘要 / 内容边界 / 响应式折叠及 25dvh | A | P1 | 4.1,4.8 | 已完成（已合并UI/Mock） |
 | 4.35 | 方案与备用景点双向调整 / 空档分配 / 分方案隔离 | A | P0 | 4.9,4.15 | 已完成（已合并UI/Mock） |
 | 4.36 | 移动段编辑 / 分类颜色 / 风险双色 / 相邻连接失效 | A | P1 | 4.10,4.35 | 已完成（已合并UI/Mock） |
-| 4.37 | 紧凑双层景点时间轴 / 节点连线 / 待安排备用轨道 | A | P1 | 4.35 | 待审查（本轮整合 #203） |
-| 4.38 | 行程卡同意应用 / 无视隐藏提醒 / 空白大加号 / 名称框加高 | A | P1 | 4.32,4.36 | 待审查（本轮整合 #203） |
+| 4.37 | 紧凑双层景点时间轴 / 节点连线 / 待安排备用轨道 | A | P1 | 4.35 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.38 | 行程卡同意应用 / 无视隐藏提醒 / 空白大加号 / 名称框加高 | A | P1 | 4.32,4.36 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 4.39 | 旅景玻璃背景 / 固定栏位与覆盖展开 / 操作按钮密度 | A | P1 | 4.25,4.34 | 已完成（已合并UI/Mock） |
-| 4.40 | 全天比例时间轴 / 上下拖拽插入 / 时间编辑与锁定 / 酒店三餐占位 | A | P1 | 4.35,4.37 | 待审查（本轮整合 #203） |
-| 4.41 | 行程交通酒店端点同步 / 1日3日全日面板与摘要 / 必要预约过滤 | A | P1 | 4.40,4.10,4.26 | 待审查（本轮整合 #203） |
-| 4.42 | 完成规划确认 / 全程待办 / 改名 / 本地保存与复检回执 | A | P1 | 4.26,4.32 | 待审查（#205） |
-| 4.43 | 同行人组合与单人跨页读取 / 临时成员 / 人数构成校验 | A | P1 | 5.6,4.42 | 待审查（#205，保留B原范围） |
-| 4.44 | 总览航班设置 / 项目详情 / 购票需求与本地航班校验 | A | P1 | 4.27,4.31 | 待审查（#205，非真实出票） |
-| 4.45 | Planner单日餐宿覆盖与旅行体检内容增强 | A | P1 | 4.41 | 待审查（#205） |
-| 4.46 | 独立双滑轨与5分钟吸附 / 重叠卡 / 三餐区域与时段提醒 / 工作方案草稿切换 / 预约渠道选择 | A | P1 | 4.40,4.45 | 待审查（#210，用户已授权整合发布） |
+| 4.40 | 全天比例时间轴 / 上下拖拽插入 / 时间编辑与锁定 / 酒店三餐占位 | A | P1 | 4.35,4.37 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.41 | 行程交通酒店端点同步 / 1日3日全日面板与摘要 / 必要预约过滤 | A | P1 | 4.40,4.10,4.26 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.42 | 完成规划确认 / 全程待办 / 改名 / 本地保存与复检回执 | A | P1 | 4.26,4.32 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.43 | 同行人组合与单人跨页读取 / 临时成员 / 人数构成校验 | A | P1 | 5.6,4.42 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.44 | 总览航班设置 / 项目详情 / 购票需求与本地航班校验 | A | P1 | 4.27,4.31 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.45 | Planner单日餐宿覆盖与旅行体检内容增强 | A | P1 | 4.41 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 4.46 | 独立双滑轨与5分钟吸附 / 重叠卡 / 三餐区域与时段提醒 / 工作方案草稿切换 / 预约渠道选择 | A | P1 | 4.40,4.45 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 
 ### 4B. TravelAssist Engine / Trip Engine
 
@@ -731,7 +733,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
-| 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 待审查（#203，真实底图已本地复验，Token不上传） |
+| 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 
 ## 8. 数据库与认证基础
 
