@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "scope": "Japan-only",
+  "seed_sha256": "67c60cf45e9744ffcc48f4d9f2fee8bdd8cd4eb8164fc4b8ebfc584b331b5132",
+  "batch_sha256": "c4dff4c0329b00fd12f545543be4b5ca35f687d64fc6e81f43c6c64a20083e48",
+  "run_mode": "manifest",
+  "execution_allowed": false,
+  "prerequisite_base": "95311fcbdc3432eb4b75cb0644cad7783fad7415",
+  "parent_issues": [112, 116],
+  "parent_prs": [166, 172, 188],
+  "source_priority": [
+    "repository_verified_poi_master",
+    "approved_provider",
+    "official_tourism_or_entity_site",
+    "compatible_open_knowledge",
+    "manual_review"
+  ],
+  "modes": [
+    "illustrative_city",
+    "documentary_photo",
+    "provider_only",
+    "symbolic_placeholder",
+    "acquisition_required"
+  ],
+  "category_quotas": {
+    "S": {
+      "landmark": 10,
+      "museum_culture": 6,
+      "historic_religious": 6,
+      "nature_viewpoint": 5,
+      "family_theme": 4,
+      "district_neighborhood": 4,
+      "market_shopping": 3,
+      "food_culture_experience": 2
+    },
+    "A": {
+      "landmark": 7,
+      "museum_culture": 4,
+      "historic_religious": 4,
+      "nature_viewpoint": 3,
+      "family_theme": 2,
+      "district_neighborhood": 2,
+      "market_shopping": 2,
+      "food_culture_experience": 1
+    }
+  },
+  "region_ids": [
+    "hokkaido",
+    "tohoku",
+    "kanto",
+    "chubu",
+    "kansai",
+    "chugoku",
+    "shikoku",
+    "kyushu-okinawa"
+  ],
+  "prefecture_code_scheme": "JNTO English prefecture slug; NOT an ISO numeric code",
+  "authenticity_rules": {
+    "illustrative_city": "illustrative",
+    "documentary_photo": "verified_real_photo",
+    "provider_only": "provider_reference",
+    "symbolic_placeholder": "symbolic",
+    "acquisition_required": "unknown"
+  },
+  "execution_gates": [
+    "accepted_parents",
+    "resolved_Japan_entities",
+    "approved_provider",
+    "verified_rights",
+    "budget_approval",
+    "storage_approval",
+    "approved_child_task"
+  ],
+  "prohibited_image_sources": [
+    "Google Images",
+    "Google Maps screenshots",
+    "Tripadvisor",
+    "Booking",
+    "Agoda",
+    "Instagram",
+    "Xiaohongshu",
+    "Weibo"
+  ],
+  "no_images_downloaded": true,
+  "no_secrets": true,
+  "unknown_values": "null in JSON; empty in CSV, never a fabricated zero",
+  "parent_schema_files": [
+    {
+      "path": "docs/assets/catalog/asset-manifest.v1.json",
+      "sha256": "50dd13fe92e302e99b5340443b7835cdd40621d69bbfc26dd01c451955cb1390"
+    },
+    {
+      "path": "docs/assets/catalog/asset-variants.v1.json",
+      "sha256": "b5d49ec7bbea355ab0a46558d8e31ba27c763a27a817a093eb3bb95c96d7ff28"
+    },
+    {
+      "path": "docs/assets/catalog/asset-size-profiles.v1.json",
+      "sha256": "c4df0e52c7f5098e4f8bbc4c8d7e93e6102997f6a4d793a7b453c92776bb4068"
+    },
+    {
+      "path": "docs/assets/catalog/asset-processing-policy.v1.json",
+      "sha256": "c59b3a0e3bb33b23e452414760d498291cdac6bceba853029b5ad2c1d6b6f76f"
+    }
+  ]
+}

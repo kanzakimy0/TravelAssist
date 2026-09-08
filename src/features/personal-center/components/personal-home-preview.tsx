@@ -1,92 +1,102 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
+import { createTripLibraryFixture } from "@/features/trip-library/trip-library-data";
+import {
+  activeTrips,
+  getTripTiming,
+  selectHeroTrip,
+  tripTimingLabels,
+} from "@/features/trip-library/trip-timing";
+import { useTripToday } from "@/features/trip-library/use-trip-today";
 
 import styles from "../personal-center.module.css";
 import { PersonalIcon } from "./personal-icon";
 import { GuardedLink } from "./guarded-link";
 
-// Static presentation fixtures only, not a Trip model or saved user data.
-const previewTrips = [
-  {
-    destination: "京都",
-    duration: "3天2晚",
-    date: "10月18日 — 10月20日",
-    status: "即将到来",
-    cover: "/media/personal-center/trip-kyoto-gion.webp",
-    position: "60% 50%",
-  },
-  {
-    destination: "大阪",
-    duration: "4天3晚",
-    date: "11月12日 — 11月15日",
-    status: "计划中",
-    cover: "/media/personal-center/trip-osaka-castle.webp",
-    position: "65% 45%",
-  },
-  {
-    destination: "北海道",
-    duration: "5天4晚",
-    date: "收藏于 8月3日",
-    status: "收藏",
-    cover: "/media/personal-center/trip-hokkaido-winter.webp",
-    position: "50% 55%",
-  },
-] as const;
-
-const heroCover = "/media/personal-center/hero-kyoto-sakura.webp";
-
 export function PersonalHomePreview() {
+  const fixture = useMemo(() => createTripLibraryFixture(), []);
+  const today = useTripToday();
+  const hero = selectHeroTrip(fixture.trips, today);
+  const heroStatus = hero && getTripTiming(hero.startDate, hero.endDate, today);
+  const previewTrips = [
+    ...activeTrips(fixture.trips, today)
+      .filter((trip) => trip.id !== hero?.id)
+      .sort((a, b) => a.startDate.localeCompare(b.startDate)),
+    ...[...fixture.trips, ...fixture.history]
+      .filter(
+        (trip) =>
+          getTripTiming(trip.startDate, trip.endDate, today) === "completed",
+      )
+      .sort((a, b) => b.endDate.localeCompare(a.endDate)),
+  ].slice(0, 3);
   return (
     <div className={styles.home}>
       <div className={styles.pageHeading}>
         <h1>我的首页</h1>
         <span className={styles.mockBadge}>示例行程 · Mock</span>
       </div>
-      <section aria-labelledby="next-trip-title" className={styles.nextTrip}>
-        <Image
-          src={heroCover}
-          alt="京都樱花街巷与八坂塔的旅行示例照片"
-          fill
-          sizes="(max-width: 760px) 100vw, 80vw"
-          preload
-          className={styles.heroPhoto}
-        />
-        <div className={styles.heroShade} />
-        <div className={styles.heroContent}>
-          <p className={styles.eyebrow}>下一次旅行</p>
-          <h2 id="next-trip-title">
-            京都<span>3天2晚</span>
-          </h2>
-          <ul className={styles.tripMeta}>
-            <li>
-              <PersonalIcon name="calendar" />
-              10月18日 — 10月20日
-            </li>
-            <li>
-              <PersonalIcon name="people" />2 人同行
-            </li>
-            <li>
-              <PersonalIcon name="train" />
-              电车 · 慢旅行
-            </li>
-          </ul>
-          <div className={styles.heroAction}>
-            <GuardedLink href="/planner" className={styles.planButton}>
-              继续规划
-              <PersonalIcon name="arrow" width="18" />
-            </GuardedLink>
-            <GuardedLink
-              href="/start?entry=step3"
-              className={`${styles.planButton} ${styles.secondaryAction}`}
-            >
-              开始新旅行
-            </GuardedLink>
+      {hero && heroStatus ? (
+        <section
+          aria-labelledby="next-trip-title"
+          className={styles.nextTrip}
+          data-home-hero={hero.id}
+          data-trip-status={heroStatus}
+        >
+          <Image
+            src={hero.cover}
+            alt={`${hero.destination}旅行示例照片`}
+            fill
+            sizes="(max-width: 760px) 100vw, 80vw"
+            preload
+            className={styles.heroPhoto}
+          />
+          <div className={styles.heroShade} />
+          <div className={styles.heroContent}>
+            <p className={styles.eyebrow}>{tripTimingLabels[heroStatus]}</p>
+            <h2 id="next-trip-title">
+              {hero.name}
+              <span>{hero.durationLabel}</span>
+            </h2>
+            <ul className={styles.tripMeta}>
+              <li>
+                <PersonalIcon name="calendar" />
+                {hero.dateLabel}
+              </li>
+              <li>
+                <PersonalIcon name="people" />
+                {hero.companionCount} 人同行
+              </li>
+            </ul>
+            <div className={styles.heroAction}>
+              <GuardedLink href="/planner" className={styles.planButton}>
+                继续规划
+                <PersonalIcon name="arrow" width="18" />
+              </GuardedLink>
+              <GuardedLink
+                href="/start?entry=step3"
+                className={`${styles.planButton} ${styles.secondaryAction}`}
+              >
+                开始新旅行
+              </GuardedLink>
+            </div>
+            <p className={styles.navigationNote}>
+              继续规划将打开当前示例规划，尚未接入真实保存行程。
+            </p>
           </div>
-          <p className={styles.navigationNote}>
-            继续规划将打开当前示例规划，尚未接入真实保存行程。
-          </p>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className={styles.homeEmpty} aria-live="polite">
+          <h2>
+            {today ? "暂时没有待出发或进行中的旅行" : "正在整理旅行状态…"}
+          </h2>
+          <GuardedLink href="/start?entry=step3" className={styles.planButton}>
+            开始新旅行
+          </GuardedLink>
+        </section>
+      )}
 
       <section aria-labelledby="my-trips-title">
         <div className={styles.sectionHeading}>
@@ -100,7 +110,8 @@ export function PersonalHomePreview() {
           {previewTrips.map((trip) => (
             <Link
               href="/personal-center/trips"
-              key={trip.destination}
+              key={trip.id}
+              data-home-preview={trip.id}
               className={styles.tripCard}
               aria-label={`${trip.destination}（Mock 行程），前往我的旅行`}
             >
@@ -111,18 +122,24 @@ export function PersonalHomePreview() {
                   fill
                   sizes="(max-width: 760px) 100vw, 26vw"
                   loading="eager"
-                  style={{ objectPosition: trip.position }}
+                  style={{ objectPosition: trip.coverPosition }}
                 />
-                <span className={styles.tripStatus}>{trip.status}</span>
+                <span className={styles.tripStatus}>
+                  {
+                    tripTimingLabels[
+                      getTripTiming(trip.startDate, trip.endDate, today)!
+                    ]
+                  }
+                </span>
               </div>
               <div className={styles.tripCardBody}>
                 <div>
-                  <h3>{trip.destination}</h3>
-                  <span>{trip.duration}</span>
+                  <h3>{trip.name}</h3>
+                  <span>{trip.durationLabel}</span>
                 </div>
                 <p>
-                  {trip.date}
-                  <span>2 人同行</span>
+                  {trip.dateLabel}
+                  <span>{trip.companionCount} 人同行</span>
                 </p>
               </div>
             </Link>
