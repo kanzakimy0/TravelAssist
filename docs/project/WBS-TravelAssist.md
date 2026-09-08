@@ -4,7 +4,7 @@
 
 - 基线 `0c21643d0f44ce599747007e25265c0e5219b5fb`；#186 与 4.17 的 #216/#217 已合并。Issue #207，分支 `feature/b-step-preference-trip-draft-persistence`。
 - 四层持久化、RLS、verified-user API、快照/覆盖/版本保护及 autosave 控制器已实现；9 项纯测试、15 项真实本地 DB/API、25 项 Profile 回归通过。已整合 develop `18afee5` 并复用 #218 Auth Core（含 Cookie）。Task 整体 Partial：实际 Step 页面接线和剩余字段映射未完成，不冒称跨设备恢复已上线，不把 8.3 误报缺失。
-- Result：`docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`；[Draft PR #221](https://github.com/kanzakimy0/TravelAssist/pull/221)，实现 `f597933`，后续普通 merge 整合。5.19 / 5.14 / 8.5 不在范围，不自动合并；下方 TASK-018 的“未启动 TASK-017”是其当时历史记录。
+- Result：`docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`；[Draft PR #221](https://github.com/kanzakimy0/TravelAssist/pull/221)，实现 `f597933`，已验证普通 merge 整合 `deb3d28`。整合后全仓 630 tests、lint/typecheck/build/客户端检查通过；最新 develop 28 份格式告警单独保留。5.19 / 5.14 / 8.5 不在范围，不自动合并；下方 TASK-018 的“未启动 TASK-017”是其当时历史记录。
 
 ## TASK-018-B Authentication Core（2026-09-08）
 

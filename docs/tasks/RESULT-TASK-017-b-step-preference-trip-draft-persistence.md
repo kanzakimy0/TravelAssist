@@ -21,7 +21,7 @@
 
 - Issue：[#207](https://github.com/kanzakimy0/TravelAssist/issues/207)，Open / Partial。
 - Branch：`feature/b-step-preference-trip-draft-persistence` → `develop`。
-- Implementation commit：`f597933858b137a3929434e4d2d2d6c0444859ec`；后续 Auth 整合与追踪见 PR commits。
+- Implementation commit：`f597933858b137a3929434e4d2d2d6c0444859ec`；已验证 Auth 整合提交：`deb3d28c90ca1ed55e4eb95ea4427f25ba1e5755`；其后仅追踪文档同步见 PR commits。
 - Draft PR：[#221](https://github.com/kanzakimy0/TravelAssist/pull/221)；保持 Draft，不合并。
 - 旧仅前置阻塞记录 #213 将由本结果取代，不合并旧文档分支。
 - 设计/接口说明：`docs/architecture/step-preference-persistence.md`。
@@ -82,7 +82,7 @@
 - 全仓测试：Auth 整合前 621 PASS；整合后最终复跑 **630 PASS**，无失败/跳过。
 - 复用 Auth Core 后再次 npm ci/lint/typecheck/build 与 15 项 TASK-017 Local、25 项 TASK-016 Local 验证均 PASS；生产客户端检查 PASS（31 chunks / 64 Auth dependency modules，无私有凭据或 server helpers）。
 - lint / typecheck / build：PASS。构建不需要数据库连接，新增 API 为动态 route，既有页面构建正常。
-- format:check：**FAIL，27 份既有文档格式告警**，与基线一致；本次新增/修改代码、测试与交付文档单独 Prettier check 全部 PASS，不改动无关文件。
+- format:check：**FAIL，最新 develop 基线 28 份文档格式告警**（原 27 + #220 新合入的 `docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`，本 Task 未修改）。本次新增/修改代码、测试与交付文档单独 Prettier check 全部 PASS，不改动无关文件。
 - git diff --check：PASS。
 - 实际 Step 跨设备浏览器 QA：**未通过 / 未实施**，原因是页面未接线，不用服务层测试代替 UI 验收。
 - db:status / db:stop 最终收尾：PASS；本 Task 启动的 Local 服务已停止，数据库卷保留，未影响 3113 预览。
@@ -107,7 +107,7 @@
 3. Step 全字段映射尚不完整：familiarity、兴趣细分、交通详细设置、预算档位/付费体验、币种上下文及还原适配必须补齐后，才能启用页面云草稿；不能静默丢字段。
 4. 本次 Preference 是已有键值子集的持久化候选；未实现新的 Master Data、Preset、详细高级规则、AI 或 Planner Preference 对外 Contract。
 5. listDrafts 仅 active drafts 的有限恢复入口，不是分页保存行程库/历史系统。
-6. 全仓已有格式告警另行处理，不以修格式为由改动无关业务。
+6. 全仓已有格式告警另行处理，不以修格式为由改动无关业务。Issue #215 历史正文更正被权限审查拒绝，未绕过；该 Issue 已关闭，其完成评论及 #216/#217 实际合并状态仍可核验。
 
 ## Next Gate
 
