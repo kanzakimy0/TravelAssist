@@ -1,5 +1,14 @@
 # TASK-PLANNER-INTEGRATION-A Result
 
+## 合并验收收尾（2026-09-08，当前状态）
+
+- Status: 已完成（本次 UI / 本地 Mock 范围）。GitHub Issue: #203。
+- PR #204 已合并；统一整合 PR [#211](https://github.com/kanzakimy0/TravelAssist/pull/211)，develop merge: `13a316a408d2be58f8319efc68d88aa555e39884`。
+- Branch: `codex/planner-independent-tracks-plan-actions`；最终整合 head: `7c4bcbe`；文档收尾分支: `codex/planner-integration-merge-closeout`。
+- 合并文件树与已验收整合 head 完全相同；保留最新数据库 Foundation / B Engine / Japan-only资产。561 tests、lint、typecheck、build通过；27份既有格式文档与develop基线逐字节相同，未新增格式失败。
+- 合并版本四尺寸浏览器工作方案/拖拽/草稿验证及桌面手机预约渠道验证通过，无pageerror。预览3113继续使用同一代码；Token仅本机，未上传缓存、个人草稿或真实预约信息。
+- 原有待验收、发布受阻、Draft/未合并等段落保留为历史；以本节及Metadata为准。Mock不等于服务器引擎、真实比价/预约、Auth或云保存完成。
+
 ## Status
 
 待验收 / [Draft PR #204](https://github.com/kanzakimy0/TravelAssist/pull/204) published. Implemented in an isolated integration worktree; not yet merged into develop.
