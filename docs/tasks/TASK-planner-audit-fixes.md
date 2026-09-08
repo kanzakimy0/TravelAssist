@@ -8,8 +8,8 @@
 - Branch: `codex/a-planner-audit-fixes`
 - Base: `18afee5f02ed45505b81636f7b25b568270b2bf9` (`origin/develop`)
 - WBS: 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46（已有成果的审计修复，不另建重复业务项）
-- Commit: PENDING
-- Draft PR: PENDING → `develop`；不自动合并
+- Commit: `ecbf022ba8c8813b416afca3e4bd81947017c508`（实现；后续仅追踪文档同步）
+- Draft PR: [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) → `develop`；Open / Draft，不自动合并
 - Result: `docs/tasks/RESULT-planner-audit-fixes.md`
 
 ## 正式来源与范围

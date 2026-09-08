@@ -10,8 +10,8 @@
 - Issue: [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)
 - Base: `18afee5f02ed45505b81636f7b25b568270b2bf9`（最新 `origin/develop` 启动基线）
 - Branch: `codex/a-planner-audit-fixes`
-- Commit: PENDING
-- Draft PR: PENDING → `develop`
+- Commit: `ecbf022ba8c8813b416afca3e4bd81947017c508`（实现；后续仅追踪文档同步）
+- Draft PR: [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) → `develop`；Open / Draft，未合并
 - Task: `docs/tasks/TASK-planner-audit-fixes.md`
 - WBS: 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46 的审计补充，修复待审查；历史合并记录保留。
 
