@@ -38,6 +38,11 @@ import {
 import { CompanionCard } from "./components/companion-card";
 import { CompanionGroupCard } from "./components/companion-group-card";
 import styles from "./companion-center.module.css";
+import {
+  COMPANION_LIBRARY_KEY,
+  parseCompanionLibrary,
+  writeCompanionLibrary,
+} from "./companion-library";
 
 type EditorState =
   | { kind: "companion"; draft: CompanionDraft; initial: string }
@@ -86,7 +91,53 @@ export function CompanionCenter() {
   const [discardOpen, setDiscardOpen] = useState(false);
   const [selectedNeed, setSelectedNeed] = useState<string | null>(null);
   const [notice, setNotice] = useState("");
+  const [libraryError, setLibraryError] = useState("");
+  const libraryRaw = useRef<string | null>(null);
+  const libraryReady = useRef(false);
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      try {
+        const raw = localStorage.getItem(COMPANION_LIBRARY_KEY);
+        const stored = parseCompanionLibrary(raw);
+        if (raw && !stored)
+          throw Error("本地同行人资料损坏，未覆盖。请保留原数据后处理。");
+        libraryRaw.current = raw;
+        if (stored) {
+          setCompanions(stored.companions);
+          setGroups(stored.groups);
+        }
+        libraryReady.current = true;
+      } catch {
+        setLibraryError("无法读取本地同行人资料，暂不能保存；原数据未改动。");
+      }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
+  function persistLibrary(
+    nextCompanions: CompanionViewModel[],
+    nextGroups: CompanionGroupViewModel[],
+  ) {
+    try {
+      if (!libraryReady.current) throw Error("本地同行人资料尚未就绪。");
+      libraryRaw.current = writeCompanionLibrary(
+        localStorage,
+        { version: 1, companions: nextCompanions, groups: nextGroups },
+        libraryRaw.current,
+      );
+      setCompanions(nextCompanions);
+      setGroups(nextGroups);
+      setLibraryError("");
+      return true;
+    } catch (cause) {
+      setLibraryError(
+        cause instanceof Error ? cause.message : "本地保存失败，编辑仍保留。",
+      );
+      return false;
+    }
+  }
   const drawerRef = useRef<HTMLElement>(null);
+  const editorBackdrop = useRef<HTMLDialogElement>(null);
+  const discardBackdrop = useRef<HTMLDialogElement>(null);
   const deleteCancelRef = useRef<HTMLButtonElement>(null);
   const discardContinueRef = useRef<HTMLButtonElement>(null);
   const addCompanionRef = useRef<HTMLButtonElement>(null);
@@ -106,6 +157,16 @@ export function CompanionCenter() {
     ? JSON.stringify(editor.draft) !== editor.initial
     : false;
   const editorOpen = editor !== null;
+  useEffect(() => {
+    const element = editorBackdrop.current;
+    if (editorOpen) element?.showModal();
+    return () => element?.close();
+  }, [editorOpen]);
+  useEffect(() => {
+    const element = discardBackdrop.current;
+    if (discardOpen) element?.showModal();
+    return () => element?.close();
+  }, [discardOpen]);
 
   useEffect(() => setIsDirty(editorDirty), [editorDirty, setIsDirty]);
   useEffect(() => () => setIsDirty(false), [setIsDirty]);
@@ -250,7 +311,8 @@ export function CompanionCenter() {
     const errors = validateCompanionDraft(editor.draft);
     setCompanionErrors(errors);
     if (Object.keys(errors).length) return;
-    setCompanions((current) => saveCompanion(current, editor.draft));
+    if (!persistLibrary(saveCompanion(companions, editor.draft), groups))
+      return;
     setNotice("同行人资料已保存");
     closeEditor();
   };
@@ -261,24 +323,28 @@ export function CompanionCenter() {
     const errors = validateGroupDraft(editor.draft);
     setGroupErrors(errors);
     if (Object.keys(errors).length) return;
-    setGroups((current) => saveCompanionGroup(current, editor.draft));
+    if (!persistLibrary(companions, saveCompanionGroup(groups, editor.draft)))
+      return;
     setNotice("常用组合已保存");
     closeEditor();
   };
 
   const confirmDelete = () => {
     if (!deleteTarget || deleteTarget.isSelf) return;
-    setCompanions((current) => deleteCompanion(current, deleteTarget.id));
-    setGroups((current) =>
-      current
-        .map((group) => ({
-          ...group,
-          companionIds: group.companionIds.filter(
-            (id) => id !== deleteTarget.id,
-          ),
-        }))
-        .filter((group) => group.companionIds.length > 0),
-    );
+    if (
+      !persistLibrary(
+        deleteCompanion(companions, deleteTarget.id),
+        groups
+          .map((group) => ({
+            ...group,
+            companionIds: group.companionIds.filter(
+              (id) => id !== deleteTarget.id,
+            ),
+          }))
+          .filter((group) => group.companionIds.length > 0),
+      )
+    )
+      return;
     setNotice(`${deleteTarget.displayName} 已从同行人中删除`);
     setDeleteTarget(null);
     window.requestAnimationFrame(() => addCompanionRef.current?.focus());
@@ -508,6 +574,7 @@ export function CompanionCenter() {
         </section>
       </div>
 
+      {libraryError && <p role="alert">{libraryError}</p>}
       {notice ? (
         <div className={styles.toast} role="status">
           ✓ {notice}
@@ -515,8 +582,14 @@ export function CompanionCenter() {
       ) : null}
 
       {editor ? (
-        <div
+        <dialog
+          ref={editorBackdrop}
+          aria-labelledby="editor-title"
           className={styles.drawerBackdrop}
+          onCancel={(event) => {
+            event.preventDefault();
+            requestEditorClose();
+          }}
           onMouseDown={(event) => {
             if (event.currentTarget === event.target) requestEditorClose();
           }}
@@ -524,8 +597,7 @@ export function CompanionCenter() {
           <section
             ref={drawerRef}
             className={styles.drawer}
-            role="dialog"
-            aria-modal="true"
+            role="document"
             aria-labelledby="editor-title"
           >
             <div className={styles.drawerHeader}>
@@ -888,7 +960,7 @@ export function CompanionCenter() {
               </form>
             )}
           </section>
-        </div>
+        </dialog>
       ) : null}
 
       {deleteTarget ? (
@@ -951,13 +1023,19 @@ export function CompanionCenter() {
       ) : null}
 
       {discardOpen ? (
-        <div className={styles.modalBackdrop}>
+        <dialog
+          ref={discardBackdrop}
+          className={styles.modalBackdrop}
+          role="alertdialog"
+          aria-labelledby="discard-title"
+          aria-describedby="discard-description"
+          onCancel={(event) => {
+            event.preventDefault();
+            closeDiscardConfirmation();
+          }}
+        >
           <section
             className={styles.confirmDialog}
-            role="alertdialog"
-            aria-modal="true"
-            aria-labelledby="discard-title"
-            aria-describedby="discard-description"
             onKeyDown={(event) => {
               if (event.key === "Escape") {
                 event.preventDefault();
@@ -1004,7 +1082,7 @@ export function CompanionCenter() {
               </button>
             </div>
           </section>
-        </div>
+        </dialog>
       ) : null}
     </div>
   );

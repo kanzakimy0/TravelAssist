@@ -4,6 +4,7 @@ import {
   DETAIL_DRAFT_STORAGE_KEY,
   detailUrl,
   parseDetailDraft,
+  emptyDetailDraft,
 } from "../model/detail-workspace";
 import type {
   DetailDraftState,
@@ -19,6 +20,13 @@ import {
   tripSnapshot,
 } from "../model/browser-trip";
 import type { SavedTrip, TripSnapshot } from "../model/browser-trip";
+import {
+  archiveWorkingDraft,
+  readWorkingDrafts,
+  WORKING_DRAFTS_KEY,
+  type WorkingDraft,
+} from "../model/working-drafts";
+import { originalRecommendation } from "../model/recommendation-actions";
 
 export function useBrowserTrip({
   trip,
@@ -45,6 +53,8 @@ export function useBrowserTrip({
   const [destination, setDestination] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [overwritePending, setOverwritePending] = useState(false);
+  const [entryPlanId, setEntryPlanId] = useState<string | null>(null);
+  const [archivedDrafts, setArchivedDrafts] = useState<WorkingDraft[]>([]);
   const overwriteLeave = useRef(false);
   const expectedRaw = useRef<string | null>(null);
   const initialized = useRef(false);
@@ -62,10 +72,26 @@ export function useBrowserTrip({
         expectedRaw.current = raw;
         const existing = parseSavedTrip(raw, trip);
         setSaved(existing);
-        if (mode === "detail" && existing) {
-          restore(restoreTrip(trip, existing.snapshot));
-          setDraft(structuredClone(existing.snapshot.draft));
-          setBaseline(existing.snapshot);
+        try {
+          setArchivedDrafts(
+            readWorkingDrafts(
+              window.localStorage.getItem(WORKING_DRAFTS_KEY),
+              trip,
+            ),
+          );
+        } catch {
+          setError("草稿目录读取失败，原始数据保留。");
+        }
+        if (existing) {
+          const snapshot = {
+            ...existing.snapshot,
+            workingPlanId:
+              existing.snapshot.workingPlanId ??
+              existing.snapshot.currentPlanId,
+          };
+          restore(restoreTrip(trip, snapshot));
+          setDraft(structuredClone(snapshot.draft));
+          setBaseline(snapshot);
           setStatus("已载入上次保存 · 仅此浏览器");
         } else {
           const legacy = parseDetailDraft(
@@ -73,6 +99,7 @@ export function useBrowserTrip({
           );
           setDraft(legacy);
           if (mode === "detail") setBaseline(tripSnapshot(trip, legacy));
+          if (mode === "detail") setEntryPlanId(trip.ui.currentPlanId);
           setStatus(
             raw && !existing
               ? "保存记录无效，原记录未改动"
@@ -81,6 +108,7 @@ export function useBrowserTrip({
         }
       } catch {
         if (mode === "detail") setBaseline(tripSnapshot(trip, draft));
+        if (mode === "detail") setEntryPlanId(trip.ui.currentPlanId);
         setStatus("浏览器存储不可用，仍可编辑但暂不能保存");
       }
       setReady(true);
@@ -93,9 +121,16 @@ export function useBrowserTrip({
     setDraft(structuredClone(snapshot.draft));
     setBaseline(snapshot);
   }
-  function enterDetail() {
+  function enterDetail(planId = trip.ui.currentPlanId) {
     if (!ready) return;
-    setBaseline(tripSnapshot(trip, draft));
+    if (trip.workingPlanId !== planId) {
+      setError("");
+      setEntryPlanId(planId);
+      return;
+    }
+    const selected = { ...trip, ui: { ...trip.ui, currentPlanId: planId } };
+    if (trip.ui.currentPlanId !== planId) restore(selected);
+    setBaseline(tripSnapshot(selected, draft));
     onLeave?.();
     setError("");
     setStatus(
@@ -115,7 +150,11 @@ export function useBrowserTrip({
       }
       expectedRaw.current = raw;
       setSaved(existing);
-      applySnapshot(existing.snapshot);
+      applySnapshot({
+        ...existing.snapshot,
+        workingPlanId:
+          existing.snapshot.workingPlanId ?? existing.snapshot.currentPlanId,
+      });
       setError("");
       setStatus("已载入上次保存 · 仅此浏览器");
       router.push(detailUrl(1), { scroll: false });
@@ -123,18 +162,23 @@ export function useBrowserTrip({
       setError("无法读取浏览器存储，当前行程未改变。");
     }
   }
-  function save(confirmedOverwrite = false) {
-    if (!ready || mode !== "detail") return false;
+  function save(
+    confirmedOverwrite = false,
+    prepared?: TripSnapshot,
+    recommendation = false,
+  ) {
+    if (!ready || (mode !== "detail" && !recommendation)) return false;
     if (
       saved &&
-      saved.snapshot.currentPlanId !== trip.ui.currentPlanId &&
+      saved.snapshot.currentPlanId !==
+        (prepared?.currentPlanId ?? trip.ui.currentPlanId) &&
       !confirmedOverwrite
     ) {
       setOverwritePending(true);
       return false;
     }
     try {
-      const snapshot = tripSnapshot(trip, draft);
+      const snapshot = prepared ?? tripSnapshot(trip, draft);
       if (
         !parseSavedTrip(
           JSON.stringify({
@@ -154,6 +198,7 @@ export function useBrowserTrip({
       expectedRaw.current = JSON.stringify(next);
       setSaved(next);
       setBaseline(snapshot);
+      if (prepared) applySnapshot(snapshot);
       setStatus("已保存到此浏览器 · 刷新可恢复");
       setError("");
       return true;
@@ -260,6 +305,14 @@ export function useBrowserTrip({
   }, [dirty, day]);
 
   return {
+    entryPlanId,
+    archivedDrafts,
+    cancelEntry: () => {
+      setEntryPlanId(null);
+      setError("");
+      if (mode === "detail" && !trip.workingPlanId)
+        router.replace("/planner", { scroll: false });
+    },
     overwritePending,
     cancelOverwrite: () => {
       setOverwritePending(false);
@@ -278,9 +331,74 @@ export function useBrowserTrip({
     status: error || (dirty ? "有未保存修改 · 仅此浏览器" : status),
     error,
     destination,
-    enterDetail,
+    enterDetail: () => enterDetail(),
+    requestPlan: (id: string) => enterDetail(id),
     openSaved,
     save,
+    saveRecommendation: (
+      planId: string,
+      overwrite: boolean,
+      archive = false,
+      fromDraft?: WorkingDraft,
+    ) => {
+      if (!trip.plans.some((p) => p.id === planId)) return false;
+      const switching = Boolean(
+        trip.workingPlanId && (trip.workingPlanId !== planId || fromDraft),
+      );
+      if (switching && !overwrite) return false;
+      try {
+        if (window.localStorage.getItem(SAVED_TRIP_KEY) !== expectedRaw.current)
+          throw new Error(
+            "另一页面已更新本地行程，请先打开已保存版本。未切换方案。",
+          );
+        if (switching && archive)
+          setArchivedDrafts(
+            archiveWorkingDraft(
+              window.localStorage,
+              tripSnapshot(
+                {
+                  ...trip,
+                  ui: { ...trip.ui, currentPlanId: trip.workingPlanId! },
+                },
+                draft,
+              ),
+              trip,
+            ),
+          );
+      } catch (cause) {
+        setError(
+          cause instanceof Error ? cause.message : "无法保存草稿，未切换方案。",
+        );
+        return false;
+      }
+      const chosen: TripState = {
+        ...trip,
+        ...(fromDraft ? restoreTrip(trip, fromDraft.snapshot) : {}),
+        workingPlanId: planId,
+        ...(!fromDraft && switching
+          ? {
+              plans: trip.plans.map((p) =>
+                p.id === trip.workingPlanId
+                  ? (originalRecommendation(trip, p.id) ?? p)
+                  : p,
+              ),
+            }
+          : {}),
+        ui: { ...trip.ui, currentPlanId: planId, focusedDay: 1 },
+      };
+      const nextDraft =
+        fromDraft?.snapshot.draft ?? (switching ? emptyDetailDraft() : draft);
+      if (!save(overwrite, tripSnapshot(chosen, nextDraft), true)) return false;
+      setEntryPlanId(null);
+      onLeave?.();
+      router.push(detailUrl(1), { scroll: false });
+      return true;
+    },
+    savePrepared: (
+      nextTrip: TripState,
+      nextDraft: DetailDraftState,
+      overwrite: boolean,
+    ) => save(overwrite, tripSnapshot(nextTrip, nextDraft)),
     requestLeave,
     cancelLeave: () => {
       setDestination(null);

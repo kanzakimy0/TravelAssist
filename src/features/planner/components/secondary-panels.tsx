@@ -14,6 +14,7 @@ import ui from "../planner-v05.module.css";
 import cards from "../secondary-cards.module.css";
 import { MovementPanel } from "./movement-panel";
 import { AreaRecommendations } from "./area-recommendations";
+import { DailyHealthPanel } from "./daily-health-panel";
 import { useWorkspaceCapabilities } from "./workspace-capabilities";
 
 export function SecondaryPanels({
@@ -72,6 +73,8 @@ export function SecondaryPanels({
       <MovementPanel state={state} dispatch={dispatch} />
     ) : tab === "stayFood" ? (
       <AreaRecommendations state={state} dispatch={dispatch} />
+    ) : tab === "details" && mode === "day" ? (
+      <DailyHealthPanel state={state} dispatch={dispatch} />
     ) : null;
   return (
     <>
@@ -80,6 +83,7 @@ export function SecondaryPanels({
           ref={region}
           className={`${ui.secondary} ${cards.panel}`}
           data-secondary-panel={tab}
+          data-range-mode={mode}
         >
           <section className={cards.collection} aria-label={title + "内容"}>
             {tab === "booking" && (
@@ -87,7 +91,7 @@ export function SecondaryPanels({
                 {ticketItems.length === 0 && (
                   <article className={cards.card}>
                     <span className={cards.eyebrow}>购票清单</span>
-                    <h4>暂无待购票项目</h4>
+                    <h4>当前范围没有需要预约的门票项目</h4>
                     <p>
                       此处只查看门票安排。酒店、餐饮及购票操作在行程详情管理。
                     </p>
@@ -115,6 +119,15 @@ export function SecondaryPanels({
                     </p>
                     <small>
                       {item.providerId ?? "渠道待选择"} · 取消规则待核对
+                      {state.places
+                        .find((p) => p.id === item.placeId)
+                        ?.bookingOptions.some(
+                          (o) =>
+                            o.availabilityStatus === "available" ||
+                            o.availabilityStatus === "limited",
+                        )
+                        ? " · 样例可用（非实时）"
+                        : " · 库存未核对"}
                     </small>
                     <span className={cards.cardLink}>定位景点 →</span>
                   </button>
@@ -129,7 +142,7 @@ export function SecondaryPanels({
                     Day {row.day.day} · {row.day.city}
                   </h4>
                   <p>{row.day.weather.join(" · ")}</p>
-                  {mode === "all" ? (
+                  {mode === "all" && (
                     <p>
                       结构风险：
                       {row.day.city === "东京"
@@ -137,25 +150,33 @@ export function SecondaryPanels({
                         : "山景能见度 / 强风影响交通"}
                       ，保留室内日与城际缓冲。
                     </p>
-                  ) : (
+                  )}
+                  {
                     <>
-                      {row.outdoors.map((item) => (
-                        <button
-                          type="button"
-                          key={item.id}
-                          data-item={item.id}
-                          aria-pressed={state.ui.selectedTripItemId === item.id}
-                          onClick={() => select(item)}
-                        >
-                          {item.startTime}–{item.endTime} {item.title}
-                          {isProtectedItem(item) ? " · 受保护" : " · 户外影响"}
-                        </button>
-                      ))}
+                      {row.outdoors
+                        .slice(0, mode === "day" ? 4 : 2)
+                        .map((item) => (
+                          <button
+                            type="button"
+                            key={item.id}
+                            data-item={item.id}
+                            aria-pressed={
+                              state.ui.selectedTripItemId === item.id
+                            }
+                            onClick={() => select(item)}
+                          >
+                            {item.startTime}–{item.endTime} {item.title}
+                            {isProtectedItem(item)
+                              ? " · 受保护"
+                              : " · 户外影响"}
+                          </button>
+                        ))}
                       {state.places
                         .filter(
                           (p) =>
                             p.city === row.day.city &&
-                            p.type === "attraction" &&
+                            ["attraction", "activity"].includes(p.type) &&
+                            !p.planningPlaceholder &&
                             (alternativeKind === "rain"
                               ? /室内|展馆|博物馆/.test(
                                   p.name + p.tags.join(" "),
@@ -165,7 +186,7 @@ export function SecondaryPanels({
                                 : !p.tags.some((t) => /热门|经典/.test(t))) &&
                             !model.plan.items.some((i) => i.placeId === p.id),
                         )
-                        .slice(0, 2)
+                        .slice(0, mode === "day" ? 3 : 2)
                         .map((place) => (
                           <button
                             type="button"
@@ -185,8 +206,27 @@ export function SecondaryPanels({
                             预览替换 · {place.name}
                           </button>
                         ))}
+                      {!row.outdoors.length && (
+                        <p>本日没有已排户外景点；保留休息与交通缓冲。</p>
+                      )}
+                      {row.outdoors.length > 0 &&
+                        row.outdoors.every(isProtectedItem) && (
+                          <p>户外项目均受保护，请在详情处理后再替换。</p>
+                        )}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          dispatch({
+                            type: "range",
+                            mode: "day",
+                            start: row.day.day,
+                          })
+                        }
+                      >
+                        查看第{row.day.day}天安排
+                      </button>
                     </>
-                  )}
+                  }
                 </article>
               ))}
             {tab === "details" &&
@@ -210,14 +250,43 @@ export function SecondaryPanels({
                       <dd>{row.playMinutes}</dd>
                     </div>
                     <div>
-                      <dt>移动缓冲 / 分</dt>
-                      <dd>{row.travelMinutes}</dd>
+                      <dt>已估交通 / 分</dt>
+                      <dd>
+                        {row.estimatedTravel}
+                        {row.unknownLegs > 0 ? "+" : ""}
+                      </dd>
                     </div>
                     <div>
                       <dt>受保护 / 项</dt>
                       <dd>{row.items.filter(isProtectedItem).length}</dd>
                     </div>
                   </dl>
+                  <p>
+                    {row.span} · {row.unknownLegs}段交通待估 ·{" "}
+                    {row.tightLegs.length}段衔接待核对
+                  </p>
+                  <p>
+                    餐饮 {row.mealSlots.filter((s) => s.item).length}/3 已选 ·{" "}
+                    {row.stays.some((s) => !s.planningPlaceholder)
+                      ? "住宿地点已选（非预约确认）"
+                      : "住宿地点待选"}
+                  </p>
+                  {row.issues.slice(0, mode === "day" ? 3 : 2).map((issue) => (
+                    <button
+                      key={issue.id}
+                      type="button"
+                      onClick={() =>
+                        select(row.items.find((i) => i.id === issue.id)!)
+                      }
+                    >
+                      <strong>{issue.title}</strong> · {issue.reason}
+                    </button>
+                  ))}
+                  {!row.issues.length && (
+                    <p>
+                      ✓ 未发现本地时间结构冲突；营业时间和实际交通仍需核对。
+                    </p>
+                  )}
                   <p>
                     {mode === "day"
                       ? "检查营业时间、步行负担和预约前缓冲。"
@@ -233,8 +302,21 @@ export function SecondaryPanels({
             aria-label={title + "操作"}
           >
             <h4>{tab === "details" ? "建议与操作" : "下一步"}</h4>
+            <strong>{model.scopeTitle}</strong>
+            <p>
+              {mode === "day"
+                ? "查看当前日的具体安排与待办"
+                : mode === "threeDays"
+                  ? "逐日比较负荷、预约与跨城衔接"
+                  : "全程覆盖检查；每张日卡可进入单日"}
+            </p>
             {tab === "booking" && (
               <>
+                <p>
+                  {ticketItems.length} 项需预约 · {model.summary.pendingTickets}{" "}
+                  项待处理 · {model.summary.confirmedTickets} 项已确认
+                </p>
+                <p>无需预约的景点不展示；样例渠道不代表真实库存。</p>
                 <button type="button" onClick={booking}>
                   {canBook ? "管理预约（详情）" : "进入详情处理购票"}
                 </button>
@@ -291,6 +373,11 @@ export function SecondaryPanels({
             )}
             {tab === "details" && (
               <>
+                <p>
+                  {model.summary.issues} 项结构 / 地点待办 ·{" "}
+                  {model.summary.unknownLegs}段交通待估 ·{" "}
+                  {model.summary.switches}次城市衔接
+                </p>
                 <p>① 预约前预留 15 分缓冲</p>
                 <p>② 换酒店日检查行李衔接</p>
                 <p>③ 长途移动日减少户外强度</p>

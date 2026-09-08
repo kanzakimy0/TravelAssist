@@ -1,5 +1,6 @@
 import { useRef, useState, type Dispatch } from "react";
 import { pendingSettingsCount } from "../model/secondary-panels";
+import { recommendationModified } from "../model/recommendation-actions";
 import { Button } from "@/components/ui/button";
 import type { MockPlan } from "../model/planner-types";
 import type { TripState, TripAction } from "../model/trip-model";
@@ -24,6 +25,8 @@ export function PlannerRightPanel({
   onBooking,
   onOpenDetail,
   detailReady = true,
+  onSavePlan,
+  onRestorePlan,
 }: {
   plans: MockPlan[];
   plan: MockPlan;
@@ -39,6 +42,8 @@ export function PlannerRightPanel({
   onBooking: () => void;
   onOpenDetail: () => void;
   detailReady?: boolean;
+  onSavePlan: (id: string) => void;
+  onRestorePlan: (id: string) => void;
 }) {
   const moreTrigger = useRef<HTMLButtonElement>(null);
   const [preview, setPreview] = useState(false);
@@ -116,6 +121,12 @@ export function PlannerRightPanel({
         )}
       </section>
       <PlanRecommendationList
+        workingPlanId={state.workingPlanId}
+        modifiedIds={state.plans
+          .filter((p) => recommendationModified(state, p.id))
+          .map((p) => p.id)}
+        onSavePlan={onSavePlan}
+        onRestorePlan={onRestorePlan}
         plans={plans}
         selectedId={plan.id}
         onSelect={onPlan}

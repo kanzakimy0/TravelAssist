@@ -80,6 +80,7 @@ export function PlannerMapShell({
       () => hints.current,
       () => dismiss(),
       setAnchor,
+      () => !cancelled,
     )
       .then((mounted) => {
         if (cancelled) mounted?.destroy();

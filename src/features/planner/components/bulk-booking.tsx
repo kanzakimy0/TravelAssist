@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import type { TripState } from "../model/trip-model";
-import { buildBookingReview, type BookingReview } from "../model/bulk-booking";
+import {
+  buildBookingReview,
+  selectedBookingOffer,
+  selectBookingProviders,
+  type BookingReview,
+} from "../model/bulk-booking";
 import { PlannerPopover } from "./planner-popover";
 import css from "../bulk-booking.module.css";
 
@@ -25,6 +30,7 @@ export function BulkBookingButton({
   const trigger = useRef<HTMLButtonElement>(null);
   const [review, setReview] = useState<BookingReview | null>(null);
   const [remaining, setRemaining] = useState(3);
+  const [choices, setChoices] = useState<Record<string, string>>({});
   const deadline = useRef(Infinity);
   const submitted = useRef(false);
   const signature = JSON.stringify(buildBookingReview(state, day));
@@ -52,6 +58,7 @@ export function BulkBookingButton({
     deadline.current = Infinity;
     submitted.current = false;
     setRemaining(3);
+    setChoices({});
     setReview(buildBookingReview(state, day));
   };
   return (
@@ -79,7 +86,7 @@ export function BulkBookingButton({
           )
             return;
           submitted.current = true;
-          onStart(review);
+          onStart(selectBookingProviders(review, choices));
           setReview(null);
         }}
       >
@@ -122,41 +129,68 @@ export function BulkBookingButton({
               </p>
             )}
             <div className={css.reviewRows}>
-              {review.rows.map((row) => (
-                <article key={row.id}>
-                  <header>
-                    <strong>{row.title}</strong>
-                    <span>
-                      {row.date} · {row.time}
-                      {row.nights ? ` · ${row.nights} 晚` : ""}
-                    </span>
-                  </header>
-                  {row.offers.length ? (
-                    <>
-                      <p>
-                        示例最低单价 <b>{money(row.offers[0].price)}</b> ·{" "}
-                        {row.offers[0].name}
-                      </p>
-                      <div className={css.offers}>
-                        {row.offers.map((offer) => (
-                          <div key={offer.providerId}>
-                            <span>{offer.name}</span>
-                            <strong>{money(offer.price)}</strong>
-                            <small>{offer.terms}</small>
-                          </div>
-                        ))}
-                      </div>
-                    </>
-                  ) : (
-                    <p>价格待查询 · 目前没有可比较的渠道报价</p>
-                  )}
-                </article>
-              ))}
+              {review.rows.map((row) => {
+                const chosen = selectedBookingOffer({
+                  ...row,
+                  selectedProviderId: choices[row.id],
+                });
+                return (
+                  <article key={row.id}>
+                    <header>
+                      <strong>{row.title}</strong>
+                      <span>
+                        {row.date} · {row.time}
+                        {row.nights ? ` · ${row.nights} 晚` : ""}
+                      </span>
+                    </header>
+                    {row.offers.length ? (
+                      <>
+                        <p>
+                          {choices[row.id] ? "已选渠道" : "自动最低示例价"}{" "}
+                          <b>{chosen ? money(chosen.price) : "待查询"}</b> ·{" "}
+                          {chosen?.name}
+                        </p>
+                        <div className={css.offers}>
+                          {row.offers.map((offer) => (
+                            <button
+                              type="button"
+                              key={offer.providerId}
+                              aria-pressed={
+                                chosen?.providerId === offer.providerId
+                              }
+                              disabled={stale}
+                              onClick={() => {
+                                setChoices((current) => ({
+                                  ...current,
+                                  [row.id]:
+                                    current[row.id] === offer.providerId
+                                      ? ""
+                                      : offer.providerId,
+                                }));
+                                deadline.current = Date.now() + 3000;
+                                setRemaining(3);
+                              }}
+                            >
+                              <span>{offer.name}</span>
+                              <strong>{money(offer.price)}</strong>
+                              <small>{offer.terms}</small>
+                            </button>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <p>价格待查询 · 目前没有可比较的渠道报价</p>
+                    )}
+                  </article>
+                );
+              })}
               {!review.rows.length && (
                 <p>没有待预约项目。请先从餐饮、住宿或门票加入预约。</p>
               )}
             </div>
             <p className={css.footnote}>
+              点击渠道选择，再次点击取消手选并恢复自动最低价；更换渠道后重新核对
+              3 秒。{" "}
               人数、房型、餐型、税费、库存及取消条件尚未核实，不计算真实订单总价。
             </p>
             <p role="status">
@@ -229,29 +263,32 @@ export function BulkBookingProgress({
         </span>
       </div>
       <div className={css.progressRows}>
-        {review.rows.map((row, index) => (
-          <article key={row.id} data-prepared={index < processed}>
-            <span className={css.step}>{index < processed ? "!" : "○"}</span>
-            <div>
-              <h3>{row.title}</h3>
-              <p>
-                {row.date} · {row.time}
-              </p>
-              <small>
-                {row.offers.length
-                  ? `示例参考 ${money(row.offers[0].price)} · ${row.offers[0].name}`
-                  : "价格待查询"}
-              </small>
-            </div>
-            <strong>
-              {index < processed
-                ? row.offers.length
-                  ? "资料就绪 · 未提交"
-                  : "缺少报价 · 待处理"
-                : "等待整理"}
-            </strong>
-          </article>
-        ))}
+        {review.rows.map((row, index) => {
+          const offer = selectedBookingOffer(row);
+          return (
+            <article key={row.id} data-prepared={index < processed}>
+              <span className={css.step}>{index < processed ? "!" : "○"}</span>
+              <div>
+                <h3>{row.title}</h3>
+                <p>
+                  {row.date} · {row.time}
+                </p>
+                <small>
+                  {row.offers.length
+                    ? `已选渠道：${offer?.name} · 示例参考 ${money(offer!.price)}`
+                    : "价格待查询"}
+                </small>
+              </div>
+              <strong>
+                {index < processed
+                  ? row.offers.length
+                    ? "资料就绪 · 未提交"
+                    : "缺少报价 · 待处理"
+                  : "等待整理"}
+              </strong>
+            </article>
+          );
+        })}
       </div>
       <footer>
         订单确认 0 笔 · 支付 0 笔 · 请在获得真实报价与条款后，再决定是否下单。

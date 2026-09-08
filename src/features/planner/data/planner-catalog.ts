@@ -169,6 +169,26 @@ export function makePlannerCatalog(plans: MockPlan[]) {
     },
   ];
   fixtures.forEach((fixture, index) => {
+    for (const kind of ["hotel", "food"] as const) {
+      places.push({
+        ...place(
+          `routine-${kind}-${fixture.city}`,
+          `${fixture.city} · ${kind === "hotel" ? "酒店" : "餐厅"}待选择`,
+          kind === "hotel" ? "hotel" : "restaurant",
+          fixture.city,
+          fixture.center,
+        ),
+        planningPlaceholder: true,
+        price: 0,
+        bookingRequired: false,
+        bookingOptions: [],
+        providerIds: {},
+        hours: "待确认",
+        tags: ["规划占位 · 地点未确定"],
+        why: "仅安排时间，尚未选择具体地点。地图位置只代表城市区域中心，不是已确认的酒店或餐厅。",
+        advice: "请在行程详情选择具体地点后再核对移动、营业时间和预约。",
+      });
+    }
     for (const [type, names] of [
       ["hotelArea", fixture.hotels],
       ["foodArea", fixture.foods],
@@ -233,7 +253,10 @@ export function makePlannerCatalog(plans: MockPlan[]) {
             fixture.center[0] - 0.018 + i * 0.021,
             fixture.center[1] + 0.019 + (i % 2) * 0.007,
           ],
-          [i === 1 ? "雨天室内" : "附近备选", "未加入行程"],
+          [
+            /室内|展馆|艺廊|博物馆/.test(name) ? "雨天室内" : "附近备选",
+            "未加入行程",
+          ],
         ),
       ),
     );
