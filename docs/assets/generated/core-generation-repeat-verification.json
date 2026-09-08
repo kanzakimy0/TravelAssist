@@ -10,23 +10,63 @@
   "validation": {
     "validation": "PASS",
     "files": 55,
-    "status": "Partial",
-    "japan_seed_destinations": 300,
-    "non_JP_rows": 0,
-    "verified_prefecture_assignments": 124,
-    "missing_prefectures": 0,
-    "unresolved_destination_entities": 300,
-    "unresolved_attraction_slots": 9000,
-    "sources": 9300,
-    "variants": 9600,
-    "batches": 40,
-    "physical_image_files": 0,
-    "execution_allowed": false
+    "planning_baseline": {
+      "status": "Partial",
+      "japan_seed_destinations": 300,
+      "non_JP_rows": 0,
+      "verified_prefecture_assignments": 124,
+      "missing_prefectures": 0,
+      "unresolved_destination_entities": 300,
+      "unresolved_attraction_slots": 9000,
+      "sources": 9300,
+      "variants": 9600,
+      "batches": 40,
+      "physical_image_files": 0,
+      "execution_allowed": false
+    },
+    "current_destination_resolution": {
+      "status": "Partial",
+      "destination_rows": 300,
+      "verified_entity_identity": 285,
+      "verified_destinations": 254,
+      "unresolved_destinations": 46,
+      "verified_prefecture": 284,
+      "unresolved_prefecture": 16,
+      "prefectures_covered": 47,
+      "three_language_names": 281,
+      "valid_source_coordinates": 258,
+      "coverage_scope": 293,
+      "verified_coverage_scope": 254,
+      "source_evidence_records": 300,
+      "pinned_entity_evidence": 297,
+      "unresolved_duplicate_or_overlap_pairs": 0,
+      "duplicate_audit_complete": false,
+      "entity_types": {
+        "city": 185,
+        "destination_cluster": 1,
+        "historic_district": 6,
+        "hot_spring_area": 22,
+        "island": 10,
+        "other_review_required": 7,
+        "region": 23,
+        "resort_area": 3,
+        "town": 36,
+        "village": 7
+      },
+      "evidence_distribution": {
+        "JNTO_directory_then_pinned_Wikidata_fields": 122,
+        "pinned_Wikidata_open_knowledge": 175,
+        "search_only_unresolved": 3
+      },
+      "poi_slots_unchanged": 9000,
+      "images_generated": 0,
+      "images_downloaded": 0
+    }
   },
   "outputs": [
     {
       "path": "docs/assets/catalog/core-destination-generation-manifest.v1.csv",
-      "sha256": "c73bec34b862a7d185075f61ce9ca34a13b3825ab493fb1be07d2143448d43c5"
+      "sha256": "e94c41ce8c21c4b72f62479fa53feec1f1538627f77f669bae158a5a8ca49ab2"
     },
     {
       "path": "docs/assets/catalog/core-attraction-generation-manifest.v1.csv",

@@ -1,5 +1,9 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-013.2-A 最新 develop 复验（2026-09-08）
+
+2.15：已合并生产清单；复验待审查（Partial）。基线 `81d4f6d0e0603b39ecaa434d332c5b4c5033a69d`；原 PR #187 已合并。本次保持 Japan-only，300/9000/9300/9600/40 数量不变，保留 TASK-013.3-A 的254 verified /46 unresolved目的地。55产物重复生成 SHA/mtime 无变化；23+44+51测试、lint/typecheck/build通过；format:check 有29项与基线一致的格式债，新增0。Issue #152 / feature/a-core-destination-generation-manifest；补充复验 Draft PR 待创建后回填。无新图片、无UI或依赖修改，不自动合并、不启动后续批次。以下交付与阻塞段落保留为历史，以本节和对应任务最新 Result 为准。
+
 ## TASK-013.3-A Partial 交付 / 待审查（2026-09-08）
 
 PR #187 实际已合并，develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 包含 Japan-only 生产清单。2.15 继续为 Partial / planning manifest，不代表图片已完成。TASK-013.3-A / Issue #189 / `feature/a-japan-destination-entity-resolution`：300 行已审查，285 身份核验、284 县归属、47 县覆盖、281 三语名称、258 可信中心坐标；254 行通过全部门槛，46 unresolved。300 条证据/候选审计、别名、边界契约及五项报告已生成。2.16 待审查（Partial；未达到300/300最终验收），Draft PR #192，实现 Commit `f3b4313`。9000 POI、9300 source jobs、9600 variants 不变；不修改 UI，不生成/下载图片，不启动后续批次。专项26测试、父清单23测试、lint/typecheck/build通过；全仓28项既有格式债另列基线审计。
