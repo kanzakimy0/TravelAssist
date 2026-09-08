@@ -41,7 +41,9 @@
 
 ## Files / Tracking
 
-文档分支：`codex/wbs-engine-b-handoff`。此分支仅5份文档：Master WBS、013.3.1 Task/Result、新Engine Task、本Result。提交及PR的最终SHA以GitHub审查记录为准。
+文档分支：`codex/wbs-engine-b-handoff`。相对develop仅5份文档：Master WBS、013.3.1 Task/Result、新Engine Task、本Result。实现提交 `11f500e7be8a723edae8bed418ceed18110a69a5`；追踪PR [#202](https://github.com/kanzakimy0/TravelAssist/pull/202)。最终SHA/合并状态以GitHub审查记录为准。
+
+发布前安全合入最新develop `b77e745342a91724c869887c1355a105c2b6397d`，保留另一工作站新增的DB验收指南，无冲突；本轮没有执行该指南或修改其内容。
 
 ## Preserved / Non-goals
 
