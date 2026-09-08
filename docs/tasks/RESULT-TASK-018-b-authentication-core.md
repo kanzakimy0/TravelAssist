@@ -64,7 +64,7 @@ References checked: [Supabase Next SSR](https://supabase.com/docs/guides/auth/se
 - POST `/auth/[operation]`: signup, signin, phone-otp, verify-phone-otp, email-otp, verify-email-otp, signout, recovery, password, oauth.
 - GET `/auth/callback`: PKCE code exchange and safe return navigation.
 - GET `/auth/session`: verified authenticated/unauthenticated public view.
-- JSON POSTs require exact canonical Origin, JSON content type and an 8 KiB body bound. No credential-bearing GET mutation.
+- JSON POSTs require exact canonical Origin, JSON content type and an 8 KiB body bound. Password/OTP/signout operations are POST-only; the GET callback accepts the one-time PKCE authorization code, not passwords or access/refresh tokens.
 - New empty `AUTH_SITE_URL` placeholder specifies the canonical app origin; callback origins never come from Host/Forwarded headers. Local runner supplies loopback values in memory.
 - Success responses contain state/userId/validated returnTo (and the public authorize URL for OAuth). Failures distinguish invalid credentials, unauthenticated, configuration failure, service failure, throttling and required signup.
 
