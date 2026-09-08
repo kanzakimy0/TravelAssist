@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import type { OAuthProvider } from "../../../lib/auth/contracts";
 import { validEmail, validOtp, validPhone } from "../../../lib/auth/policy";
-import { authRequest, type AuthOperation } from "../auth-client";
+import {
+  authRequest,
+  authSessionStatus,
+  type AuthOperation,
+} from "../auth-client";
 import {
   authDestination,
   authErrorText,
@@ -98,12 +102,14 @@ export function AuthForm({
   returnTo,
   prefilledEmail,
   confirmationPending,
+  initialChannel = "phone",
   providers,
 }: {
   kind: AuthPageKind;
   returnTo: string;
   prefilledEmail: string;
   confirmationPending: boolean;
+  initialChannel?: "phone" | "email";
   providers: Record<OAuthProvider, boolean>;
 }) {
   const prefix = useId();
@@ -112,7 +118,7 @@ export function AuthForm({
   const formRef = useRef<HTMLFormElement>(null);
   const feedbackRef = useRef<HTMLParagraphElement>(null);
   const lock = useRef(false);
-  const [channel, setChannel] = useState<"phone" | "email">("phone");
+  const [channel, setChannel] = useState<"phone" | "email">(initialChannel);
   const [emailMode, setEmailMode] = useState<"password" | "otp">("password");
   const [email, setEmail] = useState(prefilledEmail);
   const [country, setCountry] = useState("+81");
@@ -316,6 +322,26 @@ export function AuthForm({
       // URL comes only from TASK-018's origin-validated SDK initiation response.
       window.location.assign(data.url);
     });
+  }
+
+  async function checkConfirmation() {
+    if (lock.current) return;
+    lock.current = true;
+    setPending(true);
+    setError("");
+    setNotice("");
+    try {
+      const result = await authSessionStatus();
+      if (!result.ok) return fail(authErrorText[result.code]);
+      if (result.data.status !== "authenticated")
+        return fail(
+          "尚未建立登录会话。已确认邮箱？请使用邮箱密码登录；否则请打开最新确认邮件。",
+        );
+      window.location.replace(confirmationDestination(returnTo));
+    } finally {
+      lock.current = false;
+      setPending(false);
+    }
   }
 
   return (
@@ -576,7 +602,9 @@ export function AuthForm({
               )}
             </fieldset>
           )}
-          <div className={styles.feedback}>
+          <div
+            className={`${styles.feedback} ${stage === "confirmation" ? styles.confirmationFeedback : ""}`}
+          >
             <p
               id={errorId}
               ref={feedbackRef}
@@ -633,12 +661,20 @@ export function AuthForm({
               <p className={styles.notice}>
                 注册尚待邮箱确认，请在发起注册的浏览器中完成。没有收到时请检查垃圾邮件，或重新进入注册页面。
               </p>
-              <Link
+              <button
                 className={styles.primary}
-                href={confirmationDestination(returnTo)}
+                type="button"
+                onClick={checkConfirmation}
+                disabled={pending}
               >
-                我已确认邮箱，继续
-              </Link>
+                {pending ? "正在确认…" : "我已确认邮箱，继续"}
+              </button>
+              <AuthNavigationLink
+                className={styles.textLink}
+                href={`${authHref("/login", returnTo)}&channel=email`}
+              >
+                已确认邮箱？使用邮箱密码登录
+              </AuthNavigationLink>
             </>
           )}
           {stage === "sent" && (

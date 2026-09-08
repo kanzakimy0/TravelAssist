@@ -27,6 +27,29 @@ const states: AuthSuccess["state"][] = [
   "oauth_redirect",
 ];
 
+/** Navigation hint only; the destination still verifies the user server-side. */
+export async function authSessionStatus(): Promise<
+  AuthResult<{ status: "authenticated" | "unauthenticated" }>
+> {
+  try {
+    const response = await fetch("/auth/session", {
+      credentials: "same-origin",
+      cache: "no-store",
+      signal: AbortSignal.timeout(20000),
+    });
+    const value = await response.json();
+    if (
+      response.ok &&
+      value?.ok === true &&
+      ["authenticated", "unauthenticated"].includes(value.data?.status)
+    )
+      return { ok: true, data: { status: value.data.status } };
+  } catch {
+    // Do not expose network/SDK details or infer confirmation from a failure.
+  }
+  return { ok: false, code: "auth_unavailable" };
+}
+
 /** Only the existing bounded HTTP contract; no SDK/session/token state in UI. */
 export async function authRequest(
   operation: AuthOperation,

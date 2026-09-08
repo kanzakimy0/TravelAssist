@@ -12,7 +12,7 @@ export function authDestination(value: unknown, fallback = "/") {
   for (let i = 0; i < 8 && path.includes("%"); i++)
     path = decodeURIComponent(path);
   // Additional navigation-loop prevention AFTER the canonical security validator.
-  return /^\/(?:login|register|forgot-password|reset-password|auth)(?:\/|$)/.test(
+  return /^\/(?:login|register|forgot-password|reset-password|auth-link-error|auth)(?:\/|$)/.test(
     path,
   )
     ? "/"

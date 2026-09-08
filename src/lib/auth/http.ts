@@ -7,6 +7,10 @@ import { safeReturnTo } from "./policy";
 import { authSiteOrigin } from "./site";
 import { getCurrentAuthUser } from "./server-user";
 import {
+  callbackFailureLocation,
+  wantsCallbackPage,
+} from "./callback-navigation";
+import {
   createRequestSupabase,
   PRIVATE_AUTH_HEADERS,
 } from "../supabase/request";
@@ -126,6 +130,20 @@ export async function handleAuthPost(request: NextRequest, operation: string) {
 
 export async function handleAuthCallback(request: NextRequest) {
   let finish: ((response: NextResponse) => NextResponse) | undefined;
+  const failureResponse = (result: AuthFailure) =>
+    wantsCallbackPage(request.headers.get("accept"))
+      ? new NextResponse(null, {
+          status: 303,
+          headers: {
+            ...PRIVATE_AUTH_HEADERS,
+            Vary: "Accept",
+            Location: callbackFailureLocation(
+              request.cookies.get(INTENT_COOKIE)?.value,
+              request.nextUrl.searchParams.get("error_code"),
+            ),
+          },
+        })
+      : resultResponse(result);
   try {
     const origin = authSiteOrigin();
     const context = createRequestSupabase(request, origin.startsWith("https:"));
@@ -145,11 +163,12 @@ export async function handleAuthCallback(request: NextRequest) {
           status: 303,
           headers: { Location: safeReturnTo(result.data.returnTo) },
         })
-      : resultResponse(result);
+      : failureResponse(result);
     response.cookies.set(INTENT_COOKIE, "", { path: "/auth", maxAge: 0 });
     return finish(response);
   } catch (error) {
-    const response = resultResponse(authFailure(error));
+    const response = failureResponse(authFailure(error));
+    response.cookies.set(INTENT_COOKIE, "", { path: "/auth", maxAge: 0 });
     return finish ? finish(response) : response;
   }
 }

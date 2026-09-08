@@ -25,15 +25,17 @@ function NavigationHint() {
 export function AuthNavigationLink({
   href,
   children,
+  className = "",
 }: {
   href: string;
   children: string;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
       prefetch={false}
-      className={styles.navigationLink}
+      className={`${styles.navigationLink} ${className}`}
       aria-label={children}
     >
       {children}

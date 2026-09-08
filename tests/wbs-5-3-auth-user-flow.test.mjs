@@ -137,7 +137,8 @@ test("WBS-5.3 logout has hover, pressed, keyboard and disabled feedback", () => 
 test("WBS-5.3 Auth routes share a stable canvas and reserve feedback without clipping", () => {
   const css = read("src/features/auth/auth.module.css");
   assert.match(form, /kind === "login" \? styles.loginForm/);
-  assert.match(form, /className=\{styles.feedback\}/);
+  assert.match(form, /styles.feedback/);
+  assert.match(form, /styles.confirmationFeedback/);
   assert.match(css, /\.feedback\s*\{[^}]*display: grid;/s);
   assert.match(css, /\.loginForm \.fields\s*\{[^}]*grid-template-rows:/s);
   assert.match(css, /@media \(min-width: 768px\) and \(min-height: 660px\)/);

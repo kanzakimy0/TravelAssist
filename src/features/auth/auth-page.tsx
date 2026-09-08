@@ -67,6 +67,9 @@ export async function AuthPage({
         typeof query.email === "string" ? query.email.slice(0, 254) : ""
       }
       confirmationPending={kind === "register" && query.confirmed === "1"}
+      initialChannel={
+        kind === "login" && query.channel === "email" ? "email" : "phone"
+      }
       providers={
         kind === "login" || kind === "register"
           ? await providerAvailability()
