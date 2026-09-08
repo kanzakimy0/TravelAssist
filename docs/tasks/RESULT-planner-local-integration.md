@@ -2,15 +2,15 @@
 
 ## Status
 
-待验收 / Draft PR pending publication. Implemented in an isolated integration worktree; not yet merged into develop.
+待验收 / [Draft PR #204](https://github.com/kanzakimy0/TravelAssist/pull/204) published. Implemented in an isolated integration worktree; not yet merged into develop.
 
 ## Tracking
 
 - Issue: #203
 - Branch: `codex/planner-local-integration-20260908`
 - Base: `6386c83c21ecd4b8172d9faa39aef2b01fdf315c`
-- Commit: PENDING
-- Draft PR: PENDING
+- Commit: `0006814de1492128deb6a41a7cd95cb4bc330095` (implementation; subsequent tracking-only commit on the same branch)
+- Draft PR: [#204](https://github.com/kanzakimy0/TravelAssist/pull/204), open and unmerged
 - Task: `docs/tasks/TASK-planner-local-integration.md`
 
 ## Recovery / Conflict Audit

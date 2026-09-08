@@ -10,8 +10,8 @@
 - Branch: `codex/planner-local-integration-20260908`
 - Depends On: merged Planner / Detail workspace in develop
 - Base: `6386c83c21ecd4b8172d9faa39aef2b01fdf315c`
-- Commit: PENDING
-- Pull Request: PENDING
+- Commit: `0006814de1492128deb6a41a7cd95cb4bc330095` (implementation; subsequent tracking-only commit on the same branch)
+- Pull Request: [#204](https://github.com/kanzakimy0/TravelAssist/pull/204) — Draft, not merged
 
 ## User request
 
