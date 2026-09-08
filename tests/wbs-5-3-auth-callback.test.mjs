@@ -153,3 +153,89 @@ test("WBS-5.3 confirmation no-op is replaced by pending/error feedback without a
     /query\.code|error_description|dangerouslySetInnerHTML|账户创建成功/,
   );
 });
+
+test("WBS-5.3 registration callback selects its own SDK PKCE slot and rejects malformed flow IDs", async () => {
+  const { createAuthCore } = await import("../src/lib/auth/core.ts");
+  const calls = [];
+  const core = createAuthCore(
+    {
+      auth: {
+        exchangeCodeForSession: async (...args) => {
+          calls.push(args);
+          return {
+            data: { user: { id: "test-only" }, session: {} },
+            error: null,
+          };
+        },
+      },
+    },
+    "https://app.test/auth/callback",
+  );
+  const flow = "0123456789abcdef0123456789abcdef";
+  assert.equal(
+    (await core.completeCallback("test-code", "/register?confirmed=1", flow))
+      .ok,
+    true,
+  );
+  assert.deepEqual(calls[0], ["test-code", { flowId: flow }]);
+  await core.completeCallback("legacy-code", "/reset-password");
+  assert.deepEqual(calls[1], ["legacy-code"]);
+  for (const invalid of [
+    null,
+    "",
+    "short",
+    "../wrong-slot",
+    "x".repeat(65),
+    {},
+  ])
+    assert.equal(
+      (await core.completeCallback("test-code", "/", invalid)).code,
+      "callback_failed",
+    );
+  assert.equal(
+    calls.length,
+    2,
+    "malformed ID never falls back to another verifier",
+  );
+  const denied = createAuthCore(
+    {
+      auth: {
+        exchangeCodeForSession: async () => ({
+          data: {},
+          error: { code: "pkce_code_verifier_not_found" },
+        }),
+      },
+    },
+    "https://app.test/auth/callback",
+  );
+  assert.equal(
+    (await denied.completeCallback("test-code", "/", flow)).code,
+    "callback_failed",
+  );
+});
+
+test("WBS-5.3 only registration opts into SDK flow binding and retains its own navigation hint", () => {
+  const http = read("src/lib/auth/http.ts");
+  assert.match(http, /operation === "signup"/);
+  assert.match(
+    http,
+    /callback.searchParams.set\("returnTo", safeReturnTo\(input.returnTo\)\)/,
+  );
+  assert.match(http, /\["oauth", "recovery"\].includes\(operation\)/);
+  assert.match(http, /if \(!signupFlow\)/);
+  assert.match(read("src/lib/supabase/server.ts"), /bindSignupFlow = false/);
+  assert.match(
+    read("src/lib/supabase/server.ts"),
+    /experimental: \{ appendPkceFlowIdToRedirects: true \}/,
+  );
+  const result = new URL(
+    callbackFailureLocation("/reset-password", "failed", "signup"),
+    "https://app.test",
+  );
+  assert.equal(result.searchParams.get("flow"), "signup");
+  assert.match(read("src/features/auth/auth-link-error.tsx"), /自动登录未完成/);
+  assert.match(
+    read("src/features/auth/auth-link-error.tsx"),
+    /并不代表账户注册失败/,
+  );
+});

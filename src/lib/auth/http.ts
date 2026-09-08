@@ -96,9 +96,20 @@ export async function handleAuthPost(request: NextRequest, operation: string) {
       );
     const input = await readInput(request);
     if (!input) return resultResponse({ ok: false, code: "invalid_input" });
-    const context = createRequestSupabase(request, origin.startsWith("https:"));
+    const context = createRequestSupabase(
+      request,
+      origin.startsWith("https:"),
+      operation === "signup",
+    );
     finish = context.finish;
-    const core = createAuthCore(context.client, origin + "/auth/callback");
+    const callback = new URL("/auth/callback", origin);
+    if (operation === "signup") {
+      // Routing hints, not authentication proof. Each email retains its intent
+      // instead of sharing the mutable recovery/OAuth return-to cookie.
+      callback.searchParams.set("flow", "signup");
+      callback.searchParams.set("returnTo", safeReturnTo(input.returnTo));
+    }
+    const core = createAuthCore(context.client, callback.href);
     const method = operations[operation as keyof typeof operations];
     const result: AuthResult<AuthSuccess> = await core[method](input);
     if (result.ok && result.data.url) {
@@ -110,7 +121,7 @@ export async function handleAuthPost(request: NextRequest, operation: string) {
         );
     }
     const response = resultResponse(result);
-    if (result.ok && ["signup", "oauth", "recovery"].includes(operation)) {
+    if (result.ok && ["oauth", "recovery"].includes(operation)) {
       response.cookies.set(INTENT_COOKIE, safeReturnTo(input.returnTo), {
         path: "/auth",
         httpOnly: true,
@@ -130,6 +141,13 @@ export async function handleAuthPost(request: NextRequest, operation: string) {
 
 export async function handleAuthCallback(request: NextRequest) {
   let finish: ((response: NextResponse) => NextResponse) | undefined;
+  const flowId = request.nextUrl.searchParams.get("sb_flow_id") ?? undefined;
+  const signupFlow =
+    request.nextUrl.searchParams.get("flow") === "signup" &&
+    flowId !== undefined;
+  const intent = signupFlow
+    ? safeReturnTo(request.nextUrl.searchParams.get("returnTo"))
+    : request.cookies.get(INTENT_COOKIE)?.value;
   const failureResponse = (result: AuthFailure) =>
     wantsCallbackPage(request.headers.get("accept"))
       ? new NextResponse(null, {
@@ -138,8 +156,9 @@ export async function handleAuthCallback(request: NextRequest) {
             ...PRIVATE_AUTH_HEADERS,
             Vary: "Accept",
             Location: callbackFailureLocation(
-              request.cookies.get(INTENT_COOKIE)?.value,
+              intent,
               request.nextUrl.searchParams.get("error_code"),
+              signupFlow ? "signup" : undefined,
             ),
           },
         })
@@ -155,7 +174,8 @@ export async function handleAuthCallback(request: NextRequest) {
       ? { ok: false, code: "callback_failed" }
       : await core.completeCallback(
           request.nextUrl.searchParams.get("code"),
-          request.cookies.get(INTENT_COOKIE)?.value,
+          intent,
+          flowId,
         );
     // Relative Location avoids trusting a Host header for post-login navigation.
     const response = result.ok
@@ -164,11 +184,13 @@ export async function handleAuthCallback(request: NextRequest) {
           headers: { Location: safeReturnTo(result.data.returnTo) },
         })
       : failureResponse(result);
-    response.cookies.set(INTENT_COOKIE, "", { path: "/auth", maxAge: 0 });
+    if (!signupFlow)
+      response.cookies.set(INTENT_COOKIE, "", { path: "/auth", maxAge: 0 });
     return finish(response);
   } catch (error) {
     const response = failureResponse(authFailure(error));
-    response.cookies.set(INTENT_COOKIE, "", { path: "/auth", maxAge: 0 });
+    if (!signupFlow)
+      response.cookies.set(INTENT_COOKIE, "", { path: "/auth", maxAge: 0 });
     return finish ? finish(response) : response;
   }
 }

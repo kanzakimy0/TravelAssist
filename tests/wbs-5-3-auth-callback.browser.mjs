@@ -115,8 +115,22 @@ try {
     "signup stores PKCE verifier (value not recorded)",
   );
   const link = await mailLink(goodEmail, /Confirm/i);
+  check(
+    (
+      await post(page, "recovery", {
+        email: goodEmail,
+        returnTo: "/reset-password",
+      })
+    ).ok,
+    "later recovery initialization succeeds",
+  );
   const tab = await context.newPage();
+  const recoveryCookies = await context.cookies(base + "/auth/callback");
   await tab.goto(link);
+  check(
+    new URL(tab.url()).pathname !== "/auth-link-error",
+    "registration callback survives a later recovery flow",
+  );
   await tab
     .getByRole("heading", { name: "账户创建成功 ✓", exact: true })
     .waitFor();
@@ -134,6 +148,38 @@ try {
     true,
     "original registration tab rechecks shared session and shows verified success",
   );
+  const pendingRecovery = await context.newPage();
+  phase = "already-pending recovery after signup";
+  const remainingCookies = await context.cookies(base + "/auth/callback");
+  for (const label of ["legacy-verifier", "recovery-intent"]) {
+    const matches = (c) =>
+      label === "legacy-verifier"
+        ? c.name.endsWith("-code-verifier") &&
+          !c.name.includes("-flow-") &&
+          !c.name.includes("-flows-")
+        : c.name === "ta-auth-return-to";
+    const prior = recoveryCookies.find(matches);
+    check(
+      !!prior &&
+        remainingCookies.some(
+          (c) => c.name === prior.name && c.value === prior.value,
+        ),
+      "registration callback retains pending " + label,
+    );
+  }
+  const previousRecovery = await mailLink(goodEmail, /Reset/i);
+  await pendingRecovery.goto(previousRecovery);
+  const pendingLocation = new URL(pendingRecovery.url());
+  // Local Auth revokes pending one-time links on confirmation. This is not a
+  // verifier regression: assert the exact expired outcome, then use fresh mail.
+  await pendingRecovery
+    .getByRole("heading", { name: "重设链接未完成", exact: true })
+    .waitFor();
+  check(
+    pendingLocation.pathname === "/auth-link-error" &&
+      pendingLocation.searchParams.get("reason") === "expired",
+    "pre-confirmation recovery mail revoked by Local Auth shows expired guidance",
+  );
   check((await post(tab, "signout", {})).ok, "signout only diagnostic session");
   phase = "same-context recovery new tab";
   await page.goto(base + "/forgot-password");
@@ -144,7 +190,7 @@ try {
   await page
     .getByRole("heading", { name: "邮件已发送 ✓", exact: true })
     .waitFor();
-  const recovery = await mailLink(goodEmail, /Reset/i);
+  const recovery = await mailLink(goodEmail, /Reset/i, previousRecovery);
   const reset = await context.newPage();
   await reset.goto(recovery);
   await reset
@@ -189,7 +235,7 @@ try {
   const detachedPage = await detached.newPage();
   await detachedPage.goto(missingLink);
   await detachedPage
-    .getByRole("heading", { name: "验证链接未完成", exact: true })
+    .getByRole("heading", { name: "自动登录未完成", exact: true })
     .waitFor();
   check(
     new URL(detachedPage.url()).pathname === "/auth-link-error",
@@ -203,6 +249,15 @@ try {
   check(
     (await session(detachedPage)) === "unauthenticated",
     "failed callback does not create session",
+  );
+  check(
+    await detachedPage
+      .getByText(
+        "邮箱确认与自动登录是两个步骤。当前未能自动登录，并不代表账户注册失败。",
+        { exact: true },
+      )
+      .isVisible(),
+    "confirmed email and automatic login are clearly distinguished without claiming success",
   );
   await detachedPage.goto(missingLink);
   await detachedPage
@@ -239,7 +294,7 @@ try {
   const missingRecovery = await mailLink(missingEmail, /Reset/i);
   await detachedPage.goto(missingRecovery);
   await detachedPage
-    .getByRole("heading", { name: "验证链接未完成", exact: true })
+    .getByRole("heading", { name: "自动登录未完成", exact: true })
     .waitFor();
   check(
     new URL(detachedPage.url()).pathname === "/auth-link-error",
@@ -344,49 +399,61 @@ try {
     [320, 740],
   ]) {
     await surface.setViewportSize({ width, height });
-    await surface.goto(
-      base +
-        "/auth-link-error?reason=failed&flow=recovery&returnTo=https://evil.test",
-    );
-    await surface
-      .getByRole("heading", { name: "重设链接未完成", exact: true })
-      .waitFor();
-    const geometry = await surface.evaluate(() => {
-      const card = document.querySelector(
-        'section[aria-labelledby="auth-link-heading"]',
-      )?.parentElement?.parentElement;
-      const rect = card?.getBoundingClientRect();
-      const links = [
-        ...document.querySelectorAll(
-          'section[aria-labelledby="auth-link-heading"] a',
-        ),
-      ];
-      return {
-        horizontal: document.documentElement.scrollWidth > innerWidth + 1,
-        vertical: document.documentElement.scrollHeight > innerHeight + 1,
-        targets: links.every((a) => a.getBoundingClientRect().height >= 44),
-        contained:
-          !!rect &&
-          links.every(
-            (a) => a.getBoundingClientRect().bottom <= rect.bottom + 1,
+    for (const [flow, heading] of [
+      ["recovery", "重设链接未完成"],
+      ["signup", "自动登录未完成"],
+    ]) {
+      await surface.goto(
+        base +
+          "/auth-link-error?reason=failed&flow=" +
+          flow +
+          "&returnTo=https://evil.test",
+      );
+      await surface
+        .getByRole("heading", { name: heading, exact: true })
+        .waitFor();
+      const geometry = await surface.evaluate(() => {
+        const card = document.querySelector(
+          'section[aria-labelledby="auth-link-heading"]',
+        )?.parentElement?.parentElement;
+        const rect = card?.getBoundingClientRect();
+        const links = [
+          ...document.querySelectorAll(
+            'section[aria-labelledby="auth-link-heading"] a',
           ),
-        safeLinks: links.every(
-          (a) => a.origin === location.origin && !a.href.includes("evil.test"),
-        ),
-      };
-    });
-    check(
-      !geometry.horizontal &&
-        (width < 768 || !geometry.vertical) &&
-        geometry.targets &&
-        geometry.contained &&
-        geometry.safeLinks,
-      "error page safe geometry and 44px actions " + width + "x" + height,
-    );
-    await surface.screenshot({
-      path: join(evidence, "error-" + width + "x" + height + ".png"),
-      fullPage: true,
-    });
+        ];
+        return {
+          horizontal: document.documentElement.scrollWidth > innerWidth + 1,
+          vertical: document.documentElement.scrollHeight > innerHeight + 1,
+          targets: links.every((a) => a.getBoundingClientRect().height >= 44),
+          contained:
+            !!rect &&
+            links.every(
+              (a) => a.getBoundingClientRect().bottom <= rect.bottom + 1,
+            ),
+          safeLinks: links.every(
+            (a) =>
+              a.origin === location.origin && !a.href.includes("evil.test"),
+          ),
+        };
+      });
+      check(
+        !geometry.horizontal &&
+          (width < 768 || !geometry.vertical) &&
+          geometry.targets &&
+          geometry.contained &&
+          geometry.safeLinks,
+        flow +
+          " error page safe geometry and 44px actions " +
+          width +
+          "x" +
+          height,
+      );
+      await surface.screenshot({
+        path: join(evidence, flow + "-error-" + width + "x" + height + ".png"),
+        fullPage: true,
+      });
+    }
   }
   await surface
     .getByRole("link", { name: "邮箱密码登录", exact: true })

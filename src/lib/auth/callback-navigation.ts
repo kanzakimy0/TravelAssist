@@ -4,14 +4,17 @@ import { safeReturnTo } from "./policy";
 export function callbackFailureLocation(
   intent: unknown,
   providerCode: unknown,
+  flowHint?: "signup",
 ) {
   const destination = new URL(safeReturnTo(intent), "https://return.invalid");
   const flow =
-    destination.pathname === "/reset-password"
-      ? "recovery"
-      : destination.pathname === "/register"
-        ? "signup"
-        : "unknown";
+    flowHint === "signup"
+      ? "signup"
+      : destination.pathname === "/reset-password"
+        ? "recovery"
+        : destination.pathname === "/register"
+          ? "signup"
+          : "unknown";
   const returnTo =
     flow === "signup"
       ? safeReturnTo(destination.searchParams.get("returnTo"))
