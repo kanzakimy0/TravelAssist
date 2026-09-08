@@ -577,7 +577,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
 | 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
 
-### 4B. TravelAssist Engine / Trip Engine（用户指定 B）
+### 4B. TravelAssist Engine / Trip Engine
 
 Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复用4.16/4.17/8.5，不建立第二套主模型；原工作项Owner不变。4.20先设计，发布前须A/B核对；后续依赖未满足不得执行。
 
