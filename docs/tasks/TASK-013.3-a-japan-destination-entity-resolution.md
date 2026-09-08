@@ -5,8 +5,12 @@
 - Task ID: `TASK-013.3-A`
 - Owner: `A`
 - Priority: `P1`
-- Status: `待开始（依赖 PR #187 合并）`
-- WBS: 预定 `2.16`
+- Status: `待验收`（Partial 交付；46 个目的地尚未通过全部证据门槛）
+- Prerequisite audit: PR #187 merged；develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 已含 300 destination / 9000 unresolved POI / 40 batch / Result；2.15 保持 Partial。
+- WBS: `2.16`
+- Depends On: `TASK-013.2-A / PR #187`（已合并）
+- Commit: `PENDING`（实现提交后同步）
+- Pull Request: `PENDING`（Draft → develop；不得合并）
 - Issue: `#189`
 - Branch: `feature/a-japan-destination-entity-resolution`
 - Stacked Base: `c28c14c619e2bc51daf78f3eede4e2a218ec482d`（PR #187 head）
@@ -250,6 +254,7 @@ unresolved duplicate conflict = 0
 # TASK-013.3-A Result
 
 ## Status
+
 Completed / Partial / Blocked
 
 ## Prerequisite
@@ -257,6 +262,7 @@ Completed / Partial / Blocked
 ## Tracking
 
 ## Destination Resolution
+
 - total
 - verified
 - unresolved
