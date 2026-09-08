@@ -2,7 +2,15 @@
 
 ## Status
 
-**PASS / 现场验收通过，已获用户条件式合并授权；尚未合并，WBS 8.3 暂保持待审查。**
+**PASS / 用户授权的现场验收通过且已合并。WBS 8.3 = 已完成；Issue #214 = Closed。**
+
+## Final merge / closeout
+
+- PR [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) merged into develop on 2026-09-08 at 11:46:27 UTC. Merge commit: `7f805e0a1b3b6bc650293a33363c6c22cde6a360`.
+- Exact approved head: `0e630a7f9637ef180d8a0e0bb0d79f7ecadcedc8`. Normal merge used exact-head matching without force/admin bypass. Fetched develop contains the approved head; full merge-tree comparison against that head returned no differences.
+- The approved head differs from live-tested integration `371191f998033be46c9e01bf5bfa7a1708f05501` only in this Result's acceptance record. No runtime implementation changed during acceptance or closeout.
+- Issue #214 closed as completed after successful merge. Master WBS 8.3 and TASK-018 tracking row updated to 已完成 only after the merge was verified. Other owners' records and completed parent states preserved.
+- WBS 5.3 / 5.15 / TASK-017-B and other subsequent tasks were not started. The original Draft/Open delivery statements below are retained as historical evidence and superseded by this final section.
 
 ## Final live acceptance (2026-09-08)
 
