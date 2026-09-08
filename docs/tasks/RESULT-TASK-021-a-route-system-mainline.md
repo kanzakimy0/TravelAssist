@@ -67,8 +67,8 @@
 
 - Issue: [#229](https://github.com/kanzakimy0/TravelAssist/issues/229)，保持 Open / Blocked。
 - Branch: `codex/a-route-system-mainline` → `develop`。
-- Commit: PENDING。
-- Draft PR: PENDING。
+- Commit: `034918bc0dd3808ee2045c5d53d13c413826b4fc`（研究交付）；后续提交仅同步本 Result / WBS / PR 追踪，最新 head 见 PR。
+- Draft PR: [#230](https://github.com/kanzakimy0/TravelAssist/pull/230)，Open / Draft，未合并。
 - WBS 7.3: **待确认 / 阻塞**。
 - WBS 7.5: **未开始**。
 - WBS 7.8: **未开始**。
