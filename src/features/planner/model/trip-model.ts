@@ -235,6 +235,7 @@ export type TripAction =
   | { type: "complete"; id: string; time: string }
   | { type: "queueReservation"; id: string }
   | { type: "recordCancellation"; id: string; externallyCancelled: boolean }
+  | { type: "releaseCancelledSchedule"; id: string; confirmed: boolean }
   | { type: "replaceRailHotel"; id: string; placeId: string }
   | {
       type: "detailEdit";
@@ -1287,6 +1288,17 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           : i,
       ),
       "已加入本地预约清单；尚未下单或确认库存。",
+    );
+  }
+  if (action.type === "releaseCancelledSchedule") {
+    if (!action.confirmed || item.reservationStatus !== "cancelled")
+      return state;
+    return updatePlan(
+      state,
+      plan.items.map((i) =>
+        i.id === item.id ? { ...i, fixedTime: false, locked: false } : i,
+      ),
+      "已确认解除已取消项目的本地固定时间与拖动限制；取消记录保留，未联系预约渠道。",
     );
   }
   if (action.type === "recordCancellation") {

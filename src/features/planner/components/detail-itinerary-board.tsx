@@ -5,12 +5,12 @@ import type {
 } from "../model/detail-workspace";
 import {
   currentPlan,
-  mealSlotFor,
   reservationLabel,
   type TripAction,
   type TripState,
 } from "../model/trip-model";
 import { timelineStatus } from "./trip-timeline-track";
+import { missingArrangements } from "../model/required-arrangements";
 import css from "../detail-itinerary-board.module.css";
 import {
   detailCardKey,
@@ -247,46 +247,8 @@ export function DetailItineraryBoard({
                 </article>
               );
             }),
-            ...(
-              [
-                {
-                  kind: "hotel",
-                  label: "当晚住宿",
-                  slot: undefined,
-                  time: "20:00",
-                },
-                {
-                  kind: "restaurant",
-                  label: "早餐",
-                  slot: "breakfast",
-                  time: "07:00",
-                },
-                {
-                  kind: "restaurant",
-                  label: "午餐",
-                  slot: "lunch",
-                  time: "12:00",
-                },
-                {
-                  kind: "restaurant",
-                  label: "晚餐",
-                  slot: "dinner",
-                  time: "18:00",
-                },
-              ] as const
-            )
-              .filter(
-                ({ kind, slot }) =>
-                  (kind !== "hotel" || day < currentPlan(state).days.length) &&
-                  !items.some(
-                    (item) =>
-                      item.type === kind &&
-                      (!slot ||
-                        mealSlotFor(item.startTime, item.planningSlot) ===
-                          slot),
-                  ),
-              )
-              .map(({ kind, label, slot, time }) => {
+            ...missingArrangements(state, day, items).map(
+              ({ kind, label, slot, time }) => {
                 const missingKey = `${currentPlan(state).id}:missing-${day}-${slot ?? kind}`;
                 const area = state.areas.find(
                   (area) =>
@@ -352,7 +314,8 @@ export function DetailItineraryBoard({
                     </div>
                   </article>
                 );
-              }),
+              },
+            ),
           ].sort((a, b) =>
             String(a.props["data-order"]).localeCompare(
               String(b.props["data-order"]),
