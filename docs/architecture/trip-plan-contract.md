@@ -2,7 +2,7 @@
 
 ## Review status
 
-Proposed / 待集成审查 — **not yet a frozen dependency**. TASK-WBS-4.17-A / #215; Producer A; Consumers B TASK-017 (#207), future Trip Library 5.18/5.19 and Engine #201. User authorized implementation and merge after the review gate; that authorization is not a completed review of this newly authored contract.
+Frozen v1.0 / 已合并交接基线。TASK-WBS-4.17-A / #215; Producer A; Consumers B TASK-017 (#207), future Trip Library 5.18/5.19 and Engine #201. 项目负责人在看到待审查交付后明确指示“合并并继续”，据此批准本次交接并覆盖此前等待独立 B 审查的门槛；未宣称存在独立 B / GitHub APPROVED 记录。PR #216 已合并，SHA `ec9b06240040881b6fdc249bf0967f820ac2406b`，内容与验收 head `6e3c470` 完全一致。下方 review 矩阵与问题保留为契约变更检查清单，不再表示本次未获批准。
 
 Canonical source: `src/shared/contracts/trips/index.ts`. Its parsers define the wire shape and infer TypeScript types; `validation.ts` is the dependency-free JSON validator. `fixtures.ts` supplies synthetic examples, not real trip/provider facts. No separate schema copy in B, no imports of React, Planner private Store, Mapbox, Provider SDK or DB clients.
 

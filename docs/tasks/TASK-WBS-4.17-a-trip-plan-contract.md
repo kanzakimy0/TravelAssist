@@ -3,14 +3,14 @@
 ## Metadata
 
 - Owner: A (Producer); B is Consumer / Integration Reviewer.
-- Status: 待验收（公开契约实现完成；B/集成审查及冻结尚待完成）
+- Status: 已完成（项目负责人批准本次交接；PR #216 已合并验收）
 - WBS: 4.17; related 4.15 / 4.16 / 5.18 / 8.5.
 - GitHub Issue: #215; unblocks #207 only after reviewed freeze and merge.
 - Branch: `codex/a-trip-plan-contract` (avoids automatic feature-branch merge).
 - Base: `39890af8c2ed137712b90f3f9d2bfdef313cfef6`.
 - Depends On: merged contract-handoff rules; existing 4.15/4.16 local core audited, full server implementation still incomplete.
 - Implementation commit: `2021343b2f160cfb1d91c05fdcc1d249a8b149ed`; tracking-only follow-up at PR head.
-- Pull Request: [Draft #216](https://github.com/kanzakimy0/TravelAssist/pull/216) → develop; not merged, integration review pending.
+- Pull Request: [#216](https://github.com/kanzakimy0/TravelAssist/pull/216) → develop; merged `ec9b06240040881b6fdc249bf0967f820ac2406b`. 负责人最新“合并并继续”指令接受本契约，替代等待 B 的门槛；没有独立 B 审查记录，不伪造该记录。
 - Authorization: user explicitly authorized A contract execution, gated merge, then TASK-017-B continuation on 2026-09-08.
 
 ## Scope
