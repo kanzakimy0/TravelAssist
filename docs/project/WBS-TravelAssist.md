@@ -7,6 +7,18 @@
 - Result：`docs/tasks/RESULT-TASK-018-b-authentication-core.md`。实现 `7e84dd0`；[PR #218](https://github.com/kanzakimy0/TravelAssist/pull/218) 已确认 Open / Draft，Issue #214 保持 Open；等待用户验收，不自动合并。
 - 8.1 / 8.2 / 8.4 与既有 UI 已完成状态不变；5.3 / 5.15 / TASK-017-B 及其他后续 Task 未启动。下方此前 Auth 未启动描述为历史，以本节与当前 8.3 行为准。
 
+## TASK-WBS-4.17-A 合并冻结（2026-09-08，最新）
+
+- 项目负责人明确指示“合并并继续”，接受本次契约交接，替代等待独立 B 审查的门槛；未宣称存在 B/GitHub APPROVED 记录。
+- PR #216 已合入 develop：`ec9b06240040881b6fdc249bf0967f820ac2406b`，合并树与验收 head `6e3c470` 一致。4.17 公开 v1.0 契约已完成；612 tests/lint/typecheck/build 证据有效，27 份既有格式问题保留。
+- #207 / 5.18 的 4.17 前置解除，正式 TASK-017 仍须从最新 develop 重新检查启动；5.11/5.16/5.18 尚未实现。4.15/4.16 部分运行时及 8.5 主表不因契约完成而标记完成。下方待审查/阻塞描述为历史，以本节与当前 WBS 行为准。
+
+## TASK-WBS-4.17-A 契约交接（2026-09-08）
+
+- 用户明确授权先执行 A 的 4.17，完成契约冻结、审查与合并后再复检 TASK-017-B / #207。#215；分支 `codex/a-trip-plan-contract`；基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`。
+- 当前待审查：独立 canonical Trip Draft / Trip Plan 公开类型、校验、fixture、真实 Step 纯转换器和交接说明；不复制浏览器 Store，不建主系统表，不改 B 的 Preference Master。4.15/4.16 仍是部分本地实现，8.5 保持未开始。
+- 正式冻结前必须取得 B 或指定集成审查人的审查记录；4.17 合并验收前 #207 / 5.18 不解除阻塞。Task：`docs/tasks/TASK-WBS-4.17-a-trip-plan-contract.md`；Result：`docs/tasks/RESULT-WBS-4.17-a-trip-plan-contract.md`；实现 `2021343`，后续仅同步追踪；[Draft PR #216](https://github.com/kanzakimy0/TravelAssist/pull/216) 未合并。612 tests、lint/typecheck/build 通过；27 份既有格式问题保留。
+
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
 - 8.2 / B / #200：已完成（用户最终验收通过且 PR #209 已合入 develop）。首次基线 `eccfd9e`；分支 `feature/b-user-profile-schema`；合并前整合最新 develop `dcb7cbe`，只解决 WBS 顶部记录冲突，完整保留双方记录。
@@ -636,7 +648,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中 |
 | 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 进行中 |
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
-| 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 未开始 |
+| 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 已完成（#215 / #216；负责人批准的 v1.0 公开契约基线） |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
 | 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
 
@@ -710,7 +722,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
 | 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 未开始 |
 | 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 未开始 |
-| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 未开始 |
+| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 可开始（#207；#186 / #216 已合并，实施前重新检查） |
 | 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 未开始 |
 | 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 未开始 |
 
