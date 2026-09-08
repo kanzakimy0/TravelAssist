@@ -6,14 +6,24 @@
 > Priority：P0  
 > Base at creation：`develop@707bcc8d2af14a86032181be63573beb3aea3e17`  
 > Branch：`feature/a-db-orm-migration-foundation`  
-> Status：待验收（静态基础已实现；DB runtime verification blocked）
+> Status：待验收（本机运行及整合验收通过；用户已授权合并）
 >
 > Design：`docs/architecture/db-orm-migration-standards.md`  
 > Freeze Plan：`docs/architecture/db-foundation-bootstrap-plan.md`
 
 ---
 
-## Execution Record — 2026-09-08
+## Merge acceptance — 2026-09-08
+
+用户授权完成 #186 收尾并合并。已保留真实类型提交 `b212c31`，整合 develop
+`6386c83`（merge `0b97f79`），安全处理四个共享文件冲突。Docker 29.7.2 /
+PostgreSQL 17.6 / Supabase CLI 2.116.0 实际 start/status/reset/types/stop 及
+Drizzle 查询通过；两次类型生成无变化。503项测试、lint/typecheck/空DB环境
+build通过。零业务表、零SQL迁移（§8允许），未启用PostGIS；Vector日志采集
+存在本地网络限制，未宣称该辅助服务通过。完整事实见 Result 最新验收节。
+正式合并确认后更新最终状态并解除 #200 前置，不自动实施 TASK-016-B。
+
+## Original execution record — historical
 
 - Issue: #173; WBS: 8.1 / 8.4; implementation owner: A.
 - Base: `e98a715a11e4a4ee9bdc196854558a5a02b1753c`; isolated clean worktree.

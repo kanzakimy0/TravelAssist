@@ -2,6 +2,51 @@
 
 ## Status
 
+**Runtime accepted / 待合并** — 2026-09-08 user authorized PR #186 closeout and merge.
+The following current acceptance record supersedes the original Docker-blocked
+delivery preserved below for audit.
+
+## Current merge acceptance — 2026-09-08
+
+- PR #186; Issue #173; WBS 8.1 / 8.4. No B schema implementation started.
+- Integrated develop `6386c83c21ecd4b8172d9faa39aef2b01fdf315c` in merge `0b97f79`.
+- Preserved runtime types commit `b212c315de61486dbb0c7bc4dac309ac647d3b79` by fast-forward, not fabricated/retyped.
+- Resolved four conflicts: `.gitignore` keeps DB and asset ignores; package scripts
+  and lock retain DB dependencies plus current asset tools/sharp; WBS keeps latest
+  develop records and B Engine ownership. No Planner/Personal Center source diff
+  against develop. No reset/force push/history rewrite.
+- npm ci: 393 packages installed, audit 0 vulnerabilities. No unrelated upgrades.
+- Docker client/server 29.7.2; PostgreSQL 17.6; Supabase CLI 2.116.0;
+  Node 24.19.0 / npm 11.17.0. New CLI release notice is not an automatic upgrade.
+- Initially zero running containers. Before reset: public tables=0, auth users=0.
+- Actual `db:start`, `db:status`, `db:reset`, `db:types` twice, final `db:status`,
+  `db:stop`: PASS. Types matched the prior real generated commit exactly both times.
+- Actual server-only `getDb().$client` SELECT 1 and `closeDb()`: PASS, using only
+  a verified loopback URL obtained internally; credentials never printed.
+- Migration SQL count=0, empty seed and empty public schema, as allowed by Task §8.
+  A diagnostic query assuming a migration ledger table failed because an empty
+  history has no such table; this was not a migration/reset failure.
+- Enabled extensions observed: pg_stat_statements 1.11, pgcrypto 1.3, plpgsql 1.0,
+  supabase_vault 0.3.1, uuid-ossp 1.1. **PostGIS remains not enabled**; not claimed.
+- Optional Vector log collector restarts because its Docker log source reports
+  NetworkUnreachable. DB/API/runtime commands pass; log ingestion remains a local
+  auxiliary limitation. No Docker daemon or global networking changes made.
+- Test stack stopped; no running containers remained; stop preserved volumes.
+- lint / typecheck / empty-DB-env build (21 pages): PASS.
+- Full explicit Node suite: **503 passed / 0 failed / 0 skipped**; includes all
+  13 DB tests. No tests modified/weakened for this closeout.
+- Changed-file formatting and diff check: PASS. Full format check: 27 existing
+  document failures, each byte-identical to develop; zero new failures. Not a full pass.
+- Lock audit: zero existing package version changes. Credential scan: no real
+  credentials; the sole connection-pattern finding is the task's unchanged Chinese
+  placeholder. Browser JS contains no DATABASE_URL / SUPABASE_SECRET_KEY / DB driver.
+- Issue #173 / Task / Result / WBS are synchronized as accepted, awaiting merge;
+  only after confirmed merge may WBS become complete and #200's dependency clear.
+- No production/staging connection, secrets, business schemas, Auth, UI changes or
+  next-task implementation. Existing Planner preview and dirty worktrees untouched.
+
+## Original delivery — historical, superseded
+
 **Partially Completed / Partial Validation** — static foundation implemented;
 database runtime acceptance remains blocked. Not fully DB-verified; keep Draft.
 

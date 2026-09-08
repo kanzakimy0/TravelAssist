@@ -47,18 +47,21 @@ the child environment. CLI credential tables and raw errors are withheld; status
 only prints recognized loopback service URLs. On a failure, inspect locally without
 copying raw credential-bearing CLI output into Git, Issue, PR or logs.
 
-## Current runtime limitation
+## Runtime acceptance — 2026-09-08
 
-The implementing workstation has no usable Docker. Static commands are not proof
-of DB startup/reset. The migration directory currently contains **zero SQL files**;
-PostGIS has not been enabled or verified. Do not add untested PostGIS DDL to pretend
-this acceptance condition passed. No handwritten generated database type placeholder
-is included. See the TASK-015 Result for the precise validation status.
+Docker 29.7.2 / PostgreSQL 17.6 / pinned Supabase CLI 2.116.0 passed actual
+start/status/reset/types/stop and a server-only Drizzle query after integrating
+develop. Generated types are committed and two real generations are byte-identical.
+The migration directory intentionally contains **zero SQL files**, permitted by
+TASK-015 section 8; the public schema has no business tables. PostGIS is **not
+enabled**. Future spatial work must add reviewed SQL and verify it through reset;
+database bootstrap acceptance does not claim spatial functionality.
 
-When a supported Local runtime becomes available, complete startup/reset first,
-then verify any minimal PostGIS migration using an actual extension/version query
-and another reset. Generate and commit real types; only then can runtime acceptance
-be considered complete. This follow-up does not authorize business schemas.
+On this Windows Docker environment, the optional Vector log collector cannot
+reach its Docker log endpoint and restarts. Database/API checks and type generation
+pass; local log ingestion is not certified. No daemon setting or cloud project was
+changed. The test stack was stopped with volumes preserved. See the Result for
+actual evidence; business schemas remain separate tasks.
 
 ## Query and generated-type interfaces
 
