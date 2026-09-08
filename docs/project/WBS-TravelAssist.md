@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-WBS-4.17-A 契约交接（2026-09-08）
+
+- 用户明确授权先执行 A 的 4.17，完成契约冻结、审查与合并后再复检 TASK-017-B / #207。#215；分支 `codex/a-trip-plan-contract`；基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`。
+- 当前待审查：独立 canonical Trip Draft / Trip Plan 公开类型、校验、fixture、真实 Step 纯转换器和交接说明；不复制浏览器 Store，不建主系统表，不改 B 的 Preference Master。4.15/4.16 仍是部分本地实现，8.5 保持未开始。
+- 正式冻结前必须取得 B 或指定集成审查人的审查记录；4.17 合并验收前 #207 / 5.18 不解除阻塞。Task：`docs/tasks/TASK-WBS-4.17-a-trip-plan-contract.md`；Commit / PR 待发布。
+
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
 - 8.2 / B / #200：已完成（用户最终验收通过且 PR #209 已合入 develop）。首次基线 `eccfd9e`；分支 `feature/b-user-profile-schema`；合并前整合最新 develop `dcb7cbe`，只解决 WBS 顶部记录冲突，完整保留双方记录。
@@ -628,7 +634,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中 |
 | 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 进行中 |
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
-| 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 未开始 |
+| 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 待审查（#215；公开契约交接，审查冻结前不可依赖） |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
 | 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
 
@@ -702,7 +708,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
 | 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 未开始 |
 | 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 未开始 |
-| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 未开始 |
+| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | Blocked（#207；#215 / 4.17 审查冻结及合并待完成） |
 | 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 未开始 |
 | 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 未开始 |
 
