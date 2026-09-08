@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## 合并状态校正与 Engine 交接（2026-09-08）
+
+- 用户授权现有阶段成果合并：PR #199 已合入 develop，merge `fba4086775d54d3acfc8dd4bd472e2a7a8c89e46`。297条证据版本修复进入基线；目的地最终验收仍 Partial，按追踪规则记“阻塞 / 待补证”，#189/#194保持Open，TASK-013.4未解锁。
+- 文档基线 `2d9734731dcece9f90db1779da06a7a3c9e9bab7` 同时包含其他工作站合并的PR #197；保留其WBS-5.10-B-FOLLOWUP-1已验收记录，不重复操作该PR。
+- 8.1/8.4不再误记未开始：#173已记载真实本机DB验证通过，但PR #186仍Draft/未合并，故保持待审查；8.2 / TASK-016-B / #200等待其合并。
+- 新增TravelAssist Engine（现有架构中的Trip Engine）4.20–4.24，用户明确指定B，仅规划未实施。现有A的UI/Map/AI/Trip Plan Schema责任不变，不把浏览器Mock记为服务器引擎完成。
+- 主工作区和3113预览旧未提交内容未打包，其他未验收Draft未批量合并。旧Draft状态以本节及当前追踪表为准。
+
+
 ## TASK-013.3.1-A 补证收口阶段交付（2026-09-08）
 
 用户授权合并复验 PR #198，merge `3ad62711be8ab54a0c4fa039f9bd426e30128946`。PR #192 也已合并，#189 保持 Open；2.15 已合并复验，仍不表示图片完成。2.16 沿用主项，Partial / 待收口。本次修复297个 `oldid=undefined` 来源链接并刷新对应事实/版本，保留父门槛254/46；新增动态最终门槛发现300行缺少已审查的官方边界来源及明确规则，严格 fully_passed=0。已建立目标清单、补证记录、最终验收报告、下游逐字节保护和独立测试。TASK-013.4 allowed: No。TASK-013.3.1-A / #194 / feature/a-japan-destination-evidence-closure；实现 Commit `1daafbc`；Draft PR [#199](https://github.com/kanzakimy0/TravelAssist/pull/199)，文档追踪head见PR/Issue。不改UI，不生成或下载图片，不解锁POI。以下旧Draft与旧计数为历史，以当前Result及实际合并状态为准。
@@ -404,7 +413,10 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 |---|---|---|---|---|---|---|---|---|
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
-| TASK-013.3.1-A | 2.16 | A | 待审查（Partial；297版本修复，官方边界待收口） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Draft / Partial |
+| TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
+| TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
+| TASK-015-A | 8.1 / 8.4 | A | 待审查（本机验证见#173；未合并） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md`（任务分支） | `feature/a-db-orm-migration-foundation` | `a88f446`（PR head；本机验收记录待回并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Draft |
+| TASK-016-B | 8.2 | B | 阻塞（等待#186合并） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING | PENDING |
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
@@ -523,7 +535,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
 | 2.15 | 日本国内核心目的地素材生成单（300目的地 / 9,000景点） | A | P1 | 2.13,2.14 | 已合并生产清单（Partial；实体/图片待后续） |
-| 2.16 | 日本300目的地实体解析与验收 | A | P1 | 2.15 | Partial / 待收口（父门槛254/300；官方边界最终验收未完成） |
+| 2.16 | 日本300目的地实体解析与验收 | A | P1 | 2.15 | 阻塞 / Partial（父门槛254/300；官方边界最终验收未完成） |
 
 | 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
 | 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 已完成 |
@@ -541,7 +553,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |
 | 3.8    | 主系统响应式 / 无障碍               | A      | P2     | 3.1-3.7  | 已完成 |
 
-## 4. Planner / 地图 / 路线生成（A 全责）
+## 4. Planner / 地图 / 路线生成（A；Engine 单项交给 B）
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖         | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------ | ------ |
@@ -564,6 +576,20 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 未开始 |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
 | 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
+
+### 4B. TravelAssist Engine / Trip Engine（用户指定 B）
+
+Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复用4.16/4.17/8.5，不建立第二套主模型；原工作项Owner不变。4.20先设计，发布前须A/B核对；后续依赖未满足不得执行。
+
+| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
+| --- | --- | --- | --- | --- | --- |
+| 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 未开始（#201，任务已定义） |
+| 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 未开始 |
+| 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 未开始（前置未满足） |
+| 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 未开始 |
+| 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 未开始 |
+
+正式入口：[Issue #201](https://github.com/kanzakimy0/TravelAssist/issues/201)、`docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md`。4.21之后逐项建立独立Task，不自动执行。
 
 ## 5. 用户个人中心 / 管理 / 偏好（B 全责）
 
@@ -637,10 +663,10 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖               | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------------ | ------ |
-| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 未开始 |
-| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 未开始 |
+| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 待审查（#186未合并；#173已记录本机验证通过） |
+| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 阻塞（TASK-016-B / #200等待#186合并） |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 未开始 |
-| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 未开始 |
+| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 待审查（#186未合并；正式合并收尾待完成） |
 | 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 未开始 |
 | 8.7    | AI 会话主系统存储策略         | A      | P2     | 6.2,8.1            | 未开始 |

@@ -4,6 +4,8 @@
 
 **Partial。尚未完成300/300最终验收。**
 
+2026-09-08 用户再次明确授权后，PR #199 已合并，merge `fba4086775d54d3acfc8dd4bd472e2a7a8c89e46`。本次合并仅收录阶段证据修复；Task/WBS按追踪规则记阻塞/Partial，#189/#194保持Open。下文Draft交付表述为原阶段历史，不构成最终验收。合并前再次运行20项专项测试及diff检查通过，保护文件与重复生成no-op通过。
+
 已合并用户批准的 PR #198，并继续正式后续 TASK-013.3.1-A。完成无效来源版本修复、严格动态补证检查、下游保护、阶段性官方来源研究和测试。不是所有目的地已补证完成；不解锁后续 POI 或图片生产。
 
 ## Prerequisite
@@ -20,7 +22,7 @@
 - Branch：`feature/a-japan-destination-evidence-closure` → develop。
 - 现有分支安全快进同步最新 develop，独立 worktree，未修改用户主工作区或3113预览。
 - Implementation Commit：`1daafbcb0e436c2c4a3f88895d192cdc25518f8f`；文档追踪head见PR/Issue。
-- Draft PR：[#199](https://github.com/kanzakimy0/TravelAssist/pull/199)。保持 Draft，不自动合并。
+- PR：[#199](https://github.com/kanzakimy0/TravelAssist/pull/199) 已由用户授权合入develop；300/300最终补证仍未完成。
 
 ## Closure Targets
 
@@ -119,7 +121,7 @@
 
 **TASK-013.4 allowed: No。**
 
-本Task尚未达到300/300且交付保持Draft。未创建或执行200 POI批次，也未启动图片、付费Provider、授权采购或任何其他WBS。
+本Task尚未达到300/300。阶段修复已授权合并，但未创建或执行200 POI批次，也未启动图片、付费Provider或授权采购。
 
 ## Known Limitations
 
