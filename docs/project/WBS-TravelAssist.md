@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-020-A Secret 扫描 / 全局安全基线（2026-09-09）
+
+- 9.10 / A / [Issue #228](https://github.com/kanzakimy0/TravelAssist/issues/228)：进行中 → **待审查**，非已完成。独立干净 Worktree / `codex/a-global-security-baseline`，基线与最终复核 develop 均为 `74bc3cccf8bcfd603706e2b96d4072076191f308`。实现 Commit / Draft PR 见 Result 发布记录；保持 Draft，Issue Open，不自动合并。
+- 已建立 tracked / reachable history / browser 产物扫描、精确到路径/类别/fingerprint/范围/到期日的 allowlist、AST server-only / public env / 日志边界、五个模拟服务端凭据的真实生产构建验证及只读 CI gate。疑似值从未原样输出；不访问凭据库，不轮换、不重写历史。
+- 29 专项 / 660 全仓 Node tests、lint/typecheck/build/bundle/diff 通过。完整格式检查28个既有文档失败，与 develop blob 一致，新增改动格式通过。大文件/二进制明确列为未扫描范围，不声称零风险；真实凭据确认数0。
+- TASK019 实际 Draft #227 / B Draft #221 / Route Draft #230 均未合并，未叠加任何并行实现；原用户 Planner 脏工作区保持原样。9.9/9.11/10.x 不变。
+- Task / Result：`docs/tasks/TASK-020-a-global-security-baseline.md` / `docs/tasks/RESULT-TASK-020-a-global-security-baseline.md`；规范与脱敏报告：`docs/security/secret-scanning-baseline.md` / `docs/security/secret-scan-report.md`。
+
 ## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
 
 - 用户批准修复 A 范围审计的全部七项确认问题；Issue [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)。基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `codex/a-planner-audit-fixes`。
@@ -796,7 +804,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 9.7    | 跨模块 E2E：偏好→Planner                | A+B    | P0     | 4.18,5.14       | 未开始 |
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
-| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
+| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（TASK-020-A / #228） |
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 

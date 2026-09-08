@@ -12,9 +12,10 @@ export function checkClientBundle(directory) {
     "Build browser JS before running the leakage check",
   );
   for (const file of files) {
-    assert.doesNotMatch(
-      readFileSync(resolve(directory, file), "utf8"),
-      /DATABASE_URL|SUPABASE_SECRET_KEY|SUPABASE_SERVICE_ROLE_KEY|sb_secret_[A-Za-z0-9_-]+|postgres(?:ql)?:\/\/[^\s:/]+:[^\s@]+@|drizzle-orm|set_profile_audit_timestamps/,
+    assert.ok(
+      !/DATABASE_URL|SUPABASE_SECRET_KEY|SUPABASE_SERVICE_ROLE_KEY|sb_secret_[A-Za-z0-9_-]+|postgres(?:ql)?:\/\/[^\s:/]+:[^\s@]+@|drizzle-orm|set_profile_audit_timestamps/.test(
+        readFileSync(resolve(directory, file), "utf8"),
+      ),
       `Server-only marker or credential pattern in browser chunk: ${file}`,
     );
   }

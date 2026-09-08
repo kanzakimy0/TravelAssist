@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "security:scan": "node tools/security/scan.mjs tracked",
+    "security:history": "node tools/security/scan.mjs history",
+    "security:boundary": "node tools/security/boundary.mjs",
+    "security:bundle": "node tools/security/scan.mjs bundle",
+    "security:build": "node tools/security/build.mjs",
+    "test:security": "node --test tests/task-020-security.test.mjs",
     "db:start": "node tools/db/local.mjs start",
     "db:stop": "node tools/db/local.mjs stop",
     "db:status": "node tools/db/local.mjs status",
