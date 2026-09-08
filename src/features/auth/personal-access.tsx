@@ -12,7 +12,14 @@ export const verifyPersonalAccess = cache(async () => {
   if (result.ok && !result.data) {
     const intent = safeReturnTo((await headers()).get("x-travelassist-path"));
     const path = new URL(intent, "https://return.invalid").pathname;
-    redirect(authHref("/login", path === "/personal-center" || path.startsWith("/personal-center/") ? intent : "/personal-center"));
+    redirect(
+      authHref(
+        "/login",
+        path === "/personal-center" || path.startsWith("/personal-center/")
+          ? intent
+          : "/personal-center",
+      ),
+    );
   }
   return result;
 });

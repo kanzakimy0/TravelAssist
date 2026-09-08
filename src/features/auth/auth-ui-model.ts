@@ -9,12 +9,21 @@ export const resendCooldownSeconds = 30; // Presentation cooldown, not provider 
 export function authDestination(value: unknown, fallback = "/") {
   const safe = safeReturnTo(value ?? fallback);
   let path = new URL(safe, "https://return.invalid").pathname;
-  for (let i = 0; i < 8 && path.includes("%"); i++) path = decodeURIComponent(path);
+  for (let i = 0; i < 8 && path.includes("%"); i++)
+    path = decodeURIComponent(path);
   // Additional navigation-loop prevention AFTER the canonical security validator.
-  return /^\/(?:login|register|forgot-password|reset-password|auth)(?:\/|$)/.test(path) ? "/" : safe;
+  return /^\/(?:login|register|forgot-password|reset-password|auth)(?:\/|$)/.test(
+    path,
+  )
+    ? "/"
+    : safe;
 }
 
-export function authHref(path: "/login" | "/register" | "/forgot-password", returnTo: unknown, email?: string) {
+export function authHref(
+  path: "/login" | "/register" | "/forgot-password",
+  returnTo: unknown,
+  email?: string,
+) {
   const query = new URLSearchParams({ returnTo: authDestination(returnTo) });
   if (email) query.set("email", email);
   return `${path}?${query}`;
@@ -25,7 +34,8 @@ export function confirmationDestination(returnTo: string) {
 }
 
 export function passwordIssue(password: string, confirmation: string) {
-  if (!validPassword(password)) return "密码须至少 8 个字符，并包含字母和数字。";
+  if (!validPassword(password))
+    return "密码须至少 8 个字符，并包含字母和数字。";
   return password === confirmation ? "" : "两次输入的密码不一致。";
 }
 

@@ -19,17 +19,28 @@ type AvatarPopoverProps = Pick<
 // The host owns its trigger, positioning and focus; B owns content and targets.
 // Import from a client host and provide the Personal Center semantic tokens.
 export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
-  const { requestNavigation, isDirty, setIsDirty } = usePersonalNavigationGuard();
+  const { requestNavigation, isDirty, setIsDirty } =
+    usePersonalNavigationGuard();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   const [confirmDiscard, setConfirmDiscard] = useState(false);
   const lock = useRef(false);
   async function signOut(discard = false) {
     if (lock.current) return;
-    if (isDirty && !discard) { setConfirmDiscard(true); return; }
-    lock.current = true; setPending(true); setError("");
+    if (isDirty && !discard) {
+      setConfirmDiscard(true);
+      return;
+    }
+    lock.current = true;
+    setPending(true);
+    setError("");
     const result = await authRequest("signout");
-    if (!result.ok) { setError(authErrorText[result.code]); setPending(false); lock.current = false; return; }
+    if (!result.ok) {
+      setError(authErrorText[result.code]);
+      setPending(false);
+      lock.current = false;
+      return;
+    }
     setIsDirty(false);
     window.setTimeout(() => window.location.replace("/"), 0);
   }
@@ -90,7 +101,27 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
         <span>{pending ? "正在退出…" : "退出登录"}</span>
         <small>仅退出当前会话</small>
       </button>
-      {confirmDiscard && <div role="group" aria-label="确认放弃未保存修改并退出"><p>你有未保存的修改，退出后不会保留。</p><button type="button" className={styles.avatarLogout} disabled={pending} onClick={() => signOut(true)}>放弃修改并退出</button><button type="button" className={styles.avatarLogout} disabled={pending} onClick={() => setConfirmDiscard(false)}>继续编辑</button></div>}
+      {confirmDiscard && (
+        <div role="group" aria-label="确认放弃未保存修改并退出">
+          <p>你有未保存的修改，退出后不会保留。</p>
+          <button
+            type="button"
+            className={styles.avatarLogout}
+            disabled={pending}
+            onClick={() => signOut(true)}
+          >
+            放弃修改并退出
+          </button>
+          <button
+            type="button"
+            className={styles.avatarLogout}
+            disabled={pending}
+            onClick={() => setConfirmDiscard(false)}
+          >
+            继续编辑
+          </button>
+        </div>
+      )}
       <p role="alert">{error}</p>
     </div>
   );

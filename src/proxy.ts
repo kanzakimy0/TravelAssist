@@ -8,7 +8,10 @@ import { authSiteOrigin } from "./lib/auth/site";
 /** Refresh only; no route is authorized/protected by this optimistic layer. */
 export async function proxy(request: NextRequest) {
   // WBS-5.3 navigation intent only. Overwrite inbound values; final authorization is server-side.
-  request.headers.set("x-travelassist-path", request.nextUrl.pathname + request.nextUrl.search);
+  request.headers.set(
+    "x-travelassist-path",
+    request.nextUrl.pathname + request.nextUrl.search,
+  );
   // Technical Auth routes own their cookie response and trusted verification.
   if (request.nextUrl.pathname.startsWith("/auth/")) return NextResponse.next();
   if (
@@ -16,7 +19,12 @@ export async function proxy(request: NextRequest) {
       .getAll()
       .some(({ name }) => /^sb-.*-auth-token(?:\.\d+)?$/.test(name))
   )
-    return NextResponse.next({ request, headers: request.nextUrl.pathname.startsWith("/personal-center") ? PRIVATE_AUTH_HEADERS : undefined });
+    return NextResponse.next({
+      request,
+      headers: request.nextUrl.pathname.startsWith("/personal-center")
+        ? PRIVATE_AUTH_HEADERS
+        : undefined,
+    });
   try {
     const context = createRequestSupabase(
       request,

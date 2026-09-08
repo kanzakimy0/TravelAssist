@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "你的旅行、偏好与个人空间。",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function PersonalCenterLayout({
   children,
 }: {
