@@ -10,7 +10,123 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never;
+      emergency_contacts: {
+        Row: {
+          country_code: string | null;
+          created_at: string;
+          email: string | null;
+          id: string;
+          name: string;
+          note: string | null;
+          phone_e164: string;
+          relationship: string;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          country_code?: string | null;
+          created_at?: string;
+          email?: string | null;
+          id?: string;
+          name: string;
+          note?: string | null;
+          phone_e164: string;
+          relationship: string;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          country_code?: string | null;
+          created_at?: string;
+          email?: string | null;
+          id?: string;
+          name?: string;
+          note?: string | null;
+          phone_e164?: string;
+          relationship?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      profile_settings: {
+        Row: {
+          created_at: string;
+          currency_code: string | null;
+          distance_unit: string | null;
+          locale: string | null;
+          region_code: string | null;
+          temperature_unit: string | null;
+          time_format: string | null;
+          timezone: string | null;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          currency_code?: string | null;
+          distance_unit?: string | null;
+          locale?: string | null;
+          region_code?: string | null;
+          temperature_unit?: string | null;
+          time_format?: string | null;
+          timezone?: string | null;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          currency_code?: string | null;
+          distance_unit?: string | null;
+          locale?: string | null;
+          region_code?: string | null;
+          temperature_unit?: string | null;
+          time_format?: string | null;
+          timezone?: string | null;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      profiles: {
+        Row: {
+          avatar_path: string | null;
+          birth_date: string | null;
+          created_at: string;
+          display_name: string | null;
+          full_name: string | null;
+          gender_code: string | null;
+          id: string;
+          residence_city: string | null;
+          residence_country_code: string | null;
+          updated_at: string;
+        };
+        Insert: {
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name?: string | null;
+          full_name?: string | null;
+          gender_code?: string | null;
+          id: string;
+          residence_city?: string | null;
+          residence_country_code?: string | null;
+          updated_at?: string;
+        };
+        Update: {
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name?: string | null;
+          full_name?: string | null;
+          gender_code?: string | null;
+          id?: string;
+          residence_city?: string | null;
+          residence_country_code?: string | null;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;

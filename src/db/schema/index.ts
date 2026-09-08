@@ -1,3 +1,6 @@
-// Business mappings are deliberately deferred to their owning domain tasks.
-// supabase/migrations/*.sql is the only schema history.
-export {};
+import "server-only";
+
+// Query mappings only; supabase/migrations/*.sql remains the sole schema history.
+export { profiles } from "./profiles";
+export { profileSettings } from "./profile-settings";
+export { emergencyContacts } from "./emergency-contacts";

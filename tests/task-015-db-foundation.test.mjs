@@ -41,7 +41,7 @@ test("stable foundation dependencies and original framework versions are locked"
   assert.equal(pkg.dependencies["@supabase/ssr"], undefined);
 });
 
-test("CLI bootstrap config, empty seed and sole SQL history have no business schema", () => {
+test("CLI bootstrap and sole SQL history preserve the foundation's historical empty-schema boundary", () => {
   const config = read("supabase/config.toml");
   assert.match(config, /project_id = "travelassist"/);
   assert.match(config, /schema_paths = \[\]/);
@@ -51,21 +51,40 @@ test("CLI bootstrap config, empty seed and sole SQL history have no business sch
     read("drizzle.config.ts"),
     /dbCredentials|process\.env|dotenv/,
   );
-  const schema = read("src/db/schema/index.ts");
+  // TASK-015's no-business-schema scope describes its merged delivery, not a
+  // permanent prohibition on subsequently authorized domain migrations.
+  const foundation = "24dff4e3b74dfe01c369d2c149d37eba86ad6472";
+  const historical = (path) =>
+    execFileSync("git", ["show", `${foundation}:${path}`], {
+      cwd: root,
+      encoding: "utf8",
+    });
+  const schema = historical("src/db/schema/index.ts");
   assert.match(schema, /export \{\}/);
   assert.doesNotMatch(schema, /pgTable|pgSchema|createTable/);
   const seed = read("supabase/seed.sql")
     .replace(/--[^\n]*/g, "")
     .trim();
   assert.equal(seed, "");
-  const migrations = readdirSync(resolve(root, "supabase/migrations")).filter(
-    (file) => file.endsWith(".sql"),
-  );
+  const migrations = execFileSync(
+    "git",
+    ["ls-tree", "-r", "--name-only", foundation, "supabase/migrations"],
+    {
+      cwd: root,
+      encoding: "utf8",
+    },
+  )
+    .trim()
+    .split(/\r?\n/)
+    .filter((file) => file.endsWith(".sql"));
   assert.equal(
     migrations.length,
     0,
     "Unverified PostGIS SQL must not masquerade as accepted migration",
   );
+  for (const file of readdirSync(resolve(root, "supabase/migrations"))) {
+    if (file.endsWith(".sql")) assert.match(file, /^\d{14}_[a-z0-9_]+\.sql$/);
+  }
 });
 
 test("five new environment keys are empty; private settings have no public aliases", () => {
