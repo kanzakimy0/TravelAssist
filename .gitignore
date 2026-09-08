@@ -31,6 +31,13 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 
+# Local DB scratch / signing material, never a second migration history.
+/supabase/signing_keys.json
+/supabase/.env*
+/supabase/.temp/
+/supabase/.branches/
+/.db-tooling/
+/src/types/database.generated.ts.tmp
 # TASK-013.1 local checkpoints / synthetic test fixtures
 /.cache/asset-pipeline/
 /tmp/assets-nightly/

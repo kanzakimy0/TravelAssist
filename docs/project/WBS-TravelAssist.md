@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-015-A 合并前复验（2026-09-08）
+
+用户授权 #186 合并收尾。真实类型提交 `b212c31` 已回并，整合基线 `6386c83`，
+冲突处理 `0b97f79` 保留最新素材与 B Engine 记录。503测试、lint/typecheck/build、
+Local start/status/reset/types/stop及Drizzle查询通过；8.1/8.4待审查，合并后再改已完成。
+PostGIS未启用（Task允许空历史）；Vector辅助日志采集网络限制单独记录。#200仍待
+确认#186正式合并；本轮不实施B业务Schema。下方旧DB阻塞状态以此节及最终收尾为准。
+
 ## 合并状态校正与 Engine 交接（2026-09-08）
 
 - 用户授权现有阶段成果合并：PR #199 已合入 develop，merge `fba4086775d54d3acfc8dd4bd472e2a7a8c89e46`。297条证据版本修复进入基线；目的地最终验收仍 Partial，按追踪规则记“阻塞 / 待补证”，#189/#194保持Open，TASK-013.4未解锁。
@@ -415,7 +423,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
 | TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
-| TASK-015-A | 8.1 / 8.4 | A | 待审查（本机验证见#173；未合并） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md`（任务分支） | `feature/a-db-orm-migration-foundation` | `a88f446`（PR head；本机验收记录待回并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Draft |
+| TASK-015-A | 8.1 / 8.4 | A | 待审查（运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `b212c31`（真实types）；`0b97f79`（整合；最终head见PR） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) 用户授权合并，尚待执行 |
 | TASK-016-B | 8.2 | B | 阻塞（等待#186合并） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING | PENDING |
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
