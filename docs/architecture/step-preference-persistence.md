@@ -36,7 +36,7 @@
 
 ## 服务入口
 
-`POST /api/travel-persistence`，请求包含 `operation` 与 `input`，仅接受 Bearer 身份，不读取浏览器自报 owner。
+`POST /api/travel-persistence`，请求包含 `operation` 与 `input`，接受已验证 Bearer 或 TASK-018 的同源 Cookie 会话，不读取浏览器自报 owner。
 
 | operation              | 输入                                                          |
 | ---------------------- | ------------------------------------------------------------- |
@@ -49,7 +49,8 @@
 | updateOverrides        | id + expected override revision + 稀疏 patch                  |
 | getEffectivePreference | draft id；内部后续交接能力，不等于 5.14 已完成                |
 
-- Supabase `getUser(accessToken)` 验证身份，不用未验证 JWT decode 或 getSession 代替。
+- 复用已合并 TASK-018 的 `requireAuthUser` / `publicSupabaseConfig`，由 Supabase getUser 验证身份，不用未验证 JWT decode 或 getSession 代替。
+- Cookie 路径复用 `createRequestSupabase` 回传刷新 cookies/cache headers，必须符合可信 AUTH_SITE_URL Origin 与 JSON Content-Type，跨站拒绝；Bearer 不依赖浏览器 Cookie。
 - verified owner 写入事务级 RLS claims；`SET LOCAL ROLE authenticated`。连接池不会保留角色/claims。
 - 每个 owner 的事务锁串行化服务请求；更新另有 revision compare-and-swap。其他设备的旧版本收到 409。
 - create 使用 owner+creationKey 幂等，重试不覆盖已有事实；id/creationKey 不允许更新。
@@ -61,16 +62,16 @@
 
 `createServerDraftAutosave` 为可测试的客户端控制器：
 
-1. Auth Core 提供当前 access token；客户端不新建匿名账户、不持久保存 Token。
+1. 已合并 Auth Core 提供 Cookie 会话；`cookieDraftTransport` 同源请求。也保留由调用方提供 token 的适配器；不新建匿名账户、不自行持久保存 Token。
 2. 创建意图 UUID 必须由未来 UI 按用户/草稿保存，不能每次编辑随机重建。
 3. 仅在显式有效编辑后 queue；默认 650ms debounce，串行处理在途新编辑。
 4. 网络失败保留待保存内容，可 retry；丢失 create 响应仍使用原创建内容，不能覆盖另一设备的新修订。
 5. 409 停止写入；只有显式 resume 才采用服务器版本，不能自动丢弃本地编辑。
 6. dispose 取消未发出的定时任务；调用方必须先 flush/处理失败再决定离开页面。
 
-**尚未接入实际 StartFlowShell**：当前没有 Auth Core 身份交接入口；旧浏览器金额字段无币种/小数单位上下文；familiarity、兴趣细分、部分交通/付费体验输入尚须完成独立 typed mapping。不能把这些遗漏伪装成自动恢复成功。
+**尚未接入实际 StartFlowShell**：Auth Core #218 在执行期间已合并，本分支已整合并复用，不再把 8.3 列为缺失。实际 WBS 5.3 登录/Session 页面流程仍未完成；旧浏览器金额字段无币种/小数单位上下文；familiarity、兴趣细分、部分交通/付费体验输入尚须完成独立 typed mapping。不能把这些遗漏伪装成自动恢复成功。
 
-目前提供 API 和控制器，而不是把本地草稿静默上传或把默认 Mock 当作用户确认偏好。页面上线需要补齐映射、登录/登出与用户切换清理、离线/冲突可见反馈、草稿选择和跨设备浏览器验收；本次不会擅自实现 Auth Core。
+目前提供 API 和控制器，而不是把本地草稿静默上传或把默认 Mock 当作用户确认偏好。页面上线需要补齐映射、登录/登出与用户切换清理、离线/冲突可见反馈、草稿选择和跨设备浏览器验收；本次不重写 Auth Core，也不自行执行 WBS 5.3 用户流程任务。
 
 ## 验证入口
 

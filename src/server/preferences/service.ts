@@ -1,5 +1,8 @@
 import "server-only";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "../../types/database.generated";
+import { publicSupabaseConfig } from "../../lib/supabase/config";
+import { requireAuthUser } from "../../lib/auth/server-user";
 import { sql } from "drizzle-orm";
 import { getDb } from "../../db";
 import { object, parse } from "../../shared/contracts/trips/validation";
@@ -20,22 +23,33 @@ export async function runTravelPersistence(
   // Supabase verifies the token; never trust a decoded claim, browser owner or getSession().
   if (!accessToken || accessToken.length > 16384)
     throw new Error("AUTH_REQUIRED");
-  const url =
-    process.env.SUPABASE_URL?.trim() ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?.trim();
-  if (!url || !key) throw new Error("AUTH_UNAVAILABLE");
-  const auth = createClient(url, key, {
+  const { url, key } = publicSupabaseConfig();
+  const auth = createClient<Database>(url, key, {
+    global: { headers: { Authorization: "Bearer " + accessToken } },
     auth: {
       persistSession: false,
       autoRefreshToken: false,
       detectSessionInUrl: false,
     },
   });
-  const { data, error } = await auth.auth.getUser(accessToken);
-  if (error || !data.user || !parse(uuid, data.user.id).ok)
-    throw new Error("AUTH_REQUIRED");
-  const owner = data.user.id;
+  return runAuthenticatedTravelPersistence(auth, operation, input);
+}
+
+/** Reuses TASK-018 verified-user primitive for cookie and bearer consumers. */
+export async function runAuthenticatedTravelPersistence(
+  client: SupabaseClient<Database>,
+  operation: string,
+  input: unknown,
+) {
+  const identity = await requireAuthUser(client);
+  if (!identity.ok)
+    throw new Error(
+      identity.code === "unauthenticated"
+        ? "AUTH_REQUIRED"
+        : "AUTH_UNAVAILABLE",
+    );
+  if (!parse(uuid, identity.data.userId).ok) throw new Error("AUTH_REQUIRED");
+  const owner = identity.data.userId;
   return getDb().transaction(async (tx) => {
     await tx.execute(sql`set local role authenticated`);
     await tx.execute(

@@ -1,6 +1,7 @@
 import { registerHooks } from "node:module";
 registerHooks({
   resolve(specifier, context, next) {
+    if (specifier === "next/server") return next("next/server.js", context);
     if (specifier.startsWith("@/"))
       specifier = new URL("../src/" + specifier.slice(2), import.meta.url).href;
     try {

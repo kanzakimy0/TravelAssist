@@ -3,10 +3,12 @@
 ## 1. Metadata
 
 - Task ID: `TASK-017-B`
-- Status: 阻塞（Partial；服务器子集已实现，Step 页面集成未完成）
+- Status: 进行中（Partial / Draft；服务器子集已实现，Step 页面集成未完成）
 - Actual implementation base: `0c21643d0f44ce599747007e25265c0e5219b5fb`
 - Result: `docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`
-- Commit / Draft PR: PENDING
+- Implementation Commit: `f597933858b137a3929434e4d2d2d6c0444859ec`
+- Draft PR: [#221](https://github.com/kanzakimy0/TravelAssist/pull/221)（Open / Draft；Partial）
+- Latest develop integrated: `18afee5f02ed45505b81636f7b25b568270b2bf9`；Auth Core #218 已复用，页面接线未完成。
 - Issue: `#207`
 - Owner: `B`
 - Priority: `P0`

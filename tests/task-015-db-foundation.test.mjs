@@ -38,7 +38,19 @@ test("stable foundation dependencies and original framework versions are locked"
   assert.equal(pkg.dependencies.next, "16.3.4");
   assert.equal(pkg.dependencies.react, "19.2.8");
   assert.equal(pkg.devDependencies.typescript, "6.0.3");
-  assert.equal(pkg.dependencies["@supabase/ssr"], undefined);
+  // No SSR was shipped by TASK-015. TASK-018 is explicitly authorized to add
+  // Auth later; preserve the historical boundary, not a permanent dependency ban.
+  const foundationPackage = JSON.parse(
+    execFileSync(
+      "git",
+      ["show", "24dff4e3b74dfe01c369d2c149d37eba86ad6472:package.json"],
+      {
+        cwd: root,
+        encoding: "utf8",
+      },
+    ),
+  );
+  assert.equal(foundationPackage.dependencies["@supabase/ssr"], undefined);
 });
 
 test("CLI bootstrap and sole SQL history preserve the foundation's historical empty-schema boundary", () => {

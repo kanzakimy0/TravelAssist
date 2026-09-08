@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { localConnection } from "./task-017-local-db.mjs";
 import { POST } from "../src/app/api/travel-persistence/route.ts";
 import { closeDb } from "../src/db/index.ts";
+import { createServerSupabaseClient } from "../src/lib/supabase/server.ts";
 import {
   fullDraftFixture,
   progressFixture,
@@ -11,6 +12,8 @@ import {
 
 test("Local verified Supabase identities exercise the real browser API and concurrent autosave", async () => {
   const saved = {
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    AUTH_SITE_URL: process.env.AUTH_SITE_URL,
     DATABASE_URL: process.env.DATABASE_URL,
     SUPABASE_URL: process.env.SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
@@ -37,7 +40,8 @@ test("Local verified Supabase identities exercise the real browser API and concu
       Number((await db`select count(*) from auth.users`)[0].count),
       0,
     );
-    const tokens = [];
+    const tokens = [],
+      jars = [];
     for (let i = 0; i < 2; i++) {
       const email = randomUUID() + "@example.test",
         password = randomUUID() + randomUUID();
@@ -62,6 +66,20 @@ test("Local verified Supabase identities exercise the real browser API and concu
         "Local fixture authentication must succeed",
       );
       tokens.push(login.data.session.access_token);
+      const jar = new Map();
+      const ssr = createServerSupabaseClient(
+        {
+          getAll: () => [...jar].map(([name, value]) => ({ name, value })),
+          setAll: (values) => values.forEach((c) => jar.set(c.name, c.value)),
+        },
+        false,
+      );
+      const cookieLogin = await ssr.auth.signInWithPassword({
+        email,
+        password,
+      });
+      assert.equal(cookieLogin.error, null);
+      jars.push(jar);
     }
     const bad = await call("invalid-token", "getPreference", {});
     assert.equal(bad.status, 401);
@@ -78,6 +96,31 @@ test("Local verified Supabase identities exercise the real browser API and concu
       },
     });
     assert.equal(own.status, 200);
+    const cookieCall = async (jar, origin = "http://127.0.0.1") =>
+      POST(
+        new Request("http://127.0.0.1/api/travel-persistence", {
+          method: "POST",
+          headers: {
+            Cookie: [...jar].map(([k, v]) => k + "=" + v).join("; "),
+            Origin: origin,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ operation: "getPreference", input: {} }),
+        }),
+      );
+    const cookieA = await cookieCall(jars[0]);
+    assert.equal(cookieA.status, 200);
+    assert.match(cookieA.headers.get("Cache-Control"), /private.*no-store/);
+    assert.equal(
+      (await cookieA.json()).result.preference.values["mobility.lessWalking"],
+      true,
+    );
+    assert.equal(
+      (await cookieCall(jars[0], "https://evil.example")).status,
+      403,
+    );
+    const cookieB = await cookieCall(jars[1]);
+    assert.equal((await cookieB.json()).result.revision, 0);
     const input = {
       creationKey: randomUUID(),
       content: { facts: fullDraftFixture(), progress: progressFixture() },

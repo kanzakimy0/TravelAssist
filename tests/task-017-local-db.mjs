@@ -65,11 +65,13 @@ export function localConnection(configureService = false) {
       assert.ok(["127.0.0.1", "localhost"].includes(api.hostname));
       assert.equal(api.port, "54321");
       assert.equal(api.protocol, "http:");
-      const key = status.PUBLISHABLE_KEY || status.ANON_KEY;
+      const key = status.PUBLISHABLE_KEY;
       assert.ok(key && status.SERVICE_ROLE_KEY);
       // Local-only fixture environment, never written to disk or returned to a browser.
       process.env.DATABASE_URL = url.href;
       process.env.SUPABASE_URL = api.href;
+      process.env.NEXT_PUBLIC_SUPABASE_URL = api.href;
+      process.env.AUTH_SITE_URL = "http://127.0.0.1";
       process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = key;
       return {
         admin: createClient(api.href, status.SERVICE_ROLE_KEY, {

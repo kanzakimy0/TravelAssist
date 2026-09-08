@@ -12,6 +12,25 @@ export type DraftTransport = (
   input: unknown,
 ) => Promise<unknown>;
 export type AutosaveStatus = "idle" | "saving" | "saved" | "error" | "conflict";
+/** TASK-018 same-origin SSR cookies; server independently verifies the user on every call. */
+export const cookieDraftTransport: DraftTransport = async (
+  operation,
+  input,
+) => {
+  const response = await fetch("/api/travel-persistence", {
+    method: "POST",
+    cache: "no-store",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ operation, input }),
+  });
+  const body = await response.json();
+  if (!response.ok || body?.ok !== true)
+    throw new Error(
+      typeof body?.code === "string" ? body.code : "PERSISTENCE_UNAVAILABLE",
+    );
+  return body.result;
+};
 /** Auth Core supplies a current token. This adapter neither creates users nor stores tokens. */
 export function browserDraftTransport(
   getAccessToken: () => Promise<string | null>,
