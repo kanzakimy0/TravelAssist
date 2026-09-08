@@ -10,8 +10,8 @@
 - Branch: `codex/trip-completion-flight-workspace`
 - Depends On: PR #204 本地整合成果（未自动合并，作为本轮明确保留的基线）
 - Base: `c9589d1c738e5035ec6115e39b46bc10cd458259`
-- Commit: PENDING
-- Pull Request: PENDING
+- Commit: `8e4a4972fae0950041e28e5cc152234c975f14f7`（实现；后续仅追踪记录同步）
+- Pull Request: #206（Draft → develop；包含尚未合并的PR #204基线）
 
 ## 用户已确认设计
 

@@ -3,6 +3,7 @@
 ## 完成规划与出发准备（2026-09-08）
 
 - TASK-TRIP-PREPARATION-A / #205，用户确认设计后实施，分支 `codex/trip-completion-flight-workspace`，基线 `c9589d1`（保留PR #204成果，未自动合并）。4.42–4.45待审查；532项测试及三尺寸浏览器验收通过，不修改B Engine责任。
+- 本轮实现提交 `8e4a4972fae0950041e28e5cc152234c975f14f7`，Draft PR #206 → develop；Task/Result见`docs/tasks/TASK-trip-preparation.md`与`docs/tasks/RESULT-trip-preparation.md`，未标记已完成。
 - 同行人库仅浏览器明确保存，航班仅录入/购票需求/自行确认；“完成”不等于旅行结束、真实出票或手机助手就绪。原5.6 B范围成果保留，本轮由用户授权A做跨页衔接。
 
 ## Planner 本地最新修改整合（2026-09-08）

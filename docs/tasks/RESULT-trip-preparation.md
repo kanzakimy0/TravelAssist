@@ -6,7 +6,8 @@
 - Issue: #205
 - Branch: `codex/trip-completion-flight-workspace`
 - Base: `c9589d1c738e5035ec6115e39b46bc10cd458259`，保留PR #204尚未合并的最新本地整合成果；不把旧develop替换回预览。
-- Commit / PR: PENDING
+- Implementation Commit: `8e4a4972fae0950041e28e5cc152234c975f14f7`；后续提交仅同步追踪记录。
+- PR: #206，Draft → develop；未合并。
 - WBS: 4.42–4.45
 
 ## Implemented
