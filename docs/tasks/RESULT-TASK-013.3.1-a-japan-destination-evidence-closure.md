@@ -19,7 +19,8 @@
 - Task：TASK-013.3.1-A；Issue #194；父 Issue #189、#152；父 PR #192。
 - Branch：`feature/a-japan-destination-evidence-closure` → develop。
 - 现有分支安全快进同步最新 develop，独立 worktree，未修改用户主工作区或3113预览。
-- Commit：PENDING；Draft PR：PENDING。保持 Draft，不自动合并。
+- Implementation Commit：`1daafbcb0e436c2c4a3f88895d192cdc25518f8f`；文档追踪head见PR/Issue。
+- Draft PR：[#199](https://github.com/kanzakimy0/TravelAssist/pull/199)。保持 Draft，不自动合并。
 
 ## Closure Targets
 

@@ -2,7 +2,7 @@
 
 ## TASK-013.3.1-A 补证收口阶段交付（2026-09-08）
 
-用户授权合并复验 PR #198，merge `3ad62711be8ab54a0c4fa039f9bd426e30128946`。PR #192 也已合并，#189 保持 Open；2.15 已合并复验，仍不表示图片完成。2.16 沿用主项，Partial / 待收口。本次修复297个 `oldid=undefined` 来源链接并刷新对应事实/版本，保留父门槛254/46；新增动态最终门槛发现300行缺少已审查的官方边界来源及明确规则，严格 fully_passed=0。已建立目标清单、补证记录、最终验收报告、下游逐字节保护和独立测试。TASK-013.4 allowed: No。TASK-013.3.1-A / #194 / feature/a-japan-destination-evidence-closure；Commit / Draft PR PENDING。不改UI，不生成或下载图片，不解锁POI。以下旧Draft与旧计数为历史，以当前Result及实际合并状态为准。
+用户授权合并复验 PR #198，merge `3ad62711be8ab54a0c4fa039f9bd426e30128946`。PR #192 也已合并，#189 保持 Open；2.15 已合并复验，仍不表示图片完成。2.16 沿用主项，Partial / 待收口。本次修复297个 `oldid=undefined` 来源链接并刷新对应事实/版本，保留父门槛254/46；新增动态最终门槛发现300行缺少已审查的官方边界来源及明确规则，严格 fully_passed=0。已建立目标清单、补证记录、最终验收报告、下游逐字节保护和独立测试。TASK-013.4 allowed: No。TASK-013.3.1-A / #194 / feature/a-japan-destination-evidence-closure；实现 Commit `1daafbc`；Draft PR [#199](https://github.com/kanzakimy0/TravelAssist/pull/199)，文档追踪head见PR/Issue。不改UI，不生成或下载图片，不解锁POI。以下旧Draft与旧计数为历史，以当前Result及实际合并状态为准。
 
 ## TASK-013.2-A 最新 develop 复验（2026-09-08）
 
@@ -404,7 +404,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 |---|---|---|---|---|---|---|---|---|
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
-| TASK-013.3.1-A | 2.16 | A | 待审查（Partial；297版本修复，官方边界待收口） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | PENDING；基线 `3ad6271` | PENDING Draft |
+| TASK-013.3.1-A | 2.16 | A | 待审查（Partial；297版本修复，官方边界待收口） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Draft / Partial |
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
