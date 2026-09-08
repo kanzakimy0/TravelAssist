@@ -10,7 +10,7 @@
 - Branch: `codex/planner-independent-tracks-plan-actions`
 - Depends On: 当前本地已验收 UI，PR #204 / #206；不自动合并
 - Base: `a2a537bbed9b153b3a71fbb955e8ac23ef30213b`
-- Commit: PENDING
+- Commit: `83cf4687eb2ddc84583c30fd86cb8605b935a836`（实现，后续仅追踪记录）
 - Pull Request: PENDING（未上传）
 
 ## 用户本轮要求

@@ -5,7 +5,7 @@
 - 本地实现完成、待验收；GitHub 发布受阻，不宣称已上传或合并。
 - Branch: `codex/planner-independent-tracks-plan-actions`
 - Base: `a2a537bbed9b153b3a71fbb955e8ac23ef30213b`，保留 PR #204 / #206 最新 UI。
-- Implementation Commit: PENDING
+- Implementation Commit: `83cf4687eb2ddc84583c30fd86cb8605b935a836`（后续提交仅同步记录）
 - Issue / Draft PR: PENDING，创建 Issue 被权限检查拦截，等待用户授权发布本次代码及任务元数据。
 - WBS: 4.46 待审查（本地）；原工作区未切换或覆盖。
 
