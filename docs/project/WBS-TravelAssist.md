@@ -844,7 +844,7 @@ B Auth/User Session → A Header/Avatar Entry
 
 ## WBS-5.10-B-FOLLOWUP-1 独立追踪
 
-- Owner：B；Issue #193（Open）；Draft PR #197；状态：待审查。
+- Owner：B；Issue #193；PR #197；状态：已完成（2026-09-08 用户最终验收通过，授权合入 develop）。
 - 范围：首页 / 我的旅行共享纯日期判定、全部旅行与草稿分页、同行人 / 账户大屏布局。
 - Parent 5.1 / 5.4 / 5.6 / 5.10 / 5.20 保持已完成；5.3 保持未开始，不接 Auth。
 - Task：`docs/tasks/TASK-WBS-5.10-b-personal-center-trip-status-large-screen-followup.md`。

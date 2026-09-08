@@ -2,14 +2,14 @@
 
 ## Metadata / Tracking
 
-- Owner：B；Follow-up：**待审查**；Issue：[#193](https://github.com/kanzakimy0/TravelAssist/issues/193)（Open）。
+- Owner：B；Follow-up：**已完成**（2026-09-08 用户最终验收通过）；Issue：[#193](https://github.com/kanzakimy0/TravelAssist/issues/193)。
 - Workspace：`F:\TravelAssist`。
-- Draft PR：[#197](https://github.com/kanzakimy0/TravelAssist/pull/197)，base=`develop`，保持 Open / Draft。
+- PR：[#197](https://github.com/kanzakimy0/TravelAssist/pull/197)，base=`develop`；用户已验收并授权合并。
 - 实现提交：`053457c`，已推送指定分支；本记录随后以文档提交回填。
 - Branch：`fix/b-personal-center-trip-status-large-screen-polish`；Base：`develop`。
 - 执行基线：`64be3bae73b80eaae6ad59471761e4b70a4b6aa5`。
 - Parent 5.1 / 5.4 / 5.6 / 5.10 / 5.20 保持“已完成”；5.3 保持“未开始”。
-- 不自动合并、不关闭 Issue、不开始其他 Task；等待用户验收。
+- 用户已明确授权本次合并和 WBS 收尾；按 Task 第 19 节关闭 Issue，不开始其他 Task。
 
 ## Preflight
 
@@ -151,10 +151,19 @@ node tests/personal-center-followup.browser.mjs
 - `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py` 仍未追踪，SHA-256 与本轮预检一致，未修改、删除或提交。
 - Follow-up 保持“待审查”，PR 保持 Open / Draft，Issue #193 保持 Open；Parent WBS 的完成状态及 5.3 状态不变。
 
+## 用户最终验收及合并收尾（2026-09-08）
+
+- 用户在本对话确认“验证完成”，明确要求合并 PR 到 develop、更新 WBS 并拉取最新 develop；此前“待审查 / Draft / 等待验收”的段落保留为历史记录，以本节和 Metadata 为准。
+- 本次仅更新 Master WBS 中该 Follow-up 的独立追踪，以及当前 Task / Result 的验收状态；不修改 Runtime、测试、其他 Owner Task 或 Parent WBS。
+- 验收提交随 PR #197 交付到 develop。合并确认后按 Task 第 19 节关闭 Issue #193，并执行 `git switch develop` / `git pull --ff-only origin develop`；最终合并 SHA 在 PR / Issue 收尾记录中回填。
+- 预检 PR head 为 `76d7839`，base 最新为 `3ad6271`，PR 可合并，远端检查成功。develop 中新增的 A-owned 资产工作保留，不回退、不重写。
+- 最新执行的完整测试结果仍为 441 PASS / 3 FAIL / 444 总计；三项已确认资产 baseline 与历史格式债继续如实保留，不因验收将其改写为全绿。
+- Parent 5.1 / 5.4 / 5.6 / 5.10 / 5.20 继续已完成；5.3 仍未开始。三个用户未追踪文件保留；不自动开始后续 Task。
+
 ## Ownership / Git / Stop
 
 - Companion / Profile TSX 零改动；仅各自 CSS 的 >=1440px 规则改变布局。
 - Planner / Map / Start Flow / Preference / DB / API / Supabase / Auth / localStorage / Cookie / Session / dependencies / Workflow 零实现改动。
 - Master WBS 仅追加本 Follow-up 的独立追踪，Parent 完成状态及 5.3 状态不变。
 - 只精确暂存本 Task 文件，不使用 `git add .`、clean、hard reset、force push。
-- 已提交/推送指定分支并创建 Draft PR #197，base=develop、`Relates to #193`；Issue #193 更新待审查说明并保持 Open。等待用户验收，不自动开始其他任务。
+- 已提交/推送指定分支并创建 PR #197，base=develop、`Relates to #193`；初始保持 Draft，现按用户最终验收授权合并与收尾，不自动开始其他任务。

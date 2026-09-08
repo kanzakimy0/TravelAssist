@@ -6,7 +6,7 @@
 - Primary WBS: `5.10`
 - Related Completed WBS: `5.1 / 5.4 / 5.6 / 5.10 / 5.20`
 - Owner: `B`
-- Status: `待审查`
+- Status: `已完成`（2026-09-08 用户最终验收通过，授权 PR #197 合入 develop）
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
 - Workspace: `F:\TravelAssist`
 - Base Branch: `develop`
