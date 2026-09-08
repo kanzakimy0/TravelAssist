@@ -2,11 +2,19 @@
 
 ## Status
 
-待审查 — implementation and automated Local acceptance passed; user visual acceptance and merge are pending. Full-repository format check remains FAIL for 27 unchanged baseline documents, not silently counted as PASS. No subsequent task started.
+待审查 — initial automated Local acceptance passed; onsite visual acceptance is still pending, and the reported new-tab email confirmation/callback issue remains unresolved. Presentation follow-ups below do not constitute final Auth acceptance. Full-repository format check remains FAIL for 27 unchanged baseline documents, not silently counted as PASS. No subsequent task started.
 
-## Preflight
+## Onsite acceptance follow-up — stable Auth layout (2026-09-08)
 
-### Onsite acceptance follow-up — logout presentation (2026-09-08)
+- User reported desktop scrollbar, photo zoom and form movement when switching phone/email or displaying validation, then the same photo resize on navigation to Forgot Password. The former login-only sizing was insufficient; all four visual Auth routes now share the same desktop photo/card canvas. Recovery has a reserved feedback gap between the email field and submit button. Login modes reserve equal field/action slots; alert/status content retains its ARIA/live-region/focus semantics without adding a new row.
+- Fixed canvas applies at width >= 768px and height >= 660px. Short desktop windows use compact spacing and side-by-side provider buttons, keeping 44px targets and 16px inputs. Mobile and very short/zoomed windows retain natural vertical flow, not clipped or globally hidden overflow. Photo assets, authentication operations, callbacks, account data and session behavior are unchanged.
+- Actual Chromium `151.0.7922.34` and Microsoft Edge `152.0.4191.66`: **165/165 presentation checks per browser PASS**, across 1920×1080, 1600×900, 1440×900, 1440×760, 1280×720, 1024×768, 1024×660, 768×1024, 390×844, 320×740 and 640×450. Each size checks 8 login modes/feedback states plus Forgot Password, empty recovery submit, sent presentation, return to Login, Register, empty registration submit and no-session Reset Password. Actual link navigation verifies shared photo/card geometry; login and empty-submit checks additionally verify unchanged CTA position/height. Desktop document scroll, horizontal overflow, overlapping fields, clipped feedback, sub-44px controls, sub-16px inputs and browser runtime errors: none in this matrix.
+- `tests/wbs-5-3-login-layout.browser.mjs` uses the existing external Playwright installation, a fresh anonymous browser context, intercepted mail presentation responses and a fail-closed guard against unmocked Auth POST requests. No account creation, real email, user cookies, DB reset or fixture cleanup. The valid-session Reset form and real recovery delivery were **not** rerun during this presentation follow-up; earlier technical results remain historical evidence only. Initial test failures from viewport-vs-document scroll coordinates and an incorrect mocked Recovery state were corrected before the final runs, without altering Auth contracts.
+- Actual commands in the existing WSL worktree: `npm run lint`, `npm run typecheck`, `node --test tests/*.test.mjs` (**633/633 PASS**), `node --test tests/wbs-5-3-auth-user-flow.test.mjs` (**12/12 PASS**), `npm run build`, `node tests/task-018-client-bundle.mjs` (**33 production chunks / 64 dependency modules PASS**), changed-file Prettier and `git diff --check`: PASS. `npm run format:check`: FAIL, the same 27 unrelated baseline documents; no other Owner Task was rewritten.
+- Evidence: `F:\TravelAssist-wbs53-evidence\auth-layout\{chromium,edge}\summary.json`, per-viewport blank-input/feedback/recovery screenshots; `auth-layout-{lint,typecheck,all-tests,targeted,build,client-audit,format-full,chromium-verified,edge-verified}.log`. Recovery and compact desktop screenshots visually inspected. Screenshots contain no credentials; synthetic entered inputs are masked.
+- Preview rebuilt at `http://127.0.0.1:3000/login`; existing Local DB and onsite account preserved. PR #222 remains Draft / unmerged, Issue #219 Open, WBS 5.3 待审查. Await the user's visual check; no merge or next Task.
+
+## Onsite acceptance follow-up — logout presentation (2026-09-08)
 
 - User requested removing the visible “仅退出当前会话” subtitle and adding mouse feedback. Implemented in `8733fe74de278262bd5f1bdf01ba2dbbe4cfd28d`: a single-line logout icon/menu item, coral hover background, pressed inset border, keyboard focus ring and disabled feedback. The actual Core `scope: "local"` behavior is unchanged; no all-device claim added.
 - Current-task tests now verify the real local-signout invariant rather than requiring the removed subtitle. Targeted Node 11/11; isolated actual-CSS Chromium checks at 1440/390/320px PASS (44px target, hover, pressed, keyboard focus, disabled). This presentation harness does not authenticate or claim a new Auth E2E pass.
@@ -15,6 +23,8 @@
 - Site preview rebuilt/restarted at the same loopback address without resetting DB, deleting users or altering sessions. The user's manually created account remains intact.
 - Important acceptance finding, NOT fixed by this styling change: user opening the confirmation email in a new tab encountered `callback_failed`, then repeated links returned `otp_expired`; confirmed email existed without a session. User subsequently confirmed email/password login succeeds. The “我已确认邮箱，继续” path lacks useful no-session feedback. Exact callback cause remains unproven; cross-tab/session handling and recovery feedback still need investigation/fix. Earlier automated same-context results must not be presented as final user acceptance of this path.
 - PR #222 remains Draft; Issue #219 Open; WBS 5.3 remains 待审查. No merge or next Task.
+
+## Preflight
 
 - Executed, in order in `F:\TravelAssist`: `git status --short --untracked-files=all`, `git branch --show-current`, `git fetch --all --prune`, `git switch develop`, `git pull --ff-only origin develop`, `git rev-parse origin/develop`, `git log --oneline -15 origin/develop`.
 - origin/develop base: `18afee5f02ed45505b81636f7b25b568270b2bf9`; main checkout fast-forwarded without discarding user files, then the requested feature branch was created from this base.

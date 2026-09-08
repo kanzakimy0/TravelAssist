@@ -134,6 +134,17 @@ test("WBS-5.3 logout has hover, pressed, keyboard and disabled feedback", () => 
   );
   assert.match(css, /\.avatarLogout:disabled\s*\{[^}]*cursor: wait;/s);
 });
+test("WBS-5.3 Auth routes share a stable canvas and reserve feedback without clipping", () => {
+  const css = read("src/features/auth/auth.module.css");
+  assert.match(form, /kind === "login" \? styles.loginForm/);
+  assert.match(form, /className=\{styles.feedback\}/);
+  assert.match(css, /\.feedback\s*\{[^}]*display: grid;/s);
+  assert.match(css, /\.loginForm \.fields\s*\{[^}]*grid-template-rows:/s);
+  assert.match(css, /@media \(min-width: 768px\) and \(min-height: 660px\)/);
+  assert.match(css, /\.shell\s*\{[^}]*height: 100dvh;/s);
+  assert.doesNotMatch(css, /\.shell:has\(\.loginForm\)/);
+  assert.doesNotMatch(css, /\.shell\s*\{[^}]*overflow:\s*hidden/s);
+});
 test("WBS-5.3 legal names, no fictional legal links, accessible status and secret-safe forms", () => {
   assert.match(form, /《服务条款》和《隐私政策》/);
   assert.match(form, /WBS 10.6/);

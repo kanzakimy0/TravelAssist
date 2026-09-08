@@ -318,7 +318,9 @@ export function AuthForm({
   }
 
   return (
-    <div className={styles.formContent}>
+    <div
+      className={`${styles.formContent} ${kind === "login" ? styles.loginForm : ""}`}
+    >
       <h1>
         {stage === "confirmation"
           ? "请检查邮箱"
@@ -573,23 +575,25 @@ export function AuthForm({
               )}
             </fieldset>
           )}
-          <p
-            id={errorId}
-            ref={feedbackRef}
-            tabIndex={-1}
-            className={styles.error}
-            role="alert"
-          >
-            {error}
-          </p>
-          <p
-            id={statusId}
-            className={styles.notice}
-            role="status"
-            aria-live="polite"
-          >
-            {notice}
-          </p>
+          <div className={styles.feedback}>
+            <p
+              id={errorId}
+              ref={feedbackRef}
+              tabIndex={-1}
+              className={styles.error}
+              role="alert"
+            >
+              {error}
+            </p>
+            <p
+              id={statusId}
+              className={styles.notice}
+              role="status"
+              aria-live="polite"
+            >
+              {notice}
+            </p>
+          </div>
           {unregistered && (
             <div className={styles.unregistered}>
               <Link
