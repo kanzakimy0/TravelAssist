@@ -1,15 +1,17 @@
-# Codex 执行指令 — TASK-013.2-A 全球核心素材生成单
+# Codex 执行指令 — TASK-013.2-A 日本国内核心素材生成单
 
 将下面整段复制给 Codex：
 
 ```text
-请在 TravelAssist 仓库中完整执行 TASK-013.2-A，生成全球核心目的地与景点的素材生产单。不要只分析，不要只给示例，不要在未满足前置时猜测父任务结构，也不要一次性生成或下载全部图片。
+请在 TravelAssist 仓库中完整执行 TASK-013.2-A，生成日本国内核心目的地与景点素材生产单。
+
+重要：本 Task 只允许日本境内素材。旧版“全球核心目的地”范围已经废止。任何海外目的地、非 JP country_code、非 jp- destination_id、非 JP- batch_id 都必须视为错误并停止验收。
 
 Repository:
 https://github.com/kanzakimy0/TravelAssist
 
 Issue:
-#152 — TASK-013.2-A 全球核心目的地素材生成单（300目的地 / 9,000景点）
+#152 — TASK-013.2-A 日本国内核心目的地素材生成单（300目的地 / 9,000景点）
 
 Branch:
 feature/a-core-destination-generation-manifest
@@ -23,7 +25,7 @@ docs/assets/core-destination-generation-plan.md
 Seed:
 docs/assets/catalog/core-destination-generation-seed.v1.csv
 
-Batch order:
+Batches:
 docs/assets/catalog/core-destination-generation-batches.v1.csv
 
 Result:
@@ -31,7 +33,7 @@ docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md
 
 一、Git 安全启动
 
-进入 TravelAssist 仓库根目录，执行：
+执行：
 
 git status --short
 git branch --show-current
@@ -46,16 +48,13 @@ git reset --hard
 git push --force
 git push --force-with-lease
 
-存在与本 Task 无关的用户文件时不得删除或覆盖。优先使用独立 worktree；无法安全隔离则返回 Blocked。
+存在用户未提交文件时不得删除或覆盖。优先使用独立 worktree；无法安全隔离则返回 Blocked。
 
-从远端读取完整任务：
+读取远端最新规格，不要使用本地旧缓存：
 
 git show origin/feature/a-core-destination-generation-manifest:docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md
-
 git show origin/feature/a-core-destination-generation-manifest:docs/assets/core-destination-generation-plan.md
-
 git show origin/feature/a-core-destination-generation-manifest:docs/assets/catalog/core-destination-generation-seed.v1.csv
-
 git show origin/feature/a-core-destination-generation-manifest:docs/assets/catalog/core-destination-generation-batches.v1.csv
 
 切换已有分支：
@@ -63,56 +62,96 @@ git show origin/feature/a-core-destination-generation-manifest:docs/assets/catal
 git switch feature/a-core-destination-generation-manifest
 git pull --ff-only origin feature/a-core-destination-generation-manifest
 
-本地没有该分支时：
-
-git switch --track -c feature/a-core-destination-generation-manifest origin/feature/a-core-destination-generation-manifest
-
 二、强制前置条件
 
 必须确认最新 origin/develop 同时满足：
 
-1. TASK-013-A / Issue #112 的实现已经合并并最终验收；
-2. develop 中存在 TASK-013-A Result、Asset Manifest、rights policy 和 Registry；
-3. TASK-013.1-A / Issue #116 的实现已经合并并最终验收；
+1. TASK-013-A / Issue #112 已合并并最终验收；
+2. develop 中存在 Asset Manifest、Registry、rights policy；
+3. TASK-013.1-A / Issue #116 已合并并最终验收；
 4. develop 中存在尺寸 Profile、Variant Registry、夜间流水线和 TASK-013.1-A Result；
-5. WBS 中两个父任务均为已完成。
+5. WBS 2.13 / 2.14 均已完成。
 
 任一条件不满足：
 
 - 不轮询；
 - 不等待；
-- 不在父任务 feature branch 上继续；
-- 不猜测 Schema；
-- 创建或更新 RESULT-TASK-013.2-a-core-destination-generation-manifest.md 为 Blocked；
-- 在 Issue #152 写明实际 develop SHA、缺失项、父 Issue/PR 状态；
+- 不猜测父任务 Schema；
+- 更新 RESULT-TASK-013.2-a-core-destination-generation-manifest.md 为 Blocked；
+- 更新 Issue #152；
 - 不创建实现 PR；
-- 按 Task Result 格式返回。
+- 按完整 Result 格式返回。
 
-前置满足后，将最新 origin/develop 安全 merge 到本分支。不要 rebase 已推送分支，不要 force push。检查所有 Open/Draft PR，避免与 docs/assets、src/data/assets、tools/assets、package.json 的活动任务冲突。
+三、Japan-only 强制审计
 
-三、冻结数字
+在任何 Manifest 构建之前先审计 Seed 与 Batch。
+
+Seed 必须：
+
+- 正好 300 行；
+- 300 个唯一 destination_id；
+- country_code=JP 正好 300；
+- non-JP 行数为 0；
+- 300 个 destination_id 全部以 jp- 开头；
+- S=100，A=200；
+- S quota=40，A quota=25；
+- attraction quota 总数=9,000；
+- region 只能是 hokkaido/tohoku/kanto/chubu/kansai/chugoku/shikoku/kyushu-okinawa。
+
+Batch 必须：
+
+- 正好 40 批；
+- 全部 batch_id 以 JP- 开头；
+- JP-S-01..JP-S-10 共 10 批；
+- JP-A-01..JP-A-30 共 30 批；
+- destination total=300；
+- attraction total=9,000；
+- city variants=600；
+- attraction variants=9,000；
+- total variants=9,600；
+- 每批最多 10 个目的地；
+- 每批最多 420 个基础输出。
+
+发现任何韩国、中国、东南亚、欧洲、美洲、中东、大洋洲目的地，立即失败，不得通过把 country_code 改成 JP 来伪装日本实体。
+
+四、47 都道府县覆盖
+
+Destination Manifest 必须补充：
+
+- prefecture_code
+- prefecture_name_ja
+- prefecture_name_en
+- coverage_note
+
+最终必须证明：
+
+prefecture_count=47
+missing_prefectures=0
+
+生成：
+
+docs/assets/generated/prefecture-coverage.md
+
+列出每个都道府县的 destination 数、S/A 数和覆盖说明。
+
+五、冻结规模
 
 必须严格得到：
 
-- 300 个目的地；
-- S 级 100 个，每个 40 个景点；
-- A 级 200 个，每个 25 个景点；
+- 日本目的地 300；
+- S 级 100 × 40 景点 = 4,000；
+- A 级 200 × 25 景点 = 5,000；
 - 景点槽位总数 9,000；
-- 目的地 source jobs 300；
-- 景点 source/provider jobs 9,000；
+- destination source jobs 300；
+- poi source/provider jobs 9,000；
 - source jobs 总数 9,300；
-- 目的地 md variant 300；
-- 目的地 lg variant 300；
-- 景点 sm variant 9,000；
-- variant expectations 总数 9,600；
-- batch 总数 40；
-- 每 batch 最多 10 个目的地；
-- 每 batch 最多 420 个基础输出；
-- 前四个 batch 必须为 JP-S-01、JP-A-01、JP-A-02、JP-A-03。
+- md=300；
+- lg=300；
+- sm=9,000；
+- variant expectations=9,600；
+- batch=40。
 
-Seed 是 TravelAssist 的产品覆盖 Seed，不要声称它是客观世界旅游排名，不要擅自增加、删除或替换行。
-
-四、必须实现的输出
+六、必须实现的输出
 
 生成：
 
@@ -126,6 +165,7 @@ docs/assets/catalog/core-generation-policy.v1.json
 docs/assets/generated/core-generation-summary.md
 docs/assets/generated/core-generation-batch-index.md
 docs/assets/generated/core-generation-validation.md
+docs/assets/generated/prefecture-coverage.md
 docs/assets/generated/unresolved-destinations.md
 docs/assets/generated/unresolved-attractions.md
 docs/assets/generated/duplicate-entities.md
@@ -136,84 +176,37 @@ docs/assets/generated/core-batches/{batch-id}.json
 
 必须生成正好 40 个 batch JSON。
 
-五、目的地清单
+七、Destination Manifest
 
-将 300 行 Seed 丰富为完整 Destination Manifest，至少包含：
+至少包含：
 
-- destination_id
-- batch_id
-- tier
-- region
-- country_code
+- destination_id / batch_id / tier / region / country_code
+- prefecture_code / prefecture_name_ja / prefecture_name_en
 - entity_type
 - name_zh / name_ja / name_en
 - canonical_name / aliases
 - latitude / longitude
 - provider_type / provider_entity_id
 - attraction_quota
-- source_mode
-- source_job_id
+- source_mode / source_job_id
 - md_variant_id / lg_variant_id
-- status / review_notes
+- status / coverage_note / review_notes
 
-不得简单把英文名复制到中文和日文栏位来伪装完成。无法验证时使用明确状态，不要捏造。
+不得简单把英文名复制到中文和日文栏位。无法确认的行政归属、名称、坐标必须显式标记待复核。
 
-六、9,000 个景点槽位
+八、9,000 个日本景点槽位
 
-每个 S 级目的地正好 40 行，每个 A 级目的地正好 25 行。
-
-S 级类别目标：
-
-- landmark 10
-- museum_culture 6
-- historic_religious 6
-- nature_viewpoint 5
-- family_theme 4
-- district_neighborhood 4
-- market_shopping 3
-- food_culture_experience 2
-
-A 级类别目标：
-
-- landmark 7
-- museum_culture 4
-- historic_religious 4
-- nature_viewpoint 3
-- family_theme 2
-- district_neighborhood 2
-- market_shopping 2
-- food_culture_experience 1
-
-景点字段至少包括：
-
-- poi_id
-- destination_id
-- batch_id
-- tier
-- selection_order
-- category
-- name_zh / name_ja / name_en
-- canonical_name / aliases
-- latitude / longitude
-- provider_type / provider_entity_id
-- official_url
-- source_mode
-- source_job_id
-- sm_variant_id
-- rights_status
-- status
-- quota_exception_reason
-- review_notes
+每个 S 级目的地 40 行；每个 A 级目的地 25 行。
 
 实体来源顺序：
 
 1. 仓库已有 POI Master / Provider ID；
 2. 已批准地图或 POI Provider；
-3. 官方旅游机构或官方景点资料；
-4. 许可兼容的开放知识实体；
+3. 日本官方旅游机构、都道府县 / 市町村官方旅游资料、景点官网；
+4. 许可兼容开放知识实体；
 5. 人工复核。
 
-禁止仅凭模型记忆捏造 9,000 个景点、坐标或 Provider ID。
+禁止只凭模型记忆捏造 9,000 个 POI、坐标或 Provider ID。
 
 数据不足时仍创建固定槽位：
 
@@ -222,46 +215,66 @@ status = entity_resolution_required
 source_mode = acquisition_required
 rights_status = unresolved
 
-并写入 unresolved-attractions.md。
+九、景点类别配额
 
-unresolved=0 才可 Completed；有 unresolved 但结构完整则 Partial，不得冒充全量完成。
+S 级：
+landmark 10
+museum_culture 6
+historic_religious 6
+nature_viewpoint 5
+family_theme 4
+district_neighborhood 4
+market_shopping 3
+food_culture_experience 2
 
-七、图片模式与真实性
+A 级：
+landmark 7
+museum_culture 4
+historic_religious 4
+nature_viewpoint 3
+family_theme 2
+district_neighborhood 2
+market_shopping 2
+food_culture_experience 1
+
+不适用时可重分配，但 quota_exception_reason 必须非空。
+
+十、图片真实性与版权
 
 生产单必须区分：
 
-- illustrative_city：城市气氛图，可使用 AI，但必须标记 authenticity=illustrative；
-- documentary_photo：真实景点图片，不由模型凭空生成；
-- provider_only：只保存合法 Provider 引用，不缓存二进制；
-- symbolic_placeholder：明确占位，不得作为真实 POI 图；
-- acquisition_required：等待合法来源。
+- illustrative_city
+- documentary_photo
+- provider_only
+- symbolic_placeholder
+- acquisition_required
 
-城市：每城只建立 1 个 master source job，之后由父流水线派生 md + lg。
+城市 AI 图必须 authenticity=illustrative。
 
-景点：每个景点建立 1 个真实来源、Provider 或采购 job，之后派生 sm。
+真实景点默认不能用 AI 图冒充实拍。
 
-真实景点默认禁止用 AI 图冒充实拍。AI 景点图只能是 illustrative/symbolic，不能进入 documentary slot。
+禁止抓取 Google Images、Google Maps、Tripadvisor、Booking、Agoda、Instagram、小红书、微博等图片。
 
-禁止抓取 Google Images、Google Maps、Tripadvisor、Booking、Agoda、Instagram、小红书、微博等图片。禁止提交 Token、Cookie、私有授权文件。
+禁止提交 Token、Cookie、账号、私有授权文件。
 
-八、Jobs 与 Variant Matrix
+十一、Jobs / Variant Matrix
 
-core-source-jobs.v1.jsonl 必须恰好 9,300 行：
+core-source-jobs.v1.jsonl 正好 9,300：
 
 - 300 destination_master；
 - 9,000 poi_photo/provider_reference。
 
-core-variant-output-matrix.v1.csv 必须恰好 9,600 行：
+core-variant-output-matrix.v1.csv 正好 9,600：
 
 - md 300；
 - lg 300；
 - sm 9,000。
 
-不要在本 Task 添加 Hero、地图弹窗、分享图等特殊尺寸，避免改变 9,600 的基础口径。特殊尺寸留给后续具体 batch task。
+本 Task 不添加 Hero、分享图、地图弹窗等特殊尺寸。
 
-九、工具与脚本
+十二、实现工具
 
-优先复用父任务工具，不新增 npm 依赖。实现：
+优先复用父任务工具，不新增 npm 依赖。实现或整合：
 
 - tools/assets/build-core-generation-manifest.mjs
 - tools/assets/validate-core-generation-manifest.mjs
@@ -269,34 +282,20 @@ core-variant-output-matrix.v1.csv 必须恰好 9,600 行：
 - tools/assets/estimate-core-generation-cost.mjs
 - tests/task-013-2-core-generation-manifest.test.mjs
 
-Package scripts：
+Validator 必须显式测试 Japan-only 和 47 prefectures，不能只验证总行数。
 
-- assets:core-manifest
-- assets:core-validate
-- assets:core-batches
-- assets:core-estimate
-- test:core-generation
-
-输出必须稳定排序，相同输入二次运行 no-op。大型 9,000 行 Catalog 不得意外打进客户端 bundle。
-
-十、本 Task 不生成全部图片
-
-本次只生成 Manifest、Jobs、Prompt、Batch 和报告：
+十三、默认只生成 Manifest
 
 RUN_MODE=manifest
 
-不得一次性调用图片 Provider，不得下载 9,000 张图片，不得提交 1GB 图片。
+本次不得一次性调用图片 Provider、不得下载 9,000 张图片、不得提交大批二进制。
 
-后续每个 batch 单独建立 child task。Batch prepare 示例：
+首批准备：
 
 RUN_MODE=batch-prepare
 BATCH_ID=JP-S-01
 
-只有 Provider、商业使用规则、预算、存储和该批 manifest 全部批准后，后续 child task 才允许 batch-execute。
-
-十一、必须验证
-
-执行：
+十四、必须验证
 
 npm ci
 npm run assets:core-manifest
@@ -313,50 +312,52 @@ npm run format:check
 npm run build
 git diff --check
 
-父任务没有某条 script 时，使用实际等价命令并在 Result 记录，不得伪造。
-
 再次执行：
 
 npm run assets:core-manifest
 npm run assets:core-validate
 
-第二次必须是确定性 no-op，除非输入明确变化。
+第二次必须确定性 no-op。
 
-十二、WBS / Result / GitHub
+最终明确输出以下断言结果：
 
-在 WBS 新增或使用下一个可用 ID：
+JP country rows
+non-JP rows
+jp-* destination IDs
+JP-* batches
+prefecture_count
+missing_prefectures
+S/A rows
+attraction quota
+source jobs
+variant expectations
+batch count
 
-2.15 | 全球核心目的地素材生成单（300目的地 / 9,000景点） | A | P1 | 2.13,2.14
+十五、WBS / Result / GitHub
 
-开始执行时为进行中；实现完成但 PR 未合并时为待审查；不得提前写已完成。
+WBS 2.15 名称必须改为：
 
-创建：
+日本国内核心目的地素材生成单（300目的地 / 9,000景点）
 
-docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md
+更新 Issue #152、Task、Result 和 WBS，不能继续写“全球”。
 
-严格按 Task 第 21 节写真实数字、resolved/unresolved、类别配额、重复项、rights、成本、命令结果和第一可执行批次。
-
-开始和完成时更新 Issue #152。
-
-Commit subject 包含 TASK-013.2-A，push 到：
+Commit subject 包含 TASK-013.2-A，push：
 
 feature/a-core-destination-generation-manifest
 
-创建：
+前置满足并实现完成后创建 feature/a-core-destination-generation-manifest → develop Draft PR。
 
-feature/a-core-destination-generation-manifest → develop
+不得自动 merge。
 
-的 Draft PR。
-
-PR 关联 #152、父任务 #112 和 #116。保持 Draft，不自动 merge。
-
-最后只按完整 Result 格式返回：
+最后按完整 Result 格式返回：
 
 Status
 Prerequisites
 Tracking
 Conflict Audit
+Japan-only Audit
 Seed Validation
+Prefecture Coverage
 Batch Validation
 Destination Manifest
 Attraction Manifest
@@ -365,7 +366,6 @@ Variant Matrix
 Prompts
 Cost / Storage
 Reports
-Registry
 Validation
 Files Changed
 WBS Update
@@ -374,6 +374,4 @@ Commit(s)
 Draft PR
 Follow-ups
 Known Limitations
-
-不要只返回概述，不要省略真实数量和命令结果。
 ```

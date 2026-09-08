@@ -1,5 +1,21 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-013.2-A Japan-only 交付（2026-09-08）
+
+2.15：待审查 / Partial。300日本目的地、9000 unresolved 景点槽位、9300 source jobs、9600基础 variant expectations、40 JP batches 已生成。JNTO 目录124个县级匹配覆盖47县，176个归属尚待复核，300目的地生产实体验收及9000 POI解析未完成。23专项测试、44父素材测试、51衍生测试、lint/typecheck/build通过；55产物重复生成 SHA/mtime 不变。全仓 format 有既有文档债，具体基线审计见 Result。Draft PR #187 保持 Draft；无新图片、无 Provider 调用、不自动 merge。Issue #152 与 Result 同步。以下开始/阻塞检查保留为历史。
+
+### 开始执行记录
+
+前置已解除：PR #172 合并并验收，最终记录 PR #188 已合入 develop `95311fcbdc3432eb4b75cb0644cad7783fad7415`。2.15 进入进行中；复用 Draft PR #187。以下阻塞检查保留为历史，不代表当前状态。
+
+### 历史前置阻塞复核（2026-09-08）
+
+- WBS 2.15 / Issue #152 / Branch `feature/a-core-destination-generation-manifest`：阻塞。actual develop `e98a715a11e4a4ee9bdc196854558a5a02b1753c`；远端 Japan-only 规格 `d587415`。
+- 最新 develop 已包含 #112 / TASK-013-A 的合并验收、Result、Asset Manifest / Registry / rights 规则，2.13 已完成。#116 仍 Open；PR #172 仍 Open / Draft / 未合并，尺寸 Profile、Variant Registry、夜间流水线、013.1 Result 和 2.14 已完成记录仍缺失；旧 #112 阻塞描述不再适用。
+- Japan-only Seed 300 / JP300 / non-JP0 / jp-ID300 / S100 / A200 / quota9000；JP 批次 CSV 40 / max10 / max420 / planned variants9600 只读验证通过。47 都道府县覆盖尚未验证。没有生成 Manifest / Jobs / Batch JSON，未开始实现。
+- Result：`docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`。仅文档记录提交，SHA 见 Issue #152；不创建实现 PR，不自动合并，不轮询等待。
+- 既有自动化文档 PR #187 已由非 Draft 转为 Draft，防止阻塞期间自动合并；本轮未新建 PR，未开始实现。
+
 ## TASK-013.1-A 最终验收（2026-09-08）
 
 用户授权验收合并。PR #172 已合入 develop，merge `b635465c623a4e628c9c9986253ee9266be39541`，文件树与验收 head `2cb487284572a24eaf6f4cc5ab98a5099501f23a` 相同。1,141 sources / 3,550 logical variants / 0 新增图片字节；406 全仓测试、素材校验、lint/typecheck/build、两次完整运行 no-op 和 resume、双尺寸浏览器验收通过。30 份既有 develop 文档格式问题如实记录，未伪报通过。2.14 / TASK-013.1-A 已完成；Issue #116 与 Result 同步。下方旧 Draft / 待审查描述为历史，由本记录及追踪表覆盖。013.2 须在此完成记录合入 develop 后单独开始，维持 Japan-only。
@@ -374,6 +390,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-013.2-A | 2.15 | A | 待审查（Partial；Japan-only 实体待解析） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；基线 `95311fc` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Draft |
+
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
 | TASK-013.1-A | 2.14 | A | 已完成 | #116 | `docs/tasks/TASK-013.1-a-asset-catalog-derivatives.md` | `feature/a-asset-catalog-derivatives` | `2cb4872`（验收）；`b635465`（合并） | [#172](https://github.com/kanzakimy0/TravelAssist/pull/172) Merged |
@@ -490,6 +508,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 2.10   | E2E 测试框架                     | A      | P2     | 2.1     | 已完成 |
 | 2.11   | Error / Logging 基础             | A      | P2     | 2.6     | 已完成 |
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
+| 2.15 | 日本国内核心目的地素材生成单（300目的地 / 9,000景点） | A | P1 | 2.13,2.14 | 待审查（Partial） |
+
 | 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
 | 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 已完成 |
 
