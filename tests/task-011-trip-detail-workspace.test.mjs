@@ -346,9 +346,17 @@ test("workspace source keeps one map shell and separates planner/detail slots", 
     ),
     "utf8",
   );
-  assert.match(routeBoard, /data-sight-row="planned"/);
-  assert.match(routeBoard, /data-sight-row="reserve"/);
-  assert.match(routeBoard, /all\.filter\(isPlannerSight\)/);
+  assert.match(routeBoard, /<PlannerSightTimeline/);
+  const sightTimeline = await readFile(
+    new URL(
+      "../src/features/planner/components/planner-sight-timeline.tsx",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(sightTimeline, /data-sight-row="planned"/);
+  assert.match(sightTimeline, /data-sight-row="reserve"/);
+  assert.match(sightTimeline, /plannerTimeline\(state, day\)/);
   assert.match(routeBoard, /type: "select", id: item\.id/);
   assert.match(css, /prefers-reduced-motion: reduce/);
 });

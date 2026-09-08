@@ -358,11 +358,14 @@ export async function mountMapbox(
   getTravelHints: () => Record<string, string> = () => ({}),
   dismiss: () => void = () => {},
   onAnchor: (point: { x: number; y: number } | null) => void = () => {},
+  isCurrent: () => boolean = () => true,
 ): Promise<MapSession | null> {
   if (!token?.trim()) return null;
   const { installMapArtwork, warmMapStyle, travelBubbles } =
     await import("./map-visuals");
   const mapbox = (await import("mapbox-gl")).default;
+  // A Strict Mode cleanup can happen while the SDK imports are pending.
+  if (!isCurrent()) return null;
   if (!mapbox.supported()) throw new Error("WebGL unavailable");
   const map = new mapbox.Map({
     container,

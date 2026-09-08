@@ -49,6 +49,45 @@
   padding: 20px;
   max-width: 480px;
 }
+dialog.planConfirmation[data-kind="quick"] {
+  inset: 0;
+  margin: auto;
+  width: min(520px, calc(100vw - 24px));
+  height: max-content;
+  max-height: calc(100dvh - 32px);
+}
+.planConfirmation .confirm footer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.planConfirmation .confirm footer button {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  min-height: 42px;
+  white-space: normal;
+}
+.planConfirmation label {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.planConfirmation label input[type="checkbox"] {
+  appearance: auto;
+  width: 16px;
+  height: 16px;
+  min-height: 0;
+  padding: 0;
+  margin: 0.3em 0 0;
+  accent-color: #bb5b49;
+}
+.confirm button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .confirm p {
   line-height: 1.7;
   margin: 0 0 16px;

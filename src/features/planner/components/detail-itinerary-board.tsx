@@ -1,4 +1,4 @@
-import { useEffect, useRef, type Dispatch } from "react";
+import { useEffect, useRef, useState, type Dispatch } from "react";
 import type {
   DetailDraftState,
   DetailRailItem,
@@ -12,12 +12,18 @@ import {
 } from "../model/trip-model";
 import { timelineStatus } from "./trip-timeline-track";
 import css from "../detail-itinerary-board.module.css";
+import {
+  detailCardKey,
+  detailTimeSuggestion,
+  acceptDetailTimeSuggestion,
+} from "../model/detail-card-actions";
 
 export function DetailItineraryBoard({
   day,
   items,
   selectedId,
   state,
+  dispatch,
   onItem,
   draft,
   onDraft,
@@ -42,6 +48,25 @@ export function DetailItineraryBoard({
   ) => void;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
+  const [feedback, setFeedback] = useState("");
+  function dismiss(key: string) {
+    onDraft({ railResponses: { ...draft.railResponses, [key]: "later" } });
+    setFeedback(
+      "已隐藏这条提醒，项目和真实检查状态保留；内容变化后会重新提醒。",
+    );
+  }
+  function accept(item: DetailRailItem) {
+    const result = acceptDetailTimeSuggestion(state, draft, day, item.id);
+    if (result.action) {
+      dispatch(result.action);
+      dispatch({
+        type: "ui",
+        patch: { selectedTripItemId: state.ui.selectedTripItemId },
+      });
+    }
+    if (result.draft) onDraft(result.draft);
+    setFeedback(result.notice);
+  }
   useEffect(() => {
     if (!selectedId) return;
     viewport.current
@@ -65,6 +90,9 @@ export function DetailItineraryBoard({
   }
   return (
     <>
+      <p className={css.srOnly} role="status">
+        {feedback}
+      </p>
       <div
         className={css.viewport}
         ref={viewport}
@@ -83,11 +111,17 @@ export function DetailItineraryBoard({
                   : item.reservation === "unknown"
                     ? { symbol: "?", label: "预约待确认" }
                     : timelineStatus[item.aiStatus];
-              const hasAdvice = item.aiStatus !== "normal";
+              const adviceKey = detailCardKey(state, item, "advice", items);
+              const bookingKey = detailCardKey(state, item, "booking", items);
+              const hasAdvice =
+                item.aiStatus !== "normal" &&
+                draft.railResponses?.[adviceKey] !== "later";
+              const suggestion = detailTimeSuggestion(state, item, items);
               const place = state.places.find(
                 (candidate) => candidate.id === canonical?.placeId,
               );
               const showReservation =
+                draft.railResponses?.[bookingKey] !== "later" &&
                 item.reservation !== "confirmed" &&
                 canonical?.reservationRequired &&
                 (Boolean(place?.bookingOptions.length) ||
@@ -153,20 +187,30 @@ export function DetailItineraryBoard({
                           }
                         >
                           <strong>{status.label}</strong>
-                          <span>{item.aiReason}</span>
+                          <span>
+                            {suggestion
+                              ? `建议改为 ${suggestion.startTime}–${suggestion.endTime}，保留原时长`
+                              : item.aiReason}
+                          </span>
                         </button>
                         <QuickActions
-                          ignored={draft.railResponses?.[item.id] === "later"}
-                          onIgnore={() =>
-                            onDraft({
-                              railResponses: {
-                                ...draft.railResponses,
-                                [item.id]: "later",
-                              },
-                            })
+                          label={suggestion ? "同意" : "更改"}
+                          confirmTitle={
+                            suggestion
+                              ? `应用时间调整：${suggestion.startTime}–${suggestion.endTime}`
+                              : "打开项目详情处理，不自动确认预约"
                           }
+                          onIgnore={() => dismiss(adviceKey)}
                           onOpen={(trigger) =>
-                            openItem(item, trigger, "advice")
+                            suggestion
+                              ? accept(item)
+                              : openItem(
+                                  item,
+                                  trigger,
+                                  item.reservation === "unknown"
+                                    ? "booking"
+                                    : "advice",
+                                )
                           }
                         />
                       </div>
@@ -190,15 +234,8 @@ export function DetailItineraryBoard({
                         </button>
                         {!hasAdvice && (
                           <QuickActions
-                            ignored={draft.railResponses?.[item.id] === "later"}
-                            onIgnore={() =>
-                              onDraft({
-                                railResponses: {
-                                  ...draft.railResponses,
-                                  [item.id]: "later",
-                                },
-                              })
-                            }
+                            label="更改"
+                            onIgnore={() => dismiss(bookingKey)}
                             onOpen={(trigger) =>
                               openItem(item, trigger, "booking")
                             }
@@ -244,10 +281,13 @@ export function DetailItineraryBoard({
                   !items.some(
                     (item) =>
                       item.type === kind &&
-                      (!slot || mealSlotFor(item.startTime) === slot),
+                      (!slot ||
+                        mealSlotFor(item.startTime, item.planningSlot) ===
+                          slot),
                   ),
               )
               .map(({ kind, label, slot, time }) => {
+                const missingKey = `${currentPlan(state).id}:missing-${day}-${slot ?? kind}`;
                 const area = state.areas.find(
                   (area) =>
                     area.day === day &&
@@ -276,45 +316,39 @@ export function DetailItineraryBoard({
                     <button
                       type="button"
                       onClick={openArea}
-                      className={`${css.square} ${css.itinerary}`}
+                      className={`${css.square} ${css.itinerary} ${css.missing}`}
+                      aria-label={`安排${label}`}
                       data-kind={kind}
                     >
-                      <small>待补充安排</small>
                       <strong>{label}</strong>
+                      <span className={css.missingPlus} aria-hidden="true">
+                        ＋
+                      </span>
                     </button>
                     <div className={css.collapsedCards}>
-                      <div data-primary-status data-status="unknown">
-                        <button
-                          type="button"
-                          className={css.statusBody}
-                          onClick={openArea}
-                        >
-                          <strong>
-                            {kind === "hotel"
-                              ? "尚未选择酒店"
-                              : `${label}尚未安排`}
-                          </strong>
-                          <span>
-                            {area ? "查看推荐地区 →" : "请使用新增项目补充"}
-                          </span>
-                        </button>
-                        <QuickActions
-                          ignored={
-                            draft.railResponses?.[
-                              `missing-${day}-${slot ?? kind}`
-                            ] === "later"
-                          }
-                          onIgnore={() =>
-                            onDraft({
-                              railResponses: {
-                                ...draft.railResponses,
-                                [`missing-${day}-${slot ?? kind}`]: "later",
-                              },
-                            })
-                          }
-                          onOpen={openArea}
-                        />
-                      </div>
+                      {draft.railResponses?.[missingKey] !== "later" && (
+                        <div data-primary-status data-status="unknown">
+                          <button
+                            type="button"
+                            className={css.statusBody}
+                            onClick={openArea}
+                          >
+                            <strong>
+                              {kind === "hotel"
+                                ? "尚未选择酒店"
+                                : `${label}尚未安排`}
+                            </strong>
+                            <span>
+                              {area ? "查看推荐地区 →" : "请使用新增项目补充"}
+                            </span>
+                          </button>
+                          <QuickActions
+                            label="更改"
+                            onIgnore={() => dismiss(missingKey)}
+                            onOpen={openArea}
+                          />
+                        </div>
+                      )}
                     </div>
                   </article>
                 );
@@ -334,32 +368,28 @@ export function DetailItineraryBoard({
 function QuickActions({
   onOpen,
   onIgnore,
-  ignored,
-  disabled = false,
+  label,
+  confirmTitle,
 }: {
   onOpen: (trigger: HTMLButtonElement) => void;
   onIgnore: () => void;
-  ignored?: boolean;
-  disabled?: boolean;
+  label: "同意" | "更改";
+  confirmTitle?: string;
 }) {
   return (
     <div className={css.quickActions}>
       <button
         type="button"
-        disabled={disabled}
+        data-confirm-action
+        title={confirmTitle}
         onClick={(event) => onOpen(event.currentTarget)}
       >
-        同意
+        {label}
       </button>
       <button
         type="button"
-        aria-pressed={ignored}
         onClick={onIgnore}
-        title={
-          ignored
-            ? "已无视提醒，检查状态仍保留"
-            : "稍后处理，不将问题标记为正常"
-        }
+        title="仅隐藏当前提醒格，不删除项目或伪造已解决状态"
       >
         无视
       </button>

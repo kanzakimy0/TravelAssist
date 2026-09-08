@@ -8,8 +8,13 @@ import {
   reservationLabel,
 } from "./trip-model";
 import type { MapView, PlaceType, TripItem, TripState } from "./trip-model";
-import { scheduleConflicts, validateSchedule } from "./schedule-check";
+import {
+  scheduleConflicts,
+  validateSchedule,
+  mealTimeWarning,
+} from "./schedule-check";
 import { plannerMovementLegs } from "./planner-route";
+import { validPreparations, type Preparation } from "./trip-preparation";
 
 export type TripWorkspaceMode = "planner" | "detail";
 export type AiJudgementStatus = "normal" | "warning" | "error";
@@ -52,6 +57,7 @@ export interface DetailDraftItem {
 }
 
 export interface DetailDraftState {
+  preparations?: Record<string, Preparation>;
   railResponses?: Record<string, "later" | "acknowledged">;
   bookingMessages?: Record<string, string>;
   items: DetailDraftItem[];
@@ -60,6 +66,7 @@ export interface DetailDraftState {
 }
 
 export interface DetailRailItem {
+  planningSlot?: string;
   completed?: boolean;
   id: string;
   day: number;
@@ -196,6 +203,12 @@ function aiStatusForItem(
   item: TripItem,
   previous: TripItem | undefined,
 ): { status: AiJudgementStatus; reason: string } {
+  if (item.planningPlaceholder)
+    return {
+      status: "warning",
+      reason:
+        "目前只安排了时间，酒店或餐厅尚未选择；区域中心不代表已确认地点。",
+    };
   if (
     previous &&
     item.type !== "hotel" &&
@@ -247,6 +260,7 @@ export function detailRailItems(
       day,
       title: item.title,
       startTime: item.startTime,
+      planningSlot: item.planningSlot,
       endTime: item.endTime,
       type: item.type,
       typeLabel: typeLabels[item.type],
@@ -281,8 +295,8 @@ export function detailRailItems(
           draft: true,
         }) satisfies DetailRailItem,
     );
-  const combined = [...canonical, ...local].sort((a, b) =>
-    a.startTime.localeCompare(b.startTime),
+  const combined = [...canonical, ...local].sort(
+    (a, b) => minutes(a.startTime) - minutes(b.startTime),
   );
   const editedLegs = plannerMovementLegs(plan, day).filter(
     (leg) => leg.edited && leg.conflict,
@@ -305,6 +319,11 @@ export function detailRailItems(
         aiStatus: "error" as const,
         aiReason: `从 ${incoming.from.title} 的交通预计 ${incoming.duration} 分 + 缓冲 ${incoming.buffer} 分，超出 ${incoming.gap} 分空档。时间未自动调整，请核对。`,
       };
+    const mealWarning = mealTimeWarning(
+      items.find((i) => i.id === item.id) ?? item,
+    );
+    if (mealWarning && item.aiStatus !== "error")
+      return { ...item, aiStatus: "warning" as const, aiReason: mealWarning };
     const previous = combined
       .filter(
         (i) =>
@@ -336,7 +355,9 @@ export function detailDaySummary(
   const tripDay = plan.days.find((item) => item.day === day) ?? plan.days[0];
   const canonicalItems = itemsForDay(plan, day);
   const priceFor = (item: TripItem) =>
-    state.places.find((place) => place.id === item.placeId)?.price ?? 0;
+    item.planningPlaceholder
+      ? 0
+      : (state.places.find((place) => place.id === item.placeId)?.price ?? 0);
   const people = state.configuration.travelers;
   const paying = people.adultMale + people.adultFemale + (people.seniors ?? 0);
   const expense = (type: PlaceType) =>
@@ -422,6 +443,9 @@ export function parseDetailDraft(value: string | null): DetailDraftState {
       return emptyDetailDraft();
     }
     return {
+      ...(validPreparations(parsed.preparations) && parsed.preparations
+        ? { preparations: parsed.preparations }
+        : {}),
       items: parsed.items.filter((item): item is DetailDraftItem =>
         Boolean(
           item &&

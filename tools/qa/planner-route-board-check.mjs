@@ -66,30 +66,26 @@ try {
     assert.equal(
       await upper
         .locator('[data-planned-sight="classic-skytree"]')
-        .getByRole("button", { name: "已锁定 / 已预约", exact: true })
+        .getByRole("button", { name: /已保护，不可移为备用$/ })
         .isDisabled(),
       true,
     );
     await page.screenshot({ path: `${out}/${width}-itinerary.png` });
-    await movable
-      .getByRole("button", { name: "↓ 移为备用", exact: true })
-      .click();
+    await movable.getByRole("button", { name: /移为备用$/ }).click();
     assert.equal(
       await upper.locator('[data-planned-sight="classic-asakusa"]').count(),
       0,
     );
     const held = lower.locator('[data-reserve-sight="place-2"]');
-    await held.getByRole("button", { name: "↑ 放回方案", exact: true }).click();
+    await held.getByRole("button", { name: /放回方案$/ }).click();
     assert.equal(
       await movable.locator("[data-timeline-stop]").innerText(),
       titleBefore,
     );
-    await movable
-      .getByRole("button", { name: "↓ 移为备用", exact: true })
-      .click();
+    await movable.getByRole("button", { name: /移为备用$/ }).click();
     await lower
       .locator('[data-reserve-sight="alternative-1-1"]')
-      .getByRole("button", { name: "↑ 加入方案", exact: true })
+      .getByRole("button", { name: /加入方案$/ })
       .click();
     await upper
       .locator('[data-planned-sight="classic-shelf-alternative-1-1-day1"]')
@@ -100,11 +96,11 @@ try {
     );
     await upper
       .locator('[data-planned-sight="classic-shelf-alternative-1-1-day1"]')
-      .getByRole("button", { name: "↓ 移为备用", exact: true })
+      .getByRole("button", { name: /移为备用$/ })
       .click();
     await lower
       .locator('[data-reserve-sight="place-2"]')
-      .getByRole("button", { name: "↑ 放回方案", exact: true })
+      .getByRole("button", { name: /放回方案$/ })
       .click();
     await movable.locator("[data-timeline-stop]").click();
     const inspector = page.getByRole("complementary", {
@@ -140,7 +136,7 @@ try {
         fontSize: getComputedStyle(button.querySelector("strong")).fontSize,
         fontWeight: getComputedStyle(button.querySelector("strong")).fontWeight,
       }));
-    assert.ok(Math.abs(stopAppearance.width - stopAppearance.height) < 1);
+    assert.ok(Math.abs(stopAppearance.width * 1.3 - stopAppearance.height) < 1);
     assert.equal(stopAppearance.fontSize, "11px");
     assert.equal(stopAppearance.fontWeight, "500");
     assert.equal(
@@ -354,7 +350,7 @@ try {
   await savedPage.goto(base + "/planner");
   await savedPage
     .locator('[data-planned-sight="classic-asakusa"]')
-    .getByRole("button", { name: "↓ 移为备用", exact: true })
+    .getByRole("button", { name: /移为备用$/ })
     .click();
   await savedPage
     .locator("[data-right-lower] button")
@@ -363,7 +359,7 @@ try {
   assert.equal(
     await savedPage
       .locator('[data-reserve-sight="place-2"]')
-      .getByRole("button", { name: "↑ 放回方案", exact: true })
+      .getByRole("button", { name: /放回方案$/ })
       .count(),
     0,
   );
@@ -373,7 +369,7 @@ try {
     .click();
   await savedPage
     .locator('[data-reserve-sight="place-2"]')
-    .getByRole("button", { name: "↑ 放回方案", exact: true })
+    .getByRole("button", { name: /放回方案$/ })
     .waitFor();
   await savedPage.getByRole("tab", { name: "移动", exact: true }).click();
   await savedPage
@@ -438,7 +434,7 @@ try {
   await savedPage.waitForURL(base + "/planner");
   await savedPage
     .locator('[data-reserve-sight="place-2"]')
-    .getByRole("button", { name: "↑ 放回方案", exact: true })
+    .getByRole("button", { name: /放回方案$/ })
     .waitFor();
   await savedPage.getByRole("tab", { name: "移动", exact: true }).click();
   assert.match(

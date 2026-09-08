@@ -79,7 +79,7 @@ try {
       .filter({ has: page.locator("[data-status-action]") })
       .first();
     const agree = await warning
-      .getByRole("button", { name: "同意", exact: true })
+      .getByRole("button", { name: /^(同意|更改)$/ })
       .boundingBox();
     const ignore = await warning
       .getByRole("button", { name: "无视", exact: true })
@@ -88,7 +88,9 @@ try {
       Math.abs(agree.width - ignore.width) < 1 &&
         Math.abs(agree.height - ignore.height) < 1,
     );
-    await warning.getByRole("button", { name: "同意", exact: true }).click();
+    // The primary action now applies an available time suggestion. Inspection
+    // remains on the reminder body, instead of pretending agreement is navigation.
+    await warning.locator("[data-status-action]").click();
     await inspector.waitFor();
     const initial = await heading.innerText();
     await bottom();

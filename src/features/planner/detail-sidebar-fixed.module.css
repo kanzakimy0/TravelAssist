@@ -16,7 +16,27 @@
 }
 .sidebar[data-trip-overview-sidebar="true"]
   [data-fixed-section="day-overview"] {
-  grid-row: 3 / 6;
+  grid-row: 3 / 5;
+}
+.sidebar[data-trip-overview-sidebar="true"] {
+  grid-template-rows:
+    22px minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr)
+    42px 25dvh 60px;
+}
+.sidebar [data-fixed-section="flights"] {
+  grid-row: 5;
+}
+.sidebar .flightRow {
+  display: grid;
+  width: 100%;
+  text-align: left;
+  gap: 3px;
+  margin-bottom: 4px;
+}
+.sidebar [data-fixed-section="flights"] label {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
 }
 .sectionBase {
   display: contents;

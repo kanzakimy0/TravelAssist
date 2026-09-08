@@ -61,7 +61,7 @@ export function validMovementEdit(value: unknown): value is MovementEdit {
 export function plannerDayItems(plan: TripPlan, day: number) {
   return plan.items
     .filter((item) => item.day <= day && item.endDay >= day)
-    .sort((a, b) => a.startTime.localeCompare(b.startTime));
+    .sort((a, b) => minute(a.startTime) - minute(b.startTime));
 }
 function inferMode(label: string): MovementEdit["mode"] {
   return /新干线/.test(label)

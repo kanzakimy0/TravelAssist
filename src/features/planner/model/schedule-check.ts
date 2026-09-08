@@ -9,7 +9,25 @@ export type ScheduledItem = {
   fixed?: boolean;
   fixedTime?: boolean;
   locked?: boolean;
+  planningSlot?: string;
 };
+/** Local planning windows, not restaurant opening hours or a blocking constraint. */
+export function mealTimeWarning(item: ScheduledItem) {
+  if (item.type !== "restaurant") return "";
+  const start = minute(item.startTime);
+  const slot =
+    item.planningSlot ??
+    (start < 660 ? "breakfast" : start < 960 ? "lunch" : "dinner");
+  const windows: Record<string, [number, number, string, string]> = {
+    breakfast: [360, 630, "早餐", "06:00–10:30"],
+    lunch: [660, 870, "午餐", "11:00–14:30"],
+    dinner: [1020, 1260, "晚餐", "17:00–21:00"],
+  };
+  const window = windows[slot];
+  return window && (start < window[0] || start > window[1])
+    ? `${window[2]}安排在 ${item.startTime}，超出建议用餐时段 ${window[3]}；请确认或调整（非营业时间限制）。`
+    : "";
+}
 const minute = (time: string) =>
   Number(time.slice(0, 2)) * 60 + Number(time.slice(3));
 export function validateSchedule(

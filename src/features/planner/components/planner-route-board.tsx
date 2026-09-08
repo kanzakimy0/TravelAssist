@@ -1,4 +1,4 @@
-import { useRef, useState, type Dispatch } from "react";
+import { useEffect, useRef, useState, type Dispatch } from "react";
 import {
   currentPlan,
   rangeDays,
@@ -7,16 +7,13 @@ import {
   type TripState,
 } from "../model/trip-model";
 import {
-  isPlannerSight,
   movementAssessment,
-  plannerCandidates,
-  plannerDayItems,
   plannerMovementLegs,
-  protectedSight,
   transportModes,
   type MovementEdit,
 } from "../model/planner-route";
-import { PlannerIcon } from "./planner-icon";
+import { PlannerSightTimeline } from "./planner-sight-timeline";
+import { plannerTimeline, timelineTitle } from "../model/planner-timeline";
 import { PlannerPopover } from "./planner-popover";
 import css from "../planner-route-board.module.css";
 
@@ -31,6 +28,9 @@ export function PlannerRouteBoard({
 }) {
   const plan = currentPlan(state);
   const days = rangeDays(state);
+  useEffect(() => {
+    dispatch({ type: "hotelEndpoints", planId: plan.id });
+  }, [dispatch, plan.id]);
   function select(item: TripItem) {
     dispatch({ type: "select", id: item.id });
     dispatch({ type: "ui", patch: { isBottomPanelOverlayOpen: false } });
@@ -40,11 +40,19 @@ export function PlannerRouteBoard({
       className={css.workspace}
       data-planner-route-board={movement ? "movement" : "itinerary"}
     >
-      <div className={css.days} data-time-bands data-compare={days.length > 1}>
+      <div
+        className={css.days}
+        data-time-bands
+        data-compare={days.length > 1}
+        data-track-mode={!movement ? "independent" : undefined}
+        style={
+          !movement
+            ? { gridTemplateColumns: `repeat(${days.length}, minmax(0, 1fr))` }
+            : undefined
+        }
+      >
         {days.map((day) => {
-          const all = plannerDayItems(plan, day.day);
-          const sights = all.filter(isPlannerSight);
-          const candidates = plannerCandidates(state, day.day);
+          const all = plannerTimeline(state, day.day).planned;
           const legs = plannerMovementLegs(plan, day.day);
           return (
             <section
@@ -73,7 +81,7 @@ export function PlannerRouteBoard({
                           onClick={() => select(item)}
                         >
                           <small>{item.startTime}</small>
-                          <strong>{item.title}</strong>
+                          <strong>{timelineTitle(item)}</strong>
                         </button>
                         {legs[index] && (
                           <MovementConnector
@@ -93,137 +101,13 @@ export function PlannerRouteBoard({
                   </div>
                 </>
               ) : (
-                <>
-                  <div className={css.row} data-sight-row="planned">
-                    <h3>
-                      方案
-                      <br />
-                      景点<small>{sights.length} 项</small>
-                    </h3>
-                    <div className={css.cards}>
-                      {sights.map((item) => (
-                        <article
-                          className={css.sight}
-                          data-planned-sight={item.id}
-                          key={item.id}
-                        >
-                          <button
-                            type="button"
-                            className={css.sightInfo}
-                            data-timeline-stop={item.id}
-                            aria-pressed={
-                              state.ui.selectedTripItemId === item.id
-                            }
-                            onClick={() => select(item)}
-                          >
-                            <PlannerIcon name="sight" />
-                            <span>
-                              <strong>{item.title}</strong>
-                              <small>
-                                {item.startTime}–{item.endTime}
-                                {protectedSight(item) ? " · 已保护" : ""}
-                              </small>
-                            </span>
-                          </button>
-                          <button
-                            type="button"
-                            className={css.transfer}
-                            disabled={protectedSight(item)}
-                            title={
-                              protectedSight(item)
-                                ? "已锁定或已确认预约，请先在详情核对"
-                                : "保留原项目资料，移入备用"
-                            }
-                            onClick={() =>
-                              dispatch({ type: "reserveSight", id: item.id })
-                            }
-                          >
-                            {protectedSight(item)
-                              ? "已锁定 / 已预约"
-                              : "↓ 移为备用"}
-                          </button>
-                        </article>
-                      ))}
-                      {!sights.length && (
-                        <p className={css.empty}>
-                          还没有方案景点，从下方备用区加入 ↑
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <div className={css.axis}>
-                    <span>
-                      第{day.day}天 · {day.city}
-                    </span>
-                    <i aria-hidden="true" />
-                    <small>上方参与路线 · 下方备用</small>
-                  </div>
-                  <div
-                    className={`${css.row} ${css.reserveRow}`}
-                    data-sight-row="reserve"
-                  >
-                    <h3>
-                      备用
-                      <br />
-                      景点<small>{candidates.length} 项</small>
-                    </h3>
-                    <div className={css.cards}>
-                      {candidates.map(({ place, held }) => (
-                        <article
-                          className={css.sight}
-                          key={place.id}
-                          data-reserve-sight={place.id}
-                        >
-                          <button
-                            type="button"
-                            className={css.sightInfo}
-                            aria-label={`查看备用景点 ${place.name}`}
-                            onClick={() => {
-                              dispatch({
-                                type: "inspect",
-                                id: place.id,
-                                level: "quick",
-                                day: day.day,
-                              });
-                              dispatch({
-                                type: "ui",
-                                patch: { isBottomPanelOverlayOpen: false },
-                              });
-                            }}
-                          >
-                            <PlannerIcon name="sight" />
-                            <span>
-                              <strong>{place.name}</strong>
-                              <small>
-                                {held
-                                  ? "已从方案移出 · 可恢复"
-                                  : `建议 ${place.duration} 分 · 目录示例`}
-                              </small>
-                            </span>
-                          </button>
-                          <button
-                            type="button"
-                            className={css.transfer}
-                            onClick={() =>
-                              dispatch({
-                                type: "promoteSight",
-                                placeId: place.id,
-                                day: day.day,
-                              })
-                            }
-                          >
-                            ↑ {held ? "放回方案" : "加入方案"}
-                          </button>
-                        </article>
-                      ))}
-                      {!candidates.length && (
-                        <p className={css.empty}>
-                          暂无备用景点，可将上方可调整景点移到这里。
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </>
+                <PlannerSightTimeline
+                  key={`${plan.id}:${day.day}`}
+                  state={state}
+                  dispatch={dispatch}
+                  day={day.day}
+                  onSelect={select}
+                />
               )}
             </section>
           );
@@ -233,7 +117,7 @@ export function PlannerRouteBoard({
         {state.notice ||
           (movement
             ? "修改方式、预计时长与缓冲，不会自动移动已确定的项目。"
-            : "点击景点查看地图，使用上下箭头在方案与备用之间移动。")}
+            : "上下拖拽调整 · 拖动查看落点时间 · 详情核对可行性")}
       </p>
     </div>
   );

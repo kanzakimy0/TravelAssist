@@ -18,7 +18,8 @@ test("AI action buttons never share marker dimensions", () => {
 });
 test("resolved advice is omitted and reservation promotes to second row", () => {
   const board = read("components/detail-itinerary-board.tsx");
-  assert.match(board, /const hasAdvice = item.aiStatus !== "normal"/);
+  assert.match(board, /const hasAdvice =\s*item.aiStatus !== "normal"/);
+  assert.match(board, /draft.railResponses\?\.\[adviceKey\] !== "later"/);
   assert.match(board, /\{hasAdvice &&/);
   assert.match(board, /data-primary-status=\{!hasAdvice \|\| undefined\}/);
   assert.match(board, /data-missing-arrangement/);
