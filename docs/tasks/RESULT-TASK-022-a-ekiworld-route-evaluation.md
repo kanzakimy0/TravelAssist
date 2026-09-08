@@ -102,8 +102,10 @@ readiness.
 - Issue: #232
 - Branch: `codex/a-ekiworld-route-evaluation`
 - Implementation Commit: `f8855a5`
-- Final Head: Draft PR head; recorded in Issue/PR after the Result commit.
-- Draft PR: created against `develop` after push.
+- Final Head: current head of Draft PR #233 (this metadata-only Result update
+  is self-referential; the exact SHA is recorded in Issue #232 and PR #233).
+- Draft PR: #233 —
+  https://github.com/kanzakimy0/TravelAssist/pull/233
 - WBS updated: 7.3 `待确认（开发期 Provisional Provider = 駅すぱあと）`;
   7.5 `待审查`; 7.8
   `待审查（Evaluation/development subset；Production Gate 未关闭）`.
