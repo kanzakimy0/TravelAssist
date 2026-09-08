@@ -16,7 +16,7 @@ Partial — Japan-only 生产清单已通过 PR #187 合入 develop；本次为�
 - Issue [#152](https://github.com/kanzakimy0/TravelAssist/issues/152)，父任务 #112 / #116。
 - Branch：`feature/a-core-destination-generation-manifest` → `develop`。
 - 原生产清单 PR [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) 已合并，合入 `c28c14c619e2bc51daf78f3eede4e2a218ec482d`。
-- 本次补充复验 Draft PR：待创建后回填。保持 Draft，不自动合并。
+- 本次补充复验 Draft PR：[#198](https://github.com/kanzakimy0/TravelAssist/pull/198)。保持 Draft，不自动合并。
 - WBS 2.15：已合并生产清单；复验待审查（Partial）。
 
 ## Conflict Audit
@@ -122,11 +122,11 @@ Partial — Japan-only 生产清单已通过 PR #187 合入 develop；本次为�
 
 ## Commit(s)
 
-原实现 `d3fe001ab5d544cd52362ca3df065678785ea721`，合入 `c28c14c619e2bc51daf78f3eede4e2a218ec482d`。本次复验提交待提交后回填；最后跟踪提交 SHA 记录于 Issue 与 PR，避免文档自引用。
+原实现 `d3fe001ab5d544cd52362ca3df065678785ea721`，合入 `c28c14c619e2bc51daf78f3eede4e2a218ec482d`。本次复验提交 `5633deb5933131bbc56489d59b3e9d38ecc23e86`；最后跟踪提交 SHA 记录于 Issue 与 PR，避免文档自引用。
 
 ## Draft PR
 
-待创建本次补充复验 Draft PR → develop；原 PR #187 已合并，不重开。关联 #152 / #112 / #116。为避免仓库 feature push 自动建非 Draft PR 并合并的工作流，本次提交使用 [skip ci]；已在本地执行上表验证，不修改工作流。
+本次补充复验 [Draft PR #198](https://github.com/kanzakimy0/TravelAssist/pull/198) → develop；原 PR #187 已合并，不重开。关联 #152 / #112 / #116。为避免仓库 feature push 自动建非 Draft PR 并合并的工作流，本次提交使用 [skip ci]；已在本地执行上表验证，不修改工作流。
 
 ## Follow-ups
 

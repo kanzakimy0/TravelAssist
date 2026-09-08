@@ -17,7 +17,7 @@
 - Design：`docs/assets/core-destination-generation-plan.md`
 - Codex Command：`docs/tasks/CODEX-TASK-013.2-a-generation-manifest-command.md`
 - Result：`docs/tasks/RESULT-TASK-013.2-a-core-destination-generation-manifest.md`
-- Latest prerequisite audit：2026-09-08 JST；actual develop `81d4f6d0e0603b39ecaa434d332c5b4c5033a69d`；#112、#116 已合并并最终验收（PR #172 / #188）。生产清单 PR #187 已合并。复验 300目的地、9000 unresolved POI、9300 jobs、9600 variants、40批次均无变更；保留后续254个已核验目的地、46 unresolved，47县覆盖。29项既有格式债、新增0。补充复验 Draft PR 待创建后回填；不自动合并，提交见 Issue #152 与 Result。
+- Latest prerequisite audit：2026-09-08 JST；actual develop `81d4f6d0e0603b39ecaa434d332c5b4c5033a69d`；#112、#116 已合并并最终验收（PR #172 / #188）。生产清单 PR #187 已合并。复验 300目的地、9000 unresolved POI、9300 jobs、9600 variants、40批次均无变更；保留后续254个已核验目的地、46 unresolved，47县覆盖。29项既有格式债、新增0。补充复验 Draft PR [#198](https://github.com/kanzakimy0/TravelAssist/pull/198)；不自动合并，提交见 Issue #152 与 Result。
 
 > 2026-09-08 范围修正：旧版“全球核心目的地”定义无效。本 Task 从现在起只允许日本境内目的地。
 
