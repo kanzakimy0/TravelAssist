@@ -2,7 +2,17 @@
 
 ## Status
 
-待审查 — the user reports password reset now works. The registration follow-up below fixes a reproduced overlapping-flow PKCE mismatch and distinguishes confirmed email from automatic login. Real Local regression passes; final onsite registration acceptance remains pending. Missing original-browser PKCE state still correctly prevents authentication. Historical sections describe their execution-time status, not the latest fix. Full-repository format baseline remains separately reported; no subsequent task started.
+已完成 — the user accepted the onsite registration follow-up (“通过”), then explicitly authorized merging PR #222, updating WBS and pulling develop (“是”). PR #222 is merged and Issue #219 is Closed / completed. Earlier follow-up and runtime sections below are historical execution snapshots, not current pending-acceptance or live-service claims. External-provider/production-delivery and legal/physical-device Deferred items remain as documented; no subsequent task started.
+
+## Final user acceptance and merge closeout (2026-09-09)
+
+- User acceptance: PASS, including the final registration confirmation follow-up; password reset had already been accepted. This records the user's actual instruction, not an independent GitHub APPROVED review.
+- Accepted Auth head: `694e7e30936024d05e825dee14aacc17590cf52b`. Latest pre-merge develop: `74bc3cccf8bcfd603706e2b96d4072076191f308`. Integration head: `b571a55ac9303c0c14b92fc3d7e0a6742d2e68bb`. Only Master WBS conflicted; both complete progress sections were retained. Auth/Personal Center code is identical to the accepted head; Planner/navigation code and A's Task/Result are identical to latest develop.
+- PR #222 was marked ready and merged with an exact expected-head guard. Merge commit: `b1066abaaaed8e8b8aaa6dbacf39c041c9e776ac`. Actual ancestry check confirms the accepted implementation is in develop; `git diff --exit-code` confirms the merge tree exactly equals the integration-tested head.
+- Integration rerun: `npm run lint`, `npm run typecheck`, `node --test tests/*.test.mjs` (**651/651**), `npm run build`, `node tests/task-018-client-bundle.mjs` (**34 chunks / 64 dependency modules**, no private secrets/server helpers) and diff checks PASS. Full `npm run format:check` remains FAIL for **27 documents**, each unchanged from `74bc3cc`; no other Owner formatting repair. Logs: `F:\TravelAssist-wbs53-evidence\merge222-{lint,typecheck,tests,build,client-audit,format-full}.log`.
+- Current environment limitation: `docker ps` in the WSL distro reports Docker unavailable / WSL integration not active. No GUI change, DB reset, user deletion, service installation or new real Auth browser run was performed in this merge-only turn. The prior real Chromium/Edge **50/50 each** evidence and user acceptance remain valid for the unchanged Auth implementation; no live preview availability is claimed here.
+- First merge attempt stopped before modifying files because the isolated worktree had no committer identity; the existing task identity was supplied only to the subsequent command, without global config changes. The WBS conflict was resolved explicitly, not with whole-file ours/theirs replacement. No forced Git operation.
+- WBS 5.3 and this Task/Result: 已完成 only after actual merge. Issue #219: Closed / completed. Closeout edits only these three documentation files; source/dependencies/workflows and other Owner records are untouched. Original `README.txt`, `asset-contact-sheet.jpg`, `publish_assets.py` remain unmodified and uncommitted. Final documentation SHA and local/remote develop equality are reported in the delivery and Issue because a commit cannot contain its own SHA.
 
 ## Onsite acceptance follow-up — registration confirmation flow isolation (2026-09-09)
 
@@ -89,15 +99,15 @@
 
 ## Tracking
 
-- Issue: #219, Open.
+- Issue: #219, Closed / completed after user acceptance and PR merge.
 - Task File: `docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`.
 - Result File: this document.
 - Branch: `feature/b-account-wbs-5-3-auth-user-flow`.
 - Implementation Commit: `7fd9add6713b62c8f2d48d810177eda21024c389`; initial checkpoint `170a6c2f890d80b82213aedd827671f7ca2b4478`.
 - Final Head: final documentation-only delivery commit, reported in Issue #219 and the delivery response (a commit cannot contain its own SHA).
-- PR: [Draft #222](https://github.com/kanzakimy0/TravelAssist/pull/222), base `develop`, title `feat(WBS-5.3-B): implement authentication user flow`, body `Relates to #219`. GitHub verified Open / isDraft=true / mergedAt=null.
-- Merge Commit: none; no merge authorized for this task.
-- WBS updated: 5.3 only, 进行中 → 待审查. Existing parent/dependency completion and other Owner records preserved.
+- PR: [Merged #222](https://github.com/kanzakimy0/TravelAssist/pull/222), base `develop`, body `Relates to #219`. User acceptance and explicit merge authorization recorded.
+- Merge Commit: `b1066abaaaed8e8b8aaa6dbacf39c041c9e776ac`.
+- WBS updated: 5.3 only, 进行中 → 待审查 → 已完成. Existing parent/dependency completion and other Owner records preserved.
 
 ## Auth Routes
 
@@ -249,7 +259,7 @@ Runtime environment and evidence:
 
 - Implementation commit: `7fd9add6713b62c8f2d48d810177eda21024c389`; delivery documentation follows separately.
 - Push/PR: `git push -u origin feature/b-account-wbs-5-3-auth-user-flow` succeeded; Draft #222 created and verified. Publication snapshot `1ed6990dd77a4a5bb21c53398f61a71d654e637c`; following changes are only this Task's tracking documentation.
-- Merge behavior: no merge. Feature push commits use the repository's established `[skip ci]` safety marker to avoid its automatic feature merge; no workflow edits. Draft retained for user review.
+- Merge behavior: initially Draft with `[skip ci]` feature-push safety; after user acceptance and explicit permission, PR #222 merged as `b1066abaaaed8e8b8aaa6dbacf39c041c9e776ac`. No workflow edits, bypass of merge protection or forced push.
 - latest origin/develop at pre-publication fetch: `18afee5f02ed45505b81636f7b25b568270b2bf9`.
 - Unpushed commits/tracked working tree: final local/remote SHA equality and clean tracked tree required and reported with the final SHA in Issue #219 and delivery response. The three original untracked files are intentionally retained.
 - Preserved untracked files: README.txt / asset-contact-sheet.jpg / publish_assets.py; all original SHA-256 values unchanged, not staged.
@@ -265,8 +275,8 @@ Runtime environment and evidence:
 - Subsequent test harness failures: incorrect Local email subject matcher, separate APIRequestContext session-request failure, and public route navigation waiting for all external resources. Corrected to frozen mail subject, real same-origin browser session fetch, and public DOM/main readiness. Auth assertions were retained; initial/final redacted logs preserved rather than misreported as initial PASS.
 - Full format remains 27 unchanged baseline documents. Current Task and new test formatting issues were fixed only within this task; no out-of-scope format rewrite.
 - Existing non-blocking Node MODULE_TYPELESS_PACKAGE_JSON and pinned dependency deprecation/install-script warnings remain; no package-policy changes made to suppress them.
-- External Google/Apple OAuth, production email/SMS, legal routing and physical mobile keyboard validation remain Deferred. User visual acceptance is pending; automated QA is not substituted for it.
+- External Google/Apple OAuth, production email/SMS, legal routing and physical mobile keyboard validation remain Deferred. User onsite acceptance is now PASS; those deferred capabilities are not represented as tested production features.
 
 ## Next
 
-Wait for user acceptance of this task. Do not automatically merge or start WBS 3.4 / 5.15 / 5.21 or any other Task.
+Completed and merged. Stop; do not automatically start WBS 3.4 / 5.15 / 5.21 or any other Task.

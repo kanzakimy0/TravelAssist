@@ -8,7 +8,7 @@
 - **Owner:** `B`
 - **Responsibility:** `Authentication UI / Session User Flow / Personal Center Access`
 - **Priority:** `P0`
-- **Status:** `待审查`
+- **Status:** `已完成`
 - **Depends On:** `1.23, 8.3`
 - **Dependency State at authoring:** `1.23 = 已完成`, `8.3 = 已完成`
 - **Authentication Core:** `TASK-018-B`, PR `#218`, merged into `develop`
@@ -20,6 +20,7 @@
 - **Implementation Branch:** `feature/b-account-wbs-5-3-auth-user-flow`
 - **Task File:** `docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`
 - **Result File:** `docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`
+- **Final Acceptance:** 用户现场验收通过并明确授权合并（2026-09-09）；PR #222 已合入 develop，merge `b1066abaaaed8e8b8aaa6dbacf39c041c9e776ac`；Issue #219 Closed / completed。验收证据与保留的 Deferred 项见 Result；不开始下一 Task。
 
 > 5.3 is now fully unblocked. TASK-018-B already provides the technical Authentication / Cookie Session core. This Task must consume that core; it must not build a second authentication authority.
 

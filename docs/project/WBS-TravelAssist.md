@@ -1,10 +1,10 @@
 # TravelAssist 可记录 WBS（Master）
 
-## WBS-5.3-B Auth User Flow（2026-09-08）
+## WBS-5.3-B Auth User Flow（2026-09-09，验收合并完成）
 
-- 5.3 / B / #219：待审查；执行基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `feature/b-account-wbs-5-3-auth-user-flow`。1.23 / 8.3 已完成，PR #218 为基线祖先；没有重复实现。按用户京都樱花 + 暖白 Auth Card 参考图实现独立 Auth Shell；实现提交 `7fd9add6713b62c8f2d48d810177eda21024c389`。
-- 四个 Auth 页面、真实核心调用、可信 Personal Center 保护与当前 Session 退出已实现。Chromium / Microsoft Edge 各 50 项布局与真实 Local Auth UI 流程、TASK-018 16/16、全仓 Node 631/631、lint/typecheck/build 与客户端 Secret 检查通过；27 份历史格式失败逐字节等同执行基线，未越界修改。外部 OAuth/SMS/email delivery、真机键盘、Legal 10.6 仍 Deferred。
-- Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result：`docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`。Issue #219 保持 Open，[Draft PR #222](https://github.com/kanzakimy0/TravelAssist/pull/222) 未合并；未获用户最终视觉验收，不标记已完成。不开展 3.4 / 5.15 / 5.21 或其他 Task。以下 Auth/UI 未启动表述为历史，以本节和当前 5.3 行为准。
+- 5.3 / B / #219：已完成；用户现场验收回复“通过”，并明确授权合并、更新 WBS 与拉取 develop。执行基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；初始实现 `7fd9add`，最终注册回调修复验收 `694e7e3`，整合最新 develop 后 head `b571a55ac9303c0c14b92fc3d7e0a6742d2e68bb`。1.23 / 8.3 已完成状态不变。
+- 四个 Auth 页面、真实核心调用、可信 Personal Center 保护、当前 Session 退出与注册/重置反馈已验收。此前真实 Chromium / Edge 回调专项各 50/50；本轮整合全仓 Node 651/651、lint/typecheck/build 与客户端 Secret 检查通过。27 份格式失败与整合前 develop 完全一致，未越界修复。本轮 WSL Docker 集成不可用，未声称重跑真实 Auth；Auth 源码与已验收版本完全一致。外部 OAuth/SMS/email delivery、真机键盘、Legal 10.6 仍 Deferred。
+- Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result：`docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`。[PR #222](https://github.com/kanzakimy0/TravelAssist/pull/222) 已合并，merge `b1066abaaaed8e8b8aaa6dbacf39c041c9e776ac`，合并树与整合验收 head 一致；Issue #219 Closed / completed。仅保留双方 WBS 记录解决文档冲突，A 的 Planner/Task/Result 未被重写。不开展 3.4 / 5.15 / 5.21 或其他 Task。以下 Auth/UI 未启动或待审查表述为历史，以本节和当前 5.3 行为准。
 
 ## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
 
@@ -715,7 +715,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | --------------------------------------------- | ------ | ------ | -------- | ------ |
 | 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
 | 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 已完成 |
-| 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 待审查 |
+| 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 已完成 |
 | 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 已完成 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 已完成 |
 | 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 已完成 |
