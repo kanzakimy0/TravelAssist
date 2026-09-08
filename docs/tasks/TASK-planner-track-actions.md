@@ -4,13 +4,13 @@
 
 - Task ID: TASK-PLANNER-TRACK-A
 - Owner: A
-- Status: 待验收（本地完成，发布受阻）
+- Status: 待验收（用户已授权上传及合并）
 - WBS: 4.46
-- GitHub Issue: PENDING（发布权限检查拦截，未创建）
+- GitHub Issue: #210
 - Branch: `codex/planner-independent-tracks-plan-actions`
-- Depends On: 当前本地已验收 UI，PR #204 / #206；不自动合并
+- Depends On: 已验收 UI，PR #204 / #206；本次用户明确授权整合合并
 - Base: `a2a537bbed9b153b3a71fbb955e8ac23ef30213b`
-- Commit: `83cf4687eb2ddc84583c30fd86cb8605b935a836`（实现，后续仅追踪记录）
+- Commit: `5879444`（最新实现，整合另记）
 - Pull Request: PENDING（未上传）
 
 ## 用户本轮要求

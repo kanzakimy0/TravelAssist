@@ -6,11 +6,38 @@
 > Priority：P0  
 > Base at creation：`develop@707bcc8d2af14a86032181be63573beb3aea3e17`  
 > Branch：`feature/a-db-orm-migration-foundation`  
-> Status：Ready to Start  
+> Status：已完成（用户授权合并；本机运行及整合验收通过）
+>
 > Design：`docs/architecture/db-orm-migration-standards.md`  
 > Freeze Plan：`docs/architecture/db-foundation-bootstrap-plan.md`
 
 ---
+
+## Merge acceptance — 2026-09-08
+
+PR #186 已合入 develop，merge `24dff4e3b74dfe01c369d2c149d37eba86ad6472`。
+远端合并树与验收head `c14ea30747f317d6222cab1019e95611049d8fd1`完全一致。
+B要求的7项路径及真实generated types均已核实存在；#200可以从最新develop
+重新检查启动。本Task不实施User/Profile或Auth。以下合并前记录保留为审计。
+
+用户授权完成 #186 收尾并合并。已保留真实类型提交 `b212c31`，整合 develop
+`6386c83`（merge `0b97f79`），安全处理四个共享文件冲突。Docker 29.7.2 /
+PostgreSQL 17.6 / Supabase CLI 2.116.0 实际 start/status/reset/types/stop 及
+Drizzle 查询通过；两次类型生成无变化。503项测试、lint/typecheck/空DB环境
+build通过。零业务表、零SQL迁移（§8允许），未启用PostGIS；Vector日志采集
+存在本地网络限制，未宣称该辅助服务通过。完整事实见 Result 最新验收节。
+正式合并确认后更新最终状态并解除 #200 前置，不自动实施 TASK-016-B。
+
+## Original execution record — historical
+
+- Issue: #173; WBS: 8.1 / 8.4; implementation owner: A.
+- Base: `e98a715a11e4a4ee9bdc196854558a5a02b1753c`; isolated clean worktree.
+- Branch: `feature/a-db-orm-migration-foundation`; implementation commit: `4605378593ed0f2935567849fe593f8ec37b1932`; Draft PR: [#186](https://github.com/kanzakimy0/TravelAssist/pull/186).
+- Static implementation complete; Docker unavailable. No PostGIS DDL or fabricated generated types committed.
+- Validation: 368/368 tests on clean implementation commit; lint, typecheck, empty-DB-env build, changed-file formatting and diff checks passed. Full format check retains 30 independently verified upstream document exceptions.
+- Result: `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md`.
+- Old TASK-009 / PR #72 remains unmerged; not imported or closed by this task.
+- Do not merge or begin subsequent WBS until separate authorization and acceptance.
 
 ## 1. Objective
 
@@ -664,21 +691,37 @@ docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md
 # TASK-015-A Result
 
 ## Status
+
 ## Base / Branch / Commits
+
 ## Issue / PR
+
 ## Installed Packages and Resolved Versions
+
 ## Supabase CLI
+
 ## Files Added / Changed
+
 ## Migration History
+
 ## Drizzle Foundation
+
 ## Environment Variable Contract
+
 ## Generated Types
+
 ## Docker Preflight
+
 ## DB Runtime Validation
+
 ## Tests
+
 ## Security / Secret Scan
+
 ## WBS Update
+
 ## Explicitly Not Implemented
+
 ## Remaining Blockers
 ```
 

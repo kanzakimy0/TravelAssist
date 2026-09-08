@@ -1,5 +1,10 @@
 # TravelAssist 可记录 WBS（Master）
 
+## 当前整合发布（2026-09-08）
+
+用户已授权上传并合并。TASK-PLANNER-TRACK-A / #210 正在整合 PR #204 / #206 和最新 develop eccfd9e；4.46 待验收。下方发布受阻、未上传、旧数据库阻塞文字是历史记录，本节与当前追踪行优先。保留 TASK-015 已完成及 B Engine 任务，不合并其他无关分支。
+
+
 ## 独立滑轨与方案保存还原（2026-09-08）
 
 - 追加五分钟吸附与拖拽时间预览、重叠卡置顶、三日餐宿区域分层、工作方案保护与浏览器草稿切换/恢复；544项测试及四尺寸验收。本轮仍仅本地，未上传，不标记已完成。
@@ -19,6 +24,23 @@
 - 旧本地WBS4.20–4.36与已合入Engine4.20–4.24冲突：保留Engine不变，旧UI记录整体顺延为4.25–4.41（旧编号+5）；旧Result中的数字是历史编号，不代表转移Engine所有权。
 - 旧2.16“AI插画接入”登记为2.17，保留2.16日本目的地验收；旧全球素材描述不恢复，始终Japan-only。旧3.9/3.10重复描述已完成3.6/3.8，不重复计数或更改B原Owner；手机追加仍见现有历史Result。
 - 已合并UI/Mock与真实Provider分开记录；本地公开Mapbox配置已获明确授权，仅保存在忽略文件内，联网验收见本轮Result。原工作树及用户保存数据保留。
+
+## TASK-015-A 已合并验收 / B前置解除（2026-09-08）
+
+用户授权后PR #186已合入develop：`24dff4e3b74dfe01c369d2c149d37eba86ad6472`，
+文件树与已验收head `c14ea30747f317d6222cab1019e95611049d8fd1`完全一致。
+8.1/8.4已完成（TASK-015基础范围）；#173同步关闭。#200要求的7项路径及真实
+generated types均在基线，8.2改为可开始但未实施，B须拉取并自行复检后启动。
+保留无PostGIS、Vector辅助日志限制和27份历史格式债的如实说明，不影响当前
+User/Profile基础依赖。下方合并前/旧Docker阻塞记录仅供历史审计。
+
+## TASK-015-A 合并前复验（2026-09-08）
+
+用户授权 #186 合并收尾。真实类型提交 `b212c31` 已回并，整合基线 `6386c83`，
+冲突处理 `0b97f79` 保留最新素材与 B Engine 记录。503测试、lint/typecheck/build、
+Local start/status/reset/types/stop及Drizzle查询通过；8.1/8.4待审查，合并后再改已完成。
+PostGIS未启用（Task允许空历史）；Vector辅助日志采集网络限制单独记录。#200仍待
+确认#186正式合并；本轮不实施B业务Schema。下方旧DB阻塞状态以此节及最终收尾为准。
 
 
 ## 合并状态校正与 Engine 交接（2026-09-08）
@@ -437,8 +459,9 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
 | TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
 | TASK-PLANNER-INTEGRATION-A | 4.37/4.38/4.40/4.41；7.12 | A | 待审查（本地改动整合） | #203 | `docs/tasks/TASK-planner-local-integration.md` | `codex/planner-local-integration-20260908` | `0006814`（实现；后续仅追踪同步） | [#204](https://github.com/kanzakimy0/TravelAssist/pull/204) Draft，未合并；521测试通过，Mapbox本地实测通过 |
-| TASK-015-A | 8.1 / 8.4 | A | 待审查（本机验证见#173；未合并） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md`（任务分支） | `feature/a-db-orm-migration-foundation` | `a88f446`（PR head；本机验收记录待回并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Draft |
-| TASK-016-B | 8.2 | B | 阻塞（等待#186合并） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING | PENDING |
+| TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
+| TASK-016-B | 8.2 | B | 可开始（#186已合并，B复检后实施） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING（未实施） | PENDING |
+
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
@@ -625,7 +648,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.43 | 同行人组合与单人跨页读取 / 临时成员 / 人数构成校验 | A | P1 | 5.6,4.42 | 待审查（#205，保留B原范围） |
 | 4.44 | 总览航班设置 / 项目详情 / 购票需求与本地航班校验 | A | P1 | 4.27,4.31 | 待审查（#205，非真实出票） |
 | 4.45 | Planner单日餐宿覆盖与旅行体检内容增强 | A | P1 | 4.41 | 待审查（#205） |
-| 4.46 | 独立双滑轨与5分钟吸附 / 重叠卡 / 三餐区域与时段提醒 / 工作方案草稿切换 / 预约渠道选择 | A | P1 | 4.40,4.45 | 待审查（本地，Issue/PR发布待授权） |
+| 4.46 | 独立双滑轨与5分钟吸附 / 重叠卡 / 三餐区域与时段提醒 / 工作方案草稿切换 / 预约渠道选择 | A | P1 | 4.40,4.45 | 待审查（#210，用户已授权整合发布） |
 
 ### 4B. TravelAssist Engine / Trip Engine
 
@@ -714,10 +737,10 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖               | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------------ | ------ |
-| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 待审查（#186未合并；#173已记录本机验证通过） |
-| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 阻塞（TASK-016-B / #200等待#186合并） |
+| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 已完成（TASK-015基础范围；#186合并且运行验收通过） |
+| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 可开始（TASK-016-B / #200；未实施） |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 未开始 |
-| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 待审查（#186未合并；正式合并收尾待完成） |
+| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 已完成（#186已合并；SQL唯一历史与空库重建验收） |
 | 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 未开始 |
 | 8.7    | AI 会话主系统存储策略         | A      | P2     | 6.2,8.1            | 未开始 |
