@@ -1,5 +1,10 @@
 # TravelAssist 可记录 WBS（Master）
 
+## WBS-5.3-B Auth User Flow（2026-09-08）
+
+- 5.3 / B / #219：进行中；执行基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `feature/b-account-wbs-5-3-auth-user-flow`。1.23 / 8.3 已完成，PR #218 为基线祖先；没有重复实现。用户追加的京都樱花照片 + 暖白 Auth Card 参考图作为视觉基准。
+- 仅实现四个 Auth 页面、真实核心调用、可信 Personal Center 保护与当前 Session 退出；不开展 3.4 / 5.15 / 5.21 或其他 Task。Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result 将记录实际验证。Issue #219 保持 Open；待用户验收前不标记已完成。以下 Auth/UI 未启动表述为历史，以本节和当前 5.3 行为准。
+
 ## TASK-018-B Authentication Core（2026-09-08）
 
 - 8.3 / B / #214：已完成；用户明确授权“开始现场验收，验收通过后自动合并并更新WBS”，本轮真实验收通过后 PR #218 已合入 develop。执行基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；独立 F 盘承载 WSL Worktree，分支 `feature/b-authentication-core`。状态按未开始 → 进行中 → 待审查 → 验收且合并后已完成推进。
@@ -701,7 +706,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | --------------------------------------------- | ------ | ------ | -------- | ------ |
 | 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
 | 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 已完成 |
-| 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
+| 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 进行中 |
 | 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 已完成 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 已完成 |
 | 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 已完成 |

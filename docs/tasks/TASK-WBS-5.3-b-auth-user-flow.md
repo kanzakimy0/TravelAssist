@@ -8,7 +8,7 @@
 - **Owner:** `B`
 - **Responsibility:** `Authentication UI / Session User Flow / Personal Center Access`
 - **Priority:** `P0`
-- **Status:** `Ready / 可开始`
+- **Status:** `进行中`
 - **Depends On:** `1.23, 8.3`
 - **Dependency State at authoring:** `1.23 = 已完成`, `8.3 = 已完成`
 - **Authentication Core:** `TASK-018-B`, PR `#218`, merged into `develop`

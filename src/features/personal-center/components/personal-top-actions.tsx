@@ -95,7 +95,7 @@ export function PersonalTopActions() {
         popoverTarget={popoverId}
         aria-expanded={isOpen}
         aria-controls={popoverId}
-        aria-label={`${isOpen ? "关闭" : "打开"}账户菜单，${mockPersonalUser.name}（${mockPersonalUser.label}）`}
+        aria-label={`${isOpen ? "关闭" : "打开"}账户菜单，旅行者（演示头像）`}
       >
         <span className={styles.smallAvatar} aria-hidden="true">
           <Image
