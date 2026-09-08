@@ -13,6 +13,7 @@ export function PlanRecommendationList({
   modifiedIds,
   onSavePlan,
   onRestorePlan,
+  workingPlanId,
 }: {
   plans: MockPlan[];
   selectedId: string;
@@ -22,6 +23,7 @@ export function PlanRecommendationList({
   modifiedIds: string[];
   onSavePlan: (id: string) => void;
   onRestorePlan: (id: string) => void;
+  workingPlanId?: string;
 }) {
   return (
     <section
@@ -61,10 +63,15 @@ export function PlanRecommendationList({
               <span className={styles.planText}>
                 <span className={styles.planNumber}>
                   方案 0{index + 1}
-                  {modifiedIds.includes(plan.id) && (
-                    <em className={styles.modifiedPlan}>已修改</em>
+                  {(workingPlanId === plan.id ||
+                    modifiedIds.includes(plan.id)) && (
+                    <em className={styles.modifiedPlan}>
+                      {workingPlanId === plan.id ? "当前工作中方案" : "已修改"}
+                    </em>
                   )}
-                  {selectedId === plan.id && <b>当前方案</b>}
+                  {selectedId === plan.id && workingPlanId !== plan.id && (
+                    <b>当前方案</b>
+                  )}
                 </span>
                 <strong>{plan.name}</strong>
                 <small>
@@ -76,7 +83,11 @@ export function PlanRecommendationList({
             </button>
             <div className={styles.planActions}>
               <button type="button" onClick={() => onSavePlan(plan.id)}>
-                保存并细化 →
+                {workingPlanId === plan.id
+                  ? "进入行程详情"
+                  : workingPlanId
+                    ? "切换方案"
+                    : "保存并细化 →"}
               </button>
               <button
                 type="button"

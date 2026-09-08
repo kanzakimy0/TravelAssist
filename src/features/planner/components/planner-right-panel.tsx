@@ -121,6 +121,7 @@ export function PlannerRightPanel({
         )}
       </section>
       <PlanRecommendationList
+        workingPlanId={state.workingPlanId}
         modifiedIds={state.plans
           .filter((p) => recommendationModified(state, p.id))
           .map((p) => p.id)}

@@ -19,11 +19,17 @@ import {
   timelineProtected,
   timelineTitle,
   timelineClock,
+  snapTimelineMinute,
+  timelineCollisionGroups,
 } from "../model/planner-timeline";
 import { PlannerPopover } from "./planner-popover";
 import css from "../planner-sight-timeline.module.css";
 
-type Drop = { to: "planned" | "reserve"; afterId: string | null };
+type Drop = {
+  to: "planned" | "reserve";
+  afterId: string | null;
+  startMinute?: number;
+};
 type Pickup = {
   id: string;
   title: string;
@@ -80,16 +86,19 @@ export function PlannerSightTimeline({
     if (!hit || !root.current?.contains(hit)) return null;
     if (hit.dataset.dropRow === "reserve")
       return { to: "reserve", afterId: null };
-    const stops = [
-      ...hit.querySelectorAll<HTMLElement>("[data-axis-item]"),
-    ].filter((e) => e.dataset.axisItem !== id);
-    const before = stops
-      .filter((e) => {
-        const r = e.getBoundingClientRect();
-        return x >= r.left + r.width / 2;
-      })
-      .at(-1);
-    return { to: "planned", afterId: before?.dataset.axisItem ?? null };
+    const ruler = hit
+      .querySelector<HTMLElement>("[data-axis-start]")
+      ?.getBoundingClientRect();
+    if (!ruler || !id) return null;
+    return {
+      to: "planned",
+      afterId: null,
+      startMinute: snapTimelineMinute(
+        (x - ruler.left) / ruler.width,
+        axis.start,
+        axis.span,
+      ),
+    };
   }
   function down(event: PointerEvent<HTMLButtonElement>, item: TripItem) {
     if (event.button !== 0 || timelineProtected(item)) return;
@@ -153,10 +162,13 @@ export function PlannerSightTimeline({
         y: 0,
         moved: true,
         keyboard: true,
-        target: { to: "planned", afterId: null },
+        target: {
+          to: "planned",
+          afterId: null,
+          startMinute: Math.round(timelineMinute(item.startTime) / 5) * 5,
+        },
       });
     } else if (p?.keyboard && p.id === item.id) {
-      const others = planned.filter((i) => i.id !== item.id);
       if (
         [
           "ArrowLeft",
@@ -176,16 +188,27 @@ export function PlannerSightTimeline({
       else if (event.key === "ArrowDown")
         publish({ ...p, target: { to: "reserve", afterId: null } });
       else if (event.key === "ArrowUp")
-        publish({ ...p, target: { to: "planned", afterId: null } });
+        publish({
+          ...p,
+          target: {
+            to: "planned",
+            afterId: null,
+            startMinute: Math.round(timelineMinute(item.startTime) / 5) * 5,
+          },
+        });
       else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-        const index = others.findIndex((i) => i.id === p.target?.afterId);
-        const next = Math.min(
-          others.length - 1,
-          Math.max(-1, index + (event.key === "ArrowRight" ? 1 : -1)),
+        const next = Math.max(
+          0,
+          Math.min(
+            10075,
+            (p.target?.startMinute ??
+              Math.round(timelineMinute(item.startTime) / 5) * 5) +
+              (event.key === "ArrowRight" ? 5 : -5),
+          ),
         );
         publish({
           ...p,
-          target: { to: "planned", afterId: others[next]?.id ?? null },
+          target: { to: "planned", afterId: null, startMinute: next },
         });
       }
     }
@@ -207,7 +230,7 @@ export function PlannerSightTimeline({
           className={css.info}
           data-timeline-stop={item.id}
           data-drag-handle
-          aria-label={`${isReserve ? "备用" : "行程"} ${timelineTitle(item)}，${isReserve ? "待安排" : displayTimelineTime(item.startTime)}，${timelineDuration(item)}分钟${protectedItem ? "，已锁定" : "；空格拿起，左右选择位置，上下换轨，回车放下"}`}
+          aria-label={`${isReserve ? "备用" : "行程"} ${timelineTitle(item)}，${isReserve ? "待安排" : displayTimelineTime(item.startTime)}，${timelineDuration(item)}分钟${protectedItem ? "，已锁定" : "；空格拿起，左右每次5分钟，上下换轨，回车放下"}`}
           aria-pressed={pickup?.keyboard && pickup.id === item.id}
           title={`${timelineTitle(item)} · ${isReserve ? "拖到上轨安排时间" : `${displayTimelineTime(item.startTime)}–${displayTimelineTime(item.endTime)}`} · ${protectedItem ? "已保护，不可拖动" : "拖动调序 / 点击查看"}`}
           onPointerDown={(e) => down(e, item)}
@@ -260,9 +283,11 @@ export function PlannerSightTimeline({
   const targetText =
     pickup?.target?.to === "reserve"
       ? "移到备用，保留资料"
-      : pickup?.target?.afterId
-        ? `插在 ${planned.find((i) => i.id === pickup.target?.afterId)?.title ?? "前一项"} 后，结束时间 +15 分钟`
-        : "放在当天开头";
+      : pickup?.target?.startMinute !== undefined
+        ? `预计放下：${displayTimelineTime(timelineClock(pickup.target.startMinute)).replace(":", "时")}分 · 每5分钟吸附`
+        : pickup?.target?.afterId
+          ? `插在 ${planned.find((i) => i.id === pickup.target?.afterId)?.title ?? "前一项"} 后，结束时间 +15 分钟`
+          : "放在当天开头";
   return (
     <div
       ref={root}
@@ -300,6 +325,13 @@ export function PlannerSightTimeline({
           >
             <div
               className={css.ruler}
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, #819f9270 1px, transparent 1px)",
+                backgroundSize: `${500 / axis.span}% 4px`,
+                backgroundPosition: `${((Math.ceil(axis.start / 5) * 5 - axis.start) / axis.span) * 100}% bottom`,
+                backgroundRepeat: "repeat-x",
+              }}
               data-axis-start={axis.start}
               data-axis-end={axis.end}
               aria-label="当天等分时间刻度"
@@ -331,7 +363,7 @@ export function PlannerSightTimeline({
                       {
                         left: `calc(58px + (100% - 116px) * ${ratio})`,
                         "--stack": Math.min(same, 3),
-                        zIndex: frontId === item.id ? 2 : undefined,
+                        zIndex: frontId === item.id ? 10 : undefined,
                       } as CSSProperties
                     }
                   >
@@ -342,33 +374,43 @@ export function PlannerSightTimeline({
                   </li>
                 );
               })}
-              {[...new Set(planned.map((i) => i.startTime))].map((time) => {
-                const group = planned.filter((i) => i.startTime === time);
-                if (group.length < 2) return null;
-                const current = group.findIndex((i) => i.id === frontId);
-                const next =
-                  group[
-                    (current < 0 ? group.length : current + 1) % group.length
-                  ];
-                return (
-                  <li
-                    key={time}
-                    className={css.overlapChoice}
-                    style={{
-                      left: `calc(58px + (100% - 116px) * ${(timelineMinute(time) - axis.start) / axis.span})`,
-                    }}
-                  >
-                    <button
-                      type="button"
-                      aria-label={`${displayTimelineTime(time)} 同时间 ${group.length} 项，切换显示${next.title}`}
-                      title="时间重叠的草案保留，点击轮流显示卡片"
-                      onClick={() => setFrontId(next.id)}
+              {timelineCollisionGroups(planned, axis.width, axis.span).map(
+                (group) => {
+                  const time = group[0].startTime;
+                  return (
+                    <li
+                      key={time}
+                      className={css.overlapChoice}
+                      style={{
+                        left: `calc(58px + (100% - 116px) * ${(timelineMinute(time) - axis.start) / axis.span})`,
+                      }}
                     >
-                      {group.length}项 ↔
-                    </button>
-                  </li>
-                );
-              })}
+                      <OverlapPicker
+                        items={group}
+                        onSelect={(id) => {
+                          setFrontId(id);
+                          requestAnimationFrame(() => {
+                            const selected = [
+                              ...(root.current?.querySelectorAll<HTMLElement>(
+                                "[data-axis-item]",
+                              ) ?? []),
+                            ].find((node) => node.dataset.axisItem === id);
+                            selected?.scrollIntoView({
+                              block: "nearest",
+                              inline: "center",
+                            });
+                            selected
+                              ?.querySelector<HTMLButtonElement>(
+                                "[data-drag-handle]",
+                              )
+                              ?.focus({ preventScroll: true });
+                          });
+                        }}
+                      />
+                    </li>
+                  );
+                },
+              )}
               {!planned.length && (
                 <li className={css.empty}>
                   把下方项目拖到这里，开始安排这一天。
@@ -425,12 +467,63 @@ export function PlannerSightTimeline({
               top: Math.max(8, pickup.y - 42),
             }}
             aria-hidden="true"
+            data-drop-minute={pickup.target?.startMinute}
           >
             {pickup.title}
+            <br />
+            {pickup.target ? targetText : "拖到时间轴选择时间"}
           </div>,
           pickup.portalTarget ?? document.body,
         )}
     </div>
+  );
+}
+
+function OverlapPicker({
+  items,
+  onSelect,
+}: {
+  items: TripItem[];
+  onSelect: (id: string) => void;
+}) {
+  const trigger = useRef<HTMLButtonElement>(null),
+    [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        type="button"
+        ref={trigger}
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        重叠 {items.length} 项 ▾
+      </button>
+      {open && (
+        <PlannerPopover
+          id={`overlap-${items[0].id}`}
+          title="选择要拖动的项目"
+          trigger={trigger}
+          placement="above"
+          onClose={() => setOpen(false)}
+        >
+          <div className={css.overlapItems}>
+            {items.map((item) => (
+              <button
+                type="button"
+                key={item.id}
+                onClick={() => {
+                  onSelect(item.id);
+                  setOpen(false);
+                }}
+              >
+                {item.startTime} · {timelineTitle(item)}
+                {timelineProtected(item) ? "（已锁定）" : " · 置顶后拖动"}
+              </button>
+            ))}
+          </div>
+        </PlannerPopover>
+      )}
+    </>
   );
 }
 

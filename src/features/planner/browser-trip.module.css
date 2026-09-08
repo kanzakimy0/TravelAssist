@@ -56,6 +56,17 @@ dialog.planConfirmation[data-kind="quick"] {
   height: max-content;
   max-height: calc(100dvh - 32px);
 }
+.planConfirmation .confirm footer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.planConfirmation .confirm footer button {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  min-height: 42px;
+  white-space: normal;
+}
 .planConfirmation label {
   display: flex;
   align-items: flex-start;

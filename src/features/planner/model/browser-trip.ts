@@ -10,7 +10,11 @@ export const SAVED_TRIP_KEY = "travelassist.saved-workspace.v1";
 // Browser-only MVP: one explicitly saved workspace, not cloud storage or orders.
 export type TripSnapshot = Pick<
   TripState,
-  "plans" | "settings" | "configuration" | "pendingSettingsBaseline"
+  | "plans"
+  | "settings"
+  | "configuration"
+  | "pendingSettingsBaseline"
+  | "workingPlanId"
 > & {
   currentPlanId: string;
   draft: DetailDraftState;
@@ -29,6 +33,7 @@ export function tripSnapshot(
       ? { pendingSettingsBaseline: trip.pendingSettingsBaseline }
       : {}),
     currentPlanId: trip.ui.currentPlanId,
+    ...(trip.workingPlanId ? { workingPlanId: trip.workingPlanId } : {}),
     draft,
   });
 }
@@ -40,6 +45,7 @@ export function restoreTrip(
   return {
     ...trip,
     plans: structuredClone(snapshot.plans),
+    workingPlanId: snapshot.workingPlanId,
     settings: structuredClone(snapshot.settings),
     configuration: structuredClone(snapshot.configuration),
     pendingSettingsBaseline: structuredClone(snapshot.pendingSettingsBaseline),
@@ -160,6 +166,9 @@ export function parseSavedTrip(
       !Array.isArray(s.plans) ||
       s.plans.length !== seed.plans.length ||
       !text(s.currentPlanId) ||
+      (s.workingPlanId !== undefined &&
+        (!text(s.workingPlanId) ||
+          !s.plans.some((p) => record(p) && p.id === s.workingPlanId))) ||
       !shape(s.settings, seed.settings) ||
       !record(s.settings) ||
       !date(s.settings.startDate) ||

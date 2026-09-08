@@ -134,6 +134,7 @@ export type TripUi = Omit<PlannerUiState, "selectedStopId"> & {
   bookingOpen: boolean;
 };
 export type TripState = {
+  workingPlanId?: string;
   plans: TripPlan[];
   places: PlannerPlace[];
   areas: PlannerArea[];
@@ -1008,7 +1009,9 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
     return {
       ...state,
       pendingSettingsBaseline: undefined,
-      notice: `示例路线预览已刷新；保留 ${plan.items.filter((i) => i.fixedTime || i.locked).length} 项固定安排与全部预约，未进行真实计算。`,
+      notice: state.workingPlanId
+        ? "当前工作中方案已固定，不会被新推荐覆盖；仅刷新其余方案的示例预览，未进行真实计算。"
+        : `示例路线预览已刷新；保留 ${plan.items.filter((i) => i.fixedTime || i.locked).length} 项固定安排与全部预约，未进行真实计算。`,
     };
   if (action.type === "detailBatchEdit") {
     const changed = plan.items.filter((i) =>

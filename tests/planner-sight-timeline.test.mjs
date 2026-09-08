@@ -356,5 +356,9 @@ test("identical starts expose a visible card-cycling control without removing pr
       onSelect: () => {},
     }),
   );
-  assert.match(html, /同时间 2 项，切换显示/);
+  assert.match(html, /重叠 \d+ 项/);
+  assert.equal(
+    (html.match(/data-planned-sight=/g) || []).length,
+    plannerTimeline(s, 1).planned.length,
+  );
 });

@@ -223,6 +223,7 @@ export type TimelineAction =
       type: "timelineDrop";
       to: "planned" | "reserve";
       afterId: string | null;
+      startMinute?: number;
     })
   | (Scope & { type: "timelineTime"; startTime: string; duration: number })
   | (Scope & { type: "timelineLock" });
@@ -314,17 +315,28 @@ export function applyTimelineAction(
       `${item.title}已移到备用，项目资料保留，未保存。`,
     );
   }
-  if (action.afterId === item.id) return state;
+  if (
+    action.startMinute !== undefined &&
+    (!Number.isInteger(action.startMinute) ||
+      action.startMinute < 0 ||
+      action.startMinute > 10075 ||
+      action.startMinute % 5 !== 0)
+  )
+    return { ...state, notice: "请选择五分钟刻度内的有效时间。" };
+  if (action.afterId === item.id && action.startMinute === undefined)
+    return state;
   const others = planned.filter((i) => i.id !== item.id);
   const previous =
     action.afterId === null
       ? undefined
       : others.find((i) => i.id === action.afterId);
-  if (action.afterId !== null && !previous)
+  if (action.startMinute === undefined && action.afterId !== null && !previous)
     return { ...state, notice: "插入位置已变化，请重新拖动。" };
-  const start = previous
-    ? timelineMinute(previous.endTime) + 15
-    : Math.min(7 * 60, timelineMinute(others[0]?.startTime ?? "07:00"));
+  const start =
+    action.startMinute ??
+    (previous
+      ? timelineMinute(previous.endTime) + 15
+      : Math.min(7 * 60, timelineMinute(others[0]?.startTime ?? "07:00")));
   const moved = {
     ...item,
     startTime: timelineClock(start),
@@ -348,6 +360,40 @@ export function applyTimelineAction(
       ),
       reserveItems: (plan.reserveItems ?? []).filter((i) => i.id !== item.id),
     },
-    `${item.title}已安排为 ${displayTimelineTime(moved.startTime)}；${previous ? "前一项结束 +15 分钟" : "放在当天开头"}，保留其他项目，详情再检查，未保存。`,
+    `${item.title}已安排为 ${displayTimelineTime(moved.startTime)}；${action.startMinute !== undefined ? "按五分钟刻度放置" : previous ? "前一项结束 +15 分钟" : "放在当天开头"}，保留其他项目，详情再检查，未保存。`,
   );
+}
+
+export function snapTimelineMinute(ratio: number, start: number, span: number) {
+  return Math.min(
+    10075,
+    Math.max(
+      0,
+      Math.round((start + Math.max(0, Math.min(1, ratio)) * span) / 5) * 5,
+    ),
+  );
+}
+export function timelineCollisionGroups(
+  items: TripItem[],
+  width: number,
+  span: number,
+) {
+  const sorted = [...items].sort(
+    (a, b) => timelineMinute(a.startTime) - timelineMinute(b.startTime),
+  );
+  const groups: TripItem[][] = [];
+  for (const item of sorted) {
+    const group = groups.at(-1),
+      previous = group?.at(-1);
+    if (
+      previous &&
+      ((timelineMinute(item.startTime) - timelineMinute(previous.startTime)) /
+        span) *
+        (width - 116) <
+        116
+    )
+      group!.push(item);
+    else groups.push([item]);
+  }
+  return groups.filter((group) => group.length > 1);
 }

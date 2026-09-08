@@ -135,11 +135,14 @@ export function PlannerPage() {
   const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
   const [addOpen, setAddOpen] = useState(false);
   const [completionOpen, setCompletionOpen] = useState(false);
-  const [planAction, setPlanAction] = useState<{
+  const [manualPlanAction, setPlanAction] = useState<{
     id: string;
     kind: "save" | "restore";
+    draftId?: string;
   } | null>(null);
   const [planOverwrite, setPlanOverwrite] = useState(false);
+  const [archiveBeforeSwitch, setArchiveBeforeSwitch] = useState(true);
+  const [draftListOpen, setDraftListOpen] = useState(false);
   const [flightOpen, setFlightOpen] = useState<string | null>(null);
   const [addType, setAddType] = useState<DetailItemKind>("attraction");
   const [replacementId, setReplacementId] = useState<string | null>(null);
@@ -209,6 +212,27 @@ export function PlannerPage() {
       }),
   });
   const datedPlan = presentationPlan(trip);
+  const pendingEntry =
+    browserTrip.entryPlanId ??
+    (mode === "detail" && browserTrip.ready && !trip.workingPlanId
+      ? trip.ui.currentPlanId
+      : null);
+  const planAction =
+    manualPlanAction ??
+    (pendingEntry
+      ? { id: pendingEntry, kind: "save" as const, draftId: undefined }
+      : null);
+  const switchingPlan = Boolean(
+    planAction?.kind === "save" &&
+    trip.workingPlanId &&
+    (trip.workingPlanId !== planAction.id || planAction.draftId),
+  );
+  function closePlanAction() {
+    setPlanAction(null);
+    browserTrip.cancelEntry();
+    setPlanOverwrite(false);
+    setArchiveBeforeSwitch(true);
+  }
 
   const railItems = detailRailItems(
     trip,
@@ -517,14 +541,19 @@ export function PlannerPage() {
     <PlannerRightPanel
       onSavePlan={(id) => {
         setPlanOverwrite(false);
-        setPlanAction({ id, kind: "save" });
+        setArchiveBeforeSwitch(true);
+        browserTrip.requestPlan(id);
       }}
       onRestorePlan={(id) => setPlanAction({ id, kind: "restore" })}
       plans={trip.plans.map((candidate) => presentationPlan(trip, candidate))}
       plan={datedPlan}
       state={trip}
       dispatch={dispatchTrip}
-      onPlan={(next) => dispatch({ type: "plan", plan: next })}
+      onPlan={(next) =>
+        trip.workingPlanId && trip.workingPlanId !== next.id
+          ? browserTrip.requestPlan(next.id)
+          : dispatch({ type: "plan", plan: next })
+      }
       moreOpen={plannerUi.isMoreSettingsOpen}
       onMore={(open) =>
         dispatch({ type: "patch", patch: { isMoreSettingsOpen: open } })
@@ -929,15 +958,17 @@ export function PlannerPage() {
         }
       />
 
-      {mode === "planner" && planAction && (
+      {planAction && (
         <PlannerOverlay
           kind="quick"
           title={
             planAction.kind === "restore"
               ? "还原推荐方案？"
-              : "保存方案并进入详情"
+              : switchingPlan
+                ? "切换工作方案？"
+                : "保存方案并进入详情"
           }
-          onClose={() => setPlanAction(null)}
+          onClose={closePlanAction}
           className={localSave.planConfirmation}
         >
           <div className={localSave.confirm}>
@@ -949,18 +980,31 @@ export function PlannerPage() {
             <p>
               {planAction.kind === "restore"
                 ? "还原此方案的原始推荐路线、项目时间、备用项目、交通修改及名称。其他方案、个人偏好、独立新增的详情项目与已保存版本不变。此操作不取消真实预约；请确认是否放弃此方案的路线修改。"
-                : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
+                : switchingPlan
+                  ? "切换后，原工作方案的未保留修改将被废弃，新方案成为唯一工作中方案。建议先保存为浏览器草稿，可通过草稿列表恢复；不会取消外部预约。"
+                  : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
             </p>
+            {switchingPlan && (
+              <label>
+                <input
+                  type="checkbox"
+                  checked={archiveBeforeSwitch}
+                  onChange={(e) => setArchiveBeforeSwitch(e.target.checked)}
+                />
+                先把原工作方案存为草稿（推荐）
+              </label>
+            )}
             {planAction.kind === "save" &&
               browserTrip.saved &&
-              browserTrip.saved.snapshot.currentPlanId !== planAction.id && (
+              (switchingPlan ||
+                browserTrip.saved.snapshot.currentPlanId !== planAction.id) && (
                 <label>
                   <input
                     type="checkbox"
                     checked={planOverwrite}
                     onChange={(e) => setPlanOverwrite(e.target.checked)}
                   />
-                  替换此浏览器保存的另一方案（目前只保留一份）
+                  我确认切换工作方案并替换当前保存记录
                 </label>
               )}
             {planAction.kind === "save" && browserTrip.error && (
@@ -969,7 +1013,7 @@ export function PlannerPage() {
               </p>
             )}
             <footer>
-              <button type="button" onClick={() => setPlanAction(null)}>
+              <button type="button" onClick={closePlanAction}>
                 取消
               </button>
               <button
@@ -980,8 +1024,9 @@ export function PlannerPage() {
                   (planAction.kind === "save" &&
                     Boolean(
                       browserTrip.saved &&
-                      browserTrip.saved.snapshot.currentPlanId !==
-                        planAction.id,
+                      (switchingPlan ||
+                        browserTrip.saved.snapshot.currentPlanId !==
+                          planAction.id),
                     ) &&
                     !planOverwrite)
                 }
@@ -994,14 +1039,25 @@ export function PlannerPage() {
                     });
                     setPlanAction(null);
                   } else if (
-                    browserTrip.saveRecommendation(planAction.id, planOverwrite)
+                    browserTrip.saveRecommendation(
+                      planAction.id,
+                      planOverwrite,
+                      archiveBeforeSwitch,
+                      browserTrip.archivedDrafts.find(
+                        (d) => d.id === planAction.draftId,
+                      ),
+                    )
                   )
                     setPlanAction(null);
                 }}
               >
                 {planAction.kind === "restore"
                   ? "确认还原"
-                  : "保存到浏览器并进入详情"}
+                  : switchingPlan
+                    ? archiveBeforeSwitch
+                      ? "存为草稿并切换"
+                      : "放弃原方案并切换"
+                    : "保存到浏览器并进入详情"}
               </button>
             </footer>
           </div>
@@ -1051,11 +1107,50 @@ export function PlannerPage() {
             <button type="button" onClick={browserTrip.openSaved}>
               打开已保存行程
             </button>
+            <button type="button" onClick={() => setDraftListOpen(true)}>
+              浏览器草稿（{browserTrip.archivedDrafts.length}）
+            </button>
             {browserTrip.error && (
               <small role="alert">{browserTrip.error}</small>
             )}
           </>
         </section>
+      )}
+      {draftListOpen && (
+        <PlannerOverlay
+          kind="quick"
+          title="浏览器草稿"
+          className={localSave.planConfirmation}
+          onClose={() => setDraftListOpen(false)}
+        >
+          <div className={localSave.confirm}>
+            <p>仅保存在此浏览器；载入草稿也需要确认切换，不会覆盖当前工作。</p>
+            {browserTrip.archivedDrafts.length ? (
+              browserTrip.archivedDrafts.map((draft) => (
+                <p key={draft.id}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDraftListOpen(false);
+                      setPlanOverwrite(false);
+                      setArchiveBeforeSwitch(true);
+                      setPlanAction({
+                        id: draft.snapshot.currentPlanId,
+                        kind: "save",
+                        draftId: draft.id,
+                      });
+                    }}
+                  >
+                    载入：{draft.name} ·{" "}
+                    {new Date(draft.savedAt).toLocaleString()}
+                  </button>
+                </p>
+              ))
+            ) : (
+              <p>还没有另存的草稿。</p>
+            )}
+          </div>
+        </PlannerOverlay>
       )}
       {browserTrip.destination && (
         <PlannerOverlay
