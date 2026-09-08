@@ -4,6 +4,8 @@
 
 - Owner：B；Follow-up：**待审查**；Issue：[#193](https://github.com/kanzakimy0/TravelAssist/issues/193)（Open）。
 - Workspace：`F:\TravelAssist`。
+- Draft PR：[#197](https://github.com/kanzakimy0/TravelAssist/pull/197)，base=`develop`，保持 Open / Draft。
+- 实现提交：`053457c`，已推送指定分支；本记录随后以文档提交回填。
 - Branch：`fix/b-personal-center-trip-status-large-screen-polish`；Base：`develop`。
 - 执行基线：`64be3bae73b80eaae6ad59471761e4b70a4b6aa5`。
 - Parent 5.1 / 5.4 / 5.6 / 5.10 / 5.20 保持“已完成”；5.3 保持“未开始”。
@@ -141,4 +143,4 @@ node tests/personal-center-followup.browser.mjs
 - Planner / Map / Start Flow / Preference / DB / API / Supabase / Auth / localStorage / Cookie / Session / dependencies / Workflow 零实现改动。
 - Master WBS 仅追加本 Follow-up 的独立追踪，Parent 完成状态及 5.3 状态不变。
 - 只精确暂存本 Task 文件，不使用 `git add .`、clean、hard reset、force push。
-- 提交/推送指定分支，PR 使用 Draft、base=develop、`Relates to #193`；PR 链接回填后更新 Issue。保持 Issue Open，等待用户验收，不自动开始其他任务。
+- 已提交/推送指定分支并创建 Draft PR #197，base=develop、`Relates to #193`；Issue #193 更新待审查说明并保持 Open。等待用户验收，不自动开始其他任务。
