@@ -9,7 +9,8 @@
 - Branch: `codex/a-trip-plan-contract` (avoids automatic feature-branch merge).
 - Base: `39890af8c2ed137712b90f3f9d2bfdef313cfef6`.
 - Depends On: merged contract-handoff rules; existing 4.15/4.16 local core audited, full server implementation still incomplete.
-- Commit / Pull Request: PENDING.
+- Implementation commit: `2021343b2f160cfb1d91c05fdcc1d249a8b149ed`; tracking-only follow-up at PR head.
+- Pull Request: [Draft #216](https://github.com/kanzakimy0/TravelAssist/pull/216) → develop; not merged, integration review pending.
 - Authorization: user explicitly authorized A contract execution, gated merge, then TASK-017-B continuation on 2026-09-08.
 
 ## Scope

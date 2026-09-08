@@ -10,7 +10,7 @@ Partial — contract implementation delivered for integration review. WBS 4.17 i
 - Issue [#215](https://github.com/kanzakimy0/TravelAssist/issues/215); related #207 / #201.
 - Base `39890af8c2ed137712b90f3f9d2bfdef313cfef6`.
 - Branch `codex/a-trip-plan-contract`, independent clean worktree. Original dirty worktree and live preview are untouched.
-- Commit / Draft PR: PENDING publication.
+- Implementation commit: `2021343b2f160cfb1d91c05fdcc1d249a8b149ed`; tracking-only follow-up at [Draft PR #216](https://github.com/kanzakimy0/TravelAssist/pull/216) head. Target develop, not merged.
 - User authorized contract work and merge after its required review gate, then TASK-017 continuation. The concrete contract still needs the repository-mandated B/designated reviewer review; authorization is not fabricated review evidence.
 
 ## Contract

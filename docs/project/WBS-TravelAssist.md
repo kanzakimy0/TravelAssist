@@ -4,7 +4,7 @@
 
 - 用户明确授权先执行 A 的 4.17，完成契约冻结、审查与合并后再复检 TASK-017-B / #207。#215；分支 `codex/a-trip-plan-contract`；基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`。
 - 当前待审查：独立 canonical Trip Draft / Trip Plan 公开类型、校验、fixture、真实 Step 纯转换器和交接说明；不复制浏览器 Store，不建主系统表，不改 B 的 Preference Master。4.15/4.16 仍是部分本地实现，8.5 保持未开始。
-- 正式冻结前必须取得 B 或指定集成审查人的审查记录；4.17 合并验收前 #207 / 5.18 不解除阻塞。Task：`docs/tasks/TASK-WBS-4.17-a-trip-plan-contract.md`；Commit / PR 待发布。
+- 正式冻结前必须取得 B 或指定集成审查人的审查记录；4.17 合并验收前 #207 / 5.18 不解除阻塞。Task：`docs/tasks/TASK-WBS-4.17-a-trip-plan-contract.md`；Result：`docs/tasks/RESULT-WBS-4.17-a-trip-plan-contract.md`；实现 `2021343`，后续仅同步追踪；[Draft PR #216](https://github.com/kanzakimy0/TravelAssist/pull/216) 未合并。612 tests、lint/typecheck/build 通过；27 份既有格式问题保留。
 
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
