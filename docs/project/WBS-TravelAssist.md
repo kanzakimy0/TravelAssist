@@ -4,7 +4,7 @@
 
 - 5.3 / B / #219：待审查；执行基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `feature/b-account-wbs-5-3-auth-user-flow`。1.23 / 8.3 已完成，PR #218 为基线祖先；没有重复实现。按用户京都樱花 + 暖白 Auth Card 参考图实现独立 Auth Shell；实现提交 `7fd9add6713b62c8f2d48d810177eda21024c389`。
 - 四个 Auth 页面、真实核心调用、可信 Personal Center 保护与当前 Session 退出已实现。Chromium / Microsoft Edge 各 50 项布局与真实 Local Auth UI 流程、TASK-018 16/16、全仓 Node 631/631、lint/typecheck/build 与客户端 Secret 检查通过；27 份历史格式失败逐字节等同执行基线，未越界修改。外部 OAuth/SMS/email delivery、真机键盘、Legal 10.6 仍 Deferred。
-- Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result：`docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`。Issue #219 保持 Open，仅建立 Draft PR，未自动合并；未获用户最终视觉验收，不标记已完成。不开展 3.4 / 5.15 / 5.21 或其他 Task。以下 Auth/UI 未启动表述为历史，以本节和当前 5.3 行为准。
+- Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result：`docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`。Issue #219 保持 Open，[Draft PR #222](https://github.com/kanzakimy0/TravelAssist/pull/222) 未合并；未获用户最终视觉验收，不标记已完成。不开展 3.4 / 5.15 / 5.21 或其他 Task。以下 Auth/UI 未启动表述为历史，以本节和当前 5.3 行为准。
 
 ## TASK-018-B Authentication Core（2026-09-08）
 

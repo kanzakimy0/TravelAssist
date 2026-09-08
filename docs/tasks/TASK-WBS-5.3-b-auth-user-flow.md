@@ -1199,40 +1199,40 @@ Issue #219 = Closed
 
 # 37. Acceptance Checklist
 
-- [ ] latest develop synced
-- [ ] 1.23 completed
-- [ ] 8.3 / TASK-018-B / PR #218 completed and ancestor
-- [ ] no duplicate 5.3 implementation
-- [ ] independent Auth Shell
-- [ ] visual `/login` route
-- [ ] visual `/register` route
-- [ ] visual `/forgot-password` route
-- [ ] visual `/reset-password` route
-- [ ] exactly phone/email top-level login switch
-- [ ] phone OTP only
-- [ ] new phone can auto-signup via real core
-- [ ] email password login
-- [ ] email OTP in-place mode
-- [ ] unregistered email OTP never auto-signs-up
-- [ ] email-not-registered Create Account flow does not falsely claim verification
-- [ ] registration minimal fields only
-- [ ] password rule exactly aligned with TASK-018
-- [ ] confirmation-pending registration state
-- [ ] forgot-password flow
-- [ ] reset-password flow
-- [ ] Google/Apple real initiation contract; no fake external E2E
-- [ ] safe returnTo
-- [ ] Personal Center protected by trusted server verification
-- [ ] current-session signout active
-- [ ] no all-device logout claim
-- [ ] no Profile API/persistence implemented
-- [ ] no Planner/Start business modification
-- [ ] no handcrafted localStorage/cookie auth
-- [ ] no secret/token exposure
-- [ ] seven responsive viewports passed
-- [ ] real Local Auth UI acceptance passed
-- [ ] existing TASK-018 security/runtime regression passed
-- [ ] Task / Issue / WBS / PR synchronized
+- [x] latest develop synced
+- [x] 1.23 completed
+- [x] 8.3 / TASK-018-B / PR #218 completed and ancestor
+- [x] no duplicate 5.3 implementation
+- [x] independent Auth Shell
+- [x] visual `/login` route
+- [x] visual `/register` route
+- [x] visual `/forgot-password` route
+- [x] visual `/reset-password` route
+- [x] exactly phone/email top-level login switch
+- [x] phone OTP only
+- [x] new phone can auto-signup via real core
+- [x] email password login
+- [x] email OTP in-place mode
+- [x] unregistered email OTP never auto-signs-up
+- [x] email-not-registered Create Account flow does not falsely claim verification
+- [x] registration minimal fields only
+- [x] password rule exactly aligned with TASK-018
+- [x] confirmation-pending registration state
+- [x] forgot-password flow
+- [x] reset-password flow
+- [x] Google/Apple real initiation contract; no fake external E2E
+- [x] safe returnTo
+- [x] Personal Center protected by trusted server verification
+- [x] current-session signout active
+- [x] no all-device logout claim
+- [x] no Profile API/persistence implemented
+- [x] no Planner/Start business modification
+- [x] no handcrafted localStorage/cookie auth
+- [x] no secret/token exposure
+- [x] seven responsive viewports passed
+- [x] real Local Auth UI acceptance passed
+- [x] existing TASK-018 security/runtime regression passed
+- [x] Task / Issue / WBS / PR synchronized
 
 ---
 

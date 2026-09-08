@@ -21,7 +21,7 @@
 - Branch: `feature/b-account-wbs-5-3-auth-user-flow`.
 - Implementation Commit: `7fd9add6713b62c8f2d48d810177eda21024c389`; initial checkpoint `170a6c2f890d80b82213aedd827671f7ca2b4478`.
 - Final Head: final documentation-only delivery commit, reported in Issue #219 and the delivery response (a commit cannot contain its own SHA).
-- PR: pending publication as Draft, base `develop`, title `feat(WBS-5.3-B): implement authentication user flow`, body `Relates to #219`.
+- PR: [Draft #222](https://github.com/kanzakimy0/TravelAssist/pull/222), base `develop`, title `feat(WBS-5.3-B): implement authentication user flow`, body `Relates to #219`. GitHub verified Open / isDraft=true / mergedAt=null.
 - Merge Commit: none; no merge authorized for this task.
 - WBS updated: 5.3 only, 进行中 → 待审查. Existing parent/dependency completion and other Owner records preserved.
 
@@ -174,13 +174,16 @@ Runtime environment and evidence:
 ## Git
 
 - Implementation commit: `7fd9add6713b62c8f2d48d810177eda21024c389`; delivery documentation follows separately.
-- Push/PR: to be completed on this exact branch as Draft; status will be synchronized before delivery.
+- Push/PR: `git push -u origin feature/b-account-wbs-5-3-auth-user-flow` succeeded; Draft #222 created and verified. Publication snapshot `1ed6990dd77a4a5bb21c53398f61a71d654e637c`; following changes are only this Task's tracking documentation.
 - Merge behavior: no merge. Feature push commits use the repository's established `[skip ci]` safety marker to avoid its automatic feature merge; no workflow edits. Draft retained for user review.
 - latest origin/develop at pre-publication fetch: `18afee5f02ed45505b81636f7b25b568270b2bf9`.
-- Unpushed commits/tracked working tree: final publication verification to be recorded in Issue #219 and delivery response.
+- Unpushed commits/tracked working tree: final local/remote SHA equality and clean tracked tree required and reported with the final SHA in Issue #219 and delivery response. The three original untracked files are intentionally retained.
 - Preserved untracked files: README.txt / asset-contact-sheet.jpg / publish_assets.py; all original SHA-256 values unchanged, not staged.
 
 ## Problems
+
+- Final `db:status` and normal `db:stop`: PASS after zero-count verification. Task-owned Next servers stopped; no reset, database-volume deletion or new permanent service. The temporary test login URL is not advertised as a still-running preview.
+- Final targeted Prettier: PASS for all changed supported files; Master WBS retains the repository's existing formatting exclusion. Staged and unstaged diff checks: PASS.
 
 - Initial Windows `npm ci` failed with EPERM on a Sharp DLL held by the identified F:\TravelAssist Next preview process (port 3001). That exact preview was stopped after reporting the interruption; Windows `npm ci` then succeeded. Validation continued in the isolated F-backed WSL worktree. The earlier commands missing dependencies were not counted as PASS.
 - Initial full Node run: 620/621, direct feature-to-Supabase settings lookup violated the existing DB boundary test. Fixed by extracting the tiny server-only availability helper into shared lib/auth; no historical test was weakened. Final full suite: 631/631.
