@@ -8,7 +8,7 @@
 - **Owner:** `B`
 - **Responsibility:** `Authentication UI / Session User Flow / Personal Center Access`
 - **Priority:** `P0`
-- **Status:** `Ready / 可开始`
+- **Status:** `待审查`
 - **Depends On:** `1.23, 8.3`
 - **Dependency State at authoring:** `1.23 = 已完成`, `8.3 = 已完成`
 - **Authentication Core:** `TASK-018-B`, PR `#218`, merged into `develop`
@@ -1199,40 +1199,40 @@ Issue #219 = Closed
 
 # 37. Acceptance Checklist
 
-- [ ] latest develop synced
-- [ ] 1.23 completed
-- [ ] 8.3 / TASK-018-B / PR #218 completed and ancestor
-- [ ] no duplicate 5.3 implementation
-- [ ] independent Auth Shell
-- [ ] visual `/login` route
-- [ ] visual `/register` route
-- [ ] visual `/forgot-password` route
-- [ ] visual `/reset-password` route
-- [ ] exactly phone/email top-level login switch
-- [ ] phone OTP only
-- [ ] new phone can auto-signup via real core
-- [ ] email password login
-- [ ] email OTP in-place mode
-- [ ] unregistered email OTP never auto-signs-up
-- [ ] email-not-registered Create Account flow does not falsely claim verification
-- [ ] registration minimal fields only
-- [ ] password rule exactly aligned with TASK-018
-- [ ] confirmation-pending registration state
-- [ ] forgot-password flow
-- [ ] reset-password flow
-- [ ] Google/Apple real initiation contract; no fake external E2E
-- [ ] safe returnTo
-- [ ] Personal Center protected by trusted server verification
-- [ ] current-session signout active
-- [ ] no all-device logout claim
-- [ ] no Profile API/persistence implemented
-- [ ] no Planner/Start business modification
-- [ ] no handcrafted localStorage/cookie auth
-- [ ] no secret/token exposure
-- [ ] seven responsive viewports passed
-- [ ] real Local Auth UI acceptance passed
-- [ ] existing TASK-018 security/runtime regression passed
-- [ ] Task / Issue / WBS / PR synchronized
+- [x] latest develop synced
+- [x] 1.23 completed
+- [x] 8.3 / TASK-018-B / PR #218 completed and ancestor
+- [x] no duplicate 5.3 implementation
+- [x] independent Auth Shell
+- [x] visual `/login` route
+- [x] visual `/register` route
+- [x] visual `/forgot-password` route
+- [x] visual `/reset-password` route
+- [x] exactly phone/email top-level login switch
+- [x] phone OTP only
+- [x] new phone can auto-signup via real core
+- [x] email password login
+- [x] email OTP in-place mode
+- [x] unregistered email OTP never auto-signs-up
+- [x] email-not-registered Create Account flow does not falsely claim verification
+- [x] registration minimal fields only
+- [x] password rule exactly aligned with TASK-018
+- [x] confirmation-pending registration state
+- [x] forgot-password flow
+- [x] reset-password flow
+- [x] Google/Apple real initiation contract; no fake external E2E
+- [x] safe returnTo
+- [x] Personal Center protected by trusted server verification
+- [x] current-session signout active
+- [x] no all-device logout claim
+- [x] no Profile API/persistence implemented
+- [x] no Planner/Start business modification
+- [x] no handcrafted localStorage/cookie auth
+- [x] no secret/token exposure
+- [x] seven responsive viewports passed
+- [x] real Local Auth UI acceptance passed
+- [x] existing TASK-018 security/runtime regression passed
+- [x] Task / Issue / WBS / PR synchronized
 
 ---
 
@@ -1252,6 +1252,7 @@ Return at minimum:
 ## Status
 
 ## Preflight
+
 - origin/develop base:
 - dependency 1.23:
 - dependency 8.3:
@@ -1261,6 +1262,7 @@ Return at minimum:
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -1272,6 +1274,7 @@ Return at minimum:
 - WBS updated:
 
 ## Auth Routes
+
 - /login:
 - /register:
 - /forgot-password:
@@ -1279,12 +1282,14 @@ Return at minimum:
 - technical /auth routes preserved:
 
 ## Auth Shell
+
 - desktop:
 - tablet:
 - mobile:
 - asset:
 
 ## Phone OTP
+
 - request:
 - verify:
 - auto-signup:
@@ -1292,11 +1297,13 @@ Return at minimum:
 - real SMS claim:
 
 ## Email Password
+
 - sign-in:
 - errors:
 - show/hide password:
 
 ## Email OTP
+
 - mode switch:
 - resend:
 - existing email login:
@@ -1305,6 +1312,7 @@ Return at minimum:
 - prefill verification claim:
 
 ## Registration
+
 - minimal fields:
 - password policy:
 - email confirmation:
@@ -1312,6 +1320,7 @@ Return at minimum:
 - Profile initialization:
 
 ## Recovery
+
 - forgot-password:
 - captured Local mail:
 - recovery callback:
@@ -1319,6 +1328,7 @@ Return at minimum:
 - old/new password verification:
 
 ## OAuth
+
 - Google initiation:
 - Apple initiation:
 - PKCE / callback:
@@ -1327,6 +1337,7 @@ Return at minimum:
 - silent account merge:
 
 ## Session / returnTo
+
 - protected Personal Center:
 - trusted server verification:
 - Home return:
@@ -1337,16 +1348,19 @@ Return at minimum:
 - all-device logout claimed:
 
 ## Profile Boundary
+
 - Profile API 5.15:
 - profile persistence:
 - existing presentation fixture handling:
 
 ## Legal Boundary
+
 - agreement copy:
 - published legal route:
 - 10.6 deferred:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -1357,6 +1371,7 @@ Return at minimum:
 - horizontal overflow:
 
 ## Validation
+
 - npm ci:
 - db:start/status:
 - lint:
@@ -1372,6 +1387,7 @@ Return at minimum:
 - browser QA:
 
 ## Ownership Safety
+
 - A Header redesigned:
 - Planner modified:
 - Start business modified:
@@ -1382,6 +1398,7 @@ Return at minimum:
 - workflow modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -1392,9 +1409,11 @@ Return at minimum:
 - preserved untracked files:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start WBS 3.4 / 5.15 / 5.21 or any other Task.
 ```
 

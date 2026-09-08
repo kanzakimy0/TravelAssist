@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ComponentPropsWithRef } from "react";
+import { useRef, useState, type ComponentPropsWithRef } from "react";
+import { authRequest } from "@/features/auth/auth-client";
+import { authErrorText } from "@/features/auth/auth-ui-model";
 import { avatarMenuItems } from "../constants/avatar-menu";
 import { mockPersonalUser } from "../constants/personal-navigation";
 import styles from "../personal-center.module.css";
@@ -17,7 +19,31 @@ type AvatarPopoverProps = Pick<
 // The host owns its trigger, positioning and focus; B owns content and targets.
 // Import from a client host and provide the Personal Center semantic tokens.
 export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
-  const { requestNavigation } = usePersonalNavigationGuard();
+  const { requestNavigation, isDirty, setIsDirty } =
+    usePersonalNavigationGuard();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
+  const [confirmDiscard, setConfirmDiscard] = useState(false);
+  const lock = useRef(false);
+  async function signOut(discard = false) {
+    if (lock.current) return;
+    if (isDirty && !discard) {
+      setConfirmDiscard(true);
+      return;
+    }
+    lock.current = true;
+    setPending(true);
+    setError("");
+    const result = await authRequest("signout");
+    if (!result.ok) {
+      setError(authErrorText[result.code]);
+      setPending(false);
+      lock.current = false;
+      return;
+    }
+    setIsDirty(false);
+    window.setTimeout(() => window.location.replace("/"), 0);
+  }
 
   return (
     <div {...props} popover="auto" className={styles.avatarPopover}>
@@ -32,8 +58,8 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
           />
         </span>
         <div className={styles.userText}>
-          <strong>{mockPersonalUser.name}</strong>
-          <span>{mockPersonalUser.label}</span>
+          <strong>旅行者</strong>
+          <span>已登录 · 头像与资料为演示</span>
         </div>
       </div>
       <nav aria-label="账户快捷导航">
@@ -67,13 +93,36 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
       <button
         type="button"
         className={styles.avatarLogout}
-        disabled
-        title="登录功能接入后开放"
-        aria-label="退出登录（登录功能接入后开放）"
+        disabled={pending}
+        onClick={() => signOut()}
+        aria-label="退出登录"
+        aria-busy={pending}
       >
-        <span>退出登录</span>
-        <small>登录功能接入后开放</small>
+        <PersonalIcon name="logout" />
+        <span>{pending ? "正在退出…" : "退出登录"}</span>
       </button>
+      {confirmDiscard && (
+        <div role="group" aria-label="确认放弃未保存修改并退出">
+          <p>你有未保存的修改，退出后不会保留。</p>
+          <button
+            type="button"
+            className={styles.avatarLogout}
+            disabled={pending}
+            onClick={() => signOut(true)}
+          >
+            放弃修改并退出
+          </button>
+          <button
+            type="button"
+            className={styles.avatarLogout}
+            disabled={pending}
+            onClick={() => setConfirmDiscard(false)}
+          >
+            继续编辑
+          </button>
+        </div>
+      )}
+      <p role="alert">{error}</p>
     </div>
   );
 }

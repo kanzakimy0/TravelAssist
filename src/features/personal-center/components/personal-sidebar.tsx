@@ -174,7 +174,7 @@ function PersonalSidebarContent() {
         <GuardedLink
           href="/personal-center/account"
           className={styles.userSummary}
-          aria-label={`${mockPersonalUser.name}（Mock 用户）的账户`}
+          aria-label="已登录旅行者的账户（资料为演示，尚未接入账户数据）"
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.avatar} aria-hidden="true">
@@ -187,8 +187,8 @@ function PersonalSidebarContent() {
             />
           </span>
           <span className={styles.userText}>
-            <strong>{mockPersonalUser.name}</strong>
-            <span>{mockPersonalUser.label}</span>
+            <strong>旅行者</strong>
+            <span>已登录 · 资料为演示</span>
           </span>
         </GuardedLink>
         <PersonalPrimaryNav onNavigate={() => setDrawerOpen(false)} />
