@@ -9,8 +9,8 @@
 - Prerequisite audit: PR #187 merged；develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 已含 300 destination / 9000 unresolved POI / 40 batch / Result；2.15 保持 Partial。
 - WBS: `2.16`
 - Depends On: `TASK-013.2-A / PR #187`（已合并）
-- Commit: `PENDING`（实现提交后同步）
-- Pull Request: `PENDING`（Draft → develop；不得合并）
+- Commit: `f3b43133cf948b415213240b76a19ae0eaafd033`（实现；追踪同步提交见PR历史）
+- Pull Request: [#192](https://github.com/kanzakimy0/TravelAssist/pull/192)（Draft → develop；不得合并）
 - Issue: `#189`
 - Branch: `feature/a-japan-destination-entity-resolution`
 - Stacked Base: `c28c14c619e2bc51daf78f3eede4e2a218ec482d`（PR #187 head）

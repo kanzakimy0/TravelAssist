@@ -2,7 +2,7 @@
 
 ## TASK-013.3-A Partial 交付 / 待审查（2026-09-08）
 
-PR #187 实际已合并，develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 包含 Japan-only 生产清单。2.15 继续为 Partial / planning manifest，不代表图片已完成。TASK-013.3-A / Issue #189 / `feature/a-japan-destination-entity-resolution`：300 行已审查，285 身份核验、284 县归属、47 县覆盖、281 三语名称、258 可信中心坐标；254 行通过全部门槛，46 unresolved。300 条证据/候选审计、别名、边界契约及五项报告已生成。2.16 待审查（Partial；未达到300/300最终验收），PR/实现 Commit PENDING。9000 POI、9300 source jobs、9600 variants 不变；不修改 UI，不生成/下载图片，不启动后续批次。专项26测试、父清单23测试、lint/typecheck/build通过；全仓28项既有格式债另列基线审计。
+PR #187 实际已合并，develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 包含 Japan-only 生产清单。2.15 继续为 Partial / planning manifest，不代表图片已完成。TASK-013.3-A / Issue #189 / `feature/a-japan-destination-entity-resolution`：300 行已审查，285 身份核验、284 县归属、47 县覆盖、281 三语名称、258 可信中心坐标；254 行通过全部门槛，46 unresolved。300 条证据/候选审计、别名、边界契约及五项报告已生成。2.16 待审查（Partial；未达到300/300最终验收），Draft PR #192，实现 Commit `f3b4313`。9000 POI、9300 source jobs、9600 variants 不变；不修改 UI，不生成/下载图片，不启动后续批次。专项26测试、父清单23测试、lint/typecheck/build通过；全仓28项既有格式债另列基线审计。
 
 ## TASK-013.2-A Japan-only 交付（2026-09-08）
 
@@ -395,7 +395,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged |
-| TASK-013.3-A | 2.16 | A | 待审查（Partial；254 verified / 46 unresolved） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | PENDING；基线 `553b014` | Draft PR PENDING |
+| TASK-013.3-A | 2.16 | A | 待审查（Partial；254 verified / 46 unresolved） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；基线 `553b014` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Draft |
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |

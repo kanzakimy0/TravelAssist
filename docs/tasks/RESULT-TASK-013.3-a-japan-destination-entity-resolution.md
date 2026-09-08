@@ -21,7 +21,7 @@
 - Branch：`feature/a-japan-destination-entity-resolution` → `develop`。
 - Task：`docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md`，待验收（Partial）。
 - WBS：2.16，待审查（Partial）。
-- Implementation Commit / Draft PR：PENDING，创建后同步；不自动合并。
+- Implementation Commit：`f3b43133cf948b415213240b76a19ae0eaafd033`；Draft PR [#192](https://github.com/kanzakimy0/TravelAssist/pull/192)，不自动合并。
 
 ## Destination Resolution
 
@@ -130,12 +130,13 @@
 ## Commit(s)
 
 - `80bf8d5`：安全同步最新develop。
-- 实现提交 PENDING；最终同步后填入。
+- `f3b43133cf948b415213240b76a19ae0eaafd033`：解析、证据、26项测试、报告与Partial状态实现；已push。
+- 后续仅追踪链接同步的提交见PR历史，Issue/PR记录最新head；实现SHA保持上述稳定引用，避免文档自引用SHA循环。
 - 所有推送提交使用 `[skip ci]` 防止仓库自动创建/合并feature PR的工作流抢先合并。测试已在本地执行；PR保持Draft，未变更workflow。
 
 ## Draft PR
 
-PENDING — `feature/a-japan-destination-entity-resolution` → `develop`，关联 #189 / #152 / #187，不自动合并。
+[#192](https://github.com/kanzakimy0/TravelAssist/pull/192) — Open / Draft，`feature/a-japan-destination-entity-resolution` → `develop`，关联 #189 / #152 / #187，不自动合并。
 
 ## Follow-ups
 
