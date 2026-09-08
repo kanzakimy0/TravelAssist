@@ -2,7 +2,9 @@
 
 ## Status
 
-Partial — contract implementation delivered for integration review. WBS 4.17 is **待审查, not yet frozen/dependable**. TASK-017-B / #207 remains Blocked on reviewed-and-merged 4.17. No database implementation or TASK-017 implementation branch started.
+Completed (4.17 public-contract scope only). 项目负责人明确指示“合并并继续”，批准本次交接并接受取代独立 B 审查等待门槛。PR #216 merged `ec9b06240040881b6fdc249bf0967f820ac2406b`; merge tree equals the validated head `6e3c470`. WBS 4.17 is 已完成 / frozen v1.0. No independent B/GitHub APPROVED review is claimed. TASK-017 must freshly check this merged baseline before implementation; this closeout itself adds no database implementation.
+
+下方待审查描述是原交付历史，已由本节负责人批准与实际合并记录覆盖。其技术限制与后续任务边界不变。
 
 ## Tracking
 
