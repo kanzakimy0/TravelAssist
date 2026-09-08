@@ -6,7 +6,7 @@
 - Primary WBS: `5.10`
 - Related Completed WBS: `5.1 / 5.4 / 5.6 / 5.10 / 5.20`
 - Owner: `B`
-- Status: `Ready / 可开始`
+- Status: `待审查`
 - Repository: `https://github.com/kanzakimy0/TravelAssist.git`
 - Workspace: `F:\TravelAssist`
 - Base Branch: `develop`
@@ -312,7 +312,7 @@ package-lock.json
 13. All 不包含 History/Favorites
 14. Hero Trip 从 8 卡区排除
 15. 最多 8 卡/页
-16. >8 不静默丢失
+16. > 8 不静默丢失
 17. 有日期按日期近→远
 18. 无日期 Draft 放后
 19. 无日期 Draft 按 updatedAt desc

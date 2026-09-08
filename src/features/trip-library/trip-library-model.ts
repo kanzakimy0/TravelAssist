@@ -70,6 +70,7 @@ export type DraftTripViewModel = {
   name: string;
   destination: string;
   dateLabel: string;
+  startDate?: string;
   progress: number;
   reservationCount: number;
   hasExternalReservation: boolean;

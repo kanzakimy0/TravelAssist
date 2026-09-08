@@ -1433,3 +1433,80 @@
     text-shadow: 0 3px 10px rgb(224 116 131 / 18%);
   }
 }
+
+/* WBS-5.10-B-FOLLOWUP-1: wide-only composition; smaller breakpoints are unchanged. */
+@media (min-width: 1440px) {
+  .page[data-companion-page] {
+    max-width: 1220px;
+    height: auto;
+    margin-inline: auto;
+    padding-bottom: 24px;
+    grid-template-rows: 104px auto auto auto;
+    gap: 18px;
+  }
+  .page[data-companion-page] .summaryCard {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 20px;
+    min-height: 112px;
+    padding: 18px 22px;
+  }
+  .page[data-companion-page] .summaryLead {
+    min-width: 150px;
+  }
+  .page[data-companion-page] .countGrid {
+    width: 100%;
+    max-width: none;
+  }
+  .page[data-companion-page] .summaryActions {
+    flex-wrap: wrap;
+    max-width: 230px;
+  }
+  .page[data-companion-page] .summaryActions button {
+    min-height: 44px;
+  }
+  .page[data-companion-page] > section,
+  .page[data-companion-page] .lowerGrid > section {
+    padding: 20px;
+    overflow: visible;
+  }
+  .page[data-companion-page] .companionGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .page[data-companion-page] .companionCard,
+  .page[data-companion-page] .addCard {
+    min-height: 228px;
+    height: auto;
+    padding: 18px;
+  }
+  .page[data-companion-page] .cardTop h3 {
+    font-size: 1.05rem;
+  }
+  .page[data-companion-page] .tagList {
+    max-height: none;
+    overflow: visible;
+  }
+  .page[data-companion-page] .cardActions button {
+    min-height: 44px;
+  }
+  .page[data-companion-page] .lowerGrid {
+    height: auto;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+    gap: 18px;
+  }
+  .page[data-companion-page] .groupList {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+  }
+  .page[data-companion-page] .needList {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+  }
+  .page[data-companion-page] .needList button {
+    min-height: 44px;
+    height: auto;
+    font-size: 0.8rem;
+  }
+}

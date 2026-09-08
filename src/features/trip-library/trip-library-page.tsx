@@ -9,6 +9,17 @@ import { PersonalIcon } from "@/features/personal-center/components/personal-ico
 import { createTripLibraryFixture } from "./trip-library-data";
 import styles from "./trip-library.module.css";
 import {
+  activeTrips,
+  asHistoryTrip,
+  buildAllTripItems,
+  getTripTiming,
+  paginateAllTrips,
+  selectHeroTrip,
+  sortAllTripItems,
+  tripTimingLabels,
+} from "./trip-timing";
+import { useTripToday } from "./use-trip-today";
+import {
   cloneHistoryTripToDraft,
   deleteDraft,
   deriveDestinationOptions,
@@ -21,8 +32,6 @@ import {
   newTripHref,
   plannerBridgeHref,
   removeFavorite,
-  selectNextTrip,
-  shouldShowNextTripHero,
   sortDrafts,
   sortTrips,
   toggleHistoryFavorite,
@@ -135,6 +144,51 @@ function TripCard({
   );
 }
 
+function AllDraftCard({ draft }: { draft: DraftTripViewModel }) {
+  return (
+    <article
+      className={`${styles.tripCard} ${styles.allDraftCard}`}
+      data-testid={`draft-card-${draft.id}`}
+    >
+      <div className={styles.cardImage}>
+        <Image
+          src={draft.cover}
+          alt=""
+          fill
+          sizes="(max-width: 767px) 100vw, 360px"
+        />
+        <span className={styles.statusChip}>草稿</span>
+      </div>
+      <div className={styles.tripCardBody}>
+        <div className={styles.cardTitleLine}>
+          <div>
+            <p>{draft.destination}</p>
+            <h3>{draft.name}</h3>
+          </div>
+        </div>
+        <p className={styles.tripDate}>{draft.dateLabel}</p>
+        <div className={styles.draftProgress}>
+          <span>
+            规划完成度 <strong>{draft.progress}%</strong>
+          </span>
+          <progress
+            max="100"
+            value={draft.progress}
+            aria-label={`${draft.name}规划完成度`}
+          />
+        </div>
+        <p className={styles.tripDate}>
+          最后编辑时间：
+          <time dateTime={draft.updatedAt}>{draft.lastEditedLabel}</time>
+        </p>
+        <GuardedLink className={styles.primaryButton} href={plannerBridgeHref}>
+          继续编辑草稿 <PersonalIcon name="arrow" />
+        </GuardedLink>
+      </div>
+    </article>
+  );
+}
+
 function EmptyState({
   title,
   body,
@@ -161,6 +215,7 @@ function EmptyState({
 
 export function TripLibraryPage() {
   const fixture = useMemo(() => createTripLibraryFixture(), []);
+  const today = useTripToday();
   const destinations = useMemo(
     () => deriveDestinationOptions(fixture),
     [fixture],
@@ -168,10 +223,14 @@ export function TripLibraryPage() {
   const [activeTab, setActiveTab] = useState<TripLibraryTab>("all");
   const [query, setQuery] = useState("");
   const [destination, setDestination] = useState("all");
-  const [sort, setSort] = useState<TripSortKey>("updatedDesc");
+  const [sort, setSort] = useState<TripSortKey>("departureAsc");
+  const [requestedPage, setRequestedPage] = useState(1);
   const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
   const [drafts, setDrafts] = useState(fixture.drafts);
-  const [history, setHistory] = useState(fixture.history);
+  const [history, setHistory] = useState(() => [
+    ...fixture.history,
+    ...fixture.trips.map(asHistoryTrip),
+  ]);
   const [favorites, setFavorites] = useState(fixture.favorites);
   const [deleteTarget, setDeleteTarget] = useState<DraftTripViewModel | null>(
     null,
@@ -188,10 +247,20 @@ export function TripLibraryPage() {
   const recapDialogRef = useRef<HTMLDialogElement>(null);
   const detailDialogRef = useRef<HTMLDialogElement>(null);
 
+  const active = activeTrips(fixture.trips, today);
+  const completed = history.filter(
+    (trip) =>
+      getTripTiming(trip.startDate, trip.endDate, today) === "completed",
+  );
   const visibleTrips = sortTrips(
     filterTrips(
-      fixture.trips,
-      activeTab === "upcoming" ? "upcoming" : "all",
+      activeTab === "upcoming"
+        ? active.filter(
+            (trip) =>
+              getTripTiming(trip.startDate, trip.endDate, today) === "upcoming",
+          )
+        : active,
+      "all",
       query,
       destination,
     ),
@@ -202,7 +271,7 @@ export function TripLibraryPage() {
     sort,
   );
   const visibleHistory = sortTrips(
-    filterHistory(history, query, destination),
+    filterHistory(completed, query, destination),
     sort,
   );
   const visibleFavorites = filterFavorites(favorites, favoriteFilter).filter(
@@ -213,14 +282,29 @@ export function TripLibraryPage() {
           .includes(query.trim().toLocaleLowerCase("zh-CN"))) &&
       (destination === "all" || item.destination === destination),
   );
-  const nextTrip = selectNextTrip(visibleTrips);
+  const nextTrip = selectHeroTrip(visibleTrips, today);
+  const heroStatus =
+    nextTrip && getTripTiming(nextTrip.startDate, nextTrip.endDate, today);
+  const allItems = sortAllTripItems(
+    buildAllTripItems(
+      visibleTrips,
+      activeTab === "all" ? visibleDrafts : [],
+      today,
+      nextTrip?.id,
+    ),
+    sort,
+  );
+  const pagination = paginateAllTrips(allItems, requestedPage);
 
   function changeTab(tab: TripLibraryTab) {
     setActiveTab(tab);
     setQuery("");
     setDestination("all");
     setFavoriteFilter("all");
-    setSort(tab === "upcoming" ? "departureAsc" : "updatedDesc");
+    setSort(
+      tab === "all" || tab === "upcoming" ? "departureAsc" : "updatedDesc",
+    );
+    setRequestedPage(1);
     setFeedback("");
   }
 
@@ -281,11 +365,13 @@ export function TripLibraryPage() {
   }
 
   const tabCounts: Record<TripLibraryTab, number> = {
-    all:
-      fixture.trips.length + drafts.length + history.length + favorites.length,
-    upcoming: fixture.trips.length,
+    all: active.length + drafts.length,
+    upcoming: active.filter(
+      (trip) =>
+        getTripTiming(trip.startDate, trip.endDate, today) === "upcoming",
+    ).length,
     drafts: drafts.length,
-    history: history.length,
+    history: completed.length,
     favorites: favorites.length,
   };
 
@@ -341,14 +427,20 @@ export function TripLibraryPage() {
             type="search"
             value={query}
             placeholder="搜索行程名称或目的地"
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setRequestedPage(1);
+            }}
           />
         </label>
         <label>
           <span className={styles.srOnly}>目的地筛选</span>
           <select
             value={destination}
-            onChange={(event) => setDestination(event.target.value)}
+            onChange={(event) => {
+              setDestination(event.target.value);
+              setRequestedPage(1);
+            }}
           >
             <option value="all">全部目的地</option>
             {destinations.map((item) => (
@@ -363,7 +455,10 @@ export function TripLibraryPage() {
             <span className={styles.srOnly}>排序方式</span>
             <select
               value={sort}
-              onChange={(event) => setSort(event.target.value as TripSortKey)}
+              onChange={(event) => {
+                setSort(event.target.value as TripSortKey);
+                setRequestedPage(1);
+              }}
             >
               {tripSortOptions.map((option) => (
                 <option key={option.key} value={option.key}>
@@ -389,16 +484,18 @@ export function TripLibraryPage() {
         aria-labelledby={`trip-tab-${activeTab}`}
       >
         {(activeTab === "all" || activeTab === "upcoming") &&
-        shouldShowNextTripHero(activeTab, visibleTrips) &&
-        nextTrip ? (
+        nextTrip &&
+        heroStatus ? (
           <section
             className={styles.nextTripHero}
             aria-labelledby="next-trip-heading"
+            data-trip-hero={nextTrip.id}
+            data-trip-status={heroStatus}
           >
             <div className={styles.heroImage}>
               <Image
                 src={nextTrip.cover}
-                alt="京都樱花与街景"
+                alt={`${nextTrip.destination}旅行示例照片`}
                 fill
                 priority
                 sizes="(max-width: 767px) 100vw, 55vw"
@@ -406,7 +503,7 @@ export function TripLibraryPage() {
               />
             </div>
             <div className={styles.heroBody}>
-              <p className={styles.eyebrow}>NEXT TRIP · 下一次旅行</p>
+              <p className={styles.eyebrow}>{tripTimingLabels[heroStatus]}</p>
               <h2 id="next-trip-heading">{nextTrip.name}</h2>
               <p className={styles.heroMeta}>
                 <span>
@@ -432,7 +529,7 @@ export function TripLibraryPage() {
         ) : null}
 
         {activeTab === "all" || activeTab === "upcoming" ? (
-          visibleTrips.length ? (
+          allItems.length || nextTrip ? (
             <section
               className={styles.librarySection}
               data-library-section="active"
@@ -440,29 +537,71 @@ export function TripLibraryPage() {
             >
               <div className={styles.sectionHeading}>
                 <div>
-                  <p className={styles.eyebrow}>ACTIVE TRIPS</p>
+                  <p className={styles.eyebrow}>
+                    {activeTab === "all" ? "ALL TRIPS" : "UPCOMING TRIPS"}
+                  </p>
                   <h2 id="active-trip-heading">
-                    {activeTab === "upcoming" ? "即将出发" : "进行中的旅行"}
+                    {activeTab === "upcoming" ? "即将出发" : "全部旅行"}
                   </h2>
                 </div>
-                <span>{visibleTrips.length} 个行程</span>
+                <span>
+                  {allItems.length} 个项目
+                  {nextTrip ? "（不含上方重点旅行）" : ""}
+                </span>
               </div>
-              <div className={styles.cardGrid}>
-                {visibleTrips
-                  .filter((trip) => trip.id !== nextTrip?.id)
-                  .map((trip) => (
+              <div
+                className={`${styles.cardGrid} ${styles.allCardGrid}`}
+                id="all-trip-cards"
+              >
+                {pagination.items.map((entry) =>
+                  entry.kind === "trip" ? (
                     <TripCard
-                      key={trip.id}
-                      trip={trip}
-                      statusLabel="即将出发"
+                      key={entry.item.id}
+                      trip={entry.item}
+                      statusLabel={
+                        tripTimingLabels[
+                          getTripTiming(
+                            entry.item.startDate,
+                            entry.item.endDate,
+                            today,
+                          )!
+                        ]
+                      }
                       onDetail={openDetail}
                     />
-                  ))}
+                  ) : (
+                    <AllDraftCard key={entry.item.id} draft={entry.item} />
+                  ),
+                )}
               </div>
-              {visibleTrips.length === 1 ? (
+              {allItems.length === 0 && nextTrip ? (
                 <p className={styles.onlyHeroNote}>
-                  下一次旅行已在上方重点展示。
+                  符合条件的旅行已在上方重点展示。
                 </p>
+              ) : null}
+              {pagination.pageCount > 1 ? (
+                <nav className={styles.pagination} aria-label="全部旅行分页">
+                  <button
+                    type="button"
+                    aria-controls="all-trip-cards"
+                    disabled={pagination.page === 1}
+                    onClick={() => setRequestedPage(pagination.page - 1)}
+                  >
+                    上一页
+                  </button>
+                  <span role="status">
+                    第 {pagination.page} / {pagination.pageCount} 页 · 共{" "}
+                    {pagination.total} 个项目
+                  </span>
+                  <button
+                    type="button"
+                    aria-controls="all-trip-cards"
+                    disabled={pagination.page === pagination.pageCount}
+                    onClick={() => setRequestedPage(pagination.page + 1)}
+                  >
+                    下一页
+                  </button>
+                </nav>
               ) : null}
             </section>
           ) : (
@@ -498,14 +637,17 @@ export function TripLibraryPage() {
               </button>
             </div>
             <div className={styles.cardGrid}>
-              {visibleHistory.slice(0, 2).map((trip) => (
-                <TripCard
-                  key={trip.id}
-                  trip={trip}
-                  statusLabel="已完成"
-                  onDetail={openDetail}
-                />
-              ))}
+              {[...visibleHistory]
+                .sort((a, b) => b.endDate.localeCompare(a.endDate))
+                .slice(0, 2)
+                .map((trip) => (
+                  <TripCard
+                    key={trip.id}
+                    trip={trip}
+                    statusLabel="已完成"
+                    onDetail={openDetail}
+                  />
+                ))}
             </div>
           </section>
         ) : null}

@@ -1,0 +1,49 @@
+(node:30592) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///F:/TravelAssist/src/features/trip-library/trip-library-data.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\F:\TravelAssist\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ date-only boundary: 31 days (2.3713ms)
+✔ date-only boundary: 30 days (0.1528ms)
+✔ date-only boundary: 2 days (0.1378ms)
+✔ date-only boundary: 1 day (0.122ms)
+✔ date-only boundary: departure today (0.1924ms)
+✔ date-only boundary: started, not ended (0.1033ms)
+✔ date-only boundary: last day inclusive (0.1834ms)
+✔ date-only boundary: ended yesterday (0.139ms)
+✔ calendar boundaries, leap dates, DST and invalid dates (0.2576ms)
+✔ Hero prioritizes ongoing > upcoming > next, then earliest start, deterministic id tie (14.1563ms)
+✔ dated and undated Drafts, ended Trips and History never become Hero (0.3146ms)
+✔ All includes active formal Trips + Draft, excludes history/favorites/completed and Hero (1.0468ms)
+✔ default mixed dates ascending, no-date drafts last sorted updatedAt descending, inputs immutable (0.9664ms)
+✔ eight actual cards per page, every ninth-plus card reachable, clamping and empties (0.317ms)
+✔ existing Draft delete, History clone and Favorites stay immutable and in-memory (0.5172ms)
+✔ Home and library import the same portable helper; no persistence or business integration added (2.0094ms)
+(node:1924) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///F:/TravelAssist/src/features/trip-library/trip-library-data.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\F:\TravelAssist\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ library exposes exactly the five frozen tabs in order (1.524ms)
+✔ new trip and planner bridge routes are exact (0.1479ms)
+✔ search matches trip name and destination (0.4203ms)
+✔ destination filters trips drafts and history independently (12.3854ms)
+✔ all four requested sort modes are stable (0.2916ms)
+✔ draft sort supports recent edit and create without mutation (0.188ms)
+✔ next-trip hero selects nearest upcoming and only shows in all or upcoming (0.2301ms)
+✔ hero fixture contains completion categories and attention summary (0.1617ms)
+✔ draft deletion never triggers partner cancellation (0.206ms)
+✔ history groups strictly by descending year (0.3002ms)
+✔ copy-to-new preserves the original history snapshot (0.3087ms)
+✔ history favorite toggle is immutable (0.1581ms)
+✔ favorites expose exactly six filters and can filter or remove (0.1558ms)
+✔ route replaces the placeholder and page declares required UI boundaries (2.0431ms)
+✔ page includes empty states, external warning, recap and deferred booking (0.6088ms)
+✔ all selected local assets exist (0.8979ms)
+✔ implementation adds no persistence network or partner-write surface (1.2319ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 361.249
