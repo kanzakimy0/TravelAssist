@@ -6,7 +6,7 @@
 > Priority：P0  
 > Base at creation：`develop@707bcc8d2af14a86032181be63573beb3aea3e17`  
 > Branch：`feature/a-db-orm-migration-foundation`  
-> Status：待验收（本机运行及整合验收通过；用户已授权合并）
+> Status：已完成（用户授权合并；本机运行及整合验收通过）
 >
 > Design：`docs/architecture/db-orm-migration-standards.md`  
 > Freeze Plan：`docs/architecture/db-foundation-bootstrap-plan.md`
@@ -14,6 +14,11 @@
 ---
 
 ## Merge acceptance — 2026-09-08
+
+PR #186 已合入 develop，merge `24dff4e3b74dfe01c369d2c149d37eba86ad6472`。
+远端合并树与验收head `c14ea30747f317d6222cab1019e95611049d8fd1`完全一致。
+B要求的7项路径及真实generated types均已核实存在；#200可以从最新develop
+重新检查启动。本Task不实施User/Profile或Auth。以下合并前记录保留为审计。
 
 用户授权完成 #186 收尾并合并。已保留真实类型提交 `b212c31`，整合 develop
 `6386c83`（merge `0b97f79`），安全处理四个共享文件冲突。Docker 29.7.2 /
