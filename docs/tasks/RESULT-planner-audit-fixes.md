@@ -2,7 +2,7 @@
 
 ## Status
 
-实现与本地验收完成，待审查；不自动合并。仅本次七项 A 范围审计修复，不代表真实路线、AI、预约或云保存完成。
+已完成。用户于 2026-09-08 明确批准合并，PR #224 已合入 develop；合并树与验收 head 完全一致。仅本次七项 A 范围审计修复，不代表真实路线、AI、预约或云保存完成。
 
 ## Tracking
 
@@ -11,9 +11,16 @@
 - Base: `18afee5f02ed45505b81636f7b25b568270b2bf9`（最新 `origin/develop` 启动基线）
 - Branch: `codex/a-planner-audit-fixes`
 - Commit: `ecbf022ba8c8813b416afca3e4bd81947017c508`（实现；后续仅追踪文档同步）
-- Draft PR: [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) → `develop`；Open / Draft，未合并
+- Pull Request: [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) → `develop`；Merged；合并提交 `654dad9b8a4dbd9afb909e46f375872a7ede69d6`
 - Task: `docs/tasks/TASK-planner-audit-fixes.md`
-- WBS: 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46 的审计补充，修复待审查；历史合并记录保留。
+- WBS: 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46 的审计补充，修复已完成；历史合并记录保留。
+
+## Merge Acceptance
+
+- 核对 PR head 为已验收 `3db5f7171dfcad255e80fb04befa67a27d9cf568`，base 为 `18afee5`，无新业务改动或冲突。
+- 以 expected head SHA 合并，fetch 后确认 `654dad9` 已进入 `origin/develop`，与验收 head 的 `git diff --exit-code` 为 0。
+- GitHub combined status / PR-triggered workflow 查询为空，未冒充独立 CI 或 APPROVED review。沿用下方同一文件树的本地验证证据。
+- Task / Result / WBS 完成状态使用 `codex/a-planner-audit-closeout` 仅文档收尾；未改 UI、原脏工作区或 3113 预览。
 
 ## Implemented / Regression Evidence
 
@@ -58,4 +65,4 @@
 - 真实预约取消、价格查询、路线可行性与云同步仍不在本次范围；释放操作只改本地记录，未知交通仍需核实。
 - 所有演示预约验证只操作隔离浏览器的 fixture，未生成真实订单。
 - 全仓历史格式问题单列；待独立文档清理任务处理。
-- Draft PR 待用户审查后决定是否合并；未自动继续下一 WBS。
+- PR #224 已按本轮用户授权合并；未自动继续下一 WBS。

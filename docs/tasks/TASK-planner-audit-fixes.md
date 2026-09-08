@@ -3,16 +3,18 @@
 ## Metadata
 
 - Owner: A
-- Status: 待验收（实现与本地验收完成，PR 保持 Draft）
+- Status: 已完成（用户批准合并，本次七项修复已合入并验收）
 - Issue: [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)
 - Branch: `codex/a-planner-audit-fixes`
 - Base: `18afee5f02ed45505b81636f7b25b568270b2bf9` (`origin/develop`)
 - WBS: 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46（已有成果的审计修复，不另建重复业务项）
 - Commit: `ecbf022ba8c8813b416afca3e4bd81947017c508`（实现；后续仅追踪文档同步）
-- Draft PR: [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) → `develop`；Open / Draft，不自动合并
+- Pull Request: [#224](https://github.com/kanzakimy0/TravelAssist/pull/224) → `develop`；Merged，合并提交 `654dad9b8a4dbd9afb909e46f375872a7ede69d6`
 - Result: `docs/tasks/RESULT-planner-audit-fixes.md`
 
 ## 正式来源与范围
+
+2026-09-08 用户明确指示「合并」。核对 head `3db5f71` 和 develop 基线未变，无冲突；PR #224 合并后文件树与已验收 head 完全一致。此前 631 项测试、lint/typecheck/build 与浏览器验收仍适用于合并树；28 份既有格式问题不变。GitHub 未报告独立 CI checks，不宣称额外 APPROVED review。Issue #223 完成关闭；后续记录由 `codex/a-planner-audit-closeout` 仅文档收尾，不继续其他任务。下文 Draft 要求为实现阶段历史规则，本次合并以最新用户授权为准。
 
 用户在 A 范围审计后批准「可以，全部修复」。仅修复此次确认的七项问题：
 
