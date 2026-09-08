@@ -18,6 +18,7 @@ import {
 } from "../auth-ui-model";
 import styles from "../auth.module.css";
 import { AuthIcon } from "./auth-icon";
+import { AuthNavigationLink } from "./auth-navigation-link";
 
 function PasswordField({
   id,
@@ -543,11 +544,11 @@ export function AuthForm({
                   {emailMode === "password" && (
                     <>
                       <span aria-hidden="true">|</span>
-                      <Link
+                      <AuthNavigationLink
                         href={authHref("/forgot-password", returnTo, email)}
                       >
                         忘记密码？
-                      </Link>
+                      </AuthNavigationLink>
                     </>
                   )}
                 </div>
@@ -701,14 +702,21 @@ export function AuthForm({
         {kind === "login" ? (
           <>
             还没有账户？
-            <Link href={authHref("/register", returnTo)}>创建账户</Link>
+            <AuthNavigationLink href={authHref("/register", returnTo)}>
+              创建账户
+            </AuthNavigationLink>
           </>
         ) : kind === "register" ? (
           <>
-            已有账户？<Link href={authHref("/login", returnTo)}>登录</Link>
+            已有账户？
+            <AuthNavigationLink href={authHref("/login", returnTo)}>
+              登录
+            </AuthNavigationLink>
           </>
         ) : stage !== "updated" ? (
-          <Link href={authHref("/login", returnTo)}>← 返回登录</Link>
+          <AuthNavigationLink href={authHref("/login", returnTo)}>
+            ← 返回登录
+          </AuthNavigationLink>
         ) : null}
       </footer>
     </div>

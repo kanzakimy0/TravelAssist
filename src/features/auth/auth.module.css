@@ -120,15 +120,16 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 230px;
-  height: 145px;
+  width: 300px;
+  height: 180px;
   overflow: hidden;
-  opacity: 0.52;
+  opacity: 0.7;
   pointer-events: none;
 }
 .ornament img {
-  object-fit: contain;
-  object-position: right top;
+  /* The source is mostly transparent on its right; crop to the painted branch. */
+  object-fit: cover;
+  object-position: left top;
   transform: scaleX(-1);
 }
 .formContent h1,
@@ -380,8 +381,27 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 18px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
   color: var(--auth-muted);
+}
+.loginForm .formFooter a {
+  font-weight: 700;
+}
+.shell .navigationLink {
+  position: relative;
+  padding-inline-end: 18px;
+}
+.navigationHint {
+  position: absolute;
+  inset-inline-end: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 80ms;
+}
+.navigationHint[data-pending] {
+  opacity: 1;
+  transition-delay: 150ms;
 }
 .formFooter a,
 .textLink {
@@ -541,13 +561,13 @@
     margin: 0;
   }
   .card {
-    padding: 28px 20px 22px;
+    padding: 28px 20px 36px;
     border-radius: 24px;
   }
   .ornament {
-    width: 155px;
-    height: 100px;
-    opacity: 0.36;
+    width: 160px;
+    height: 104px;
+    opacity: 0.5;
   }
   .subtitle {
     font-size: 14px;
@@ -604,7 +624,7 @@
 
 /* Login modes share slots; messages never insert another row into the form. */
 .loginForm .fields {
-  grid-template-rows: minmax(116px, auto) minmax(86px, auto) minmax(132px, auto);
+  grid-template-rows: minmax(116px, auto) minmax(86px, auto) minmax(120px, auto);
   align-items: start;
 }
 .loginForm .modeActions {
@@ -620,6 +640,9 @@
   grid-area: 1 / 1;
   padding: 0;
   line-height: 1.5;
+}
+.loginForm .feedback {
+  grid-template-rows: minmax(76px, auto);
 }
 .loginForm .unregistered {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -640,7 +663,7 @@
     box-sizing: border-box;
     height: 100dvh;
     min-height: 0;
-    padding-block: 16px;
+    padding-block: 16px clamp(36px, 5dvh, 56px);
   }
   .brandBar {
     width: 100%;
@@ -660,7 +683,7 @@
   }
   .card {
     min-height: 0;
-    padding-block: 24px;
+    padding-block: 24px 52px;
   }
   .formContent h1,
   .success h1 {
@@ -669,16 +692,17 @@
   }
   .subtitle {
     font-size: 15px;
-    margin: 4px 0 12px;
+    margin: 4px 0 8px;
   }
   .loginForm .tabs {
+    padding: 0;
     margin-bottom: 12px;
   }
   .loginForm .fields {
-    grid-template-rows: 92px 76px 108px;
+    grid-template-rows: 92px 76px 92px;
   }
   .fields {
-    gap: 12px;
+    gap: 8px;
   }
   .field label {
     line-height: 22px;
@@ -689,8 +713,9 @@
     min-height: 48px;
     padding-block: 8px;
   }
-  .feedback {
-    grid-template-rows: 46px;
+  .feedback,
+  .loginForm .feedback {
+    grid-template-rows: 42px;
   }
   .primary,
   .loginForm .unregistered > :is(a, button) {
@@ -698,10 +723,16 @@
     padding-block: 8px;
   }
   .divider {
-    margin: 4px 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 24px;
   }
   .formFooter {
     margin-top: 4px;
+  }
+  .loginForm .formFooter {
+    margin-top: 8px;
+    font-size: 18px;
   }
 }
 
@@ -710,7 +741,7 @@
   .shell {
     grid-template-rows: 44px minmax(0, 1fr);
     gap: 8px;
-    padding-block: 8px;
+    padding-block: 8px 24px;
   }
   .brandBar {
     min-height: 44px;
@@ -719,7 +750,7 @@
     height: 44px;
   }
   .card {
-    padding: 8px clamp(18px, 2.5vw, 36px);
+    padding: 6px clamp(18px, 2.5vw, 36px) 14px;
   }
   .formContent h1,
   .success h1 {
@@ -732,7 +763,7 @@
   }
   .loginForm .tabs {
     padding: 0;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .loginForm .tabs button {
     min-height: 44px;
@@ -769,7 +800,8 @@
   .agreement p {
     margin-top: 0;
   }
-  .feedback {
+  .feedback,
+  .loginForm .feedback {
     grid-template-rows: 36px;
   }
   .feedback > :is(.error, .notice) {
@@ -795,13 +827,15 @@
     gap: 8px;
     font-size: 13px;
   }
-  .formFooter {
+  .formFooter,
+  .loginForm .formFooter {
     margin-top: 0;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) and (min-height: 851px) {
   .loginForm .fields {
-    grid-template-rows: 108px 76px 120px;
+    grid-template-rows: 108px 76px 108px;
   }
 }

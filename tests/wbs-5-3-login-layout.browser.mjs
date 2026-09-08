@@ -2,13 +2,16 @@
 // Never registers, signs in, resets DB, reads user cookies or sends OTP mail.
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.CODEX_PLAYWRIGHT_PATH);
 const base = process.env.WBS_BASE_URL ?? "http://127.0.0.1:3000";
 assert.equal(base, "http://127.0.0.1:3000");
 const evidence = process.env.WBS_EVIDENCE_DIR;
+const priorResults = process.env.WBS_LAYOUT_BASELINE
+  ? JSON.parse(await readFile(process.env.WBS_LAYOUT_BASELINE, "utf8")).results
+  : null;
 assert.ok(evidence, "Explicit evidence directory required");
 await mkdir(evidence, { recursive: true });
 const browser = await chromium.launch(
@@ -67,6 +70,10 @@ async function measure(label, baseline, action = button("登录")) {
         el.parentElement.getBoundingClientRect().height + 1,
     );
     const fields = document.querySelector("fieldset");
+    const card = document.querySelector("#auth-content");
+    const cardRect = card.getBoundingClientRect();
+    const contentRect = card.lastElementChild.getBoundingClientRect();
+    const footer = card.querySelector("footer");
     const overlaps = [...(fields?.children ?? [])].some(
       (el, i, all) =>
         i &&
@@ -82,6 +89,16 @@ async function measure(label, baseline, action = button("登录")) {
       inputSmall,
       overflowingFeedback,
       overlaps,
+      contentOutsideCard:
+        contentRect.top < cardRect.top - 1 ||
+        contentRect.bottom > cardRect.bottom + 1,
+      bottomInset: innerHeight - cardRect.bottom,
+      footerFontSize: footer
+        ? parseFloat(getComputedStyle(footer).fontSize)
+        : null,
+      footerLinkWeight: footer?.querySelector("a")
+        ? parseFloat(getComputedStyle(footer.querySelector("a")).fontWeight)
+        : null,
     };
   });
   assert.equal(layout.horizontal, false, label + " horizontal scroll");
@@ -93,8 +110,19 @@ async function measure(label, baseline, action = button("登录")) {
     label + " feedback fits reserved slot",
   );
   assert.equal(layout.overlaps, false, label + " fields overlap");
-  if (layout.width >= 768 && layout.height >= 660)
+  if (layout.width >= 768 && layout.height >= 660) {
     assert.equal(layout.vertical, false, label + " desktop vertical scroll");
+    assert.equal(
+      layout.contentOutsideCard,
+      false,
+      label + " content stays inside card",
+    );
+    assert.ok(layout.bottomInset >= 23, label + " wider page bottom inset");
+  }
+  if (label.endsWith(" phone")) {
+    assert.ok(layout.footerFontSize >= 16, label + " larger footer text");
+    assert.ok(layout.footerLinkWeight >= 700, label + " bold Create Account");
+  }
   if (baseline) {
     for (const [name, current] of Object.entries({ photo, card, cta })) {
       for (const key of ["y", "height"])
@@ -142,6 +170,17 @@ try {
     await page.goto(base + "/login", { waitUntil: "networkidle" });
     const label = `${width}x${height}`;
     const baseline = await measure(label + " phone");
+    const prior = priorResults?.find(
+      (result) => result.label === label + " phone",
+    );
+    if (prior && width >= 768 && height >= 660) {
+      assert.ok(baseline.cta.y < prior.cta.y - 5, label + " CTA moved up");
+      assert.ok(
+        baseline.card.y + baseline.card.height <
+          prior.card.y + prior.card.height - 5,
+        label + " bottom page margin increased",
+      );
+    }
     assert.equal(
       await page
         .locator('input:not([type="checkbox"])')

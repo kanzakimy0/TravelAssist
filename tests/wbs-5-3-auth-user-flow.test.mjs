@@ -145,6 +145,23 @@ test("WBS-5.3 Auth routes share a stable canvas and reserve feedback without cli
   assert.doesNotMatch(css, /\.shell:has\(\.loginForm\)/);
   assert.doesNotMatch(css, /\.shell\s*\{[^}]*overflow:\s*hidden/s);
 });
+test("WBS-5.3 Auth navigation has inline pending feedback without bypassing server identity", () => {
+  const link = read("src/features/auth/components/auth-navigation-link.tsx");
+  const css = read("src/features/auth/auth.module.css");
+  assert.match(link, /useLinkStatus/);
+  assert.match(link, /prefetch=\{false\}/);
+  assert.match(link, /role="status" aria-live="polite"/);
+  assert.doesNotMatch(
+    link,
+    /currentAuthUser|localStorage|pushState|createClient/,
+  );
+  assert.match(
+    read("src/features/auth/auth-page.tsx"),
+    /await currentAuthUser\(\)/,
+  );
+  assert.match(css, /\.navigationHint\s*\{[^}]*position: absolute;/s);
+  assert.match(css, /\.loginForm \.formFooter a\s*\{[^}]*font-weight: 700;/s);
+});
 test("WBS-5.3 legal names, no fictional legal links, accessible status and secret-safe forms", () => {
   assert.match(form, /《服务条款》和《隐私政策》/);
   assert.match(form, /WBS 10.6/);

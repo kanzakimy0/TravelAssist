@@ -43,7 +43,7 @@ export function AuthShell({ children }: { children: ReactNode }) {
               src="/media/personal-center/sidebar-shell-ornament-top.png"
               alt=""
               fill
-              sizes="260px"
+              sizes="(max-width: 767px) 160px, 300px"
             />
           </div>
           <div className={styles.cardContent}>{children}</div>
