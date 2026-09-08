@@ -18,9 +18,9 @@ Completed — implementation and real Local acceptance scope; **not merged / not
 - Issue: [#226](https://github.com/kanzakimy0/TravelAssist/issues/226), Open.
 - Task File: `docs/tasks/TASK-019-a-trip-plan-schema.md`; full remote Codex command also archived unchanged in scope.
 - Branch: `codex/a-trip-plan-schema`.
-- Implementation Commit: PENDING.
-- Final Head: PENDING.
-- Draft PR: PENDING → develop; do not merge.
+- Implementation Commit: `b8a5ad502d216b7ab9ebbd0c587ea158daf0fdcb`.
+- Final Head: this tracking-only commit at PR #227 head; exact immutable SHA is recorded in Issue #226 and PR metadata after publication (a Git commit cannot embed its own SHA).
+- Draft PR: [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) → develop; Open / Draft, do not merge.
 - WBS updated: Yes, 8.5 待审查, not 已完成. No other WBS advanced.
 
 ## Schema

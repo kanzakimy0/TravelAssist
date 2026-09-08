@@ -2,7 +2,7 @@
 
 ## TASK-019-A 主系统 Trip Plan Schema（2026-09-09）
 
-- 8.5 / A / Issue #226：待审查（非已完成）。基线 `74bc3cccf8bcfd603706e2b96d4072076191f308`，独立工作区 `codex/a-trip-plan-schema`；#216 / #186 已合并并验证祖先关系。Task 与 Result 同步；Commit / Draft PR：PENDING。
+- 8.5 / A / Issue #226：待审查（非已完成）。基线 `74bc3cccf8bcfd603706e2b96d4072076191f308`，独立工作区 `codex/a-trip-plan-schema`；#216 / #186 已合并并验证祖先关系。Task 与 Result 同步；实现 `b8a5ad502d216b7ab9ebbd0c587ea158daf0fdcb`；[Draft PR #227](https://github.com/kanzakimy0/TravelAssist/pull/227)，Issue 保持 Open。
 - 四层 Trip 主表、owner-only RLS、revision/CAS、事务 Contract 投影与真实 generated types 已验收；Local start/status/reset/types/stop、21 项 TASK-019 runtime、25 项 Profile runtime、16 项纯投影夹具通过。634 项全仓 tests、lint/typecheck/build 通过；28 份历史格式问题与 develop 一致，新增 0。
 - 交付前重新 fetch，develop 仍为上述 SHA；#207 / #221 仍 Open / Draft / Partial，不引入其 B 表。无 UI、Saved Trips、Engine、POI/Route、Booking/Payment 扩展；只有用户验收并合并后才标记已完成。
 
@@ -493,6 +493,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-019-A | 8.5 | A | 待审查（真实 Local 验收通过，未合并） | #226 Open | `docs/tasks/TASK-019-a-trip-plan-schema.md` / `docs/tasks/RESULT-TASK-019-a-trip-plan-schema.md` | `codex/a-trip-plan-schema` | `b8a5ad5`（实现）；后续仅追踪记录 | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Draft → develop |
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |

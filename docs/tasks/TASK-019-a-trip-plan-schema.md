@@ -9,8 +9,8 @@
 - Priority: `P0`
 - Status: `待验收 / implementation and Local DB verified; Draft only`
 - GitHub Issue: `#226` (Open)
-- Implementation Commit: PENDING
-- Pull Request: PENDING (Draft → develop)
+- Implementation Commit: `b8a5ad502d216b7ab9ebbd0c587ea158daf0fdcb`
+- Pull Request: [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) (Open / Draft → develop; not merged)
 - Result: `docs/tasks/RESULT-TASK-019-a-trip-plan-schema.md`
 - Spec branch: `task/a-trip-plan-schema`
 - Planned implementation branch: `codex/a-trip-plan-schema`
