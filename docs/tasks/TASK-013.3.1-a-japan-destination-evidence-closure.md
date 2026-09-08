@@ -5,7 +5,12 @@
 - Task ID：`TASK-013.3.1-A`
 - Owner：`A`
 - Priority：`P1`
-- Status：`待开始（依赖 PR #192 合并）`
+- Status：`待验收（Partial；版本证据修复与严格收口检查已实现，官方边界补证未完成）`
+- Execution Base：`3ad62711be8ab54a0c4fa039f9bd426e30128946`
+- Prerequisite：PR #192 与 PR #198 已实际合并；#189 保持 Open / Partial。
+- Implementation Commit：`1daafbcb0e436c2c4a3f88895d192cdc25518f8f`；后续文档追踪head见PR/Issue。
+- Pull Request：[#199](https://github.com/kanzakimy0/TravelAssist/pull/199)（Draft → develop；Partial，不自动合并）
+- Current audit：父门槛254 verified /46 unresolved；修复297个无效版本链接。新增官方边界来源/规则验收不能沿用父通用描述，动态最终目标300、严格 fully_passed=0。不是目的地数据被清空。TASK-013.4 allowed: No。
 - Parent：`TASK-013.3-A` / Issue `#189`
 - Parent PR：`#192`
 - Issue：`#194`

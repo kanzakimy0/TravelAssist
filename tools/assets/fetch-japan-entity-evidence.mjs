@@ -1,7 +1,9 @@
 // Explicit metadata-only acquisition. The resolver and normal validation stay offline.
+import assert from "node:assert/strict";
 import { read, json, writeJson, parseCsv, CATALOG } from "./asset-utils.mjs";
 import { existsSync } from "node:fs";
 const path = CATALOG + "japan-destination-open-evidence.v1.json";
+const selectedOnly = process.argv.includes("--refresh-selected");
 const snapshot = existsSync(path)
   ? json(path)
   : {
@@ -39,7 +41,7 @@ async function api(params) {
 const seeds = parseCsv(
   read(CATALOG + "core-destination-generation-seed.v1.csv"),
 );
-for (let i = 0; i < seeds.length; i++) {
+for (let i = 0; !selectedOnly && i < seeds.length; i++) {
   await Promise.all(
     seeds.slice(i, i + 1).map(async (s) => {
       if (snapshot.searches[s.destination_id]) return;
@@ -78,6 +80,7 @@ snapshot.discarded_entity_ids ??= snapshot.retrieved_date
   : [];
 const review = json(CATALOG + "japan-destination-review.v1.json");
 for (const [id, query] of Object.entries(review.queries)) {
+  if (selectedOnly) break;
   const search = snapshot.searches[id];
   if (search.supplemental_query === query) continue;
   const data = await api({
@@ -109,17 +112,24 @@ const keep = ["P17", "P131", "P31", "P625", "P856", "P576"];
 async function load(ids) {
   const missing = ids.filter(
     (id) =>
-      !snapshot.entities[id] && !snapshot.discarded_entity_ids.includes(id),
+      (!snapshot.entities[id] ||
+        !Number.isSafeInteger(snapshot.entities[id].revision) ||
+        snapshot.entities[id].revision <= 0) &&
+      !snapshot.discarded_entity_ids.includes(id),
   );
-  for (let i = 0; i < missing.length; i += 40) {
+  for (let i = 0; i < missing.length; i += 8) {
     const d = await api({
       action: "wbgetentities",
-      ids: missing.slice(i, i + 40).join("|"),
-      props: "labels|aliases|descriptions|claims",
+      ids: missing.slice(i, i + 8).join("|"),
+      props: "info|labels|aliases|descriptions|claims",
       languages: "en|ja|zh|zh-cn|zh-hans",
     });
     for (const e of Object.values(d.entities)) {
       if (e.missing !== undefined) continue;
+      assert(
+        Number.isSafeInteger(e.lastrevid) && e.lastrevid > 0,
+        "Missing source revision: do not attach an invented revision to cached facts",
+      );
       snapshot.entities[e.id] = {
         id: e.id,
         revision: e.lastrevid,
@@ -135,22 +145,34 @@ async function load(ids) {
     console.log(`Entities ${Object.keys(snapshot.entities).length}`);
   }
 }
-await load([...new Set(wanted)]);
-for (let depth = 0; depth < 4; depth++) {
-  const ids = [
-    ...new Set(
-      Object.values(snapshot.entities).flatMap((e) =>
-        ["P131", "P31"].flatMap((p) =>
-          (e.claims[p] ?? [])
-            .map((c) => c.mainsnak?.datavalue?.value?.id)
-            .filter(Boolean),
+if (selectedOnly) {
+  const selected = parseCsv(
+    read(CATALOG + "core-destination-generation-manifest.v1.csv"),
+  )
+    .map((r) => r.provider_entity_id)
+    .filter(Boolean);
+  await load([...new Set(selected)]);
+} else {
+  await load([...new Set(wanted)]);
+  // Legacy snapshots omitted props=info. Refresh facts and revision together,
+  // including supporting prefecture/type chains; never pin old facts to a new id.
+  await load(Object.keys(snapshot.entities));
+  for (let depth = 0; depth < 4; depth++) {
+    const ids = [
+      ...new Set(
+        Object.values(snapshot.entities).flatMap((e) =>
+          ["P131", "P31"].flatMap((p) =>
+            (e.claims[p] ?? [])
+              .map((c) => c.mainsnak?.datavalue?.value?.id)
+              .filter(Boolean),
+          ),
         ),
       ),
-    ),
-  ];
-  const missing = ids.filter((id) => !snapshot.entities[id]);
-  if (!missing.length) break;
-  await load(missing);
+    ];
+    const missing = ids.filter((id) => !snapshot.entities[id]);
+    if (!missing.length) break;
+    await load(missing);
+  }
 }
 snapshot.retrieved_date = new Intl.DateTimeFormat("sv-SE", {
   timeZone: "Asia/Tokyo",
