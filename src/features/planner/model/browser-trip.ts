@@ -1,6 +1,7 @@
 import type { DetailDraftState } from "./detail-workspace";
 import { validDetailLocation } from "./detail-workspace";
 import { validMovementEdit, movementKey } from "./planner-route";
+import { routineSlots, validDraftClock } from "./planner-timeline";
 import type { TripConfiguration, TripState } from "./trip-model";
 
 export const SAVED_TRIP_KEY = "travelassist.saved-workspace.v1";
@@ -205,6 +206,11 @@ export function parseSavedTrip(
         return null;
       const itemIds = new Set<string>();
       if (
+        plan.hotelEndpointsReady !== undefined &&
+        typeof plan.hotelEndpointsReady !== "boolean"
+      )
+        return null;
+      if (
         plan.reserveItems !== undefined &&
         (!Array.isArray(plan.reserveItems) || plan.reserveItems.length > 2000)
       )
@@ -234,8 +240,19 @@ export function parseSavedTrip(
           !integer(item.day, 1, totalDays) ||
           !integer(item.endDay, item.day as number, totalDays) ||
           !date(item.date) ||
-          !time(item.startTime) ||
-          !time(item.endTime) ||
+          !(item.planningDraft === true
+            ? validDraftClock(item.startTime)
+            : time(item.startTime)) ||
+          !(item.planningDraft === true
+            ? validDraftClock(item.endTime)
+            : time(item.endTime)) ||
+          (item.planningSlot !== undefined &&
+            !routineSlots.includes(
+              item.planningSlot as (typeof routineSlots)[number],
+            )) ||
+          ![item.planningDraft, item.planningPlaceholder].every(
+            (v) => v === undefined || typeof v === "boolean",
+          ) ||
           ![
             "attraction",
             "hotel",

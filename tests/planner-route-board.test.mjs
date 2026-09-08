@@ -366,7 +366,9 @@ test("same-ID hotel replacement clears obsolete incoming estimates without clear
   });
   const replacement = s.places.find(
     (place) =>
-      place.type === "hotel" && !p.items.some((i) => i.placeId === place.id),
+      place.type === "hotel" &&
+      !place.planningPlaceholder &&
+      !p.items.some((i) => i.placeId === place.id),
   );
   assert.ok(replacement);
   const beforeLeg = plannerMovementLegs(p, 1).find(

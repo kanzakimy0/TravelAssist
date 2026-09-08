@@ -50,6 +50,7 @@ export function DetailReservationPanel({
   const alternatives = state.places.filter(
     (value) =>
       value.type === "hotel" &&
+      !value.planningPlaceholder &&
       value.city === place?.city &&
       value.id !== place.id &&
       !plan.items.some(

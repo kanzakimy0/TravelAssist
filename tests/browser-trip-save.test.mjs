@@ -293,6 +293,7 @@ test("hotel replacement protects confirmed stays and resets old booking data onl
   const replacement = state.places.find(
     (p) =>
       p.type === "hotel" &&
+      !p.planningPlaceholder &&
       p.id !== original.placeId &&
       !currentPlan(state).items.some((i) => i.placeId === p.id),
   );

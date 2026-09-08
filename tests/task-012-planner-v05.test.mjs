@@ -32,12 +32,13 @@ function fixture() {
   const { places, areas } = makePlannerCatalog(plannerMockPlans);
   return makeTripState(plannerMockPlans, places, areas, initialPlannerSettings);
 }
-test("ticket tab excludes hotels, restaurants, completed tickets and unknown offers", () => {
+test("reservation view excludes non-required items but retains required tickets with unverified stock", () => {
   const state = fixture();
   for (const item of secondaryPanelModel(state).tickets) {
     assert.ok(["attraction", "activity", "transport"].includes(item.type));
     assert.ok(
-      !["booked", "ticketed", "cancelled"].includes(item.reservationStatus),
+      item.reservationRequired &&
+        !["not_required", "cancelled"].includes(item.reservationStatus),
     );
   }
   const unknown = {
@@ -50,7 +51,10 @@ test("ticket tab excludes hotels, restaurants, completed tickets and unknown off
       })),
     })),
   };
-  assert.deepEqual(secondaryPanelModel(unknown).tickets, []);
+  assert.deepEqual(
+    secondaryPanelModel(unknown).tickets,
+    secondaryPanelModel(state).tickets,
+  );
 });
 test("TASK-012 exactly seven settings categories", () =>
   assert.equal(settingsCategories.length, 7));

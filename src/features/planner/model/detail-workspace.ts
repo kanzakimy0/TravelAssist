@@ -196,6 +196,12 @@ function aiStatusForItem(
   item: TripItem,
   previous: TripItem | undefined,
 ): { status: AiJudgementStatus; reason: string } {
+  if (item.planningPlaceholder)
+    return {
+      status: "warning",
+      reason:
+        "目前只安排了时间，酒店或餐厅尚未选择；区域中心不代表已确认地点。",
+    };
   if (
     previous &&
     item.type !== "hotel" &&
@@ -281,8 +287,8 @@ export function detailRailItems(
           draft: true,
         }) satisfies DetailRailItem,
     );
-  const combined = [...canonical, ...local].sort((a, b) =>
-    a.startTime.localeCompare(b.startTime),
+  const combined = [...canonical, ...local].sort(
+    (a, b) => minutes(a.startTime) - minutes(b.startTime),
   );
   const editedLegs = plannerMovementLegs(plan, day).filter(
     (leg) => leg.edited && leg.conflict,
@@ -336,7 +342,9 @@ export function detailDaySummary(
   const tripDay = plan.days.find((item) => item.day === day) ?? plan.days[0];
   const canonicalItems = itemsForDay(plan, day);
   const priceFor = (item: TripItem) =>
-    state.places.find((place) => place.id === item.placeId)?.price ?? 0;
+    item.planningPlaceholder
+      ? 0
+      : (state.places.find((place) => place.id === item.placeId)?.price ?? 0);
   const people = state.configuration.travelers;
   const paying = people.adultMale + people.adultFemale + (people.seniors ?? 0);
   const expense = (type: PlaceType) =>

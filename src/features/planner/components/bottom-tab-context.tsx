@@ -19,13 +19,21 @@ export function BottomTabContext({
   onClose: () => void;
 }) {
   const model = secondaryPanelModel(state);
-  const row =
-    model.rows.find((row) => row.day.day === state.ui.focusedDay) ??
-    model.rows[0];
-  if (!row) return null;
+  if (!model.rows.length) return null;
+  const row = {
+    items: model.items,
+    legs: model.rows.flatMap((r) => r.legs),
+    day: { city: [...new Set(model.rows.map((r) => r.day.city))].join(" · ") },
+    travelMinutes: model.rows.reduce((n, r) => n + r.travelMinutes, 0),
+    playMinutes: model.rows.reduce((n, r) => n + r.playMinutes, 0),
+    stays: model.items.filter(
+      (i) => i.type === "hotel" && !i.planningPlaceholder,
+    ),
+    bookings: model.bookings,
+  };
   const tab = state.ui.activeBottomTab;
   const protectedCount = row.items.filter(isProtectedItem).length;
-  const dayAreas = model.areas.filter((area) => area.day === row.day.day);
+  const dayAreas = model.areas;
   const metrics =
     tab === "movement"
       ? [
@@ -41,12 +49,12 @@ export function BottomTabContext({
         ? [
             [
               "待核对购票",
-              `${model.tickets.filter((item) => item.day === row.day.day).length} 项`,
+              `${model.summary.pendingTickets} 项`,
               "仅本地渠道样例",
             ],
             [
               "已确认预约",
-              `${row.bookings.filter((item) => ["booked", "ticketed"].includes(item.reservationStatus)).length} 项`,
+              `${model.summary.confirmedTickets} 项`,
               "已有安排不重复购票",
             ],
             ["办理位置", "行程详情", "不在 Planner 下单"],
@@ -75,33 +83,52 @@ export function BottomTabContext({
                 ["受保护安排", `${protectedCount} 项`, "预约、住宿及锁定节点"],
                 ["天气来源", "本地样例", "出发前核对实时预报"],
               ]
-            : [
-                [
-                  "今日停靠",
-                  `${row.items.length} 站`,
-                  row.items
-                    .filter(
-                      (item) =>
-                        item.type === "attraction" || item.type === "activity",
-                    )
-                    .slice(0, 2)
-                    .map((item) => item.title)
-                    .join(" · ") || "当天具体地点待确认",
-                ],
-                [
-                  "时间与负担",
-                  `${row.playMinutes} 分`,
-                  `活动时长 · 接驳间隙 ${row.travelMinutes} 分`,
-                ],
-                ["固定安排", `${protectedCount} 项`, "保持预约与住宿衔接"],
-              ];
+            : tab === "details"
+              ? [
+                  [
+                    "结构 / 地点待办",
+                    `${model.summary.issues} 项`,
+                    "按项目去重计数",
+                  ],
+                  [
+                    "待估交通",
+                    `${model.summary.unknownLegs} 段`,
+                    "不把空档当车程",
+                  ],
+                  [
+                    "三餐缺口",
+                    `${model.rows.reduce((n, r) => n + r.mealSlots.filter((s) => !s.item).length, 0)} 槽`,
+                    "未选地点不算已安排",
+                  ],
+                ]
+              : [
+                  [
+                    "范围停靠",
+                    `${row.items.length} 站`,
+                    row.items
+                      .filter(
+                        (item) =>
+                          item.type === "attraction" ||
+                          item.type === "activity",
+                      )
+                      .slice(0, 2)
+                      .map((item) => item.title)
+                      .join(" · ") || "当天具体地点待确认",
+                  ],
+                  [
+                    "时间与负担",
+                    `${row.playMinutes} 分`,
+                    `活动时长 · 接驳间隙 ${row.travelMinutes} 分`,
+                  ],
+                  ["固定安排", `${protectedCount} 项`, "保持预约与住宿衔接"],
+                ];
   const notes = {
     itinerary:
-      "上方是方案景点，下方是备用景点。可相互移入，已锁定或已确认预约的项目受保护；点击景点联动地图。",
+      "上方是按实际时间定位的当日行程，下方为备用。酒店出发、三餐、回酒店与交通页共用顺序；锁定项目受保护。",
     movement:
       "点击两个地点之间的交通卡，修改方式、预计时长与缓冲。超出空档会标记冲突，不会自动移动后续安排；仍需核对真实交通。",
     booking:
-      "仅展示当前行程中有购票渠道样例的待购票项目；实际渠道、库存和价格须在详情核对。",
+      "只展示所选范围内确需预约或购票的项目，包含确认状态；无需预约及已取消项目不展示。实际渠道、库存和价格须在详情核对。",
     weather:
       "备选用于调整普通行程节点：先预览再确认，固定预约、酒店与锁定节点保持不变。",
     stayFood:
@@ -121,9 +148,7 @@ export function BottomTabContext({
       autoFocus={false}
       dismissOutside={false}
     >
-      <p className={ui.detailDay}>
-        D{row.day.day} · {row.day.city}
-      </p>
+      <p className={ui.detailDay}>{model.scopeTitle}</p>
       <div className={ui.tabFacts}>
         {metrics.map(([label, value, note]) => (
           <section key={label}>

@@ -20,155 +20,8 @@
   grid-auto-columns: minmax(0, 1fr);
 }
 .itineraryDay {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) 19px minmax(0, 1fr);
-  min-height: 0;
-  overflow: hidden;
-}
-.row {
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  min-height: 0;
-  gap: 6px;
-}
-.row h3 {
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  margin: 0;
-  background: #d9e9de;
-  color: #36664b;
-  font-size: 12px;
-  border-radius: 8px;
-  line-height: 1.2;
-}
-.row h3 small {
-  margin-top: 2px;
-  font-size: 9px;
-  font-weight: 500;
-}
-.cards {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(150px, 1fr);
-  min-height: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 7px;
-  scrollbar-width: thin;
-}
-.sight {
-  display: flex;
-  flex-direction: column;
   min-width: 0;
   min-height: 0;
-  border: 1px solid #bfd4c8;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #edf5ec;
-}
-.sightInfo {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  width: 100%;
-  padding: 3px 7px;
-  flex: 1;
-  min-height: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.sightInfo > span {
-  min-width: 0;
-}
-.sightInfo svg {
-  flex: 0 0 23px;
-  color: #698372;
-}
-.sightInfo strong {
-  display: block;
-  font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.sightInfo small {
-  display: block;
-  font-size: 10px;
-  color: #716e61;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.sightInfo[aria-pressed="true"] {
-  background: #f6dccf;
-  box-shadow: inset 3px 0 #b66451;
-}
-.transfer {
-  flex: 0 0 22px;
-  min-height: 22px;
-  width: 100%;
-  border: 0;
-  border-top: 1px solid #bfd4c8;
-  background: #dfebdf;
-  color: #355e46;
-  font-size: 10px;
-  font-weight: 650;
-  cursor: pointer;
-  padding: 2px 4px;
-}
-.transfer:disabled {
-  color: #8a8274;
-  background: #f1ebe1;
-  cursor: not-allowed;
-}
-.reserveRow h3 {
-  background: #eee1d0;
-  color: #8a6550;
-}
-.reserveRow .sight {
-  background: #fff9f0;
-  border-color: #e2d3c2;
-}
-.reserveRow .transfer {
-  background: #f8e9dc;
-  color: #8a513d;
-  border-color: #e2d3c2;
-}
-.axis {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding-left: 54px;
-  font-size: 10px;
-  white-space: nowrap;
-}
-.axis i {
-  height: 2px;
-  background: #d3a993;
-  flex: 1;
-  border-radius: 3px;
-  position: relative;
-}
-.axis i::before,
-.axis i::after {
-  content: "";
-  position: absolute;
-  top: -2px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #b66b55;
-}
-.axis i::after {
-  right: 0;
-}
-.axis small {
-  font-size: 9px;
-  color: #897562;
 }
 .notice {
   margin: 0;
@@ -226,7 +79,7 @@
   flex: 0 0 auto;
   gap: 2px;
   width: var(--movement-stop-size);
-  height: var(--movement-stop-size);
+  height: calc(var(--movement-stop-size) * 1.3);
   min-height: 0;
   box-sizing: border-box;
   padding: 4px;
@@ -493,21 +346,8 @@
     height: 208px;
     min-height: 208px;
   }
-  .cards {
-    grid-auto-columns: 156px;
-  }
   .days[data-compare="true"] {
     grid-auto-columns: 320px;
-  }
-  .row {
-    grid-template-columns: 39px minmax(0, 1fr);
-    gap: 4px;
-  }
-  .axis {
-    padding-left: 43px;
-  }
-  .axis small {
-    display: none;
   }
   .dayHeading small {
     display: none;

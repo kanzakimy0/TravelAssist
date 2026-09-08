@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## Planner 本地最新修改整合（2026-09-08）
+
+- Task：TASK-PLANNER-INTEGRATION-A / [#203](https://github.com/kanzakimy0/TravelAssist/issues/203)；分支 `codex/planner-local-integration-20260908`，基线 `6386c83`。本轮将旧3113预览中未提交的时间轴、Detail操作、酒店三餐与范围面板迁入最新develop，待审查，尚未合并。
+- 旧本地WBS4.20–4.36与已合入Engine4.20–4.24冲突：保留Engine不变，旧UI记录整体顺延为4.25–4.41（旧编号+5）；旧Result中的数字是历史编号，不代表转移Engine所有权。
+- 旧2.16“AI插画接入”登记为2.17，保留2.16日本目的地验收；旧全球素材描述不恢复，始终Japan-only。旧3.9/3.10重复描述已完成3.6/3.8，不重复计数或更改B原Owner；手机追加仍见现有历史Result。
+- 已合并UI/Mock与真实Provider分开记录；本地公开Mapbox配置已获明确授权，仅保存在忽略文件内，联网验收见本轮Result。原工作树及用户保存数据保留。
+
+
 ## 合并状态校正与 Engine 交接（2026-09-08）
 
 - 用户授权现有阶段成果合并：PR #199 已合入 develop，merge `fba4086775d54d3acfc8dd4bd472e2a7a8c89e46`。297条证据版本修复进入基线；目的地最终验收仍 Partial，按追踪规则记“阻塞 / 待补证”，#189/#194保持Open，TASK-013.4未解锁。
@@ -415,6 +423,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
 | TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
+| TASK-PLANNER-INTEGRATION-A | 4.37/4.38/4.40/4.41；7.12 | A | 待审查（本地改动整合） | #203 | `docs/tasks/TASK-planner-local-integration.md` | `codex/planner-local-integration-20260908` | PENDING | PENDING |
 | TASK-015-A | 8.1 / 8.4 | A | 待审查（本机验证见#173；未合并） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md`（任务分支） | `feature/a-db-orm-migration-foundation` | `a88f446`（PR head；本机验收记录待回并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Draft |
 | TASK-016-B | 8.2 | B | 阻塞（等待#186合并） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING | PENDING |
 
@@ -536,6 +545,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 2.12   | Feature Flag 基础                | A      | P3     | 2.6     | 已完成 |
 | 2.15 | 日本国内核心目的地素材生成单（300目的地 / 9,000景点） | A | P1 | 2.13,2.14 | 已合并生产清单（Partial；实体/图片待后续） |
 | 2.16 | 日本300目的地实体解析与验收 | A | P1 | 2.15 | 阻塞 / Partial（父门槛254/300；官方边界最终验收未完成） |
+| 2.17 | 已有AI插画接入Planner Marker / 方案 / 详情及真实性标识 | A | P1 | 2.13,4.3,4.13 | 已完成（PR139已合并范围） |
 
 | 2.13   | 素材库 / Asset Registry 基础      | A      | P1     | 2.6,2.7 | 已完成 |
 | 2.14   | 全量素材清单 + S/M/L / 特殊尺寸衍生流水线 | A | P1 | 2.13 | 已完成 |
@@ -563,19 +573,41 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.4    | 住宿区域覆盖层                | A      | P1     | 4.2,1.12     | 已完成 |
 | 4.5    | 餐饮区域覆盖层                | A      | P1     | 4.2,1.12     | 已完成 |
 | 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中 |
-| 4.7    | 交通方式视觉显示              | A      | P0     | 4.6          | 未开始 |
+| 4.7    | 交通方式视觉显示              | A      | P0     | 4.6          | 已完成（本地交通分类视觉；非实时路线API） |
 | 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 已完成 |
 | 4.9    | 时间轴景点卡片                | A      | P1     | 4.8          | 已完成 |
-| 4.10   | 时间轴交通段                  | A      | P1     | 4.8          | 未开始 |
+| 4.10   | 时间轴交通段                  | A      | P1     | 4.8          | 已完成（交通段编辑/展示；估算与失效提示） |
 | 4.11   | 时间轴餐饮段                  | A      | P1     | 4.8          | 已完成 |
 | 4.12   | 时间轴住宿段                  | A      | P1     | 4.8          | 已完成 |
 | 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 已完成 |
 | 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中 |
 | 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 进行中 |
-| 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 未开始 |
+| 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 未开始 |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
 | 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
+
+### 4A. 已有 Planner / Detail UI 及本地补修登记
+
+| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
+| --- | --- | --- | --- | --- | --- |
+| 4.25 | Planner / Detail 共享 Workspace、Map 生命周期与返回推荐 | A | P0 | 4.1,4.2,4.15 | 已完成（已合并UI/Mock） |
+| 4.26 | Detail 显式浏览器保存 / 恢复 / 未保存与覆盖保护 | A | P0 | 4.25 | 已完成（已合并UI/Mock） |
+| 4.27 | 共享项目详情框 / 地图 2:1 分栏 / 多卡切换与手机浮层 | A | P1 | 4.25,4.3 | 已完成（已合并UI/Mock） |
+| 4.28 | 新增 / 编辑项目与目录匹配 / 手动坐标定位 | A | P1 | 4.27,4.15 | 已完成（已合并UI/Mock） |
+| 4.29 | Detail 单日 / 全程总览、状态计数、餐宿与费用摘要 | A | P1 | 4.25,4.8 | 已完成（已合并UI/Mock） |
+| 4.30 | Detail 餐厅 / 酒店候选选择、更换与预约入列（示例） | A | P1 | 4.27,4.29 | 已完成（已合并UI/Mock） |
+| 4.31 | 预约清单 / 当日与全程 / 三秒确认 / 进度演示 | A | P1 | 4.30 | 已完成（已合并UI/Mock） |
+| 4.32 | 本地时间冲突 / 缺失检查 / 调整预览 / 固定预约保护 | A | P0 | 4.15,4.25 | 已完成（已合并UI/Mock） |
+| 4.33 | 五卡二级菜单 / 七分类更多设置 / 草稿与应用取消 | A | P1 | 4.1,4.15 | 已完成（已合并UI/Mock） |
+| 4.34 | 六 Tab 上伸摘要 / 内容边界 / 响应式折叠及 25dvh | A | P1 | 4.1,4.8 | 已完成（已合并UI/Mock） |
+| 4.35 | 方案与备用景点双向调整 / 空档分配 / 分方案隔离 | A | P0 | 4.9,4.15 | 已完成（已合并UI/Mock） |
+| 4.36 | 移动段编辑 / 分类颜色 / 风险双色 / 相邻连接失效 | A | P1 | 4.10,4.35 | 已完成（已合并UI/Mock） |
+| 4.37 | 紧凑双层景点时间轴 / 节点连线 / 待安排备用轨道 | A | P1 | 4.35 | 待审查（本轮整合 #203） |
+| 4.38 | 行程卡同意应用 / 无视隐藏提醒 / 空白大加号 / 名称框加高 | A | P1 | 4.32,4.36 | 待审查（本轮整合 #203） |
+| 4.39 | 旅景玻璃背景 / 固定栏位与覆盖展开 / 操作按钮密度 | A | P1 | 4.25,4.34 | 已完成（已合并UI/Mock） |
+| 4.40 | 全天比例时间轴 / 上下拖拽插入 / 时间编辑与锁定 / 酒店三餐占位 | A | P1 | 4.35,4.37 | 待审查（本轮整合 #203） |
+| 4.41 | 行程交通酒店端点同步 / 1日3日全日面板与摘要 / 必要预约过滤 | A | P1 | 4.40,4.10,4.26 | 待审查（本轮整合 #203） |
 
 ### 4B. TravelAssist Engine / Trip Engine
 
@@ -658,6 +690,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
+| 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 待审查（#203，真实底图已本地复验，Token不上传） |
 
 ## 8. 数据库与认证基础
 

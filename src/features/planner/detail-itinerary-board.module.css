@@ -191,6 +191,33 @@
   color: #713851;
   box-shadow: inset 0 3px #b45e80;
 }
+.itinerary.missing {
+  position: relative;
+  align-items: center;
+  text-align: center;
+  border-style: dashed;
+  background: #fff0d5;
+  box-shadow: none;
+  gap: 0;
+}
+.itinerary.missing > strong {
+  flex: 0 0 auto;
+  font-size: 10px;
+}
+.missingPlus {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  font-size: clamp(28px, calc(var(--card-size) * 0.5), 44px);
+  line-height: 1;
+  font-weight: 300;
+  color: #a66a22;
+}
+.itinerary.missing > small {
+  display: block;
+  font-size: 8px;
+}
 .collapsedCards {
   display: flex;
   flex-direction: column;
@@ -226,6 +253,20 @@
   line-height: 1.2;
   white-space: normal;
   border-radius: 4px;
+}
+.collapsedCards .quickActions [data-confirm-action] {
+  color: #fffaf2;
+  background: #8e6346;
+  border-color: #8e6346;
+  font-weight: 700;
+}
+.collapsedCards .quickActions button:last-child {
+  color: #685d50;
+  background: #fffaf0;
+}
+.collapsedCards [data-primary-status] .statusBody {
+  flex: 1 1 auto;
+  height: auto;
 }
 .quickActions button[aria-pressed="true"] {
   background: #e5ddd0;
@@ -530,6 +571,11 @@
 .dialogBody button:focus-visible {
   outline: 2px solid #b4594a;
   outline-offset: 2px;
+}
+.collapsedCards .quickActions > button {
+  min-height: 24px;
+  height: 24px;
+  border-radius: 0 0 7px 7px;
 }
 @media (max-width: 767px) {
   .viewport {

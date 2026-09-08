@@ -751,7 +751,7 @@ export function PlannerPage() {
                 <AddTripItemDialog
                   key={`${detailDay}-${addType}`}
                   embedded
-                  places={trip.places}
+                  places={trip.places.filter((p) => !p.planningPlaceholder)}
                   initialType={addType}
                   onConflictTest={() => {
                     const test = makeConflictTest(
@@ -937,6 +937,7 @@ export function PlannerPage() {
                 );
                 return (
                   original &&
+                  !place.planningPlaceholder &&
                   place.id !== original.placeId &&
                   place.city === originalPlace?.city &&
                   place.type === original.type &&

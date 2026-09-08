@@ -17,6 +17,12 @@ import {
   reconcileMovementPlan,
 } from "./planner-route";
 import type { MovementEdit, PlannerRouteAction } from "./planner-route";
+import {
+  applyTimelineAction,
+  initializeHotelEndpoints,
+  type TimelineAction,
+  type RoutineSlot,
+} from "./planner-timeline";
 
 // TASK-008.1 local interaction model, NOT the final cross-module Trip Contract.
 export type Coordinates = [number, number];
@@ -65,6 +71,7 @@ export type PlannerPlace = {
   price: number;
   bookingRequired: boolean;
   structural?: boolean;
+  planningPlaceholder?: boolean;
   providerIds: Record<string, string>;
   bookingOptions: BookingOption[];
 };
@@ -99,6 +106,9 @@ export type TripItem = {
   fixedTime: boolean;
   locked: boolean;
   next?: string;
+  planningSlot?: RoutineSlot;
+  planningDraft?: boolean;
+  planningPlaceholder?: boolean;
 };
 export type TripDay = Omit<
   MockDay,
@@ -111,6 +121,7 @@ export type TripPlan = {
   days: TripDay[];
   items: TripItem[];
   reserveItems?: TripItem[];
+  hotelEndpointsReady?: boolean;
   movementLegs?: Record<string, MovementEdit>;
 };
 export type TripUi = Omit<PlannerUiState, "selectedStopId"> & {
@@ -166,6 +177,8 @@ export type TripConfiguration = {
   alternatives: string[];
 };
 export type TripAction =
+  | TimelineAction
+  | { type: "hotelEndpoints"; planId: string }
   | PlannerRouteAction
   | {
       type: "detailBatchEdit";
@@ -266,7 +279,7 @@ export function currentPlan(state: TripState) {
 export function itemsForDay(plan: TripPlan, day: number) {
   return plan.items
     .filter((item) => item.day <= day && item.endDay >= day)
-    .sort((a, b) => a.startTime.localeCompare(b.startTime));
+    .sort((a, b) => minutes(a.startTime) - minutes(b.startTime));
 }
 export function rangeDays(state: TripState) {
   const { rangeMode, selectedDay, threeDayStart } = state.ui;
@@ -696,6 +709,14 @@ export function timeBandPosition(
   };
 }
 export function tripReducer(state: TripState, action: TripAction): TripState {
+  if (action.type === "hotelEndpoints")
+    return initializeHotelEndpoints(state, action.planId);
+  if (
+    action.type === "timelineDrop" ||
+    action.type === "timelineTime" ||
+    action.type === "timelineLock"
+  )
+    return applyTimelineAction(state, action);
   if (
     action.type === "reserveSight" ||
     action.type === "promoteSight" ||
@@ -1018,6 +1039,11 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   if (action.type === "add") {
     const place = state.places.find((p) => p.id === action.placeId);
     if (!place || !plan.days.some((d) => d.day === action.day)) return state;
+    if (place.planningPlaceholder)
+      return {
+        ...state,
+        notice: "请先选择实际酒店或餐厅；时间占位不能加入预约。",
+      };
     if (
       place.type === "hotel" &&
       (!Number.isInteger(action.nights ?? 1) ||
@@ -1226,6 +1252,8 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
     );
   }
   if (action.type === "queueReservation") {
+    if (item.planningPlaceholder)
+      return { ...state, notice: "请先更换为实际酒店或餐厅，再加入预约。" };
     if (
       item.reservationRequired &&
       ["pending", "booking"].includes(item.reservationStatus)
@@ -1270,7 +1298,10 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   }
   if (action.type === "replaceRailHotel") {
     const replacement = state.places.find(
-      (place) => place.id === action.placeId && place.type === "hotel",
+      (place) =>
+        place.id === action.placeId &&
+        place.type === "hotel" &&
+        !place.planningPlaceholder,
     );
     if (
       item.type !== "hotel" ||
@@ -1299,6 +1330,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           ? {
               ...i,
               placeId: replacement.id,
+              planningPlaceholder: false,
               title: replacement.name,
               reservationRequired: replacement.bookingRequired,
               reservationStatus: replacement.bookingRequired
@@ -1404,6 +1436,11 @@ export function mapView(state: TripState): MapView {
     days = rangeDays(state),
     all = state.ui.rangeMode === "all";
   const placeById = new Map(state.places.map((p) => [p.id, p]));
+  // Unchosen meal/hotel placeholders have no verified point or route segment.
+  const mappedItems = (day: number) =>
+    itemsForDay(plan, day).filter(
+      (i) => !placeById.get(i.placeId)?.planningPlaceholder,
+    );
   const routes: MapRoute[] = [],
     places: PlannerMapPlace[] = [];
   const colors = new Map(plan.days.map((day) => [day.day, day.color]));
@@ -1463,7 +1500,7 @@ export function mapView(state: TripState): MapView {
     }
   } else {
     for (const day of days) {
-      const items = itemsForDay(plan, day.day);
+      const items = mappedItems(day.day);
       const departureStay = confirmedStay(plan, day.day - 1);
       if (departureStay && !items.some((i) => i.id === departureStay.id)) {
         const hotel = placeById.get(departureStay.placeId)!;
@@ -1523,8 +1560,8 @@ export function mapView(state: TripState): MapView {
       [last, (last ?? 0) + 1],
     ]) {
       if (!before || !after) continue;
-      const a = itemsForDay(plan, before).at(-1),
-        b = itemsForDay(plan, after)[0];
+      const a = mappedItems(before).at(-1),
+        b = mappedItems(after)[0];
       if (a && b)
         routes.unshift({
           id: `context-${before}-${after}`,
@@ -1536,8 +1573,8 @@ export function mapView(state: TripState): MapView {
     }
     if (state.ui.rangeMode === "threeDays")
       for (let i = 1; i < days.length; i++) {
-        const a = itemsForDay(plan, days[i - 1].day).at(-1),
-          b = itemsForDay(plan, days[i].day)[0];
+        const a = mappedItems(days[i - 1].day).at(-1),
+          b = mappedItems(days[i].day)[0];
         if (a && b)
           routes.push({
             id: `cross-${days[i].day}`,
@@ -1551,6 +1588,7 @@ export function mapView(state: TripState): MapView {
       for (const p of state.places
         .filter(
           (p) =>
+            !p.planningPlaceholder &&
             (p.id.startsWith("alternative-") ||
               plan.reserveItems?.some(
                 (item) => item.placeId === p.id && item.day === days[0].day,
@@ -1585,6 +1623,7 @@ export function mapView(state: TripState): MapView {
   const selected = plan.items.find((i) => i.id === state.ui.selectedTripItemId);
   if (
     selected &&
+    !placeById.get(selected.placeId)?.planningPlaceholder &&
     !all &&
     days.some((d) => selected.day <= d.day && selected.endDay >= d.day) &&
     !places.some((p) => p.tripItemId === selected.id)
@@ -1604,7 +1643,11 @@ export function mapView(state: TripState): MapView {
     });
   }
   const inspected = state.places.find((p) => p.id === state.ui.inspection?.id);
-  if (inspected && !places.some((p) => p.id === inspected.id)) {
+  if (
+    inspected &&
+    !inspected.planningPlaceholder &&
+    !places.some((p) => p.id === inspected.id)
+  ) {
     places.push({
       id: inspected.id,
       type: inspected.type,
@@ -1640,17 +1683,21 @@ export function mapView(state: TripState): MapView {
           })),
     selectedTripItemId: state.ui.selectedTripItemId,
     focusRevision: state.ui.focusRevision,
-    focus: state.ui.inspection
-      ? (state.places.find((p) => p.id === state.ui.inspection?.id)
-          ?.coordinates ??
-        state.areas.find((a) => a.id === state.ui.inspection?.id)
-          ?.coordinates ??
-        null)
-      : selected
-        ? point(selected)
-        : state.ui.rangeMode !== "day"
-          ? (plan.days.find((d) => d.day === state.ui.focusedDay)
-              ?.coordinates ?? null)
-          : null,
+    focus:
+      inspected?.planningPlaceholder ||
+      (selected && placeById.get(selected.placeId)?.planningPlaceholder)
+        ? null
+        : state.ui.inspection
+          ? (state.places.find((p) => p.id === state.ui.inspection?.id)
+              ?.coordinates ??
+            state.areas.find((a) => a.id === state.ui.inspection?.id)
+              ?.coordinates ??
+            null)
+          : selected
+            ? point(selected)
+            : state.ui.rangeMode !== "day"
+              ? (plan.days.find((d) => d.day === state.ui.focusedDay)
+                  ?.coordinates ?? null)
+              : null,
   };
 }

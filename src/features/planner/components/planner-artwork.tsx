@@ -72,7 +72,7 @@ export function SvgPlannerArtwork({
         clipPath={`url(#${clip})`}
         onError={() => setFailed(artwork.id)}
       />
-      <title>{artwork.label} · AI 插画，非实景照片</title>
+      <title>{`${artwork.label} · AI 插画，非实景照片`}</title>
       <rect
         x={x - 10}
         y={y + 15}
