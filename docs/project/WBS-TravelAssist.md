@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-017-B 前置审计（2026-09-08）
+
+- #207 / B：Blocked。实际基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；远端规格 `67587d5b55facfd0c773953e84daa9d3598a3ad5`。PR #186 已合并，所需 DB 路径齐全；TASK-016-B 的已完成状态保持不变。
+- 直接阻塞为 5.18：4.17 仍未开始，无可依赖的正式 Trip Plan / Planner Contract；现有 Planner 类型明确为本地交互模型，不得作为服务器契约。未建立 itinerary/day/item 主系统表，不代做 A 的 8.5。
+- 5.11 / 5.16 保持未开始，不擅自增加 4.17 依赖；本轮依远端 Codex 前置分支门槛停止，仅做文档审计。未创建 `feature/b-step-preference-trip-draft-persistence`。
+- Result：`docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`；审计分支 `codex/task-017-b-prerequisite-audit`；Commit / docs-only Draft PR 待发布。Issue 保持 Open；不标记最终完成，不自动合并。
+
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
 - 8.2 / B / #200：已完成（用户最终验收通过且 PR #209 已合入 develop）。首次基线 `eccfd9e`；分支 `feature/b-user-profile-schema`；合并前整合最新 develop `dcb7cbe`，只解决 WBS 顶部记录冲突，完整保留双方记录。
@@ -702,7 +709,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
 | 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 未开始 |
 | 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 未开始 |
-| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 未开始 |
+| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | Blocked（TASK-017-B / #207；4.17 未冻结，未实施） |
 | 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 未开始 |
 | 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 未开始 |
 
