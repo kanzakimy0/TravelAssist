@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-019-A 主系统 Trip Plan Schema（2026-09-09）
+
+- 8.5 / A / Issue #226：待审查（非已完成）。基线 `74bc3cccf8bcfd603706e2b96d4072076191f308`，独立工作区 `codex/a-trip-plan-schema`；#216 / #186 已合并并验证祖先关系。Task 与 Result 同步；Commit / Draft PR：PENDING。
+- 四层 Trip 主表、owner-only RLS、revision/CAS、事务 Contract 投影与真实 generated types 已验收；Local start/status/reset/types/stop、21 项 TASK-019 runtime、25 项 Profile runtime、16 项纯投影夹具通过。634 项全仓 tests、lint/typecheck/build 通过；28 份历史格式问题与 develop 一致，新增 0。
+- 交付前重新 fetch，develop 仍为上述 SHA；#207 / #221 仍 Open / Draft / Partial，不引入其 B 表。无 UI、Saved Trips、Engine、POI/Route、Booking/Payment 扩展；只有用户验收并合并后才标记已完成。
+
 ## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
 
 - 用户批准修复 A 范围审计的全部七项确认问题；Issue [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)。基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `codex/a-planner-audit-fixes`。
@@ -778,7 +784,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 已完成（TASK-016-B；用户验收通过；#209合并；#200关闭） |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 已完成 |
 | 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 已完成（#186已合并；SQL唯一历史与空库重建验收） |
-| 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |
+| 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 待审查（TASK-019-A / #226；真实 DB 验收通过，未合并） |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 未开始 |
 | 8.7    | AI 会话主系统存储策略         | A      | P2     | 6.2,8.1            | 未开始 |
 | 8.8    | 个人 AI 历史关联              | B      | P3     | 6.14,8.2,8.7       | 未开始 |

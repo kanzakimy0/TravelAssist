@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test:trip-plan": "node --test tests/task-019-trip-plan.test.mjs",
+    "test:trip-plan:runtime": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-019-trip-plan.runtime.mjs",
     "db:start": "node tools/db/local.mjs start",
     "db:stop": "node tools/db/local.mjs stop",
     "db:status": "node tools/db/local.mjs status",
