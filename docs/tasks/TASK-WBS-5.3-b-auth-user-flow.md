@@ -8,7 +8,7 @@
 - **Owner:** `B`
 - **Responsibility:** `Authentication UI / Session User Flow / Personal Center Access`
 - **Priority:** `P0`
-- **Status:** `进行中`
+- **Status:** `待审查`
 - **Depends On:** `1.23, 8.3`
 - **Dependency State at authoring:** `1.23 = 已完成`, `8.3 = 已完成`
 - **Authentication Core:** `TASK-018-B`, PR `#218`, merged into `develop`
@@ -1252,6 +1252,7 @@ Return at minimum:
 ## Status
 
 ## Preflight
+
 - origin/develop base:
 - dependency 1.23:
 - dependency 8.3:
@@ -1261,6 +1262,7 @@ Return at minimum:
 - duplicate PR:
 
 ## Tracking
+
 - Issue:
 - Task File:
 - Result File:
@@ -1272,6 +1274,7 @@ Return at minimum:
 - WBS updated:
 
 ## Auth Routes
+
 - /login:
 - /register:
 - /forgot-password:
@@ -1279,12 +1282,14 @@ Return at minimum:
 - technical /auth routes preserved:
 
 ## Auth Shell
+
 - desktop:
 - tablet:
 - mobile:
 - asset:
 
 ## Phone OTP
+
 - request:
 - verify:
 - auto-signup:
@@ -1292,11 +1297,13 @@ Return at minimum:
 - real SMS claim:
 
 ## Email Password
+
 - sign-in:
 - errors:
 - show/hide password:
 
 ## Email OTP
+
 - mode switch:
 - resend:
 - existing email login:
@@ -1305,6 +1312,7 @@ Return at minimum:
 - prefill verification claim:
 
 ## Registration
+
 - minimal fields:
 - password policy:
 - email confirmation:
@@ -1312,6 +1320,7 @@ Return at minimum:
 - Profile initialization:
 
 ## Recovery
+
 - forgot-password:
 - captured Local mail:
 - recovery callback:
@@ -1319,6 +1328,7 @@ Return at minimum:
 - old/new password verification:
 
 ## OAuth
+
 - Google initiation:
 - Apple initiation:
 - PKCE / callback:
@@ -1327,6 +1337,7 @@ Return at minimum:
 - silent account merge:
 
 ## Session / returnTo
+
 - protected Personal Center:
 - trusted server verification:
 - Home return:
@@ -1337,16 +1348,19 @@ Return at minimum:
 - all-device logout claimed:
 
 ## Profile Boundary
+
 - Profile API 5.15:
 - profile persistence:
 - existing presentation fixture handling:
 
 ## Legal Boundary
+
 - agreement copy:
 - published legal route:
 - 10.6 deferred:
 
 ## Responsive
+
 - 1920×1080:
 - 1440×900:
 - 1280×720:
@@ -1357,6 +1371,7 @@ Return at minimum:
 - horizontal overflow:
 
 ## Validation
+
 - npm ci:
 - db:start/status:
 - lint:
@@ -1372,6 +1387,7 @@ Return at minimum:
 - browser QA:
 
 ## Ownership Safety
+
 - A Header redesigned:
 - Planner modified:
 - Start business modified:
@@ -1382,6 +1398,7 @@ Return at minimum:
 - workflow modified:
 
 ## Git
+
 - Commit:
 - Push:
 - PR:
@@ -1392,9 +1409,11 @@ Return at minimum:
 - preserved untracked files:
 
 ## Problems
+
 -
 
 ## Next
+
 Stop. Do not automatically start WBS 3.4 / 5.15 / 5.21 or any other Task.
 ```
 
