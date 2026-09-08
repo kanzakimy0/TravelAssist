@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { format } from "prettier";
+import { createResolution } from "./japan-destination-resolution.mjs";
 import {
   ROOT,
   CATALOG,
@@ -586,7 +587,11 @@ export async function artifacts() {
     );
   const addCsv = (name, rows) =>
     add(CATALOG + name, csv(rows, Object.keys(rows[0])));
-  addCsv("core-destination-generation-manifest.v1.csv", d.destinations);
+  // TASK-013.3 owns the entity overlay; parent jobs, POI slots and variants stay frozen.
+  addCsv(
+    "core-destination-generation-manifest.v1.csv",
+    createResolution(d.destinations).rows,
+  );
   addCsv("core-attraction-generation-manifest.v1.csv", d.attractions);
   add(
     CATALOG + "core-source-jobs.v1.jsonl",
@@ -923,7 +928,13 @@ export async function validateFiles(readArtifact = read, batchFiles = null) {
       `Stale/corrupted generated artifact: ${path}`,
     );
   console.log(
-    JSON.stringify({ validation: "PASS", files: output.size, ...summary }),
+    JSON.stringify({
+      validation: "PASS",
+      files: output.size,
+      planning_baseline: summary,
+      current_destination_resolution: createResolution(buildData().destinations)
+        .summary,
+    }),
   );
   return summary;
 }

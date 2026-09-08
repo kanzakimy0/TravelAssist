@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "assets:japan-destinations": "node tools/assets/resolve-japan-destinations.mjs",
+    "assets:japan-destinations:validate": "node tools/assets/validate-japan-destination-resolution.mjs",
+    "test:japan-destinations": "node --test tests/task-013-3-japan-destination-resolution.test.mjs",
     "assets:core-manifest": "node tools/assets/build-core-generation-manifest.mjs",
     "assets:core-batches": "node tools/assets/export-core-generation-batches.mjs",
     "assets:core-estimate": "node tools/assets/estimate-core-generation-cost.mjs",
