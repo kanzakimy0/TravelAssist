@@ -114,8 +114,9 @@ node tests/personal-center-followup.browser.mjs
 | npm run format:check                       | 29 份历史文件格式基线失败；当前任务文件均通过，不越界格式化 |
 | 本 Follow-up owned files targeted Prettier | PASS                                                        |
 | npm run test --if-present                  | **NO-OP**，package.json 无通用 test script，不记为 PASS     |
-| node --test tests/*.test.mjs               | **439 PASS / 6 FAIL / 445 总计**，失败详见下节              |
+| node --test tests/*.test.mjs               | **441 PASS / 3 FAIL / 444 总计**，仅剩已确认的资产 baseline |
 | 显式专项 + 既有旅行库 tests                | **33/33 PASS**（本轮 16 + 原旅行库 17）                     |
+| 授权修正的三个历史测试文件                 | **33/33 PASS**（5.20：16；5.4：5；9.12：12）                |
 | npm run build                              | PASS，生产构建及 21 页生成成功                              |
 | git diff --check                           | PASS                                                        |
 
@@ -123,19 +124,32 @@ node tests/personal-center-followup.browser.mjs
 
 ## Problems / 历史差异
 
-全仓 Node tests **不是全绿**，未跳过失败用例或修改其他 Task 的测试断言：
+全仓 Node tests **不是全绿**。首轮为 439 PASS / 6 FAIL / 445 总计；随后按用户明确授权，仅修正指定的三个历史测试文件，当前为 441 PASS / 3 FAIL / 444 总计，未跳过失败用例。下列 1–2 共三项资产 baseline 仍失败，3–5 已修正；保留发现与处置记录：
 
 1. `task-013-1-asset-variants.test.mjs` 的 verify-only 与 full catalog coverage 两项：用户原有未追踪 `asset-contact-sheet.jpg` 不在 catalog，且四个旧 SVG 有 source-protection 差异。截图已移出扫描范围，最终 coverage 新增项仅为用户原文件。
 2. `task-013-assets.test.mjs`：四个未修改 SVG 的 inventory stale：`ai-trip-flow.svg`、`home-concept.svg`、`preference-panel-concept.svg`、`trip-planner-concept.svg`。资产目录、catalog、工具均无本轮改动。
-3. `wbs-5-20-personal-center-responsive-states.test.mjs:212`：固定旧提交以来的精确文件清单，不能容纳本轮明确授权的 data/model/helper 改动。
-4. `wbs-5.4-v2.test.mjs:8`：要求四个图片路径字面量出现在 Home TSX；本轮按要求改为共享 fixture，图片仍由 fixture 使用，旧源码字符串断言不再适用。
-5. `wbs-9-12-personal-center-qa.test.mjs:295`：将整个工作区 status 限制在旧 9.12 文件白名单，包含本轮授权文件和用户未追踪文件，因此失败。
+3. `wbs-5-20-personal-center-responsive-states.test.mjs`：旧断言固定旧提交以来的精确文件清单，不能容纳明确授权的 data/model/helper 改动。**已修正**：只删除永久 Git 文件白名单测试，其余 16 项 responsive/state/focus/navigation/integration-boundary 测试保持不变。
+4. `wbs-5.4-v2.test.mjs`：旧断言要求四个图片路径字面量出现在 Home TSX。**已修正**：执行真实 Home + 当前共享 fixture + timing helper，固定测试日期 2026-03-01，断言四项 approved 图片实际渲染且对应 public 文件存在、非空；保留其他素材和禁止旧素材断言。
+5. `wbs-9-12-personal-center-qa.test.mjs`：旧断言将整个工作区 status 限制在旧 9.12 文件白名单。**已修正**：移除工作区白名单部分，保留同一测试内的无集成边界断言，其余 11 项 QA/responsive/accessibility 测试保持不变。
 
-这些属于旧基线或与当前要求冲突的历史断言，作为待审查事项呈报，而非声称通过。当前 Task 文件以外的历史 Task / Result 均未修改。
+三项资产 baseline 继续作为待审查事项呈报，不越界修复、不声称通过。当前 Follow-up 引入的历史断言失败已消除。当前 Task ID 以外的历史 Task / Result 均未修改。
 
 旧 history fixture 中 `history-hokkaido-2027` 在当前 2026 年仍为未来日期；保持原快照数据，只在已结束后显示于历史，未将其误标为当前已完成或提升为 Hero。日期规则优先于旧 fixture 的 phase 标签。
 
 优化前采集曾将所有浏览器页时钟拨到 2027 年，触发旧同行人年龄与服务端年龄不一致；最终 runner 将模拟日期隔离到 Home/Trips，同行人和账户使用真实时钟。优化期间 HMR 曾出现 Router 初始化错误；最终生产版两浏览器复验无该错误。早期基线记录保留，不冒充最终通过证据。
+
+## 用户授权的历史测试修正（2026-09-08）
+
+- 本轮起点：`71a276485874720fcc66c3e99a3afd68701b9a4d`，继续使用原分支、PR #197、Issue #193。
+- 仅修正用户指定的三个测试文件；相对本轮起点，Runtime、package/lockfile、Workflow、资产及资产工具均零改动。
+- 使用现有 TypeScript/React 在 Node 内存中编译并渲染 Home；只适配 Next 装饰组件与显式测试日期，不伪造共享 fixture。没有新增 package dependency。
+- 逐项比对测试函数：5.20 其余 16 项、5.4 其余 4 项、9.12 其余 11 项均保持原测试体。总数 445 → 444 仅因为移除一项非业务的永久 Git 文件白名单测试；不是跳过业务测试。
+- 重新执行 `node --test tests/*.test.mjs`：444 总计，441 PASS，3 FAIL，0 skipped/cancelled/todo。失败均为上节已确认的资产 baseline。
+- 三个修正后的测试文件共 33/33 PASS；重新执行 lint、typecheck、build、git diff --check 均 PASS。当前修改文件的 targeted Prettier PASS；全仓 format:check 的旧结果仍保留，不宣称全仓格式通过。
+- 新日志为 `docs/evidence/WBS-5.10-B-FOLLOWUP-1/historical-tests-repair-*.log`；原始 `node-tests.log` 保留首轮六项失败快照，不覆盖旧证据。
+- 本轮没有重新执行浏览器矩阵；上节 Browser QA 为先前 Runtime 的验证记录。Runtime 不变，继续等待用户最终视觉验收。
+- `README.txt`、`asset-contact-sheet.jpg`、`publish_assets.py` 仍未追踪，SHA-256 与本轮预检一致，未修改、删除或提交。
+- Follow-up 保持“待审查”，PR 保持 Open / Draft，Issue #193 保持 Open；Parent WBS 的完成状态及 5.3 状态不变。
 
 ## Ownership / Git / Stop
 
