@@ -2,7 +2,12 @@
 
 ## Status
 
-**Runtime accepted / 待合并** — 2026-09-08 user authorized PR #186 closeout and merge.
+**Completed / 已完成** — PR #186 merged after user-authorized runtime acceptance.
+Merge: `24dff4e3b74dfe01c369d2c149d37eba86ad6472`; remote tree equals accepted head
+`c14ea30747f317d6222cab1019e95611049d8fd1`. All seven TASK-016 prerequisites plus
+real generated types are present on develop. WBS 8.1 / 8.4 completed; WBS 8.2
+remains unimplemented but its #186 merge blocker is cleared. No following task started.
+
 The following current acceptance record supersedes the original Docker-blocked
 delivery preserved below for audit.
 

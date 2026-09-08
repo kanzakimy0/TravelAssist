@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-015-A 已合并验收 / B前置解除（2026-09-08）
+
+用户授权后PR #186已合入develop：`24dff4e3b74dfe01c369d2c149d37eba86ad6472`，
+文件树与已验收head `c14ea30747f317d6222cab1019e95611049d8fd1`完全一致。
+8.1/8.4已完成（TASK-015基础范围）；#173同步关闭。#200要求的7项路径及真实
+generated types均在基线，8.2改为可开始但未实施，B须拉取并自行复检后启动。
+保留无PostGIS、Vector辅助日志限制和27份历史格式债的如实说明，不影响当前
+User/Profile基础依赖。下方合并前/旧Docker阻塞记录仅供历史审计。
+
 ## TASK-015-A 合并前复验（2026-09-08）
 
 用户授权 #186 合并收尾。真实类型提交 `b212c31` 已回并，整合基线 `6386c83`，
@@ -423,8 +432,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
 | TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
-| TASK-015-A | 8.1 / 8.4 | A | 待审查（运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `b212c31`（真实types）；`0b97f79`（整合；最终head见PR） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) 用户授权合并，尚待执行 |
-| TASK-016-B | 8.2 | B | 阻塞（等待#186合并） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING | PENDING |
+| TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
+| TASK-016-B | 8.2 | B | 可开始（#186已合并，B复检后实施） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema`（计划） | PENDING（未实施） | PENDING |
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
 | TASK-013-A | 2.13 | A | 已完成 | #112 | `docs/tasks/TASK-013-a-asset-library-foundation.md` | `feature/a-asset-library-foundation` | `4c56dac`（实现）；`aee2eae`（合并） | [#166](https://github.com/kanzakimy0/TravelAssist/pull/166) 已合入 develop，用户授权并验收 |
@@ -671,10 +680,10 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖               | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------------ | ------ |
-| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 待审查（#186未合并；#173已记录本机验证通过） |
-| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 阻塞（TASK-016-B / #200等待#186合并） |
+| 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 已完成（TASK-015基础范围；#186合并且运行验收通过） |
+| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 可开始（TASK-016-B / #200；未实施） |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 未开始 |
-| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 待审查（#186未合并；正式合并收尾待完成） |
+| 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 已完成（#186已合并；SQL唯一历史与空库重建验收） |
 | 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 未开始 |
 | 8.7    | AI 会话主系统存储策略         | A      | P2     | 6.2,8.1            | 未开始 |
