@@ -476,6 +476,37 @@
   box-sizing: border-box;
   color: #354650;
 }
+.dailyPanels.mealStayCards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.mealStayCards > section {
+  gap: 6px;
+  padding: 9px;
+}
+.mealStayCards > section > strong {
+  font-size: 12px;
+}
+.mealStayCards h3 {
+  font-size: 16px;
+}
+.areaChoices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.areaChoices button {
+  padding: 4px 7px;
+  font-size: 11px;
+}
+.areaChoices button[aria-pressed="true"] {
+  background: #f4dfcd;
+  border-color: #b98064;
+}
+@media (max-width: 767px) {
+  .dailyPanels.mealStayCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .dailyPanels > section {
   display: flex;
   flex-direction: column;
@@ -623,6 +654,31 @@
 }
 .dailyProblems span {
   font-size: 11px;
+}
+.dailyPanels.mealStayCards > section {
+  padding: 7px 9px;
+  gap: 3px;
+}
+.mealStayCards header {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.mealStayCards header small {
+  width: auto;
+  order: 1;
+}
+.mealStayCards h3 {
+  font-size: 14px;
+}
+.mealStayCards button {
+  padding: 3px 6px;
+  font-size: 11px;
+}
+.mealStayCards > section > strong {
+  font-size: 11px;
+}
+.mealStayCards p {
+  line-height: 1.35;
 }
 @media (max-width: 767px) {
   .dailyPanels {

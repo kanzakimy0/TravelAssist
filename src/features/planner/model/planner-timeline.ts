@@ -150,14 +150,9 @@ export function timelineAxis(items: TripItem[]) {
     ...items.map((i) => timelineMinute(i.endTime)),
   );
   const span = end - start;
-  const minGap = starts
-    .slice(1)
-    .reduce((gap, value, index) => Math.min(gap, value - starts[index]), 120);
-  // Expand the scrollable ruler rather than assigning equal positions to cards.
-  const width = Math.max(
-    820,
-    span * Math.min(8, 136 / Math.max(1, minGap)) + 116,
-  );
+  // Time remains proportional; close/overlapping drafts must not create a
+  // multi-screen ruler. Their feasibility belongs to Detail, not canvas width.
+  const width = Math.min(1440, Math.max(820, items.length * 100 + 116));
   return {
     start,
     end,

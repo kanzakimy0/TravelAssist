@@ -1,5 +1,10 @@
 # TravelAssist 可记录 WBS（Master）
 
+## 独立滑轨与方案保存还原（2026-09-08）
+
+- TASK-PLANNER-TRACK-A，WBS 4.46，本地待审查；分支 `codex/planner-independent-tracks-plan-actions`，保留 `a2a537b` / PR #204、#206 UI 基线。Task/Result：`docs/tasks/TASK-planner-track-actions.md`、`docs/tasks/RESULT-planner-track-actions.md`。
+- GitHub Issue / PR 均 PENDING：发布权限检查拦截，等待明确授权；未上传、未合并。不得因此把 4.46 标为已完成。此 UI 分支的历史 DB 条目不是最新 develop 的数据库合并记录；后续同步须保留 develop 的数据库收尾，不能回退 B 前置状态。
+
 ## 完成规划与出发准备（2026-09-08）
 
 - TASK-TRIP-PREPARATION-A / #205，用户确认设计后实施，分支 `codex/trip-completion-flight-workspace`，基线 `c9589d1`（保留PR #204成果，未自动合并）。4.42–4.45待审查；532项测试及三尺寸浏览器验收通过，不修改B Engine责任。
@@ -618,6 +623,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.43 | 同行人组合与单人跨页读取 / 临时成员 / 人数构成校验 | A | P1 | 5.6,4.42 | 待审查（#205，保留B原范围） |
 | 4.44 | 总览航班设置 / 项目详情 / 购票需求与本地航班校验 | A | P1 | 4.27,4.31 | 待审查（#205，非真实出票） |
 | 4.45 | Planner单日餐宿覆盖与旅行体检内容增强 | A | P1 | 4.41 | 待审查（#205） |
+| 4.46 | 独立双滑轨 / 三日日期分隔 / 四餐宿区域卡 / 方案显式保存及还原 | A | P1 | 4.40,4.45 | 待审查（本地，Issue/PR发布待授权） |
 
 ### 4B. TravelAssist Engine / Trip Engine
 

@@ -1,0 +1,31 @@
+# TASK-PLANNER-TRACK-A — 独立行程滑轨与推荐方案操作
+
+## Metadata
+
+- Task ID: TASK-PLANNER-TRACK-A
+- Owner: A
+- Status: 待验收（本地完成，发布受阻）
+- WBS: 4.46
+- GitHub Issue: PENDING（发布权限检查拦截，未创建）
+- Branch: `codex/planner-independent-tracks-plan-actions`
+- Depends On: 当前本地已验收 UI，PR #204 / #206；不自动合并
+- Base: `a2a537bbed9b153b3a71fbb955e8ac23ef30213b`
+- Commit: PENDING
+- Pull Request: PENDING（未上传）
+
+## 用户本轮要求
+
+1. 修复拖动撑长时间条；上下轨独立横向滚动。
+2. 三日模式去掉左侧两块标签，日期与第几天置于两轨正中。
+3. 解释锁定，保留预约、固定时间、跨日保护及手动解锁。
+4. 单日餐宿分为早餐、午餐、晚餐、住宿四卡，各含区域与理由。
+5. 推荐方案新增显式保存到浏览器并进入详情、确认后还原推荐，修改后红色标识。
+6. 详情返回改为“返回推荐及增删项目”。
+
+## 边界与验收
+
+保持底栏高度、地图生命周期、其他方案、独立详情项目与原工作区。保存仅当前浏览器，无真实预约、云同步或自动保存。还原不取消外部订单。
+
+本地实现沿用用户正在预览的最新 UI，不切回缺少这些改动的旧 UI 基线。后续发布必须保留 PR #204/#206，并与最新 develop 追踪文件安全协调，不能用本分支历史 WBS 回退数据库进度。
+
+验收见 `RESULT-planner-track-actions.md`。GitHub Issue 创建被权限检查拒绝，不换其他渠道绕过；待用户明确授权发布代码及任务记录后再 push / Draft PR。

@@ -10,12 +10,18 @@ export function PlanRecommendationList({
   onSelect,
   pendingCount,
   onBooking,
+  modifiedIds,
+  onSavePlan,
+  onRestorePlan,
 }: {
   plans: MockPlan[];
   selectedId: string;
   onSelect: (plan: MockPlan) => void;
   pendingCount: number;
   onBooking: () => void;
+  modifiedIds: string[];
+  onSavePlan: (id: string) => void;
+  onRestorePlan: (id: string) => void;
 }) {
   return (
     <section
@@ -29,36 +35,58 @@ export function PlanRecommendationList({
       </div>
       <div className={styles.planList}>
         {plans.map((plan, index) => (
-          <button
-            type="button"
+          <article
             key={plan.id}
             className={styles.planRow}
-            aria-pressed={selectedId === plan.id}
-            onClick={() => onSelect(plan)}
+            data-selected={selectedId === plan.id}
+            data-recommendation={plan.id}
           >
-            {planArtwork(plan.id) ? (
-              <PlannerArtworkImage
-                artwork={planArtwork(plan.id)!}
-                className={styles.planThumbnail}
-                sizes="80px"
-                fallback={<PlanThumbnail plan={plan} />}
-              />
-            ) : (
-              <PlanThumbnail plan={plan} />
-            )}
-            <span className={styles.planText}>
-              <span className={styles.planNumber}>
-                方案 0{index + 1}
-                {selectedId === plan.id && <b>当前方案</b>}
+            <button
+              type="button"
+              className={styles.planSelect}
+              aria-pressed={selectedId === plan.id}
+              onClick={() => onSelect(plan)}
+              aria-label={`选择方案 0${index + 1}：${plan.name}`}
+            >
+              {planArtwork(plan.id) ? (
+                <PlannerArtworkImage
+                  artwork={planArtwork(plan.id)!}
+                  className={styles.planThumbnail}
+                  sizes="80px"
+                  fallback={<PlanThumbnail plan={plan} />}
+                />
+              ) : (
+                <PlanThumbnail plan={plan} />
+              )}
+              <span className={styles.planText}>
+                <span className={styles.planNumber}>
+                  方案 0{index + 1}
+                  {modifiedIds.includes(plan.id) && (
+                    <em className={styles.modifiedPlan}>已修改</em>
+                  )}
+                  {selectedId === plan.id && <b>当前方案</b>}
+                </span>
+                <strong>{plan.name}</strong>
+                <small>
+                  {plan.days.length}天{Math.max(0, plan.days.length - 1)}晚 ·{" "}
+                  {plan.summary}
+                </small>
               </span>
-              <strong>{plan.name}</strong>
-              <small>
-                {plan.days.length}天{Math.max(0, plan.days.length - 1)}晚 ·{" "}
-                {plan.summary}
-              </small>
-            </span>
-            <PlannerIcon name="chevron" />
-          </button>
+              <PlannerIcon name="chevron" />
+            </button>
+            <div className={styles.planActions}>
+              <button type="button" onClick={() => onSavePlan(plan.id)}>
+                保存并细化 →
+              </button>
+              <button
+                type="button"
+                disabled={!modifiedIds.includes(plan.id)}
+                onClick={() => onRestorePlan(plan.id)}
+              >
+                还原推荐
+              </button>
+            </div>
+          </article>
         ))}
       </div>
       <div className={styles.currentBooking} data-current-booking>

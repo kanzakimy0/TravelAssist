@@ -7,6 +7,8 @@ import {
   type PointerEvent,
   type KeyboardEvent,
 } from "react";
+import { createPortal } from "react-dom";
+import { isoDay } from "../model/trip-model";
 import type { TripAction, TripItem, TripState } from "../model/trip-model";
 import {
   displayTimelineTime,
@@ -30,6 +32,7 @@ type Pickup = {
   moved: boolean;
   keyboard: boolean;
   target: Drop | null;
+  portalTarget?: HTMLElement;
 };
 
 export function PlannerSightTimeline({
@@ -47,6 +50,8 @@ export function PlannerSightTimeline({
   const axis = timelineAxis(planned);
   const root = useRef<HTMLDivElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
+  const reserveViewport = useRef<HTMLDivElement>(null);
+  const compare = state.ui.rangeMode !== "day";
   const pickupRef = useRef<Pickup | null>(null);
   const suppressClick = useRef(false);
   const [pickup, setPickup] = useState<Pickup | null>(null);
@@ -98,6 +103,7 @@ export function PlannerSightTimeline({
       moved: false,
       keyboard: false,
       target: null,
+      portalTarget: event.currentTarget.closest("dialog") ?? document.body,
     });
   }
   function drag(event: PointerEvent<HTMLButtonElement>) {
@@ -106,7 +112,11 @@ export function PlannerSightTimeline({
     if (!p.moved && Math.hypot(event.clientX - p.x, event.clientY - p.y) < 6)
       return;
     event.preventDefault();
-    const v = viewport.current;
+    const v = [viewport.current, reserveViewport.current].find((node) => {
+      if (!node) return false;
+      const r = node.getBoundingClientRect();
+      return event.clientY >= r.top && event.clientY <= r.bottom;
+    });
     if (v) {
       const r = v.getBoundingClientRect();
       if (event.clientX < r.left + 32) v.scrollLeft -= 20;
@@ -257,26 +267,34 @@ export function PlannerSightTimeline({
     <div
       ref={root}
       className={css.timeline}
+      data-compare={compare}
       data-sight-timeline
       data-picking={Boolean(pickup?.moved)}
     >
-      <div className={css.labels}>
-        <h3 id={`sights-${day}`}>
-          当日行程
-          <small>
-            第{day}天 · {planned.length}项
-          </small>
-          <span title="先拖动安排，时间冲突留到详情核对">按时间定位</span>
-        </h3>
-        <h3 id={`reserves-${day}`}>
-          备用项目<small>{reserve.length}项</small>
-          <span>拖到上轨 ↑</span>
-        </h3>
-      </div>
-      <div ref={viewport} className={css.viewport} data-sight-scroll>
-        <div className={css.tracks} style={{ minWidth: axis.width }}>
+      {!compare && (
+        <div className={css.labels}>
+          <h3 id={`sights-${day}`}>
+            当日行程
+            <small>
+              第{day}天 · {planned.length}项
+            </small>
+            <span title="先拖动安排，时间冲突留到详情核对">按时间定位</span>
+          </h3>
+          <h3 id={`reserves-${day}`}>
+            备用项目<small>{reserve.length}项</small>
+            <span>拖到上轨 ↑</span>
+          </h3>
+        </div>
+      )}
+      <div className={css.tracks}>
+        <div
+          ref={viewport}
+          className={css.viewport}
+          data-sight-scroll="planned"
+        >
           <div
             className={css.plannedLane}
+            style={{ minWidth: axis.width }}
             data-drop-row="planned"
             data-drop-active={pickup?.target?.to === "planned"}
           >
@@ -295,7 +313,7 @@ export function PlannerSightTimeline({
             <ol
               className={css.rail}
               data-sight-row="planned"
-              aria-labelledby={`sights-${day}`}
+              aria-label={`第${day}天当日行程`}
             >
               {planned.map((item, index) => {
                 const ratio =
@@ -358,12 +376,24 @@ export function PlannerSightTimeline({
               )}
             </ol>
           </div>
+        </div>
+        {compare && (
+          <div className={css.dayDivider} data-timeline-day-label>
+            <strong>第{day}天</strong>
+            <time>{isoDay(state.settings.startDate, day)}</time>
+          </div>
+        )}
+        <div
+          ref={reserveViewport}
+          className={css.viewport}
+          data-sight-scroll="reserve"
+        >
           <ol
             className={`${css.rail} ${css.reserve}`}
             data-sight-row="reserve"
             data-drop-row="reserve"
             data-drop-active={pickup?.target?.to === "reserve"}
-            aria-labelledby={`reserves-${day}`}
+            aria-label={`第${day}天备用项目`}
           >
             {reserve.map((item) => (
               <li key={item.id} className={css.reserveStop}>
@@ -382,15 +412,24 @@ export function PlannerSightTimeline({
           {pickup.target ? targetText : "拖到上轨或备用区；Esc 取消"}
         </div>
       )}
-      {pickup?.moved && !pickup.keyboard && (
-        <div
-          className={css.ghost}
-          style={{ left: pickup.x + 12, top: pickup.y - 42 }}
-          aria-hidden="true"
-        >
-          {pickup.title}
-        </div>
-      )}
+      {pickup?.moved &&
+        !pickup.keyboard &&
+        createPortal(
+          <div
+            className={css.ghost}
+            style={{
+              left: Math.max(
+                8,
+                Math.min(pickup.x + 12, window.innerWidth - 225),
+              ),
+              top: Math.max(8, pickup.y - 42),
+            }}
+            aria-hidden="true"
+          >
+            {pickup.title}
+          </div>,
+          pickup.portalTarget ?? document.body,
+        )}
     </div>
   );
 }
@@ -410,6 +449,8 @@ function TimelineActions({
 }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
+  const [lockHelp, setLockHelp] = useState(false);
+  const lockTrigger = useRef<HTMLButtonElement>(null);
   const [start, setStart] = useState(
     timelineMinute(item.startTime) < 1440 ? item.startTime : "08:00",
   );
@@ -448,9 +489,10 @@ function TimelineActions({
       </button>
       <button
         type="button"
-        aria-label={`${protectedItem ? "解锁" : "锁定"}${item.title}`}
+        aria-label={`${hard ? "查看锁定原因：" : protectedItem ? "解锁" : "锁定"}${item.title}`}
+        ref={lockTrigger}
         aria-pressed={protectedItem}
-        disabled={hard}
+        aria-expanded={hard ? lockHelp : undefined}
         title={
           hard
             ? "已有固定预约 / 跨日保护，请在详情核对"
@@ -458,7 +500,11 @@ function TimelineActions({
               ? "解锁后可拖动"
               : "锁定后不可拖动"
         }
-        onClick={() => dispatch({ type: "timelineLock", ...scope })}
+        onClick={() =>
+          hard
+            ? setLockHelp(!lockHelp)
+            : dispatch({ type: "timelineLock", ...scope })
+        }
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <rect x="5" y="10" width="14" height="11" rx="2" />
@@ -471,6 +517,25 @@ function TimelineActions({
           />
         </svg>
       </button>
+      {lockHelp && (
+        <PlannerPopover
+          id={`lock-${item.id}`}
+          title="为什么已锁定"
+          trigger={lockTrigger}
+          onClose={() => setLockHelp(false)}
+          placement="above"
+          className={css.timeMenu}
+        >
+          <p className={css.lockExplanation}>
+            {item.day !== item.endDay
+              ? "这是跨日项目，不能在单日滑轨直接改动。"
+              : item.fixedTime
+                ? "这是固定时间安排，可能关联已订活动或交通。"
+                : "项目已有预约或出票状态，受到保护。"}{" "}
+            请点击项目卡，在行程详情核对后调整；不会自动取消真实预约。普通手动锁定可再点击锁图标解除。
+          </p>
+        </PlannerPopover>
+      )}
       {open && (
         <PlannerPopover
           id={`time-${item.id}`}

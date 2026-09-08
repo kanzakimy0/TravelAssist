@@ -123,11 +123,16 @@ export function useBrowserTrip({
       setError("无法读取浏览器存储，当前行程未改变。");
     }
   }
-  function save(confirmedOverwrite = false, prepared?: TripSnapshot) {
-    if (!ready || mode !== "detail") return false;
+  function save(
+    confirmedOverwrite = false,
+    prepared?: TripSnapshot,
+    recommendation = false,
+  ) {
+    if (!ready || (mode !== "detail" && !recommendation)) return false;
     if (
       saved &&
-      saved.snapshot.currentPlanId !== trip.ui.currentPlanId &&
+      saved.snapshot.currentPlanId !==
+        (prepared?.currentPlanId ?? trip.ui.currentPlanId) &&
       !confirmedOverwrite
     ) {
       setOverwritePending(true);
@@ -282,6 +287,17 @@ export function useBrowserTrip({
     enterDetail,
     openSaved,
     save,
+    saveRecommendation: (planId: string, overwrite: boolean) => {
+      if (!trip.plans.some((p) => p.id === planId)) return false;
+      const chosen = {
+        ...trip,
+        ui: { ...trip.ui, currentPlanId: planId, focusedDay: 1 },
+      };
+      if (!save(overwrite, tripSnapshot(chosen, draft), true)) return false;
+      onLeave?.();
+      router.push(detailUrl(1), { scroll: false });
+      return true;
+    },
     savePrepared: (
       nextTrip: TripState,
       nextDraft: DetailDraftState,

@@ -237,7 +237,7 @@ test("confirmed hotel hides recommended area and remains protected", () => {
     !visibleAreas(s).some((a) => a.type === "hotelArea" && a.day === hotel.day),
   );
 });
-test("recommendation structure stays frozen except approved artwork and the detail booking footer", async () => {
+test("recommendations preserve artwork, order and selection with user-authorized save/restore actions", async () => {
   const file = "src/features/planner/components/plan-recommendation-list.tsx";
   const base = execFileSync("git", ["show", "4c1d9bb:" + file], {
     encoding: "utf8",
@@ -250,15 +250,19 @@ test("recommendation structure stays frozen except approved artwork and the deta
     normalize(current.match(/<svg[\s\S]*?<\/svg>/)[0]),
     normalize(svg),
   );
-  // The user separately authorized replacing thumbnails with five existing AI
-  // illustrations. Freeze everything else, including selection and card order.
-  const withoutArtwork = current
-    .split("\nfunction PlanThumbnail(")[0]
-    .replace(/^import \{ planArtwork \}.*\n/m, "")
-    .replace(/^import \{ PlannerArtworkImage \}.*\n/m, "")
-    .replace(/\{planArtwork\(plan\.id\)\s*\?\s*\([\s\S]*?\)\s*\}/, svg)
-    .replace("到详情管理预约", "完成预约");
-  assert.equal(normalize(withoutArtwork), normalize(base));
+  // TASK-PLANNER-TRACK-A explicitly authorizes sibling action buttons and badge.
+  for (const unchanged of [
+    "plans.map((plan, index)",
+    "onSelect(plan)",
+    "{plan.name}",
+    "{plan.summary}",
+    "planArtwork(plan.id)",
+  ])
+    assert.ok(current.includes(unchanged), unchanged);
+  assert.match(current, /<article/);
+  assert.match(current, /onSavePlan\(plan.id\)/);
+  assert.match(current, /onRestorePlan\(plan.id\)/);
+  assert.match(current, /已修改/);
 });
 test("v05 does not reintroduce legacy conditions entry", async () => {
   for (const file of [

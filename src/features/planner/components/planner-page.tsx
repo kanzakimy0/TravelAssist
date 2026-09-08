@@ -49,6 +49,7 @@ import {
   previewScheduleAdjustment,
 } from "../model/schedule-check";
 import { useBrowserTrip } from "./use-browser-trip";
+import { restoreRecommendation } from "../model/recommendation-actions";
 import { PlannerOverlay } from "./planner-overlay";
 import localSave from "../browser-trip.module.css";
 import projectStyles from "../detail-map-inspector.module.css";
@@ -134,6 +135,11 @@ export function PlannerPage() {
   const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
   const [addOpen, setAddOpen] = useState(false);
   const [completionOpen, setCompletionOpen] = useState(false);
+  const [planAction, setPlanAction] = useState<{
+    id: string;
+    kind: "save" | "restore";
+  } | null>(null);
+  const [planOverwrite, setPlanOverwrite] = useState(false);
   const [flightOpen, setFlightOpen] = useState<string | null>(null);
   const [addType, setAddType] = useState<DetailItemKind>("attraction");
   const [replacementId, setReplacementId] = useState<string | null>(null);
@@ -509,6 +515,11 @@ export function PlannerPage() {
 
   const plannerRight = (
     <PlannerRightPanel
+      onSavePlan={(id) => {
+        setPlanOverwrite(false);
+        setPlanAction({ id, kind: "save" });
+      }}
+      onRestorePlan={(id) => setPlanAction({ id, kind: "restore" })}
       plans={trip.plans.map((candidate) => presentationPlan(trip, candidate))}
       plan={datedPlan}
       state={trip}
@@ -608,7 +619,7 @@ export function PlannerPage() {
         disabled={!browserTrip.ready}
         onClick={() => browserTrip.requestLeave()}
       >
-        ← 返回推荐
+        ← 返回推荐及增删项目
       </button>
       <button
         type="button"
@@ -917,6 +928,85 @@ export function PlannerPage() {
             : undefined
         }
       />
+
+      {mode === "planner" && planAction && (
+        <PlannerOverlay
+          kind="quick"
+          title={
+            planAction.kind === "restore"
+              ? "还原推荐方案？"
+              : "保存方案并进入详情"
+          }
+          onClose={() => setPlanAction(null)}
+          className={localSave.planConfirmation}
+        >
+          <div className={localSave.confirm}>
+            <p>
+              <strong>
+                {trip.plans.find((p) => p.id === planAction.id)?.name}
+              </strong>
+            </p>
+            <p>
+              {planAction.kind === "restore"
+                ? "还原此方案的原始推荐路线、项目时间、备用项目、交通修改及名称。其他方案、个人偏好、独立新增的详情项目与已保存版本不变。此操作不取消真实预约；请确认是否放弃此方案的路线修改。"
+                : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
+            </p>
+            {planAction.kind === "save" &&
+              browserTrip.saved &&
+              browserTrip.saved.snapshot.currentPlanId !== planAction.id && (
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={planOverwrite}
+                    onChange={(e) => setPlanOverwrite(e.target.checked)}
+                  />
+                  替换此浏览器保存的另一方案（目前只保留一份）
+                </label>
+              )}
+            {planAction.kind === "save" && browserTrip.error && (
+              <p role="alert" className={localSave.error}>
+                {browserTrip.error}
+              </p>
+            )}
+            <footer>
+              <button type="button" onClick={() => setPlanAction(null)}>
+                取消
+              </button>
+              <button
+                type="button"
+                className={localSave.primary}
+                disabled={
+                  !browserTrip.ready ||
+                  (planAction.kind === "save" &&
+                    Boolean(
+                      browserTrip.saved &&
+                      browserTrip.saved.snapshot.currentPlanId !==
+                        planAction.id,
+                    ) &&
+                    !planOverwrite)
+                }
+                onClick={() => {
+                  if (planAction.kind === "restore") {
+                    resetProjectSelection();
+                    dispatchTrip({
+                      type: "restoreBrowserTrip",
+                      trip: restoreRecommendation(trip, planAction.id),
+                    });
+                    setPlanAction(null);
+                  } else if (
+                    browserTrip.saveRecommendation(planAction.id, planOverwrite)
+                  )
+                    setPlanAction(null);
+                }}
+              >
+                {planAction.kind === "restore"
+                  ? "确认还原"
+                  : "保存到浏览器并进入详情"}
+              </button>
+            </footer>
+          </div>
+        </PlannerOverlay>
+      )}
 
       {mode === "detail" && completionOpen && (
         <TripCompletionDialog

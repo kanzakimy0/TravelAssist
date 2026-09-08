@@ -40,7 +40,17 @@ export function PlannerRouteBoard({
       className={css.workspace}
       data-planner-route-board={movement ? "movement" : "itinerary"}
     >
-      <div className={css.days} data-time-bands data-compare={days.length > 1}>
+      <div
+        className={css.days}
+        data-time-bands
+        data-compare={days.length > 1}
+        data-track-mode={!movement ? "independent" : undefined}
+        style={
+          !movement
+            ? { gridTemplateColumns: `repeat(${days.length}, minmax(0, 1fr))` }
+            : undefined
+        }
+      >
         {days.map((day) => {
           const all = plannerTimeline(state, day.day).planned;
           const legs = plannerMovementLegs(plan, day.day);

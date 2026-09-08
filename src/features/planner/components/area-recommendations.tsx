@@ -1,4 +1,4 @@
-import type { Dispatch } from "react";
+import { useState, type Dispatch } from "react";
 import { secondaryPanelModel } from "../model/secondary-panels";
 import type { TripAction, TripState } from "../model/trip-model";
 import { useWorkspaceCapabilities } from "./workspace-capabilities";
@@ -12,115 +12,89 @@ export function AreaRecommendations({
   dispatch: Dispatch<TripAction>;
 }) {
   const model = secondaryPanelModel(state);
+  const [chosenAreas, setChosenAreas] = useState<Record<string, string>>({});
   const { canBook, enterDetail } = useWorkspaceCapabilities();
   if (state.ui.rangeMode === "day") {
     const row = model.rows[0];
-    const hotel = model.areas.find((a) => a.type === "hotelArea"),
-      food = model.areas.find((a) => a.type === "foodArea");
     const inspect = (id: string) =>
       dispatch({ type: "inspect", id, level: "area" });
     return (
       <div
-        className={ui.dailyPanels}
+        className={`${ui.dailyPanels} ${ui.mealStayCards}`}
         data-area-recommendations
         data-range-mode="day"
       >
-        <section>
-          <header>
-            <small>
-              D{row.day.day} · {row.day.city}
-            </small>
-            <h3>沿途三餐</h3>
-            <span>
-              已选{" "}
-              {
-                row.mealSlots.filter(
-                  (s) => s.item && !s.item.planningPlaceholder,
-                ).length
-              }
-              /3
-            </span>
-          </header>
-          <div className={ui.dailyMeals}>
-            {row.mealSlots.map(({ slot, item }) => (
+        {(["breakfast", "lunch", "dinner", "hotel"] as const).map((slot) => {
+          const candidates = state.areas.filter(
+            (a) =>
+              a.day === row.day.day &&
+              a.type === (slot === "hotel" ? "hotelArea" : "foodArea"),
+          );
+          const key = `${model.plan.id}:${row.day.day}:${slot}`;
+          const selected =
+            candidates.find((a) => a.id === chosenAreas[key]) ?? candidates[0];
+          const item =
+            slot === "hotel"
+              ? row.stays.find((i) => !i.planningPlaceholder)
+              : row.mealSlots.find((s) => s.slot === slot)?.item;
+          return (
+            <section key={slot} data-area-slot={slot}>
+              <header>
+                <small>
+                  D{row.day.day} · {row.day.city}
+                </small>
+                <h3>
+                  {
+                    {
+                      breakfast: "早餐",
+                      lunch: "午餐",
+                      dinner: "晚餐",
+                      hotel: "住宿",
+                    }[slot]
+                  }
+                </h3>
+              </header>
+              <strong>
+                {item && !item.planningPlaceholder ? item.title : "地点待确定"}
+              </strong>
+              <div className={ui.areaChoices} aria-label={`${slot}可选区域`}>
+                {candidates.map((area) => (
+                  <button
+                    key={area.id}
+                    type="button"
+                    aria-pressed={selected?.id === area.id}
+                    onClick={() =>
+                      setChosenAreas((current) => ({
+                        ...current,
+                        [key]: area.id,
+                      }))
+                    }
+                  >
+                    {area.name}
+                  </button>
+                ))}
+                {!candidates.length && (
+                  <small>当前没有已核对的可选区域，去详情补充。</small>
+                )}
+              </div>
+              <p>
+                {selected?.reason ??
+                  (slot === "hotel"
+                    ? "优先衔接当天终点和次日出发；返程日按需安排。"
+                    : "在相邻行程附近安排用餐，减少折返。具体地区待核对。")}
+              </p>
               <button
-                key={slot}
                 type="button"
+                title={selected?.access ?? "交通与营业时间待核对"}
                 onClick={() =>
-                  item && !item.planningPlaceholder
-                    ? dispatch({ type: "select", id: item.id })
-                    : food
-                      ? inspect(food.id)
-                      : enterDetail()
+                  selected ? inspect(selected.id) : enterDetail()
                 }
               >
-                <b>{{ breakfast: "早", lunch: "午", dinner: "晚" }[slot]}</b>
-                <span>
-                  <strong>
-                    {item && !item.planningPlaceholder ? item.title : "待安排"}
-                  </strong>
-                  <small>{food?.name ?? "在行程详情补充地区"}</small>
-                </span>
-                <span>→</span>
+                {selected ? "查看区域与理由 →" : "到详情补充 →"}
               </button>
-            ))}
-          </div>
-        </section>
-        <section>
-          <header>
-            <small>落脚点 · 不绕远</small>
-            <h3>当晚住宿</h3>
-          </header>
-          <strong>
-            {row.stays
-              .filter((i) => !i.planningPlaceholder)
-              .map((i) => i.title)
-              .join("、") ||
-              hotel?.name ||
-              "住宿区域待选择"}
-          </strong>
-          <p>
-            {hotel?.reason ??
-              (row.day.day === model.plan.days.length
-                ? "返程日按需安排，不自动添加一晚住宿。"
-                : "先确定次日出发点，再选当晚落脚区域。")}
-          </p>
-          <div className={ui.dailyTags}>
-            <span>衔接当天终点</span>
-            <span>核对次日出发</span>
-            <span>已选住宿受保护</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => (hotel ? inspect(hotel.id) : enterDetail())}
-          >
-            {hotel ? "查看住宿区域" : "到详情核对住宿"} →
-          </button>
-        </section>
-        <section>
-          <header>
-            <small>区域选择 · 理由与取舍</small>
-            <h3>为什么推荐这里</h3>
-          </header>
-          <dl className={ui.dailyFacts}>
-            <div>
-              <dt>交通衔接</dt>
-              <dd>{hotel?.access ?? food?.access ?? "具体接驳时间待核对"}</dd>
-            </div>
-            <div>
-              <dt>用餐便利</dt>
-              <dd>{food?.reason ?? "优先现有路线附近，避免专程折返"}</dd>
-            </div>
-            <div>
-              <dt>需要权衡</dt>
-              <dd>{hotel?.tradeoff ?? "安静程度、预算与换乘便利需共同考虑"}</dd>
-            </div>
-          </dl>
-          <button type="button" onClick={enterDetail}>
-            到详情选择酒店与餐厅 →
-          </button>
-          <small>区域建议非实时评价；此处不预约、不显示虚构报价。</small>
-        </section>
+            </section>
+          );
+        })}
       </div>
     );
   }
