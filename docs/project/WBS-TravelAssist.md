@@ -2,9 +2,9 @@
 
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
-- 8.2 / B / #200：待审查。#186 已合并且七项基础路径通过复检；从最新 origin/develop `eccfd9e` 创建独立 Worktree，分支 `feature/b-user-profile-schema`。
-- 仅新增 profiles / profile_settings / emergency_contacts；SQL 唯一历史、owner-only RLS、Drizzle mirror、真实 generated types。25 项真实数据库测试、507 项全仓 Node 测试、lint/typecheck/无 Secret build 与客户端泄漏检查通过；27 份既有格式问题保持原样。
-- Result：`docs/tasks/RESULT-TASK-016-b-user-profile-schema.md`。实现 Commit `27a7ba8ca675235aed6f5aacf8431511edf727bb`；[Draft PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209) → develop，Issue #200 保持 Open；不自动合并，不将 8.2 标为已完成。
+- 8.2 / B / #200：已完成（用户最终验收通过且 PR #209 已合入 develop）。首次基线 `eccfd9e`；分支 `feature/b-user-profile-schema`；合并前整合最新 develop `dcb7cbe`，只解决 WBS 顶部记录冲突，完整保留双方记录。
+- 仅新增 profiles / profile_settings / emergency_contacts；SQL 唯一历史、owner-only RLS、Drizzle mirror、真实 generated types。25 项真实数据库测试与真实类型再生成比对通过；整合后 565 项全仓 Node 测试、lint/typecheck/无 Secret build 与 31 个客户端 JS 泄漏检查通过。已验收 DB 实现不变；27 份既有格式问题保留。
+- Result：`docs/tasks/RESULT-TASK-016-b-user-profile-schema.md`。实现 `27a7ba8`；整合复验 `0eab355`；[PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209) 已按用户明确授权合并，merge `d118d4d0ad5b3b031e1bca6121f36b555c046216`，合并树与复验树一致；Issue #200 Closed。
 - 8.1/8.4 及既有 UI 已完成状态不变；Auth / 8.3 / 5.3、Preference、Companion、Trip、POI 和其他 Task 均未启动。下方 8.2 可开始/未实施描述为启动前历史，以本节和当前追踪行为准。
 
 ## 当前整合发布（2026-09-08）
@@ -469,7 +469,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-TRIP-PREPARATION-A | 4.42–4.45 | A | 已完成（本地Mock） | #205 | `docs/tasks/TASK-trip-preparation.md` | `codex/trip-completion-flight-workspace` | `8e4a497`；整合 `13a316a` | #206 / #211 Merged |
 | TASK-PLANNER-TRACK-A | 4.46 | A | 已完成（本地Mock） | #210 | `docs/tasks/TASK-planner-track-actions.md` | `codex/planner-independent-tracks-plan-actions` | `5879444`；整合 `7c4bcbe`；合入 `13a316a` | #211 Merged |
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
-| TASK-016-B | 8.2 | B | 待审查（实现及真实 Local 验证通过） | #200 | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 基线 `eccfd9e`；实现 `27a7ba8` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Draft |
+| TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
@@ -747,7 +747,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖               | 状态   |
 | ------ | ----------------------------- | ------ | ------ | ------------------ | ------ |
 | 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 已完成（TASK-015基础范围；#186合并且运行验收通过） |
-| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 待审查（TASK-016-B / #200；真实 Schema/RLS 验证通过） |
+| 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 已完成（TASK-016-B；用户验收通过；#209合并；#200关闭） |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 未开始 |
 | 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 已完成（#186已合并；SQL唯一历史与空库重建验收） |
 | 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |

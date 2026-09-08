@@ -2,21 +2,32 @@
 
 ## Status
 
-Implementation and Local validation **PASS**; delivered in [Draft PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209). WBS 8.2 is **待审查**, not finally completed. No merge or user-acceptance claim. Full-format baseline exceptions are reported below, not counted as PASS.
+**Completed. WBS 8.2 USER ACCEPTANCE: PASS.** The user explicitly accepted the result and authorized merging [PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209), now merged into develop. WBS 8.2 is **已完成**. Full-format baseline exceptions remain reported below, not counted as PASS.
+
+## Final user acceptance / merge closeout — 2026-09-08
+
+- Accepted delivery: `2878399fdb708bc418b398844b3e8d22002710c0`. Final acceptance re-ran 507 full-suite tests and 25 actual Local database tests, lint/typecheck/build and 30 client JS checks, all passing. Fresh Local type generation matched the committed file exactly without writing it; all synthetic rows rolled back and Local stopped. No db:reset during acceptance or merge closeout.
+- Before merge, develop advanced to `dcb7cbefcb53c2079351ab5f4b2cf6c33883741c`. Integration commit `0eab355e7344223d101eaa73b3d70f4df7d52885` retained both WBS histories; WBS was the sole conflict. Accepted DB schema/migration/types/tests were byte-identical to the accepted delivery. Planner/UI and other Owner files match the new develop base, not newly authored TASK-016 changes.
+- Actual integration validation: full Node suite **565/565**, zero failures/skips; lint **0**, typecheck **0**, build **0** with no DB credentials; 21 generated pages; client leakage check **31** actual JS chunks PASS; diff-check PASS. The extra tests/chunk come from already merged upstream UI work. No need to repeat the unchanged database runtime; the final-acceptance 25/25 evidence remains applicable.
+- [PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209) merged at **2026-09-08T10:03:45Z**. Merge commit: **d118d4d0ad5b3b031e1bca6121f36b555c046216**. Verified the integrated TASK-016 head is an ancestor of origin/develop and the merge tree exactly equals the tested integration tree.
+- The initial post-push head guard stopped before changing Draft while GitHub metadata had not yet caught up. A fresh Git/GitHub cross-check confirmed the exact integrated head and CLEAN/MERGEABLE state before the authorized ready/merge operation. No force push or unrelated PR merge was requested.
+- WBS 8.2 updated from 待审查 to 已完成 only after verified merge and explicit user acceptance. Issue #200 closed as completed. TASK-017 / Authentication Core and all unrelated tasks were not started.
+- Main `F:\TravelAssist` was safely fast-forwarded to merged develop for the two-document closeout; original untracked README.txt, asset-contact-sheet.jpg and publish_assets.py remain preserved. Runtime worktrees and local data volumes were retained.
+- Additional real logs in `F:\TravelAssist-task016-evidence\`: merge-integration-tests.log, merge-integration-lint.log, merge-integration-typecheck.log, merge-integration-build.log. The earlier command logs below remain historical evidence, not overwritten.
 
 ## Prerequisite / source / tracking
 
-- Owner B; WBS 8.2; [Issue #200](https://github.com/kanzakimy0/TravelAssist/issues/200), Open.
+- Owner B; WBS 8.2; [Issue #200](https://github.com/kanzakimy0/TravelAssist/issues/200), Closed / completed.
 - [PR #186](https://github.com/kanzakimy0/TravelAssist/pull/186) was verified MERGED before creating the implementation branch; merged at 2026-09-08T08:06:08Z, commit `24dff4e3b74dfe01c369d2c149d37eba86ad6472`.
-- Latest fetched origin/develop base: **eccfd9e81a66a099f73eea0154b329db2025695e**. Verified the merge is an ancestor and all seven required foundation paths exist. Refetched before publication: base unchanged.
+- Implementation-start origin/develop base: **eccfd9e81a66a099f73eea0154b329db2025695e**. Verified the prerequisite merge is an ancestor and all seven required foundation paths exist. Initial publication used this unchanged base; final integration is recorded above.
 - Branch: `feature/b-user-profile-schema`; no duplicate implementation branch/PR existed at kickoff.
-- Implementation commit: `27a7ba8ca675235aed6f5aacf8431511edf727bb`; [Draft PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209), `feature/b-user-profile-schema` → `develop`, Open / Draft / unmerged. Subsequent tracking-only commit is visible in the PR head.
+- Implementation commit: `27a7ba8ca675235aed6f5aacf8431511edf727bb`; [PR #209](https://github.com/kanzakimy0/TravelAssist/pull/209), `feature/b-user-profile-schema` → `develop`, Merged. It remained Draft until the user's explicit acceptance and merge authorization.
 - Read the complete remote Task, Codex command and business schema roadmap on `origin/task/b-user-profile-schema`; read Issue #200 and all mandated architecture/UI/WBS/TASK-015 documents from the merged develop state. The task spec remains on its official spec branch, not overwritten by this result.
 - Read the installed Next.js 16.3.4 client-boundary guides before code changes. No Next.js API/UI changes.
 
 ## Workspace / environment
 
-- Original `F:\TravelAssist` remains develop at `b77e745342a91724c869887c1355a105c2b6397d`. README.txt, asset-contact-sheet.jpg and publish_assets.py were not edited, deleted or staged.
+- During implementation, original `F:\TravelAssist` remained develop at `b77e745342a91724c869887c1355a105c2b6397d`. It was subsequently fast-forwarded on user request and again after PR merge. README.txt, asset-contact-sheet.jpg and publish_assets.py were not edited, deleted or staged.
 - Execution Worktree: `/home/oydl/TravelAssist-task016-b`, in `TravelAssist-Ubuntu` / Ubuntu 24.04.4 WSL2. Its independent common Git directory is `/home/oydl/.local/share/travelassist-db-acceptance/repository-bundle.git`.
 - Publication Worktree: `F:\TravelAssist-task016-b`, checked out from a verified bundle of the exact tested implementation commit. Publication reused Windows Git credentials; no credentials were copied into WSL. Original develop Worktree remained untouched.
 - The Worktree was created from the verified latest origin/develop using a verified incremental Git bundle, not from an unmerged foundation branch or cherry-picks. Previous runtime-acceptance Worktrees remain untouched.
@@ -106,8 +117,8 @@ All required Personal Center routes appear in the successful build, including ho
 - No Auth/Login/Session/Cookie, Profile API, Preference, Companion, Trip, POI, storage upload, notification, account deletion/export or UI implementation. No cloud/Staging/Production connection.
 - Language/timezone/country/currency checks enforce bounded standard-shaped identifiers, not a frozen registry of all currently assigned codes. Full locale/IANA/number validation and fallback resolution belong to future API work. Gender choices and initialization/signup strategy remain unfrozen.
 - This PR is additive but introduces private grants/policies and cascade behavior that require review. A shared/deployed migration is immutable; later fixes require a new forward migration, not editing this history. Do not reset a database containing valuable data.
-- WBS 8.2 transitions 进行中 → 待审查. 8.1/8.4 and all existing completed UI WBS remain unchanged; 8.3/5.3 and every unrelated task remain unstarted/unchanged.
-- Publication uses [skip ci] because the existing feature-push workflow attempts automatic PR merge. Create and verify Draft explicitly; skipped remote automation is not CI test evidence. No workflow edits, force push or automatic merge.
+- WBS 8.2 transitions 进行中 → 待审查 → 已完成, the final transition only after user acceptance and PR merge. 8.1/8.4 and all existing completed UI WBS remain unchanged; 8.3/5.3 and every unrelated task remain unstarted/unchanged by this task.
+- Initial and integration publication used [skip ci] because the existing feature-push workflow attempts automatic PR merge. Draft was explicitly verified and retained until user authorization; skipped remote automation is not CI test evidence. No workflow edits or force push; the final merge was explicitly authorized by the user.
 
 ## Evidence and reproduction
 
@@ -138,4 +149,4 @@ npm run db:stop
 
 Implementation follows the repository's frozen standards, with current primary references for [Supabase RLS grants/policies](https://supabase.com/docs/guides/database/postgres/row-level-security), [Drizzle Supabase mappings](https://orm.drizzle.team/docs/rls), and [PostgreSQL row security](https://www.postgresql.org/docs/17/ddl-rowsecurity.html).
 
-Stop after TASK-016-B delivery; await user acceptance. Do not start Authentication Core or TASK-017.
+TASK-016-B is accepted and merged. Stop after this closeout; do not start Authentication Core or TASK-017.
