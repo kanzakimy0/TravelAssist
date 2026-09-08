@@ -19,9 +19,12 @@ Draft PR and human acceptance are not a develop merge.
 
 ## Security Scan
 
-- tracked files scanned: pre-document snapshot 891 text of 1,956 tracked files;
-  all new implementation files staged before scan; final publication rerun below.
-- history commits/objects scanned: 623 / 6,442; 2,754 text objects scanned.
+- tracked files scanned: **895 text of 1,960 tracked files**, including all 15
+  implementation/tracking files. Earlier report snapshot is explicitly dated.
+- history commits/objects scanned: **624 / 6,468; 2,770 text objects scanned**
+  after implementation commit `2969660`; earlier report baseline 623 / 6,442.
+  A documentation-only publication commit necessarily adds reachable objects;
+  its subsequent scan outcome is also recorded on the Issue/PR.
 - binary/oversize skipped: tracked 1,062 / 3; history 1,086 / 4.
 - findings by category: zero unresolved. 15 current / 76 historical reviewed
   fixture/prose occurrences; exact breakdown and exclusions in
@@ -79,8 +82,10 @@ Draft PR and human acceptance are not a develop merge.
 
 - Issue: [#228](https://github.com/kanzakimy0/TravelAssist/issues/228), keep Open.
 - Branch: `codex/a-global-security-baseline` → `develop`.
-- Commit: publication record pending.
-- Draft PR: publication record pending; must remain Draft, no auto merge.
+- Commit: implementation `296966016faf131b4a8cc1d008586dda965f1987`;
+  following tracking-only commit records this PR without changing the controls.
+- Draft PR: [#231](https://github.com/kanzakimy0/TravelAssist/pull/231),
+  Open / Draft → develop; no auto merge.
 - WBS updated: 9.10 进行中 → **待审查**, not 已完成.
 - Task: `docs/tasks/TASK-020-a-global-security-baseline.md`.
 - Baseline/report: `docs/security/secret-scanning-baseline.md`,

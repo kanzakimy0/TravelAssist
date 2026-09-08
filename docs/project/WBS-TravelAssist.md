@@ -2,7 +2,7 @@
 
 ## TASK-020-A Secret 扫描 / 全局安全基线（2026-09-09）
 
-- 9.10 / A / [Issue #228](https://github.com/kanzakimy0/TravelAssist/issues/228)：进行中 → **待审查**，非已完成。独立干净 Worktree / `codex/a-global-security-baseline`，基线与最终复核 develop 均为 `74bc3cccf8bcfd603706e2b96d4072076191f308`。实现 Commit / Draft PR 见 Result 发布记录；保持 Draft，Issue Open，不自动合并。
+- 9.10 / A / [Issue #228](https://github.com/kanzakimy0/TravelAssist/issues/228)：进行中 → **待审查**，非已完成。独立干净 Worktree / `codex/a-global-security-baseline`，基线与最终复核 develop 均为 `74bc3cccf8bcfd603706e2b96d4072076191f308`。实现 `296966016faf131b4a8cc1d008586dda965f1987`；[Draft PR #231](https://github.com/kanzakimy0/TravelAssist/pull/231) → develop。保持 Draft，Issue Open，不自动合并。
 - 已建立 tracked / reachable history / browser 产物扫描、精确到路径/类别/fingerprint/范围/到期日的 allowlist、AST server-only / public env / 日志边界、五个模拟服务端凭据的真实生产构建验证及只读 CI gate。疑似值从未原样输出；不访问凭据库，不轮换、不重写历史。
 - 29 专项 / 660 全仓 Node tests、lint/typecheck/build/bundle/diff 通过。完整格式检查28个既有文档失败，与 develop blob 一致，新增改动格式通过。大文件/二进制明确列为未扫描范围，不声称零风险；真实凭据确认数0。
 - TASK019 实际 Draft #227 / B Draft #221 / Route Draft #230 均未合并，未叠加任何并行实现；原用户 Planner 脏工作区保持原样。9.9/9.11/10.x 不变。

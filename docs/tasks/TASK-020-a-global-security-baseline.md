@@ -20,7 +20,8 @@
 - Implementation base: `74bc3cccf8bcfd603706e2b96d4072076191f308`
 - Implementation branch: `codex/a-global-security-baseline`
 - Result: `docs/tasks/RESULT-TASK-020-a-global-security-baseline.md`
-- Implementation commit / Draft PR: recorded in Result after publication.
+- Implementation commit: `296966016faf131b4a8cc1d008586dda965f1987`.
+- Draft PR: [#231](https://github.com/kanzakimy0/TravelAssist/pull/231), Open / Draft → develop.
 - WBS 9.10: 进行中 → 待审查; not 已完成. Issue #228 stays Open.
 - No auto-merge. User acceptance and develop merge are still required.
 
