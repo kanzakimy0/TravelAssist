@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-018-B Authentication Core（2026-09-08）
+
+- 8.3 / B / #214：待审查；执行基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；独立 F 盘承载 WSL Worktree，分支 `feature/b-authentication-core`。正式开始时由未开始改为进行中，完成 Local 技术验证后转待审查，未标记已完成。
+- Supabase SSR / Next 16 Proxy、Cookie 刷新、可信 server user guard、邮箱密码、手机 OTP 自动注册、邮箱 OTP 禁止自动注册、找回密码、Google/Apple PKCE contract 与安全 returnTo 已实现。真实 Auth Runtime 16/16、既有 TASK-016 DB Runtime 25/25、全仓 Node 574/574、lint/typecheck/build 和 31 个生产客户端 JS 检查通过。完整格式检查仍有 27 份逐字节与基线一致的历史文档失败，单独保留。
+- Result：`docs/tasks/RESULT-TASK-018-b-authentication-core.md`。仅交付 Draft PR，Issue #214 保持 Open；等待用户验收，不自动合并。
+- 8.1 / 8.2 / 8.4 与既有 UI 已完成状态不变；5.3 / 5.15 / TASK-017-B 及其他后续 Task 未启动。下方此前 Auth 未启动描述为历史，以本节与当前 8.3 行为准。
+
 ## TASK-016-B User / Profile Schema（2026-09-08）
 
 - 8.2 / B / #200：已完成（用户最终验收通过且 PR #209 已合入 develop）。首次基线 `eccfd9e`；分支 `feature/b-user-profile-schema`；合并前整合最新 develop `dcb7cbe`，只解决 WBS 顶部记录冲突，完整保留双方记录。
@@ -470,6 +477,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-PLANNER-TRACK-A | 4.46 | A | 已完成（本地Mock） | #210 | `docs/tasks/TASK-planner-track-actions.md` | `codex/planner-independent-tracks-plan-actions` | `5879444`；整合 `7c4bcbe`；合入 `13a316a` | #211 Merged |
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
+| TASK-018-B | 8.3 | B | 待审查（Local 技术验收通过；待用户验收） | #214 Open | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现提交见 Result | Draft PR 待发布；不得自动合并 |
 
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
@@ -748,7 +756,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | ----------------------------- | ------ | ------ | ------------------ | ------ |
 | 8.1    | DB / ORM / Migration 总体方案 | A      | P0     | 2.6                | 已完成（TASK-015基础范围；#186合并且运行验收通过） |
 | 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 已完成（TASK-016-B；用户验收通过；#209合并；#200关闭） |
-| 8.3    | Authentication 核心           | B      | P0     | 8.1                | 未开始 |
+| 8.3    | Authentication 核心           | B      | P0     | 8.1                | 待审查 |
 | 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 已完成（#186已合并；SQL唯一历史与空库重建验收） |
 | 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 未开始 |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 未开始 |
