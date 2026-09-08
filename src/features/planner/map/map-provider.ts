@@ -6,6 +6,7 @@ import type {
 import type { FeatureCollection, LineString, Point, Polygon } from "geojson";
 import type { Coordinates, MapView } from "../model/trip-model";
 import { destinationArtwork } from "../data/planner-artwork";
+import { createBaseGeographyToggle } from "./base-geography";
 
 type Properties = Record<string, string | number | boolean>;
 export type Collection = FeatureCollection<
@@ -348,6 +349,7 @@ export function bindMap(port: MapPort, reducedMotion: () => boolean) {
 }
 export type MapSession = {
   update: (view: MapView) => void;
+  setTerrain: (visible: boolean) => void;
   destroy: () => void;
 };
 export async function mountMapbox(
@@ -380,6 +382,8 @@ export async function mountMapbox(
     map,
     () => matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
+  const toggleGeography = createBaseGeographyToggle(map);
+  let terrainVisible = true;
   let latest: MapView | null = null,
     ready = false,
     destroyed = false;
@@ -412,6 +416,7 @@ export async function mountMapbox(
     if (destroyed) return;
     clearTimeout(timer);
     ready = true;
+    toggleGeography(terrainVisible);
     if (latest) updateView(latest);
     status("Mapbox 底图 · 行程、价格及预约为示例");
   });
@@ -495,6 +500,10 @@ export async function mountMapbox(
     map.moveLayer("landmark-artwork");
   }
   return {
+    setTerrain(visible) {
+      terrainVisible = visible;
+      if (ready && !destroyed) toggleGeography(visible);
+    },
     update(view) {
       latest = view;
       if (ready && !destroyed) updateView(view);

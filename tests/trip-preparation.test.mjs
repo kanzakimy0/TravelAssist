@@ -165,11 +165,13 @@ test("no-flight is a deliberate alternative to missing flight information", () =
       .some((i) => i.id === "flight-missing"),
   );
   assert.equal(
-    prep.preparationIssues(s, [], {
-      ...prep.emptyPreparation(),
-      noFlight: true,
-    }).length,
-    0,
+    prep
+      .preparationIssues(s, [], {
+        ...prep.emptyPreparation(),
+        noFlight: true,
+      })
+      .some((i) => i.id === "flight-missing"),
+    false,
   );
 });
 const person = {

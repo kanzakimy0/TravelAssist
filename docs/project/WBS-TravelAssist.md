@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
+
+- 用户批准修复 A 范围审计的全部七项确认问题；Issue [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)。基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `codex/a-planner-audit-fixes`。
+- 4.2 / 4.25 / 4.26 / 4.32 / 4.42 / 4.46：历史已合并成果不回退；本次修复待审查，未合并不能记作新的已完成验收。631/631 tests、lint/typecheck/build、diff 检查通过；28 份历史格式问题与基线一致，未新增。
+- 覆盖保存基线、向导/旧保存冲突、还原日期范围、交通冲突检查、取消后确认解除固定、完成检查缺失餐宿、真实 Mapbox 图层。保持布局和 B 任务边界，不接真实 AI/预约/云保存。
+- Task：`docs/tasks/TASK-planner-audit-fixes.md`；Result：`docs/tasks/RESULT-planner-audit-fixes.md`。Commit / Draft PR：PENDING；不自动合并。
+
 ## TASK-018-B Authentication Core（2026-09-08）
 
 - 8.3 / B / #214：已完成；用户明确授权“开始现场验收，验收通过后自动合并并更新WBS”，本轮真实验收通过后 PR #218 已合入 develop。执行基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；独立 F 盘承载 WSL Worktree，分支 `feature/b-authentication-core`。状态按未开始 → 进行中 → 待审查 → 验收且合并后已完成推进。
