@@ -16,6 +16,7 @@ import { PlannerIcon } from "./planner-icon";
 import { BulkBookingButton } from "./bulk-booking";
 import type { BookingReview } from "../model/bulk-booking";
 import css from "../detail-sidebar-fixed.module.css";
+import type { Preparation } from "../model/trip-preparation";
 import { currentPlan, isoDay } from "../model/trip-model";
 import type { previewScheduleAdjustment } from "../model/schedule-check";
 const yen = new Intl.NumberFormat("ja-JP", {
@@ -43,6 +44,11 @@ export function DetailSidebar({
   overviewDays,
   onOverviewDay,
   onMissing,
+  preparation,
+  onFlight,
+  onNoFlight,
+  onComplete,
+  completionStatus,
 }: {
   state: TripState;
   summary: DetailDaySummary;
@@ -62,6 +68,11 @@ export function DetailSidebar({
   overviewDays?: { summary: DetailDaySummary; items: DetailRailItem[] }[];
   onOverviewDay?: (day: number) => void;
   onMissing: (type: "hotel" | "restaurant") => void;
+  preparation: Preparation;
+  onFlight: (id?: string) => void;
+  onNoFlight: (value: boolean) => void;
+  onComplete: () => void;
+  completionStatus: string;
 }) {
   const adjustTrigger = useRef<HTMLButtonElement>(null);
   const allTrigger = useRef<HTMLButtonElement>(null);
@@ -232,6 +243,50 @@ export function DetailSidebar({
           <small>本地模拟建议，没有实时路况或库存数据。</small>
           <p>前三项为检查状态；待预约为独立待办，可能重复计数。</p>
         </FixedSection>
+        {overviewDays && (
+          <FixedSection title="航班" id="flights">
+            {preparation.flights.map((f) => (
+              <button
+                className={css.flightRow}
+                key={f.id}
+                type="button"
+                onClick={() => onFlight(f.id)}
+              >
+                <strong>
+                  {f.direction === "outbound"
+                    ? "去程"
+                    : f.direction === "return"
+                      ? "返程"
+                      : "中转"}{" "}
+                  · {f.from} → {f.to}
+                </strong>
+                <small>
+                  {f.departure.replace("T", " ")} ·{" "}
+                  {f.status === "queued"
+                    ? "待购票"
+                    : f.status === "confirmed"
+                      ? "自行确认已出票"
+                      : "已录入，待核对"}
+                </small>
+              </button>
+            ))}
+            {!preparation.noFlight && (
+              <button type="button" onClick={() => onFlight()}>
+                ＋ 录入航班 / 购票需求
+              </button>
+            )}
+            <label>
+              <input
+                type="checkbox"
+                checked={preparation.noFlight}
+                disabled={preparation.flights.length > 0}
+                onChange={(e) => onNoFlight(e.target.checked)}
+              />
+              不乘飞机
+              {preparation.flights.length > 0 ? "（移除航班后可选）" : ""}
+            </label>
+          </FixedSection>
+        )}
         {!overviewDays && (
           <>
             <SlotSection
@@ -376,6 +431,27 @@ export function DetailSidebar({
           tabIndex={0}
           aria-label="住宿餐饮与门票预约项目"
         >
+          {preparation.flights
+            .filter((f) => f.status === "queued")
+            .map((f) => (
+              <div className={css.reservation} key={f.id}>
+                <button
+                  type="button"
+                  className={css.reservationInfo}
+                  onClick={() => onFlight(f.id)}
+                >
+                  <strong>
+                    机票 · {f.from} → {f.to}
+                  </strong>
+                  <small>
+                    {f.departure.replace("T", " ")} · 购票需求，未出票
+                  </small>
+                </button>
+                <button type="button" onClick={() => onFlight(f.id)}>
+                  处理 →
+                </button>
+              </div>
+            ))}
           {reservations.map((item) => (
             <div
               className={css.reservation}
@@ -402,16 +478,22 @@ export function DetailSidebar({
               </button>
             </div>
           ))}
-          {!reservations.length && (
-            <p className={css.empty}>
-              暂无预约项目
-              <br />
-              <small>从餐饮、住宿或行程卡加入预约。</small>
-            </p>
-          )}
+          {!reservations.length &&
+            !preparation.flights.some((f) => f.status === "queued") && (
+              <p className={css.empty}>
+                暂无预约项目
+                <br />
+                <small>从餐饮、住宿或行程卡加入预约。</small>
+              </p>
+            )}
         </div>
         <div className={css.queueNote} role="status">
-          <span>{reservations.length} 项 · 加入不代表已下单</span>
+          <span>
+            {reservations.length +
+              preparation.flights.filter((f) => f.status === "queued")
+                .length}{" "}
+            项 · 加入不代表已下单；机票单独处理
+          </span>
           <div className={css.bookingFooterActions}>
             <button
               ref={allTrigger}
@@ -463,8 +545,13 @@ export function DetailSidebar({
           >
             调整后续行程
           </button>
+          <button type="button" onClick={onComplete}>
+            完成行程
+          </button>
         </div>
-        <p role="status">{checkStatus}</p>
+        <p role="status" title={`${completionStatus} · ${checkStatus}`}>
+          {completionStatus} · {checkStatus}
+        </p>
       </footer>
       {adjustmentOpen && (
         <PlannerPopover

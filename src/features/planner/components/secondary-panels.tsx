@@ -14,6 +14,7 @@ import ui from "../planner-v05.module.css";
 import cards from "../secondary-cards.module.css";
 import { MovementPanel } from "./movement-panel";
 import { AreaRecommendations } from "./area-recommendations";
+import { DailyHealthPanel } from "./daily-health-panel";
 import { useWorkspaceCapabilities } from "./workspace-capabilities";
 
 export function SecondaryPanels({
@@ -72,6 +73,8 @@ export function SecondaryPanels({
       <MovementPanel state={state} dispatch={dispatch} />
     ) : tab === "stayFood" ? (
       <AreaRecommendations state={state} dispatch={dispatch} />
+    ) : tab === "details" && mode === "day" ? (
+      <DailyHealthPanel state={state} dispatch={dispatch} />
     ) : null;
   return (
     <>

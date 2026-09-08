@@ -2,6 +2,7 @@ import type { DetailDraftState } from "./detail-workspace";
 import { validDetailLocation } from "./detail-workspace";
 import { validMovementEdit, movementKey } from "./planner-route";
 import { routineSlots, validDraftClock } from "./planner-timeline";
+import { validPreparations } from "./trip-preparation";
 import type { TripConfiguration, TripState } from "./trip-model";
 
 export const SAVED_TRIP_KEY = "travelassist.saved-workspace.v1";
@@ -286,6 +287,7 @@ export function parseSavedTrip(
       !ids.has(s.currentPlanId) ||
       !record(s.draft) ||
       s.draft.version !== 1 ||
+      !validPreparations(s.draft.preparations) ||
       (s.draft.railResponses !== undefined &&
         (!record(s.draft.railResponses) ||
           !Object.values(s.draft.railResponses).every(

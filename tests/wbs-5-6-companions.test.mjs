@@ -201,7 +201,7 @@ test("Trip snapshots are isolated copies and never write back to long-term state
   assert.equal(companions[1].mobilityNeeds.includes("本次临时调整"), false);
 });
 
-test("runtime stays page-scoped and mock-only", () => {
+test("runtime preserves local-only companion library and navigation guard", () => {
   const center = read("src/features/companions/companion-center.tsx");
   const styles = read("src/features/companions/companion-center.module.css");
   const route = read("src/app/(account)/personal-center/companions/page.tsx");
@@ -215,7 +215,9 @@ test("runtime stays page-scoped and mock-only", () => {
   assert.match(center, /您还有尚未保存的修改/);
   assert.doesNotMatch(
     `${center}\n${read("src/features/companions/companion-view-model.ts")}`,
-    /localStorage|sessionStorage|fetch\(|cookies?\(|supabase|prisma|route\.ts/i,
+    /sessionStorage|fetch\(|cookies?\(|supabase|prisma|route\.ts/i,
   );
+  assert.match(center, /writeCompanionLibrary/);
+  assert.match(center, /parseCompanionLibrary/);
   assert.equal(initialCompanionGroups.length >= 2, true);
 });

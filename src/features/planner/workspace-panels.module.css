@@ -465,3 +465,172 @@
     height: auto;
   }
 }
+.dailyPanels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  color: #354650;
+}
+.dailyPanels > section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  overflow: auto;
+  background: #fffbf3dc;
+  border: 1px solid #e7dbcc;
+  border-radius: 14px;
+  padding: 12px;
+  scrollbar-width: thin;
+}
+.dailyPanels header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 10px;
+}
+.dailyPanels header small {
+  width: 100%;
+  color: #8a7665;
+  font-size: 10px;
+}
+.dailyPanels h3,
+.dailyPanels p {
+  margin: 0;
+}
+.dailyPanels h3 {
+  font-size: 17px;
+}
+.dailyPanels header > span {
+  font-size: 10px;
+  color: #7a807c;
+}
+.dailyPanels button {
+  cursor: pointer;
+  background: #fffaf2;
+  border: 1px solid #e3d5c4;
+  border-radius: 10px;
+  color: #41525a;
+  text-align: left;
+  padding: 7px 9px;
+  font: inherit;
+}
+.dailyPanels p,
+.dailyPanels small {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.dailyPanels button:focus-visible {
+  outline: 2px solid #ae5949;
+  outline-offset: 2px;
+}
+.dailyMeals {
+  display: grid;
+  gap: 5px;
+}
+.dailyMeals button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dailyMeals b {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  background: #e9eee2;
+  color: #576c52;
+}
+.dailyMeals button > span:nth-child(2) {
+  display: grid;
+  flex: 1;
+  gap: 3px;
+}
+.dailyMeals strong {
+  font-size: 12px;
+}
+.dailyTags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.dailyTags span {
+  font-size: 10px;
+  padding: 4px 6px;
+  background: #eee8dc;
+  border-radius: 5px;
+}
+.dailyFacts {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  font-size: 11px;
+}
+.dailyFacts > div {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 6px;
+}
+.dailyFacts dt {
+  color: #8b7766;
+}
+.dailyFacts dd {
+  margin: 0;
+}
+.healthTiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.healthTiles > div {
+  display: grid;
+  gap: 3px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #e5eaf1;
+}
+.healthTiles strong {
+  font-size: 22px;
+}
+.healthTiles span {
+  font-size: 10px;
+}
+.healthTiles [data-tone="normal"] {
+  background: #e2eee5;
+  color: #3d7554;
+}
+.healthTiles [data-tone="warning"] {
+  background: #f6e9ce;
+  color: #916720;
+}
+.healthTiles [data-tone="missing"] {
+  background: #dfebf7;
+  color: #4b6f96;
+}
+.dailyProblems {
+  display: grid;
+  gap: 5px;
+}
+.dailyProblems button {
+  display: grid;
+  gap: 4px;
+}
+.dailyProblems span {
+  font-size: 11px;
+}
+@media (max-width: 767px) {
+  .dailyPanels {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+  .dailyPanels > section {
+    overflow: visible;
+  }
+}

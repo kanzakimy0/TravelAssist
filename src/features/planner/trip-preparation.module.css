@@ -1,0 +1,258 @@
+dialog.completion[data-kind="detail"] {
+  inset: 0;
+  height: auto;
+  width: min(760px, calc(100vw - 32px));
+  max-height: 88dvh;
+  margin: auto;
+  padding: 20px;
+  color: #354650;
+  background: #fffaf5f5;
+  border: 1px solid #e4d7ca;
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+}
+.body {
+  display: grid;
+  gap: 18px;
+  overflow: auto;
+  max-height: calc(88dvh - 145px);
+  padding: 4px 4px 14px;
+}
+.body section {
+  display: grid;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #e8ddd0;
+  border-radius: 16px;
+  background: #fffcf8;
+}
+.body h3,
+.body p {
+  margin: 0;
+}
+.body h3 {
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.body small,
+.note,
+.eyebrow {
+  color: #7d7268;
+  font-size: 12px;
+  font-weight: 400;
+}
+.name {
+  font-size: 14px;
+  font-weight: 650;
+  display: grid;
+  gap: 6px;
+}
+.name input {
+  font-size: 21px;
+}
+.completion input,
+.completion select,
+.flightForm input,
+.flightForm select,
+.flightForm textarea {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dcd0c2;
+  border-radius: 9px;
+  padding: 9px;
+  background: #fffdf8;
+  color: #354650;
+  font: inherit;
+}
+.completion button,
+.flightProject button {
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #decfc0;
+  border-radius: 10px;
+  background: #fffaf4;
+  color: #46555c;
+  font: inherit;
+}
+.completion button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.completion button:focus-visible,
+.flightProject button:focus-visible {
+  outline: 2px solid #b75f4e;
+  outline-offset: 2px;
+}
+.members,
+.tabs,
+.inline {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.members button {
+  background: #eaf0ec;
+  font-size: 12px;
+}
+.tabs button[aria-pressed="true"] {
+  background: #f2dfd4;
+  border-color: #bd7666;
+}
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.choices button {
+  display: grid;
+  text-align: left;
+  gap: 4px;
+}
+.inline label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.metrics > div {
+  display: grid;
+  gap: 3px;
+  text-align: center;
+  padding: 12px 4px;
+  border-radius: 12px;
+  background: #e1ebf6;
+}
+.metrics strong {
+  font-size: 28px;
+}
+.metrics span {
+  font-size: 12px;
+}
+.metrics [data-tone="error"] {
+  background: #f4dcd7;
+  color: #a84437;
+}
+.metrics [data-tone="warning"] {
+  background: #f7ebca;
+  color: #8f6816;
+}
+.metrics [data-tone="booking"] {
+  background: #e3e7f5;
+  color: #576c97;
+}
+.problems {
+  display: grid;
+  gap: 5px;
+}
+.problems button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+}
+.problems span {
+  flex: 1;
+  font-size: 12px;
+}
+.warning {
+  font-size: 12px;
+  line-height: 1.65;
+  padding: 10px;
+  border-radius: 10px;
+  color: #865f32;
+  background: #f9efda;
+}
+.check {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+}
+.check input {
+  width: 16px;
+  flex: 0 0 16px;
+  margin-top: 3px;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 12px;
+}
+.actions button:last-child {
+  background: #b75c4a;
+  color: #fff;
+  border-color: #b75c4a;
+}
+.flightForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.flightForm > * {
+  flex-shrink: 0;
+}
+.flightForm > div {
+  height: auto;
+  min-height: auto;
+}
+.flightForm label {
+  display: grid;
+  gap: 5px;
+  font-size: 13px;
+}
+.flightTime {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px;
+  gap: 7px;
+}
+.flightProject {
+  min-width: 0;
+}
+.flightProject h2 {
+  margin: 0;
+}
+.flightProject input[type="datetime-local"] {
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  dialog.completion[data-kind="detail"] {
+    width: calc(100vw - 16px);
+    padding: 12px;
+    max-height: 94dvh;
+    border-radius: 18px;
+  }
+  .body {
+    max-height: calc(94dvh - 145px);
+    gap: 10px;
+  }
+  .body section {
+    padding: 10px;
+  }
+  .body h3 {
+    flex-wrap: wrap;
+  }
+  .choices {
+    grid-template-columns: 1fr;
+  }
+  .problems button {
+    flex-wrap: wrap;
+  }
+  .metrics strong {
+    font-size: 24px;
+  }
+  .actions {
+    flex-wrap: wrap;
+  }
+  .flightTime {
+    grid-template-columns: 1fr;
+  }
+}

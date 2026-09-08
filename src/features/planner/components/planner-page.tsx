@@ -65,6 +65,13 @@ import { PlaceDetails } from "./place-details";
 import { PlannerRightPanel } from "./planner-right-panel";
 import { TripWorkspace } from "./trip-workspace";
 import { WorkspaceCapabilities } from "./workspace-capabilities";
+import { TripCompletionDialog } from "./trip-completion-dialog";
+import { FlightProject } from "./flight-project";
+import {
+  preparationFor,
+  preparationFingerprint,
+  type Preparation,
+} from "../model/trip-preparation";
 
 function subscribeViewport(callback: () => void) {
   window.addEventListener("resize", callback);
@@ -126,6 +133,8 @@ export function PlannerPage() {
   } | null>(null);
   const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
   const [addOpen, setAddOpen] = useState(false);
+  const [completionOpen, setCompletionOpen] = useState(false);
+  const [flightOpen, setFlightOpen] = useState<string | null>(null);
   const [addType, setAddType] = useState<DetailItemKind>("attraction");
   const [replacementId, setReplacementId] = useState<string | null>(null);
   const [bulkBooking, setBulkBooking] = useState<
@@ -147,6 +156,32 @@ export function PlannerPage() {
     .split(":")
     .map((value) => value === "true");
   const plan = currentPlan(trip);
+  const preparation = preparationFor(detailDraft, plan.id);
+  const completionStatus = preparation.completed
+    ? preparation.completed.fingerprint ===
+      preparationFingerprint(trip, detailDraft, preparation)
+      ? "已完成规划 · 可继续修改"
+      : "规划有更新 · 待重新检查"
+    : "尚未完成规划";
+  function updatePreparation(p: Preparation) {
+    setDetailDraft((current) => ({
+      ...current,
+      preparations: { ...current.preparations, [plan.id]: p },
+    }));
+  }
+  function openFlight(id = "new") {
+    resetProjectSelection();
+    setFlightOpen(id);
+    dispatchTrip({
+      type: "ui",
+      patch: {
+        inspection: null,
+        selectedTripItemId: null,
+        isRightPanelOverlayOpen: false,
+        isBottomPanelOverlayOpen: false,
+      },
+    });
+  }
   const detailDay = parseDetailDay(searchParams.get("day"), plan.days.length);
   const detailOverview =
     mode === "detail" && searchParams.get("scope") === "overview";
@@ -342,6 +377,7 @@ export function PlannerPage() {
   }
 
   function resetProjectSelection() {
+    setFlightOpen(null);
     setAddOpen(false);
     setDraftInspectionId(null);
     setDialogItemId(null);
@@ -500,6 +536,13 @@ export function PlannerPage() {
   );
   const detailRight = (
     <DetailSidebar
+      preparation={preparation}
+      onFlight={openFlight}
+      onNoFlight={(value) =>
+        updatePreparation({ ...preparation, noFlight: value })
+      }
+      onComplete={() => setCompletionOpen(true)}
+      completionStatus={completionStatus}
       state={trip}
       summary={summary}
       items={railItems}
@@ -721,7 +764,34 @@ export function PlannerPage() {
         }
         detailItems={allRailItems}
         projectContent={
-          mode === "detail" && addOpen ? (
+          mode === "detail" && flightOpen ? (
+            <FlightProject
+              key={flightOpen}
+              flight={preparation.flights.find((f) => f.id === flightOpen)}
+              startDate={trip.settings.startDate}
+              onClose={() => setFlightOpen(null)}
+              onSave={(f) => {
+                updatePreparation({
+                  ...preparation,
+                  noFlight: false,
+                  flights: [
+                    ...preparation.flights.filter((x) => x.id !== f.id),
+                    f,
+                  ],
+                });
+                if (flightOpen === "new") setFlightOpen(f.id);
+              }}
+              onRemove={() => {
+                updatePreparation({
+                  ...preparation,
+                  flights: preparation.flights.filter(
+                    (f) => f.id !== flightOpen,
+                  ),
+                });
+                setFlightOpen(null);
+              }}
+            />
+          ) : mode === "detail" && addOpen ? (
             <aside
               className={projectStyles.inspector}
               data-detail-map-inspector
@@ -848,6 +918,39 @@ export function PlannerPage() {
         }
       />
 
+      {mode === "detail" && completionOpen && (
+        <TripCompletionDialog
+          state={trip}
+          draft={detailDraft}
+          items={allRailItems}
+          onClose={() => setCompletionOpen(false)}
+          onSave={browserTrip.savePrepared}
+          overwriteRequired={Boolean(
+            browserTrip.saved &&
+            browserTrip.saved.snapshot.currentPlanId !== plan.id,
+          )}
+          status={browserTrip.status}
+          onResolve={(issue, name, p) => {
+            updatePreparation(p);
+            if (name.trim())
+              dispatchTrip({
+                type: "restoreBrowserTrip",
+                trip: {
+                  ...trip,
+                  plans: trip.plans.map((x) =>
+                    x.id === plan.id ? { ...x, name: name.trim() } : x,
+                  ),
+                },
+              });
+            setCompletionOpen(false);
+            if (issue.flightId || !issue.itemId) openFlight(issue.flightId);
+            else {
+              const item = allRailItems.find((i) => i.id === issue.itemId);
+              if (item) openProject(item);
+            }
+          }}
+        />
+      )}
       {mode === "planner" && browserTrip.saved && (
         <section
           className={localSave.actions}

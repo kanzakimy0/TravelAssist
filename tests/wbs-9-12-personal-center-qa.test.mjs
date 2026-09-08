@@ -300,7 +300,6 @@ test("9.12 presentation components retain their no-integration boundary", () => 
   for (const forbidden of [
     "fetch(",
     "XMLHttpRequest",
-    "localStorage",
     "sessionStorage",
     "indexedDB",
     "supabase",
@@ -309,4 +308,12 @@ test("9.12 presentation components retain their no-integration boundary", () => 
     "serviceWorker.register",
   ])
     assert.equal(implementation.includes(forbidden), false, forbidden);
+  // TASK-TRIP-PREPARATION-A explicitly authorizes the shared browser-only library.
+  assert.ok(companionCenter.includes("writeCompanionLibrary"));
+  assert.equal(
+    read(
+      "src/app/(account)/personal-center/preferences/[category]/page.tsx",
+    ).includes("localStorage"),
+    false,
+  );
 });

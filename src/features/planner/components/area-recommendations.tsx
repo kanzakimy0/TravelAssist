@@ -13,6 +13,117 @@ export function AreaRecommendations({
 }) {
   const model = secondaryPanelModel(state);
   const { canBook, enterDetail } = useWorkspaceCapabilities();
+  if (state.ui.rangeMode === "day") {
+    const row = model.rows[0];
+    const hotel = model.areas.find((a) => a.type === "hotelArea"),
+      food = model.areas.find((a) => a.type === "foodArea");
+    const inspect = (id: string) =>
+      dispatch({ type: "inspect", id, level: "area" });
+    return (
+      <div
+        className={ui.dailyPanels}
+        data-area-recommendations
+        data-range-mode="day"
+      >
+        <section>
+          <header>
+            <small>
+              D{row.day.day} · {row.day.city}
+            </small>
+            <h3>沿途三餐</h3>
+            <span>
+              已选{" "}
+              {
+                row.mealSlots.filter(
+                  (s) => s.item && !s.item.planningPlaceholder,
+                ).length
+              }
+              /3
+            </span>
+          </header>
+          <div className={ui.dailyMeals}>
+            {row.mealSlots.map(({ slot, item }) => (
+              <button
+                key={slot}
+                type="button"
+                onClick={() =>
+                  item && !item.planningPlaceholder
+                    ? dispatch({ type: "select", id: item.id })
+                    : food
+                      ? inspect(food.id)
+                      : enterDetail()
+                }
+              >
+                <b>{{ breakfast: "早", lunch: "午", dinner: "晚" }[slot]}</b>
+                <span>
+                  <strong>
+                    {item && !item.planningPlaceholder ? item.title : "待安排"}
+                  </strong>
+                  <small>{food?.name ?? "在行程详情补充地区"}</small>
+                </span>
+                <span>→</span>
+              </button>
+            ))}
+          </div>
+        </section>
+        <section>
+          <header>
+            <small>落脚点 · 不绕远</small>
+            <h3>当晚住宿</h3>
+          </header>
+          <strong>
+            {row.stays
+              .filter((i) => !i.planningPlaceholder)
+              .map((i) => i.title)
+              .join("、") ||
+              hotel?.name ||
+              "住宿区域待选择"}
+          </strong>
+          <p>
+            {hotel?.reason ??
+              (row.day.day === model.plan.days.length
+                ? "返程日按需安排，不自动添加一晚住宿。"
+                : "先确定次日出发点，再选当晚落脚区域。")}
+          </p>
+          <div className={ui.dailyTags}>
+            <span>衔接当天终点</span>
+            <span>核对次日出发</span>
+            <span>已选住宿受保护</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => (hotel ? inspect(hotel.id) : enterDetail())}
+          >
+            {hotel ? "查看住宿区域" : "到详情核对住宿"} →
+          </button>
+        </section>
+        <section>
+          <header>
+            <small>区域选择 · 理由与取舍</small>
+            <h3>为什么推荐这里</h3>
+          </header>
+          <dl className={ui.dailyFacts}>
+            <div>
+              <dt>交通衔接</dt>
+              <dd>{hotel?.access ?? food?.access ?? "具体接驳时间待核对"}</dd>
+            </div>
+            <div>
+              <dt>用餐便利</dt>
+              <dd>{food?.reason ?? "优先现有路线附近，避免专程折返"}</dd>
+            </div>
+            <div>
+              <dt>需要权衡</dt>
+              <dd>{hotel?.tradeoff ?? "安静程度、预算与换乘便利需共同考虑"}</dd>
+            </div>
+          </dl>
+          <button type="button" onClick={enterDetail}>
+            到详情选择酒店与餐厅 →
+          </button>
+          <small>区域建议非实时评价；此处不预约、不显示虚构报价。</small>
+        </section>
+      </div>
+    );
+  }
   return (
     <div
       className={ui.areaColumns}
@@ -94,11 +205,9 @@ export function AreaRecommendations({
       <section>
         <h3>{model.scopeTitle}</h3>
         <p>
-          {state.ui.rangeMode === "day"
-            ? "当日三餐覆盖、住宿落点与沿途区域"
-            : state.ui.rangeMode === "threeDays"
-              ? "对比连续几天的餐饮覆盖，避免为吃饭和换酒店反复折返"
-              : `全程 ${model.summary.switches} 次城市衔接；先定住宿城市，再补三餐区域`}
+          {state.ui.rangeMode === "threeDays"
+            ? "对比连续几天的餐饮覆盖，避免为吃饭和换酒店反复折返"
+            : `全程 ${model.summary.switches} 次城市衔接；先定住宿城市，再补三餐区域`}
         </p>
         <strong>衔接与选择理由</strong>
         {model.rows.map((row) => (

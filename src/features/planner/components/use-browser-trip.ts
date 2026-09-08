@@ -123,7 +123,7 @@ export function useBrowserTrip({
       setError("无法读取浏览器存储，当前行程未改变。");
     }
   }
-  function save(confirmedOverwrite = false) {
+  function save(confirmedOverwrite = false, prepared?: TripSnapshot) {
     if (!ready || mode !== "detail") return false;
     if (
       saved &&
@@ -134,7 +134,7 @@ export function useBrowserTrip({
       return false;
     }
     try {
-      const snapshot = tripSnapshot(trip, draft);
+      const snapshot = prepared ?? tripSnapshot(trip, draft);
       if (
         !parseSavedTrip(
           JSON.stringify({
@@ -154,6 +154,7 @@ export function useBrowserTrip({
       expectedRaw.current = JSON.stringify(next);
       setSaved(next);
       setBaseline(snapshot);
+      if (prepared) applySnapshot(snapshot);
       setStatus("已保存到此浏览器 · 刷新可恢复");
       setError("");
       return true;
@@ -281,6 +282,11 @@ export function useBrowserTrip({
     enterDetail,
     openSaved,
     save,
+    savePrepared: (
+      nextTrip: TripState,
+      nextDraft: DetailDraftState,
+      overwrite: boolean,
+    ) => save(overwrite, tripSnapshot(nextTrip, nextDraft)),
     requestLeave,
     cancelLeave: () => {
       setDestination(null);

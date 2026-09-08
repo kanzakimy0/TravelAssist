@@ -10,6 +10,7 @@ import {
 import type { MapView, PlaceType, TripItem, TripState } from "./trip-model";
 import { scheduleConflicts, validateSchedule } from "./schedule-check";
 import { plannerMovementLegs } from "./planner-route";
+import { validPreparations, type Preparation } from "./trip-preparation";
 
 export type TripWorkspaceMode = "planner" | "detail";
 export type AiJudgementStatus = "normal" | "warning" | "error";
@@ -52,6 +53,7 @@ export interface DetailDraftItem {
 }
 
 export interface DetailDraftState {
+  preparations?: Record<string, Preparation>;
   railResponses?: Record<string, "later" | "acknowledged">;
   bookingMessages?: Record<string, string>;
   items: DetailDraftItem[];
@@ -430,6 +432,9 @@ export function parseDetailDraft(value: string | null): DetailDraftState {
       return emptyDetailDraft();
     }
     return {
+      ...(validPreparations(parsed.preparations) && parsed.preparations
+        ? { preparations: parsed.preparations }
+        : {}),
       items: parsed.items.filter((item): item is DetailDraftItem =>
         Boolean(
           item &&
