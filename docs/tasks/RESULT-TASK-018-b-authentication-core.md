@@ -7,7 +7,7 @@
 - Date: 2026-09-08; Owner B; Issue #214 remains Open.
 - All implemented Auth core/Local acceptance gates passed. Full formatting remains a separately reported, proven develop baseline failure.
 - No WBS 5.3 UI, WBS 5.15 API, TASK-017-B, or downstream task was started.
-- Publication metadata will be filled after the manually created Draft PR is verified.
+- [Draft PR #218](https://github.com/kanzakimy0/TravelAssist/pull/218) was manually created and verified Open/Draft against develop; not merged.
 
 ## Prerequisite / Base
 
@@ -259,7 +259,7 @@ docs/ui/trip-detail.md
 - Result: `docs/tasks/RESULT-TASK-018-b-authentication-core.md`.
 - Branch: `feature/b-authentication-core`, base `develop`.
 - WBS 8.3: 待审查; WBS 8.1/8.2/8.4 completed states retained; WBS 5.3/5.15 unstarted.
-- Implementation commit: pending commit metadata.
-- Draft PR: pending manual publication.
+- Implementation commit: `7e84dd06f275dc7c8584c2fe47ac8787c17812a7`.
+- Draft PR: [#218](https://github.com/kanzakimy0/TravelAssist/pull/218), Open / Draft, base develop, head feature/b-authentication-core. Follow-up publication metadata changes are documentation-only.
 - Every publication commit uses [skip ci]; workflows unchanged; PR body uses Relates to #214.
 - No merge, Issue closure or next task is authorized by this delivery.
