@@ -2,7 +2,21 @@
 
 ## Status
 
-**PASS / 待用户验收。WBS 8.3 = 待审查，不是已完成。**
+**PASS / 现场验收通过，已获用户条件式合并授权；尚未合并，WBS 8.3 暂保持待审查。**
+
+## Final live acceptance (2026-09-08)
+
+- User instruction: 开始现场验收，验收通过后自动合并并更新WBS. This supersedes the original Draft-only delivery gate only after passing acceptance; no downstream work is authorized.
+- Latest develop integrated: `0c21643d0f44ce599747007e25265c0e5219b5fb`; tested integration commit: `371191f998033be46c9e01bf5bfa7a1708f05501`. Only a Master WBS heading conflict required resolution; both owners' records were retained. Auth implementation remained unchanged.
+- Actual commands rerun: `npm ci`, `npm run db:start`, `npm run db:status`, `npm run lint`, `npm run typecheck`, `npm run build`, both explicit TASK-016/TASK-018 runtime commands below, `node --test tests/*.test.mjs`, `node tests/task-018-client-bundle.mjs`, `npm run format:check`, changed-file Prettier and `git diff --check`.
+- Results: npm ci/lint/typecheck/secret-free build PASS; all Node tests **621/621**, TASK-016 Local runtime **25/25**, TASK-018 real Local Auth/production HTTP runtime **16/16**; no failures or skips. Production client audit PASS: 31 chunks and 64 browser Auth dependency modules.
+- Full formatting remains **FAIL (exit 1)** on exactly the same 27 historical documents listed below; every file was byte-compared successfully with latest develop `0c21643`. Changed-file formatting and diff checks PASS.
+- Local container/project and loopback endpoints were reverified; Auth users/profiles/settings/contacts were `0/0/0/0` before and after temporary fixtures. Final `db:status` and `db:stop` PASS; no task containers left running. No reset was needed or executed in this rerun; the original actually executed reset evidence below is retained, not reported as newly rerun. No schema/type change or db:types regeneration.
+- Scope audit against integrated develop: no changes to UI features, DB schema, SQL migrations, generated types or workflows. TASK-015 and TASK-016 merge ancestors rechecked successfully.
+- Evidence: `F:\TravelAssist-task018-evidence\acceptance-*.log`. Google/Apple external-provider E2E and real SMS/email delivery remain explicitly Deferred as allowed by Task. No WBS 5.3 visual acceptance is claimed.
+- Decision: **TASK-018-B USER ACCEPTANCE: PASS. PR #218 is approved for merge under the user's explicit conditional authorization.** This records task acceptance, not an independently submitted GitHub APPROVED review.
+
+### Original implementation/delivery record (historical)
 
 - Date: 2026-09-08; Owner B; Issue #214 remains Open.
 - All implemented Auth core/Local acceptance gates passed. Full formatting remains a separately reported, proven develop baseline failure.
@@ -262,4 +276,4 @@ docs/ui/trip-detail.md
 - Implementation commit: `7e84dd06f275dc7c8584c2fe47ac8787c17812a7`.
 - Draft PR: [#218](https://github.com/kanzakimy0/TravelAssist/pull/218), Open / Draft, base develop, head feature/b-authentication-core. Follow-up publication metadata changes are documentation-only.
 - Every publication commit uses [skip ci]; workflows unchanged; PR body uses Relates to #214.
-- No merge, Issue closure or next task is authorized by this delivery.
+- The original delivery did not authorize merge or Issue closure. The subsequent user-authorized live acceptance above supersedes that gate; no next task is authorized.
