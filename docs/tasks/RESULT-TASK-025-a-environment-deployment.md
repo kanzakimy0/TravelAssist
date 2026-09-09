@@ -2,16 +2,16 @@
 
 ## Status
 
-Partially Completed / 待验收。
+Completed and merged（仓库内授权范围）/ External deployment Deferred。
 
-WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、本机 standalone 制品和部署演练已完成。真实云隔离、Preview 部署和 Production 发布因没有批准的平台、资源或权限而保持 Deferred / Not authorized，不冒充部署成功。
+WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、本机 standalone 制品和部署演练已验收并通过 PR #249 合入 `develop`。真实云隔离、Preview 部署和 Production 发布因没有批准的平台、资源或权限而保持 Deferred / Not authorized，不冒充部署成功。
 
 ## Tracking
 
-- GitHub Issue: #236（保持 Open）
+- GitHub Issue: #236（仓库内实现已验收；外部部署 Gate 保持 Open）
 - WBS: 10.1 → 10.2
 - Implementation Base: `5819270983b4682c76e9ed7c751be9e00612ca0a`
-- Final integrated develop: `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`
+- Merge commit / final develop: `90c3501816d04f7613002439e5886a9e2b90bafd`
 - Branch: `codex/a-environment-deployment`
 - Core implementation: `5185de7e959abc412473c48fa8622b6071382c12`
 - Evidence: `d247037`
@@ -19,7 +19,7 @@ WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、�
 - Server-only boundary fix and final rehearsal: `adda614f15faa9cf713f54e73e0d90f67e3256c3`
 - Commits through validation: `5185de7`, `d247037`, `4f28cfb`, `adda614`, `1a82ecf`, `7861cb9`, `dfe084e`
 - Final PR tracking commit: 本 Result 的最终同步提交见 PR head
-- Draft PR: #249 — `codex/a-environment-deployment` → `develop`
+- Pull Request: #249 — Merged into `develop`
 
 ## Conflict audit
 
@@ -68,7 +68,7 @@ Completed in repository:
 
 GitHub Actions 已对 `dfe084ef5add466ee76fd2ec617c91b994c66c6e` 完整执行 Quality gate 并通过：[run #34319110159](https://github.com/kanzakimy0/TravelAssist/actions/runs/34319110159)。首次运行暴露仓库既有测试依赖冻结历史提交；两个 checkout 已改为完整历史并由专项测试锁定，未跳过或放宽任何质量步骤。
 
-`release-rehearsal.yml` 是仅允许当前 `develop` 精确 SHA 的手动工作流。由于该工作流在 PR 合入前尚不存在于默认分支，GitHub 托管环境的实际手动运行保持 Deferred；本机对真实 standalone 制品的完整 rehearsal 已通过。
+`release-rehearsal.yml` 是仅允许当前 `develop` 精确 SHA 的手动工作流。PR 合入后实测发现仓库 GitHub 默认分支仍为 `main`，该 workflow 只存在于 `develop`，GitHub Actions API 因而尚未注册可 dispatch 的 workflow（返回 404）。在未获准同步 `main` 或修改默认分支前，托管 rehearsal 保持 Deferred；本机对真实 standalone 制品的完整 rehearsal 已通过。
 
 ## Stage 2 — local deployment rehearsal
 
@@ -123,19 +123,19 @@ Not authorized / Not run。没有发布 Production、创建付费资源、修改
 - `npm run format:check:deploy`: PASS
 - `git diff --check`: PASS
 - GitHub Actions Quality gate (`dfe084e`): PASS（run #34319110159）
-- GitHub hosted release rehearsal: Deferred（工作流尚未进入默认分支）
+- GitHub hosted release rehearsal: Deferred（仓库默认分支为 `main`，workflow 当前只在 `develop`）
 - `npm run format:check`: existing repository documentation debt;本 Task 新增/修改工程文件全部通过，未批量格式化无关历史文档。
 
 ## WBS update
 
-- 10.1 → 待审查：仓库内合同已验证，真实云隔离 Deferred。
-- 10.2 → 待审查：质量门与本机演练已实现，真实 Preview/Production Deferred。
-- 只有 PR 合入、用户验收且后续云 Gate 独立完成后，才能把对应完整 WBS 能力标记为已完成。
+- 10.1 → 部分完成：仓库内合同已验收并合入；真实云资源隔离 Deferred。
+- 10.2 → 部分完成：质量门与本机演练已验收并合入；GitHub hosted rehearsal、真实 Preview/Production Deferred。
+- 已完成的仓库内子项不再保留“待审查”；对应完整 WBS 项需在外部云 Gate 完成后才能标记为“已完成”。
 
 ## Manual actions required
 
-1. 审查 Draft PR 的环境 allowlist、workflow trust boundary、health 和 rollback 语义。
-2. PR 合入后，可从默认分支手动执行精确 `develop` SHA 的 hosted release rehearsal；当前不把未运行步骤写成 PASS。
+1. 决定是否通过独立 PR 把 release workflow 同步到默认分支 `main`，或正式调整仓库默认分支；未经授权不操作。
+2. workflow 在 GitHub 注册后，手动执行精确 `develop` SHA 的 hosted release rehearsal；当前不把未运行步骤写成 PASS。
 3. 若要真实 Preview，先单独批准平台、区域/成本、GitHub Environment protection、凭据方案、Preview URL、隔离 Supabase、Auth callback 和 rollback target。
 4. Production 需要新的明确发布授权；本 Result 不能作为上线许可。
 
@@ -144,4 +144,4 @@ Not authorized / Not run。没有发布 Production、创建付费资源、修改
 - 无真实 Secret、Cookie、Token 或 `.env.local` 被读取、复制或提交。
 - 无 Production、DNS、付费资源、远端 migration 或 Provider 授权变更。
 - 无未合并 TASK-023/024/安全实现叠加。
-- 未自动合并，未继续其它 Task。
+- PR #249 已按用户明确授权合入 `develop`；未继续其它 Task。
