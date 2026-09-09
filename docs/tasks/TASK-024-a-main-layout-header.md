@@ -420,7 +420,7 @@ git diff --check
 - [x] Result 记录共享视觉规则、改动、测试、限制与 Deferred。
 - [x] Issue / Task / Result / WBS / branch / commit / PR 完整同步。
 - [x] 实现完成但 PR 未合并：`3.1 = 待审查`。
-- [ ] 只有用户视觉验收通过且 PR 合入 develop：`3.1 = 已完成`。
+- [x] 只有用户视觉验收通过且 PR 合入 develop：`3.1 = 已完成`。
 
 ---
 
@@ -518,10 +518,17 @@ Do not start automatically.
 
 ## 17. Execution Tracking（2026-09-09）
 
-- 状态：实现完成，**WBS 3.1 = 待审查**；用户已于 2026-09-09 回复“验收通过”，PR 未合并。
+- 状态：实现完成，**WBS 3.1 = 已完成**；用户已于 2026-09-09 回复“验收通过”并授权最终合并，PR #244 已合入 develop。
 - 最新远端执行基线：`e74904830cbf8e6745b2013b2888e38984ccf96d`。1.13 仍待审查，依据已进入 develop 的 PC 品牌实现和本 Task Dependency Gate 执行；2.7 已完成。未改依赖状态。
 - Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)；分支 `feature/a-main-layout-header`；启动 `f75e799`；实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`。
-- PR：[Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）。后续提交仅同步追踪。
+- PR：[PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Merged，merge `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`）。后续提交仅同步追踪。
 - 683/683 Node 测试；npm ci、lint、typecheck、正常 build、npm test --if-present、diff-check 通过。生产浏览器 20/20，8 组 Planner / Detail 几何与 develop 一致。用户已于 2026-09-09 明确回复“验收通过”；验收对象为提交 69bf4b75d2db4a085e96b2442ccba8c3eed54865，本轮仅同步文档。
 - [Result](RESULT-TASK-024-a-main-layout-header.md) 记录复用、最小 token 整合、视觉对照、原工作区依赖恢复及真实 Auth / Map Deferred；[QA](../qa/TASK-024/README.md) 提供报告、截图清单与复现脚本。
 - 未越界执行其他 WBS；不自动开始 TASK-025。
+
+## 18. Final Merge Closeout（2026-09-09）
+
+- 用户明确授权 PR #244 最终合并；合并提交 `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`，最终 head `22a3a9962c216e6a332dc783698f92916b79cbe2`，两者文件树一致。
+- 最新 develop 仅新增 TASK-025 文档，已保留整合；已验收应用代码与测试未变，原 683 项回归及 20 组浏览器证据有效；本轮补做树比较、文档格式与 diff-check。
+- WBS 3.1 已完成；Issue #242 关闭 completed；仅文档收尾分支 `codex/a-main-layout-header-closeout` 正常快进同步 develop。1.13 / 2.7 和其他任务状态不变。
+- TASK-024-A 结束，不自动开始 TASK-025 / WBS 3.2。

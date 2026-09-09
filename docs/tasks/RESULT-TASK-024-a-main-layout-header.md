@@ -2,11 +2,11 @@
 
 ## Status
 
-实现完成；用户于 2026-09-09 明确回复“验收通过”。PR 仍为 Draft、未合并，WBS 3.1 保持待审查。
+已完成。用户于 2026-09-09 明确回复“验收通过”，随后授权 PR #244 最终合并收尾；PR 已合入 develop，WBS 3.1 = 已完成。
 
 ## Preflight
 
-- execution base: `e74904830cbf8e6745b2013b2888e38984ccf96d`，执行前已依次运行指定的 status / branch / fetch / rev-parse / log -20，并读取远端 Task、WBS 与 Personal Center 冻结 Shell。收尾再次 fetch，develop 未变化。
+- execution base: `e74904830cbf8e6745b2013b2888e38984ccf96d`，执行前已依次运行指定的 status / branch / fetch / rev-parse / log -20，并读取远端 Task、WBS 与 Personal Center 冻结 Shell。首次交付前再次 fetch，develop 未变化；最终合并前 develop 新增 `026dddb`（仅 TASK-025 任务文档），已保留并整合，未执行该任务。
 - dependency 1.13: **待审查**，未修改。按本 Task Dependency Gate 例外，已有 Personal Center 品牌实现及 shared tokens 已进入 develop，足以执行最小整合。
 - dependency 2.7: **已完成**，保持原状态。
 - working tree safety: 原工作区干净，原分支 `feature/b-travelassist-engine-contract`。从最新 develop 创建指定分支后，在独立 `.cache/qa/task024-worktree` 实施；原工作区恢复原分支且保持干净。未使用禁止的 Git 命令，未覆盖其他工作站记录。
@@ -14,13 +14,13 @@
 
 ## Tracking
 
-- WBS 3.1: 进行中（启动提交 `f75e799`）→ **待审查**。
-- Issue: [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)，保留打开。
+- WBS 3.1: 进行中（启动提交 `f75e799`）→ 待审查 → **已完成**（用户视觉验收通过且 PR 已合并）。
+- Issue: [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)，关闭为 completed。
 - Branch: `feature/a-main-layout-header` → `develop`。
 - Commit: 实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；后续提交仅同步追踪文档。
-- Pull Request: [Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）
+- Pull Request: [PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Merged，merge `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`）
 - Result file: `docs/tasks/RESULT-TASK-024-a-main-layout-header.md`。
-- Blocker: 无实现阻塞；用户视觉验收已通过，尚未合入 develop，不符合标记已完成条件。
+- Blocker: 无。用户视觉验收和合入 develop 两项条件均已满足。
 
 ## Existing Work Reused
 
@@ -77,12 +77,20 @@
 - 账户由仅本机监听的 QA fixture 提供，未使用真实凭据；真实 Supabase Auth / 外部身份提供方 Deferred，未修改生产认证保护。地图为已有无 token fallback；live Mapbox / Route Deferred。
 - 初次原工作区 npm ci 遇到占用 DLL，改在隔离 worktree 完成安装。后续 C 盘空间耗尽导致图片优化请求挂起；释放本任务生成的可再生成基线与 dev 缓存后，默认线程池生产预览 20/20 通过，未改应用配置。原工作区依赖按相同 lockfile 从已验证依赖以 NTFS hard link 恢复，npm ls exit 0，源码与 lockfile 无变化；保留既有 extraneous 项，不做无关清理。
 - 对照环境一次额外的 webpack 构建暴露旧 PC 页面导出约束，不作为标准 build 证据；要求的正常 Turbopack build 已通过，未越界修改该页面。
-- 仓库 feature push 自动化会创建并尝试合并普通 PR。为遵守只交付 Draft，本任务发布提交使用 [skip ci]，手工创建 Draft；未改 workflow，未尝试合并。校验使用上述完整本地证据，不声称 GitHub CI 已运行。
+- 仓库 feature push 自动化会创建并尝试合并普通 PR。为遵守只交付 Draft，本任务发布提交使用 [skip ci]，手工创建 Draft；未改 workflow。用户后续明确授权合并后，核对最终 head 并将 Draft 转为 ready，已成功合并。校验使用上述完整本地证据，自动合并 workflow 成功不等于应用 CI 验证通过。
 - 未启动 WBS 3.2 / 3.3 / 3.4 / 3.5 / 3.7；未增加 AI、Provider、Route、POI、Booking、Engine、Schema 或 Migration。
 
 ## WBS Updated
 
-Yes。仅更新 3.1 和本任务追踪段，1.13 保持待审查、2.7 保持已完成，保留所有其他任务记录。只有用户视觉验收通过且 PR 合入 develop，才允许将 3.1 标记已完成。
+Yes。仅更新 3.1 和本任务追踪段，1.13 保持待审查、2.7 保持已完成，保留所有其他任务记录。用户视觉验收通过且 PR 已合入 develop，现将 3.1 标记已完成。
+
+## Final Merge Closeout（2026-09-09）
+
+- 用户明确授权：“视觉验收通过，可以进入 PR #244 最终合并收尾。”
+- 合并前重新 fetch；保留最新 develop 的 TASK-025 文档，整合提交 `22a3a9962c216e6a332dc783698f92916b79cbe2`。与已验收 `f4bbb60` 相比仅增加该文档，src / tests / public / package manifests / QA 工具无变化。
+- PR #244 已于 2026-09-09T04:55:42Z 合并，merge `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`。合并树与最终 head 完全一致。
+- 本轮不重复执行未变化代码的全套测试；既有 683/683 与生产浏览器 20/20 证据继续有效，补做合并树比对、修改文档格式与 diff-check。
+- 从合并后的最新 develop 建立 `codex/a-main-layout-header-closeout`，仅同步 TASK / RESULT / WBS，正常快进推送 develop；Issue #242 关闭 completed。未修改其他 WBS 状态。
 
 ## Next Task
 
