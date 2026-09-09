@@ -49,7 +49,7 @@ test("main-flow links use real destinations and Home uses the existing login rou
   assert.match(plans, /router\.push\("\/planner"\)/);
   assert.match(plans, /进入详细路线/);
   assert.doesNotMatch(plans, /使用此方案并进入地图|已选择这个方案/);
-  assert.match(plannerWorkspace, /<MainHeader/);
+  assert.match(plannerWorkspace, /<header className=\{styles\.header\}/);
   assert.match(plannerWorkspace, /href="\/personal-center"/);
 });
 

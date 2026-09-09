@@ -1,17 +1,22 @@
 .planner {
   position: relative;
-  /* Shared TravelAssist palette; workspace density/geometry stays local. */
-  --planner-accent-soft: var(--color-bg-muted);
+  /* Planner-only surface palette; brand accents follow the shared coral system. */
+  --color-bg-canvas: #faf6ef;
+  --color-bg-elevated: #fffcf7;
+  --color-bg-overlay: rgb(255 252 247 / 97%);
+  --color-text-primary: #343e48;
+  --color-text-secondary: #62584f;
+  --color-border-strong: #e4d9d0;
+  --color-accent-primary: #e95b4b;
+  --color-accent-primary-hover: #d94d40;
+  --color-focus-ring: #914737;
+  --planner-accent-soft: #faeeeb;
   --planner-radius-card: 16px;
   --planner-radius-panel: 20px;
-  --planner-border: var(--color-border-subtle);
-  --planner-shadow: var(--elevation-card);
-  --workspace-scenery: url("/media/home-concept/home-hero-sakura-sunset.webp");
-  --workspace-glass: color-mix(
-    in srgb,
-    var(--color-bg-elevated) 88%,
-    transparent
-  );
+  --planner-border: var(--color-border-subtle, rgb(199 176 168 / 35%));
+  --planner-shadow: var(--elevation-card, 0 8px 24px rgb(94 74 65 / 7%));
+  --workspace-scenery: url("/media/start/sakura-coast-fuji-train-sunset.png");
+  --workspace-glass: rgb(255 249 241 / 72%);
   height: 100dvh;
   overflow: hidden;
   color: var(--color-text-primary);
@@ -127,16 +132,6 @@
   font-size: 10px;
   fill: #786154;
 }
-.currentBooking {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  min-height: 32px;
-  font-size: 10px;
-  flex-shrink: 0;
-}
-.currentBooking button,
 .placeActions button,
 .detailBody button,
 .rangeCards button,
@@ -521,7 +516,7 @@
   inset: 0 0 auto;
   z-index: 12;
   pointer-events: none;
-  height: var(--main-header-height);
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -532,6 +527,23 @@
 }
 .header > :not([aria-hidden="true"]) {
   pointer-events: auto;
+}
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.brand > span {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--planner-accent-soft);
+  color: var(--color-accent-primary);
 }
 .headerTitle {
   display: flex;
@@ -811,6 +823,21 @@
   min-height: 0;
   min-width: 0;
 }
+.quickSettings,
+.recommendations {
+  padding-inline: 15px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .quickSettings {
   display: flex;
   flex-direction: column;
@@ -826,7 +853,7 @@
 }
 .recommendations .sectionTitle {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
@@ -835,10 +862,18 @@
   white-space: nowrap;
 }
 .sectionTitle h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-size: clamp(15px, 1.18vw, 19px);
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.4px;
+}
+.sectionTitle h2 svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
 }
 .sectionTitle p {
   margin: 5px 0 0;
@@ -988,17 +1023,17 @@
 }
 .planList {
   display: grid;
-  grid-template-rows: repeat(3, minmax(100px, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 8px;
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
 }
 .planRow[data-recommendation] {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
-  gap: 4px;
-  padding: 6px;
+  gap: 5px;
+  padding: 7px;
 }
 .planRow[data-selected="true"] {
   border-color: var(--color-accent-primary);
@@ -1335,7 +1370,7 @@
   border: 1px solid var(--color-border-strong);
   border-radius: 20px;
   background: var(--color-bg-overlay);
-  box-shadow: var(--elevation-popover);
+  box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
   backdrop-filter: blur(10px);
 }
 /* Manual popovers use the top layer; outside clicks still reach the page. */
@@ -1530,7 +1565,15 @@
 .headerNav a[aria-current] {
   color: var(--color-accent-primary);
 }
-
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9ece3;
+  border: 3px solid #fffdf8;
+}
 .quickPair .quickCard {
   height: 86px;
   gap: 3px;
@@ -1568,12 +1611,6 @@
 .planDuration {
   font-size: 11px;
   color: var(--color-text-secondary);
-}
-.currentBooking {
-  font-size: 12px;
-}
-.currentBooking button {
-  font-size: 12px;
 }
 .rangeHeading {
   font-size: 13px;
@@ -1738,6 +1775,9 @@
     height: 60px;
     padding: 0 16px;
     gap: 12px;
+  }
+  .brand {
+    font-size: 17px;
   }
   .headerTitle {
     display: none;
@@ -2048,12 +2088,12 @@
   flex-shrink: 0;
 }
 .bottomPanel .bottomTabs button {
-  min-height: clamp(42px, 5.5dvh, 64px);
-  font-size: clamp(13px, 1.05vw, 20px);
-  padding: 7px 2px;
+  min-height: clamp(32px, 3.8dvh, 42px);
+  font-size: clamp(12px, 0.95vw, 17px);
+  padding: 3px 2px;
 }
 .bottomPanel .tabContent {
-  padding: clamp(6px, 1dvh, 14px) clamp(8px, 1vw, 20px);
+  padding: clamp(4px, 0.7dvh, 9px) clamp(8px, 1vw, 20px);
   border-radius: 0;
 }
 .bottomPanel .rangeCards {

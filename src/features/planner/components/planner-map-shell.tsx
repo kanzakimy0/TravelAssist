@@ -18,12 +18,7 @@ import type {
 import { MapQuickCard } from "./map-quick-card";
 import { destinationArtwork } from "../data/planner-artwork";
 import { SvgPlannerArtwork } from "./planner-artwork";
-import {
-  isLandmark,
-  landmarkKey,
-  landmarkPaths,
-  travelBubbles,
-} from "../map/map-visuals";
+import { isLandmark, travelBubbles } from "../map/map-visuals";
 import styles from "../planner.module.css";
 
 export function PlannerMapShell({
@@ -409,18 +404,6 @@ function SchematicMap({
               stroke={isLandmark(p) ? "#fffdf8" : "#e95b4b"}
               strokeWidth={isLandmark(p) ? 4 : 2.5}
             />
-            {isLandmark(p) && (
-              <g
-                transform={`translate(${x - 23} ${y - 23}) scale(.72)`}
-                fill="none"
-                stroke="#687b71"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d={landmarkPaths[landmarkKey(p.name)]} />
-              </g>
-            )}
             {isLandmark(p) && (
               <SvgPlannerArtwork
                 artwork={destinationArtwork(p.name, p.type)}

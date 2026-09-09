@@ -114,7 +114,7 @@ const days: MockDay[] = [
     day: 2,
     date: "4月11日",
     title: "河口湖 · 富士山之约",
-    color: "#6e7d98",
+    color: "#9461ce",
     stops: [
       stop(
         "departure",
@@ -189,7 +189,7 @@ const days: MockDay[] = [
     day: 3,
     date: "4月12日",
     title: "箱根 · 山与湖的余韵",
-    color: "#a87d49",
+    color: "#399b9a",
     stops: [
       stop(
         "lake-departure",

@@ -2,8 +2,9 @@
   position: relative;
   container-type: size;
   display: grid;
-  grid-template-columns: 68px minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: 61px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 5px;
   height: 100%;
   min-width: 0;
   min-height: 0;
@@ -11,32 +12,65 @@
 }
 .labels {
   display: grid;
-  grid-template-rows: 1.2fr 1fr;
-  gap: 7px;
-  padding-bottom: 7px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 5px;
+  padding: 0 0 4px;
 }
 .labels h3 {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 3px;
   margin: 0;
-  padding: 4px 3px;
+  padding: 5px 2px;
   font-size: 11px;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
   text-align: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   border-radius: 9px;
   background: #d8eae4c7;
   color: #36645b;
 }
-.labels h3:last-child {
+.labels h3:last-of-type {
+  grid-column: 1 / -1;
   background: #efe2cda6;
   color: #7b6144;
 }
-.labels small,
-.labels span {
-  font-size: 9px;
-  font-weight: 500;
-  white-space: nowrap;
+.alignmentToggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 5px 2px;
+  border: 1px solid #e5c1b7;
+  border-radius: 9px;
+  background: #f6ded7c7;
+  color: #8b5147;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  text-align: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+.alignmentToggle[aria-pressed="true"] {
+  border-color: #bb6d5d;
+  background: #c97b69;
+  color: #fffaf3;
+}
+.alignmentToggle:focus-visible {
+  outline: 2px solid #a95b49;
+  outline-offset: 2px;
 }
 .viewport {
   min-width: 0;
@@ -55,6 +89,8 @@
   gap: 7px;
   padding: 0 0 4px;
   box-sizing: border-box;
+  min-height: 0;
+  overflow: hidden;
 }
 .timeline[data-compare="true"] {
   grid-template-columns: minmax(0, 1fr);
@@ -84,14 +120,134 @@
   min-width: 0;
   grid-template-rows: minmax(0, 1.2fr) minmax(0, 1fr);
 }
+.timeline[data-time-aligned="true"] .labels,
+.timeline[data-time-aligned="true"] .tracks {
+  grid-template-rows: minmax(0, 1fr) 54px;
+}
+.timeline[data-time-aligned="true"][data-compare="true"] .tracks {
+  grid-template-rows: minmax(0, 1fr) 18px 54px;
+  gap: 2px;
+}
 .plannedLane {
   height: 100%;
+}
+.alignedViewport {
+  overflow: hidden;
+}
+.alignedPlanned {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  height: 100%;
+  min-height: 0;
+}
+.alignedBand {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-inline: 3px;
+  border-radius: 8px;
+  background: #fffaf02e;
+}
+.alignedRuler {
+  position: relative;
+  flex: 0 0 10px;
+  margin-inline: 3px;
+  border-bottom: 1px solid #80ab9d;
+  color: #74867d;
+  font-size: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.alignedRuler::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    #80ab9d80 0 1px,
+    transparent 1px var(--five-minute-step)
+  );
+  pointer-events: none;
+}
+.alignedRuler span {
+  position: absolute;
+  top: -3px;
+  z-index: 1;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.alignedRuler span:first-child {
+  transform: none;
+}
+.alignedRuler span:last-child {
+  transform: translateX(-100%);
+}
+.alignedRail {
+  flex: 1;
+  min-height: 0;
+}
+.alignedStop {
+  position: absolute;
+  inset-block: 2px 0;
+  min-width: 46px;
+  container-type: inline-size;
+}
+.alignedStop .card {
+  grid-template-columns: minmax(0, 1fr);
+  height: 100%;
+}
+.alignedStop .actions {
+  display: none;
+}
+.alignedStop .info {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 4px;
+  padding: 2px 5px;
+}
+.alignedStop .info small,
+.alignedStop .info strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.alignedStop .info small {
+  font-size: 8px;
+}
+.alignedStop .info strong {
+  display: block;
+  font-size: 9px;
+}
+.card[data-continuation="true"] {
+  grid-template-columns: minmax(0, 1fr);
+  border-left-style: dashed;
+}
+@container (max-width: 78px) {
+  .alignedStop .card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .alignedStop .info {
+    display: flex;
+    padding-inline: 3px;
+  }
+  .alignedStop .info strong {
+    -webkit-line-clamp: 1;
+    font-size: 9px;
+  }
+  .alignedStop .info small {
+    font-size: 8px;
+  }
 }
 .reserve {
   width: max-content;
   min-width: 100%;
   height: 100%;
   box-sizing: border-box;
+}
+.timeline[data-time-aligned="true"] .reserve {
+  padding-top: 2px;
 }
 .lockExplanation {
   padding: 12px;
@@ -452,8 +608,8 @@
 }
 @media (max-width: 767px) {
   .timeline {
-    grid-template-columns: 58px minmax(0, 1fr);
-    gap: 5px;
+    grid-template-columns: 55px minmax(0, 1fr);
+    gap: 4px;
   }
   .labels h3 {
     font-size: 10px;

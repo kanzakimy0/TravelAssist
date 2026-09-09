@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { MainHeader } from "@/components/layout/main-header";
-import { AccountAvatar } from "@/components/ui/account-avatar";
+import { PlannerIcon } from "./planner-icon";
 import { PlannerPopover } from "./planner-popover";
 import styles from "../planner.module.css";
 import ui from "../planner-v05.module.css";
@@ -27,12 +26,14 @@ export function WorkspaceHeader() {
     notifications = useRef<HTMLButtonElement>(null),
     account = useRef<HTMLButtonElement>(null);
   return (
-    <MainHeader
-      className={styles.header}
-      decoration={
-        <div className={ui.topFade} data-top-gradient aria-hidden="true" />
-      }
-    >
+    <header className={styles.header}>
+      <div className={ui.topFade} data-top-gradient aria-hidden="true" />
+      <Link href="/" className={styles.brand}>
+        <span>
+          <PlannerIcon name="map" />
+        </span>
+        TravelAssist
+      </Link>
       <div className={ui.headerActions}>
         <form
           className={ui.search}
@@ -116,7 +117,9 @@ export function WorkspaceHeader() {
           aria-expanded={open === "account"}
           onClick={() => setOpen(open === "account" ? null : "account")}
         >
-          <AccountAvatar />
+          <span className={styles.avatar}>
+            <PlannerIcon name="users" />
+          </span>
         </button>
       </div>
       {open && (
@@ -162,6 +165,6 @@ export function WorkspaceHeader() {
           )}
         </PlannerPopover>
       )}
-    </MainHeader>
+    </header>
   );
 }

@@ -243,7 +243,8 @@ test("recommendations preserve artwork, order and selection with user-authorized
     encoding: "utf8",
   }).replaceAll("\r\n", "\n");
   const current = (await readFile(file, "utf8")).replaceAll("\r\n", "\n");
-  assert.ok(current.includes("到详情管理预约"));
+  assert.ok(!current.includes("到详情管理预约"));
+  assert.ok(!current.includes("data-current-booking"));
   const svg = base.match(/<svg[\s\S]*?<\/svg>/)[0];
   // TASK-025.2 user-directed palette update changes only the displayed route paint.
   assert.match(current, /stroke=\{displayRouteColor\(day.color\)\}/);
