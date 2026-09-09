@@ -9,8 +9,8 @@
 - GitHub Issue: [#201](https://github.com/kanzakimy0/TravelAssist/issues/201)
 - Branch: `feature/b-travelassist-engine-contract`
 - Depends On: 已合入的 0.9 Contract 交接基线；发布前须 A/B 核对 4.16 / 4.17 / 8.5
-- Commit: PENDING（契约设计已完成，等待提交）
-- Pull Request: PENDING（Draft PR 尚未创建）
+- Commit: `214d035681bdc45af27ebdbe64ec5dd2210fb3d7`（契约设计）
+- Pull Request: [#237](https://github.com/kanzakimy0/TravelAssist/pull/237)（仓库自动化在用户验收前创建并合并；review-gate Draft PR 待创建）
 - Authoring Base: `2d9734731dcece9f90db1779da06a7a3c9e9bab7`
 - Execution Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 

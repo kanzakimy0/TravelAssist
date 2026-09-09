@@ -2,7 +2,7 @@
 
 ## Status
 
-待验收 / Contract Review Candidate。WBS 4.20 的契约设计已交付，尚未 frozen、未合入 `develop`。Issue #201 保持 Open；4.21–4.24 均未启动。
+待验收 / Contract Review Candidate。WBS 4.20 的契约设计已交付但尚未 frozen。仓库自动化在 feature push 后创建并立即合并 PR #237；该合并没有用户验收，因此不满足“已完成”条件。Issue #201 保持 Open；4.21–4.24 均未启动。
 
 ## Tracking
 
@@ -11,11 +11,14 @@
 - Issue: [#201](https://github.com/kanzakimy0/TravelAssist/issues/201)
 - Base: `origin/develop@1af72af0d7151af4dd59073ee0b015a70b267064`
 - Branch: `feature/b-travelassist-engine-contract`
-- Implementation commit: PENDING
-- Draft PR: PENDING
+- Implementation commit: `214d035681bdc45af27ebdbe64ec5dd2210fb3d7`
+- Automated PR: [#237](https://github.com/kanzakimy0/TravelAssist/pull/237)，GitHub Actions 创建并合并为 `5383501192359abbd06c4585311d0362e9e7dbea`，不是用户验收
+- Review-gate Draft PR: PENDING
 - Prior handoff: PR #202 已合并，只包含 Task/WBS 文档交接，不是 Engine 实现
 
 GitHub 查重确认 #201 是唯一正式 4.20 Issue。搜索中其他命中项属于 7.5/7.8 路线任务；没有第二个 4.20 实现 Issue。指定实现分支在开始时本地/远程均不存在，因此从执行时最新 `origin/develop` 创建，没有从未合并 feature 分支叠加。
+
+原计划在 push 后立即创建 Draft PR，但 `auto-create-pr.yml` 对 `feature/**` push 自动创建 non-draft PR 并调用 merge；PR #237 在两秒内由 `app/github-actions` 创建并合并，人工 Draft 创建随后收到“no commits between”拒绝。未执行手动 merge、auto-merge 命令、force push 或历史重写，也不因这次自动合并把 4.20 标记已完成。后续只增加 review-gate tracking，不回滚 develop。
 
 ## Contract
 

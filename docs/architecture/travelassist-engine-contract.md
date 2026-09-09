@@ -11,6 +11,8 @@
 > Authoring base: `origin/develop@1af72af0d7151af4dd59073ee0b015a70b267064`
 >
 > Canonical Trip Plan Schema: `src/shared/contracts/trips/index.ts`，`contractVersion: "1.0"`
+>
+> Delivery note: repository automation created and merged PR [#237](https://github.com/kanzakimy0/TravelAssist/pull/237) immediately after the feature push. No user acceptance occurred; this contract remains a Review Candidate and is not frozen.
 
 ## 1. 定义、目标与非目标
 
