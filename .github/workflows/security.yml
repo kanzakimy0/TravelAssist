@@ -1,0 +1,41 @@
+name: Security baseline
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop, "codex/**", "feature/**", "fix/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run test:security
+      - run: npm run security:scan
+      - run: npm run security:history
+      - run: npm run security:boundary
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: node --experimental-strip-types --test tests/*.test.mjs
+      - run: npm run security:build
+      - run: npm run security:bundle
+      - name: Check security-tool formatting
+        run: npx --no-install prettier --check "tools/security/*.{mjs,json}" tests/task-020-security.test.mjs
+      - run: git diff --check

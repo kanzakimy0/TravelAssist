@@ -279,7 +279,10 @@ export function validateAsset(asset, readLocal = true, now = Date.now()) {
   return errors;
 }
 export function validateDuplicates(entries, aliases) {
-  return duplicateGroups(entries)
+  const uniquePaths = [
+    ...new Map(entries.map((entry) => [entry.path, entry])).values(),
+  ];
+  return duplicateGroups(uniquePaths)
     .filter(
       (group) =>
         !aliases.duplicateGroups?.some(

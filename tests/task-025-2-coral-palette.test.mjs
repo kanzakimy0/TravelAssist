@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import "./register-planner-ts.mjs";
 import { displayRouteColor } from "../src/features/planner/map/route-color.ts";
-import { mapCollections } from "../src/features/planner/map/map-provider.ts";
+const { mapCollections } =
+  await import("../src/features/planner/map/map-provider.ts");
 
 test("saved legacy brand paint uses the current CSS coral without changing other day colors", () => {
   const css = readFileSync(
