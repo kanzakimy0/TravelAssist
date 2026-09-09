@@ -7,37 +7,128 @@
 - Owner: `A`
 - Responsibility: `Main Travel System`
 - Priority: `P1`
-- Status at Task creation: `可开始`
 - GitHub Issue: `#242`
 - Task File: `docs/tasks/TASK-024-a-main-layout-header.md`
 - Suggested implementation branch: `feature/a-main-layout-header`
 - Depends On: `1.13`, `2.7`
-- Task creation reference develop: `30851531b94be42703b0e9f9f69ec0f506ee5a69`
-- Execution base: **must re-read latest `origin/develop`; do not assume the Task creation SHA is still current**
+- Execution base: **执行时必须重新读取最新 `origin/develop`，不得使用本 Task 创建时的旧 SHA 直接开发。**
 
-## Objective
+## 1. Objective
 
-完成 WBS 3.1「全局 Main Layout / Header」的正式工程整合，为后续 3.2–3.7 网站入口功能提供稳定 Main Shell。
+完成 WBS 3.1「全局 Main Layout / Header」的正式工程整合，为后续网站入口与主旅行系统提供单一、稳定、可复用的 Main Shell。
 
-本 Task **不是重新设计或重写 Header**。仓库已经存在首页、主流程导航、Logo、Personal Center 导航等已合并成果；本次应先审计现状，然后把已有成果整理为统一、可复用、可测试的 Main Layout / Header 边界，并只补齐真实缺口。
+本 Task 同时冻结一条新的全站视觉原则：
 
-## Existing Work That Must Be Preserved
+> **TravelAssist 网站首页、Start、Planner / Detail 与 Personal Center 必须属于同一套品牌视觉体系。风格统一，但页面结构允许按照使用场景不同。**
 
-执行前必须确认以下已合入成果，并优先复用：
+因此：
 
-- `TASK-004-A`：网站首页最终视觉基础。
-- `TASK-010-A`：主流程导航闭环，关联 WBS `3.1` / `3.6`。
-- `TASK-010-B`：全局 Logo / Personal Center 导航子集，关联 WBS `3.1`。
-- `/start`：既有 Step 1–5 向导与响应式成果。
-- `/planner` 与 Trip Detail：既有 Planner / Detail 工作区和导航成果。
-- `/personal-center`：B 模块既有 Shell；本 Task 不重写其内部布局。
-- 已有 shared UI / navigation primitives：存在即复用，不建立平行第二套。
+- 个人中心的 `Sidebar + Content` 不复制到主系统。
+- 首页仍可保持沉浸式 Hero / 照片入口结构。
+- Start 仍可保持聚焦输入的向导结构。
+- Planner / Detail 仍可保持地图主导的全屏工作台结构。
+- 但 Logo、品牌色、暖白表面、字体层级、圆角、边框、阴影、按钮、浮层、Avatar、Hover / Focus、留白节奏等必须表现为同一个 TravelAssist 产品。
 
-如果上述实现与本 Task 的文字描述有差异，以 **最新 develop 中已验收并合并的行为** 为基线；只修复可证明属于 WBS 3.1 的缺口。
+本 Task **不是重新设计或重写 Header**。必须审计并复用已合入的 Header / Logo / Navigation 成果，只处理 WBS 3.1 的真实缺口。
 
-## Preflight — Mandatory
+---
 
-开始任何修改前执行并记录：
+## 2. Source of Truth Priority
+
+发生冲突时按以下优先级执行：
+
+1. 用户最新决定：**整体网站与个人主页保持同一套品牌视觉体系，结构不强行一致。**
+2. 最新 `origin/develop` 中已经用户验收并合并的实际页面行为。
+3. `docs/ui/personal-center-shell.md`：Personal Center 已冻结的 Shell / 品牌视觉语言。
+4. Personal Center 当前已验收实现及其 shared primitives / CSS / tokens。
+5. TASK-010-A / TASK-010-B 已合并的 Main Header / Navigation 行为。
+6. 其他 Main System 设计文档与现有实现。
+
+不得根据旧 PR、被否决设计或历史截图覆盖最新已验收成果。
+
+---
+
+## 3. Existing Work That Must Be Preserved
+
+执行前必须确认并复用：
+
+- `TASK-004-A`：网站首页既有视觉基础。
+- `TASK-010-A`：主流程导航闭环。
+- `TASK-010-B`：全局 Logo / Personal Center 导航子集。
+- `/start`：Step 1–5 已有向导与响应式成果。
+- `/planner` 与当前 Trip Detail：已有 Planner / Detail 工作区。
+- `/personal-center`：B 已完成的 Personal Center Shell / Visual System。
+- 已存在的 shared UI / token / navigation primitive。
+
+**禁止建立第二套 Header、第二套 Logo、第二套 Avatar Menu 或平行的品牌 Token。**
+
+如果现有 Shared UI 已足够，只做复用和最小补齐，不为了“重构得更漂亮”制造大范围 diff。
+
+---
+
+## 4. Personal Center → Global Brand Visual Contract
+
+### 4.1 必须继承的品牌语言
+
+主系统 Shell 应从已完成 Personal Center 继承以下视觉基因：
+
+- 暖米白 / 象牙白作为主要中性表面。
+- 深墨色作为主要正文 / 图标基色。
+- 朱红 / 珊瑚红作为主要品牌强调色。
+- 极浅暖粉 / 米粉用于 Hover、Active、轻强调层。
+- 低饱和、低对比、克制的旅行产品气质。
+- 卡片 / Popover / 控件使用大圆角体系。
+- 轻量暖色描边与柔和阴影，禁止厚重黑色 Drop Shadow。
+- 浮层、菜单、设置面板使用同一类暖白表面与阴影语言。
+- Logo / Brand 呈现保持一致。
+- Avatar / Account 入口的尺寸、圆形语言、Popover 视觉保持一致。
+- Focus 必须可见，并与 Hover / Active 处于同一视觉体系。
+- 真实旅行内容继续允许使用写实照片；装饰纹理不得压过业务内容。
+
+### 4.2 统一不等于复制布局
+
+不得把 Personal Center 的左 Sidebar 强行加入主系统。
+
+页面允许如下结构差异：
+
+```text
+TravelAssist Brand System
+├── Home        → 沉浸式入口 / Hero
+├── Start       → 聚焦输入 / Wizard
+├── Planner     → 地图主导 / 工作台
+├── Trip Detail → 执行与确认工作区
+└── Personal    → Sidebar + Content 管理空间
+```
+
+但用户跨页面时应明显感知：
+
+```text
+同一个 Logo
+同一套品牌色
+同一套表面材质
+同一套圆角 / 边框 / 阴影逻辑
+同一套按钮 / 浮层 / Avatar 语言
+同一套字体与留白节奏
+```
+
+### 4.3 Planner / Map 例外
+
+Planner / Detail 的地图必须继续是视觉主角，因此允许：
+
+- 地图全宽 / 全高。
+- Header 更轻或透明化。
+- 浮层镶嵌在地图上。
+- 右侧栏与底部时间轴使用工作台布局。
+
+但这些控件的边框、圆角、表面、阴影、文字、按钮和交互反馈仍应符合 TravelAssist 统一品牌体系。
+
+**不得为了统一风格破坏地图面积、时间轴、右栏或既有 Planner 几何。**
+
+---
+
+## 5. Preflight — Mandatory
+
+开始修改前执行并记录：
 
 ```bash
 git status --short
@@ -47,21 +138,33 @@ git rev-parse origin/develop
 git log --oneline -20 origin/develop
 ```
 
-然后读取：
+读取最新：
 
 ```bash
 git show origin/develop:docs/project/WBS-TravelAssist.md
 git show origin/develop:docs/tasks/TASK-024-a-main-layout-header.md
+git show origin/develop:docs/ui/personal-center-shell.md
 ```
 
-并检查与本 Task 高关联的既有 Task / Result：
+并查找 / 读取：
 
-```bash
-git show origin/develop:docs/tasks/TASK-010-a-main-flow-navigation.md
-git show origin/develop:docs/tasks/RESULT-TASK-010-b-personal-center-navigation.md
+```text
+TASK-010-A
+TASK-010-B
+Personal Center 当前实际 Shell / CSS / shared primitives
+Main Header / Logo / Avatar / shared token 实现
 ```
 
-如文件名在最新 develop 已调整，先搜索 `TASK-010` / `Main Layout` / `Header` / `navigation`，读取真实现有文件，不因路径差异跳过审计。
+如文件名变化，使用搜索找到最新真实文件，不得因为路径不同跳过审计。
+
+### Dependency Gate
+
+执行时必须重新核对 WBS `1.13` 与 `2.7`。
+
+- `2.7` 必须保持已完成。
+- 对 `1.13`：如果仍处于待审查但其实际设计 / Token 已进入 develop，先记录真实状态并只使用已存在、已验收或本 Task 明确冻结的品牌规则。
+- 不得自行宣称 `1.13` 已完成。
+- 如果缺少足够的可执行视觉基线导致无法安全实现 3.1，返回 `Blocked`，不得自行发明 Design System。
 
 ### Git Safety
 
@@ -74,122 +177,159 @@ git push --force
 git push --force-with-lease
 ```
 
-不得删除、覆盖或打包用户未提交工作。
+不得删除或覆盖用户未提交工作。
 
-## Start Tracking — Mandatory
+---
 
-确认前置满足后：
+## 6. Start Tracking — Mandatory
 
-1. 从最新 `origin/develop` 建立独立实现分支：
+确认可执行后：
+
+1. 从最新 `origin/develop` 建立：
 
 ```text
 feature/a-main-layout-header
 ```
 
-2. 更新最新 `docs/project/WBS-TravelAssist.md`：
-   - WBS `3.1`：`未开始/可开始` → `进行中`。
-   - Owner 保持 `A`。
-   - 不修改其他 Owner Task 的真实状态。
-3. Issue `#242` 记录实际启动基线与 branch。
-4. 不得仅因为 Task 文件已创建就提前把 3.1 标记为已完成。
+2. 更新最新 WBS：
+   - `3.1` → `进行中`
+   - Owner 保持 `A`
+   - 不改其他 Owner 的真实状态
+3. Issue #242 记录 execution base / branch。
+4. 不因 Task 已创建就提前标记 `3.1 = 已完成`。
 
-## Scope
+---
 
-### 1. Main Layout Boundary
+## 7. Scope
 
-建立或整理主旅行系统的 Layout 边界，使首页及主系统页面有清晰、一致的外层结构。
+### 7.1 Main Layout Boundary
 
-要求：
+建立或整理主旅行系统的单一 Layout 边界：
 
-- 优先使用 Next.js App Router 的既有 layout 结构。
-- 如果当前结构已经足够，只做最小重构或补齐，不为“架构整齐”做无必要大迁移。
-- Main Travel System 与 Personal Center 的边界清晰。
-- 不把 B 的 Personal Center 内部布局迁入 A Main Layout。
-- 不破坏 Planner 自己已有的全屏 / 地图布局需求。
+- 优先复用 Next.js App Router 现有 layout。
+- 首页 / Start / Planner / Detail 的 Shell 责任清楚。
+- Main Travel System 与 Personal Center 路由边界清楚。
+- 不把 B 的 Sidebar 迁入 A 主系统。
+- 不破坏 Planner 全屏地图与已有工作台结构。
 
-### 2. Global Header Integration
+### 7.2 Global Header Integration
 
-统一主系统 Header 行为，至少核对并保证：
+必须保证：
 
-- Logo / Brand 入口行为一致。
-- 首页 → Start → Planner → Detail 的现有主流程导航不回退。
-- 登录按钮 / Avatar **只保留现有已接线能力和稳定占位**；完整 WBS 3.4 业务由后续 Task 处理。
-- Header 的可见性、定位、层级和地图 / 浮层不发生冲突。
-- 不建立第二套 Header。
+- 单一 Header / Brand 来源。
+- Logo 外观与 Personal Center 品牌一致。
+- Logo 行为保持已有已验收导航。
+- Header 的暖白 / 半透明 / 边框 / 阴影 / typography 与统一品牌体系协调。
+- 首页 → Start → Planner → Detail 现有主流程不回退。
+- 登录 / Avatar 只复用已有接线能力；完整 Auth Header 逻辑留给 WBS 3.4。
+- 不复制或重建 B 的 Avatar Popover 业务逻辑。
+- Header 与地图、右栏、底栏、浮层无 z-index 冲突。
 
-### 3. Shared Shell Rules
+### 7.3 Shared Shell / Visual Tokens
 
-整理可复用 Shell 规则：
+审计已有 shared tokens / CSS variables / primitives，并优先复用。
 
-- 页面最大宽度 / 全宽例外。
-- Header 高度与内容避让。
-- z-index / overlay 基础边界。
-- 主内容区域最小高度。
-- desktop / tablet / mobile 的结构行为。
-- 对 Planner / Map 全屏页面允许明确例外，不强行套普通内容页宽度。
+需要统一的最小集合至少包括：
 
-规则应尽量复用已有 Design Token / shared UI；不得在此 Task 新造完整 Design System。
+- brand surface / page surface
+- primary text / secondary text
+- accent / subtle accent
+- border
+- shadow
+- radius family
+- focus ring
+- header height / shell spacing
+- overlay / popover surface
 
-### 4. Accessibility Baseline
+如果这些规则已存在，**不要再创建另一组同义 Token**。
 
-Header / Shell 本范围至少满足：
+如果必须补齐，只补最小缺口，并说明哪些由现有 Personal Center 提升为全站共享。
 
-- Landmark 语义合理（例如 header / nav / main）。
-- Logo / 主导航可键盘操作。
+### 7.4 Layout Rhythm
+
+主系统 Shell 必须与个人中心保持相近的视觉节奏：
+
+- 主要容器边距有统一逻辑。
+- 卡片之间间距有统一层级。
+- 顶部操作区不拥挤。
+- Header / Content 的视觉层级明确。
+- 桌面、平板、手机缩放规律一致。
+- 不出现某页极密、某页极松且无场景原因的情况。
+
+### 7.5 Accessibility Baseline
+
+至少保证：
+
+- `header` / `nav` / `main` landmark 合理。
+- Logo / 主导航键盘可达。
 - Focus 可见。
-- 不因 sticky/fixed Header 遮挡主内容或焦点目标。
-- 小屏不出现关键导航不可达的新回归。
+- sticky / fixed Header 不遮挡焦点目标。
+- 小屏关键入口可达。
+- 不仅依靠颜色表达 Hover / Active / Focus。
 
-### 5. Regression Tests
+### 7.6 Regression Tests
 
-为本 Task 新增或更新针对性测试，覆盖至少：
+测试至少覆盖：
 
 - Main Layout / Header 正确渲染。
-- Logo / 主入口导航保持正确。
-- Main system 与 Personal Center 路由边界不被错误嵌套。
-- `/start`、`/planner`、Trip Detail 不因 Shell 整合回归。
-- 已有 Auth / Personal Center 导航测试不被删除或弱化。
+- Logo / 主流程导航正确。
+- Personal Center 不被错误套进 Main Layout。
+- `/start` / `/planner` / Trip Detail 不回归。
+- 既有 Auth / Personal Center 导航测试不得删除或弱化。
+- 主系统与 Personal Center 共用视觉 Token / primitive 时，不出现循环依赖或模块越界。
 
-## Out of Scope
+---
 
-本 Task **不得顺手实施**：
+## 8. Out of Scope
 
-- WBS 3.2：首页动画背景区域的新开发。
-- WBS 3.3：「让我们开始吧」主入口的新交互业务。
-- WBS 3.4：登录按钮 / Avatar 的完整 Auth / Session 主系统实现。
+本 Task 不得顺手实施：
+
+- WBS 3.2：首页动画背景的新业务开发。
+- WBS 3.3：「让我们开始吧」新业务交互。
+- WBS 3.4：完整 Auth / Session Header 逻辑。
 - WBS 3.5：AI 悬浮入口。
 - WBS 3.7：完整 Loading / Empty / Error 系统。
-- Planner UI 重设计。
-- Mapbox / Route / POI / AI / Booking / Trip Engine 新业务。
-- Personal Center 内部页面或 B 数据模块重构。
-- 新数据库 Schema / Migration。
-- 与 3.1 无关的全仓格式清理。
+- Planner 功能重设计。
+- Planner 几何 / 地图面积大改。
+- Mapbox / Route / POI / AI / Booking / Engine 新业务。
+- Personal Center IA / Sidebar / 页面业务重构。
+- 新 DB Schema / Migration。
+- 全仓无关格式清理。
+- 为“统一风格”大规模重画已验收页面内容。
 
-## Conflict Guard
+---
 
-由于仓库存在 A/B 并行开发，本 Task 必须遵守：
+## 9. Conflict Guard
 
-1. 先拉取最新 `origin/develop`，不要从旧本地分支继续堆叠。
-2. 不覆盖他人最新 Task / Result / WBS 顶部记录。
-3. WBS 冲突必须逐段合并，保留双方真实状态；禁止整份选择 ours/theirs。
-4. 不把 3.1 的“导航子集已完成”误写成完整 3.1 已完成，直到本 Task 验收合并。
-5. 不删除 TASK-010-A / TASK-010-B 的历史追踪。
+1. 必须从最新 `origin/develop` 启动。
+2. 不覆盖其他 A/B 工作站最新 Task / Result / WBS。
+3. WBS 冲突逐段合并，禁止整份 ours / theirs。
+4. 保留 TASK-010-A/B 历史追踪。
+5. 保留 B 已完成 Personal Center 功能状态。
+6. 若共享 Token 修改影响 Personal Center，必须实际回归 Personal Center，不得只看主系统。
+7. 不把“视觉统一”理解成 A 接管 B 页面。
 
-## Expected Deliverables
+---
 
-根据真实仓库结构，交付物应包括：
+## 10. Expected Deliverables
 
-- Main Layout / Header 的必要源码增量。
-- 必要 shared layout/header primitives 的增量整理。
+根据真实仓库结构，交付：
+
+- Main Layout / Header 必要源码增量。
+- 现有 shared brand / shell primitive 的最小整合。
+- 如确有必要，补齐最小全站共享 Token；禁止平行 Design System。
 - 3.1 专项测试。
+- 浏览器视觉对照证据。
 - `docs/tasks/RESULT-TASK-024-a-main-layout-header.md`
-- 更新 `docs/project/WBS-TravelAssist.md`
-- 更新 Issue `#242`
-- Draft PR → `develop`
+- 最新 WBS 更新。
+- Issue #242 更新。
+- Draft PR → `develop`。
 
-如果审计证明现有代码已基本满足 3.1，允许 Task 以“小范围整合 + 测试 + 文档冻结”的形式完成，不要求为了增加 diff 而重写代码。
+如果审计证明代码已经基本满足 3.1，可以“小范围整合 + 测试 + 视觉一致性冻结”完成，不得为了制造 diff 重写代码。
 
-## Validation
+---
+
+## 11. Validation
 
 至少执行：
 
@@ -202,66 +342,106 @@ npm test --if-present
 git diff --check
 ```
 
-如果仓库已有 Task-specific Node tests / Playwright / browser QA，运行与 Header / main navigation / responsive 相关的真实测试集。
+仓库已有 Task-specific Node / Playwright / browser QA 时，运行与 Header / navigation / responsive / personal-center regression 有关的测试。
 
-### Browser Acceptance
+如果全仓已有基线失败：
+
+- 如实列出。
+- 证明本 Task 未新增失败。
+- 不越界修复无关文件。
+
+---
+
+## 12. Browser / Visual Acceptance
 
 至少检查：
 
-- Desktop：1440×900
-- Tablet：1024×768
-- Mobile：390×844
-- Narrow mobile：320×568
+- `1440×900`
+- `1024×768`
+- `390×844`
+- `320×568`
 
-页面至少覆盖：
+至少覆盖：
 
-- `/`
-- `/start`
-- `/planner`
-- 一个当前真实可达的 Trip Detail 路由
-- `/personal-center` 仅做边界回归，不改内部布局
+```text
+/
+/start
+/planner
+一个当前真实可达的 Trip Detail
+/personal-center
+```
+
+### 功能回归
 
 检查：
 
-- Header / Logo 可见性和位置。
-- 导航可达。
+- Logo / Header 位置与导航。
+- Avatar / Account 入口现有行为。
 - 无遮挡 / 横向溢出。
-- Planner 地图 / 浮层 z-index 无回归。
+- Planner Map / overlay / right panel / bottom timeline 无几何回归。
+- Personal Center Sidebar / TopActions / Content 不回归。
 - console / hydration 无新增错误。
 
-无法运行的浏览器或外部能力必须写为 `Deferred`，不得伪报 PASS。
+### 视觉一致性验收
 
-## Acceptance Criteria
+必须进行 Main System ↔ Personal Center 对照，至少检查：
 
-- [ ] 从最新 `origin/develop` 启动并记录真实基线。
+- Logo / Brand 是否像同一产品。
+- 暖白 / 象牙白表面是否协调。
+- 珊瑚朱红 / 暖粉强调是否一致。
+- 正文 / 次级文字层级是否一致。
+- 圆角层级是否一致。
+- 边框与阴影是否一致。
+- Avatar / Popover / 按钮是否来自同一视觉语言。
+- Hover / Focus 是否一致。
+- 页面留白节奏是否协调。
+
+允许页面骨架不同，但不得出现“像两个不同网站”的视觉断裂。
+
+无法运行的浏览器能力写 `Deferred`，不得伪报 PASS。
+
+---
+
+## 13. Acceptance Criteria
+
+- [ ] 从最新 `origin/develop` 启动并记录 execution base。
+- [ ] 核对 1.13 / 2.7 前置，不伪改依赖状态。
 - [ ] WBS 3.1 启动时同步为 `进行中`。
-- [ ] 已审计并复用 TASK-010-A/B 现有 Header / navigation 成果。
-- [ ] 主系统存在明确、单一的 Main Layout / Header 边界。
-- [ ] 首页 / Start / Planner / Detail 主流程导航不回退。
-- [ ] Personal Center 内部布局未被 A Main Layout 越界重写。
-- [ ] Desktop / Tablet / Mobile / Narrow mobile 无关键 Shell 回归。
-- [ ] lint / typecheck / build / relevant tests / diff-check 通过，或对真实基线例外有逐项证据。
-- [ ] Result 文件写明修改、测试、限制与 Deferred。
-- [ ] Issue #242、Task、Result、WBS、branch、commit、PR 完成同步。
-- [ ] 实现完成但 PR 未合并时，WBS 3.1 为 `待审查`，不是 `已完成`。
-- [ ] 只有用户验收通过且 PR 合入 `develop` 后，WBS 3.1 才可改为 `已完成`。
+- [ ] 复用 TASK-010-A/B，未建立第二套 Header / Navigation。
+- [ ] 读取并实际参考 Personal Center Shell / 当前实现。
+- [ ] Main System 与 Personal Center 形成同一 TravelAssist 品牌视觉体系。
+- [ ] 未把 Personal Center Sidebar 强行复制到主系统。
+- [ ] Main Layout / Header 边界单一明确。
+- [ ] Home / Start / Planner / Detail 主流程不回退。
+- [ ] Planner 地图与工作台几何不因视觉统一被破坏。
+- [ ] Personal Center 内部功能与布局不被 A 越界重写。
+- [ ] 四个指定 viewport 无关键 Shell 回归。
+- [ ] lint / typecheck / build / relevant tests / diff-check 通过，或基线例外证据完整。
+- [ ] Result 记录共享视觉规则、改动、测试、限制与 Deferred。
+- [ ] Issue / Task / Result / WBS / branch / commit / PR 完整同步。
+- [ ] 实现完成但 PR 未合并：`3.1 = 待审查`。
+- [ ] 只有用户视觉验收通过且 PR 合入 develop：`3.1 = 已完成`。
 
-## Mandatory WBS Update
+---
 
-Codex 最终返回 Result **之前必须**：
+## 14. Mandatory WBS / Tracking Update
 
-1. 再次读取最新 `docs/project/WBS-TravelAssist.md`。
-2. 保留其他工作站 / Owner 在执行期间新增的记录。
-3. 更新 WBS 3.1 的真实状态、Issue、branch、commit、PR、blocker。
-4. 实现完成但 PR 未合并：`待审查`。
-5. 用户验收并合并 develop：`已完成`。
-6. 将 WBS 更新 commit + push 后才返回最终 Result。
+Codex 返回最终 Result 前必须：
 
-不得返回“Completed”而 GitHub Issue / WBS / Result 仍停留在旧状态。
+1. 再读取最新 `docs/project/WBS-TravelAssist.md`。
+2. 保留执行期间其他工作站的新记录。
+3. 更新 3.1 的真实状态、Issue、branch、commit、PR、blocker。
+4. 更新 Issue #242。
+5. 创建 / 更新 Result。
+6. commit + push tracking。
+7. 创建 Draft PR。
+8. 最后才返回 Result。
 
-## Result Format
+不得出现“代码完成，但 WBS / Issue / Result 仍停在旧状态”。
 
-Codex 最终返回至少包含：
+---
+
+## 15. Result Format
 
 ```md
 # TASK-024-A Result
@@ -270,7 +450,8 @@ Codex 最终返回至少包含：
 
 ## Preflight
 - execution base:
-- latest develop checked:
+- dependency 1.13:
+- dependency 2.7:
 - working tree safety:
 
 ## Tracking
@@ -284,12 +465,21 @@ Codex 最终返回至少包含：
 ## Existing Work Reused
 - TASK-010-A:
 - TASK-010-B:
-- other shared primitives:
+- Personal Center visual primitives:
+
+## Brand Visual Alignment
+- colors / surfaces:
+- typography:
+- radius / border / shadow:
+- avatar / popover:
+- spacing rhythm:
+- shared tokens:
 
 ## Main Shell
 - layout boundary:
 - header integration:
 - responsive behavior:
+- planner exception:
 - personal-center boundary:
 
 ## Validation
@@ -298,6 +488,7 @@ Codex 最终返回至少包含：
 - build:
 - tests:
 - browser QA:
+- visual comparison:
 - diff-check:
 
 ## Problems / Deferred
@@ -309,7 +500,9 @@ Yes / No
 Do not start automatically.
 ```
 
-## Stop Rule
+---
+
+## 16. Stop Rule
 
 完成 TASK-024-A 后停止。
 
