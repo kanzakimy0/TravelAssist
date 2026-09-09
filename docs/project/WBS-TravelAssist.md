@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-025-A Static Production MVP（2026-09-09，范围修订后执行）
+
+- 3.2 / A / #246：**待审查**。依据 `docs/project/WBS-3.2-static-first-amendment.md`，本轮正式使用现有 Poster；视频缺失不再阻塞 3.2。
+- 基线 `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`；分支 `feature/a-homepage-static-background-mvp`。1.16 / 3.1 已完成，PR #244 已合并。
+- 3.2.1 / TASK-025.1-A / #247 登记为未开始 / Deferred，依赖 3.2 与已授权视频素材；本轮不启动。
+- 下方旧素材阻塞段与旧 Result 是原范围下的正确历史，完整保留；本次范围修订解除该 blocker。保留其他工作站记录与状态。
+
+- Static MVP 实现 `5b5b495`；[Draft PR #248](https://github.com/kanzakimy0/TravelAssist/pull/248)（Open / Draft，未合并）。原图、裁切、Overlay 与首页几何保持，Next 静态 import 提供预览；687 tests、4专项与8组生产浏览器通过，CLS=0、零视频请求。用户视觉验收待进行。Result/QA 记录旧 hash-history 基线例外；不自动开展后续任务。
+
 ## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
 
 - 3.2 / A / Issue [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)：**阻塞**；原因：**缺少已授权首页动态背景 WebM / MP4 素材**。
@@ -664,7 +673,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 阻塞 |
+| 3.2 | 首页背景区域 — 静态 Production MVP | A | P1 | 1.16,3.1 | 待审查 |
+| 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
