@@ -4,14 +4,14 @@
 
 - Task ID: TASK-025-A
 - Owner: A / Shared Infrastructure / Release
-- Status: 进行中
+- Status: 待验收（仓库内 10.1 / 10.2 子集完成；真实云部署 Deferred）
 - WBS: 10.1 → 10.2（分阶段记录）
 - Priority: 10.1 P0 / 10.2 P1
 - GitHub Issue: #236
 - Branch: `codex/a-environment-deployment`
 - Spec Branch: `task/a-route-observability-deployment-20260909`
 - Depends On: 10.1 依赖 2.5 / 8.1；10.2 依赖 2.8 / 10.1 的实际可用基线
-- Commit: PENDING
+- Commit: `5185de7`（核心实现；最终 tracking 提交待同步）
 - Pull Request: PENDING
 - Authoring Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Implementation Base: `5819270983b4682c76e9ed7c751be9e00612ca0a`

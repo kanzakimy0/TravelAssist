@@ -861,8 +861,8 @@ TASK-023-A tracking (2026-09-09):
 
 | WBS ID | 工作项                    | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ------------------------- | ------ | ------ | -------- | ------ |
-| 10.1   | Dev / Preview / Prod 环境 | A      | P0     | 2.5,8.1  | 进行中（TASK-025-A Environment Deployment / Issue #236；本地隔离合同通过，云目标 Deferred） |
-| 10.2   | 自动部署                  | A      | P1     | 2.8,10.1 | 进行中（TASK-025-A Environment Deployment / Issue #236；仓库质量门与本机部署演练实现中，外部部署 Deferred） |
+| 10.1   | Dev / Preview / Prod 环境 | A      | P0     | 2.5,8.1  | 待审查（TASK-025-A Environment Deployment / Issue #236；本地隔离合同已验证，真实云隔离 Deferred） |
+| 10.2   | 自动部署                  | A      | P1     | 2.8,10.1 | 待审查（TASK-025-A Environment Deployment / Issue #236；无 Secret 质量门与本机部署演练完成，真实 Preview / Production Deferred） |
 | 10.3   | Domain / HTTPS            | A      | P1     | 10.1     | 未开始 |
 | 10.4   | Analytics                 | A      | P2     | 3.x      | 未开始 |
 | 10.5   | SEO / Metadata            | A      | P2     | 3.x      | 未开始 |
