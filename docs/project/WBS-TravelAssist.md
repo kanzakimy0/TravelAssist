@@ -1,7 +1,8 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，待审查）
+## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，视觉修正进行中）
 
+- 用户明确要求最终呈现其概念图效果，原灰金海岸背景不获视觉认可；本轮直接从用户提供概念图提取纯背景并接入，取代上一轮保留旧 Poster 的视觉范围。PR #252 保持 Draft。
 - Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
 - 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
 - PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
@@ -675,7 +676,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 待审查 |
+| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 进行中 |
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |

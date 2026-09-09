@@ -7,7 +7,7 @@
 - Owner: `A`
 - Responsibility: `Main Travel System / Website Entry`
 - Priority: `P1`
-- Status: `待审查`
+- Status: `进行中`
 - GitHub Issue: `#251`
 - Related Issue: `#246`（TASK-025-A / 3.2 static-first MVP）
 - Depends On: `TASK-024-A / WBS 3.1 completed`
@@ -747,3 +747,7 @@ git push --force-with-lease
 - Result: `docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`; visual evidence: `docs/qa/TASK-025.2/README.md`.
 - 698 repository tests / 5 task tests PASS; Home 6/6; other-page geometry 20/20 unchanged. WBS 3.2 待审查，3.2.1 Deferred。
 - 等待本轮用户视觉验收；保留 Poster 与概念背景差异及真实游客状态；未开始后续 WBS。
+
+## User visual correction — 2026-09-09
+
+用户明确要求最终网页呈现所提供概念图的效果；本条覆盖第 10 节“保留当前 Poster 并记录差异”的降级选项。授权以用户本地概念图为编辑目标，去除 UI 后得到樱花/夕阳/海岸列车纯背景，并接入真实组件。原 Poster 保留归档，不再作为本次 Home 运行时背景。其余真实导航、Auth 边界及其他页面几何约束继续有效。修正期间 3.2 进行中，重新验证后待审查。
