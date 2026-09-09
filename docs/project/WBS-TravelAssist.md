@@ -5,7 +5,7 @@
 - Owner A；Issue [#262](https://github.com/kanzakimy0/TravelAssist/issues/262)；分支 `docs/a-ai-assistant-main-screen-design`；基线 `171900698180b80220017c9c4bec551b72792f27`。
 - 已基于当前 Home / Planner / Detail、Trip Contract、Engine、Route 与 AI 双阶段判断，形成开发可执行的 AI Shell、上下文、消息、Proposal → Preview → Confirmation → Apply、失败/离线、响应式、可访问性与隐私规格。
 - 本 Task 仅设计，不实现 AI Client/API/Provider/Agent/DB，不修改运行时。用户验收和 Draft PR 合并前，1.19 = **待审查**；不启动 6.13 或其他 AI 实现。
-- 设计：`docs/ui/ai-travel-assistant-main-screen.md`；Task/Result：`docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md`、`docs/tasks/RESULT-TASK-032-a-ai-assistant-main-screen-design.md`；Commit / Draft PR 待创建后补齐。
+- 设计：`docs/ui/ai-travel-assistant-main-screen.md`；Task/Result：`docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md`、`docs/tasks/RESULT-TASK-032-a-ai-assistant-main-screen-design.md`；设计提交 `47c201a`；Draft PR [#270](https://github.com/kanzakimy0/TravelAssist/pull/270)。
 
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
@@ -572,7 +572,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-032-A | 1.19 | A | 待审查（设计候选，待用户验收） | #262 | `docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md` | `docs/a-ai-assistant-main-screen-design` | PENDING | PENDING（Draft） |
+| TASK-032-A | 1.19 | A | 待审查（设计候选，待用户验收） | #262 | `docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md` | `docs/a-ai-assistant-main-screen-design` | `47c201a`（设计） | [#270](https://github.com/kanzakimy0/TravelAssist/pull/270) Draft |
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |

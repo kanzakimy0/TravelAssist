@@ -14,8 +14,8 @@ AI 旅行助手主画面已形成开发可执行设计候选，但尚未取得�
 - GitHub Issue: #262 (Open)
 - Base Commit: `171900698180b80220017c9c4bec551b72792f27`
 - Branch: `docs/a-ai-assistant-main-screen-design`
-- Commit: PENDING
-- Draft PR: PENDING
+- Design Commit: `47c201a3ae95a7185334b54ebaf4ab9fce5f1312`
+- Draft PR: [#270](https://github.com/kanzakimy0/TravelAssist/pull/270)
 
 ## Scope completed
 

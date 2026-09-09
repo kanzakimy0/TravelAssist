@@ -10,8 +10,8 @@
 - Branch: `docs/a-ai-assistant-main-screen-design`
 - Depends On: WBS 1.5
 - Base Commit: `171900698180b80220017c9c4bec551b72792f27`
-- Commit: PENDING
-- Pull Request: PENDING (Draft)
+- Commit: `47c201a3ae95a7185334b54ebaf4ab9fce5f1312`
+- Pull Request: #270 (Draft)
 
 ## Objective
 
