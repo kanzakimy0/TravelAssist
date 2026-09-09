@@ -521,7 +521,7 @@ Do not start automatically.
 - 状态：实现完成，**WBS 3.1 = 待审查**；用户视觉验收尚未进行，PR 未合并。
 - 最新远端执行基线：`e74904830cbf8e6745b2013b2888e38984ccf96d`。1.13 仍待审查，依据已进入 develop 的 PC 品牌实现和本 Task Dependency Gate 执行；2.7 已完成。未改依赖状态。
 - Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)；分支 `feature/a-main-layout-header`；启动 `f75e799`；实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`。
-- PR：DRAFT_PR_PENDING。后续提交仅同步追踪。
+- PR：[Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）。后续提交仅同步追踪。
 - 683/683 Node 测试；npm ci、lint、typecheck、正常 build、npm test --if-present、diff-check 通过。生产浏览器 20/20，8 组 Planner / Detail 几何与 develop 一致。用户视觉验收仍待进行；上方已勾选的品牌实现项表示实现方检查，不替代用户验收。
 - [Result](RESULT-TASK-024-a-main-layout-header.md) 记录复用、最小 token 整合、视觉对照、原工作区依赖恢复及真实 Auth / Map Deferred；[QA](../qa/TASK-024/README.md) 提供报告、截图清单与复现脚本。
 - 未越界执行其他 WBS；不自动开始 TASK-025。

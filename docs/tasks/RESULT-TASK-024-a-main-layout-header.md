@@ -18,7 +18,7 @@
 - Issue: [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)，保留打开。
 - Branch: `feature/a-main-layout-header` → `develop`。
 - Commit: 实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；后续提交仅同步追踪文档。
-- Pull Request: DRAFT_PR_PENDING
+- Pull Request: [Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）
 - Result file: `docs/tasks/RESULT-TASK-024-a-main-layout-header.md`。
 - Blocker: 无实现阻塞；用户视觉验收和合入 develop 尚未发生，不符合标记已完成条件。
 
