@@ -1,5 +1,17 @@
 # TASK-025-A Result
 
+## Current Scope Revision / Current Result — 已完成（2026-09-09）
+
+- **Historical Blocked**：下方“缺少已授权 WebM / MP4 → Blocked”是原动态范围下正确的历史记录，完整保留。
+- **Current Scope Revision**：正式 static-first Amendment 已将 WBS 3.2 定义为静态 Production Hero Background MVP；视频移至 3.2.1 / #247，仍 Deferred。
+- **Current Result**：静态生产背景和最新概念 UI 已由 TASK-025.2-A / PR #252 收口。用户明确指定的 home-hero-sakura-sunset.webp 为正式背景，preload / blur / 响应式裁切及无视频环境通过验证。
+- 用户已视觉验收通过；PR #252 于 2026-09-09T11:29:14Z 合入 develop，merge d2efbb69bdabc91b41994147b357c4dfad02eeee，已验收 head 85a05b787087f9a36c8c5cab40693ed06ac08764。因此 WBS 3.2 及 Issue #246 当前完成。
+- 详细实现、703 项测试和浏览器证据见 RESULT-TASK-025.2-a-homepage-concept-fidelity.md 的最终状态及 background-restored-home-report.json；不把旧视频未验证项改写成通过。
+- 旧独立静态草案 PR #248 未被合并或覆盖，本次已完成范围以实际合入的 PR #252 为准。不开始视频或其他 WBS。
+
+---
+
+
 ## Status
 
 **Blocked / 阻塞**。Reason：**缺少已授权首页动态背景 WebM / MP4 素材。**
