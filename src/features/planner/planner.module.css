@@ -1,20 +1,11 @@
 .planner {
   position: relative;
-  /* Planner-only palette; never leaks into the wizard or personal center. */
-  --color-bg-canvas: #faf6ef;
-  --color-bg-elevated: #fffcf7;
-  --color-bg-overlay: rgb(255 252 247 / 97%);
-  --color-text-primary: #343e48;
-  --color-text-secondary: #62584f;
-  --color-border-strong: #e4d9d0;
-  --color-accent-primary: #b95649;
-  --color-accent-primary-hover: #a04439;
-  --color-focus-ring: #914737;
-  --planner-accent-soft: #faeeeb;
+  /* Shared TravelAssist palette; workspace density/geometry stays local. */
+  --planner-accent-soft: var(--color-bg-muted);
   --planner-radius-card: 16px;
   --planner-radius-panel: 20px;
-  --planner-border: rgb(199 176 168 / 35%);
-  --planner-shadow: 0 8px 24px rgb(94 74 65 / 7%);
+  --planner-border: var(--color-border-subtle);
+  --planner-shadow: var(--elevation-card);
   --workspace-scenery: url("/media/start/sakura-coast-fuji-train-sunset.png");
   --workspace-glass: rgb(255 249 241 / 72%);
   height: 100dvh;
@@ -526,7 +517,7 @@
   inset: 0 0 auto;
   z-index: 12;
   pointer-events: none;
-  height: 68px;
+  height: var(--main-header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -537,23 +528,6 @@
 }
 .header > :not([aria-hidden="true"]) {
   pointer-events: auto;
-}
-.brand {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 23px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-.brand > span {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--planner-accent-soft);
-  color: var(--color-accent-primary);
 }
 .headerTitle {
   display: flex;
@@ -1357,7 +1331,7 @@
   border: 1px solid var(--color-border-strong);
   border-radius: 20px;
   background: var(--color-bg-overlay);
-  box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
+  box-shadow: var(--elevation-popover);
   backdrop-filter: blur(10px);
 }
 /* Manual popovers use the top layer; outside clicks still reach the page. */
@@ -1552,15 +1526,7 @@
 .headerNav a[aria-current] {
   color: var(--color-accent-primary);
 }
-.avatar {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #e9ece3;
-  border: 3px solid #fffdf8;
-}
+
 .quickPair .quickCard {
   height: 86px;
   gap: 3px;
@@ -1768,9 +1734,6 @@
     height: 60px;
     padding: 0 16px;
     gap: 12px;
-  }
-  .brand {
-    font-size: 17px;
   }
   .headerTitle {
     display: none;

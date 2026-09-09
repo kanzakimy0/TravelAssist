@@ -70,7 +70,12 @@ test("approved concept assets are wired to the Personal Center visual layer", ()
 
   assert.match(sidebar, /sidebar-torii-watercolor-v2\.png/);
   assert.match(sidebar, /sidebar-shell-ornament-top\.png/);
-  assert.match(sidebar, /travelassist-logo-torii\.png/);
+  assert.match(sidebar, /<BrandLogo fill sizes="150px"/);
+  assert.match(sidebar, /<BrandLogo fill sizes="190px"/);
+  assert.match(
+    read("src/components/ui/brand-logo.tsx"),
+    /travelassist-logo-torii\.png/,
+  );
   const identity = read(
     "src/features/personal-center/constants/personal-navigation.ts",
   );

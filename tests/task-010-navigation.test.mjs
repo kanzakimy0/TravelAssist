@@ -27,21 +27,24 @@ test("the temporary bridge maps each generated preview to one planner plan", () 
 });
 
 test("main-flow links use real destinations and keep login disabled", async () => {
-  const [home, startHeader, plans, plannerWorkspace] = await Promise.all([
-    read("../src/features/home/components/home-hero.tsx"),
-    read("../src/features/start-flow/components/start-flow-header.tsx"),
-    read("../src/features/start-flow/components/plan-selection-step.tsx"),
-    read("../src/features/planner/components/workspace-header.tsx"),
-  ]);
+  const [home, startHeader, plans, plannerWorkspace, sharedHeader] =
+    await Promise.all([
+      read("../src/features/home/components/home-hero.tsx"),
+      read("../src/features/start-flow/components/start-flow-header.tsx"),
+      read("../src/features/start-flow/components/plan-selection-step.tsx"),
+      read("../src/features/planner/components/workspace-header.tsx"),
+      read("../src/components/layout/main-header.tsx"),
+    ]);
 
   assert.match(home, /href="\/personal-center"/);
   assert.match(home, /disabled/);
-  assert.match(startHeader, /href="\/"/);
+  assert.match(startHeader, /<MainHeader/);
+  assert.match(sharedHeader, /href="\/"/);
   assert.match(startHeader, /href="\/personal-center"/);
   assert.match(plans, /router\.push\("\/planner"\)/);
   assert.match(plans, /进入详细路线/);
   assert.doesNotMatch(plans, /使用此方案并进入地图|已选择这个方案/);
-  assert.match(plannerWorkspace, /href="\/"/);
+  assert.match(plannerWorkspace, /<MainHeader/);
   assert.match(plannerWorkspace, /href="\/personal-center"/);
 });
 

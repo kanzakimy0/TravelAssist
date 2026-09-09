@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-024-A Global Main Layout / Header（2026-09-09，待审查）
+
+- 3.1 / A / Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)：实现完成，**待审查**。分支 `feature/a-main-layout-header`；执行基线 `e74904830cbf8e6745b2013b2888e38984ccf96d`；启动 `f75e799`，实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；[Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）。
+- 1.13 保持待审查；已有 PC 品牌视觉与 tokens 进入 develop，按 TASK-024 Dependency Gate 执行；2.7 已完成不变。复用原 Header / Navigation / Logo 资产和 Avatar 外观，主系统与 PC 共享暖白、朱红、字体、边框、阴影及焦点语言；不复制 Sidebar 或菜单业务。
+- npm ci / lint / typecheck / Turbopack build / diff-check 通过，683 项 Node 回归通过；生产浏览器四尺寸五页面 20/20，Planner / Detail 的 8 组地图、右栏、底栏几何与基线一致。真实 Auth / live Mapbox Deferred。
+- 用户已于 2026-09-09 回复“验收通过”，Draft PR 未合并；仅在用户视觉验收通过且合入 develop 后允许 3.1 已完成。Task / Result：`docs/tasks/TASK-024-a-main-layout-header.md`、`docs/tasks/RESULT-TASK-024-a-main-layout-header.md`；视觉报告：`docs/qa/TASK-024/README.md`。
+- 其他 WBS、B 的 PC 业务与既有记录保持；本任务结束后停止，不启动 TASK-025 / WBS 3.2。
+
 ## TASK-023-A Planner 开发期路线接线（2026-09-09，已合并）
 
 - Issue #234；分支 `codex/a-planner-route-integration`；基线
@@ -648,7 +656,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
-| 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 未开始 |
+| 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 待审查 |
 | 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 未开始 |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
