@@ -13,6 +13,7 @@
 - Source Pull Request: #245（Draft）
 - Latest Develop Baseline: `171900698180b80220017c9c4bec551b72792f27`
 - Integrated Acceptance Head: `d9be32a903f87c6096e8c1785e31baa93c7aa11c`
+- Acceptance Evidence Commit: `e10df0358eeb646d166812df3c9c679c015764d4`
 - Result File: `docs/tasks/RESULT-TASK-028-a-observability-acceptance-closeout.md`
 
 ## Objective
