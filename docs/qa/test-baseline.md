@@ -1,8 +1,11 @@
 # TravelAssist test framework and global baseline
 
-Status: **review baseline for WBS 9.1**  
-Measured revision: `origin/develop@171900698180b80220017c9c4bec551b72792f27`  
-Audit date: 2026-09-10 JST  
+Status: **review baseline for WBS 9.1**
+
+Measured revision: `origin/develop@171900698180b80220017c9c4bec551b72792f27`
+
+Audit date: 2026-09-10 JST
+
 Runtime used for the audit: Node `v24.19.0`, npm `11.17.0`, Windows
 
 This document is the canonical map of the repository test surface. Counts and timings below are evidence for the named commit and machine only. They are not a permanent pass threshold. A later change must rerun the commands and record its own evidence.
