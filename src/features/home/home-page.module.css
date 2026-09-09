@@ -4,37 +4,30 @@
   min-height: 100svh;
   overflow: hidden;
   isolation: isolate;
-  background: #d9d6cb;
+  background: var(--color-bg-canvas);
 }
-
 .content {
   position: relative;
   z-index: 1;
   display: grid;
+  justify-items: center;
+  align-content: start;
   min-height: 100vh;
   min-height: 100svh;
-  align-items: center;
-  width: min(100%, 100rem);
   margin: 0 auto;
-  padding: clamp(8rem, 15vh, 11rem) clamp(2rem, 6vw, 6rem)
-    clamp(7.5rem, 13vh, 10rem);
+  padding: 22.5svh var(--space-8) 10rem;
   pointer-events: none;
 }
-
 .content > * {
   pointer-events: auto;
 }
-
-@media (max-width: 64rem) {
-  .content {
-    padding-right: var(--space-8);
-    padding-left: var(--space-8);
-  }
-}
-
 @media (max-width: 40rem) {
   .content {
-    align-items: end;
-    padding: 7rem var(--space-5, 1.25rem) 7.75rem;
+    padding: clamp(8rem, 22svh, 11.5rem) var(--space-5) 7rem;
+  }
+}
+@media (max-width: 22rem) {
+  .content {
+    padding: 7rem var(--space-4) 6rem;
   }
 }

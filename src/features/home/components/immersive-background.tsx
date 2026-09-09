@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import Image from "next/image";
+import homePoster from "../../../../public/media/home/home-hero-poster.webp";
 
 import styles from "./immersive-background.module.css";
 
@@ -21,8 +22,9 @@ export function PosterFallback() {
       className={styles.poster}
       fill
       preload
-      sizes="100vw"
-      src={POSTER_PATH}
+      sizes="(max-aspect-ratio: 1672/941) 178svh, 100vw"
+      src={homePoster}
+      placeholder="blur"
     />
   );
 }

@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { AccountAvatar } from "@/components/ui/account-avatar";
-
 import { Button } from "@/components/ui/button";
-
 import { HeroStartButton } from "./hero-start-button";
 import styles from "./home-hero.module.css";
 
@@ -16,20 +14,23 @@ export function HomeHero() {
       <p className={styles.description}>规划行程 · 对话调整</p>
       <div className={styles.actionRow}>
         <HeroStartButton />
-        <Button
-          aria-label="登录（账号功能将在后续任务中接入）"
-          className={styles.loginAction}
-          disabled
-          size="large"
-          title="账号功能将在后续任务中接入"
-          variant="ghost"
-        >
-          登录
-        </Button>
-        <Link className={styles.personalCenterLink} href="/personal-center">
-          <AccountAvatar />
-          <span>个人中心</span>
-        </Link>
+        {/* Main Shell still exposes a guest entry; session binding belongs to WBS 3.4. */}
+        <div className={styles.accountEntry}>
+          <Link className={styles.personalCenterLink} href="/personal-center">
+            <AccountAvatar />
+            <span>游客 · 个人中心</span>
+            <span aria-hidden="true">›</span>
+          </Link>
+          <Button
+            aria-label="登录（账号功能将在后续任务中接入）"
+            className={styles.loginAction}
+            disabled
+            title="账号功能将在后续任务中接入"
+            variant="ghost"
+          >
+            登录
+          </Button>
+        </div>
       </div>
       <span className={styles.srOnly} id="start-flow-note">
         进入旅行需求填写流程

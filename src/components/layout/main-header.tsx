@@ -7,9 +7,8 @@ function LanguageAction() {
   return (
     <details className={styles.language}>
       <summary aria-label="语言选项，当前为简体中文">
-        <span aria-hidden="true">文</span>
         <span>中文</span>
-        <span aria-hidden="true">↓</span>
+        <span aria-hidden="true">⌄</span>
       </summary>
       <p>更多语言即将开放</p>
     </details>
