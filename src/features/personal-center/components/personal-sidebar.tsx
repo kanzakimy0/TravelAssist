@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -127,12 +128,7 @@ function PersonalSidebarContent() {
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.compactBrandLogo} aria-hidden="true">
-            <Image
-              src="/media/personal-center/travelassist-logo-torii.png"
-              alt=""
-              fill
-              sizes="150px"
-            />
+            <BrandLogo fill sizes="150px" />
           </span>
         </GuardedLink>
       </div>
@@ -163,18 +159,13 @@ function PersonalSidebarContent() {
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.brandLogo} aria-hidden="true">
-            <Image
-              src="/media/personal-center/travelassist-logo-torii.png"
-              alt=""
-              fill
-              sizes="190px"
-            />
+            <BrandLogo fill sizes="190px" />
           </span>
         </GuardedLink>
         <GuardedLink
           href="/personal-center/account"
           className={styles.userSummary}
-          aria-label={`${mockPersonalUser.name}（Mock 用户）的账户`}
+          aria-label="已登录旅行者的账户（资料为演示，尚未接入账户数据）"
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.avatar} aria-hidden="true">
@@ -187,8 +178,8 @@ function PersonalSidebarContent() {
             />
           </span>
           <span className={styles.userText}>
-            <strong>{mockPersonalUser.name}</strong>
-            <span>{mockPersonalUser.label}</span>
+            <strong>旅行者</strong>
+            <span>已登录 · 资料为演示</span>
           </span>
         </GuardedLink>
         <PersonalPrimaryNav onNavigate={() => setDrawerOpen(false)} />

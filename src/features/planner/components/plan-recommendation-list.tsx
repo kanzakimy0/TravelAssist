@@ -1,3 +1,4 @@
+import { displayRouteColor } from "../map/route-color";
 import type { MockPlan } from "../model/planner-types";
 import { planArtwork } from "../data/planner-artwork";
 import { PlannerArtworkImage } from "./planner-artwork";
@@ -8,8 +9,6 @@ export function PlanRecommendationList({
   plans,
   selectedId,
   onSelect,
-  pendingCount,
-  onBooking,
   modifiedIds,
   onSavePlan,
   onRestorePlan,
@@ -18,8 +17,6 @@ export function PlanRecommendationList({
   plans: MockPlan[];
   selectedId: string;
   onSelect: (plan: MockPlan) => void;
-  pendingCount: number;
-  onBooking: () => void;
   modifiedIds: string[];
   onSavePlan: (id: string) => void;
   onRestorePlan: (id: string) => void;
@@ -32,7 +29,10 @@ export function PlanRecommendationList({
       aria-labelledby="recommendations-title"
     >
       <div className={styles.sectionTitle}>
-        <h2 id="recommendations-title">推荐方案</h2>
+        <h2 id="recommendations-title">
+          <PlannerIcon name="sparkle" />
+          推荐方案
+        </h2>
         <p>3 个方案 · 随心切换</p>
       </div>
       <div className={styles.planList}>
@@ -100,16 +100,6 @@ export function PlanRecommendationList({
           </article>
         ))}
       </div>
-      <div className={styles.currentBooking} data-current-booking>
-        <span role="status">
-          {pendingCount
-            ? `当前方案 · 待预约 ${pendingCount} 项`
-            : "✓ 关键预约已完成"}
-        </span>
-        <button type="button" onClick={onBooking}>
-          到详情管理预约
-        </button>
-      </div>
     </section>
   );
 }
@@ -130,7 +120,7 @@ function PlanThumbnail({ plan }: { plan: MockPlan }) {
           points={day.stops
             .map((stop) => `${8 + stop.x / 12},${8 + stop.y / 8}`)
             .join(" ")}
-          stroke={day.color}
+          stroke={displayRouteColor(day.color)}
           strokeWidth="2"
           fill="none"
         />

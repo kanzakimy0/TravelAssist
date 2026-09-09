@@ -1,3 +1,4 @@
+import { displayRouteColor } from "./route-color";
 import type {
   GeoJSONSource,
   LayerSpecification,
@@ -22,7 +23,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
         properties: {
           id: route.id,
           context: route.context,
-          color: route.color,
+          color: displayRouteColor(route.color),
           label: route.label,
         },
         geometry: { type: "LineString", coordinates: route.coordinates },
@@ -46,7 +47,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
           type: place.type,
           label: place.label,
           artworkKey: destinationArtwork(place.name, place.type)?.id ?? "",
-          color: place.color,
+          color: displayRouteColor(place.color),
           recommended: place.tripStatus === "recommended",
           status: place.reservationStatus ?? "not_required",
           selected: Boolean(
@@ -152,18 +153,20 @@ export const plannerLayers: LayerSpecification[] = [
         "landmark-village",
       ],
       "icon-allow-overlap": false,
-      "icon-padding": 5,
+      "icon-size": 1.35,
+      "icon-padding": 8,
+      "text-optional": true,
       "symbol-sort-key": ["case", ["get", "selected"], 0, 1],
       "text-field": ["get", "label"],
-      "text-size": 13,
+      "text-size": 15,
       "text-anchor": "top",
-      "text-offset": [0, 2.7],
+      "text-offset": [0, 3.1],
       "text-max-width": 12,
     },
     paint: {
-      "text-color": "#343e48",
-      "text-halo-color": "#fffaf4",
-      "text-halo-width": 2,
+      "text-color": "#263c60",
+      "text-halo-color": "#fffdfb",
+      "text-halo-width": 3,
     },
   },
   {
@@ -179,11 +182,11 @@ export const plannerLayers: LayerSpecification[] = [
           ["get", "type"],
           ["literal", ["city", "attraction", "activity"]],
         ],
-        33,
+        42,
         13,
       ],
       "circle-color": "rgba(0,0,0,0)",
-      "circle-stroke-color": "#a74739",
+      "circle-stroke-color": "#e95b4b",
       "circle-stroke-width": 3,
     },
   },
@@ -372,7 +375,7 @@ export async function mountMapbox(
   const map = new mapbox.Map({
     container,
     accessToken: token,
-    style: "mapbox://styles/mapbox/light-v11",
+    style: "mapbox://styles/mapbox/outdoors-v12",
     center: [139.2, 35.5],
     zoom: 8,
     attributionControl: true,
@@ -487,12 +490,14 @@ export async function mountMapbox(
         source: "planner-travel-hints",
         layout: {
           "text-field": ["get", "label"],
-          "text-size": 12,
+          "text-size": 14,
           "icon-image": "travel-capsule",
+          "text-allow-overlap": false,
+          "icon-allow-overlap": false,
           "icon-text-fit": "both",
-          "icon-text-fit-padding": [7, 12, 7, 12],
+          "icon-text-fit-padding": [10, 16, 10, 16],
         },
-        paint: { "text-color": "#45535a" },
+        paint: { "text-color": "#2f6897" },
       });
     }
     // Give trip artwork priority over base-map labels, while still allowing

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { AccountAvatar } from "@/components/ui/account-avatar";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { mockPersonalUser } from "../constants/personal-navigation";
@@ -95,17 +95,9 @@ export function PersonalTopActions() {
         popoverTarget={popoverId}
         aria-expanded={isOpen}
         aria-controls={popoverId}
-        aria-label={`${isOpen ? "关闭" : "打开"}账户菜单，${mockPersonalUser.name}（${mockPersonalUser.label}）`}
+        aria-label={`${isOpen ? "关闭" : "打开"}账户菜单，旅行者（演示头像）`}
       >
-        <span className={styles.smallAvatar} aria-hidden="true">
-          <Image
-            src={mockPersonalUser.avatar}
-            alt=""
-            fill
-            sizes="38px"
-            className={styles.identityPhoto}
-          />
-        </span>
+        <AccountAvatar src={mockPersonalUser.avatar} />
         <PersonalIcon name="chevron" width="16" height="16" />
       </button>
       <AvatarPopover

@@ -1,30 +1,31 @@
 .button {
   position: fixed;
-  right: var(--space-8);
-  bottom: var(--space-8);
+  right: clamp(2rem, 2.2vw, 2.5rem);
+  bottom: var(--home-ai-bottom);
   z-index: 6;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  min-height: 4rem;
+  width: var(--home-ai-size);
+  height: var(--home-ai-size);
+  min-height: var(--home-ai-size);
   padding: var(--space-2);
   border: 1px solid rgb(255 255 255 / 58%);
   border-radius: var(--radius-pill);
-  background: rgb(248 245 237 / 88%);
+  background: var(--color-bg-elevated);
   color: #263447;
   box-shadow: var(--elevation-panel);
   backdrop-filter: blur(0.75rem) saturate(108%);
   -webkit-backdrop-filter: blur(0.75rem) saturate(108%);
   cursor: pointer;
   transition:
-    transform var(--motion-fast) ease,
+    filter var(--motion-fast) ease,
     box-shadow var(--motion-fast) ease;
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  filter: brightness(0.97);
   box-shadow: var(--elevation-popover);
 }
 
@@ -36,17 +37,17 @@
 .icon {
   display: grid;
   flex: 0 0 auto;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   place-items: center;
   border-radius: var(--radius-pill);
-  background: #b6503f;
-  color: var(--color-text-on-accent);
+  background: transparent;
+  color: var(--color-accent-primary);
 }
 
 .icon svg {
-  width: 1.625rem;
-  height: 1.625rem;
+  width: 2rem;
+  height: 2rem;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -55,28 +56,24 @@
 }
 
 .copy {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  color: var(--color-accent-primary-hover);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+.copy strong {
+  font-weight: 500;
 }
 
 @media (max-width: 40rem) {
   .button {
     right: max(var(--space-4), env(safe-area-inset-right));
-    bottom: max(var(--space-4), env(safe-area-inset-bottom));
+    bottom: var(--home-ai-bottom);
     width: 4rem;
     height: 4rem;
-    min-height: auto;
-    padding: var(--space-2);
-    border-radius: var(--radius-pill);
+    min-height: 4rem;
   }
-
   .icon {
-    width: 3rem;
-    height: 3rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }

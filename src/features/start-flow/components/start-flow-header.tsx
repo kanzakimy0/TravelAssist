@@ -1,14 +1,12 @@
 import Link from "next/link";
+import { MainHeader } from "@/components/layout/main-header";
+import { AccountAvatar } from "@/components/ui/account-avatar";
 
 import styles from "../start-flow.module.css";
 
 export function StartFlowHeader() {
   return (
-    <header className={styles.header}>
-      <Link className={styles.brand} href="/">
-        <span aria-hidden="true" className={styles.brandMark} />
-        <span>TravelAssist</span>
-      </Link>
+    <MainHeader className={styles.header}>
       <div className={styles.headerActions}>
         <label className={styles.languageSelect}>
           <span className={styles.srOnly}>语言</span>
@@ -20,12 +18,12 @@ export function StartFlowHeader() {
         </label>
         <Link
           aria-label="前往个人中心"
-          className={styles.avatar}
+          className={styles.accountLink}
           href="/personal-center"
         >
-          旅
+          <AccountAvatar />
         </Link>
       </div>
-    </header>
+    </MainHeader>
   );
 }

@@ -58,3 +58,29 @@ test("map-to-sidebar transition cannot intercept map interaction", async () => {
     /\.toolbarToggle\[aria-expanded="true"\] svg\s*\{[^}]*rotate\(-90deg\)/,
   );
 });
+
+test("right panel accessibility title does not consume a quick-settings row", async () => {
+  const panel = await source("components/planner-right-panel.tsx");
+  const css = await source("planner.module.css");
+  assert.match(panel, /className=\{styles\.srOnly\}/);
+  assert.match(
+    css,
+    /\.srOnly\s*\{[^}]*position: absolute;[^}]*width: 1px;[^}]*height: 1px;[^}]*overflow: hidden;/s,
+  );
+});
+
+test("full-screen rails prioritize card and panel content", async () => {
+  const css = await source("planner.module.css");
+  assert.match(
+    css,
+    /\.quickSettings,\s*\.recommendations\s*\{\s*padding-inline: 15px;/s,
+  );
+  assert.match(
+    css,
+    /\.sectionTitle h2\s*\{[^}]*display: flex;[^}]*align-items: center;/s,
+  );
+  assert.match(
+    css,
+    /\.bottomPanel \.bottomTabs button\s*\{[^}]*min-height: clamp\(32px, 3\.8dvh, 42px\);/s,
+  );
+});

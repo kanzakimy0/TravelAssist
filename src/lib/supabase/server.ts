@@ -8,10 +8,16 @@ import { publicSupabaseConfig, sessionCookieOptions } from "./config";
 export function createServerSupabaseClient(
   cookies: CookieMethodsServer,
   secure: boolean,
+  bindSignupFlow = false,
 ) {
   const { url, key } = publicSupabaseConfig();
   return createServerClient<Database>(url, key, {
     cookies,
     cookieOptions: sessionCookieOptions(secure),
+    // Pinned auth-js/SSR support per-flow verifier slots. Only signup opts in;
+    // existing recovery/OAuth calls keep their accepted redirect contract.
+    ...(bindSignupFlow
+      ? { auth: { experimental: { appendPkceFlowIdToRedirects: true } } }
+      : {}),
   });
 }

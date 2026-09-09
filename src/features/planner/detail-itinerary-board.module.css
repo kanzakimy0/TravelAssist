@@ -59,7 +59,7 @@
   place-items: center;
   width: 18px;
   height: 18px;
-  border: 2px solid #fffaf4;
+  border: 2px solid var(--color-bg-elevated);
   border-radius: 50%;
   background: #38765a;
   color: white;
@@ -79,7 +79,7 @@
 }
 .node[data-status="unknown"] {
   background: #367faf;
-  border-color: #fffaf4;
+  border-color: var(--color-bg-elevated);
   color: white;
 }
 .node[data-status="warning"] {
@@ -103,7 +103,7 @@
   border: 1px solid #ded3c7;
   border-radius: 13px;
   background: #fffaf4ed;
-  color: #354650;
+  color: var(--color-text-primary);
   box-shadow: 0 3px 12px #5947350b;
 }
 .square h3 {
@@ -146,9 +146,9 @@
   display: block;
 }
 .itinerary[aria-pressed="true"] {
-  border: 2px solid #b4594a;
+  border: 2px solid var(--color-accent-primary);
   box-shadow: 0 0 0 2px #f6d5ca;
-  outline: 2px solid #b4594a;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 1px;
 }
 .time {
@@ -160,7 +160,7 @@
 }
 .time time {
   font-size: 9px;
-  color: #a95346;
+  color: var(--color-accent-primary);
   font-weight: 750;
 }
 .time > span {
@@ -255,9 +255,9 @@
   border-radius: 4px;
 }
 .collapsedCards .quickActions [data-confirm-action] {
-  color: #fffaf2;
-  background: #8e6346;
-  border-color: #8e6346;
+  color: var(--color-bg-elevated);
+  background: var(--background-accent-primary);
+  border-color: var(--color-accent-primary);
   font-weight: 700;
 }
 .collapsedCards .quickActions button:last-child {
@@ -383,7 +383,7 @@
   flex-direction: column;
   gap: 3px;
   padding: 5px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   color: #475954;
 }
 .cardBody p {
@@ -403,10 +403,10 @@
   min-height: 24px;
   padding: 1px;
   font-size: 10px;
-  border: 1px solid #d8cbbd;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 6px;
   color: #66574b;
-  background: #fffdf8;
+  background: var(--color-bg-elevated);
   cursor: pointer;
 }
 .cardBody .actions {
@@ -417,7 +417,7 @@
   min-height: 24px;
 }
 .cardBody button:focus-visible {
-  outline: 2px solid #b4594a;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: -2px;
 }
 .cardBody > p + small {
@@ -446,9 +446,9 @@
   min-width: 0;
   min-height: 28px;
   padding: 4px 1px;
-  border: 1px solid #d8cbbd;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 8px;
-  background: #fffdf8;
+  background: var(--color-bg-elevated);
   color: #66574b;
   font-size: 10px;
   cursor: pointer;
@@ -458,7 +458,7 @@
 }
 .reservation > strong {
   font-size: 15px;
-  color: #9d6453;
+  color: var(--color-accent-primary);
 }
 .addReservation {
   flex: 1;
@@ -483,7 +483,7 @@
   display: grid;
   gap: 14px;
   padding: 18px;
-  color: #354650;
+  color: var(--color-text-primary);
   font-size: 13px;
 }
 .dialogBody h3,
@@ -498,23 +498,23 @@
 .dialogBody input:not([type="checkbox"]),
 .dialogBody textarea {
   width: 100%;
-  border: 1px solid #d8cbbd;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 10px;
   padding: 9px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   color: inherit;
 }
 .dialogBody button {
   min-height: 36px;
   padding: 8px 10px;
-  border: 1px solid #d8cbbd;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 10px;
-  background: #fffaf4;
-  color: #8d4d40;
+  background: var(--color-bg-elevated);
+  color: var(--color-accent-primary);
   cursor: pointer;
 }
 .dialogBody button[aria-pressed="true"] {
-  border-color: #b4594a;
+  border-color: var(--color-accent-primary);
   background: #f8e6de;
 }
 .dialogBody button:disabled {
@@ -544,7 +544,7 @@
 }
 .candidate {
   padding: 12px;
-  border: 1px solid #e1d4c7;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
 }
 .recommendationStrip {
@@ -569,7 +569,7 @@
 }
 .column button:focus-visible,
 .dialogBody button:focus-visible {
-  outline: 2px solid #b4594a;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
 .collapsedCards .quickActions > button {

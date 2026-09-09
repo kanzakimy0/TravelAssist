@@ -1,3 +1,4 @@
+import { displayRouteColor } from "../map/route-color";
 import {
   useEffect,
   useEffectEvent,
@@ -17,12 +18,7 @@ import type {
 import { MapQuickCard } from "./map-quick-card";
 import { destinationArtwork } from "../data/planner-artwork";
 import { SvgPlannerArtwork } from "./planner-artwork";
-import {
-  isLandmark,
-  landmarkKey,
-  landmarkPaths,
-  travelBubbles,
-} from "../map/map-visuals";
+import { isLandmark, travelBubbles } from "../map/map-visuals";
 import styles from "../planner.module.css";
 
 export function PlannerMapShell({
@@ -304,7 +300,7 @@ function SchematicMap({
           data-route-id={route.id}
           d={path(route.coordinates)}
           fill="none"
-          stroke={route.color}
+          stroke={displayRouteColor(route.color)}
           strokeWidth={route.context ? 3.2 : 5}
           opacity={route.context ? 0.25 : 0.85}
           strokeLinecap="round"
@@ -396,7 +392,7 @@ function SchematicMap({
                 cy={y}
                 r={isLandmark(p) ? 34 : 18}
                 fill="none"
-                stroke="#a74739"
+                stroke="#e95b4b"
                 strokeWidth="3"
               />
             )}
@@ -405,21 +401,9 @@ function SchematicMap({
               cy={y}
               r={isLandmark(p) ? 29 : 9}
               fill={p.tripStatus === "recommended" ? "#e9e4db" : "#fffaf4"}
-              stroke={isLandmark(p) ? "#fffdf8" : "#b66c5d"}
+              stroke={isLandmark(p) ? "#fffdf8" : "#e95b4b"}
               strokeWidth={isLandmark(p) ? 4 : 2.5}
             />
-            {isLandmark(p) && (
-              <g
-                transform={`translate(${x - 23} ${y - 23}) scale(.72)`}
-                fill="none"
-                stroke="#687b71"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d={landmarkPaths[landmarkKey(p.name)]} />
-              </g>
-            )}
             {isLandmark(p) && (
               <SvgPlannerArtwork
                 artwork={destinationArtwork(p.name, p.type)}
