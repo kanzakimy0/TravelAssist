@@ -8,140 +8,193 @@
 - Responsibility: `Main Travel System / Website Entry`
 - Priority: `P1`
 - Status: `可开始`
-- Canonical Issue: `#246`
+- GitHub Issue: `#251`
+- Related Issue: `#246`（TASK-025-A / 3.2 static-first MVP）
 - Depends On: `TASK-024-A / WBS 3.1 completed`
-- Related Task: `TASK-025-A / WBS 3.2 static background MVP`
-- Video Enhancement: `TASK-025.1-A / WBS 3.2.1` — Deferred, NOT part of this task
+- Video Enhancement: `TASK-025.1-A / WBS 3.2.1` — Deferred / NOT part of this task
 - Suggested Branch: `feature/a-homepage-concept-fidelity`
-
-## Objective
-
-将 TravelAssist 首页调整到用户已确认的首页概念图视觉效果，完成 **Static-first Homepage MVP 的高保真实装**。
-
-本任务的重点不是重新设计首页，而是：
-
-```text
-当前可用 Home runtime
-+
-TASK-024-A 已冻结的全站品牌视觉
-+
-用户确认的首页概念图
-→
-高保真生产页面
-```
-
-必须保持现有真实导航、Auth/Personal Center 边界和 AI 入口，不允许为了追求截图相似而把真实功能改成假的静态 UI。
+- Result File: `docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`
 
 ---
 
-# 1. Canonical Visual Reference
+# 1. Objective
 
-Codex 必须以仓库中的正式概念图为第一视觉参考：
+将 TravelAssist 当前首页调整到用户最新确认的首页概念图风格，完成 **WBS 3.2 静态首页 MVP 的高保真实装**。
+
+本任务不是重新设计业务，而是把：
 
 ```text
-assets/design/homepage/homepage-concept-static-v1.png
+当前真实 Home runtime
++ TASK-024-A 已冻结的全站品牌视觉
++ 当前正式静态 Poster
++ 本 Task 中冻结的概念图版式规格
+→ 高保真生产页面
 ```
 
-如果该文件尚未进入当前执行基线，则先停止并记录 `Blocked: canonical concept image missing`，不得凭记忆重绘。
+要求用户并排看概念图与生产页面时，第一眼认为是同一设计，而不是旧版首页的轻微换皮。
 
-概念图尺寸：
+---
+
+# 2. Canonical Concept Specification
+
+用户确认的概念图原始画布：
 
 ```text
 1672 × 941
 ```
 
-视觉目标：
+概念图本身不要求一定进入 Git 仓库；**本 Task 以下版式和视觉规格就是可独立执行的 canonical specification**。
 
-- 日本海边小镇 + 地方电车 + 樱花 + 夕阳 / 暖光
-- 极简沉浸式首页
-- UI 居中而不是左下角工作台式布局
-- 首页没有大型 Card 容器
-- 暖白 / 象牙白半透明表面
-- 深墨正文
-- 珊瑚朱红 / 暖红 CTA
-- 个人中心入口为真实头像 + 用户名 + “个人中心”胶囊
-- AI 入口为右下角圆形暖红按钮
-- 顶部左侧 Brand 胶囊、右侧语言胶囊
+如果本地/仓库另外存在：
+
+```text
+assets/design/homepage/homepage-concept-static-v1.png
+```
+
+则将其作为额外像素对照参考；如果不存在，不得因此 Blocked。
+
+背景方向：
+
+```text
+日本海边小镇
++ 地方电车
++ 海面 / 远山
++ 樱花前景
++ 暖色夕阳 / 柔和空气感
+```
+
+视觉语言：
+
+```text
+极简
+沉浸式
+暖白
+深墨
+珊瑚朱红
+大圆角
+轻阴影
+安静
+高级但不奢华
+```
 
 ---
 
-# 2. Source of Truth Priority
+# 3. Source of Truth Priority
 
 优先级：
 
-1. 用户已确认的 `assets/design/homepage/homepage-concept-static-v1.png`
-2. TASK-024-A 已验收的 Main Shell / shared brand tokens
-3. 本 Task
+1. 本 TASK-025.2-A 的 Concept Specification
+2. 用户已验收的 TASK-024-A Main Shell / Brand System
+3. 当前 `origin/develop` 的真实 Home / Auth / Personal Center / AI 行为
 4. `docs/ui/home-page.md`
 5. TASK-004-A 历史首页设计
-6. 当前 develop Home 实现
 
-当旧文档与用户最新概念图冲突时，以最新概念图 + TASK-024 品牌体系为准。
+旧文档若要求 Hero 左下、靛蓝 CTA 等，与本 Task 最新视觉规格冲突时，以本 Task + TASK-024 品牌体系为准。
 
-但不能因此越界实现其他 WBS 的真实业务。
+但不得越界实现 3.3 / 3.4 / 3.5 的新业务。
 
 ---
 
-# 3. Required Visual Composition
+# 4. Target Desktop Composition
 
-## 3.1 Desktop 目标结构
+1672×941 参考画面采用以下视觉结构：
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
-│ [TravelAssist]                                      [中文⌄] │
+│ [ TravelAssist ]                                   [ 中文⌄ ] │
 │                                                              │
 │                                                              │
-│                 TRAVELASSIST · 旅 程 规 划                   │
-│                          ───                                 │
+│               T R A V E L A S S I S T · 旅 程 规 划        │
+│                            ───                               │
 │                                                              │
-│                   下一站，去哪里？                           │
+│                    下一站，去哪里？                          │
 │                                                              │
-│                   规划行程 · 对话调整                        │
+│                    规划行程 · 对话调整                       │
 │                                                              │
-│                [ 让我们开始吧  → ]                           │
+│                 [ 让我们开始吧   → ]                         │
 │                                                              │
-│                 [头像  Yuki · 个人中心  >]                   │
+│                  [头像  用户 · 个人中心  ›]                  │
 │                                                              │
-│                                                    [ AI ]     │
+│                                                    [  AI  ]   │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-要求整体视觉中心与概念图接近，而不是保留旧版 Hero 左下构图。
+## 4.1 Geometry Bands
 
-## 3.2 Brand
+以 1672×941 为 canonical desktop ratio，视觉位置控制在以下范围：
+
+| 元素 | 目标区域 |
+| --- | --- |
+| Brand | 左 3%–5%，上 3%–5% |
+| Language | 右 4%–6%，上 3%–5% |
+| Hero 内容中心线 | x ≈ 50% |
+| Eyebrow | y ≈ 22%–25% |
+| 主标题 | y ≈ 29%–39% |
+| 副标题 | y ≈ 42%–46% |
+| CTA | y ≈ 48%–58% |
+| Personal Center / Login | y ≈ 60%–68% |
+| AI | 右 3%–5%，下 5%–8% |
+
+不要求机械使用绝对像素，但相对节奏必须接近。
+
+---
+
+# 5. Header
+
+## 5.1 Brand Capsule
 
 左上：
 
-- 使用当前正式 TravelAssist Logo / BrandLogo
-- 暖白胶囊背景
-- 轻微透明感
-- 大圆角
-- 轻阴影
-- 不能重新做 Logo 图片
+- 复用现有 `BrandLogo`
+- 不重新制作 Logo 图
+- 暖白 / 象牙白半透明胶囊
+- 大圆角 / pill
+- 轻柔阴影
+- 胶囊高度约 54–64px（1672 desktop）
+- Logo 与文字垂直居中
+- 不做传统整条 Navbar
 
-## 3.3 Language
+## 5.2 Language Capsule
 
 右上：
 
-- `中文` + chevron
+```text
+中文 ⌄
+```
+
+要求：
+
 - 暖白胶囊
-- 紧凑
-- 视觉尺寸与 Brand 平衡
-- 不扩展 i18n 业务
+- 高度与 Brand 接近
+- 宽度更短
+- 44px+ 可点击区域
+- 保留现有语言入口行为
+- 不新增完整 i18n
 
-## 3.4 Eyebrow
+---
 
-居中小字：
+# 6. Hero
+
+Hero 必须从旧版左下构图调整为 **真正视觉居中**。
+
+## 6.1 Eyebrow
+
+显示：
 
 ```text
 T R A V E L A S S I S T  ·  旅 程 规 划
 ```
 
-下方一条短珊瑚红装饰线。
+要求：
 
-不增加新的营销文案。
+- 大写英文字距拉开
+- 中文也适度增加字距
+- 深墨 / 次级墨色
+- 居中
+- 下方短珊瑚红装饰线
+- 装饰线约 48–64px 宽、2–3px 高
 
-## 3.5 Main Title
+## 6.2 Main Title
 
 ```text
 下一站，去哪里？
@@ -149,164 +202,261 @@ T R A V E L A S S I S T  ·  旅 程 规 划
 
 要求：
 
-- 视觉绝对第一文字焦点
+- 页面第一文字焦点
 - 居中
-- 大字号
 - 深墨 / 近黑
-- 使用现有共享 heading 字体体系
+- 中文人文感 heading 字体，必须复用 shared heading stack
 - 不下载新字体
-- 不做渐变文字
+- 1672 desktop 视觉字号目标约 72–92px
+- `line-height` 约 1.05–1.12
+- 不用粗黑 SaaS 风格
+- 不用渐变文字
 
-## 3.6 Subtitle
+## 6.3 Subtitle
 
 ```text
 规划行程 · 对话调整
 ```
 
-居中、字距略开、明显弱于主标题。
+要求：
 
-## 3.7 Primary CTA
+- 居中
+- 明显弱于主标题
+- 字距略开
+- 1672 desktop 约 24–32px 视觉量级
+- 不增加第三行营销文案
+
+---
+
+# 7. Primary CTA
+
+文案：
 
 ```text
 让我们开始吧  →
 ```
 
-要求：
-
-- 大号胶囊
-- 红 / 珊瑚朱红渐变或非常轻的同系层次
-- 白字
-- 保持现有 `/start` 真实导航
-- Hover / Focus 轻量
-- 不能新增动画依赖
-
-## 3.8 Personal Center Entry
-
-概念图中的：
+行为：
 
 ```text
-[头像] Yuki · 个人中心  >
+/start
 ```
 
-实现要求：
+视觉：
 
-- 必须复用现有 AccountAvatar / Auth / Personal Center 导航边界
-- 已登录用户：使用真实 session/profile 可用数据
-- 若现有生产边界只能安全显示现有已接线 identity，则复用真实数据
-- 未登录用户：不得伪造 Yuki 或真实头像，应显示现有 Login / Guest 行为
-- 不允许为了与概念图完全一致硬编码虚假用户
-- 胶囊视觉可按概念图调整
-
-完整登录/头像业务仍属于 WBS 3.4；本 Task 只能消费已有真实能力。
-
-## 3.9 AI Entry
-
-右下：
-
-- 复用现有 Home AI Entry
-- 圆形
-- 暖红主体
-- 外圈暖白
+- 大型水平胶囊
+- 1672 desktop 目标宽约 360–390px
+- 高约 76–88px
+- 珊瑚朱红 / 暖红，可用克制的同系渐变
+- 白色文字
+- 字号约 24–30px
 - 轻阴影
-- 尺寸、位置接近概念图
-- 原有打开 / Escape / focus return 行为必须保留
-- 不接真实 AI API
+- 背景可有非常轻微和风纹理感，但不能增加复杂图片资产
+- Hover / Focus 只做轻量亮度 / 阴影 / focus ring
+- 禁止明显弹跳或位移动画
+
+不得把 CTA 改为假按钮。
 
 ---
 
-# 4. Background Rules
+# 8. Personal Center / Login Entry
 
-本 Task 使用静态背景作为正式 MVP。
+概念图登录后形态：
 
-Canonical background runtime path：
+```text
+[头像] 用户名 · 个人中心  ›
+```
+
+视觉：
+
+- CTA 正下方
+- 暖白 / 半透明胶囊
+- 高度约 58–68px（1672 desktop）
+- 头像圆形
+- 用户名深墨
+- “个人中心”作为同一行次级说明
+- 右侧 chevron
+- 轻描边 / 轻阴影
+
+## Critical Auth Rule
+
+**禁止硬编码 `Yuki`、假头像或假登录态。**
+
+必须：
+
+- 复用当前真实 Auth / Session / AccountAvatar / Personal Center 路由能力
+- 已登录：显示当前生产能力允许的真实用户信息
+- 未登录：显示当前已有 Login / Guest 入口，不制造登录成功假象
+
+如果 TASK-024 目前只有“旅”占位而 3.4 尚未完成：
+
+- 可以按概念图把入口做成同样的暖白胶囊结构
+- 但内容必须仍是真实 Guest/Login 状态
+- 完整 Session-based Avatar 统一留给 WBS 3.4
+
+本 Task 只改视觉适配，不扩展 Auth 业务。
+
+---
+
+# 9. AI Entry
+
+右下保留现有 AI Entry 行为。
+
+视觉目标：
+
+- 圆形
+- 暖白外圈
+- 珊瑚红内部圆
+- 白色 AI 图形 / 现有可访问图标
+- 1672 desktop 外径约 84–100px
+- 右边距约 45–65px
+- 下边距约 45–65px
+- 柔和阴影
+
+必须保留：
+
+- accessible label
+- open
+- close
+- Escape
+- focus return
+
+不接真实 AI API。
+
+---
+
+# 10. Background
+
+正式静态背景 runtime：
 
 ```text
 public/media/home/home-hero-poster.webp
 ```
 
-如果用户确认概念图中的背景图已经作为正式 homepage poster 进入仓库，则优先使用该正式文件。
-
-如果概念图本身只是完整 UI 合成图，不能直接把整张 UI 截图作为 background，否则会重复 Logo / 标题 / CTA。
+当前该 Poster 与概念图画布同为 1672×941，应优先审计它是否就是概念图对应的无 UI 场景素材。
 
 必须区分：
 
 ```text
-背景资产
+纯背景 Poster
 ≠
-完整概念图截图
+完整 UI 概念图截图
 ```
 
-如果仓库没有“无 UI 的对应背景图”，使用当前 `home-hero-poster.webp`，通过 layout / crop / overlay 实现概念图构图。
+**禁止把完整概念图截图作为页面 background**，否则会重复 Logo / 标题 / CTA。
 
-不得自行联网下载背景。
+如果当前 Poster 已是同一海边列车场景：
 
-不得生成视频。
+- 直接复用
+- 调整 `object-position` / crop / overlay 即可
 
----
+如果不是：
 
-# 5. Visual Fidelity Priorities
-
-优先调整：
-
-1. Hero 由左下改为视觉居中
-2. 标题字号 / 行距 / 宽度
-3. Eyebrow / 短装饰线
-4. CTA 大小 / 胶囊比例
-5. Personal Center 胶囊
-6. Header 两端位置 / 尺寸
-7. AI Entry 右下位置
-8. 背景 crop / object-position
-9. Overlay 亮度与文字可读性
-10. Desktop / Tablet / Mobile 的比例
-
-目标不是机械像素复制，而是达到：
-
-> 用户并排看概念图和生产页面时，第一眼认为是同一设计，而不是两个版本。
+- 先搜索仓库已有正式授权的同场景 Home 素材
+- 没有则保持当前正式 Poster，并记录视觉差异
+- 不联网随机下载
+- 不生成视频
 
 ---
 
-# 6. Preserve Existing Functionality
+# 11. Overlay / Readability
 
-必须保留：
+概念图整体是：
+
+- 明亮
+- 暖色
+- 低压迫
+- 背景清楚可辨
+
+Overlay 只做最小可读性增强。
+
+要求：
+
+- 不用大片黑色遮罩
+- 不把背景洗成纯白
+- 不增加 Hero Card
+- 主标题区域可以有极轻暖白雾化
+- Header / CTA / Personal Center 胶囊本身负责局部可读性
+
+---
+
+# 12. Preserve TASK-024 Brand System
+
+必须继续使用：
+
+- `--color-bg-canvas`
+- `--color-bg-elevated`
+- `--color-text-primary`
+- `--color-text-secondary`
+- `--color-accent-primary`
+- `--color-accent-primary-hover`
+- shared radius / border / shadow / focus
+- shared `BrandLogo`
+- shared AccountAvatar 能力
+
+无必要不要修改全局 token。
+
+不得建立第二套 Brand / Header / Avatar / Design System。
+
+---
+
+# 13. Functional Preservation
+
+必须保持：
 
 - Logo → `/`
 - CTA → `/start`
-- Personal Center / Login 真实导航
-- Avatar Popover 现有逻辑（如当前入口使用）
-- AI Entry open / close / Escape / focus return
+- Login / Personal Center 真实导航
 - Main Shell route boundary
-- skip link / focus-visible
-- Home history / browser navigation
+- AI Entry 行为
+- keyboard focus
+- skip link
+- browser back / forward
 
-不得把真实 Link 改成假按钮。
-
-不得为了视觉复刻移除 accessibility。
-
----
-
-# 7. Out of Scope
-
-不得执行：
-
-- WBS 3.3 的新业务逻辑
-- WBS 3.4 的完整 Auth / Session 新实现
-- WBS 3.5 的 AI 新功能
-- WBS 3.7 Loading / Empty / Error 系统
-- TASK-025.1-A 视频增强
-- Personal Center 内部重设计
-- Start Wizard 重设计
-- Planner / Detail 修改
-- Map / Route / POI / Booking / DB / Engine
-- 新依赖 / 新字体 / 新 animation library
+不得为了截图相似删除 accessibility 或真实 Link。
 
 ---
 
-# 8. Responsive Requirements
+# 14. Scope Guard
 
-至少验证：
+允许主要修改：
 
 ```text
-1672 × 941  canonical reference ratio
+src/features/home/**
+```
+
+必要时只做最小 shared adapter 修改。
+
+不得修改业务：
+
+```text
+src/features/start-flow/**
+src/features/planner/**
+src/features/routing/**
+src/features/personal-center/**   # 仅允许共享组件引用所需的最小无行为适配；禁止内部重设计
+src/db/**
+```
+
+不得实施：
+
+- WBS 3.3 新业务
+- WBS 3.4 完整 Auth / Session 新实现
+- WBS 3.5 AI 新功能
+- WBS 3.7 状态系统
+- TASK-025.1-A 视频
+- Map / Route / POI / Booking / DB / Engine
+- 新字体
+- 新动画库
+- 新 UI library
+
+---
+
+# 15. Responsive
+
+必须验证：
+
+```text
+1672 × 941
 1440 × 900
 1024 × 768
 390 × 844
@@ -315,72 +465,87 @@ public/media/home/home-hero-poster.webp
 
 ## Desktop
 
-- Hero 视觉居中
-- 标题不与背景高对比区域冲突
-- CTA 与 Personal Center Entry 纵向节奏接近概念图
-- Header 不形成传统 navbar
-- AI 在右下安全区域
+- Hero 保持视觉居中
+- 背景列车 / 海岸 / 樱花仍具有识别度
+- Header 两端稳定
+- CTA / User Entry 纵向间距不拥挤
+- AI 在右下安全区
 
 ## Tablet
 
-- 主标题可适当缩小
-- 不允许 Hero 被 Header 压缩到过低
-- 胶囊控件保持触控空间
+- 标题缩放但保持中心焦点
+- Brand / Language 不碰撞
+- CTA 触控区域完整
 
 ## Mobile
 
-概念图是 Desktop，不要求手机机械复制 Desktop。
+Desktop 概念图不是手机机械模板。
 
-Mobile 目标：
+Mobile 必须：
 
-- 保持同一设计语言
-- Hero 仍居中
-- 标题分行自然
-- CTA 宽度合理
-- 登录 / 个人中心入口不与 CTA 冲突
-- AI 不遮挡主操作
-- Header Brand / Language 不碰撞
-- 背景 crop 保持旅行场景识别度
+- 延续同一视觉语言
+- Hero 居中
+- 主标题自然换行（必要时两行）
+- CTA 宽度不超过安全边距
+- Login / User entry 不与 CTA 或 AI 重叠
+- Brand / Language 不碰撞
+- AI 不遮挡主要操作
+- Poster crop 仍看得出日本旅行场景
+- 无横向滚动
 
 ---
 
-# 9. Visual QA
+# 16. Visual Acceptance Evidence
 
-必须生成并保存：
+必须生成：
 
 ```text
 docs/qa/TASK-025.2/
 ```
 
-至少包括：
+至少包含：
 
-- 1672×941 screenshot
-- 1440×900 screenshot
-- 1024×768 screenshot
-- 390×844 screenshot
-- 320×568 screenshot
-- side-by-side comparison 或明确的视觉对照说明
-- browser report
+- `1672x941.png`
+- `1440x900.png`
+- `1024x768.png`
+- `390x844.png`
+- `320x568.png`
+- browser report / measurement report
+- visual comparison README
 
-用户最终视觉验收必须基于实际生产截图，不得只依据 DOM / CSS 数值。
+若不适合把 PNG 二进制提交 Git，可把截图放 QA worktree/cache，但必须提交：
 
----
+- 路径
+- SHA-256
+- 复现命令
+- comparison summary
 
-# 10. Geometry Guard
-
-只允许修改 Home 页面相关文件和必要 shared visual adapters。
-
-必须证明：
-
-- `/start` layout geometry 未变
-- `/planner` geometry 未变
-- Personal Center Shell geometry 未变
-
-如果 shared token 修改会影响这些页面，必须回归检查；无必要不要改全局 token。
+最终 Result 必须明确提示用户进行视觉验收。
 
 ---
 
-# 11. Validation
+# 17. Geometry Regression Guard
+
+必须证明 TASK-025.2 没有把全站其它页面带坏。
+
+至少回归：
+
+- `/start`
+- `/planner`
+- 当前真实 Detail
+- `/personal-center`
+
+要求：
+
+- Start 主要容器几何不因 Home 改动变化
+- Planner 地图 / 右栏 / 底栏几何不变化
+- Personal Center Sidebar / Content geometry 不变化
+
+若修改 shared token 导致变化，必须回退不必要的全局修改。
+
+---
+
+# 18. Validation
 
 至少执行：
 
@@ -393,29 +558,32 @@ npm test --if-present
 git diff --check
 ```
 
-如果没有 npm test script：
+如果没有 `npm test` script：
 
-- 运行全仓真实 Node tests
-- 运行 TASK-025.2 专项测试
+- 运行真实全仓 Node tests
+- 新增并运行 TASK-025.2 专项 tests
 
-浏览器必须至少覆盖：
+专项至少覆盖：
 
-- `/`
-- CTA → `/start`
-- Personal Center / Login 入口
-- AI Entry
+- CTA `/start`
+- Brand `/`
+- Personal Center / Login 真实目标
+- AI Entry 交互
+- 无硬编码 Yuki
+- 没有第二套 Logo
+- 关键结构语义
 
-检查：
+浏览器检查：
 
-- console error
-- hydration error
-- horizontal overflow
-- keyboard focus
+- console errors = 0 new
+- hydration errors = 0 new
+- horizontal overflow = none
+- focus visible
 - Escape / focus return
 
 ---
 
-# 12. Git / Tracking
+# 19. Git / Tracking
 
 开始前：
 
@@ -427,39 +595,42 @@ git rev-parse origin/develop
 git log --oneline -20 origin/develop
 ```
 
-必须从最新 `origin/develop` 创建：
+然后读取：
+
+```bash
+git show origin/develop:docs/tasks/TASK-025.2-a-homepage-concept-fidelity.md
+git show origin/develop:docs/project/WBS-TravelAssist.md
+git show origin/develop:docs/project/WBS-3.2-static-first-amendment.md
+```
+
+从最新 `origin/develop` 创建：
 
 ```text
 feature/a-homepage-concept-fidelity
 ```
 
-启动时：
+启动：
 
 ```text
 WBS 3.2 = 进行中
 ```
 
-实现完成但未合并：
+实现完成未合并：
 
 ```text
 WBS 3.2 = 待审查
 ```
 
-用户视觉验收通过且 PR 合入 develop：
+用户视觉验收通过 + PR 合入 develop：
 
 ```text
 WBS 3.2 = 已完成
 ```
 
-Result：
-
-```text
-docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md
-```
-
 必须同步：
 
-- Issue #246
+- Issue #251
+- Related Issue #246
 - Task
 - Result
 - WBS
@@ -467,11 +638,83 @@ docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md
 - Commit
 - Draft PR
 
-不得覆盖其他工作站最新 WBS 记录。
+WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 
 ---
 
-# 13. Git Safety
+# 20. Result Format
+
+最终返回：
+
+```md
+# TASK-025.2-A Result
+
+## Status
+
+## Preflight
+- execution base:
+- WBS 3.2 before:
+- TASK-024 merged:
+
+## Tracking
+- Issue #251:
+- Related #246:
+- Branch:
+- Commit:
+- Draft PR:
+- WBS 3.2:
+
+## Concept Fidelity
+- header:
+- hero center:
+- eyebrow:
+- title:
+- subtitle:
+- CTA:
+- user/login entry:
+- AI entry:
+- background/crop:
+
+## Auth Boundary
+- logged-in behavior:
+- guest behavior:
+- hard-coded fake identity: No
+
+## Responsive QA
+- 1672x941:
+- 1440x900:
+- 1024x768:
+- 390x844:
+- 320x568:
+
+## Regression
+- Start:
+- Planner:
+- Detail:
+- Personal Center:
+
+## Validation
+- lint:
+- typecheck:
+- build:
+- node tests:
+- task tests:
+- diff-check:
+
+## Visual Evidence
+
+## Problems / Deferred
+
+## WBS Updated
+Yes / No
+
+## Next Task
+Do not start automatically.
+```
+
+---
+
+# 21. Git Safety
 
 禁止：
 
@@ -482,18 +725,17 @@ git push --force
 git push --force-with-lease
 ```
 
-禁止整份 ours / theirs 解决 WBS 冲突。
+不得删除用户未提交素材。
 
 ---
 
-# 14. Stop Rule
+# 22. Stop Rule
 
-完成后停止。
+完成 TASK-025.2-A 后停止，等待用户视觉验收。
 
 不要自动开始：
 
-- TASK-025.1-A
-- WBS 3.2.1
+- TASK-025.1-A / 3.2.1 video enhancement
 - WBS 3.3
-
-等待用户视觉验收。
+- WBS 3.4
+- WBS 3.5
