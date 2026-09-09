@@ -18,13 +18,12 @@ export function HomeHero({ viewer = null }: { viewer?: HomeViewer | null }) {
       <div className={styles.actionRow}>
         <HeroStartButton />
         <div className={styles.accountEntry}>
-          {viewer ? (
-            <HomeAccountLink viewer={viewer} compact />
-          ) : (
-            <p>
-              已有账号？ <Link href="/login?returnTo=%2F">登录</Link>
-            </p>
-          )}
+          <HomeAccountLink viewer={viewer} compact />
+          {!viewer ? (
+            <Link className={styles.loginAction} href="/login?returnTo=%2F">
+              登录
+            </Link>
+          ) : null}
         </div>
       </div>
       <span className={styles.srOnly} id="start-flow-note">

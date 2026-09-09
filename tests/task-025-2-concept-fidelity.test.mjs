@@ -64,16 +64,18 @@ test("concept Hero preserves the real start and protected account destinations",
 test("guest uses a real login link; verified viewer gets the shared account avatar", () => {
   const { HomeHero } = load("src/features/home/components/home-hero.tsx");
   const guest = renderToStaticMarkup(React.createElement(HomeHero));
-  assert.match(guest, /已有账号？/);
+  assert.match(guest, /游客/);
+  assert.match(guest, /href="\/personal-center"/);
+  assert.match(guest, /data-account-avatar/);
   assert.match(guest, /href="\/login\?returnTo=%2F"/);
-  assert.doesNotMatch(guest, /Yuki|disabled=|data-account-avatar|demo-user/i);
+  assert.doesNotMatch(guest, /Yuki|disabled=|demo-user/i);
   const member = renderToStaticMarkup(
     React.createElement(HomeHero, { viewer: { name: "真实账户" } }),
   );
   assert.match(member, /真实账户/);
   assert.match(member, /href="\/personal-center"/);
   assert.match(member, /data-account-avatar/);
-  assert.doesNotMatch(member, /已有账号/);
+  assert.doesNotMatch(member, /href="\/login/);
 });
 test("default Home header reuses the single canonical BrandLogo and native language details", () => {
   const { MainHeader } = load("src/components/layout/main-header.tsx");

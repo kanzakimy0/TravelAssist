@@ -14,8 +14,10 @@
   z-index: 2;
   min-height: var(--home-footer-height);
   padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--color-bg-elevated) 82%, transparent);
-  backdrop-filter: blur(12px);
+  background: transparent;
+  color: #000;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgb(255 252 247 / 90%);
 }
 .immersiveFooter small,
 .footer small {
@@ -46,6 +48,9 @@
   content: "·";
   margin-right: 1rem;
   color: var(--color-text-secondary);
+}
+.immersiveFooter a + a::before {
+  color: inherit;
 }
 .immersiveFooter a:hover,
 .footer a:hover {

@@ -1,5 +1,34 @@
 # TASK-025.2-A Result
 
+## 最新账户样式补正：恢复截图胶囊（2026-09-09，视觉验收通过）
+
+用户确认其他效果 OK，要求个人中心 / 登录恢复上传截图的样式。本节仅覆盖下方追加修正中“透明账户行、黑色粗体”的历史方案；透明黑色粗体 Footer 保持。
+
+- 主 CTA 下方居中显示暖白圆角胶囊，左侧共享头像与“游客 · 个人中心”、细竖向分隔线、右侧“登录”。恢复正常字重的深墨账户文字和较小的灰色登录文字；桌面胶囊约 284×64px。
+- 游客个人中心和登录继续使用真实链接及既有访问保护；已核验用户使用真实头像 / 名称，保持个人中心入口，不显示游客登录。未硬编码身份或改变认证流程。
+- 手机胶囊紧凑适配，320×568 保留 44px 点击区域；仅减少 4px 不可见底部预留空间以容纳胶囊高度，不移动其他内容。
+- 逐项对比上一轮 account-footer 报告：六组中 Brand / language / eyebrow / title / subtitle / CTA / Help / Footer / AI 的所有已测量几何与计算样式完全一致，背景来源和裁切完全一致。其他页面与共享 tokens 无改动。
+- lint、typecheck、production build、现有 Node 全仓 703/703、Home 五尺寸 + reduced-motion 6/6、认证 15/15 和 diff-check 通过。CLS=0、无横纵溢出、无新增 console / hydration 错误、无视频请求。
+- 最新报告：docs/qa/TASK-025.2/account-capsule-home-report.json、account-capsule-auth-report.json、account-capsule-evidence.json。五尺寸、登录态与 Hero 放大截图位于 F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/account-capsule-home/；旧证据保留。
+- 用户已明确视觉验收通过，并授权 [PR #254](https://github.com/kanzakimy0/TravelAssist/pull/254) 合入 develop。已验收代码提交为 59b0cf43e03a0a98e1b687e6f6b28311137aedb1；本次收尾仅更新此验收记录，运行时代码与五尺寸证据保持一致。PR 链接记录最终合并状态与提交。
+- 预览：http://localhost:3132/；分支 codex/home-footer-account-visibility。原 TASK / WBS 3.2 已完成状态与关闭的 Issues 保持；旧待审查措辞是历史记录。本轮收尾后停止，不启动下一任务。
+
+---
+
+## 验收后追加修正：透明底栏与账户入口（2026-09-09，待审查）
+
+用户追加要求：首页底部栏透明、字体黑色粗体，并补回截图中的个人中心和登录入口。本次是已合并 #252/#253 后的新视觉修正；下方原 TASK / WBS 3.2 已完成记录保持，不借用上次视觉验收自动合并本次改动。
+
+- 首页 Footer 去除暖白背景条和 backdrop blur，改为透明；版权、链接用黑色 700 字重，保留键盘 focus / hover 和文字柔和阴影。
+- CTA 下方恢复共享 AccountAvatar / HomeAccountLink；游客同时看到“游客 · 个人中心”和真实登录链接。透明账户行同样黑色粗体，取消原先桌面隐藏该入口的规则。
+- 个人中心仍走现有访问保护；Login 仍为 /login?returnTo=%2F。已核验账户在所有尺寸下展示真实头像与个人中心，不展示误导性的登录状态；原右上已登录入口保留。
+- 原樱花海岸电车背景、Header、标题、CTA、Help / AI 交互、独立信息页面的页脚及其他业务页面均保持。
+- lint、typecheck、production build、703/703 全仓和 diff-check 通过。Home 五尺寸 + reduced-motion 6/6，verified / neutral / invalid 会话 × 五尺寸 15/15；无溢出，CLS=0，无新增 console/hydration 错误，无视频请求。浏览器断言验证透明背景、无 blur、黑色和 700 字重，以及游客个人中心访问保护与登录跳转。
+- 当前预览：http://localhost:3132/；分支 codex/home-footer-account-visibility；本次保持 Draft 待用户验收，不自动合并。
+- 新证据：docs/qa/TASK-025.2/account-footer-home-report.json、account-footer-auth-report.json、account-footer-evidence.json。实际五尺寸 PNG 位于 F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/account-footer-home/，旧报告完整保留。
+
+---
+
 ## 最终状态：已完成（2026-09-09）
 
 用户已对恢复原樱花海岸电车背景的最终版本视觉验收通过，并明确授权合入 develop。
@@ -13,7 +42,6 @@
 - 旧 video Blocked / 待审查 / 未合并措辞保留为当时历史，当前状态以本节为准。3.2.1 视频增强仍 Deferred，不启动后续 Task。
 
 ---
-
 
 ## 当前补正：保留用户指定的樱花海岸电车背景（2026-09-09）
 
