@@ -1,5 +1,20 @@
 # TASK-025.2-A Result
 
+## 最终状态：已完成（2026-09-09）
+
+用户已对恢复原樱花海岸电车背景的最终版本视觉验收通过，并明确授权合入 develop。
+
+- PR [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)：**MERGED**，时间 2026-09-09T11:29:14Z。
+- 已验收提交：85a05b787087f9a36c8c5cab40693ed06ac08764；merge commit：d2efbb69bdabc91b41994147b357c4dfad02eeee。
+- 已 fetch 并确认该提交进入 origin/develop，合并文件树与已验收 head 完全一致。原功能分支保留，不执行分支删除或任何 force 操作。
+- Task / Result / Master WBS 3.2 同步为已完成；Issue #251 与关联静态 MVP #246 收尾。本次收尾仅追加文档，无运行时变更。
+- 原有 npm ci、lint、typecheck、build、703/703 全仓、14/14 专项及浏览器验证结果仍对应实际合并内容；本次验证合并祖先、文件树一致性和文档 diff-check，不重复未变代码的测试。
+- 最新可见效果和五尺寸证据仍为 background-restored-home-report.json 及 .cache/qa/background-restored-home/；当前正式背景 home-hero-sakura-sunset.webp。
+- 旧 video Blocked / 待审查 / 未合并措辞保留为当时历史，当前状态以本节为准。3.2.1 视频增强仍 Deferred，不启动后续 Task。
+
+---
+
+
 ## 当前补正：保留用户指定的樱花海岸电车背景（2026-09-09）
 
 用户最新明确要求背景继续使用上传的纯场景图 H:/Temp/codex-clipboard-4a5af8bb-563a-4898-9bbb-67bb17b6977d.png。本条是当前背景选择的最终依据；前轮 v1.1 UI、Help、Footer、真实账户及珊瑚风格继续保留。

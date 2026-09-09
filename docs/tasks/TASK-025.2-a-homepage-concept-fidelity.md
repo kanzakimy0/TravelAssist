@@ -787,3 +787,7 @@ git push --force-with-lease
 ## User background freeze — 2026-09-09
 
 用户最新要求固定使用上传的樱花海岸电车纯背景（codex-clipboard-4a5af8bb-563a-4898-9bbb-67bb17b6977d.png）。经逐字节编码比对，直接复用 public/media/home-concept/home-hero-sakura-sunset.webp；这条指令覆盖前轮概念背景选择。v1.1 的 Header、Hero、唯一 CTA、真实账户、Help / Footer / AI 与五个信息 route 保持。修正沿用 Draft PR #252，3.2 待审查。
+
+## Accepted and merged — 2026-09-09
+
+用户视觉验收通过并授权合并。PR #252 已合入 develop，merge d2efbb69bdabc91b41994147b357c4dfad02eeee，已验收 head 85a05b787087f9a36c8c5cab40693ed06ac08764，合并树完全一致。TASK-025.2-A / WBS 3.2 已完成；最终采用用户固定的樱花海岸电车背景，完整结果与证据见 Result 的最终状态节。Issue #251 / #246 收尾；历史记录保留，3.2.1 Deferred，不启动下一 Task。
