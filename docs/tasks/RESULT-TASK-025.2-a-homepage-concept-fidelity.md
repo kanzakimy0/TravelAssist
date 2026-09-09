@@ -1,5 +1,19 @@
 # TASK-025.2-A Result
 
+## 最新账户样式补正：恢复截图胶囊（2026-09-09，待审查）
+
+用户确认其他效果 OK，要求个人中心 / 登录恢复上传截图的样式。本节仅覆盖下方追加修正中“透明账户行、黑色粗体”的历史方案；透明黑色粗体 Footer 保持。
+
+- 主 CTA 下方居中显示暖白圆角胶囊，左侧共享头像与“游客 · 个人中心”、细竖向分隔线、右侧“登录”。恢复正常字重的深墨账户文字和较小的灰色登录文字；桌面胶囊约 284×64px。
+- 游客个人中心和登录继续使用真实链接及既有访问保护；已核验用户使用真实头像 / 名称，保持个人中心入口，不显示游客登录。未硬编码身份或改变认证流程。
+- 手机胶囊紧凑适配，320×568 保留 44px 点击区域；仅减少 4px 不可见底部预留空间以容纳胶囊高度，不移动其他内容。
+- 逐项对比上一轮 account-footer 报告：六组中 Brand / language / eyebrow / title / subtitle / CTA / Help / Footer / AI 的所有已测量几何与计算样式完全一致，背景来源和裁切完全一致。其他页面与共享 tokens 无改动。
+- lint、typecheck、production build、现有 Node 全仓 703/703、Home 五尺寸 + reduced-motion 6/6、认证 15/15 和 diff-check 通过。CLS=0、无横纵溢出、无新增 console / hydration 错误、无视频请求。
+- 最新报告：docs/qa/TASK-025.2/account-capsule-home-report.json、account-capsule-auth-report.json、account-capsule-evidence.json。五尺寸、登录态与 Hero 放大截图位于 F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/account-capsule-home/；旧证据保留。
+- 预览：http://localhost:3132/；分支 codex/home-footer-account-visibility；沿用 [Draft PR #254](https://github.com/kanzakimy0/TravelAssist/pull/254) → develop，等待本次视觉验收。原 TASK / WBS 3.2 已完成状态与关闭的 Issues 保持；不自动合并或启动下一任务。
+
+---
+
 ## 验收后追加修正：透明底栏与账户入口（2026-09-09，待审查）
 
 用户追加要求：首页底部栏透明、字体黑色粗体，并补回截图中的个人中心和登录入口。本次是已合并 #252/#253 后的新视觉修正；下方原 TASK / WBS 3.2 已完成记录保持，不借用上次视觉验收自动合并本次改动。

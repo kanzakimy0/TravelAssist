@@ -26,8 +26,14 @@ export function HomeAccountLink({
       <span onErrorCapture={() => setFailed(true)}>
         <AccountAvatar src={failed ? undefined : viewer?.avatar} unoptimized />
       </span>
-      <span className={styles.accountName}>{viewer?.name ?? "游客"}</span>
-      {compact && viewer?.name !== "个人中心" ? <span>· 个人中心</span> : null}
+      {compact ? (
+        <span className={styles.identity}>
+          <span className={styles.accountName}>{viewer?.name ?? "游客"}</span>
+          {viewer?.name !== "个人中心" ? <span>· 个人中心</span> : null}
+        </span>
+      ) : (
+        <span className={styles.accountName}>{viewer?.name ?? "游客"}</span>
+      )}
       <span aria-hidden="true">›</span>
     </Link>
   );

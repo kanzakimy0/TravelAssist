@@ -157,19 +157,39 @@ try {
       color: "rgb(0, 0, 0)",
       weight: "700",
     });
-    for (const link of [
-      page.getByRole("link", { name: "游客 · 个人中心" }),
-      page.getByRole("link", { name: "登录", exact: true }),
-    ]) {
-      assert.equal(
-        await link.evaluate((el) => getComputedStyle(el).color),
-        "rgb(0, 0, 0)",
-      );
-      assert.equal(
-        await link.evaluate((el) => getComputedStyle(el).fontWeight),
-        "700",
-      );
-    }
+    const accountPaint = await page
+      .getByRole("link", { name: "游客 · 个人中心" })
+      .evaluate((el) => {
+        const s = getComputedStyle(el),
+          pill = getComputedStyle(el.parentElement);
+        return {
+          color: s.color,
+          weight: s.fontWeight,
+          background: pill.backgroundColor,
+          radius: pill.borderRadius,
+          backdrop: pill.backdropFilter,
+        };
+      });
+    assert.equal(accountPaint.color, "rgb(56, 54, 50)");
+    assert.equal(accountPaint.weight, "400");
+    assert.notEqual(accountPaint.background, "rgba(0, 0, 0, 0)");
+    assert.ok(parseFloat(accountPaint.radius) >= 999);
+    assert.equal(accountPaint.backdrop, "blur(12px)");
+    const loginPaint = await page
+      .getByRole("link", { name: "登录", exact: true })
+      .evaluate((el) => {
+        const s = getComputedStyle(el);
+        return {
+          color: s.color,
+          weight: s.fontWeight,
+          divider: s.borderLeftWidth,
+        };
+      });
+    assert.deepEqual(loginPaint, {
+      color: "rgb(112, 102, 95)",
+      weight: "700",
+      divider: "1px",
+    });
     assert.equal(await page.getByRole("contentinfo").count(), 1);
     assert.equal(
       await page
