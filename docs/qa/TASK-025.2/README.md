@@ -79,3 +79,14 @@ node tools/qa/task-025-2-regression.mjs
 - 来源、用户授权、完整编辑提示词、输入/输出路径与 SHA：`docs/assets/home-hero-sakura-sunset.provenance.json`。
 - 使用 built-in image_gen；无 UI 纯背景输出在本工作区 `.cache/qa/task0252-screenshots/home-hero-sakura-sunset-source.png`，WebP 正式资产已提交。旧 Poster 原样保留在受保护目录，已退出首页接线。
 - 390px 视口实际背景响应 143980 bytes；其他尺寸见 request-report。
+
+## 当前追加：Start / Planner / Trip Detail 品牌同步
+
+用户明确 Home 与 Personal Center 已统一，本轮二者保持。Start 使用同一已授权场景，Planner / Detail 仅统一工作台表面及控件语言；地图几何、右栏、时间轴不变。现有主色 `#a74739`、深墨 `#383632`、暖白 `#fffcf7`、暖粉 `#f9e7e0`、边框 `#e9dcd1`、焦点 `#954439` 为唯一来源，没有新增同义 token。保留地图和状态语义色。
+
+- 实际截图：`F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/brand-after/`。总览 `travelassist-brand-overview.png`，窄屏 `narrow-mobile-overview.png`，按页/宽度命名的 20 张截图，另有 8 张菜单 / 键盘焦点截图。
+- `brand-report.json`：20 组固定几何对比、共享计算样式、菜单及焦点记录。
+- `brand-evidence.json`：截图绝对路径 / SHA / 大小、校验结果；Home 六组、Personal Center 五组修改前后逐字节一致。
+- 生产预览 `http://localhost:3132/start`、`/planner`、`/planner?view=detail&day=1`。Detail 首次需点击“保存到浏览器并进入详情”；现有浏览器保存与导航行为保持。
+- 复现：启动 `tools/qa/task-024-visual-auth-fixture.mjs` 与使用该本地 fixture 的生产服务；设置 `PLAYWRIGHT_MODULE` 为可用 Playwright，`TASK_0252_URL=http://localhost:3132`，运行 `node tools/qa/task-025-2-brand-check.mjs`。默认 reduced-motion；另外 `task-025-2-home-check.mjs` 验证普通动态偏好及 reduced-motion。
+- 699 全仓 + 12 专项通过；既有 favicon.ico 404 与原始基线一致。真实 Auth / Map provider 未在本轮接入或验证。

@@ -13,16 +13,16 @@
   border-radius: 18px;
   background: #fffcf3ed;
   box-shadow: 0 6px 24px #59483a12;
-  color: #384955;
+  color: var(--color-text-primary);
 }
 .actions button,
 .detailActions button,
 .confirm button {
-  border: 1px solid #e6d8cd;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
   padding: 10px 14px;
-  background: #fffaf5;
-  color: #384955;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font-size: 13px;
   font-weight: 650;
   cursor: pointer;
@@ -106,7 +106,7 @@ dialog.planConfirmation[data-kind="quick"] {
   grid-template-columns: auto auto;
   gap: 4px 6px;
   min-width: 0;
-  color: #384955;
+  color: var(--color-text-primary);
 }
 .detailActions button {
   height: 38px;
@@ -133,8 +133,8 @@ dialog.planConfirmation[data-kind="quick"] {
   justify-content: flex-end;
   gap: 10px;
   padding: 8px 14px max(6px, env(safe-area-inset-bottom));
-  border-top: 1px solid #e6d8cd;
-  background: var(--workspace-glass, #fffcf7);
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--workspace-glass, var(--color-bg-elevated));
   backdrop-filter: blur(6px);
   z-index: 12;
 }

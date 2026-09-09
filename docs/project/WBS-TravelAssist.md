@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## 首页更新后的主系统品牌同步（2026-09-09，待审查）
+
+- 用户追加授权 Start / Planner / Trip Detail 对齐当前首页，并明确 Home 与 Personal Center 已统一，二者保持。Owner A；沿用 Issue #251 / #246、分支 `feature/a-homepage-concept-fidelity` 与 Draft PR #252。
+- 仅页面局部视觉适配，复用已有全局 tokens 与共享组件；地图 / 右栏 / 时间轴几何和全部业务交互保留。原 3.1 验收合并完成记录不回退；3.2 及本次 follow-up 当前待审查，未取得本轮视觉验收或合并。3.2.1 与 3.3 不启动。
+- 复用首页现有授权背景，Start 去除深色遮罩，Planner/Detail 暖白面板及控件收敛到已有 tokens；仅修改局部 CSS。699 全仓 / 12 专项、lint/typecheck/build 通过；20/20 页面几何一致，Home 六组 / PC 五组 PNG 哈希与本轮前一致。证据：`docs/qa/TASK-025.2/brand-evidence.json`、`brand-report.json`。
+
 ## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，修正后待审查）
 
 - 用户明确要求最终呈现其概念图效果，原灰金海岸背景不获视觉认可；本轮直接从用户提供概念图提取纯背景并接入，取代上一轮保留旧 Poster 的视觉范围。PR #252 保持 Draft。

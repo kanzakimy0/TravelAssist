@@ -6,15 +6,19 @@
   --planner-radius-panel: 20px;
   --planner-border: var(--color-border-subtle);
   --planner-shadow: var(--elevation-card);
-  --workspace-scenery: url("/media/start/sakura-coast-fuji-train-sunset.png");
-  --workspace-glass: rgb(255 249 241 / 72%);
+  --workspace-scenery: url("/media/home-concept/home-hero-sakura-sunset.webp");
+  --workspace-glass: color-mix(
+    in srgb,
+    var(--color-bg-elevated) 88%,
+    transparent
+  );
   height: 100dvh;
   overflow: hidden;
   color: var(--color-text-primary);
   background:
     linear-gradient(rgb(255 247 237 / 12%), rgb(255 237 222 / 16%)),
     var(--workspace-scenery) center / cover no-repeat;
-  font-family: "Segoe UI", "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -37,8 +41,8 @@
   height: 30px;
   border: 1px solid #d8d0c5;
   border-radius: 8px;
-  background: #fffcf7;
-  color: #384955;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font-size: 20px;
   box-shadow: var(--planner-shadow);
 }
@@ -101,19 +105,19 @@
 }
 .mapList button[aria-pressed="true"] {
   font-weight: 700;
-  color: #a74739;
+  color: var(--color-accent-primary);
 }
 .svgFeature {
   cursor: pointer;
 }
 .svgFeature:focus-visible {
-  outline: 3px solid #a74739;
+  outline: 3px solid var(--color-accent-primary);
   outline-offset: 5px;
 }
 .pinText,
 .areaLabel {
   fill: #42484b;
-  stroke: #fffaf2;
+  stroke: var(--color-bg-elevated);
   stroke-width: 3.5px;
   paint-order: stroke;
   font-size: 12px;
@@ -139,15 +143,15 @@
 .bookingSummary button {
   border: 1px solid #decab9;
   color: #514741;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   border-radius: 10px;
   padding: 7px 10px;
   font-size: 11px;
   line-height: 1.5;
 }
 .currentBooking button {
-  color: #a74739;
-  background: #f7e6de;
+  color: var(--color-accent-primary);
+  background: var(--color-bg-muted);
   white-space: nowrap;
 }
 .rangeHeading {
@@ -163,7 +167,7 @@
   flex: 1 0 220px;
   border: 1px solid #e5d9cc;
   border-radius: 14px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   padding: 10px 12px;
   font-size: 11px;
 }
@@ -188,7 +192,7 @@
 }
 .rangeCards .textAction {
   border: 0;
-  color: #a74739;
+  color: var(--color-accent-primary);
   background: transparent;
   padding: 4px 0;
 }
@@ -202,7 +206,7 @@
 }
 .compactStops button[aria-pressed="true"] {
   font-weight: 700;
-  border-color: #a74739;
+  border-color: var(--color-accent-primary);
 }
 .bookingSummary {
   display: flex;
@@ -237,7 +241,7 @@
   top: 0;
   z-index: 2;
   background: var(--color-bg-overlay);
-  border-bottom: 1px solid #e4d9d0;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 .detailBody {
   padding: 8px 22px 24px;
@@ -256,7 +260,7 @@
   margin: 8px 0;
 }
 .detailBody section {
-  border-top: 1px solid #e4d9d0;
+  border-top: 1px solid var(--color-border-subtle);
   margin-top: 18px;
   padding-top: 4px;
 }
@@ -298,15 +302,15 @@
   opacity: 0.5;
 }
 .detailBody .primaryAction {
-  background: #a74739;
-  color: #fffaf4;
-  border-color: #a74739;
+  background: var(--color-accent-primary);
+  color: var(--color-bg-elevated);
+  border-color: var(--color-accent-primary);
 }
 .detailBody .detailLink {
   width: 100%;
   margin-top: 12px;
   background: #f9e7e0;
-  color: #a74739;
+  color: var(--color-accent-primary);
   font-weight: 650;
 }
 .feedback {
@@ -327,9 +331,9 @@
   scroll-snap-align: start;
   min-width: 0;
   padding: 10px;
-  border: 1px solid #e6d8cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
 }
 .recommendationRow {
   display: grid;
@@ -338,7 +342,7 @@
   padding: 12px;
   border: 1px solid #e2cebd;
   border-radius: 14px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
 }
 .recommendationRow .placeArtwork {
   width: 66px;
@@ -349,7 +353,7 @@
 .recommendationRow h4 {
   margin: 0;
   font-size: 14px;
-  color: #354650;
+  color: var(--color-text-primary);
 }
 .recommendationRow p {
   font-size: 11px;
@@ -395,7 +399,7 @@
   border: 1px solid #e5d8cb;
   border-radius: 12px;
   padding: 10px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   font-size: 11px;
 }
 .offerList small {
@@ -406,8 +410,8 @@
   margin-top: 8px;
 }
 .offerList button[aria-pressed="true"] {
-  border-color: #a74739;
-  color: #a74739;
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
   font-weight: 700;
 }
 .bookingList {
@@ -423,7 +427,7 @@
 }
 .confirmBooking {
   margin-top: 14px;
-  border-top: 1px solid #e4d9d0;
+  border-top: 1px solid var(--color-border-subtle);
   padding-top: 12px;
 }
 .confirmBooking input {
@@ -437,7 +441,7 @@
   width: 50px;
   padding: 4px;
   border-radius: 6px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   border: 1px solid #decab9;
 }
 @media (max-width: 1199px) {
@@ -535,7 +539,7 @@
   align-items: center;
   padding: 8px 16px;
   border-radius: 24px;
-  background: #f7f0e9;
+  background: var(--color-bg-muted);
   margin-left: auto;
 }
 .headerTitle h1 {
@@ -579,7 +583,7 @@
   min-height: 0;
   z-index: 3;
   background: var(--workspace-glass);
-  backdrop-filter: blur(4px) saturate(0.85);
+  backdrop-filter: blur(12px) saturate(1.05);
 }
 .bottomSlot {
   position: relative;
@@ -590,7 +594,7 @@
   z-index: 2;
   padding: 0;
   background: var(--workspace-glass);
-  backdrop-filter: blur(4px) saturate(0.85);
+  backdrop-filter: blur(12px) saturate(1.05);
 }
 .bottomSlot::before {
   content: "";
@@ -603,7 +607,7 @@
   background: linear-gradient(
     to bottom,
     rgb(250 243 237 / 0%),
-    rgb(255 249 241 / 72%)
+    var(--workspace-glass)
   );
 }
 .mapCanvas {
@@ -631,7 +635,7 @@
   letter-spacing: 4px;
   font-weight: 600;
   color: #666d69;
-  text-shadow: 0 1px 4px #fffcf7;
+  text-shadow: 0 1px 4px var(--color-bg-elevated);
   white-space: nowrap;
 }
 .mapPin {
@@ -648,12 +652,12 @@
   min-width: 30px;
   height: 30px;
   padding: 0 5px;
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
   border: 2px solid var(--route-color);
   border-radius: 50% 50% 50% 5px;
   box-shadow: 0 2px 5px #4b45452b;
   font-size: 10px;
-  color: #343e48;
+  color: var(--color-text-primary);
   font-weight: 750;
 }
 .mapPin[aria-pressed="true"] {
@@ -662,7 +666,7 @@
 .mapPin[aria-pressed="true"] .pinNumber {
   color: white;
   background: var(--route-color);
-  outline: 3px solid #fffcf7;
+  outline: 3px solid var(--color-bg-elevated);
 }
 .pinLabel {
   position: absolute;
@@ -672,9 +676,9 @@
   white-space: nowrap;
   padding: 5px 9px;
   border-radius: 8px;
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
   border: 1px solid var(--color-border-strong);
-  color: #343e48;
+  color: var(--color-text-primary);
   font-size: 12px;
   pointer-events: none;
   visibility: hidden;
@@ -956,7 +960,7 @@
   justify-content: center;
   border-radius: 12px;
   background: var(--color-accent-primary);
-  color: #fffdf8;
+  color: var(--color-bg-elevated);
 }
 
 .viewTransition {
@@ -1248,7 +1252,7 @@
   height: 82px;
   text-align: left;
   border: 1px solid var(--planner-border);
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   border-radius: var(--planner-radius-card);
   padding: 7px;
   position: relative;
@@ -1272,7 +1276,7 @@
   place-items: center;
   border-radius: 50%;
   border: 2px solid #bc7163;
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
 }
 .timelineDot svg {
   width: 15px;
@@ -1391,7 +1395,7 @@
   font-weight: 400;
   border-radius: 10px;
   border: 1px solid var(--color-border-strong);
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
   color: var(--color-text-primary);
 }
 .field small {
@@ -1490,12 +1494,12 @@
   .bottomSlot,
   .overlay[data-kind="right"],
   .overlay[data-kind="bottom"] {
-    background: #fffaf3;
+    background: var(--color-bg-elevated);
     backdrop-filter: none;
   }
   .quickCard,
   .planRow {
-    background: #fffcf7;
+    background: var(--color-bg-elevated);
   }
 }
 .overlayHeader {
@@ -1556,7 +1560,7 @@
 .planner .replanButton {
   background: var(--color-accent-primary);
   border-color: var(--color-accent-primary);
-  color: #fffdf8;
+  color: var(--color-bg-elevated);
 }
 .planner .replanButton:hover {
   background: var(--color-accent-primary-hover);
@@ -1615,7 +1619,7 @@
 .toolbar > button {
   border: 1px solid var(--planner-border);
   border-radius: 12px;
-  background: #fffdf8;
+  background: var(--color-bg-elevated);
 }
 .toolbar > button > span:last-child {
   display: none;
@@ -2062,7 +2066,7 @@
   right: 100%;
   width: 42px;
   pointer-events: none;
-  background: linear-gradient(to right, transparent, rgb(255 249 241 / 72%));
+  background: linear-gradient(to right, transparent, var(--workspace-glass));
 }
 .quickSettings .quickPair,
 .quickSettings .quickTriple {
@@ -2121,4 +2125,19 @@
   .quickTriple .quickLabel {
     flex-direction: row;
   }
+}
+
+/* Home / Personal Center brand adaptation; preserve every workspace box. */
+.header a[aria-label="TravelAssist 首页"] {
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, transparent);
+}
+.header a[aria-label="TravelAssist 首页"]:hover {
+  background: var(--color-bg-muted);
+}
+.rightSlot {
+  box-shadow: inset 1px 0 var(--color-border-subtle);
+}
+.bottomSlot {
+  box-shadow: inset 0 1px var(--color-border-subtle);
 }

@@ -1,10 +1,10 @@
 .context {
   width: min(330px, calc(100vw - 24px));
   padding: 10px;
-  border: 1px solid #e6d9cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
   background: #fffaf4f5;
-  color: #354650;
+  color: var(--color-text-primary);
   box-shadow: 0 12px 42px #59473522;
 }
 .contextGrid {
@@ -26,7 +26,7 @@
 }
 .contextGrid strong {
   font-size: 17px;
-  color: #a65749;
+  color: var(--color-accent-primary);
 }
 .context > p {
   font-size: 12px;
@@ -37,7 +37,7 @@
   border: 0;
   padding: 4px 12px;
   background: transparent;
-  color: #a65749;
+  color: var(--color-accent-primary);
   font-size: 12px;
   cursor: pointer;
 }
@@ -92,9 +92,9 @@
   padding-left: 6px;
 }
 .tabCell[data-expanded="true"] > [role="tab"] {
-  background: #fffaf4;
-  border-left: 1px solid #ddc7ba;
-  border-right: 1px solid #ddc7ba;
+  background: var(--color-bg-elevated);
+  border-left: 1px solid var(--color-border-subtle);
+  border-right: 1px solid var(--color-border-subtle);
 }
 .tabCell[data-expanded="true"] > [role="tab"] > svg {
   visibility: hidden;
@@ -123,11 +123,11 @@
 }
 .expandedTab {
   padding: 10px;
-  border: 1px solid #ddc7ba;
+  border: 1px solid var(--color-border-subtle);
   border-bottom: 0;
   border-radius: 14px 14px 0 0;
-  background: #fffaf4;
-  color: #354650;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   box-shadow: 0 -6px 22px #59473514;
   scrollbar-width: thin;
 }
@@ -156,13 +156,13 @@
 }
 .tabFacts strong {
   font-size: 13px;
-  color: #9f5748;
+  color: var(--color-accent-primary);
 }
 .tabFacts p {
   margin: 2px 0 0;
   font-size: 11px;
   line-height: 1.45;
-  color: #60594f;
+  color: var(--color-text-secondary);
 }
 .expandedTab > p[role="status"] {
   margin: 6px 0 0;
@@ -204,10 +204,10 @@
   grid-template-rows: repeat(3, minmax(0, 1fr));
   min-width: 0;
   min-height: 144px;
-  border: 1px solid #e6d9cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 14px;
-  background: #fffcf7;
-  color: #354650;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   overflow: hidden;
   scroll-snap-align: start;
 }
@@ -281,7 +281,7 @@
   min-height: 26px;
   padding: 2px 5px;
   border: 1px solid #ddcfc2;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   color: #53615e;
   border-radius: 8px;
   font-size: 11px;
@@ -289,9 +289,9 @@
 }
 .quickDecisions button[aria-pressed="true"],
 .decisionMenu button[aria-pressed="true"] {
-  background: #fbeae4;
+  background: var(--color-bg-muted);
   border-color: #c88172;
-  color: #a14f42;
+  color: var(--color-accent-primary);
 }
 .quickDecisions .moreDecision {
   font-size: 18px;
@@ -322,11 +322,11 @@
 }
 .decisionMenu > div button {
   min-height: 32px;
-  border: 1px solid #e4d7cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 9px;
   padding: 6px 10px;
-  background: #fffcf7;
-  color: #354650;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   text-align: left;
   cursor: pointer;
 }
@@ -345,7 +345,7 @@
 }
 .areaColumns > section {
   overflow: auto;
-  border: 1px solid #e6d9cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 14px;
   padding: 12px;
   background: #fffaf3b3;
@@ -395,10 +395,10 @@
   text-align: left;
   margin-bottom: 8px;
   padding: 8px;
-  border: 1px solid #e6d9cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 10px;
-  background: #fffdf8;
-  color: #354650;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 .empty {
@@ -474,7 +474,7 @@
   overflow: auto;
   padding: 8px 10px;
   box-sizing: border-box;
-  color: #354650;
+  color: var(--color-text-primary);
 }
 .dailyPanels.mealStayCards {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -560,7 +560,7 @@
   font-size: 11px;
 }
 .areaChoices button[aria-pressed="true"] {
-  background: #f4dfcd;
+  background: var(--color-bg-muted);
   border-color: #b98064;
 }
 @media (max-width: 767px) {
@@ -604,7 +604,7 @@
 }
 .dailyPanels button {
   cursor: pointer;
-  background: #fffaf2;
+  background: var(--color-bg-elevated);
   border: 1px solid #e3d5c4;
   border-radius: 10px;
   color: #41525a;

@@ -1,5 +1,9 @@
 # TASK-025.2-A — Homepage Concept Fidelity Implementation
 
+## 2026-09-09 用户追加：其余主系统页面视觉同步
+
+用户在首页概念实装后要求其余页面同步风格，并进一步明确“个人中心和首页现在已经统一了”。本轮以当前 Home / Personal Center 为固定视觉基准，只调整 Start / Planner / Trip Detail 的背景、表面、文字、品牌强调、边框、阴影和焦点样式。保留全部布局几何与业务行为；不改 Home、Personal Center、全局 tokens 或共享 Header / Logo / Avatar 实现。该追加范围优先于下文原始 Home-only 限制，原始任务与历史结果继续保留。原 WBS 3.1 已完成记录不回退；本次作为 PR #252 的品牌同步 follow-up，已完成实现与验证，待审查。
+
 ## Metadata
 
 - Task ID: `TASK-025.2-A`
@@ -123,17 +127,17 @@ assets/design/homepage/homepage-concept-static-v1.png
 
 以 1672×941 为 canonical desktop ratio，视觉位置控制在以下范围：
 
-| 元素 | 目标区域 |
-| --- | --- |
-| Brand | 左 3%–5%，上 3%–5% |
-| Language | 右 4%–6%，上 3%–5% |
-| Hero 内容中心线 | x ≈ 50% |
-| Eyebrow | y ≈ 22%–25% |
-| 主标题 | y ≈ 29%–39% |
-| 副标题 | y ≈ 42%–46% |
-| CTA | y ≈ 48%–58% |
-| Personal Center / Login | y ≈ 60%–68% |
-| AI | 右 3%–5%，下 5%–8% |
+| 元素                    | 目标区域           |
+| ----------------------- | ------------------ |
+| Brand                   | 左 3%–5%，上 3%–5% |
+| Language                | 右 4%–6%，上 3%–5% |
+| Hero 内容中心线         | x ≈ 50%            |
+| Eyebrow                 | y ≈ 22%–25%        |
+| 主标题                  | y ≈ 29%–39%        |
+| 副标题                  | y ≈ 42%–46%        |
+| CTA                     | y ≈ 48%–58%        |
+| Personal Center / Login | y ≈ 60%–68%        |
+| AI                      | 右 3%–5%，下 5%–8% |
 
 不要求机械使用绝对像素，但相对节奏必须接近。
 
@@ -652,11 +656,13 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 ## Status
 
 ## Preflight
+
 - execution base:
 - WBS 3.2 before:
 - TASK-024 merged:
 
 ## Tracking
+
 - Issue #251:
 - Related #246:
 - Branch:
@@ -665,6 +671,7 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 - WBS 3.2:
 
 ## Concept Fidelity
+
 - header:
 - hero center:
 - eyebrow:
@@ -676,11 +683,13 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 - background/crop:
 
 ## Auth Boundary
+
 - logged-in behavior:
 - guest behavior:
 - hard-coded fake identity: No
 
 ## Responsive QA
+
 - 1672x941:
 - 1440x900:
 - 1024x768:
@@ -688,12 +697,14 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 - 320x568:
 
 ## Regression
+
 - Start:
 - Planner:
 - Detail:
 - Personal Center:
 
 ## Validation
+
 - lint:
 - typecheck:
 - build:
@@ -706,9 +717,11 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 ## Problems / Deferred
 
 ## WBS Updated
+
 Yes / No
 
 ## Next Task
+
 Do not start automatically.
 ```
 

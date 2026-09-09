@@ -1,6 +1,18 @@
 # TASK-025.2-A Result
 
-## Status
+## 2026-09-09 当前追加结果：其余主系统页面品牌同步
+
+**待审查**。用户明确 Home 与 Personal Center 已统一，本轮将它们保持为固定视觉基准，只调整 Start / Planner / Trip Detail。下方 Home-only 实装记录是此前阶段结果，本节记录最新追加范围。
+
+- Start 复用首页已授权的樱花夕阳背景，移除深色覆盖；保持 Wizard 布局，统一标题字体、胶囊 Brand、暖白表面、选中态与键盘焦点。
+- Planner / Detail 背景和半透明面板对齐同一场景；灰蓝普通文字、重复棕红/米白硬编码收敛到现有 tokens。地图着色、路线/类别/状态语义色保留。卡片、按钮、菜单、暖边框与阴影复用原体系。
+- Home、Personal Center、共享 Header / Logo / Avatar、全局 CSS 和全部业务 TS/TSX 均无本轮改动。两者分别 6 / 5 组 PNG 与修改前 SHA-256 完全一致。
+- 1440×900、1024×768、390×844、320×568，另加 1672×941；Start/Planner/真实 Detail/PC 共 20/20 几何与 develop 基线一致。向导继续、Logo hover、账户 Popover 边界、Escape 焦点归还与键盘焦点通过。
+- lint（0 warnings）/ typecheck / build / npm test --if-present / diff-check 通过；真实 Node 全仓 699/699、Home/Shell/背景专项 12/12。npm ci 使用同一锁文件前轮成功结果，本轮未改依赖。Home 五尺寸 + reduced-motion 6/6，CLS=0、无视频请求。素材完整性检查无错误。
+- 已知基线 favicon.ico 404 保留，无新增错误；Auth 使用本地合成 visual fixture，地图为既有 fallback，不声称验证真实外部服务。
+- 分支仍为 `feature/a-homepage-concept-fidelity`，Draft PR #252；证据与实际 PNG 路径见 `docs/qa/TASK-025.2/brand-evidence.json`，浏览器报告 `brand-report.json`，复现见 QA README。未合并、未启动 3.2.1 / 3.3。
+
+## Status（首页实装阶段历史）
 
 **待审查** — 用户要求的概念图完整视觉修正已完成，等待本轮用户视觉验收与 Draft PR 审查。没有合并 PR，没有标记 WBS 3.2 已完成。
 

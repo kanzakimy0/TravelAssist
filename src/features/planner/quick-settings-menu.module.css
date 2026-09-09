@@ -1,10 +1,10 @@
 .menu {
   width: min(520px, calc(100vw - 24px));
   padding: 0;
-  border: 1px solid #e6d8cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 24px;
   background: #fffcf7f5;
-  color: #354650;
+  color: var(--color-text-primary);
   box-shadow: 0 18px 64px #55412b26;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -71,7 +71,7 @@
   font-size: 12px;
 }
 .selectionSummary strong {
-  color: #b4594a;
+  color: var(--color-accent-primary);
   font-size: 18px;
 }
 .chips {
@@ -87,7 +87,7 @@
   min-height: 38px;
   border-radius: 12px;
   border: 1px solid #e7ddd2;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   color: #56615f;
   font-size: 13px;
   text-align: left;
@@ -104,7 +104,7 @@
   text-align: center;
 }
 .chips button[aria-pressed="true"] .check {
-  color: #b4594a;
+  color: var(--color-accent-primary);
 }
 .detailLink {
   display: flex;
@@ -143,9 +143,9 @@
 .footer .primary,
 .primary {
   flex-shrink: 0;
-  border: 1px solid #b4594a;
-  background: #b4594a;
-  color: #fffaf4;
+  border: 1px solid var(--color-accent-primary);
+  background: var(--color-accent-primary);
+  color: var(--color-bg-elevated);
   border-radius: 12px;
   padding: 10px 18px;
   min-height: 40px;
@@ -169,9 +169,9 @@
   color: #71766f;
 }
 .sectionNav button[aria-pressed="true"] {
-  background: #fffcf8;
+  background: var(--color-bg-elevated);
   border-color: #e7d6c7;
-  color: #a95346;
+  color: var(--color-accent-primary);
   box-shadow: 0 2px 6px #67513b0c;
 }
 .sectionNav small {
@@ -191,7 +191,7 @@
   padding: 10px 12px 12px;
   border: 1px solid #e6dbce;
   border-radius: 15px;
-  background: #fffdf8;
+  background: var(--color-bg-elevated);
 }
 .optionGroup legend {
   max-width: 100%;
@@ -232,7 +232,7 @@
   border: 0;
   padding: 4px 0;
   background: transparent;
-  color: #a95346;
+  color: var(--color-accent-primary);
   text-decoration: underline;
 }
 .detailFooter {
@@ -245,11 +245,11 @@
   margin-left: auto;
 }
 .cancel {
-  border: 1px solid #e1d4c7;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   padding: 10px 16px;
-  color: #60594f;
+  color: var(--color-text-secondary);
 }
 .fieldGrid {
   display: grid;
@@ -271,8 +271,8 @@
   padding: 9px 10px;
   border-radius: 10px;
   border: 1px solid #ded5c8;
-  background: #fffdfa;
-  color: #354650;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font-size: 13px;
 }
 .field input::placeholder {
@@ -290,7 +290,7 @@
   padding: 13px 14px;
   border-radius: 15px;
   border: 1px solid #e8ddd1;
-  background: #fffdfa;
+  background: var(--color-bg-elevated);
 }
 .travelerIcon {
   display: grid;
@@ -314,7 +314,7 @@
 .stepper button {
   height: 32px;
   width: 32px;
-  border: 1px solid #e1d4c7;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 10px;
   background: #fbf6ed;
   color: #986150;
@@ -335,7 +335,7 @@
 }
 .menu button:focus-visible,
 .menu input:focus-visible {
-  outline: 2px solid #b4594a;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
 .dateEndpoints {
@@ -347,7 +347,7 @@
   padding: 10px 12px;
   border: 1px solid #e2d7c9;
   border-radius: 14px;
-  background: #fffdfa;
+  background: var(--color-bg-elevated);
 }
 .dateEndpoints label:focus-within,
 .dateEndpoints label[data-active="true"] {
@@ -365,7 +365,7 @@
   border: 1px solid #e6dbce;
   border-radius: 16px;
   padding: 12px;
-  background: #fffdfa;
+  background: var(--color-bg-elevated);
 }
 .calendarHeader {
   display: flex;
@@ -412,8 +412,8 @@
   background: #f9ece4;
 }
 .calendarGrid button[aria-pressed="true"] {
-  background: #b4594a;
-  color: #fffaf4;
+  background: var(--color-accent-primary);
+  color: var(--color-bg-elevated);
 }
 .notice {
   margin: 0;
