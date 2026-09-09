@@ -7,6 +7,7 @@ registerHooks({
         url: "data:text/javascript,export{}",
         shortCircuit: true,
       };
+    if (specifier === "next/server") return next("next/server.js", context);
     try {
       return next(specifier, context);
     } catch (error) {

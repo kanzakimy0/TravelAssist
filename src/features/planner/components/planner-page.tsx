@@ -85,7 +85,11 @@ function serverViewport() {
   return "false:false";
 }
 
-export function PlannerPage() {
+export function PlannerPage({
+  routeQueriesEnabled = false,
+}: {
+  routeQueriesEnabled?: boolean;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = parseWorkspaceMode(searchParams.get("view"));
@@ -766,6 +770,7 @@ export function PlannerPage() {
     <WorkspaceCapabilities.Provider
       value={{
         canBook: mode === "detail",
+        routeQueriesEnabled,
         enterDetail: browserTrip.enterDetail,
       }}
     >

@@ -8,9 +8,17 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const deployment = process.env.VERCEL_ENV?.trim().toLowerCase();
+  const routeQueriesEnabled =
+    process.env.NODE_ENV !== "production" &&
+    deployment !== "preview" &&
+    deployment !== "production" &&
+    process.env.ROUTING_PLANNER_QUERY_ENABLED?.trim().toLowerCase() ===
+      "true" &&
+    process.env.ROUTING_PROVIDER_MODE?.trim() === "evaluation";
   return (
     <Suspense fallback={<main aria-busy="true">正在加载旅行工作区…</main>}>
-      <PlannerPage />
+      <PlannerPage routeQueriesEnabled={routeQueriesEnabled} />
     </Suspense>
   );
 }

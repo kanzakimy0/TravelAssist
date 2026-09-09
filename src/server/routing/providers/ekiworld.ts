@@ -108,6 +108,36 @@ function buildRequestUrl(
       }),
     };
   }
+  const unsupportedModes = request.requestedModes.filter(
+    (mode) => mode === "flight",
+  );
+  if (unsupportedModes.length > 0) {
+    return {
+      ok: false,
+      error: routeError("unsupported_mode", {
+        retryable: false,
+        category: "request",
+        message: "The evaluation adapter cannot satisfy the requested modes.",
+        metadata: { provider: "ekiworld", reason: "mode_not_supported" },
+      }),
+    };
+  }
+  if (
+    request.preferences.maxWalkingMeters !== null ||
+    request.preferences.accessibility?.wheelchair === true ||
+    request.preferences.accessibility?.avoidStairs === true
+  ) {
+    return {
+      ok: false,
+      error: routeError("unsupported_mode", {
+        retryable: false,
+        category: "request",
+        message:
+          "The evaluation adapter cannot guarantee the requested route constraints.",
+        metadata: { provider: "ekiworld", reason: "constraint_not_supported" },
+      }),
+    };
+  }
   const places = [
     request.origin,
     ...request.waypoints,
@@ -122,6 +152,17 @@ function buildRequestUrl(
         message:
           "Ekiworld evaluation routing needs a station reference or display name.",
         metadata: { provider: "ekiworld", reason: "place_not_resolvable" },
+      }),
+    };
+  }
+  if (places.some((place) => /[:\u0000-\u001f\u007f]/.test(place ?? ""))) {
+    return {
+      ok: false,
+      error: routeError("invalid_request", {
+        retryable: false,
+        category: "request",
+        message: "A station name contains an unsupported delimiter.",
+        metadata: { provider: "ekiworld", reason: "station_delimiter" },
       }),
     };
   }
@@ -567,11 +608,34 @@ export class EkiworldTransitAdapter implements RoutingProvider {
         }),
       };
     }
-    return normalizeEkiworldResponse(
+    const normalized = normalizeEkiworldResponse(
       payload,
       request,
       context.now(),
       this.#configuration.entitlement,
     );
+    if (!normalized.ok) return normalized;
+    const requested = new Set(request.requestedModes);
+    const alternatives = normalized.value.alternatives.filter((alternative) =>
+      alternative.segments.every((segment) => requested.has(segment.mode)),
+    );
+    if (alternatives.length === 0) {
+      return {
+        ok: false,
+        error: routeError("no_route", {
+          retryable: false,
+          category: "no_result",
+          message: "No route satisfied the requested transport modes.",
+          metadata: {
+            provider: "ekiworld",
+            reason: "requested_modes_not_satisfied",
+          },
+        }),
+      };
+    }
+    return {
+      ok: true,
+      value: { ...normalized.value, alternatives },
+    };
   }
 }

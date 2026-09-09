@@ -14,6 +14,20 @@ export interface EkiworldConfiguration {
 export const EKIWORLD_ENDPOINT =
   "https://api.ekispert.jp/v1/json/search/course/extreme" as const;
 
+export function plannerRouteGatewayEnabled(
+  environment: Readonly<Record<string, string | undefined>> = process.env,
+) {
+  const deployment = environment.VERCEL_ENV?.trim().toLowerCase();
+  return (
+    environment.NODE_ENV !== "production" &&
+    deployment !== "preview" &&
+    deployment !== "production" &&
+    environment.ROUTING_PLANNER_QUERY_ENABLED?.trim().toLowerCase() ===
+      "true" &&
+    environment.ROUTING_PROVIDER_MODE?.trim() === "evaluation"
+  );
+}
+
 export function readEkiworldConfiguration(
   environment: Readonly<Record<string, string | undefined>> = process.env,
 ): RouteResult<EkiworldConfiguration> {

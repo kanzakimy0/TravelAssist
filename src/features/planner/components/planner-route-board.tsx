@@ -15,6 +15,11 @@ import {
 import { PlannerSightTimeline } from "./planner-sight-timeline";
 import { plannerTimeline, timelineTitle } from "../model/planner-timeline";
 import { PlannerPopover } from "./planner-popover";
+import {
+  PlannerRouteQueryPanel,
+  usePlannerRouteQuery,
+} from "./planner-route-query";
+import { useWorkspaceCapabilities } from "./workspace-capabilities";
 import css from "../planner-route-board.module.css";
 
 export function PlannerRouteBoard({
@@ -136,6 +141,18 @@ function MovementConnector({
   const trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const response = state.configuration.movementAdvice?.[leg.id];
+  const { routeQueriesEnabled } = useWorkspaceCapabilities();
+  const plan = currentPlan(state);
+  const routeQuery = usePlannerRouteQuery({
+    enabled: routeQueriesEnabled,
+    planId: plan.id,
+    leg,
+    places: state.places,
+  });
+  function close() {
+    if (routeQuery.state.status === "loading") routeQuery.cancel();
+    setOpen(false);
+  }
   return (
     <div
       className={css.connector}
@@ -151,7 +168,7 @@ function MovementConnector({
         aria-label={`修改交通：${leg.from.title} → ${leg.to.title}`}
         aria-expanded={open}
         title={`${leg.riskReason}${leg.edited ? "（已手动修改）" : ""}`}
-        onClick={() => setOpen(!open)}
+        onClick={() => (open ? close() : setOpen(true))}
       >
         <strong>{transportModes[leg.mode]}</strong>
         <span className={css.travelTime}>
@@ -167,7 +184,7 @@ function MovementConnector({
           id={`movement-edit-${leg.from.id}`}
           title="修改移动段"
           trigger={trigger}
-          onClose={() => setOpen(false)}
+          onClose={close}
           placement="above"
           maxHeight={560}
           className={css.editor}
@@ -175,12 +192,13 @@ function MovementConnector({
           <MovementEditor
             key={`${leg.key}:${leg.from.endTime}:${leg.to.startTime}:${leg.mode}:${leg.duration}:${leg.buffer}`}
             leg={leg}
-            onCancel={() => setOpen(false)}
+            onCancel={close}
             onApply={(edit) => {
               dispatch({ type: "editMovement", edit });
-              setOpen(false);
+              close();
             }}
           />
+          <PlannerRouteQueryPanel query={routeQuery} />
           <div className={css.decisions} aria-label="交通提醒处理">
             {(
               [
