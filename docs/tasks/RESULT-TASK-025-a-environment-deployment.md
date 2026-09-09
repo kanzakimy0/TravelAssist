@@ -11,8 +11,12 @@ WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、�
 - GitHub Issue: #236（保持 Open）
 - WBS: 10.1 → 10.2
 - Implementation Base: `5819270983b4682c76e9ed7c751be9e00612ca0a`
+- Final integrated develop: `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`
 - Branch: `codex/a-environment-deployment`
-- Implementation Commit: `5185de7e959abc412473c48fa8622b6071382c12`
+- Core implementation: `5185de7e959abc412473c48fa8622b6071382c12`
+- Evidence: `d247037`
+- Develop integration: `4f28cfb`
+- Server-only boundary fix and final rehearsal: `adda614f15faa9cf713f54e73e0d90f67e3256c3`
 - Final tracking commit: PENDING
 - Draft PR: PENDING
 
@@ -20,7 +24,7 @@ WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、�
 
 - `origin` 已确认指向 `https://github.com/kanzakimy0/TravelAssist.git`。
 - 原 `feature/a-planner-v03-interactions` 工作区存在大量未提交 Planner 内容，本任务没有切换、暂存、覆盖或删除这些内容。
-- 从最新 `origin/develop@5819270` 创建独立 worktree 和实现分支。
+- 从当时最新 `origin/develop@5819270` 创建独立 worktree 和实现分支；交付前安全整合执行期间的新 `origin/develop@088f467`，无冲突，并在整合后重新执行全仓测试与部署演练。
 - PR #231（安全基线）、#239（Task 文档）和 #245（观测）均为 Draft / 未合并；没有复制或叠加这些实现。
 - 最新 develop 同时存在另一个 `TASK-025-A Homepage Animated Background` / Issue #246。本交付按 Issue #236、WBS 10.1→10.2 和完整标题区分，未修改首页 Task 的 WBS 3.2 阻塞记录。
 
@@ -65,7 +69,7 @@ PR 创建后仍需 GitHub 实际运行 workflow，最终状态单独同步，不
 
 ## Stage 2 — local deployment rehearsal
 
-PASS on committed implementation `5185de7e959abc412473c48fa8622b6071382c12`:
+PASS on final committed implementation `adda614f15faa9cf713f54e73e0d90f67e3256c3`:
 
 - Next 16.3.4 standalone artifact 构建成功。
 - 制品审计：1,650 files，0 sensitive finding。
@@ -75,6 +79,7 @@ PASS on committed implementation `5185de7e959abc412473c48fa8622b6071382c12`:
 - Planner：200。
 - production route guard：503，Evaluation 未启用。
 - release activation 使用 full SHA manifest 与 compare-and-swap；已知上一制品 rollback 和 stale-write 由真实文件状态测试覆盖。
+- 实际本机 release pointer 已从整合制品 `4f28cfb` 回滚至已验收制品 `5185de7`，再重新激活 `4f28cfb`；随后对最终修复制品 `adda614` 完成重新构建与 smoke。
 
 没有既存的真实云 release，因此没有伪造 live cloud rollback。数据库 rollback 明确不与应用 rollback 绑定。
 

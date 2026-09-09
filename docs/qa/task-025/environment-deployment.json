@@ -2,7 +2,8 @@
   "task": "TASK-025-A",
   "issue": 236,
   "baseCommit": "5819270983b4682c76e9ed7c751be9e00612ca0a",
-  "implementationCommit": "5185de7e959abc412473c48fa8622b6071382c12",
+  "finalDevelopCommit": "088f467b8ff666ddd9774f8d6b7ad351fd54f00a",
+  "implementationCommit": "adda614f15faa9cf713f54e73e0d90f67e3256c3",
   "audit": {
     "originVerified": true,
     "existingQualityOrDeployWorkflow": false,
@@ -34,7 +35,8 @@
       "planner": 200,
       "productionRouteGuard": 503
     },
-    "rollbackControl": "cas-and-known-release-tests-pass",
+    "rehearsedArtifactCommit": "adda614f15faa9cf713f54e73e0d90f67e3256c3",
+    "rollbackControl": "cas-tests-pass-and-real-local-artifact-rollback-rehearsed",
     "realPreview": "deferred-no-approved-target",
     "realProduction": "not-authorized-not-run"
   },
