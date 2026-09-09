@@ -4,7 +4,7 @@ import {
   repositoryEnvironmentPolicy,
   validateDeploymentEnvironment,
   type DeploymentEnvironmentReport,
-} from "../../shared/contracts/deployment-environment";
+} from "./contract";
 
 export class DeploymentEnvironmentError extends Error {
   readonly codes: readonly string[];

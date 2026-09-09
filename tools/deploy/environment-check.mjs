@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import {
   repositoryEnvironmentPolicy,
   validateDeploymentEnvironment,
-} from "../../src/shared/contracts/deployment-environment.ts";
+} from "../../src/server/environment/contract.ts";
 import { localDeploymentEnvironment } from "./local-environment.mjs";
 
 export function environmentFingerprint(safe) {

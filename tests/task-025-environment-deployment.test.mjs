@@ -7,7 +7,7 @@ import { test } from "node:test";
 await import("./register-route-ts.mjs");
 
 const { repositoryEnvironmentPolicy, validateDeploymentEnvironment } =
-  await import("../src/shared/contracts/deployment-environment.ts");
+  await import("../src/server/environment/contract.ts");
 const { GET: readiness } = await import("../src/app/api/health/ready/route.ts");
 const { plannerRouteGatewayEnabled } =
   await import("../src/server/routing/config.ts");

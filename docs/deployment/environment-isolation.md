@@ -20,7 +20,7 @@ A production build does not imply a production resource environment. The local s
 | Preview     | None approved  | No origin allowlisted    | No project allowlisted                                                         | Evaluation forbidden                                                          | No target allowlisted |
 | Production  | None approved  | No origin allowlisted    | No project allowlisted                                                         | Evaluation forbidden; production entitlement still requires explicit approval | No target allowlisted |
 
-The policy is code-reviewed in `src/shared/contracts/deployment-environment.ts`. Environment variables cannot add a trusted cloud target by themselves.
+The policy is code-reviewed in the server-only `src/server/environment/contract.ts`. Environment variables cannot add a trusted cloud target by themselves, and credential-bearing variable names do not enter a client-importable shared contract.
 
 ## Variable ownership and lifecycle
 
