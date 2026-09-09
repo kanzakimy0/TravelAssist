@@ -1,13 +1,13 @@
 .page,
 .overlayTheme {
-  --wizard-ink: #283342;
-  --wizard-muted: #6f6a68;
-  --wizard-coral: #d86657;
-  --wizard-coral-dark: #bd4f43;
-  --wizard-blush: #fff1ed;
-  --wizard-cream: #fffaf2;
-  --wizard-border: rgb(111 78 68 / 16%);
-  --wizard-glass: rgb(255 250 244 / 86%);
+  --wizard-ink: var(--color-text-primary);
+  --wizard-muted: var(--color-text-secondary);
+  --wizard-coral: var(--color-accent-primary);
+  --wizard-coral-dark: var(--color-accent-primary-hover);
+  --wizard-blush: var(--color-bg-muted);
+  --wizard-cream: var(--color-bg-elevated);
+  --wizard-border: var(--color-border-subtle);
+  --wizard-glass: var(--color-bg-overlay);
   --wizard-inset: clamp(2.5rem, 6vw, 5rem);
   --wizard-body-gap: 1.5rem;
   color: var(--wizard-ink);
@@ -60,35 +60,6 @@
   justify-content: space-between;
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: #fffaf5;
-  font-size: 1.08rem;
-  font-weight: 850;
-  letter-spacing: -0.035em;
-  text-decoration: none;
-  text-shadow: 0 1px 1rem rgb(37 24 19 / 45%);
-}
-
-.brandMark {
-  width: 0.72rem;
-  height: 0.72rem;
-  border: 2px solid rgb(255 250 245 / 86%);
-  border-radius: 50% 50% 50% 12%;
-  background: var(--wizard-coral);
-  transform: rotate(-36deg);
-}
-
-.brand:focus-visible,
-.headerActions button:focus-visible,
-.headerActions select:focus-visible {
-  border-radius: 0.75rem;
-  outline: 3px solid rgb(255 244 226 / 92%);
-  outline-offset: 3px;
-}
-
 .headerActions {
   display: flex;
   align-items: center;
@@ -96,37 +67,28 @@
 }
 
 .languageSelect select,
-.avatar {
-  min-height: 2.5rem;
-  border: 1px solid rgb(255 255 255 / 48%);
-  background: rgb(255 250 244 / 82%);
-  color: var(--wizard-ink);
-  box-shadow: 0 0.5rem 1.5rem rgb(52 37 31 / 12%);
-  backdrop-filter: blur(0.75rem);
-}
-
-.languageSelect select {
-  padding: 0 2.15rem 0 0.9rem;
-  border-radius: 999rem;
-  cursor: pointer;
+.accountLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--elevation-card);
   text-decoration: none;
 }
-
-.avatar:focus-visible,
-.planUseLink:focus-visible {
-  outline: 3px solid rgb(208 85 70 / 32%);
-  outline-offset: 3px;
-}
-
-.avatar {
-  display: grid;
-  width: 2.5rem;
-  padding: 0;
-  place-items: center;
-  border-radius: 50%;
-  font-size: 0.82rem;
-  font-weight: 850;
+.languageSelect select {
+  padding: 0 1.25rem 0 0.75rem;
   cursor: pointer;
+}
+.accountLink {
+  min-width: 44px;
+}
+.languageSelect select:hover,
+.accountLink:hover {
+  background: var(--color-bg-muted);
 }
 
 .flowPanel {
@@ -139,11 +101,9 @@
   min-height: 0;
   max-height: 47rem;
   padding: clamp(1.25rem, 2.4vw, 2rem) 0;
-  border-color: rgb(255 255 255 / 58%);
+  border-color: var(--color-border-subtle);
   background: var(--wizard-glass);
-  box-shadow:
-    0 1.8rem 5rem rgb(55 36 29 / 18%),
-    inset 0 1px rgb(255 255 255 / 78%);
+  box-shadow: var(--elevation-panel);
   backdrop-filter: blur(1.5rem) saturate(112%);
 }
 
@@ -1077,10 +1037,6 @@
     gap: 0.65rem;
     width: min(calc(100% - 0.8rem), 32rem);
     padding-top: 0.75rem;
-  }
-
-  .brand {
-    font-size: 0.95rem;
   }
 
   .languageSelect select {

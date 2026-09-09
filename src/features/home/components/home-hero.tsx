@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AccountAvatar } from "@/components/ui/account-avatar";
 
 import { Button } from "@/components/ui/button";
 
@@ -26,9 +27,7 @@ export function HomeHero() {
           登录
         </Button>
         <Link className={styles.personalCenterLink} href="/personal-center">
-          <span aria-hidden="true" className={styles.personalCenterAvatar}>
-            旅
-          </span>
+          <AccountAvatar />
           <span>个人中心</span>
         </Link>
       </div>

@@ -1,0 +1,91 @@
+.home {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) clamp(2rem, 4vw, 4rem);
+}
+/* No additional box: keep the existing wizard row and map header geometry. */
+.navigation {
+  display: contents;
+}
+.navigation > * {
+  pointer-events: auto;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--elevation-card);
+  text-decoration: none;
+}
+.brand img {
+  width: 166px;
+  height: 40px;
+  object-fit: contain;
+}
+.brand:hover {
+  background: var(--color-bg-muted);
+}
+.brand:focus-visible,
+.language summary:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+.language {
+  position: relative;
+  color: var(--color-text-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.language summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--elevation-card);
+  list-style: none;
+  cursor: pointer;
+}
+.language summary::-webkit-details-marker {
+  display: none;
+}
+.language summary:hover {
+  background: var(--color-bg-muted);
+}
+.language p {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-overlay);
+  box-shadow: var(--elevation-popover);
+  color: var(--color-text-secondary);
+}
+@media (max-width: 40rem) {
+  .home {
+    padding: var(--space-5);
+  }
+  .brand img {
+    width: 140px;
+    height: 36px;
+  }
+}
+@media (max-width: 22rem) {
+  .brand img {
+    width: 124px;
+  }
+}
