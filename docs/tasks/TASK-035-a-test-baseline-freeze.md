@@ -5,6 +5,8 @@
 - WBS: 9.1
 - Branch: `codex/a-test-baseline-freeze`
 - Status: Review
+- Commit: `91cd32afa5f6954ed865e2457b84c8897c49cc19`
+- Pull Request: [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) — Open / Draft
 - Depends: 2.9 and 2.10 completed
 
 ## Objective

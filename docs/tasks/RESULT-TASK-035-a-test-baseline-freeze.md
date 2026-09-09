@@ -12,8 +12,8 @@ WBS 9.1 的框架盘点、统一入口、CI 接线、运行规则与证据已完
 - WBS: 9.1 → `待审查`
 - Base: `171900698180b80220017c9c4bec551b72792f27`
 - Branch: `codex/a-test-baseline-freeze`
-- Commit: `PENDING`
-- Draft PR: `PENDING`
+- Commit: `91cd32afa5f6954ed865e2457b84c8897c49cc19`
+- Draft PR: [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) — Open / Draft
 
 ## Inventory
 
