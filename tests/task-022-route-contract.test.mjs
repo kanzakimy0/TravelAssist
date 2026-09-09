@@ -49,6 +49,25 @@ test("request validator rejects invalid coordinates, version, private data, and 
   assert.match(result.issues.join("\n"), /between 1 and 20/);
 });
 
+test("request validator rejects inconsistent time, mode, and preference semantics", () => {
+  const invalid = structuredClone(routeRequestFixture);
+  invalid.requestedModes = ["rail", "rail", "teleport"];
+  invalid.timeIntent.localDate = "2026-09-10";
+  invalid.timeIntent.localTime = "25:61";
+  invalid.timezone = "UTC";
+  invalid.alternatives.preference = "fastest-ish";
+  invalid.preferences.maxWalkingMeters = -1;
+  invalid.preferences.accessibility = { wheelchair: "sometimes" };
+  const issues = validateRouteRequest(invalid).issues.join("\n");
+  assert.match(issues, /requestedModes contains an unsupported value/);
+  assert.match(issues, /requestedModes must not contain duplicates/);
+  assert.match(issues, /local fields do not match its instant/);
+  assert.match(issues, /timezone must match timeIntent.timezone/);
+  assert.match(issues, /alternatives.preference is invalid/);
+  assert.match(issues, /maxWalkingMeters is invalid/);
+  assert.match(issues, /accessibility.wheelchair is invalid/);
+});
+
 test("response validator rejects negative values, reversed time, malformed geometry and private payload", () => {
   const invalid = structuredClone(minimalRailRouteFixture);
   invalid.alternatives[0].durationSeconds = -1;

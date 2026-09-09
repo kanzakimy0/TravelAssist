@@ -32,7 +32,7 @@ export const routeRequestFixture: RouteRequest = {
   },
   waypoints: [],
   modeFamily: "transit",
-  requestedModes: ["walk", "rail", "subway", "bus"],
+  requestedModes: ["walk", "rail", "subway", "bus", "other"],
   timeIntent: {
     kind: "departure_at",
     instant: "2026-09-09T00:00:00.000Z",

@@ -59,6 +59,56 @@ test("adapter maps the documented endpoint and request parameters without encodi
   assert.equal(url.searchParams.get("resultDetail"), "addCorporation");
 });
 
+test("adapter rejects delimiter injection and unsupported request constraints before fetch", async () => {
+  let fetches = 0;
+  const adapter = new EkiworldTransitAdapter({
+    configuration,
+    fetchImpl: async () => {
+      fetches += 1;
+      return Response.json(providerFixture);
+    },
+  });
+
+  const delimiter = structuredClone(routeRequestFixture);
+  delimiter.origin.displayName = "東京:新宿";
+  const delimiterResult = await adapter.calculate(delimiter, context);
+  assert.equal(delimiterResult.ok, false);
+  if (!delimiterResult.ok)
+    assert.equal(delimiterResult.error.code, "invalid_request");
+
+  const flight = structuredClone(routeRequestFixture);
+  flight.requestedModes = ["flight"];
+  const flightResult = await adapter.calculate(flight, context);
+  assert.equal(flightResult.ok, false);
+  if (!flightResult.ok)
+    assert.equal(flightResult.error.code, "unsupported_mode");
+
+  const constrained = structuredClone(routeRequestFixture);
+  constrained.preferences.maxWalkingMeters = 100;
+  const constrainedResult = await adapter.calculate(constrained, context);
+  assert.equal(constrainedResult.ok, false);
+  if (!constrainedResult.ok) {
+    assert.equal(constrainedResult.error.code, "unsupported_mode");
+    assert.equal(
+      constrainedResult.error.metadata.reason,
+      "constraint_not_supported",
+    );
+  }
+  assert.equal(fetches, 0);
+});
+
+test("adapter does not return provider alternatives outside requested modes", async () => {
+  const request = structuredClone(routeRequestFixture);
+  request.requestedModes = ["rail"];
+  const adapter = new EkiworldTransitAdapter({
+    configuration,
+    fetchImpl: async () => Response.json(providerFixture),
+  });
+  const result = await adapter.calculate(request, context);
+  assert.equal(result.ok, false);
+  if (!result.ok) assert.equal(result.error.code, "no_route");
+});
+
 test("adapter normalizes mixed modes, units, fare, timezone and hides raw payload", async () => {
   const adapter = new EkiworldTransitAdapter({
     configuration,

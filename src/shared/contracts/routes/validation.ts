@@ -34,6 +34,31 @@ const RESPONSE_KEYS = new Set([
 ]);
 const PRIVATE_KEYS =
   /^(raw|payload|providerPayload|accessKey|secret|token|serializeData)$/i;
+const ROUTE_MODES = new Set([
+  "walk",
+  "rail",
+  "subway",
+  "bus",
+  "tram",
+  "ferry",
+  "flight",
+  "transfer",
+  "wait",
+  "other",
+]);
+const MODE_FAMILIES = new Set([
+  "transit",
+  "walking",
+  "driving",
+  "cycling",
+  "mixed",
+]);
+const ALTERNATIVE_PREFERENCES = new Set([
+  "balanced",
+  "fastest",
+  "fewest_transfers",
+  "lowest_fare",
+]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -91,6 +116,18 @@ function validatePlace(value: unknown, path: string, issues: string[]): void {
     typeof value.referenceId === "string" && value.referenceId.length > 0;
   const hasName =
     typeof value.displayName === "string" && value.displayName.length > 0;
+  if (
+    value.referenceId !== null &&
+    (typeof value.referenceId !== "string" ||
+      value.referenceId.length === 0 ||
+      value.referenceId.length > 160)
+  )
+    issues.push(`${path}.referenceId is invalid`);
+  if (
+    value.displayName !== null &&
+    (typeof value.displayName !== "string" || value.displayName.length > 160)
+  )
+    issues.push(`${path}.displayName is invalid`);
   if (!hasReference && !hasName && coordinates === null)
     issues.push(`${path} needs a reference, name, or coordinates`);
 }
@@ -107,6 +144,24 @@ function validTimezone(value: unknown): value is string {
   } catch {
     return false;
   }
+}
+
+function localMinuteParts(instant: string, timezone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date(instant));
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? "";
+  return {
+    date: `${get("year")}-${get("month")}-${get("day")}`,
+    time: `${get("hour")}:${get("minute")}`,
+  };
 }
 
 function nonNegativeIntegerOrNull(
@@ -182,20 +237,38 @@ export function validateRouteRequest(value: unknown): RouteValidationResult {
   walkPrivateKeys(value, "request", issues);
   if (value.version !== ROUTE_CONTRACT_VERSION)
     issues.push("unsupported contract version");
-  if (typeof value.requestId !== "string" || value.requestId.length === 0)
+  if (
+    typeof value.requestId !== "string" ||
+    value.requestId.length === 0 ||
+    value.requestId.length > 128
+  )
     issues.push("requestId is required");
   validatePlace(value.origin, "origin", issues);
   validatePlace(value.destination, "destination", issues);
   if (!Array.isArray(value.waypoints))
     issues.push("waypoints must be an array");
+  else if (value.waypoints.length > 8)
+    issues.push("waypoints must contain at most 8 places");
   else
     value.waypoints.forEach((place, index) =>
       validatePlace(place, `waypoints[${index}]`, issues),
     );
+  if (!MODE_FAMILIES.has(String(value.modeFamily)))
+    issues.push("modeFamily is invalid");
   if (!Array.isArray(value.requestedModes) || value.requestedModes.length === 0)
     issues.push("requestedModes must not be empty");
+  else {
+    if (value.requestedModes.length > ROUTE_MODES.size)
+      issues.push("requestedModes contains too many entries");
+    if (!value.requestedModes.every((mode) => ROUTE_MODES.has(String(mode))))
+      issues.push("requestedModes contains an unsupported value");
+    if (new Set(value.requestedModes).size !== value.requestedModes.length)
+      issues.push("requestedModes must not contain duplicates");
+  }
   if (!isRecord(value.timeIntent)) issues.push("timeIntent must be an object");
   else {
+    if (!["departure_at", "arrival_by"].includes(String(value.timeIntent.kind)))
+      issues.push("timeIntent.kind is invalid");
     if (!validInstant(value.timeIntent.instant))
       issues.push("timeIntent.instant is invalid");
     if (!validTimezone(value.timeIntent.timezone))
@@ -204,16 +277,68 @@ export function validateRouteRequest(value: unknown): RouteValidationResult {
       issues.push("timeIntent.localDate must be YYYY-MM-DD");
     if (!/^\d{2}:\d{2}$/.test(String(value.timeIntent.localTime)))
       issues.push("timeIntent.localTime must be HH:mm");
+    if (
+      validInstant(value.timeIntent.instant) &&
+      validTimezone(value.timeIntent.timezone) &&
+      /^\d{4}-\d{2}-\d{2}$/.test(String(value.timeIntent.localDate)) &&
+      /^\d{2}:\d{2}$/.test(String(value.timeIntent.localTime))
+    ) {
+      const local = localMinuteParts(
+        value.timeIntent.instant,
+        value.timeIntent.timezone,
+      );
+      if (
+        local.date !== value.timeIntent.localDate ||
+        local.time !== value.timeIntent.localTime
+      )
+        issues.push("timeIntent local fields do not match its instant");
+    }
   }
   if (!validTimezone(value.timezone)) issues.push("timezone is invalid");
+  else if (
+    isRecord(value.timeIntent) &&
+    value.timeIntent.timezone !== value.timezone
+  )
+    issues.push("timezone must match timeIntent.timezone");
+  if (
+    value.locale !== null &&
+    (typeof value.locale !== "string" || value.locale.length > 35)
+  )
+    issues.push("locale is invalid");
   if (!isRecord(value.alternatives))
     issues.push("alternatives must be an object");
-  else if (
-    !Number.isInteger(value.alternatives.max) ||
-    Number(value.alternatives.max) < 1 ||
-    Number(value.alternatives.max) > 20
-  )
-    issues.push("alternatives.max must be between 1 and 20");
+  else {
+    if (
+      !Number.isInteger(value.alternatives.max) ||
+      Number(value.alternatives.max) < 1 ||
+      Number(value.alternatives.max) > 20
+    )
+      issues.push("alternatives.max must be between 1 and 20");
+    if (!ALTERNATIVE_PREFERENCES.has(String(value.alternatives.preference)))
+      issues.push("alternatives.preference is invalid");
+  }
+  if (!isRecord(value.preferences))
+    issues.push("preferences must be an object");
+  else {
+    const walking = value.preferences.maxWalkingMeters;
+    if (
+      walking !== null &&
+      (!Number.isInteger(walking) ||
+        Number(walking) < 0 ||
+        Number(walking) > 100000)
+    )
+      issues.push("preferences.maxWalkingMeters is invalid");
+    const accessibility = value.preferences.accessibility;
+    if (accessibility !== null && !isRecord(accessibility))
+      issues.push("preferences.accessibility must be an object or null");
+    else if (isRecord(accessibility))
+      for (const key of ["wheelchair", "avoidStairs"])
+        if (
+          accessibility[key] !== null &&
+          typeof accessibility[key] !== "boolean"
+        )
+          issues.push(`preferences.accessibility.${key} is invalid`);
+  }
   return { valid: issues.length === 0, issues };
 }
 

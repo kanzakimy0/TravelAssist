@@ -20,12 +20,18 @@ test("routing provider implementation is server-only and absent from client sour
     const files = readdirSync(resolve(root, directory), {
       recursive: true,
     }).filter((file) => /\.(?:ts|tsx|js|jsx)$/.test(file));
-    for (const file of files)
+    for (const file of files) {
+      if (
+        directory === "src/app" &&
+        file.replaceAll("\\", "/") === "api/routes/calculate/route.ts"
+      )
+        continue;
       assert.doesNotMatch(
         read(resolve(directory, file)),
         /src\/server\/routing|server\/routing|providers\/ekiworld/,
         `Client-reachable source imports routing server code: ${file}`,
       );
+    }
   }
 });
 
