@@ -12,7 +12,7 @@
 >
 > Canonical Trip Plan Schema: `src/shared/contracts/trips/index.ts`，`contractVersion: "1.0"`
 >
-> Delivery note: repository automation created and merged PR [#237](https://github.com/kanzakimy0/TravelAssist/pull/237) immediately after the feature push. No user acceptance occurred; this contract remains a Review Candidate and is not frozen.
+> Delivery note: repository automation created and merged PR [#237](https://github.com/kanzakimy0/TravelAssist/pull/237) immediately after the feature push. No user acceptance occurred; Draft review gate [#238](https://github.com/kanzakimy0/TravelAssist/pull/238) remains open. This contract is not frozen.
 
 ## 1. 定义、目标与非目标
 
