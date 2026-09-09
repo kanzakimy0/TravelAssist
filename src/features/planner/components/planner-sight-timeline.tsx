@@ -19,8 +19,10 @@ import {
   timelineProtected,
   timelineTitle,
   timelineClock,
-  snapTimelineMinute,
+  snapTimelineBandMinute,
   timelineCollisionGroups,
+  timelineBandSegments,
+  timelineDisplayBands,
 } from "../model/planner-timeline";
 import { PlannerPopover } from "./planner-popover";
 import css from "../planner-sight-timeline.module.css";
@@ -62,6 +64,7 @@ export function PlannerSightTimeline({
   const suppressClick = useRef(false);
   const [pickup, setPickup] = useState<Pickup | null>(null);
   const [frontId, setFrontId] = useState<string | null>(null);
+  const [timeAligned, setTimeAligned] = useState(false);
   const publish = (value: Pickup | null) => {
     pickupRef.current = value;
     setPickup(value);
@@ -86,17 +89,19 @@ export function PlannerSightTimeline({
     if (!hit || !root.current?.contains(hit)) return null;
     if (hit.dataset.dropRow === "reserve")
       return { to: "reserve", afterId: null };
-    const ruler = hit
-      .querySelector<HTMLElement>("[data-axis-start]")
-      ?.getBoundingClientRect();
-    if (!ruler || !id) return null;
+    const rulerElement = hit.querySelector<HTMLElement>("[data-axis-start]");
+    if (!rulerElement || !id) return null;
+    const ruler = rulerElement.getBoundingClientRect();
+    const bandStart = Number(rulerElement.dataset.axisStart);
+    const bandEnd = Number(rulerElement.dataset.axisEnd);
     return {
       to: "planned",
       afterId: null,
-      startMinute: snapTimelineMinute(
+      startMinute: snapTimelineBandMinute(
         (x - ruler.left) / ruler.width,
-        axis.start,
-        axis.span,
+        Number.isFinite(bandStart) ? bandStart : axis.start,
+        Number.isFinite(bandEnd) && bandEnd > bandStart ? bandEnd : axis.end,
+        rulerElement.dataset.axisExclusiveEnd === "true",
       ),
     };
   }
@@ -213,12 +218,20 @@ export function PlannerSightTimeline({
       }
     }
   }
-  function card(item: TripItem, isReserve: boolean) {
+  function card(
+    item: TripItem,
+    isReserve: boolean,
+    segment?: { start: number; end: number; primary: boolean },
+  ) {
     const protectedItem = timelineProtected(item);
     return (
       <article
         className={css.card}
-        data-planned-sight={!isReserve ? item.id : undefined}
+        data-planned-sight={
+          !isReserve && (!segment || segment.primary) ? item.id : undefined
+        }
+        data-planned-segment={segment ? item.id : undefined}
+        data-continuation={segment && !segment.primary ? true : undefined}
         data-reserve-sight={isReserve ? item.id : undefined}
         data-kind={item.type}
         data-locked={protectedItem}
@@ -262,24 +275,32 @@ export function PlannerSightTimeline({
           <small>
             {isReserve ? (
               "待安排"
+            ) : segment ? (
+              <time>
+                {displayTimelineTime(timelineClock(segment.start))}–
+                {displayTimelineTime(timelineClock(segment.end))}
+              </time>
             ) : (
               <time>{displayTimelineTime(item.startTime)}</time>
             )}
-            <span> · {timelineDuration(item)}分</span>
+            {!segment && <span> · {timelineDuration(item)}分</span>}
           </small>
           <strong>{timelineTitle(item)}</strong>
         </button>
-        <TimelineActions
-          key={`${item.id}-${isReserve}`}
-          item={item}
-          reserve={isReserve}
-          state={state}
-          day={day}
-          dispatch={dispatch}
-        />
+        {(!segment || segment.primary) && (
+          <TimelineActions
+            key={`${item.id}-${isReserve}`}
+            item={item}
+            reserve={isReserve}
+            state={state}
+            day={day}
+            dispatch={dispatch}
+          />
+        )}
       </article>
     );
   }
+  const displayBands = timelineDisplayBands(planned);
   const targetText =
     pickup?.target?.to === "reserve"
       ? "移到备用，保留资料"
@@ -295,132 +316,210 @@ export function PlannerSightTimeline({
       data-compare={compare}
       data-sight-timeline
       data-picking={Boolean(pickup?.moved)}
+      data-time-aligned={timeAligned}
     >
       {!compare && (
         <div className={css.labels}>
-          <h3 id={`sights-${day}`}>
+          <h3
+            id={`sights-${day}`}
+            aria-label={`当日行程，第${day}天，共${planned.length}项`}
+          >
             当日行程
-            <small>
-              第{day}天 · {planned.length}项
-            </small>
-            <span title="先拖动安排，时间冲突留到详情核对">
-              拖到下轨，移入备用
-            </span>
           </h3>
-          <h3 id={`reserves-${day}`}>
-            备用项目<small>{reserve.length}项</small>
-            <span>拖到上轨移入行程</span>
+          <button
+            type="button"
+            className={css.alignmentToggle}
+            aria-label="切换卡片样式（按时间对齐）"
+            aria-pressed={timeAligned}
+            onClick={() => setTimeAligned((current) => !current)}
+          >
+            <span>切换卡片样式</span>
+          </button>
+          <h3
+            id={`reserves-${day}`}
+            aria-label={`备用项目，共${reserve.length}项`}
+          >
+            备用项目
           </h3>
         </div>
       )}
       <div className={css.tracks}>
-        <div
-          ref={viewport}
-          className={css.viewport}
-          data-sight-scroll="planned"
-        >
+        {timeAligned ? (
           <div
-            className={css.plannedLane}
-            style={{ minWidth: axis.width }}
-            data-drop-row="planned"
-            data-drop-active={pickup?.target?.to === "planned"}
+            ref={viewport}
+            className={`${css.viewport} ${css.alignedViewport}`}
+            data-sight-scroll="planned"
           >
-            <div
-              className={css.ruler}
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, #819f9270 1px, transparent 1px)",
-                backgroundSize: `${500 / axis.span}% 4px`,
-                backgroundPosition: `${((Math.ceil(axis.start / 5) * 5 - axis.start) / axis.span) * 100}% bottom`,
-                backgroundRepeat: "repeat-x",
-              }}
-              data-axis-start={axis.start}
-              data-axis-end={axis.end}
-              aria-label="当天等分时间刻度"
-            >
-              {axis.ticks.map((t, i) => (
-                <span key={i} style={{ left: `${(i * 100) / 6}%` }}>
-                  {displayTimelineTime(timelineClock(Math.round(t)))}
-                </span>
-              ))}
-            </div>
-            <ol
-              className={css.rail}
-              data-sight-row="planned"
-              aria-label={`第${day}天当日行程`}
-            >
-              {planned.map((item, index) => {
-                const ratio =
-                  (timelineMinute(item.startTime) - axis.start) / axis.span;
-                const same = planned
-                  .slice(0, index)
-                  .filter((i) => i.startTime === item.startTime).length;
-                return (
-                  <li
-                    key={item.id}
-                    className={css.stop}
-                    data-axis-item={item.id}
-                    data-start-minute={timelineMinute(item.startTime)}
+            <div className={css.alignedPlanned} data-aligned-planned>
+              {displayBands.map((band) => (
+                <div
+                  key={band.key}
+                  className={css.alignedBand}
+                  data-drop-row="planned"
+                  data-drop-active={pickup?.target?.to === "planned"}
+                >
+                  <div
+                    className={css.alignedRuler}
                     style={
                       {
-                        left: `calc(58px + (100% - 116px) * ${ratio})`,
-                        "--stack": Math.min(same, 3),
-                        zIndex: frontId === item.id ? 10 : undefined,
+                        "--five-minute-step": `${500 / (band.end - band.start)}%`,
                       } as CSSProperties
                     }
+                    data-axis-start={band.start}
+                    data-axis-end={band.end}
+                    data-axis-exclusive-end={
+                      band.key === "morning" ? true : undefined
+                    }
+                    aria-label={`${displayTimelineTime(timelineClock(band.start))}至${displayTimelineTime(timelineClock(band.end))}五分钟刻度`}
                   >
-                    <div className={css.anchor} aria-hidden="true">
-                      <i />
-                    </div>
-                    {card(item, false)}
-                  </li>
-                );
-              })}
-              {timelineCollisionGroups(planned, axis.width, axis.span).map(
-                (group) => {
-                  const time = group[0].startTime;
+                    {band.ticks.map((tick) => (
+                      <span
+                        key={tick}
+                        style={{
+                          left: `${((tick - band.start) / (band.end - band.start)) * 100}%`,
+                        }}
+                      >
+                        {displayTimelineTime(timelineClock(tick))}
+                      </span>
+                    ))}
+                  </div>
+                  <ol className={`${css.rail} ${css.alignedRail}`}>
+                    {planned.flatMap((item) =>
+                      timelineBandSegments(item, displayBands)
+                        .filter((segment) => segment.band === band.key)
+                        .map((segment) => {
+                          const span = band.end - band.start;
+                          return (
+                            <li
+                              key={`${item.id}-${band.key}`}
+                              className={css.alignedStop}
+                              data-axis-item={item.id}
+                              data-start-minute={segment.start}
+                              style={{
+                                left: `${((segment.start - band.start) / span) * 100}%`,
+                                width: `max(46px, calc(${((segment.end - segment.start) / span) * 100}% - 4px))`,
+                                zIndex: frontId === item.id ? 10 : undefined,
+                              }}
+                            >
+                              {card(item, false, segment)}
+                            </li>
+                          );
+                        }),
+                    )}
+                  </ol>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div
+            ref={viewport}
+            className={css.viewport}
+            data-sight-scroll="planned"
+          >
+            <div
+              className={css.plannedLane}
+              style={{ minWidth: axis.width }}
+              data-drop-row="planned"
+              data-drop-active={pickup?.target?.to === "planned"}
+            >
+              <div
+                className={css.ruler}
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #819f9270 1px, transparent 1px)",
+                  backgroundSize: `${500 / axis.span}% 4px`,
+                  backgroundPosition: `${((Math.ceil(axis.start / 5) * 5 - axis.start) / axis.span) * 100}% bottom`,
+                  backgroundRepeat: "repeat-x",
+                }}
+                data-axis-start={axis.start}
+                data-axis-end={axis.end}
+                aria-label="当天等分时间刻度"
+              >
+                {axis.ticks.map((t, i) => (
+                  <span key={i} style={{ left: `${(i * 100) / 6}%` }}>
+                    {displayTimelineTime(timelineClock(Math.round(t)))}
+                  </span>
+                ))}
+              </div>
+              <ol
+                className={css.rail}
+                data-sight-row="planned"
+                aria-label={`第${day}天当日行程`}
+              >
+                {planned.map((item, index) => {
+                  const ratio =
+                    (timelineMinute(item.startTime) - axis.start) / axis.span;
+                  const same = planned
+                    .slice(0, index)
+                    .filter((i) => i.startTime === item.startTime).length;
                   return (
                     <li
-                      key={time}
-                      className={css.overlapChoice}
-                      style={{
-                        left: `calc(58px + (100% - 116px) * ${(timelineMinute(time) - axis.start) / axis.span})`,
-                      }}
+                      key={item.id}
+                      className={css.stop}
+                      data-axis-item={item.id}
+                      data-start-minute={timelineMinute(item.startTime)}
+                      style={
+                        {
+                          left: `calc(58px + (100% - 116px) * ${ratio})`,
+                          "--stack": Math.min(same, 3),
+                          zIndex: frontId === item.id ? 10 : undefined,
+                        } as CSSProperties
+                      }
                     >
-                      <OverlapPicker
-                        items={group}
-                        onSelect={(id) => {
-                          setFrontId(id);
-                          requestAnimationFrame(() => {
-                            const selected = [
-                              ...(root.current?.querySelectorAll<HTMLElement>(
-                                "[data-axis-item]",
-                              ) ?? []),
-                            ].find((node) => node.dataset.axisItem === id);
-                            selected?.scrollIntoView({
-                              block: "nearest",
-                              inline: "center",
-                            });
-                            selected
-                              ?.querySelector<HTMLButtonElement>(
-                                "[data-drag-handle]",
-                              )
-                              ?.focus({ preventScroll: true });
-                          });
-                        }}
-                      />
+                      <div className={css.anchor} aria-hidden="true">
+                        <i />
+                      </div>
+                      {card(item, false)}
                     </li>
                   );
-                },
-              )}
-              {!planned.length && (
-                <li className={css.empty}>
-                  把下方项目拖到这里，开始安排这一天。
-                </li>
-              )}
-            </ol>
+                })}
+                {timelineCollisionGroups(planned, axis.width, axis.span).map(
+                  (group) => {
+                    const time = group[0].startTime;
+                    return (
+                      <li
+                        key={time}
+                        className={css.overlapChoice}
+                        style={{
+                          left: `calc(58px + (100% - 116px) * ${(timelineMinute(time) - axis.start) / axis.span})`,
+                        }}
+                      >
+                        <OverlapPicker
+                          items={group}
+                          onSelect={(id) => {
+                            setFrontId(id);
+                            requestAnimationFrame(() => {
+                              const selected = [
+                                ...(root.current?.querySelectorAll<HTMLElement>(
+                                  "[data-axis-item]",
+                                ) ?? []),
+                              ].find((node) => node.dataset.axisItem === id);
+                              selected?.scrollIntoView({
+                                block: "nearest",
+                                inline: "center",
+                              });
+                              selected
+                                ?.querySelector<HTMLButtonElement>(
+                                  "[data-drag-handle]",
+                                )
+                                ?.focus({ preventScroll: true });
+                            });
+                          }}
+                        />
+                      </li>
+                    );
+                  },
+                )}
+                {!planned.length && (
+                  <li className={css.empty}>
+                    把下方项目拖到这里，开始安排这一天。
+                  </li>
+                )}
+              </ol>
+            </div>
           </div>
-        </div>
+        )}
         {compare && (
           <div className={css.dayDivider} data-timeline-day-label>
             <strong>第{day}天</strong>

@@ -54,6 +54,17 @@ function QuickCard({
   }
   const trigger = useRef<HTMLButtonElement>(null);
   const count = currentPlan(state).days.length;
+  const people = state.configuration.travelers;
+  const compactTravelers =
+    [
+      people.adultMale + people.adultFemale
+        ? `${people.adultMale + people.adultFemale} 位成人`
+        : "",
+      people.child ? `${people.child} 位儿童` : "",
+      people.infant ? `${people.infant} 位婴儿` : "",
+    ]
+      .filter(Boolean)
+      .join(" · ") || "未选择";
   const summary =
     field.key === "dates"
       ? liveState.settings.startDate.slice(5) +
@@ -75,6 +86,7 @@ function QuickCard({
       <button
         type="button"
         className={styles.quickCard}
+        data-quick-field={field.key}
         ref={trigger}
         aria-expanded={open}
         aria-controls={open ? "quick-" + field.key : undefined}
@@ -87,10 +99,27 @@ function QuickCard({
         }}
       >
         <span className={styles.quickLabel}>
-          <PlannerIcon name={field.icon} />
+          <span className={styles.quickIcon}>
+            <PlannerIcon name={field.icon} />
+          </span>
           {field.title}
         </span>
-        <strong>{summary}</strong>
+        <strong title={summary}>
+          {field.key === "travelers" ? (
+            compactTravelers
+          ) : field.key === "dates" ? (
+            summary
+          ) : (
+            <span className={styles.preferenceSummary}>
+              {summary.split(" · ").map((item, i) => (
+                <span key={`${i}-${item}`}>
+                  {i > 0 ? "· " : ""}
+                  {item}
+                </span>
+              ))}
+            </span>
+          )}
+        </strong>
         {field.key === "dates" && (
           <small>
             {count}天{count - 1}晚 · 示例

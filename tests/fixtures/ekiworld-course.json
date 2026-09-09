@@ -1,0 +1,89 @@
+{
+  "ResultSet": {
+    "apiVersion": "fixture-1",
+    "engineVersion": "fixture-engine",
+    "Course": [
+      {
+        "searchType": "departure",
+        "dataType": "onTimetable",
+        "SerializeData": "PRIVATE-FIXTURE-SERIALIZE-DATA",
+        "Price": [
+          { "kind": "FareSummary", "Oneway": "310" },
+          { "kind": "ChargeSummary", "Oneway": "100" }
+        ],
+        "Route": {
+          "timeOther": "3",
+          "timeOnBoard": "25",
+          "timeWalk": "5",
+          "distance": "156",
+          "transferCount": "2",
+          "Point": [
+            {
+              "Name": "出発地",
+              "GeoPoint": { "longi_d": "139.6500", "lati_d": "35.7000" }
+            },
+            {
+              "Station": { "code": "1001", "Name": "地下鉄駅" },
+              "GeoPoint": { "longi_d": "139.6600", "lati_d": "35.7050" }
+            },
+            {
+              "Station": { "code": "1002", "Name": "バス停" },
+              "GeoPoint": { "longi_d": "139.6800", "lati_d": "35.7100" }
+            },
+            {
+              "Station": { "code": "1003", "Name": "目的地" },
+              "GeoPoint": { "longi_d": "139.7000", "lati_d": "35.7150" }
+            }
+          ],
+          "Line": [
+            {
+              "Name": "徒歩",
+              "Type": "walk",
+              "timeOnBoard": "5",
+              "distance": "4",
+              "DepartureState": {
+                "Datetime": { "text": "2026-09-09T23:45:00+09:00" }
+              },
+              "ArrivalState": {
+                "Datetime": { "text": "2026-09-09T23:50:00+09:00" }
+              }
+            },
+            {
+              "Name": "東京メトロ丸ノ内線",
+              "Type": "train",
+              "TypicalName": "地下鉄",
+              "Number": "M101",
+              "Destination": "池袋",
+              "timeOnBoard": "15",
+              "distance": "82",
+              "stopStationCount": "4",
+              "Corporation": { "Name": "東京地下鉄" },
+              "DepartureState": {
+                "no": "2",
+                "Datetime": { "text": "2026-09-09T23:52:00+09:00" }
+              },
+              "ArrivalState": {
+                "no": "1",
+                "Datetime": { "text": "2026-09-10T00:07:00+09:00" }
+              }
+            },
+            {
+              "Name": "都営バス",
+              "Type": "bus",
+              "timeOnBoard": "10",
+              "distance": "70",
+              "stopStationCount": "5",
+              "Corporation": { "Name": "東京都交通局" },
+              "DepartureState": {
+                "Datetime": { "text": "2026-09-10T00:10:00+09:00" }
+              },
+              "ArrivalState": {
+                "Datetime": { "text": "2026-09-10T00:20:00+09:00" }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

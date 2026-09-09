@@ -155,10 +155,21 @@ export function createAuthCore(client: Client, callbackUrl: string) {
     async completeCallback(
       code: unknown,
       returnTo: unknown,
+      flowId?: unknown,
     ): Promise<AuthResult<AuthSuccess>> {
       if (typeof code !== "string" || !code || code.length > 4096)
         return { ok: false, code: "callback_failed" };
-      const { data, error } = await client.auth.exchangeCodeForSession(code);
+      if (
+        flowId !== undefined &&
+        (typeof flowId !== "string" || !/^[A-Za-z0-9_-]{8,64}$/.test(flowId))
+      )
+        return { ok: false, code: "callback_failed" };
+      // Explicit flows must use their SDK-owned slot, never another flow's
+      // most-recent verifier. Old mail/recovery callbacks retain the old call.
+      const { data, error } =
+        flowId === undefined
+          ? await client.auth.exchangeCodeForSession(code)
+          : await client.auth.exchangeCodeForSession(code, { flowId });
       return error || !data.user || !data.session
         ? { ok: false, code: "callback_failed" }
         : success("signed_in", { returnTo }, { userId: data.user.id });

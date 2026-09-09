@@ -1,6 +1,6 @@
 .page {
-  --lifestyle-coral: #a74739;
-  --lifestyle-coral-deep: #8f392f;
+  --lifestyle-coral: var(--color-accent-primary);
+  --lifestyle-coral-deep: var(--color-accent-primary-hover);
   --lifestyle-coral-soft: #f8e6df;
   --lifestyle-sage: #667762;
   display: grid;
@@ -362,7 +362,7 @@
 .segmentedChoice button[data-selected] {
   border-color: var(--lifestyle-coral);
   color: #fff;
-  background: var(--lifestyle-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 5px 12px rgb(143 57 47 / 14%);
 }
 
@@ -419,7 +419,7 @@
 .toggleChoice input:checked + .checkboxMark {
   border-color: var(--lifestyle-coral);
   color: #fff;
-  background: var(--lifestyle-coral);
+  background: var(--background-accent-primary);
 }
 
 .toggleChoice:has(input:focus-visible) {
@@ -662,7 +662,7 @@
 .saveButton {
   border: 1px solid var(--lifestyle-coral);
   color: #fff;
-  background: var(--lifestyle-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 7px 16px rgb(146 59 48 / 18%);
 }
 

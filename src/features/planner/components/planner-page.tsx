@@ -36,7 +36,6 @@ import {
   kindFor,
   makeTripState,
   mapView,
-  pendingItems,
   presentationPlan,
   tripReducer,
 } from "../model/trip-model";
@@ -85,7 +84,11 @@ function serverViewport() {
   return "false:false";
 }
 
-export function PlannerPage() {
+export function PlannerPage({
+  routeQueriesEnabled = false,
+}: {
+  routeQueriesEnabled?: boolean;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = parseWorkspaceMode(searchParams.get("view"));
@@ -557,8 +560,6 @@ export function PlannerPage() {
       refreshing={refreshing}
       status={refreshing ? "正在刷新示例路线…（Mock 演示）" : trip.notice}
       onReplan={replan}
-      pendingCount={pendingItems(plan).length}
-      onBooking={browserTrip.enterDetail}
       onOpenDetail={browserTrip.enterDetail}
       detailReady={browserTrip.ready}
     />
@@ -766,6 +767,7 @@ export function PlannerPage() {
     <WorkspaceCapabilities.Provider
       value={{
         canBook: mode === "detail",
+        routeQueriesEnabled,
         enterDetail: browserTrip.enterDetail,
       }}
     >

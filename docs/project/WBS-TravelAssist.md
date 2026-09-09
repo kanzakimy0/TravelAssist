@@ -6,6 +6,84 @@
 - 四层 Trip 主表、owner-only RLS、revision/CAS、事务 Contract 投影与真实 generated types 已验收；Local start/status/reset/types/stop、21 项 TASK-019 runtime、25 项 Profile runtime、16 项纯投影夹具通过。634 项全仓 tests、lint/typecheck/build 通过；28 份历史格式问题与 develop 一致，新增 0。
 - 交付前重新 fetch，develop 仍为上述 SHA；#207 / #221 仍 Open / Draft / Partial，不引入其 B 表。无 UI、Saved Trips、Engine、POI/Route、Booking/Payment 扩展；只有用户验收并合并后才标记已完成。
 
+## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
+
+- 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
+- PR [#252](https://github.com/kanzakimy0/TravelAssist/pull/252) 已于 2026-09-09T11:29:14Z 合入 develop，merge：d2efbb69bdabc91b41994147b357c4dfad02eeee。合并树与已验收 head 完全一致。
+- WBS 3.2 = **已完成**。正式背景固定复用用户确认的 home-hero-sakura-sunset.webp，v1.1 Hero / Header / Help / Footer / 真实账户 / AI UI 及全站珊瑚配色已交付。Issue #251 与静态 MVP #246 同步收尾。
+- 验证沿用同一已验收文件树：全仓 703/703；专项 14/14；Home 五尺寸 + reduced-motion 6/6、账户 15/15、其他页面几何 20/20，最新背景补正 UI 几何六组不变。
+- 原视频 Blocked 与此前待审查阶段均保留为历史；1.13 仍待审查，3.1 已完成不变，3.2.1 / #247 保持未开始 / Deferred，不启动 3.3 / 3.4 / 3.5。
+
+
+## TASK-025.2 v1.1 最新概念与辅助入口（待审查）
+
+- 用户最新背景补正：固定复用已保存的 home-hero-sakura-sunset.webp，与本次上传纯背景按原参数编码后的内容逐字节一致。v1.1 UI 保持，3.2 仍待审查；当前截图及报告采用 background-restored 前缀。
+
+- 按用户最新概念图 > Amendment v1.1 > 主 Task 的优先级执行；Owner A，Issue #251 / #246，沿用 feature/a-homepage-concept-fidelity 与 Draft PR #252。已整合 origin/develop@da43afe616ae08516b96599335a54a8ef163d8fd 的正式 v1.1 补充。
+- 本轮仅首页概念构图、真实用户入口的现有能力适配、Help Popover 与最小静态辅助页面。保留此前已实施的全站珊瑚配色，不改其他页面布局或业务；10.6 完整业务不启动。
+- 3.2 待审查；实现 d6b105d099a06355fc8c24c9d4fc1b7236bb8863，继续 Draft PR #252 / Issue #251。703 全仓、14 专项、Home 6/6、Auth 15/15、回归几何 20/20 通过；完整 Result 与 v11-evidence 已同步。
+- 等待本轮用户视觉验收；不自动合并，不启动 3.2.1 / 3.3 / 3.4 / 3.5。
+
+## 全站珊瑚品牌色跟进（2026-09-09，待审查）
+
+- 用户追加“别的地方红棕色也要改成珊瑚色”，本轮覆盖 Home CTA 同系填充、Start/Planner/Detail、PC 各子页及 Auth 的品牌颜色；以此覆盖前轮 PC/global 颜色不改限制。仅颜色与旧保存路线的显示适配，所有布局和业务数据保持。
+- Owner A；沿用 Issue #251/#246、`feature/a-homepage-concept-fidelity`、Draft PR #252。实现 `bb0cf18b14afe51f2fdc204782e28f455ab0263c`；701 tests、lint/typecheck/build 通过，几何 20/20、跨页颜色 28/28、Home 6/6；证据 `docs/qa/TASK-025.2/coral-evidence.json`。
+- 3.2 待审查，未合并；原 3.1 已完成及旧视频 Blocked 历史保留。未启动 3.2.1 / 3.3。
+
+## 首页更新后的主系统品牌同步（2026-09-09，待审查）
+
+- 用户追加授权 Start / Planner / Trip Detail 对齐当前首页，并明确 Home 与 Personal Center 已统一，二者保持。Owner A；沿用 Issue #251 / #246、分支 `feature/a-homepage-concept-fidelity` 与 Draft PR #252。
+- 仅页面局部视觉适配，复用已有全局 tokens 与共享组件；地图 / 右栏 / 时间轴几何和全部业务交互保留。原 3.1 验收合并完成记录不回退；3.2 及本次 follow-up 当前待审查，未取得本轮视觉验收或合并。3.2.1 与 3.3 不启动。
+- 实现 `b3e12361286b414c699dad0e467d8074ee2bc8db`；复用首页现有授权背景，Start 去除深色遮罩，Planner/Detail 暖白面板及控件收敛到已有 tokens；仅修改局部 CSS。699 全仓 / 12 专项、lint/typecheck/build 通过；20/20 页面几何一致，Home 六组 / PC 五组 PNG 哈希与本轮前一致。证据：`docs/qa/TASK-025.2/brand-evidence.json`、`brand-report.json`。
+
+## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，修正后待审查）
+
+- 用户明确要求最终呈现其概念图效果，原灰金海岸背景不获视觉认可；本轮直接从用户提供概念图提取纯背景并接入，取代上一轮保留旧 Poster 的视觉范围。PR #252 保持 Draft。
+- Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
+- 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
+- PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
+- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；首版 `a965214b1845423d8ef263e499e8d4dca29f42b5`，概念图完整视觉修正 `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`；Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)。
+- npm ci / lint / typecheck / build / diff-check 通过；699 项全仓测试、6 项专项通过；Home 五尺寸 + reduced-motion 6/6，其他页面几何 20/20 与最新 develop 一致。
+- 已从用户概念图去除 UI、局部补绘并接入樱花/粉色夕阳/海岸列车背景；正式 WebP 与来源/授权/提示词/哈希登记齐全，原 Poster 原样保留且退出首页接线。没有伪造用户或更改全局 token。Result：`docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`；证据：`docs/qa/TASK-025.2/README.md`。
+- 当前 3.2 待审查，用户本轮视觉通过并合入 develop 后才可完成；原 3.2 视频 Blocked 历史与其他工作站记录保留。
+
+
+## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
+
+- 3.2 / A / Issue [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)：**阻塞**；原因：**缺少已授权首页动态背景 WebM / MP4 素材**。
+- 执行基线 `83a25bc3a95b8e6b323f844cb8d392ae4d0cb4a7`。PR #244 已合并，3.1 / 1.16 已完成，Integration Gate PASS；Asset Gate FAIL，最新 develop 与本地首页媒体目录仅有 161854-byte Poster，无 WebM / MP4 或对应视频授权。
+- 仅审计运行时与素材登记，保持 TASK-024 首页视觉和所有实现不变；仅文档分支 `codex/a-homepage-background-asset-gate`，正常快进同步阻塞记录至 develop。实现分支未创建，无实现 Draft PR；Issue #246 保持 Open。
+- Task / Result：`docs/tasks/TASK-025-a-homepage-animated-background.md`、`docs/tasks/RESULT-TASK-025-a-homepage-animated-background.md`。全套测试与动态浏览器 QA 未启动，不把 Poster + 条件 video 当作完成。素材到位后重新过 Gate；未开始 WBS 3.3 或其他任务。
+
+## TASK-024-A Global Main Layout / Header（2026-09-09，验收合并完成）
+
+- 3.1 / A / Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)：用户视觉验收通过并授权合并，**已完成**。分支 `feature/a-main-layout-header`；执行基线 `e74904830cbf8e6745b2013b2888e38984ccf96d`；启动 `f75e799`，实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；[PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Merged，merge `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`）。
+- 1.13 保持待审查；已有 PC 品牌视觉与 tokens 进入 develop，按 TASK-024 Dependency Gate 执行；2.7 已完成不变。复用原 Header / Navigation / Logo 资产和 Avatar 外观，主系统与 PC 共享暖白、朱红、字体、边框、阴影及焦点语言；不复制 Sidebar 或菜单业务。
+- npm ci / lint / typecheck / Turbopack build / diff-check 通过，683 项 Node 回归通过；生产浏览器四尺寸五页面 20/20，Planner / Detail 的 8 组地图、右栏、底栏几何与基线一致。真实 Auth / live Mapbox Deferred。
+- 用户已于 2026-09-09 回复“验收通过”并明确授权最终合并；PR #244 已合入 develop，merge 与最终 head `22a3a9962c216e6a332dc783698f92916b79cbe2` 文件树一致。整合仅保留最新 TASK-025 文档，未改变已验收代码；Issue #242 关闭 completed。Task / Result：`docs/tasks/TASK-024-a-main-layout-header.md`、`docs/tasks/RESULT-TASK-024-a-main-layout-header.md`；视觉报告：`docs/qa/TASK-024/README.md`。
+- 其他 WBS、B 的 PC 业务与既有记录保持；本任务结束后停止，不启动 TASK-025 / WBS 3.2。
+
+## TASK-023-A Planner 开发期路线接线（2026-09-09，已合并）
+
+- Issue #234；分支 `codex/a-planner-route-integration`；基线
+  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；PR #241 已按用户
+  明确指令合并，merge `30851531b94be42703b0e9f9f69ec0f506ee5a69`。
+- TASK-022 / PR #233 合并后复验通过；Route Contract/Adapter 补齐约束、JST 与
+  分隔符防护，新增可信认证与生产 fail-closed 的受控 Route Handler。
+- Planner 仅对六个有官方证据的站点映射提供显式、可取消、会话级路线预览；结果
+  不保存、不自动改行程、不叠加 Provider geometry。679 项全仓测试、28 项路线专项、
+  lint/typecheck/build 与四尺寸浏览器 fallback 验收通过；live/真实 Mapbox Deferred。
+- 7.5 已完成；7.8 的开发期子集已合入但整体仍进行中；7.3 生产 Provider 保持待
+  确认，4.6 / 4.14 仍为进行中。
+  Task/Result：`docs/tasks/TASK-023-a-planner-route-integration.md`、
+  `docs/tasks/RESULT-TASK-023-a-planner-route-integration.md`。
+
+## WBS-5.3-B Auth User Flow（2026-09-09，验收合并完成）
+
+- 5.3 / B / #219：已完成；用户现场验收回复“通过”，并明确授权合并、更新 WBS 与拉取 develop。执行基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；初始实现 `7fd9add`，最终注册回调修复验收 `694e7e3`，整合最新 develop 后 head `b571a55ac9303c0c14b92fc3d7e0a6742d2e68bb`。1.23 / 8.3 已完成状态不变。
+- 四个 Auth 页面、真实核心调用、可信 Personal Center 保护、当前 Session 退出与注册/重置反馈已验收。此前真实 Chromium / Edge 回调专项各 50/50；本轮整合全仓 Node 651/651、lint/typecheck/build 与客户端 Secret 检查通过。27 份格式失败与整合前 develop 完全一致，未越界修复。本轮 WSL Docker 集成不可用，未声称重跑真实 Auth；Auth 源码与已验收版本完全一致。外部 OAuth/SMS/email delivery、真机键盘、Legal 10.6 仍 Deferred。
+- Task：`docs/tasks/TASK-WBS-5.3-b-auth-user-flow.md`；Result：`docs/tasks/RESULT-WBS-5.3-b-auth-user-flow.md`。[PR #222](https://github.com/kanzakimy0/TravelAssist/pull/222) 已合并，merge `b1066abaaaed8e8b8aaa6dbacf39c041c9e776ac`，合并树与整合验收 head 一致；Issue #219 Closed / completed。仅保留双方 WBS 记录解决文档冲突，A 的 Planner/Task/Result 未被重写。不开展 3.4 / 5.15 / 5.21 或其他 Task。以下 Auth/UI 未启动或待审查表述为历史，以本节和当前 5.3 行为准。
+
 ## TASK-PLANNER-AUDIT-A 七项审计修复（2026-09-08）
 
 - 用户批准修复 A 范围审计的全部七项确认问题；Issue [#223](https://github.com/kanzakimy0/TravelAssist/issues/223)。基线 `18afee5f02ed45505b81636f7b25b568270b2bf9`；分支 `codex/a-planner-audit-fixes`。
@@ -497,7 +575,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
 | TASK-013.3.1-A | 2.16 | A | 阻塞 / Partial（版本修复已合并；最终补证未完成） | #194 / #189 | `docs/tasks/TASK-013.3.1-a-japan-destination-evidence-closure.md` | `feature/a-japan-destination-evidence-closure` | `1daafbc`（实现）；基线 `3ad6271` | [#199](https://github.com/kanzakimy0/TravelAssist/pull/199) Merged `fba4086` / Partial |
-| TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 未开始 / 任务已定义 | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract`（计划） | PENDING（未实现） | PENDING（B实现PR未创建） |
+| TASK-WBS-4.20-B | 4.20（规划4.21–4.24） | B | 待审查（仅契约设计） | #201 | `docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md` | `feature/b-travelassist-engine-contract` | PENDING（等待提交） | PENDING（Draft PR 待创建） |
 | TASK-PLANNER-INTEGRATION-A | 4.37/4.38/4.40/4.41；7.12 | A | 已完成（UI/本地Mock） | #203 | `docs/tasks/TASK-planner-local-integration.md` | `codex/planner-local-integration-20260908` | `0006814`（实现；后续仅追踪同步） | [#204](https://github.com/kanzakimy0/TravelAssist/pull/204) Merged；随#211整合验收，561测试通过 |
 | TASK-TRIP-PREPARATION-A | 4.42–4.45 | A | 已完成（本地Mock） | #205 | `docs/tasks/TASK-trip-preparation.md` | `codex/trip-completion-flight-workspace` | `8e4a497`；整合 `13a316a` | #206 / #211 Merged |
 | TASK-PLANNER-TRACK-A | 4.46 | A | 已完成（本地Mock） | #210 | `docs/tasks/TASK-planner-track-actions.md` | `codex/planner-independent-tracks-plan-actions` | `5879444`；整合 `7c4bcbe`；合入 `13a316a` | #211 Merged |
@@ -540,6 +618,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 >
 > TASK-014-B / WBS 1.10 于 2026-09-07 由用户明确改派给 B。该单项例外只改变 WBS 1.10 的 Owner，不重写 v0.4 的长期“Main Travel System 默认归 A”规则。WBS 1.10 为设计规格项，由 ChatGPT 直接完成，不需要 Codex；主设计 PR #163 已被仓库自动化合并，但在用户验收前保持 `待审查`。
+
+> TASK-008.3 本地视觉补充（2026-09-05）：用户冻结 75% / 25% 与底栏高度，要求其余视觉向新提供概念图靠齐。补充已实现，66 项测试及五尺寸生产 Mapbox / fallback 验收通过；仍为本地未提交 / 未推送改动，未进入 PR #85，不变更已合并状态。详见 [视觉补充记录](../qa/planner-concept-refinement/README.md)。
 
 ### TASK-008.1 执行记录（2026-09-05）
 
@@ -634,8 +714,9 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
-| 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 未开始 |
-| 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 未开始 |
+| 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
+| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 已完成 |
+| 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
@@ -652,7 +733,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.3    | 景点 Pin 组件                 | A      | P1     | 4.2,1.12     | 已完成 |
 | 4.4    | 住宿区域覆盖层                | A      | P1     | 4.2,1.12     | 已完成 |
 | 4.5    | 餐饮区域覆盖层                | A      | P1     | 4.2,1.12     | 已完成 |
-| 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中 |
+| 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中（TASK-023 开发期查询子集已合入） |
 | 4.7    | 交通方式视觉显示              | A      | P0     | 4.6          | 已完成（本地交通分类视觉；非实时路线API） |
 | 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 已完成 |
 | 4.9    | 时间轴景点卡片                | A      | P1     | 4.8          | 已完成 |
@@ -660,7 +741,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.11   | 时间轴餐饮段                  | A      | P1     | 4.8          | 已完成 |
 | 4.12   | 时间轴住宿段                  | A      | P1     | 4.8          | 已完成 |
 | 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 已完成 |
-| 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中 |
+| 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中（TASK-023 请求隔离子集已合入） |
 | 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 进行中 |
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 已完成（#215 / #216；负责人批准的 v1.0 公开契约基线） |
@@ -700,7 +781,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 未开始（#201，任务已定义） |
+| 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 待审查（#201；仅契约设计，未冻结） |
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 未开始 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 未开始（前置未满足） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 未开始 |
@@ -716,7 +797,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | --------------------------------------------- | ------ | ------ | -------- | ------ |
 | 5.1    | Personal Center Shell / Navigation            | B      | P0     | 1.22,2.6 | 已完成 |
 | 5.2    | 头像菜单与个人中心跳转目标                    | B      | P0     | 5.1      | 已完成 |
-| 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 未开始 |
+| 5.3    | 登录 / 注册 / Session 用户流程                | B      | P0     | 1.23,8.3 | 已完成 |
 | 5.4    | Profile / 账户设置 UI                         | B      | P1     | 1.24,5.1 | 已完成 |
 | 5.5    | 偏好管理中心 UI                               | B      | P0     | 1.25,5.1 | 已完成 |
 | 5.6    | 同行人管理 UI                                 | B      | P1     | 1.26,5.5 | 已完成 |
@@ -766,16 +847,37 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2    | Places / POI Provider 选型    | A      | P0     | 1.10     | 未开始 |
-| 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 未开始 |
+| 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
-| 7.5    | Route Schema                  | A      | P0     | 7.3      | 未开始 |
+| 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
-| 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 未开始 |
+| 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+
+TASK-022-A tracking (2026-09-09):
+
+- 7.3 production Provider、价格、保存/再展示、Mapbox 混合展示、
+  Web/iOS/Android 与 cache/retention 权利仍待正式商务确认。
+- 7.5 Route Contract v1.0、runtime validation 与 fixtures 已由
+  TASK-022-A / PR #233 合入 develop；TASK-023-A 正在进行合并后复验。
+- 7.8 已合入 server-only 駅すぱあと Evaluation adapter/service、受限重试、
+  生产 fail-closed 与无持久化 cache boundary；TASK-023-A 正在接入 Planner
+  会话级预览，不接 AI、Engine、持久化或生产路线。
+
+TASK-023-A tracking (2026-09-09):
+
+- Issue #234；分支 `codex/a-planner-route-integration`；基线
+  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；PR #241 已合并，
+  merge `3085153`。
+- PR #233 merge `1af72af0d7151af4dd59073ee0b015a70b267064` 已确认是基线祖先；
+  Stage A 合并后复验与 Stage B Planner 开发期路线接线已验收并合入 develop。
+- 仅实现显式、可取消、会话级路线预览；不持久化 Provider 查询结果，
+  Evaluation 生产保护保持 fail-closed；live smoke 与真实 Mapbox 因隔离工作区无
+  合法凭据延期。
 
 ## 8. 数据库与认证基础
 
@@ -811,14 +913,25 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项                    | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ------------------------- | ------ | ------ | -------- | ------ |
-| 10.1   | Dev / Preview / Prod 环境 | A      | P0     | 2.5,8.1  | 未开始 |
-| 10.2   | 自动部署                  | A      | P1     | 2.8,10.1 | 未开始 |
+| 10.1   | Dev / Preview / Prod 环境 | A      | P0     | 2.5,8.1  | 部分完成（仓库内环境合同已验收并由 PR #249 合入；真实云资源隔离 Deferred） |
+| 10.2   | 自动部署                  | A      | P1     | 2.8,10.1 | 部分完成（质量门与本机 standalone 演练已验收并由 PR #249 合入；GitHub hosted rehearsal / Preview / Production Deferred） |
 | 10.3   | Domain / HTTPS            | A      | P1     | 10.1     | 未开始 |
 | 10.4   | Analytics                 | A      | P2     | 3.x      | 未开始 |
 | 10.5   | SEO / Metadata            | A      | P2     | 3.x      | 未开始 |
 | 10.6   | 隐私政策 / Terms          | A      | P1     | 5.21,8.x | 未开始 |
 | 10.7   | Beta Feedback 流程        | A      | P2     | 10.1     | 未开始 |
 | 10.8   | MVP Release Checklist     | A+B    | P0     | 9.x,10.x | 未开始 |
+
+TASK-025-A Environment Deployment tracking（2026-09-09）：
+
+- Issue #236；分支 `codex/a-environment-deployment`；基线 `5819270983b4682c76e9ed7c751be9e00612ca0a`。
+- 最终已整合并复验 `origin/develop@088f467b8ff666ddd9774f8d6b7ad351fd54f00a`；实现/演练提交 `adda614f15faa9cf713f54e73e0d90f67e3256c3`。
+- 用户于 2026-09-09 明确要求合并；PR #249 已合入 `develop`，merge commit `90c3501816d04f7613002439e5886a9e2b90bafd`。最终 Quality gate 在 `43c3a3a` 通过（run #34319436761）。
+- 仓库内 10.1 / 10.2 子项由“待审查”更新为“部分完成”；真实云环境、Preview 与 Production 没有执行，父 WBS 不误标为全部完成。
+- GitHub 默认分支实测为 `main`，而 release workflow 当前只进入 `develop`，因此 Actions API 尚不能 dispatch 托管 rehearsal；需后续获准同步默认分支后执行。
+- 10.1 仅放行本地 target；Preview / Production 因 GitHub Environments、Actions Secrets 和批准云平台均不存在而保持 fail-closed。
+- 10.2 建立无 Secret 的 PR 质量门、受信 `develop` 精确 SHA 本机 release rehearsal、standalone 制品审计、health/readiness 和回滚控制；真实 Preview / Production 未获授权。
+- 仓库另有同名 `TASK-025-A Homepage Animated Background` / Issue #246。两者按 Issue、WBS 和完整标题区分；本记录不修改其 WBS 3.2 阻塞状态。
 
 ## 11. Mobile App（Web MVP 后）
 

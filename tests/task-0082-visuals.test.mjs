@@ -66,7 +66,8 @@ test("map warmth only adjusts existing base styling, not route data", () => {
     setPaintProperty: (...a) => calls.push(a),
     setLayoutProperty: (...a) => calls.push(a),
   });
-  assert.ok(calls.some((a) => a[0] === "water" && a[2] === "#cbdcdb"));
+  assert.ok(calls.some((a) => a[0] === "water" && a[2] === "#acd4e3"));
+  assert.ok(!calls.some((a) => a[0] === "landuse")); // Keep terrain / vegetation differentiation.
   assert.ok(calls.some((a) => a[0] === "poi-label" && a[2] === "none"));
   assert.ok(!calls.some((a) => a[0] === "route-selected"));
 });
