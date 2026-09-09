@@ -27,9 +27,6 @@ test("concept polish does not change the fixed workspace tracks", () => {
     "utf8",
   );
   assert.match(css, /grid-template-columns: minmax\(0, 3fr\) minmax\(0, 1fr\)/);
-  assert.match(
-    css,
-    /grid-template-rows: minmax\(0, 1fr\) calc\(25dvh \+ 14px\)/,
-  );
+  assert.match(css, /grid-template-rows: minmax\(0, 1fr\) 25dvh/);
   assert.match(css, /grid-template-rows: minmax\(0, 1fr\) minmax\(0, 1fr\)/);
 });

@@ -17,12 +17,7 @@ import type {
 import { MapQuickCard } from "./map-quick-card";
 import { destinationArtwork } from "../data/planner-artwork";
 import { SvgPlannerArtwork } from "./planner-artwork";
-import {
-  isLandmark,
-  landmarkKey,
-  landmarkPaths,
-  travelBubbles,
-} from "../map/map-visuals";
+import { isLandmark, travelBubbles } from "../map/map-visuals";
 import styles from "../planner.module.css";
 
 export function PlannerMapShell({

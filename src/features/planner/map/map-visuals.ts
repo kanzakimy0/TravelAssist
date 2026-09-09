@@ -1,5 +1,4 @@
 import type { Map as MapboxMap } from "mapbox-gl";
-import { mapArtworkUrl, plannerArtwork } from "../data/planner-artwork";
 import type {
   Coordinates,
   MapView,
@@ -105,10 +104,7 @@ export async function installMapArtwork(
 ) {
   const { plannerArtwork, mapArtworkUrl } =
     await import("../data/planner-artwork");
-  const images = Object.entries({
-    ...landmarkPaths,
-    skytree: landmarkPaths.tower,
-  }).map(([key, path]) => [
+  const images = Object.entries(landmarkPaths).map(([key, path]) => [
     `landmark-${key}`,
     `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 64 64"><circle cx="32" cy="33" r="30" fill="#655b5018"/><circle cx="32" cy="31" r="28" fill="#e4e7dc" stroke="#fffdf8" stroke-width="4"/><g transform="translate(10 9) scale(.68)" fill="none" stroke="#63716c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="${path}"/></g></svg>`,
   ]);
