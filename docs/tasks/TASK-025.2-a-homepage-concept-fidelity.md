@@ -7,7 +7,7 @@
 - Owner: `A`
 - Responsibility: `Main Travel System / Website Entry`
 - Priority: `P1`
-- Status: `进行中`
+- Status: `待审查`
 - GitHub Issue: `#251`
 - Related Issue: `#246`（TASK-025-A / 3.2 static-first MVP）
 - Depends On: `TASK-024-A / WBS 3.1 completed`
@@ -740,7 +740,7 @@ git push --force-with-lease
 - WBS 3.4
 - WBS 3.5
 
-## Execution tracking — 2026-09-09
+## First delivery tracking — 2026-09-09 (superseded by user visual correction)
 
 - Base: `d9ee82f7515bfc09d61d07db0232a5af203c2d16`; startup `f85af85`; implementation `a965214b1845423d8ef263e499e8d4dca29f42b5`.
 - Branch: `feature/a-homepage-concept-fidelity`; Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252).
@@ -751,3 +751,9 @@ git push --force-with-lease
 ## User visual correction — 2026-09-09
 
 用户明确要求最终网页呈现所提供概念图的效果；本条覆盖第 10 节“保留当前 Poster 并记录差异”的降级选项。授权以用户本地概念图为编辑目标，去除 UI 后得到樱花/夕阳/海岸列车纯背景，并接入真实组件。原 Poster 保留归档，不再作为本次 Home 运行时背景。其余真实导航、Auth 边界及其他页面几何约束继续有效。修正期间 3.2 进行中，重新验证后待审查。
+
+## Corrected delivery tracking
+
+- User-concept background correction: `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`; existing Draft PR #252, same feature branch.
+- Runtime background: `public/media/home-concept/home-hero-sakura-sunset.webp`; source/authorization/prompt: `docs/assets/home-hero-sakura-sunset.provenance.json`.
+- 699 repository tests / 6 task tests PASS; Home 6/6; other-page geometry 20/20 unchanged. WBS 3.2 待审查，等待本次实际概念图版本的用户视觉验收。

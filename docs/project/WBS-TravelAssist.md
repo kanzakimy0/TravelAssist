@@ -1,14 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，视觉修正进行中）
+## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，修正后待审查）
 
 - 用户明确要求最终呈现其概念图效果，原灰金海岸背景不获视觉认可；本轮直接从用户提供概念图提取纯背景并接入，取代上一轮保留旧 Poster 的视觉范围。PR #252 保持 Draft。
 - Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
 - 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
 - PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
-- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；实现 `a965214b1845423d8ef263e499e8d4dca29f42b5`；Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)。
-- npm ci / lint / typecheck / build / diff-check 通过；698 项全仓测试、5 项专项通过；Home 五尺寸 + reduced-motion 6/6，其他页面几何 20/20 与最新 develop 一致。
-- 背景仍为正式海岸列车 Poster，缺少参考图樱花/粉色夕阳的差异已说明；未生成素材、伪造用户或改全局 token。Result：`docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`；证据：`docs/qa/TASK-025.2/README.md`。
+- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；首版 `a965214b1845423d8ef263e499e8d4dca29f42b5`，概念图完整视觉修正 `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`；Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)。
+- npm ci / lint / typecheck / build / diff-check 通过；699 项全仓测试、6 项专项通过；Home 五尺寸 + reduced-motion 6/6，其他页面几何 20/20 与最新 develop 一致。
+- 已从用户概念图去除 UI、局部补绘并接入樱花/粉色夕阳/海岸列车背景；正式 WebP 与来源/授权/提示词/哈希登记齐全，原 Poster 原样保留且退出首页接线。没有伪造用户或更改全局 token。Result：`docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`；证据：`docs/qa/TASK-025.2/README.md`。
 - 当前 3.2 待审查，用户本轮视觉通过并合入 develop 后才可完成；原 3.2 视频 Blocked 历史与其他工作站记录保留。
 
 
@@ -676,7 +676,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 进行中 |
+| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 待审查 |
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |

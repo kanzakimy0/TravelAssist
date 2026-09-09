@@ -2,7 +2,7 @@
 
 ## Status
 
-**待审查** — 首页概念图实装完成，等待本轮用户视觉验收与 Draft PR 审查。没有合并 PR，没有标记 WBS 3.2 已完成。
+**待审查** — 用户要求的概念图完整视觉修正已完成，等待本轮用户视觉验收与 Draft PR 审查。没有合并 PR，没有标记 WBS 3.2 已完成。
 
 ## Preflight
 
@@ -19,23 +19,24 @@
 - Issue: [#251](https://github.com/kanzakimy0/TravelAssist/issues/251)
 - Related: [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)
 - Branch: `feature/a-homepage-concept-fidelity`
-- Implementation commit: `a965214b1845423d8ef263e499e8d4dca29f42b5`
+- First delivery (superseded): `a965214b1845423d8ef263e499e8d4dca29f42b5`
+- Concept background correction: `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`
 - Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)
 - WBS 3.2: **待审查**；3.2.1 / #247 **未开始 / Deferred**。
 
 ## Concept Fidelity
 
 - Header: 复用唯一 MainHeader / BrandLogo，Home 专属暖白半透明胶囊；只在 Home 裁去同一 Logo 资产的透明留白。默认语言保持 native details，显示“中文 ⌄”。其他 Header adapters 的样式与几何不变。
-- Hero center: 内容真正居中；1672×941 下 Eyebrow 起点约 y=212，标题 y=288，CTA x=646 / y=473，宽 380 / 高 84。
+- Hero center: 内容真正居中；1672×941 下 Eyebrow 起点约 y=212，标题 y=288，CTA x=646 / y=463，宽 380 / 高 88。
 - Eyebrow: 大写、加宽字距、下方 52×3px 珊瑚短线。
 - Title: 使用共享 `--font-heading`，桌面约 92px，深墨色，移动端自然两行。
 - Subtitle: 保留“规划行程 · 对话调整”，桌面约 28px，适度字距。
 - CTA: 实际 `/start` Link，保留“让我们开始吧”；暖朱红同系渐变，白字，轻阴影；Hover 不位移，键盘 focus ring 保留。
 - User/login entry: CTA 下方暖白胶囊，复用 AccountAvatar 的“旅”，显示“游客 · 个人中心”；原 disabled 登录按钮及其说明保留。
 - AI entry: 复用原图标与交互，桌面 92px 暖白圆环，朱红内圆；Mobile 64px；面板底部安全间距随按钮调整。
-- Background/crop: 直接使用原正式 `home-hero-poster.webp`，没有新素材、视频或 CSS 假动画。Desktop 50%、Tablet 60%、Mobile 66% 水平 crop；撤除旧左侧强罩，只保留轻暖色与局部可读性雾化。
+- Background/crop: 用户明确要求概念图效果后，使用 built-in image_gen 从所提供概念图去除 UI 并局部补绘，接入 `public/media/home-concept/home-hero-sakura-sunset.webp`（1672×941，325542 bytes）。樱花、粉色夕阳、海面反光、住宅和列车构图保留；Desktop 50%、Tablet 60%、Mobile 72% 水平 crop。旧 Poster 原文件保持不变，已退出首页运行时接线。
 - 首屏: 静态导入提供自动 blur placeholder / preload。`sizes` 同时考虑 viewport 高度，避免纵屏 cover 时选中低分辨率小图再放大。
-- Scope: `src/features/home/**` 与共享 Header 的 Home 外观适配；全局 tokens、BrandLogo/AccountAvatar 实现、其他业务页面未改变。
+- Scope: Home、共享 Header 的 Home 外观适配，以及新背景必需的既有资产清单登记。全局 tokens、BrandLogo/AccountAvatar 实现、其他业务页面未改变。新增背景来源、授权、完整提示词和 SHA 见 `docs/assets/home-hero-sakura-sunset.provenance.json`。
 
 ## Auth Boundary
 
@@ -68,8 +69,8 @@
 - `npm run typecheck`: PASS。
 - `npm run build`: PASS，Next 16.3.4 Turbopack production build。
 - `npm test --if-present`: PASS / 无 test script。
-- `node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs`: **698/698 PASS**。
-- `node --import ./tests/register-route-ts.mjs --test tests/task-025-2-concept-fidelity.test.mjs`: **5/5 PASS**。
+- `node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs`: **699/699 PASS**。
+- `node --import ./tests/register-route-ts.mjs --test tests/task-025-2-concept-fidelity.test.mjs`: **6/6 PASS**。
 - `git diff --check`: PASS。
 - 浏览器: Microsoft Edge / Chromium，真实本机 production build；五 viewport + reduced-motion，不等同真机测试。
 
@@ -85,8 +86,10 @@
 
 - Historical Blocked: 旧 TASK-025 Result 中“缺少授权视频 → 阻塞”保留原文，未删除或改写历史。
 - Current Scope Revision: 视频已移至 3.2.1 / TASK-025.1 / #247；缺少视频不再阻塞当前静态 MVP。
-- Current Result: 本次静态概念版式已实现，等待用户视觉确认及 PR 合并。
-- 正式 Poster 和参考图同为海边列车方向，但素材不同：没有樱花前景、夕阳光斑与粉色天空。按 Task 使用已批准原图，没有把带 UI 概念截图作为背景，没有生成/下载替代素材。字体与 Logo 继续遵守共享品牌，游客形态不伪装概念图的已登录人像。
+- Current Result: 概念图背景与真实组件已共同接入，手机裁切已校准，等待用户视觉确认及 PR 合并。
+- 第一版保留旧 Poster 的交付未获用户视觉认可，本版已按其明确要求接入概念图纯背景；不再以“记录背景差异”代替实现。此前版本保留在 Git 历史。图片使用 built-in image_gen 去除界面及局部补绘；原 UI 遮挡处无法声称逐像素恢复，但主体构图及樱花夕阳视觉已保留。
+- 输入概念图由用户提供并明确要求项目使用；本地同名首页 ZIP 为空，因此以实际 PNG 为编辑源。生成模式及完整提示词已记录；没有联网随机下载。
+- 真实游客入口继续复用 AccountAvatar，未伪造参考图 Yuki 或已登录人像。
 - live Auth / Map Provider、正式视频、WBS 3.3 / 3.4 / 3.5 / 3.7 均未实施。
 - 本机预览使用 `next start`；当前仓库 `output: standalone` 会输出运行方式提示。本次是本地 QA，没有部署或声称完成云发布。
 
