@@ -2,7 +2,7 @@
 
 ## TASK-034-A / WBS 0.6 Definition of Done（2026-09-10，待审查）
 
-- Issue #264；Owner A / Project Governance；基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；分支 `docs/a-definition-of-done`；Draft PR 待创建。
+- Issue #264；Owner A / Project Governance；基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；分支 `docs/a-definition-of-done`；提交 `fe4d497`；Draft PR [#269](https://github.com/kanzakimy0/TravelAssist/pull/269)。
 - 已建立全仓统一 DoD 候选与可复用验收清单，覆盖状态、设计、前端、Contract、DB/RLS、Provider、AI、安全、性能/观测、浏览器/无障碍、CI/部署、证据、基线债务及 Deferred/Partial/Blocked 规则。
 - 本任务不修改运行时或 workflow 权限，不批量改写历史状态。WBS 0.6 仅更新为 `待审查`；PR 合入 develop 且用户验收后才可标记 `已完成`。
 

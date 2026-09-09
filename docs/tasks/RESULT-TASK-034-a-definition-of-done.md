@@ -32,8 +32,8 @@ Reviewed current contribution and task-tracking rules, WBS lifecycle semantics, 
 
 ## Tracking
 
-- Commit: pending
-- Draft PR: pending
+- Commit: `fe4d497e6fc9efb191db339c6240d798f109f98d`
+- Draft PR: [#269](https://github.com/kanzakimy0/TravelAssist/pull/269) (Open / Draft)
 - Issue: #264 (Open)
 - WBS 0.6: `待审查`
 
