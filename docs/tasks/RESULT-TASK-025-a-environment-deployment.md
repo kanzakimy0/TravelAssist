@@ -17,8 +17,9 @@ WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、�
 - Evidence: `d247037`
 - Develop integration: `4f28cfb`
 - Server-only boundary fix and final rehearsal: `adda614f15faa9cf713f54e73e0d90f67e3256c3`
-- Final tracking commit: PENDING
-- Draft PR: PENDING
+- Commits through validation: `5185de7`, `d247037`, `4f28cfb`, `adda614`, `1a82ecf`
+- Final PR tracking commit: PENDING（见 PR head）
+- Draft PR: #249 — `codex/a-environment-deployment` → `develop`
 
 ## Conflict audit
 

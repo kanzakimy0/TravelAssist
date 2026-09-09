@@ -11,8 +11,8 @@
 - Branch: `codex/a-environment-deployment`
 - Spec Branch: `task/a-route-observability-deployment-20260909`
 - Depends On: 10.1 依赖 2.5 / 8.1；10.2 依赖 2.8 / 10.1 的实际可用基线
-- Commits: `5185de7`, `d247037`, `4f28cfb`, `adda614`（最终 tracking 提交见 PR）
-- Pull Request: PENDING
+- Commits: `5185de7`, `d247037`, `4f28cfb`, `adda614`, `1a82ecf`（最终 tracking 提交见 PR）
+- Pull Request: #249（Draft）
 - Authoring Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Implementation Base: `5819270983b4682c76e9ed7c751be9e00612ca0a`
 - Final Integrated Develop: `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`

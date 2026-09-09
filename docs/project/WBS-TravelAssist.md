@@ -874,6 +874,7 @@ TASK-025-A Environment Deployment tracking（2026-09-09）：
 
 - Issue #236；分支 `codex/a-environment-deployment`；基线 `5819270983b4682c76e9ed7c751be9e00612ca0a`。
 - 最终已整合并复验 `origin/develop@088f467b8ff666ddd9774f8d6b7ad351fd54f00a`；实现/演练提交 `adda614f15faa9cf713f54e73e0d90f67e3256c3`。
+- Draft PR #249 → `develop`；保持 Draft，不自动合并，Issue #236 保持 Open。
 - 10.1 仅放行本地 target；Preview / Production 因 GitHub Environments、Actions Secrets 和批准云平台均不存在而保持 fail-closed。
 - 10.2 建立无 Secret 的 PR 质量门、受信 `develop` 精确 SHA 本机 release rehearsal、standalone 制品审计、health/readiness 和回滚控制；真实 Preview / Production 未获授权。
 - 仓库另有同名 `TASK-025-A Homepage Animated Background` / Issue #246。两者按 Issue、WBS 和完整标题区分；本记录不修改其 WBS 3.2 阻塞状态。
