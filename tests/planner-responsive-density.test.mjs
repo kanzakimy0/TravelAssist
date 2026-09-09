@@ -58,3 +58,13 @@ test("map-to-sidebar transition cannot intercept map interaction", async () => {
     /\.toolbarToggle\[aria-expanded="true"\] svg\s*\{[^}]*rotate\(-90deg\)/,
   );
 });
+
+test("right panel accessibility title does not consume a quick-settings row", async () => {
+  const panel = await source("components/planner-right-panel.tsx");
+  const css = await source("planner.module.css");
+  assert.match(panel, /className=\{styles\.srOnly\}/);
+  assert.match(
+    css,
+    /\.srOnly\s*\{[^}]*position: absolute;[^}]*width: 1px;[^}]*height: 1px;[^}]*overflow: hidden;/s,
+  );
+});
