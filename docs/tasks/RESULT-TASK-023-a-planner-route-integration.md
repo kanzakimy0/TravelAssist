@@ -12,8 +12,8 @@
 - Branch: `codex/a-planner-route-integration`
 - Base / final develop: `5383501192359abbd06c4585311d0362e9e7dbea`
 - TASK-022 merge: PR #233 / `1af72af0d7151af4dd59073ee0b015a70b267064`
-- Commit: PENDING
-- Draft PR: PENDING
+- Implementation commit: `98b5404`
+- Draft PR: #241 — https://github.com/kanzakimy0/TravelAssist/pull/241
 
 ## Prerequisite And Conflict Audit
 
@@ -121,4 +121,5 @@
 
 ## Stop
 
-未合并 Draft PR，未转 Ready，未执行 TASK-024 或其他后续 Task。
+Draft PR #241 保持 Draft / Open，未合并、未转 Ready，未执行 TASK-024 或其他后续
+Task。

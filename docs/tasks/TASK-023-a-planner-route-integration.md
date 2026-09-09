@@ -12,8 +12,8 @@
 - Spec Branch: `task/a-route-observability-deployment-20260909`
 - Depends On: TASK-022-A / PR #233 已合并；执行时复检
 - Base Commit: `5383501192359abbd06c4585311d0362e9e7dbea`
-- Commit: PENDING（提交后补）
-- Pull Request: PENDING（创建后补）
+- Commit: `98b5404`（实现提交）
+- Pull Request: #241（Draft）
 - Authoring Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Result File: `docs/tasks/RESULT-TASK-023-a-planner-route-integration.md`
 

@@ -3,7 +3,8 @@
 ## TASK-023-A Planner 开发期路线接线（2026-09-09）
 
 - Issue #234；分支 `codex/a-planner-route-integration`；基线
-  `5383501192359abbd06c4585311d0362e9e7dbea`；实现完成，等待 Draft PR 审查。
+  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；Draft PR #241，等待
+  审查。
 - TASK-022 / PR #233 合并后复验通过；Route Contract/Adapter 补齐约束、JST 与
   分隔符防护，新增可信认证与生产 fail-closed 的受控 Route Handler。
 - Planner 仅对六个有官方证据的站点映射提供显式、可取消、会话级路线预览；结果
@@ -802,7 +803,7 @@ TASK-022-A tracking (2026-09-09):
 TASK-023-A tracking (2026-09-09):
 
 - Issue #234；分支 `codex/a-planner-route-integration`；基线
-  `5383501192359abbd06c4585311d0362e9e7dbea`。
+  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；Draft PR #241。
 - PR #233 merge `1af72af0d7151af4dd59073ee0b015a70b267064` 已确认是基线祖先；
   Stage A 合并后复验与 Stage B Planner 开发期路线接线已实现，等待 Draft PR
   审查。
