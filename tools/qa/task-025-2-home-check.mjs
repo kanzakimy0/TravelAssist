@@ -213,6 +213,15 @@ try {
       await close.evaluate((el) => el === document.activeElement),
       true,
     );
+    await page
+      .locator("#home-ai-conversation-panel")
+      .evaluate(async (element) => {
+        await Promise.all(
+          element
+            .getAnimations({ subtree: true })
+            .map((animation) => animation.finished.catch(() => {})),
+        );
+      });
     const panel = await page
       .locator("#home-ai-conversation-panel")
       .boundingBox();
@@ -262,7 +271,11 @@ try {
     releaseImage = resolve;
   });
   await slowPage.route("**/_next/image?*", async (route) => {
-    if (decodeURIComponent(route.request().url()).includes("home-hero-poster"))
+    if (
+      decodeURIComponent(route.request().url()).includes(
+        "home-hero-sakura-sunset",
+      )
+    )
       await imageGate;
     await route.continue();
   });
@@ -306,7 +319,9 @@ try {
     newErrors,
     requests,
     evidence,
-    posterBytes: (await stat("public/media/home/home-hero-poster.webp")).size,
+    posterBytes: (
+      await stat("public/media/home-concept/home-hero-sakura-sunset.webp")
+    ).size,
   };
   await writeFile(
     out + "/browser-report.json",

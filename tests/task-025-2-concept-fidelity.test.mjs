@@ -143,3 +143,36 @@ test("skip link focuses the existing main without a hash-only history entry", ()
     else globalThis.document = original;
   }
 });
+
+test("runtime uses the user-concept background with traceable approval and intact legacy poster", () => {
+  const manifest = JSON.parse(
+    readFileSync(
+      resolve(root, "docs/assets/catalog/asset-manifest.v1.json"),
+      "utf8",
+    ),
+  );
+  const asset = manifest.assets.find(
+    (a) => a.id === "home.global.background.sakura-sunset.concept.001",
+  );
+  assert.equal(asset.status, "approved");
+  assert.equal(asset.authenticity, "illustrative");
+  assert.equal(asset.source.type, "ai_generated");
+  assert.equal(asset.presentation.decorative, true);
+  assert.equal(asset.presentation.alt, "");
+  assert.equal(asset.rights.derivativesAllowed, true);
+  const source = readFileSync(
+    resolve(root, "src/features/home/components/immersive-background.tsx"),
+    "utf8",
+  );
+  assert.ok(source.includes(asset.runtime.path));
+  assert.doesNotMatch(source, /home-hero-poster/);
+  assert.equal(
+    require("node:crypto")
+      .createHash("sha256")
+      .update(
+        readFileSync(resolve(root, "public/media/home/home-hero-poster.webp")),
+      )
+      .digest("hex"),
+    "7464b34430b89ea9c010242bed05156e374aff347d1d7875d5bedbb57c4a5466",
+  );
+});
