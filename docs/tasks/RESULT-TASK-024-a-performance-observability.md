@@ -12,8 +12,8 @@ Partially Completed / 待验收。
 - WBS: 9.11
 - Implementation Base: `e74904830cbf8e6745b2013b2888e38984ccf96d`
 - Branch: `codex/a-performance-observability`
-- Implementation Commit: `03bd72a`
-- Draft PR: PENDING
+- Commits: `03bd72a`, `6ae71d0`（最终 tracking 提交见 PR）
+- Draft PR: #245 — `codex/a-performance-observability` → `develop`
 
 ## Conflict Audit
 

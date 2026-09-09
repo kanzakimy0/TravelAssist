@@ -11,8 +11,8 @@
 - Branch: `codex/a-performance-observability`
 - Spec Branch: `task/a-route-observability-deployment-20260909`
 - Depends On: 2.11 Error / Logging规范；已核验为规范存在、完整运行时缺失
-- Commit: `03bd72a`（核心实现；最终 QA / tracking 提交待同步）
-- Pull Request: PENDING（实现 PR）
+- Commits: `03bd72a`, `6ae71d0`（最终 tracking 提交见 PR）
+- Pull Request: #245（Draft）
 - Authoring Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Implementation Base: `e74904830cbf8e6745b2013b2888e38984ccf96d`
 - Result File: `docs/tasks/RESULT-TASK-024-a-performance-observability.md`

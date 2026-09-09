@@ -847,7 +847,7 @@ TASK-024-A tracking（2026-09-09）：
 - Base: `e74904830cbf8e6745b2013b2888e38984ccf96d`
 - Branch: `codex/a-performance-observability`
 - Issue: #235（Open，等待验收）
-- Draft PR: PENDING
+- Draft PR: #245
 - 本地事件 allowlist、客户端/服务端错误入口、Web Vitals、队列保护、production 性能基线、预算门、实际故障注入与真实 Mapbox 条件样本已完成。
 - 外部 Collector、真实用户 p75、报警送达和生产部署不在本 Task 已完成子集内，状态保持 Deferred；不得据此宣称线上监控已就绪。
 
