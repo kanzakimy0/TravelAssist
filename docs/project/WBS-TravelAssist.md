@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
+
+- 3.2 / A / Issue [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)：**阻塞**；原因：**缺少已授权首页动态背景 WebM / MP4 素材**。
+- 执行基线 `83a25bc3a95b8e6b323f844cb8d392ae4d0cb4a7`。PR #244 已合并，3.1 / 1.16 已完成，Integration Gate PASS；Asset Gate FAIL，最新 develop 与本地首页媒体目录仅有 161854-byte Poster，无 WebM / MP4 或对应视频授权。
+- 仅审计运行时与素材登记，保持 TASK-024 首页视觉和所有实现不变；仅文档分支 `codex/a-homepage-background-asset-gate`，正常快进同步阻塞记录至 develop。实现分支未创建，无实现 Draft PR；Issue #246 保持 Open。
+- Task / Result：`docs/tasks/TASK-025-a-homepage-animated-background.md`、`docs/tasks/RESULT-TASK-025-a-homepage-animated-background.md`。全套测试与动态浏览器 QA 未启动，不把 Poster + 条件 video 当作完成。素材到位后重新过 Gate；未开始 WBS 3.3 或其他任务。
+
 ## TASK-024-A Global Main Layout / Header（2026-09-09，验收合并完成）
 
 - 3.1 / A / Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)：用户视觉验收通过并授权合并，**已完成**。分支 `feature/a-main-layout-header`；执行基线 `e74904830cbf8e6745b2013b2888e38984ccf96d`；启动 `f75e799`，实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；[PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Merged，merge `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`）。
@@ -657,7 +664,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 未开始 |
+| 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 阻塞 |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |

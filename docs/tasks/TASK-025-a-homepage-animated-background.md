@@ -417,7 +417,7 @@ Result 必须记录：
 必须真实验证：
 
 ```css
-prefers-reduced-motion: reduce
+prefers-reduced-motion: reduce;
 ```
 
 结果必须为：
@@ -676,9 +676,9 @@ Asset Gate 通过后的完整交付应包括：
 
 完整通过必须同时满足：
 
-- [ ] 从最新 `origin/develop` 启动。
-- [ ] TASK-024-A 已合入 develop；无重叠 Draft 实现冲突。
-- [ ] 1.16 真实状态满足 WBS 依赖。
+- [x] 从最新 `origin/develop` 启动。
+- [x] TASK-024-A 已合入 develop；无重叠 Draft 实现冲突。
+- [x] 1.16 真实状态满足 WBS 依赖。
 - [ ] WebM / MP4 有明确、可审计的项目使用授权来源。
 - [ ] 当前正式 Poster 继续作为稳定 fallback。
 - [ ] Desktop 实际播放慢动态背景。
@@ -733,12 +733,14 @@ Integration / Asset Gate 失败 → 阻塞
 ## Status
 
 ## Preflight
+
 - execution base:
 - TASK-024 merged:
 - WBS 1.16:
 - working tree safety:
 
 ## Asset Gate
+
 - poster:
 - webm:
 - mp4:
@@ -746,6 +748,7 @@ Integration / Asset Gate 失败 → 阻塞
 - gate result:
 
 ## Tracking
+
 - WBS 3.2:
 - Issue: #246
 - Branch:
@@ -754,6 +757,7 @@ Integration / Asset Gate 失败 → 阻塞
 - Result file:
 
 ## Existing Runtime Audit
+
 - PosterFallback:
 - VideoBackground:
 - WebM / MP4:
@@ -762,6 +766,7 @@ Integration / Asset Gate 失败 → 阻塞
 - reduced motion:
 
 ## Production Integration
+
 - video playback:
 - poster continuity:
 - overlay / readability:
@@ -769,6 +774,7 @@ Integration / Asset Gate 失败 → 阻塞
 - file sizes:
 
 ## Visual / Browser QA
+
 - 1440×900:
 - 1024×768:
 - 390×844:
@@ -778,6 +784,7 @@ Integration / Asset Gate 失败 → 阻塞
 - visual evidence:
 
 ## Validation
+
 - npm ci:
 - lint:
 - typecheck:
@@ -789,9 +796,11 @@ Integration / Asset Gate 失败 → 阻塞
 ## Problems / Deferred
 
 ## WBS Updated
+
 Yes / No
 
 ## Next Task
+
 Do not start automatically.
 ```
 
@@ -802,3 +811,12 @@ Do not start automatically.
 完成 TASK-025-A 后停止。
 
 **不要自动开始 WBS 3.3 / 下一 Task。**
+
+# 29. Execution Gate Result（2026-09-09）
+
+- 状态：**Blocked / WBS 3.2 = 阻塞**。Reason：**缺少已授权首页动态背景 WebM / MP4 素材。**
+- 执行基线 `83a25bc3a95b8e6b323f844cb8d392ae4d0cb4a7`；PR #244 已合并（`1d1e3aa`），WBS 3.1 / 1.16 均已完成，Integration Gate PASS。
+- Asset Gate FAIL：最新 develop 与本地 public/media/home 仅有 161854-byte Poster；目标 WebM / MP4 不存在，无对应可审计视频授权。现有 Poster 的 legacy rights 登记保持，不视作新视频授权。
+- 仅文档分支 `codex/a-homepage-background-asset-gate`；未创建实现分支或实现 PR。按 §24 / §26 将阻塞记录正常快进同步 develop，Issue #246 保持 Open。
+- [Result](RESULT-TASK-025-a-homepage-animated-background.md) 记录 provenance 审计、运行时资源加载待验证项和素材交付规格。未改变已验收首页，未把已有条件 video 当成完成；实现、全套测试、浏览器动态验收均未启动。
+- 提供授权 WebM / MP4 后，从届时最新 develop 重新过 Gate。到此停止，不自动开始 3.3。
