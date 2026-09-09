@@ -4,14 +4,15 @@
 
 - Task ID: TASK-WBS-4.20-B
 - Owner: B（2026-09-08 用户明确指定的 Engine 单项例外）
-- Status: 待开始
+- Status: 待验收
 - WBS: 4.20；后续规划 4.21–4.24
 - GitHub Issue: [#201](https://github.com/kanzakimy0/TravelAssist/issues/201)
-- Branch: feature/b-travelassist-engine-contract（尚未创建）
+- Branch: `feature/b-travelassist-engine-contract`
 - Depends On: 已合入的 0.9 Contract 交接基线；发布前须 A/B 核对 4.16 / 4.17 / 8.5
-- Commit: PENDING（实现尚未开始；本文件仅任务定义）
-- Pull Request: PENDING（B 的契约设计交付 PR 尚未创建）
+- Commit: PENDING（契约设计已完成，等待提交）
+- Pull Request: PENDING（Draft PR 尚未创建）
 - Authoring Base: `2d9734731dcece9f90db1779da06a7a3c9e9bab7`
+- Execution Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 
 ## 1. 定义与目标
 
@@ -61,7 +62,7 @@ B 负责 Engine 工作包，A 保留 Planner / Detail UI、地图 / Route Provid
 
 | WBS  | Owner | 内容                                        | 前置                         | 当前状态            |
 | ---- | ----- | ------------------------------------------- | ---------------------------- | ------------------- |
-| 4.20 | B     | Engine Contract、操作白名单、错误与权限模型 | 0.9 已合入基线；A/B 合约核对 | 未开始              |
+| 4.20 | B     | Engine Contract、操作白名单、错误与权限模型 | 0.9 已合入基线；A/B 合约核对 | 待验收              |
 | 4.21 | B     | 纯规则校验、约束冲突和影响预览              | 4.20、4.17                   | 未开始              |
 | 4.22 | B     | 原子应用、版本、幂等、权限及审计            | 4.21、8.1、8.3、8.4、8.5     | 未开始 / 前置未满足 |
 | 4.23 | B     | 运行事件、局部重算与回滚执行契约            | 4.22、7.5                    | 未开始              |
@@ -97,3 +98,9 @@ B 负责 Engine 工作包，A 保留 Planner / Detail UI、地图 / Route Provid
 ## Result Format
 
 Status / Tracking / Contract / Ownership / Dependencies / Validation / Files Changed / WBS Update / Commit / Draft PR / Open Decisions / Non-goals。
+
+## 9. Current Delivery
+
+- Contract: `docs/architecture/travelassist-engine-contract.md`
+- Result: `docs/tasks/RESULT-WBS-4.20-b-travelassist-engine-contract.md`
+- Scope status: 4.20 待验收；4.21–4.24 未启动
