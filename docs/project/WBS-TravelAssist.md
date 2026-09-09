@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-035-A / WBS 9.1 测试框架与全局基线（2026-09-10，待审查）
+
+- Owner A / Shared QA；Issue [#265](https://github.com/kanzakimy0/TravelAssist/issues/265)；分支 `codex/a-test-baseline-freeze`；执行基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`。
+- 已冻结 Node、Contract、Integration、Local DB/Auth runtime、Browser/E2E、Live Provider 的统一分层，补齐 `npm test`、clean-checkout `next typegen` 与共享 Edge smoke；Quality Gate 改用唯一 Node 入口，未安装第二套测试框架。
+- 分支实测 Node baseline 713 项：711 PASS、2 FAIL；两项均为 develop 既有 Asset catalog stale（4 个已移除 design SVG 仍在 inventory / verify-only 非 no-op），保持可见并移交 Asset owner，不以 skip/quarantine 伪装通过。TASK-035 专项 3/3、Route 28/28、DB static 13/13、Local Profile 25/25、Local Auth 16/16、Edge browser 8/8、lint/typecheck/build/deploy local checks 通过。
+- 全仓 format 仍有 31 份既有文档 debt；CI deploy scope 与本 Task 改动格式通过。Security PR #231 与 Observability PR #245 仍为 Open Draft，未复制或预合并；live Ekiworld/Mapbox/OAuth/SMS、Safari/移动真机、云部署按分类 Deferred。
+- WBS 9.1 更新为 **待审查**；实现 `91cd32a`；Draft PR [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) 与 Issue 保持 Review，不自动合并。完整基线：`docs/qa/test-baseline.md`；Result：`docs/tasks/RESULT-TASK-035-a-test-baseline-freeze.md`。
+
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
 - 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
@@ -576,6 +584,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |
+| TASK-035-A | 9.1 | A / Shared QA | 待审查（测试基线已冻结；2 项既有 Asset failure 明示） | #265 | `docs/tasks/TASK-035-a-test-baseline-freeze.md` / `docs/tasks/RESULT-TASK-035-a-test-baseline-freeze.md` | `codex/a-test-baseline-freeze` | `91cd32a`（实现） | [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) Open / Draft |
 
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
@@ -889,7 +898,7 @@ TASK-023-A tracking (2026-09-09):
 
 | WBS ID | 工作项                                  | 负责人 | 优先级 | 依赖            | 状态   |
 | ------ | --------------------------------------- | ------ | ------ | --------------- | ------ |
-| 9.1    | 测试框架与全局基线                      | A      | P1     | 2.9,2.10        | 未开始 |
+| 9.1    | 测试框架与全局基线                      | A      | P1     | 2.9,2.10        | 待审查（TASK-035-A；全局分层/入口已冻结，2 项既有 Asset failure 明示） |
 | 9.2    | Planner / Map / Route 单元与集成测试    | A      | P1     | 4.x,7.x         | 未开始 |
 | 9.3    | AI 集成测试                             | A      | P1     | 6.x             | 未开始 |
 | 9.4    | 主系统 E2E                              | A      | P1     | 3.x,4.x,6.x,7.x | 未开始 |
