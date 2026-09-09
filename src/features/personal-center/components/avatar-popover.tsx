@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AccountAvatar } from "@/components/ui/account-avatar";
 import Link from "next/link";
 import { useRef, useState, type ComponentPropsWithRef } from "react";
 import { authRequest } from "@/features/auth/auth-client";
@@ -48,15 +48,7 @@ export function AvatarPopover({ onNavigate, ...props }: AvatarPopoverProps) {
   return (
     <div {...props} popover="auto" className={styles.avatarPopover}>
       <div className={styles.avatarPopoverIdentity}>
-        <span className={styles.smallAvatar} aria-hidden="true">
-          <Image
-            src={mockPersonalUser.avatar}
-            alt=""
-            fill
-            sizes="38px"
-            className={styles.identityPhoto}
-          />
-        </span>
+        <AccountAvatar src={mockPersonalUser.avatar} />
         <div className={styles.userText}>
           <strong>旅行者</strong>
           <span>已登录 · 头像与资料为演示</span>

@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "deploy:validate": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs",
+    "deploy:validate:local": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
+    "deploy:build:local": "node --import ./tests/register-route-ts.mjs tools/deploy/build-artifact.mjs",
+    "deploy:verify-artifact": "node --import ./tests/register-route-ts.mjs tools/deploy/verify-artifact.mjs",
+    "deploy:rehearse:local": "node --import ./tests/register-route-ts.mjs tools/deploy/rehearse.mjs",
+    "test:deployment": "node --import ./tests/register-route-ts.mjs --test tests/task-025-environment-deployment.test.mjs",
+    "format:check:deploy": "prettier --check \"src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tools/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tests/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \".github/**/*.{yml,yaml,md}\" \"docs/deployment/**/*.md\" \"*.{ts,mjs,json}\"",
     "db:start": "node tools/db/local.mjs start",
     "db:stop": "node tools/db/local.mjs stop",
     "db:status": "node tools/db/local.mjs status",

@@ -1,19 +1,18 @@
 .shell {
-  /* Provisional Personal Center values from WBS 1.21/1.22, scoped to this Shell. */
-  --pc-bg-canvas: #faf6ef;
+  /* Compatibility aliases preserve B-owned consumers; values are shared globally. */
+  --pc-bg-canvas: var(--color-bg-canvas);
   --pc-bg-sidebar: #fcf8f1;
-  --pc-bg-card: #fffcf7;
-  --pc-accent-primary: #a74739;
-  --pc-accent-soft: #f9e7e0;
-  --pc-text-primary: #383632;
-  --pc-text-secondary: #70665f;
-  --pc-border-subtle: #e9dcd1;
+  --pc-bg-card: var(--color-bg-elevated);
+  --pc-accent-primary: var(--color-accent-primary);
+  --pc-accent-soft: var(--color-bg-muted);
+  --pc-text-primary: var(--color-text-primary);
+  --pc-text-secondary: var(--color-text-secondary);
+  --pc-border-subtle: var(--color-border-subtle);
   --pc-nav-active-bg: #fae9e2;
-  --pc-nav-active-text: #a14336;
-  --pc-focus-ring: #954439;
-  --pc-shadow: 0 12px 36px rgb(113 78 59 / 6%);
-  --pc-font-heading:
-    "Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "SimSun", serif;
+  --pc-nav-active-text: var(--color-accent-primary);
+  --pc-focus-ring: var(--color-focus-ring);
+  --pc-shadow: var(--elevation-card);
+  --pc-font-heading: var(--font-heading);
 
   display: grid;
   grid-template-columns: clamp(13rem, 17.5vw, 21rem) minmax(0, 1fr);
@@ -161,7 +160,7 @@
   border: 1px solid #e3c6b6;
   border-radius: 50%;
   background: linear-gradient(145deg, #f7ddcb, #edd0c9);
-  color: #704c40;
+  color: var(--color-accent-primary);
   font-family: var(--pc-font-heading);
 }
 
@@ -346,7 +345,7 @@
   border-radius: 18px;
   color: var(--pc-text-primary);
   background: var(--pc-bg-card);
-  box-shadow: 0 12px 32px rgb(113 78 59 / 14%);
+  box-shadow: var(--elevation-popover);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -624,7 +623,7 @@
   border: 1px solid transparent;
   border-radius: 14px;
   color: #fffaf6;
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
   font-size: 14px;
   font-weight: 600;
 }
@@ -693,7 +692,7 @@
 }
 
 .tripCard:hover {
-  border-color: #c99d87;
+  border-color: var(--color-accent-primary);
   box-shadow: 0 12px 30px rgb(113 78 59 / 12%);
 }
 
@@ -787,7 +786,7 @@
 }
 
 a.featureCard:hover {
-  border-color: #c99d87;
+  border-color: var(--color-accent-primary);
   background: var(--pc-bg-card);
 }
 
@@ -855,7 +854,7 @@ a.featureCard:hover {
   height: 40px;
   flex: 0 0 auto;
   border-radius: 50%;
-  color: var(--pc-accent-primary, #a74739);
+  color: var(--pc-accent-primary);
   background: var(--pc-accent-soft, #f9e7e0);
   font-weight: 700;
 }
@@ -892,9 +891,9 @@ a.featureCard:hover {
 }
 
 .unsavedDialogActions button:last-child {
-  border-color: var(--pc-accent-primary, #a74739);
+  border-color: var(--pc-accent-primary);
   color: #fffaf6;
-  background: var(--pc-accent-primary, #a74739);
+  background: var(--background-accent-primary);
 }
 
 .placeholder {

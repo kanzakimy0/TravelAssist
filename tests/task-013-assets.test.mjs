@@ -48,7 +48,14 @@ test("all 64 shared and 5 distinct destination SVGs are present", () => {
   assert.equal(files("public/media/shared").length, 64);
   assert.equal(files("public/media/destinations").length, 5);
   const local = manifest.assets.filter((a) => a.runtime.kind === "local");
-  assert.equal(new Set(local.map((a) => a.integrity.sha256)).size, 69);
+  assert.equal(
+    new Set(
+      local
+        .filter((a) => a.runtime.path.endsWith(".svg"))
+        .map((a) => a.integrity.sha256),
+    ).size,
+    69,
+  );
   for (const a of local) {
     const actual = measure("public" + a.runtime.path);
     assert.equal(actual.sha256, a.integrity.sha256);

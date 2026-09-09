@@ -36,7 +36,6 @@ import {
   kindFor,
   makeTripState,
   mapView,
-  pendingItems,
   presentationPlan,
   tripReducer,
 } from "../model/trip-model";
@@ -561,8 +560,6 @@ export function PlannerPage({
       refreshing={refreshing}
       status={refreshing ? "正在刷新示例路线…（Mock 演示）" : trip.notice}
       onReplan={replan}
-      pendingCount={pendingItems(plan).length}
-      onBooking={browserTrip.enterDetail}
       onOpenDetail={browserTrip.enterDetail}
       detailReady={browserTrip.ready}
     />

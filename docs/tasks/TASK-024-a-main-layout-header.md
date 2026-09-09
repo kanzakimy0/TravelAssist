@@ -404,23 +404,23 @@ git diff --check
 
 ## 13. Acceptance Criteria
 
-- [ ] 从最新 `origin/develop` 启动并记录 execution base。
-- [ ] 核对 1.13 / 2.7 前置，不伪改依赖状态。
-- [ ] WBS 3.1 启动时同步为 `进行中`。
-- [ ] 复用 TASK-010-A/B，未建立第二套 Header / Navigation。
-- [ ] 读取并实际参考 Personal Center Shell / 当前实现。
-- [ ] Main System 与 Personal Center 形成同一 TravelAssist 品牌视觉体系。
-- [ ] 未把 Personal Center Sidebar 强行复制到主系统。
-- [ ] Main Layout / Header 边界单一明确。
-- [ ] Home / Start / Planner / Detail 主流程不回退。
-- [ ] Planner 地图与工作台几何不因视觉统一被破坏。
-- [ ] Personal Center 内部功能与布局不被 A 越界重写。
-- [ ] 四个指定 viewport 无关键 Shell 回归。
-- [ ] lint / typecheck / build / relevant tests / diff-check 通过，或基线例外证据完整。
-- [ ] Result 记录共享视觉规则、改动、测试、限制与 Deferred。
-- [ ] Issue / Task / Result / WBS / branch / commit / PR 完整同步。
-- [ ] 实现完成但 PR 未合并：`3.1 = 待审查`。
-- [ ] 只有用户视觉验收通过且 PR 合入 develop：`3.1 = 已完成`。
+- [x] 从最新 `origin/develop` 启动并记录 execution base。
+- [x] 核对 1.13 / 2.7 前置，不伪改依赖状态。
+- [x] WBS 3.1 启动时同步为 `进行中`。
+- [x] 复用 TASK-010-A/B，未建立第二套 Header / Navigation。
+- [x] 读取并实际参考 Personal Center Shell / 当前实现。
+- [x] Main System 与 Personal Center 形成同一 TravelAssist 品牌视觉体系。
+- [x] 未把 Personal Center Sidebar 强行复制到主系统。
+- [x] Main Layout / Header 边界单一明确。
+- [x] Home / Start / Planner / Detail 主流程不回退。
+- [x] Planner 地图与工作台几何不因视觉统一被破坏。
+- [x] Personal Center 内部功能与布局不被 A 越界重写。
+- [x] 四个指定 viewport 无关键 Shell 回归。
+- [x] lint / typecheck / build / relevant tests / diff-check 通过，或基线例外证据完整。
+- [x] Result 记录共享视觉规则、改动、测试、限制与 Deferred。
+- [x] Issue / Task / Result / WBS / branch / commit / PR 完整同步。
+- [x] 实现完成但 PR 未合并：`3.1 = 待审查`。
+- [x] 只有用户视觉验收通过且 PR 合入 develop：`3.1 = 已完成`。
 
 ---
 
@@ -449,12 +449,14 @@ Codex 返回最终 Result 前必须：
 ## Status
 
 ## Preflight
+
 - execution base:
 - dependency 1.13:
 - dependency 2.7:
 - working tree safety:
 
 ## Tracking
+
 - WBS 3.1:
 - Issue: #242
 - Branch:
@@ -463,11 +465,13 @@ Codex 返回最终 Result 前必须：
 - Result file:
 
 ## Existing Work Reused
+
 - TASK-010-A:
 - TASK-010-B:
 - Personal Center visual primitives:
 
 ## Brand Visual Alignment
+
 - colors / surfaces:
 - typography:
 - radius / border / shadow:
@@ -476,6 +480,7 @@ Codex 返回最终 Result 前必须：
 - shared tokens:
 
 ## Main Shell
+
 - layout boundary:
 - header integration:
 - responsive behavior:
@@ -483,6 +488,7 @@ Codex 返回最终 Result 前必须：
 - personal-center boundary:
 
 ## Validation
+
 - lint:
 - typecheck:
 - build:
@@ -494,9 +500,11 @@ Codex 返回最终 Result 前必须：
 ## Problems / Deferred
 
 ## WBS Updated
+
 Yes / No
 
 ## Next Task
+
 Do not start automatically.
 ```
 
@@ -507,3 +515,20 @@ Do not start automatically.
 完成 TASK-024-A 后停止。
 
 **不要自动开始 WBS 3.2 / TASK-025。**
+
+## 17. Execution Tracking（2026-09-09）
+
+- 状态：实现完成，**WBS 3.1 = 已完成**；用户已于 2026-09-09 回复“验收通过”并授权最终合并，PR #244 已合入 develop。
+- 最新远端执行基线：`e74904830cbf8e6745b2013b2888e38984ccf96d`。1.13 仍待审查，依据已进入 develop 的 PC 品牌实现和本 Task Dependency Gate 执行；2.7 已完成。未改依赖状态。
+- Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)；分支 `feature/a-main-layout-header`；启动 `f75e799`；实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`。
+- PR：[PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Merged，merge `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`）。后续提交仅同步追踪。
+- 683/683 Node 测试；npm ci、lint、typecheck、正常 build、npm test --if-present、diff-check 通过。生产浏览器 20/20，8 组 Planner / Detail 几何与 develop 一致。用户已于 2026-09-09 明确回复“验收通过”；验收对象为提交 69bf4b75d2db4a085e96b2442ccba8c3eed54865，本轮仅同步文档。
+- [Result](RESULT-TASK-024-a-main-layout-header.md) 记录复用、最小 token 整合、视觉对照、原工作区依赖恢复及真实 Auth / Map Deferred；[QA](../qa/TASK-024/README.md) 提供报告、截图清单与复现脚本。
+- 未越界执行其他 WBS；不自动开始 TASK-025。
+
+## 18. Final Merge Closeout（2026-09-09）
+
+- 用户明确授权 PR #244 最终合并；合并提交 `1d1e3aa9ddc33b1a69fba5e11b35980d847a05e4`，最终 head `22a3a9962c216e6a332dc783698f92916b79cbe2`，两者文件树一致。
+- 最新 develop 仅新增 TASK-025 文档，已保留整合；已验收应用代码与测试未变，原 683 项回归及 20 组浏览器证据有效；本轮补做树比较、文档格式与 diff-check。
+- WBS 3.1 已完成；Issue #242 关闭 completed；仅文档收尾分支 `codex/a-main-layout-header-closeout` 正常快进同步 develop。1.13 / 2.7 和其他任务状态不变。
+- TASK-024-A 结束，不自动开始 TASK-025 / WBS 3.2。

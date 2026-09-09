@@ -19,9 +19,14 @@ export function WizardLayout({
       <StartFlowHeader />
       <FloatingPanel className={styles.flowPanel} data-wizard-panel>
         <StepProgress currentStep={currentStep} />
-        <div className={styles.wizardContent} data-wizard-content>
+        <main
+          id="start-content"
+          tabIndex={-1}
+          className={styles.wizardContent}
+          data-wizard-content
+        >
           {children}
-        </div>
+        </main>
       </FloatingPanel>
       <p className={styles.privacyNote}>
         草稿仅保存在当前浏览器，可随时返回继续填写。

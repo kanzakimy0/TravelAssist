@@ -1,6 +1,10 @@
 import type { SVGProps } from "react";
 
 const paths = {
+  torii: "M2 4q10 3 20 0M3 7h18M4 11h16M7 7v15m10-15v15M12 7v4",
+  search: "M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm5 12 6 6",
+  bell: "M5 17h14l-2-3V9a5 5 0 0 0-10 0v5Zm5 3a2 2 0 0 0 4 0M12 2v2",
+  sparkle: "m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z",
   map: "m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Zm6-3v15m6-12v15",
   layers: "m12 3 10 6-10 6L2 9Zm-9 11 9 5 9-5M3 18l9 5 9-5",
   sight: "m3 20 7-14 4 8 3-5 4 11ZM8 10l2 2 2-2",
@@ -31,7 +35,7 @@ export function PlannerIcon({
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}

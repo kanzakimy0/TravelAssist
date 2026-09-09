@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -127,12 +128,7 @@ function PersonalSidebarContent() {
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.compactBrandLogo} aria-hidden="true">
-            <Image
-              src="/media/personal-center/travelassist-logo-torii.png"
-              alt=""
-              fill
-              sizes="150px"
-            />
+            <BrandLogo fill sizes="150px" />
           </span>
         </GuardedLink>
       </div>
@@ -163,12 +159,7 @@ function PersonalSidebarContent() {
           onNavigate={() => setDrawerOpen(false)}
         >
           <span className={styles.brandLogo} aria-hidden="true">
-            <Image
-              src="/media/personal-center/travelassist-logo-torii.png"
-              alt=""
-              fill
-              sizes="190px"
-            />
+            <BrandLogo fill sizes="190px" />
           </span>
         </GuardedLink>
         <GuardedLink

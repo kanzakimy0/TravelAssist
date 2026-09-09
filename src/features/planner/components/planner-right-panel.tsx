@@ -21,8 +21,6 @@ export function PlannerRightPanel({
   refreshing,
   status,
   onReplan,
-  pendingCount,
-  onBooking,
   onOpenDetail,
   detailReady = true,
   onSavePlan,
@@ -38,8 +36,6 @@ export function PlannerRightPanel({
   refreshing: boolean;
   status: string;
   onReplan: () => void;
-  pendingCount: number;
-  onBooking: () => void;
   onOpenDetail: () => void;
   detailReady?: boolean;
   onSavePlan: (id: string) => void;
@@ -55,8 +51,7 @@ export function PlannerRightPanel({
         data-right-upper
         aria-labelledby="settings-title"
       >
-        <div className={styles.sectionTitle}>
-          <span className={styles.eyebrow}>YOUR JOURNEY</span>
+        <div className={styles.srOnly}>
           <h2 id="settings-title">让旅程，更合您心意</h2>
         </div>
         <TripQuickSettings state={state} dispatch={dispatch} />
@@ -130,8 +125,6 @@ export function PlannerRightPanel({
         plans={plans}
         selectedId={plan.id}
         onSelect={onPlan}
-        pendingCount={pendingCount}
-        onBooking={onBooking}
       />
     </div>
   );
