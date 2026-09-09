@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-029-A Design Candidate Integration Review（2026-09-10，审计完成）
+
+- Issue #259；Owner A / Integration Review；基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；分支 `codex/a-design-candidate-integration-review`；Draft PR 待创建。
+- 0.9 = **CHANGES_NEEDED**：原则兼容，但须补齐现行 Trips / Routes / Auth Contract 清单、缺失的 Preference / Companion 公共契约及最新 PR 状态。
+- 1.10 = **CHANGES_NEEDED**：修正把 `architecture_landmark` 同时用作 Secondary Category 与 Experience Tag 的客观 Schema 冲突；Provider 映射留给 7.2 / 7.4。
+- 1.12 = **USER_DECISION_REQUIRED**：候选路线/日期独立配色与当前已验收珊瑚路线显示冲突。
+- 1.13 = **USER_DECISION_REQUIRED**：候选 `#B95649` 色组与当前已验收 `#e95b4b` 珊瑚色组冲突。
+- 本审计不改变 0.9 / 1.10 / 1.12 / 1.13 原 Owner 或 `待审查` 状态，不修改运行时代码；完整报告见 `docs/reviews/design-candidate-integration-review-20260909.md`。
+
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
 - 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
