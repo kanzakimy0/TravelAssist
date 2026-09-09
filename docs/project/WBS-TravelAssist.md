@@ -1,5 +1,15 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-028-A / WBS 9.11 整合验收待审查（2026-09-10）
+
+- 复用既有 `codex/a-performance-observability` 与 Draft PR #245，不创建重复实现；Issue #258 保持 Open。
+- 已正常整合并复验最新 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；整合验收 head `d9be32a903f87c6096e8c1785e31baa93c7aa11c`，证据提交 `e10df0358eeb646d166812df3c9c679c015764d4`。
+- 本地脱敏观测、真实 browser/server 错误链路、零外部观测请求、性能预算、320px 溢出、20 轮 Planner/Detail 生命周期与 routing 回归通过；WBS 9.11 保持 **待审查**。
+- 全仓 716/719；3 项失败在相同 develop 基线上逐项复现（素材目录陈旧 2 项、既有 Node ESM 扩展名问题 1 项），不归因于 TASK-028，也未过滤隐藏。
+- GitHub Quality gate run #34371730330 在 repository tests 阶段复现同三项后失败，PR #245 当前为 Open / Draft / unstable；Hosted CI 未冒称通过。
+- 本地许可 Mapbox 条件样本已真实尝试，但外部请求失败后应用安全回退，故 live Mapbox 性能证据 Deferred；外部 Collector、生产 RUM p75、报警送达与生产部署仍 Deferred。
+- Result：`docs/tasks/RESULT-TASK-028-a-observability-acceptance-closeout.md`。PR 未合并且尚无用户验收，不得标记 `已完成`。
+
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
 - 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
@@ -899,8 +909,27 @@ TASK-023-A tracking (2026-09-09):
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
 | 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
-| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
+| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 待审查（TASK-028-A / Issue #258 / Draft PR #245；最新 develop 整合验收通过；线上 Collector / p75 / 报警送达与 live Mapbox 样本 Deferred） |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
+
+TASK-024-A tracking（2026-09-09）：
+
+- Base: `e74904830cbf8e6745b2013b2888e38984ccf96d`
+- Branch: `codex/a-performance-observability`
+- Issue: #235（Open，等待验收）
+- Draft PR: #245
+- 本地事件 allowlist、客户端/服务端错误入口、Web Vitals、队列保护、production 性能基线、预算门、实际故障注入与真实 Mapbox 条件样本已完成。
+- 外部 Collector、真实用户 p75、报警送达和生产部署不在本 Task 已完成子集内，状态保持 Deferred；不得据此宣称线上监控已就绪。
+
+TASK-028-A closeout tracking（2026-09-10）：
+
+- Latest develop baseline: `171900698180b80220017c9c4bec551b72792f27`
+- Existing branch: `codex/a-performance-observability`
+- Acceptance evidence commit: `e10df0358eeb646d166812df3c9c679c015764d4`
+- Issue: #258（Open，等待验收）
+- Existing Draft PR: #245
+- 浏览器/服务端真实错误路径、脱敏、预算、紧凑视口、20 轮工作区生命周期与 routing 专项通过；全仓 3 项失败与 develop 基线一致。
+- live Mapbox 条件样本因本机外部请求失败保持 Deferred；没有记录请求 URL 或凭据内容，没有把 fallback 冒充 live evidence。
 
 ## 10. 发布与运营准备（A 主责）
 

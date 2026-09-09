@@ -1,0 +1,22 @@
+{
+  "task": "TASK-028-A",
+  "sourceTask": "TASK-024-A",
+  "commit": "d9be32a903f87c6096e8c1785e31baa93c7aa11c",
+  "browser": "Chrome 152.0.7977.77",
+  "mode": "conditional local Mapbox laboratory sample",
+  "status": "deferred",
+  "credentialHandling": "An existing locally authorized public token was injected only into the temporary build environment and was not written to the repository or evidence.",
+  "observed": {
+    "engineAfterThirtySeconds": "fallback",
+    "statusText": "底图暂不可用 · 已切换可操作示意地图",
+    "pageErrors": 0,
+    "consoleErrors": 2,
+    "failedExternalRequests": 1
+  },
+  "reason": "The conditional Mapbox sample could not establish the live map in this execution environment. The application completed its bounded fallback without a page error. No live Mapbox performance claim is made.",
+  "limitations": [
+    "The failing external request URL and credential-bearing details are intentionally not recorded.",
+    "Fallback performance is covered by baseline.json and head.json but is not presented as live Mapbox evidence.",
+    "This local result is not real-user p75 and does not validate production transport or alert delivery."
+  ]
+}
