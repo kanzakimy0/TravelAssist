@@ -12,13 +12,11 @@ const {
   routeTemplateFromPath,
   validateObservationEvent,
 } = await import("../src/observability/contract.ts");
-const { clearLocalObservationBuffer, installClientObservability } = await import(
-  "../src/observability/client.ts"
-);
+const { clearLocalObservationBuffer, installClientObservability } =
+  await import("../src/observability/client.ts");
 const { ObservationQueue } = await import("../src/observability/queue.ts");
-const { createServerObservationReporter } = await import(
-  "../src/observability/server.ts"
-);
+const { createServerObservationReporter } =
+  await import("../src/observability/server.ts");
 
 const event = (code = "test_error") =>
   createErrorObservation({

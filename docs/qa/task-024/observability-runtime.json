@@ -1,0 +1,40 @@
+{
+  "task": "TASK-024-A",
+  "browser": "152.0.7977.77",
+  "actualBrowserErrorPath": "pass",
+  "actualExpectedCancellationPath": "pass",
+  "actualServerRequestErrorPath": "pass",
+  "localSanitizedEvents": [
+    {
+      "type": "web_vital",
+      "code": "web_vital_fcp",
+      "category": "performance",
+      "severity": "info",
+      "routeTemplate": "/planner"
+    },
+    {
+      "type": "web_vital",
+      "code": "web_vital_ttfb",
+      "category": "performance",
+      "severity": "info",
+      "routeTemplate": "/planner"
+    },
+    {
+      "type": "error",
+      "code": "browser_uncaught_error",
+      "category": "unexpected",
+      "severity": "error",
+      "routeTemplate": "/planner"
+    },
+    {
+      "type": "error",
+      "code": "browser_expected_cancellation",
+      "category": "cancelled",
+      "severity": "info",
+      "routeTemplate": "/planner"
+    }
+  ],
+  "externalObservationRequests": 0,
+  "expectedBrowserErrors": 1,
+  "productionFaultInjectionDefault": "disabled unless explicit local test env is set"
+}

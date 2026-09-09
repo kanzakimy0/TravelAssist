@@ -839,8 +839,17 @@ TASK-023-A tracking (2026-09-09):
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
 | 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
-| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 进行中（TASK-024-A / Issue #235；独立基线已建立，脱敏观测与预算实现中） |
+| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 待审查（TASK-024-A / Issue #235；本地脱敏观测、性能基线与预算门已完成；线上 Collector / p75 / 报警送达 Deferred） |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
+
+TASK-024-A tracking（2026-09-09）：
+
+- Base: `e74904830cbf8e6745b2013b2888e38984ccf96d`
+- Branch: `codex/a-performance-observability`
+- Issue: #235（Open，等待验收）
+- Draft PR: PENDING
+- 本地事件 allowlist、客户端/服务端错误入口、Web Vitals、队列保护、production 性能基线、预算门、实际故障注入与真实 Mapbox 条件样本已完成。
+- 外部 Collector、真实用户 p75、报警送达和生产部署不在本 Task 已完成子集内，状态保持 Deferred；不得据此宣称线上监控已就绪。
 
 ## 10. 发布与运营准备（A 主责）
 
