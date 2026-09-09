@@ -1,6 +1,6 @@
 .page {
-  --mobility-coral: #a74739;
-  --mobility-coral-deep: #8f392f;
+  --mobility-coral: var(--color-accent-primary);
+  --mobility-coral-deep: var(--color-accent-primary-hover);
   --mobility-coral-soft: #f8e6df;
   --mobility-sage: #6f806d;
   display: grid;
@@ -227,7 +227,7 @@
 }
 
 .presetCard[data-selected] {
-  border-color: #cf8f80;
+  border-color: var(--color-accent-primary);
   background: linear-gradient(145deg, #fff9f5, #f8e7df);
 }
 
@@ -343,7 +343,7 @@
 }
 
 .toggleCard[aria-pressed="true"] .switch {
-  background: var(--mobility-coral);
+  background: var(--background-accent-primary);
 }
 
 .toggleCard[aria-pressed="true"] .switch > span {
@@ -389,7 +389,7 @@
 .checkboxCard input:checked + .checkboxMark {
   border-color: var(--mobility-coral);
   color: #fff;
-  background: var(--mobility-coral);
+  background: var(--background-accent-primary);
 }
 
 .checkboxCard:has(input:focus-visible) {
@@ -506,7 +506,7 @@
 .saveButton {
   border: 1px solid var(--mobility-coral);
   color: #fff;
-  background: var(--mobility-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 7px 16px rgb(146 59 48 / 18%);
 }
 

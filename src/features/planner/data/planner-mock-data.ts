@@ -21,7 +21,7 @@ const days: MockDay[] = [
     day: 1,
     date: "4月10日",
     title: "东京 · 城市初见",
-    color: "#258bd2",
+    color: "#e95b4b",
     stops: [
       stop(
         "arrival",

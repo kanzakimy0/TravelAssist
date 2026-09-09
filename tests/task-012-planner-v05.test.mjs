@@ -246,7 +246,12 @@ test("recommendations preserve artwork, order and selection with user-authorized
   assert.ok(!current.includes("到详情管理预约"));
   assert.ok(!current.includes("data-current-booking"));
   const svg = base.match(/<svg[\s\S]*?<\/svg>/)[0];
-  const normalize = (text) => text.replace(/\s+/g, "");
+  // TASK-025.2 user-directed palette update changes only the displayed route paint.
+  assert.match(current, /stroke=\{displayRouteColor\(day.color\)\}/);
+  const normalize = (text) =>
+    text
+      .replace("displayRouteColor(day.color)", "day.color")
+      .replace(/\s+/g, "");
   assert.equal(
     normalize(current.match(/<svg[\s\S]*?<\/svg>/)[0]),
     normalize(svg),

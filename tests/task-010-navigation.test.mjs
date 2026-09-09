@@ -26,7 +26,7 @@ test("the temporary bridge maps each generated preview to one planner plan", () 
   assert.equal(plannerPlanForStartPlan(null), null);
 });
 
-test("main-flow links use real destinations and keep login disabled", async () => {
+test("main-flow links use real destinations and Home uses the existing login route", async () => {
   const [home, startHeader, plans, plannerWorkspace, sharedHeader] =
     await Promise.all([
       read("../src/features/home/components/home-hero.tsx"),
@@ -36,8 +36,13 @@ test("main-flow links use real destinations and keep login disabled", async () =
       read("../src/components/layout/main-header.tsx"),
     ]);
 
-  assert.match(home, /href="\/personal-center"/);
-  assert.match(home, /disabled/);
+  assert.match(home, /<HomeAccountLink viewer=\{viewer\}/);
+  assert.match(
+    await read("../src/features/home/components/home-account-link.tsx"),
+    /href="\/personal-center"/,
+  );
+  assert.match(home, /href="\/login\?returnTo=%2F"/);
+  assert.doesNotMatch(home, /disabled/);
   assert.match(startHeader, /<MainHeader/);
   assert.match(sharedHeader, /href="\/"/);
   assert.match(startHeader, /href="\/personal-center"/);

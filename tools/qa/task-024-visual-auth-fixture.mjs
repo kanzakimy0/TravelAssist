@@ -5,7 +5,10 @@ http
     res.setHeader("Content-Type", "application/json");
     if (
       req.url === "/auth/v1/user" &&
-      req.headers.authorization === "Bearer task024-visual-fixture"
+      [
+        "Bearer task024-visual-fixture",
+        "Bearer task0252-verified-profile",
+      ].includes(req.headers.authorization)
     ) {
       res.end(
         JSON.stringify({
@@ -15,7 +18,13 @@ http
           email: "visual@example.invalid",
           created_at: "2026-09-09T00:00:00Z",
           app_metadata: {},
-          user_metadata: {},
+          user_metadata:
+            req.headers.authorization === "Bearer task0252-verified-profile"
+              ? {
+                  full_name: "验收账户",
+                  avatar_url: "https://avatar.example.invalid/verified.webp",
+                }
+              : {},
         }),
       );
     } else {

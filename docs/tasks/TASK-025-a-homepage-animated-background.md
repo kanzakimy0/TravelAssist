@@ -7,7 +7,7 @@
 - Owner: `A`
 - Responsibility: `Main Travel System / Website Entry`
 - Priority: `P1`
-- Status: `可开始`
+- Status: `已完成`
 - GitHub Issue: `#246`
 - Task File: `docs/tasks/TASK-025-a-homepage-animated-background.md`
 - Suggested implementation branch: `feature/a-homepage-static-background-mvp`
@@ -357,3 +357,7 @@ git push --force-with-lease
 完成 TASK-025-A 后停止。
 
 **不要自动开始 TASK-025.1-A / WBS 3.2.1，也不要开始 WBS 3.3。**
+
+## Static MVP closure — 2026-09-09
+
+WBS 3.2 静态生产范围已由 TASK-025.2-A / PR #252 完成，用户视觉验收通过并于 2026-09-09T11:29:14Z 合入 develop（merge d2efbb69bdabc91b41994147b357c4dfad02eeee）。正式背景按用户最新要求固定为 home-hero-sakura-sunset.webp，详细结果见对应 Result 的 Current Result 节与 TASK-025.2 Result。历史视频 Blocked 保留，3.2.1 / #247 Deferred。

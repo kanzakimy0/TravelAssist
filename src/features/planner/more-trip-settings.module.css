@@ -40,7 +40,7 @@
   color: inherit;
   border: 1px solid #dfd4cb;
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   padding: 9px 13px;
   transition:
     background 120ms,
@@ -53,7 +53,7 @@
 }
 
 .workbench :is(button, input):focus-visible {
-  outline: 2px solid #b96352;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 3px;
 }
 
@@ -63,7 +63,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 12px 24px;
-  color: #7e726a;
+  color: var(--color-text-secondary);
   font-size: 11px;
 }
 
@@ -119,7 +119,7 @@
 .categories button[aria-current="true"] {
   background: #f6e4da;
   border-color: #e4bcac;
-  color: #974c3e;
+  color: var(--color-accent-primary);
   font-weight: 650;
 }
 
@@ -151,7 +151,7 @@
   margin: 0 0 6px;
   font-size: 10px;
   letter-spacing: 0.12em;
-  color: #a18371;
+  color: var(--color-accent-primary);
 }
 
 .settingsContent h3,
@@ -164,7 +164,7 @@
 
 .hint {
   margin: 0 0 10px;
-  color: #7e726a;
+  color: var(--color-text-secondary);
   font-size: 12px;
   line-height: 1.7;
 }
@@ -174,7 +174,7 @@
   display: block;
   margin: 10px 0;
   padding: 12px;
-  border: 1px solid #e6dacf;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 17px;
   background: #ffffffa6;
   box-shadow: 0 3px 12px #69524004;
@@ -204,7 +204,7 @@
   padding: 5px 10px;
   border-radius: 8px;
   background: #f8eae2;
-  color: #a65a48;
+  color: var(--color-accent-primary);
   font-size: 12px;
 }
 
@@ -213,7 +213,7 @@
   width: 100%;
   height: 20px;
   margin: 0;
-  accent-color: #bf725d;
+  accent-color: var(--color-accent-primary);
   cursor: pointer;
 }
 
@@ -228,7 +228,7 @@
   border-top: 1px solid #eee4db;
   padding-top: 6px;
   font-size: 11px;
-  color: #81766c;
+  color: var(--color-text-secondary);
 }
 
 .settingsContent h4 {
@@ -239,7 +239,7 @@
 .settingsContent section p {
   font-size: 12px;
   line-height: 1.7;
-  color: #81766c;
+  color: var(--color-text-secondary);
 }
 
 .settingsContent [aria-label$="快速设置"] {
@@ -254,9 +254,9 @@
 }
 
 .settingsContent button[aria-pressed="true"] {
-  color: #9d4f40;
+  color: var(--color-accent-primary);
   background: #f8e8df;
-  border-color: #d89b84;
+  border-color: var(--color-accent-primary);
 }
 
 .settingsContent button[aria-expanded] {
@@ -271,7 +271,7 @@
   border-radius: 0;
   padding: 14px 0 0;
   text-align: left;
-  color: #8a6b56;
+  color: var(--color-accent-primary);
 }
 
 .settingsContent button[aria-expanded]::after {
@@ -292,7 +292,7 @@
   width: 100%;
   min-width: 0;
   font-size: 16px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
 }
 
 .protection {
@@ -330,14 +330,15 @@
 }
 
 .workbench footer button:last-child {
-  background: #b96b57;
-  border-color: #b96b57;
+  background: var(--background-accent-primary);
+  border-color: var(--color-accent-primary);
   color: #fff;
-  box-shadow: 0 3px 10px #b96b571f;
+  box-shadow: 0 3px 10px
+    color-mix(in srgb, var(--color-accent-primary) 12.16%, transparent);
 }
 
 .workbench footer button:last-child:hover {
-  background: #a75b48;
+  background: var(--color-accent-primary-hover);
 }
 
 .impact {
@@ -351,7 +352,7 @@
   margin: 16px 0;
   padding: 12px 18px;
   background: #ffffff90;
-  border: 1px solid #e6dacf;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
 }
 
