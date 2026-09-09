@@ -189,6 +189,13 @@ test("timeline labels and card style toggle form aligned vertical rails", () => 
     /\.timeline\[data-time-aligned="true"\] \.labels,[\s\S]*grid-template-rows: minmax\(0, 1fr\) 54px;/,
   );
 });
+test("desktop preview origin is allowed to hydrate planner interactions", () => {
+  const config = readFileSync(
+    new URL("../next.config.ts", import.meta.url),
+    "utf8",
+  );
+  assert.match(config, /allowedDevOrigins:\s*\["127\.0\.0\.1"\]/);
+});
 test("insertion uses previous end plus fifteen, permits collisions and preserves every other card", () => {
   const s = fixture(),
     c = candidate(s),
