@@ -1,6 +1,6 @@
 # TASK-025.2-A Result
 
-## 最新账户样式补正：恢复截图胶囊（2026-09-09，待审查）
+## 最新账户样式补正：恢复截图胶囊（2026-09-09，视觉验收通过）
 
 用户确认其他效果 OK，要求个人中心 / 登录恢复上传截图的样式。本节仅覆盖下方追加修正中“透明账户行、黑色粗体”的历史方案；透明黑色粗体 Footer 保持。
 
@@ -10,7 +10,8 @@
 - 逐项对比上一轮 account-footer 报告：六组中 Brand / language / eyebrow / title / subtitle / CTA / Help / Footer / AI 的所有已测量几何与计算样式完全一致，背景来源和裁切完全一致。其他页面与共享 tokens 无改动。
 - lint、typecheck、production build、现有 Node 全仓 703/703、Home 五尺寸 + reduced-motion 6/6、认证 15/15 和 diff-check 通过。CLS=0、无横纵溢出、无新增 console / hydration 错误、无视频请求。
 - 最新报告：docs/qa/TASK-025.2/account-capsule-home-report.json、account-capsule-auth-report.json、account-capsule-evidence.json。五尺寸、登录态与 Hero 放大截图位于 F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/account-capsule-home/；旧证据保留。
-- 预览：http://localhost:3132/；分支 codex/home-footer-account-visibility；沿用 [Draft PR #254](https://github.com/kanzakimy0/TravelAssist/pull/254) → develop，等待本次视觉验收。原 TASK / WBS 3.2 已完成状态与关闭的 Issues 保持；不自动合并或启动下一任务。
+- 用户已明确视觉验收通过，并授权 [PR #254](https://github.com/kanzakimy0/TravelAssist/pull/254) 合入 develop。已验收代码提交为 59b0cf43e03a0a98e1b687e6f6b28311137aedb1；本次收尾仅更新此验收记录，运行时代码与五尺寸证据保持一致。PR 链接记录最终合并状态与提交。
+- 预览：http://localhost:3132/；分支 codex/home-footer-account-visibility。原 TASK / WBS 3.2 已完成状态与关闭的 Issues 保持；旧待审查措辞是历史记录。本轮收尾后停止，不启动下一任务。
 
 ---
 
