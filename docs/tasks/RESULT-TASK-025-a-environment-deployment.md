@@ -17,8 +17,8 @@ WBS 10.1 的仓库内环境隔离合同与 WBS 10.2 的无 Secret 质量门、�
 - Evidence: `d247037`
 - Develop integration: `4f28cfb`
 - Server-only boundary fix and final rehearsal: `adda614f15faa9cf713f54e73e0d90f67e3256c3`
-- Commits through validation: `5185de7`, `d247037`, `4f28cfb`, `adda614`, `1a82ecf`
-- Final PR tracking commit: PENDING（见 PR head）
+- Commits through validation: `5185de7`, `d247037`, `4f28cfb`, `adda614`, `1a82ecf`, `7861cb9`, `dfe084e`
+- Final PR tracking commit: 本 Result 的最终同步提交见 PR head
 - Draft PR: #249 — `codex/a-environment-deployment` → `develop`
 
 ## Conflict audit
@@ -66,7 +66,9 @@ Completed in repository:
 - 手动 release rehearsal 只接受当前 `develop` 的完整精确 SHA，并在受信 checkout 后重新执行质量门。
 - workflow 包含 timeout、concurrency 和短期受限制品；不调用云供应商。
 
-PR 创建后仍需 GitHub 实际运行 workflow，最终状态单独同步，不以本地 YAML 检查代替 Actions 结果。
+GitHub Actions 已对 `dfe084ef5add466ee76fd2ec617c91b994c66c6e` 完整执行 Quality gate 并通过：[run #34319110159](https://github.com/kanzakimy0/TravelAssist/actions/runs/34319110159)。首次运行暴露仓库既有测试依赖冻结历史提交；两个 checkout 已改为完整历史并由专项测试锁定，未跳过或放宽任何质量步骤。
+
+`release-rehearsal.yml` 是仅允许当前 `develop` 精确 SHA 的手动工作流。由于该工作流在 PR 合入前尚不存在于默认分支，GitHub 托管环境的实际手动运行保持 Deferred；本机对真实 standalone 制品的完整 rehearsal 已通过。
 
 ## Stage 2 — local deployment rehearsal
 
@@ -120,6 +122,8 @@ Not authorized / Not run。没有发布 Production、创建付费资源、修改
 - `npm run deploy:rehearse:local`: PASS
 - `npm run format:check:deploy`: PASS
 - `git diff --check`: PASS
+- GitHub Actions Quality gate (`dfe084e`): PASS（run #34319110159）
+- GitHub hosted release rehearsal: Deferred（工作流尚未进入默认分支）
 - `npm run format:check`: existing repository documentation debt;本 Task 新增/修改工程文件全部通过，未批量格式化无关历史文档。
 
 ## WBS update
@@ -131,7 +135,7 @@ Not authorized / Not run。没有发布 Production、创建付费资源、修改
 ## Manual actions required
 
 1. 审查 Draft PR 的环境 allowlist、workflow trust boundary、health 和 rollback 语义。
-2. 确认 GitHub quality workflow 的实际运行结果。
+2. PR 合入后，可从默认分支手动执行精确 `develop` SHA 的 hosted release rehearsal；当前不把未运行步骤写成 PASS。
 3. 若要真实 Preview，先单独批准平台、区域/成本、GitHub Environment protection、凭据方案、Preview URL、隔离 Supabase、Auth callback 和 rollback target。
 4. Production 需要新的明确发布授权；本 Result 不能作为上线许可。
 
