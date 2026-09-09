@@ -1,11 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，进行中）
+## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，待审查）
 
 - Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
 - 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
 - PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
-- 仅 Home 视觉与必要共享外观适配；不改 Start / Planner / Detail / Personal Center 业务或几何。实现后转待审查，视觉验收及合入 develop 后才可完成。
+- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；实现 `a965214b1845423d8ef263e499e8d4dca29f42b5`；Draft PR: PENDING_PR。
+- npm ci / lint / typecheck / build / diff-check 通过；698 项全仓测试、5 项专项通过；Home 五尺寸 + reduced-motion 6/6，其他页面几何 20/20 与最新 develop 一致。
+- 背景仍为正式海岸列车 Poster，缺少参考图樱花/粉色夕阳的差异已说明；未生成素材、伪造用户或改全局 token。Result：`docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`；证据：`docs/qa/TASK-025.2/README.md`。
+- 当前 3.2 待审查，用户本轮视觉通过并合入 develop 后才可完成；原 3.2 视频 Blocked 历史与其他工作站记录保留。
 
 
 ## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
@@ -672,7 +675,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 进行中 |
+| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 待审查 |
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
