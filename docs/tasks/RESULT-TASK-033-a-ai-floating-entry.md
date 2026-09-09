@@ -40,7 +40,9 @@ Therefore there is no safe published baseline for TASK-033. Existing Home AI UI 
 - WBS 3.5: `阻塞`
 - Implementation branch: not created
 - Implementation PR: not created
-- Documentation-only PR: pending
+- Documentation-only branch: `docs/a-ai-floating-entry-blocked`
+- Documentation commit: `2c31fbe958d762d67a044b55bbadbb124a1b50da`
+- Documentation-only Draft PR: [#271](https://github.com/kanzakimy0/TravelAssist/pull/271)
 
 ## Unblocking condition
 

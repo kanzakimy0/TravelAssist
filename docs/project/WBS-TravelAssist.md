@@ -4,7 +4,7 @@
 
 - Issue #263；Owner A / Website Entry / AI Shell；核对基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`。
 - 串行前置 TASK-030 / #260 与 TASK-031 / #261 仍为 Open，GitHub 无实现 PR、匹配远端分支或已合并 Result。用户说明 B 已在本地完成并要求本轮不重做，因此当前没有可依赖的已发布基线。
-- 本轮仅记录阻塞，不创建 `codex/a-ai-floating-entry` 实现分支，不修改运行时。WBS 3.5 = `阻塞`；待 B 上传并安全整合 030/031 后从最新 develop 重启。
+- 本轮仅记录阻塞，不创建 `codex/a-ai-floating-entry` 实现分支，不修改运行时。文档分支 `docs/a-ai-floating-entry-blocked`，提交 `2c31fbe`，Draft PR [#271](https://github.com/kanzakimy0/TravelAssist/pull/271)。WBS 3.5 = `阻塞`；待 B 上传并安全整合 030/031 后从最新 develop 重启。
 
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
