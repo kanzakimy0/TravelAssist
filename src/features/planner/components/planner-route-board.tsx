@@ -118,12 +118,12 @@ export function PlannerRouteBoard({
           );
         })}
       </div>
-      <p className={css.notice} role="status" data-route-feedback>
-        {state.notice ||
-          (movement
-            ? "修改方式、预计时长与缓冲，不会自动移动已确定的项目。"
-            : "上下拖拽调整 · 拖动查看落点时间 · 详情核对可行性")}
-      </p>
+      {movement && (
+        <p className={css.notice} role="status" data-route-feedback>
+          {state.notice ||
+            "修改方式、预计时长与缓冲，不会自动移动已确定的项目。"}
+        </p>
+      )}
     </div>
   );
 }

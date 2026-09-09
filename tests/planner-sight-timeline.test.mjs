@@ -56,6 +56,9 @@ const {
   timelineDuration,
   timelineProtected,
   routineSlotFor,
+  timelineDisplayBands,
+  timelineBandSegments,
+  snapTimelineBandMinute,
 } = await import("../src/features/planner/model/planner-timeline.ts");
 const { tripSnapshot, parseSavedTrip, restoreTrip } =
   await import("../src/features/planner/model/browser-trip.ts");
@@ -95,6 +98,7 @@ test("all planned kinds use one proportional ruler, each card has time and lock 
         data.reserve.length,
       );
       assert.match(html, /当天等分时间刻度/);
+      assert.match(html, /切换卡片样式/);
       assert.match(html, /开始时间 \/ 持续时间/);
       assert.match(html, /空格拿起/);
       for (const i of data.planned)
@@ -143,6 +147,46 @@ test("axis divides earliest start to latest end equally, not equal card spacing"
   assert.equal(
     (timelineMinute("20:00") - a.start) / (timelineMinute("08:00") - a.start),
     13,
+  );
+});
+test("optional card alignment splits a noon-to-afternoon item exactly at 14:00", () => {
+  const item = {
+    id: "split",
+    startTime: "12:00",
+    endTime: "15:00",
+  };
+  const bands = timelineDisplayBands([item]);
+  assert.equal(bands[0].end, 14 * 60);
+  assert.equal(bands[1].start, 14 * 60);
+  assert.equal(bands[0].ticks.at(-1), 14 * 60);
+  assert.equal(bands[1].ticks[0], 14 * 60);
+  assert.deepEqual(timelineBandSegments(item, bands), [
+    { band: "morning", start: 12 * 60, end: 14 * 60, primary: true },
+    {
+      band: "afternoon",
+      start: 14 * 60,
+      end: 15 * 60,
+      primary: false,
+    },
+  ]);
+  assert.equal(snapTimelineBandMinute(1, 7 * 60, 14 * 60, true), 13 * 60 + 55);
+  assert.equal(snapTimelineBandMinute(0, 14 * 60, 21 * 60), 14 * 60);
+});
+test("timeline labels and card style toggle form aligned vertical rails", () => {
+  const css = readFileSync(
+    new URL(
+      "../src/features/planner/planner-sight-timeline.module.css",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(css, /grid-template-columns: 61px minmax\(0, 1fr\)/);
+  assert.match(css, /writing-mode: vertical-rl/);
+  assert.match(css, /\.alignmentToggle\s*\{/);
+  assert.match(css, /\.labels h3:last-of-type\s*\{[\s\S]*grid-column: 1 \/ -1/);
+  assert.match(
+    css,
+    /\.timeline\[data-time-aligned="true"\] \.labels,[\s\S]*grid-template-rows: minmax\(0, 1fr\) 54px;/,
   );
 });
 test("insertion uses previous end plus fifteen, permits collisions and preserves every other card", () => {

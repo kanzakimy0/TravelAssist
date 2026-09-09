@@ -162,6 +162,68 @@ export function timelineAxis(items: TripItem[]) {
   };
 }
 
+export const timelineSplitMinute = 14 * 60;
+
+export type TimelineDisplayBand = {
+  key: "morning" | "afternoon";
+  start: number;
+  end: number;
+  ticks: number[];
+};
+
+/** Optional presentation bands for the compact Planner canvas. The canonical
+ * item remains one record; a card crossing 14:00 is only split visually. */
+export function timelineDisplayBands(items: TripItem[]): TimelineDisplayBand[] {
+  const axis = timelineAxis(items);
+  const start = Math.min(7 * 60, axis.start);
+  const end = Math.max(21 * 60, axis.end);
+  const ticks = (from: number, to: number) =>
+    Array.from(
+      new Set(
+        Array.from(
+          { length: 5 },
+          (_, index) => Math.round((from + ((to - from) * index) / 4) / 5) * 5,
+        ),
+      ),
+    );
+  return [
+    {
+      key: "morning",
+      start,
+      end: timelineSplitMinute,
+      ticks: ticks(start, timelineSplitMinute),
+    },
+    {
+      key: "afternoon",
+      start: timelineSplitMinute,
+      end,
+      ticks: ticks(timelineSplitMinute, end),
+    },
+  ];
+}
+
+export function timelineBandSegments(
+  item: TripItem,
+  bands: TimelineDisplayBand[],
+) {
+  const start = timelineMinute(item.startTime);
+  const end = timelineMinute(item.endTime);
+  return bands.flatMap((band) => {
+    const segmentStart = Math.max(start, band.start);
+    const segmentEnd = Math.min(end, band.end);
+    return segmentEnd > segmentStart
+      ? [
+          {
+            band: band.key,
+            start: segmentStart,
+            end: segmentEnd,
+            primary: segmentStart === start,
+          },
+        ]
+      : [];
+  });
+}
+
 type Scope = { planId: string; day: number; id: string };
 export function initializeHotelEndpoints(
   state: TripState,
@@ -372,6 +434,16 @@ export function snapTimelineMinute(ratio: number, start: number, span: number) {
       Math.round((start + Math.max(0, Math.min(1, ratio)) * span) / 5) * 5,
     ),
   );
+}
+
+export function snapTimelineBandMinute(
+  ratio: number,
+  start: number,
+  end: number,
+  exclusiveEnd = false,
+) {
+  const snapped = snapTimelineMinute(ratio, start, end - start);
+  return exclusiveEnd ? Math.min(end - 5, snapped) : snapped;
 }
 export function timelineCollisionGroups(
   items: TripItem[],
