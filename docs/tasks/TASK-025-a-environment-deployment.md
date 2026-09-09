@@ -4,7 +4,7 @@
 
 - Task ID: TASK-025-A
 - Owner: A / Shared Infrastructure / Release
-- Status: 待验收（仓库内 10.1 / 10.2 子集完成；真实云部署 Deferred）
+- Status: 已验收并合入（仓库内 10.1 / 10.2 子集；真实云部署 Deferred）
 - WBS: 10.1 → 10.2（分阶段记录）
 - Priority: 10.1 P0 / 10.2 P1
 - GitHub Issue: #236
@@ -12,10 +12,10 @@
 - Spec Branch: `task/a-route-observability-deployment-20260909`
 - Depends On: 10.1 依赖 2.5 / 8.1；10.2 依赖 2.8 / 10.1 的实际可用基线
 - Commits: `5185de7`, `d247037`, `4f28cfb`, `adda614`, `1a82ecf`, `7861cb9`, `dfe084e`（最终 tracking 提交见 PR）
-- Pull Request: #249（Draft）
+- Pull Request: #249（Merged）
 - Authoring Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Implementation Base: `5819270983b4682c76e9ed7c751be9e00612ca0a`
-- Final Integrated Develop: `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`
+- Merge Commit / Final Develop: `90c3501816d04f7613002439e5886a9e2b90bafd`
 - Result File: `docs/tasks/RESULT-TASK-025-a-environment-deployment.md`
 
 ## Goal and authorization

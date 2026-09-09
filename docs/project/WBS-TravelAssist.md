@@ -861,8 +861,8 @@ TASK-023-A tracking (2026-09-09):
 
 | WBS ID | 工作项                    | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ------------------------- | ------ | ------ | -------- | ------ |
-| 10.1   | Dev / Preview / Prod 环境 | A      | P0     | 2.5,8.1  | 待审查（TASK-025-A Environment Deployment / Issue #236；本地隔离合同已验证，真实云隔离 Deferred） |
-| 10.2   | 自动部署                  | A      | P1     | 2.8,10.1 | 待审查（TASK-025-A Environment Deployment / Issue #236；无 Secret 质量门与本机部署演练完成，真实 Preview / Production Deferred） |
+| 10.1   | Dev / Preview / Prod 环境 | A      | P0     | 2.5,8.1  | 部分完成（仓库内环境合同已验收并由 PR #249 合入；真实云资源隔离 Deferred） |
+| 10.2   | 自动部署                  | A      | P1     | 2.8,10.1 | 部分完成（质量门与本机 standalone 演练已验收并由 PR #249 合入；GitHub hosted rehearsal / Preview / Production Deferred） |
 | 10.3   | Domain / HTTPS            | A      | P1     | 10.1     | 未开始 |
 | 10.4   | Analytics                 | A      | P2     | 3.x      | 未开始 |
 | 10.5   | SEO / Metadata            | A      | P2     | 3.x      | 未开始 |
@@ -874,7 +874,9 @@ TASK-025-A Environment Deployment tracking（2026-09-09）：
 
 - Issue #236；分支 `codex/a-environment-deployment`；基线 `5819270983b4682c76e9ed7c751be9e00612ca0a`。
 - 最终已整合并复验 `origin/develop@088f467b8ff666ddd9774f8d6b7ad351fd54f00a`；实现/演练提交 `adda614f15faa9cf713f54e73e0d90f67e3256c3`。
-- Draft PR #249 → `develop`；保持 Draft，不自动合并，Issue #236 保持 Open。GitHub Actions Quality gate 已在 `dfe084e` 通过（run #34319110159）；托管 release rehearsal 需工作流合入默认分支后手动执行，当前保持 Deferred。
+- 用户于 2026-09-09 明确要求合并；PR #249 已合入 `develop`，merge commit `90c3501816d04f7613002439e5886a9e2b90bafd`。最终 Quality gate 在 `43c3a3a` 通过（run #34319436761）。
+- 仓库内 10.1 / 10.2 子项由“待审查”更新为“部分完成”；真实云环境、Preview 与 Production 没有执行，父 WBS 不误标为全部完成。
+- GitHub 默认分支实测为 `main`，而 release workflow 当前只进入 `develop`，因此 Actions API 尚不能 dispatch 托管 rehearsal；需后续获准同步默认分支后执行。
 - 10.1 仅放行本地 target；Preview / Production 因 GitHub Environments、Actions Secrets 和批准云平台均不存在而保持 fail-closed。
 - 10.2 建立无 Secret 的 PR 质量门、受信 `develop` 精确 SHA 本机 release rehearsal、standalone 制品审计、health/readiness 和回滚控制；真实 Preview / Production 未获授权。
 - 仓库另有同名 `TASK-025-A Homepage Animated Background` / Issue #246。两者按 Issue、WBS 和完整标题区分；本记录不修改其 WBS 3.2 阻塞状态。
