@@ -15,18 +15,17 @@
 
 复现：锁定依赖安装后构建，在本机 fixture 配置下启动预览 3132 和 tools/qa/task-024-visual-auth-fixture.mjs（54224）。设置 PLAYWRIGHT_MODULE 到可用 Playwright、TASK_0252_REVIEW_NAME=v11，执行：
 
-~~~text
+```text
 node tools/qa/task-025-2-home-check.mjs
 node tools/qa/task-025-2-auth-check.mjs
 node tools/qa/task-025-2-brand-check.mjs
-~~~
+```
 
 生产语义：游客显示真实登录链接；已核验账户桌面在右上、手机在 CTA 下，资料缺失使用“个人中心”/共享“旅”占位。预览截图里的验收账户是隔离测试数据。AI 入口保留真实 UI 交互但没有接 AI API。五个信息页面为静态基础说明，不宣称完成 WBS 10.6 法律审查。
 
 ---
 
 ## 历史视觉验收记录
-
 
 本次为用户要求的概念图完整视觉修正，等待用户视觉验收。此前保留旧灰金海岸 Poster 的交付未获用户视觉认可，本版已接入从用户概念图去除 UI 后得到的樱花夕阳纯背景。正式规格见 `docs/tasks/TASK-025.2-a-homepage-concept-fidelity.md`。
 

@@ -1,5 +1,103 @@
 # TASK-025.2-A Result
 
+## 2026-09-09 当前结果：最新概念 + Amendment v1.1
+
+**状态：待审查。** 已完成新版首页实装和本轮验证；等待用户视觉验收。继续现有 Draft PR [#252](https://github.com/kanzakimy0/TravelAssist/pull/252) → develop，不自动合并。
+
+### 执行与追踪
+
+- Issue：[#251](https://github.com/kanzakimy0/TravelAssist/issues/251)；关联静态 MVP [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)。
+- Branch：feature/a-homepage-concept-fidelity。
+- 本轮实现提交：c5918208dbb3b20e14594dd2595fec5f18bc2c17；最终认证分层修复：d6b105d099a06355fc8c24c9d4fc1b7236bb8863。
+- 最新远端基线：origin/develop@da43afe616ae08516b96599335a54a8ef163d8fd；已正常 merge 到现有任务分支（a0a2f6e），没有 cherry-pick、覆盖其他工作站或使用 ours/theirs 整份替换。
+- 已执行 status / branch / fetch --all --prune / rev-parse / log -20，并读取远端主 Task、Amendment v1.1 和 Master WBS。原工作站保持不动，实作位于 F:/CodexWorktrees/TravelAssist-TASK0252。
+- 优先级采用：最新用户概念 > v1.1 > 主 Task > 冻结 Brand > 当前运行行为 > 旧首页。
+- 开始前将 3.2 更新为进行中；本轮实现验证完成后改为待审查。3.1 已完成及 1.13 待审查状态不变。3.2.1 / #247 仍未开始 / Deferred。
+
+### 最新概念与背景
+
+- 参考为用户上传的 1536×1024 PNG，SHA-256：8b5086d888d745b9be1643c4b4b1ed94c54b1d682e9fa0bbd78d39d97c0d6c95。
+- 通过内置 image_gen 去除概念内的文字、按钮、Logo、假头像、页脚与招牌文字，并局部补绘天空/场景。保留樱花前景、夕阳海面、岛屿、富士山、住宅、铁轨和绿色电车。没有把完整概念截图作为页面背景。
+- 正式文件：public/media/home-concept/home-hero-fuji-coast-v11.webp，1536×1024，344676 bytes（约 337 KiB），SHA-256：11c559f503d0ba7e276393adf45934e2d28f9e526a83b768fb784933c7f05f3c。
+- 来源、用户授权、生成源、提示词、尺寸与哈希：docs/assets/home-hero-fuji-coast-v11.provenance.json。登记到既有资产库；未建立平行素材体系。
+- 静态 Image 导入、preload、自动 blur placeholder、按 cover 所需高度声明 sizes；Desktop 50%、Tablet 60%、Mobile 76% 水平裁切。无新增视频或动画方案。
+- 旧 Home / Start / PC 素材全部保留。素材库最终 1143 sources / 3556 logical variants / 0 physical derivatives，完整性检查无错误。
+
+### 页面实装
+
+- 复用 MainHeader / BrandLogo / AccountAvatar 与共享珊瑚色 tokens；只给 Home 增加品牌副标、首页样式和辅助操作。没有第二套 Header、Logo 或 Avatar Menu。
+- Hero 居中：日文 Eyebrow 与细弧线、“下一站，去哪里？”、“规划行程 · 对话调整”、概念中的细辅助行及唯一主 CTA。窄屏隐藏辅助细行并自然换行标题，保障首屏可读。
+- “让我们开始吧 →”仍是真实 /start 链接。沿用全站已统一的珊瑚 CTA 渐变；hover 不移动几何，键盘焦点可见。
+- 右上“使用指南”在语言左侧；手机保留可访问名称和 44px 图标触点。Popover 包含指定五步及“查看完整使用指南 →”，支持开关、Escape、关闭后焦点返回、点击外部关闭及键盘进入完整指南。
+- 首页底部使用语义 footer：© 2026 TravelAssist 与四个辅助链接。桌面两端排列、手机可换行；没有新增首页说明卡片、营销内容区或第二个主 CTA。
+- AI 入口保留现有图标与真实 UI 开关、面板、Escape 和焦点管理，显示“AI 助手”。位置预留页脚安全区；未接入 AI API。
+
+### 真实账户状态
+
+- 既有全仓分层检查要求 features 不直接导入 SDK；已将只读资料适配放在 src/lib/auth，保留原检查，最终 703 项全通过。
+- 首页通过现有 Supabase server client 的 auth.getUser() 验证会话；不信任 Cookie 中的姓名和头像，不新增 Auth API、数据库或会话业务。
+- 已验证账户消费实际 display_name / full_name / name 和 HTTPS avatar_url；资料不足显示“个人中心”及共享“旅”占位。头像加载失败同样回退占位。
+- 桌面账户入口在右上，手机在 CTA 下，均进入真实 /personal-center；不重复显示两个账户入口。
+- 游客或无效会话显示“已有账号？ 登录”，链接到现有 /login?returnTo=%2F。旧 disabled Login 边界按最新明确要求替换。
+- 未硬编码 Yuki 或其他产品假身份。测试中的“验收账户”和图片均为隔离 fixture，生产代码不含该身份。
+
+### 独立辅助页面
+
+现有仓库没有可复用的公开对应 route，因此只新增五个静态页面，复用共享 Header、tokens 和链接清单：
+
+| Route           | 内容                                                                                |
+| --------------- | ----------------------------------------------------------------------------------- |
+| /help           | 指定五步使用指南，说明保存到浏览器的实际边界                                        |
+| /terms          | 服务范围、账号规则、禁止行为、用户责任、第三方服务、一般边界与终止                  |
+| /privacy        | 涉及数据、用途、Cookie、本地保存、第三方、删除/导出范围和用户反馈                   |
+| /ai-information | 独立表达 AI≠官方、规划≠预订、显示价格≠成交价、估时≠运行保证、第三方预约以服务商为准 |
+| /about          | 项目说明及真实 GitHub 仓库 / Issues 反馈渠道                                        |
+
+未虚构公司、地址、备案、电话或邮箱；未新增 CMS。以上是产品当前能力的基础说明，不宣称完成 WBS 10.6 或法律审查，未扩大 Auth 注册等页面范围。
+
+### 验收结果
+
+| 验证                                   | 本轮结果                                                                                  |
+| -------------------------------------- | ----------------------------------------------------------------------------------------- |
+| npm ci                                 | 通过，audit 0 vulnerabilities；曾因运行中的 Next SWC 文件锁失败，停止本任务预览后重试成功 |
+| npm run lint                           | 通过，无新增错误/警告                                                                     |
+| npm run typecheck                      | 通过                                                                                      |
+| npm run build                          | 通过，Home 读取会话按请求渲染；五个信息页面静态生成                                       |
+| npm test --if-present                  | 完成；仓库没有 test script                                                                |
+| 真实 Node 全仓测试                     | 703/703 通过                                                                              |
+| Home / Main Shell / 珊瑚色 / v1.1 专项 | 14/14 通过                                                                                |
+| 素材校验                               | 1143 / 3556 / 0，errors=[]                                                                |
+| git diff --check                       | 通过                                                                                      |
+
+- 浏览器：1672×941、1440×900、1024×768、390×844、320×568，加 1440×900 reduced-motion，**6/6 通过**。
+- 五尺寸均无横向或纵向溢出；Hero/CTA 中轴正确；Help 与语言不碰撞；Footer 不压 CTA/登录，AI 不压 Footer；所有链接键盘可达且 focus visible。
+- Help open/close/Escape/focus return/outside click、完整指南及四个 footer route 导航通过。AI 开关、Escape、focus return、语言展开、进入 Start 后前进/后退状态通过。
+- CLS 全部为 0；延迟图片请求时 blur 占位可见，解码前后标题几何一致，无黑屏或视频 404；视频节点与请求均为 0。
+- Auth：五尺寸 × verified / neutral / invalid **15/15 通过**，含伪造 Cookie 姓名拒绝、真实资料、头像故障回退、账户入口及现有 Personal Center 保护。
+- 回归 /start、/planner、当前真实 Detail（/planner?view=detail&day=1，点击“保存到浏览器并进入详情”后）、/personal-center：**20/20 几何与基线一致**。地图、右栏、底栏、PC Sidebar / Content 没有变化。
+- 回归代码基线 d9ee82f 与当前 da43afe 的差异仅为规格文档，基线仍有效。本轮保留此前全站珊瑚色统一成果，没有重做其他业务页面。
+- 新 console / hydration 错误为 **0**。原有 favicon.ico 404 在报告中如实保留。Auth 使用本机测试服务，地图使用既有 fallback；没有声称验证外部生产 Auth/Map。
+
+### 用户可见证据
+
+- 完整截图目录：F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/v11-home/。
+- 五尺寸截图：1672x941.png、1440x900.png、1024x768.png、390x844.png、320x568.png。
+- 同尺寸对照：concept-production-comparison.png（左为用户概念，右为真实游客页面，均 1536×1024）；另有 reduced-motion、慢加载、Help、已核验账户截图。
+- 索引与哈希：docs/qa/TASK-025.2/v11-evidence.json，47 张实际截图。
+- 浏览器：v11-home-report.json；请求：v11-request-report.json；账户：v11-auth-report.json；回归：v11-report.json；操作复现：同目录 README.md。
+- 请求报告包含进入 Start 时加载的该页旧场景，不能将其误读为 Home 请求两个背景。正式 WebP 文件 344676 bytes，浏览器优化后的请求大小详见报告。
+
+### 差异、状态与停止
+
+- 概念中的假身份被实际游客/认证状态替换；现有 BrandLogo 和 AI 图标继续复用；没有照抄假头像或重新绘制品牌标识。
+- 细辅助行来自本次优先级最高的概念，320px 隐藏；页脚只保留用户明确指定的版权与四个入口，没有加入概念中的额外营销短句。
+- 背景被 UI 遮挡的部分经过补绘，不能声称逐像素恢复原始照片；整体机位和构图按概念保留。实际视觉通过与否由用户验收。
+- 历史 TASK-025-A 的“缺少已授权 WebM/MP4 → Blocked”原记录保留；该 blocker 已由静态优先修订解除。本轮没有要求、生成或下载视频。
+- WBS 3.2 = **待审查**。只有本轮用户视觉验收通过且 PR 合入 develop 才可已完成。未自动合并，未启动 TASK-025.1-A / 3.2.1 / 3.3 / 3.4 / 3.5。
+- 下面所有旧版本、旧截图、disabled Login 和旧视觉范围描述均为历史记录，以本节为当前结果。
+
+---
+
 ## 2026-09-09 最新结果：全站珊瑚色
 
 **待审查**。用户进一步要求所有位置的品牌红棕色改为首页“让我们开始吧”的珊瑚色，明确覆盖前轮保持 PC/global 颜色的范围。

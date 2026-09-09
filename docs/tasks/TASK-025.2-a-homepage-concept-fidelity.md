@@ -774,3 +774,12 @@ git push --force-with-lease
 - User-concept background correction: `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`; existing Draft PR #252, same feature branch.
 - Runtime background: `public/media/home-concept/home-hero-sakura-sunset.webp`; source/authorization/prompt: `docs/assets/home-hero-sakura-sunset.provenance.json`.
 - 699 repository tests / 6 task tests PASS; Home 6/6; other-page geometry 20/20 unchanged. WBS 3.2 待审查，等待本次实际概念图版本的用户视觉验收。
+
+## Latest concept + Amendment v1.1 delivery — 2026-09-09
+
+- 最新概念 SHA-256：8b5086d888d745b9be1643c4b4b1ed94c54b1d682e9fa0bbd78d39d97c0d6c95；按用户指定优先级覆盖旧 Eyebrow、旧场景和 disabled Login 记录。
+- 基线 da43afe616ae08516b96599335a54a8ef163d8fd；merge a0a2f6e；实现 d6b105d099a06355fc8c24c9d4fc1b7236bb8863。
+- 新概念纯背景、真实账户适配、Help Popover、四个 Footer 入口与五个独立静态页面已完成，复用既有 Header / BrandLogo / AccountAvatar / 珊瑚 tokens。
+- 703 全仓 / 14 专项、lint/typecheck/build/素材/diff 检查通过；Home 6/6，Auth 15/15，其他页面几何 20/20。
+- 完整 Result：docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md；证据：docs/qa/TASK-025.2/v11-evidence.json。
+- 继续 Draft PR #252 → develop / Issue #251，WBS 3.2 待审查。无本轮视觉通过或合并，不启动下一任务。
