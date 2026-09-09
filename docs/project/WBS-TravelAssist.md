@@ -2,6 +2,8 @@
 
 ## TASK-025.2 v1.1 最新概念与辅助入口（待审查）
 
+- 用户最新背景补正：固定复用已保存的 home-hero-sakura-sunset.webp，与本次上传纯背景按原参数编码后的内容逐字节一致。v1.1 UI 保持，3.2 仍待审查；当前截图及报告采用 background-restored 前缀。
+
 - 按用户最新概念图 > Amendment v1.1 > 主 Task 的优先级执行；Owner A，Issue #251 / #246，沿用 feature/a-homepage-concept-fidelity 与 Draft PR #252。已整合 origin/develop@da43afe616ae08516b96599335a54a8ef163d8fd 的正式 v1.1 补充。
 - 本轮仅首页概念构图、真实用户入口的现有能力适配、Help Popover 与最小静态辅助页面。保留此前已实施的全站珊瑚配色，不改其他页面布局或业务；10.6 完整业务不启动。
 - 3.2 待审查；实现 d6b105d099a06355fc8c24c9d4fc1b7236bb8863，继续 Draft PR #252 / Issue #251。703 全仓、14 专项、Home 6/6、Auth 15/15、回归几何 20/20 通过；完整 Result 与 v11-evidence 已同步。

@@ -120,7 +120,7 @@ try {
     assert.ok(initial.poster.naturalWidth > 0);
     assert.ok(
       Number(new URL(initial.poster.currentSrc).searchParams.get("w")) >=
-        Math.min(1536, Math.max(width, height * 1.5)),
+        Math.min(1672, Math.max(width, (height * 1672) / 941)),
       "poster candidate must cover the viewport without low-resolution upscaling",
     );
     assert.equal(initial.cls, 0);
@@ -353,7 +353,7 @@ try {
   await slowPage.route("**/_next/image?*", async (route) => {
     if (
       decodeURIComponent(route.request().url()).includes(
-        "home-hero-fuji-coast-v11",
+        "home-hero-sakura-sunset",
       )
     )
       await imageGate;
@@ -400,7 +400,7 @@ try {
     requests,
     evidence,
     posterBytes: (
-      await stat("public/media/home-concept/home-hero-fuji-coast-v11.webp")
+      await stat("public/media/home-concept/home-hero-sakura-sunset.webp")
     ).size,
   };
   await writeFile(

@@ -2,11 +2,11 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import Image from "next/image";
-import homePoster from "../../../../public/media/home-concept/home-hero-fuji-coast-v11.webp";
+import homePoster from "../../../../public/media/home-concept/home-hero-sakura-sunset.webp";
 
 import styles from "./immersive-background.module.css";
 
-const POSTER_PATH = "/media/home-concept/home-hero-fuji-coast-v11.webp";
+const POSTER_PATH = "/media/home-concept/home-hero-sakura-sunset.webp";
 const WEBM_PATH = "/media/home/home-hero.webm";
 const MP4_PATH = "/media/home/home-hero.mp4";
 
@@ -22,7 +22,7 @@ export function PosterFallback() {
       className={styles.poster}
       fill
       preload
-      sizes="(max-aspect-ratio: 3/2) 150svh, 100vw"
+      sizes="(max-aspect-ratio: 1672/941) 178svh, 100vw"
       src={homePoster}
       placeholder="blur"
     />

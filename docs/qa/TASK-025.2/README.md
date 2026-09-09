@@ -1,5 +1,9 @@
 # TASK-025.2 visual comparison
 
+## 最新背景补正
+
+用户要求固定使用原樱花海岸电车背景，已恢复 home-hero-sakura-sunset.webp（与本次上传图转换后逐字节一致），v1.1 UI 不变。最新截图位于 .cache/qa/background-restored-home/，最新交互、布局、CLS 与请求见 background-restored-home-report.json。复现时设置 TASK_0252_REVIEW_NAME=background-restored 后执行现有 Home QA 脚本。下方 v11 同尺寸概念对照仅为历史记录。
+
 ## 最新验收：v1.1 / 2026-09-09
 
 本节覆盖下方旧概念、disabled Login 与旧背景的阶段记录。最新版概念为用户上传的 1536×1024 PNG（SHA-256 8b5086d888d745b9be1643c4b4b1ed94c54b1d682e9fa0bbd78d39d97c0d6c95）。使用它的纯场景衍生图，真实 HTML 提供 Header、Hero、Help、账户、AI 和 Footer。

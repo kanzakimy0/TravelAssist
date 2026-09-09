@@ -783,3 +783,7 @@ git push --force-with-lease
 - 703 全仓 / 14 专项、lint/typecheck/build/素材/diff 检查通过；Home 6/6，Auth 15/15，其他页面几何 20/20。
 - 完整 Result：docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md；证据：docs/qa/TASK-025.2/v11-evidence.json。
 - 继续 Draft PR #252 → develop / Issue #251，WBS 3.2 待审查。无本轮视觉通过或合并，不启动下一任务。
+
+## User background freeze — 2026-09-09
+
+用户最新要求固定使用上传的樱花海岸电车纯背景（codex-clipboard-4a5af8bb-563a-4898-9bbb-67bb17b6977d.png）。经逐字节编码比对，直接复用 public/media/home-concept/home-hero-sakura-sunset.webp；这条指令覆盖前轮概念背景选择。v1.1 的 Header、Hero、唯一 CTA、真实账户、Help / Footer / AI 与五个信息 route 保持。修正沿用 Draft PR #252，3.2 待审查。

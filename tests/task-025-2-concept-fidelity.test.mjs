@@ -157,7 +157,7 @@ test("runtime uses the user-concept background with traceable approval and intac
     ),
   );
   const asset = manifest.assets.find(
-    (a) => a.id === "home.global.background.fuji-coast.concept-v11.001",
+    (a) => a.id === "home.global.background.sakura-sunset.concept.001",
   );
   assert.equal(asset.status, "approved");
   assert.equal(asset.authenticity, "illustrative");

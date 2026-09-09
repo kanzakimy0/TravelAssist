@@ -1,6 +1,20 @@
 # TASK-025.2-A Result
 
-## 2026-09-09 当前结果：最新概念 + Amendment v1.1
+## 当前补正：保留用户指定的樱花海岸电车背景（2026-09-09）
+
+用户最新明确要求背景继续使用上传的纯场景图 H:/Temp/codex-clipboard-4a5af8bb-563a-4898-9bbb-67bb17b6977d.png。本条是当前背景选择的最终依据；前轮 v1.1 UI、Help、Footer、真实账户及珊瑚风格继续保留。
+
+- 正式背景恢复为 public/media/home-concept/home-hero-sakura-sunset.webp（1672×941 / 325542 bytes）。将本次用户 PNG 按原记录编码参数转换后，与该已有 WebP **逐字节完全一致**，因此直接复用已有资产，未生成或修改图片。
+- 用户 PNG SHA-256：f5ea2c83057981c7387ce1a16f7667190702eb3dc913034846fb03cd766c33b8；WebP SHA-256：f3674f3dcec4e3402e41ac402410005a1f5bf08ec3059ee6d163297dac96e578。确认记录补入既有素材 provenance。
+- 首页静态导入、preload、blur fallback 与 cover 尺寸提示同步恢复为 1672:941；Desktop 50%、Tablet 60%、Mobile 72% 裁切。只修改背景组件及对应验收接线。
+- 五尺寸加 reduced-motion 6/6 通过，CLS=0、无新增错误和视频请求；Header / Hero / CTA / Login / Help / Footer / AI 的几何与计算样式在六组中均与 v1.1 报告完全一致。
+- 标题、CTA、账户、使用指南、Footer、AI、其他页面与共享 tokens 不作本次修改。历史生成背景和所有旧证据保留归档。
+- lint、typecheck、production build、全仓 703/703 和 diff-check 通过。最新浏览器记录、资源请求与截图位于 docs/qa/TASK-025.2/background-restored-home-report.json；实际 PNG 位于 F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/background-restored-home/。
+- 沿用 Issue #251 / Draft PR #252，WBS 3.2 仍待审查，未合并。下方 v1.1 场景描述作为该轮历史保留，本节覆盖其中的背景选择。
+
+---
+
+## 2026-09-09 前轮结果：最新概念 + Amendment v1.1
 
 **状态：待审查。** 已完成新版首页实装和本轮验证；等待用户视觉验收。继续现有 Draft PR [#252](https://github.com/kanzakimy0/TravelAssist/pull/252) → develop，不自动合并。
 
