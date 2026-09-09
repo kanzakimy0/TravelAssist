@@ -1,0 +1,71 @@
+{
+  "task": "TASK-025-A",
+  "issue": 236,
+  "baseCommit": "5819270983b4682c76e9ed7c751be9e00612ca0a",
+  "finalDevelopCommit": "088f467b8ff666ddd9774f8d6b7ad351fd54f00a",
+  "implementationCommit": "adda614f15faa9cf713f54e73e0d90f67e3256c3",
+  "audit": {
+    "originVerified": true,
+    "existingQualityOrDeployWorkflow": false,
+    "githubEnvironmentCount": 0,
+    "githubActionsSecretNameCount": 0,
+    "approvedCloudTarget": false,
+    "unmergedSecurityBaselinePr": 231,
+    "unmergedObservabilityPr": 245
+  },
+  "stage1": {
+    "repositoryEnvironmentContract": "pass",
+    "testCases": 10,
+    "trustedRepositoryTargets": ["development/local"],
+    "previewPolicy": "fail-closed",
+    "productionPolicy": "fail-closed",
+    "cloudIsolation": "deferred-no-approved-target"
+  },
+  "stage2": {
+    "qualityWorkflow": "pass-run-34319110159-at-dfe084ef5add466ee76fd2ec617c91b994c66c6e",
+    "trustedReleaseWorkflow": "implemented-hosted-run-deferred-until-default-branch",
+    "artifactType": "next-standalone",
+    "artifactFileCount": 1650,
+    "artifactAudit": "pass",
+    "localRehearsal": "pass",
+    "health": {
+      "liveness": 200,
+      "readiness": 200,
+      "home": 200,
+      "planner": 200,
+      "productionRouteGuard": 503
+    },
+    "rehearsedArtifactCommit": "adda614f15faa9cf713f54e73e0d90f67e3256c3",
+    "rollbackControl": "cas-tests-pass-and-real-local-artifact-rollback-rehearsed",
+    "realPreview": "deferred-no-approved-target",
+    "realProduction": "not-authorized-not-run"
+  },
+  "browser": {
+    "runtime": "Chrome 152.0.7977.77",
+    "viewports": ["1440x900", "390x844"],
+    "routes": ["/", "/planner"],
+    "responses": 4,
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "unexpectedConsoleErrors": 0,
+    "knownBaselineDebt": "desktop Home emitted one generic resource 404"
+  },
+  "validation": {
+    "npmCi": "pass",
+    "deploymentTests": "10/10 pass",
+    "routingTests": "28/28 pass",
+    "repositoryTests": "693/693 pass",
+    "lint": "pass",
+    "typecheck": "pass",
+    "build": "pass",
+    "deployFormatScope": "pass",
+    "repositoryFormat": "existing-document-debt",
+    "diffCheck": "pass"
+  },
+  "externalWrites": {
+    "cloudDeployment": 0,
+    "dnsChanges": 0,
+    "remoteMigrations": 0,
+    "paidResources": 0
+  }
+}
