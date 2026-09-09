@@ -92,7 +92,10 @@ outside TASK-026 ownership, so this closeout does not claim a fully green reposi
 - Issue: #256 (Open).
 - Source Issue: #226 (Open).
 - Branch: `codex/a-trip-plan-schema`.
+- Acceptance / Result commit: `d1c71f97e83f9e25f67215f26ad98bb0191bd2aa`.
 - Draft PR: #227 → `develop`; remains Draft and unmerged.
+- GitHub Quality Gate on the acceptance commit: FAIL at `Run repository tests`, consistent with
+  the three full-suite failures documented above; all earlier CI steps passed.
 - WBS 8.5: `待审查`, not `已完成`.
 - Worktree: `I:\Users\kanza\AppData\Local\Temp\TravelAssist-trip-plan-schema`.
 
