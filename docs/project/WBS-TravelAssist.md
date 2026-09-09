@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-033-A / WBS 3.5 AI 悬浮入口（2026-09-10，前置阻塞）
+
+- Issue #263；Owner A / Website Entry / AI Shell；核对基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`。
+- 串行前置 TASK-030 / #260 与 TASK-031 / #261 仍为 Open，GitHub 无实现 PR、匹配远端分支或已合并 Result。用户说明 B 已在本地完成并要求本轮不重做，因此当前没有可依赖的已发布基线。
+- 本轮仅记录阻塞，不创建 `codex/a-ai-floating-entry` 实现分支，不修改运行时。文档分支 `docs/a-ai-floating-entry-blocked`，提交 `2c31fbe`，Draft PR [#271](https://github.com/kanzakimy0/TravelAssist/pull/271)。WBS 3.5 = `阻塞`；待 B 上传并安全整合 030/031 后从最新 develop 重启。
+
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
 - 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
@@ -712,7 +718,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
-| 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
+| 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 阻塞   |
 | 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 已完成 |
 | 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |
 | 3.8    | 主系统响应式 / 无障碍               | A      | P2     | 3.1-3.7  | 已完成 |
