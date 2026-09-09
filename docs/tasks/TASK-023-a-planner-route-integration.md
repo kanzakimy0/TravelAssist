@@ -4,7 +4,7 @@
 
 - Task ID: TASK-023-A
 - Owner: A / Main Travel System / Routing
-- Status: 待验收
+- Status: 已完成
 - WBS: 4.6 / 4.14 路线接线子集；7.5 / 7.8 合并后复验
 - Priority: P0
 - GitHub Issue: #234
@@ -13,7 +13,7 @@
 - Depends On: TASK-022-A / PR #233 已合并；执行时复检
 - Base Commit: `5383501192359abbd06c4585311d0362e9e7dbea`
 - Commit: `98b5404`（实现提交）
-- Pull Request: #241（Draft）
+- Pull Request: #241（已合并；merge `3085153`）
 - Authoring Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Result File: `docs/tasks/RESULT-TASK-023-a-planner-route-integration.md`
 

@@ -2,18 +2,19 @@
 
 ## Status
 
-待验收。Stage A 合并后复验与 Stage B Planner 开发期路线接线均已实现并通过可执行
-验收；真实駅すぱあと Evaluation 与真实 Mapbox 验收因本独立工作区未提供合法凭据而
-按 Task 规则列为 Deferred。未自动合并。
+已完成。用户明确要求合并后，Stage A 合并后复验与 Stage B Planner 开发期路线接线
+已随 PR #241 合入 `develop`。真实駅すぱあと Evaluation 与真实 Mapbox 验收因本独立
+工作区未提供合法凭据而按 Task 规则列为 Deferred。
 
 ## Tracking
 
-- Issue: #234（Open）
+- Issue: #234（合并收尾时关闭）
 - Branch: `codex/a-planner-route-integration`
-- Base / final develop: `5383501192359abbd06c4585311d0362e9e7dbea`
+- Base develop: `5383501192359abbd06c4585311d0362e9e7dbea`
+- Merged develop: `30851531b94be42703b0e9f9f69ec0f506ee5a69`
 - TASK-022 merge: PR #233 / `1af72af0d7151af4dd59073ee0b015a70b267064`
 - Implementation commit: `98b5404`
-- Draft PR: #241 — https://github.com/kanzakimy0/TravelAssist/pull/241
+- PR: #241（Merged）— https://github.com/kanzakimy0/TravelAssist/pull/241
 
 ## Prerequisite And Conflict Audit
 
@@ -96,9 +97,11 @@
 ## WBS Update
 
 - 7.3 保持 `待确认`：开发期 Provisional Provider = 駅すぱあと；生产商务 Gate 未关。
-- 7.5 更新为 `待审查`：TASK-022 Contract 合并后复验与本轮 hardening 完成。
-- 7.8 更新为 `待审查`：仅 Evaluation/development Planner subset；非生产完成。
-- 4.6 / 4.14 保持 `进行中`，仅登记本轮路线查询子集，不把完整视觉/重规划标完成。
+- 7.5 更新为 `已完成`：TASK-022 Contract 与 TASK-023 合并后复验/hardening 已合入。
+- 7.8 保持 `进行中`：TASK-023 Evaluation/development Planner subset 已合入，但生产
+  Gate 未关闭。
+- 4.6 / 4.14 保持 `进行中`，仅登记本轮路线查询子集已合入，不把完整视觉/重规划标
+  完成。
 - 7.10 / 7.11 未开始；未借本 Task 标记缓存或多 Provider 降级完成。
 
 ## Deferred And Manual Gates
@@ -121,5 +124,4 @@
 
 ## Stop
 
-Draft PR #241 保持 Draft / Open，未合并、未转 Ready，未执行 TASK-024 或其他后续
-Task。
+PR #241 已按用户明确指令合并；未执行 TASK-024 或其他后续 Task。

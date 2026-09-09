@@ -1,16 +1,17 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-023-A Planner 开发期路线接线（2026-09-09）
+## TASK-023-A Planner 开发期路线接线（2026-09-09，已合并）
 
 - Issue #234；分支 `codex/a-planner-route-integration`；基线
-  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；Draft PR #241，等待
-  审查。
+  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；PR #241 已按用户
+  明确指令合并，merge `30851531b94be42703b0e9f9f69ec0f506ee5a69`。
 - TASK-022 / PR #233 合并后复验通过；Route Contract/Adapter 补齐约束、JST 与
   分隔符防护，新增可信认证与生产 fail-closed 的受控 Route Handler。
 - Planner 仅对六个有官方证据的站点映射提供显式、可取消、会话级路线预览；结果
   不保存、不自动改行程、不叠加 Provider geometry。679 项全仓测试、28 项路线专项、
   lint/typecheck/build 与四尺寸浏览器 fallback 验收通过；live/真实 Mapbox Deferred。
-- 7.5 / 7.8 仅进入待审查；7.3 生产 Provider 保持待确认，4.6 / 4.14 仍为进行中。
+- 7.5 已完成；7.8 的开发期子集已合入但整体仍进行中；7.3 生产 Provider 保持待
+  确认，4.6 / 4.14 仍为进行中。
   Task/Result：`docs/tasks/TASK-023-a-planner-route-integration.md`、
   `docs/tasks/RESULT-TASK-023-a-planner-route-integration.md`。
 
@@ -665,7 +666,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.3    | 景点 Pin 组件                 | A      | P1     | 4.2,1.12     | 已完成 |
 | 4.4    | 住宿区域覆盖层                | A      | P1     | 4.2,1.12     | 已完成 |
 | 4.5    | 餐饮区域覆盖层                | A      | P1     | 4.2,1.12     | 已完成 |
-| 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中（TASK-023 开发期查询子集待审查） |
+| 4.6    | 多日路线视觉显示              | A      | P0     | 4.2,7.8      | 进行中（TASK-023 开发期查询子集已合入） |
 | 4.7    | 交通方式视觉显示              | A      | P0     | 4.6          | 已完成（本地交通分类视觉；非实时路线API） |
 | 4.8    | 底部时间轴基础                | A      | P0     | 1.17,4.1     | 已完成 |
 | 4.9    | 时间轴景点卡片                | A      | P1     | 4.8          | 已完成 |
@@ -673,7 +674,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.11   | 时间轴餐饮段                  | A      | P1     | 4.8          | 已完成 |
 | 4.12   | 时间轴住宿段                  | A      | P1     | 4.8          | 已完成 |
 | 4.13   | 推荐方案列表                  | A      | P0     | 1.11,4.1     | 已完成 |
-| 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中（TASK-023 请求隔离子集待审查） |
+| 4.14   | 方案切换 / 重新规划交互       | A      | P0     | 4.13,4.6,4.8 | 进行中（TASK-023 请求隔离子集已合入） |
 | 4.15   | Planner 状态模型 / Store      | A      | P0     | 2.6,5.11     | 进行中 |
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 已完成（#215 / #216；负责人批准的 v1.0 公开契约基线） |
@@ -781,10 +782,10 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2    | Places / POI Provider 选型    | A      | P0     | 1.10     | 未开始 |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
-| 7.5    | Route Schema                  | A      | P0     | 7.3      | 待审查（TASK-023-A 合并后复验与 hardening；TASK-022-A 已合并） |
+| 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
-| 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 待审查（TASK-023-A Evaluation/development Planner subset；Production Gate 未关闭） |
+| 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
@@ -803,10 +804,10 @@ TASK-022-A tracking (2026-09-09):
 TASK-023-A tracking (2026-09-09):
 
 - Issue #234；分支 `codex/a-planner-route-integration`；基线
-  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；Draft PR #241。
+  `5383501192359abbd06c4585311d0362e9e7dbea`；实现 `98b5404`；PR #241 已合并，
+  merge `3085153`。
 - PR #233 merge `1af72af0d7151af4dd59073ee0b015a70b267064` 已确认是基线祖先；
-  Stage A 合并后复验与 Stage B Planner 开发期路线接线已实现，等待 Draft PR
-  审查。
+  Stage A 合并后复验与 Stage B Planner 开发期路线接线已验收并合入 develop。
 - 仅实现显式、可取消、会话级路线预览；不持久化 Provider 查询结果，
   Evaluation 生产保护保持 fail-closed；live smoke 与真实 Mapbox 因隔离工作区无
   合法凭据延期。
