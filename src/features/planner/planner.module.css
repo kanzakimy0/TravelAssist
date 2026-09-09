@@ -2148,15 +2148,29 @@
     100% 100%;
   box-shadow: 0 2px 18px #6d425409;
 }
+.workspace {
+  height: calc(100dvh - 68px);
+}
+.rightSlot {
+  padding-top: 0;
+}
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 27px;
+  font-weight: 700;
   letter-spacing: -0.8px;
   flex-shrink: 0;
 }
 .brand > span {
+  display: grid;
+  place-items: center;
   background: none;
   border-radius: 0;
   width: 42px;
+  height: 42px;
+  color: #ed5b65;
 }
 .brand > span svg {
   width: 38px;
@@ -2164,7 +2178,9 @@
   stroke-width: 2.5;
 }
 .headerNav {
+  display: flex;
   font-size: 17px;
+  font-weight: 600;
   gap: 30px;
   white-space: nowrap;
 }
@@ -2246,8 +2262,11 @@
   transform: rotate(90deg);
 }
 .avatar {
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   background: #f8e6eb;
   outline: 1px solid #f0c9d1;
   color: #6e597a;
@@ -2266,8 +2285,10 @@
   box-shadow: -4px 0 24px #785a6808;
 }
 .quickSettings {
-  justify-content: center;
-  gap: 13px;
+  grid-template-rows: auto auto auto minmax(28px, 1fr) auto;
+  align-content: start;
+  justify-content: stretch;
+  gap: 12px;
 }
 .quickPair .quickCard {
   height: 108px;
@@ -2659,6 +2680,9 @@
 @media (max-width: 767px) {
   .header {
     gap: 10px;
+  }
+  .workspace {
+    height: calc(100dvh - 60px);
   }
   .brand {
     font-size: 19px;

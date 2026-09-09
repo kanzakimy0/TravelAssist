@@ -32,7 +32,7 @@ test("main-flow links use real destinations and keep login disabled", async () =
       read("../src/features/home/components/home-hero.tsx"),
       read("../src/features/start-flow/components/start-flow-header.tsx"),
       read("../src/features/start-flow/components/plan-selection-step.tsx"),
-      read("../src/features/planner/components/workspace-header.tsx"),
+      read("../src/features/planner/components/planner-header.tsx"),
       read("../src/components/layout/main-header.tsx"),
     ]);
 
@@ -44,7 +44,7 @@ test("main-flow links use real destinations and keep login disabled", async () =
   assert.match(plans, /router\.push\("\/planner"\)/);
   assert.match(plans, /进入详细路线/);
   assert.doesNotMatch(plans, /使用此方案并进入地图|已选择这个方案/);
-  assert.match(plannerWorkspace, /<MainHeader/);
+  assert.match(plannerWorkspace, /className=\{styles\.header\}/);
   assert.match(plannerWorkspace, /href="\/personal-center"/);
 });
 

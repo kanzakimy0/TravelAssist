@@ -54,10 +54,13 @@ test("product brands target home, both account variants retain GuardedLink", asy
   for (const file of [
     "src/features/home/home-page.tsx",
     "src/features/start-flow/components/start-flow-header.tsx",
-    "src/features/planner/components/workspace-header.tsx",
   ]) {
     assert.match(await read(file), /<MainHeader/, file);
   }
+  assert.match(
+    await read("src/features/planner/components/planner-header.tsx"),
+    /href="\/" className=\{styles\.brand\}/,
+  );
   const brands = links(
     await read("src/features/personal-center/components/personal-sidebar.tsx"),
   ).filter((link) => link["aria-label"] === "TravelAssist 首页");
