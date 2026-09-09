@@ -20,7 +20,7 @@
 - Related: [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)
 - Branch: `feature/a-homepage-concept-fidelity`
 - Implementation commit: `a965214b1845423d8ef263e499e8d4dca29f42b5`
-- Draft PR: PENDING_PR
+- Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)
 - WBS 3.2: **待审查**；3.2.1 / #247 **未开始 / Deferred**。
 
 ## Concept Fidelity

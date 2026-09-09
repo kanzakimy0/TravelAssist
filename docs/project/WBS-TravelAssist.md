@@ -5,7 +5,7 @@
 - Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
 - 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
 - PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
-- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；实现 `a965214b1845423d8ef263e499e8d4dca29f42b5`；Draft PR: PENDING_PR。
+- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；实现 `a965214b1845423d8ef263e499e8d4dca29f42b5`；Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)。
 - npm ci / lint / typecheck / build / diff-check 通过；698 项全仓测试、5 项专项通过；Home 五尺寸 + reduced-motion 6/6，其他页面几何 20/20 与最新 develop 一致。
 - 背景仍为正式海岸列车 Poster，缺少参考图樱花/粉色夕阳的差异已说明；未生成素材、伪造用户或改全局 token。Result：`docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`；证据：`docs/qa/TASK-025.2/README.md`。
 - 当前 3.2 待审查，用户本轮视觉通过并合入 develop 后才可完成；原 3.2 视频 Blocked 历史与其他工作站记录保留。

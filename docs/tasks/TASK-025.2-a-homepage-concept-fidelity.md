@@ -743,7 +743,7 @@ git push --force-with-lease
 ## Execution tracking — 2026-09-09
 
 - Base: `d9ee82f7515bfc09d61d07db0232a5af203c2d16`; startup `f85af85`; implementation `a965214b1845423d8ef263e499e8d4dca29f42b5`.
-- Branch: `feature/a-homepage-concept-fidelity`; Draft PR: PENDING_PR.
+- Branch: `feature/a-homepage-concept-fidelity`; Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252).
 - Result: `docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`; visual evidence: `docs/qa/TASK-025.2/README.md`.
 - 698 repository tests / 5 task tests PASS; Home 6/6; other-page geometry 20/20 unchanged. WBS 3.2 待审查，3.2.1 Deferred。
 - 等待本轮用户视觉验收；保留 Poster 与概念背景差异及真实游客状态；未开始后续 WBS。
