@@ -10,7 +10,7 @@ import { MapLayerToolbar } from "./map-layer-toolbar";
 import { PlannerIcon } from "./planner-icon";
 import { PlannerMapShell } from "./planner-map-shell";
 import { PlannerOverlay } from "./planner-overlay";
-import { PlannerHeader } from "./planner-header";
+import { WorkspaceHeader } from "./workspace-header";
 import styles from "../planner.module.css";
 import localSave from "../browser-trip.module.css";
 import { currentPlan, reservationLabel } from "../model/trip-model";
@@ -114,7 +114,7 @@ export function TripWorkspace({
       <a href="#planner-workspace" className={styles.skipLink}>
         跳到旅行工作区
       </a>
-      <PlannerHeader state={trip} dispatch={dispatch} />
+      <WorkspaceHeader />
       <main
         id="planner-workspace"
         tabIndex={-1}

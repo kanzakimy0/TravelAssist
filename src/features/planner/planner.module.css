@@ -1,11 +1,20 @@
 .planner {
   position: relative;
-  /* Shared TravelAssist palette; workspace density/geometry stays local. */
-  --planner-accent-soft: var(--color-bg-muted);
+  /* Planner-only palette; never leaks into the wizard or personal center. */
+  --color-bg-canvas: #faf6ef;
+  --color-bg-elevated: #fffcf7;
+  --color-bg-overlay: rgb(255 252 247 / 97%);
+  --color-text-primary: #343e48;
+  --color-text-secondary: #62584f;
+  --color-border-strong: #e4d9d0;
+  --color-accent-primary: #b95649;
+  --color-accent-primary-hover: #a04439;
+  --color-focus-ring: #914737;
+  --planner-accent-soft: #faeeeb;
   --planner-radius-card: 16px;
   --planner-radius-panel: 20px;
-  --planner-border: var(--color-border-subtle);
-  --planner-shadow: var(--elevation-card);
+  --planner-border: rgb(199 176 168 / 35%);
+  --planner-shadow: 0 8px 24px rgb(94 74 65 / 7%);
   --workspace-scenery: url("/media/start/sakura-coast-fuji-train-sunset.png");
   --workspace-glass: rgb(255 249 241 / 72%);
   height: 100dvh;
@@ -517,7 +526,7 @@
   inset: 0 0 auto;
   z-index: 12;
   pointer-events: none;
-  height: var(--main-header-height);
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -528,6 +537,23 @@
 }
 .header > :not([aria-hidden="true"]) {
   pointer-events: auto;
+}
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.brand > span {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--planner-accent-soft);
+  color: var(--color-accent-primary);
 }
 .headerTitle {
   display: flex;
@@ -1331,7 +1357,7 @@
   border: 1px solid var(--color-border-strong);
   border-radius: 20px;
   background: var(--color-bg-overlay);
-  box-shadow: var(--elevation-popover);
+  box-shadow: 0 16px 50px rgb(83 60 43 / 16%);
   backdrop-filter: blur(10px);
 }
 /* Manual popovers use the top layer; outside clicks still reach the page. */
@@ -1526,7 +1552,15 @@
 .headerNav a[aria-current] {
   color: var(--color-accent-primary);
 }
-
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9ece3;
+  border: 3px solid #fffdf8;
+}
 .quickPair .quickCard {
   height: 86px;
   gap: 3px;
@@ -1734,6 +1768,9 @@
     height: 60px;
     padding: 0 16px;
     gap: 12px;
+  }
+  .brand {
+    font-size: 17px;
   }
   .headerTitle {
     display: none;
@@ -2120,613 +2157,5 @@
   }
   .quickTriple .quickLabel {
     flex-direction: row;
-  }
-}
-
-/* Concept-reference refinement: the workspace tracks, right 1:1 split and
-   bottom height above deliberately remain unchanged. */
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-.header {
-  position: relative;
-  z-index: 45;
-  gap: clamp(16px, 2vw, 32px);
-  background: linear-gradient(100deg, #fff9f9, #fffefd 35%, #fff6f6);
-  background-image:
-    url("/media/planner/sakura-corner.svg"),
-    linear-gradient(100deg, #fff9f9, #fffefd 35%, #fff6f6);
-  background-repeat: no-repeat;
-  background-size:
-    145px auto,
-    100% 100%;
-  box-shadow: 0 2px 18px #6d425409;
-}
-.workspace {
-  height: calc(100dvh - 68px);
-}
-.rightSlot {
-  padding-top: 0;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 27px;
-  font-weight: 700;
-  letter-spacing: -0.8px;
-  flex-shrink: 0;
-}
-.brand > span {
-  display: grid;
-  place-items: center;
-  background: none;
-  border-radius: 0;
-  width: 42px;
-  height: 42px;
-  color: #ed5b65;
-}
-.brand > span svg {
-  width: 38px;
-  height: 38px;
-  stroke-width: 2.5;
-}
-.headerNav {
-  display: flex;
-  font-size: 17px;
-  font-weight: 600;
-  gap: 30px;
-  white-space: nowrap;
-}
-.headerNav a[aria-current] {
-  color: var(--color-text-primary);
-}
-.searchTrigger {
-  margin-left: auto;
-  width: clamp(220px, 25vw, 340px);
-  height: 42px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border: 1px solid #f0e8e8;
-  border-radius: 30px;
-  padding: 0 18px;
-  background: #fff;
-  box-shadow: 0 4px 15px #70506609;
-  color: var(--color-text-secondary);
-  text-align: left;
-  font-size: 14px;
-}
-.searchTrigger svg {
-  width: 23px;
-  height: 23px;
-  flex-shrink: 0;
-}
-.searchResults {
-  display: grid;
-  gap: 5px;
-  margin-top: 12px;
-}
-.searchResults button {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  text-align: left;
-  padding: 12px;
-  border: 1px solid var(--planner-border);
-  border-radius: 12px;
-  background: #fffaf9;
-}
-.searchResults small {
-  margin-left: auto;
-  color: var(--color-text-secondary);
-}
-.reminderButton {
-  position: relative;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 36px;
-  height: 40px;
-  border: 0;
-  background: none;
-  color: var(--color-text-primary);
-}
-.reminderButton svg {
-  width: 26px;
-  height: 26px;
-}
-.reminderButton i {
-  position: absolute;
-  right: 5px;
-  top: 6px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent-primary);
-  border: 1px solid #fff;
-}
-.accountLink {
-  margin-left: 0;
-  gap: 8px;
-}
-.accountLink > svg {
-  width: 16px;
-  height: 16px;
-  transform: rotate(90deg);
-}
-.avatar {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #f8e6eb;
-  outline: 1px solid #f0c9d1;
-  color: #6e597a;
-}
-.rightPanel {
-  border-radius: 22px 0 0 22px;
-  background: linear-gradient(145deg, #fffaf9, #fff5f4);
-  background-image:
-    url("/media/planner/sakura-corner.svg"),
-    linear-gradient(145deg, #fffaf9, #fff5f4);
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size:
-    180px auto,
-    100% 100%;
-  box-shadow: -4px 0 24px #785a6808;
-}
-.quickSettings {
-  grid-template-rows: auto auto auto minmax(28px, 1fr) auto;
-  align-content: start;
-  justify-content: stretch;
-  gap: 12px;
-}
-.quickPair .quickCard {
-  height: 108px;
-  justify-content: center;
-  gap: 7px;
-}
-.quickCard {
-  border-color: #eee5e340;
-  background: #fffefd;
-  box-shadow: 0 5px 18px #86657409;
-  border-radius: 18px;
-}
-.quickCard:hover {
-  border-color: #eeb4c0;
-  background: #fffafa;
-}
-.preferenceSummary {
-  display: grid;
-  gap: 2px;
-}
-.quickTriple .quickCard strong {
-  display: block;
-  flex-shrink: 0;
-  max-height: 3.25em;
-  overflow: hidden;
-}
-.quickLabel {
-  font-size: 17px;
-  gap: 8px;
-}
-.quickIcon {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #fcecf0;
-  color: #8c6f96;
-}
-.quickIcon svg {
-  width: 24px;
-  height: 24px;
-}
-.quickCard strong,
-.quickPair .quickCard strong {
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  line-height: 1.55;
-}
-.quickCard[data-quick-field="dates"] .quickIcon {
-  color: #535484;
-  background: #f0edf8;
-}
-.quickTriple .quickCard {
-  height: 132px;
-  padding: 12px 10px;
-  gap: 5px;
-}
-.quickTriple .quickLabel {
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  gap: 4px;
-  font-size: 15px;
-}
-.quickTriple .quickCard strong {
-  font-size: 14px;
-  -webkit-line-clamp: 3;
-}
-.quickTriple .quickIcon {
-  width: 32px;
-  height: 32px;
-  color: #cb647c;
-  background: #fff0f3;
-}
-.quickChevron {
-  color: #70809b;
-  top: 16px;
-}
-.planner .settingsButton {
-  height: 48px;
-  min-height: 48px;
-  border-radius: 13px;
-  background: #fffefd;
-  color: var(--color-text-primary);
-  border-color: #efe5e3;
-  font-size: 14px;
-  font-weight: 700;
-}
-.settingsButton svg {
-  width: 19px;
-  height: 19px;
-}
-.planner .replanButton {
-  color: #fff;
-  background: linear-gradient(120deg, #f47b8d, #ec5978);
-  border-color: #f4788d;
-  box-shadow: 0 5px 12px #e45e7817;
-}
-.planner .replanButton:hover {
-  background: #dd4e6b;
-}
-.mockStatus {
-  min-height: 28px;
-  font-size: 11px;
-}
-.recommendations {
-  border-top-color: #f4e9e7;
-  background: #fffdfa80;
-  gap: 11px;
-}
-.sectionTitle h2 {
-  font-size: 21px;
-  letter-spacing: 0;
-}
-.recommendations h2 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-.recommendations h2 svg {
-  color: #ee708b;
-  width: 24px;
-  height: 24px;
-}
-.recommendations .sectionTitle p {
-  font-size: 10px;
-}
-.planRow {
-  border-radius: 17px;
-  box-shadow: 0 4px 16px #83617207;
-  gap: 10px;
-}
-.planRow[aria-pressed="true"] {
-  background: #fff6f7;
-  border-color: #f27b94;
-  box-shadow: 0 0 0 1px #f8bcc526;
-}
-.planThumbnail {
-  width: 80px;
-  height: 100%;
-  max-height: 88px;
-  min-height: 56px;
-  object-fit: cover;
-  border-radius: 11px;
-}
-.planText {
-  gap: 6px;
-}
-.planNumber {
-  font-size: 12px;
-  font-weight: 700;
-  color: #e45977;
-}
-.planNumber b {
-  background: #ee6e87;
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 16px;
-  font-size: 10px;
-  white-space: nowrap;
-}
-.planText strong {
-  font-size: 16px;
-  line-height: 1.35;
-}
-.planText small {
-  font-size: 12px;
-  line-height: 1.5;
-}
-.planText .planDetails {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px 7px;
-  align-items: center;
-  font-size: 11px;
-}
-.planTags {
-  display: flex;
-  gap: 4px;
-  max-width: 100%;
-  overflow: hidden;
-}
-.planTags > span {
-  white-space: nowrap;
-  padding: 1px 6px;
-  border-radius: 12px;
-  background: #f5edf2;
-  color: #61728a;
-}
-.currentBooking {
-  font-size: 11px;
-  color: var(--color-text-secondary);
-}
-.currentBooking button {
-  background: #fff0f3;
-  color: #b33855;
-  border-color: #f2d3da;
-}
-.toolbar {
-  background: #fffdfbf7;
-  border-radius: 23px;
-  box-shadow: 0 8px 24px #5560781a;
-}
-.toolbarItems button {
-  min-height: 52px;
-  font-size: 13px;
-  color: var(--color-text-primary);
-}
-.toolbarItems button svg {
-  width: 23px;
-  height: 23px;
-}
-.toolbarItems button[aria-pressed="true"] {
-  background: #faf5f4;
-}
-.toolbarItems button[aria-pressed="true"] svg {
-  color: #4e6281;
-}
-.dayRange {
-  padding: 7px;
-  gap: 7px;
-  border-radius: 19px;
-  background: #fffdfbf5;
-}
-.dayRange > button {
-  font-size: 14px;
-  font-weight: 600;
-  min-height: 40px;
-  border: 1px solid #f1e9e7;
-  background: #fff;
-  box-shadow: 0 2px 7px #8c617509;
-}
-.bottomPanel {
-  background: #fffefd;
-  border-color: #f0e6e5;
-  border-radius: 22px;
-}
-.bottomTabs {
-  gap: 0;
-  justify-content: space-between;
-  background: linear-gradient(90deg, #fff6f6, #fcf9f8);
-  border-bottom-color: #f3e9e8;
-  border-radius: 14px;
-}
-.bottomTabs button {
-  flex: 1;
-  justify-content: center;
-  padding-inline: 7px;
-  font-size: 16px;
-  color: #4e6281;
-  min-height: 45px;
-  border-radius: 12px 12px 0 0;
-}
-.bottomTabs button svg {
-  width: 22px;
-  height: 22px;
-}
-.bottomTabs button[aria-selected="true"] {
-  background: #ffedf1;
-  color: #d74065;
-}
-.rangeHeading {
-  font-size: 14px;
-}
-.pinText {
-  fill: #263b60;
-  font-size: 14px;
-  font-weight: 700;
-}
-.mapInfo {
-  color: #52617b;
-  background: #fffdfbeb;
-}
-
-@media (min-width: 1200px) and (max-width: 1350px) {
-  .quickLabel {
-    font-size: 15px;
-  }
-  .quickIcon {
-    width: 30px;
-    height: 30px;
-  }
-  .quickPair .quickCard {
-    padding: 10px;
-  }
-  .quickTriple .quickLabel {
-    font-size: 14px;
-  }
-  .quickCard strong,
-  .quickPair .quickCard strong,
-  .quickTriple .quickCard strong {
-    font-size: 12px;
-  }
-  .quickTriple .quickCard {
-    padding: 8px;
-  }
-  .quickTriple .quickIcon {
-    width: 26px;
-    height: 26px;
-  }
-  .planThumbnail {
-    width: 62px;
-  }
-  .planText strong {
-    font-size: 14px;
-  }
-  .planNumber b {
-    padding-inline: 5px;
-    font-size: 9px;
-  }
-  .planText small {
-    font-size: 11px;
-  }
-  .sectionTitle h2 {
-    font-size: 18px;
-  }
-  .planner .settingsButton {
-    font-size: 12px;
-  }
-  .settingsButton svg {
-    width: 15px;
-    height: 15px;
-  }
-}
-@media (min-width: 1200px) and (max-height: 850px) {
-  .quickSettings {
-    gap: 10px;
-  }
-  .quickPair .quickCard {
-    height: 92px;
-  }
-  .quickTriple .quickCard {
-    height: 115px;
-  }
-  .planText {
-    gap: 3px;
-  }
-  .planThumbnail {
-    min-height: 40px;
-    max-height: 72px;
-  }
-}
-@media (min-width: 1200px) and (max-height: 740px) {
-  .quickSettings {
-    gap: 6px;
-  }
-  .quickPair .quickCard {
-    height: 72px;
-  }
-  .quickTriple .quickCard {
-    height: 86px;
-  }
-  .quickTriple .quickLabel {
-    font-size: 13px;
-  }
-  .quickTriple .quickIcon {
-    width: 25px;
-    height: 25px;
-  }
-  .quickTriple .quickCard strong {
-    font-size: 11px;
-  }
-  .planner .settingsButton {
-    height: 40px;
-    min-height: 40px;
-  }
-}
-@media (max-width: 1000px) {
-  .headerNav {
-    gap: 16px;
-    font-size: 14px;
-  }
-  .brand {
-    font-size: 22px;
-  }
-  .searchTrigger {
-    width: auto;
-    flex: 1;
-  }
-  .searchTrigger span {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-}
-@media (max-width: 767px) {
-  .header {
-    gap: 10px;
-  }
-  .workspace {
-    height: calc(100dvh - 60px);
-  }
-  .brand {
-    font-size: 19px;
-    gap: 5px;
-  }
-  .brand > span {
-    width: 28px;
-  }
-  .brand > span svg {
-    width: 28px;
-    height: 28px;
-  }
-  .headerNav,
-  .searchTrigger span,
-  .accountLink > svg {
-    display: none;
-  }
-  .searchTrigger {
-    flex: none;
-    width: 36px;
-    height: 36px;
-    padding: 6px;
-  }
-  .reminderButton {
-    width: 30px;
-  }
-  .avatar {
-    width: 34px;
-    height: 34px;
-  }
-  .accountLink {
-    gap: 0;
-  }
-  .toolbarItems button {
-    min-height: 46px;
-    font-size: 12px;
-  }
-  .bottomTabs {
-    justify-content: flex-start;
-    gap: 8px;
-  }
-  .bottomTabs button {
-    flex: none;
-    font-size: 14px;
-    padding-inline: 12px;
   }
 }

@@ -82,7 +82,7 @@ test("main route group includes Home, Start, and both workspace views while acco
   );
   assert.match(
     read("src/features/planner/components/trip-workspace.tsx"),
-    /<PlannerHeader/,
+    /<WorkspaceHeader/,
   );
 });
 test("Main and Personal Center consume the same palette without importing feature business modules", () => {
@@ -132,7 +132,7 @@ test("guest avatar never implies authenticated identity and the existing menu re
   );
   assert.match(menu, /usePersonalNavigationGuard/);
   assert.match(menu, /authRequest\("signout"\)/);
-  const main = read("src/features/planner/components/planner-header.tsx");
-  assert.match(main, /aria-label="个人中心"/);
+  const main = read("src/features/planner/components/workspace-header.tsx");
+  assert.match(main, /进入个人中心/);
   assert.doesNotMatch(main, /AvatarPopover|signOut|authRequest/);
 });

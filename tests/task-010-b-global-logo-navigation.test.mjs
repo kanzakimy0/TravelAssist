@@ -58,7 +58,7 @@ test("product brands target home, both account variants retain GuardedLink", asy
     assert.match(await read(file), /<MainHeader/, file);
   }
   assert.match(
-    await read("src/features/planner/components/planner-header.tsx"),
+    await read("src/features/planner/components/workspace-header.tsx"),
     /href="\/" className=\{styles\.brand\}/,
   );
   const brands = links(
