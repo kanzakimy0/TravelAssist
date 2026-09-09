@@ -98,6 +98,13 @@ The repository was rebuilt without the token after the attempt, proving the fina
 - Changed-file Prettier check: PASS.
 - `git diff --check`: PASS.
 
+## GitHub CI
+
+- Quality gate run: [#34371730330](https://github.com/kanzakimy0/TravelAssist/actions/runs/34371730330).
+- Result: FAILURE at `Run repository tests`; later steps were skipped by the workflow.
+- The Linux job reports the same three failures reproduced locally on the exact develop baseline: nightly verify-only, stale legacy design SVG inventory, and the existing direct-Node ESM import failure.
+- PR #245 is therefore Open / Draft / mergeable but `unstable`. This is reported explicitly and is not presented as a green hosted acceptance.
+
 ## Pre-existing Repository Debt
 
 The full suite is not claimed as green. The exact latest develop baseline and the integrated branch both fail the same three tests:

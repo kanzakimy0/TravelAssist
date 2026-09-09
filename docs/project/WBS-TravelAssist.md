@@ -6,6 +6,7 @@
 - 已正常整合并复验最新 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；整合验收 head `d9be32a903f87c6096e8c1785e31baa93c7aa11c`，证据提交 `e10df0358eeb646d166812df3c9c679c015764d4`。
 - 本地脱敏观测、真实 browser/server 错误链路、零外部观测请求、性能预算、320px 溢出、20 轮 Planner/Detail 生命周期与 routing 回归通过；WBS 9.11 保持 **待审查**。
 - 全仓 716/719；3 项失败在相同 develop 基线上逐项复现（素材目录陈旧 2 项、既有 Node ESM 扩展名问题 1 项），不归因于 TASK-028，也未过滤隐藏。
+- GitHub Quality gate run #34371730330 在 repository tests 阶段复现同三项后失败，PR #245 当前为 Open / Draft / unstable；Hosted CI 未冒称通过。
 - 本地许可 Mapbox 条件样本已真实尝试，但外部请求失败后应用安全回退，故 live Mapbox 性能证据 Deferred；外部 Collector、生产 RUM p75、报警送达与生产部署仍 Deferred。
 - Result：`docs/tasks/RESULT-TASK-028-a-observability-acceptance-closeout.md`。PR 未合并且尚无用户验收，不得标记 `已完成`。
 
