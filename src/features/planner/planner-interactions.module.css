@@ -206,6 +206,7 @@
   min-height: 28px;
 }
 .segment {
+  container-type: inline-size;
   position: absolute;
   top: 2px;
   height: 62px;
@@ -229,6 +230,19 @@
 }
 .segment strong {
   font-size: 12px;
+}
+.segmentArtwork {
+  float: left;
+  width: 38px;
+  height: 50px;
+  margin-right: 7px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+@container (max-width: 95px) {
+  .segmentArtwork {
+    display: none;
+  }
 }
 .segment small {
   font-size: 10px;
@@ -448,4 +462,65 @@
   .bands[data-compare="true"] .axis > small {
     display: none;
   }
+}
+
+/* Keep timeBandPosition's exact x/width and shared comparison axis intact. */
+.track {
+  border-bottom: 2px solid #f2a4b6;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(25% - 1px),
+    #eadce530 calc(25% - 1px) 25%
+  );
+}
+.segment {
+  border-color: #f0e4e7;
+  background: #fffafb;
+  box-shadow: 0 3px 8px #6c456909;
+  color: #2c4264;
+  border-radius: 10px;
+}
+.segment[data-kind="restaurant"] {
+  background: #fff3ef;
+}
+.segment[data-kind="hotel"] {
+  background: #f3f2f9;
+}
+.segment[data-kind="transport"],
+.segment[data-kind="movement"] {
+  background: #eef5fa;
+}
+.segment[data-kind="movement"] {
+  background: #9bbbd2;
+  border: 0;
+}
+.segment[aria-pressed="true"] {
+  outline-color: #ed718d;
+}
+.segment[data-risk="true"] {
+  border-color: #d56c81;
+}
+.bandMeta button {
+  color: #263b60;
+  font-size: 12px;
+}
+.axisTrack,
+.bandHint {
+  color: #66758c;
+}
+.bands:not([data-compare="true"]) .bandMeta {
+  font-size: 11px;
+  line-height: 1.65;
+}
+.bands:not([data-compare="true"]) .segment strong {
+  font-size: 13px;
+}
+.morphCard {
+  background: #fffdf9f7;
+  border-color: #eedbe1;
+  box-shadow: 0 12px 36px #59425c22;
+  color: #2c4264;
+}
+.localJudgement {
+  background: #fff0f3;
 }

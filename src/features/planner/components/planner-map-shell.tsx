@@ -409,18 +409,6 @@ function SchematicMap({
               strokeWidth={isLandmark(p) ? 4 : 2.5}
             />
             {isLandmark(p) && (
-              <g
-                transform={`translate(${x - 23} ${y - 23}) scale(.72)`}
-                fill="none"
-                stroke="#687b71"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d={landmarkPaths[landmarkKey(p.name)]} />
-              </g>
-            )}
-            {isLandmark(p) && (
               <SvgPlannerArtwork
                 artwork={destinationArtwork(p.name, p.type)}
                 x={x}

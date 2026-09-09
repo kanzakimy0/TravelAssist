@@ -116,3 +116,9 @@ TASK-008.2 / Issue #73 对应 PR [#83](https://github.com/kanzakimy0/TravelAssis
 ## Ready For Review
 
 Yes — 可进行人工代码与视觉审查。PR #85 保持 **Draft / 未合并** 以遵守用户“不自动 merge”：仓库现有 feature 自动合并工作流要求提交使用 `[skip ci]` 并保持 Draft。远端 CI 跳过不计为通过。完成后停止，不继续 TASK-010。
+
+## 本地视觉补充（2026-09-05）
+
+用户随后提供概念图并明确：75% / 25% 与底栏高度不变，其余视觉向概念图靠齐。本地补充已实现并通过 66 项测试、生产构建、五尺寸 Mapbox / fallback 和 Header 新入口检查。保留 v0.3 时间比例与交互，不回滚成旧概念图时间轴。
+
+本轮改动仍在工作树，**未提交、未推送、未合并**；上文 SHA / PR 内容仍代表此前已交付版本，不代表本地视觉补充已进入 GitHub。详见[视觉补充记录与截图](../qa/planner-concept-refinement/README.md)。

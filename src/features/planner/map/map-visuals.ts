@@ -39,6 +39,7 @@ export function travelBubbles(
   hints: Record<string, string>,
 ): TravelBubble[] {
   const result: TravelBubble[] = [];
+  const spans = new Map<string, number>();
   // Read existing mock leg captions; never estimate a duration or call routing.
   for (const route of view.routes.filter((r) => !r.context && r.day)) {
     for (let i = 0; i < route.coordinates.length - 1; i++) {
@@ -49,6 +50,7 @@ export function travelBubbles(
       );
       const label = place?.tripItemId && hints[place.tripItemId];
       if (!label || /步行/.test(label)) continue;
+      spans.set(`${route.id}-${i}`, Math.hypot(a[0] - b[0], a[1] - b[1]));
       result.push({
         id: `${route.id}-${i}`,
         coordinates: [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2],
@@ -56,8 +58,10 @@ export function travelBubbles(
       });
     }
   }
+  // At regional scale, short local legs collapse onto their destination's
+  // portrait. Prefer longer existing legs, then let the SDK avoid collisions.
   return result
-    .filter((_, i) => i % Math.max(1, Math.ceil(result.length / 3)) === 0)
+    .sort((a, b) => (spans.get(b.id) ?? 0) - (spans.get(a.id) ?? 0))
     .slice(0, 3);
 }
 
@@ -65,21 +69,32 @@ export function warmMapStyle(map: MapboxMap) {
   for (const layer of map.getStyle()?.layers ?? []) {
     const id = layer.id;
     if (layer.type === "background")
-      map.setPaintProperty(id, "background-color", "#f1efe5");
+      map.setPaintProperty(id, "background-color", "#f5f0e4");
     else if (layer.type === "fill") {
-      if (/water/.test(id)) map.setPaintProperty(id, "fill-color", "#cbdcdb");
-      else if (/landuse|landcover|park/.test(id))
-        map.setPaintProperty(id, "fill-color", "#dfe4d5");
+      if (/water/.test(id)) map.setPaintProperty(id, "fill-color", "#acd4e3");
+      // Preserve Outdoors landcover / terrain distinctions instead of painting
+      // every vegetation and relief layer the same flat grey-green.
+      else if (/park/.test(id))
+        map.setPaintProperty(id, "fill-color", "#cbdcbc");
       else if (/building/.test(id))
-        map.setPaintProperty(id, "fill-color", "#e7e0d5");
+        map.setPaintProperty(id, "fill-color", "#ece2d4");
     } else if (layer.type === "line" && /road|bridge|tunnel/.test(id)) {
       map.setPaintProperty(
         id,
         "line-color",
-        /case|outline/.test(id) ? "#e0d8c9" : "#fffaf0",
+        /case|outline/.test(id) ? "#ded5be" : "#fff9e8",
       );
-    } else if (layer.type === "symbol" && /poi-label/.test(id)) {
-      map.setLayoutProperty(id, "visibility", "none");
+    } else if (layer.type === "symbol") {
+      if (/poi-label/.test(id)) map.setLayoutProperty(id, "visibility", "none");
+      else if (/settlement|state-label|country-label|water.*label/.test(id)) {
+        map.setLayoutProperty(id, "text-field", [
+          "coalesce",
+          ["get", "name_zh-Hans"],
+          ["get", "name_ja"],
+          ["get", "name"],
+        ]);
+        map.setPaintProperty(id, "text-color", "#4d6481");
+      }
     }
   }
 }
@@ -88,7 +103,12 @@ export async function installMapArtwork(
   map: MapboxMap,
   active: () => boolean = () => true,
 ) {
-  const images = Object.entries(landmarkPaths).map(([key, path]) => [
+  const { plannerArtwork, mapArtworkUrl } =
+    await import("../data/planner-artwork");
+  const images = Object.entries({
+    ...landmarkPaths,
+    skytree: landmarkPaths.tower,
+  }).map(([key, path]) => [
     `landmark-${key}`,
     `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 64 64"><circle cx="32" cy="33" r="30" fill="#655b5018"/><circle cx="32" cy="31" r="28" fill="#e4e7dc" stroke="#fffdf8" stroke-width="4"/><g transform="translate(10 9) scale(.68)" fill="none" stroke="#63716c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="${path}"/></g></svg>`,
   ]);
@@ -108,6 +128,40 @@ export async function installMapArtwork(
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
       ctx.drawImage(img, 0, 0);
+      const artwork =
+        plannerArtwork[
+          key.replace("landmark-", "") as keyof typeof plannerArtwork
+        ];
+      if (artwork) {
+        // Local editorial artwork can fail independently: retain the existing
+        // line-art fallback rather than disabling the entire interactive map.
+        try {
+          const photo = new Image();
+          photo.src = mapArtworkUrl(artwork);
+          await photo.decode();
+          if (!active()) return;
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(64, 62, 52, 0, Math.PI * 2);
+          ctx.clip();
+          const side = Math.min(photo.width, photo.height);
+          ctx.drawImage(
+            photo,
+            (photo.width - side) / 2,
+            (photo.height - side) / 2,
+            side,
+            side,
+            12,
+            10,
+            104,
+            104,
+          );
+          ctx.restore();
+        } catch {
+          /* the previously rendered line art remains usable */
+        }
+      }
+      if (!active()) return;
       map.addImage(key, ctx.getImageData(0, 0, canvas.width, canvas.height), {
         pixelRatio: 2,
       });

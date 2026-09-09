@@ -32,7 +32,10 @@ export function PlanRecommendationList({
       aria-labelledby="recommendations-title"
     >
       <div className={styles.sectionTitle}>
-        <h2 id="recommendations-title">推荐方案</h2>
+        <h2 id="recommendations-title">
+          <PlannerIcon name="sparkle" />
+          推荐方案
+        </h2>
         <p>3 个方案 · 随心切换</p>
       </div>
       <div className={styles.planList}>

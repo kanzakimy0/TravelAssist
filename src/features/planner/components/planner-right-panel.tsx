@@ -55,8 +55,7 @@ export function PlannerRightPanel({
         data-right-upper
         aria-labelledby="settings-title"
       >
-        <div className={styles.sectionTitle}>
-          <span className={styles.eyebrow}>YOUR JOURNEY</span>
+        <div className={styles.srOnly}>
           <h2 id="settings-title">让旅程，更合您心意</h2>
         </div>
         <TripQuickSettings state={state} dispatch={dispatch} />
