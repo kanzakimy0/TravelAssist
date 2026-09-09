@@ -3,6 +3,8 @@ import { join } from "node:path";
 
 import Image from "next/image";
 
+import homePoster from "../../../../public/media/home/home-hero-poster.webp";
+
 import styles from "./immersive-background.module.css";
 
 const POSTER_PATH = "/media/home/home-hero-poster.webp";
@@ -14,6 +16,9 @@ interface VideoBackgroundProps {
   hasWebm: boolean;
 }
 
+/** Approved production background for 3.2; also the fallback for future 3.2.1.
+ * Static metadata provides a tiny inline blur preview while the preload resolves.
+ */
 export function PosterFallback() {
   return (
     <Image
@@ -22,7 +27,8 @@ export function PosterFallback() {
       fill
       preload
       sizes="100vw"
-      src={POSTER_PATH}
+      placeholder="blur"
+      src={homePoster}
     />
   );
 }
