@@ -1,3 +1,4 @@
+import { displayRouteColor } from "../map/route-color";
 import type { MockPlan } from "../model/planner-types";
 import { planArtwork } from "../data/planner-artwork";
 import { PlannerArtworkImage } from "./planner-artwork";
@@ -130,7 +131,7 @@ function PlanThumbnail({ plan }: { plan: MockPlan }) {
           points={day.stops
             .map((stop) => `${8 + stop.x / 12},${8 + stop.y / 8}`)
             .join(" ")}
-          stroke={day.color}
+          stroke={displayRouteColor(day.color)}
           strokeWidth="2"
           fill="none"
         />

@@ -1,5 +1,13 @@
 # TASK-025.2-A — Homepage Concept Fidelity Implementation
 
+## 2026-09-09 最新用户追加：全站红棕品牌色改为首页 CTA 珊瑚色
+
+用户用截图指出下一步、步骤圆点、重新规划、进入详情、详情竖标签与地图主路线，并明确“别的地方红棕色，也要改成珊瑚色”。本轮因此扩大颜色范围到全站，包括 Personal Center 的偏好、旅行、同行人、账户及 Auth 页面；以下前轮“Home / Personal Center 与 global 保持不动”的限制在颜色层面由此明确覆盖。复用已有 token 系统，原样提取首页 CTA 渐变为唯一共享填充，保留所有布局、业务行为与状态含义。当前待审查，未合并。
+
+## 2026-09-09 前轮用户追加：其余主系统页面视觉同步
+
+用户在首页概念实装后要求其余页面同步风格，并进一步明确“个人中心和首页现在已经统一了”。本轮以当前 Home / Personal Center 为固定视觉基准，只调整 Start / Planner / Trip Detail 的背景、表面、文字、品牌强调、边框、阴影和焦点样式。保留全部布局几何与业务行为；不改 Home、Personal Center、全局 tokens 或共享 Header / Logo / Avatar 实现。该追加范围优先于下文原始 Home-only 限制，原始任务与历史结果继续保留。原 WBS 3.1 已完成记录不回退；本次作为 PR #252 的品牌同步 follow-up，已完成实现与验证，待审查。
+
 ## Metadata
 
 - Task ID: `TASK-025.2-A`
@@ -7,7 +15,7 @@
 - Owner: `A`
 - Responsibility: `Main Travel System / Website Entry`
 - Priority: `P1`
-- Status: `可开始`
+- Status: `待审查`
 - GitHub Issue: `#251`
 - Related Issue: `#246`（TASK-025-A / 3.2 static-first MVP）
 - Depends On: `TASK-024-A / WBS 3.1 completed`
@@ -123,17 +131,17 @@ assets/design/homepage/homepage-concept-static-v1.png
 
 以 1672×941 为 canonical desktop ratio，视觉位置控制在以下范围：
 
-| 元素 | 目标区域 |
-| --- | --- |
-| Brand | 左 3%–5%，上 3%–5% |
-| Language | 右 4%–6%，上 3%–5% |
-| Hero 内容中心线 | x ≈ 50% |
-| Eyebrow | y ≈ 22%–25% |
-| 主标题 | y ≈ 29%–39% |
-| 副标题 | y ≈ 42%–46% |
-| CTA | y ≈ 48%–58% |
-| Personal Center / Login | y ≈ 60%–68% |
-| AI | 右 3%–5%，下 5%–8% |
+| 元素                    | 目标区域           |
+| ----------------------- | ------------------ |
+| Brand                   | 左 3%–5%，上 3%–5% |
+| Language                | 右 4%–6%，上 3%–5% |
+| Hero 内容中心线         | x ≈ 50%            |
+| Eyebrow                 | y ≈ 22%–25%        |
+| 主标题                  | y ≈ 29%–39%        |
+| 副标题                  | y ≈ 42%–46%        |
+| CTA                     | y ≈ 48%–58%        |
+| Personal Center / Login | y ≈ 60%–68%        |
+| AI                      | 右 3%–5%，下 5%–8% |
 
 不要求机械使用绝对像素，但相对节奏必须接近。
 
@@ -652,11 +660,13 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 ## Status
 
 ## Preflight
+
 - execution base:
 - WBS 3.2 before:
 - TASK-024 merged:
 
 ## Tracking
+
 - Issue #251:
 - Related #246:
 - Branch:
@@ -665,6 +675,7 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 - WBS 3.2:
 
 ## Concept Fidelity
+
 - header:
 - hero center:
 - eyebrow:
@@ -676,11 +687,13 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 - background/crop:
 
 ## Auth Boundary
+
 - logged-in behavior:
 - guest behavior:
 - hard-coded fake identity: No
 
 ## Responsive QA
+
 - 1672x941:
 - 1440x900:
 - 1024x768:
@@ -688,12 +701,14 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 - 320x568:
 
 ## Regression
+
 - Start:
 - Planner:
 - Detail:
 - Personal Center:
 
 ## Validation
+
 - lint:
 - typecheck:
 - build:
@@ -706,9 +721,11 @@ WBS 冲突必须逐段合并，禁止整份 ours / theirs。
 ## Problems / Deferred
 
 ## WBS Updated
+
 Yes / No
 
 ## Next Task
+
 Do not start automatically.
 ```
 
@@ -739,3 +756,34 @@ git push --force-with-lease
 - WBS 3.3
 - WBS 3.4
 - WBS 3.5
+
+## First delivery tracking — 2026-09-09 (superseded by user visual correction)
+
+- Base: `d9ee82f7515bfc09d61d07db0232a5af203c2d16`; startup `f85af85`; implementation `a965214b1845423d8ef263e499e8d4dca29f42b5`.
+- Branch: `feature/a-homepage-concept-fidelity`; Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252).
+- Result: `docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`; visual evidence: `docs/qa/TASK-025.2/README.md`.
+- 698 repository tests / 5 task tests PASS; Home 6/6; other-page geometry 20/20 unchanged. WBS 3.2 待审查，3.2.1 Deferred。
+- 等待本轮用户视觉验收；保留 Poster 与概念背景差异及真实游客状态；未开始后续 WBS。
+
+## User visual correction — 2026-09-09
+
+用户明确要求最终网页呈现所提供概念图的效果；本条覆盖第 10 节“保留当前 Poster 并记录差异”的降级选项。授权以用户本地概念图为编辑目标，去除 UI 后得到樱花/夕阳/海岸列车纯背景，并接入真实组件。原 Poster 保留归档，不再作为本次 Home 运行时背景。其余真实导航、Auth 边界及其他页面几何约束继续有效。修正期间 3.2 进行中，重新验证后待审查。
+
+## Corrected delivery tracking
+
+- User-concept background correction: `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`; existing Draft PR #252, same feature branch.
+- Runtime background: `public/media/home-concept/home-hero-sakura-sunset.webp`; source/authorization/prompt: `docs/assets/home-hero-sakura-sunset.provenance.json`.
+- 699 repository tests / 6 task tests PASS; Home 6/6; other-page geometry 20/20 unchanged. WBS 3.2 待审查，等待本次实际概念图版本的用户视觉验收。
+
+## Latest concept + Amendment v1.1 delivery — 2026-09-09
+
+- 最新概念 SHA-256：8b5086d888d745b9be1643c4b4b1ed94c54b1d682e9fa0bbd78d39d97c0d6c95；按用户指定优先级覆盖旧 Eyebrow、旧场景和 disabled Login 记录。
+- 基线 da43afe616ae08516b96599335a54a8ef163d8fd；merge a0a2f6e；实现 d6b105d099a06355fc8c24c9d4fc1b7236bb8863。
+- 新概念纯背景、真实账户适配、Help Popover、四个 Footer 入口与五个独立静态页面已完成，复用既有 Header / BrandLogo / AccountAvatar / 珊瑚 tokens。
+- 703 全仓 / 14 专项、lint/typecheck/build/素材/diff 检查通过；Home 6/6，Auth 15/15，其他页面几何 20/20。
+- 完整 Result：docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md；证据：docs/qa/TASK-025.2/v11-evidence.json。
+- 继续 Draft PR #252 → develop / Issue #251，WBS 3.2 待审查。无本轮视觉通过或合并，不启动下一任务。
+
+## User background freeze — 2026-09-09
+
+用户最新要求固定使用上传的樱花海岸电车纯背景（codex-clipboard-4a5af8bb-563a-4898-9bbb-67bb17b6977d.png）。经逐字节编码比对，直接复用 public/media/home-concept/home-hero-sakura-sunset.webp；这条指令覆盖前轮概念背景选择。v1.1 的 Header、Hero、唯一 CTA、真实账户、Help / Footer / AI 与五个信息 route 保持。修正沿用 Draft PR #252，3.2 待审查。

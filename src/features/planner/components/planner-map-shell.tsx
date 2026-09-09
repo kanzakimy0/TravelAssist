@@ -1,3 +1,4 @@
+import { displayRouteColor } from "../map/route-color";
 import {
   useEffect,
   useEffectEvent,
@@ -304,7 +305,7 @@ function SchematicMap({
           data-route-id={route.id}
           d={path(route.coordinates)}
           fill="none"
-          stroke={route.color}
+          stroke={displayRouteColor(route.color)}
           strokeWidth={route.context ? 3.2 : 5}
           opacity={route.context ? 0.25 : 0.85}
           strokeLinecap="round"
@@ -396,7 +397,7 @@ function SchematicMap({
                 cy={y}
                 r={isLandmark(p) ? 34 : 18}
                 fill="none"
-                stroke="#a74739"
+                stroke="#e95b4b"
                 strokeWidth="3"
               />
             )}
@@ -405,7 +406,7 @@ function SchematicMap({
               cy={y}
               r={isLandmark(p) ? 29 : 9}
               fill={p.tripStatus === "recommended" ? "#e9e4db" : "#fffaf4"}
-              stroke={isLandmark(p) ? "#fffdf8" : "#b66c5d"}
+              stroke={isLandmark(p) ? "#fffdf8" : "#e95b4b"}
               strokeWidth={isLandmark(p) ? 4 : 2.5}
             />
             {isLandmark(p) && (

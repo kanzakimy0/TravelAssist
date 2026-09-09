@@ -9,7 +9,7 @@
   --pc-text-secondary: var(--color-text-secondary);
   --pc-border-subtle: var(--color-border-subtle);
   --pc-nav-active-bg: #fae9e2;
-  --pc-nav-active-text: #a14336;
+  --pc-nav-active-text: var(--color-accent-primary);
   --pc-focus-ring: var(--color-focus-ring);
   --pc-shadow: var(--elevation-card);
   --pc-font-heading: var(--font-heading);
@@ -160,7 +160,7 @@
   border: 1px solid #e3c6b6;
   border-radius: 50%;
   background: linear-gradient(145deg, #f7ddcb, #edd0c9);
-  color: #704c40;
+  color: var(--color-accent-primary);
   font-family: var(--pc-font-heading);
 }
 
@@ -623,7 +623,7 @@
   border: 1px solid transparent;
   border-radius: 14px;
   color: #fffaf6;
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
   font-size: 14px;
   font-weight: 600;
 }
@@ -692,7 +692,7 @@
 }
 
 .tripCard:hover {
-  border-color: #c99d87;
+  border-color: var(--color-accent-primary);
   box-shadow: 0 12px 30px rgb(113 78 59 / 12%);
 }
 
@@ -786,7 +786,7 @@
 }
 
 a.featureCard:hover {
-  border-color: #c99d87;
+  border-color: var(--color-accent-primary);
   background: var(--pc-bg-card);
 }
 
@@ -854,7 +854,7 @@ a.featureCard:hover {
   height: 40px;
   flex: 0 0 auto;
   border-radius: 50%;
-  color: var(--pc-accent-primary, #a74739);
+  color: var(--pc-accent-primary);
   background: var(--pc-accent-soft, #f9e7e0);
   font-weight: 700;
 }
@@ -891,9 +891,9 @@ a.featureCard:hover {
 }
 
 .unsavedDialogActions button:last-child {
-  border-color: var(--pc-accent-primary, #a74739);
+  border-color: var(--pc-accent-primary);
   color: #fffaf6;
-  background: var(--pc-accent-primary, #a74739);
+  background: var(--background-accent-primary);
 }
 
 .placeholder {

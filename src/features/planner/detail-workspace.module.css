@@ -49,7 +49,7 @@
   padding: 9px 5px;
   border: 1px solid var(--planner-border);
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   text-align: center;
 }
 
@@ -90,7 +90,7 @@
   margin-top: 10px;
   border: 1px solid var(--planner-border);
   border-radius: 15px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   box-shadow: 0 5px 16px rgb(94 74 65 / 5%);
 }
 
@@ -238,7 +238,7 @@
   padding: 8px 10px;
   border: 1px solid #ddc5b8;
   border-radius: 10px;
-  background: #fffaf5;
+  background: var(--color-bg-elevated);
   color: #805646;
   font: inherit;
   font-size: 12px;
@@ -250,7 +250,7 @@
   width: 12px;
   height: 12px;
   left: -6px;
-  background: #c35a4b;
+  background: var(--background-accent-primary);
 }
 .sightsTimeline {
   display: flex;
@@ -267,14 +267,14 @@
 }
 .sightsTimeline[data-compare="true"] .sightsDay {
   flex: 1 0 480px;
-  border-right: 1px solid #ddc7ba;
+  border-right: 1px solid var(--color-border-subtle);
 }
 .sightsDayLabel {
   align-self: flex-start;
   border: 0;
   padding: 0 12px;
   background: transparent;
-  color: #9d6453;
+  color: var(--color-accent-primary);
   font-size: 11px;
   cursor: pointer;
 }
@@ -308,7 +308,7 @@
 }
 .railEmpty {
   padding: 18px;
-  color: #60594f;
+  color: var(--color-text-secondary);
   font-size: 13px;
 }
 @media (max-width: 767px) {
@@ -343,8 +343,8 @@
 
 .aiActions button:last-child {
   border-color: var(--color-accent-primary);
-  background: var(--color-accent-primary);
-  color: #fffdf8;
+  background: var(--background-accent-primary);
+  color: var(--color-bg-elevated);
 }
 
 .saveStatus {
@@ -424,13 +424,13 @@
   padding: 8px 3px;
   border: 1px solid #e2cdbb;
   border-radius: 8px;
-  background: #fffaf3;
+  background: var(--color-bg-elevated);
   color: #755344;
   cursor: pointer;
 }
 .projectTypes button[aria-pressed="true"] {
-  background: #b6604f;
-  border-color: #b6604f;
+  background: var(--background-accent-primary);
+  border-color: var(--color-accent-primary);
   color: white;
 }
 
@@ -440,7 +440,7 @@
   padding: 7px 12px;
   border: 1px solid var(--planner-border);
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   color: inherit;
   text-align: left;
 }
@@ -481,7 +481,12 @@
   right: 18px;
   left: 18px;
   height: 2px;
-  background: linear-gradient(90deg, #d9cbc3, #c35a4b, #d9cbc3);
+  background: linear-gradient(
+    90deg,
+    #d9cbc3,
+    var(--color-accent-primary),
+    #d9cbc3
+  );
 }
 
 .railItem {
@@ -501,7 +506,7 @@
   place-items: center;
   width: 24px;
   height: 24px;
-  border: 2px solid #fffdf9;
+  border: 2px solid var(--color-bg-elevated);
   border-radius: 50%;
   background: #38765a;
   color: white;
@@ -624,8 +629,8 @@
   width: 28px;
   border: 1px solid var(--planner-border);
   border-radius: 10px;
-  background: #fffaf5;
-  color: #384955;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 @media (max-width: 767px) {
@@ -721,7 +726,7 @@
   padding: 13px;
   border: 1px solid var(--planner-border);
   border-radius: 14px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
 }
 
 .dialogSection h3 {
@@ -771,7 +776,7 @@
   padding: 8px 10px;
   border: 1px solid var(--planner-border);
   border-radius: 10px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   color: var(--color-text-primary);
   font: inherit;
 }
@@ -799,8 +804,8 @@
 .itemDialog footer button:first-child,
 .itemDialog footer button:last-child {
   border-color: var(--color-accent-primary);
-  background: var(--color-accent-primary);
-  color: #fffdf8;
+  background: var(--background-accent-primary);
+  color: var(--color-bg-elevated);
 }
 
 .srOnly {
@@ -943,13 +948,13 @@
 }
 .projectLocation button[aria-pressed="true"] {
   background: #f3d1be;
-  border-color: #a7523f;
+  border-color: var(--color-accent-primary);
 }
 .conflictTest {
   margin: 12px 0;
   padding: 10px;
-  border: 1px dashed #bd6759;
+  border: 1px dashed var(--color-accent-primary);
   border-radius: 9px;
   font-size: 12px;
-  color: #9b3f34;
+  color: var(--color-accent-primary);
 }

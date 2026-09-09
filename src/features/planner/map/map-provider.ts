@@ -1,3 +1,4 @@
+import { displayRouteColor } from "./route-color";
 import type {
   GeoJSONSource,
   LayerSpecification,
@@ -22,7 +23,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
         properties: {
           id: route.id,
           context: route.context,
-          color: route.color,
+          color: displayRouteColor(route.color),
           label: route.label,
         },
         geometry: { type: "LineString", coordinates: route.coordinates },
@@ -46,7 +47,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
           type: place.type,
           label: place.label,
           artworkKey: destinationArtwork(place.name, place.type)?.id ?? "",
-          color: place.color,
+          color: displayRouteColor(place.color),
           recommended: place.tripStatus === "recommended",
           status: place.reservationStatus ?? "not_required",
           selected: Boolean(
@@ -183,7 +184,7 @@ export const plannerLayers: LayerSpecification[] = [
         13,
       ],
       "circle-color": "rgba(0,0,0,0)",
-      "circle-stroke-color": "#a74739",
+      "circle-stroke-color": "#e95b4b",
       "circle-stroke-width": 3,
     },
   },

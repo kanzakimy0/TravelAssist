@@ -103,7 +103,7 @@ export function withDraftMapPlaces(
         day: item.day,
         tripStatus: "selected" as const,
         label: `${item.title} · ${item.location!.source === "manual" ? "手动位置" : "目录匹配"}`,
-        color: "#ab674b",
+        color: "#e95b4b",
         focused: item.id === selectedId,
       })),
     ],

@@ -1,5 +1,38 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-025.2 v1.1 最新概念与辅助入口（待审查）
+
+- 用户最新背景补正：固定复用已保存的 home-hero-sakura-sunset.webp，与本次上传纯背景按原参数编码后的内容逐字节一致。v1.1 UI 保持，3.2 仍待审查；当前截图及报告采用 background-restored 前缀。
+
+- 按用户最新概念图 > Amendment v1.1 > 主 Task 的优先级执行；Owner A，Issue #251 / #246，沿用 feature/a-homepage-concept-fidelity 与 Draft PR #252。已整合 origin/develop@da43afe616ae08516b96599335a54a8ef163d8fd 的正式 v1.1 补充。
+- 本轮仅首页概念构图、真实用户入口的现有能力适配、Help Popover 与最小静态辅助页面。保留此前已实施的全站珊瑚配色，不改其他页面布局或业务；10.6 完整业务不启动。
+- 3.2 待审查；实现 d6b105d099a06355fc8c24c9d4fc1b7236bb8863，继续 Draft PR #252 / Issue #251。703 全仓、14 专项、Home 6/6、Auth 15/15、回归几何 20/20 通过；完整 Result 与 v11-evidence 已同步。
+- 等待本轮用户视觉验收；不自动合并，不启动 3.2.1 / 3.3 / 3.4 / 3.5。
+
+## 全站珊瑚品牌色跟进（2026-09-09，待审查）
+
+- 用户追加“别的地方红棕色也要改成珊瑚色”，本轮覆盖 Home CTA 同系填充、Start/Planner/Detail、PC 各子页及 Auth 的品牌颜色；以此覆盖前轮 PC/global 颜色不改限制。仅颜色与旧保存路线的显示适配，所有布局和业务数据保持。
+- Owner A；沿用 Issue #251/#246、`feature/a-homepage-concept-fidelity`、Draft PR #252。实现 `bb0cf18b14afe51f2fdc204782e28f455ab0263c`；701 tests、lint/typecheck/build 通过，几何 20/20、跨页颜色 28/28、Home 6/6；证据 `docs/qa/TASK-025.2/coral-evidence.json`。
+- 3.2 待审查，未合并；原 3.1 已完成及旧视频 Blocked 历史保留。未启动 3.2.1 / 3.3。
+
+## 首页更新后的主系统品牌同步（2026-09-09，待审查）
+
+- 用户追加授权 Start / Planner / Trip Detail 对齐当前首页，并明确 Home 与 Personal Center 已统一，二者保持。Owner A；沿用 Issue #251 / #246、分支 `feature/a-homepage-concept-fidelity` 与 Draft PR #252。
+- 仅页面局部视觉适配，复用已有全局 tokens 与共享组件；地图 / 右栏 / 时间轴几何和全部业务交互保留。原 3.1 验收合并完成记录不回退；3.2 及本次 follow-up 当前待审查，未取得本轮视觉验收或合并。3.2.1 与 3.3 不启动。
+- 实现 `b3e12361286b414c699dad0e467d8074ee2bc8db`；复用首页现有授权背景，Start 去除深色遮罩，Planner/Detail 暖白面板及控件收敛到已有 tokens；仅修改局部 CSS。699 全仓 / 12 专项、lint/typecheck/build 通过；20/20 页面几何一致，Home 六组 / PC 五组 PNG 哈希与本轮前一致。证据：`docs/qa/TASK-025.2/brand-evidence.json`、`brand-report.json`。
+
+## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，修正后待审查）
+
+- 用户明确要求最终呈现其概念图效果，原灰金海岸背景不获视觉认可；本轮直接从用户提供概念图提取纯背景并接入，取代上一轮保留旧 Poster 的视觉范围。PR #252 保持 Draft。
+- Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
+- 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
+- PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
+- Home 居中概念实装、胶囊 Header / CTA / 游客入口 / AI、Poster cover 清晰度与占位、skip-link 返回修复完成；首版 `a965214b1845423d8ef263e499e8d4dca29f42b5`，概念图完整视觉修正 `1ceab08315b8e82e5acbb8e8f1a8f23853dbc0b4`；Draft PR: [#252](https://github.com/kanzakimy0/TravelAssist/pull/252)。
+- npm ci / lint / typecheck / build / diff-check 通过；699 项全仓测试、6 项专项通过；Home 五尺寸 + reduced-motion 6/6，其他页面几何 20/20 与最新 develop 一致。
+- 已从用户概念图去除 UI、局部补绘并接入樱花/粉色夕阳/海岸列车背景；正式 WebP 与来源/授权/提示词/哈希登记齐全，原 Poster 原样保留且退出首页接线。没有伪造用户或更改全局 token。Result：`docs/tasks/RESULT-TASK-025.2-a-homepage-concept-fidelity.md`；证据：`docs/qa/TASK-025.2/README.md`。
+- 当前 3.2 待审查，用户本轮视觉通过并合入 develop 后才可完成；原 3.2 视频 Blocked 历史与其他工作站记录保留。
+
+
 ## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
 
 - 3.2 / A / Issue [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)：**阻塞**；原因：**缺少已授权首页动态背景 WebM / MP4 素材**。
@@ -664,7 +697,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 阻塞 |
+| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 待审查 |
+| 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |

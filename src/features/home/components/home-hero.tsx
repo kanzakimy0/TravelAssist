@@ -1,35 +1,31 @@
 import Link from "next/link";
-import { AccountAvatar } from "@/components/ui/account-avatar";
-
-import { Button } from "@/components/ui/button";
-
+import type { HomeViewer } from "@/lib/auth/home-viewer";
+import { HomeAccountLink } from "./home-account-link";
 import { HeroStartButton } from "./hero-start-button";
 import styles from "./home-hero.module.css";
 
-export function HomeHero() {
+export function HomeHero({ viewer = null }: { viewer?: HomeViewer | null }) {
   return (
     <section aria-labelledby="home-heading" className={styles.hero}>
-      <p className={styles.eyebrow}>TRAVELASSIST · 旅程规划</p>
+      <p lang="ja" className={styles.eyebrow}>
+        まだ見ぬ景色が、きっと待ってる
+      </p>
       <h1 className={styles.title} id="home-heading">
         下一站，去哪里？
       </h1>
       <p className={styles.description}>规划行程 · 对话调整</p>
+      <p className={styles.invitation}>让 AI 陪你发现更美好的旅程</p>
       <div className={styles.actionRow}>
         <HeroStartButton />
-        <Button
-          aria-label="登录（账号功能将在后续任务中接入）"
-          className={styles.loginAction}
-          disabled
-          size="large"
-          title="账号功能将在后续任务中接入"
-          variant="ghost"
-        >
-          登录
-        </Button>
-        <Link className={styles.personalCenterLink} href="/personal-center">
-          <AccountAvatar />
-          <span>个人中心</span>
-        </Link>
+        <div className={styles.accountEntry}>
+          {viewer ? (
+            <HomeAccountLink viewer={viewer} compact />
+          ) : (
+            <p>
+              已有账号？ <Link href="/login?returnTo=%2F">登录</Link>
+            </p>
+          )}
+        </div>
       </div>
       <span className={styles.srOnly} id="start-flow-note">
         进入旅行需求填写流程
