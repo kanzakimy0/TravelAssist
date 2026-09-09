@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { homeViewerFromVerifiedUser } from "../src/features/home/home-viewer.ts";
+import { homeViewerFromVerifiedUser } from "../src/lib/auth/home-viewer.ts";
 import {
   informationLinks,
   informationPages,

@@ -1,5 +1,5 @@
 import { LanguageAction } from "@/components/layout/main-header";
-import type { HomeViewer } from "../home-viewer";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { HomeHelp } from "./home-help";
 import { HomeAccountLink } from "./home-account-link";
 import styles from "./home-header-actions.module.css";

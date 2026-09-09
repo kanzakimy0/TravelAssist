@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AccountAvatar } from "@/components/ui/account-avatar";
-import type { HomeViewer } from "../home-viewer";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import styles from "./home-header-actions.module.css";
 
 export function HomeAccountLink({

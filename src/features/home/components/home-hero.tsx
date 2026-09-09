@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { HomeViewer } from "../home-viewer";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { HomeAccountLink } from "./home-account-link";
 import { HeroStartButton } from "./hero-start-button";
 import styles from "./home-hero.module.css";
