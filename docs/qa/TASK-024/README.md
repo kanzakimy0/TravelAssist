@@ -34,7 +34,7 @@
 - [机器可读浏览器报告](report.json)：20 页/尺寸组合、实际 token、popover 样式、导航与 Guard 结果。
 - [几何基线](geometry-baseline.json)：原始 develop 对照，含依赖视图与全部测量字段。
 - [截图清单](screenshots.json)：本地截图路径、尺寸、SHA-256；截图存于 worktree 内 `.cache/qa/task024-screenshots/`，不加入业务素材清单。
-- 实际检查截图与五页联系图；视觉检查为实现方检查，**用户视觉验收仍待进行**。
+- 实际检查截图与五页联系图；视觉检查为实现方检查，**用户已于 2026-09-09 回复“验收通过”**。
 
 ## 复现
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-实现完成，待审查。用户视觉验收尚未进行，PR 不得合并；WBS 3.1 保持待审查。
+实现完成；用户于 2026-09-09 明确回复“验收通过”。PR 仍为 Draft、未合并，WBS 3.1 保持待审查。
 
 ## Preflight
 
@@ -20,7 +20,7 @@
 - Commit: 实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；后续提交仅同步追踪文档。
 - Pull Request: [Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）
 - Result file: `docs/tasks/RESULT-TASK-024-a-main-layout-header.md`。
-- Blocker: 无实现阻塞；用户视觉验收和合入 develop 尚未发生，不符合标记已完成条件。
+- Blocker: 无实现阻塞；用户视觉验收已通过，尚未合入 develop，不符合标记已完成条件。
 
 ## Existing Work Reused
 
@@ -63,7 +63,7 @@
 | 浏览器                | PASS：真实 Edge + 生产构建，4 尺寸 × 5 页面 = 20/20；报告 errors = []                         |
 | 几何对照              | PASS：Planner / Detail 8/8 与 develop 基线一致                                                |
 | PC 编辑保护           | PASS：4 尺寸下取消保留编辑，放弃后正确跳转                                                    |
-| 视觉对照              | 实现方已检查四尺寸五页对照图；用户视觉验收待进行                                              |
+| 视觉对照              | 实现方已检查四尺寸五页对照图；用户视觉验收已通过（2026-09-09）                                |
 | 修改文件格式          | PASS：修改文件 Prettier 检查；未执行无关全仓格式清理                                          |
 | git diff --check      | PASS；提交前缓存差异检查通过                                                                  |
 
@@ -73,7 +73,7 @@
 
 ## Problems / Deferred
 
-- 用户视觉验收待进行；没有声称用户已通过或存在独立 APPROVED review。
+- 用户视觉验收已通过（2026-09-09）；依据本会话用户明确回复“验收通过”记录，不声称存在独立 GitHub APPROVED review。
 - 账户由仅本机监听的 QA fixture 提供，未使用真实凭据；真实 Supabase Auth / 外部身份提供方 Deferred，未修改生产认证保护。地图为已有无 token fallback；live Mapbox / Route Deferred。
 - 初次原工作区 npm ci 遇到占用 DLL，改在隔离 worktree 完成安装。后续 C 盘空间耗尽导致图片优化请求挂起；释放本任务生成的可再生成基线与 dev 缓存后，默认线程池生产预览 20/20 通过，未改应用配置。原工作区依赖按相同 lockfile 从已验证依赖以 NTFS hard link 恢复，npm ls exit 0，源码与 lockfile 无变化；保留既有 extraneous 项，不做无关清理。
 - 对照环境一次额外的 webpack 构建暴露旧 PC 页面导出约束，不作为标准 build 证据；要求的正常 Turbopack build 已通过，未越界修改该页面。

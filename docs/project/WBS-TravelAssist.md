@@ -5,7 +5,7 @@
 - 3.1 / A / Issue [#242](https://github.com/kanzakimy0/TravelAssist/issues/242)：实现完成，**待审查**。分支 `feature/a-main-layout-header`；执行基线 `e74904830cbf8e6745b2013b2888e38984ccf96d`；启动 `f75e799`，实现与验证 `c77884a0cb5ad1053e08321c36f5f8354ba46a55`；[Draft PR #244](https://github.com/kanzakimy0/TravelAssist/pull/244)（Open / Draft，未合并）。
 - 1.13 保持待审查；已有 PC 品牌视觉与 tokens 进入 develop，按 TASK-024 Dependency Gate 执行；2.7 已完成不变。复用原 Header / Navigation / Logo 资产和 Avatar 外观，主系统与 PC 共享暖白、朱红、字体、边框、阴影及焦点语言；不复制 Sidebar 或菜单业务。
 - npm ci / lint / typecheck / Turbopack build / diff-check 通过，683 项 Node 回归通过；生产浏览器四尺寸五页面 20/20，Planner / Detail 的 8 组地图、右栏、底栏几何与基线一致。真实 Auth / live Mapbox Deferred。
-- 用户视觉验收尚未进行，Draft PR 未合并；仅在用户视觉验收通过且合入 develop 后允许 3.1 已完成。Task / Result：`docs/tasks/TASK-024-a-main-layout-header.md`、`docs/tasks/RESULT-TASK-024-a-main-layout-header.md`；视觉报告：`docs/qa/TASK-024/README.md`。
+- 用户已于 2026-09-09 回复“验收通过”，Draft PR 未合并；仅在用户视觉验收通过且合入 develop 后允许 3.1 已完成。Task / Result：`docs/tasks/TASK-024-a-main-layout-header.md`、`docs/tasks/RESULT-TASK-024-a-main-layout-header.md`；视觉报告：`docs/qa/TASK-024/README.md`。
 - 其他 WBS、B 的 PC 业务与既有记录保持；本任务结束后停止，不启动 TASK-025 / WBS 3.2。
 
 ## TASK-023-A Planner 开发期路线接线（2026-09-09，已合并）
