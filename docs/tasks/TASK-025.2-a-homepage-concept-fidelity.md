@@ -7,7 +7,7 @@
 - Owner: `A`
 - Responsibility: `Main Travel System / Website Entry`
 - Priority: `P1`
-- Status: `可开始`
+- Status: `进行中`
 - GitHub Issue: `#251`
 - Related Issue: `#246`（TASK-025-A / 3.2 static-first MVP）
 - Depends On: `TASK-024-A / WBS 3.1 completed`

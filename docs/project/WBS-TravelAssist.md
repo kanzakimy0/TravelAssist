@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-025.2-A Homepage Concept Fidelity（2026-09-09，进行中）
+
+- Owner A；Issue #251，关联 #246；分支 `feature/a-homepage-concept-fidelity`，执行基线 `d9ee82f7515bfc09d61d07db0232a5af203c2d16`。
+- 按已批准 static-first 修订启动 3.2；下方缺少视频的 Blocked 记录保留为历史，当前 blocker 已解除。3.2.1 / #247 Deferred。
+- PR #244 已合并；PR #248 仍为 Open / Draft，本 Task 从最新 develop 独立实施概念图规格，不合并或 cherry-pick #248。
+- 仅 Home 视觉与必要共享外观适配；不改 Start / Planner / Detail / Personal Center 业务或几何。实现后转待审查，视觉验收及合入 develop 后才可完成。
+
+
 ## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
 
 - 3.2 / A / Issue [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)：**阻塞**；原因：**缺少已授权首页动态背景 WebM / MP4 素材**。
@@ -664,7 +672,8 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | WBS ID | 工作项                              | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------------- | ------ | ------ | -------- | ------ |
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
-| 3.2    | 首页动画背景区域                    | A      | P1     | 1.16     | 阻塞 |
+| 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 进行中 |
+| 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
