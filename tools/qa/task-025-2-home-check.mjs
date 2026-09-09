@@ -29,7 +29,8 @@ const measure = () => {
       ["title", "#home-heading"],
       ["subtitle", "main section > p:nth-of-type(2)"],
       ["cta", 'main a[href="/start"]'],
-      ["account", 'main a[href^="/login"]'],
+      ["account", 'main a[href="/personal-center"]'],
+      ["login", 'main a[href^="/login"]'],
       ["help", 'button[aria-controls="home-help-popover"]'],
       ["footer", "footer"],
       ["ai", 'button[aria-controls="home-ai-conversation-panel"]'],
@@ -138,6 +139,37 @@ try {
         .getAttribute("href"),
       "/login?returnTo=%2F",
     );
+    assert.ok(
+      await page.getByRole("link", { name: "游客 · 个人中心" }).isVisible(),
+    );
+    const footerPaint = await page.getByRole("contentinfo").evaluate((el) => {
+      const s = getComputedStyle(el);
+      return {
+        background: s.backgroundColor,
+        backdrop: s.backdropFilter,
+        color: s.color,
+        weight: s.fontWeight,
+      };
+    });
+    assert.deepEqual(footerPaint, {
+      background: "rgba(0, 0, 0, 0)",
+      backdrop: "none",
+      color: "rgb(0, 0, 0)",
+      weight: "700",
+    });
+    for (const link of [
+      page.getByRole("link", { name: "游客 · 个人中心" }),
+      page.getByRole("link", { name: "登录", exact: true }),
+    ]) {
+      assert.equal(
+        await link.evaluate((el) => getComputedStyle(el).color),
+        "rgb(0, 0, 0)",
+      );
+      assert.equal(
+        await link.evaluate((el) => getComputedStyle(el).fontWeight),
+        "700",
+      );
+    }
     assert.equal(await page.getByRole("contentinfo").count(), 1);
     assert.equal(
       await page
@@ -326,6 +358,11 @@ try {
     await page.locator("#home-heading").waitFor();
     await page.goForward();
     await page.getByRole("radio", { name: /第一次去日本/ }).waitFor();
+    await page.goBack();
+    await page.locator("#home-heading").waitFor();
+    await page.getByRole("link", { name: "游客 · 个人中心" }).focus();
+    await page.keyboard.press("Enter");
+    await page.waitForURL(/\/login\?returnTo=%2Fpersonal-center/);
     await page.goBack();
     await page.locator("#home-heading").waitFor();
     await page.getByRole("link", { name: "登录", exact: true }).click();

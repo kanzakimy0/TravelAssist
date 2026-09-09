@@ -1,10 +1,14 @@
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 const { chromium } = createRequire(import.meta.url)(
   process.env.PLAYWRIGHT_MODULE,
 );
 const base = "http://localhost:3132";
+const review = process.env.TASK_0252_REVIEW_NAME || "v11";
+assert.ok(/^[a-z0-9-]+$/.test(review));
+const screenshots = `.cache/qa/${review}-home`;
+await mkdir(screenshots, { recursive: true });
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 const rows = [];
 try {
@@ -84,6 +88,7 @@ try {
           0,
         );
         const account = page
+          .getByRole("main")
           .getByRole("link", {
             name: mode === "verified" ? "验收账户 · 个人中心" : "进入个人中心",
           })
@@ -98,7 +103,7 @@ try {
             "https://avatar.example.invalid/verified.webp",
           );
           await page.screenshot({
-            path: ".cache/qa/v11-home/" + width + "-authenticated.png",
+            path: screenshots + "/" + width + "-authenticated.png",
           });
           await image.evaluate((el) =>
             el.dispatchEvent(new Event("error", { bubbles: true })),
@@ -125,7 +130,7 @@ try {
     }
   }
   await writeFile(
-    "docs/qa/TASK-025.2/v11-auth-report.json",
+    `docs/qa/TASK-025.2/${review}-auth-report.json`,
     JSON.stringify(
       {
         fixture:
