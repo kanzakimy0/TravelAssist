@@ -9,7 +9,7 @@
 - 旧保存行程仍可能带旧路线色；新增仅用于显示的兼容映射，使 SVG / 原生地图数据源 / 推荐缩略图采用新颜色，不写回保存数据，不改变坐标、日程或路线几何。新增测试验证该边界；原缩略图冻结测试仅放行这一颜色包装，其他 SVG 结构仍严格比对。
 - lint / typecheck / build / diff-check 通过；全仓 701/701。五尺寸几何 20/20 不变；Desktop/Mobile 14 页面共 28 组颜色检查通过，移动工作台展开后检查按钮。Home 五尺寸 + reduced-motion 6/6，CLS=0、无视频请求。npm ci 前轮同锁文件成功，本轮依赖未改。
 - 本轮独立截图与报告：`docs/qa/TASK-025.2/coral-evidence.json`、`coral-report.json`、`coral-colors-report.json`、`coral-home-report.json`。已有 favicon.ico 404 保留；使用本地 visual fixture / fallback map，未声称验证 live Auth/Map。
-- 继续 Draft PR #252 / Issue #251、#246，3.2 待审查。此前轮次的截图一致性和不改 PC 记录保留为历史，不代表本轮最终颜色范围。
+- 本轮实现 `bb0cf18b14afe51f2fdc204782e28f455ab0263c`；继续 Draft PR #252 / Issue #251、#246，3.2 待审查。此前轮次的截图一致性和不改 PC 记录保留为历史，不代表本轮最终颜色范围。
 
 ## 2026-09-09 前轮结果：其余主系统页面品牌同步
 
