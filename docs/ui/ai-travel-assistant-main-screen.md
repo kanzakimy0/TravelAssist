@@ -1,12 +1,12 @@
 # TravelAssist AI 旅行助手主画面设计候选 v0.1
 
-> 状态：**待审查 / 开发可执行设计候选**  
-> 日期：2026-09-10 JST  
-> Owner：A / Main AI UX Design  
-> WBS：1.19  
-> Issue：#262  
-> 适用：Home、Planner、Trip Detail；Web 优先，后续原生端复用语义  
-> 基线：`origin/develop@171900698180b80220017c9c4bec551b72792f27`
+> - 状态：**待审查 / 开发可执行设计候选**
+> - 日期：2026-09-10 JST
+> - Owner：A / Main AI UX Design
+> - WBS：1.19
+> - Issue：#262
+> - 适用：Home、Planner、Trip Detail；Web 优先，后续原生端复用语义
+> - 基线：`origin/develop@171900698180b80220017c9c4bec551b72792f27`
 
 本文件定义 AI 助手的**用户界面与交互边界**，不是 AI Provider、Prompt、Agent、Engine 或数据库实现。用户验收前不得把 1.19 标记为已完成。
 
