@@ -8,7 +8,7 @@ const { chromium } = createRequire(import.meta.url)(
 const base = process.env.TASK_0252_URL || "http://localhost:3132";
 assert.ok(["localhost", "127.0.0.1"].includes(new URL(base).hostname));
 const review = process.env.TASK_0252_REVIEW_NAME;
-assert.ok(!review || /^[a-z-]+$/.test(review));
+assert.ok(!review || /^[a-z0-9-]+$/.test(review));
 const out = "docs/qa/TASK-025.2",
   screens = review
     ? `.cache/qa/${review}-home`
@@ -29,7 +29,9 @@ const measure = () => {
       ["title", "#home-heading"],
       ["subtitle", "main section > p:nth-of-type(2)"],
       ["cta", 'main a[href="/start"]'],
-      ["account", 'main a[href="/personal-center"]'],
+      ["account", 'main a[href^="/login"]'],
+      ["help", 'button[aria-controls="home-help-popover"]'],
+      ["footer", "footer"],
       ["ai", 'button[aria-controls="home-ai-conversation-panel"]'],
     ].map(([name, selector]) => {
       const el = document.querySelector(selector),
@@ -118,7 +120,7 @@ try {
     assert.ok(initial.poster.naturalWidth > 0);
     assert.ok(
       Number(new URL(initial.poster.currentSrc).searchParams.get("w")) >=
-        Math.min(1672, Math.max(width, (height * 1672) / 941)),
+        Math.min(1536, Math.max(width, height * 1.5)),
       "poster candidate must cover the viewport without low-resolution upscaling",
     );
     assert.equal(initial.cls, 0);
@@ -132,14 +134,17 @@ try {
     );
     assert.equal(
       await page
-        .getByRole("link", { name: "游客 · 个人中心" })
+        .getByRole("link", { name: "登录", exact: true })
         .getAttribute("href"),
-      "/personal-center",
+      "/login?returnTo=%2F",
     );
-    assert.ok(
+    assert.equal(await page.getByRole("contentinfo").count(), 1);
+    assert.equal(
       await page
-        .getByRole("button", { name: "登录（账号功能将在后续任务中接入）" })
-        .isDisabled(),
+        .getByRole("navigation", { name: "网站信息" })
+        .getByRole("link")
+        .count(),
+      4,
     );
     assert.equal(await page.getByText("Yuki", { exact: false }).count(), 0);
     const { boxes } = initial;
@@ -152,7 +157,7 @@ try {
       );
     }
     assert.ok(Math.abs(boxes.cta.x + boxes.cta.width / 2 - width / 2) < 1);
-    assert.ok(boxes.brand.x + boxes.brand.width < boxes.language.x);
+    assert.ok(boxes.brand.x + boxes.brand.width < boxes.help.x);
     assert.ok(boxes.cta.y + boxes.cta.height < boxes.account.y);
     assert.ok(
       boxes.account.y + boxes.account.height < boxes.ai.y ||
@@ -160,14 +165,17 @@ try {
     );
     if (width === 1672) {
       assert.ok(
-        boxes.eyebrow.y / height >= 0.22 && boxes.eyebrow.y / height <= 0.25,
+        boxes.eyebrow.y / height >= 0.15 && boxes.eyebrow.y / height <= 0.2,
       );
       assert.ok(
-        boxes.title.y / height >= 0.29 && boxes.title.y / height <= 0.39,
+        boxes.title.y / height >= 0.25 && boxes.title.y / height <= 0.32,
       );
       assert.ok(boxes.cta.width >= 360 && boxes.cta.width <= 390);
       assert.ok(boxes.cta.height >= 76 && boxes.cta.height <= 88);
     }
+    assert.ok(boxes.help.x + boxes.help.width <= boxes.language.x);
+    assert.ok(boxes.ai.y + boxes.ai.height <= boxes.footer.y);
+    assert.ok(boxes.account.y + boxes.account.height < boxes.footer.y);
     const screenshot = `${screens}/${width}x${height}${motion === "reduce" ? "-reduced-motion" : ""}.png`;
     await page.screenshot({ path: screenshot });
     evidence.push({
@@ -241,6 +249,74 @@ try {
       await ai.evaluate((el) => el === document.activeElement),
       true,
     );
+    const help = page.getByRole("button", { name: "使用指南", exact: true });
+    await help.click();
+    const helpDialog = page.getByRole("dialog", {
+      name: "第一次使用 TravelAssist？",
+    });
+    assert.ok(await helpDialog.isVisible());
+    assert.equal(await helpDialog.locator("li").count(), 5);
+    const helpBox = await helpDialog.boundingBox();
+    assert.ok(
+      helpBox.x >= 0 &&
+        helpBox.x + helpBox.width <= width &&
+        helpBox.y + helpBox.height <= height,
+    );
+    assert.ok(
+      await page
+        .getByRole("button", { name: "关闭使用指南" })
+        .evaluate((el) => el === document.activeElement),
+    );
+    await page.keyboard.press("Escape");
+    assert.ok(await help.evaluate((el) => el === document.activeElement));
+    await help.click();
+    await page.mouse.click(4, height / 2);
+    assert.equal(await help.getAttribute("aria-expanded"), "false");
+    await help.focus();
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Tab");
+    const fullHelp = page.getByRole("link", { name: "查看完整使用指南 →" });
+    assert.ok(await fullHelp.evaluate((el) => el === document.activeElement));
+    assert.equal(
+      await fullHelp.evaluate((el) => getComputedStyle(el).outlineStyle),
+      "solid",
+    );
+    await page.screenshot({
+      path: screens + "/" + width + "x" + height + "-help.png",
+    });
+    await page.keyboard.press("Enter");
+    await page.waitForURL("**/help");
+    await page
+      .getByRole("heading", { name: "使用指南", exact: true })
+      .waitFor();
+    await page.goBack();
+    await page.locator("#home-heading").waitFor();
+    for (const [label, route] of [
+      ["服务条款", "terms"],
+      ["隐私政策", "privacy"],
+      ["AI 与信息说明", "ai-information"],
+      ["关于与联系", "about"],
+    ]) {
+      const link = page
+        .getByRole("navigation", { name: "网站信息" })
+        .getByRole("link", { name: label, exact: true });
+      await link.focus();
+      assert.equal(
+        await link.evaluate((el) => getComputedStyle(el).outlineStyle),
+        "solid",
+      );
+      await page.keyboard.press("Enter");
+      await page.waitForURL("**/" + route);
+      await page.getByRole("heading", { name: label, exact: true }).waitFor();
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth,
+        ),
+        false,
+      );
+      await page.goBack();
+      await page.locator("#home-heading").waitFor();
+    }
     await page.locator("[data-main-header] summary").click();
     assert.ok(await page.getByText("更多语言即将开放").isVisible());
     await page.locator("[data-main-header] summary").click();
@@ -252,7 +328,7 @@ try {
     await page.getByRole("radio", { name: /第一次去日本/ }).waitFor();
     await page.goBack();
     await page.locator("#home-heading").waitFor();
-    await page.getByRole("link", { name: "游客 · 个人中心" }).click();
+    await page.getByRole("link", { name: "登录", exact: true }).click();
     await page.waitForURL(/\/login\?returnTo=/);
     rows.push({
       width,
@@ -260,7 +336,7 @@ try {
       motion,
       ...initial,
       checks:
-        "landmarks / links / guest / focus / hover / AI open-close-Escape / language / history / account login guard PASS",
+        "landmarks / all footer routes / real login / focus / hover / AI / Help open-close-Escape-focus-return-outside / language / history PASS",
     });
     await context.close();
   }
@@ -277,7 +353,7 @@ try {
   await slowPage.route("**/_next/image?*", async (route) => {
     if (
       decodeURIComponent(route.request().url()).includes(
-        "home-hero-sakura-sunset",
+        "home-hero-fuji-coast-v11",
       )
     )
       await imageGate;
@@ -324,7 +400,7 @@ try {
     requests,
     evidence,
     posterBytes: (
-      await stat("public/media/home-concept/home-hero-sakura-sunset.webp")
+      await stat("public/media/home-concept/home-hero-fuji-coast-v11.webp")
     ).size,
   };
   await writeFile(

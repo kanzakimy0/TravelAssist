@@ -1,7 +1,9 @@
 .panel {
   position: fixed;
   right: var(--space-8);
-  bottom: calc(clamp(2.8125rem, 5svh, 4rem) + 6.5rem);
+  bottom: calc(var(--home-ai-bottom) + var(--home-ai-size) + 0.75rem);
+  max-height: calc(100svh - var(--home-ai-bottom) - var(--home-ai-size) - 2rem);
+  overflow-y: auto;
   z-index: 5;
   width: min(26rem, calc(100vw - var(--space-8) * 2));
   padding: var(--space-6);
@@ -96,10 +98,12 @@
 @media (max-width: 40rem) {
   .panel {
     right: var(--space-3);
-    bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    bottom: calc(var(--home-ai-bottom) + var(--home-ai-size) + 0.75rem);
     left: var(--space-3);
     width: auto;
-    max-height: calc(100svh - var(--space-12) * 2.5);
+    max-height: calc(
+      100svh - var(--home-ai-bottom) - var(--home-ai-size) - 2rem
+    );
     overflow-y: auto;
     padding: var(--space-4);
     border-radius: var(--radius-lg);

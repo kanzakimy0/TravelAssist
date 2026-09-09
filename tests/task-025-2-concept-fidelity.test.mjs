@@ -58,17 +58,22 @@ test("concept Hero preserves the real start and protected account destinations",
   assert.match(html, /下一站，去哪里？/);
   assert.match(html, /规划行程 · 对话调整/);
   assert.match(html, /href="\/start"/);
-  assert.match(html, /href="\/personal-center"/);
+  assert.match(html, /href="\/login\?returnTo=%2F"/);
   assert.match(html, /aria-describedby="start-flow-note"/);
 });
-test("guest capsule retains the disabled login boundary and neutral shared avatar", () => {
+test("guest uses a real login link; verified viewer gets the shared account avatar", () => {
   const { HomeHero } = load("src/features/home/components/home-hero.tsx");
-  const html = renderToStaticMarkup(React.createElement(HomeHero));
-  assert.match(html, /游客 · 个人中心/);
-  assert.match(html, /data-account-avatar/);
-  assert.match(html, /登录（账号功能将在后续任务中接入）/);
-  assert.match(html, /disabled=""/);
-  assert.doesNotMatch(html, /Yuki|<img|已登录|demo-user/i);
+  const guest = renderToStaticMarkup(React.createElement(HomeHero));
+  assert.match(guest, /已有账号？/);
+  assert.match(guest, /href="\/login\?returnTo=%2F"/);
+  assert.doesNotMatch(guest, /Yuki|disabled=|data-account-avatar|demo-user/i);
+  const member = renderToStaticMarkup(
+    React.createElement(HomeHero, { viewer: { name: "真实账户" } }),
+  );
+  assert.match(member, /真实账户/);
+  assert.match(member, /href="\/personal-center"/);
+  assert.match(member, /data-account-avatar/);
+  assert.doesNotMatch(member, /已有账号/);
 });
 test("default Home header reuses the single canonical BrandLogo and native language details", () => {
   const { MainHeader } = load("src/components/layout/main-header.tsx");
@@ -152,7 +157,7 @@ test("runtime uses the user-concept background with traceable approval and intac
     ),
   );
   const asset = manifest.assets.find(
-    (a) => a.id === "home.global.background.sakura-sunset.concept.001",
+    (a) => a.id === "home.global.background.fuji-coast.concept-v11.001",
   );
   assert.equal(asset.status, "approved");
   assert.equal(asset.authenticity, "illustrative");

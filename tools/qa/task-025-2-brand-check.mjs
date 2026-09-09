@@ -9,7 +9,7 @@ assert.ok(["localhost", "127.0.0.1"].includes(new URL(base).hostname));
 const baseline = process.env.TASK_0252_BASELINE === "true";
 const out = "docs/qa/TASK-025.2";
 const review = process.env.TASK_0252_REVIEW_NAME || "brand";
-assert.match(review, /^[a-z-]+$/);
+assert.match(review, /^[a-z0-9-]+$/);
 const screenshots = `.cache/qa/${review}-after`;
 await mkdir(screenshots, { recursive: true });
 const visuals = [];

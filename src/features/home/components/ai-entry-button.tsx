@@ -19,7 +19,7 @@ export const AIEntryButton = forwardRef<HTMLButtonElement, AIEntryButtonProps>(
           </svg>
         </span>
         <span className={styles.copy}>
-          <strong>问问 AI</strong>
+          <strong>AI 助手</strong>
         </span>
       </button>
     );

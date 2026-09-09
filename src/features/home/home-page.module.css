@@ -1,4 +1,9 @@
 .home {
+  --home-footer-height: 4.5rem;
+  --home-ai-size: 5.5rem;
+  --home-ai-bottom: calc(
+    var(--home-footer-height) + 0.75rem + env(safe-area-inset-bottom)
+  );
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
@@ -15,19 +20,28 @@
   min-height: 100vh;
   min-height: 100svh;
   margin: 0 auto;
-  padding: 22.5svh var(--space-8) 10rem;
+  padding: 17svh var(--space-8) calc(var(--home-footer-height) + 6rem);
   pointer-events: none;
 }
 .content > * {
   pointer-events: auto;
 }
-@media (max-width: 40rem) {
+@media (max-width: 64rem) {
   .content {
-    padding: clamp(8rem, 22svh, 11.5rem) var(--space-5) 7rem;
+    padding-top: 19svh;
   }
 }
-@media (max-width: 22rem) {
+@media (max-width: 40rem) {
+  .home {
+    --home-footer-height: 4.5rem;
+    --home-ai-size: 4rem;
+  }
   .content {
-    padding: 7rem var(--space-4) 6rem;
+    padding: clamp(7rem, 21svh, 11rem) var(--space-5) 11rem;
+  }
+}
+@media (max-width: 22rem), (max-height: 650px) and (max-width: 40rem) {
+  .content {
+    padding: 6.5rem var(--space-4) 9.375rem;
   }
 }

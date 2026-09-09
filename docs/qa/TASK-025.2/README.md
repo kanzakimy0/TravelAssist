@@ -1,5 +1,33 @@
 # TASK-025.2 visual comparison
 
+## 最新验收：v1.1 / 2026-09-09
+
+本节覆盖下方旧概念、disabled Login 与旧背景的阶段记录。最新版概念为用户上传的 1536×1024 PNG（SHA-256 8b5086d888d745b9be1643c4b4b1ed94c54b1d682e9fa0bbd78d39d97c0d6c95）。使用它的纯场景衍生图，真实 HTML 提供 Header、Hero、Help、账户、AI 和 Footer。
+
+- 最终截图：F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/v11-home/，包含 1672x941、1440x900、1024x768、390x844、320x568、reduced-motion、慢加载、五尺寸 Help / authenticated 和 1536x1024 同尺寸概念对照。
+- 截图索引与哈希：v11-evidence.json。对照图左为概念、右为真实游客页面；概念内 Yuki 只出现在对照左侧，不进入运行时。
+- 浏览器：v11-home-report.json；网络请求：v11-request-report.json；账户：v11-auth-report.json；其他页面几何：v11-report.json。
+- Home 6/6：全尺寸无横向/纵向溢出；唯一 main/h1/主 CTA；Help open/close/Escape/focus return/outside click、完整指南及四个 Footer 链接键盘导航；AI 开关/焦点归还；登录 /start 与 back/forward；CLS=0；零视频请求。
+- Auth 15/15：五尺寸 × verified/neutral/invalid。通过现有 SDK getUser 核验；不信任 Cookie 中的伪造姓名；真实资料头像显示、失败回退、中性资料、无效会话和个人中心目的地通过。仅本机合成 fixture，不声称外部认证服务验收。
+- 回归 20/20：/start、/planner、/planner?view=detail&day=1（点击“保存到浏览器并进入详情”后）、/personal-center 的五尺寸，地图/右栏/底栏及 PC Sidebar/Content 与 develop 代码基线几何完全一致。da43afe 相比 d9ee82f 仅新增规格文档，代码基线仍有效。
+- 原有 favicon.ico 404 如实保留，新 console/hydration 错误为 0；没有视频 404。请求报告包含验收期间导航到 Start 后加载的旧场景，不代表 Home 双背景。
+- 最新原图 WebP 1536×1024 / 344676 bytes；Next 实际请求按 viewport 选择图片尺寸，详情见请求报告。blur 占位到解码后布局不变。
+
+复现：锁定依赖安装后构建，在本机 fixture 配置下启动预览 3132 和 tools/qa/task-024-visual-auth-fixture.mjs（54224）。设置 PLAYWRIGHT_MODULE 到可用 Playwright、TASK_0252_REVIEW_NAME=v11，执行：
+
+~~~text
+node tools/qa/task-025-2-home-check.mjs
+node tools/qa/task-025-2-auth-check.mjs
+node tools/qa/task-025-2-brand-check.mjs
+~~~
+
+生产语义：游客显示真实登录链接；已核验账户桌面在右上、手机在 CTA 下，资料缺失使用“个人中心”/共享“旅”占位。预览截图里的验收账户是隔离测试数据。AI 入口保留真实 UI 交互但没有接 AI API。五个信息页面为静态基础说明，不宣称完成 WBS 10.6 法律审查。
+
+---
+
+## 历史视觉验收记录
+
+
 本次为用户要求的概念图完整视觉修正，等待用户视觉验收。此前保留旧灰金海岸 Poster 的交付未获用户视觉认可，本版已接入从用户概念图去除 UI 后得到的樱花夕阳纯背景。正式规格见 `docs/tasks/TASK-025.2-a-homepage-concept-fidelity.md`。
 
 ## Comparison

@@ -3,18 +3,25 @@ import { HomeAIAssistant } from "./components/home-ai-assistant";
 import { HomeSkipLink } from "./components/home-skip-link";
 import { HomeHero } from "./components/home-hero";
 import { ImmersiveBackground } from "./components/immersive-background";
+import { HomeHeaderActions } from "./components/home-header-actions";
+import { InformationFooter } from "@/features/information/information-footer";
+import { readHomeViewer } from "./home-viewer.server";
 import styles from "./home-page.module.css";
 
-export function HomePage() {
+export async function HomePage() {
+  const viewer = await readHomeViewer();
   return (
     <div className={styles.home}>
       <ImmersiveBackground />
       <HomeSkipLink />
-      <MainHeader />
+      <MainHeader brandCaption="Your Journey, Always With You">
+        <HomeHeaderActions viewer={viewer} />
+      </MainHeader>
       <main id="home-content" tabIndex={-1} className={styles.content}>
-        <HomeHero />
+        <HomeHero viewer={viewer} />
       </main>
       <HomeAIAssistant />
+      <InformationFooter immersive />
     </div>
   );
 }

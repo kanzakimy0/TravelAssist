@@ -1,14 +1,15 @@
 .button {
   position: fixed;
   right: clamp(2rem, 2.2vw, 2.5rem);
-  bottom: clamp(2.8125rem, 5svh, 4rem);
+  bottom: var(--home-ai-bottom);
   z-index: 6;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 5.75rem;
-  height: 5.75rem;
-  min-height: 5.75rem;
+  width: var(--home-ai-size);
+  height: var(--home-ai-size);
+  min-height: var(--home-ai-size);
   padding: var(--space-2);
   border: 1px solid rgb(255 255 255 / 58%);
   border-radius: var(--radius-pill);
@@ -36,12 +37,12 @@
 .icon {
   display: grid;
   flex: 0 0 auto;
-  width: 4rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
   place-items: center;
   border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-accent-primary) 20%, #f96551);
-  color: var(--color-text-on-accent);
+  background: transparent;
+  color: var(--color-accent-primary);
 }
 
 .icon svg {
@@ -55,25 +56,24 @@
 }
 
 .copy {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  color: var(--color-accent-primary-hover);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+.copy strong {
+  font-weight: 500;
 }
 
 @media (max-width: 40rem) {
   .button {
     right: max(var(--space-4), env(safe-area-inset-right));
-    bottom: max(var(--space-4), env(safe-area-inset-bottom));
+    bottom: var(--home-ai-bottom);
     width: 4rem;
     height: 4rem;
     min-height: 4rem;
   }
   .icon {
-    width: 3rem;
-    height: 3rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
