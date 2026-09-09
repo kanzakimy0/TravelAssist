@@ -90,3 +90,11 @@ node tools/qa/task-025-2-regression.mjs
 - 生产预览 `http://localhost:3132/start`、`/planner`、`/planner?view=detail&day=1`。Detail 首次需点击“保存到浏览器并进入详情”；现有浏览器保存与导航行为保持。
 - 复现：启动 `tools/qa/task-024-visual-auth-fixture.mjs` 与使用该本地 fixture 的生产服务；设置 `PLAYWRIGHT_MODULE` 为可用 Playwright，`TASK_0252_URL=http://localhost:3132`，运行 `node tools/qa/task-025-2-brand-check.mjs`。默认 reduced-motion；另外 `task-025-2-home-check.mjs` 验证普通动态偏好及 reduced-motion。
 - 699 全仓 + 12 专项通过；既有 favicon.ico 404 与原始基线一致。真实 Auth / Map provider 未在本轮接入或验证。
+
+## 最新追加：全站珊瑚品牌色
+
+用户进一步要求所有品牌红棕色改为 Home CTA 的珊瑚色，包括 PC 子页与 Auth；前节关于 Home/PC 截图不变的断言是前轮历史，本轮只保持布局和业务。颜色清单、当前截图路径与 SHA 见 `coral-evidence.json`。总览：`F:/CodexWorktrees/TravelAssist-TASK0252/.cache/qa/coral-after/travelassist-coral-overview.png`。
+
+运行时复用 `--color-accent-primary: #e95b4b`，实心控件统一消费 `--background-accent-primary`，即原首页的 155° 珊瑚渐变。主路线纯色匹配渐变深端；旧保存数据通过只读显示适配更新。保留错误、警告、成功的语义色。
+
+同前节本地 fixture/生产服务器前置，设置 `TASK_0252_REVIEW_NAME=coral` 后运行 `task-025-2-brand-check.mjs` 和 `task-025-2-home-check.mjs`，分别输出独立 coral 报告。再运行 `task-025-2-coral-colors.mjs` 验证 Desktop/Mobile 的 14 页面（共 28 组），包括展开的移动工作台。20/20 几何、28/28 颜色、6/6 Home 与 701/701 Node 回归通过。

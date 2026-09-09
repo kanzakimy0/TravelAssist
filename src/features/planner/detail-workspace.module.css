@@ -250,7 +250,7 @@
   width: 12px;
   height: 12px;
   left: -6px;
-  background: #c35a4b;
+  background: var(--background-accent-primary);
 }
 .sightsTimeline {
   display: flex;
@@ -274,7 +274,7 @@
   border: 0;
   padding: 0 12px;
   background: transparent;
-  color: #9d6453;
+  color: var(--color-accent-primary);
   font-size: 11px;
   cursor: pointer;
 }
@@ -343,7 +343,7 @@
 
 .aiActions button:last-child {
   border-color: var(--color-accent-primary);
-  background: var(--color-accent-primary);
+  background: var(--background-accent-primary);
   color: var(--color-bg-elevated);
 }
 
@@ -429,7 +429,7 @@
   cursor: pointer;
 }
 .projectTypes button[aria-pressed="true"] {
-  background: var(--color-accent-primary);
+  background: var(--background-accent-primary);
   border-color: var(--color-accent-primary);
   color: white;
 }
@@ -481,7 +481,12 @@
   right: 18px;
   left: 18px;
   height: 2px;
-  background: linear-gradient(90deg, #d9cbc3, #c35a4b, #d9cbc3);
+  background: linear-gradient(
+    90deg,
+    #d9cbc3,
+    var(--color-accent-primary),
+    #d9cbc3
+  );
 }
 
 .railItem {
@@ -799,7 +804,7 @@
 .itemDialog footer button:first-child,
 .itemDialog footer button:last-child {
   border-color: var(--color-accent-primary);
-  background: var(--color-accent-primary);
+  background: var(--background-accent-primary);
   color: var(--color-bg-elevated);
 }
 
@@ -943,13 +948,13 @@
 }
 .projectLocation button[aria-pressed="true"] {
   background: #f3d1be;
-  border-color: #a7523f;
+  border-color: var(--color-accent-primary);
 }
 .conflictTest {
   margin: 12px 0;
   padding: 10px;
-  border: 1px dashed #bd6759;
+  border: 1px dashed var(--color-accent-primary);
   border-radius: 9px;
   font-size: 12px;
-  color: #9b3f34;
+  color: var(--color-accent-primary);
 }

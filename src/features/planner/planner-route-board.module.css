@@ -64,7 +64,7 @@
 }
 .dayHeading small {
   font-size: 10px;
-  color: #826a56;
+  color: var(--color-accent-primary);
 }
 .journey {
   --movement-card-size: clamp(84px, calc(100cqh - 4px), 136px);
@@ -121,7 +121,7 @@
   border-color: #cfc3b2;
 }
 .stopSummary[aria-pressed="true"] {
-  outline: 2px solid #b05c48;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: -2px;
 }
 .connector {
@@ -204,7 +204,7 @@
 }
 .connector b {
   padding-top: 3px;
-  color: #915b46;
+  color: var(--color-accent-primary);
 }
 .connector[data-risk="warning"] {
   --risk-fill: #f7e09a;
@@ -276,7 +276,7 @@
 }
 .editor button[aria-pressed="true"] {
   background: #f1d5c7;
-  border-color: #b46d57;
+  border-color: var(--color-accent-primary);
 }
 .durationFields {
   display: grid;
@@ -359,7 +359,7 @@
 }
 .routeQuery footer button {
   width: 100%;
-  background: #8e594b;
+  background: var(--background-accent-primary);
   color: #fff;
 }
 .routeQuery footer button:disabled {
@@ -374,7 +374,7 @@
 }
 .routeAlternatives button[aria-pressed="true"] {
   background: #f0d4c7;
-  border-color: #a85d4c;
+  border-color: var(--color-accent-primary);
 }
 @media (max-width: 420px) {
   .routeQuery dl {
@@ -403,12 +403,12 @@
   z-index: 1;
 }
 .editor footer button:last-child {
-  background: #ac604b;
+  background: var(--background-accent-primary);
   color: white;
 }
 .workspace button:focus-visible,
 .editor button:focus-visible {
-  outline: 2px solid #b25e48;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: -2px;
 }
 @container (max-height: 108px) {

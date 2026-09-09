@@ -1,6 +1,6 @@
 .page {
-  --companion-accent: #df5d52;
-  --companion-accent-dark: #a93f39;
+  --companion-accent: var(--color-accent-primary);
+  --companion-accent-dark: var(--color-accent-primary-hover);
   --companion-accent-soft: #fff0eb;
   --companion-ink: #262522;
   --companion-muted: #746e68;
@@ -101,7 +101,7 @@
   border: 1px solid var(--companion-accent);
   padding: 0 20px;
   color: #fff;
-  background: linear-gradient(135deg, #e9675c, #cf5048);
+  background: var(--background-accent-primary);
   box-shadow: 0 8px 20px rgba(207, 80, 72, 0.2);
 }
 
@@ -114,7 +114,7 @@
 
 .primaryButton:hover,
 .primaryButton:focus-visible {
-  background: linear-gradient(135deg, #d9584e, #bb443e);
+  background: var(--color-accent-primary-hover);
 }
 
 .secondaryButton:hover,

@@ -1,6 +1,17 @@
 # TASK-025.2-A Result
 
-## 2026-09-09 当前追加结果：其余主系统页面品牌同步
+## 2026-09-09 最新结果：全站珊瑚色
+
+**待审查**。用户进一步要求所有位置的品牌红棕色改为首页“让我们开始吧”的珊瑚色，明确覆盖前轮保持 PC/global 颜色的范围。
+
+- 现有 `--color-accent-primary` 改为 `#e95b4b`；原首页 CTA 的 155° 渐变提取为 `--background-accent-primary`，供 Home / 全站实心品牌按钮、步骤点、详情标签共同消费。Hover 与 focus 使用同系珊瑚色。没有新建 Header / Avatar / Design System。
+- Start、Planner、Detail、Personal Center 与旅行/偏好/同行人/账户、Auth 的独立红棕品牌值收敛到共享变量；地图主路线及选中描边改为同系珊瑚。成功/警告/错误等语义仍保留，所有页面结构不变。
+- 旧保存行程仍可能带旧路线色；新增仅用于显示的兼容映射，使 SVG / 原生地图数据源 / 推荐缩略图采用新颜色，不写回保存数据，不改变坐标、日程或路线几何。新增测试验证该边界；原缩略图冻结测试仅放行这一颜色包装，其他 SVG 结构仍严格比对。
+- lint / typecheck / build / diff-check 通过；全仓 701/701。五尺寸几何 20/20 不变；Desktop/Mobile 14 页面共 28 组颜色检查通过，移动工作台展开后检查按钮。Home 五尺寸 + reduced-motion 6/6，CLS=0、无视频请求。npm ci 前轮同锁文件成功，本轮依赖未改。
+- 本轮独立截图与报告：`docs/qa/TASK-025.2/coral-evidence.json`、`coral-report.json`、`coral-colors-report.json`、`coral-home-report.json`。已有 favicon.ico 404 保留；使用本地 visual fixture / fallback map，未声称验证 live Auth/Map。
+- 继续 Draft PR #252 / Issue #251、#246，3.2 待审查。此前轮次的截图一致性和不改 PC 记录保留为历史，不代表本轮最终颜色范围。
+
+## 2026-09-09 前轮结果：其余主系统页面品牌同步
 
 **待审查**。用户明确 Home 与 Personal Center 已统一，本轮将它们保持为固定视觉基准，只调整 Start / Planner / Trip Detail。下方 Home-only 实装记录是此前阶段结果，本节记录最新追加范围。
 

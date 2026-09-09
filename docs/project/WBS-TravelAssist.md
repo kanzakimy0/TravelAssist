@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## 全站珊瑚品牌色跟进（2026-09-09，待审查）
+
+- 用户追加“别的地方红棕色也要改成珊瑚色”，本轮覆盖 Home CTA 同系填充、Start/Planner/Detail、PC 各子页及 Auth 的品牌颜色；以此覆盖前轮 PC/global 颜色不改限制。仅颜色与旧保存路线的显示适配，所有布局和业务数据保持。
+- Owner A；沿用 Issue #251/#246、`feature/a-homepage-concept-fidelity`、Draft PR #252。701 tests、lint/typecheck/build 通过，几何 20/20、跨页颜色 28/28、Home 6/6；证据 `docs/qa/TASK-025.2/coral-evidence.json`。
+- 3.2 待审查，未合并；原 3.1 已完成及旧视频 Blocked 历史保留。未启动 3.2.1 / 3.3。
+
 ## 首页更新后的主系统品牌同步（2026-09-09，待审查）
 
 - 用户追加授权 Start / Planner / Trip Detail 对齐当前首页，并明确 Home 与 Personal Center 已统一，二者保持。Owner A；沿用 Issue #251 / #246、分支 `feature/a-homepage-concept-fidelity` 与 Draft PR #252。

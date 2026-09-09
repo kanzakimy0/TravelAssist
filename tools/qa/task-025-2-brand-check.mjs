@@ -8,7 +8,9 @@ const base = process.env.TASK_0252_URL || "http://localhost:3132";
 assert.ok(["localhost", "127.0.0.1"].includes(new URL(base).hostname));
 const baseline = process.env.TASK_0252_BASELINE === "true";
 const out = "docs/qa/TASK-025.2";
-const screenshots = ".cache/qa/brand-after";
+const review = process.env.TASK_0252_REVIEW_NAME || "brand";
+assert.match(review, /^[a-z-]+$/);
+const screenshots = `.cache/qa/${review}-after`;
 await mkdir(screenshots, { recursive: true });
 const visuals = [];
 await mkdir(out, { recursive: true });
@@ -229,7 +231,7 @@ try {
     assert.deepEqual(normalize(errors), normalize(previous.errors));
   }
   await writeFile(
-    out + "/brand-report.json",
+    out + "/" + review + "-report.json",
     JSON.stringify(
       {
         baseRevision: "d9ee82f7515bfc09d61d07db0232a5af203c2d16",

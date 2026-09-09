@@ -7,8 +7,12 @@ const { chromium } = createRequire(import.meta.url)(
 );
 const base = process.env.TASK_0252_URL || "http://localhost:3132";
 assert.ok(["localhost", "127.0.0.1"].includes(new URL(base).hostname));
+const review = process.env.TASK_0252_REVIEW_NAME;
+assert.ok(!review || /^[a-z-]+$/.test(review));
 const out = "docs/qa/TASK-025.2",
-  screens = ".cache/qa/task0252-screenshots";
+  screens = review
+    ? `.cache/qa/${review}-home`
+    : ".cache/qa/task0252-screenshots";
 await mkdir(out, { recursive: true });
 await mkdir(screens, { recursive: true });
 const browser = await chromium.launch({ channel: "msedge", headless: true });
@@ -324,7 +328,7 @@ try {
     ).size,
   };
   await writeFile(
-    out + "/browser-report.json",
+    out + (review ? `/${review}-home-report.json` : "/browser-report.json"),
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(
