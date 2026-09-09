@@ -13,12 +13,12 @@ Completed — documentation/integration audit only. No candidate was marked `已
 
 ## Candidate decisions
 
-| WBS | Result | Summary |
-| --- | --- | --- |
-| 0.9 | CHANGES_NEEDED | Update the stale contract inventory/status against the implemented Trips/Routes/Auth boundaries and explicitly record missing Preference/Companion public contracts |
-| 1.10 | CHANGES_NEEDED | Correct the `architecture_landmark` cross-dimension example and assign registry/mapping decisions to the POI schema/provider stages |
-| 1.12 | USER_DECISION_REQUIRED | Candidate route/day colors conflict with the current accepted coral route treatment |
-| 1.13 | USER_DECISION_REQUIRED | Candidate red-brown tokens conflict with the current accepted coral token family |
+| WBS  | Result                 | Summary                                                                                                                                                             |
+| ---- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0.9  | CHANGES_NEEDED         | Update the stale contract inventory/status against the implemented Trips/Routes/Auth boundaries and explicitly record missing Preference/Companion public contracts |
+| 1.10 | CHANGES_NEEDED         | Correct the `architecture_landmark` cross-dimension example and assign registry/mapping decisions to the POI schema/provider stages                                 |
+| 1.12 | USER_DECISION_REQUIRED | Candidate route/day colors conflict with the current accepted coral route treatment                                                                                 |
+| 1.13 | USER_DECISION_REQUIRED | Candidate red-brown tokens conflict with the current accepted coral token family                                                                                    |
 
 ## Deliverables
 
