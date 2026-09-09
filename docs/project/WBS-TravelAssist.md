@@ -7,7 +7,7 @@
 - 3.2.1 / TASK-025.1-A / #247 登记为未开始 / Deferred，依赖 3.2 与已授权视频素材；本轮不启动。
 - 下方旧素材阻塞段与旧 Result 是原范围下的正确历史，完整保留；本次范围修订解除该 blocker。保留其他工作站记录与状态。
 
-- Static MVP 实现 `5b5b495`；STATIC_MVP_PR_PENDING。原图、裁切、Overlay 与首页几何保持，Next 静态 import 提供预览；687 tests、4专项与8组生产浏览器通过，CLS=0、零视频请求。用户视觉验收待进行。Result/QA 记录旧 hash-history 基线例外；不自动开展后续任务。
+- Static MVP 实现 `5b5b495`；[Draft PR #248](https://github.com/kanzakimy0/TravelAssist/pull/248)（Open / Draft，未合并）。原图、裁切、Overlay 与首页几何保持，Next 静态 import 提供预览；687 tests、4专项与8组生产浏览器通过，CLS=0、零视频请求。用户视觉验收待进行。Result/QA 记录旧 hash-history 基线例外；不自动开展后续任务。
 
 ## TASK-025-A Homepage Animated Background（2026-09-09，素材阻塞）
 

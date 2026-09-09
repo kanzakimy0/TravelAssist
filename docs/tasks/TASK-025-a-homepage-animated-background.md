@@ -360,7 +360,7 @@ git push --force-with-lease
 
 ## Static MVP Execution（2026-09-09）
 
-- 基线 `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`；分支 `feature/a-homepage-static-background-mvp`；启动 `b483ca0`；实现 `5b5b495`。STATIC_MVP_PR_PENDING。
+- 基线 `088f467b8ff666ddd9774f8d6b7ad351fd54f00a`；分支 `feature/a-homepage-static-background-mvp`；启动 `b483ca0`；实现 `5b5b495`。[Draft PR #248](https://github.com/kanzakimy0/TravelAssist/pull/248)（Open / Draft，未合并）。
 - 3.2 = 待审查；3.2.1 = 未开始 / Deferred；1.16 / 3.1 已完成，依赖状态未修改。旧素材阻塞历史及原 Result 全文保留，本次产品修订解除视频前置。
 - 原图与全部 Home 几何不变；最小增加 Next 自动图片元数据和内联加载预览。687/687 Node、专项4/4、lint/typecheck/build通过；四尺寸 × 两种 motion 的生产验收8/8，CLS=0，无视频请求。
 - [当前 Result](RESULT-TASK-025-a-homepage-animated-background.md) 和 [QA](../qa/TASK-025/README.md) 包含11张截图清单、正常/延迟资源报告、历史 hash-history 例外与复现步骤。用户 Static MVP 视觉验收仍待进行；保持 Draft，未合并。

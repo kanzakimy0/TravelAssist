@@ -18,9 +18,9 @@
 - Integration: PR #244 已合入 develop；WBS 1.16 / 3.1 已完成。已检查 Open PR，没有重叠 Home 背景实现；#239 是旧路线 / 部署规划文档，不修改 Home。
 - Branch: `feature/a-homepage-static-background-mvp`，从最新 origin/develop 创建；原工作站 `feature/b-travelassist-engine-contract` 保持干净。
 - 启动提交：`b483ca0`，开始实现前已同步 3.2 的新标题 / Owner A / 依赖 1.16,3.1 / 进行中，并登记 3.2.1 未开始 / Deferred；其他工作站及旧 WBS 阻塞段保留。
-- 实现提交：`5b5b495`；后续提交包含专项测试、QA 证据与追踪文档。
+- 实现提交：`5b5b495`；验证提交 `840a0769c7f4aa6b5db370a7b7a3048f01d3e985` 包含专项测试、QA 证据与追踪文档。
 - Issue: [#246](https://github.com/kanzakimy0/TravelAssist/issues/246)，保持 Open。
-- Draft PR: STATIC_MVP_PR_PENDING。
+- Draft PR: [Draft PR #248](https://github.com/kanzakimy0/TravelAssist/pull/248)（Open / Draft，未合并）。
 - 工作树：`F:/CodexWorktrees/TravelAssist-TASK025`。因 C 盘空间不足，将同一分支移交至有空间的独立 F 盘工作树继续；没有改动原工作站源码或依赖。
 
 ## Current Result — Static MVP
