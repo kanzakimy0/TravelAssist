@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-027-A / WBS 9.10 安全基线整合验收（2026-09-10，待审查）
+
+- 9.10 / A / [Issue #257](https://github.com/kanzakimy0/TravelAssist/issues/257)：复用 TASK-020-A / Issue #228、`codex/a-global-security-baseline` 与既有 [Draft PR #231](https://github.com/kanzakimy0/TravelAssist/pull/231)，不创建重复实现。
+- 已正常整合 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；tracked / reachable history / AST client-server boundary / synthetic-canary production build / browser bundle 全部通过，741/741 全仓测试通过。所有报告仅记录类别、路径和脱敏 fingerprint，不显示疑似凭据原值。
+- 新增合并后兼容修复仅覆盖严格 env 模板、Planner server-only 边界、标准 password autocomplete 误报、clean-checkout Next typegen 与两项全仓测试基线；不访问凭据库、不验证外部凭据、不轮换、不重写历史、不改分支保护。
+- 当前为 **待审查**；PR #231 保持 Draft、Issue #257 保持 Open。只有用户验收并合入 `develop` 后方可标记已完成。Result：`docs/tasks/RESULT-TASK-027-a-security-baseline-acceptance-closeout.md`。
+
 ## TASK-020-A Secret 扫描 / 全局安全基线（2026-09-09）
 
 - 9.10 / A / [Issue #228](https://github.com/kanzakimy0/TravelAssist/issues/228)：进行中 → **待审查**，非已完成。独立干净 Worktree / `codex/a-global-security-baseline`，基线与最终复核 develop 均为 `74bc3cccf8bcfd603706e2b96d4072076191f308`。实现 `296966016faf131b4a8cc1d008586dda965f1987`；[Draft PR #231](https://github.com/kanzakimy0/TravelAssist/pull/231) → develop。保持 Draft，Issue Open，不自动合并。
@@ -906,7 +913,7 @@ TASK-023-A tracking (2026-09-09):
 | 9.7    | 跨模块 E2E：偏好→Planner                | A+B    | P0     | 4.18,5.14       | 未开始 |
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
-| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（TASK-020-A / #228） |
+| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（TASK-027-A / #257；复用 TASK-020-A / #231） |
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 

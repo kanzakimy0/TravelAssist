@@ -62,7 +62,7 @@ is heuristic and does not perform data-flow analysis or deobfuscation.
 
 ## Exact allowlist policy
 
-`tools/security/allowlist.json` has a version and 42 reviewed, expiring entries.
+`tools/security/allowlist.json` has a version and 74 reviewed, expiring entries.
 Each entry requires **scope + exact path + category + SHA-256 fingerprint +
 specific review reason + ISO expiry**. Unknown categories, wildcard paths,
 traversal, duplicate keys, absent/short reasons and expired entries fail closed.

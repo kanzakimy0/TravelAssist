@@ -1,3 +1,5 @@
+import "server-only";
+
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { PlannerPage } from "@/features/planner/components/planner-page";

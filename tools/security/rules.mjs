@@ -59,7 +59,7 @@ const categories = new Set(
     ]),
 );
 const placeholder = (value) =>
-  /^(?:YOUR_[A-Z_]+|<[^>]+>|\$\{[^}]+\}|\*+|REDACTED|CHANGE_ME|REPLACE_ME|placeholder|example|undefined|null)$/i.test(
+  /^(?:YOUR_[A-Z_]+|<[^>]+>|\$\{[^}]+\}|\*+|REDACTED|CHANGE_ME|REPLACE_ME|placeholder|example|undefined|null|current-password|new-password)$/i.test(
     value,
   );
 

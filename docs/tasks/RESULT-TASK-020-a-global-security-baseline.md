@@ -1,5 +1,7 @@
 # TASK-020-A Result
 
+> TASK-027-A refreshed this implementation against the 2026-09-10 integrated tree. Current acceptance evidence is recorded in `RESULT-TASK-027-a-security-baseline-acceptance-closeout.md`; the remainder of this file preserves the original TASK-020 delivery record.
+
 ## Status
 
 Completed — implementation and local acceptance complete; WBS 9.10 **待审查**.

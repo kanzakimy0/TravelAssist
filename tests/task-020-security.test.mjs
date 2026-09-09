@@ -120,6 +120,10 @@ test("empty env examples, comments and explicit placeholders do not consume foll
   assert.ok(has("NAME=literal-value", "env-template-value", ".env.example"));
   assert.ok(has("", "env-file", ".env.production"));
 });
+test("standard HTML password autocomplete tokens are not credentials", () => {
+  assert.ok(!has('password="current-password"', "generic-credential"));
+  assert.ok(!has('password:"new-password"', "generic-credential", "chunk.js"));
+});
 test("public server-secret alias denied even if empty", () => {
   assert.ok(
     has("NEXT_PUBLIC_" + "DATABASE_URL=", "public-env-secret", ".env.example"),
