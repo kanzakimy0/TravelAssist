@@ -49,6 +49,86 @@ export type Database = {
         };
         Relationships: [];
       };
+      itinerary_items: {
+        Row: {
+          assessment: string;
+          booking_reference_id: string | null;
+          booking_status: string;
+          booking_verified_at: string | null;
+          created_at: string;
+          day_id: string;
+          end_at: string | null;
+          end_timezone: string | null;
+          id: string;
+          kind: string;
+          latitude: number | null;
+          lock_level: string;
+          longitude: number | null;
+          place_name: string | null;
+          place_reference_id: string | null;
+          placement: string;
+          position: number;
+          start_at: string | null;
+          start_timezone: string | null;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          assessment: string;
+          booking_reference_id?: string | null;
+          booking_status: string;
+          booking_verified_at?: string | null;
+          created_at?: string;
+          day_id: string;
+          end_at?: string | null;
+          end_timezone?: string | null;
+          id?: string;
+          kind: string;
+          latitude?: number | null;
+          lock_level: string;
+          longitude?: number | null;
+          place_name?: string | null;
+          place_reference_id?: string | null;
+          placement: string;
+          position: number;
+          start_at?: string | null;
+          start_timezone?: string | null;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          assessment?: string;
+          booking_reference_id?: string | null;
+          booking_status?: string;
+          booking_verified_at?: string | null;
+          created_at?: string;
+          day_id?: string;
+          end_at?: string | null;
+          end_timezone?: string | null;
+          id?: string;
+          kind?: string;
+          latitude?: number | null;
+          lock_level?: string;
+          longitude?: number | null;
+          place_name?: string | null;
+          place_reference_id?: string | null;
+          placement?: string;
+          position?: number;
+          start_at?: string | null;
+          start_timezone?: string | null;
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "itinerary_items_day_id_fkey";
+            columns: ["day_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_days";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       profile_settings: {
         Row: {
           created_at: string;
@@ -126,6 +206,135 @@ export type Database = {
           updated_at?: string;
         };
         Relationships: [];
+      };
+      trip_days: {
+        Row: {
+          created_at: string;
+          day_number: number;
+          id: string;
+          local_date: string;
+          plan_id: string;
+          timezone: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          day_number: number;
+          id?: string;
+          local_date: string;
+          plan_id: string;
+          timezone: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          day_number?: number;
+          id?: string;
+          local_date?: string;
+          plan_id?: string;
+          timezone?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trip_days_plan_id_fkey";
+            columns: ["plan_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_plans";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      trip_plans: {
+        Row: {
+          created_at: string;
+          id: string;
+          position: number;
+          revision: number;
+          revision_txid: number;
+          title: string;
+          trip_id: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          position: number;
+          revision?: number;
+          revision_txid?: number;
+          title: string;
+          trip_id: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          position?: number;
+          revision?: number;
+          revision_txid?: number;
+          title?: string;
+          trip_id?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trip_plans_trip_id_fkey";
+            columns: ["trip_id"];
+            isOneToOne: false;
+            referencedRelation: "trips";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      trips: {
+        Row: {
+          active_plan_id: string | null;
+          created_at: string;
+          default_timezone: string;
+          id: string;
+          owner_user_id: string;
+          provenance: string;
+          revision: number;
+          revision_txid: number;
+          status: string;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          active_plan_id?: string | null;
+          created_at?: string;
+          default_timezone: string;
+          id?: string;
+          owner_user_id: string;
+          provenance: string;
+          revision?: number;
+          revision_txid?: number;
+          status: string;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          active_plan_id?: string | null;
+          created_at?: string;
+          default_timezone?: string;
+          id?: string;
+          owner_user_id?: string;
+          provenance?: string;
+          revision?: number;
+          revision_txid?: number;
+          status?: string;
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trips_active_plan_fk";
+            columns: ["id", "active_plan_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_plans";
+            referencedColumns: ["trip_id", "id"];
+          },
+        ];
       };
     };
     Views: {
