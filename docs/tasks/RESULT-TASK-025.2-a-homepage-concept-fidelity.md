@@ -10,7 +10,7 @@
 - 1440×900、1024×768、390×844、320×568，另加 1672×941；Start/Planner/真实 Detail/PC 共 20/20 几何与 develop 基线一致。向导继续、Logo hover、账户 Popover 边界、Escape 焦点归还与键盘焦点通过。
 - lint（0 warnings）/ typecheck / build / npm test --if-present / diff-check 通过；真实 Node 全仓 699/699、Home/Shell/背景专项 12/12。npm ci 使用同一锁文件前轮成功结果，本轮未改依赖。Home 五尺寸 + reduced-motion 6/6，CLS=0、无视频请求。素材完整性检查无错误。
 - 已知基线 favicon.ico 404 保留，无新增错误；Auth 使用本地合成 visual fixture，地图为既有 fallback，不声称验证真实外部服务。
-- 分支仍为 `feature/a-homepage-concept-fidelity`，Draft PR #252；证据与实际 PNG 路径见 `docs/qa/TASK-025.2/brand-evidence.json`，浏览器报告 `brand-report.json`，复现见 QA README。未合并、未启动 3.2.1 / 3.3。
+- 本次实现 `b3e12361286b414c699dad0e467d8074ee2bc8db`；分支仍为 `feature/a-homepage-concept-fidelity`，Draft PR #252；证据与实际 PNG 路径见 `docs/qa/TASK-025.2/brand-evidence.json`，浏览器报告 `brand-report.json`，复现见 QA README。未合并、未启动 3.2.1 / 3.3。
 
 ## Status（首页实装阶段历史）
 
