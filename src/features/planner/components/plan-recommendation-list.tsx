@@ -8,8 +8,6 @@ export function PlanRecommendationList({
   plans,
   selectedId,
   onSelect,
-  pendingCount,
-  onBooking,
   modifiedIds,
   onSavePlan,
   onRestorePlan,
@@ -18,8 +16,6 @@ export function PlanRecommendationList({
   plans: MockPlan[];
   selectedId: string;
   onSelect: (plan: MockPlan) => void;
-  pendingCount: number;
-  onBooking: () => void;
   modifiedIds: string[];
   onSavePlan: (id: string) => void;
   onRestorePlan: (id: string) => void;
@@ -102,16 +98,6 @@ export function PlanRecommendationList({
             </div>
           </article>
         ))}
-      </div>
-      <div className={styles.currentBooking} data-current-booking>
-        <span role="status">
-          {pendingCount
-            ? `当前方案 · 待预约 ${pendingCount} 项`
-            : "✓ 关键预约已完成"}
-        </span>
-        <button type="button" onClick={onBooking}>
-          到详情管理预约
-        </button>
       </div>
     </section>
   );

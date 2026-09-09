@@ -21,8 +21,6 @@ export function PlannerRightPanel({
   refreshing,
   status,
   onReplan,
-  pendingCount,
-  onBooking,
   onOpenDetail,
   detailReady = true,
   onSavePlan,
@@ -38,8 +36,6 @@ export function PlannerRightPanel({
   refreshing: boolean;
   status: string;
   onReplan: () => void;
-  pendingCount: number;
-  onBooking: () => void;
   onOpenDetail: () => void;
   detailReady?: boolean;
   onSavePlan: (id: string) => void;
@@ -129,8 +125,6 @@ export function PlannerRightPanel({
         plans={plans}
         selectedId={plan.id}
         onSelect={onPlan}
-        pendingCount={pendingCount}
-        onBooking={onBooking}
       />
     </div>
   );

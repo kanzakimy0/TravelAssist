@@ -132,16 +132,6 @@
   font-size: 10px;
   fill: #786154;
 }
-.currentBooking {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  min-height: 32px;
-  font-size: 10px;
-  flex-shrink: 0;
-}
-.currentBooking button,
 .placeActions button,
 .detailBody button,
 .rangeCards button,
@@ -153,11 +143,6 @@
   padding: 7px 10px;
   font-size: 11px;
   line-height: 1.5;
-}
-.currentBooking button {
-  color: #a74739;
-  background: #f7e6de;
-  white-space: nowrap;
 }
 .rangeHeading {
   font-size: 11px;
@@ -833,6 +818,10 @@
   min-height: 0;
   min-width: 0;
 }
+.quickSettings,
+.recommendations {
+  padding-inline: 15px;
+}
 .srOnly {
   position: absolute;
   width: 1px;
@@ -859,7 +848,7 @@
 }
 .recommendations .sectionTitle {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
@@ -868,10 +857,18 @@
   white-space: nowrap;
 }
 .sectionTitle h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-size: clamp(15px, 1.18vw, 19px);
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.4px;
+}
+.sectionTitle h2 svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
 }
 .sectionTitle p {
   margin: 5px 0 0;
@@ -1021,17 +1018,17 @@
 }
 .planList {
   display: grid;
-  grid-template-rows: repeat(3, minmax(100px, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 8px;
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
 }
 .planRow[data-recommendation] {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
-  gap: 4px;
-  padding: 6px;
+  gap: 5px;
+  padding: 7px;
 }
 .planRow[data-selected="true"] {
   border-color: #d45b50;
@@ -1610,12 +1607,6 @@
   font-size: 11px;
   color: var(--color-text-secondary);
 }
-.currentBooking {
-  font-size: 12px;
-}
-.currentBooking button {
-  font-size: 12px;
-}
 .rangeHeading {
   font-size: 13px;
 }
@@ -2091,12 +2082,12 @@
   flex-shrink: 0;
 }
 .bottomPanel .bottomTabs button {
-  min-height: clamp(42px, 5.5dvh, 64px);
-  font-size: clamp(13px, 1.05vw, 20px);
-  padding: 7px 2px;
+  min-height: clamp(32px, 3.8dvh, 42px);
+  font-size: clamp(12px, 0.95vw, 17px);
+  padding: 3px 2px;
 }
 .bottomPanel .tabContent {
-  padding: clamp(6px, 1dvh, 14px) clamp(8px, 1vw, 20px);
+  padding: clamp(4px, 0.7dvh, 9px) clamp(8px, 1vw, 20px);
   border-radius: 0;
 }
 .bottomPanel .rangeCards {

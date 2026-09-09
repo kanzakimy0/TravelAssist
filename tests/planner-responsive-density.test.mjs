@@ -68,3 +68,19 @@ test("right panel accessibility title does not consume a quick-settings row", as
     /\.srOnly\s*\{[^}]*position: absolute;[^}]*width: 1px;[^}]*height: 1px;[^}]*overflow: hidden;/s,
   );
 });
+
+test("full-screen rails prioritize card and panel content", async () => {
+  const css = await source("planner.module.css");
+  assert.match(
+    css,
+    /\.quickSettings,\s*\.recommendations\s*\{\s*padding-inline: 15px;/s,
+  );
+  assert.match(
+    css,
+    /\.sectionTitle h2\s*\{[^}]*display: flex;[^}]*align-items: center;/s,
+  );
+  assert.match(
+    css,
+    /\.bottomPanel \.bottomTabs button\s*\{[^}]*min-height: clamp\(32px, 3\.8dvh, 42px\);/s,
+  );
+});
