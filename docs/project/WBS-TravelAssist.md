@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-034-A / WBS 0.6 Definition of Done（2026-09-10，待审查）
+
+- Issue #264；Owner A / Project Governance；基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；分支 `docs/a-definition-of-done`；Draft PR 待创建。
+- 已建立全仓统一 DoD 候选与可复用验收清单，覆盖状态、设计、前端、Contract、DB/RLS、Provider、AI、安全、性能/观测、浏览器/无障碍、CI/部署、证据、基线债务及 Deferred/Partial/Blocked 规则。
+- 本任务不修改运行时或 workflow 权限，不批量改写历史状态。WBS 0.6 仅更新为 `待审查`；PR 合入 develop 且用户验收后才可标记 `已完成`。
+
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
 - 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
@@ -554,7 +560,7 @@ src/db/
 | 0.3 | Task 文件编号与存档规范 | A | P0 | 0.1 | 已完成 |
 | 0.4 | WBS 主表建立 | A | P0 | 0.1 | 已完成 |
 | 0.5 | GitHub Issue / PR 模板 | A | P1 | 0.3 | 已完成 |
-| 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
+| 0.6 | Definition of Done | A | P1 | 0.3 | 待审查 |
 | 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 已完成 |
 | 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
 | 0.9 | 跨模块 Contract 交接规则 | B | P0 | 0.8 | 待审查 |
