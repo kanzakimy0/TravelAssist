@@ -765,16 +765,26 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2    | Places / POI Provider 选型    | A      | P0     | 1.10     | 未开始 |
-| 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 未开始 |
+| 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
-| 7.5    | Route Schema                  | A      | P0     | 7.3      | 未开始 |
+| 7.5    | Route Schema                  | A      | P0     | 7.3      | 待审查（TASK-022-A / #232） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
-| 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 未开始 |
+| 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 待审查（Evaluation/development subset；Production Gate 未关闭；TASK-022-A / #232） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+
+TASK-022-A tracking (2026-09-09):
+
+- 7.3 production Provider、价格、保存/再展示、Mapbox 混合展示、
+  Web/iOS/Android 与 cache/retention 权利仍待正式商务确认。
+- 7.5 Route Contract v1.0、runtime validation 与 fixtures 已在
+  `codex/a-ekiworld-route-evaluation` 实现，等待 Draft PR 审查。
+- 7.8 仅实现 server-only 駅すぱあと Evaluation adapter/service、受限重试、
+  生产 fail-closed 与无持久化 cache boundary；未接 Planner、AI、Engine
+  或生产路线。
 
 ## 8. 数据库与认证基础
 
