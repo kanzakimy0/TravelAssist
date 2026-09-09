@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "node --import ./tests/register-planner-ts.mjs --test \"tests/*.test.mjs\"",
+    "qa:browser:smoke": "node tools/qa/task-035-browser-smoke.mjs",
     "deploy:validate": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs",
     "deploy:validate:local": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
     "deploy:build:local": "node --import ./tests/register-route-ts.mjs tools/deploy/build-artifact.mjs",
@@ -42,7 +44,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\""
   },
