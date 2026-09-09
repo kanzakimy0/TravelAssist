@@ -57,7 +57,8 @@ npm run qa:performance
 npm run qa:performance:budget
 ```
 
-The checked-in base is `develop@e74904830cbf8e6745b2013b2888e38984ccf96d`.
+The checked-in base is
+`develop@171900698180b80220017c9c4bec551b72792f27` (TASK-028-A refresh).
 Home, Start, Planner, and Detail are measured at 1440×900 and 390×844, three
 fresh cache-disabled contexts per cold scenario. A 320×740 overflow pass and 20
 Planner/Detail lifecycle rounds are separate gates. The 1/3/7-day,
@@ -81,11 +82,16 @@ failure once, then optimize or request an explicit review.
 
 ## Current evidence and limitations
 
-- Baseline and head reports: `docs/qa/task-024/`.
-- Fallback map only: no credential was copied into the isolated worktree. Real
-  Mapbox performance remains deferred.
-- The baseline and head each observed one generic resource 404 console event on
-  Home. It is recorded as existing baseline debt, not filtered out.
+- TASK-028-A refreshed the baseline and head reports in `docs/qa/task-024/`
+  against `origin/develop@171900698180b80220017c9c4bec551b72792f27`.
+- The conditional live Mapbox sample used an existing locally authorized public
+  token only in a temporary build environment. The external map did not
+  initialize and the application completed its bounded fallback, so live
+  Mapbox performance remains deferred; no request URL or credential detail is
+  retained in evidence.
+- The latest baseline recorded two generic runtime console errors and the head
+  recorded one. The budget gate therefore reports zero new runtime errors; no
+  broad console category was filtered.
 - Laboratory Chrome metrics and heap trends are not online monitoring, not
   real-user p75, and cannot prove the absence of every memory leak.
 - External collector selection, retention, access control, alert routing, and

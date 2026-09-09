@@ -1,5 +1,7 @@
 # TASK-024-A Result
 
+> TASK-028-A 于 2026-09-10 将本实现整合到 `origin/develop@171900698180b80220017c9c4bec551b72792f27` 后重新验收。当前证据、已知基线债务与 Deferred 项以 `RESULT-TASK-028-a-observability-acceptance-closeout.md` 为准；本文件保留为原始 TASK-024-A 交付记录。
+
 ## Status
 
 Partially Completed / 待验收。

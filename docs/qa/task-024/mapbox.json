@@ -1,134 +1,22 @@
 {
-  "task": "TASK-024-A",
-  "commit": "03bd72a",
-  "browser": "152.0.7977.77",
-  "mode": "real Mapbox base-map laboratory sample",
-  "runsPerScenario": 3,
-  "externalTransportNote": "Mapbox asset traffic is required for this explicit local sample; observation transport remains disabled.",
-  "samples": [
-    {
-      "viewport": "desktop",
-      "route": "planner",
-      "run": 1,
-      "elapsedMs": 3703.4372999999996,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 19,
-      "errors": []
-    },
-    {
-      "viewport": "desktop",
-      "route": "planner",
-      "run": 2,
-      "elapsedMs": 2690.9166999999998,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 27,
-      "errors": []
-    },
-    {
-      "viewport": "desktop",
-      "route": "planner",
-      "run": 3,
-      "elapsedMs": 2280.3653999999997,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 27,
-      "errors": []
-    },
-    {
-      "viewport": "desktop",
-      "route": "detail",
-      "run": 1,
-      "elapsedMs": 2376.4784,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 19,
-      "errors": []
-    },
-    {
-      "viewport": "desktop",
-      "route": "detail",
-      "run": 2,
-      "elapsedMs": 2515.1388000000006,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 27,
-      "errors": []
-    },
-    {
-      "viewport": "desktop",
-      "route": "detail",
-      "run": 3,
-      "elapsedMs": 2625.362800000001,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 27,
-      "errors": []
-    },
-    {
-      "viewport": "mobile",
-      "route": "planner",
-      "run": 1,
-      "elapsedMs": 1826.2603999999992,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 18,
-      "errors": []
-    },
-    {
-      "viewport": "mobile",
-      "route": "planner",
-      "run": 2,
-      "elapsedMs": 1746.7167999999983,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 22,
-      "errors": []
-    },
-    {
-      "viewport": "mobile",
-      "route": "planner",
-      "run": 3,
-      "elapsedMs": 1772.6647000000012,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 18,
-      "errors": []
-    },
-    {
-      "viewport": "mobile",
-      "route": "detail",
-      "run": 1,
-      "elapsedMs": 1876.012200000001,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 18,
-      "errors": []
-    },
-    {
-      "viewport": "mobile",
-      "route": "detail",
-      "run": 2,
-      "elapsedMs": 1833.9135999999999,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 18,
-      "errors": []
-    },
-    {
-      "viewport": "mobile",
-      "route": "detail",
-      "run": 3,
-      "elapsedMs": 2372.1084999999985,
-      "engine": "mapbox",
-      "mapCanvasCount": 1,
-      "mapboxResourceCount": 18,
-      "errors": []
-    }
-  ],
+  "task": "TASK-028-A",
+  "sourceTask": "TASK-024-A",
+  "commit": "d9be32a903f87c6096e8c1785e31baa93c7aa11c",
+  "browser": "Chrome 152.0.7977.77",
+  "mode": "conditional local Mapbox laboratory sample",
+  "status": "deferred",
+  "credentialHandling": "An existing locally authorized public token was injected only into the temporary build environment and was not written to the repository or evidence.",
+  "observed": {
+    "engineAfterThirtySeconds": "fallback",
+    "statusText": "底图暂不可用 · 已切换可操作示意地图",
+    "pageErrors": 0,
+    "consoleErrors": 2,
+    "failedExternalRequests": 1
+  },
+  "reason": "The conditional Mapbox sample could not establish the live map in this execution environment. The application completed its bounded fallback without a page error. No live Mapbox performance claim is made.",
   "limitations": [
-    "Local laboratory sample, not real-user p75.",
-    "No provider routing credential or itinerary payload was used."
+    "The failing external request URL and credential-bearing details are intentionally not recorded.",
+    "Fallback performance is covered by baseline.json and head.json but is not presented as live Mapbox evidence.",
+    "This local result is not real-user p75 and does not validate production transport or alert delivery."
   ]
 }
