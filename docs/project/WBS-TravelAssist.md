@@ -2,7 +2,7 @@
 
 ## TASK-029-A Design Candidate Integration Review（2026-09-10，审计完成）
 
-- Issue #259；Owner A / Integration Review；基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；分支 `codex/a-design-candidate-integration-review`；Draft PR 待创建。
+- Issue #259；Owner A / Integration Review；基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`；分支 `codex/a-design-candidate-integration-review`；提交 `d96c2a1`；Draft PR [#268](https://github.com/kanzakimy0/TravelAssist/pull/268)。
 - 0.9 = **CHANGES_NEEDED**：原则兼容，但须补齐现行 Trips / Routes / Auth Contract 清单、缺失的 Preference / Companion 公共契约及最新 PR 状态。
 - 1.10 = **CHANGES_NEEDED**：修正把 `architecture_landmark` 同时用作 Secondary Category 与 Experience Tag 的客观 Schema 冲突；Provider 映射留给 7.2 / 7.4。
 - 1.12 = **USER_DECISION_REQUIRED**：候选路线/日期独立配色与当前已验收珊瑚路线显示冲突。

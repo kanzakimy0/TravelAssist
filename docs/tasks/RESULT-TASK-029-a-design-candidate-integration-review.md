@@ -45,8 +45,8 @@ Completed — documentation/integration audit only. No candidate was marked `已
 ## Tracking
 
 - Issue: #259 (Open)
-- Draft PR: pending creation
-- Commit: pending
+- Draft PR: [#268](https://github.com/kanzakimy0/TravelAssist/pull/268) (Open / Draft)
+- Commit: `d96c2a183da529e09311d707512cde80e378b9e8`
 - WBS: audit record added; reviewed items remain `待审查`
 
 ## Blockers
