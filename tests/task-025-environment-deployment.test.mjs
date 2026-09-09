@@ -247,11 +247,13 @@ test("CI separates untrusted quality checks from trusted release rehearsal", () 
   );
   assert.match(quality, /pull_request:/);
   assert.match(quality, /permissions:\s*\n\s*contents: read/);
+  assert.match(quality, /fetch-depth: 0/);
   assert.doesNotMatch(quality, /pull_request_target|secrets\./);
   assert.match(release, /workflow_dispatch:/);
   assert.match(release, /github\.ref == 'refs\/heads\/develop'/);
   assert.match(release, /REQUESTED_SHA.*inputs\.commit_sha/);
   assert.match(release, /REQUESTED_SHA.*trusted_sha/s);
+  assert.equal((release.match(/fetch-depth: 0/g) ?? []).length, 2);
   assert.doesNotMatch(release, /pull_request_target|secrets\./);
 });
 

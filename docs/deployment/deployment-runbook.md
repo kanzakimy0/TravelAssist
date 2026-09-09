@@ -10,6 +10,8 @@ PR #231 contains a separate, unmerged security baseline and is not copied here. 
 
 `.github/workflows/quality-gate.yml` runs on pull requests, pushes to `develop` and manual dispatch. It has read-only repository permission and receives no deployment Secret. It performs locked installation, environment contract validation, the real Node test suite, lint, typecheck, engineering-surface format check, standalone build, artifact audit and whitespace check.
 
+Checkout uses full Git history because several accepted repository regression tests compare protected files against frozen historical commits. A shallow clone makes those tests fail and is not treated as an application regression or bypassed.
+
 The repository-wide historical Markdown set does not currently pass Prettier. The deploy gate therefore runs `format:check:deploy` over source, tools, tests, workflows, deployment docs and root deployment files, without `continue-on-error`. The full `format:check` remains a required local audit and its existing-document failures are reported rather than silently ignored or bulk-reformatted.
 
 An unreviewed pull request can therefore test code but cannot access a deployment credential or trigger an external deployment.
