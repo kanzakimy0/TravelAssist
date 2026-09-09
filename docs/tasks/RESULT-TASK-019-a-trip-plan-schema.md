@@ -90,3 +90,16 @@ Completed — implementation and real Local acceptance scope; **not merged / not
 ## Ready For Review
 
 Yes — keep PR Draft awaiting user acceptance; WBS 8.5 remains 待审查. This does not authorize merge or mark the work 已完成.
+
+## TASK-026-A Integration Closeout Addendum — 2026-09-10
+
+- Latest `origin/develop@171900698180b80220017c9c4bec551b72792f27` was merged normally in
+  `5df7a326bf96cec6000d790365cfe42a0fad0fd4`; only WBS and package-script conflicts required a
+  narrow union resolution.
+- Empty Local Supabase replay, deterministic generated types, TASK-019 runtime 21/21, TASK-016
+  runtime 25/25, lint, final typecheck, and production build pass on the integrated tree.
+- The full Node run is 709/712 because of three current non-Trip baseline failures documented in
+  `RESULT-TASK-026-a-trip-plan-schema-acceptance-closeout.md`. TASK-026 is therefore reported as
+  Partially Completed rather than overstating a green closeout.
+- PR #221 remains Open / Draft / unmerged; no B-owned migration or business meaning was imported.
+  PR #227 remains the only implementation PR and stays Draft.
