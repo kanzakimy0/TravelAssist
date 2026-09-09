@@ -4,11 +4,11 @@
 
 This section supersedes the inventory counts below for the current PR head while preserving the original TASK-020 evidence as history. The existing branch was normally merged with `origin/develop@171900698180b80220017c9c4bec551b72792f27` and rescanned without credential-store access or history rewriting.
 
-| Scope              | Current integrated evidence                                                                                                                   | Unresolved |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------: |
-| Tracked            | 2,172 files; 1,061 text files / 25,504,982 bytes; 1,108 binary and 3 oversize exclusions; 34 exact reviewed occurrences                       |          0 |
-| Reachable history  | 726 commits / 7,749 objects; 3,437 text candidates / 91,925,878 bytes; 1,088 binary and 4 oversize exclusions; 101 exact reviewed occurrences |          0 |
-| Production browser | 47 emitted files; 46 text files / 3,822,489 bytes; 1 binary exclusion; five synthetic private canaries                                        |          0 |
+| Scope              | Current integrated evidence                                                                                                                  | Unresolved |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------: |
+| Tracked            | 2,174 files; 1,063 text files / 25,517,574 bytes; 1,108 binary and 3 oversize exclusions; 32 exact reviewed occurrences                      |          0 |
+| Reachable history  | 736 commits / 7,858 objects; 3,494 text candidates / 95,546,034 bytes; 1,088 binary and 4 oversize exclusions; 94 exact reviewed occurrences |          0 |
+| Production browser | 47 emitted files; 46 text files / 3,822,489 bytes; 1 binary exclusion; five synthetic private canaries                                       |          0 |
 
 The exact allowlist now contains 74 reviewed entries, all expiring by 2026-12-10. Additions are limited to newly merged synthetic Auth/deployment/visual-QA fixtures, public QA evidence and one historical non-secret env enum. Standard HTML password autocomplete tokens are handled by a tested semantic exclusion rather than unstable bundle-path exceptions. See `RESULT-TASK-027-a-security-baseline-acceptance-closeout.md` for the complete validation record.
 

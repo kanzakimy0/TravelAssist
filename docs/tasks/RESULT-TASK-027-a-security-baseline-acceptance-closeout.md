@@ -24,8 +24,8 @@
 ## Security acceptance
 
 - Scanner tests: **30/30 PASS**, including the new regression proving standard HTML password autocomplete tokens are not treated as embedded credentials while ordinary credential assignments remain detected.
-- Tracked scan: **PASS**; 2,172 Git-listed files, 1,061 textual files / 25,504,982 bytes scanned, 1,108 binary and 3 oversize exclusions, 34 reviewed exact allowlist occurrences, 0 unresolved findings.
-- Reachable-history scan: **PASS**; 726 commits / 7,749 objects, 3,437 textual candidates / 91,925,878 bytes scanned, 1,088 binary and 4 oversize exclusions, 101 reviewed exact allowlist occurrences, 0 unresolved findings.
+- Tracked scan: **PASS**; 2,174 Git-listed files, 1,063 textual files / 25,517,574 bytes scanned, 1,108 binary and 3 oversize exclusions, 32 reviewed exact allowlist occurrences, 0 unresolved findings.
+- Reachable-history scan after the implementation commit: **PASS**; 736 commits / 7,858 objects, 3,494 textual candidates / 95,546,034 bytes scanned, 1,088 binary and 4 oversize exclusions, 94 reviewed exact allowlist occurrences, 0 unresolved findings.
 - AST boundary: **PASS**; 267 source modules, 39 client entries / 168 reachable client modules, 0 findings.
 - Production canary build: **PASS** with five random synthetic server values and an unreachable loopback DB; no real credential or cloud connection was used.
 - Browser bundle: **PASS**; 47 emitted files, 46 textual / 3,822,489 bytes scanned, 1 binary exclusion, 0 findings and 0 canary leaks.
