@@ -17,7 +17,8 @@
 - `candidate-pipeline-contract-v0.1.md` — Region / Corridor / POI 候选漏斗、Hard Filter、Scoring、Route / Itinerary Feasibility、Pareto、Diversity、Top-N、Fallback 与 AI 交接
 - `ai-compact-context-v1.md` — AI Gateway 输入 wire contract；TaskType / ContextScope / TripCompactState / SparsePreference / CandidateProjection / Route / Weather / Constraint Compact、Local ID、Token Budget 与 Progressive Expansion
 - `ai-decision-contract-v1.md` — AI Gateway 输出 wire contract；Decision Status、Choice / Ordering / Compact Patch / Semantic Preference、ReasonCode、Local ID 验证、Domain Proposal、Engine Revalidate 与 ChangeSet Builder 边界
-- `trip-engine-design-backlog-v0.6.md` — 最新 Trip Planning / POI / Region / AI Gateway 后续设计顺序与 Pilot 后校准项
+- `replanning-contract-v0.1.md` — Runtime Overlay、Trigger、Impact Analysis、Earliest Mutable Boundary、最小 Scope、Deterministic Repair、AI Soft Choice、revision / companion sync 与 ChangeSet 动态重规划契约
+- `trip-engine-design-backlog-v0.7.md` — 最新 Trip Planning / POI / Region / AI Gateway / Replanning 后续设计顺序与 Pilot 后校准项
 
 历史候选仍保留用于审查追踪：
 
@@ -28,12 +29,12 @@
 - `trip-engine-design-backlog-v0.3.md`
 - `trip-engine-design-backlog-v0.4.md`
 - `trip-engine-design-backlog-v0.5.md`
+- `trip-engine-design-backlog-v0.6.md`
 
 计划补充：
 
 - `system-overview.md` — Web / App / Backend / AI / Map 总体架构
 - `api-design.md` — 核心 API 详细边界
-- `replanning-contract-v0.1.md` — Trip Runtime / 事件触发 / 受影响范围 / 保护项 / Repair / AI / ChangeSet 的动态重规划契约
 - `planning-fact-freshness-policy-v0.1.md` — 动态 Fact 的来源、有效期、刷新与降级规则
 - `planning-decision-trace-v0.1.md` — 规划决策可解释性、候选淘汰、AI/Provider 成本与审计追踪
 
