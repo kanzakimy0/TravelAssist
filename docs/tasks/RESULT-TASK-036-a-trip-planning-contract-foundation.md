@@ -2,7 +2,7 @@
 
 ## Status
 
-TASK-036主体已通过 PR #295 / #296 进入 `develop`；review fixes implementation complete / Pending review. This follow-up adds fail-closed cross-field invariants for expired facts, POI projection identity, and Planning Compact route priors. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
+Completed / merged after user acceptance. TASK-036 主体已通过 PR #295 / #296 进入 `develop`，三个 review fixes 已通过 PR #293 合入 `develop`。The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
 
 ## Base / Design Base / develop integration state
 
@@ -29,7 +29,7 @@ TASK-036主体已通过 PR #295 / #296 进入 `develop`；review fixes implement
 
 ## Pull Request
 
-[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — the pre-review implementation was integrated through [#295](https://github.com/kanzakimy0/TravelAssist/pull/295); the remaining review-fix diff is retargeted to `develop` and remains Draft / unmerged.
+[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — merged into `develop` as `446b5da8803852e6badae03861f621bb658a78e0` after CI and user acceptance. The pre-review implementation was previously integrated through [#295](https://github.com/kanzakimy0/TravelAssist/pull/295).
 
 ## Files created/changed
 
@@ -110,8 +110,8 @@ Live AI/Provider calls, POI and Region corpora, tuned weights, candidate search/
 
 ## WBS updated Yes/No
 
-Yes. WBS 4.47 and the current Task tracking row remain `待审查` for this review follow-up; no dependent WBS item is marked complete.
+Yes. WBS 4.47 and the current Task tracking row are `已完成` after user acceptance and PR #293 merge. The design documents retain their explicit Freeze Candidate status.
 
 ## Recommended next Task
 
-Complete review of the remaining #293 review-fix diff. The separately scoped 100-real-POI scoring pilot and Consumer Review were not started and require a future explicit Task.
+TASK-036 is closed at the implementation/WBS level. The separately scoped 100-real-POI scoring pilot and Consumer Review were not started and require a future explicit Task.

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0",
+  "rowCount": 13,
+  "fullyMapped": true,
+  "rows": [
+    {
+      "concept": "43 POI Feature dimensions",
+      "contract": "PoiFeatureSetV1",
+      "parser": "parsePoiFeatureSetV1",
+      "positiveFixture": "completePoiFeatureFixture",
+      "negativeFixture": "featureValueTen / unknownFeatureCode",
+      "test": "task-036 + TASK-037 fuzz/wire",
+      "status": "covered"
+    },
+    {
+      "concept": "Effective / Sparse Preference",
+      "contract": "EffectivePreferenceV1 / SparsePreferenceV1",
+      "parser": "parseEffectivePreferenceV1 / parseSparsePreferenceV1",
+      "positiveFixture": "effectivePreferenceFixture / sparsePreferenceFixture",
+      "negativeFixture": "explicitCompactNeutral / missing dimension",
+      "test": "task-036 + TASK-037 fuzz/wire",
+      "status": "covered"
+    },
+    {
+      "concept": "Visit Profile / POI Projection",
+      "contract": "PoiVisitProfileV1 / PoiPlanningProjectionV1",
+      "parser": "parsePoiVisitProfileV1 / parsePoiPlanningProjectionV1",
+      "positiveFixture": "visitProfileFixture / poiPlanningProjectionFixture",
+      "negativeFixture": "duration order / cross-POI identity",
+      "test": "task-036 + TASK-037 fuzz/scale",
+      "status": "covered"
+    },
+    {
+      "concept": "Region Graph / TravelEdge",
+      "contract": "TravelRegionGraphV1",
+      "parser": "parseTravelRegionGraphV1",
+      "positiveFixture": "regionGraphFixture",
+      "negativeFixture": "cycle / reverse relation / dangling ref / range order",
+      "test": "task-036 + TASK-037 fuzz/scale",
+      "status": "covered"
+    },
+    {
+      "concept": "Score / Feasibility",
+      "contract": "PlanningScoreSetV1 / FeasibilityResultV1",
+      "parser": "parsePlanningScoreSetV1 / parseFeasibilityResultV1",
+      "positiveFixture": "scoreSetFixture / feasibilityPassFixture",
+      "negativeFixture": "score/coverage/status mismatch",
+      "test": "task-036 + TASK-037 fuzz",
+      "status": "covered"
+    },
+    {
+      "concept": "Candidate Pipeline",
+      "contract": "CandidateRunV1",
+      "parser": "parseCandidateRunV1",
+      "positiveFixture": "candidateRunFixture",
+      "negativeFixture": "duplicate/dangling candidate",
+      "test": "task-036 + TASK-037 fuzz/scale",
+      "status": "covered"
+    },
+    {
+      "concept": "AI Compact Context / Local IDs",
+      "contract": "AiCompactContextV1 / LocalIdMapV1",
+      "parser": "parseAiCompactContextV1",
+      "positiveFixture": "aiCompactContextFixture / localIdMapFixture",
+      "negativeFixture": "duplicate ID / forbidden op / prior exact time",
+      "test": "task-036 + TASK-037 fuzz/wire",
+      "status": "covered"
+    },
+    {
+      "concept": "AI Decision / Patch",
+      "contract": "AiDecisionResponseV1 / AiCompactOpV1",
+      "parser": "parseAiDecisionResponseV1",
+      "positiveFixture": "aiDecisionFixture / aiNeedMoreContextFixture",
+      "negativeFixture": "run mismatch / unknown/non-candidate ID / state conflict",
+      "test": "task-036 + TASK-037 fuzz",
+      "status": "covered"
+    },
+    {
+      "concept": "Replanning",
+      "contract": "ReplanProposalV1",
+      "parser": "parseReplanProposalV1",
+      "positiveFixture": "replanProposalFixture",
+      "negativeFixture": "protected overlap",
+      "test": "task-036 + TASK-037 fuzz/wire",
+      "status": "covered"
+    },
+    {
+      "concept": "Fact Freshness / Provenance",
+      "contract": "PlanningFactRefV1 / FactUsabilityV1",
+      "parser": "parsePlanningFactRefV1 / parseFactUsabilityV1",
+      "positiveFixture": "currentFactFixture / currentFactUsabilityFixture",
+      "negativeFixture": "invalid source / EXPIRED+USE",
+      "test": "task-036 + TASK-037 fuzz/wire",
+      "status": "covered"
+    },
+    {
+      "concept": "DecisionRun Trace / Telemetry",
+      "contract": "DecisionRunV1",
+      "parser": "parseDecisionRunV1",
+      "positiveFixture": "engineOnlyDecisionRunFixture / aiProviderDecisionRunFixture",
+      "negativeFixture": "forbidden raw/provider field",
+      "test": "task-036 + TASK-037 fuzz/scale",
+      "status": "covered"
+    },
+    {
+      "concept": "Canonical Trip compatibility export",
+      "contract": "TripPlanSnapshotV1",
+      "parser": "canonical Trip parser owner",
+      "positiveFixture": "canonical Trip fixtures",
+      "negativeFixture": "canonical Trip negative suite",
+      "test": "wbs-4-17-trip-contract.test.mjs",
+      "status": "covered_by_owner"
+    },
+    {
+      "concept": "Canonical Route compatibility export",
+      "contract": "RouteRequest / RouteResponse",
+      "parser": "canonical Route parser owner",
+      "positiveFixture": "canonical Route fixtures",
+      "negativeFixture": "canonical Route negative suite",
+      "test": "task-022-route-contract.test.mjs",
+      "status": "covered_by_owner"
+    }
+  ]
+}
