@@ -61,6 +61,7 @@ import { DetailSidebar } from "./detail-sidebar";
 import { DetailReservationPanel } from "./detail-reservation-panel";
 import { PlaceDetails } from "./place-details";
 import { PlannerRightPanel } from "./planner-right-panel";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { TripWorkspace } from "./trip-workspace";
 import { WorkspaceCapabilities } from "./workspace-capabilities";
 import { TripCompletionDialog } from "./trip-completion-dialog";
@@ -86,9 +87,11 @@ function serverViewport() {
 }
 
 export function PlannerPage({
+  viewer = null,
   routeQueriesEnabled = false,
 }: {
   routeQueriesEnabled?: boolean;
+  viewer?: HomeViewer | null;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -827,6 +830,7 @@ export function PlannerPage({
       }}
     >
       <TripWorkspace
+        viewer={viewer}
         onAdviceAction={(id, action, trigger) => {
           if (action === "adjust") {
             dispatchTrip({
