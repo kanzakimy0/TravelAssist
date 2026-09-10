@@ -9,6 +9,7 @@ TASK-036主体已通过 PR #295 / #296 进入 `develop`；review fixes implement
 - Design base: `origin/design/a-trip-engine-poi-ai-architecture-v2` at `cb96645db40c98389a554c830f1c0dd5f769d4f5`.
 - Initial develop integration: `origin/develop` at `2d3df8819da0e02b6b8449097dc2b95cd475f9d9` through normal merge commit `e14f9a8`.
 - Final develop integration: execution-time advance `f14ac40d329d96d900a53e832ba40e8e4abe8cbd` (B-owned Engine contract closeout) through normal merge commit `29d9c044655607d08c55f77c47cfcfb442a7c399`.
+- Review-closeout integration: latest `origin/develop` at `226e2fc18390d5d8795538818ea055640ca25123` merged normally through `e99b8bbfe4c290c86bb5561d1b920dc106dc2815`; the only conflicts were this Result and Master WBS, resolved by preserving current `develop` tracking for every other Task and retaining TASK-036 review-fix status.
 - Design PR #266 was open and unmerged when the implementation was completed; it was subsequently integrated into `develop` through PR #295.
 - The newly frozen B-owned Trip Mutation Engine contract was reviewed after integration; it does not conflict with or get copied by this Planning contract namespace.
 
@@ -22,7 +23,9 @@ TASK-036主体已通过 PR #295 / #296 进入 `develop`；review fixes implement
 
 ## Commit
 
-`7a95da6252110a638f8ab0a2e1a819a1bf9df727` — `feat(planning): add TASK-036 contract foundation`.
+- `7a95da6252110a638f8ab0a2e1a819a1bf9df727` — `feat(planning): add TASK-036 contract foundation`.
+- `e8cf842ac8b51f89bd6445ec9a2d2f822b767fe1` — `fix(planning): enforce review invariants`.
+- `e99b8bbfe4c290c86bb5561d1b920dc106dc2815` — normal merge of latest `origin/develop` with tracking-only conflict resolution.
 
 ## Pull Request
 
@@ -111,4 +114,4 @@ Yes. WBS 4.47 and the current Task tracking row remain `待审查` for this revi
 
 ## Recommended next Task
 
-After normal review of PR #266 and this stacked Draft PR, run the separately scoped 100-real-POI scoring pilot and Consumer Review. Do not start it automatically from TASK-036.
+Complete review of the remaining #293 review-fix diff. The separately scoped 100-real-POI scoring pilot and Consumer Review were not started and require a future explicit Task.
