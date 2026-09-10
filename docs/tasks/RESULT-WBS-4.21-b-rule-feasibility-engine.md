@@ -8,8 +8,8 @@
 - Branch: `feature/b-wbs-4-21-rule-feasibility-engine`
 - Execution base: `origin/develop@1fa38239df508683d5f1f522135233ad09e544f1`
 - Task authoring base保留：`afed8292036d233b9336bcd02b8f5bd66f53037f`
-- Implementation commit: PENDING
-- Draft PR: PENDING
+- Implementation commit: `f34466819b6c0c1faa048744c1da0ac2dfa8abf0`（后续提交仅补追踪链接）。
+- Draft PR: [#288](https://github.com/kanzakimy0/TravelAssist/pull/288) → develop，保持Draft。
 - Task: [TASK-WBS-4.21-B](TASK-WBS-4.21-b-rule-feasibility-engine.md)
 - Architecture: [Rule / Feasibility Engine](../architecture/rule-feasibility-engine.md)
 

@@ -7,8 +7,8 @@
 - Owner: B
 - Issue: [#287](https://github.com/kanzakimy0/TravelAssist/issues/287)
 - Execution Base: `1fa38239df508683d5f1f522135233ad09e544f1`
-- Implementation Commit: PENDING
-- Draft PR: PENDING
+- Implementation Commit: `f34466819b6c0c1faa048744c1da0ac2dfa8abf0`（后续仅文档追踪）
+- Draft PR: [#288](https://github.com/kanzakimy0/TravelAssist/pull/288) → develop，保持Draft
 - Status: 待验收
 - Branch: `feature/b-wbs-4-21-rule-feasibility-engine`
 - Base: `origin/develop@afed8292036d233b9336bcd02b8f5bd66f53037f`
