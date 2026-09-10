@@ -2,13 +2,13 @@
 
 ## Status / Tracking
 
-**B / 待验收；WBS 4.20.1 = 待审查。**仅完成现有4.20 Contract的增量Amendment；等待用户验收，不自动合并。
+**B / 已完成；WBS 4.20.1 = 已完成。**现有4.20 Contract的增量Amendment已通过用户验收，PR #283已合入develop。
 
-- Issue: [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)，保持Open。
+- Issue: [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)，Closed / Completed。
 - Branch: `codex/b-engine-contract-amendment`
 - Execution base: `origin/develop@fe538e7093bd58e7d0fe7fd434bf907dd132277a`
 - Amendment commit: `3117af3ca734a1eab1f18ed1d0d98131c05be09d`（后续提交仅同步追踪）。
-- Draft PR: [#283](https://github.com/kanzakimy0/TravelAssist/pull/283) → develop，保持Draft。
+- PR: [#283](https://github.com/kanzakimy0/TravelAssist/pull/283) → develop，已合并（原以Draft交付）。
 - Task: [TASK-WBS-4.20.1-B](TASK-WBS-4.20.1-b-engine-contract-amendment.md)
 - Contract: [现有Engine Contract §24](../architecture/travelassist-engine-contract.md#24-wbs-4201-amendment行程合理性输出review-candidate)
 
@@ -104,9 +104,9 @@ Node命令：`node --import ./tests/register-route-ts.mjs --test tests/*.test.mj
 - `docs/tasks/RESULT-WBS-4.20.1-b-engine-contract-amendment.md`
 - `docs/project/WBS-TravelAssist.md`
 
-4.20.1从进行中更新为B / 待审查；父4.20保持原待审查，4.21–4.24状态不变。原4.20 Task/Result、其他工作站WBS行和所有历史命名保留。
+4.20.1经用户验收并合并后更新为B / 已完成；父4.20保持原待审查，4.21–4.24状态不变。原4.20 Task/Result、其他工作站WBS行和所有历史命名保留。
 
-没有Planner/Detail UI、Engine runtime、评分器/疲劳计算器、DB/API/AI/Mapbox/Booking/Payment或新依赖。停止等待用户验收；不合并，不启动4.21。
+没有Planner/Detail UI、Engine runtime、评分器/疲劳计算器、DB/API/AI/Mapbox/Booking/Payment或新依赖。按用户授权完成合并收尾后停止，不启动4.21。
 
 ## Existing Format Baseline (47 files)
 
@@ -157,3 +157,13 @@ Node命令：`node --import ./tests/register-route-ts.mjs --test tests/*.test.mj
 - `docs/ui/planner-map-interaction-booking-mapbox.md`
 - `docs/ui/planner-right-panel-secondary-tabs.md`
 - `docs/ui/trip-detail.md`
+
+## Final Acceptance / Merge Closeout
+
+- 用户于2026-09-10验收通过并授权合并及拉取最新develop。
+- PR [#283](https://github.com/kanzakimy0/TravelAssist/pull/283) 已合入develop；mergedAt：2026-09-10T09:50:50Z。
+- Accepted head：`beb28e688eea93b64cf55e6b5aa370debfbabf8f`。
+- Merge commit：`f3af40c0b29ee3e50175902a5f94791d08cf8520`，已fetch并确认包含验收head。
+- Issue #282：Closed / Completed；WBS 4.20.1 = B / 已完成。
+- 父4.20的完整Contract freeze及Open Decisions仍保留原审查门；此次验收只关闭增量Amendment，不启用UPDATE_DURATION或任何Engine runtime。
+- 4.21–4.24未启动；三项asset及47项格式基线失败未修改。此次收尾只改文档，检查修改文档Prettier和git diff --check，沿用已验收工程结果。

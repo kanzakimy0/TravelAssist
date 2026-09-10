@@ -4,14 +4,14 @@
 
 - Task ID: TASK-WBS-4.20.1-B
 - Owner: B（用户明确指定的 Engine 单项责任）
-- Status: 待验收
-- WBS: 4.20.1；父4.20保持原审查状态，4.21未开始
+- Status: 已完成
+- WBS: 4.20.1 已完成；父4.20保持原审查状态，4.21未开始
 - GitHub Issue: [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)
 - Branch: `codex/b-engine-contract-amendment`
 - Depends On: 已存在4.20 Contract、4.17 canonical v1.0；新增输出发布前A/B review
 - Execution Base: `fe538e7093bd58e7d0fe7fd434bf907dd132277a`
 - Commit: `3117af3ca734a1eab1f18ed1d0d98131c05be09d`（Amendment；后续仅追踪）
-- Pull Request: [Draft PR #283](https://github.com/kanzakimy0/TravelAssist/pull/283)
+- Pull Request: [PR #283](https://github.com/kanzakimy0/TravelAssist/pull/283)（已合并）
 
 ## Scope
 
@@ -41,3 +41,13 @@
 ## Delivery
 
 见 [完整Result](RESULT-WBS-4.20.1-b-engine-contract-amendment.md)。Contract §24与14项增量设计验收已交付；工程检查通过项及三项资产/47项格式基线如实记录，4.21未开始。
+
+## Final Acceptance / Merge Closeout
+
+- 用户于2026-09-10验收通过并授权合并及拉取最新develop。
+- PR [#283](https://github.com/kanzakimy0/TravelAssist/pull/283) 已合入develop；mergedAt：2026-09-10T09:50:50Z。
+- Accepted head：`beb28e688eea93b64cf55e6b5aa370debfbabf8f`。
+- Merge commit：`f3af40c0b29ee3e50175902a5f94791d08cf8520`，已fetch并确认包含验收head。
+- Issue #282：Closed / Completed；WBS 4.20.1 = B / 已完成。
+- 父4.20的完整Contract freeze及Open Decisions仍保留原审查门；此次验收只关闭增量Amendment，不启用UPDATE_DURATION或任何Engine runtime。
+- 4.21–4.24未启动；三项asset及47项格式基线失败未修改。此次收尾只改文档，检查修改文档Prettier和git diff --check，沿用已验收工程结果。
