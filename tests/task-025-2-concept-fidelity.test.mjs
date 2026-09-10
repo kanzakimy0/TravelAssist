@@ -183,3 +183,60 @@ test("runtime uses the user-concept background with traceable approval and intac
     "7464b34430b89ea9c010242bed05156e374aff347d1d7875d5bedbb57c4a5466",
   );
 });
+
+// TASK-030-B extends the existing real-TSX harness instead of duplicating it.
+test("TASK-030-B: shared CTA stays a native /start link without a manual navigation handler", () => {
+  const { HeroStartButton } = load(
+    "src/features/home/components/hero-start-button.tsx",
+  );
+  const button = HeroStartButton();
+  assert.equal(button.type.name, "ButtonLink");
+  assert.equal(button.props.href, "/start");
+  for (const prop of ["onClick", "onNavigate", "disabled", "replace"])
+    assert.equal(button.props[prop], undefined);
+  const link = button.type(button.props);
+  assert.equal(link.type.name, "TestLink"); // existing Next Link adapter
+  assert.equal(link.props.href, "/start");
+  const html = renderToStaticMarkup(button);
+  assert.match(html, /^<a\b/);
+  assert.doesNotMatch(html, /<button|role="button"|href="\/(?:login|planner)/);
+});
+
+test("TASK-030-B: guest and verified viewers each get exactly one identical primary Start link", () => {
+  const { HomeHero } = load("src/features/home/components/home-hero.tsx");
+  let expected;
+  for (const viewer of [null, { name: "验收资料" }, { name: "个人中心" }]) {
+    const html = renderToStaticMarkup(
+      React.createElement(HomeHero, { viewer }),
+    );
+    const links = [...html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].map(
+      (m) => m[0],
+    );
+    const ctas = links.filter((link) => link.includes("让我们开始吧"));
+    assert.equal(ctas.length, 1);
+    assert.equal(links.filter((link) => /href="\/start"/.test(link)).length, 1);
+    assert.match(ctas[0], /href="\/start"/);
+    assert.doesNotMatch(
+      ctas[0],
+      /disabled|aria-disabled|href="\/login|[?]entry/,
+    );
+    if (expected) assert.equal(ctas[0], expected);
+    expected = ctas[0];
+  }
+});
+
+test("TASK-030-B: CTA label and description remain meaningful and uniquely connected", () => {
+  const { HomeHero } = load("src/features/home/components/home-hero.tsx");
+  const html = renderToStaticMarkup(React.createElement(HomeHero));
+  const cta = [...html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)]
+    .map((m) => m[0])
+    .find((link) => /href="\/start"/.test(link));
+  const visibleName = cta
+    .replace(/<span aria-hidden="true">[\s\S]*?<\/span>/g, "")
+    .replace(/<[^>]+>/g, "")
+    .trim();
+  assert.equal(visibleName, "让我们开始吧");
+  assert.match(cta, /aria-describedby="start-flow-note"/);
+  assert.equal((html.match(/id="start-flow-note"/g) || []).length, 1);
+  assert.match(html, /id="start-flow-note">进入旅行需求填写流程<\/span>/);
+});
