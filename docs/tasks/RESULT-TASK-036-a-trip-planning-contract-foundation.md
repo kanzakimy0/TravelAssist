@@ -2,14 +2,14 @@
 
 ## Status
 
-Implementation complete / Pending review. The implementation is intentionally stacked while design PR #266 remains open and unmerged. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
+Implementation complete / Pending review. Review follow-up adds fail-closed cross-field invariants for expired facts, POI projection identity, and Planning Compact route priors. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
 
 ## Base / Design Base / develop integration state
 
 - Design base: `origin/design/a-trip-engine-poi-ai-architecture-v2` at `cb96645db40c98389a554c830f1c0dd5f769d4f5`.
 - Initial develop integration: `origin/develop` at `2d3df8819da0e02b6b8449097dc2b95cd475f9d9` through normal merge commit `e14f9a8`.
 - Final develop integration: execution-time advance `f14ac40d329d96d900a53e832ba40e8e4abe8cbd` (B-owned Engine contract closeout) through normal merge commit `29d9c044655607d08c55f77c47cfcfb442a7c399`.
-- Design PR #266: Open, Draft and unmerged when implementation completed.
+- Design PR #266 was open and unmerged when the implementation was completed; it was subsequently integrated into `develop` through PR #295.
 - The newly frozen B-owned Trip Mutation Engine contract was reviewed after integration; it does not conflict with or get copied by this Planning contract namespace.
 
 ## Issue
@@ -26,7 +26,7 @@ Implementation complete / Pending review. The implementation is intentionally st
 
 ## Draft PR
 
-[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — Open / Draft, stacked target `design/a-trip-engine-poi-ai-architecture-v2`.
+[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — Draft review follow-up, retaining its existing stacked target `design/a-trip-engine-poi-ai-architecture-v2`; not retargeted or merged in this review round.
 
 ## Files created/changed
 
@@ -68,7 +68,7 @@ Implementation complete / Pending review. The implementation is intentionally st
 
 ## Validator coverage
 
-Dependency-free strict parsers reject unknown versions/fields/codes, missing fields, invalid enums, non-finite or out-of-range numbers, duplicate IDs, dangling graph references, relation cycles, reverse duplicates for symmetric relations, invalid duration/range ordering, invalid AI state combinations and protected-reference mutations. Validation errors expose only safe machine-readable `path` and `code` values and never echo input payloads.
+Dependency-free strict parsers reject unknown versions/fields/codes, missing fields, invalid enums, non-finite or out-of-range numbers, duplicate IDs, dangling graph references, relation cycles, reverse duplicates for symmetric relations, invalid duration/range ordering, cross-POI projection identity, expired-fact actions that still claim usability, Planning Compact priors carrying exact timetable minutes, invalid AI state combinations and protected-reference mutations. Validation errors expose only safe machine-readable `path` and `code` values and never echo input payloads.
 
 ## Positive fixtures
 
@@ -76,7 +76,7 @@ Synthetic fixtures cover the 43-dimensional feature vector with both `0` and `nu
 
 ## Negative fixtures
 
-Synthetic invalid fixtures cover incomplete/unknown feature vectors, compact neutral `5`, invalid Visit Profile order, Region Graph cycle and symmetric reverse duplicate, out-of-range score, unknown AI Local ID, run/task mismatch, duplicate/illegal choices, invalid status/payload combinations, unsupported expansion, stale fact misuse, protected replan overlap and forbidden raw provider fields.
+Synthetic invalid fixtures cover incomplete/unknown feature vectors, compact neutral `5`, invalid Visit Profile order, cross-POI FeatureSet and VisitProfile attachment, Region Graph cycle and symmetric reverse duplicate, out-of-range score, unknown AI Local ID, run/task mismatch, duplicate/illegal choices, invalid status/payload combinations, unsupported expansion, `EXPIRED + USE` fact misuse, planning priors with exact arrival/departure minutes, protected replan overlap and forbidden raw provider fields. The freshness enum rejection remains separately covered and is not presented as expired-state misuse coverage.
 
 ## Trip/Route compatibility
 
@@ -85,12 +85,13 @@ Planning imports/re-exports canonical Trip and Route contracts without copying t
 ## Commands/tests and exact outcomes
 
 - `npm ci` — PASS.
-- `npm run test:planning-contracts` — PASS, 18/18.
+- `npm run test:planning-contracts` — PASS, 21/21 after the review invariants and dedicated negative tests were added.
 - Initial relevant Trip/Route command — PASS, 75/75.
-- Final Trip/Route/Engine compatibility command after integrating `f14ac40` — PASS, 152/152.
+- Review follow-up canonical Trip/Route/Engine compatibility command — PASS, 130/130.
+- `npm run test:routing` — PASS, 28/28.
 - `npm run lint` — PASS.
 - `npm run typecheck` — PASS.
-- `node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs` — PASS, 820/820.
+- `node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs` — PASS, 823/823.
 - `npm run build` — PASS; production compilation and all 19 static page generations completed.
 - `npx prettier --check` for every TASK-036-created/modified file — PASS.
 - `npm run format:check` — BASELINE EXCEPTION: 62 pre-existing unrelated files fail; 0 TASK-036-created/modified files fail.
@@ -106,7 +107,7 @@ Live AI/Provider calls, POI and Region corpora, tuned weights, candidate search/
 
 ## WBS updated Yes/No
 
-Yes. WBS 4.47 and the current Task tracking row are set to `待审查`; no dependent WBS item is marked complete.
+Yes. WBS 4.47 and the current Task tracking row remain `待审查` for this review follow-up; no dependent WBS item is marked complete.
 
 ## Recommended next Task
 

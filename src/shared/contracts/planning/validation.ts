@@ -361,10 +361,16 @@ export const parsePoiPlanningProjectionV1 = (
     version(item.contractVersion, `${path}.contractVersion`);
     id(item.poiRef, `${path}.poiRef`);
     validateFeatureSet(item.featureSet, `${path}.featureSet`);
+    const featureSet = record(item.featureSet, `${path}.featureSet`);
+    if (featureSet.poiRef !== item.poiRef)
+      fail(`${path}.featureSet.poiRef`, "POI_REF_MISMATCH");
     const profiles = array(item.visitProfiles, `${path}.visitProfiles`, 100);
-    profiles.forEach((profile, index) =>
-      validateVisitProfile(profile, `${path}.visitProfiles[${index}]`),
-    );
+    profiles.forEach((profile, index) => {
+      const profilePath = `${path}.visitProfiles[${index}]`;
+      validateVisitProfile(profile, profilePath);
+      if (record(profile, profilePath).poiRef !== item.poiRef)
+        fail(`${profilePath}.poiRef`, "POI_REF_MISMATCH");
+    });
     const profileIds = profiles.map(
       (profile) => record(profile, path).profileId,
     );
@@ -1325,6 +1331,11 @@ function validateAiCompactContext(value: unknown, path: string) {
     numberValue(route.reliability, `${path}.route.reliability`, 0, 9, true);
     enumValue(route.freshness, `${path}.route.freshness`, FRESHNESS_STATES);
     strings(route.flags, `${path}.route.flags`);
+    if (
+      route.source === "planning_prior" &&
+      (route.arrivalMinute !== null || route.departureMinute !== null)
+    )
+      fail(`${path}.route`, "PLANNING_PRIOR_EXACT_TIME_FORBIDDEN");
   }
   if (item.weather !== null) {
     const weather = exact(item.weather, `${path}.weather`, [
@@ -1683,6 +1694,11 @@ export const parseFactUsabilityV1 = (
     enumValue(item.decisionUse, `${path}.decisionUse`, DECISION_USES);
     enumValue(item.freshness, `${path}.freshness`, FRESHNESS_STATES);
     enumValue(item.action, `${path}.action`, FACT_USABILITY_ACTIONS);
+    if (
+      item.freshness === "EXPIRED" &&
+      (item.action === "USE" || item.action === "USE_WITH_WARNING")
+    )
+      fail(`${path}.action`, "EXPIRED_FACT_ACTION_FORBIDDEN");
     strings(item.reasonCodes, `${path}.reasonCodes`);
     instant(item.evaluatedAt, `${path}.evaluatedAt`);
   });

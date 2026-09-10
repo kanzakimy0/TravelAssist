@@ -99,6 +99,21 @@ test("visit projection validates duration ordering and keeps load priors separat
   );
 });
 
+test("POI planning projection rejects cross-POI feature sets and visit profiles", () => {
+  expectIssue(
+    planning.parsePoiPlanningProjectionV1(
+      negativePlanningFixtures.mismatchedFeatureSetPoiRef,
+    ),
+    "POI_REF_MISMATCH",
+  );
+  expectIssue(
+    planning.parsePoiPlanningProjectionV1(
+      negativePlanningFixtures.mismatchedVisitProfilePoiRef,
+    ),
+    "POI_REF_MISMATCH",
+  );
+});
+
 test("region graph validates directional priors with multiple variants", () => {
   const result = planning.parseTravelRegionGraphV1(regionGraphFixture);
   assert.equal(result.ok, true);
@@ -213,6 +228,15 @@ test("AI compact context validates local IDs, omit-5 preference and precision", 
   );
   const raw = { ...aiCompactContextFixture, providerRaw: { result: true } };
   expectIssue(planning.parseAiCompactContextV1(raw), "UNKNOWN_FIELD");
+});
+
+test("AI compact planning priors cannot claim exact live timetable minutes", () => {
+  expectIssue(
+    planning.parseAiCompactContextV1(
+      negativePlanningFixtures.planningPriorWithExactTimes,
+    ),
+    "PLANNING_PRIOR_EXACT_TIME_FORBIDDEN",
+  );
 });
 
 const decisionContext = {
@@ -375,6 +399,29 @@ test("fact and freshness contracts distinguish facts, priors, current and stale 
     "UNSUPPORTED_VALUE",
   );
   assert.equal(Object.hasOwn(currentFactFixture, "ttlMinutes"), false);
+});
+
+test("expired facts reject use actions and allow only refresh, fallback, or block", () => {
+  expectIssue(
+    planning.parseFactUsabilityV1(negativePlanningFixtures.expiredFactUse),
+    "EXPIRED_FACT_ACTION_FORBIDDEN",
+  );
+  expectIssue(
+    planning.parseFactUsabilityV1({
+      ...negativePlanningFixtures.expiredFactUse,
+      action: "USE_WITH_WARNING",
+    }),
+    "EXPIRED_FACT_ACTION_FORBIDDEN",
+  );
+  for (const action of ["REFRESH", "FALLBACK", "BLOCK"]) {
+    assert.equal(
+      planning.parseFactUsabilityV1({
+        ...negativePlanningFixtures.expiredFactUse,
+        action,
+      }).ok,
+      true,
+    );
+  }
 });
 
 test("decision trace validates both Engine-only and Engine+AI/provider paths", () => {
