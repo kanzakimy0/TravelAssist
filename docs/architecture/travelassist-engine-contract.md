@@ -1166,4 +1166,4 @@ C. physical load 对照：30和90分钟均采用同一版本的标准强度/prof
 | OD-LOAD-01       | B / 4.21 + 产品 + A context/Provider Owner             | 强度/活动时长/环境输入契约、模型单位与校准、固定/可变负荷、疲劳累计/恢复/多日公式；不得用固定评分替代             |
 | OD-COVERAGE-01   | B / 4.21 + A canonical/Provider Consumer               | 各operation必要scope/维度、跨日依赖闭包、缺事实严重度与营业时间/路线时效规则需定义；缺口不得accepted all-clear    |
 
-完成本 Amendment 只将4.20.1交付待审查；父4.20的既有审查门保持，4.21仍未开始。不创建评分器、规则库、Engine runtime、Plan字段、DB/API或UI实现。
+本 Amendment 已于2026-09-10经用户验收并通过PR #283合入develop，4.20.1已完成；父4.20的既有审查门与Open Decisions保持，4.21仍未开始。不创建评分器、规则库、Engine runtime、Plan字段、DB/API或UI实现。

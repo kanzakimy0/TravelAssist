@@ -827,7 +827,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 | --- | --- | --- | --- | --- | --- |
 | 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 待审查（#201；仅契约设计，未冻结） |
-| 4.20.1 | Engine Contract Amendment / 行程合理性能力预留 | B | P1 | 4.20,4.17；#282 | 待审查 |
+| 4.20.1 | Engine Contract Amendment / 行程合理性能力预留 | B | P1 | 4.20,4.17；#282 | 已完成 |
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 未开始 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 未开始（前置未满足） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 未开始 |
@@ -1198,8 +1198,8 @@ B Auth/User Session → A Header/Avatar Entry
 
 ## TASK-WBS-4.20.1-B Amendment tracking（2026-09-10）
 
-- Issue #282；Owner B；状态：待审查（仅Contract增量设计，待用户验收）。
-- 基线：`fe538e7093bd58e7d0fe7fd434bf907dd132277a`；分支：`codex/b-engine-contract-amendment`；Commit：`3117af3ca734a1eab1f18ed1d0d98131c05be09d`；[Draft PR #283](https://github.com/kanzakimy0/TravelAssist/pull/283)。
+- Issue #282；Owner B；状态：已完成（仅Contract增量设计；用户验收通过，PR #283已合入develop）。
+- 基线：`fe538e7093bd58e7d0fe7fd434bf907dd132277a`；分支：`codex/b-engine-contract-amendment`；Commit：`3117af3ca734a1eab1f18ed1d0d98131c05be09d`；[PR #283](https://github.com/kanzakimy0/TravelAssist/pull/283) 已合并；accepted head：`beb28e688eea93b64cf55e6b5aa370debfbabf8f`；merge：`f3af40c0b29ee3e50175902a5f94791d08cf8520`。
 - Task：`docs/tasks/TASK-WBS-4.20.1-b-engine-contract-amendment.md`；Result：`docs/tasks/RESULT-WBS-4.20.1-b-engine-contract-amendment.md`。
 - 原Engine Contract §24增补duration、load/fatigue、item/day/itinerary assessment及impact；43字段及公式不复制到ChangeSet，UPDATE_DURATION因4.17无独立duration保持unsupported。
 - lint / build / build后typecheck /修改文档格式/差异检查通过；Node721/724，三项既有asset失败；全仓47项既有格式失败，未越界修复。
