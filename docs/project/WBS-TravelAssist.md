@@ -4,6 +4,9 @@
 
 - Canonical Owner = B，依据 docs/project/WBS-3.3-owner-correction.md；仅此项 Owner 修订，其他记录保持。
 - 执行基线：b783a101285359a9118d224ae05b1b7c26a498f7；3.1 = 已完成，依赖满足。
+- 2026-09-10 集成收尾：正常 merge 最新 origin/develop@1df4604029b00a2047543b08bb4e9788e9e61652，merge fbcee287f352e03955082d88206a3fecc372aca2；ahead 5 / behind 3 已整合，冲突 0，三份新增 TASK-031-B 规格逐字保留但未启动。
+- 整合后重跑 lint / typecheck / build / TASK-030-B 3/3 / diff-check 通过；全仓 711/713，最新未修改 develop 基线 708/710，同两项既有素材清单失败未修复。运行时与测试实现零改动，证据 docs/qa/TASK-030/integration-test-report.json。
+- 3.1 B / 已完成、3.2 B / 已完成、3.2.1 A / 未开始 / Deferred、3.3 B / 待审查保持；PR #273 保持 Draft，不合并。
 - Issue #260；分支 feature/b-wbs-3-3-main-entry；Task：docs/tasks/TASK-030-b-main-entry-closeout.md。
 - 先审计现有 shared ButtonLink href="/start"，验证 Guest / Signed-in、键盘 / 触摸、历史导航及既有 Wizard → Planner。正确实现保留，不重设计首页或修改 Planner。
 - 审计 / QA 已完成，运行时代码零改动；测试提交 45e66cecd530947716feddd154a470dc66e236b8。专项 3/3，四尺寸 Guest / Signed-in 主流程 8/8 + 无 JS 原生导航 1/1 通过，首页视觉冻结。

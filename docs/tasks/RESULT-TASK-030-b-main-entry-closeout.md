@@ -6,7 +6,20 @@
 
 首页入口实现正确，本次运行时代码零改动。未合并 develop，未开始后续 Task。全仓测试不是全绿：713 项中 711 通过，2 项旧素材清单失败在未修改的 execution base 上同样复现。
 
-## Preflight
+## 最新 develop 集成收尾 — 2026-09-10
+
+- 用户确认 TASK-030-B 工程验收通过，本轮授权安全整合与重跑检查，明确不合并 PR、不启动 TASK-031-B。
+- latest develop SHA：1df4604029b00a2047543b08bb4e9788e9e61652；整合前本分支 e5806db560db9268fabbae424fd233cec2af928f，ahead 5 / behind 3。
+- 正常 merge commit：fbcee287f352e03955082d88206a3fecc372aca2。使用 git merge --no-ff --no-commit origin/develop 检查后提交，未 rebase、cherry-pick 或 force push。
+- **冲突数 0**：Git 自动合并成功，无需手动冲突解决，也未使用整份 ours / theirs。开始检查时 GitHub 已报告 MERGEABLE / CLEAN，与此前用户看到的不可合并状态不同；最终状态以本轮 push 后复核为准。
+- develop 的三份新文件（WBS-3.4-owner-correction、TASK-031-B 正式 Task、Launcher）逐字节保留。只集成已有文档，不表示启动该任务。
+- Master WBS 保留 3.1 B / 已完成、3.2 B / 已完成、3.2.1 A / 未开始 / Deferred、3.3 B / 待审查；历史 Task / branch / PR 名称及其他 A/B 记录不改。
+- 本轮重新执行 lint、typecheck、build、Node 全仓、TASK-030-B 专项和 diff-check。lint / typecheck / build / diff-check PASS；专项 3/3 PASS。
+- 整合后全仓 **711/713 PASS、2 FAIL**；在最新未修改 develop @ 1df4604029b00a2047543b08bb4e9788e9e61652 的独立基线工作区重新执行相同命令，**708/710 PASS、同样 2 FAIL**。失败名称及 CRLF/LF 原因与下方 Problems 一致，没有修复或弱化无关素材验证。
+- 运行时代码、素材、测试实现相对整合前均无改动。浏览器沿用原 8 条完整主流程 + 1 条 no-JS 导航证据，本次仅文档整合未重跑浏览器，不伪报新浏览器 PASS。
+- 新证据：docs/qa/TASK-030/integration-test-report.json；原执行基线及旧报告保留为历史。Issue #260 / PR #273 同步本轮精确 SHA 和测试结果；PR 保持 Open / Draft，WBS 3.3 不提前标为已完成。
+
+## Preflight（初次执行记录）
 
 - execution base: b783a101285359a9118d224ae05b1b7c26a498f7（2026-09-10 最新 origin/develop；最终 fetch 未变化）。
 - 已执行 git status --short、git branch --show-current、git fetch --all --prune、git rev-parse origin/develop、git log --oneline -20 origin/develop。
