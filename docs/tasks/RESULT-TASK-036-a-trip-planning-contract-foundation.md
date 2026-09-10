@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation complete / Pending review. Review follow-up adds fail-closed cross-field invariants for expired facts, POI projection identity, and Planning Compact route priors. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
+TASK-036主体已通过 PR #295 / #296 进入 `develop`；review fixes implementation complete / Pending review. This follow-up adds fail-closed cross-field invariants for expired facts, POI projection identity, and Planning Compact route priors. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
 
 ## Base / Design Base / develop integration state
 
@@ -24,9 +24,9 @@ Implementation complete / Pending review. Review follow-up adds fail-closed cros
 
 `7a95da6252110a638f8ab0a2e1a819a1bf9df727` — `feat(planning): add TASK-036 contract foundation`.
 
-## Draft PR
+## Pull Request
 
-[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — Draft review follow-up, retaining its existing stacked target `design/a-trip-engine-poi-ai-architecture-v2`; not retargeted or merged in this review round.
+[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — the pre-review implementation was integrated through [#295](https://github.com/kanzakimy0/TravelAssist/pull/295); the remaining review-fix diff is retargeted to `develop` and remains Draft / unmerged.
 
 ## Files created/changed
 
