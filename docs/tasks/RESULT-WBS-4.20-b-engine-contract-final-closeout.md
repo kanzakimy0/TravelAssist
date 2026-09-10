@@ -10,8 +10,8 @@
 - Issue：[#201](https://github.com/kanzakimy0/TravelAssist/issues/201)，按本次授权关闭为Completed。
 - Execution base：origin/develop@2d3df8819da0e02b6b8449097dc2b95cd475f9d9。
 - Closeout branch：codex/b-engine-contract-final-freeze。
-- Commit：PENDING（发布后补追踪）。
-- Draft PR：PENDING（创建后补链接）。
+- Freeze audit commit：8912fb21e3272ab68223c22037499629adc4c8c9（后续提交仅同步追踪链接）。
+- Draft PR：[#292](https://github.com/kanzakimy0/TravelAssist/pull/292) → develop，保持Draft / Open。
 - Contract：[Engine Contract v0.1 §25](../architecture/travelassist-engine-contract.md#25-final-contract-freeze--closeout2026-09-10)。
 - 原Task：[TASK-WBS-4.20-B](TASK-WBS-4.20-b-travelassist-engine-contract.md)。
 - 原Result：[保留历史Result](RESULT-WBS-4.20-b-travelassist-engine-contract.md)。
@@ -96,6 +96,6 @@
 4. docs/project/WBS-TravelAssist.md：4.20 B / 已完成、精准追踪，保留其他Owner记录。
 5. 本Result。
 
-Issue #201按本次条件授权记为Completed；历史Review PR #238由新Draft Closeout PR承接，不合并旧分支。4.20.1和4.21保持已完成，4.22–4.24/8.5未开始，其他任务状态不变。
+Issue #201按本次条件授权记为Completed；历史Review PR #238已关闭，由Draft Closeout PR #292承接，不合并旧分支。4.20.1和4.21保持已完成，4.22–4.24/8.5未开始，其他任务状态不变。
 
 完成后停止，等待用户确认本次Closeout PR；不自动合并，不启动4.22。

@@ -1231,3 +1231,4 @@ B Auth/User Session → A Header/Avatar Entry
 - 基线：`2d3df8819da0e02b6b8449097dc2b95cd475f9d9`；独立分支：`codex/b-engine-contract-final-freeze`；Closeout PR待用户确认，不自动合并。
 - Result：`docs/tasks/RESULT-WBS-4.20-b-engine-contract-final-closeout.md`；全部21项OD分类见Contract §25：未解决A类0，后续B类实现问题保留Owner/Dependency/Future WBS及fail-closed边界。
 - 仅改文档/Tracking；4.20.1及4.21完成状态、其他Owner全部记录、历史baseline failures保留；4.22–4.24、8.5未开始，7.5已完成且7.8生产门保持原状态。
+- 发布：Freeze audit commit `8912fb21e3272ab68223c22037499629adc4c8c9`；[Draft PR #292](https://github.com/kanzakimy0/TravelAssist/pull/292)待确认；#201已Completed，历史Review PR #238已关闭，由#292承接。
