@@ -918,7 +918,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
-| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待审查（TASK-038-A / #299；100 POI 离线校准候选，非 Production Freeze） |
+| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待人工盲审（TASK-038-A / #299 + TASK-039-A / #301；候选未冻结） |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
@@ -954,6 +954,18 @@ TASK-038-A tracking (2026-09-11):
   冻结。英文开放知识覆盖、主观标注和缺少证据支持的数值 Visit Profile 仍需
   后续独立复核；不为完整度编造相关数字。
 - 不调用 LLM、付费 Provider、实时路线/天气/预约 API 或生产 DB；未启动后续 Pilot。
+
+TASK-039-A tracking (2026-09-11):
+
+- Issue #301；分支 `codex/a-poi-scoring-blind-review`；叠加基线
+  `71825e995946d7796587f4648dfc78490b45546d`（TASK-038-A / Draft PR #300）；
+  实现 `b240c57`；Draft PR #302 以 `codex/a-100-poi-scoring-pilot` 为 base。
+- 已准备 144 条独立盲审题：96 primary、24 near-score diagnostic、12 machine
+  benchmark audit、12 hidden repeat；R1/R2 使用独立稳定顺序、盲 ID 与 A/B 朝向。
+- Reviewer-facing pack 泄漏审计通过；未提供真实人工 response，未生成 Human Gold，
+  未执行 candidate-0457 的人类基准评估，当前状态为 `Prepared / Awaiting Human Review`。
+- 继续沿用 WBS 7.9，不建立第二条评分 WBS；人工证据被接受且另有明确生产冻结决定前，
+  推荐打分不得标记为 Production Frozen / Completed。
 
 ## 8. 数据库与认证基础
 
