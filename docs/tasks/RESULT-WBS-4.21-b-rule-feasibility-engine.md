@@ -2,14 +2,14 @@
 
 ## Status / Tracking
 
-**Owner B / 待验收；WBS 4.21 = B / 待审查。**确定性 Rule / Feasibility Engine 已实现并通过专项验收，等待用户审查；不自动合并或启动4.22。
+**Owner B / 已完成；WBS 4.21 = B / 已完成。**用户验收通过，PR #288 已合并到 develop，Issue #287 已 Closed / Completed；不启动4.22。
 
-- Issue: [#287](https://github.com/kanzakimy0/TravelAssist/issues/287)，保持Open。
+- Issue: [#287](https://github.com/kanzakimy0/TravelAssist/issues/287)，已 Closed / Completed。
 - Branch: `feature/b-wbs-4-21-rule-feasibility-engine`
 - Execution base: `origin/develop@1fa38239df508683d5f1f522135233ad09e544f1`
 - Task authoring base保留：`afed8292036d233b9336bcd02b8f5bd66f53037f`
 - Implementation commit: `f34466819b6c0c1faa048744c1da0ac2dfa8abf0`（后续提交仅补追踪链接）。
-- Draft PR: [#288](https://github.com/kanzakimy0/TravelAssist/pull/288) → develop，保持Draft。
+- PR: [#288](https://github.com/kanzakimy0/TravelAssist/pull/288) → develop，已合并。
 - Task: [TASK-WBS-4.21-B](TASK-WBS-4.21-b-rule-feasibility-engine.md)
 - Architecture: [Rule / Feasibility Engine](../architecture/rule-feasibility-engine.md)
 
@@ -223,3 +223,23 @@ WBS4.21：B / 待审查；4.20父审查门、4.20.1已完成和其他工作站�
 - `docs/ui/planner-map-interaction-booking-mapbox.md`
 - `docs/ui/planner-right-panel-secondary-tabs.md`
 - `docs/ui/trip-detail.md`
+
+## Final Acceptance / Merge Closeout
+
+- 用户验收通过，并明确授权最终合并及文档收尾。
+- PR [#288](https://github.com/kanzakimy0/TravelAssist/pull/288) 已由 Draft 转为 Ready，正式合并到 develop。
+- Accepted head：`b3e05af529bc1e3ca306bb71f4bc4958779895a2`；合并前核对与用户已验收版本完全一致。
+- 合并前 GitHub 状态：MERGEABLE / CLEAN。
+- Merge commit：`38e173df2601d099dc56fcde7a1f33d577981768`。
+- Merged at：2026-09-10T11:14:52Z。
+- 合并后 fetch 确认 origin/develop = `38e173df2601d099dc56fcde7a1f33d577981768`；ancestor 检查通过。后续文档收尾提交将在此基础上进入 develop。
+- Issue [#287](https://github.com/kanzakimy0/TravelAssist/issues/287) 已 Closed / Completed。
+- WBS 4.21 = B / 已完成。
+
+### Evidence preservation / scope
+
+本 Result 原始专项 77/77、两种 Node 全仓命令的 baseline failures，以及 47 个既有格式问题记录全部保留，代表原执行基线与验收时点，不改写历史结果。
+
+合并时最新 develop 已包含独立 PR #289（`339f127c14cca4186f9c536e27e459b9e9bcd099`）的基线修复。本次保留该修复，不修改任何无关资产或测试，不宣称本次重新执行了完整 runtime 测试。
+
+最终收尾仅修改 Master WBS 与本 Result；核对已验收 Engine runtime 与合并版本无差异，并执行文档格式、diff 和改动范围检查。4.22–4.24 保持未开始，不自动启动。
