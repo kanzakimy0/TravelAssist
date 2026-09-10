@@ -2,7 +2,7 @@
 
 > 前部为原交付历史；当前结论见文末2026-09-10记录。
 
-## Status
+## 历史 Status（当前为 B / 已完成；见末节）
 
 `待审查`
 
@@ -300,3 +300,14 @@ WBS 0.9 的治理规则已具备进入 Review 的条件，状态为 **待审查*
 WBS两段冲突均为本分支空段与develop新增历史；逐段保留上游新增及原0.9追踪，没有整份ours/theirs。更新Trips、Routes、Auth、Engine的真实canonical/Consumer清单，明确Preference/Companion公共包及Save/History缺口；旧“shared/server不存在”仅作为历史。
 
 仅治理文档，Owner/canonical/权限/未知fallback/版本迁移原则不变，不改runtime/DB/API。文档检查与diff检查通过后按本轮授权合并；合并前WBS仍待审查，实际merge及完成状态在最终追踪记录。旧测试不改写为新测试。
+
+## Final Acceptance / Merge Closeout — 2026-09-10
+
+用户授权核查保留 Draft、解决差异并合并可交付项，涵盖本治理文档收尾。已更新最新 public Contract/Consumer 清单；未修改治理核心边界或 runtime。
+
+- PR #171：已合入 develop。
+- 最终 head：c75d7fcea922a9cab4fe5b0bd056b9f16374f83b。
+- merge commit：88f9d338793dd21f81a3517be9c1ee55fc2d645b，已核实是 origin/develop 祖先。
+- WBS 0.9 = B / 已完成；Issue #168 按本次授权关闭为 Completed。
+- 修改文档格式及 diff 检查通过；GitHub Install, test and build 通过（run 34477130675）。未新增业务实现或代替未完成 Preference/Save/History 依赖。
+- 原 Draft / 等待验收 / 旧目录现状记录保留为历史，不再表示当前状态。

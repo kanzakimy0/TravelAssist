@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Cross-module Contract Governance`
 - Priority: `P0`
-- Status: `进行中`
+- Status: `已完成`（2026-09-10 用户授权队列整合及合并，PR #171 已合入）
 - Depends On: `0.8`
 - Dependency State at kickoff: `0.8 = 进行中`
 - Dependency Override: `用户于 2026-09-07 明确要求立即启动 0.9；允许以“规则先行”方式与 0.8 并行，但不得借此改变 A/B 已有模块边界。`
@@ -202,14 +202,14 @@ Consumer 不因“需要字段”而取得 Producer 私有模型的所有权。
 
 文档至少冻结以下交接方向：
 
-| Contract | Producer / Owner | Consumer | 说明 |
-|---|---|---|---|
-| User / Session Public View | B | A | A 只读取规划所需的公开用户状态，不读取账户私有实现 |
-| Profile Public View | B | A | 仅暴露主系统真正需要的数据 |
-| Preference Contract | B | A | Planner / Recommendation 消费长期偏好 |
-| Companion Contract | B | A | Planner 消费同行人摘要/约束 |
-| Trip Plan Contract | A | B | B 的保存/历史/Trip Library 消费 A 产生的可保存行程 |
-| Planner Resume / Edit Handoff | A | B | B 从 Trip Library 返回 Planner 时使用稳定入口/标识，不复制 Planner Store |
+| Contract                      | Producer / Owner | Consumer | 说明                                                                     |
+| ----------------------------- | ---------------- | -------- | ------------------------------------------------------------------------ |
+| User / Session Public View    | B                | A        | A 只读取规划所需的公开用户状态，不读取账户私有实现                       |
+| Profile Public View           | B                | A        | 仅暴露主系统真正需要的数据                                               |
+| Preference Contract           | B                | A        | Planner / Recommendation 消费长期偏好                                    |
+| Companion Contract            | B                | A        | Planner 消费同行人摘要/约束                                              |
+| Trip Plan Contract            | A                | B        | B 的保存/历史/Trip Library 消费 A 产生的可保存行程                       |
+| Planner Resume / Edit Handoff | A                | B        | B 从 Trip Library 返回 Planner 时使用稳定入口/标识，不复制 Planner Store |
 
 不要提前冻结尚未完成设计的 Reservation / Partner / Payment Contract 细节；只能预留扩展规则。
 

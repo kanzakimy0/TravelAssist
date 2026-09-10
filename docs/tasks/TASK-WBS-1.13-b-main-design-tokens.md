@@ -109,3 +109,7 @@
 本 PR 发布修订后的设计候选；WBS 1.13 = B / 待审查、Issue #178 Open。合并文档不等于完成设计冻结或未来局部迁移。原 Draft / 未合并状态为历史，当前 merge 状态以 PR #179 为准。
 
 本轮检查：三个交付 Markdown 的 Prettier check、git diff --check origin/develop、非文档差异检查；结果在本次提交前实际执行。应用测试/浏览器未重跑，因本 PR 仅修改文档。
+
+## 文档合并事实 — 2026-09-10
+
+PR #179 已按用户授权合入 develop；head a52fbadc69d1d6a67e4bd6291b23aa362d59ddc7；merge 9c404d6dbc9299351a0363377422574bf00a1786。远端 Install, test and build 通过（run 34478356712）。本次合入 v1.1 设计候选，未进行运行时迁移或新的浏览器视觉验收；WBS 1.13 仍为 B / 待审查，Issue #178 保持 Open。上文 Draft / 尚未合并只描述历史阶段。
