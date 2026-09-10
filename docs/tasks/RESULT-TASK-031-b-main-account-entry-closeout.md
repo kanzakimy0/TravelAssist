@@ -2,7 +2,7 @@
 
 ## 当前结果
 
-**Owner B / 待审查。实现与工程 QA 完成；等待用户视觉验收，不自动合并。**
+**Owner B / 待审查。实现、工程 QA 与用户视觉验收通过；尚未合并，不自动合并。**
 
 - Issue：[#261](https://github.com/kanzakimy0/TravelAssist/issues/261)。
 - Branch：`feature/b-wbs-3-4-main-account-entry`。
@@ -10,6 +10,10 @@
 - Implementation / tests / evidence commit：`18dd0bbcbef1b77717f3898a68a0c5598b59e77b`。后续追踪提交仅更新文档。
 - Draft PR：[#278](https://github.com/kanzakimy0/TravelAssist/pull/278) → develop，保持 Draft。
 - 正式 Task：[TASK-031-B](TASK-031-b-main-account-entry-closeout.md)；[Owner correction](../project/WBS-3.4-owner-correction.md)。
+
+## 用户视觉验收 — 2026-09-10
+
+2026-09-10 用户明确回复“验收通过”；已验收 PR head：64e8d55fcab3e468474bf4a19c7e8ddfba2409a5。视觉验收通过；本次仅记录验收，不修改运行时代码，不自动合并。PR #278 保持 Draft，WBS 3.4 B / 待审查，等待单独合并授权；两项既有资产 baseline failures 保持原记录。
 
 ## Integration Gate 与 TASK-030-B 最终收尾
 
@@ -80,7 +84,7 @@ Edge / Chromium production preview，1440×900、1024×768、390×844、320×568
 ## 当前状态与停止点
 
 - Master WBS：3.1 B / 已完成；3.2 B / 已完成；3.2.1 A / 未开始 / Deferred；3.3 B / 已完成；**3.4 B / 待审查**。
-- Issue #261 保持 Open；Draft PR → develop；等待用户视觉验收，不自动合并。
+- Issue #261 保持 Open；Draft PR → develop；用户视觉验收已通过，等待单独合并授权，不自动合并。
 - 历史 TASK-024-A / TASK-025-A / TASK-025.2-A、Owner 修订、分支 / PR 名称均保留；未覆盖其他工作站记录。
 - TASK-031-B 到此停止，不开始后续 Task。
 

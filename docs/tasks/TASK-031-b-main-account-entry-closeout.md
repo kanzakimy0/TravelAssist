@@ -403,4 +403,8 @@ TASK-031-B 完成后停止。
 - 实现提交 18dd0bbcbef1b77717f3898a68a0c5598b59e77b；分支 feature/b-wbs-3-4-main-account-entry；Issue #261；[Draft PR #278](https://github.com/kanzakimy0/TravelAssist/pull/278) → develop，保持 Draft。
 - Result：[RESULT-TASK-031-b-main-account-entry-closeout.md](RESULT-TASK-031-b-main-account-entry-closeout.md)。
 - ci / lint / typecheck / build / diff-check 通过；专项 4/4；全仓 718/720（基线 714/716，同两项旧资产清单失败）。浏览器 64/64，36 组几何一致；证据 [TASK-031 QA](../qa/TASK-031/README.md)。
-- B / 待审查，等待用户验收；未合并，不启动 3.5 / 3.7。
+- B / 待审查，用户视觉验收通过；未合并，不启动 3.5 / 3.7。
+
+## 用户验收记录
+
+2026-09-10 用户明确回复“验收通过”；已验收 PR head：64e8d55fcab3e468474bf4a19c7e8ddfba2409a5。视觉验收通过；本次仅记录验收，不修改运行时代码，不自动合并。PR #278 保持 Draft，WBS 3.4 B / 待审查，等待单独合并授权；两项既有资产 baseline failures 保持原记录。
