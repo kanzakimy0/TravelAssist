@@ -150,3 +150,7 @@
 5.3 Auth User Flow 已在 develop 完成，不再将其列为整个登录产品缺失；待补的是 TASK-017 的实际 StartFlowShell/PC 消费、完整 Step 问卷/兴趣细分/交通/付费体验/金额币种映射、登录/换用户/访客迁移以及跨设备恢复。还需可用 Local Docker 后重新验证 SQL/generated types/RLS/CAS/幂等。
 
 本轮只整合现有成果并推送，PR #221 保持 Draft / Partial，Issue #207 保持 Open。WBS 5.14 / 5.19 / 8.5 未启动。最新 head 与推送结果以 PR 为准。
+
+## 最后一次仅文档同步
+
+PR #294 已合入 develop@3213cbf818ec5b1946ff58f92a185724927c15ad。本分支再次普通 merge，仅 WBS 尾部追加记录发生冲突，已逐段保留队列收尾和 TASK-017 子集记录。runtime/tests/assets/package/workflow 与已通过 811/811 + 9/9 及 CI 的 323f763 完全相同；不重复宣称 DB 或浏览器验收。diff 检查通过，保持 Draft / Partial。原始整合 head 323f763 保留为验证锚点，最新 head 以 PR #221 为准。

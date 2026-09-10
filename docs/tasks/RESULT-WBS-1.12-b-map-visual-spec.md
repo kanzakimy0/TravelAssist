@@ -82,3 +82,7 @@
 本次发布的是文档候选，允许合入不等于实装或视觉验收完成。WBS 1.12 维持 B / 待审查，Issue #176 保持 Open。上方 Draft、旧色表、无 Codex 和未合并记录为原始交付历史；当前状态及 merge SHA 以 PR #177 为准。未运行或伪造浏览器/Mapbox live 验收。
 
 本轮检查：三个交付 Markdown 的 Prettier check 通过；git diff --check origin/develop 通过；src/tests/tools/public/assets/package/lockfile/.github 与整合基线无差异。没有重新运行应用测试，因为本 PR 仅修改文档。
+
+## 文档合并事实 — 2026-09-10
+
+PR #177 已按用户授权合入 develop；head e3d24900da5d7644b877d4b382c788b00abea72e；merge f0569cdc57adc44d9c7e2524064be86217b7d628。远端 Install, test and build 通过（run 34477938147）。本次合入 v1.1 设计候选，未进行运行时迁移或新的浏览器视觉验收；WBS 1.12 仍为 B / 待审查，Issue #176 保持 Open。上文 Draft / 尚未合并只描述历史阶段。
