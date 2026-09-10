@@ -10,6 +10,7 @@
 - `trip-engine-poi-ai-provider-design-v0.3.md` — Trip Planning Engine / Region Graph / POI / AI Gateway / Provider / Token 优化综合设计候选
 - `poi-feature-preference-codebook-v0.1.md` — POIFeatureV1 43维、Feature Kind、Sparse Preference 1–9 / omit-5、Context / Constraint 边界冻结候选
 - `preference-state-v0.1.md` — Long-term / Snapshot / Override / Runtime / Hard Constraint 五层偏好状态与 Merge Contract 冻结候选
+- `poi-scoring-spec-v0.1.md` — 43维 Feature 与 1–9 Preference 的匹配函数、Constraint Gate、Context Fit、多人合并、Coverage / Confidence 与 Score Breakdown 冻结候选
 - `trip-engine-design-backlog-v0.1.md` — Trip Planning / POI / Region / AI Gateway 后续设计优先级、依赖与 Pilot 后校准项
 
 计划补充：
