@@ -4,7 +4,7 @@
 >
 > Owner / Contract Producer: B
 >
-> Review status: Review Candidate / 待审查，**不是 frozen spec**
+> Review status: **Frozen / Engine Contract v0.1 已冻结**（2026-09-10；最终审计见§25）
 >
 > Issue: [#201](https://github.com/kanzakimy0/TravelAssist/issues/201)
 >
@@ -24,7 +24,7 @@
 - Trip Plan 的第二套 Schema；
 - API endpoint、数据库表、Migration 或已经可运行的 Engine service。
 
-本任务只发布契约设计。`validate`、`preview`、`apply`、`rollback` 是领域能力名称，不表示本 PR 已实现这些运行时能力。
+4.20只发布契约设计；后续4.21已实现纯validate/preview子集。apply/rollback仍为未来领域能力，当前没有运行时入口；本次冻结不增加任何运行时能力。当前能力与历史设计证据的区别见§25。
 
 ## 2. 权威来源与兼容性
 
@@ -39,7 +39,7 @@ Engine Contract 只引用 `TripPlanSnapshotV1` / `PlanItemV1` 及其稳定 ID、
 ### 2.2 版本
 
 - `tripContractVersion` 必须等于当前已冻结的 `"1.0"`；未知版本返回 `unsupported`。
-- 本文件提出的 `engineContractVersion: "0.1"` 仍处于 review candidate。A/B 审查及 Open Decisions 关闭前不得称为冻结版本。
+- `engineContractVersion: "0.1"` 现为 Frozen，包含已验收的4.20.1增量；冻结依据、已解决的契约问题及仍未解决的实现决策见§25。冻结公共语义不表示全部 operation、生产 adapter 或持久化能力已实现。
 - 4.17 breaking change 必须先按跨模块 handoff 规则发布新版本、fixture 和迁移窗口，Engine Consumer 再显式升级。
 - Engine additive change 仍需更新样例、Acceptance Matrix 和 Consumer review；不得借“可选字段”泄漏 Provider、DB 或 UI 私有结构。
 
@@ -59,7 +59,7 @@ Engine Contract 只引用 `TripPlanSnapshotV1` / `PlanItemV1` 及其稳定 ID、
 
 ## 4. ChangeSet 模型
 
-以下是 review-candidate wire contract。伪 TypeScript 中的 canonical 类型均为**引用**，不是新 Schema：
+以下是 Frozen v0.1 wire contract。文档 TypeScript 与已合入的 `src/shared/contracts/engine/index.ts` 声明对应；canonical 类型均为**引用**，不是新 Schema：
 
 ```ts
 type ChangeSetV0_1 = {
@@ -572,7 +572,7 @@ Provider raw response
 - 不把 Provider 的建议路线直接变成用户授权；
 - 把实际使用的 fact ID 写入 Preview；未来 apply/audit 记录只引用必要 provenance。
 
-路线 Provider / WBS 7.5 尚未冻结 normalized route fact shape、TTL、confidence 和替代路线语义，因此本文件不定义其 payload。
+WBS 7.5 Route Contract v1.0 已合入并验收；4.21复用 `src/shared/contracts/routes` 的 RouteResponse/validator，不建立第二份 payload。生产Provider选择、授权/retention、TTL/confidence政策及降级范围仍由A在7.3/7.8/7.10/7.11核定；7.5已完成不表示这些生产决策全部关闭，见§25的OD-7.5-01/02。
 
 ## 17. B Save / History 消费边界
 
@@ -831,6 +831,8 @@ Preview/apply 不隐式调用 Provider。Consumer 可请求 Provider-owned refre
 
 ## 21. Acceptance Matrix
 
+以下矩阵的 Runtime 状态保留原4.20设计交付时点；2026-09-10的实际实现与冻结结论以§25为准。设计案例不转换为未运行的事务/DB验收证据。
+
 | Acceptance                                                                                        | 契约证据                  | 预期结果                                                   | Runtime 状态        |
 | ------------------------------------------------------------------------------------------------- | ------------------------- | ---------------------------------------------------------- | ------------------- |
 | TravelAssist Engine / Trip Engine 定义一致                                                        | `1`                       | 确定性变更层，不是 AI/Provider/UI/DB                       | 仅设计              |
@@ -858,7 +860,7 @@ Preview/apply 不隐式调用 Provider。Consumer 可请求 Provider-owned refre
 
 ## 22. Open Decisions
 
-以下事项在关闭前均**不是 frozen spec**。实现者不得自行选择默认值后声称 4.20 已冻结。
+以下原始ID与未决事项完整保留。未决实现参数本身仍**不是 frozen spec**；§25逐项区分Contract Freeze Blocker与Deferred Implementation Decision。后者阻止对应能力启用，不再阻止已明确的v0.1公共语义冻结；禁止自行填默认值绕过依赖。
 
 | ID               | 未确定事项                                                                                                        | 依赖 / 决策 Owner                   | 对后续的 gate                         |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------------------------- |
@@ -876,28 +878,30 @@ Preview/apply 不隐式调用 Provider。Consumer 可请求 Provider-owned refre
 | `OD-PRODUCT-04`  | Level 3 Autopilot 可执行 operation、时间/金额/范围上限与撤销窗口                                                  | 产品/AI Owner/B                     | autopilot allowlist                   |
 | `OD-BOOKING-01`  | 可信 booking fact、refundability、取消/修改状态机与 Provider-specific side-effect boundary                        | Booking Owner（尚未冻结）           | booking operations 保持 unsupported   |
 | `OD-SAVE-01`     | 5.18/5.19 保存、历史、resume 与 Engine applied result 的正式 service handoff                                      | B + A Consumer review               | Save/History integration              |
-| `OD-CONTRACT-01` | Engine v0.1 wire naming、payload caps、unknown enum forward-compatibility 与 parser 发布位置                      | B Producer + A Integration Reviewer | 4.20 freeze                           |
+| `OD-CONTRACT-01` | Engine v0.1 wire naming、payload caps、unknown enum forward-compatibility 与 parser 发布位置                      | B Producer + A Integration Reviewer | 冻结部分已审计；剩余发布决策见§25     |
 | `OD-ERROR-01`    | 对外隐藏 not-found/permission 差异的统一 code、可观测性 correlation 与本地化 message catalog                      | Security/Auth/UI Owners             | service exposure                      |
 
 ## 23. 后续阶段与停止边界
 
-- 4.20：本文件、Task/Result/Tracking 交付；待审查。
-- 4.21：确定性 rule/preview runtime，**未启动**。
+- 4.20：Contract v0.1 Frozen；B / 已完成。本次Closeout PR仅提交最终审计及追踪，待用户确认，不自动合并。
+- 4.21：确定性 rule/preview runtime子集，**已完成**；用户验收，PR #288已合入。
 - 4.22：事务 apply/permission/idempotency/version/audit，**未启动**，且 8.5 未满足。
 - 4.23：runtime event / local replan / rollback execution，**未启动**，且依赖 7.5。
 - 4.24：回归、并发、失败、回放集成验收，**未启动**。
 
-本契约不授权 4.21–4.24，也不授权 Planner/Detail/Start/Personal Center UI、4.16 runtime core、4.17 canonical schema、8.5 SQL Schema、业务表、Migration、API endpoint、Engine runtime、transaction apply、runtime rollback、AI runtime、Mapbox、Route Provider、Booking、Payment、Authentication 或任何付费 Provider 调用。
+本次冻结不追加授权4.21新能力或启动4.22–4.24，也不授权 Planner/Detail/Start/Personal Center UI、4.16 runtime core、4.17 canonical schema、8.5 SQL Schema、业务表、Migration、API endpoint、Engine runtime、transaction apply、runtime rollback、AI runtime、Mapbox、Route Provider、Booking、Payment、Authentication 或任何付费 Provider 调用。
 
 ## 24. WBS 4.20.1 Amendment：行程合理性输出（Review Candidate）
 
+标题保留原审查记录及链接锚点；本节现已作为Frozen v0.1的一部分，当前状态见§25。
+
 ### 24.1 增量范围与兼容性
 
-Issue [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)；Owner B；审计基线 `fe538e7093bd58e7d0fe7fd434bf907dd132277a`。本节是同一 Engine v0.1 review candidate 的增量说明，不是新 Engine、Trip Plan Schema 或已发布 runtime。
+Issue [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)；Owner B；审计基线 `fe538e7093bd58e7d0fe7fd434bf907dd132277a`。本节是同一Engine v0.1的已验收增量，随§25冻结；不是新Engine或Trip Plan Schema。本节原始设计案例保持历史语境；runtime证据单独由4.21提供。
 
 §1–23 的 ChangeSet、operation whitelist、validate/preview/apply/rollback、权限、确认、双 revision、幂等、事务、audit、rollback 与 Provider fact 边界继续有效。§7 的四种顶层 outcome 不改名、不新增第五种终态；`warning` 通过下述 assessment status 及既有 `issues[].severity="warning"` 明确区分。既有纯 v0.1 结果仍有效，但未携带 assessment **不等于完成合理性评估**。
 
-新增的可选结果字段为 §7 `EngineResultV0_1.assessment?: ReasonablenessReportV0_1`，只有识别本 Amendment 的 Consumer 才能使用。缺字段表示未请求/未提供该能力；`coverage` 表示已请求的规则覆盖情况。启用规则的策略/能力协商属于可信 service boundary，不能由客户端关闭硬规则。未来 Consumer 要求 assessment 而能力不可用时必须返回 `unsupported`，不能退回裸 `accepted`。旧 Consumer 无法解析所需扩展时也 fail closed；发布前须经 B Producer / A Consumer review（OD-ASSESSMENT-01），不声称“任意旧 parser 自动兼容”。
+新增的可选结果字段为 §7 `EngineResultV0_1.assessment?: ReasonablenessReportV0_1`，只有识别本 Amendment 的 Consumer 才能使用。缺字段表示未请求/未提供该能力；`coverage` 表示已请求的规则覆盖情况。启用规则的策略/能力协商属于可信 service boundary，不能由客户端关闭硬规则。未来 Consumer 要求 assessment 而能力不可用时必须返回 `unsupported`，不能退回裸 `accepted`。旧 Consumer 无法解析所需扩展时也 fail closed；v0.1冻结审计见§25（OD-ASSESSMENT-01）；后续具体A Consumer接线仍须单独review，不声称“任意旧 parser 自动兼容”。
 
 ### 24.2 输入归属与 duration 审计
 
@@ -918,7 +922,7 @@ Issue [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)；Owner B；
 
 ### 24.3 结构化 assessment / impact
 
-以下仍为文档伪 TypeScript，引用现有 canonical IDs 与 §8 issue，**不新增 src 类型或运行时实现**：
+以下声明引用现有canonical IDs与§8 issue，已由4.21在同一公共类型目录实现并通过AST一致性测试；本次冻结**不修改src类型或运行时实现**：
 
 ```ts
 type AssessmentStatus =
@@ -1161,9 +1165,80 @@ C. physical load 对照：30和90分钟均采用同一版本的标准强度/prof
 | ID               | Owner / dependency                                     | 发布或启用 gate                                                                                                   |
 | ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
 | OD-DURATION-01   | A / 4.16 + 4.17，B Consumer review；细化既有OD-4.16-01 | 独立duration、planned/observed、Visit Mode、活动分段的唯一canonical表达及迁移未定；UPDATE_DURATION持续unsupported |
-| OD-ASSESSMENT-01 | B Producer + A Consumer / 4.20 review                  | 可选report的能力协商、payload caps、枚举未知处理、context fingerprint规范与公开parser发布需核对；未审查不称frozen |
+| OD-ASSESSMENT-01 | B Producer + A Consumer / 4.20 review                  | 冻结部分已核对，见§25；后续Consumer能力协商、生产输出parser及service caps仍待集成，不宣称已实现                   |
 | OD-RULE-01       | 产品 + Attraction/Profile Owner + B / 4.21             | 43字段版本、profile provenance/TTL、minimum硬软策略、recommended压缩确认阈值、Visit Mode选择规则未冻结            |
 | OD-LOAD-01       | B / 4.21 + 产品 + A context/Provider Owner             | 强度/活动时长/环境输入契约、模型单位与校准、固定/可变负荷、疲劳累计/恢复/多日公式；不得用固定评分替代             |
 | OD-COVERAGE-01   | B / 4.21 + A canonical/Provider Consumer               | 各operation必要scope/维度、跨日依赖闭包、缺事实严重度与营业时间/路线时效规则需定义；缺口不得accepted all-clear    |
 
-本 Amendment 已于2026-09-10经用户验收并通过PR #283合入develop，4.20.1已完成；父4.20的既有审查门与Open Decisions保持，4.21仍未开始。不创建评分器、规则库、Engine runtime、Plan字段、DB/API或UI实现。
+本Amendment已于2026-09-10经用户验收并通过PR #283合入develop，4.20.1已完成；4.21已通过PR #288实现验收子集。父4.20最终冻结依据和全部Open Decisions分类见§25；本次仅文档收尾，不新增评分器、规则库、Engine runtime、Plan字段、DB/API或UI实现。
+
+## 25. Final Contract Freeze / Closeout（2026-09-10）
+
+### 25.1 冻结结论与证据边界
+
+**Engine Contract v0.1 = Frozen；WBS 4.20 = B / 已完成。A类未解决的Contract Freeze Blocker：0。**
+
+本轮依据用户明确要求关闭父级Review Gate，审计基线为develop `2d3df8819da0e02b6b8449097dc2b95cd475f9d9`。4.20原始契约已通过PR #237进入develop；4.20.1经用户验收，PR #283 merge `f3af40c0b29ee3e50175902a5f94791d08cf8520`；4.21经用户验收，PR #288 merge `38e173df2601d099dc56fcde7a1f33d577981768`，PR #290完成追踪。
+
+冻结对象是同一ChangeSet、EngineResult、状态/错误、assessment及副作用/权限/版本边界；不是承诺所有operation已启用，也不是冻结所有产品参数、DB设计或Provider商业条件。4.21证明该契约可实现，没有发现必须修改这些核心语义的阻塞问题；它没有证明apply、DB事务、持久化幂等或rollback已实现。
+
+这是依据既有验收与当前授权的文档审计，不伪造一条新的A人工签字或Consumer生产验收。A的canonical/UI/Provider所有权保留；每个未来Consumer/service首次接线仍需0.9交接审查。最终Closeout PR供用户确认，不自动合并。历史Review Candidate、PENDING、原测试失败保留在各历史Result，当前结论以本节及最终Closeout Result为准。
+
+### 25.2 核心语义一致性与冻结范围
+
+| 审计面                 | 已冻结语义 / 当前证据                                                                                                                | 未实现能力的边界                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| ChangeSet / canonical  | §4原字段、18个operation code不变；公共类型为 `src/shared/contracts/engine/index.ts`；Trip Plan唯一来源仍为4.17                       | whitelist只表示可识别；UPDATE_DURATION及其余未启用动作unsupported，无43字段或第二套duration        |
+| EngineResult / outcome | §7四种outcome不变；unsupported > blocked > needsConfirmation > accepted                                                              | accepted必须按requestKind解释，preview accepted不是已保存                                          |
+| assessment             | §24.3同一可选report；五种status含warning；scope、coverage、issueIndexes、版本证据与null语义不变                                      | 必要能力缺失unsupported；缺关键事实blocked；不能因缺report或高匹配分宣称all-clear                  |
+| validate / preview     | 4.21真实入口为 `validate(snapshot, changeSet, context)` / `preview(snapshot, changeSet, context)`；§6为领域参数说明，不是另一SDK签名 | 空operations可评估snapshot；仅UPDATE_TIME/REORDER_ITEMS内存候选；无DB/API/Provider调用             |
+| 可信权限与确认         | 4.21检查可信调用方注入的access绑定、双revision及保护；确认风险生成requirements                                                       | 不是Auth查询或grant签发；没有写入授权；system hard lock阻断，未知booking/AI策略unsupported         |
+| apply / rollback       | §6/9–12的事务重校验、原子版本/审计/outbox、幂等与补偿语义不变                                                                        | 4.21没有apply/rollback导出；调用能力应禁用/unsupported。未来4.22/4.23实现并通过4.24验收后方可启用  |
+| replay / fingerprints  | 4.21纯重放、对象key顺序无关；before/after/context/policy/model版本绑定；变更使previewHash失效                                        | 当前replay.duplicate=false、transaction=not_started、resultingVersion=null；没有持久化terminal重放 |
+| 三层合理性             | item、day、itinerary独立评估；duration/context负荷与路线事实fail closed；专项77/77已验收                                             | 评估模型不是生产校准标准，规则参数/生产Profile/observed事实不随冻结被补造                          |
+
+OD-CONTRACT-01与OD-ASSESSMENT-01原先混合了公共语义和后续集成决策。公共语义部分已核对解决，不能将“暂无独立公开输出parser/API”解释为公共wire仍未定义：
+
+- wire naming与类型：文档7个TypeScript块与4.21公共类型逐声明AST比对；此次不改变声明。服务端公开parseChangeSet由 `src/server/engine/index.ts` 导出，内部实现位于input.ts；canonical与Route parser复用原拥有者。
+- 输入限制：现有4.21限制operations 100、factRefs 1000、scheduled items 1–1000；JSON深度30、访问节点100000、字符串200000、序列化2000000个JavaScript字符。它们是已实现的有界evaluation输入限制，不误称HTTP字节预算。各context集合限制以现有context.ts为准，不在此发明新的默认值。
+- 未知值：未知version/op为unsupported；非法字段/非JSON/非法canonical输入blocked；未知必要assessment能力fail closed。Consumer不得自行将未知状态转accepted。未来新增wire能力按§2.2版本与handoff程序发布。
+- 指纹：现有json.ts使用稳定对象key排序与SHA-256；payloadHash绑定ChangeSet，contextFingerprint绑定before/after、完整可信context及排序后的model registry标识/版本/单位，previewHash绑定payloadHash和contextFingerprint。该算法证据只描述现有纯评估实现，不自动冻结4.22的DB幂等编码、grant存储或HTTP协商协议。
+- 对外EngineResult运行时parser、HTTP请求/响应预算、能力协商及A UI/AI接线尚未实现；按下表继续Open，不把类型测试当作完整生产Consumer测试。
+
+### 25.3 Open Decisions完整分类
+
+A = Contract Freeze Blocker：当前公共语义无法一致表达或存在必须先修改核心协议的矛盾。**未发现未解决A类项。**
+
+B = Deferred Implementation Decision：仍未解决，必须在指定依赖/未来WBS交付时审查；当前能力保持unsupported / blocked / fail closed。下表保留§22全部16个ID及§24.8全部5个ID；没有删除、默默关闭或把未实现依赖标为完成。两个混合ID的冻结部分已解决，剩余部分仍为B。
+
+| ID               | 分类 / 保留的未决问题                                                       | Owner                                           | Dependency / Future WBS                                                 | 当前行为 / 启用条件                                                                       |
+| ---------------- | --------------------------------------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| OD-4.16-01       | B：patch、transport、skip/restore、MUST_DO等canonical表达                   | A canonical；B Consumer                         | 4.16/4.17后续版本；4.22/4.23消费，4.24验收                              | 相关未启用operation unsupported；不得Engine私加字段                                       |
+| OD-4.16-02       | B：替换/跨日移动identity、alternative promotion                             | A canonical；B Engine                           | 4.16/4.17；4.22动作启用、4.24回归                                       | MOVE/REPLACE等当前unsupported；不能从UI index造identity                                   |
+| OD-8.5-01        | B：DB revision分配及多plan递增                                              | A 8.5；B 4.22                                   | 8.5 + 4.22；4.24并发验收                                                | apply未提供/unsupported；当前只校验双baseVersion                                          |
+| OD-8.5-02        | B：持久化hash/scope、唯一性、retention及unknown-outcome对账                 | A/B                                             | 8.5 + 4.22；4.24失败/重放验收                                           | 无幂等存储；纯replay不冒充DB去重                                                          |
+| OD-8.5-03        | B：audit/history/outbox、隔离与DB error映射                                 | A/B                                             | 8.5 + 4.22；4.24故障注入                                                | 事务未实现/unsupported；无部分accepted                                                    |
+| OD-8.5-04        | B：历史保留与补偿数据/清理                                                  | A/B                                             | 8.5 + 4.23；5.18/5.19；4.24                                             | restore/rollback unsupported；不回退revision或外部订单                                    |
+| OD-7.5-01        | B：剩余生产fact绑定/alternatives、TTL/confidence/授权fallback               | A Provider；B Consumer                          | 已完成7.5为基线；7.3/7.8/7.10/7.11后续Production Gate；4.24             | 复用现有RouteResponse；缺失/过期/不可信必要事实blocked，未支持能力unsupported，无隐式查询 |
+| OD-7.5-02        | B：新增operation的路线/坐标依赖及离线降级政策                               | A/产品；B Consumer                              | 7.5基线 + 7.8/7.11；4.22动作启用、4.24                                  | 当前明确evaluation policy；生产策略未审查则fail closed，不猜坐标/分钟                     |
+| OD-PRODUCT-01    | B：预算阈值、汇率及金额确认粒度                                             | 产品；B Engine                                  | 4.22预算动作；4.24；正式价格/汇率事实依赖待Owner交接                    | 当前未启用费用动作unsupported，amountDeltaMinor/currency为null；不得未知金额按0           |
+| OD-PRODUCT-02    | B：酒店/硬交通/预约/MUST_DO精确确认组合                                     | 产品/Booking Owner；B Engine                    | 4.16/4.17 + Booking；4.22；4.24                                         | 现有保护与确认保留；硬约束blocked；booking能力unsupported，确认不等于改订                 |
+| OD-PRODUCT-03    | B：lock覆盖、协作角色、grant一次性/TTL                                      | 产品/Auth/Booking；B服务                        | 8.3既有Auth基线 + 8.5/4.22；4.24                                        | 没有grant签发或事务授权；system lock blocked，未知权限fail closed                         |
+| OD-PRODUCT-04    | B：Autopilot allowlist、范围和撤销窗口                                      | 产品/A AI/B Engine                              | 6.7/6.8/6.13 + 4.22/4.23；4.24                                          | AI/system/provider_event提案当前unsupported；宏操作不执行                                 |
+| OD-BOOKING-01    | B：可信booking/refundability及外部状态机                                    | Booking领域Owner待正式指定；B维护Engine拒绝边界 | Booking/Payment独立工作包待登记，不虚构WBS编号；4.22/4.23消费，4.24验收 | LINK_BOOKING/UPDATE_BOOKING_STATUS及真实取消/付费操作unsupported                          |
+| OD-SAVE-01       | B：Save/Read/History/Resume正式service handoff                              | B 5.18/5.19；A Consumer                         | 5.18/5.19 + 4.19/8.5；4.22/4.23/4.24                                    | 不接保存/历史；恢复必须未来补偿ChangeSet，不能覆盖current row                             |
+| OD-CONTRACT-01   | B（冻结部分已解决）：剩余service caps、对外parser/API发布及Consumer rollout | B Producer；A Integration Reviewer              | 4.22公开service + 4.24；4.19/5.19 Consumer交接                          | 使用现有类型及输入parser；无生产API或输出parser就不宣称已支持，不自动兼容未知值           |
+| OD-ERROR-01      | B：安全not-found/permission映射、correlation及本地化目录                    | Security/Auth/UI Owners；B服务                  | 8.3基线 + 4.22/4.24；9.9/9.10                                           | 当前拒绝未授权读取并隐藏raw errors；未来对外服务未审查不得发布                            |
+| OD-DURATION-01   | B：独立duration、observed事实、Visit Mode/活动分段唯一表达                  | A 4.16/4.17；B Consumer                         | 4.16/4.17新版本；4.23执行事实，4.24                                     | UPDATE_DURATION unsupported；planned schedule派生不等于observed事实                       |
+| OD-ASSESSMENT-01 | B（冻结部分已解决）：生产协商/输出parser/结果caps与grant绑定实现            | B Producer；A Consumer                          | 4.22服务/确认 + 4.24；4.19/5.19及6.x后续Consumer                        | 当前typed report及指纹已实现；缺必要report/未知能力fail closed，不提供写capability        |
+| OD-RULE-01       | B：43字段/Visit Profile生产版本、provenance/TTL、阈值和mode政策             | 产品/A POI-Profile；B规则                       | 7.4/7.7/7.9后续规则输入 + 4.24集成；需要规则扩展另行授权                | 当前4.21版本化evaluation输入可运行；缺正式输入blocked/unsupported，不复制43字段           |
+| OD-LOAD-01       | B：生产单位/校准、活动分段、恢复/多日模型参数                               | 产品/B规则；A context/Provider                  | 7.4/7.5输入基线及后续Profile；4.23 observed事实；4.24；模型变更另立任务 | 保留已验收evaluation模型；未知model/context unsupported/null，不把walking分数当总疲劳     |
+| OD-COVERAGE-01   | B：生产和新operation的必要维度/闭包/营业与路线政策                          | B规则；A canonical/Provider；产品               | 7.5/7.8生产输入；4.22新动作、4.23事件、4.24                             | 当前三层独立coverage已实现；缺必要事实blocked/unsupported，不能all-clear                  |
+
+表中Future WBS是交接归属，不表示已开工或该WBS已包办所有产品决策。4.22–4.24、8.5保持未开始；7.5保持已完成，7.8保持现有进行中/Production Gate未关闭；其他Owner状态一律不改变。
+
+### 25.4 变更控制与停止边界
+
+后续OD关闭须提供Owner确认、正式契约/版本、fixture和目标Consumer验收；涉及新增wire字段/operation payload或改变outcome/副作用语义时，按0.9及§2.2发布显式Amendment，不在已冻结v0.1下静默改义。仅实现现有事务/权限要求或选择已声明策略输入不需要重新否定整个4.20完成状态。
+
+完整审计、检查记录及独立Closeout PR见 [Final Closeout Result](../tasks/RESULT-WBS-4.20-b-engine-contract-final-closeout.md)。本次只改文档/Tracking，不改4.21 runtime、不实现4.22、不接DB/API/AI/Booking/Payment。
