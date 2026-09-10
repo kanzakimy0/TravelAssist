@@ -971,7 +971,7 @@ TASK-040-A tracking (2026-09-11):
 
 - Issue #303；分支 `codex/a-blind-review-excel-pack`；叠加基线
   `d79eeaaa9ac5e7c052a300d07710679584458c6b`（TASK-039-A / Draft PR #302），
-  Draft PR 以 `codex/a-poi-scoring-blind-review` 为 base。
+  Draft PR #304 以 `codex/a-poi-scoring-blind-review` 为 base；实现提交 `f0dfe24`。
 - 已从冻结的 R1/R2 reviewer pack 确定性生成两份 Excel 盲审工作簿；每份 144 题，
   包含 Review / Instructions / Metadata，题面受保护，仅答案三列开放编辑。
 - 已建立严格 XLSX 导入、源包 SHA / 题面逐字段校验、答案完整性验证及可见内容泄漏审计；

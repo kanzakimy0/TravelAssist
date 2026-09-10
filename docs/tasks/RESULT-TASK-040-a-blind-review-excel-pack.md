@@ -19,8 +19,8 @@ No human judgment was entered or inferred. No reviewer response, Human Gold, can
 - Issue: #303
 - WBS: 7.9 — remains `待人工盲审`.
 - Branch: `codex/a-blind-review-excel-pack`
-- Implementation commit: recorded in the Draft PR after push.
-- Draft PR: `codex/a-blind-review-excel-pack` → `codex/a-poi-scoring-blind-review`.
+- Implementation commit: `f0dfe244142b7108a60ab0a2e19a655ddd937355`.
+- Draft PR: #304 — `codex/a-blind-review-excel-pack` → `codex/a-poi-scoring-blind-review`.
 
 ## Reviewer Workbooks
 
