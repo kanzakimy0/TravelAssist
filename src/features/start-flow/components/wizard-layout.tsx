@@ -1,3 +1,4 @@
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import type { ReactNode } from "react";
 
 import { FloatingPanel } from "@/components/ui/floating-panel";
@@ -10,13 +11,15 @@ import { StepProgress } from "./step-progress";
 export function WizardLayout({
   children,
   currentStep,
+  viewer = null,
 }: {
   children: ReactNode;
   currentStep: number;
+  viewer?: HomeViewer | null;
 }) {
   return (
     <div className={styles.flowLayout}>
-      <StartFlowHeader />
+      <StartFlowHeader viewer={viewer} />
       <FloatingPanel className={styles.flowPanel} data-wizard-panel>
         <StepProgress currentStep={currentStep} />
         <main

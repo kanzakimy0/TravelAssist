@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { createRequire } from "node:module";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,7 +10,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 const require = createRequire(import.meta.url);
 const root = fileURLToPath(new URL("..", import.meta.url));
 // Render the actual TSX; only Next runtime adapters/assets are substituted.
-function load(p) {
+function load(p, adapters = {}) {
   const filename = resolve(root, p);
   const js = ts.transpileModule(readFileSync(filename, "utf8"), {
     compilerOptions: {
@@ -19,7 +19,10 @@ function load(p) {
     },
   }).outputText;
   const compiled = { exports: {} };
+  const dependency = (p) =>
+    load([p, p + ".tsx", p + ".ts"].find(existsSync) ?? p, adapters);
   const localRequire = (id) => {
+    if (Object.hasOwn(adapters, id)) return adapters[id];
     if (id.endsWith(".css"))
       return new Proxy(
         {},
@@ -34,11 +37,12 @@ function load(p) {
         const imageProps = { ...props };
         delete imageProps.priority;
         delete imageProps.fill;
+        delete imageProps.unoptimized;
         return React.createElement("img", imageProps);
       };
-    if (id.startsWith("@/")) return load(id.replace("@/", "src/") + ".tsx");
-    if (id.startsWith("."))
-      return load(resolve(dirname(filename), id) + ".tsx");
+    if (id.startsWith("@/"))
+      return dependency(resolve(root, id.replace("@/", "src/")));
+    if (id.startsWith(".")) return dependency(resolve(dirname(filename), id));
     return require(id);
   };
   new Function("require", "module", "exports", js)(
@@ -239,4 +243,181 @@ test("TASK-030-B: CTA label and description remain meaningful and uniquely conne
   assert.match(cta, /aria-describedby="start-flow-note"/);
   assert.equal((html.match(/id="start-flow-note"/g) || []).length, 1);
   assert.match(html, /id="start-flow-note">进入旅行需求填写流程<\/span>/);
+});
+
+// TASK-031-B uses this same TSX renderer and canonical Auth policy.
+test("TASK-031-B: existing Start and Planner adapters render verified identity or a real Guest entry", () => {
+  for (const path of ["/start", "/planner?view=detail&day=1"]) {
+    const url = new URL(path, "https://local.invalid");
+    const adapters = {
+      "next/navigation": {
+        usePathname: () => url.pathname,
+        useSearchParams: () => url.searchParams,
+      },
+    };
+    const Component = path.startsWith("/start")
+      ? load(
+          "src/features/start-flow/components/start-flow-header.tsx",
+          adapters,
+        ).StartFlowHeader
+      : load("src/features/planner/components/workspace-header.tsx", adapters)
+          .WorkspaceHeader;
+    for (const viewer of [
+      null,
+      {
+        name: "已验证旅人",
+        avatar: "https://avatar.example.invalid/profile.webp",
+      },
+    ]) {
+      const html = renderToStaticMarkup(
+        React.createElement(Component, { viewer }),
+      );
+      assert.equal((html.match(/<header/g) || []).length, 1);
+      assert.doesNotMatch(html, /Yuki|伪造 Cookie 身份/);
+      if (viewer) {
+        assert.match(html, /已验证旅人/);
+        assert.match(html, /data-account-avatar/);
+        assert.match(html, /https:\/\/avatar.example.invalid\/profile.webp/);
+        assert.match(html, /alt=""/);
+      } else if (path.startsWith("/start")) {
+        assert.match(html, /href="\/login\?returnTo=%2Fstart"/);
+        assert.doesNotMatch(html, /<img[^>]+profile.webp/);
+      } else assert.match(html, /登录或个人中心菜单/);
+    }
+  }
+});
+
+test("TASK-031-B: one server verifier ignores cookie claims and fails safely to Guest", async () => {
+  let calls = 0;
+  let result = {
+    data: {
+      user: {
+        user_metadata: {
+          full_name: "已验证旅人",
+          avatar_url: "http://unsafe.invalid/a.png",
+        },
+      },
+    },
+    error: null,
+  };
+  let present = true;
+  let unavailable = false;
+  const { readHomeViewer } = load("src/lib/auth/home-viewer.server.ts", {
+    "server-only": {},
+    "next/headers": {
+      cookies: async () => ({
+        getAll: () =>
+          present
+            ? [
+                {
+                  name: "sb-test-auth-token",
+                  value: '{"full_name":"伪造 Cookie 身份"}',
+                },
+              ]
+            : [],
+      }),
+    },
+    "@/lib/auth/site": { authSiteOrigin: () => "https://local.invalid" },
+    "@/lib/supabase/server": {
+      createServerSupabaseClient: () => ({
+        auth: {
+          getUser: async () => {
+            calls++;
+            if (unavailable) throw Error("offline");
+            return result;
+          },
+        },
+      }),
+    },
+  });
+  assert.deepEqual(await readHomeViewer(), {
+    name: "已验证旅人",
+    avatar: undefined,
+  });
+  assert.equal(calls, 1);
+  for (const error of [
+    null,
+    { code: "bad_jwt" },
+    { code: "session_expired" },
+  ]) {
+    result = {
+      data: {
+        user: error ? { user_metadata: { full_name: "must not leak" } } : null,
+      },
+      error,
+    };
+    assert.equal(await readHomeViewer(), null);
+  }
+  unavailable = true;
+  assert.equal(await readHomeViewer(), null);
+  present = false;
+  const before = calls;
+  assert.equal(await readHomeViewer(), null);
+  assert.equal(calls, before);
+});
+
+test("TASK-031-B: existing login policy preserves page queries and rejects open redirects", () => {
+  const { authHref } = load("src/features/auth/auth-ui-model.ts");
+  for (const path of [
+    "/",
+    "/start",
+    "/start?entry=preferences",
+    "/planner",
+    "/planner?view=detail&day=1",
+  ]) {
+    assert.equal(
+      new URL(
+        authHref("/login", path),
+        "https://local.invalid",
+      ).searchParams.get("returnTo"),
+      path,
+    );
+  }
+  for (const path of [
+    "https://evil.invalid/",
+    "//evil.invalid",
+    "javascript:alert(1)",
+    "/%2f%2fevil.invalid",
+    "/login",
+    "/auth/signout",
+  ]) {
+    assert.equal(
+      new URL(
+        authHref("/login", path),
+        "https://local.invalid",
+      ).searchParams.get("returnTo"),
+      "/",
+    );
+  }
+});
+
+test("TASK-031-B: verified metadata accepts only safe HTTPS avatars and neutral missing profiles", () => {
+  const { homeViewerFromVerifiedUser } = load("src/lib/auth/home-viewer.ts");
+  assert.deepEqual(homeViewerFromVerifiedUser({ user_metadata: {} }), {
+    name: "个人中心",
+    avatar: undefined,
+  });
+  for (const avatar_url of [
+    "http://example.invalid/a.png",
+    "javascript:alert(1)",
+    "//example.invalid/a.png",
+    "https://user:secret@example.invalid/a.png",
+    "data:image/png;base64,AAAA",
+  ]) {
+    assert.equal(
+      homeViewerFromVerifiedUser({
+        user_metadata: { full_name: "旅人", avatar_url },
+      }).avatar,
+      undefined,
+    );
+  }
+  assert.equal(
+    homeViewerFromVerifiedUser({
+      user_metadata: {
+        full_name: "旅人",
+        avatar_url: "https://example.invalid/a.png",
+      },
+    }).avatar,
+    "https://example.invalid/a.png",
+  );
 });

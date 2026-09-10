@@ -1,3 +1,4 @@
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import type { Dispatch, ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ import { PlaceActions, PlaceDetails } from "./place-details";
 import mapDetail from "../detail-map-inspector.module.css";
 
 interface TripWorkspaceProps {
+  viewer?: HomeViewer | null;
   projectContent?: ReactNode;
   onAdviceAction?: (
     id: string,
@@ -57,6 +59,7 @@ interface TripWorkspaceProps {
 }
 
 export function TripWorkspace({
+  viewer = null,
   projectContent,
   mode,
   trip,
@@ -118,7 +121,7 @@ export function TripWorkspace({
       <a href="#planner-workspace" className={styles.skipLink}>
         跳到旅行工作区
       </a>
-      <WorkspaceHeader />
+      <WorkspaceHeader viewer={viewer} />
       <main
         id="planner-workspace"
         tabIndex={-1}
