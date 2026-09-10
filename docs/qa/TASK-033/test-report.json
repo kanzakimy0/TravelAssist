@@ -1,0 +1,333 @@
+{
+  "executionBase": "0f7955ae62e04aeacf43f56dcacf2a9249582e96",
+  "node": "v24.18.0",
+  "install": "npm ci PASS (0 vulnerabilities)",
+  "lint": "PASS (0 errors/warnings)",
+  "typecheck": "PASS",
+  "build": "npm run build production Turbopack PASS",
+  "npmTest": "npm test --if-present exit 0; no npm test script",
+  "fullCommand": "node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs",
+  "baseline": {
+    "tests": 720,
+    "pass": 717,
+    "fail": 3,
+    "failures": [
+      "nightly --verify-only does not write canonical catalogs",
+      "full scan has 100% catalog coverage",
+      "complete library passes file, schema, hash, rights and protected checks"
+    ]
+  },
+  "current": {
+    "tests": 724,
+    "pass": 721,
+    "fail": 3,
+    "failures": [
+      "nightly --verify-only does not write canonical catalogs",
+      "full scan has 100% catalog coverage",
+      "complete library passes file, schema, hash, rights and protected checks"
+    ]
+  },
+  "special": {
+    "tests": 4,
+    "pass": 4,
+    "fail": 0,
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-name-pattern=TASK-033-B tests/task-025-2-concept-fidelity.test.mjs"
+  },
+  "browser": {
+    "aiCases": 18,
+    "regressionBatches": 8,
+    "pagesCompared": 16,
+    "errors": 0,
+    "mutations": 0
+  },
+  "baselineDiagnosis": {
+    "inventory": [
+      {
+        "path": "assets/design/ai-trip-flow.svg",
+        "recordedBytes": 4549,
+        "recordedSha256": "ccd29b0d83ed70d88c85a5ed1553e2ae2be97c02bbc1a60b69c22c408a56c55c",
+        "actualBytes": 4511,
+        "actualSha256": "2109cec04acf72530868ab91d8e3ae586ef89f2a96a4e779aae2f56cef729e79",
+        "recordMatchesCrlf": true,
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "assets/design/home-concept.svg",
+        "recordedBytes": 3360,
+        "recordedSha256": "abca53260b62992da35927b3c09dbe070020d007daad7b369f0a15e4478321c1",
+        "actualBytes": 3312,
+        "actualSha256": "dab3c2b9045665e724050c9154dc345d4f3f9ef0b9afce58726fa0070bedd571",
+        "recordMatchesCrlf": true,
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "assets/design/preference-panel-concept.svg",
+        "recordedBytes": 5230,
+        "recordedSha256": "272c018d46d8f35a5f3eb3ad937d5bb25a990553973d78634e67abffb8ac06ea",
+        "actualBytes": 5186,
+        "actualSha256": "bb9a2a4b859ca06f704574bd6d705f3853966b6e6ee4d6cdfeb7815bc38874e7",
+        "recordMatchesCrlf": true,
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "assets/design/trip-planner-concept.svg",
+        "recordedBytes": 7505,
+        "recordedSha256": "7bf6b44bfa5217a4a83567418a00779aacdcbcce9c3eb309933e9bf70725ec83",
+        "actualBytes": 7427,
+        "actualSha256": "4fce2328231acefa33a3ce254a2cf5828fdb74ce9a62599ff4e11ce7d03e89db",
+        "recordMatchesCrlf": true,
+        "matchesExecutionBase": true
+      }
+    ],
+    "missingCatalogEntries": [
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-guest-detail.webp",
+        "bytes": 63730,
+        "sha256": "815b55b24214e92deb900fc3ab05bf66d8912e0ef9f8394e1576f15fee9d25ee",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-guest-home.webp",
+        "bytes": 136346,
+        "sha256": "ea321da8ee1cd4cc68d4c546fbf5a4e9d4590550d67dc800f55f20a2e71d7526",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-guest-planner.webp",
+        "bytes": 70524,
+        "sha256": "872706ad2e16d0f6685d8c335b49a4514acc3a35d2cc2073530a874bee9e53aa",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-guest-start.webp",
+        "bytes": 50700,
+        "sha256": "8b29b9f4530a4d07225d3a4da3076af4b0167a80f5949c46a57fb37266153e6e",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-planner-account-menu.webp",
+        "bytes": 62072,
+        "sha256": "b55e44afe6713484fe3aa4f6709c6e07cc8a5ba3009ee28eb8f5d81b9a22ed1d",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-verified-detail.webp",
+        "bytes": 64006,
+        "sha256": "b936087349d920ed7cc65b34e55e039b54b8f44db687837429dd573053555ac2",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-verified-home.webp",
+        "bytes": 138404,
+        "sha256": "b9d184fc0e3cf8606f818156745711c45207af27b552ce604041bd5110abb30c",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-verified-personal.webp",
+        "bytes": 119456,
+        "sha256": "7756afdf7ec30ad313b1a4643868fc5ecae1c36e362b3bcaabbff9bf433c2d44",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-verified-planner.webp",
+        "bytes": 70606,
+        "sha256": "d62ddcdbd6a973dcd484babd949db2de52e5e924a104aa7cb896ed993d8dc7ce",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1024-verified-start.webp",
+        "bytes": 51046,
+        "sha256": "793aacde29183d5e2ad337d63c75aab2df9ecd64925927d6e913b243e870a7e4",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-guest-detail.webp",
+        "bytes": 97744,
+        "sha256": "9f53f642b235653757cf89eb34c538c492e25875d3535411e4d5ece840e241d6",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-guest-home.webp",
+        "bytes": 202188,
+        "sha256": "3a12338d5905e5115c509a7f3f9a358b9cac4af5749c226ec0030fd7aec4d376",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-guest-planner.webp",
+        "bytes": 105652,
+        "sha256": "84b8a6a43f01e5926fb9d206a2ff9820480f719168403064e60e2949c8566c82",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-guest-start.webp",
+        "bytes": 81376,
+        "sha256": "a823dd6ced8651c035456116f2d767a156e7d494b1c9732f913babcbd38c64ed",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-planner-account-menu.webp",
+        "bytes": 100338,
+        "sha256": "a525aca3373a757324ec703cc6ebb56669e1664b29495212c2c1f3818f03c9c1",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-verified-detail.webp",
+        "bytes": 97836,
+        "sha256": "6e3d92485b7283f859b644feff056a5283764ab8d361642828902ebfe57a0e67",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-verified-home.webp",
+        "bytes": 203694,
+        "sha256": "b27c0d7d45c364942d70f655ceb90d929f0ac4539aac50ec5455d35338429e65",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-verified-personal.webp",
+        "bytes": 174006,
+        "sha256": "3f907f666f541457ff671f67aec08efce63ff94ecc8c79fedf9f28c8e8237c05",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-verified-planner.webp",
+        "bytes": 105806,
+        "sha256": "608db8b3cd26064e2fdadd0f063be7c9df534ec38f6f4901ded57aed6cb6016f",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/1440-verified-start.webp",
+        "bytes": 81454,
+        "sha256": "c495a19f6c5b4742e04d489e85bf8b0535de6b2a40bae590b7c57d89cca2e42d",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-guest-detail.webp",
+        "bytes": 26484,
+        "sha256": "87e997820d933a8e4a4f28056c4c1490984f8143793f8fca0dfefdca9b7efe2c",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-guest-home.webp",
+        "bytes": 37148,
+        "sha256": "a3a2d32b50e17ebc1fa17cda1d14f62d8436c677fc535150604bafa7fddb63f3",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-guest-planner.webp",
+        "bytes": 26422,
+        "sha256": "f0bba6a3e5989f03235c41067ae95dae174e2f00932b14db10f23a80d509ce2a",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-guest-start.webp",
+        "bytes": 26208,
+        "sha256": "fb946b690fd1067514040518f2a9452981a106c21140d48a63a779ded52e156f",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-planner-account-menu.webp",
+        "bytes": 20056,
+        "sha256": "628baaacd508815b452ec8c92fb47a13414f13899b4503cb445f3ab7e834d0ca",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-verified-detail.webp",
+        "bytes": 26590,
+        "sha256": "4d317bba32b073672270bb32bbb44713bca76e9850db0d6ed0b1c5bb3f12cebc",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-verified-home.webp",
+        "bytes": 37464,
+        "sha256": "4973a7aa40fbaaae3c12981f6f69caebd3887c9632a9d08d09182cbd8931ddf3",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-verified-personal.webp",
+        "bytes": 25566,
+        "sha256": "500956a1d407f34f58743ed317be51b52ad33d1693370f5a157144a9b42536ac",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-verified-planner.webp",
+        "bytes": 26544,
+        "sha256": "9be684c999d51df5d48026a9d0231b0c300270961607e4cb74a95e9ac8f437d3",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/320-verified-start.webp",
+        "bytes": 26278,
+        "sha256": "3924e7f69bc7293a8044f6b6feac0a369f09efdc529d789da7d5286ac1b2b965",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-guest-detail.webp",
+        "bytes": 40458,
+        "sha256": "933a26d41c4ff0386aa8424051c9c04c9996e34aedd04560c171b0ec2b7435a0",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-guest-home.webp",
+        "bytes": 60500,
+        "sha256": "0be16fb11372a1c01d76f348c7b396f2c74c36aec1b6d64ebb9c763e474c2af2",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-guest-planner.webp",
+        "bytes": 37536,
+        "sha256": "69896a5b1d46319cc70d6524e3e080c50e2320b3d660471f79e0afaf3d92f4b1",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-guest-start.webp",
+        "bytes": 31018,
+        "sha256": "cbde7bb48cbadb903f3eb0bacd911e1aed3061dbca5f26f7a1669fc416ae4f37",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-planner-account-menu.webp",
+        "bytes": 31508,
+        "sha256": "983e174179365cda24da3c3bfdca2c19fdbedb7094f19efa540acb94e7f715ab",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-verified-detail.webp",
+        "bytes": 40594,
+        "sha256": "c60b13b2c53a45bb9f1099c8188d485024cf500bc6cb5db753fe42bd47b26a12",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-verified-home.webp",
+        "bytes": 60734,
+        "sha256": "b006027038ddd6cface0eaefcb661a1c07932267b16d2b69eb26a65e97adcbf6",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-verified-personal.webp",
+        "bytes": 62034,
+        "sha256": "63e6ebf7f7d9e02de59c0453346a221f5d9212f8831417a9e141b4042c9334f1",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-verified-planner.webp",
+        "bytes": 37590,
+        "sha256": "6a25f1594872529d1751d718cdc117db20c2aa546b652151a52a6d28af952ad0",
+        "matchesExecutionBase": true
+      },
+      {
+        "path": "docs/qa/TASK-031/screenshots/390-verified-start.webp",
+        "bytes": 31098,
+        "sha256": "e79edaa1c2e88e019b77e14abde124b11d8500d344b1dc35093a9553c3be87be",
+        "matchesExecutionBase": true
+      }
+    ],
+    "catalogMatchesExecutionBase": true,
+    "correction": "Current develop has a third baseline failure: the 40 TASK-031 QA WebPs were archived after that task’s last full-suite run and are absent from asset-source-catalog. This supersedes the earlier two-failure-only statement for the current develop tree; prior logs and results are retained. No catalog/assets/tests were altered to suppress failures."
+  },
+  "runtimeScope": [
+    "src/features/home/components/ai-entry-button.module.css",
+    "src/features/home/components/ai-conversation-panel.module.css"
+  ],
+  "newRuntimeTsxOrBackend": false,
+  "screenshotsInGit": false
+}
