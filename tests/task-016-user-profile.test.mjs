@@ -32,7 +32,7 @@ function mappingProbe(server = true) {
       `import * as schema from './src/db/schema/index.ts';
      import { getTableConfig, PgDialect } from 'drizzle-orm/pg-core';
      const dialect = new PgDialect();
-     console.log(JSON.stringify(Object.values(schema).map(table => {
+     console.log(JSON.stringify([schema.profiles, schema.profileSettings, schema.emergencyContacts].map(table => {
        const c = getTableConfig(table);
        return { name: c.name, rls: c.enableRLS,
          columns: c.columns.map(x => ({ name: x.name, required: x.notNull, primary: x.primary, type: x.getSQLType() })),

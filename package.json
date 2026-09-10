@@ -10,6 +10,8 @@
     "deploy:rehearse:local": "node --import ./tests/register-route-ts.mjs tools/deploy/rehearse.mjs",
     "test:deployment": "node --import ./tests/register-route-ts.mjs --test tests/task-025-environment-deployment.test.mjs",
     "format:check:deploy": "prettier --check \"src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tools/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tests/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \".github/**/*.{yml,yaml,md}\" \"docs/deployment/**/*.md\" \"*.{ts,mjs,json}\"",
+    "test:preferences": "node --test tests/task-017-persistence.test.mjs",
+    "test:preferences:db": "node --conditions=react-server --import ./tests/register-preference-ts.mjs --test --test-concurrency=1 tests/task-017-persistence.runtime.mjs tests/task-017-api.runtime.mjs",
     "db:start": "node tools/db/local.mjs start",
     "db:stop": "node tools/db/local.mjs stop",
     "db:status": "node tools/db/local.mjs status",

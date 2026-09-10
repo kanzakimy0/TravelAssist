@@ -137,6 +137,12 @@
 - 覆盖保存基线、向导/旧保存冲突、还原日期范围、交通冲突检查、取消后确认解除固定、完成检查缺失餐宿、真实 Mapbox 图层。保持布局和 B 任务边界，不接真实 AI/预约/云保存。
 - Task：`docs/tasks/TASK-planner-audit-fixes.md`；Result：`docs/tasks/RESULT-planner-audit-fixes.md`。实现 `ecbf022`；[PR #224](https://github.com/kanzakimy0/TravelAssist/pull/224) Merged；Issue #223 Closed / 已完成。`codex/a-planner-audit-closeout` 仅同步验收记录，不继续下一任务。
 
+## TASK-017-B Partial 交付（2026-09-08，历史；未合并分支子集）
+
+- 基线 `0c21643d0f44ce599747007e25265c0e5219b5fb`；#186 与 4.17 的 #216/#217 已合并。Issue #207，分支 `feature/b-step-preference-trip-draft-persistence`。
+- 四层持久化、RLS、verified-user API、快照/覆盖/版本保护及 autosave 控制器已实现；9 项纯测试、15 项真实本地 DB/API、25 项 Profile 回归通过。已整合 develop `18afee5` 并复用 #218 Auth Core（含 Cookie）。Task 整体 Partial：实际 Step 页面接线和剩余字段映射未完成，不冒称跨设备恢复已上线，不把 8.3 误报缺失。
+- Result：`docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md`；[Draft PR #221](https://github.com/kanzakimy0/TravelAssist/pull/221)，实现 `f597933`，已验证普通 merge 整合 `deb3d28`。整合后全仓 630 tests、lint/typecheck/build/客户端检查通过；最新 develop 28 份格式告警单独保留。5.19 / 5.14 / 8.5 不在范围，不自动合并；下方 TASK-018 的“未启动 TASK-017”是其当时历史记录。
+
 ## TASK-018-B Authentication Core（2026-09-08）
 
 - 8.3 / B / #214：已完成；用户明确授权“开始现场验收，验收通过后自动合并并更新WBS”，本轮真实验收通过后 PR #218 已合入 develop。执行基线 `39890af8c2ed137712b90f3f9d2bfdef313cfef6`；独立 F 盘承载 WSL Worktree，分支 `feature/b-authentication-core`。状态按未开始 → 进行中 → 待审查 → 验收且合并后已完成推进。
@@ -1253,3 +1259,7 @@ B Auth/User Session → A Header/Avatar Entry
 - #221 / #207：仍为 Draft / Partial，只推送原服务器子集与最新 develop 的整合，未上线页面接线。主表 5.11 / 5.16 / 5.18 保留已合并事实；未合并子集在其分支 Result 追踪。当前全仓 811/811、专项 9/9、ci/lint/typecheck/build/deploy-format 通过；本机 Docker daemon 不可用，真实 DB/RLS/跨设备验收不能视为本轮通过。
 
 上方 Draft/未合并与旧测试表述为原阶段记录。完整队列结果：docs/tasks/RESULT-B-draft-queue-integration-closeout.md。未启动后续业务/地图视觉迁移，不改任何其他 A/B WBS 状态。
+
+## TASK-017-B 分支整合（2026-09-10）
+
+#221 仅在 feature/b-step-preference-trip-draft-persistence 存在服务器子集；5.11/5.16 子集待审查、5.18 Partial。主表继续保留 develop 的未开始/可开始状态，不把未合并 API/DB 记为正式交付。已整合 develop@9c404d6dbc9299351a0363377422574bf00a1786，保留所有其他 A/B 记录和已完成状态。5.3 Auth User Flow 已完成，剩余是本任务 Step/PC 消费、完整字段映射和跨设备验收。PR 保持 Draft，未启动 5.14/5.19/8.5。
