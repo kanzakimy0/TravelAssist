@@ -637,6 +637,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |
 | TASK-036-A | 4.47 | A | 待审查（主体已经 #295 / #296 合入；本轮 review fixes 待审查；设计仍为 Freeze Candidate） | #291 Open | `docs/tasks/TASK-036-a-trip-planning-contract-foundation.md` / `docs/tasks/RESULT-TASK-036-a-trip-planning-contract-foundation.md` | `codex/a-trip-planning-contract-foundation` | `7a95da6`（主体）；`e8cf842`（review fixes）；`e99b8bb`（合入最新 develop） | [#293](https://github.com/kanzakimy0/TravelAssist/pull/293) Draft → `develop`（不 merge） |
+| TASK-037-A | 9.13 | A | 待审查（4,000 次确定性 mutation / fuzz、wire round-trip、规模观测与全仓回归已通过；未开始真实 100 POI Pilot） | #297 Open | `docs/tasks/TASK-037-a-planning-contract-soak-fuzz-qa.md`（Task publication branch） / `docs/tasks/RESULT-TASK-037-a-planning-contract-soak-fuzz-qa.md` | `codex/a-planning-contract-soak-qa` | 待最终 commit | Draft PR 待创建 → `codex/a-trip-planning-contract-foundation`（不 merge） |
 | TASK-034-A | 0.6 | A | 已完成（治理文档范围） | #264 | `docs/tasks/TASK-034-a-definition-of-done.md` / `docs/tasks/RESULT-TASK-034-a-definition-of-done.md` | `docs/a-definition-of-done` | `4464029`（head） | [#269](https://github.com/kanzakimy0/TravelAssist/pull/269) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
 | TASK-032-A | 1.19 | A | 已完成（设计文档范围；AI runtime 未实现） | #262 | `docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md` / `docs/tasks/RESULT-TASK-032-a-ai-assistant-main-screen-design.md` | `docs/a-ai-assistant-main-screen-design` | `dc16cf3`（head） | [#270](https://github.com/kanzakimy0/TravelAssist/pull/270) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
 
@@ -972,6 +973,7 @@ TASK-023-A tracking (2026-09-09):
 | 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
+| 9.13   | Planning Contract Soak / Fuzz / Consistency QA | A | P0 | 4.47 / TASK-036 review-fix semantics | 待审查（TASK-037-A / #297；Draft PR 未合入；未开始真实 100 POI Pilot） |
 
 ## 10. 发布与运营准备（A 主责）
 
