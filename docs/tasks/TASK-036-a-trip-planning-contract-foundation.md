@@ -4,11 +4,14 @@
 > WBS: **4.47 — Trip Planning Engine Contract / Validator / Fixtures Foundation**  
 > Owner: **A — Main Travel System / Shared Planning Contracts**  
 > Priority: **P0**  
-> Status: **Ready for stacked implementation / Design Base Gate required**  
+> Status: **Implementation complete / Pending review (stacked Draft PR)**
+>
 > Design branch: `design/a-trip-engine-poi-ai-architecture-v2`  
 > Design PR: #266 (Draft at Task publication)  
 > Planned implementation branch: `codex/a-trip-planning-contract-foundation`  
 > Initial implementation PR target while #266 is unmerged: `design/a-trip-engine-poi-ai-architecture-v2`
+> Implementation commit: `7a95da6252110a638f8ab0a2e1a819a1bf9df727`
+> Draft PR: [#293](https://github.com/kanzakimy0/TravelAssist/pull/293)
 
 ---
 
