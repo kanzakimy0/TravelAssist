@@ -4,14 +4,14 @@
 
 - Task ID: TASK-032-A
 - Owner: A / Main AI UX Design
-- Status: 待验收
+- Status: 已完成（设计文档范围；用户授权经集成 PR #295 合入）
 - WBS: 1.19
 - GitHub Issue: #262
 - Branch: `docs/a-ai-assistant-main-screen-design`
 - Depends On: WBS 1.5
 - Base Commit: `171900698180b80220017c9c4bec551b72792f27`
 - Commit: `47c201a3ae95a7185334b54ebaf4ab9fce5f1312`
-- Pull Request: #270 (Draft)
+- Pull Request: #270, integrated through #295
 
 ## Objective
 
@@ -43,7 +43,7 @@ Document:
 
 ## Completion rule
 
-Design remains `待审查` until user acceptance. No runtime or AI API implementation.
+The design-document Task is complete after the user's authorized integration through PR #295. No runtime or AI API implementation is implied.
 
 ## Final result rules
 

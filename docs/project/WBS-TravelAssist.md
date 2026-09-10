@@ -614,7 +614,7 @@ src/db/
 | 0.3 | Task 文件编号与存档规范 | A | P0 | 0.1 | 已完成 |
 | 0.4 | WBS 主表建立 | A | P0 | 0.1 | 已完成 |
 | 0.5 | GitHub Issue / PR 模板 | A | P1 | 0.3 | 已完成 |
-| 0.6 | Definition of Done | A | P1 | 0.3 | 未开始 |
+| 0.6 | Definition of Done | A | P1 | 0.3 | 已完成（#269；用户授权经集成 PR #295 合入） |
 | 0.7 | Codex 自动更新 WBS 流程 | A+B | P0 | 0.4 | 已完成 |
 | 0.8 | A/B 主系统 / 个人中心责任边界固化 | A | P0 | 0.4 | 进行中 |
 | 0.9 | 跨模块 Contract 交接规则 | B | P0 | 0.8 | 待审查 |
@@ -636,7 +636,9 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |
-| TASK-036-A | 4.47 | A | 待审查（纯 TypeScript 合同基础；设计仍为 Freeze Candidate） | #291 Open | `docs/tasks/TASK-036-a-trip-planning-contract-foundation.md` / `docs/tasks/RESULT-TASK-036-a-trip-planning-contract-foundation.md` | `codex/a-trip-planning-contract-foundation` | `7a95da6`（实现） | [#293](https://github.com/kanzakimy0/TravelAssist/pull/293) Draft → `design/a-trip-engine-poi-ai-architecture-v2` |
+| TASK-036-A | 4.47 | A | 已完成（纯 TypeScript 合同基础；设计仍为 Freeze Candidate） | #291 | `docs/tasks/TASK-036-a-trip-planning-contract-foundation.md` / `docs/tasks/RESULT-TASK-036-a-trip-planning-contract-foundation.md` | `codex/a-trip-planning-contract-foundation` | `7a95da6`（实现）；`4e7b530`（最终复验） | [#293](https://github.com/kanzakimy0/TravelAssist/pull/293) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
+| TASK-034-A | 0.6 | A | 已完成（治理文档范围） | #264 | `docs/tasks/TASK-034-a-definition-of-done.md` / `docs/tasks/RESULT-TASK-034-a-definition-of-done.md` | `docs/a-definition-of-done` | `4464029`（head） | [#269](https://github.com/kanzakimy0/TravelAssist/pull/269) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
+| TASK-032-A | 1.19 | A | 已完成（设计文档范围；AI runtime 未实现） | #262 | `docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md` / `docs/tasks/RESULT-TASK-032-a-ai-assistant-main-screen-design.md` | `docs/a-ai-assistant-main-screen-design` | `dc16cf3`（head） | [#270](https://github.com/kanzakimy0/TravelAssist/pull/270) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
 
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
@@ -722,7 +724,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 1.16   | 网站入口详细画面设计                      | A      | P1     | 1.4,1.13          | 已完成 |
 | 1.17   | 地图 + 时间轴 + 推荐右栏详细画面设计      | A      | P0     | 1.5,1.6,1.11,1.12 | 进行中 |
 | 1.18   | 路线生成 / 重新规划 / 方案切换交互设计    | A      | P0     | 1.17              | 进行中 |
-| 1.19   | AI 旅行助手主画面设计                     | A      | P1     | 1.5               | 未开始 |
+| 1.19   | AI 旅行助手主画面设计                     | A      | P1     | 1.5               | 已完成（#270；设计文档范围，AI runtime 未实现） |
 | 1.20   | 主系统 Loading / Empty / Error / Skeleton | A      | P1     | 1.13              | 未开始 |
 
 ### 1B. 用户个人中心画面设计（B）
@@ -849,7 +851,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| 4.47 | Trip Planning Engine Contract / Validator / Fixtures Foundation | A | P0 | 4.17,2.7；P0 Design Candidate set | 待审查（TASK-036-A / #291；stacked Draft PR，设计仍为 Freeze Candidate） |
+| 4.47 | Trip Planning Engine Contract / Validator / Fixtures Foundation | A | P0 | 4.17,2.7；P0 Design Candidate set | 已完成（#266/#293 经用户授权合入；合同基础范围，设计仍为 Freeze Candidate） |
 
 ## 5. 用户个人中心 / 管理 / 偏好（B 全责）
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation complete / Pending review. The implementation is intentionally stacked while design PR #266 remains open and unmerged. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
+Completed. The user authorized the conflict-free PR batch, and implementation PR #293 plus its design dependency #266 are integrated into `develop` through PR #295. The P0 designs remain Freeze Candidates; this Result does not promote them to Frozen v1.
 
 ## Base / Design Base / develop integration state
 
@@ -24,9 +24,9 @@ Implementation complete / Pending review. The implementation is intentionally st
 
 `7a95da6252110a638f8ab0a2e1a819a1bf9df727` — `feat(planning): add TASK-036 contract foundation`.
 
-## Draft PR
+## Pull Request
 
-[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — Open / Draft, stacked target `design/a-trip-engine-poi-ai-architecture-v2`.
+[#293](https://github.com/kanzakimy0/TravelAssist/pull/293), integrated into `develop` through [#295](https://github.com/kanzakimy0/TravelAssist/pull/295).
 
 ## Files created/changed
 

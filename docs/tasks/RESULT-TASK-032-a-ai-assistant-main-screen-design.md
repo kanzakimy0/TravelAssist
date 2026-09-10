@@ -2,9 +2,9 @@
 
 ## Status
 
-Partially Completed / 待审查。
+Completed（设计文档范围）。
 
-AI 旅行助手主画面已形成开发可执行设计候选，但尚未取得用户视觉/产品验收，因此 WBS 1.19 只更新为`待审查`，不标记`已完成`。
+AI 旅行助手主画面已形成开发可执行设计候选，并由用户授权经集成 PR #295 合入。WBS 1.19 在设计文档范围标记为`已完成`；真实 AI API、Agent 与运行时仍未实现。
 
 ## Tracking
 
@@ -15,7 +15,7 @@ AI 旅行助手主画面已形成开发可执行设计候选，但尚未取得�
 - Base Commit: `171900698180b80220017c9c4bec551b72792f27`
 - Branch: `docs/a-ai-assistant-main-screen-design`
 - Design Commit: `47c201a3ae95a7185334b54ebaf4ab9fce5f1312`
-- Draft PR: [#270](https://github.com/kanzakimy0/TravelAssist/pull/270)
+- Pull Request: [#270](https://github.com/kanzakimy0/TravelAssist/pull/270), integrated through [#295](https://github.com/kanzakimy0/TravelAssist/pull/295)
 
 ## Scope completed
 
@@ -59,7 +59,6 @@ AI 旅行助手主画面已形成开发可执行设计候选，但尚未取得�
 
 ## Deferred
 
-- 用户对五项 Review Questions 的设计验收。
 - WBS 6.2/6.4/6.6 冻结后定义可执行消息与 API wire contract。
 - WBS 6.13 运行时实现、浏览器多尺寸 QA 和真实可访问性验收。
 - WBS 8.7 会话存储、保留、导出与删除策略。
@@ -67,8 +66,8 @@ AI 旅行助手主画面已形成开发可执行设计候选，但尚未取得�
 
 ## Blockers
 
-- 完成状态唯一 blocker：用户尚未验收该设计候选。
+None for the design-document scope.
 
 ## Next action
 
-在 Draft PR 中进行用户设计审查。验收并合入 develop 后，才可将 WBS 1.19 更新为`已完成`；后续 WBS 6.13 应消费本设计，不得由本 Task 自动启动。
+后续 WBS 6.13 应消费本设计并单独实施，不得把本次文档合入视为 AI runtime 已完成。

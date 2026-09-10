@@ -2,7 +2,7 @@
 
 ## Status
 
-Ready for Review. The repository-wide Definition of Done candidate is complete; WBS 0.6 remains `待审查` until merge and user acceptance.
+Completed. The repository-wide Definition of Done was accepted by the user's authorized conflict-free PR merge and integrated through PR #295. WBS 0.6 is `已完成` for the governance-document scope.
 
 ## Baseline
 
@@ -33,15 +33,14 @@ Reviewed current contribution and task-tracking rules, WBS lifecycle semantics, 
 ## Tracking
 
 - Commit: `fe4d497e6fc9efb191db339c6240d798f109f98d`
-- Draft PR: [#269](https://github.com/kanzakimy0/TravelAssist/pull/269) (Open / Draft)
-- Issue: #264 (Open)
-- WBS 0.6: `待审查`
+- Pull Request: [#269](https://github.com/kanzakimy0/TravelAssist/pull/269), integrated through [#295](https://github.com/kanzakimy0/TravelAssist/pull/295)
+- Issue: #264 (completed with the authorized integration)
+- WBS 0.6: `已完成`
 
 ## Deferred
 
-- User/governance acceptance and merge into `develop`.
 - Applying the checklist to future tasks; no historical task was retroactively reclassified.
 
 ## Blockers
 
-None for review. Completion waits for the standard merge and user-acceptance gate defined by this document.
+None for the governance-document scope.

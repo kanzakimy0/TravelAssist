@@ -4,7 +4,7 @@
 - Owner: A / Project Governance
 - WBS: 0.6
 - Planned branch: `docs/a-definition-of-done`
-- Status: 待验收
+- Status: 已完成（用户授权经集成 PR #295 合入）
 - Type: Governance specification
 
 ## Objective
