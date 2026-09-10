@@ -362,6 +362,14 @@ PR #187 实际已合并，develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 包
 - 最终收尾使用 `review/b-wbs-0-9-contract-handoff-finalize`，Draft PR [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) → develop，避免 `feature/**` 自动合并；在用户验收前不合并、不关闭 #168、不标记已完成。
 - 仓库审计确认：当前无 `src/shared/contracts/**`；`src/types/` 仅 `.gitkeep`；Preference 模型、Planner runtime/presentation model、Trip Library ViewModel 均保持模块内部，0.9 不提前实现 5.14 / 4.17 / 5.19 runtime Contract。
 
+## WBS-1.12-B 设计交付（2026-09-07）
+
+- 用户明确执行 1.12，单项 Owner 改为 B；主旅行系统实现责任仍归 A，不改变其他 WBS 的负责人。
+- Issue #176 / Task 先记录进行中；现设计交付进入待审查。PR #177 为 Draft，尚未合并、尚未用户验收，不标记已完成。
+- Base：`85675375a52a1bb1adaf37d9b8ea0a48a467eae1`；Branch：`docs/b-wbs-1-12-map-visual-spec`；设计 Commit：`687fa0644cbd5670fa92dfc3e43094b77e9188e7`。
+- Task：`docs/tasks/TASK-WBS-1.12-b-map-visual-spec.md`；设计：`docs/ui/map-visual-pin-region-route-spec.md`；Result：`docs/tasks/RESULT-WBS-1.12-b-map-visual-spec.md`。
+- ChatGPT 直接完成地图视觉 / Pin / 区域 / 路线规格及 24 项验收矩阵，无 Codex、无运行时代码修改。设计计算不等于网页实测；1.13 / 1.20 / 其他后续任务未启动。
+
 ## TASK-013-A 合并验收收尾（2026-09-07）
 
 用户明确授权“合并后执行”TASK-013.1。父任务 PR #166 已合入 develop，merge `aee2eaec3ac841395de1737a3042a112ad6fa6ea`；与验收 head `34928c57cd4f0b3cc80bb27e93701b11021fb181` 文件树完全相同。assets:validate / 44 项专项测试合并前再次通过；原 267 tests、lint/typecheck/build、69 SVG 浏览器验证有效。2.13 / TASK-013-A 已完成；Issue #112 同步最终验收。下方初次交付记录保留为历史，当前状态以本条和追踪表为准。013.1 尚需单独执行，不提前标记其完成。
@@ -659,6 +667,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 已合并（TASK-010-B 本轮仅复验导航；窄屏返回入口待对应任务复核） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `b3d411b`（合入 head），`4c1d9bb`（合并） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) 已合入 develop；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
 | TASK-012-A | 1.5 / 1.6 / 1.7 / 1.14 / 4.1 / 4.8 / 4.14 / 4.15（v0.5 UI 子集） | A | 已完成（用户授权当前实现范围；1180px Drawer 与原侧栏规格差异保留） | #111 | `docs/tasks/TASK-012-a-planner-v05-visual-secondary-panels.md` | `feature/a-planner-v05-visual-secondary-panels` | `e835e75`（验收 head），`66b7ca6`（合并，文件树相同） | [#124](https://github.com/kanzakimy0/TravelAssist/pull/124) 已合入 develop；139 tests、六尺寸双地图 QA、48 Logo QA 通过；冻结推荐卡未改 |
 | TASK-014-B | 1.10 | B | 待审查（设计已上传并自动合入 develop，待用户验收） | #158 | `docs/tasks/TASK-014-b-wbs-1-10-attraction-activity-display-rules.md` | `feature/b-wbs-1-10-attraction-activity-display-rules` | `c1bddd70`（设计）；`e9c113d9`（自动合并） | [#163](https://github.com/kanzakimy0/TravelAssist/pull/163) 自动合入 develop |
+| WBS-1.12-B | 1.12 | B | 待审查（设计交付；未实装） | #176 | `docs/tasks/TASK-WBS-1.12-b-map-visual-spec.md` | `docs/b-wbs-1-12-map-visual-spec` | `687fa064`（设计） | [#177](https://github.com/kanzakimy0/TravelAssist/pull/177) Draft，待用户验收 |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 >
