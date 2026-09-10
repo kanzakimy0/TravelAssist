@@ -7,9 +7,10 @@ Implementation complete / Pending review. The implementation is intentionally st
 ## Base / Design Base / develop integration state
 
 - Design base: `origin/design/a-trip-engine-poi-ai-architecture-v2` at `cb96645db40c98389a554c830f1c0dd5f769d4f5`.
-- Develop integrated: `origin/develop` at `2d3df8819da0e02b6b8449097dc2b95cd475f9d9` through normal merge commit `e14f9a8`.
+- Initial develop integration: `origin/develop` at `2d3df8819da0e02b6b8449097dc2b95cd475f9d9` through normal merge commit `e14f9a8`.
+- Final develop integration: execution-time advance `f14ac40d329d96d900a53e832ba40e8e4abe8cbd` (B-owned Engine contract closeout) through normal merge commit `29d9c044655607d08c55f77c47cfcfb442a7c399`.
 - Design PR #266: Open, Draft and unmerged when implementation completed.
-- No conflicting frozen planning contract was found on `develop`.
+- The newly frozen B-owned Trip Mutation Engine contract was reviewed after integration; it does not conflict with or get copied by this Planning contract namespace.
 
 ## Issue
 
@@ -79,13 +80,14 @@ Synthetic invalid fixtures cover incomplete/unknown feature vectors, compact neu
 
 ## Trip/Route compatibility
 
-Planning imports/re-exports canonical Trip and Route contracts without copying their models. Existing Trip Plan, Route contract, Ekiworld routing boundary and Planner route integration suites remain green.
+Planning imports/re-exports canonical Trip and Route contracts without copying their models. Existing Trip Plan, Route contract, Ekiworld routing boundary, Planner route integration and the newly frozen B-owned Engine feasibility suites remain green after the final `develop` merge.
 
 ## Commands/tests and exact outcomes
 
 - `npm ci` — PASS.
 - `npm run test:planning-contracts` — PASS, 18/18.
-- Relevant Trip/Route command — PASS, 75/75.
+- Initial relevant Trip/Route command — PASS, 75/75.
+- Final Trip/Route/Engine compatibility command after integrating `f14ac40` — PASS, 152/152.
 - `npm run lint` — PASS.
 - `npm run typecheck` — PASS.
 - `node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs` — PASS, 820/820.
