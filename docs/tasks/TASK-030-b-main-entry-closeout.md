@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Main Travel System / Website Entry`（用户明确指定 B 执行的单项例外）
 - Priority: `P0`
-- Status: `可开始`
+- Status: `进行中`
 - GitHub Issue: `#260`
 - Suggested Branch: `feature/b-wbs-3-3-main-entry`
 - Depends On: `3.1 completed`

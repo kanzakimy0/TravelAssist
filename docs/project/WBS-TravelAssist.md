@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-030-B / WBS 3.3 主入口收口（2026-09-10，进行中）
+
+- Canonical Owner = B，依据 docs/project/WBS-3.3-owner-correction.md；仅此项 Owner 修订，其他记录保持。
+- 执行基线：b783a101285359a9118d224ae05b1b7c26a498f7；3.1 = 已完成，依赖满足。
+- Issue #260；分支 feature/b-wbs-3-3-main-entry；Task：docs/tasks/TASK-030-b-main-entry-closeout.md。
+- 先审计现有 shared ButtonLink href="/start"，验证 Guest / Signed-in、键盘 / 触摸、历史导航及既有 Wizard → Planner。正确实现保留，不重设计首页或修改 Planner。
+- 完成后保持待审查；不启动 3.2.1 / 3.4 / 3.5 / 3.7。
+
 ## TASK-025.2-A / WBS 3.2 已验收并合并（2026-09-09）
 
 - 用户明确视觉验收通过并授权 PR Merge 到 develop；已验收 head：85a05b787087f9a36c8c5cab40693ed06ac08764。
@@ -710,7 +718,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 3.1    | 全局 Main Layout / Header           | A      | P1     | 1.13,2.7 | 已完成 |
 | 3.2    | 首页背景区域 — 静态 Production MVP | A      | P1     | 1.16,3.1 | 已完成 |
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
-| 3.3    | 「让我们开始吧」主入口              | A      | P0     | 3.1      | 未开始 |
+| 3.3    | 「让我们开始吧」主入口              | B      | P0     | 3.1      | 进行中 |
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | A      | P1     | 3.1,5.3  | 未开始 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
 | 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 已完成 |
