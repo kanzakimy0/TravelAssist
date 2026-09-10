@@ -627,6 +627,22 @@ export const negativePlanningFixtures = {
     ...visitProfileFixture,
     minimumDurationMinutes: 100,
   },
+  mismatchedFeatureSetPoiRef: {
+    ...poiPlanningProjectionFixture,
+    featureSet: {
+      ...poiPlanningProjectionFixture.featureSet,
+      poiRef: "poi-other-feature-set",
+    },
+  },
+  mismatchedVisitProfilePoiRef: {
+    ...poiPlanningProjectionFixture,
+    visitProfiles: [
+      {
+        ...poiPlanningProjectionFixture.visitProfiles[0],
+        poiRef: "poi-other-visit-profile",
+      },
+    ],
+  },
   duplicateLocalId: {
     ...aiCompactContextFixture,
     candidates: [
@@ -642,6 +658,30 @@ export const negativePlanningFixtures = {
     },
   },
   invalidFreshness: { ...currentFactUsabilityFixture, freshness: "FRESHISH" },
+  expiredFactUse: {
+    ...currentFactUsabilityFixture,
+    freshness: "EXPIRED",
+    action: "USE",
+    reasonCodes: ["F05_EXPIRED"],
+  },
+  planningPriorWithExactTimes: {
+    ...aiCompactContextFixture,
+    route: {
+      id: null,
+      routeRef: "route-planning-prior-fixture",
+      source: "planning_prior",
+      durationMinutes: 60,
+      fareMinor: null,
+      currency: null,
+      transfers: null,
+      walkMinutes: null,
+      reliability: 4,
+      arrivalMinute: 720,
+      departureMinute: 660,
+      freshness: "UNKNOWN",
+      flags: ["ESTIMATE_ONLY"],
+    },
+  },
   forbiddenTraceProviderRaw: {
     ...engineOnlyDecisionRunFixture,
     providerRaw: { payload: true },
