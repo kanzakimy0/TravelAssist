@@ -2,14 +2,25 @@
 
 ## 当前结果
 
-**Owner B / 待审查。实现、工程 QA 与用户视觉验收通过；尚未合并，不自动合并。**
+**Owner B / 已完成。实现、工程 QA 与用户视觉验收通过，PR #278 已合入 develop。**
 
 - Issue：[#261](https://github.com/kanzakimy0/TravelAssist/issues/261)。
 - Branch：`feature/b-wbs-3-4-main-account-entry`。
 - Execution base：`7f0c292186079cca7ad639ceb550f7d0e4f43cc7`；发布前再次 fetch，develop 仍为此版本。
 - Implementation / tests / evidence commit：`18dd0bbcbef1b77717f3898a68a0c5598b59e77b`。后续追踪提交仅更新文档。
-- Draft PR：[#278](https://github.com/kanzakimy0/TravelAssist/pull/278) → develop，保持 Draft。
+- PR：[#278](https://github.com/kanzakimy0/TravelAssist/pull/278) 已合入 develop，merge `b30df92a0b81cab8fcb4c13ded4e77c70e8d366f`。
 - 正式 Task：[TASK-031-B](TASK-031-b-main-account-entry-closeout.md)；[Owner correction](../project/WBS-3.4-owner-correction.md)。
+
+
+## Final Merge Closeout — 2026-09-10
+
+用户视觉验收通过后明确授权最终合并。PR #278 于 2026-09-10T03:28:52Z 合入 develop，merge b30df92a0b81cab8fcb4c13ded4e77c70e8d366f；已验收实现对应 head 64e8d55fcab3e468474bf4a19c7e8ddfba2409a5，合并 head ef421667fac5aa172425cc43b27677caa8f764a3 仅追加验收记录。合并树与 ef421667 完全一致，且已确认 merge 是 origin/develop 祖先。
+
+- PR #278 合并前 MERGEABLE / CLEAN，已按授权从 Draft 转 Ready，再以 match-head 约束合并。
+- WBS 3.4 = B / 已完成；Issue #261 Closed / Completed。3.1 / 3.2 / 3.3 B 已完成、3.2.1 A / 未开始 / Deferred 保持。
+- 本轮仅同步 Task / Result / Master WBS 合并收尾记录，未修改运行时、测试、素材或清单。沿用已验收工程结果：ci / lint / typecheck / build / diff-check、专项 4/4、浏览器 64/64、几何 36/36；全仓 718/720 与基线 714/716 的两项既有资产失败如实保留。
+- 下文此前“等待授权 / 保持 Draft / 不自动合并”是验收或开发阶段的历史记录；当前状态以本节为准。历史 Gate Blocked 原文不删除。
+- TASK-031-B 到此完成，未启动 3.5 / 3.7 或其他 Task。
 
 ## 用户视觉验收 — 2026-09-10
 
@@ -83,8 +94,8 @@ Edge / Chromium production preview，1440×900、1024×768、390×844、320×568
 
 ## 当前状态与停止点
 
-- Master WBS：3.1 B / 已完成；3.2 B / 已完成；3.2.1 A / 未开始 / Deferred；3.3 B / 已完成；**3.4 B / 待审查**。
-- Issue #261 保持 Open；Draft PR → develop；用户视觉验收已通过，等待单独合并授权，不自动合并。
+- Master WBS：3.1 B / 已完成；3.2 B / 已完成；3.2.1 A / 未开始 / Deferred；3.3 B / 已完成；**3.4 B / 已完成**。
+- Issue #261 Closed / Completed；PR #278 已合入 develop，用户验收与合并条件均已满足。
 - 历史 TASK-024-A / TASK-025-A / TASK-025.2-A、Owner 修订、分支 / PR 名称均保留；未覆盖其他工作站记录。
 - TASK-031-B 到此停止，不开始后续 Task。
 

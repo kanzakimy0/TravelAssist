@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-031-B 最终验收与合并收尾（2026-09-10，已完成）
+
+- 用户视觉验收通过后明确授权最终合并。PR #278 于 2026-09-10T03:28:52Z 合入 develop，merge b30df92a0b81cab8fcb4c13ded4e77c70e8d366f；已验收实现对应 head 64e8d55fcab3e468474bf4a19c7e8ddfba2409a5，合并 head ef421667fac5aa172425cc43b27677caa8f764a3 仅追加验收记录。合并树与 ef421667 完全一致，且已确认 merge 是 origin/develop 祖先。
+- WBS 3.4 = B / 已完成；Issue #261 Completed；3.1 / 3.2 / 3.3 B 已完成、3.2.1 A / Deferred 保持。
+- 收尾仅文档，不改运行时 / 测试 / 资产；两项旧 baseline failures 原样记录。完整 Result：docs/tasks/RESULT-TASK-031-b-main-account-entry-closeout.md。
+- 以下待审查、Draft 与等待授权为历史阶段；本节和主表是当前状态。TASK-031-B 完成后停止，不启动其他 Task。
+
 ## TASK-031-B / WBS 3.4 主系统账户入口（2026-09-10，待审查）
 
 - Owner B；Issue #261；feature/b-wbs-3-4-main-account-entry；执行基线 7f0c292186079cca7ad639ceb550f7d0e4f43cc7。
@@ -746,7 +753,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 3.2    | 首页背景区域 — 静态 Production MVP | B      | P1     | 1.16,3.1 | 已完成 |
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | B      | P0     | 3.1      | 已完成 |
-| 3.4    | 登录按钮 / 头像入口在主系统中的实现 | B      | P1     | 3.1,5.3  | 待审查 |
+| 3.4    | 登录按钮 / 头像入口在主系统中的实现 | B      | P1     | 3.1,5.3  | 已完成 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
 | 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 已完成 |
 | 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |
