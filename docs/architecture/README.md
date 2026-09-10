@@ -15,7 +15,8 @@
 - `itinerary-feasibility-spec-v0.1.md` — Item / Transition / Day / Trip 四层行程合理性、游览时长、转场、Buffer、疲劳累计、Deterministic Repair 与 AI 边界
 - `travel-region-graph-codebook-v0.1.md` — Region / District / Stay Cluster / Gateway、RegionRelation、TravelEdge / Variant、方向性、规划先验、版本与图质量规则
 - `candidate-pipeline-contract-v0.1.md` — Region / Corridor / POI 候选漏斗、Hard Filter、Scoring、Route / Itinerary Feasibility、Pareto、Diversity、Top-N、Fallback 与 AI 交接
-- `trip-engine-design-backlog-v0.4.md` — 最新 Trip Planning / POI / Region / AI Gateway 后续设计顺序与 Pilot 后校准项
+- `ai-compact-context-v1.md` — AI Gateway 输入 wire contract；TaskType / ContextScope / TripCompactState / SparsePreference / CandidateProjection / Route / Weather / Constraint Compact、Local ID、Token Budget 与 Progressive Expansion
+- `trip-engine-design-backlog-v0.5.md` — 最新 Trip Planning / POI / Region / AI Gateway 后续设计顺序与 Pilot 后校准项
 
 历史候选仍保留用于审查追踪：
 
@@ -24,12 +25,12 @@
 - `trip-engine-design-backlog-v0.1.md`
 - `trip-engine-design-backlog-v0.2.md`
 - `trip-engine-design-backlog-v0.3.md`
+- `trip-engine-design-backlog-v0.4.md`
 
 计划补充：
 
 - `system-overview.md` — Web / App / Backend / AI / Map 总体架构
 - `api-design.md` — 核心 API 详细边界
-- `ai-compact-context-v1.md` — AI Compact Context wire contract
 - `ai-decision-contract-v1.md` — AI Decision / Patch 输出契约
 
 其中原计划的 `trip-state.md` 核心内容已由 `trip-plan-data-ai-takeover.md` 覆盖；后续如需要，可再拆分为更细的数据库 Schema / API 专项文档。
