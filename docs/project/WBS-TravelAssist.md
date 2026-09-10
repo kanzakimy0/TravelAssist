@@ -7,7 +7,7 @@
 - 已完成现有实现审计；仅改两份 AI CSS：面板安全区与 overscroll containment，≤352px 时 44px 紧凑入口置于 Header 下方右侧、面板向下展开，避免底部安全区把入口推到 Login/CTA 上。Home 内容、其他页面几何保持，不接 AI、不复制组件。
 - 实现提交 79f899b4228e62f1ad7c9a3d755b3805fa36e99f；专项 4/4，AI 浏览器 18/18，主页面 16 组前后对照（仅窄屏 AI 定位有明确适配）通过；0 console/page error、0 mutation request。
 - ci / lint / typecheck / build / diff-check 通过；全仓 721/724，精确未修改基线 717/720，同三项资产相关失败。新增基线 coverage failure 来自已合入 TASK-031 的 40 张截图未登记资产总清单；更正此前仅两项失败的结论，本轮不修复或掩盖。
-- Result：docs/tasks/RESULT-TASK-033-b-ai-floating-entry-closeout.md；QA：docs/qa/TASK-033/；50 张截图保留本地并记录路径/hash，不新增 Git 图片。Draft PR 发布后登记，等待用户视觉验收。
+- Result：docs/tasks/RESULT-TASK-033-b-ai-floating-entry-closeout.md；QA：docs/qa/TASK-033/；50 张截图保留本地并记录路径/hash，不新增 Git 图片。[Draft PR #280](https://github.com/kanzakimy0/TravelAssist/pull/280) → develop，保持 Draft，等待用户视觉验收。
 - 3.1 / 3.2 / 3.3 / 3.4 B 已完成、3.2.1 A Deferred、3.7 / 6.x 状态保持。完成后 Draft PR 待审查，不自动合并或启动后续 Task。
 
 ## TASK-031-B 最终验收与合并收尾（2026-09-10，已完成）

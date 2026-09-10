@@ -419,4 +419,4 @@ Result 至少包含：
 - 实现 / 测试提交 79f899b4228e62f1ad7c9a3d755b3805fa36e99f；仅两份 AI CSS 最小修正，无新增运行时 TSX / AI 后端。
 - ci / lint / typecheck / build / diff-check、专项 4/4、AI browser 18/18、主页面 16 组对照通过。全仓 721/724；基线 717/720，同三项资产失败，详见 Result。
 - Result：[RESULT-TASK-033-b-ai-floating-entry-closeout.md](RESULT-TASK-033-b-ai-floating-entry-closeout.md)；[QA](../qa/TASK-033/README.md)。
-- Draft PR 发布后登记；3.5 B / 待审查，等待用户视觉验收，不自动合并，不启动 3.7 / 6.x。
+- [Draft PR #280](https://github.com/kanzakimy0/TravelAssist/pull/280) → develop，保持 Draft；3.5 B / 待审查，等待用户视觉验收，不自动合并，不启动 3.7 / 6.x。

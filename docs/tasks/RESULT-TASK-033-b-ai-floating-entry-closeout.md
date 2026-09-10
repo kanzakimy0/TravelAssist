@@ -19,7 +19,7 @@
 - Issue：[#263](https://github.com/kanzakimy0/TravelAssist/issues/263)。
 - Branch：`feature/b-wbs-3-5-ai-floating-entry`。
 - Implementation / tests / evidence commit：`79f899b4228e62f1ad7c9a3d755b3805fa36e99f`；后续追踪提交仅文档。
-- Draft PR：发布后登记，目标 develop。
+- Draft PR：[#280](https://github.com/kanzakimy0/TravelAssist/pull/280) → develop，保持 Draft。
 - [正式 Task](TASK-033-b-ai-floating-entry-closeout.md)；[Owner correction](../project/WBS-3.5-owner-correction.md)；[QA 及截图索引](../qa/TASK-033/README.md)。
 
 ## Existing Implementation Audit
