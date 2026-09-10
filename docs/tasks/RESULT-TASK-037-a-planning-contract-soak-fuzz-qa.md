@@ -25,11 +25,12 @@
 
 ## Commits
 
-最终 commit 在 Draft PR 建立后同步记录。
+- `ebed4d108a91dadeb2513d4c950049ea767d4702` — implementation, tests, QA evidence, Result and WBS status.
+- Tracking synchronization commit follows this record update.
 
 ## Draft PR + base/head
 
-- Draft PR：待创建
+- Draft PR: [#298](https://github.com/kanzakimy0/TravelAssist/pull/298)
 - Base: `codex/a-trip-planning-contract-foundation`
 - Head: `codex/a-planning-contract-soak-qa`
 - PR #293 保持 Draft，未 merge、未 close、未 retarget。
