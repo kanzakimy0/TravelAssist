@@ -38,14 +38,14 @@
   min-height: 0;
   border-left: 1px solid #e0d5c5;
   background: #fff9eff5;
-  color: #354650;
+  color: var(--color-text-primary);
   box-shadow: -8px 0 22px #59473510;
 }
 .inspector[data-editing="true"] > header {
   flex: 0 0 20%;
   min-height: 0;
   overflow: auto;
-  border-bottom: 1px solid #dfcbbd;
+  border-bottom: 1px solid var(--color-border-subtle);
   background: #f5eadd;
 }
 .editor {
@@ -83,6 +83,22 @@
 .editor form > header {
   padding: 0;
 }
+.editor form > header > button[aria-label^="关闭"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0;
+  line-height: 0;
+}
+.editor form > header > button[aria-label^="关闭"] svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
 .editor form > header span {
   font-size: 12px;
 }
@@ -102,11 +118,11 @@
   width: 100%;
   min-width: 0;
   padding: 9px;
-  border: 1px solid #dfcbbd;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 9px;
   background: white;
   font-size: 16px;
-  color: #354650;
+  color: var(--color-text-primary);
 }
 .editor form > section > div {
   grid-template-columns: 1fr;
@@ -121,15 +137,15 @@
   width: auto;
   padding: 8px;
   font-size: 12px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   color: #795b48;
 }
 .editor form footer button:first-child {
-  background: #b86856;
+  background: var(--background-accent-primary);
   color: white;
 }
 .editor form footer button:nth-child(3) {
-  color: #a54639;
+  color: var(--color-accent-primary);
 }
 .inspector header {
   display: flex;
@@ -159,12 +175,27 @@
   border: 1px solid #d9c7b8;
   border-radius: 12px;
   padding: 10px 16px;
-  background: #fffaf4;
-  color: #8d4d40;
+  background: var(--color-bg-elevated);
+  color: var(--color-accent-primary);
   cursor: pointer;
 }
+.inspector > header > button[aria-label^="关闭"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  line-height: 0;
+}
+.inspector > header > button[aria-label^="关闭"] svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
 .inspector button:focus-visible {
-  outline: 2px solid #b4594a;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
 .content {
@@ -217,7 +248,7 @@
 }
 .inspector footer button {
   width: 100%;
-  background: #b86856;
+  background: var(--background-accent-primary);
   color: white;
 }
 @media (max-width: 767px) {

@@ -1,20 +1,20 @@
 .planner {
   position: relative;
-  /* Planner-only palette; never leaks into the wizard or personal center. */
+  /* Planner-only surface palette; brand accents follow the shared coral system. */
   --color-bg-canvas: #faf6ef;
   --color-bg-elevated: #fffcf7;
   --color-bg-overlay: rgb(255 252 247 / 97%);
   --color-text-primary: #343e48;
   --color-text-secondary: #62584f;
   --color-border-strong: #e4d9d0;
-  --color-accent-primary: #b95649;
-  --color-accent-primary-hover: #a04439;
+  --color-accent-primary: #e95b4b;
+  --color-accent-primary-hover: #d94d40;
   --color-focus-ring: #914737;
   --planner-accent-soft: #faeeeb;
   --planner-radius-card: 16px;
   --planner-radius-panel: 20px;
-  --planner-border: rgb(199 176 168 / 35%);
-  --planner-shadow: 0 8px 24px rgb(94 74 65 / 7%);
+  --planner-border: var(--color-border-subtle, rgb(199 176 168 / 35%));
+  --planner-shadow: var(--elevation-card, 0 8px 24px rgb(94 74 65 / 7%));
   --workspace-scenery: url("/media/start/sakura-coast-fuji-train-sunset.png");
   --workspace-glass: rgb(255 249 241 / 72%);
   height: 100dvh;
@@ -23,7 +23,7 @@
   background:
     linear-gradient(rgb(255 247 237 / 12%), rgb(255 237 222 / 16%)),
     var(--workspace-scenery) center / cover no-repeat;
-  font-family: "Segoe UI", "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -46,8 +46,8 @@
   height: 30px;
   border: 1px solid #d8d0c5;
   border-radius: 8px;
-  background: #fffcf7;
-  color: #384955;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font-size: 20px;
   box-shadow: var(--planner-shadow);
 }
@@ -110,19 +110,19 @@
 }
 .mapList button[aria-pressed="true"] {
   font-weight: 700;
-  color: #a74739;
+  color: var(--color-accent-primary);
 }
 .svgFeature {
   cursor: pointer;
 }
 .svgFeature:focus-visible {
-  outline: 3px solid #a74739;
+  outline: 3px solid var(--color-accent-primary);
   outline-offset: 5px;
 }
 .pinText,
 .areaLabel {
   fill: #42484b;
-  stroke: #fffaf2;
+  stroke: var(--color-bg-elevated);
   stroke-width: 3.5px;
   paint-order: stroke;
   font-size: 12px;
@@ -132,31 +132,21 @@
   font-size: 10px;
   fill: #786154;
 }
-.currentBooking {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  min-height: 32px;
-  font-size: 10px;
-  flex-shrink: 0;
-}
-.currentBooking button,
 .placeActions button,
 .detailBody button,
 .rangeCards button,
 .bookingSummary button {
   border: 1px solid #decab9;
   color: #514741;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   border-radius: 10px;
   padding: 7px 10px;
   font-size: 11px;
   line-height: 1.5;
 }
 .currentBooking button {
-  color: #a74739;
-  background: #f7e6de;
+  color: var(--color-accent-primary);
+  background: var(--color-bg-muted);
   white-space: nowrap;
 }
 .rangeHeading {
@@ -172,13 +162,13 @@
   flex: 1 0 220px;
   border: 1px solid #e5d9cc;
   border-radius: 14px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   padding: 10px 12px;
   font-size: 11px;
 }
 .rangeCards > article[data-expanded="true"] {
   flex-basis: 340px;
-  border-color: #b78d78;
+  border-color: var(--color-accent-primary);
 }
 .rangeCards > article > button:first-child {
   font-weight: 700;
@@ -197,7 +187,7 @@
 }
 .rangeCards .textAction {
   border: 0;
-  color: #a74739;
+  color: var(--color-accent-primary);
   background: transparent;
   padding: 4px 0;
 }
@@ -211,7 +201,7 @@
 }
 .compactStops button[aria-pressed="true"] {
   font-weight: 700;
-  border-color: #a74739;
+  border-color: var(--color-accent-primary);
 }
 .bookingSummary {
   display: flex;
@@ -246,7 +236,7 @@
   top: 0;
   z-index: 2;
   background: var(--color-bg-overlay);
-  border-bottom: 1px solid #e4d9d0;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 .detailBody {
   padding: 8px 22px 24px;
@@ -265,7 +255,7 @@
   margin: 8px 0;
 }
 .detailBody section {
-  border-top: 1px solid #e4d9d0;
+  border-top: 1px solid var(--color-border-subtle);
   margin-top: 18px;
   padding-top: 4px;
 }
@@ -307,15 +297,15 @@
   opacity: 0.5;
 }
 .detailBody .primaryAction {
-  background: #a74739;
-  color: #fffaf4;
-  border-color: #a74739;
+  background: var(--background-accent-primary);
+  color: var(--color-bg-elevated);
+  border-color: var(--color-accent-primary);
 }
 .detailBody .detailLink {
   width: 100%;
   margin-top: 12px;
   background: #f9e7e0;
-  color: #a74739;
+  color: var(--color-accent-primary);
   font-weight: 650;
 }
 .feedback {
@@ -336,9 +326,9 @@
   scroll-snap-align: start;
   min-width: 0;
   padding: 10px;
-  border: 1px solid #e6d8cc;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
 }
 .recommendationRow {
   display: grid;
@@ -347,7 +337,7 @@
   padding: 12px;
   border: 1px solid #e2cebd;
   border-radius: 14px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
 }
 .recommendationRow .placeArtwork {
   width: 66px;
@@ -358,7 +348,7 @@
 .recommendationRow h4 {
   margin: 0;
   font-size: 14px;
-  color: #354650;
+  color: var(--color-text-primary);
 }
 .recommendationRow p {
   font-size: 11px;
@@ -404,7 +394,7 @@
   border: 1px solid #e5d8cb;
   border-radius: 12px;
   padding: 10px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   font-size: 11px;
 }
 .offerList small {
@@ -415,8 +405,8 @@
   margin-top: 8px;
 }
 .offerList button[aria-pressed="true"] {
-  border-color: #a74739;
-  color: #a74739;
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
   font-weight: 700;
 }
 .bookingList {
@@ -432,7 +422,7 @@
 }
 .confirmBooking {
   margin-top: 14px;
-  border-top: 1px solid #e4d9d0;
+  border-top: 1px solid var(--color-border-subtle);
   padding-top: 12px;
 }
 .confirmBooking input {
@@ -446,7 +436,7 @@
   width: 50px;
   padding: 4px;
   border-radius: 6px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   border: 1px solid #decab9;
 }
 @media (max-width: 1199px) {
@@ -561,7 +551,7 @@
   align-items: center;
   padding: 8px 16px;
   border-radius: 24px;
-  background: #f7f0e9;
+  background: var(--color-bg-muted);
   margin-left: auto;
 }
 .headerTitle h1 {
@@ -605,7 +595,7 @@
   min-height: 0;
   z-index: 3;
   background: var(--workspace-glass);
-  backdrop-filter: blur(4px) saturate(0.85);
+  backdrop-filter: blur(12px) saturate(1.05);
 }
 .bottomSlot {
   position: relative;
@@ -616,7 +606,7 @@
   z-index: 2;
   padding: 0;
   background: var(--workspace-glass);
-  backdrop-filter: blur(4px) saturate(0.85);
+  backdrop-filter: blur(12px) saturate(1.05);
 }
 .bottomSlot::before {
   content: "";
@@ -629,7 +619,7 @@
   background: linear-gradient(
     to bottom,
     rgb(250 243 237 / 0%),
-    rgb(255 249 241 / 72%)
+    var(--workspace-glass)
   );
 }
 .mapCanvas {
@@ -638,6 +628,11 @@
   position: relative;
   overflow: hidden;
   background: #f0ece3;
+}
+.mapCanvas[data-map-pick="true"],
+.mapCanvas[data-map-pick="true"] .mapboxHost,
+.mapCanvas[data-map-pick="true"] .mapSvg {
+  cursor: crosshair;
 }
 .mapSvg {
   position: absolute;
@@ -657,7 +652,7 @@
   letter-spacing: 4px;
   font-weight: 600;
   color: #666d69;
-  text-shadow: 0 1px 4px #fffcf7;
+  text-shadow: 0 1px 4px var(--color-bg-elevated);
   white-space: nowrap;
 }
 .mapPin {
@@ -674,12 +669,12 @@
   min-width: 30px;
   height: 30px;
   padding: 0 5px;
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
   border: 2px solid var(--route-color);
   border-radius: 50% 50% 50% 5px;
   box-shadow: 0 2px 5px #4b45452b;
   font-size: 10px;
-  color: #343e48;
+  color: var(--color-text-primary);
   font-weight: 750;
 }
 .mapPin[aria-pressed="true"] {
@@ -688,7 +683,7 @@
 .mapPin[aria-pressed="true"] .pinNumber {
   color: white;
   background: var(--route-color);
-  outline: 3px solid #fffcf7;
+  outline: 3px solid var(--color-bg-elevated);
 }
 .pinLabel {
   position: absolute;
@@ -698,9 +693,9 @@
   white-space: nowrap;
   padding: 5px 9px;
   border-radius: 8px;
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
   border: 1px solid var(--color-border-strong);
-  color: #343e48;
+  color: var(--color-text-primary);
   font-size: 12px;
   pointer-events: none;
   visibility: hidden;
@@ -833,6 +828,21 @@
   min-height: 0;
   min-width: 0;
 }
+.quickSettings,
+.recommendations {
+  padding-inline: 10px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .quickSettings {
   display: flex;
   flex-direction: column;
@@ -848,7 +858,7 @@
 }
 .recommendations .sectionTitle {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
@@ -857,10 +867,18 @@
   white-space: nowrap;
 }
 .sectionTitle h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-size: clamp(15px, 1.18vw, 19px);
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.4px;
+}
+.sectionTitle h2 svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
 }
 .sectionTitle p {
   margin: 5px 0 0;
@@ -877,7 +895,7 @@
 .quickPair,
 .quickTriple {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 .quickPair {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -981,8 +999,8 @@
   margin-top: 6px;
   justify-content: center;
   border-radius: 12px;
-  background: var(--color-accent-primary);
-  color: #fffdf8;
+  background: var(--background-accent-primary);
+  color: var(--color-bg-elevated);
 }
 
 .viewTransition {
@@ -1010,21 +1028,21 @@
 }
 .planList {
   display: grid;
-  grid-template-rows: repeat(3, minmax(100px, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 8px;
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
 }
 .planRow[data-recommendation] {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
-  gap: 4px;
-  padding: 6px;
+  gap: 5px;
+  padding: 7px;
 }
 .planRow[data-selected="true"] {
-  border-color: #d45b50;
-  box-shadow: inset 0 0 0 1px #d45b50;
+  border-color: var(--color-accent-primary);
+  box-shadow: inset 0 0 0 1px var(--color-accent-primary);
   background: #fff8f2;
 }
 .planSelect {
@@ -1072,9 +1090,9 @@
   cursor: pointer;
 }
 .planActions button:first-child {
-  color: #a44738;
+  color: var(--color-accent-primary);
   background: #f7e4d8;
-  border-color: #dba794;
+  border-color: var(--color-accent-primary);
   font-weight: 650;
 }
 .planActions button:disabled {
@@ -1274,13 +1292,13 @@
   height: 82px;
   text-align: left;
   border: 1px solid var(--planner-border);
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   border-radius: var(--planner-radius-card);
   padding: 7px;
   position: relative;
 }
 .timeline button[aria-pressed="true"] {
-  border-color: #bd8b77;
+  border-color: var(--color-accent-primary);
   background: #f9e9df;
 }
 .timeline time {
@@ -1297,8 +1315,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 2px solid #bc7163;
-  background: #fffcf7;
+  border: 2px solid var(--color-accent-primary);
+  background: var(--color-bg-elevated);
 }
 .timelineDot svg {
   width: 15px;
@@ -1385,12 +1403,21 @@
 .overlayHeader button {
   display: grid;
   place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 32px;
   width: 32px;
   height: 32px;
-  padding: 4px;
+  padding: 0;
   border: 1px solid var(--color-border-strong);
   border-radius: 50%;
   background: var(--color-bg-elevated);
+  line-height: 0;
+}
+.popoverHeader button svg,
+.overlayHeader button svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 .hint {
   color: var(--color-text-secondary);
@@ -1417,7 +1444,7 @@
   font-weight: 400;
   border-radius: 10px;
   border: 1px solid var(--color-border-strong);
-  background: #fffcf7;
+  background: var(--color-bg-elevated);
   color: var(--color-text-primary);
 }
 .field small {
@@ -1441,7 +1468,7 @@
 }
 .choices button[aria-pressed="true"],
 .dayChoices button[aria-pressed="true"] {
-  border-color: #bd8b77;
+  border-color: var(--color-accent-primary);
   color: var(--color-accent-primary);
   font-weight: 700;
 }
@@ -1516,12 +1543,12 @@
   .bottomSlot,
   .overlay[data-kind="right"],
   .overlay[data-kind="bottom"] {
-    background: #fffaf3;
+    background: var(--color-bg-elevated);
     backdrop-filter: none;
   }
   .quickCard,
   .planRow {
-    background: #fffcf7;
+    background: var(--color-bg-elevated);
   }
 }
 .overlayHeader {
@@ -1588,9 +1615,9 @@
   height: 22px;
 }
 .planner .replanButton {
-  background: var(--color-accent-primary);
+  background: var(--background-accent-primary);
   border-color: var(--color-accent-primary);
-  color: #fffdf8;
+  color: var(--color-bg-elevated);
 }
 .planner .replanButton:hover {
   background: var(--color-accent-primary-hover);
@@ -1598,12 +1625,6 @@
 .planDuration {
   font-size: 11px;
   color: var(--color-text-secondary);
-}
-.currentBooking {
-  font-size: 12px;
-}
-.currentBooking button {
-  font-size: 12px;
 }
 .rangeHeading {
   font-size: 13px;
@@ -1634,7 +1655,7 @@
   color: #697a72;
 }
 .timeline button[aria-pressed="true"] .timelineDot {
-  background: var(--color-accent-primary);
+  background: var(--background-accent-primary);
 }
 .mapInfo {
   max-width: calc(100% - 170px);
@@ -1649,7 +1670,7 @@
 .toolbar > button {
   border: 1px solid var(--planner-border);
   border-radius: 12px;
-  background: #fffdf8;
+  background: var(--color-bg-elevated);
 }
 .toolbar > button > span:last-child {
   display: none;
@@ -1959,9 +1980,148 @@
 }
 
 /* v0.5: scoped upper panel and overlays; recommendation selectors frozen. */
+.rightPanel .quickSettings,
+.rightPanel .recommendations {
+  padding-inline: 10px;
+}
+
+.rightPanel .recommendations {
+  container: recommendation-panel / size;
+  gap: clamp(6px, 1.15cqh, 12px);
+  padding-block: clamp(10px, 2.4cqh, 18px);
+}
+
+.recommendations .sectionTitle h2 {
+  font-size: clamp(15px, 4.6cqw, 19px);
+}
+
+.recommendations .sectionTitle p {
+  font-size: clamp(10px, 3cqw, 12px);
+}
+
+.recommendations .planList {
+  gap: clamp(6px, 1.8cqh, 10px);
+}
+
+.recommendations .planRow[data-recommendation] {
+  gap: clamp(4px, 1.2cqh, 7px);
+  padding: clamp(6px, 2cqw, 10px);
+  border-radius: clamp(13px, 4.5cqw, 18px);
+}
+
+.recommendations .planSelect {
+  gap: clamp(6px, 2cqw, 11px);
+}
+
+.recommendations .planSelect .planThumbnail {
+  width: clamp(44px, min(16cqw, 15cqh), 68px);
+  height: clamp(44px, min(16cqw, 15cqh), 68px);
+  border-radius: clamp(9px, 3cqw, 13px);
+}
+
+.recommendations .planNumber {
+  gap: 5px;
+  font-size: clamp(10px, 2.9cqw, 12px);
+}
+
+.recommendations .planNumber b,
+.recommendations .planNumber .modifiedPlan {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border-radius: 999px;
+  font-size: clamp(9px, 2.5cqw, 11px);
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.recommendations .planNumber b {
+  background: var(--planner-accent-soft);
+}
+
+.recommendations .planNumber .modifiedPlan {
+  background: #ffeae4;
+}
+
+.recommendations .planText {
+  gap: clamp(2px, 0.65cqh, 5px);
+}
+
+.recommendations .planText strong {
+  overflow: hidden;
+  font-size: clamp(13px, 4.2cqw, 17px);
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommendations .planText small {
+  font-size: clamp(10px, 3cqw, 12px);
+  line-height: 1.4;
+}
+
+.recommendations .planActions {
+  gap: clamp(5px, 1.5cqw, 8px);
+}
+
+.recommendations .planActions button {
+  min-height: clamp(26px, 4.2cqh, 34px);
+  padding: 3px clamp(4px, 1.6cqw, 8px);
+  border-radius: clamp(7px, 2.4cqw, 10px);
+  font-size: clamp(10px, 3cqw, 12px);
+}
+
+@container recommendation-panel (max-width: 330px) {
+  .recommendations .sectionTitle p {
+    max-width: 92px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .recommendations .planSelect .planThumbnail {
+    width: 44px;
+    height: 44px;
+  }
+
+  .recommendations .planText small {
+    -webkit-line-clamp: 1;
+  }
+
+  .recommendations .planActions button {
+    min-height: 26px;
+  }
+}
+
+@container recommendation-panel (min-width: 370px) and (min-height: 370px) {
+  .recommendations .planRow[data-recommendation] {
+    grid-template-columns: minmax(0, 1fr) clamp(96px, 28cqw, 126px);
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .recommendations .planText small {
+    -webkit-line-clamp: 2;
+  }
+
+  .recommendations .planActions {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+  }
+
+  .recommendations .planActions button {
+    min-height: clamp(30px, 5cqh, 38px);
+    font-weight: 600;
+  }
+}
+
 .quickSettings {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1.05fr) auto auto auto;
+  grid-template-rows:
+    minmax(0, 1fr)
+    minmax(0, 1.05fr)
+    clamp(38px, 5.2dvh, 62px)
+    clamp(40px, 5.8dvh, 72px)
+    32px;
   gap: clamp(6px, 0.85dvh, 14px);
   container-type: size;
 }
@@ -2010,8 +2170,22 @@
   min-height: 38px;
 }
 .quickSettings .mockStatus {
-  min-height: 16px;
+  align-self: stretch;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  overflow: hidden;
   font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+}
+.quickSettings .settingsActions {
+  min-height: 0;
+}
+.planner .quickSettings .settingsButton,
+.planner .quickSettings .openDetailButton {
+  height: 100%;
+  min-height: 0;
 }
 .planner .openDetailButton {
   min-height: 40px;
@@ -2021,9 +2195,10 @@
   font-size: clamp(14px, 4cqw, 20px);
   font-weight: 700;
   border-radius: 12px;
-  background: var(--color-accent-primary);
+  background: var(--background-accent-primary);
   color: #fffaf6;
-  box-shadow: 0 5px 14px #a8564526;
+  box-shadow: 0 5px 14px
+    color-mix(in srgb, var(--color-accent-primary) 14.9%, transparent);
   margin-top: 0;
 }
 
@@ -2080,12 +2255,12 @@
   flex-shrink: 0;
 }
 .bottomPanel .bottomTabs button {
-  min-height: clamp(42px, 5.5dvh, 64px);
-  font-size: clamp(13px, 1.05vw, 20px);
-  padding: 7px 2px;
+  min-height: clamp(32px, 3.8dvh, 42px);
+  font-size: clamp(12px, 0.95vw, 17px);
+  padding: 3px 2px;
 }
 .bottomPanel .tabContent {
-  padding: clamp(6px, 1dvh, 14px) clamp(8px, 1vw, 20px);
+  padding: clamp(4px, 0.7dvh, 9px) clamp(8px, 1vw, 20px);
   border-radius: 0;
 }
 .bottomPanel .rangeCards {
@@ -2099,7 +2274,7 @@
   right: 100%;
   width: 42px;
   pointer-events: none;
-  background: linear-gradient(to right, transparent, rgb(255 249 241 / 72%));
+  background: linear-gradient(to right, transparent, var(--workspace-glass));
 }
 .quickSettings .quickPair,
 .quickSettings .quickTriple {
@@ -2158,4 +2333,19 @@
   .quickTriple .quickLabel {
     flex-direction: row;
   }
+}
+
+/* Home / Personal Center brand adaptation; preserve every workspace box. */
+.header a[aria-label="TravelAssist 首页"] {
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, transparent);
+}
+.header a[aria-label="TravelAssist 首页"]:hover {
+  background: var(--color-bg-muted);
+}
+.rightSlot {
+  box-shadow: inset 1px 0 var(--color-border-subtle);
+}
+.bottomSlot {
+  box-shadow: inset 0 1px var(--color-border-subtle);
 }

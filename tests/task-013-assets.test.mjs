@@ -48,7 +48,14 @@ test("all 64 shared and 5 distinct destination SVGs are present", () => {
   assert.equal(files("public/media/shared").length, 64);
   assert.equal(files("public/media/destinations").length, 5);
   const local = manifest.assets.filter((a) => a.runtime.kind === "local");
-  assert.equal(new Set(local.map((a) => a.integrity.sha256)).size, 69);
+  assert.equal(
+    new Set(
+      local
+        .filter((a) => a.runtime.path.endsWith(".svg"))
+        .map((a) => a.integrity.sha256),
+    ).size,
+    69,
+  );
   for (const a of local) {
     const actual = measure("public" + a.runtime.path);
     assert.equal(actual.sha256, a.integrity.sha256);
@@ -391,4 +398,14 @@ test("legacy AI provenance remains illustrative, never documentary", () => {
   assert.equal(hero.status, "legacy_review_required");
   assert.ok(hero.authenticityEvidence);
   assert.ok(entries.every((entry) => entry.authenticity !== "documentary"));
+});
+
+test("legacy inventory does not double-count manifested runtime sources", () => {
+  const legacyPaths = new Set(
+    json(CATALOG + "legacy-inventory.v1.json").entries.map(
+      (entry) => entry.path,
+    ),
+  );
+  for (const asset of manifest.assets.filter((a) => a.runtime.kind === "local"))
+    assert.equal(legacyPaths.has("public" + asset.runtime.path), false);
 });

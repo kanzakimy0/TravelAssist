@@ -1,3 +1,4 @@
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import type { ReactNode } from "react";
 
 import { FloatingPanel } from "@/components/ui/floating-panel";
@@ -10,18 +11,25 @@ import { StepProgress } from "./step-progress";
 export function WizardLayout({
   children,
   currentStep,
+  viewer = null,
 }: {
   children: ReactNode;
   currentStep: number;
+  viewer?: HomeViewer | null;
 }) {
   return (
     <div className={styles.flowLayout}>
-      <StartFlowHeader />
+      <StartFlowHeader viewer={viewer} />
       <FloatingPanel className={styles.flowPanel} data-wizard-panel>
         <StepProgress currentStep={currentStep} />
-        <div className={styles.wizardContent} data-wizard-content>
+        <main
+          id="start-content"
+          tabIndex={-1}
+          className={styles.wizardContent}
+          data-wizard-content
+        >
           {children}
-        </div>
+        </main>
       </FloatingPanel>
       <p className={styles.privacyNote}>
         草稿仅保存在当前浏览器，可随时返回继续填写。

@@ -30,7 +30,12 @@ export function MapLayerToolbar({
     <aside className={styles.toolbar} aria-label="地图工具">
       {!collapsed && (
         <div className={styles.toolbarItems}>
-          <button type="button" aria-pressed={terrain} onClick={onTerrain}>
+          <button
+            type="button"
+            aria-pressed={terrain}
+            onClick={onTerrain}
+            title="显示或隐藏地理底图；保留道路、地名和行程"
+          >
             <PlannerIcon name="layers" />
             <span>图层</span>
           </button>

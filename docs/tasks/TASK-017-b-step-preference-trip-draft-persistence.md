@@ -479,3 +479,39 @@ git push --force-with-lease
 - Result / WBS / Issue / Draft PR 同步。
 
 完成后停止，不自动开始 5.14、5.19、8.5 或 AI / Planner 后续任务。
+
+## 2026-09-10 最新 develop 整合 / 仍为 Partial
+
+用户本轮授权解决 B 保留 Draft 的分支差异。原 head ae8b1e18ea713a2d86b1126178522e1752b1cb8d；本轮普通 merge 基线 develop@9c404d6dbc9299351a0363377422574bf00a1786，包含已合并 #171/#177/#179。没有 rebase/force push，没有覆盖其他工作站。
+
+### 冲突与保护
+
+- WBS 一段历史插入冲突：逐段保留 develop 新记录与 TASK-017 历史；主表 5.11/5.16/5.18 保持 develop 的正式状态，新增注释明确本 Draft 的服务器子集与 Partial 状态，不将未合并功能标为正式完成。
+- package.json 一段 scripts 冲突：同时保留最新 deploy/quality scripts 与 test:preferences / test:preferences:db，依赖和 lockfile 与 develop 一致。
+- B 原有 preference server/contract、autosave、SQL migration、generated types、TASK-017 tests 与原审计 head 完全一致；本轮没有修改 runtime 或数据库内容。
+- 最新 develop 的 Home/Start 页面/Planner/Detail/PC、Auth/Supabase、Trips public contract 和 workflows 完整保留。
+- PR #227 仍为 A 的独立 Draft（核对 head 81c8c104394fa5a94a35a0fe486ebd1998f428c1），没有合并。其 schema index/generated types/Profile tests/package 与本分支有共享文件，未来必须从 SQL truth 重新生成/验证组合模型；没有把 A 未合并 8.5 声称为已实现。本分支只增加输入草稿/偏好表，不建 itinerary/day/item 表。
+
+### 本轮实际验证
+
+| 检查                                                                  | 结果                                                                |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| npm ci                                                                | PASS；0 vulnerabilities；npm 既有 deprecated/allow-scripts 提示保留 |
+| npm run lint                                                          | PASS                                                                |
+| npm run typecheck                                                     | PASS                                                                |
+| npm run build                                                         | PASS；动态 /api/travel-persistence 构建正常                         |
+| node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs" | 811 / 811 PASS，0 fail、0 skip                                      |
+| npm run test:preferences                                              | 9 / 9 PASS                                                          |
+| npm run format:check:deploy                                           | PASS                                                                |
+| git diff --check origin/develop                                       | PASS                                                                |
+| npm run db:status                                                     | BLOCKED：local Docker daemon unavailable                            |
+| Local DB / RLS / API runtime / reset / generated types regeneration   | 本轮未执行；不可把历史 15/25 项实测当本轮通过                       |
+| Step/PC 跨设备浏览器验收                                              | 未执行；页面消费仍未接通                                            |
+
+旧 630 tests、15 Local DB/API、25 Profile 和 28 格式告警均保留在历史段落，不替换为当前证据。当前静态/编译/全仓测试通过不等于满足 Task 的真实 DB 与页面完成 gate。
+
+### 当前待补与停止点
+
+5.3 Auth User Flow 已在 develop 完成，不再将其列为整个登录产品缺失；待补的是 TASK-017 的实际 StartFlowShell/PC 消费、完整 Step 问卷/兴趣细分/交通/付费体验/金额币种映射、登录/换用户/访客迁移以及跨设备恢复。还需可用 Local Docker 后重新验证 SQL/generated types/RLS/CAS/幂等。
+
+本轮只整合现有成果并推送，PR #221 保持 Draft / Partial，Issue #207 保持 Open。WBS 5.14 / 5.19 / 8.5 未启动。最新 head 与推送结果以 PR 为准。

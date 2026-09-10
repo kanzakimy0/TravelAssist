@@ -57,7 +57,7 @@ export function detailTimeSuggestion(
   );
   if (others.some((other) => validateSchedule(other))) return null;
   const incoming = plannerMovementLegs(currentPlan(state), item.day).find(
-    (leg) => leg.to.id === item.id && leg.edited && leg.conflict,
+    (leg) => leg.to.id === item.id && leg.conflict,
   );
   const shortBuffer = others.some(
     (other) =>

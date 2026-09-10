@@ -4,6 +4,8 @@ import type {
 } from "../../companions/companion-view-model";
 import type { TripState } from "./trip-model";
 import type { DetailDraftState, DetailRailItem } from "./detail-workspace";
+import { missingArrangements } from "./required-arrangements";
+import { currentPlan, type MealSlot } from "./trip-model";
 
 export type TravelMember = {
   id: string;
@@ -172,6 +174,7 @@ export type PreparationIssue = {
   tone: "error" | "warning" | "booking" | "missing";
   flightId?: string;
   itemId?: string;
+  arrangement?: { day: number; kind: "hotel" | "restaurant"; slot?: MealSlot };
 };
 export function preparationIssues(
   state: TripState,
@@ -179,6 +182,21 @@ export function preparationIssues(
   p: Preparation,
 ): PreparationIssue[] {
   const issues: PreparationIssue[] = [];
+  for (const { day } of currentPlan(state).days) {
+    for (const { kind, slot, label } of missingArrangements(
+      state,
+      day,
+      items,
+    )) {
+      issues.push({
+        id: `missing-${currentPlan(state).id}-${day}-${slot ?? kind}`,
+        title: `第${day}天 · ${label}`,
+        reason: "尚未安排，请选择地点或补充安排。",
+        tone: "missing",
+        arrangement: { day, kind, slot },
+      });
+    }
+  }
   for (const i of items) {
     if (i.aiStatus !== "normal")
       issues.push({

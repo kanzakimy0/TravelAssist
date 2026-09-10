@@ -9,8 +9,6 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { readPlannerPlanSelection } from "@/features/navigation/main-flow-navigation";
-
 import {
   initialPlannerSettings,
   plannerMockPlans,
@@ -38,7 +36,6 @@ import {
   kindFor,
   makeTripState,
   mapView,
-  pendingItems,
   presentationPlan,
   tripReducer,
 } from "../model/trip-model";
@@ -64,10 +61,12 @@ import { DetailSidebar } from "./detail-sidebar";
 import { DetailReservationPanel } from "./detail-reservation-panel";
 import { PlaceDetails } from "./place-details";
 import { PlannerRightPanel } from "./planner-right-panel";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { TripWorkspace } from "./trip-workspace";
 import { WorkspaceCapabilities } from "./workspace-capabilities";
 import { TripCompletionDialog } from "./trip-completion-dialog";
 import { FlightProject } from "./flight-project";
+import { PlannerIcon } from "./planner-icon";
 import {
   preparationFor,
   preparationFingerprint,
@@ -87,7 +86,13 @@ function serverViewport() {
   return "false:false";
 }
 
-export function PlannerPage() {
+export function PlannerPage({
+  viewer = null,
+  routeQueriesEnabled = false,
+}: {
+  routeQueriesEnabled?: boolean;
+  viewer?: HomeViewer | null;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = parseWorkspaceMode(searchParams.get("view"));
@@ -134,6 +139,10 @@ export function PlannerPage() {
   } | null>(null);
   const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
   const [addOpen, setAddOpen] = useState(false);
+  const [mapPickActive, setMapPickActive] = useState(false);
+  const [mapPickedCoordinates, setMapPickedCoordinates] = useState<
+    [number, number] | null
+  >(null);
   const [completionOpen, setCompletionOpen] = useState(false);
   const [manualPlanAction, setPlanAction] = useState<{
     id: string;
@@ -225,7 +234,9 @@ export function PlannerPage() {
   const switchingPlan = Boolean(
     planAction?.kind === "save" &&
     trip.workingPlanId &&
-    (trip.workingPlanId !== planAction.id || planAction.draftId),
+    (trip.workingPlanId !== planAction.id ||
+      planAction.draftId ||
+      browserTrip.entryFromWizard),
   );
   function closePlanAction() {
     setPlanAction(null);
@@ -322,10 +333,6 @@ export function PlannerPage() {
     [],
   );
   useEffect(() => {
-    const selectedPlanId = readPlannerPlanSelection();
-    if (selectedPlanId) dispatchTrip({ type: "plan", id: selectedPlanId });
-  }, []);
-  useEffect(() => {
     if (mode !== "detail") return;
     if (trip.ui.rangeMode !== "day" || trip.ui.selectedDay !== detailDay) {
       dispatchTrip({ type: "range", mode: "day", start: detailDay });
@@ -414,6 +421,8 @@ export function PlannerPage() {
     setBulkBooking(null);
     setReservationView(null);
     setReplacementId(null);
+    setMapPickActive(false);
+    setMapPickedCoordinates(null);
   }
   function openProject(item: DetailRailItem, focus?: "advice" | "booking") {
     resetProjectSelection();
@@ -450,6 +459,53 @@ export function PlannerPage() {
         isRightPanelOverlayOpen: false,
       },
     });
+  }
+  function addBreakfastChoice(day: number, choice: "hotel" | "simple") {
+    const hotelItem = currentPlan(trip).items.find(
+      (item) => item.type === "hotel" && item.day <= day && item.endDay >= day,
+    );
+    const hotelPlace = hotelItem
+      ? trip.places.find((place) => place.id === hotelItem.placeId)
+      : undefined;
+    const item: DetailDraftItem = {
+      id: `detail-draft-breakfast-${crypto.randomUUID()}`,
+      day,
+      title:
+        choice === "hotel"
+          ? `酒店早餐${hotelItem ? ` · ${hotelItem.title}` : ""}`
+          : "简易早餐",
+      startTime: "07:00",
+      endTime: "07:30",
+      type: "restaurant",
+      note:
+        choice === "hotel"
+          ? "优先确认住宿是否含早餐、供应时间与过敏原信息。"
+          : "安排便利店、咖啡店或外带简餐；具体地点仍需确认。",
+      ...(hotelPlace
+        ? {
+            location: {
+              source: "catalog" as const,
+              coordinates: hotelPlace.coordinates,
+              placeId: hotelPlace.id,
+              label:
+                choice === "hotel"
+                  ? `${hotelPlace.name} · 酒店早餐`
+                  : `${hotelPlace.name}附近 · 简易早餐`,
+            },
+          }
+        : {}),
+    };
+    mutateDetailDraft((current) => ({
+      ...current,
+      items: [...current.items, item],
+    }));
+    resetProjectSelection();
+    setDraftInspectionId(item.id);
+    setCheckStatus(
+      choice === "hotel"
+        ? "已加入酒店早餐草稿 · 请核对是否含早与供应时间"
+        : "已加入简易早餐草稿 · 请在详情确认具体地点",
+    );
   }
   function openMissing(
     day: number,
@@ -561,8 +617,6 @@ export function PlannerPage() {
       refreshing={refreshing}
       status={refreshing ? "正在刷新示例路线…（Mock 演示）" : trip.notice}
       onReplan={replan}
-      pendingCount={pendingItems(plan).length}
-      onBooking={browserTrip.enterDetail}
       onOpenDetail={browserTrip.enterDetail}
       detailReady={browserTrip.ready}
     />
@@ -693,6 +747,7 @@ export function PlannerPage() {
       onDay={selectDetailDay}
       onItem={(item, _trigger, focus) => openProject(item, focus)}
       onMissing={openMissing}
+      onBreakfastChoice={addBreakfastChoice}
       actions={detailActions}
       onMinimize={() => {
         if (!bottomCollapsed) setDetailMinimized(true);
@@ -770,10 +825,12 @@ export function PlannerPage() {
     <WorkspaceCapabilities.Provider
       value={{
         canBook: mode === "detail",
+        routeQueriesEnabled,
         enterDetail: browserTrip.enterDetail,
       }}
     >
       <TripWorkspace
+        viewer={viewer}
         onAdviceAction={(id, action, trigger) => {
           if (action === "adjust") {
             dispatchTrip({
@@ -854,7 +911,7 @@ export function PlannerPage() {
                   aria-label="关闭项目详情框"
                   onClick={() => setAddOpen(false)}
                 >
-                  ×
+                  <PlannerIcon name="close" />
                 </button>
               </header>
               <div className={projectStyles.editor}>
@@ -882,7 +939,6 @@ export function PlannerPage() {
                     setAddOpen(false);
                     setDraftInspectionId(test.id);
                   }}
-                  validate={(item) => editScheduleError(item, railItems)}
                   day={detailDay}
                   trigger={addTrigger}
                   onClose={() => setAddOpen(false)}
@@ -893,6 +949,12 @@ export function PlannerPage() {
                     }));
                     setAddOpen(false);
                     setDraftInspectionId(item.id);
+                  }}
+                  mapPick={{
+                    active: mapPickActive,
+                    coordinates: mapPickedCoordinates,
+                    onToggle: () => setMapPickActive((current) => !current),
+                    onClear: () => setMapPickedCoordinates(null),
                   }}
                 />
               </div>
@@ -921,6 +983,11 @@ export function PlannerPage() {
             .map((leg) => [leg.id, leg.label]),
         )}
         onSelectMapFeature={selectMapFeature}
+        mapPickMode={mode === "detail" && addOpen && mapPickActive}
+        onMapPick={(coordinates) => {
+          setMapPickedCoordinates(coordinates);
+          setMapPickActive(false);
+        }}
         onEditDetailItem={(id, trigger) => {
           const item = allRailItems.find((candidate) => candidate.id === id);
           if (item) selectDetailItem(item, trigger);
@@ -964,9 +1031,11 @@ export function PlannerPage() {
           title={
             planAction.kind === "restore"
               ? "还原推荐方案？"
-              : switchingPlan
-                ? "切换工作方案？"
-                : "保存方案并进入详情"
+              : browserTrip.entryFromWizard
+                ? "接收向导选择的新方案？"
+                : switchingPlan
+                  ? "切换工作方案？"
+                  : "保存方案并进入详情"
           }
           onClose={closePlanAction}
           className={localSave.planConfirmation}
@@ -980,9 +1049,11 @@ export function PlannerPage() {
             <p>
               {planAction.kind === "restore"
                 ? "还原此方案的原始推荐路线、项目时间、备用项目、交通修改及名称。其他方案、个人偏好、独立新增的详情项目与已保存版本不变。此操作不取消真实预约；请确认是否放弃此方案的路线修改。"
-                : switchingPlan
-                  ? "切换后，原工作方案的未保留修改将被废弃，新方案成为唯一工作中方案。建议先保存为浏览器草稿，可通过草稿列表恢复；不会取消外部预约。"
-                  : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
+                : browserTrip.entryFromWizard
+                  ? "向导选择了一个新方案，浏览器仍保留原工作行程。确认后将载入新的示例方案；不是把旧行程改名，也不会自动覆盖旧方案。建议先归档原工作方案，取消则继续原行程。"
+                  : switchingPlan
+                    ? "切换后，原工作方案的未保留修改将被废弃，新方案成为唯一工作中方案。建议先保存为浏览器草稿，可通过草稿列表恢复；不会取消外部预约。"
+                    : "将当前工作区明确保存到这个浏览器，再打开所选方案的行程详情，继续核对时间、增补信息和处理预约。不是云端保存，也不代表行程已完成检查。"}
             </p>
             {switchingPlan && (
               <label>
@@ -1089,7 +1160,14 @@ export function PlannerPage() {
                 },
               });
             setCompletionOpen(false);
-            if (issue.flightId || !issue.itemId) openFlight(issue.flightId);
+            if (issue.arrangement)
+              openMissing(
+                issue.arrangement.day,
+                issue.arrangement.kind,
+                issue.arrangement.slot,
+              );
+            else if (issue.flightId || !issue.itemId)
+              openFlight(issue.flightId);
             else {
               const item = allRailItems.find((i) => i.id === issue.itemId);
               if (item) openProject(item);

@@ -6,7 +6,7 @@
 
 服务器持久化子集已实现并通过本地真实验证，已上传 Draft PR #221。实际 Step 页面尚未切换到服务器 autosave/resume；原有本地草稿未被替换。后续不自动开始 5.14 / 5.19 / 8.5 / WBS 5.3。
 
-## Prerequisites
+## 历史 Prerequisites（当前见末节）
 
 - 实际 base：`0c21643d0f44ce599747007e25265c0e5219b5fb`。
 - 发布时 develop 前进到 `18afee5f02ed45505b81636f7b25b568270b2bf9`（#218 Authentication Core + #220 登录用户流程 Task）。已普通 merge 整合，唯一冲突为 WBS 顶部记录，双方内容完整保留；package/lock/Auth 配置沿用 develop，不重写 #218。
@@ -72,7 +72,7 @@
 - 私有响应 no-store、192 KiB 请求上限、原始错误/数据库连接信息/Token 不返回。
 - 未提交 Token/Secret、未接云端数据库、未构建匿名账号/登录产品流程。
 
-## Validation
+## 历史 Validation（不作为本轮复测）
 
 - `npm ci`：PASS，0 vulnerabilities。
 - `db:start / db:status / db:reset / db:types`：PASS，真实 Local Supabase。重置前核验 Auth 与全部业务表为 0 行；安全审查要求复核时已重新只读核验，没有绕过。
@@ -114,3 +114,39 @@
 - 先审查 Draft 中的数据库与服务子集；WBS 5.11/5.16 为子集待审查，5.18 为进行中/部分实现，页面接入待补，不写最终完成。原硬性前置 #186 / 4.17 均已满足。
 - 基于已有 Auth Core 完成页面身份接线，并明确未登录/登录/换用户的实际 UI 流程及 Step 金额上下文，补齐剩余 typed mapping 后进行 autosave/resume 和浏览器跨设备验收。
 - 本次停止，不自动 merge，不自动开始 5.14 / 5.19 / 8.5 或其他 WBS。
+
+## 2026-09-10 最新 develop 整合 / 仍为 Partial
+
+用户本轮授权解决 B 保留 Draft 的分支差异。原 head ae8b1e18ea713a2d86b1126178522e1752b1cb8d；本轮普通 merge 基线 develop@9c404d6dbc9299351a0363377422574bf00a1786，包含已合并 #171/#177/#179。没有 rebase/force push，没有覆盖其他工作站。
+
+### 冲突与保护
+
+- WBS 一段历史插入冲突：逐段保留 develop 新记录与 TASK-017 历史；主表 5.11/5.16/5.18 保持 develop 的正式状态，新增注释明确本 Draft 的服务器子集与 Partial 状态，不将未合并功能标为正式完成。
+- package.json 一段 scripts 冲突：同时保留最新 deploy/quality scripts 与 test:preferences / test:preferences:db，依赖和 lockfile 与 develop 一致。
+- B 原有 preference server/contract、autosave、SQL migration、generated types、TASK-017 tests 与原审计 head 完全一致；本轮没有修改 runtime 或数据库内容。
+- 最新 develop 的 Home/Start 页面/Planner/Detail/PC、Auth/Supabase、Trips public contract 和 workflows 完整保留。
+- PR #227 仍为 A 的独立 Draft（核对 head 81c8c104394fa5a94a35a0fe486ebd1998f428c1），没有合并。其 schema index/generated types/Profile tests/package 与本分支有共享文件，未来必须从 SQL truth 重新生成/验证组合模型；没有把 A 未合并 8.5 声称为已实现。本分支只增加输入草稿/偏好表，不建 itinerary/day/item 表。
+
+### 本轮实际验证
+
+| 检查                                                                  | 结果                                                                |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| npm ci                                                                | PASS；0 vulnerabilities；npm 既有 deprecated/allow-scripts 提示保留 |
+| npm run lint                                                          | PASS                                                                |
+| npm run typecheck                                                     | PASS                                                                |
+| npm run build                                                         | PASS；动态 /api/travel-persistence 构建正常                         |
+| node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs" | 811 / 811 PASS，0 fail、0 skip                                      |
+| npm run test:preferences                                              | 9 / 9 PASS                                                          |
+| npm run format:check:deploy                                           | PASS                                                                |
+| git diff --check origin/develop                                       | PASS                                                                |
+| npm run db:status                                                     | BLOCKED：local Docker daemon unavailable                            |
+| Local DB / RLS / API runtime / reset / generated types regeneration   | 本轮未执行；不可把历史 15/25 项实测当本轮通过                       |
+| Step/PC 跨设备浏览器验收                                              | 未执行；页面消费仍未接通                                            |
+
+旧 630 tests、15 Local DB/API、25 Profile 和 28 格式告警均保留在历史段落，不替换为当前证据。当前静态/编译/全仓测试通过不等于满足 Task 的真实 DB 与页面完成 gate。
+
+### 当前待补与停止点
+
+5.3 Auth User Flow 已在 develop 完成，不再将其列为整个登录产品缺失；待补的是 TASK-017 的实际 StartFlowShell/PC 消费、完整 Step 问卷/兴趣细分/交通/付费体验/金额币种映射、登录/换用户/访客迁移以及跨设备恢复。还需可用 Local Docker 后重新验证 SQL/generated types/RLS/CAS/幂等。
+
+本轮只整合现有成果并推送，PR #221 保持 Draft / Partial，Issue #207 保持 Open。WBS 5.14 / 5.19 / 8.5 未启动。最新 head 与推送结果以 PR 为准。

@@ -2,22 +2,28 @@
 
 :root {
   /*
-   * Provisional implementation tokens for the first UI validation pass.
-   * Their semantic roles are stable; the visual values are not final brand decisions.
+   * TASK-024-A: shared brand values promoted from the frozen Personal Center Shell.
+   * WBS 1.13 remains pending review; scene-specific tokens keep their own roles.
    */
-  --color-bg-canvas: #f4efe9;
-  --color-bg-elevated: rgb(255 255 255 / 78%);
-  --color-bg-overlay: rgb(250 251 253 / 94%);
-  --color-bg-muted: rgb(236 239 246 / 84%);
-  --color-text-primary: #252d43;
-  --color-text-secondary: #656d7e;
+  --color-bg-canvas: #faf6ef;
+  --color-bg-elevated: #fffcf7;
+  --color-bg-overlay: #fffcf7;
+  --color-bg-muted: #f9e7e0;
+  --color-text-primary: #383632;
+  --color-text-secondary: #70665f;
   --color-text-on-accent: #ffffff;
-  --color-border-subtle: rgb(255 255 255 / 72%);
-  --color-border-strong: rgb(67 77 105 / 18%);
-  --color-accent-primary: #56658f;
-  --color-accent-primary-hover: #49577e;
+  --color-border-subtle: #e9dcd1;
+  --color-border-strong: #e9dcd1;
+  --color-accent-primary: #e95b4b;
+  --color-accent-primary-hover: #d94738;
   --color-accent-secondary: #c9788b;
-  --color-focus-ring: #33456f;
+  /* Existing Home CTA paint, shared by brand-filled controls across the app. */
+  --background-accent-primary: linear-gradient(
+    155deg,
+    rgb(244.44 118.52 98.36),
+    rgb(233.42 90.68 75.04)
+  );
+  --color-focus-ring: #bd362b;
   --color-status-danger: #a33e5b;
   --color-scrim: rgb(31 38 58 / 8%);
 
@@ -41,13 +47,19 @@
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
 
-  --elevation-card: 0 0.75rem 2rem rgb(39 50 74 / 10%);
-  --elevation-panel: 0 1rem 3rem rgb(39 50 74 / 15%);
-  --elevation-popover: 0 1.25rem 4rem rgb(32 42 67 / 20%);
+  --elevation-card: 0 12px 36px rgb(113 78 59 / 6%);
+  --elevation-panel: 0 12px 36px rgb(113 78 59 / 10%);
+  --elevation-popover: 0 12px 32px rgb(113 78 59 / 14%);
+
+  --font-body: "Segoe UI", "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  --font-heading:
+    "Yu Mincho", "Hiragino Mincho ProN", "Songti SC", "SimSun", serif;
+  --main-header-height: 68px;
 
   --motion-fast: 140ms;
   --motion-normal: 240ms;
@@ -71,16 +83,7 @@ body {
   overflow-x: hidden;
   background: var(--color-bg-canvas);
   color: var(--color-text-primary);
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Hiragino Sans",
-    "Yu Gothic UI",
-    sans-serif;
+  font-family: var(--font-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -105,4 +108,32 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Main routes only. Account/Auth retain their accepted Shell and focus hosts. */
+.main-shell {
+  min-width: 0;
+}
+.main-shell
+  :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+.main-shell :is(a, button, input, select, textarea, [tabindex]) {
+  scroll-margin-block: calc(var(--main-header-height) + var(--space-4));
+}
+.main-skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  transform: translateY(-180%);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  box-shadow: var(--elevation-card);
+}
+.main-skip-link:focus {
+  transform: none;
 }

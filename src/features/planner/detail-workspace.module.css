@@ -49,7 +49,7 @@
   padding: 9px 5px;
   border: 1px solid var(--planner-border);
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   text-align: center;
 }
 
@@ -90,7 +90,7 @@
   margin-top: 10px;
   border: 1px solid var(--planner-border);
   border-radius: 15px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   box-shadow: 0 5px 16px rgb(94 74 65 / 5%);
 }
 
@@ -238,7 +238,7 @@
   padding: 8px 10px;
   border: 1px solid #ddc5b8;
   border-radius: 10px;
-  background: #fffaf5;
+  background: var(--color-bg-elevated);
   color: #805646;
   font: inherit;
   font-size: 12px;
@@ -250,7 +250,7 @@
   width: 12px;
   height: 12px;
   left: -6px;
-  background: #c35a4b;
+  background: var(--background-accent-primary);
 }
 .sightsTimeline {
   display: flex;
@@ -267,14 +267,14 @@
 }
 .sightsTimeline[data-compare="true"] .sightsDay {
   flex: 1 0 480px;
-  border-right: 1px solid #ddc7ba;
+  border-right: 1px solid var(--color-border-subtle);
 }
 .sightsDayLabel {
   align-self: flex-start;
   border: 0;
   padding: 0 12px;
   background: transparent;
-  color: #9d6453;
+  color: var(--color-accent-primary);
   font-size: 11px;
   cursor: pointer;
 }
@@ -308,7 +308,7 @@
 }
 .railEmpty {
   padding: 18px;
-  color: #60594f;
+  color: var(--color-text-secondary);
   font-size: 13px;
 }
 @media (max-width: 767px) {
@@ -343,8 +343,8 @@
 
 .aiActions button:last-child {
   border-color: var(--color-accent-primary);
-  background: var(--color-accent-primary);
-  color: #fffdf8;
+  background: var(--background-accent-primary);
+  color: var(--color-bg-elevated);
 }
 
 .saveStatus {
@@ -401,8 +401,11 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 0 0 6px;
   min-width: 0;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
   scrollbar-width: thin;
 }
 .projectTypes {
@@ -424,25 +427,29 @@
   padding: 8px 3px;
   border: 1px solid #e2cdbb;
   border-radius: 8px;
-  background: #fffaf3;
+  background: var(--color-bg-elevated);
   color: #755344;
   cursor: pointer;
 }
 .projectTypes button[aria-pressed="true"] {
-  background: #b6604f;
-  border-color: #b6604f;
+  background: var(--background-accent-primary);
+  border-color: var(--color-accent-primary);
   color: white;
 }
 
 .daySelector button {
   display: grid;
-  min-width: 160px;
+  flex: 1 1 clamp(96px, 11vw, 168px);
+  min-width: 96px;
+  min-height: 44px;
   padding: 7px 12px;
   border: 1px solid var(--planner-border);
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   color: inherit;
   text-align: left;
+  white-space: nowrap;
+  scroll-snap-align: start;
 }
 
 .daySelector button[aria-pressed="true"] {
@@ -481,7 +488,12 @@
   right: 18px;
   left: 18px;
   height: 2px;
-  background: linear-gradient(90deg, #d9cbc3, #c35a4b, #d9cbc3);
+  background: linear-gradient(
+    90deg,
+    #d9cbc3,
+    var(--color-accent-primary),
+    #d9cbc3
+  );
 }
 
 .railItem {
@@ -501,7 +513,7 @@
   place-items: center;
   width: 24px;
   height: 24px;
-  border: 2px solid #fffdf9;
+  border: 2px solid var(--color-bg-elevated);
   border-radius: 50%;
   background: #38765a;
   color: white;
@@ -624,8 +636,8 @@
   width: 28px;
   border: 1px solid var(--planner-border);
   border-radius: 10px;
-  background: #fffaf5;
-  color: #384955;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 @media (max-width: 767px) {
@@ -684,10 +696,21 @@
 }
 
 .itemDialog header > button {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 38px;
   width: 38px;
+  height: 38px;
   padding: 0;
   border-radius: 50%;
-  font-size: 22px;
+  line-height: 0;
+}
+
+.itemDialog header > button svg {
+  display: block;
+  width: 19px;
+  height: 19px;
 }
 
 .dialogStatus {
@@ -721,7 +744,7 @@
   padding: 13px;
   border: 1px solid var(--planner-border);
   border-radius: 14px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
 }
 
 .dialogSection h3 {
@@ -771,7 +794,7 @@
   padding: 8px 10px;
   border: 1px solid var(--planner-border);
   border-radius: 10px;
-  background: #fffdf9;
+  background: var(--color-bg-elevated);
   color: var(--color-text-primary);
   font: inherit;
 }
@@ -799,8 +822,8 @@
 .itemDialog footer button:first-child,
 .itemDialog footer button:last-child {
   border-color: var(--color-accent-primary);
-  background: var(--color-accent-primary);
-  color: #fffdf8;
+  background: var(--background-accent-primary);
+  color: var(--color-bg-elevated);
 }
 
 .srOnly {
@@ -929,6 +952,29 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+.coordinateFields .mapPickButton {
+  grid-column: 1 / -1;
+  min-height: 38px;
+  border-color: #78a9c7;
+  background: #edf7fc;
+  color: #2c6689;
+  font-weight: 700;
+}
+.coordinateFields .mapPickButton[aria-pressed="true"] {
+  border-color: #367faf;
+  background: #cbe9fa;
+  box-shadow: 0 0 0 3px #8bc4e33d;
+}
+.mapPickStatus {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: 9px;
+  background: #e9f5fb;
+  color: #2c6689;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
 .locationCandidates {
   display: grid;
   gap: 5px;
@@ -943,13 +989,13 @@
 }
 .projectLocation button[aria-pressed="true"] {
   background: #f3d1be;
-  border-color: #a7523f;
+  border-color: var(--color-accent-primary);
 }
 .conflictTest {
   margin: 12px 0;
   padding: 10px;
-  border: 1px dashed #bd6759;
+  border: 1px dashed var(--color-accent-primary);
   border-radius: 9px;
   font-size: 12px;
-  color: #9b3f34;
+  color: var(--color-accent-primary);
 }

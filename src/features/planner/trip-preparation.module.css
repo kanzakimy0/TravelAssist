@@ -5,7 +5,7 @@ dialog.completion[data-kind="detail"] {
   max-height: 88dvh;
   margin: auto;
   padding: 20px;
-  color: #354650;
+  color: var(--color-text-primary);
   background: #fffaf5f5;
   border: 1px solid #e4d7ca;
   border-radius: 24px;
@@ -24,7 +24,7 @@ dialog.completion[data-kind="detail"] {
   padding: 15px;
   border: 1px solid #e8ddd0;
   border-radius: 16px;
-  background: #fffcf8;
+  background: var(--color-bg-elevated);
 }
 .body h3,
 .body p {
@@ -63,8 +63,8 @@ dialog.completion[data-kind="detail"] {
   border: 1px solid #dcd0c2;
   border-radius: 9px;
   padding: 9px;
-  background: #fffdf8;
-  color: #354650;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
   font: inherit;
 }
 .completion button,
@@ -73,9 +73,24 @@ dialog.completion[data-kind="detail"] {
   padding: 8px 12px;
   border: 1px solid #decfc0;
   border-radius: 10px;
-  background: #fffaf4;
+  background: var(--color-bg-elevated);
   color: #46555c;
   font: inherit;
+}
+.completion > header button[aria-label^="关闭"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  line-height: 0;
+}
+.completion > header button[aria-label^="关闭"] svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 .completion button:disabled {
   opacity: 0.5;
@@ -83,7 +98,7 @@ dialog.completion[data-kind="detail"] {
 }
 .completion button:focus-visible,
 .flightProject button:focus-visible {
-  outline: 2px solid #b75f4e;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
 .members,
@@ -100,7 +115,7 @@ dialog.completion[data-kind="detail"] {
 }
 .tabs button[aria-pressed="true"] {
   background: #f2dfd4;
-  border-color: #bd7666;
+  border-color: var(--color-accent-primary);
 }
 .choices {
   display: grid;
@@ -188,9 +203,9 @@ dialog.completion[data-kind="detail"] {
   padding-top: 12px;
 }
 .actions button:last-child {
-  background: #b75c4a;
+  background: var(--background-accent-primary);
   color: #fff;
-  border-color: #b75c4a;
+  border-color: var(--color-accent-primary);
 }
 .flightForm {
   display: flex;
@@ -216,6 +231,16 @@ dialog.completion[data-kind="detail"] {
 }
 .flightProject {
   min-width: 0;
+}
+.flightProject > header button[aria-label^="关闭"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  line-height: 0;
 }
 .flightProject h2 {
   margin: 0;

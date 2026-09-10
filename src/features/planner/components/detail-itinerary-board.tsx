@@ -5,12 +5,12 @@ import type {
 } from "../model/detail-workspace";
 import {
   currentPlan,
-  mealSlotFor,
   reservationLabel,
   type TripAction,
   type TripState,
 } from "../model/trip-model";
 import { timelineStatus } from "./trip-timeline-track";
+import { missingArrangements } from "../model/required-arrangements";
 import css from "../detail-itinerary-board.module.css";
 import {
   detailCardKey,
@@ -28,6 +28,7 @@ export function DetailItineraryBoard({
   draft,
   onDraft,
   onMissing,
+  onBreakfastChoice,
 }: {
   day: number;
   items: DetailRailItem[];
@@ -46,6 +47,7 @@ export function DetailItineraryBoard({
     kind: "hotel" | "restaurant",
     slot?: "breakfast" | "lunch" | "dinner",
   ) => void;
+  onBreakfastChoice: (day: number, choice: "hotel" | "simple") => void;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [feedback, setFeedback] = useState("");
@@ -159,6 +161,9 @@ export function DetailItineraryBoard({
                     className={`${css.square} ${css.itinerary}`}
                     data-detail-item={item.id}
                     data-kind={item.type}
+                    data-reservation-pending={
+                      item.reservation === "unknown" || undefined
+                    }
                     title={item.typeLabel + " · " + item.title}
                     aria-pressed={selectedId === item.id}
                     aria-describedby={`detail-status-${item.id}`}
@@ -247,46 +252,8 @@ export function DetailItineraryBoard({
                 </article>
               );
             }),
-            ...(
-              [
-                {
-                  kind: "hotel",
-                  label: "当晚住宿",
-                  slot: undefined,
-                  time: "20:00",
-                },
-                {
-                  kind: "restaurant",
-                  label: "早餐",
-                  slot: "breakfast",
-                  time: "07:00",
-                },
-                {
-                  kind: "restaurant",
-                  label: "午餐",
-                  slot: "lunch",
-                  time: "12:00",
-                },
-                {
-                  kind: "restaurant",
-                  label: "晚餐",
-                  slot: "dinner",
-                  time: "18:00",
-                },
-              ] as const
-            )
-              .filter(
-                ({ kind, slot }) =>
-                  (kind !== "hotel" || day < currentPlan(state).days.length) &&
-                  !items.some(
-                    (item) =>
-                      item.type === kind &&
-                      (!slot ||
-                        mealSlotFor(item.startTime, item.planningSlot) ===
-                          slot),
-                  ),
-              )
-              .map(({ kind, label, slot, time }) => {
+            ...missingArrangements(state, day, items).map(
+              ({ kind, label, slot, time }) => {
                 const missingKey = `${currentPlan(state).id}:missing-${day}-${slot ?? kind}`;
                 const area = state.areas.find(
                   (area) =>
@@ -342,17 +309,39 @@ export function DetailItineraryBoard({
                               {area ? "查看推荐地区 →" : "请使用新增项目补充"}
                             </span>
                           </button>
-                          <QuickActions
-                            label="更改"
-                            onIgnore={() => dismiss(missingKey)}
-                            onOpen={openArea}
-                          />
+                          {slot === "breakfast" ? (
+                            <div
+                              className={css.breakfastChoices}
+                              role="group"
+                              aria-label="早餐方式"
+                            >
+                              <button
+                                type="button"
+                                onClick={() => onBreakfastChoice(day, "hotel")}
+                              >
+                                酒店早餐
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => onBreakfastChoice(day, "simple")}
+                              >
+                                简易早餐
+                              </button>
+                            </div>
+                          ) : (
+                            <QuickActions
+                              label="更改"
+                              onIgnore={() => dismiss(missingKey)}
+                              onOpen={openArea}
+                            />
+                          )}
                         </div>
                       )}
                     </div>
                   </article>
                 );
-              }),
+              },
+            ),
           ].sort((a, b) =>
             String(a.props["data-order"]).localeCompare(
               String(b.props["data-order"]),

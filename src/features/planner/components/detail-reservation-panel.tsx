@@ -34,6 +34,7 @@ export function DetailReservationPanel({
   onView: (view: View) => void;
 }) {
   const [confirmed, setConfirmed] = useState(false);
+  const [releaseConfirmed, setReleaseConfirmed] = useState(false);
   const [time, setTime] = useState(item.startTime);
   const [text, setText] = useState(message);
   const [notice, setNotice] = useState("");
@@ -203,6 +204,38 @@ export function DetailReservationPanel({
               </p>
             ) : (
               <>
+                {record.reservationStatus === "cancelled" &&
+                  (record.fixedTime || record.locked) && (
+                    <section aria-label="解除已取消项目的固定限制">
+                      <p>
+                        取消已记录，时间仍受保护。解除后才允许修改、拖动或删除此项目；不会操作真实订单。
+                      </p>
+                      <label className={css.confirm}>
+                        <input
+                          type="checkbox"
+                          checked={releaseConfirmed}
+                          onChange={(e) =>
+                            setReleaseConfirmed(e.target.checked)
+                          }
+                        />
+                        我确认不再需要保留此项目的固定时间
+                      </label>
+                      <button
+                        type="button"
+                        disabled={!releaseConfirmed}
+                        onClick={() => {
+                          dispatch({
+                            type: "releaseCancelledSchedule",
+                            id: item.id,
+                            confirmed: releaseConfirmed,
+                          });
+                          setReleaseConfirmed(false);
+                        }}
+                      >
+                        确认解除固定安排
+                      </button>
+                    </section>
+                  )}
                 {!record.reservationRequired ||
                 record.reservationStatus === "cancelled" ? (
                   <button

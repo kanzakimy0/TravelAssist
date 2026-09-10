@@ -10,7 +10,11 @@ export const PRIVATE_AUTH_HEADERS = {
   "Referrer-Policy": "no-referrer",
 };
 
-export function createRequestSupabase(request: NextRequest, secure: boolean) {
+export function createRequestSupabase(
+  request: NextRequest,
+  secure: boolean,
+  bindSignupFlow = false,
+) {
   const writes = new Map<
     string,
     { name: string; value: string; options: CookieOptions }
@@ -30,6 +34,7 @@ export function createRequestSupabase(request: NextRequest, secure: boolean) {
       },
     },
     secure,
+    bindSignupFlow,
   );
 
   function finish(response: NextResponse) {

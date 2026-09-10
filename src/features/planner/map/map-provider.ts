@@ -1,3 +1,4 @@
+import { displayRouteColor } from "./route-color";
 import type {
   GeoJSONSource,
   LayerSpecification,
@@ -6,6 +7,7 @@ import type {
 import type { FeatureCollection, LineString, Point, Polygon } from "geojson";
 import type { Coordinates, MapView } from "../model/trip-model";
 import { destinationArtwork } from "../data/planner-artwork";
+import { createBaseGeographyToggle } from "./base-geography";
 
 type Properties = Record<string, string | number | boolean>;
 export type Collection = FeatureCollection<
@@ -21,7 +23,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
         properties: {
           id: route.id,
           context: route.context,
-          color: route.color,
+          color: displayRouteColor(route.color),
           label: route.label,
         },
         geometry: { type: "LineString", coordinates: route.coordinates },
@@ -45,7 +47,7 @@ export function mapCollections(view: MapView): Record<string, Collection> {
           type: place.type,
           label: place.label,
           artworkKey: destinationArtwork(place.name, place.type)?.id ?? "",
-          color: place.color,
+          color: displayRouteColor(place.color),
           recommended: place.tripStatus === "recommended",
           status: place.reservationStatus ?? "not_required",
           selected: Boolean(
@@ -151,18 +153,20 @@ export const plannerLayers: LayerSpecification[] = [
         "landmark-village",
       ],
       "icon-allow-overlap": false,
-      "icon-padding": 5,
+      "icon-size": 1.35,
+      "icon-padding": 8,
+      "text-optional": true,
       "symbol-sort-key": ["case", ["get", "selected"], 0, 1],
       "text-field": ["get", "label"],
-      "text-size": 13,
+      "text-size": 15,
       "text-anchor": "top",
-      "text-offset": [0, 2.7],
+      "text-offset": [0, 3.1],
       "text-max-width": 12,
     },
     paint: {
-      "text-color": "#343e48",
-      "text-halo-color": "#fffaf4",
-      "text-halo-width": 2,
+      "text-color": "#263c60",
+      "text-halo-color": "#fffdfb",
+      "text-halo-width": 3,
     },
   },
   {
@@ -178,11 +182,11 @@ export const plannerLayers: LayerSpecification[] = [
           ["get", "type"],
           ["literal", ["city", "attraction", "activity"]],
         ],
-        33,
+        42,
         13,
       ],
       "circle-color": "rgba(0,0,0,0)",
-      "circle-stroke-color": "#a74739",
+      "circle-stroke-color": "#e95b4b",
       "circle-stroke-width": 3,
     },
   },
@@ -270,6 +274,10 @@ export function schematicLayout(view: MapView, width: number, height: number) {
     85 + ((x - min[0]) / (max[0] - min[0])) * Math.max(100, width - 170),
     100 + ((max[1] - y) / (max[1] - min[1])) * Math.max(100, height - 230),
   ];
+  const unproject = ([x, y]: Coordinates): Coordinates => [
+    min[0] + ((x - 85) / Math.max(100, width - 170)) * (max[0] - min[0]),
+    max[1] - ((y - 100) / Math.max(100, height - 230)) * (max[1] - min[1]),
+  ];
   const slots: Coordinates[] = [];
   const columns = Math.max(2, Math.floor((width - 20) / 165));
   const rows = Math.max(3, Math.floor((height - 200) / 60));
@@ -290,7 +298,7 @@ export function schematicLayout(view: MapView, width: number, height: number) {
     );
     return { id: place.id, origin, label: slots.shift() ?? origin };
   });
-  return { project, positions };
+  return { project, unproject, positions };
 }
 export type MapPort = Pick<
   MapboxMap,
@@ -348,6 +356,7 @@ export function bindMap(port: MapPort, reducedMotion: () => boolean) {
 }
 export type MapSession = {
   update: (view: MapView) => void;
+  setTerrain: (visible: boolean) => void;
   destroy: () => void;
 };
 export async function mountMapbox(
@@ -359,6 +368,8 @@ export async function mountMapbox(
   dismiss: () => void = () => {},
   onAnchor: (point: { x: number; y: number } | null) => void = () => {},
   isCurrent: () => boolean = () => true,
+  getPickMode: () => boolean = () => false,
+  onPick: (coordinates: Coordinates) => void = () => {},
 ): Promise<MapSession | null> {
   if (!token?.trim()) return null;
   const { installMapArtwork, warmMapStyle, travelBubbles } =
@@ -370,7 +381,7 @@ export async function mountMapbox(
   const map = new mapbox.Map({
     container,
     accessToken: token,
-    style: "mapbox://styles/mapbox/light-v11",
+    style: "mapbox://styles/mapbox/outdoors-v12",
     center: [139.2, 35.5],
     zoom: 8,
     attributionControl: true,
@@ -380,6 +391,8 @@ export async function mountMapbox(
     map,
     () => matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
+  const toggleGeography = createBaseGeographyToggle(map);
+  let terrainVisible = true;
   let latest: MapView | null = null,
     ready = false,
     destroyed = false;
@@ -412,6 +425,7 @@ export async function mountMapbox(
     if (destroyed) return;
     clearTimeout(timer);
     ready = true;
+    toggleGeography(terrainVisible);
     if (latest) updateView(latest);
     status("Mapbox 底图 · 行程、价格及预约为示例");
   });
@@ -420,6 +434,10 @@ export async function mountMapbox(
     .map((layer) => layer.id);
   map.on("click", (event) => {
     if (!ready || destroyed) return;
+    if (getPickMode()) {
+      onPick([event.lngLat.lng, event.lngLat.lat]);
+      return;
+    }
     const feature = map.queryRenderedFeatures(event.point, {
       layers: clickable,
     })[0];
@@ -446,11 +464,13 @@ export async function mountMapbox(
   map.on("move", publishAnchor);
   map.on("mousemove", (event) => {
     if (ready && !destroyed)
-      map.getCanvas().style.cursor = map.queryRenderedFeatures(event.point, {
-        layers: clickable,
-      }).length
-        ? "pointer"
-        : "";
+      map.getCanvas().style.cursor = getPickMode()
+        ? "crosshair"
+        : map.queryRenderedFeatures(event.point, {
+              layers: clickable,
+            }).length
+          ? "pointer"
+          : "";
   });
   map.addControl(
     new mapbox.NavigationControl({ showCompass: false }),
@@ -482,12 +502,14 @@ export async function mountMapbox(
         source: "planner-travel-hints",
         layout: {
           "text-field": ["get", "label"],
-          "text-size": 12,
+          "text-size": 14,
           "icon-image": "travel-capsule",
+          "text-allow-overlap": false,
+          "icon-allow-overlap": false,
           "icon-text-fit": "both",
-          "icon-text-fit-padding": [7, 12, 7, 12],
+          "icon-text-fit-padding": [10, 16, 10, 16],
         },
-        paint: { "text-color": "#45535a" },
+        paint: { "text-color": "#2f6897" },
       });
     }
     // Give trip artwork priority over base-map labels, while still allowing
@@ -495,6 +517,10 @@ export async function mountMapbox(
     map.moveLayer("landmark-artwork");
   }
   return {
+    setTerrain(visible) {
+      terrainVisible = visible;
+      if (ready && !destroyed) toggleGeography(visible);
+    },
     update(view) {
       latest = view;
       if (ready && !destroyed) updateView(view);

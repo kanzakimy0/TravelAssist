@@ -298,9 +298,7 @@ export function detailRailItems(
   const combined = [...canonical, ...local].sort(
     (a, b) => minutes(a.startTime) - minutes(b.startTime),
   );
-  const editedLegs = plannerMovementLegs(plan, day).filter(
-    (leg) => leg.edited && leg.conflict,
-  );
+  const movementLegs = plannerMovementLegs(plan, day);
   return combined.map((item) => {
     const invalid = validateSchedule(item);
     const conflicts = scheduleConflicts(item, combined);
@@ -312,8 +310,8 @@ export function detailRailItems(
           invalid ||
           `与 ${conflicts.map((i) => i.title).join("、")} 时间重叠，需要调整。`,
       };
-    const incoming = editedLegs.find((leg) => leg.to.id === item.id);
-    if (incoming)
+    const incoming = movementLegs.find((leg) => leg.to.id === item.id);
+    if (incoming?.conflict)
       return {
         ...item,
         aiStatus: "error" as const,
@@ -324,6 +322,12 @@ export function detailRailItems(
     );
     if (mealWarning && item.aiStatus !== "error")
       return { ...item, aiStatus: "warning" as const, aiReason: mealWarning };
+    if (incoming?.risk === "warning" && item.aiStatus === "normal")
+      return {
+        ...item,
+        aiStatus: "warning" as const,
+        aiReason: `从 ${incoming.from.title}：${incoming.riskReason}`,
+      };
     const previous = combined
       .filter(
         (i) =>
