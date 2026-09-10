@@ -17,13 +17,13 @@ Completed — documentation/integration audit only. No candidate was marked `已
 | ---- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0.9  | CHANGES_NEEDED         | Update the stale contract inventory/status against the implemented Trips/Routes/Auth boundaries and explicitly record missing Preference/Companion public contracts |
 | 1.10 | CHANGES_NEEDED         | Correct the `architecture_landmark` cross-dimension example and assign registry/mapping decisions to the POI schema/provider stages                                 |
-| 1.12 | USER_DECISION_REQUIRED | Candidate route/day colors conflict with the current accepted coral route treatment                                                                                 |
-| 1.13 | USER_DECISION_REQUIRED | Candidate red-brown tokens conflict with the current accepted coral token family                                                                                    |
+| 1.12 | CHANGES_NEEDED         | User selected one stable route identity color per travel date/day; candidate amendment and an explicit runtime migration task remain                                |
+| 1.13 | CHANGES_NEEDED         | User retained the current main-system coral family headed by `#e95b4b`; candidate tokens and migration aliases must be amended                                       |
 
 ## Deliverables
 
 - Added the canonical integration review with source/PR, conflict, runtime compatibility, minimal amendment, downstream impact, and decision matrices.
-- Recorded exact user decisions still required for 1.12 and 1.13.
+- Recorded the user decisions for 1.12 and 1.13 and converted both gates from `USER_DECISION_REQUIRED` to `CHANGES_NEEDED`.
 - Preserved original owners and all four `待审查` states.
 - Added this Result and narrow Master WBS tracking.
 
@@ -37,7 +37,7 @@ Completed — documentation/integration audit only. No candidate was marked `已
 
 ## Deferred
 
-- User visual/product choices for route colors and the canonical accent family.
+- Candidate-source amendments that encode the resolved route/date palette and canonical accent family.
 - Candidate-branch amendments and their owner review.
 - Runtime migrations, POI provider/schema mapping, and cross-page visual-regression implementation.
 - Final acceptance of WBS 0.9, 1.10, 1.12, and 1.13.
@@ -51,4 +51,4 @@ Completed — documentation/integration audit only. No candidate was marked `已
 
 ## Blockers
 
-No blocker to completing this audit. Final freeze is intentionally blocked on the amendments and user decisions listed above.
+No blocker to completing this audit. The product choices are resolved; final freeze remains gated by the candidate amendments and visual-regression evidence listed above.

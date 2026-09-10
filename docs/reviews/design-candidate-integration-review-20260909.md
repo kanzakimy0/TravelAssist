@@ -10,8 +10,8 @@ TASK-029-A audits four pending design candidates against `origin/develop@1719006
 | --- | --- | --- | --- | --- |
 | 0.9 | Cross-module Contract handoff rules | `docs/architecture/cross-module-contract-handoff.md` on `origin/develop` | Issue #168; Draft PR #171 remains open; kickoff PRs #169/#170 merged | **CHANGES_NEEDED** |
 | 1.10 | Attraction/activity tag display rules | `docs/ui/attraction-activity-tag-display-rules.md` on `origin/develop` | Issue #158; PRs #163/#165 merged; user acceptance still pending | **CHANGES_NEEDED** |
-| 1.12 | Map visual / Pin / region / route spec | `docs/ui/map-visual-pin-region-route-spec.md` at Draft PR #177 head `a21a66e` | Draft PR #177 open | **USER_DECISION_REQUIRED** |
-| 1.13 | Main-system Design Tokens | `docs/ui/main-system-design-tokens.md` at Draft PR #179 head `95ccaec` | Draft PR #179 open | **USER_DECISION_REQUIRED** |
+| 1.12 | Map visual / Pin / region / route spec | `docs/ui/map-visual-pin-region-route-spec.md` at Draft PR #177 head `a21a66e` | Draft PR #177 open; user color-policy decision recorded 2026-09-10 | **CHANGES_NEEDED** |
+| 1.13 | Main-system Design Tokens | `docs/ui/main-system-design-tokens.md` at Draft PR #179 head `95ccaec` | Draft PR #179 open; user accent decision recorded 2026-09-10 | **CHANGES_NEEDED** |
 
 ## Current runtime integration reality
 
@@ -29,9 +29,9 @@ TASK-029-A audits four pending design candidates against `origin/develop@1719006
 | 0.9 lifecycle | Final review PR #171 is still Draft/open | Kickoff/spec PRs are merged, but final acceptance has not occurred | Tracking gap | Update header/version/PR chain and keep 0.9 `待审查` |
 | 1.10 taxonomy example | The Sagrada Família example places `architecture_landmark` in Experience Tags | `architecture_landmark` is defined as a Secondary Category, not an Experience Tag | Objective schema contradiction | Replace it with a defined Experience Tag or formally add and define a distinct `architecture_interest` ID; do not reuse a category ID across dimensions |
 | 1.10 implementation bridge | Candidate leaves multi-secondary mapping, confidence thresholds, and registry placement open | No canonical POI taxonomy/provider schema exists yet | Deliberate downstream gap | Record these as 7.2/7.4 gates; do not invent runtime mappings in UI tasks |
-| 1.12 route color | Candidate prefers route/day identity and states route blue must not be forced to the brand accent | Current accepted Planner displays selected/legacy routes in coral `#e95b4b` | Subjective visual conflict | User must choose canonical route-color policy before 1.12 freeze |
+| 1.12 route color | Candidate prefers route/day identity and states route blue must not be forced to the brand accent | Current accepted Planner displays selected/legacy routes in coral `#e95b4b` | Resolved product decision; implementation delta remains | Canonical rule is one route color per travel date/day. Amend the candidate and create a bounded migration task; the main-system coral remains an action/selection accent, not the universal route identity color |
 | 1.12 map baseline | Candidate proposes a low-saturation warm map and detailed semantic pin/region states | Current Mapbox style is `outdoors-v12`; only a subset of the semantic states is implemented | Migration delta | After the color decision, create a bounded migration task with before/after evidence; do not silently rewrite the current map |
-| 1.13 accent | Candidate specifies `#B95649` / `#A74739` / `#963E34` | Latest merged and user-accepted baseline uses `#e95b4b` / `#d94738` | Subjective canonical-token conflict | User must select the canonical accent family; newest accepted runtime remains operational until then |
+| 1.13 accent | Candidate specifies `#B95649` / `#A74739` / `#963E34` | Latest merged and user-accepted baseline uses `#e95b4b` / `#d94738` | Resolved product decision; specification delta remains | Keep the current main-system coral family headed by `#e95b4b`; amend the candidate token source and publish compatibility aliases/migration guidance |
 | 1.13 primitives | Candidate radius/font/shadow scales differ from current global and Planner-local scales | Several accepted screens depend on current values | Migration and regression risk | Add token aliases/migration plan and visual-regression scope after the accent decision |
 
 ## Candidate conclusions and minimum amendments
@@ -53,18 +53,20 @@ The information architecture and low-noise display limits are compatible with cu
 2. Freeze whether the replacement is an existing Experience Tag or a newly defined `architecture_interest` tag with label, provenance, and fallback rules.
 3. Assign the unresolved registry/mapping/confidence decisions to 7.2/7.4; UI code must not become the taxonomy source of truth.
 
-### WBS 1.12 — USER_DECISION_REQUIRED
+### WBS 1.12 — CHANGES_NEEDED
 
-Most state, hierarchy, accessibility, and interaction rules are compatible, but the color policy contradicts the currently accepted Planner. The user must choose one of these policies:
+Most state, hierarchy, accessibility, and interaction rules are compatible. The user resolved the color-policy conflict on 2026-09-10:
 
-- preserve coral as the selected/primary route color and use mode/status styling secondarily; or
-- migrate to route/day identity colors independent of the brand accent.
+- Each travel date/day has one stable route identity color.
+- The same date/day color must remain consistent across the map, timeline, detail views, legends, and related route affordances.
+- Transport mode and status must use icons, line treatment, labels, or other redundant signals; they must not silently replace the date/day identity color.
+- The current coral family remains the main-system action/selection accent and is not the universal route color.
 
-After that choice, update the candidate’s accent references, Mapbox style baseline, clustering rules, and migration evidence. Until then, keep 1.12 `待审查` and do not regress the merged Planner.
+Update the candidate’s route palette, accessible contrast/redundancy rules, Mapbox style baseline, clustering rules, and migration evidence. Keep 1.12 `待审查` until those amendments and visual regression evidence are accepted; do not silently rewrite the merged Planner in this audit.
 
-### WBS 1.13 — USER_DECISION_REQUIRED
+### WBS 1.13 — CHANGES_NEEDED
 
-The semantic token structure is useful, but the proposed accent family conflicts with the newest accepted runtime. The user must select `#B95649` or the current coral family headed by `#e95b4b` (or explicitly nominate another value). Then:
+The semantic token structure is useful, and the user resolved the accent conflict on 2026-09-10: the current accepted main-system coral headed by `#e95b4b` remains canonical; the current hover value is `#d94738`. The older candidate family headed by `#B95649` must not replace it. Before acceptance:
 
 1. Rebase the candidate source/version matrix on the current Home/Start/Planner/Detail/Personal Center baseline.
 2. Publish compatibility aliases and a staged migration for radius, type, shadow, and glass primitives.
@@ -74,15 +76,15 @@ The semantic token structure is useful, but the proposed accent family conflicts
 
 | Downstream WBS | Safe now | Gate / risk |
 | --- | --- | --- |
-| 1.14 Responsive layout | Continue geometry and accessibility work against current accepted screens | Do not freeze token-dependent responsive visuals until 1.13 is decided |
-| 1.17 Planner detail design | Continue validated interaction/geometry fixes | Do not perform a wholesale map palette migration before 1.12 decision |
-| 1.20 Loading/Empty/Error/Skeleton | Define behavior and semantics | Final colors, radii, and shadows depend on 1.13 |
+| 1.14 Responsive layout | Continue geometry and accessibility work against current accepted screens | Use the current coral family; token-dependent responsive visuals still require the amended 1.13 source and regression evidence |
+| 1.17 Planner detail design | Continue validated interaction/geometry fixes | Preserve one stable route color per date/day across Planner and Detail; implement migration only through an explicit delta task |
+| 1.20 Loading/Empty/Error/Skeleton | Define behavior and semantics using the current coral family | Final radii, shadows, aliases, and non-accent primitives still depend on the amended 1.13 source |
 | 7.2 POI provider selection | Use 1.10 provenance and capability requirements in the provider matrix | Do not freeze provider-to-taxonomy mapping until the 1.10 inconsistency and 7.4 registry decisions are resolved |
 | 4.x runtime | Treat merged behavior as the regression baseline | Create explicit delta tasks for accepted 1.12/1.13 migrations; do not retroactively relabel completed implementation as failed |
 
-## User decisions requested
+## User decisions recorded
 
-1. For 1.12, should primary/selected routes remain coral, or use route/day identity colors independent of the brand accent?
-2. For 1.13, is the canonical main-system accent the current accepted coral `#e95b4b`, or the older candidate red-brown `#B95649`?
+1. WBS 1.12: route identity uses one stable color per travel date/day.
+2. WBS 1.13: the main system keeps the current accepted coral family headed by `#e95b4b` (`#d94738` hover).
 
-No product choice was made by this review. The four WBS items retain their existing owners and `待审查` status.
+These decisions remove the two `USER_DECISION_REQUIRED` gates, but they do not themselves amend the candidate branches or migrate runtime code. WBS 1.12 and 1.13 therefore move to `CHANGES_NEEDED`; all four reviewed items retain their existing owners and `待审查` status.
