@@ -1,15 +1,42 @@
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { AccountAvatar } from "@/components/ui/account-avatar";
+import { authHref } from "@/features/auth/auth-ui-model";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
+
+import { useEffect, useRef, useState } from "react";
 import { PlannerIcon } from "./planner-icon";
 import { PlannerPopover } from "./planner-popover";
 import styles from "../planner.module.css";
 import ui from "../planner-v05.module.css";
 
-export function WorkspaceHeader() {
+export function WorkspaceHeader({
+  viewer = null,
+}: {
+  viewer?: HomeViewer | null;
+}) {
+  const pathname = usePathname();
+  const returnQuery = useSearchParams().toString();
+  const loginHref = authHref(
+    "/login",
+    pathname + (returnQuery ? "?" + returnQuery : ""),
+  );
   const [open, setOpen] = useState<
     "search" | "notifications" | "account" | null
   >(null);
   const [query, setQuery] = useState("");
+  const [searchNotice, setSearchNotice] = useState(false);
+  const searchInput = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    const compact = window.matchMedia("(max-width: 767px)");
+    const update = () => {
+      if (!compact.matches)
+        setOpen((current) => (current === "search" ? null : current));
+      setSearchNotice(false);
+    };
+    compact.addEventListener("change", update);
+    return () => compact.removeEventListener("change", update);
+  }, []);
   const search = useRef<HTMLButtonElement>(null),
     notifications = useRef<HTMLButtonElement>(null),
     account = useRef<HTMLButtonElement>(null);
@@ -28,16 +55,34 @@ export function WorkspaceHeader() {
           role="search"
           onSubmit={(e) => {
             e.preventDefault();
-            setOpen("search");
+            if (searchInput.current?.getClientRects().length) {
+              setOpen(null);
+              setSearchNotice(true);
+              searchInput.current.focus();
+            } else setOpen("search");
           }}
         >
           <input
+            ref={searchInput}
             aria-label="搜索景点、城市或酒店"
             placeholder="搜索景点 · 城市 · 酒店…"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setSearchNotice(false);
+            }}
+            onBlur={() => setSearchNotice(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setSearchNotice(false);
+            }}
           />
-          <button ref={search} type="submit" aria-label="搜索">
+          <button
+            ref={search}
+            type="submit"
+            aria-label="搜索"
+            aria-expanded={open === "search"}
+            aria-controls={open === "search" ? "header-search" : undefined}
+          >
             <svg
               viewBox="0 0 24 24"
               width="22"
@@ -51,6 +96,11 @@ export function WorkspaceHeader() {
               <path d="m15 15 6 6" />
             </svg>
           </button>
+          {searchNotice && (
+            <span className={ui.searchNotice} role="status">
+              搜索服务尚未接入，暂不能查询。
+            </span>
+          )}
         </form>
         <button
           className={ui.headerIcon}
@@ -78,13 +128,15 @@ export function WorkspaceHeader() {
           className={ui.headerIcon}
           ref={account}
           type="button"
-          aria-label="个人中心菜单"
+          aria-label={
+            viewer ? `${viewer.name} · 个人中心菜单` : "登录或个人中心菜单"
+          }
+          aria-controls={open === "account" ? "header-account" : undefined}
+          aria-haspopup="dialog"
           aria-expanded={open === "account"}
           onClick={() => setOpen(open === "account" ? null : "account")}
         >
-          <span className={styles.avatar}>
-            <PlannerIcon name="users" />
-          </span>
+          <AccountAvatar src={viewer?.avatar} unoptimized />
         </button>
       </div>
       {open && (
@@ -92,7 +144,7 @@ export function WorkspaceHeader() {
           id={"header-" + open}
           title={
             open === "search"
-              ? "本地搜索说明"
+              ? "搜索景点、城市或酒店"
               : open === "notifications"
                 ? "通知"
                 : "个人中心"
@@ -107,14 +159,39 @@ export function WorkspaceHeader() {
           onClose={() => setOpen(null)}
         >
           {open === "search" ? (
-            <p>
-              “{query || "景点 / 城市 / 酒店"}” ·
-              搜索入口演示，尚未连接搜索服务。
-            </p>
+            <div className={ui.searchPanel}>
+              <label>
+                搜索关键词
+                <input
+                  data-popover-autofocus
+                  aria-label="搜索关键词"
+                  placeholder="景点、城市或酒店"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
+              <p>
+                “{query || "景点 / 城市 / 酒店"}” ·
+                搜索入口演示，尚未连接搜索服务。
+              </p>
+            </div>
           ) : open === "notifications" ? (
             <p>暂无新通知 · 本地演示</p>
           ) : (
-            <Link href="/personal-center">进入个人中心</Link>
+            <nav className={ui.accountMenu} aria-label="账户入口">
+              <strong>{viewer?.name ?? "游客"}</strong>
+              {!viewer && (
+                <Link href={loginHref} data-popover-autofocus>
+                  登录
+                </Link>
+              )}
+              <Link
+                href="/personal-center"
+                data-popover-autofocus={viewer ? true : undefined}
+              >
+                进入个人中心
+              </Link>
+            </nav>
           )}
         </PlannerPopover>
       )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { Button } from "@/components/ui/button";
 import {
   persistPlannerPlanSelection,
@@ -43,6 +44,7 @@ interface StoredWizardState {
 }
 
 interface StartFlowShellProps {
+  viewer?: HomeViewer | null;
   entry?: StartEntry;
   initialDraft?: TripWizardDraftPatch;
 }
@@ -116,6 +118,7 @@ function readStoredState(
 }
 
 export function StartFlowShell({
+  viewer = null,
   entry = null,
   initialDraft,
 }: StartFlowShellProps) {
@@ -127,16 +130,23 @@ export function StartFlowShell({
 
   if (!hasHydrated) {
     return (
-      <WizardLayout currentStep={0}>
+      <WizardLayout currentStep={0} viewer={viewer}>
         <p className={styles.loadingState}>正在恢复旅行草稿…</p>
       </WizardLayout>
     );
   }
 
-  return <HydratedStartFlow entry={entry} initialDraft={initialDraft} />;
+  return (
+    <HydratedStartFlow
+      entry={entry}
+      initialDraft={initialDraft}
+      viewer={viewer}
+    />
+  );
 }
 
 function HydratedStartFlow({
+  viewer = null,
   entry = null,
   initialDraft,
 }: StartFlowShellProps) {
@@ -156,6 +166,7 @@ function HydratedStartFlow({
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
     headingRef.current?.closest("[data-wizard-content]")?.scrollTo(0, 0);
+    headingRef.current?.closest("section")?.scrollTo(0, 0);
   }, [currentStep, draft.generationStatus.state]);
 
   useEffect(() => {
@@ -284,7 +295,7 @@ function HydratedStartFlow({
     draft.generatedPlans.length > 0;
 
   return (
-    <WizardLayout currentStep={currentStep}>
+    <WizardLayout currentStep={currentStep} viewer={viewer}>
       {currentStep <= 2 ? (
         <div className={styles.form}>
           {currentStep === 0 ? (

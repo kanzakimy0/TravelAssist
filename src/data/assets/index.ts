@@ -11,3 +11,4 @@ export type {
   ResolvedAsset,
   AssetLookup,
 } from "./asset-fallback";
+export * from "./asset-variants";

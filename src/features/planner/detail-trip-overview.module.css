@@ -1,0 +1,111 @@
+.days {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(265px, 1fr);
+  gap: 9px;
+  overflow: auto;
+  min-height: 0;
+  padding: 2px 4px 6px;
+  scrollbar-width: thin;
+}
+.day {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid var(--ink);
+  border-radius: 12px;
+  background: var(--wash);
+  color: var(--ink);
+}
+.days [data-tone="normal"] {
+  --ink: #216544;
+  --wash: #d5efdc;
+}
+.days [data-tone="warning"] {
+  --ink: #795313;
+  --wash: #ffebbb;
+}
+.days [data-tone="error"] {
+  --ink: #a33f34;
+  --wash: #ffdcd4;
+}
+.days [data-tone="unknown"] {
+  --ink: #2a638c;
+  --wash: #d8edfc;
+}
+.day button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.dayHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-size: 12px !important;
+}
+.dayHeading span,
+.day > small {
+  font-size: 10px;
+}
+.entries {
+  overflow: auto;
+  min-height: 0;
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  scrollbar-width: thin;
+}
+.entries button {
+  display: grid;
+  grid-template-columns: 37px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid #ffffffaa;
+  background: var(--wash);
+  color: var(--ink);
+  border-radius: 7px;
+  text-align: left;
+  font-size: 11px;
+  min-height: 30px;
+}
+.entries strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.entries time {
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.entries span {
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-weight: 750;
+}
+.day button:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: -2px;
+}
+@media (max-width: 767px) {
+  .days {
+    height: 175px;
+    flex: 0 0 175px;
+    grid-auto-columns: 270px;
+  }
+}

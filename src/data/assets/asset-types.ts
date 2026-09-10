@@ -54,6 +54,10 @@ export interface Asset {
     width: number | null;
     height: number | null;
     focalPoint: { x: number; y: number };
+    /** Normalized protected rectangle; impossible cover crops require review. */
+    safeArea?: { x: number; y: number; width: number; height: number };
+    brandIconSource?: boolean;
+    additionalProfiles?: string[];
   };
   integrity: { sha256: string | null; bytes: number };
   authenticity: "documentary" | "illustrative" | "symbolic";

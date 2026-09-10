@@ -18,7 +18,7 @@ test("the frozen wizard background is the unchanged user-provided PNG", () => {
   );
 });
 
-test("all wizard steps inherit one fixed background instead of the home poster", () => {
+test("all wizard steps inherit the authorized Home scene after the brand follow-up", () => {
   const page = readFileSync(
     new URL("../src/features/start-flow/start-page.tsx", import.meta.url),
     "utf8",
@@ -35,7 +35,7 @@ test("all wizard steps inherit one fixed background instead of the home poster",
   assert.ok(backdrop);
   assert.match(
     backdrop,
-    /url\("\/media\/start\/sakura-coast-fuji-train-sunset\.png"\)/,
+    /url\("\/media\/home-concept\/home-hero-sakura-sunset\.webp"\)/,
   );
   assert.doesNotMatch(backdrop, /home-hero-poster/);
 });

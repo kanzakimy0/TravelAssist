@@ -1,6 +1,6 @@
 .page {
-  --attraction-coral: #a74739;
-  --attraction-coral-deep: #8f392f;
+  --attraction-coral: var(--color-accent-primary);
+  --attraction-coral-deep: var(--color-accent-primary-hover);
   --attraction-coral-soft: #f8e6df;
   --attraction-sage: #667762;
   display: grid;
@@ -364,7 +364,7 @@
 .levelGrid button[data-selected] {
   border-color: var(--attraction-coral);
   color: #fff;
-  background: var(--attraction-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 5px 12px rgb(143 57 47 / 14%);
 }
 
@@ -415,7 +415,7 @@
 .photoPreference input:checked + .checkboxMark {
   border-color: var(--attraction-coral);
   color: #fff;
-  background: var(--attraction-coral);
+  background: var(--background-accent-primary);
 }
 
 .photoPreference:has(input:focus-visible) {
@@ -720,7 +720,7 @@
 .saveButton {
   border: 1px solid var(--attraction-coral);
   color: #fff;
-  background: var(--attraction-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 7px 16px rgb(146 59 48 / 18%);
 }
 

@@ -1,0 +1,53 @@
+# Japan prefecture coverage
+
+Prefecture count: 47. missing_prefectures: 0. Counts below use only unambiguous JNTO directory matches; 176 unassigned seed destinations are excluded. This is coverage evidence, not complete entity resolution. Codes are JNTO slugs, not ISO codes. Cross-prefecture clusters must be reviewed before execution.
+
+| Code      | 日本語   | English   | S   | A   | Total | Gap | Source                                                                       |
+| --------- | -------- | --------- | --- | --- | ----- | --- | ---------------------------------------------------------------------------- |
+| hokkaido  | 北海道   | Hokkaido  | 5   | 0   | 5     | 0   | [JNTO](https://www.japan.travel/en/destinations/hokkaido/hokkaido/)          |
+| aomori    | 青森県   | Aomori    | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/tohoku/aomori/)              |
+| akita     | 秋田県   | Akita     | 2   | 1   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/tohoku/akita/)               |
+| iwate     | 岩手県   | Iwate     | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/tohoku/iwate/)               |
+| yamagata  | 山形県   | Yamagata  | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/tohoku/yamagata/)            |
+| miyagi    | 宮城県   | Miyagi    | 3   | 0   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/tohoku/miyagi/)              |
+| fukushima | 福島県   | Fukushima | 2   | 0   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/tohoku/fukushima/)           |
+| niigata   | 新潟県   | Niigata   | 0   | 4   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/hokuriku-shinetsu/niigata/)  |
+| toyama    | 富山県   | Toyama    | 2   | 2   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/hokuriku-shinetsu/toyama/)   |
+| ishikawa  | 石川県   | Ishikawa  | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/hokuriku-shinetsu/ishikawa/) |
+| fukui     | 福井県   | Fukui     | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/hokuriku-shinetsu/fukui/)    |
+| nagano    | 長野県   | Nagano    | 5   | 1   | 6     | 0   | [JNTO](https://www.japan.travel/en/destinations/hokuriku-shinetsu/nagano/)   |
+| tokyo     | 東京都   | Tokyo     | 1   | 0   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/tokyo/)                |
+| kanagawa  | 神奈川県 | Kanagawa  | 3   | 0   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/kanagawa/)             |
+| chiba     | 千葉県   | Chiba     | 2   | 0   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/chiba/)                |
+| saitama   | 埼玉県   | Saitama   | 1   | 2   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/saitama/)              |
+| ibaraki   | 茨城県   | Ibaraki   | 2   | 0   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/ibaraki/)              |
+| tochigi   | 栃木県   | Tochigi   | 1   | 3   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/tochigi/)              |
+| gunma     | 群馬県   | Gunma     | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/kanto/gunma/)                |
+| yamanashi | 山梨県   | Yamanashi | 0   | 2   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/tokai/yamanashi/)            |
+| shizuoka  | 静岡県   | Shizuoka  | 3   | 0   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/tokai/shizuoka/)             |
+| gifu      | 岐阜県   | Gifu      | 1   | 3   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/tokai/gifu/)                 |
+| aichi     | 愛知県   | Aichi     | 2   | 1   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/tokai/aichi/)                |
+| mie       | 三重県   | Mie       | 0   | 1   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/tokai/mie/)                  |
+| kyoto     | 京都府   | Kyoto     | 1   | 0   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/kansai/kyoto/)               |
+| osaka     | 大阪府   | Osaka     | 1   | 0   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/kansai/osaka/)               |
+| shiga     | 滋賀県   | Shiga     | 2   | 1   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/kansai/shiga/)               |
+| hyogo     | 兵庫県   | Hyogo     | 2   | 1   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/kansai/hyogo/)               |
+| nara      | 奈良県   | Nara      | 1   | 2   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/kansai/nara/)                |
+| wakayama  | 和歌山県 | Wakayama  | 2   | 0   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/kansai/wakayama/)            |
+| tottori   | 鳥取県   | Tottori   | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/chugoku/tottori/)            |
+| shimane   | 島根県   | Shimane   | 2   | 1   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/chugoku/shimane/)            |
+| okayama   | 岡山県   | Okayama   | 2   | 1   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/chugoku/okayama/)            |
+| hiroshima | 広島県   | Hiroshima | 2   | 2   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/chugoku/hiroshima/)          |
+| yamaguchi | 山口県   | Yamaguchi | 2   | 2   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/chugoku/yamaguchi/)          |
+| tokushima | 徳島県   | Tokushima | 1   | 2   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/shikoku/tokushima/)          |
+| kagawa    | 香川県   | Kagawa    | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/shikoku/kagawa/)             |
+| ehime     | 愛媛県   | Ehime     | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/shikoku/ehime/)              |
+| kochi     | 高知県   | Kochi     | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/shikoku/kochi/)              |
+| fukuoka   | 福岡県   | Fukuoka   | 1   | 1   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/fukuoka/)             |
+| saga      | 佐賀県   | Saga      | 0   | 2   | 2     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/saga/)                |
+| nagasaki  | 長崎県   | Nagasaki  | 1   | 0   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/nagasaki/)            |
+| oita      | 大分県   | Oita      | 1   | 0   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/oita/)                |
+| kumamoto  | 熊本県   | Kumamoto  | 2   | 2   | 4     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/kumamoto/)            |
+| miyazaki  | 宮崎県   | Miyazaki  | 1   | 2   | 3     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/miyazaki/)            |
+| kagoshima | 鹿児島県 | Kagoshima | 2   | 3   | 5     | 0   | [JNTO](https://www.japan.travel/en/destinations/kyushu/kagoshima/)           |
+| okinawa   | 沖縄県   | Okinawa   | 1   | 0   | 1     | 0   | [JNTO](https://www.japan.travel/en/destinations/okinawa/okinawa/)            |

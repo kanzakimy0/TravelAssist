@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "commands": ["assets:core-manifest", "assets:core-validate"],
+  "exit_codes": [0, 0],
+  "files_compared": 55,
+  "changed_hashes": 0,
+  "changed_mtimes": 0,
+  "changed_files": 0,
+  "result": "PASS",
+  "validation": {
+    "validation": "PASS",
+    "files": 55,
+    "planning_baseline": {
+      "status": "Partial",
+      "japan_seed_destinations": 300,
+      "non_JP_rows": 0,
+      "verified_prefecture_assignments": 124,
+      "missing_prefectures": 0,
+      "unresolved_destination_entities": 300,
+      "unresolved_attraction_slots": 9000,
+      "sources": 9300,
+      "variants": 9600,
+      "batches": 40,
+      "physical_image_files": 0,
+      "execution_allowed": false
+    },
+    "current_destination_resolution": {
+      "status": "Partial",
+      "destination_rows": 300,
+      "verified_entity_identity": 285,
+      "verified_destinations": 254,
+      "unresolved_destinations": 46,
+      "verified_prefecture": 284,
+      "unresolved_prefecture": 16,
+      "prefectures_covered": 47,
+      "three_language_names": 281,
+      "valid_source_coordinates": 258,
+      "coverage_scope": 293,
+      "verified_coverage_scope": 254,
+      "source_evidence_records": 300,
+      "pinned_entity_evidence": 297,
+      "unresolved_duplicate_or_overlap_pairs": 0,
+      "duplicate_audit_complete": false,
+      "entity_types": {
+        "city": 185,
+        "destination_cluster": 1,
+        "historic_district": 6,
+        "hot_spring_area": 22,
+        "island": 10,
+        "other_review_required": 7,
+        "region": 23,
+        "resort_area": 3,
+        "town": 36,
+        "village": 7
+      },
+      "evidence_distribution": {
+        "JNTO_directory_then_pinned_Wikidata_fields": 122,
+        "pinned_Wikidata_open_knowledge": 175,
+        "search_only_unresolved": 3
+      },
+      "poi_slots_unchanged": 9000,
+      "images_generated": 0,
+      "images_downloaded": 0
+    }
+  },
+  "outputs": [
+    {
+      "path": "docs/assets/catalog/core-destination-generation-manifest.v1.csv",
+      "sha256": "e94c41ce8c21c4b72f62479fa53feec1f1538627f77f669bae158a5a8ca49ab2"
+    },
+    {
+      "path": "docs/assets/catalog/core-attraction-generation-manifest.v1.csv",
+      "sha256": "908f15006b21755f7a933f21bb8e4c16333e5edbe9b2f659c89a605cabd56929"
+    },
+    {
+      "path": "docs/assets/catalog/core-source-jobs.v1.jsonl",
+      "sha256": "5a07685b58ba961f2ea94ffb06867494659daed6dbabd5af0088488c35c16892"
+    },
+    {
+      "path": "docs/assets/catalog/core-variant-output-matrix.v1.csv",
+      "sha256": "e73da6391056b678c9cdba409cd6641cdb63ac009b0f23ac9658f83c45cb4694"
+    },
+    {
+      "path": "docs/assets/catalog/core-generation-policy.v1.json",
+      "sha256": "67ad5b3430b49e1399f4d4064126594aaa85a7ada9c918d08fd83c49a05ec589"
+    },
+    {
+      "path": "docs/assets/catalog/core-generation-prompt-templates.v1.json",
+      "sha256": "10a3597ef58ccd94e70f5c3f2eabbef089a06ba52f1ea5825f7d7ad4068a6e46"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-01.json",
+      "sha256": "9f313e962fb1e2e5385839b35ecb57dbe3a6428736d622998ec2ef1427b49eff"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-02.json",
+      "sha256": "ea2b9f3c748b9b47afef953030dd4621abcbf36278a38c71844bca277b75fd0a"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-03.json",
+      "sha256": "63f83e03e454836580e2739148953b00ca11847b6995c23528c3194f13c7e33e"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-04.json",
+      "sha256": "5fec9092bb470ce7a5145420b6866ebf8ce6b46075d9bbd6e455a6288443e5ec"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-05.json",
+      "sha256": "5dfdb53590890a1e9e038bbfeeb893bc3e2130cc6e985fb3398e04dd0d388708"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-06.json",
+      "sha256": "37ff89d27959050f8baa754bb23796ca89f0905f6a9347ac2bee55383fd3240c"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-07.json",
+      "sha256": "2d150067b4005d8dbb69bf67c5b236fa394fe5358322b2a2cbc8606bd65ae6be"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-08.json",
+      "sha256": "8af9dc496b31f0b032a787da03f671df6ccd5a9e4236a4ba87326034c0fe4854"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-09.json",
+      "sha256": "3b79b5a4f8c5b8a275f2dad99dca544cd038ec2c0e55462d1ef4b7ffc4dc78c4"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-S-10.json",
+      "sha256": "a3acdbd4e3514aaaf026707bcf42b5200ed277fea60b6d41665a6fac331581a3"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-01.json",
+      "sha256": "b14ed8dbdd0bd24ae4dd2fcbffd89b7e25813b334ef0e677621a64d5c3052af2"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-02.json",
+      "sha256": "18c5ca14a7916af34781063e2fb67b7562c0cf01f16ab56bb8f04b9c2c1974d2"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-03.json",
+      "sha256": "e0786711d5d073d876b6d1e3884ada5d0637da9eb1f1b1cbadee8bac4347df21"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-04.json",
+      "sha256": "a1eebd67b40ddf31efe555f82422340d1c20f02d51918a3317c29e90a2dcd0eb"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-05.json",
+      "sha256": "1873c0876f81b50758e9b251325731865d22f0f085ae75a023a313cd92fe605f"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-06.json",
+      "sha256": "39c8521160399349f67d74335f7079b2c406d62e8ae30e276b84691e0a419d77"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-07.json",
+      "sha256": "f3c810e54c481a0572a18b0d0ddd76aa6cd6fc7182fc0573e86eaeca05f2a133"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-08.json",
+      "sha256": "77a4e4c6ba0ad0e37b22dc118b27d0c669d19f0d41c73db8e98db0e6d8042eb0"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-09.json",
+      "sha256": "043320c15ca471542f95824d2b452dead7cc8f179ddc3b7b45fff34735346aa5"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-10.json",
+      "sha256": "850347e721558e772d8c130963323a8adde7e43955a910c12516755d347e6701"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-11.json",
+      "sha256": "3ef18613844939c071177c93f42044cef5c7e719b457163d8ea7fb9b4183f548"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-12.json",
+      "sha256": "58c358935cab2c23b5a0abf2499cd986124a3b7bdd3322a300c0141a903b907a"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-13.json",
+      "sha256": "5950a0562cf5d3a998d39aaef7136a4e674df3e0cb67a36d421bf6102f4dd02c"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-14.json",
+      "sha256": "b0416680c86ee21fc9af43afebc29976a768bf32906a9908e2c112a48dfde523"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-15.json",
+      "sha256": "45b83498754dee70a682936abf05996819d837ab98c5c869521cdc079f7393ff"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-16.json",
+      "sha256": "aaec4c10051aae895022031715b2835822ae1809895c56769fc90aac35919e3e"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-17.json",
+      "sha256": "4fde12617ff3af55b8b98a22b95c8418950d4f9a07c33b75a0e43156ee792609"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-18.json",
+      "sha256": "c3ffd0a2a7ee367cdd4a3ed16fb5b303f19c35cea5e5f9aafb8c280d06f6998c"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-19.json",
+      "sha256": "cc2c7c39caef335093153aa44714277c470c5d1c87ce0a573f0e17cfdaa1b659"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-20.json",
+      "sha256": "c06f69da6c5c19c53e3106786923507f0b68d71a9b2a65029ab1af6066e4273a"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-21.json",
+      "sha256": "5ba77e8fef25fbaaa0f7f0a8eae76700c432f1c15e9a8cbb7c9e0e611cb61433"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-22.json",
+      "sha256": "badf45c65016c277270e95610ce384d002189cbb1f7ab6b4332f71da2c4cc657"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-23.json",
+      "sha256": "2b8fe095a4a4b95739965fcc8630dd47146486c7097a258e9e0d7d86b872ff7f"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-24.json",
+      "sha256": "647939784a74d78f0c50f6e4926c4e0e3d4e6531d28bb5411c44ec302ecd2af7"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-25.json",
+      "sha256": "38fa1b7f7b90d3be22cc563d6ac8c140018a8acf92fe8b7bed17f7896523c2b7"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-26.json",
+      "sha256": "687fa8942ffe2cbdf29cf946629122e3e374cc63b886111f706c68ee07b447d6"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-27.json",
+      "sha256": "055f3e81617286e66c7a49c84884c04746222114331ccc5d1c7a6b3ab67955bf"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-28.json",
+      "sha256": "0e960b620470c27d99c77f3273512a6461839c60238e4ef1acd28345cdbdcf49"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-29.json",
+      "sha256": "449262102a915f7dc6fa763bf1f55cfa829b6e92b91705dbecd6451be64bc12e"
+    },
+    {
+      "path": "docs/assets/generated/core-batches/JP-A-30.json",
+      "sha256": "2ef7b02ec62ef7dbcb40106c6785d56a09382fee780e0bf7803fcd5ed1988056"
+    },
+    {
+      "path": "docs/assets/generated/core-generation-summary.md",
+      "sha256": "debf845b79708fe4c088eb1def40eb845337388ee5b0bbc68e3fcbd59a6150fa"
+    },
+    {
+      "path": "docs/assets/generated/prefecture-coverage.md",
+      "sha256": "619138ad593705f5135242b9939e06b8145464ed4eae2a1598b70a901f42aaed"
+    },
+    {
+      "path": "docs/assets/generated/unresolved-destinations.md",
+      "sha256": "b7139a81d41c695536c4c7995a69591a5959c1c4a780a612af4610db564032de"
+    },
+    {
+      "path": "docs/assets/generated/unresolved-attractions.md",
+      "sha256": "608c6fb7dce11b2a610bd3b4df987fc77a6e230d592c32705fba3e2f750f951e"
+    },
+    {
+      "path": "docs/assets/generated/duplicate-entities.md",
+      "sha256": "f04eb3251ffc45083c33fd79a6a59f485a200cc044fef1328892f706fbd8c0b9"
+    },
+    {
+      "path": "docs/assets/generated/rights-blocked-jobs.md",
+      "sha256": "e624180dda13980e743004659fd9ed3f4ee563766e9d599d5fc71a524150c1eb"
+    },
+    {
+      "path": "docs/assets/generated/core-generation-batch-index.md",
+      "sha256": "68a001de4f0254a7aa679723b2578170a8083ed9a8a1a3ffc3ab6090d2467dfe"
+    },
+    {
+      "path": "docs/assets/generated/core-generation-cost-estimate.md",
+      "sha256": "5ed14602773e79477705db67e2bf5d8144c062d2db5726c9a40c971cf4e968c8"
+    },
+    {
+      "path": "docs/assets/generated/core-generation-validation.md",
+      "sha256": "f2bc31eb91c3c2039bb3100c6615ce9f4263c242b6106a19abe56d43c08d320d"
+    }
+  ]
+}

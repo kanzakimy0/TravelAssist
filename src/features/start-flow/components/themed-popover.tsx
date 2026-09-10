@@ -83,24 +83,32 @@ function PopoverSurface({
       const trigger = triggerRef.current;
       if (!surface || !trigger) return;
       const rect = trigger.getBoundingClientRect();
-      const height = surface.offsetHeight;
-      const width = surface.offsetWidth;
+      const viewport = window.visualViewport;
       const viewportHeight =
         window.visualViewport?.height ?? window.innerHeight;
       const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
+      const viewportTop = viewport?.offsetTop ?? 0;
+      const viewportLeft = viewport?.offsetLeft ?? 0;
+      surface.style.maxHeight = `${Math.max(0, viewportHeight - 24)}px`;
+      const height = surface.offsetHeight;
+      const width = surface.offsetWidth;
       const top =
-        rect.bottom + 8 + height <= viewportHeight - 12
+        rect.bottom + 8 + height <= viewportTop + viewportHeight - 12
           ? rect.bottom + 8
-          : Math.max(12, rect.top - height - 8);
-      surface.style.top = `${top}px`;
-      surface.style.left = `${Math.max(12, Math.min(rect.left, viewportWidth - width - 12))}px`;
+          : rect.top - height - 8;
+      surface.style.top = `${Math.max(viewportTop + 12, Math.min(top, viewportTop + viewportHeight - height - 12))}px`;
+      surface.style.left = `${Math.max(viewportLeft + 12, Math.min(rect.left, viewportLeft + viewportWidth - width - 12))}px`;
     }
     position();
     window.addEventListener("resize", position);
     window.addEventListener("scroll", position, true);
+    window.visualViewport?.addEventListener("resize", position);
+    window.visualViewport?.addEventListener("scroll", position);
     return () => {
       window.removeEventListener("resize", position);
       window.removeEventListener("scroll", position, true);
+      window.visualViewport?.removeEventListener("resize", position);
+      window.visualViewport?.removeEventListener("scroll", position);
     };
   }, [triggerRef]);
 
