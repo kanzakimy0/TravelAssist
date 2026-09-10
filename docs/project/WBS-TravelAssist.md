@@ -1,11 +1,15 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-031-B / WBS 3.4 主系统账户入口（2026-09-10，进行中）
+## TASK-031-B / WBS 3.4 主系统账户入口（2026-09-10，待审查）
 
 - Owner B；Issue #261；feature/b-wbs-3-4-main-account-entry；执行基线 7f0c292186079cca7ad639ceb550f7d0e4f43cc7。
 - Gate PASS：PR #273 merge 9c92ef7 与最终收尾 PR #277 merge 7f0c292 均进入 develop，3.3 B / 已完成。之前阻塞记录保留为历史。
 - 复用既有可信 Auth helper / AccountAvatar / Header / 安全 returnTo，只补主系统账户接线真实缺口；保持 Home 和其他页面结构。
-- 完成后待审查，不自动合并，不启动 3.5 / 3.7。
+- 实现提交 18dd0bbcbef1b77717f3898a68a0c5598b59e77b；已完成实现 / QA，3.4 B / 待审查，等待用户视觉验收；Draft PR 发布后登记。
+- npm ci / lint / typecheck / build / diff-check 通过；TASK-031-B 4/4；全仓 718/720，与未修改基线 714/716 同两项资产 baseline failure，未修复。
+- 四尺寸账户行为 64/64，console/page error 0；Home / Start / Planner / 真实 Detail / Personal Center 36 组几何对照一致。移动端 Home 登录点击宽 43→44px，胶囊总宽不变。
+- Result：docs/tasks/RESULT-TASK-031-b-main-account-entry-closeout.md；40 张截图及报告：docs/qa/TASK-031/。现有本地 Auth fixture 验收不等于线上 Provider 验收。
+- 不自动合并，不启动 3.5 / 3.7；3.1 / 3.2 / 3.3 B 已完成，3.2.1 A Deferred 保持。
 
 ## TASK-030-B 最终验收与合并收尾（2026-09-10）
 
@@ -740,7 +744,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 3.2    | 首页背景区域 — 静态 Production MVP | B      | P1     | 1.16,3.1 | 已完成 |
 | 3.2.1 | 首页动态视频背景增强 | A | P1 | 3.2 + 已授权视频素材 | 未开始 / Deferred |
 | 3.3    | 「让我们开始吧」主入口              | B      | P0     | 3.1      | 已完成 |
-| 3.4    | 登录按钮 / 头像入口在主系统中的实现 | B      | P1     | 3.1,5.3  | 进行中 |
+| 3.4    | 登录按钮 / 头像入口在主系统中的实现 | B      | P1     | 3.1,5.3  | 待审查 |
 | 3.5    | AI 悬浮入口                         | A      | P1     | 3.1      | 未开始 |
 | 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 已完成 |
 | 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |
