@@ -827,6 +827,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 | --- | --- | --- | --- | --- | --- |
 | 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 待审查（#201；仅契约设计，未冻结） |
+| 4.20.1 | Engine Contract Amendment / 行程合理性能力预留 | B | P1 | 4.20,4.17；#282 | 待审查 |
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 未开始 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 未开始（前置未满足） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 未开始 |
@@ -1194,3 +1195,12 @@ B Auth/User Session → A Header/Avatar Entry
 - 详细证据：`docs/tasks/RESULT-TASK-008-a-trip-planner-shell.md`。不修改 `/start`、B 账户文件或工程配置；不接真实 Provider / AI / Auth / DB；完成后停止。
 - 发布历史：最初提交附 `[skip ci]` 并保留 Draft 防止误合并；用户后续明确授权后，先同步最新 develop 并完成整合验证，再解除 Draft 合并。未修改工作流、未 force push。
 - 最终合并：PR #59，`1a4201b3181460977c4f16b0c34f60c353751687`；集成验收 head `8920695`。lint / typecheck / build / 30 项 tests / 本任务格式 / diff check 通过；Planner、向导、个人中心浏览器复验通过。当前全仓格式的三份基线文档例外详见 Result。未启动 TASK-008.1。
+
+## TASK-WBS-4.20.1-B Amendment tracking（2026-09-10）
+
+- Issue #282；Owner B；状态：待审查（仅Contract增量设计，待用户验收）。
+- 基线：`fe538e7093bd58e7d0fe7fd434bf907dd132277a`；分支：`codex/b-engine-contract-amendment`；Commit：PENDING；Draft PR：PENDING。
+- Task：`docs/tasks/TASK-WBS-4.20.1-b-engine-contract-amendment.md`；Result：`docs/tasks/RESULT-WBS-4.20.1-b-engine-contract-amendment.md`。
+- 原Engine Contract §24增补duration、load/fatigue、item/day/itinerary assessment及impact；43字段及公式不复制到ChangeSet，UPDATE_DURATION因4.17无独立duration保持unsupported。
+- lint / build / build后typecheck /修改文档格式/差异检查通过；Node721/724，三项既有asset失败；全仓47项既有格式失败，未越界修复。
+- 父4.20保留原待审查和历史Task/Result；4.21–4.24未启动，其他WBS行不变。
