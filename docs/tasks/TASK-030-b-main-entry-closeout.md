@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Main Travel System / Website Entry`（用户明确指定 B 执行的单项例外）
 - Priority: `P0`
-- Status: `可开始`
+- Status: `待审查`
 - GitHub Issue: `#260`
 - Suggested Branch: `feature/b-wbs-3-3-main-entry`
 - Depends On: `3.1 completed`
@@ -482,3 +482,12 @@ Yes / No
 - WBS 3.5
 - WBS 3.7
 - 其他后续 Task
+
+
+## Execution Result — 2026-09-10
+
+- 执行基线 b783a101285359a9118d224ae05b1b7c26a498f7；Owner B；feature/b-wbs-3-3-main-entry。
+- 运行时代码零改动；专项 3/3、四尺寸 Guest / Signed-in 8/8 和原生无 JS 导航通过。
+- 全仓 711/713；精确未修改基线 708/710，同两项旧 SVG 清单失败。详见 Result，不误报全绿。
+- 用户已明确授权发布；origin/feature/b-wbs-3-3-main-entry 已推送，Draft PR #273 → develop。WBS 3.3 Owner B / 待审查，Issue #260 保持 Open；不合并。
+- Result：docs/tasks/RESULT-TASK-030-b-main-entry-closeout.md。未合并，不启动后续 Task。
