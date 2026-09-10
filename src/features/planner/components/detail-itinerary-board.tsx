@@ -28,6 +28,7 @@ export function DetailItineraryBoard({
   draft,
   onDraft,
   onMissing,
+  onBreakfastChoice,
 }: {
   day: number;
   items: DetailRailItem[];
@@ -46,6 +47,7 @@ export function DetailItineraryBoard({
     kind: "hotel" | "restaurant",
     slot?: "breakfast" | "lunch" | "dinner",
   ) => void;
+  onBreakfastChoice: (day: number, choice: "hotel" | "simple") => void;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [feedback, setFeedback] = useState("");
@@ -159,6 +161,9 @@ export function DetailItineraryBoard({
                     className={`${css.square} ${css.itinerary}`}
                     data-detail-item={item.id}
                     data-kind={item.type}
+                    data-reservation-pending={
+                      item.reservation === "unknown" || undefined
+                    }
                     title={item.typeLabel + " · " + item.title}
                     aria-pressed={selectedId === item.id}
                     aria-describedby={`detail-status-${item.id}`}
@@ -304,11 +309,32 @@ export function DetailItineraryBoard({
                               {area ? "查看推荐地区 →" : "请使用新增项目补充"}
                             </span>
                           </button>
-                          <QuickActions
-                            label="更改"
-                            onIgnore={() => dismiss(missingKey)}
-                            onOpen={openArea}
-                          />
+                          {slot === "breakfast" ? (
+                            <div
+                              className={css.breakfastChoices}
+                              role="group"
+                              aria-label="早餐方式"
+                            >
+                              <button
+                                type="button"
+                                onClick={() => onBreakfastChoice(day, "hotel")}
+                              >
+                                酒店早餐
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => onBreakfastChoice(day, "simple")}
+                              >
+                                简易早餐
+                              </button>
+                            </div>
+                          ) : (
+                            <QuickActions
+                              label="更改"
+                              onIgnore={() => dismiss(missingKey)}
+                              onOpen={openArea}
+                            />
+                          )}
                         </div>
                       )}
                     </div>

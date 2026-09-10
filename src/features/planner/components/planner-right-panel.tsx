@@ -89,9 +89,6 @@ export function PlannerRightPanel({
                 : "重新生成路线"}
           </Button>
         </div>
-        <p className={styles.mockStatus} role="status">
-          {status}
-        </p>
         <Button
           className={styles.openDetailButton}
           onClick={onOpenDetail}
@@ -101,6 +98,9 @@ export function PlannerRightPanel({
           进入行程详情
           <PlannerIcon name="chevron" />
         </Button>
+        <p className={styles.mockStatus} role="status">
+          {status}
+        </p>
         {moreOpen && (
           <MoreTripSettingsPopover
             trigger={moreTrigger}
