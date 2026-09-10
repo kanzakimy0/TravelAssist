@@ -52,6 +52,8 @@ interface TripWorkspaceProps {
   onCloseEditor?: () => void;
   editorItemId?: string | null;
   onManageItem?: (id: string, kind: "booking" | "replace") => void;
+  mapPickMode?: boolean;
+  onMapPick?: (coordinates: [number, number]) => void;
 }
 
 export function TripWorkspace({
@@ -84,6 +86,8 @@ export function TripWorkspace({
   bookingProgress,
   onAdviceAction,
   adviceResponses,
+  mapPickMode,
+  onMapPick,
 }: TripWorkspaceProps) {
   const detail = mode === "detail";
   const activeItem = currentPlan(trip).items.find(
@@ -139,6 +143,8 @@ export function TripWorkspace({
               suppressQuickCard={Boolean(
                 projectContent || selectedPlace || visibleDraft || selectedArea,
               )}
+              mapPickMode={mapPickMode}
+              onMapPick={onMapPick}
             />
             <MapLayerToolbar
               collapsed={trip.ui.isLayerToolbarCollapsed}
@@ -360,7 +366,7 @@ export function TripWorkspace({
                     })
                   }
                 >
-                  ×
+                  <PlannerIcon name="close" />
                 </button>
               </header>
               <div className={mapDetail.content}>
