@@ -9,6 +9,7 @@
 - `trip-plan-data-ai-takeover.md` — Trip / Plan / Version / ChangeSet / Runtime / Booking / AI 接管与离线同步架构
 - `trip-engine-poi-ai-provider-design-v0.3.md` — Trip Planning Engine / Region Graph / POI / AI Gateway / Provider / Token 优化综合设计候选
 - `poi-feature-preference-codebook-v0.1.md` — POIFeatureV1 43维、Feature Kind、Sparse Preference 1–9 / omit-5、Context / Constraint 边界冻结候选
+- `trip-engine-design-backlog-v0.1.md` — Trip Planning / POI / Region / AI Gateway 后续设计优先级、依赖与 Pilot 后校准项
 
 计划补充：
 
