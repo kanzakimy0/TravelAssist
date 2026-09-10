@@ -10,6 +10,8 @@
 > Design PR: #266 (Draft at Task publication)  
 > Planned implementation branch: `codex/a-trip-planning-contract-foundation`  
 > Initial implementation PR target while #266 is unmerged: `design/a-trip-engine-poi-ai-architecture-v2`
+> Implementation commit: `7a95da6252110a638f8ab0a2e1a819a1bf9df727`
+> Draft PR: [#293](https://github.com/kanzakimy0/TravelAssist/pull/293)
 
 ---
 

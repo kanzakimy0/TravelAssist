@@ -21,11 +21,11 @@ Implementation complete / Pending review. The implementation is intentionally st
 
 ## Commit
 
-`PENDING` — synchronized after the implementation commit is created.
+`7a95da6252110a638f8ab0a2e1a819a1bf9df727` — `feat(planning): add TASK-036 contract foundation`.
 
 ## Draft PR
 
-`PENDING` — stacked target: `design/a-trip-engine-poi-ai-architecture-v2`.
+[#293](https://github.com/kanzakimy0/TravelAssist/pull/293) — Open / Draft, stacked target `design/a-trip-engine-poi-ai-architecture-v2`.
 
 ## Files created/changed
 
