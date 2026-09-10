@@ -5,7 +5,7 @@ on:
     branches:
       - poi-identity-v3-7-completion
     paths:
-      - '.tmp/poi_identity_fill_v37.py'
+      - '.tmp/poi_identity_fill_v37_fixed.py'
       - '.github/workflows/poi-identity-v3-7-completion.yml'
   workflow_dispatch:
 
@@ -21,14 +21,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Build 5,021 real identities from official dataset
-        run: python .tmp/poi_identity_fill_v37.py build/poi-identity-v3.7
+      - name: Build 5,021 real identities from official dataset with cross-version dedupe
+        run: python .tmp/poi_identity_fill_v37_fixed.py build/poi-identity-v3.7
       - name: Show checksums
         run: sha256sum build/poi-identity-v3.7/*
       - name: Upload result
         uses: actions/upload-artifact@v4
         with:
-          name: travelassist-poi-identity-v3.7
+          name: travelassist-poi-identity-v3.7-deduped
           path: build/poi-identity-v3.7/
           if-no-files-found: error
           retention-days: 3
