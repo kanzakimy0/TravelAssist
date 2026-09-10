@@ -947,7 +947,7 @@ TASK-023-A tracking (2026-09-09):
 TASK-038-A tracking (2026-09-11):
 
 - Issue #299；分支 `codex/a-100-poi-scoring-pilot`；基线
-  `fede48bb2a4916bcc6070be325ec5b450fa6fbd1`；Draft PR 待创建。
+  `fede48bb2a4916bcc6070be325ec5b450fa6fbd1`；实现 `b4dea88`；Draft PR #300。
 - 100 个真实日本 POI 身份样本、43 维稀疏证据标注、12 个偏好场景、288 条
   pairwise/diagnostic benchmark、80/20 固定拆分与 720 个有界候选已形成离线证据。
 - 评分 hard invariants 12/12 通过；候选仅具备进入人工复核资格，不是生产参数

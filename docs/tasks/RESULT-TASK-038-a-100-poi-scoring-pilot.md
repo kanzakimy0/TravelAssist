@@ -20,11 +20,12 @@ The base contains merged TASK-036-A / PR #293 and TASK-037-A / PR #298, with WBS
 
 ## Commits
 
-To be populated after final validation.
+- `b4dea8855fc128df21b4ab40939b739be96e66a1` — implementation, deterministic evidence, focused tests, Result, and WBS review status.
+- Final tracking synchronization commit follows on the same branch.
 
 ## Draft PR
 
-To be created against `develop`; it must remain Draft and unmerged.
+[#300](https://github.com/kanzakimy0/TravelAssist/pull/300) targets `develop` and remains Draft / unmerged.
 
 ## Sample source and selection rules
 
