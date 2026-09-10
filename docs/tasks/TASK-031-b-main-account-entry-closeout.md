@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Main Travel System / Auth Entry`
 - Priority: `P1`
-- Status: `可开始（Integration Gate）`
+- Status: `进行中`
 - GitHub Issue: `#261`
 - Task File: `docs/tasks/TASK-031-b-main-account-entry-closeout.md`
 - Codex Launcher: `docs/tasks/CODEX-TASK-031-b-main-account-entry-closeout.md`
