@@ -2,7 +2,7 @@
 
 ## Status
 
-**Owner B / 待审查。实现、审计与工程 QA 完成；等待用户视觉验收，不自动合并。**
+**Owner B / 已完成。用户验收通过，PR #280 已合入 develop，Issue #263 已 Closed / Completed。**
 
 本轮运行时仅修改两份既有 AI CSS，未新增或重写 AI Entry / Panel / Auth / Header 组件，没有接 AI 后端。
 
@@ -19,7 +19,7 @@
 - Issue：[#263](https://github.com/kanzakimy0/TravelAssist/issues/263)。
 - Branch：`feature/b-wbs-3-5-ai-floating-entry`。
 - Implementation / tests / evidence commit：`79f899b4228e62f1ad7c9a3d755b3805fa36e99f`；后续追踪提交仅文档。
-- Draft PR：[#280](https://github.com/kanzakimy0/TravelAssist/pull/280) → develop，保持 Draft。
+- PR：[#280](https://github.com/kanzakimy0/TravelAssist/pull/280) → develop，已合并（原以 Draft 提交）。
 - [正式 Task](TASK-033-b-ai-floating-entry-closeout.md)；[Owner correction](../project/WBS-3.5-owner-correction.md)；[QA 及截图索引](../qa/TASK-033/README.md)。
 
 ## Existing Implementation Audit
@@ -105,13 +105,26 @@
 
 ## WBS Updated
 
-- 3.5：**B / 待审查**。
+- 3.5：**B / 已完成**。
 - 3.1 / 3.2 / 3.3 / 3.4：B / 已完成，保持。
 - 3.2.1：A / 未开始 / Deferred，保持。
 - 3.7 / 6.x 的 Owner 与状态不变；其他工作站记录及历史命名不覆盖。
 
-## Ready For Review
+## Ready For Review（历史交付记录）
 
 代码、专项、浏览器 QA 与完整 Result 已交付 Draft PR → develop。请重点验收320px紧凑入口与面板打开效果；常规三个尺寸入口位置保留。
 
 仅用户视觉验收通过并合入 develop 后，3.5 才可已完成。本轮到此停止，不自动合并，不启动3.7或任何6.x Task。
+
+## Final Acceptance / Merge Closeout
+
+- 用户验收通过。
+- PR [#280](https://github.com/kanzakimy0/TravelAssist/pull/280) merged → develop；合并时间：2026-09-10T04:39:39Z。
+- Accepted head：`cf1ec1bc47ff7a62338dd256b3610f8aeba9f495`。
+- Merge commit：`ce34627d74d0ff2b8c64e4609b54d6209ec12f37`，已确认属于最新 `origin/develop` 历史。
+- Issue [#263](https://github.com/kanzakimy0/TravelAssist/issues/263)：Closed / Completed。
+- Master WBS 3.5 = **B / 已完成**。
+- 文档收尾基线：`a45eec8d7265d0c8ed93f17f2618dc3481e3921f`；保留已存在的 [WBS 3.5 completion closeout](../project/WBS-3.5-completion-closeout.md) 及其他工作站记录。
+- 保持 3.1 / 3.2 / 3.3 / 3.4 = B / 已完成；3.2.1 = A / 未开始 / Deferred；3.6 / 3.8 = A / 已完成；3.7 = A / 未开始。
+- 此次收尾仅更新 Master WBS 与本 Result；没有修改 runtime / CSS / tests / assets，保留上述三项 asset baseline failures 和原始测试结果，不启动 3.7 或 6.x。
+- 文档验证：`git diff --check` 通过；变更文件清单限定为上述两份 Markdown，主表其他行保持原样。本次不重跑运行时测试，工程验收结果沿用上方已记录证据。
