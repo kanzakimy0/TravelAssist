@@ -19,7 +19,8 @@
 - `ai-decision-contract-v1.md` — AI Gateway 输出 wire contract；Decision Status、Choice / Ordering / Compact Patch / Semantic Preference、ReasonCode、Local ID 验证、Domain Proposal、Engine Revalidate 与 ChangeSet Builder 边界
 - `replanning-contract-v0.1.md` — Runtime Overlay、Trigger、Impact Analysis、Earliest Mutable Boundary、最小 Scope、Deterministic Repair、AI Soft Choice、revision / companion sync 与 ChangeSet 动态重规划契约
 - `planning-fact-freshness-policy-v0.1.md` — Fact / Prior / Inference、来源/权威、有效区间、CURRENT/AGING/STALE/EXPIRED/UNKNOWN、DecisionUse、事件失效、冲突解析、刷新/降级与 Provider 缓存权利边界
-- `trip-engine-design-backlog-v0.8.md` — 最新 Trip Planning / POI / Region / AI Gateway / Replanning / Freshness 后续设计顺序与 Pilot 校准项
+- `planning-decision-trace-v0.1.md` — DecisionRun、候选漏斗、Score / Fact / Feasibility / Repair Trace、AI / Provider 使用、成本/延迟、ChangeSet 关联、用户解释与隐私边界
+- `trip-engine-design-backlog-v0.9.md` — P0 Design Complete；下一阶段转入 Contract / Validator / Fixtures、100 POI / Region Graph / Feasibility / AI / Replanning Pilot 与参数校准
 
 历史候选仍保留用于审查追踪：
 
@@ -32,13 +33,13 @@
 - `trip-engine-design-backlog-v0.5.md`
 - `trip-engine-design-backlog-v0.6.md`
 - `trip-engine-design-backlog-v0.7.md`
+- `trip-engine-design-backlog-v0.8.md`
 
 计划补充：
 
 - `system-overview.md` — Web / App / Backend / AI / Map 总体架构
 - `api-design.md` — 核心 API 详细边界
-- `planning-decision-trace-v0.1.md` — 规划决策可解释性、候选淘汰、AI/Provider 成本与审计追踪
 
 其中原计划的 `trip-state.md` 核心内容已由 `trip-plan-data-ai-takeover.md` 覆盖；后续如需要，可再拆分为更细的数据库 Schema / API 专项文档。
 
-在尚未冻结的专项设计完成前，Codex 不应自行把未确认的技术方案视为最终架构。
+P0 架构设计已形成闭环，但各 Freeze Candidate 在完成 Schema / Validator / Fixtures、Reference Implementation、Pilot、Consumer Review 和参数校准前，不应宣称全部 Frozen v1。
