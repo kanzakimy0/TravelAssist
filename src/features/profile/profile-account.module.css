@@ -121,7 +121,7 @@
 .editButton {
   border: 1px solid var(--pc-accent-primary);
   color: #fffaf6;
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
 }
 
 .accountGrid {
@@ -258,7 +258,7 @@
 .avatarActions button:hover,
 .fileButton:hover,
 .secondaryButton:hover {
-  border-color: #c99d87;
+  border-color: var(--color-accent-primary);
   background: var(--pc-accent-soft);
 }
 
@@ -574,7 +574,7 @@
 }
 
 .accountEntry:hover {
-  border-color: #c99d87;
+  border-color: var(--color-accent-primary);
   background: #fffdf9;
 }
 
@@ -1091,6 +1091,8 @@
   overflow: hidden;
   border: 0;
   clip-path: inset(50%);
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .profileFields {
@@ -1571,6 +1573,8 @@
   border: 1px solid var(--pc-border-subtle);
   border-radius: 7px;
   clip-path: none;
+  visibility: visible;
+  pointer-events: auto;
   font-size: 9px;
 }
 
@@ -3190,6 +3194,12 @@
 }
 
 @media (max-width: 767px) {
+  .accountPage .emergencyCard button {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   .pageHeader > div:first-child {
     padding-left: 42px;
   }
@@ -3199,5 +3209,116 @@
     width: 28px;
     font-size: 30px;
     text-shadow: 0 3px 10px rgb(224 116 131 / 18%);
+  }
+}
+
+/* WBS-5.10-B-FOLLOWUP-1: profile is primary, contact/settings share the secondary column. */
+@media (min-width: 1440px) {
+  .accountPage[data-account-page] {
+    max-width: 1220px;
+    height: auto;
+    margin-inline: auto;
+    padding-bottom: 24px;
+    grid-template-rows: 104px auto auto auto auto;
+    gap: 18px;
+  }
+  .accountPage[data-account-page] .profileCard {
+    grid-column: 1 / 9;
+    grid-row: 2 / 4;
+    padding: 24px;
+  }
+  .accountPage[data-account-page] .contactCard {
+    grid-column: 9 / 13;
+    grid-row: 2;
+  }
+  .accountPage[data-account-page] .settingsCard {
+    grid-column: 9 / 13;
+    grid-row: 3;
+  }
+  .accountPage[data-account-page] .emergencySection {
+    grid-row: 4;
+  }
+  .accountPage[data-account-page]
+    > section[aria-labelledby="account-entry-title"] {
+    grid-row: 5;
+  }
+  .accountPage[data-account-page] .profileFields {
+    flex: 0;
+    grid-template-rows: repeat(3, minmax(70px, auto));
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .accountPage[data-account-page] .valueField {
+    gap: 6px;
+    padding: 8px;
+  }
+  .accountPage[data-account-page] .valueField > span,
+  .accountPage[data-account-page] .formField > label {
+    font-size: 0.8rem;
+  }
+  .accountPage[data-account-page] .valueField > strong {
+    font-size: 1rem;
+  }
+  .accountPage[data-account-page] .formField input,
+  .accountPage[data-account-page] .formField select {
+    min-height: 44px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+  .accountPage[data-account-page] .avatarRow {
+    padding-bottom: 20px;
+    gap: 20px;
+  }
+  .accountPage[data-account-page] .profileAvatar {
+    width: 100px;
+    height: 100px;
+  }
+  .accountPage[data-account-page] .contactList {
+    flex: 0;
+    grid-template-rows: auto auto;
+    gap: 8px;
+  }
+  .accountPage[data-account-page] .contactList > div {
+    padding: 8px;
+  }
+  .accountPage[data-account-page] .settingsList {
+    flex: 0;
+    grid-template-rows: repeat(7, minmax(44px, auto));
+  }
+  .accountPage[data-account-page] .settingRow select {
+    height: 44px;
+    min-height: 44px;
+  }
+  .accountPage[data-account-page] .headingNote {
+    white-space: normal;
+  }
+  .accountPage[data-account-page] .recommendation {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .accountPage[data-account-page] .accountEntries {
+    flex: 0;
+  }
+  .accountPage[data-account-page] .accountEntry {
+    min-height: 96px;
+    height: auto;
+  }
+  .accountPage[data-account-page] .saveBar {
+    grid-column: 1 / 9;
+    grid-row: 3;
+    width: min(300px, calc(100% - 48px));
+    margin-bottom: 24px;
+  }
+  .accountPage[data-account-page] .saveBar button {
+    min-height: 44px;
+  }
+  .accountPage[data-account-page] .profileCard,
+  .accountPage[data-account-page]:has(.saveBar) .profileCard {
+    padding-bottom: 92px;
+  }
+  .accountPage[data-account-page] .fieldError {
+    position: static;
+    margin-top: 0 !important;
   }
 }

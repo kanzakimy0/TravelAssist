@@ -1,5 +1,7 @@
 # RESULT — WBS-0.9-B 跨模块 Contract 交接规则
 
+> 前部为原交付历史；当前结论见文末2026-09-10记录。
+
 ## Status
 
 `待审查`
@@ -74,15 +76,15 @@ src/types/
 
 ## Ownership Matrix Frozen
 
-| Contract | Producer | Consumer | 后续 WBS |
-|---|---|---|---|
-| User / Session Public View | B | A | `5.3` → `3.4` |
-| Profile Public View | B | A | `5.15` → main-system consumer |
-| Preference Contract | B | A | `5.14` → `4.18`, `6.3`, `6.5`, `7.9` |
-| Companion Contract | B | A | `5.12`, `5.17` → Planner |
-| Trip Plan Contract | A | B | `4.17` → `5.18`, `5.19` |
-| Planner Resume / Edit Handoff | A | B | `4.15`, `4.17` ↔ `5.10`, `5.19` |
-| Trip Save Invocation Contract | B | A | `5.19` → `4.19` |
+| Contract                      | Producer | Consumer | 后续 WBS                             |
+| ----------------------------- | -------- | -------- | ------------------------------------ |
+| User / Session Public View    | B        | A        | `5.3` → `3.4`                        |
+| Profile Public View           | B        | A        | `5.15` → main-system consumer        |
+| Preference Contract           | B        | A        | `5.14` → `4.18`, `6.3`, `6.5`, `7.9` |
+| Companion Contract            | B        | A        | `5.12`, `5.17` → Planner             |
+| Trip Plan Contract            | A        | B        | `4.17` → `5.18`, `5.19`              |
+| Planner Resume / Edit Handoff | A        | B        | `4.15`, `4.17` ↔ `5.10`, `5.19`      |
+| Trip Save Invocation Contract | B        | A        | `5.19` → `4.19`                      |
 
 原则：谁拥有业务语义，谁拥有 Contract；Consumer 不因需要字段而取得 Producer 私有模型所有权。
 
@@ -290,3 +292,11 @@ Issue #168 = Close
 WBS 0.9 的治理规则已具备进入 Review 的条件，状态为 **待审查**。
 
 停止点：不 merge PR #171，不关闭 Issue #168，不标记 `已完成`，等待用户验收。
+
+## 2026-09-10 最新develop整合与差异修正
+
+用户授权解决保留Draft差异并合并符合条件的PR。从原head 46f00dcf003ba25cc00c93038752f36cdb1b3a30正常merge最新develop f14ac40d329d96d900a53e832ba40e8e4abe8cbd，没有rebase/force push。
+
+WBS两段冲突均为本分支空段与develop新增历史；逐段保留上游新增及原0.9追踪，没有整份ours/theirs。更新Trips、Routes、Auth、Engine的真实canonical/Consumer清单，明确Preference/Companion公共包及Save/History缺口；旧“shared/server不存在”仅作为历史。
+
+仅治理文档，Owner/canonical/权限/未知fallback/版本迁移原则不变，不改runtime/DB/API。文档检查与diff检查通过后按本轮授权合并；合并前WBS仍待审查，实际merge及完成状态在最终追踪记录。旧测试不改写为新测试。

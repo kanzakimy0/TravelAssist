@@ -41,11 +41,7 @@ function links(source) {
 }
 
 test("product brands target home, both account variants retain GuardedLink", async () => {
-  for (const file of [
-    "src/features/home/components/compact-header.tsx",
-    "src/features/start-flow/components/start-flow-header.tsx",
-    "src/features/planner/components/workspace-header.tsx",
-  ]) {
+  for (const file of ["src/components/layout/main-header.tsx"]) {
     const brands = links(await read(file)).filter((link) =>
       `${link.text} ${link["aria-label"]}`.includes("TravelAssist"),
     );
@@ -55,6 +51,16 @@ test("product brands target home, both account variants retain GuardedLink", asy
       file,
     );
   }
+  for (const file of [
+    "src/features/home/home-page.tsx",
+    "src/features/start-flow/components/start-flow-header.tsx",
+  ]) {
+    assert.match(await read(file), /<MainHeader/, file);
+  }
+  assert.match(
+    await read("src/features/planner/components/workspace-header.tsx"),
+    /href="\/" className=\{styles\.brand\}/,
+  );
   const brands = links(
     await read("src/features/personal-center/components/personal-sidebar.tsx"),
   ).filter((link) => link["aria-label"] === "TravelAssist 首页");

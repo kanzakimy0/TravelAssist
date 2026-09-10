@@ -14,10 +14,12 @@ export function PreferenceEditor({
   group,
   state,
   dispatch,
+  inlineDetails = false,
 }: {
   group: PreferenceGroup;
   state: TripState;
   dispatch: Dispatch<TripAction>;
+  inlineDetails?: boolean;
 }) {
   const [detail, setDetail] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -26,6 +28,27 @@ export function PreferenceEditor({
     quick: [],
     details: {},
   };
+  const fields = (
+    <div className={ui.detailFields}>
+      {definition.details.map((key) => (
+        <label className={styles.field} key={key}>
+          {key}
+          <input
+            maxLength={160}
+            placeholder="未限定"
+            value={value.details[key] ?? ""}
+            onChange={(e) =>
+              dispatch({
+                type: "preference",
+                group,
+                detail: { key, value: e.target.value },
+              })
+            }
+          />
+        </label>
+      ))}
+    </div>
+  );
   return (
     <div className={ui.preferenceEditor}>
       <p className={styles.hint}>
@@ -73,11 +96,18 @@ export function PreferenceEditor({
         type="button"
         ref={trigger}
         aria-expanded={detail}
+        aria-controls={detail ? `preference-detail-${group}` : undefined}
         onClick={() => setDetail(!detail)}
       >
         更多设置 · {definition.title}
       </button>
-      {detail && (
+      {detail && inlineDetails && (
+        <div id={`preference-detail-${group}`} data-inline-settings>
+          <p className={styles.hint}>只补充需要的条件，留空即不限定。</p>
+          {fields}
+        </div>
+      )}
+      {detail && !inlineDetails && (
         <PlannerPopover
           id={`preference-detail-${group}`}
           title={`${definition.title} · 详细设置`}
@@ -87,25 +117,7 @@ export function PreferenceEditor({
           <p className={styles.hint}>
             当前旅行的本地偏好，不执行自动调整或真实查询。空值代表未限定。
           </p>
-          <div className={ui.detailFields}>
-            {definition.details.map((key) => (
-              <label className={styles.field} key={key}>
-                {key}
-                <input
-                  maxLength={160}
-                  placeholder="未限定"
-                  value={value.details[key] ?? ""}
-                  onChange={(e) =>
-                    dispatch({
-                      type: "preference",
-                      group,
-                      detail: { key, value: e.target.value },
-                    })
-                  }
-                />
-              </label>
-            ))}
-          </div>
+          {fields}
         </PlannerPopover>
       )}
     </div>

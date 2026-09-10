@@ -8,11 +8,42 @@ import {
   reservationLabel,
 } from "./trip-model";
 import type { MapView, PlaceType, TripItem, TripState } from "./trip-model";
+import {
+  scheduleConflicts,
+  validateSchedule,
+  mealTimeWarning,
+} from "./schedule-check";
+import { plannerMovementLegs } from "./planner-route";
+import { validPreparations, type Preparation } from "./trip-preparation";
 
 export type TripWorkspaceMode = "planner" | "detail";
 export type AiJudgementStatus = "normal" | "warning" | "error";
 export type ReservationJudgement = "confirmed" | "unknown" | "none";
 export type DetailItemKind = PlaceType | "parking" | "task" | "custom";
+
+export interface DetailLocation {
+  source: "catalog" | "manual";
+  coordinates: [number, number];
+  placeId?: string;
+  label: string;
+}
+export function validDetailLocation(value: unknown): value is DetailLocation {
+  if (!value || typeof value !== "object") return false;
+  const location = value as DetailLocation;
+  const coordinates = location.coordinates;
+  return (
+    ["catalog", "manual"].includes(location.source) &&
+    typeof location.label === "string" &&
+    location.label.length <= 1000 &&
+    (location.placeId === undefined || typeof location.placeId === "string") &&
+    (location.source !== "catalog" || Boolean(location.placeId)) &&
+    Array.isArray(coordinates) &&
+    coordinates.length === 2 &&
+    coordinates.every((n) => typeof n === "number" && Number.isFinite(n)) &&
+    Math.abs(coordinates[0]) <= 180 &&
+    Math.abs(coordinates[1]) <= 90
+  );
+}
 
 export interface DetailDraftItem {
   id: string;
@@ -22,15 +53,21 @@ export interface DetailDraftItem {
   endTime: string;
   type: DetailItemKind;
   note: string;
+  location?: DetailLocation;
 }
 
 export interface DetailDraftState {
+  preparations?: Record<string, Preparation>;
+  railResponses?: Record<string, "later" | "acknowledged">;
+  bookingMessages?: Record<string, string>;
   items: DetailDraftItem[];
   completedIds: string[];
   version: 1;
 }
 
 export interface DetailRailItem {
+  planningSlot?: string;
+  completed?: boolean;
   id: string;
   day: number;
   title: string;
@@ -48,6 +85,7 @@ export interface DetailRailItem {
   placeId?: string;
   note?: string;
   draft: boolean;
+  location?: DetailLocation;
 }
 
 export interface DetailDaySummary {
@@ -165,6 +203,12 @@ function aiStatusForItem(
   item: TripItem,
   previous: TripItem | undefined,
 ): { status: AiJudgementStatus; reason: string } {
+  if (item.planningPlaceholder)
+    return {
+      status: "warning",
+      reason:
+        "目前只安排了时间，酒店或餐厅尚未选择；区域中心不代表已确认地点。",
+    };
   if (
     previous &&
     item.type !== "hotel" &&
@@ -209,15 +253,14 @@ export function detailRailItems(
   const plan = currentPlan(state);
   const items = itemsForDay(plan, day);
   const canonical = items.map((item, index) => {
-    const judgement = completedIds.includes(item.id)
-      ? { status: "normal" as const, reason: "已在本地执行草稿中标记完成。" }
-      : aiStatusForItem(item, items[index - 1]);
+    const judgement = aiStatusForItem(item, items[index - 1]);
     const reservation = reservationStatus(item);
     return {
       id: item.id,
       day,
       title: item.title,
       startTime: item.startTime,
+      planningSlot: item.planningSlot,
       endTime: item.endTime,
       type: item.type,
       typeLabel: typeLabels[item.type],
@@ -231,6 +274,7 @@ export function detailRailItems(
       locked: item.locked,
       placeId: item.placeId,
       draft: false,
+      completed: completedIds.includes(item.id),
     } satisfies DetailRailItem;
   });
   const local = draftItems
@@ -241,10 +285,9 @@ export function detailRailItems(
           ...item,
           typeLabel: typeLabels[item.type],
           durationLabel: `${Math.max(0, minutes(item.endTime) - minutes(item.startTime))} 分`,
-          aiStatus: completedIds.includes(item.id) ? "normal" : "warning",
-          aiReason: completedIds.includes(item.id)
-            ? "已在本地执行草稿中标记完成。"
-            : "本地新增项目尚未经过真实 Provider 或 AI 检查。",
+          aiStatus: "warning",
+          aiReason: "本地新增项目尚未核对地点与营业信息。",
+          completed: completedIds.includes(item.id),
           reservation: "none",
           reservationLabel: "本地草稿",
           fixed: false,
@@ -252,9 +295,59 @@ export function detailRailItems(
           draft: true,
         }) satisfies DetailRailItem,
     );
-  return [...canonical, ...local].sort((a, b) =>
-    a.startTime.localeCompare(b.startTime),
+  const combined = [...canonical, ...local].sort(
+    (a, b) => minutes(a.startTime) - minutes(b.startTime),
   );
+  const movementLegs = plannerMovementLegs(plan, day);
+  return combined.map((item) => {
+    const invalid = validateSchedule(item);
+    const conflicts = scheduleConflicts(item, combined);
+    if (invalid || conflicts.length)
+      return {
+        ...item,
+        aiStatus: "error" as const,
+        aiReason:
+          invalid ||
+          `与 ${conflicts.map((i) => i.title).join("、")} 时间重叠，需要调整。`,
+      };
+    const incoming = movementLegs.find((leg) => leg.to.id === item.id);
+    if (incoming?.conflict)
+      return {
+        ...item,
+        aiStatus: "error" as const,
+        aiReason: `从 ${incoming.from.title} 的交通预计 ${incoming.duration} 分 + 缓冲 ${incoming.buffer} 分，超出 ${incoming.gap} 分空档。时间未自动调整，请核对。`,
+      };
+    const mealWarning = mealTimeWarning(
+      items.find((i) => i.id === item.id) ?? item,
+    );
+    if (mealWarning && item.aiStatus !== "error")
+      return { ...item, aiStatus: "warning" as const, aiReason: mealWarning };
+    if (incoming?.risk === "warning" && item.aiStatus === "normal")
+      return {
+        ...item,
+        aiStatus: "warning" as const,
+        aiReason: `从 ${incoming.from.title}：${incoming.riskReason}`,
+      };
+    const previous = combined
+      .filter(
+        (i) =>
+          i.id !== item.id &&
+          i.type !== "hotel" &&
+          minutes(i.endTime) <= minutes(item.startTime),
+      )
+      .at(-1);
+    if (
+      item.type !== "hotel" &&
+      previous &&
+      minutes(item.startTime) - minutes(previous.endTime) < 15
+    )
+      return {
+        ...item,
+        aiStatus: "warning" as const,
+        aiReason: `与 ${previous.title} 的缓冲不足 15 分钟，请核对移动时间。`,
+      };
+    return item;
+  });
 }
 
 export function detailDaySummary(
@@ -266,20 +359,22 @@ export function detailDaySummary(
   const tripDay = plan.days.find((item) => item.day === day) ?? plan.days[0];
   const canonicalItems = itemsForDay(plan, day);
   const priceFor = (item: TripItem) =>
-    state.places.find((place) => place.id === item.placeId)?.price ?? 0;
+    item.planningPlaceholder
+      ? 0
+      : (state.places.find((place) => place.id === item.placeId)?.price ?? 0);
+  const people = state.configuration.travelers;
+  const paying = people.adultMale + people.adultFemale + (people.seniors ?? 0);
   const expense = (type: PlaceType) =>
     canonicalItems
       .filter((item) => item.type === type)
-      .reduce((total, item) => total + priceFor(item), 0);
+      .reduce((total, item) => total + priceFor(item) * paying, 0);
   const expenses = {
     transport: expense("transport"),
-    parkingHighway: canonicalItems.some((item) => item.type === "transport")
-      ? 1200
-      : 0,
+    parkingHighway: 0,
     ticketsActivities: expense("attraction") + expense("activity"),
     dining: expense("restaurant"),
-    lodging: expense("hotel"),
-    other: 800,
+    lodging: 0,
+    other: 0,
     total: 0,
   };
   expenses.total = Object.entries(expenses)
@@ -352,6 +447,9 @@ export function parseDetailDraft(value: string | null): DetailDraftState {
       return emptyDetailDraft();
     }
     return {
+      ...(validPreparations(parsed.preparations) && parsed.preparations
+        ? { preparations: parsed.preparations }
+        : {}),
       items: parsed.items.filter((item): item is DetailDraftItem =>
         Boolean(
           item &&
@@ -361,7 +459,8 @@ export function parseDetailDraft(value: string | null): DetailDraftState {
           typeof item.startTime === "string" &&
           typeof item.endTime === "string" &&
           typeof item.type === "string" &&
-          detailItemKinds.has(item.type as DetailItemKind),
+          detailItemKinds.has(item.type as DetailItemKind) &&
+          (item.location === undefined || validDetailLocation(item.location)),
         ),
       ),
       completedIds: Array.isArray(parsed.completedIds)

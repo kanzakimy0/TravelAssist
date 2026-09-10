@@ -30,7 +30,12 @@ export function MapLayerToolbar({
     <aside className={styles.toolbar} aria-label="地图工具">
       {!collapsed && (
         <div className={styles.toolbarItems}>
-          <button type="button" aria-pressed={terrain} onClick={onTerrain}>
+          <button
+            type="button"
+            aria-pressed={terrain}
+            onClick={onTerrain}
+            title="显示或隐藏地理底图；保留道路、地名和行程"
+          >
             <PlannerIcon name="layers" />
             <span>图层</span>
           </button>
@@ -48,6 +53,7 @@ export function MapLayerToolbar({
           <button
             type="button"
             ref={trigger}
+            className={styles.moreLayerButton}
             aria-expanded={more}
             onClick={() => setMore(!more)}
           >
@@ -64,6 +70,7 @@ export function MapLayerToolbar({
         }}
         aria-expanded={!collapsed}
         aria-label={collapsed ? "展开地图工具" : "收起地图工具"}
+        className={styles.toolbarToggle}
       >
         <PlannerIcon name={collapsed ? "layers" : "chevron"} />
       </button>

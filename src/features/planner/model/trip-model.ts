@@ -6,9 +6,34 @@ import type {
   PlannerUiState,
   RangeMode,
 } from "./planner-types";
+import {
+  editScheduleError,
+  validateSchedule,
+  scheduleConflicts,
+} from "./schedule-check";
+import {
+  applyPlannerRouteAction,
+  plannerMovementLegs,
+  reconcileMovementPlan,
+} from "./planner-route";
+import type { MovementEdit, PlannerRouteAction } from "./planner-route";
+import {
+  applyTimelineAction,
+  initializeHotelEndpoints,
+  routineSlotFor,
+  type TimelineAction,
+  type RoutineSlot,
+} from "./planner-timeline";
 
 // TASK-008.1 local interaction model, NOT the final cross-module Trip Contract.
 export type Coordinates = [number, number];
+export type MealSlot = "breakfast" | "lunch" | "dinner";
+export function mealSlotFor(time: string, slot?: string): MealSlot {
+  if (slot === "breakfast" || slot === "lunch" || slot === "dinner")
+    return slot;
+  const hour = Number(time.split(":")[0]);
+  return hour < 11 ? "breakfast" : hour < 16 ? "lunch" : "dinner";
+}
 export type PlaceType =
   "attraction" | "hotel" | "restaurant" | "transport" | "activity";
 export type ReservationStatus =
@@ -49,6 +74,7 @@ export type PlannerPlace = {
   price: number;
   bookingRequired: boolean;
   structural?: boolean;
+  planningPlaceholder?: boolean;
   providerIds: Record<string, string>;
   bookingOptions: BookingOption[];
 };
@@ -83,6 +109,9 @@ export type TripItem = {
   fixedTime: boolean;
   locked: boolean;
   next?: string;
+  planningSlot?: RoutineSlot;
+  planningDraft?: boolean;
+  planningPlaceholder?: boolean;
 };
 export type TripDay = Omit<
   MockDay,
@@ -94,15 +123,21 @@ export type TripPlan = {
   summary: string;
   days: TripDay[];
   items: TripItem[];
+  reserveItems?: TripItem[];
+  hotelEndpointsReady?: boolean;
+  movementLegs?: Record<string, MovementEdit>;
 };
 export type TripUi = Omit<PlannerUiState, "selectedStopId"> & {
   selectedTripItemId: string | null;
   focusedDay: number;
   focusRevision: number;
   inspection: { id: string; level: "quick" | "detail" | "area" } | null;
+  mealSlot?: MealSlot;
+  detailFocus?: "advice" | "booking";
   bookingOpen: boolean;
 };
 export type TripState = {
+  workingPlanId?: string;
   plans: TripPlan[];
   places: PlannerPlace[];
   areas: PlannerArea[];
@@ -126,11 +161,13 @@ export type PreferenceGroup =
   | "needs"
   | "constraints";
 export type TripConfiguration = {
+  movementAdvice?: Record<string, "accepted" | "ignored" | "later">;
   travelers: {
     adultMale: number;
     adultFemale: number;
     child: number;
     infant: number;
+    seniors: number;
   };
   returnDate: string;
   preferences: Partial<
@@ -144,6 +181,18 @@ export type TripConfiguration = {
   alternatives: string[];
 };
 export type TripAction =
+  | TimelineAction
+  | { type: "hotelEndpoints"; planId: string }
+  | PlannerRouteAction
+  | {
+      type: "detailBatchEdit";
+      changes: { id: string; startTime: string; endTime: string }[];
+    }
+  | {
+      type: "movementAdvice";
+      id: string;
+      response: "accepted" | "ignored" | "later";
+    }
   | { type: "saveSettings"; configuration: TripConfiguration }
   | {
       type: "travelers";
@@ -178,11 +227,16 @@ export type TripAction =
       reservation: boolean;
       nights?: number;
       replaceId?: string;
+      mealSlot?: MealSlot;
     }
   | { type: "remove"; id: string }
   | { type: "lock"; id: string }
   | { type: "provider"; id: string; providerId: string }
   | { type: "complete"; id: string; time: string }
+  | { type: "queueReservation"; id: string }
+  | { type: "recordCancellation"; id: string; externallyCancelled: boolean }
+  | { type: "releaseCancelledSchedule"; id: string; confirmed: boolean }
+  | { type: "replaceRailHotel"; id: string; placeId: string }
   | {
       type: "detailEdit";
       id: string;
@@ -230,7 +284,7 @@ export function currentPlan(state: TripState) {
 export function itemsForDay(plan: TripPlan, day: number) {
   return plan.items
     .filter((item) => item.day <= day && item.endDay >= day)
-    .sort((a, b) => a.startTime.localeCompare(b.startTime));
+    .sort((a, b) => minutes(a.startTime) - minutes(b.startTime));
 }
 export function rangeDays(state: TripState) {
   const { rangeMode, selectedDay, threeDayStart } = state.ui;
@@ -301,7 +355,13 @@ export function makeTripState(
     areas,
     settings: { ...settings },
     configuration: {
-      travelers: { adultMale: 1, adultFemale: 1, child: 0, infant: 0 },
+      travelers: {
+        adultMale: 1,
+        adultFemale: 1,
+        child: 0,
+        infant: 0,
+        seniors: 0,
+      },
       returnDate: isoDay(settings.startDate, plans[0].days.length),
       preferences: {
         sights: { quick: ["自然风光", "经典地标"], details: {} },
@@ -418,7 +478,9 @@ function updatePlan(
     notice,
     ui: { ...state.ui, ...ui },
     plans: state.plans.map((plan) =>
-      plan.id === state.ui.currentPlanId ? { ...plan, items } : plan,
+      plan.id === state.ui.currentPlanId
+        ? reconcileMovementPlan(plan, { ...plan, items })
+        : plan,
     ),
   };
 }
@@ -466,7 +528,7 @@ export function changeTripDates(
   )
     return fail("已有固定或已确认预约，改期需先核对；原日期与全部安排已保留。");
   const outside = state.plans
-    .flatMap((p) => p.items)
+    .flatMap((p) => [...p.items, ...(p.reserveItems ?? [])])
     .find((i) => i.endDay > count || (i.type === "hotel" && i.endDay >= count));
   if (outside)
     return fail(
@@ -490,10 +552,20 @@ export function changeTripDates(
           };
     }),
     items: p.items.map((i) => ({ ...i, date: isoDay(departure, i.day) })),
+    ...(p.reserveItems
+      ? {
+          reserveItems: p.reserveItems.map((i) => ({
+            ...i,
+            date: isoDay(departure, i.day),
+          })),
+        }
+      : {}),
   }));
   return {
     ...state,
     plans,
+    pendingSettingsBaseline:
+      state.pendingSettingsBaseline ?? structuredClone(state.configuration),
     settings: { ...state.settings, startDate: departure },
     configuration: { ...state.configuration, returnDate: returning },
     ui: {
@@ -562,6 +634,7 @@ export type TimeSegment = {
 };
 export function dayTimeBand(plan: TripPlan, day: number) {
   const items = itemsForDay(plan, day);
+  const legs = plannerMovementLegs(plan, day);
   const segments: TimeSegment[] = [];
   let walking = 0;
   items.forEach((item, index) => {
@@ -570,10 +643,13 @@ export function dayTimeBand(plan: TripPlan, day: number) {
     if (end <= start) return;
     const next = items[index + 1];
     const match = item.next?.match(/(?:(\d+)\s*小时\s*)?(\d+)?\s*分/);
-    const travel = match
-      ? Number(match[1] ?? 0) * 60 + Number(match[2] ?? 0)
-      : 0;
-    const risk = Boolean(next && end + travel > minutes(next.startTime));
+    const manualLeg = legs.find((leg) => leg.from.id === item.id && leg.edited);
+    const travel =
+      manualLeg?.duration ??
+      (match ? Number(match[1] ?? 0) * 60 + Number(match[2] ?? 0) : 0);
+    const risk = Boolean(
+      next && end + travel + (manualLeg?.buffer ?? 0) > minutes(next.startTime),
+    );
     segments.push({
       id: item.id,
       itemId: item.id,
@@ -589,12 +665,12 @@ export function dayTimeBand(plan: TripPlan, day: number) {
         id: `${item.id}-movement`,
         itemId: item.id,
         kind: "movement",
-        title: item.next!,
+        title: manualLeg?.label ?? item.next!,
         start: end,
         end: end + travel,
         risk,
       });
-      if (item.next?.includes("步行")) walking += travel;
+      if ((manualLeg?.label ?? item.next)?.includes("步行")) walking += travel;
     }
   });
   const start = segments.length ? Math.min(...segments.map((s) => s.start)) : 0;
@@ -638,8 +714,54 @@ export function timeBandPosition(
   };
 }
 export function tripReducer(state: TripState, action: TripAction): TripState {
+  if (action.type === "hotelEndpoints")
+    return initializeHotelEndpoints(state, action.planId);
+  if (
+    action.type === "timelineDrop" ||
+    action.type === "timelineTime" ||
+    action.type === "timelineLock"
+  )
+    return applyTimelineAction(state, action);
+  if (
+    action.type === "reserveSight" ||
+    action.type === "promoteSight" ||
+    action.type === "editMovement"
+  )
+    return applyPlannerRouteAction(state, action);
+  if (action.type === "movementAdvice") {
+    if (
+      !currentPlan(state).items.some((item) => item.id === action.id) ||
+      !["accepted", "ignored", "later"].includes(action.response)
+    )
+      return state;
+    return {
+      ...state,
+      configuration: {
+        ...state.configuration,
+        movementAdvice: {
+          ...state.configuration.movementAdvice,
+          [action.id]: action.response,
+        },
+      },
+      notice:
+        action.response === "accepted"
+          ? "已接受并记为待核对；尚未改变行程时间。"
+          : action.response === "ignored"
+            ? "已忽略此提示，可随时恢复。"
+            : "已标记稍后核对。",
+    };
+  }
   const plan = currentPlan(state);
   if (action.type === "saveSettings") {
+    const people = action.configuration.travelers;
+    if (
+      people.infant > 0 &&
+      people.adultMale + people.adultFemale + (people.seniors ?? 0) === 0
+    )
+      return {
+        ...state,
+        notice: "婴儿必须有成年同行人陪同，请先添加成人或老人。",
+      };
     // Reuse established setters so compatibility summaries and canonical values agree.
     let committed = tripReducer(state, {
       type: "level",
@@ -669,9 +791,14 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
     }
     return {
       ...committed,
+      configuration: { ...committed.configuration, travelers: { ...people } },
+      settings: {
+        ...committed.settings,
+        travelers: `成人 ${people.adultMale + people.adultFemale} · 老人 ${people.seniors ?? 0} · 儿童 ${people.child} · 婴儿 ${people.infant}`,
+      },
       pendingSettingsBaseline:
         state.pendingSettingsBaseline ?? structuredClone(state.configuration),
-      notice: "偏好已保存；正式路线未改变。请预览变更后重新规划。",
+      notice: "偏好已应用；尚未保存行程。请预览变更后重新规划。",
     };
   }
   if (action.type === "travelers") {
@@ -687,11 +814,21 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
     };
     if (Object.values(travelers).every((n) => n === 0))
       return { ...state, notice: "至少保留一位同行人。" };
+    if (
+      travelers.infant > 0 &&
+      travelers.adultMale + travelers.adultFemale + (travelers.seniors ?? 0) ===
+        0
+    )
+      return {
+        ...state,
+        notice: "婴儿必须有成年同行人陪同，请先添加成人或老人。",
+      };
     const labels = {
       adultMale: "成人男性",
       adultFemale: "成人女性",
       child: "儿童",
       infant: "婴儿",
+      seniors: "老人",
     };
     return {
       ...state,
@@ -845,6 +982,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
             ...state.ui,
             selectedTripItemId: item.id,
             inspection: null,
+            detailFocus: undefined,
             focusRevision: state.ui.focusRevision + 1,
             focusedDay: item.day,
             activeBottomTab: state.ui.activeBottomTab,
@@ -859,6 +997,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
       ui: {
         ...state.ui,
         inspection: { id: action.id, level: action.level ?? "quick" },
+        detailFocus: undefined,
         focusRevision: state.ui.focusRevision + 1,
         selectedTripItemId: item?.id ?? null,
         focusedDay:
@@ -874,11 +1013,44 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
     return {
       ...state,
       pendingSettingsBaseline: undefined,
-      notice: `示例路线预览已刷新；保留 ${plan.items.filter((i) => i.fixedTime || i.locked).length} 项固定安排与全部预约，未进行真实计算。`,
+      notice: state.workingPlanId
+        ? "当前工作中方案已固定，不会被新推荐覆盖；仅刷新其余方案的示例预览，未进行真实计算。"
+        : `示例路线预览已刷新；保留 ${plan.items.filter((i) => i.fixedTime || i.locked).length} 项固定安排与全部预约，未进行真实计算。`,
     };
+  if (action.type === "detailBatchEdit") {
+    const changed = plan.items.filter((i) =>
+      action.changes.some((c) => c.id === i.id),
+    );
+    if (
+      changed.length !== action.changes.length ||
+      changed.some((i) => i.fixedTime || i.locked)
+    )
+      return {
+        ...state,
+        notice: "调整中包含不存在或受保护的安排，未应用任何修改。",
+      };
+    const next = plan.items.map((i) => ({
+      ...i,
+      ...action.changes.find((c) => c.id === i.id),
+    }));
+    if (
+      next.some((i) => validateSchedule(i) || scheduleConflicts(i, next).length)
+    )
+      return { ...state, notice: "调整后仍有无效时间或重叠，未应用任何修改。" };
+    return updatePlan(
+      state,
+      next,
+      "本地时间调整已应用；请核对实际移动时间并保存。",
+    );
+  }
   if (action.type === "add") {
     const place = state.places.find((p) => p.id === action.placeId);
     if (!place || !plan.days.some((d) => d.day === action.day)) return state;
+    if (place.planningPlaceholder)
+      return {
+        ...state,
+        notice: "请先选择实际酒店或餐厅；时间占位不能加入预约。",
+      };
     if (
       place.type === "hotel" &&
       (!Number.isInteger(action.nights ?? 1) ||
@@ -892,6 +1064,9 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
     const existing = plan.items.find(
       (item) =>
         item.placeId === place.id &&
+        (!action.mealSlot ||
+          place.type !== "restaurant" ||
+          mealSlotFor(item.startTime, item.planningSlot) === action.mealSlot) &&
         (place.type === "hotel" || item.day === action.day),
     );
     if (existing) {
@@ -918,6 +1093,9 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           (i) =>
             i.day === action.day &&
             i.type === place.type &&
+            (!action.mealSlot ||
+              place.type !== "restaurant" ||
+              mealSlotFor(i.startTime, i.planningSlot) === action.mealSlot) &&
             (place.type === "hotel" || place.type === "restaurant"),
         );
     if (
@@ -936,9 +1114,13 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
       (place.type === "hotel"
         ? "20:00"
         : place.type === "restaurant"
-          ? "18:30"
+          ? { breakfast: "07:00", lunch: "12:00", dinner: "18:00" }[
+              action.mealSlot ?? "dinner"
+            ]
           : "11:30");
-    const id = placeholder?.id ?? `${plan.id}-${place.id}-day${action.day}`;
+    const id =
+      placeholder?.id ??
+      `${plan.id}-${place.id}-day${action.day}${place.type === "restaurant" && action.mealSlot ? "-" + action.mealSlot : ""}`;
     const required = action.reservation;
     const item: TripItem = {
       id,
@@ -950,6 +1132,11 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           : action.day,
       date: isoDay(state.settings.startDate, action.day),
       startTime: time,
+      planningSlot:
+        place.type === "restaurant"
+          ? (action.mealSlot ??
+            (placeholder ? routineSlotFor(placeholder) : mealSlotFor(time)))
+          : undefined,
       endTime: timeAfter(time, place.duration),
       title: place.name,
       type: place.type,
@@ -999,6 +1186,8 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   const item = plan.items.find((i) => i.id === action.id);
   if (!item) return state;
   if (action.type === "detailEdit") {
+    const validation = editScheduleError({ ...item, ...action }, plan.items);
+    if (validation) return { ...state, notice: validation };
     const title = action.title.trim();
     const validTime = /^([01]\d|2[0-3]):[0-5]\d$/;
     if (
@@ -1038,6 +1227,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
           ? {
               ...candidate,
               title,
+              planningSlot: routineSlotFor(candidate),
               startTime: action.startTime,
               endTime: action.endTime,
             }
@@ -1074,6 +1264,112 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
       { selectedTripItemId: null },
     );
   }
+  if (action.type === "queueReservation") {
+    if (item.planningPlaceholder)
+      return { ...state, notice: "请先更换为实际酒店或餐厅，再加入预约。" };
+    if (
+      item.reservationRequired &&
+      ["pending", "booking"].includes(item.reservationStatus)
+    )
+      return state;
+    if (["booked", "ticketed", "pay_on_site"].includes(item.reservationStatus))
+      return state;
+    return updatePlan(
+      state,
+      plan.items.map((i) =>
+        i.id === item.id
+          ? {
+              ...i,
+              reservationRequired: true,
+              reservationStatus: "pending" as const,
+              providerId: undefined,
+              reservationId: undefined,
+            }
+          : i,
+      ),
+      "已加入本地预约清单；尚未下单或确认库存。",
+    );
+  }
+  if (action.type === "releaseCancelledSchedule") {
+    if (!action.confirmed || item.reservationStatus !== "cancelled")
+      return state;
+    return updatePlan(
+      state,
+      plan.items.map((i) =>
+        i.id === item.id ? { ...i, fixedTime: false, locked: false } : i,
+      ),
+      "已确认解除已取消项目的本地固定时间与拖动限制；取消记录保留，未联系预约渠道。",
+    );
+  }
+  if (action.type === "recordCancellation") {
+    if (
+      !action.externallyCancelled ||
+      !["booked", "ticketed", "pay_on_site"].includes(item.reservationStatus)
+    )
+      return state;
+    return updatePlan(
+      state,
+      plan.items.map((i) =>
+        i.id === item.id
+          ? {
+              ...i,
+              reservationStatus: "cancelled" as const,
+            }
+          : i,
+      ),
+      "仅记录您已在原渠道取消；未发送取消请求。原时间与锁定仍保留。",
+    );
+  }
+  if (action.type === "replaceRailHotel") {
+    const replacement = state.places.find(
+      (place) =>
+        place.id === action.placeId &&
+        place.type === "hotel" &&
+        !place.planningPlaceholder,
+    );
+    if (
+      item.type !== "hotel" ||
+      !replacement ||
+      replacement.id === item.placeId ||
+      plan.items.some((i) => i.id !== item.id && i.placeId === replacement.id)
+    )
+      return state;
+    if (
+      (item.fixedTime ||
+        item.locked ||
+        ["booked", "ticketed", "pay_on_site"].includes(
+          item.reservationStatus,
+        )) &&
+      item.reservationStatus !== "cancelled"
+    )
+      return {
+        ...state,
+        notice:
+          "原酒店仍受预约 / 锁定保护；请先在渠道处理并核对，不会自动更换。",
+      };
+    return updatePlan(
+      state,
+      plan.items.map((i) =>
+        i.id === item.id
+          ? {
+              ...i,
+              placeId: replacement.id,
+              planningPlaceholder: false,
+              title: replacement.name,
+              reservationRequired: replacement.bookingRequired,
+              reservationStatus: replacement.bookingRequired
+                ? ("pending" as const)
+                : ("not_required" as const),
+              providerId: undefined,
+              reservationId: undefined,
+              fixedTime: false,
+              locked: false,
+            }
+          : i,
+      ),
+      "已替换本地住宿地点并保留入住日期；新酒店尚未预约。旧渠道订单不会被操作。",
+    );
+  }
   if (action.type === "provider") {
     const option = state.places
       .find((p) => p.id === item.placeId)
@@ -1104,6 +1400,7 @@ export function tripReducer(state: TripState, action: TripAction): TripState {
   const changed = {
     ...item,
     startTime: action.time,
+    planningSlot: routineSlotFor(item),
     endTime: timeAfter(
       action.time,
       minutes(item.endTime) - minutes(item.startTime),
@@ -1164,6 +1461,11 @@ export function mapView(state: TripState): MapView {
     days = rangeDays(state),
     all = state.ui.rangeMode === "all";
   const placeById = new Map(state.places.map((p) => [p.id, p]));
+  // Unchosen meal/hotel placeholders have no verified point or route segment.
+  const mappedItems = (day: number) =>
+    itemsForDay(plan, day).filter(
+      (i) => !placeById.get(i.placeId)?.planningPlaceholder,
+    );
   const routes: MapRoute[] = [],
     places: PlannerMapPlace[] = [];
   const colors = new Map(plan.days.map((day) => [day.day, day.color]));
@@ -1223,7 +1525,7 @@ export function mapView(state: TripState): MapView {
     }
   } else {
     for (const day of days) {
-      const items = itemsForDay(plan, day.day);
+      const items = mappedItems(day.day);
       const departureStay = confirmedStay(plan, day.day - 1);
       if (departureStay && !items.some((i) => i.id === departureStay.id)) {
         const hotel = placeById.get(departureStay.placeId)!;
@@ -1283,8 +1585,8 @@ export function mapView(state: TripState): MapView {
       [last, (last ?? 0) + 1],
     ]) {
       if (!before || !after) continue;
-      const a = itemsForDay(plan, before).at(-1),
-        b = itemsForDay(plan, after)[0];
+      const a = mappedItems(before).at(-1),
+        b = mappedItems(after)[0];
       if (a && b)
         routes.unshift({
           id: `context-${before}-${after}`,
@@ -1296,8 +1598,8 @@ export function mapView(state: TripState): MapView {
     }
     if (state.ui.rangeMode === "threeDays")
       for (let i = 1; i < days.length; i++) {
-        const a = itemsForDay(plan, days[i - 1].day).at(-1),
-          b = itemsForDay(plan, days[i].day)[0];
+        const a = mappedItems(days[i - 1].day).at(-1),
+          b = mappedItems(days[i].day)[0];
         if (a && b)
           routes.push({
             id: `cross-${days[i].day}`,
@@ -1311,11 +1613,27 @@ export function mapView(state: TripState): MapView {
       for (const p of state.places
         .filter(
           (p) =>
-            p.id.startsWith("alternative-") &&
+            !p.planningPlaceholder &&
+            (p.id.startsWith("alternative-") ||
+              plan.reserveItems?.some(
+                (item) => item.placeId === p.id && item.day === days[0].day,
+              )) &&
             p.city === days[0].city &&
             !plan.items.some((i) => i.placeId === p.id),
         )
-        .slice(0, 3))
+        .sort(
+          (a, b) =>
+            Number(
+              Boolean(plan.reserveItems?.some((i) => i.placeId === b.id)),
+            ) -
+            Number(Boolean(plan.reserveItems?.some((i) => i.placeId === a.id))),
+        )
+        .slice(
+          0,
+          3 +
+            (plan.reserveItems?.filter((i) => i.day === days[0].day).length ??
+              0),
+        ))
         places.push({
           id: p.id,
           type: p.type,
@@ -1330,6 +1648,7 @@ export function mapView(state: TripState): MapView {
   const selected = plan.items.find((i) => i.id === state.ui.selectedTripItemId);
   if (
     selected &&
+    !placeById.get(selected.placeId)?.planningPlaceholder &&
     !all &&
     days.some((d) => selected.day <= d.day && selected.endDay >= d.day) &&
     !places.some((p) => p.tripItemId === selected.id)
@@ -1346,6 +1665,22 @@ export function mapView(state: TripState): MapView {
       reservationStatus: selected.reservationStatus,
       label: `D${selected.day} ${p.name}`,
       color: colors.get(selected.day)!,
+    });
+  }
+  const inspected = state.places.find((p) => p.id === state.ui.inspection?.id);
+  if (
+    inspected &&
+    !inspected.planningPlaceholder &&
+    !places.some((p) => p.id === inspected.id)
+  ) {
+    places.push({
+      id: inspected.id,
+      type: inspected.type,
+      name: inspected.name,
+      coordinates: inspected.coordinates,
+      tripStatus: "recommended",
+      label: `备用 · ${inspected.name}`,
+      color: "#84756e",
     });
   }
   return {
@@ -1373,17 +1708,21 @@ export function mapView(state: TripState): MapView {
           })),
     selectedTripItemId: state.ui.selectedTripItemId,
     focusRevision: state.ui.focusRevision,
-    focus: state.ui.inspection
-      ? (state.places.find((p) => p.id === state.ui.inspection?.id)
-          ?.coordinates ??
-        state.areas.find((a) => a.id === state.ui.inspection?.id)
-          ?.coordinates ??
-        null)
-      : selected
-        ? point(selected)
-        : state.ui.rangeMode !== "day"
-          ? (plan.days.find((d) => d.day === state.ui.focusedDay)
-              ?.coordinates ?? null)
-          : null,
+    focus:
+      inspected?.planningPlaceholder ||
+      (selected && placeById.get(selected.placeId)?.planningPlaceholder)
+        ? null
+        : state.ui.inspection
+          ? (state.places.find((p) => p.id === state.ui.inspection?.id)
+              ?.coordinates ??
+            state.areas.find((a) => a.id === state.ui.inspection?.id)
+              ?.coordinates ??
+            null)
+          : selected
+            ? point(selected)
+            : state.ui.rangeMode !== "day"
+              ? (plan.days.find((d) => d.day === state.ui.focusedDay)
+                  ?.coordinates ?? null)
+              : null,
   };
 }

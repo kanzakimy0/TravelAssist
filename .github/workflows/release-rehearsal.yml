@@ -1,0 +1,91 @@
+name: Trusted local release rehearsal
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Exact current develop commit to rehearse
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-rehearsal-development
+  cancel-in-progress: false
+
+jobs:
+  trust-gate:
+    name: Verify trusted develop revision
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      trusted_sha: ${{ steps.revision.outputs.trusted_sha }}
+    steps:
+      - name: Check out develop without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Require the exact current develop SHA
+        id: revision
+        env:
+          REQUESTED_SHA: ${{ inputs.commit_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$REQUESTED_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Requested revision is not a full commit SHA." >&2
+            exit 1
+          fi
+          trusted_sha="$(git rev-parse HEAD)"
+          if [[ "$REQUESTED_SHA" != "$trusted_sha" ]]; then
+            echo "Requested revision is not the current trusted develop head." >&2
+            exit 1
+          fi
+          echo "trusted_sha=$trusted_sha" >> "$GITHUB_OUTPUT"
+
+  rehearse:
+    name: Build and smoke exact trusted artifact
+    needs: trust-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out the verified revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.trust-gate.outputs.trusted_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use repository Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Run the same quality gates
+        run: |
+          npm run deploy:validate:local
+          node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"
+          npm run lint
+          npm run typecheck
+          npm run format:check:deploy
+
+      - name: Build, audit, start and smoke the standalone release
+        run: npm run deploy:rehearse:local
+
+      - name: Upload the audited local artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: travelassist-${{ needs.trust-gate.outputs.trusted_sha }}
+          path: .artifacts/task-025/releases/${{ needs.trust-gate.outputs.trusted_sha }}
+          if-no-files-found: error
+          retention-days: 3

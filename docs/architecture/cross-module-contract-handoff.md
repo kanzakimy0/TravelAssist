@@ -1,11 +1,11 @@
 # TravelAssist 跨模块 Contract 交接规则
 
-> WBS: `0.9`  
-> Owner: `B`  
-> Status: `Frozen / 待审查`  
-> Issue: `#168`  
-> Baseline: `develop@707bcc8d2af14a86032181be63573beb3aea3e17`  
-> Updated: `2026-09-07`
+> WBS: `0.9`
+> Owner: `B`
+> Status: `Frozen / 治理规范；2026-09-10用户授权修正差异并合并`
+> Issue: `#168`
+> Baseline: `develop@707bcc8d2af14a86032181be63573beb3aea3e17`
+> Updated: `2026-09-10`
 
 ## 1. 目的
 
@@ -27,7 +27,7 @@
 
 ## 2. 与 WBS 0.8 的关系
 
-WBS 0.8 仍处于责任边界固化阶段。本规范根据已经生效的 v0.4 责任原则先行冻结交接机制：
+启动时0.8处于责任边界固化阶段，当前状态以最新Master WBS为准。本规范根据已经生效的 v0.4 责任原则先行冻结交接机制：
 
 - A：网站入口、Planner、Map、Route、Trip Plan、AI 主流程；
 - B：账户、Profile、Preference、Companion、Trip Library 与个人管理；
@@ -40,9 +40,9 @@ WBS 0.8 仍处于责任边界固化阶段。本规范根据已经生效的 v0.4 
 
 ---
 
-## 3. 2026-09-07 仓库审计结论
+## 3. 2026-09-07 历史审计与2026-09-10更新
 
-本次执行检查了当前 `develop` 的实际目录与模型。
+以下3.1–3.5保留2026-09-07历史语境；“不存在”不代表今天的仓库。当前权威清单见3.6，不以旧快照阻止已完成Contract消费。
 
 ### 3.1 当前没有正式共享 Contract 层
 
@@ -132,6 +132,21 @@ src/shared/contracts/<domain>/
 
 ---
 
+### 3.6 最新canonical inventory与交接边界（2026-09-10）
+
+核对基线：develop f14ac40d329d96d900a53e832ba40e8e4abe8cbd。已存在shared/server公开边界：
+
+| 领域                     | Canonical source / Producer                                               | Consumer或adapter                                                                      | 状态 / 缺口                                                                            |
+| ------------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Trip Plan / Resume v1.0  | src/shared/contracts/trips/index.ts、validation.ts、fixtures.ts；A / 4.17 | src/features/start-flow/model/trip-contract-adapter.ts；B Engine复用snapshot/parser    | 4.17已完成；Planner UI model非主Schema；5.18/5.19未完成服务接线                        |
+| Route v1.0               | src/shared/contracts/routes/index.ts、validation.ts、fixtures.ts；A / 7.5 | server Route evaluation及B Engine context使用RouteResponse/validator                   | 7.5已完成；7.8开发期子集不等于生产Provider/付费/retention授权                          |
+| Auth公开视图             | src/lib/auth/contracts.ts；B / 8.3                                        | src/lib/auth/home-viewer.server.ts、current-user.ts等可信服务适配，Header/账户入口消费 | 已有公共视图和可信session边界；不得传credential或客户端自报role                        |
+| Engine v0.1 + assessment | src/shared/contracts/engine/index.ts；B / 4.20                            | src/server/engine/index.ts及input/context/report，输入复用4.17/7.5                     | 4.20 Frozen、4.20.1/4.21已完成；apply/rollback未实现，类型不等于API                    |
+| Preference / Companion   | src/features/preferences与companions内部模型；B                           | 页面内部adapter；未来A消费正式公共包                                                   | develop无相应shared/contracts包；PR #221候选不是已发布Contract，5.14/5.17/4.18单独交接 |
+| Save / Read / History    | B 5.18/5.19；A 4.19 Consumer及8.5主Schema                                 | Trip Library派生ViewModel，恢复引用4.17                                                | API/DB handoff未完成；浏览器存储或未合并PR不能冒充公共服务                             |
+
+路径为当前唯一来源，不复制Schema或建立第二包。未来升级仍须版本、fixture和Consumer review；治理冻结不授予新业务能力。PR #169/#170是kickoff历史，最终规范以PR #171实际合并为准。
+
 ## 4. Contract 角色
 
 ### 4.1 Contract Owner / Producer
@@ -178,15 +193,15 @@ Consumer 负责：
 
 ## 5. 冻结的责任矩阵
 
-| Contract | Producer / Owner | Consumer | 关联后续 WBS | 主要用途 |
-|---|---|---|---|---|
-| User / Session Public View | B | A | `5.3` → `3.4` | 主系统读取登录与公开用户状态 |
-| Profile Public View | B | A | `5.15` → 主系统需要方 | 仅公开主系统真正需要的资料 |
-| Preference Contract | B | A | `5.14` → `4.18`, `6.3`, `6.5`, `7.9` | Planner / Recommendation / AI 消费长期偏好 |
-| Companion Contract | B | A | `5.12`, `5.17` → Planner | Planner 消费同行人摘要与约束 |
-| Trip Plan Contract | A | B | `4.17` → `5.18`, `5.19` | B 保存、历史与 Trip Library 消费可保存行程 |
-| Planner Resume / Edit Handoff | A | B | `4.15`, `4.17` ↔ `5.10`, `5.19` | B 返回 Planner 继续编辑 |
-| Trip Save Invocation Contract | B | A | `5.19` → `4.19` | Planner 调用 B 的保存能力 |
+| Contract                      | Producer / Owner | Consumer | 关联后续 WBS                         | 主要用途                                   |
+| ----------------------------- | ---------------- | -------- | ------------------------------------ | ------------------------------------------ |
+| User / Session Public View    | B                | A        | `5.3` → `3.4`                        | 主系统读取登录与公开用户状态               |
+| Profile Public View           | B                | A        | `5.15` → 主系统需要方                | 仅公开主系统真正需要的资料                 |
+| Preference Contract           | B                | A        | `5.14` → `4.18`, `6.3`, `6.5`, `7.9` | Planner / Recommendation / AI 消费长期偏好 |
+| Companion Contract            | B                | A        | `5.12`, `5.17` → Planner             | Planner 消费同行人摘要与约束               |
+| Trip Plan Contract            | A                | B        | `4.17` → `5.18`, `5.19`              | B 保存、历史与 Trip Library 消费可保存行程 |
+| Planner Resume / Edit Handoff | A                | B        | `4.15`, `4.17` ↔ `5.10`, `5.19`      | B 返回 Planner 继续编辑                    |
+| Trip Save Invocation Contract | B                | A        | `5.19` → `4.19`                      | Planner 调用 B 的保存能力                  |
 
 说明：
 

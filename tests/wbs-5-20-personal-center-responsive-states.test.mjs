@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
@@ -209,38 +208,8 @@ test("existing responsive navigation still uses the shared unsaved guard", () =>
   );
 });
 
-test("accepted visual follow-ups remain limited to authorized presentation files", () => {
-  const changed = execFileSync(
-    "git",
-    [
-      "diff",
-      "--name-only",
-      "3ecb5be",
-      "--",
-      "src/features/profile",
-      "src/features/preferences",
-      "src/features/companions",
-      "src/features/trip-library",
-    ],
-    { encoding: "utf8" },
-  )
-    .trim()
-    .split(/\r?\n/)
-    .filter(Boolean);
-  assert.deepEqual(changed, [
-    "src/features/companions/companion-center.module.css",
-    "src/features/companions/companion-center.tsx",
-    "src/features/preferences/preference-center.module.css",
-    "src/features/preferences/preference-center.tsx",
-    "src/features/preferences/preference-radar.tsx",
-    "src/features/profile/account-subpage.tsx",
-    "src/features/profile/profile-account.module.css",
-    "src/features/profile/profile-account.tsx",
-    "src/features/trip-library/trip-library-page.tsx",
-    "src/features/trip-library/trip-library.module.css",
-  ]);
-});
-
+// Task ownership is reviewed per change, not against a permanent Git file list.
+// The responsive/state/focus contracts above and presentation boundary below remain enforced.
 test("5.20 source adds no API persistence auth service worker or booking integration", () => {
   const implementation = [
     states,

@@ -76,7 +76,7 @@
   border: 1px solid var(--pc-accent-primary);
   border-radius: 14px;
   color: #fffaf6 !important;
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
   box-shadow: 0 8px 18px rgb(126 57 45 / 16%);
   font-weight: 600;
 }
@@ -127,7 +127,7 @@
   font-weight: 700;
 }
 .tabs button[aria-selected="true"]::after {
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
 }
 .tabs button span {
   display: grid;
@@ -301,7 +301,7 @@
 .reservation progress::-webkit-progress-value,
 .compactReservation progress::-webkit-progress-value {
   border-radius: 10px;
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
 }
 .categorySummary {
   display: grid;
@@ -603,7 +603,7 @@
 .filterChips button[aria-pressed="true"] {
   border-color: var(--pc-accent-primary);
   color: #fffaf6;
-  background: var(--pc-accent-primary);
+  background: var(--background-accent-primary);
 }
 .favoriteImage {
   min-height: 190px;
@@ -768,9 +768,9 @@
 }
 .dialogActions .confirmDanger,
 .dialogActions .dialogPrimary {
-  border-color: var(--pc-accent-primary, #a74739);
+  border-color: var(--pc-accent-primary);
   color: #fffaf6;
-  background: var(--pc-accent-primary, #a74739);
+  background: var(--background-accent-primary);
 }
 .srOnly {
   position: absolute;
@@ -1423,5 +1423,132 @@
     width: 28px;
     font-size: 30px;
     text-shadow: 0 3px 10px rgb(224 116 131 / 18%);
+  }
+}
+
+/* WBS-5.10-B-FOLLOWUP-1: content-sized All cards must remain reachable beyond the first row. */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-block: 16px;
+  font-size: 0.875rem;
+}
+
+.pagination button {
+  min-width: 72px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 12px;
+  color: var(--pc-text-primary);
+  background: var(--pc-bg-card);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.draftProgress {
+  display: grid;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+.draftProgress progress {
+  width: 100%;
+  accent-color: var(--pc-accent-primary);
+}
+.allDraftCard {
+  border-style: dashed;
+}
+
+@media (min-width: 1280px) {
+  .page[data-trip-library-page]:is(
+      [data-active-tab="all"],
+      [data-active-tab="upcoming"]
+    ) {
+    height: auto;
+    grid-template-rows: clamp(102px, 12vh, 116px) auto auto;
+    padding-bottom: 20px;
+  }
+  .page[data-trip-library-page]:is(
+      [data-active-tab="all"],
+      [data-active-tab="upcoming"]
+    )
+    .panel {
+    height: auto;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+    overflow: visible;
+    gap: 24px;
+  }
+  .page[data-trip-library-page] .nextTripHero {
+    height: auto;
+    min-height: 280px;
+  }
+  .page[data-trip-library-page] .heroBody {
+    padding: 24px;
+  }
+  .page[data-trip-library-page] .librarySection[data-library-section="active"],
+  .page[data-trip-library-page] .librarySection[data-library-section="recent"] {
+    display: grid;
+    height: auto;
+    grid-template-rows: auto auto auto;
+    overflow: visible;
+  }
+  .page[data-trip-library-page] .cardGrid {
+    height: auto;
+    align-items: stretch;
+  }
+  .page[data-trip-library-page] .allCardGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .page[data-trip-library-page] .tripCard {
+    height: auto;
+    grid-template-rows: 140px auto;
+  }
+  .page[data-trip-library-page] .tripCardBody {
+    gap: 10px;
+    padding: 16px;
+  }
+  .page[data-trip-library-page] .cardTitleLine h3 {
+    font-size: 1rem;
+    white-space: normal;
+  }
+  .page[data-trip-library-page] .tripDate {
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+  .page[data-trip-library-page]
+    .librarySection[data-library-section="active"]
+    .tripCardBody
+    > .primaryButton {
+    display: inline-flex;
+    min-height: 44px;
+    margin-top: auto;
+  }
+  .page[data-trip-library-page] .librarySection[data-library-section="drafts"] {
+    overflow: visible;
+  }
+  .page[data-trip-library-page][data-active-tab="drafts"] {
+    height: auto;
+  }
+  .page[data-trip-library-page][data-active-tab="drafts"] .panel {
+    height: auto;
+    overflow: visible;
+  }
+  .page[data-trip-library-page] .draftGrid {
+    height: auto;
+    grid-auto-rows: minmax(220px, auto);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .page[data-trip-library-page] .allCardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

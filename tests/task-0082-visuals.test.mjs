@@ -1,22 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {
-  landmarkKey,
-  isLandmark,
-  travelBubbles,
-  warmMapStyle,
-} from "../src/features/planner/map/map-visuals.ts";
+import "./register-planner-ts.mjs";
+const { landmarkKey, isLandmark, travelBubbles, warmMapStyle } =
+  await import("../src/features/planner/map/map-visuals.ts");
 import {
   plannerMockPlans,
   initialPlannerSettings,
 } from "../src/features/planner/data/planner-mock-data.ts";
 import { makePlannerCatalog } from "../src/features/planner/data/planner-catalog.ts";
-import {
-  makeTripState,
-  currentPlan,
-  mapView,
-  tripReducer,
-} from "../src/features/planner/model/trip-model.ts";
+const { makeTripState, currentPlan, mapView, tripReducer } =
+  await import("../src/features/planner/model/trip-model.ts");
 const { places, areas } = makePlannerCatalog(plannerMockPlans);
 const state = makeTripState(
   plannerMockPlans,
@@ -73,7 +66,8 @@ test("map warmth only adjusts existing base styling, not route data", () => {
     setPaintProperty: (...a) => calls.push(a),
     setLayoutProperty: (...a) => calls.push(a),
   });
-  assert.ok(calls.some((a) => a[0] === "water" && a[2] === "#cbdcdb"));
+  assert.ok(calls.some((a) => a[0] === "water" && a[2] === "#acd4e3"));
+  assert.ok(!calls.some((a) => a[0] === "landuse")); // Keep terrain / vegetation differentiation.
   assert.ok(calls.some((a) => a[0] === "poi-label" && a[2] === "none"));
   assert.ok(!calls.some((a) => a[0] === "route-selected"));
 });
