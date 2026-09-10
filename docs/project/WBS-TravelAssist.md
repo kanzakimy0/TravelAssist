@@ -918,7 +918,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
-| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
+| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待审查（TASK-038-A / #299；100 POI 离线校准候选，非 Production Freeze） |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
@@ -943,6 +943,17 @@ TASK-023-A tracking (2026-09-09):
 - 仅实现显式、可取消、会话级路线预览；不持久化 Provider 查询结果，
   Evaluation 生产保护保持 fail-closed；live smoke 与真实 Mapbox 因隔离工作区无
   合法凭据延期。
+
+TASK-038-A tracking (2026-09-11):
+
+- Issue #299；分支 `codex/a-100-poi-scoring-pilot`；基线
+  `fede48bb2a4916bcc6070be325ec5b450fa6fbd1`；Draft PR 待创建。
+- 100 个真实日本 POI 身份样本、43 维稀疏证据标注、12 个偏好场景、288 条
+  pairwise/diagnostic benchmark、80/20 固定拆分与 720 个有界候选已形成离线证据。
+- 评分 hard invariants 12/12 通过；候选仅具备进入人工复核资格，不是生产参数
+  冻结。英文开放知识覆盖、主观标注和缺少证据支持的数值 Visit Profile 仍需
+  后续独立复核；不为完整度编造相关数字。
+- 不调用 LLM、付费 Provider、实时路线/天气/预约 API 或生产 DB；未启动后续 Pilot。
 
 ## 8. 数据库与认证基础
 

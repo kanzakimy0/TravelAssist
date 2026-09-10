@@ -1,0 +1,260 @@
+{
+  "pilotVersion": "task-038-v1",
+  "selectedCandidate": {
+    "configId": "candidate-0457",
+    "gamma": 2.5,
+    "weights": {
+      "benefit": 0.8,
+      "suitability": 1,
+      "cost": 0.8,
+      "risk": 0.8
+    },
+    "coverageExponent": 0,
+    "confidenceStrength": 0,
+    "normalization": "50_plus_weighted_mean_times_49_clamped_0_99",
+    "scoreRange": [0, 99]
+  },
+  "metrics": {
+    "highConfidenceAgreement": 1,
+    "highAndMediumAgreement": 0.993631,
+    "tieHandlingAccuracy": 0.272727,
+    "evaluatedJudgments": 168,
+    "byScenario": {
+      "first-time-iconic": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "hidden-local": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "photo-scenery": {
+        "judgments": 14,
+        "agreement": 0.928571
+      },
+      "history-architecture": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "food-focused": {
+        "judgments": 5,
+        "agreement": 1
+      },
+      "shopping-city": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "nature-traveler": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "art-educational": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "family-interactive": {
+        "judgments": 12,
+        "agreement": 1
+      },
+      "relaxed-rest": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "low-walking": {
+        "judgments": 14,
+        "agreement": 1
+      },
+      "low-crowd": {
+        "judgments": 14,
+        "agreement": 1
+      }
+    },
+    "byRegion": {
+      "Chubu": {
+        "judgments": 40,
+        "agreement": 1
+      },
+      "Chugoku": {
+        "judgments": 22,
+        "agreement": 1
+      },
+      "Hokkaido": {
+        "judgments": 31,
+        "agreement": 1
+      },
+      "Kansai": {
+        "judgments": 45,
+        "agreement": 1
+      },
+      "Kanto": {
+        "judgments": 57,
+        "agreement": 0.982456
+      },
+      "Kyushu": {
+        "judgments": 31,
+        "agreement": 1
+      },
+      "Okinawa": {
+        "judgments": 22,
+        "agreement": 1
+      },
+      "Shikoku": {
+        "judgments": 29,
+        "agreement": 0.965517
+      },
+      "Tohoku": {
+        "judgments": 23,
+        "agreement": 1
+      }
+    },
+    "byArchetype": {
+      "adventure": {
+        "judgments": 27,
+        "agreement": 1
+      },
+      "architecture": {
+        "judgments": 99,
+        "agreement": 1
+      },
+      "art": {
+        "judgments": 33,
+        "agreement": 0.969697
+      },
+      "crowded": {
+        "judgments": 94,
+        "agreement": 0.989362
+      },
+      "educational": {
+        "judgments": 38,
+        "agreement": 1
+      },
+      "entertainment": {
+        "judgments": 36,
+        "agreement": 1
+      },
+      "family": {
+        "judgments": 43,
+        "agreement": 1
+      },
+      "food": {
+        "judgments": 19,
+        "agreement": 1
+      },
+      "garden": {
+        "judgments": 23,
+        "agreement": 1
+      },
+      "hidden": {
+        "judgments": 28,
+        "agreement": 0.964286
+      },
+      "high_burden": {
+        "judgments": 93,
+        "agreement": 0.989247
+      },
+      "historic": {
+        "judgments": 117,
+        "agreement": 1
+      },
+      "iconic": {
+        "judgments": 128,
+        "agreement": 0.992188
+      },
+      "interactive": {
+        "judgments": 54,
+        "agreement": 1
+      },
+      "local": {
+        "judgments": 93,
+        "agreement": 1
+      },
+      "low_burden": {
+        "judgments": 66,
+        "agreement": 0.984848
+      },
+      "market": {
+        "judgments": 8,
+        "agreement": 1
+      },
+      "mountain": {
+        "judgments": 17,
+        "agreement": 1
+      },
+      "museum": {
+        "judgments": 57,
+        "agreement": 0.982456
+      },
+      "nature": {
+        "judgments": 95,
+        "agreement": 0.989474
+      },
+      "night": {
+        "judgments": 32,
+        "agreement": 0.96875
+      },
+      "onsen": {
+        "judgments": 15,
+        "agreement": 1
+      },
+      "park": {
+        "judgments": 24,
+        "agreement": 1
+      },
+      "photo": {
+        "judgments": 28,
+        "agreement": 0.964286
+      },
+      "relaxation": {
+        "judgments": 15,
+        "agreement": 1
+      },
+      "scenic": {
+        "judgments": 67,
+        "agreement": 1
+      },
+      "shopping": {
+        "judgments": 28,
+        "agreement": 0.964286
+      },
+      "shrine": {
+        "judgments": 23,
+        "agreement": 1
+      },
+      "temple": {
+        "judgments": 33,
+        "agreement": 1
+      },
+      "unique": {
+        "judgments": 12,
+        "agreement": 0.916667
+      },
+      "urban": {
+        "judgments": 30,
+        "agreement": 0.966667
+      },
+      "viewpoint": {
+        "judgments": 31,
+        "agreement": 1
+      }
+    }
+  },
+  "invariants": {
+    "checks": {
+      "benefitPositiveMonotonic": true,
+      "benefitNeutralIsZero": true,
+      "benefitNegativeMonotonic": true,
+      "lowerWalkingToleranceNotLessPenalty": true,
+      "highWalkingToleranceNeverRewards": true,
+      "lowerCrowdToleranceNotLessPenalty": true,
+      "highCrowdToleranceNeverRewards": true,
+      "nullChangesCoverage": true,
+      "nullNotKnownZeroOrFive": true,
+      "hardRejectNotSelectable": true,
+      "scoreInRange": true,
+      "matchExcludesLiveContext": true
+    },
+    "passed": 12,
+    "total": 12
+  },
+  "indeterminateExcluded": 24
+}
