@@ -959,7 +959,7 @@ TASK-039-A tracking (2026-09-11):
 
 - Issue #301；分支 `codex/a-poi-scoring-blind-review`；叠加基线
   `71825e995946d7796587f4648dfc78490b45546d`（TASK-038-A / Draft PR #300）；
-  Draft PR 待创建并以 `codex/a-100-poi-scoring-pilot` 为 base。
+  实现 `b240c57`；Draft PR #302 以 `codex/a-100-poi-scoring-pilot` 为 base。
 - 已准备 144 条独立盲审题：96 primary、24 near-score diagnostic、12 machine
   benchmark audit、12 hidden repeat；R1/R2 使用独立稳定顺序、盲 ID 与 A/B 朝向。
 - Reviewer-facing pack 泄漏审计通过；未提供真实人工 response，未生成 Human Gold，

@@ -19,11 +19,12 @@
 ## Branch / commits
 
 - Branch: `codex/a-poi-scoring-blind-review`.
-- Implementation and final tracking commits are recorded in the Draft PR and will be synchronized here after PR creation.
+- `b240c57f3fb14c295a81bfb3972812152fbc73b3` — blind-review generator, two reviewer packs, internal map, leakage audit, response/agreement/gold/evaluation tooling, focused tests, Result, and WBS state.
+- A final tracking-only commit synchronizes PR #302 into this Result and WBS; the Draft PR head is authoritative for that commit SHA.
 
 ## Draft PR
 
-To be created as Draft from `codex/a-poi-scoring-blind-review` to `codex/a-100-poi-scoring-pilot`. It must not be merged before the stacked TASK-038 dependency is handled.
+[#302](https://github.com/kanzakimy0/TravelAssist/pull/302) is Open / Draft from `codex/a-poi-scoring-blind-review` to `codex/a-100-poi-scoring-pilot`. It must not be merged before the stacked TASK-038 dependency is handled.
 
 ## 144-item composition
 
