@@ -628,6 +628,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |
+| TASK-036-A | 4.47 | A | 待审查（纯 TypeScript 合同基础；设计仍为 Freeze Candidate） | #291 Open | `docs/tasks/TASK-036-a-trip-planning-contract-foundation.md` / `docs/tasks/RESULT-TASK-036-a-trip-planning-contract-foundation.md` | `codex/a-trip-planning-contract-foundation` | `PENDING`（实现提交后同步） | `PENDING`（stacked Draft PR → `design/a-trip-engine-poi-ai-architecture-v2`） |
 
 
 | WBS-0.9-B | 0.9 | B | 待审查 | #168 | `docs/tasks/TASK-WBS-0.9-b-contract-handoff-rules.md` | `review/b-wbs-0-9-contract-handoff-finalize`（kickoff: `feature/b-wbs-0-9-contract-handoff-rules`） | `e8fbb45`（最终规范）；`300973d`（Result） | [#171](https://github.com/kanzakimy0/TravelAssist/pull/171) Draft；[#169](https://github.com/kanzakimy0/TravelAssist/pull/169)/[#170](https://github.com/kanzakimy0/TravelAssist/pull/170) 为自动化 kickoff 历史 |
@@ -834,6 +835,12 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 未开始 |
 
 正式入口：[Issue #201](https://github.com/kanzakimy0/TravelAssist/issues/201)、`docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md`。4.21之后逐项建立独立Task，不自动执行。
+
+### 4C. Trip Planning Engine public contracts
+
+| WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
+| --- | --- | --- | --- | --- | --- |
+| 4.47 | Trip Planning Engine Contract / Validator / Fixtures Foundation | A | P0 | 4.17,2.7；P0 Design Candidate set | 待审查（TASK-036-A / #291；stacked Draft PR，设计仍为 Freeze Candidate） |
 
 ## 5. 用户个人中心 / 管理 / 偏好（B 全责）
 

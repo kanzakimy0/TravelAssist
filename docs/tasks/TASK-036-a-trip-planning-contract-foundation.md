@@ -4,7 +4,8 @@
 > WBS: **4.47 — Trip Planning Engine Contract / Validator / Fixtures Foundation**  
 > Owner: **A — Main Travel System / Shared Planning Contracts**  
 > Priority: **P0**  
-> Status: **Ready for stacked implementation / Design Base Gate required**  
+> Status: **Implementation complete / Pending review (stacked Draft PR)**
+>
 > Design branch: `design/a-trip-engine-poi-ai-architecture-v2`  
 > Design PR: #266 (Draft at Task publication)  
 > Planned implementation branch: `codex/a-trip-planning-contract-foundation`  
