@@ -61,10 +61,12 @@ import { DetailSidebar } from "./detail-sidebar";
 import { DetailReservationPanel } from "./detail-reservation-panel";
 import { PlaceDetails } from "./place-details";
 import { PlannerRightPanel } from "./planner-right-panel";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { TripWorkspace } from "./trip-workspace";
 import { WorkspaceCapabilities } from "./workspace-capabilities";
 import { TripCompletionDialog } from "./trip-completion-dialog";
 import { FlightProject } from "./flight-project";
+import { PlannerIcon } from "./planner-icon";
 import {
   preparationFor,
   preparationFingerprint,
@@ -85,9 +87,11 @@ function serverViewport() {
 }
 
 export function PlannerPage({
+  viewer = null,
   routeQueriesEnabled = false,
 }: {
   routeQueriesEnabled?: boolean;
+  viewer?: HomeViewer | null;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -135,6 +139,10 @@ export function PlannerPage({
   } | null>(null);
   const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
   const [addOpen, setAddOpen] = useState(false);
+  const [mapPickActive, setMapPickActive] = useState(false);
+  const [mapPickedCoordinates, setMapPickedCoordinates] = useState<
+    [number, number] | null
+  >(null);
   const [completionOpen, setCompletionOpen] = useState(false);
   const [manualPlanAction, setPlanAction] = useState<{
     id: string;
@@ -413,6 +421,8 @@ export function PlannerPage({
     setBulkBooking(null);
     setReservationView(null);
     setReplacementId(null);
+    setMapPickActive(false);
+    setMapPickedCoordinates(null);
   }
   function openProject(item: DetailRailItem, focus?: "advice" | "booking") {
     resetProjectSelection();
@@ -449,6 +459,53 @@ export function PlannerPage({
         isRightPanelOverlayOpen: false,
       },
     });
+  }
+  function addBreakfastChoice(day: number, choice: "hotel" | "simple") {
+    const hotelItem = currentPlan(trip).items.find(
+      (item) => item.type === "hotel" && item.day <= day && item.endDay >= day,
+    );
+    const hotelPlace = hotelItem
+      ? trip.places.find((place) => place.id === hotelItem.placeId)
+      : undefined;
+    const item: DetailDraftItem = {
+      id: `detail-draft-breakfast-${crypto.randomUUID()}`,
+      day,
+      title:
+        choice === "hotel"
+          ? `酒店早餐${hotelItem ? ` · ${hotelItem.title}` : ""}`
+          : "简易早餐",
+      startTime: "07:00",
+      endTime: "07:30",
+      type: "restaurant",
+      note:
+        choice === "hotel"
+          ? "优先确认住宿是否含早餐、供应时间与过敏原信息。"
+          : "安排便利店、咖啡店或外带简餐；具体地点仍需确认。",
+      ...(hotelPlace
+        ? {
+            location: {
+              source: "catalog" as const,
+              coordinates: hotelPlace.coordinates,
+              placeId: hotelPlace.id,
+              label:
+                choice === "hotel"
+                  ? `${hotelPlace.name} · 酒店早餐`
+                  : `${hotelPlace.name}附近 · 简易早餐`,
+            },
+          }
+        : {}),
+    };
+    mutateDetailDraft((current) => ({
+      ...current,
+      items: [...current.items, item],
+    }));
+    resetProjectSelection();
+    setDraftInspectionId(item.id);
+    setCheckStatus(
+      choice === "hotel"
+        ? "已加入酒店早餐草稿 · 请核对是否含早与供应时间"
+        : "已加入简易早餐草稿 · 请在详情确认具体地点",
+    );
   }
   function openMissing(
     day: number,
@@ -690,6 +747,7 @@ export function PlannerPage({
       onDay={selectDetailDay}
       onItem={(item, _trigger, focus) => openProject(item, focus)}
       onMissing={openMissing}
+      onBreakfastChoice={addBreakfastChoice}
       actions={detailActions}
       onMinimize={() => {
         if (!bottomCollapsed) setDetailMinimized(true);
@@ -772,6 +830,7 @@ export function PlannerPage({
       }}
     >
       <TripWorkspace
+        viewer={viewer}
         onAdviceAction={(id, action, trigger) => {
           if (action === "adjust") {
             dispatchTrip({
@@ -852,7 +911,7 @@ export function PlannerPage({
                   aria-label="关闭项目详情框"
                   onClick={() => setAddOpen(false)}
                 >
-                  ×
+                  <PlannerIcon name="close" />
                 </button>
               </header>
               <div className={projectStyles.editor}>
@@ -880,7 +939,6 @@ export function PlannerPage({
                     setAddOpen(false);
                     setDraftInspectionId(test.id);
                   }}
-                  validate={(item) => editScheduleError(item, railItems)}
                   day={detailDay}
                   trigger={addTrigger}
                   onClose={() => setAddOpen(false)}
@@ -891,6 +949,12 @@ export function PlannerPage({
                     }));
                     setAddOpen(false);
                     setDraftInspectionId(item.id);
+                  }}
+                  mapPick={{
+                    active: mapPickActive,
+                    coordinates: mapPickedCoordinates,
+                    onToggle: () => setMapPickActive((current) => !current),
+                    onClear: () => setMapPickedCoordinates(null),
                   }}
                 />
               </div>
@@ -919,6 +983,11 @@ export function PlannerPage({
             .map((leg) => [leg.id, leg.label]),
         )}
         onSelectMapFeature={selectMapFeature}
+        mapPickMode={mode === "detail" && addOpen && mapPickActive}
+        onMapPick={(coordinates) => {
+          setMapPickedCoordinates(coordinates);
+          setMapPickActive(false);
+        }}
         onEditDetailItem={(id, trigger) => {
           const item = allRailItems.find((candidate) => candidate.id === id);
           if (item) selectDetailItem(item, trigger);

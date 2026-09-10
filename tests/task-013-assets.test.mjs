@@ -399,3 +399,13 @@ test("legacy AI provenance remains illustrative, never documentary", () => {
   assert.ok(hero.authenticityEvidence);
   assert.ok(entries.every((entry) => entry.authenticity !== "documentary"));
 });
+
+test("legacy inventory does not double-count manifested runtime sources", () => {
+  const legacyPaths = new Set(
+    json(CATALOG + "legacy-inventory.v1.json").entries.map(
+      (entry) => entry.path,
+    ),
+  );
+  for (const asset of manifest.assets.filter((a) => a.runtime.kind === "local"))
+    assert.equal(legacyPaths.has("public" + asset.runtime.path), false);
+});

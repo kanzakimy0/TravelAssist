@@ -304,6 +304,7 @@ type EngineResultV0_1 = {
     planRevision: number;
   } | null;
   issues: EngineIssueV0_1[];
+  assessment?: ReasonablenessReportV0_1; // Optional 4.20.1 output; see section 24.
   confirmationRequirements: ConfirmationRequirementV0_1[];
   preview: PreviewV0_1 | null;
   replay: {
@@ -887,3 +888,282 @@ Preview/apply 不隐式调用 Provider。Consumer 可请求 Provider-owned refre
 - 4.24：回归、并发、失败、回放集成验收，**未启动**。
 
 本契约不授权 4.21–4.24，也不授权 Planner/Detail/Start/Personal Center UI、4.16 runtime core、4.17 canonical schema、8.5 SQL Schema、业务表、Migration、API endpoint、Engine runtime、transaction apply、runtime rollback、AI runtime、Mapbox、Route Provider、Booking、Payment、Authentication 或任何付费 Provider 调用。
+
+## 24. WBS 4.20.1 Amendment：行程合理性输出（Review Candidate）
+
+### 24.1 增量范围与兼容性
+
+Issue [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)；Owner B；审计基线 `fe538e7093bd58e7d0fe7fd434bf907dd132277a`。本节是同一 Engine v0.1 review candidate 的增量说明，不是新 Engine、Trip Plan Schema 或已发布 runtime。
+
+§1–23 的 ChangeSet、operation whitelist、validate/preview/apply/rollback、权限、确认、双 revision、幂等、事务、audit、rollback 与 Provider fact 边界继续有效。§7 的四种顶层 outcome 不改名、不新增第五种终态；`warning` 通过下述 assessment status 及既有 `issues[].severity="warning"` 明确区分。既有纯 v0.1 结果仍有效，但未携带 assessment **不等于完成合理性评估**。
+
+新增的可选结果字段为 §7 `EngineResultV0_1.assessment?: ReasonablenessReportV0_1`，只有识别本 Amendment 的 Consumer 才能使用。缺字段表示未请求/未提供该能力；`coverage` 表示已请求的规则覆盖情况。启用规则的策略/能力协商属于可信 service boundary，不能由客户端关闭硬规则。未来 Consumer 要求 assessment 而能力不可用时必须返回 `unsupported`，不能退回裸 `accepted`。旧 Consumer 无法解析所需扩展时也 fail closed；发布前须经 B Producer / A Consumer review（OD-ASSESSMENT-01），不声称“任意旧 parser 自动兼容”。
+
+### 24.2 输入归属与 duration 审计
+
+| 输入                                   | 权威来源 / 用法                                                                    | 禁止                                                                             |
+| -------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| 景点多维评分（当前 43 字段方向）       | Attraction / Profile / Rule 输入；以版本化、可信 resolver 引用提供给 policyContext | 不把 43 字段、偏好向量或匹配公式复制到 ChangeSet；不把高匹配分当作可执行证明     |
+| minimum / recommended duration         | 特定景点及明确 Visit Mode 的规则/profile；来源、版本、时效与适用条件可追踪         | 不把清水寺样例阈值作为全局常数，不自动换成 photo-stop 模式来通过检查             |
+| 计划停留                               | 已校验 canonical `PlanItemV1.schedule` 的起止 instant；派生分钟数仅用于本次评估    | 不写回 Engine 私有 duration 字段；不把当地钟面时间直接相减                       |
+| 实际停留 actual duration               | 未来可信执行事实（若具有正式拥有者和契约）；规划阶段只能使用计划区间作为预测依据   | 不把计划90分钟声称为已实际游览90分钟；事实来源尚未冻结时不伪造 observed duration |
+| walking / physical intensity           | 标准 Visit Mode / 推荐时长下的负担基准，或版本化实测强度事实                       | 不把 walking=7 当作每次访问固定总疲劳7                                           |
+| route / environment / party / recovery | 既有 Provider-owned normalized facts、可信参与者约束及未来规则上下文引用           | 无 raw payload、无未经授权的个人资料、无隐式外部查询                             |
+
+审计 `src/shared/contracts/trips/index.ts`：当前 item 只有可空 schedule，**无独立 visit duration 或 observed-duration 字段**；TripDraftFacts 的 `dates.durationDays` 是旅行天数，不能代替 item duration。`UPDATE_DURATION` 继续命中 §5 `unsupported`（`OPERATION_UNSUPPORTED`），只接受现有 targetRef 形状；附加 duration payload 仍被 §4 拒绝。不得把这个 operation 静默翻译成 UPDATE_TIME。
+
+显式 `UPDATE_TIME` 仍可使用 canonical schedule 做纯评估：完整 instant 区间能够导出30或90分钟，并不意味着独立 duration 编辑已启用。null schedule、缺失实际执行事实、排队/休息/游览分段无法区分时，以 unknown / insufficient inputs 表达，不能从推荐时长补出“实际时长”。区间与活动时长的区别、Visit Mode 绑定和分段规则由4.16/4.17及4.21协商，不在本 Amendment 写入 Plan。
+
+审计参考：未合并的 [PR #266](https://github.com/kanzakimy0/TravelAssist/pull/266) 内 `poi-master-schema-v0.2.md`、`poi-scoring-spec-v0.2.md`、`itinerary-feasibility-spec-v0.1.md` 提出 Visit Profile、标准负担和单日/多日规则。其 schema、公式、阈值仍为候选；本 Amendment 只承接 #282 明确要求的语义，不将该分支导入或宣称冻结。具体43字段清单仍由其数据拥有者维护。
+
+### 24.3 结构化 assessment / impact
+
+以下仍为文档伪 TypeScript，引用现有 canonical IDs 与 §8 issue，**不新增 src 类型或运行时实现**：
+
+```ts
+type AssessmentStatus =
+  "accepted" | "warning" | "needsConfirmation" | "blocked" | "unsupported";
+
+type AssessmentScope =
+  | { kind: "item"; planId: OpaqueId; dayId: OpaqueId; itemId: OpaqueId }
+  | { kind: "day"; planId: OpaqueId; dayId: OpaqueId }
+  | { kind: "itinerary"; planId: OpaqueId; dayIds: OpaqueId[] };
+
+type AssessmentEvidenceRef = {
+  kind: "canonical_schedule" | "profile" | "rule" | "provider_fact" | "context";
+  ref: OpaqueId;
+  version: string;
+};
+
+type DurationEvidence = {
+  basis: "planned_schedule" | "observed_fact" | "unknown";
+  evaluatedMinutes: number | null;
+  minimumMinutes: number | null;
+  recommendedMinutes: number | null;
+  visitModeRef: OpaqueId | null;
+  sourceRefs: AssessmentEvidenceRef[];
+};
+
+type AssessmentImpact = {
+  metric:
+    "physical_load" | "fatigue_impact" | "schedule_conflict" | "day_overload";
+  state: "evaluated" | "not_evaluated" | "insufficient_inputs" | "unsupported";
+  direction: "increase" | "decrease" | "unchanged" | "unknown";
+  value: number | null;
+  unit: string | null;
+  modelRef: OpaqueId | null;
+  modelVersion: string | null;
+  durationBasis: DurationEvidence["basis"];
+  relatedItemIds: OpaqueId[];
+  relatedDayIds: OpaqueId[];
+  sourceRefs: AssessmentEvidenceRef[];
+};
+
+type RuleAssessment = {
+  assessmentId: OpaqueId;
+  scope: AssessmentScope;
+  dimension:
+    | "duration"
+    | "physical_load"
+    | "fatigue"
+    | "schedule"
+    | "day_capacity"
+    | "itinerary_reasonableness";
+  status: AssessmentStatus;
+  reasonableness: "reasonable" | "unreasonable" | "undetermined";
+  ruleRef: OpaqueId;
+  ruleVersion: string;
+  reasonCodes: string[];
+  issueIndexes: number[];
+  relatedAssessmentIds: OpaqueId[];
+  duration: DurationEvidence | null;
+  impacts: AssessmentImpact[];
+  sourceRefs: AssessmentEvidenceRef[];
+};
+
+type ReasonablenessReportV0_1 = {
+  amendment: "4.20.1";
+  evaluatedAt: Instant;
+  observedVersion: EngineResultV0_1["observedVersion"];
+  contextFingerprint: string;
+  policyRef: OpaqueId;
+  policyVersion: string;
+  status: AssessmentStatus;
+  reasonableness: "reasonable" | "unreasonable" | "undetermined";
+  coverage: {
+    scope: AssessmentScope;
+    dimension: RuleAssessment["dimension"];
+    state:
+      "evaluated" | "not_evaluated" | "insufficient_inputs" | "unsupported";
+    assessmentIds: OpaqueId[];
+  }[];
+  assessments: RuleAssessment[];
+};
+```
+
+约束：
+
+1. `observedVersion` 必须与同一 EngineResult 一致；report 的 scope 全部属于 ChangeSet.target.planId。itinerary 指明确选中的 plan/day 集合，不能把不同备选 plan 拼成一趟旅行。item/day ID 引用 canonical snapshot，不创建新的身份体系。
+2. `assessmentId` 只在本响应内唯一；`issueIndexes` 是同一不可变 EngineResult.issues 数组的零基索引，每项必须存在并与 scope / operation 相符。relatedAssessmentIds 同样只能引用本 report；不能让 Consumer 靠本地化文案推断关联。
+3. 每个非 accepted assessment 必须对应至少一个既有形状的 EngineIssue；新增 reason code 使用下表，category 使用既有 `schedule`（行程可行性）、`input` 或 `provider_fact` 等适当域。warning/confirmation/blocking 映射不可由 UI 降级。未满足的 needsConfirmation 必须同时存在 §9 requirement；它不是一条普通提示。
+4. `DurationEvidence` 是输出证据，不是 Plan 状态；分钟值为有限非负数，unknown 必须为 null；minimum 不得大于 recommended，规则/profile矛盾视为输入不足并阻止 all-clear。observed_fact 必须有可信事实引用；planned_schedule 必须有 canonical schedule/revision 引用。
+5. value 不可用时为 null，**不是0**；非空值必须有公开的 unit、modelRef/version、sourceRefs。unit/model 标尺由4.21版本化，不在此冻结疲劳单位；不同单位或模型版本不得直接相加或比较。direction 相对于本次 before/after，无法比较时为 unknown，不能猜测。
+6. coverage 必须逐一列出可信策略要求的 scope × dimension；未执行、输入不足、能力不支持均不得标为 evaluated。未覆盖的必要规则使总体 reasonableness=undetermined；已发现硬性不合理可仍为 unreasonable，但不能因未知而删除已发现风险。全部“已执行项通过”不能替代“全部必要项已执行”。
+7. 单景点 duration pass 只证明该维度；单日需独立考虑转场、营业窗口、交通、用餐/休息/buffer、参与者约束与负荷；itinerary 需独立考虑跨日连续活动/恢复、日期线与整体节奏。子项全通过不推导父级通过；聚合逻辑/疲劳累计属于4.21。
+8. `contextFingerprint` 绑定评价时间、profile/规则版本、实际使用的事实和上下文引用，以及本次 canonical before/after；它不是 credential 或用户原始资料。该绑定纳入 previewHash 和服务端确认有效性核验。事实/profile/规则/context 任一变化，旧 preview/确认不能复用；幂等 committed replay 仍返回原 terminal result，不重新计算并改写历史。
+9. report 是只读返回数据，不写入 `PlanItemV1.assessment` 或 Save/History 表；canonical assessment code 仍由4.17拥有。未来审计只引用必要规则版本/证据和结果摘要，仍遵守§12/17/18事务及披露边界。
+10. 拒绝未授权 snapshot 读取后不生成泄漏行程的 report；缺失能力或前置失败可无 report，但顶层 issue/outcome 必须明确 fail closed。
+
+### 24.4 状态与稳定 reason codes
+
+| Assessment status | 顶层兼容表达                                                  | 语义                                              |
+| ----------------- | ------------------------------------------------------------- | ------------------------------------------------- |
+| accepted          | accepted（若没有其他更严格 issue）                            | 此次请求的必要规则已评估且通过；不是已保存        |
+| warning           | accepted + warning issues                                     | 有可展示的非强制确认风险；不是无风险 all-clear    |
+| needsConfirmation | needsConfirmation + confirmation issues + requirements        | 策略允许覆盖的风险，必须有有效 scope-bound grant  |
+| blocked           | blocked + blocking issues                                     | 硬约束、必要输入、权限或版本不满足；确认不能覆盖  |
+| unsupported       | unsupported + OPERATION_UNSUPPORTED 或 ASSESSMENT_UNSUPPORTED | operation / 规则能力 / 输入表达未支持；不模拟通过 |
+
+report 的 status 按 `unsupported > blocked > needsConfirmation > warning > accepted` 聚合；顶层继续按§7优先级聚合**所有** issue，不能由较宽松的 report 覆盖权限/锁/版本错误。reasonableness 与 status 分开：规则缺失是 undetermined，不是“已经证明不合理”；一个可确认的压缩游览也不等于已完成交易。已签发 grant 只能解除可覆盖确认门，不能抹去风险证据或改变硬约束；apply 仍须执行§6/9的重新校验，事务提交语义不变。
+
+| Code                     | machine-readable 含义 / 典型 details                                                       | 策略边界                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| DURATION_TOO_SHORT       | evaluatedMinutes 小于 minimumMinutes；details 含三种分钟值、durationBasis、ruleRef/version | 硬 minimum 为 blocked；若产品定义为可覆盖的软下限则 needsConfirmation，不能静默 accepted |
+| COMPRESSED_VISIT         | 达到 minimum 但低于 recommended                                                            | warning 或 needsConfirmation，由版本化策略决定                                           |
+| DURATION_RULE_PASSED     | 该模式 duration 规则通过                                                                   | accepted assessment，无需制造成功 issue；仍有独立规则                                    |
+| PHYSICAL_LOAD_IMPACT     | 本次访问或变更带来体力负荷影响                                                             | impacts 给出依据、durationBasis及关联refs；不输出固定POI最终疲劳                         |
+| FATIGUE_IMPACT           | 单日/跨日活动及恢复影响                                                                    | 独立于匹配分和单景点强度；公式/阈值未冻结                                                |
+| DAY_OVERLOADED           | 单日时间/负荷/休息容量不满足                                                               | 软风险需确认、硬容量 blocked；details 仅输出已知值及 ruleRef                             |
+| ITINERARY_UNREASONABLE   | 整段规则发现不合理                                                                         | 引用相关 day/item assessments；不能靠平均景点评分掩盖超载日                              |
+| ASSESSMENT_INPUT_MISSING | duration/profile/context缺失或矛盾                                                         | 必要规则 blocked；非必要规则 warning + coverage gap，不能 all-clear                      |
+| ASSESSMENT_UNSUPPORTED   | 所需规则/能力/正式字段尚未支持                                                             | unsupported，details.dependency 指明4.17/4.21等依赖                                      |
+
+schedule conflict **复用**§8的 `SOFT_TIME_CONFLICT` / `HARD_TIME_CONFLICT`，不新造同义 code；impact.metric=schedule_conflict 引用冲突项，拒绝推断/伪造 Route Provider 事实。单 item 的 unreasonable 使用 reasonableness 加 DURATION_TOO_SHORT 等具体 code；没有必要再创建一个同义总错误。
+
+### 24.5 physical intensity × actual duration × context 的边界
+
+未来规则层必须允许将**强度 × 本次活动时长 × route/environment/context**作为影响模型输入关系；这不是此处冻结的乘法公式。可考虑固定入场路径、可变活动、坡度/台阶、天气、同行人限制、已有负荷与恢复；不保证简单线性或时间缩短必然同比降低负荷。
+
+同一 POI 在30/90分钟方案下必须能够产生不同 load/fatigue assessment，并说明采用 planned 还是 observed 时长。缺少模型、单位或上下文时输出 not_evaluated/unsupported + null，不能填 walking 原分数当最终疲劳。POI基准、访问负荷、路途步行和日疲劳是不同量，禁止重复累计。同一对照中较低体力负荷也不能抵消 duration-too-short。
+
+4.21及后续拥有公式、权重、阈值、Visit Mode 规则库、活动分段、时间冲突算法、疲劳累计/恢复及多日聚合实现。4.20.1 只规定可追溯输出和 fail-closed 边界。
+
+### 24.6 清水寺设计案例（不是营业事实或 runtime 证据）
+
+仅测试设定：同一景点、同一 full-visit profile，minimumDuration=60min、recommendedDuration=90min；假定此测试策略把 minimum 定义为硬下限。值来自用户验收要求，不代表已核验清水寺官方建议。
+
+A. canonical UPDATE_TIME 的 schedule 为 `2027-04-10T09:00:00+09:00` 至 `09:30:00+09:00`，两端 timezone 均为 Asia/Tokyo。派生计划停留30分钟，输出片段如下（沿用§20省略公共 envelope 的约定）：
+
+```json
+{
+  "outcome": "blocked",
+  "resultingVersion": null,
+  "transaction": { "status": "not_started", "retryable": false },
+  "issues": [
+    {
+      "code": "DURATION_TOO_SHORT",
+      "category": "schedule",
+      "severity": "blocking",
+      "path": null,
+      "operationId": "op-time",
+      "subjectRef": "item-kiyomizu",
+      "retryable": false,
+      "details": {
+        "evaluatedMinutes": 30,
+        "minimumMinutes": 60,
+        "recommendedMinutes": 90,
+        "durationBasis": "planned_schedule",
+        "ruleRef": "example-duration-minimum",
+        "ruleVersion": "example-1"
+      }
+    }
+  ],
+  "confirmationRequirements": []
+}
+```
+
+对应 `RuleAssessment` 片段：
+
+```json
+{
+  "assessmentId": "assessment-kiyomizu-duration",
+  "scope": {
+    "kind": "item",
+    "planId": "example-plan",
+    "dayId": "example-day",
+    "itemId": "item-kiyomizu"
+  },
+  "dimension": "duration",
+  "status": "blocked",
+  "reasonableness": "unreasonable",
+  "ruleRef": "example-duration-minimum",
+  "ruleVersion": "example-1",
+  "reasonCodes": ["DURATION_TOO_SHORT"],
+  "issueIndexes": [0],
+  "relatedAssessmentIds": [],
+  "duration": {
+    "basis": "planned_schedule",
+    "evaluatedMinutes": 30,
+    "minimumMinutes": 60,
+    "recommendedMinutes": 90,
+    "visitModeRef": "example-full-visit",
+    "sourceRefs": [
+      {
+        "kind": "canonical_schedule",
+        "ref": "item-kiyomizu",
+        "version": "plan-revision-3"
+      },
+      {
+        "kind": "profile",
+        "ref": "example-full-visit",
+        "version": "example-1"
+      }
+    ]
+  },
+  "impacts": [],
+  "sourceRefs": [
+    {
+      "kind": "rule",
+      "ref": "example-duration-minimum",
+      "version": "example-1"
+    }
+  ]
+}
+```
+
+B. 同一 canonical schedule 结束改为 `10:30:00+09:00`：evaluatedMinutes=90，duration assessment 为 accepted / reasonable，reasonCodes=[DURATION_RULE_PASSED]、issueIndexes=[]。这只修改样例输入时间，不启用 UPDATE_DURATION。报告必须继续列出 schedule、physical_load、fatigue、day_capacity、itinerary_reasonableness 的 coverage。若必要路线/营业时间/交通/体力上下文尚缺，整体为 blocked / undetermined，带对应 missing-fact issue；所有独立规则均已评估通过时才允许整体 accepted / reasonable。
+
+C. physical load 对照：30和90分钟均采用同一版本的标准强度/profile。未来模型分别消费该次duration及路线/环境/参与者refs；允许返回不同影响，不能固定两个结果均为 walking=7。此文未提供授权模型，设计结果为 physical_load state=unsupported、value/unit/modelRef/modelVersion=null、direction=unknown、durationBasis=planned_schedule，并通过 ASSESSMENT_UNSUPPORTED 指明4.21。这是与A的duration规则独立的能力案例；若同一请求要求两者，顶层按优先级为 unsupported，同时保留 DURATION_TOO_SHORT blocking issue，不能隐藏它。
+
+### 24.7 Amendment Acceptance Matrix（补充§21）
+
+所有案例是设计验收条件，不代表4.21已实现或已通过 runtime test。
+
+| 案例                                                 | 必须可复核的结果                                                                                      |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| 清水寺30 / minimum60 / recommended90，硬下限         | DURATION_TOO_SHORT，item unreasonable，blocked，无写入/确认绕过                                       |
+| 清水寺60–89分钟，软 recommended                      | COMPRESSED_VISIT；策略分别测试 warning 和 needsConfirmation；后者必须包含 requirement，不能由UI自降级 |
+| 清水寺90分钟，其他规则未检查                         | duration accepted；coverage保留缺口，整体不得all-clear                                                |
+| 90分钟但路线过期或营业窗口硬冲突                     | ROUTE_FACT_EXPIRED / HARD_TIME_CONFLICT，blocked；duration pass仍保留                                 |
+| 30 vs 90分钟，标准强度相同                           | 不把walking原分数当固定最终疲劳；duration依据和context可追踪，模型未就绪为unsupported/null            |
+| 90分钟更高load、30分钟duration不足                   | 两个结论共存；低负荷不能抵消不合理短停留                                                              |
+| 每个item时长通过，但转场/休息使day超载               | DAY_OVERLOADED；day scope + related item IDs，独立聚合判定                                            |
+| 每天局部可行但连续多日恢复不足                       | ITINERARY_UNREASONABLE；itinerary scope + affected day refs，具体累计公式留4.21                       |
+| schedule=null / profile缺失 / minimum大于recommended | 必要输入缺失blocked或能力unsupported；duration unknown/null，不能套用recommended当实际值              |
+| 请求 UPDATE_DURATION 或私带43字段/duration字段       | 原 operation unsupported / 非法字段fail closed；canonical schema不变                                  |
+| Profile / Rule / Provider事实在preview后变化         | 旧context绑定失效；重新validate/preview/confirm，既有baseVersion/transaction gate继续生效             |
+| 同一幂等键重放已committed请求                        | 返回原terminal结果及原assessment，不重复评估写入或增加audit/revision                                  |
+| 多issue：权限拒绝、duration warning、未支持规则      | 顶层按既有优先级保留全部安全issue；无权限时不披露私有assessment详情                                   |
+| 未提供assessment或Consumer不支持扩展                 | 不宣称通过；必要能力unsupported，无第二套Schema或降级绕过                                             |
+
+### 24.8 Open Decisions / dependencies（补充§22）
+
+| ID               | Owner / dependency                                     | 发布或启用 gate                                                                                                   |
+| ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| OD-DURATION-01   | A / 4.16 + 4.17，B Consumer review；细化既有OD-4.16-01 | 独立duration、planned/observed、Visit Mode、活动分段的唯一canonical表达及迁移未定；UPDATE_DURATION持续unsupported |
+| OD-ASSESSMENT-01 | B Producer + A Consumer / 4.20 review                  | 可选report的能力协商、payload caps、枚举未知处理、context fingerprint规范与公开parser发布需核对；未审查不称frozen |
+| OD-RULE-01       | 产品 + Attraction/Profile Owner + B / 4.21             | 43字段版本、profile provenance/TTL、minimum硬软策略、recommended压缩确认阈值、Visit Mode选择规则未冻结            |
+| OD-LOAD-01       | B / 4.21 + 产品 + A context/Provider Owner             | 强度/活动时长/环境输入契约、模型单位与校准、固定/可变负荷、疲劳累计/恢复/多日公式；不得用固定评分替代             |
+| OD-COVERAGE-01   | B / 4.21 + A canonical/Provider Consumer               | 各operation必要scope/维度、跨日依赖闭包、缺事实严重度与营业时间/路线时效规则需定义；缺口不得accepted all-clear    |
+
+本 Amendment 已于2026-09-10经用户验收并通过PR #283合入develop，4.20.1已完成；父4.20的既有审查门与Open Decisions保持，4.21仍未开始。不创建评分器、规则库、Engine runtime、Plan字段、DB/API或UI实现。
