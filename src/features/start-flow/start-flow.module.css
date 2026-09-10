@@ -1,13 +1,13 @@
 .page,
 .overlayTheme {
-  --wizard-ink: #283342;
-  --wizard-muted: #6f6a68;
-  --wizard-coral: #d86657;
-  --wizard-coral-dark: #bd4f43;
-  --wizard-blush: #fff1ed;
-  --wizard-cream: #fffaf2;
-  --wizard-border: rgb(111 78 68 / 16%);
-  --wizard-glass: rgb(255 250 244 / 86%);
+  --wizard-ink: var(--color-text-primary);
+  --wizard-muted: var(--color-text-secondary);
+  --wizard-coral: var(--color-accent-primary);
+  --wizard-coral-dark: var(--color-accent-primary-hover);
+  --wizard-blush: var(--color-bg-muted);
+  --wizard-cream: var(--color-bg-elevated);
+  --wizard-border: var(--color-border-subtle);
+  --wizard-glass: var(--color-bg-overlay);
   --wizard-inset: clamp(2.5rem, 6vw, 5rem);
   --wizard-body-gap: 1.5rem;
   color: var(--wizard-ink);
@@ -19,7 +19,7 @@
   min-height: 100svh;
   overflow-x: hidden;
   isolation: isolate;
-  background: #eee5da;
+  background: var(--color-bg-canvas);
 }
 
 .backdrop {
@@ -27,9 +27,8 @@
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(110deg, rgb(66 45 36 / 42%), rgb(255 231 218 / 18%)),
-    linear-gradient(to bottom, rgb(255 246 235 / 12%), rgb(72 48 39 / 22%)),
-    url("/media/start/sakura-coast-fuji-train-sunset.png") center 47% / cover
+    linear-gradient(110deg, rgb(255 246 235 / 18%), rgb(255 231 218 / 8%)),
+    url("/media/home-concept/home-hero-sakura-sunset.webp") center / cover
       no-repeat;
   transform: scale(1.015);
 }
@@ -60,35 +59,6 @@
   justify-content: space-between;
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: #fffaf5;
-  font-size: 1.08rem;
-  font-weight: 850;
-  letter-spacing: -0.035em;
-  text-decoration: none;
-  text-shadow: 0 1px 1rem rgb(37 24 19 / 45%);
-}
-
-.brandMark {
-  width: 0.72rem;
-  height: 0.72rem;
-  border: 2px solid rgb(255 250 245 / 86%);
-  border-radius: 50% 50% 50% 12%;
-  background: var(--wizard-coral);
-  transform: rotate(-36deg);
-}
-
-.brand:focus-visible,
-.headerActions button:focus-visible,
-.headerActions select:focus-visible {
-  border-radius: 0.75rem;
-  outline: 3px solid rgb(255 244 226 / 92%);
-  outline-offset: 3px;
-}
-
 .headerActions {
   display: flex;
   align-items: center;
@@ -96,37 +66,28 @@
 }
 
 .languageSelect select,
-.avatar {
-  min-height: 2.5rem;
-  border: 1px solid rgb(255 255 255 / 48%);
-  background: rgb(255 250 244 / 82%);
-  color: var(--wizard-ink);
-  box-shadow: 0 0.5rem 1.5rem rgb(52 37 31 / 12%);
-  backdrop-filter: blur(0.75rem);
-}
-
-.languageSelect select {
-  padding: 0 2.15rem 0 0.9rem;
-  border-radius: 999rem;
-  cursor: pointer;
+.accountLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--elevation-card);
   text-decoration: none;
 }
-
-.avatar:focus-visible,
-.planUseLink:focus-visible {
-  outline: 3px solid rgb(208 85 70 / 32%);
-  outline-offset: 3px;
-}
-
-.avatar {
-  display: grid;
-  width: 2.5rem;
-  padding: 0;
-  place-items: center;
-  border-radius: 50%;
-  font-size: 0.82rem;
-  font-weight: 850;
+.languageSelect select {
+  padding: 0 1.25rem 0 0.75rem;
   cursor: pointer;
+}
+.accountLink {
+  min-width: 44px;
+}
+.languageSelect select:hover,
+.accountLink:hover {
+  background: var(--color-bg-muted);
 }
 
 .flowPanel {
@@ -139,11 +100,9 @@
   min-height: 0;
   max-height: 47rem;
   padding: clamp(1.25rem, 2.4vw, 2rem) 0;
-  border-color: rgb(255 255 255 / 58%);
-  background: var(--wizard-glass);
-  box-shadow:
-    0 1.8rem 5rem rgb(55 36 29 / 18%),
-    inset 0 1px rgb(255 255 255 / 78%);
+  border-color: var(--color-border-subtle);
+  background: color-mix(in srgb, var(--wizard-glass) 94%, transparent);
+  box-shadow: var(--elevation-panel);
   backdrop-filter: blur(1.5rem) saturate(112%);
 }
 
@@ -239,7 +198,7 @@
 .progressItem[aria-current="step"] .progressNumber,
 .progressItem[data-complete="true"] .progressNumber {
   border-color: var(--wizard-coral);
-  background: var(--wizard-coral);
+  background: var(--background-accent-primary);
   color: #fff;
   box-shadow: 0 0.35rem 1rem rgb(216 102 87 / 25%);
 }
@@ -267,7 +226,7 @@
 .stepTitle {
   margin: 0;
   color: var(--wizard-ink);
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3vw, 2.65rem);
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -557,7 +516,7 @@
   border-radius: 50%;
   margin-top: -0.51rem;
   appearance: none;
-  background: var(--wizard-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 0.2rem 0.7rem rgb(176 68 57 / 28%);
 }
 
@@ -572,7 +531,7 @@
   height: 1rem;
   border: 3px solid #fff8f3;
   border-radius: 50%;
-  background: var(--wizard-coral);
+  background: var(--background-accent-primary);
 }
 
 .rangeWrap input:focus-visible {
@@ -602,7 +561,7 @@
 }
 
 .rangeDots i[data-active="true"] {
-  background: var(--wizard-coral);
+  background: var(--background-accent-primary);
 }
 
 .dateFieldset {
@@ -666,7 +625,7 @@
   width: 1.15rem;
   height: 1.15rem;
   flex: 0 0 auto;
-  color: #856a5d;
+  color: var(--color-accent-primary);
 }
 
 .iconText {
@@ -705,7 +664,7 @@
 }
 
 .squareOptionCard:focus-visible {
-  outline: 3px solid rgb(216 102 87 / 30%);
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -965,7 +924,7 @@
 .primaryAction {
   min-width: 11.5rem;
   border-color: var(--wizard-coral);
-  background: var(--wizard-coral);
+  background: var(--background-accent-primary);
   box-shadow: 0 0.65rem 1.6rem rgb(176 68 57 / 22%);
 }
 
@@ -976,8 +935,8 @@
 
 .privacyNote {
   justify-self: center;
-  color: rgb(255 249 241 / 90%);
-  text-shadow: 0 1px 0.8rem rgb(38 25 21 / 50%);
+  color: var(--color-text-primary);
+  text-shadow: 0 1px 6px var(--color-bg-elevated);
 }
 
 .familiarityCard:focus-visible,
@@ -1077,10 +1036,6 @@
     gap: 0.65rem;
     width: min(calc(100% - 0.8rem), 32rem);
     padding-top: 0.75rem;
-  }
-
-  .brand {
-    font-size: 0.95rem;
   }
 
   .languageSelect select {
@@ -1312,7 +1267,7 @@
 
 .modalHeader h2 {
   color: var(--wizard-ink);
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-family: var(--font-heading);
   font-size: 1.35rem;
 }
 
@@ -1503,7 +1458,7 @@
 }
 
 .mapRegion[data-selected="true"] path:not(.mapSelectionCount) {
-  stroke: #9f3e35;
+  stroke: var(--color-accent-primary);
 }
 
 .mapRegion text {
@@ -1519,7 +1474,7 @@
 }
 
 .mapSelectionCount {
-  fill: #8e382f !important;
+  fill: var(--color-accent-primary) !important;
   font-size: 8px !important;
 }
 
@@ -1676,7 +1631,7 @@
 .generationStages li[data-status="complete"] .generationMarker,
 .generationStages li[data-status="current"] .generationMarker {
   border-color: var(--wizard-coral);
-  background: var(--wizard-coral);
+  background: var(--background-accent-primary);
   color: #fff;
 }
 
@@ -1761,7 +1716,7 @@
 
 .planTitleRow h2 {
   color: var(--wizard-ink);
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-family: var(--font-heading);
   font-size: 1.12rem;
 }
 
@@ -2252,7 +2207,7 @@
   width: 15rem;
   height: 4.5rem;
   margin-bottom: 0.75rem;
-  color: #977664;
+  color: var(--color-accent-primary);
 }
 
 .generationStages {
@@ -2306,5 +2261,441 @@
 
   .mapRegion path {
     transition: none;
+  }
+}
+
+/* Phone stage: only the content scrolls; progress and actions stay reachable. */
+@media (max-width: 47.999rem), (max-width: 64rem) and (max-height: 30rem) {
+  .headerActions .languageSelect select {
+    min-height: 2.75rem;
+    padding-inline: 0.65rem;
+    font-size: 1rem;
+  }
+
+  .avatar {
+    width: 2.75rem;
+    min-height: 2.75rem;
+  }
+
+  .detailTrigger {
+    min-height: 2.75rem;
+    font-size: 0.78rem;
+  }
+
+  .page {
+    --wizard-inset: clamp(1rem, 4vw, 1.75rem);
+    --wizard-body-gap: 1.25rem;
+    min-height: 100dvh;
+  }
+
+  .flowLayout {
+    width: calc(100% - 0.75rem);
+    height: 100dvh;
+    gap: 0.5rem;
+    padding-block: max(0.5rem, env(safe-area-inset-top))
+      max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .flowPanel {
+    max-height: none;
+    padding-block: 1rem 0.65rem;
+    border-radius: 1.5rem;
+  }
+
+  .progressNav {
+    flex: 0 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  .wizardContent {
+    overflow: hidden;
+    scrollbar-gutter: auto;
+    padding-bottom: 0;
+  }
+
+  .form {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .form > .step,
+  .plansStep > .stepBody,
+  .generationStep {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scroll-padding-block: 0.5rem;
+  }
+
+  .form > .step {
+    grid-row: 1;
+    padding: 0.2rem;
+  }
+
+  .stepBody {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+
+  .sectionHeader {
+    flex: 0 0 auto;
+  }
+
+  .stepTitle {
+    font-size: clamp(1.45rem, 6vw, 1.9rem);
+    line-height: 1.35;
+  }
+
+  .stepDescription {
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .familiarityGrid {
+    gap: 0.65rem;
+  }
+
+  .familiarityCard {
+    min-height: 9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.85rem;
+  }
+
+  .familiarityCard strong {
+    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
+    line-height: 1.45;
+  }
+
+  .familiarityCard small {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .selectionMark {
+    align-self: flex-end;
+    flex-shrink: 0;
+  }
+
+  .sectionHeadingRow h2,
+  .styleSection h2 {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .interestGrid {
+    gap: 0.5rem;
+  }
+
+  .interestCardWrap .interestCard {
+    min-height: 5.25rem;
+    padding: 0.7rem 0.6rem 2.9rem;
+    font-size: 0.8rem;
+  }
+
+  .interestCard small {
+    bottom: 1rem;
+    left: 0.6rem;
+  }
+
+  .interestDetailTrigger {
+    right: 0.25rem;
+    bottom: 0.25rem;
+    min-width: 2.75rem;
+    min-height: 2.5rem;
+    padding: 0.4rem;
+    font-size: 0.72rem;
+  }
+
+  .styleGroups,
+  .basicsRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .styleGroup {
+    padding: 0.85rem 0.65rem;
+  }
+
+  .styleSlider {
+    grid-template-columns: 4.3rem minmax(0, 13.5rem) 3rem;
+    gap: 0.35rem;
+  }
+
+  .sliderLeftLabel,
+  .sliderRightLabel {
+    font-size: 0.72rem;
+  }
+
+  .rangeWrap,
+  .rangeWrap input,
+  .rangeDots {
+    height: 2.75rem;
+  }
+
+  .dateModeRow {
+    gap: 0.4rem;
+  }
+
+  .dateModeOption {
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  .dateModeOption > button {
+    width: 100%;
+    min-height: 2.75rem;
+    padding-inline: 0.4rem;
+  }
+
+  .dateModeOption[data-expanded="true"] {
+    flex-basis: 100%;
+  }
+
+  .dateInlineFields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0 0.6rem 0.7rem;
+  }
+
+  .durationNote {
+    position: static;
+    width: 100%;
+    margin-top: 0.4rem;
+  }
+
+  .basicsRow {
+    gap: 1.25rem;
+    padding-block: 1.1rem;
+  }
+
+  .destinationGrid .compactChoice {
+    min-height: 4.5rem;
+    padding: 0.55rem 0.1rem;
+    font-size: 0.7rem;
+  }
+
+  .destinationGrid .iconText {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .squareOptionCard {
+    font-size: 0.75rem;
+  }
+
+  .partyGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .partyRow {
+    min-height: 3.5rem;
+    font-size: 0.85rem;
+  }
+
+  .counter button,
+  .modalClose {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .anchorActionRow {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .anchorActionRow h2 {
+    flex-basis: 100%;
+  }
+
+  .anchorActions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  .anchorActions button {
+    min-width: 0;
+    min-height: 3rem;
+    padding: 0.4rem 0.15rem;
+    font-size: 0.72rem;
+  }
+
+  .formNotice {
+    grid-row: 2;
+    margin-block: 0.3rem;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .actions {
+    grid-row: 3;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 0.35rem;
+    margin-top: 0;
+    padding-top: 0.6rem;
+  }
+
+  .actions button {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+    padding-inline: 0.25rem;
+    font-size: 0.78rem;
+  }
+
+  .privacyNote {
+    margin: 0;
+    font-size: 0.65rem;
+  }
+
+  .generationStep,
+  .plansStep {
+    height: 100%;
+  }
+
+  .generationStep {
+    justify-content: flex-start;
+  }
+
+  .generationStep .sectionHeader {
+    margin-top: auto;
+  }
+
+  .generationStep .stepBody {
+    margin-bottom: auto;
+    padding-bottom: 1rem;
+  }
+
+  .plansStep > .stepBody {
+    flex: 1 1 0;
+    margin-block: 0.8rem;
+    padding: 0.2rem;
+  }
+
+  .planGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .planCardBody {
+    padding: 1rem;
+  }
+
+  .planCardBody > p,
+  .planFacts dd {
+    font-size: 0.82rem;
+  }
+
+  .planTags span,
+  .planFacts dt {
+    font-size: 0.72rem;
+  }
+
+  .planSelectButton,
+  .planUseLink {
+    min-height: 2.75rem;
+    font-size: 0.85rem;
+  }
+
+  .planUseLink {
+    background: var(--wizard-coral-dark);
+  }
+
+  .planFooterActions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 0;
+    padding-top: 0.6rem;
+  }
+
+  .planFooterActions button {
+    min-width: 0;
+    min-height: 2.75rem;
+    padding-inline: 0.4rem;
+    font-size: 0.78rem;
+  }
+
+  .modalBackdrop {
+    padding: max(0.5rem, env(safe-area-inset-top)) 0.5rem
+      max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(
+      100dvh - 1rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+
+  .modalHeader {
+    flex: 0 0 auto;
+    gap: 0.5rem;
+  }
+
+  .modalBody {
+    min-height: 0;
+    max-height: none;
+    overscroll-behavior: contain;
+  }
+
+  .modalField input,
+  .modalField select,
+  .searchField input {
+    min-width: 0;
+    min-height: 2.75rem;
+    font-size: 1rem;
+  }
+
+  .modalActions {
+    flex-wrap: wrap;
+  }
+
+  .modalActions button,
+  .detailToggleGrid label,
+  .prefectureList label {
+    min-height: 2.75rem;
+  }
+}
+
+/* Fixed Home / Personal Center reference; adapt this wizard only. */
+.header a[aria-label="TravelAssist 首页"] {
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, transparent);
+}
+.header a[aria-label="TravelAssist 首页"]:hover {
+  background: var(--color-bg-muted);
+}
+.page .stepTitle:focus {
+  outline: none;
+}
+@media (max-width: 64rem) {
+  .backdrop {
+    background-position: 60% center;
+  }
+}
+@media (max-width: 48rem) {
+  .backdrop {
+    background-position: 72% center;
+  }
+}
+
+/* Account adaptation stays inside the existing 44px header row. */
+.accountName {
+  max-width: 6rem;
+  margin-inline: 0.35rem 0.65rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .accountName {
+    display: none;
   }
 }

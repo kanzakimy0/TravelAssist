@@ -1,11 +1,12 @@
 import test from "node:test";
+import "./register-planner-ts.mjs";
 import assert from "node:assert/strict";
 import {
   plannerMockPlans,
   initialPlannerSettings,
 } from "../src/features/planner/data/planner-mock-data.ts";
 import { makePlannerCatalog } from "../src/features/planner/data/planner-catalog.ts";
-import {
+const {
   makeTripState,
   tripReducer,
   currentPlan,
@@ -18,7 +19,7 @@ import {
   timeBandPosition,
   pendingItems,
   isoDay,
-} from "../src/features/planner/model/trip-model.ts";
+} = await import("../src/features/planner/model/trip-model.ts");
 import {
   preferenceDefinitions,
   budgetLabels,
@@ -28,7 +29,7 @@ function fixture() {
   const { places, areas } = makePlannerCatalog(plannerMockPlans);
   return makeTripState(plannerMockPlans, places, areas, initialPlannerSettings);
 }
-test("four independent traveler categories preserve siblings, preferences and plans", () => {
+test("five independent traveler categories preserve siblings, preferences and plans", () => {
   const before = fixture();
   let state = tripReducer(before, {
     type: "travelers",
@@ -40,9 +41,18 @@ test("four independent traveler categories preserve siblings, preferences and pl
     adultFemale: 1,
     child: 2,
     infant: 0,
+    seniors: 0,
   });
   assert.equal(state.plans, before.plans);
   assert.match(state.settings.travelers, /儿童 2/);
+  const withSeniors = tripReducer(state, {
+    type: "travelers",
+    key: "seniors",
+    value: 2,
+  });
+  assert.equal(withSeniors.configuration.travelers.seniors, 2);
+  assert.equal(withSeniors.configuration.travelers.child, 2);
+  assert.match(withSeniors.settings.travelers, /老人 2/);
   assert.equal(
     tripReducer(state, { type: "travelers", key: "child", value: -1 }),
     state,

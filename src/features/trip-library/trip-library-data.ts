@@ -106,6 +106,7 @@ const draftFixtures: DraftTripViewModel[] = [
     name: "东京亲子周末",
     destination: "东京",
     dateLabel: "2027.07.16 - 07.18",
+    startDate: "2027-07-16",
     progress: 61,
     reservationCount: 2,
     hasExternalReservation: true,
@@ -115,6 +116,30 @@ const draftFixtures: DraftTripViewModel[] = [
     cover: "/media/personal-center/hero-kyoto-sakura.webp",
   },
 ];
+
+// Extra in-memory drafts make the ninth All card reachable without a backend.
+draftFixtures.push(
+  ...[
+    ["kanazawa", "金泽庭园散步", "金泽", "2027-09-10"],
+    ["nara", "奈良古寺巡礼", "奈良", "2027-10-02"],
+    ["kobe", "神户海岸周末", "神户", ""],
+    ["nagano", "长野山间漫步", "长野", ""],
+    ["fukuoka", "福冈街巷食旅", "福冈", ""],
+  ].map(([id, name, destination, startDate], index) => ({
+    id: `draft-${id}`,
+    name,
+    destination,
+    ...(startDate ? { startDate } : {}),
+    dateLabel: startDate || "日期待定",
+    progress: 20 + index * 8,
+    reservationCount: 0,
+    hasExternalReservation: false,
+    lastEditedLabel: `2026.08.${24 - index} 编辑`,
+    updatedAt: `2026-08-${24 - index}T09:00:00Z`,
+    createdAt: "2026-08-01T09:00:00Z",
+    cover: "/media/personal-center/trip-kyoto-gion.webp",
+  })),
+);
 
 const historyFixtures: HistoryTripViewModel[] = [
   {

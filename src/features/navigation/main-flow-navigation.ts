@@ -44,3 +44,10 @@ export function readPlannerPlanSelection() {
     return null;
   }
 }
+
+// A wizard selection is a one-time navigation intent, not a second saved trip.
+export function consumePlannerPlanSelection() {
+  const value = readPlannerPlanSelection();
+  if (value) window.localStorage.removeItem(PLAN_SELECTION_BRIDGE_KEY);
+  return value;
+}

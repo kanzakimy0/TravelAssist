@@ -1,9 +1,61 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
+import { createRequire } from "node:module";
 import test from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import ts from "typescript";
+
+import * as tripData from "../src/features/trip-library/trip-library-data.ts";
+import * as tripTiming from "../src/features/trip-library/trip-timing.ts";
 
 const read = (path) =>
   readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+
+function renderedHomeImageSources(source) {
+  const require = createRequire(import.meta.url);
+  const imageSources = [];
+  const link = ({ href, children }) => createElement("a", { href }, children);
+  // Render the real Home with its real fixture factory and timing helpers.
+  // Only Next/navigation decoration and the clock are adapted for a Node unit test.
+  const adapters = {
+    "next/image": ({ src, alt }) => {
+      imageSources.push(src);
+      return createElement("img", { src, alt });
+    },
+    "next/link": link,
+    "./guarded-link": { GuardedLink: link },
+    "./personal-icon": { PersonalIcon: () => null },
+    "../personal-center.module.css": {},
+    "@/features/trip-library/trip-library-data": tripData,
+    "@/features/trip-library/trip-timing": tripTiming,
+    // This fixed date makes the approved historical Kyoto preview visible along
+    // with the Kyoto Hero and the Osaka/Hokkaido previews; no system-time input.
+    "@/features/trip-library/use-trip-today": {
+      useTripToday: () => "2026-03-01",
+    },
+  };
+  const compiled = ts.transpileModule(source, {
+    fileName: "personal-home-preview.tsx",
+    compilerOptions: {
+      module: ts.ModuleKind.CommonJS,
+      jsx: ts.JsxEmit.ReactJSX,
+      esModuleInterop: true,
+    },
+  });
+  const homeModule = { exports: {} };
+  const load = (specifier) =>
+    Object.hasOwn(adapters, specifier)
+      ? adapters[specifier]
+      : require(specifier);
+  new Function("require", "module", "exports", compiled.outputText)(
+    load,
+    homeModule,
+    homeModule.exports,
+  );
+  renderToStaticMarkup(createElement(homeModule.exports.PersonalHomePreview));
+  return new Set(imageSources);
+}
 
 test("approved concept assets are wired to the Personal Center visual layer", () => {
   const sidebar = read(
@@ -18,7 +70,12 @@ test("approved concept assets are wired to the Personal Center visual layer", ()
 
   assert.match(sidebar, /sidebar-torii-watercolor-v2\.png/);
   assert.match(sidebar, /sidebar-shell-ornament-top\.png/);
-  assert.match(sidebar, /travelassist-logo-torii\.png/);
+  assert.match(sidebar, /<BrandLogo fill sizes="150px"/);
+  assert.match(sidebar, /<BrandLogo fill sizes="190px"/);
+  assert.match(
+    read("src/components/ui/brand-logo.tsx"),
+    /travelassist-logo-torii\.png/,
+  );
   const identity = read(
     "src/features/personal-center/constants/personal-navigation.ts",
   );
@@ -26,14 +83,34 @@ test("approved concept assets are wired to the Personal Center visual layer", ()
   assert.match(sidebar, /mockPersonalUser\.avatar/);
   assert.match(shellStyles, /personal-center-surface-texture-v2\.png/);
   assert.match(shellStyles, /personal-center-corner-decorations\.png/);
-  assert.match(home, /hero-kyoto-sakura\.webp/);
-  assert.match(home, /trip-kyoto-gion\.webp/);
-  assert.match(home, /trip-osaka-castle\.webp/);
-  assert.match(home, /trip-hokkaido-winter\.webp/);
+  const renderedSources = renderedHomeImageSources(home);
+  for (const filename of [
+    "hero-kyoto-sakura.webp",
+    "trip-kyoto-gion.webp",
+    "trip-osaka-castle.webp",
+    "trip-hokkaido-winter.webp",
+  ]) {
+    const asset = `/media/personal-center/${filename}`;
+    assert.ok(
+      renderedSources.has(asset),
+      `Home must actually render approved asset ${asset} from its current data source`,
+    );
+    const file = statSync(new URL(`../public${asset}`, import.meta.url));
+    assert.ok(
+      file.isFile() && file.size > 0,
+      `approved asset must exist: ${asset}`,
+    );
+  }
   for (const name of ["inspiration", "favorites", "discovery"]) {
     assert.match(home, new RegExp(`feature-card-${name}-bg\\.png`));
   }
   assert.doesNotMatch(home, /home-hero-poster\.webp/);
+  for (const asset of renderedSources) {
+    assert.doesNotMatch(
+      asset,
+      /home-hero-poster\.webp|personal-center\/photoreal-v3/,
+    );
+  }
   assert.doesNotMatch(
     `${sidebar}\n${home}\n${shellStyles}`,
     /personal-center\/photoreal-v3/,

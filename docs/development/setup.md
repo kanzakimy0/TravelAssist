@@ -61,6 +61,10 @@ node --experimental-strip-types --test tests/task-008-planner.test.mjs tests/tas
 
 ## Validation
 
+Database-only setup and Local commands are documented in
+[Database foundation](database.md). Database credentials are not required for
+the existing site or its build. TASK-015 does not enable business persistence.
+
 ```bash
 npm run lint
 npm run typecheck

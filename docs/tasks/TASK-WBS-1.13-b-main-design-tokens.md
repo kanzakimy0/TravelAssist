@@ -20,7 +20,7 @@
 
 本项只做设计规格，不修改运行时代码。
 
-## 已确认前置
+## 原始交付前置（2026-09-07）
 
 最新 `develop` 中：
 
@@ -97,3 +97,15 @@
 ## 完成规则
 
 当前为“设计已交付 / 待审查”，不是“已完成”。只有用户验收并合入 `develop` 后才标记“已完成”。本任务不用 Codex；后续真正把 Token 写入 CSS / Tailwind / Components 时另建 A 的工程实现 Task。
+
+## 2026-09-10 当前整合结果
+
+用户授权检查 B 保留 Draft 并合并可交付内容。原审计 head 95ccaec1a0f6919f21986a66689ae8d867bf6fd9，已无冲突整合 develop@f0569cdc57adc44d9c7e2524064be86217b7d628。
+
+主规格 v1.1 以当前 globals.css 为唯一来源，撤回旧红棕色、独立 --ta-*、七级 radius/字体/阴影覆盖方向；逐项记录 Home/Start/Planner/Detail/PC 消费及已经存在的 wizard/pc aliases。不存在的 pressed/status/tertiary/dialog 角色明确为待决定，不发明 runtime token。旧 v1.0 数值和测试在上文及 Git 历史保留，仅代表当时交付。
+
+六组当前 HEX 纯色对比重新计算：正文 11.78:1、次级 5.46:1、白字/珊瑚 3.46:1、白字/hover 4.28:1、focus 5.51:1、danger 6.04:1。普通白色小字在珊瑚/hover 上不足 4.5:1，不能沿用旧稿的通过结论；渐变与照片/地图合成仍需浏览器审查。没有修改已验收 UI 或声称新增视觉证据。
+
+本 PR 发布修订后的设计候选；WBS 1.13 = B / 待审查、Issue #178 Open。合并文档不等于完成设计冻结或未来局部迁移。原 Draft / 未合并状态为历史，当前 merge 状态以 PR #179 为准。
+
+本轮检查：三个交付 Markdown 的 Prettier check、git diff --check origin/develop、非文档差异检查；结果在本次提交前实际执行。应用测试/浏览器未重跑，因本 PR 仅修改文档。

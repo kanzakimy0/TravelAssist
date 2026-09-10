@@ -1,6 +1,6 @@
 # WBS-1.13-B Result — 主系统 Design Token / 色彩 / 字体 / 圆角
 
-## Status
+## 原始交付 Status（2026-09-07；当前见末节）
 
 **待审查 / Design Delivered**
 
@@ -65,7 +65,7 @@ WBS 1.13 在最新 `develop` 中原为 `未开始`；依赖 1.4、1.5 均已完�
 - Border: `#E6D9CF`
 - Focus: `#954439`
 
-### Status colors
+### 原始交付 Status（2026-09-07；当前见末节） colors
 
 - Success: `#256F52` / soft `#EAF4EF`
 - Warning: `#9A6500` / soft `#FFF4D8`
@@ -95,18 +95,18 @@ WBS 1.13 在最新 `develop` 中原为 `未开始`；依赖 1.4、1.5 均已完�
 
 本轮使用标准 sRGB 相对亮度公式进行纯色组合计算。结果：
 
-| Pair | Ratio |
-|---|---:|
+| Pair                   |   Ratio |
+| ---------------------- | ------: |
 | `#283342` on `#FFFCF7` | 12.49:1 |
-| `#6F6A68` on `#FFFCF7` | 5.21:1 |
-| `#80716B` on `#FFFCF7` | 4.57:1 |
-| White on `#B95649` | 4.68:1 |
-| White on `#A74739` | 5.83:1 |
-| `#954439` on `#FFFCF7` | 6.49:1 |
-| `#256F52` on `#EAF4EF` | 5.38:1 |
-| `#9A6500` on `#FFF4D8` | 4.53:1 |
-| `#B6404C` on `#FCEBED` | 4.77:1 |
-| `#3F6F8F` on `#EAF2F7` | 4.78:1 |
+| `#6F6A68` on `#FFFCF7` |  5.21:1 |
+| `#80716B` on `#FFFCF7` |  4.57:1 |
+| White on `#B95649`     |  4.68:1 |
+| White on `#A74739`     |  5.83:1 |
+| `#954439` on `#FFFCF7` |  6.49:1 |
+| `#256F52` on `#EAF4EF` |  5.38:1 |
+| `#9A6500` on `#FFF4D8` |  4.53:1 |
+| `#B6404C` on `#FCEBED` |  4.77:1 |
+| `#3F6F8F` on `#EAF2F7` |  4.78:1 |
 
 这些是**设计计算**，不是浏览器/截图实测。透明 Glass、地图、照片和真实字体仍需后续实现任务重新验证。
 
@@ -138,7 +138,7 @@ WBS 1.13 在最新 `develop` 中原为 `未开始`；依赖 1.4、1.5 均已完�
 - build
 - unit / E2E
 - browser visual regression
--真实字体渲染
+  -真实字体渲染
 - Mapbox live
 
 本轮实际完成的是：
@@ -170,3 +170,15 @@ WBS 1.13 在最新 `develop` 中原为 `未开始`；依赖 1.4、1.5 均已完�
 - WBS 1.20 Loading / Empty / Error / Skeleton 的颜色、字体和圆角基础。
 
 本 Result 不启动上述后续 WBS。
+
+## 2026-09-10 当前整合结果
+
+用户授权检查 B 保留 Draft 并合并可交付内容。原审计 head 95ccaec1a0f6919f21986a66689ae8d867bf6fd9，已无冲突整合 develop@f0569cdc57adc44d9c7e2524064be86217b7d628。
+
+主规格 v1.1 以当前 globals.css 为唯一来源，撤回旧红棕色、独立 --ta-*、七级 radius/字体/阴影覆盖方向；逐项记录 Home/Start/Planner/Detail/PC 消费及已经存在的 wizard/pc aliases。不存在的 pressed/status/tertiary/dialog 角色明确为待决定，不发明 runtime token。旧 v1.0 数值和测试在上文及 Git 历史保留，仅代表当时交付。
+
+六组当前 HEX 纯色对比重新计算：正文 11.78:1、次级 5.46:1、白字/珊瑚 3.46:1、白字/hover 4.28:1、focus 5.51:1、danger 6.04:1。普通白色小字在珊瑚/hover 上不足 4.5:1，不能沿用旧稿的通过结论；渐变与照片/地图合成仍需浏览器审查。没有修改已验收 UI 或声称新增视觉证据。
+
+本 PR 发布修订后的设计候选；WBS 1.13 = B / 待审查、Issue #178 Open。合并文档不等于完成设计冻结或未来局部迁移。原 Draft / 未合并状态为历史，当前 merge 状态以 PR #179 为准。
+
+本轮检查：三个交付 Markdown 的 Prettier check、git diff --check origin/develop、非文档差异检查；结果在本次提交前实际执行。应用测试/浏览器未重跑，因本 PR 仅修改文档。

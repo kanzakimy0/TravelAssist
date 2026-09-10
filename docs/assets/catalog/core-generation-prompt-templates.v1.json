@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "templates": [
+    {
+      "id": "destination-illustrative-v1",
+      "mode": "illustrative_city",
+      "authenticity": "illustrative",
+      "requires_resolved_subject": true,
+      "template": "Illustrative travel atmosphere inspired by {{destination_name}}, Japan, using only reviewed destination references. Warm restrained palette, natural light, landscape composition, subject in central 70%. No text, logo, watermark or UI. Not a documentary photograph or evidence of an actual landmark. Do not invent a recognizable landmark. Minimum 2048 x 1365.",
+      "negative": "No overseas setting, fabricated signs, fake documentary claims, watermarks, booking screenshots or brand logos."
+    },
+    {
+      "id": "poi-acquisition-v1",
+      "mode": "acquisition_required",
+      "authenticity": "unknown",
+      "image_generation": false,
+      "template": "Resolve {{destination_id}} category {{category}} to a verified Japanese POI, record official identity evidence and deduplicate. Acquire a legally licensed real photograph or approved provider reference. Confirm commercial/cache/derivative rights, creator credit, capture location and source quality >=640 x 480. Never generate a fake photograph."
+    },
+    {
+      "id": "poi-documentary-review-v1",
+      "mode": "documentary_photo",
+      "authenticity": "verified_real_photo",
+      "image_generation": false,
+      "template": "Review real photograph against resolved entity and rights evidence. Record creator, license, provenance, attribution and expiry. Reject mismatched or synthetic scenes."
+    },
+    {
+      "id": "provider-reference-review-v1",
+      "mode": "provider_only",
+      "authenticity": "provider_reference",
+      "image_generation": false,
+      "template": "Record approved provider entity and photo reference under its current terms. No binary caching or derivatives without explicit permission."
+    },
+    {
+      "id": "symbolic-placeholder-v1",
+      "mode": "symbolic_placeholder",
+      "authenticity": "symbolic",
+      "template": "A clearly simplified symbolic {{category}} illustration; never a real attraction photograph. Label symbolic. Prefer existing approved category SVG from parent registry."
+    }
+  ]
+}

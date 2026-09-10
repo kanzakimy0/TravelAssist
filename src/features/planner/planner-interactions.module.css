@@ -12,9 +12,9 @@
 .dayInput button {
   border: 1px solid #e2d8cd;
   border-radius: 12px;
-  background: #fcf8f1;
+  background: var(--color-bg-elevated);
   padding: 8px 12px;
-  color: #384955;
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 .stepper {
@@ -42,7 +42,7 @@
   gap: 4px;
 }
 .settingsSections input[type="range"] {
-  accent-color: #bd6758;
+  accent-color: var(--color-accent-primary);
   padding: 0;
   width: 100%;
 }
@@ -67,6 +67,87 @@
   max-width: 100%;
   overflow-x: auto;
 }
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .bandMeta,
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .axis
+  > :first-child {
+  display: none;
+}
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .axis,
+.timelineViewport[data-compact-summary="true"]
+  .bands:not([data-compare="true"])
+  .bandRow {
+  grid-template-columns: minmax(0, 1fr);
+}
+.timelineViewport[data-compact-summary="true"]
+  .bands[data-compare="true"]
+  .bandMeta
+  p {
+  display: none;
+}
+@media (min-width: 768px) {
+  .timelineViewport {
+    height: 100%;
+    min-height: 0;
+  }
+  .timelineViewport .bands {
+    height: 100%;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(4px, 0.7dvh, 10px);
+  }
+  .timelineViewport .bands[data-compare="true"] {
+    grid-template-rows: auto repeat(3, minmax(0, 1fr)) auto;
+    gap: 3px;
+  }
+  .timelineViewport .axis,
+  .timelineViewport .bandRow {
+    grid-template-columns: clamp(150px, 13vw, 270px) minmax(0, 1fr);
+    min-height: 0;
+  }
+  .timelineViewport .track {
+    min-height: 0;
+    height: 100%;
+  }
+  .timelineViewport .segment {
+    height: calc(100% - 18px);
+    padding: clamp(4px, 0.6dvh, 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .timelineViewport .segment[data-kind="movement"] {
+    top: auto;
+    bottom: 3px;
+    height: 8px;
+    padding: 0;
+  }
+  .timelineViewport .bands[data-compare="true"] .segment {
+    height: calc(100% - 8px);
+    padding: 1px 3px;
+  }
+  .timelineViewport .bands[data-compare="true"] .segment[data-kind="movement"] {
+    height: 4px;
+    bottom: 0;
+    padding: 0;
+  }
+  .timelineViewport .segment strong {
+    font-size: clamp(12px, 0.95vw, 20px);
+  }
+  .timelineViewport .segment small,
+  .timelineViewport .bandMeta {
+    font-size: clamp(10px, 0.72vw, 15px);
+  }
+  .timelineViewport .axisTrack,
+  .timelineViewport .bandHint {
+    font-size: clamp(10px, 0.7vw, 14px);
+    margin: 0;
+  }
+}
 .axis,
 .bandRow {
   display: grid;
@@ -88,7 +169,7 @@
   background: none;
   padding: 0;
   border: 0;
-  color: #384955;
+  color: var(--color-text-primary);
   font-weight: 650;
   cursor: pointer;
 }
@@ -125,6 +206,7 @@
   min-height: 28px;
 }
 .segment {
+  container-type: inline-size;
   position: absolute;
   top: 2px;
   height: 62px;
@@ -149,6 +231,19 @@
 .segment strong {
   font-size: 12px;
 }
+.segmentArtwork {
+  float: left;
+  width: 38px;
+  height: 50px;
+  margin-right: 7px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+@container (max-width: 95px) {
+  .segmentArtwork {
+    display: none;
+  }
+}
 .segment small {
   font-size: 10px;
 }
@@ -169,7 +264,7 @@
   border-radius: 5px;
 }
 .segment[aria-pressed="true"] {
-  outline: 2px solid #b56151;
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 1px;
   z-index: 2;
 }
@@ -200,7 +295,7 @@
 .bandHint button {
   border: 0;
   background: transparent;
-  color: #a35445;
+  color: var(--color-accent-primary);
   cursor: pointer;
   margin-left: 8px;
 }
@@ -225,7 +320,7 @@
   background: #fffbf2f5;
   box-shadow: 0 12px 36px #53443829;
   backdrop-filter: blur(16px);
-  color: #384955;
+  color: var(--color-text-primary);
   animation: cardMorph 420ms ease both;
 }
 .morphContent {
@@ -251,12 +346,27 @@
   border: 1px solid #e1d5c9;
   border-radius: 10px;
   padding: 7px 10px;
-  background: #fffdf8;
+  background: var(--color-bg-elevated);
   color: #4c514e;
   cursor: pointer;
 }
 .morphContent header button {
   min-width: 32px;
+}
+.morphContent header button[aria-label="关闭地图快速卡"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  line-height: 0;
+}
+.morphContent header button[aria-label="关闭地图快速卡"] svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 .localJudgement {
   padding: 9px;
@@ -314,8 +424,32 @@
   }
 }
 @media (max-width: 767px) {
+  .timelineViewport {
+    height: 100%;
+    min-height: 0;
+  }
   .timelineViewport .bands {
     min-width: 680px;
+    height: 100%;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+  .timelineViewport .bands[data-compare="true"] {
+    grid-template-rows: auto repeat(3, minmax(0, 1fr)) auto;
+  }
+  .timelineViewport .track {
+    min-height: 0;
+    height: 100%;
+  }
+  .timelineViewport .segment {
+    height: calc(100% - 18px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .timelineViewport .segment[data-kind="movement"] {
+    top: auto;
+    bottom: 3px;
+    height: 8px;
   }
 }
 @media (max-width: 767px) {
@@ -343,4 +477,65 @@
   .bands[data-compare="true"] .axis > small {
     display: none;
   }
+}
+
+/* Keep timeBandPosition's exact x/width and shared comparison axis intact. */
+.track {
+  border-bottom: 2px solid #f2a4b6;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(25% - 1px),
+    #eadce530 calc(25% - 1px) 25%
+  );
+}
+.segment {
+  border-color: #f0e4e7;
+  background: #fffafb;
+  box-shadow: 0 3px 8px #6c456909;
+  color: #2c4264;
+  border-radius: 10px;
+}
+.segment[data-kind="restaurant"] {
+  background: #fff3ef;
+}
+.segment[data-kind="hotel"] {
+  background: #f3f2f9;
+}
+.segment[data-kind="transport"],
+.segment[data-kind="movement"] {
+  background: #eef5fa;
+}
+.segment[data-kind="movement"] {
+  background: #9bbbd2;
+  border: 0;
+}
+.segment[aria-pressed="true"] {
+  outline-color: #ed718d;
+}
+.segment[data-risk="true"] {
+  border-color: #d56c81;
+}
+.bandMeta button {
+  color: #263b60;
+  font-size: 12px;
+}
+.axisTrack,
+.bandHint {
+  color: #66758c;
+}
+.bands:not([data-compare="true"]) .bandMeta {
+  font-size: 11px;
+  line-height: 1.65;
+}
+.bands:not([data-compare="true"]) .segment strong {
+  font-size: 13px;
+}
+.morphCard {
+  background: #fffdf9f7;
+  border-color: #eedbe1;
+  box-shadow: 0 12px 36px #59425c22;
+  color: #2c4264;
+}
+.localJudgement {
+  background: #fff0f3;
 }

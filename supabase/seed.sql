@@ -1,0 +1,2 @@
+-- TASK-015 foundation: intentionally empty; no business or user data.
+-- Replayed by Supabase CLI after the sole supabase/migrations history.

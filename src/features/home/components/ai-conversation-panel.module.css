@@ -1,7 +1,13 @@
 .panel {
   position: fixed;
-  right: var(--space-8);
-  bottom: 7.25rem;
+  right: max(var(--space-8), env(safe-area-inset-right));
+  bottom: calc(var(--home-ai-bottom) + var(--home-ai-size) + 0.75rem);
+  max-height: calc(
+    100svh - var(--home-ai-bottom) - var(--home-ai-size) - 2rem -
+      env(safe-area-inset-top)
+  );
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   z-index: 5;
   width: min(26rem, calc(100vw - var(--space-8) * 2));
   padding: var(--space-6);
@@ -95,11 +101,14 @@
 
 @media (max-width: 40rem) {
   .panel {
-    right: var(--space-3);
-    bottom: calc(5.5rem + env(safe-area-inset-bottom));
-    left: var(--space-3);
+    right: max(var(--space-3), env(safe-area-inset-right));
+    bottom: calc(var(--home-ai-bottom) + var(--home-ai-size) + 0.75rem);
+    left: max(var(--space-3), env(safe-area-inset-left));
     width: auto;
-    max-height: calc(100svh - var(--space-12) * 2.5);
+    max-height: calc(
+      100svh - var(--home-ai-bottom) - var(--home-ai-size) - 2rem -
+        env(safe-area-inset-top)
+    );
     overflow-y: auto;
     padding: var(--space-4);
     border-radius: var(--radius-lg);
@@ -114,5 +123,16 @@
 @media (prefers-reduced-motion: reduce) {
   .panel {
     animation: none;
+  }
+}
+
+@media (max-width: 22rem) {
+  .panel {
+    top: max(9rem, calc(env(safe-area-inset-top) + 7.5rem));
+    bottom: auto;
+    max-height: calc(
+      100svh - max(9rem, calc(env(safe-area-inset-top) + 7.5rem)) -
+        max(var(--space-3), env(safe-area-inset-bottom))
+    );
   }
 }

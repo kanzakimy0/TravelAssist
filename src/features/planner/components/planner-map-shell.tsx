@@ -1,3 +1,4 @@
+import { displayRouteColor } from "../map/route-color";
 import {
   useEffect,
   useEffectEvent,
@@ -15,12 +16,9 @@ import type {
   TripAction,
 } from "../model/trip-model";
 import { MapQuickCard } from "./map-quick-card";
-import {
-  isLandmark,
-  landmarkKey,
-  landmarkPaths,
-  travelBubbles,
-} from "../map/map-visuals";
+import { destinationArtwork } from "../data/planner-artwork";
+import { SvgPlannerArtwork } from "./planner-artwork";
+import { isLandmark, travelBubbles } from "../map/map-visuals";
 import styles from "../planner.module.css";
 
 export function PlannerMapShell({
@@ -30,6 +28,9 @@ export function PlannerMapShell({
   travelHints,
   state,
   dispatch,
+  suppressQuickCard = false,
+  mapPickMode = false,
+  onMapPick,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
@@ -37,12 +38,18 @@ export function PlannerMapShell({
   travelHints: Record<string, string>;
   state: TripState;
   dispatch: Dispatch<TripAction>;
+  suppressQuickCard?: boolean;
+  mapPickMode?: boolean;
+  onMapPick?: (coordinates: Coordinates) => void;
 }) {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const container = useRef<HTMLDivElement>(null);
   const session = useRef<MapSession | null>(null);
   const latest = useRef(view);
   const hints = useRef(travelHints);
+  const geography = useRef(terrain);
+  const pickMode = useRef(mapPickMode);
+  const pickHandler = useRef(onMapPick);
   const [mapStatus, setMapStatus] = useState(
     token
       ? "正在加载 Mapbox · 暂用示意地图"
@@ -76,11 +83,15 @@ export function PlannerMapShell({
       () => hints.current,
       () => dismiss(),
       setAnchor,
+      () => !cancelled,
+      () => pickMode.current,
+      (coordinates) => pickHandler.current?.(coordinates),
     )
       .then((mounted) => {
         if (cancelled) mounted?.destroy();
         else {
           session.current = mounted;
+          mounted?.setTerrain(geography.current);
           mounted?.update(latest.current);
         }
       })
@@ -93,6 +104,16 @@ export function PlannerMapShell({
       session.current = null;
     };
   }, [token]);
+  useEffect(() => {
+    geography.current = terrain;
+    session.current?.setTerrain(terrain);
+  }, [terrain]);
+  useEffect(() => {
+    pickMode.current = mapPickMode;
+  }, [mapPickMode]);
+  useEffect(() => {
+    pickHandler.current = onMapPick;
+  }, [onMapPick]);
   useEffect(() => {
     latest.current = view;
     hints.current = travelHints;
@@ -118,6 +139,7 @@ export function PlannerMapShell({
       className={styles.mapCanvas}
       data-map-range={view.range}
       data-map-engine={live ? "mapbox" : "fallback"}
+      data-map-pick={mapPickMode || undefined}
     >
       <div
         ref={container}
@@ -134,6 +156,8 @@ export function PlannerMapShell({
           onDismiss={() =>
             dispatch({ type: "ui", patch: { inspection: null } })
           }
+          pickMode={mapPickMode}
+          onPick={(coordinates) => pickHandler.current?.(coordinates)}
         />
       )}
       <div className={styles.mapInfo}>
@@ -142,7 +166,7 @@ export function PlannerMapShell({
           {view.range === "all"
             ? "城市 / 住宿结构 / 城际移动"
             : "实线：当前范围 · 浅灰：相邻衔接 · 空心：备选"}{" "}
-          · 非真实路线
+          · 非真实路线 · 景点图片为 AI 插画，非实景照片
         </small>
       </div>
       <details className={styles.mapList}>
@@ -187,20 +211,24 @@ export function PlannerMapShell({
           ◎
         </button>
       )}
-      {state.ui.inspection && state.ui.inspection.level !== "detail" && (
-        <MapQuickCard
-          key={state.ui.inspection.id}
-          state={state}
-          dispatch={dispatch}
-          bounds={bounds}
-          anchor={
-            live && anchor
-              ? anchor
-              : { x: fallbackAnchor[0], y: fallbackAnchor[1] }
-          }
-          onClose={() => dispatch({ type: "ui", patch: { inspection: null } })}
-        />
-      )}
+      {!suppressQuickCard &&
+        state.ui.inspection &&
+        state.ui.inspection.level !== "detail" && (
+          <MapQuickCard
+            key={state.ui.inspection.id}
+            state={state}
+            dispatch={dispatch}
+            bounds={bounds}
+            anchor={
+              live && anchor
+                ? anchor
+                : { x: fallbackAnchor[0], y: fallbackAnchor[1] }
+            }
+            onClose={() =>
+              dispatch({ type: "ui", patch: { inspection: null } })
+            }
+          />
+        )}
     </div>
   );
 }
@@ -210,12 +238,16 @@ function SchematicMap({
   terrain,
   travelHints,
   onDismiss,
+  pickMode,
+  onPick,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
   travelHints: Record<string, string>;
   onDismiss: () => void;
+  pickMode: boolean;
+  onPick: (coordinates: Coordinates) => void;
 }) {
   const svg = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ width: 1000, height: 600 });
@@ -228,7 +260,11 @@ function SchematicMap({
     observer.observe(svg.current);
     return () => observer.disconnect();
   }, []);
-  const { project, positions } = schematicLayout(view, size.width, size.height);
+  const { project, unproject, positions } = schematicLayout(
+    view,
+    size.width,
+    size.height,
+  );
   const path = (points: Coordinates[]) =>
     points.map((p, i) => `${i ? "L" : "M"}${project(p).join(",")}`).join(" ");
   return (
@@ -239,6 +275,15 @@ function SchematicMap({
       aria-label="行程示意地图，路线非真实道路"
       role="group"
       onClick={(e) => {
+        if (pickMode) {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const point: Coordinates = [
+            ((e.clientX - rect.left) / rect.width) * size.width,
+            ((e.clientY - rect.top) / rect.height) * size.height,
+          ];
+          onPick(unproject(point));
+          return;
+        }
         if (!(e.target as Element).closest('[role="button"]')) onDismiss();
       }}
     >
@@ -289,7 +334,7 @@ function SchematicMap({
           data-route-id={route.id}
           d={path(route.coordinates)}
           fill="none"
-          stroke={route.color}
+          stroke={displayRouteColor(route.color)}
           strokeWidth={route.context ? 3.2 : 5}
           opacity={route.context ? 0.25 : 0.85}
           strokeLinecap="round"
@@ -381,7 +426,7 @@ function SchematicMap({
                 cy={y}
                 r={isLandmark(p) ? 34 : 18}
                 fill="none"
-                stroke="#a74739"
+                stroke="#e95b4b"
                 strokeWidth="3"
               />
             )}
@@ -390,20 +435,15 @@ function SchematicMap({
               cy={y}
               r={isLandmark(p) ? 29 : 9}
               fill={p.tripStatus === "recommended" ? "#e9e4db" : "#fffaf4"}
-              stroke={isLandmark(p) ? "#fffdf8" : "#b66c5d"}
+              stroke={isLandmark(p) ? "#fffdf8" : "#e95b4b"}
               strokeWidth={isLandmark(p) ? 4 : 2.5}
             />
             {isLandmark(p) && (
-              <g
-                transform={`translate(${x - 23} ${y - 23}) scale(.72)`}
-                fill="none"
-                stroke="#687b71"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d={landmarkPaths[landmarkKey(p.name)]} />
-              </g>
+              <SvgPlannerArtwork
+                artwork={destinationArtwork(p.name, p.type)}
+                x={x}
+                y={y}
+              />
             )}
             <text
               x={x}

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import type { Dispatch } from "react";
+import type { Dispatch, ComponentProps, ReactNode } from "react";
 import {
   currentPlan,
   itemsForDay,
   isoDay,
   reservationLabel,
   visibleAreas,
+  mealSlotFor,
 } from "../model/trip-model";
 import type {
   PlannerPlace,
@@ -14,7 +15,10 @@ import type {
   TripState,
 } from "../model/trip-model";
 import { PlannerOverlay } from "./planner-overlay";
+import { destinationArtwork } from "../data/planner-artwork";
+import { PlannerArtworkImage } from "./planner-artwork";
 import styles from "../planner.module.css";
+import { useWorkspaceCapabilities } from "./workspace-capabilities";
 
 const typeLabels: Record<PlaceType, string> = {
   attraction: "景点",
@@ -24,6 +28,19 @@ const typeLabels: Record<PlaceType, string> = {
   transport: "交通枢纽",
 };
 export function PlaceArtwork({ place }: { place: PlannerPlace }) {
+  const artwork = destinationArtwork(place.name, place.type);
+  return artwork ? (
+    <PlannerArtworkImage
+      artwork={artwork}
+      className={styles.placeArtwork}
+      sizes="(max-width: 767px) 100vw, 360px"
+      fallback={<PlaceIllustration place={place} />}
+    />
+  ) : (
+    <PlaceIllustration place={place} />
+  );
+}
+function PlaceIllustration({ place }: { place: PlannerPlace }) {
   return (
     <svg
       className={styles.placeArtwork}
@@ -74,6 +91,28 @@ export function PlaceArtwork({ place }: { place: PlannerPlace }) {
     </svg>
   );
 }
+export function RecommendationRow({
+  place,
+  children,
+}: {
+  place: PlannerPlace;
+  children: ReactNode;
+}) {
+  return (
+    <article className={styles.recommendationRow}>
+      <PlaceArtwork place={place} />
+      <div>
+        <h4>{place.name}</h4>
+        <p>{place.why}</p>
+        <small>
+          示例 ¥{place.price.toLocaleString("ja-JP")} /{" "}
+          {place.type === "hotel" ? "房·晚" : "人"} · 非实时价格
+        </small>
+        <div className={styles.recommendationActions}>{children}</div>
+      </div>
+    </article>
+  );
+}
 export function PlaceActions({
   state,
   place,
@@ -85,11 +124,26 @@ export function PlaceActions({
   dispatch: Dispatch<TripAction>;
   day: number;
 }) {
+  const { canBook, enterDetail } = useWorkspaceCapabilities();
   const plan = currentPlan(state);
   const item = plan.items.find(
-    (i) => i.placeId === place.id && (i.day === day || place.type === "hotel"),
+    (i) =>
+      i.placeId === place.id &&
+      (i.day === day || place.type === "hotel") &&
+      (!state.ui.mealSlot ||
+        place.type !== "restaurant" ||
+        mealSlotFor(i.startTime, i.planningSlot) === state.ui.mealSlot),
   );
   const [nights, setNights] = useState(1);
+  if (!canBook && ["hotel", "restaurant"].includes(place.type))
+    return (
+      <div className={styles.placeActions}>
+        <p>Planner 仅规划区域与路线；具体酒店、餐厅及预约请在行程详情处理。</p>
+        <button type="button" onClick={enterDetail}>
+          进入详情选择与预约
+        </button>
+      </div>
+    );
   const replaceable = itemsForDay(plan, day).find(
     (i) =>
       ["attraction", "activity"].includes(i.type) && !i.locked && !i.fixedTime,
@@ -129,6 +183,8 @@ export function PlaceActions({
               placeId: place.id,
               day,
               reservation: false,
+              mealSlot:
+                place.type === "restaurant" ? state.ui.mealSlot : undefined,
               nights,
             })
           }
@@ -136,7 +192,7 @@ export function PlaceActions({
           加入行程
         </button>
       )}
-      {place.bookingRequired && !item?.reservationRequired && (
+      {canBook && place.bookingRequired && !item?.reservationRequired && (
         <button
           type="button"
           className={styles.primaryAction}
@@ -146,6 +202,8 @@ export function PlaceActions({
               placeId: place.id,
               day,
               reservation: true,
+              mealSlot:
+                place.type === "restaurant" ? state.ui.mealSlot : undefined,
               nights,
             })
           }
@@ -153,12 +211,17 @@ export function PlaceActions({
           加入预约
         </button>
       )}
-      {item?.reservationRequired && (
+      {canBook && item?.reservationRequired && (
         <button
           type="button"
           onClick={() => dispatch({ type: "ui", patch: { bookingOpen: true } })}
         >
           {reservationLabel(item)} · 查看预约
+        </button>
+      )}
+      {!canBook && place.bookingRequired && (
+        <button type="button" onClick={enterDetail}>
+          进入详情管理预约
         </button>
       )}
       {!item &&
@@ -202,18 +265,36 @@ export function PlaceActions({
 export function PlaceDetails({
   state,
   dispatch,
+  embedded = false,
 }: {
+  embedded?: boolean;
   state: TripState;
   dispatch: Dispatch<TripAction>;
 }) {
+  const Surface = embedded ? InlinePlaceSurface : PlannerOverlay;
+  const { canBook, enterDetail } = useWorkspaceCapabilities();
   const inspection = state.ui.inspection;
   if (!inspection) return null;
   const close = () => dispatch({ type: "ui", patch: { inspection: null } });
   const plan = currentPlan(state);
   const area = state.areas.find((a) => a.id === inspection.id);
+  if (area && !canBook)
+    return (
+      <Surface kind="detail" title={area.name} onClose={close}>
+        <div className={styles.detailBody}>
+          <h3>推荐区域与理由</h3>
+          <p>{area.reason}</p>
+          <p>{area.access}</p>
+          <p>{area.tradeoff}</p>
+          <button type="button" onClick={enterDetail}>
+            进入详情选择酒店与餐厅
+          </button>
+        </div>
+      </Surface>
+    );
   if (area)
     return (
-      <PlannerOverlay kind="detail" title={area.name} onClose={close}>
+      <Surface kind="detail" title={area.name} onClose={close}>
         <div className={styles.detailBody}>
           <p className={styles.kicker}>
             DAY {area.day} /{" "}
@@ -226,23 +307,18 @@ export function PlaceDetails({
           <p>{area.price} · 非实时价格</p>
           <h3>
             {area.type === "hotelArea" ? "区域内酒店推荐" : "区域内餐厅推荐"} ·
-            3 个示例
+            {Math.min(5, area.recommendationIds.length)} 个示例
           </h3>
-          <div className={styles.placeRecommendations}>
-            {area.recommendationIds.map((id) => {
+          <div
+            className={styles.placeRecommendations}
+            data-recommendation-strip
+            tabIndex={0}
+            aria-label="推荐项目列表"
+          >
+            {area.recommendationIds.slice(0, 5).map((id) => {
               const p = state.places.find((p) => p.id === id)!;
               return (
-                <article key={id}>
-                  <PlaceArtwork place={p} />
-                  <h4>{p.name}</h4>
-                  <p>{p.why}</p>
-                  <p>{p.tags.join(" · ")}</p>
-                  <p>
-                    示例 ¥{p.price.toLocaleString("ja-JP")} ·{" "}
-                    {p.type === "hotel"
-                      ? "房 / 晚；早餐、停车与取消政策见详情"
-                      : "每人；约 60 分钟，建议预约"}
-                  </p>
+                <RecommendationRow key={id} place={p}>
                   <button
                     type="button"
                     onClick={() =>
@@ -257,7 +333,7 @@ export function PlaceDetails({
                     dispatch={dispatch}
                     day={area.day}
                   />
-                </article>
+                </RecommendationRow>
               );
             })}
           </div>
@@ -265,7 +341,7 @@ export function PlaceDetails({
             {state.notice}
           </p>
         </div>
-      </PlannerOverlay>
+      </Surface>
     );
   const place = state.places.find((p) => p.id === inspection.id);
   if (!place) return null;
@@ -283,7 +359,7 @@ export function PlaceDetails({
     a.recommendationIds.includes(place.id),
   );
   return (
-    <PlannerOverlay
+    <Surface
       kind={quick ? "quick" : "detail"}
       title={place.name}
       onClose={close}
@@ -366,37 +442,39 @@ export function PlaceDetails({
                 说明，不是实时计算。固定预约不会被替换；新增停留可能与后续行程冲突，请核对。
               </p>
             </section>
+            {canBook && (
+              <section>
+                <h3>预约渠道与价格参考</h3>
+                <p>
+                  同一地点的多个渠道，不是不同酒店 /
+                  餐厅。价格、余量与取消条款均为示例，未查询实时库存。
+                </p>
+                <div className={styles.offerList}>
+                  {place.bookingOptions.map((option) => (
+                    <article key={option.providerId}>
+                      <strong>
+                        {option.name}
+                        {option.official ? " · 官方优先" : ""}
+                      </strong>
+                      <p>
+                        示例 ¥{option.price?.toLocaleString("ja-JP")} ·{" "}
+                        {option.availabilityStatus === "limited"
+                          ? "示例有限"
+                          : "余量未知"}
+                      </p>
+                      <small>
+                        {option.cancellationSummary} ·{" "}
+                        {option.affiliate
+                          ? "联盟渠道示例，可能有佣金；本页不跳转"
+                          : "非联盟渠道示例"}
+                      </small>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
             <section>
-              <h3>预约渠道与价格参考</h3>
-              <p>
-                同一地点的多个渠道，不是不同酒店 /
-                餐厅。价格、余量与取消条款均为示例，未查询实时库存。
-              </p>
-              <div className={styles.offerList}>
-                {place.bookingOptions.map((option) => (
-                  <article key={option.providerId}>
-                    <strong>
-                      {option.name}
-                      {option.official ? " · 官方优先" : ""}
-                    </strong>
-                    <p>
-                      示例 ¥{option.price?.toLocaleString("ja-JP")} ·{" "}
-                      {option.availabilityStatus === "limited"
-                        ? "示例有限"
-                        : "余量未知"}
-                    </p>
-                    <small>
-                      {option.cancellationSummary} ·{" "}
-                      {option.affiliate
-                        ? "联盟渠道示例，可能有佣金；本页不跳转"
-                        : "非联盟渠道示例"}
-                    </small>
-                  </article>
-                ))}
-              </div>
-            </section>
-            <section>
-              <h3>附近餐饮与住宿</h3>
+              <h3>附近餐饮与住宿区域</h3>
               <div className={styles.placeActions}>
                 {visibleAreas(state)
                   .filter((a) => a.day === day)
@@ -437,6 +515,12 @@ export function PlaceDetails({
           {state.notice}
         </p>
       </div>
-    </PlannerOverlay>
+    </Surface>
   );
+}
+
+function InlinePlaceSurface({
+  children,
+}: ComponentProps<typeof PlannerOverlay>) {
+  return <div>{children}</div>;
 }

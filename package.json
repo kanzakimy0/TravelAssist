@@ -3,6 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "deploy:validate": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs",
+    "deploy:validate:local": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
+    "deploy:build:local": "node --import ./tests/register-route-ts.mjs tools/deploy/build-artifact.mjs",
+    "deploy:verify-artifact": "node --import ./tests/register-route-ts.mjs tools/deploy/verify-artifact.mjs",
+    "deploy:rehearse:local": "node --import ./tests/register-route-ts.mjs tools/deploy/rehearse.mjs",
+    "test:deployment": "node --import ./tests/register-route-ts.mjs --test tests/task-025-environment-deployment.test.mjs",
+    "format:check:deploy": "prettier --check \"src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tools/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tests/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \".github/**/*.{yml,yaml,md}\" \"docs/deployment/**/*.md\" \"*.{ts,mjs,json}\"",
+    "db:start": "node tools/db/local.mjs start",
+    "db:stop": "node tools/db/local.mjs stop",
+    "db:status": "node tools/db/local.mjs status",
+    "db:reset": "node tools/db/local.mjs reset",
+    "db:types": "node tools/db/local.mjs types",
+    "test:db-foundation": "node --test tests/task-015-db-foundation.test.mjs",
+    "test:routing": "node --import ./tests/register-route-ts.mjs --test tests/task-022-route-contract.test.mjs tests/task-022-ekiworld-routing.test.mjs tests/task-022-routing-boundary.test.mjs tests/task-023-planner-route-integration.test.mjs",
+    "assets:japan-destinations:close": "node tools/assets/close-japan-destination-evidence.mjs",
+    "test:japan-destination-closure": "node --test tests/task-013-3-1-japan-destination-closure.test.mjs",
+    "assets:japan-destinations": "node tools/assets/resolve-japan-destinations.mjs",
+    "assets:japan-destinations:validate": "node tools/assets/validate-japan-destination-resolution.mjs",
+    "test:japan-destinations": "node --test tests/task-013-3-japan-destination-resolution.test.mjs",
+    "assets:core-manifest": "node tools/assets/build-core-generation-manifest.mjs",
+    "assets:core-batches": "node tools/assets/export-core-generation-batches.mjs",
+    "assets:core-estimate": "node tools/assets/estimate-core-generation-cost.mjs",
+    "assets:core-validate": "node tools/assets/validate-core-generation-manifest.mjs",
+    "test:core-generation": "node --test tests/task-013-2-core-generation-manifest.test.mjs",
+    "assets:catalog": "node tools/assets/build-full-catalog.mjs",
+    "assets:derive": "node tools/assets/generate-asset-derivatives.mjs",
+    "assets:verify-variants": "node tools/assets/verify-asset-derivatives.mjs",
+    "assets:review": "node tools/assets/generate-variant-review.mjs",
+    "assets:nightly": "node tools/assets/run-assets-nightly.mjs",
+    "assets:nightly:resume": "node tools/assets/run-assets-nightly.mjs --resume",
+    "test:asset-variants": "node --test tests/task-013-1-asset-variants.test.mjs",
     "assets:inventory": "node tools/assets/inventory-assets.mjs",
     "assets:validate": "node tools/assets/validate-asset-library.mjs",
     "assets:index": "node tools/assets/generate-asset-index.mjs",
@@ -11,15 +42,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\""
   },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "0.25.12"
+    }
+  },
   "dependencies": {
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.115.0",
+    "drizzle-orm": "0.45.2",
     "mapbox-gl": "^3.30.0",
     "next": "16.3.4",
+    "postgres": "3.4.9",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
@@ -27,9 +68,12 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "drizzle-kit": "0.31.10",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.4",
     "prettier": "3.9.6",
+    "sharp": "0.35.4",
+    "supabase": "2.116.0",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3"
   }
