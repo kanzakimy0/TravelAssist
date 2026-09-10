@@ -828,7 +828,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | --- | --- | --- | --- | --- | --- |
 | 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 待审查（#201；仅契约设计，未冻结） |
 | 4.20.1 | Engine Contract Amendment / 行程合理性能力预留 | B | P1 | 4.20,4.17；#282 | 已完成 |
-| 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 未开始 |
+| 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 待审查 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 未开始（前置未满足） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 未开始 |
 | 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 未开始 |
@@ -1204,3 +1204,14 @@ B Auth/User Session → A Header/Avatar Entry
 - 原Engine Contract §24增补duration、load/fatigue、item/day/itinerary assessment及impact；43字段及公式不复制到ChangeSet，UPDATE_DURATION因4.17无独立duration保持unsupported。
 - lint / build / build后typecheck /修改文档格式/差异检查通过；Node721/724，三项既有asset失败；全仓47项既有格式失败，未越界修复。
 - 父4.20保留原待审查和历史Task/Result；4.21–4.24未启动，其他WBS行不变。
+
+## TASK-WBS-4.21-B Runtime tracking（2026-09-10）
+
+- Issue #287；Owner B；状态：待审查，待用户验收。
+- 基线：`1fa38239df508683d5f1f522135233ad09e544f1`；分支：`feature/b-wbs-4-21-rule-feasibility-engine`；Commit：`f34466819b6c0c1faa048744c1da0ac2dfa8abf0`；[Draft PR #288](https://github.com/kanzakimy0/TravelAssist/pull/288)。
+- Task：`docs/tasks/TASK-WBS-4.21-b-rule-feasibility-engine.md`；Result：`docs/tasks/RESULT-WBS-4.21-b-rule-feasibility-engine.md`。
+- 实现原4.20.1类型、strict输入、纯validate/preview、duration/load/schedule/day/itinerary规则和deterministic replay；当前开启UPDATE_TIME/REORDER_ITEMS内存预览，其余operation能力显式unsupported。
+- 专项77/77；基线724/721通过/3失败，候选801/798通过/3失败，新增失败0；lint/build/typecheck/质量门格式/修改文件格式/diff检查通过。全仓47项既有格式问题保留。
+- 不复制43字段或canonical Schema；UPDATE_DURATION、observed duration和未就绪Profile/Provider/Booking生产依赖fail closed。没有UI/DB/API/AI/Provider接线。
+- 4.20父审查门与4.20.1完成状态保留；4.22–4.24未开始，本次不授权后续任务。
+- 原生node --test对照：develop723/719通过/4失败，候选800/796通过/4失败；额外旧coral-palette loader失败亦基线一致，详见Result，未声称CI全绿。

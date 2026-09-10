@@ -5,7 +5,11 @@
 - Task ID: TASK-WBS-4.21-B
 - WBS: 4.21
 - Owner: B
-- Status: 进行中
+- Issue: [#287](https://github.com/kanzakimy0/TravelAssist/issues/287)
+- Execution Base: `1fa38239df508683d5f1f522135233ad09e544f1`
+- Implementation Commit: `f34466819b6c0c1faa048744c1da0ac2dfa8abf0`（后续仅文档追踪）
+- Draft PR: [#288](https://github.com/kanzakimy0/TravelAssist/pull/288) → develop，保持Draft
+- Status: 待验收
 - Branch: `feature/b-wbs-4-21-rule-feasibility-engine`
 - Base: `origin/develop@afed8292036d233b9336bcd02b8f5bd66f53037f`
 - Depends On: WBS 4.20 / 4.20.1 Engine Contract；WBS 4.17 canonical Trip Plan；相关 Provider / POI / Profile 只通过公开契约消费
@@ -363,3 +367,9 @@ Result 至少包含：
 - Files Changed
 - WBS Update
 - Non-goals / Stop
+
+## 13. Implementation Delivery
+
+已实现现有4.20.1 Contract的纯规则入口、item/day/itinerary独立评估和versioned model。专项77/77；全仓基线721/724与候选798/801具有同三项既有素材失败，新增失败0。lint/build/typecheck/修改文件格式及diff检查通过；全仓47项格式基线保留。完整证据、operation capability与生产依赖限制见 [Result](RESULT-WBS-4.21-b-rule-feasibility-engine.md)。4.21待验收，4.22不启动。
+
+原生node --test额外对照：未修改develop为723/719通过/4失败，候选800/796通过/4失败；第四项为旧coral-palette扩展名loader问题，新专项77条全部通过，未修改旧测试或workflow。
