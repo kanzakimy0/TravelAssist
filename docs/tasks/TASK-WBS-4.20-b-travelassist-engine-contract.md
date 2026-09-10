@@ -4,13 +4,13 @@
 
 - Task ID: TASK-WBS-4.20-B
 - Owner: B（2026-09-08 用户明确指定的 Engine 单项例外）
-- Status: 待验收
+- Status: 已完成（Contract v0.1 Frozen；最终文档Closeout PR待用户确认）
 - WBS: 4.20；后续规划 4.21–4.24
 - GitHub Issue: [#201](https://github.com/kanzakimy0/TravelAssist/issues/201)
 - Branch: `feature/b-travelassist-engine-contract`
 - Depends On: 已合入的 0.9 Contract 交接基线；发布前须 A/B 核对 4.16 / 4.17 / 8.5
-- Commit: PENDING（契约设计已完成，等待提交）
-- Pull Request: PENDING（Draft PR 尚未创建）
+- Commit: `214d035681bdc45af27ebdbe64ec5dd2210fb3d7`（原契约设计）
+- Pull Request: [#237](https://github.com/kanzakimy0/TravelAssist/pull/237)（原契约已合并）；历史Review Gate [#238](https://github.com/kanzakimy0/TravelAssist/pull/238)，本轮由独立Closeout PR承接，见最终Result。
 - Authoring Base: `2d9734731dcece9f90db1779da06a7a3c9e9bab7`
 - Execution Base: `1af72af0d7151af4dd59073ee0b015a70b267064`
 
@@ -103,4 +103,14 @@ Status / Tracking / Contract / Ownership / Dependencies / Validation / Files Cha
 
 - Contract: `docs/architecture/travelassist-engine-contract.md`
 - Result: `docs/tasks/RESULT-WBS-4.20-b-travelassist-engine-contract.md`
-- Scope status: 4.20 待验收；4.21–4.24 未启动
+- Scope status: 4.20 Contract v0.1 Frozen；4.20.1与4.21均已验收合并；4.22–4.24未启动。
+
+## 10. Final Contract Freeze / Closeout（2026-09-10）
+
+- 本次用户明确授权最终审计并在无核心阻塞时冻结v0.1、将4.20记为B / 已完成；原契约及4.20.1已进入develop。本次独立文档PR待确认，不自动合并。
+- 基线：`origin/develop@2d3df8819da0e02b6b8449097dc2b95cd475f9d9`；分支：`codex/b-engine-contract-final-freeze`。
+- 4.20.1已由用户验收并通过PR #283合入；4.21已通过PR #288及#290实现验收、完成追踪。
+- Contract §25完成全部21个Open Decision ID审计；未解决A类Contract Freeze Blocker为0。OD-CONTRACT-01/OD-ASSESSMENT-01的公共语义部分已解决，其余实现/发布部分归B；未删除任何OD。
+- WBS 4.20 = B / 已完成；Issue #201按本次授权关闭为Completed。后续实现依赖继续Open，4.22–4.24及8.5未开始。
+- 原§5阶段表和原交付指令保留为历史规划；当前阶段状态以最新Master WBS、本节及 [Final Closeout Result](RESULT-WBS-4.20-b-engine-contract-final-closeout.md) 为准。
+- 本轮只有文档/Tracking，7个Contract TypeScript块与全部JSON样例保持不变；不修改4.21 runtime/测试/素材，不伪造A人工签字或生产Consumer验收。
