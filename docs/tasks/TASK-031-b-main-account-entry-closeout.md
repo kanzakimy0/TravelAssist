@@ -7,7 +7,7 @@
 - Owner: `B`
 - Responsibility: `Main Travel System / Auth Entry`
 - Priority: `P1`
-- Status: `待审查`
+- Status: `已完成`
 - GitHub Issue: `#261`
 - Task File: `docs/tasks/TASK-031-b-main-account-entry-closeout.md`
 - Codex Launcher: `docs/tasks/CODEX-TASK-031-b-main-account-entry-closeout.md`
@@ -408,3 +408,13 @@ TASK-031-B 完成后停止。
 ## 用户验收记录
 
 2026-09-10 用户明确回复“验收通过”；已验收 PR head：64e8d55fcab3e468474bf4a19c7e8ddfba2409a5。视觉验收通过；本次仅记录验收，不修改运行时代码，不自动合并。PR #278 保持 Draft，WBS 3.4 B / 待审查，等待单独合并授权；两项既有资产 baseline failures 保持原记录。
+
+## Final Merge Closeout — 2026-09-10
+
+用户视觉验收通过后明确授权最终合并。PR #278 于 2026-09-10T03:28:52Z 合入 develop，merge b30df92a0b81cab8fcb4c13ded4e77c70e8d366f；已验收实现对应 head 64e8d55fcab3e468474bf4a19c7e8ddfba2409a5，合并 head ef421667fac5aa172425cc43b27677caa8f764a3 仅追加验收记录。合并树与 ef421667 完全一致，且已确认 merge 是 origin/develop 祖先。
+
+- PR #278 合并前 MERGEABLE / CLEAN，已按授权从 Draft 转 Ready，再以 match-head 约束合并。
+- WBS 3.4 = B / 已完成；Issue #261 Closed / Completed。3.1 / 3.2 / 3.3 B 已完成、3.2.1 A / 未开始 / Deferred 保持。
+- 本轮仅同步 Task / Result / Master WBS 合并收尾记录，未修改运行时、测试、素材或清单。沿用已验收工程结果：ci / lint / typecheck / build / diff-check、专项 4/4、浏览器 64/64、几何 36/36；全仓 718/720 与基线 714/716 的两项既有资产失败如实保留。
+- 下文此前“等待授权 / 保持 Draft / 不自动合并”是验收或开发阶段的历史记录；当前状态以本节为准。历史 Gate Blocked 原文不删除。
+- TASK-031-B 到此完成，未启动 3.5 / 3.7 或其他 Task。
