@@ -10,8 +10,8 @@
 - Branch: `codex/b-engine-contract-amendment`
 - Depends On: 已存在4.20 Contract、4.17 canonical v1.0；新增输出发布前A/B review
 - Execution Base: `fe538e7093bd58e7d0fe7fd434bf907dd132277a`
-- Commit: PENDING
-- Pull Request: PENDING
+- Commit: `3117af3ca734a1eab1f18ed1d0d98131c05be09d`（Amendment；后续仅追踪）
+- Pull Request: [Draft PR #283](https://github.com/kanzakimy0/TravelAssist/pull/283)
 
 ## Scope
 

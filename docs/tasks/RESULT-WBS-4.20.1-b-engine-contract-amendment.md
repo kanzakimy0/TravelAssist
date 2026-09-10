@@ -7,8 +7,8 @@
 - Issue: [#282](https://github.com/kanzakimy0/TravelAssist/issues/282)，保持Open。
 - Branch: `codex/b-engine-contract-amendment`
 - Execution base: `origin/develop@fe538e7093bd58e7d0fe7fd434bf907dd132277a`
-- Amendment commit: PENDING
-- Draft PR: PENDING
+- Amendment commit: `3117af3ca734a1eab1f18ed1d0d98131c05be09d`（后续提交仅同步追踪）。
+- Draft PR: [#283](https://github.com/kanzakimy0/TravelAssist/pull/283) → develop，保持Draft。
 - Task: [TASK-WBS-4.20.1-B](TASK-WBS-4.20.1-b-engine-contract-amendment.md)
 - Contract: [现有Engine Contract §24](../architecture/travelassist-engine-contract.md#24-wbs-4201-amendment行程合理性输出review-candidate)
 
