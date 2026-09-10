@@ -1,0 +1,52 @@
+name: POI Identity v3.8 Geoshape
+
+on:
+  push:
+    branches:
+      - data/poi-identity-v3.8-geoshape
+    paths:
+      - 'tmp/poi-v3.8/**'
+      - '.github/workflows/poi-identity-v38.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_URL: https://geoshape.ex.nii.ac.jp/nrct-poi/dataset/nrct-poi-20250515.csv
+  FALLBACK_URL: https://geonlp.ex.nii.ac.jp/dictionary/geoshape-nrct-poi/geoshape-nrct-poi-geolod.csv
+
+jobs:
+  complete-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official Geoshape NRCT-POI CSV
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd tmp/poi-v3.8
+          if ! curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 20 --max-time 180 "$SOURCE_URL" -o nrct-poi-20250515.csv; then
+            echo 'Primary official endpoint failed; trying official GeoNLP dictionary endpoint.' >&2
+            curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 20 --max-time 180 "$FALLBACK_URL" -o nrct-poi-20250515.csv
+          fi
+          test -s nrct-poi-20250515.csv
+          sha256sum nrct-poi-20250515.csv
+      - name: Generate and validate remaining 5,021 identities
+        run: python3 tmp/poi-v3.8/generate_remaining_identity.py
+      - name: Package evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd tmp/poi-v3.8
+          cp generate_remaining_identity.py out/
+          cp used-geoshape-source-ids-v3.6.zlib.b64 out/
+          (cd out && sha256sum * > SHA256SUMS.txt)
+      - name: Upload completion artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: travelassist-poi-remaining-identity-v3.8
+          path: tmp/poi-v3.8/out/
+          if-no-files-found: error
+          retention-days: 30
