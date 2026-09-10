@@ -1,5 +1,19 @@
 # TASK-030-B Result
 
+## Final Merge Closeout — 2026-09-10
+
+**已完成：用户最终验收通过，PR #273 已合入 develop。**
+
+- PR: https://github.com/kanzakimy0/TravelAssist/pull/273；MERGED，2026-09-10T02:25:19Z。
+- Accepted head: 6612b376e00668635266d8c1f9629e3d2637aac7；merge commit: 9c92ef767a6c9d1b986c581f62efcf347efdd674。
+- Latest pre-merge develop: 0eb124ce4d2892ea8d1e74a5e587d745f01e8d06。PR head 保持已验收版本，MERGEABLE / CLEAN 后转 Ready 合并；已 fetch 并验证 merge 进入 origin/develop。
+- 合并与其第一父提交比较，src / public / assets / package / lockfile 无变化；保留最新其他工作站 Planner 修改。收尾仅文档，未修复两项旧 asset baseline failures。
+- WBS 3.3 Owner B / 已完成，Issue #260 Closed / Completed。3.1 B / 已完成、3.2 B / 已完成、3.2.1 A / Deferred；3.4 B / 未开始。
+- 先前测试和浏览器报告保留并对应各自 execution SHA；本次不将旧报告伪报成新 develop 的全仓复跑。
+- 用户已另外授权在此收尾后重新执行 TASK-031-B Gate；只有确认 #273 合入 develop 后才从新 develop 创建 3.4 独立分支。3.4 完成后待审查，不自动合并。
+
+下方 Status / Tracking / 待审查措辞保留为审计及集成阶段历史；最终状态以本节为准。
+
 ## Status
 
 **审计 / 专项测试 / 浏览器 QA 已完成并获用户明确授权发布；WBS 3.3 = Owner B / 待审查；Draft PR [#273](https://github.com/kanzakimy0/TravelAssist/pull/273) → develop。**
