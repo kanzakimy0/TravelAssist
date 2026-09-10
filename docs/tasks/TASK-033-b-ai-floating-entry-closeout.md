@@ -7,7 +7,7 @@
 - Canonical Owner: **B**
 - Responsibility: Main Travel System / Website Entry / AI Shell（用户明确指定 B 的单项例外）
 - Priority: `P1`
-- Status: `可开始`
+- Status: `进行中`
 - GitHub Issue: `#263`
 - Suggested Branch: `feature/b-wbs-3-5-ai-floating-entry`
 - Result File: `docs/tasks/RESULT-TASK-033-b-ai-floating-entry-closeout.md`
