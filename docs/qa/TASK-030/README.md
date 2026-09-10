@@ -20,4 +20,4 @@
 
 ## Limitations
 
-线上 Auth 不在本次范围；no-JS 只验证原生导航，现有互动向导需要 JavaScript。两项资产失败是已复现的基线问题；不因此删改或弱化测试。远端发布被自动审批拒绝，当前只有本地提交，Draft PR 尚未创建。
+线上 Auth 不在本次范围；no-JS 只验证原生导航，现有互动向导需要 JavaScript。两项资产失败是已复现的基线问题；不因此删改或弱化测试。用户已明确授权发布，[Draft PR #273](https://github.com/kanzakimy0/TravelAssist/pull/273) 保持待审查；先前自动审批拒绝为已解除的历史记录。

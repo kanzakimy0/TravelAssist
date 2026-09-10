@@ -2,7 +2,7 @@
 
 ## Status
 
-**本地审计 / 专项测试 / 浏览器 QA 已完成；WBS 3.3 = 待审查（本地记录）。远端发布待用户授权。**
+**审计 / 专项测试 / 浏览器 QA 已完成并获用户明确授权发布；WBS 3.3 = Owner B / 待审查；Draft PR [#273](https://github.com/kanzakimy0/TravelAssist/pull/273) → develop。**
 
 首页入口实现正确，本次运行时代码零改动。未合并 develop，未开始后续 Task。全仓测试不是全绿：713 项中 711 通过，2 项旧素材清单失败在未修改的 execution base 上同样复现。
 
@@ -18,13 +18,14 @@
 
 ## Tracking
 
-- WBS 3.3: B / 待审查（本地）；启动记录 8935e3f，先登记进行中。
-- Issue: [#260](https://github.com/kanzakimy0/TravelAssist/issues/260)，保持 Open；已追加 execution base / branch 启动记录。最终报告更新待发布授权。
-- Branch: feature/b-wbs-3-3-main-entry（从最新 origin/develop 创建，目前仅本地）。
-- Commit: 45e66cecd530947716feddd154a470dc66e236b8（测试 / QA）；另有最终 Task / Result / WBS 收口记录提交。
-- Draft PR: **尚未创建**。自动审批审核拒绝 git push 与创建 Draft PR，理由为本轮仅附件，未明确授权本次分支、载荷及远程目的地的外传；没有换工具绕过或重试发布。
-- 待授权动作：推送本分支至 https://github.com/kanzakimy0/TravelAssist，更新 Issue #260，创建 Draft PR → develop。不会自动合并。
-- Result file: docs/tasks/RESULT-TASK-030-b-main-entry-closeout.md。
+- WBS 3.3: B / 待审查；启动记录 8935e3f，先登记进行中；最新 Master WBS 只更新本任务行与追踪记录。
+- Issue: [#260](https://github.com/kanzakimy0/TravelAssist/issues/260)，保持 Open；记录完整 Result、执行基线、分支、Draft PR 与两项既有 baseline test failure。
+- Remote branch: origin/feature/b-wbs-3-3-main-entry。
+- Commit: 45e66cecd530947716feddd154a470dc66e236b8（测试 / QA）；2f922e1c27ea0ab19c88af831eef8a4faa51b0d7（本地收口）；最终发布追踪提交见 Draft PR head。
+- Draft PR: [#273](https://github.com/kanzakimy0/TravelAssist/pull/273)，feature/b-wbs-3-3-main-entry → develop，Open / Draft，不自动合并。
+- Result URL: https://github.com/kanzakimy0/TravelAssist/blob/feature/b-wbs-3-3-main-entry/docs/tasks/RESULT-TASK-030-b-main-entry-closeout.md。
+- 发布授权：用户于 2026-09-10 明确授权推送当前同名分支、Result / Master WBS / Issue #260 同步及创建 Draft PR。此前自动审批拒绝记录保留为历史，当前发布门已解除。
+- 本轮发布只有文档追踪更新，运行时及素材代码没有改动；不修复无关的两项素材基线失败，不启动后续 Task。
 
 ## Existing Implementation Audit
 
@@ -82,14 +83,14 @@
 ## Problems / Deferred
 
 1. **既有素材基线失败，没有伪报全绿。** 两项失败为 complete library passes file, schema, hash, rights and protected checks 与 nightly --verify-only does not write canonical catalogs。legacy-inventory.v1.json 的四个 assets/design SVG 记录为 CRLF 字节/哈希，git blob 与实际 checkout 为 LF。四项记录都与转换成 CRLF 的内容精确匹配；在未修改 b783a10 上复现相同失败。当前任务没有改清单、素材或验证器，保留失败让素材维护工作单独修正。
-2. **远端发布待授权。** 推送 / Draft PR 被自动审批审核拒绝；本地提交和证据已准备好，尚未完成远端 Task / Result / WBS 最终同步与 Issue 最终更新。
+2. **历史发布门已解除。** 先前因本轮仅附件而被自动审批拒绝推送；用户在 2026-09-10 明确授权发布后，已推送指定分支并创建 Draft PR #273，同步 Task / Result / WBS / Issue。该历史不再是当前 blocker。
 3. 真正线上认证、AI / Route / Map / Booking / DB 均不在范围。Signed-in QA 是既有隔离 fixture，不代表线上身份服务验收。
 4. 未实施 3.2.1 / 3.4 / 3.5 / 3.7，不新增依赖、Client Component 或中间 Loading 页面。
 
 ## WBS Updated
 
-Yes（本地）：3.3 Owner B、进行中 → 待审查、branch / tests / Result / Issue 追踪已同步，其他工作站记录保持。远端同步等待发布授权。
+Yes：已在发布分支同步 3.3 Owner B、进行中 → 待审查、branch / tests / Result / Issue / Draft PR 追踪，保留其他工作站最新记录。develop 上的合入更新等待本 PR 验收与合并。
 
 ## Ready For Review
 
-Yes（本地成果可审查，含明确的基线测试例外）；Draft PR 尚未发布，最终验收与合并未执行。授权发布后创建 Draft PR，继续等待用户验收，不自动进入下一任务。
+Yes：Draft PR #273 已发布供审查，含明确的两项既有基线测试失败。最终验收与合并未执行，WBS 3.3 保持待审查，不自动进入 3.4 / 3.5 / 3.7。
