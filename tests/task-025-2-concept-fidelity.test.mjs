@@ -421,3 +421,82 @@ test("TASK-031-B: verified metadata accepts only safe HTTPS avatars and neutral 
     "https://example.invalid/a.png",
   );
 });
+
+// TASK-033-B keeps the existing TSX harness; interactive behavior runs against the production browser.
+test("TASK-033-B: AI entry forwards native keyboard/button semantics and its controlling ARIA", () => {
+  const { AIEntryButton } = load(
+    "src/features/home/components/ai-entry-button.tsx",
+  );
+  for (const expanded of [false, true]) {
+    const html = renderToStaticMarkup(
+      React.createElement(AIEntryButton, {
+        "aria-controls": "task033-panel",
+        "aria-expanded": expanded,
+        "aria-label": expanded ? "AI 助手已展开" : "打开 AI 助手",
+      }),
+    );
+    assert.match(html, /^<button\b/);
+    assert.match(html, /type="button"/);
+    assert.match(html, new RegExp(`aria-expanded="${expanded}"`));
+    assert.match(html, /aria-controls="task033-panel"/);
+    assert.equal((html.match(/<button\b/g) || []).length, 1);
+    assert.doesNotMatch(html, /href=|disabled=|tabindex="-1"/);
+  }
+});
+
+test("TASK-033-B: actual panel labels its region and textarea and explicitly disables non-live Send", () => {
+  const { AIConversationPanel } = load(
+    "src/features/home/components/ai-conversation-panel.tsx",
+  );
+  const html = renderToStaticMarkup(
+    React.createElement(AIConversationPanel, {
+      id: "task033-panel",
+      closeButtonRef: { current: null },
+      onClose: () => {},
+    }),
+  );
+  assert.match(html, /role="region"/);
+  assert.match(html, /aria-labelledby="task033-panel-title"/);
+  assert.match(html, /id="task033-panel-title"/);
+  assert.match(html, /<label[^>]+for="task033-panel-input"/);
+  assert.match(html, /<textarea[^>]+id="task033-panel-input"/);
+  assert.match(
+    html,
+    /<button[^>]+aria-label="发送（AI 服务尚未接入）"[^>]+disabled=""/,
+  );
+  assert.match(html, /AI 服务将在后续接入/);
+  assert.equal((html.match(/<textarea\b/g) || []).length, 1);
+  assert.doesNotMatch(html, /<form|action=|aria-live=|正在生成|生成完成/);
+});
+
+test("TASK-033-B: panel close delegates to the supplied handler and preserves its focus ref", () => {
+  const { AIConversationPanel } = load(
+    "src/features/home/components/ai-conversation-panel.tsx",
+  );
+  const ref = { current: null };
+  let closed = 0;
+  const panel = AIConversationPanel({
+    id: "task033-panel",
+    closeButtonRef: ref,
+    onClose: () => closed++,
+  });
+  const close = panel.props.children[0].props.children[1];
+  assert.equal(close.props.ref, ref);
+  assert.equal(close.props["aria-label"], "关闭 AI 助手");
+  close.props.onClick();
+  assert.equal(closed, 1);
+});
+
+test("TASK-033-B: actual assistant initially renders one collapsed launcher and no phantom panel", () => {
+  const { HomeAIAssistant } = load(
+    "src/features/home/components/home-ai-assistant.tsx",
+  );
+  const html = renderToStaticMarkup(React.createElement(HomeAIAssistant));
+  assert.equal((html.match(/<button\b/g) || []).length, 1);
+  assert.match(html, /aria-expanded="false"/);
+  assert.match(html, /aria-controls="home-ai-conversation-panel"/);
+  assert.doesNotMatch(
+    html,
+    /id="home-ai-conversation-panel"|<textarea|role="region"/,
+  );
+});
