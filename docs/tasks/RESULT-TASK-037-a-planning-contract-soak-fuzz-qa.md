@@ -2,13 +2,13 @@
 
 ## Status
 
-待审查。TASK-037-A 的离线确定性 QA、合成规模观测和仓库回归已完成；Draft PR 尚未合入。没有启动真实 100 POI Scoring Pilot。
+Completed / merged after user acceptance. TASK-037-A 的离线确定性 QA、合成规模观测、仓库回归与 GitHub CI 全部通过。没有启动真实 100 POI Scoring Pilot。
 
 ## Base / TASK-036 base / latest develop integration
 
 - TASK-036 semantic base: `e47b6edf4620dddb3ff8ab0d94f03c4ad37deaea`
-- Latest integrated `origin/develop`: `226e2fc18390d5d8795538818ea055640ca25123`
-- Integration: TASK-036 分支已经通过 merge commit `e99b8bb` 包含该 develop；TASK-037 创建后再次执行 `git merge origin/develop`，结果为 already up to date。
+- Latest integrated `origin/develop`: `446b5da8803852e6badae03861f621bb658a78e0`
+- Integration: TASK-036 分支通过 merge commit `e99b8bb` 包含初始 develop；PR #293 合入后，TASK-037 又通过 `7589f09` 正常合入最新 develop，未发生冲突。
 - TASK-036 review invariants preserved:
   - `EXPIRED` 禁止 `USE` / `USE_WITH_WARNING`；
   - `PoiPlanningProjectionV1` root、FeatureSet 和全部 VisitProfile 的 `poiRef` 必须一致；
@@ -26,14 +26,15 @@
 ## Commits
 
 - `ebed4d108a91dadeb2513d4c950049ea767d4702` — implementation, tests, QA evidence, Result and WBS status.
-- Tracking synchronization commit follows this record update.
+- `cfe6ef80a9a993c42408fcec953417391a1b1ece` — initial Draft PR tracking synchronization.
+- `7589f09` — normal merge of the latest develop after PR #293 was merged.
 
 ## Draft PR + base/head
 
-- Draft PR: [#298](https://github.com/kanzakimy0/TravelAssist/pull/298)
-- Base: `codex/a-trip-planning-contract-foundation`
+- Pull Request: [#298](https://github.com/kanzakimy0/TravelAssist/pull/298) — merged after user acceptance.
+- Final Base: `develop`
 - Head: `codex/a-planning-contract-soak-qa`
-- PR #293 保持 Draft，未 merge、未 close、未 retarget。
+- PR #293 已先按依赖顺序合入 `develop`；#298 随后同步最新 develop、重新验证并合入。
 
 ## Files changed
 
@@ -138,8 +139,8 @@ The QA harness performs no network access and calls no Provider, LLM, paid API, 
 
 ## WBS updated
 
-Yes. WBS 9.13 was added as `待审查`; WBS 4.47 remains `待审查` while TASK-036 final closeout is pending.
+Yes. WBS 9.13 and WBS 4.47 are `已完成` after user acceptance and ordered merges of PR #293 / #298. Issues #291 and #297 remain open as required.
 
 ## Recommended next action
 
-Review the TASK-037 Draft PR after PR #293 review. Do not start the real 100 POI Scoring Pilot until the contract review and this QA evidence are accepted.
+TASK-036 and TASK-037 are ready for downstream planning. Do not start the real 100 POI Scoring Pilot without a separate explicit Task.
