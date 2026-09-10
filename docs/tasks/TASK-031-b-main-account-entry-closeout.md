@@ -400,7 +400,7 @@ TASK-031-B 完成后停止。
 ## Execution Result — 2026-09-10
 
 - Gate PASS：PR #273 与最终收尾 #277 均已进入 develop；执行基线 7f0c292186079cca7ad639ceb550f7d0e4f43cc7。此前 Gate Blocked 原始记录保留在 Result。
-- 实现提交 18dd0bbcbef1b77717f3898a68a0c5598b59e77b；分支 feature/b-wbs-3-4-main-account-entry；Issue #261；Draft PR 发布后登记。
+- 实现提交 18dd0bbcbef1b77717f3898a68a0c5598b59e77b；分支 feature/b-wbs-3-4-main-account-entry；Issue #261；[Draft PR #278](https://github.com/kanzakimy0/TravelAssist/pull/278) → develop，保持 Draft。
 - Result：[RESULT-TASK-031-b-main-account-entry-closeout.md](RESULT-TASK-031-b-main-account-entry-closeout.md)。
 - ci / lint / typecheck / build / diff-check 通过；专项 4/4；全仓 718/720（基线 714/716，同两项旧资产清单失败）。浏览器 64/64，36 组几何一致；证据 [TASK-031 QA](../qa/TASK-031/README.md)。
 - B / 待审查，等待用户验收；未合并，不启动 3.5 / 3.7。

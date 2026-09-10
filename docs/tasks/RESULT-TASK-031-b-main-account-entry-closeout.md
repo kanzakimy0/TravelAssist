@@ -8,7 +8,7 @@
 - Branch：`feature/b-wbs-3-4-main-account-entry`。
 - Execution base：`7f0c292186079cca7ad639ceb550f7d0e4f43cc7`；发布前再次 fetch，develop 仍为此版本。
 - Implementation / tests / evidence commit：`18dd0bbcbef1b77717f3898a68a0c5598b59e77b`。后续追踪提交仅更新文档。
-- Draft PR：发布后登记。
+- Draft PR：[#278](https://github.com/kanzakimy0/TravelAssist/pull/278) → develop，保持 Draft。
 - 正式 Task：[TASK-031-B](TASK-031-b-main-account-entry-closeout.md)；[Owner correction](../project/WBS-3.4-owner-correction.md)。
 
 ## Integration Gate 与 TASK-030-B 最终收尾
