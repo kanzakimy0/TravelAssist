@@ -5,3 +5,8 @@ export { profiles } from "./profiles";
 export { profileSettings } from "./profile-settings";
 export { emergencyContacts } from "./emergency-contacts";
 export { travelPreferences } from "./travel-preferences";
+export {
+  companions,
+  companionGroups,
+  companionGroupMembers,
+} from "./companions";
