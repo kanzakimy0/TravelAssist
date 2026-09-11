@@ -1,0 +1,47 @@
+name: Temporary WBS 5.11 5.12 sync
+
+on:
+  push:
+    branches:
+      - docs/wbs-5-11-5-12-master-fix
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/wbs-5-11-5-12-master-fix
+          fetch-depth: 0
+      - name: Patch only WBS 5.11 and 5.12
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('docs/project/WBS-TravelAssist.md')
+          s = p.read_text(encoding='utf-8')
+          old_511 = '| 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 待审查 |'
+          new_511 = '| 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 已完成 |'
+          old_512 = '| 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 待审查 |'
+          new_512 = '| 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 已完成 |'
+          assert s.count(old_511) == 1, '5.11 stale row not unique/found'
+          assert s.count(old_512) == 1, '5.12 stale row not unique/found'
+          s = s.replace(old_511, new_511).replace(old_512, new_512)
+          p.write_text(s, encoding='utf-8')
+      - name: Remove temporary workflow
+        run: rm .github/workflows/tmp-wbs-511-512-sync.yml
+      - name: Verify net diff
+        run: |
+          git diff --check
+          git diff -- docs/project/WBS-TravelAssist.md
+          test "$(git diff --name-only | wc -l)" -eq 2
+      - name: Commit exact WBS sync
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add docs/project/WBS-TravelAssist.md .github/workflows/tmp-wbs-511-512-sync.yml
+          git commit -m 'docs(wbs): mark 5.11 and 5.12 completed'
+          git push origin HEAD:docs/wbs-5-11-5-12-master-fix
