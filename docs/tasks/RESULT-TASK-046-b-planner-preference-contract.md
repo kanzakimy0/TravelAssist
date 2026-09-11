@@ -5,7 +5,7 @@
 - **A / designated integration reviewer：Pending；用户验收：Pending。** 未伪造人工通过。
 - WBS 5.14：**待审查**，实际更新中央 Master 状态单元格；未标已完成。
 - Issue：[#321](https://github.com/kanzakimy0/TravelAssist/issues/321)，保持 **OPEN**。
-- PR：Draft → develop；发布链接在最终交付时补入。
+- PR：[#323](https://github.com/kanzakimy0/TravelAssist/pull/323)，**Draft → develop**，正文含 Refs #321。
 - 分支：`codex/b-account-wbs-5-14-planner-preference-contract`。
 - 日期：2026-09-11。
 
@@ -154,6 +154,6 @@ npm cache 路径仅为本机加速，可省略。Windows 旧 DB 套件运行前�
 +| 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 待审查 |
 ```
 
-Issue #321 的 Result / PR / 阶段将同步到远端正文并保持 OPEN；PR 保持 Draft，无 auto-merge。A/designated reviewer 与用户验收都 Pending，后续真实接受并授权合并后才能完成中央状态；本 Task 不代替这些人工阶段。
+Issue #321 的 Result / PR / 阶段已同步到远端正文并保持 OPEN；PR 保持 Draft，无 auto-merge。A/designated reviewer 与用户验收都 Pending，后续真实接受并授权合并后才能完成中央状态；本 Task 不代替这些人工阶段。
 
 PR #221 只读核对 OPEN / Draft，head `929529be302b60c84ace3a580461de95e04de461`；未修改/合并/关闭 #221 或 #207。未改 A Planner/Trip/Engine/AI/POI/scoring、StartFlow、UI 布局、SQL/RLS/Drizzle/generated types；未启动 4.18、5.13、5.17、5.18、5.19、8.6。交付本 Task 后停止。
