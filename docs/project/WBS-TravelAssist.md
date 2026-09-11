@@ -291,7 +291,7 @@ PR #187 实际已合并，develop `553b01480345a4e26bd2b7952cf917b2cbbaea4f` 包
 
 - 覆盖下述三层常展开布局：底栏恢复 25dvh，卡宽缩为约 2/3，类别色区分；提醒 / 预约点击向上展开，无需预约及无可用渠道占位隐藏。
 - 桌面景点点击后原地图等分为地图 / 景点详情，保持同一 Map 生命周期；手机用详情浮层，图层栏恢复 Planner 同款纵向样式。
-- 198 tests、lint / typecheck / build 及五尺寸浏览器验收通过，保存保护回归通过。见 `docs/tasks/RESULT-detail-compact-board.md`。3113 已更新，未提交 / 推送 / 合并。
+- 198 tests、lint / typecheck / build 及五尺寸浏览器验收通过，保存保护回归通过。见 `docs/tasks/RESULT-detail-compact-board.md`。3113 已更新，未提交 / 推送 / 合并，不改变既有正式任务状态。
 
 ## Detail 等宽三层执行卡片追加（2026-09-06）
 
@@ -876,8 +876,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项                               | 负责人 | 优先级 | 依赖      | 状态   |
 | ------ | ------------------------------------ | ------ | ------ | --------- | ------ |
-| 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 已完成 |
-| 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 已完成 |
+| 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 待审查 |
+| 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 待审查 |
 | 5.13   | Preference Preset / 默认值           | B      | P1     | 5.11      | 未开始 |
 | 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 未开始 |
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
@@ -1205,7 +1205,7 @@ B Auth/User Session → A Header/Avatar Entry
 
 ## TASK-008 验收与范围记录（2026-09-05）
 
-- Owner：A；Issue #51；实现提交 `e4648c031817816fb909e46f375872a7ede69d6`。
+- Owner：A；Issue #51；实现提交 `e4648c031817816fb1cbd0dc44552a542d108c91`。
 - 初始基线 `96a8829`；开发期间安全快进同步至 `6e5132b323c5f215a6c1d430eb702c076d8915ac`。TASK-006 PR #32 合并提交 `5bf85a8` 为基线祖先；TASK-007 不是依赖。
 - 正式规格：`docs/ui/trip-planner.md v0.2`。1.5 / 1.6 / 1.7 / 1.11 的页面结构设计已随 v0.2 合入；1.14 只验证本 Planner 的响应式，1.17 的真实地图细节、1.18 的真实重规划反馈仍待后续任务，保持进行中。
 - 4.1 / 4.8 / 4.13：独立 `/planner` Grid、六 Tab 执行栏、三条推荐方案的 UI shell 已完成，并经用户明确授权通过 PR #59 合入 develop。
