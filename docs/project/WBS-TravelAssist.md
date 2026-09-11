@@ -967,6 +967,18 @@ TASK-039-A tracking (2026-09-11):
 - 继续沿用 WBS 7.9，不建立第二条评分 WBS；人工证据被接受且另有明确生产冻结决定前，
   推荐打分不得标记为 Production Frozen / Completed。
 
+TASK-040-A tracking (2026-09-11):
+
+- Issue #303；分支 `codex/a-blind-review-excel-pack`；叠加基线
+  `d79eeaaa9ac5e7c052a300d07710679584458c6b`（TASK-039-A / Draft PR #302），
+  Draft PR #304 以 `codex/a-poi-scoring-blind-review` 为 base；实现提交 `f0dfe24`。
+- 已从冻结的 R1/R2 reviewer pack 确定性生成两份简体中文 Excel 盲审工作簿；每份 144 题，
+  包含评审 / 说明 / 元数据，题面受保护，仅选择、置信度、备注三列开放编辑；中文本地化
+  目录与工作簿均有 SHA-256 绑定，导出时自动恢复 TASK-039 canonical 枚举。
+- 已建立严格 XLSX 导入、源包 SHA / 题面逐字段校验、答案完整性验证及可见内容泄漏审计；
+  工作簿仍为空白，未创建人工 response、Human Gold 或候选评估。
+- TASK-040 只改善人工审查载体，不完成盲审；WBS 7.9 继续保持 `待人工盲审`。
+
 ## 8. 数据库与认证基础
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖               | 状态   |
