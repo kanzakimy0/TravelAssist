@@ -1,0 +1,76 @@
+name: poi-new5021-tertiary-v4.0
+
+on:
+  push:
+    branches:
+      - poi-source-enrichment-v3-8
+    paths:
+      - '.tmp/poi_new5021_thirdlayer_v40.py'
+      - '.github/workflows/poi-new5021-tertiary-v4.0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install --disable-pip-version-check requests rapidfuzz shapely
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq osmium-tool
+      - name: Download v3.9 source-enriched input
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p input osm/raw osm/filtered
+          gh run download 34555496541 --repo kanzakimy0/TravelAssist --name travelassist-poi-second-layer-feature-v3.9 --dir input
+          test -f input/remaining5021-source-enriched-v3.9.jsonl
+          test "$(wc -l < input/remaining5021-source-enriched-v3.9.jsonl)" -eq 5021
+      - name: Download current OSM regions
+        run: |
+          for r in chubu chugoku kansai kyushu shikoku; do
+            wget -q --show-progress "https://download.geofabrik.de/asia/japan/${r}-latest.osm.pbf" -O "osm/raw/${r}.osm.pbf"
+            test -s "osm/raw/${r}.osm.pbf"
+          done
+      - name: Filter OSM candidates with aliases and kana tags preserved
+        run: |
+          for f in osm/raw/*.osm.pbf; do
+            b=$(basename "$f" .osm.pbf)
+            osmium tags-filter "$f" \
+              nwr/historic \
+              nwr/heritage \
+              nwr/amenity=place_of_worship \
+              nwr/tourism=attraction \
+              nwr/tourism=museum \
+              nwr/ruins=yes \
+              nwr/man_made=works \
+              nwr/man_made=kiln \
+              -o "osm/filtered/${b}.osm.pbf" --overwrite
+          done
+          osmium merge osm/filtered/*.osm.pbf -o osm/relevant-tertiary.osm.pbf --overwrite
+          osmium export osm/relevant-tertiary.osm.pbf -f geojsonseq -o osm/relevant-tertiary.geojsonseq --overwrite
+          test -s osm/relevant-tertiary.geojsonseq
+      - name: Run tertiary evidence and re-enrichment
+        run: python .tmp/poi_new5021_thirdlayer_v40.py input/remaining5021-source-enriched-v3.9.jsonl osm/relevant-tertiary.geojsonseq build/poi-new5021-v4.0
+      - name: Validate outputs
+        run: |
+          test "$(wc -l < build/poi-new5021-v4.0/remaining5021-source-enriched-v4.0.jsonl)" -eq 5021
+          test "$(wc -l < build/poi-new5021-v4.0/feature43-new5021-v4.0.jsonl)" -eq 5021
+          python -m json.tool build/poi-new5021-v4.0/new5021-tertiary-report-v4.0.json >/dev/null
+          cat build/poi-new5021-v4.0/new5021-tertiary-report-v4.0.json
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: travelassist-poi-new5021-tertiary-v4.0
+          path: build/poi-new5021-v4.0/
+          if-no-files-found: error
+          retention-days: 7
