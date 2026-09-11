@@ -2,13 +2,18 @@
 
 ## Status
 
-Completed / Region Graph pilot ready for review. The implementation and
-deterministic local validation are complete; WBS 4.48 remains `待审查` until
-review, merge and user acceptance.
+Partial / Region Graph topology, evidence and validation are ready, but the
+canonical Master Code allocation registry is not present in the repository.
+All 50 invalid Pilot/destination/country-code substitutions were removed rather
+than replaced with invented identifiers. WBS 4.48 remains `Partial` until the
+governed registry allocates canonical codes and this dataset is revalidated.
 
 ## Base SHA
 
 `fede48bb2a4916bcc6070be325ec5b450fa6fbd1`
+
+Review-fix audit and integration base:
+`f10aded716719eabc94b81d9a3104b386c640946`.
 
 ## Issue
 
@@ -22,7 +27,9 @@ review, merge and user acceptance.
 
 - `01132c98e30c4a9d86965bb269f9db370cc9efd4` — pilot dataset,
   deterministic generator, validation, tests, Result and initial WBS update.
-- Final tracking commit is recorded in Draft PR #306 history.
+- `fee3e6d60ed9bc3d3c39181306946004567a9262` — normally merge latest
+  `origin/develop` before the review fix.
+- Master Code review-fix commit is recorded in Draft PR #306 history.
 
 ## Draft PR
 
@@ -38,11 +45,15 @@ review, merge and user acceptance.
 - `docs/qa/TASK-041/region-relations.json`
 - `docs/qa/TASK-041/travel-edges.json`
 - `docs/qa/TASK-041/graph-validation.json`
+- `docs/qa/TASK-041/master-code-audit.json`
 - `docs/qa/TASK-041/corridor-reachability.json`
 - `docs/qa/TASK-041/evidence-index.json`
 - `docs/qa/TASK-041/pilot-report.md`
 - `docs/tasks/RESULT-TASK-041-a-region-graph-pilot.md`
 - `docs/project/WBS-TravelAssist.md`
+- `docs/architecture/travel-region-graph-codebook-v0.1.md`
+- `src/shared/contracts/planning/regions.ts`
+- `src/shared/contracts/planning/validation.ts`
 
 ## Data source summary
 
@@ -123,13 +134,17 @@ pilot prior.
 - Precise tourism polygons are not claimed.
 - Most duration/cost/transfer/walking ranges are intentionally `null`.
 - Frequency, reservation, live fare and availability are unknown.
+- Canonical Master Code registry: unavailable in the repository.
+- Master Code assignments: 0 resolved / 50 explicitly unresolved (`null`).
 - Evidence coverage is record-level traceability, not production validation of
   every editorial prior value.
 
 ## Structural validation
 
 - Canonical `parseTravelRegionGraphV1`: PASS.
-- Duplicate node IDs / Master Codes / relation IDs / edge IDs: 0.
+- Duplicate node IDs / assigned Master Codes / relation IDs / edge IDs: 0.
+- Assigned noncanonical Master Codes: 0.
+- Unresolved Master Codes: 50, explicitly tracked as the Partial blocker.
 - Dangling Region/Gateway references: 0.
 - Self relations / TravelEdges: 0.
 - `contains` cycles: 0.
@@ -153,7 +168,9 @@ These are graph reachability checks, not real-time route validation.
 
 Fail-closed tests cover dangling reference, `contains` cycle, reverse symmetric
 duplicate, duplicate ID, invalid range order, unknown enum and a
-planning-prior exact timetable field.
+planning-prior exact timetable field. Master Code tests cover all 50 audited
+nodes, require every non-null value to resolve to the canonical registry, and
+reject an injected `JP-RG-*` side-channel value.
 
 ## No-live-route confirmation
 
@@ -162,15 +179,18 @@ Provider Raw, paid API response or production provider query is committed.
 
 ## Master Code unchanged confirmation
 
-Confirmed. No existing Master Code or registry was modified or renumbered.
-TASK-041 only assigns stable pilot node codes in its isolated reference data.
+Confirmed. The review found 35 TASK-041 side-channel values, 14 reused
+`destination_id` values and one reused country code. All were removed from
+`masterCode`; the original `regionId` values remain unchanged. No canonical
+registry exists in the audited repository revision, so all 50 `masterCode`
+values are `null` and the Task is Partial rather than fabricating replacements.
 
 ## Focused tests
 
-`npm run test:region-graph-pilot`: 15/15 passed. Coverage includes the canonical
+`npm run test:region-graph-pilot`: 17/17 passed. Coverage includes the canonical
 parser, structural diagnostics, all corridor anchors, provider-free
 reachability, semantic separation, evidence references, deterministic output
-and all seven required negative families.
+and all seven required negative families plus Master Code audit/resolution.
 
 ## Planning / Routing / Trip-Route-Engine tests
 
@@ -181,7 +201,7 @@ and all seven required negative families.
 
 ## Full Node regression
 
-`node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs`: 844/844
+`node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs`: 1349/1349
 passed.
 
 ## lint/typecheck/build
@@ -202,12 +222,13 @@ passed.
 
 ## WBS update
 
-WBS 4.48 added as A / P0 / depends on 4.47 / `待审查`. WBS 7.9 is left
-byte-for-byte unchanged from the execution-time `origin/develop` baseline; the
-independent unmerged blind-review branches were not stacked into this Task.
+WBS 4.48 remains A / P0 / depends on 4.47, but is now `Partial` with the exact
+Master Code registry blocker. WBS 7.9 remains unchanged; no reviewer answer,
+Human Gold or calibration parameter was used.
 
 ## Recommended next action
 
-Review the sparse dataset, evidence gaps and editorial priors in the Draft PR.
-After merge and user acceptance, WBS 4.48 may become `已完成`. Do not start
-Candidate Pipeline / TASK-042 from this Task automatically.
+Establish or merge the canonical Master Code allocation registry through its
+own governed workflow, allocate codes for the retained 50 region identities,
+then rerun TASK-041 validation. PR #306 must not be merged while this Partial
+blocker remains. This work did not start Candidate Pipeline / TASK-042.

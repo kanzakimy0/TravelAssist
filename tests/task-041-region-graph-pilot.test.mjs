@@ -6,6 +6,8 @@ import {
   corridorDefinitions,
   evidenceIndex,
   graphDiagnostics,
+  masterCodeAudit,
+  masterCodeResolutionReport,
   reachabilityReport,
   regionGraph,
   writePilotOutputs,
@@ -32,6 +34,7 @@ test("pilot diagnostics pass every required structural gate", () => {
   assert.deepEqual(report.violations, {
     duplicateNodeIds: 0,
     duplicateMasterCodes: 0,
+    invalidMasterCodes: [],
     duplicateRelationIds: 0,
     duplicateEdgeIds: 0,
     danglingRefs: [],
@@ -47,6 +50,42 @@ test("pilot diagnostics pass every required structural gate", () => {
   assert.equal(report.evidence.nodeCoverage, report.evidence.nodeTotal);
   assert.equal(report.evidence.relationCoverage, report.evidence.relationTotal);
   assert.equal(report.evidence.edgeCoverage, report.evidence.edgeTotal);
+});
+
+test("all 50 pilot Master Code assignments are audited and unresolved values stay null", () => {
+  assert.equal(masterCodeAudit.summary.auditedNodes, 50);
+  assert.equal(masterCodeAudit.summary.canonicalAssignmentsRetained, 0);
+  assert.equal(masterCodeAudit.summary.unresolvedAssignments, 50);
+  assert.equal(
+    masterCodeAudit.canonicalRegistry.status,
+    "unavailable_in_repository",
+  );
+  assert.ok(regionGraph.nodes.every(({ masterCode }) => masterCode === null));
+  assert.equal(masterCodeAudit.nodes.length, regionGraph.nodes.length);
+  assert.deepEqual(
+    new Set(masterCodeAudit.nodes.map(({ regionId }) => regionId)),
+    new Set(regionGraph.nodes.map(({ regionId }) => regionId)),
+  );
+});
+
+test("every assigned masterCode must resolve to the canonical registry", () => {
+  const report = masterCodeResolutionReport();
+  assert.equal(report.registryEntryCount, 0);
+  assert.equal(report.assignedCount, 0);
+  assert.equal(report.unresolvedCount, 50);
+  assert.equal(report.allAssignedResolve, true);
+  assert.deepEqual(report.invalidAssigned, []);
+
+  const graphWithSideChannelCode = structuredClone(regionGraph);
+  graphWithSideChannelCode.nodes[0].masterCode = "JP-RG-NOT-CANONICAL";
+  const rejected = masterCodeResolutionReport(graphWithSideChannelCode);
+  assert.equal(rejected.allAssignedResolve, false);
+  assert.deepEqual(rejected.invalidAssigned, [
+    {
+      regionId: "region-japan",
+      masterCode: "JP-RG-NOT-CANONICAL",
+    },
+  ]);
 });
 
 test("all four corridors include their required core anchors", () => {

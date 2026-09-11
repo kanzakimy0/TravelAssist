@@ -6,8 +6,10 @@ import { format as formatWithPrettier } from "prettier";
 import { parseTravelRegionGraphV1 } from "../../src/shared/contracts/planning/index.ts";
 
 const CONTRACT_VERSION = "1.0";
-const GRAPH_REVISION = "task-041-japan-pilot-2026-09-11-r1";
+const GRAPH_REVISION = "task-041-japan-pilot-2026-09-11-r2";
 const NOW = "2026-09-11T00:00:00+09:00";
+const MASTER_CODE_AUDIT_DEVELOP_SHA =
+  "f10aded716719eabc94b81d9a3104b386c640946";
 const OUTPUT_DIR = resolve(
   dirname(fileURLToPath(import.meta.url)),
   "../../docs/qa/TASK-041",
@@ -16,6 +18,15 @@ const OUTPUT_DIR = resolve(
 const REPO_DESTINATION_SOURCE = "source-repository-japan-destinations";
 const CODEBOOK_SOURCE = "source-region-graph-codebook-v0-1";
 const EDITORIAL_SOURCE = "source-task-041-editorial-prior";
+
+const priorMasterCodeAssignments = [];
+
+function classifyPriorMasterCode(value) {
+  if (/^JP-(?:RG|PREF|MACRO)-/.test(value)) return "task_041_side_channel_code";
+  if (/^jp-/.test(value)) return "destination_id_misused_as_master_code";
+  if (value === "JP") return "country_code_misused_as_master_code";
+  return "unresolved_noncanonical_value";
+}
 
 export const evidenceIndex = {
   schemaVersion: 1,
@@ -186,11 +197,18 @@ function node({
   sources = [REPO_DESTINATION_SOURCE],
   gateway = null,
 }) {
+  priorMasterCodeAssignments.push({
+    regionId: id,
+    priorValue: code,
+    classification: classifyPriorMasterCode(code),
+    canonicalRegistryResolution: null,
+    action: "cleared_to_null_pending_canonical_allocation",
+  });
   return {
     contractVersion: CONTRACT_VERSION,
     schemaVersion: "1.0",
     regionId: id,
-    masterCode: code,
+    masterCode: null,
     regionType: type,
     names: { nameJa: ja, nameZhCn: zh, nameEn: en, aliases },
     center,
@@ -705,6 +723,35 @@ export const regionNodes = [
     sources: ["source-jnto-kobe"],
   }),
 ];
+
+/**
+ * Execution-time origin/develop contains the numeric range codebook but no
+ * canonical entity-to-Master-Code allocation registry. This audit preserves
+ * the rejected values as review evidence only; none remain assigned to a node.
+ */
+export const masterCodeAudit = {
+  schemaVersion: 1,
+  graphDataRevision: GRAPH_REVISION,
+  auditedDevelopSha: MASTER_CODE_AUDIT_DEVELOP_SHA,
+  canonicalRegistry: {
+    status: "unavailable_in_repository",
+    registryPaths: [],
+    entryCount: 0,
+    rangeCodebookPath:
+      "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md",
+    note: "The range codebook is not an allocation registry and cannot resolve a region identity to a Master Code.",
+  },
+  summary: {
+    auditedNodes: priorMasterCodeAssignments.length,
+    canonicalAssignmentsRetained: 0,
+    unresolvedAssignments: priorMasterCodeAssignments.length,
+    priorValuesByClassification: countBy(
+      priorMasterCodeAssignments,
+      ({ classification }) => classification,
+    ),
+  },
+  nodes: priorMasterCodeAssignments,
+};
 
 function relation(type, from, to, sourceRefs, confidence = 0.9) {
   return {
@@ -1235,6 +1282,32 @@ function countBy(items, selector) {
   );
 }
 
+export function masterCodeResolutionReport(
+  graph = regionGraph,
+  canonicalCodes = [],
+) {
+  const registry = new Set(canonicalCodes);
+  const assigned = graph.nodes.filter(({ masterCode }) => masterCode !== null);
+  const unresolved = graph.nodes.filter(
+    ({ masterCode }) => masterCode === null,
+  );
+  const invalidAssigned = assigned.filter(
+    ({ masterCode }) => !registry.has(masterCode),
+  );
+  return {
+    registryStatus: masterCodeAudit.canonicalRegistry.status,
+    registryEntryCount: registry.size,
+    assignedCount: assigned.length,
+    unresolvedCount: unresolved.length,
+    allAssignedResolve: invalidAssigned.length === 0,
+    invalidAssigned: invalidAssigned.map(({ regionId, masterCode }) => ({
+      regionId,
+      masterCode,
+    })),
+    unresolvedRegionIds: unresolved.map(({ regionId }) => regionId),
+  };
+}
+
 function findContainsCycles(relations) {
   const children = new Map();
   for (const rel of relations.filter(
@@ -1268,7 +1341,10 @@ export function graphDiagnostics(
   const parserResult = parseTravelRegionGraphV1(graph);
   const nodeIds = graph.nodes.map(({ regionId }) => regionId);
   const nodeIdSet = new Set(nodeIds);
-  const masterCodes = graph.nodes.map(({ masterCode }) => masterCode);
+  const masterCodes = graph.nodes
+    .map(({ masterCode }) => masterCode)
+    .filter((masterCode) => masterCode !== null);
+  const masterCodeResolution = masterCodeResolutionReport(graph);
   const relationIds = graph.relations.map(({ relationId }) => relationId);
   const edgeIds = graph.travelEdges.map(({ edgeId }) => edgeId);
   const symmetricPairs = new Map();
@@ -1369,6 +1445,7 @@ export function graphDiagnostics(
     violations: {
       duplicateNodeIds: nodeIds.length - new Set(nodeIds).size,
       duplicateMasterCodes: masterCodes.length - new Set(masterCodes).size,
+      invalidMasterCodes: masterCodeResolution.invalidAssigned,
       duplicateRelationIds: relationIds.length - new Set(relationIds).size,
       duplicateEdgeIds: edgeIds.length - new Set(edgeIds).size,
       danglingRefs: [...new Set(danglingRefs)].sort(),
@@ -1419,6 +1496,7 @@ export function graphDiagnostics(
       ).length,
       edgeTotal: graph.travelEdges.length,
     },
+    masterCodeResolution,
   };
 }
 
@@ -1581,6 +1659,7 @@ export async function writePilotOutputs() {
     ],
     ["travel-edges.json", { graphDataRevision: GRAPH_REVISION, travelEdges }],
     ["graph-validation.json", diagnostics],
+    ["master-code-audit.json", masterCodeAudit],
     [
       "corridor-reachability.json",
       { ...reachability, corridors: corridorDefinitions },

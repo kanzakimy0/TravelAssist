@@ -853,7 +853,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 | --- | --- | --- | --- | --- | --- |
 | 4.47 | Trip Planning Engine Contract / Validator / Fixtures Foundation | A | P0 | 4.17,2.7；P0 Design Candidate set | 已完成（TASK-036-A 用户验收；#293 已合入；P0 设计仍为 Freeze Candidate） |
-| 4.48 | Travel Region Graph Pilot / Reference Dataset | A | P0 | 4.47 | 待审查（TASK-041-A；Issue #305；Draft PR #306） |
+| 4.48 | Travel Region Graph Pilot / Reference Dataset | A | P0 | 4.47 | Partial（TASK-041-A；Issue #305；Draft PR #306；50 个节点缺少 canonical Master Code registry 分配，图结构/证据/校验已完成） |
 
 ## 5. 用户个人中心 / 管理 / 偏好（B 全责）
 
