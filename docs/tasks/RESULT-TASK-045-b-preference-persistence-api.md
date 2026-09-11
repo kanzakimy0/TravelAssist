@@ -5,7 +5,7 @@
 - WBS 5.16：**待审查**；未标记已完成。
 - Issue：[#316](https://github.com/kanzakimy0/TravelAssist/issues/316)，保持 **OPEN**。
 - 实现分支：`codex/b-account-wbs-5-16-preference-persistence-api`
-- PR：Draft → `develop`；最终发布链接见本次交付记录。不得自动合并或标记 Ready。
+- PR：[#319](https://github.com/kanzakimy0/TravelAssist/pull/319)，**Draft → `develop`**。不得自动合并或标记 Ready。
 - 执行基线：`origin/develop@59673f99866e98af59173dfbac4842371bb02f04`
 - 正式规格 head：`2e9a9236b65685606c6b531fc581cc4cdb5ea5f0`
 - 实现与部署产物 commit：`7ed5bab2ce86de34229d2832ba30a43019db20bb`
