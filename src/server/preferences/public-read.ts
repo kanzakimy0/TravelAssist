@@ -1,5 +1,5 @@
 import "server-only";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 import { handlePreference } from "./http";
 import { decodePreferenceReadResponse } from "../../lib/preferences/read-response";
 /** Forward refresh/deletion chunks verbatim; retain the composing route's own cookies. */
@@ -31,7 +31,17 @@ export function finalizePreferenceReadResponse<T extends Response>(
 export async function readCurrentLongTermPreferenceForRequest(
   request: NextRequest,
 ) {
-  const upstream = await handlePreference(request, "get");
+  // The caller owns its URL/query/body and cookies. Auth refresh may mutate the
+  // dedicated request, so copy headers and never clone/consume the business body.
+  const preferenceRequest = new NextRequest(
+    new URL("/api/preferences", request.url),
+    {
+      method: "GET",
+      headers: new Headers(request.headers),
+      signal: request.signal,
+    },
+  );
+  const upstream = await handlePreference(preferenceRequest, "get");
   const result = await decodePreferenceReadResponse(upstream, request.signal);
   return {
     result,

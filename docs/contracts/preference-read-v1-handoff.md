@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
 
 这是未来组合示例，本次没有新建重复 endpoint。成功/失败分支都必须调用 finish，将真实 Auth 刷新/删除 Cookie（分片及属性）和 private/no-store headers 回传。outer response 自有 Cookie 与 Vary 保留。不要将 request、Response、SupabaseClient 或 finalizer 放进公共 JSON。
 
-内部直接复用 `handlePreference(request, "get")`。Cookie/Bearer 均经 getUser 验证；无效显式 Bearer 不回退 Cookie，用户上下文 RLS 保持；没有 service-role shortcut、自报 owner、任意主机 self-fetch 或公共 Server Action。
+服务器 facade 从调用方请求构造独立的同源 canonical `/api/preferences` GET，再复用 `handlePreference(preferenceRequest, "get")`。业务 URL/query/body 不传入偏好专用输入校验；请求 headers 独立复制并传递原取消信号。即使发生 Auth refresh，也不修改调用方 URL、query、headers、Cookie 或消费其 body。外部直接访问 `/api/preferences?owner=...` 等带 query 请求仍按原 5.16 规则拒绝。Cookie/Bearer 均经 getUser 验证；无效显式 Bearer 不回退 Cookie，用户上下文 RLS 保持；没有 service-role shortcut、自报 owner、任意主机 self-fetch 或公共 Server Action。
 
 ## 版本、稀疏值与时间
 

@@ -79,28 +79,85 @@ test("TASK-046 real Local public contract/Auth/API/browser acceptance", async (t
       );
     }
     const [a, b] = users;
-    async function read(user, cookie = false, extra = {}) {
-      const request = new NextRequest(app.origin + "/api/preferences", {
-        headers: {
-          ...(user
-            ? cookie
-              ? { cookie: user.jar.header() }
-              : { Authorization: "Bearer " + user.token }
-            : {}),
-          ...extra,
-        },
+    async function read(
+      user,
+      cookie = false,
+      extra = {},
+      business = false,
+      signal,
+    ) {
+      const targetOwner = user === a ? b.id : a.id;
+      const body = JSON.stringify({
+        owner: targetOwner,
+        operation: "reset",
+        tripId: "demo",
       });
+      const request = new NextRequest(
+        app.origin +
+          (business
+            ? "/api/example-consumer?tripId=demo&locale=zh&owner=" + targetOwner
+            : "/api/preferences"),
+        {
+          ...(business
+            ? business === "GET"
+              ? { method: "GET" }
+              : { method: "POST", body }
+            : {}),
+          signal,
+          headers: {
+            ...(user
+              ? cookie
+                ? { cookie: user.jar.header() }
+                : { Authorization: "Bearer " + user.token }
+              : {}),
+            ...extra,
+          },
+        },
+      );
+      const originalUrl = request.url;
+      const originalQuery = request.nextUrl.search;
+      const originalHeaders = JSON.stringify([...request.headers]);
+      const originalCookies = JSON.stringify(request.cookies.getAll());
       const { result, finish } =
         await readCurrentLongTermPreferenceForRequest(request);
+      if (business) {
+        assert.ok(
+          request.url === originalUrl &&
+            request.nextUrl.search === originalQuery,
+          "Caller URL/query unchanged",
+        );
+        assert.ok(
+          JSON.stringify([...request.headers]) === originalHeaders,
+          "Caller headers unchanged",
+        );
+        assert.ok(
+          JSON.stringify(request.cookies.getAll()) === originalCookies,
+          "Caller cookies unchanged even during refresh",
+        );
+        assert.equal(request.bodyUsed, false);
+        if (business === "GET") assert.equal(request.body, null);
+        else {
+          assert.equal(request.body.locked, false);
+          assert.ok(
+            (await request.text()) === body,
+            "Caller body not consumed or changed",
+          );
+        }
+      }
       const outer = finish(
         Response.json(result, {
-          headers: { Vary: "Accept-Language", "Cache-Control": "public" },
+          headers: {
+            Vary: "Accept-Language",
+            "Cache-Control": "public",
+            "Set-Cookie": "consumer=kept; Path=/",
+          },
         }),
       );
       assert.match(outer.headers.get("cache-control"), /private.*no-store/);
       assert.match(outer.headers.get("vary"), /Cookie/);
       assert.match(outer.headers.get("vary"), /Authorization/);
       assert.match(outer.headers.get("vary"), /Accept-Language/);
+      assert.ok(outer.headers.getSetCookie().includes("consumer=kept; Path=/"));
       if (user && cookie) user.jar.absorb(outer.headers);
       if (result.ok) {
         assert.deepEqual(
@@ -215,11 +272,93 @@ test("TASK-046 real Local public contract/Auth/API/browser acceptance", async (t
       },
     );
     await run(
+      "R1 business Cookie/Bearer query is isolated, owner/body cannot switch account and read never writes",
+      async () => {
+        const before =
+          await db`select owner_user_id,payload,revision,updated_at from public.travel_preferences order by owner_user_id`;
+        for (const [user, values] of [
+          [a, valuesA],
+          [b, valuesB],
+        ])
+          for (const cookie of [true, false])
+            for (const method of ["GET", "POST"]) {
+              const { result } = await read(user, cookie, {}, method);
+              assert.equal(
+                result.ok,
+                true,
+                "Business query must not become PREFERENCE_UNAVAILABLE",
+              );
+              assert.equal(result.data.sourceRevision, 1);
+              assert.deepEqual(result.data.preference.values, values);
+            }
+        assert.deepEqual(
+          await db`select owner_user_id,payload,revision,updated_at from public.travel_preferences order by owner_user_id`,
+          before,
+        );
+      },
+    );
+    await run(
+      "R1 business invalid Bearer cannot fall back to Cookie; explicit valid Bearer owns identity",
+      async () => {
+        for (const authorization of ["Basic invalid", "Bearer invalid"])
+          assert.deepEqual(
+            (await read(a, true, { Authorization: authorization }, true))
+              .result,
+            { ok: false, code: "AUTH_REQUIRED" },
+          );
+        const { result } = await read(
+          a,
+          true,
+          { Authorization: "Bearer " + b.token },
+          true,
+        );
+        assert.equal(result.ok, true);
+        assert.deepEqual(result.data.preference.values, valuesB);
+      },
+    );
+    await run(
+      "R1 direct external preference GET still rejects all query parameters",
+      async () => {
+        for (const user of users)
+          for (const cookie of [true, false])
+            for (const query of ["?owner=other", "?tripId=demo&locale=zh"]) {
+              const response = await fetch(
+                app.origin + "/api/preferences" + query,
+                {
+                  headers: cookie
+                    ? { Cookie: user.jar.header() }
+                    : { Authorization: "Bearer " + user.token },
+                },
+              );
+              assert.equal(response.status, 400);
+              assert.deepEqual(await response.json(), {
+                ok: false,
+                error: { code: "INVALID_REQUEST" },
+              });
+              assert.match(
+                response.headers.get("cache-control"),
+                /private.*no-store/,
+              );
+            }
+      },
+    );
+    await run(
+      "R1 business request cancellation remains a distinct failure",
+      async () => {
+        const controller = new AbortController();
+        controller.abort();
+        assert.deepEqual(
+          (await read(a, true, {}, true, controller.signal)).result,
+          { ok: false, code: "REQUEST_CANCELLED" },
+        );
+      },
+    );
+    await run(
       "real expired Cookie refresh forwarded by server finalizer and usable in next request",
       async () => {
         const session = a.jar.session();
         a.jar.replaceSession({ ...session, expires_at: 1 });
-        const { result, outer } = await read(a, true);
+        const { result, outer } = await read(a, true, {}, true);
         assert.equal(result.ok, true);
         assert.ok(
           outer.headers.getSetCookie().some((v) => /^sb-.*auth-token/.test(v)),
@@ -369,9 +508,9 @@ test("TASK-046 real Local public contract/Auth/API/browser acceptance", async (t
           realAuthUsers: 2,
           realBrowserCookieContexts: 2,
           browser: "headless msedge",
-          expectedScenarios: 8,
+          expectedScenarios: 12,
           completedScenarios: completed,
-          complete: completed.length === 8,
+          complete: completed.length === 12,
         },
         null,
         2,
