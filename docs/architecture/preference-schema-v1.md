@@ -5,7 +5,7 @@
 > WBS：5.11 — Preference Schema\
 > Owner：B / Personal Center\
 > 依赖：1.25 已完成；8.1 已完成\
-> 当前状态：**设计候选；5.11 实装 Task 尚未启动，Master WBS 暂不标记完成**\
+> 当前状态：**TASK-042-B 实现与真实 Local Supabase 验收完成；WBS 5.11 = 待审查，等待用户验收和 PR #309 合并**\
 > 后续：5.13 Preference Preset / Default、5.16 Preference Persistence API、5.14 Planner-readable Preference Contract
 
 ---
@@ -1263,12 +1263,14 @@ System neutral fallback
 - [ ] payload <= 64 KiB。
 - [ ] empty Preference 合法。
 - [ ] UI Mock / 5.13 fallback 不会在用户未确认时写入长期 Preference。
-- [ ] Snapshot 创建时复制当时长期 Preference；后续长期更新不改旧 Snapshot。
-- [ ] Override 不回写长期 Preference。
+- [ ] 仅冻结 Snapshot 数据边界：创建时复制当时长期 Preference；后续长期更新不改旧 Snapshot。
+- [ ] 仅冻结 Override 数据边界：本次旅行覆盖不回写长期 Preference。
 - [ ] revision CAS 所需字段保留，但完整 API 行为归 5.16。
 - [ ] #221 逐项审计复用，不 blind cherry-pick。
 - [ ] 不修改 A Planner / Engine / Trip Plan canonical schema。
 - [ ] 不把 43 Attraction fields 复制进 Preference。
+
+Snapshot / Override 在 WBS 5.11 中只冻结上述数据边界。实际表、resolver、持久化与 runtime 实现明确 **Deferred 到 WBS 5.18 / 相关后续任务**，不属于 TASK-042-B 已实现或已验收的能力，也不因此修改 WBS 5.18 状态。
 
 ---
 
