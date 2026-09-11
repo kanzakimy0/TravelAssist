@@ -877,7 +877,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项                               | 负责人 | 优先级 | 依赖      | 状态   |
 | ------ | ------------------------------------ | ------ | ------ | --------- | ------ |
 | 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 待审查 |
-| 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 进行中 |
+| 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 待审查 |
 | 5.13   | Preference Preset / 默认值           | B      | P1     | 5.11      | 未开始 |
 | 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 未开始 |
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
