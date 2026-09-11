@@ -29,15 +29,18 @@ jobs:
           pip install --disable-pip-version-check requests rapidfuzz shapely geopandas pyogrio
           sudo apt-get update -qq
           sudo apt-get install -y -qq osmium-tool
-      - name: Recover preserved old 2,979 source IDs
+      - name: Recover authoritative old 2,979 source IDs
         run: |
           mkdir -p input osm/raw osm/filtered
-          git fetch origin poi-identity-v3-7-completion:refs/remotes/origin/poi-identity-v3-7-completion
-          git show origin/poi-identity-v3-7-completion:.tmp/poi_identity_used_v36.txt > input/old2979-source-ids.txt
+          git fetch origin data/poi-identity-v3.8-geoshape:refs/remotes/origin/data/poi-identity-v3.8-geoshape
+          git show origin/data/poi-identity-v3.8-geoshape:tmp/poi-v3.8/used-geoshape-source-ids-v3.6.zlib.b64 > input/old2979-source-ids.zlib.b64
           python - <<'PY'
-          ids=[x.strip() for x in open('input/old2979-source-ids.txt',encoding='utf-8') if x.strip()]
+          import base64,zlib
+          b64=open('input/old2979-source-ids.zlib.b64',encoding='utf-8').read().strip()
+          ids=[x.strip() for x in zlib.decompress(base64.b64decode(b64)).decode('utf-8').splitlines() if x.strip()]
           assert len(ids)==2979, len(ids)
           assert len(set(ids))==2979, len(set(ids))
+          open('input/old2979-source-ids.txt','w',encoding='utf-8').write('\n'.join(ids)+'\n')
           print('OLD_SOURCE_IDS',len(ids),'UNIQUE',len(set(ids)))
           PY
       - name: Download official Geoshape NRCT POI 2025-05-15
