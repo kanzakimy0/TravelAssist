@@ -8,7 +8,7 @@
 > 依赖：5.12 Companion Schema 已完成；8.1 DB Foundation 已完成  
 > 复用模式：5.16 Preference Persistence API  
 > 发布基线：`origin/develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`  
-> Tracking：Issue #325  
+> Tracking：Issue #324  
 > 规格发布分支：`task/b-wbs-5-17-companion-persistence-api`  
 > 计划实现分支：`codex/b-account-wbs-5-17-companion-persistence-api`  
 > 状态：**可开始；规格冻结，等待 Codex 实施**
@@ -809,7 +809,7 @@ docs/tasks/RESULT-TASK-047-b-companion-persistence-api.md
 
 ```text
 WBS 5.17 = 待审查
-Issue #325 = Open
+Issue #324 = Open
 PR = Draft -> develop
 ```
 
@@ -817,7 +817,7 @@ PR = Draft -> develop
 
 - 把 WBS 写成已完成；
 - 合并 PR；
-- 关闭 Issue #325；
+- 关闭 Issue #324；
 - 启动 5.18 / 5.19 或其他后续任务。
 
 只有用户明确完成视觉/功能验收并授权合并后，才能：
@@ -825,5 +825,5 @@ PR = Draft -> develop
 ```text
 merge accepted PR
 WBS 5.17 = 已完成
-close Issue #325
+close Issue #324
 ```
