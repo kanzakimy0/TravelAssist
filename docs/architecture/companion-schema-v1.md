@@ -1,12 +1,12 @@
 # TravelAssist — WBS 5.12 Companion Schema 设计书
 
-> 文档版本：v0.1 / Schema Freeze Candidate\
+> 文档版本：v1.0 / Frozen Implementation Baseline\
 > 日期：2026-09-11\
 > WBS：5.12 — Companion Schema\
 > Owner：B / Personal Center / Companion Data\
 > 依赖：1.26 已完成；8.1 已完成\
 > 设计基线：`origin/develop@f10aded716719eabc94b81d9a3104b386c640946`\
-> 当前状态：**Schema 设计候选；5.12 实装 Task 尚未启动**\
+> 当前状态：**TASK-044-B 实现与真实 Local Supabase 验收完成；WBS 5.12 = 待审查；等待用户验收与 PR #313 合并**\
 > 后续：5.17 Companion 持久化 API；5.18 Trip Companion Snapshot；8.6 B Personal Center Migration
 
 ---
