@@ -10,6 +10,126 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      companion_group_members: {
+        Row: {
+          companion_id: string;
+          created_at: string;
+          group_id: string;
+          owner_user_id: string;
+          sort_order: number;
+        };
+        Insert: {
+          companion_id: string;
+          created_at?: string;
+          group_id: string;
+          owner_user_id: string;
+          sort_order: number;
+        };
+        Update: {
+          companion_id?: string;
+          created_at?: string;
+          group_id?: string;
+          owner_user_id?: string;
+          sort_order?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "companion_group_members_companion_owner_fk";
+            columns: ["companion_id", "owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "companions";
+            referencedColumns: ["id", "owner_user_id"];
+          },
+          {
+            foreignKeyName: "companion_group_members_group_owner_fk";
+            columns: ["group_id", "owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "companion_groups";
+            referencedColumns: ["id", "owner_user_id"];
+          },
+        ];
+      };
+      companion_groups: {
+        Row: {
+          created_at: string;
+          description: string | null;
+          id: string;
+          includes_owner: boolean;
+          name: string;
+          owner_user_id: string;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          description?: string | null;
+          id?: string;
+          includes_owner?: boolean;
+          name: string;
+          owner_user_id: string;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          description?: string | null;
+          id?: string;
+          includes_owner?: boolean;
+          name?: string;
+          owner_user_id?: string;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      companions: {
+        Row: {
+          age_group_fallback: string | null;
+          avatar_path: string | null;
+          birth_date: string | null;
+          created_at: string;
+          display_name: string;
+          gender_code: string | null;
+          id: string;
+          owner_user_id: string;
+          relationship_code: string | null;
+          relationship_label: string | null;
+          revision: number;
+          travel_profile: Json;
+          updated_at: string;
+        };
+        Insert: {
+          age_group_fallback?: string | null;
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name: string;
+          gender_code?: string | null;
+          id?: string;
+          owner_user_id: string;
+          relationship_code?: string | null;
+          relationship_label?: string | null;
+          revision?: number;
+          travel_profile?: Json;
+          updated_at?: string;
+        };
+        Update: {
+          age_group_fallback?: string | null;
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name?: string;
+          gender_code?: string | null;
+          id?: string;
+          owner_user_id?: string;
+          relationship_code?: string | null;
+          relationship_label?: string | null;
+          revision?: number;
+          travel_profile?: Json;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       emergency_contacts: {
         Row: {
           country_code: string | null;
@@ -156,6 +276,10 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      is_companion_travel_profile_v1: {
+        Args: { payload: Json };
+        Returns: boolean;
+      };
       is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
     };
     Enums: {
