@@ -224,40 +224,39 @@ test("the three routes replace generic shells while 5.7 and 5.8 stay split", () 
   assert.match(route, /<PreferenceCategoryPage/);
 });
 
-test("page implements three-level hierarchy, dirty guard, and explicit contracts", () => {
+test("category pages delegate canonical controls and retain shared dirty guard", () => {
   const page = read(
-    "src/features/preferences/dining-accommodation-budget-preference-page.tsx",
+    "src/features/preferences/persistence/canonical-preference-editor.tsx",
   );
   assert.match(page, /GuardedLink/);
   assert.match(page, /setIsDirty\(isDirty\)/);
-  assert.match(page, /Level 1 · 大项目/);
-  assert.match(page, /Level 2 · 中项目/);
-  assert.match(page, /Level 3 · 小项目/);
-  assert.match(page, /data-preference-level="large"/);
-  assert.match(page, /data-preference-level="middle"/);
-  assert.match(page, /data-preference-level="small"/);
-  assert.match(page, /<dt>Persistence<\/dt>[\s\S]*Mock \/ in-memory only/);
-  assert.match(
-    page,
-    /<dt>Formal Preference Schema<\/dt>[\s\S]*Not implemented/,
-  );
-  assert.match(page, /<dt>Planner Contract<\/dt>[\s\S]*Not implemented/);
+  for (const level of ["large", "middle", "small"])
+    assert.ok(page.includes('data-preference-level="' + level + '"'));
+  assert.match(page, /usePreferenceResource/);
+  assert.doesNotMatch(page, /createDefault|Mock \/ in-memory only/);
 });
 
-test("informational boundary cards do not expose fake controls", () => {
+test("canonical category controls keep unsupported Trip and detailed fields out", () => {
   const page = read(
-    "src/features/preferences/dining-accommodation-budget-preference-page.tsx",
+    "src/features/preferences/persistence/canonical-preference-editor.tsx",
   );
-  assert.match(page, /候选范围，不是当前已保存字段。/);
-  assert.match(page, /不会从本页生成 Trip 临时状态。/);
-  assert.match(page, /不会从本页创建或修改 Trip Budget。/);
-  assert.doesNotMatch(page, /boundaryCard[\s\S]{0,120}<button/);
+  assert.match(page, /本次旅行或同行人的临时选择不会覆盖这里/);
+  assert.match(page, /keysForPage\(category\)/);
+  assert.doesNotMatch(
+    page,
+    /hotelStar|roomType|bedType|dailyAmount|totalAmount|currencyInput|tripTemporary/,
+  );
 });
 
 test("implementation uses all three repository assets", () => {
-  const page = read(
-    "src/features/preferences/dining-accommodation-budget-preference-page.tsx",
-  );
+  const page =
+    read(
+      "src/features/preferences/dining-accommodation-budget-preference-page.tsx",
+    ) +
+    read(
+      "src/features/preferences/persistence/canonical-preference-editor.tsx",
+    ) +
+    read("src/features/preferences/persistence/preference-adapter.ts");
   for (const asset of [
     "public/media/personal-center/preferences/category-dining.png",
     "public/media/personal-center/preferences/category-accommodation.webp",
@@ -268,11 +267,14 @@ test("implementation uses all three repository assets", () => {
       true,
       asset,
     );
-    assert.match(page, new RegExp(asset.replace("public", "")));
+    assert.match(
+      page,
+      new RegExp(asset.split("/").at(-1).replaceAll(".", "\\.")),
+    );
   }
 });
 
-test("no persistence network planner or formal detailed fields are added", () => {
+test("legacy category fixtures remain pure and unsupported fields stay absent", () => {
   const files = [
     read(
       "src/features/preferences/dining-accommodation-budget-preference-page.tsx",
