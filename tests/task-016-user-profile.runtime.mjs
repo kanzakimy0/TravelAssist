@@ -13,7 +13,12 @@ import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { getTableConfig, PgDialect } from "drizzle-orm/pg-core";
 import { localEnv, assertLocalEndpoint } from "../tools/db/local.mjs";
-import * as schema from "../src/db/schema/index.ts";
+import {
+  profiles,
+  profileSettings,
+  emergencyContacts,
+} from "../src/db/schema/index.ts";
+const schema = { profiles, profileSettings, emergencyContacts };
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const require = createRequire(import.meta.url);
