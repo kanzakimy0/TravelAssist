@@ -2,7 +2,7 @@
 
 > Owner：B / Personal Center / Companion Data  
 > WBS：5.17 / P1  
-> Issue：#325  
+> Issue：#324  
 > Publication baseline：`develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`  
 > Spec branch：`task/b-wbs-5-17-companion-persistence-api`  
 > Implementation branch：`codex/b-account-wbs-5-17-companion-persistence-api`  
@@ -73,7 +73,7 @@ git log --oneline -15 origin/develop
 ```text
 WBS 5.12 = 已完成
 WBS 8.1  = 已完成
-Issue #325 = Open
+Issue #324 = Open
 ```
 
 并读取规格发布分支：
@@ -580,7 +580,7 @@ out-of-scope confirmation
 
 只能修改 5.17 及本 Task 必需 tracking；不要覆盖其他人的并发 WBS 状态。
 
-Issue #325 保持 Open，写入 Result / Draft PR 关联。
+Issue #324 保持 Open，写入 Result / Draft PR 关联。
 
 ---
 
@@ -593,7 +593,7 @@ Issue #325 保持 Open，写入 Result / Draft PR 关联。
 3. 重新跑受影响 gates；
 4. push `codex/b-account-wbs-5-17-companion-persistence-api`；
 5. 创建 **Draft PR** → `develop`；
-6. PR 使用 `Relates to #325`，不要自动关闭 Issue；
+6. PR 使用 `Relates to #324`，不要自动关闭 Issue；
 7. 报告用户验收入口与需要人工检查的页面/动作。
 
 不得自动 merge。
@@ -629,7 +629,7 @@ implementation complete
 required tests/QA complete
 Result committed
 WBS 5.17 = 待审查
-Issue #325 updated but Open
+Issue #324 updated but Open
 Draft PR created
 ```
 
@@ -639,7 +639,7 @@ Draft PR created
 
 ```text
 merge PR
-close Issue #325
+close Issue #324
 mark WBS 5.17 已完成
 start downstream task
 ```
