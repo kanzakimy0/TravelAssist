@@ -1,0 +1,41 @@
+name: Temporary WBS 5.16 completion sync
+
+on:
+  push:
+    branches:
+      - docs/wbs-5-16-completion-sync
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update exactly WBS 5.16
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('docs/project/WBS-TravelAssist.md')
+          text = p.read_text(encoding='utf-8')
+          old = '| 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 待审查 |'
+          new = '| 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 已完成 |'
+          count = text.count(old)
+          if count != 1:
+              raise SystemExit(f'expected exactly 1 target row, found {count}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
+      - name: Verify only the intended WBS file changed
+        run: |
+          test "$(git diff --name-only)" = "docs/project/WBS-TravelAssist.md"
+          git diff --check
+          git diff -- docs/project/WBS-TravelAssist.md
+      - name: Commit exact WBS status sync
+        run: |
+          git config user.name "EURAISA"
+          git config user.email "70467859+EURAISA@users.noreply.github.com"
+          git add docs/project/WBS-TravelAssist.md
+          git commit -m "docs(wbs): mark 5.16 completed"
+          git push origin HEAD:docs/wbs-5-16-completion-sync
