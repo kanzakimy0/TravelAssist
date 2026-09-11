@@ -12,30 +12,51 @@ const ROOT = path.resolve(HERE, "../..");
 const SOURCE_DIR = path.join(ROOT, "docs/qa/TASK-039");
 const OUTPUT_DIR = path.join(ROOT, "docs/qa/TASK-040");
 
-export const WORKBOOK_SCHEMA_VERSION = "task-040-xlsx-v1";
+const LOCALIZATION_PATH = path.join(OUTPUT_DIR, "localization-zh-CN.json");
+const LOCALIZATION_BYTES = await readFile(LOCALIZATION_PATH);
+const LOCALIZATION = JSON.parse(LOCALIZATION_BYTES.toString("utf8"));
+const LOCALIZATION_SHA256 = createHash("sha256")
+  .update(LOCALIZATION_BYTES)
+  .digest("hex");
+
+export const WORKBOOK_SCHEMA_VERSION = "task-040-xlsx-v2-zh-CN";
+export const SHEET_NAMES = ["评审", "说明", "元数据"];
 export const REVIEW_HEADERS = [
-  "Row",
-  "Blind Item ID",
-  "Scenario",
-  "Traveler Intent",
-  "POI A",
-  "A Prefecture",
-  "A Region",
-  "A Category",
-  "A Source 1",
-  "A Source 2",
-  "POI B",
-  "B Prefecture",
-  "B Region",
-  "B Category",
-  "B Source 1",
-  "B Source 2",
-  "Choice",
-  "Confidence",
-  "Note",
+  "序号",
+  "盲审题目 ID",
+  "旅行场景",
+  "旅客需求",
+  "景点 A",
+  "A 所在都道府县",
+  "A 所在地区",
+  "A 类型",
+  "A 来源 1",
+  "A 来源 2",
+  "景点 B",
+  "B 所在都道府县",
+  "B 所在地区",
+  "B 类型",
+  "B 来源 1",
+  "B 来源 2",
+  "选择",
+  "置信度",
+  "备注",
 ];
 export const CHOICES = ["A", "B", "TIE", "INSUFFICIENT_INFO"];
 export const CONFIDENCES = ["high", "medium", "low"];
+export const DISPLAY_CHOICES = ["A", "B", "平局", "信息不足"];
+export const DISPLAY_CONFIDENCES = ["高", "中", "低"];
+const CHOICE_TO_CANONICAL = new Map([
+  ["A", "A"],
+  ["B", "B"],
+  ["平局", "TIE"],
+  ["信息不足", "INSUFFICIENT_INFO"],
+]);
+const CONFIDENCE_TO_CANONICAL = new Map([
+  ["高", "high"],
+  ["中", "medium"],
+  ["低", "low"],
+]);
 const FORBIDDEN = [
   "candidate-0457",
   "gamma",
@@ -73,22 +94,145 @@ export async function loadPack(reviewerCode) {
   };
 }
 
+const SCENARIOS_ZH = {
+  "Shopping and city traveler": [
+    "购物与都市体验",
+    "喜欢购物、热闹街区与现代都市体验。",
+  ],
+  "Hidden and local explorer": [
+    "在地小众探索",
+    "曾多次访问日本，希望探索具有地方特色、避开热门地标的地点。",
+  ],
+  "Food-focused traveler": [
+    "美食主题",
+    "希望以饮食文化和当地美食体验为行程核心。",
+  ],
+  "Relaxed and rest-oriented traveler": [
+    "轻松疗愈",
+    "希望以舒缓节奏度过平静、放松的一天。",
+  ],
+  "Low crowd and queue tolerance": [
+    "避开拥挤",
+    "对拥挤人群和长时间排队的承受能力较低。",
+  ],
+  "First-time iconic traveler": [
+    "初次访日经典体验",
+    "首次前往日本，希望获得难忘且具有代表性的日本旅行体验。",
+  ],
+  "Art and educational traveler": [
+    "艺术与文化学习",
+    "重视艺术、博物馆与具有学习价值的文化体验。",
+  ],
+  "Low walking and physical tolerance": [
+    "少步行需求",
+    "对长时间步行或体力消耗的承受能力较低。",
+  ],
+  "Photography and scenery": ["摄影与风景", "重视摄影机会和优美景观。"],
+  "Nature traveler": ["自然旅行", "希望探索自然、山水、公园或户外景观。"],
+  "History and architecture": [
+    "历史与建筑",
+    "对历史、文化遗产与建筑尤其感兴趣。",
+  ],
+  "Family and interactive soft fit": [
+    "亲子互动",
+    "家庭同行，希望选择互动性强、适合不同年龄段的地点。",
+  ],
+};
+const REGIONS_ZH = {
+  Chubu: "中部",
+  Chugoku: "中国地区",
+  Hokkaido: "北海道",
+  Kansai: "关西",
+  Kanto: "关东",
+  Kyushu: "九州",
+  Okinawa: "冲绳",
+  Shikoku: "四国",
+  Tohoku: "东北",
+};
+const PREFECTURES_ZH = {
+  Aichi: "爱知县",
+  Aomori: "青森县",
+  Chiba: "千叶县",
+  Ehime: "爱媛县",
+  Gifu: "岐阜县",
+  Gunma: "群马县",
+  Hiroshima: "广岛县",
+  Hokkaido: "北海道",
+  Hyogo: "兵库县",
+  Ishikawa: "石川县",
+  Iwate: "岩手县",
+  Kagawa: "香川县",
+  Kagoshima: "鹿儿岛县",
+  Kanagawa: "神奈川县",
+  Kochi: "高知县",
+  Kumamoto: "熊本县",
+  Kyoto: "京都府",
+  Mie: "三重县",
+  Miyagi: "宫城县",
+  Miyazaki: "宫崎县",
+  Nagano: "长野县",
+  Nagasaki: "长崎县",
+  Nara: "奈良县",
+  Okayama: "冈山县",
+  Okinawa: "冲绳县",
+  Osaka: "大阪府",
+  Shimane: "岛根县",
+  Shizuoka: "静冈县",
+  Tochigi: "栃木县",
+  Tokushima: "德岛县",
+  Tokyo: "东京都",
+  Tottori: "鸟取县",
+  Yamagata: "山形县",
+  Yamaguchi: "山口县",
+  Yamanashi: "山梨县",
+};
+const CATEGORIES_ZH = {
+  "Art or cultural venue": "艺术或文化场馆",
+  "Entertainment venue": "娱乐设施",
+  "Food-related place": "美食相关地点",
+  Garden: "庭园",
+  "Historic place": "历史景点",
+  Market: "市场",
+  "Mountain or highland place": "山岳或高原",
+  Museum: "博物馆",
+  "Natural place": "自然景点",
+  Park: "公园",
+  "Scenic viewpoint": "景观眺望点",
+  "Shopping area": "购物区域",
+  "Shrine or religious site": "神社或宗教场所",
+  "Temple or religious site": "寺庙或宗教场所",
+};
+
+function translated(map, value, label) {
+  const result = map[value];
+  if (!result)
+    throw new Error(`Missing zh-CN translation for ${label}: ${value}`);
+  return result;
+}
+
+function poiNameZh(name) {
+  const result = LOCALIZATION.poiNames[name]?.zhCN;
+  if (!result) throw new Error(`Missing zh-CN POI name: ${name}`);
+  return result;
+}
+
 function protectedRow(item) {
+  const scenario = translated(SCENARIOS_ZH, item.scenario.title, "scenario");
   return [
     item.rowNumber,
     item.blindItemId,
-    item.scenario.title,
-    item.scenario.travelerIntent,
-    item.poiA.name,
-    item.poiA.prefecture,
-    item.poiA.region,
-    item.poiA.broadCategory,
+    scenario[0],
+    scenario[1],
+    poiNameZh(item.poiA.name),
+    translated(PREFECTURES_ZH, item.poiA.prefecture, "prefecture"),
+    translated(REGIONS_ZH, item.poiA.region, "region"),
+    translated(CATEGORIES_ZH, item.poiA.broadCategory, "category"),
     item.poiA.evidenceUrls[0],
     item.poiA.evidenceUrls[1],
-    item.poiB.name,
-    item.poiB.prefecture,
-    item.poiB.region,
-    item.poiB.broadCategory,
+    poiNameZh(item.poiB.name),
+    translated(PREFECTURES_ZH, item.poiB.prefecture, "prefecture"),
+    translated(REGIONS_ZH, item.poiB.region, "region"),
+    translated(CATEGORIES_ZH, item.poiB.broadCategory, "category"),
     item.poiB.evidenceUrls[0],
     item.poiB.evidenceUrls[1],
   ];
@@ -100,35 +244,29 @@ export function protectedContentDigest(pack) {
 
 const instructions = [
   [
-    "Purpose",
-    "Judge which POI better fits the stated traveler scenario. Judge traveler fit, not your personal favorite.",
+    "评审目标",
+    "判断哪个景点更符合给出的旅行场景。请判断旅客适配度，而不是选择您个人更喜欢的景点。",
   ],
-  ["Choice", "Choose exactly one: A, B, TIE, or INSUFFICIENT_INFO."],
-  ["Confidence", "Choose high, medium, or low for every answered row."],
+  ["选择", "每题只能选择一项：A、B、平局或信息不足。"],
+  ["置信度", "每道已作答题目都必须选择高、中或低。"],
   [
-    "Independence",
-    "Work independently. Do not inspect TASK-038 files, restricted TASK-039 mapping files, scoring code, or another reviewer’s answers.",
-  ],
-  [
-    "Evidence",
-    "Source links are neutral identity references. Open them only when identity or broad type is unclear.",
+    "独立性",
+    "请独立完成评审。不要查看 TASK-038 文件、受限的 TASK-039 映射文件、评分代码或其他评审员的答案。",
   ],
   [
-    "Out of scope",
-    "Do not infer live opening hours, queues, weather, route feasibility, booking availability, or price inventory.",
+    "来源",
+    "来源链接仅用于中立地确认景点身份。只有当景点身份或大类不明确时才需要打开。",
   ],
   [
-    "Insufficient information",
-    "Use INSUFFICIENT_INFO when the available information cannot support a responsible judgment.",
+    "评审范围外",
+    "不要推测实时营业时间、排队情况、天气、路线可行性、预约可用性或价格库存。",
   ],
+  ["信息不足", "当现有信息不足以支持可靠判断时，请选择“信息不足”。"],
   [
-    "Protected cells",
-    "Do not alter question, identity, or source cells. Only Choice, Confidence, and Note are intended for editing.",
+    "受保护单元格",
+    "请勿修改题目、景点身份或来源单元格。只有“选择”“置信度”和“备注”允许填写。",
   ],
-  [
-    "Privacy",
-    "Do not enter your name, contact details, or other personal information in Note.",
-  ],
+  ["隐私", "请勿在备注中填写姓名、联系方式或其他个人信息。"],
 ];
 
 function styleWorkbook(workbook, review, instructionsSheet, metadata) {
@@ -241,9 +379,9 @@ export async function generateWorkbook(reviewerCode, outputPath) {
     throw new Error(`Invalid frozen source pack for ${reviewerCode}`);
   }
   const workbook = new ExcelJS.Workbook();
-  const review = workbook.addWorksheet("Review");
-  const instructionsSheet = workbook.addWorksheet("Instructions");
-  const metadata = workbook.addWorksheet("Metadata");
+  const review = workbook.addWorksheet(SHEET_NAMES[0]);
+  const instructionsSheet = workbook.addWorksheet(SHEET_NAMES[1]);
+  const metadata = workbook.addWorksheet(SHEET_NAMES[2]);
 
   review.addRow(REVIEW_HEADERS);
   for (const item of pack.items) {
@@ -251,7 +389,7 @@ export async function generateWorkbook(reviewerCode, outputPath) {
     for (const column of [9, 10, 15, 16]) {
       const url = protectedRow(item)[column - 1];
       row.getCell(column).value = {
-        text: `Source ${column % 2 === 1 ? 1 : 2}`,
+        text: `来源 ${column % 2 === 1 ? 1 : 2}`,
         hyperlink: url,
       };
       row.getCell(column).font = {
@@ -262,32 +400,33 @@ export async function generateWorkbook(reviewerCode, outputPath) {
     row.getCell(17).dataValidation = {
       type: "list",
       allowBlank: true,
-      formulae: ['"A,B,TIE,INSUFFICIENT_INFO"'],
+      formulae: ['"A,B,平局,信息不足"'],
       showErrorMessage: true,
-      errorTitle: "Invalid choice",
-      error: "Choose A, B, TIE, or INSUFFICIENT_INFO.",
+      errorTitle: "选择无效",
+      error: "请选择 A、B、平局或信息不足。",
     };
     row.getCell(18).dataValidation = {
       type: "list",
       allowBlank: true,
-      formulae: ['"high,medium,low"'],
+      formulae: ['"高,中,低"'],
       showErrorMessage: true,
-      errorTitle: "Invalid confidence",
-      error: "Choose high, medium, or low.",
+      errorTitle: "置信度无效",
+      error: "请选择高、中或低。",
     };
   }
 
-  instructionsSheet.addRow(["Reviewer Instructions", "Guidance"]);
+  instructionsSheet.addRow(["评审说明", "操作指引"]);
   instructions.forEach((row) => instructionsSheet.addRow(row));
   metadata.addRows([
-    ["Field", "Value"],
-    ["reviewVersion", pack.reviewVersion],
-    ["reviewerCode", reviewerCode],
-    ["itemCount", pack.itemCount],
-    ["sourcePackSha256", sourceSha256],
-    ["workbookSchemaVersion", WORKBOOK_SCHEMA_VERSION],
-    ["protectedContentDigestAlgorithm", "SHA-256"],
-    ["protectedContentDigest", protectedContentDigest(pack)],
+    ["字段", "值"],
+    ["评审版本", pack.reviewVersion],
+    ["评审员代码", reviewerCode],
+    ["题目数量", pack.itemCount],
+    ["源题包 SHA-256", sourceSha256],
+    ["工作簿结构版本", WORKBOOK_SCHEMA_VERSION],
+    ["受保护内容摘要算法", "SHA-256"],
+    ["受保护内容摘要", protectedContentDigest(pack)],
+    ["中文本地化目录 SHA-256", LOCALIZATION_SHA256],
   ]);
 
   styleWorkbook(workbook, review, instructionsSheet, metadata);
@@ -353,18 +492,14 @@ export async function validateWorkbook(workbookPath, { final = false } = {}) {
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.readFile(workbookPath);
   const names = workbook.worksheets.map((sheet) => sheet.name);
-  if (
-    stableJson(names) !== stableJson(["Review", "Instructions", "Metadata"])
-  ) {
-    throw new Error(
-      "Workbook must contain exactly Review, Instructions, Metadata sheets",
-    );
+  if (stableJson(names) !== stableJson(SHEET_NAMES)) {
+    throw new Error("工作簿必须只包含评审、说明、元数据三个工作表");
   }
   if (workbook.worksheets.some((sheet) => sheet.state !== "visible")) {
     throw new Error("Hidden worksheets are not allowed");
   }
-  const review = workbook.getWorksheet("Review");
-  const metadata = workbook.getWorksheet("Metadata");
+  const review = workbook.getWorksheet(SHEET_NAMES[0]);
+  const metadata = workbook.getWorksheet(SHEET_NAMES[2]);
   if (
     review.columnCount > REVIEW_HEADERS.length ||
     review.actualRowCount !== 145
@@ -384,27 +519,28 @@ export async function validateWorkbook(workbookPath, { final = false } = {}) {
   );
 
   const meta = metadataMap(metadata);
-  const reviewerCode = normalized(meta.get("reviewerCode"));
+  const reviewerCode = normalized(meta.get("评审员代码"));
   if (!["R1", "R2"].includes(reviewerCode))
     throw new Error("Invalid reviewer code");
   const { pack, sourceSha256 } = await loadPack(reviewerCode);
-  assertEqual(meta.get("reviewVersion"), pack.reviewVersion, "reviewVersion");
-  assertEqual(meta.get("itemCount"), 144, "itemCount");
-  assertEqual(meta.get("sourcePackSha256"), sourceSha256, "sourcePackSha256");
+  assertEqual(meta.get("评审版本"), pack.reviewVersion, "reviewVersion");
+  assertEqual(meta.get("题目数量"), 144, "itemCount");
+  assertEqual(meta.get("源题包 SHA-256"), sourceSha256, "sourcePackSha256");
   assertEqual(
-    meta.get("workbookSchemaVersion"),
+    meta.get("工作簿结构版本"),
     WORKBOOK_SCHEMA_VERSION,
     "workbookSchemaVersion",
   );
+  assertEqual(meta.get("受保护内容摘要算法"), "SHA-256", "digest algorithm");
   assertEqual(
-    meta.get("protectedContentDigestAlgorithm"),
-    "SHA-256",
-    "digest algorithm",
-  );
-  assertEqual(
-    meta.get("protectedContentDigest"),
+    meta.get("受保护内容摘要"),
     protectedContentDigest(pack),
     "protected content digest",
+  );
+  assertEqual(
+    meta.get("中文本地化目录 SHA-256"),
+    LOCALIZATION_SHA256,
+    "localization catalog SHA-256",
   );
 
   const seen = new Set();
@@ -428,13 +564,17 @@ export async function validateWorkbook(workbookPath, { final = false } = {}) {
       throw new Error(`Duplicate blind ID: ${item.blindItemId}`);
     seen.add(item.blindItemId);
 
-    const choice = normalized(plainCellValue(row.getCell(17)));
-    const confidence = normalized(plainCellValue(row.getCell(18)));
+    const displayChoice = normalized(plainCellValue(row.getCell(17)));
+    const displayConfidence = normalized(plainCellValue(row.getCell(18)));
+    const choice = displayChoice ? CHOICE_TO_CANONICAL.get(displayChoice) : "";
+    const confidence = displayConfidence
+      ? CONFIDENCE_TO_CANONICAL.get(displayConfidence)
+      : "";
     const noteValue = plainCellValue(row.getCell(19));
     const note = normalized(noteValue) === "" ? null : String(noteValue);
-    if (choice && !CHOICES.includes(choice))
+    if (displayChoice && !choice)
       throw new Error(`Invalid choice: ${item.blindItemId}`);
-    if (confidence && !CONFIDENCES.includes(confidence))
+    if (displayConfidence && !confidence)
       throw new Error(`Invalid confidence: ${item.blindItemId}`);
     if (Boolean(choice) !== Boolean(confidence))
       throw new Error(
@@ -540,6 +680,9 @@ export async function writeManifestAndAudit() {
         0,
       ),
       sheetNames: validated.workbook.worksheets.map((sheet) => sheet.name),
+      locale: "zh-CN",
+      localizationCatalogPath: "docs/qa/TASK-040/localization-zh-CN.json",
+      localizationCatalogSha256: LOCALIZATION_SHA256,
       protectedContentDigest: protectedContentDigest(validated.pack),
       protectedContentCheck: "passed",
       leakageAuditStatus: audit.passed ? "passed" : "failed",
@@ -547,6 +690,7 @@ export async function writeManifestAndAudit() {
   }
   const audit = {
     workbookSchemaVersion: WORKBOOK_SCHEMA_VERSION,
+    locale: "zh-CN",
     forbiddenConcepts: FORBIDDEN,
     workbooks: auditRows,
     totalFindings: auditRows.reduce((sum, row) => sum + row.findings.length, 0),
@@ -554,6 +698,7 @@ export async function writeManifestAndAudit() {
   };
   const manifest = {
     workbookSchemaVersion: WORKBOOK_SCHEMA_VERSION,
+    locale: "zh-CN",
     generatedFrom: "frozen TASK-039 reviewer packs",
     reviewerWorkbooks: manifestRows,
     humanJudgmentsPresent: false,

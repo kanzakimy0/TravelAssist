@@ -26,15 +26,15 @@ No human judgment was entered or inferred. No reviewer response, Human Gold, can
 
 | Reviewer | Workbook                                         | Workbook SHA-256                                                   | Source pack SHA-256                                                | Rows |        Blank answers |
 | -------- | ------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ---: | -------------------: |
-| R1       | `docs/qa/TASK-040/reviewer-r1-blind-review.xlsx` | `1c2ace316537ee66fb379fe152ef4b20717301a2c5d1e13f64ce0f6aef8ca9fd` | `0ec82e3769b014fe42b78c76d2b5cd50d215344b84446fec20375ae83e7973b7` |  144 | 144 rows / 432 cells |
-| R2       | `docs/qa/TASK-040/reviewer-r2-blind-review.xlsx` | `ebccc60efd6cff615058bc3a4cf580edaeda08f366cfc07f05e9946f50549268` | `67782a402cfd999a9a4840d531cb139bf2b5aae6221fde3fd31480b92821fcba` |  144 | 144 rows / 432 cells |
+| R1       | `docs/qa/TASK-040/reviewer-r1-blind-review.xlsx` | `2d267eb841d25f49f7f45a73edc41c4dfb5342af3711846694e957650ff0e4eb` | `0ec82e3769b014fe42b78c76d2b5cd50d215344b84446fec20375ae83e7973b7` |  144 | 144 rows / 432 cells |
+| R2       | `docs/qa/TASK-040/reviewer-r2-blind-review.xlsx` | `e97d576707aac7ec36175331d20dc20a20d8acbbe68b6e2f3656a12a33ba7ab4` | `67782a402cfd999a9a4840d531cb139bf2b5aae6221fde3fd31480b92821fcba` |  144 | 144 rows / 432 cells |
 
-Each workbook has exactly the `Review`, `Instructions`, and `Metadata` sheets. Review order, blind IDs, A/B orientation, scenarios, traveler intents, POI identity, categories, and both source URLs are copied from the corresponding frozen TASK-039 pack. Visual inspection covered all three sheets in both workbooks; the restrained navy, warm-white, and pale input treatment remains neutral between A and B.
+Each workbook has exactly the `评审`, `说明`, and `元数据` sheets. Reviewer-visible content is Simplified Chinese (`zh-CN`): scenario and traveler-intent text, POI names, prefectures, regions, categories, guidance, headers, metadata labels, and answer dropdowns are localized. Review order, blind IDs, A/B orientation, POI identity, and both source URLs remain bound to the corresponding frozen TASK-039 pack. `docs/qa/TASK-040/localization-zh-CN.json` provides a deterministic, hash-bound Chinese identity catalog. Visual inspection covered all three sheets in both workbooks; the restrained navy, warm-white, and pale input treatment remains neutral between A and B.
 
 ## Dropdown / Protection Status
 
-- `Choice`: `A`, `B`, `TIE`, `INSUFFICIENT_INFO` list validation on all 144 rows.
-- `Confidence`: `high`, `medium`, `low` list validation on all 144 rows.
+- `选择`: `A`, `B`, `平局`, `信息不足` list validation on all 144 rows.
+- `置信度`: `高`, `中`, `低` list validation on all 144 rows.
 - Header row and the first two identity columns are frozen; Review filters are enabled.
 - All source references are clickable HTTPS hyperlinks.
 - Question, identity, source, Instructions, and Metadata cells are locked under worksheet protection.
@@ -53,7 +53,7 @@ npm run qa:blind-review:xlsx:import -- <workbook.xlsx> <response.json>
 npm run test:blind-review:xlsx
 ```
 
-The final-mode importer fails closed for wrong reviewer/version/source SHA, wrong sheet surface, unexpected or hidden columns/sheets, wrong row count/order, missing/duplicate/unknown IDs, altered scenario/intent/POI/prefecture/region/category/source URL, invalid or half-complete answers, incomplete submission, and formulas/errors in answer cells. Successful output contains only TASK-039 canonical response fields and passes `validateReviewerResponse`.
+The final-mode importer fails closed for wrong reviewer/version/source SHA/localization SHA, wrong sheet surface, unexpected or hidden columns/sheets, wrong row count/order, missing/duplicate/unknown IDs, altered localized scenario/intent/POI/prefecture/region/category/source URL, invalid or half-complete answers, incomplete submission, and formulas/errors in answer cells. Chinese choices and confidence values are normalized back to TASK-039 canonical enums; successful output contains only canonical response fields and passes `validateReviewerResponse`.
 
 ## Leakage Audit
 

@@ -9,7 +9,10 @@ import ExcelJS from "exceljs";
 import {
   CHOICES,
   CONFIDENCES,
+  DISPLAY_CHOICES,
+  DISPLAY_CONFIDENCES,
   REVIEW_HEADERS,
+  SHEET_NAMES,
   auditWorkbook,
   importWorkbook,
   loadPack,
@@ -40,7 +43,7 @@ test("both committed reviewer workbooks preserve the frozen 144-row question sur
     const { pack, sourceSha256 } = await loadPack(code);
     assert.deepEqual(
       validated.workbook.worksheets.map((sheet) => sheet.name),
-      ["Review", "Instructions", "Metadata"],
+      SHEET_NAMES,
     );
     assert.equal(validated.responses.length, 144);
     assert.deepEqual(
@@ -56,7 +59,7 @@ test("both committed reviewer workbooks preserve the frozen 144-row question sur
           row.choice === null && row.confidence === null && row.note === null,
       ),
     );
-    const metadata = validated.workbook.getWorksheet("Metadata");
+    const metadata = validated.workbook.getWorksheet("元数据");
     assert.equal(metadata.getCell("B5").value, sourceSha256);
     assert.equal(metadata.getCell("B8").value, protectedContentDigest(pack));
   }
@@ -65,7 +68,7 @@ test("both committed reviewer workbooks preserve the frozen 144-row question sur
 test("workbook edit surface has filters, frozen panes, protection, hyperlinks, and dropdowns", async () => {
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.readFile(workbookPath("R1"));
-  const review = workbook.getWorksheet("Review");
+  const review = workbook.getWorksheet("评审");
   assert.deepEqual(review.getRow(1).values.slice(1), REVIEW_HEADERS);
   assert.equal(review.views[0].state, "frozen");
   assert.equal(review.views[0].ySplit, 1);
@@ -76,15 +79,9 @@ test("workbook edit surface has filters, frozen panes, protection, hyperlinks, a
   assert.equal(review.getCell("Q2").protection.locked, false);
   assert.match(review.getCell("I2").value.hyperlink, /^https:\/\//);
   assert.equal(review.getCell("Q2").dataValidation.type, "list");
-  assert.match(
-    review.getCell("Q2").dataValidation.formulae[0],
-    /INSUFFICIENT_INFO/,
-  );
+  assert.match(review.getCell("Q2").dataValidation.formulae[0], /信息不足/);
   assert.equal(review.getCell("R2").dataValidation.type, "list");
-  assert.match(
-    review.getCell("R2").dataValidation.formulae[0],
-    /high,medium,low/,
-  );
+  assert.match(review.getCell("R2").dataValidation.formulae[0], /高,中,低/);
 });
 
 test("reviewer-visible workbook content has zero forbidden leakage findings", async () => {
@@ -100,11 +97,12 @@ test("reviewer-visible workbook content has zero forbidden leakage findings", as
 
 test("all allowed choices round-trip through a synthetic QA-only workbook", async () => {
   const synthetic = await mutateWorkbook("R1", (workbook) => {
-    const review = workbook.getWorksheet("Review");
+    const review = workbook.getWorksheet("评审");
     for (let row = 2; row <= 145; row += 1) {
-      review.getCell(row, 17).value = CHOICES[(row - 2) % CHOICES.length];
+      review.getCell(row, 17).value =
+        DISPLAY_CHOICES[(row - 2) % DISPLAY_CHOICES.length];
       review.getCell(row, 18).value =
-        CONFIDENCES[(row - 2) % CONFIDENCES.length];
+        DISPLAY_CONFIDENCES[(row - 2) % DISPLAY_CONFIDENCES.length];
       review.getCell(row, 19).value =
         row % 2 === 0 ? "QA-only synthetic note" : null;
     }
@@ -127,7 +125,7 @@ test("all allowed choices round-trip through a synthetic QA-only workbook", asyn
 
 test("importer fails closed on invalid answers and incomplete final submissions", async () => {
   const invalidChoice = await mutateWorkbook("R1", (workbook) => {
-    workbook.getWorksheet("Review").getCell("Q2").value = "MAYBE";
+    workbook.getWorksheet("评审").getCell("Q2").value = "不确定";
   });
   await assert.rejects(
     importWorkbook(invalidChoice, `${invalidChoice}.json`),
@@ -135,7 +133,7 @@ test("importer fails closed on invalid answers and incomplete final submissions"
   );
 
   const formula = await mutateWorkbook("R1", (workbook) => {
-    workbook.getWorksheet("Review").getCell("Q2").value = {
+    workbook.getWorksheet("评审").getCell("Q2").value = {
       formula: '"A"',
       result: "A",
     };
@@ -143,12 +141,12 @@ test("importer fails closed on invalid answers and incomplete final submissions"
   await assert.rejects(importWorkbook(formula, `${formula}.json`), /formula/);
 
   const error = await mutateWorkbook("R1", (workbook) => {
-    workbook.getWorksheet("Review").getCell("R2").value = { error: "#VALUE!" };
+    workbook.getWorksheet("评审").getCell("R2").value = { error: "#VALUE!" };
   });
   await assert.rejects(importWorkbook(error, `${error}.json`), /error/);
 
   const halfAnswered = await mutateWorkbook("R1", (workbook) => {
-    workbook.getWorksheet("Review").getCell("Q2").value = "A";
+    workbook.getWorksheet("评审").getCell("Q2").value = "A";
   });
   await assert.rejects(
     importWorkbook(halfAnswered, `${halfAnswered}.json`),
@@ -201,7 +199,7 @@ test("importer rejects missing, duplicate, unknown, reordered, extra, or hidden 
   ];
   for (const [name, mutate, expected] of scenarios) {
     const file = await mutateWorkbook("R1", (workbook) =>
-      mutate(workbook.getWorksheet("Review")),
+      mutate(workbook.getWorksheet("评审")),
     );
     await assert.rejects(validateWorkbook(file), expected, name);
   }
@@ -212,22 +210,22 @@ test("importer rejects protected identity, source, reviewer, version, and pack S
     [
       "question",
       (workbook) => {
-        workbook.getWorksheet("Review").getCell("D2").value = "Altered intent";
+        workbook.getWorksheet("评审").getCell("D2").value = "已修改需求";
       },
       /Protected content mismatch/,
     ],
     [
       "poi",
       (workbook) => {
-        workbook.getWorksheet("Review").getCell("E2").value = "Different POI";
+        workbook.getWorksheet("评审").getCell("E2").value = "其他景点";
       },
       /Protected content mismatch/,
     ],
     [
       "source",
       (workbook) => {
-        workbook.getWorksheet("Review").getCell("I2").value = {
-          text: "Source 1",
+        workbook.getWorksheet("评审").getCell("I2").value = {
+          text: "来源 1",
           hyperlink: "https://example.invalid",
         };
       },
@@ -236,21 +234,21 @@ test("importer rejects protected identity, source, reviewer, version, and pack S
     [
       "reviewer",
       (workbook) => {
-        workbook.getWorksheet("Metadata").getCell("B3").value = "RX";
+        workbook.getWorksheet("元数据").getCell("B3").value = "RX";
       },
       /Invalid reviewer code/,
     ],
     [
       "version",
       (workbook) => {
-        workbook.getWorksheet("Metadata").getCell("B2").value = "wrong";
+        workbook.getWorksheet("元数据").getCell("B2").value = "wrong";
       },
       /reviewVersion/,
     ],
     [
       "sha",
       (workbook) => {
-        workbook.getWorksheet("Metadata").getCell("B5").value = "0".repeat(64);
+        workbook.getWorksheet("元数据").getCell("B5").value = "0".repeat(64);
       },
       /sourcePackSha256/,
     ],
