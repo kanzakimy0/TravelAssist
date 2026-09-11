@@ -47,7 +47,9 @@
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
+    "test:preferences": "node --import ./tests/register-route-ts.mjs --test tests/task-042-preference-schema.test.mjs",
+    "test:preferences:db": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-042-preference-schema.runtime.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
