@@ -877,7 +877,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | WBS ID | 工作项                               | 负责人 | 优先级 | 依赖      | 状态   |
 | ------ | ------------------------------------ | ------ | ------ | --------- | ------ |
-| 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 未开始 |
+| 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 待审查 |
 | 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 未开始 |
 | 5.13   | Preference Preset / 默认值           | B      | P1     | 5.11      | 未开始 |
 | 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 未开始 |
@@ -1265,3 +1265,13 @@ B Auth/User Session → A Header/Avatar Entry
 - #221 / #207：仍为 Draft / Partial，只推送原服务器子集与最新 develop 的整合，未上线页面接线。主表 5.11 / 5.16 / 5.18 保留已合并事实；未合并子集在其分支 Result 追踪。当前全仓 811/811、专项 9/9、ci/lint/typecheck/build/deploy-format 通过；本机 Docker daemon 不可用，真实 DB/RLS/跨设备验收不能视为本轮通过。
 
 上方 Draft/未合并与旧测试表述为原阶段记录。完整队列结果：docs/tasks/RESULT-B-draft-queue-integration-closeout.md。未启动后续业务/地图视觉迁移，不改任何其他 A/B WBS 状态。
+
+## TASK-042-B Preference Schema v1（2026-09-11）
+
+- WBS 5.11 / B / Issue #307：待审查；实现与真实 Local Supabase 验收通过，未标记已完成。
+- 基线：`fede48bb2a4916bcc6070be325ec5b450fa6fbd1`；独立分支：`codex/b-account-wbs-5-11-preference-schema`；实现提交：`d9090599378ba1512d0f2085af71f024ef9dca5d`。
+- 23-key sparse Preference、stable Interest/Detail codes、Hard/Soft metadata、五档 walkingTolerance、style.planning、strict set/unset、SQL validation/RLS/revision、Drizzle 与真实 generated types 已实现。
+- 纯测试 503/503；真实 Preference DB/Auth/RLS 505/505；Profile DB 回归 25/25；全仓 1332/1332；lint/typecheck/build/deploy gates/修改文件格式通过。全仓格式 63 项失败全部与基线 Git blob 相同。
+- PR #221 仍 Draft/Partial，head `929529be302b60c84ace3a580461de95e04de461`；逐项 REUSE/REWORK/DEFER/SUPERSEDED 审计，未 merge/cherry-pick/关闭。
+- Task：`docs/tasks/TASK-042-b-preference-schema-v1.md`；Result：`docs/tasks/RESULT-TASK-042-b-preference-schema-v1.md`。[Draft PR #309](https://github.com/kanzakimy0/TravelAssist/pull/309) → develop；Issue #307 保持 Open。
+- 5.13/5.14/5.16/5.18/8.6 及其他 WBS 状态保持原样；没有 Planner/AI/Engine/POI 43 字段改动。验收后停止，不自动合并或启动下一 Task。

@@ -127,12 +127,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      travel_preferences: {
+        Row: {
+          created_at: string;
+          owner_user_id: string;
+          payload: Json;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          owner_user_id: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          owner_user_id?: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
     };
     Enums: {
       [_ in never]: never;
