@@ -4,7 +4,7 @@
 > Owner：B  
 > WBS：5.17  
 > Priority：P1  
-> Issue：#325  
+> Issue：#324  
 > Task：TASK-047-B  
 > Publication branch：`task/b-wbs-5-17-companion-persistence-api`  
 > Publication baseline：`develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`
@@ -26,7 +26,7 @@ WBS 5.17 的正式依赖为：
 
 本次已完成：
 
-- 建立 Issue #325；
+- 建立 Issue #324；
 - 冻结 `companion-persistence-api-v1.md`；
 - 发布 `TASK-047-B`；
 - 发布 Codex Launcher；
@@ -47,7 +47,7 @@ docs/project/WBS-TravelAssist.md
 ```text
 未开始
 ↓
-进行中（#325 / TASK-047-B）
+进行中（#324 / TASK-047-B）
 ```
 
 不得覆盖同时由其他 Owner 更新的 WBS 行。
@@ -62,7 +62,7 @@ docs/project/WBS-TravelAssist.md
 
 ```text
 5.17 = 已完成
-Issue #325 = Closed
+Issue #324 = Closed
 ```
 
 ## Dependency Boundary
