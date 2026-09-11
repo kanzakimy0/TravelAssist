@@ -6,7 +6,7 @@
 > Task：TASK-046-B；Issue：#321
 > 依赖：5.11、5.16 均已完成
 > 设计基线：`develop@de83a1d6cf33eadc9107a529cb1e9590c95d43a4`
-> 当前阶段：规格与交接准备已开始；尚未执行 Codex 实装。中央 WBS 应为“进行中”。
+> 当前阶段：TASK-046-B Producer 实现及必需真实 Local DB/Auth/API/browser QA 已通过；中央 WBS 5.14 = 待审查；A/designated integration review 与用户验收 Pending。
 
 ## 1. 目标和本轮决策
 
