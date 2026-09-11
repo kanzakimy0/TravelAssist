@@ -157,3 +157,61 @@ npm cache 路径仅为本机加速，可省略。Windows 旧 DB 套件运行前�
 Issue #321 的 Result / PR / 阶段已同步到远端正文并保持 OPEN；PR 保持 Draft，无 auto-merge。A/designated reviewer 与用户验收都 Pending，后续真实接受并授权合并后才能完成中央状态；本 Task 不代替这些人工阶段。
 
 PR #221 只读核对 OPEN / Draft，head `929529be302b60c84ace3a580461de95e04de461`；未修改/合并/关闭 #221 或 #207。未改 A Planner/Trip/Engine/AI/POI/scoring、StartFlow、UI 布局、SQL/RLS/Drizzle/generated types；未启动 4.18、5.13、5.17、5.18、5.19、8.6。交付本 Task 后停止。
+
+## 9. R1 审查修复 — 2026-09-12
+
+审查来源：[review 5180255252](https://github.com/kanzakimy0/TravelAssist/pull/323#pullrequestreview-5180255252) / [R1 inline comment](https://github.com/kanzakimy0/TravelAssist/pull/323#discussion_r3990538045)。审查基线与本轮起始 head：`c60041f308d85365e7378d2c420b4e7c21ce93c4`。前文计数与实现提交是首次交付历史；以下为本轮重新执行结果。
+
+**R1 Result：PASS（实施方修复与 QA）。A/designated reviewer 接受、用户验收仍 Pending。** PR #323 保持 Draft，Issue #321 Open，5.14 保持待审查；不代签、不自动合并。
+
+修复 commit / 最终 runtime head：**`5c61a62d57bd001e88f8c67644f9211cf6800af5`**。后续仅追加本 Result；含文档收口的最终发布 head 在 PR/Issue R1 更新及交付消息中记录。
+
+### 先失败，再修复
+
+先仅修改真实 Local 回归，确认 public-read.ts/http.ts 相对起始 head 无 diff，然后在旧 runtime 上执行 `test:preference-contract:local`。结果 **13 tests：9 pass / 4 fail / 0 skipped**，其中 3 个场景失败加父测试失败：
+
+- 带业务 query 的 Cookie/Bearer 组合读变为 PREFERENCE_UNAVAILABLE。
+- 有效显式 Bearer + Cookie 的业务查询组合读同样失败。
+- 真实过期 Cookie 刷新会修改调用方 headers，违反原请求保持不变的要求。
+
+红灯证据：`.artifacts/task046-r1/red-local.log`。没有改测试预期来迁就旧行为。随后定向修复并重跑最终回归得到 **13/13 PASS**，包含 12 个场景和 1 个父测试。最终矩阵还覆盖业务 GET 与含 body 的 POST。
+
+### 定向修复与保护边界
+
+仅在 server public facade 内创建独立的 canonical `/api/preferences` GET，复制 headers、传递原 signal，然后调用原 handlePreference。调用方 URL/query/body 不进入偏好专用 query 校验，Auth refresh 只修改独立请求。没有消费/克隆调用方 body，没有从业务 query/body 选择 owner。
+
+Cookie/Bearer、getUser/RLS、invalid Bearer 不回退 Cookie 和 finish 保持既有机制。原外部 `/api/preferences?owner=...` 或 `?tripId=demo&locale=zh` 继续 400 INVALID_REQUEST。没有 self-HTTP、新 endpoint、service-role、Schema/SQL/RLS/Drizzle/generated types、原 wire/CAS 或 Planner 改动。
+
+本轮 runtime diff 仅 public-read.ts；测试增加真实 R1 场景并保留原场景；handoff 补充 canonical GET 隔离说明。中央 WBS 无 diff，5.14 仍为待审查。
+
+### 新真实覆盖
+
+- 两真实 Auth 用户 × Cookie/Bearer × 业务 GET/POST，共 8 组正常读取；同 sourceRevision 仍隔离账户。
+- query 指定另一用户 owner、POST body 指定另一 owner/reset 操作均不能切换身份或写入。所有读前后 DB payload/revision/timestamp 完全一致。
+- 无效显式 Bearer + 有效 Cookie 失败；有效 B Bearer + A Cookie 读取 B。
+- 两账户 × Cookie/Bearer × 两类非法 query，共 8 组原直接 HTTP 拒绝。
+- 原 URL/query/headers/Cookie/body 不变；body 未消费、未锁定；真实 Auth refresh 场景也检查原请求不变。
+- 已取消业务请求保持 REQUEST_CANCELLED。finish 保留消费者 Cookie/Vary、private/no-store，真实刷新 Cookie 可用于下一请求；已有 deterministic 刷新/删除 Cookie 测试亦重跑通过。
+- 原真实 browser 读取、取消/网络失败、Auth cascade/fixture cleanup 保留；所有临时用户与数据清理。
+
+证据：`.artifacts/task046-r1/green-local.log`、`local-evidence.json`（12 completedScenarios、complete=true），另有原 API/UI 本轮 `api-local.log`。没有提交凭据或真实用户数据。
+
+### 本轮实际测试与门禁
+
+| 检查                                                     | R1 本轮结果                                                 |
+| -------------------------------------------------------- | ----------------------------------------------------------- |
+| preference-contract                                      | 540/540 PASS                                                |
+| preference-contract:local                                | 13/13 PASS，0 skipped                                       |
+| preference-api                                           | 37/37 PASS                                                  |
+| preference-api:local                                     | 17/17 PASS，真实 Save/reload/409/Cancel/Reset/UI            |
+| 全仓 CI loader tests/*.test.mjs                          | 2072/2072 PASS                                              |
+| 5.11 pure / real DB                                      | 503/503、505/505 PASS                                       |
+| Profile / Companion real DB                              | 25/25、147/147 PASS                                         |
+| lint / typecheck / build                                 | PASS；最终扩展 runtime 矩阵另经 ESLint                      |
+| deploy:validate:local / build:local / verify-artifact    | PASS，产物对应修复 commit，1746 files，failures=[]          |
+| format:check:deploy / changed-file Prettier / diff check | PASS                                                        |
+| db:start / status / types / stop                         | PASS；Local 专用空数据预检通过，DB 套件顺序执行，最终已停止 |
+
+本轮复用已安装锁定依赖与经验证的专用 Local 实例，没有 npm/package/lockfile 变化；预检确认 Auth/Preference/Companion 表为空后运行套件，无需再次 destructive reset。真实 db:types 再生成无 diff。全仓 format:check 本轮实际为 **65 个失败文件**，均已存在于 R1 起始 head c60041f，逐文件内容及 Prettier 结果复核证明新增 R1 失败文件为 0。更正前文首次交付的 64 计数：当时全仓格式日志产生于 Preference inventory 行更新之前，该更新使 cross-module-contract-handoff.md 也成为失败文件；前文审计遗漏了这第 65 项。本轮如实记录此既有 Task-046 文档格式债务，未因 R1 重排无关库存表格，也不声称全仓格式通过。日志位于 `.artifacts/task046-r1/`。
+
+本轮执行范围到 R1 修复、Result/PR/Issue 同步为止；不修改 #221/#207，不启动下游 Task。A/指定集成审查人的接受继续 Pending。
