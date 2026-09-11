@@ -5,7 +5,7 @@ on:
     branches:
       - poi-source-enrichment-v3-8
     paths:
-      - '.tmp/poi_source_enrich_v38.py'
+      - '.tmp/poi_source_enrich_v381.py'
       - '.github/workflows/poi-source-enrichment-v3.8.yml'
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ permissions:
 jobs:
   enrich:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -35,7 +35,7 @@ jobs:
       - name: Fetch Japanese administrative boundary dataset
         run: git clone --depth 1 https://github.com/geolonia/japanese-admins.git /tmp/japanese-admins
       - name: Run deterministic source and modern-presence enrichment
-        run: python .tmp/poi_source_enrich_v38.py input/remaining5021-real-identity-v3.7.jsonl /tmp/japanese-admins/docs build/poi-source-enrichment-v3.8
+        run: python .tmp/poi_source_enrich_v381.py input/remaining5021-real-identity-v3.7.jsonl /tmp/japanese-admins/docs build/poi-source-enrichment-v3.8
       - name: Validate output row counts
         run: |
           test "$(wc -l < build/poi-source-enrichment-v3.8/remaining5021-source-enriched-v3.8.jsonl)" -eq 5021
@@ -45,7 +45,7 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v4
         with:
-          name: travelassist-poi-source-enrichment-v3.8
+          name: travelassist-poi-source-enrichment-v3.8-batched
           path: build/poi-source-enrichment-v3.8/
           if-no-files-found: error
           retention-days: 7
