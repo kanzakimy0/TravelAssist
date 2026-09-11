@@ -1,0 +1,51 @@
+name: poi-source-enrichment-v3.8
+
+on:
+  push:
+    branches:
+      - poi-source-enrichment-v3-8
+    paths:
+      - '.tmp/poi_source_enrich_v38.py'
+      - '.github/workflows/poi-source-enrichment-v3.8.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: pip install --disable-pip-version-check requests rapidfuzz shapely
+      - name: Download exact v3.7.1 identity artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p input
+          gh run download 34542822317 --repo kanzakimy0/TravelAssist --name travelassist-poi-identity-v3.7-deduped --dir input
+          test -f input/remaining5021-real-identity-v3.7.jsonl
+          test "$(wc -l < input/remaining5021-real-identity-v3.7.jsonl)" -eq 5021
+      - name: Fetch Japanese administrative boundary dataset
+        run: git clone --depth 1 https://github.com/geolonia/japanese-admins.git /tmp/japanese-admins
+      - name: Run deterministic source and modern-presence enrichment
+        run: python .tmp/poi_source_enrich_v38.py input/remaining5021-real-identity-v3.7.jsonl /tmp/japanese-admins/docs build/poi-source-enrichment-v3.8
+      - name: Validate output row counts
+        run: |
+          test "$(wc -l < build/poi-source-enrichment-v3.8/remaining5021-source-enriched-v3.8.jsonl)" -eq 5021
+          python -m json.tool build/poi-source-enrichment-v3.8/coverage-report-v3.8.json >/dev/null
+      - name: Show coverage
+        run: cat build/poi-source-enrichment-v3.8/coverage-report-v3.8.json
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: travelassist-poi-source-enrichment-v3.8
+          path: build/poi-source-enrichment-v3.8/
+          if-no-files-found: error
+          retention-days: 7
