@@ -234,9 +234,12 @@ test("attractions route is split while mobility and generic shells remain", () =
 });
 
 test("page uses guarded navigation and the shared dirty-state provider", () => {
-  const page = read(
-    "src/features/preferences/attraction-activity-preference-page.tsx",
-  );
+  const page =
+    read("src/features/preferences/attraction-activity-preference-page.tsx") +
+    read(
+      "src/features/preferences/persistence/canonical-preference-editor.tsx",
+    ) +
+    read("src/features/preferences/persistence/preference-adapter.ts");
   assert.match(page, /GuardedLink/);
   assert.match(page, /setIsDirty\(isDirty\)/);
   const guard = read(
@@ -245,60 +248,52 @@ test("page uses guarded navigation and the shared dirty-state provider", () => {
   assert.match(guard, /beforeunload/);
 });
 
-test("page renders the frozen photo preference and explicit boundaries", () => {
+test("photography uses canonical interest/details instead of the retired photo boolean", () => {
   const page = read(
-    "src/features/preferences/attraction-activity-preference-page.tsx",
+    "src/features/preferences/persistence/canonical-preference-editor.tsx",
   );
-  assert.match(page, /旅行中希望主动安排拍照体验/);
-  assert.match(page, /更重视取景价值、光线条件和拍照停留体验。/);
-  assert.match(page, /<dt>Persistence<\/dt>[\s\S]*Mock \/ in-memory only/);
-  assert.match(
+  const adapter = read(
+    "src/features/preferences/persistence/preference-adapter.ts",
+  );
+  assert.match(page, /interestDetails\[interest\]/);
+  assert.match(page, /landscape: "风景摄影"/);
+  assert.match(adapter, /photography: "摄影"/);
+  assert.doesNotMatch(
     page,
-    /<dt>Formal Preference Schema<\/dt>[\s\S]*Not implemented/,
+    /photoExperience|createDefault|Mock \/ in-memory only/,
   );
-  assert.match(page, /<dt>Planner Contract<\/dt>[\s\S]*Not implemented/);
 });
 
-test("page maps the A and B three-level preference hierarchy", () => {
+test("canonical editor keeps summary, field and interest-detail hierarchy", () => {
   const page = read(
-    "src/features/preferences/attraction-activity-preference-page.tsx",
+    "src/features/preferences/persistence/canonical-preference-editor.tsx",
   );
-  assert.match(page, /aria-label="景点偏好三级菜单"/);
-  assert.match(page, /Level 1 · 大项目[\s\S]*景点与活动/);
-  assert.match(page, /Level 2 · 中项目[\s\S]*六维快速设置/);
-  assert.match(page, /Level 3 · 小项目[\s\S]*体验详细设置/);
-  assert.match(page, /data-preference-level="large"/);
-  assert.match(page, /data-preference-level="middle"/);
-  assert.match(page, /data-preference-level="small"/);
+  for (const level of ["large", "middle", "small"])
+    assert.ok(page.includes('data-preference-level="' + level + '"'));
+  assert.match(page, /景点兴趣与细分/);
+  assert.match(page, /兴趣偏好与详细设置/);
 });
 
-test("detail scope separates long-term trip companion and future concepts", () => {
+test("canonical editor preserves long-term scope without Trip or Companion writes", () => {
   const page = read(
-    "src/features/preferences/attraction-activity-preference-page.tsx",
+    "src/features/preferences/persistence/canonical-preference-editor.tsx",
   );
-  assert.match(page, /“我通常喜欢怎样的景点与活动”/);
-  assert.match(page, /data-scope="available"/);
-  assert.match(page, /大项目：当前景点与活动摘要/);
-  assert.match(page, /中项目：六维喜好快速设置/);
-  assert.match(page, /小项目：拍照体验详细设置/);
-  assert.match(page, /data-scope="trip"/);
-  assert.match(page, /必去 \/ 希望去 \/ 可去 \/ 不去与具体地点锁定/);
-  assert.match(page, /日出、日落、夜景、黄金时段与拍照停留/);
-  assert.match(page, /不会从本页写入或反向覆盖长期偏好/);
-  assert.match(page, /data-scope="companion"/);
-  assert.match(page, /与当前用户的长期偏好分开/);
-  assert.match(page, /data-scope="future"/);
-  assert.match(page, /候选范围，不是当前已保存字段/);
+  assert.match(page, /本次旅行或同行人的临时选择不会覆盖这里/);
+  assert.match(page, /usePreferenceResource/);
+  assert.doesNotMatch(
+    page,
+    /tripTemporary|start-flow|shared\/contracts\/trips|server\/companions/,
+  );
 });
 
 test("implementation reuses the repository attraction image", () => {
-  const page = read(
-    "src/features/preferences/attraction-activity-preference-page.tsx",
-  );
-  assert.match(
-    page,
-    /\/media\/personal-center\/preferences\/category-attractions\.webp/,
-  );
+  const page =
+    read("src/features/preferences/attraction-activity-preference-page.tsx") +
+    read(
+      "src/features/preferences/persistence/canonical-preference-editor.tsx",
+    ) +
+    read("src/features/preferences/persistence/preference-adapter.ts");
+  assert.match(page, /category-attractions\.webp/);
 });
 
 test("no score weight percentage or durable storage contract is introduced", () => {
