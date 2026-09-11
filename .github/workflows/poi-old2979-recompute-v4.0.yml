@@ -1,0 +1,81 @@
+name: poi-old2979-recompute-v4.0
+
+on:
+  push:
+    branches:
+      - poi-source-enrichment-v3-8
+    paths:
+      - '.tmp/poi_old2979_recompute_v40.py'
+      - '.github/workflows/poi-old2979-recompute-v4.0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  recompute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install --disable-pip-version-check requests rapidfuzz shapely geopandas pyogrio
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq osmium-tool
+      - name: Recover preserved old 2,979 source IDs
+        run: |
+          mkdir -p input osm/raw osm/filtered
+          git fetch origin poi-identity-v3-7-completion:refs/remotes/origin/poi-identity-v3-7-completion
+          git show origin/poi-identity-v3-7-completion:.tmp/poi_identity_used_v36.txt > input/old2979-source-ids.txt
+          test "$(wc -l < input/old2979-source-ids.txt)" -eq 2979
+          test "$(sort -u input/old2979-source-ids.txt | wc -l)" -eq 2979
+      - name: Download official Geoshape NRCT POI 2025-05-15
+        run: |
+          wget -q 'https://geoshape.ex.nii.ac.jp/nrct-poi/dataset/nrct-poi-20250515.csv' -O input/nrct-poi-20250515.csv
+          test -s input/nrct-poi-20250515.csv
+      - name: Download current OSM regions for old 2,979
+        run: |
+          for r in hokkaido tohoku kanto chubu; do
+            wget -q --show-progress "https://download.geofabrik.de/asia/japan/${r}-latest.osm.pbf" -O "osm/raw/${r}.osm.pbf"
+            test -s "osm/raw/${r}.osm.pbf"
+          done
+      - name: Filter current OSM heritage candidates
+        run: |
+          for f in osm/raw/*.osm.pbf; do
+            b=$(basename "$f" .osm.pbf)
+            osmium tags-filter "$f" \
+              nwr/historic \
+              nwr/heritage \
+              nwr/amenity=place_of_worship \
+              nwr/tourism=attraction \
+              nwr/tourism=museum \
+              nwr/ruins=yes \
+              nwr/man_made=works \
+              nwr/man_made=kiln \
+              -o "osm/filtered/${b}.osm.pbf" --overwrite
+          done
+          osmium merge osm/filtered/*.osm.pbf -o osm/relevant-old.osm.pbf --overwrite
+          osmium export osm/relevant-old.osm.pbf -f geojsonseq -o osm/relevant-old.geojsonseq --overwrite
+          test -s osm/relevant-old.geojsonseq
+      - name: Recompute old 2,979 with 2026 evidence
+        run: python .tmp/poi_old2979_recompute_v40.py input/old2979-source-ids.txt input/nrct-poi-20250515.csv osm/relevant-old.geojsonseq build/poi-old2979-v4.0
+      - name: Validate outputs
+        run: |
+          test "$(wc -l < build/poi-old2979-v4.0/old2979-source-enriched-v4.0.jsonl)" -eq 2979
+          test "$(wc -l < build/poi-old2979-v4.0/feature43-old2979-source-keyed-v4.0.jsonl)" -eq 2979
+          python -m json.tool build/poi-old2979-v4.0/old2979-recompute-report-v4.0.json >/dev/null
+          cat build/poi-old2979-v4.0/old2979-recompute-report-v4.0.json
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: travelassist-poi-old2979-recomputed-v4.0
+          path: build/poi-old2979-v4.0/
+          if-no-files-found: error
+          retention-days: 7
