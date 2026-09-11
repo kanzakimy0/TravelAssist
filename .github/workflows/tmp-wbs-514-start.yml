@@ -1,0 +1,45 @@
+name: Temporary WBS 5.14 start sync
+
+on:
+  push:
+    branches:
+      - docs/wbs-5-14-start
+    paths:
+      - .github/workflows/tmp-wbs-514-start.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update only the authorized status cell
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p = Path('docs/project/WBS-TravelAssist.md')
+          before = p.read_bytes()
+          old = '| 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 未开始 |'.encode('utf-8')
+          new = old.replace('未开始'.encode('utf-8'), '进行中'.encode('utf-8'))
+          if before.count(old) != 1:
+              raise SystemExit('Expected exactly one unchanged WBS 5.14 row')
+          for key in ('5.11', '5.16'):
+              rows = [line for line in before.decode('utf-8').splitlines() if re.match(r'^\|\s*' + re.escape(key) + r'\s*\|', line)]
+              if len(rows) != 1 or rows[0].split('|')[-2].strip() != '已完成':
+                  raise SystemExit('Dependency state changed; stop')
+          after = before.replace(old, new)
+          assert after.replace(new, old) == before
+          p.write_bytes(after)
+      - name: Verify and commit the single-cell patch
+        run: |
+          test "$(git diff --name-only)" = "docs/project/WBS-TravelAssist.md"
+          git diff --check
+          git diff -- docs/project/WBS-TravelAssist.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/project/WBS-TravelAssist.md
+          git commit -m "docs(wbs): start 5.14 contract task (refs #321)"
+          git push origin HEAD:docs/wbs-5-14-start
