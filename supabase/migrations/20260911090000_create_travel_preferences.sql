@@ -310,4 +310,3 @@ comment on table public.travel_preferences is
 comment on column public.travel_preferences.revision is
   'Starts at 1; each update must advance exactly one. HTTP compare-and-swap belongs to WBS 5.16.';
 commit;
-

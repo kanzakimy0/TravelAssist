@@ -1,11 +1,11 @@
 # TravelAssist — WBS 5.11 Preference Schema 设计书
 
-> 文档版本：v0.2 / Field & UI Freeze Candidate  
-> 日期：2026-09-11  
-> WBS：5.11 — Preference Schema  
-> Owner：B / Personal Center  
-> 依赖：1.25 已完成；8.1 已完成  
-> 当前状态：**设计候选；5.11 实装 Task 尚未启动，Master WBS 暂不标记完成**  
+> 文档版本：v0.2 / Field & UI Freeze Candidate\
+> 日期：2026-09-11\
+> WBS：5.11 — Preference Schema\
+> Owner：B / Personal Center\
+> 依赖：1.25 已完成；8.1 已完成\
+> 当前状态：**设计候选；5.11 实装 Task 尚未启动，Master WBS 暂不标记完成**\
 > 后续：5.13 Preference Preset / Default、5.16 Preference Persistence API、5.14 Planner-readable Preference Contract
 
 ---
@@ -214,9 +214,9 @@ Total          23
 
 ## 8. 23 字段逐项冻结矩阵
 
-> UI 层级：  
-> **一级** = Preference Center 主界面，只做摘要 / Radar / 入口，不直接编辑字段。  
-> **二级** = 高频快速设置。  
+> UI 层级：\
+> **一级** = Preference Center 主界面，只做摘要 / Radar / 入口，不直接编辑字段。\
+> **二级** = 高频快速设置。\
 > **三级** = 低频详细设置、硬限制、完整 5 档或兴趣细化。
 
 |   # | Canonical Key                        | Type / Value                                          | 强度                  | 一级如何体现            | 二级           | 三级              | 说明                                                                              |
