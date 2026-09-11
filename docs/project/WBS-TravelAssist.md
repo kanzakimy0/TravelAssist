@@ -1272,5 +1272,5 @@ B Auth/User Session → A Header/Avatar Entry
 - 23-key sparse Preference、stable Interest/Detail codes、Hard/Soft metadata、五档 walkingTolerance、style.planning、strict set/unset、SQL validation/RLS/revision、Drizzle 与真实 generated types 已实现。
 - 纯测试 503/503；真实 Preference DB/Auth/RLS 505/505；Profile DB 回归 25/25；全仓 1332/1332；lint/typecheck/build/deploy gates/修改文件格式通过。全仓格式 63 项失败全部与基线 Git blob 相同。
 - PR #221 仍 Draft/Partial，head `929529be302b60c84ace3a580461de95e04de461`；逐项 REUSE/REWORK/DEFER/SUPERSEDED 审计，未 merge/cherry-pick/关闭。
-- Task：`docs/tasks/TASK-042-b-preference-schema-v1.md`；Result：`docs/tasks/RESULT-TASK-042-b-preference-schema-v1.md`。Draft PR 创建后补实际链接；Issue #307 保持 Open。
+- Task：`docs/tasks/TASK-042-b-preference-schema-v1.md`；Result：`docs/tasks/RESULT-TASK-042-b-preference-schema-v1.md`。[Draft PR #309](https://github.com/kanzakimy0/TravelAssist/pull/309) → develop；Issue #307 保持 Open。
 - 5.13/5.14/5.16/5.18/8.6 及其他 WBS 状态保持原样；没有 Planner/AI/Engine/POI 43 字段改动。验收后停止，不自动合并或启动下一 Task。

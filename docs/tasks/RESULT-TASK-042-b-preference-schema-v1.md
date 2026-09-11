@@ -160,7 +160,7 @@ DB 专项使用两名临时真实 Auth 用户，覆盖 owner CRUD 边界、anon�
 
 - Issue：[#307](https://github.com/kanzakimy0/TravelAssist/issues/307)，保持 OPEN。
 - WBS 5.11：实际开发时记录为“进行中”；真实验收通过后更新为“待审查”。
-- Draft PR：待创建后补入实际 URL；base develop，必须保持 Draft。
+- Draft PR：[#309](https://github.com/kanzakimy0/TravelAssist/pull/309)，base develop，保持 Draft。
 - 实现提交：`d9090599378ba1512d0f2085af71f024ef9dca5d`。
 - 交付追踪提交见 PR commit list；不会在本文件中伪造自身 commit SHA。
 
