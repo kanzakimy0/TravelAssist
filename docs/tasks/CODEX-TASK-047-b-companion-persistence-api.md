@@ -9,8 +9,8 @@ Repository:
 https://github.com/kanzakimy0/TravelAssist
 
 Issue:
-#325
-https://github.com/kanzakimy0/TravelAssist/issues/325
+#324
+https://github.com/kanzakimy0/TravelAssist/issues/324
 
 Authoritative specification branch:
 task/b-wbs-5-17-companion-persistence-api
@@ -55,7 +55,7 @@ git show origin/task/b-wbs-5-17-companion-persistence-api:docs/project/WBS-5.17-
 
 - WBS 5.12 = 已完成
 - WBS 8.1 = 已完成
-- Issue #325 = Open
+- Issue #324 = Open
 - 当前 origin/develop 不存在另一份正在实施或已完成的 5.17；如发现冲突，停止并报告，不要重复实现
 
 实现必须基于执行时最新 origin/develop，而不是 2026-09-12 的发布基线直接开发。
@@ -118,12 +118,12 @@ docs/qa/TASK-047/...
 
 不要覆盖其他人的 WBS 状态。
 
-更新 Issue #325，关联 Result 和 Draft PR，但保持 Open。
+更新 Issue #324，关联 Result 和 Draft PR，但保持 Open。
 
-Push implementation branch，并创建 Draft PR -> develop；PR 使用 Relates to #325。
+Push implementation branch，并创建 Draft PR -> develop；PR 使用 Relates to #324。
 
 不要自动 merge。
-不要关闭 Issue #325。
+不要关闭 Issue #324。
 不要把 WBS 5.17 写成已完成。
 不要启动后续 Task。
 
