@@ -1,0 +1,48 @@
+name: poi-mlit-admin-v3.8.2
+
+on:
+  push:
+    branches:
+      - poi-source-enrichment-v3-8
+    paths:
+      - '.tmp/poi_mlit_admin_verify_v382.py'
+      - '.github/workflows/poi-mlit-admin-v3.8.2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check requests geopandas pyogrio shapely
+      - name: Download v3.8.1 enriched artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p input
+          gh run download 34553987217 --repo kanzakimy0/TravelAssist --name travelassist-poi-source-enrichment-v3.8-batched --dir input
+          test -f input/remaining5021-source-enriched-v3.8.jsonl
+          test "$(wc -l < input/remaining5021-source-enriched-v3.8.jsonl)" -eq 5021
+      - name: Verify against official MLIT N03 2026
+        run: python .tmp/poi_mlit_admin_verify_v382.py input/remaining5021-source-enriched-v3.8.jsonl build/poi-source-enrichment-v3.8.2
+      - name: Validate outputs
+        run: |
+          test "$(wc -l < build/poi-source-enrichment-v3.8.2/remaining5021-source-enriched-v3.8.2.jsonl)" -eq 5021
+          python -m json.tool build/poi-source-enrichment-v3.8.2/mlit-admin-validation-v3.8.2.json >/dev/null
+          cat build/poi-source-enrichment-v3.8.2/mlit-admin-validation-v3.8.2.json
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: travelassist-poi-source-enrichment-v3.8.2-mlit2026
+          path: build/poi-source-enrichment-v3.8.2/
+          if-no-files-found: error
+          retention-days: 7
