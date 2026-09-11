@@ -2,9 +2,9 @@
 
 ## Status
 
-Completed / Draft PR preparation. The implementation and deterministic local
-validation are complete; WBS 4.48 remains `待审查` until review, merge and user
-acceptance.
+Completed / Region Graph pilot ready for review. The implementation and
+deterministic local validation are complete; WBS 4.48 remains `待审查` until
+review, merge and user acceptance.
 
 ## Base SHA
 
@@ -20,11 +20,14 @@ acceptance.
 
 ## Commits
 
-To be synchronized after the implementation commit.
+- `01132c98e30c4a9d86965bb269f9db370cc9efd4` — pilot dataset,
+  deterministic generator, validation, tests, Result and initial WBS update.
+- Final tracking commit is recorded in Draft PR #306 history.
 
 ## Draft PR
 
-To be created: `codex/a-region-graph-pilot` → `develop`.
+[#306](https://github.com/kanzakimy0/TravelAssist/pull/306), Open / Draft,
+`codex/a-region-graph-pilot` → `develop`.
 
 ## Files changed
 
