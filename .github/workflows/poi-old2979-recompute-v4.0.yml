@@ -34,8 +34,12 @@ jobs:
           mkdir -p input osm/raw osm/filtered
           git fetch origin poi-identity-v3-7-completion:refs/remotes/origin/poi-identity-v3-7-completion
           git show origin/poi-identity-v3-7-completion:.tmp/poi_identity_used_v36.txt > input/old2979-source-ids.txt
-          test "$(wc -l < input/old2979-source-ids.txt)" -eq 2979
-          test "$(sort -u input/old2979-source-ids.txt | wc -l)" -eq 2979
+          python - <<'PY'
+          ids=[x.strip() for x in open('input/old2979-source-ids.txt',encoding='utf-8') if x.strip()]
+          assert len(ids)==2979, len(ids)
+          assert len(set(ids))==2979, len(set(ids))
+          print('OLD_SOURCE_IDS',len(ids),'UNIQUE',len(set(ids)))
+          PY
       - name: Download official Geoshape NRCT POI 2025-05-15
         run: |
           wget -q 'https://geoshape.ex.nii.ac.jp/nrct-poi/dataset/nrct-poi-20250515.csv' -O input/nrct-poi-20250515.csv
@@ -68,8 +72,11 @@ jobs:
         run: python .tmp/poi_old2979_recompute_v40.py input/old2979-source-ids.txt input/nrct-poi-20250515.csv osm/relevant-old.geojsonseq build/poi-old2979-v4.0
       - name: Validate outputs
         run: |
-          test "$(wc -l < build/poi-old2979-v4.0/old2979-source-enriched-v4.0.jsonl)" -eq 2979
-          test "$(wc -l < build/poi-old2979-v4.0/feature43-old2979-source-keyed-v4.0.jsonl)" -eq 2979
+          python - <<'PY'
+          for p,n in [('build/poi-old2979-v4.0/old2979-source-enriched-v4.0.jsonl',2979),('build/poi-old2979-v4.0/feature43-old2979-source-keyed-v4.0.jsonl',2979)]:
+              rows=[x for x in open(p,encoding='utf-8') if x.strip()]
+              assert len(rows)==n,(p,len(rows))
+          PY
           python -m json.tool build/poi-old2979-v4.0/old2979-recompute-report-v4.0.json >/dev/null
           cat build/poi-old2979-v4.0/old2979-recompute-report-v4.0.json
       - name: Upload result
