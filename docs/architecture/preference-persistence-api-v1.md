@@ -7,7 +7,7 @@
 > 依赖：5.11 已完成；8.1 已完成
 > 基线：`origin/develop@6a8996330edebf5b0df8ea5fec28a41e11b27f6b`
 > 下游：5.14 Planner-readable Preference Contract
-> 状态：开始 / 进行中
+> 状态：TASK-045-B 实现与真实 Local Supabase / UI 验收完成；WBS 5.16 = 待审查；等待用户验收与 Draft PR 合并
 
 ---
 
