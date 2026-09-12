@@ -63,7 +63,9 @@
     "test:trip-library-api": "node --import ./tests/register-route-ts.mjs --test tests/task-049-trip-library-api.test.mjs",
     "test:trip-library-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-049-trip-library-api.runtime.mjs",
     "test:profile-api": "node --import ./tests/register-route-ts.mjs --test tests/task-050-profile-api.test.mjs",
-    "test:profile-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-050-profile-api.runtime.mjs"
+    "test:profile-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-050-profile-api.runtime.mjs",
+    "test:preference-contract": "node --import ./tests/register-route-ts.mjs --test tests/task-046-preference-contract.test.mjs",
+    "test:preference-contract:local": "node --import ./tests/register-route-ts.mjs --test tests/task-046-preference-contract.runtime.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
