@@ -3,15 +3,16 @@
 ## 状态
 
 实现、真实 Local Supabase/Auth/RLS 与全部回归验收已完成，GitHub Quality Gate 通过。
-**WBS 5.18 = 待审查；[PR #331](https://github.com/kanzakimy0/TravelAssist/pull/331) = Open / Draft；Issue #329 = Open。**
+**2026-09-12 用户验收通过：WBS 5.18 = 已完成；[PR #331](https://github.com/kanzakimy0/TravelAssist/pull/331) = Merged；Issue #329 = Closed / Completed。**
 
 - Repository: https://github.com/kanzakimy0/TravelAssist
 - Branch: `codex/b-account-wbs-5-18-trip-data-model`
 - 执行基线与最终整合 develop：`b7eb931698da69cec73f7a0399897dbb5caab8c2`
 - Spec：`task/b-wbs-5-18-trip-data-model`，`50dafd9b4f5aeb5fa8e46575fc620f9833e6d841`
 - 实现 commit：`6d4d2d8188cef9d5f7d2a13b4f0d94cc3ed41d0c`。
-- Draft PR：[#331](https://github.com/kanzakimy0/TravelAssist/pull/331)，base `develop`。
-- 最后收尾提交仅同步本 Result、QA、设计顶部状态和 WBS；最终 head 以 PR 分支为准。
+- PR：[#331](https://github.com/kanzakimy0/TravelAssist/pull/331)，已合入 `develop`。
+- 用户验收 head：`e43afe6bfcccd17455166960ff4080c32e317f05`；合并 commit：`44998173cfd1feba8111940ae076cb0a5804867d`。
+- [验收 head 的完整 Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34672075565) 已通过。执行基线和下文测试计数保留为原阶段证据。
 
 已先执行工作树、分支、fetch、最新 develop SHA 与最近 15 个提交检查，完整读取远端
 Launcher、Task、设计书、启动记录及指定源文件。4.17、8.1、5.11/5.16、5.12/5.17
@@ -189,5 +190,7 @@ Spec 文档带入实现分支；技术内容保持冻结，仅排版及当前交
 
 没有 Reservation/Booking/Payment/Favorites 数据模型，历史外部预约信息仍是后续扩展；
 canonical plan 内原有 booking 字段原样保留。不表示云保存、自动保存或跨设备 UI 已上线。
-未启动 5.19、8.5、Planner/Engine 持久化或其他后续 Task；不自动合并，不关闭 #329，
-不把 WBS 5.18 标记为已完成。
+提交验收时的停止点为：不自动合并、不关闭 #329、不把 WBS 5.18 标记为已完成。
+2026-09-12 用户明确“5.18验收通过，合并”后，已按授权合并 PR #331 并关闭 #329。
+本次收尾仅更新 Master WBS 的 5.18 状态、设计顶部状态、Result 和 QA 状态；runtime、
+migration、API 和已有验收证据未修改。5.19、8.5 及其他后续 Task 未启动。
