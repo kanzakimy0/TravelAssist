@@ -11,7 +11,7 @@
 > Tracking：Issue #324\
 > 规格发布分支：`task/b-wbs-5-17-companion-persistence-api`\
 > 计划实现分支：`codex/b-account-wbs-5-17-companion-persistence-api`\
-> 状态：**可开始；规格冻结，等待 Codex 实施**
+> 状态：**TASK-047-B 实现及真实验收已完成；WBS 5.17 = 待审查；Draft PR #325 等待用户验收**
 
 ---
 

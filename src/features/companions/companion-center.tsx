@@ -462,7 +462,7 @@ export function CompanionCenter() {
           <div>
             <p id="summary-title">同行人总数</p>
             <strong>{counts.total}</strong>
-            <small>含当前用户本人</small>
+            <small>总数含本人；年龄分组不含本人</small>
           </div>
         </div>
         <dl className={styles.countGrid}>
