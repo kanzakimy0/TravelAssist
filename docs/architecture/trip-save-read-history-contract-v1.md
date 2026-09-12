@@ -5,7 +5,7 @@
 > Issue: **#333**\
 > Owner: **B — Personal Center / Saved Trip Data API**\
 > Publication baseline: `develop@5ceffd8349ead5b5280029d2b344c23e9346e317`\
-> Status: **Frozen implementation specification / ready for Codex**
+> Status: **Frozen design; TASK-049-B implemented and real acceptance passed; WBS 5.19 待审查; Draft PR #334 awaiting user acceptance**
 
 ---
 

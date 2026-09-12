@@ -3,7 +3,8 @@
 ## 当前状态
 
 WBS 5.19 Trip Save / Read / History Contract v1 的实现、真实 Local Supabase/Auth/HTTP/
-CAS/浏览器验收及本地 Quality Gates 已完成。GitHub 最终 head 门禁与 Draft PR 追踪待写入。
+CAS/浏览器验收及 Quality Gates 已完成，GitHub 实现 head 门禁 PASS。
+**WBS 5.19 = 待审查；[Draft PR #334](https://github.com/kanzakimy0/TravelAssist/pull/334) = Open / Draft；Issue #333 = Open。**
 Issue #333 保持 Open；不合并，不标记 5.19 已完成，不启动后续 Task。
 
 - Repository: https://github.com/kanzakimy0/TravelAssist
@@ -11,7 +12,9 @@ Issue #333 保持 Open；不合并，不标记 5.19 已完成，不启动后续 
 - 实现分支：codex/b-account-wbs-5-19-trip-save-read-history-contract
 - 执行时最新 origin/develop：5ceffd8349ead5b5280029d2b344c23e9346e317
 - Spec head：330bf2e331a0f778e1df31bf3c1e8cd3fd49a58d
-- PR / 实现 commit / GitHub Gate：首次提交后补充，交付前必须复核最终 head。
+- 实现 commit：`0d749904d7d475b445d2049cc6a390179c413158`。
+- PR：[#334 → develop](https://github.com/kanzakimy0/TravelAssist/pull/334)，Draft / Open，autoMergeRequest=null。
+- GitHub：[实现提交全部门禁 PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/34676228049)。文档状态提交后继续复核最终 PR head；交付回复和 Issue 记录最终 SHA/运行链接。
 
 已执行规定的 status/branch/fetch/develop SHA/log 检查，完整读取远端 Launcher、Task、
 设计、启动记录及指定边界源文件。从最新 develop 创建指定分支，没有从 Spec 或 PR #221
@@ -87,25 +90,25 @@ Deferred。后续需先确定真实 Trip-only 展示及缺失数据语义，再�
 
 ## 实际验收
 
-| Gate                                         | 实际结果                                                           |
-| -------------------------------------------- | ------------------------------------------------------------------ |
-| npm ci                                       | PASS；395 packages，0 vulnerabilities                              |
-| 基线全仓                                     | 1667/1667 PASS                                                     |
-| 候选全仓                                     | 1743/1743 PASS，0 fail / 0 skip                                    |
-| TASK-049 pure / contract                     | 76/76 PASS                                                         |
-| TASK-049 real Local Auth/DB/HTTP/CAS/browser | 35/35 PASS                                                         |
-| TASK-048 pure / real DB                      | 77/77、29/29 PASS                                                  |
-| Profile DB                                   | 25/25 PASS                                                         |
-| Preference DB / API+browser                  | 505/505、17/17 PASS                                                |
-| Companion DB / API+browser                   | 147/147、22/22 PASS，原有五尺寸回归                                |
-| db:reset / db:types ×2                       | PASS；生成类型完全一致                                             |
-| typecheck / build                            | PASS，基线也 PASS                                                  |
-| npm run lint                                 | 基线与候选相同7个历史缓存错误；日志 SHA 一致；本次改动 ESLint PASS |
-| format:check:deploy                          | PASS；修正新 runtime 测试格式后复核                                |
-| deploy local validate/build/verify           | PASS；1831文件验证                                                 |
-| client bundle audit                          | PASS；34 browser chunks                                            |
-| diff whitespace / scope                      | PASS；Master 仅5.19；无 Planner/Start/UI/CSS/canonical/现有域变动  |
-| GitHub Quality Gate                          | Draft PR 提交后复核，不以本机例外替代远端完整门禁                  |
+| Gate                                         | 实际结果                                                                                                                                          |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| npm ci                                       | PASS；395 packages，0 vulnerabilities                                                                                                             |
+| 基线全仓                                     | 1667/1667 PASS                                                                                                                                    |
+| 候选全仓                                     | 1743/1743 PASS，0 fail / 0 skip                                                                                                                   |
+| TASK-049 pure / contract                     | 76/76 PASS                                                                                                                                        |
+| TASK-049 real Local Auth/DB/HTTP/CAS/browser | 35/35 PASS                                                                                                                                        |
+| TASK-048 pure / real DB                      | 77/77、29/29 PASS                                                                                                                                 |
+| Profile DB                                   | 25/25 PASS                                                                                                                                        |
+| Preference DB / API+browser                  | 505/505、17/17 PASS                                                                                                                               |
+| Companion DB / API+browser                   | 147/147、22/22 PASS，原有五尺寸回归                                                                                                               |
+| db:reset / db:types ×2                       | PASS；生成类型完全一致                                                                                                                            |
+| typecheck / build                            | PASS，基线也 PASS                                                                                                                                 |
+| npm run lint                                 | 基线与候选相同7个历史缓存错误；日志 SHA 一致；本次改动 ESLint PASS                                                                                |
+| format:check:deploy                          | PASS；修正新 runtime 测试格式后复核                                                                                                               |
+| deploy local validate/build/verify           | PASS；1831文件验证                                                                                                                                |
+| client bundle audit                          | PASS；34 browser chunks                                                                                                                           |
+| diff whitespace / scope                      | PASS；Master 仅5.19；无 Planner/Start/UI/CSS/canonical/现有域变动                                                                                 |
+| GitHub Quality Gate                          | [实现 head 全部门禁 PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/34676228049)，包括干净 checkout lint；交付前另复核最终文档 head |
 
 真实验收覆盖 User A/B/Anon、Cookie/Bearer、无效 Bearer 不回退、Origin、防 owner 注入、
 跨用户所有操作404、快照/隐私、creation/copy并发与重试、全部 CAS/状态转换、ETag、
@@ -143,4 +146,4 @@ checkout 基线 SHA；GitHub 对提交 head 独立构建。原始日志保存在
   排除于严格5.18内容 parser 输入。全部旧语义断言及真实 mirror/RLS检查保留。
 - 本任务 Launcher/Task/设计/启动记录、handoff、Result、QA；Master WBS仅5.19。
 
-最终应保持 WBS5.19待审查、Issue#333Open、PRDraft/Open。未合并，未启动4.19/5.21/8.5/9.8。
+最终保持 WBS 5.19 待审查、Issue #333 Open、PR #334 Draft / Open。未合并，未启动 4.19/5.21/8.5/9.8。
