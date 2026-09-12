@@ -274,7 +274,7 @@ test("browser import graph cannot bring in Account Admin or DB/private Auth", as
   const result = await build({
     entryPoints: [
       "src/features/account-deletion/client.ts",
-      "src/features/account-deletion/finish.ts",
+      "src/lib/account-deletion/finish.ts",
     ],
     bundle: true,
     platform: "browser",

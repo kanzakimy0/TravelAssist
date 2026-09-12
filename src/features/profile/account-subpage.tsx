@@ -12,7 +12,7 @@ import {
   deleteCurrentAccount,
   accountDeletionMessages,
 } from "../account-deletion/client";
-import { leaveDeletedAccount } from "../account-deletion/finish";
+import { leaveDeletedAccount } from "../../lib/account-deletion/finish";
 
 import styles from "./profile-account.module.css";
 

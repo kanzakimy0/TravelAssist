@@ -31,7 +31,7 @@
 - `src/app/api/account/route.ts`
 - `src/features/account-deletion/client.ts`
 - `src/features/account-deletion/contract.ts`
-- `src/features/account-deletion/finish.ts`
+- `src/lib/account-deletion/finish.ts`
 - `src/features/profile/account-subpage.tsx`
 - `src/server/account-deletion/admin.ts`
 - `src/server/account-deletion/http.ts`
@@ -88,7 +88,7 @@ B 的完整 Auth 与业务行在内存中逐字段比较一致，证据只保存
 
 真实 A-owned object 阻止删除并保留账户/对象；清理这个明确的测试对象后，A 成功删除，B-owned object 完整保留。仅测试工具清理自己的已知对象与空 fixture bucket，产品没有对象删除逻辑。
 
-服务器 fetch 审计 3 个配置阶段共 170 个本地请求、0 个外部请求；浏览器外部请求为 0。Booking/Agoda/Klook/航空/铁路/酒店/支付调用均为 0。
+服务器 fetch 审计 3 个配置阶段共 171 个本地请求、0 个外部请求；浏览器外部请求为 0。Booking/Agoda/Klook/航空/铁路/酒店/支付调用均为 0。
 
 ## 删除后的 Session 验收
 
@@ -125,13 +125,13 @@ B 的完整 Auth 与业务行在内存中逐字段比较一致，证据只保存
 | Trip persistence DB         | 29/29     |
 | TASK-016 Schema/RLS/FK      | 25/25     |
 
-全部测试 fail/skip/cancel 均为 0。全仓 baseline 2387/2387，candidate 2439/2439。
+最终验收全部测试 fail/skip/cancel 均为 0。首次 CI 发现 features 直接引用 Supabase browser SDK 的目录边界问题；已将原样 session cleanup adapter 归入 lib/account-deletion。旧本地边界测试仅枚举 git ls-files，首次未覆盖未跟踪文件；修正后在文件已跟踪状态重新运行全仓及真实 Local/browser 验收，且最终 head 必须重新获得 CI PASS。全仓 baseline 2387/2387，candidate 2439/2439。
 
 - npm ci、typecheck、build、format:check:deploy、deploy:validate:local、deploy:build:local、deploy:verify-artifact、git diff --check：PASS。
 - Local db:start、db:status、db:reset：真实 PASS。
 - lint：本地原有 cache 目录 7 项错误，baseline/candidate 输出逐字节一致；所有本次变更代码单独 ESLint 为 0 error。GitHub 干净 checkout 的 lint 由最终 exact-head Quality Gate 另行确认。
 - migration/generated types 无变化，因此按 Task 不运行 db:types；没有手改类型。
-- 生产输出与 standalone 扫描 4635 个文件（其中 70 个 client JS/map/HTML），实际 Secret 命中 0、Account Admin client implementation 命中 0；发布 artifact verifier 为 1871 个文件，failures = []。
+- 生产输出与 standalone 扫描 4648 个文件（其中 70 个 client JS/map/HTML），实际 Secret 命中 0、Account Admin client implementation 命中 0；发布 artifact verifier 为 1871 个文件，failures = []。
 - esbuild browser import graph 无本 Task server-only / DB / private Auth 实现；最终 GitHub run 必须对应最终 PR head，不能复用 earlier head。
 
 ## WBS 与范围

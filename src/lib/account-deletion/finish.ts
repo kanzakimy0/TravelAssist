@@ -1,5 +1,5 @@
 "use client";
-import { createBrowserSupabaseClient } from "../../lib/supabase/browser";
+import { createBrowserSupabaseClient } from "../supabase/browser";
 /** Cleanup is best effort; a failed/slow SDK must not strand a deleted user on a private page. */
 export async function leaveDeletedAccount() {
   let timer: ReturnType<typeof setTimeout> | undefined;
