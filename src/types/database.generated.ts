@@ -281,6 +281,26 @@ export type Database = {
         Returns: boolean;
       };
       is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
+      mutate_companion_group_v1: {
+        Args: {
+          p_action: string;
+          p_expected_revision?: number;
+          p_id?: string;
+          p_includes_owner?: boolean;
+          p_member_ids?: string[];
+          p_name?: string;
+        };
+        Returns: Json;
+      };
+      mutate_companion_v1: {
+        Args: {
+          p_action: string;
+          p_expected_revision?: number;
+          p_id?: string;
+          p_input?: Json;
+        };
+        Returns: Json;
+      };
     };
     Enums: {
       [_ in never]: never;
