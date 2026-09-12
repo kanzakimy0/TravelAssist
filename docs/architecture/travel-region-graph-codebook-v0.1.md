@@ -64,6 +64,11 @@ master_code
 - Region 合并 / 拆分必须有显式 lifecycle / migration 记录；
 - 行政代码（都道府县、市町村 code）属于外部事实，不等于 Region Internal ID。
 
+当 canonical Master Code registry 尚未为某个 Region 分配编号时，
+`master_code` 必须为 `null` 并将数据集标记为 Partial / unresolved。不得用
+`region_id`、`destination_id`、行政代码或 Pilot 临时编号填充。`null` 只表示
+“尚未由正式 registry 分配”，不属于 Master Code，也不满足生产完成门槛。
+
 必须区分：
 
 ```text
@@ -229,41 +234,42 @@ transport_node_refs[]
 
 ```ts
 type TravelRegionNodeV1 = {
-  schemaVersion: "1.0"
+  schemaVersion: "1.0";
 
-  regionId: string
-  masterCode: string
-  regionType: RegionTypeV1
+  regionId: string;
+  masterCode: string | null;
+  regionType: RegionTypeV1;
 
   names: {
-    nameJa: string | null
-    nameZhCn: string | null
-    nameEn: string | null
-    aliases: string[]
-  }
+    nameJa: string | null;
+    nameZhCn: string | null;
+    nameEn: string | null;
+    aliases: string[];
+  };
 
   administrativeRefs: {
-    prefectureRefs: string[]
-    municipalityRefs: string[]
-    externalAdminCodes: string[]
-  }
+    prefectureRefs: string[];
+    municipalityRefs: string[];
+    externalAdminCodes: string[];
+  };
 
   geometry: {
-    center: GeoPoint | null
-    geometryRef: string | null
-    geometryKind: "administrative" | "tourism" | "cluster" | "point" | "unknown"
-  }
+    center: GeoPoint | null;
+    geometryRef: string | null;
+    geometryKind:
+      "administrative" | "tourism" | "cluster" | "point" | "unknown";
+  };
 
-  planningProfileRef: string | null
-  stayProfile: RegionStayProfileV1 | null
-  gatewayProfile: GatewayProfileV1 | null
+  planningProfileRef: string | null;
+  stayProfile: RegionStayProfileV1 | null;
+  gatewayProfile: GatewayProfileV1 | null;
 
-  lifecycle: RegionLifecycleV1
-  sourceRefs: string[]
-  revision: number
-  createdAt: Instant
-  updatedAt: Instant
-}
+  lifecycle: RegionLifecycleV1;
+  sourceRefs: string[];
+  revision: number;
+  createdAt: Instant;
+  updatedAt: Instant;
+};
 ```
 
 这是领域逻辑结构，不要求数据库存成一个 JSONB。
@@ -391,18 +397,18 @@ Kyoto Rail Gateway → Kyoto Travel Region
 
 ```ts
 type RegionRelationV1 = {
-  relationId: string
-  relationType: "contains" | "adjacent" | "overlaps" | "gateway_of"
-  fromRegionRef: string
-  toRegionRef: string
+  relationId: string;
+  relationType: "contains" | "adjacent" | "overlaps" | "gateway_of";
+  fromRegionRef: string;
+  toRegionRef: string;
 
-  confidence: number | null
-  sourceRefs: string[]
-  validFrom: Instant | null
-  validUntil: Instant | null
-  lifecycleStatus: "active" | "deprecated"
-  revision: number
-}
+  confidence: number | null;
+  sourceRefs: string[];
+  validFrom: Instant | null;
+  validUntil: Instant | null;
+  lifecycleStatus: "active" | "deprecated";
+  revision: number;
+};
 ```
 
 规则：
@@ -475,14 +481,14 @@ Macro Planning 需要知道“值得停多久”，但不要求像 POI 一样精
 
 ```ts
 type RegionStayProfileV1 = {
-  dayTripCapable: boolean | null
-  minVisitDays: number | null
-  recommendedVisitDays: number | null
-  maxUsefulVisitDays: number | null
-  recommendedNights: number | null
-  confidence: number | null
-  sourceRefs: string[]
-}
+  dayTripCapable: boolean | null;
+  minVisitDays: number | null;
+  recommendedVisitDays: number | null;
+  maxUsefulVisitDays: number | null;
+  recommendedNights: number | null;
+  confidence: number | null;
+  sourceRefs: string[];
+};
 ```
 
 示例概念：
@@ -589,33 +595,33 @@ Travel Region 与 Gateway 的入口 / 出口规划关系。
 
 ```ts
 type TravelEdgeV1 = {
-  edgeId: string
-  fromRegionRef: string
-  toRegionRef: string
-  scope: "macro" | "local" | "gateway"
+  edgeId: string;
+  fromRegionRef: string;
+  toRegionRef: string;
+  scope: "macro" | "local" | "gateway";
 
   planningPrior: {
-    tripCompatibility: number | null       // 0..9
-    dayTripFit: number | null              // 0..9
-    sameDayTransitionFit: number | null    // 0..9
-    overnightTransitionFit: number | null  // 0..9
-    scenicTransition: number | null        // 0..9
-    slowTravelFit: number | null           // 0..9
-    luggageEase: number | null             // 0..9, 高=容易
-    reliabilityPrior: number | null        // 0..9
-    detourPenaltyPrior: number | null      // 0..9, 高=绕路代价高
-  }
+    tripCompatibility: number | null; // 0..9
+    dayTripFit: number | null; // 0..9
+    sameDayTransitionFit: number | null; // 0..9
+    overnightTransitionFit: number | null; // 0..9
+    scenicTransition: number | null; // 0..9
+    slowTravelFit: number | null; // 0..9
+    luggageEase: number | null; // 0..9, 高=容易
+    reliabilityPrior: number | null; // 0..9
+    detourPenaltyPrior: number | null; // 0..9, 高=绕路代价高
+  };
 
-  recommendedStayAfterArrivalDays: number | null
-  variants: TravelEdgeVariantV1[]
+  recommendedStayAfterArrivalDays: number | null;
+  variants: TravelEdgeVariantV1[];
 
-  sourceRefs: string[]
-  confidence: number | null
-  validFrom: Instant | null
-  validUntil: Instant | null
-  revision: number
-  lifecycleStatus: "active" | "deprecated" | "seasonal"
-}
+  sourceRefs: string[];
+  confidence: number | null;
+  validFrom: Instant | null;
+  validUntil: Instant | null;
+  revision: number;
+  lifecycleStatus: "active" | "deprecated" | "seasonal";
+};
 ```
 
 规则：
@@ -647,45 +653,52 @@ mixed
 
 ```ts
 type TravelEdgeVariantV1 = {
-  variantId: string
-  mode: "rail" | "bus" | "car" | "flight" | "ferry" | "walk" | "mixed" | "other"
+  variantId: string;
+  mode:
+    "rail" | "bus" | "car" | "flight" | "ferry" | "walk" | "mixed" | "other";
 
-  gatewayFromRef: string | null
-  gatewayToRef: string | null
+  gatewayFromRef: string | null;
+  gatewayToRef: string | null;
 
   typicalDuration: {
-    lowMin: number | null
-    typicalMin: number | null
-    highMin: number | null
-  }
+    lowMin: number | null;
+    typicalMin: number | null;
+    highMin: number | null;
+  };
 
   typicalCostJpy: {
-    low: number | null
-    typical: number | null
-    high: number | null
-  }
+    low: number | null;
+    typical: number | null;
+    high: number | null;
+  };
 
   typicalTransfers: {
-    low: number | null
-    typical: number | null
-    high: number | null
-  }
+    low: number | null;
+    typical: number | null;
+    high: number | null;
+  };
 
   typicalWalkMinutes: {
-    low: number | null
-    typical: number | null
-    high: number | null
-  }
+    low: number | null;
+    typical: number | null;
+    high: number | null;
+  };
 
-  frequencyBand: "very_high" | "high" | "medium" | "low" | "very_low" | "unknown"
-  reservationPrior: "usually_not_needed" | "optional" | "often_recommended" | "usually_required" | "unknown"
+  frequencyBand:
+    "very_high" | "high" | "medium" | "low" | "very_low" | "unknown";
+  reservationPrior:
+    | "usually_not_needed"
+    | "optional"
+    | "often_recommended"
+    | "usually_required"
+    | "unknown";
 
-  seasonalAvailabilityRef: string | null
-  sourceRefs: string[]
-  observedAt: Instant | null
-  validUntil: Instant | null
-  confidence: number | null
-}
+  seasonalAvailabilityRef: string | null;
+  sourceRefs: string[];
+  observedAt: Instant | null;
+  validUntil: Instant | null;
+  confidence: number | null;
+};
 ```
 
 ---
@@ -766,17 +779,17 @@ uses Canonical Route Fact
 
 ```ts
 type GatewayProfileV1 = {
-  gatewayKind: "rail" | "airport" | "bus" | "port" | "road" | "mixed"
-  transportNodeRefs: string[]
-  servedRegionRefs: string[]
+  gatewayKind: "rail" | "airport" | "bus" | "port" | "road" | "mixed";
+  transportNodeRefs: string[];
+  servedRegionRefs: string[];
 
-  luggageEasePrior: number | null
-  transferEasePrior: number | null
-  centralityPrior: number | null
+  luggageEasePrior: number | null;
+  transferEasePrior: number | null;
+  centralityPrior: number | null;
 
-  sourceRefs: string[]
-  confidence: number | null
-}
+  sourceRefs: string[];
+  confidence: number | null;
+};
 ```
 
 Gateway 可以服务多个 Region；Region 也可以有多个 Gateway。

@@ -438,7 +438,7 @@ export const parseTravelRegionGraphV1 = (
       if (nodeIds.has(item.regionId as string))
         fail(`${path}.nodes`, "DUPLICATE_ID");
       nodeIds.add(item.regionId as string);
-      text(item.masterCode, `${p}.masterCode`, 160);
+      text(item.masterCode, `${p}.masterCode`, 160, true);
       enumValue(item.regionType, `${p}.regionType`, REGION_TYPES);
       const names = exact(item.names, `${p}.names`, [
         "nameJa",

@@ -1,0 +1,179 @@
+{
+  "task": "TASK-048-B",
+  "issue": 329,
+  "branch": "codex/b-account-wbs-5-18-trip-data-model",
+  "executionDevelop": "b7eb931698da69cec73f7a0399897dbb5caab8c2",
+  "integratedDevelop": "b7eb931698da69cec73f7a0399897dbb5caab8c2",
+  "legacyPrHead": "929529be302b60c84ace3a580461de95e04de461",
+  "tests": {
+    "baselineRepository": {
+      "tests": 1590,
+      "passed": 1590,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "184000f97d082a4ca8bd66e76bdd5b818e7dfb42b6ccaa1ccd13c3e4af32f527"
+    },
+    "repository": {
+      "tests": 1667,
+      "passed": 1667,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "5e39beef0736b716fb302ed7e75632b0169449aa6c5a6b406545c0296d4bb9a5"
+    },
+    "tripModel": {
+      "tests": 77,
+      "passed": 77,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "0ddd5d33023c43539e86dc5726bf10bfb1b24c9215b102799d53d703af97da66"
+    },
+    "tripLocal": {
+      "tests": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "edae8822e6319152ee0a3f875b3254ef858e9fcddff0581ac20afad426f59f8c"
+    },
+    "profileDb": {
+      "tests": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "2ffc7c58b8c88c576aed9c7867062fb8f6f98138fd17cba7539fd7b8b0c8f9cd"
+    },
+    "preferenceDb": {
+      "tests": 505,
+      "passed": 505,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "a42d04f23de3106940c1e94c6f3ae8f2fe06d46c6e1e3f4e6a5960a6ea5c675b"
+    },
+    "companionDb": {
+      "tests": 147,
+      "passed": 147,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "f084146d3424a3a1c135ac75e2b6adb5d68dcfc29221103ea2441b8cf09fb06b"
+    },
+    "preferenceApi": {
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "fd0aeea583601a85c24728b3914f3bd416f80df0313f031c1854e37746420328"
+    },
+    "companionApiBrowser": {
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "8f0d5893d9e6d3db56d0dbac7beb9c9b3d000c787b5b814151b6fb36251a1c74"
+    }
+  },
+  "localDatabase": {
+    "candidateResetsPassed": 3,
+    "generatedTypeRuns": 3,
+    "generatedTypeSha256": "cabcbe30e9764280125546276522842572516bcbee1e0ed4073bc4a3cd486c5f",
+    "repeatedGenerationByteIdentical": true,
+    "authFixtureCleanup": "PASS",
+    "authenticatedPrivileges": ["owner SELECT"],
+    "anonymousPrivileges": [],
+    "userWriteGateway": false
+  },
+  "quality": {
+    "npmCi": "PASS; 395 packages added, 0 vulnerabilities",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "formatDeploy": "PASS",
+    "deployValidation": "PASS",
+    "deployBuild": "PASS",
+    "deployArtifactVerification": "PASS; 1783 files",
+    "clientBundle": "PASS; 34 JS chunks",
+    "lint": {
+      "baselineErrors": 7,
+      "candidateErrors": 7,
+      "warnings": 0,
+      "byteIdenticalLog": true,
+      "newChangedFiles": "PASS",
+      "pathsPrefix": ".cache/qa/task024-worktree/.cache/qa/",
+      "rule": "@typescript-eslint/no-require-imports"
+    }
+  },
+  "metrics": {
+    "byteMetric": "UTF-8 PostgreSQL jsonb::text including separator spaces",
+    "caps": {
+      "draftFacts": 262144,
+      "wizardProgress": 4096,
+      "planSnapshot": 4194304,
+      "preferenceSnapshot": 65536,
+      "preferenceOverridePatch": 65536,
+      "partySnapshot": 131072
+    },
+    "fixtures": {
+      "minimalDraft": 432,
+      "fullDraft": 1597,
+      "wizardProgress": 133,
+      "minimalPlan": 247,
+      "fullPlan": 1616,
+      "emptyParty": 96,
+      "maximalNamedParty": 76094
+    },
+    "protectedFiles": [
+      {
+        "path": "src/shared/contracts/trips/index.ts",
+        "sha256": "86f84694b33bb721ed661d482a1fa241096e3ec2eca7828254491386dcf0a70f",
+        "equalsDevelop": true
+      },
+      {
+        "path": "src/shared/contracts/trips/validation.ts",
+        "sha256": "2cd604aea093b5413373462ba39af23b534bd196434f68b4a6365376363740df",
+        "equalsDevelop": true
+      },
+      {
+        "path": "src/shared/contracts/trips/fixtures.ts",
+        "sha256": "c2200bf16001330c3f8d04eb2ab4054ba49266e8bcd22fc0c961afe258f0094a",
+        "equalsDevelop": true
+      },
+      {
+        "path": "src/features/preferences/domain/preference-v1.ts",
+        "sha256": "538c85f886472dcbd50b94c8f01d90ca9666e9f78d781c90c21310547f5f85cc",
+        "equalsDevelop": true
+      },
+      {
+        "path": "src/features/companions/domain/companion-v1.ts",
+        "sha256": "c9794e9a0279eac4cb57a32c9fabb83da31f51f571604b662aa6a23ec4d81ebb",
+        "equalsDevelop": true
+      }
+    ]
+  },
+  "boundaries": {
+    "canonicalTripContractUnchanged": true,
+    "existingPreferenceCompanionDomainsUnchanged": true,
+    "runtimeUiDiff": 0,
+    "newBusinessTables": ["trip_library_records"],
+    "newHttpRoutes": 0,
+    "newWriteRpcs": 0,
+    "wbs519": "not started",
+    "legacyIssue207AndPr221": "untouched"
+  },
+  "github": {
+    "status": "implementation Quality gate PASS",
+    "implementationCommit": "6d4d2d8188cef9d5f7d2a13b4f0d94cc3ed41d0c",
+    "implementationQualityRun": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34671931806",
+    "pr": 331,
+    "prState": "MERGED",
+    "isDraft": false,
+    "issueState": "CLOSED",
+    "wbs518": "已完成",
+    "finalDocumentationCommitGate": "PASS: https://github.com/kanzakimy0/TravelAssist/actions/runs/34672075565",
+    "issueStateReason": "COMPLETED",
+    "userAcceptance": {
+      "date": "2026-09-12",
+      "instruction": "5.18验收通过，合并",
+      "acceptedHead": "e43afe6bfcccd17455166960ff4080c32e317f05",
+      "qualityRun": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34672075565",
+      "mergeCommit": "44998173cfd1feba8111940ae076cb0a5804867d",
+      "mergedAt": "2026-09-12T04:29:04Z"
+    }
+  }
+}

@@ -13,20 +13,13 @@ import {
 
 import { usePersonalNavigationGuard } from "@/features/personal-center/components/navigation-guard-context";
 
-import {
-  createEmptyCompanionDraft,
-  initialCompanionGroups,
-  initialCompanions,
-} from "./companion-data";
+import { createEmptyCompanionDraft } from "./companion-data";
 import {
   activityPreferenceOptions,
   ageGroupOptions,
   countCompanions,
-  deleteCompanion,
   diningNeedOptions,
   mobilityNeedOptions,
-  saveCompanion,
-  saveCompanionGroup,
   summarizeSpecialNeeds,
   validateCompanionDraft,
   validateGroupDraft,
@@ -39,10 +32,22 @@ import { CompanionCard } from "./components/companion-card";
 import { CompanionGroupCard } from "./components/companion-group-card";
 import styles from "./companion-center.module.css";
 import {
-  COMPANION_LIBRARY_KEY,
-  parseCompanionLibrary,
-  writeCompanionLibrary,
-} from "./companion-library";
+  companionClient,
+  companionErrorMessage,
+} from "./persistence/companion-client";
+import {
+  CompanionApiError,
+  type CompanionResource,
+  type CompanionGroupResource,
+} from "./persistence/companion-resource";
+import {
+  companionDraftInput,
+  groupDraftInput,
+  toCompanionView,
+  toGroupView,
+  virtualOwner,
+  OWNER_MEMBER_ID,
+} from "./persistence/companion-adapter";
 
 type EditorState =
   | { kind: "companion"; draft: CompanionDraft; initial: string }
@@ -71,17 +76,22 @@ function cloneGroup(group: CompanionGroupViewModel): CompanionGroupDraft {
 }
 
 export function CompanionCenter() {
-  const [companions, setCompanions] = useState(() =>
-    initialCompanions.map(
-      (companion) => cloneCompanion(companion) as CompanionViewModel,
-    ),
+  const [resources, setResources] = useState<CompanionResource[]>([]);
+  const [groupResources, setGroupResources] = useState<
+    CompanionGroupResource[]
+  >([]);
+  const companions = useMemo(
+    () => [virtualOwner, ...resources.map(toCompanionView)],
+    [resources],
   );
-  const [groups, setGroups] = useState(() =>
-    initialCompanionGroups.map((group) => ({
-      ...group,
-      companionIds: [...group.companionIds],
-    })),
+  const groups = useMemo(
+    () => groupResources.map(toGroupView),
+    [groupResources],
   );
+  const [libraryReady, setLibraryReady] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [conflicted, setConflicted] = useState(false);
+  const mutationLock = useRef(false);
   const [editor, setEditor] = useState<EditorState | null>(null);
   const [companionErrors, setCompanionErrors] = useState<CompanionErrors>({});
   const [groupErrors, setGroupErrors] = useState<GroupErrors>({});
@@ -92,47 +102,49 @@ export function CompanionCenter() {
   const [selectedNeed, setSelectedNeed] = useState<string | null>(null);
   const [notice, setNotice] = useState("");
   const [libraryError, setLibraryError] = useState("");
-  const libraryRaw = useRef<string | null>(null);
-  const libraryReady = useRef(false);
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      try {
-        const raw = localStorage.getItem(COMPANION_LIBRARY_KEY);
-        const stored = parseCompanionLibrary(raw);
-        if (raw && !stored)
-          throw Error("本地同行人资料损坏，未覆盖。请保留原数据后处理。");
-        libraryRaw.current = raw;
-        if (stored) {
-          setCompanions(stored.companions);
-          setGroups(stored.groups);
-        }
-        libraryReady.current = true;
-      } catch {
-        setLibraryError("无法读取本地同行人资料，暂不能保存；原数据未改动。");
-      }
-    }, 0);
-    return () => clearTimeout(timer);
+  const loadLibrary = useCallback(async () => {
+    const stored = await companionClient.load();
+    setResources(stored.companions);
+    setGroupResources(stored.groups);
+    setLibraryReady(true);
+    setLibraryError("");
   }, []);
-  function persistLibrary(
-    nextCompanions: CompanionViewModel[],
-    nextGroups: CompanionGroupViewModel[],
-  ) {
+  useEffect(() => {
+    let active = true;
+    companionClient
+      .load()
+      .then((stored) => {
+        if (!active) return;
+        setResources(stored.companions);
+        setGroupResources(stored.groups);
+        setLibraryReady(true);
+      })
+      .catch((error) => {
+        if (active) setLibraryError(companionErrorMessage(error));
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+  async function mutate(action: () => Promise<void>) {
+    if (!libraryReady || mutationLock.current || conflicted) return;
+    mutationLock.current = true;
+    setPending(true);
+    setLibraryError("");
     try {
-      if (!libraryReady.current) throw Error("本地同行人资料尚未就绪。");
-      libraryRaw.current = writeCompanionLibrary(
-        localStorage,
-        { version: 1, companions: nextCompanions, groups: nextGroups },
-        libraryRaw.current,
-      );
-      setCompanions(nextCompanions);
-      setGroups(nextGroups);
-      setLibraryError("");
-      return true;
-    } catch (cause) {
-      setLibraryError(
-        cause instanceof Error ? cause.message : "本地保存失败，编辑仍保留。",
-      );
-      return false;
+      await action();
+    } catch (error) {
+      setLibraryError(companionErrorMessage(error));
+      if (
+        error instanceof CompanionApiError &&
+        (error.code.startsWith("STALE_") ||
+          error.code.includes("NOT_FOUND") ||
+          error.code === "COMPANION_GROUP_MEMBER_INVALID")
+      )
+        setConflicted(true);
+    } finally {
+      mutationLock.current = false;
+      setPending(false);
     }
   }
   const drawerRef = useRef<HTMLElement>(null);
@@ -145,7 +157,13 @@ export function CompanionCenter() {
   const confirmReturnFocusRef = useRef<HTMLElement | null>(null);
   const { setIsDirty } = usePersonalNavigationGuard();
 
-  const counts = useMemo(() => countCompanions(companions), [companions]);
+  const counts = useMemo(
+    () => ({
+      ...countCompanions(companions.filter((c) => !c.isSelf)),
+      total: companions.length,
+    }),
+    [companions],
+  );
   const specialNeeds = useMemo(
     () => summarizeSpecialNeeds(companions),
     [companions],
@@ -200,6 +218,7 @@ export function CompanionCenter() {
   }, []);
 
   const requestEditorClose = useCallback(() => {
+    if (mutationLock.current) return;
     if (editorDirty) {
       confirmReturnFocusRef.current = document.activeElement as HTMLElement;
       setDiscardOpen(true);
@@ -262,6 +281,13 @@ export function CompanionCenter() {
   }, [discardOpen]);
 
   const openCompanionEditor = (draft: CompanionDraft, trigger: HTMLElement) => {
+    if (!libraryReady || pending) return;
+    if (draft.isSelf) {
+      setNotice("本人资料请在个人资料页管理，这里仅用于组合选择。");
+      return;
+    }
+    setConflicted(false);
+    setLibraryError("");
     returnFocusRef.current = trigger;
     setCompanionErrors({});
     setEditor({ kind: "companion", draft, initial: JSON.stringify(draft) });
@@ -271,12 +297,16 @@ export function CompanionCenter() {
     draft: CompanionGroupDraft,
     trigger: HTMLElement,
   ) => {
+    if (!libraryReady || pending) return;
+    setConflicted(false);
+    setLibraryError("");
     returnFocusRef.current = trigger;
     setGroupErrors({});
     setEditor({ kind: "group", draft, initial: JSON.stringify(draft) });
   };
 
   const updateCompanionDraft = (patch: Partial<CompanionDraft>) => {
+    if (mutationLock.current) return;
     setEditor((current) =>
       current?.kind === "companion"
         ? { ...current, draft: { ...current.draft, ...patch } }
@@ -285,6 +315,7 @@ export function CompanionCenter() {
   };
 
   const updateGroupDraft = (patch: Partial<CompanionGroupDraft>) => {
+    if (mutationLock.current) return;
     setEditor((current) =>
       current?.kind === "group"
         ? { ...current, draft: { ...current.draft, ...patch } }
@@ -311,45 +342,99 @@ export function CompanionCenter() {
     const errors = validateCompanionDraft(editor.draft);
     setCompanionErrors(errors);
     if (Object.keys(errors).length) return;
-    if (!persistLibrary(saveCompanion(companions, editor.draft), groups))
-      return;
-    setNotice("同行人资料已保存");
-    closeEditor();
+    const draft = editor.draft;
+    void mutate(async () => {
+      const current = resources.find((item) => item.id === draft.id);
+      const saved = await companionClient.save<CompanionResource>(
+        false,
+        companionDraftInput(draft, current),
+        current,
+      );
+      setResources((items) =>
+        current
+          ? items.map((item) => (item.id === saved.id ? saved : item))
+          : [...items, saved],
+      );
+      setNotice("同行人资料已保存；本页备注和头像预览不上传。");
+      closeEditor();
+    });
   };
-
   const submitGroup = (event: FormEvent) => {
     event.preventDefault();
     if (editor?.kind !== "group") return;
     const errors = validateGroupDraft(editor.draft);
-    setGroupErrors(errors);
-    if (Object.keys(errors).length) return;
-    if (!persistLibrary(companions, saveCompanionGroup(groups, editor.draft)))
-      return;
-    setNotice("常用组合已保存");
-    closeEditor();
+    setGroupErrors({ name: errors.name });
+    if (errors.name) return; // Canonical v1 permits empty groups.
+    const draft = editor.draft;
+    void mutate(async () => {
+      const current = groupResources.find((item) => item.id === draft.id);
+      const saved = await companionClient.save<CompanionGroupResource>(
+        true,
+        groupDraftInput(draft),
+        current,
+      );
+      setGroupResources((items) =>
+        current
+          ? items.map((item) => (item.id === saved.id ? saved : item))
+          : [...items, saved],
+      );
+      setNotice("常用组合已保存");
+      closeEditor();
+    });
   };
-
   const confirmDelete = () => {
     if (!deleteTarget || deleteTarget.isSelf) return;
+    const current = resources.find((item) => item.id === deleteTarget.id);
+    if (!current) return;
+    void mutate(async () => {
+      await companionClient.remove(false, current);
+      await loadLibrary();
+      setNotice("同行人已删除");
+      setDeleteTarget(null);
+      window.requestAnimationFrame(() => addCompanionRef.current?.focus());
+    });
+  };
+  const deleteGroup = () => {
     if (
-      !persistLibrary(
-        deleteCompanion(companions, deleteTarget.id),
-        groups
-          .map((group) => ({
-            ...group,
-            companionIds: group.companionIds.filter(
-              (id) => id !== deleteTarget.id,
-            ),
-          }))
-          .filter((group) => group.companionIds.length > 0),
-      )
+      editor?.kind !== "group" ||
+      !window.confirm("确认删除这个常用组合？同行人资料会保留。")
     )
       return;
-    setNotice(`${deleteTarget.displayName} 已从同行人中删除`);
-    setDeleteTarget(null);
-    window.requestAnimationFrame(() => addCompanionRef.current?.focus());
+    const current = groupResources.find((item) => item.id === editor.draft.id);
+    if (!current) return;
+    void mutate(async () => {
+      await companionClient.remove(true, current);
+      setGroupResources((items) =>
+        items.filter((item) => item.id !== current.id),
+      );
+      setNotice("常用组合已删除");
+      closeEditor();
+    });
   };
-
+  const recover = async () => {
+    if (mutationLock.current) return;
+    mutationLock.current = true;
+    setPending(true);
+    try {
+      await loadLibrary();
+      setConflicted(false);
+      setDeleteTarget(null);
+      closeEditor();
+    } catch (error) {
+      setLibraryError(companionErrorMessage(error));
+    } finally {
+      mutationLock.current = false;
+      setPending(false);
+    }
+  };
+  const persistenceStatus = libraryError ? (
+    <div role="alert" className={styles.persistenceStatus}>
+      <p>{libraryError}</p>
+      <button type="button" disabled={pending} onClick={() => void recover()}>
+        {editorDirty ? "放弃本地修改并重新读取" : "重新读取服务器资料"}
+      </button>
+    </div>
+  ) : null;
   const selectedNeedSummary = specialNeeds.find(
     (need) => need.label === selectedNeed,
   );
@@ -377,7 +462,7 @@ export function CompanionCenter() {
           <div>
             <p id="summary-title">同行人总数</p>
             <strong>{counts.total}</strong>
-            <small>含当前用户本人</small>
+            <small>总数含本人；年龄分组不含本人</small>
           </div>
         </div>
         <dl className={styles.countGrid}>
@@ -438,6 +523,8 @@ export function CompanionCenter() {
               }
               onDelete={(target, trigger) => {
                 returnFocusRef.current = trigger;
+                setConflicted(false);
+                setLibraryError("");
                 setDeleteTarget(target);
               }}
               onAddToGroup={(target, trigger) => {
@@ -574,7 +661,10 @@ export function CompanionCenter() {
         </section>
       </div>
 
-      {libraryError && <p role="alert">{libraryError}</p>}
+      {!libraryReady && !libraryError && (
+        <p role="status">正在读取同行人资料…</p>
+      )}
+      {!editor && !deleteTarget && persistenceStatus}
       {notice ? (
         <div className={styles.toast} role="status">
           ✓ {notice}
@@ -627,6 +717,7 @@ export function CompanionCenter() {
               </button>
             </div>
 
+            {persistenceStatus}
             {editor.kind === "companion" ? (
               <form
                 className={styles.editorForm}
@@ -666,9 +757,7 @@ export function CompanionCenter() {
                         type="button"
                         onClick={() =>
                           updateCompanionDraft({
-                            avatarUrl: editor.draft.isSelf
-                              ? initialCompanions[0].avatarUrl
-                              : undefined,
+                            avatarUrl: undefined,
                           })
                         }
                       >
@@ -816,7 +905,7 @@ export function CompanionCenter() {
                     ))}
                   </div>
                   <label className={styles.detailField}>
-                    <span>其他饮食说明</span>
+                    <span>其他饮食说明（仅本次草稿，不会保存）</span>
                     <textarea
                       value={editor.draft.diningNote ?? ""}
                       onChange={(event) =>
@@ -858,7 +947,11 @@ export function CompanionCenter() {
                   >
                     取消
                   </button>
-                  <button type="submit" className={styles.primaryButton}>
+                  <button
+                    type="submit"
+                    className={styles.primaryButton}
+                    disabled={pending || conflicted || !libraryReady}
+                  >
                     保存同行人
                   </button>
                 </div>
@@ -890,7 +983,7 @@ export function CompanionCenter() {
                   ) : null}
                 </label>
                 <label className={styles.fullField}>
-                  <span>一句场景</span>
+                  <span>一句场景（仅本次草稿，不会保存）</span>
                   <input
                     value={editor.draft.description}
                     onChange={(event) =>
@@ -904,7 +997,7 @@ export function CompanionCenter() {
                     groupErrors.companionIds ? "group-members-error" : undefined
                   }
                 >
-                  <legend>选择同行人 *</legend>
+                  <legend>选择同行人（可留空）</legend>
                   {companions.map((companion) => (
                     <label key={companion.id}>
                       <input
@@ -939,6 +1032,75 @@ export function CompanionCenter() {
                       </span>
                     </label>
                   ))}
+                  {editor.draft.companionIds
+                    .filter((id) => id !== OWNER_MEMBER_ID)
+                    .map((id, index, array) => (
+                      <div
+                        key={id}
+                        data-member-order={id}
+                        className={styles.memberOrder}
+                      >
+                        <span>
+                          {companions.find((c) => c.id === id)?.displayName}
+                        </span>
+                        <button
+                          type="button"
+                          disabled={index === 0 || pending}
+                          className={styles.secondaryButton}
+                          aria-label={
+                            "上移成员 " +
+                            companions.find((c) => c.id === id)?.displayName
+                          }
+                          onClick={() => {
+                            const next = [...array];
+                            [next[index - 1], next[index]] = [
+                              next[index],
+                              next[index - 1],
+                            ];
+                            updateGroupDraft({
+                              companionIds: [
+                                ...(editor.draft.companionIds.includes(
+                                  OWNER_MEMBER_ID,
+                                )
+                                  ? [OWNER_MEMBER_ID]
+                                  : []),
+                                ...next,
+                              ],
+                            });
+                          }}
+                        >
+                          上移
+                        </button>
+                        <button
+                          type="button"
+                          disabled={index === array.length - 1 || pending}
+                          className={styles.secondaryButton}
+                          aria-label={
+                            "下移成员 " +
+                            companions.find((c) => c.id === id)?.displayName
+                          }
+                          onClick={() => {
+                            const next = [...array];
+                            [next[index], next[index + 1]] = [
+                              next[index + 1],
+                              next[index],
+                            ];
+                            updateGroupDraft({
+                              companionIds: [
+                                ...(editor.draft.companionIds.includes(
+                                  OWNER_MEMBER_ID,
+                                )
+                                  ? [OWNER_MEMBER_ID]
+                                  : []),
+                                ...next,
+                              ],
+                            });
+                          }}
+                        >
+                          下移
+                        </button>
+                      </div>
+                    ))}
                   {groupErrors.companionIds ? (
                     <small id="group-members-error" role="alert">
                       {groupErrors.companionIds}
@@ -953,9 +1115,23 @@ export function CompanionCenter() {
                   >
                     取消
                   </button>
-                  <button type="submit" className={styles.primaryButton}>
+                  <button
+                    type="submit"
+                    className={styles.primaryButton}
+                    disabled={pending || conflicted || !libraryReady}
+                  >
                     保存组合
                   </button>
+                  {editor.draft.id && (
+                    <button
+                      type="button"
+                      disabled={pending || conflicted}
+                      className={styles.dangerButton}
+                      onClick={deleteGroup}
+                    >
+                      删除组合
+                    </button>
+                  )}
                 </div>
               </form>
             )}
@@ -998,6 +1174,7 @@ export function CompanionCenter() {
               !
             </span>
             <h2 id="delete-title">删除 {deleteTarget.displayName}？</h2>
+            {persistenceStatus}
             <p id="delete-description">
               删除后不会影响已经保存的历史旅行，但未来旅行将无法再选择该同行人。
             </p>
@@ -1014,6 +1191,7 @@ export function CompanionCenter() {
                 type="button"
                 className={styles.dangerButton}
                 onClick={confirmDelete}
+                disabled={pending || conflicted}
               >
                 确认删除同行人
               </button>

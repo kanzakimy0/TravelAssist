@@ -194,3 +194,116 @@ export function parseCompanionAgeSource(
   }
   return fail();
 }
+
+export const MAX_COMPANIONS_PER_USER = 100;
+export const MAX_COMPANION_GROUPS = 20;
+export const MAX_COMPANION_GROUP_MEMBERS = 20;
+
+export type CompanionInputV1 = CompanionAgeSource & {
+  displayName: string;
+  relationshipCode: (typeof RELATIONSHIP_CODES)[number] | null;
+  relationshipLabel: string | null;
+  genderCode: (typeof GENDER_CODES)[number] | null;
+  avatarPath: string | null;
+  travelProfile: CompanionTravelProfileV1;
+};
+export type CompanionGroupInputV1 = {
+  name: string;
+  includesOwner: boolean;
+  memberIds: string[];
+};
+export function parseCompanionId(input: unknown): string {
+  if (
+    typeof input !== "string" ||
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      input,
+    )
+  )
+    fail();
+  return input.toLowerCase();
+}
+function boundedText(
+  input: unknown,
+  max: number,
+  required = false,
+): string | null {
+  if (input === null && !required) return null;
+  if (typeof input !== "string" || [...input].length > max) fail();
+  if (required && (!input.length || input !== input.replace(/^ +| +$/g, "")))
+    fail();
+  return input;
+}
+function optionalCode<T extends string>(
+  input: unknown,
+  allowed: readonly T[],
+): T | null {
+  if (input === null) return null;
+  if (typeof input !== "string" || !allowed.includes(input as T)) fail();
+  return input as T;
+}
+// TASK-047 extends the sole parser with the relational writable envelope.
+// The existing travel-profile and age parsers retain their frozen semantics.
+export function parseCompanionInputV1(
+  input: unknown,
+  referenceDate: string,
+): CompanionInputV1 {
+  const value = record(input, [
+    "displayName",
+    "relationshipCode",
+    "relationshipLabel",
+    "birthDate",
+    "ageGroupFallback",
+    "genderCode",
+    "avatarPath",
+    "travelProfile",
+  ]);
+  const avatarPath = boundedText(value.avatarPath, 1024);
+  if (
+    avatarPath !== null &&
+    (!avatarPath ||
+      avatarPath !== avatarPath.replace(/^ +| +$/g, "") ||
+      /(^\/|:|\\|(^|\/)\.\.?($|\/))/.test(avatarPath))
+  )
+    fail();
+  return {
+    displayName: boundedText(value.displayName, 100, true)!,
+    relationshipCode: optionalCode(value.relationshipCode, RELATIONSHIP_CODES),
+    relationshipLabel: boundedText(value.relationshipLabel, 100),
+    ...parseCompanionAgeSource(
+      { birthDate: value.birthDate, ageGroupFallback: value.ageGroupFallback },
+      referenceDate,
+    ),
+    genderCode: optionalCode(value.genderCode, GENDER_CODES),
+    avatarPath,
+    travelProfile: parseCompanionTravelProfileV1(value.travelProfile),
+  };
+}
+export function parseCompanionGroupInputV1(
+  input: unknown,
+): CompanionGroupInputV1 {
+  const value = record(input, ["name", "includesOwner", "memberIds"]);
+  if (
+    typeof value.includesOwner !== "boolean" ||
+    !Array.isArray(value.memberIds) ||
+    Object.getPrototypeOf(value.memberIds) !== Array.prototype ||
+    value.memberIds.length > MAX_COMPANION_GROUP_MEMBERS ||
+    Reflect.ownKeys(value.memberIds).length !== value.memberIds.length + 1
+  )
+    fail();
+  const memberIds: string[] = [];
+  for (let i = 0; i < value.memberIds.length; i++) {
+    const descriptor = Object.getOwnPropertyDescriptor(
+      value.memberIds,
+      String(i),
+    );
+    if (!descriptor?.enumerable || !("value" in descriptor)) fail();
+    const id = parseCompanionId(descriptor.value);
+    if (memberIds.includes(id)) fail();
+    memberIds.push(id);
+  }
+  return {
+    name: boundedText(value.name, 100, true)!,
+    includesOwner: value.includesOwner,
+    memberIds,
+  };
+}

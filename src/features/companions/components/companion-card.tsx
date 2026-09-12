@@ -50,7 +50,7 @@ export function CompanionCard({
           </div>
           <p>
             {companion.relationship || "同行人"} ·{" "}
-            {ageGroupLabel(companion.ageGroup)}
+            {companion.isSelf ? "个人资料" : ageGroupLabel(companion.ageGroup)}
           </p>
         </div>
       </div>
