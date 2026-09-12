@@ -1,4 +1,4 @@
-# Reviewer Guidance — TASK-039
+# Reviewer Guidance — TASK-039 v2
 
 Thank you for independently reviewing these Japan POI comparisons. Your task is to decide which of two places better fits the traveler scenario shown on each row.
 
@@ -16,6 +16,7 @@ Choose exactly one:
 - `A`: POI A is a better fit.
 - `B`: POI B is a better fit.
 - `TIE`: both are similarly suitable for the stated scenario.
+- `NEITHER_SUITABLE`: neither place is a reasonable fit for the stated traveler scenario.
 - `INSUFFICIENT_INFO`: the neutral cards and links do not support a responsible judgment.
 
 Then choose confidence:
@@ -29,6 +30,7 @@ An optional short note may explain ambiguity. Do not add your name or contact de
 ## Important interpretation rules
 
 - Judge fit for the stated traveler, not your personal favorite.
+- Use `NEITHER_SUITABLE` when the available facts show that both options are poor fits. Use `INSUFFICIENT_INFO` only when the evidence is not enough to decide suitability.
 - Treat low walking tolerance and low crowd tolerance as constraints, not as a desire for walking or crowds.
 - Do not infer live opening hours, current queues, weather, route feasibility, booking availability, or price inventory.
 - If those missing facts are essential to your judgment, use `INSUFFICIENT_INFO`.

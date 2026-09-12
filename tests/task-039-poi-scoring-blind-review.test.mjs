@@ -30,6 +30,7 @@ const sourceInputs = async () => ({
   features: await load(TASK038, "poi-feature-annotations.json"),
   benchmark: await load(TASK038, "pairwise-benchmark.json"),
   parameters: await load(TASK038, "parameter-search.json"),
+  taxonomy: await load(TASK039, "poi-review-taxonomy-v2.json"),
 });
 
 const syntheticResponse = (pack, choiceFor = () => "TIE") => ({
@@ -61,6 +62,66 @@ test("primary has exactly eight items for each of all 12 scenarios", async () =>
   assert.ok(
     primary.every(
       (item) => Object.keys(item.hiddenMachineReferences).length === 0,
+    ),
+  );
+});
+
+test("review taxonomy covers all 100 POIs and keeps identity separate from scenario fit", async () => {
+  const taxonomy = await load(TASK039, "poi-review-taxonomy-v2.json");
+  assert.equal(taxonomy.rows.length, 100);
+  assert.equal(new Set(taxonomy.rows.map((row) => row.poiRef)).size, 100);
+  assert.ok(
+    taxonomy.rows.every(
+      (row) =>
+        row.primaryCategory &&
+        row.primaryCategoryLabel &&
+        row.applicableScenarios.length > 0 &&
+        row.sourceRefs.length >= 1,
+    ),
+  );
+  const asahiyama = taxonomy.rows.find(
+    (row) => row.canonicalName === "Asahiyama Zoo",
+  );
+  assert.equal(asahiyama.primaryCategory, "zoo");
+  assert.equal(asahiyama.primaryCategoryLabel, "Zoo");
+  assert.equal(
+    asahiyama.applicableScenarios.includes("nature-traveler"),
+    false,
+  );
+});
+
+test("all primary comparisons contain two scenario-applicable POIs", async () => {
+  const [internal, taxonomy] = await Promise.all([
+    load(TASK039, "internal-review-map.json"),
+    load(TASK039, "poi-review-taxonomy-v2.json"),
+  ]);
+  const byPoi = new Map(taxonomy.rows.map((row) => [row.poiRef, row]));
+  const primary = internal.canonicalItems.filter(
+    (item) => item.group === "primary_validation",
+  );
+  for (const item of primary) {
+    assert.ok(
+      byPoi
+        .get(item.canonicalPoiA)
+        .applicableScenarios.includes(item.scenarioId),
+    );
+    assert.ok(
+      byPoi
+        .get(item.canonicalPoiB)
+        .applicableScenarios.includes(item.scenarioId),
+    );
+  }
+  const food = primary.filter((item) => item.scenarioId === "food-focused");
+  assert.equal(food.length, 8);
+  assert.ok(
+    food.every(
+      (item) =>
+        byPoi
+          .get(item.canonicalPoiA)
+          .applicableScenarios.includes("food-focused") &&
+        byPoi
+          .get(item.canonicalPoiB)
+          .applicableScenarios.includes("food-focused"),
     ),
   );
 });
@@ -233,6 +294,19 @@ test("A/B orientation normalization follows each reviewer mapping", async () => 
   }
 });
 
+test("neither-suitable is a first-class response and is not orientation-flipped", async () => {
+  const [pack, internal] = await Promise.all([
+    load(TASK039, "reviewer-pack-r1.json"),
+    load(TASK039, "internal-review-map.json"),
+  ]);
+  const response = syntheticResponse(pack, () => "NEITHER_SUITABLE");
+  assert.equal(validateReviewerResponse(response, pack).ok, true);
+  const normalized = normalizeReviewerResponse(response, pack, internal);
+  assert.ok(
+    normalized.every((row) => row.canonicalChoice === "NEITHER_SUITABLE"),
+  );
+});
+
 test("agreement and repeat consistency calculations are deterministic", async () => {
   const [r1Pack, r2Pack, internal] = await Promise.all([
     load(TASK039, "reviewer-pack-r1.json"),
@@ -314,7 +388,9 @@ test("no fabricated completed reviewer or human-gold files exist", async () => {
     "reviewer-r1-response.json",
     "reviewer-r2-response.json",
     "human-gold-v1.json",
+    "human-gold-v2.json",
     "candidate-0457-human-evaluation.json",
+    "candidate-0457-human-evaluation-v2.json",
   ]) {
     await assert.rejects(access(path.join(TASK039, name)));
   }

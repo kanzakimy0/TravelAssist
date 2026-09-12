@@ -2,7 +2,7 @@
 
 ## Status
 
-**Prepared / Awaiting Human Review.** Blind-review infrastructure and reviewer packs are complete. No real human responses were supplied, so this Task correctly stops before Human Gold or candidate evaluation.
+**Prepared / Awaiting Human Review v2.** Blind-review infrastructure and corrected reviewer packs are complete. A real v1 R1/R2 run was later supplied, but questionnaire-quality defects make it exploratory evidence only. No v2 human responses exist, so this Task correctly stops before Human Gold or candidate evaluation.
 
 ## Base / TASK-038 dependency
 
@@ -119,3 +119,35 @@ WBS 7.9 is updated to `待人工盲审`. It remains one scoring/calibration work
 5. Freeze Human Gold and its SHA-256 only after quality gates pass; only then authorize the one-time candidate evaluation.
 
 No retuning, larger POI/Region/Candidate/AI Pilot, or production shadow test was started.
+
+## Questionnaire quality correction v2 (2026-09-12)
+
+The first completed R1/R2 workbook run exposed a questionnaire blocker rather than acceptable Human Gold evidence. Its aggregate evidence is retained in `docs/qa/TASK-039/exploratory-v1-quality-result.json`; raw reviewer choices are not committed.
+
+- Correction branch: `codex/a-poi-review-quality-fix`.
+- Draft PR: [#340](https://github.com/kanzakimy0/TravelAssist/pull/340), stacked on `codex/a-blind-review-excel-pack`.
+
+- v1 displayed some categories from secondary-tag priority. Asahiyama Zoo could therefore appear as natural scenery instead of its explicit primary category, zoo.
+- v1 primary selection did not require both POIs to be applicable to the scenario, which could force implausible comparisons.
+- v1 lacked a separate `NEITHER_SUITABLE` response.
+
+The v2 correction adds a complete 100/100 POI identity taxonomy, explicit scenario-applicability gates, `NEITHER_SUITABLE`, and regenerated R1/R2 packs. Primary and near-score items now contain two scenario-applicable POIs. The 144-item composition, blind ordering, A/B randomization, hidden repeats, leakage boundary, and TASK-038 candidate parameters remain unchanged.
+
+Corrected pack SHA-256:
+
+- R1: `8dcdde424a91d9c21e7739dc3f456a0f19bcfa510f73bc9f6807e19f7e229f6d`
+- R2: `1ff3deb87a7cd21481b0119117ab972e96bb7d7fdb3d88a8f2b2a8865e5427a5`
+
+Status remains **Prepared / Awaiting Human Review**. The v1 response run is explicitly ineligible for Human Gold and candidate evaluation; fresh v2 human reviews are required.
+
+Correction validation:
+
+- Explicit taxonomy coverage: **100/100 POIs**, **26 primary categories**.
+- Corrected TASK-039 focused tests: **17/17 passed**.
+- Corrected TASK-040 Excel/import tests: **7/7 passed**.
+- TASK-038 pilot regression: **16/16 passed**.
+- Planning contracts: **21/21 passed**.
+- Planning soak: **6/6 passed**.
+- Routing: **28/28 passed**.
+- Full Node regression: **869/869 passed**, including concurrent generator/read coverage after atomic output replacement.
+- lint, typecheck, and production build: passed.

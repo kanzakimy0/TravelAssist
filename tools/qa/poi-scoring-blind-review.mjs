@@ -1,18 +1,20 @@
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import prettier from "prettier";
 
 import { scorePoi } from "./poi-scoring-pilot.mjs";
+import { generateTaxonomyAudit } from "./poi-review-taxonomy.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
 const SOURCE_DIR = path.join(ROOT, "docs/qa/TASK-038");
 const OUTPUT_DIR = path.join(ROOT, "docs/qa/TASK-039");
+const TAXONOMY_PATH = path.join(OUTPUT_DIR, "poi-review-taxonomy-v2.json");
 
-export const REVIEW_VERSION = "task-039-v1";
+export const REVIEW_VERSION = "task-039-v2";
 export const REVIEW_CODES = ["R1", "R2"];
 export const GROUP_COUNTS = Object.freeze({
   primary_validation: 96,
@@ -20,7 +22,13 @@ export const GROUP_COUNTS = Object.freeze({
   machine_benchmark_audit: 12,
   hidden_repeat: 12,
 });
-export const RESPONSE_CHOICES = ["A", "B", "TIE", "INSUFFICIENT_INFO"];
+export const RESPONSE_CHOICES = [
+  "A",
+  "B",
+  "TIE",
+  "NEITHER_SUITABLE",
+  "INSUFFICIENT_INFO",
+];
 export const CONFIDENCE_CHOICES = ["high", "medium", "low"];
 
 const SCENARIO_INTENTS = Object.freeze({
@@ -48,26 +56,6 @@ const SCENARIO_INTENTS = Object.freeze({
     "A traveler has low tolerance for prolonged walking or physical effort.",
   "low-crowd": "A traveler has low tolerance for crowds and long queues.",
 });
-
-const NEUTRAL_CATEGORY_PRIORITY = [
-  ["temple", "Temple or religious site"],
-  ["shrine", "Shrine or religious site"],
-  ["museum", "Museum"],
-  ["art", "Art or cultural venue"],
-  ["garden", "Garden"],
-  ["park", "Park"],
-  ["mountain", "Mountain or highland place"],
-  ["viewpoint", "Scenic viewpoint"],
-  ["nature", "Natural place"],
-  ["historic", "Historic place"],
-  ["architecture", "Architectural landmark"],
-  ["market", "Market"],
-  ["food", "Food-related place"],
-  ["shopping", "Shopping area"],
-  ["onsen", "Hot-spring place"],
-  ["entertainment", "Entertainment venue"],
-  ["urban", "Urban place"],
-];
 
 const FORBIDDEN_REVIEWER_KEYS = new Set([
   "archetypetags",
@@ -130,18 +118,16 @@ const publicScenario = (scenario) => ({
     SCENARIO_INTENTS[scenario.scenarioId] ?? scenario.intent ?? scenario.name,
 });
 
-const broadCategory = (poi) =>
-  NEUTRAL_CATEGORY_PRIORITY.find(([tag]) =>
-    poi.archetypeTags.includes(tag),
-  )?.[1] ?? "Place of interest";
-
 const identityCard = (poi) => ({
   name: poi.canonicalName,
   prefecture: poi.prefecture,
   region: poi.region,
-  broadCategory: broadCategory(poi),
+  broadCategory: poi.reviewTaxonomy.primaryCategoryLabel,
   evidenceUrls: [...poi.sourceRefs],
 });
+
+const isApplicable = (poi, scenarioId) =>
+  poi.reviewTaxonomy.applicableScenarios.includes(scenarioId);
 
 const toCanonicalItem = (
   index,
@@ -168,17 +154,19 @@ const toCanonicalItem = (
 
 function primaryItems(sample, scenarios) {
   const items = [];
-  const useCount = new Map(sample.map((poi) => [poi.poiRef, 0]));
   const prefectureUse = new Map();
   const used = new Set();
 
   for (const scenario of scenarios) {
+    const scenarioUse = new Map(sample.map((poi) => [poi.poiRef, 0]));
     const candidates = [];
     for (let left = 0; left < sample.length; left += 1) {
       for (let right = left + 1; right < sample.length; right += 1) {
         const poiA = sample[left];
         const poiB = sample[right];
         if (poiA.prefecture === poiB.prefecture) continue;
+        if (!isApplicable(poiA, scenario.scenarioId)) continue;
+        if (!isApplicable(poiB, scenario.scenarioId)) continue;
         candidates.push({ poiA, poiB });
       }
     }
@@ -195,8 +183,8 @@ function primaryItems(sample, scenarios) {
         pair.poiB.poiRef,
       );
       if (used.has(key)) continue;
-      if ((useCount.get(pair.poiA.poiRef) ?? 0) >= 3) continue;
-      if ((useCount.get(pair.poiB.poiRef) ?? 0) >= 3) continue;
+      if ((scenarioUse.get(pair.poiA.poiRef) ?? 0) >= 4) continue;
+      if ((scenarioUse.get(pair.poiB.poiRef) ?? 0) >= 4) continue;
       if ((prefectureUse.get(pair.poiA.prefecture) ?? 0) >= 20) continue;
       if ((prefectureUse.get(pair.poiB.prefecture) ?? 0) >= 20) continue;
       items.push({
@@ -206,8 +194,14 @@ function primaryItems(sample, scenarios) {
         internal: {},
       });
       used.add(key);
-      useCount.set(pair.poiA.poiRef, (useCount.get(pair.poiA.poiRef) ?? 0) + 1);
-      useCount.set(pair.poiB.poiRef, (useCount.get(pair.poiB.poiRef) ?? 0) + 1);
+      scenarioUse.set(
+        pair.poiA.poiRef,
+        (scenarioUse.get(pair.poiA.poiRef) ?? 0) + 1,
+      );
+      scenarioUse.set(
+        pair.poiB.poiRef,
+        (scenarioUse.get(pair.poiB.poiRef) ?? 0) + 1,
+      );
       prefectureUse.set(
         pair.poiA.prefecture,
         (prefectureUse.get(pair.poiA.prefecture) ?? 0) + 1,
@@ -231,10 +225,13 @@ function primaryItems(sample, scenarios) {
 function nearScoreItems(sample, scenarios, featureByPoi, candidate, usedKeys) {
   const items = [];
   for (const scenario of scenarios) {
-    const scored = sample.map((poi) => ({
-      poi,
-      score: scorePoi(featureByPoi.get(poi.poiRef), scenario, candidate).value,
-    }));
+    const scored = sample
+      .filter((poi) => isApplicable(poi, scenario.scenarioId))
+      .map((poi) => ({
+        poi,
+        score: scorePoi(featureByPoi.get(poi.poiRef), scenario, candidate)
+          .value,
+      }));
     const candidates = [];
     for (let left = 0; left < scored.length; left += 1) {
       for (let right = left + 1; right < scored.length; right += 1) {
@@ -301,7 +298,9 @@ function machineAuditItems(sampleByRef, scenarios, benchmark, usedKeys) {
         row.scenarioId === scenario.scenarioId &&
         !usedKeys.has(key) &&
         sampleByRef.has(row.poiA) &&
-        sampleByRef.has(row.poiB)
+        sampleByRef.has(row.poiB) &&
+        (isApplicable(sampleByRef.get(row.poiA), scenario.scenarioId) ||
+          isApplicable(sampleByRef.get(row.poiB), scenario.scenarioId))
       );
     });
     const bandRows = eligible.filter(
@@ -359,7 +358,19 @@ function hiddenRepeatItems(nonRepeatItems, scenarios) {
 }
 
 export function buildCanonicalReviewSet(inputs) {
-  const sample = inputs.sample.rows;
+  const taxonomyByPoi = new Map(
+    inputs.taxonomy.rows.map((row) => [row.poiRef, row]),
+  );
+  if (taxonomyByPoi.size !== inputs.sample.rows.length) {
+    throw new Error("Review taxonomy must cover the complete POI sample");
+  }
+  const sample = inputs.sample.rows.map((poi) => {
+    const reviewTaxonomy = taxonomyByPoi.get(poi.poiRef);
+    if (!reviewTaxonomy) {
+      throw new Error(`Missing review taxonomy: ${poi.poiRef}`);
+    }
+    return { ...poi, reviewTaxonomy };
+  });
   const scenarios = inputs.scenarios.rows;
   const sampleByRef = new Map(sample.map((poi) => [poi.poiRef, poi]));
   const featureByPoi = new Map(
@@ -995,11 +1006,15 @@ async function writeJson(name, value) {
       parser: "json",
     },
   );
-  await writeFile(path.join(OUTPUT_DIR, name), formatted);
+  const destination = path.join(OUTPUT_DIR, name);
+  const temporary = `${destination}.${process.pid}.tmp`;
+  await writeFile(temporary, formatted, "utf8");
+  await rename(temporary, destination);
 }
 
 export async function prepareBlindReview() {
   await mkdir(OUTPUT_DIR, { recursive: true });
+  await generateTaxonomyAudit();
   const parameterFile = await readFile(
     path.join(SOURCE_DIR, "parameter-search.json"),
     "utf8",
@@ -1010,6 +1025,7 @@ export async function prepareBlindReview() {
     features: await readJson("poi-feature-annotations.json"),
     benchmark: await readJson("pairwise-benchmark.json"),
     parameters: JSON.parse(parameterFile),
+    taxonomy: JSON.parse(await readFile(TAXONOMY_PATH, "utf8")),
   };
   const canonicalItems = buildCanonicalReviewSet(inputs);
   const packs = REVIEW_CODES.map((code) =>
