@@ -19,7 +19,9 @@ WBS 5.17 Companion Persistence API v1 实现与真实验收已完成，状态为
 - 实现 commit：`bd7d3fce92c64bd7ba84ed1f12271aa4a5f2e16c`。
 - 验收入口/最终受测 commit：`443bad8da0b6a3460838385993d444b16865c0d9`；其后的提交仅补报告、证据和 tracking。
 - Master WBS 仅修改 5.17 为“待审查”，未覆盖其他行状态。
-- Draft PR：创建后补入链接。
+- Draft PR：[ #325](https://github.com/kanzakimy0/TravelAssist/pull/325)，目标 develop，保持 Draft。
+- Issue 更新：[验收记录](https://github.com/kanzakimy0/TravelAssist/issues/324#issuecomment-5642154687)。
+- Result/QA 提交：`bd6c74e`；后续仅补入实际 PR/Issue 链接和证据文件行尾规范。
 
 ## Architecture Reuse
 
@@ -137,7 +139,7 @@ Standalone artifact 对应 `443bad8da0b6a3460838385993d444b16865c0d9`；仅本�
 
 ## Draft PR
 
-创建后补入 Draft PR 链接；目标 `develop`，正文使用 `Relates to #324`。Issue 保持 Open，PR 保持 Draft，等待人工验收。
+[Draft PR #325](https://github.com/kanzakimy0/TravelAssist/pull/325) 已创建，目标 `develop`，正文使用 `Relates to #324`。Issue #324 已更新 Result 与 PR 链接并保持 Open；PR 保持 Draft，等待人工验收。
 
 ## Manual Acceptance Steps
 
@@ -151,4 +153,4 @@ Standalone artifact 对应 `443bad8da0b6a3460838385993d444b16865c0d9`；仅本�
 
 ## Stop Confirmation
 
-实现、真实验收和报告已完成；本次收尾仅更新 WBS/Issue 并创建 Draft PR。**不合并、不关闭 Issue #324、不把 5.17 标记为已完成、不启动后续 Task。** 未实现 5.13、5.15、5.18、5.19、Planner/Engine mapping、AI、Booking 或 sharing；未修改 A-owned Planner/Trip/Engine contract。未执行任何被禁止的 Git 命令。
+实现、真实验收、Result 提交、WBS 待审查、Issue 更新且 Open、Draft PR 创建均已完成，停在用户验收点。**不合并、不关闭 Issue #324、不把 5.17 标记为已完成、不启动后续 Task。** 未实现 5.13、5.15、5.18、5.19、Planner/Engine mapping、AI、Booking 或 sharing；未修改 A-owned Planner/Trip/Engine contract。未执行任何被禁止的 Git 命令。
