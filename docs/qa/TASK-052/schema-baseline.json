@@ -1,0 +1,222 @@
+{
+  "users": 0,
+  "tables": [
+    {
+      "tablename": "companion_group_members"
+    },
+    {
+      "tablename": "companion_groups"
+    },
+    {
+      "tablename": "companions"
+    },
+    {
+      "tablename": "emergency_contacts"
+    },
+    {
+      "tablename": "profile_settings"
+    },
+    {
+      "tablename": "profiles"
+    },
+    {
+      "tablename": "travel_preferences"
+    },
+    {
+      "tablename": "trip_library_records"
+    }
+  ],
+  "fks": [
+    {
+      "source": "auth.identities",
+      "target": "auth.users",
+      "conname": "identities_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.mfa_factors",
+      "target": "auth.users",
+      "conname": "mfa_factors_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.oauth_authorizations",
+      "target": "auth.users",
+      "conname": "oauth_authorizations_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.oauth_consents",
+      "target": "auth.users",
+      "conname": "oauth_consents_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.one_time_tokens",
+      "target": "auth.users",
+      "conname": "one_time_tokens_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.sessions",
+      "target": "auth.users",
+      "conname": "sessions_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.webauthn_challenges",
+      "target": "auth.users",
+      "conname": "webauthn_challenges_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "auth.webauthn_credentials",
+      "target": "auth.users",
+      "conname": "webauthn_credentials_user_id_fkey",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "companion_group_members",
+      "target": "companions",
+      "conname": "companion_group_members_companion_owner_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (companion_id, owner_user_id) REFERENCES companions(id, owner_user_id) ON DELETE CASCADE"
+    },
+    {
+      "source": "companion_group_members",
+      "target": "companion_groups",
+      "conname": "companion_group_members_group_owner_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (group_id, owner_user_id) REFERENCES companion_groups(id, owner_user_id) ON DELETE CASCADE"
+    },
+    {
+      "source": "companion_groups",
+      "target": "auth.users",
+      "conname": "companion_groups_auth_user_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "companions",
+      "target": "auth.users",
+      "conname": "companions_auth_user_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "emergency_contacts",
+      "target": "auth.users",
+      "conname": "emergency_contacts_auth_user_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "profile_settings",
+      "target": "auth.users",
+      "conname": "profile_settings_auth_user_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "profiles",
+      "target": "auth.users",
+      "conname": "profiles_auth_user_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "travel_preferences",
+      "target": "auth.users",
+      "conname": "travel_preferences_auth_user_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "source": "trip_library_records",
+      "target": "auth.users",
+      "conname": "trip_library_records_owner_fk",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    }
+  ],
+  "storage": [
+    {
+      "objects": 0,
+      "buckets": 0
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "companion_group_members",
+      "column_name": "companion_id"
+    },
+    {
+      "table_name": "companion_group_members",
+      "column_name": "group_id"
+    },
+    {
+      "table_name": "companion_group_members",
+      "column_name": "owner_user_id"
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "id"
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "includes_owner"
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "owner_user_id"
+    },
+    {
+      "table_name": "companions",
+      "column_name": "id"
+    },
+    {
+      "table_name": "companions",
+      "column_name": "owner_user_id"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "id"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "user_id"
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "user_id"
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "id"
+    },
+    {
+      "table_name": "travel_preferences",
+      "column_name": "owner_user_id"
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "creation_key"
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "id"
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "owner_user_id"
+    }
+  ]
+}

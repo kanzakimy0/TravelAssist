@@ -10,3 +10,4 @@ export {
   companionGroups,
   companionGroupMembers,
 } from "./companions";
+export { tripLibraryRecords } from "./trip-library";

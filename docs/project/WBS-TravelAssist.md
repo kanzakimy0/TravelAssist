@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## WBS 1.10 / 1.12 / 1.13 Final Design Closeout tracking（2026-09-12，已完成）
+
+- 依据：`docs/tasks/TASK-DESIGN-FREEZE-CLOSEOUT-1.10-1.12-1.13-b.md`、`docs/tasks/RESULT-DESIGN-FREEZE-CLOSEOUT-1.10-1.12-1.13-b.md`、`docs/project/WBS-1.10-1.12-1.13-final-closeout.md`；三份权威收尾记录已由 [PR #327](https://github.com/kanzakimy0/TravelAssist/pull/327) 合入 develop，merge `1c24cce58ea432555302ad3c398a31f6627b5a87`。
+- TASK-014-B / WBS 1.10 = B / 已完成；Issue #158 = Closed / Completed；原设计与 v1.1 amendment 构成 frozen baseline。
+- WBS-1.12-B / WBS 1.12 = B / 已完成；Issue #176 = Closed / Completed；v1.1 地图视觉规范已审查冻结。
+- WBS 1.13 final closeout = B / 已完成；Issue #178 = Closed / Completed；Frozen v1.1 + Accessibility Amendment v1.2。
+- 本次仅机械同步 Master WBS；“已完成”指设计规格审查与冻结，不代表 runtime、Mapbox 或组件工程实装已完成。
+- 下方相关待审查、Issue Open、设计候选及未验收表述保留为历史阶段；当前状态以本节、Task tracking 表及三项主表状态为准。历史 Result 全部保留，其他 A/B 工作站状态不变。
+
 ## TASK-033-B / WBS 3.5 AI 悬浮入口（2026-09-10，待审查）
 
 - 按 WBS-3.5-owner-correction.md，Owner B；Issue #263；分支 feature/b-wbs-3-5-ai-floating-entry；执行基线 0f7955ae62e04aeacf43f56dcacf2a9249582e96。
@@ -671,8 +680,9 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-010-A | 1.2 / 1.16 / 3.1 / 3.6 / 4.13 | A | 已完成（主流程导航闭环已合入） | #78 | `docs/tasks/TASK-010-a-main-flow-navigation.md` | `feature/a-main-flow-navigation` | `2284591`（实现），`445150f`（追踪），`550a2b8`（合并） | [#101](https://github.com/kanzakimy0/TravelAssist/pull/101) 已合入 develop；Issue #78 已关闭 |
 | TASK-011-A | 1.17 / 1.18 / 4.6 / 4.8 / 4.14 / 4.15 | A | 已合并（TASK-010-B 本轮仅复验导航；窄屏返回入口待对应任务复核） | #86 | `docs/tasks/TASK-011-a-planner-to-trip-detail-workspace.md` | `feature/a-planner-to-trip-detail-workspace` | `b3d411b`（合入 head），`4c1d9bb`（合并） | [#102](https://github.com/kanzakimy0/TravelAssist/pull/102) 已合入 develop；[#91](https://github.com/kanzakimy0/TravelAssist/pull/91) 为历史 blocked docs-only 记录 |
 | TASK-012-A | 1.5 / 1.6 / 1.7 / 1.14 / 4.1 / 4.8 / 4.14 / 4.15（v0.5 UI 子集） | A | 已完成（用户授权当前实现范围；1180px Drawer 与原侧栏规格差异保留） | #111 | `docs/tasks/TASK-012-a-planner-v05-visual-secondary-panels.md` | `feature/a-planner-v05-visual-secondary-panels` | `e835e75`（验收 head），`66b7ca6`（合并，文件树相同） | [#124](https://github.com/kanzakimy0/TravelAssist/pull/124) 已合入 develop；139 tests、六尺寸双地图 QA、48 Logo QA 通过；冻结推荐卡未改 |
-| TASK-014-B | 1.10 | B | 待审查（设计已上传并自动合入 develop，待用户验收） | #158 | `docs/tasks/TASK-014-b-wbs-1-10-attraction-activity-display-rules.md` | `feature/b-wbs-1-10-attraction-activity-display-rules` | `c1bddd70`（设计）；`e9c113d9`（自动合并） | [#163](https://github.com/kanzakimy0/TravelAssist/pull/163) 自动合入 develop |
-| WBS-1.12-B | 1.12 | B | 待审查（设计交付；未实装） | #176 | `docs/tasks/TASK-WBS-1.12-b-map-visual-spec.md` | `docs/b-wbs-1-12-map-visual-spec` | `687fa064`（设计） | [#177](https://github.com/kanzakimy0/TravelAssist/pull/177) 已合并；v1.1 设计候选，实装/视觉验收另行执行 |
+| TASK-014-B | 1.10 | B | 已完成（设计审查通过；含 v1.1 amendment，已冻结） | #158 Closed / Completed | `docs/tasks/TASK-014-b-wbs-1-10-attraction-activity-display-rules.md` | `feature/b-wbs-1-10-attraction-activity-display-rules` | `c1bddd70`（设计）；`e9c113d9`（自动合并） | [#163](https://github.com/kanzakimy0/TravelAssist/pull/163) 自动合入 develop；[#327](https://github.com/kanzakimy0/TravelAssist/pull/327) final design closeout 已合入 |
+| WBS-1.12-B | 1.12 | B | 已完成（v1.1 设计审查通过并冻结；实装验收另行执行） | #176 Closed / Completed | `docs/tasks/TASK-WBS-1.12-b-map-visual-spec.md` | `docs/b-wbs-1-12-map-visual-spec` | `687fa064`（设计） | [#177](https://github.com/kanzakimy0/TravelAssist/pull/177) 已合并；[#327](https://github.com/kanzakimy0/TravelAssist/pull/327) final design closeout 已合入 |
+| WBS-1.13-B-FINAL-CLOSEOUT | 1.13 | B | 已完成（Frozen v1.1 + Accessibility Amendment v1.2） | #178 Closed / Completed | `docs/tasks/TASK-DESIGN-FREEZE-CLOSEOUT-1.10-1.12-1.13-b.md` / `docs/tasks/RESULT-DESIGN-FREEZE-CLOSEOUT-1.10-1.12-1.13-b.md` | `docs/b-wbs-1-10-1-12-1-13-design-closeout` | `7777a4c`（final closeout）；`1c24cce`（合并） | [#179](https://github.com/kanzakimy0/TravelAssist/pull/179) 原设计已合并；[#327](https://github.com/kanzakimy0/TravelAssist/pull/327) final design closeout 已合入 develop |
 
 > TASK-003-B 与 TASK-006 由用户明确分配给 B 执行；本记录不改变相关 WBS 工作项的既有 Owner。
 >
@@ -717,10 +727,10 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 1.5    | Planner 主画面冻结 v1                     | A      | P0     | 1.3               | 已完成 |
 | 1.6    | 底部时间轴设计冻结                        | A      | P0     | 1.5               | 已完成 |
 | 1.7    | Planner 右侧临时设置 / 快速调整设计       | A      | P0     | 1.5               | 已完成 |
-| 1.10   | 景点与活动标签 / 主系统展示规则           | B      | P1     | 1.5               | 待审查 |
+| 1.10   | 景点与活动标签 / 主系统展示规则           | B      | P1     | 1.5               | 已完成 |
 | 1.11   | 推荐方案 1/2/3 展示结构                   | A      | P1     | 1.5               | 已完成 |
-| 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | B      | P0     | 1.5               | 待审查 |
-| 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | B      | P1     | 1.4,1.5           | 待审查 |
+| 1.12   | 地图视觉 / Pin / 区域 / 路线规范          | B      | P0     | 1.5               | 已完成 |
+| 1.13   | 主系统 Design Token / 色彩 / 字体 / 圆角  | B      | P1     | 1.4,1.5           | 已完成 |
 | 1.14   | 主系统响应式布局规则                      | A      | P1     | 1.13              | 进行中 |
 | 1.15   | MVP 功能范围冻结                          | A      | P0     | 1.1-1.14          | 未开始 |
 | 1.16   | 网站入口详细画面设计                      | A      | P1     | 1.4,1.13          | 已完成 |
@@ -882,13 +892,13 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 5.11   | Preference Schema                    | B      | P0     | 1.25,8.1  | 已完成 |
 | 5.12   | Companion Schema                     | B      | P1     | 1.26,8.1  | 已完成 |
 | 5.13   | Preference Preset / 默认值           | B      | P1     | 5.11      | 未开始 |
-| 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 进行中 |
-| 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
+| 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 已完成（#321 / TASK-046-B；TASK-051-B 复验；用户验收，PR #323 已合并） |
+| 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 已完成（#336 / TASK-050-B；用户验收，PR #337 已合并） |
 | 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 已完成 |
-| 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 未开始 |
-| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 可开始（#207；#186 / #216 已合并，实施前重新检查） |
-| 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 未开始 |
-| 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 未开始 |
+| 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 已完成 |
+| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 已完成（#329 / TASK-048-B；用户验收，PR #331 已合并） |
+| 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 已完成（#333 / TASK-049-B；用户验收，PR #334 已合并） |
+| 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 已完成（#342 / TASK-052-B；用户验收，PR #343 已合并） |
 
 ## 6. AI 旅行助手（A 全责，个人历史除外）
 

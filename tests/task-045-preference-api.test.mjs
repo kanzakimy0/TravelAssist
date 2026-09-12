@@ -334,11 +334,13 @@ test("production preference surfaces reuse accepted parsers/Auth and expose no d
     );
   assert.match(repo, /applyPreferencePatch/);
   assert.match(repo, /\.eq\("revision", expectedRevision\)/);
-  assert.match(http, /requireAuthUser/);
-  assert.match(http, /createRequestSupabase/);
-  assert.match(http, /publicSupabaseConfig/);
+  const sharedHttp = read("src/server/private-http.ts");
+  assert.match(http, /verifiedPrivateRequest/);
+  assert.match(sharedHttp, /requireAuthUser/);
+  assert.match(sharedHttp, /createRequestSupabase/);
+  assert.match(sharedHttp, /publicSupabaseConfig/);
   assert.doesNotMatch(
-    repo + http,
+    repo + http + sharedHttp,
     /service_role|sb_secret_|getSession\(|advisory/,
   );
   assert.doesNotMatch(

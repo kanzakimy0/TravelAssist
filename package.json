@@ -59,7 +59,19 @@
     "test:companions": "node --import ./tests/register-route-ts.mjs --test tests/task-044-companion-schema.test.mjs",
     "test:companions:db": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-044-companion-schema.runtime.mjs",
     "test:preference-api": "node --import ./tests/register-route-ts.mjs --test tests/task-045-preference-api.test.mjs",
-    "test:preference-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-045-preference-api.runtime.mjs"
+    "test:preference-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-045-preference-api.runtime.mjs",
+    "test:companion-api": "node --import ./tests/register-route-ts.mjs --test tests/task-047-companion-api.test.mjs",
+    "test:companion-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-047-companion-api.runtime.mjs",
+    "test:trip-persistence": "node --import ./tests/register-route-ts.mjs --test tests/task-048-trip-persistence-model.test.mjs",
+    "test:trip-persistence:db": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-048-trip-persistence-model.runtime.mjs",
+    "test:trip-library-api": "node --import ./tests/register-route-ts.mjs --test tests/task-049-trip-library-api.test.mjs",
+    "test:trip-library-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-049-trip-library-api.runtime.mjs",
+    "test:profile-api": "node --import ./tests/register-route-ts.mjs --test tests/task-050-profile-api.test.mjs",
+    "test:profile-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-050-profile-api.runtime.mjs",
+    "test:preference-contract": "node --import ./tests/register-route-ts.mjs --test tests/task-046-preference-contract.test.mjs",
+    "test:preference-contract:local": "node --import ./tests/register-route-ts.mjs --test tests/task-046-preference-contract.runtime.mjs",
+    "test:account-deletion": "node --import ./tests/register-route-ts.mjs --test tests/task-052-account-deletion.test.mjs",
+    "test:account-deletion:local": "node --import ./tests/register-route-ts.mjs --test tests/task-052-account-deletion.runtime.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {

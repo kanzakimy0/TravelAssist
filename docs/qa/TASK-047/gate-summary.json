@@ -1,0 +1,151 @@
+{
+  "baseSha": "6750a50d9fc49e561e60d25e7ebfc90c76c60a60",
+  "testedImplementationSha": "443bad8da0b6a3460838385993d444b16865c0d9",
+  "node": "v24.18.0",
+  "gates": [
+    {
+      "name": "Baseline full repository",
+      "status": "PASS",
+      "tests": 1532,
+      "pass": 1532,
+      "fail": 0,
+      "localLog": ".artifacts/task047/baseline-full-tests.log"
+    },
+    {
+      "name": "Baseline Companion schema",
+      "status": "PASS",
+      "tests": 163,
+      "pass": 163,
+      "fail": 0,
+      "localLog": ".artifacts/task047/baseline-test-companions.log"
+    },
+    {
+      "name": "Baseline Personal Center",
+      "status": "PASS",
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "localLog": ".artifacts/task047/baseline-personal-center-tests.log"
+    },
+    {
+      "name": "Baseline DB foundation",
+      "status": "PASS",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "localLog": ".artifacts/task047/baseline-test-db-foundation.log"
+    },
+    {
+      "name": "Baseline real Companion DB",
+      "status": "PASS",
+      "tests": 147,
+      "pass": 147,
+      "fail": 0,
+      "localLog": ".artifacts/task047/baseline-companion-db.log"
+    },
+    {
+      "name": "Implementation full repository",
+      "status": "PASS",
+      "tests": 1573,
+      "pass": 1573,
+      "fail": 0,
+      "localLog": ".artifacts/task047/final-full-tests.log"
+    },
+    {
+      "name": "Implementation affected regression",
+      "status": "PASS",
+      "tests": 117,
+      "pass": 117,
+      "fail": 0,
+      "localLog": ".artifacts/task047/final-affected-tests.log"
+    },
+    {
+      "name": "Implementation Personal Center",
+      "status": "PASS",
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "localLog": ".artifacts/task047/final-personal-tests.log"
+    },
+    {
+      "name": "TASK-047 domain/mapper/API contracts",
+      "status": "PASS",
+      "tests": 41,
+      "pass": 41,
+      "fail": 0,
+      "localLog": ".artifacts/task047/pure-tests.log"
+    },
+    {
+      "name": "TASK-047 real Auth/API/RLS/CAS/browser",
+      "status": "PASS",
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "localLog": ".artifacts/task047/runtime.log"
+    },
+    {
+      "name": "Real Preference API/browser regression",
+      "status": "PASS",
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "localLog": ".artifacts/task047/preference-api-regression.log"
+    },
+    {
+      "name": "Real Companion DB regression",
+      "status": "PASS",
+      "tests": 147,
+      "pass": 147,
+      "fail": 0,
+      "localLog": ".artifacts/task047/companion-db-regression.log"
+    },
+    {
+      "name": "Real Preference DB regression",
+      "status": "PASS",
+      "tests": 505,
+      "pass": 505,
+      "fail": 0,
+      "localLog": ".artifacts/task047/preference-db-regression.log"
+    },
+    {
+      "name": "Real Profile DB regression",
+      "status": "PASS",
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "localLog": ".artifacts/task047/profile-db-regression.log"
+    }
+  ],
+  "lint": {
+    "baseline": {
+      "errors": 7,
+      "warnings": 0
+    },
+    "implementation": {
+      "errors": 7,
+      "warnings": 0
+    },
+    "changedFiles": "PASS",
+    "code": "@typescript-eslint/no-require-imports",
+    "source": ".cache/qa/task024-worktree/.cache/qa/*.cjs",
+    "status": "FAIL_EXISTING_BASELINE"
+  },
+  "otherGates": {
+    "npmCi": "PASS (395 packages, zero vulnerabilities)",
+    "typecheck": "PASS after isolating stale baseline generated types",
+    "build": "PASS",
+    "localDeployValidation": "PASS",
+    "formatCheckDeploy": "PASS",
+    "dbReset": "PASS (baseline, implementation and repeat)",
+    "dbTypes": "PASS (byte-identical repeat)",
+    "deployBuildLocal": "PASS",
+    "deployVerifyArtifact": "PASS (1783 files)",
+    "diffCheck": "PASS"
+  },
+  "databaseTypesSha256": "c2d8acafa6d920d3d8b34d1dfc6ba472b933e937b8f56f085d24bb557ea7c652",
+  "artifact": {
+    "commitSha": "443bad8da0b6a3460838385993d444b16865c0d9",
+    "fileCount": 1783,
+    "failures": []
+  }
+}

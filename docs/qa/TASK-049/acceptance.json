@@ -1,0 +1,124 @@
+{
+  "task": "TASK-049-B",
+  "wbs": "5.19",
+  "issue": 333,
+  "baseline": "5ceffd8349ead5b5280029d2b344c23e9346e317",
+  "spec": "330bf2e331a0f778e1df31bf3c1e8cd3fd49a58d",
+  "branch": "codex/b-account-wbs-5-19-trip-save-read-history-contract",
+  "status": "待审查; real acceptance and implementation GitHub gate PASS; final documentation head verified at delivery",
+  "testCounts": {
+    "baseline": 1667,
+    "candidate": 1743,
+    "pure049": 76,
+    "real049": 35,
+    "pure048": 77,
+    "real048": 29,
+    "profileDb": 25,
+    "preferenceDb": 505,
+    "companionDb": 147,
+    "preferenceApiBrowser": 17,
+    "companionApiBrowser": 22
+  },
+  "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+  "generatedTypesRepeatIdentical": true,
+  "lintBaselineIdentical": true,
+  "lintBaselineErrors": 7,
+  "protectedScopes": [
+    {
+      "scope": "src/shared/contracts/trips",
+      "fileCount": 3,
+      "unchangedFromBaseline": true,
+      "sha256": "cfb60de1bc4bf151151f605028a2bed9f7a90c4244f8d18f7c87b02cd5a0b1bc"
+    },
+    {
+      "scope": "src/features/preferences/domain",
+      "fileCount": 1,
+      "unchangedFromBaseline": true,
+      "sha256": "7b39fd96343957ff903bd2d6b089b9f241fdbf948b62552a2a01156e914a71a6"
+    },
+    {
+      "scope": "src/features/companions/domain",
+      "fileCount": 1,
+      "unchangedFromBaseline": true,
+      "sha256": "cd7fb9a83b858f5307d9e5f6f55caadd69ab3fe58795a2893292955ba1725c13"
+    },
+    {
+      "scope": "src/features/planner",
+      "fileCount": 91,
+      "unchangedFromBaseline": true,
+      "sha256": "6e90ccd97fe475911e7d35e445f8e9424bf15994379995bc57766639f095ec81"
+    },
+    {
+      "scope": "src/features/start-flow",
+      "fileCount": 45,
+      "unchangedFromBaseline": true,
+      "sha256": "b0304f0aceb81d03021d4a120d097e2c27247658b749c43e79b28b60e5f12361"
+    },
+    {
+      "scope": "src/features/trip-library/trip-library-page.tsx",
+      "fileCount": 1,
+      "unchangedFromBaseline": true,
+      "sha256": "e2850b3523103ce2b43cadfac1206cdf446c05249f526449754b12305e487015"
+    },
+    {
+      "scope": "src/features/trip-library/trip-library-model.ts",
+      "fileCount": 1,
+      "unchangedFromBaseline": true,
+      "sha256": "047f848a2a5456bad5a4a0015561b7b73e96e872c5e7f6750b192490ece53868"
+    },
+    {
+      "scope": "src/lib/auth",
+      "fileCount": 12,
+      "unchangedFromBaseline": true,
+      "sha256": "78676a5c3482f3a121335573e943a8dd573177cfa2f203a14b9a7e3a3f393286"
+    },
+    {
+      "scope": "src/lib/supabase",
+      "fileCount": 4,
+      "unchangedFromBaseline": true,
+      "sha256": "7c212ba35803cb7d8e70155e4e663b7d8d8b7b74c6a352e048fe8dc10b0e3c0d"
+    }
+  ],
+  "logHashes": {
+    "baseline-ci": "fc941d2e1b650260f1af86e955016eb251a0b5b3c44b52168eff1edbae895bb5",
+    "baseline-tests": "2e610bc971b8dafd9627f3b1f4a02b71003418988185a30f359238308cf88bd3",
+    "baseline-lint": "a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084",
+    "baseline-typecheck": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+    "baseline-build": "c9155251cb61518bc5ab5f03479625c9af7cf865dc7c6ce4f1668dea8fbbde45",
+    "candidate-tests": "6e0716d25a309f1c016db3239fb89b2a421e31e3838c977b258bf51873cc8e17",
+    "candidate-lint": "a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084",
+    "changed-lint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pure-final": "cfa5023f62e5cbb6f760ca3a02d350e3c0b0b8f333f4acda841f0c4947d7b88f",
+    "runtime-final": "00495a31cebf0f325cfd24649ef83385a8ebebf33a76b684c14e9df645c9f106",
+    "regression-trip-pure": "d585e4f096ced6419904fe8c65f8250733576d4e73462ec246b76e38b65a3718",
+    "regression-trip-db": "7132a69ed8799c523a4a0b5ee4c39a925c7aaf0f22d742f174bbbaabe4b9881f",
+    "regression-profile-db": "37d94586126e4b39e98bff52c24d3b09162c47ddf8e8912afa5681b3358ed353",
+    "regression-preference-db": "a23fac0b94e1bea7580447f65577cafd4b1205c7338c4490507b04b087682a5f",
+    "regression-companion-db": "741bf29328d063911e8238295053716ae382dd926364e776016882ba175e950a",
+    "regression-preference-api": "c65f52daf5ac3838917684033c20cb40212ea5595cfb95bf8727ca5241323c19",
+    "regression-companion-api": "254a784cad030475ccd4bfb56842df7cb29bbc6ae5563899acf781e514d66173",
+    "db-reset": "e32a5f3f5ccd813b5049c4b0915d2d0c228d0f3410775e3fb5a1f16266ff9a41",
+    "db-types": "60c77d28188f96f2245aa24d7cda0b8c30d702555e199b1c8bfe7b17a02236e0",
+    "db-types-repeat": "60c77d28188f96f2245aa24d7cda0b8c30d702555e199b1c8bfe7b17a02236e0",
+    "typecheck-review": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+    "build-final": "7773bcdaf89116b65d430398d4e4352a66ab2b4aedbbc54ef6c11294d4a5eda9",
+    "format-check-final": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+    "deploy-validate": "ed779f1d6ce8f46eaa03818ff2e2e983416cce2e0d15a3382b31f22fa22370eb",
+    "deploy-build": "0fb9d97fdd00c792d58cb72524544dc3dc0f268cbce323d0afaefdf2b9cea35c",
+    "deploy-verify": "2ee4652b3ac052f85ea89e242b6cafe9a7fb37476e14fdb655b76be904b112b6",
+    "bundle-audit": "11e9d623ca1250c50edba8e801914879eb67f29bfb6b6af782a24261126c6d8f"
+  },
+  "implementationCommit": "0d749904d7d475b445d2049cc6a390179c413158",
+  "pullRequest": {
+    "number": 334,
+    "state": "OPEN",
+    "isDraft": true,
+    "base": "develop"
+  },
+  "issueState": "OPEN",
+  "githubImplementationGate": {
+    "headSha": "0d749904d7d475b445d2049cc6a390179c413158",
+    "conclusion": "success",
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34676228049"
+  }
+}
