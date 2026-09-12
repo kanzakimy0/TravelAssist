@@ -2,14 +2,14 @@
 
 ## Status
 
-实现、真实 Local Supabase/Auth/RLS 验收与本地质量门完成。Draft PR #337 已创建；首轮 GitHub Quality Gate 通过，最终边界修正提交待确认；WBS 5.15 暂保持进行中。
+**待审查。** 实现、真实 Local Supabase/Auth/RLS 验收与全部质量门已完成；Draft PR #337 等待用户验收。
 
 - Owner：B / Personal Center。
 - Issue：[#336](https://github.com/kanzakimy0/TravelAssist/issues/336)，保持 Open。
 - 执行基线 / 最新 develop：`1af8d7feac7fa2d254ca85a00061bf6d6b0e7940`。
 - 实现分支：`codex/b-account-wbs-5-15-profile-account-api`，从执行时最新 origin/develop 创建，没有从 Spec branch 开发。
 - Dependency Gate：8.2 / TASK-016-B、8.3 / TASK-018-B 均已完成并合入；依赖通过。
-- 初始实现提交：`11f82ea7fa636cb64a9394f82bcf3d9931d9750a`；补充尾随换行边界修正待最终 head 记录。
+- 实现提交：`11f82ea7fa636cb64a9394f82bcf3d9931d9750a`；最终代码提交（含尾随换行边界修正）：`96038570c6c9557855f4461c45550c493ebaa48f`。
 - Draft PR：[#337](https://github.com/kanzakimy0/TravelAssist/pull/337)，目标 develop，使用 `Relates to #336`。
 
 ## API 与契约
@@ -56,7 +56,9 @@
 | deploy:verify-artifact                     | PASS，1,860 文件                                              |
 | 生产浏览器包检查                           | PASS，34 chunks；server-only/纯契约边界通过                   |
 | git diff --check                           | PASS                                                          |
-| GitHub Quality Gate                        | 首轮 PASS；最终修正 head 待确认                               |
+| GitHub Quality Gate                        | PASS，最终代码 head `9603857`，run #34680751816               |
+
+GitHub 干净环境 [Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34680751816) 已在最终代码提交通过，包含全仓 tests、lint、typecheck、format、standalone artifact 与 whitespace。最后文档同步提交的检查可在 [PR #337](https://github.com/kanzakimy0/TravelAssist/pull/337) 的最新 head 检查列表确认。
 
 本地 lint 的既有错误位于 `.cache/qa/task024-worktree/.cache/qa/*.cjs`，未删除历史工作区或放宽规则。具体 before/after SHA-256 与验收场景见 [QA README](../qa/TASK-050/README.md)、[quality-gates.json](../qa/TASK-050/quality-gates.json)、[runtime-summary.json](../qa/TASK-050/runtime-summary.json)。
 
@@ -95,6 +97,6 @@
 - 数据库连接使用现有 server-only DATABASE_URL，需具有切换 authenticated 角色的权限；配置缺失/错误安全返回 503。
 - 未修改 Preference、Companion、Trip API、Planner、Engine、Auth Core 或 DB 契约。
 - 未实现凭证修改、OAuth 连接、Session/设备、安全活动、导出、Booking/Partner Sync 或 Avatar 上传。
-- WBS 只从 5.15 未开始更新为进行中；远端质量门通过后将更新为待审查并补 Draft PR 编号。
+- WBS 5.15：`待审查（#336 / TASK-050-B；Draft PR #337）`。已完整读取最新 Master 并逐行核对，其余 A/B 行和历史记录完全保留。
 - Issue #336 保持 Open；不自动合并、不标记已完成。
 - **未启动 WBS 5.21，也未启动后续 Task。**

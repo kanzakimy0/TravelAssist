@@ -59,3 +59,7 @@ git diff --check
 - Emergency email 保留 local part 大小写，将 domain 小写；电话严格 canonical E.164，countryCode 为 alpha-2，不是电话区号。
 - 200 读取/更新、201 创建、204 删除；400 INVALID_REQUEST、401 AUTH_REQUIRED、403 FORBIDDEN、404 EMERGENCY_CONTACT_NOT_FOUND、413 PAYLOAD_TOO_LARGE、503 AUTH_UNAVAILABLE/PROFILE_UNAVAILABLE。
 - GET 不创建默认行；无数据时 null 由未来 Consumer 自行应用显示 fallback。现有 Profile UI 保持原状态，本 Task 不声称完成 UI 持久化接线。
+
+## 远端质量门
+
+最终代码提交 `96038570c6c9557855f4461c45550c493ebaa48f` 的 [GitHub Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34680751816) PASS；干净 runner 的 lint、完整测试、类型/格式、standalone 制品与 whitespace 均通过。后续仅 Result/WBS/QA 文档同步；提交后的最终检查见 [Draft PR #337](https://github.com/kanzakimy0/TravelAssist/pull/337)。Issue #336 保持 Open，未启用自动合并。
