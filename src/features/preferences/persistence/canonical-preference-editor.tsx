@@ -26,6 +26,11 @@ import {
 } from "./preference-adapter";
 import { usePreferenceResource } from "./use-preference-resource";
 import { PreferenceStatus } from "./preference-status";
+import {
+  applyPreferencePreset,
+  matchPreferencePreset,
+  presetsForCategory,
+} from "../presets/preference-presets";
 import { PreferenceIcon } from "../preference-icon";
 import styles from "../preference-center.module.css";
 import editor from "./preference-editor.module.css";
@@ -147,6 +152,8 @@ export function CanonicalPreferenceEditor({
     setIsDirty(isDirty);
     return () => setIsDirty(false);
   }, [isDirty, setIsDirty]);
+  const presets = presetsForCategory(category);
+  const matchedPreset = matchPreferencePreset(state.draft, category);
   const keys = keysForPage(category);
   const disabled = state.busy || !state.resource;
   function setSignal(interest: InterestCode, signal: string) {
@@ -226,6 +233,34 @@ export function CanonicalPreferenceEditor({
       </section>
       <fieldset className={editor.fields} disabled={disabled}>
         <legend>长期偏好设置</legend>
+        {presets.length > 0 ? (
+          <section className={editor.card} aria-label="快速模板">
+            <h2>快速模板</h2>
+            <p>仅修改本页选择，点击“保存偏好”后才会保存。</p>
+            <p aria-live="polite" data-preset-match={matchedPreset?.id ?? ""}>
+              {matchedPreset
+                ? "当前模板：" + matchedPreset.label
+                : keys.some((key) => state.draft.values[key] !== undefined)
+                  ? "自定义"
+                  : "未设置"}
+            </p>
+            <div className={editor.presets}>
+              {presets.map((preset) => (
+                <button
+                  key={preset.id}
+                  type="button"
+                  aria-pressed={matchedPreset?.id === preset.id}
+                  title={preset.description}
+                  onClick={() =>
+                    state.edit(applyPreferencePreset(state.draft, preset.id))
+                  }
+                >
+                  {preset.label}
+                </button>
+              ))}
+            </div>
+          </section>
+        ) : null}
         <div className={editor.grid} data-preference-level="middle">
           {keys
             .filter((key) => !key.startsWith("interests."))
