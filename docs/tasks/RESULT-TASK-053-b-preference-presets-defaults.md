@@ -6,7 +6,7 @@
 - 实现及真实 Local Supabase/Auth/browser 验收完成，WBS 5.13 待审查；不标记已完成。
 - 执行基线：`4da2b8883069cd415eee6e18129c874383286653`，最新 origin/develop；未从 Spec Branch 开发。
 - 实现分支：`codex/b-account-wbs-5-13-preference-presets-defaults`。
-- Draft PR：创建后回填；base = develop；Issue #345 保持 Open。
+- [Draft PR #346](https://github.com/kanzakimy0/TravelAssist/pull/346)；base = develop；Issue #345 保持 Open。
 - 最终 exact head 的 SHA / Quality Gate run 将记录在 PR 与 Issue 审查记录；只有该 head PASS 后才交付，后续 commit 必须重新验证。
 
 ## 实现
@@ -87,4 +87,4 @@
 
 DB/API/Auth/RLS/revision/CAS、5.14 read contract、Trip Library persistence、Planner/AI/Engine/POI、A 43 维 contract 无改动。没有 migration/RPC/表/列、新 API、preset metadata persistence 或 23→43 mapping。
 
-Issue #345 = Open；PR = Draft/Open → develop；WBS 5.13 = 待审查。未合并，未启动 8.6、9.5、9.6 或其他后续 Task；未执行任何禁止的 Git 命令。
+Issue #345 = Open；PR #346 = Draft/Open → develop；WBS 5.13 = 待审查（#345 / TASK-053-B；Draft PR #346）。未合并，未启动 8.6、9.5、9.6 或其他后续 Task；未执行任何禁止的 Git 命令。
