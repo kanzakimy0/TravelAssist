@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-044-A",
+  "issue": 347,
+  "reviewedCandidate": {
+    "branch": "codex/a-master-code-registry",
+    "headSha": "3cac68b89097db9853ae881b43c8675b329e12dd",
+    "pullRequest": 326,
+    "expectedState": "open_draft"
+  },
+  "canonicalSource": {
+    "path": "src/shared/data/master-code-registry.v1.json",
+    "sha256": "9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2",
+    "handMaintainedRegistryCount": 1,
+    "generatedAllocationManifestIsAuthority": false,
+    "typescriptCopiesAllocationRows": false
+  },
+  "registry": {
+    "parsed": true,
+    "governanceStatus": "candidate",
+    "registryRevision": "task-043-candidate-r1",
+    "totalEntries": 51,
+    "reservedEntries": 1,
+    "activeEntries": 50,
+    "activeRegionEntries": 50,
+    "uniqueMasterCodes": 51,
+    "uniqueActiveEntities": 50,
+    "fiveDigitAsciiGrammar": true,
+    "rejectedIdentifierValues": 0,
+    "invalidActiveResolverResults": 0,
+    "issues": []
+  },
+  "regionAllocation": {
+    "parsed": true,
+    "sourceNodes": 50,
+    "allocations": 50,
+    "regionIdsPreserved": 50,
+    "uniqueRegionIds": 50,
+    "uniqueMasterCodes": 50,
+    "activeResolved": 50,
+    "nullMasterCodes": 0,
+    "unknownRegionRefs": 0,
+    "graphTopologyFilesChangedByTask043": [],
+    "sourceGraphSha256": "b4a2dfca628c3eab89b399af4f9ee7359cc3a50c240dd031d74306b240a9d0b0",
+    "issues": []
+  },
+  "optionAReview": {
+    "recommendation": "accept_with_publication_gate",
+    "partialGraphNullCount": 50,
+    "projectedProductionNullCount": 0,
+    "projectedProductionActiveResolved": 50,
+    "productionRule": "null is limited to explicitly partial/draft data; production-complete Region data requires zero null and active canonical resolution"
+  },
+  "negativeChecks": {
+    "duplicateMasterCode": true,
+    "duplicateActiveEntity": true,
+    "deprecatedCodeRecycling": true,
+    "missingSupersessionTarget": true,
+    "supersessionCycle": true,
+    "unknownLifecycle": true,
+    "malformedOrLegacyCode": true,
+    "unsafeEntityRef": true,
+    "activeAllocationImmutable": true,
+    "appendOnly": true,
+    "unknownRegionAllocation": true,
+    "unknownCodeFailsClosed": true,
+    "legacyCodeFailsClosed": true,
+    "destinationIdFailsClosed": true,
+    "administrativeIdFailsClosed": true
+  },
+  "allRequiredNegativeChecksPassed": true,
+  "recommendation": "ACCEPT"
+}
