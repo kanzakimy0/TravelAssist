@@ -8,6 +8,7 @@
 - Candidate pull request: #326, Open / Draft at review start
 - Upstream issue: #311, Open at review start
 - Acceptance issue: #347, Open at review start
+- Acceptance pull request: #348, Open / Draft, stacked on #326
 
 The review was performed in the isolated `codex/a-master-code-governance-acceptance`
 worktree. The latest `origin/develop` was merged into that review branch so the

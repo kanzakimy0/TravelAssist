@@ -17,6 +17,7 @@ ACCEPT
 - Issue #311: Open
 - Issue #347: Open
 - Review branch: `codex/a-master-code-governance-acceptance`
+- Acceptance PR: #348, Open / Draft, stacked on #326 and not merged
 - Review isolation: dedicated clean worktree; the main Planner/Step workspace was
   not changed
 
@@ -143,6 +144,7 @@ restriction rather than a repository regression.
 - WBS 2.18 remains `待审查`.
 - WBS 4.48 remains `Partial`.
 - PR #326 remains Open / Draft.
+- PR #348 remains Open / Draft and must follow #326's owner approval/merge gate.
 - Issues #311 and #347 remain Open.
 - No merge was performed.
 
