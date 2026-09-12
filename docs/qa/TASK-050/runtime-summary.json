@@ -1,0 +1,38 @@
+{
+  "task": "TASK-050-B",
+  "completed": [
+    "anonymous reads and mutations denied on all six routes",
+    "first GET is nullable, read-only, and verified Auth projection ignores metadata",
+    "cookie GET and same-origin save work; wrong/missing Origin denied",
+    "explicit malformed/invalid Bearer never falls back to valid cookie; valid Bearer wins",
+    "owner spoof via root/nested/query/path rejected",
+    "actual SQL writes execute as authenticated with exact verified auth.uid",
+    "profile/settings round-trip, independent defaults and DB-owned audits",
+    "missing unchanged, null clears all nullable fields; empty save rejected",
+    "all invalid/future/locale/timezone/currency/units/unknown payloads fail closed without writes",
+    "Auth contact readonly; unverified Auth state comes from fresh Auth user",
+    "profile/settings pair rolls back after second table SQL failure",
+    "concurrent disjoint PATCH fields preserve each other without adding revision/CAS",
+    "existing owner-only RLS through real user clients and anon denies direct cross-user writes",
+    "emergency contact create/list and stable ordering with equal created_at",
+    "contact patch missing/null semantics and audit preservation",
+    "invalid contact required/null/email/E164/length payloads reject without writes",
+    "contact UUID rejected before DB SQL; cross-user/nonexistent mutation same 404",
+    "cookie Origin protection also guards contact POST/PATCH/DELETE; query/body spoof denied",
+    "bounded JSON rejects wrong content type, malformed JSON, excess and invalid UTF8",
+    "real browser cookies persist profile and contact operations; unauthenticated browser denied",
+    "deleting one contact preserves populated Profile/Preference/Companion/Trip and Auth",
+    "production client chunks exclude server DB/Auth implementation",
+    "backend unavailable returns sanitized 503; malformed contact id still rejects before DB lookup",
+    "clean fixture Auth user deletion exercises existing FK cascades only"
+  ],
+  "metrics": {
+    "invalidProfilePayloads": 68,
+    "invalidContactPayloads": 25,
+    "browser": "Microsoft Edge / real cookie session / native fetch",
+    "clientChunks": 34
+  },
+  "fixtureUsersRemaining": 0,
+  "localOnly": true,
+  "testTriggersRemoved": true
+}
