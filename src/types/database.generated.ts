@@ -271,6 +271,63 @@ export type Database = {
         };
         Relationships: [];
       };
+      trip_library_records: {
+        Row: {
+          canonical_trip_id: string | null;
+          created_at: string;
+          creation_key: string;
+          draft_facts: Json;
+          frozen_at: string | null;
+          id: string;
+          library_state: string;
+          owner_user_id: string;
+          party_snapshot: Json;
+          plan_snapshot: Json | null;
+          preference_override_patch: Json;
+          preference_snapshot: Json;
+          preference_source_revision: number;
+          storage_revision: number;
+          updated_at: string;
+          wizard_progress: Json;
+        };
+        Insert: {
+          canonical_trip_id?: string | null;
+          created_at?: string;
+          creation_key: string;
+          draft_facts: Json;
+          frozen_at?: string | null;
+          id?: string;
+          library_state?: string;
+          owner_user_id: string;
+          party_snapshot: Json;
+          plan_snapshot?: Json | null;
+          preference_override_patch?: Json;
+          preference_snapshot: Json;
+          preference_source_revision: number;
+          storage_revision?: number;
+          updated_at?: string;
+          wizard_progress: Json;
+        };
+        Update: {
+          canonical_trip_id?: string | null;
+          created_at?: string;
+          creation_key?: string;
+          draft_facts?: Json;
+          frozen_at?: string | null;
+          id?: string;
+          library_state?: string;
+          owner_user_id?: string;
+          party_snapshot?: Json;
+          plan_snapshot?: Json | null;
+          preference_override_patch?: Json;
+          preference_snapshot?: Json;
+          preference_source_revision?: number;
+          storage_revision?: number;
+          updated_at?: string;
+          wizard_progress?: Json;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
@@ -281,6 +338,11 @@ export type Database = {
         Returns: boolean;
       };
       is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
+      is_trip_library_envelope_v1: {
+        Args: { max_bytes: number; payload: Json; version_key: string };
+        Returns: boolean;
+      };
+      is_trip_party_snapshot_v1: { Args: { payload: Json }; Returns: boolean };
       mutate_companion_group_v1: {
         Args: {
           p_action: string;
