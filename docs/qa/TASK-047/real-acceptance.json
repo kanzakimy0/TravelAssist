@@ -1,0 +1,196 @@
+{
+  "completed": [
+    "real Cookie/Bearer auth, anon denial and invalid Bearer never falls back",
+    "HTTP strict envelopes, unsafe fields, IDs, revisions, CSRF and bounded JSON",
+    "Companion create/list/read/update with canonical DB timestamps and revision increments",
+    "cross-user Companion/Group IDs are indistinguishable from missing resources",
+    "Companion real concurrent CAS has exactly one commit; stale update/delete zero writes",
+    "groups preserve includesOwner and order; duplicate/foreign/max members reject with zero writes",
+    "group CAS race returns one snapshot winner; stale update/delete preserve complete aggregate",
+    "real SQL failure during membership insertion rolls back both create and replacement",
+    "direct real RLS denies foreign and anon CRUD; RPC security is invoker",
+    "count boundaries and concurrent create cannot exceed the per-owner caps",
+    "hard delete cascades memberships, advances affected group CAS, and group delete preserves masters",
+    "browser 1920x1080 load/create/edit/reload/group order/owner/delete",
+    "browser 1440x900 load/create/edit/reload/group order/owner/delete",
+    "browser 1280x720 load/create/edit/reload/group order/owner/delete",
+    "browser 390x844 load/create/edit/reload/group order/owner/delete",
+    "browser 320x740 load/create/edit/reload/group order/owner/delete",
+    "browser dirty guard, companion conflict preserves draft and explicit reload recovery",
+    "browser group conflict preserves full draft and reloads canonical ordered membership",
+    "browser API loading/error/retry and unauthenticated navigation",
+    "browser diagnostics: zero JS/console errors and zero unexpected mutations",
+    "Auth user deletion cascades owned rows while other account remains"
+  ],
+  "diagnostics": {
+    "pageErrors": [],
+    "consoleErrors": [],
+    "baselineNetworkErrors": [
+      {
+        "url": "/favicon.ico",
+        "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      }
+    ],
+    "expectedHttpErrors": [
+      "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "Failed to load resource: net::ERR_FAILED"
+    ],
+    "unexpectedMutations": [],
+    "geometry": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "route": "/",
+        "match": true
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "route": "/start",
+        "match": true
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "route": "/planner",
+        "match": true
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "route": "/personal-center",
+        "match": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "route": "/",
+        "match": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "route": "/start",
+        "match": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "route": "/planner",
+        "match": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "route": "/personal-center",
+        "match": true
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "route": "/",
+        "match": true
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "route": "/start",
+        "match": true
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "route": "/planner",
+        "match": true
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "route": "/personal-center",
+        "match": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "route": "/",
+        "match": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "route": "/start",
+        "match": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "route": "/planner",
+        "match": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "route": "/personal-center",
+        "match": true
+      },
+      {
+        "width": 320,
+        "height": 740,
+        "route": "/",
+        "match": true
+      },
+      {
+        "width": 320,
+        "height": 740,
+        "route": "/start",
+        "match": true
+      },
+      {
+        "width": 320,
+        "height": 740,
+        "route": "/planner",
+        "match": true
+      },
+      {
+        "width": 320,
+        "height": 740,
+        "route": "/personal-center",
+        "match": true
+      }
+    ],
+    "viewports": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "overflow": 0,
+        "crud": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "crud": true
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "overflow": 0,
+        "crud": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "crud": true
+      },
+      {
+        "width": 320,
+        "height": 740,
+        "overflow": 0,
+        "crud": true
+      }
+    ]
+  },
+  "complete": true
+}

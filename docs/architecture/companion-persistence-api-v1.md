@@ -1,16 +1,16 @@
 # TravelAssist — WBS 5.17 Companion Persistence API v1 设计书
 
-> 文档版本：v1.0 / Implementation Baseline  
-> 日期：2026-09-12  
-> WBS：5.17 — Companion 持久化 API  
-> Owner：B / Personal Center / Companion Data  
-> 优先级：P1  
-> 依赖：5.12 Companion Schema 已完成；8.1 DB Foundation 已完成  
-> 复用模式：5.16 Preference Persistence API  
-> 发布基线：`origin/develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`  
-> Tracking：Issue #324  
-> 规格发布分支：`task/b-wbs-5-17-companion-persistence-api`  
-> 计划实现分支：`codex/b-account-wbs-5-17-companion-persistence-api`  
+> 文档版本：v1.0 / Implementation Baseline\
+> 日期：2026-09-12\
+> WBS：5.17 — Companion 持久化 API\
+> Owner：B / Personal Center / Companion Data\
+> 优先级：P1\
+> 依赖：5.12 Companion Schema 已完成；8.1 DB Foundation 已完成\
+> 复用模式：5.16 Preference Persistence API\
+> 发布基线：`origin/develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`\
+> Tracking：Issue #324\
+> 规格发布分支：`task/b-wbs-5-17-companion-persistence-api`\
+> 计划实现分支：`codex/b-account-wbs-5-17-companion-persistence-api`\
 > 状态：**可开始；规格冻结，等待 Codex 实施**
 
 ---

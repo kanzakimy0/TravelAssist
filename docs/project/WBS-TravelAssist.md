@@ -882,7 +882,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 5.14   | Planner 可读取的 Preference Contract | B      | P0     | 5.11,5.16 | 进行中 |
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
 | 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 已完成 |
-| 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 未开始 |
+| 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 待审查 |
 | 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 可开始（#207；#186 / #216 已合并，实施前重新检查） |
 | 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 未开始 |
 | 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 未开始 |

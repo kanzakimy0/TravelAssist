@@ -1,12 +1,12 @@
 # WBS 5.17 Companion 持久化 API — Start Amendment
 
-> 日期：2026-09-12  
-> Owner：B  
-> WBS：5.17  
-> Priority：P1  
-> Issue：#324  
-> Task：TASK-047-B  
-> Publication branch：`task/b-wbs-5-17-companion-persistence-api`  
+> 日期：2026-09-12\
+> Owner：B\
+> WBS：5.17\
+> Priority：P1\
+> Issue：#324\
+> Task：TASK-047-B\
+> Publication branch：`task/b-wbs-5-17-companion-persistence-api`\
 > Publication baseline：`develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`
 
 ## Canonical Start Decision

@@ -1,12 +1,12 @@
 # TASK-047-B — WBS 5.17 Companion Persistence API v1
 
-> Owner：B / Personal Center / Companion Data  
-> WBS：5.17 / P1  
-> Issue：#324  
-> Publication baseline：`develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`  
-> Spec branch：`task/b-wbs-5-17-companion-persistence-api`  
-> Implementation branch：`codex/b-account-wbs-5-17-companion-persistence-api`  
-> Target：`develop`  
+> Owner：B / Personal Center / Companion Data\
+> WBS：5.17 / P1\
+> Issue：#324\
+> Publication baseline：`develop@6750a50d9fc49e561e60d25e7ebfc90c76c60a60`\
+> Spec branch：`task/b-wbs-5-17-companion-persistence-api`\
+> Implementation branch：`codex/b-account-wbs-5-17-companion-persistence-api`\
+> Target：`develop`\
 > Status：Ready for Codex implementation
 
 ---
