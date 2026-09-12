@@ -41,7 +41,10 @@ test("all 50 TASK-041 Region identities are preserved and resolve active", () =>
   assert.equal(result.regionAllocation.activeResolved, 50);
   assert.equal(result.regionAllocation.nullMasterCodes, 0);
   assert.equal(result.regionAllocation.unknownRegionRefs, 0);
-  assert.deepEqual(result.regionAllocation.graphTopologyFilesChangedByTask043, []);
+  assert.deepEqual(
+    result.regionAllocation.graphTopologyFilesChangedByTask043,
+    [],
+  );
 });
 
 test("Option A keeps null partial-only and proves a zero-null production projection", () => {

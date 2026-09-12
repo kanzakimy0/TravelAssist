@@ -26,10 +26,7 @@ const allocationPath = resolve(
   projectRoot,
   "docs/qa/TASK-043/region-allocation-50.json",
 );
-const regionPath = resolve(
-  projectRoot,
-  "docs/qa/TASK-041/region-nodes.json",
-);
+const regionPath = resolve(projectRoot, "docs/qa/TASK-041/region-nodes.json");
 
 const loadJson = (path) => JSON.parse(readFileSync(path, "utf8"));
 const clone = (value) => structuredClone(value);
@@ -125,11 +122,7 @@ function negativeInvariantChecks(registry, allocation, knownRegions) {
       "MASTER_CODE_REMOVED",
     ),
     unknownRegionAllocation: hasIssue(
-      validateRegionAllocationManifestV1(
-        unknownRegion,
-        registry,
-        knownRegions,
-      ),
+      validateRegionAllocationManifestV1(unknownRegion, registry, knownRegions),
       "UNKNOWN_REGION_ALLOCATION",
     ),
     unknownCodeFailsClosed: resolveMasterCode("99998") === null,
@@ -172,11 +165,7 @@ export function buildAcceptanceInvariantCheck() {
     /^jp-/i,
     /^JP$/i,
   ];
-  const negative = negativeInvariantChecks(
-    registry,
-    allocation,
-    knownRegions,
-  );
+  const negative = negativeInvariantChecks(registry, allocation, knownRegions);
 
   const check = {
     schemaVersion: "1.0",
@@ -233,8 +222,8 @@ export function buildAcceptanceInvariantCheck() {
       parsed: parsedAllocation.ok,
       sourceNodes: regionGraph.nodes.length,
       allocations: allocation.allocations.length,
-      regionIdsPreserved: regionGraph.nodes.filter(
-        ({ regionId }) => allocationByRegion.has(regionId),
+      regionIdsPreserved: regionGraph.nodes.filter(({ regionId }) =>
+        allocationByRegion.has(regionId),
       ).length,
       uniqueRegionIds: new Set(
         allocation.allocations.map(({ regionId }) => regionId),
