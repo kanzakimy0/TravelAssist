@@ -124,6 +124,8 @@ evidence, Result, and WBS tracking.
 - Production build: passed.
 - TASK-owned Prettier: passed.
 - `git diff --check`: passed.
+- GitHub `Install, test and build`: passed.
+- GitHub merge-eligibility check: passed; Draft state prevents automatic merge.
 
 ## Owner gate
 

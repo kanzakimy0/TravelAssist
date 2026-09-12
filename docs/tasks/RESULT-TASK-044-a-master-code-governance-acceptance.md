@@ -108,21 +108,23 @@ documentation, and tracking.
 
 ## Validation
 
-| Gate                           | Result           |
-| ------------------------------ | ---------------- |
-| TASK-044 focused               | 5/5 passed       |
-| TASK-043 focused               | 15/15 passed     |
-| TASK-041 Region Graph          | 17/17 passed     |
-| Planning Contracts             | 21/21 passed     |
-| Planning Soak                  | 6/6 passed       |
-| Routing                        | 28/28 passed     |
-| Trip / Engine focused          | 124/124 passed   |
-| Canonical full Node regression | 2459/2459 passed |
-| `npm run lint`                 | passed           |
-| `npm run typecheck`            | passed           |
-| `npm run build`                | passed           |
-| TASK-owned Prettier            | passed           |
-| `git diff --check`             | passed           |
+| Gate                             | Result                            |
+| -------------------------------- | --------------------------------- |
+| TASK-044 focused                 | 5/5 passed                        |
+| TASK-043 focused                 | 15/15 passed                      |
+| TASK-041 Region Graph            | 17/17 passed                      |
+| Planning Contracts               | 21/21 passed                      |
+| Planning Soak                    | 6/6 passed                        |
+| Routing                          | 28/28 passed                      |
+| Trip / Engine focused            | 124/124 passed                    |
+| Canonical full Node regression   | 2459/2459 passed                  |
+| `npm run lint`                   | passed                            |
+| `npm run typecheck`              | passed                            |
+| `npm run build`                  | passed                            |
+| TASK-owned Prettier              | passed                            |
+| `git diff --check`               | passed                            |
+| GitHub `Install, test and build` | passed                            |
+| GitHub merge-eligibility check   | passed; Draft PR remains unmerged |
 
 The first restricted-sandbox full Node run passed 2455 tests and reported four
 esbuild filesystem access failures. The identical canonical command was rerun with
