@@ -53,7 +53,9 @@
     "test:companions": "node --import ./tests/register-route-ts.mjs --test tests/task-044-companion-schema.test.mjs",
     "test:companions:db": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-044-companion-schema.runtime.mjs",
     "test:preference-api": "node --import ./tests/register-route-ts.mjs --test tests/task-045-preference-api.test.mjs",
-    "test:preference-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-045-preference-api.runtime.mjs"
+    "test:preference-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-045-preference-api.runtime.mjs",
+    "test:companion-api": "node --import ./tests/register-route-ts.mjs --test tests/task-047-companion-api.test.mjs",
+    "test:companion-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-047-companion-api.runtime.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
