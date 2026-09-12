@@ -121,7 +121,13 @@ test("TASK-050 strict UUID syntax normalizes case", () => {
     parseEmergencyContactId("01234567-89AB-CDEF-0123-456789ABCDEF"),
     "01234567-89ab-cdef-0123-456789abcdef",
   );
-  for (const v of ["x", null, "0123456789abcdef0123456789abcdef", "../profile"])
+  for (const v of [
+    "x",
+    null,
+    "0123456789abcdef0123456789abcdef",
+    "../profile",
+    "01234567-89ab-cdef-0123-456789abcdef\n",
+  ])
     invalid(() => parseEmergencyContactId(v));
 });
 test("TASK-050 response contract strips nothing silently and exposes no metadata", () => {

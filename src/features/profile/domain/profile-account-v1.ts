@@ -67,7 +67,12 @@ function choice<const T extends readonly string[]>(values: T) {
   };
 }
 function country(value: unknown) {
-  if (typeof value !== "string" || !/^[A-Z]{2}$/.test(value)) invalid();
+  if (
+    typeof value !== "string" ||
+    value.length !== 2 ||
+    !/^[A-Z]{2}$/.test(value)
+  )
+    invalid();
   return value;
 }
 function date(value: unknown) {
@@ -127,7 +132,11 @@ function currency(value: unknown) {
   return value;
 }
 function phone(value: unknown) {
-  if (typeof value !== "string" || !/^\+[1-9][0-9]{1,14}$/.test(value))
+  if (
+    typeof value !== "string" ||
+    value !== value.trim() ||
+    !/^\+[1-9][0-9]{1,14}$/.test(value)
+  )
     invalid();
   return value;
 }
@@ -241,6 +250,7 @@ export function parseCreateEmergencyContactV1(
 export function parseEmergencyContactId(input: unknown): string {
   if (
     typeof input !== "string" ||
+    input.length !== 36 ||
     !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
       input,
     )

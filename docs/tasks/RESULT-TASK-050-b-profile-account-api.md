@@ -2,15 +2,15 @@
 
 ## Status
 
-实现、真实 Local Supabase/Auth/RLS 验收与本地质量门完成。Draft PR 和 GitHub Quality Gate 待发布确认；WBS 5.15 暂保持进行中。
+实现、真实 Local Supabase/Auth/RLS 验收与本地质量门完成。Draft PR #337 已创建；首轮 GitHub Quality Gate 通过，最终边界修正提交待确认；WBS 5.15 暂保持进行中。
 
 - Owner：B / Personal Center。
 - Issue：[#336](https://github.com/kanzakimy0/TravelAssist/issues/336)，保持 Open。
 - 执行基线 / 最新 develop：`1af8d7feac7fa2d254ca85a00061bf6d6b0e7940`。
 - 实现分支：`codex/b-account-wbs-5-15-profile-account-api`，从执行时最新 origin/develop 创建，没有从 Spec branch 开发。
 - Dependency Gate：8.2 / TASK-016-B、8.3 / TASK-018-B 均已完成并合入；依赖通过。
-- 实现提交：待首次提交记录。
-- Draft PR：待创建，目标 develop，使用 `Relates to #336`。
+- 初始实现提交：`11f82ea7fa636cb64a9394f82bcf3d9931d9750a`；补充尾随换行边界修正待最终 head 记录。
+- Draft PR：[#337](https://github.com/kanzakimy0/TravelAssist/pull/337)，目标 develop，使用 `Relates to #336`。
 
 ## API 与契约
 
@@ -44,10 +44,10 @@
 | 检查                                       | 结果                                                          |
 | ------------------------------------------ | ------------------------------------------------------------- |
 | npm ci                                     | PASS                                                          |
-| npm run test:profile-api                   | 100/100 PASS                                                  |
+| npm run test:profile-api                   | 104/104 PASS                                                  |
 | 真实 Profile API / Local Auth / RLS / Edge | 25/25 PASS                                                    |
 | TASK-016 Schema / RLS / FK 回归            | 25/25 PASS                                                    |
-| 全仓测试                                   | 1,843/1,843 PASS（基线 1,743/1,743）                          |
+| 全仓测试                                   | 1,847/1,847 PASS（基线 1,743/1,743）                          |
 | 修改代码/测试 ESLint                       | PASS，0 errors / 0 warnings                                   |
 | npm run lint                               | 7 项原有历史缓存错误，before/after 输出逐字节一致，新增问题 0 |
 | typecheck / build                          | PASS                                                          |
@@ -56,7 +56,7 @@
 | deploy:verify-artifact                     | PASS，1,860 文件                                              |
 | 生产浏览器包检查                           | PASS，34 chunks；server-only/纯契约边界通过                   |
 | git diff --check                           | PASS                                                          |
-| GitHub Quality Gate                        | 待首次 push 后确认                                            |
+| GitHub Quality Gate                        | 首轮 PASS；最终修正 head 待确认                               |
 
 本地 lint 的既有错误位于 `.cache/qa/task024-worktree/.cache/qa/*.cjs`，未删除历史工作区或放宽规则。具体 before/after SHA-256 与验收场景见 [QA README](../qa/TASK-050/README.md)、[quality-gates.json](../qa/TASK-050/quality-gates.json)、[runtime-summary.json](../qa/TASK-050/runtime-summary.json)。
 

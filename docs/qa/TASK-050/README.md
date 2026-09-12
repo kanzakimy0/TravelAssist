@@ -29,9 +29,9 @@ git diff --check
 
 ## 结果与证据
 
-- [runtime-summary.json](runtime-summary.json)：24 个真实验收场景，含父测试共 25/25 PASS；68 个非法 Profile/settings payload、25 个非法 Contact payload；真实 Edge Cookie/native fetch；34 个生产浏览器 JS chunks。
+- [runtime-summary.json](runtime-summary.json)：24 个真实验收场景，含父测试共 25/25 PASS；70 个非法 Profile/settings payload、27 个非法 Contact payload；真实 Edge Cookie/native fetch；34 个生产浏览器 JS chunks。
 - [quality-gates.json](quality-gates.json)：基线/候选测试、原样文件范围、生成类型及 lint before/after SHA-256。
-- 专项纯测试 100/100；全仓由 1,743/1,743 增至 1,843/1,843；TASK-016 真实 Schema/Drizzle/RLS/FK 25/25。
+- 专项纯测试 104/104；全仓由 1,743/1,743 增至 1,847/1,847；TASK-016 真实 Schema/Drizzle/RLS/FK 25/25。
 - 本地全仓 lint 的 7 个 `no-require-imports` 错误全部来自忽略的历史 `.cache/qa/task024-worktree/.cache/qa/*.cjs`，运行前后输出逐字节相同。新增/修改源代码和测试 lint 为 0 errors / 0 warnings。未清理历史工作区、未放宽 ESLint。
 - typecheck、build、部署格式、local 环境校验、standalone 构建与 1,860 文件制品检查、diff whitespace 均通过。
 

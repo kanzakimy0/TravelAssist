@@ -112,6 +112,8 @@ test("TASK-050 real Local Supabase/Auth/RLS/Profile HTTP acceptance", async (t) 
         ...(options.cookie && method !== "GET" ? { Origin: app.origin } : {}),
         ...options.headers,
       };
+      // An empty Origin test option means the header is genuinely absent.
+      if (options.headers?.Origin === "") delete headers.Origin;
       const response = await fetch(app.origin + path, {
         method,
         headers,
