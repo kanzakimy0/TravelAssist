@@ -3,10 +3,10 @@
 ## 状态与基线
 
 - Owner：B / Personal Center；Issue #345。
-- 实现及真实 Local Supabase/Auth/browser 验收完成，WBS 5.13 待审查；不标记已完成。
+- 用户最终验收通过，PR #346 已合入 develop，WBS 5.13 已完成。
 - 执行基线：`4da2b8883069cd415eee6e18129c874383286653`，最新 origin/develop；未从 Spec Branch 开发。
 - 实现分支：`codex/b-account-wbs-5-13-preference-presets-defaults`。
-- [Draft PR #346](https://github.com/kanzakimy0/TravelAssist/pull/346)；base = develop；Issue #345 保持 Open。
+- [PR #346](https://github.com/kanzakimy0/TravelAssist/pull/346) 已合并到 develop；Issue #345 按用户验收关闭为 Completed。
 - 最终 exact head 的 SHA / Quality Gate run 将记录在 PR 与 Issue 审查记录；只有该 head PASS 后才交付，后续 commit 必须重新验证。
 
 ## 实现
@@ -88,3 +88,15 @@
 DB/API/Auth/RLS/revision/CAS、5.14 read contract、Trip Library persistence、Planner/AI/Engine/POI、A 43 维 contract 无改动。没有 migration/RPC/表/列、新 API、preset metadata persistence 或 23→43 mapping。
 
 Issue #345 = Open；PR #346 = Draft/Open → develop；WBS 5.13 = 待审查（#345 / TASK-053-B；Draft PR #346）。未合并，未启动 8.6、9.5、9.6 或其他后续 Task；未执行任何禁止的 Git 命令。
+
+## Final Acceptance / Merge Closeout（2026-09-13）
+
+用户明确验收 WBS 5.13 并授权合并。上方初始实现、Draft/待审查及原始 QA 数量为历史阶段记录，完整保留；最终状态以本节为准。
+
+- Accepted exact head：`7f1e24a76e5e7b777db30d9ec4b5a1d5e6cf4aa5`。
+- 集成基线：`861e8324b2e7593004e018ee5c9a7eb0b7d42e0e`；完整保留 Master Code Registry/TASK-043 及最新脚本、WBS 更新。
+- 最终全仓 2476/2476；TASK-053 pure 22/22、真实 Local/browser 21/21；Master Code Registry 15/15，QA 50 个 Region allocations。
+- Accepted head 的 [Quality Gate 34701358153](https://github.com/kanzakimy0/TravelAssist/actions/runs/34701358153) PASS，包含 GitHub lint/typecheck/format/build/artifact。
+- [PR #346](https://github.com/kanzakimy0/TravelAssist/pull/346) 已合并；merge commit：`857f01c5eec0dfa3ca7f89e76fefaadc4c1488f1`，已 fetch 并通过 ancestor 检查确认进入 origin/develop。
+- WBS 5.13 = B / 已完成（#345 / TASK-053-B；用户验收，PR #346 已合并）；Issue #345 = Closed / Completed。
+- 收尾只同步本 Result 和 Master WBS 的 5.13 行；没有 runtime 变更，没有启动 8.6、9.5、9.6 或其他后续 Task。
