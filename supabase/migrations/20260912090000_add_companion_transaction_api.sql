@@ -96,4 +96,3 @@ revoke all on function public.mutate_companion_v1(text,uuid,integer,jsonb), publ
 grant execute on function public.mutate_companion_v1(text,uuid,integer,jsonb), public.mutate_companion_group_v1(text,uuid,integer,text,boolean,uuid[]) to authenticated;
 comment on function public.mutate_companion_group_v1 is '5.17 owner-scoped group CAS and ordered membership snapshot transaction; invoker RLS.';
 commit;
-

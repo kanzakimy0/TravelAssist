@@ -573,17 +573,17 @@ delete -> hard reload -> remains deleted
 
 最低语义：
 
-| HTTP | 语义 |
-|---:|---|
-| 200 | GET / PUT success |
-| 201 | POST create success |
-| 204 | DELETE success |
-| 400 | malformed JSON / invalid id / missing-invalid revision header |
-| 401 | unauthenticated |
-| 404 | missing or not-owned resource |
-| 409 | stale revision / deterministic ownership-membership conflict |
-| 422 | 仅当仓库既有约定明确区分 domain validation 时使用；否则沿用 400 |
-| 500 | unexpected server failure，不能泄漏 token / SQL / secrets |
+| HTTP | 语义                                                            |
+| ---: | --------------------------------------------------------------- |
+|  200 | GET / PUT success                                               |
+|  201 | POST create success                                             |
+|  204 | DELETE success                                                  |
+|  400 | malformed JSON / invalid id / missing-invalid revision header   |
+|  401 | unauthenticated                                                 |
+|  404 | missing or not-owned resource                                   |
+|  409 | stale revision / deterministic ownership-membership conflict    |
+|  422 | 仅当仓库既有约定明确区分 domain validation 时使用；否则沿用 400 |
+|  500 | unexpected server failure，不能泄漏 token / SQL / secrets       |
 
 建议稳定错误 code：
 

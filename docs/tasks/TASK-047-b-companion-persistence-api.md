@@ -470,12 +470,12 @@ Anon
 
 验证矩阵：
 
-| Actor | A resource | B resource | Expected |
-|---|---|---|---|
-| A | A Companion/Group | — | CRUD allowed |
-| B | A Companion/Group | — | read/write/delete unavailable |
-| A | memberIds contains B Companion | — | reject, no partial write |
-| Anon | any mutation | — | 401 / denied |
+| Actor | A resource                     | B resource | Expected                      |
+| ----- | ------------------------------ | ---------- | ----------------------------- |
+| A     | A Companion/Group              | —          | CRUD allowed                  |
+| B     | A Companion/Group              | —          | read/write/delete unavailable |
+| A     | memberIds contains B Companion | —          | reject, no partial write      |
+| Anon  | any mutation                   | —          | 401 / denied                  |
 
 并完成 CAS race：
 
