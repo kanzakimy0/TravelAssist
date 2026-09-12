@@ -41,7 +41,8 @@ export type TravelRegionNodeV1 = {
   contractVersion: PlanningContractVersion;
   schemaVersion: "1.0";
   regionId: PlanningId;
-  masterCode: string;
+  /** Null until an entry is allocated by the canonical Master Code registry. */
+  masterCode: string | null;
   regionType: RegionType;
   names: {
     nameJa: string | null;
