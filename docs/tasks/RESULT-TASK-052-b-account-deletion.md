@@ -1,5 +1,7 @@
 # TASK-052-B Result
 
+**当前状态：已完成。** 用户于 2026-09-12 验收通过并授权合并；PR #343 已合入 develop，Issue #342 已 Closed / Completed。以下原始实现和待审查表述保留为历史，以本节及文末验收合并收尾为准。
+
 ## 状态与基线
 
 实现、真实 Local Supabase/Auth/Storage/浏览器验收和本地 Quality Gates 已完成。WBS 5.21 待审查，等待用户验收；不标记已完成、不自动合并、不启动后续 Task。
@@ -144,3 +146,13 @@ Master WBS 仅改两行，其他内容保持执行基线：
 Issue #342 保持 Open，PR 保持 Draft/Open，目标 develop；不 auto-merge。Auth Core/private-http、既有 Profile/Preference/Companion/Trip API、RLS/CAS、schema/migration/generated types、Planner/Start/Engine/POI/Trip boundaries 均未改；未启动 5.13、8.6、9.5、9.6 或其他后续 Task。
 
 完整机器证据与复现说明见 [TASK-052 QA](../qa/TASK-052/README.md)。仅保存合成别名、数量、表/约束名与布尔值，没有 PII 删除账本、凭据或账户 UUID。
+
+## 用户验收与合并收尾
+
+- 用户明确确认“5.21验收通过，合并”。
+- [PR #343](https://github.com/kanzakimy0/TravelAssist/pull/343) 已合并到 develop，合并时间：2026-09-12T13:08:56Z。
+- 合并提交：`1f88c351e6458866e0d17aaa195d2e764579a549`。
+- 验收 head：`69840a9ae41577eb4fcd39352cb0b5e59cc07c15`；[GitHub Quality Gate PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/34693770382)。
+- 合并树与验收 head 的 Git tree 完全一致：`f6a6024c4b15b0a03651bdd2dc91958ebbbf6828`，此前真实 Local/Auth/Storage/browser 与全仓测试证据适用于合并树。
+- Master WBS 仅同步 5.21 为“已完成（#342 / TASK-052-B；用户验收，PR #343 已合并）”，保留其他 A/B 更新。
+- Issue #342 = Closed / Completed；本次收尾仅修改 Master WBS 和本 Result，不修改 runtime、测试、schema 或历史 QA 证据，不启动后续 Task。
