@@ -2,14 +2,16 @@
 
 ## 状态
 
-本地实现、真实数据库与回归验收通过；等待创建 Draft PR 和 GitHub Quality Gate。
-WBS 5.18 当前为进行中，交付收尾后改为待审查。Issue #329 保持 Open。
+实现、真实 Local Supabase/Auth/RLS 与全部回归验收已完成，GitHub Quality Gate 通过。
+**WBS 5.18 = 待审查；[PR #331](https://github.com/kanzakimy0/TravelAssist/pull/331) = Open / Draft；Issue #329 = Open。**
 
 - Repository: https://github.com/kanzakimy0/TravelAssist
 - Branch: `codex/b-account-wbs-5-18-trip-data-model`
 - 执行基线与最终整合 develop：`b7eb931698da69cec73f7a0399897dbb5caab8c2`
 - Spec：`task/b-wbs-5-18-trip-data-model`，`50dafd9b4f5aeb5fa8e46575fc620f9833e6d841`
-- 实现 commit / PR：发布后补记。
+- 实现 commit：`6d4d2d8188cef9d5f7d2a13b4f0d94cc3ed41d0c`。
+- Draft PR：[#331](https://github.com/kanzakimy0/TravelAssist/pull/331)，base `develop`。
+- 最后收尾提交仅同步本 Result、QA、设计顶部状态和 WBS；最终 head 以 PR 分支为准。
 
 已先执行工作树、分支、fetch、最新 develop SHA 与最近 15 个提交检查，完整读取远端
 Launcher、Task、设计书、启动记录及指定源文件。4.17、8.1、5.11/5.16、5.12/5.17
@@ -121,25 +123,25 @@ creation-key 与快照思路按单聚合重做；API/autosave 延后，旧生成
 
 ## 实际验证
 
-| Gate                                                | 结果                                                    |
-| --------------------------------------------------- | ------------------------------------------------------- |
-| `npm ci`                                            | PASS；395 packages，0 vulnerabilities                   |
-| 未修改源码基线全仓测试                              | 1590/1590 PASS                                          |
-| 最终全仓测试                                        | 1667/1667 PASS，0 fail / 0 skip                         |
-| TASK-048 pure/domain                                | 77/77 PASS                                              |
-| TASK-048 real Local Auth/DB/RLS                     | 29/29 PASS                                              |
-| Profile DB                                          | 25/25 PASS                                              |
-| Preference DB                                       | 505/505 PASS                                            |
-| Companion DB                                        | 147/147 PASS                                            |
-| Preference API/浏览器                               | 17/17 PASS                                              |
-| Companion API/RLS/CAS/浏览器                        | 22/22 PASS，五尺寸回归                                  |
-| `npm run lint`                                      | 基线与候选均为相同 7 个本机缓存错误；新改动 ESLint PASS |
-| `npm run typecheck`、`npm run build`                | PASS；基线也 PASS                                       |
-| `npm run format:check:deploy`                       | PASS                                                    |
-| deploy local validation/build/artifact verification | PASS；1783 个产物文件验证                               |
-| 客户端 DB/凭据泄漏检查                              | PASS；34 个浏览器 JS chunks                             |
-| `git diff origin/develop --check`                   | PASS                                                    |
-| GitHub Quality gate                                 | 待 Draft PR 创建后执行                                  |
+| Gate                                                | 结果                                                                                                                                 |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm ci`                                            | PASS；395 packages，0 vulnerabilities                                                                                                |
+| 未修改源码基线全仓测试                              | 1590/1590 PASS                                                                                                                       |
+| 最终全仓测试                                        | 1667/1667 PASS，0 fail / 0 skip                                                                                                      |
+| TASK-048 pure/domain                                | 77/77 PASS                                                                                                                           |
+| TASK-048 real Local Auth/DB/RLS                     | 29/29 PASS                                                                                                                           |
+| Profile DB                                          | 25/25 PASS                                                                                                                           |
+| Preference DB                                       | 505/505 PASS                                                                                                                         |
+| Companion DB                                        | 147/147 PASS                                                                                                                         |
+| Preference API/浏览器                               | 17/17 PASS                                                                                                                           |
+| Companion API/RLS/CAS/浏览器                        | 22/22 PASS，五尺寸回归                                                                                                               |
+| `npm run lint`                                      | 基线与候选均为相同 7 个本机缓存错误；新改动 ESLint PASS                                                                              |
+| `npm run typecheck`、`npm run build`                | PASS；基线也 PASS                                                                                                                    |
+| `npm run format:check:deploy`                       | PASS                                                                                                                                 |
+| deploy local validation/build/artifact verification | PASS；1783 个产物文件验证                                                                                                            |
+| 客户端 DB/凭据泄漏检查                              | PASS；34 个浏览器 JS chunks                                                                                                          |
+| `git diff origin/develop --check`                   | PASS                                                                                                                                 |
+| GitHub Quality gate                                 | PASS；[实现提交 Quality gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34671931806)；最后文档提交的门禁另在交付时复核 |
 
 全仓回归包含原有 WBS 4.17 Trip Contract、TASK-036 Planning Contract、TASK-037 soak，
 以及 Profile/Preference/Companion/Personal Center/Trip Library 测试，没有削弱既有断言。
