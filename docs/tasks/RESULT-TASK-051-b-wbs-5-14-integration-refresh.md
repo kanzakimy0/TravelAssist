@@ -96,3 +96,15 @@ Lint 7 个错误均在旧 `.cache/qa/task024-worktree/.cache/qa/*.cjs`，规则 
 - [PR #323](https://github.com/kanzakimy0/TravelAssist/pull/323) 继续 Open / Draft，base develop；最终 mergeable 与准确 head CI 按上方账本核对。
 - A / designated integration review、用户最终验收 Pending；5.14 未完成、PR 未自动合并。
 - 未启动 4.18、5.13、5.21、8.6 或任何其他后续 Task；未触及 #221 / #207。
+
+## 用户验收与合并收尾（2026-09-12）
+
+- 用户明确回复“5.14验收通过，合并”，已授权最终验收与合并。WBS 5.14 = B / 已完成。
+- [PR #323](https://github.com/kanzakimy0/TravelAssist/pull/323) 于 2026-09-12T10:02:21Z 合入 develop。
+- 验收 head：`9d260828c6a069ff1168d3f7538c94ee8fb8b5c5`；[GitHub Quality Gate #34685055541](https://github.com/kanzakimy0/TravelAssist/actions/runs/34685055541) PASS，run.headSha 与验收 head 相同。
+- 合并提交：`da1a36cc24e766702d4da72acd1d077eb9d27f67`。fetch 后确认位于 origin/develop；合并树与验收 head 完全一致。合并前 develop 仍为 `736d0004a4807721120b1ce3f29224a944045db6`，无新增集成差异。
+- [Issue #321](https://github.com/kanzakimy0/TravelAssist/issues/321) 与 [Issue #339](https://github.com/kanzakimy0/TravelAssist/issues/339) 按本次验收授权关闭为 Completed。
+- 用户最终验收已通过；未声称存在独立 A / GitHub APPROVED review。此前 Pending、Draft、Open、待审查描述保留为历史阶段，以本节及当前 Master 状态为准。
+- TASK-051 本轮全量 2387/2387、Contract 540/540、真实 Contract/Auth/browser 13/13、Preference DB/RLS 505/505、Preference API 17/17、Trip Library API 35/35 等证据沿用同一已验收实现；7 个本机旧缓存 lint 错误及 baseline 对照原样保留。
+- 本次收尾仅改 Master 5.14 状态与 TASK-046/TASK-051 Result，不重跑未修改的 runtime，不改变冻结 contract / Auth / RLS / DB / A 43 维契约。
+- 未启动 4.18、5.13、5.21、8.6 或其他后续 Task。
