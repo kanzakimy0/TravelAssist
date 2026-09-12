@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "decisionStatus": "candidate_pending_human_review",
+  "currentContract": "TravelRegionNodeV1.masterCode: string | null",
+  "recommendation": "option_a_nullable_pending_allocation",
+  "optionA": {
+    "summary": "Canonical Region records may carry null only while allocation is pending; production-complete datasets require an active registry resolution.",
+    "affectedConsumers": [
+      "TravelRegionNodeV1",
+      "parseTravelRegionGraphV1",
+      "TASK-041 fixtures and graph validation",
+      "future Region persistence projections"
+    ],
+    "migrationImpact": "No immediate schema migration; later consumers must distinguish partial/draft from production-complete graphs.",
+    "validatorImpact": "Base parser continues accepting null; production-completeness validation must require all non-null codes to resolve active and require zero nulls.",
+    "fixtureImpact": "Partial fixtures may retain null; accepted production fixtures must use registry allocations.",
+    "persistenceImpact": "Persistence may store nullable pending values only with explicit partial status; it must not synthesize an identifier.",
+    "productionCompletenessSemantics": "A graph is production-complete only when every canonical Region resolves to one active Master Code.",
+    "breakingChange": false
+  },
+  "optionB": {
+    "summary": "Canonical Region nodes require non-null Master Codes and unresolved candidates move to a separate draft representation.",
+    "affectedConsumers": [
+      "TravelRegionNodeV1",
+      "all graph parsers",
+      "all graph fixtures",
+      "Region persistence schema",
+      "ingestion and editorial tooling"
+    ],
+    "migrationImpact": "Breaking migration for every partial graph and any persistence row carrying null.",
+    "validatorImpact": "Canonical parser becomes strict non-null and a second explicit unresolved/draft parser is required.",
+    "fixtureImpact": "All partial fixtures must move to the draft representation before canonical parsing.",
+    "persistenceImpact": "Canonical tables become non-null while draft storage needs a separate table or discriminated record.",
+    "productionCompletenessSemantics": "Canonical type membership itself proves allocation completeness.",
+    "breakingChange": true
+  },
+  "rationale": [
+    "Option A preserves the reviewed TASK-041 contract and avoids a breaking consumer migration.",
+    "Fail-closed completeness is still enforced at publication rather than by inventing a placeholder code.",
+    "Human governance review may choose Option B later; TASK-043 does not freeze the choice."
+  ],
+  "sharedContractModifiedByTask043": false
+}

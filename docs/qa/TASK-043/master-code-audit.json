@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "auditedDevelopSha": "163c4c4e5788e0cf2920a5187c63952db00349cc",
+  "auditDate": "2026-09-12",
+  "auditScope": {
+    "patterns": ["Master Code", "masterCode", "master_code"],
+    "excludedHumanReviewData": [
+      "docs/qa/TASK-038",
+      "docs/qa/TASK-039",
+      "docs/qa/TASK-040"
+    ],
+    "registryLikeTrackedFilesReviewed": 25,
+    "identityFamiliesReviewed": [
+      "destination_id",
+      "administrative_code",
+      "region_id",
+      "poi_id",
+      "transport_node_id",
+      "asset_id",
+      "ai_local_id",
+      "database_primary_key"
+    ]
+  },
+  "findings": {
+    "reusableCanonicalNamespaceScheme": true,
+    "reusableSchemeSource": "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8",
+    "existingCanonicalAllocationRegistryBeforeTask043": false,
+    "decision": "Reuse the inherited five-digit numeric ranges and add the first repository-owned allocation registry; do not create a second grammar.",
+    "inheritedLifecycleGovernanceCompleteBeforeTask043": false,
+    "existingRegionConsumerAllowsPendingNull": true,
+    "task041Nodes": 50,
+    "task041PriorInvalidAssignments": 50,
+    "task041PriorDestinationIdMisuse": 14,
+    "task041PriorCountryCodeMisuse": 1,
+    "task041PriorSideChannelMisuse": 35
+  },
+  "canonicalBoundaries": [
+    "Master Code != regionId",
+    "Master Code != destination_id",
+    "Master Code != administrative code",
+    "Master Code != transport-node ID",
+    "Master Code != POI ID",
+    "Master Code != AI local ID",
+    "Master Code != database primary key"
+  ],
+  "reviewedConsumers": [
+    "src/shared/contracts/planning/regions.ts",
+    "src/shared/contracts/planning/validation.ts",
+    "docs/architecture/travel-region-graph-codebook-v0.1.md",
+    "docs/architecture/poi-master-schema-v0.1.md",
+    "docs/architecture/poi-master-schema-v0.2.md",
+    "docs/qa/TASK-041/region-nodes.json",
+    "tools/qa/region-graph-pilot.mjs"
+  ],
+  "candidateRegistry": {
+    "sourceOfTruth": "src/shared/data/master-code-registry.v1.json",
+    "registryRevision": "task-043-candidate-r1",
+    "totalEntries": 51,
+    "activeRegionEntries": 50,
+    "governanceStatus": "candidate"
+  }
+}
