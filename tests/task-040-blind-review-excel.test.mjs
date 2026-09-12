@@ -23,7 +23,7 @@ import { validateReviewerResponse } from "../tools/qa/poi-scoring-blind-review.m
 
 const TASK040 = path.resolve("docs/qa/TASK-040");
 const workbookPath = (code) =>
-  path.join(TASK040, `reviewer-${code.toLowerCase()}-blind-review.xlsx`);
+  path.join(TASK040, `reviewer-${code.toLowerCase()}-blind-review-v2.xlsx`);
 
 async function mutateWorkbook(code, mutate) {
   const directory = await mkdtemp(
@@ -79,6 +79,7 @@ test("workbook edit surface has filters, frozen panes, protection, hyperlinks, a
   assert.equal(review.getCell("Q2").protection.locked, false);
   assert.match(review.getCell("I2").value.hyperlink, /^https:\/\//);
   assert.equal(review.getCell("Q2").dataValidation.type, "list");
+  assert.match(review.getCell("Q2").dataValidation.formulae[0], /两者都不适合/);
   assert.match(review.getCell("Q2").dataValidation.formulae[0], /信息不足/);
   assert.equal(review.getCell("R2").dataValidation.type, "list");
   assert.match(review.getCell("R2").dataValidation.formulae[0], /高,中,低/);

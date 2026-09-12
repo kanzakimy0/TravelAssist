@@ -19,7 +19,7 @@ const LOCALIZATION_SHA256 = createHash("sha256")
   .update(LOCALIZATION_BYTES)
   .digest("hex");
 
-export const WORKBOOK_SCHEMA_VERSION = "task-040-xlsx-v2-zh-CN";
+export const WORKBOOK_SCHEMA_VERSION = "task-040-xlsx-v3-zh-CN";
 export const SHEET_NAMES = ["评审", "说明", "元数据"];
 export const REVIEW_HEADERS = [
   "序号",
@@ -42,14 +42,21 @@ export const REVIEW_HEADERS = [
   "置信度",
   "备注",
 ];
-export const CHOICES = ["A", "B", "TIE", "INSUFFICIENT_INFO"];
+export const CHOICES = [
+  "A",
+  "B",
+  "TIE",
+  "NEITHER_SUITABLE",
+  "INSUFFICIENT_INFO",
+];
 export const CONFIDENCES = ["high", "medium", "low"];
-export const DISPLAY_CHOICES = ["A", "B", "平局", "信息不足"];
+export const DISPLAY_CHOICES = ["A", "B", "平局", "两者都不适合", "信息不足"];
 export const DISPLAY_CONFIDENCES = ["高", "中", "低"];
 const CHOICE_TO_CANONICAL = new Map([
   ["A", "A"],
   ["B", "B"],
   ["平局", "TIE"],
+  ["两者都不适合", "NEITHER_SUITABLE"],
   ["信息不足", "INSUFFICIENT_INFO"],
 ]);
 const CONFIDENCE_TO_CANONICAL = new Map([
@@ -82,7 +89,7 @@ const packName = (reviewerCode) =>
   `reviewer-pack-${reviewerCode.toLowerCase()}.json`;
 
 const workbookName = (reviewerCode) =>
-  `reviewer-${reviewerCode.toLowerCase()}-blind-review.xlsx`;
+  `reviewer-${reviewerCode.toLowerCase()}-blind-review-v2.xlsx`;
 
 export async function loadPack(reviewerCode) {
   const sourcePath = path.join(SOURCE_DIR, packName(reviewerCode));
@@ -154,6 +161,7 @@ const PREFECTURES_ZH = {
   Aomori: "青森县",
   Chiba: "千叶县",
   Ehime: "爱媛县",
+  Fukuoka: "福冈县",
   Gifu: "岐阜县",
   Gunma: "群马县",
   Hiroshima: "广岛县",
@@ -175,6 +183,7 @@ const PREFECTURES_ZH = {
   Nara: "奈良县",
   Okayama: "冈山县",
   Okinawa: "冲绳县",
+  Oita: "大分县",
   Osaka: "大阪府",
   Shimane: "岛根县",
   Shizuoka: "静冈县",
@@ -187,20 +196,32 @@ const PREFECTURES_ZH = {
   Yamanashi: "山梨县",
 };
 const CATEGORIES_ZH = {
-  "Art or cultural venue": "艺术或文化场馆",
-  "Entertainment venue": "娱乐设施",
-  "Food-related place": "美食相关地点",
+  Aquarium: "水族馆",
+  "Art island or cultural destination": "艺术岛或文化目的地",
+  "Bridge or engineering landmark": "桥梁或工程地标",
+  Castle: "城堡",
+  "Historic or cultural district": "历史或文化街区",
+  "Food and entertainment district": "美食与娱乐街区",
   Garden: "庭园",
-  "Historic place": "历史景点",
+  "Historic site": "历史遗址或史迹",
+  "Historic village": "历史村落",
+  "Lake or waterside landscape": "湖泊或水边景观",
   Market: "市场",
-  "Mountain or highland place": "山岳或高原",
-  Museum: "博物馆",
-  "Natural place": "自然景点",
+  "Memorial site": "纪念地",
+  "Mountain or volcano": "山岳或火山",
+  "Museum or educational venue": "博物馆或教育场馆",
+  "National park or protected natural area": "国立公园或自然保护区",
+  "Natural landscape": "自然景观",
+  "Observation landmark": "观景地标",
+  "Hot-spring destination": "温泉目的地",
   Park: "公园",
-  "Scenic viewpoint": "景观眺望点",
-  "Shopping area": "购物区域",
-  "Shrine or religious site": "神社或宗教场所",
-  "Temple or religious site": "寺庙或宗教场所",
+  "Scenic district": "风景区",
+  Shrine: "神社",
+  Temple: "寺院",
+  "Theme park or interactive attraction": "主题乐园或互动景点",
+  "Urban landmark or district": "城市地标或街区",
+  "Wildlife park": "野生动物公园",
+  Zoo: "动物园",
 };
 
 function translated(map, value, label) {
@@ -247,7 +268,7 @@ const instructions = [
     "评审目标",
     "判断哪个景点更符合给出的旅行场景。请判断旅客适配度，而不是选择您个人更喜欢的景点。",
   ],
-  ["选择", "每题只能选择一项：A、B、平局或信息不足。"],
+  ["选择", "每题只能选择一项：A、B、平局、两者都不适合或信息不足。"],
   ["置信度", "每道已作答题目都必须选择高、中或低。"],
   [
     "独立性",
@@ -262,6 +283,10 @@ const instructions = [
     "不要推测实时营业时间、排队情况、天气、路线可行性、预约可用性或价格库存。",
   ],
   ["信息不足", "当现有信息不足以支持可靠判断时，请选择“信息不足”。"],
+  [
+    "两者都不适合",
+    "当现有信息已足以说明两个景点都不符合旅客需求时，请选择“两者都不适合”。",
+  ],
   [
     "受保护单元格",
     "请勿修改题目、景点身份或来源单元格。只有“选择”“置信度”和“备注”允许填写。",
@@ -400,10 +425,10 @@ export async function generateWorkbook(reviewerCode, outputPath) {
     row.getCell(17).dataValidation = {
       type: "list",
       allowBlank: true,
-      formulae: ['"A,B,平局,信息不足"'],
+      formulae: ['"A,B,平局,两者都不适合,信息不足"'],
       showErrorMessage: true,
       errorTitle: "选择无效",
-      error: "请选择 A、B、平局或信息不足。",
+      error: "请选择 A、B、平局、两者都不适合或信息不足。",
     };
     row.getCell(18).dataValidation = {
       type: "list",

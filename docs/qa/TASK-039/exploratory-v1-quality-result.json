@@ -1,0 +1,42 @@
+{
+  "reviewVersion": "task-039-v1",
+  "status": "exploratory_invalidated_for_human_gold",
+  "recordedAt": "2026-09-12T12:00:00+09:00",
+  "reviewerWorkbooks": {
+    "R1": {
+      "sha256": "84afaf46c7bcf9531d366ef5e3a77bd6e980561644c433ff094011f52b04e08a",
+      "responseCount": 144
+    },
+    "R2": {
+      "sha256": "05201e39265b2e40be8f3c1931929c83d3134dd28d8b0d124f26f59ee6aee4dc",
+      "responseCount": 144
+    }
+  },
+  "qualityMetrics": {
+    "hiddenRepeatConsistency": {
+      "R1": {
+        "consistent": 10,
+        "compared": 12,
+        "rate": 0.8333333333333334
+      },
+      "R2": {
+        "consistent": 3,
+        "compared": 12,
+        "rate": 0.25
+      }
+    },
+    "nonRepeatCompared": 132,
+    "rawExactAgreement": 0.4772727272727273,
+    "agreementExcludingInsufficient": 0.5779816513761468,
+    "cohenKappa": 0.23526448362720406,
+    "primaryDisagreements": 51
+  },
+  "invalidatingDefects": [
+    "review category inferred from secondary-tag priority",
+    "primary pair selection lacked scenario applicability gating",
+    "response model lacked a distinct neither-suitable outcome"
+  ],
+  "humanGoldEligible": false,
+  "candidateEvaluationPerformed": false,
+  "rawHumanChoicesCommitted": false
+}
