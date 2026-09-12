@@ -8,8 +8,8 @@
 - 执行基线：`cb97e96bdb27e7b8e1e6eef742fa95837dcc3477`；发布前再次 fetch 确认 origin/develop 未变化。
 - 实现分支：`codex/b-account-wbs-5-21-account-deletion`，直接从执行时最新 origin/develop 创建，没有从 Spec branch 开发。
 - 已完整读取 Launcher、正式 Task、Architecture、Start record 与最新 Master WBS。
-- 实现提交：`IMPLEMENTATION_COMMIT`。
-- Draft PR：PR_PENDING，base = develop，使用 `Relates to #342`。
+- 实现提交：`a8d2d0ca9df03a9e3c2d709373a896d36fdaad37`。
+- Draft PR：[#343](https://github.com/kanzakimy0/TravelAssist/pull/343)，base = develop，使用 `Relates to #342`。
 - 最终 exact head / GitHub Quality Gate：以 PR 描述中的最终审查账本和交付消息为准；该账本不产生额外 Git commit，避免用旧 head 的 CI 冒充新 head。
 
 ## Exact changed files
@@ -139,7 +139,7 @@ B 的完整 Auth 与业务行在内存中逐字段比较一致，证据只保存
 Master WBS 仅改两行，其他内容保持执行基线：
 
 - 5.19 → 已完成（#333 / TASK-049-B；用户验收，PR #334 已合并）。只是机械同步，没有重新实现/合并 5.19。
-- 5.21 → 待审查（#342 / TASK-052-B；Draft PR PR_NUMBER）。
+- 5.21 → 待审查（#342 / TASK-052-B；Draft PR #343）。
 
 Issue #342 保持 Open，PR 保持 Draft/Open，目标 develop；不 auto-merge。Auth Core/private-http、既有 Profile/Preference/Companion/Trip API、RLS/CAS、schema/migration/generated types、Planner/Start/Engine/POI/Trip boundaries 均未改；未启动 5.13、8.6、9.5、9.6 或其他后续 Task。
 
