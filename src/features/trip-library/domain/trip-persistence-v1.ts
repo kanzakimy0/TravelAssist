@@ -476,3 +476,13 @@ export type TripPersistenceCanonicalContent = {
   wizardProgress: WizardProgressV1;
   planSnapshot: TripPlanSnapshotV1 | null;
 };
+
+// Gateway field validation reuses the exact 5.18 byte accounting and canonical parsers.
+export const parseTripDraftContent = (input: unknown) =>
+  read(fields.draftFacts, input);
+export const parseTripProgressContent = (input: unknown) =>
+  read(fields.wizardProgress, input);
+export const parseTripPlanContent = (input: unknown) =>
+  read(fields.planSnapshot, input);
+export const parseTripStorageTimestamp = (input: unknown) =>
+  read(timestamp, input);
