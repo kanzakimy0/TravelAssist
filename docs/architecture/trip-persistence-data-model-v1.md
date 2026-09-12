@@ -5,7 +5,7 @@
 > Issue: **#329**\
 > Owner: **B — Personal Center / Saved Trip Data**\
 > Publication baseline: `develop@b7eb931698da69cec73f7a0399897dbb5caab8c2`\
-> Status: **TASK-048-B implementation and real acceptance complete; WBS 5.18 待审查; Draft PR #331 awaiting user acceptance**
+> Status: **TASK-048-B accepted by user and merged in PR #331; WBS 5.18 已完成; Issue #329 Closed / Completed**
 
 ---
 

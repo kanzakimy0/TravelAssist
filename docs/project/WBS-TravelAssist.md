@@ -894,7 +894,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 5.15   | Profile / Account API                | B      | P1     | 8.2,8.3   | 未开始 |
 | 5.16   | Preference 持久化 API                | B      | P0     | 5.11,8.1  | 已完成 |
 | 5.17   | Companion 持久化 API                 | B      | P1     | 5.12,8.1  | 已完成 |
-| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 待审查（#329 / TASK-048-B / Draft PR #331） |
+| 5.18   | 保存行程 / 历史 / 草稿数据模型       | B      | P0     | 4.17,8.1  | 已完成（#329 / TASK-048-B；用户验收，PR #331 已合并） |
 | 5.19   | Trip Save / Read / History Contract  | B      | P0     | 5.18      | 未开始 |
 | 5.21   | 用户数据删除 / 账户删除              | B      | P1     | 5.15-5.19 | 未开始 |
 
