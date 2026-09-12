@@ -199,9 +199,11 @@ WBS 4.48 remains Partial and is not automatically completed by this task.
 ## Tracking
 
 - Issue: #311, remains Open
-- Commit: pending final Git commit
-- Draft PR: pending creation, `codex/a-master-code-registry` → `develop`
-- GitHub CI: pending Draft PR
+- Implementation commit: `8f450d4`
+- Draft PR: [#326](https://github.com/kanzakimy0/TravelAssist/pull/326),
+  `codex/a-master-code-registry` → `develop`
+- Draft PR state: Open / Draft
+- GitHub CI: pending after final tracking push
 
 ## Follow-ups
 
