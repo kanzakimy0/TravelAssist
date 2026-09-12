@@ -1,0 +1,184 @@
+{
+  "task": "TASK-052-B",
+  "completed": [
+    "execution-time catalog: eight product tables, seven Auth cascades, both member parent cascades",
+    "A and B each populate every product table and Draft/Saved/History through accepted private APIs",
+    "signed-out deletion page guard, exact phrase plus checkbox, cancel and unavailable export",
+    "missing server credential: actual browser sanitized 503, account remains intact",
+    "malformed execution credential: actual HTTP 503, no product/Auth changes",
+    "anon, missing/wrong Cookie Origin, explicit malformed/invalid Bearer plus valid Cookie fail closed",
+    "strict unknown/missing/wrong payloads and target injection never reach deletion",
+    "bounded request body rejects 4097 bytes without mutation",
+    "real owned Storage object blocks deletion, no object name disclosure or removal",
+    "browser double-click dispatches one real Cookie DELETE; pending disables controls and success leaves private page",
+    "Auth hard-delete cascades every A product row, including immutable history; B exact rows unchanged",
+    "retained A Cookie and Bearer denied across all current B private resource endpoints",
+    "deleted identity cannot refresh, getUser or sign in; B separate browser remains usable",
+    "explicit valid Bearer deletes only its verified owner despite a different valid Cookie",
+    "production browser HTML/chunks have no execution credential or Account Admin implementation"
+  ],
+  "metrics": {
+    "catalog": {
+      "tables": [
+        "companion_group_members",
+        "companion_groups",
+        "companions",
+        "emergency_contacts",
+        "profile_settings",
+        "profiles",
+        "travel_preferences",
+        "trip_library_records"
+      ],
+      "foreignKeys": [
+        {
+          "source": "companion_group_members",
+          "target": "companions",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (companion_id, owner_user_id) REFERENCES companions(id, owner_user_id) ON DELETE CASCADE"
+        },
+        {
+          "source": "companion_group_members",
+          "target": "companion_groups",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (group_id, owner_user_id) REFERENCES companion_groups(id, owner_user_id) ON DELETE CASCADE"
+        },
+        {
+          "source": "companion_groups",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "source": "companions",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "source": "emergency_contacts",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "source": "profile_settings",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "source": "profiles",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "source": "travel_preferences",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "source": "trip_library_records",
+          "target": "auth.users",
+          "confdeltype": "c",
+          "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        }
+      ]
+    },
+    "initialStorage": {
+      "objects": 0,
+      "buckets": 0
+    },
+    "beforeA": {
+      "auth_users": 1,
+      "profiles": 1,
+      "profile_settings": 1,
+      "emergency_contacts": 1,
+      "travel_preferences": 1,
+      "companions": 2,
+      "companion_groups": 1,
+      "companion_group_members": 2,
+      "trip_library_records": 3
+    },
+    "beforeB": {
+      "auth_users": 1,
+      "profiles": 1,
+      "profile_settings": 1,
+      "emergency_contacts": 1,
+      "travel_preferences": 1,
+      "companions": 2,
+      "companion_groups": 1,
+      "companion_group_members": 2,
+      "trip_library_records": 3
+    },
+    "knownBaselineFavicon404": 1,
+    "rejectedPayloads": 30,
+    "storageBlocker": {
+      "realObject": true,
+      "blockedStatus": 409,
+      "objectPreserved": true
+    },
+    "browserMutationCount": 1,
+    "afterA": {
+      "auth_users": 0,
+      "profiles": 0,
+      "profile_settings": 0,
+      "emergency_contacts": 0,
+      "travel_preferences": 0,
+      "companions": 0,
+      "companion_groups": 0,
+      "companion_group_members": 0,
+      "trip_library_records": 0
+    },
+    "afterB": {
+      "auth_users": 1,
+      "profiles": 1,
+      "profile_settings": 1,
+      "emergency_contacts": 1,
+      "travel_preferences": 1,
+      "companions": 2,
+      "companion_groups": 1,
+      "companion_group_members": 2,
+      "trip_library_records": 3
+    },
+    "userBExactRowsUnchanged": true,
+    "unrelatedStoragePreserved": true,
+    "oldCredentialDenials": 56,
+    "privateRoutes": [
+      "/api/profile",
+      "/api/emergency-contacts",
+      "/api/preferences",
+      "/api/companions",
+      "/api/companion-groups",
+      "/api/trip-library",
+      "/api/companions/[id]",
+      "/api/companion-groups/[id]",
+      "/api/trip-library/[id]"
+    ],
+    "deletedIdentityRefreshDenied": true,
+    "bearerOwnerPriority": true,
+    "productionFilesScanned": 1855,
+    "browserPageErrors": 0,
+    "browserExternalRequests": 0,
+    "cleanup": {
+      "authUsers": 0,
+      "storageObjects": 0,
+      "storageBuckets": 0
+    },
+    "serverNetwork": [
+      {
+        "localRequests": 44,
+        "externalRequests": 0
+      },
+      {
+        "localRequests": 1,
+        "externalRequests": 0
+      },
+      {
+        "localRequests": 125,
+        "externalRequests": 0
+      }
+    ]
+  }
+}
