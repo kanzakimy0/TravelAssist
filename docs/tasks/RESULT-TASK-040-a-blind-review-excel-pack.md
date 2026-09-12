@@ -99,6 +99,9 @@ Stopped after preparing the reviewer workbooks and import bridge. No human scori
 
 The first human run identified upstream questionnaire defects: category-priority misclassification, missing scenario-applicability gating, and no distinct “both unsuitable” answer. The original v1 workbooks and responses are not overwritten. The completed v1 files are retained outside this branch and only their fingerprints/aggregate quality metrics are recorded.
 
+- Correction branch: `codex/a-poi-review-quality-fix`.
+- Draft PR: [#340](https://github.com/kanzakimy0/TravelAssist/pull/340), stacked on `codex/a-blind-review-excel-pack`.
+
 New blank workbooks were generated from the corrected TASK-039 v2 packs:
 
 | Reviewer | Corrected workbook                                  | Workbook SHA-256                                                   | Source pack SHA-256                                                |

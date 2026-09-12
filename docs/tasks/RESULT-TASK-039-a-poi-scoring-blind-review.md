@@ -124,6 +124,9 @@ No retuning, larger POI/Region/Candidate/AI Pilot, or production shadow test was
 
 The first completed R1/R2 workbook run exposed a questionnaire blocker rather than acceptable Human Gold evidence. Its aggregate evidence is retained in `docs/qa/TASK-039/exploratory-v1-quality-result.json`; raw reviewer choices are not committed.
 
+- Correction branch: `codex/a-poi-review-quality-fix`.
+- Draft PR: [#340](https://github.com/kanzakimy0/TravelAssist/pull/340), stacked on `codex/a-blind-review-excel-pack`.
+
 - v1 displayed some categories from secondary-tag priority. Asahiyama Zoo could therefore appear as natural scenery instead of its explicit primary category, zoo.
 - v1 primary selection did not require both POIs to be applicable to the scenario, which could force implausible comparisons.
 - v1 lacked a separate `NEITHER_SUITABLE` response.

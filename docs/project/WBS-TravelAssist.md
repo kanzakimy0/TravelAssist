@@ -981,6 +981,8 @@ TASK-040-A tracking (2026-09-11):
 
 TASK-039 / TASK-040 questionnaire quality correction v2（2026-09-12）：
 
+- 修正分支 `codex/a-poi-review-quality-fix`；Draft PR #340 叠加在
+  `codex/a-blind-review-excel-pack`，未自动合并。
 - 首轮人工填写暴露的是问卷质量 blocker，而非可接受的人类金标准：部分展示分类由次级标签优先级推断，
   Primary 题目未要求 A/B 均适配场景，且缺少“两个都不适合”的独立答案。
 - 已建立 100/100 POI 显式主分类与场景适配表；旭山动物园主分类固定为 `zoo`，不再以自然景观展示。
