@@ -2,7 +2,9 @@
 
 ## Status
 
-**待审查。** 实现、真实 Local Supabase/Auth/RLS 验收与全部质量门已完成；Draft PR #337 等待用户验收。
+**已完成。** 用户验收通过，PR #337 已合并到 develop，Issue #336 已 Closed / Completed。
+
+以下实现、测试和原提交审查状态保留为历史验收记录；最终状态见文末合并收尾。
 
 - Owner：B / Personal Center。
 - Issue：[#336](https://github.com/kanzakimy0/TravelAssist/issues/336)，保持 Open。
@@ -100,3 +102,14 @@ GitHub 干净环境 [Quality Gate](https://github.com/kanzakimy0/TravelAssist/ac
 - WBS 5.15：`待审查（#336 / TASK-050-B；Draft PR #337）`。已完整读取最新 Master 并逐行核对，其余 A/B 行和历史记录完全保留。
 - Issue #336 保持 Open；不自动合并、不标记已完成。
 - **未启动 WBS 5.21，也未启动后续 Task。**
+
+## 用户验收与合并收尾（2026-09-12）
+
+- 用户明确验收通过并授权合并；WBS 5.15 = B / 已完成。
+- [PR #337](https://github.com/kanzakimy0/TravelAssist/pull/337) 已合入 develop。
+- 验收 head：`d5bc8ee001eb0215d0101b086b215b95d5a70e44`。
+- 合并提交：`20c5d3a03e4dfb242457e6a44f5f6dee0a2a1f21`；fetch 后 ancestor 验证通过。
+- 验收 head 的 [GitHub Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34680885801) PASS。develop 在合并前仍为执行基线 `1af8d7feac7fa2d254ca85a00061bf6d6b0e7940`，无新增集成差异。
+- [Issue #336](https://github.com/kanzakimy0/TravelAssist/issues/336) = Closed / Completed。
+- 本次收尾仅更新 Master WBS 5.15 和本 Result；原实现、QA、历史待审查记录完整保留，不重跑没有变更的 runtime。
+- 未启动 WBS 5.21 或其他后续 Task。
