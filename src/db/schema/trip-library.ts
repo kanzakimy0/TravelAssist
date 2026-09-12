@@ -66,6 +66,8 @@ export const tripLibraryRecords = pgTable(
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
+    // Immutable server idempotency metadata, outside canonical Trip content.
+    creationIntentHash: text("creation_intent_hash"),
   },
   (t) => [
     foreignKey({
@@ -84,6 +86,15 @@ export const tripLibraryRecords = pgTable(
       t.ownerUserId,
       t.updatedAt.desc(),
       t.id,
+    ),
+    index("trip_library_records_owner_page_idx").on(
+      t.ownerUserId,
+      t.updatedAt.desc(),
+      t.id.desc(),
+    ),
+    check(
+      "trip_library_creation_intent_check",
+      sql`${t.creationIntentHash} ~ '^[0-9a-f]{64}$'`,
     ),
     check(
       "trip_library_records_state_check",

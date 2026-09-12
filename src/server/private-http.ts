@@ -24,6 +24,7 @@ export async function verifiedPrivateRequest(
   mutation: boolean,
   failure: Failure,
   onFinish: (finish: (response: NextResponse) => NextResponse) => void,
+  options: { allowQuery?: boolean } = {},
 ) {
   const authorization = request.headers.get("authorization");
   let client;
@@ -72,12 +73,14 @@ export async function verifiedPrivateRequest(
     request.headers.get("origin") !== authSiteOrigin()
   )
     throw failure("FORBIDDEN");
-  if (request.nextUrl.search) throw failure("INVALID_REQUEST");
+  if (request.nextUrl.search && !options.allowQuery)
+    throw failure("INVALID_REQUEST");
   return { client, owner: auth.data.userId };
 }
 export async function readPrivateJson(
   request: Request,
   failure: Failure,
+  maxBytes = PRIVATE_HTTP_MAX_BYTES,
 ): Promise<unknown> {
   if (
     request.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !==
@@ -85,11 +88,7 @@ export async function readPrivateJson(
   )
     throw failure("INVALID_REQUEST");
   const declared = request.headers.get("content-length");
-  if (
-    declared &&
-    /^\d+$/.test(declared) &&
-    Number(declared) > PRIVATE_HTTP_MAX_BYTES
-  )
+  if (declared && /^\d+$/.test(declared) && Number(declared) > maxBytes)
     throw failure("PAYLOAD_TOO_LARGE");
   const reader = request.body?.getReader();
   if (!reader) throw failure("INVALID_REQUEST");
@@ -100,7 +99,7 @@ export async function readPrivateJson(
       const part = await reader.read();
       if (part.done) break;
       bytes += part.value.byteLength;
-      if (bytes > PRIVATE_HTTP_MAX_BYTES) {
+      if (bytes > maxBytes) {
         void reader.cancel().catch(() => {});
         throw failure("PAYLOAD_TOO_LARGE");
       }

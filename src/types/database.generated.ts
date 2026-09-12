@@ -275,6 +275,7 @@ export type Database = {
         Row: {
           canonical_trip_id: string | null;
           created_at: string;
+          creation_intent_hash: string | null;
           creation_key: string;
           draft_facts: Json;
           frozen_at: string | null;
@@ -293,6 +294,7 @@ export type Database = {
         Insert: {
           canonical_trip_id?: string | null;
           created_at?: string;
+          creation_intent_hash?: string | null;
           creation_key: string;
           draft_facts: Json;
           frozen_at?: string | null;
@@ -311,6 +313,7 @@ export type Database = {
         Update: {
           canonical_trip_id?: string | null;
           created_at?: string;
+          creation_intent_hash?: string | null;
           creation_key?: string;
           draft_facts?: Json;
           frozen_at?: string | null;

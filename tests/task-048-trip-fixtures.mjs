@@ -74,10 +74,12 @@ export function toRow(value) {
 }
 export function fromRow(value) {
   return Object.fromEntries(
-    Object.entries(value).map(([key, val]) => [
-      key.replace(/_([a-z])/g, (_, c) => c.toUpperCase()),
-      val instanceof Date ? val.toISOString() : val,
-    ]),
+    Object.entries(value)
+      .filter(([key]) => key !== "creation_intent_hash")
+      .map(([key, val]) => [
+        key.replace(/_([a-z])/g, (_, c) => c.toUpperCase()),
+        val instanceof Date ? val.toISOString() : val,
+      ]),
   );
 }
 // Independent SQL JSONB text size oracle for fixture construction; key order does not affect length.

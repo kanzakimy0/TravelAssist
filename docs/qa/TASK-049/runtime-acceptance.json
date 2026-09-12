@@ -1,0 +1,55 @@
+{
+  "completed": [
+    "Bearer/Cookie verified; anonymous and malformed/invalid Bearer fail without Cookie fallback",
+    "Cookie mutations require exact trusted Origin",
+    "server captures current Preference and ordered owner Companions with minimized privacy",
+    "Bearer create with missing Preference uses empty revision zero and distinct B identity",
+    "strict client owner/snapshot fields rejected before write",
+    "canonical draft/progress and selection errors have no partial insert",
+    "create idempotency compatible retries and incompatible key conflict, also concurrent first create",
+    "owner-scoped creation key may independently exist for another owner",
+    "owner list isolation and identical 404 for cross-owner or missing id on every operation",
+    "GET exact resource/ETag and query defaults remain isolated from older APIs",
+    "Draft update snapshots current selected Companions but never replaces creation Preference",
+    "original create retry remains idempotent after draft edit and source Preference/Companion changes",
+    "all non-create writes require exact If-Match; no weak, wildcard, malformed or absent tags",
+    "two concurrent Draft CAS updates produce exactly one success and one 409",
+    "Draft to Saved keeps canonical non-UUID string ID and independent revisions",
+    "Saved refresh uses CAS; established canonical ID cannot change",
+    "owner canonical ID uniqueness prevents a second aggregate claiming the same A trip",
+    "summary excludes multi-MiB plans and all invented reservation/favorite fields",
+    "valid exact 4MiB JSONB plan succeeds over real HTTP with ETag",
+    "over storage/HTTP caps and semantic-invalid payloads leave full aggregate unchanged",
+    "history/delete require empty body and invalid transitions do not mutate",
+    "Saved to History freezes at DB-owned timestamp, no date-driven archival",
+    "History rejects every API mutation and direct privileged no-op update",
+    "source Companion deletion and long-term changes never rewrite History or create retry",
+    "History copy creates new draft identity and current Preference, preserving original context",
+    "copy retries ignore subsequent Preference edits, conflict with create intent or wrong source",
+    "concurrent copy with one key returns one new identity and existing retry",
+    "stable owner keyset pagination preserves microsecond ordering without duplicates/omissions",
+    "timestamp ties and sub-millisecond pairs preserve all rows (controlled Local fixture)",
+    "direct authenticated/anonymous INSERT UPDATE DELETE upsert stay denied; own SELECT RLS remains",
+    "additive intent metadata is immutable and legacy NULL cannot falsely claim retry equivalence",
+    "Draft delete is CAS protected and returns 204; stale revision cannot delete",
+    "production gateway has no service-role path; server ran with service credentials removed",
+    "real browser Cookie fetch + public A save client + reload + read/history/copy/delete"
+  ],
+  "metrics": {
+    "nearLimitHttpBytes": 3782809,
+    "nearLimitJsonbBytes": 4194304,
+    "browser": {
+      "get": 200,
+      "state": "saved",
+      "freeze": 200,
+      "frozenState": "history",
+      "copy": 201,
+      "delete": 204
+    }
+  },
+  "cleanup": {
+    "authUsers": 0,
+    "tripRecords": 0
+  },
+  "realLocal": true
+}

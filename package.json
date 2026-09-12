@@ -59,7 +59,9 @@
     "test:companion-api": "node --import ./tests/register-route-ts.mjs --test tests/task-047-companion-api.test.mjs",
     "test:companion-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-047-companion-api.runtime.mjs",
     "test:trip-persistence": "node --import ./tests/register-route-ts.mjs --test tests/task-048-trip-persistence-model.test.mjs",
-    "test:trip-persistence:db": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-048-trip-persistence-model.runtime.mjs"
+    "test:trip-persistence:db": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-048-trip-persistence-model.runtime.mjs",
+    "test:trip-library-api": "node --import ./tests/register-route-ts.mjs --test tests/task-049-trip-library-api.test.mjs",
+    "test:trip-library-api:local": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-049-trip-library-api.runtime.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
