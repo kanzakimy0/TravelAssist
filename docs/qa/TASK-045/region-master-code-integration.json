@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-045-A",
+  "issue": 349,
+  "baseSha": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+  "graphDataRevision": "task-041-japan-pilot-2026-09-11-r2",
+  "registryRevision": "task-043-candidate-r1",
+  "integrationSource": {
+    "authority": "src/shared/data/master-code-registry.v1.json",
+    "resolver": "resolveActiveMasterCodeByEntity",
+    "qaAllocationUsedAsRuntimeAuthority": false,
+    "allocationManifestCrossCheck": "docs/qa/TASK-043/region-allocation-50.json"
+  },
+  "before": {
+    "regionCount": 50,
+    "nullMasterCodes": 50,
+    "populatedMasterCodes": 0,
+    "regionIdsSha256": "d1adc642db617da3afd50cf6ada59acf09b6b5aeb5e29108fcbaf934b3817a6a",
+    "topologySha256": "38990d5e45e888f1b4ee94c5ca928bb972086544fcc4a20efa7380fef8308b5b"
+  },
+  "after": {
+    "regionCount": 50,
+    "nullMasterCodes": 0,
+    "populatedMasterCodes": 50,
+    "regionIdsSha256": "d1adc642db617da3afd50cf6ada59acf09b6b5aeb5e29108fcbaf934b3817a6a",
+    "topologySha256": "38990d5e45e888f1b4ee94c5ca928bb972086544fcc4a20efa7380fef8308b5b"
+  },
+  "identity": {
+    "preservedCount": 50,
+    "expectedCount": 50,
+    "orderPreserved": true
+  },
+  "canonicalResolution": {
+    "activeResolvedCount": 50,
+    "expectedCount": 50,
+    "duplicateMasterCodes": 0,
+    "invalidLifecycleCount": 0,
+    "unknownOrMismatchedCount": 0,
+    "rejectedIdentifierCount": 0,
+    "allocationManifestMismatchCount": 0
+  },
+  "topology": {
+    "beforeSha256": "38990d5e45e888f1b4ee94c5ca928bb972086544fcc4a20efa7380fef8308b5b",
+    "afterSha256": "38990d5e45e888f1b4ee94c5ca928bb972086544fcc4a20efa7380fef8308b5b",
+    "semanticChangesExceptMasterCode": 0,
+    "comparison": "SHA-256 over ordered nodes without masterCode plus complete relations and travelEdges"
+  },
+  "issues": {
+    "invalidLifecycleAllocations": [],
+    "inactiveOrUnknownAllocations": [],
+    "rejectedIdentifiers": [],
+    "allocationMismatches": []
+  },
+  "passed": true
+}
