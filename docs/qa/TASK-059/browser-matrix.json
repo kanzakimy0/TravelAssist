@@ -1,0 +1,55 @@
+{
+  "task": "TASK-059-B",
+  "candidate": "6f64889b39db28a890a9e309388ab22e3063b929",
+  "engines": [
+    {
+      "browser": "edge",
+      "status": "FAIL",
+      "version": "153.0.4234.32",
+      "executableSource": "Installed Microsoft Edge; Playwright channel=msedge",
+      "executedRuns": ["final-edge-1", "final-edge-2"],
+      "scope": "All J1-J8; canonical desktop/mobile J7; FAIL J3/J6"
+    },
+    {
+      "browser": "chromium",
+      "status": "FAIL",
+      "version": "151.0.7922.34",
+      "executableSource": "Installed Playwright Chromium",
+      "executedRuns": ["final-chromium"],
+      "scope": "All J1-J8; actual outcomes in journey-results.json"
+    },
+    {
+      "browser": "firefox",
+      "status": "DEFERRED",
+      "reason": "Playwright expected binary absent at C:/Users/Administrator/AppData/Local/ms-playwright/firefox-1538/firefox/firefox.exe; never claimed PASS",
+      "executedRuns": []
+    },
+    {
+      "browser": "webkit",
+      "status": "DEFERRED",
+      "reason": "Playwright expected binary absent at C:/Users/Administrator/AppData/Local/ms-playwright/webkit-2336/Playwright.exe; never claimed PASS",
+      "executedRuns": []
+    }
+  ],
+  "primaryDeterminism": {
+    "sameHead": true,
+    "sameSource": true,
+    "sameNodeCounts": true,
+    "sameJourneyResults": true,
+    "bothPass": false,
+    "conclusion": "Blocker reproduction is deterministic; the mandatory two PASS runs requirement is NOT satisfied."
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "nativeMobileTested": false,
+  "realSafariTested": false,
+  "externalDelivery": "Real external email/SMS/OAuth delivery Deferred; deterministic Local email confirmation actually executed"
+}
