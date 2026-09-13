@@ -121,23 +121,23 @@ The focused suite proves rejection of:
 
 ## Validation
 
-| Check                           | Result           |
-| ------------------------------- | ---------------- |
-| TASK-048 focused                | PASS — 16/16     |
-| Planning Contracts              | PASS — 21/21     |
-| Planning Soak                   | PASS — 6/6       |
-| Region Graph regression         | PASS — 17/17     |
-| Master Code Registry regression | PASS — 15/15     |
-| Region Master Code integration  | PASS — 6/6       |
-| Routing                         | PASS — 28/28     |
-| Trip / Engine focused           | PASS — 124/124   |
-| Canonical full Node regression  | PASS — 2532/2532 |
-| ESLint                          | PASS             |
-| TypeScript                      | PASS             |
-| Production build                | PASS             |
-| TASK-owned Prettier             | PASS             |
-| `git diff --check`              | PASS             |
-| GitHub CI                       | Pending Draft PR |
+| Check                           | Result                                             |
+| ------------------------------- | -------------------------------------------------- |
+| TASK-048 focused                | PASS — 16/16                                       |
+| Planning Contracts              | PASS — 21/21                                       |
+| Planning Soak                   | PASS — 6/6                                         |
+| Region Graph regression         | PASS — 17/17                                       |
+| Master Code Registry regression | PASS — 15/15                                       |
+| Region Master Code integration  | PASS — 6/6                                         |
+| Routing                         | PASS — 28/28                                       |
+| Trip / Engine focused           | PASS — 124/124                                     |
+| Canonical full Node regression  | PASS — 2532/2532                                   |
+| ESLint                          | PASS                                               |
+| TypeScript                      | PASS                                               |
+| Production build                | PASS                                               |
+| TASK-owned Prettier             | PASS                                               |
+| `git diff --check`              | PASS                                               |
+| GitHub CI                       | PASS on `492846897cac82b7791ed5e778720821a572585b` |
 
 The first sandboxed full regression attempt encountered five filesystem access
 errors while esbuild traversed the parent of the isolated worktree. The same
@@ -175,6 +175,7 @@ production persistence was introduced.
 
 - Issue: [#367](https://github.com/kanzakimy0/TravelAssist/issues/367) — Open
 - Implementation commit: `7dfc97060e86f5103c35334e57e42b75aed4bd59`
+- Tracking commit: `492846897cac82b7791ed5e778720821a572585b`
 - Draft PR: [#372](https://github.com/kanzakimy0/TravelAssist/pull/372),
   `codex/a-candidate-pipeline-reference` → `develop`
 - WBS 4.49: `待审查`
