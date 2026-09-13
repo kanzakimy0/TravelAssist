@@ -80,11 +80,11 @@ Google/Foursquare 保留当前 SKU/field 价格事实；Mapbox 记录 preview/st
 
 ## Acceptance and downstream constraints
 
-待用户验收的是选型证据和 **CONDITIONAL** 决策。C1–C4 未关闭前不能宣称 Production Primary 获批；C5 图片可保持禁用。
+用户于 2026-09-13 验收通过选型证据和 **CONDITIONAL** 决策，并明确授权合并 PR #362 及完成 WBS 7.2 收尾。C1–C4 未关闭前不能宣称 Production Primary 获批；C5 图片可保持禁用。
 
 - 7.4：保持 provider identity/source/license 与 canonical identity 分离，先关闭 persistence/ODbL 条件。
 - 7.6/7.7：先关闭日本实测、平台权利、预算/限流/凭据/attribution 与 fallback 条件。
 - 7.9：不得把 vendor categories/ratings/popularity 直接变成 canonical features 或评分；未来派生/AI 权利单独审议。
 - 当前任务只提交研究/QA/Result 和 Master WBS 7.2 行；不实现这些边界，也不对供应商发起询价或开户。
 
-[Draft PR #362](https://github.com/kanzakimy0/TravelAssist/pull/362) 保持未合并，Issue #361 保持 OPEN，WBS 7.2 保持 B / 待审查（#361 / TASK-058-B；Draft PR #362）。其他 WBS Owner/status 不变。
+[PR #362](https://github.com/kanzakimy0/TravelAssist/pull/362) 已合并到 `develop`（`07335833ccd2a7b0f4dd0c5a21ba5e094c9b49eb`），Issue #361 已关闭为 Completed，WBS 7.2 为 B / 已完成。其他 WBS Owner/status 不变。验收前的研究与本地 QA 证据保留；已验收精确 head `248effee37a13534d61670c20257c7392fa11a64` 的 [Quality Gate 34745152774](https://github.com/kanzakimy0/TravelAssist/actions/runs/34745152774) 已通过。后续合并、文档收尾和质量门禁见 [验收收尾记录](../../project/WBS-7.2-provider-selection-acceptance-closeout.md)。

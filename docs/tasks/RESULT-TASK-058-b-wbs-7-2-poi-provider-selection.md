@@ -2,6 +2,17 @@
 
 TASK-058-B — WBS 7.2 Places / POI Provider Selection
 
+## 验收收尾（2026-09-13）
+
+用户明确批准：`验收通过，允许合并 PR #362，并完成 WBS 7.2 收尾`。
+
+- PR [#362](https://github.com/kanzakimy0/TravelAssist/pull/362) 已合并到 `develop`，merge commit：`07335833ccd2a7b0f4dd0c5a21ba5e094c9b49eb`。
+- Issue [#361](https://github.com/kanzakimy0/TravelAssist/issues/361) 已于 `2026-09-13T08:27:31Z` 关闭为 **Completed**。
+- Master WBS 7.2 = **B / 已完成**；其他 WBS Owner/status 不变。
+- 完整合并、QA、范围与后续条件记录见 [WBS 7.2 验收收尾](../project/WBS-7.2-provider-selection-acceptance-closeout.md)。
+
+下文保留已验收的研究基线、交付物和 QA。Provider 决策仍为 **CONDITIONAL**；研究完成没有关闭 C1–C5，也没有批准 Production Primary 或自动外部 fallback。
+
 ## 结论
 
 **CONDITIONAL**。
@@ -13,12 +24,12 @@ Geoapify 的官方存储许可、Mapbox GL 展示路径和付费计费模型最�
 ## 基线与范围
 
 - Repository：[kanzakimy0/TravelAssist](https://github.com/kanzakimy0/TravelAssist)。
-- Issue：[#361](https://github.com/kanzakimy0/TravelAssist/issues/361)，保持 OPEN。
+- Issue：[#361](https://github.com/kanzakimy0/TravelAssist/issues/361)，已关闭为 Completed。
 - 执行日期：2026-09-13。
 - 起点：执行时最新干净 `origin/develop`，`c8290b199fad0828245b355f231743b67d2eaad2`。
 - Spec revision：`6e316fc0c68fe3201903472efacfc982cd4c4031`，仅阅读，不作为开发起点。
 - Branch：`codex/b-wbs-7-2-poi-provider-selection`。
-- Draft PR：[#362](https://github.com/kanzakimy0/TravelAssist/pull/362)，目标 `develop`，保持 Draft。
+- Research PR：[#362](https://github.com/kanzakimy0/TravelAssist/pull/362)，经用户验收后已合并到 `develop`。
 - Owner：根据 [authoritative override](../project/WBS-7.2-owner-correction.md) 同步为 B；仅修改 Master WBS 的 7.2 行。
 
 开始前完成规定的 status、branch、fetch/prune、develop SHA 与 20 条历史检查；完整阅读 Task、Codex、Owner correction 和最新 Master WBS，并检查冻结标签/地图规范、当前 Planner/Detail、Planning/POI 设计和图片权利。
@@ -56,7 +67,7 @@ Geoapify 的官方存储许可、Mapbox GL 展示路径和付费计费模型最�
 | TASK-058 scoped Prettier / diff check / 相对链接       | PASS。                                                                  |
 | Scope / WBS / credential scan                          | PASS；仅 5 个文档文件，其他 WBS 字节一致，runtime/package/lock 改动 0。 |
 
-本地 runtime QA 基线为上述 develop SHA，与候选 runtime tree 完全一致；研究文档另经 scoped QA。最终提交必须通过单独 `workflow_dispatch` 的 **exact branch-head Quality Gate** 才交付；head SHA、run URL 和交付结论固定于 Draft PR 描述，避免把 PR merge-ref 或 baseline artifact 冒充最终 head 验证。[QA 方法与限制](../qa/TASK-058/provider-decision-report.md)。
+本地 runtime QA 基线为上述 develop SHA，与候选 runtime tree 完全一致；研究文档另经 scoped QA。已验收 head `248effee37a13534d61670c20257c7392fa11a64` 通过单独 `workflow_dispatch` 的 **exact branch-head Quality Gate**：[run 34745152774](https://github.com/kanzakimy0/TravelAssist/actions/runs/34745152774)。head SHA、run URL 和交付结论已固定于 PR 描述；不是以 PR merge-ref 或 baseline artifact 代替最终 head 验证。[QA 方法与限制](../qa/TASK-058/provider-decision-report.md)。
 
 已识别首次工作目录 lint 的 7 个错误来自旧任务 `.cache/qa/task024-worktree`；干净 worktree 的 canonical lint/typecheck/build 通过，未改 lint 配置、历史任务文件或依赖。
 
@@ -72,6 +83,6 @@ Geoapify 的官方存储许可、Mapbox GL 展示路径和付费计费模型最�
 
 ## 停止状态
 
-研究与文档进入用户验收；WBS 7.2 最终为 **B / 待审查（#361 / TASK-058-B；Draft PR #362）**，不会自动标记已完成。
+研究与文档已获用户验收，PR #362 已合并，Issue #361 已关闭为 Completed；WBS 7.2 为 **B / 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并）**。
 
-仅提交四份要求的研究/Result 文件及 Master WBS 7.2 行。未修改其他 WBS Owner/status；未实施 7.4 / 7.6 / 7.7 / 7.9、UI、runtime、DB、AI、Engine、Route 或 Personal Center。未开通或购买 Provider、未调用 live Provider API、未导入 POI 数据。Draft PR 不自动合并，Issue #361 不关闭，不启动后续任务。
+研究 PR 提交四份要求的研究/Result 文件及 Master WBS 7.2 行；验收收尾补充收尾记录并同步 Result、QA 报告与 WBS 7.2 状态。未修改其他 WBS Owner/status；未实施 7.4 / 7.6 / 7.7 / 7.9、UI、runtime、DB、AI、Engine、Route 或 Personal Center。未开通或购买 Provider、未调用 live Provider API、未导入 POI 数据。本次合并、Completed 关闭与 WBS 完成状态均基于用户明确授权；不启动后续任务。
