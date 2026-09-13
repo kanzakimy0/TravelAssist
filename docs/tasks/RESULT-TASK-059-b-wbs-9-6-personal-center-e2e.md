@@ -8,7 +8,7 @@
 - 执行时最新、干净的 `origin/develop`：`5240ff8f7a91c1e36e90449d0f619de93f795472`。发布前重新 fetch，develop 未变化。
 - 实现分支：`codex/b-account-wbs-9-6-personal-center-e2e`，从该 develop 创建，未从规格分支开发。
 - 最终测试代码候选：`6f64889b39db28a890a9e309388ab22e3063b929`。后续仅提交 QA / Result 文档；测试、runner、package 的哈希见 `quality-gates.json`。
-- Draft PR：发布后补充编号，目标 develop，使用 `Refs #364`，保持 Draft / Unmerged。
+- Draft PR：[#366](https://github.com/kanzakimy0/TravelAssist/pull/366)，目标 develop，使用 `Refs #364`，保持 Draft / Unmerged。
 - 最终 PR head 与 exact-head GitHub Quality Gate：见该 PR 的 **Exact final-head verification** 记录，包含最终完整 SHA、相同 `headSha` 的 workflow_dispatch run URL / conclusion。提交无法包含自身 SHA 和随后完成的 CI 结果，因此采用 PR 外部验收记录，避免追加文档提交再次改变已验的 head。
 - WBS 9.6 保持 `进行中（#364 / TASK-059-B）`。正式 TASK §§15/20 明确：存在阻止 J1–J8 完成的真实 blocker 时返回 Partial/Blocked；必须全部通过后才可进入“待审查”。未修改其他 WBS 行或 Owner。
 

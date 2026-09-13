@@ -270,7 +270,9 @@
     "status": "See final PR exact-head verification ledger, published after the final documentation commit",
     "workflow": "quality-gate.yml",
     "whyExternalLedger": "A commit cannot contain its own SHA and subsequently completed workflow result; the Draft PR records the exact final head, matching workflow headSha, run URL and conclusion without a self-referential extra commit.",
-    "doesNotRunLocalE2E": true
+    "doesNotRunLocalE2E": true,
+    "verificationLedgerUrl": "https://github.com/kanzakimy0/TravelAssist/pull/366",
+    "exactHeadSelection": "workflow_dispatch run whose headSha equals the final PR headRefOid; result published in PR body after final documentation commit"
   },
   "safety": {
     "productionMutation": false,
@@ -280,5 +282,24 @@
     "syntheticBOwnedRowsRemaining": 0,
     "credentialsInCommittedEvidence": false,
     "downstreamStarted": false
+  },
+  "tracking": {
+    "issue": 364,
+    "issueState": "OPEN",
+    "draftPr": 366,
+    "prUrl": "https://github.com/kanzakimy0/TravelAssist/pull/366",
+    "branch": "codex/b-account-wbs-9-6-personal-center-e2e",
+    "wbsState": "进行中（#364 / TASK-059-B）",
+    "reviewReady": false,
+    "reason": "TASK-059 sections 15/20: mandatory J3/J6 blockers prevent 待审查"
+  },
+  "scopedFormat": {
+    "status": "PASS",
+    "command": "npx prettier --check docs/qa/TASK-059/*.json docs/qa/TASK-059/README.md docs/tasks/RESULT-TASK-059-b-wbs-9-6-personal-center-e2e.md tests/task-059-personal-center-e2e.runtime.mjs tools/qa/personal-center-e2e.mjs package.json"
+  },
+  "diffCheck": {
+    "status": "PASS",
+    "command": "git diff --check",
+    "wbsOnly96MechanicallyVerified": true
   }
 }
