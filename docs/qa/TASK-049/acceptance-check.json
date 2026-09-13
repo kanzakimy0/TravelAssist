@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-049-A",
+  "reviewMode": "independent runtime reconstruction",
+  "generatedAt": "2026-09-14T00:00:00+09:00",
+  "reviewedPr": 372,
+  "initialReviewedHead": "b90917d2c5534ab73ed924cde4f79b992a93bb88",
+  "reviewedHead": "b90917d2c5534ab73ed924cde4f79b992a93bb88",
+  "reviewBase": "3ba3f34ea07a160c237c22b85050df5313ea10ae",
+  "task048ResultUsedAsProof": false,
+  "task048GeneratedQaUsedAsProof": false,
+  "scenarioChecks": [
+    {
+      "scenarioId": "01-tokyo-first-time-iconic",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "02-tokyo-hidden-local",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "03-hakone-fuji-corridor",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "04-alpine-hokuriku-corridor",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "05-kansai-corridor",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "06-low-walking-tolerance",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "07-low-crowd-tolerance",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "08-must-go-preserved",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "09-must-go-hard-conflict",
+      "disposition": "NO_VALID_CHOICE",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "10-route-infeasible-removed",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "11-critical-fact-unknown",
+      "disposition": "NEEDS_FACT",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "12-diversity-monoculture-guard",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "13-sparse-fallback-expansion",
+      "disposition": "TOP_N_READY",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    },
+    {
+      "scenarioId": "14-no-valid-choice",
+      "disposition": "NO_VALID_CHOICE",
+      "deterministic": true,
+      "byteStable": true,
+      "stageCoveragePercent": 100,
+      "hardRejectBypass": 0,
+      "needsFactPromoted": 0
+    }
+  ],
+  "negativeChecks": [
+    { "caseId": "duplicate-candidate-id", "code": "DUPLICATE_ID" },
+    { "caseId": "stale-run-revision", "code": "STALE_RUN_REVISION" },
+    { "caseId": "invalid-region-ref", "code": "DANGLING_REGION_REF" },
+    { "caseId": "invalid-poi-ref", "code": "DANGLING_POI_REF" },
+    {
+      "caseId": "hard-reject-reintroduced",
+      "code": "HARD_REJECT_REINTRODUCED"
+    },
+    { "caseId": "needs-fact-promoted", "code": "NEEDS_FACT_PROMOTED" },
+    {
+      "caseId": "must-go-silently-dropped",
+      "code": "MUST_GO_SILENTLY_DROPPED"
+    },
+    {
+      "caseId": "pareto-dominated-survivor",
+      "code": "PARETO_DOMINATED_SURVIVOR"
+    },
+    {
+      "caseId": "diversity-resurrection",
+      "code": "PRUNED_CANDIDATE_REINTRODUCED"
+    },
+    { "caseId": "unbounded-expansion", "code": "EXPANSION_BOUND_EXCEEDED" },
+    { "caseId": "local-id-leak", "code": "LOCAL_ID_LEAK" },
+    { "caseId": "dangling-candidate-ref", "code": "DANGLING_CANDIDATE_REF" },
+    { "caseId": "equal-score-ordering", "code": "PASS" }
+  ],
+  "sourceBoundary": {
+    "noAiOrProviderRuntime": true,
+    "noProductionPersistenceRuntime": true,
+    "noHumanReviewOrCandidateCalibrationRead": true,
+    "hardFilterPrecedesAllSelectionStages": true,
+    "paretoUsesObjectiveDominanceWithoutScalarRanking": true
+  },
+  "manualSemanticReview": {
+    "hardFilterBypassPossible": false,
+    "mustGoRemovalRequiresBlockingReason": true,
+    "criticalUnknownRemainsUnresolved": true,
+    "fallbackAndRetryBounded": true,
+    "paretoIsMultiObjective": true,
+    "diversityCanResurrectRejectedCandidate": false,
+    "decisionTraceSafety": "PASS"
+  },
+  "acceptance": {
+    "deterministicRepeat": true,
+    "byteStableNormalizedResult": true,
+    "hardRejectBypass": 0,
+    "mustGoSilentlyDropped": 0,
+    "needsFactSilentlyPromoted": 0,
+    "danglingRegionPoiCandidateRefs": 0,
+    "improperParetoDominatedSurvivors": 0,
+    "diversityResurrectedRejectedCandidates": 0,
+    "unboundedLoopOrRetry": 0,
+    "decisionTraceCoveragePercent": 100,
+    "duplicateCandidateIdRejected": true,
+    "staleRunRevisionRejected": true,
+    "invalidRegionPoiRefsRejected": true,
+    "equalScoreOrderingDeterministic": true,
+    "localRunIdsLeakToStableOutput": 0,
+    "pilotScenariosPassed": 14,
+    "aiOrProviderCalls": 0,
+    "productionDatabaseWrites": 0,
+    "scoringParameterChanges": 0,
+    "regionGraphSemanticChanges": 0,
+    "masterCodeGovernanceChanges": 0,
+    "plannerOrStepUiChanges": 0
+  },
+  "recommendation": "ACCEPT",
+  "status": "Completed / WBS 4.49 Candidate Pipeline acceptance ready for owner approval"
+}
