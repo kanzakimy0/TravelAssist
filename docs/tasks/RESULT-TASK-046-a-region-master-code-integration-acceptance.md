@@ -129,7 +129,7 @@ Independent comparisons confirm:
 | `git diff --check`                  | Passed                                  |
 | PR #352 GitHub `Install,test,build` | Passed                                  |
 | PR #352 merge-eligibility check     | Passed; PR remains Draft/Open           |
-| TASK-046 acceptance Draft PR CI     | Pending Draft PR                        |
+| TASK-046 acceptance Draft PR CI     | Passed on PR #369 (`ad04a9b9`)          |
 
 The Node module-type warnings are existing informational warnings and did not
 change test outcomes. Lint warning cleanup was applied only to TASK-046-owned
