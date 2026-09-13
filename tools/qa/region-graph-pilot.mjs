@@ -4,12 +4,16 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { format as formatWithPrettier } from "prettier";
 
 import { parseTravelRegionGraphV1 } from "../../src/shared/contracts/planning/index.ts";
+import {
+  masterCodeRegistry,
+  resolveActiveMasterCodeByEntity,
+} from "../../src/shared/master-code/index.ts";
 
 const CONTRACT_VERSION = "1.0";
 const GRAPH_REVISION = "task-041-japan-pilot-2026-09-11-r2";
 const NOW = "2026-09-11T00:00:00+09:00";
 const MASTER_CODE_AUDIT_DEVELOP_SHA =
-  "f10aded716719eabc94b81d9a3104b386c640946";
+  "3559afad2edfcfdda766942652a9b5090b75369c";
 const OUTPUT_DIR = resolve(
   dirname(fileURLToPath(import.meta.url)),
   "../../docs/qa/TASK-041",
@@ -26,6 +30,21 @@ function classifyPriorMasterCode(value) {
   if (/^jp-/.test(value)) return "destination_id_misused_as_master_code";
   if (value === "JP") return "country_code_misused_as_master_code";
   return "unresolved_noncanonical_value";
+}
+
+function masterCodeEntityType(regionType) {
+  return `region.${regionType}`;
+}
+
+function requiredActiveMasterCode(regionType, regionId) {
+  const entityType = masterCodeEntityType(regionType);
+  const allocation = resolveActiveMasterCodeByEntity(entityType, regionId);
+  if (!allocation) {
+    throw new Error(
+      `Missing active canonical Master Code allocation for ${entityType}:${regionId}`,
+    );
+  }
+  return allocation;
 }
 
 export const evidenceIndex = {
@@ -197,18 +216,19 @@ function node({
   sources = [REPO_DESTINATION_SOURCE],
   gateway = null,
 }) {
+  const canonicalAllocation = requiredActiveMasterCode(type, id);
   priorMasterCodeAssignments.push({
     regionId: id,
     priorValue: code,
     classification: classifyPriorMasterCode(code),
-    canonicalRegistryResolution: null,
-    action: "cleared_to_null_pending_canonical_allocation",
+    canonicalRegistryResolution: canonicalAllocation.masterCode,
+    action: "replaced_with_active_canonical_allocation",
   });
   return {
     contractVersion: CONTRACT_VERSION,
     schemaVersion: "1.0",
     regionId: id,
-    masterCode: null,
+    masterCode: canonicalAllocation.masterCode,
     regionType: type,
     names: { nameJa: ja, nameZhCn: zh, nameEn: en, aliases },
     center,
@@ -725,26 +745,36 @@ export const regionNodes = [
 ];
 
 /**
- * Execution-time origin/develop contains the numeric range codebook but no
- * canonical entity-to-Master-Code allocation registry. This audit preserves
- * the rejected values as review evidence only; none remain assigned to a node.
+ * The rejected pre-governance values remain audit evidence only. Production
+ * nodes resolve their allocation directly from the merged canonical registry.
  */
 export const masterCodeAudit = {
   schemaVersion: 1,
   graphDataRevision: GRAPH_REVISION,
   auditedDevelopSha: MASTER_CODE_AUDIT_DEVELOP_SHA,
   canonicalRegistry: {
-    status: "unavailable_in_repository",
-    registryPaths: [],
-    entryCount: 0,
+    status: "available_merged_governance",
+    registryPaths: ["src/shared/data/master-code-registry.v1.json"],
+    registryRevision: masterCodeRegistry.registryRevision,
+    governanceStatus: masterCodeRegistry.governanceStatus,
+    entryCount: masterCodeRegistry.entries.length,
+    activeRegionEntryCount: masterCodeRegistry.entries.filter(
+      ({ entityType, lifecycleStatus }) =>
+        entityType.startsWith("region.") && lifecycleStatus === "active",
+    ).length,
     rangeCodebookPath:
       "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md",
-    note: "The range codebook is not an allocation registry and cannot resolve a region identity to a Master Code.",
+    note: "Production Region nodes resolve by canonical entity identity; rejected prior identifiers remain evidence only.",
   },
   summary: {
     auditedNodes: priorMasterCodeAssignments.length,
-    canonicalAssignmentsRetained: 0,
-    unresolvedAssignments: priorMasterCodeAssignments.length,
+    rejectedPriorAssignmentsRetained: 0,
+    canonicalAssignmentsPopulated: priorMasterCodeAssignments.filter(
+      ({ canonicalRegistryResolution }) => canonicalRegistryResolution !== null,
+    ).length,
+    unresolvedAssignments: priorMasterCodeAssignments.filter(
+      ({ canonicalRegistryResolution }) => canonicalRegistryResolution === null,
+    ).length,
     priorValuesByClassification: countBy(
       priorMasterCodeAssignments,
       ({ classification }) => classification,
@@ -1284,26 +1314,53 @@ function countBy(items, selector) {
 
 export function masterCodeResolutionReport(
   graph = regionGraph,
-  canonicalCodes = [],
+  registryEntries = masterCodeRegistry.entries,
 ) {
-  const registry = new Set(canonicalCodes);
+  const registry = new Map(
+    registryEntries.map((entry) => [entry.masterCode, entry]),
+  );
   const assigned = graph.nodes.filter(({ masterCode }) => masterCode !== null);
   const unresolved = graph.nodes.filter(
     ({ masterCode }) => masterCode === null,
   );
-  const invalidAssigned = assigned.filter(
-    ({ masterCode }) => !registry.has(masterCode),
-  );
+  const invalidAssigned = assigned.flatMap((node) => {
+    const entry = registry.get(node.masterCode);
+    const expectedEntityType = masterCodeEntityType(node.regionType);
+    if (
+      entry &&
+      entry.lifecycleStatus === "active" &&
+      entry.entityType === expectedEntityType &&
+      entry.entityRef === node.regionId
+    ) {
+      return [];
+    }
+    return [
+      {
+        regionId: node.regionId,
+        masterCode: node.masterCode,
+        reason: !entry
+          ? "unknown_master_code"
+          : entry.lifecycleStatus !== "active"
+            ? "inactive_master_code"
+            : entry.entityType !== expectedEntityType
+              ? "entity_type_mismatch"
+              : "entity_ref_mismatch",
+      },
+    ];
+  });
   return {
     registryStatus: masterCodeAudit.canonicalRegistry.status,
+    registryRevision: masterCodeRegistry.registryRevision,
     registryEntryCount: registry.size,
+    activeRegionEntryCount: registryEntries.filter(
+      ({ entityType, lifecycleStatus }) =>
+        entityType.startsWith("region.") && lifecycleStatus === "active",
+    ).length,
     assignedCount: assigned.length,
     unresolvedCount: unresolved.length,
+    activeResolvedCount: assigned.length - invalidAssigned.length,
     allAssignedResolve: invalidAssigned.length === 0,
-    invalidAssigned: invalidAssigned.map(({ regionId, masterCode }) => ({
-      regionId,
-      masterCode,
-    })),
+    invalidAssigned,
     unresolvedRegionIds: unresolved.map(({ regionId }) => regionId),
   };
 }

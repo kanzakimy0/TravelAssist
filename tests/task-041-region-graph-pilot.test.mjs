@@ -52,15 +52,17 @@ test("pilot diagnostics pass every required structural gate", () => {
   assert.equal(report.evidence.edgeCoverage, report.evidence.edgeTotal);
 });
 
-test("all 50 pilot Master Code assignments are audited and unresolved values stay null", () => {
+test("all 50 pilot Master Codes come from the merged canonical registry", () => {
   assert.equal(masterCodeAudit.summary.auditedNodes, 50);
-  assert.equal(masterCodeAudit.summary.canonicalAssignmentsRetained, 0);
-  assert.equal(masterCodeAudit.summary.unresolvedAssignments, 50);
+  assert.equal(masterCodeAudit.summary.rejectedPriorAssignmentsRetained, 0);
+  assert.equal(masterCodeAudit.summary.canonicalAssignmentsPopulated, 50);
+  assert.equal(masterCodeAudit.summary.unresolvedAssignments, 0);
   assert.equal(
     masterCodeAudit.canonicalRegistry.status,
-    "unavailable_in_repository",
+    "available_merged_governance",
   );
-  assert.ok(regionGraph.nodes.every(({ masterCode }) => masterCode === null));
+  assert.equal(masterCodeAudit.canonicalRegistry.activeRegionEntryCount, 50);
+  assert.ok(regionGraph.nodes.every(({ masterCode }) => masterCode !== null));
   assert.equal(masterCodeAudit.nodes.length, regionGraph.nodes.length);
   assert.deepEqual(
     new Set(masterCodeAudit.nodes.map(({ regionId }) => regionId)),
@@ -70,9 +72,11 @@ test("all 50 pilot Master Code assignments are audited and unresolved values sta
 
 test("every assigned masterCode must resolve to the canonical registry", () => {
   const report = masterCodeResolutionReport();
-  assert.equal(report.registryEntryCount, 0);
-  assert.equal(report.assignedCount, 0);
-  assert.equal(report.unresolvedCount, 50);
+  assert.equal(report.registryEntryCount, 51);
+  assert.equal(report.activeRegionEntryCount, 50);
+  assert.equal(report.assignedCount, 50);
+  assert.equal(report.activeResolvedCount, 50);
+  assert.equal(report.unresolvedCount, 0);
   assert.equal(report.allAssignedResolve, true);
   assert.deepEqual(report.invalidAssigned, []);
 
@@ -84,6 +88,7 @@ test("every assigned masterCode must resolve to the canonical registry", () => {
     {
       regionId: "region-japan",
       masterCode: "JP-RG-NOT-CANONICAL",
+      reason: "unknown_master_code",
     },
   ]);
 });
