@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+  "commands": [
+    {
+      "label": "replay-start",
+      "started": "2026-09-13T00:38:20.420Z",
+      "finished": "2026-09-13T00:38:22.794Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-initial-status",
+      "started": "2026-09-13T00:38:22.794Z",
+      "finished": "2026-09-13T00:38:25.091Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-1-reset",
+      "started": "2026-09-13T00:38:26.556Z",
+      "finished": "2026-09-13T00:39:24.928Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-1-types",
+      "started": "2026-09-13T00:39:24.928Z",
+      "finished": "2026-09-13T00:39:32.854Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-1-static",
+      "started": "2026-09-13T00:39:32.854Z",
+      "finished": "2026-09-13T00:39:34.832Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-1-runtime",
+      "started": "2026-09-13T00:39:34.832Z",
+      "finished": "2026-09-13T00:39:45.578Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-2-reset",
+      "started": "2026-09-13T00:39:45.582Z",
+      "finished": "2026-09-13T00:40:29.967Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-2-types",
+      "started": "2026-09-13T00:40:29.967Z",
+      "finished": "2026-09-13T00:40:35.166Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-2-static",
+      "started": "2026-09-13T00:40:35.166Z",
+      "finished": "2026-09-13T00:40:36.714Z",
+      "exitCode": 0
+    },
+    {
+      "label": "replay-2-runtime",
+      "started": "2026-09-13T00:40:36.714Z",
+      "finished": "2026-09-13T00:40:45.724Z",
+      "exitCode": 0
+    }
+  ],
+  "replays": [
+    {
+      "pass": 1,
+      "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+      "catalogSha256": "b1565e36b962e7d57f6e2393dc9d8a744f253f0ba9ef68c36adead975c06c6b8",
+      "runtime": {
+        "status": "PASS",
+        "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+        "completed": [
+          "replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree",
+          "positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions",
+          "RPC cross-owner update/delete and foreign membership fail without aggregate changes",
+          "accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay",
+          "DELETE /api/account removes populated owner and all eight B families, preserving second user"
+        ],
+        "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+        "realAuthUsers": 2,
+        "productionStagingMutation": false
+      }
+    },
+    {
+      "pass": 2,
+      "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+      "catalogSha256": "b1565e36b962e7d57f6e2393dc9d8a744f253f0ba9ef68c36adead975c06c6b8",
+      "runtime": {
+        "status": "PASS",
+        "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+        "completed": [
+          "replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree",
+          "positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions",
+          "RPC cross-owner update/delete and foreign membership fail without aggregate changes",
+          "accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay",
+          "DELETE /api/account removes populated owner and all eight B families, preserving second user"
+        ],
+        "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+        "realAuthUsers": 2,
+        "productionStagingMutation": false
+      }
+    }
+  ]
+}
