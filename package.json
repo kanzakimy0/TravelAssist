@@ -77,7 +77,11 @@
     "test:personal-center-migration:replay": "node --import ./tests/register-route-ts.mjs tests/task-054-personal-center-replay.mjs",
     "test:personal-center": "node tools/qa/personal-center-tests.mjs",
     "test:personal-center:local": "node tools/qa/personal-center-tests.mjs --local",
-    "test:personal-center:e2e": "node tools/qa/personal-center-e2e.mjs"
+    "test:personal-center:e2e": "node tools/qa/personal-center-e2e.mjs",
+    "test:profile-ui": "node --import ./tests/register-route-ts.mjs --test tests/task-060-profile-ui.test.mjs",
+    "test:profile-ui:local": "node --import ./tests/register-route-ts.mjs --test tests/task-060-profile-ui.runtime.mjs",
+    "test:trip-library-ui": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.test.mjs",
+    "test:trip-library-ui:local": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.runtime.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {

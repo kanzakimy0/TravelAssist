@@ -554,6 +554,7 @@ test(
             async () => {
               await field(sa.page, /^昵称/).fill("TASK059 Journey Profile");
               await button(sa.page, "保存修改").click();
+              await button(sa.page, "编辑资料").waitFor({ state: "visible" });
               assert.equal(await button(sa.page, "编辑资料").isVisible(), true);
               assert.ok(
                 (

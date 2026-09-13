@@ -1,14 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import {
-  type ChangeEvent,
-  type FormEvent,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import { GuardedLink } from "@/features/personal-center/components/guarded-link";
 import { usePersonalNavigationGuard } from "@/features/personal-center/components/navigation-guard-context";
@@ -18,21 +10,10 @@ import {
   type AccountDraft,
   type EmergencyContact,
   emptyEmergencyContact,
-  initialAccountDraft,
   regionRecommendations,
 } from "./profile-data";
 import styles from "./profile-account.module.css";
-
-const cloneDraft = (draft: AccountDraft): AccountDraft =>
-  structuredClone(draft);
-
-const comparableDraft = (draft: AccountDraft) => ({
-  ...draft,
-  avatar: {
-    kind: draft.avatar.kind,
-    fileName: draft.avatar.fileName ?? "",
-  },
-});
+import { useProfileResource } from "./persistence/use-profile-resource";
 
 const profileFields = [
   { key: "displayName", label: "昵称", required: true },
@@ -113,15 +94,22 @@ type ContactErrors = Partial<
 
 export function ProfileAccount() {
   const { setIsDirty } = usePersonalNavigationGuard();
-  const [saved, setSaved] = useState<AccountDraft>(() =>
-    cloneDraft(initialAccountDraft),
-  );
-  const [draft, setDraft] = useState<AccountDraft>(() =>
-    cloneDraft(initialAccountDraft),
-  );
+  const {
+    resource,
+    saved,
+    draft,
+    setDraft,
+    busy,
+    error,
+    load,
+    cancel,
+    save,
+    saveContact,
+    deleteContact,
+  } = useProfileResource();
   const [isEditing, setIsEditing] = useState(false);
   const [displayNameError, setDisplayNameError] = useState("");
-  const [avatarError, setAvatarError] = useState("");
+  const nicknameRef = useRef<HTMLInputElement>(null);
   const [saveFeedback, setSaveFeedback] = useState(false);
   const [showRecommendation, setShowRecommendation] = useState(false);
   const [contactDialog, setContactDialog] = useState<{
@@ -137,14 +125,10 @@ export function ProfileAccount() {
   );
   const contactDialogRef = useRef<HTMLDialogElement>(null);
   const deleteDialogRef = useRef<HTMLDialogElement>(null);
-  const nicknameRef = useRef<HTMLInputElement>(null);
   const addContactRef = useRef<HTMLButtonElement>(null);
-  const objectUrlsRef = useRef<string[]>([]);
 
   const dirty = useMemo(
-    () =>
-      JSON.stringify(comparableDraft(draft)) !==
-      JSON.stringify(comparableDraft(saved)),
+    () => JSON.stringify(draft) !== JSON.stringify(saved),
     [draft, saved],
   );
 
@@ -152,13 +136,6 @@ export function ProfileAccount() {
     setIsDirty(dirty);
     return () => setIsDirty(false);
   }, [dirty, setIsDirty]);
-
-  useEffect(
-    () => () => {
-      objectUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
-    },
-    [],
-  );
 
   useEffect(() => {
     const dialog = contactDialogRef.current;
@@ -180,55 +157,33 @@ export function ProfileAccount() {
   };
 
   const cancelEditing = () => {
-    setDraft(cloneDraft(saved));
+    if (busy) return;
+    cancel();
     setDisplayNameError("");
-    setAvatarError("");
     setShowRecommendation(false);
     setIsEditing(false);
   };
 
-  const saveChanges = () => {
+  const saveChanges = async () => {
     if (!draft.profile.displayName.trim()) {
       setDisplayNameError("请输入昵称");
       nicknameRef.current?.focus();
       return;
     }
     setDisplayNameError("");
-    setSaved(cloneDraft(draft));
-    setIsEditing(false);
-    setShowRecommendation(false);
-    setSaveFeedback(true);
-    window.setTimeout(() => setSaveFeedback(false), 1800);
-  };
-
-  const handleAvatarFile = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      setAvatarError("请选择图片文件");
-      return;
+    if (await save()) {
+      setIsEditing(false);
+      setShowRecommendation(false);
+      setSaveFeedback(true);
     }
-    if (file.size > 5 * 1024 * 1024) {
-      setAvatarError("图片不能超过 5 MB");
-      return;
-    }
-    const previewUrl = URL.createObjectURL(file);
-    objectUrlsRef.current.push(previewUrl);
-    setAvatarError("");
-    setIsEditing(true);
-    setDraft((current) => ({
-      ...current,
-      avatar: { kind: "local", fileName: file.name, previewUrl },
-    }));
   };
 
   const updateProfile = (key: keyof AccountDraft["profile"], value: string) => {
+    if (key === "displayName") setDisplayNameError("");
     setDraft((current) => ({
       ...current,
       profile: { ...current.profile, [key]: value },
     }));
-    if (key === "displayName" && value.trim()) setDisplayNameError("");
   };
 
   const updateSetting = (
@@ -251,65 +206,82 @@ export function ProfileAccount() {
   };
 
   const openAddContact = () => {
-    beginEditing();
+    setSaveFeedback(false);
     setContactErrors({});
     setContactForm(emptyEmergencyContact());
     setContactDialog({ mode: "add", index: null });
   };
 
   const openEditContact = (contact: EmergencyContact, index: number) => {
-    beginEditing();
+    setSaveFeedback(false);
     setContactErrors({});
     setContactForm({ ...contact });
     setContactDialog({ mode: "edit", index });
   };
 
   const closeContactDialog = () => {
+    if (busy) return;
     setContactDialog(null);
     setContactErrors({});
     window.requestAnimationFrame(() => addContactRef.current?.focus());
   };
 
-  const submitContact = (event: FormEvent<HTMLFormElement>) => {
+  const submitContact = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (busy) return;
     const errors: ContactErrors = {};
     if (!contactForm.name.trim()) errors.name = "请输入姓名";
     if (!contactForm.relationship.trim())
       errors.relationship = "请输入与您的关系";
-    if (!contactForm.countryCode.trim())
-      errors.countryCode = "请输入国家 / 区号";
-    if (!contactForm.phone.trim()) errors.phone = "请输入手机号码";
+    if (
+      contactForm.countryCode &&
+      !/^[A-Z]{2}$/.test(contactForm.countryCode.trim())
+    )
+      errors.countryCode = "请输入两位大写国家代码，例如 JP";
+    if (!/^\+[1-9][0-9]{1,14}$/.test(contactForm.phone.trim()))
+      errors.phone = "请输入含国际区号的完整号码，例如 +819012345678";
     if (Object.keys(errors).length) {
       setContactErrors(errors);
       return;
     }
-
-    setDraft((current) => {
-      const contacts = [...current.contacts];
-      if (contactDialog?.mode === "edit" && contactDialog.index !== null) {
-        contacts[contactDialog.index] = { ...contactForm };
-      } else {
-        contacts.push({ ...contactForm });
-      }
-      return { ...current, contacts };
-    });
-    closeContactDialog();
+    if (
+      await saveContact(
+        contactForm,
+        contactDialog?.mode === "edit" ? contactForm.id : undefined,
+      )
+    ) {
+      setContactDialog(null);
+      setContactErrors({});
+      window.requestAnimationFrame(() => addContactRef.current?.focus());
+    }
   };
 
-  const confirmDeleteContact = () => {
-    if (deleteContactIndex === null) return;
-    setIsEditing(true);
-    setDraft((current) => ({
-      ...current,
-      contacts: current.contacts.filter(
-        (_, index) => index !== deleteContactIndex,
-      ),
-    }));
-    setDeleteContactIndex(null);
-    window.requestAnimationFrame(() => addContactRef.current?.focus());
+  const confirmDeleteContact = async () => {
+    if (deleteContactIndex === null || busy) return;
+    if (await deleteContact(draft.contacts[deleteContactIndex].id)) {
+      setDeleteContactIndex(null);
+      window.requestAnimationFrame(() => addContactRef.current?.focus());
+    }
   };
 
   const recommendation = regionRecommendations[draft.settings.region];
+
+  if (!resource)
+    return (
+      <div className={styles.accountPage} data-account-page>
+        <h1 data-primary-page-title>账户</h1>
+        {error ? (
+          <div role="alert">
+            <p>{error}</p>
+            <button disabled={busy} type="button" onClick={() => void load()}>
+              重新读取资料
+            </button>
+          </div>
+        ) : (
+          <p role="status">正在读取账户资料…</p>
+        )}
+      </div>
+    );
 
   return (
     <div className={styles.accountPage} data-account-page>
@@ -330,6 +302,10 @@ export function ProfileAccount() {
         </div>
       </header>
 
+      {error && !contactDialog && deleteContactIndex === null ? (
+        <p role="alert">{error}</p>
+      ) : null}
+      {busy ? <p role="status">正在保存…</p> : null}
       <div className={styles.accountGrid}>
         <section className={`${styles.card} ${styles.profileCard}`}>
           <div className={styles.cardHeading}>
@@ -345,6 +321,7 @@ export function ProfileAccount() {
               ) : null}
               {!isEditing ? (
                 <button
+                  disabled={busy}
                   type="button"
                   className={styles.editButton}
                   onClick={beginEditing}
@@ -360,25 +337,7 @@ export function ProfileAccount() {
 
           <div className={styles.avatarRow}>
             <div className={styles.profileAvatar} data-kind={draft.avatar.kind}>
-              {draft.avatar.kind === "local" && draft.avatar.previewUrl ? (
-                <Image
-                  src={draft.avatar.previewUrl}
-                  alt="本地头像预览"
-                  fill
-                  sizes="96px"
-                  unoptimized
-                />
-              ) : draft.avatar.kind === "current" ? (
-                <Image
-                  src="/media/personal-center/avatar-yuki.webp"
-                  alt="当前 Mock 头像"
-                  fill
-                  sizes="96px"
-                  className={styles.currentAvatarPhoto}
-                />
-              ) : (
-                <PersonalIcon name="account" width="38" height="38" />
-              )}
+              <PersonalIcon name="account" width="38" height="38" />
             </div>
             <div className={styles.avatarDetails}>
               <strong>{draft.profile.displayName}</strong>
@@ -386,16 +345,9 @@ export function ProfileAccount() {
                 {draft.profile.countryRegion} · {draft.profile.city}
               </p>
               <div className={styles.avatarActions}>
-                <label className={styles.fileButton}>
-                  <PersonalIcon name="camera" />
-                  更换头像
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleAvatarFile}
-                  />
-                </label>
+                <span>头像上传暂不可用</span>
                 <button
+                  disabled={busy}
                   type="button"
                   onClick={() => {
                     beginEditing();
@@ -409,6 +361,7 @@ export function ProfileAccount() {
                   删除头像
                 </button>
                 <button
+                  disabled={busy}
                   type="button"
                   onClick={() => {
                     beginEditing();
@@ -422,10 +375,8 @@ export function ProfileAccount() {
                   恢复默认头像
                 </button>
               </div>
-              {avatarError ? (
-                <p className={styles.fieldError} role="alert">
-                  {avatarError}
-                </p>
+              {draft.avatar.kind === "current" ? (
+                <p>已保存头像引用，预览暂不可用。</p>
               ) : null}
             </div>
           </div>
@@ -456,6 +407,7 @@ export function ProfileAccount() {
                   </label>
                   {field.key === "gender" ? (
                     <select
+                      disabled={busy}
                       id={inputId}
                       value={value}
                       onChange={(event) =>
@@ -467,9 +419,16 @@ export function ProfileAccount() {
                       <option>男</option>
                       <option>非二元性别</option>
                       <option>不愿透露</option>
+                      {value &&
+                      !["女", "男", "非二元性别", "不愿透露"].includes(
+                        value,
+                      ) ? (
+                        <option>{value}</option>
+                      ) : null}
                     </select>
                   ) : field.key === "countryRegion" ? (
                     <select
+                      disabled={busy}
                       id={inputId}
                       value={value}
                       onChange={(event) =>
@@ -481,16 +440,18 @@ export function ProfileAccount() {
                       <option>中国</option>
                       <option>法国</option>
                       <option>美国</option>
+                      {value &&
+                      !["日本", "中国", "法国", "美国"].includes(value) ? (
+                        <option>{value}</option>
+                      ) : null}
                     </select>
                   ) : (
                     <input
+                      disabled={busy}
+                      id={inputId}
                       ref={
                         field.key === "displayName" ? nicknameRef : undefined
                       }
-                      id={inputId}
-                      type={field.key === "birthday" ? "date" : "text"}
-                      value={value}
-                      required={field.required}
                       aria-invalid={
                         field.key === "displayName" && displayNameError
                           ? true
@@ -501,6 +462,9 @@ export function ProfileAccount() {
                           ? "display-name-error"
                           : undefined
                       }
+                      type={field.key === "birthday" ? "date" : "text"}
+                      value={value}
+                      required={field.required}
                       onChange={(event) =>
                         updateProfile(field.key, event.target.value)
                       }
@@ -536,10 +500,10 @@ export function ProfileAccount() {
                 </span>
                 <span className={styles.contactText}>
                   <dt>邮箱</dt>
-                  <dd>yu***@gmail.com</dd>
+                  <dd>{resource.authContact.email ?? "未绑定"}</dd>
                 </span>
                 <span className={styles.verifiedBadge}>
-                  <PersonalIcon name="check" /> 已验证
+                  {resource.authContact.emailVerified ? "已验证" : "未验证"}
                 </span>
               </div>
               <div>
@@ -548,10 +512,10 @@ export function ProfileAccount() {
                 </span>
                 <span className={styles.contactText}>
                   <dt>手机</dt>
-                  <dd>+81 **** 1234</dd>
+                  <dd>{resource.authContact.phone ?? "未绑定"}</dd>
                 </span>
                 <span className={styles.verifiedBadge}>
-                  <PersonalIcon name="check" /> 已验证
+                  {resource.authContact.phoneVerified ? "已验证" : "未验证"}
                 </span>
               </div>
             </dl>
@@ -571,18 +535,26 @@ export function ProfileAccount() {
                   <label htmlFor={`setting-${field.key}`}>{field.label}</label>
                   {isEditing ? (
                     <select
+                      disabled={busy}
                       id={`setting-${field.key}`}
                       value={draft.settings[field.key]}
                       onChange={(event) =>
                         updateSetting(field.key, event.target.value)
                       }
                     >
+                      <option value="">未设置</option>
+                      {draft.settings[field.key] &&
+                      !(field.options as readonly string[]).includes(
+                        draft.settings[field.key],
+                      ) ? (
+                        <option>{draft.settings[field.key]}</option>
+                      ) : null}
                       {field.options.map((option) => (
                         <option key={option}>{option}</option>
                       ))}
                     </select>
                   ) : (
-                    <strong>{draft.settings[field.key]}</strong>
+                    <strong>{draft.settings[field.key] || "未设置"}</strong>
                   )}
                 </div>
               ))}
@@ -601,6 +573,7 @@ export function ProfileAccount() {
                     ] as const
                   ).map(([key, label]) => (
                     <button
+                      disabled={busy}
                       type="button"
                       key={key}
                       onClick={() => applyRecommendation(key)}
@@ -622,7 +595,7 @@ export function ProfileAccount() {
             <h2>紧急联系人</h2>
             <PersonalIcon name="info" />
             <span className={styles.headingNote}>
-              在您需要帮助时，我们可以更快地联系到您（非必填）。
+              可选。联系人单独保存，取消资料编辑不会撤销已保存的联系人。
             </span>
           </div>
         </div>
@@ -650,6 +623,7 @@ export function ProfileAccount() {
                 </div>
                 <div>
                   <button
+                    disabled={busy}
                     type="button"
                     onClick={() => openEditContact(contact, index)}
                   >
@@ -657,6 +631,7 @@ export function ProfileAccount() {
                     <span className={styles.srOnly}>编辑</span>
                   </button>
                   <button
+                    disabled={busy}
                     type="button"
                     className={styles.dangerButton}
                     onClick={() => setDeleteContactIndex(index)}
@@ -670,6 +645,7 @@ export function ProfileAccount() {
           </div>
         )}
         <button
+          disabled={busy}
           ref={addContactRef}
           type="button"
           className={styles.secondaryButton}
@@ -709,10 +685,10 @@ export function ProfileAccount() {
         <div className={styles.saveBar}>
           <span>{dirty ? "修改尚未保存" : "当前没有新的修改"}</span>
           <div>
-            <button type="button" onClick={cancelEditing}>
+            <button disabled={busy} type="button" onClick={cancelEditing}>
               取消
             </button>
-            <button type="button" onClick={saveChanges}>
+            <button disabled={busy} type="button" onClick={saveChanges}>
               保存修改
             </button>
           </div>
@@ -739,6 +715,7 @@ export function ProfileAccount() {
               </h2>
             </div>
             <button
+              disabled={busy}
               type="button"
               aria-label="关闭"
               onClick={closeContactDialog}
@@ -746,13 +723,14 @@ export function ProfileAccount() {
               <PersonalIcon name="close" />
             </button>
           </div>
+          {error ? <p role="alert">{error}</p> : null}
           <div className={styles.dialogFields}>
             {(
               [
                 ["name", "姓名", true],
                 ["relationship", "与您的关系", true],
-                ["countryCode", "国家 / 区号", true],
-                ["phone", "手机号码", true],
+                ["countryCode", "国家代码（例如 JP）", false],
+                ["phone", "手机号码（含国际区号）", true],
                 ["email", "邮箱", false],
                 ["note", "备注", false],
               ] as const
@@ -774,6 +752,7 @@ export function ProfileAccount() {
                   </label>
                   {key === "note" ? (
                     <textarea
+                      disabled={busy}
                       id={`contact-${key}`}
                       value={contactForm[key]}
                       onChange={(event) =>
@@ -785,6 +764,7 @@ export function ProfileAccount() {
                     />
                   ) : (
                     <input
+                      disabled={busy}
                       id={`contact-${key}`}
                       type={key === "email" ? "email" : "text"}
                       value={contactForm[key]}
@@ -821,10 +801,12 @@ export function ProfileAccount() {
             })}
           </div>
           <div className={styles.dialogActions}>
-            <button type="button" onClick={closeContactDialog}>
+            <button disabled={busy} type="button" onClick={closeContactDialog}>
               取消
             </button>
-            <button type="submit">保存联系人</button>
+            <button disabled={busy} type="submit">
+              保存联系人
+            </button>
           </div>
         </form>
       </dialog>
@@ -835,16 +817,22 @@ export function ProfileAccount() {
         aria-labelledby="delete-contact-title"
         onCancel={(event) => {
           event.preventDefault();
-          setDeleteContactIndex(null);
+          if (!busy) setDeleteContactIndex(null);
         }}
       >
         <h2 id="delete-contact-title">删除这位紧急联系人？</h2>
-        <p>此操作不会影响您的账户或旅行数据。</p>
+        <p>此操作会立即删除这位联系人。</p>
+        {error ? <p role="alert">{error}</p> : null}
         <div className={styles.dialogActions}>
-          <button type="button" onClick={() => setDeleteContactIndex(null)}>
+          <button
+            disabled={busy}
+            type="button"
+            onClick={() => setDeleteContactIndex(null)}
+          >
             取消
           </button>
           <button
+            disabled={busy}
             type="button"
             className={styles.confirmDanger}
             onClick={confirmDeleteContact}
