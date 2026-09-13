@@ -6,7 +6,7 @@ Completed / PR #352 resynchronized and acceptance preserved.
 
 - WBS 4.48: `待审查`
 - Issue #371: Open
-- PR #352: Open / Draft; GitHub CI pending after push
+- PR #352: Open / Draft / mergeable clean
 - TASK-046 independent recommendation: `ACCEPT` remains valid
 - Automatic merge: not performed
 - Candidate Pipeline: not started
@@ -24,7 +24,9 @@ Completed / PR #352 resynchronized and acceptance preserved.
 - Merge parents:
   1. `3281a072e976e747256a0e73cbd2692f9a9915f7`
   2. `fa74995dba42d40fa58dfd9e5900c09fc552340e`
-- Final PR head: recorded after push in the final tracking update
+- Validated PR head: `1277a39fada5cfe43ec18b608973a789192b1cb3`
+- Final tracking commit: a docs-only descendant containing this completed Result; the
+  exact final PR head is also recorded on Issue #371 and in the task handoff
 
 ## Worktree / Safety
 
@@ -123,8 +125,8 @@ The current committed generated graph also matches the deterministic generator o
 | `npm run build`                | Passed           |
 | TASK-owned Prettier            | Passed           |
 | `git diff --check`             | Passed           |
-| GitHub CI                      | Pending push     |
-| GitHub merge eligibility       | Pending push     |
+| GitHub CI                      | Passed           |
+| GitHub merge eligibility       | Passed; clean    |
 
 `npm ci` completed successfully with 395 packages and zero reported vulnerabilities. Informational package lifecycle/deprecation warnings did not affect validation.
 
@@ -150,11 +152,38 @@ TASK-047-owned files:
 
 `ACCEPT_PRESERVED`
 
-The latest develop was merged normally, no conflict required a semantic decision, the complete graph is byte-equivalent in semantics to the TASK-046 accepted graph, every mandatory invariant passes, and no protected product or persistence scope changed. TASK-046's independent ACCEPT decision therefore remains valid on the synchronized branch subject to final GitHub CI and merge-eligibility checks recorded after push.
+The latest develop was merged normally, no conflict required a semantic decision, the complete graph is byte-equivalent in semantics to the TASK-046 accepted graph, every mandatory invariant passes, and no protected product or persistence scope changed. GitHub's `Install, test and build` and `Merge eligible pull requests` checks passed on validated head `1277a39fada5cfe43ec18b608973a789192b1cb3`; PR #352 was reported as mergeable clean. TASK-046's independent ACCEPT decision therefore remains valid on the synchronized branch.
+
+## PR #352 Changed Files
+
+GitHub reports 18 changed files against `develop`:
+
+1. `docs/project/WBS-TravelAssist.md`
+2. `docs/qa/TASK-041/graph-validation.json`
+3. `docs/qa/TASK-041/master-code-audit.json`
+4. `docs/qa/TASK-041/pilot-report.md`
+5. `docs/qa/TASK-041/region-nodes.json`
+6. `docs/qa/TASK-045/region-master-code-integration-report.md`
+7. `docs/qa/TASK-045/region-master-code-integration.json`
+8. `docs/qa/TASK-047/delta-revalidation-report.md`
+9. `docs/qa/TASK-047/delta-revalidation.json`
+10. `docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md`
+11. `docs/tasks/RESULT-TASK-047-a-pr352-latest-develop-sync-delta-revalidation.md`
+12. `package.json`
+13. `tests/task-041-region-graph-pilot.test.mjs`
+14. `tests/task-045-region-master-code-integration.test.mjs`
+15. `tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs`
+16. `tools/qa/pr352-develop-sync-delta-revalidation.mjs`
+17. `tools/qa/region-graph-pilot.mjs`
+18. `tools/qa/region-master-code-integration.mjs`
+
+The list contains the original TASK-041/TASK-045 integration deliverables plus
+TASK-047 evidence and tracking. No Planner / Step UI, DB migration, Candidate
+Pipeline, or unrelated upstream file remains in the PR delta.
 
 ## Remaining Actions / Stop
 
-- Push the existing branch and update PR #352 in place.
+- The existing branch was pushed and PR #352 was updated in place.
 - Keep PR #352 Open / Draft; do not merge automatically.
 - Keep Issue #371 Open through owner review.
 - Do not start Candidate Pipeline.
