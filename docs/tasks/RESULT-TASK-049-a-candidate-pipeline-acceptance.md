@@ -23,7 +23,7 @@ Adapter Pilot.
 - Candidate implementation base: `3ba3f34ea07a160c237c22b85050df5313ea10ae`
 - Latest review baseline: `56901c3a18703105442f9c566406f041c0660fbe`
 - Independent review branch: `codex/a-candidate-pipeline-acceptance`
-- Review baseline merge commit: `58c6af77`
+- Review baseline merge commit: `58c6af77851b0e49c8ecccaa90acee14a2e972a1`
 
 The PR Head did not advance from the initially specified Head during the
 review.
@@ -218,8 +218,11 @@ No changed file belongs to:
 
 - Issue: [#373](https://github.com/kanzakimy0/TravelAssist/issues/373) — Open
 - Review branch: `codex/a-candidate-pipeline-acceptance`
-- Review commit(s): pending
-- Draft acceptance PR: pending, target `develop`
+- Acceptance commit: `12e60e1994affec3669c32579800d320dad58425`
+- Draft acceptance PR:
+  [#374](https://github.com/kanzakimy0/TravelAssist/pull/374),
+  `codex/a-candidate-pipeline-acceptance` →
+  `codex/a-candidate-pipeline-reference`
 - Reviewed implementation PR #372: Open / Draft / mergeable clean
 - WBS 4.49: `待审查`
 
