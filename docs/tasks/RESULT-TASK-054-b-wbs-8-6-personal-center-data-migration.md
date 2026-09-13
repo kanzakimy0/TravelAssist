@@ -2,9 +2,9 @@
 
 ## Status and execution baseline
 
-**Status: 待审查 / review candidate.** Implementation and mandatory Local QA passed; Draft PR #353 is open. Final delivery requires the exact PR head Quality Gate to pass. Its immutable run URL and head SHA are recorded in the PR description and final delivery result, avoiding a self-referential evidence commit. User acceptance remains required.
+**Status: 已完成 / accepted and merged.** On 2026-09-13 the user explicitly accepted the implementation and authorized merging PR #353. The exact accepted head passed Quality Gate and was merged into develop. Issue #351 is Closed / Completed; WBS 8.6 is 已完成.
 
-- Issue: #351 (Open). Owner B. Branch: `codex/b-account-wbs-8-6-personal-center-data-migration`.
+- Issue: #351 (Closed / Completed). Owner B. Branch: `codex/b-account-wbs-8-6-personal-center-data-migration`.
 - Execution baseline: `166f996eab3d75fb5afabc4ad7cb9f3d265c54c1`, latest clean origin/develop after fetch. Initial clean checkout: `codex/b-account-wbs-5-13-acceptance-closeout`.
 - Complete Codex and Task specifications read from `origin/task/b-wbs-8-6-personal-center-data-migration`; implementation was created from origin/develop.
 - Hard gate PASS: WBS 5.11, 5.12, 5.18, 8.4 completed; DB foundation, Local wrappers, Drizzle mirrors, generated types and regression suites present.
@@ -81,12 +81,15 @@ Full repository: `node --import ./tests/register-route-ts.mjs --test "tests/*.te
 
 Machine-readable counts and log hashes: [quality-gates.json](../qa/TASK-054/quality-gates.json). Raw logs are local ignored artifacts; committed evidence has no credentials or synthetic account identifiers.
 
-## Review tracking
+## Acceptance and merge tracking
 
-- Implementation commit: `f02656d12dfdf0a4621a5b07262315951aa3ae26`; subsequent review tracking commit contains only Result/WBS references.
-- Draft PR: [#353](https://github.com/kanzakimy0/TravelAssist/pull/353) → `develop`, Open / Draft.
-- Final exact-head Quality Gate: [PR #353 checks](https://github.com/kanzakimy0/TravelAssist/pull/353/checks). Delivery gate is PASS on the exact final PR head; exact SHA/run URL/status is recorded in the PR description and final delivery result. A previous head's PASS is insufficient.
-- WBS 8.6: 待审查（#351 / TASK-054-B；Draft PR #353）. Only this Master WBS row changed. Never 已完成 before explicit user acceptance and merge.
-- Issue #351: Open. No automatic merge/issue closure.
+- User authorization: “验收通过，允许合并 PR #353” (2026-09-13). This is user acceptance in the task conversation, not a claimed GitHub APPROVED review.
+- Implementation commit: `f02656d12dfdf0a4621a5b07262315951aa3ae26`; accepted final head: `8249041bde81388ac0e49731947341738e18be1b`.
+- Final exact-head Quality Gate: [run 34729092580](https://github.com/kanzakimy0/TravelAssist/actions/runs/34729092580), SUCCESS, completed at `2026-09-13T00:55:59Z` on accepted head `8249041bde81388ac0e49731947341738e18be1b`.
+- Implementation PR: [#353](https://github.com/kanzakimy0/TravelAssist/pull/353) → `develop`, Merged at `2026-09-13T01:27:01Z`; merge commit `6095eecb3efbaa9d89770a765acd2f44999314bf`.
+- Post-merge fetch confirmed `origin/develop` at the merge commit. The merge tree exactly matches the accepted final head (`git diff --exit-code` has no changes); all accepted implementation and QA evidence above remains applicable.
+- WBS 8.6: 已完成（#351 / TASK-054-B；用户验收，PR #353 已合并）. Only this Master WBS row changes in the acceptance closeout.
+- Issue [#351](https://github.com/kanzakimy0/TravelAssist/issues/351): Closed / Completed at `2026-09-13T01:28:04Z`, after explicit user acceptance and implementation merge.
+- Acceptance closeout branch: `codex/b-account-wbs-8-6-acceptance-closeout`, created from merged develop `6095eecb3efbaa9d89770a765acd2f44999314bf`. Changes are limited to this Result and the WBS 8.6 row; the closeout PR records its own exact-head checks.
 - Production/Staging mutation: **No**.
 - Downstream task started: **No** (including 8.7/8.8/4.22–4.24).
