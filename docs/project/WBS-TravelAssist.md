@@ -650,6 +650,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-043-A | 2.18 | A | 待审查（Canonical Master Code Registry Governance Candidate；50/50 Region allocation；不自动完成 4.48） | #311 Open | `docs/tasks/TASK-043-a-master-code-registry.md` / `docs/tasks/RESULT-TASK-043-a-master-code-registry.md` | `codex/a-master-code-registry` | `8f450d4`（实现）；追踪提交见 PR | [#326](https://github.com/kanzakimy0/TravelAssist/pull/326) Draft → `develop` |
 | TASK-045-A | 4.48 | A | 待审查（50/50 canonical Master Code 已填充；0 null；图拓扑语义变更 0；不自动合并） | #349 Open | `docs/tasks/TASK-045-a-task-041-region-master-code-integration.md` / `docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md` | `codex/a-task-041-master-code-integration` | `6b9a897`（实现） | [#352](https://github.com/kanzakimy0/TravelAssist/pull/352) Draft → `develop` |
 | TASK-047-A | 4.48 | A | 待审查（PR #352 已正常同步最新 `develop`；0 冲突；TASK-046 ACCEPT 保持有效；GitHub CI 通过；不自动合并） | #371 Open | `docs/tasks/TASK-047-a-pr352-latest-develop-sync-delta-revalidation.md` / `docs/tasks/RESULT-TASK-047-a-pr352-latest-develop-sync-delta-revalidation.md` | `codex/a-task-041-master-code-integration` | `eb81291f`（同步 merge）；`1277a39f`（验收） | [#352](https://github.com/kanzakimy0/TravelAssist/pull/352) Draft → `develop` |
+| TASK-048-A | 4.49 | A | 待审查（provider-free、deterministic Candidate Pipeline reference；14 Pilot scenarios；Decision Trace stage coverage 100%；不自动合并） | #367 Open | `docs/tasks/TASK-048-a-candidate-pipeline-reference.md` / `docs/tasks/RESULT-TASK-048-a-candidate-pipeline-reference.md` | `codex/a-candidate-pipeline-reference` | 实现与追踪提交见 Draft PR | Draft PR → `develop`（待创建） |
 | TASK-034-A | 0.6 | A | 已完成（治理文档范围） | #264 | `docs/tasks/TASK-034-a-definition-of-done.md` / `docs/tasks/RESULT-TASK-034-a-definition-of-done.md` | `docs/a-definition-of-done` | `4464029`（head） | [#269](https://github.com/kanzakimy0/TravelAssist/pull/269) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
 | TASK-032-A | 1.19 | A | 已完成（设计文档范围；AI runtime 未实现） | #262 | `docs/tasks/TASK-032-a-ai-assistant-main-screen-design.md` / `docs/tasks/RESULT-TASK-032-a-ai-assistant-main-screen-design.md` | `docs/a-ai-assistant-main-screen-design` | `dc16cf3`（head） | [#270](https://github.com/kanzakimy0/TravelAssist/pull/270) 经 [#295](https://github.com/kanzakimy0/TravelAssist/pull/295) 合入 |
 
@@ -867,7 +868,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项 | 负责人 | 优先级 | 依赖 | 状态 |
 | --- | --- | --- | --- | --- | --- |
 | 4.47 | Trip Planning Engine Contract / Validator / Fixtures Foundation | A | P0 | 4.17,2.7；P0 Design Candidate set | 已完成（TASK-036-A 用户验收；#293 已合入；P0 设计仍为 Freeze Candidate） |
-| 4.48 | Travel Region Graph Pilot / Reference Dataset | A | P0 | 4.47,2.18 | 待审查（TASK-045-A；Issue #349；50/50 canonical Master Code 已填充；production null=0；图拓扑语义变更=0；待人审与合并） |
+| 4.48 | Travel Region Graph Pilot / Reference Dataset | A | P0 | 4.47,2.18 | 已完成（PR #352 已合入 `develop`；final closeout `4465d8f`；50/50 canonical Master Code；production null=0） |
+| 4.49 | Candidate Pipeline Reference Implementation / Pilot Harness | A | P0 | 4.47,4.48 | 待审查（TASK-048-A；Issue #367；14 Pilot scenarios；provider/AI/DB writes=0；Draft PR 待创建） |
 
 ## 5. 用户个人中心 / 管理 / 偏好（B 全责）
 
