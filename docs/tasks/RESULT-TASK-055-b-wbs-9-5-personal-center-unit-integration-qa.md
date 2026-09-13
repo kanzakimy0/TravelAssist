@@ -5,8 +5,8 @@
 - Issue：[#355](https://github.com/kanzakimy0/TravelAssist/issues/355)，保持 Open。
 - 执行基线：`3850ec91a94b96f61800a9e45ba7792d07bb1c44`，执行时最新且干净的 `origin/develop`。
 - 实现分支：`codex/b-account-wbs-9-5-personal-center-unit-integration-qa`，直接从该基线创建，没有从 task/spec 分支开发。
-- Draft PR：创建后填入；目标 `develop`，使用 `Refs #355`。
-- WBS 9.5：本地实现阶段为 `进行中（#355 / TASK-055-B）`；Draft PR 及 mandatory QA 完成后仅更新该行为待审查。
+- Draft PR：[#356](https://github.com/kanzakimy0/TravelAssist/pull/356) → `develop`，使用 `Refs #355`。
+- WBS 9.5：`待审查（#355 / TASK-055-B；Draft PR #356）`，仅更新这一行；9.6 保持未开始。
 - 最终 head / exact-head GitHub Quality Gate：见本文末尾交付验证记录。该记录在最终提交及检查完成后写入交付副本和 PR 描述，避免用自引用 SHA 再产生一个未经检查的提交。
 
 本任务建立 B Personal Center 的可复现单元 / 集成基线。没有增加业务功能、修改生产代码、重构已验收 API、修改 SQL migration、修改生成类型或依赖，也没有实现 WBS 9.6 的完整浏览器旅程。
@@ -124,23 +124,23 @@ TASK-054 已验收的两次真实 replay 证据继续有效；本任务重新执
 
 最终执行结果和日志哈希见 [quality-gates.json](../qa/TASK-055/quality-gates.json)。原始日志留在 ignored `.artifacts/task055/`，公开证据不包含凭证、用户 UUID 或 Auth token。
 
-| Gate                                        | 结果                                      |
-| ------------------------------------------- | ----------------------------------------- |
-| `npm ci`                                    | PASS，395 packages，0 vulnerabilities     |
-| Baseline 全仓 Node                          | 2,480 / 2,480，fail/skip/cancel/todo 全 0 |
-| Candidate 全仓 Node                         | 2,493 / 2,493，fail/skip/cancel/todo 全 0 |
-| 两遍非 Local aggregate                      | 每遍 1,823，PASS                          |
-| 两遍真实 Local aggregate                    | 每遍 877 + 2 bundle audits，PASS          |
-| `npm run lint`                              | 精确相同基线债务，见下文                  |
-| `npx eslint . --ignore-pattern '.cache/**'` | PASS                                      |
-| `npm run format:check:deploy`               | PASS                                      |
-| `npm run typecheck`                         | PASS                                      |
-| `npm run build`                             | PASS                                      |
-| `npm run deploy:validate:local`             | PASS                                      |
-| `npm run deploy:build:local`                | PASS                                      |
-| `npm run deploy:verify-artifact`            | PASS                                      |
-| Scoped Prettier / `git diff --check`        | PASS                                      |
-| Exact final-head GitHub Quality Gate        | 最终交付记录填入实际 SHA/run URL/status   |
+| Gate                                        | 结果                                                                                                        |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `npm ci`                                    | PASS，395 packages，0 vulnerabilities                                                                       |
+| Baseline 全仓 Node                          | 2,480 / 2,480，fail/skip/cancel/todo 全 0                                                                   |
+| Candidate 全仓 Node                         | 2,493 / 2,493，fail/skip/cancel/todo 全 0                                                                   |
+| 两遍非 Local aggregate                      | 每遍 1,823，PASS                                                                                            |
+| 两遍真实 Local aggregate                    | 每遍 877 + 2 bundle audits，PASS                                                                            |
+| `npm run lint`                              | 精确相同基线债务，见下文                                                                                    |
+| `npx eslint . --ignore-pattern '.cache/**'` | PASS                                                                                                        |
+| `npm run format:check:deploy`               | PASS                                                                                                        |
+| `npm run typecheck`                         | PASS                                                                                                        |
+| `npm run build`                             | PASS                                                                                                        |
+| `npm run deploy:validate:local`             | PASS                                                                                                        |
+| `npm run deploy:build:local`                | PASS                                                                                                        |
+| `npm run deploy:verify-artifact`            | PASS                                                                                                        |
+| Scoped Prettier / `git diff --check`        | PASS                                                                                                        |
+| Exact final-head GitHub Quality Gate        | 由最终交付记录与 [PR #356](https://github.com/kanzakimy0/TravelAssist/pull/356) 提供实际 SHA/run URL/status |
 
 全仓 canonical 命令为 `node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"`。本次 package 中无需改名的 equivalent mapping；仅新增两个 aggregate aliases。非 Local、Local 与全仓测试存在覆盖重叠，不把这些数字相加作为唯一产品测试总数。
 
