@@ -1,0 +1,1500 @@
+{
+  "task": "TASK-055-B",
+  "baseline": "3850ec91a94b96f61800a9e45ba7792d07bb1c44",
+  "node": "v24.18.0",
+  "scope": "Local and non-Local execution evidence; raw logs remain ignored and credential-bearing logs are not published",
+  "inventory": {
+    "suites": 62,
+    "supportFiles": 15,
+    "byMode": {
+      "non-local": 28,
+      "local": 15,
+      "excluded": 19
+    },
+    "byPrimaryLayer": {
+      "E2E candidate deferred to 9.6": 8,
+      "pure unit/domain": 16,
+      "contract/parser": 8,
+      "DB integration": 5,
+      "Auth/RLS integration": 9,
+      "API/server integration": 6,
+      "browser-boundary integration without full user journey": 10
+    }
+  },
+  "criticalMatrix": {
+    "rows": 46,
+    "uncovered9_5": 0,
+    "fullJourneyDeferrals9_6": 4
+  },
+  "manifestNote": "Inventory audit metadata was completed between runs. Runnable tests/runner and ordered arguments did not change. Both original manifest hashes are retained; command and suite-count digests match.",
+  "aggregate": {
+    "non-local": {
+      "command": "npm run test:personal-center",
+      "determinism": "PASS: identical ordered commands and per-suite TAP counts; all cleanup checks passed",
+      "runs": [
+        {
+          "run": 1,
+          "status": "PASS",
+          "started": "2026-09-13T02:55:12.592Z",
+          "finished": "2026-09-13T02:55:33.727Z",
+          "inventorySha256": "428437c21fde5fa8048216ff39111788510754d8f4b4e31e57b80771c12f1f93",
+          "orderedCommandSha256": "bfbcc2f4397d54c2ad07b2cd998dbd9ee15bc41412b4a6190b02f2a5f2ac4516",
+          "suiteCountsSha256": "84b4eb3f1d990e648932bcb274053272620728e25da2996762aac93158741a40",
+          "tests": 1823,
+          "suites": 28,
+          "bundleAudits": 0,
+          "generatedTypesSha256": null,
+          "before": null,
+          "after": null,
+          "allStepCleanupPassed": true,
+          "reportSha256": "8d76493c5a5404794995212cb8da101244c754fbc053a2a72bd8d21beb2cc1c2",
+          "checks": [
+            {
+              "label": "task-010-b-global-logo-navigation.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 2,
+                "pass": 2,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "70fa94202ead5ed95100ca5373aa9b9f52bfd8c8af7568814fa41e4c430b4bb0",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-016-user-profile.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 4,
+                "pass": 4,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "2d552fcc5ac67e156cac61bcc8027a8d892b5c5c40457039b969cb12da170ea9",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-018-authentication.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 9,
+                "pass": 9,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "24d845febee6a545c01f312761c6bc3d41dd9e9d81e50d1a52af6b04ee16578e",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-042-preference-schema.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 503,
+                "pass": 503,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "076a654a4fced738999fabcb45da732bb5d43b43e0efcdb12f47060e0de0dae7",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-044-companion-schema.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 163,
+                "pass": 163,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "df183766071796723e674b0f31c2e2d00c04f1a22b6aad1b525db40ac6b1b1a8",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-045-preference-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 37,
+                "pass": 37,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "daa904d2e009e396bd0fa1fc70ccdb49f1007d77a88ae83fad1f8fc482e6933b",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-046-preference-contract.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 540,
+                "pass": 540,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "b4b1c3b78b1a52c1dff1706ff1e47cb6f4726f4855b2793089a10e7cb6cc7447",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-047-companion-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 41,
+                "pass": 41,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "2d06b733e71676a170b87145413555d31c6b68234b2af7506dea644200ff8f6a",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-048-trip-persistence-model.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 77,
+                "pass": 77,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "47f26c43d3076692878b3d042148627868d5cec52afc53353e28a54ae27337ec",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-049-trip-library-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 76,
+                "pass": 76,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "f12198ceae806afad9a410e20ebfcb2aa850478ff41fba8ad67282ccc6a7d643",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-050-profile-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 104,
+                "pass": 104,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "3cf7c9c9ed50096cd0b5f24a768b0040ad791c779d6179a776d32446408de223",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-052-account-deletion.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 52,
+                "pass": 52,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "5cb3ca463286689f324cf347a72948ae95aaf6a75560def2869ef789828b9fd6",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-053-preference-presets.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 22,
+                "pass": 22,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "b875d5d27bd9b70817896d15c69c49d9829dbe9139e13fcb3916c4f177a07a1d",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-054-personal-center-migration.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 4,
+                "pass": 4,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "a65fb8fe4a164f7754458525df6e208b463e4c7dff5cd8a821ac8fb0199eae05",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-055-private-boundaries.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 9,
+                "pass": 9,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "dec2f33329c4dd551982ca66061a946d41506a40da0dc46559730b9aa3cb2aae",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-055-test-runner.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 4,
+                "pass": 4,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "5e889e3fd547a38ea8c1144f2750510693d6305500a7dabf18bbae5376031b2d",
+              "cleanupVerified": false
+            },
+            {
+              "label": "trip-status-personal-center-followup.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "82786264f0e3fe35e9a949aa9c4146376b5bbbabf88ebb1a2551b52c44421a32",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-10-trip-library.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 17,
+                "pass": 17,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "8abede39847449c70f2feb15114c3ba869b87c6c8fc8c71f0fa224ab26901576",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-20-personal-center-responsive-states.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "05193e9eda8e472cb3cac685564d076ef430bb0a228313db936f1f7ca08bc480",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-3-auth-callback.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 6,
+                "pass": 6,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "468b9fabfe7f48f3ca483745cc867406e5e15625bcb8a2a2c4ffe4c3e4f4f598",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-3-auth-user-flow.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 14,
+                "pass": 14,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "86b49b3eb6aef48ca9aa4b40cdc62de99bfa4555a7b325525b307bd0fe334856",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-5-preferences.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 8,
+                "pass": 8,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "742a254057ca86a462afbcabd59c45e371c71bb1bcbd5c51ae99bb8fb6812b87",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-6-companions.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 11,
+                "pass": 11,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "3a2bc9d176fbbbb4faa29c3bb4d9337eefa92a15aae17af741405fcbd39509ce",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-7-mobility-preference.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 23,
+                "pass": 23,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "abbf9e9b2ec3b7873201f5d44379ac552c82b633d2847b4d33d2ebedcc96a4ae",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-8-attraction-activity-preference.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 28,
+                "pass": 28,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "f7ba375ef86663175f3c77c285171d75086f012fb331c832eb9c3c371db93385",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-9-dining-accommodation-budget.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 20,
+                "pass": 20,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "2da07f42039aefdadd4902888fbea178692e676740c4c563bb074520a4e62458",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5.4-v2.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 5,
+                "pass": 5,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "8b886764c1e61ec4cf683007ec0b64f0abf2fad754729e0f78b048791dfc8262",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-9-12-personal-center-qa.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 12,
+                "pass": 12,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "4641178417892a1af41ef24faa10af5a903b6881107a42e0e4b1fdb569b72946",
+              "cleanupVerified": false
+            }
+          ]
+        },
+        {
+          "run": 2,
+          "status": "PASS",
+          "started": "2026-09-13T03:06:12.514Z",
+          "finished": "2026-09-13T03:06:49.056Z",
+          "inventorySha256": "c52843b7ea3ea282ecd4917fba565a11729adf1986b40825b0734a327ed9bb1b",
+          "orderedCommandSha256": "bfbcc2f4397d54c2ad07b2cd998dbd9ee15bc41412b4a6190b02f2a5f2ac4516",
+          "suiteCountsSha256": "84b4eb3f1d990e648932bcb274053272620728e25da2996762aac93158741a40",
+          "tests": 1823,
+          "suites": 28,
+          "bundleAudits": 0,
+          "generatedTypesSha256": null,
+          "before": null,
+          "after": null,
+          "allStepCleanupPassed": true,
+          "reportSha256": "6fe234e75abf25d36605081edd89db1e6930c0118cfd2fd1651e7e83a6f3e7b8",
+          "checks": [
+            {
+              "label": "task-010-b-global-logo-navigation.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 2,
+                "pass": 2,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "7bc0afaa34ad4699ff3fc1c4828cf3d39a74a6e0d69c2adb3a2706dc26f18f19",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-016-user-profile.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 4,
+                "pass": 4,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "93b51057784d72d02aacbd0e36168b0533e8fb2d929fd1917bf2577b057ef03e",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-018-authentication.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 9,
+                "pass": 9,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "97dde726b312fdac4c4468a3aea9fa72d3b0b7dc2507e17eace4fe47a315d7d8",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-042-preference-schema.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 503,
+                "pass": 503,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "3da64fd57987c0058aea6869ad5189530e6aa21c6aa441d4587b211602bfb7ab",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-044-companion-schema.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 163,
+                "pass": 163,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "de9135bc0737291c9a248bf160d1b2ed13d6c45a32733f1ad6812135aab9267a",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-045-preference-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 37,
+                "pass": 37,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "82b22aa4341cf4c42848712981874f26bf5057e682bb9ec85ef82c9ebe953c77",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-046-preference-contract.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 540,
+                "pass": 540,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "956bcfca2e3ecac69d5ce59119fd96287aac526162a78c475bbadc06ac807920",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-047-companion-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 41,
+                "pass": 41,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "5e88ad99ce5b7397d9525f9940d0accb948010c8ec6dc36eea13ddaeb9f83326",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-048-trip-persistence-model.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 77,
+                "pass": 77,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "352f81b4c047d7e615d7711fa32f05ed6d85e906880055a881809b5de15fc209",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-049-trip-library-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 76,
+                "pass": 76,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "951745fa434bfe82f2c06d85a1bb3609389435ae0b4f58f01490c37c4db201d8",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-050-profile-api.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 104,
+                "pass": 104,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "b7d23dba97bf5c8ab74502425c8479e175033b2c6c3adf22143a4fb4f42e697b",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-052-account-deletion.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 52,
+                "pass": 52,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "385e8afbd7cbff64f24c4c1cbe5868726eb684d8409e2e1530b3c70e5db4bff5",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-053-preference-presets.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 22,
+                "pass": 22,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "06da50bd512d3fe521d3ea8e2da765a3110ad5e965afb1c69ec4f3534a459369",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-054-personal-center-migration.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 4,
+                "pass": 4,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "4d581a91a8c5620bd7e4373add7d1cc72d0e548cfc6b0e671529a8b2bc62322d",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-055-private-boundaries.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 9,
+                "pass": 9,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "3d703ef046837157064f108c77487c4e72fb139d198efa2f0f2f19f55f28c143",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-055-test-runner.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 4,
+                "pass": 4,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "33d53e3df10ea2481182be7855098a6c54d24d2374df62f2da899b09a5c6edd3",
+              "cleanupVerified": false
+            },
+            {
+              "label": "trip-status-personal-center-followup.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "229e663e0d8a984e028122f81e3784e57301d4157f39c1ecdf4ca95c2b209edd",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-10-trip-library.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 17,
+                "pass": 17,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "51802f8abc5614e8cf659d6d8acc63aca291c86d61a33630a7c07b28922baae4",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-20-personal-center-responsive-states.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "c3693b6bd431738a2bc5685aefde15ecc548099e696afca502d8813c03e5d2d1",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-3-auth-callback.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 6,
+                "pass": 6,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "d750b87243c8d6fc41b0018c2ff8b091f7eb86c1af20c0fdfdd967dd11a44388",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-3-auth-user-flow.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 14,
+                "pass": 14,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "53a4616f0bf429388e73a81ccd718d1bc0b3bb70841b27c2e5546db6b41c149a",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-5-preferences.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 8,
+                "pass": 8,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "bb92348228f65cb42de42078e8b53c229ff19604e84a975b09d5291b2bc48336",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-6-companions.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 11,
+                "pass": 11,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "dc98070e64498a210446cb865730567cb55966bca73f70d49a656f6de61b954e",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-7-mobility-preference.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 23,
+                "pass": 23,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "ad8f04262b5d621b9d5ce4ecc48400cb1870887d247d6068a2282094fa73a591",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-8-attraction-activity-preference.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 28,
+                "pass": 28,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "0185ef56dba85722c86e90628e1c8eff12670758876013d99e06069d0713d4a2",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5-9-dining-accommodation-budget.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 20,
+                "pass": 20,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "639d0fcedd07dcc46ec904a98e380ee0f5d8cfb68919f34ce46a5699c3b373f3",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-5.4-v2.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 5,
+                "pass": 5,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "22a8b31ffbe9258f1578f25e4f90886bcf16407bdcb931678e2dfdbc44132775",
+              "cleanupVerified": false
+            },
+            {
+              "label": "wbs-9-12-personal-center-qa.test",
+              "exitCode": 0,
+              "counts": {
+                "tests": 12,
+                "pass": 12,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "4c45230f83e0be7e623c137279f3ce3cd2b4b90ce48e1800140f214cf55a67e1",
+              "cleanupVerified": false
+            }
+          ]
+        }
+      ]
+    },
+    "local": {
+      "command": "npm run test:personal-center:local",
+      "determinism": "PASS: identical ordered commands and per-suite TAP counts; all cleanup checks passed",
+      "runs": [
+        {
+          "run": 1,
+          "status": "PASS",
+          "started": "2026-09-13T02:55:48.521Z",
+          "finished": "2026-09-13T03:00:52.290Z",
+          "inventorySha256": "428437c21fde5fa8048216ff39111788510754d8f4b4e31e57b80771c12f1f93",
+          "orderedCommandSha256": "3e7d864d869c079519b6bc06ac0891dbb9a9e0c098451bb94ebd6f1c0d3321cb",
+          "suiteCountsSha256": "eae6cdba7e0527498fc9a88e1e8a6edef4da8764f9d617b8c63bcef908cfe3af",
+          "tests": 877,
+          "suites": 15,
+          "bundleAudits": 2,
+          "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+          "before": {
+            "auth.users": 0,
+            "public.profiles": 0,
+            "public.profile_settings": 0,
+            "public.emergency_contacts": 0,
+            "public.travel_preferences": 0,
+            "public.companions": 0,
+            "public.companion_groups": 0,
+            "public.companion_group_members": 0,
+            "public.trip_library_records": 0,
+            "storage.objects": 0,
+            "storage.buckets": 0
+          },
+          "after": {
+            "auth.users": 0,
+            "public.profiles": 0,
+            "public.profile_settings": 0,
+            "public.emergency_contacts": 0,
+            "public.travel_preferences": 0,
+            "public.companions": 0,
+            "public.companion_groups": 0,
+            "public.companion_group_members": 0,
+            "public.trip_library_records": 0,
+            "storage.objects": 0,
+            "storage.buckets": 0
+          },
+          "allStepCleanupPassed": true,
+          "reportSha256": "50bb34a02288a57980f1c854ffff1aea5908bded0b2ce3092f36c288141a19e5",
+          "checks": [
+            {
+              "label": "db-start",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "5de9ac4c13956b902cdc03c92e4fb10c28b492ab35ad2d14415c2aa1f280dff1",
+              "cleanupVerified": false
+            },
+            {
+              "label": "db-types",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "e89d5be051e85360a48c5706c26f9c6fd88945a70064427ecea74fc1cd8d588b",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-016-client-bundle",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "ed6545d06e4ad60dd8cce09d48869072874e8e6160650b012820ee02ef5ae154",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-016-user-profile.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 25,
+                "pass": 25,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "1fbadd325e4740e110948c0ae07791c0c327703780e85e1816d8606d8a5c1224",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-018-authentication.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "62d5f685449f21f4c5ba8666bcdb947d657bb1c6b97b681cd73599ee56b029f2",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-018-client-bundle",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "919fbae0f179f5860c8538a3effa61bff0f690191b88a6afed7241ddfd73ac3f",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-042-preference-schema.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 505,
+                "pass": 505,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "36978ca494b58616ee87ebe8be207449c3443f4fd0f9b2884a8c2d16226094d8",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-044-companion-schema.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 147,
+                "pass": 147,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "426de089b08481f790d810c64852379443e4a9cd3624bad3ac07f57b0ddeaf5d",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-045-preference-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 17,
+                "pass": 17,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "7cb0212b706cb47c5f07f44831a4dd0a605e793e25eff001ec512020696598ec",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-046-preference-contract.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 13,
+                "pass": 13,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "2ed182d8f2f6e477f0838f087636dd7cffb139a2dda69aa73f82c75defe416e5",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-047-companion-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 22,
+                "pass": 22,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "de6acd6315ac19a98ff0b2e8d914b39002848e2668f7e23686fd85ed28764176",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-048-trip-persistence-model.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 29,
+                "pass": 29,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "f82a3ce5deb9e95b541c6426b5117e03831e9dec7587ce7e0ab5703a73957c19",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-049-trip-library-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 35,
+                "pass": 35,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "10025574fc9b6846c75c6985f4cbfdd523c89949e028fb0599983e90542d30d5",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-050-profile-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 25,
+                "pass": 25,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "a3b59da8cf87677d1917a27a1c95c980488c4f1d8d6da65a6f096a9d56e462cb",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-052-account-deletion.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "54e7ee0738bd4b95db0db94ca63814166bd9a8dd24b59204b9e76c9c518bff53",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-053-preference-presets.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 21,
+                "pass": 21,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "6b6bd2e382e010f679bc2ab2461e3edc484ac46f04c5277b058eebb7d5a238ec",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-054-personal-center-migration.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 6,
+                "pass": 6,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "83c91e888372b56a04e78cb5ec59b978df8eed64e48efcfcb792bf7c90f99148",
+              "cleanupVerified": true
+            },
+            {
+              "label": "db-final-status",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "544badfbfa805592f617e16bfa20994c29a00379396d19660d6a384885f02197",
+              "cleanupVerified": false
+            },
+            {
+              "label": "db-stop",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "e0b75b50870edb3899cedd42ad98f0196b2581265aed0521952e3440d78f10d8",
+              "cleanupVerified": false
+            }
+          ]
+        },
+        {
+          "run": 2,
+          "status": "PASS",
+          "started": "2026-09-13T03:06:17.115Z",
+          "finished": "2026-09-13T03:11:49.286Z",
+          "inventorySha256": "c52843b7ea3ea282ecd4917fba565a11729adf1986b40825b0734a327ed9bb1b",
+          "orderedCommandSha256": "3e7d864d869c079519b6bc06ac0891dbb9a9e0c098451bb94ebd6f1c0d3321cb",
+          "suiteCountsSha256": "eae6cdba7e0527498fc9a88e1e8a6edef4da8764f9d617b8c63bcef908cfe3af",
+          "tests": 877,
+          "suites": 15,
+          "bundleAudits": 2,
+          "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+          "before": {
+            "auth.users": 0,
+            "public.profiles": 0,
+            "public.profile_settings": 0,
+            "public.emergency_contacts": 0,
+            "public.travel_preferences": 0,
+            "public.companions": 0,
+            "public.companion_groups": 0,
+            "public.companion_group_members": 0,
+            "public.trip_library_records": 0,
+            "storage.objects": 0,
+            "storage.buckets": 0
+          },
+          "after": {
+            "auth.users": 0,
+            "public.profiles": 0,
+            "public.profile_settings": 0,
+            "public.emergency_contacts": 0,
+            "public.travel_preferences": 0,
+            "public.companions": 0,
+            "public.companion_groups": 0,
+            "public.companion_group_members": 0,
+            "public.trip_library_records": 0,
+            "storage.objects": 0,
+            "storage.buckets": 0
+          },
+          "allStepCleanupPassed": true,
+          "reportSha256": "c38035fb266c2c2f99f7b25b40c24b98f82723f0edea9f656f7f31bf2f5f0409",
+          "checks": [
+            {
+              "label": "db-start",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "5de9ac4c13956b902cdc03c92e4fb10c28b492ab35ad2d14415c2aa1f280dff1",
+              "cleanupVerified": false
+            },
+            {
+              "label": "db-types",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "e89d5be051e85360a48c5706c26f9c6fd88945a70064427ecea74fc1cd8d588b",
+              "cleanupVerified": false
+            },
+            {
+              "label": "task-016-client-bundle",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "ed6545d06e4ad60dd8cce09d48869072874e8e6160650b012820ee02ef5ae154",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-016-user-profile.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 25,
+                "pass": 25,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "01a0682e5c9b2f69f2a4141fd4b78d64da9acf856c85ee75ccd52d7d8d93ac8c",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-018-authentication.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "d8173024b4bb7a728b62126279fe6d782724ff3f58938ca138fdd45b733873ba",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-018-client-bundle",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "919fbae0f179f5860c8538a3effa61bff0f690191b88a6afed7241ddfd73ac3f",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-042-preference-schema.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 505,
+                "pass": 505,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "4a3dd7abd699d1503c9831bad9097199b8d60d0e3adaefe43133fc191ca402f3",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-044-companion-schema.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 147,
+                "pass": 147,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "4467afe7de154a3fc1d14d8db5cbe5420b1dfac4813150792945b47e1915f91d",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-045-preference-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 17,
+                "pass": 17,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "c777b833b8c25f6f9649bc85cdd2b00923fc6eb131bcea7f5176a46d043d4273",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-046-preference-contract.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 13,
+                "pass": 13,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "a02dc3ea968b13d79bc1e83a083dfa24a0326d610e2194e0d5d6c27d9f525764",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-047-companion-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 22,
+                "pass": 22,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "6c868b347fd879e8a81c099a14c54d72cec253973319591ad7e5d11b65347818",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-048-trip-persistence-model.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 29,
+                "pass": 29,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "978917124304c337b31aafd6879fcba4ce8db638e7ab7e29b9f3cdbde7f87ec2",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-049-trip-library-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 35,
+                "pass": 35,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "7684119df45845e40ec3ac42ced4c0dd9b9c5a54295a786862c442ad846a3d7b",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-050-profile-api.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 25,
+                "pass": 25,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "8e54156902dd159a602a29f9185af1ae3d7b0a659cc3ea98abdc556704692342",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-052-account-deletion.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 16,
+                "pass": 16,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "1c08c98c9a3cbb53e2432961c72c93a1392546fb6a7c82443f9b232bcb03d58d",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-053-preference-presets.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 21,
+                "pass": 21,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "dd5e23868de749081a5ac9621241258fedfa682086c2f891f9179badc8fa42a5",
+              "cleanupVerified": true
+            },
+            {
+              "label": "task-054-personal-center-migration.runtime",
+              "exitCode": 0,
+              "counts": {
+                "tests": 6,
+                "pass": 6,
+                "fail": 0,
+                "cancelled": 0,
+                "skipped": 0,
+                "todo": 0
+              },
+              "logSha256": "9ca083f1f00bc08a8c20413c42002bdf4ed4d9e5bd76a8828415abf84b6cf0f2",
+              "cleanupVerified": true
+            },
+            {
+              "label": "db-final-status",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "544badfbfa805592f617e16bfa20994c29a00379396d19660d6a384885f02197",
+              "cleanupVerified": false
+            },
+            {
+              "label": "db-stop",
+              "exitCode": 0,
+              "counts": null,
+              "logSha256": "e0b75b50870edb3899cedd42ad98f0196b2581265aed0521952e3440d78f10d8",
+              "cleanupVerified": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "fullRepository": {
+    "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\"",
+    "baseline": {
+      "counts": {
+        "tests": 2480,
+        "pass": 2480,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exitCode": 0,
+      "logSha256": "3cfb02cc6261cddf81b04ec6d8201f7d69a0823322f1191d9576eb94d3ea8fcf"
+    },
+    "candidate": {
+      "counts": {
+        "tests": 2493,
+        "pass": 2493,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\"",
+      "finished": "2026-09-13T03:07:08.3733056Z",
+      "exitCode": 0,
+      "logSha256": "656264014683c96b63488e0b6d9771b9f73d12ab556501ad18e0221aa09d2b82"
+    }
+  },
+  "gates": {
+    "npmCi": {
+      "exitCode": 0,
+      "logSha256": "ececbfc6a2bf8515e682df2d534279debabdfe5856cbcd75edc48b768d48221e"
+    },
+    "lint": {
+      "baselineExit": 1,
+      "candidateExit": 1,
+      "exactOutputIdentical": true,
+      "baselineLogSha256": "a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084",
+      "candidateLogSha256": "a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084",
+      "debt": "Seven unchanged no-require-imports errors exclusively in ignored .cache/qa/task024-worktree/.cache/qa/*.cjs",
+      "cleanRepositoryLint": {
+        "command": "npx eslint . --ignore-pattern '.cache/**'",
+        "exitCode": 0,
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "formatDeploy": {
+      "exitCode": 0,
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "started": "2026-09-13T03:12:19.4364490Z",
+      "finished": "2026-09-13T03:12:24.9153245Z",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+    },
+    "build": {
+      "exitCode": 0,
+      "started": "2026-09-13T03:12:24.9380389Z",
+      "finished": "2026-09-13T03:12:38.9656305Z",
+      "logSha256": "126c38fb6159b0136d6fb78878afc97fa43434c0011740e8328ba6d76e8d8182"
+    },
+    "deploy:validate:local": {
+      "exitCode": 0,
+      "started": "2026-09-13T03:12:38.9697106Z",
+      "finished": "2026-09-13T03:12:39.7179445Z",
+      "logSha256": "ceffcdf3a0c6036345392063b98dc0bbe0cbebb82682be69c25b00fa302f4f1f"
+    },
+    "deploy:build:local": {
+      "exitCode": 0,
+      "started": "2026-09-13T03:12:39.7203488Z",
+      "finished": "2026-09-13T03:13:10.0961235Z",
+      "logSha256": "57d803b94c99c4709639821f91c1d1b1b1221c7ff18cfe68bf9b957c941eed9b"
+    },
+    "deploy:verify-artifact": {
+      "exitCode": 0,
+      "started": "2026-09-13T03:13:10.0986075Z",
+      "finished": "2026-09-13T03:13:11.7691278Z",
+      "logSha256": "a3005bf3392084133ee77ba09c59070a091993c5990a033eb96cb84210635aa8"
+    },
+    "scopedFormat": {
+      "exitCode": 0,
+      "finished": "2026-09-13T03:14:25.6624716Z",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    "diffCheck": {
+      "exitCode": 0,
+      "finished": "2026-09-13T03:14:25.6624716Z",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "github": {
+    "requirement": "Exact final branch head workflow_dispatch of quality-gate.yml must pass; PR synthetic merge run alone is insufficient",
+    "postCommitEvidence": "Final head SHA, run URL/status are recorded in the delivered full Result and Draft PR body after the final tracking commit"
+  },
+  "productionStagingMutation": false,
+  "downstreamStarted": false,
+  "newMigrations": false,
+  "modifiedHistoricalMigrations": false
+}
