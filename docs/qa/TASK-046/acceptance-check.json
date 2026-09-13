@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-046-A",
+  "issue": 365,
+  "recommendation": "ACCEPT",
+  "reviewedCandidate": {
+    "pullRequest": 352,
+    "branch": "codex/a-task-041-master-code-integration",
+    "headSha": "3281a072e976e747256a0e73cbd2692f9a9915f7",
+    "baseSha": "3559afad2edfcfdda766942652a9b5090b75369c",
+    "preIntegrationHead": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+    "registryMerge": "24d5718e47fa1a7f9996a3717c4bd35c7ab89db0"
+  },
+  "independentMethod": {
+    "task045ResultUsedAsEvidence": false,
+    "task045QaEvidenceUsedAsEvidence": false,
+    "historicalGraphLoadedFromGitObject": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+    "currentGraphLoadedFromProductionOutput": "docs/qa/TASK-041/region-nodes.json",
+    "registryLoadedThroughRuntime": "src/shared/data/master-code-registry.v1.json"
+  },
+  "graph": {
+    "parsed": true,
+    "regionCount": 50,
+    "historicalRegionCount": 50,
+    "regionIdsPreserved": 50,
+    "regionIdOrderPreserved": true,
+    "populatedMasterCodes": 50,
+    "nullMasterCodes": 0,
+    "duplicateMasterCodes": 0,
+    "activeRegistryResolutions": 50,
+    "invalidLifecycleAllocations": 0,
+    "unknownOrMismatchedAllocations": 0,
+    "legacyOrSideChannelSubstitutions": 0,
+    "generatedMatchesCommitted": true,
+    "parserIssues": [],
+    "resolutionIssues": []
+  },
+  "topology": {
+    "historicalSha256": "a839fb69ba1af9669e08ea131eaca4bf3e78075ba0ef440759247b2b677b1059",
+    "currentSha256": "a839fb69ba1af9669e08ea131eaca4bf3e78075ba0ef440759247b2b677b1059",
+    "semanticChangesExcludingMasterCode": 0,
+    "regionTaxonomyContractChanged": false,
+    "relationsChanged": false,
+    "travelEdgesOrVariantsChanged": false
+  },
+  "authority": {
+    "canonicalRegistryPath": "src/shared/data/master-code-registry.v1.json",
+    "canonicalRegistryParsed": true,
+    "canonicalRegistryFileCount": 1,
+    "canonicalRegistryFiles": ["src/shared/data/master-code-registry.v1.json"],
+    "generatorUsesCanonicalResolver": true,
+    "generatorUsesQaManifestAsRuntimeAuthority": false,
+    "registryRuntimeLoadsCanonicalJson": true,
+    "failClosedWhenAllocationMissing": true,
+    "registryIssues": []
+  },
+  "nullableBoundary": {
+    "sharedContractRemainsNullable": true,
+    "sharedContractChangedByIntegration": false,
+    "historicalPartialNullCount": 50,
+    "productionCompleteNullCount": 0,
+    "productionGeneratorFailsClosedWhenUnallocated": true
+  },
+  "scope": {
+    "candidateChangedFiles": [
+      "docs/project/WBS-TravelAssist.md",
+      "docs/qa/TASK-041/graph-validation.json",
+      "docs/qa/TASK-041/master-code-audit.json",
+      "docs/qa/TASK-041/pilot-report.md",
+      "docs/qa/TASK-041/region-nodes.json",
+      "docs/qa/TASK-045/region-master-code-integration-report.md",
+      "docs/qa/TASK-045/region-master-code-integration.json",
+      "docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md",
+      "package.json",
+      "tests/task-041-region-graph-pilot.test.mjs",
+      "tests/task-045-region-master-code-integration.test.mjs",
+      "tools/qa/region-graph-pilot.mjs",
+      "tools/qa/region-master-code-integration.mjs"
+    ],
+    "plannerOrStepUiChanges": [],
+    "databaseSchemaOrMigrationChanges": [],
+    "candidatePipelineChanges": [],
+    "poiProductionAllocationChanges": []
+  },
+  "passed": true
+}
