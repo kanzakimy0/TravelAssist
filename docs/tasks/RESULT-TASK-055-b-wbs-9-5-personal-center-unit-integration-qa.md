@@ -1,13 +1,15 @@
 # RESULT — TASK-055-B / WBS 9.5 Personal Center Unit / Integration Test Baseline
 
-## 交付与边界
+## 状态与交付边界
 
-- Issue：[#355](https://github.com/kanzakimy0/TravelAssist/issues/355)，保持 Open。
+**状态：已完成 / 用户验收通过并已合并。** 用户先明确验收 TASK-055-B 并授权合并 PR #356，随后明确授权将 WBS 9.5 标为已完成、关闭 Issue #355 为 Completed，并将文档验收收尾合入 develop。本次收尾仅更新本 Result 和 Master WBS 的 9.5 行。
+
+- Issue：[#355](https://github.com/kanzakimy0/TravelAssist/issues/355)，Closed / Completed。
 - 执行基线：`3850ec91a94b96f61800a9e45ba7792d07bb1c44`，执行时最新且干净的 `origin/develop`。
 - 实现分支：`codex/b-account-wbs-9-5-personal-center-unit-integration-qa`，直接从该基线创建，没有从 task/spec 分支开发。
-- Draft PR：[#356](https://github.com/kanzakimy0/TravelAssist/pull/356) → `develop`，使用 `Refs #355`。
-- WBS 9.5：`待审查（#355 / TASK-055-B；Draft PR #356）`，仅更新这一行；9.6 保持未开始。
-- 最终 head / exact-head GitHub Quality Gate：见本文末尾交付验证记录。该记录在最终提交及检查完成后写入交付副本和 PR 描述，避免用自引用 SHA 再产生一个未经检查的提交。
+- 实现 PR：[#356](https://github.com/kanzakimy0/TravelAssist/pull/356) 已合入 `develop`；merge `6e8b73c20a0c2845f03c86dd3201f9212b7d728c`。
+- WBS 9.5：`已完成（#355 / TASK-055-B；用户验收，PR #356 已合并）`；9.6 保持未开始。
+- 已验收最终 head：`03531ca8f8e1cea7f682791e005a2e85f5bb75f5`；[exact-head Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34735090336) SUCCESS。本文末尾记录合并与用户授权收尾的证据。
 
 本任务建立 B Personal Center 的可复现单元 / 集成基线。没有增加业务功能、修改生产代码、重构已验收 API、修改 SQL migration、修改生成类型或依赖，也没有实现 WBS 9.6 的完整浏览器旅程。
 
@@ -124,27 +126,27 @@ TASK-054 已验收的两次真实 replay 证据继续有效；本任务重新执
 
 最终执行结果和日志哈希见 [quality-gates.json](../qa/TASK-055/quality-gates.json)。原始日志留在 ignored `.artifacts/task055/`，公开证据不包含凭证、用户 UUID 或 Auth token。
 
-| Gate                                        | 结果                                                                                                        |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `npm ci`                                    | PASS，395 packages，0 vulnerabilities                                                                       |
-| Baseline 全仓 Node                          | 2,480 / 2,480，fail/skip/cancel/todo 全 0                                                                   |
-| Candidate 全仓 Node                         | 2,493 / 2,493，fail/skip/cancel/todo 全 0                                                                   |
-| 两遍非 Local aggregate                      | 每遍 1,823，PASS                                                                                            |
-| 两遍真实 Local aggregate                    | 每遍 877 + 2 bundle audits，PASS                                                                            |
-| `npm run lint`                              | 精确相同基线债务，见下文                                                                                    |
-| `npx eslint . --ignore-pattern '.cache/**'` | PASS                                                                                                        |
-| `npm run format:check:deploy`               | PASS                                                                                                        |
-| `npm run typecheck`                         | PASS                                                                                                        |
-| `npm run build`                             | PASS                                                                                                        |
-| `npm run deploy:validate:local`             | PASS                                                                                                        |
-| `npm run deploy:build:local`                | PASS                                                                                                        |
-| `npm run deploy:verify-artifact`            | PASS                                                                                                        |
-| Scoped Prettier / `git diff --check`        | PASS                                                                                                        |
-| Exact final-head GitHub Quality Gate        | 由最终交付记录与 [PR #356](https://github.com/kanzakimy0/TravelAssist/pull/356) 提供实际 SHA/run URL/status |
+| Gate                                        | 结果                                                                                          |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `npm ci`                                    | PASS，395 packages，0 vulnerabilities                                                         |
+| Baseline 全仓 Node                          | 2,480 / 2,480，fail/skip/cancel/todo 全 0                                                     |
+| Candidate 全仓 Node                         | 2,493 / 2,493，fail/skip/cancel/todo 全 0                                                     |
+| 两遍非 Local aggregate                      | 每遍 1,823，PASS                                                                              |
+| 两遍真实 Local aggregate                    | 每遍 877 + 2 bundle audits，PASS                                                              |
+| `npm run lint`                              | 精确相同基线债务，见下文                                                                      |
+| `npx eslint . --ignore-pattern '.cache/**'` | PASS                                                                                          |
+| `npm run format:check:deploy`               | PASS                                                                                          |
+| `npm run typecheck`                         | PASS                                                                                          |
+| `npm run build`                             | PASS                                                                                          |
+| `npm run deploy:validate:local`             | PASS                                                                                          |
+| `npm run deploy:build:local`                | PASS                                                                                          |
+| `npm run deploy:verify-artifact`            | PASS                                                                                          |
+| Scoped Prettier / `git diff --check`        | PASS                                                                                          |
+| Exact final-head GitHub Quality Gate        | [PASS / run 34735090336](https://github.com/kanzakimy0/TravelAssist/actions/runs/34735090336) |
 
 全仓 canonical 命令为 `node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"`。本次 package 中无需改名的 equivalent mapping；仅新增两个 aggregate aliases。非 Local、Local 与全仓测试存在覆盖重叠，不把这些数字相加作为唯一产品测试总数。
 
-基线与候选 `npm run lint` 均只在 ignored `.cache/qa/task024-worktree/.cache/qa/*.cjs` 报 7 个相同 `no-require-imports` 错误。两份原始输出 SHA-256 完全相同：`a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084`。变更文件未增加失败；排除该 ignored cache 的完整 lint 已通过。只有干净环境的最终 head Quality Gate 通过后才交付 review candidate，不将新失败归为历史债务。
+基线与候选 `npm run lint` 均只在 ignored `.cache/qa/task024-worktree/.cache/qa/*.cjs` 报 7 个相同 `no-require-imports` 错误。两份原始输出 SHA-256 完全相同：`a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084`。变更文件未增加失败；排除该 ignored cache 的完整 lint 已通过。干净环境的 exact-head Quality Gate 已通过，包含完整 lint；合并后 develop Quality Gate 亦已通过，没有把新失败归为历史债务。
 
 ## 最终状态
 
@@ -153,9 +155,19 @@ TASK-054 已验收的两次真实 replay 证据继续有效；本任务重新执
 - Production code / A-owned Planner、Map、Route、AI、Engine 修改 = **No**。
 - 新测试框架 / 依赖变化 = **No / No**。
 - downstream task started / WBS 9.6 started = **No / No**。
-- 自动 merge / Issue #355 close = **No / No**。
-- WBS 9.5 保持 **待审查**，等待用户明确验收；不标为已完成。
+- PR #356 合并与 Issue #355 Completed 关闭均有用户明确授权。
+- WBS 9.5 = **已完成**；WBS 9.6 = **未开始**。
 
-## 最终交付验证记录
+## 验收与合并收尾（2026-09-13）
 
-最终提交后，在完整交付副本和 Draft PR 描述中填入 final head、exact-head `workflow_dispatch` run URL/status、PR 状态和工作区检查结果。仓库内本报告固定为可审计的实现与 QA 记录；提交后的验证记录不再生成新的被审查提交。
+- 用户明确验收通过 TASK-055-B / WBS 9.5，授权合并 PR #356，并另行明确授权 WBS 完成、Issue Completed 关闭及文档收尾合入 develop。这是任务对话中的用户验收，不声称存在 GitHub APPROVED review。
+- 实现 commit：`89041acce0d265fcbac8b9b62683349269ec6bf6`；已验收最终 head：`03531ca8f8e1cea7f682791e005a2e85f5bb75f5`。
+- Exact-head [Quality Gate run 34735090336](https://github.com/kanzakimy0/TravelAssist/actions/runs/34735090336)：workflow_dispatch，headSha 与已验收 head 完全相同，SUCCESS；干净环境全仓 2,493 tests、lint、typecheck、format、deployment artifact build/verify 均通过。
+- 实现 PR [#356](https://github.com/kanzakimy0/TravelAssist/pull/356)：Merged → develop，`2026-09-13T03:55:29Z`；merge commit `6e8b73c20a0c2845f03c86dd3201f9212b7d728c`。
+- 合并后 fetch 确认该提交已进入 origin/develop；`git diff --exit-code 03531ca8f8e1cea7f682791e005a2e85f5bb75f5 6e8b73c20a0c2845f03c86dd3201f9212b7d728c` 无差异，原已验收实现与 QA 证据继续有效。
+- 合并后的 develop [Quality Gate run 34736667399](https://github.com/kanzakimy0/TravelAssist/actions/runs/34736667399)：headSha = `6e8b73c20a0c2845f03c86dd3201f9212b7d728c`，SUCCESS。
+- Issue [#355](https://github.com/kanzakimy0/TravelAssist/issues/355)：Closed / Completed，关闭时间 `2026-09-13T04:00:16Z`，在用户明确授权后执行。
+- Master WBS 仅 9.5 行更新为 `已完成（#355 / TASK-055-B；用户验收，PR #356 已合并）`；9.6 和所有其他 A/B 状态保持原样。
+- 文档收尾分支：`codex/b-account-wbs-9-5-acceptance-closeout`，基于已合并 develop `6e8b73c20a0c2845f03c86dd3201f9212b7d728c`；仅本 Result 与 WBS 9.5 行变化。收尾 PR 记录自己的 exact-head 检查与合并证据。
+- 收尾没有重跑或改写已验收 Local 测试证据；两遍非 Local 1,823 tests、两遍真实 Local 877 tests + 2 bundle audits 的结果与清理证据保留。
+- Production/Staging mutation = No；生产代码、测试、SQL migration、生成类型及依赖修改 = No；WBS 9.6 或任何其他任务 started = No。
