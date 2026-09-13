@@ -95,7 +95,7 @@ The ordered Region ID hash also remains identical:
 | `npm run build`                | Passed                                  |
 | TASK-owned Prettier            | Passed                                  |
 | `git diff --check`             | Passed                                  |
-| GitHub CI                      | Passed on Draft PR #352 (`8c2cb74`)     |
+| GitHub CI                      | Passed on Draft PR #352 (`6290eb32`)    |
 
 ## Files Changed
 
@@ -126,6 +126,8 @@ separate human review and merge.
 
 - Issue #349: Open
 - Implementation commit: `6b9a897`
+- Latest develop merge commit: `72176de5`
+- Final revalidation commit: `6290eb32`
 - Draft PR: [#352](https://github.com/kanzakimy0/TravelAssist/pull/352) (`codex/a-task-041-master-code-integration` → `develop`)
 - Automatic merge: not performed
 - Candidate Pipeline: not started
