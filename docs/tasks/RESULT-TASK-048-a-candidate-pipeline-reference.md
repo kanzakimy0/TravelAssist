@@ -174,8 +174,9 @@ production persistence was introduced.
 ## Tracking
 
 - Issue: [#367](https://github.com/kanzakimy0/TravelAssist/issues/367) — Open
-- Commit(s): pending initial commit
-- Draft PR: pending creation, target `develop`
+- Implementation commit: `7dfc97060e86f5103c35334e57e42b75aed4bd59`
+- Draft PR: [#372](https://github.com/kanzakimy0/TravelAssist/pull/372),
+  `codex/a-candidate-pipeline-reference` → `develop`
 - WBS 4.49: `待审查`
 
 ## Follow-ups
