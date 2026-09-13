@@ -22,6 +22,9 @@ ACCEPT
   `24d5718e47fa1a7f9996a3717c4bd35c7ab89db0` — confirmed
 - PR #352 state at final review: Open / Draft / mergeable / clean
 - Review branch: `codex/a-region-master-code-integration-acceptance`
+- Acceptance implementation commit: `a572d1f4`
+- Acceptance Draft PR: [#369](https://github.com/kanzakimy0/TravelAssist/pull/369),
+  Open / Draft, stacked on PR #352
 - Review isolation: dedicated clean worktree; the main Planner/Step workspace was
   preserved and untouched
 
@@ -149,7 +152,7 @@ code before the final lint rerun.
 - Issue #349 remains Open.
 - Issue #365 remains Open.
 - PR #352 remains Open / Draft and was not merged, retargeted or modified.
-- Acceptance Draft PR: pending creation, stacked on PR #352.
+- Acceptance Draft PR #369 remains Open / Draft and is stacked on PR #352.
 
 ## Blockers
 
