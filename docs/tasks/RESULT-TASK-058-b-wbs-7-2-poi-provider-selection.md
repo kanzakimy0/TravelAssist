@@ -18,7 +18,7 @@ Geoapify 的官方存储许可、Mapbox GL 展示路径和付费计费模型最�
 - 起点：执行时最新干净 `origin/develop`，`c8290b199fad0828245b355f231743b67d2eaad2`。
 - Spec revision：`6e316fc0c68fe3201903472efacfc982cd4c4031`，仅阅读，不作为开发起点。
 - Branch：`codex/b-wbs-7-2-poi-provider-selection`。
-- Draft PR：创建后填入，目标 `develop`。
+- Draft PR：[#362](https://github.com/kanzakimy0/TravelAssist/pull/362)，目标 `develop`，保持 Draft。
 - Owner：根据 [authoritative override](../project/WBS-7.2-owner-correction.md) 同步为 B；仅修改 Master WBS 的 7.2 行。
 
 开始前完成规定的 status、branch、fetch/prune、develop SHA 与 20 条历史检查；完整阅读 Task、Codex、Owner correction 和最新 Master WBS，并检查冻结标签/地图规范、当前 Planner/Detail、Planning/POI 设计和图片权利。
@@ -72,6 +72,6 @@ Geoapify 的官方存储许可、Mapbox GL 展示路径和付费计费模型最�
 
 ## 停止状态
 
-研究与文档进入用户验收；WBS 7.2 最终为 **B / 待审查**，不会自动标记已完成。
+研究与文档进入用户验收；WBS 7.2 最终为 **B / 待审查（#361 / TASK-058-B；Draft PR #362）**，不会自动标记已完成。
 
 仅提交四份要求的研究/Result 文件及 Master WBS 7.2 行。未修改其他 WBS Owner/status；未实施 7.4 / 7.6 / 7.7 / 7.9、UI、runtime、DB、AI、Engine、Route 或 Personal Center。未开通或购买 Provider、未调用 live Provider API、未导入 POI 数据。Draft PR 不自动合并，Issue #361 不关闭，不启动后续任务。

@@ -87,4 +87,4 @@ Google/Foursquare 保留当前 SKU/field 价格事实；Mapbox 记录 preview/st
 - 7.9：不得把 vendor categories/ratings/popularity 直接变成 canonical features 或评分；未来派生/AI 权利单独审议。
 - 当前任务只提交研究/QA/Result 和 Master WBS 7.2 行；不实现这些边界，也不对供应商发起询价或开户。
 
-Draft PR 保持未合并，Issue #361 保持 OPEN，WBS 7.2 保持 B / 待审查。其他 WBS Owner/status 不变。
+[Draft PR #362](https://github.com/kanzakimy0/TravelAssist/pull/362) 保持未合并，Issue #361 保持 OPEN，WBS 7.2 保持 B / 待审查（#361 / TASK-058-B；Draft PR #362）。其他 WBS Owner/status 不变。

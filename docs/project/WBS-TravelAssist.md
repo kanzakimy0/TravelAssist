@@ -924,7 +924,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
-| 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 进行中（#361 / TASK-058-B） |
+| 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 待审查（#361 / TASK-058-B；Draft PR #362） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
