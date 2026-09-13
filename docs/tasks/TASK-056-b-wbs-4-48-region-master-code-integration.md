@@ -9,6 +9,7 @@ Authorized / Ready for Codex implementation.
 - WBS: `4.48 Travel Region Graph Pilot / Reference Dataset`
 - Canonical Owner: **B** (explicit user reassignment; see `docs/project/WBS-4.48-owner-correction.md`)
 - Priority: P0
+- Issue: #358
 - Publication baseline: execution-time latest `origin/develop`; owner-correction publication followed `develop@92b3057a8a81698ab1af21d15e9233b90a30f991`
 - Historical producer: TASK-041-A / Issue #305 / PR #306 (merged)
 - Historical governance producer: TASK-043-A / PR #326 (merged)
@@ -136,14 +137,14 @@ At implementation start, Codex must read the latest complete Master WBS. If the 
 
 ```text
 Owner: B
-Status: 进行中（TASK-056-B / <new B Issue>；承接已合并 TASK-041-A）
+Status: 进行中（#358 / TASK-056-B；承接已合并 TASK-041-A）
 ```
 
 After implementation + mandatory QA + Draft PR:
 
 ```text
 Owner: B
-Status: 待审查（TASK-056-B / <new B Issue>；Draft PR #<number>）
+Status: 待审查（#358 / TASK-056-B；Draft PR #<number>）
 ```
 
 Only explicit user acceptance and merge may set WBS 4.48 to `已完成`.
