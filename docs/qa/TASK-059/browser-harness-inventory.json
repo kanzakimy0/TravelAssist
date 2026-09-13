@@ -1,0 +1,99 @@
+{
+  "task": "TASK-059-B",
+  "baseline": "5240ff8f7a91c1e36e90449d0f619de93f795472",
+  "selectedFramework": "Existing Node test runner + environment-provided Playwright; no new dependency or lockfile change",
+  "selectionEvidence": [
+    "docs/project/WBS-TravelAssist.md: WBS 2.10 completed",
+    "tests/wbs-9-12-personal-center-qa.browser.mjs",
+    "tests/task-052-account-deletion.runtime.mjs",
+    "tests/task-053-preference-presets.runtime.mjs",
+    "tools/qa/personal-center-tests.mjs"
+  ],
+  "harnesses": [
+    {
+      "path": "tests/wbs-9-12-personal-center-qa.browser.mjs",
+      "kind": "repository helper + environment-provided Playwright",
+      "decision": "reuse browser selection conventions and two canonical viewports; do not repeat broad 9.12 visual/accessibility audit",
+      "engines": ["edge", "chromium", "firefox", "webkit"],
+      "viewportsSelected": [
+        {
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ]
+    },
+    {
+      "path": "tests/task-018-local-helpers.mjs",
+      "kind": "repository helper",
+      "decision": "reuse production Next startApp/stop with isolated Local Auth environment"
+    },
+    {
+      "path": "tests/task-045-local-helpers.mjs",
+      "kind": "repository helper",
+      "decision": "reuse Local-only DB/Auth/client resolution"
+    },
+    {
+      "path": "tests/task-052-local-helpers.mjs",
+      "kind": "repository helper",
+      "decision": "reuse Local secret resolution plus verified owner inventory/counts; full rows stay in memory"
+    },
+    {
+      "path": "tests/task-052-network-guard.mjs",
+      "kind": "repository helper",
+      "decision": "reuse test-server local-only fetch guard; production source unchanged"
+    },
+    {
+      "path": "tools/qa/personal-center-tests.mjs",
+      "kind": "repository helper",
+      "decision": "reuse process execution, mandatory TAP rejection and empty Local pre/post checks"
+    },
+    {
+      "path": "tools/qa/task-047-browser-baseline.mjs",
+      "kind": "accepted browser baseline",
+      "decision": "execute before 9.5 Local aggregate to generate ignored geometry on a fresh checkout; do not copy historical output"
+    },
+    {
+      "path": "tests/wbs-5-3-auth-user-flow.runtime.mjs",
+      "kind": "historical browser flow",
+      "decision": "not selected as orchestrator: legacy WSL assumptions; reuse current accepted cross-platform Auth helpers and real Local mailbox flow"
+    },
+    {
+      "path": "tools/qa/personal-center-e2e.mjs",
+      "kind": "task-only aggregate over existing framework",
+      "decision": "serial J1-J8, Local start/stop, no mandatory skip/pass conversion, WBS_BROWSER selection"
+    },
+    {
+      "path": "package.json",
+      "kind": "declared dependency audit",
+      "decision": "Playwright remains environment-provided, as accepted; no second test framework, no dependency or lockfile change"
+    }
+  ],
+  "runtime": {
+    "node": "v24.18.0",
+    "playwrightVersion": "1.62.1",
+    "playwrightResolution": "CODEX_PLAYWRIGHT_PATH points to an installed Playwright package; createRequire loads it",
+    "playwrightPath": "C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
+    "edge": "channel=msedge, headless; C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "chromium": "Playwright chromium.executablePath() resolves the installed bundled Chromium",
+    "firefox": "Expected Playwright Firefox binary absent; no engine PASS claim",
+    "webkit": "Expected Playwright WebKit binary absent; no engine PASS claim"
+  },
+  "localRequirement": "Real Docker Local Supabase/Auth. Local mailbox confirmation. Refuse occupied project, non-loopback endpoints and existing application listeners. Admin credentials only in test/server process scope.",
+  "captureCapabilities": {
+    "screenshots": "Playwright available; no large screenshots committed",
+    "trace": "Playwright available; disabled to avoid retaining Auth tokens/network bodies",
+    "video": "Playwright available; disabled",
+    "storageState": "Never persisted",
+    "publicEvidence": "sanitized outcomes, counts and hashes only"
+  },
+  "ciSuitability": "Explicit provisioning of Docker/Supabase, installed Playwright + selected browser, npm ci and production build is required. Current GitHub Quality gate runs repository *.test.mjs and deploy checks, not this Local E2E command. A green GitHub gate does not mean J1-J8 passed.",
+  "platformLimits": [
+    "Windows browser viewport emulation is not native iOS/Android",
+    "Playwright WebKit, if available later, is not real Safari",
+    "No real external email/SMS/OAuth delivery claimed"
+  ]
+}

@@ -76,7 +76,8 @@
     "test:personal-center-migration:local": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-054-personal-center-migration.runtime.mjs",
     "test:personal-center-migration:replay": "node --import ./tests/register-route-ts.mjs tests/task-054-personal-center-replay.mjs",
     "test:personal-center": "node tools/qa/personal-center-tests.mjs",
-    "test:personal-center:local": "node tools/qa/personal-center-tests.mjs --local"
+    "test:personal-center:local": "node tools/qa/personal-center-tests.mjs --local",
+    "test:personal-center:e2e": "node tools/qa/personal-center-e2e.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
