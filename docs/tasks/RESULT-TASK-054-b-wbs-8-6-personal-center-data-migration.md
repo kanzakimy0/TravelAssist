@@ -2,7 +2,7 @@
 
 ## Status and execution baseline
 
-Implementation and mandatory Local QA passed. Draft PR publication and final exact-head GitHub Quality Gate are recorded below before delivery; user acceptance remains required.
+**Status: 待审查 / review candidate.** Implementation and mandatory Local QA passed; Draft PR #353 is open. Final delivery requires the exact PR head Quality Gate to pass. Its immutable run URL and head SHA are recorded in the PR description and final delivery result, avoiding a self-referential evidence commit. User acceptance remains required.
 
 - Issue: #351 (Open). Owner B. Branch: `codex/b-account-wbs-8-6-personal-center-data-migration`.
 - Execution baseline: `166f996eab3d75fb5afabc4ad7cb9f3d265c54c1`, latest clean origin/develop after fetch. Initial clean checkout: `codex/b-account-wbs-5-13-acceptance-closeout`.
@@ -83,10 +83,10 @@ Machine-readable counts and log hashes: [quality-gates.json](../qa/TASK-054/qual
 
 ## Review tracking
 
-- Implementation commit: recorded by this Result's Git history; subsequent review tracking commits contain only evidence/WBS/PR references.
-- Draft PR: pending publication to develop.
-- Final exact-head Quality Gate: pending publication; must PASS on the final PR head, with exact SHA/run URL in the PR description and delivery result. A previous head's PASS is insufficient.
-- WBS 8.6: 进行中（#351 / TASK-054-B）, then 待审查 after Draft PR creation and mandatory QA. Never 已完成 before explicit user acceptance and merge.
+- Implementation commit: `f02656d12dfdf0a4621a5b07262315951aa3ae26`; subsequent review tracking commit contains only Result/WBS references.
+- Draft PR: [#353](https://github.com/kanzakimy0/TravelAssist/pull/353) → `develop`, Open / Draft.
+- Final exact-head Quality Gate: [PR #353 checks](https://github.com/kanzakimy0/TravelAssist/pull/353/checks). Delivery gate is PASS on the exact final PR head; exact SHA/run URL/status is recorded in the PR description and final delivery result. A previous head's PASS is insufficient.
+- WBS 8.6: 待审查（#351 / TASK-054-B；Draft PR #353）. Only this Master WBS row changed. Never 已完成 before explicit user acceptance and merge.
 - Issue #351: Open. No automatic merge/issue closure.
 - Production/Staging mutation: **No**.
 - Downstream task started: **No** (including 8.7/8.8/4.22–4.24).
