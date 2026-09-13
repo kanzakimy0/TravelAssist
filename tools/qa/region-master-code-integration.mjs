@@ -14,7 +14,7 @@ import { regionGraph, writePilotOutputs } from "./region-graph-pilot.mjs";
 
 const TASK_ID = "TASK-045-A";
 const ISSUE = 349;
-const BASE_SHA = "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1";
+const BASE_SHA = "3559afad2edfcfdda766942652a9b5090b75369c";
 const BASELINE_TOPOLOGY_SHA256 =
   "38990d5e45e888f1b4ee94c5ca928bb972086544fcc4a20efa7380fef8308b5b";
 const BASELINE_REGION_IDS_SHA256 =

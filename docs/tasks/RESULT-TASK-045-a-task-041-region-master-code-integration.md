@@ -7,7 +7,8 @@ Completed / TASK-041 Region Master Code integration ready for human review
 ## Prerequisite
 
 - Repository: `kanzakimy0/TravelAssist`
-- Latest base at execution: `166f996eab3d75fb5afabc4ad7cb9f3d265c54c1`
+- Latest base at final revalidation: `3559afad2edfcfdda766942652a9b5090b75369c`
+- Latest develop merge commit on the implementation branch: `72176de5`
 - PR #326 governance merge ancestor check: passed
 - Required merge commit: `24d5718e47fa1a7f9996a3717c4bd35c7ab89db0`
 - TASK-044 independent recommendation: `ACCEPT`
@@ -88,7 +89,7 @@ The ordered Region ID hash also remains identical:
 | Planning Soak                  | 6/6 passed                              |
 | Routing                        | 28/28 passed                            |
 | Trip / Engine focused          | 124/124 passed                          |
-| Canonical full Node regression | 2482/2482 passed                        |
+| Canonical full Node regression | 2499/2499 passed                        |
 | `npm run lint`                 | Passed; 0 errors and 0 warnings         |
 | `npm run typecheck`            | Passed                                  |
 | `npm run build`                | Passed                                  |

@@ -13,7 +13,7 @@ const CONTRACT_VERSION = "1.0";
 const GRAPH_REVISION = "task-041-japan-pilot-2026-09-11-r2";
 const NOW = "2026-09-11T00:00:00+09:00";
 const MASTER_CODE_AUDIT_DEVELOP_SHA =
-  "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1";
+  "3559afad2edfcfdda766942652a9b5090b75369c";
 const OUTPUT_DIR = resolve(
   dirname(fileURLToPath(import.meta.url)),
   "../../docs/qa/TASK-041",
