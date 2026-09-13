@@ -73,7 +73,12 @@
     "test:account-deletion": "node --import ./tests/register-route-ts.mjs --test tests/task-052-account-deletion.test.mjs",
     "test:account-deletion:local": "node --import ./tests/register-route-ts.mjs --test tests/task-052-account-deletion.runtime.mjs",
     "test:preference-presets": "node --import ./tests/register-route-ts.mjs --test tests/task-053-preference-presets.test.mjs",
-    "test:preference-presets:local": "node --import ./tests/register-route-ts.mjs --test tests/task-053-preference-presets.runtime.mjs"
+    "test:preference-presets:local": "node --import ./tests/register-route-ts.mjs --test tests/task-053-preference-presets.runtime.mjs",
+    "test:personal-center-migration": "node --import ./tests/register-route-ts.mjs --test tests/task-054-personal-center-migration.test.mjs",
+    "test:personal-center-migration:local": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-054-personal-center-migration.runtime.mjs",
+    "test:personal-center-migration:replay": "node --import ./tests/register-route-ts.mjs tests/task-054-personal-center-replay.mjs",
+    "test:personal-center": "node tools/qa/personal-center-tests.mjs",
+    "test:personal-center:local": "node tools/qa/personal-center-tests.mjs --local"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
