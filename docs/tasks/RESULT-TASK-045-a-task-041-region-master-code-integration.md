@@ -124,7 +124,8 @@ separate human review and merge.
 ## Tracking
 
 - Issue #349: Open
-- Draft PR: pending creation
+- Implementation commit: `6b9a897`
+- Draft PR: [#352](https://github.com/kanzakimy0/TravelAssist/pull/352) (`codex/a-task-041-master-code-integration` → `develop`)
 - Automatic merge: not performed
 - Candidate Pipeline: not started
 
