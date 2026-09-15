@@ -1,16 +1,16 @@
 # RESULT-TASK-059-B — WBS 9.6 Personal Center E2E
 
-**结论：Completed for review。J1–J8 全部通过，WBS 9.6 进入待审查；PR #366 保持 Draft，等待用户验收。**
+**结论：已完成 / 用户验收通过。J1–J8 全部通过；PR #366 已合入 develop，merge-head Quality Gate SUCCESS。按用户明确授权，WBS 9.6 标记为已完成，Issue #364 已关闭为 Completed；本次收尾仅更新 Result 和 WBS 验收记录。**
 
 ## Tracking 与恢复过程
 
-- Issue：[#364](https://github.com/kanzakimy0/TravelAssist/issues/364)，保持 Open。
+- Issue：[#364](https://github.com/kanzakimy0/TravelAssist/issues/364)，Closed / Completed。
 - 初始干净 develop：`5240ff8f7a91c1e36e90449d0f619de93f795472`；原实现分支从该 develop 创建，未从规格分支开发。
 - 按本轮用户授权，TASK-060 Profile UI persistence 经 [PR #368](https://github.com/kanzakimy0/TravelAssist/pull/368) 合入 develop，merge `86585600689e3a673ba17156c2ff513db24c7a86`；TASK-061 Trip Library live data 经 [PR #370](https://github.com/kanzakimy0/TravelAssist/pull/370) 合入，merge `05cbc4ea0f771ea27d4927466d516e8ace3bce6b`。两者 source exact-head 和合并后 develop Quality Gate 均通过，链接见 `quality-gates.json`。
 - 将包含上述修复、A PR #352 及其收尾的最新 develop `56901c3a18703105442f9c566406f041c0660fbe` **正常 merge** 进 `codex/b-account-wbs-9-6-personal-center-e2e`，得到源码候选 `87345968754456b4b7d7ce3ae58c84f10566853b`。已保留三项任务的全部测试命令；J3 增加真实异步保存完成等待，原持久化/隔离断言不变。
 - 最终三轮 E2E 和回归使用该源码候选；后续仅更新 QA、Result 和 WBS 文档。源码哈希见 `quality-gates.json`。
-- [Draft PR #366](https://github.com/kanzakimy0/TravelAssist/pull/366) → develop，使用 `Refs #364`，保持 Draft / Unmerged。**最终 PR 完整 head、相同 headSha 的 GitHub workflow URL / SUCCESS，记录在 PR 的 Exact final-head verification 记录。** 提交无法包含自身 SHA 及随后完成的 CI；该外部记录避免为写回 CI 再次改变已验 head。
-- WBS 9.6：`待审查（#364 / TASK-059-B；Draft PR #366）`。只修改 9.6 状态单元格，未改其他行或 Owner。
+- [PR #366](https://github.com/kanzakimy0/TravelAssist/pull/366) 使用 `Refs #364`，用户验收后已合入 develop，merge `5d0dbe43cb15ce695f5642879c65fccf154df0cc`。已验收最终 head 为 `6e3ab9032561505158d426ee03d54c887df15c8b`；[exact-head Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34978122987) 与 [merge-head Quality Gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/34982103797) 均为 SUCCESS。
+- WBS 9.6：`已完成（#364 / TASK-059-B；用户验收，PR #366 已合并）`。只修改 9.6 状态单元格，未改其他行或 Owner。
 
 ## 框架与浏览器
 
@@ -83,8 +83,21 @@ Production mutation = No；Staging mutation = No；external booking/provider mut
 
 已更新 `docs/qa/TASK-059/` 的 README、browser-harness-inventory、e2e-matrix、journey-results、browser-matrix、quality-gates 和本 Result；记录真实命令、执行时间、源码/日志哈希、所有旅程和清理结果。原始日志保留在 ignored `.artifacts/task059/`。
 
-- PR #366：Draft / Unmerged；Issue #364：Open。
-- WBS 9.6：待审查，未标记已完成。
+- PR #366：Merged → develop；Issue #364：Closed / Completed。
+- WBS 9.6：已完成，用户验收和 merge-head Quality Gate 通过后执行收尾。
 - WBS 9.7 started: No
 - WBS 9.8 started: No
 - Other downstream B task started: No
+
+## 用户验收与合并收尾（2026-09-15）
+
+- 用户明确验收通过 TASK-059-B / WBS 9.6，授权合并 PR #366；并授权在 merge-head Quality Gate PASS 后将 WBS 9.6 标为已完成、关闭 Issue #364 为 Completed、合入仅包含 Result/WBS 验收记录的文档收尾。这是任务对话中的用户验收，不声称存在 GitHub APPROVED review。
+- 已验收最终 head：`6e3ab9032561505158d426ee03d54c887df15c8b`；[exact-head Quality Gate run 34978122987](https://github.com/kanzakimy0/TravelAssist/actions/runs/34978122987)（workflow_dispatch）SUCCESS，headSha 完全一致；[PR integration run 34978124125](https://github.com/kanzakimy0/TravelAssist/actions/runs/34978124125) SUCCESS。
+- PR [#366](https://github.com/kanzakimy0/TravelAssist/pull/366)：Merged → develop，`2026-09-15T14:30:24Z`；merge commit `5d0dbe43cb15ce695f5642879c65fccf154df0cc`。合并时使用已验收 head 限定，未更换候选。
+- 合并后 fetch 确认该提交已进入 origin/develop；`git diff --exit-code 6e3ab9032561505158d426ee03d54c887df15c8b 5d0dbe43cb15ce695f5642879c65fccf154df0cc` 无差异，已验收测试源码和 Local QA 证据继续有效。
+- 合并后的 develop [Quality Gate run 34982103797](https://github.com/kanzakimy0/TravelAssist/actions/runs/34982103797)：push event，headSha = `5d0dbe43cb15ce695f5642879c65fccf154df0cc`，SUCCESS；全仓 Node 2516/2516、lint、typecheck、format、deployment validation/build/artifact verification 和 whitespace 检查通过。GitHub 工作流不执行 Local E2E；三轮真实 Local 浏览器验收证据继续由前述独立记录提供。
+- Issue [#364](https://github.com/kanzakimy0/TravelAssist/issues/364)：Closed / Completed，关闭时间 `2026-09-15T14:33:56Z`；在合并成功且 merge-head Quality Gate PASS 后执行。
+- Master WBS 仅 9.6 状态更新为 `已完成（#364 / TASK-059-B；用户验收，PR #366 已合并）`，Owner 保持 B。9.7、9.8 和所有其他 WBS 行保持原样。
+- 文档收尾分支：`codex/b-account-wbs-9-6-acceptance-closeout`，从执行时最新且干净的 origin/develop `5d0dbe43cb15ce695f5642879c65fccf154df0cc` 创建；仅本 Result 与 Master WBS 9.6 状态变化。收尾 PR 记录其 exact-head 检查、实际合并 SHA 和后续 develop Quality Gate，避免为写回本提交自身 SHA/CI 结果而再次改变已验 head。
+- 收尾没有重跑或改写已验收 Local 测试证据：Edge 两轮和 Chromium 一轮均 J1–J8 8/8 PASS；9.5 non-Local 1823/1823、Local 877/877 + 2 bundle audits 的结果及清理证据保留。
+- Production/Staging mutation = No；生产代码、测试、SQL migration、生成类型及依赖修改 = No；WBS 9.7 / 9.8 / 任何其他下游 Task started = No。
