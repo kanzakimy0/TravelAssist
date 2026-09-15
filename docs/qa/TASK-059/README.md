@@ -1,33 +1,32 @@
 # TASK-059-B — Personal Center E2E evidence
 
-Current acceptance disposition: **PARTIAL / BLOCKED**. J3 Profile persistence and J6 real Trip Library rendering require previously deferred UI integration. Their mandatory assertions remain enabled and fail; passing API regressions or GitHub CI must not be presented as complete WBS 9.6 acceptance. See the Result and `journey-results.json` for actual final-run outcomes.
+Current disposition: **COMPLETED FOR REVIEW**. TASK-060 / PR #368 and TASK-061 / PR #370 resolved J3/J6 and were merged into develop under explicit user authorization. Latest develop was normally merged into the existing TASK-059 branch. All J1–J8 now pass in two complete Edge runs and one complete Chromium run on the same source candidate. WBS 9.6 is pending review; PR #366 remains Draft and Issue #364 remains Open.
 
 ## Reproduce
 
-Use a clean checkout with Node 24, Docker running locally, locked dependencies, an installed Playwright package and the selected browser. Follow the repository's existing Local setup; never use Production/Staging values. The aggregate resolves and verifies loopback endpoints, refuses an already-running TravelAssist Local project or occupied application ports, checks that Auth/B tables/Storage are empty, and never resets unrelated data.
+Use a clean checkout, Node 24, Docker running locally, locked dependencies, an installed Playwright package and selected browser. Follow repository Local setup; never use Production/Staging values. The aggregate verifies loopback endpoints, refuses an already-running TravelAssist Local project or occupied application ports, checks Auth/B tables/Storage are empty, and never resets unrelated data.
 
 ```powershell
 npm ci
 npm run build
 $env:CODEX_PLAYWRIGHT_PATH = 'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'
+$env:WBS_BROWSER = 'edge'
 npm run test:personal-center:e2e
-```
-
-The package path is this host's installed runtime, not a project dependency or a portable path. Point the same variable to your installed Playwright package elsewhere. No new framework, npm dependency or browser download is introduced.
-
-The default browser is headless Microsoft Edge (`channel: msedge`). All J1–J8 run serially. The aggregate starts Local Supabase, starts the production Next server through the accepted helper, creates fresh users/fixtures, closes task browsers/server, deletes synthetic data, verifies all tracked tables and application ports empty, records `db:status`, and runs `db:stop`. A mandatory failure, cancellation, skip, todo, zero-test child, unavailable browser or cleanup failure makes the aggregate exit nonzero.
-
-```powershell
-$env:WBS_BROWSER = 'chromium' # alternatively firefox or webkit, only if installed
+npm run test:personal-center:e2e
+$env:WBS_BROWSER = 'chromium'
 npm run test:personal-center:e2e
 Remove-Item Env:WBS_BROWSER
 ```
 
-This is browser viewport coverage, not a native mobile application test. WebKit would not prove real Safari. This host's missing Firefox/WebKit binaries are explicitly Deferred in `browser-matrix.json`.
+The package path is this host's installed runtime, not a project dependency or portable path. Point the variable to your installed Playwright package elsewhere. No new framework, dependency or browser download was introduced. Firefox/WebKit require their actual installed binary; their absence on this host is recorded as Deferred, not PASS.
+
+The default browser is headless Microsoft Edge (`channel: msedge`). J1–J8 always run serially without journey filtering. The aggregate starts Local Supabase and production Next via accepted helpers, creates fresh users/fixtures, closes task browsers/server, removes synthetic data, verifies tracked tables/application ports empty, records `db:status`, and executes `db:stop`. Mandatory failure/cancel/skip/todo/zero-test, missing browser or failed cleanup returns nonzero.
+
+Desktop 1440×900 and mobile 390×844 reuse WBS 9.12. Viewport testing does not claim a native mobile application or real Safari. External email/SMS/OAuth delivery remains Deferred; real Local mailbox confirmation is executed.
 
 ## Existing 9.5 baseline
 
-Run `npm run test:personal-center` and `npm run test:personal-center:local` unchanged. On a fresh checkout the accepted Companion runtime reads ignored `.artifacts/task047/baseline-browser/geometry.json`. Generate it with the existing script before the Local aggregate; do not copy a historical geometry file:
+Run `npm run test:personal-center` and `npm run test:personal-center:local` unchanged. The accepted Companion runtime needs ignored `.artifacts/task047/baseline-browser/geometry.json`; regenerate through the existing script before the Local aggregate:
 
 ```powershell
 npm run db:start
@@ -39,27 +38,25 @@ try {
 npm run test:personal-center:local
 ```
 
-The existing geometry script visits the repository's accepted baseline routes without running a Planner preference/save journey. It is recorded as baseline preparation, not new WBS 9.7/9.8 coverage. The first unprepared Local attempt failed with ENOENT, cleaned up successfully, and the complete prepared run was rerun. No old test assertion was changed.
+The geometry script visits 25 accepted page/viewport combinations. This is existing baseline preparation, not WBS 9.7/9.8 journey coverage. Original execution initially found the missing ignored geometry; that historical attempt was retained, prepared and rerun. The resumed candidate regenerated it again and reran the full Local aggregate. No historical assertion was weakened.
 
 ## Evidence map
 
-- `browser-harness-inventory.json`: existing framework, Local helpers, executable resolution, available engines and CI limits.
-- `e2e-matrix.json`: every mandatory journey mapped to executable assertions.
-- `journey-results.json`: sanitized final runs, actual counts, owner lifecycle and cleanup.
-- `browser-matrix.json`: actual engine outcomes, canonical 1440×900 / 390×844 viewports and two-run comparison.
-- `quality-gates.json`: baseline/candidate regression, local deployment, formatting and GitHub gate evidence.
-- `../../tasks/RESULT-TASK-059-b-wbs-9-6-personal-center-e2e.md`: acceptance disposition and exact defect handoff.
+- `browser-harness-inventory.json`: reused framework/helpers, executable resolution, actual engines and CI limits.
+- `e2e-matrix.json`: each mandatory journey mapped to executable assertions and current source lines.
+- `journey-results.json`: three fresh passing runs, source SHA/hash, observations, metrics and cleanup.
+- `browser-matrix.json`: actual engines, viewports, identical mandatory-check counts and two-run determinism.
+- `quality-gates.json`: original/resumed baseline, dependency merge proof, candidate regressions and local gates.
+- `../../tasks/RESULT-TASK-059-b-wbs-9-6-personal-center-e2e.md`: complete review result and stop state.
 
-Raw logs stay in ignored `.artifacts/task059/`; source and artifact hashes identify the reviewed runs. No HAR, storageState, access token, Auth credential, real account UUID, large trace/video or personal screenshot is committed. Random unique Local credentials exist only in test/server memory. Public evidence uses journey/control/disposable roles and aggregate counts.
+Ignored `.artifacts/task059/` holds raw logs. Public records retain sanitized counts and hashes without Auth credentials, tokens, account UUIDs, HAR, storageState or large media. Every E2E run uses three unique Local users (journey/control/disposable) plus anonymous context. Full control rows are compared in memory, not published.
 
-## Meaning of counts and CI
+## Counts, determinism and CI
 
-There are eight mandatory journey subtests and one parent Node test. Thus a run with six passing journeys and two failing journeys reports Node TAP `tests=9, pass=6, fail=3`: the failed parent is counted once in addition to J3/J6. It is not a third product blocker. Skip/todo/cancel must all be zero. Identical failing runs demonstrate reproducibility of the blockers; they do not satisfy the required two passing primary-browser runs.
+Eight mandatory journey subtests plus one parent produce Node TAP `tests=9, pass=9, fail=0`. Both Edge runs use the same source head/hash, identical mandatory check lists and results; fresh users and empty pre/post state make the runs independent. Skip/todo/cancel remain zero. Previous J3/J6 failed runs and intermediate passing reports remain historical. After matching the local runtime byte-for-byte to the committed Git blob, the complete final matrix was rerun; only verified-* reports are included in the passing comparison.
 
-The current GitHub Quality gate runs `tests/*.test.mjs`, lint, typecheck, formatting and deployment artifact checks. It does not provision the Local E2E runtime. An exact-head green GitHub check is necessary evidence but cannot override failing mandatory J3/J6.
+Current GitHub Quality gate runs `tests/*.test.mjs`, lint, typecheck, formatting and deployment artifact gates; it does not provision Local E2E. The final PR head and matching successful workflow run are recorded in PR #366's **Exact final-head verification** ledger after the final documentation commit, avoiding a self-referential extra commit. Three actual Local E2E reports separately establish the browser acceptance.
 
-## Scope and handoff
+## Scope
 
-No product UI, schema, migration, generated DB types, external provider, A WBS 8.5 or downstream Task is implemented here. Profile still initializes the accepted presentation fixture and saves React state. Trip Library still uses its accepted view-model fixture; the accepted TASK-049 Result expressly defers real UI wiring until Trip-only presentation and unknown-data semantics are decided.
-
-Authorize and define those focused UI integrations separately, preserve the accepted API contracts and unknown/unset semantics, then rerun this unchanged mandatory suite. Do not weaken J3/J6, substitute mock cards, or treat missing rows as proof of browser owner isolation. WBS 9.6 stays in progress under TASK-059 §§15/20 until all mandatory acceptance conditions are met.
+TASK-059's diff against latest develop is limited to tests, runner, one npm aggregate, QA/Result and WBS 9.6 tracking. Product UI integrations are already merged dependencies. Profile uses existing owner-verified APIs; Trip Library uses real B contracts and explicitly unavailable unknown metadata. No API/schema/migration redesign, A WBS 8.5, WBS 9.7/9.8, Production/Staging mutation or external provider write is introduced. Do not merge PR #366 or complete/close WBS 9.6 / Issue #364 without separate user acceptance and authorization.

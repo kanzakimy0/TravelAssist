@@ -1,33 +1,33 @@
 {
   "task": "TASK-059-B",
-  "candidate": "6f64889b39db28a890a9e309388ab22e3063b929",
+  "candidate": "87345968754456b4b7d7ce3ae58c84f10566853b",
   "engines": [
     {
       "browser": "edge",
-      "status": "FAIL",
+      "status": "PASS",
       "version": "153.0.4234.32",
       "executableSource": "Installed Microsoft Edge; Playwright channel=msedge",
-      "executedRuns": ["final-edge-1", "final-edge-2"],
-      "scope": "All J1-J8; canonical desktop/mobile J7; FAIL J3/J6"
+      "executedRuns": ["verified-edge-1", "verified-edge-2"],
+      "scope": "All J1-J8, desktop/mobile full navigation, real Local Auth/data lifecycle"
     },
     {
       "browser": "chromium",
-      "status": "FAIL",
+      "status": "PASS",
       "version": "151.0.7922.34",
-      "executableSource": "Installed Playwright Chromium",
-      "executedRuns": ["final-chromium"],
-      "scope": "All J1-J8; actual outcomes in journey-results.json"
+      "executableSource": "Installed Playwright Chromium 1234",
+      "executedRuns": ["verified-chromium"],
+      "scope": "All J1-J8, desktop/mobile full navigation, real Local Auth/data lifecycle"
     },
     {
       "browser": "firefox",
       "status": "DEFERRED",
-      "reason": "Playwright expected binary absent at C:/Users/Administrator/AppData/Local/ms-playwright/firefox-1538/firefox/firefox.exe; never claimed PASS",
+      "reason": "Rechecked: C:/Users/Administrator/AppData/Local/ms-playwright/firefox-1538/firefox/firefox.exe does not exist",
       "executedRuns": []
     },
     {
       "browser": "webkit",
       "status": "DEFERRED",
-      "reason": "Playwright expected binary absent at C:/Users/Administrator/AppData/Local/ms-playwright/webkit-2336/Playwright.exe; never claimed PASS",
+      "reason": "Rechecked: C:/Users/Administrator/AppData/Local/ms-playwright/webkit-2336/Playwright.exe does not exist",
       "executedRuns": []
     }
   ],
@@ -36,8 +36,9 @@
     "sameSource": true,
     "sameNodeCounts": true,
     "sameJourneyResults": true,
-    "bothPass": false,
-    "conclusion": "Blocker reproduction is deterministic; the mandatory two PASS runs requirement is NOT satisfied."
+    "sameMandatoryChecks": true,
+    "bothPass": true,
+    "conclusion": "PASS: two complete primary-browser runs on the same source candidate; 8/8 mandatory journeys and 9/9 TAP tests each, no skips/todos/cancellations. Fresh synthetic identities per run."
   },
   "viewports": [
     {
@@ -51,5 +52,5 @@
   ],
   "nativeMobileTested": false,
   "realSafariTested": false,
-  "externalDelivery": "Real external email/SMS/OAuth delivery Deferred; deterministic Local email confirmation actually executed"
+  "externalDelivery": "Real external email/SMS/OAuth Deferred; Local mailbox confirmation actually executed"
 }

@@ -1,101 +1,90 @@
 # RESULT-TASK-059-B — WBS 9.6 Personal Center E2E
 
-**结论：PARTIAL / BLOCKED。** 八个 mandatory 浏览器旅程已实现并执行；J1、J2、J4、J5、J7、J8 通过，J3/J6 被既有 UI 接线缺口阻塞。不能将 WBS 9.6 宣布验收通过。
+**结论：Completed for review。J1–J8 全部通过，WBS 9.6 进入待审查；PR #366 保持 Draft，等待用户验收。**
 
-## Tracking
+## Tracking 与恢复过程
 
 - Issue：[#364](https://github.com/kanzakimy0/TravelAssist/issues/364)，保持 Open。
-- 执行时最新、干净的 `origin/develop`：`5240ff8f7a91c1e36e90449d0f619de93f795472`。发布前重新 fetch，develop 未变化。
-- 实现分支：`codex/b-account-wbs-9-6-personal-center-e2e`，从该 develop 创建，未从规格分支开发。
-- 最终测试代码候选：`6f64889b39db28a890a9e309388ab22e3063b929`。后续仅提交 QA / Result 文档；测试、runner、package 的哈希见 `quality-gates.json`。
-- Draft PR：[#366](https://github.com/kanzakimy0/TravelAssist/pull/366)，目标 develop，使用 `Refs #364`，保持 Draft / Unmerged。
-- 最终 PR head 与 exact-head GitHub Quality Gate：见该 PR 的 **Exact final-head verification** 记录，包含最终完整 SHA、相同 `headSha` 的 workflow_dispatch run URL / conclusion。提交无法包含自身 SHA 和随后完成的 CI 结果，因此采用 PR 外部验收记录，避免追加文档提交再次改变已验的 head。
-- WBS 9.6 保持 `进行中（#364 / TASK-059-B）`。正式 TASK §§15/20 明确：存在阻止 J1–J8 完成的真实 blocker 时返回 Partial/Blocked；必须全部通过后才可进入“待审查”。未修改其他 WBS 行或 Owner。
+- 初始干净 develop：`5240ff8f7a91c1e36e90449d0f619de93f795472`；原实现分支从该 develop 创建，未从规格分支开发。
+- 按本轮用户授权，TASK-060 Profile UI persistence 经 [PR #368](https://github.com/kanzakimy0/TravelAssist/pull/368) 合入 develop，merge `86585600689e3a673ba17156c2ff513db24c7a86`；TASK-061 Trip Library live data 经 [PR #370](https://github.com/kanzakimy0/TravelAssist/pull/370) 合入，merge `05cbc4ea0f771ea27d4927466d516e8ace3bce6b`。两者 source exact-head 和合并后 develop Quality Gate 均通过，链接见 `quality-gates.json`。
+- 将包含上述修复、A PR #352 及其收尾的最新 develop `56901c3a18703105442f9c566406f041c0660fbe` **正常 merge** 进 `codex/b-account-wbs-9-6-personal-center-e2e`，得到源码候选 `87345968754456b4b7d7ce3ae58c84f10566853b`。已保留三项任务的全部测试命令；J3 增加真实异步保存完成等待，原持久化/隔离断言不变。
+- 最终三轮 E2E 和回归使用该源码候选；后续仅更新 QA、Result 和 WBS 文档。源码哈希见 `quality-gates.json`。
+- [Draft PR #366](https://github.com/kanzakimy0/TravelAssist/pull/366) → develop，使用 `Refs #364`，保持 Draft / Unmerged。**最终 PR 完整 head、相同 headSha 的 GitHub workflow URL / SUCCESS，记录在 PR 的 Exact final-head verification 记录。** 提交无法包含自身 SHA 及随后完成的 CI；该外部记录避免为写回 CI 再次改变已验 head。
+- WBS 9.6：`待审查（#364 / TASK-059-B；Draft PR #366）`。只修改 9.6 状态单元格，未改其他行或 Owner。
 
-## Framework / runtime
+## 框架与浏览器
 
-复用现有 Node test runner + Playwright 1.62.1、Local Supabase/Auth、生产 Next server 和已验收启动/清理/网络隔离辅助方法。Playwright 通过 `CODEX_PLAYWRIGHT_PATH` 使用环境已有安装；没有新增第二套框架、依赖或 lockfile 改动。
+复用仓库现有 Node test runner + Playwright 1.62.1、Local Supabase/Auth、Next production server 和既有启动/网络隔离/清理 helper。稳定入口为 `npm run test:personal-center:e2e`；默认 Edge，`WBS_BROWSER` 可选择已安装运行时。Mandatory failure/skip/todo/cancel/no-test、浏览器不可用或清理失败均返回非零。没有第二套框架、依赖或 lockfile 变更。
 
-稳定入口：`npm run test:personal-center:e2e`。默认 Edge，按 J1–J8 顺序执行；`WBS_BROWSER=chromium|firefox|webkit` 选择已有运行时。Mandatory fail/skip/todo/cancel/no-test 或清理失败均返回非零，不会降级为 PASS。
+| 浏览器                 | 实际结果                                               |
+| ---------------------- | ------------------------------------------------------ |
+| Edge 153.0.4234.32     | 完整 J1–J8 两轮 PASS                                   |
+| Chromium 151.0.7922.34 | 完整 J1–J8 一轮 PASS                                   |
+| Firefox                | DEFERRED：重新检查，Playwright Firefox 1538 二进制缺失 |
+| WebKit                 | DEFERRED：重新检查，Playwright WebKit 2336 二进制缺失  |
 
-| Browser  | 实际版本 / 结果                                    |
-| -------- | -------------------------------------------------- |
-| Edge     | 153.0.4234.32；完整两轮，均因 J3/J6 FAIL           |
-| Chromium | 151.0.7922.34；完整一轮，同样 J3/J6 FAIL           |
-| Firefox  | DEFERRED：Playwright Firefox 1538 对应二进制不存在 |
-| WebKit   | DEFERRED：Playwright WebKit 2336 对应二进制不存在  |
+桌面 `1440×900` 和手机 `390×844` 复用 WBS 9.12 定义，三轮均执行完整导航。没有声称原生 iOS/Android、真实 Safari 或外部邮件/SMS/OAuth 服务通过；注册确认使用真实 Local 邮箱。
 
-桌面 `1440×900`、手机 `390×844` 复用 WBS 9.12。两者完整导航均通过；没有声称真实 Safari、原生 iOS/Android 或真实外部邮件/SMS/OAuth 服务通过。
+## J1–J8 完整结果
 
-## J1–J8
+执行文件：`tests/task-059-personal-center-e2e.runtime.mjs`；具体行号和断言映射见 `e2e-matrix.json`。每轮使用三名不同 Local 用户 A（旅程）、B（控制）、C（独立删除），另有匿名 context；A/C 通过真实浏览器注册确认，B 使用现有 Local fixture 并通过浏览器登录。
 
-测试位置：`tests/task-059-personal-center-e2e.runtime.mjs`；逐项断言及位置见 `e2e-matrix.json`。每轮使用三名不同 Local 用户：旅程用户 A、控制用户 B、独立删除用户 C，另有匿名 context。A/C 通过真实浏览器注册和 Local 邮箱确认；B 通过现有 Local fixture 创建并用浏览器登录。全部结果同时适用于上述 Edge / Chromium 最终执行。
+| Journey | 结果 | 关键证据                                                                                                                       |
+| ------- | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
+| J1      | PASS | 16 条私有路由拒绝匿名访问；returnTo、owner URL 注入、无私有 DOM 闪现；客户端无服务端凭据                                       |
+| J2      | PASS | 注册/确认、多页会话、偏好保存、退出、私有路由拒绝、重登后数据恢复                                                              |
+| J3      | PASS | 无效昵称校验；显式保存后跨页、硬刷新、重登均保留；真实 Profile DB 行保存，控制用户显示自己的资料                               |
+| J4      | PASS | 六类偏好、显式 Save、跨页/刷新/重登、模板草稿/Cancel、保留其他键、unset Reset 和双用户隔离                                     |
+| J5      | PASS | 同行人及组合/成员创建编辑、跨会话保存、隔离、删除后不再出现                                                                    |
+| J6      | PASS | 现有 B API/fixture 创建真实 Draft/Saved/History；正确显示、刷新后保留、双用户各自可见且不串数据                                |
+| J7      | PASS | 桌面/手机头像入口→Shell→Profile→Preferences→Companions→Trips/Drafts/History→隐私/删除入口；前进后退和用户切换                  |
+| J8      | PASS | 独立用户完整注册→使用→删除；确认约束、当前 owner、DELETE 204、会话失效、旧登录失败、Auth/八类 B 数据清除，控制用户完整记录不变 |
 
-| Journey | 结果 | 实际验证                                                                                                                                               |
-| ------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| J1      | PASS | 16 条受保护路由、登录 returnTo、URL owner 注入拒绝、无私有 DOM 闪现、浏览器响应/client chunks 无服务端凭据                                             |
-| J2      | PASS | 注册/确认、多页会话、真实偏好保存、退出、私有路由拒绝、重新登录后持久化恢复                                                                            |
-| J3      | FAIL | 无效昵称校验和临时 UI 保存通过；离页/刷新/重登后丢失，真实 Profile 行未保存，控制用户的真实 Profile 也未显示                                           |
-| J4      | PASS | 移动、自然兴趣、餐饮、住宿、预算、计划六类 UI；跨页/刷新/重登、模板仅草稿、Cancel、显式 Save、保留其他类别键、unset Reset、双用户隔离                  |
-| J5      | PASS | 同行人创建/编辑、组合与成员、跨页/刷新/重登、独立浏览器隔离、组合及同行人删除后持久化                                                                  |
-| J6      | FAIL | 现有 B API / contract 成功创建每用户 Draft/Saved/History；UI 未渲染任何真实当前用户记录，刷新仍是 fixture，不能证明浏览器级 Trip ownership             |
-| J7      | PASS | 桌面/手机主页头像入口、Shell、Profile、Preferences、Companions、Trips/History/Drafts、隐私/删除入口、后退/前进和同一浏览器切换用户                     |
-| J8      | PASS | 独立用户完整注册→使用→删除；确认文字/复选框、owner 注入保护、真实 DELETE 204、会话失效、旧用户登录失败、Auth/八类 B 数据清除、控制用户完整记录保持不变 |
+Trip 测试只使用既有 B Contract/API/fixture；未实现 A WBS 8.5，也未执行 Planner→Save→Personal Center。TASK-061 对未提供的预订/收藏/封面保留明确不可用语义，未虚构数据。
 
-## 两轮 deterministic 检查
+## 两轮确定性
 
-两轮 Edge 使用同一候选 SHA 和完全相同测试源码哈希：`dcbe5b725003639df5c4f7807707fff00798240c7a0d7949e69dc274fa2a3a69`。
+| 执行       | Journey  | Node TAP | fail / skip / todo / cancel |
+| ---------- | -------- | -------- | --------------------------- |
+| Edge run 1 | 8/8 PASS | 9/9 PASS | 0 / 0 / 0 / 0               |
+| Edge run 2 | 8/8 PASS | 9/9 PASS | 0 / 0 / 0 / 0               |
+| Chromium   | 8/8 PASS | 9/9 PASS | 0 / 0 / 0 / 0               |
 
-| 执行       | Journey            | Node TAP           | skip / todo / cancel | 结果 |
-| ---------- | ------------------ | ------------------ | -------------------- | ---- |
-| Edge run 1 | 8：6 PASS / 2 FAIL | 9：6 PASS / 3 FAIL | 0 / 0 / 0            | FAIL |
-| Edge run 2 | 8：6 PASS / 2 FAIL | 9：6 PASS / 3 FAIL | 0 / 0 / 0            | FAIL |
-| Chromium   | 8：6 PASS / 2 FAIL | 9：6 PASS / 3 FAIL | 0 / 0 / 0            | FAIL |
+Node 计数含八个子旅程与一个父测试。两轮 Edge 的 head、测试源码哈希、mandatory 检查列表和结果计数全部一致；每轮重新创建用户并清理到空，确定性要求满足。先前 J3/J6 失败，以及 `21b55fc` 上三轮 PASS，均保留为历史。中断期间 develop 新增变更，因此正常 merge 后再次完整执行三轮；随后规范本地测试格式至 Git 中的精确文件并再次复跑三轮，本次 PASS 对比只使用 `8734596` 的 `verified-*` 报告。
 
-Node 的第三个 failure 是包含 J3/J6 的父测试，非第三个产品 blocker。两轮计数、旅程结果和源码一致，证明失败可重复；**未满足两轮全部 PASS 的验收要求**。早期三轮测试定位/断言校正不计入这两轮。
+## Regression / Mandatory QA
 
-## Regression / QA
+| Gate                                                                | 结果                                                                                                   |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| npm ci                                                              | PASS                                                                                                   |
+| 原始执行基线全仓 Node                                               | 2493/2493 PASS                                                                                         |
+| 两个 Follow-up 合入时 develop 全仓 Node                             | 2504/2504 PASS；TASK-061 已验源码与 merge tree 完全一致，合并后 CI 通过                                |
+| 最新 develop `56901c3` exact-head CI 全仓 Node                      | 2516/2516 PASS；[run 34769032218](https://github.com/kanzakimy0/TravelAssist/actions/runs/34769032218) |
+| 恢复候选全仓 Node                                                   | 2516/2516 PASS                                                                                         |
+| 9.5 non-Local                                                       | 1823/1823 PASS，28 suites                                                                              |
+| 9.5 Local                                                           | 877/877 PASS，13 Node suites + 2 bundle audits                                                         |
+| 既有 browser baseline                                               | PASS；重新生成 25 页面/5 viewport 的 ignored 几何基线                                                  |
+| lint / typecheck / build                                            | PASS                                                                                                   |
+| deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS；artifact 1869 files，0 failures                                                                  |
+| canonical / TASK-059 scoped format / git diff --check               | PASS                                                                                                   |
+| exact final-head GitHub Quality Gate                                | SUCCESS，实际最终 head 与 run URL 见 PR #366 的验收记录                                                |
 
-| Gate                                        | 结果                                                                                                  |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| npm ci                                      | PASS，使用锁定依赖                                                                                    |
-| 基线全仓 Node                               | 2,493/2,493 PASS；skip/todo/cancel 0                                                                  |
-| 候选全仓 Node                               | 2,493/2,493 PASS；skip/todo/cancel 0                                                                  |
-| 9.5 non-Local，基线 / 候选                  | 均 PASS：28 文件，1,823 tests                                                                         |
-| 9.5 Local，基线 / 候选                      | 均 PASS：13 suites，877 tests，另 2 个 bundle audits                                                  |
-| lint / typecheck                            | PASS，新增代码无 lint error/warning                                                                   |
-| build                                       | PASS                                                                                                  |
-| deploy:validate:local                       | PASS                                                                                                  |
-| deploy:build:local / deploy:verify-artifact | 均 PASS；1,871 文件，0 failures                                                                       |
-| canonical format:check:deploy               | PASS                                                                                                  |
-| TASK-059 scoped Prettier / git diff --check | PASS                                                                                                  |
-| exact final-head GitHub Quality Gate        | 以 Draft PR 的 Exact final-head verification 记录为准；此 CI 不运行 Local E2E，不能覆盖 J3/J6 的 FAIL |
-
-首次 9.5 Local 聚合因干净工作区缺少 ignored `task047/baseline-browser/geometry.json` 失败。执行仓库已有 `tools/qa/task-047-browser-baseline.mjs` 重新生成，完成 25 个页面/五个 viewport 的既有几何基线，然后完整重跑通过；原断言未改、旧证据未复制。首次失败和恢复日志的哈希均已记录。Migration integration/type drift 检查实际重跑；已验收双 replay 证据仍为历史引用，没有额外执行无必要的破坏性 replay。
-
-`TASK-055` 正式 Task 文件不存在于 develop，因此从其原规格分支补读；最新 Result、inventory、matrix、gap 和 package 从当前 develop 读取。
-
-## Blocker handoff
-
-1. **Profile UI 尚未接入持久化。** `profile-account.tsx` 从 `initialAccountDraft` 初始化；Save 仅更新 React `saved` 状态。J3 独立验证离页、硬刷新、重登均丢失修改，DB 未保存。[已验收 TASK-050 Result](https://github.com/kanzakimy0/TravelAssist/blob/5240ff8f7a91c1e36e90449d0f619de93f795472/docs/tasks/RESULT-TASK-050-b-profile-account-api.md) 第 98 行明确未声称 UI 持久化接线完成。需要明确并授权 Profile UI 的真实数据/设置/联系人适配范围后接入既有 API。
-2. **Trip Library UI 尚为 fixture。** `trip-library-page.tsx` 使用 `createTripLibraryFixture()`；真实 B owned records 未渲染。[已验收 TASK-049 Result](https://github.com/kanzakimy0/TravelAssist/blob/5240ff8f7a91c1e36e90449d0f619de93f795472/docs/tasks/RESULT-TASK-049-b-trip-save-read-history-contract.md) 第 86–88 行明确：先决定 Trip-only 展示及未持久化的预订/收藏/封面等缺失数据语义，再接入 client；不得虚构 0 值。此决定超出本 QA Task 的窄范围缺陷修复。
-
-未把以上 mandatory FAIL 包装成 baseline debt，也未用 API PASS、mock 卡片或两边均未显示真实数据来声称浏览器隔离通过。现有可执行失败断言保留，后续接线完成后须完整复跑。
+最终有效测试的 fail/skip/todo/cancel 均为 0。9.5 Local 重跑真实 Auth、API、RLS、cascade、migration integration 和生成类型 drift 检查；未新增 migration 或无必要重放。既有 TASK-053 运行时对历史 JSON 的格式重写已恢复，内容/生成类型无差异。各聚合存在覆盖重叠，不相加宣称唯一测试总数。当前 GitHub Quality Gate 不执行 Local E2E，三轮 Local 浏览器证据另行记录。
 
 ## Safety / cleanup
 
-三次最终 E2E 均从空 Local 开始并清理到空：synthetic Auth users = 0；八类 B rows = 0；Storage objects/buckets = 0；任务 browser/server 已关闭，应用端口空闲，`db:status` / `db:stop` 成功。最终 9.5 Local 回归也完成同样清理。
+每轮从空 Local 开始，结束后 synthetic Auth users、八类 B 表、Storage objects/buckets 均为 **0**。J8 删除前包含 Profile/settings/contact/preferences/companion/group/member 和三种 Trip 记录，删除后全部为 0；B 的完整记录逐行一致。
 
-C 删除前：Auth 1、Profile 1、settings 1、contact 1、Preference 1、Companion 1、group 1、member 1、Trip records 3；删除后全部为 0，B 的完整数据逐行一致。最终运行 page errors、unexpected console errors、浏览器/服务端 external requests、secret leaks 均为 0。
+三轮 page errors、unexpected console errors、secret leaks、浏览器/服务端外部请求均为 **0**；被删除账号登录产生的预期 Auth 拒绝独立记录。测试 browser/server 已关闭，应用端口空闲；最终 9.5 Local 聚合完成同样清理并成功 `db:status` / `db:stop`。中断后 Docker 的失效零字节 runtime socket 目录已保留备份并重新创建，恢复后先验证全部 Local 数据为 0 再开始本次复跑；未执行 factory reset 或删除数据库卷。
 
-Production mutation = No；Staging mutation = No；external booking/provider mutation = No。未修改产品 UI、SQL/migration、generated types 或依赖；凭据、token、真实用户 UUID、storageState、HAR 和大体积媒体未提交。
+Production mutation = No；Staging mutation = No；external booking/provider mutation = No。TASK-059 相对最新 develop 没有产品、schema、migration、生成类型或依赖改动。公开证据不含凭据、token、用户 UUID、storageState、HAR 或大体积媒体。
 
-## Deliverables / stop state
+## 交付与停止状态
 
-已生成 `docs/qa/TASK-059/` 下 README、browser-harness-inventory、e2e-matrix、journey-results、browser-matrix、quality-gates，以及本 Result。完整命令、执行时间、源码/日志哈希和清理记录位于证据 JSON；原始日志保留在 ignored `.artifacts/task059/`。
+已更新 `docs/qa/TASK-059/` 的 README、browser-harness-inventory、e2e-matrix、journey-results、browser-matrix、quality-gates 和本 Result；记录真实命令、执行时间、源码/日志哈希、所有旅程和清理结果。原始日志保留在 ignored `.artifacts/task059/`。
 
-- PR 保持 Draft / Unmerged；Issue #364 保持 Open。
-- WBS 9.6 = 进行中，尚不符合待审查门槛；未标记已完成。
+- PR #366：Draft / Unmerged；Issue #364：Open。
+- WBS 9.6：待审查，未标记已完成。
 - WBS 9.7 started: No
 - WBS 9.8 started: No
 - Other downstream B task started: No
