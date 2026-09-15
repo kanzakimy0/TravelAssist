@@ -1,0 +1,56 @@
+{
+  "task": "TASK-059-B",
+  "candidate": "87345968754456b4b7d7ce3ae58c84f10566853b",
+  "engines": [
+    {
+      "browser": "edge",
+      "status": "PASS",
+      "version": "153.0.4234.32",
+      "executableSource": "Installed Microsoft Edge; Playwright channel=msedge",
+      "executedRuns": ["verified-edge-1", "verified-edge-2"],
+      "scope": "All J1-J8, desktop/mobile full navigation, real Local Auth/data lifecycle"
+    },
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "version": "151.0.7922.34",
+      "executableSource": "Installed Playwright Chromium 1234",
+      "executedRuns": ["verified-chromium"],
+      "scope": "All J1-J8, desktop/mobile full navigation, real Local Auth/data lifecycle"
+    },
+    {
+      "browser": "firefox",
+      "status": "DEFERRED",
+      "reason": "Rechecked: C:/Users/Administrator/AppData/Local/ms-playwright/firefox-1538/firefox/firefox.exe does not exist",
+      "executedRuns": []
+    },
+    {
+      "browser": "webkit",
+      "status": "DEFERRED",
+      "reason": "Rechecked: C:/Users/Administrator/AppData/Local/ms-playwright/webkit-2336/Playwright.exe does not exist",
+      "executedRuns": []
+    }
+  ],
+  "primaryDeterminism": {
+    "sameHead": true,
+    "sameSource": true,
+    "sameNodeCounts": true,
+    "sameJourneyResults": true,
+    "sameMandatoryChecks": true,
+    "bothPass": true,
+    "conclusion": "PASS: two complete primary-browser runs on the same source candidate; 8/8 mandatory journeys and 9/9 TAP tests each, no skips/todos/cancellations. Fresh synthetic identities per run."
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "nativeMobileTested": false,
+  "realSafariTested": false,
+  "externalDelivery": "Real external email/SMS/OAuth Deferred; Local mailbox confirmation actually executed"
+}
