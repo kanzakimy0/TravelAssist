@@ -1,5 +1,14 @@
 # RESULT — TASK-062-B
 
+## 用户验收与合并完成（2026-09-16）
+
+- Status：**已完成 / Accepted and merged to develop**。用户明确验收 TASK-062-B 并授权合并 PR #227。
+- PR #227 已于 `2026-09-16T14:19:55Z` normal merge；merge commit：`842447d29e2b8792df6674a1a3c0c45b967622e8`。
+- 已验收 head：`c35725a39611034be2598f5e5e284986ba915b66`；[精确 head CI 35105936473](https://github.com/kanzakimy0/TravelAssist/actions/runs/35105936473) 为 success，合并树与该 head 完全一致。
+- WBS 8.5 = **已完成 / Owner A**；B 执行支持身份不变。本次仅同步收尾文档，原有真实 Local 验收和全仓 2520/2520 证据保持有效。
+- Issue #376 按此前“不自动关闭”限制保持 Open；#226 / #256 也未关闭。本次没有启动 WBS 4.22，没有改变其他 WBS 的状态或 Owner。
+- 以下是合并前的完整验收记录；其中 Draft / 待审查 / 禁止自动合并等表述属于当时阶段，当前授权与状态以本节为准。
+
 ## Status
 
 **Completed / WBS 8.5 integration closeout ready for owner review**

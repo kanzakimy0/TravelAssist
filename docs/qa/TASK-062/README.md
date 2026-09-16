@@ -1,5 +1,7 @@
 # TASK-062-B integration / database acceptance
 
+User acceptance and authorized merge completed on 2026-09-16. PR #227 merged as `842447d29e2b8792df6674a1a3c0c45b967622e8`; WBS 8.5 is completed, canonical Owner A. The accepted head `c35725a39611034be2598f5e5e284986ba915b66` passed exact-head workflow_dispatch [35105936473](https://github.com/kanzakimy0/TravelAssist/actions/runs/35105936473). The merge tree equals that accepted tree. Earlier Draft/review-ready wording below is historical. Issue #376 remains open under the prior no-automatic-closure instruction; WBS 4.22 was not started.
+
 This closeout reuses TASK-019-A / TASK-026-A, `codex/a-trip-plan-schema` and Draft PR #227. WBS 8.5 owner remains A; B executes the authorization recorded in Issue #376. See the [Result](../../tasks/RESULT-TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md) and [machine-readable evidence](acceptance-evidence.json).
 
 ## Reproduce

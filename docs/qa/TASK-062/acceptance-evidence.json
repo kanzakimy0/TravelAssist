@@ -1,6 +1,6 @@
 {
   "task": "TASK-062-B",
-  "status": "Completed / WBS 8.5 integration closeout ready for owner review",
+  "status": "已完成 / Accepted and merged to develop",
   "canonicalOwner": "A",
   "executor": "B",
   "authorization": "Issue #376 / published TASK-062: explicit A authorization",
@@ -2038,10 +2038,12 @@
       "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/35105260085"
     },
     "finalTrackingHeadGate": {
-      "required": true,
+      "head": "c35725a39611034be2598f5e5e284986ba915b66",
       "event": "workflow_dispatch",
       "workflow": "quality-gate.yml",
-      "receipt": "Existing PR #227 description and final TASK-062 delivery; deliver only after exact final head succeeds"
+      "run": 35105936473,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/35105936473",
+      "conclusion": "success"
     }
   },
   "initialFailures": {
@@ -2140,11 +2142,11 @@
     "credentialsPublished": false,
     "syntheticDataCleaned": true,
     "localStackStopped": true,
-    "prOpen": true,
-    "prDraft": true,
+    "prOpen": false,
+    "prDraft": false,
     "autoMergeEnabled": false,
     "issue376Open": true,
-    "wbs85": "待审查",
+    "wbs85": "已完成",
     "wbs422Started": false,
     "otherNumberedWbsRowsUnchanged": true
   },
@@ -2228,5 +2230,25 @@
     "src/server/trip-library",
     "package-lock.json",
     "supabase/config.toml"
-  ]
+  ],
+  "postAcceptance": {
+    "authorization": "User explicitly accepted TASK-062-B and authorized merging PR #227",
+    "acceptedHead": "c35725a39611034be2598f5e5e284986ba915b66",
+    "acceptedHeadCi": {
+      "run": 35105936473,
+      "status": "success",
+      "event": "workflow_dispatch"
+    },
+    "mergeCommit": "842447d29e2b8792df6674a1a3c0c45b967622e8",
+    "mergedAt": "2026-09-16T14:19:55Z",
+    "mergeTreeEqualsAcceptedHead": true,
+    "canonicalOwner": "A",
+    "wbs85": "已完成",
+    "prState": "MERGED",
+    "issue376State": "OPEN",
+    "issueClosePolicy": "Prior explicit no-automatic-closure instruction retained; no issue closure performed",
+    "wbs422Started": false,
+    "otherNumberedWbsRowsUnchanged": true,
+    "followupScope": "Documentation-only acceptance synchronization"
+  }
 }

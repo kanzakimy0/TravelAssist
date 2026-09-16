@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-062-B / WBS 8.5 验收与合并完成（2026-09-16）
+
+- 用户明确验收 TASK-062-B 并授权合并 PR #227。已于 2026-09-16T14:19:55Z 以 normal merge 合入 develop，merge `842447d29e2b8792df6674a1a3c0c45b967622e8`；已验收 head `c35725a39611034be2598f5e5e284986ba915b66`，合并树与该 head 完全一致。
+- WBS 8.5 = A / 已完成；B 为本次 integration / acceptance 执行支持，canonical Owner 不变。精确验收 head [Quality Gate 35105936473](https://github.com/kanzakimy0/TravelAssist/actions/runs/35105936473) 通过；完整 Local / 全仓证据见 TASK-062 Result 和 QA。
+- PR #227 = Merged。此前不自动关闭 Issue 的限制继续保留，#376 仍 Open；本次没有关闭 #226 / #256。未启动 WBS 4.22，也未改变其他 WBS 状态或 Owner。
+- 下方待审查、Draft、未合并及历史回归结果保留为阶段记录；当前状态以本节、TASK-062 tracking 行及 8.5 主表为准。本次追加收尾仅修改文档。
+
 ## TASK-062-B / WBS 8.5 integration closeout（2026-09-16，待审查）
 
 - Canonical Owner 仍为 A；B 按 A 在 #376 / TASK-062 的明确许可执行本次整合和验收。唯一实现继续使用 `codex/a-trip-plan-schema` / [Draft PR #227](https://github.com/kanzakimy0/TravelAssist/pull/227)。
@@ -655,7 +662,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-062-B | 8.5 | A（B execution support） | 待审查（integration / Local acceptance通过；未合并） | #376 Open | `docs/tasks/TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md`（task publication branch） / `docs/tasks/RESULT-TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md` | `codex/a-trip-plan-schema` | `652af863`（normal merge）；`b35cb7b8`（验收实现） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Draft → develop |
+| TASK-062-B | 8.5 | A（B execution support） | 已完成（用户验收；PR #227已合并） | #376 Open（保留此前不自动关闭限制） | `docs/tasks/RESULT-TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md` | `codex/a-trip-plan-schema` | `c35725a3`（验收head）；`842447d2`（merge） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Merged → develop |
 | TASK-019-A / TASK-026-A | 8.5 | A | 待审查（Local 验收通过；完整回归 709/712，未合并） | #226 / #256 Open | `docs/tasks/TASK-019-a-trip-plan-schema.md` / `docs/tasks/RESULT-TASK-026-a-trip-plan-schema-acceptance-closeout.md` | `codex/a-trip-plan-schema` | `b8a5ad5`（实现）；`5df7a32`（整合）；`d1c71f9`（验收记录） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Draft → develop |
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
 | TASK-013.3-A | 2.16 | A | 已合并阶段实现（Partial；未最终验收） | #189 | `docs/tasks/TASK-013.3-a-japan-destination-entity-resolution.md` | `feature/a-japan-destination-entity-resolution` | `f3b4313`；合入 `2ea0bbf` | [#192](https://github.com/kanzakimy0/TravelAssist/pull/192) Merged |
@@ -990,7 +997,7 @@ TASK-023-A tracking (2026-09-09):
 | 8.2    | User / Profile Schema         | B      | P0     | 8.1                | 已完成（TASK-016-B；用户验收通过；#209合并；#200关闭） |
 | 8.3    | Authentication 核心           | B      | P0     | 8.1                | 已完成 |
 | 8.4    | DB Migration 全局规范         | A      | P1     | 8.1                | 已完成（#186已合并；SQL唯一历史与空库重建验收） |
-| 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 待审查（#376 / TASK-062-B closeout；Draft PR #227） |
+| 8.5    | 主系统 Trip Plan Schema       | A      | P0     | 4.17,8.1           | 已完成（TASK-062-B 用户验收；PR #227 merged） |
 | 8.6    | B 个人中心数据 Migration      | B      | P1     | 5.11,5.12,5.18,8.4 | 已完成（#351 / TASK-054-B；用户验收，PR #353 已合并） |
 | 8.7    | AI 会话主系统存储策略         | A      | P2     | 6.2,8.1            | 未开始 |
 | 8.8    | 个人 AI 历史关联              | B      | P3     | 6.14,8.2,8.7       | 未开始 |
