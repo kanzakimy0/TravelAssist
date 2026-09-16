@@ -1,0 +1,2134 @@
+{
+  "task": "TASK-057-B",
+  "issue": 359,
+  "recommendation": "ACCEPT",
+  "findingsRequiringCorrection": [],
+  "reviewedPr": {
+    "number": 352,
+    "url": "https://github.com/kanzakimy0/TravelAssist/pull/352",
+    "state": "OPEN",
+    "isDraft": true,
+    "headSha": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+    "headBranch": "codex/a-task-041-master-code-integration",
+    "publicationHead": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+    "advancedSincePublication": false
+  },
+  "execution": {
+    "developSha": "d23dedef1b6ecf9133fb544451d8b6789482213e",
+    "mergeBase": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+    "aheadOfDevelop": 3,
+    "behindDevelop": 24,
+    "node": "v24.18.0",
+    "reviewBranch": "codex/b-wbs-4-48-independent-acceptance-review",
+    "specCommit": "2c4f4818fae4264e2a2dda569587e49b647cf6a1",
+    "startClean": true
+  },
+  "protectedChangedFiles": {
+    "method": "SHA-256 of sorted repository-relative filenames joined by LF with final LF",
+    "sha256": "dc4c98e44f8be17c0055c2a8d181bd52342ff0643387883832dc39b4c1da94ed",
+    "count": 13,
+    "files": [
+      {
+        "path": "docs/project/WBS-TravelAssist.md",
+        "baseBlob": "8aad7fec1fd75a4595bbdcc31395f80d82dfc6fa",
+        "candidateBlob": "3a68ab4ad9ee34073a56740057451a09f79c53fd"
+      },
+      {
+        "path": "docs/qa/TASK-041/graph-validation.json",
+        "baseBlob": "7a55fd3bd22c750dd4ade8908984b88fe4b79349",
+        "candidateBlob": "55942903e6577f2f6704b1a957dd1566a87f705a"
+      },
+      {
+        "path": "docs/qa/TASK-041/master-code-audit.json",
+        "baseBlob": "73d290e5411bc905dc5f634d6759c065f6aefcd4",
+        "candidateBlob": "65b167e1924df05d6fe0dba6f6b5f5c02456644a"
+      },
+      {
+        "path": "docs/qa/TASK-041/pilot-report.md",
+        "baseBlob": "45295e5b2ac68ce4be39b0536b41438d2b244af1",
+        "candidateBlob": "8a0f418232ce706a9c17da4a5073ff9d8acc0b52"
+      },
+      {
+        "path": "docs/qa/TASK-041/region-nodes.json",
+        "baseBlob": "7bbd351a268ce24613d5579743279a5076b926c7",
+        "candidateBlob": "ba94adc6157b52e8709ab16b69a403f508c8fce0"
+      },
+      {
+        "path": "docs/qa/TASK-045/region-master-code-integration-report.md",
+        "baseBlob": null,
+        "candidateBlob": "c135d6a145d69af963ef499bde10974567c7e0a5"
+      },
+      {
+        "path": "docs/qa/TASK-045/region-master-code-integration.json",
+        "baseBlob": null,
+        "candidateBlob": "38ca084005628a308fb62c682569ffa6ca71f957"
+      },
+      {
+        "path": "docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md",
+        "baseBlob": null,
+        "candidateBlob": "9af00184db90ffb19ab022afd3c4bf701c5e9f7c"
+      },
+      {
+        "path": "package.json",
+        "baseBlob": "866a095fe64fdd67e520db5cb94f5d66b1991c6c",
+        "candidateBlob": "018385ac7f485e127e9025b1b1966ca8d4ed105b"
+      },
+      {
+        "path": "tests/task-041-region-graph-pilot.test.mjs",
+        "baseBlob": "89d0d13350f6732e307b2c9560f211a56c82a367",
+        "candidateBlob": "1b7b604eab84043c719bf83f9e37c6fba8719579"
+      },
+      {
+        "path": "tests/task-045-region-master-code-integration.test.mjs",
+        "baseBlob": null,
+        "candidateBlob": "9c39402a6d0f5d73a4cb445c7d2f03576e96bfe5"
+      },
+      {
+        "path": "tools/qa/region-graph-pilot.mjs",
+        "baseBlob": "31c8905e4df6c765f01f0a79cd10c17eff494a65",
+        "candidateBlob": "8b3505649342383fc8e14d6ba1a967242eee796b"
+      },
+      {
+        "path": "tools/qa/region-master-code-integration.mjs",
+        "baseBlob": null,
+        "candidateBlob": "aabe8e36c45a580c987f6724113f3c5a3bb87353"
+      }
+    ]
+  },
+  "compatibility": {
+    "mergeExit": 0,
+    "conflicts": 0,
+    "localOnly": true,
+    "pushedToABranch": false,
+    "temporaryMergeSha": "3c5dbb553715d6839838e0f49528d67c756c85c3",
+    "treeSha": "7177c6c144a2117c921e7d2c526648c383aba2c7",
+    "parents": [
+      "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+      "d23dedef1b6ecf9133fb544451d8b6789482213e"
+    ],
+    "bothRequiredMatricesPassed": true
+  },
+  "snapshots": {
+    "candidate": {
+      "headSha": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+      "npmCi": {
+        "command": "npm ci",
+        "exitCode": 0,
+        "finished": "2026-09-13T05:13:39.2051726Z",
+        "logSha256": "db1a201b49e1839223d388e197bb23394b55dd985f28797cc5f65c2ba06515c4",
+        "vulnerabilities": 0
+      },
+      "independent": {
+        "task": "TASK-057-B",
+        "reviewedTreeHead": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+        "baselineSha": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+        "developSha": "d23dedef1b6ecf9133fb544451d8b6789482213e",
+        "independentlyRecomputed": true,
+        "aTask045EvidenceUsed": false,
+        "passed": true,
+        "counts": {
+          "regionNodes": 50,
+          "regionIdsPreserved": 50,
+          "canonicalMasterCodesPopulated": 50,
+          "activeRegistryResolution": 50,
+          "relations": 53,
+          "travelEdges": 58,
+          "variants": 90,
+          "productionMasterCodeNull": 0,
+          "missingOrNonStringCodes": 0,
+          "duplicateMasterCodes": 0,
+          "unknownAllocations": 0,
+          "deprecatedInvalid": 0,
+          "supersededInvalid": 0,
+          "otherLifecycleInvalid": 0,
+          "entityMismatch": 0,
+          "legacySubstitutes": 0,
+          "nodeSemanticDiffExcludingMasterCode": 0,
+          "regionRelationSemanticDiff": 0,
+          "travelEdgeSemanticDiff": 0,
+          "travelEdgeVariantSemanticDiff": 0,
+          "allPairsReachabilityDiff": 0
+        },
+        "identities": {
+          "orderPreserved": true,
+          "baselineIdsSha256": "d1adc642db617da3afd50cf6ada59acf09b6b5aeb5e29108fcbaf934b3817a6a",
+          "candidateIdsSha256": "d1adc642db617da3afd50cf6ada59acf09b6b5aeb5e29108fcbaf934b3817a6a"
+        },
+        "semantic": {
+          "method": "Independently sorted object keys; array order retained; only node.masterCode removed",
+          "baselineTopologySha256": "8f78281330be519c7fe5cf3e6338608f2314a129f2852fdea160600612ec50df",
+          "candidateTopologySha256": "8f78281330be519c7fe5cf3e6338608f2314a129f2852fdea160600612ec50df",
+          "completeProjectionEqual": true,
+          "planningPriorsUnchanged": true,
+          "variantsAndAllTemporalFieldsUnchanged": true,
+          "allPairs": 2500,
+          "reachabilityBeforeSha256": "8caaf16d7862b2a2f311b00332f9ea9b3cbd33bd0884190cda0c8b801fd674b4",
+          "reachabilityAfterSha256": "8caaf16d7862b2a2f311b00332f9ea9b3cbd33bd0884190cda0c8b801fd674b4"
+        },
+        "corridors": [
+          {
+            "name": "tokyo_to_hakone",
+            "requiredPath": ["region-tokyo", "region-hakone"],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "alpine_chain",
+            "requiredPath": [
+              "region-tokyo",
+              "region-matsumoto",
+              "region-takayama",
+              "region-kanazawa"
+            ],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "kansai_chain",
+            "requiredPath": [
+              "region-kyoto",
+              "region-nara",
+              "region-osaka",
+              "region-kobe"
+            ],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "tokyo_to_kyoto",
+            "requiredPath": ["region-tokyo", "region-kyoto"],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "tokyo_to_osaka",
+            "requiredPath": ["region-tokyo", "region-osaka"],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          }
+        ],
+        "allocationRows": [
+          {
+            "regionId": "region-japan",
+            "regionType": "country",
+            "masterCode": "00100",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kanto",
+            "regionType": "macro_area",
+            "masterCode": "00101",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-chubu",
+            "regionType": "macro_area",
+            "masterCode": "00102",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kansai",
+            "regionType": "macro_area",
+            "masterCode": "00103",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-tokyo",
+            "regionType": "prefecture",
+            "masterCode": "00051",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-kanagawa",
+            "regionType": "prefecture",
+            "masterCode": "00052",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-yamanashi",
+            "regionType": "prefecture",
+            "masterCode": "00053",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-nagano",
+            "regionType": "prefecture",
+            "masterCode": "00054",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-gifu",
+            "regionType": "prefecture",
+            "masterCode": "00055",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-ishikawa",
+            "regionType": "prefecture",
+            "masterCode": "00056",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-kyoto",
+            "regionType": "prefecture",
+            "masterCode": "00057",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-nara",
+            "regionType": "prefecture",
+            "masterCode": "00058",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-osaka",
+            "regionType": "prefecture",
+            "masterCode": "00059",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-hyogo",
+            "regionType": "prefecture",
+            "masterCode": "00060",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-tokyo",
+            "regionType": "travel_region",
+            "masterCode": "00110",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-shinjuku",
+            "regionType": "district",
+            "masterCode": "01001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-shibuya-harajuku",
+            "regionType": "district",
+            "masterCode": "01002",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-asakusa-ueno",
+            "regionType": "district",
+            "masterCode": "01003",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-central-tokyo",
+            "regionType": "district",
+            "masterCode": "01004",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-tokyo-station",
+            "regionType": "stay_cluster",
+            "masterCode": "02001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-shinjuku",
+            "regionType": "stay_cluster",
+            "masterCode": "02002",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-tokyo-rail",
+            "regionType": "gateway",
+            "masterCode": "04001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-haneda",
+            "regionType": "gateway",
+            "masterCode": "04002",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-odawara",
+            "regionType": "municipality",
+            "masterCode": "00111",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-hakone",
+            "regionType": "onsen_resort",
+            "masterCode": "03001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-hakone-yumoto",
+            "regionType": "gateway",
+            "masterCode": "04003",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-fuji-five-lakes",
+            "regionType": "travel_region",
+            "masterCode": "00112",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-fujikawaguchiko",
+            "regionType": "municipality",
+            "masterCode": "00113",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-kawaguchiko",
+            "regionType": "gateway",
+            "masterCode": "04004",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-nagano",
+            "regionType": "travel_region",
+            "masterCode": "00114",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-matsumoto",
+            "regionType": "travel_region",
+            "masterCode": "00115",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kamikochi",
+            "regionType": "travel_region",
+            "masterCode": "00116",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-takayama",
+            "regionType": "travel_region",
+            "masterCode": "00117",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-shirakawa-go",
+            "regionType": "travel_region",
+            "masterCode": "00118",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kanazawa",
+            "regionType": "travel_region",
+            "masterCode": "00119",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-matsumoto",
+            "regionType": "gateway",
+            "masterCode": "04005",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-takayama",
+            "regionType": "gateway",
+            "masterCode": "04006",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-kanazawa",
+            "regionType": "gateway",
+            "masterCode": "04007",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kyoto",
+            "regionType": "travel_region",
+            "masterCode": "00120",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-higashiyama",
+            "regionType": "district",
+            "masterCode": "01005",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-arashiyama",
+            "regionType": "district",
+            "masterCode": "01006",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-kyoto-station",
+            "regionType": "stay_cluster",
+            "masterCode": "02003",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-kyoto-rail",
+            "regionType": "gateway",
+            "masterCode": "04008",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-nara",
+            "regionType": "travel_region",
+            "masterCode": "00121",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-osaka",
+            "regionType": "travel_region",
+            "masterCode": "00122",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-namba-dotonbori",
+            "regionType": "district",
+            "masterCode": "01007",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-umeda",
+            "regionType": "stay_cluster",
+            "masterCode": "02004",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-osaka-rail",
+            "regionType": "gateway",
+            "masterCode": "04009",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kobe",
+            "regionType": "travel_region",
+            "masterCode": "00123",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-kobe-waterfront",
+            "regionType": "district",
+            "masterCode": "01008",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          }
+        ],
+        "publishedEqualsRuntime": true,
+        "latestDevelopBaselineGraphEqual": true,
+        "corridorDefinitionsUnchanged": true,
+        "evidenceAndSourcePolicyUnchanged": true,
+        "sourceRuntimeDbLockDiffEmpty": true,
+        "provenance": {
+          "rawRegistryPath": "src/shared/data/master-code-registry.v1.json",
+          "registryBlobAtBaseline": "8e4f582c1512cebc2c50bf0934d3e2da598df509",
+          "registryBlobAtDevelop": "8e4f582c1512cebc2c50bf0934d3e2da598df509",
+          "registryBlobAtCandidate": "8e4f582c1512cebc2c50bf0934d3e2da598df509",
+          "registryRevision": "task-043-candidate-r1",
+          "registryGovernanceLabel": "candidate",
+          "regionGraphDataRevision": "task-041-japan-pilot-2026-09-11-r2",
+          "productionGeneratorUsesDirectRegistryResolver": true,
+          "noQaManifestAuthority": true
+        },
+        "negativeControls": [
+          {
+            "label": "null code",
+            "rejected": true
+          },
+          {
+            "label": "legacy substitute",
+            "rejected": true
+          },
+          {
+            "label": "unknown allocation",
+            "rejected": true
+          },
+          {
+            "label": "duplicate/cross-entity",
+            "rejected": true
+          },
+          {
+            "label": "deprecated allocation",
+            "rejected": true
+          },
+          {
+            "label": "superseded allocation",
+            "rejected": true
+          },
+          {
+            "label": "Region ID drift",
+            "rejected": true
+          },
+          {
+            "label": "relation semantic drift",
+            "rejected": true
+          },
+          {
+            "label": "edge prior drift",
+            "rejected": true
+          },
+          {
+            "label": "variant drift",
+            "rejected": true
+          },
+          {
+            "label": "removed corridor edge",
+            "rejected": true
+          }
+        ]
+      },
+      "commands": [
+        {
+          "label": "test:region-graph-pilot",
+          "command": "npm run test:region-graph-pilot",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-041-region-graph-pilot.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 17,
+            "pass": 17,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:05.9861369Z",
+          "finished": "2026-09-13T05:17:07.5006548Z",
+          "logSha256": "3e4b080a659c39bf3f1acb7dbe21d5d3c0708fd26fabccb69b64af076c3c612b"
+        },
+        {
+          "label": "test:region-master-code-integration",
+          "command": "npm run test:region-master-code-integration",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-045-region-master-code-integration.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:07.5239830Z",
+          "finished": "2026-09-13T05:17:09.7143201Z",
+          "logSha256": "4f4dc8dfb05c7b5456f344423d71e5f2264c4e8117763b1161bcf435fda0ba16"
+        },
+        {
+          "label": "qa:region-graph-pilot",
+          "command": "npm run qa:region-graph-pilot",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/region-graph-pilot.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:09.7336479Z",
+          "finished": "2026-09-13T05:17:11.0413498Z",
+          "logSha256": "032506acf5f3fcdae35f70ff12945c913e294fcb50c84d2b1ac2c39f032cdad6"
+        },
+        {
+          "label": "qa:region-master-code-integration",
+          "command": "npm run qa:region-master-code-integration",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/region-master-code-integration.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:11.0667312Z",
+          "finished": "2026-09-13T05:17:12.5374971Z",
+          "logSha256": "5118408f6e3f794f80e89de1d6790a22d75b37ac6914426703a2f442586afa86"
+        },
+        {
+          "label": "test:master-code-registry",
+          "command": "npm run test:master-code-registry",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-043-master-code-registry.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 15,
+            "pass": 15,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:12.5577611Z",
+          "finished": "2026-09-13T05:17:13.6406087Z",
+          "logSha256": "ee7f291c8f0bde12bc0f3070409d25fbed465c48a81bac08795bc43d84df5549"
+        },
+        {
+          "label": "qa:master-code-registry",
+          "command": "npm run qa:master-code-registry",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/master-code-registry.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:13.6573524Z",
+          "finished": "2026-09-13T05:17:14.7243979Z",
+          "logSha256": "d2782255722d6636cfeb0ffc8f4c9544ac6096157b82d4b6722ac36f9700f0b1"
+        },
+        {
+          "label": "test:planning-contracts",
+          "command": "npm run test:planning-contracts",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-036-planning-contracts.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 21,
+            "pass": 21,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:14.7473964Z",
+          "finished": "2026-09-13T05:17:15.6586424Z",
+          "logSha256": "8fa79f373663f7fd2dd3438e25ea7e3c09fd7d78ebc97e96cfdeb732e957db50"
+        },
+        {
+          "label": "test:planning-soak",
+          "command": "npm run test:planning-soak",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-037-planning-contract-soak.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:15.6781847Z",
+          "finished": "2026-09-13T05:17:17.2799452Z",
+          "logSha256": "a690c171d611d9bdf51d90461eda6675b608257349c6fadf70b8ae7feaaedc96"
+        },
+        {
+          "label": "qa:planning-soak",
+          "command": "npm run qa:planning-soak",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/planning-contract-fuzz.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:17.2959868Z",
+          "finished": "2026-09-13T05:17:18.7020637Z",
+          "logSha256": "d045cfc521d8214e8db7c986b78abda9ca1d4286b14a3a11627366392659a30b"
+        },
+        {
+          "label": "test:routing",
+          "command": "npm run test:routing",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-022-route-contract.test.mjs tests/task-022-ekiworld-routing.test.mjs tests/task-022-routing-boundary.test.mjs tests/task-023-planner-route-integration.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 28,
+            "pass": 28,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:18.7200490Z",
+          "finished": "2026-09-13T05:17:22.2903440Z",
+          "logSha256": "126b91536af5b421908583d23af108d23f00f91f544a3812ed7d493d6f7f55da"
+        },
+        {
+          "label": "trip-engine-regression",
+          "command": "node --import ./tests/register-route-ts.mjs --test tests/wbs-4-17-trip-contract.test.mjs tests/wbs-4-21-rule-feasibility.test.mjs tests/task-048-trip-persistence-model.test.mjs tests/task-049-trip-library-api.test.mjs tests/task-046-preference-contract.test.mjs tests/browser-trip-save.test.mjs tests/trip-preparation.test.mjs",
+          "canonicalScript": null,
+          "exitCode": 0,
+          "counts": {
+            "tests": 839,
+            "pass": 839,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:22.3247875Z",
+          "finished": "2026-09-13T05:17:28.2626127Z",
+          "logSha256": "5bdf2004499d576e517744286957ae7da1ea472bb65ad059ea400ec6669d9e13"
+        },
+        {
+          "label": "full-repository",
+          "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\"",
+          "canonicalScript": null,
+          "exitCode": 0,
+          "counts": {
+            "tests": 2482,
+            "pass": 2482,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:28.2833769Z",
+          "finished": "2026-09-13T05:18:33.6811962Z",
+          "logSha256": "e36847733a14820d7e3b6229601c2ebfe304fded9cd3cb89a3ea4e18c1653ed2"
+        },
+        {
+          "label": "lint",
+          "command": "npm run lint",
+          "canonicalScript": "eslint .",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:18:33.7156315Z",
+          "finished": "2026-09-13T05:19:37.5848937Z",
+          "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762"
+        },
+        {
+          "label": "typecheck",
+          "command": "npm run typecheck",
+          "canonicalScript": "next typegen && tsc --noEmit",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:19:37.5945506Z",
+          "finished": "2026-09-13T05:20:04.7366424Z",
+          "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+        },
+        {
+          "label": "build",
+          "command": "npm run build",
+          "canonicalScript": "next build",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:20:04.7500085Z",
+          "finished": "2026-09-13T05:21:02.9412099Z",
+          "logSha256": "fb9f1df66eec97fd724b2de8393026c40e34b939731514480e06732511450326"
+        },
+        {
+          "label": "deploy:validate:local",
+          "command": "npm run deploy:validate:local",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:21:02.9577620Z",
+          "finished": "2026-09-13T05:21:03.8242590Z",
+          "logSha256": "039c216b4d122a525ffd5bc3100b615a16bd4f121afb7039d4d3c0e1d1f910a0"
+        },
+        {
+          "label": "deploy:build:local",
+          "command": "npm run deploy:build:local",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/deploy/build-artifact.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:21:03.8440442Z",
+          "finished": "2026-09-13T05:21:43.9748052Z",
+          "logSha256": "77c0ee4fa882fc33de7d3e889e7d13b831b8fdd0d8d8893cc96ea20ca7a64b35"
+        },
+        {
+          "label": "deploy:verify-artifact",
+          "command": "npm run deploy:verify-artifact",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/deploy/verify-artifact.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:21:43.9944112Z",
+          "finished": "2026-09-13T05:21:46.1830913Z",
+          "logSha256": "bb626467e88b6566b46f34646d6c3062d2cb6936051708cebeee0e6c2569d5a2"
+        }
+      ],
+      "planningSoak": {
+        "totalCases": 4000,
+        "sequenceDigest": "df528cbfbd5b96c61f098d4afdb9b1069d4f98d4f62fda552293e43924f294ae",
+        "deterministicRepeat": true,
+        "unexpectedAccepts": 0,
+        "unexpectedThrows": 0,
+        "unsafeIssues": 0,
+        "scaleChecks": 9,
+        "failed": false
+      },
+      "protectedInputs": {
+        "fileCount": 13,
+        "byteIdentical": true,
+        "beforeSha256": {
+          "docs/project/WBS-TravelAssist.md": "D0D7D2BF704C1EBFEBAF4A2ED82962FF0418E7B1DDF2F1D93CF91C91DFF40F53",
+          "docs/qa/TASK-041/graph-validation.json": "6BD7161EB9BD9C65E006783FB1BFB6CABF2748C8A57B50D4F8E26F4D7204F4A6",
+          "docs/qa/TASK-041/master-code-audit.json": "1495E2C60699E7B59C1838EFE37F10FA8C72D81C01DFBF09976AD60E50348744",
+          "docs/qa/TASK-041/pilot-report.md": "E931A6FA150421248F4CB12E8C40D5D2FD0690FEA689167B7F96BD3A931338AE",
+          "docs/qa/TASK-041/region-nodes.json": "8BE5EC11415B92EB71AEB340E5C8DAC844436C0D2C10C3A42B2F286E3DFBDBB2",
+          "docs/qa/TASK-045/region-master-code-integration-report.md": "0BBEAEF8CED7836DB6951C4E8100C27DAC1E3EFAA9953AF38208FE0B3BD1DAC5",
+          "docs/qa/TASK-045/region-master-code-integration.json": "2933FB2B957E43B913738532BE2FAE1EEFF799BED4339FFE9842139E91DD085F",
+          "docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md": "A214B11663F91E31AD60DD787779632534E4581036EE16E14469A29FFB007827",
+          "package.json": "B69EE89E34C879065ECE94CF990DAC039BAC48AAAC7AB80711D5DE6105F76E11",
+          "tests/task-041-region-graph-pilot.test.mjs": "93211E267099C4C2116FDC1EF0143624B3E5ED666A16D735A5C9C3C8AA154C0C",
+          "tests/task-045-region-master-code-integration.test.mjs": "E82C9435442CA742B0162B09659715F4E202D84DAEDE23665F23538DE8A1C09E",
+          "tools/qa/region-graph-pilot.mjs": "E400CFB575563B28FF240E944C09AD27999FA5E20C339D0D4CC9192B9F499AA9",
+          "tools/qa/region-master-code-integration.mjs": "656FC3AB6977E0029D417F6980D3D8214A6E69949452D102FF11C377ED7F99F5"
+        },
+        "afterSha256": {
+          "docs/project/WBS-TravelAssist.md": "D0D7D2BF704C1EBFEBAF4A2ED82962FF0418E7B1DDF2F1D93CF91C91DFF40F53",
+          "docs/qa/TASK-041/graph-validation.json": "6BD7161EB9BD9C65E006783FB1BFB6CABF2748C8A57B50D4F8E26F4D7204F4A6",
+          "docs/qa/TASK-041/master-code-audit.json": "1495E2C60699E7B59C1838EFE37F10FA8C72D81C01DFBF09976AD60E50348744",
+          "docs/qa/TASK-041/pilot-report.md": "E931A6FA150421248F4CB12E8C40D5D2FD0690FEA689167B7F96BD3A931338AE",
+          "docs/qa/TASK-041/region-nodes.json": "8BE5EC11415B92EB71AEB340E5C8DAC844436C0D2C10C3A42B2F286E3DFBDBB2",
+          "docs/qa/TASK-045/region-master-code-integration-report.md": "0BBEAEF8CED7836DB6951C4E8100C27DAC1E3EFAA9953AF38208FE0B3BD1DAC5",
+          "docs/qa/TASK-045/region-master-code-integration.json": "2933FB2B957E43B913738532BE2FAE1EEFF799BED4339FFE9842139E91DD085F",
+          "docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md": "A214B11663F91E31AD60DD787779632534E4581036EE16E14469A29FFB007827",
+          "package.json": "B69EE89E34C879065ECE94CF990DAC039BAC48AAAC7AB80711D5DE6105F76E11",
+          "tests/task-041-region-graph-pilot.test.mjs": "93211E267099C4C2116FDC1EF0143624B3E5ED666A16D735A5C9C3C8AA154C0C",
+          "tests/task-045-region-master-code-integration.test.mjs": "E82C9435442CA742B0162B09659715F4E202D84DAEDE23665F23538DE8A1C09E",
+          "tools/qa/region-graph-pilot.mjs": "E400CFB575563B28FF240E944C09AD27999FA5E20C339D0D4CC9192B9F499AA9",
+          "tools/qa/region-master-code-integration.mjs": "656FC3AB6977E0029D417F6980D3D8214A6E69949452D102FF11C377ED7F99F5"
+        },
+        "idempotentOutputValidations": 40,
+        "attemptedContentDrifts": 0,
+        "actualProtectedWrites": 0
+      },
+      "cleanup": {
+        "trackedWorktreeClean": true,
+        "task037GeneratedObservations": "Saved to ignored reviewer evidence then restored to review HEAD; no changes committed",
+        "taskServersStarted": false
+      },
+      "artifact": {
+        "status": "verified",
+        "files": 1871,
+        "commitSha": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+        "failures": 0
+      }
+    },
+    "integration": {
+      "headSha": "3c5dbb553715d6839838e0f49528d67c756c85c3",
+      "npmCi": {
+        "command": "npm ci",
+        "finished": "2026-09-13T05:13:41.1554857Z",
+        "exitCode": 0,
+        "logSha256": "fc941d2e1b650260f1af86e955016eb251a0b5b3c44b52168eff1edbae895bb5",
+        "vulnerabilities": 0
+      },
+      "independent": {
+        "task": "TASK-057-B",
+        "reviewedTreeHead": "3c5dbb553715d6839838e0f49528d67c756c85c3",
+        "baselineSha": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+        "developSha": "d23dedef1b6ecf9133fb544451d8b6789482213e",
+        "independentlyRecomputed": true,
+        "aTask045EvidenceUsed": false,
+        "passed": true,
+        "counts": {
+          "regionNodes": 50,
+          "regionIdsPreserved": 50,
+          "canonicalMasterCodesPopulated": 50,
+          "activeRegistryResolution": 50,
+          "relations": 53,
+          "travelEdges": 58,
+          "variants": 90,
+          "productionMasterCodeNull": 0,
+          "missingOrNonStringCodes": 0,
+          "duplicateMasterCodes": 0,
+          "unknownAllocations": 0,
+          "deprecatedInvalid": 0,
+          "supersededInvalid": 0,
+          "otherLifecycleInvalid": 0,
+          "entityMismatch": 0,
+          "legacySubstitutes": 0,
+          "nodeSemanticDiffExcludingMasterCode": 0,
+          "regionRelationSemanticDiff": 0,
+          "travelEdgeSemanticDiff": 0,
+          "travelEdgeVariantSemanticDiff": 0,
+          "allPairsReachabilityDiff": 0
+        },
+        "identities": {
+          "orderPreserved": true,
+          "baselineIdsSha256": "d1adc642db617da3afd50cf6ada59acf09b6b5aeb5e29108fcbaf934b3817a6a",
+          "candidateIdsSha256": "d1adc642db617da3afd50cf6ada59acf09b6b5aeb5e29108fcbaf934b3817a6a"
+        },
+        "semantic": {
+          "method": "Independently sorted object keys; array order retained; only node.masterCode removed",
+          "baselineTopologySha256": "8f78281330be519c7fe5cf3e6338608f2314a129f2852fdea160600612ec50df",
+          "candidateTopologySha256": "8f78281330be519c7fe5cf3e6338608f2314a129f2852fdea160600612ec50df",
+          "completeProjectionEqual": true,
+          "planningPriorsUnchanged": true,
+          "variantsAndAllTemporalFieldsUnchanged": true,
+          "allPairs": 2500,
+          "reachabilityBeforeSha256": "8caaf16d7862b2a2f311b00332f9ea9b3cbd33bd0884190cda0c8b801fd674b4",
+          "reachabilityAfterSha256": "8caaf16d7862b2a2f311b00332f9ea9b3cbd33bd0884190cda0c8b801fd674b4"
+        },
+        "corridors": [
+          {
+            "name": "tokyo_to_hakone",
+            "requiredPath": ["region-tokyo", "region-hakone"],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "alpine_chain",
+            "requiredPath": [
+              "region-tokyo",
+              "region-matsumoto",
+              "region-takayama",
+              "region-kanazawa"
+            ],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "kansai_chain",
+            "requiredPath": [
+              "region-kyoto",
+              "region-nara",
+              "region-osaka",
+              "region-kobe"
+            ],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "tokyo_to_kyoto",
+            "requiredPath": ["region-tokyo", "region-kyoto"],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          },
+          {
+            "name": "tokyo_to_osaka",
+            "requiredPath": ["region-tokyo", "region-osaka"],
+            "reachableBefore": true,
+            "reachableAfter": true,
+            "everyRequiredEdgeBefore": true,
+            "everyRequiredEdgeAfter": true
+          }
+        ],
+        "allocationRows": [
+          {
+            "regionId": "region-japan",
+            "regionType": "country",
+            "masterCode": "00100",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kanto",
+            "regionType": "macro_area",
+            "masterCode": "00101",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-chubu",
+            "regionType": "macro_area",
+            "masterCode": "00102",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kansai",
+            "regionType": "macro_area",
+            "masterCode": "00103",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-tokyo",
+            "regionType": "prefecture",
+            "masterCode": "00051",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-kanagawa",
+            "regionType": "prefecture",
+            "masterCode": "00052",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-yamanashi",
+            "regionType": "prefecture",
+            "masterCode": "00053",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-nagano",
+            "regionType": "prefecture",
+            "masterCode": "00054",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-gifu",
+            "regionType": "prefecture",
+            "masterCode": "00055",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-ishikawa",
+            "regionType": "prefecture",
+            "masterCode": "00056",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-kyoto",
+            "regionType": "prefecture",
+            "masterCode": "00057",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-nara",
+            "regionType": "prefecture",
+            "masterCode": "00058",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-osaka",
+            "regionType": "prefecture",
+            "masterCode": "00059",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "prefecture-hyogo",
+            "regionType": "prefecture",
+            "masterCode": "00060",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-tokyo",
+            "regionType": "travel_region",
+            "masterCode": "00110",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-shinjuku",
+            "regionType": "district",
+            "masterCode": "01001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-shibuya-harajuku",
+            "regionType": "district",
+            "masterCode": "01002",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-asakusa-ueno",
+            "regionType": "district",
+            "masterCode": "01003",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-central-tokyo",
+            "regionType": "district",
+            "masterCode": "01004",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-tokyo-station",
+            "regionType": "stay_cluster",
+            "masterCode": "02001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-shinjuku",
+            "regionType": "stay_cluster",
+            "masterCode": "02002",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-tokyo-rail",
+            "regionType": "gateway",
+            "masterCode": "04001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-haneda",
+            "regionType": "gateway",
+            "masterCode": "04002",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-odawara",
+            "regionType": "municipality",
+            "masterCode": "00111",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-hakone",
+            "regionType": "onsen_resort",
+            "masterCode": "03001",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-hakone-yumoto",
+            "regionType": "gateway",
+            "masterCode": "04003",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-fuji-five-lakes",
+            "regionType": "travel_region",
+            "masterCode": "00112",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-fujikawaguchiko",
+            "regionType": "municipality",
+            "masterCode": "00113",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-kawaguchiko",
+            "regionType": "gateway",
+            "masterCode": "04004",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-nagano",
+            "regionType": "travel_region",
+            "masterCode": "00114",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-matsumoto",
+            "regionType": "travel_region",
+            "masterCode": "00115",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kamikochi",
+            "regionType": "travel_region",
+            "masterCode": "00116",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-takayama",
+            "regionType": "travel_region",
+            "masterCode": "00117",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-shirakawa-go",
+            "regionType": "travel_region",
+            "masterCode": "00118",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kanazawa",
+            "regionType": "travel_region",
+            "masterCode": "00119",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-matsumoto",
+            "regionType": "gateway",
+            "masterCode": "04005",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-takayama",
+            "regionType": "gateway",
+            "masterCode": "04006",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-kanazawa",
+            "regionType": "gateway",
+            "masterCode": "04007",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kyoto",
+            "regionType": "travel_region",
+            "masterCode": "00120",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-higashiyama",
+            "regionType": "district",
+            "masterCode": "01005",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-arashiyama",
+            "regionType": "district",
+            "masterCode": "01006",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-kyoto-station",
+            "regionType": "stay_cluster",
+            "masterCode": "02003",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-kyoto-rail",
+            "regionType": "gateway",
+            "masterCode": "04008",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-nara",
+            "regionType": "travel_region",
+            "masterCode": "00121",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-osaka",
+            "regionType": "travel_region",
+            "masterCode": "00122",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-namba-dotonbori",
+            "regionType": "district",
+            "masterCode": "01007",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "stay-umeda",
+            "regionType": "stay_cluster",
+            "masterCode": "02004",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "gateway-osaka-rail",
+            "regionType": "gateway",
+            "masterCode": "04009",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "region-kobe",
+            "regionType": "travel_region",
+            "masterCode": "00123",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          },
+          {
+            "regionId": "district-kobe-waterfront",
+            "regionType": "district",
+            "masterCode": "01008",
+            "registryMatches": 1,
+            "lifecycle": "active",
+            "identityMatches": true,
+            "uniqueActiveEntityMatch": true,
+            "governedProvenance": true
+          }
+        ],
+        "publishedEqualsRuntime": true,
+        "latestDevelopBaselineGraphEqual": true,
+        "corridorDefinitionsUnchanged": true,
+        "evidenceAndSourcePolicyUnchanged": true,
+        "sourceRuntimeDbLockDiffEmpty": true,
+        "provenance": {
+          "rawRegistryPath": "src/shared/data/master-code-registry.v1.json",
+          "registryBlobAtBaseline": "8e4f582c1512cebc2c50bf0934d3e2da598df509",
+          "registryBlobAtDevelop": "8e4f582c1512cebc2c50bf0934d3e2da598df509",
+          "registryBlobAtCandidate": "8e4f582c1512cebc2c50bf0934d3e2da598df509",
+          "registryRevision": "task-043-candidate-r1",
+          "registryGovernanceLabel": "candidate",
+          "regionGraphDataRevision": "task-041-japan-pilot-2026-09-11-r2",
+          "productionGeneratorUsesDirectRegistryResolver": true,
+          "noQaManifestAuthority": true
+        },
+        "negativeControls": [
+          {
+            "label": "null code",
+            "rejected": true
+          },
+          {
+            "label": "legacy substitute",
+            "rejected": true
+          },
+          {
+            "label": "unknown allocation",
+            "rejected": true
+          },
+          {
+            "label": "duplicate/cross-entity",
+            "rejected": true
+          },
+          {
+            "label": "deprecated allocation",
+            "rejected": true
+          },
+          {
+            "label": "superseded allocation",
+            "rejected": true
+          },
+          {
+            "label": "Region ID drift",
+            "rejected": true
+          },
+          {
+            "label": "relation semantic drift",
+            "rejected": true
+          },
+          {
+            "label": "edge prior drift",
+            "rejected": true
+          },
+          {
+            "label": "variant drift",
+            "rejected": true
+          },
+          {
+            "label": "removed corridor edge",
+            "rejected": true
+          }
+        ]
+      },
+      "commands": [
+        {
+          "label": "test:region-graph-pilot",
+          "command": "npm run test:region-graph-pilot",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-041-region-graph-pilot.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 17,
+            "pass": 17,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:08.2965224Z",
+          "finished": "2026-09-13T05:17:10.2657676Z",
+          "logSha256": "3d48834bbb6d995ec0fe6896b7beba5b5c404928f2e272be112b0432bbe4b637"
+        },
+        {
+          "label": "test:region-master-code-integration",
+          "command": "npm run test:region-master-code-integration",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-045-region-master-code-integration.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:10.2940178Z",
+          "finished": "2026-09-13T05:17:12.1432645Z",
+          "logSha256": "f8870f38de7bab2bb877add8cf70fee47214028e8a3c9505c6ba488034274860"
+        },
+        {
+          "label": "qa:region-graph-pilot",
+          "command": "npm run qa:region-graph-pilot",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/region-graph-pilot.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:12.1662270Z",
+          "finished": "2026-09-13T05:17:13.4146751Z",
+          "logSha256": "3b40efd72ce3c00ae2c2142051b43bfbdd8de99cd3bde5fa408907069073f775"
+        },
+        {
+          "label": "qa:region-master-code-integration",
+          "command": "npm run qa:region-master-code-integration",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/region-master-code-integration.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:13.4345078Z",
+          "finished": "2026-09-13T05:17:14.8469056Z",
+          "logSha256": "33dd8d9a404ad203cc4de2aa840572f946e896d74378ce73732b44b141cfbea1"
+        },
+        {
+          "label": "test:master-code-registry",
+          "command": "npm run test:master-code-registry",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-043-master-code-registry.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 15,
+            "pass": 15,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:14.8644462Z",
+          "finished": "2026-09-13T05:17:15.8593786Z",
+          "logSha256": "a634610f587cf117d97a1ea589e0f18206d60580ca16a82ad946ed2f205ec77f"
+        },
+        {
+          "label": "qa:master-code-registry",
+          "command": "npm run qa:master-code-registry",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/master-code-registry.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:15.8759807Z",
+          "finished": "2026-09-13T05:17:16.7328943Z",
+          "logSha256": "7e30263efe5e34f36825a7cd8e1731d52df26687236bdfa58824866a8e376aa0"
+        },
+        {
+          "label": "test:planning-contracts",
+          "command": "npm run test:planning-contracts",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-036-planning-contracts.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 21,
+            "pass": 21,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:16.7464894Z",
+          "finished": "2026-09-13T05:17:17.6722724Z",
+          "logSha256": "7493e5d64016bccfb46a669099815c58610035667aef2c69f9183d95df7efa73"
+        },
+        {
+          "label": "test:planning-soak",
+          "command": "npm run test:planning-soak",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-037-planning-contract-soak.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:17.6907112Z",
+          "finished": "2026-09-13T05:17:19.2769597Z",
+          "logSha256": "b35d639192fd8fb66cb84d8f7671c97c2212c22162bb3d9105e5fbc1d2bbe515"
+        },
+        {
+          "label": "qa:planning-soak",
+          "command": "npm run qa:planning-soak",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/qa/planning-contract-fuzz.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:17:19.2954304Z",
+          "finished": "2026-09-13T05:17:20.8084467Z",
+          "logSha256": "e055010fee6ca0c4b5ca3ee78a696936e3900cadcd1c69d3cd7fe389169052e4"
+        },
+        {
+          "label": "test:routing",
+          "command": "npm run test:routing",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs --test tests/task-022-route-contract.test.mjs tests/task-022-ekiworld-routing.test.mjs tests/task-022-routing-boundary.test.mjs tests/task-023-planner-route-integration.test.mjs",
+          "exitCode": 0,
+          "counts": {
+            "tests": 28,
+            "pass": 28,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:20.8231897Z",
+          "finished": "2026-09-13T05:17:23.1273184Z",
+          "logSha256": "df86c3750e9aa7c4461704ee4398ec7665b8829d41133a3b3b0139bae2d5be3c"
+        },
+        {
+          "label": "trip-engine-regression",
+          "command": "node --import ./tests/register-route-ts.mjs --test tests/wbs-4-17-trip-contract.test.mjs tests/wbs-4-21-rule-feasibility.test.mjs tests/task-048-trip-persistence-model.test.mjs tests/task-049-trip-library-api.test.mjs tests/task-046-preference-contract.test.mjs tests/browser-trip-save.test.mjs tests/trip-preparation.test.mjs",
+          "canonicalScript": null,
+          "exitCode": 0,
+          "counts": {
+            "tests": 839,
+            "pass": 839,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:23.1870401Z",
+          "finished": "2026-09-13T05:17:28.2884423Z",
+          "logSha256": "4b3a9ac9209988a33f9466aaf0567923f65a7f9583dbbaa9fa2fd0040bf402c2"
+        },
+        {
+          "label": "full-repository",
+          "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\"",
+          "canonicalScript": null,
+          "exitCode": 0,
+          "counts": {
+            "tests": 2499,
+            "pass": 2499,
+            "fail": 0,
+            "skipped": 0,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "started": "2026-09-13T05:17:28.3089635Z",
+          "finished": "2026-09-13T05:18:33.6926903Z",
+          "logSha256": "e7612932162654d899409f289c20fb0e5c67d5795b80d95d4d37a6a1609500a4"
+        },
+        {
+          "label": "lint",
+          "command": "npm run lint",
+          "canonicalScript": "eslint .",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:18:33.7305569Z",
+          "finished": "2026-09-13T05:19:37.6967575Z",
+          "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762"
+        },
+        {
+          "label": "typecheck",
+          "command": "npm run typecheck",
+          "canonicalScript": "next typegen && tsc --noEmit",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:19:37.7021366Z",
+          "finished": "2026-09-13T05:20:04.9069937Z",
+          "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+        },
+        {
+          "label": "build",
+          "command": "npm run build",
+          "canonicalScript": "next build",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:20:04.9161167Z",
+          "finished": "2026-09-13T05:21:02.6772663Z",
+          "logSha256": "69b40e606587f643f7c5b1e201feba84bcc7b2e18764c3bfbc7a6be5bdace4ec"
+        },
+        {
+          "label": "deploy:validate:local",
+          "command": "npm run deploy:validate:local",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:21:02.6927923Z",
+          "finished": "2026-09-13T05:21:03.5954409Z",
+          "logSha256": "3f0b02faebc83ae67e59a62cc697d374b2b44bd02540cec5f3df68168ff079fc"
+        },
+        {
+          "label": "deploy:build:local",
+          "command": "npm run deploy:build:local",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/deploy/build-artifact.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:21:03.6136757Z",
+          "finished": "2026-09-13T05:21:43.9679757Z",
+          "logSha256": "c26597f86ce5de2d726904d5c4c7cd64a89ccc561b64b171e8dfb0de34d04d10"
+        },
+        {
+          "label": "deploy:verify-artifact",
+          "command": "npm run deploy:verify-artifact",
+          "canonicalScript": "node --import ./tests/register-route-ts.mjs tools/deploy/verify-artifact.mjs",
+          "exitCode": 0,
+          "counts": null,
+          "started": "2026-09-13T05:21:43.9898347Z",
+          "finished": "2026-09-13T05:21:46.1721940Z",
+          "logSha256": "155b03724a8c95545964e6045374332ee336df0a735ea8ee4d4cb889c8a95182"
+        }
+      ],
+      "planningSoak": {
+        "totalCases": 4000,
+        "sequenceDigest": "df528cbfbd5b96c61f098d4afdb9b1069d4f98d4f62fda552293e43924f294ae",
+        "deterministicRepeat": true,
+        "unexpectedAccepts": 0,
+        "unexpectedThrows": 0,
+        "unsafeIssues": 0,
+        "scaleChecks": 9,
+        "failed": false
+      },
+      "protectedInputs": {
+        "fileCount": 13,
+        "byteIdentical": true,
+        "beforeSha256": {
+          "docs/project/WBS-TravelAssist.md": "A2CB5751F56C84E8B98FA8B55799B7FCD1BFB8779D5A74EEB228FC9053D81C6D",
+          "docs/qa/TASK-041/graph-validation.json": "6BD7161EB9BD9C65E006783FB1BFB6CABF2748C8A57B50D4F8E26F4D7204F4A6",
+          "docs/qa/TASK-041/master-code-audit.json": "1495E2C60699E7B59C1838EFE37F10FA8C72D81C01DFBF09976AD60E50348744",
+          "docs/qa/TASK-041/pilot-report.md": "E931A6FA150421248F4CB12E8C40D5D2FD0690FEA689167B7F96BD3A931338AE",
+          "docs/qa/TASK-041/region-nodes.json": "8BE5EC11415B92EB71AEB340E5C8DAC844436C0D2C10C3A42B2F286E3DFBDBB2",
+          "docs/qa/TASK-045/region-master-code-integration-report.md": "0BBEAEF8CED7836DB6951C4E8100C27DAC1E3EFAA9953AF38208FE0B3BD1DAC5",
+          "docs/qa/TASK-045/region-master-code-integration.json": "2933FB2B957E43B913738532BE2FAE1EEFF799BED4339FFE9842139E91DD085F",
+          "docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md": "A214B11663F91E31AD60DD787779632534E4581036EE16E14469A29FFB007827",
+          "package.json": "86A1883920E777E8F25CDCF370A28F624629D4214C99D070612A5F0F6D18DC3A",
+          "tests/task-041-region-graph-pilot.test.mjs": "93211E267099C4C2116FDC1EF0143624B3E5ED666A16D735A5C9C3C8AA154C0C",
+          "tests/task-045-region-master-code-integration.test.mjs": "E82C9435442CA742B0162B09659715F4E202D84DAEDE23665F23538DE8A1C09E",
+          "tools/qa/region-graph-pilot.mjs": "E400CFB575563B28FF240E944C09AD27999FA5E20C339D0D4CC9192B9F499AA9",
+          "tools/qa/region-master-code-integration.mjs": "656FC3AB6977E0029D417F6980D3D8214A6E69949452D102FF11C377ED7F99F5"
+        },
+        "afterSha256": {
+          "docs/project/WBS-TravelAssist.md": "A2CB5751F56C84E8B98FA8B55799B7FCD1BFB8779D5A74EEB228FC9053D81C6D",
+          "docs/qa/TASK-041/graph-validation.json": "6BD7161EB9BD9C65E006783FB1BFB6CABF2748C8A57B50D4F8E26F4D7204F4A6",
+          "docs/qa/TASK-041/master-code-audit.json": "1495E2C60699E7B59C1838EFE37F10FA8C72D81C01DFBF09976AD60E50348744",
+          "docs/qa/TASK-041/pilot-report.md": "E931A6FA150421248F4CB12E8C40D5D2FD0690FEA689167B7F96BD3A931338AE",
+          "docs/qa/TASK-041/region-nodes.json": "8BE5EC11415B92EB71AEB340E5C8DAC844436C0D2C10C3A42B2F286E3DFBDBB2",
+          "docs/qa/TASK-045/region-master-code-integration-report.md": "0BBEAEF8CED7836DB6951C4E8100C27DAC1E3EFAA9953AF38208FE0B3BD1DAC5",
+          "docs/qa/TASK-045/region-master-code-integration.json": "2933FB2B957E43B913738532BE2FAE1EEFF799BED4339FFE9842139E91DD085F",
+          "docs/tasks/RESULT-TASK-045-a-task-041-region-master-code-integration.md": "A214B11663F91E31AD60DD787779632534E4581036EE16E14469A29FFB007827",
+          "package.json": "86A1883920E777E8F25CDCF370A28F624629D4214C99D070612A5F0F6D18DC3A",
+          "tests/task-041-region-graph-pilot.test.mjs": "93211E267099C4C2116FDC1EF0143624B3E5ED666A16D735A5C9C3C8AA154C0C",
+          "tests/task-045-region-master-code-integration.test.mjs": "E82C9435442CA742B0162B09659715F4E202D84DAEDE23665F23538DE8A1C09E",
+          "tools/qa/region-graph-pilot.mjs": "E400CFB575563B28FF240E944C09AD27999FA5E20C339D0D4CC9192B9F499AA9",
+          "tools/qa/region-master-code-integration.mjs": "656FC3AB6977E0029D417F6980D3D8214A6E69949452D102FF11C377ED7F99F5"
+        },
+        "idempotentOutputValidations": 40,
+        "attemptedContentDrifts": 0,
+        "actualProtectedWrites": 0
+      },
+      "cleanup": {
+        "trackedWorktreeClean": true,
+        "task037GeneratedObservations": "Saved to ignored reviewer evidence then restored to review HEAD; no changes committed",
+        "taskServersStarted": false
+      },
+      "artifact": {
+        "status": "verified",
+        "files": 1871,
+        "commitSha": "3c5dbb553715d6839838e0f49528d67c756c85c3",
+        "failures": 0
+      }
+    }
+  },
+  "scopeAudit": {
+    "unrelatedChanges": 0,
+    "regionGraphReplaced": false,
+    "regionIdsRetaxonomized": false,
+    "registryDataChanged": false,
+    "productionSrcChanged": false,
+    "dbMigrationChanged": false,
+    "packageChange": "Only two TASK-045 QA/test aliases; dependencies and lockfile unchanged",
+    "wbsChangeInA": "Only TASK-045-A tracking and 4.48 status/dependency; Owner remains A",
+    "bChangedAProtectedFiles": false,
+    "unchangedSemantics": [
+      "all non-masterCode node fields",
+      "53 RegionRelations",
+      "58 TravelEdges",
+      "90 TravelEdgeVariants",
+      "graph ordering",
+      "all planning priors and temporal fields",
+      "corridor definitions and every required edge",
+      "evidence source policy",
+      "Planning Prior / Live Route Fact contract and implementation boundary"
+    ]
+  },
+  "github": {
+    "databaseId": 34728276406,
+    "event": "pull_request",
+    "headSha": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34728276406",
+    "workflow": ".github/workflows/quality-gate.yml",
+    "checkoutMeaning": "pull_request event merge revision as defined by actions/checkout; check-run head is the exact reviewed A head. Latest develop compatibility is additionally established by the local merge, not inferred from this older CI run."
+  },
+  "reviewHarness": {
+    "independentScript": "docs/qa/TASK-057/verify-candidate.mjs",
+    "independentScriptSha256": "8b5d1a2ebd205fe0bde1fbd5a30ca620fd4b290a1aec096a19f75902a86394c6",
+    "aTask045JsonOrHashConstantsUsedForVerdict": false,
+    "negativeControlsPerSnapshot": 11,
+    "outputGuard": "docs/qa/TASK-057/preserve-review-inputs.mjs",
+    "outputGuardSha256": "c9ce79a61151362687e686544038b6c5be9328d531448584eb96ee54082258cc",
+    "meaning": "Canonical commands execute unchanged. Intercept only writes to PR-protected paths: recomputed content must equal the existing input (normalizing checkout CRLF) or fail. Identical content is verified without a write. A source/test files are not patched."
+  },
+  "reviewArtifactChecks": {
+    "scopedAuditorLint": {
+      "finished": "2026-09-13T05:27:13.0298289Z",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidateCommitDiffCheck": 0,
+    "integrationCommitDiffCheck": 0,
+    "scopedFormat": {
+      "exitCode": 0,
+      "finished": "2026-09-13T05:35:16.9541746Z",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    "bDiffCheck": {
+      "exitCode": 0,
+      "finished": "2026-09-13T05:35:16.9541746Z"
+    }
+  },
+  "freshness": {
+    "checkedAt": "2026-09-13T05:27:58.938Z",
+    "currentHeadConfirmed": "fb6f2e44d6207a241a84410bc2fd588fcc378c18",
+    "currentDevelopConfirmed": "d23dedef1b6ecf9133fb544451d8b6789482213e",
+    "changedFileListUnchanged": true,
+    "invalidatedImmediatelyByAnyNewAHead": true,
+    "requiredAfterAdvance": "Re-fetch changed-file protection; rerun independent invariants and all focused acceptance gates, applicable regressions/compatibility, and exact-head CI before any new ACCEPT."
+  },
+  "boundaries": {
+    "wbs448Owner": "A",
+    "bRole": "Independent Review / QA Support",
+    "wbs448CompletedByB": false,
+    "aPrMergedByB": false,
+    "aIssue349ClosedByB": false,
+    "task056Executed": false,
+    "candidatePipelineStarted": false,
+    "poiScoringStarted": false,
+    "aiStarted": false,
+    "engine422To424Started": false,
+    "otherTaskStarted": false,
+    "productionStagingMutation": false
+  }
+}
