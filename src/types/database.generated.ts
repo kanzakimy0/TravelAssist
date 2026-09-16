@@ -169,6 +169,121 @@ export type Database = {
         };
         Relationships: [];
       };
+      engine_apply_audits: {
+        Row: {
+          before_plan_revision: number;
+          before_trip_revision: number;
+          context_fingerprint: string;
+          created_at: string;
+          operation_refs: Json;
+          outcome: string;
+          preview_hash: string;
+          receipt_id: string;
+          resulting_plan_revision: number;
+          resulting_trip_revision: number;
+        };
+        Insert: {
+          before_plan_revision: number;
+          before_trip_revision: number;
+          context_fingerprint: string;
+          created_at?: string;
+          operation_refs: Json;
+          outcome?: string;
+          preview_hash: string;
+          receipt_id: string;
+          resulting_plan_revision: number;
+          resulting_trip_revision: number;
+        };
+        Update: {
+          before_plan_revision?: number;
+          before_trip_revision?: number;
+          context_fingerprint?: string;
+          created_at?: string;
+          operation_refs?: Json;
+          outcome?: string;
+          preview_hash?: string;
+          receipt_id?: string;
+          resulting_plan_revision?: number;
+          resulting_trip_revision?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_audits_receipt_fkey";
+            columns: ["receipt_id", "outcome"];
+            isOneToOne: false;
+            referencedRelation: "engine_apply_receipts";
+            referencedColumns: ["id", "outcome"];
+          },
+        ];
+      };
+      engine_apply_outbox: {
+        Row: {
+          created_at: string;
+          event_type: string;
+          receipt_id: string;
+          status: string;
+        };
+        Insert: {
+          created_at?: string;
+          event_type?: string;
+          receipt_id: string;
+          status?: string;
+        };
+        Update: {
+          created_at?: string;
+          event_type?: string;
+          receipt_id?: string;
+          status?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_outbox_receipt_id_fkey";
+            columns: ["receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_audits";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
+      engine_apply_receipts: {
+        Row: {
+          actor_user_id: string;
+          change_set_id: string;
+          created_at: string;
+          id: string;
+          idempotency_key: string;
+          outcome: string;
+          payload_hash: string;
+          plan_id: string;
+          result: Json;
+          trip_id: string;
+        };
+        Insert: {
+          actor_user_id: string;
+          change_set_id: string;
+          created_at?: string;
+          id?: string;
+          idempotency_key: string;
+          outcome: string;
+          payload_hash: string;
+          plan_id: string;
+          result: Json;
+          trip_id: string;
+        };
+        Update: {
+          actor_user_id?: string;
+          change_set_id?: string;
+          created_at?: string;
+          id?: string;
+          idempotency_key?: string;
+          outcome?: string;
+          payload_hash?: string;
+          plan_id?: string;
+          result?: Json;
+          trip_id?: string;
+        };
+        Relationships: [];
+      };
       itinerary_items: {
         Row: {
           assessment: string;
