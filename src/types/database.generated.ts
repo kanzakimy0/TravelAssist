@@ -10,6 +10,126 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      companion_group_members: {
+        Row: {
+          companion_id: string;
+          created_at: string;
+          group_id: string;
+          owner_user_id: string;
+          sort_order: number;
+        };
+        Insert: {
+          companion_id: string;
+          created_at?: string;
+          group_id: string;
+          owner_user_id: string;
+          sort_order: number;
+        };
+        Update: {
+          companion_id?: string;
+          created_at?: string;
+          group_id?: string;
+          owner_user_id?: string;
+          sort_order?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "companion_group_members_companion_owner_fk";
+            columns: ["companion_id", "owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "companions";
+            referencedColumns: ["id", "owner_user_id"];
+          },
+          {
+            foreignKeyName: "companion_group_members_group_owner_fk";
+            columns: ["group_id", "owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "companion_groups";
+            referencedColumns: ["id", "owner_user_id"];
+          },
+        ];
+      };
+      companion_groups: {
+        Row: {
+          created_at: string;
+          description: string | null;
+          id: string;
+          includes_owner: boolean;
+          name: string;
+          owner_user_id: string;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          description?: string | null;
+          id?: string;
+          includes_owner?: boolean;
+          name: string;
+          owner_user_id: string;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          description?: string | null;
+          id?: string;
+          includes_owner?: boolean;
+          name?: string;
+          owner_user_id?: string;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      companions: {
+        Row: {
+          age_group_fallback: string | null;
+          avatar_path: string | null;
+          birth_date: string | null;
+          created_at: string;
+          display_name: string;
+          gender_code: string | null;
+          id: string;
+          owner_user_id: string;
+          relationship_code: string | null;
+          relationship_label: string | null;
+          revision: number;
+          travel_profile: Json;
+          updated_at: string;
+        };
+        Insert: {
+          age_group_fallback?: string | null;
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name: string;
+          gender_code?: string | null;
+          id?: string;
+          owner_user_id: string;
+          relationship_code?: string | null;
+          relationship_label?: string | null;
+          revision?: number;
+          travel_profile?: Json;
+          updated_at?: string;
+        };
+        Update: {
+          age_group_fallback?: string | null;
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name?: string;
+          gender_code?: string | null;
+          id?: string;
+          owner_user_id?: string;
+          relationship_code?: string | null;
+          relationship_label?: string | null;
+          revision?: number;
+          travel_profile?: Json;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       emergency_contacts: {
         Row: {
           country_code: string | null;
@@ -207,6 +327,30 @@ export type Database = {
         };
         Relationships: [];
       };
+      travel_preferences: {
+        Row: {
+          created_at: string;
+          owner_user_id: string;
+          payload: Json;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          owner_user_id: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          owner_user_id?: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       trip_days: {
         Row: {
           created_at: string;
@@ -244,6 +388,66 @@ export type Database = {
             referencedColumns: ["id"];
           },
         ];
+      };
+      trip_library_records: {
+        Row: {
+          canonical_trip_id: string | null;
+          created_at: string;
+          creation_intent_hash: string | null;
+          creation_key: string;
+          draft_facts: Json;
+          frozen_at: string | null;
+          id: string;
+          library_state: string;
+          owner_user_id: string;
+          party_snapshot: Json;
+          plan_snapshot: Json | null;
+          preference_override_patch: Json;
+          preference_snapshot: Json;
+          preference_source_revision: number;
+          storage_revision: number;
+          updated_at: string;
+          wizard_progress: Json;
+        };
+        Insert: {
+          canonical_trip_id?: string | null;
+          created_at?: string;
+          creation_intent_hash?: string | null;
+          creation_key: string;
+          draft_facts: Json;
+          frozen_at?: string | null;
+          id?: string;
+          library_state?: string;
+          owner_user_id: string;
+          party_snapshot: Json;
+          plan_snapshot?: Json | null;
+          preference_override_patch?: Json;
+          preference_snapshot: Json;
+          preference_source_revision: number;
+          storage_revision?: number;
+          updated_at?: string;
+          wizard_progress: Json;
+        };
+        Update: {
+          canonical_trip_id?: string | null;
+          created_at?: string;
+          creation_intent_hash?: string | null;
+          creation_key?: string;
+          draft_facts?: Json;
+          frozen_at?: string | null;
+          id?: string;
+          library_state?: string;
+          owner_user_id?: string;
+          party_snapshot?: Json;
+          plan_snapshot?: Json | null;
+          preference_override_patch?: Json;
+          preference_snapshot?: Json;
+          preference_source_revision?: number;
+          storage_revision?: number;
+          updated_at?: string;
+          wizard_progress?: Json;
+        };
+        Relationships: [];
       };
       trip_plans: {
         Row: {
@@ -341,7 +545,36 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      is_companion_travel_profile_v1: {
+        Args: { payload: Json };
+        Returns: boolean;
+      };
+      is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
+      is_trip_library_envelope_v1: {
+        Args: { max_bytes: number; payload: Json; version_key: string };
+        Returns: boolean;
+      };
+      is_trip_party_snapshot_v1: { Args: { payload: Json }; Returns: boolean };
+      mutate_companion_group_v1: {
+        Args: {
+          p_action: string;
+          p_expected_revision?: number;
+          p_id?: string;
+          p_includes_owner?: boolean;
+          p_member_ids?: string[];
+          p_name?: string;
+        };
+        Returns: Json;
+      };
+      mutate_companion_v1: {
+        Args: {
+          p_action: string;
+          p_expected_revision?: number;
+          p_id?: string;
+          p_input?: Json;
+        };
+        Returns: Json;
+      };
     };
     Enums: {
       [_ in never]: never;

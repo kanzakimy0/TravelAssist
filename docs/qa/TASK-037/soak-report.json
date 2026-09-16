@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0",
+  "seeds": [99536951, 12648430, 305419896, 2654435769, 3737844653],
+  "casesPerSeed": 800,
+  "totalCases": 4000,
+  "mutationFamilyCount": 38,
+  "parserCount": 15,
+  "expectedRejects": 4000,
+  "unexpectedAccepts": 0,
+  "unexpectedThrows": 0,
+  "unsafeIssues": 0,
+  "fixtureMutationDetected": false,
+  "sequenceDigest": "df528cbfbd5b96c61f098d4afdb9b1069d4f98d4f62fda552293e43924f294ae",
+  "familyCounts": {
+    "unknown_field": 102,
+    "missing_field": 113,
+    "wrong_contract_version": 101,
+    "wrong_enum": 101,
+    "nan": 106,
+    "infinity": 88,
+    "negative_number": 107,
+    "upper_bound_overflow": 115,
+    "wrong_nullable_semantics": 105,
+    "empty_string": 103,
+    "oversized_string": 92,
+    "invalid_id_whitespace": 112,
+    "invalid_id_control_character": 85,
+    "duplicate_ids": 102,
+    "dangling_candidate_ref": 116,
+    "dangling_region_ref": 92,
+    "cross_poi_feature_identity": 116,
+    "cross_poi_visit_profile_identity": 108,
+    "contains_cycle": 121,
+    "reverse_symmetric_relation_duplicate": 87,
+    "range_ordering_violation": 109,
+    "invalid_visit_duration_order": 103,
+    "invalid_score_over_99": 118,
+    "invalid_coverage": 102,
+    "invalid_confidence": 91,
+    "ai_run_mismatch": 87,
+    "ai_unknown_local_id": 115,
+    "ai_non_candidate_selection": 95,
+    "ai_status_payload_conflict": 103,
+    "ai_forbidden_operation": 101,
+    "planning_prior_exact_timetable": 107,
+    "expired_fact_use": 123,
+    "protected_replan_overlap": 104,
+    "forbidden_raw_provider_trace_field": 107,
+    "compact_neutral_must_be_omitted": 112,
+    "feasibility_status_issue_mismatch": 129,
+    "fact_invalid_source_enum": 115,
+    "effective_preference_missing_dimension": 107
+  },
+  "parserCounts": {
+    "parsePoiFeatureSetV1": 1019,
+    "parsePoiVisitProfileV1": 505,
+    "parseCandidateRunV1": 218,
+    "parseTravelRegionGraphV1": 409,
+    "parsePoiPlanningProjectionV1": 224,
+    "parsePlanningScoreSetV1": 220,
+    "parseAiDecisionResponseV1": 400,
+    "parseAiCompactContextV1": 208,
+    "parseFactUsabilityV1": 123,
+    "parseReplanProposalV1": 104,
+    "parseDecisionRunV1": 107,
+    "parseSparsePreferenceV1": 112,
+    "parseFeasibilityResultV1": 129,
+    "parsePlanningFactRefV1": 115,
+    "parseEffectivePreferenceV1": 107
+  },
+  "runs": [
+    {
+      "seed": 99536951,
+      "cases": 800,
+      "elapsedMilliseconds": 18.83
+    },
+    {
+      "seed": 12648430,
+      "cases": 800,
+      "elapsedMilliseconds": 13.729
+    },
+    {
+      "seed": 305419896,
+      "cases": 800,
+      "elapsedMilliseconds": 13.588
+    },
+    {
+      "seed": 2654435769,
+      "cases": 800,
+      "elapsedMilliseconds": 14.036
+    },
+    {
+      "seed": 3737844653,
+      "cases": 800,
+      "elapsedMilliseconds": 13.285
+    }
+  ],
+  "elapsedMilliseconds": 75.084,
+  "repeatSequenceDigest": "df528cbfbd5b96c61f098d4afdb9b1069d4f98d4f62fda552293e43924f294ae",
+  "deterministicRepeat": true,
+  "repeatFixtureMutationDetected": false,
+  "jsonRoundTrip": {
+    "results": [
+      {
+        "name": "poiFeature",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 494
+      },
+      {
+        "name": "effectivePreference",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 428
+      },
+      {
+        "name": "sparsePreference",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 45
+      },
+      {
+        "name": "poiProjection",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 1155
+      },
+      {
+        "name": "regionGraph",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 2201
+      },
+      {
+        "name": "candidateRun",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 1048
+      },
+      {
+        "name": "aiCompactContext",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 1060
+      },
+      {
+        "name": "planningFact",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 417
+      },
+      {
+        "name": "expiredFactUsability",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 202
+      },
+      {
+        "name": "replanProposal",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 692
+      },
+      {
+        "name": "decisionTrace",
+        "success": true,
+        "exactRoundTrip": true,
+        "serializedBytes": 1624
+      }
+    ],
+    "semantics": {
+      "featureZeroPreserved": true,
+      "featureNullPreserved": true,
+      "effectiveNeutralFivePreserved": true,
+      "sparseNeutralOmitted": true,
+      "localIdsPreserved": true,
+      "expiredMetadataPreserved": true,
+      "revisionNumberPreserved": true,
+      "nullOptionalPreserved": true
+    }
+  }
+}

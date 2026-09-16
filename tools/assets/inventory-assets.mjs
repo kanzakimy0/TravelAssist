@@ -13,6 +13,11 @@ import {
   isMain,
 } from "./asset-utils.mjs";
 export function inventory() {
+  const manifestPaths = new Set(
+    json(CATALOG + "asset-manifest.v1.json")
+      .assets.filter((asset) => asset.runtime.kind === "local")
+      .map((asset) => "public" + asset.runtime.path),
+  );
   const aiEvidence = new Map();
   const generatedManifest =
     "docs/assets/personal-center-generated-images-20260905.manifest.json";
@@ -42,6 +47,7 @@ export function inventory() {
   ].filter(
     (p) =>
       IMAGE_EXT.has(extname(p).toLowerCase()) &&
+      !manifestPaths.has(p) &&
       !p.startsWith("public/media/shared/") &&
       !p.startsWith("public/media/destinations/") &&
       !p.startsWith("public/media/generated/") &&

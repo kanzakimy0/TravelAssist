@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { GuardedLink } from "@/features/personal-center/components/guarded-link";
 import {
   PersonalIcon,
   type PersonalIconName,
 } from "@/features/personal-center/components/personal-icon";
+
+import {
+  deleteCurrentAccount,
+  accountDeletionMessages,
+} from "../account-deletion/client";
+import { leaveDeletedAccount } from "../../lib/account-deletion/finish";
 
 import styles from "./profile-account.module.css";
 
@@ -305,26 +311,11 @@ function PrivacyView({ announce }: { announce: (message: string) => void }) {
         <SectionTitle
           icon="arrow"
           title="导出我的数据"
-          description="申请导出您的 TravelAssist 数据副本。"
+          description="数据导出尚未提供，请在删除前自行保留需要的信息。"
         />
-        <p>生成包含个人资料、行程、收藏等内容的数据文件。</p>
-        <DemoButton announce={() => announce("Mock 数据导出申请已记录。")}>
-          申请导出
-        </DemoButton>
-        <div className={styles.exportStates}>
-          <span>导出状态示例</span>
-          {[
-            ["neutral", "未申请", "尚未提交数据导出申请"],
-            ["pending", "生成中", "数据正在整理中，请稍候…"],
-            ["ready", "可下载", "数据已生成，可在 7 天内下载"],
-          ].map(([tone, title, description]) => (
-            <div key={title}>
-              <i data-tone={tone} />
-              <strong>{title}</strong>
-              <small>{description}</small>
-            </div>
-          ))}
-        </div>
+        <button type="button" className={styles.secondaryButton} disabled>
+          数据导出暂不可用
+        </button>
       </section>
 
       <section
@@ -462,14 +453,28 @@ function BookingSyncView({
   );
 }
 
-function DeleteAccountView({
-  announce,
-}: {
-  announce: (message: string) => void;
-}) {
+function DeleteAccountView() {
   const [acknowledged, setAcknowledged] = useState(false);
   const [confirmation, setConfirmation] = useState("");
-  const canSubmit = acknowledged && confirmation.trim() === "删除账户";
+  const [phase, setPhase] = useState<"idle" | "deleting" | "failed">("idle");
+  const [error, setError] = useState("");
+  const submitting = useRef(false);
+  const canSubmit =
+    acknowledged && confirmation === "删除账户" && phase !== "deleting";
+  async function submit() {
+    if (!canSubmit || submitting.current) return;
+    submitting.current = true;
+    setPhase("deleting");
+    setError("");
+    const result = await deleteCurrentAccount();
+    if (result.ok) {
+      await leaveDeletedAccount();
+      return;
+    }
+    setError(accountDeletionMessages[result.code]);
+    setPhase("failed");
+    submitting.current = false;
+  }
 
   return (
     <div className={[styles.subpageBody, styles.deleteView].join(" ")}>
@@ -478,7 +483,7 @@ function DeleteAccountView({
         <div>
           <h2>删除 TravelAssist 账户将永久删除以下所有数据</h2>
           <p>
-            个人资料、旅行偏好、同行人、已保存行程、收藏、预订映射记录以及账户连接都会被永久删除，且无法恢复。
+            登录身份、个人资料、显示设置、紧急联系人、旅行偏好、同行人及组合、旅行草稿、已保存行程和历史都会被永久删除，且无法恢复。
           </p>
           <div>
             <strong>但不会自动取消您在外部平台的预订</strong>
@@ -494,44 +499,32 @@ function DeleteAccountView({
       >
         <SectionTitle
           icon="calendar"
-          title="您还有 2 次未来旅行 / 6 个有效外部预订"
-          description="删除账户前，请确认以下行程与预订。"
+          title="请先核对您的旅行与外部预订"
+          description="此处不提供外部订单的数量或状态，请到相应平台自行确认和处理。"
         />
         <GuardedLink href="/personal-center/trips">
-          查看我的预订 <PersonalIcon name="chevronRight" />
+          查看我的旅行 <PersonalIcon name="chevronRight" />
         </GuardedLink>
-        <div className={styles.reservationSummary}>
-          {[
-            ["京都春日漫游", "2025年4月3日 – 4月8日"],
-            ["Booking.com", "酒店 ×2"],
-            ["Klook", "门票 ×3"],
-            ["TableCheck", "餐厅 ×1"],
-          ].map(([title, meta]) => (
-            <span key={title}>
-              <strong>{title}</strong>
-              <small>{meta}</small>
-            </span>
-          ))}
-        </div>
       </section>
 
       <section className={[styles.subpageCard, styles.deleteExport].join(" ")}>
         <SectionTitle
           icon="sync"
           title="导出我的数据"
-          description="删除账户前，可先导出个人资料、旅行计划与收藏内容。"
+          description="数据导出尚未提供，请在删除前自行保留需要的信息。"
         />
-        <DemoButton announce={() => announce("Mock 数据导出申请已记录。")}>
-          <PersonalIcon name="arrow" />
-          导出我的数据
-        </DemoButton>
+        <button type="button" disabled>
+          数据导出暂不可用
+        </button>
       </section>
 
+      {error ? <p role="alert">{error}</p> : null}
       <section className={[styles.subpageCard, styles.deleteConfirm].join(" ")}>
         <label>
           <input
             type="checkbox"
             checked={acknowledged}
+            disabled={phase === "deleting"}
             onChange={(event) => setAcknowledged(event.target.checked)}
           />
           <span>
@@ -543,25 +536,29 @@ function DeleteAccountView({
           <span>请输入：删除账户</span>
           <input
             value={confirmation}
+            disabled={phase === "deleting"}
             onChange={(event) => setConfirmation(event.target.value)}
             placeholder="删除账户"
           />
         </label>
         <div>
-          <GuardedLink href="/personal-center/account/privacy">
-            取消
-          </GuardedLink>
+          {phase === "deleting" ? (
+            <button type="button" disabled>
+              取消
+            </button>
+          ) : (
+            <GuardedLink href="/personal-center/account/privacy">
+              取消
+            </GuardedLink>
+          )}
           <button
             type="button"
             disabled={!canSubmit}
-            onClick={() =>
-              announce(
-                "演示环境不会提交账户删除请求；正式流程仍需重新验证身份。",
-              )
-            }
+            onClick={submit}
+            aria-busy={phase === "deleting"}
           >
             <PersonalIcon name="trash" />
-            永久删除账户
+            {phase === "deleting" ? "正在删除…" : "永久删除账户"}
           </button>
         </div>
       </section>
@@ -609,17 +606,15 @@ export function AccountSubpage({ kind }: { kind: AccountSubpageKind }) {
       {kind === "security" ? <SecurityView announce={announce} /> : null}
       {kind === "privacy" ? <PrivacyView announce={announce} /> : null}
       {kind === "bookingSync" ? <BookingSyncView announce={announce} /> : null}
-      {kind === "deleteAccount" ? (
-        <DeleteAccountView announce={announce} />
-      ) : null}
+      {kind === "deleteAccount" ? <DeleteAccountView /> : null}
 
       <div className={styles.subpageNotice} role="status" aria-live="polite">
         {notice}
       </div>
       <p className={styles.subpageBoundary}>
-        {
-          "Persistence: Mock / in-memory only · 不会连接 Auth、API 或数据库，也不会修改外部预订或账户数据。"
-        }
+        {kind === "deleteAccount"
+          ? "账户删除会永久移除 TravelAssist 账户数据；外部平台订单不受影响。"
+          : "Persistence: Mock / in-memory only · 不会连接 Auth、API 或数据库，也不会修改外部预订或账户数据。"}
       </p>
     </div>
   );

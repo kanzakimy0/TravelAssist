@@ -416,6 +416,10 @@ test("schematic labels do not overlap and remain readable on desktop and mobile"
     [390, 784],
   ]) {
     const layout = schematicLayout(mapView(fixture()), width, height);
+    const coordinate = mapView(fixture()).places[0].coordinates;
+    const roundTrip = layout.unproject(layout.project(coordinate));
+    assert.ok(Math.abs(roundTrip[0] - coordinate[0]) < 1e-9);
+    assert.ok(Math.abs(roundTrip[1] - coordinate[1]) < 1e-9);
     for (let i = 0; i < layout.positions.length; i++)
       for (let j = i + 1; j < layout.positions.length; j++) {
         const a = layout.positions[i].label,

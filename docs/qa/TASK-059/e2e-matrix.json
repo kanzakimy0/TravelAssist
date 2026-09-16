@@ -1,0 +1,219 @@
+{
+  "task": "TASK-059-B",
+  "sourceCandidate": "87345968754456b4b7d7ce3ae58c84f10566853b",
+  "defaultCommand": "npm run test:personal-center:e2e",
+  "defaultBrowser": "edge",
+  "selection": "J1-J8 always run in order; no journey filtering or skip option",
+  "journeys": [
+    {
+      "id": "J1",
+      "name": "anonymous guard, return flow and client boundary",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 426,
+      "requiredBehaviors": [
+        "Fresh anonymous context",
+        "All sixteen accepted protected routes deny access",
+        "Owner UUID query cannot bypass guard",
+        "Accepted returnTo login flow",
+        "MutationObserver detects private DOM flashes",
+        "Browser payloads and built client chunks have no server/admin credential"
+      ],
+      "executableChecks": [
+        "all protected routes reject anonymous owner injection without private DOM",
+        "guest public payload and built client bundles contain no admin secret"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J2",
+      "name": "registration, multipage use, logout and relogin",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 485,
+      "requiredBehaviors": [
+        "User-facing browser registration",
+        "Real Local mailbox confirmation callback",
+        "Same verified account across B pages",
+        "Explicit real Preference save",
+        "User-facing logout invalidates private access",
+        "Real UI login restores persisted account data"
+      ],
+      "executableChecks": [
+        "real browser registration and Local email confirmation",
+        "authenticated multipage navigation retains the same Local account",
+        "explicit preference save survives logout, protected redirect and browser login"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J3",
+      "name": "Profile explicit save and cross-session persistence",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 531,
+      "requiredBehaviors": [
+        "Enter account through Personal Center navigation",
+        "Invalid nickname validation",
+        "Valid nickname edit with explicit Save",
+        "Navigate away/back",
+        "Hard reload",
+        "Logout and login again",
+        "Cross-check owned persisted Profile row",
+        "Control browser renders its own Profile, not another user"
+      ],
+      "executableChecks": [
+        "representative invalid nickname has deterministic validation",
+        "valid UI edit and explicit save are observable",
+        "mandatory Profile UI persists and renders the verified owner record"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J4",
+      "name": "Preference categories, explicit preset save and unset reset",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 605,
+      "requiredBehaviors": [
+        "Walking/mobility, nature interests, dining, accommodation, budget and planning UI",
+        "Explicit saves survive navigation/reload/relogin",
+        "Preset selection is draft-only",
+        "Cancel preserves saved values",
+        "Preset explicit Save equals canonical apply function",
+        "Out-of-scope planning and interest keys preserved",
+        "Two users see different saved values",
+        "Reset persists empty sparse values without applying preset"
+      ],
+      "executableChecks": [
+        "all exposed representative categories persist after save, navigation and reload",
+        "preset selection and cancellation do not persist; explicit save preserves unrelated keys",
+        "browser owners see distinct preferences; reset persists unset without preset"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J5",
+      "name": "Companion and group browser lifecycle with separate owners",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 715,
+      "requiredBehaviors": [
+        "Browser companion creation and edit",
+        "Browser group creation with member selection",
+        "Navigation/reload/relogin persistence",
+        "Independent control browser isolation",
+        "Browser group deletion",
+        "Browser companion confirmation/deletion",
+        "Deletion survives reload/relogin",
+        "Control companion remains visible"
+      ],
+      "executableChecks": [
+        "create and edit companion through accepted browser UI",
+        "group membership and companion survive navigation, reload and relogin",
+        "different browsers never render another owner's companions or groups",
+        "delete group and companion through browser; removal survives relogin"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J6",
+      "name": "Real B Trip Library Draft/Saved/History render and isolation",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 837,
+      "requiredBehaviors": [
+        "Seed through accepted B API/contracts only",
+        "Create actual Draft/Saved/History records",
+        "Owned records appear in their accepted UI areas",
+        "Hard reload retains owned records",
+        "Independent control browser renders control records",
+        "Neither browser sees another user trips",
+        "Mock cards cannot satisfy persistence or ownership"
+      ],
+      "executableChecks": [
+        "seed real owned B contracts without A Planner or A 8.5",
+        "mandatory owned persisted records render correctly for both browser owners"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J7",
+      "name": "Complete canonical desktop and mobile Personal Center navigation",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 902,
+      "requiredBehaviors": [
+        "Canonical 1440x900 desktop",
+        "Canonical 390x844 mobile",
+        "Global home avatar/account entry into Personal Center",
+        "Personal Center avatar menu and shell",
+        "Profile/Preferences/Companions/Trips route navigation",
+        "Drafts/History/All tabs",
+        "Privacy/data management and deletion entry",
+        "Back/forward authenticated continuity",
+        "Same browser switches to control user without stale former-user data",
+        "No uncaught page/unexpected console errors"
+      ],
+      "executableChecks": [
+        "1440x900 avatar, full navigation, history and user switch",
+        "390x844 avatar, full navigation, history and user switch",
+        "no page errors, unexpected console errors or external requests"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    },
+    {
+      "id": "J8",
+      "name": "Disposable real browser registration through complete account deletion",
+      "mandatory": true,
+      "spec": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "line": 1013,
+      "requiredBehaviors": [
+        "Third disposable account registered and confirmed through browser",
+        "Profile/settings/contact/preference/companion/group/member/three-state trips seeded",
+        "Exact checkbox and confirmation text including whitespace rejection",
+        "Owner query cannot select target; no owner form field",
+        "Real UI DELETE request has only canonical confirmation DTO",
+        "204 and session termination",
+        "Protected routes and reload denied after deletion",
+        "Deleted user UI login rejected",
+        "Auth and all eight B table families removed",
+        "Complete control owner rows remain byte-for-byte equal",
+        "Control browser remains authenticated and usable",
+        "External server/browser/provider mutation requests zero"
+      ],
+      "executableChecks": [
+        "disposable user is registered and confirmed by Local browser flow",
+        "meaningful owned data exists across all accepted B tables before deletion",
+        "real UI enforces exact confirmation and deletes verified current user only",
+        "deleted user cannot reload private routes or log in again",
+        "Auth plus B-owned rows are gone; control account exact data and browser remain intact"
+      ],
+      "localAuthRequired": true,
+      "fixtures": "Three distinct synthetic Local accounts; A journey, B control, C disposable; anonymous context separate",
+      "acceptance": "PASS only when all required assertions complete; failed mandatory journey keeps aggregate nonzero"
+    }
+  ],
+  "excluded": [
+    "WBS 9.7 Preference to Planner",
+    "WBS 9.8 Planner to save to Personal Center",
+    "A WBS 8.5 implementation",
+    "Production/Staging mutation",
+    "External provider writes",
+    "Native iOS/Android app"
+  ]
+}

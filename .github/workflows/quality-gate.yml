@@ -38,7 +38,7 @@ jobs:
         run: npm run deploy:validate:local
 
       - name: Run repository tests
-        run: node --test "tests/*.test.mjs"
+        run: node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"
 
       - name: Lint
         run: npm run lint

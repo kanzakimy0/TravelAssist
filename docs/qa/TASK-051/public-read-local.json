@@ -1,0 +1,21 @@
+{
+  "realAuthUsers": 2,
+  "realBrowserCookieContexts": 2,
+  "browser": "headless msedge",
+  "expectedScenarios": 12,
+  "completedScenarios": [
+    "public Cookie/Bearer missing reads and missing reset do not create rows",
+    "anon and invalid explicit Bearer stay failures without Cookie fallback",
+    "unchanged PATCH then public read preserves values/time/revision and isolates equal revisions",
+    "R1 business Cookie/Bearer query is isolated, owner/body cannot switch account and read never writes",
+    "R1 business invalid Bearer cannot fall back to Cookie; explicit valid Bearer owns identity",
+    "R1 direct external preference GET still rejects all query parameters",
+    "R1 business request cancellation remains a distinct failure",
+    "real expired Cookie refresh forwarded by server finalizer and usable in next request",
+    "stale PATCH/reset remain 409 and reset reads positive-revision empty",
+    "real A-like browser GET facade uses two Cookie accounts without cache or writes",
+    "real browser cancellation/network rejection are distinct failures, never empty success",
+    "Auth delete cascade and complete fixture cleanup"
+  ],
+  "complete": true
+}

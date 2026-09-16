@@ -1,3 +1,4 @@
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import type { Dispatch, ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ import { PlaceActions, PlaceDetails } from "./place-details";
 import mapDetail from "../detail-map-inspector.module.css";
 
 interface TripWorkspaceProps {
+  viewer?: HomeViewer | null;
   projectContent?: ReactNode;
   onAdviceAction?: (
     id: string,
@@ -52,9 +54,12 @@ interface TripWorkspaceProps {
   onCloseEditor?: () => void;
   editorItemId?: string | null;
   onManageItem?: (id: string, kind: "booking" | "replace") => void;
+  mapPickMode?: boolean;
+  onMapPick?: (coordinates: [number, number]) => void;
 }
 
 export function TripWorkspace({
+  viewer = null,
   projectContent,
   mode,
   trip,
@@ -84,6 +89,8 @@ export function TripWorkspace({
   bookingProgress,
   onAdviceAction,
   adviceResponses,
+  mapPickMode,
+  onMapPick,
 }: TripWorkspaceProps) {
   const detail = mode === "detail";
   const activeItem = currentPlan(trip).items.find(
@@ -114,7 +121,7 @@ export function TripWorkspace({
       <a href="#planner-workspace" className={styles.skipLink}>
         跳到旅行工作区
       </a>
-      <WorkspaceHeader />
+      <WorkspaceHeader viewer={viewer} />
       <main
         id="planner-workspace"
         tabIndex={-1}
@@ -139,6 +146,8 @@ export function TripWorkspace({
               suppressQuickCard={Boolean(
                 projectContent || selectedPlace || visibleDraft || selectedArea,
               )}
+              mapPickMode={mapPickMode}
+              onMapPick={onMapPick}
             />
             <MapLayerToolbar
               collapsed={trip.ui.isLayerToolbarCollapsed}
@@ -360,7 +369,7 @@ export function TripWorkspace({
                     })
                   }
                 >
-                  ×
+                  <PlannerIcon name="close" />
                 </button>
               </header>
               <div className={mapDetail.content}>

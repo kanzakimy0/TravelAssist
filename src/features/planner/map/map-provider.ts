@@ -274,6 +274,10 @@ export function schematicLayout(view: MapView, width: number, height: number) {
     85 + ((x - min[0]) / (max[0] - min[0])) * Math.max(100, width - 170),
     100 + ((max[1] - y) / (max[1] - min[1])) * Math.max(100, height - 230),
   ];
+  const unproject = ([x, y]: Coordinates): Coordinates => [
+    min[0] + ((x - 85) / Math.max(100, width - 170)) * (max[0] - min[0]),
+    max[1] - ((y - 100) / Math.max(100, height - 230)) * (max[1] - min[1]),
+  ];
   const slots: Coordinates[] = [];
   const columns = Math.max(2, Math.floor((width - 20) / 165));
   const rows = Math.max(3, Math.floor((height - 200) / 60));
@@ -294,7 +298,7 @@ export function schematicLayout(view: MapView, width: number, height: number) {
     );
     return { id: place.id, origin, label: slots.shift() ?? origin };
   });
-  return { project, positions };
+  return { project, unproject, positions };
 }
 export type MapPort = Pick<
   MapboxMap,
@@ -364,6 +368,8 @@ export async function mountMapbox(
   dismiss: () => void = () => {},
   onAnchor: (point: { x: number; y: number } | null) => void = () => {},
   isCurrent: () => boolean = () => true,
+  getPickMode: () => boolean = () => false,
+  onPick: (coordinates: Coordinates) => void = () => {},
 ): Promise<MapSession | null> {
   if (!token?.trim()) return null;
   const { installMapArtwork, warmMapStyle, travelBubbles } =
@@ -428,6 +434,10 @@ export async function mountMapbox(
     .map((layer) => layer.id);
   map.on("click", (event) => {
     if (!ready || destroyed) return;
+    if (getPickMode()) {
+      onPick([event.lngLat.lng, event.lngLat.lat]);
+      return;
+    }
     const feature = map.queryRenderedFeatures(event.point, {
       layers: clickable,
     })[0];
@@ -454,11 +464,13 @@ export async function mountMapbox(
   map.on("move", publishAnchor);
   map.on("mousemove", (event) => {
     if (ready && !destroyed)
-      map.getCanvas().style.cursor = map.queryRenderedFeatures(event.point, {
-        layers: clickable,
-      }).length
-        ? "pointer"
-        : "";
+      map.getCanvas().style.cursor = getPickMode()
+        ? "crosshair"
+        : map.queryRenderedFeatures(event.point, {
+              layers: clickable,
+            }).length
+          ? "pointer"
+          : "";
   });
   map.addControl(
     new mapbox.NavigationControl({ showCompass: false }),

@@ -73,6 +73,8 @@ export function localRuntime() {
     });
     return {
       db,
+      // Validated localhost DSN, kept in memory for the server gateway acceptance.
+      databaseUrl: status.DB_URL,
       admin,
       api: status.API_URL,
       mail: status.INBUCKET_URL,

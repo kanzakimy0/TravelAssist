@@ -629,6 +629,11 @@
   overflow: hidden;
   background: #f0ece3;
 }
+.mapCanvas[data-map-pick="true"],
+.mapCanvas[data-map-pick="true"] .mapboxHost,
+.mapCanvas[data-map-pick="true"] .mapSvg {
+  cursor: crosshair;
+}
 .mapSvg {
   position: absolute;
   width: 100%;
@@ -825,7 +830,7 @@
 }
 .quickSettings,
 .recommendations {
-  padding-inline: 15px;
+  padding-inline: 10px;
 }
 .srOnly {
   position: absolute;
@@ -890,7 +895,7 @@
 .quickPair,
 .quickTriple {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 .quickPair {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1398,12 +1403,21 @@
 .overlayHeader button {
   display: grid;
   place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 32px;
   width: 32px;
   height: 32px;
-  padding: 4px;
+  padding: 0;
   border: 1px solid var(--color-border-strong);
   border-radius: 50%;
   background: var(--color-bg-elevated);
+  line-height: 0;
+}
+.popoverHeader button svg,
+.overlayHeader button svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 .hint {
   color: var(--color-text-secondary);
@@ -1966,9 +1980,148 @@
 }
 
 /* v0.5: scoped upper panel and overlays; recommendation selectors frozen. */
+.rightPanel .quickSettings,
+.rightPanel .recommendations {
+  padding-inline: 10px;
+}
+
+.rightPanel .recommendations {
+  container: recommendation-panel / size;
+  gap: clamp(6px, 1.15cqh, 12px);
+  padding-block: clamp(10px, 2.4cqh, 18px);
+}
+
+.recommendations .sectionTitle h2 {
+  font-size: clamp(15px, 4.6cqw, 19px);
+}
+
+.recommendations .sectionTitle p {
+  font-size: clamp(10px, 3cqw, 12px);
+}
+
+.recommendations .planList {
+  gap: clamp(6px, 1.8cqh, 10px);
+}
+
+.recommendations .planRow[data-recommendation] {
+  gap: clamp(4px, 1.2cqh, 7px);
+  padding: clamp(6px, 2cqw, 10px);
+  border-radius: clamp(13px, 4.5cqw, 18px);
+}
+
+.recommendations .planSelect {
+  gap: clamp(6px, 2cqw, 11px);
+}
+
+.recommendations .planSelect .planThumbnail {
+  width: clamp(44px, min(16cqw, 15cqh), 68px);
+  height: clamp(44px, min(16cqw, 15cqh), 68px);
+  border-radius: clamp(9px, 3cqw, 13px);
+}
+
+.recommendations .planNumber {
+  gap: 5px;
+  font-size: clamp(10px, 2.9cqw, 12px);
+}
+
+.recommendations .planNumber b,
+.recommendations .planNumber .modifiedPlan {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border-radius: 999px;
+  font-size: clamp(9px, 2.5cqw, 11px);
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.recommendations .planNumber b {
+  background: var(--planner-accent-soft);
+}
+
+.recommendations .planNumber .modifiedPlan {
+  background: #ffeae4;
+}
+
+.recommendations .planText {
+  gap: clamp(2px, 0.65cqh, 5px);
+}
+
+.recommendations .planText strong {
+  overflow: hidden;
+  font-size: clamp(13px, 4.2cqw, 17px);
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommendations .planText small {
+  font-size: clamp(10px, 3cqw, 12px);
+  line-height: 1.4;
+}
+
+.recommendations .planActions {
+  gap: clamp(5px, 1.5cqw, 8px);
+}
+
+.recommendations .planActions button {
+  min-height: clamp(26px, 4.2cqh, 34px);
+  padding: 3px clamp(4px, 1.6cqw, 8px);
+  border-radius: clamp(7px, 2.4cqw, 10px);
+  font-size: clamp(10px, 3cqw, 12px);
+}
+
+@container recommendation-panel (max-width: 330px) {
+  .recommendations .sectionTitle p {
+    max-width: 92px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .recommendations .planSelect .planThumbnail {
+    width: 44px;
+    height: 44px;
+  }
+
+  .recommendations .planText small {
+    -webkit-line-clamp: 1;
+  }
+
+  .recommendations .planActions button {
+    min-height: 26px;
+  }
+}
+
+@container recommendation-panel (min-width: 370px) and (min-height: 370px) {
+  .recommendations .planRow[data-recommendation] {
+    grid-template-columns: minmax(0, 1fr) clamp(96px, 28cqw, 126px);
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .recommendations .planText small {
+    -webkit-line-clamp: 2;
+  }
+
+  .recommendations .planActions {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+  }
+
+  .recommendations .planActions button {
+    min-height: clamp(30px, 5cqh, 38px);
+    font-weight: 600;
+  }
+}
+
 .quickSettings {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1.05fr) auto auto auto;
+  grid-template-rows:
+    minmax(0, 1fr)
+    minmax(0, 1.05fr)
+    clamp(38px, 5.2dvh, 62px)
+    clamp(40px, 5.8dvh, 72px)
+    32px;
   gap: clamp(6px, 0.85dvh, 14px);
   container-type: size;
 }
@@ -2017,8 +2170,22 @@
   min-height: 38px;
 }
 .quickSettings .mockStatus {
-  min-height: 16px;
+  align-self: stretch;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  overflow: hidden;
   font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+}
+.quickSettings .settingsActions {
+  min-height: 0;
+}
+.planner .quickSettings .settingsButton,
+.planner .quickSettings .openDetailButton {
+  height: 100%;
+  min-height: 0;
 }
 .planner .openDetailButton {
   min-height: 40px;
