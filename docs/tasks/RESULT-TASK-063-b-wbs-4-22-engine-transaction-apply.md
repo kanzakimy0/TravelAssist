@@ -3,10 +3,11 @@
 ## 状态与追踪
 
 - Task：TASK-063-B；Owner：B；Issue：[#380](https://github.com/kanzakimy0/TravelAssist/issues/380)，保持 Open。
-- 状态：本地实现及强制 QA 已完成，待验收；不能在合并前标记已完成。
+- 状态：本地实现及强制 QA 已完成，Draft PR 已创建，待验收；WBS 4.22 = B / 待审查。不能在合并前标记已完成。
 - Branch：`codex/b-wbs-4-22-engine-transaction-apply`，独立 worktree。
 - Execution base：`849ed9f207a0ec55ff514e287fbc3d6c7adc2cea`。
-- Draft PR：PENDING → develop；不自动 merge，不自动关闭 #380。
+- Draft PR：[#382](https://github.com/kanzakimy0/TravelAssist/pull/382) → develop，保持 Open / Draft；不自动 merge，不自动关闭 #380。
+- Implementation commit：`c95bb5b38532c6f29400b2639c47d63c667163a2`；后续提交仅更新交付追踪文档。
 - 设计：[Engine transactional apply](../architecture/engine-transaction-apply.md)。
 - QA：[README](../qa/TASK-063/README.md)、[machine-readable evidence](../qa/TASK-063/acceptance-evidence.json)。
 - 最终 pushed head 与 exact-head Quality Gate run 由 PR 描述及最终交付回执记录；不在文档提交中伪造自身 SHA。

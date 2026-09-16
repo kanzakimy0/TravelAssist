@@ -1,11 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-063-B / WBS 4.22 开始执行（2026-09-17）
+## TASK-063-B / WBS 4.22 实现与验收（2026-09-17，待审查）
 
 - 从最新 develop `849ed9f207a0ec55ff514e287fbc3d6c7adc2cea` 建立独立 worktree，分支 `codex/b-wbs-4-22-engine-transaction-apply`；Issue #380 保持 Open。4.20 Frozen、4.20.1、4.21、8.1、8.3、8.4、8.5 前置均已完成，#227/#379 已合并。
-- 4.22 = B / 进行中，仅实现 user UPDATE_TIME / REORDER_ITEMS 的事务 apply；4.23/4.24 不启动。
+- 实际开始时 4.22 置 B / 进行中；实现、本地强制 QA 及 [Draft PR #382](https://github.com/kanzakimy0/TravelAssist/pull/382) 完成后，4.22 = B / 待审查（#380 / TASK-063-B）。仅 apply user UPDATE_TIME / REORDER_ITEMS；4.23/4.24 不启动。
+- [Result](../tasks/RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md) / [QA](../qa/TASK-063/README.md)：clean develop Node 2520/2520、candidate 2534/2534、4.21 77/77、TASK-063 pure 14/14、Local 35/35、Trip runtime 21/21、A+B 共存 5/5、Personal Center Local 877/877；两次迁移/types/catalog 一致，构建及部署验证通过。最终 exact-head Quality Gate 回执在 PR 描述及交付记录中；交付前必须 green。
 - 依据 [WBS 8.5 Owner Correction](WBS-8.5-owner-correction.md) 的明确同步要求，将 8.5 主表及 TASK-062 tracking Owner 机械同步为 B；下方历史 A-owned 执行记录保留原文。此修正不改变历史责任、已完成状态或其他模块 Owner。
-
 
 ## TASK-062-B / WBS 8.5 验收与合并完成（2026-09-16）
 
@@ -669,6 +669,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-063-B | 4.22 | B | 待验收 | #380 Open | `docs/tasks/RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md` | `codex/b-wbs-4-22-engine-transaction-apply` | `c95bb5b3`（实现；最终 head 见 PR） | [#382](https://github.com/kanzakimy0/TravelAssist/pull/382) Draft → develop |
 | TASK-062-B | 8.5 | B | 已完成（用户验收；PR #227已合并） | #376 Open（保留此前不自动关闭限制） | `docs/tasks/RESULT-TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md` | `codex/a-trip-plan-schema` | `c35725a3`（验收head）；`842447d2`（merge） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Merged → develop |
 | TASK-019-A / TASK-026-A | 8.5 | A | 待审查（Local 验收通过；完整回归 709/712，未合并） | #226 / #256 Open | `docs/tasks/TASK-019-a-trip-plan-schema.md` / `docs/tasks/RESULT-TASK-026-a-trip-plan-schema-acceptance-closeout.md` | `codex/a-trip-plan-schema` | `b8a5ad5`（实现）；`5df7a32`（整合）；`d1c71f9`（验收记录） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Draft → develop |
 | TASK-013.2-A | 2.15 | A | 已合并生产清单（Partial；实体/图片待后续） | #152 | `docs/tasks/TASK-013.2-a-core-destination-generation-manifest.md` | `feature/a-core-destination-generation-manifest` | `d3fe001`（实现）；合入 `c28c14c`；复验 `5633deb` | [#187](https://github.com/kanzakimy0/TravelAssist/pull/187) Merged；[#198](https://github.com/kanzakimy0/TravelAssist/pull/198) Merged；合入 `3ad6271` |
@@ -893,7 +894,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 4.20 | Engine Contract / ChangeSet操作与错误模型 | B | P1 | 0.9基线；A/B契约核对 | 已完成 |
 | 4.20.1 | Engine Contract Amendment / 行程合理性能力预留 | B | P1 | 4.20,4.17；#282 | 已完成 |
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 已完成 |
-| 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 进行中（#380 / TASK-063-B） |
+| 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 待审查（#380 / TASK-063-B；Draft PR #382） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 未开始 |
 | 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 未开始 |
 

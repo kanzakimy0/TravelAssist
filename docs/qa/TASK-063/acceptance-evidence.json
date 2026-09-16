@@ -1437,7 +1437,13 @@
   "ci": {
     "required": "quality-gate.yml workflow_dispatch at exact final pushed head",
     "proofLocation": "Draft PR description and final delivery receipt",
-    "selfReferentialCommitShaNotInvented": true
+    "selfReferentialCommitShaNotInvented": true,
+    "pullRequest": {
+      "number": 382,
+      "url": "https://github.com/kanzakimy0/TravelAssist/pull/382",
+      "state": "OPEN",
+      "isDraft": true
+    }
   },
   "scope": {
     "operations": ["UPDATE_TIME", "REORDER_ITEMS"],
@@ -1478,5 +1484,6 @@
     }
   ],
   "countWarning": "Focused, wrapper and aggregate tests overlap; do not add totals.",
-  "localArtifactProvenance": "Built from the tested candidate working tree before its first commit. The local deployment manifest labels the then-current checkout HEAD (execution base); implementationFiles binds the actual tested code. Exact final-head GitHub CI rebuilds and verifies its own committed artifact."
+  "localArtifactProvenance": "Built from the tested candidate working tree before its first commit. The local deployment manifest labels the then-current checkout HEAD (execution base); implementationFiles binds the actual tested code. Exact final-head GitHub CI rebuilds and verifies its own committed artifact.",
+  "implementationCommit": "c95bb5b38532c6f29400b2639c47d63c667163a2"
 }

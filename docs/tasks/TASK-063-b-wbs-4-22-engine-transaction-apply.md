@@ -11,6 +11,10 @@
 - Publication baseline: `develop@849ed9f207a0ec55ff514e287fbc3d6c7adc2cea`
 - Task publication branch: `task/b-wbs-4-22-engine-transaction-apply`
 - Planned implementation branch: `codex/b-wbs-4-22-engine-transaction-apply`
+- Actual execution base: `849ed9f207a0ec55ff514e287fbc3d6c7adc2cea`
+- Implementation commit: `c95bb5b38532c6f29400b2639c47d63c667163a2`
+- Pull Request: [Draft #382](https://github.com/kanzakimy0/TravelAssist/pull/382)
+- Result: [TASK-063-B Result](RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md)
 
 ## 1. Prerequisites
 
