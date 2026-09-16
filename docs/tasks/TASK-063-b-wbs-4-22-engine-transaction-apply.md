@@ -6,14 +6,18 @@
 - WBS: `4.22 — 事务应用 / 权限 / 幂等 / 版本与审计`
 - Owner: `B / TravelAssist Engine + Trip Persistence`
 - Priority: `P1`
-- Status: `待验收`
+- Status: `已完成`
 - GitHub Issue: `#380`
 - Publication baseline: `develop@849ed9f207a0ec55ff514e287fbc3d6c7adc2cea`
 - Task publication branch: `task/b-wbs-4-22-engine-transaction-apply`
 - Planned implementation branch: `codex/b-wbs-4-22-engine-transaction-apply`
 - Actual execution base: `849ed9f207a0ec55ff514e287fbc3d6c7adc2cea`
 - Implementation commit: `c95bb5b38532c6f29400b2639c47d63c667163a2`
-- Pull Request: [Draft #382](https://github.com/kanzakimy0/TravelAssist/pull/382)
+- Pull Request: [Merged #382](https://github.com/kanzakimy0/TravelAssist/pull/382)
+- Accepted head: `03136fb82bab6ef0283af0b53ece85b08ae18a3f`
+- Merge commit: `47c9f48c371ba42faf646bef87ad7ca7a8ee3f66` (2026-09-16T23:28:28Z)
+- Acceptance: user explicitly accepted TASK-063-B and authorized merge, WBS completion and Issue #380 closure; Issue #380 Closed / Completed.
+- The original no-automatic-merge/closure rules below describe the pre-acceptance delivery stage; this closeout follows subsequent explicit user authorization. WBS 4.23/4.24 remain unstarted.
 - Result: [TASK-063-B Result](RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md)
 
 ## 1. Prerequisites

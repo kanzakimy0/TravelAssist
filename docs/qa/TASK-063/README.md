@@ -1,5 +1,7 @@
 # TASK-063-B — authoritative Engine apply acceptance
 
+User acceptance and authorized normal merge completed: PR #382 merged at 2026-09-16T23:28:28Z as `47c9f48c371ba42faf646bef87ad7ca7a8ee3f66`. Accepted head `03136fb82bab6ef0283af0b53ece85b08ae18a3f` passed exact-head [Quality Gate 35159440565](https://github.com/kanzakimy0/TravelAssist/actions/runs/35159440565), including 2534 Node tests and matching artifact provenance. The merged tree equals the accepted tree. WBS 4.22 is B / 已完成; Issue #380 is Closed / Completed. Earlier Draft/no-automatic-merge wording below records the original delivery stage. The post-merge update changes documentation only; 4.23/4.24 remain unstarted.
+
 Execution starts from clean `origin/develop@849ed9f207a0ec55ff514e287fbc3d6c7adc2cea` in an independent worktree. A separate detached worktree runs the same full Node baseline. See the [Result](../../tasks/RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md), [design](../../architecture/engine-transaction-apply.md) and [machine-readable evidence](acceptance-evidence.json).
 
 ## Reproduce

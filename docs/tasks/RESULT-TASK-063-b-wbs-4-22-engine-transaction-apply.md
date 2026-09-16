@@ -2,15 +2,16 @@
 
 ## 状态与追踪
 
-- Task：TASK-063-B；Owner：B；Issue：[#380](https://github.com/kanzakimy0/TravelAssist/issues/380)，保持 Open。
-- 状态：本地实现及强制 QA 已完成，Draft PR 已创建，待验收；WBS 4.22 = B / 待审查。不能在合并前标记已完成。
+- Task：TASK-063-B；Owner：B；Issue：[#380](https://github.com/kanzakimy0/TravelAssist/issues/380)，已 Closed / Completed。
+- 状态：用户已验收并授权合并；PR #382 已合并到 develop，**WBS 4.22 = B / 已完成**。
 - Branch：`codex/b-wbs-4-22-engine-transaction-apply`，独立 worktree。
 - Execution base：`849ed9f207a0ec55ff514e287fbc3d6c7adc2cea`。
-- Draft PR：[#382](https://github.com/kanzakimy0/TravelAssist/pull/382) → develop，保持 Open / Draft；不自动 merge，不自动关闭 #380。
+- PR：[#382](https://github.com/kanzakimy0/TravelAssist/pull/382) 已于 2026-09-16T23:28:28Z 以 normal merge 合入 develop。
+- Accepted head：`03136fb82bab6ef0283af0b53ece85b08ae18a3f`；merge commit：`47c9f48c371ba42faf646bef87ad7ca7a8ee3f66`；合并树与已验收树完全一致。
 - Implementation commit：`c95bb5b38532c6f29400b2639c47d63c667163a2`；后续提交仅更新交付追踪文档。
 - 设计：[Engine transactional apply](../architecture/engine-transaction-apply.md)。
 - QA：[README](../qa/TASK-063/README.md)、[machine-readable evidence](../qa/TASK-063/acceptance-evidence.json)。
-- 最终 pushed head 与 exact-head Quality Gate run 由 PR 描述及最终交付回执记录；不在文档提交中伪造自身 SHA。
+- 已验收 head 的精确 [Quality Gate 35159440565](https://github.com/kanzakimy0/TravelAssist/actions/runs/35159440565) 成功；CI 2534/2534，并重建/验证同一 commitSha 的部署产物。本次合并后收尾只修改文档和追踪。
 
 ## 启动门与前置
 
@@ -83,23 +84,23 @@ receipt 不保存 preview.before/after、完整 snapshot/ChangeSet/context、原
 
 以下最终执行结果以 machine-readable evidence 为准；聚合/单项计数相互重叠，不相加：
 
-| Gate                                                                                      | 结果                                                                  |
-| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| npm ci（baseline/candidate）                                                              | PASS                                                                  |
-| 干净 develop full Node baseline                                                           | 2520/2520                                                             |
-| 4.21 focused regression                                                                   | 77/77                                                                 |
-| TASK-063 pure                                                                             | 14/14                                                                 |
-| TASK-063 Local                                                                            | 35/35                                                                 |
-| test:trip-plan                                                                            | 3/3 wrapper；内含既有 16-case fixture suite                           |
-| test:trip-plan:runtime                                                                    | 21/21                                                                 |
-| A+B coexistence                                                                           | 5/5                                                                   |
-| 两次从零 reset/types + migration static/runtime                                           | PASS；每次 static 4/4、runtime 6/6，十五表 catalog/types 两次字节一致 |
-| Personal Center 完整 Local aggregate                                                      | 15 个套件，877/877，零 skips                                          |
-| candidate full Node                                                                       | 2534/2534，零 failures/skips                                          |
-| lint / typecheck / build                                                                  | PASS                                                                  |
-| format:check:deploy / deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS                                                                  |
-| Task-owned formatting / git diff --check / fixture cleanup / db:stop                      | PASS                                                                  |
-| exact final-head GitHub Quality Gate                                                      | 最终交付前要求 PASS；精确 head/run 见 Draft PR 及交付回执             |
+| Gate                                                                                      | 结果                                                                                                                                               |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| npm ci（baseline/candidate）                                                              | PASS                                                                                                                                               |
+| 干净 develop full Node baseline                                                           | 2520/2520                                                                                                                                          |
+| 4.21 focused regression                                                                   | 77/77                                                                                                                                              |
+| TASK-063 pure                                                                             | 14/14                                                                                                                                              |
+| TASK-063 Local                                                                            | 35/35                                                                                                                                              |
+| test:trip-plan                                                                            | 3/3 wrapper；内含既有 16-case fixture suite                                                                                                        |
+| test:trip-plan:runtime                                                                    | 21/21                                                                                                                                              |
+| A+B coexistence                                                                           | 5/5                                                                                                                                                |
+| 两次从零 reset/types + migration static/runtime                                           | PASS；每次 static 4/4、runtime 6/6，十五表 catalog/types 两次字节一致                                                                              |
+| Personal Center 完整 Local aggregate                                                      | 15 个套件，877/877，零 skips                                                                                                                       |
+| candidate full Node                                                                       | 2534/2534，零 failures/skips                                                                                                                       |
+| lint / typecheck / build                                                                  | PASS                                                                                                                                               |
+| format:check:deploy / deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS                                                                                                                                               |
+| Task-owned formatting / git diff --check / fixture cleanup / db:stop                      | PASS                                                                                                                                               |
+| exact final-head GitHub Quality Gate                                                      | PASS；[35159440565](https://github.com/kanzakimy0/TravelAssist/actions/runs/35159440565)，accepted head `03136fb82bab6ef0283af0b53ece85b08ae18a3f` |
 
 Generated types SHA-256：`2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48`。两次完整 catalog SHA-256：`47402cd348fc39a5e5c1dc72f956067ebc4f5e1ea49f34fa88a3a2f228ac52d9`。
 
@@ -109,4 +110,4 @@ Generated types SHA-256：`2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3a
 
 本任务完成的是 owner-only server apply 能力，不是生产评估适配器接线。真实产品 policy/profile/fact adapter、confirmation grant、outbox delivery、rollback execution、扩展 operation 和 AI/system/provider_event apply 仍未开启；4.23/4.24 未启动。无 UI/live Provider/Booking/Payment 外部副作用。
 
-最终实施分支只创建一个 Draft PR → develop，Issue #380 保持 Open，WBS 4.22 置 **B / 待审查**；等待用户验收和后续明确合并授权。不执行自动 merge、Issue closure、rebase、force push、reset --hard 或 clean -fd。
+原交付按要求保持一个 Draft PR、Issue Open 和 WBS 待审查。随后用户明确验收并授权合并 PR #382、完成 4.22 和关闭 #380；现已 normal merge 到 develop，WBS 4.22 = B / 已完成，Issue #380 = Closed / Completed。未启动 4.23/4.24，未执行 rebase、force push、reset --hard 或 clean -fd。

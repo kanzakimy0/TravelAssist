@@ -1,7 +1,7 @@
 {
   "task": "TASK-063-B",
   "issue": 380,
-  "status": "LOCAL_ACCEPTANCE_PASS",
+  "status": "ACCEPTED_MERGED",
   "executionBase": "849ed9f207a0ec55ff514e287fbc3d6c7adc2cea",
   "branch": "codex/b-wbs-4-22-engine-transaction-apply",
   "startGate": {
@@ -1441,9 +1441,15 @@
     "pullRequest": {
       "number": 382,
       "url": "https://github.com/kanzakimy0/TravelAssist/pull/382",
-      "state": "OPEN",
-      "isDraft": true
-    }
+      "state": "MERGED",
+      "isDraft": false
+    },
+    "status": "PASS",
+    "event": "workflow_dispatch",
+    "headSha": "03136fb82bab6ef0283af0b53ece85b08ae18a3f",
+    "runId": 35159440565,
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/35159440565",
+    "nodeTests": 2534
   },
   "scope": {
     "operations": ["UPDATE_TIME", "REORDER_ITEMS"],
@@ -1485,5 +1491,18 @@
   ],
   "countWarning": "Focused, wrapper and aggregate tests overlap; do not add totals.",
   "localArtifactProvenance": "Built from the tested candidate working tree before its first commit. The local deployment manifest labels the then-current checkout HEAD (execution base); implementationFiles binds the actual tested code. Exact final-head GitHub CI rebuilds and verifies its own committed artifact.",
-  "implementationCommit": "c95bb5b38532c6f29400b2639c47d63c667163a2"
+  "implementationCommit": "c95bb5b38532c6f29400b2639c47d63c667163a2",
+  "closeout": {
+    "userAccepted": true,
+    "explicitMergeAndIssueClosureAuthorized": true,
+    "acceptedHead": "03136fb82bab6ef0283af0b53ece85b08ae18a3f",
+    "mergeCommit": "47c9f48c371ba42faf646bef87ad7ca7a8ee3f66",
+    "mergedAt": "2026-09-16T23:28:28Z",
+    "mergeTreeEqualsAcceptedTree": true,
+    "wbs422": "B / 已完成",
+    "issue380": "Closed / Completed",
+    "changes": "Documentation and tracking only",
+    "wbs423Started": false,
+    "wbs424Started": false
+  }
 }
