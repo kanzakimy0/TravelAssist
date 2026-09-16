@@ -12,9 +12,13 @@ export const sha256 = (text) =>
 export const manifest = JSON.parse(
   read("docs/qa/TASK-054/migration-inventory.json"),
 );
-export const tables = Object.values(schema)
+export const allTables = Object.values(schema)
   .map(getTableConfig)
   .sort((a, b) => a.name.localeCompare(b.name));
+// Keep this accepted B catalog scoped to its immutable inventory; TASK-062 verifies the full union.
+export const tables = allTables.filter((table) =>
+  manifest.tables.includes(table.name),
+);
 export const migrationPaths = () =>
   readdirSync(new URL("../supabase/migrations/", import.meta.url))
     .filter((x) => x.endsWith(".sql"))
@@ -117,13 +121,18 @@ export const generatedScalar = (sqlType) =>
     date: "string",
     "timestamp with time zone": "string",
     integer: "number",
+    bigint: "number",
+    "double precision": "number",
     boolean: "boolean",
     jsonb: "Json",
     "uuid[]": "string[]",
   })[sqlType];
 
-export function assertGeneratedAgreement(contract = generatedContract()) {
-  for (const table of tables) {
+export function assertGeneratedAgreement(
+  contract = generatedContract(),
+  tableMappings = tables,
+) {
+  for (const table of tableMappings) {
     const generated = contract.tables[table.name];
     assert.ok(generated, table.name);
     for (const kind of ["Row", "Insert", "Update"]) {

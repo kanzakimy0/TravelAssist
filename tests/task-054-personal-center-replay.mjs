@@ -2,9 +2,11 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { catalog as captureCatalog } from "./task-054-catalog.mjs";
 import { preferenceLocalRuntime } from "./task-045-local-helpers.mjs";
 import {
   manifest,
+  allTables,
   read,
   sha256,
   assertHistory,
@@ -36,6 +38,7 @@ async function run(label, args) {
   return { label, started, finished: new Date().toISOString(), exitCode: code };
 }
 assertHistory();
+const expectedTypesSha256 = sha256(read("src/types/database.generated.ts"));
 const commands = [];
 commands.push(await run("replay-start", ["tools/db/local.mjs", "start"]));
 commands.push(
@@ -48,14 +51,17 @@ try {
     0,
     "Refuse to reset a Local project containing users",
   );
-  for (const table of manifest.tables)
+  for (const table of [
+    ...allTables.map((t) => "public." + t.name),
+    "storage.objects",
+    "storage.buckets",
+  ])
     assert.equal(
       Number(
-        (await local.db`select count(*) from ${local.db("public." + table)}`)[0]
-          .count,
+        (await local.db`select count(*) from ${local.db(table)}`)[0].count,
       ),
       0,
-      "Refuse to erase pre-existing B data",
+      "Refuse to erase pre-existing application data",
     );
 } finally {
   await local.db.end({ timeout: 5 });
@@ -71,8 +77,8 @@ for (const pass of [1, 2]) {
   const generatedTypesSha256 = sha256(read("src/types/database.generated.ts"));
   assert.equal(
     generatedTypesSha256,
-    manifest.generatedTypes.sha256,
-    "No schema change: generated types must equal accepted baseline",
+    expectedTypesSha256,
+    "Generated types must equal the current checked-in combined schema",
   );
   commands.push(
     await run("replay-" + pass + "-static", [
@@ -91,7 +97,21 @@ for (const pass of [1, 2]) {
       "tests/task-054-personal-center-migration.runtime.mjs",
     ]),
   );
-  const catalog = await readFile(".artifacts/task054/catalog.json", "utf8");
+  const replayLocal = preferenceLocalRuntime();
+  let catalog;
+  try {
+    catalog =
+      JSON.stringify(
+        await captureCatalog(
+          replayLocal.db,
+          allTables.map((t) => t.name),
+        ),
+        null,
+        2,
+      ) + "\n";
+  } finally {
+    await replayLocal.db.end({ timeout: 5 });
+  }
   await writeFile(
     ".artifacts/task054/replay-" + pass + "-catalog.json",
     catalog,

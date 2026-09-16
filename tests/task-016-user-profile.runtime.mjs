@@ -22,7 +22,12 @@ const schema = { profiles, profileSettings, emergencyContacts };
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const require = createRequire(import.meta.url);
-const tables = Object.values(schema).map(getTableConfig);
+// Keep TASK-016's exact profile assertions scoped as independently owned schemas grow.
+const tables = [
+  schema.profiles,
+  schema.profileSettings,
+  schema.emergencyContacts,
+].map(getTableConfig);
 const dialect = new PgDialect();
 const ident = (value) => '"' + value.replaceAll('"', '""') + '"';
 

@@ -269,14 +269,15 @@ test("TASK-052 real Local cascade/Auth/Storage/browser acceptance", async (t) =>
           0,
           "requires clean Local fixture database",
         );
+        // Audit the accepted B deletion families; TASK-062 exercises the full A/B cascade.
         const tables =
-          await local.db`select tablename from pg_tables where schemaname='public' order by tablename`;
+          await local.db`select tablename from pg_tables where schemaname='public' and tablename=any(${Object.keys(ownerColumns)}) order by tablename`;
         assert.deepEqual(
           tables.map((x) => x.tablename),
           Object.keys(ownerColumns).sort(),
         );
         const fks =
-          await local.db`select conrelid::regclass::text as source,confrelid::regclass::text as target,confdeltype,pg_get_constraintdef(oid) as definition from pg_constraint where contype='f' and connamespace='public'::regnamespace order by source,definition`;
+          await local.db`select conrelid::regclass::text as source,confrelid::regclass::text as target,confdeltype,pg_get_constraintdef(oid) as definition from pg_constraint where contype='f' and connamespace='public'::regnamespace and conrelid in (select oid from pg_class where relnamespace='public'::regnamespace and relname=any(${Object.keys(ownerColumns)})) order by source,definition`;
         assert.equal(fks.filter((x) => x.target === "auth.users").length, 7);
         assert.equal(
           fks.filter((x) => x.source === "companion_group_members").length,

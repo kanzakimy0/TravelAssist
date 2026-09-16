@@ -11,9 +11,8 @@ import {
 const ident = (s) => '"' + s.replaceAll('"', '""') + '"';
 const dialect = new PgDialect();
 
-export async function catalog(db) {
+export async function catalog(db, names = manifest.tables) {
   // Definitions only: no user data, UUID fixtures, connection strings or credentials.
-  const names = manifest.tables;
   return {
     migrations:
       await db`select version from supabase_migrations.schema_migrations order by version`,
