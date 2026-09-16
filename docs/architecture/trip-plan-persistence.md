@@ -89,3 +89,7 @@ At start and latest check #221 is Open / Draft / Partial (`ae8b1e1`); #207 stays
 Before delivery fetch develop again. If #221 or another DB task merges, retain its migration, safely integrate shared schema index/WBS, regenerate database types, and rerun Local reset/types/RLS and full regression. If still Draft, future integration must perform those same checks; it is not a blocker for this independent four-table foundation.
 
 No browser/UI QA is claimed or required: zero UI, Planner, Start, Personal Center, Mapbox, local draft or real provider modifications. No downstream WBS starts automatically.
+
+## TASK-063 transaction composition (2026-09-17)
+
+WBS 4.22 now reuses this writer through internal transaction primitives; regular repository behavior remains unchanged. Engine apply locks/reads the authoritative tree under verified authenticated RLS, persists only the existing target Plan via the shared writer, and uses the same SQL revision/CAS triggers. The three new Engine metadata tables introduce no foreign keys to replaceable Trip child rows. See [Engine transactional apply](engine-transaction-apply.md) for atomic receipts/audit/outbox, historical target references, account cascade and reconciliation. The preceding foundation-only statements describe TASK-019/026 execution time. Current WBS 8.5 Owner is B per the authoritative owner-correction document.

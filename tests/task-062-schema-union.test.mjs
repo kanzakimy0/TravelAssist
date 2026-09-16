@@ -15,6 +15,9 @@ test("TASK-062 combined SQL mirrors and generated contracts retain A and B witho
     "trip_plans",
     "trip_days",
     "itinerary_items",
+    "engine_apply_receipts",
+    "engine_apply_audits",
+    "engine_apply_outbox",
   ].sort();
   assert.deepEqual(allTables.map((t) => t.name).sort(), expected);
   assert.deepEqual(

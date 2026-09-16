@@ -1242,3 +1242,7 @@ B = Deferred Implementation Decision：仍未解决，必须在指定依赖/未�
 后续OD关闭须提供Owner确认、正式契约/版本、fixture和目标Consumer验收；涉及新增wire字段/operation payload或改变outcome/副作用语义时，按0.9及§2.2发布显式Amendment，不在已冻结v0.1下静默改义。仅实现现有事务/权限要求或选择已声明策略输入不需要重新否定整个4.20完成状态。
 
 完整审计、检查记录及独立Closeout PR见 [Final Closeout Result](../tasks/RESULT-WBS-4.20-b-engine-contract-final-closeout.md)。本次只改文档/Tracking，不改4.21 runtime、不实现4.22、不接DB/API/AI/Booking/Payment。
+
+## TASK-063 implementation note (2026-09-17)
+
+The narrow WBS 4.22 implementation is described in [Engine transactional apply](engine-transaction-apply.md). OD-8.5-02 now has an implemented actor-bound persistent scope/hash/uniqueness/replay/reconciliation path for user UPDATE_TIME and REORDER_ITEMS. Retention remains deferred with no automatic pruning; confirmation grants, event consumption and rollback execution remain deferred. This additive note does not amend the frozen contract declarations or rewrite the historical 4.20/4.21 boundary.

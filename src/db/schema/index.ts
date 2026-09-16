@@ -12,3 +12,8 @@ export {
   companionGroupMembers,
 } from "./companions";
 export { tripLibraryRecords } from "./trip-library";
+export {
+  engineApplyReceipts,
+  engineApplyAudits,
+  engineApplyOutbox,
+} from "./engine-apply";

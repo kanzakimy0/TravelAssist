@@ -1,76 +1,27 @@
 import "server-only";
-import { and, eq, inArray, sql } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "../../types/database.generated";
 import { requireAuthUser } from "../../lib/auth/server-user";
 import { getDb } from "../../db/index";
+import { trips, tripPlans } from "../../db/schema/trips";
 import {
-  trips,
-  tripPlans,
-  tripDays,
-  itineraryItems,
-} from "../../db/schema/trips";
-import {
-  itemToRow,
   requireUuid,
-  rowsToSnapshot,
   TripPersistenceError,
   validatedSnapshot,
 } from "./projection";
 
-type Db = ReturnType<typeof getDb>;
-type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
-type Snapshot = ReturnType<typeof validatedSnapshot>;
+import {
+  readTree,
+  insertDays,
+  replaceTripTree,
+  setTripActor,
+  type TripTransaction,
+} from "./transaction";
 
-async function readTree(tx: Tx, id: string) {
-  const [trip] = await tx.select().from(trips).where(eq(trips.id, id));
-  if (!trip) throw new TripPersistenceError("NOT_FOUND");
-  const plans = await tx
-    .select()
-    .from(tripPlans)
-    .where(eq(tripPlans.tripId, id));
-  const days = plans.length
-    ? await tx
-        .select()
-        .from(tripDays)
-        .where(
-          inArray(
-            tripDays.planId,
-            plans.map((p) => p.id),
-          ),
-        )
-    : [];
-  const items = days.length
-    ? await tx
-        .select()
-        .from(itineraryItems)
-        .where(
-          inArray(
-            itineraryItems.dayId,
-            days.map((d) => d.id),
-          ),
-        )
-    : [];
-  return rowsToSnapshot({ trip, plans, days, items });
-}
-async function insertDays(tx: Tx, plan: Snapshot["plans"][number]) {
-  for (const d of plan.days) {
-    await tx.insert(tripDays).values({
-      id: d.id,
-      planId: plan.id,
-      dayNumber: d.dayNumber,
-      localDate: d.localDate,
-      timezone: d.timezone,
-    });
-    const items = [
-      ...d.items.map((i, n) => itemToRow(i, d.id, "scheduled", n)),
-      ...d.alternatives.map((i, n) => itemToRow(i, d.id, "alternative", n)),
-    ];
-    // Bound parameter count for valid large contracts.
-    for (let n = 0; n < items.length; n += 200)
-      await tx.insert(itineraryItems).values(items.slice(n, n + 200));
-  }
-}
+type Db = ReturnType<typeof getDb>;
+type Tx = TripTransaction;
+
 function publicFailure(error: unknown): never {
   if (error instanceof TripPersistenceError) throw error;
   const candidates = [error, error instanceof Error ? error.cause : null];
@@ -102,10 +53,7 @@ export function createTripRepository(
     try {
       return await database().transaction(
         async (tx) => {
-          await tx.execute(
-            sql`select set_config('request.jwt.claim.sub',${user.data.userId},true), set_config('request.jwt.claims',${JSON.stringify({ sub: user.data.userId, role: "authenticated" })},true)`,
-          );
-          await tx.execute(sql`set local role authenticated`);
+          await setTripActor(tx, user.data.userId);
           return operation(tx, user.data.userId);
         },
         {
@@ -147,69 +95,7 @@ export function createTripRepository(
     },
     async replace(input: unknown) {
       const s = validatedSnapshot(input);
-      return run(async (tx) => {
-        const [current] = await tx
-          .select()
-          .from(trips)
-          .where(eq(trips.id, s.trip.id))
-          .for("update");
-        if (!current) throw new TripPersistenceError("NOT_FOUND");
-        if (current.revision !== s.trip.revision)
-          throw new TripPersistenceError("STALE_TRIP");
-        const existing = await tx
-          .select()
-          .from(tripPlans)
-          .where(eq(tripPlans.tripId, s.trip.id))
-          .for("update");
-        for (const p of s.plans) {
-          const old = existing.find((e) => e.id === p.id);
-          if (old ? old.revision !== p.revision : p.revision !== 1)
-            throw new TripPersistenceError("STALE_PLAN");
-        }
-        // Root CAS precedes all child writes. SQL coalesces all changes in this transaction.
-        await tx
-          .update(trips)
-          .set({
-            title: s.trip.title,
-            status: s.trip.status,
-            defaultTimezone: s.trip.defaultTimezone,
-            activePlanId: s.trip.activePlanId,
-            provenance: s.provenance,
-            revision: s.trip.revision,
-          })
-          .where(
-            and(eq(trips.id, s.trip.id), eq(trips.revision, s.trip.revision)),
-          );
-        const removed = existing.filter(
-          (p) => !s.plans.some((x) => x.id === p.id),
-        );
-        if (removed.length)
-          await tx.delete(tripPlans).where(
-            inArray(
-              tripPlans.id,
-              removed.map((p) => p.id),
-            ),
-          );
-        // Replace normalized child rows atomically, never upsert an ID belonging to another tree.
-        // No history/booking table currently references these IDs. Future FK consumers need a delta writer.
-        for (const [position, p] of s.plans.entries()) {
-          if (existing.some((e) => e.id === p.id)) {
-            await tx
-              .update(tripPlans)
-              .set({ title: p.title, position, revision: p.revision })
-              .where(eq(tripPlans.id, p.id));
-            await tx.delete(tripDays).where(eq(tripDays.planId, p.id));
-          } else
-            await tx.insert(tripPlans).values({
-              id: p.id,
-              tripId: s.trip.id,
-              title: p.title,
-              position,
-            });
-          await insertDays(tx, p);
-        }
-        return readTree(tx, s.trip.id);
-      });
+      return run((tx) => replaceTripTree(tx, s));
     },
     async remove(tripId: string, expectedRevision: number) {
       requireUuid(tripId);
