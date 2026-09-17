@@ -39,7 +39,7 @@
 
 ## 可重放自动验证
 
-`gate-evidence.json`记录实际命令、计数、退出码、日志 SHA-256 和来源文件指纹。完整本地日志/原截图位于执行 worktree 的兄弟目录 `../`（仓库根 `.artifacts/task067/`，忽略提交）；提交的证据 JSON 保留每张截图名称与 hash；5张代表性原始PNG也随PR提交。QA 不使用私有账户或真实 Provider 内容。
+`gate-evidence.json`记录实际命令、计数、退出码、日志 SHA-256 和来源文件指纹。完整本地日志/原截图位于执行 worktree 的兄弟目录 `../`（仓库根 `.artifacts/task067/`，忽略提交）；提交的证据 JSON 保留每张截图名称与 hash；原始PNG保留在忽略目录供本机查看，PR提交机器证据和全部40张截图hash。QA 不使用私有账户或真实 Provider 内容。
 
 ```powershell
 npm ci
@@ -122,14 +122,6 @@ node --import ./tests/register-route-ts.mjs tests/task-067-main-system-state.bro
 
 完整交付见 [Result](../../tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md)。不自动合并，不标记已完成，不启动其他WBS。
 
-## 代表性原始截图
+## CI证据目录修正
 
-![1440x900-route-error.png](screenshots/1440x900-route-error.png)
-
-![1024x768-start-loading.png](screenshots/1024x768-start-loading.png)
-
-![390x844-detail-save-error.png](screenshots/390x844-detail-save-error.png)
-
-![320x568-start-filter-empty.png](screenshots/320x568-start-filter-empty.png)
-
-![320x568-route-disabled.png](screenshots/320x568-route-disabled.png)
+首次exact-head CI [35217842652](https://github.com/kanzakimy0/TravelAssist/actions/runs/35217842652)在2635项中通过2633项、2项资产目录测试失败：可选提交的5张新QA PNG被全仓扫描为未登记素材。修正仅从最终提交移除这5张证据副本；本地原图与全部截图hash保留，没有修改资产目录/扫描器/断言，也没有改变runtime。移除后重新执行完整Node回归，再以新的最终head重跑完整Quality gate。此前Windows全仓通过时这些PNG尚未加入，因此不把旧通过结论冒充包含PNG的CI通过。

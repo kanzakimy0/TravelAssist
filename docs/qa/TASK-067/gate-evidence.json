@@ -1,6 +1,6 @@
 {
   "task": "TASK-067-B",
-  "capturedAt": "2026-09-17T11:49:47.304Z",
+  "capturedAt": "2026-09-17T11:57:29.103Z",
   "executionBase": "3a2779aee65c7335413adcc53ee5b4f7135c654c",
   "latestDevelop": "3a2779aee65c7335413adcc53ee5b4f7135c654c",
   "branch": "codex/b-wbs-3-7-main-system-state-runtime",
@@ -74,14 +74,14 @@
       "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\" (final candidate)",
       "exitCode": 0,
       "logPath": "../candidate-node-final.log",
-      "logSha256": "3ed7103a2855e4eec6c11b71b64d0e16e2b458fea28a12b4a18ffd50a4f01128",
+      "logSha256": "1f9c4cb2a6d1958e6f41878f2faace78229ae192f705231da1848e8a3da274e6",
       "counts": {
         "tests": 2635,
         "pass": 2635,
         "fail": 0,
         "skipped": 0
       },
-      "tail": "✔ browser harness records real engine selection diagnostics and evidence (0.5825ms)\n✔ 9.12 presentation components retain their no-integration boundary (22.71ms)\nℹ tests 2635\nℹ suites 0\nℹ pass 2635\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 109907.6593\n"
+      "tail": "✔ browser harness records real engine selection diagnostics and evidence (0.3671ms)\n✔ 9.12 presentation components retain their no-integration boundary (3.5567ms)\nℹ tests 2635\nℹ suites 0\nℹ pass 2635\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 117820.1087\n"
     },
     {
       "command": "npm run deploy:validate:local",
@@ -258,11 +258,6 @@
     "docs/qa/TASK-067/browser-development.json",
     "docs/qa/TASK-067/browser-production.json",
     "docs/qa/TASK-067/gate-evidence.json",
-    "docs/qa/TASK-067/screenshots/1024x768-start-loading.png",
-    "docs/qa/TASK-067/screenshots/1440x900-route-error.png",
-    "docs/qa/TASK-067/screenshots/320x568-route-disabled.png",
-    "docs/qa/TASK-067/screenshots/320x568-start-filter-empty.png",
-    "docs/qa/TASK-067/screenshots/390x844-detail-save-error.png",
     "docs/qa/TASK-067/state-runtime-matrix.json",
     "docs/tasks/CODEX-TASK-067-b-wbs-3-7-main-system-state-runtime.md",
     "docs/tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md",
@@ -304,34 +299,13 @@
       "OUTSIDE_CURRENT_RUNTIME_CAPABILITY": 5,
       "ALREADY_SATISFIED_UNCHANGED": 3
     },
-    "localMarkdownLinksChecked": 16,
+    "localMarkdownLinksChecked": 11,
     "diffCheck": true,
     "taskOwnedFormatting": true,
     "runtimeAndTestHashesReverified": true,
     "existingWbsFileFormatting": "Only 3.7 row/tracking changed; unrelated historical table formatting retained. git diff --check passed."
   },
-  "screenshotSamples": [
-    {
-      "path": "docs/qa/TASK-067/screenshots/1024x768-start-loading.png",
-      "sha256": "2533c7a3212d02b4eb4a072038035a9e7ce2dd091f0a12c092e7e43a55c68b73"
-    },
-    {
-      "path": "docs/qa/TASK-067/screenshots/1440x900-route-error.png",
-      "sha256": "2e1d31dcb6f3448903a8723d8316d33bc514729af70e125801ed11dc17351207"
-    },
-    {
-      "path": "docs/qa/TASK-067/screenshots/320x568-route-disabled.png",
-      "sha256": "662d17c55b71e7287dcb5068cb161f9ba963cd3d34926f99abca30c743bd8d54"
-    },
-    {
-      "path": "docs/qa/TASK-067/screenshots/320x568-start-filter-empty.png",
-      "sha256": "433f9254e715e7d427103eadc2c117fcf62afad5de8c1831a0ade56dd1018c63"
-    },
-    {
-      "path": "docs/qa/TASK-067/screenshots/390x844-detail-save-error.png",
-      "sha256": "5fbd757cef1f70122a1f4bfb5c64f01120d895f458af407d9fc0ae227866a627"
-    }
-  ],
+  "screenshotSamples": [],
   "limitations": [
     "No DB/Supabase run required or performed",
     "No Production/Staging operation or deployment",
@@ -350,6 +324,18 @@
         "TASK-033 expected old AI copy; narrowly updated assertion, semantics retained",
         "asset nightly --dry-run existing 30s child timeout while builds ran; final full suite independently rerun unchanged"
       ]
+    },
+    {
+      "run": "https://github.com/kanzakimy0/TravelAssist/actions/runs/35217842652",
+      "head": "92384d11b61e2c4a595cf8ac3334d2b95a23e7d1",
+      "tests": 2635,
+      "pass": 2633,
+      "fail": 2,
+      "logSha256": "290a1e2b3eaa44d3c7842d218f86794fd46f2a04d5d3b6b09831ffd558b61098",
+      "causes": [
+        "Five optional QA PNG copies were committed after the local full suite and became new uncatalogued asset sources."
+      ],
+      "resolution": "Remove only the five optional committed copies, retain all local originals and screenshot hashes, do not modify asset catalog/scanner/assertions. Rerun full Node 2635/2635 after removal; require a new exact-head CI run."
     }
   ],
   "syntheticCleanup": "Playwright contexts/browser closed in finally; local servers stopped; no synthetic DB fixtures; no production debug switches.",
@@ -359,5 +345,12 @@
     "isDraft": true,
     "state": "OPEN",
     "base": "develop"
+  },
+  "screenshotStorage": {
+    "committed": false,
+    "reason": "Repository-wide asset catalog invariant; evidence is retained as JSON plus original PNGs outside tracked sources.",
+    "development": "../browser-development-final",
+    "production": "../browser-production",
+    "count": 40
   }
 }

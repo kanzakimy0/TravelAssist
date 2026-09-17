@@ -116,3 +116,5 @@ Docs：
 无需数据库更改，因此没有运行Local Supabase/DB gates；没有Production/Staging DB操作；没有live/paid Provider调用；没有部署。提交前重新fetch检查develop，无漂移，保留原工作区与用户文件。
 
 [完整QA](../qa/TASK-067/README.md)与[逐行矩阵](../qa/TASK-067/state-runtime-matrix.json)均为本次交付组成部分。Final-head delivery receipt必须同时给出head SHA、Quality gate run URL与PASS，缺失时不能声称最终门禁完成。
+
+CI首轮exact-head 35217842652 因5张可选QA截图副本进入全仓资产扫描而失败2项目录测试（2633/2635）。已移除这些提交副本，保留本地原图/40张hash；不改资产目录或测试断言。重新执行完整Node与新final-head Quality gate，具体最终回执绑定PR正文。
