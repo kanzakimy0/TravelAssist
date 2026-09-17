@@ -464,3 +464,6 @@ export function summarizeTrip(input: unknown) {
     },
   };
 }
+
+// Additive parser export: compensation reuses the canonical schedule validation.
+export { schedule as canonicalScheduleV1 };
