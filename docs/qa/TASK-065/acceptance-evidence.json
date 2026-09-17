@@ -1,0 +1,672 @@
+{
+  "task": "TASK-065-B",
+  "issue": 387,
+  "status": "LOCAL_QA_PASS_FINAL_HEAD_ATTESTATION_EXTERNAL",
+  "executionBase": "3d6c326ff62d69c8d1a9fb96bd6dca368faa3642",
+  "branch": "codex/b-wbs-4-24-engine-integration-certification",
+  "implementationCommit": "f4dfcadf3fae2fe9b1aa97196264eb5158316444",
+  "startGate": {
+    "commands": [
+      "git status --short",
+      "git branch --show-current",
+      "git fetch --all --prune",
+      "git rev-parse origin/develop",
+      "git log --oneline -20 origin/develop"
+    ],
+    "originalWorkspace": {
+      "branch": "detached HEAD",
+      "status": "?? outputs/",
+      "preserved": true
+    },
+    "independentCandidateAndBaselineWorktrees": true,
+    "cleanBaselineBeforeAndAfterQA": true,
+    "cleanCandidateAtCreation": true,
+    "latestDevelopRecheck": "3d6c326ff62d69c8d1a9fb96bd6dca368faa3642",
+    "taskSourceCommit": "53470e27976eb30fb8e5219ff11162cb8e362a4b",
+    "prerequisites": {
+      "4.20": "completed/Frozen",
+      "4.20.1": "completed",
+      "4.21": "completed",
+      "4.22": "B/completed",
+      "4.23": "B/completed",
+      "8.5": "B/completed; authoritative owner correction",
+      "7.5": "completed"
+    }
+  },
+  "commands": [
+    {
+      "log": "baseline-npm-ci.log",
+      "command": "npm ci (clean detached develop)",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "24607409df9e0ac1067b64819927af24aa33158f31563c480bd316391338c15f",
+      "finishedAt": "2026-09-17T02:54:57.197Z"
+    },
+    {
+      "log": "candidate-npm-ci.log",
+      "command": "npm ci",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "0a60b2853023539eed0c15d3d3ab99d0f7168cd7fcd2054a14d4166b02c25fd3",
+      "finishedAt": "2026-09-17T02:55:00.185Z"
+    },
+    {
+      "log": "baseline-full-node.log",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\" (clean develop)",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "684c5e282f3c4dc2a6efef2b6b3fd0917acadb406f407b364745950ef810d040",
+      "finishedAt": "2026-09-17T02:55:35.571Z",
+      "counts": {
+        "tests": 2557,
+        "pass": 2557,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "db-start.log",
+      "command": "npm run db:start",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "005c1e46b8ca3389a232ee8841ec9399f8c6391373a13269e659736c265f48e3",
+      "finishedAt": "2026-09-17T02:56:44.053Z"
+    },
+    {
+      "log": "db-status.log",
+      "command": "npm run db:status",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "558cfa38c3d004b4e16afed0bef701e48ad95d8d9713bd053a12b55a8a1f73c4",
+      "finishedAt": "2026-09-17T02:59:29.451Z"
+    },
+    {
+      "log": "initial-reset-types.log",
+      "command": "npm run db:reset; npm run db:types",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "a09519f04fdaba5450795e94db8a2efec99db503ddf57ba7da3e93c3907bddbd",
+      "finishedAt": "2026-09-17T03:01:04.084Z"
+    },
+    {
+      "log": "build.log",
+      "command": "npm run build",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "67c2b086f732842bf74684bb36df7ba014bfbc8d07f49e1e596eef7a3af49be6",
+      "finishedAt": "2026-09-17T03:01:23.109Z"
+    },
+    {
+      "log": "seeded-certification.log",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-065-engine-certification.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "267deabdc054e327944d5218e0d0ef718d9879fd177abfd267c05f1042bcf745",
+      "finishedAt": "2026-09-17T03:13:35.017Z",
+      "counts": {
+        "tests": 41,
+        "pass": 41,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "focused-pure.log",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/wbs-4-21-rule-feasibility.test.mjs tests/task-063-engine-apply.test.mjs tests/task-064-runtime-rollback.test.mjs tests/task-062-schema-union.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "3947ad4f0dda6fa8c6b20e1f8de736dbce8c3eac0132bf3d8ee979b95dd2df56",
+      "finishedAt": "2026-09-17T03:10:53.445Z",
+      "counts": {
+        "tests": 115,
+        "pass": 115,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "trip-plan.log",
+      "command": "npm run test:trip-plan",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "05feba11b31edcb3675a6c2651f7528ccf54fab2e9c1078f7592458ad27d1e53",
+      "finishedAt": "2026-09-17T03:12:13.583Z",
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "routing.log",
+      "command": "npm run test:routing",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "092e0b4673cf2413b3103e4046cdbe1bb6eb133e8ebbf7a1e9f9b2e8449a4721",
+      "finishedAt": "2026-09-17T03:12:15.477Z",
+      "counts": {
+        "tests": 28,
+        "pass": 28,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "typecheck.log",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+      "finishedAt": "2026-09-17T03:10:54.047Z"
+    },
+    {
+      "log": "deploy-validate.log",
+      "command": "npm run deploy:validate:local",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "aabb96ecbfb050026bf72c7dbea1e03194bc782f21a6828986fab543abb6be61",
+      "finishedAt": "2026-09-17T03:14:45.214Z"
+    },
+    {
+      "log": "deploy-build.log",
+      "command": "npm run deploy:build:local",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "13e86232c0fa3124a7eee4bbc0c459729884d381e8948949fd2b7df74331e79d",
+      "finishedAt": "2026-09-17T03:15:30.521Z"
+    },
+    {
+      "log": "deploy-verify.log",
+      "command": "npm run deploy:verify-artifact",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "78bf77f6228ebe2d307c51b822f88e5a8040b1d253c599e905d100aca8c0fab8",
+      "finishedAt": "2026-09-17T03:15:32.831Z"
+    },
+    {
+      "log": "candidate-full-node.log",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\"",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "c5b50bb46f62ef5912a70b6f6d8e643a6714471a2b02f440c7770105222ee76c",
+      "finishedAt": "2026-09-17T03:17:18.724Z",
+      "counts": {
+        "tests": 2598,
+        "pass": 2598,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "runtime-certification.log",
+      "finishedAt": "2026-09-17T03:27:34.0455183Z",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-065-engine-certification.runtime.mjs",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:20:23.9726595Z",
+      "status": "PASS",
+      "logSha256": "47205b8318d5b7ecdb73f4228d3dcdcc7a63c02ab3eef934c3059a51a887a9f0",
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "migration-replays.log",
+      "finishedAt": "2026-09-17T03:29:34.2201086Z",
+      "command": "npm run test:personal-center-migration:replay",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:27:34.0762957Z",
+      "status": "PASS",
+      "logSha256": "5e458e3dbb2ad454f0675f8a333be3ec44465981406e25b8bcc85c48b50057f3"
+    },
+    {
+      "log": "trip-plan-runtime.log",
+      "finishedAt": "2026-09-17T03:29:42.5513682Z",
+      "command": "npm run test:trip-plan:runtime",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:29:34.2232017Z",
+      "status": "PASS",
+      "logSha256": "ca8b8f01a6b220ea7bde8aaac65e150718778069aa7f94d2282bf3ae4d012902",
+      "counts": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "task063-runtime.log",
+      "finishedAt": "2026-09-17T03:30:08.1754222Z",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-063-engine-apply.runtime.mjs",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:29:42.5541704Z",
+      "status": "PASS",
+      "logSha256": "0664dd1eb87ad15a5e323d53b0ef6df13f9023ff0198eb0f2f2cde5965060c33",
+      "counts": {
+        "tests": 35,
+        "pass": 35,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "task064-runtime.log",
+      "finishedAt": "2026-09-17T03:30:49.5088589Z",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-064-runtime-rollback.runtime.mjs",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:30:08.1780390Z",
+      "status": "PASS",
+      "logSha256": "a7274a66d8be9e6dc992bdb0410117f9c5a4a107945cc1f7cc9082e610df5fac",
+      "counts": {
+        "tests": 42,
+        "pass": 42,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "coexistence-runtime.log",
+      "finishedAt": "2026-09-17T03:30:55.7418770Z",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-062-trip-plan-coexistence.runtime.mjs",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:30:49.5115235Z",
+      "status": "PASS",
+      "logSha256": "546dbf7c70739e8e467b9fd545be8f257dd85112c3b62d5f8ac5ee00c921c3b0",
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "log": "personal-center-local.log",
+      "finishedAt": "2026-09-17T03:36:13.1461168Z",
+      "command": "npm run test:personal-center:local",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:30:55.7440299Z",
+      "status": "PASS",
+      "logSha256": "0aaeaeb10210e4baf33954a77c23a4d01ffa1a5c3ec6a7efa55c231503a2b1fb"
+    },
+    {
+      "log": "db-stop.log",
+      "finishedAt": "2026-09-17T03:36:15.3503942Z",
+      "command": "npm run db:stop",
+      "exitCode": 0,
+      "startedAt": "2026-09-17T03:36:13.1483292Z",
+      "status": "PASS",
+      "logSha256": "d8d601c847317969e5aa4665b3e5ba5cce0d4b766ab20a42d2d426f5e9b3af8c"
+    },
+    {
+      "log": "lint-final.log",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762",
+      "finishedAt": "2026-09-17T03:36:39.708Z"
+    },
+    {
+      "log": "format-deploy-final.log",
+      "command": "npm run format:check:deploy",
+      "exitCode": 0,
+      "status": "PASS",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "finishedAt": "2026-09-17T03:37:16.406Z"
+    },
+    {
+      "command": "npx prettier --check \"tests/task-065-*.mjs\" \"docs/qa/TASK-065/**/*.{json,md}\" docs/architecture/engine-v0.1-certification.md docs/tasks/TASK-065-b-wbs-4-24-engine-integration-certification.md docs/tasks/CODEX-TASK-065-b-wbs-4-24-engine-integration-certification.md docs/tasks/RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "format-owned-check.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "git-diff-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "pure": {
+    "cases": 5120,
+    "seed": 106635302,
+    "distribution": {
+      "valid_time": 128,
+      "valid_reorder": 128,
+      "stale_trip": 128,
+      "stale_plan": 128,
+      "user_lock": 128,
+      "system_lock": 128,
+      "booking_lock": 128,
+      "payment_lock": 128,
+      "protected_item": 128,
+      "booking_confirmed": 128,
+      "source_ai": 128,
+      "source_system": 128,
+      "source_provider": 128,
+      "unknown_engine": 128,
+      "unknown_trip": 128,
+      "unknown_operation": 128,
+      "unsupported_delete": 128,
+      "unknown_field": 128,
+      "duplicate_operation": 128,
+      "missing_item": 128,
+      "invalid_schedule": 128,
+      "invalid_order": 128,
+      "duplicate_item": 128,
+      "missing_route": 128,
+      "stale_route": 128,
+      "invalid_route": 128,
+      "valid_route": 128,
+      "short_duration": 128,
+      "compressed_confirmation": 128,
+      "missing_profile": 128,
+      "expired_profile": 128,
+      "unknown_model": 128,
+      "missing_context": 128,
+      "access_mismatch": 128,
+      "oversize_operations": 128,
+      "oversize_reason": 128,
+      "opening_conflict": 128,
+      "low_confidence_route": 128,
+      "invalid_revision": 128,
+      "overload": 128
+    },
+    "outcomes": {
+      "accepted": 384,
+      "blocked": 2944,
+      "needsConfirmation": 384,
+      "unsupported": 1408
+    },
+    "failures": [],
+    "transcriptSha256": "7d2bcb09673fa0c8d611efb4a67a4cdd4adaa229c2ff4251c9d44f208cbd72b6",
+    "independentFullNodeReplayMatches": true
+  },
+  "runtimeSummary": {
+    "applyRounds": 120,
+    "applyCompetingRequests": 1080,
+    "maximumRequestsPerRound": 16,
+    "rollbackRaceRounds": 100,
+    "rollbackCompetingRequests": 560,
+    "bulkEvents": 531,
+    "concurrentWorkers": 8,
+    "bulkTerminalDistribution": {
+      "scope": "initial 8-worker concurrent batch; excludes subsequent lease/fact/cascade fixtures",
+      "processed": 531,
+      "retryableFailure": 0,
+      "terminalFailure": 0,
+      "proof": "runtime-soak.mjs SQL GROUP BY assertion after all eight loops"
+    },
+    "specialTerminalDistribution": {
+      "scope": "explicit lease/retry/fact scenarios",
+      "processed": 9,
+      "terminalFailure": 2,
+      "proof": "asserted processNext/processClaim outcomes: 4 fencing + 1 recovered retry + 4 fact cases; 1 exhausted resolver + 1 abandoned lease exhaustion"
+    },
+    "faultCases": 26,
+    "metadataRoleChecks": 42,
+    "aggregateGraph": {
+      "receipts": 891,
+      "accepted": 544,
+      "nonAccepted": 347,
+      "violations": 0
+    },
+    "minimization": {
+      "scannedRows": 3507,
+      "bytes": 8577573,
+      "tables": [
+        {
+          "table": "engine_apply_receipts",
+          "rows": 891,
+          "sha256": "46e92c77229cda83fb8b276d4b1029db79f97e63b29adf23dbad1c37ae6a8b61"
+        },
+        {
+          "table": "engine_apply_audits",
+          "rows": 544,
+          "sha256": "6ddb509890630a007b34c259b82f918626ba29e1996065d9d521ad820f146e46"
+        },
+        {
+          "table": "engine_apply_outbox",
+          "rows": 544,
+          "sha256": "69e27eba3b7170aac7aba5a0cb0b985e7c45fd5be13c820f59224912bedd3071"
+        },
+        {
+          "table": "engine_apply_preimages",
+          "rows": 544,
+          "sha256": "64692929c2ec4798ea93c3a717c81f7c806944fb00300876ca2f3b0b024c71b9"
+        },
+        {
+          "table": "engine_apply_compensations",
+          "rows": 75,
+          "sha256": "f85d07785dbb1ae58bb2aabd0717dad257806b7fc08fceb1cead0e961ef945d3"
+        },
+        {
+          "table": "engine_rollback_receipts",
+          "rows": 365,
+          "sha256": "f8411dfef44edccfff780cb0b389d177fd8eae13372bcb0c8044da3ea93226ad"
+        },
+        {
+          "table": "engine_runtime_results",
+          "rows": 544,
+          "sha256": "4c1df5897dc585f0abc484a7f858408bbd2a5b0e72b24c0b78f8d6caebd55389"
+        }
+      ],
+      "forbiddenMatches": 0
+    },
+    "cascade": {
+      "publicDeleteStatus": 204,
+      "deletedOwnerReceipts": 869,
+      "allSevenMetadataTablesChecked": true,
+      "otherUserPreserved": true
+    },
+    "cleanup": {
+      "auth": 0,
+      "engine_apply_receipts": 0,
+      "engine_apply_audits": 0,
+      "engine_apply_outbox": 0,
+      "engine_apply_preimages": 0,
+      "engine_apply_compensations": 0,
+      "engine_rollback_receipts": 0,
+      "engine_runtime_results": 0,
+      "faultFunctions": 0
+    },
+    "nonLoopbackProviderAttempts": 0
+  },
+  "personalCenter": {
+    "suites": 15,
+    "counts": {
+      "tests": 877,
+      "pass": 877,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "before": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "after": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    }
+  },
+  "replay": [
+    {
+      "pass": 1,
+      "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+      "catalogSha256": "589df4dbe3afa3b59c99e5b28a2a7b8562cb61562e0593bb748cb47cc965b22a"
+    },
+    {
+      "pass": 2,
+      "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+      "catalogSha256": "589df4dbe3afa3b59c99e5b28a2a7b8562cb61562e0593bb748cb47cc965b22a"
+    }
+  ],
+  "sourceInventory": "source-inventory.json",
+  "sourceFiles": [
+    {
+      "path": "tests/task-065-concurrency.mjs",
+      "sha256": "a58bee4eb3583ce2c83f28cbbac3a7e24064da6714facaee0f351dca5fdd32f2"
+    },
+    {
+      "path": "tests/task-065-engine-certification.runtime.mjs",
+      "sha256": "f827cc67d3c62f6e4896383252b33670304a62cc1422df895ade4c230e464d72"
+    },
+    {
+      "path": "tests/task-065-engine-certification.test.mjs",
+      "sha256": "d0af4e366f421dcd366bc0e4bb599439a3e88bb8b264dd13eb57b63f3d5ff72c"
+    },
+    {
+      "path": "tests/task-065-faults.mjs",
+      "sha256": "55d506f7bf4fc993a8af81d6cd4c794b45a6b45118a0708af081fffece1bf288"
+    },
+    {
+      "path": "tests/task-065-local-harness.mjs",
+      "sha256": "d3ebf95e878fa8bf49f2e06d7ba16782502f5e996609b2bbb4a48ca509935bab"
+    },
+    {
+      "path": "tests/task-065-runtime-soak.mjs",
+      "sha256": "88d7b99c4f16ac35d1ce1918ff18fd1cf1a8fb2a8fb38ec4032fe260bf859977"
+    },
+    {
+      "path": "tests/task-065-security.mjs",
+      "sha256": "504592056c7185b40599a90a78204551180d04167437bc36f0c6faa8d47905d3"
+    },
+    {
+      "path": "tests/task-065-seeded.mjs",
+      "sha256": "511c41a8bf5a54f0e11f6fe7247ce2e40810de23fd723d8eae7b221b96f3c564"
+    }
+  ],
+  "productionChanges": {
+    "runtime": 0,
+    "contract": 0,
+    "schema": 0,
+    "historicalMigration": 0,
+    "generatedTypes": 0,
+    "ui": 0,
+    "productHttp": 0,
+    "packageDependencies": 0
+  },
+  "harnessCalibration": [
+    {
+      "kind": "test_fixture",
+      "case": 1152,
+      "seed": 106635302,
+      "originalMutation": "booking.status=confirmed with null referenceId and verifiedAt",
+      "actual": "blocked INPUT_INVALID",
+      "correction": "Supply canonical required synthetic booking evidence; unsupported booking gate then exercised"
+    },
+    {
+      "kind": "test_expectation",
+      "case": 3200,
+      "seed": 106635302,
+      "originalMutation": "extra rawProvider top-level RouteResponse field",
+      "actual": "blocked ASSESSMENT_INPUT_MISSING",
+      "correction": "Assert established invalid-context code rather than INPUT_INVALID"
+    },
+    {
+      "kind": "test_result_shape",
+      "gate": "first reduced smoke",
+      "actual": "SQL returned one processed-count row (103 events), but PostgreSQL Result and Array prototypes differ",
+      "correction": "Compare [...rows] with expected rows; values unchanged"
+    },
+    {
+      "kind": "formatting",
+      "gate": "initial task-owned formatting",
+      "correction": "Prettier and unused test import cleanup; final lint has no warnings"
+    },
+    {
+      "kind": "optional_observer_not_a_gate",
+      "actual": "Post-run observer started during next Local reset; Local helper unavailable",
+      "resolution": "Not reported PASS. Bulk distribution is backed by successful in-harness SQL GROUP BY assertion"
+    },
+    {
+      "kind": "evidence_labels",
+      "correction": "Measured lock wait counts named observedLockWaiters; distinguish advisory vs Trip root. No execution assertion changed."
+    }
+  ],
+  "localArtifact": {
+    "headAtBuild": "3d6c326ff62d69c8d1a9fb96bd6dca368faa3642",
+    "productionSourceEqualsExecutionBase": true,
+    "fileCount": 1869,
+    "verified": true,
+    "finalHeadArtifact": "Exact-head workflow_dispatch rebuild/verification; final proof in PR delivery JSON"
+  },
+  "finalCandidateHead": {
+    "binding": "Draft PR headRefOid at delivery, recorded together with exact workflow_dispatch headSha in PR delivery JSON and local final-head-attestation.json",
+    "selfReferentialShaNotInvented": true
+  },
+  "ci": {
+    "requiredWorkflow": "quality-gate.yml",
+    "requiredEvent": "workflow_dispatch",
+    "requiredConclusion": "success",
+    "requiredHeadMatch": "run.headSha === final PR headRefOid",
+    "proofLocation": "Draft PR final delivery JSON and final user response",
+    "status": "EXTERNAL_FINAL_HEAD_ATTESTATION"
+  },
+  "delivery": {
+    "pullRequest": "PENDING",
+    "draftRequired": true,
+    "issueMustRemainOpen": true,
+    "wbs424": "B / 进行中; set 待审查 after Draft PR",
+    "mergeAuthorized": false
+  },
+  "scope": {
+    "source": "user",
+    "operations": ["UPDATE_TIME", "REORDER_ITEMS"],
+    "confirmationGrant": false,
+    "bookingPayment": false,
+    "aiSystemProviderApply": false,
+    "livePaidProviderCalls": 0,
+    "productionStagingMutation": false,
+    "workerDeployment": false,
+    "plannerHttpWiring": false,
+    "otherWbsStatusChanges": false
+  },
+  "testCountWarning": "Focused, wrapper, full Node and Personal Center suites overlap. Do not add their test totals."
+}

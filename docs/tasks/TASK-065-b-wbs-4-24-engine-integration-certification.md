@@ -6,11 +6,15 @@
 - WBS: `4.24 — Engine回归 / 并发 / 回放与集成验收`
 - Owner: `B / TravelAssist Engine Runtime & QA`
 - Priority: `P1`
-- Status: `进行中`
+- Status: `待验收`
 - GitHub Issue: `#387`
 - Publication baseline: `develop@3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`
 - Task publication branch: `task/b-wbs-4-24-engine-integration-certification`
 - Planned implementation branch: `codex/b-wbs-4-24-engine-integration-certification`
+
+- Commit: f4dfcadf3fae2fe9b1aa97196264eb5158316444
+- Pull Request: PENDING_DRAFT_PR
+- Result: [TASK-065-B Result](RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md)
 
 ## 1. Purpose
 
