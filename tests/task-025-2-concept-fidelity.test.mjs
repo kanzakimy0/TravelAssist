@@ -464,7 +464,7 @@ test("TASK-033-B: actual panel labels its region and textarea and explicitly dis
     html,
     /<button[^>]+aria-label="发送（AI 服务尚未接入）"[^>]+disabled=""/,
   );
-  assert.match(html, /AI 服务将在后续接入/);
+  assert.match(html, /AI 服务尚未接入/);
   assert.equal((html.match(/<textarea\b/g) || []).length, 1);
   assert.doesNotMatch(html, /<form|action=|aria-live=|正在生成|生成完成/);
 });

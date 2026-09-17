@@ -1,3 +1,9 @@
+import {
+  StateNotice,
+  StateSkeleton,
+} from "../../../components/ui/state-notice";
+import { StateAction } from "../../../components/ui/state-action";
+import { routeErrorPresentation } from "../model/route-presentation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   RouteError,
@@ -34,24 +40,6 @@ export interface PlannerRouteQueryState {
 
 function initialState(status: QueryStatus): PlannerRouteQueryState {
   return { status, result: null, error: null, selectedAlternativeId: null };
-}
-
-function routeErrorMessage(error: RouteError | null) {
-  if (!error) return "路线查询失败，请稍后重试。";
-  if (error.metadata.reason === "unauthorized")
-    return "登录状态未通过验证，未向路线 Provider 发起查询。";
-  if (error.metadata.reason === "provider_not_configured")
-    return "开发期路线服务尚未配置，当前继续使用手动估算。";
-  switch (error.code) {
-    case "provider_timeout":
-      return "路线查询超时，请稍后重试。";
-    case "provider_rate_limited":
-      return "路线查询暂时繁忙，请稍后重试。";
-    case "provider_unavailable":
-      return "路线服务暂时不可用，请稍后重试。";
-    default:
-      return error.message || "路线查询失败，请稍后重试。";
-  }
 }
 
 export function usePlannerRouteQuery({
@@ -124,8 +112,7 @@ export function usePlannerRouteQuery({
   }, []);
 
   const run = useCallback(async () => {
-    if (!enabled || !resolution.ok) return;
-    active.current?.abort();
+    if (!enabled || !resolution.ok || active.current) return;
     const controller = new AbortController();
     active.current = controller;
     const requestSequence = ++sequence.current;
@@ -206,44 +193,87 @@ export function PlannerRouteQueryPanel({
   query: ReturnType<typeof usePlannerRouteQuery>;
 }) {
   const { resolution, state } = query;
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const actionHadFocus = useRef(false);
+  const failure = routeErrorPresentation(state.error);
+  const canQuery =
+    (resolution.ok &&
+      ["idle", "ready", "stale", "loading"].includes(state.status)) ||
+    (resolution.ok && state.status === "error" && failure.retryable);
+  useEffect(() => {
+    if (
+      state.status !== "loading" &&
+      actionHadFocus.current &&
+      document.activeElement === document.body
+    )
+      titleRef.current?.focus({ preventScroll: true });
+    if (state.status !== "loading") actionHadFocus.current = false;
+  }, [state.status, canQuery]);
   const summary = state.result
     ? routeResultSummary(state.result, state.selectedAlternativeId)
     : null;
   return (
     <section className={css.routeQuery} data-route-query-status={state.status}>
       <header>
-        <strong>开发期路线核对</strong>
+        <h3 ref={titleRef} tabIndex={-1}>
+          开发期路线核对
+        </h3>
         <small>仅当前会话 · 不保存 · 不绘制 Provider 路线</small>
       </header>
-      {state.status === "disabled" && <p>路线查询未启用，当前仍为手动估算。</p>}
-      {state.status === "unsupported" && !resolution.ok && (
-        <p>
-          站点尚未可靠解析：{resolution.origin.displayName || "起点"} →{" "}
-          {resolution.destination.displayName || "终点"}
-          。未用景点名或坐标冒充车站。
-        </p>
-      )}
-      {state.status === "unsupported" && resolution.ok && (
-        <p role="status">{routeErrorMessage(state.error)}</p>
-      )}
-      {state.status === "idle" && resolution.ok && (
-        <p>
-          {resolution.value.origin.displayName} →{" "}
-          {resolution.value.destination.displayName}
-        </p>
-      )}
-      {state.status === "loading" && (
-        <p role="status">正在查询已核验站点路线…</p>
-      )}
-      {state.status === "stale" && (
-        <p role="status">端点或时间已变化，旧结果已丢弃。</p>
-      )}
-      {state.status === "no_route" && (
-        <p role="status">没有找到满足条件的路线。</p>
-      )}
-      {state.status === "error" && (
-        <p role="alert">{routeErrorMessage(state.error)}</p>
-      )}
+      <StateNotice
+        compact
+        kind={
+          state.status === "loading"
+            ? "loading"
+            : state.status === "no_route"
+              ? "empty"
+              : state.status === "error"
+                ? "error"
+                : state.status === "stale"
+                  ? "degraded"
+                  : "info"
+        }
+        title={
+          state.status === "disabled"
+            ? "路线查询尚未开放"
+            : state.status === "loading"
+              ? "正在加载路线预览…"
+              : state.status === "stale"
+                ? "路线信息需要更新"
+                : state.status === "no_route"
+                  ? "没有找到符合条件的路线"
+                  : state.status === "error" ||
+                      (state.status === "unsupported" && resolution.ok)
+                    ? failure.title
+                    : state.status === "unsupported"
+                      ? "暂时无法查询此路线"
+                      : state.status === "ready"
+                        ? "路线预览已载入"
+                        : "选择已核验站点查询路线"
+        }
+        description={
+          state.status === "disabled"
+            ? "当前仅展示已有估算，不能据此确认真实班次或票价。"
+            : state.status === "loading"
+              ? "其他区域仍可使用；请勿重复查询。"
+              : state.status === "stale"
+                ? "旧信息不用于确认耗时或可行性；请按当前条件重新查询。"
+                : state.status === "no_route"
+                  ? "请调整出发时间或已支持的查询条件。"
+                  : state.status === "error" ||
+                      (state.status === "unsupported" && resolution.ok)
+                    ? failure.description
+                    : state.status === "unsupported"
+                      ? "站点尚未可靠解析；当前行程和手动估算保持不变。"
+                      : state.status === "idle" && resolution.ok
+                        ? resolution.value.origin.displayName +
+                          " → " +
+                          resolution.value.destination.displayName
+                        : "仅用于当前预览，不代表真实班次、票价或可行性保证。"
+        }
+      >
+        {state.status === "loading" && <StateSkeleton rows={1} />}
+      </StateNotice>
       {state.status === "ready" && state.result && summary && (
         <>
           <dl>
@@ -317,22 +347,25 @@ export function PlannerRouteQueryPanel({
         </>
       )}
       <footer>
-        {state.status === "loading" ? (
-          <button type="button" onClick={query.cancel}>
-            取消查询
-          </button>
-        ) : (
-          <button
-            type="button"
-            disabled={!resolution.ok || state.status === "disabled"}
-            onClick={query.run}
+        {canQuery && (
+          <StateAction
+            pending={state.status === "loading"}
+            pendingLabel="正在查询…"
+            onAction={() => {
+              actionHadFocus.current =
+                document.activeElement?.tagName === "BUTTON";
+              return query.run();
+            }}
           >
-            {state.status === "ready"
-              ? "重新查询"
-              : state.error?.retryable
-                ? "重试路线"
+            {state.status === "error"
+              ? "重试路线"
+              : state.status === "ready" || state.status === "stale"
+                ? "重新查询"
                 : "查询路线"}
-          </button>
+          </StateAction>
+        )}
+        {state.status === "loading" && (
+          <StateAction onAction={query.cancel}>取消查询</StateAction>
         )}
       </footer>
     </section>

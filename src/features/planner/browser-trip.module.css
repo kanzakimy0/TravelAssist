@@ -195,3 +195,17 @@ dialog.planConfirmation[data-kind="quick"] {
     flex-direction: column;
   }
 }
+
+.restoring {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  padding: var(--space-4);
+  overflow: auto;
+  align-self: start;
+}
+
+.detailActions small[data-save-error] {
+  white-space: normal;
+  overflow: visible;
+  color: var(--color-text-primary);
+}

@@ -1,3 +1,4 @@
+import { StateNotice } from "../../../components/ui/state-notice";
 import { displayRouteColor } from "../map/route-color";
 import {
   useEffect,
@@ -120,6 +121,14 @@ export function PlannerMapShell({
     session.current?.update(view);
   }, [view, travelHints]);
   const live = mapStatus.startsWith("Mapbox 底图");
+  const loadingMap = Boolean(token) && mapStatus.startsWith("正在加载");
+  const safeMapStatus = live
+    ? "地图已载入"
+    : loadingMap
+      ? "正在加载地图；暂用示意图"
+      : token
+        ? "地图暂时不可用；保留示意图"
+        : "示意地图 · 底图未启用";
   const layout = schematicLayout(view, bounds.width, bounds.height);
   const feature = view.places.find(
     (p) =>
@@ -161,7 +170,7 @@ export function PlannerMapShell({
         />
       )}
       <div className={styles.mapInfo}>
-        <p role="status">{mapStatus}</p>
+        <p role="status">{safeMapStatus}</p>
         <small>
           {view.range === "all"
             ? "城市 / 住宿结构 / 城际移动"
@@ -174,6 +183,24 @@ export function PlannerMapShell({
           地图地点列表 · {view.places.length + view.areas.length}
         </summary>
         <div role="group" aria-label="地图等价操作列表">
+          {!live && (
+            <StateNotice
+              compact
+              announcement="off"
+              kind={loadingMap ? "loading" : "degraded"}
+              title={safeMapStatus}
+              description="可以继续查看地点列表；当前示意图不代表真实道路。"
+            />
+          )}
+          {view.places.length + view.areas.length === 0 && (
+            <StateNotice
+              compact
+              announcement="off"
+              kind="empty"
+              title="当前范围没有可展示地点"
+              description="请调整现有日期或图层；其他行程内容保持不变。"
+            />
+          )}
           {view.areas.map((area) => (
             <button
               key={area.id}

@@ -12,10 +12,12 @@ export function WizardLayout({
   children,
   currentStep,
   viewer = null,
+  storageUnavailable = false,
 }: {
   children: ReactNode;
   currentStep: number;
   viewer?: HomeViewer | null;
+  storageUnavailable?: boolean;
 }) {
   return (
     <div className={styles.flowLayout}>
@@ -32,7 +34,9 @@ export function WizardLayout({
         </main>
       </FloatingPanel>
       <p className={styles.privacyNote}>
-        草稿仅保存在当前浏览器，可随时返回继续填写。
+        {storageUnavailable
+          ? "当前修改暂未保存到浏览器，请在离开前确认。"
+          : "草稿仅保存在当前浏览器，可随时返回继续填写。"}
       </p>
     </div>
   );

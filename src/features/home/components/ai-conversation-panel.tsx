@@ -1,5 +1,6 @@
 import type { Ref } from "react";
 
+import { StateNotice } from "@/components/ui/state-notice";
 import { Button } from "@/components/ui/button";
 import { FloatingPanel } from "@/components/ui/floating-panel";
 
@@ -57,7 +58,14 @@ export function AIConversationPanel({
           发送
         </Button>
       </div>
-      <p className={styles.note}>AI 服务将在后续接入</p>
+      <StateNotice
+        compact
+        kind="info"
+        announcement="off"
+        className={styles.note}
+        title="AI 服务尚未接入"
+        description="您可以继续使用已有规划功能。"
+      />
     </FloatingPanel>
   );
 }

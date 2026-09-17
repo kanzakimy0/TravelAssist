@@ -1,5 +1,10 @@
 "use client";
 
+import {
+  StateNotice,
+  StateSkeleton,
+} from "../../../components/ui/state-notice";
+import { WorkspaceHeader } from "./workspace-header";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   useEffect,
@@ -49,6 +54,7 @@ import { useBrowserTrip } from "./use-browser-trip";
 import { restoreRecommendation } from "../model/recommendation-actions";
 import { PlannerOverlay } from "./planner-overlay";
 import localSave from "../browser-trip.module.css";
+import styles from "../planner.module.css";
 import projectStyles from "../detail-map-inspector.module.css";
 import { AddTripItemDialog, TripItemDialog } from "./trip-item-dialog";
 import { BookingChecklist } from "./booking-checklist";
@@ -713,9 +719,17 @@ export function PlannerPage({
         保存行程
       </button>
       <small
-        role="status"
+        role={
+          browserTrip.error &&
+          (planAction ||
+            browserTrip.destination ||
+            browserTrip.overwritePending)
+            ? undefined
+            : "status"
+        }
         title={`${browserTrip.status} · 浏览器仅保存一份，新方案保存前会确认是否替换旧方案`}
         className={browserTrip.error ? localSave.error : undefined}
+        data-save-error={Boolean(browserTrip.error) || undefined}
       >
         {browserTrip.status} · 仅保留一份
       </small>
@@ -821,6 +835,30 @@ export function PlannerPage({
         }}
       />
     ) : null;
+  if (!browserTrip.ready)
+    return (
+      <div className={styles.planner} data-planner data-workspace-mode={mode}>
+        <WorkspaceHeader viewer={viewer} />
+        <main
+          id="planner-workspace"
+          tabIndex={-1}
+          className={styles.workspace}
+          data-right-collapsed={rightCollapsed}
+          data-bottom-collapsed={bottomCollapsed}
+          data-view={mode}
+        >
+          <div className={localSave.restoring}>
+            <StateNotice
+              kind="loading"
+              title="正在读取此浏览器的草稿…"
+              description="读取结束前暂不覆盖现有记录。"
+            >
+              <StateSkeleton />
+            </StateNotice>
+          </div>
+        </main>
+      </div>
+    );
   return (
     <WorkspaceCapabilities.Provider
       value={{
@@ -1079,9 +1117,13 @@ export function PlannerPage({
                 </label>
               )}
             {planAction.kind === "save" && browserTrip.error && (
-              <p role="alert" className={localSave.error}>
-                {browserTrip.error}
-              </p>
+              <StateNotice
+                compact
+                kind="error"
+                announcement="assertive"
+                title="未能保存本次修改"
+                description={browserTrip.error}
+              />
             )}
             <footer>
               <button type="button" onClick={closePlanAction}>
@@ -1189,7 +1231,19 @@ export function PlannerPage({
               浏览器草稿（{browserTrip.archivedDrafts.length}）
             </button>
             {browserTrip.error && (
-              <small role="alert">{browserTrip.error}</small>
+              <StateNotice
+                compact
+                kind="error"
+                announcement={
+                  planAction ||
+                  browserTrip.destination ||
+                  browserTrip.overwritePending
+                    ? "off"
+                    : "polite"
+                }
+                title="暂时无法读取或保存记录"
+                description={browserTrip.error}
+              />
             )}
           </>
         </section>
@@ -1225,7 +1279,12 @@ export function PlannerPage({
                 </p>
               ))
             ) : (
-              <p>还没有另存的草稿。</p>
+              <StateNotice
+                kind="empty"
+                announcement="off"
+                title="还没有另存的草稿"
+                description="关闭后可继续查看当前行程；这里只显示另存到此浏览器的草稿。"
+              />
             )}
           </div>
         </PlannerOverlay>
@@ -1241,9 +1300,13 @@ export function PlannerPage({
               放弃将撤销本次未保存修改，不会删除已保存的行程。保存仅保留在当前浏览器，不会同步到其他设备；此浏览器保留一份当前行程，新保存会替换上一份。
             </p>
             {browserTrip.error && (
-              <p className={localSave.error} role="alert">
-                {browserTrip.error}
-              </p>
+              <StateNotice
+                compact
+                kind="error"
+                announcement="assertive"
+                title="未能保存本次修改"
+                description={browserTrip.error}
+              />
             )}
             <footer>
               <button type="button" onClick={browserTrip.cancelLeave}>
@@ -1273,7 +1336,15 @@ export function PlannerPage({
             <p>
               当前浏览器只保留一份行程。此次保存会以当前方案替换之前保存的方案，旧保存无法撤销；不会影响任何真实订单。
             </p>
-            {browserTrip.error && <p role="alert">{browserTrip.error}</p>}
+            {browserTrip.error && (
+              <StateNotice
+                compact
+                kind="error"
+                announcement="assertive"
+                title="未能保存本次修改"
+                description={browserTrip.error}
+              />
+            )}
             <footer>
               <button type="button" onClick={browserTrip.cancelOverwrite}>
                 取消

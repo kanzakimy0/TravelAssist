@@ -1,3 +1,4 @@
+import { StateNotice } from "../../../components/ui/state-notice";
 import { useEffect, useRef, useState, type Dispatch } from "react";
 import type {
   DetailDraftState,
@@ -347,7 +348,15 @@ export function DetailItineraryBoard({
               String(b.props["data-order"]),
             ),
           )}
-          {!items.length && <p>当天暂无安排，使用“新增项目”开始添加。</p>}
+          {!items.length && (
+            <StateNotice
+              compact
+              kind="empty"
+              announcement="off"
+              title="当前日期尚无安排"
+              description="可以查看其他日期，或使用已有的新增项目入口。"
+            />
+          )}
         </div>
       </div>
     </>

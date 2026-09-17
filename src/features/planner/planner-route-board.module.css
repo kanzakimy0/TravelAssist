@@ -319,8 +319,13 @@
   display: grid;
   gap: 2px;
 }
-.routeQuery header strong {
+.routeQuery header h3 {
+  margin: 0;
   font-size: 12px;
+}
+.routeQuery header h3:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
 }
 .routeQuery p,
 .routeQuery small {
@@ -353,14 +358,16 @@
 }
 .routeQuery footer {
   position: static;
-  display: block;
-  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-1);
   background: transparent;
 }
 .routeQuery footer button {
   width: 100%;
-  background: var(--background-accent-primary);
-  color: #fff;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
 }
 .routeQuery footer button:disabled {
   cursor: not-allowed;
@@ -440,4 +447,9 @@
   .dayHeading small {
     display: none;
   }
+}
+
+.routeQuery footer button[class] {
+  flex: 1 1 100%;
+  width: 100%;
 }

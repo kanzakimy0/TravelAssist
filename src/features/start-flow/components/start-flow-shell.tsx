@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { Button } from "@/components/ui/button";
+import { StateNotice, StateSkeleton } from "@/components/ui/state-notice";
 import {
   persistPlannerPlanSelection,
   startEntryStep,
@@ -62,7 +63,7 @@ function subscribeToHydration() {
 function readStoredState(
   initialDraft?: TripWizardDraftPatch,
   entry: StartEntry = null,
-): StoredWizardState {
+): StoredWizardState & { readFailed?: boolean } {
   const fallback: StoredWizardState = {
     currentStep: 0,
     draft: createTripWizardDraft(initialDraft),
@@ -109,9 +110,9 @@ function readStoredState(
       version: 2,
     };
   } catch {
-    window.localStorage.removeItem(STORAGE_KEY);
     return {
       ...fallback,
+      readFailed: true,
       currentStep: startEntryStep(entry) ?? fallback.currentStep,
     };
   }
@@ -131,7 +132,13 @@ export function StartFlowShell({
   if (!hasHydrated) {
     return (
       <WizardLayout currentStep={0} viewer={viewer}>
-        <p className={styles.loadingState}>正在恢复旅行草稿…</p>
+        <StateNotice
+          kind="loading"
+          title="正在读取此浏览器的草稿…"
+          description="读取结束前暂不覆盖现有记录。"
+        >
+          <StateSkeleton />
+        </StateNotice>
       </WizardLayout>
     );
   }
@@ -156,12 +163,24 @@ function HydratedStartFlow({
   );
   const [draft, setDraft] = useState(initialState.draft);
   const [notice, setNotice] = useState("");
+  const [storageFailed, setStorageFailed] = useState(
+    Boolean(initialState.readFailed),
+  );
+  const generationPending = useRef(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
+    if (initialState.readFailed) return;
     const stored: StoredWizardState = { currentStep, draft, version: 2 };
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
-  }, [currentStep, draft]);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+      // Storage is an external system; report its actual write outcome.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setStorageFailed(false);
+    } catch {
+      setStorageFailed(true);
+    }
+  }, [currentStep, draft, initialState.readFailed]);
 
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
@@ -171,6 +190,7 @@ function HydratedStartFlow({
 
   useEffect(() => {
     if (currentStep !== 3 || draft.generationStatus.state !== "generating") {
+      generationPending.current = false;
       return;
     }
 
@@ -203,6 +223,7 @@ function HydratedStartFlow({
   }
 
   function goToStep(step: StepIndex) {
+    generationPending.current = false;
     setNotice("");
     setCurrentStep(step);
   }
@@ -257,13 +278,21 @@ function HydratedStartFlow({
       : [...values, value];
   }
 
-  function saveDraft(message = "草稿已保存") {
+  function saveDraft() {
+    if (initialState.readFailed) return;
     const stored: StoredWizardState = { currentStep, draft, version: 2 };
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
-    setNotice(message);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+      setStorageFailed(false);
+      setNotice("草稿已保存到此浏览器");
+    } catch {
+      setNotice("");
+      setStorageFailed(true);
+    }
   }
-
   function startGeneration() {
+    if (generationPending.current) return;
+    generationPending.current = true;
     setNotice("");
     setCurrentStep(3);
     updateDraft({
@@ -278,6 +307,7 @@ function HydratedStartFlow({
   }
 
   function handleSubmit() {
+    if (generationPending.current) return;
     if (currentStep === 0 && !draft.familiarity) {
       setNotice("请选择您对日本的熟悉程度后再继续。");
       return;
@@ -295,7 +325,27 @@ function HydratedStartFlow({
     draft.generatedPlans.length > 0;
 
   return (
-    <WizardLayout currentStep={currentStep} viewer={viewer}>
+    <WizardLayout
+      currentStep={currentStep}
+      viewer={viewer}
+      storageUnavailable={storageFailed}
+    >
+      {storageFailed && (
+        <StateNotice
+          compact
+          kind="degraded"
+          title={
+            initialState.readFailed
+              ? "暂时无法读取此浏览器的草稿"
+              : "暂时无法保存到此浏览器"
+          }
+          description={
+            initialState.readFailed
+              ? "原记录未改动。当前页面仍可编辑，但本次修改不会覆盖原记录；刷新或离开后可能无法恢复。"
+              : "当前页面仍可编辑；刷新或离开后，未保存内容可能无法恢复。"
+          }
+        />
+      )}
       {currentStep <= 2 ? (
         <div className={styles.form}>
           {currentStep === 0 ? (
@@ -388,7 +438,11 @@ function HydratedStartFlow({
               {currentStep === 2 ? "生成方案" : "下一步"}
               <span aria-hidden="true">→</span>
             </Button>
-            <Button onClick={() => saveDraft()} variant="ghost">
+            <Button
+              disabled={initialState.readFailed}
+              onClick={saveDraft}
+              variant="ghost"
+            >
               保存草稿
             </Button>
           </div>
@@ -396,10 +450,7 @@ function HydratedStartFlow({
       ) : null}
 
       {currentStep === 3 && !showPlans ? (
-        <GenerationStep
-          activeStage={draft.generationStatus.activeStage}
-          headingRef={headingRef}
-        />
+        <GenerationStep onBack={() => goToStep(2)} headingRef={headingRef} />
       ) : null}
       {showPlans ? (
         <PlanSelectionStep
