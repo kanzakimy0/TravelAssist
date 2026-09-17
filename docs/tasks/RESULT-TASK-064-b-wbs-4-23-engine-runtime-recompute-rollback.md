@@ -4,11 +4,11 @@
 
 - Task：TASK-064-B；Issue：[#383](https://github.com/kanzakimy0/TravelAssist/issues/383)，保持 Open。
 - Owner：B / TravelAssist Engine Runtime。
-- Status：实现与本机 QA 完成，待验收；Draft PR 与准确 final-head CI 见交付记录。
+- Status：Completed / Ready for owner review；WBS 4.23 = B / 待审查。
 - Branch：`codex/b-wbs-4-23-runtime-recompute-rollback`。
 - Execution base：`b3c37a40ff8f0690a25d0372ac8e0c8f3cc063ea`。
-- PR：PENDING → develop（必须 Draft / Open，不自动合并）。
-- 实现 commit、最终 head 与 exact-head CI：发布后记录于 PR delivery metadata；提交内不伪造自身 SHA。
+- PR：[#384](https://github.com/kanzakimy0/TravelAssist/pull/384) → develop，Draft / Open。
+- 实现 commit：`e8cce1e9f26a6e2219686d8448dd757cebc797f2`；最终 head 与 exact-head CI 记录于 PR delivery metadata，提交内不伪造自身 SHA。
 - [完整 Task](TASK-064-b-wbs-4-23-engine-runtime-recompute-rollback.md)、[架构说明](../architecture/engine-runtime-events-rollback.md)、[QA](../qa/TASK-064/README.md)、[机器证据](../qa/TASK-064/acceptance-evidence.json)。
 
 ## 启动与前置核实
@@ -108,4 +108,4 @@ Generated types SHA-256：`03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2
 
 4.23 的交付范围是本地 server-only runtime / recompute / compensating rollback。Production context/profile/fact adapter 接线、生产 worker、UI/HTTP 入口、confirmation grant、其他 operation、AI/system/provider_event apply 和 Booking/Payment 副作用未开启。
 
-WBS 4.23 在实际开始时已更新为 B / 进行中；实现、QA、Draft PR 完成后同步 B / 待审查。保留 Issue #383 Open、PR Draft/Open，不自动 merge，不标记已完成，不启动 4.24。7.3 / 7.8 状态不变。没有 rebase、force push、reset --hard、clean -fd 或 Production/Staging DB mutation。
+WBS 4.23 已从实际开始的 B / 进行中更新为 B / 待审查（#383 / TASK-064-B；Draft PR #384）。保留 Issue #383 Open、PR Draft/Open，不自动 merge，不标记已完成，不启动 4.24。7.3 / 7.8 状态不变。没有 rebase、force push、reset --hard、clean -fd 或 Production/Staging DB mutation。

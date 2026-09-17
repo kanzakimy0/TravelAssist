@@ -363,6 +363,24 @@
       "logFile": "db-stop-final.log",
       "logSha256": "d8d601c847317969e5aa4665b3e5ba5cce0d4b766ab20a42d2d426f5e9b3af8c",
       "logCompletedAt": "2026-09-17T00:32:44.380Z"
+    },
+    {
+      "label": "Task-owned format",
+      "command": "npx prettier --check docs/qa/TASK-064/*.json docs/qa/TASK-064/*.md docs/tasks/*TASK-064*.md docs/architecture/engine-runtime-events-rollback.md",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "scoped-format-check.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "logCompletedAt": "2026-09-17T00:34:39.440Z"
+    },
+    {
+      "label": "whitespace",
+      "command": "git diff --check; git diff --cached --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "diff-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "logCompletedAt": "2026-09-17T00:34:39.514Z"
     }
   ],
   "focusedPureBreakdown": {
@@ -938,12 +956,13 @@
     "bookingPaymentReversal": false
   },
   "delivery": {
-    "pullRequest": "PENDING",
+    "pullRequest": 384,
     "draftRequired": true,
     "issueMustRemainOpen": true,
-    "wbs423": "待审查 at Draft PR handoff",
+    "wbs423": "B / 待审查（#383 / TASK-064-B；Draft PR #384）",
     "wbs424": "未开始",
-    "exactFinalHeadCI": "See final PR delivery metadata for exact branch SHA and workflow_dispatch run; no self-referential commit claim."
+    "exactFinalHeadCI": "See final PR delivery metadata for exact branch SHA and workflow_dispatch run; no self-referential commit claim.",
+    "url": "https://github.com/kanzakimy0/TravelAssist/pull/384"
   },
   "initialCorrections": [
     "DB canonical timestamp readback replaces preview string preimage; Local suite rerun",
@@ -957,5 +976,6 @@
     "fileCount": 1869,
     "verified": true,
     "finalHeadArtifact": "Exact final-head workflow_dispatch Quality Gate builds/verifies its checked-out commit; see PR delivery metadata."
-  }
+  },
+  "implementationCommit": "e8cce1e9f26a6e2219686d8448dd757cebc797f2"
 }

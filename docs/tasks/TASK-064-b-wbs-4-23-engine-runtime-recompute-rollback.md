@@ -8,6 +8,8 @@
 - Priority: `P1`
 - Status: `待验收`（TASK-064-B 实现与本机 QA 已完成；发布时 Ready 规格保留于以下正文）
 - GitHub Issue: `#383`
+- Pull Request: [#384](https://github.com/kanzakimy0/TravelAssist/pull/384) — Draft / Open
+- Implementation Commit: `e8cce1e9f26a6e2219686d8448dd757cebc797f2`
 - Publication baseline: `develop@b3c37a40ff8f0690a25d0372ac8e0c8f3cc063ea`
 - Task publication branch: `task/b-wbs-4-23-runtime-recompute-rollback`
 - Planned implementation branch: `codex/b-wbs-4-23-runtime-recompute-rollback`

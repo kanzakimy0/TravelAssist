@@ -676,6 +676,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
+| TASK-064-B | 4.23 | B | 待审查（本机实现与 QA 通过；未合并） | #383 Open | `docs/tasks/RESULT-TASK-064-b-wbs-4-23-engine-runtime-recompute-rollback.md` | `codex/b-wbs-4-23-runtime-recompute-rollback` | `e8cce1e`（实现）；最终 head / CI 见 PR delivery | [#384](https://github.com/kanzakimy0/TravelAssist/pull/384) Draft → develop |
 | TASK-063-B | 4.22 | B | 已完成（用户验收；PR #382 已合并） | #380 Closed / Completed | `docs/tasks/RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md` | `codex/b-wbs-4-22-engine-transaction-apply` | `03136fb8`（验收 head）；`47c9f48c`（merge） | [#382](https://github.com/kanzakimy0/TravelAssist/pull/382) Merged → develop |
 | TASK-062-B | 8.5 | B | 已完成（用户验收；PR #227已合并） | #376 Open（保留此前不自动关闭限制） | `docs/tasks/RESULT-TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md` | `codex/a-trip-plan-schema` | `c35725a3`（验收head）；`842447d2`（merge） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Merged → develop |
 | TASK-019-A / TASK-026-A | 8.5 | A | 待审查（Local 验收通过；完整回归 709/712，未合并） | #226 / #256 Open | `docs/tasks/TASK-019-a-trip-plan-schema.md` / `docs/tasks/RESULT-TASK-026-a-trip-plan-schema-acceptance-closeout.md` | `codex/a-trip-plan-schema` | `b8a5ad5`（实现）；`5df7a32`（整合）；`d1c71f9`（验收记录） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Draft → develop |
@@ -902,7 +903,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 4.20.1 | Engine Contract Amendment / 行程合理性能力预留 | B | P1 | 4.20,4.17；#282 | 已完成 |
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 已完成 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 已完成（TASK-063-B 用户验收；PR #382 merged） |
-| 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 进行中（#383 / TASK-064-B） |
+| 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 待审查（#383 / TASK-064-B；Draft PR #384） |
 | 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 未开始 |
 
 正式入口：[Issue #201](https://github.com/kanzakimy0/TravelAssist/issues/201)、`docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md`。4.21之后逐项建立独立Task，不自动执行。
