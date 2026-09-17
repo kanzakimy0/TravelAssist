@@ -1,10 +1,10 @@
-# 主系统 Loading / Empty / Error / Skeleton 设计冻结候选 v0.1
+# 主系统 Loading / Empty / Error / Skeleton — Frozen v0.1
 
 > TASK-066-B · WBS 1.20 · Owner B（用户授权单项代做）· Issue #389
 >
 > 执行基线：`f5e3ca6fe2989c846be062b5921d0b9527753917` · 2026-09-17
 >
-> 状态：设计与文档走查完成，待用户审查；合并和验收前不称为最终 Frozen。
+> 状态：2026-09-17 用户明确验收；PR #390 已 normal merge 至 develop，WBS 1.20 = B / 已完成。详见[验收收口](../project/WBS-1.20-acceptance-closeout.md)。
 >
 > 本文是 WBS 3.7 的设计输入，不启动 3.7，也不证明当前页面已经实现这些状态。
 
@@ -462,6 +462,6 @@ Home 保持当前静态 Hero 构图、公开入口和账号区；Start 保持当
 
 [QA README](../qa/TASK-066/README.md)、[完整机器矩阵](../qa/TASK-066/design-matrix.json)记录62条 surface/state规则、48项验收、34项 copy intent；[audit evidence](../qa/TASK-066/audit-evidence.json)记录执行基线、来源指纹、冲突与实际检查。读屏、四档截图、焦点、真实合成对比和完整浏览器状态转移留给另行授权的3.7，不将旧截图当本次证据。
 
-交接门槛：用户审查并合并后才将1.20标为已完成/Frozen；3.7仍单独启动。后续实现先映射现有拥有方的可用结果和恢复能力，再消费本文；缺能力保留诚实 disabled/说明，不能借设计任务开启 runtime。
+交接状态：用户已验收且 PR #390 已 normal merge，1.20 已完成 / Frozen v0.1；3.7 仍为 A / 未开始，须另行授权启动。后续实现先映射现有拥有方的可用结果和恢复能力，再消费本文；缺能力保留诚实 disabled/说明，不能借设计任务开启 runtime。
 
 保持不变：Planner Store4.15、Day Plan4.16、4.18/4.19、Route Provider7.3/7.8、AI/Engine runtime、Booking/Payment、API/schema/migration、Production/Staging DB、deployment和主系统业务逻辑。

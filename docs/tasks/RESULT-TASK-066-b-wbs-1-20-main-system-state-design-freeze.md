@@ -5,15 +5,17 @@
 - Task: TASK-066-B
 - Owner: B（用户授权单项代做）
 - Issue: [#389](https://github.com/kanzakimy0/TravelAssist/issues/389) — Open
-- Status: 待审查；设计与静态 QA 完成；Draft PR #390
+- Status: 已完成；用户验收；Frozen v0.1；PR #390 normal merge
 - Execution base: `f5e3ca6fe2989c846be062b5921d0b9527753917`
 - Branch: `codex/b-wbs-1-20-main-system-state-design`
-- Pull Request: [Draft PR #390](https://github.com/kanzakimy0/TravelAssist/pull/390)
-- Final-head proof: exact branch SHA and any executed CI outcome are bound to the PR delivery JSON after the last commit; no self-referential SHA is invented.
+- Pull Request: [PR #390 — Merged](https://github.com/kanzakimy0/TravelAssist/pull/390)
+- Accepted candidate: ed80da99b56ae6dbbb93aef18aecf9432a9e6099
+- Merge commit: ded9a7cf017c43ea3df9624eb0de6eb10649c985 · 2026-09-17T10:02:18Z
+- Accepted-head Quality Gate: [35207004811 — PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/35207004811), workflow_dispatch at the exact accepted candidate. Post-merge documentation closeout CI is reported separately against its own immutable head.
 
 ## 1. 设计交付
 
-完成[主系统状态设计冻结候选](../ui/main-system-loading-empty-error-skeleton.md)。范围是 Loading、Skeleton、Empty、Error、Retry / Recovery、Partial Degradation；同时区分 first-use / no-result、permission/invalid、generic connection loss 和 retry pending。
+完成并经用户验收[主系统状态设计 Frozen v0.1](../ui/main-system-loading-empty-error-skeleton.md)。范围是 Loading、Skeleton、Empty、Error、Retry / Recovery、Partial Degradation；同时区分 first-use / no-result、permission/invalid、generic connection loss 和 retry pending。
 
 覆盖十个区域：Home、Start、Planner shell、Planner Map、Recommendation / Right Rail、Timeline / Summary、Trip Detail、Route Preview、AI Visual Shell、Modal / Drawer / Popover。
 
@@ -58,7 +60,9 @@
 
 实际开始已记录：1.20 = B / 进行中（#389 / TASK-066-B；用户授权单项代做）。
 
-最终交付状态：1.20 = B / 待审查（#389 / TASK-066-B；Draft PR #390）。
+Draft 交付时：1.20 = B / 待审查（#389 / TASK-066-B；Draft PR #390）。
+
+用户验收并 normal merge 后：**1.20 = B / 已完成（Frozen v0.1）**。完整关联见[验收收口](../project/WBS-1.20-acceptance-closeout.md)。
 
 3.7 保持 A / 未开始。其他 Owner/status 保持；未启动或修改 Planner Store4.15、Day Plan4.16、4.18/4.19、7.3/7.8、AI runtime、Engine runtime、Booking/Payment、API/schema/migration、数据库、deployment或主系统业务逻辑。
 
@@ -69,8 +73,10 @@
 - [Task](TASK-066-b-wbs-1-20-main-system-state-design-freeze.md)
 - [Codex instructions](CODEX-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md)
 - [Owner correction](../project/WBS-1.20-owner-correction.md)
-- [Design freeze candidate](../ui/main-system-loading-empty-error-skeleton.md)
+- [Frozen v0.1 design](../ui/main-system-loading-empty-error-skeleton.md)
 - [QA README](../qa/TASK-066/README.md)
 - [Machine-readable matrix](../qa/TASK-066/design-matrix.json)
 
-唯一 Draft PR → develop，等待用户审查。未 auto-merge，Issue #389保持Open，未标1.20已完成，未启动3.7。用户验收并合并后才能将候选正式冻结；后续runtime仍需另行授权。
+2026-09-17 用户明确验收 TASK-066-B 并授权 normal merge PR #390；已按原验收 head 合入 develop，merge tree 与验收候选一致，随后同步 WBS 1.20 为 B / 已完成及设计 Frozen v0.1。Issue #389 保持 Open；3.7 保持 A / 未开始。
+
+[机器验收回执](../qa/TASK-066/acceptance-closeout.json)记录合并、原候选指纹与 exact-head CI。原 design-matrix / audit-evidence 保留交付时的候选与待审查文字及原始哈希，均绑定验收 head，不表示当前仍待审查，也不作为收口后文档的哈希。收口仅更新文档，未新增 runtime/browser 验收；后续 runtime 仍需另行授权。

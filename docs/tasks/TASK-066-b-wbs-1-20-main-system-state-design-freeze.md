@@ -6,8 +6,9 @@
 - WBS: `1.20 — 主系统 Loading / Empty / Error / Skeleton`
 - Owner: `B` — user-authorized single-item exception
 - Priority: `P1`
-- Current execution status: 待审查（设计与静态 QA 完成；Draft PR #390）
-- Pull Request: [Draft PR #390](https://github.com/kanzakimy0/TravelAssist/pull/390)
+- Current execution status: 已完成（用户验收；PR #390 normal merge；Frozen v0.1）
+- Pull Request: [PR #390 — Merged](https://github.com/kanzakimy0/TravelAssist/pull/390)
+- Acceptance closeout: [WBS 1.20](../project/WBS-1.20-acceptance-closeout.md) · 2026-09-17
 - Result: [TASK-066-B Result](RESULT-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md)
 - Status at publication: `Ready / not started`
 - Dependency: `1.13 — 已完成`

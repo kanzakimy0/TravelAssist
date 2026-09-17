@@ -2,7 +2,7 @@
 
 ## Scope and evidence class
 
-This is a design/specification audit at develop `f5e3ca6fe2989c846be062b5921d0b9527753917`, not runtime implementation. The dedicated branch is `codex/b-wbs-1-20-main-system-state-design`; Issue [#389](https://github.com/kanzakimy0/TravelAssist/issues/389); delivery [Draft PR #390](https://github.com/kanzakimy0/TravelAssist/pull/390).
+This is a design/specification audit at develop `f5e3ca6fe2989c846be062b5921d0b9527753917`, not runtime implementation. The dedicated branch is `codex/b-wbs-1-20-main-system-state-design`; Issue [#389](https://github.com/kanzakimy0/TravelAssist/issues/389); accepted delivery [PR #390 — Merged](https://github.com/kanzakimy0/TravelAssist/pull/390).
 
 The root workspace was detached with pre-existing untracked `outputs/`. It was preserved. The candidate worktree was created clean from the execution-time latest develop, not from the publication branch. Publication files were read from `02ec381f633eeb68b72962e35b46084d433a44c0`. The first commit records the authorized 1.20 start; only that numeric WBS row changed Owner/status.
 
@@ -68,4 +68,12 @@ Repository CI may run its existing Node/lint/typecheck/artifact-build workflow. 
 
 ## Downstream handoff
 
-WBS 1.20 remains B / 待审查 after Draft delivery; WBS 3.7 remains A / 未开始. The separate future implementation task must map available owning-domain results to these states, then run paired geometry, keyboard, screen-reader, motion and real contrast QA. This document does not authorize starting that task.
+Following explicit user acceptance and normal merge of PR #390, WBS 1.20 is B / 已完成 and the design is Frozen v0.1. WBS 3.7 remains A / 未开始. The separate future implementation task must map available owning-domain results to these states, then run paired geometry, keyboard, screen-reader, motion and real contrast QA. This document does not authorize starting that task.
+
+## Accepted design closeout — 2026-09-17
+
+The accepted candidate is ed80da99b56ae6dbbb93aef18aecf9432a9e6099; normal merge ded9a7cf017c43ea3df9624eb0de6eb10649c985 has the identical tree. [Exact accepted-head Quality Gate 35207004811](https://github.com/kanzakimy0/TravelAssist/actions/runs/35207004811) passed. The user authorized WBS completion only after this merge.
+
+[Closeout record](../../project/WBS-1.20-acceptance-closeout.md) and [machine receipt](acceptance-closeout.json) are the current acceptance authority. Original design-matrix.json and audit-evidence.json remain unchanged as execution-time candidate evidence at that accepted SHA: their review labels and specification hash are historical, not current status or the hash of this closeout revision. Browser/runtime NOT_RUN claims remain unchanged.
+
+Closeout verification is limited to task-owned formatting, local Markdown links, JSON parse, unchanged design rules and historical evidence, documentation-only diff, only the WBS 1.20 and TASK-066 tracking rows changed, and git diff checks. The final develop Quality Gate is checked against the post-closeout commit and reported with its exact SHA/run; the accepted-head PASS is not substituted for that result.

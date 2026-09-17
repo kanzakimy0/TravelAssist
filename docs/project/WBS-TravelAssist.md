@@ -676,7 +676,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-066-B | 1.20 | B | 待审查（用户授权单项代做；Draft PR #390） | #389 Open | docs/tasks/RESULT-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md | codex/b-wbs-1-20-main-system-state-design | 76fad5e（设计与QA）；final head/CI 见 PR delivery JSON | [#390](https://github.com/kanzakimy0/TravelAssist/pull/390) Draft → develop |
+| TASK-066-B | 1.20 | B | 已完成（用户验收；Frozen v0.1；PR #390已合并） | #389 Open | docs/tasks/RESULT-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md | codex/b-wbs-1-20-main-system-state-design | ed80da9（验收head）；ded9a7c（normal merge） | [#390](https://github.com/kanzakimy0/TravelAssist/pull/390) Merged → develop |
 | TASK-065-B | 4.24 | B | 已完成（用户验收；PR #388 已合并） | #387 Open（保留此前不自动关闭限制） | docs/tasks/RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md；docs/project/WBS-4.24-acceptance-closeout.md | codex/b-wbs-4-24-engine-integration-certification | d4b3f8e（验收）；c368c97（merge）；CI 35179449036 PASS | [#388](https://github.com/kanzakimy0/TravelAssist/pull/388) Merged → develop |
 | TASK-064-B | 4.23 | B | 已完成（用户验收；PR #384 已合并） | #383 Closed / Completed | `docs/tasks/RESULT-TASK-064-b-wbs-4-23-engine-runtime-recompute-rollback.md`；`docs/project/WBS-4.23-acceptance-closeout.md` | `codex/b-wbs-4-23-runtime-recompute-rollback` | `436521d`（验收）；`5084b01`（merge）；CI `35167240929` PASS | [#384](https://github.com/kanzakimy0/TravelAssist/pull/384) merged → develop |
 | TASK-063-B | 4.22 | B | 已完成（用户验收；PR #382 已合并） | #380 Closed / Completed | `docs/tasks/RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md` | `codex/b-wbs-4-22-engine-transaction-apply` | `03136fb8`（验收 head）；`47c9f48c`（merge） | [#382](https://github.com/kanzakimy0/TravelAssist/pull/382) Merged → develop |
@@ -787,7 +787,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 1.17   | 地图 + 时间轴 + 推荐右栏详细画面设计      | A      | P0     | 1.5,1.6,1.11,1.12 | 进行中 |
 | 1.18   | 路线生成 / 重新规划 / 方案切换交互设计    | A      | P0     | 1.17              | 进行中 |
 | 1.19   | AI 旅行助手主画面设计                     | A      | P1     | 1.5               | 已完成（#270；设计文档范围，AI runtime 未实现） |
-| 1.20   | 主系统 Loading / Empty / Error / Skeleton | B      | P1     | 1.13              | 待审查（#389 / TASK-066-B；Draft PR #390） |
+| 1.20   | 主系统 Loading / Empty / Error / Skeleton | B      | P1     | 1.13              | 已完成（#389 / TASK-066-B；用户验收，PR #390 normal merge；Frozen v0.1） |
 
 ### 1B. 用户个人中心画面设计（B）
 
