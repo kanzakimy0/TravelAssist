@@ -2,7 +2,7 @@
 
 ## Scope and evidence class
 
-This is a design/specification audit at develop `f5e3ca6fe2989c846be062b5921d0b9527753917`, not runtime implementation. The dedicated branch is `codex/b-wbs-1-20-main-system-state-design`; Issue [#389](https://github.com/kanzakimy0/TravelAssist/issues/389); delivery PENDING_DRAFT_PR.
+This is a design/specification audit at develop `f5e3ca6fe2989c846be062b5921d0b9527753917`, not runtime implementation. The dedicated branch is `codex/b-wbs-1-20-main-system-state-design`; Issue [#389](https://github.com/kanzakimy0/TravelAssist/issues/389); delivery [Draft PR #390](https://github.com/kanzakimy0/TravelAssist/pull/390).
 
 The root workspace was detached with pre-existing untracked `outputs/`. It was preserved. The candidate worktree was created clean from the execution-time latest develop, not from the publication branch. Publication files were read from `02ec381f633eeb68b72962e35b46084d433a44c0`. The first commit records the authorized 1.20 start; only that numeric WBS row changed Owner/status.
 

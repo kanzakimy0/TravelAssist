@@ -5,10 +5,10 @@
 - Task: TASK-066-B
 - Owner: B（用户授权单项代做）
 - Issue: [#389](https://github.com/kanzakimy0/TravelAssist/issues/389) — Open
-- Status: 设计与静态 QA 完成；待 Draft PR 与用户验收
+- Status: 待审查；设计与静态 QA 完成；Draft PR #390
 - Execution base: `f5e3ca6fe2989c846be062b5921d0b9527753917`
 - Branch: `codex/b-wbs-1-20-main-system-state-design`
-- Pull Request: PENDING_DRAFT_PR
+- Pull Request: [Draft PR #390](https://github.com/kanzakimy0/TravelAssist/pull/390)
 - Final-head proof: exact branch SHA and any executed CI outcome are bound to the PR delivery JSON after the last commit; no self-referential SHA is invented.
 
 ## 1. 设计交付
@@ -58,7 +58,7 @@
 
 实际开始已记录：1.20 = B / 进行中（#389 / TASK-066-B；用户授权单项代做）。
 
-最终交付状态：PENDING_WBS_REVIEW。
+最终交付状态：1.20 = B / 待审查（#389 / TASK-066-B；Draft PR #390）。
 
 3.7 保持 A / 未开始。其他 Owner/status 保持；未启动或修改 Planner Store4.15、Day Plan4.16、4.18/4.19、7.3/7.8、AI runtime、Engine runtime、Booking/Payment、API/schema/migration、数据库、deployment或主系统业务逻辑。
 

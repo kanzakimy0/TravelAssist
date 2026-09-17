@@ -1,7 +1,7 @@
 {
   "task": "TASK-066-B",
   "issue": 389,
-  "status": "STATIC_DESIGN_QA_PASS_DELIVERY_PENDING",
+  "status": "STATIC_DESIGN_QA_PASS_AWAITING_USER_REVIEW",
   "executionBase": "f5e3ca6fe2989c846be062b5921d0b9527753917",
   "latestDevelopRecheck": "f5e3ca6fe2989c846be062b5921d0b9527753917",
   "branch": "codex/b-wbs-1-20-main-system-state-design",
@@ -35,7 +35,7 @@
   },
   "checks": {
     "task": "TASK-066-B",
-    "checkedAt": "2026-09-17T09:44:22.741Z",
+    "checkedAt": "2026-09-17T09:46:25.694Z",
     "base": "f5e3ca6fe2989c846be062b5921d0b9527753917",
     "status": "PASS",
     "evidenceKind": "STATIC_DESIGN_CHECKS_NOT_RUNTIME_TESTS",
@@ -45,7 +45,7 @@
       "copyIntents": 34,
       "acceptanceRows": 48,
       "relativeLinksChecked": 50,
-      "remoteLinksListedNotFetched": 2,
+      "remoteLinksListedNotFetched": 5,
       "existingTokensChecked": 20,
       "auditedSourceFiles": 41,
       "changedFiles": 9
@@ -66,7 +66,7 @@
       "gitDiffCheck": true,
       "noBrowserQaClaimed": true
     },
-    "wbs120": "| 1.20   | 主系统 Loading / Empty / Error / Skeleton | B      | P1     | 1.13              | 进行中（#389 / TASK-066-B；用户授权单项代做） |",
+    "wbs120": "| 1.20   | 主系统 Loading / Empty / Error / Skeleton | B      | P1     | 1.13              | 待审查（#389 / TASK-066-B；Draft PR #390） |",
     "wbs37": "| 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |",
     "changedFiles": [
       "docs/project/WBS-1.20-owner-correction.md",
@@ -364,8 +364,8 @@
       "command": "node ../verify-design.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "log": "static-pre-pr.log",
-      "logSha256": "6e9783006bd6f44869ac42dede00119d8b287ca2d142bbdd90452f7928b15e4f",
+      "log": "static-final.log",
+      "logSha256": "11c3f2b650ac59bd19278eed8ea50371385e3fcf5cc7d4f207d458686bbdccdf",
       "checkerSha256": "227e53d0736c2321fdeea588059fd7f7d21a0ef2311cf0d7cb4b30faef25eba8"
     },
     {
@@ -423,15 +423,16 @@
     "wbs37": "A / 未开始"
   },
   "delivery": {
-    "pullRequest": "PENDING",
+    "pullRequest": 390,
     "draftRequired": true,
     "mergeAuthorized": false,
     "issueState": "OPEN",
-    "wbs120": "B / 进行中（#389 / TASK-066-B；用户授权单项代做）"
+    "wbs120": "B / 待审查（#389 / TASK-066-B；Draft PR #390）",
+    "url": "https://github.com/kanzakimy0/TravelAssist/pull/390"
   },
   "ci": {
-    "status": "NOT_RUN_YET",
-    "proofLocation": "Final-head delivery JSON in the Draft PR and final user response",
+    "status": "EXTERNAL_FINAL_HEAD_ATTESTATION",
+    "proofLocation": "https://github.com/kanzakimy0/TravelAssist/pull/390 — final delivery JSON and final user response",
     "requiresTruthfulHeadBinding": true,
     "notBrowserOrDbQa": true
   },
