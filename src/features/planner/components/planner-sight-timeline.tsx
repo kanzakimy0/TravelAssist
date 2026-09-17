@@ -1,3 +1,4 @@
+import { StateNotice } from "../../../components/ui/state-notice";
 import {
   useEffect,
   useRef,
@@ -513,7 +514,13 @@ export function PlannerSightTimeline({
                 )}
                 {!planned.length && (
                   <li className={css.empty}>
-                    把下方项目拖到这里，开始安排这一天。
+                    <StateNotice
+                      compact
+                      kind="empty"
+                      announcement="off"
+                      title="当前日期尚无景点安排"
+                      description="可从现有备用项目安排，或查看其他日期；其他类别项目仍保留。"
+                    />
                   </li>
                 )}
               </ol>

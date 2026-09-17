@@ -1,3 +1,4 @@
+import { browserTripErrorMessage } from "../model/browser-trip-error";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -224,11 +225,7 @@ export function useBrowserTrip({
       setError("");
       return true;
     } catch (cause) {
-      setError(
-        cause instanceof Error && cause.name === "Error"
-          ? cause.message
-          : "保存失败：存储空间不足或浏览器禁止存储。您的修改仍保留，请勿关闭页面。",
-      );
+      setError(browserTripErrorMessage(cause));
       return false;
     }
   }
@@ -393,9 +390,7 @@ export function useBrowserTrip({
             ),
           );
       } catch (cause) {
-        setError(
-          cause instanceof Error ? cause.message : "无法保存草稿，未切换方案。",
-        );
+        setError(browserTripErrorMessage(cause));
         return false;
       }
       const chosen: TripState = {
