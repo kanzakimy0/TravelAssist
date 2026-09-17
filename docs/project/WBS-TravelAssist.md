@@ -904,7 +904,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 已完成 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 已完成（TASK-063-B 用户验收；PR #382 merged） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 已完成（TASK-064-B 用户验收；PR #384 merged） |
-| 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 未开始 |
+| 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 进行中（#387 / TASK-065-B） |
 
 正式入口：[Issue #201](https://github.com/kanzakimy0/TravelAssist/issues/201)、`docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md`。4.21之后逐项建立独立Task，不自动执行。
 
