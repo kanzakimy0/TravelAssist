@@ -1,0 +1,445 @@
+{
+  "task": "TASK-066-B",
+  "issue": 389,
+  "status": "STATIC_DESIGN_QA_PASS_DELIVERY_PENDING",
+  "executionBase": "f5e3ca6fe2989c846be062b5921d0b9527753917",
+  "latestDevelopRecheck": "f5e3ca6fe2989c846be062b5921d0b9527753917",
+  "branch": "codex/b-wbs-1-20-main-system-state-design",
+  "startCommit": "0c6b92d01c757148c4c81c4b86a6cb5ae5c77726",
+  "startGate": {
+    "task": "TASK-066-B",
+    "executedAt": "2026-09-17T09:21:10.053Z",
+    "base": "f5e3ca6fe2989c846be062b5921d0b9527753917",
+    "publication": "02ec381f633eeb68b72962e35b46084d433a44c0",
+    "originalWorkspace": {
+      "branch": "detached HEAD",
+      "status": "?? outputs/",
+      "preserved": true
+    },
+    "candidateInitiallyClean": true,
+    "branch": "codex/b-wbs-1-20-main-system-state-design",
+    "commands": [
+      "git status --short",
+      "git branch --show-current",
+      "git fetch --all --prune",
+      "git rev-parse origin/develop",
+      "git log --oneline -20 origin/develop"
+    ],
+    "wbsBefore": "| 1.20   | 主系统 Loading / Empty / Error / Skeleton | A      | P1     | 1.13              | 未开始 |",
+    "wbsStarted": "| 1.20   | 主系统 Loading / Empty / Error / Skeleton | B      | P1     | 1.13              | 进行中（#389 / TASK-066-B；用户授权单项代做） |"
+  },
+  "toolchain": {
+    "node": "v24.18.0",
+    "prettier": "3.9.6",
+    "installation": "Reused repository-locked TASK-065 node_modules; no dependency/environment change"
+  },
+  "checks": {
+    "task": "TASK-066-B",
+    "checkedAt": "2026-09-17T09:44:22.741Z",
+    "base": "f5e3ca6fe2989c846be062b5921d0b9527753917",
+    "status": "PASS",
+    "evidenceKind": "STATIC_DESIGN_CHECKS_NOT_RUNTIME_TESTS",
+    "counts": {
+      "surfaces": 10,
+      "surfaceStates": 62,
+      "copyIntents": 34,
+      "acceptanceRows": 48,
+      "relativeLinksChecked": 50,
+      "remoteLinksListedNotFetched": 2,
+      "existingTokensChecked": 20,
+      "auditedSourceFiles": 41,
+      "changedFiles": 9
+    },
+    "checks": {
+      "jsonParse": true,
+      "requiredAttributes": true,
+      "matrixIdsAndReferences": true,
+      "designMatrixCopyParity": true,
+      "taxonomyCoverage": true,
+      "tenSurfaceCoverage": true,
+      "localMarkdownLinks": true,
+      "existingTokenReferences": true,
+      "docsOnlyAllowlist": true,
+      "non120WbsUnchanged": true,
+      "wbs37StillAUnstarted": true,
+      "sourceFingerprintsUnchanged": true,
+      "gitDiffCheck": true,
+      "noBrowserQaClaimed": true
+    },
+    "wbs120": "| 1.20   | 主系统 Loading / Empty / Error / Skeleton | B      | P1     | 1.13              | 进行中（#389 / TASK-066-B；用户授权单项代做） |",
+    "wbs37": "| 3.7    | 主系统 Loading / Empty / Error      | A      | P1     | 1.20,3.1 | 未开始 |",
+    "changedFiles": [
+      "docs/project/WBS-1.20-owner-correction.md",
+      "docs/project/WBS-TravelAssist.md",
+      "docs/qa/TASK-066/README.md",
+      "docs/qa/TASK-066/audit-evidence.json",
+      "docs/qa/TASK-066/design-matrix.json",
+      "docs/tasks/CODEX-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md",
+      "docs/tasks/RESULT-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md",
+      "docs/tasks/TASK-066-b-wbs-1-20-main-system-state-design-freeze.md",
+      "docs/ui/main-system-loading-empty-error-skeleton.md"
+    ],
+    "sourceInventory": [
+      {
+        "path": "docs/project/WBS-1.10-1.12-1.13-final-closeout.md",
+        "sha256LfNormalized": "50669e19b154eb6a0268662d0b05ca7bc705388e36b9f08f53b29d255091955e",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/project/WBS-3.2-static-first-amendment.md",
+        "sha256LfNormalized": "60aeda7d7ee2bd4f24c3f70b9acb889ed7b8ca713c66db950ca137e7b4172ca6",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/main-system-design-tokens.md",
+        "sha256LfNormalized": "dcec17e236b394bb71b8b86150aa877893a40b670573a8dd7137909c00f011df",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/main-system-design-tokens-accessibility-amendment-v1.2.md",
+        "sha256LfNormalized": "6a1eddc9e7bfecdfdf97cecaef3ef710537607b4472c39bcd6f5c71b9fc8647d",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/home-page.md",
+        "sha256LfNormalized": "5ace19e2ff602d006726dbe1a58385ca4e6c5d4adcbfe0dd9d55d261b02c479e",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/trip-planner.md",
+        "sha256LfNormalized": "ec78b648b84aa45c867d9fc26d6f8d0d011b0cf0873e85abaeb958a2f4a62fc7",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/trip-detail.md",
+        "sha256LfNormalized": "f19cf2a86205a7e6298f4b1fbe0fe032f1ba99e80ee0fc73976666ca90fb4ebc",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/ai-travel-assistant-main-screen.md",
+        "sha256LfNormalized": "3db353528a2689a81eef2f45abb80a7f2d660d12ee74202e99bc43a2952cc665",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "docs/ui/navigation-flow.md",
+        "sha256LfNormalized": "3ebf71cb8172bbde7298817183e71f4a2534555be8942e22738d4d9e443d9ac1",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/app/globals.css",
+        "sha256LfNormalized": "570023307357f65819a9450d2cad003c60bbe5a303e92e7047508812cbdbdb86",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/planner.module.css",
+        "sha256LfNormalized": "1c84a6a8ab032e51a0c927ff95d640511197f406def353c13e3ee4924c003994",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/start-flow/start-flow.module.css",
+        "sha256LfNormalized": "b79fe3798a404214b5bce1ad9d92be2eb17b24b2b38a2f2cd42a5937681de6c7",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/components/ui/button.module.css",
+        "sha256LfNormalized": "4b273e8aba4178110328a1f7e67330f858f7063f50737e6528572c4bffad5c34",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/home/home-page.tsx",
+        "sha256LfNormalized": "8fd9708992ff299fa6f84e581d20775a7193dfa065e8d4839e48d7c96c51b42f",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/home/components/home-hero.tsx",
+        "sha256LfNormalized": "a97b111c0da1a6327bfe0d6d8c0d3d9088810713c90268c0be6a1c532dbbec15",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/lib/auth/home-viewer.server.ts",
+        "sha256LfNormalized": "0a518008194616d1ce451a51a0ec032a25cd2eff714f340b552aa0bebbe58af9",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/home/components/immersive-background.tsx",
+        "sha256LfNormalized": "92ff9e2643c8b1f410cfce55394c018864cd042ade9fd19282d1dfa5b90ae9f5",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/start-flow/components/start-flow-shell.tsx",
+        "sha256LfNormalized": "511200f1f07760cb112f65fad34f226192131a40725a2ed6cb0419992d43bdf0",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/start-flow/components/generation-step.tsx",
+        "sha256LfNormalized": "d4059b1505c00aefa10b90ce64c8750761058a713e34d6c07e48587e3e855f61",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/app/(main)/planner/page.tsx",
+        "sha256LfNormalized": "f17bd3ed9f3566f9a2351e71677e588c44d52b0c08ef3e85c048f9103162957a",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/planner-page.tsx",
+        "sha256LfNormalized": "245f84a3bdf1a9a532ad2ea09a1f7b625f3dee9c05f7ccadd0c97bc63863fc6c",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/trip-workspace.tsx",
+        "sha256LfNormalized": "34c688f9d0989075dae37ea9192a61d3ee51040acefd45ea8237a5a82668b798",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/planner-map-shell.tsx",
+        "sha256LfNormalized": "14668219db3f7af21b43ba5cae790db213e59e014fdb9718758d0c81e52de376",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/planner-right-panel.tsx",
+        "sha256LfNormalized": "4d8aa5d2c79d1e388e275ba41a6a77fa917c35e51379d742de2d2f078dd711d2",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/plan-recommendation-list.tsx",
+        "sha256LfNormalized": "1dbff7de0a77023ba3ba320847bb6e809a3d0fe0f8a66e73278551c5aacf21e9",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/bottom-execution-panel.tsx",
+        "sha256LfNormalized": "490706f2aa9d13a4d072424c06acae30600391c62ae79d82de221a8a685202c9",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/detail-execution-rail.tsx",
+        "sha256LfNormalized": "8a08b46a9660d6c09439daa8b5cfd90cd15e64d4b1fbef5488b3d5f7374f3efa",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/use-browser-trip.ts",
+        "sha256LfNormalized": "208581032a95ceb9ae1f62d7460d39a67dc32ffd9c1624a957852c4ffbd21a48",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/detail-sidebar.tsx",
+        "sha256LfNormalized": "d91ad09bde7d6500618e36fbaab84814b4a5f1bb1dcbe8786ddd847b1560f17b",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/planner-route-query.tsx",
+        "sha256LfNormalized": "0259c474b2f128af87ff149b4ff2f320ebb6e63218c7ec1a2ad915ccf1801a42",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/model/route-query.ts",
+        "sha256LfNormalized": "c6fc58e368d54a35dd2b00186534fef39673028c36284864a0b645f04521bafe",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/home/components/home-ai-assistant.tsx",
+        "sha256LfNormalized": "06ef387c4464f5bdf9ef10fa8bd072bedef29a19b3adc0b914dd3e1839dd6339",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/home/components/ai-conversation-panel.tsx",
+        "sha256LfNormalized": "fe64399d3fb54f96d7d1c2339235483995d629a2825b7a29f2cacc2445b65cbc",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/home/components/ai-conversation-panel.module.css",
+        "sha256LfNormalized": "6a32a2c5edcd1866dc0fa45c4b322a94f85ab20d1567539a9c414a520d9bc1f3",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/start-flow/components/modal.tsx",
+        "sha256LfNormalized": "38137c42486725bd1908249616edf157e7a0d9f948c81f8357e462241905cd62",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/planner-overlay.tsx",
+        "sha256LfNormalized": "70a95d32579ff005b6fac44327da6e9339b15c7c6a301fc3fee2efe3bc228229",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/planner-popover.tsx",
+        "sha256LfNormalized": "db810f12e3c1a373270aaa6561396a14ba0715b6c476f657e9a34dfedb2235d5",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/components/ui/info-popover.tsx",
+        "sha256LfNormalized": "527aba3c80dd661356289cd30ebf4c34dd5b3e49a37668922b25e6c485e3036e",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/start-flow/start-page.tsx",
+        "sha256LfNormalized": "b7052a30e8eb452ad6b94b92b668c0bbcdbf0d625e49c4851e65953fe9ceaa24",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/start-flow/components/ready-state.tsx",
+        "sha256LfNormalized": "b3ad2b3235b704e7f8b77e1cd822f0851108164832ad53459c0c4776c5415ba7",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      },
+      {
+        "path": "src/features/planner/components/workspace-capabilities.tsx",
+        "sha256LfNormalized": "a5333764f8bdd44271916da86532a98155c90d7c52c4d9276e71754f90a83d10",
+        "unchangedFromBase": true,
+        "auditScope": "relevant sections / current structure and styles"
+      }
+    ],
+    "tokenReferences": [
+      "--color-bg-canvas",
+      "--color-bg-elevated",
+      "--color-bg-overlay",
+      "--color-bg-muted",
+      "--color-text-primary",
+      "--font-body",
+      "--color-text-secondary",
+      "--color-status-danger",
+      "--color-border-subtle",
+      "--color-border-strong",
+      "--radius-sm",
+      "--elevation-card",
+      "--space-2",
+      "--background-accent-primary",
+      "--color-accent-primary",
+      "--color-focus-ring",
+      "--color-scrim",
+      "--motion-fast",
+      "--motion-normal",
+      "--motion-slow"
+    ],
+    "notExecuted": [
+      "browser/screenshots",
+      "screen reader",
+      "real keyboard/focus",
+      "composited contrast",
+      "Local runtime/DB",
+      "live/paid Provider",
+      "deployment"
+    ]
+  },
+  "commands": [
+    {
+      "command": "node ../verify-design.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "static-pre-pr.log",
+      "logSha256": "6e9783006bd6f44869ac42dede00119d8b287ca2d142bbdd90452f7928b15e4f",
+      "checkerSha256": "227e53d0736c2321fdeea588059fd7f7d21a0ef2311cf0d7cb4b30faef25eba8"
+    },
+    {
+      "command": "node ../../task065/worktree/node_modules/prettier/bin/prettier.cjs --check docs/ui/main-system-loading-empty-error-skeleton.md docs/project/WBS-1.20-owner-correction.md \"docs/tasks/*TASK-066*.md\" \"docs/qa/TASK-066/**/*.{md,json}\"",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "format-check.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "git-diff-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "staged-diff-pre-pr.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": {
+    "designMatrixSha256": "6a9fd8e10c366f47ceb6a35e7e9a3c6b304309c8e6c24d8d78625f5dc1b1f71e",
+    "specificationSha256": "0480d2572f8912e45b30304f4ac8c74657a8d4977258b6901f990590469f0f13"
+  },
+  "conflicts": [
+    "CF-01",
+    "CF-02",
+    "CF-03",
+    "CF-04",
+    "CF-05",
+    "CF-06",
+    "CF-07",
+    "CF-08",
+    "CF-09",
+    "CF-10"
+  ],
+  "browserQa": {
+    "executed": false,
+    "claims": "All 48 acceptance rows are specifications, not browser/runtime PASS."
+  },
+  "scope": {
+    "runtimeSourceChanged": false,
+    "apiSchemaMigrationChanged": false,
+    "plannerGeometryChanged": false,
+    "newPalette": false,
+    "reactComponentsCreated": false,
+    "productionStagingDbTouched": false,
+    "livePaidProviderCalled": false,
+    "deploymentPerformed": false,
+    "otherWbsOwnerStatusChanged": false,
+    "wbs37": "A / 未开始"
+  },
+  "delivery": {
+    "pullRequest": "PENDING",
+    "draftRequired": true,
+    "mergeAuthorized": false,
+    "issueState": "OPEN",
+    "wbs120": "B / 进行中（#389 / TASK-066-B；用户授权单项代做）"
+  },
+  "ci": {
+    "status": "NOT_RUN_YET",
+    "proofLocation": "Final-head delivery JSON in the Draft PR and final user response",
+    "requiresTruthfulHeadBinding": true,
+    "notBrowserOrDbQa": true
+  },
+  "calibration": [
+    {
+      "kind": "documentation_formatting",
+      "observed": "Staged diff detected Markdown hard-break trailing spaces in the specification header.",
+      "resolution": "Replaced hard breaks with blockquote paragraphs; reran scoped formatting and staged/base diff checks."
+    }
+  ]
+}
