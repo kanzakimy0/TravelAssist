@@ -7,6 +7,9 @@
 - Owner: `B` — user-authorized single-item exception
 - Priority: `P1`
 - Status at publication: `Ready / not started`
+- Execution status: `B / 待审查（#391 / TASK-067-B；Draft PR #392）`
+- Draft PR: https://github.com/kanzakimy0/TravelAssist/pull/392
+- Result: [TASK-067-B Result](RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md)
 - Dependencies:
   - `1.20 — 主系统 Loading / Empty / Error / Skeleton` — completed, **Frozen v0.1**
   - `3.1 — 全局 Main Layout / Header` — completed

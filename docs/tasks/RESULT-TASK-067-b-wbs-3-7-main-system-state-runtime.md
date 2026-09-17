@@ -7,8 +7,8 @@
 - Execution base / 最新 develop：`3a2779aee65c7335413adcc53ee5b4f7135c654c`
 - Publication head：`3bd28dc789bd54030a7768d7ac760a8f64c4fbf1`
 - Execution branch：`codex/b-wbs-3-7-main-system-state-runtime`
-- Draft PR：创建后填入
-- WBS 3.7：B / 进行中；实现与本地 QA 完成后提交 Draft 待审查
+- Draft PR：[#392](https://github.com/kanzakimy0/TravelAssist/pull/392) → develop（Draft / Open）
+- WBS 3.7：B / 待审查（#391 / TASK-067-B；Draft PR #392）
 - Final immutable head / exact-head Quality gate：由 Draft PR 正文的“Final-head delivery receipt”绑定。文档提交不自指自身 commit；验收以该 head 的 workflow_dispatch PASS 为准，不能用 PR synthetic merge SHA 代替。
 
 ## 1. 完成的当前运行时集成
@@ -69,7 +69,7 @@ Route活动状态仅通过既有开发gate及浏览器7.5规范fixture验证；�
 | 生产模式Route disabled                                                      | PASS；4视口，8组，8截图；无query/retry，页面错误0 |
 | lint / typecheck / format:check:deploy                                      | PASS；最终实际命令/日志hash见gate-evidence.json   |
 | build / deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS；最终实际命令/日志hash见gate-evidence.json   |
-| Task-owned formatting / scope guard / local links / git diff --check        | 交付前检查及证据见gate-evidence.json              |
+| Task-owned formatting / scope guard / local links / git diff --check        | PASS；证据见gate-evidence.json                    |
 | exact final-head GitHub Quality gate                                        | Draft PR最终不可变head的独立workflow_dispatch回执 |
 
 可访问性：状态公告与busy分离、Skeleton装饰且不可聚焦；reduce下无扫光/脉冲；状态恢复控件与AI close实测至少44×44；键盘Enter/Tab/Escape、重试焦点保留、取消回区域标题、modal关闭回trigger、清搜索回输入框。Route恢复按钮normal/hover/focus/pending共16项computed-style对比度实测，最小约10.64:1。
@@ -109,7 +109,7 @@ Docs：
 
 开始：3.7 = B / 进行中（#391 / TASK-067-B；用户授权单项代做）。
 
-实现、QA及Draft PR完成后：3.7 = B / 待审查（#391 / TASK-067-B；Draft PR待填）。
+实现、QA及Draft PR完成后：3.7 = B / 待审查（#391 / TASK-067-B；Draft PR #392）。
 
 **未合并，未关闭Issue #391，未标记3.7已完成，未启动其他WBS。** 待用户明确验收并授权合并后方可收口。
 
