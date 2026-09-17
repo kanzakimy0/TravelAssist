@@ -6,14 +6,17 @@
 - WBS: `4.24 — Engine回归 / 并发 / 回放与集成验收`
 - Owner: `B / TravelAssist Engine Runtime & QA`
 - Priority: `P1`
-- Status: `待验收`
+- Status: 已完成（2026-09-17 用户验收；PR #388 已合并）
 - GitHub Issue: `#387`
 - Publication baseline: `develop@3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`
 - Task publication branch: `task/b-wbs-4-24-engine-integration-certification`
 - Planned implementation branch: `codex/b-wbs-4-24-engine-integration-certification`
 
 - Commit: f4dfcadf3fae2fe9b1aa97196264eb5158316444
-- Pull Request: [Draft PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388)
+- Pull Request: [PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388) — merged to develop
+- Accepted candidate: d4b3f8e7f40225d39522a19a9fafd57f32510432
+- Merge commit: c368c978d69b7e92d56ecb1a313725c855399b78
+- Acceptance closeout: [WBS 4.24](../project/WBS-4.24-acceptance-closeout.md)
 - Result: [TASK-065-B Result](RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md)
 
 ## 1. Purpose

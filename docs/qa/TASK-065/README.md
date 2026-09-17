@@ -1,8 +1,8 @@
 # TASK-065-B QA
 
-Execution base: `3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`. Branch: `codex/b-wbs-4-24-engine-integration-certification`. Issue: [#387](https://github.com/kanzakimy0/TravelAssist/issues/387). Delivery: [Draft PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388).
+Execution base: `3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`. Branch: `codex/b-wbs-4-24-engine-integration-certification`. Issue: [#387](https://github.com/kanzakimy0/TravelAssist/issues/387). Delivery: [PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388), merged after explicit user acceptance on 2026-09-17. WBS 4.24 = B / 已完成. Issue #387 remains Open.
 
-Overall gate status: Local QA PASS; exact final-head CI uses the external delivery attestation. Full machine records are in [acceptance-evidence.json](acceptance-evidence.json). No unexecuted gate is recorded as PASS.
+Overall gate status: Local QA PASS; accepted final-head [Quality Gate 35179449036 PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/35179449036). Full machine records are in [acceptance-evidence.json](acceptance-evidence.json). No unexecuted gate is recorded as PASS.
 
 ## Certification results
 
@@ -29,6 +29,8 @@ Overall gate status: Local QA PASS; exact final-head CI uses the external delive
 The runtime bulk SQL GROUP BY assertion supplies its terminal distribution. Special fixture outcomes are recorded separately; the two final account-cascade fixture events belong to the 544-result aggregate and are not added to the 531-event bulk. These totals describe different test scopes and must not be added together.
 
 Accepted original receipts/audits are compared before/after compensation. Successful revisions advance and match authoritative readback. Replaying an old accepted receipt intentionally returns its original committed version, not a later current revision.
+
+Accepted candidate: d4b3f8e7f40225d39522a19a9fafd57f32510432. Normal merge: c368c978d69b7e92d56ecb1a313725c855399b78. Merge tree equals accepted candidate tree. See [acceptance-closeout.json](acceptance-closeout.json); original Local QA and pre-acceptance delivery records remain historical evidence.
 
 ## Evidence
 

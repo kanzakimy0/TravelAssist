@@ -5,12 +5,14 @@
 - Task: TASK-065-B
 - Owner: B
 - Issue: [#387](https://github.com/kanzakimy0/TravelAssist/issues/387) — Open
-- Status: 待验收；本地 QA 全部通过；最终 head CI 回执见 PR #388 delivery JSON
+- Status: 已完成（2026-09-17 用户明确验收；PR #388 已合并）
 - Execution base: `3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`
 - Branch: `codex/b-wbs-4-24-engine-integration-certification`
-- Draft PR → develop: [Draft PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388)
+- PR → develop: [PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388) — merged
+- Accepted candidate: d4b3f8e7f40225d39522a19a9fafd57f32510432
+- Merge commit: c368c978d69b7e92d56ecb1a313725c855399b78
 - Implementation commit: f4dfcadf3fae2fe9b1aa97196264eb5158316444
-- Final-head/CI: final immutable SHA and exact workflow_dispatch Quality Gate receipt are bound in the PR delivery JSON and final user response; no self-referential SHA is invented.
+- Accepted final-head Quality Gate: [35179449036 — PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/35179449036), workflow_dispatch head matches the accepted candidate exactly.
 
 ## 1. 执行结论与边界
 
@@ -51,26 +53,26 @@ Unknown outcome 只以 original key / exact payload reconcile。已 COMMIT 的 r
 
 核心执行记录在 [QA ledger](../qa/TASK-065/acceptance-evidence.json)，各 suite 存在重叠，不能相加。
 
-| Gate                                                                | 结果                                                                           |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| clean latest-develop full Node                                      | 2,557 / 2,557 PASS                                                             |
-| candidate full Node                                                 | 2,598 / 2,598 PASS；fail/skip/todo 均 0                                        |
-| 4.21 + TASK-063/064 pure + schema union                             | 115 / 115 PASS                                                                 |
-| TASK-065 pure wrapper                                               | 41 / 41 PASS，内部 5,120 cases                                                 |
-| TASK-065 real Local wrapper                                         | 7 / 7 PASS，内部轮次与事件数如上                                               |
-| Trip pure / Local                                                   | 3 个 pure wrapper PASS（含契约子测试）；Local 21 / 21 PASS                     |
-| Routing                                                             | 28 / 28 PASS                                                                   |
-| TASK-063 Local                                                      | 35 / 35 PASS                                                                   |
-| TASK-064 Local                                                      | 42 / 42 PASS                                                                   |
-| A+B coexistence                                                     | 5 / 5 PASS                                                                     |
-| 两次 reset/types/catalog replay                                     | PASS；19 表 catalog 和 generated types 两次完全一致                            |
-| Personal Center Local                                               | 15 suites / 877 tests PASS；零 fail/skip/todo                                  |
-| npm ci / db:start / db:status / db:reset / db:types                 | PASS，真实 Local                                                               |
-| lint / typecheck / build                                            | PASS                                                                           |
-| format:check:deploy / Task-owned formatting                         | PASS                                                                           |
-| deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS，1,869 文件产物                                                           |
-| git diff --check / final cleanup / db:stop                          | PASS；synthetic cleanup 已验证，Local Supabase 已停止                          |
-| exact final-head GitHub Quality Gate                                | 精确 final branch head 回执由 PR delivery JSON 绑定；要求 Quality Gate success |
+| Gate                                                                | 结果                                                                   |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| clean latest-develop full Node                                      | 2,557 / 2,557 PASS                                                     |
+| candidate full Node                                                 | 2,598 / 2,598 PASS；fail/skip/todo 均 0                                |
+| 4.21 + TASK-063/064 pure + schema union                             | 115 / 115 PASS                                                         |
+| TASK-065 pure wrapper                                               | 41 / 41 PASS，内部 5,120 cases                                         |
+| TASK-065 real Local wrapper                                         | 7 / 7 PASS，内部轮次与事件数如上                                       |
+| Trip pure / Local                                                   | 3 个 pure wrapper PASS（含契约子测试）；Local 21 / 21 PASS             |
+| Routing                                                             | 28 / 28 PASS                                                           |
+| TASK-063 Local                                                      | 35 / 35 PASS                                                           |
+| TASK-064 Local                                                      | 42 / 42 PASS                                                           |
+| A+B coexistence                                                     | 5 / 5 PASS                                                             |
+| 两次 reset/types/catalog replay                                     | PASS；19 表 catalog 和 generated types 两次完全一致                    |
+| Personal Center Local                                               | 15 suites / 877 tests PASS；零 fail/skip/todo                          |
+| npm ci / db:start / db:status / db:reset / db:types                 | PASS，真实 Local                                                       |
+| lint / typecheck / build                                            | PASS                                                                   |
+| format:check:deploy / Task-owned formatting                         | PASS                                                                   |
+| deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS，1,869 文件产物                                                   |
+| git diff --check / final cleanup / db:stop                          | PASS；synthetic cleanup 已验证，Local Supabase 已停止                  |
+| exact final-head GitHub Quality Gate                                | PASS；run 35179449036；head = d4b3f8e7f40225d39522a19a9fafd57f32510432 |
 
 Node v24.18.0；Next 16.3.4；Supabase CLI 2.116.0；PostgreSQL 17.6。Types SHA-256：`03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1`。Catalog SHA-256：`589df4dbe3afa3b59c99e5b28a2a7b8562cb61562e0593bb748cb47cc965b22a`。
 
@@ -88,7 +90,7 @@ Engine correctness defect / minimal runtime fix / public compatibility change：
 
 本任务未调用 live/paid Provider，未修改 Production/Staging DB，未改变 7.3/7.8 状态。有限 synthetic soak 不代表生产容量或可用性 SLA；历史无 preimage、后续 drift 和当前保护仍可阻止补偿，补偿不表示订单／付款已经撤销。
 
-## 6. 交付物与等待验收
+## 6. 交付物与验收完成
 
 - [Task](TASK-065-b-wbs-4-24-engine-integration-certification.md)
 - [Codex instructions](CODEX-TASK-065-b-wbs-4-24-engine-integration-certification.md)
@@ -99,4 +101,6 @@ Engine correctness defect / minimal runtime fix / public compatibility change：
 - [Command / delivery ledger](../qa/TASK-065/acceptance-evidence.json)
 - Eight TASK-065 test/harness files.
 
-最终状态：4.24 = B / 待审查（#387 / TASK-065-B；Draft PR #388）。唯一 Draft PR 保持 Open / Draft；Issue #387 保持 Open；未 merge、未标记 4.24 已完成，等待用户验收。
+最终状态：4.24 = B / 已完成（TASK-065-B 用户验收；PR #388 merged）。用户于 2026-09-17 明确验收并授权合并；PR #388 已通过 normal merge 合入 develop，合并 tree 与验收 head 相同。Issue #387 保持 Open，延续此前不自动关闭要求。
+
+[验收收口记录](../project/WBS-4.24-acceptance-closeout.md)与[机器回执](../qa/TASK-065/acceptance-closeout.json)记录准确 head、merge commit 与 CI。原 Local QA 和首次交付机器证据保留为执行时记录；本次仅同步验收文档，不扩展认证范围。

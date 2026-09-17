@@ -676,7 +676,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-065-B | 4.24 | B | 待审查（#387 / TASK-065-B；Draft PR #388） | #387 Open | docs/tasks/RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md | codex/b-wbs-4-24-engine-integration-certification | f4dfcad（认证实现）；最终 head / CI 见 PR delivery JSON | [#388](https://github.com/kanzakimy0/TravelAssist/pull/388) Draft → develop |
+| TASK-065-B | 4.24 | B | 已完成（用户验收；PR #388 已合并） | #387 Open（保留此前不自动关闭限制） | docs/tasks/RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md；docs/project/WBS-4.24-acceptance-closeout.md | codex/b-wbs-4-24-engine-integration-certification | d4b3f8e（验收）；c368c97（merge）；CI 35179449036 PASS | [#388](https://github.com/kanzakimy0/TravelAssist/pull/388) Merged → develop |
 | TASK-064-B | 4.23 | B | 已完成（用户验收；PR #384 已合并） | #383 Closed / Completed | `docs/tasks/RESULT-TASK-064-b-wbs-4-23-engine-runtime-recompute-rollback.md`；`docs/project/WBS-4.23-acceptance-closeout.md` | `codex/b-wbs-4-23-runtime-recompute-rollback` | `436521d`（验收）；`5084b01`（merge）；CI `35167240929` PASS | [#384](https://github.com/kanzakimy0/TravelAssist/pull/384) merged → develop |
 | TASK-063-B | 4.22 | B | 已完成（用户验收；PR #382 已合并） | #380 Closed / Completed | `docs/tasks/RESULT-TASK-063-b-wbs-4-22-engine-transaction-apply.md` | `codex/b-wbs-4-22-engine-transaction-apply` | `03136fb8`（验收 head）；`47c9f48c`（merge） | [#382](https://github.com/kanzakimy0/TravelAssist/pull/382) Merged → develop |
 | TASK-062-B | 8.5 | B | 已完成（用户验收；PR #227已合并） | #376 Open（保留此前不自动关闭限制） | `docs/tasks/RESULT-TASK-062-b-wbs-8-5-trip-plan-schema-integration-closeout.md` | `codex/a-trip-plan-schema` | `c35725a3`（验收head）；`842447d2`（merge） | [#227](https://github.com/kanzakimy0/TravelAssist/pull/227) Merged → develop |
@@ -905,7 +905,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 4.21 | 确定性约束校验 / 冲突检查 / 影响预览 | B | P1 | 4.20,4.17 | 已完成 |
 | 4.22 | 事务应用 / 权限 / 幂等 / 版本与审计 | B | P1 | 4.21,8.1,8.3,8.4,8.5 | 已完成（TASK-063-B 用户验收；PR #382 merged） |
 | 4.23 | Runtime事件 / 局部重算 / 回滚契约 | B | P1 | 4.22,7.5 | 已完成（TASK-064-B 用户验收；PR #384 merged） |
-| 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 待审查（#387 / TASK-065-B；Draft PR #388） |
+| 4.24 | Engine回归 / 并发 / 回放与集成验收 | B | P1 | 4.21,4.22,4.23 | 已完成（TASK-065-B 用户验收；PR #388 merged） |
 
 正式入口：[Issue #201](https://github.com/kanzakimy0/TravelAssist/issues/201)、`docs/tasks/TASK-WBS-4.20-b-travelassist-engine-contract.md`。4.21之后逐项建立独立Task，不自动执行。
 
