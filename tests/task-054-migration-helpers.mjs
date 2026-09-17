@@ -126,6 +126,7 @@ export const generatedScalar = (sqlType) =>
     boolean: "boolean",
     jsonb: "Json",
     "uuid[]": "string[]",
+    "text[]": "string[]",
   })[sqlType];
 
 export function assertGeneratedAgreement(

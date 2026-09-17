@@ -3,6 +3,7 @@ import {
   bigint,
   foreignKey,
   jsonb,
+  integer,
   pgTable,
   text,
   timestamp,
@@ -79,5 +80,13 @@ export const engineApplyOutbox = pgTable("engine_apply_outbox", {
     .references(() => engineApplyAudits.receiptId, { onDelete: "cascade" }),
   eventType: text("event_type").notNull().default("engine.apply.accepted.v0.1"),
   status: text("status").notNull().default("pending"),
+  attempts: integer("attempts").notNull().default(0),
+  leaseToken: uuid("lease_token"),
+  leaseExpiresAt: timestamp("lease_expires_at", { withTimezone: true }),
+  availableAt: timestamp("available_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  failureCode: text("failure_code"),
+  finishedAt: timestamp("finished_at", { withTimezone: true }),
   createdAt: createdAt(),
 }).enableRLS();

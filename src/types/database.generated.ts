@@ -216,28 +216,105 @@ export type Database = {
           },
         ];
       };
+      engine_apply_compensations: {
+        Row: {
+          compensation_receipt_id: string;
+          created_at: string;
+          original_receipt_id: string;
+        };
+        Insert: {
+          compensation_receipt_id: string;
+          created_at?: string;
+          original_receipt_id: string;
+        };
+        Update: {
+          compensation_receipt_id?: string;
+          created_at?: string;
+          original_receipt_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_compensations_compensation_receipt_id_fkey";
+            columns: ["compensation_receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_audits";
+            referencedColumns: ["receipt_id"];
+          },
+          {
+            foreignKeyName: "engine_apply_compensations_original_receipt_id_fkey";
+            columns: ["original_receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_preimages";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
       engine_apply_outbox: {
         Row: {
+          attempts: number;
+          available_at: string;
           created_at: string;
           event_type: string;
+          failure_code: string | null;
+          finished_at: string | null;
+          lease_expires_at: string | null;
+          lease_token: string | null;
           receipt_id: string;
           status: string;
         };
         Insert: {
+          attempts?: number;
+          available_at?: string;
           created_at?: string;
           event_type?: string;
+          failure_code?: string | null;
+          finished_at?: string | null;
+          lease_expires_at?: string | null;
+          lease_token?: string | null;
           receipt_id: string;
           status?: string;
         };
         Update: {
+          attempts?: number;
+          available_at?: string;
           created_at?: string;
           event_type?: string;
+          failure_code?: string | null;
+          finished_at?: string | null;
+          lease_expires_at?: string | null;
+          lease_token?: string | null;
           receipt_id?: string;
           status?: string;
         };
         Relationships: [
           {
             foreignKeyName: "engine_apply_outbox_receipt_id_fkey";
+            columns: ["receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_audits";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
+      engine_apply_preimages: {
+        Row: {
+          created_at: string;
+          preimage: Json;
+          receipt_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          preimage: Json;
+          receipt_id: string;
+        };
+        Update: {
+          created_at?: string;
+          preimage?: Json;
+          receipt_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_preimages_receipt_id_fkey";
             columns: ["receipt_id"];
             isOneToOne: true;
             referencedRelation: "engine_apply_audits";
@@ -283,6 +360,116 @@ export type Database = {
           trip_id?: string;
         };
         Relationships: [];
+      };
+      engine_rollback_receipts: {
+        Row: {
+          actor_user_id: string;
+          apply_receipt_id: string | null;
+          created_at: string;
+          id: string;
+          idempotency_key: string;
+          issue_codes: string[];
+          observed_plan_revision: number;
+          observed_trip_revision: number;
+          original_receipt_id: string;
+          outcome: string;
+          payload_hash: string;
+          request_id: string;
+          resulting_plan_revision: number | null;
+          resulting_trip_revision: number | null;
+        };
+        Insert: {
+          actor_user_id: string;
+          apply_receipt_id?: string | null;
+          created_at?: string;
+          id?: string;
+          idempotency_key: string;
+          issue_codes: string[];
+          observed_plan_revision: number;
+          observed_trip_revision: number;
+          original_receipt_id: string;
+          outcome: string;
+          payload_hash: string;
+          request_id: string;
+          resulting_plan_revision?: number | null;
+          resulting_trip_revision?: number | null;
+        };
+        Update: {
+          actor_user_id?: string;
+          apply_receipt_id?: string | null;
+          created_at?: string;
+          id?: string;
+          idempotency_key?: string;
+          issue_codes?: string[];
+          observed_plan_revision?: number;
+          observed_trip_revision?: number;
+          original_receipt_id?: string;
+          outcome?: string;
+          payload_hash?: string;
+          request_id?: string;
+          resulting_plan_revision?: number | null;
+          resulting_trip_revision?: number | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_rollback_receipts_apply_receipt_id_fkey";
+            columns: ["apply_receipt_id"];
+            isOneToOne: false;
+            referencedRelation: "engine_apply_receipts";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "engine_rollback_receipts_original_receipt_id_fkey";
+            columns: ["original_receipt_id"];
+            isOneToOne: false;
+            referencedRelation: "engine_apply_receipts";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      engine_runtime_results: {
+        Row: {
+          contract_version: string;
+          created_at: string;
+          fingerprint: string;
+          issue_codes: string[];
+          issues_truncated: boolean;
+          observed_plan_revision: number | null;
+          observed_trip_revision: number | null;
+          receipt_id: string;
+          recompute_status: string;
+        };
+        Insert: {
+          contract_version?: string;
+          created_at?: string;
+          fingerprint: string;
+          issue_codes: string[];
+          issues_truncated?: boolean;
+          observed_plan_revision?: number | null;
+          observed_trip_revision?: number | null;
+          receipt_id: string;
+          recompute_status: string;
+        };
+        Update: {
+          contract_version?: string;
+          created_at?: string;
+          fingerprint?: string;
+          issue_codes?: string[];
+          issues_truncated?: boolean;
+          observed_plan_revision?: number | null;
+          observed_trip_revision?: number | null;
+          receipt_id?: string;
+          recompute_status?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_runtime_results_receipt_id_fkey";
+            columns: ["receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_outbox";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
       };
       itinerary_items: {
         Row: {
@@ -664,6 +851,7 @@ export type Database = {
         Args: { payload: Json };
         Returns: boolean;
       };
+      is_engine_preimage_v1: { Args: { value: Json }; Returns: boolean };
       is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
       is_trip_library_envelope_v1: {
         Args: { max_bytes: number; payload: Json; version_key: string };

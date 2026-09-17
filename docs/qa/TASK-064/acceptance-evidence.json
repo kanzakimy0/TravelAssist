@@ -1,0 +1,961 @@
+{
+  "task": "TASK-064-B",
+  "issue": 383,
+  "status": "LOCAL_QA_PASS_READY_FOR_DRAFT_REVIEW",
+  "executionBase": "b3c37a40ff8f0690a25d0372ac8e0c8f3cc063ea",
+  "branch": "codex/b-wbs-4-23-runtime-recompute-rollback",
+  "startGate": {
+    "commands": [
+      "git status --short",
+      "git branch --show-current",
+      "git fetch --all --prune",
+      "git rev-parse origin/develop",
+      "git log --oneline -20 origin/develop"
+    ],
+    "originalWorkingTree": {
+      "branch": "detached HEAD",
+      "status": "?? outputs/",
+      "preserved": true
+    },
+    "independentCandidateAndBaselineWorktrees": true,
+    "taskSource": "origin/task/b-wbs-4-23-runtime-recompute-rollback",
+    "prerequisites": {
+      "4.20": "completed/Frozen",
+      "4.20.1": "completed",
+      "4.21": "completed",
+      "4.22": "B/completed",
+      "7.5": "completed",
+      "8.5": "B/completed"
+    },
+    "priorAcceptance": {
+      "pullRequest": 382,
+      "state": "MERGED",
+      "mergeCommit": "47c9f48c371ba42faf646bef87ad7ca7a8ee3f66",
+      "issue": 380,
+      "issueState": "CLOSED/COMPLETED"
+    },
+    "latestDevelopRecheck": "b3c37a40ff8f0690a25d0372ac8e0c8f3cc063ea",
+    "baselineWorktreeClean": true,
+    "preResetInventory": {
+      "authUsers": 0,
+      "storageObjects": 0,
+      "storageBuckets": 0,
+      "profiles": 0,
+      "profile_settings": 0,
+      "emergency_contacts": 0,
+      "trips": 0,
+      "trip_plans": 0,
+      "trip_days": 0,
+      "itinerary_items": 0,
+      "travel_preferences": 0,
+      "companions": 0,
+      "companion_groups": 0,
+      "companion_group_members": 0,
+      "trip_library_records": 0,
+      "engine_apply_receipts": 0,
+      "engine_apply_audits": 0,
+      "engine_apply_outbox": 0
+    }
+  },
+  "commands": [
+    {
+      "label": "baseline install",
+      "command": "npm ci (clean detached develop)",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "baseline-npm-ci.log",
+      "logSha256": "27865c108ae80c1d5bd804cedcb6eabe04973683f3e14fefbacb455c2f110728",
+      "logCompletedAt": "2026-09-17T00:00:45.349Z"
+    },
+    {
+      "label": "candidate install",
+      "command": "npm ci",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "candidate-npm-ci.log",
+      "logSha256": "0d0080248a20e623710ba15fc2ddbed2bbabc47186a25a5ea3ec6996d4013411",
+      "logCompletedAt": "2026-09-17T00:00:54.688Z"
+    },
+    {
+      "label": "clean develop full Node",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\" (baseline)",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "baseline-full-node.log",
+      "logSha256": "bd8429a8980179cf8ed51e7e55dfdc1c438c8a1aa4e1d4e905ecafbf25ef9c50",
+      "logCompletedAt": "2026-09-17T00:01:26.573Z",
+      "counts": {
+        "tests": 2534,
+        "pass": 2534,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Local start",
+      "command": "npm run db:start",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-start.log",
+      "logSha256": "ee1cc9c884f7f31b4674e5972800c4eedb30d3cd72b67a2dbda433c1e6c0120f",
+      "logCompletedAt": "2026-09-17T00:10:25.735Z"
+    },
+    {
+      "label": "Local status",
+      "command": "npm run db:status",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-status.log",
+      "logSha256": "ba372723982719f74066743a3e70394df73751eef2c76ce004881e5ecddac689",
+      "logCompletedAt": "2026-09-17T00:11:48.008Z"
+    },
+    {
+      "label": "Local empty reset",
+      "command": "npm run db:reset",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-reset-final-schema.log",
+      "logSha256": "e32a5f3f5ccd813b5049c4b0915d2d0c228d0f3410775e3fb5a1f16266ff9a41",
+      "logCompletedAt": "2026-09-17T00:15:41.685Z"
+    },
+    {
+      "label": "real generated types",
+      "command": "npm run db:types",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-types-final-schema.log",
+      "logSha256": "60c77d28188f96f2245aa24d7cda0b8c30d702555e199b1c8bfe7b17a02236e0",
+      "logCompletedAt": "2026-09-17T00:15:46.439Z"
+    },
+    {
+      "label": "4.21 + TASK-063 + TASK-064 pure",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/wbs-4-21-rule-feasibility.test.mjs tests/task-063-engine-apply.test.mjs tests/task-064-runtime-rollback.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "focused-pure-delivery.log",
+      "logSha256": "3e39e4d19343b7b4eb0af390007516df1dbadc1cb356d2d6f2d5c086e688a5a9",
+      "logCompletedAt": "2026-09-17T00:31:32.964Z",
+      "counts": {
+        "tests": 114,
+        "pass": 114,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "TASK-064 real Local",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/task-064-runtime-rollback.runtime.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "task064-local-delivery.log",
+      "logSha256": "08c4feb9e07a1f502daac407647d31f6698120a2042326ab81932c068666a8c4",
+      "logCompletedAt": "2026-09-17T00:32:34.047Z",
+      "counts": {
+        "tests": 42,
+        "pass": 42,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "two reset/types deterministic replays",
+      "command": "npm run test:personal-center-migration:replay",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "migration-replay-final.log",
+      "logSha256": "968e1b40c88e60a095edfed81fd517a61c38dada8037c4fe768a88222281a8ae",
+      "logCompletedAt": "2026-09-17T00:24:02.068Z"
+    },
+    {
+      "label": "TASK-063 real Local regression",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/task-063-engine-apply.runtime.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "task063-local.log",
+      "logSha256": "ed2c85ba1f6c2c812390e0fc3240fc32a353cf43ccf082e560b456a09f842edf",
+      "logCompletedAt": "2026-09-17T00:24:25.559Z",
+      "counts": {
+        "tests": 35,
+        "pass": 35,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Trip Plan pure",
+      "command": "npm run test:trip-plan",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "trip-plan-pure.log",
+      "logSha256": "f4d5c8bcd4ed2e53683f3f26577cd40b035be34140be02642f9e000944c0f5e2",
+      "logCompletedAt": "2026-09-17T00:19:37.275Z",
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Trip Plan Local",
+      "command": "npm run test:trip-plan:runtime",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "trip-plan-runtime.log",
+      "logSha256": "871282eec7212275cfa407b941490056e6655dbaba9b6681c08ab2035ecffb89",
+      "logCompletedAt": "2026-09-17T00:24:33.974Z",
+      "counts": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Route regression",
+      "command": "npm run test:routing",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "routing.log",
+      "logSha256": "a4358f3c5f6bab172977713407ca24355601ff95064f0bb408743151d3d57206",
+      "logCompletedAt": "2026-09-17T00:19:28.934Z",
+      "counts": {
+        "tests": 28,
+        "pass": 28,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "A+B coexistence",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test --test-reporter=tap tests/task-062-trip-plan-coexistence.runtime.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "task062-coexistence.log",
+      "logSha256": "1f8f82e61546a09af59fd5d45fa99784b09c82cd5bd22dbac923fe24e36f176f",
+      "logCompletedAt": "2026-09-17T00:24:40.043Z",
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Personal Center Local aggregate",
+      "command": "npm run test:personal-center:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "personal-center-local.log",
+      "logSha256": "1b1c1779f75d44351df66ceb17d03c1052ba43cec3ed56c05f757e798a15aa2d",
+      "logCompletedAt": "2026-09-17T00:30:13.385Z"
+    },
+    {
+      "label": "candidate full Node",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\"",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "candidate-full-node-delivery.log",
+      "logSha256": "fa362785a6b411353a5812b9c7388042f96db43ca57ea02e912425e74e57596b",
+      "logCompletedAt": "2026-09-17T00:28:44.971Z",
+      "counts": {
+        "tests": 2557,
+        "pass": 2557,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "lint",
+      "command": "npm run lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "lint-final.log",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762",
+      "logCompletedAt": "2026-09-17T00:28:56.228Z"
+    },
+    {
+      "label": "typecheck",
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "typecheck-final.log",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+      "logCompletedAt": "2026-09-17T00:29:21.588Z"
+    },
+    {
+      "label": "build",
+      "command": "npm run build",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "build-final.log",
+      "logSha256": "39cb0b768da4d4aabaca45f3be8a4287ae2eb241a2938dd94af9fbf17b25f679",
+      "logCompletedAt": "2026-09-17T00:33:00.118Z"
+    },
+    {
+      "label": "deployment format",
+      "command": "npm run format:check:deploy",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "format-deploy.log",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "logCompletedAt": "2026-09-17T00:29:38.915Z"
+    },
+    {
+      "label": "deployment validation",
+      "command": "npm run deploy:validate:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "deploy-validate.log",
+      "logSha256": "377afaf9c29323178f60c167df9458d360631dbf79040894e8eb0c2827b105ab",
+      "logCompletedAt": "2026-09-17T00:33:00.984Z"
+    },
+    {
+      "label": "deployment build",
+      "command": "npm run deploy:build:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "deploy-build.log",
+      "logSha256": "c30017c51cd0c39a64bdc93d3fe3935f261ca7764299daf675384d5d7bd44a80",
+      "logCompletedAt": "2026-09-17T00:33:35.221Z"
+    },
+    {
+      "label": "artifact verification",
+      "command": "npm run deploy:verify-artifact",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "deploy-verify.log",
+      "logSha256": "3fe7de019569156d0411c8f05ff31a1aa5811d6b60465941822da54a95336523",
+      "logCompletedAt": "2026-09-17T00:33:37.102Z"
+    },
+    {
+      "label": "final Local status",
+      "command": "npm run db:status",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-status-final.log",
+      "logSha256": "ba372723982719f74066743a3e70394df73751eef2c76ce004881e5ecddac689",
+      "logCompletedAt": "2026-09-17T00:32:36.228Z"
+    },
+    {
+      "label": "final Local stop",
+      "command": "npm run db:stop",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-stop-final.log",
+      "logSha256": "d8d601c847317969e5aa4665b3e5ba5cce0d4b766ab20a42d2d426f5e9b3af8c",
+      "logCompletedAt": "2026-09-17T00:32:44.380Z"
+    }
+  ],
+  "focusedPureBreakdown": {
+    "4.21": 77,
+    "TASK-063": 14,
+    "TASK-064": 23
+  },
+  "runtime": {
+    "policy": {
+      "leaseSeconds": 60,
+      "maxAttempts": 3,
+      "retrySeconds": 5
+    },
+    "cases": [
+      {
+        "name": "01-04 accepted event pending -> claim -> one terminal recompute; repeated invocation idempotent",
+        "status": "PASS"
+      },
+      {
+        "name": "05 concurrent workers claim distinct events and at most one result each",
+        "status": "PASS"
+      },
+      {
+        "name": "06 expired abandoned lease is recovered; stale running worker is fenced",
+        "status": "PASS"
+      },
+      {
+        "name": "07-08 forced retryable failure has no Trip mutation and stops after three attempts",
+        "status": "PASS"
+      },
+      {
+        "name": "08 crash on each attempt is bounded, including abandoned final lease",
+        "status": "PASS"
+      },
+      {
+        "name": "09-10 recompute observes later current revisions and remains read-only",
+        "status": "PASS"
+      },
+      {
+        "name": "11-12 normalized route facts valid use 7.5/4.21 and no live network",
+        "status": "PASS"
+      },
+      {
+        "name": "11-12 normalized route facts missing use 7.5/4.21 and no live network",
+        "status": "PASS"
+      },
+      {
+        "name": "11-12 normalized route facts stale use 7.5/4.21 and no live network",
+        "status": "PASS"
+      },
+      {
+        "name": "11-12 normalized route facts invalid use 7.5/4.21 and no live network",
+        "status": "PASS"
+      },
+      {
+        "name": "13 identical current state/context across separate accepted events has identical fingerprint",
+        "status": "PASS"
+      },
+      {
+        "name": "target deleted before recompute becomes stable terminal failure",
+        "status": "PASS"
+      },
+      {
+        "name": "14 typed runtime metadata and bounded preimage reject raw payload and malformed JSON",
+        "status": "PASS"
+      },
+      {
+        "name": "14 browser and authenticated roles cannot read or forge queue/history/correlations",
+        "status": "PASS"
+      },
+      {
+        "name": "16-18 UPDATE_TIME compensates through new revisions and preserves unrelated current changes",
+        "status": "PASS"
+      },
+      {
+        "name": "19-20 REORDER_ITEMS compensation restores beforeOrder with current validation",
+        "status": "PASS"
+      },
+      {
+        "name": "21-22 original receipt/audit immutable; new receipt audit outbox and correlation",
+        "status": "PASS"
+      },
+      {
+        "name": "23-25 schedule drift fails ROLLBACK_CONFLICT with zero mutation",
+        "status": "PASS"
+      },
+      {
+        "name": "23-25 order drift fails ROLLBACK_CONFLICT with zero mutation",
+        "status": "PASS"
+      },
+      {
+        "name": "23-25 missing-item drift fails ROLLBACK_CONFLICT with zero mutation",
+        "status": "PASS"
+      },
+      {
+        "name": "23-25 missing-day drift fails ROLLBACK_CONFLICT with zero mutation",
+        "status": "PASS"
+      },
+      {
+        "name": "26-28 cross-user anonymous and actor mismatch reveal no authoritative state",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current system_hard_lock prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current booking_lock prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current payment_lock prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current user_lock prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current booking prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current protected prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "29 current context-missing prevents rollback, no accepted audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "30 historical accepted receipt without preimage is unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "31 same request retry replays and changed payload conflicts",
+        "status": "PASS"
+      },
+      {
+        "name": "32 real concurrent rollback same key commits at most once",
+        "status": "PASS"
+      },
+      {
+        "name": "32 real concurrent rollback different keys commits at most once",
+        "status": "PASS"
+      },
+      {
+        "name": "33 consumed original and compensation receipt cannot flip state back",
+        "status": "PASS"
+      },
+      {
+        "name": "34 forced preimage transaction failure rolls back Trip and all new metadata",
+        "status": "PASS"
+      },
+      {
+        "name": "34 forced correlation transaction failure rolls back Trip and all new metadata",
+        "status": "PASS"
+      },
+      {
+        "name": "34 forced deferred-commit transaction failure rolls back Trip and all new metadata",
+        "status": "PASS"
+      },
+      {
+        "name": "34 ambiguous commit acknowledgement reconciles original rollback key",
+        "status": "PASS"
+      },
+      {
+        "name": "current owner/RLS is rechecked on rollback replay and reconciliation",
+        "status": "PASS"
+      },
+      {
+        "name": "35 original apply replay/reconcile after compensation remains immutable",
+        "status": "PASS"
+      },
+      {
+        "name": "15/36 real account deletion cascades runtime/history/rollback metadata and preserves another user",
+        "status": "PASS"
+      }
+    ],
+    "firstEvent": {
+      "runtimeContractVersion": "4.23-runtime-1",
+      "eventId": "548eecc6-3858-4eb0-9995-f39d6e835e80",
+      "eventType": "engine.apply.accepted.v0.1",
+      "originalReceiptId": "548eecc6-3858-4eb0-9995-f39d6e835e80",
+      "changeSetId": "be1e0415-ba6b-4fb4-be8b-059e498f1f23",
+      "actorRef": "c663fc4a-a2a2-4f72-b0a3-6f07243f81f8",
+      "target": {
+        "tripId": "81867809-cea7-42cc-9c2a-8783eb20dc69",
+        "planId": "96b2af51-9ac9-42de-96e3-256d2a21e089"
+      },
+      "originalResultingVersion": {
+        "tripRevision": 2,
+        "planRevision": 2
+      },
+      "currentObservedVersion": {
+        "tripRevision": 2,
+        "planRevision": 2
+      },
+      "processingState": "processed",
+      "recomputeStatus": "accepted",
+      "fingerprint": "94d89fc5d59f5b76b6c3d07fface742342dbdf2a1b6f7d4598f35c7f6a250111",
+      "issueCodes": [],
+      "issuesTruncated": false
+    },
+    "retryTransitions": [
+      "retryable_failure",
+      "retryable_failure",
+      "terminal_failure"
+    ],
+    "cascade": {
+      "publicDeleteStatus": 204,
+      "otherUserPreserved": true
+    },
+    "cleanup": {
+      "engine_apply_receipts": 0,
+      "engine_apply_audits": 0,
+      "engine_apply_outbox": 0,
+      "engine_apply_preimages": 0,
+      "engine_apply_compensations": 0,
+      "engine_rollback_receipts": 0,
+      "engine_runtime_results": 0,
+      "authUsers": 0
+    }
+  },
+  "migration": {
+    "status": "PASS",
+    "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+    "commands": [
+      {
+        "label": "replay-start",
+        "started": "2026-09-17T00:22:03.292Z",
+        "finished": "2026-09-17T00:22:07.939Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-initial-status",
+        "started": "2026-09-17T00:22:07.939Z",
+        "finished": "2026-09-17T00:22:10.398Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-reset",
+        "started": "2026-09-17T00:22:12.036Z",
+        "finished": "2026-09-17T00:22:54.775Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-types",
+        "started": "2026-09-17T00:22:54.775Z",
+        "finished": "2026-09-17T00:22:58.869Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-static",
+        "started": "2026-09-17T00:22:58.870Z",
+        "finished": "2026-09-17T00:23:00.044Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-runtime",
+        "started": "2026-09-17T00:23:00.044Z",
+        "finished": "2026-09-17T00:23:07.903Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-reset",
+        "started": "2026-09-17T00:23:09.091Z",
+        "finished": "2026-09-17T00:23:48.175Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-types",
+        "started": "2026-09-17T00:23:48.175Z",
+        "finished": "2026-09-17T00:23:52.238Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-static",
+        "started": "2026-09-17T00:23:52.238Z",
+        "finished": "2026-09-17T00:23:53.439Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-runtime",
+        "started": "2026-09-17T00:23:53.439Z",
+        "finished": "2026-09-17T00:24:00.931Z",
+        "exitCode": 0
+      }
+    ],
+    "replays": [
+      {
+        "pass": 1,
+        "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+        "catalogSha256": "589df4dbe3afa3b59c99e5b28a2a7b8562cb61562e0593bb748cb47cc965b22a",
+        "runtime": {
+          "status": "PASS",
+          "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+          "completed": [
+            "replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree",
+            "positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions",
+            "RPC cross-owner update/delete and foreign membership fail without aggregate changes",
+            "accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay",
+            "DELETE /api/account removes populated owner and all eight B families, preserving second user"
+          ],
+          "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+          "realAuthUsers": 2,
+          "productionStagingMutation": false
+        }
+      },
+      {
+        "pass": 2,
+        "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+        "catalogSha256": "589df4dbe3afa3b59c99e5b28a2a7b8562cb61562e0593bb748cb47cc965b22a",
+        "runtime": {
+          "status": "PASS",
+          "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+          "completed": [
+            "replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree",
+            "positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions",
+            "RPC cross-owner update/delete and foreign membership fail without aggregate changes",
+            "accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay",
+            "DELETE /api/account removes populated owner and all eight B families, preserving second user"
+          ],
+          "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+          "realAuthUsers": 2,
+          "productionStagingMutation": false
+        }
+      }
+    ],
+    "task064ExecutionBase": "b3c37a40ff8f0690a25d0372ac8e0c8f3cc063ea",
+    "combinedTables": 19,
+    "immutableExistingMigrations": [
+      {
+        "path": "supabase/migrations/20260908083000_create_user_profile_schema.sql",
+        "unchanged": true,
+        "sha256": "04155bd2e4673eb971a39b5a9d4941d3ba8d57d05f8c648fa67ba508c4c94606"
+      },
+      {
+        "path": "supabase/migrations/20260908150000_create_trip_plan_schema.sql",
+        "unchanged": true,
+        "sha256": "9d79cdc32075cb8ba821d53ed07c88239e7e65636ddfcd63b7eab251161190af"
+      },
+      {
+        "path": "supabase/migrations/20260908150100_add_trip_plan_rls_revision.sql",
+        "unchanged": true,
+        "sha256": "40a7e77bd85adc0e4279335e68746a70bb2e05244a6b1441197a301be078919c"
+      },
+      {
+        "path": "supabase/migrations/20260911090000_create_travel_preferences.sql",
+        "unchanged": true,
+        "sha256": "46598b54fb008353a1b1b8dcfb5513bf9abdafb95adcaac51d503586c17ea48a"
+      },
+      {
+        "path": "supabase/migrations/20260911100000_create_companion_schema.sql",
+        "unchanged": true,
+        "sha256": "4143775d488293bb6946dcc82e4617095bc6eb752be79012c40c228cb112211b"
+      },
+      {
+        "path": "supabase/migrations/20260912090000_add_companion_transaction_api.sql",
+        "unchanged": true,
+        "sha256": "3036ea718306f10e8daef5c788a6ca6a54b18330ea0d95e0f2b31287bfa26cd6"
+      },
+      {
+        "path": "supabase/migrations/20260912100000_create_trip_library_records.sql",
+        "unchanged": true,
+        "sha256": "21c9750a750fd39859c04ef65dd074666ab3776df18f967dd79e7d4eecffcd3b"
+      },
+      {
+        "path": "supabase/migrations/20260912120000_trip_library_creation_intent.sql",
+        "unchanged": true,
+        "sha256": "f4a812c648c615a4c0c98e751c9d12ebf06ad5ea360616b039f405c338f0e47c"
+      },
+      {
+        "path": "supabase/migrations/20260917090000_create_engine_apply.sql",
+        "unchanged": true,
+        "sha256": "aa3e2d368e749a898448d54d63e85a26fde0580401d4dac711b355a09f015319"
+      }
+    ],
+    "newMigration": "supabase/migrations/20260917100000_engine_runtime_compensation.sql"
+  },
+  "personalCenter": {
+    "status": "PASS",
+    "started": "2026-09-17T00:24:48.475Z",
+    "finished": "2026-09-17T00:30:13.382Z",
+    "totalTests": 877,
+    "suites": [
+      {
+        "file": "tests/task-016-client-bundle.mjs",
+        "counts": null
+      },
+      {
+        "file": "tests/task-016-user-profile.runtime.mjs",
+        "counts": {
+          "tests": 25,
+          "pass": 25,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-018-authentication.runtime.mjs",
+        "counts": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-018-client-bundle.mjs",
+        "counts": null
+      },
+      {
+        "file": "tests/task-042-preference-schema.runtime.mjs",
+        "counts": {
+          "tests": 505,
+          "pass": 505,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-044-companion-schema.runtime.mjs",
+        "counts": {
+          "tests": 147,
+          "pass": 147,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-045-preference-api.runtime.mjs",
+        "counts": {
+          "tests": 17,
+          "pass": 17,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-046-preference-contract.runtime.mjs",
+        "counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-047-companion-api.runtime.mjs",
+        "counts": {
+          "tests": 22,
+          "pass": 22,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-048-trip-persistence-model.runtime.mjs",
+        "counts": {
+          "tests": 29,
+          "pass": 29,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-049-trip-library-api.runtime.mjs",
+        "counts": {
+          "tests": 35,
+          "pass": 35,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-050-profile-api.runtime.mjs",
+        "counts": {
+          "tests": 25,
+          "pass": 25,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-052-account-deletion.runtime.mjs",
+        "counts": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-053-preference-presets.runtime.mjs",
+        "counts": {
+          "tests": 21,
+          "pass": 21,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-054-personal-center-migration.runtime.mjs",
+        "counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      }
+    ],
+    "before": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "after": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "generatedTypesSha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1"
+  },
+  "limitations": {
+    "productionContextAdapterWiring": false,
+    "productionWorkerDeployment": false,
+    "livePaidProviderCalls": 0,
+    "productionDatabaseMutation": false,
+    "confirmationGrant": false,
+    "bookingPaymentReversal": false
+  },
+  "delivery": {
+    "pullRequest": "PENDING",
+    "draftRequired": true,
+    "issueMustRemainOpen": true,
+    "wbs423": "待审查 at Draft PR handoff",
+    "wbs424": "未开始",
+    "exactFinalHeadCI": "See final PR delivery metadata for exact branch SHA and workflow_dispatch run; no self-referential commit claim."
+  },
+  "initialCorrections": [
+    "DB canonical timestamp readback replaces preview string preimage; Local suite rerun",
+    "SQL NULL rejection is NOT NULL, other invalid history is CHECK",
+    "Exact generated function inventory adds only new shape predicate; explicit text[] mapping added",
+    "Legacy malformed audit entry fails unsupported history validation; current owner rechecked on replay/reconcile"
+  ],
+  "localArtifact": {
+    "headAtBuild": "b3c37a40ff8f0690a25d0372ac8e0c8f3cc063ea",
+    "candidateWorkingTreeIncluded": true,
+    "fileCount": 1869,
+    "verified": true,
+    "finalHeadArtifact": "Exact final-head workflow_dispatch Quality Gate builds/verifies its checked-out commit; see PR delivery metadata."
+  }
+}

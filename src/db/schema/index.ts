@@ -17,3 +17,10 @@ export {
   engineApplyAudits,
   engineApplyOutbox,
 } from "./engine-apply";
+
+export {
+  engineApplyPreimages,
+  engineApplyCompensations,
+  engineRollbackReceipts,
+  engineRuntimeResults,
+} from "./engine-runtime";

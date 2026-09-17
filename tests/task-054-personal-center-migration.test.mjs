@@ -38,7 +38,10 @@ test("TASK-054 generated Row/Insert/Update agree with every Drizzle column and d
   const functions = Object.keys(generatedContract().functions).sort();
   assert.deepEqual(
     functions,
-    manifest.functions.filter((name) => /^(is_|mutate_)/.test(name)),
+    [
+      ...manifest.functions.filter((name) => /^(is_|mutate_)/.test(name)),
+      "is_engine_preimage_v1",
+    ].sort(),
   );
 });
 
