@@ -13,7 +13,7 @@
 - Planned implementation branch: `codex/b-wbs-4-24-engine-integration-certification`
 
 - Commit: f4dfcadf3fae2fe9b1aa97196264eb5158316444
-- Pull Request: PENDING_DRAFT_PR
+- Pull Request: [Draft PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388)
 - Result: [TASK-065-B Result](RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md)
 
 ## 1. Purpose

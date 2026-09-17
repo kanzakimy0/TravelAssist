@@ -1,6 +1,6 @@
 # TASK-065-B QA
 
-Execution base: `3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`. Branch: `codex/b-wbs-4-24-engine-integration-certification`. Issue: [#387](https://github.com/kanzakimy0/TravelAssist/issues/387). Delivery: PENDING_DRAFT_PR.
+Execution base: `3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`. Branch: `codex/b-wbs-4-24-engine-integration-certification`. Issue: [#387](https://github.com/kanzakimy0/TravelAssist/issues/387). Delivery: [Draft PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388).
 
 Overall gate status: Local QA PASS; exact final-head CI uses the external delivery attestation. Full machine records are in [acceptance-evidence.json](acceptance-evidence.json). No unexecuted gate is recorded as PASS.
 

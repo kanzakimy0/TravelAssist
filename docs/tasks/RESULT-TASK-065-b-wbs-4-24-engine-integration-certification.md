@@ -5,10 +5,10 @@
 - Task: TASK-065-B
 - Owner: B
 - Issue: [#387](https://github.com/kanzakimy0/TravelAssist/issues/387) — Open
-- Status: 本地 QA 已通过；待创建 Draft PR 并绑定最终 CI 回执
+- Status: 待验收；本地 QA 全部通过；最终 head CI 回执见 PR #388 delivery JSON
 - Execution base: `3d6c326ff62d69c8d1a9fb96bd6dca368faa3642`
 - Branch: `codex/b-wbs-4-24-engine-integration-certification`
-- Draft PR → develop: PENDING_DRAFT_PR
+- Draft PR → develop: [Draft PR #388](https://github.com/kanzakimy0/TravelAssist/pull/388)
 - Implementation commit: f4dfcadf3fae2fe9b1aa97196264eb5158316444
 - Final-head/CI: final immutable SHA and exact workflow_dispatch Quality Gate receipt are bound in the PR delivery JSON and final user response; no self-referential SHA is invented.
 
@@ -99,4 +99,4 @@ Engine correctness defect / minimal runtime fix / public compatibility change：
 - [Command / delivery ledger](../qa/TASK-065/acceptance-evidence.json)
 - Eight TASK-065 test/harness files.
 
-最终状态：PENDING_WBS_REVIEW。唯一 Draft PR 保持 Open / Draft；Issue #387 保持 Open；未 merge、未标记 4.24 已完成，等待用户验收。
+最终状态：4.24 = B / 待审查（#387 / TASK-065-B；Draft PR #388）。唯一 Draft PR 保持 Open / Draft；Issue #387 保持 Open；未 merge、未标记 4.24 已完成，等待用户验收。
