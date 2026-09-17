@@ -1,5 +1,7 @@
 # TASK-067-B — 主系统状态运行时 QA
 
+当前状态：2026-09-17用户授权normal merge PR #392，已合入develop；WBS 3.7 = B / 已完成。以下实施期日志、失败诊断、矩阵与证据保持为原候选记录。收口详情见[验收收口](../../project/WBS-3.7-acceptance-closeout.md)与[机器回执](acceptance-closeout.json)。
+
 ## 基线与边界
 
 执行基线与交付前重新 fetch 的 develop 均为 `3a2779aee65c7335413adcc53ee5b4f7135c654c`，没有漂移。Task 发布 head 为 `3bd28dc789bd54030a7768d7ac760a8f64c4fbf1`；实现从 develop 的独立干净 worktree 开始，未从 publication branch 实现。原工作区 detached `5240ff8` 和未跟踪 `outputs/` 保留。
@@ -118,9 +120,9 @@ node --import ./tests/register-route-ts.mjs tests/task-067-main-system-state.bro
 
 ## 提交与验收
 
-只允许一个 Draft PR → develop；Issue #391保持Open；3.7交付候选为 B / 待审查。最终不可变head及workflow_dispatch exact-head Quality gate回执写入PR交付正文与最终答复，避免仓库内文档将自身最终commit写入后再次改变head。所有本地受测 runtime/test 源码用 SHA-256 绑定；最后文档/PR编号提交后未改变runtime。
+交付时创建唯一Draft PR #392 → develop，3.7候选状态为B / 待审查；随后经本次用户授权normal merge并收口为B / 已完成。Issue #391保持Open。最终不可变head及workflow_dispatch exact-head Quality gate回执写入PR交付正文与最终答复，避免仓库内文档将自身最终commit写入后再次改变head。所有本地受测 runtime/test 源码用 SHA-256 绑定；最后文档/PR编号提交后未改变runtime。
 
-完整交付见 [Result](../../tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md)。不自动合并，不标记已完成，不启动其他WBS。
+完整交付见 [Result](../../tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md)。实施阶段未自动合并/标记完成；本次按用户明确授权合并收口，未启动其他WBS。
 
 ## CI证据目录修正
 

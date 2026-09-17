@@ -676,7 +676,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 
 | Task ID | WBS ID | Owner | Status | GitHub Issue | Task File | Branch | Commit | Pull Request |
 |---|---|---|---|---|---|---|---|---|
-| TASK-067-B | 3.7 | B | 待审查（用户授权单项代做；Draft PR #392） | #391 Open | docs/tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md | codex/b-wbs-3-7-main-system-state-runtime | e33e2bf（受测实现）；final head/CI见PR交付回执 | [#392](https://github.com/kanzakimy0/TravelAssist/pull/392) Draft → develop |
+| TASK-067-B | 3.7 | B | 已完成（用户验收；PR #392 normal merge） | #391 Open | docs/tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md；docs/project/WBS-3.7-acceptance-closeout.md | codex/b-wbs-3-7-main-system-state-runtime | 7b0fc11（验收head）；8eefe08（normal merge）；CI 35218450350 PASS | [#392](https://github.com/kanzakimy0/TravelAssist/pull/392) Merged → develop |
 | TASK-066-B | 1.20 | B | 已完成（用户验收；Frozen v0.1；PR #390已合并） | #389 Open | docs/tasks/RESULT-TASK-066-b-wbs-1-20-main-system-state-design-freeze.md | codex/b-wbs-1-20-main-system-state-design | ed80da9（验收head）；ded9a7c（normal merge） | [#390](https://github.com/kanzakimy0/TravelAssist/pull/390) Merged → develop |
 | TASK-065-B | 4.24 | B | 已完成（用户验收；PR #388 已合并） | #387 Open（保留此前不自动关闭限制） | docs/tasks/RESULT-TASK-065-b-wbs-4-24-engine-integration-certification.md；docs/project/WBS-4.24-acceptance-closeout.md | codex/b-wbs-4-24-engine-integration-certification | d4b3f8e（验收）；c368c97（merge）；CI 35179449036 PASS | [#388](https://github.com/kanzakimy0/TravelAssist/pull/388) Merged → develop |
 | TASK-064-B | 4.23 | B | 已完成（用户验收；PR #384 已合并） | #383 Closed / Completed | `docs/tasks/RESULT-TASK-064-b-wbs-4-23-engine-runtime-recompute-rollback.md`；`docs/project/WBS-4.23-acceptance-closeout.md` | `codex/b-wbs-4-23-runtime-recompute-rollback` | `436521d`（验收）；`5084b01`（merge）；CI `35167240929` PASS | [#384](https://github.com/kanzakimy0/TravelAssist/pull/384) merged → develop |
@@ -842,7 +842,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 3.4    | 登录按钮 / 头像入口在主系统中的实现 | B      | P1     | 3.1,5.3  | 已完成 |
 | 3.5    | AI 悬浮入口                         | B      | P1     | 3.1      | 已完成 |
 | 3.6    | 目的地 / 日期 / 开始规划入口        | A      | P0     | 3.1      | 已完成 |
-| 3.7    | 主系统 Loading / Empty / Error      | B      | P1     | 1.20,3.1 | 待审查（#391 / TASK-067-B；Draft PR #392） |
+| 3.7    | 主系统 Loading / Empty / Error      | B      | P1     | 1.20,3.1 | 已完成（#391 / TASK-067-B；用户验收，PR #392 normal merge） |
 | 3.8    | 主系统响应式 / 无障碍               | A      | P2     | 3.1-3.7  | 已完成 |
 
 ## 4. Planner / 地图 / 路线生成（A；Engine 单项交给 B）

@@ -7,9 +7,11 @@
 - Execution base / 最新 develop：`3a2779aee65c7335413adcc53ee5b4f7135c654c`
 - Publication head：`3bd28dc789bd54030a7768d7ac760a8f64c4fbf1`
 - Execution branch：`codex/b-wbs-3-7-main-system-state-runtime`
-- Draft PR：[#392](https://github.com/kanzakimy0/TravelAssist/pull/392) → develop（Draft / Open）
-- WBS 3.7：B / 待审查（#391 / TASK-067-B；Draft PR #392）
-- Final immutable head / exact-head Quality gate：由 Draft PR 正文的“Final-head delivery receipt”绑定。文档提交不自指自身 commit；验收以该 head 的 workflow_dispatch PASS 为准，不能用 PR synthetic merge SHA 代替。
+- PR：[#392](https://github.com/kanzakimy0/TravelAssist/pull/392) → develop（已 normal merge）
+- WBS 3.7：B / 已完成（#391 / TASK-067-B；用户验收，PR #392 normal merge）
+- Accepted final head：`7b0fc11c5b5b2d181baf13c6daa85ad08d2dcbca`；[exact-head Quality gate 35218450350 — PASS](https://github.com/kanzakimy0/TravelAssist/actions/runs/35218450350)。
+- Merge commit：`8eefe08268c95d761e382205122fd974a5953fe1`；2026-09-17T12:21:14Z；双parent normal merge，tree与验收候选一致。
+- Closeout：[WBS 3.7验收收口](../project/WBS-3.7-acceptance-closeout.md)；post-closeout CI以其独立提交记录。
 
 ## 1. 完成的当前运行时集成
 
@@ -58,19 +60,19 @@ Route活动状态仅通过既有开发gate及浏览器7.5规范fixture验证；�
 
 ## 4. QA与可访问性
 
-| 验证                                                                        | 结果                                              |
-| --------------------------------------------------------------------------- | ------------------------------------------------- |
-| npm ci                                                                      | PASS；395 packages，0 vulnerabilities             |
-| 修改前latest-develop full Node baseline                                     | PASS 2598/2598，0 fail/skip                       |
-| TASK-067 focused                                                            | PASS 37/37                                        |
-| Home/AI/Start/Planner/Route/Browser Trip相关组合                            | PASS 83/83                                        |
-| 最终candidate full Node                                                     | PASS 2635/2635，0 fail/skip                       |
-| 开发模式真实本地浏览器                                                      | PASS；4视口，36组，32截图                         |
-| 生产模式Route disabled                                                      | PASS；4视口，8组，8截图；无query/retry，页面错误0 |
-| lint / typecheck / format:check:deploy                                      | PASS；最终实际命令/日志hash见gate-evidence.json   |
-| build / deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS；最终实际命令/日志hash见gate-evidence.json   |
-| Task-owned formatting / scope guard / local links / git diff --check        | PASS；证据见gate-evidence.json                    |
-| exact final-head GitHub Quality gate                                        | Draft PR最终不可变head的独立workflow_dispatch回执 |
+| 验证                                                                        | 结果                                                     |
+| --------------------------------------------------------------------------- | -------------------------------------------------------- |
+| npm ci                                                                      | PASS；395 packages，0 vulnerabilities                    |
+| 修改前latest-develop full Node baseline                                     | PASS 2598/2598，0 fail/skip                              |
+| TASK-067 focused                                                            | PASS 37/37                                               |
+| Home/AI/Start/Planner/Route/Browser Trip相关组合                            | PASS 83/83                                               |
+| 最终candidate full Node                                                     | PASS 2635/2635，0 fail/skip                              |
+| 开发模式真实本地浏览器                                                      | PASS；4视口，36组，32截图                                |
+| 生产模式Route disabled                                                      | PASS；4视口，8组，8截图；无query/retry，页面错误0        |
+| lint / typecheck / format:check:deploy                                      | PASS；最终实际命令/日志hash见gate-evidence.json          |
+| build / deploy:validate:local / deploy:build:local / deploy:verify-artifact | PASS；最终实际命令/日志hash见gate-evidence.json          |
+| Task-owned formatting / scope guard / local links / git diff --check        | PASS；证据见gate-evidence.json                           |
+| exact final-head GitHub Quality gate                                        | PASS；35218450350，exact accepted head workflow_dispatch |
 
 可访问性：状态公告与busy分离、Skeleton装饰且不可聚焦；reduce下无扫光/脉冲；状态恢复控件与AI close实测至少44×44；键盘Enter/Tab/Escape、重试焦点保留、取消回区域标题、modal关闭回trigger、清搜索回输入框。Route恢复按钮normal/hover/focus/pending共16项computed-style对比度实测，最小约10.64:1。
 
@@ -105,16 +107,16 @@ Docs：
 
 [机器gate证据](../qa/TASK-067/gate-evidence.json)包含完整实际文件清单及受测runtime/test SHA-256。旧Frozen文档、历史migration、package/lock、API/Engine/Provider/部署配置均未改。
 
-## 6. 交付纪律与后续验收
+## 6. 交付与验收收口
 
 开始：3.7 = B / 进行中（#391 / TASK-067-B；用户授权单项代做）。
 
 实现、QA及Draft PR完成后：3.7 = B / 待审查（#391 / TASK-067-B；Draft PR #392）。
 
-**未合并，未关闭Issue #391，未标记3.7已完成，未启动其他WBS。** 待用户明确验收并授权合并后方可收口。
+用户于2026-09-17明确授权normal merge与closeout，已按验收head合入develop并完成文档收口：**3.7 = B / 已完成**。Issue #391保持Open，未启动其他WBS。原Draft阶段“待审查”记录属于历史。
 
 无需数据库更改，因此没有运行Local Supabase/DB gates；没有Production/Staging DB操作；没有live/paid Provider调用；没有部署。提交前重新fetch检查develop，无漂移，保留原工作区与用户文件。
 
-[完整QA](../qa/TASK-067/README.md)与[逐行矩阵](../qa/TASK-067/state-runtime-matrix.json)均为本次交付组成部分。Final-head delivery receipt必须同时给出head SHA、Quality gate run URL与PASS，缺失时不能声称最终门禁完成。
+[完整QA](../qa/TASK-067/README.md)与[逐行矩阵](../qa/TASK-067/state-runtime-matrix.json)属于原验收候选；[机器验收回执](../qa/TASK-067/acceptance-closeout.json)记录合并及原证据指纹。历史gate/matrix/browser JSON未修改，其待审查标签和hash不代表收口后仍待审查。本次仅更新文档，不新增runtime/browser/DB验收声明。
 
 CI首轮exact-head 35217842652 因5张可选QA截图副本进入全仓资产扫描而失败2项目录测试（2633/2635）。已移除这些提交副本，保留本地原图/40张hash；不改资产目录或测试断言。重新执行完整Node与新final-head Quality gate，具体最终回执绑定PR正文。

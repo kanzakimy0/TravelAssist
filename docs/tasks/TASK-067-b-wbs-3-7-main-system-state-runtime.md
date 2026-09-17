@@ -7,8 +7,9 @@
 - Owner: `B` — user-authorized single-item exception
 - Priority: `P1`
 - Status at publication: `Ready / not started`
-- Execution status: `B / 待审查（#391 / TASK-067-B；Draft PR #392）`
-- Draft PR: https://github.com/kanzakimy0/TravelAssist/pull/392
+- Execution status: `B / 已完成（#391 / TASK-067-B；用户验收，PR #392 normal merge）`
+- Pull Request: [#392 — Merged](https://github.com/kanzakimy0/TravelAssist/pull/392)
+- Acceptance closeout: [WBS 3.7 closeout](../project/WBS-3.7-acceptance-closeout.md)
 - Result: [TASK-067-B Result](RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md)
 - Dependencies:
   - `1.20 — 主系统 Loading / Empty / Error / Skeleton` — completed, **Frozen v0.1**
