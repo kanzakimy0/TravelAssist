@@ -1,49 +1,55 @@
-# TASK-068-B — B Partition POI Registry Merge / 43-Feature Enrichment / Transport Linkage
+# TASK-068-B — Full POI Corpus Registry / 43-Feature / Visit Profile / Transport Linkage
 
 > Issue: #393  
-> Owner: **B**（用户明确授权本 POI 数据生产任务由 B 执行）  
-> B POI ID Range: **60000–99999**  
-> Task publication branch: `task/b-poi-partition-enrichment-transport-linkage`  
-> Planned execution branch: `codex/b-poi-partition-enrichment-transport-linkage`  
-> Merge policy: **Draft PR only / do not auto-merge**
-
----
+> Owner: **B** — user-authorized full POI data-production owner  
+> Stable ID scope: **00000–99999**  
+> Processing scope: **occupied POIs only**  
+> Batch size: **200 occupied POIs**  
+> Mode: **continuous / auto-next / resumable / overnight-capable**  
+> Execution branch: `codex/b-poi-partition-enrichment-transport-linkage`  
+> Merge policy: **one Draft PR → develop / do not auto-merge**
 
 ## 1. Goal
 
-把 B 负责的 POI 名单从“只有稳定 ID + 名单”推进到可供 TravelAssist Planning Engine 使用的结构化 POI 数据集。
-
-执行顺序必须是：
+B 负责本工作流里的全部 POI 数据，不再划分 A/B 号段。
 
 ```text
-确认 B 60000–99999 名单是否已进入 canonical repository
+Canonical Registry / all assigned lists
 ↓
-若未进入：寻找 B 已有分支/PR/文档并安全整合到本 Task branch
+audit + merge missing assigned-ID sources
 ↓
-锁定 occupied POI IDs
+lock occupied stable POI IDs 00000–99999
 ↓
-逐批生成 POI 基础属性与 43 维 Feature
+200 POIs / batch
 ↓
-生成 Visit Profile
+43-key POIFeatureV1
 ↓
-生成交通接入锚点 / transport linkage
+provenance / confidence
 ↓
-批次 QA / source provenance / null coverage
+Visit Profile
 ↓
-全量汇总 / Resume manifest
+transport access anchors / gateway hubs
 ↓
-Draft PR → develop
+sparse neighbor graph
+↓
+batch QA + checksum + checkpoint
+↓
+auto next batch
+↓
+repeat until all occupied POIs complete
+↓
+aggregate QA
+↓
+one Draft PR → develop
 ↓
 STOP
 ```
 
-本 Task **不是**修改推荐算法权重，也不是运行实时 Route Provider。
+TASK-069-A / Issue #394 is superseded. Do not run a separate A pipeline.
 
----
+## 2. Authoritative specs
 
-## 2. Read first
-
-开始前必须读取最新 `origin/develop` 中存在的权威文件，包括：
+Before processing, read execution-time latest `origin/develop`:
 
 ```text
 docs/architecture/poi-feature-preference-codebook-v0.1.md
@@ -54,206 +60,148 @@ docs/architecture/planning-fact-freshness-policy-v0.1.md
 docs/project/WBS-TravelAssist.md
 ```
 
-并读取历史 Pilot：
+Also read TASK-038 / TASK-039 Pilot evidence and QA methods. Reuse semantics, not their pilot benchmark as objective truth.
+
+## 3. Phase 0 — full Registry audit
+
+Audit every repository source that may contain assigned POI IDs:
+
+- canonical Registry on `origin/develop`;
+- uploaded/master-registry derived artifacts already committed;
+- remote POI branches;
+- open/closed PRs;
+- prior A/B POI list outputs;
+- ID allocation / master code sources.
+
+Report:
 
 ```text
-TASK-038-A — 100 POI Scoring Pilot
-TASK-039-A — POI Scoring Blind Review
-```
-
-TASK-038/039 用于继承 **Feature 语义、Visit Profile、证据与 QA 方法**，不得把 Pilot 的参数/机器 benchmark 当成新 POI 的客观事实。
-
----
-
-## 3. Phase 0 — B Registry Presence Audit
-
-### 3.1 Canonical audit
-
-先确认最新 `origin/develop` 的 POI canonical source 中是否存在 B 号段：
-
-```text
-60000 <= master_code_num <= 99999
-```
-
-至少输出：
-
-```text
-canonical registry path(s)
-canonical registry version
-total occupied B IDs
-min B ID
-max B ID
-duplicate IDs
+canonical registry path/version
+total occupied IDs
+occupied IDs by range
+min/max occupied ID
+duplicate stable IDs
 duplicate normalized identities
-missing required identity fields
+missing identity fields
+alias/tombstone/reserved counts
+assigned lists missing from canonical develop
 ```
 
-注意：检查的是 **occupied POI rows**，不是空 Code Slot。
+If an assigned list exists outside canonical develop, integrate the newest valid source into the implementation branch **without renumbering IDs**.
 
-### 3.2 Current known audit context
+If multiple sources conflict, compare base SHA, version, row count, source freshness, duplicate rate and schema compatibility. Preserve already-frozen stable IDs.
 
-用户提供的 POI Registry v1.52 工作簿显示：
-
-```text
-Registry rows = 8415
-Code slot sheets exist through 50000–59999
-no 60000–99999 code-slot sheet was visible
-```
-
-这只能作为当前审计线索，执行时必须以 GitHub 最新 canonical source 为准。
-
-### 3.3 If B list is not in canonical develop
-
-不得重新生成新 ID。
-
-必须搜索：
-
-```text
-all remote B branches
-all open/closed B PRs
-POI registry / list / source files
-60000–99999 data artifacts
-recent B workstation outputs
-```
-
-找到多个候选时，比较：
-
-```text
-base SHA
-row count
-ID range
-source freshness
-duplicate rate
-schema compatibility
-whether IDs were already assigned/frozen
-```
-
-选择 **最新且可证明为 B 正式名单来源** 的版本。
-
-将它安全整合到本 Task implementation branch：
-
-```text
-do not renumber
-do not rewrite A IDs 00000–59999
-do not silently drop B rows
-do not directly modify develop
-```
-
-若 GitHub 上完全找不到 B 的已分配名单来源：
-
-```text
-Status = Blocked / Missing B Registry Source
-```
-
-报告搜索过的 branches/PR/files 后停止，不得凭空构造 60000–99999 名单。
-
----
+If identity conflicts cannot be resolved safely, checkpoint completed work and stop as `Blocked / Identity Conflict`.
 
 ## 4. Processing population
 
-只处理：
+Process only rows that are:
 
 ```text
-occupied B POIs
-AND master_code_num between 60000 and 99999
+occupied
+AND 00000 <= master_code_num <= 99999
+AND not tombstoned/reserved/empty
 ```
 
-不得对：
+Do not manufacture POIs for empty code slots.
+
+Alias/child entities follow canonical entity rules; ambiguous cases go to review queue.
+
+## 5. Continuous batch engine
+
+### Batch size
 
 ```text
-unused code slots
-reserved IDs
-deleted/tombstoned IDs
-redirect-only alias rows
+200 occupied POIs
 ```
 
-生成完整 43 维评分。
+Use stable deterministic ordering, preferably ascending stable ID.
 
-若 alias/child entity 是否独立评分不明确，按 canonical entity rules 处理；无法确认则进入 review queue，不猜测。
+### Auto-next
 
----
-
-## 5. Batch execution model
-
-该任务必须可中断、可续跑、可审计。
-
-推荐批次：
+After every batch:
 
 ```text
-default batch size = 200 occupied POIs
+validate
+→ persist outputs
+→ write QA
+→ calculate checksums
+→ persist resume checkpoint
+→ commit checkpoint where appropriate
+→ immediately start next pending batch
 ```
 
-可根据实际仓库/网络/CI性能调整至 100–500，但必须保持 deterministic manifests。
+Do **not** wait for human confirmation between ordinary batches.
 
-每批记录：
+### Resume
 
-```text
-batchId
-idRange
-poiCount
-sourceVersion
-inputChecksum
-outputChecksum
-startedAt
-completedAt
-status
-knownFeatureCoverage
-nullFeatureCoverage
-visitProfileCoverage
-transportAnchorCoverage
-reviewRequiredCount
-errorCount
-```
-
-必须支持：
+Support repository-equivalent controls for:
 
 ```text
 --resume
---batch <id>
+--batch
 --from-id
 --to-id
 --dry-run
 ```
 
-或仓库现有等价机制。
+Checksum-identical completed batches are skipped.
 
-已经成功并 checksum 一致的批次不得重复调用外部来源。
+### Non-blocking POI failures
 
----
+These go to review queue and processing continues:
+
+```text
+PARTIAL
+REVIEW_REQUIRED
+SOURCE_UNAVAILABLE
+low-confidence attribute
+missing Visit Profile evidence
+missing transport anchor evidence
+```
+
+Hard-stop only for:
+
+- stable-ID corruption/collision;
+- canonical schema contradiction;
+- unsafe Git/Registry conflict;
+- legal/rights/credential blocker preventing lawful work;
+- unrecoverable deterministic/checkpoint failure;
+- unrecoverable infrastructure failure.
 
 ## 6. POI master enrichment
 
-每个 POI 至少维护：
+Each occupied POI should retain verified data where available:
 
 ```text
 master_code
 canonical identity
 name_ja
-name_en where verified
-prefecture / municipality / region
+name_en
+prefecture
+municipality
+region
 entity_type
-coordinates when verified
-parent relationship where applicable
+coordinates
+parent/child relation
 sourceRefs
 sourceTier
 lastVerifiedAt
 confidence
 ```
 
-来源优先级：
+Source priority:
 
-1. 日本政府 / 自治体 / 官方景点运营机构；
-2. 官方旅游局 / 公共机构；
-3. canonical repository 已有 evidence；
-4. 高可信二级来源，仅用于补充且必须标注。
+1. operator/government/municipality official source;
+2. official tourism/public agency;
+3. verified repository evidence;
+4. trustworthy secondary source as bounded supplement.
 
-禁止为了填满字段而制造精确事实。
+Prefer unknown over fabricated precision.
 
----
+## 7. Complete POIFeatureV1
 
-## 7. POIFeatureV1 — all 43 keys
-
-每个可评分 POI 必须生成完整 key shape：
+Every scorable POI must contain all 43 keys:
 
 ```text
 01 scenery
@@ -301,15 +249,15 @@ confidence
 43 winter
 ```
 
-### Value semantics
+Values:
 
 ```text
 0 = known absent / completely unsuitable
-1..9 = known strength / burden / suitability
+1..9 = known strength/burden/suitability
 null = unknown
 ```
 
-绝对禁止：
+Never convert:
 
 ```text
 null → 0
@@ -317,93 +265,75 @@ null → 5
 0 → null
 ```
 
-### Feature kinds
+Kinds:
 
 ```text
 benefit:     01–15
-suitability: 16–24, 29–38, 40–43
+suitability: 16–24,29–38,40–43
 cost:        25–26
-risk:        27–28, 39
+risk:        27–28,39
 ```
 
-不得把 43 项当成统一“越高越好”。
+## 8. Provenance
 
----
-
-## 8. Feature annotation provenance
-
-每一个 non-null Feature 至少可追踪：
-
-```json
-{
-  "featureCode": 1,
-  "value": 9,
-  "annotationMethod": "official_fact|derived_verified_fact|editorial_calibration",
-  "sourceRefs": ["..."],
-  "confidence": "high|medium|low",
-  "reasonCodes": ["..."]
-}
-```
-
-### Evidence rule
-
-允许“基于已验证事实的结构化推导”，例如：
+Every non-null Feature must be traceable:
 
 ```text
-officially documented panoramic viewpoint
-→ scenery/photo can receive evidence-backed editorial score
+featureCode
+value
+annotationMethod
+sourceRefs
+confidence
+reasonCodes
 ```
 
-但不能写成：
+Allowed annotation methods include:
 
 ```text
-official source said scenery=9
+official_fact
+derived_verified_fact
+editorial_calibration
 ```
 
-除非源本身真的提供该量表。
+TravelAssist scoring annotations must not be represented as official external ratings.
 
-Feature score 是 TravelAssist 的结构化 annotation，不伪装成客观第三方 rating。
+## 9. Feature rubric
 
----
+Create/reuse a single versioned rubric across the entire corpus.
 
-## 9. Scoring rubric consistency
-
-批量生成必须使用统一 rubric，而不是逐 POI 随意打分。
-
-至少建立：
-
-```text
-docs/data/poi/feature-rubric-v1.*
-```
-
-或项目已有等价文件，包含各 Feature：
+At minimum define per feature:
 
 ```text
 definition
-0 boundary
-3 boundary
-5 boundary
-7 boundary
-9 boundary
-common evidence cues
+0 / 3 / 5 / 7 / 9 anchors
+evidence cues
 counterexamples
 null conditions
 ```
 
-优先对 0/3/5/7/9 建锚点，中间值按明确规则插值。
+Run cross-region consistency checks for subjective/high-risk dimensions such as:
 
-对 highly subjective features（例如 unique / hidden / iconic）必须有跨区域一致性 QA，避免东京/京都系统性偏置。
+```text
+unique
+hidden
+iconic
+walking
+physical
+crowd
+queue
+wheelchair
+stroller
+season
+weather
+```
 
----
+If systematic rubric bias is found, fix the rubric, invalidate affected batches and rerun those batches.
 
 ## 10. Visit Profile
 
-不能只生成 43 维。
-
-对有足够事实的 POI，至少生成默认 Visit Mode：
+For POIs with adequate evidence generate at least a standard/full visit profile:
 
 ```text
-mode = standard/full_visit
 minimumDurationMinutes
 recommendedDurationMinutes
 maximumUsefulDurationMinutes
@@ -415,244 +345,116 @@ sourceRefs
 confidence
 ```
 
-质量规则：
+Require:
 
 ```text
 minimum <= recommended <= maximumUseful
 ```
 
-### Walking / physical semantics
+`walking` / `physical` in the 43-feature master are standard recommended-visit burden summaries.
 
-`25 walking`、`26 physical` 表示：
-
-```text
-标准推荐游览模式 + 推荐时长下的负担基准
-```
-
-不是：
+Actual itinerary load is dynamic:
 
 ```text
-本次行程实际疲劳
+fixed POI load
++ duration-scaled variable POI load
++ route load
++ accumulated day fatigue
 ```
 
-例如清水寺推荐 90 分钟时 walking 较高，但 30/60/90/120 分钟实际负荷应由：
+A 30-minute and 90-minute visit must not be treated as identical actual fatigue.
 
-```text
-fixed load
-+
-variable load × actual visit duration
-+
-route walking
-+
-day accumulated fatigue
-```
+## 11. Transport linkage
 
-动态计算。
+Do **not** create an all-pairs POI transport matrix.
 
-如果 30 分钟低于 full_visit minimum，则属于 Itinerary Feasibility，而不是降低 POI master walking 分数来“适配”。
-
----
-
-## 11. Transport linkage architecture
-
-### 11.1 Do NOT generate all-pairs
-
-B 最多 40000 个号码槽。
-
-全量 POI 两两交通关系会接近：
-
-```text
-N × (N - 1)
-```
-
-即使只有 10000 个 occupied POI，也约为一亿量级有向关系。
-
-本 Task 禁止建立：
-
-```text
-every POI → every POI
-```
-
-交通矩阵。
-
-### 11.2 Three-layer transport connection
-
-采用：
+Use:
 
 ```text
 POI
-↓
-Access Anchor
-↓
-Regional / Gateway Hub
-↓
-Route Provider runtime
+→ Access Anchor
+→ Regional / Gateway Hub
+→ Runtime Route Provider
 ```
 
-#### Layer A — POI access anchors
-
-每个 POI尽量记录 1–N 个：
+Static anchors may include:
 
 ```text
-nearest rail station
-nearest metro/subway station
-nearest bus stop / bus terminal
-ropeway/ferry terminal if relevant
-parking / road access anchor if relevant
-walk-only trailhead if relevant
+rail/subway station
+bus stop/terminal
+airport
+port/ferry
+ropeway
+trailhead
+parking/road access
+tourist gateway
 ```
 
-建议字段：
+Record where justified:
 
 ```text
 poi_id
 anchor_id
 anchor_type
 access_mode
-distance_meters (only if verified/derived from coordinates)
-typical_access_minutes (only if evidence-backed)
-walking_difficulty
-barrier_free_notes/status
+distance/static estimate
+last_mile_walk_level
+barrier_free status/notes
+bus/car dependency
 sourceRefs
 confidence
 ```
 
-#### Layer B — regional/gateway hubs
-
-对跨城市/跨区域规划，连接少量稳定 hub，例如：
+Dynamic Route Facts stay outside static master scoring:
 
 ```text
-major station
-airport
-regional bus terminal
-port
-tourist gateway
-city center transport node
-```
-
-POI 不需要直接保存“东京 → 每一个景点”的全量时间。
-
-例如：
-
-```text
-Tokyo Station
-→ Gotemba Station / Gotemba Premium Outlets access hub
-→ target POI
-
-Tokyo
-→ Kawaguchiko Station
-→ target POI
-
-Kyoto Station
-→ Kiyomizu-michi / Gojozaka / local access anchor
-→ Kiyomizu-dera
-```
-
-#### Layer C — runtime Route Fact
-
-真正的：
-
-```text
-departure time
-transit duration
-driving duration
-walking duration
-traffic
-transfer count
-fare
-last train
+current traffic
+departure-specific duration
+current fare
+current transfer count
+last train feasibility
 service disruption
+live route feasibility
 ```
 
-由 Route Provider / runtime Route Fact 在具体日期时间查询。
+## 12. Sparse neighbor graph
 
-不得写入 POI 43 维 matchScore。
-
----
-
-## 12. Static transport suitability summary
-
-POI 可保存少量稳定派生属性，用于候选初筛，例如：
+Allow candidate-generation edges only, such as:
 
 ```text
-transport_access_grade
-rail_accessibility
-bus_dependency
-car_advantage
-last_mile_walk_level
-transfer_complexity_baseline
-remote_area_flag
-access_anchor_count
-```
-
-这些不是 43 维的新 Feature，不得擅自扩展 Codebook 01–43。
-
-若生产 Schema 尚未冻结，将这些先作为 versioned enrichment dataset，后续由 Route/POI contract 决定最终字段。
-
----
-
-## 13. Neighbor edges
-
-允许生成有限的 POI neighbor edges，用于 itinerary candidate generation，但必须是稀疏图。
-
-例如每个 POI：
-
-```text
-top K nearby candidate POIs
-same district cluster
+same district
 same attraction complex
-walkable neighbor
+walkable nearby
 same access anchor
+top-K nearby candidates
 ```
 
-默认：
+Default:
 
 ```text
-K <= 20
+K <= 20 per POI
 ```
 
-边仅用于候选生成，不宣称为实时路线真值。
+No O(N²) generation path.
 
-保存：
+## 13. Data/output layout
+
+Audit repository conventions first. Prefer partition/chunk-friendly machine-readable datasets rather than one giant JSON array.
+
+Logical structure may be:
 
 ```text
-from_poi
-to_poi
-edge_reason
-straight_line_distance / static estimate if available
-shared_anchor
-source/method
-confidence
+data/poi/full/registry/
+data/poi/full/features/
+data/poi/full/visit-profiles/
+data/poi/full/transport-anchors/
+data/poi/full/neighbors/
+data/poi/full/manifests/
 ```
 
-实时 duration 仍由 Route Provider 查询。
+or the repository's existing equivalent.
 
----
-
-## 14. Output structure
-
-执行时先审计仓库已有 data conventions，再选最终路径。
-
-建议逻辑结构：
-
-```text
-data/poi/b/registry/
-data/poi/b/features/
-data/poi/b/visit-profiles/
-data/poi/b/transport-anchors/
-data/poi/b/neighbors/
-data/poi/b/manifests/
-```
-
-优先使用：
-
-```text
-JSONL / Parquet / repository-existing canonical format
-```
-
-大量数据不要强塞进单个 Markdown 或超大 JSON array。
-
-Documentation / QA：
+QA:
 
 ```text
 docs/qa/TASK-068/
@@ -668,123 +470,89 @@ docs/qa/TASK-068/
   final-report.md
 ```
 
----
+## 14. Per-batch QA
 
-## 15. Batch QA gates
-
-每批必须验证：
+Every 200-POI batch must verify:
 
 ```text
-all IDs within 60000–99999
+IDs within 00000–99999
+occupied-only
 no duplicate master_code
-no mutation of A 00000–59999 rows
+stable IDs preserved
 complete 43-key shape
-all Feature values ∈ 0..9|null
-all non-null values have annotationMethod
-all non-null values have provenance or explicit editorial basis
+values in 0..9|null
+non-null provenance present
 0/null distinction preserved
-Visit Profile duration ordering valid
-transport anchors reference valid POI IDs
+Visit Profile ordering valid
+transport anchor refs valid
 no self neighbor edge
-no duplicate directional neighbor edge
-no live/current route fact stored as static master truth
-no secret/API key committed
+no duplicate directional edge
+neighbor K limit respected
+no live/current route fact stored as static truth
+no secrets/API keys
+deterministic resume/checksum
 ```
 
----
-
-## 16. Sampling review
-
-每个批次至少抽样：
+Sampling per batch:
 
 ```text
-10% or 20 POIs, whichever is smaller but >=10 when batch size allows
+min(20, 10% of batch), and >=10 when batch size permits
 ```
 
-重点人工/规则复核：
+## 15. Checkpoint policy
+
+Each batch must persist:
 
 ```text
-iconic vs hidden consistency
-walking/physical consistency
-wheelchair/stroller claims
-season scores
-crowd/queue claims
-remote-area transport linkage
-city POI vs nature POI contrast
-same-category cross-prefecture consistency
+batchId
+ordered POI IDs/range
+poiCount
+schema/rubric/source versions
+inputChecksum
+outputChecksum
+status
+known/null coverage
+visitProfileCoverage
+transportAnchorCoverage
+neighborEdgeCount
+reviewRequiredCount
+errorCount
+started/completed metadata
 ```
 
-出现系统性偏差时：
+Recommended: one checkpoint commit per completed batch or sensible group of batches, without creating a PR per batch.
+
+## 16. External-source safety
+
+Respect source terms, robots/rate limits and rights.
+
+No paid API unless separately authorized. No uncontrolled scraping. No committed credentials.
+
+LLM-assisted annotation is allowed only behind rubric + source evidence + schema validation + QA. It may not invent untraceable facts.
+
+## 17. Tests
+
+At minimum cover:
 
 ```text
-fix rubric
-invalidate affected batch
-rerun affected batch
-do not manually patch only obvious rows
-```
-
----
-
-## 17. External-source safety
-
-允许执行时访问公开官方网页来补证，但：
-
-```text
-respect robots/terms/rate limits
-no paid APIs unless separately authorized
-no uncontrolled scraping
-cache source references/checksums
-prefer null over fabrication
-```
-
-LLM 可以用于结构化辅助判断，但任何结果必须受 rubric、source evidence、schema validation 和 QA gates 约束；不得让模型自由生成不可追溯的“事实”。
-
----
-
-## 18. Resume / failure behavior
-
-长任务不能因单个 POI 失败而丢弃全批。
-
-状态至少区分：
-
-```text
-COMPLETE
-PARTIAL
-REVIEW_REQUIRED
-SOURCE_UNAVAILABLE
-IDENTITY_CONFLICT
-BLOCKED
-```
-
-失败 POI 进入 `review-queue`。
-
-整个 Task 可在批次边界续跑。
-
----
-
-## 19. Tests
-
-至少加入 focused tests 验证：
-
-```text
-B range boundary
-occupied-only processing
+full 00000–99999 boundary
+occupied-only
 stable ID preservation
 43-key completeness
 0/null semantics
-feature kind registry
-provenance requirement
+feature kinds
+provenance
 Visit Profile ordering
-batch resume determinism
-checksum stability
+200-item deterministic batching
+auto-next transition
+resume/checksum stability
 anchor referential integrity
-neighbor sparse K limit
-no O(N²) generation path
-no live route fact contamination
-A partition unchanged
+neighbor K limit
+no O(N²) path
+no live-route contamination
 ```
 
-并运行仓库 execution-time canonical：
+Run execution-time applicable repository gates:
 
 ```text
 npm ci
@@ -796,11 +564,9 @@ build
 git diff --check
 ```
 
----
+## 18. Git
 
-## 20. Git / integration
-
-开始：
+Before work:
 
 ```bash
 git status --short
@@ -810,7 +576,7 @@ git rev-parse origin/develop
 git log --oneline -20 origin/develop
 ```
 
-禁止：
+Forbidden:
 
 ```text
 git clean -fd
@@ -819,126 +585,55 @@ git push --force
 git push --force-with-lease
 ```
 
-Implementation branch：
+Execution branch:
 
 ```text
 codex/b-poi-partition-enrichment-transport-linkage
 ```
 
-创建 Draft PR → `develop`。
+## 19. Required Result
 
-**不得自动 merge。**
-
----
-
-## 21. WBS boundary
-
-项目默认规则中 POI/Planner/Route 属于 A 主系统。
-
-本 Task 是用户明确授权的 **B 数据生产 exception**。
-
-不得借此：
-
-```text
-永久把所有 7.x Owner 改成 B
-修改 Route runtime ownership
-修改 Planner ownership
-修改 AI ownership
-```
-
-如果需要 WBS tracking，写明：
-
-```text
-TASK-068-B user-authorized data-production exception
-```
-
-而不是全局重分配 POI/Route 系统。
-
----
-
-## 22. Required Result
-
-创建：
+Create:
 
 ```text
 docs/tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md
 ```
 
-必须报告：
+Final report must include:
 
 ```text
 Status
 base SHA
-B registry source located where
-B list canonical before task = yes/no
-integrated B row count
-occupied B POI count
-processed count
-remaining count
-batch count
-43-feature complete-shape count
+canonical Registry source/version
+external assigned lists integrated
+total occupied POIs
+processed/remaining
+batch total/completed/partial
+43-key shape complete count
 feature known/null coverage
 Visit Profile coverage
 transport anchor coverage
 neighbor edge count
 review queue count
 source tiers
-duplicate audit
-A partition unchanged proof
+duplicate/identity audit
+stable-ID preservation proof
 tests
-branch
-commits
+branch/commits
 Draft PR
-WBS synchronization
-next recommended batch/action
+remaining review work
 ```
 
----
+## 20. Completion
 
-## 23. Completion states
+Normal batches automatically continue.
 
-### Complete
+When all occupied POIs are processed:
 
-```text
-all occupied B POIs processed
-all validation gates pass
-review queue contains only explicitly accepted unknown/review items
-Draft PR exists
-```
+1. aggregate QA;
+2. finalize Result;
+3. push execution branch;
+4. create **one Draft PR → develop**;
+5. stop for review.
 
-### Partial
-
-允许：
-
-```text
-some POIs remain due to evidence gaps
-```
-
-但必须保留 null/review queue，不能伪造。
-
-### Blocked
-
-例如：
-
-```text
-B assigned-ID list cannot be located
-canonical identity conflicts cannot be safely resolved
-required repository contract contradicts this Task
-```
-
----
-
-## 24. Stop condition
-
-Draft PR 完成后停止。
-
-不要自动：
-
-```text
-merge develop
-start A 00000–59999 enrichment
-turn transport anchors into production Route Provider calls
-freeze new scoring parameters
-change 43-feature codebook
-deploy production DB
-```
+Do not auto-merge, modify the 43-feature Codebook, tune/freeze recommendation parameters, deploy production DB, or activate paid/live Route Provider calls.
