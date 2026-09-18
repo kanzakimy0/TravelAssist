@@ -1,12 +1,14 @@
 # TASK-070-B Result — P0 POI Evidence Review
 
-状态：322/322 已完成编辑核查，本地全部必要 gates 通过；Draft PR / exact-head GitHub Quality Gate 待发布后记录。
+状态：322/322 已完成编辑核查，本地全部必要 gates 通过；[Draft PR #397](https://github.com/kanzakimy0/TravelAssist/pull/397) 待用户验收。
 
 - Issue：#396；Owner：B。
 - 执行分支：`codex/b-task-070-p0-evidence-review`。
 - 上游：TASK-068 / Draft PR #395，`f5dcca969f72447d3f029781be0fb75ec66414f7`。
 - 发布基线：`2f12bb8d8186c73b6a1bf4df9012da444b689c66`；开始时 develop：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
-- 第一批 checkpoint commit：`6853a304`。最终提交、Draft PR 和 exact-head CI 见最终交付记录。
+- 第一批 checkpoint commit：`6853a3041a4bb77da6a7cb0ba14b342affe810d6`；完整数据/QA commit：`d2957478f639ea91cd9b1e571a490f867cea332c`。
+- Draft PR：[#397](https://github.com/kanzakimy0/TravelAssist/pull/397)，base 为 `codex/b-poi-partition-enrichment-transport-linkage`。
+- 最终 head 为 PR #397 的 head（包含本交付文档提交）；精确 SHA、Quality Gate run URL 和结论记入 PR 描述及最终交付消息。最终交付必须等待该 SHA 的 Quality Gate PASS，不能使用上游或前一个提交的 PASS。
 
 ## 两批执行
 
@@ -81,4 +83,4 @@ formal Master Code 分配变更 **0**；Registry 改绑 **0**。175 个旧编号
 - [Recovery proof](../qa/TASK-070/recovery-proof.json) / [Independent audit](../qa/TASK-070/independent-audit.json)
 - [Review/error queue](../qa/TASK-070/review-error-queue.jsonl)
 
-Draft PR 按 TASK 叠在 #395 实现分支之上。不会修改或合并 #395，不自动合并本 PR，不关闭 #396。Production DB/runtime 写入 0；live/paid Provider 调用 0；P1 **未启动**。等待用户验收。
+[Draft PR #397](https://github.com/kanzakimy0/TravelAssist/pull/397) 按 TASK 叠在 #395 实现分支之上；[Checks](https://github.com/kanzakimy0/TravelAssist/pull/397/checks) 可核验最终提交结果。不会修改或合并 #395，不自动合并本 PR，不关闭 #396。Production DB/runtime 写入 0；live/paid Provider 调用 0；P1 **未启动**。等待用户验收。
