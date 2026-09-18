@@ -11,7 +11,8 @@
 - base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
 - task publication：`1622eb076a9b023a643b845d66007f4eef7f83ad`。
 - branch：`codex/b-poi-partition-enrichment-transport-linkage`。
-- 起始审计提交：`a120efb`；首次合并数据 checkpoint：`551a9e794a5b7b9f29fbbd0d13bec0ff648946a1`。最终内容包括后续 LF/checksum 校正与本 Result，以该执行分支 HEAD 为准。
+- 起始审计提交：`a120efb`；首次合并数据 checkpoint：`551a9e794a5b7b9f29fbbd0d13bec0ff648946a1`。LF/checksum 校正后的数据提交为 `5decb4924d3d73300c9b6b2d78e23a9d483482ae`，报告收尾以该执行分支 HEAD 为准。
+- 发布状态：仅本地提交，未 push。自动审批拒绝了包含 push 的命令，理由为上传数据敏感性与目标信任尚未验证；后续只读核对确认远端正是用户指定的公开仓库，当前账户有 WRITE 权限，31 个变更文件均为任务范围且凭证模式扫描无命中。本次按“先组合”交付本地成果，不重试提前发布。
 - Draft PR：未创建。Task 要求全部 occupied POI 完成后才创建最终 Draft PR；当前没有达到该条件。
 
 ## 交付

@@ -228,6 +228,12 @@
       "command": "git diff --name-only base -- src supabase package.json package-lock.json",
       "status": "PASS",
       "changedFiles": 0
+    },
+    {
+      "command": "Compare Git index blob SHA-256 to combination checkpoint",
+      "status": "PASS",
+      "checkedInputAndOutputFiles": 8,
+      "dataCommit": "5decb4924d3d73300c9b6b2d78e23a9d483482ae"
     }
   ],
   "notExecuted": [
@@ -238,5 +244,18 @@
     "Deployment",
     "GitHub exact-final-head Quality Gate"
   ],
-  "codeAfterFullLint": "CSV review columns/conflict export and Git LF normalization added afterward; final task tool lint, independent CSV validation, and 11 combination tests rerun successfully. No app or TypeScript source changed."
+  "codeAfterFullLint": "CSV review columns/conflict export and Git LF normalization added afterward; final task tool lint, independent CSV validation, and 11 combination tests rerun successfully. No app or TypeScript source changed.",
+  "publication": {
+    "status": "LOCAL_ONLY_NOT_PUSHED",
+    "autoReview": "Push rejected for unverified data sensitivity/destination trust. Local checks and commits allowed.",
+    "subsequentReadOnlyVerification": {
+      "repository": "https://github.com/kanzakimy0/TravelAssist",
+      "visibility": "PUBLIC",
+      "viewerPermission": "WRITE",
+      "changedFiles": 31,
+      "taskScopeOnly": true,
+      "credentialPatternFileHits": 0
+    },
+    "retryAttempted": false
+  }
 }
