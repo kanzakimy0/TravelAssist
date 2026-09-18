@@ -11,7 +11,7 @@
 - 任务发布：`1622eb076a9b023a643b845d66007f4eef7f83ad`。
 - 分支：`codex/b-poi-partition-enrichment-transport-linkage`。
 - 固定身份 checkpoint：`9c754136a4b2bf19a6c4e2e9a9cdbd12dc2cb1eb`，保留此前合并/来源审计提交。
-- Draft PR：待创建；最终提交和 CI 以该 PR head/checks 及交付回执为准，不在提交中自引用 head。
+- Draft PR：[395](https://github.com/kanzakimy0/TravelAssist/pull/395)，Open / Draft → develop。候选恢复实现提交 `7e1f8fa84b489ec2f26ed68f0ae1075ad5900cab`；最终文档提交和 CI 以 PR head/checks 及交付回执为准，不在提交中自引用 head。
 - 没有 merge、关闭 Issue、产品导入、正式编号分配或部署。
 
 ## 身份及正式编号保全

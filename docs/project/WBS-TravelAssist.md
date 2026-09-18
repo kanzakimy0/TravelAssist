@@ -2,7 +2,7 @@
 
 ## TASK-068-B 候选恢复（2026-09-18）
 
-- Owner：B；Issue #393；状态：候选恢复实现与本地 QA 完成，准备单一 Draft PR，待用户验收；原始完整 occupied 库未认证。
+- Owner：B；Issue #393；状态：B / 待审查（#393 / TASK-068-B；[Draft PR #395](https://github.com/kanzakimy0/TravelAssist/pull/395)）；候选恢复范围，原始完整 occupied 库未认证。
 - 用户明确批准“按恢复方案继续，正式编号不变”；以 [Recovery Amendment v1](../tasks/AMENDMENT-TASK-068-candidate-recovery-v1.md) 为当前执行依据。旧文件不再作为候选加工前置。
 - 10,491 条原观察、10,369 个固定候选和所有历史编号声明完整保留。52 批全部获得明确结果：26 部分、322 待编辑复核、9,859 无匹配保留来源、162 身份隔离。82 个非空特征位、1 个部分 Visit、33 个 Anchor、35 条接入及 2 条邻接；不将评估完成冒充属性齐全。
 - 正式 Registry 不变；175 个旧码冲突、2,979 个未知旧码继续保留，未知号位不视为空闲。其他 WBS、Owner、Runtime、Provider、DB 和部署状态不变，TASK-069-A / #394 不另起 pipeline。

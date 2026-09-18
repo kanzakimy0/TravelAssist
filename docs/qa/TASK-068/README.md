@@ -41,3 +41,5 @@ node tools/poi/audit-candidate-recovery.mjs
 身份组合 19、新增恢复 12、Planning 21、soak 6、Registry 15、region 6、routing 28；full Node 2,666 全通过。npm ci、lint、typecheck、build、deployment local validation/build/artifact 和 deploy formatting 通过。部署命令只构建/审计本地产物，没有发布环境。
 
 未执行本轮 DB/Auth runtime，未访问 Production/Staging；不将历史 QA 当成本轮 PASS。远端 Quality gate 必须按 Draft PR 最终 head 检查，最终外部回执见 PR checks / 交付信息。
+
+发布：[Draft PR #395](https://github.com/kanzakimy0/TravelAssist/pull/395)，保持 Open/Draft。实现提交 `7e1f8fa84b489ec2f26ed68f0ae1075ad5900cab`；最终 head 的 Quality gate 以 PR checks / 交付回执为准。
