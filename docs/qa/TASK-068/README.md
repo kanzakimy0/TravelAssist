@@ -1,56 +1,51 @@
-# TASK-068 QA — 身份合并 checkpoint
+# TASK-068 QA — 第二轮身份复核
 
-当前交付为用户要求的“先组合、生成唯一列表”，不是完整 TASK-068 验收。正式 occupied population 未锁定，富集阶段因身份冲突停在 gate 前。
+用户授权按建议继续复核疑似重复、追溯编号冲突和恢复旧主表。本轮完成，完整 TASK-068 enrichment 仍在身份 gate 前。
 
-## 结果
+| 检查项                            |           结果 |
+| --------------------------------- | -------------: |
+| 原始来源观察，无损保留            |         10,491 |
+| 当前候选身份组                    |         10,369 |
+| 累计明确合并 / 本轮新增           |       122 / 53 |
+| 原疑似组全部复核                  |            224 |
+| 完整合并 / 保留分开 / 占位误报    |   52 / 107 / 2 |
+| 暂缓组 / 涉及唯一候选             |       63 / 162 |
+| 定向核验的官方地址事实            |             23 |
+| 历史编号冲突：分配差异 / 后续替换 |        167 / 8 |
+| 两版一致的 legacy 绑定            |          4,846 |
+| 仍缺历史 Master Code 映射         |          2,979 |
+| 当前 review queue                 | 239 个分组任务 |
+| canonical 编号变更 / 富集批次     |          0 / 0 |
 
-| 检查项                           |                            结果 |
-| -------------------------------- | ------------------------------: |
-| 输入来源观察                     |                          10,491 |
-| 合并候选身份组                   |                          10,422 |
-| 有地址依据的跨来源合并           |                              69 |
-| 所有来源记录和旧编号声明无损保留 |                            PASS |
-| 旧编号冲突                       |                             175 |
-| 同名同地区待复核分组             |                             224 |
-| 历史 Master Code 映射缺失        |                           2,979 |
-| review queue 条目                | 400 个分组任务，不是 400 个 POI |
-| canonical POI allocation 变更    |                               0 |
-| 已处理富集批次                   |                               0 |
+53 次新合并发生在 52 个完整合并组和一个部分合并的三方组。剩余 170 个同名索引组中，107 个保留分开、63 个暂缓；不是仍有 170 组未复核。239 个队列项为 175 个编号组 + 63 个身份组 + 1 个历史映射任务，并非 239 个 POI。
 
-## 证据
+## 证据入口
 
-- `registry-audit.json`：canonical Registry、外部表、号段声明与未知范围。
-- `source-inventory.json`：261 个 remote refs（含 origin 符号别名）、247 个 PR metadata、32 个相关 PR exact-head 路径检查及可见 Actions 制品。
-- `recovery-proof.json`：丢失的 v3.7.1 制品通过固定输入重建，其 SHA-256 与历史 CI 完全一致。
-- `duplicate-audit.json`：175 个编号冲突及 224 组疑似重复；没有按冲突编号合并。
-- `review-queue.json`：175 个编号组、224 个名称组、1 个包含 2,979 source IDs 的历史映射任务；分组间可能涉及相同候选。
-- `source-coverage.json`：身份来源覆盖，不能当作属性证据覆盖率。
-- `safety-check.json`：持久化数据的凭证模式及 URL 检查，注明扫描范围与局限。
-- `batch-manifest.json` 和各 enrichment coverage JSON：真实标记 `IDENTITY_GATE_PENDING` / `NOT_STARTED`，未知分母与覆盖率用 null。
-- `gates.json`：实际执行的本阶段检查。
-- `../../../data/poi/full/manifests/combination-checkpoint.v1.json`：输入、决策、输出 SHA-256。
+- [owner-decisions.md](owner-decisions.md)：需要找回的旧主表文件及后续路径。
+- `identity-review.json`：224 组逐项结果、原证据指纹、来源坐标和补充官方证据。
+- `../../../data/poi/full/sources/identity-decisions.v1.json`：122 条明确合并决策；全部原观察保留。
+- `../../../data/poi/full/sources/identity-official-evidence.v1.json`：23 条 primary-source 地址事实，只用于身份复核，不认证开放时间或运营状态。
+- `../../../data/poi/full/sources/legacy-code-lineage.v1.json`：175 个冲突的生成器原因、双版绑定、候选建议；不授权改号。
+- `missing-history-recovery.json`：v4.1 原主表压缩包名称、hash、大小、历史引用及查找范围。
+- `registry-audit.json` / `source-inventory.json` / `recovery-proof.json`：Registry 审计、261 个 refs、247 个 PR、32 个 exact heads，以及 v3.7.1 逐字节恢复证明。
+- `duplicate-audit.json` / `review-queue.json`：原始索引冲突与尚未解决的分组任务。
+- `gates.json` / `csv-validation.json` / `safety-check.json`：实际验证结果。
+- `../../../data/poi/full/manifests/combination-checkpoint.v1.json`：7 份输入与 10 份生成输出的 SHA-256。
+- `batch-manifest.json` 和 enrichment coverage：真实标记未开始，未知分母和覆盖率为 null。
 
 ## 复现
 
 ```sh
-npm ci
 node tools/poi/combine-corpus.mjs --check
 node --test tests/task-068-corpus-combination.test.mjs
-npm run test:planning-contracts
-npm run test:planning-soak
-npm run test:master-code-registry
-npm run test:region-master-code-integration
-npm run test:routing
-npm run lint
-npm run typecheck
-npm run build
+npx eslint tools/poi/combine-corpus.mjs tools/poi/review-identities.mjs tests/task-068-corpus-combination.test.mjs
 git diff --check
 ```
 
-CSV / JSONL / generated QA JSON 是脚本确定性输出；不要手动格式化生成文件。生成器和测试使用 Prettier 检查。输入 observation JSONL 与其 SHA-256 保持不变。
+CSV/JSONL/generated JSON 不手动格式化。输入 observation JSONL 的原 SHA-256 必须不变，生成结果遵循 Git LF 规范。每次修改决策后先 `--write`，再 `--check`。
 
-初次边界测试发现 JavaScript 正则可把 numeric code 隐式转换成字符串；已在本次新增工具中要求五位字符串，并通过回归。没有修改产品 runtime。
+本轮专项 19 项覆盖：无损保留、175 冲突不合并、官方地址证据缺失拒绝、旧 source ID 不补号、估算同坐标不合并、同地址异坐标暂缓、三方部分合并、占位符误报、未知证据绑定拒绝、顺序确定性及逐字节重建。首跑测试脚本出现正则转义笔误，修正后 19/19 通过；未影响数据。
 
-## 本阶段未执行
+首阶段 npm ci、Planning contracts 21、soak 6、Registry 15、region integration 6、routing 28、lint/typecheck/build 均已实际通过。当前改动仅离线数据工具/测试/文档，本轮重跑专项、工具 lint、独立数据验证和格式检查；阶段区别见 gates.json。
 
-未锁定 occupied corpus、未执行 43 维标注、Visit Profile、transport anchors、neighbors 或 200 项 batch 自动续跑。未运行或声称完整 TASK-068 batch 验收、Local Supabase、部署、线上 Provider、全仓 Node suite 或 GitHub final-head Quality Gate。没有创建最终 Draft PR、合并或关闭 Issue #393。
+完整 enrichment/batch、全仓 Node、Local Supabase、部署、线上 Provider 和 GitHub final-head Quality Gate 未执行，不记 PASS。Issue #393 保持 Open，未创建最终 Draft PR。

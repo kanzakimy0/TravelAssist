@@ -3,7 +3,7 @@
 ## TASK-068-B Full POI Corpus（2026-09-18）
 
 - Owner：B（用户授权全号段 POI 数据生产）；Issue #393；状态：进行中，完整富集处于 Blocked / Identity Conflict。
-- 用户追加指示“先进行组合，生成唯一列表”已执行：10,491 条来源观察合为 10,422 条候选身份组；旧编号全部保留。175 个编号冲突、224 组疑似重复与旧 2,979 条缺失编号映射待复核；未将候选数量计为 occupied POI。
+- 按用户授权完成第二轮身份复核：10,491 条观察合为 10,369 个候选身份组；累计 122 次明确合并，原编号全部保留。224 组线索全部复核：52 组合并、107 组保留分开、2 组占位误报、63 组暂缓。175 个编号冲突已追溯（167 个分配差异、8 个替换），仍不擅自裁决。旧 2,979 条编号映射待找回 v4.1 主表压缩包；未把候选数当作 occupied POI。
 - [组合列表](../../data/poi/full/README.md) 与 [阶段 QA](../qa/TASK-068/README.md) 已落盘；正式 Registry、43 维富集、Visit Profile 与交通关联尚未进入执行。
 - 执行分支：`codex/b-poi-partition-enrichment-transport-linkage`；基线：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
 - 仅处理 00000–99999 已占用 POI；先审计所有 assigned-ID 来源，保持稳定编号。TASK-069-A / #394 已被取代，不启动独立 A pipeline。

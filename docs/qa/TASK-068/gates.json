@@ -1,5 +1,5 @@
 {
-  "scope": "Requested candidate-combination checkpoint only",
+  "scope": "Candidate combination and identity review checkpoints only; not full TASK-068 enrichment certification",
   "executedDate": "2026-09-18",
   "gates": [
     {
@@ -16,7 +16,8 @@
         "npm warn allow-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)",
         "npm warn allow-scripts",
         "npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow."
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "node --test tests/task-068-corpus-combination.test.mjs",
@@ -34,7 +35,8 @@
         "ℹ skipped 0",
         "ℹ todo 0",
         "ℹ duration_ms 1126.1014"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "node tools/poi/combine-corpus.mjs --check",
@@ -50,7 +52,8 @@
         "  \"occupiedCorpusLocked\": false,",
         "  \"outputs\": 6",
         "}"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run test:planning-contracts",
@@ -68,7 +71,8 @@
         "ℹ skipped 0",
         "ℹ todo 0",
         "ℹ duration_ms 319.6704"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run test:planning-soak",
@@ -86,7 +90,8 @@
         "ℹ skipped 0",
         "ℹ todo 0",
         "ℹ duration_ms 961.9024"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run test:master-code-registry",
@@ -104,7 +109,8 @@
         "ℹ skipped 0",
         "ℹ todo 0",
         "ℹ duration_ms 368.4918"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run test:region-master-code-integration",
@@ -122,7 +128,8 @@
         "ℹ skipped 0",
         "ℹ todo 0",
         "ℹ duration_ms 782.6006"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run test:routing",
@@ -140,7 +147,8 @@
         "ℹ skipped 0",
         "ℹ todo 0",
         "ℹ duration_ms 2725.3362"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run lint",
@@ -152,7 +160,8 @@
       "summary": [
         "> travel-assist@0.1.0 lint",
         "> eslint ."
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run typecheck",
@@ -167,7 +176,8 @@
         "",
         "Generating route types...",
         "✓ Types generated successfully"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npm run build",
@@ -183,7 +193,8 @@
         "",
         "○  (Static)   prerendered as static content",
         "ƒ  (Dynamic)  server-rendered on demand"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npx prettier --check tools/poi/combine-corpus.mjs tests/task-068-corpus-combination.test.mjs data/poi/full/README.md docs/qa/TASK-068/README.md docs/qa/TASK-068/final-report.md docs/tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md",
@@ -195,7 +206,8 @@
       "summary": [
         "Checking formatting...",
         "All matched files use Prettier code style!"
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "npx eslint tools/poi/combine-corpus.mjs tests/task-068-corpus-combination.test.mjs",
@@ -206,34 +218,40 @@
       "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "summary": [
         ""
-      ]
+      ],
+      "phase": "combination-round1"
     },
     {
       "command": "git diff --check",
       "status": "PASS",
-      "exitCode": 0
+      "exitCode": 0,
+      "phase": "combination-round1"
     },
     {
       "command": "Python stdlib CSV parsing and count validation",
       "status": "PASS",
-      "evidence": "csv-validation.json"
+      "evidence": "csv-validation-round1.json",
+      "phase": "combination-round1"
     },
     {
       "command": "Rehash all nine original source inputs",
       "status": "PASS",
       "matches": 9,
-      "modifiedInputs": 0
+      "modifiedInputs": 0,
+      "phase": "combination-round1"
     },
     {
       "command": "git diff --name-only base -- src supabase package.json package-lock.json",
       "status": "PASS",
-      "changedFiles": 0
+      "changedFiles": 0,
+      "phase": "combination-round1"
     },
     {
       "command": "Compare Git index blob SHA-256 to combination checkpoint",
       "status": "PASS",
       "checkedInputAndOutputFiles": 8,
-      "dataCommit": "5decb4924d3d73300c9b6b2d78e23a9d483482ae"
+      "dataCommit": "5decb4924d3d73300c9b6b2d78e23a9d483482ae",
+      "phase": "combination-round1"
     }
   ],
   "notExecuted": [
@@ -244,7 +262,7 @@
     "Deployment",
     "GitHub exact-final-head Quality Gate"
   ],
-  "codeAfterFullLint": "CSV review columns/conflict export and Git LF normalization added afterward; final task tool lint, independent CSV validation, and 11 combination tests rerun successfully. No app or TypeScript source changed.",
+  "codeAfterFullLint": "Round-1 full lint/typecheck/build passed before offline data-tool changes. Round-2 tool ESLint and all 19 focused tests passed on current code; no app/TypeScript/runtime/dependency files changed. Full build was not rerun this round.",
   "publication": {
     "status": "LOCAL_ONLY_NOT_PUSHED",
     "autoReview": "Push rejected for unverified data sensitivity/destination trust. Local checks and commits allowed.",
@@ -257,5 +275,196 @@
       "credentialPatternFileHits": 0
     },
     "retryAttempted": false
+  },
+  "round2": {
+    "status": "PASS_FOR_IDENTITY_REVIEW_CHECKPOINT_ONLY",
+    "executedDate": "2026-09-18",
+    "startHead": "36290ac07252d4fed7c70436c4a694d17202db48",
+    "checkedCode": [
+      {
+        "path": "tools/poi/combine-corpus.mjs",
+        "sha256": "64c28e646b60dd1faffa408e91c59a69cfad35c5d17d822fb1628c5484b4b830"
+      },
+      {
+        "path": "tools/poi/review-identities.mjs",
+        "sha256": "5ba8f174c9854c0d92c24b2830f750ba685ced062a1a1621f27fce59563d7b45"
+      },
+      {
+        "path": "tests/task-068-corpus-combination.test.mjs",
+        "sha256": "9ed8e1ce921d25fb5a92371978303d5aee3aa865c3d3dd4bcb79e377e354b78a"
+      }
+    ],
+    "gates": [
+      {
+        "command": "node --test tests/task-068-corpus-combination.test.mjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "tests": 19,
+        "localLog": "identity-round2-tests.log",
+        "logSha256": "c553175a764c8ed8ac4c72c0cead215ef23f54f2f12b0d5844c56e7fd84d2be2",
+        "summary": [
+          "ℹ tests 19",
+          "ℹ suites 0",
+          "ℹ pass 19",
+          "ℹ fail 0",
+          "ℹ cancelled 0",
+          "ℹ skipped 0",
+          "ℹ todo 0",
+          "ℹ duration_ms 2175.7297"
+        ]
+      },
+      {
+        "command": "node tools/poi/combine-corpus.mjs --check",
+        "status": "PASS",
+        "exitCode": 0,
+        "tests": null,
+        "localLog": "identity-round2-check.log",
+        "logSha256": "898eaa7a20811373dd18327580c45834d95085f9ebf39862da05c6db80784d48",
+        "summary": [
+          "  \"conflictedLegacyCodes\": 175,",
+          "  \"possibleDuplicateGroups\": 170,",
+          "  \"missingHistoricalCodeMappings\": 2979,",
+          "  \"candidatesWithoutAnyCodeClaim\": 3897,",
+          "  \"canonicalAllocatedPois\": 0,",
+          "  \"occupiedCorpusLocked\": false,",
+          "  \"outputs\": 11",
+          "}"
+        ]
+      },
+      {
+        "command": "npx eslint tools/poi/combine-corpus.mjs tools/poi/review-identities.mjs tests/task-068-corpus-combination.test.mjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "tests": null,
+        "localLog": "identity-round2-lint.log",
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "summary": [
+          ""
+        ]
+      },
+      {
+        "command": "npx prettier --check (8 task-owned MJS/Markdown files)",
+        "status": "PASS",
+        "exitCode": 0,
+        "tests": null,
+        "localLog": "identity-round2-format.log",
+        "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+        "summary": [
+          "Checking formatting...",
+          "All matched files use Prettier code style!"
+        ]
+      },
+      {
+        "command": "git diff --check",
+        "status": "PASS",
+        "exitCode": 0,
+        "tests": null,
+        "localLog": "identity-round2-diff-check.log",
+        "logSha256": "c0fb0d0446e3eeb8a01db0b1fde3a677908f7c13e9de3e05616eb732b48aaad2",
+        "summary": [
+          "warning: in the working copy of 'docs/qa/TASK-068/csv-validation.json', CRLF will be replaced by LF the next time Git touches it"
+        ]
+      }
+    ],
+    "independentEvidence": [
+      "csv-validation.json",
+      "round2-input-preservation.json",
+      "safety-check.json"
+    ],
+    "coverage": {
+      "sourceObservations": 10491,
+      "uniqueCandidates": 10369,
+      "explicitMergeLinks": 122,
+      "newMergeLinks": 53,
+      "reviewedNameGroups": 224,
+      "heldGroups": 63,
+      "heldCandidates": 162,
+      "conflictCodesExplained": 175,
+      "originalMissingCodeMappings": 2979,
+      "allocatedOrRenumbered": 0
+    },
+    "failedAttempts": [
+      {
+        "stage": "Initial test authoring",
+        "reason": "Regular-expression slash escaping typo in test source; fixed before 19-test rerun",
+        "logSha256": "7ecd93659890db930af959f04dd24a632fa17b18feffde79599d8dbc627f95d2",
+        "currentStatus": "RESOLVED"
+      }
+    ],
+    "publication": "LOCAL_ONLY_NOT_PUSHED",
+    "gitBlobVerification": {
+      "status": "PASS",
+      "files": 17,
+      "checked": [
+        {
+          "path": "data/poi/full/sources/identity-observations.v1.jsonl",
+          "sha256": "6a60eab7d673a8b706ac1c6f404380b78913fc755dec543d60c1285fe5c01e6b"
+        },
+        {
+          "path": "data/poi/full/sources/identity-decisions.v1.json",
+          "sha256": "717adefb3af14e47f4dbe62749b94e560a42cca655da8659b766dc0f65b9c92c"
+        },
+        {
+          "path": "data/poi/full/sources/source-manifest.v1.json",
+          "sha256": "c3a3aa4b0b529cc6917d4855a07e757bebc8ac4755141180370c09e242894d79"
+        },
+        {
+          "path": "data/poi/full/sources/identity-review-baseline.v1.json",
+          "sha256": "9dde8133e69238cce22d1d746ca89ef3ffe44dc043ec591551b153fd813fa31a"
+        },
+        {
+          "path": "data/poi/full/sources/identity-official-evidence.v1.json",
+          "sha256": "08ae65e96a32aff1df2d5d622a682e04501773836557f92cbbe7dd3d056daeb6"
+        },
+        {
+          "path": "data/poi/full/sources/identity-review-policy.v1.json",
+          "sha256": "5606a7412289fad5aba551259e6dd3fb72a30afccef3a86e19197d4b5e4e1bfc"
+        },
+        {
+          "path": "data/poi/full/sources/legacy-code-lineage.v1.json",
+          "sha256": "79184ddf2b422f3a61c2284a5f36a9618de3c377bff0c4d8b166390c99e89580"
+        },
+        {
+          "path": "data/poi/full/registry/combined-candidates.v1.jsonl",
+          "sha256": "4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067"
+        },
+        {
+          "path": "data/poi/full/registry/combined-candidates.v1.csv",
+          "sha256": "5d309ce410e2a6b09c2ae98775e5346efd380a2496cce919589dc421df966f9a"
+        },
+        {
+          "path": "docs/qa/TASK-068/duplicate-audit.json",
+          "sha256": "195f0402676995d3e8f3adca85a5d20177e33c4d86cf22bb92762623da231c65"
+        },
+        {
+          "path": "docs/qa/TASK-068/review-queue.json",
+          "sha256": "f546d2f6dd61814f04dfad592a6565e0ac2ceec30bbfdcb590ecd189f4b4a211"
+        },
+        {
+          "path": "data/poi/full/registry/master-code-conflicts.v1.csv",
+          "sha256": "9ee329c2272e0a6e0726fd8369cedec11e6fde563fae725965da23be6e520704"
+        },
+        {
+          "path": "docs/qa/TASK-068/identity-review.json",
+          "sha256": "dbded084b54f289865d568ac27b7e6f737a295dc67362fdcb46eb357ecc8b408"
+        },
+        {
+          "path": "data/poi/full/registry/identity-review.v1.csv",
+          "sha256": "36130a404a83bdc58a33bd97f201739a69c44cf560399f58fd635f453f3ac0fe"
+        },
+        {
+          "path": "data/poi/full/registry/code-lineage-review.v1.csv",
+          "sha256": "0e968a4c043f216a366c55f8a0b6ff1ed0a69be0a12ff8bd3eb8943988a2db70"
+        },
+        {
+          "path": "data/poi/full/registry/unmapped-history.v1.csv",
+          "sha256": "63cd24d53cc079741ccc6cd4e0578a8101113f1dba1d618dcf729870d2c85503"
+        },
+        {
+          "path": "data/poi/full/registry/agreed-legacy-claims.v1.jsonl",
+          "sha256": "d82bde594975b6b7ac332a09734787ac6ab659f02751cc5d01b0baa70f49e508"
+        }
+      ]
+    }
   }
 }

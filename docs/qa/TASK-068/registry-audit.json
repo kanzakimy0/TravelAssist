@@ -1,7 +1,7 @@
 {
   "schemaVersion": "task068-registry-audit-v1",
-  "status": "BLOCKED_IDENTITY_CONFLICT_AFTER_REQUESTED_COMBINATION",
-  "userSteering": "先进行组合，生成唯一列表",
+  "status": "BLOCKED_IDENTITY_CONFLICT_AFTER_REVIEW_ROUND2",
+  "userSteering": "按照推荐继续：复核疑似重复、追溯编号冲突、查找历史主表",
   "baseSha": "45e9f8830ac66d03b3ace6480d36d3ee31907a2e",
   "canonical": {
     "path": "src/shared/data/master-code-registry.v1.json",
@@ -24,7 +24,7 @@
     "inventory": "source-inventory.json"
   },
   "population": {
-    "uniqueCandidateCount": 10422,
+    "uniqueCandidateCount": 10369,
     "sourceObservations": 10491,
     "occupiedCorpusLocked": false,
     "totalOccupiedPois": null,
@@ -97,13 +97,29 @@
     "laterEnrichmentConsumes": "v3.7.1",
     "resolution": "Preserve both; version ordering does not authorize changing frozen identities.",
     "geoshapeUnion": 8169,
-    "extraIdentitiesAcrossVersions": 169
+    "extraIdentitiesAcrossVersions": 169,
+    "conflictRootCauses": {
+      "capacityFallback": 167,
+      "explicitReplacement": 8
+    },
+    "agreedBindings": 4846
   },
   "excluded": {
     "unresolvedAttractionQuotaSlots": 9000,
     "regionalDestinationRows": 300,
     "canonicalRegions": 50,
     "reservedSentinel": 1,
-    "note": "The 9000 asset-manifest rows are unresolved quotas, not proof of 9000 occupied POIs. No 17000-POI total is asserted."
-  }
+    "note": "The 9000 asset-manifest rows are unresolved quotas. Separate v4.1 documentation records a 17000 effective index, but its archive is missing; no verified occupied total is asserted."
+  },
+  "identityReview": {
+    "baselineGroups": 224,
+    "mergedGroups": 52,
+    "newMergeLinks": 53,
+    "keepSeparateGroups": 107,
+    "ignoredPlaceholderGroups": 2,
+    "heldGroups": 63,
+    "heldCandidateCount": 162,
+    "officialFacts": 23
+  },
+  "missingHistoryEvidence": "missing-history-recovery.json"
 }

@@ -16,6 +16,8 @@ import {
   generateOutputs,
 } from "../tools/poi/combine-corpus.mjs";
 
+import { reviewIdentities } from "../tools/poi/review-identities.mjs";
+
 const root = fileURLToPath(new URL("../", import.meta.url));
 const inputPath = "data/poi/full/sources/identity-observations.v1.jsonl";
 const observations = readFileSync(resolve(root, inputPath), "utf8")
@@ -56,7 +58,7 @@ test("all 10,491 original observations and their exact claims/facts survive exac
   assert.equal(actual.size, observations.length);
   for (const original of observations)
     assert.deepEqual(actual.get(original.sourceRecordId), original);
-  assert.equal(result.rows.length, 10422);
+  assert.equal(result.rows.length, 10369);
   assert.equal(
     new Set(result.rows.map((row) => row.candidateKey)).size,
     result.rows.length,
@@ -101,7 +103,7 @@ test("same name/prefecture with different addresses remains separate and enters 
 });
 
 test("only explicit evidence links merge candidate identities; changed evidence fails closed", () => {
-  assert.equal(result.summary.explicitCandidateMergeLinks, 69);
+  assert.equal(result.summary.explicitCandidateMergeLinks, 122);
   for (const decision of decisions.decisions) {
     assert.ok(
       result.rows.some(
@@ -204,4 +206,177 @@ test("CSV review cells quote embedded delimiters and neutralize formula prefixes
   assert.equal(csvCell('a,"b"\nc'), '"a,""b""\nc"');
   for (const value of ["=1+1", "+SUM(A1)", "-1", "@foo", "\t=1+1"])
     assert.ok(csvCell(value).startsWith("\"'"));
+});
+
+const readJson = (path) =>
+  JSON.parse(readFileSync(resolve(root, path), "utf8"));
+const sourceJson = (name) =>
+  readJson("data/poi/full/sources/" + name + ".v1.json");
+const baseline = sourceJson("identity-review-baseline");
+const officialEvidence = sourceJson("identity-official-evidence");
+const policy = sourceJson("identity-review-policy");
+const review = reviewIdentities(
+  result.rows,
+  baseline,
+  officialEvidence,
+  policy,
+);
+
+test("every baseline name group is reviewed once, with unresolved candidates retained", () => {
+  assert.equal(review.groups.length, 224);
+  assert.deepEqual(
+    new Set(review.groups.map((g) => g.groupKey)),
+    new Set(baseline.groups.map((g) => g.groupKey)),
+  );
+  assert.equal(review.heldGroupCount, 63);
+  assert.equal(review.heldCandidateKeys.length, 162);
+  for (const group of review.groups) {
+    for (const id of group.sourceRecordIds)
+      assert.ok(result.rows.some((r) => r.sourceRecordIds.includes(id)));
+    assert.equal(
+      group.quarantinedFromEnrichment,
+      group.status.startsWith("HOLD_"),
+    );
+  }
+  assert.equal(review.canonicalAllocationsChanged, 0);
+});
+
+test("punctuation-only English names do not create identity or duplicate links", () => {
+  const ignored = review.groups.filter(
+    (g) => g.status === "IGNORED_PLACEHOLDER_NAME",
+  );
+  assert.equal(ignored.length, 2);
+  for (const group of ignored) {
+    assert.ok(group.currentCandidateKeys.length > 1);
+    assert.ok(
+      !result.possibleDuplicates.some(
+        (g) => g.normalizedNameAndPrefecture === group.groupKey,
+      ),
+    );
+  }
+  const synthetic = combine(
+    [
+      { ...fixture("a"), nameJa: "甲", nameEn: "—" },
+      { ...fixture("b"), nameJa: "乙", nameEn: "--" },
+    ],
+    empty,
+  );
+  assert.equal(synthetic.rows.length, 2);
+  assert.equal(synthetic.possibleDuplicates.length, 0);
+});
+
+test("historical entries sharing an estimated point remain distinct and quarantined", () => {
+  const ids = [
+    "geoshape-nrct-poi:210000143100",
+    "geoshape-nrct-poi:210000204200",
+  ];
+  const group = review.groups.find((g) =>
+    ids.every((id) => g.sourceRecordIds.includes(id)),
+  );
+  assert.equal(group.status, "HOLD_SOURCE_IDENTITY_AMBIGUITY");
+  assert.equal(group.retainedSharedCoordinates, true);
+  assert.equal(
+    result.rows.filter((r) => ids.some((id) => r.sourceRecordIds.includes(id)))
+      .length,
+    2,
+  );
+});
+
+test("same address attached to different historical points is not silently repaired", () => {
+  const ids = [
+    "geoshape-nrct-poi:240000091400",
+    "geoshape-nrct-poi:240000098200",
+  ];
+  const group = review.groups.find((g) =>
+    ids.every((id) => g.sourceRecordIds.includes(id)),
+  );
+  assert.equal(group.status, "HOLD_ADDRESS_COORDINATE_CONTRADICTION");
+  assert.equal(group.retainedSharedAddress, true);
+  assert.equal(group.retainedSharedCoordinates, false);
+  assert.equal(group.currentCandidateKeys.length, 2);
+});
+
+test("partial three-way identity match does not absorb a same-name temple in another city", () => {
+  const merged = result.rows.find((r) =>
+    r.sourceRecordIds.includes("candidate:B_V1_PROPOSED:60447"),
+  );
+  assert.ok(merged.sourceRecordIds.includes("geoshape-nrct-poi:400000055400"));
+  assert.ok(!merged.sourceRecordIds.includes("geoshape-nrct-poi:400000024900"));
+  const group = review.groups.find((g) => g.groupKey === "ja:高知県:大日寺");
+  assert.equal(group.currentCandidateKeys.length, 2);
+  assert.equal(group.status, "KEEP_SEPARATE_DISTINCT_SOURCE_LOCATIONS");
+});
+
+test("officially corroborated links require retained primary-source location evidence", () => {
+  const changed = structuredClone(decisions);
+  const decision = changed.decisions.find(
+    (d) =>
+      d.method === "official_source_identity_review" &&
+      d.evidence.some((e) => !e.address),
+  );
+  assert.ok(decision);
+  decision.officialEvidence = [];
+  assert.throws(
+    () => combine(observations, changed),
+    /Missing official identity evidence/,
+  );
+  decision.method = "editorial_bilingual_address_comparison";
+  assert.throws(() => combine(observations, changed), /needs matching names/);
+});
+
+test("review rejects missing baseline identities and misbound official source evidence", () => {
+  const badBaseline = structuredClone(baseline);
+  badBaseline.groups[0].sourceRecordIds.push("unobserved");
+  assert.throws(
+    () => reviewIdentities(result.rows, badBaseline, officialEvidence, policy),
+    /Baseline source disappeared/,
+  );
+  const badEvidence = structuredClone(officialEvidence);
+  badEvidence.records[0].appliesToSourceRecordIds = ["unobserved"];
+  assert.throws(
+    () => reviewIdentities(result.rows, baseline, badEvidence, policy),
+    /Official evidence has unknown source/,
+  );
+});
+
+test("175 conflicting bindings have explicit lineage while 4846 agreements remain noncanonical", () => {
+  const lineage = sourceJson("legacy-code-lineage");
+  assert.equal(lineage.collisions.length, 175);
+  assert.equal(new Set(lineage.collisions.map((c) => c.masterCode)).size, 175);
+  const causes = {};
+  for (const entry of lineage.collisions) {
+    causes[entry.cause] = (causes[entry.cause] ?? 0) + 1;
+    assert.notEqual(entry.priorSourceId, entry.laterSourceId);
+    assert.equal(entry.canonicalMasterCodeAssigned, false);
+    assert.equal(entry.resolution, "OWNER_GOVERNANCE_REQUIRED");
+  }
+  assert.deepEqual(
+    Object.values(causes).sort((a, b) => a - b),
+    [8, 167],
+  );
+  const agreed = readFileSync(
+    resolve(root, "data/poi/full/registry/agreed-legacy-claims.v1.jsonl"),
+    "utf8",
+  )
+    .trim()
+    .split("\n")
+    .map(JSON.parse);
+  assert.equal(agreed.length, 4846);
+  const conflicting = new Set(lineage.collisions.map((c) => c.masterCode));
+  for (const row of agreed) {
+    assert.match(row.masterCodeClaim, /^\d{5}$/);
+    assert.ok(!conflicting.has(row.masterCodeClaim));
+    const original = observations.find(
+      (o) => o.sourceRecordId === row.sourceRecordId,
+    );
+    assert.ok(original);
+    for (const version of ["v3.8", "v3.7.1"])
+      assert.ok(
+        original.codeClaims.some(
+          (c) =>
+            c.masterCode === row.masterCodeClaim && c.sourceVersion === version,
+        ),
+      );
+    assert.equal(row.status, "VERSIONS_AGREE_NOT_CANONICAL_ALLOCATION");
+  }
 });

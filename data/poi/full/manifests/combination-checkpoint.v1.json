@@ -3,9 +3,9 @@
   "status": "COMBINED_CANDIDATE_LIST_READY_IDENTITY_GATE_PENDING",
   "scope": "Source-record unique candidate groups, not a certified canonical POI universe.",
   "inputObservationCount": 10491,
-  "uniqueCandidateCount": 10422,
-  "explicitCandidateMergeLinks": 69,
-  "observationsCollapsed": 69,
+  "uniqueCandidateCount": 10369,
+  "explicitCandidateMergeLinks": 122,
+  "observationsCollapsed": 122,
   "countsBySource": {
     "b-cumulative-20260915": 2138,
     "cross-family-20260914": 23,
@@ -15,11 +15,15 @@
   },
   "distinctLegacyClaimCodes": 6376,
   "conflictedLegacyCodes": 175,
-  "possibleDuplicateGroups": 224,
+  "possibleDuplicateGroups": 170,
   "missingHistoricalCodeMappings": 2979,
-  "candidatesWithoutAnyCodeClaim": 3920,
+  "candidatesWithoutAnyCodeClaim": 3897,
   "canonicalAllocatedPois": 0,
   "occupiedCorpusLocked": false,
+  "reviewedIdentityGroups": 224,
+  "heldIdentityGroups": 63,
+  "heldCandidateCount": 162,
+  "unambiguousLegacyCodeClaims": 4846,
   "inputs": [
     {
       "path": "data/poi/full/sources/identity-observations.v1.jsonl",
@@ -27,38 +31,79 @@
     },
     {
       "path": "data/poi/full/sources/identity-decisions.v1.json",
-      "sha256": "3cc2ce84db3a82f4a58b84d121d28f617e496ae8a28383f8cfaa6500d1fc9fa9"
+      "sha256": "717adefb3af14e47f4dbe62749b94e560a42cca655da8659b766dc0f65b9c92c"
     },
     {
       "path": "data/poi/full/sources/source-manifest.v1.json",
       "sha256": "c3a3aa4b0b529cc6917d4855a07e757bebc8ac4755141180370c09e242894d79"
+    },
+    {
+      "path": "data/poi/full/sources/identity-review-baseline.v1.json",
+      "sha256": "9dde8133e69238cce22d1d746ca89ef3ffe44dc043ec591551b153fd813fa31a"
+    },
+    {
+      "path": "data/poi/full/sources/identity-official-evidence.v1.json",
+      "sha256": "08ae65e96a32aff1df2d5d622a682e04501773836557f92cbbe7dd3d056daeb6"
+    },
+    {
+      "path": "data/poi/full/sources/identity-review-policy.v1.json",
+      "sha256": "5606a7412289fad5aba551259e6dd3fb72a30afccef3a86e19197d4b5e4e1bfc"
+    },
+    {
+      "path": "data/poi/full/sources/legacy-code-lineage.v1.json",
+      "sha256": "79184ddf2b422f3a61c2284a5f36a9618de3c377bff0c4d8b166390c99e89580"
     }
   ],
   "outputs": [
     {
       "path": "data/poi/full/registry/combined-candidates.v1.jsonl",
-      "sha256": "be25187a8e2f8bc9fa03b8c7b5642da73716c248cf2a04b017d2cf98632895de",
-      "bytes": 12991996
+      "sha256": "4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067",
+      "bytes": 12977011
     },
     {
       "path": "data/poi/full/registry/combined-candidates.v1.csv",
-      "sha256": "656b60a8b5dd7e48129d546d229ee5b75ee20d9fb24745a8f4d8824440b25405",
-      "bytes": 4916676
+      "sha256": "5d309ce410e2a6b09c2ae98775e5346efd380a2496cce919589dc421df966f9a",
+      "bytes": 4910729
     },
     {
       "path": "docs/qa/TASK-068/duplicate-audit.json",
-      "sha256": "5f5aad9b3b80d24c703f15040b1596165778d373fed7563e7431f99e7da2c9ca",
-      "bytes": 198984
+      "sha256": "195f0402676995d3e8f3adca85a5d20177e33c4d86cf22bb92762623da231c65",
+      "bytes": 185159
     },
     {
       "path": "docs/qa/TASK-068/review-queue.json",
-      "sha256": "558e4241042cb775e548f9aa315557a52f48d8f41b254d29bca5e6f78575c6c0",
-      "bytes": 228548
+      "sha256": "f546d2f6dd61814f04dfad592a6565e0ac2ceec30bbfdcb590ecd189f4b4a211",
+      "bytes": 178058
     },
     {
       "path": "data/poi/full/registry/master-code-conflicts.v1.csv",
-      "sha256": "fe81314992e58d91d4e06f8cafe7ac4b362d628924237954294170d21e6a8ba7",
-      "bytes": 50068
+      "sha256": "9ee329c2272e0a6e0726fd8369cedec11e6fde563fae725965da23be6e520704",
+      "bytes": 50098
+    },
+    {
+      "path": "docs/qa/TASK-068/identity-review.json",
+      "sha256": "dbded084b54f289865d568ac27b7e6f737a295dc67362fdcb46eb357ecc8b408",
+      "bytes": 523700
+    },
+    {
+      "path": "data/poi/full/registry/identity-review.v1.csv",
+      "sha256": "36130a404a83bdc58a33bd97f201739a69c44cf560399f58fd635f453f3ac0fe",
+      "bytes": 86568
+    },
+    {
+      "path": "data/poi/full/registry/code-lineage-review.v1.csv",
+      "sha256": "0e968a4c043f216a366c55f8a0b6ff1ed0a69be0a12ff8bd3eb8943988a2db70",
+      "bytes": 26436
+    },
+    {
+      "path": "data/poi/full/registry/unmapped-history.v1.csv",
+      "sha256": "63cd24d53cc079741ccc6cd4e0578a8101113f1dba1d618dcf729870d2c85503",
+      "bytes": 496453
+    },
+    {
+      "path": "data/poi/full/registry/agreed-legacy-claims.v1.jsonl",
+      "sha256": "d82bde594975b6b7ac332a09734787ac6ab659f02751cc5d01b0baa70f49e508",
+      "bytes": 998276
     }
   ]
 }

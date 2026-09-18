@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { reviewIdentities } from "./review-identities.mjs";
 
 export const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 export const sha256 = (text) => createHash("sha256").update(text).digest("hex");
@@ -79,7 +80,10 @@ export function combine(observations, decisionFile) {
     links.add(pair);
     requireValue(
       decision.decision === "MERGE_CANDIDATE_IDENTITY" &&
-        decision.method === "editorial_bilingual_address_comparison",
+        [
+          "editorial_bilingual_address_comparison",
+          "official_source_identity_review",
+        ].includes(decision.method),
       `Unsupported merge method: ${left}`,
     );
     requireValue(
@@ -92,10 +96,24 @@ export function combine(observations, decisionFile) {
       normalized(l.nameJa) &&
         normalized(l.nameJa) === normalized(r.nameJa) &&
         normalized(l.prefecture) === normalized(r.prefecture) &&
-        l.address &&
-        r.address,
+        ((l.address && r.address) ||
+          decision.method === "official_source_identity_review"),
       `Identity decision needs matching names/prefecture and address evidence: ${left}`,
     );
+    if (decision.method === "official_source_identity_review") {
+      requireValue(
+        Array.isArray(decision.officialEvidence) &&
+          decision.officialEvidence.length > 0 &&
+          decision.officialEvidence.every(
+            (item) =>
+              /^https:\/\//.test(item.url) &&
+              typeof item.address === "string" &&
+              item.address.length > 0 &&
+              item.checkedAt === "2026-09-18",
+          ),
+        `Missing official identity evidence: ${left}`,
+      );
+    }
     requireValue(
       decision.evidence?.length === 2,
       `Missing decision evidence: ${left}`,
@@ -167,7 +185,7 @@ export function combine(observations, decisionFile) {
         ["ja", member.nameJa],
         ["en", member.nameEn],
       ]) {
-        if (!name || !member.prefecture) continue;
+        if (!normalized(name) || !normalized(member.prefecture)) continue;
         const key = `${language}:${normalized(member.prefecture)}:${normalized(name)}`;
         if (!nameIndex.has(key)) nameIndex.set(key, new Set());
         nameIndex.get(key).add(row.candidateKey);
@@ -257,6 +275,51 @@ export function generateOutputs(rootDirectory) {
     "Input count mismatch",
   );
   const result = combine(observations, JSON.parse(decisionText));
+  const reviewPaths = [
+    "identity-review-baseline.v1.json",
+    "identity-official-evidence.v1.json",
+    "identity-review-policy.v1.json",
+    "legacy-code-lineage.v1.json",
+  ].map((name) => "data/poi/full/sources/" + name);
+  const reviewInputs = reviewPaths.map((path) => ({
+    path,
+    content: readFileSync(resolve(rootDirectory, path), "utf8"),
+  }));
+  const [baseline, officialEvidence, policy, lineage] = reviewInputs.map(
+    (entry) => JSON.parse(entry.content),
+  );
+  const review = reviewIdentities(
+    result.rows,
+    baseline,
+    officialEvidence,
+    policy,
+  );
+  requireValue(
+    lineage.total === result.codeConflicts.length &&
+      lineage.collisions.length === lineage.total,
+    "Code lineage count drift",
+  );
+  const conflictsByCode = new Map(
+    result.codeConflicts.map((item) => [item.masterCode, item]),
+  );
+  for (const entry of lineage.collisions) {
+    const claims =
+      conflictsByCode
+        .get(entry.masterCode)
+        ?.bindings.flatMap((item) => item.claims) ?? [];
+    for (const [version, sourceId] of [
+      [entry.priorVersion, entry.priorSourceId],
+      [entry.laterVersion, entry.laterSourceId],
+    ])
+      requireValue(
+        claims.some(
+          (claim) =>
+            claim.sourceVersion === version &&
+            claim.sourceRecordId === "geoshape-nrct-poi:" + sourceId,
+        ),
+        "Code lineage binding drift: " + entry.masterCode,
+      );
+  }
   const outputs = new Map();
   outputs.set(
     "data/poi/full/registry/combined-candidates.v1.jsonl",
@@ -307,6 +370,8 @@ export function generateOutputs(rootDirectory) {
     json({
       schemaVersion: "task068-candidate-duplicate-audit-v1",
       ...result.summary,
+      reviewedNameGroups: review.reviewedGroupCount,
+      heldIdentityGroups: review.heldGroupCount,
       codeConflicts: result.codeConflicts,
       possibleDuplicates: result.possibleDuplicates,
     }),
@@ -317,7 +382,9 @@ export function generateOutputs(rootDirectory) {
       schemaVersion: "task068-candidate-review-v1",
       status: "IDENTITY_GATE_PENDING",
       codeConflictCount: result.codeConflicts.length,
-      nameBucketCount: result.possibleDuplicates.length,
+      nameBucketCount: review.heldGroupCount,
+      rawNameBucketCount: result.possibleDuplicates.length,
+      reviewedNameBucketCount: review.reviewedGroupCount,
       historicalMappingCount: result.summary.missingHistoricalCodeMappings,
       entries: [
         ...result.codeConflicts.map((c) => ({
@@ -325,10 +392,14 @@ export function generateOutputs(rootDirectory) {
           code: c.masterCode,
           candidateKeys: c.bindings.map((b) => b.candidateKey),
         })),
-        ...result.possibleDuplicates.map((g) => ({
-          reason: "POSSIBLE_IDENTITY_DUPLICATE",
-          ...g,
-        })),
+        ...review.groups
+          .filter((g) => g.quarantinedFromEnrichment)
+          .map((g) => ({
+            reason: g.status,
+            groupKey: g.groupKey,
+            candidateKeys: g.currentCandidateKeys,
+            evidenceFile: "identity-review.json",
+          })),
         {
           reason: "HISTORICAL_CODE_MAPPING_UNAVAILABLE",
           sourceRecordIds: observations
@@ -371,6 +442,112 @@ export function generateOutputs(rootDirectory) {
         .join("\n") +
       "\n",
   );
+  outputs.set("docs/qa/TASK-068/identity-review.json", json(review));
+  const renderCsv = (header, rows) =>
+    "\uFEFF" +
+    [header, ...rows].map((row) => row.map(csvCell).join(",")).join("\n") +
+    "\n";
+  outputs.set(
+    "data/poi/full/registry/identity-review.v1.csv",
+    renderCsv(
+      [
+        "name_group",
+        "decision",
+        "quarantined_from_enrichment",
+        "candidate_keys",
+        "addresses",
+        "reason",
+        "official_evidence_urls",
+      ],
+      review.groups.map((group) => [
+        group.groupKey,
+        group.status,
+        group.quarantinedFromEnrichment,
+        group.currentCandidateKeys.join(" | "),
+        group.candidates.map((r) => r.addresses.join(" / ")).join(" | "),
+        group.reason,
+        group.supplementalOfficialEvidence.map((e) => e.url).join(" | "),
+      ]),
+    ),
+  );
+  outputs.set(
+    "data/poi/full/registry/code-lineage-review.v1.csv",
+    renderCsv(
+      [
+        "legacy_code_NOT_approved",
+        "v38_name",
+        "v38_source_id",
+        "v371_name",
+        "v371_source_id",
+        "cause",
+        "recommended_candidate_version_NOT_allocation",
+        "status",
+      ],
+      lineage.collisions.map((entry) => [
+        entry.masterCode,
+        entry.priorName,
+        entry.priorSourceId,
+        entry.laterName,
+        entry.laterSourceId,
+        entry.cause,
+        "v3.7.1",
+        entry.resolution,
+      ]),
+    ),
+  );
+  outputs.set(
+    "data/poi/full/registry/unmapped-history.v1.csv",
+    renderCsv(
+      [
+        "source_record_id",
+        "name_ja",
+        "historical_address",
+        "master_code_UNKNOWN",
+        "source_url",
+      ],
+      observations
+        .filter((o) => o.prior2979)
+        .map((o) => [
+          o.sourceRecordId,
+          o.nameJa,
+          o.address,
+          "",
+          o.evidenceRefs.join(" | "),
+        ]),
+    ),
+  );
+  const agreement = [];
+  for (const row of result.rows) {
+    const index = new Map();
+    for (const claim of row.legacyCodeClaims.filter(
+      (c) => c.kind === "legacy_effective_not_canonical",
+    )) {
+      if (!index.has(claim.masterCode)) index.set(claim.masterCode, []);
+      index.get(claim.masterCode).push(claim);
+    }
+    for (const [masterCode, claims] of index)
+      if (
+        !conflictsByCode.has(masterCode) &&
+        new Set(claims.map((c) => c.sourceVersion)).size === 2 &&
+        new Set(claims.map((c) => c.sourceRecordId)).size === 1
+      )
+        agreement.push({
+          masterCodeClaim: masterCode,
+          sourceRecordId: claims[0].sourceRecordId,
+          candidateKey: row.candidateKey,
+          versions: unique(claims.map((c) => c.sourceVersion)),
+          status: "VERSIONS_AGREE_NOT_CANONICAL_ALLOCATION",
+        });
+  }
+  agreement.sort((a, b) => compare(a.masterCodeClaim, b.masterCodeClaim));
+  requireValue(
+    agreement.length === lineage.unambiguousNew5021CodeBindings,
+    "Version agreement count drift",
+  );
+  outputs.set(
+    "data/poi/full/registry/agreed-legacy-claims.v1.jsonl",
+    agreement.map((row) => JSON.stringify(row)).join("\n") + "\n",
+  );
   const files = [...outputs].map(([path, content]) => ({
     path,
     sha256: sha256(content),
@@ -384,10 +561,18 @@ export function generateOutputs(rootDirectory) {
       scope:
         "Source-record unique candidate groups, not a certified canonical POI universe.",
       ...result.summary,
+      reviewedIdentityGroups: review.reviewedGroupCount,
+      heldIdentityGroups: review.heldGroupCount,
+      heldCandidateCount: review.heldCandidateKeys.length,
+      unambiguousLegacyCodeClaims: agreement.length,
       inputs: [
         { path: inputPath, sha256: sha256(input) },
         { path: decisionPath, sha256: sha256(decisionText) },
         { path: manifestPath, sha256: sha256(manifestText) },
+        ...reviewInputs.map((entry) => ({
+          path: entry.path,
+          sha256: sha256(entry.content),
+        })),
       ],
       outputs: files,
     }),

@@ -1,7 +1,9 @@
 # TASK-068 阶段报告
 
-用户要求先组合唯一列表，已完成候选身份合并：10,491 条来源观察 → 10,422 条候选组，69 次有名称与地址证据的跨来源合并。全部输入与旧编号声明保留，结果可逐字节重建。
+用户授权按推荐方式继续处理后，第二轮身份复核已完成。10,491 条原始观察 → **10,369 个候选组**，累计 122 次明确合并，其中本轮新增 53 次。原始记录与全部旧编号声明无损保留。
 
-完整 TASK-068 保持 **Blocked / Identity Conflict**：175 个历史编号冲突尚未裁决，旧 2,979 条 source ID 缺少 Master Code 映射。224 组疑似同名重复也需复核。候选数量不得解释为已占用稳定编号数量。
+原 224 组线索全部复核：52 组完整合并、107 组保留分开、2 组占位误报、63 组涉及 162 个候选仍暂缓。175 个编号冲突已逐项解释，原 2,979 条缺失编号仍未猜补。
 
-交付数据见 [候选列表说明](../../../data/poi/full/README.md)，阶段结果与实际 QA 见 [Result](../../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) 和 [QA README](README.md)。各覆盖文件明确标记 enrichment 未开始，不冒报完整任务完成。
+找到 v4.1 历史整合说明中的原主表压缩包名称、SHA-256 和大小，但文件本体尚未找回。完整 TASK-068 保持 **Blocked / Identity Conflict**，候选数不等于 occupied 数量，未开展富集。
+
+请看 [下一步材料说明](owner-decisions.md)、[完整 Result](../../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) 和 [QA](README.md)。成果保存在原执行分支本地，未 push、创建 PR、merge 或关闭 Issue。
