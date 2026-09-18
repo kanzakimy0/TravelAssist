@@ -1,0 +1,242 @@
+{
+  "scope": "Requested candidate-combination checkpoint only",
+  "executedDate": "2026-09-18",
+  "gates": [
+    {
+      "command": "npm ci",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "npm-ci.log",
+      "logSha256": "6852c7a6caeb3b30394a25fbec1378682811c501339d5fb47d7835e224098f16",
+      "summary": [
+        "npm warn allow-scripts 3 packages have install scripts not yet covered by allowScripts:",
+        "npm warn allow-scripts   esbuild@0.25.12 (postinstall: node install.js)",
+        "npm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)",
+        "npm warn allow-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)",
+        "npm warn allow-scripts",
+        "npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow."
+      ]
+    },
+    {
+      "command": "node --test tests/task-068-corpus-combination.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 11,
+      "localLog": "combination-tests.log",
+      "logSha256": "6f5b6a302a206639121b2fac6e65ac1389ec05358d61cb7c957832a91264af79",
+      "summary": [
+        "ℹ tests 11",
+        "ℹ suites 0",
+        "ℹ pass 11",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1240.1514"
+      ]
+    },
+    {
+      "command": "node tools/poi/combine-corpus.mjs --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "combination-check.log",
+      "logSha256": "5efd3ebecf04929b0db6af374dfaeef5b4ee406572a31357bae87612f77a06bc",
+      "summary": [
+        "  \"missingHistoricalCodeMappings\": 2979,",
+        "  \"candidatesWithoutAnyCodeClaim\": 3920,",
+        "  \"canonicalAllocatedPois\": 0,",
+        "  \"occupiedCorpusLocked\": false,",
+        "  \"outputs\": 6",
+        "}"
+      ]
+    },
+    {
+      "command": "npm run test:planning-contracts",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 21,
+      "localLog": "planning-contracts.log",
+      "logSha256": "44befb2808ba65ee151600149fb93fc7a0bd1636fca8368d33951f02854610d9",
+      "summary": [
+        "ℹ tests 21",
+        "ℹ suites 0",
+        "ℹ pass 21",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 319.6704"
+      ]
+    },
+    {
+      "command": "npm run test:planning-soak",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 6,
+      "localLog": "planning-soak.log",
+      "logSha256": "34f310144944d3374c0e57eec233573993be0e6392f0f059daea4e7292b37a46",
+      "summary": [
+        "ℹ tests 6",
+        "ℹ suites 0",
+        "ℹ pass 6",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 961.9024"
+      ]
+    },
+    {
+      "command": "npm run test:master-code-registry",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 15,
+      "localLog": "master-code-registry.log",
+      "logSha256": "f582d600c2d51a20188666cbc81f2da9471adccf05147a3a0cc626d6e6d8f5b8",
+      "summary": [
+        "ℹ tests 15",
+        "ℹ suites 0",
+        "ℹ pass 15",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 368.4918"
+      ]
+    },
+    {
+      "command": "npm run test:region-master-code-integration",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 6,
+      "localLog": "region-master.log",
+      "logSha256": "0ddb309bd438edae97b07646f6535eda8502bf1bce61ba661ed493e6237c56ec",
+      "summary": [
+        "ℹ tests 6",
+        "ℹ suites 0",
+        "ℹ pass 6",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 782.6006"
+      ]
+    },
+    {
+      "command": "npm run test:routing",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 28,
+      "localLog": "routing.log",
+      "logSha256": "8f91e3a7cb80e941629f552ecfdb2a142efa75abfc2cbaf619c61975dc25caac",
+      "summary": [
+        "ℹ tests 28",
+        "ℹ suites 0",
+        "ℹ pass 28",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 2725.3362"
+      ]
+    },
+    {
+      "command": "npm run lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "lint.log",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762",
+      "summary": [
+        "> travel-assist@0.1.0 lint",
+        "> eslint ."
+      ]
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "typecheck.log",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+      "summary": [
+        "> travel-assist@0.1.0 typecheck",
+        "> next typegen && tsc --noEmit",
+        "",
+        "Generating route types...",
+        "✓ Types generated successfully"
+      ]
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "build.log",
+      "logSha256": "b2092d543fd5db45f9cbe50cfdd824438ad175bdf5c763e883b38867c393510b",
+      "summary": [
+        "",
+        "",
+        "ƒ Proxy (Middleware)",
+        "",
+        "○  (Static)   prerendered as static content",
+        "ƒ  (Dynamic)  server-rendered on demand"
+      ]
+    },
+    {
+      "command": "npx prettier --check tools/poi/combine-corpus.mjs tests/task-068-corpus-combination.test.mjs data/poi/full/README.md docs/qa/TASK-068/README.md docs/qa/TASK-068/final-report.md",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "task-format.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "summary": [
+        "Checking formatting...",
+        "All matched files use Prettier code style!"
+      ]
+    },
+    {
+      "command": "npx eslint tools/poi/combine-corpus.mjs tests/task-068-corpus-combination.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": null,
+      "localLog": "final-tools-lint.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": [
+        ""
+      ]
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    {
+      "command": "Python stdlib CSV parsing and count validation",
+      "status": "PASS",
+      "evidence": "csv-validation.json"
+    },
+    {
+      "command": "Rehash all nine original source inputs",
+      "status": "PASS",
+      "matches": 9,
+      "modifiedInputs": 0
+    },
+    {
+      "command": "git diff --name-only base -- src supabase package.json package-lock.json",
+      "status": "PASS",
+      "changedFiles": 0
+    }
+  ],
+  "notExecuted": [
+    "Full occupied-corpus enrichment batch acceptance",
+    "43-feature/Visit Profile/transport QA",
+    "Full Node regression",
+    "Local Supabase runtime tests",
+    "Deployment",
+    "GitHub exact-final-head Quality Gate"
+  ],
+  "codeAfterFullLint": "CSV review columns and separate conflict CSV added afterward; final task tool lint and 11 combination tests rerun successfully. No app or TypeScript source changed."
+}

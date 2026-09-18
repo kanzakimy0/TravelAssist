@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "task068-registry-audit-v1",
+  "status": "BLOCKED_IDENTITY_CONFLICT_AFTER_REQUESTED_COMBINATION",
+  "userSteering": "先进行组合，生成唯一列表",
+  "baseSha": "45e9f8830ac66d03b3ace6480d36d3ee31907a2e",
+  "canonical": {
+    "path": "src/shared/data/master-code-registry.v1.json",
+    "revision": "task-043-candidate-r1",
+    "governanceStatus": "candidate",
+    "sha256": "9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2",
+    "entries": 51,
+    "activeRegions": 50,
+    "occupiedPois": 0,
+    "reserved": 1,
+    "tombstoned": 0,
+    "aliases": 0,
+    "changed": false
+  },
+  "audit": {
+    "remoteRefCount": 261,
+    "includesOriginSymbolicAlias": true,
+    "prCount": 247,
+    "relevantExactPrHeads": 32,
+    "inventory": "source-inventory.json"
+  },
+  "population": {
+    "uniqueCandidateCount": 10422,
+    "sourceObservations": 10491,
+    "occupiedCorpusLocked": false,
+    "totalOccupiedPois": null,
+    "occupiedByRange": null,
+    "minOccupiedId": null,
+    "maxOccupiedId": null,
+    "reason": "No canonical POI allocations; external code versions conflict and historical mappings are unavailable. Candidate and claim counts are not occupied-POI counts."
+  },
+  "legacyClaims": {
+    "distinctCodes": 6376,
+    "min": "60000",
+    "max": "80570",
+    "byRange": {
+      "60000–69999": 5670,
+      "70000–79999": 135,
+      "80000–89999": 571
+    },
+    "conflictingCodes": 175,
+    "effectiveVersionObservations": 10042,
+    "proposedObservations": 1355,
+    "missingHistoricalMappings": 2979,
+    "preserved": true,
+    "canonicalized": false
+  },
+  "identityFields": {
+    "missingJapaneseNames": 100,
+    "missingEnglishNames": 8461,
+    "missingPrefectures": 0,
+    "missingAddresses": 1085,
+    "missingCoordinates": 2322,
+    "denominator": "10491 source observations; missing is not imputed"
+  },
+  "externalLists": [
+    {
+      "source": "Geoshape v3.8",
+      "rows": 5021,
+      "head": "ca92bfc4bec00a49433e87ecba11378b4ab362e0",
+      "run": 34540663079
+    },
+    {
+      "source": "Geoshape v3.7.1 exact reproduction",
+      "rows": 5021,
+      "head": "de795f7a9957d7c78b08dfd9f30e3a883dba1628",
+      "run": 34542822317
+    },
+    {
+      "source": "Original Geoshape source-ID set",
+      "rows": 2979,
+      "masterCodeMappingAvailable": false
+    },
+    {
+      "source": "Latest cumulative B",
+      "rows": 2138,
+      "includesOriginalProposedCodes": 1355
+    },
+    {
+      "source": "Cross-family recommended candidates",
+      "rows": 84
+    },
+    {
+      "source": "TASK-038 Wikidata pilot",
+      "rows": 100,
+      "head": "71825e995946d7796587f4648dfc78490b45546d"
+    }
+  ],
+  "sourceComparison": {
+    "commonHistoricalBase": "178b42132eb2953d40c18dd7a0368575748e24bd",
+    "v38GeneratedAt": "2026-09-11T08:06:48+09:00",
+    "v371GeneratedAt": "2026-09-11T08:35:19+09:00",
+    "laterEnrichmentConsumes": "v3.7.1",
+    "resolution": "Preserve both; version ordering does not authorize changing frozen identities.",
+    "geoshapeUnion": 8169,
+    "extraIdentitiesAcrossVersions": 169
+  },
+  "excluded": {
+    "unresolvedAttractionQuotaSlots": 9000,
+    "regionalDestinationRows": 300,
+    "canonicalRegions": 50,
+    "reservedSentinel": 1,
+    "note": "The 9000 asset-manifest rows are unresolved quotas, not proof of 9000 occupied POIs. No 17000-POI total is asserted."
+  }
+}
