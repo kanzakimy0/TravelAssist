@@ -1,130 +1,106 @@
-# RESULT — TASK-068-B（第二轮身份复核 checkpoint）
+# RESULT — TASK-068-B 候选恢复 v1
 
-## 状态与范围
+状态：**批准修订范围的清单评估与恢复流水线完成；候选数据仍为部分覆盖，待验收。** 原始完整 occupied POI 库和旧主表没有恢复，也没有将其标为完成。
 
-**用户授权“按照你推荐的方式处理”：本轮已完成。** 已复核候选重复、追溯编号冲突、查找旧主表，并生成可重建的更新清单。
+## 授权与边界
 
-**完整 TASK-068-B：Blocked / Identity Conflict；未完成富集验收。** 稳定编号冲突依 Task §3/§5 保留 checkpoint，不猜号、不覆盖原绑定。
+用户于 2026-09-18 明确批准“按恢复方案继续，正式编号不变”。[Recovery Amendment v1](AMENDMENT-TASK-068-candidate-recovery-v1.md) 覆盖原任务中以找回旧主表、occupied-only 和正式码排序为前置的条款。其余安全、来源、冻结语义、批次、QA 和单一 Draft PR 要求继续适用。
 
-- Issue：[#393](https://github.com/kanzakimy0/TravelAssist/issues/393)，保持 Open；Owner B。
-- base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
-- task publication：`1622eb076a9b023a643b845d66007f4eef7f83ad`。
-- branch：`codex/b-poi-partition-enrichment-transport-linkage`；本轮开始 head `36290ac07252d4fed7c70436c4a694d17202db48`。
-- 历史 checkpoint：`551a9e7` 首次组合；`5decb4924d3d73300c9b6b2d78e23a9d483482ae` LF/hash 校正；`36290ac` 本地交接。当前成果以执行分支 HEAD 为准。
-- 发布：**LOCAL_ONLY_NOT_PUSHED**，没有 PR、merge 或关闭 Issue。完整 occupied 富集尚未完成，未达到 Task 最终 Draft PR 条件。
-- 首阶段自动审批曾拒绝包含 push 的命令，理由为上传数据敏感性及目标信任未验证；后续只读核对确认 origin 为用户指定的公开仓库且账户有 WRITE 权限。本轮继续本地整理，没有重试提前发布。
+- Issue：[393](https://github.com/kanzakimy0/TravelAssist/issues/393)，Owner B，保持 Open。
+- 执行基线：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`；执行前 fetch 已核实为 origin/develop。
+- 任务发布：`1622eb076a9b023a643b845d66007f4eef7f83ad`。
+- 分支：`codex/b-poi-partition-enrichment-transport-linkage`。
+- 固定身份 checkpoint：`9c754136a4b2bf19a6c4e2e9a9cdbd12dc2cb1eb`，保留此前合并/来源审计提交。
+- Draft PR：待创建；最终提交和 CI 以该 PR head/checks 及交付回执为准，不在提交中自引用 head。
+- 没有 merge、关闭 Issue、产品导入、正式编号分配或部署。
 
-## 交付
+## 身份及正式编号保全
 
-| 文件                                                                                                        | 当前内容                                        |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| [唯一候选 CSV](../../data/poi/full/registry/combined-candidates.v1.csv)                                     | **10,369 行**，UTF-8 BOM，12 列                 |
-| [无损 JSONL](../../data/poi/full/registry/combined-candidates.v1.jsonl)                                     | 全部 10,491 条原观察恰好保留一次                |
-| [身份复核 CSV](../../data/poi/full/registry/identity-review.v1.csv)                                         | 原 224 组线索全部复核                           |
-| [冲突追溯 CSV](../../data/poi/full/registry/code-lineage-review.v1.csv)                                     | 175 个编号的前后绑定与原因                      |
-| [旧编号绑定 CSV](../../data/poi/full/registry/master-code-conflicts.v1.csv)                                 | 175 个冲突编号、350 个绑定                      |
-| [缺失映射 CSV](../../data/poi/full/registry/unmapped-history.v1.csv)                                        | 2,979 个 source IDs，Master Code 留空           |
-| [两版一致绑定 JSONL](../../data/poi/full/registry/agreed-legacy-claims.v1.jsonl)                            | 4,846 个 legacy 绑定，仍非 canonical allocation |
-| [后续所需材料](../qa/TASK-068/owner-decisions.md)                                                           | 旧主表文件名、hash、恢复步骤                    |
-| [QA](../qa/TASK-068/README.md) / [checkpoint](../../data/poi/full/manifests/combination-checkpoint.v1.json) | 可复现验证及输入/输出 hash                      |
+全部 **10,491 条原观察**仍恰好保留一次，组成 **10,369 个候选组**；累计 122 条明确合并链接未改。candidateKey 是已有来源键，不是新的 Master Code。
 
-`candidateKey` 使用已有 source ID，是候选组定位键，**不是新 Master Code**。正式编号全部空缺，旧编号原样保留在 `legacyCodeClaims`。候选唯一不代表现实世界实体已全部消歧，也不代表完整已占用库。
+来源为 8,169 条 Geoshape 两版/旧历史 ID 并集、2,138 条 B 累积候选、84 条跨族候选及 100 条 TASK-038 身份样本。没有采用 pilot 评分或把机器 benchmark 当成客观真值；TASK-038/039 的方法与 Human Gold 边界已复核。
 
-## 合并与复核结果
+Canonical Registry：`src/shared/data/master-code-registry.v1.json`，revision `task-043-candidate-r1`；50 个 active region、1 reserved，**0 个 canonical POI allocations**。这不是历史已占用 POI 总数为 0。
 
-| 来源 / 变化                                     |       数量 |
-| ----------------------------------------------- | ---------: |
-| Geoshape v3.8、v3.7.1、旧 2,979 source IDs 并集 |      8,169 |
-| 最新 B 累积候选（含原 1,355 条 proposed 编号）  |      2,138 |
-| 本地跨族推荐候选                                |         84 |
-| TASK-038 Wikidata 身份样本                      |        100 |
-| 来源观察合计                                    |     10,491 |
-| 首阶段明确合并                                  |        −69 |
-| 本轮新增明确合并                                |        −53 |
-| 当前候选组                                      | **10,369** |
+| 保全对象                          | 结果                                                                     |
+| --------------------------------- | ------------------------------------------------------------------------ |
+| Canonical Registry SHA-256        | `9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2`，不变 |
+| 原始观察 SHA-256                  | `6a60eab7d673a8b706ac1c6f404380b78913fc755dec543d60c1285fe5c01e6b`，不变 |
+| 固定候选 JSONL SHA-256            | `4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067`，不变 |
+| 旧编号声明                        | 6,376 个不同 code claims，全部原样保留                                   |
+| 两版一致声明                      | 4,846，仍非正式分配                                                      |
+| 冲突                              | 175 个编号：167 个版本分配差异、8 个替换；未裁决、未改绑                 |
+| 历史缺失映射                      | 2,979 个 source IDs 的旧 Master Code 仍未知                              |
+| 身份隔离                          | 63 组、162 个候选；不填属性、不连交通边                                  |
+| 原始 occupied 全库验收            | `NOT_SATISFIED`；历史 17,000 仅为文档声明                                |
+| 本次正式码排序/occupied-only gate | `N/A_AMENDED`，采用固定候选来源键                                        |
 
-本轮定向核对 **23 条官方来源地址事实**，与保留的双语地址/来源证据一起支持编辑决策。全部 122 条明确合并都有双侧原证据；不按同名、估算坐标或同编号自动合并，未冒充人工验收。
+保留的声明号段为 60000–69999：5,670；70000–79999：135；80000–89999：571，min/max 为 60000/80570。这些都不是已认证占用数。未知范围不视为空闲，不填新顺序编号。
 
-| 原 224 组线索处理                      | 组数 |
-| -------------------------------------- | ---: |
-| 证据支持完整合并                       |   52 |
-| 不同位置证据，保留分开                 |  107 |
-| 标点占位名误报                         |    2 |
-| 不同历史 source IDs 共用估算坐标，暂缓 |   38 |
-| 同地址指向不同历史坐标，暂缓           |   15 |
-| 跨来源地点信息矛盾，暂缓               |   10 |
+## 批次与真实覆盖
 
-107 组保留分开中，有一组三方同名寺院只合并了明确匹配的两方，所以本轮新增 53 条合并链接。63 个暂缓组涉及 **162 个唯一候选**；仍完整保留、列为暂不富集。剩余 170 个同名索引组 = 107 个保留分开 + 63 个暂缓，不是 170 组未复核。
+**52/52 批已评估，10,369/10,369 条获得明确结果，尚未扫描条目为 0。** 每批最多 200，最后一批 169；全部是带待审缺口的完成状态，不是全属性完成。
 
-例：高知「大日寺」只合并香南市两个来源，室户市同名寺院独立保留。三重「観音寺」两个 source IDs 地址相同但历史坐标不同，不擅自纠正。岐阜「八幡神社」多个历史条目共用估算点，不据此认定为同一实体。[Geoshape 数据说明](https://geoshape.ex.nii.ac.jp/nrct-poi/) 明确有推定位置及地理编码局限。
+| 结果                                              | 候选数 |
+| ------------------------------------------------- | -----: |
+| PARTIAL：有已复核来源的候选属性                   |     26 |
+| REVIEW_REQUIRED：匹配保留来源，但尚无编辑属性复核 |    322 |
+| SOURCE_UNAVAILABLE：没有匹配的保留属性来源        |  9,859 |
+| QUARANTINED：身份隔离                             |    162 |
+| 合计                                              | 10,369 |
 
-## 编号冲突追溯
+SOURCE_UNAVAILABLE 不代表互联网不存在资料，只描述本轮保留证据覆盖。全量待审条目 **10,369**，与此前 239 组身份/编号/历史问题队列分别记录。
 
-175 个冲突已逐项定位到原生成器：
+| 输出                                    |                                      数量 / 状态 |
+| --------------------------------------- | -----------------------------------------------: |
+| 完整 43-key 形状                        |                                           10,369 |
+| 非 null 特征位                          |                       82 / 445,867（约 0.0184%） |
+| null 特征位                             |                                          445,785 |
+| 有评分的候选                            |                                  26（约 0.251%） |
+| 部分 Visit Profile                      | 1；Kotokuin/Kamakura Daibutsu 的来源建议 30 分钟 |
+| 完整时长上下限和负荷档案                |                                                0 |
+| 名称范围化 Access Anchors               |                                               33 |
+| 静态接入关系                            |                               35，覆盖 25 个候选 |
+| 稀疏候选邻接                            |                 2 条有向边，共享奈良接入点；K≤20 |
+| 正式导入 / live Provider / 生产 DB 写入 |                                                0 |
 
-- **167 个**：v3.8 fallback 与后生成 v3.7.1 岐阜容量分配 override 使用不同候选身份。
-- **8 个**：v3.7.1 的 cross-version source collision replacement 改绑来源。
-- 其余 **4,846 个**新 5,021 编号在两版中一致，单独导出。
-- v3.7.1 生成时间较晚，后续 v4.0/v4.1 使用它；可作候选追溯基准，但不能在缺少历史权威主表时据此改写 stable identity。
+每个非空值均有 featureCode、冻结 kind、rubricVersion、编辑方法、sourceRefs、confidence、理由和原文本字符定位 hash。评分是候选编辑建议，**不是外部官方评分或独立人工金标准**。0 表示有依据的缺失，null 表示未知，未把缺失填为 0/5。
 
-Canonical Registry `src/shared/data/master-code-registry.v1.json` 保持未改：revision `task-043-candidate-r1`，50 active region + 1 reserved，0 canonical POI allocations。保留的 **6,376 个 distinct legacy code claims** 不是已认证 occupied 数量：
+Visit 档案只填有依据的 recommendedDurationMinutes，其余上下限和负荷保持 null。没有从车程、登山单段时长或“全天”推算整场参观，没有固定/可变负荷比例。外层 CANDIDATE_ONLY 状态不能被内层契约 `active` 绕过。
 
-| 声明号段    | 编号数 |
-| ----------- | -----: |
-| 60000–69999 |  5,670 |
-| 70000–79999 |    135 |
-| 80000–89999 |    571 |
+交通点仍是限定地方范围的名称候选，没有 Provider ID；接入模式是来源描述的静态关系。时刻、票价、距离、旅程时长、换乘、无障碍、当前服务及可达性均未认证。邻接不宣称可步行，未生成 all-pairs。后续路线只能通过既有 7.5 contract 和事实新鲜度规则。
 
-声明 min/max 为 60000 / 80570；真正 occupied 总量、范围、min/max 仍未知。1,355 条 B 提案编号未改变；旧 2,979 条仍无编号映射。
+## 来源与校准限制
 
-## 历史主表恢复
+对 861 份本地保留 JNTO 页面建立索引，来源实际观测日期为 **2026-09-14**，未冒充当天重新联网验证。其中 737 份检测到正文，15 份有混合其他页面的尾部，字符定位必须落在本目标内容范围内。
 
-已检查 261 个 refs、247 个 PR metadata、32 个相关 exact heads、历史 Git 对象、可见 Actions 制品及本地原输出。v3.7.1 已按原脚本和原 CSV 逐字节恢复，SHA-256 `e42300b3a486acb812d27928522d92db07d97dd94b0a2e65b80e634968c6fdcb` 与 [原 CI](https://github.com/kanzakimy0/TravelAssist/actions/runs/34542822317) 一致。
+本轮完整阅读复核 56 页：50 页形成有限事实摘要，6 页正文不足。50 页中只有 26 页能通过既有候选的 URL、名称/别名和都道府县同时匹配；24 页证据留档未挂入候选，没有新增候选或擅自做身份链接。证据表中其他 2 个时长建议亦未导入固定清单。
 
-本轮发现 [v4.1 整合 README](https://github.com/kanzakimy0/TravelAssist/blob/f4372a1fff124958fa68f8a32213f468b8ea5d9c/docs/data/poi/expansion8000-v4.1/README.md) 明确记录：曾用 v3.9 Master 恢复旧 2,979 条编号，并保留 17,000 条 effective index。对应文件：
+来源层级为官方旅游机构。保留源文件 SHA、正文 hash、有限事实释义和定位 hash；**未提交整页文章或 raw Provider payload**。没有 paid/live Provider 或无控制抓取。
 
-- **`travelassist-poi-expansion8000-consolidated-v4.1.zip`**
-- SHA-256：`e95729269b5edca936e68d07a12ed1d65cda6d9ce5079cf18ebfbde34abb3a60`
-- 文档记录大小：**4,329,068 bytes**
+43 维使用单一 versioned rubric，包括定义、0/3/5/7/9 锚点、依据、反例和 null 条件。山寺/金刀比罗宫的大量台阶采用较高标准参观负担，松本城陡峭室内楼梯采用中等负担；这不是个人疲劳估计。unique/hidden/iconic、全站无障碍、当前 crowd/queue 等缺少比较或适用范围的维度保留 null。样本有限，**不足以证明不存在地区或类型偏差**，未调推荐参数。
 
-该包尚未找回；检查过的本机 Downloads、Documents/ChatGPT、Desktop、Codex attachments 以及远端可见范围内未找到。没有声称搜索了整台电脑或文件已永久丢失。具体范围见 [missing-history-recovery.json](../qa/TASK-068/missing-history-recovery.json)。
+## QA 与可重现性
 
-仓库另一个 9,000 行 attraction manifest 是未解析素材配额，不能导入为 POI；但这**不能否定**历史 v4.1 README 记载的另一份 17,000 主表。没有原包，17,000 也只能记为尚未独立验证的历史声明。
+- 身份组合测试 **19/19**；新增候选恢复测试 **12/12**。
+- Planning contract **21/21**；soak **6/6**；Master Registry **15/15**；region integration **6/6**；routing **28/28**。
+- Candidate full Node **2,666/2,666**，0 fail、0 skipped。
+- `npm ci`、lint、typecheck、build、deployment local validation/build/artifact、format deploy 均执行并通过。
+- 52 批 checksum-identical resume 全部跳过；完整重建检查通过。
+- 注入输出损坏与不完整 receipt：check 正确失败，指定批次 resume 重建后通过。
+- 修改 rubric 输入 hash：全部 52 批失效并重算；恢复原 rubric 后再次重算，最终检查通过。
+- from/to candidateKey dry-run 不写入，受限执行不冒充全量完成。
+- 独立磁盘审计核对 **232 个输入/输出 checksum**，并验证保全、provenance、引用、隔离、时长和 K 上限；凭据模式扫描 218 个数据文件，0 命中。
+- 原保留缓存与所有已采用定位核验通过；机器抽样每整批 20 项、尾批 17 项，共 **1,037** 项，明确不是人工验收。
+- Task-owned 手写文件格式与 git diff whitespace 检查在提交前执行；机器数据采用生成器的固定 LF/JSON(JSONL) 字节格式，由重建 hash 验证。
+- 没有运行或宣称本轮 Supabase/Auth runtime、Production/Staging、付费服务验收；该数据旁路没有涉及 DB/schema。
 
-下一步优先找回该包，或等价 v3.9/v4.1 Master Code→source ID 对照表。若确实无法恢复，需另行批准任务/编号治理修订；本轮未授权或执行新编号分配。
+完整命令、退出码、日志 hash 见 [QA](../qa/TASK-068/README.md)、[gates](../qa/TASK-068/gates.json)、[实际批次故障/恢复记录](../qa/TASK-068/batch-runtime-proof.json)、[独立审计](../qa/TASK-068/candidate-audit.json)。GitHub Quality gate 以最终 PR head 的外部运行回执为准，本地 gate 不代替远端 PASS。
 
-Geoshape 使用 CC BY 4.0，署名和历史位置限制保留。B 研究来源未全量重新抓取，本轮仅新增 23 条定向身份事实；pilot 未导入评分。没有将历史位置或身份核对当作当前运营、导航或属性证据。
+## 交付与后续
 
-## 完整 TASK-068 验收字段
+- [候选数据与运行方式](../../data/poi/full/README.md)：CSV/JSONL、43-key sidecars、Visit、Anchor、Neighbor、版本化 rubric、52 批 checkpoint。
+- [正式接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)：引用审计、不可覆盖旧码、映射验收、属性复核、兼容与回退。
+- [此前身份阶段结果](../qa/TASK-068/identity-checkpoint-result.md) 原样保留；旧文件搜索不再是候选工作的前置。
 
-| 项目                                      | 当前状态                                                     |
-| ----------------------------------------- | ------------------------------------------------------------ |
-| total occupied POIs / remaining           | null，身份 gate 未通过                                       |
-| processed occupied POIs                   | 0                                                            |
-| batch total / completed / partial         | null / 0 / 0                                                 |
-| 43-key shape complete                     | 0，未运行 enrichment                                         |
-| feature known/null coverage               | null，未测量                                                 |
-| Visit Profile / transport anchor coverage | null / null                                                  |
-| neighbor edges                            | 0，未生成                                                    |
-| review queue                              | 239 个分组：175 编号 + 63 身份 + 1 历史映射                  |
-| source tiers                              | 历史公开研究数据、B 原研究、23 条定向官方地址、Wikidata 身份 |
-| stable IDs changed / allocated            | 0 / 0                                                        |
-| canonical / runtime / DB / Provider 修改  | 0                                                            |
-
-200 项 enrichment batch 自动续跑尚未实现或认证。本轮完成的是身份复核及恢复准备，不能将其当作完整 TASK 验收完成。
-
-## 实际 QA
-
-本轮：
-
-- TASK-068 专项 **19/19 PASS**：无损保留、冲突不合并、证据漂移拒绝、未知编号不补号、估算坐标/地址矛盾、部分合并、占位误报、证据绑定、重建与 CSV。
-- `--check` 生成结果逐字节一致；独立 Python CSV/JSONL 验证候选 10,369、来源 10,491、复核 224、冲突追溯 175、未映射 2,979。
-- 原 9 份源文件 SHA-256 保持一致，规范化观察输入 hash 不变。
-- 工具 ESLint、Task-owned Prettier、`git diff --check`；Git blob 与 7 输入/10 输出 checkpoint 一致。
-- 首次测试脚本的正则转义笔误已修正，完整专项重跑通过；未改数据事实。
-
-首阶段已实际执行并通过，当前离线改动不冒称重新执行：`npm ci`、Planning contracts **21/21**、soak **6/6**、Master Code **15/15**、region integration **6/6**、routing **28/28**、全仓 lint、typecheck、build。本轮代码指纹与日志详见 [gates.json](../qa/TASK-068/gates.json)。
-
-未执行、不记 PASS：完整 enrichment/batch QA、全仓 Node suite、Local Supabase、部署、GitHub exact-final-head Quality Gate。未调用付费/实时 Route Provider。
-
-本地 checkpoint 已保存。Issue #393 与 WBS 进行中状态保持；未创建 PR、未 merge，未改正式编号。
+下一步是验收这套恢复旁路及其有限候选数据，再单独决定补证据和正式接入任务。本次不把 TASK-068 原始全库标为已完成，不释放未知号位，不改变现有主系统业务逻辑。

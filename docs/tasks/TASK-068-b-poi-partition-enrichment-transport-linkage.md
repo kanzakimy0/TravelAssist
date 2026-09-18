@@ -1,5 +1,7 @@
 # TASK-068-B — Full POI Corpus Registry / 43-Feature / Visit Profile / Transport Linkage
 
+> 当前执行以 [已批准 Recovery Amendment v1](AMENDMENT-TASK-068-candidate-recovery-v1.md) 为准：候选层补全，正式编号不变。下文原始 occupied-only 流程保留为发布记录；冲突条款由该修订覆盖。
+
 > Issue: #393  
 > Owner: **B** — user-authorized full POI data-production owner  
 > Stable ID scope: **00000–99999**  

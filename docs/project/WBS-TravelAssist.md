@@ -1,15 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
-## TASK-068-B Full POI Corpus（2026-09-18）
+## TASK-068-B 候选恢复（2026-09-18）
 
-- Owner：B（用户授权全号段 POI 数据生产）；Issue #393；状态：进行中，完整富集处于 Blocked / Identity Conflict。
-- 按用户授权完成第二轮身份复核：10,491 条观察合为 10,369 个候选身份组；累计 122 次明确合并，原编号全部保留。224 组线索全部复核：52 组合并、107 组保留分开、2 组占位误报、63 组暂缓。175 个编号冲突已追溯（167 个分配差异、8 个替换），仍不擅自裁决。旧 2,979 条编号映射待找回 v4.1 主表压缩包；未把候选数当作 occupied POI。
-- [组合列表](../../data/poi/full/README.md) 与 [阶段 QA](../qa/TASK-068/README.md) 已落盘；正式 Registry、43 维富集、Visit Profile 与交通关联尚未进入执行。
-- 执行分支：`codex/b-poi-partition-enrichment-transport-linkage`；基线：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
-- 仅处理 00000–99999 已占用 POI；先审计所有 assigned-ID 来源，保持稳定编号。TASK-069-A / #394 已被取代，不启动独立 A pipeline。
-- 200 条确定性批次自动继续；证据不足进入 review queue。稳定身份冲突按 Task §3/§5 checkpoint 后停止，不改号。
-- 其他 WBS、推荐参数、Runtime、Provider、DB 与部署状态不变；完成后一个 Draft PR → develop，不自动合并。
-
+- Owner：B；Issue #393；状态：候选恢复实现与本地 QA 完成，准备单一 Draft PR，待用户验收；原始完整 occupied 库未认证。
+- 用户明确批准“按恢复方案继续，正式编号不变”；以 [Recovery Amendment v1](../tasks/AMENDMENT-TASK-068-candidate-recovery-v1.md) 为当前执行依据。旧文件不再作为候选加工前置。
+- 10,491 条原观察、10,369 个固定候选和所有历史编号声明完整保留。52 批全部获得明确结果：26 部分、322 待编辑复核、9,859 无匹配保留来源、162 身份隔离。82 个非空特征位、1 个部分 Visit、33 个 Anchor、35 条接入及 2 条邻接；不将评估完成冒充属性齐全。
+- 正式 Registry 不变；175 个旧码冲突、2,979 个未知旧码继续保留，未知号位不视为空闲。其他 WBS、Owner、Runtime、Provider、DB 和部署状态不变，TASK-069-A / #394 不另起 pipeline。
+- [Result](../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) / [QA](../qa/TASK-068/README.md) / [接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)。正式导入需后续单独验收，不自动 merge 或关闭 Issue。
+- 分支：`codex/b-poi-partition-enrichment-transport-linkage`；base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
 
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 

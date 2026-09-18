@@ -1,5 +1,7 @@
 # CODEX — TASK-068-B Full POI Corpus Overnight Run
 
+> 当前执行以 [已批准 Recovery Amendment v1](AMENDMENT-TASK-068-candidate-recovery-v1.md) 为准：候选层补全，正式编号不变。下文原始 occupied-only 流程保留为发布记录；冲突条款由该修订覆盖。
+
 请在 TravelAssist 仓库中执行 **TASK-068-B**。本 Task 已更新为：**B 单独负责全部 POI 数据，范围 00000–99999，不再由 A 处理 00000–59999。**
 
 Repository:
