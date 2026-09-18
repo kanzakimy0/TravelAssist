@@ -39,13 +39,6 @@ export const jsonl = (rows) =>
   rows.map((r) => JSON.stringify(r) + "\n").join("");
 const read = (root, path) => readFileSync(resolve(root, path));
 const object = (root, path) => JSON.parse(read(root, path));
-const lines = (root, path) =>
-  read(root, path)
-    .toString()
-    .trim()
-    .split("\n")
-    .filter(Boolean)
-    .map(JSON.parse);
 const same = (root, path, text) =>
   existsSync(resolve(root, path)) && hash(read(root, path)) === hash(text);
 function atomic(root, path, text) {
@@ -421,7 +414,9 @@ export function batchPlan(ctx, dataset, entries, id, files) {
     outputs: [...outputs].map(([path, text]) => ({ path, sha256: hash(text) })),
     sidecarProjections: projections,
     resultCounts: qa.counts,
-    failureReviewQueueCount: qa.blocked + qa.errorCount,
+    failureReviewQueueCount: outcomes.filter(
+      (r) => r.status !== "REVIEWED_PARTIAL",
+    ).length,
     status: "PASS",
   };
   return { id, entries: batch, keys, refs, outputs, receipt };
@@ -435,6 +430,7 @@ export function receiptMatches(root, plan, files) {
     );
     if (
       !Number.isFinite(Date.parse(startedAt)) ||
+      !Number.isFinite(Date.parse(completedAt)) ||
       Date.parse(completedAt) < Date.parse(startedAt) ||
       json(data) !== json(plan.receipt)
     )
