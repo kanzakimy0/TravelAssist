@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-068-B Full POI Corpus（2026-09-18）
+
+- Owner：B（用户授权全号段 POI 数据生产）；Issue #393；状态：进行中。
+- 执行分支：`codex/b-poi-partition-enrichment-transport-linkage`；基线：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
+- 仅处理 00000–99999 已占用 POI；先审计所有 assigned-ID 来源，保持稳定编号。TASK-069-A / #394 已被取代，不启动独立 A pipeline。
+- 200 条确定性批次自动继续；证据不足进入 review queue。稳定身份冲突按 Task §3/§5 checkpoint 后停止，不改号。
+- 其他 WBS、推荐参数、Runtime、Provider、DB 与部署状态不变；完成后一个 Draft PR → develop，不自动合并。
+
+
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
 - 用户明确验收 TASK-063-B，授权合并 PR #382，并在合并后将 4.22 更新为 B / 已完成及关闭 Issue #380。
