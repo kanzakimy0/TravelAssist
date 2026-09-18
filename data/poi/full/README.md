@@ -17,7 +17,13 @@
 
 所有 sidecar 标为 CANDIDATE_ONLY。`featureSet`/`profile` 内层复用共享契约；外层是离线 QA 包装，不是产品 API。`status: active` 只表示该候选档案版本有效，不能绕过外层候选状态用于 runtime。
 
-## 重建
+## TASK-070 后的当前 checkpoint
+
+当前已完成 322 条 P0 编辑核查（200 + 122）：246 条获得支持评分、1 条无可支持属性、72 条证据不足、3 条身份冲突。全库已有评分 POI 272，非 null 字段 860，部分 Visit Profile 3，唯一 Anchor 213，静态接入 242。身份与正式编号不变。
+
+当前重建和验收请使用 `tools/poi/review-p0.mjs --resume` / `--check` 及 `tools/poi/audit-p0.mjs`，均加 `node --import ./tests/register-route-ts.mjs` 前缀。详见 [TASK-070 QA](../../../docs/qa/TASK-070/README.md)。不要在当前 P0 sidecar 上执行下方历史生成器的写入命令。
+
+## TASK-068 历史重建（仅限其接受版本）
 
 在仓库根执行，使用仓库锁定的 Node/npm 版本；同一 worktree 同时只运行一个写入进程。
 
@@ -33,7 +39,7 @@ node --import ./tests/register-route-ts.mjs tools/poi/enrich-candidates.mjs --ch
 
 无网络重建只依赖提交的来源摘要。若本机保留原 JNTO 缓存，可额外用 `node tools/poi/verify-retained-evidence.mjs <cache-path>` 检查整份缓存 SHA 和字符定位；它不重新抓取网页、不验证当前营业情况。
 
-## 当前覆盖与限制
+## TASK-068 接受版本的覆盖与限制（历史）
 
 全部清单已评估并获得明确状态；**评估完成不等于属性补齐**。82 个非空评分位来自 26 个候选，445,785 个评分位仍为 null。另有 322 个候选匹配缓存但尚无编辑评分，9,859 个没有匹配可用的保留属性来源，162 个身份候选隔离。所有人工独立验收均待进行。
 
