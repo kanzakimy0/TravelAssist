@@ -224,7 +224,7 @@ export function combine(observations, decisionFile) {
 }
 
 export function csvCell(value) {
-  let text = String(value ?? "");
+  let text = String(value ?? "").replace(/\r\n?/g, "\n");
   // CSV is for spreadsheet review. Prevent provider text becoming a formula.
   if (/^[\s]*[=+\-@]/.test(text)) text = "'" + text;
   return '"' + text.replaceAll('"', '""') + '"';
@@ -299,10 +299,8 @@ export function generateOutputs(rootDirectory) {
   outputs.set(
     "data/poi/full/registry/combined-candidates.v1.csv",
     "\uFEFF" +
-      [header, ...csvRows]
-        .map((row) => row.map(csvCell).join(","))
-        .join("\r\n") +
-      "\r\n",
+      [header, ...csvRows].map((row) => row.map(csvCell).join(",")).join("\n") +
+      "\n",
   );
   outputs.set(
     "docs/qa/TASK-068/duplicate-audit.json",
@@ -370,8 +368,8 @@ export function generateOutputs(rootDirectory) {
         ...conflictRows,
       ]
         .map((row) => row.map(csvCell).join(","))
-        .join("\r\n") +
-      "\r\n",
+        .join("\n") +
+      "\n",
   );
   const files = [...outputs].map(([path, content]) => ({
     path,

@@ -166,6 +166,14 @@ test("candidate output is independent of input/decision ordering", () => {
 
 test("regenerated files are byte-identical to the committed review artifacts", () => {
   const { outputs } = generateOutputs(root);
+  for (const [path, content] of outputs) {
+    if (path.endsWith(".csv"))
+      assert.equal(
+        content.includes("\r"),
+        false,
+        "CSV follows Git LF normalization",
+      );
+  }
   for (const [path, content] of outputs)
     assert.equal(readFileSync(resolve(root, path), "utf8"), content, path);
 });
