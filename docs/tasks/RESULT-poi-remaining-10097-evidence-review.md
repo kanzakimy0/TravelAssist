@@ -6,11 +6,11 @@
 
 ## 逐条审查继续执行中（2026-09-19）
 
-按最新无人值守授权继续以 200 条为一批进行完整证据审查。R-0001、R-0002、R-0003、R-0004、R-0005 各完成 **200/200**，共 **1,000/10,097**，均获得独立 `ASSESSMENT_QA_PASS` checkpoint；相同输入重跑均实际返回 `SKIPPED_IDENTICAL_ASSESSMENT`。下一批 R-0006 自动继续。尚未将全量任务报告完成。
+按最新无人值守授权继续以 200 条为一批进行完整证据审查。R-0001、R-0002、R-0003、R-0004、R-0005、R-0006 各完成 **200/200**，共 **1,200/10,097**，均获得独立 `ASSESSMENT_QA_PASS` checkpoint；相同输入重跑均实际返回 `SKIPPED_IDENTICAL_ASSESSMENT`。下一批 R-0007 自动继续。尚未将全量任务报告完成。
 
-R-0001 有 186 个评分 POI、538 个评分字段、131 条静态交通关联和 1 个最低时长部分 Visit Profile。R-0002 有 199 个评分 POI、461 个评分字段、134 条静态交通关联，Visit Profile 新增 0。R-0003 有 189 个评分 POI、468 个评分字段、113 条静态交通关联，Visit Profile 新增 0。R-0004 有 176 个评分 POI、400 个评分字段、135 条静态交通关联，Visit Profile 新增 0；20 条无可支持属性、2 条原身份隔离、1 条地址冲突待查。R-0005 有 172 个评分 POI、477 个评分字段、80 条静态交通关联，新增 2 个部分 Visit Profile；10 条无可支持属性、11 条原身份隔离、4 条身份冲突待查。未支持字段及具体原因继续留在待查名单。当前候选视图为 1,195 个有评分 POI、3,207 个非 null 字段（含原 272 条及早先 R-0011 的 1 条评分）；累计新增 593 个候选 anchor，正式编号与 Registry 均未变。
+R-0001 有 186 个评分 POI、538 个评分字段、131 条静态交通关联和 1 个最低时长部分 Visit Profile。R-0002 有 199 个评分 POI、461 个评分字段、134 条静态交通关联，Visit Profile 新增 0。R-0003 有 189 个评分 POI、468 个评分字段、113 条静态交通关联，Visit Profile 新增 0。R-0004 有 176 个评分 POI、400 个评分字段、135 条静态交通关联，Visit Profile 新增 0；20 条无可支持属性、2 条原身份隔离、1 条地址冲突待查。R-0005 有 172 个评分 POI、477 个评分字段、80 条静态交通关联，新增 2 个部分 Visit Profile；10 条无可支持属性、11 条原身份隔离、4 条身份冲突待查。R-0006 有 195 个评分 POI、564 个评分字段、117 条静态交通关联、5 个部分 Visit Profile；4 条无可支持属性、1 条原身份隔离保留。未支持字段及具体原因继续留在待查名单。当前候选视图为 1,390 个有评分 POI、3,771 个非 null 字段（含原 272 条及早先 R-0011 的 1 条评分）；累计新增 710 个候选 anchor，正式编号与 Registry 均未变。
 
-每批实际执行候选视图/43 维/Visit 合同、来源原文与 locator 哈希、受保护身份与原评分、确定性重跑；R-0001 工具实现还通过 14 项 Python 故障测试和 8 项 Node focused 测试。此前 checkpoint `1b43ffdb45ea0c2d7080ee0a9ab8431138c8bcf8` 的 [GitHub Quality gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/35419862869/job/105835356667) 已核验 success。全量回归和最新最终提交的 GitHub gate 将在全批完成后重新执行，不以历史 PASS 代替。
+每批实际执行候选视图/43 维/Visit 合同、来源原文与 locator 哈希、受保护身份与原评分、确定性重跑；R-0001 工具实现还通过 14 项 Python 故障测试和 8 项 Node focused 测试。此前 checkpoint `6fccbd2421c6445f1487fba1c47213d04ccae1a4` 的 [GitHub Quality gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/35423244843/job/105844625128) 已核验 success。全量回归和最新最终提交的 GitHub gate 将在全批完成后重新执行，不以历史 PASS 代替。
 
 [逐批 QA 与恢复入口](../qa/POI-REMAINING-10097/assessment/README.md)。下文保留上一轮搜索与 32 条初审的历史 Result，数字不代表本阶段最终验收结果。
 
