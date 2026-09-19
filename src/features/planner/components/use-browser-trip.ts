@@ -40,6 +40,7 @@ export function useBrowserTrip({
   setDraft,
   hydrate,
   markSaved,
+  remoteSave,
   onLeave,
 }: {
   trip: TripState;
@@ -51,6 +52,8 @@ export function useBrowserTrip({
   /** Store-owned hydration is preferred; the callbacks keep older callers compatible. */
   hydrate?: (snapshot: TripSnapshot, options?: { force?: boolean }) => void;
   markSaved?: (snapshot: TripSnapshot) => void;
+  /** Optional Canonical save. Browser storage remains a recovery cache only. */
+  remoteSave?: (snapshot: TripSnapshot) => Promise<TripSnapshot>;
   onLeave?: () => void;
 }) {
   const router = useRouter();
@@ -199,11 +202,11 @@ export function useBrowserTrip({
       setError("无法读取浏览器存储，当前行程未改变。");
     }
   }
-  function save(
+  async function save(
     confirmedOverwrite = false,
     prepared?: TripSnapshot,
     recommendation = false,
-  ) {
+  ): Promise<boolean> {
     if (!ready || (mode !== "detail" && !recommendation)) return false;
     if (
       saved &&
@@ -216,6 +219,27 @@ export function useBrowserTrip({
     }
     try {
       const snapshot = prepared ?? tripSnapshot(trip, draft);
+      if (remoteSave) {
+        const acknowledged = await remoteSave(snapshot);
+        // A cache failure does not roll back a confirmed server save or mark
+        // another snapshot clean. The working copy remains recoverable.
+        try {
+          const next = saveBrowserTrip(
+            window.localStorage,
+            acknowledged,
+            expectedRaw.current,
+          );
+          expectedRaw.current = JSON.stringify(next);
+          setSaved(next);
+          setStatus("已保存到服务器 · 浏览器恢复副本已更新");
+        } catch {
+          setStatus("已保存到服务器；浏览器恢复副本未更新，当前编辑仍保留。");
+        }
+        setBaseline(acknowledged);
+        markSaved?.(acknowledged);
+        setError("");
+        return true;
+      }
       if (
         !parsePlannerStoreSnapshot(
           JSON.stringify({
@@ -355,8 +379,8 @@ export function useBrowserTrip({
       setOverwritePending(false);
       overwriteLeave.current = false;
     },
-    confirmOverwrite: () => {
-      if (save(true)) {
+    confirmOverwrite: async () => {
+      if (await save(true)) {
         setOverwritePending(false);
         if (overwriteLeave.current) leave(destination ?? "/planner");
         overwriteLeave.current = false;
@@ -365,14 +389,20 @@ export function useBrowserTrip({
     ready,
     saved,
     dirty,
-    status: error || (dirty ? "有未保存修改 · 仅此浏览器" : status),
+    status:
+      error ||
+      (dirty
+        ? remoteSave
+          ? "有未保存修改"
+          : "有未保存修改 · 仅此浏览器"
+        : status),
     error,
     destination,
     enterDetail: () => enterDetail(),
     requestPlan: (id: string) => enterDetail(id),
     openSaved,
     save,
-    saveRecommendation: (
+    saveRecommendation: async (
       planId: string,
       overwrite: boolean,
       archive = false,
@@ -431,11 +461,11 @@ export function useBrowserTrip({
         fromDraft?.snapshot.draft ??
         (switching || incomingSnapshot.current ? emptyDetailDraft() : draft);
       if (
-        !save(
+        !(await save(
           overwrite,
           tripSnapshot(initializeHotelEndpoints(chosen, planId), nextDraft),
           true,
-        )
+        ))
       )
         return false;
       setEntryPlanId(null);
@@ -459,9 +489,9 @@ export function useBrowserTrip({
       if (baseline) applySnapshot(baseline, true);
       leave(destination ?? "/planner");
     },
-    saveAndLeave: () => {
+    saveAndLeave: async () => {
       overwriteLeave.current = true;
-      if (save()) leave(destination ?? "/planner");
+      if (await save()) leave(destination ?? "/planner");
     },
   };
 }

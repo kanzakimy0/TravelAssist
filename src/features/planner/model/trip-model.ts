@@ -6,6 +6,7 @@ import type {
   PlannerUiState,
   RangeMode,
 } from "./planner-types";
+import type { TripPlanSnapshotV1 } from "../../../shared/contracts/trips";
 import {
   editScheduleError,
   validateSchedule,
@@ -137,6 +138,27 @@ export type TripUi = Omit<PlannerUiState, "selectedStopId"> & {
   bookingOpen: boolean;
 };
 export type TripState = {
+  /**
+   * The validated Canonical source is retained only while a Planner Store is
+   * mounted. Browser persistence intentionally excludes it: it is needed to
+   * preserve Canonical fields that the legacy Planner does not edit.
+   */
+  canonicalContext?: {
+    snapshot: TripPlanSnapshotV1;
+    itemBaselines: Record<
+      string,
+      {
+        day: number;
+        date: string;
+        startTime: string;
+        endTime: string;
+        title: string;
+        type: PlaceType;
+        placeId: string;
+        placement: "scheduled" | "alternative";
+      }
+    >;
+  };
   workingPlanId?: string;
   plans: TripPlan[];
   places: PlannerPlace[];

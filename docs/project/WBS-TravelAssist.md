@@ -867,7 +867,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 已完成（#215 / #216；负责人批准的 v1.0 公开契约基线） |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
-| 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
+| 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 进行中（#403 / TASK-069-A；Local DB/RLS/CAS 已验收，Draft PR 待建） |
 
 ### 4A. 已有 Planner / Detail UI 及本地补修登记
 
