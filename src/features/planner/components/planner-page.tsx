@@ -53,6 +53,8 @@ import {
 } from "../model/planner-store";
 import {
   selectPlannerDraft,
+  selectPlannerLocalRevision,
+  selectPlannerStoreDirty,
   selectPlannerTrip,
 } from "../model/planner-store-selectors";
 import {
@@ -60,6 +62,7 @@ import {
   previewScheduleAdjustment,
 } from "../model/schedule-check";
 import { useBrowserTrip } from "./use-browser-trip";
+import { usePlannerCanonicalTrip } from "./use-planner-canonical-trip";
 import { restoreRecommendation } from "../model/recommendation-actions";
 import { PlannerOverlay } from "./planner-overlay";
 import localSave from "../browser-trip.module.css";
@@ -111,6 +114,7 @@ export function PlannerPage({
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = parseWorkspaceMode(searchParams.get("view"));
+  const canonicalTripId = searchParams.get("tripId");
   const [store, dispatchStore] = useReducer(
     plannerStoreReducer,
     undefined,
@@ -123,6 +127,8 @@ export function PlannerPage({
   );
   const trip = selectPlannerTrip(store);
   const detailDraft = selectPlannerDraft(store);
+  const storeDirty = selectPlannerStoreDirty(store);
+  const localRevision = selectPlannerLocalRevision(store);
   const dispatchTrip = (action: TripAction) =>
     dispatchStore({ type: "trip.apply", action });
   const setDetailDraft = (
@@ -219,6 +225,22 @@ export function PlannerPage({
   const detailDay = parseDetailDay(searchParams.get("day"), plan.days.length);
   const detailOverview =
     mode === "detail" && searchParams.get("scope") === "overview";
+  const canonicalTrip = usePlannerCanonicalTrip({
+    tripId: canonicalTripId,
+    trip,
+    draft: detailDraft,
+    localRevision,
+    dirty: storeDirty,
+    hydrate: ({ trip: canonical, snapshot, revision, force }) =>
+      dispatchStore({
+        type: "hydrate",
+        trip: canonical,
+        snapshot,
+        source: "canonical",
+        canonicalRevision: revision,
+        force,
+      }),
+  });
   const browserTrip = useBrowserTrip({
     trip,
     draft: detailDraft,
@@ -235,6 +257,7 @@ export function PlannerPage({
       }),
     markSaved: (snapshot) =>
       dispatchStore({ type: "persistence.saved", snapshot }),
+    remoteSave: canonicalTrip.enabled ? canonicalTrip.save : undefined,
     onLeave: () =>
       dispatchTrip({
         type: "ui",
@@ -687,7 +710,7 @@ export function PlannerPage({
         );
       }}
       adjustment={adjustment}
-      checkStatus={`${checkStatus} · ${browserTrip.status}`}
+      checkStatus={`${checkStatus} · ${browserTrip.status} · ${canonicalTrip.status}`}
       adjustmentOpen={adjustmentOpen}
       onToggleAdjustment={() => setAdjustmentOpen((open) => !open)}
       onApplyAdjustment={applyAdjustment}
@@ -1169,17 +1192,20 @@ export function PlannerPage({
                       trip: restoreRecommendation(trip, planAction.id),
                     });
                     setPlanAction(null);
-                  } else if (
-                    browserTrip.saveRecommendation(
-                      planAction.id,
-                      planOverwrite,
-                      archiveBeforeSwitch,
-                      browserTrip.archivedDrafts.find(
-                        (d) => d.id === planAction.draftId,
-                      ),
-                    )
-                  )
-                    setPlanAction(null);
+                  } else {
+                    void browserTrip
+                      .saveRecommendation(
+                        planAction.id,
+                        planOverwrite,
+                        archiveBeforeSwitch,
+                        browserTrip.archivedDrafts.find(
+                          (d) => d.id === planAction.draftId,
+                        ),
+                      )
+                      .then((saved) => {
+                        if (saved) setPlanAction(null);
+                      });
+                  }
                 }}
               >
                 {planAction.kind === "restore"

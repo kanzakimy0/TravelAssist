@@ -45,7 +45,7 @@ export function TripCompletionDialog({
     trip: TripState,
     draft: DetailDraftState,
     overwrite: boolean,
-  ) => boolean;
+  ) => boolean | Promise<boolean>;
   onResolve: (
     issue: PreparationIssue,
     name: string,
@@ -117,7 +117,7 @@ export function TripCompletionDialog({
     !mismatch.length &&
     (!affected || ack) &&
     (!overwriteRequired || overwrite);
-  function submit() {
+  async function submit() {
     const next = {
       ...state,
       plans: state.plans.map((x) =>
@@ -130,7 +130,7 @@ export function TripCompletionDialog({
       acknowledged: ack,
     };
     if (
-      onSave(
+      await onSave(
         next,
         {
           ...draft,

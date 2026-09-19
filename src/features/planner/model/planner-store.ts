@@ -42,6 +42,8 @@ export type PlannerStoreAction =
       type: "hydrate";
       snapshot: TripSnapshot;
       source: "browser" | "canonical";
+      /** Canonical hydration carries its validated, non-browser context. */
+      trip?: TripState;
       canonicalRevision?: number;
       force?: boolean;
     }
@@ -153,7 +155,21 @@ export function plannerStoreReducer(
         action.canonicalRevision <= knownCanonicalRevision)
     )
       return state;
-    // Re-validate at the Store boundary. A stale/corrupt payload is a no-op.
+    if (action.source === "canonical" && action.trip) {
+      // The Canonical adapter has already run parseTripPlanSnapshot. Keep its
+      // opaque source context out of the browser projection while replacing
+      // the editable working copy atomically.
+      const next = replaceTrip(state, action.trip, action.snapshot.draft, {
+        hydratedFrom: "canonical",
+        persistedFingerprint: tripSnapshotFingerprint(action.snapshot),
+        ...(action.canonicalRevision === undefined
+          ? {}
+          : { canonicalRevision: action.canonicalRevision }),
+      });
+      return next;
+    }
+    // Re-validate browser input at the Store boundary. A stale/corrupt
+    // payload is a no-op.
     const current = selectPlannerTrip(state);
     const saved = parseSavedTrip(
       JSON.stringify({
