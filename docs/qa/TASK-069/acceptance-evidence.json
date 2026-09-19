@@ -10,25 +10,54 @@
     "docker": "Docker Desktop Linux daemon available"
   },
   "completed": [
-    { "gate": "npm ci", "result": "pass" },
+    {
+      "gate": "npm ci",
+      "result": "pass"
+    },
     {
       "gate": "TASK-051 Store plus TASK-069 focused",
       "result": "pass",
       "tests": 16
     },
-    { "gate": "canonical Trip Plan focused", "result": "pass", "tests": 3 },
-    { "gate": "lint", "result": "pass" },
-    { "gate": "typecheck", "result": "pass" },
-    { "gate": "production build", "result": "pass" },
-    { "gate": "local deployment validation", "result": "pass" },
+    {
+      "gate": "canonical Trip Plan focused",
+      "result": "pass",
+      "tests": 3
+    },
+    {
+      "gate": "lint",
+      "result": "pass"
+    },
+    {
+      "gate": "typecheck",
+      "result": "pass"
+    },
+    {
+      "gate": "production build",
+      "result": "pass"
+    },
+    {
+      "gate": "local deployment validation",
+      "result": "pass"
+    },
     {
       "gate": "local deployment artifact build",
       "result": "pass",
       "files": 1883
     },
-    { "gate": "artifact verification", "result": "pass", "failures": 0 },
-    { "gate": "full Node regression", "result": "pass" },
-    { "gate": "Local Supabase start/status/reset/types", "result": "pass" },
+    {
+      "gate": "artifact verification",
+      "result": "pass",
+      "failures": 0
+    },
+    {
+      "gate": "full Node regression",
+      "result": "pass"
+    },
+    {
+      "gate": "Local Supabase start/status/reset/types",
+      "result": "pass"
+    },
     {
       "gate": "existing Local Auth SQL RLS CAS runtime regression",
       "result": "pass",
@@ -38,12 +67,12 @@
       "gate": "TASK-069 real Local Auth RLS CAS HTTP acceptance",
       "result": "pass",
       "tests": 6
-    }
-  ],
-  "pending": [
+    },
     {
       "gate": "exact-head GitHub Quality Gate",
-      "reason": "requires the final pushed commit and Draft PR"
+      "result": "pass",
+      "commit": "d01c4d84a7edd2c54809be2d652c86d04a117c79",
+      "workflowRun": 35450949196
     }
   ]
 }

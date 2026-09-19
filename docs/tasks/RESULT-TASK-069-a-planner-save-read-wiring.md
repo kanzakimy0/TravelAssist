@@ -2,7 +2,7 @@
 
 ## Current status
 
-Implementation and local acceptance are complete in the isolated branch `codex/a-planner-save-read-wiring`, based on `origin/develop@a16ea611b8fb24cfe751615d54a3828f7ef564ca`. [Draft PR #406](https://github.com/kanzakimy0/TravelAssist/pull/406) is open against `develop`; WBS 4.19 is 待审查. The Issue #403 review update and exact-head GitHub Quality Gate remain pending.
+Implementation and local acceptance are complete in the isolated branch `codex/a-planner-save-read-wiring`, based on `origin/develop@a16ea611b8fb24cfe751615d54a3828f7ef564ca`. [Draft PR #406](https://github.com/kanzakimy0/TravelAssist/pull/406) is open against `develop`; WBS 4.19 is 待审查 and Issue #403 has been updated. GitHub Quality gate #333 passed for the submitted head `d01c4d84`.
 
 ## Implemented scope
 
@@ -27,4 +27,4 @@ The Canonical root and Plan revisions remain authoritative. A 409 preserves loca
 - TASK-069 real Local Canonical HTTP read/save/RLS/CAS acceptance: 6/6 passed;
 - lint, typecheck, production build, full Node regression and local deployment artifact gates passed.
 
-The Local Supabase database was reset and its generated types refreshed before the runtime suites. The final exact-head GitHub Quality Gate will run after the Draft PR is created. No merge or subsequent WBS task was started.
+The Local Supabase database was reset and its generated types refreshed before the runtime suites. GitHub Quality gate #333 passed for the submitted PR head `d01c4d84`. No merge or subsequent WBS task was started.
