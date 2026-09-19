@@ -54,7 +54,9 @@ class Fetcher:
             if host not in self.hosts: self.hosts[host]=threading.Lock()
             return self.hosts[host]
     def get(self,url,limit=4*1024*1024):
+        deadline = time.monotonic() + 90
         for _ in range(4):
+            if time.monotonic() > deadline: raise TimeoutError("TOTAL_FETCH_DEADLINE")
             public_url(url)
             with requests.Session() as session:
                 session.trust_env=False
@@ -63,6 +65,7 @@ class Fetcher:
                     url=urljoin(url,r.headers.get('Location','')); continue
                 chunks=[];size=0
                 for chunk in r.iter_content(32768):
+                    if time.monotonic() > deadline: raise TimeoutError("TOTAL_FETCH_DEADLINE")
                     size+=len(chunk)
                     if size>limit: raise ValueError('RESPONSE_SIZE_LIMIT')
                     chunks.append(chunk)
@@ -80,18 +83,34 @@ class Fetcher:
                 self.robots[origin]=(None,{'url':origin+'/robots.txt','policy':'DEFER_ROBOTS_UNAVAILABLE','error':type(e).__name__,'checkedAt':now()})
         parser,meta=self.robots[origin]
         return bool(parser is not None and meta['policy']=='ALLOW_IF_NOT_DISALLOWED' and parser.can_fetch(UA,url)),meta
+    def cached(self, record, url):
+        if not record.exists():
+            return None
+        try:
+            m = obj(record)
+            if m.get('url') != url or not m.get('completedAt'):
+                return None
+            for kind in ('raw', 'text'):
+                if m.get(kind + 'Sha256'):
+                    path = (self.cache / m[kind + 'Path']).resolve()
+                    if not path.is_relative_to(self.cache.resolve()):
+                        return None
+                    if not path.is_file() or sha(path.read_bytes()) != m[kind + 'Sha256']:
+                        return None
+            return m
+        except (ValueError, KeyError, OSError):
+            return None
+
     def fetch(self,url):
         key=sha(url.encode()); record=self.cache/'records'/f'{key}.json'
-        if record.exists():
-            m=obj(record)
-            good=True
-            for kind in ('raw','text'):
-                if m.get(kind+'Sha256'):
-                    path=self.cache/m[kind+'Path']; good=good and path.exists() and sha(path.read_bytes())==m[kind+'Sha256']
-            if good:return m
+        cached = self.cached(record, url)
+        if cached is not None:
+            return cached
         p=urlparse(url)
         with self.host_lock(p.netloc):
-            if record.exists(): return obj(record)
+            cached = self.cached(record, url)
+            if cached is not None:
+                return cached
             start=now();m={'schemaVersion':'public-source-attempt-v1','url':url,'retrievedAt':start,'status':'ERROR','scoreExtraction':'NONE_REQUIRES_EXPLICIT_EDITORIAL_FACTS'}
             try:
                 public_url(url);allowed,robots=self.robot(url);m['robots']=robots
@@ -135,9 +154,40 @@ def main():
         outPath=f'{OUT}/{bid}.jsonl';qaPath=f'{QA}/{bid}.json';receiptPath=f'{PREFIX}/manifests/remaining-v1/{bid}.json'
         receiptFile=ROOT/receiptPath
         if args.resume and receiptFile.exists():
-            receipt=obj(receiptFile)
-            if receipt.get('inputChecksum')==inputHash and receipt.get('status')=='ATTEMPT_QA_PASS' and all((ROOT/o['path']).exists() and sha((ROOT/o['path']).read_bytes())==o['sha256'] for o in receipt.get('outputs',[])) and len(receipt.get('outputs',[]))==2:
-                allResults.extend(map(json.loads,(ROOT/outPath).read_text(encoding='utf-8').splitlines()));print(json.dumps({'batch':bid,'status':'SKIPPED_IDENTICAL'}),flush=True);continue
+            try: receipt=obj(receiptFile)
+            except (ValueError, OSError): receipt={}
+            valid_times = False
+            try:
+                began = datetime.fromisoformat(receipt['startedAt'])
+                ended = datetime.fromisoformat(receipt['completedAt'])
+                valid_times = began.tzinfo is not None and ended.tzinfo is not None and ended >= began
+            except (KeyError, ValueError, TypeError):
+                pass
+            outputs = receipt.get('outputs', [])
+            expected_keys = [i['candidateKey'] for i in selected]
+            valid_receipt = (
+                receipt.get('inputChecksum') == inputHash
+                and receipt.get('status') == 'ATTEMPT_QA_PASS'
+                and receipt.get('count') == batch['count']
+                and receipt.get('orderedCandidateKeys') == expected_keys
+                and valid_times
+                and len(outputs) == 2
+                and {o.get('path') for o in outputs} == {outPath, qaPath}
+                and all((ROOT/o['path']).is_file() and sha((ROOT/o['path']).read_bytes()) == o['sha256'] for o in outputs)
+            )
+            if valid_receipt:
+                previous = list(map(json.loads, (ROOT/outPath).read_text(encoding='utf-8').splitlines()))
+                cache_valid = True
+                for row in previous:
+                    for source in row['attempts']:
+                        if source.get('rawSha256') or source.get('textSha256'):
+                            cached = fetcher.cached(cache/'records'/(sha(source['url'].encode())+'.json'), source['url'])
+                            if cached is None or any(cached.get(k) != source.get(k) for k in ('rawSha256','textSha256')):
+                                cache_valid = False
+                if cache_valid:
+                    allResults.extend(previous)
+                    print(json.dumps({'batch':bid,'status':'SKIPPED_IDENTICAL'}),flush=True)
+                    continue
         started=now();urls=sorted({u for i in selected if not i['identityHold'] for u in i['sourceRefs'] if 'geoshape.ex.nii.ac.jp/nrct-poi/resource/' not in u})
         with ThreadPoolExecutor(max_workers=4) as pool: metadata=dict(zip(urls,pool.map(fetcher.fetch,urls)))
         results=[]
