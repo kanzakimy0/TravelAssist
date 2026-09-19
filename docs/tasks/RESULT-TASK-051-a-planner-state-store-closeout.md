@@ -39,3 +39,14 @@ result.
 - Lint, typecheck, production build, local deployment validation, standalone
   artifact build/verification, TASK-owned Prettier and `git diff --check`:
   passing.
+
+## Publication
+
+- Branch: `codex/a-planner-state-store-closeout`.
+- Implementation commit: `3286243`.
+- Draft PR: [#401](https://github.com/kanzakimy0/TravelAssist/pull/401) →
+  `develop`.
+- WBS 4.15: A / 待审查（#400 / TASK-051-A；Draft PR #401）。
+- Issue #400 remains open. This task does not merge the PR or start WBS 4.18
+  or 4.19.
+- The final exact-head GitHub Quality Gate is pending this publication update.
