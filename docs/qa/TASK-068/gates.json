@@ -1,0 +1,300 @@
+{
+  "scope": "USER_APPROVED_CANDIDATE_RECOVERY_ONLY",
+  "base": "45e9f8830ac66d03b3ace6480d36d3ee31907a2e",
+  "date": "2026-09-18",
+  "status": "LOCAL_GATES_PASS_CANDIDATE_DATA_PARTIAL",
+  "gates": [
+    {
+      "command": "npm ci",
+      "status": "PASS",
+      "exitCode": 0,
+      "localLog": ".artifacts/task068-qa/npm-ci.log",
+      "logSha256": "9260ee9cf6b229f9188855f5b287a3e404c7ff6a7cc67e1522075184f06ef014",
+      "logCompletedAt": "2026-09-18T13:10:36.959Z"
+    },
+    {
+      "command": "npm run lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "localLog": ".artifacts/task068-qa/lint.log",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762",
+      "logCompletedAt": "2026-09-18T13:26:15.551Z"
+    },
+    {
+      "command": "Task-owned Prettier check (handwritten code/docs/rubric)",
+      "status": "PASS",
+      "exitCode": 0,
+      "localLog": ".artifacts/task068-qa/task-format.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283",
+      "logCompletedAt": "2026-09-18T13:24:24.628Z"
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "localLog": ".artifacts/task068-qa/diff-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "logCompletedAt": "2026-09-18T13:27:51.832Z"
+    },
+    {
+      "command": "npm run format:check:deploy (final)",
+      "status": "PASS",
+      "exitCode": 0,
+      "localLog": ".artifacts/task068-qa/format-deploy.log",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "logCompletedAt": "2026-09-18T13:27:28.615Z"
+    },
+    {
+      "command": "node tools/poi/combine-corpus.mjs --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:14.340Z",
+      "completedAt": "2026-09-18T13:26:15.388Z",
+      "logFile": ".artifacts/task068-qa/combination-check.log",
+      "logSha256": "b475f37c4475bf038464e04a1129b516f8c7d86cdcc1dccd1a2ce7e7e967c2fc",
+      "summary": []
+    },
+    {
+      "command": "node --test tests/task-068-corpus-combination.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:15.393Z",
+      "completedAt": "2026-09-18T13:26:17.781Z",
+      "logFile": ".artifacts/task068-qa/combination-tests.log",
+      "logSha256": "f3afc08ddfb4dd2a21ff331bb6e268b22eb55976c4de4ffa6ea0d7b3763abdce",
+      "summary": [
+        "ℹ tests 19",
+        "ℹ suites 0",
+        "ℹ pass 19",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 2256.5595"
+      ]
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-068-candidate-enrichment.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:17.781Z",
+      "completedAt": "2026-09-18T13:26:21.298Z",
+      "logFile": ".artifacts/task068-qa/enrichment-tests.log",
+      "logSha256": "9d6d35d8157d44809968e9c957509314b9484a7dc21c144fe303b56e5c1c7a5f",
+      "summary": [
+        "(node:24236) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/contracts/planning/features.ts is not specified and it doesn't parse as CommonJS.",
+        "ℹ tests 12",
+        "ℹ suites 0",
+        "ℹ pass 12",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 3374.5594"
+      ]
+    },
+    {
+      "command": "npm run test:planning-contracts",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:21.299Z",
+      "completedAt": "2026-09-18T13:26:22.539Z",
+      "logFile": ".artifacts/task068-qa/planning-contracts.log",
+      "logSha256": "2aae3092f418ca9da9962664d74aa6cb9419e872d58a8a97bcd2481a66fe5bd1",
+      "summary": [
+        "(node:32124) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/contracts/planning/index.ts is not specified and it doesn't parse as CommonJS.",
+        "ℹ tests 21",
+        "ℹ suites 0",
+        "ℹ pass 21",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 388.5562"
+      ]
+    },
+    {
+      "command": "npm run test:planning-soak",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:22.540Z",
+      "completedAt": "2026-09-18T13:26:24.517Z",
+      "logFile": ".artifacts/task068-qa/planning-soak.log",
+      "logSha256": "ec35c193234cfa22967684ee73dfd3811d3402fc6228d4c2f61e66cce5379bcb",
+      "summary": [
+        "(node:13852) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/contracts/planning/index.ts is not specified and it doesn't parse as CommonJS.",
+        "ℹ tests 6",
+        "ℹ suites 0",
+        "ℹ pass 6",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1186.4687"
+      ]
+    },
+    {
+      "command": "npm run test:master-code-registry",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:24.518Z",
+      "completedAt": "2026-09-18T13:26:25.883Z",
+      "logFile": ".artifacts/task068-qa/registry.log",
+      "logSha256": "6fb2c34ebf9fd25f9178ddd4673d030bb38cdf9709c58bd8e6edf1c64c92134e",
+      "summary": [
+        "(node:31340) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/master-code/index.ts is not specified and it doesn't parse as CommonJS.",
+        "ℹ tests 15",
+        "ℹ suites 0",
+        "ℹ pass 15",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 468.7867"
+      ]
+    },
+    {
+      "command": "npm run test:region-master-code-integration",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:25.885Z",
+      "completedAt": "2026-09-18T13:26:27.775Z",
+      "logFile": ".artifacts/task068-qa/region.log",
+      "logSha256": "6315dc5818e7e38ce372912808e6a1fb6637d9c7420b8a73ebe95537f5867408",
+      "summary": [
+        "(node:29656) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/master-code/index.ts is not specified and it doesn't parse as CommonJS.",
+        "ℹ tests 6",
+        "ℹ suites 0",
+        "ℹ pass 6",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1056.9509"
+      ]
+    },
+    {
+      "command": "npm run test:routing",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:27.776Z",
+      "completedAt": "2026-09-18T13:26:29.519Z",
+      "logFile": ".artifacts/task068-qa/routing.log",
+      "logSha256": "f4c7dc06775af7c72d2b776004c9aa5fd1f8e57d40b3f1038be70a0e86b93a75",
+      "summary": [
+        "(node:26008) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/contracts/routes/fixtures.ts is not specified and it doesn't parse as CommonJS.",
+        "✔ provider HTTP and payload errors map to stable safe errors (7.1586ms)",
+        "(node:21380) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/contracts/routes/fixtures.ts is not specified and it doesn't parse as CommonJS.",
+        "(node:12840) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/shared/contracts/routes/fixtures.ts is not specified and it doesn't parse as CommonJS.",
+        "ℹ tests 28",
+        "ℹ suites 0",
+        "ℹ pass 28",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 980.2117"
+      ]
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\"",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:26:29.520Z",
+      "completedAt": "2026-09-18T13:28:14.565Z",
+      "logFile": ".artifacts/task068-qa/full-node.log",
+      "logSha256": "90db2c941a2e2cb812a3d4762a2e8a3425c58b9f467b547b43cf10496e39f576",
+      "summary": [
+        "(node:19856) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/features/companions/companion-view-model.ts is not specified and it doesn't parse as CommonJS.",
+        "(node:14388) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/features/preferences/mobility-preference-model.ts is not specified and it doesn't parse as CommonJS.",
+        "(node:28544) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/features/preferences/attraction-activity-preference-model.ts is not specified and it doesn't parse as CommonJS.",
+        "(node:27048) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/features/preferences/dining-accommodation-budget-preference-model.ts is not specified and it doesn't parse as CommonJS.",
+        "(node:23248) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/features/trip-library/trip-library-data.ts is not specified and it doesn't parse as CommonJS.",
+        "(node:2604) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/features/personal-center/states/personal-state-model.ts is not specified and it doesn't parse as CommonJS.",
+        "✔ semantic states cover loading empty error and live feedback (13.6906ms)",
+        "ℹ tests 2666",
+        "ℹ suites 0",
+        "ℹ pass 2666",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 104908.8051"
+      ]
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:16:29.250Z",
+      "completedAt": "2026-09-18T13:16:43.731Z",
+      "logFile": ".artifacts/task068-qa/typecheck.log",
+      "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4",
+      "summary": []
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:16:43.735Z",
+      "completedAt": "2026-09-18T13:17:15.085Z",
+      "logFile": ".artifacts/task068-qa/build.log",
+      "logSha256": "9d688b6b9f98a780a2efaa339786fd5c2a35e33fa92285d81007779f3e852f70",
+      "summary": [
+        "├ ƒ /auth-link-error"
+      ]
+    },
+    {
+      "command": "npm run deploy:validate:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:17:15.086Z",
+      "completedAt": "2026-09-18T13:17:16.155Z",
+      "logFile": ".artifacts/task068-qa/deploy-validate.log",
+      "logSha256": "e95b4d9dce0aa946ec818b2357f4b0260676b72b68dbc71621f6cb1b364710a3",
+      "summary": [
+        "  \"errors\": [],",
+        "(node:28960) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/server/environment/contract.ts is not specified and it doesn't parse as CommonJS."
+      ]
+    },
+    {
+      "command": "npm run deploy:build:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:17:30.223Z",
+      "completedAt": "2026-09-18T13:18:06.073Z",
+      "logFile": ".artifacts/task068-qa/deploy-build.log",
+      "logSha256": "9c4e34814cd4bc2c9bff78ee9262711f658e0a5cfa1904f847969ff7d05ca7dc",
+      "summary": [
+        "├ ƒ /auth-link-error",
+        "(node:24680) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/server/environment/contract.ts is not specified and it doesn't parse as CommonJS."
+      ]
+    },
+    {
+      "command": "npm run deploy:verify-artifact",
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-09-18T13:18:06.074Z",
+      "completedAt": "2026-09-18T13:18:08.173Z",
+      "logFile": ".artifacts/task068-qa/deploy-artifact.log",
+      "logSha256": "cb580576689fc281633ab209ee23ee4f10bc82c9b10d192b69cb43df3a643038",
+      "summary": [
+        "(node:22252) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task068/worktree/src/server/environment/contract.ts is not specified and it doesn't parse as CommonJS."
+      ]
+    }
+  ],
+  "batchProof": "batch-runtime-proof.json",
+  "sourceProof": "retained-source-proof.json",
+  "independentAudit": "candidate-audit.json",
+  "scopeProof": "scope-preservation.json",
+  "notExecuted": [
+    "Supabase/Auth runtime in this phase",
+    "Production/Staging access",
+    "Live/paid route calls",
+    "Independent human adjudication"
+  ],
+  "originalOccupiedCorpus": "NOT_SATISFIED",
+  "formalCodeChecks": "N/A_AMENDED_FIXED_CANDIDATE_KEYS",
+  "githubQualityGate": "VERIFY_FINAL_PR_HEAD_EXTERNALLY",
+  "history": "gates-identity-checkpoints.json"
+}

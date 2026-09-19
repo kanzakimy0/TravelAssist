@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-068-B 候选恢复（2026-09-18）
+
+- Owner：B；Issue #393；状态：B / 待审查（#393 / TASK-068-B；[Draft PR #395](https://github.com/kanzakimy0/TravelAssist/pull/395)）；候选恢复范围，原始完整 occupied 库未认证。
+- 用户明确批准“按恢复方案继续，正式编号不变”；以 [Recovery Amendment v1](../tasks/AMENDMENT-TASK-068-candidate-recovery-v1.md) 为当前执行依据。旧文件不再作为候选加工前置。
+- 10,491 条原观察、10,369 个固定候选和所有历史编号声明完整保留。52 批全部获得明确结果：26 部分、322 待编辑复核、9,859 无匹配保留来源、162 身份隔离。82 个非空特征位、1 个部分 Visit、33 个 Anchor、35 条接入及 2 条邻接；不将评估完成冒充属性齐全。
+- 正式 Registry 不变；175 个旧码冲突、2,979 个未知旧码继续保留，未知号位不视为空闲。其他 WBS、Owner、Runtime、Provider、DB 和部署状态不变，TASK-069-A / #394 不另起 pipeline。
+- [Result](../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) / [QA](../qa/TASK-068/README.md) / [接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)。正式导入需后续单独验收，不自动 merge 或关闭 Issue。
+- 分支：`codex/b-poi-partition-enrichment-transport-linkage`；base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
+
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
 - 用户明确验收 TASK-063-B，授权合并 PR #382，并在合并后将 4.22 更新为 B / 已完成及关闭 Issue #380。
