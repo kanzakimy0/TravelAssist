@@ -2,7 +2,7 @@
 
 ## Current status
 
-Implementation and local acceptance are complete in the isolated branch `codex/a-planner-save-read-wiring`, based on `origin/develop@a16ea611b8fb24cfe751615d54a3828f7ef564ca`. The final branch commit, Draft PR, Issue #403 review update and exact-head GitHub Quality Gate remain pending.
+Implementation and local acceptance are complete in the isolated branch `codex/a-planner-save-read-wiring`, based on `origin/develop@a16ea611b8fb24cfe751615d54a3828f7ef564ca`. [Draft PR #406](https://github.com/kanzakimy0/TravelAssist/pull/406) is open against `develop`; WBS 4.19 is 待审查. The Issue #403 review update and exact-head GitHub Quality Gate remain pending.
 
 ## Implemented scope
 
