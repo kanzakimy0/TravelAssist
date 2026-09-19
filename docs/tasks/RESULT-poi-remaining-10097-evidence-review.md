@@ -4,6 +4,16 @@
 
 执行分支：codex/b-poi-remaining-10097-evidence-review。基线为 TASK-070 的 302d84431158f6637e36f84a6e1ffbfb6b8af935；原 Draft PR #397 和 #395 保持不变。本次下游 [Draft PR #398](https://github.com/kanzakimy0/TravelAssist/pull/398) 以 #397 的实现分支为 base，不自动 merge 或关闭 Issue。
 
+## 逐条审查继续执行中（2026-09-19）
+
+按最新无人值守授权继续以 200 条为一批进行完整证据审查。R-0001 已完成 **200/200** 并获得独立 `ASSESSMENT_QA_PASS` checkpoint；相同输入重跑实际返回 `SKIPPED_IDENTICAL_ASSESSMENT`。下一批 R-0002 自动继续。尚未将全量任务报告完成。
+
+本批 186 个 POI 有评分，共 538 个评分字段；131 条静态交通关联；1 个仅含最低时长的部分 Visit Profile。191 条至少有一种支持事实，7 条已读正文暂无可支持属性，2 条缺少可用正文。所有未支持字段及具体原因继续留在待查名单。当前候选视图为 459 个有评分 POI、1,401 个非 null 字段（含原 272 条及早先 R-0011 的 1 条评分）。
+
+本批已执行候选视图/43 维/Visit 合同、来源原文与 locator 哈希、受保护身份与原评分、确定性重跑、14 项 Python 故障测试和 8 项 Node focused 测试，以及 `git diff --check`。全量回归和最新最终提交的 GitHub gate 将在全批完成后重新执行，不以历史 PASS 代替。
+
+[逐批 QA 与恢复入口](../qa/POI-REMAINING-10097/assessment/README.md)。下文保留上一轮搜索与 32 条初审的历史 Result，数字不代表本阶段最终验收结果。
+
 ## 执行范围与完成口径
 
 51 批（50 × 200 + 97）已完成来源核验、实际综合搜索及待查分流。实际搜索 **10,097 / 10,097**，剩余未搜索 **0**，共 2,525 组真实工具响应。165 条原身份隔离也执行了查询，未自动关联属性或解除隔离。

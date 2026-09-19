@@ -3,11 +3,76 @@ import { readFileSync } from "node:fs";
 import { resolve, relative, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROOT, hash } from "./enrich-candidates.mjs";
-import { parsePoiFeatureSetV1 } from "../../src/shared/contracts/planning/validation.ts";
+import {
+  parsePoiFeatureSetV1,
+  parsePoiVisitProfileV1,
+} from "../../src/shared/contracts/planning/validation.ts";
 
 const MANIFEST = "data/poi/full/manifests/current-candidate-review.v1.json";
 const parseLines = (text) =>
   text.trim().split("\n").filter(Boolean).map(JSON.parse);
+
+const norm = (value) =>
+  value
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\p{P}\p{Z}\s]/gu, "");
+export const anchorRef = (a) =>
+  `candidate-anchor:${hash(`${a.type}|${norm(a.scope)}|${norm(a.name)}`).slice(0, 24)}`;
+export function evidenceAccessLink(a, sourceRef) {
+  assert.ok(["rail_station", "bus_stop", "tram_stop", "port"].includes(a.type));
+  assert.ok(["walk", "bus", "tram", "road", "ferry"].includes(a.mode));
+  assert.ok(a.scope && a.name && a.reason && a.locator?.locatorSha256);
+  assert.ok(
+    Number.isFinite(a.confidence) && a.confidence >= 0 && a.confidence <= 1,
+  );
+  return {
+    anchorRef: anchorRef(a),
+    accessMode: a.mode,
+    sourceRefs: [sourceRef],
+    confidence: a.confidence,
+    locator: a.locator,
+    distanceMeters: null,
+    durationMinutes: null,
+    fare: null,
+    lastMileWalkLevel: null,
+    barrierFree: null,
+    currentService: "UNKNOWN",
+  };
+}
+export function evidenceVisit(e, updatedAt) {
+  const v = e.visit;
+  const profile = {
+    contractVersion: "1.0",
+    profileVersion: "1.0",
+    profileId: `candidate-visit:${hash(e.candidateKey).slice(0, 24)}`,
+    poiRef: e.candidateKey,
+    visitMode: v.visitMode,
+    status: "active",
+    minimumDurationMinutes: v.minimumDurationMinutes,
+    recommendedDurationMinutes: v.recommendedDurationMinutes,
+    maximumUsefulDurationMinutes: v.maximumUsefulDurationMinutes,
+    fixedWalkingLoad: null,
+    variableWalkingLoad: null,
+    fixedPhysicalLoad: null,
+    variablePhysicalLoad: null,
+    terrainModifier: null,
+    standingModifier: null,
+    sourceRefs: [e.sourceRef],
+    confidence: v.confidence,
+    updatedAt,
+  };
+  assert.ok(
+    parsePoiVisitProfileV1(profile).ok,
+    "Shared Visit Profile contract",
+  );
+  assert.ok(v.reason && v.locator?.locatorSha256);
+  return {
+    profile,
+    completeness: "PARTIAL_NUMERIC_DURATION_ONLY",
+    provenance: [{ sourceRef: e.sourceRef, ...v }],
+  };
+}
 
 export function applyEvidenceDelta(baseline, delta, ledger, heldKeys) {
   const original = new Map(baseline.map((r) => [r.candidateKey, r]));
@@ -38,8 +103,26 @@ export function applyEvidenceDelta(baseline, delta, ledger, heldKeys) {
       row.currentFactUsability,
       "UNKNOWN_REVERIFY_VIA_EXISTING_FACT_POLICY",
     );
-    for (const field of ["visitProfiles", "accessLinks", "neighbors"])
-      assert.deepEqual(row[field], old[field]);
+    assert.deepEqual(row.neighbors, old.neighbors);
+    const links = [...(old.accessLinks ?? [])];
+    for (const a of e.anchors) {
+      const link = evidenceAccessLink(a, e.sourceRef);
+      if (!links.some((x) => JSON.stringify(x) === JSON.stringify(link)))
+        links.push(link);
+    }
+    assert.deepEqual(
+      row.accessLinks ?? [],
+      links,
+      "Unsupported or altered access link",
+    );
+    assert.deepEqual(
+      row.visitProfiles ?? [],
+      [
+        ...(old.visitProfiles ?? []),
+        ...(e.visit ? [evidenceVisit(e, old.featureSet.updatedAt)] : []),
+      ],
+      "Unsupported or altered visit profile",
+    );
     assert.ok(
       parsePoiFeatureSetV1(row.featureSet).ok,
       "Shared feature contract",
@@ -50,6 +133,8 @@ export function applyEvidenceDelta(baseline, delta, ledger, heldKeys) {
       "featureSet",
       "provenance",
       "remainingReview",
+      "accessLinks",
+      "visitProfiles",
     ]);
     assert.deepEqual(
       Object.fromEntries(Object.entries(row).filter(([k]) => !mutable.has(k))),
@@ -57,10 +142,15 @@ export function applyEvidenceDelta(baseline, delta, ledger, heldKeys) {
       "Non-feature baseline metadata changed",
     );
     assert.equal(row.featureSet.poiRef, row.candidateKey);
-    assert.deepEqual(row.featureSet.sourceRefs, [e.sourceRef]);
+    assert.deepEqual(
+      row.featureSet.sourceRefs,
+      e.features.length ? [e.sourceRef] : [],
+    );
     assert.equal(
       row.featureSet.confidence,
-      Math.min(...e.features.map((f) => f.confidence)),
+      e.features.length
+        ? Math.min(...e.features.map((f) => f.confidence))
+        : null,
     );
     const facts = new Map(e.features.map((f) => [f.code, f]));
     assert.equal(facts.size, e.features.length);
@@ -116,6 +206,35 @@ export function readCurrentCandidateRows(root = ROOT) {
   );
   const delta = parseLines(checkedRead(manifest.delta));
   const ledger = JSON.parse(checkedRead(manifest.editorialLedger));
+  const anchors = manifest.anchors
+    ? parseLines(checkedRead(manifest.anchors))
+    : [];
+  const expectedAnchors = new Map();
+  for (const e of ledger.entries)
+    for (const a of e.anchors) {
+      const ref = anchorRef(a);
+      if (!expectedAnchors.has(ref))
+        expectedAnchors.set(ref, {
+          anchorRef: ref,
+          name: a.name,
+          type: a.type,
+          localityScope: a.scope,
+          identityStatus: "CANDIDATE_NAME_SCOPED_NOT_PROVIDER_ID",
+          providerRef: null,
+          sourceRefs: [],
+        });
+      const anchor = expectedAnchors.get(ref);
+      anchor.sourceRefs = [
+        ...new Set([...anchor.sourceRefs, e.sourceRef]),
+      ].sort();
+    }
+  assert.deepEqual(
+    anchors,
+    [...expectedAnchors.values()].sort((a, b) =>
+      a.anchorRef.localeCompare(b.anchorRef),
+    ),
+    "Candidate anchor ledger mismatch",
+  );
   const pending = manifest.pendingBatches.flatMap((p) =>
     parseLines(checkedRead(p)),
   );
@@ -150,7 +269,7 @@ export function readCurrentCandidateRows(root = ROOT) {
     assert.equal(q.retryPolicy.preserveCandidateKeyAndCodes, true);
     assert.equal(q.retryPolicy.manualReviewAllowed, true);
   }
-  return { rows, baseline, delta, ledger, pending, manifest };
+  return { rows, baseline, delta, ledger, pending, manifest, anchors };
 }
 
 if (
@@ -164,7 +283,7 @@ if (
         status: "CANDIDATE_VIEW_VALIDATED",
         generation: manifest.generation,
         population: rows.length,
-        newScoredPois: delta.length,
+        newScoredPois: delta.filter((r) => r.provenance.length).length,
         scoredPois: rows.filter((r) => r.provenance.length).length,
         nonNullFeatures: rows.reduce((n, r) => n + r.provenance.length, 0),
         pendingCandidates: pending.length,

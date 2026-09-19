@@ -69,6 +69,7 @@ class EvidenceTests(unittest.TestCase):
             text = "prefix \U0001f3ef reviewed body"
             needle = "reviewed body"
             entry = copy.deepcopy(self.entry)
+            entry.pop("targetBoundary", None)
             source = entry["source"]
             source.update(textPath="target.txt", textSha256=review.sha(text.encode()))
             entry["sourceRef"] = "remaining-source:" + source["textSha256"][:24]
@@ -164,6 +165,57 @@ class EvidenceTests(unittest.TestCase):
         with mock.patch.object(acquire.socket, "getaddrinfo", return_value=[(2,1,6,"",("127.0.0.1",443))]):
             with self.assertRaisesRegex(ValueError, "NON_PUBLIC"):
                 acquire.public_url("https://example.com/private")
+
+assessment = load("remaining_assessment", "tools/poi/certify-remaining-assessment.py")
+
+class AssessmentTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.plan = review.read(ROOT / review.PLAN / "population.json")
+        cls.items = [i for i in cls.plan["items"] if i["batchId"] == "R-0001"]
+        cls.doc = review.read(ROOT / assessment.ASSESSMENT / "R-0001.json")
+        cls.attempts = {a["candidateKey"]: a for a in review.lines(ROOT / review.SOURCE / "R-0001.jsonl")}
+        for extra in review.lines(ROOT / review.SOURCE / "discovered-target-sources.jsonl"):
+            if extra["candidateKey"] in cls.attempts:
+                cls.attempts[extra["candidateKey"]]["attempts"].append(extra["attempt"])
+
+    def test_partial_or_reordered_batch_cannot_pass_as_complete(self):
+        for entries in (self.doc["entries"][:-1], list(reversed(self.doc["entries"]))):
+            with self.assertRaisesRegex(AssertionError, "Every ordered"):
+                assessment.validate_batch({**self.doc, "entries": entries}, self.items, self.attempts)
+
+    def test_one_annotation_error_does_not_prevent_checking_other_199(self):
+        doc = copy.deepcopy(self.doc)
+        doc["entries"][0]["features"][0]["locator"]["offset"] = 0
+        entries, errors = assessment.validate_batch(doc, self.items, self.attempts)
+        self.assertEqual(len(entries), 199)
+        self.assertEqual(len(errors), 1)
+        self.assertIn("outside reviewed target", errors[0]["error"])
+
+    def test_no_evidence_or_identity_hold_cannot_acquire_a_default_fact(self):
+        doc = copy.deepcopy(self.doc)
+        unknown = next(e for e in doc["entries"] if e["source"] is None)
+        item = next(i for i in self.items if i["candidateKey"] == unknown["candidateKey"])
+        unknown["features"] = copy.deepcopy(doc["entries"][0]["features"])
+        with self.assertRaises(AssertionError):
+            assessment.convert(unknown, item, self.attempts[item["candidateKey"]])
+        sourced = doc["entries"][0]
+        with self.assertRaises(AssertionError):
+            assessment.convert(sourced, {**self.items[0], "identityHold": True}, self.attempts[self.items[0]["candidateKey"]])
+
+    def test_receipt_rejects_missing_predecessor_or_corrupted_owned_output(self):
+        with tempfile.TemporaryDirectory(prefix="travelassist-assessment-test-") as d:
+            root = pathlib.Path(d)
+            with self.assertRaises(FileNotFoundError):
+                assessment.verified_receipt(root, "R-0001")
+            output = pathlib.Path("out.json")
+            review.atomic(root / output, b"original")
+            receipt = {"status": "ASSESSMENT_QA_PASS", "inputs": [], "outputs": [{"path": output.as_posix(), "sha256": review.sha(b"original")}]}
+            review.atomic(root / assessment.RECEIPTS / "R-0001.json", review.encode(receipt))
+            assessment.verified_receipt(root, "R-0001")
+            review.atomic(root / output, b"corrupt")
+            with self.assertRaisesRegex(AssertionError, "checkpoint changed"):
+                assessment.verified_receipt(root, "R-0001")
 
 if __name__ == "__main__":
     unittest.main()

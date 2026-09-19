@@ -1,7 +1,7 @@
 """Build resumable pending-review lists and a versioned candidate-only evidence delta.
 The TASK-070 baseline remains immutable; this continuation never imports into runtime.
 """
-import argparse, copy, datetime, hashlib, json, math
+import argparse, copy, datetime, hashlib, json, math, unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -49,13 +49,29 @@ def validate_editorial(entry, item, attempt, cache=None):
     assert entry["reviewedScope"] and entry["unassessedFieldsRemainNull"] is True
     datetime.datetime.fromisoformat(entry["reviewedAt"].replace("Z", "+00:00"))
     source = entry["source"]
+    if source is None:
+        assert not entry["features"] and not entry["anchors"] and entry["visit"] is None
+        assert entry.get("assessmentOutcome") in ("REVIEW_BLOCKED_EVIDENCE_INSUFFICIENT", "IDENTITY_HOLD_PRESERVED")
+        assert entry.get("nullReason") and attempt["attempts"], "Missing source needs actual failed/insufficient attempts"
+        return
     matched = next((a for a in attempt["attempts"] if a.get("url") == source["url"] and a.get("textSha256") == source["textSha256"]), None)
     assert matched is not None, "Source must have an actual retained acquisition"
     assert all(source[k] == matched.get(k) for k in ("url", "finalUrl", "retrievedAt", "rawSha256", "textSha256", "textPath")), "Source provenance differs from retained acquisition"
     assert entry["sourceRef"] == "remaining-source:" + source["textSha256"][:24]
     features = entry["features"]
     assert len({f["code"] for f in features}) == len(features)
-    assert entry["anchors"] == [] and entry["visit"] is None, "Access/Visit need a separately validated evidence contract"
+    for anchor in entry["anchors"]:
+        assert anchor["type"] in ("rail_station", "bus_stop", "tram_stop", "port")
+        assert anchor["mode"] in ("walk", "bus", "tram", "road", "ferry")
+        assert anchor["scope"].strip() and anchor["name"].strip()
+    if entry["visit"]:
+        visit = entry["visit"]
+        assert visit["visitMode"] in ("full_visit", "guided_visit")
+        durations = [visit[k] for k in ("minimumDurationMinutes", "recommendedDurationMinutes", "maximumUsefulDurationMinutes")]
+        assert any(v is not None for v in durations)
+        assert all(v is None or type(v) is int and 0 < v <= 10080 for v in durations)
+        known = [v for v in durations if v is not None]
+        assert known == sorted(known), "Invalid duration order"
     raw = None
     if cache is not None:
         path = (Path(cache) / source["textPath"]).resolve()
@@ -68,6 +84,14 @@ def validate_editorial(entry, item, attempt, cache=None):
     for f in features:
         assert f["code"] in CODES and type(f["value"]) is int and 0 <= f["value"] <= 9
         assert f["annotationMethod"] == "editorial_calibration"
+    located = features + entry["anchors"] + ([entry["visit"]] if entry["visit"] else [])
+    if entry.get("targetBoundary"):
+        located += [{"reason": "Reviewed target text boundary", "confidence": 1, "locator": entry["targetBoundary"]}]
+    for f in located:
+        boundary = entry.get("targetBoundary")
+        if boundary:
+            loc = f["locator"]
+            assert boundary["offset"] <= loc["offset"] and loc["offset"] + loc["length"] <= boundary["offset"] + boundary["length"], "Fact outside reviewed target boundary"
         assert f["reason"].strip() and type(f["confidence"]) in (int, float) and math.isfinite(f["confidence"]) and 0 <= f["confidence"] <= 1
         loc = f["locator"]
         assert type(loc["offset"]) is int and loc["offset"] >= 0
@@ -78,6 +102,31 @@ def validate_editorial(entry, item, attempt, cache=None):
             start, end = loc["offset"] * 2, (loc["offset"] + loc["length"]) * 2
             assert end <= len(utf16), "Locator exceeds source"
             assert sha(utf16[start:end].decode("utf-16-le").encode()) == loc["locatorSha256"], "Locator content changed"
+
+def anchor_ref(anchor):
+    def norm(value):
+        return "".join(c for c in unicodedata.normalize("NFKC", value).lower() if not (c.isspace() or unicodedata.category(c)[0] in "PZ"))
+    return "candidate-anchor:" + sha((anchor["type"] + "|" + norm(anchor["scope"]) + "|" + norm(anchor["name"])).encode())[:24]
+
+
+def access_link(anchor, source_ref):
+    return {"anchorRef": anchor_ref(anchor), "accessMode": anchor["mode"], "sourceRefs": [source_ref],
+            "confidence": anchor["confidence"], "locator": anchor["locator"], "distanceMeters": None,
+            "durationMinutes": None, "fare": None, "lastMileWalkLevel": None, "barrierFree": None,
+            "currentService": "UNKNOWN"}
+
+
+def visit_profile(entry, updated_at):
+    visit = entry["visit"]
+    profile = {"contractVersion": "1.0", "profileVersion": "1.0",
+               "profileId": "candidate-visit:" + sha(entry["candidateKey"].encode())[:24],
+               "poiRef": entry["candidateKey"], "visitMode": visit["visitMode"], "status": "active",
+               **{k: visit[k] for k in ("minimumDurationMinutes", "recommendedDurationMinutes", "maximumUsefulDurationMinutes")},
+               **{k: None for k in ("fixedWalkingLoad", "variableWalkingLoad", "fixedPhysicalLoad", "variablePhysicalLoad", "terrainModifier", "standingModifier")},
+               "sourceRefs": [entry["sourceRef"]], "confidence": visit["confidence"], "updatedAt": updated_at}
+    return {"profile": profile, "completeness": "PARTIAL_NUMERIC_DURATION_ONLY",
+            "provenance": [{"sourceRef": entry["sourceRef"], **visit}]}
+
 
 def build(root=ROOT, cache=None, final=False):
     root = Path(root)
@@ -113,6 +162,7 @@ def build(root=ROOT, cache=None, final=False):
     assert len(reviewed) == len(ledger["entries"]) and set(reviewed) <= set(queries)
     outputs, deltas, totals, errors = {}, [], Counter(), []
     actual_searches = actual_sources = 0
+    anchors = {}
     index_rows = []
 
     reasons = {
@@ -167,7 +217,8 @@ def build(root=ROOT, cache=None, final=False):
                     local_error = type(error).__name__ + ": " + str(error)
                     errors.append({"candidateKey": key, "stage": "EDITORIAL_VALIDATION", "error": local_error})
                     entry = None
-            if entry and entry["features"]:
+            has_facts = bool(entry and (entry["features"] or entry["anchors"] or entry["visit"]))
+            if has_facts:
                 for f in entry["features"]:
                     row["featureSet"]["values"][f["code"]] = f["value"]
                     row["provenance"].append({
@@ -177,12 +228,23 @@ def build(root=ROOT, cache=None, final=False):
                         "rationale": f["reason"],
                         "facts": [{"sourceRef": entry["sourceRef"], "reason": f["reason"], "locator": f["locator"]}]
                     })
-                row["featureSet"]["sourceRefs"] = [entry["sourceRef"]]
-                row["featureSet"]["confidence"] = min(f["confidence"] for f in entry["features"])
+                row["featureSet"]["sourceRefs"] = [entry["sourceRef"]] if entry["features"] else []
+                row["featureSet"]["confidence"] = min((f["confidence"] for f in entry["features"]), default=None)
+                for anchor in entry["anchors"]:
+                    ref = anchor_ref(anchor)
+                    target = anchors.setdefault(ref, {"anchorRef": ref, "name": anchor["name"], "type": anchor["type"],
+                        "localityScope": anchor["scope"], "identityStatus": "CANDIDATE_NAME_SCOPED_NOT_PROVIDER_ID",
+                        "providerRef": None, "sourceRefs": []})
+                    target["sourceRefs"] = sorted(set(target["sourceRefs"] + [entry["sourceRef"]]))
+                    link = access_link(anchor, entry["sourceRef"])
+                    if link not in row.setdefault("accessLinks", []):
+                        row["accessLinks"].append(link)
+                if entry["visit"]:
+                    row.setdefault("visitProfiles", []).append(visit_profile(entry, row["featureSet"]["updatedAt"]))
                 row["status"] = "REVIEWED_PARTIAL"
                 row["remainingReview"] = {"batchId": bid, "identityAssessment": entry["identityAssessment"], "reviewedScope": entry["reviewedScope"]}
                 deltas.append(row)
-                reason, description, action = "UNSUPPORTED_FIELDS_REMAIN_NULL", "Only explicitly located editorial facts were accepted; all remaining features and Visit/Access fields still need evidence.", "REQUERY_MISSING_FIELDS_OR_HUMAN_REVIEW"
+                reason, description, action = "UNSUPPORTED_FIELDS_REMAIN_NULL", entry.get("nullReason", "Only explicitly located editorial facts were accepted; remaining fields still need evidence."), "REQUERY_MISSING_FIELDS_OR_HUMAN_REVIEW"
             elif entry:
                 reason, description, action = "REVIEWED_TARGET_NO_SUPPORTED_FACT", entry["identityAssessment"]["rationale"], "REQUERY_DEDICATED_FACT_PAGE_OR_HUMAN_REVIEW"
             else:
@@ -192,13 +254,15 @@ def build(root=ROOT, cache=None, final=False):
             if local_error:
                 reason, description, action = "EDITORIAL_VALIDATION_FAILED", local_error, "REPAIR_EVIDENCE_THEN_RETRY"
             pending = [c for c in CODES if row["featureSet"]["values"][c] is None]
-            status = "PARTIAL_WITH_PENDING_FIELDS" if entry and entry["features"] else ("IDENTITY_HOLD" if item["identityHold"] else "PENDING_REVIEW")
+            status = "PARTIAL_WITH_PENDING_FIELDS" if has_facts else ("IDENTITY_HOLD" if item["identityHold"] else "PENDING_REVIEW")
             queue.append({
                 "candidateKey": key, "position": item["position"], "batchId": bid,
                 "name": query["name"], "prefectures": query["prefectures"], "categories": query["categories"],
                 "status": status, "identityHold": item["identityHold"],
                 "reasonCode": reason, "reason": description, "nextAction": action,
-                "editorialNotes": entry["identityAssessment"]["rationale"] if entry else None,
+                "editorialNotes": (entry["identityAssessment"]["rationale"] + " " + entry.get("nullReason", "")) if entry else None,
+                "assessmentOutcome": entry.get("assessmentOutcome") if entry else None,
+                "nullReason": entry.get("nullReason") if entry else None,
                 "additionalIdentityUncertainty": bool(entry and entry["identityAssessment"]["status"] == "TARGET_UNRESOLVED"),
                 "query": query["query"], "queryGroup": group_id,
                 "searchEvidencePath": (SOURCE / "search" / (bid + ".json")).as_posix() if key in searched else None,
@@ -207,8 +271,8 @@ def build(root=ROOT, cache=None, final=False):
                 "searchResultsAreNotIdentityProof": True,
                 "sourceAttemptStatus": a["status"],
                 "checkedSources": [{k: source[k] for k in ("url", "status", "httpStatus", "errorCode", "retrievedAt", "textSha256", "bulkSha256", "recordId", "rowSha256") if k in source} for source in a["attempts"]],
-                "unresolvedFeatureCodes": pending, "visitProfile": "NOT_ANNOTATED_REQUIRES_SEPARATE_REVIEW",
-                "accessAnchor": "NOT_ANNOTATED_REQUIRES_SEPARATE_REVIEW",
+                "unresolvedFeatureCodes": pending, "visitProfile": "PARTIAL_SOURCE_SUPPORTED" if entry and entry["visit"] else ("REVIEWED_NO_SUPPORTED_DURATION" if entry and entry.get("assessmentOutcome") else "NOT_ANNOTATED_REQUIRES_SEPARATE_REVIEW"),
+                "accessAnchor": "STATIC_SOURCE_SUPPORTED_SERVICE_UNKNOWN" if entry and entry["anchors"] else ("REVIEWED_NO_SUPPORTED_LINK" if entry and entry.get("assessmentOutcome") else "NOT_ANNOTATED_REQUIRES_SEPARATE_REVIEW"),
                 "acceptedFeatureCount": 43 - len(pending),
                 "retryPolicy": {"automaticAt": None, "method": action, "manualReviewAllowed": True, "preserveCandidateKeyAndCodes": True}
             })
@@ -290,19 +354,22 @@ def build(root=ROOT, cache=None, final=False):
         "| --- | ---: | ---: | ---: |\n" + "\n".join(index_rows) + "\n"
     ).encode()
     outputs[REVIEW / "feature-delta.jsonl"] = jsonl(deltas)
+    outputs[REVIEW / "anchors.jsonl"] = jsonl(sorted(anchors.values(), key=lambda a: a["anchorRef"]))
     summary = {
         "schemaVersion": "remaining-review-disposition-v1",
         "status": "ALL_ATTEMPTS_DISPOSITIONED_WITH_PENDING_REVIEW" if final else "IN_PROGRESS",
         "population": 10097, "batchCount": 51, "batchSize": 200, "lastBatchSize": 97,
         "sourceCheckedCandidates": actual_sources, "actualSearchAttempts": actual_searches,
         "editoriallyAssessedCandidates": len(reviewed),
-        "scoredPoisBefore": 272, "scoredPoisAfter": 272 + len(deltas),
+        "fullyAssessedCandidates": sum(bool(e.get("assessmentOutcome")) for e in reviewed.values()),
+        "scoredPoisBefore": 272, "scoredPoisAfter": 272 + sum(bool(r["provenance"]) for r in deltas),
         "featuresBefore": 860, "featuresAdded": sum(len(r["provenance"]) for r in deltas),
         "featuresAfter": 860 + sum(len(r["provenance"]) for r in deltas),
         "pendingCandidates": 10097, "pendingReasonCounts": dict(totals),
         "identityHoldsPreserved": sum(i["identityHold"] for i in plan["items"]),
         "heldCandidatesSearchedButNotAutoLinked": sum(i["identityHold"] for i in plan["items"]),
-        "visitProfilesAdded": 0, "accessAnchorsAdded": 0,
+        "visitProfilesAdded": sum(bool(e.get("visit")) for e in reviewed.values()), "accessAnchorsAdded": len(anchors),
+        "accessLinksAdded": sum(len(e["anchors"]) for e in reviewed.values()),
         "errors": errors, "formalCodeChanges": 0, "registryRebindings": 0,
         "identityHashesBefore": plan["identityHashes"], "identityHashesAfter": plan["identityHashes"],
         "fullEditorialReviewClaimed": False, "nullIsUnknown": True,
@@ -316,6 +383,7 @@ def build(root=ROOT, cache=None, final=False):
         "baseHead": plan["baseHead"], "baseFeaturePartitions": plan["baselinePartitions"],
         "protectedPreviousScoredCandidates": 272,
         "delta": {"path": (REVIEW / "feature-delta.jsonl").as_posix(), "sha256": sha(outputs[REVIEW / "feature-delta.jsonl"])},
+        "anchors": {"path": (REVIEW / "anchors.jsonl").as_posix(), "sha256": sha(outputs[REVIEW / "anchors.jsonl"])},
         "editorialLedger": {"path": (SOURCE / "editorial.json").as_posix(), "sha256": sha((root / SOURCE / "editorial.json").read_bytes())},
         "pendingBatches": [{"path": p.as_posix(), "sha256": sha(data)} for p, data in outputs.items() if p.parent == REVIEW / "pending"],
         "registrySha256": plan["identityHashes"]["src/shared/data/master-code-registry.v1.json"],

@@ -42,7 +42,10 @@ test("all 10097 unresolved records retain query, concrete reason and manual/retr
 test("generation uses the frozen 43-feature contract with only explicitly reviewed additions", () => {
   assert.ok(current.delta.length > 0);
   const scored = current.rows.filter((r) => r.provenance.length).length;
-  assert.equal(scored, 272 + current.delta.length);
+  assert.equal(
+    scored,
+    272 + current.delta.filter((r) => r.provenance.length).length,
+  );
   for (const row of current.delta) {
     assert.equal(Object.keys(row.featureSet.values).length, 43);
     assert.equal(
@@ -145,4 +148,58 @@ test("Python source-cache and locator faults run offline in the repository gate"
     },
   );
   assert.equal(output, "");
+});
+
+test("static access evidence cannot become a live route, fare, duration or provider identity", () => {
+  const one = current.delta.find((r) => r.accessLinks?.length);
+  assert.ok(one);
+  for (const mutate of [
+    (r) => {
+      r.accessLinks[0].durationMinutes = 5;
+    },
+    (r) => {
+      r.accessLinks[0].fare = 0;
+    },
+    (r) => {
+      r.accessLinks[0].currentService = "AVAILABLE";
+    },
+    (r) => {
+      r.accessLinks[0].anchorRef = "provider:invented";
+    },
+    (r) => {
+      r.accessLinks[0].sourceRefs = [];
+    },
+  ]) {
+    const row = clone(one);
+    mutate(row);
+    assert.throws(() =>
+      applyEvidenceDelta(current.baseline, [row], current.ledger, new Set()),
+    );
+  }
+});
+
+test("explicit minimum visit time stays partial without invented recommendation or fatigue", () => {
+  const one = current.delta.find((r) => r.visitProfiles?.length);
+  assert.ok(one);
+  const profile = one.visitProfiles[0].profile;
+  assert.equal(profile.minimumDurationMinutes, 60);
+  assert.equal(profile.recommendedDurationMinutes, null);
+  assert.equal(profile.fixedWalkingLoad, null);
+  for (const mutate of [
+    (r) => {
+      r.visitProfiles[0].profile.recommendedDurationMinutes = 60;
+    },
+    (r) => {
+      r.visitProfiles[0].profile.fixedWalkingLoad = 0;
+    },
+    (r) => {
+      r.visitProfiles[0].provenance[0].locator.locatorSha256 = "0".repeat(64);
+    },
+  ]) {
+    const row = clone(one);
+    mutate(row);
+    assert.throws(() =>
+      applyEvidenceDelta(current.baseline, [row], current.ledger, new Set()),
+    );
+  }
 });
