@@ -6,11 +6,11 @@
 
 ## 逐条审查继续执行中（2026-09-19）
 
-按最新无人值守授权继续以 200 条为一批进行完整证据审查。R-0001、R-0002 各完成 **200/200**，共 **400/10,097**，均获得独立 `ASSESSMENT_QA_PASS` checkpoint；相同输入重跑均实际返回 `SKIPPED_IDENTICAL_ASSESSMENT`。下一批 R-0003 自动继续。尚未将全量任务报告完成。
+按最新无人值守授权继续以 200 条为一批进行完整证据审查。R-0001、R-0002、R-0003 各完成 **200/200**，共 **600/10,097**，均获得独立 `ASSESSMENT_QA_PASS` checkpoint；相同输入重跑均实际返回 `SKIPPED_IDENTICAL_ASSESSMENT`。下一批 R-0004 自动继续。尚未将全量任务报告完成。
 
-R-0001 有 186 个评分 POI、538 个评分字段、131 条静态交通关联和 1 个最低时长部分 Visit Profile。R-0002 有 199 个评分 POI、461 个评分字段、134 条静态交通关联，Visit Profile 新增 0。未支持字段及具体原因继续留在待查名单。当前候选视图为 658 个有评分 POI、1,862 个非 null 字段（含原 272 条及早先 R-0011 的 1 条评分）；累计新增 265 个候选 anchor，正式编号与 Registry 均未变。
+R-0001 有 186 个评分 POI、538 个评分字段、131 条静态交通关联和 1 个最低时长部分 Visit Profile。R-0002 有 199 个评分 POI、461 个评分字段、134 条静态交通关联，Visit Profile 新增 0。R-0003 有 189 个评分 POI、468 个评分字段、113 条静态交通关联，Visit Profile 新增 0。未支持字段及具体原因继续留在待查名单。当前候选视图为 847 个有评分 POI、2,330 个非 null 字段（含原 272 条及早先 R-0011 的 1 条评分）；累计新增 378 个候选 anchor，正式编号与 Registry 均未变。
 
-每批实际执行候选视图/43 维/Visit 合同、来源原文与 locator 哈希、受保护身份与原评分、确定性重跑；R-0001 工具实现还通过 14 项 Python 故障测试和 8 项 Node focused 测试。此前 checkpoint `efbbcf447c49dc692c4801c7b3fd2c5701f06da8` 的 GitHub Quality gate 已核验 success。全量回归和最新最终提交的 GitHub gate 将在全批完成后重新执行，不以历史 PASS 代替。
+每批实际执行候选视图/43 维/Visit 合同、来源原文与 locator 哈希、受保护身份与原评分、确定性重跑；R-0001 工具实现还通过 14 项 Python 故障测试和 8 项 Node focused 测试。此前 checkpoint `e88658e6a93d82ce12dede12d41341da25f8ffbd` 的 [GitHub Quality gate](https://github.com/kanzakimy0/TravelAssist/actions/runs/35415994959/job/105824660607) 已核验 success。全量回归和最新最终提交的 GitHub gate 将在全批完成后重新执行，不以历史 PASS 代替。
 
 [逐批 QA 与恢复入口](../qa/POI-REMAINING-10097/assessment/README.md)。下文保留上一轮搜索与 32 条初审的历史 Result，数字不代表本阶段最终验收结果。
 
