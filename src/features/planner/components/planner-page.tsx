@@ -1,5 +1,10 @@
 "use client";
 
+import {
+  StateNotice,
+  StateSkeleton,
+} from "../../../components/ui/state-notice";
+import { WorkspaceHeader } from "./workspace-header";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   useEffect,
@@ -25,6 +30,7 @@ import {
 } from "../model/detail-workspace";
 import type {
   DetailDraftItem,
+  DetailDraftState,
   DetailItemKind,
   DetailRailItem,
 } from "../model/detail-workspace";
@@ -40,7 +46,15 @@ import {
   tripReducer,
 } from "../model/trip-model";
 import type { StopKind } from "../model/planner-types";
-import type { TripState, TripAction, MealSlot } from "../model/trip-model";
+import type { TripAction, MealSlot } from "../model/trip-model";
+import {
+  createPlannerStore,
+  plannerStoreReducer,
+} from "../model/planner-store";
+import {
+  selectPlannerDraft,
+  selectPlannerTrip,
+} from "../model/planner-store-selectors";
 import {
   editScheduleError,
   previewScheduleAdjustment,
@@ -49,6 +63,7 @@ import { useBrowserTrip } from "./use-browser-trip";
 import { restoreRecommendation } from "../model/recommendation-actions";
 import { PlannerOverlay } from "./planner-overlay";
 import localSave from "../browser-trip.module.css";
+import styles from "../planner.module.css";
 import projectStyles from "../detail-map-inspector.module.css";
 import { AddTripItemDialog, TripItemDialog } from "./trip-item-dialog";
 import { BookingChecklist } from "./booking-checklist";
@@ -61,10 +76,12 @@ import { DetailSidebar } from "./detail-sidebar";
 import { DetailReservationPanel } from "./detail-reservation-panel";
 import { PlaceDetails } from "./place-details";
 import { PlannerRightPanel } from "./planner-right-panel";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import { TripWorkspace } from "./trip-workspace";
 import { WorkspaceCapabilities } from "./workspace-capabilities";
 import { TripCompletionDialog } from "./trip-completion-dialog";
 import { FlightProject } from "./flight-project";
+import { PlannerIcon } from "./planner-icon";
 import {
   preparationFor,
   preparationFingerprint,
@@ -85,32 +102,36 @@ function serverViewport() {
 }
 
 export function PlannerPage({
+  viewer = null,
   routeQueriesEnabled = false,
 }: {
   routeQueriesEnabled?: boolean;
+  viewer?: HomeViewer | null;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = parseWorkspaceMode(searchParams.get("view"));
-  const [trip, dispatchTrip] = useReducer(
-    (
-      state: TripState,
-      action: TripAction | { type: "restoreBrowserTrip"; trip: TripState },
-    ) =>
-      action.type === "restoreBrowserTrip"
-        ? action.trip
-        : tripReducer(state, action),
+  const [store, dispatchStore] = useReducer(
+    plannerStoreReducer,
     undefined,
     () => {
       const { places, areas } = makePlannerCatalog(plannerMockPlans);
-      return makeTripState(
-        plannerMockPlans,
-        places,
-        areas,
-        initialPlannerSettings,
+      return createPlannerStore(
+        makeTripState(plannerMockPlans, places, areas, initialPlannerSettings),
       );
     },
   );
+  const trip = selectPlannerTrip(store);
+  const detailDraft = selectPlannerDraft(store);
+  const dispatchTrip = (action: TripAction) =>
+    dispatchStore({ type: "trip.apply", action });
+  const setDetailDraft = (
+    update:
+      DetailDraftState | ((current: DetailDraftState) => DetailDraftState),
+  ) => {
+    const next = typeof update === "function" ? update(detailDraft) : update;
+    dispatchStore({ type: "draft.replace", draft: next });
+  };
   const [layers, setLayers] = useState<StopKind[]>([
     "sight",
     "transport",
@@ -121,7 +142,6 @@ export function PlannerPage({
   const [terrain, setTerrain] = useState(true);
   const [detailMinimized, setDetailMinimized] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  const [detailDraft, setDetailDraft] = useState(emptyDetailDraft);
   const [checkStatus, setCheckStatus] =
     useState("本地规则检查完成 · 非实时 AI");
   const [adjustmentOpen, setAdjustmentOpen] = useState(false);
@@ -135,6 +155,10 @@ export function PlannerPage({
   } | null>(null);
   const [dialogTrigger, setDialogTrigger] = useState<HTMLElement | null>(null);
   const [addOpen, setAddOpen] = useState(false);
+  const [mapPickActive, setMapPickActive] = useState(false);
+  const [mapPickedCoordinates, setMapPickedCoordinates] = useState<
+    [number, number] | null
+  >(null);
   const [completionOpen, setCompletionOpen] = useState(false);
   const [manualPlanAction, setPlanAction] = useState<{
     id: string;
@@ -200,9 +224,17 @@ export function PlannerPage({
     draft: detailDraft,
     mode,
     day: detailDay,
-    restore: (restored) =>
-      dispatchTrip({ type: "restoreBrowserTrip", trip: restored }),
+    restore: (restored) => dispatchStore({ type: "replace", trip: restored }),
     setDraft: setDetailDraft,
+    hydrate: (snapshot, options) =>
+      dispatchStore({
+        type: "hydrate",
+        snapshot,
+        source: "browser",
+        force: options?.force,
+      }),
+    markSaved: (snapshot) =>
+      dispatchStore({ type: "persistence.saved", snapshot }),
     onLeave: () =>
       dispatchTrip({
         type: "ui",
@@ -413,6 +445,8 @@ export function PlannerPage({
     setBulkBooking(null);
     setReservationView(null);
     setReplacementId(null);
+    setMapPickActive(false);
+    setMapPickedCoordinates(null);
   }
   function openProject(item: DetailRailItem, focus?: "advice" | "booking") {
     resetProjectSelection();
@@ -449,6 +483,53 @@ export function PlannerPage({
         isRightPanelOverlayOpen: false,
       },
     });
+  }
+  function addBreakfastChoice(day: number, choice: "hotel" | "simple") {
+    const hotelItem = currentPlan(trip).items.find(
+      (item) => item.type === "hotel" && item.day <= day && item.endDay >= day,
+    );
+    const hotelPlace = hotelItem
+      ? trip.places.find((place) => place.id === hotelItem.placeId)
+      : undefined;
+    const item: DetailDraftItem = {
+      id: `detail-draft-breakfast-${crypto.randomUUID()}`,
+      day,
+      title:
+        choice === "hotel"
+          ? `酒店早餐${hotelItem ? ` · ${hotelItem.title}` : ""}`
+          : "简易早餐",
+      startTime: "07:00",
+      endTime: "07:30",
+      type: "restaurant",
+      note:
+        choice === "hotel"
+          ? "优先确认住宿是否含早餐、供应时间与过敏原信息。"
+          : "安排便利店、咖啡店或外带简餐；具体地点仍需确认。",
+      ...(hotelPlace
+        ? {
+            location: {
+              source: "catalog" as const,
+              coordinates: hotelPlace.coordinates,
+              placeId: hotelPlace.id,
+              label:
+                choice === "hotel"
+                  ? `${hotelPlace.name} · 酒店早餐`
+                  : `${hotelPlace.name}附近 · 简易早餐`,
+            },
+          }
+        : {}),
+    };
+    mutateDetailDraft((current) => ({
+      ...current,
+      items: [...current.items, item],
+    }));
+    resetProjectSelection();
+    setDraftInspectionId(item.id);
+    setCheckStatus(
+      choice === "hotel"
+        ? "已加入酒店早餐草稿 · 请核对是否含早与供应时间"
+        : "已加入简易早餐草稿 · 请在详情确认具体地点",
+    );
   }
   function openMissing(
     day: number,
@@ -656,9 +737,17 @@ export function PlannerPage({
         保存行程
       </button>
       <small
-        role="status"
+        role={
+          browserTrip.error &&
+          (planAction ||
+            browserTrip.destination ||
+            browserTrip.overwritePending)
+            ? undefined
+            : "status"
+        }
         title={`${browserTrip.status} · 浏览器仅保存一份，新方案保存前会确认是否替换旧方案`}
         className={browserTrip.error ? localSave.error : undefined}
+        data-save-error={Boolean(browserTrip.error) || undefined}
       >
         {browserTrip.status} · 仅保留一份
       </small>
@@ -690,6 +779,7 @@ export function PlannerPage({
       onDay={selectDetailDay}
       onItem={(item, _trigger, focus) => openProject(item, focus)}
       onMissing={openMissing}
+      onBreakfastChoice={addBreakfastChoice}
       actions={detailActions}
       onMinimize={() => {
         if (!bottomCollapsed) setDetailMinimized(true);
@@ -763,6 +853,30 @@ export function PlannerPage({
         }}
       />
     ) : null;
+  if (!browserTrip.ready)
+    return (
+      <div className={styles.planner} data-planner data-workspace-mode={mode}>
+        <WorkspaceHeader viewer={viewer} />
+        <main
+          id="planner-workspace"
+          tabIndex={-1}
+          className={styles.workspace}
+          data-right-collapsed={rightCollapsed}
+          data-bottom-collapsed={bottomCollapsed}
+          data-view={mode}
+        >
+          <div className={localSave.restoring}>
+            <StateNotice
+              kind="loading"
+              title="正在读取此浏览器的草稿…"
+              description="读取结束前暂不覆盖现有记录。"
+            >
+              <StateSkeleton />
+            </StateNotice>
+          </div>
+        </main>
+      </div>
+    );
   return (
     <WorkspaceCapabilities.Provider
       value={{
@@ -772,6 +886,7 @@ export function PlannerPage({
       }}
     >
       <TripWorkspace
+        viewer={viewer}
         onAdviceAction={(id, action, trigger) => {
           if (action === "adjust") {
             dispatchTrip({
@@ -852,7 +967,7 @@ export function PlannerPage({
                   aria-label="关闭项目详情框"
                   onClick={() => setAddOpen(false)}
                 >
-                  ×
+                  <PlannerIcon name="close" />
                 </button>
               </header>
               <div className={projectStyles.editor}>
@@ -880,7 +995,6 @@ export function PlannerPage({
                     setAddOpen(false);
                     setDraftInspectionId(test.id);
                   }}
-                  validate={(item) => editScheduleError(item, railItems)}
                   day={detailDay}
                   trigger={addTrigger}
                   onClose={() => setAddOpen(false)}
@@ -891,6 +1005,12 @@ export function PlannerPage({
                     }));
                     setAddOpen(false);
                     setDraftInspectionId(item.id);
+                  }}
+                  mapPick={{
+                    active: mapPickActive,
+                    coordinates: mapPickedCoordinates,
+                    onToggle: () => setMapPickActive((current) => !current),
+                    onClear: () => setMapPickedCoordinates(null),
                   }}
                 />
               </div>
@@ -919,6 +1039,11 @@ export function PlannerPage({
             .map((leg) => [leg.id, leg.label]),
         )}
         onSelectMapFeature={selectMapFeature}
+        mapPickMode={mode === "detail" && addOpen && mapPickActive}
+        onMapPick={(coordinates) => {
+          setMapPickedCoordinates(coordinates);
+          setMapPickActive(false);
+        }}
         onEditDetailItem={(id, trigger) => {
           const item = allRailItems.find((candidate) => candidate.id === id);
           if (item) selectDetailItem(item, trigger);
@@ -1010,9 +1135,13 @@ export function PlannerPage({
                 </label>
               )}
             {planAction.kind === "save" && browserTrip.error && (
-              <p role="alert" className={localSave.error}>
-                {browserTrip.error}
-              </p>
+              <StateNotice
+                compact
+                kind="error"
+                announcement="assertive"
+                title="未能保存本次修改"
+                description={browserTrip.error}
+              />
             )}
             <footer>
               <button type="button" onClick={closePlanAction}>
@@ -1035,8 +1164,8 @@ export function PlannerPage({
                 onClick={() => {
                   if (planAction.kind === "restore") {
                     resetProjectSelection();
-                    dispatchTrip({
-                      type: "restoreBrowserTrip",
+                    dispatchStore({
+                      type: "replace",
                       trip: restoreRecommendation(trip, planAction.id),
                     });
                     setPlanAction(null);
@@ -1081,8 +1210,8 @@ export function PlannerPage({
           onResolve={(issue, name, p) => {
             updatePreparation(p);
             if (name.trim())
-              dispatchTrip({
-                type: "restoreBrowserTrip",
+              dispatchStore({
+                type: "replace",
                 trip: {
                   ...trip,
                   plans: trip.plans.map((x) =>
@@ -1120,7 +1249,19 @@ export function PlannerPage({
               浏览器草稿（{browserTrip.archivedDrafts.length}）
             </button>
             {browserTrip.error && (
-              <small role="alert">{browserTrip.error}</small>
+              <StateNotice
+                compact
+                kind="error"
+                announcement={
+                  planAction ||
+                  browserTrip.destination ||
+                  browserTrip.overwritePending
+                    ? "off"
+                    : "polite"
+                }
+                title="暂时无法读取或保存记录"
+                description={browserTrip.error}
+              />
             )}
           </>
         </section>
@@ -1156,7 +1297,12 @@ export function PlannerPage({
                 </p>
               ))
             ) : (
-              <p>还没有另存的草稿。</p>
+              <StateNotice
+                kind="empty"
+                announcement="off"
+                title="还没有另存的草稿"
+                description="关闭后可继续查看当前行程；这里只显示另存到此浏览器的草稿。"
+              />
             )}
           </div>
         </PlannerOverlay>
@@ -1172,9 +1318,13 @@ export function PlannerPage({
               放弃将撤销本次未保存修改，不会删除已保存的行程。保存仅保留在当前浏览器，不会同步到其他设备；此浏览器保留一份当前行程，新保存会替换上一份。
             </p>
             {browserTrip.error && (
-              <p className={localSave.error} role="alert">
-                {browserTrip.error}
-              </p>
+              <StateNotice
+                compact
+                kind="error"
+                announcement="assertive"
+                title="未能保存本次修改"
+                description={browserTrip.error}
+              />
             )}
             <footer>
               <button type="button" onClick={browserTrip.cancelLeave}>
@@ -1204,7 +1354,15 @@ export function PlannerPage({
             <p>
               当前浏览器只保留一份行程。此次保存会以当前方案替换之前保存的方案，旧保存无法撤销；不会影响任何真实订单。
             </p>
-            {browserTrip.error && <p role="alert">{browserTrip.error}</p>}
+            {browserTrip.error && (
+              <StateNotice
+                compact
+                kind="error"
+                announcement="assertive"
+                title="未能保存本次修改"
+                description={browserTrip.error}
+              />
+            )}
             <footer>
               <button type="button" onClick={browserTrip.cancelOverwrite}>
                 取消

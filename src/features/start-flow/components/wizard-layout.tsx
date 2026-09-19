@@ -1,3 +1,4 @@
+import type { HomeViewer } from "@/lib/auth/home-viewer";
 import type { ReactNode } from "react";
 
 import { FloatingPanel } from "@/components/ui/floating-panel";
@@ -10,13 +11,17 @@ import { StepProgress } from "./step-progress";
 export function WizardLayout({
   children,
   currentStep,
+  viewer = null,
+  storageUnavailable = false,
 }: {
   children: ReactNode;
   currentStep: number;
+  viewer?: HomeViewer | null;
+  storageUnavailable?: boolean;
 }) {
   return (
     <div className={styles.flowLayout}>
-      <StartFlowHeader />
+      <StartFlowHeader viewer={viewer} />
       <FloatingPanel className={styles.flowPanel} data-wizard-panel>
         <StepProgress currentStep={currentStep} />
         <main
@@ -29,7 +34,9 @@ export function WizardLayout({
         </main>
       </FloatingPanel>
       <p className={styles.privacyNote}>
-        草稿仅保存在当前浏览器，可随时返回继续填写。
+        {storageUnavailable
+          ? "当前修改暂未保存到浏览器，请在离开前确认。"
+          : "草稿仅保存在当前浏览器，可随时返回继续填写。"}
       </p>
     </div>
   );

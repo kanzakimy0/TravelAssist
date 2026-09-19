@@ -1,0 +1,2696 @@
+{
+  "base": "3d6c326ff62d69c8d1a9fb96bd6dca368faa3642",
+  "versions": {
+    "node": "v24.18.0",
+    "next": "16.3.4",
+    "supabase": "2.116.0",
+    "postgres": "PostgreSQL 17.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit"
+  },
+  "files": [
+    {
+      "path": "src/server/engine/apply-result.ts",
+      "sha256": "c5ee310729bc7dcd08a0bf6c8ffce8b697fbe3aa9496d136e9d44a8f9d6842ce",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/apply-transaction.ts",
+      "sha256": "f892e97a764ac0662d6189527081cbe5e69e7e516e10178cba70c8439b98ed75",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/apply.ts",
+      "sha256": "914ead9959dc0d1dde865ef2892ddd0e5c87f1886f3123618565878adc13c087",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/context.ts",
+      "sha256": "ec5da9eeb1a00ad67a832c7bbd25618a0b63d0744228c70b082502464542854e",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/index.ts",
+      "sha256": "0dff99ee73d9e3da1bd81510e84ce47fd3d6c105f2a7071b5818304ebdfc55a1",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/input.ts",
+      "sha256": "d1521173ac8e64a99b109fbffeca30137d82f1d09282ca2922a51f1a12ee5457",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/json.ts",
+      "sha256": "2e29c72c442c5126461fde3e61df6c665824ae25b6cfbfefd4197f8e40c542b7",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/preimage.ts",
+      "sha256": "531aea44089c0af780a9f31617e67fd081bb1b94b9710ef3e15af7aeba9f02a2",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/registry.ts",
+      "sha256": "d78054913450dbe7b0f95d2a052951dda84f4d9c7e0fff3bc41b49d64b3feb3c",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/report.ts",
+      "sha256": "dca26297e62011aa1e8c5ad3dd284d0f414a19909319cd97d241f231cbb71980",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/rollback.ts",
+      "sha256": "ff00ea3e6d81f14fe9445d28608485fd6e418bbcce8162c28d89b020c07a861b",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/rules.ts",
+      "sha256": "0293971b3c6b5b6c4dbf7726b006691e1406992c40aee9db781620418a082b39",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/engine/runtime.ts",
+      "sha256": "48a25d1de4e480e1cc7021f29de19df8499c430badbc44a98cc4541fc70ae07b",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/trips/projection.ts",
+      "sha256": "4ad03fdecfd151c9c42c775c7cfd3011db0889f5f0b4c2b3d3f53c073b5f7747",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/trips/repository.ts",
+      "sha256": "9bc634e820d182dd50b809d1e78246b35468f0960acb55b2fbe56aa514f0d984",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/server/trips/transaction.ts",
+      "sha256": "d28d4cc2e54003e3e7f45922be990cfeda5d3af4f7225a0d99dd07180a1a7d34",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/engine/index.ts",
+      "sha256": "d1acd17e1d4ade4d6f611ed343b253cab5a86f39bc6825fd672225d5ea624c93",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/engine/runtime-fixtures.ts",
+      "sha256": "960163f4b24aa2ef1daf9e5436c0782d5430a2cfbc0feac3ac81d3dd683eaa10",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/engine/runtime.ts",
+      "sha256": "355648ecefcc7286457738a7c2c34ac631d0b39e49b639f2a2e8687ec093ad83",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/trips/fixtures.ts",
+      "sha256": "c2200bf16001330c3f8d04eb2ab4054ba49266e8bcd22fc0c961afe258f0094a",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/trips/index.ts",
+      "sha256": "8abfb2eed58bf89f7e24d7c8d8fb8ba0cc52e7f677656724262bd2677191d8b5",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/trips/validation.ts",
+      "sha256": "2cd604aea093b5413373462ba39af23b534bd196434f68b4a6365376363740df",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/routes/fixtures.ts",
+      "sha256": "cf331c64cbebb11b05ec11f8406eba85c2402bafeeb21b96b0f8a862cedbd09c",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/routes/index.ts",
+      "sha256": "9516552542f1bd87fc119a1d45c79f330d310426f382923c4ae0972ecb44f01d",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/shared/contracts/routes/validation.ts",
+      "sha256": "c5b254cf2bacb28c5100d692dec006b95c00c610f8e5eb790d5611cd58941507",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/db/schema/trips.ts",
+      "sha256": "cc7177d8043ea16886f398ca5ae72109c22d88b9a637a54a4229ec6b40b14fa4",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/db/schema/engine-apply.ts",
+      "sha256": "8b65505276d7d32ce8decce7e97087b81be7570e049f05d8feffd5217ebcf9e0",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/db/schema/engine-runtime.ts",
+      "sha256": "8419765ab75ec3bd71d4a30df7ab301cfeed3e52d0ebb3004daebaf533806762",
+      "equalsDevelop": true
+    },
+    {
+      "path": "src/types/database.generated.ts",
+      "sha256": "03edd402289d6822b73a3b686f2fc57d8d77807dde46df0f2dea2246488be4c1",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260908083000_create_user_profile_schema.sql",
+      "sha256": "04155bd2e4673eb971a39b5a9d4941d3ba8d57d05f8c648fa67ba508c4c94606",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260908150000_create_trip_plan_schema.sql",
+      "sha256": "9d79cdc32075cb8ba821d53ed07c88239e7e65636ddfcd63b7eab251161190af",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260908150100_add_trip_plan_rls_revision.sql",
+      "sha256": "40a7e77bd85adc0e4279335e68746a70bb2e05244a6b1441197a301be078919c",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260911090000_create_travel_preferences.sql",
+      "sha256": "46598b54fb008353a1b1b8dcfb5513bf9abdafb95adcaac51d503586c17ea48a",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260911100000_create_companion_schema.sql",
+      "sha256": "4143775d488293bb6946dcc82e4617095bc6eb752be79012c40c228cb112211b",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260912090000_add_companion_transaction_api.sql",
+      "sha256": "3036ea718306f10e8daef5c788a6ca6a54b18330ea0d95e0f2b31287bfa26cd6",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260912100000_create_trip_library_records.sql",
+      "sha256": "21c9750a750fd39859c04ef65dd074666ab3776df18f967dd79e7d4eecffcd3b",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260912120000_trip_library_creation_intent.sql",
+      "sha256": "f4a812c648c615a4c0c98e751c9d12ebf06ad5ea360616b039f405c338f0e47c",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260917090000_create_engine_apply.sql",
+      "sha256": "aa3e2d368e749a898448d54d63e85a26fde0580401d4dac711b355a09f015319",
+      "equalsDevelop": true
+    },
+    {
+      "path": "supabase/migrations/20260917100000_engine_runtime_compensation.sql",
+      "sha256": "6fcdab434bebcaf206ea331e79c5ffda18a8242de063509e5ae388df64bd4251",
+      "equalsDevelop": true
+    }
+  ],
+  "tableNames": [
+    "companion_group_members",
+    "companion_groups",
+    "companions",
+    "emergency_contacts",
+    "engine_apply_audits",
+    "engine_apply_compensations",
+    "engine_apply_outbox",
+    "engine_apply_preimages",
+    "engine_apply_receipts",
+    "engine_rollback_receipts",
+    "engine_runtime_results",
+    "itinerary_items",
+    "profile_settings",
+    "profiles",
+    "travel_preferences",
+    "trip_days",
+    "trip_library_records",
+    "trip_plans",
+    "trips"
+  ],
+  "generatedContract": {
+    "tables": {
+      "companion_group_members": {
+        "Row": {
+          "companion_id": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "group_id": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "sort_order": {
+            "type": "number",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "companion_id": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "group_id": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "sort_order": {
+            "type": "number",
+            "optional": false
+          }
+        },
+        "Update": {
+          "companion_id": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "group_id": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "sort_order": {
+            "type": "number",
+            "optional": true
+          }
+        }
+      },
+      "companion_groups": {
+        "Row": {
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "description": {
+            "type": "string|null",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "includes_owner": {
+            "type": "boolean",
+            "optional": false
+          },
+          "name": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "description": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "includes_owner": {
+            "type": "boolean",
+            "optional": true
+          },
+          "name": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "description": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "includes_owner": {
+            "type": "boolean",
+            "optional": true
+          },
+          "name": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "companions": {
+        "Row": {
+          "age_group_fallback": {
+            "type": "string|null",
+            "optional": false
+          },
+          "avatar_path": {
+            "type": "string|null",
+            "optional": false
+          },
+          "birth_date": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "display_name": {
+            "type": "string",
+            "optional": false
+          },
+          "gender_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "relationship_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "relationship_label": {
+            "type": "string|null",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": false
+          },
+          "travel_profile": {
+            "type": "Json",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "age_group_fallback": {
+            "type": "string|null",
+            "optional": true
+          },
+          "avatar_path": {
+            "type": "string|null",
+            "optional": true
+          },
+          "birth_date": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "display_name": {
+            "type": "string",
+            "optional": false
+          },
+          "gender_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "relationship_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "relationship_label": {
+            "type": "string|null",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "travel_profile": {
+            "type": "Json",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "age_group_fallback": {
+            "type": "string|null",
+            "optional": true
+          },
+          "avatar_path": {
+            "type": "string|null",
+            "optional": true
+          },
+          "birth_date": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "display_name": {
+            "type": "string",
+            "optional": true
+          },
+          "gender_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "relationship_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "relationship_label": {
+            "type": "string|null",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "travel_profile": {
+            "type": "Json",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "emergency_contacts": {
+        "Row": {
+          "country_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "email": {
+            "type": "string|null",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "name": {
+            "type": "string",
+            "optional": false
+          },
+          "note": {
+            "type": "string|null",
+            "optional": false
+          },
+          "phone_e164": {
+            "type": "string",
+            "optional": false
+          },
+          "relationship": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          },
+          "user_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "country_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "email": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "name": {
+            "type": "string",
+            "optional": false
+          },
+          "note": {
+            "type": "string|null",
+            "optional": true
+          },
+          "phone_e164": {
+            "type": "string",
+            "optional": false
+          },
+          "relationship": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          },
+          "user_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Update": {
+          "country_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "email": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "name": {
+            "type": "string",
+            "optional": true
+          },
+          "note": {
+            "type": "string|null",
+            "optional": true
+          },
+          "phone_e164": {
+            "type": "string",
+            "optional": true
+          },
+          "relationship": {
+            "type": "string",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          },
+          "user_id": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "engine_apply_audits": {
+        "Row": {
+          "before_plan_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "before_trip_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "context_fingerprint": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "operation_refs": {
+            "type": "Json",
+            "optional": false
+          },
+          "outcome": {
+            "type": "string",
+            "optional": false
+          },
+          "preview_hash": {
+            "type": "string",
+            "optional": false
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "resulting_plan_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "resulting_trip_revision": {
+            "type": "number",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "before_plan_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "before_trip_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "context_fingerprint": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "operation_refs": {
+            "type": "Json",
+            "optional": false
+          },
+          "outcome": {
+            "type": "string",
+            "optional": true
+          },
+          "preview_hash": {
+            "type": "string",
+            "optional": false
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "resulting_plan_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "resulting_trip_revision": {
+            "type": "number",
+            "optional": false
+          }
+        },
+        "Update": {
+          "before_plan_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "before_trip_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "context_fingerprint": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "operation_refs": {
+            "type": "Json",
+            "optional": true
+          },
+          "outcome": {
+            "type": "string",
+            "optional": true
+          },
+          "preview_hash": {
+            "type": "string",
+            "optional": true
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": true
+          },
+          "resulting_plan_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "resulting_trip_revision": {
+            "type": "number",
+            "optional": true
+          }
+        }
+      },
+      "engine_apply_compensations": {
+        "Row": {
+          "compensation_receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "original_receipt_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "compensation_receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "original_receipt_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Update": {
+          "compensation_receipt_id": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "original_receipt_id": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "engine_apply_outbox": {
+        "Row": {
+          "attempts": {
+            "type": "number",
+            "optional": false
+          },
+          "available_at": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "event_type": {
+            "type": "string",
+            "optional": false
+          },
+          "failure_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "finished_at": {
+            "type": "string|null",
+            "optional": false
+          },
+          "lease_expires_at": {
+            "type": "string|null",
+            "optional": false
+          },
+          "lease_token": {
+            "type": "string|null",
+            "optional": false
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "status": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "attempts": {
+            "type": "number",
+            "optional": true
+          },
+          "available_at": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "event_type": {
+            "type": "string",
+            "optional": true
+          },
+          "failure_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "finished_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "lease_expires_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "lease_token": {
+            "type": "string|null",
+            "optional": true
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "status": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "attempts": {
+            "type": "number",
+            "optional": true
+          },
+          "available_at": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "event_type": {
+            "type": "string",
+            "optional": true
+          },
+          "failure_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "finished_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "lease_expires_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "lease_token": {
+            "type": "string|null",
+            "optional": true
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": true
+          },
+          "status": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "engine_apply_preimages": {
+        "Row": {
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "preimage": {
+            "type": "Json",
+            "optional": false
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "preimage": {
+            "type": "Json",
+            "optional": false
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Update": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "preimage": {
+            "type": "Json",
+            "optional": true
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "engine_apply_receipts": {
+        "Row": {
+          "actor_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "change_set_id": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "idempotency_key": {
+            "type": "string",
+            "optional": false
+          },
+          "outcome": {
+            "type": "string",
+            "optional": false
+          },
+          "payload_hash": {
+            "type": "string",
+            "optional": false
+          },
+          "plan_id": {
+            "type": "string",
+            "optional": false
+          },
+          "result": {
+            "type": "Json",
+            "optional": false
+          },
+          "trip_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "actor_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "change_set_id": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "idempotency_key": {
+            "type": "string",
+            "optional": false
+          },
+          "outcome": {
+            "type": "string",
+            "optional": false
+          },
+          "payload_hash": {
+            "type": "string",
+            "optional": false
+          },
+          "plan_id": {
+            "type": "string",
+            "optional": false
+          },
+          "result": {
+            "type": "Json",
+            "optional": false
+          },
+          "trip_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Update": {
+          "actor_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "change_set_id": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "idempotency_key": {
+            "type": "string",
+            "optional": true
+          },
+          "outcome": {
+            "type": "string",
+            "optional": true
+          },
+          "payload_hash": {
+            "type": "string",
+            "optional": true
+          },
+          "plan_id": {
+            "type": "string",
+            "optional": true
+          },
+          "result": {
+            "type": "Json",
+            "optional": true
+          },
+          "trip_id": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "engine_rollback_receipts": {
+        "Row": {
+          "actor_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "apply_receipt_id": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "idempotency_key": {
+            "type": "string",
+            "optional": false
+          },
+          "issue_codes": {
+            "type": "string[]",
+            "optional": false
+          },
+          "observed_plan_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "observed_trip_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "original_receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "outcome": {
+            "type": "string",
+            "optional": false
+          },
+          "payload_hash": {
+            "type": "string",
+            "optional": false
+          },
+          "request_id": {
+            "type": "string",
+            "optional": false
+          },
+          "resulting_plan_revision": {
+            "type": "number|null",
+            "optional": false
+          },
+          "resulting_trip_revision": {
+            "type": "number|null",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "actor_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "apply_receipt_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "idempotency_key": {
+            "type": "string",
+            "optional": false
+          },
+          "issue_codes": {
+            "type": "string[]",
+            "optional": false
+          },
+          "observed_plan_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "observed_trip_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "original_receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "outcome": {
+            "type": "string",
+            "optional": false
+          },
+          "payload_hash": {
+            "type": "string",
+            "optional": false
+          },
+          "request_id": {
+            "type": "string",
+            "optional": false
+          },
+          "resulting_plan_revision": {
+            "type": "number|null",
+            "optional": true
+          },
+          "resulting_trip_revision": {
+            "type": "number|null",
+            "optional": true
+          }
+        },
+        "Update": {
+          "actor_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "apply_receipt_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "idempotency_key": {
+            "type": "string",
+            "optional": true
+          },
+          "issue_codes": {
+            "type": "string[]",
+            "optional": true
+          },
+          "observed_plan_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "observed_trip_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "original_receipt_id": {
+            "type": "string",
+            "optional": true
+          },
+          "outcome": {
+            "type": "string",
+            "optional": true
+          },
+          "payload_hash": {
+            "type": "string",
+            "optional": true
+          },
+          "request_id": {
+            "type": "string",
+            "optional": true
+          },
+          "resulting_plan_revision": {
+            "type": "number|null",
+            "optional": true
+          },
+          "resulting_trip_revision": {
+            "type": "number|null",
+            "optional": true
+          }
+        }
+      },
+      "engine_runtime_results": {
+        "Row": {
+          "contract_version": {
+            "type": "string",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "fingerprint": {
+            "type": "string",
+            "optional": false
+          },
+          "issue_codes": {
+            "type": "string[]",
+            "optional": false
+          },
+          "issues_truncated": {
+            "type": "boolean",
+            "optional": false
+          },
+          "observed_plan_revision": {
+            "type": "number|null",
+            "optional": false
+          },
+          "observed_trip_revision": {
+            "type": "number|null",
+            "optional": false
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "recompute_status": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "contract_version": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "fingerprint": {
+            "type": "string",
+            "optional": false
+          },
+          "issue_codes": {
+            "type": "string[]",
+            "optional": false
+          },
+          "issues_truncated": {
+            "type": "boolean",
+            "optional": true
+          },
+          "observed_plan_revision": {
+            "type": "number|null",
+            "optional": true
+          },
+          "observed_trip_revision": {
+            "type": "number|null",
+            "optional": true
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": false
+          },
+          "recompute_status": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Update": {
+          "contract_version": {
+            "type": "string",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "fingerprint": {
+            "type": "string",
+            "optional": true
+          },
+          "issue_codes": {
+            "type": "string[]",
+            "optional": true
+          },
+          "issues_truncated": {
+            "type": "boolean",
+            "optional": true
+          },
+          "observed_plan_revision": {
+            "type": "number|null",
+            "optional": true
+          },
+          "observed_trip_revision": {
+            "type": "number|null",
+            "optional": true
+          },
+          "receipt_id": {
+            "type": "string",
+            "optional": true
+          },
+          "recompute_status": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "itinerary_items": {
+        "Row": {
+          "assessment": {
+            "type": "string",
+            "optional": false
+          },
+          "booking_reference_id": {
+            "type": "string|null",
+            "optional": false
+          },
+          "booking_status": {
+            "type": "string",
+            "optional": false
+          },
+          "booking_verified_at": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "day_id": {
+            "type": "string",
+            "optional": false
+          },
+          "end_at": {
+            "type": "string|null",
+            "optional": false
+          },
+          "end_timezone": {
+            "type": "string|null",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "kind": {
+            "type": "string",
+            "optional": false
+          },
+          "latitude": {
+            "type": "number|null",
+            "optional": false
+          },
+          "lock_level": {
+            "type": "string",
+            "optional": false
+          },
+          "longitude": {
+            "type": "number|null",
+            "optional": false
+          },
+          "place_name": {
+            "type": "string|null",
+            "optional": false
+          },
+          "place_reference_id": {
+            "type": "string|null",
+            "optional": false
+          },
+          "placement": {
+            "type": "string",
+            "optional": false
+          },
+          "position": {
+            "type": "number",
+            "optional": false
+          },
+          "start_at": {
+            "type": "string|null",
+            "optional": false
+          },
+          "start_timezone": {
+            "type": "string|null",
+            "optional": false
+          },
+          "title": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "assessment": {
+            "type": "string",
+            "optional": false
+          },
+          "booking_reference_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "booking_status": {
+            "type": "string",
+            "optional": false
+          },
+          "booking_verified_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "day_id": {
+            "type": "string",
+            "optional": false
+          },
+          "end_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "end_timezone": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "kind": {
+            "type": "string",
+            "optional": false
+          },
+          "latitude": {
+            "type": "number|null",
+            "optional": true
+          },
+          "lock_level": {
+            "type": "string",
+            "optional": false
+          },
+          "longitude": {
+            "type": "number|null",
+            "optional": true
+          },
+          "place_name": {
+            "type": "string|null",
+            "optional": true
+          },
+          "place_reference_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "placement": {
+            "type": "string",
+            "optional": false
+          },
+          "position": {
+            "type": "number",
+            "optional": false
+          },
+          "start_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "start_timezone": {
+            "type": "string|null",
+            "optional": true
+          },
+          "title": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "assessment": {
+            "type": "string",
+            "optional": true
+          },
+          "booking_reference_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "booking_status": {
+            "type": "string",
+            "optional": true
+          },
+          "booking_verified_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "day_id": {
+            "type": "string",
+            "optional": true
+          },
+          "end_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "end_timezone": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "kind": {
+            "type": "string",
+            "optional": true
+          },
+          "latitude": {
+            "type": "number|null",
+            "optional": true
+          },
+          "lock_level": {
+            "type": "string",
+            "optional": true
+          },
+          "longitude": {
+            "type": "number|null",
+            "optional": true
+          },
+          "place_name": {
+            "type": "string|null",
+            "optional": true
+          },
+          "place_reference_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "placement": {
+            "type": "string",
+            "optional": true
+          },
+          "position": {
+            "type": "number",
+            "optional": true
+          },
+          "start_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "start_timezone": {
+            "type": "string|null",
+            "optional": true
+          },
+          "title": {
+            "type": "string",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "profile_settings": {
+        "Row": {
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "currency_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "distance_unit": {
+            "type": "string|null",
+            "optional": false
+          },
+          "locale": {
+            "type": "string|null",
+            "optional": false
+          },
+          "region_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "temperature_unit": {
+            "type": "string|null",
+            "optional": false
+          },
+          "time_format": {
+            "type": "string|null",
+            "optional": false
+          },
+          "timezone": {
+            "type": "string|null",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          },
+          "user_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "currency_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "distance_unit": {
+            "type": "string|null",
+            "optional": true
+          },
+          "locale": {
+            "type": "string|null",
+            "optional": true
+          },
+          "region_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "temperature_unit": {
+            "type": "string|null",
+            "optional": true
+          },
+          "time_format": {
+            "type": "string|null",
+            "optional": true
+          },
+          "timezone": {
+            "type": "string|null",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          },
+          "user_id": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Update": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "currency_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "distance_unit": {
+            "type": "string|null",
+            "optional": true
+          },
+          "locale": {
+            "type": "string|null",
+            "optional": true
+          },
+          "region_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "temperature_unit": {
+            "type": "string|null",
+            "optional": true
+          },
+          "time_format": {
+            "type": "string|null",
+            "optional": true
+          },
+          "timezone": {
+            "type": "string|null",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          },
+          "user_id": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "profiles": {
+        "Row": {
+          "avatar_path": {
+            "type": "string|null",
+            "optional": false
+          },
+          "birth_date": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "display_name": {
+            "type": "string|null",
+            "optional": false
+          },
+          "full_name": {
+            "type": "string|null",
+            "optional": false
+          },
+          "gender_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "residence_city": {
+            "type": "string|null",
+            "optional": false
+          },
+          "residence_country_code": {
+            "type": "string|null",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "avatar_path": {
+            "type": "string|null",
+            "optional": true
+          },
+          "birth_date": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "display_name": {
+            "type": "string|null",
+            "optional": true
+          },
+          "full_name": {
+            "type": "string|null",
+            "optional": true
+          },
+          "gender_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "residence_city": {
+            "type": "string|null",
+            "optional": true
+          },
+          "residence_country_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "avatar_path": {
+            "type": "string|null",
+            "optional": true
+          },
+          "birth_date": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "display_name": {
+            "type": "string|null",
+            "optional": true
+          },
+          "full_name": {
+            "type": "string|null",
+            "optional": true
+          },
+          "gender_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "residence_city": {
+            "type": "string|null",
+            "optional": true
+          },
+          "residence_country_code": {
+            "type": "string|null",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "travel_preferences": {
+        "Row": {
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "payload": {
+            "type": "Json",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "payload": {
+            "type": "Json",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "payload": {
+            "type": "Json",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "trip_days": {
+        "Row": {
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "day_number": {
+            "type": "number",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "local_date": {
+            "type": "string",
+            "optional": false
+          },
+          "plan_id": {
+            "type": "string",
+            "optional": false
+          },
+          "timezone": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "day_number": {
+            "type": "number",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "local_date": {
+            "type": "string",
+            "optional": false
+          },
+          "plan_id": {
+            "type": "string",
+            "optional": false
+          },
+          "timezone": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "day_number": {
+            "type": "number",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "local_date": {
+            "type": "string",
+            "optional": true
+          },
+          "plan_id": {
+            "type": "string",
+            "optional": true
+          },
+          "timezone": {
+            "type": "string",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "trip_library_records": {
+        "Row": {
+          "canonical_trip_id": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "creation_intent_hash": {
+            "type": "string|null",
+            "optional": false
+          },
+          "creation_key": {
+            "type": "string",
+            "optional": false
+          },
+          "draft_facts": {
+            "type": "Json",
+            "optional": false
+          },
+          "frozen_at": {
+            "type": "string|null",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "library_state": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "party_snapshot": {
+            "type": "Json",
+            "optional": false
+          },
+          "plan_snapshot": {
+            "type": "Json|null",
+            "optional": false
+          },
+          "preference_override_patch": {
+            "type": "Json",
+            "optional": false
+          },
+          "preference_snapshot": {
+            "type": "Json",
+            "optional": false
+          },
+          "preference_source_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "storage_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          },
+          "wizard_progress": {
+            "type": "Json",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "canonical_trip_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "creation_intent_hash": {
+            "type": "string|null",
+            "optional": true
+          },
+          "creation_key": {
+            "type": "string",
+            "optional": false
+          },
+          "draft_facts": {
+            "type": "Json",
+            "optional": false
+          },
+          "frozen_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "library_state": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "party_snapshot": {
+            "type": "Json",
+            "optional": false
+          },
+          "plan_snapshot": {
+            "type": "Json|null",
+            "optional": true
+          },
+          "preference_override_patch": {
+            "type": "Json",
+            "optional": true
+          },
+          "preference_snapshot": {
+            "type": "Json",
+            "optional": false
+          },
+          "preference_source_revision": {
+            "type": "number",
+            "optional": false
+          },
+          "storage_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          },
+          "wizard_progress": {
+            "type": "Json",
+            "optional": false
+          }
+        },
+        "Update": {
+          "canonical_trip_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "creation_intent_hash": {
+            "type": "string|null",
+            "optional": true
+          },
+          "creation_key": {
+            "type": "string",
+            "optional": true
+          },
+          "draft_facts": {
+            "type": "Json",
+            "optional": true
+          },
+          "frozen_at": {
+            "type": "string|null",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "library_state": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "party_snapshot": {
+            "type": "Json",
+            "optional": true
+          },
+          "plan_snapshot": {
+            "type": "Json|null",
+            "optional": true
+          },
+          "preference_override_patch": {
+            "type": "Json",
+            "optional": true
+          },
+          "preference_snapshot": {
+            "type": "Json",
+            "optional": true
+          },
+          "preference_source_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "storage_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          },
+          "wizard_progress": {
+            "type": "Json",
+            "optional": true
+          }
+        }
+      },
+      "trip_plans": {
+        "Row": {
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "position": {
+            "type": "number",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": false
+          },
+          "revision_txid": {
+            "type": "number",
+            "optional": false
+          },
+          "title": {
+            "type": "string",
+            "optional": false
+          },
+          "trip_id": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "position": {
+            "type": "number",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "revision_txid": {
+            "type": "number",
+            "optional": true
+          },
+          "title": {
+            "type": "string",
+            "optional": false
+          },
+          "trip_id": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "position": {
+            "type": "number",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "revision_txid": {
+            "type": "number",
+            "optional": true
+          },
+          "title": {
+            "type": "string",
+            "optional": true
+          },
+          "trip_id": {
+            "type": "string",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      },
+      "trips": {
+        "Row": {
+          "active_plan_id": {
+            "type": "string|null",
+            "optional": false
+          },
+          "created_at": {
+            "type": "string",
+            "optional": false
+          },
+          "default_timezone": {
+            "type": "string",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": false
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "provenance": {
+            "type": "string",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": false
+          },
+          "revision_txid": {
+            "type": "number",
+            "optional": false
+          },
+          "status": {
+            "type": "string",
+            "optional": false
+          },
+          "title": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "Insert": {
+          "active_plan_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "default_timezone": {
+            "type": "string",
+            "optional": false
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": false
+          },
+          "provenance": {
+            "type": "string",
+            "optional": false
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "revision_txid": {
+            "type": "number",
+            "optional": true
+          },
+          "status": {
+            "type": "string",
+            "optional": false
+          },
+          "title": {
+            "type": "string",
+            "optional": false
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "Update": {
+          "active_plan_id": {
+            "type": "string|null",
+            "optional": true
+          },
+          "created_at": {
+            "type": "string",
+            "optional": true
+          },
+          "default_timezone": {
+            "type": "string",
+            "optional": true
+          },
+          "id": {
+            "type": "string",
+            "optional": true
+          },
+          "owner_user_id": {
+            "type": "string",
+            "optional": true
+          },
+          "provenance": {
+            "type": "string",
+            "optional": true
+          },
+          "revision": {
+            "type": "number",
+            "optional": true
+          },
+          "revision_txid": {
+            "type": "number",
+            "optional": true
+          },
+          "status": {
+            "type": "string",
+            "optional": true
+          },
+          "title": {
+            "type": "string",
+            "optional": true
+          },
+          "updated_at": {
+            "type": "string",
+            "optional": true
+          }
+        }
+      }
+    },
+    "functions": {
+      "is_companion_travel_profile_v1": {
+        "args": {
+          "payload": {
+            "type": "Json",
+            "optional": false
+          }
+        },
+        "returns": "boolean"
+      },
+      "is_engine_preimage_v1": {
+        "args": {
+          "value": {
+            "type": "Json",
+            "optional": false
+          }
+        },
+        "returns": "boolean"
+      },
+      "is_travel_preference_v1": {
+        "args": {
+          "payload": {
+            "type": "Json",
+            "optional": false
+          }
+        },
+        "returns": "boolean"
+      },
+      "is_trip_library_envelope_v1": {
+        "args": {
+          "max_bytes": {
+            "type": "number",
+            "optional": false
+          },
+          "payload": {
+            "type": "Json",
+            "optional": false
+          },
+          "version_key": {
+            "type": "string",
+            "optional": false
+          }
+        },
+        "returns": "boolean"
+      },
+      "is_trip_party_snapshot_v1": {
+        "args": {
+          "payload": {
+            "type": "Json",
+            "optional": false
+          }
+        },
+        "returns": "boolean"
+      },
+      "mutate_companion_group_v1": {
+        "args": {
+          "p_action": {
+            "type": "string",
+            "optional": false
+          },
+          "p_expected_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "p_id": {
+            "type": "string",
+            "optional": true
+          },
+          "p_includes_owner": {
+            "type": "boolean",
+            "optional": true
+          },
+          "p_member_ids": {
+            "type": "string[]",
+            "optional": true
+          },
+          "p_name": {
+            "type": "string",
+            "optional": true
+          }
+        },
+        "returns": "Json"
+      },
+      "mutate_companion_v1": {
+        "args": {
+          "p_action": {
+            "type": "string",
+            "optional": false
+          },
+          "p_expected_revision": {
+            "type": "number",
+            "optional": true
+          },
+          "p_id": {
+            "type": "string",
+            "optional": true
+          },
+          "p_input": {
+            "type": "Json",
+            "optional": true
+          }
+        },
+        "returns": "Json"
+      }
+    }
+  }
+}

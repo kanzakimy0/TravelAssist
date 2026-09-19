@@ -10,6 +10,7 @@ import {
   type TripState,
 } from "../model/trip-model";
 import { PlaceActions } from "./place-details";
+import { PlannerIcon } from "./planner-icon";
 import ui from "../planner-interactions.module.css";
 import styles from "../planner.module.css";
 import { useWorkspaceCapabilities } from "./workspace-capabilities";
@@ -142,7 +143,7 @@ export function MapQuickCard({
               onClose();
             }}
           >
-            ×
+            <PlannerIcon name="close" />
           </button>
         </header>
         {area ? (

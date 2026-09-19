@@ -1,10 +1,21 @@
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { authHref } from "@/features/auth/auth-ui-model";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
+
 import { MainHeader } from "@/components/layout/main-header";
 import { AccountAvatar } from "@/components/ui/account-avatar";
 
 import styles from "../start-flow.module.css";
 
-export function StartFlowHeader() {
+export function StartFlowHeader({
+  viewer = null,
+}: {
+  viewer?: HomeViewer | null;
+}) {
+  const pathname = usePathname();
+  const query = useSearchParams().toString();
+  const loginHref = authHref("/login", pathname + (query ? "?" + query : ""));
   return (
     <MainHeader className={styles.header}>
       <div className={styles.headerActions}>
@@ -16,13 +27,25 @@ export function StartFlowHeader() {
             <option value="en-US">English</option>
           </select>
         </label>
-        <Link
-          aria-label="前往个人中心"
-          className={styles.accountLink}
-          href="/personal-center"
-        >
-          <AccountAvatar />
-        </Link>
+        {viewer ? (
+          <Link
+            aria-label={`${viewer.name} · 个人中心`}
+            title={`${viewer.name} · 个人中心`}
+            className={styles.accountLink}
+            href="/personal-center"
+          >
+            <AccountAvatar src={viewer.avatar} unoptimized />
+            <span className={styles.accountName}>{viewer.name}</span>
+          </Link>
+        ) : (
+          <Link
+            aria-label="登录"
+            className={styles.accountLink}
+            href={loginHref}
+          >
+            登录
+          </Link>
+        )}
       </div>
     </MainHeader>
   );

@@ -1,0 +1,1508 @@
+{
+  "task": "TASK-063-B",
+  "issue": 380,
+  "status": "ACCEPTED_MERGED",
+  "executionBase": "849ed9f207a0ec55ff514e287fbc3d6c7adc2cea",
+  "branch": "codex/b-wbs-4-22-engine-transaction-apply",
+  "startGate": {
+    "commands": [
+      "git status --short",
+      "git branch --show-current",
+      "git fetch --all --prune",
+      "git rev-parse origin/develop",
+      "git log --oneline -20 origin/develop"
+    ],
+    "originalWorkingTree": {
+      "branch": "detached HEAD",
+      "status": "?? outputs/",
+      "preserved": true
+    },
+    "independentCandidateAndBaselineWorktrees": true,
+    "taskSource": "origin/task/b-wbs-4-22-engine-transaction-apply",
+    "prerequisites": {
+      "4.20": "completed/Frozen",
+      "4.20.1": "completed",
+      "4.21": "completed",
+      "8.1": "completed",
+      "8.3": "completed",
+      "8.4": "completed",
+      "8.5": "B/completed"
+    },
+    "mergedPRs": [
+      {
+        "number": 227,
+        "mergeCommit": "842447d29e2b8792df6674a1a3c0c45b967622e8"
+      },
+      {
+        "number": 379,
+        "mergeCommit": "849ed9f207a0ec55ff514e287fbc3d6c7adc2cea"
+      }
+    ],
+    "latestDevelopRecheck": "849ed9f207a0ec55ff514e287fbc3d6c7adc2cea"
+  },
+  "commands": [
+    {
+      "label": "baseline install",
+      "command": "npm ci (clean detached develop worktree)",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "baseline-npm-ci.log",
+      "logSha256": "cf9d1d3ca335b8bf0a7dfa72d2603bd5a1e2ebd4452a7cf05f1152e064d8e099",
+      "logCompletedAt": "2026-09-16T22:21:58.325Z"
+    },
+    {
+      "label": "candidate install",
+      "command": "npm ci",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "candidate-npm-ci.log",
+      "logSha256": "cf9d1d3ca335b8bf0a7dfa72d2603bd5a1e2ebd4452a7cf05f1152e064d8e099",
+      "logCompletedAt": "2026-09-16T22:21:58.149Z"
+    },
+    {
+      "label": "clean develop full Node",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\" (baseline)",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "baseline-full-node.log",
+      "logSha256": "4a99743813adf23e74dc489f00fe85018a39b856f084c41efb9109c2d2be12fe",
+      "logCompletedAt": "2026-09-16T22:22:38.371Z",
+      "counts": {
+        "tests": 2520,
+        "pass": 2520,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Local start",
+      "command": "npm run db:start",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-start.log",
+      "logSha256": "ee1cc9c884f7f31b4674e5972800c4eedb30d3cd72b67a2dbda433c1e6c0120f",
+      "logCompletedAt": "2026-09-16T22:27:24.537Z"
+    },
+    {
+      "label": "Local status",
+      "command": "npm run db:status",
+      "status": "PASS",
+      "exitCode": 0,
+      "evidence": "Start-gate tool output: Local Supabase status succeeded; API 127.0.0.1:54321, Studio 54323, mail 54324. CLI credentials were redacted by repository wrapper."
+    },
+    {
+      "label": "initial migration reset",
+      "command": "npm run db:reset",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-reset-1.log",
+      "logSha256": "e32a5f3f5ccd813b5049c4b0915d2d0c228d0f3410775e3fb5a1f16266ff9a41",
+      "logCompletedAt": "2026-09-16T22:30:47.847Z"
+    },
+    {
+      "label": "real generated types",
+      "command": "npm run db:types",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-types-1.log",
+      "logSha256": "60c77d28188f96f2245aa24d7cda0b8c30d702555e199b1c8bfe7b17a02236e0",
+      "logCompletedAt": "2026-09-16T22:30:52.405Z"
+    },
+    {
+      "label": "4.21 focused",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/wbs-4-21-rule-feasibility.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "421-final.log",
+      "logSha256": "342ae3b8638846c33da2de29b8300834fa371da3d1791bc1229a8a10f65a8d30",
+      "logCompletedAt": "2026-09-16T22:39:36.109Z",
+      "counts": {
+        "tests": 77,
+        "pass": 77,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "TASK-063 pure",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/task-063-engine-apply.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "pure-final.log",
+      "logSha256": "7b783ba4558042d2fd99c7b11592044ed198dc95ade26080ed52c5f8bfacd028",
+      "logCompletedAt": "2026-09-16T22:39:35.143Z",
+      "counts": {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "TASK-063 Local",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/task-063-engine-apply.runtime.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "runtime-final.log",
+      "logSha256": "c1036d0af22dcd03113e601c2b3f59155906a5b2ae247c842cae3fb4c85d8f2d",
+      "logCompletedAt": "2026-09-16T22:39:19.241Z",
+      "counts": {
+        "tests": 35,
+        "pass": 35,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Trip pure wrapper",
+      "command": "npm run test:trip-plan",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "trip-plan-pure.log",
+      "logSha256": "b9c67496fe2f912de49c18218c0b61e2eefd0b2cee276c8822df3591fdab77e8",
+      "logCompletedAt": "2026-09-16T22:35:05.872Z",
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "Trip Local",
+      "command": "npm run test:trip-plan:runtime",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "trip-plan-runtime.log",
+      "logSha256": "f03f81b4b922b1a47daad93e8cab2c840533c7134b011af947283bffb9c47ea1",
+      "logCompletedAt": "2026-09-16T22:36:35.614Z",
+      "counts": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "A+B coexistence",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test --test-reporter=tap tests/task-062-trip-plan-coexistence.runtime.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "coexistence.log",
+      "logSha256": "7fd211b1deefd2ad78167c8fcd3a0565c3043caa7a9a0717d8e4abc885107819",
+      "logCompletedAt": "2026-09-16T22:39:25.211Z",
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "two fresh migration replays",
+      "command": "npm run test:personal-center-migration:replay",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "migration-replays.log",
+      "logSha256": "9e43d941e841d330a1a748c96c449b2b04f3766da404d4b1926541ecf8e3b87e",
+      "logCompletedAt": "2026-09-16T22:38:27.438Z"
+    },
+    {
+      "label": "Personal Center full Local",
+      "command": "npm run test:personal-center:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "personal-center-local.log",
+      "logSha256": "b4ea5db2d3b50f345ab829eb17912cd50897a19444f0504bb74807e096275b98",
+      "logCompletedAt": "2026-09-16T22:44:27.962Z"
+    },
+    {
+      "label": "candidate full Node",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\"",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "candidate-node-final.log",
+      "logSha256": "23b80699f3c12129598779b2949e9bf57a15da715aa77494b0a3da1c47b8eff5",
+      "logCompletedAt": "2026-09-16T22:45:44.715Z",
+      "counts": {
+        "tests": 2534,
+        "pass": 2534,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "label": "lint",
+      "command": "npm run lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "lint-final.log",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762",
+      "logCompletedAt": "2026-09-16T22:45:45.246Z"
+    },
+    {
+      "label": "typecheck",
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "typecheck-final.log",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+      "logCompletedAt": "2026-09-16T22:39:27.630Z"
+    },
+    {
+      "label": "build",
+      "command": "npm run build",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "build-final.log",
+      "logSha256": "fe4407f684c56b55196aeaecc674ce6ba022b9a5ed4a5e8e9e22262fd0999659",
+      "logCompletedAt": "2026-09-16T22:45:21.336Z"
+    },
+    {
+      "label": "deploy formatting",
+      "command": "npm run format:check:deploy",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "format-deploy.log",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "logCompletedAt": "2026-09-16T22:45:36.052Z"
+    },
+    {
+      "label": "deployment environment",
+      "command": "npm run deploy:validate:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "deploy-validate.log",
+      "logSha256": "13479cb403e8999d4632848363666eb7426eb39724762c7b301a2ee89d646f1e",
+      "logCompletedAt": "2026-09-16T22:45:36.866Z"
+    },
+    {
+      "label": "standalone build",
+      "command": "npm run deploy:build:local",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "deploy-build.log",
+      "logSha256": "4301d5bbde5b9a688d9a4e4ec01280352ea9093ffefdcbd548a2ce70b38f300d",
+      "logCompletedAt": "2026-09-16T22:46:11.629Z"
+    },
+    {
+      "label": "standalone audit",
+      "command": "npm run deploy:verify-artifact",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "deploy-verify.log",
+      "logSha256": "5ea494436c22fefa9d6e5a40d682ffcf6be3c58415a2ec11ba533f565647e38c",
+      "logCompletedAt": "2026-09-16T22:46:13.492Z"
+    },
+    {
+      "label": "explicit Local stop",
+      "command": "npm run db:stop",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "db-stop.log",
+      "logSha256": "d8d601c847317969e5aa4665b3e5ba5cce0d4b766ab20a42d2d426f5e9b3af8c",
+      "logCompletedAt": "2026-09-16T22:46:15.720Z"
+    },
+    {
+      "label": "Task-owned formatting",
+      "command": "npx prettier --check docs/qa/TASK-063/*.json docs/qa/TASK-063/*.md docs/tasks/*TASK-063*.md docs/architecture/engine-transaction-apply.md",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "task-format.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "label": "whitespace",
+      "command": "git diff --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "logFile": "diff-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "focusedRuntime": {
+    "status": "PASS",
+    "realLocalAuth": true,
+    "concurrencyPoolSize": 6,
+    "unknownCommit": "deterministic acknowledgement fault; real committed DB reconciliation (not live network failure)",
+    "cases": [
+      {
+        "name": "owner UPDATE_TIME canonical round-trip and exact resulting revisions; unrelated plan unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "owner REORDER_ITEMS commits exact accepted order",
+        "status": "PASS"
+      },
+      {
+        "name": "stale tripRevision changes no Trip/audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "stale planRevision changes no Trip/audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "cross-user and nonexistent targets are indistinguishable and reveal no target details",
+        "status": "PASS"
+      },
+      {
+        "name": "real anonymous client and actorRef mismatch fail closed",
+        "status": "PASS"
+      },
+      {
+        "name": "system_hard_lock cannot mutate",
+        "status": "PASS"
+      },
+      {
+        "name": "booking_lock cannot mutate",
+        "status": "PASS"
+      },
+      {
+        "name": "payment_lock cannot mutate",
+        "status": "PASS"
+      },
+      {
+        "name": "user_lock cannot mutate",
+        "status": "PASS"
+      },
+      {
+        "name": "protected context requires confirmation; replay retains original requirement; client grant rejected",
+        "status": "PASS"
+      },
+      {
+        "name": "reorder of protected items is unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "source ai remains unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "source system remains unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "source provider_event remains unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "all other recognized operation shapes remain unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "same key/payload replay uses committed original result despite newer DB version",
+        "status": "PASS"
+      },
+      {
+        "name": "same key different payload/target conflicts without mutation",
+        "status": "PASS"
+      },
+      {
+        "name": "same key in different actors has independent ownership scope",
+        "status": "PASS"
+      },
+      {
+        "name": "concurrent same key on distinct DB sessions commits once",
+        "status": "PASS"
+      },
+      {
+        "name": "different keys at same base cannot overwrite one another",
+        "status": "PASS"
+      },
+      {
+        "name": "DB change after caller preview is reevaluated from authoritative snapshot",
+        "status": "PASS"
+      },
+      {
+        "name": "resolver receives detached state; access is always bound by verified service",
+        "status": "PASS"
+      },
+      {
+        "name": "forced outbox insert failure rolls back Trip, terminal receipt and audit; same-key retry works",
+        "status": "PASS"
+      },
+      {
+        "name": "deterministic lost COMMIT acknowledgement reconciles actual committed Local receipt",
+        "status": "PASS"
+      },
+      {
+        "name": "unknown outcome never invents rollback; later original-key reconciliation returns real commit",
+        "status": "PASS"
+      },
+      {
+        "name": "authenticated and anonymous roles cannot read/forge Engine metadata",
+        "status": "PASS"
+      },
+      {
+        "name": "receipt metadata is minimal and exactly one accepted audit/pending outbox per accepted decision",
+        "status": "PASS"
+      },
+      {
+        "name": "real concurrent key lock wait uses distinct PostgreSQL sessions",
+        "status": "PASS"
+      },
+      {
+        "name": "booking evidence and soft duration policy never bypass apply gates",
+        "status": "PASS"
+      },
+      {
+        "name": "known deferred COMMIT constraint rejection is rollback, with no terminal/audit/outbox",
+        "status": "PASS"
+      },
+      {
+        "name": "post-COMMIT read serialization failure cannot misreport rollback",
+        "status": "PASS"
+      },
+      {
+        "name": "target deletion retains safe receipt replay until account deletion",
+        "status": "PASS"
+      },
+      {
+        "name": "public account deletion cascades Engine receipts/audits/outbox and Trip/Profile; other owner preserved",
+        "status": "PASS"
+      }
+    ],
+    "cleanup": {
+      "authUsers": 0,
+      "engine_apply_receipts": 0,
+      "engine_apply_audits": 0,
+      "engine_apply_outbox": 0
+    }
+  },
+  "migrationReplays": {
+    "status": "PASS",
+    "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+    "commands": [
+      {
+        "label": "replay-start",
+        "started": "2026-09-16T22:36:37.217Z",
+        "finished": "2026-09-16T22:36:39.059Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-initial-status",
+        "started": "2026-09-16T22:36:39.059Z",
+        "finished": "2026-09-16T22:36:40.786Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-reset",
+        "started": "2026-09-16T22:36:42.058Z",
+        "finished": "2026-09-16T22:37:22.132Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-types",
+        "started": "2026-09-16T22:37:22.132Z",
+        "finished": "2026-09-16T22:37:25.943Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-static",
+        "started": "2026-09-16T22:37:25.943Z",
+        "finished": "2026-09-16T22:37:27.032Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-1-runtime",
+        "started": "2026-09-16T22:37:27.032Z",
+        "finished": "2026-09-16T22:37:34.382Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-reset",
+        "started": "2026-09-16T22:37:35.452Z",
+        "finished": "2026-09-16T22:38:13.839Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-types",
+        "started": "2026-09-16T22:38:13.840Z",
+        "finished": "2026-09-16T22:38:17.698Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-static",
+        "started": "2026-09-16T22:38:17.699Z",
+        "finished": "2026-09-16T22:38:18.898Z",
+        "exitCode": 0
+      },
+      {
+        "label": "replay-2-runtime",
+        "started": "2026-09-16T22:38:18.898Z",
+        "finished": "2026-09-16T22:38:26.332Z",
+        "exitCode": 0
+      }
+    ],
+    "replays": [
+      {
+        "pass": 1,
+        "generatedTypesSha256": "2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48",
+        "catalogSha256": "47402cd348fc39a5e5c1dc72f956067ebc4f5e1ea49f34fa88a3a2f228ac52d9",
+        "runtime": {
+          "status": "PASS",
+          "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+          "completed": [
+            "replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree",
+            "positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions",
+            "RPC cross-owner update/delete and foreign membership fail without aggregate changes",
+            "accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay",
+            "DELETE /api/account removes populated owner and all eight B families, preserving second user"
+          ],
+          "generatedTypesSha256": "2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48",
+          "realAuthUsers": 2,
+          "productionStagingMutation": false
+        }
+      },
+      {
+        "pass": 2,
+        "generatedTypesSha256": "2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48",
+        "catalogSha256": "47402cd348fc39a5e5c1dc72f956067ebc4f5e1ea49f34fa88a3a2f228ac52d9",
+        "runtime": {
+          "status": "PASS",
+          "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+          "completed": [
+            "replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree",
+            "positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions",
+            "RPC cross-owner update/delete and foreign membership fail without aggregate changes",
+            "accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay",
+            "DELETE /api/account removes populated owner and all eight B families, preserving second user"
+          ],
+          "generatedTypesSha256": "2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48",
+          "realAuthUsers": 2,
+          "productionStagingMutation": false
+        }
+      }
+    ],
+    "historicalAuditBaselineMeaning": "TASK-054's original eight-family immutable manifest; TASK-063 execution base is recorded above",
+    "tableCount": 15,
+    "oldMigrations": [
+      {
+        "file": "supabase/migrations/20260908083000_create_user_profile_schema.sql",
+        "sha256": "04155bd2e4673eb971a39b5a9d4941d3ba8d57d05f8c648fa67ba508c4c94606",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260908150000_create_trip_plan_schema.sql",
+        "sha256": "9d79cdc32075cb8ba821d53ed07c88239e7e65636ddfcd63b7eab251161190af",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260908150100_add_trip_plan_rls_revision.sql",
+        "sha256": "40a7e77bd85adc0e4279335e68746a70bb2e05244a6b1441197a301be078919c",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260911090000_create_travel_preferences.sql",
+        "sha256": "46598b54fb008353a1b1b8dcfb5513bf9abdafb95adcaac51d503586c17ea48a",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260911100000_create_companion_schema.sql",
+        "sha256": "4143775d488293bb6946dcc82e4617095bc6eb752be79012c40c228cb112211b",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260912090000_add_companion_transaction_api.sql",
+        "sha256": "3036ea718306f10e8daef5c788a6ca6a54b18330ea0d95e0f2b31287bfa26cd6",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260912100000_create_trip_library_records.sql",
+        "sha256": "21c9750a750fd39859c04ef65dd074666ab3776df18f967dd79e7d4eecffcd3b",
+        "unchanged": true
+      },
+      {
+        "file": "supabase/migrations/20260912120000_trip_library_creation_intent.sql",
+        "sha256": "f4a812c648c615a4c0c98e751c9d12ebf06ad5ea360616b039f405c338f0e47c",
+        "unchanged": true
+      }
+    ]
+  },
+  "personalCenterAggregate": {
+    "task": "TASK-055-B",
+    "mode": "local",
+    "status": "PASS",
+    "inventorySha256": "c52843b7ea3ea282ecd4917fba565a11729adf1986b40825b0734a327ed9bb1b",
+    "started": "2026-09-16T22:39:25.832Z",
+    "suites": [
+      {
+        "file": "tests/task-016-client-bundle.mjs",
+        "counts": null
+      },
+      {
+        "file": "tests/task-016-user-profile.runtime.mjs",
+        "counts": {
+          "tests": 25,
+          "pass": 25,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-018-authentication.runtime.mjs",
+        "counts": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-018-client-bundle.mjs",
+        "counts": null
+      },
+      {
+        "file": "tests/task-042-preference-schema.runtime.mjs",
+        "counts": {
+          "tests": 505,
+          "pass": 505,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-044-companion-schema.runtime.mjs",
+        "counts": {
+          "tests": 147,
+          "pass": 147,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-045-preference-api.runtime.mjs",
+        "counts": {
+          "tests": 17,
+          "pass": 17,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-046-preference-contract.runtime.mjs",
+        "counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-047-companion-api.runtime.mjs",
+        "counts": {
+          "tests": 22,
+          "pass": 22,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-048-trip-persistence-model.runtime.mjs",
+        "counts": {
+          "tests": 29,
+          "pass": 29,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-049-trip-library-api.runtime.mjs",
+        "counts": {
+          "tests": 35,
+          "pass": 35,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-050-profile-api.runtime.mjs",
+        "counts": {
+          "tests": 25,
+          "pass": 25,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-052-account-deletion.runtime.mjs",
+        "counts": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-053-preference-presets.runtime.mjs",
+        "counts": {
+          "tests": 21,
+          "pass": 21,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "file": "tests/task-054-personal-center-migration.runtime.mjs",
+        "counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      }
+    ],
+    "checks": [
+      {
+        "label": "db-start",
+        "args": ["tools/db/local.mjs", "start"],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:25.888Z",
+        "finished": "2026-09-16T22:39:27.681Z",
+        "logSha256": "5de9ac4c13956b902cdc03c92e4fb10c28b492ab35ad2d14415c2aa1f280dff1"
+      },
+      {
+        "label": "db-types",
+        "args": ["tools/db/local.mjs", "types"],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:28.945Z",
+        "finished": "2026-09-16T22:39:32.965Z",
+        "logSha256": "e89d5be051e85360a48c5706c26f9c6fd88945a70064427ecea74fc1cd8d588b"
+      },
+      {
+        "label": "task-016-client-bundle",
+        "args": ["tests/task-016-client-bundle.mjs"],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:32.967Z",
+        "finished": "2026-09-16T22:39:33.081Z",
+        "logSha256": "361db8718e0a1f702963be45b8aac2fef255ffa7f5c974e94479ba68b2ece32e",
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-016-user-profile.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-016-user-profile.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:33.102Z",
+        "finished": "2026-09-16T22:39:35.892Z",
+        "logSha256": "500c9a659ecd6e90ed5ca18b1d2068f54cd4ba59dfadb9b8126e0dc56b020916",
+        "counts": {
+          "tests": 25,
+          "pass": 25,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-018-authentication.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-018-authentication.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:35.918Z",
+        "finished": "2026-09-16T22:39:51.374Z",
+        "logSha256": "63cf1ecc7b5c1d378f0aa57a7a124052eaa983d201eb7ac5cded3335eb538bdd",
+        "counts": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-018-client-bundle",
+        "args": ["tests/task-018-client-bundle.mjs"],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:51.390Z",
+        "finished": "2026-09-16T22:39:51.660Z",
+        "logSha256": "48e24974407078fd569a0087703b9a511e685b160e5e8c1e81aba8d8f13c4f3b",
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-042-preference-schema.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-042-preference-schema.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:51.675Z",
+        "finished": "2026-09-16T22:39:57.461Z",
+        "logSha256": "e8e2277dc76af1aadb1521818003a9a28db9b683d4b3807b7e51301ce97c78fc",
+        "counts": {
+          "tests": 505,
+          "pass": 505,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-044-companion-schema.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-044-companion-schema.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:39:57.479Z",
+        "finished": "2026-09-16T22:40:03.263Z",
+        "logSha256": "5b62d09826dcacf02501c9b981d0e7ddc3724437a743d789d682c39edd1174eb",
+        "counts": {
+          "tests": 147,
+          "pass": 147,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-045-preference-api.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-045-preference-api.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:40:03.278Z",
+        "finished": "2026-09-16T22:40:26.689Z",
+        "logSha256": "415b79ec6de8eea2c827f602adfa4364915eb64970e45d047ceee517295388bd",
+        "counts": {
+          "tests": 17,
+          "pass": 17,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-046-preference-contract.runtime",
+        "args": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-046-preference-contract.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:40:26.708Z",
+        "finished": "2026-09-16T22:40:38.217Z",
+        "logSha256": "de7cfd96c6ccf0117c5544ffdcd15ebffc6c0b7488c84b6e0d29de38b2e1d92f",
+        "counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-047-companion-api.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-047-companion-api.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:40:38.231Z",
+        "finished": "2026-09-16T22:42:15.940Z",
+        "logSha256": "69065901369771d54f51a50e24101699f5eb2c67922b815b63223b4f09c9a956",
+        "counts": {
+          "tests": 22,
+          "pass": 22,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-048-trip-persistence-model.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-048-trip-persistence-model.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:42:15.958Z",
+        "finished": "2026-09-16T22:42:24.119Z",
+        "logSha256": "4c0dfd3f68b497ac1c23cc1b80b22654a26d0256db81a4ce5dd51c9a27f5ba4a",
+        "counts": {
+          "tests": 29,
+          "pass": 29,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-049-trip-library-api.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-049-trip-library-api.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:42:24.134Z",
+        "finished": "2026-09-16T22:42:46.227Z",
+        "logSha256": "881e06cb83f54b462311ff48ab225e9a16cc3a65b8776eb57028c21aa8522dd3",
+        "counts": {
+          "tests": 35,
+          "pass": 35,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-050-profile-api.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-050-profile-api.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:42:46.242Z",
+        "finished": "2026-09-16T22:43:11.996Z",
+        "logSha256": "50e45e8a0b20ad2ae9b0965dd6ca7db49fac6f7deccaba239589f4f53d31cd2e",
+        "counts": {
+          "tests": 25,
+          "pass": 25,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-052-account-deletion.runtime",
+        "args": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-052-account-deletion.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:43:12.010Z",
+        "finished": "2026-09-16T22:43:51.603Z",
+        "logSha256": "e8cf87e6a328b0ac2c516deebe0f541f0cdc6d8d555bce56fb4905816ff5c332",
+        "counts": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-053-preference-presets.runtime",
+        "args": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-053-preference-presets.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:43:51.618Z",
+        "finished": "2026-09-16T22:44:12.133Z",
+        "logSha256": "ffc9da9fbd529c5dad828314f580b1c0618281b4f9964d0586b6cd1609eab5fe",
+        "counts": {
+          "tests": 21,
+          "pass": 21,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "task-054-personal-center-migration.runtime",
+        "args": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test-reporter=tap",
+          "--test",
+          "tests/task-054-personal-center-migration.runtime.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:44:12.146Z",
+        "finished": "2026-09-16T22:44:19.520Z",
+        "logSha256": "d88dddeaf4c42c69eeea4352d043d08019d8b990a48f550a632bc9bcb638eb7f",
+        "counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "cleanup": {
+          "auth.users": 0,
+          "public.profiles": 0,
+          "public.profile_settings": 0,
+          "public.emergency_contacts": 0,
+          "public.travel_preferences": 0,
+          "public.companions": 0,
+          "public.companion_groups": 0,
+          "public.companion_group_members": 0,
+          "public.trip_library_records": 0,
+          "storage.objects": 0,
+          "storage.buckets": 0
+        }
+      },
+      {
+        "label": "db-final-status",
+        "args": ["tools/db/local.mjs", "status"],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:44:19.556Z",
+        "finished": "2026-09-16T22:44:20.877Z",
+        "logSha256": "544badfbfa805592f617e16bfa20994c29a00379396d19660d6a384885f02197"
+      },
+      {
+        "label": "db-stop",
+        "args": ["tools/db/local.mjs", "stop"],
+        "exitCode": 0,
+        "signal": null,
+        "started": "2026-09-16T22:44:20.879Z",
+        "finished": "2026-09-16T22:44:27.958Z",
+        "logSha256": "e0b75b50870edb3899cedd42ad98f0196b2581265aed0521952e3440d78f10d8"
+      }
+    ],
+    "before": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "generatedTypesSha256": "2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48",
+    "after": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "finished": "2026-09-16T22:44:27.960Z"
+  },
+  "implementationFiles": [
+    {
+      "file": "src/server/engine/apply.ts",
+      "sha256": "e51fec081c44caf1cd1052ef12d882fbcee7b229b355451a69d10d33f6841257"
+    },
+    {
+      "file": "src/server/engine/apply-result.ts",
+      "sha256": "c5ee310729bc7dcd08a0bf6c8ffce8b697fbe3aa9496d136e9d44a8f9d6842ce"
+    },
+    {
+      "file": "src/server/trips/transaction.ts",
+      "sha256": "d28d4cc2e54003e3e7f45922be990cfeda5d3af4f7225a0d99dd07180a1a7d34"
+    },
+    {
+      "file": "src/server/trips/repository.ts",
+      "sha256": "9bc634e820d182dd50b809d1e78246b35468f0960acb55b2fbe56aa514f0d984"
+    },
+    {
+      "file": "src/db/schema/engine-apply.ts",
+      "sha256": "5890c45f8a46438133db59dcaae91a63dffbbeb616ef8e9c05af312662bd31b0"
+    },
+    {
+      "file": "src/db/schema/index.ts",
+      "sha256": "905f60f329d8243c9fe3eeb99453e47c1310928ddd814833d3cf696212401a24"
+    },
+    {
+      "file": "src/types/database.generated.ts",
+      "sha256": "2fae0ed89511b70dbadeb34b3aa8ba245630d902dcfa2dad7de3af04f665bd48"
+    },
+    {
+      "file": "supabase/migrations/20260917090000_create_engine_apply.sql",
+      "sha256": "aa3e2d368e749a898448d54d63e85a26fde0580401d4dac711b355a09f015319"
+    },
+    {
+      "file": "tests/task-063-engine-apply.test.mjs",
+      "sha256": "8554011c0ab91e0f67624d05dca04794c523c185c0482941dfde7e942ca19348"
+    },
+    {
+      "file": "tests/task-063-engine-apply.runtime.mjs",
+      "sha256": "c1dfc3afa27c98ad654189e45f0b8a287671d3c59eba1d2d1810dfbe6a5f6fca"
+    },
+    {
+      "file": "tests/task-063-fixtures.mjs",
+      "sha256": "1f223b056bad4c7b91bcf0aff80497033bd2a0096e0cee5f12e52492f4c2aced"
+    },
+    {
+      "file": "tests/task-062-schema-union.test.mjs",
+      "sha256": "03af165317c8f429bf9cd006d60629734f554955a7350d9a8c33dde8e8961dc2"
+    }
+  ],
+  "ci": {
+    "required": "quality-gate.yml workflow_dispatch at exact final pushed head",
+    "proofLocation": "Draft PR description and final delivery receipt",
+    "selfReferentialCommitShaNotInvented": true,
+    "pullRequest": {
+      "number": 382,
+      "url": "https://github.com/kanzakimy0/TravelAssist/pull/382",
+      "state": "MERGED",
+      "isDraft": false
+    },
+    "status": "PASS",
+    "event": "workflow_dispatch",
+    "headSha": "03136fb82bab6ef0283af0b53ece85b08ae18a3f",
+    "runId": 35159440565,
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/35159440565",
+    "nodeTests": 2534
+  },
+  "scope": {
+    "operations": ["UPDATE_TIME", "REORDER_ITEMS"],
+    "source": "user",
+    "confirmationGrants": false,
+    "productionStagingMutation": false,
+    "liveProviderCalls": false,
+    "outboxDelivery": false,
+    "rollbackExecution": false,
+    "wbs423Started": false,
+    "wbs424Started": false
+  },
+  "initialFailures": [
+    {
+      "gate": "initial typecheck",
+      "cause": "Incomplete mechanical writer extraction",
+      "resolution": "Completed extraction and existing Trip regressions passed"
+    },
+    {
+      "gate": "initial TASK-063 Local loader",
+      "cause": "Planner loader does not resolve existing 4.21 directory indexes",
+      "resolution": "Used existing route loader; no 4.21 runtime changes"
+    },
+    {
+      "gate": "first Local acceptance",
+      "cause": "Test expected 200 instead of existing account-delete 204",
+      "resolution": "Corrected to established API contract; actual cascade verified"
+    },
+    {
+      "gate": "added deferred-COMMIT fixture",
+      "cause": "Dollar-quote fixture typo",
+      "resolution": "Corrected SQL; real deferred COMMIT rejection passed"
+    },
+    {
+      "gate": "commit boundary review",
+      "cause": "Acknowledged COMMIT must not be mistaken for rollback after read failure",
+      "resolution": "Separate acknowledgement state and real-commit fault regression"
+    }
+  ],
+  "countWarning": "Focused, wrapper and aggregate tests overlap; do not add totals.",
+  "localArtifactProvenance": "Built from the tested candidate working tree before its first commit. The local deployment manifest labels the then-current checkout HEAD (execution base); implementationFiles binds the actual tested code. Exact final-head GitHub CI rebuilds and verifies its own committed artifact.",
+  "implementationCommit": "c95bb5b38532c6f29400b2639c47d63c667163a2",
+  "closeout": {
+    "userAccepted": true,
+    "explicitMergeAndIssueClosureAuthorized": true,
+    "acceptedHead": "03136fb82bab6ef0283af0b53ece85b08ae18a3f",
+    "mergeCommit": "47c9f48c371ba42faf646bef87ad7ca7a8ee3f66",
+    "mergedAt": "2026-09-16T23:28:28Z",
+    "mergeTreeEqualsAcceptedTree": true,
+    "wbs422": "B / 已完成",
+    "issue380": "Closed / Completed",
+    "changes": "Documentation and tracking only",
+    "wbs423Started": false,
+    "wbs424Started": false
+  }
+}

@@ -1,3 +1,4 @@
+import { StateNotice } from "../../../components/ui/state-notice";
 import { displayRouteColor } from "../map/route-color";
 import {
   useEffect,
@@ -29,6 +30,8 @@ export function PlannerMapShell({
   state,
   dispatch,
   suppressQuickCard = false,
+  mapPickMode = false,
+  onMapPick,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
@@ -37,6 +40,8 @@ export function PlannerMapShell({
   state: TripState;
   dispatch: Dispatch<TripAction>;
   suppressQuickCard?: boolean;
+  mapPickMode?: boolean;
+  onMapPick?: (coordinates: Coordinates) => void;
 }) {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const container = useRef<HTMLDivElement>(null);
@@ -44,6 +49,8 @@ export function PlannerMapShell({
   const latest = useRef(view);
   const hints = useRef(travelHints);
   const geography = useRef(terrain);
+  const pickMode = useRef(mapPickMode);
+  const pickHandler = useRef(onMapPick);
   const [mapStatus, setMapStatus] = useState(
     token
       ? "正在加载 Mapbox · 暂用示意地图"
@@ -78,6 +85,8 @@ export function PlannerMapShell({
       () => dismiss(),
       setAnchor,
       () => !cancelled,
+      () => pickMode.current,
+      (coordinates) => pickHandler.current?.(coordinates),
     )
       .then((mounted) => {
         if (cancelled) mounted?.destroy();
@@ -101,11 +110,25 @@ export function PlannerMapShell({
     session.current?.setTerrain(terrain);
   }, [terrain]);
   useEffect(() => {
+    pickMode.current = mapPickMode;
+  }, [mapPickMode]);
+  useEffect(() => {
+    pickHandler.current = onMapPick;
+  }, [onMapPick]);
+  useEffect(() => {
     latest.current = view;
     hints.current = travelHints;
     session.current?.update(view);
   }, [view, travelHints]);
   const live = mapStatus.startsWith("Mapbox 底图");
+  const loadingMap = Boolean(token) && mapStatus.startsWith("正在加载");
+  const safeMapStatus = live
+    ? "地图已载入"
+    : loadingMap
+      ? "正在加载地图；暂用示意图"
+      : token
+        ? "地图暂时不可用；保留示意图"
+        : "示意地图 · 底图未启用";
   const layout = schematicLayout(view, bounds.width, bounds.height);
   const feature = view.places.find(
     (p) =>
@@ -125,6 +148,7 @@ export function PlannerMapShell({
       className={styles.mapCanvas}
       data-map-range={view.range}
       data-map-engine={live ? "mapbox" : "fallback"}
+      data-map-pick={mapPickMode || undefined}
     >
       <div
         ref={container}
@@ -141,10 +165,12 @@ export function PlannerMapShell({
           onDismiss={() =>
             dispatch({ type: "ui", patch: { inspection: null } })
           }
+          pickMode={mapPickMode}
+          onPick={(coordinates) => pickHandler.current?.(coordinates)}
         />
       )}
       <div className={styles.mapInfo}>
-        <p role="status">{mapStatus}</p>
+        <p role="status">{safeMapStatus}</p>
         <small>
           {view.range === "all"
             ? "城市 / 住宿结构 / 城际移动"
@@ -157,6 +183,24 @@ export function PlannerMapShell({
           地图地点列表 · {view.places.length + view.areas.length}
         </summary>
         <div role="group" aria-label="地图等价操作列表">
+          {!live && (
+            <StateNotice
+              compact
+              announcement="off"
+              kind={loadingMap ? "loading" : "degraded"}
+              title={safeMapStatus}
+              description="可以继续查看地点列表；当前示意图不代表真实道路。"
+            />
+          )}
+          {view.places.length + view.areas.length === 0 && (
+            <StateNotice
+              compact
+              announcement="off"
+              kind="empty"
+              title="当前范围没有可展示地点"
+              description="请调整现有日期或图层；其他行程内容保持不变。"
+            />
+          )}
           {view.areas.map((area) => (
             <button
               key={area.id}
@@ -221,12 +265,16 @@ function SchematicMap({
   terrain,
   travelHints,
   onDismiss,
+  pickMode,
+  onPick,
 }: {
   view: MapView;
   onSelect: (id: string, tripItemId?: string) => void;
   terrain: boolean;
   travelHints: Record<string, string>;
   onDismiss: () => void;
+  pickMode: boolean;
+  onPick: (coordinates: Coordinates) => void;
 }) {
   const svg = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ width: 1000, height: 600 });
@@ -239,7 +287,11 @@ function SchematicMap({
     observer.observe(svg.current);
     return () => observer.disconnect();
   }, []);
-  const { project, positions } = schematicLayout(view, size.width, size.height);
+  const { project, unproject, positions } = schematicLayout(
+    view,
+    size.width,
+    size.height,
+  );
   const path = (points: Coordinates[]) =>
     points.map((p, i) => `${i ? "L" : "M"}${project(p).join(",")}`).join(" ");
   return (
@@ -250,6 +302,15 @@ function SchematicMap({
       aria-label="行程示意地图，路线非真实道路"
       role="group"
       onClick={(e) => {
+        if (pickMode) {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const point: Coordinates = [
+            ((e.clientX - rect.left) / rect.width) * size.width,
+            ((e.clientY - rect.top) / rect.height) * size.height,
+          ];
+          onPick(unproject(point));
+          return;
+        }
         if (!(e.target as Element).closest('[role="button"]')) onDismiss();
       }}
     >

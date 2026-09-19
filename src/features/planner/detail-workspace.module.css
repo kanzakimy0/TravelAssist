@@ -401,8 +401,11 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 0 0 6px;
   min-width: 0;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
   scrollbar-width: thin;
 }
 .projectTypes {
@@ -436,13 +439,17 @@
 
 .daySelector button {
   display: grid;
-  min-width: 160px;
+  flex: 1 1 clamp(96px, 11vw, 168px);
+  min-width: 96px;
+  min-height: 44px;
   padding: 7px 12px;
   border: 1px solid var(--planner-border);
   border-radius: 12px;
   background: var(--color-bg-elevated);
   color: inherit;
   text-align: left;
+  white-space: nowrap;
+  scroll-snap-align: start;
 }
 
 .daySelector button[aria-pressed="true"] {
@@ -689,10 +696,21 @@
 }
 
 .itemDialog header > button {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 38px;
   width: 38px;
+  height: 38px;
   padding: 0;
   border-radius: 50%;
-  font-size: 22px;
+  line-height: 0;
+}
+
+.itemDialog header > button svg {
+  display: block;
+  width: 19px;
+  height: 19px;
 }
 
 .dialogStatus {
@@ -933,6 +951,29 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+}
+.coordinateFields .mapPickButton {
+  grid-column: 1 / -1;
+  min-height: 38px;
+  border-color: #78a9c7;
+  background: #edf7fc;
+  color: #2c6689;
+  font-weight: 700;
+}
+.coordinateFields .mapPickButton[aria-pressed="true"] {
+  border-color: #367faf;
+  background: #cbe9fa;
+  box-shadow: 0 0 0 3px #8bc4e33d;
+}
+.mapPickStatus {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: 9px;
+  background: #e9f5fb;
+  color: #2c6689;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
 }
 .locationCandidates {
   display: grid;

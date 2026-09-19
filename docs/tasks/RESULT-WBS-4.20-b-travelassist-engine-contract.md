@@ -1,5 +1,7 @@
 # TASK-WBS-4.20-B Result
 
+> 历史Result正文保留原交付状态与检查结果；2026-09-10最终冻结结论见文末及 [Final Closeout Result](RESULT-WBS-4.20-b-engine-contract-final-closeout.md)。
+
 ## Status
 
 待验收 / Contract Review Candidate。WBS 4.20 的契约设计已交付，尚未 frozen、未合入 `develop`。Issue #201 保持 Open；4.21–4.24 均未启动。
@@ -91,3 +93,13 @@ A 继续拥有 Planner/Detail、4.16、4.17、AI Orchestrator、Map/Route Provid
 - 4.24：未开始。
 
 只有用户验收且 Draft PR 合入 `develop` 后，4.20 才可标记“已完成”并关闭 #201。
+
+## Final Contract Freeze / Closeout（2026-09-10）
+
+原设计随后由PR #237合入develop（merge `5383501192359abbd06c4585311d0362e9e7dbea`），#238保留历史Review Gate；上文“未合入/PENDING”属于当时交付记录，不改写为当时已验收。
+
+本次用户授权最终关闭父级Review Gate。4.20.1已验收合并（#283），4.21已证明现有Contract可实现并验收合并（#288/#290）。审计未发现必须修改4.20核心语义的Contract Freeze Blocker。
+
+Engine Contract v0.1 = Frozen；WBS 4.20 = B / 已完成；Issue #201按本次授权关闭为Completed。§22及§24.8全部21个OD保留，当前分类与Owner/Dependency/Future WBS见Contract §25；未来实现问题不再阻止父级完成，但仍阻止对应能力在依赖未就绪时启用。
+
+完整结果与独立文档PR见 [Final Closeout Result](RESULT-WBS-4.20-b-engine-contract-final-closeout.md)。本次PR待用户确认，不自动合并。保留本历史Result的27项格式基线，以及4.20.1/4.21原有baseline记录；无runtime、资产、测试、DB/API修改，不启动4.22。

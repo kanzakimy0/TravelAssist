@@ -1,0 +1,106 @@
+{
+  "task": "TASK-060-B",
+  "status": "PASS",
+  "base": "3559afad2edfcfdda766942652a9b5090b75369c",
+  "gates": [
+    {
+      "name": "build",
+      "exitCode": 0
+    },
+    {
+      "name": "deploy-validate",
+      "exitCode": 0
+    },
+    {
+      "name": "deploy-build",
+      "exitCode": 0
+    },
+    {
+      "name": "deploy-verify",
+      "exitCode": 0
+    },
+    {
+      "name": "lint",
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "exitCode": 0
+    },
+    {
+      "name": "format",
+      "exitCode": 0
+    }
+  ],
+  "unit": {
+    "pass": 5,
+    "fail": 0
+  },
+  "fullRepository": {
+    "tests": 2498,
+    "pass": 2498,
+    "fail": 0,
+    "skip": 0
+  },
+  "profileApiLocal": {
+    "tests": 25,
+    "pass": 25,
+    "fail": 0,
+    "skip": 0
+  },
+  "browser": {
+    "task": "TASK-060-B",
+    "completed": [
+      "empty real account and verified Auth contact without demo data",
+      "browser saves all Profile/Settings fields, navigation/reload/relogin retain canonical values",
+      "failed PATCH preserves draft, has no false success, cancel keeps server state",
+      "contact create/update/delete persists independently of unsaved Profile edits",
+      "second mobile user stays isolated and can save its own Profile"
+    ],
+    "stage": "second mobile user stays isolated and can save its own Profile",
+    "cleanupErrors": [],
+    "remaining": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "localOnly": true,
+    "browser": "Edge",
+    "users": 2,
+    "viewports": ["1440x900", "390x844"],
+    "failureInjection": "one explicit PATCH 503; all persistence assertions use real Local API/Auth/DB"
+  },
+  "localRuntimeStopped": true,
+  "sourceSha256": {
+    "src/features/profile/profile-account.tsx": "cbad7551b2656c3977ff3b2bcecd82bd43ff68ecd7d4c708456ad077d19b4520",
+    "src/features/profile/profile-data.ts": "71dbac90d272bf7011ba8a6401e77e03c704d896de1ec8a0bf15c026402a5408",
+    "src/features/profile/persistence/profile-adapter.ts": "9a40449d72a1a07358bc40aa18aa5390028450da4788044903a1f1ca92c7118f",
+    "src/features/profile/persistence/profile-client.ts": "95f2725ee79485b1546c0f32e6b0d0d27d60b38ed2106562d197b99f28f82303",
+    "src/features/profile/persistence/use-profile-resource.ts": "a8e3319aaa0b72573bcb96a37795d42b748686d3542ad0d0cf33c805c37535d8",
+    "tests/task-060-profile-ui.test.mjs": "980f433cd2aae2c5c26652ff3ddbde6d964bd5382bfbced5befb8ac5b9bb09b8",
+    "tests/task-060-profile-ui.runtime.mjs": "3bb92b6ef260acc031934acd879894b16d451ca5683ed2154ae4ffc5bd162b18",
+    "tests/wbs-5.4-v2.test.mjs": "91f33a6c20dc22c31a5beb02b2819085aa8d167a28ec1e8a0dc97379fe11d2b2",
+    "package.json": "29e6e2d489b3d2a334c8a0dc779a3bf6387b65261d412e3a65236240ddfdf597"
+  },
+  "initialFailures": [
+    {
+      "test": "TASK-013 asset nightly dry-run",
+      "reason": "30 second timeout while full regression overlapped local startup; complete repository run passed without overlapping heavy jobs",
+      "change": "no asset test or timeout change"
+    },
+    {
+      "test": "WBS 5.4 legacy UI boundary",
+      "reason": "historical assertion expected in-memory avatar upload; updated only the superseded integration boundary and unavailable upload copy",
+      "change": "retained route, navigation, account entries, guarded edits and private-client boundary checks"
+    }
+  ],
+  "githubQualityGate": "Exact final source head and workflow_dispatch run are recorded in the PR body before authorized merge."
+}

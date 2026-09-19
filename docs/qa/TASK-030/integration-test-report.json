@@ -1,0 +1,57 @@
+{
+  "latestDevelop": "1df4604029b00a2047543b08bb4e9788e9e61652",
+  "integrationMergeCommit": "fbcee287f352e03955082d88206a3fecc372aca2",
+  "previousHead": "e5806db560db9268fabbae424fd233cec2af928f",
+  "divergenceBefore": {
+    "ahead": 5,
+    "behind": 3
+  },
+  "conflicts": [],
+  "upstreamFiles": [
+    "docs/project/WBS-3.4-owner-correction.md",
+    "docs/tasks/CODEX-TASK-031-b-main-account-entry-closeout.md",
+    "docs/tasks/TASK-031-b-main-account-entry-closeout.md"
+  ],
+  "runtimeAndTestCodeChanged": false,
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "task030": {
+      "tests": 3,
+      "pass": 3,
+      "fail": 0
+    },
+    "full": {
+      "tests": 713,
+      "pass": 711,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "latestUnmodifiedBaseline": {
+      "tests": 710,
+      "pass": 708,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "fullFailures": [
+    "nightly --verify-only does not write canonical catalogs",
+    "complete library passes file, schema, hash, rights and protected checks"
+  ],
+  "baselineFailures": [
+    "nightly --verify-only does not write canonical catalogs",
+    "complete library passes file, schema, hash, rights and protected checks"
+  ],
+  "logs": ".cache/qa/task030-integration/",
+  "browserEvidence": "Original 8 main-flow cases + 1 native no-JS case retained; not rerun for docs-only integration",
+  "wbs": {
+    "3.1": "B / 已完成",
+    "3.2": "B / 已完成",
+    "3.2.1": "A / 未开始 / Deferred",
+    "3.3": "B / 待审查"
+  },
+  "nextTaskStarted": false
+}

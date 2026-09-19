@@ -1,0 +1,853 @@
+{
+  "schemaVersion": "1.0",
+  "registryRevision": "task-043-candidate-r1",
+  "sourceGraphRevision": "task-041-japan-pilot-2026-09-11-r2",
+  "governanceStatus": "candidate_pending_human_review",
+  "allocations": [
+    {
+      "regionId": "region-japan",
+      "regionType": "country",
+      "masterCode": "00100",
+      "registryEntityType": "region.country",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-japan",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-japan" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "First stable country root in the inherited city and large-region namespace; identity remains external to the code."
+    },
+    {
+      "regionId": "region-kanto",
+      "regionType": "macro_area",
+      "masterCode": "00101",
+      "registryEntityType": "region.macro_area",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kanto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-kanto" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable macro-area allocation in the inherited large-region namespace."
+    },
+    {
+      "regionId": "region-chubu",
+      "regionType": "macro_area",
+      "masterCode": "00102",
+      "registryEntityType": "region.macro_area",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-chubu",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-chubu" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable macro-area allocation in the inherited large-region namespace."
+    },
+    {
+      "regionId": "region-kansai",
+      "regionType": "macro_area",
+      "masterCode": "00103",
+      "registryEntityType": "region.macro_area",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kansai",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-kansai" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable macro-area allocation in the inherited large-region namespace."
+    },
+    {
+      "regionId": "prefecture-tokyo",
+      "regionType": "prefecture",
+      "masterCode": "00051",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-tokyo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-tokyo" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-kanagawa",
+      "regionType": "prefecture",
+      "masterCode": "00052",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-kanagawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-kanagawa"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-yamanashi",
+      "regionType": "prefecture",
+      "masterCode": "00053",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-yamanashi",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-yamanashi"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-nagano",
+      "regionType": "prefecture",
+      "masterCode": "00054",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-nagano",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-nagano" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-gifu",
+      "regionType": "prefecture",
+      "masterCode": "00055",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-gifu",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-gifu" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-ishikawa",
+      "regionType": "prefecture",
+      "masterCode": "00056",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-ishikawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-ishikawa"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-kyoto",
+      "regionType": "prefecture",
+      "masterCode": "00057",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-kyoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-kyoto" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-nara",
+      "regionType": "prefecture",
+      "masterCode": "00058",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-nara",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-nara" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-osaka",
+      "regionType": "prefecture",
+      "masterCode": "00059",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-osaka",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-osaka" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "prefecture-hyogo",
+      "regionType": "prefecture",
+      "masterCode": "00060",
+      "registryEntityType": "region.prefecture",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-hyogo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-prefecture-hyogo" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes."
+    },
+    {
+      "regionId": "region-tokyo",
+      "regionType": "travel_region",
+      "masterCode": "00110",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-tokyo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-tokyo" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "district-shinjuku",
+      "regionType": "district",
+      "masterCode": "01001",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-shinjuku",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-district-shinjuku" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "district-shibuya-harajuku",
+      "regionType": "district",
+      "masterCode": "01002",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-shibuya-harajuku",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-shibuya-harajuku"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "district-asakusa-ueno",
+      "regionType": "district",
+      "masterCode": "01003",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-asakusa-ueno",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-asakusa-ueno"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "district-central-tokyo",
+      "regionType": "district",
+      "masterCode": "01004",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-central-tokyo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-central-tokyo"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "stay-tokyo-station",
+      "regionType": "stay_cluster",
+      "masterCode": "02001",
+      "registryEntityType": "region.stay_cluster",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-tokyo-station",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-stay-tokyo-station" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range."
+    },
+    {
+      "regionId": "stay-shinjuku",
+      "regionType": "stay_cluster",
+      "masterCode": "02002",
+      "registryEntityType": "region.stay_cluster",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-shinjuku",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-stay-shinjuku" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range."
+    },
+    {
+      "regionId": "gateway-tokyo-rail",
+      "regionType": "gateway",
+      "masterCode": "04001",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-tokyo-rail",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-tokyo-rail" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "gateway-haneda",
+      "regionType": "gateway",
+      "masterCode": "04002",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-haneda",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-haneda" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "region-odawara",
+      "regionType": "municipality",
+      "masterCode": "00111",
+      "registryEntityType": "region.municipality",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-odawara",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-odawara" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable municipality allocation independent of the external administrative code."
+    },
+    {
+      "regionId": "region-hakone",
+      "regionType": "onsen_resort",
+      "masterCode": "03001",
+      "registryEntityType": "region.onsen_resort",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-hakone",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-hakone" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable onsen-resort allocation in the inherited onsen and resort range."
+    },
+    {
+      "regionId": "gateway-hakone-yumoto",
+      "regionType": "gateway",
+      "masterCode": "04003",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-hakone-yumoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-hakone-yumoto"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "region-fuji-five-lakes",
+      "regionType": "travel_region",
+      "masterCode": "00112",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-fuji-five-lakes",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-fuji-five-lakes"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-fujikawaguchiko",
+      "regionType": "municipality",
+      "masterCode": "00113",
+      "registryEntityType": "region.municipality",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-fujikawaguchiko",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-fujikawaguchiko"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable municipality allocation independent of the external administrative code."
+    },
+    {
+      "regionId": "gateway-kawaguchiko",
+      "regionType": "gateway",
+      "masterCode": "04004",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-kawaguchiko",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-kawaguchiko"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "region-nagano",
+      "regionType": "travel_region",
+      "masterCode": "00114",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-nagano",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-nagano" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-matsumoto",
+      "regionType": "travel_region",
+      "masterCode": "00115",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-matsumoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-matsumoto" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-kamikochi",
+      "regionType": "travel_region",
+      "masterCode": "00116",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kamikochi",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-kamikochi" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-takayama",
+      "regionType": "travel_region",
+      "masterCode": "00117",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-takayama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-takayama" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-shirakawa-go",
+      "regionType": "travel_region",
+      "masterCode": "00118",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-shirakawa-go",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-shirakawa-go"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-kanazawa",
+      "regionType": "travel_region",
+      "masterCode": "00119",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kanazawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-kanazawa" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "gateway-matsumoto",
+      "regionType": "gateway",
+      "masterCode": "04005",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-matsumoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-matsumoto" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "gateway-takayama",
+      "regionType": "gateway",
+      "masterCode": "04006",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-takayama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-takayama" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "gateway-kanazawa",
+      "regionType": "gateway",
+      "masterCode": "04007",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-kanazawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-kanazawa" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "region-kyoto",
+      "regionType": "travel_region",
+      "masterCode": "00120",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kyoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-kyoto" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "district-higashiyama",
+      "regionType": "district",
+      "masterCode": "01005",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-higashiyama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-higashiyama"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "district-arashiyama",
+      "regionType": "district",
+      "masterCode": "01006",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-arashiyama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-arashiyama"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "stay-kyoto-station",
+      "regionType": "stay_cluster",
+      "masterCode": "02003",
+      "registryEntityType": "region.stay_cluster",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-kyoto-station",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-stay-kyoto-station" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range."
+    },
+    {
+      "regionId": "gateway-kyoto-rail",
+      "regionType": "gateway",
+      "masterCode": "04008",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-kyoto-rail",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-kyoto-rail" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "region-nara",
+      "regionType": "travel_region",
+      "masterCode": "00121",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-nara",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-nara" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "region-osaka",
+      "regionType": "travel_region",
+      "masterCode": "00122",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-osaka",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-osaka" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "district-namba-dotonbori",
+      "regionType": "district",
+      "masterCode": "01007",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-namba-dotonbori",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-namba-dotonbori"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    },
+    {
+      "regionId": "stay-umeda",
+      "regionType": "stay_cluster",
+      "masterCode": "02004",
+      "registryEntityType": "region.stay_cluster",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-umeda",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-stay-umeda" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range."
+    },
+    {
+      "regionId": "gateway-osaka-rail",
+      "regionType": "gateway",
+      "masterCode": "04009",
+      "registryEntityType": "region.gateway",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-osaka-rail",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-gateway-osaka-rail" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers."
+    },
+    {
+      "regionId": "region-kobe",
+      "regionType": "travel_region",
+      "masterCode": "00123",
+      "registryEntityType": "region.travel_region",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kobe",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        { "kind": "repository_contract", "ref": "task-041-region-kobe" },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range."
+    },
+    {
+      "regionId": "district-kobe-waterfront",
+      "regionType": "district",
+      "masterCode": "01008",
+      "registryEntityType": "region.district",
+      "lifecycleStatus": "active",
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-kobe-waterfront",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-kobe-waterfront"
+        },
+        { "kind": "allocation_review", "ref": "task-043-candidate-r1" }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range."
+    }
+  ]
+}

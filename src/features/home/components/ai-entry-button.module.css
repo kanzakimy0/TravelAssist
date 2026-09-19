@@ -77,3 +77,18 @@
     height: 1.75rem;
   }
 }
+/* The narrow viewport has no reliable bottom gap once its safe area is included.
+   Keep the primary CTA/account/footer fixed and dock the 44px launcher below the header. */
+@media (max-width: 22rem) {
+  .button {
+    top: max(5.5rem, calc(env(safe-area-inset-top) + 4rem));
+    bottom: auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+  }
+  .copy {
+    display: none;
+  }
+}

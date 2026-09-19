@@ -191,6 +191,11 @@
   color: #713851;
   box-shadow: inset 0 3px #b45e80;
 }
+.itinerary[data-reservation-pending="true"] {
+  outline: 2px solid #5fa8d3;
+  outline-offset: 2px;
+  filter: drop-shadow(0 0 3px #5fa8d366);
+}
 .itinerary.missing {
   position: relative;
   align-items: center;
@@ -263,6 +268,25 @@
 .collapsedCards .quickActions button:last-child {
   color: #685d50;
   background: #fffaf0;
+}
+.breakfastChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  width: 100%;
+  margin-top: auto;
+}
+.collapsedCards .breakfastChoices button {
+  min-width: 0;
+  height: 26px;
+  padding: 2px 3px;
+  border: 1px solid #d3a55f;
+  border-radius: 5px;
+  background: #fff8e9;
+  color: #77501d;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: normal;
 }
 .collapsedCards [data-primary-status] .statusBody {
   flex: 1 1 auto;
