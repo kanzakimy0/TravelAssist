@@ -49,4 +49,13 @@ result.
 - WBS 4.15: A / 待审查（#400 / TASK-051-A；Draft PR #401）。
 - Issue #400 remains open. This task does not merge the PR or start WBS 4.18
   or 4.19.
-- The final exact-head GitHub Quality Gate is pending this publication update.
+- Exact-head GitHub Quality Gate run `35445279973`: **SUCCESS** on accepted head `8a213a6443dd85ab6f9016aab5034acdd49e74b2`.
+
+## User Acceptance / Merge Closeout
+
+- User explicitly accepted TASK-051-A and authorized merge of PR #401.
+- Accepted implementation head: `8a213a6443dd85ab6f9016aab5034acdd49e74b2`.
+- Exact-head GitHub Quality Gate: run `35445279973` — **SUCCESS**.
+- PR #401 merged to `develop` at merge commit `a16ea611b8fb24cfe751615d54a3828f7ef564ca`.
+- WBS 4.15 is complete after acceptance and merge.
+- No WBS 4.18 or 4.19 implementation was started by this closeout.
