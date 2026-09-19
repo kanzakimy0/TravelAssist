@@ -1,0 +1,25 @@
+{
+  "task": "TASK-051-A",
+  "result": "PASS",
+  "currentTripKey": "travelassist.saved-workspace.v1",
+  "workingDraftDirectoryKey": "travelassist.working-drafts.v1",
+  "flow": [
+    "PlannerStore -> projectPlannerStore/tripSnapshot -> localStorage",
+    "localStorage -> parsePlannerStoreSnapshot/parseSavedTrip -> Store hydrate"
+  ],
+  "guards": {
+    "corruptPayload": "fail closed; storage and Store remain unchanged",
+    "storageFailure": "working Store remains in memory",
+    "staleTabSave": "expected raw payload compare-and-set guard",
+    "staleHydrate": "dirty Store rejects ordinary hydrate",
+    "explicitDiscardOrExactSave": "force hydrate is limited to the selected snapshot",
+    "secondCurrentTripSource": "not introduced"
+  },
+  "excluded": [
+    "TripUi",
+    "PlannerPage dialog/DOM trigger state",
+    "viewport and map-layer presentation state",
+    "route/provider transient responses",
+    "Mutation Engine audit, outbox and idempotency data"
+  ]
+}

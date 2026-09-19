@@ -75,7 +75,11 @@ function canonical(value: unknown): unknown {
   return value;
 }
 export function sameTrip(a: TripSnapshot, b: TripSnapshot) {
-  return JSON.stringify(canonical(a)) === JSON.stringify(canonical(b));
+  return tripSnapshotFingerprint(a) === tripSnapshotFingerprint(b);
+}
+
+export function tripSnapshotFingerprint(snapshot: TripSnapshot) {
+  return JSON.stringify(canonical(snapshot));
 }
 
 const record = (value: unknown): value is Record<string, unknown> =>

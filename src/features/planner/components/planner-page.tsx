@@ -30,6 +30,7 @@ import {
 } from "../model/detail-workspace";
 import type {
   DetailDraftItem,
+  DetailDraftState,
   DetailItemKind,
   DetailRailItem,
 } from "../model/detail-workspace";
@@ -45,7 +46,15 @@ import {
   tripReducer,
 } from "../model/trip-model";
 import type { StopKind } from "../model/planner-types";
-import type { TripState, TripAction, MealSlot } from "../model/trip-model";
+import type { TripAction, MealSlot } from "../model/trip-model";
+import {
+  createPlannerStore,
+  plannerStoreReducer,
+} from "../model/planner-store";
+import {
+  selectPlannerDraft,
+  selectPlannerTrip,
+} from "../model/planner-store-selectors";
 import {
   editScheduleError,
   previewScheduleAdjustment,
@@ -102,25 +111,27 @@ export function PlannerPage({
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = parseWorkspaceMode(searchParams.get("view"));
-  const [trip, dispatchTrip] = useReducer(
-    (
-      state: TripState,
-      action: TripAction | { type: "restoreBrowserTrip"; trip: TripState },
-    ) =>
-      action.type === "restoreBrowserTrip"
-        ? action.trip
-        : tripReducer(state, action),
+  const [store, dispatchStore] = useReducer(
+    plannerStoreReducer,
     undefined,
     () => {
       const { places, areas } = makePlannerCatalog(plannerMockPlans);
-      return makeTripState(
-        plannerMockPlans,
-        places,
-        areas,
-        initialPlannerSettings,
+      return createPlannerStore(
+        makeTripState(plannerMockPlans, places, areas, initialPlannerSettings),
       );
     },
   );
+  const trip = selectPlannerTrip(store);
+  const detailDraft = selectPlannerDraft(store);
+  const dispatchTrip = (action: TripAction) =>
+    dispatchStore({ type: "trip.apply", action });
+  const setDetailDraft = (
+    update:
+      DetailDraftState | ((current: DetailDraftState) => DetailDraftState),
+  ) => {
+    const next = typeof update === "function" ? update(detailDraft) : update;
+    dispatchStore({ type: "draft.replace", draft: next });
+  };
   const [layers, setLayers] = useState<StopKind[]>([
     "sight",
     "transport",
@@ -131,7 +142,6 @@ export function PlannerPage({
   const [terrain, setTerrain] = useState(true);
   const [detailMinimized, setDetailMinimized] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  const [detailDraft, setDetailDraft] = useState(emptyDetailDraft);
   const [checkStatus, setCheckStatus] =
     useState("本地规则检查完成 · 非实时 AI");
   const [adjustmentOpen, setAdjustmentOpen] = useState(false);
@@ -214,9 +224,17 @@ export function PlannerPage({
     draft: detailDraft,
     mode,
     day: detailDay,
-    restore: (restored) =>
-      dispatchTrip({ type: "restoreBrowserTrip", trip: restored }),
+    restore: (restored) => dispatchStore({ type: "replace", trip: restored }),
     setDraft: setDetailDraft,
+    hydrate: (snapshot, options) =>
+      dispatchStore({
+        type: "hydrate",
+        snapshot,
+        source: "browser",
+        force: options?.force,
+      }),
+    markSaved: (snapshot) =>
+      dispatchStore({ type: "persistence.saved", snapshot }),
     onLeave: () =>
       dispatchTrip({
         type: "ui",
@@ -1146,8 +1164,8 @@ export function PlannerPage({
                 onClick={() => {
                   if (planAction.kind === "restore") {
                     resetProjectSelection();
-                    dispatchTrip({
-                      type: "restoreBrowserTrip",
+                    dispatchStore({
+                      type: "replace",
                       trip: restoreRecommendation(trip, planAction.id),
                     });
                     setPlanAction(null);
@@ -1192,8 +1210,8 @@ export function PlannerPage({
           onResolve={(issue, name, p) => {
             updatePreparation(p);
             if (name.trim())
-              dispatchTrip({
-                type: "restoreBrowserTrip",
+              dispatchStore({
+                type: "replace",
                 trip: {
                   ...trip,
                   plans: trip.plans.map((x) =>
