@@ -2,7 +2,7 @@
 
 用户授权：每批 200 条处理剩余 10,097 条，按地点名、都道府县及分类综合查询；不确定项保留 null，进入后续重复查询/人工审核名单。本继续任务没有另行分配 TASK 编号。
 
-执行分支：codex/b-poi-remaining-10097-evidence-review。基线为 TASK-070 的 302d84431158f6637e36f84a6e1ffbfb6b8af935；原 Draft PR #397 和 #395 保持不变。本次下游 Draft PR 以 #397 的实现分支为 base，不自动 merge 或关闭 Issue。
+执行分支：codex/b-poi-remaining-10097-evidence-review。基线为 TASK-070 的 302d84431158f6637e36f84a6e1ffbfb6b8af935；原 Draft PR #397 和 #395 保持不变。本次下游 [Draft PR #398](https://github.com/kanzakimy0/TravelAssist/pull/398) 以 #397 的实现分支为 base，不自动 merge 或关闭 Issue。
 
 ## 执行范围与完成口径
 
