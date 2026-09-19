@@ -13,13 +13,13 @@ import type {
 } from "../model/detail-workspace";
 import type { TripState } from "../model/trip-model";
 import {
-  parseSavedTrip,
   restoreTrip,
   sameTrip,
   saveBrowserTrip,
   SAVED_TRIP_KEY,
   tripSnapshot,
 } from "../model/browser-trip";
+import { parsePlannerStoreSnapshot } from "../model/planner-store-persistence";
 import type { SavedTrip, TripSnapshot } from "../model/browser-trip";
 import {
   archiveWorkingDraft,
@@ -38,6 +38,8 @@ export function useBrowserTrip({
   day,
   restore,
   setDraft,
+  hydrate,
+  markSaved,
   onLeave,
 }: {
   trip: TripState;
@@ -46,6 +48,9 @@ export function useBrowserTrip({
   day: number;
   restore: (trip: TripState) => void;
   setDraft: (draft: DetailDraftState) => void;
+  /** Store-owned hydration is preferred; the callbacks keep older callers compatible. */
+  hydrate?: (snapshot: TripSnapshot, options?: { force?: boolean }) => void;
+  markSaved?: (snapshot: TripSnapshot) => void;
   onLeave?: () => void;
 }) {
   const router = useRouter();
@@ -79,7 +84,7 @@ export function useBrowserTrip({
           : null;
         const raw = window.localStorage.getItem(SAVED_TRIP_KEY);
         expectedRaw.current = raw;
-        const existing = parseSavedTrip(raw, trip);
+        const existing = parsePlannerStoreSnapshot(raw, trip);
         setSaved(existing);
         try {
           setArchivedDrafts(
@@ -98,8 +103,11 @@ export function useBrowserTrip({
               existing.snapshot.workingPlanId ??
               existing.snapshot.currentPlanId,
           };
-          restore(restoreTrip(trip, snapshot));
-          setDraft(structuredClone(snapshot.draft));
+          if (hydrate) hydrate(snapshot);
+          else {
+            restore(restoreTrip(trip, snapshot));
+            setDraft(structuredClone(snapshot.draft));
+          }
           setBaseline(snapshot);
           setStatus("已载入上次保存 · 仅此浏览器");
           if (incoming) {
@@ -136,11 +144,14 @@ export function useBrowserTrip({
       setReady(true);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [trip, draft, mode, restore, setDraft]);
+  }, [trip, draft, mode, restore, setDraft, hydrate]);
 
-  function applySnapshot(snapshot: TripSnapshot) {
-    restore(restoreTrip(trip, snapshot));
-    setDraft(structuredClone(snapshot.draft));
+  function applySnapshot(snapshot: TripSnapshot, force = false) {
+    if (hydrate) hydrate(snapshot, { force });
+    else {
+      restore(restoreTrip(trip, snapshot));
+      setDraft(structuredClone(snapshot.draft));
+    }
     setBaseline(snapshot);
   }
   function enterDetail(planId = trip.ui.currentPlanId) {
@@ -163,9 +174,13 @@ export function useBrowserTrip({
     router.push(detailUrl(trip.ui.focusedDay), { scroll: false });
   }
   function openSaved() {
+    if (dirty) {
+      setError("当前有未保存修改，请先保存或放弃后再载入浏览器版本。");
+      return;
+    }
     try {
       const raw = window.localStorage.getItem(SAVED_TRIP_KEY);
-      const existing = parseSavedTrip(raw, trip);
+      const existing = parsePlannerStoreSnapshot(raw, trip);
       if (!existing) {
         setError("未找到有效的保存记录，当前行程未改变。");
         return;
@@ -202,7 +217,7 @@ export function useBrowserTrip({
     try {
       const snapshot = prepared ?? tripSnapshot(trip, draft);
       if (
-        !parseSavedTrip(
+        !parsePlannerStoreSnapshot(
           JSON.stringify({
             version: 1,
             savedAt: new Date().toISOString(),
@@ -220,7 +235,8 @@ export function useBrowserTrip({
       expectedRaw.current = JSON.stringify(next);
       setSaved(next);
       setBaseline(snapshot);
-      if (prepared) applySnapshot(snapshot);
+      markSaved?.(snapshot);
+      if (prepared) applySnapshot(snapshot, true);
       setStatus("已保存到此浏览器 · 刷新可恢复");
       setError("");
       return true;
@@ -440,7 +456,7 @@ export function useBrowserTrip({
       overwriteLeave.current = false;
     },
     discardAndLeave: () => {
-      if (baseline) applySnapshot(baseline);
+      if (baseline) applySnapshot(baseline, true);
       leave(destination ?? "/planner");
     },
     saveAndLeave: () => {
