@@ -96,7 +96,7 @@ def query_families(row):
     ]
 
 def search_one(cache, candidate_key, family, query):
-    key = sha(('ddg-html-v1\0' + query).encode())
+    key = sha(('bing-ddg-fallback-v2\0' + query).encode())
     record = cache / 'search-records' / f'{key}.json'
     raw = cache / 'search-raw' / f'{key}.html'
     if record.exists() and raw.exists():
@@ -208,4 +208,3 @@ def run(args):
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--batch',required=True); parser.add_argument('--cache',default=str(DEFAULT_CACHE)); parser.add_argument('--resume',action='store_true'); args=parser.parse_args(); run(args)
 if __name__ == '__main__': main()
-
