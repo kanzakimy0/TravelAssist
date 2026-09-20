@@ -1,8 +1,54 @@
 {
   "batchId": "R-0020",
-  "status": "REVIEW_DISPOSITION_QA_PASS",
+  "status": "ASSESSMENT_QA_PASS",
   "candidateCount": 200,
-  "inputChecksum": "8d68a06c672e7429d07b845c07265efccaff1dd7f16f3b59f56c27c604662bde",
+  "inputChecksum": "2279f039f60e021bc921b3cb715e0fcae68133306074ad536ccde9ce1f214289",
+  "previousBatch": "R-0019",
+  "previousBatchInputChecksum": "bd86ac8831825f79820a15a7560a8988725894b359be8661d398ae9129c71eef",
+  "inputs": [
+    {
+      "path": "data/poi/full/sources/remaining-v1/assessment/R-0020.json",
+      "sha256": "6807a73614b75a21b2e7c0835228fa712ca04df3780dc5d387122c51c6b75cc0"
+    },
+    {
+      "path": "data/poi/full/sources/remaining-v1/R-0020.jsonl",
+      "sha256": "03e87080e60839755ab93326d2c6621de1d6737618d1c69a68c97c96720c6237"
+    },
+    {
+      "path": "data/poi/full/sources/remaining-v1/search/R-0020.json",
+      "sha256": "f91dd55cb5447c9287826e8d516b324a1261249d0a0d154e4b56a7b246860995"
+    },
+    {
+      "path": "data/poi/full/manifests/remaining-v1/population.json",
+      "sha256": "da91be88d034758cfb0c83228cf2031e46035b2d36aef7669d8cc192ca1a42de"
+    },
+    {
+      "path": "data/poi/full/manifests/remaining-v1/queries.json",
+      "sha256": "de9b3759d5da1e26f82d28030a7a6e43a2168ea1e2411480fb592426c7c5bd47"
+    },
+    {
+      "path": "tools/poi/certify-remaining-assessment.py",
+      "sha256": "9df74ea9af6612f3b72d52b85804e0cbdfe9748c9e05979b78f329f771c7bfa7"
+    },
+    {
+      "path": "tools/poi/review-remaining.py",
+      "sha256": "22ce4a98a0abf96927063e78d41aee20bd2626fe82f33e045b0fc7bdc2426328"
+    },
+    {
+      "path": "tools/poi/read-current-candidates.mjs",
+      "sha256": "e1c2f66b79ab66a2e7dbe0c31b431e21b8296bb777b4779d62238f223aec9340"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "data/poi/full/reviews/remaining-v1/assessment/R-0020.json",
+      "sha256": "0f6d38e3fe820554a38cedeefeac29e7b496ceba84887de46beeb0c846128346"
+    },
+    {
+      "path": "docs/qa/POI-REMAINING-10097/assessment/R-0020.json",
+      "sha256": "027a62c56d368b38702d1fbb5a7cfe906536677d581595e03341fddc6c06233e"
+    }
+  ],
   "orderedCandidateKeys": [
     "geoshape-nrct-poi:190000039700",
     "geoshape-nrct-poi:190000040000",
@@ -205,20 +251,5 @@
     "geoshape-nrct-poi:200000079100",
     "geoshape-nrct-poi:200000079200"
   ],
-  "outputs": [
-    {
-      "path": "data/poi/full/reviews/remaining-v1/pending/R-0020.jsonl",
-      "sha256": "ce57881827b07e77a9442d430e2228d95586d773d7add73167394e3fc0ebd8df"
-    },
-    {
-      "path": "docs/qa/POI-REMAINING-10097/pending/R-0020.md",
-      "sha256": "4ad75aee4f24311119339b9b0e062ebb171761a2415ae0cacec5196a8b168257"
-    },
-    {
-      "path": "docs/qa/POI-REMAINING-10097/R-0020-review.json",
-      "sha256": "040998736a464019a52fbb5f325dd6b65a1a97df19a14dda96221f5eed398c8b"
-    }
-  ],
-  "fullEditorialReviewClaimed": false,
-  "completedAt": "2026-09-20T04:23:42.650137+00:00"
+  "completedAt": "2026-09-20T04:23:46.241341+00:00"
 }
