@@ -94,6 +94,11 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:230000036200':('https://tesshow.jp/chiba/ichihara/temple_kamo_choei.html','The fetched Choeiji page identifies Ichihara, Chiba, while the frozen candidate is Aichi. It is rejected as a different target.'),
       'geoshape-nrct-poi:230000046400':('https://www.city.kanonji.kagawa.jp/','The fetched city page identifies Kagawa, while the frozen candidate is Aichi. It is rejected as a different target.'),
       'geoshape-nrct-poi:230000056800':('https://www.nagoya-info.jp/spot/detail/118/','The fetched Nagoya page concerns Nagono Castle ruins, not the frozen Nagono Shrine candidate. It is rejected as a different target.'),
+      'geoshape-nrct-poi:230000075100':('https://jinguuji.or.jp/','The official temple page identifies Jinguji in Matsumoto, Nagano and therefore cannot establish the frozen Nagoya, Aichi candidate.'),
+      'geoshape-nrct-poi:230000091100':('https://www.city.kanonji.kagawa.jp/','The fetched municipal page is for Kanonji City, Kagawa and cannot establish the frozen Nagoya, Aichi temple candidate.'),
+      'geoshape-nrct-poi:230000102700':('https://www.ishiyamadera.or.jp/','The official page identifies Ishiyamadera in Otsu, Shiga and cannot establish the frozen Nagoya, Aichi candidate.'),
+      'geoshape-nrct-poi:230000105200':('https://ryusenjinoyu.com/souka/','The official operator page identifies Ryuusenji no Yu Soka-Yatsuka in Saitama and cannot establish the frozen Ichinomiya, Aichi candidate.'),
+      'geoshape-nrct-poi:240000033000':('https://jyodoji.info/','The official page identifies Jodoji in Ono, Hyogo and cannot establish the frozen Kuwana, Mie candidate.'),
     }
     pages={p['url']:p for p in source_rows['openedSources']}
     if key in mismatch:
