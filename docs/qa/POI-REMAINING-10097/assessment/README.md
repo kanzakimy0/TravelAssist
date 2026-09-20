@@ -82,3 +82,13 @@ R-0018：105 条至少有一种支持事实，其中 74 条有评分；69 条目
 R-0019：95 条至少有一种支持事实，其中 62 条有评分；83 条目标来源无足够属性、17 条地点或地址冲突待查、5 条原身份隔离保留。新增 112 个评分字段、73 条静态交通关联及 2 个部分 Visit Profile；逐一核对石川、福井与山梨的寺社、城馆、旧址和考古记录，区分现时可确认遗存、仅有历史或发掘记载、异地同名和地址不符结果。交通与游览时长分别判断，归属文物不当作公开参观依据。全部 200 条来源/定位/合同/身份 QA 通过；整批投影检查为 0 changed files。
 
 当前全量任务仍在执行，已完成并认证 3,800 / 10,097。下一批 R-0020 自动继续，无需用户确认。
+
+## 模型切换后的权威 rerun closeout
+
+R-0001 至 R-0019 是冻结的 `ORIGINAL_ACCEPTED_RUN`，不重新执行、不修改。原 R-0020 及以后的产物已归档为 `SUPERSEDED_MODEL_CHANGE_REVIEW`，详见 `data/poi/full/audit/remaining-v1/model-change-superseded-20260920/manifest.json`；新 R-0020 至 R-0051 是 `AUTHORITATIVE_RERUN`，模型为 `gpt-6-astra`，reasoning configuration 为继承的冻结运行配置。
+
+新 R-0020 至 R-0050 每批 200 条，R-0051 为 97 条，全部 checkpoint 已通过 `ASSESSMENT_QA_PASS`。正式累计完成 **10,097 / 10,097**：前 19 批冻结 3,800 条，加 rerun 6,297 条。每条都有审读结果；未知或证据层级不足保持 null 并保留在待查名单，不能被解释成未执行。
+
+最终命令 `python -X utf8 tools/poi/review-remaining.py --final --check --cache <source-cache>` 已通过：51 批、10,097 条、`changedFiles: 0`。候选视图、来源/locator 哈希、身份、Registry 与 rubric 合同均由每批 certificate 和最终投影检查验证。Registry checksum 与 candidate identity checksum 分别保持 `9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2` 与 `4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067`。
+
+完整最终数据分布、待查原因、非 null 字段、Visit Profile、Access Anchor 和 GitHub final-head Quality Gate 状态见 `docs/tasks/RESULT-poi-remaining-10097-evidence-review.md`。

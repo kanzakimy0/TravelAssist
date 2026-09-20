@@ -1,8 +1,54 @@
 {
   "batchId": "R-0051",
-  "status": "REVIEW_DISPOSITION_QA_PASS",
+  "status": "ASSESSMENT_QA_PASS",
   "candidateCount": 97,
-  "inputChecksum": "5a42b2f3d3d72d04126fc95a28afd295566754881f62a0a70eb55ed5e683ec5a",
+  "inputChecksum": "0d5ef2c87592fd78ccb3dd200cc464d8eeb5f9915571ee973a02d20b414c26c3",
+  "previousBatch": "R-0050",
+  "previousBatchInputChecksum": "5e9b6fe6c56aea91f33ab02cdbb4417a57aaab13c49035dda124373b8e3ecf1d",
+  "inputs": [
+    {
+      "path": "data/poi/full/sources/remaining-v1/assessment/R-0051.json",
+      "sha256": "a6f26c669ca56a5c0b08938387f73301b3e9ab9c046448d6dfe589562b236f4e"
+    },
+    {
+      "path": "data/poi/full/sources/remaining-v1/R-0051.jsonl",
+      "sha256": "575738da3883acf0410b9d34676bc549e724cff95aacb80115395d8af26d830c"
+    },
+    {
+      "path": "data/poi/full/sources/remaining-v1/search/R-0051.json",
+      "sha256": "01d79e6c4cd2b081fb713bda32af25fd9ebecfb501a4cab2083ce249eed1cf6e"
+    },
+    {
+      "path": "data/poi/full/manifests/remaining-v1/population.json",
+      "sha256": "da91be88d034758cfb0c83228cf2031e46035b2d36aef7669d8cc192ca1a42de"
+    },
+    {
+      "path": "data/poi/full/manifests/remaining-v1/queries.json",
+      "sha256": "de9b3759d5da1e26f82d28030a7a6e43a2168ea1e2411480fb592426c7c5bd47"
+    },
+    {
+      "path": "tools/poi/certify-remaining-assessment.py",
+      "sha256": "9df74ea9af6612f3b72d52b85804e0cbdfe9748c9e05979b78f329f771c7bfa7"
+    },
+    {
+      "path": "tools/poi/review-remaining.py",
+      "sha256": "22ce4a98a0abf96927063e78d41aee20bd2626fe82f33e045b0fc7bdc2426328"
+    },
+    {
+      "path": "tools/poi/read-current-candidates.mjs",
+      "sha256": "e1c2f66b79ab66a2e7dbe0c31b431e21b8296bb777b4779d62238f223aec9340"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "data/poi/full/reviews/remaining-v1/assessment/R-0051.json",
+      "sha256": "5656307d6bde78bc6a285bbfa9776d0d8e1ab56eb3ed43bc84f8120288641c22"
+    },
+    {
+      "path": "docs/qa/POI-REMAINING-10097/assessment/R-0051.json",
+      "sha256": "572f2811b1e6acbdcb7e383fda68bd5b99b8849f2486d8597162ba197be64355"
+    }
+  ],
   "orderedCandidateKeys": [
     "wikidata:Q1063319",
     "wikidata:Q1071520",
@@ -102,20 +148,5 @@
     "wikidata:Q993926",
     "wikidata:Q998239"
   ],
-  "outputs": [
-    {
-      "path": "data/poi/full/reviews/remaining-v1/pending/R-0051.jsonl",
-      "sha256": "0edba08833cffffe50d30aff0d1ef3c5cdc2d61b84c7bac04532fee68a8f3c94"
-    },
-    {
-      "path": "docs/qa/POI-REMAINING-10097/pending/R-0051.md",
-      "sha256": "bd1cad432ba6d0b59b4fd2bb31a9edc85a24cbb6bb5678a9da8785f5395a9a6f"
-    },
-    {
-      "path": "docs/qa/POI-REMAINING-10097/R-0051-review.json",
-      "sha256": "829960ef208307b378a231c2db53e4162e956bbecb087ad5284e8e3f291a9d0e"
-    }
-  ],
-  "fullEditorialReviewClaimed": false,
-  "completedAt": "2026-09-20T06:09:39.892205+00:00"
+  "completedAt": "2026-09-20T06:09:41.765114+00:00"
 }
