@@ -6,7 +6,7 @@ candidate registry, Master Codes, upstream pending ledger, or editorial truth.
 Search results are discovery leads; a URL is evidence only after an explicit,
 target-scoped editorial review records it in the candidate disposition.
 """
-import argparse, hashlib, html, importlib.util, json, re, shutil, sys, time
+import argparse, hashlib, html, importlib.util, json, re, shutil, sys, time, unicodedata
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -73,6 +73,12 @@ def normal_url(href):
         return ''
     return href if p.scheme in ('http', 'https') and p.hostname else ''
 
+def normalized(value):
+    return re.sub(r'[\W_]', '', unicodedata.normalize('NFKC', value or '').casefold())
+def lead_matches_target(lead, candidate_name):
+    """A result-title match selects a page for reading; it is never evidence."""
+    name = normalized(candidate_name)
+    return len(name) >= 2 and name in normalized(lead.get('title', ''))
 def source_kind(url):
     host = (urlparse(url).hostname or '').lower()
     if any(x in host for x in ('instagram.com', 'x.com', 'twitter.com', 'facebook.com', 'youtube.com')):
@@ -90,14 +96,14 @@ def is_openable(url):
 def query_families(row):
     name = row['name']; locations = ' '.join(row.get('prefectures') or [])
     return [
-        ('canonical_official', f'{name} {locations} 公式'),
-        ('government_tourism', f'{name} {locations} 観光 site:go.jp OR site:lg.jp'),
-        ('operator_access', f'{name} {locations} アクセス 運営 公式'),
-        ('official_sns', f'{name} {locations} 公式 Instagram X Facebook YouTube'),
+        ('canonical_official', f'"{name}" "{locations}" 公式'),
+        ('government_tourism', f'"{name}" "{locations}" 観光 site:go.jp OR site:lg.jp'),
+        ('operator_access', f'"{name}" "{locations}" アクセス 運営 公式'),
+        ('official_sns', f'"{name}" "{locations}" 公式 Instagram X Facebook YouTube'),
     ]
 
 def search_one(cache, candidate_key, family, query):
-    key = sha(('bing-rss-ddg-fallback-v3\0' + query).encode())
+    key = sha(('bing-rss-ddg-fallback-v4-exact-title-filter\0' + query).encode())
     record = cache / 'search-records' / f'{key}.json'
     raw = cache / 'search-raw' / f'{key}.html'
     if record.exists() and raw.exists():
@@ -160,7 +166,7 @@ def run(args):
     if any(row['reasonCode'] != manifest['reasonCode'] for row in rows): raise RuntimeError('PHASE_MEMBERSHIP_DRIFT')
     cache = Path(args.cache).resolve(); cache.mkdir(parents=True, exist_ok=True)
     started = utcnow(); input_checksum = sha(encode({'manifest':sha((PHASE_ROOT / f"phase-{manifest['phase']}.json").read_bytes()), 'batch':batch, 'candidateInputs':[{'candidateKey':r['candidateKey'],'identityInputChecksum':r.get('identityInputChecksum')} for r in rows], 'tool':sha(Path(__file__).read_bytes())}))
-    out_path = OUT / f'{args.batch}.jsonl'; qa_path = QA / f'{args.batch}.json'; checkpoint_path = PHASE_ROOT / 'checkpoints' / f'{args.batch}.json'
+    out_path = OUT / f'{args.batch}.{args.revision}.jsonl'; qa_path = QA / f'{args.batch}.{args.revision}.json'; checkpoint_path = PHASE_ROOT / 'checkpoints' / f'{args.batch}.{args.revision}.json'
     if args.resume and checkpoint_path.exists() and out_path.exists() and qa_path.exists():
         checkpoint = read_json(checkpoint_path)
         if checkpoint.get('inputChecksum') == input_checksum and checkpoint.get('status') == 'DISCOVERY_QA_PASS_NOT_CERTIFIED' and checkpoint.get('outputs'):
@@ -180,6 +186,7 @@ def run(args):
         for search in sorted(by_key[key], key=lambda x:x['family']):
             for lead in search['leads']:
                 url=lead['url']; domain=(urlparse(url).hostname or '').lower()
+                if not lead_matches_target(lead, pending[key]['name']): continue
                 if not is_openable(url) or domain in domains: continue
                 domains.add(domain); page_targets.setdefault(url, lead)
                 if len(domains) >= 3: break
@@ -216,5 +223,5 @@ def run(args):
     atomic(checkpoint_path,encode(checkpoint)); print(json.dumps(qa,ensure_ascii=False))
 
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument('--batch',required=True); parser.add_argument('--cache',default=str(DEFAULT_CACHE)); parser.add_argument('--resume',action='store_true'); args=parser.parse_args(); run(args)
+    parser=argparse.ArgumentParser(); parser.add_argument('--batch',required=True); parser.add_argument('--cache',default=str(DEFAULT_CACHE)); parser.add_argument('--resume',action='store_true'); parser.add_argument('--revision',default='discovery-v2'); args=parser.parse_args(); run(args)
 if __name__ == '__main__': main()
