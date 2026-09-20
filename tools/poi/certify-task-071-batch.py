@@ -57,6 +57,15 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:210000100100':('http://www.buturyushu-ankokuji.com/','The fetched Ankokuji page identifies Sakai, Osaka, while the frozen candidate is Gifu. The page is rejected as a different target.'),
       'geoshape-nrct-poi:210000105900':('https://www.zuiganji.or.jp/','The fetched Zuiganji page identifies Matsushima, Miyagi, while the frozen candidate is Gifu. The page is rejected as a different target.'),
       'geoshape-nrct-poi:210000153500':('https://niigata-kankou.or.jp/spot/10163','The fetched tourism page identifies a Niigata shrine, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000167900':('http://shoboji.or.jp/','The fetched Shoboji page identifies Kyoto Yawata, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000178000':('http://shoboji.or.jp/','The fetched Shoboji page identifies Kyoto Yawata, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000188200':('http://shoboji.or.jp/','The fetched Shoboji page identifies Kyoto Yawata, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000212800':('https://kifunejinja.jp/','The fetched official Kibune Shrine page identifies Kyoto, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000221100':('https://www.pref.kyoto.jp/isan/kinkaku.html','The fetched Kyoto public page concerns Rokuonji/Kinkakuji in Kyoto, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000227500':('https://anyouji.jp/','The fetched Anyoji page identifies Nara Prefecture, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000229200':('https://jinjamemo.com/archives/atagojinja_minatoku.html','The fetched page identifies Atago Shrine in Minato, Tokyo, while the frozen candidate is Gifu. It is rejected as a different target and no score is accepted from this secondary page.'),
+      'geoshape-nrct-poi:210000229300':('https://hotokami.jp/area/saitama/Hkktk/Hkktktr/Dzkyz/145235/','The fetched page identifies Jionji in Saitama, while the frozen candidate is Gifu. It is rejected as a different target and no score is accepted from this secondary page.'),
+      'geoshape-nrct-poi:210000249100':('https://www.kiyomizudera.or.jp/','The fetched official Kiyomizudera page identifies Kyoto, while the frozen candidate is Gifu. The page is rejected as a different target.'),
     }
     pages={p['url']:p for p in source_rows['openedSources']}
     if key in mismatch:
