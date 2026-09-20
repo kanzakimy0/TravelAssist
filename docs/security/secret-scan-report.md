@@ -107,3 +107,13 @@ Heuristic signatures do not detect every obfuscated, encoded, short, unknown
 provider credential or indirect runtime leak. The AST boundary is not a formal
 proof. Expiring allowlist requires ongoing review. No cloud Auth/DB runtime,
 penetration test, CSP/rate-limit work or production deployment is claimed.
+
+## TASK-071-A final refresh — 2026-09-20 JST
+
+| Scope              | Current evidence                                                                                                                                 | Unresolved |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------: |
+| Tracked            | 2,755 files; 1,600 text files / 31,688,661 bytes; 1,148 binary and 3 oversized exclusions; 43 exact reviewed occurrences                         |          0 |
+| Reachable history  | 1,338 commits / 14,638 objects; 7,201 text objects / 292,642,102 bytes; 1,138 binary and 21 oversized exclusions; 114 exact reviewed occurrences |          0 |
+| Production browser | 48 emitted files; 47 text assets / 4,071,817 bytes; 1 binary exclusion; five generated synthetic private canaries                                |          0 |
+
+The exact allowlist contains 102 reviewed records. TASK-071-A adds 28 user-authorized, path/category/fingerprint/scope-bound exceptions for reviewed synthetic fixtures and documentation examples, expiring on 2026-12-20. The current Planner server route is explicitly `server-only`. A regression preserves scanner detection of distinct quoted credential values while excluding only identical quoted field-name maps in JavaScript bundles. No raw matched value is recorded here.

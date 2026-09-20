@@ -1,0 +1,76 @@
+{
+  "task": "TASK-071-A",
+  "issue": 404,
+  "pr": 231,
+  "branch": "codex/a-global-security-baseline",
+  "revisions": {
+    "oldPrHead": "a0c7bac130414be2923ed5e74ea6a1e68b242db8",
+    "latestDevelop": "a16ea611b8fb24cfe751615d54a3828f7ef564ca",
+    "integrationMerge": "39d127061f9e9cc770105b53ab958bb1df4786c3"
+  },
+  "scans": {
+    "tracked": {
+      "status": "PASS",
+      "files": 2755,
+      "scanned": 1600,
+      "bytes": 31688661,
+      "skipped": {
+        "binary": 1148,
+        "oversize": 3
+      },
+      "allowedOccurrences": 43,
+      "unresolved": 0
+    },
+    "history": {
+      "status": "PASS",
+      "commits": 1338,
+      "objects": 14638,
+      "scanned": 7201,
+      "bytes": 292642102,
+      "skipped": {
+        "binary": 1138,
+        "oversize": 21
+      },
+      "allowedOccurrences": 114,
+      "unresolved": 0
+    },
+    "boundary": {
+      "status": "PASS",
+      "files": 381,
+      "clientEntries": 44,
+      "clientModules": 199,
+      "unresolved": 0
+    },
+    "bundle": {
+      "status": "PASS",
+      "files": 48,
+      "scanned": 47,
+      "bytes": 4071817,
+      "skipped": {
+        "binary": 1
+      },
+      "syntheticServerCanaries": 5,
+      "unresolved": 0
+    }
+  },
+  "gates": {
+    "npmCi": "PASS",
+    "securityTests": "31/31 PASS",
+    "nodeRegression": "PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "deployValidateLocal": "PASS",
+    "deployBuildLocal": "PASS",
+    "deployVerifyArtifact": "PASS",
+    "deployFormat": "PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "limitations": [
+    "binary and oversized decoded content",
+    "ignored private env files and external credential stores",
+    "dangling/reflog-only objects and unfetched refs",
+    "external LFS payloads",
+    "cloud runtime, credential rotation, penetration testing, production deployment, WBS 9.9"
+  ]
+}

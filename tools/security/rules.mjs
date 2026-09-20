@@ -165,6 +165,17 @@ export function scanText(
         // Env/YAML/text inputs still scan unquoted values.
         if (/\.[cm]?[jt]sx?$/.test(path) && !/[:=][ \t]*["']/.test(match[0]))
           continue;
+        // A bundled field-name map such as access_token: "access_token" is
+        // a self-referential identifier, not an embedded credential value.
+        const selfReference = match[0].match(
+          /^\s*["']?([A-Za-z_][A-Za-z0-9_]*)["']?\s*[:=]/,
+        );
+        if (
+          /\.[cm]?[jt]sx?$/.test(path) &&
+          selfReference &&
+          selfReference[1].toLowerCase() === value.toLowerCase()
+        )
+          continue;
       }
       // Keep complete URL fingerprint, never username/password snippets.
       add(category, value, severity, match.index);

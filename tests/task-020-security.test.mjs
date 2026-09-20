@@ -120,6 +120,11 @@ test("empty env examples, comments and explicit placeholders do not consume foll
   assert.ok(has("NAME=literal-value", "env-template-value", ".env.example"));
   assert.ok(has("", "env-file", ".env.production"));
 });
+test("quoted self-referential generic labels in JS bundles are not credentials", () => {
+  const field = ["access", "token"].join("_");
+  assert.ok(!has(`"${field}":"${field}"`, "generic-credential", "chunk.js"));
+  assert.ok(has(`"${field}":"${fake("")}"`, "generic-credential", "chunk.js"));
+});
 test("standard HTML password autocomplete tokens are not credentials", () => {
   assert.ok(!has('password="current-password"', "generic-credential"));
   assert.ok(!has('password:"new-password"', "generic-credential", "chunk.js"));

@@ -189,3 +189,16 @@ unchanged; this implementation PR remains Draft.
 5. Rerun all gates. Only explicit, scoped non-secret/public-fixture exceptions
    may enter the expiring allowlist.
 6. Keep WBS 9.10 待审查 and Issue #228 Open until user acceptance and develop merge.
+
+## TASK-071-A final refresh — 2026-09-20 JST
+
+TASK-071-A revalidated this baseline after the normal merge of `origin/develop@a16ea611b8fb24cfe751615d54a3828f7ef564ca` into the existing PR #231 branch. The scanner now includes all current Auth/DB, Planner, API/server-action, workflow and deployment surfaces.
+
+- Tracked scope: 2,755 files; 1,600 decoded text files / 31,688,661 bytes; 1,148 binary and 3 oversized exclusions; 43 reviewed exact occurrences; 0 unresolved findings.
+- Reachable history: 1,338 commits / 14,638 objects; 7,201 decoded text objects / 292,642,102 bytes; 1,138 binary and 21 oversized exclusions; 114 reviewed exact occurrences; 0 unresolved findings.
+- Boundary: 381 source modules, 44 client entries and 199 reachable client modules; 0 findings.
+- Production bundle: five generated private canaries; 48 emitted files / 47 text assets / 4,071,817 bytes; 1 binary exclusion; 0 unresolved findings and no canary leak.
+
+The allowlist now has 102 exact, expiring records. TASK-071-A adds 28 records only after review and explicit user authorization; every new entry binds scope, path, category and SHA-256 fingerprint and expires on 2026-12-20. No broad rule, directory exemption or bundle exception was added. A focused regression proves that a quoted self-referential JavaScript field-name map is ignored while a distinct quoted credential assignment remains detected.
+
+See `docs/qa/TASK-071/` and `RESULT-TASK-071-a-security-final-closeout.md` for the redacted closeout evidence. The remote final-head Quality Gate remains authoritative after branch push.

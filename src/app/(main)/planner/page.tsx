@@ -1,3 +1,4 @@
+import "server-only";
 import { readHomeViewer } from "@/lib/auth/home-viewer.server";
 import { Suspense } from "react";
 import type { Metadata } from "next";
