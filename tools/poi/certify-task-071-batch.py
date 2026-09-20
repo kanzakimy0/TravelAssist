@@ -66,6 +66,13 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:210000229200':('https://jinjamemo.com/archives/atagojinja_minatoku.html','The fetched page identifies Atago Shrine in Minato, Tokyo, while the frozen candidate is Gifu. It is rejected as a different target and no score is accepted from this secondary page.'),
       'geoshape-nrct-poi:210000229300':('https://hotokami.jp/area/saitama/Hkktk/Hkktktr/Dzkyz/145235/','The fetched page identifies Jionji in Saitama, while the frozen candidate is Gifu. It is rejected as a different target and no score is accepted from this secondary page.'),
       'geoshape-nrct-poi:210000249100':('https://www.kiyomizudera.or.jp/','The fetched official Kiyomizudera page identifies Kyoto, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000270900':('https://www.surugawan.net/guide/2.html','The fetched Zuirinji page identifies Fuji, Shizuoka, while the frozen candidate is Gifu. It is rejected as a different target.'),
+      'geoshape-nrct-poi:210000275100':('https://kifunejinja.jp/','The fetched official Kibune Shrine page identifies Kyoto, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000290000':('https://anyouji.jp/','The fetched Anyoji page identifies Nara Prefecture, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000308000':('https://www.kankou-gifu.jp/spot/detail_1344.html','The fetched Gifu tourism page concerns Iwamura Castle ruins, not the frozen Iwamura Shrine candidate. It is rejected as a different target.'),
+      'geoshape-nrct-poi:210000317200':('https://tesshow.jp/chiba/ichihara/temple_kamo_choei.html','The fetched Choeiji page identifies Ichihara, Chiba, while the frozen candidate is Gifu. It is rejected as a different target.'),
+      'geoshape-nrct-poi:210000351500':('https://apese.net/?id=1212226','The fetched secondary listing concerns a Gifu castle but does not provide sufficient authoritative identity proof for the frozen candidate. No score or identity rebind is accepted.'),
+      'geoshape-nrct-poi:210000354500':('https://www.senkouji.jp/','The fetched Senkoji page identifies Onomichi, Hiroshima, while the frozen candidate is Gifu. The page is rejected as a different target.'),
     }
     pages={p['url']:p for p in source_rows['openedSources']}
     if key in mismatch:
@@ -83,10 +90,12 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:200000123200': ('http://www.buturyushu-ankokuji.com/', 'The fetched official Ankokuji page identifies Sakai, Osaka; this does not establish the frozen Nagano candidate.'),
       'geoshape-nrct-poi:200000076900': ('https://www.city.ueda.nagano.jp/site/uedajo/', 'The Ueda City page explicitly identifies Ueda Castle in Nagano. It confirms target identity, but its descriptive material is not independently calibrated enough to add a 43D score; Visit and static Access remain unsupported.'),
       'geoshape-nrct-poi:200000136900': ('https://www.inacity.jp/kurashi/shogaigakushu_bunka/bunkazai/takatojyoseki.html', 'The Ina City page explicitly identifies Takato Castle ruins in Nagano. It confirms target identity, but its descriptive material is not independently calibrated enough to add a 43D score; Visit and static Access remain unsupported.'),
+      'geoshape-nrct-poi:210000293600': ('http://www.toki-bunka.or.jp/oribe/point/motoyasiki', 'The Toki cultural foundation page explicitly identifies Motoyashiki pottery kiln ruins in Gifu. It confirms target identity, but visitor-scoped 43D calibration, Visit and static Access remain unsupported.'),
+      'geoshape-nrct-poi:210000307500': ('https://www.kankou-gifu.jp/spot/detail_1344.html', 'The official Gifu tourism page explicitly identifies Iwamura Castle ruins in Gifu. It confirms target identity, but no independently calibrated 43D score is added; Visit and static Access remain unsupported.'),
     }
     if key in phase_a2:
         url, reason = phase_a2[key]; page = pages[url]; text = (page_cache/page['fetch']['textPath']).read_text(encoding='utf8')
-        confirmed = key in {'geoshape-nrct-poi:200000076900','geoshape-nrct-poi:200000136900'}
+        confirmed = key in {'geoshape-nrct-poi:200000076900','geoshape-nrct-poi:200000136900','geoshape-nrct-poi:210000293600','geoshape-nrct-poi:210000307500'}
         return {'candidateKey':key,'identity':'TARGET_CONFIRMED' if confirmed else 'TARGET_UNRESOLVED','outcome':'REVIEWED_NO_SUPPORTED_FACTS' if confirmed else 'REVIEW_BLOCKED_TARGET_UNRESOLVED','sourceReview':{'url':url,'textSha256':page['fetch']['textSha256'],'locator':locator(text, row['name'] if row['name'] in text else text[:min(12,len(text))]),'reviewed':True,'accepted':confirmed,'tier':'GOVERNMENT_OR_PUBLIC_BODY' if confirmed else None,'reason':reason},'nullReason':reason}
     return {'candidateKey':key,'identity':'TARGET_UNRESOLVED','outcome':'REVIEW_BLOCKED_TARGET_UNRESOLVED','sourceReview':None,'nullReason':'All four retained source-family queries were inspected. No candidate-exact target page was available to open and read; no identity or attribute can be inferred from a name, category, or search result.'}
 
