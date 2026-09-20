@@ -1,36 +1,23 @@
 {
-  "schemaVersion": "remaining-review-disposition-v1",
-  "status": "ALL_ATTEMPTS_DISPOSITIONED_WITH_PENDING_REVIEW",
-  "population": 10097,
-  "batchCount": 51,
-  "batchSize": 200,
-  "lastBatchSize": 97,
-  "sourceCheckedCandidates": 10097,
-  "actualSearchAttempts": 10097,
-  "editoriallyAssessedCandidates": 6000,
-  "fullyAssessedCandidates": 6000,
-  "scoredPoisBefore": 272,
-  "scoredPoisAfter": 2502,
-  "featuresBefore": 860,
-  "featuresAdded": 5226,
-  "featuresAfter": 6086,
-  "pendingCandidates": 10097,
-  "pendingReasonCounts": {
-    "UNSUPPORTED_FIELDS_REMAIN_NULL": 2451,
-    "REVIEWED_TARGET_NO_SUPPORTED_FACT": 1289,
-    "TARGET_IDENTITY_UNRESOLVED": 2176,
-    "IDENTITY_CONFLICT": 165,
-    "HISTORICAL_METADATA_ONLY": 3873,
-    "TARGET_BODY_NOT_YET_ADJUDICATED": 143
+  "schemaVersion": "remaining-batch-assessment-qa-v1",
+  "batchId": "R-0030",
+  "status": "ASSESSMENT_QA_PASS",
+  "candidateCount": 200,
+  "individuallyAssessed": 200,
+  "outcomes": {
+    "REVIEW_BLOCKED_EVIDENCE_INSUFFICIENT": 197,
+    "IDENTITY_HOLD_PRESERVED": 2,
+    "REVIEWED_SUPPORTED_FACTS": 1
   },
-  "identityHoldsPreserved": 165,
-  "heldCandidatesSearchedButNotAutoLinked": 165,
-  "visitProfilesAdded": 23,
-  "accessAnchorsAdded": 1512,
-  "accessLinksAdded": 1523,
+  "scoredPois": 1,
+  "supportedFeatures": 1,
+  "staticAccessLinks": 0,
+  "partialVisitProfiles": 0,
+  "unknownFieldsRemainNull": true,
+  "identityHoldsPreserved": 2,
+  "sourceAndLocatorHashesVerified": true,
+  "candidateContractsVerified": true,
   "errors": [],
-  "formalCodeChanges": 0,
-  "registryRebindings": 0,
   "identityHashesBefore": {
     "data/poi/full/registry/combined-candidates.v1.jsonl": "4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067",
     "data/poi/full/sources/identity-observations.v1.jsonl": "6a60eab7d673a8b706ac1c6f404380b78913fc755dec543d60c1285fe5c01e6b",
@@ -45,7 +32,5 @@
     "src/shared/data/master-code-registry.v1.json": "9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2",
     "data/poi/full/rubrics/candidate-feature-rubric.v1.json": "ec0f3026b38a17335845ec3835e9c2208f29d3ef62e0accd40f4bef59317b2fc"
   },
-  "fullEditorialReviewClaimed": false,
-  "nullIsUnknown": true,
-  "productionImportAuthorized": false
+  "completionMeaning": "Every candidate individually assessed; reasoned unknowns remain pending requery/manual review. No claim every attribute is known."
 }
