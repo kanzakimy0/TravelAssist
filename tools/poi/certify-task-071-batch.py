@@ -73,6 +73,13 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:210000317200':('https://tesshow.jp/chiba/ichihara/temple_kamo_choei.html','The fetched Choeiji page identifies Ichihara, Chiba, while the frozen candidate is Gifu. It is rejected as a different target.'),
       'geoshape-nrct-poi:210000351500':('https://apese.net/?id=1212226','The fetched secondary listing concerns a Gifu castle but does not provide sufficient authoritative identity proof for the frozen candidate. No score or identity rebind is accepted.'),
       'geoshape-nrct-poi:210000354500':('https://www.senkouji.jp/','The fetched Senkoji page identifies Onomichi, Hiroshima, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000373300':('http://www.buturyushu-ankokuji.com/','The fetched Ankokuji page identifies Sakai, Osaka, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000374700':('https://shrine-temple.com/prefecture/kyoto/6055','The fetched Enkoji page identifies Kyoto, while the frozen candidate is Gifu. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000021300':('https://runbini-saifukuji.jimdofree.com/','The fetched Saifukuji page identifies Ibaraki, Osaka, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000054100':('https://visit-hofu.jp/spot/%e4%bd%90%e6%b3%a2%e7%a5%9e%e7%a4%be/','The fetched Saba Shrine page identifies Hofu, Yamaguchi, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000071600':('https://www.hiejinja.net/','The fetched Hie Shrine page identifies Tokyo, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000097000':('https://www.xn--54q93x100b.jp/AccessMap.html','The fetched Saikoji page identifies Aisai, Aichi, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000097300':('https://www.hiejinja.net/','The fetched Hie Shrine page identifies Tokyo, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
     }
     pages={p['url']:p for p in source_rows['openedSources']}
     if key in mismatch:
