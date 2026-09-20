@@ -15,6 +15,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, quote_plus, unquote, urlparse
 
 import requests
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
 PHASE_ROOT = ROOT / 'data/poi/full/manifests/task-071'
@@ -96,7 +97,7 @@ def query_families(row):
     ]
 
 def search_one(cache, candidate_key, family, query):
-    key = sha(('bing-ddg-fallback-v2\0' + query).encode())
+    key = sha(('bing-rss-ddg-fallback-v3\0' + query).encode())
     record = cache / 'search-records' / f'{key}.json'
     raw = cache / 'search-raw' / f'{key}.html'
     if record.exists() and raw.exists():
@@ -104,9 +105,9 @@ def search_one(cache, candidate_key, family, query):
             data = read_json(record)
             if data.get('query') == query and data.get('rawSha256') == sha(raw.read_bytes()): return data
         except Exception: pass
-    start = utcnow(); status = 'FETCH_ERROR'; body = b''; error = None; provider = 'bing-html'
+    start = utcnow(); status = 'FETCH_ERROR'; body = b''; error = None; provider = 'bing-rss'
     try:
-        response = requests.get('https://www.bing.com/search?q=' + quote_plus(query), headers={'User-Agent': UA, 'Accept-Language':'ja,en;q=0.8'}, timeout=(8, 12))
+        response = requests.get('https://www.bing.com/search?format=rss&q=' + quote_plus(query), headers={'User-Agent': UA, 'Accept-Language':'ja,en;q=0.8'}, timeout=(8, 12))
         body = response.content; status = 'OK' if response.status_code == 200 else 'HTTP_UNAVAILABLE'
         http_status = response.status_code
         if status != 'OK':
@@ -117,9 +118,17 @@ def search_one(cache, candidate_key, family, query):
     except Exception as exc:
         http_status = None; error = type(exc).__name__
     atomic(raw, body)
-    parser = LinkParser(); parser.feed(body.decode('utf-8', 'replace'))
     leads=[]; seen=set()
-    for href, title in parser.links:
+    if provider == 'bing-rss' and status == 'OK':
+        try:
+            items = ET.fromstring(body).findall('.//item')
+        except ET.ParseError:
+            items = []
+        candidates = [(item.findtext('link') or '', item.findtext('title') or '') for item in items]
+    else:
+        parser = LinkParser(); parser.feed(body.decode('utf-8', 'replace'))
+        candidates = parser.links
+    for href, title in candidates:
         url = normal_url(href)
         if not url or url in seen: continue
         seen.add(url)
