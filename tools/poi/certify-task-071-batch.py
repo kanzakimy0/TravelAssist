@@ -80,6 +80,15 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:220000071600':('https://www.hiejinja.net/','The fetched Hie Shrine page identifies Tokyo, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
       'geoshape-nrct-poi:220000097000':('https://www.xn--54q93x100b.jp/AccessMap.html','The fetched Saikoji page identifies Aisai, Aichi, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
       'geoshape-nrct-poi:220000097300':('https://www.hiejinja.net/','The fetched Hie Shrine page identifies Tokyo, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000109800':('http://www.shizuokasengen.net/','The official Shizuoka Sengen Shrine page matches the name and prefecture but two frozen candidates share those facts; without locality or source-observation linkage it cannot select this candidate.'),
+      'geoshape-nrct-poi:220000114600':('http://www.shizuokasengen.net/','The official Shizuoka Sengen Shrine page matches the name and prefecture but two frozen candidates share those facts; without locality or source-observation linkage it cannot select this candidate.'),
+      'geoshape-nrct-poi:220000128400':('http://www.shizuokasengen.net/','The fetched shrine page does not establish the distinct frozen Asama kofun target. It is rejected as a different target type.'),
+      'geoshape-nrct-poi:220000134600':('https://yamap.com/mountains/9753','The fetched page concerns Jissoji Mountain in Kagawa, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000139500':('https://www.kuonji.jp/','The fetched official Kuonji page concerns Minobu, Yamanashi, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000203300':('https://www.kiyomizudera.or.jp/','The fetched official Kiyomizudera page identifies Kyoto, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000224800':('https://www.kiyomizudera.or.jp/','The fetched official Kiyomizudera page identifies Kyoto, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:220000231700':('http://www.yasaka-jinja.or.jp/','The fetched official Yasaka Shrine page identifies Kyoto, while the frozen candidate is Shizuoka. It is rejected as a different target.'),
+      'geoshape-nrct-poi:230000016300':('https://www.city.kanonji.kagawa.jp/','The fetched city page identifies Kagawa, while the frozen candidate is Aichi. It is rejected as a different target.'),
     }
     pages={p['url']:p for p in source_rows['openedSources']}
     if key in mismatch:
@@ -99,10 +108,11 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:200000136900': ('https://www.inacity.jp/kurashi/shogaigakushu_bunka/bunkazai/takatojyoseki.html', 'The Ina City page explicitly identifies Takato Castle ruins in Nagano. It confirms target identity, but its descriptive material is not independently calibrated enough to add a 43D score; Visit and static Access remain unsupported.'),
       'geoshape-nrct-poi:210000293600': ('http://www.toki-bunka.or.jp/oribe/point/motoyasiki', 'The Toki cultural foundation page explicitly identifies Motoyashiki pottery kiln ruins in Gifu. It confirms target identity, but visitor-scoped 43D calibration, Visit and static Access remain unsupported.'),
       'geoshape-nrct-poi:210000307500': ('https://www.kankou-gifu.jp/spot/detail_1344.html', 'The official Gifu tourism page explicitly identifies Iwamura Castle ruins in Gifu. It confirms target identity, but no independently calibrated 43D score is added; Visit and static Access remain unsupported.'),
+      'geoshape-nrct-poi:220000156200': ('https://kusanagijinjya.jp/', 'The official Kusanagi Shrine page explicitly identifies the Shizuoka target. It confirms identity, but no independently calibrated 43D score, Visit Profile, or static Access fact is added.'),
     }
     if key in phase_a2:
         url, reason = phase_a2[key]; page = pages[url]; text = (page_cache/page['fetch']['textPath']).read_text(encoding='utf8')
-        confirmed = key in {'geoshape-nrct-poi:200000076900','geoshape-nrct-poi:200000136900','geoshape-nrct-poi:210000293600','geoshape-nrct-poi:210000307500'}
+        confirmed = key in {'geoshape-nrct-poi:200000076900','geoshape-nrct-poi:200000136900','geoshape-nrct-poi:210000293600','geoshape-nrct-poi:210000307500','geoshape-nrct-poi:220000156200'}
         return {'candidateKey':key,'identity':'TARGET_CONFIRMED' if confirmed else 'TARGET_UNRESOLVED','outcome':'REVIEWED_NO_SUPPORTED_FACTS' if confirmed else 'REVIEW_BLOCKED_TARGET_UNRESOLVED','sourceReview':{'url':url,'textSha256':page['fetch']['textSha256'],'locator':locator(text, row['name'] if row['name'] in text else text[:min(12,len(text))]),'reviewed':True,'accepted':confirmed,'tier':'GOVERNMENT_OR_PUBLIC_BODY' if confirmed else None,'reason':reason},'nullReason':reason}
     return {'candidateKey':key,'identity':'TARGET_UNRESOLVED','outcome':'REVIEW_BLOCKED_TARGET_UNRESOLVED','sourceReview':None,'nullReason':'All four retained source-family queries were inspected. No candidate-exact target page was available to open and read; no identity or attribute can be inferred from a name, category, or search result.'}
 
