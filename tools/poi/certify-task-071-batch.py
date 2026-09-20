@@ -52,6 +52,11 @@ def explicit_decision(row, source_rows, page_cache):
       'geoshape-nrct-poi:050000079500':('http://www.shiga-miidera.or.jp/','The fetched official Miidera page is Onjoji in Shiga, while the frozen candidate is Akita. The page is rejected as a different target.'),
       'geoshape-nrct-poi:200000027800':('https://anyouji.jp/','The fetched Anyoji page identifies Nara Prefecture, while the frozen candidate is Nagano. The page is rejected as a different target.'),
       'geoshape-nrct-poi:200000029200':('http://shoboji.or.jp/','The fetched Shoboji page identifies Kyoto Yawata, while the frozen candidate is Nagano. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:200000155400':('https://anyouji.jp/','The fetched Anyoji page identifies Nara Prefecture, while the frozen candidate is Nagano. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000039400':('https://www.tokyohakuzen.co.jp/media/178','The fetched page is a generic article about bodaiji and does not identify a particular Gifu target. It is rejected as non-target content.'),
+      'geoshape-nrct-poi:210000100100':('http://www.buturyushu-ankokuji.com/','The fetched Ankokuji page identifies Sakai, Osaka, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000105900':('https://www.zuiganji.or.jp/','The fetched Zuiganji page identifies Matsushima, Miyagi, while the frozen candidate is Gifu. The page is rejected as a different target.'),
+      'geoshape-nrct-poi:210000153500':('https://niigata-kankou.or.jp/spot/10163','The fetched tourism page identifies a Niigata shrine, while the frozen candidate is Gifu. The page is rejected as a different target.'),
     }
     pages={p['url']:p for p in source_rows['openedSources']}
     if key in mismatch:
