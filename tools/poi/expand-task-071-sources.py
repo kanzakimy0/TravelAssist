@@ -103,7 +103,8 @@ def search_one(cache, candidate_key, family, query):
     if record.exists() and raw.exists():
         try:
             data = read_json(record)
-            if data.get('query') == query and data.get('rawSha256') == sha(raw.read_bytes()): return data
+            if data.get('query') == query and data.get('rawSha256') == sha(raw.read_bytes()):
+                reused = data.copy(); reused['candidateKey'] = candidate_key; reused['cacheReused'] = True; return reused
         except Exception: pass
     start = utcnow(); status = 'FETCH_ERROR'; body = b''; error = None; provider = 'bing-rss'
     try:
@@ -134,7 +135,7 @@ def search_one(cache, candidate_key, family, query):
         seen.add(url)
         leads.append({'url':url, 'title':title, 'sourceClassification':source_kind(url), 'searchResultNotEvidence':True})
         if len(leads) >= 12: break
-    data = {'schemaVersion':'task-071-search-attempt-v1','candidateKey':candidate_key,'family':family,'query':query,'provider':provider,'startedAt':start,'completedAt':utcnow(),'status':status,'httpStatus':http_status,'error':error,'rawPath':str(raw),'rawSha256':sha(body),'rawBytes':len(body),'leads':leads}
+    data = {'schemaVersion':'task-071-search-attempt-v1','candidateKey':candidate_key,'family':family,'query':query,'provider':provider,'startedAt':start,'completedAt':utcnow(),'status':status,'httpStatus':http_status,'error':error,'rawPath':str(raw),'rawSha256':sha(body),'rawBytes':len(body),'leads':leads,'cacheReused':False}
     atomic(record, encode(data)); time.sleep(.25); return data
 
 def batch_manifest(batch_id):
