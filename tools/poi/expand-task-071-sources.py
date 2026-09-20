@@ -104,11 +104,16 @@ def search_one(cache, candidate_key, family, query):
             data = read_json(record)
             if data.get('query') == query and data.get('rawSha256') == sha(raw.read_bytes()): return data
         except Exception: pass
-    start = utcnow(); status = 'FETCH_ERROR'; body = b''; error = None
+    start = utcnow(); status = 'FETCH_ERROR'; body = b''; error = None; provider = 'bing-html'
     try:
-        response = requests.get('https://html.duckduckgo.com/html/?q=' + quote_plus(query), headers={'User-Agent': UA}, timeout=(10, 30))
+        response = requests.get('https://www.bing.com/search?q=' + quote_plus(query), headers={'User-Agent': UA, 'Accept-Language':'ja,en;q=0.8'}, timeout=(8, 12))
         body = response.content; status = 'OK' if response.status_code == 200 else 'HTTP_UNAVAILABLE'
         http_status = response.status_code
+        if status != 'OK':
+            provider = 'duckduckgo-html-fallback'
+            response = requests.get('https://html.duckduckgo.com/html/?q=' + quote_plus(query), headers={'User-Agent': UA}, timeout=(8, 12))
+            body = response.content; status = 'OK' if response.status_code == 200 else 'HTTP_UNAVAILABLE'
+            http_status = response.status_code
     except Exception as exc:
         http_status = None; error = type(exc).__name__
     atomic(raw, body)
@@ -120,7 +125,7 @@ def search_one(cache, candidate_key, family, query):
         seen.add(url)
         leads.append({'url':url, 'title':title, 'sourceClassification':source_kind(url), 'searchResultNotEvidence':True})
         if len(leads) >= 12: break
-    data = {'schemaVersion':'task-071-search-attempt-v1','candidateKey':candidate_key,'family':family,'query':query,'provider':'duckduckgo-html','startedAt':start,'completedAt':utcnow(),'status':status,'httpStatus':http_status,'error':error,'rawPath':str(raw),'rawSha256':sha(body),'rawBytes':len(body),'leads':leads}
+    data = {'schemaVersion':'task-071-search-attempt-v1','candidateKey':candidate_key,'family':family,'query':query,'provider':provider,'startedAt':start,'completedAt':utcnow(),'status':status,'httpStatus':http_status,'error':error,'rawPath':str(raw),'rawSha256':sha(body),'rawBytes':len(body),'leads':leads}
     atomic(record, encode(data)); time.sleep(.25); return data
 
 def batch_manifest(batch_id):
@@ -203,3 +208,4 @@ def run(args):
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--batch',required=True); parser.add_argument('--cache',default=str(DEFAULT_CACHE)); parser.add_argument('--resume',action='store_true'); args=parser.parse_args(); run(args)
 if __name__ == '__main__': main()
+
