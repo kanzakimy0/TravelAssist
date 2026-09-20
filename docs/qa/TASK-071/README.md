@@ -28,7 +28,7 @@ The allowlist has 102 exact entries. TASK-071-A adds 28 user-authorized records 
 
 ## Other gates
 
-`npm ci`, full Node regression, lint, typecheck, normal production build, local deployment validation, local deployment artifact build, artifact verification, deployment formatting, and `git diff --check` passed. Existing Node module-type warnings were non-failing performance warnings only.
+`npm ci`, full Node regression (2,678/2,678), lint, typecheck, normal production build, local deployment validation, local deployment artifact build, artifact verification, deployment formatting, and `git diff --check` passed. Existing Node module-type warnings were non-failing performance warnings only.
 
 ## Scope limits
 

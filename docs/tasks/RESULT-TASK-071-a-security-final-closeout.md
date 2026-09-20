@@ -37,10 +37,12 @@ The existing 74-entry allowlist was reviewed against new current-tree findings. 
 
 The Planner route entry now imports `server-only` before reading private routing flags. The scanner has one tested minified-JavaScript compatibility rule: an identifier mapped to an identical quoted identifier is not a credential value; a different quoted credential value remains detected. No scanner category, test, or security rule was disabled.
 
+After the first hosted run, the legacy asset inventory was restored to the current `develop` form so it no longer duplicates two manifest-owned runtime assets. The Security workflow now uses the same repository TypeScript route resolver as the Quality Gate; it still executes the entire test set.
+
 ## Quality gates
 
 - `npm ci`: PASS; 396 packages audited with 0 reported vulnerabilities.
-- Full relevant Node regression: PASS.
+- Full relevant Node regression: **2,678/2,678 PASS**.
 - `npm run lint`: PASS.
 - `npm run typecheck`: PASS.
 - `npm run build`: PASS.

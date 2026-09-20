@@ -33,7 +33,7 @@ jobs:
       - run: npm run security:boundary
       - run: npm run lint
       - run: npm run typecheck
-      - run: node --experimental-strip-types --test tests/*.test.mjs
+      - run: node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"
       - run: npm run security:build
       - run: npm run security:bundle
       - name: Check security-tool formatting
