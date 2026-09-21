@@ -4,14 +4,14 @@
 
 ## Status
 
-**COMPLETE**
+**PARTIAL**
 
 - Task: TASK-072-B
 - Issue: #409
 - Correction publication head: 2f01c25bb1b69e52ab9790328cf2de30cf01431c
 - Execution branch: codex/b-task-072-evidence-to-43d-projection
 - Draft PR: #410
-- Blocker: none
+- Blocker: GitHub Quality Gate #35594517958 has one pre-existing repository test failure; Correction v2 data/identity gates pass.
 
 ## Authoritative baseline
 
@@ -176,13 +176,13 @@ The protected prior 272 / 860 baseline remains untouched.
 
 - execution branch: codex/b-task-072-evidence-to-43d-projection
 - Draft PR: #410
-- final commit / exact final head: recorded after ordinary push
-- Quality Gate: exact current-head receipt will be recorded in PR #410 and Issue #409 comments
+- final commit / exact final head: `aaf76d41a`
+- Quality Gate #35594517958: FAIL; 2,684/2,685 tests passed, 1 pre-existing Visit fixture failed (`tests/poi-remaining-review.test.mjs:181`, `null !== 60`).
 - heartbeat deleted: not created
 - auto-merge: false
 
 ## Final acceptance
 
-### COMPLETE
+### PARTIAL
 
-All local Correction v2 hard gates passed; exact PR-head Quality Gate receipt remains the final GitHub delivery gate.
+All Correction v2 data, identity, provenance, canonical, and local QA gates passed. Final delivery remains PARTIAL because the current-head GitHub Quality Gate has one unchanged repository Visit fixture failure; no COMPLETE claim is made.
