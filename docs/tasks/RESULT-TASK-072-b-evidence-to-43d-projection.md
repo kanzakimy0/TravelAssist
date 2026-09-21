@@ -47,23 +47,23 @@ The protected prior 272 / 860 baseline remains untouched.
 
 | Batch | Candidates | Extraction attempted | Feature decisions | New non-null | Provenance | Identity updates | Visit | Access | QA |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| TASK-071-A-0001 | 200 | 200 | 8600 | 3 | 3 | 9 | 200 | 200 | PASS |
-| TASK-071-A-0002 | 200 | 200 | 8600 | 3 | 3 | 6 | 200 | 200 | PASS |
+| TASK-071-A-0001 | 200 | 200 | 8600 | 2 | 2 | 9 | 200 | 200 | PASS |
+| TASK-071-A-0002 | 200 | 200 | 8600 | 0 | 0 | 6 | 200 | 200 | PASS |
 | TASK-071-A-0003 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
 | TASK-071-A-0004 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
-| TASK-071-A-0005 | 200 | 200 | 8600 | 3 | 3 | 9 | 200 | 200 | PASS |
-| TASK-071-A-0006 | 200 | 200 | 8600 | 3 | 3 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0005 | 200 | 200 | 8600 | 0 | 0 | 9 | 200 | 200 | PASS |
+| TASK-071-A-0006 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
 | TASK-071-A-0007 | 200 | 200 | 8600 | 0 | 0 | 11 | 200 | 200 | PASS |
 | TASK-071-A-0008 | 200 | 200 | 8600 | 0 | 0 | 3 | 200 | 200 | PASS |
 | TASK-071-A-0009 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
-| TASK-071-A-0010 | 200 | 200 | 8600 | 2 | 2 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0010 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
 | TASK-071-A-0011 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
-| TASK-071-A-0012 | 200 | 200 | 8600 | 3 | 3 | 8 | 200 | 200 | PASS |
-| TASK-071-A-0013 | 200 | 200 | 8600 | 2 | 2 | 11 | 200 | 200 | PASS |
+| TASK-071-A-0012 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
+| TASK-071-A-0013 | 200 | 200 | 8600 | 0 | 0 | 11 | 200 | 200 | PASS |
 | TASK-071-A-0014 | 200 | 200 | 8600 | 0 | 0 | 6 | 200 | 200 | PASS |
-| TASK-071-A-0015 | 200 | 200 | 8600 | 1 | 1 | 10 | 200 | 200 | PASS |
+| TASK-071-A-0015 | 200 | 200 | 8600 | 0 | 0 | 10 | 200 | 200 | PASS |
 | TASK-071-A-0016 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
-| TASK-071-A-0017 | 200 | 200 | 8600 | 2 | 2 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0017 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
 | TASK-071-A-0018 | 200 | 200 | 8600 | 0 | 0 | 6 | 200 | 200 | PASS |
 | TASK-071-A-0019 | 200 | 200 | 8600 | 0 | 0 | 3 | 200 | 200 | PASS |
 | TASK-071-A-0020 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
@@ -72,14 +72,14 @@ The protected prior 272 / 860 baseline remains untouched.
 | TASK-071-A-0023 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
 | TASK-071-A-0024 | 200 | 200 | 8600 | 0 | 0 | 9 | 200 | 200 | PASS |
 | TASK-071-A-0025 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
-| TASK-071-A-0026 | 200 | 200 | 8600 | 1 | 1 | 11 | 200 | 200 | PASS |
+| TASK-071-A-0026 | 200 | 200 | 8600 | 0 | 0 | 11 | 200 | 200 | PASS |
 | TASK-071-A-0027 | 200 | 200 | 8600 | 0 | 0 | 2 | 200 | 200 | PASS |
 | TASK-071-A-0028 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
 | TASK-071-A-0029 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
 | TASK-071-A-0030 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
 | TASK-071-A-0031 | 49 | 49 | 2107 | 0 | 0 | 1 | 49 | 49 | PASS |
 | TASK-071-B-0001 | 165 | 165 | 7095 | 0 | 0 | 0 | 165 | 165 | PASS |
-| TASK-071-C-0001 | 200 | 200 | 8600 | 3 | 3 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0001 | 200 | 200 | 8600 | 2 | 2 | 0 | 200 | 200 | PASS |
 | TASK-071-C-0002 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
 | TASK-071-C-0003 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
 | TASK-071-C-0004 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
@@ -89,8 +89,8 @@ The protected prior 272 / 860 baseline remains untouched.
 | TASK-071-C-0008 | 22 | 22 | 946 | 1 | 1 | 0 | 22 | 22 | PASS |
 | TASK-071-D-0001 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
 | TASK-071-D-0002 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-071-D-0003 | 200 | 200 | 8600 | 1 | 1 | 0 | 200 | 200 | PASS |
-| TASK-071-D-0004 | 200 | 200 | 8600 | 1 | 1 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0003 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0004 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
 | TASK-071-D-0005 | 200 | 200 | 8600 | 2 | 2 | 0 | 200 | 200 | PASS |
 | TASK-071-D-0006 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
 | TASK-071-D-0007 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
@@ -107,19 +107,19 @@ The protected prior 272 / 860 baseline remains untouched.
 - semanticAnnotationAttemptedCount: 4083
 - preserved current non-null: 5244
 - preserved + superseded current non-null: 5244 / 5244
-- new non-null: 31
+- new non-null: 7
 - superseded: 0
-- provenance written: 31
+- provenance written: 7
 
 ## 43D coverage
 
-- global scored before / after: 2510 / 2530
-- global non-null before / after: 6104 / 6135
-- new / superseded: 31 / 0
-- remaining null decisions: 428896
+- global scored before / after: 2510 / 2515
+- global non-null before / after: 6104 / 6111
+- new / superseded: 7 / 0
+- remaining null decisions: 428920
 - per-feature before: {"10":336,"11":96,"12":632,"13":5,"14":0,"15":0,"16":93,"17":0,"18":2,"19":1,"20":102,"21":7,"22":237,"23":160,"24":91,"25":13,"26":8,"27":3,"28":1,"29":28,"30":0,"31":88,"32":3,"33":7,"34":15,"35":9,"36":5,"37":0,"38":2,"39":27,"40":162,"41":77,"42":114,"43":45,"01":352,"02":1196,"03":577,"04":60,"05":454,"06":707,"07":310,"08":59,"09":20}
-- per-feature after: {"10":340,"11":98,"12":632,"13":5,"14":0,"15":0,"16":93,"17":0,"18":2,"19":1,"20":102,"21":7,"22":239,"23":162,"24":91,"25":14,"26":8,"27":3,"28":1,"29":28,"30":0,"31":88,"32":3,"33":7,"34":15,"35":9,"36":5,"37":0,"38":2,"39":27,"40":165,"41":77,"42":115,"43":45,"01":353,"02":1203,"03":584,"04":60,"05":454,"06":707,"07":311,"08":59,"09":20}
-- coverage bands: {">=1":2530,">=10":5,">=20":0,">=30":0,">=43":0}
+- per-feature after: {"10":337,"11":97,"12":632,"13":5,"14":0,"15":0,"16":93,"17":0,"18":2,"19":1,"20":102,"21":7,"22":238,"23":160,"24":91,"25":13,"26":8,"27":3,"28":1,"29":28,"30":0,"31":88,"32":3,"33":7,"34":15,"35":9,"36":5,"37":0,"38":2,"39":27,"40":164,"41":77,"42":114,"43":45,"01":352,"02":1196,"03":579,"04":60,"05":454,"06":707,"07":310,"08":59,"09":20}
+- coverage bands: {">=1":2515,">=10":5,">=20":0,">=30":0,">=43":0}
 
 ## Identity correction
 
@@ -170,7 +170,7 @@ The protected prior 272 / 860 baseline remains untouched.
 - frozen population manifests: phase-A through phase-D reused exactly
 - rubric: candidate-recovery-1.0 unchanged
 - corrected output manifest: data/poi/full/task-072-b-correction-v2/final-manifest.json
-- canonical integration: {"addedKeys":["candidate:B_V1_PROPOSED:60349","candidate:B_V1_PROPOSED:80001","candidate:B_V1_PROPOSED:80032","candidate:B-SNS-20260915-R01-020","candidate:B-SNS-20260915-R10-012","candidate:B-SNS-20260915-R13-005","geoshape-nrct-poi:030000021300","geoshape-nrct-poi:190000039700","geoshape-nrct-poi:200000076900","geoshape-nrct-poi:210000293600","geoshape-nrct-poi:210000307500","geoshape-nrct-poi:210000373300","geoshape-nrct-poi:220000021300","geoshape-nrct-poi:250000042800","geoshape-nrct-poi:260000055300","geoshape-nrct-poi:270000088200","geoshape-nrct-poi:300000037100","geoshape-nrct-poi:330000044100","geoshape-nrct-poi:430000059200","wikidata:Q746216"],"canonicalDeltaSha256":"a831d9697a795d018372fb462024989a7f8599cfc8feaa3aa26a1237415f158b","editorialSha256":"83d62fa6e5e143a6556f1a631fb505c29092900fd46624434c4a246631c60118","manifestSha256":"fc3ec140c7516e28c9df7809db62e8604855f022010f8bb5db518365b2bb83f3"}
+- canonical integration: {"addedKeys":["candidate:B_V1_PROPOSED:60349","candidate:B_V1_PROPOSED:80001","candidate:B_V1_PROPOSED:80032","geoshape-nrct-poi:030000021300","wikidata:Q746216"],"canonicalDeltaSha256":"81a615fb9d3e3409d59465de5cb87f05a6bb55d371467dd669815012075d0e98","editorialSha256":"552b65d68048246dd896e791177289697204169368c19213ea69a39ec2e76815","manifestSha256":"8699a283b594bd2b31499fc37dc1e1e5461698690cb663fa3de63a33c9e421ca"}
 
 ## GitHub delivery
 
