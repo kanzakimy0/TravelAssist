@@ -4,14 +4,14 @@
 > TASK-074-B cannot be marked complete without a fully populated final Result.
 
 ## Status
-**RUNNING**
+**COMPLETE / READY FOR USER REVIEW**
 
 - Task: TASK-074-B
 - Issue: #414
 - Upstream: TASK-073-B / PR #413
 - Publication branch: `task/b-task-074-poi-final-unattended-closure`
 - Planned execution branch: `codex/b-task-074-poi-final-unattended-closure`
-- Completion gate: Phase 0 PASS; Phase 1/3 and final hosted gate pending
+- Completion gate: ALL TASK-074-B gates PASS
 
 ## Baseline
 Expected authoritative start:
@@ -334,4 +334,15 @@ Local closure is PASS; test and exact current-head GitHub Quality Gate remain pe
 - Lint tracked source scope, typecheck, format, deployment validate/build/artifact, and `git diff --check`: PASS.
 - Master Code allocation 0; Registry rebind 0; candidateKey changes 0.
 - QA files: `docs/qa/TASK-074-B/final-qa.md` and `docs/qa/TASK-074-B/final-qa.json`.
-- Final status remains `RUNNING / PARTIAL` until exact current-head hosted Quality Gate PASS.
+- Final status: `TASK-074-B = COMPLETE / READY FOR USER REVIEW`.
+## Final hosted Quality Gate — PASS
+
+- exact implementation/evidence head: `2379c24cba7d5fc661385fb5919f79f7469fff63`
+- Quality Gate run ID: `35627716264`
+- conclusion: `SUCCESS`
+- all hosted checks passed: repository tests, lint, typecheck, format, deployment validation, build, artifact verification, and whitespace.
+- Draft PR: #415 (`codex/b-task-074-poi-final-unattended-closure` → `codex/b-task-073-identity-deep-null-targeted-43d`)
+- Result path: `docs/tasks/RESULT-TASK-074-b-poi-final-unattended-closure.md`
+- auto-merge: false
+
+### TASK-074-B = COMPLETE / READY FOR USER REVIEW

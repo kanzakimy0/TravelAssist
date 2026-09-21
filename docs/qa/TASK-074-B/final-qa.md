@@ -1,6 +1,6 @@
 # TASK-074-B Final Local QA
 
-Status: LOCAL QA PASS; hosted exact-current-head Quality Gate pending.
+Status: COMPLETE / READY FOR USER REVIEW. Exact current implementation head Quality Gate PASS.
 
 - population: 10,369
 - working candidates: 10,097
@@ -26,4 +26,4 @@ Status: LOCAL QA PASS; hosted exact-current-head Quality Gate pending.
 - deployment validate/build/artifact: PASS
 - git diff --check: PASS
 
-The exact current-head hosted Quality Gate is the only remaining completion gate.
+- exact implementation/evidence head: `2379c24cba7d5fc661385fb5919f79f7469fff63`\n- Quality Gate run ID: `35627716264`\n- conclusion: `SUCCESS`\n- Result path: `docs/tasks/RESULT-TASK-074-b-poi-final-unattended-closure.md`
