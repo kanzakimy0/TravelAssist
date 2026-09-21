@@ -627,8 +627,10 @@ function updateFeatureSidecars(input, projections, batch) {
   for (const projection of projections) {
     const featureRow = input.featureRows.get(projection.candidateKey);
     const row = featureRow.row;
+    let sidecarChanged = false;
     for (const decision of projection.featureDecisions) {
       if (decision.disposition === "ADD_SUPPORTED" || decision.disposition === "SUPERSEDE_SUPPORTED") {
+        sidecarChanged = true;
         row.featureSet.values[decision.featureCode] = decision.proposedValue;
         row.provenance = [
           ...(row.provenance ?? []),
@@ -646,6 +648,7 @@ function updateFeatureSidecars(input, projections, batch) {
         ];
       }
     }
+    if (!sidecarChanged) continue;
     row.status = "TASK_072_B_PROJECTED";
     row.task072BProjection = {
       task: TASK,
