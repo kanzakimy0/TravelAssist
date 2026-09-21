@@ -2,29 +2,29 @@
 
 ## Status
 
-**PRECHECK PASS — FULL RUN AUTHORIZED**
+**BLOCKED / PARTIAL**
 
 - Task: TASK-072-B
 - Issue: #409
 - Publication head: 96355af2e80c26b437431306d00f49e046b047c5
 - Execution branch: codex/b-task-072-evidence-to-43d-projection
 - Draft PR: not created by this local run
-- Current local gate: incomplete
-- Blocker: none reported
+- Current local gate: all deterministic TASK-072-B local gates PASS
+- Blocker: Local projector gates pass, but exact final-head GitHub Quality Gate and Draft PR delivery are not yet verified.
 
 ## Required Final Summary
 
 | Metric | Before | After | Delta |
 | --- | ---: | ---: | ---: |
-| Frozen candidates | 10,097 | 0 | -10097 |
-| Feature extraction attempted candidates | 0 | 0 | 0 |
-| Total 43-field decisions | 0 | 0 | 0 |
+| Frozen candidates | 10,097 | 10097 | 0 |
+| Feature extraction attempted candidates | 0 | 10097 | 10097 |
+| Total 43-field decisions | 0 | 434171 | 434171 |
 | Scored POIs (all sidecars) | 272 | 272 | 0 |
 | Non-null 43D fields (all sidecars) | 860 | 860 | 0 |
 | New non-null fields | 0 | 0 | 0 |
 | Superseded fields | 0 | 0 | 0 |
 | Provenance records written | 0 | 0 | 0 |
-| Identity disposition updates | 0 | 0 | 0 |
+| Identity disposition updates | 0 | 6049 | 6049 |
 | Visit Profile additions | 0 | 0 | 0 |
 | Access Anchor additions | 0 | 0 | 0 |
 
@@ -49,7 +49,59 @@ Required exact total feature decisions: 10,097 × 43 = 434,171.
 
 | Batch | Candidates | Extraction attempted | Feature decisions | New non-null | Provenance | Identity updates | Visit | Access | QA |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 1–53 | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | NOT STARTED |
+| TASK-072-B-0001 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0002 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0003 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0004 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0005 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0006 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0007 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0008 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0009 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0010 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0011 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0012 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0013 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0014 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0015 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0016 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0017 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0018 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0019 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0020 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0021 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0022 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0023 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0024 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0025 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0026 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0027 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0028 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0029 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0030 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
+| TASK-072-B-0031 | 49 | 49 | 2107 | 0 | 0 | 49 | 49 | 49 | PASS |
+| TASK-072-B-0032 | 165 | 165 | 7095 | 0 | 0 | 0 | 165 | 165 | PASS |
+| TASK-072-B-0033 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0034 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0035 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0036 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0037 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0038 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0039 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0040 | 22 | 22 | 946 | 0 | 0 | 0 | 22 | 22 | PASS |
+| TASK-072-B-0041 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0042 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0043 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0044 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0045 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0046 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0047 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0048 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0049 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0050 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0051 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0052 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-072-B-0053 | 61 | 61 | 2623 | 0 | 0 | 0 | 61 | 61 | PASS |
 
 ## 43D Coverage
 
@@ -67,34 +119,34 @@ Required exact total feature decisions: 10,097 × 43 = 434,171.
 - TARGET_IDENTITY_UNRESOLVED before: 6,049
 - IDENTITY_CONFLICT before: 165
 - TASK-071 reported identity decisions not projected: 25
-- Phase A after: {"RESOLVED_HIGH":0,"RESOLVED_MEDIUM":0,"SECOND_PASS_REQUIRED":0,"IDENTITY_CONFLICT_HOLD":0}
-- candidates resolved then enriched: 0
-- second-pass candidate count: 0
-- second-pass reason distribution: {}
+- Phase A after: {"RESOLVED_HIGH":5,"RESOLVED_MEDIUM":6044,"SECOND_PASS_REQUIRED":0,"IDENTITY_CONFLICT_HOLD":0}
+- candidates resolved then enriched: 6049
+- second-pass candidate count: 165
+- second-pass reason distribution: {"material identity conflict":165}
 - second-pass deliverables: docs/qa/TASK-072-B/identity-second-pass.md, docs/qa/TASK-072-B/identity-second-pass.jsonl
 - Registry rebinds: 0
 - formal Master Code allocations: 0
 
-Required reconciliation: 6049 = 0 + 0 + 0 + 0 = 0.
+Required reconciliation: 6049 = 5 + 6044 + 0 + 0 = 6049.
 
 ## Visit / Access Projection
 
-- visitExtractionAttemptedCount: 0
+- visitExtractionAttemptedCount: 10097
 - Visit Profile additions: 0
-- accessExtractionAttemptedCount: 0
+- accessExtractionAttemptedCount: 10097
 - Access Anchor additions: 0
 - static access link additions: 0
-- unsupported/no-supported disposition counts: 0
+- unsupported/no-supported disposition counts: 427076
 
 ## Evidence / Provenance
 
 - retained evidence candidates loaded: 1032
-- retained text used: 0 records
-- identity search inventories evaluated: 0 candidates
-- supplemental official source count: 0
-- supplemental official SNS count: 0
+- retained text used: 2645 records
+- identity search inventories evaluated: 6049 candidates
+- supplemental official source count: 48
+- supplemental official SNS count: 3
 - provenance written: 0
-- locator/hash validated: 0
+- locator/hash validated: 2645
 - contradictory sources: 0
 - rejected/no-evidence reasons: field-level noEvidenceReason is present on every null decision
 
@@ -103,9 +155,9 @@ Required reconciliation: 6049 = 0 + 0 + 0 + 0 = 0.
 - batch failures: 0
 - candidate errors: 0
 - contradictory evidence queue: 0
-- identity blocker queue: 0
+- identity blocker queue: 165
 - corruption/recovery events: 0
-- unresolved review queue: 0
+- unresolved review queue: 165
 
 ## Integrity
 
@@ -138,10 +190,10 @@ The exact final-head GitHub Quality Gate and Draft PR delivery remain outstandin
 | Metric | Before | After |
 | --- | ---: | ---: |
 | TARGET_IDENTITY_UNRESOLVED | 6,049 | 0 |
-| RESOLVED_HIGH | 0 | 0 |
-| RESOLVED_MEDIUM | 0 | 0 |
+| RESOLVED_HIGH | 0 | 5 |
+| RESOLVED_MEDIUM | 0 | 6044 |
 | SECOND_PASS_REQUIRED | 0 | 0 |
 | IDENTITY_CONFLICT_HOLD | 0 | 0 |
-| Candidates resolved then enriched | 0 | 0 |
+| Candidates resolved then enriched | 0 | 6049 |
 
 The second-pass queue contains no candidate already reasonably resolved for enrichment; every queued row is explicitly blocked or requires a missing discriminative signal.

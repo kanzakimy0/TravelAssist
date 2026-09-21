@@ -5,6 +5,7 @@ import {
   readFileSync,
   readdirSync,
   renameSync,
+  rmSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -97,7 +98,13 @@ function atomicWrite(relativePath, content) {
   mkdirSync(dirname(absolute), { recursive: true });
   const temporary = `${absolute}.tmp-${process.pid}`;
   writeFileSync(temporary, content, "utf8");
-  renameSync(temporary, absolute);
+  try {
+    renameSync(temporary, absolute);
+  } catch (error) {
+    if (!["EPERM", "EEXIST", "ENOTEMPTY"].includes(error.code)) throw error;
+    writeFileSync(absolute, content, "utf8");
+    rmSync(temporary, { force: true });
+  }
 }
 
 function sha256File(relativePath) {
@@ -600,7 +607,7 @@ function metricsFor(batch, projections, identityRows, validatedRetained) {
     accessExtractionAttemptedCount: projections.filter((row) => row.accessExtraction.attempted).length,
     accessAnchorAddedCount: projections.reduce((sum, row) => sum + row.accessExtraction.anchors.length, 0),
     supplementalSearchCandidateCount: batch.phase === "A" ? projections.length : 0,
-    supplementalOfficialSourceCount: identityRows.reduce((sum, row) => sum + row.retained.filter((e) => isAuthoritativeUrl(e.url)).length, 0),
+    supplementalOfficialSourceCount: identityRows.reduce((sum, row) => sum + (row.retained ?? row.retainedSourceSummaries ?? []).filter((e) => isAuthoritativeUrl(e.url)).length, 0),
     supplementalOfficialSNSCount: identityRows.reduce((sum, row) => sum + row.officialSns.length, 0),
     unsupportedNullDecisionCount: decisions.filter((row) => row.disposition === "UNSUPPORTED_REMAINS_NULL").length,
     contradictorySourceCount: identityRows.reduce((sum, row) => sum + row.contradictions.length, 0),
@@ -715,7 +722,11 @@ function validatePreflight(input, resolveIdentity) {
 function loadReceipts() {
   const dir = pathFor(`${TASK_ROOT}/receipts`);
   if (!existsSync(dir)) return [];
-  return readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => readJson(`${TASK_ROOT}/receipts/${name}`));
+  return readdirSync(dir).filter((name) => name.endsWith(".json")).sort().map((name) => {
+    const receipt = readJson(`${TASK_ROOT}/receipts/${name}`);
+    receipt.identityRows = (receipt.identityRows ?? []).map(compactIdentityRow);
+    return receipt;
+  });
 }
 
 function renderResult(input, preflight, receipts, status, blocker = null) {
@@ -734,8 +745,8 @@ function renderResult(input, preflight, receipts, status, blocker = null) {
     const t = row.telemetry;
     return `| ${row.batchId} | ${t.candidateCount} | ${t.featureExtractionAttemptedCount} | ${t.featureDecisionCount} | ${t.newNonNullFeatureCount} | ${t.provenanceWrittenCount} | ${t.identityDispositionUpdatedCount} | ${t.visitExtractionAttemptedCount} | ${t.accessExtractionAttemptedCount} | PASS |`;
   }).join("\n");
-  const unresolvedRows = phaseA.filter((row) => ["SECOND_PASS_REQUIRED", "IDENTITY_CONFLICT_HOLD"].includes(row.disposition));
-  const reasonCounts = Object.fromEntries(unique(unresolvedRows.map((row) => row.missingDiscriminativeSignal ?? "material identity conflict")).map((reason) => [reason, unresolvedRows.filter((row) => (row.missingDiscriminativeSignal ?? "material identity conflict") === reason).length]));
+  const secondPassRows = identity.filter((row) => ["SECOND_PASS_REQUIRED", "IDENTITY_CONFLICT_HOLD"].includes(row.disposition));
+  const reasonCounts = Object.fromEntries(unique(secondPassRows.map((row) => row.missingDiscriminativeSignal ?? "material identity conflict")).map((reason) => [reason, secondPassRows.filter((row) => (row.missingDiscriminativeSignal ?? "material identity conflict") === reason).length]));
   const exactLocal = totals.featureDecisionCount === 434171 && totals.featureExtractionAttemptedCount === 10097 && totals.visitExtractionAttemptedCount === 10097 && totals.accessExtractionAttemptedCount === 10097 && phaseA.length === 6049 && Object.values(dispositionCounts).reduce((a, b) => a + b, 0) === 6049;
   const finalStatement = status === "COMPLETE" ? "### COMPLETE" : "### BLOCKED / PARTIAL";
   return `# RESULT — TASK-072-B Evidence → 43D Projection
@@ -809,7 +820,7 @@ ${batchTable || "| 1–53 | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | NOT 
 - TASK-071 reported identity decisions not projected: 25
 - Phase A after: ${JSON.stringify(dispositionCounts)}
 - candidates resolved then enriched: ${totals.candidatesResolvedThenEnrichedCount ?? 0}
-- second-pass candidate count: ${unresolvedRows.length}
+- second-pass candidate count: ${secondPassRows.length}
 - second-pass reason distribution: ${JSON.stringify(reasonCounts)}
 - second-pass deliverables: docs/qa/TASK-072-B/identity-second-pass.md, docs/qa/TASK-072-B/identity-second-pass.jsonl
 - Registry rebinds: 0
@@ -845,7 +856,7 @@ Required reconciliation: 6049 = ${Object.values(dispositionCounts).join(" + ")} 
 - contradictory evidence queue: ${totals.contradictorySourceCount ?? 0}
 - identity blocker queue: ${totals.reviewErrorQueueCount ?? 0}
 - corruption/recovery events: 0
-- unresolved review queue: ${unresolvedRows.length}
+- unresolved review queue: ${secondPassRows.length}
 
 ## Integrity
 
@@ -1026,7 +1037,7 @@ function runFull(input, preflight, resolveIdentity, resume) {
       candidateCount: batch.count,
       candidateKeysSha256: sha256(json(batch.candidateKeys)),
       telemetry,
-      identityRows,
+      identityRows: identityRows.map(compactIdentityRow),
       outputs,
       outputChecksum: sha256(json(outputs)),
       registryChecksumBefore: sha256File("data/poi/full/registry/combined-candidates.v1.jsonl"),
@@ -1091,4 +1102,39 @@ try {
   process.exitCode = 1;
 }
 
+
+
+
+
+
+
+function compactIdentityRow(identity) {
+  const retained = identity.retained ?? identity.retainedSourceSummaries ?? [];
+  return {
+    candidateKey: identity.candidateKey,
+    phase: identity.phase,
+    disposition: identity.disposition,
+    confidence: identity.confidence,
+    rationale: identity.rationale,
+    names: identity.names,
+    aliases: identity.aliases,
+    prefecture: identity.prefecture,
+    municipality: identity.municipality,
+    address: identity.address,
+    coordinates: identity.coordinates,
+    category: identity.category,
+    officialDomains: identity.officialDomains,
+    officialSns: identity.officialSns,
+    sourceRefs: identity.sourceRefs,
+    queriesAttempted: identity.queriesAttempted,
+    sourcesOpened: identity.sourcesOpened,
+    bestMatches: identity.bestMatches,
+    competingTargets: identity.competingTargets,
+    contradictions: identity.contradictions,
+    missingDiscriminativeSignal: identity.missingDiscriminativeSignal,
+    signalsEvaluatedCount: identity.signalsEvaluatedCount,
+    competingTargetsDetectedCount: identity.competingTargetsDetectedCount,
+    retainedSourceSummaries: retained.map((row) => ({ url: row.url, sourceTier: row.sourceTier, contentSha256: row.contentSha256, locatorSha256: row.locatorSha256, acceptedForIdentity: row.acceptedForIdentity })),
+  };
+}
 
