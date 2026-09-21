@@ -10,6 +10,7 @@ import {
 } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { readCurrentCandidateRows } from "./read-current-candidates.mjs";
+import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(process.cwd());
 const OUT = "data/poi/full/task-073-b-identity-deep-null-targeted-43d";
@@ -2001,7 +2002,27 @@ async function main() {
   );
 }
 
-main().catch((error) => {
-  console.error(error.stack ?? error);
-  process.exitCode = 1;
-});
+if (
+  process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  main().catch((error) => {
+    console.error(error.stack ?? error);
+    process.exitCode = 1;
+  });
+}
+
+export {
+  CODES,
+  FEATURE_CODES,
+  RUBRIC_VERSION,
+  annotateFeatures,
+  canonicalSource,
+  decisionRows,
+  identityDecision,
+  loadInput,
+  makeBatches,
+  readJson,
+  revalidatedLegacyFacts,
+  retainedSources,
+};
