@@ -359,3 +359,55 @@ explicit COMPLETE or BLOCKED statement
 完成后停止。
 不要自动 merge。
 不要启动 production import。
+
+## 16. Identity Resolution Amendment — mandatory
+
+Before Phase A execution, read:
+
+`docs/tasks/AMENDMENT-TASK-072-b-identity-resolution-second-pass-v1.md`
+
+This amendment is authoritative and must be applied.
+
+For each of the 6,049 `TARGET_IDENTITY_UNRESOLVED` candidates:
+
+1. actively search and evaluate identity signals;
+2. do not require a perfect retained official page if the total evidence reasonably establishes the target;
+3. assign exactly one:
+   - `RESOLVED_HIGH`
+   - `RESOLVED_MEDIUM`
+   - `SECOND_PASS_REQUIRED`
+   - `IDENTITY_CONFLICT_HOLD`
+4. if HIGH/MEDIUM, immediately continue 43D / Visit / Access extraction;
+5. if unresolved, write the candidate to both:
+   - `docs/qa/TASK-072-B/identity-second-pass.md`
+   - `docs/qa/TASK-072-B/identity-second-pass.jsonl`
+6. do not stop unattended execution for an ordinary ambiguous candidate.
+
+Required Phase A reconciliation:
+
+```text
+6049
+= RESOLVED_HIGH
++ RESOLVED_MEDIUM
++ SECOND_PASS_REQUIRED
++ IDENTITY_CONFLICT_HOLD
+```
+
+No candidate may silently remain in the old broad `TARGET_IDENTITY_UNRESOLVED` bucket after Phase A.
+
+Additional batch telemetry:
+
+```text
+identityResolvedHighCount
+identityResolvedMediumCount
+secondPassRequiredCount
+identityConflictHoldCount
+identitySignalsEvaluatedCount
+competingTargetsDetectedCount
+candidatesResolvedThenEnrichedCount
+```
+
+This is candidate-level enrichment resolution only:
+- no Master Code allocation;
+- no Registry rebind;
+- no candidateKey change.
