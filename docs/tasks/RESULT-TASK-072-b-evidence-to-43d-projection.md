@@ -202,3 +202,42 @@ Only allowed if all TASK-072 hard gates pass, including:
 Required if any hard gate is not satisfied.
 
 The final Result must name the exact failed gate(s).
+
+## Identity Resolution / Second-Pass Required Final Metrics
+
+TASK-072 Phase A must explicitly report:
+
+| Metric | Before | After |
+| --- | ---: | ---: |
+| TARGET_IDENTITY_UNRESOLVED | 6,049 | TBD |
+| RESOLVED_HIGH | 0 | TBD |
+| RESOLVED_MEDIUM | 0 | TBD |
+| SECOND_PASS_REQUIRED | 0 | TBD |
+| IDENTITY_CONFLICT_HOLD | 0 | TBD |
+| Candidates resolved then enriched | 0 | TBD |
+
+Required reconciliation:
+
+```text
+6049
+= RESOLVED_HIGH
++ RESOLVED_MEDIUM
++ SECOND_PASS_REQUIRED
++ IDENTITY_CONFLICT_HOLD
+```
+
+Required second-pass deliverables:
+
+- `docs/qa/TASK-072-B/identity-second-pass.md`
+- `docs/qa/TASK-072-B/identity-second-pass.jsonl`
+
+The final Result must include:
+
+- second-pass candidate count;
+- reason distribution;
+- best candidate matches considered;
+- missing discriminative signals;
+- recommended next source/action;
+- proof that already-resolved candidates were not left in the second-pass queue.
+
+If the 6,049 population is not fully dispositioned into the four categories above, TASK-072-B cannot be marked COMPLETE.
