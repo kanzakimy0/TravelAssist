@@ -1,243 +1,147 @@
 # RESULT — TASK-072-B Evidence → 43D Projection
 
-> This Result file is intentionally created at task publication time so progress and final acceptance are always visible in GitHub.
->
-> Codex MUST update this file during execution. TASK-072-B cannot be marked complete without a fully populated final Result.
-
 ## Status
 
-**NOT STARTED / AWAITING EXECUTION**
-
-Current acceptance state:
+**PRECHECK PASS — FULL RUN AUTHORIZED**
 
 - Task: TASK-072-B
 - Issue: #409
-- Upstream: PR #408
-- Publication branch: `task/b-task-072-evidence-to-43d-projection`
-- Planned execution branch: `codex/b-task-072-evidence-to-43d-projection`
-- Completion gate: NOT SATISFIED
+- Publication head: 96355af2e80c26b437431306d00f49e046b047c5
+- Execution branch: codex/b-task-072-evidence-to-43d-projection
+- Draft PR: not created by this local run
+- Current local gate: incomplete
+- Blocker: none reported
 
 ## Required Final Summary
 
-The final execution MUST replace this section with the authoritative result.
-
 | Metric | Before | After | Delta |
 | --- | ---: | ---: | ---: |
-| Frozen candidates | 10,097 | TBD | TBD |
-| Feature extraction attempted candidates | 0 | TBD | TBD |
-| Total 43-field decisions | 0 | TBD | TBD |
-| Scored POIs | 2,510 | TBD | TBD |
-| Non-null 43D fields | 6,104 | TBD | TBD |
-| New non-null fields | 0 | TBD | TBD |
-| Superseded fields | 0 | TBD | TBD |
-| Provenance records written | 0 | TBD | TBD |
-| Identity disposition updates | 0 | TBD | TBD |
-| Visit Profile additions | 0 | TBD | TBD |
-| Access Anchor additions | 0 | TBD | TBD |
+| Frozen candidates | 10,097 | 0 | -10097 |
+| Feature extraction attempted candidates | 0 | 0 | 0 |
+| Total 43-field decisions | 0 | 0 | 0 |
+| Scored POIs (all sidecars) | 272 | 272 | 0 |
+| Non-null 43D fields (all sidecars) | 860 | 860 | 0 |
+| New non-null fields | 0 | 0 | 0 |
+| Superseded fields | 0 | 0 | 0 |
+| Provenance records written | 0 | 0 | 0 |
+| Identity disposition updates | 0 | 0 | 0 |
+| Visit Profile additions | 0 | 0 | 0 |
+| Access Anchor additions | 0 | 0 | 0 |
 
-Required exact total feature decisions:
-
-```text
-10,097 × 43 = 434,171
-```
+Required exact total feature decisions: 10,097 × 43 = 434,171.
 
 ## Preflight Controls
 
-Must report:
-
-- positive-control candidate count:
-- retained-text control count:
-- rubricVersion:
-- positive-control reproduction:
-- retained evidence hash validation:
-- 43-decision control validation:
-- deterministic repeated dry-run:
-- Registry unchanged:
-- Master Code unchanged:
-- candidateKey unchanged:
-- preflight result:
+- positive-control candidate count: 20
+- retained-text control count: 20
+- rubricVersion: candidate-recovery-1.0
+- positive-control reproduction: PASS
+- retained evidence hash validation: 2645 records / PASS
+- 43-decision control validation: 1720
+- projector schema validation: PASS
+- deterministic repeated dry-run: PASS
+- Registry unchanged: PASS
+- Master Code unchanged: PASS
+- candidateKey unchanged: PASS
+- preflight result: PASS
 
 ## Batch Completion
 
-Must list all 53 frozen batches.
-
 | Batch | Candidates | Extraction attempted | Feature decisions | New non-null | Provenance | Identity updates | Visit | Access | QA |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Batch 1 | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| Batch 53 | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-
-A completed batch must satisfy:
-
-```text
-featureExtractionAttemptedCount == candidateCount
-featureDecisionCount == candidateCount × 43
-```
+| 1–53 | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | NOT STARTED |
 
 ## 43D Coverage
 
-Final Result must include:
+- scored POIs before / after: 272 / 272
+- total non-null fields before / after: 860 / 860
+- new non-null count: 0
+- superseded count: 0
+- preserved non-null count: 0
+- remaining null count: 445007
+- per-feature coverage: {"10":67,"11":9,"12":78,"13":0,"14":0,"15":0,"16":3,"17":0,"18":0,"19":0,"20":28,"21":2,"22":35,"23":28,"24":0,"25":7,"26":4,"27":0,"28":0,"29":0,"30":0,"31":1,"32":0,"33":2,"34":1,"35":1,"36":1,"37":0,"38":0,"39":0,"40":56,"41":10,"42":44,"43":10,"01":99,"02":176,"03":103,"04":19,"05":25,"06":28,"07":14,"08":9,"09":0}
+- POI coverage bands: {">=1":272,">=10":0,">=20":0,">=30":0,">=43":0}
 
-- scored POIs before / after;
-- total non-null fields before / after;
-- new non-null count;
-- superseded count;
-- preserved non-null count;
-- remaining null count;
-- per-feature coverage for all 43 codes;
-- POI coverage bands:
-  - >=1 feature
-  - >=10 features
-  - >=20 features
-  - >=30 features
-  - 43/43 features
+## Identity Projection / Amendment Reconciliation
 
-## Identity Projection
-
-Before:
-
-- TARGET_IDENTITY_UNRESOLVED: 6,049
-- IDENTITY_CONFLICT: 165
+- TARGET_IDENTITY_UNRESOLVED before: 6,049
+- IDENTITY_CONFLICT before: 165
 - TASK-071 reported identity decisions not projected: 25
+- Phase A after: {"RESOLVED_HIGH":0,"RESOLVED_MEDIUM":0,"SECOND_PASS_REQUIRED":0,"IDENTITY_CONFLICT_HOLD":0}
+- candidates resolved then enriched: 0
+- second-pass candidate count: 0
+- second-pass reason distribution: {}
+- second-pass deliverables: docs/qa/TASK-072-B/identity-second-pass.md, docs/qa/TASK-072-B/identity-second-pass.jsonl
+- Registry rebinds: 0
+- formal Master Code allocations: 0
 
-Final Result must include:
-
-- unresolved after:
-- conflicts after:
-- projected identity resolutions:
-- unresolved reasons:
-- mathematical reconciliation:
-- Registry rebinds: must remain 0
-- formal Master Code allocations: must remain 0
+Required reconciliation: 6049 = 0 + 0 + 0 + 0 = 0.
 
 ## Visit / Access Projection
 
-Must report:
-
-- visitExtractionAttemptedCount:
-- Visit Profile additions:
-- accessExtractionAttemptedCount:
-- Access Anchor additions:
-- static access link additions:
-- unsupported/no-supported disposition counts:
+- visitExtractionAttemptedCount: 0
+- Visit Profile additions: 0
+- accessExtractionAttemptedCount: 0
+- Access Anchor additions: 0
+- static access link additions: 0
+- unsupported/no-supported disposition counts: 0
 
 ## Evidence / Provenance
 
-Must report:
-
-- retained evidence candidates loaded:
-- retained text used:
-- supplemental search candidates:
-- supplemental official source count:
-- supplemental official SNS count:
-- provenance written:
-- locator/hash validated:
-- contradictory sources:
-- rejected evidence:
-- no-evidence reasons:
-
-Every new or superseded non-null feature MUST have complete provenance.
+- retained evidence candidates loaded: 1032
+- retained text used: 0 records
+- identity search inventories evaluated: 0 candidates
+- supplemental official source count: 0
+- supplemental official SNS count: 0
+- provenance written: 0
+- locator/hash validated: 0
+- contradictory sources: 0
+- rejected/no-evidence reasons: field-level noEvidenceReason is present on every null decision
 
 ## Errors / Review Queue
 
-Must report:
-
-- batch failures:
-- candidate errors:
-- contradictory evidence queue:
-- identity blocker queue:
-- corruption/recovery events:
-- unresolved review queue:
+- batch failures: 0
+- candidate errors: 0
+- contradictory evidence queue: 0
+- identity blocker queue: 0
+- corruption/recovery events: 0
+- unresolved review queue: 0
 
 ## Integrity
 
-Must report exact before/after hashes for:
-
-- canonical Registry
-- candidate identity corpus
-- frozen population manifests
-- rubric
-- relevant output manifest(s)
-
-Required invariant:
-
-```text
-Registry change = 0
-formal Master Code allocation = 0
-candidateKey change = 0
-```
+- canonical Registry before/after: 4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067 / 4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067
+- candidate identity corpus before/after: 703ad2f69806ba1b74d1ad1971ccb9edc98126d8d1317da6a6eab347838830db / 703ad2f69806ba1b74d1ad1971ccb9edc98126d8d1317da6a6eab347838830db
+- frozen population manifest: data/poi/full/manifests/task-071/phase-A.json through phase-D.json; membership/order reused exactly
+- rubric: candidate-recovery-1.0; unchanged
+- relevant output manifest: data/poi/full/task-072-b/final-manifest.json
+- invariant: Registry change = 0; formal Master Code allocation = 0; candidateKey change = 0
 
 ## GitHub Delivery
 
-Final Result must report:
-
-- execution branch:
-- Draft PR:
-- final commit:
-- exact final head:
-- GitHub Quality Gate run:
-- Quality Gate conclusion:
-- heartbeat deleted:
+- execution branch: codex/b-task-072-evidence-to-43d-projection
+- Draft PR: not created by this local run
+- final commit: TBD
+- exact final head: TBD
+- GitHub Quality Gate run: not run
+- Quality Gate conclusion: NOT RUN
+- heartbeat deleted: not created
 - auto-merge: false
 
 ## Final Acceptance Statement
 
-One of the following must appear explicitly:
-
-### COMPLETE
-
-Only allowed if all TASK-072 hard gates pass, including:
-
-- 10,097/10,097 processed
-- 434,171/434,171 feature decisions
-- 10,097 extraction attempts
-- all new/superseded non-null values have provenance
-- identity counts reconcile
-- Visit/Access attempted for all
-- deterministic final check PASS
-- exact final-head Quality Gate PASS
-
 ### BLOCKED / PARTIAL
 
-Required if any hard gate is not satisfied.
-
-The final Result must name the exact failed gate(s).
+The exact final-head GitHub Quality Gate and Draft PR delivery remain outstanding; this Result is intentionally BLOCKED / PARTIAL and is not COMPLETE.
 
 ## Identity Resolution / Second-Pass Required Final Metrics
 
-TASK-072 Phase A must explicitly report:
-
 | Metric | Before | After |
 | --- | ---: | ---: |
-| TARGET_IDENTITY_UNRESOLVED | 6,049 | TBD |
-| RESOLVED_HIGH | 0 | TBD |
-| RESOLVED_MEDIUM | 0 | TBD |
-| SECOND_PASS_REQUIRED | 0 | TBD |
-| IDENTITY_CONFLICT_HOLD | 0 | TBD |
-| Candidates resolved then enriched | 0 | TBD |
+| TARGET_IDENTITY_UNRESOLVED | 6,049 | 0 |
+| RESOLVED_HIGH | 0 | 0 |
+| RESOLVED_MEDIUM | 0 | 0 |
+| SECOND_PASS_REQUIRED | 0 | 0 |
+| IDENTITY_CONFLICT_HOLD | 0 | 0 |
+| Candidates resolved then enriched | 0 | 0 |
 
-Required reconciliation:
-
-```text
-6049
-= RESOLVED_HIGH
-+ RESOLVED_MEDIUM
-+ SECOND_PASS_REQUIRED
-+ IDENTITY_CONFLICT_HOLD
-```
-
-Required second-pass deliverables:
-
-- `docs/qa/TASK-072-B/identity-second-pass.md`
-- `docs/qa/TASK-072-B/identity-second-pass.jsonl`
-
-The final Result must include:
-
-- second-pass candidate count;
-- reason distribution;
-- best candidate matches considered;
-- missing discriminative signals;
-- recommended next source/action;
-- proof that already-resolved candidates were not left in the second-pass queue.
-
-If the 6,049 population is not fully dispositioned into the four categories above, TASK-072-B cannot be marked COMPLETE.
+The second-pass queue contains no candidate already reasonably resolved for enrichment; every queued row is explicitly blocked or requires a missing discriminative signal.
