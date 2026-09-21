@@ -199,3 +199,139 @@ Must name only true remaining hard blocker(s).
 - canonical reader: PASS
 
 Phase 1 identity closure is starting automatically.
+
+- I-0001 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0002 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0003 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0004 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0005 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0006 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0007 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0008 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0009 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0010 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0011 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0012 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0013 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0014 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0015 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0016 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0017 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0018 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0019 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0020 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0021 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0022 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0023 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0024 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0025 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0026 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0027 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0028 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0029 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- I-0030 PASS: 120 candidates, 43D decisions=5160, new=0, provenance=0, canonicalApplied=0
+
+- N-0001 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0002 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0003 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0004 PASS: 200 candidates, 43D decisions=8600, new=3, provenance=3, canonicalApplied=3
+
+- N-0005 PASS: 200 candidates, 43D decisions=8600, new=8, provenance=8, canonicalApplied=3
+
+- N-0006 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0007 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0008 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0009 PASS: 200 candidates, 43D decisions=8600, new=5, provenance=5, canonicalApplied=0
+
+- N-0010 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0011 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0012 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0013 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0014 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0015 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0016 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0017 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0018 PASS: 200 candidates, 43D decisions=8600, new=0, provenance=0, canonicalApplied=0
+
+- N-0019 PASS: 200 candidates, 43D decisions=8600, new=12, provenance=12, canonicalApplied=0
+
+- N-0020 PASS: 200 candidates, 43D decisions=8600, new=10, provenance=10, canonicalApplied=0
+
+- N-0021 PASS: 177 candidates, 43D decisions=7611, new=4, provenance=4, canonicalApplied=3
+
+## Execution update — Phase 1 and Phase 3 local PASS
+
+- Phase 1: 5920 candidates in 30 frozen batches; feature decisions: 254560.
+- Phase 1 identity outcomes: {"EVIDENCE_EXHAUSTED_UNRESOLVED":5755,"IDENTITY_CONFLICT_HOLD":165}.
+- Phase 3: 4177 candidates in 21 frozen batches; feature decisions: 179611.
+- total feature decisions: 434171 (required 434171).
+- Visit attempted: 10097; Access attempted: 10097.
+- final reader: population 10369, scored 2519, non-null 6209.
+- residual null evidence rows: 4177.
+- final manifest: `data/poi/full/task-074-b-poi-final-unattended-closure/final-manifest.json`.
+
+Local closure is PASS; test and exact current-head GitHub Quality Gate remain pending.
+
+## Self-healing correction — canonical identity gate
+
+- repaired batches: N-0005, N-0009, N-0019, N-0020, N-0021
+- ADD_SUPPORTED decisions removed: 33
+- reason: 15 editorial entries were TARGET_UNRESOLVED and remained outside canonical enrichment; all were rewritten to IDENTITY_BLOCKED/EVIDENCE_EXHAUSTED_UNRESOLVED.
+- canonical facts applied by TASK-074 remain provenance-backed; no Registry/candidate identity mutation occurred.
+## Final local QA — PASS; hosted exact-head gate pending
+
+- Phase 0: 48/48 projected/canonical differences closed (15 `APPLY_MISSING_CANONICAL`, 33 `REJECTED_IDENTITY_BLOCK`).
+- Phase 1: 5,920 candidates / 30 batches / 254,560 decisions; `EVIDENCE_EXHAUSTED_UNRESOLVED=5,755`, `IDENTITY_CONFLICT_HOLD=165`.
+- Phase 3: 4,177 candidates / 21 batches / 179,611 decisions; 9 canonical additions and 9 provenance records.
+- Total: 10,097 candidates, 434,171 feature decisions, Visit attempted 10,097, Access attempted 10,097.
+- Reader after: population 10,369; scored 2,519; non-null 6,209; Visit 23; Access 1,538.
+- Residual queues: identity evidence exhausted 5,920; null evidence 4,177; 15 candidates remain explicitly blocked by the authoritative editorial identity gate and are not enriched.
+- Focused POI/Visit/Access tests: 20/20 PASS.
+- Full repository Node tests: 2,685/2,685 PASS under deterministic single-worker retry; isolated TASK-045 retry 6/6 PASS after a transient Windows file-write error in the full run.
+- Lint tracked source scope, typecheck, format, deployment validate/build/artifact, and `git diff --check`: PASS.
+- Master Code allocation 0; Registry rebind 0; candidateKey changes 0.
+- QA files: `docs/qa/TASK-074-B/final-qa.md` and `docs/qa/TASK-074-B/final-qa.json`.
+- Final status remains `RUNNING / PARTIAL` until exact current-head hosted Quality Gate PASS.
