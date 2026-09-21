@@ -4,14 +4,14 @@
 > TASK-074-B cannot be marked complete without a fully populated final Result.
 
 ## Status
-**NOT STARTED / AWAITING EXECUTION**
+**RUNNING**
 
 - Task: TASK-074-B
 - Issue: #414
 - Upstream: TASK-073-B / PR #413
 - Publication branch: `task/b-task-074-poi-final-unattended-closure`
 - Planned execution branch: `codex/b-task-074-poi-final-unattended-closure`
-- Completion gate: NOT SATISFIED
+- Completion gate: Phase 0 PASS; Phase 1/3 and final hosted gate pending
 
 ## Baseline
 Expected authoritative start:
@@ -186,3 +186,16 @@ or
 
 ### PARTIAL / BLOCKED
 Must name only true remaining hard blocker(s).
+
+## Execution update — Phase 0 PASS
+
+- authoritative current view before Phase 0: population 10369, scored 2516, non-null 6185, Visit 23, Access 1538
+- TASK-073 projected / canonical-applied: 122 / 74
+- reconciliation difference: 48 / 48 closed
+- `APPLY_MISSING_CANONICAL`: 15
+- `REJECTED_IDENTITY_BLOCK`: 33
+- authoritative current view after Phase 0: population 10369, scored 2519, non-null 6200, Visit 23, Access 1538
+- reconciliation files: `docs/qa/TASK-074-B/projection-canonical-reconciliation.md` and `.jsonl`
+- canonical reader: PASS
+
+Phase 1 identity closure is starting automatically.
