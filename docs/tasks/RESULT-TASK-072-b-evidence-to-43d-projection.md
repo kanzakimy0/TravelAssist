@@ -170,7 +170,7 @@ The protected prior 272 / 860 baseline remains untouched.
 - frozen population manifests: phase-A through phase-D reused exactly
 - rubric: candidate-recovery-1.0 unchanged
 - corrected output manifest: data/poi/full/task-072-b-correction-v2/final-manifest.json
-- canonical integration: {"addedKeys":["candidate:B_V1_PROPOSED:60349","candidate:B_V1_PROPOSED:80001","candidate:B_V1_PROPOSED:80032","geoshape-nrct-poi:030000021300","wikidata:Q746216"],"canonicalDeltaSha256":"81a615fb9d3e3409d59465de5cb87f05a6bb55d371467dd669815012075d0e98","editorialSha256":"552b65d68048246dd896e791177289697204169368c19213ea69a39ec2e76815","manifestSha256":"8699a283b594bd2b31499fc37dc1e1e5461698690cb663fa3de63a33c9e421ca"}
+- canonical integration: {"addedKeys":["candidate:B_V1_PROPOSED:60349","candidate:B_V1_PROPOSED:80001","candidate:B_V1_PROPOSED:80032","geoshape-nrct-poi:030000021300","wikidata:Q746216"],"canonicalDeltaSha256":"81a615fb9d3e3409d59465de5cb87f05a6bb55d371467dd669815012075d0e98","editorialSha256":"47df601eb4d1f231b5144f749da1bc0d8aed04b017e83a27c435523f943374d3","manifestSha256":"7582fc99f6087d5c40e7862ff84508c3d4cadf0c92f7d2977f3d925169696748"}
 
 ## GitHub delivery
 
