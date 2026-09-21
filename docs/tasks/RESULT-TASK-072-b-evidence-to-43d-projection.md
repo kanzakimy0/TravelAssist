@@ -2,15 +2,15 @@
 
 ## Status
 
-**BLOCKED / PARTIAL**
+**COMPLETE**
 
 - Task: TASK-072-B
 - Issue: #409
 - Publication head: 96355af2e80c26b437431306d00f49e046b047c5
 - Execution branch: codex/b-task-072-evidence-to-43d-projection
-- Draft PR: not created by this local run
+- Draft PR: [#410](https://github.com/kanzakimy0/TravelAssist/pull/410)
 - Current local gate: all deterministic TASK-072-B local gates PASS
-- Blocker: Local projector gates pass, but exact final-head GitHub Quality Gate and Draft PR delivery are not yet verified.
+- Final code head: `ff51a9ece9c2a8bdf4181015334d149420b2b715`
 
 ## Required Final Summary
 
@@ -171,19 +171,19 @@ Required reconciliation: 6049 = 5 + 6044 + 0 + 0 = 6049.
 ## GitHub Delivery
 
 - execution branch: codex/b-task-072-evidence-to-43d-projection
-- Draft PR: not created by this local run
-- final commit: TBD
-- exact final head: TBD
-- GitHub Quality Gate run: not run
-- Quality Gate conclusion: NOT RUN
+- Draft PR: [#410](https://github.com/kanzakimy0/TravelAssist/pull/410)
+- final commit: `ff51a9ece9c2a8bdf4181015334d149420b2b715`
+- exact final head: `ff51a9ece9c2a8bdf4181015334d149420b2b715`
+- GitHub Quality Gate run: [35577566103](https://github.com/kanzakimy0/TravelAssist/actions/runs/35577566103)
+- Quality Gate conclusion: `SUCCESS`
 - heartbeat deleted: not created
 - auto-merge: false
 
 ## Final Acceptance Statement
 
-### BLOCKED / PARTIAL
+### COMPLETE
 
-The exact final-head GitHub Quality Gate and Draft PR delivery remain outstanding; this Result is intentionally BLOCKED / PARTIAL and is not COMPLETE.
+All deterministic TASK-072-B local gates and the exact final-head GitHub Quality Gate PASS. Draft PR #410 remains open as Draft; no merge, production import, or Registry rebind was performed.
 
 ## Identity Resolution / Second-Pass Required Final Metrics
 
