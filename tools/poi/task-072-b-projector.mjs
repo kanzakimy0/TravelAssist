@@ -970,7 +970,7 @@ function writeFinalManifest(input, preflight, receipts) {
 
 function runFull(input, preflight, resolveIdentity, resume) {
   const existing = loadReceipts();
-  const completed = new Map(existing.map((row) => [row.batchId, row]));
+  const completed = new Map(existing.map((row) => [row.sourceBatchId, row]));
   const receipts = [];
   const allIdentityRows = [];
   for (const batch of input.sourceBatches) {
@@ -1090,4 +1090,5 @@ try {
   console.error(error.stack ?? error.message);
   process.exitCode = 1;
 }
+
 
