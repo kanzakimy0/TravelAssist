@@ -1,199 +1,188 @@
 # RESULT — TASK-072-B Evidence → 43D Projection
 
+> Previous TASK-072 completion superseded by Authoritative Enrichment Correction v2.
+
 ## Status
 
 **COMPLETE**
 
 - Task: TASK-072-B
 - Issue: #409
-- Publication head: 96355af2e80c26b437431306d00f49e046b047c5
+- Correction publication head: 2f01c25bb1b69e52ab9790328cf2de30cf01431c
 - Execution branch: codex/b-task-072-evidence-to-43d-projection
-- Draft PR: [#410](https://github.com/kanzakimy0/TravelAssist/pull/410)
-- Current local gate: all deterministic TASK-072-B local gates PASS
-- Final code head: `ff51a9ece9c2a8bdf4181015334d149420b2b715`
+- Draft PR: #410
+- Blocker: none
 
-## Required Final Summary
+## Authoritative baseline
 
-| Metric | Before | After | Delta |
-| --- | ---: | ---: | ---: |
-| Frozen candidates | 10,097 | 10097 | 0 |
-| Feature extraction attempted candidates | 0 | 10097 | 10097 |
-| Total 43-field decisions | 0 | 434171 | 434171 |
-| Scored POIs (all sidecars) | 272 | 272 | 0 |
-| Non-null 43D fields (all sidecars) | 860 | 860 | 0 |
-| New non-null fields | 0 | 0 | 0 |
-| Superseded fields | 0 | 0 | 0 |
-| Provenance records written | 0 | 0 | 0 |
-| Identity disposition updates | 0 | 6049 | 6049 |
-| Visit Profile additions | 0 | 0 | 0 |
-| Access Anchor additions | 0 | 0 | 0 |
+Canonical command: `node --import ./tests/register-route-ts.mjs tools/poi/read-current-candidates.mjs`
 
-Required exact total feature decisions: 10,097 × 43 = 434,171.
+- population: 10369
+- newScoredPois: 2238
+- scoredPois: 2510
+- nonNullFeatures: 6104
+- pendingCandidates: 10097
+- pending scored candidates: 2238
+- pending non-null features: 5244
+- runtimeImportAuthorized: false
 
-## Preflight Controls
+The protected prior 272 / 860 baseline remains untouched.
 
-- positive-control candidate count: 20
-- retained-text control count: 20
-- rubricVersion: candidate-recovery-1.0
-- positive-control reproduction: PASS
-- retained evidence hash validation: 2645 records / PASS
-- 43-decision control validation: 1720
-- projector schema validation: PASS
-- deterministic repeated dry-run: PASS
-- Registry unchanged: PASS
-- Master Code unchanged: PASS
-- candidateKey unchanged: PASS
-- preflight result: PASS
+## Correction canary
 
-## Batch Completion
+- status: PASS
+- preservation controls: 20; preserve PASS=true
+- evidence-rich controls: 20
+- feature extraction attempted: 20
+- feature decisions: 860; exactly 43 each=true
+- ADD_SUPPORTED candidates: 20
+- new non-null features: 31
+- provenance written: 31
+- feature codes covered: 01, 02, 03, 07, 10, 11, 22, 23, 25, 40, 42
+- provenance complete: true
+- deterministic repeat: true
+
+
+## Full frozen-batch execution
 
 | Batch | Candidates | Extraction attempted | Feature decisions | New non-null | Provenance | Identity updates | Visit | Access | QA |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| TASK-072-B-0001 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0002 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0003 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0004 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0005 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0006 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0007 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0008 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0009 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0010 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0011 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0012 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0013 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0014 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0015 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0016 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0017 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0018 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0019 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0020 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0021 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0022 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0023 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0024 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0025 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0026 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0027 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0028 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0029 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0030 | 200 | 200 | 8600 | 0 | 0 | 200 | 200 | 200 | PASS |
-| TASK-072-B-0031 | 49 | 49 | 2107 | 0 | 0 | 49 | 49 | 49 | PASS |
-| TASK-072-B-0032 | 165 | 165 | 7095 | 0 | 0 | 0 | 165 | 165 | PASS |
-| TASK-072-B-0033 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0034 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0035 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0036 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0037 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0038 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0039 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0040 | 22 | 22 | 946 | 0 | 0 | 0 | 22 | 22 | PASS |
-| TASK-072-B-0041 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0042 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0043 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0044 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0045 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0046 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0047 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0048 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0049 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0050 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0051 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0052 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
-| TASK-072-B-0053 | 61 | 61 | 2623 | 0 | 0 | 0 | 61 | 61 | PASS |
+| TASK-071-A-0001 | 200 | 200 | 8600 | 3 | 3 | 9 | 200 | 200 | PASS |
+| TASK-071-A-0002 | 200 | 200 | 8600 | 3 | 3 | 6 | 200 | 200 | PASS |
+| TASK-071-A-0003 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0004 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
+| TASK-071-A-0005 | 200 | 200 | 8600 | 3 | 3 | 9 | 200 | 200 | PASS |
+| TASK-071-A-0006 | 200 | 200 | 8600 | 3 | 3 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0007 | 200 | 200 | 8600 | 0 | 0 | 11 | 200 | 200 | PASS |
+| TASK-071-A-0008 | 200 | 200 | 8600 | 0 | 0 | 3 | 200 | 200 | PASS |
+| TASK-071-A-0009 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0010 | 200 | 200 | 8600 | 2 | 2 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0011 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
+| TASK-071-A-0012 | 200 | 200 | 8600 | 3 | 3 | 8 | 200 | 200 | PASS |
+| TASK-071-A-0013 | 200 | 200 | 8600 | 2 | 2 | 11 | 200 | 200 | PASS |
+| TASK-071-A-0014 | 200 | 200 | 8600 | 0 | 0 | 6 | 200 | 200 | PASS |
+| TASK-071-A-0015 | 200 | 200 | 8600 | 1 | 1 | 10 | 200 | 200 | PASS |
+| TASK-071-A-0016 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0017 | 200 | 200 | 8600 | 2 | 2 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0018 | 200 | 200 | 8600 | 0 | 0 | 6 | 200 | 200 | PASS |
+| TASK-071-A-0019 | 200 | 200 | 8600 | 0 | 0 | 3 | 200 | 200 | PASS |
+| TASK-071-A-0020 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0021 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
+| TASK-071-A-0022 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0023 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0024 | 200 | 200 | 8600 | 0 | 0 | 9 | 200 | 200 | PASS |
+| TASK-071-A-0025 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0026 | 200 | 200 | 8600 | 1 | 1 | 11 | 200 | 200 | PASS |
+| TASK-071-A-0027 | 200 | 200 | 8600 | 0 | 0 | 2 | 200 | 200 | PASS |
+| TASK-071-A-0028 | 200 | 200 | 8600 | 0 | 0 | 7 | 200 | 200 | PASS |
+| TASK-071-A-0029 | 200 | 200 | 8600 | 0 | 0 | 8 | 200 | 200 | PASS |
+| TASK-071-A-0030 | 200 | 200 | 8600 | 0 | 0 | 4 | 200 | 200 | PASS |
+| TASK-071-A-0031 | 49 | 49 | 2107 | 0 | 0 | 1 | 49 | 49 | PASS |
+| TASK-071-B-0001 | 165 | 165 | 7095 | 0 | 0 | 0 | 165 | 165 | PASS |
+| TASK-071-C-0001 | 200 | 200 | 8600 | 3 | 3 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0002 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0003 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0004 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0005 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0006 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0007 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-C-0008 | 22 | 22 | 946 | 1 | 1 | 0 | 22 | 22 | PASS |
+| TASK-071-D-0001 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0002 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0003 | 200 | 200 | 8600 | 1 | 1 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0004 | 200 | 200 | 8600 | 1 | 1 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0005 | 200 | 200 | 8600 | 2 | 2 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0006 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0007 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0008 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0009 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0010 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0011 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0012 | 200 | 200 | 8600 | 0 | 0 | 0 | 200 | 200 | PASS |
+| TASK-071-D-0013 | 61 | 61 | 2623 | 0 | 0 | 0 | 61 | 61 | PASS |
 
-## 43D Coverage
+- frozen candidates processed: 10097 / 10097
+- total 43D decisions: 434171 / 434171
+- featureExtractionAttemptedCount: 10097
+- semanticAnnotationAttemptedCount: 4083
+- preserved current non-null: 5244
+- preserved + superseded current non-null: 5244 / 5244
+- new non-null: 31
+- superseded: 0
+- provenance written: 31
 
-- scored POIs before / after: 272 / 272
-- total non-null fields before / after: 860 / 860
-- new non-null count: 0
-- superseded count: 0
-- preserved non-null count: 0
-- remaining null count: 445007
-- per-feature coverage: {"10":67,"11":9,"12":78,"13":0,"14":0,"15":0,"16":3,"17":0,"18":0,"19":0,"20":28,"21":2,"22":35,"23":28,"24":0,"25":7,"26":4,"27":0,"28":0,"29":0,"30":0,"31":1,"32":0,"33":2,"34":1,"35":1,"36":1,"37":0,"38":0,"39":0,"40":56,"41":10,"42":44,"43":10,"01":99,"02":176,"03":103,"04":19,"05":25,"06":28,"07":14,"08":9,"09":0}
-- POI coverage bands: {">=1":272,">=10":0,">=20":0,">=30":0,">=43":0}
+## 43D coverage
 
-## Identity Projection / Amendment Reconciliation
+- global scored before / after: 2510 / 2530
+- global non-null before / after: 6104 / 6135
+- new / superseded: 31 / 0
+- remaining null decisions: 428896
+- per-feature before: {"10":336,"11":96,"12":632,"13":5,"14":0,"15":0,"16":93,"17":0,"18":2,"19":1,"20":102,"21":7,"22":237,"23":160,"24":91,"25":13,"26":8,"27":3,"28":1,"29":28,"30":0,"31":88,"32":3,"33":7,"34":15,"35":9,"36":5,"37":0,"38":2,"39":27,"40":162,"41":77,"42":114,"43":45,"01":352,"02":1196,"03":577,"04":60,"05":454,"06":707,"07":310,"08":59,"09":20}
+- per-feature after: {"10":340,"11":98,"12":632,"13":5,"14":0,"15":0,"16":93,"17":0,"18":2,"19":1,"20":102,"21":7,"22":239,"23":162,"24":91,"25":14,"26":8,"27":3,"28":1,"29":28,"30":0,"31":88,"32":3,"33":7,"34":15,"35":9,"36":5,"37":0,"38":2,"39":27,"40":165,"41":77,"42":115,"43":45,"01":353,"02":1203,"03":584,"04":60,"05":454,"06":707,"07":311,"08":59,"09":20}
+- coverage bands: {">=1":2530,">=10":5,">=20":0,">=30":0,">=43":0}
 
-- TARGET_IDENTITY_UNRESOLVED before: 6,049
-- IDENTITY_CONFLICT before: 165
-- TASK-071 reported identity decisions not projected: 25
-- Phase A after: {"RESOLVED_HIGH":5,"RESOLVED_MEDIUM":6044,"SECOND_PASS_REQUIRED":0,"IDENTITY_CONFLICT_HOLD":0}
-- candidates resolved then enriched: 6049
-- second-pass candidate count: 165
-- second-pass reason distribution: {"material identity conflict":165}
-- second-pass deliverables: docs/qa/TASK-072-B/identity-second-pass.md, docs/qa/TASK-072-B/identity-second-pass.jsonl
+## Identity correction
+
+- Phase A before TARGET_IDENTITY_UNRESOLVED: 6049
+- RESOLVED_HIGH: 0
+- RESOLVED_MEDIUM: 200
+- SECOND_PASS_REQUIRED: 5849
+- IDENTITY_CONFLICT_HOLD: 0
+- reconciliation: 6049 = 0 + 200 + 5849 + 0
+- MEDIUM audit: 200 sampled, 0 invalid
+- second-pass deliverables: docs/qa/TASK-072-B/identity-second-pass.md and docs/qa/TASK-072-B/identity-second-pass.jsonl
 - Registry rebinds: 0
 - formal Master Code allocations: 0
 
-Required reconciliation: 6049 = 5 + 6044 + 0 + 0 = 6049.
+## Visit / Access
 
-## Visit / Access Projection
-
-- visitExtractionAttemptedCount: 10097
-- Visit Profile additions: 0
-- accessExtractionAttemptedCount: 10097
-- Access Anchor additions: 0
+- authoritative Visit before / after: 23 / 23
+- visitExtractionAttemptedCount: 10097 / 10097
+- Visit Profile additions / superseded: 0 / 0
+- authoritative Access before / after: 1538 / 1538
+- accessExtractionAttemptedCount: 10097 / 10097
+- Access Anchor additions / superseded: 0 / 0
 - static access link additions: 0
-- unsupported/no-supported disposition counts: 427076
 
-## Evidence / Provenance
+## Evidence / provenance
 
 - retained evidence candidates loaded: 1032
-- retained text used: 2645 records
-- identity search inventories evaluated: 6049 candidates
-- supplemental official source count: 48
-- supplemental official SNS count: 3
-- provenance written: 0
-- locator/hash validated: 2645
+- retained text records loaded: 2645
+- supplemental accepted/official sources used in Stage A: 46 curated facts
+- official SNS additions: 0
+- locator/hash validated: 46 curated facts plus retained cache checksums
 - contradictory sources: 0
-- rejected/no-evidence reasons: field-level noEvidenceReason is present on every null decision
+- every null decision has a field-level no-evidence reason
 
-## Errors / Review Queue
+## Errors / review queues
 
 - batch failures: 0
 - candidate errors: 0
-- contradictory evidence queue: 0
-- identity blocker queue: 165
+- identity blocker queue: 6014
+- unresolved review queue: 5849
 - corruption/recovery events: 0
-- unresolved review queue: 165
 
 ## Integrity
 
 - canonical Registry before/after: 4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067 / 4c8f6a4904cd85acafc9b355d3f5d8cf85fc6e00781751a657595db821812067
-- candidate identity corpus before/after: 703ad2f69806ba1b74d1ad1971ccb9edc98126d8d1317da6a6eab347838830db / 703ad2f69806ba1b74d1ad1971ccb9edc98126d8d1317da6a6eab347838830db
-- frozen population manifest: data/poi/full/manifests/task-071/phase-A.json through phase-D.json; membership/order reused exactly
-- rubric: candidate-recovery-1.0; unchanged
-- relevant output manifest: data/poi/full/task-072-b/final-manifest.json
-- invariant: Registry change = 0; formal Master Code allocation = 0; candidateKey change = 0
+- candidate identity checksum before/after: 703ad2f69806ba1b74d1ad1971ccb9edc98126d8d1317da6a6eab347838830db / 703ad2f69806ba1b74d1ad1971ccb9edc98126d8d1317da6a6eab347838830db
+- Master Code registry: 9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2 unchanged
+- frozen population manifests: phase-A through phase-D reused exactly
+- rubric: candidate-recovery-1.0 unchanged
+- corrected output manifest: data/poi/full/task-072-b-correction-v2/final-manifest.json
+- canonical integration: {"addedKeys":["candidate:B_V1_PROPOSED:60349","candidate:B_V1_PROPOSED:80001","candidate:B_V1_PROPOSED:80032","candidate:B-SNS-20260915-R01-020","candidate:B-SNS-20260915-R10-012","candidate:B-SNS-20260915-R13-005","geoshape-nrct-poi:030000021300","geoshape-nrct-poi:190000039700","geoshape-nrct-poi:200000076900","geoshape-nrct-poi:210000293600","geoshape-nrct-poi:210000307500","geoshape-nrct-poi:210000373300","geoshape-nrct-poi:220000021300","geoshape-nrct-poi:250000042800","geoshape-nrct-poi:260000055300","geoshape-nrct-poi:270000088200","geoshape-nrct-poi:300000037100","geoshape-nrct-poi:330000044100","geoshape-nrct-poi:430000059200","wikidata:Q746216"],"canonicalDeltaSha256":"a831d9697a795d018372fb462024989a7f8599cfc8feaa3aa26a1237415f158b","editorialSha256":"83d62fa6e5e143a6556f1a631fb505c29092900fd46624434c4a246631c60118","manifestSha256":"fc3ec140c7516e28c9df7809db62e8604855f022010f8bb5db518365b2bb83f3"}
 
-## GitHub Delivery
+## GitHub delivery
 
 - execution branch: codex/b-task-072-evidence-to-43d-projection
-- Draft PR: [#410](https://github.com/kanzakimy0/TravelAssist/pull/410)
-- final commit: `ff51a9ece9c2a8bdf4181015334d149420b2b715`
-- exact final head: `ff51a9ece9c2a8bdf4181015334d149420b2b715`
-- GitHub Quality Gate run: [35577566103](https://github.com/kanzakimy0/TravelAssist/actions/runs/35577566103)
-- Quality Gate conclusion: `SUCCESS`
+- Draft PR: #410
+- final commit / exact final head: recorded after ordinary push
+- Quality Gate: exact current-head receipt will be recorded in PR #410 and Issue #409 comments
 - heartbeat deleted: not created
 - auto-merge: false
 
-## Final Acceptance Statement
+## Final acceptance
 
 ### COMPLETE
 
-All deterministic TASK-072-B local gates and the exact final-head GitHub Quality Gate PASS. Draft PR #410 remains open as Draft; no merge, production import, or Registry rebind was performed.
-
-## Identity Resolution / Second-Pass Required Final Metrics
-
-| Metric | Before | After |
-| --- | ---: | ---: |
-| TARGET_IDENTITY_UNRESOLVED | 6,049 | 0 |
-| RESOLVED_HIGH | 0 | 5 |
-| RESOLVED_MEDIUM | 0 | 6044 |
-| SECOND_PASS_REQUIRED | 0 | 0 |
-| IDENTITY_CONFLICT_HOLD | 0 | 0 |
-| Candidates resolved then enriched | 0 | 6049 |
-
-The second-pass queue contains no candidate already reasonably resolved for enrichment; every queued row is explicitly blocked or requires a missing discriminative signal.
+All local Correction v2 hard gates passed; exact PR-head Quality Gate receipt remains the final GitHub delivery gate.
