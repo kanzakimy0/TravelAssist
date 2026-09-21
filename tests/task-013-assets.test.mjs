@@ -242,6 +242,10 @@ test("duplicate hashes require an explicit report group", () => {
     [],
   );
 });
+test("one file present in canonical and legacy inventories is not a duplicate", () => {
+  const entry = { path: "same-path", sha256: "same-hash" };
+  assert.deepEqual(validateDuplicates([entry, { ...entry }], {}), []);
+});
 test("protected paths unchanged against frozen Git base", () =>
   assert.deepEqual(protectedErrors(), []));
 test("approved local is returned with semantic / decorative alt", () => {
