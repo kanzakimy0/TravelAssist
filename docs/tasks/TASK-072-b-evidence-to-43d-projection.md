@@ -279,3 +279,42 @@ While PR #408 remains unmerged:
 - Draft PR base: `codex/b-task-071-official-sns-43d-enrichment`
 
 Do not auto-merge.
+
+
+## Identity Resolution Amendment v1
+
+The user has clarified that the 6,049 `TARGET_IDENTITY_UNRESOLVED` candidates must not remain frozen merely because perfect official retained text is unavailable.
+
+Authoritative amendment:
+
+`docs/tasks/AMENDMENT-TASK-072-b-identity-resolution-second-pass-v1.md`
+
+TASK-072-B must apply that amendment during Phase A.
+
+Required candidate-level identity dispositions:
+
+- `RESOLVED_HIGH`
+- `RESOLVED_MEDIUM`
+- `SECOND_PASS_REQUIRED`
+- `IDENTITY_CONFLICT_HOLD`
+
+`RESOLVED_HIGH` and `RESOLVED_MEDIUM` are candidate-level enrichment decisions only. They do not allocate Master Codes or rebind the canonical Registry.
+
+Every resolved candidate must immediately continue into 43D / Visit / Access extraction.
+
+Candidates that still cannot be safely assigned after reasonable search must be written to:
+
+- `docs/qa/TASK-072-B/identity-second-pass.md`
+- `docs/qa/TASK-072-B/identity-second-pass.jsonl`
+
+Phase A cannot be considered complete while candidates silently remain in the old broad `TARGET_IDENTITY_UNRESOLVED` bucket.
+
+Required reconciliation:
+
+```text
+6049
+= RESOLVED_HIGH
++ RESOLVED_MEDIUM
++ SECOND_PASS_REQUIRED
++ IDENTITY_CONFLICT_HOLD
+```
