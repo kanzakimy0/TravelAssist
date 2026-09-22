@@ -1,12 +1,45 @@
 # CODEX — TASK-076-A AI Runtime Foundation
 
-The user prepares the worktree outside Codex.
+## Execution mode
 
-## Git boundary
+Codex may handle Git for this Task.
 
-Execute zero Git commands.
-Do not run git status/fetch/log/show/diff/add/commit/push/branch/merge/worktree or PR commands.
-Do not modify .git.
+**Strict rule: execute TASK-076-A only. Do not start TASK-077-A, TASK-078-A or TASK-079-A.**
+
+Use one dedicated branch:
+`codex/a-ai-runtime-foundation`
+
+Before implementation:
+
+```bash
+git status --short
+git branch --show-current
+git fetch --all --prune
+git rev-parse origin/develop
+git log --oneline -15 origin/develop
+```
+
+Require a clean starting worktree. If unrelated local changes exist, do not delete/reset them; stop and report the conflict.
+
+Create or switch to the designated Task branch from execution-time latest `origin/develop`. If the branch already exists remotely, inspect/reuse it rather than creating a competing branch.
+
+During finalization:
+- normally merge latest `origin/develop` into the Task branch if it advanced;
+- resolve real conflicts without weakening Task semantics;
+- stage only Task-owned changes;
+- commit;
+- push normally;
+- create/update exactly one Draft PR → `develop`;
+- update WBS/Result before final response.
+
+Forbidden:
+- `git clean -fd`
+- `git reset --hard`
+- `git push --force`
+- `git push --force-with-lease`
+- rebase of published Task history
+- automatic merge
+- starting any subsequent AI Task.
 
 ## Read first
 
@@ -56,10 +89,26 @@ npm run build
 
 If an authorized local OPENAI_API_KEY already exists, a bounded live smoke may be run without printing the key or provider raw payload. Otherwise record live smoke as Deferred.
 
+## Finalization
+
+Before returning:
+1. re-read the latest WBS;
+2. update WBS 6.4 / 6.5 / 6.10 / 6.11 accurately;
+3. create/update the Task Result;
+4. ensure the branch is current with execution-time latest develop;
+5. re-run required validation after any integration merge;
+6. commit and push;
+7. create/update one Draft PR → develop;
+8. stop. Do not start TASK-077-A.
+
 ## Final output
 
 Report:
 - Status
+- base/latest develop SHA
+- branch
+- final commit SHA
+- Draft PR
 - architecture/reuse summary
 - complete changed file list
 - provider/config boundary
@@ -70,4 +119,5 @@ Report:
 - tests
 - live smoke status
 - blockers
-- `Git operations not performed by Codex`
+- WBS updated: Yes/No
+- confirmation that no later AI Task was started
