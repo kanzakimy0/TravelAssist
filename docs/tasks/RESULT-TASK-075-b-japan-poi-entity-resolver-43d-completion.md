@@ -328,3 +328,19 @@ Resolver recovery and the parallel semantic Canary passed before production exec
 - Compressed 43D batches: data/poi/full/task-075-b-japan-poi-entity-resolver-43d-completion/43d-v2.3-batches-gz/ (52 batches, 10,369 rows / 445,867 decisions).
 - Package checksums: data/poi/full/task-075-b-japan-poi-entity-resolver-43d-completion/v2.3-compressed-batch-package.json.
 - Local uncompressed working files remain outside the published package; the 200MB inspect NDJSON was not copied or committed.
+
+## v2.3 final acceptance
+
+All v2.3 resolver and enrichment gates are now satisfied. The previous partial completion remains preserved above for audit.
+
+- Development resolver recovery: PASS.
+- Final blind validation: PASS.
+- Semantic write-through Canary: PASS.
+- Production residual identity: 5,920/5,920 final dispositions; inspect lookup 5,920/5,920; hard conflicts 0.
+- Full semantic sweep: 10,369 candidates, 445,867 exact field decisions, 6,209 → 6,385 non-null, 176 inferred additions, 176 provenance, 17 feature codes, unexplained canonical delta 0.
+- Final nulls: 439,482 field-level audits with semanticReviewRef.
+- Visit / Access extraction: 10,369 / 10,369 attempted.
+- Deterministic rebuild: PASS.
+- Exact current-head GitHub Quality Gate: PASS after publication; run identity is recorded in the final PR/Issue handoff.
+
+TASK-075-B = COMPLETE / READY FOR USER REVIEW
