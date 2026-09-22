@@ -2,7 +2,7 @@
 
 ## Status
 
-PASS — implementation and required local acceptance gates are complete. Awaiting review through one Draft PR to `develop`.
+PASS — implementation and required local acceptance gates are complete. Draft PR #422 is open for review against `develop`.
 
 ## Base / branch
 
@@ -10,6 +10,7 @@ PASS — implementation and required local acceptance gates are complete. Awaiti
 - Latest `origin/develop`: `2318143a60a10b22bbec03e7560164b66425016d` (unchanged at final fetch)
 - Branch: `codex/a-ai-runtime-foundation`
 - Issue: #418
+- Draft PR: #422 (`https://github.com/kanzakimy0/TravelAssist/pull/422`)
 
 ## Architecture and reuse
 
