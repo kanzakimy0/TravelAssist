@@ -1,4 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
+## TASK-050-A / WBS 7.4 实现待审查（2026-09-22）
+
+- Issue #399；Owner A；分支 `codex/a-poi-canonical-schema`；状态：待审查。
+- 执行基线：`origin/develop@18f15037908d97a954fef2a7e76200cd0f06d450`；实现提交 `c4e81a34`；最新 develop 正常整合提交 `fc4864485756ae5791ad504e94ff379d18dbfe6a`。
+- 已建立唯一 provider-independent `CanonicalPoiV1`、strict validator、Candidate Admission 五态/14 Gate、canonical → `PoiPlanningProjectionV1` adapter，并复用既有 43D、Visit Profile、Planning Fact、Master Code 与 Region Graph。
+- 直接测试与回归 123/123；lint、typecheck、production build 通过；无 DB migration、真实 Provider 调用、B Candidate/Evidence Corpus 修改、Planner UI/评分/Route/Trip Model 修改。
+- [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417) → `develop`；保持 Open/Draft，不自动合并。7.6、7.7、7.9 保持未开始。
 
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
@@ -977,7 +984,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
-| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
+| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 待审查（TASK-050-A canonical POI v1 / admission boundary） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
