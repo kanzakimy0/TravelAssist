@@ -2,8 +2,8 @@
 
 ## Status
 
-PASS — implementation and required local acceptance gates are complete. The
-designated branch is ready for a single Draft PR to `develop` and human review.
+PASS — implementation and required local acceptance gates are complete. Draft
+PR #426 is open for human review against `develop`.
 
 ## Base / branch
 
@@ -11,7 +11,7 @@ designated branch is ready for a single Draft PR to `develop` and human review.
 - Latest `origin/develop`: `f08daa9f8aa9b459fbd294f08e4bd29e16624647` (unchanged at final fetch)
 - Branch: `codex/a-ai-conversation-orchestrator`
 - Issue: #419
-- Draft PR: pending publication
+- Draft PR: #426 (`https://github.com/kanzakimy0/TravelAssist/pull/426`)
 
 ## Architecture and reuse
 
