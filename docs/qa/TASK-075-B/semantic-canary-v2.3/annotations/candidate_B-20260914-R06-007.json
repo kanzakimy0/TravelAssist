@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R06-007",
+  "sourceRef": "task-075-v23-canary-source:930ed0eeb82e6a51116f6b5d",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/930ed0eeb82e6a51116f6b5d85f5699c3cfb3e698dec67a0cda89c9bfda6d944.txt",
+    "locator": {
+      "offset": 0,
+      "length": 3082,
+      "locatorSha256": "930ed0eeb82e6a51116f6b5d85f5699c3cfb3e698dec67a0cda89c9bfda6d944",
+      "contentSha256": "930ed0eeb82e6a51116f6b5d85f5699c3cfb3e698dec67a0cda89c9bfda6d944"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "05",
+      "sourceFact": "Food and Drink Accommodation Hot Spring Popular Spots Activity Shopping Living Requests to all visitors Popular Spots Biei Tourism Association &gt; Facility &gt; Christmas Tree of Biei Christmas Tree of Biei Congestion Warning No Trespassing on Adjacent Private Pr",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    },
+    {
+      "featureCode": "06",
+      "sourceFact": "Food and Drink Accommodation Hot Spring Popular Spots Activity Shopping Living Requests to all visitors Popular Spots Biei Tourism Association &gt; Facility &gt; Christmas Tree of Biei Christmas Tree of Biei Congestion Warning No Trespassing on Adjacent Private Property To all visitors to the Christmas Tree The hills of Biei are ",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped retail, market stalls, or shopping; the frozen rubric maps that fact to shopping."
+    },
+    {
+      "featureCode": "10",
+      "sourceFact": "in rules regarding parking and stopping of vehicles are in place. Visitors using rental cars or trains are encouraged to take the round-trip shuttle bus to the “Christmas Tree” departing from the Shiki-no-Johokan, located a 2-minute walk from JR Biei Station. Period of Application: From November 29, 2025 (Sat) until further notice, the road in front of the Christmas Tree will be a pedestrian-only viewing area. Vehicle parking or stopping i",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped art or an exhibition; the frozen rubric maps that fact to art."
+    }
+  ],
+  "featureCodeCandidates": [
+    "05",
+    "06",
+    "10"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "05",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    },
+    {
+      "featureCode": "06",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped retail, market stalls, or shopping; the frozen rubric maps that fact to shopping."
+    },
+    {
+      "featureCode": "10",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped art or an exhibition; the frozen rubric maps that fact to art."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "05",
+      "value": 7
+    },
+    {
+      "featureCode": "06",
+      "value": 7
+    },
+    {
+      "featureCode": "10",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

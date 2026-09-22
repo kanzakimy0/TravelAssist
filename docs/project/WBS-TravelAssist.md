@@ -25,6 +25,14 @@
 - WBS 9.10 = **A / 待审查**：复用现有 PR #231 / TASK-071-A。既有 final head 的 Security tests、tracked/history scan、boundary、canary bundle 与 hosted gates 已通过；因当前 develop 又增加新文档/架构内容，合并 latest develop 后必须完整重扫，禁止创建第二套 Security implementation。
 - WBS 9.11 = **A / 进行中**：复用现有 PR #245 / TASK-072-A。旧 Observability/Performance 实现与历史证据保留，但当前 branch 落后 develop 398 commits，必须按 #405 执行 Full Refresh 后才能重新进入待审查。
 - 上述同步只纠正 Master WBS 当前状态；不代表 PR 已合并，不关闭 Issue，不启动新的下游 WBS。
+## TASK-068-B 候选恢复（2026-09-18）
+
+- Owner：B；Issue #393；状态：B / 待审查（#393 / TASK-068-B；[Draft PR #395](https://github.com/kanzakimy0/TravelAssist/pull/395)）；候选恢复范围，原始完整 occupied 库未认证。
+- 用户明确批准“按恢复方案继续，正式编号不变”；以 [Recovery Amendment v1](../tasks/AMENDMENT-TASK-068-candidate-recovery-v1.md) 为当前执行依据。旧文件不再作为候选加工前置。
+- 10,491 条原观察、10,369 个固定候选和所有历史编号声明完整保留。52 批全部获得明确结果：26 部分、322 待编辑复核、9,859 无匹配保留来源、162 身份隔离。82 个非空特征位、1 个部分 Visit、33 个 Anchor、35 条接入及 2 条邻接；不将评估完成冒充属性齐全。
+- 正式 Registry 不变；175 个旧码冲突、2,979 个未知旧码继续保留，未知号位不视为空闲。其他 WBS、Owner、Runtime、Provider、DB 和部署状态不变，TASK-069-A / #394 不另起 pipeline。
+- [Result](../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) / [QA](../qa/TASK-068/README.md) / [接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)。正式导入需后续单独验收，不自动 merge 或关闭 Issue。
+- 分支：`codex/b-poi-partition-enrichment-transport-linkage`；base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
 
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
