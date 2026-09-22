@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
+
+- TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
+- Issue #419 / TASK-077-A 正式启动；唯一 implementation branch = `codex/a-ai-conversation-orchestrator`。
+- WBS 6.10 = **A / 进行中**：在 TASK-076 已完成 server error/fallback 基础上补 streaming/loading/error/degraded UI。
+- WBS 6.13 = **A / 进行中**：本 Task 只实现基础 Conversation / Orchestrator / read-only Tool Router / Streaming UI；修改确认/成功反馈中的 mutation 部分仍由 #420 / TASK-078-A 承接。
+- 本 Task 禁止启动 TASK-078-A / TASK-079-A，禁止 Trip/Planner mutation、Booking/Payment、durable AI history。
+
 ## TASK-076-A / WBS 6.4 / 6.5 合并收尾（2026-09-22）
 
 - 用户明确授权合并 PR #422。已验收 exact head `9cbf83718bbc8e52caa24566ffc22f851217d668`，GitHub Quality Gate 成功；PR #422 以 normal merge 合入 `develop`，merge commit `7f87e8979432ef067a4810785f6db321732e2b8f`。
@@ -998,10 +1006,10 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 部分完成（#421 / TASK-079-A 已发布；等待 7.4/7.9/#372/Planner Solver Gate） |
 | 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 部分完成（#420 / TASK-078-A 已发布；等待 AI Conversation + Save/Read/Engine Gate） |
 | 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 部分完成（#421 / TASK-079-A；等待确定性 Ranking/Reason Evidence runtime） |
-| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 部分完成（TASK-076-A server error/fallback 已合并；#419 / TASK-077-A 继续 streaming/UI degradation） |
+| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 进行中（#419 / TASK-077-A；在已合并 server fallback 基础上接 streaming/UI degradation） |
 | 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（TASK-076-A usage/token/latency boundary 已合并；生产 exporter 继续由 WBS 9.11 管理） |
 | 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（#421 / TASK-079-A 已发布；等待 Planner/POI/Ranking Gate） |
-| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 部分完成（#419 / TASK-077-A 接基础对话/Streaming；#420 补修改确认与成功反馈） |
+| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
 | 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
 
 ## 7. 地图、地点、路线与推荐（A 全责）
