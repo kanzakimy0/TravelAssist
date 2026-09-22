@@ -1,5 +1,15 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-076-A / WBS 6.4 / 6.5 合并收尾（2026-09-22）
+
+- 用户明确授权合并 PR #422。已验收 exact head `9cbf83718bbc8e52caa24566ffc22f851217d668`，GitHub Quality Gate 成功；PR #422 以 normal merge 合入 `develop`，merge commit `7f87e8979432ef067a4810785f6db321732e2b8f`。
+- WBS 6.4 = **A / 已完成**：provider-independent、server-only AI runtime、OpenAI Responses adapter、Prompt Registry、normalized error/fallback 与 fake provider 已进入 develop。
+- WBS 6.5 = **A / 已完成**：复用 5.14 Planner-readable Preference Contract 的 optional-user Context Builder 已进入 develop，保留 missing/false/neutral/unknown 语义。
+- WBS 6.10 = **部分完成**：server-side error/fallback 已完成；streaming/UI degradation 由 #419 / TASK-077-A 继续。
+- WBS 6.11 = **部分完成**：usage/token/latency/cost-boundary 已完成；production telemetry/export 继续由 WBS 9.11 承接。
+- Live OpenAI smoke 因无已授权 `OPENAI_API_KEY` / `OPENAI_MODEL` 保持 Deferred，不构成本 Task blocker；未提交或暴露 Secret。
+- TASK-077-A / #419 尚未启动；继续遵守“一次一个 AI Task”。
+
 ## FINAL Architecture WBS 状态同步（2026-09-22）
 
 - WBS 4.19 = **A / 待审查**：原 TASK-069-A / PR #406 已完成 Save/Read 接线；TASK-073-A / Issue #412 已修复 visual fallback coordinates 可能回写 Canonical 的数据完整性问题。代码、focused tests、lint/typecheck/build/deployment artifact 均通过；真实 Local Supabase Auth/HTTP/RLS/CAS 复验因本机 Docker Desktop Linux engine 不可用而保持 **Blocked**，因此不得标记已完成或合并。
@@ -982,14 +992,14 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 已完成（FINAL Architecture 已冻结 AI 能力边界） |
 | 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 已完成（Conversation / Turn / Message / Block / Tool / Citation 模型已冻结） |
 | 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 已完成（v1 分层 Prompt / System Instruction 与版本策略已冻结） |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 待审查（#418 / TASK-076-A；Provider contract、server-only OpenAI Responses adapter、fake provider 已完成） |
-| 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 待审查（#418 / TASK-076-A；已复用 5.14 Preference Contract 完成 optional-user Context Builder） |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 已完成（TASK-076-A；PR #422 已合并；provider-independent runtime + server-only OpenAI Responses adapter） |
+| 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 已完成（TASK-076-A；PR #422 已合并；复用 5.14 Preference Contract 的 Context Builder） |
 | 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 部分完成（#420 / TASK-078-A 已发布；等待 #419 + PR #406 合并后执行） |
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 部分完成（#421 / TASK-079-A 已发布；等待 7.4/7.9/#372/Planner Solver Gate） |
 | 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 部分完成（#420 / TASK-078-A 已发布；等待 AI Conversation + Save/Read/Engine Gate） |
 | 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 部分完成（#421 / TASK-079-A；等待确定性 Ranking/Reason Evidence runtime） |
-| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 部分完成，待审查（#418 / TASK-076-A server error/fallback 已完成；#419 streaming UI degradation 未启动） |
-| 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成，待审查（#418 / TASK-076-A usage/token/latency 与 versioned cost boundary 已完成；生产 exporter 仍由 9.11 管理） |
+| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 部分完成（TASK-076-A server error/fallback 已合并；#419 / TASK-077-A 继续 streaming/UI degradation） |
+| 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（TASK-076-A usage/token/latency boundary 已合并；生产 exporter 继续由 WBS 9.11 管理） |
 | 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（#421 / TASK-079-A 已发布；等待 Planner/POI/Ranking Gate） |
 | 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 部分完成（#419 / TASK-077-A 接基础对话/Streaming；#420 补修改确认与成功反馈） |
 | 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
