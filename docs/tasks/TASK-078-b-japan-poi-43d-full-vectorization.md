@@ -87,6 +87,24 @@ If the baseline does not reproduce exactly, diagnose the input view before vecto
 
 ---
 
+## 2A. TASK-075-B scope closeout — must not block B001
+
+At the beginning of the same execution, append a short non-destructive clarification to the TASK-075-B Result and, if permissions allow, PR #423 / Issue #416:
+
+> TASK-075-B COMPLETE means identity resolution, final identity adjudication, exact field-decision audit, evidence review, task-scoped canonical reconciliation, deterministic QA, and exact-head Quality Gate are complete. It does not mean the 10,369 POIs have 43/43 numeric feature coverage. TASK-078-B is the dedicated full-vectorization layer.
+
+Do not rewrite historical TASK-075 metrics.
+
+Do not stop after this clarification.
+
+The same execution must proceed immediately to population freeze and **B001 = 200 completed 43/43 numeric vectors**.
+
+Required note:
+
+`docs/qa/TASK-078-B/task-075-b-scope-closeout.md`
+
+---
+
 ## 3. Frozen 43-feature contract
 
 Use the existing contract:
