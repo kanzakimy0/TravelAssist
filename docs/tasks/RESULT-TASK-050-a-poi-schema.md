@@ -11,7 +11,7 @@ Completed / WBS 7.4 canonical POI schema ready for human review.
 - Execution baseline: `origin/develop@18f15037908d97a954fef2a7e76200cd0f06d450`
 - Implementation commit: `c4e81a34`
 - Latest develop integration commit: `fc4864485756ae5791ad504e94ff379d18dbfe6a`
-- Pull request: pending Draft PR creation; target `develop`
+- Pull request: [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417) → `develop`
 
 ## Delivered
 

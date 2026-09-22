@@ -5,7 +5,7 @@
 - 执行基线：`origin/develop@18f15037908d97a954fef2a7e76200cd0f06d450`；实现提交 `c4e81a34`；最新 develop 正常整合提交 `fc4864485756ae5791ad504e94ff379d18dbfe6a`。
 - 已建立唯一 provider-independent `CanonicalPoiV1`、strict validator、Candidate Admission 五态/14 Gate、canonical → `PoiPlanningProjectionV1` adapter，并复用既有 43D、Visit Profile、Planning Fact、Master Code 与 Region Graph。
 - 直接测试与回归 123/123；lint、typecheck、production build 通过；无 DB migration、真实 Provider 调用、B Candidate/Evidence Corpus 修改、Planner UI/评分/Route/Trip Model 修改。
-- Draft PR：待创建，目标 `develop`；保持 Open/Draft，不自动合并。7.6、7.7、7.9 保持未开始。
+- [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417) → `develop`；保持 Open/Draft，不自动合并。7.6、7.7、7.9 保持未开始。
 
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
