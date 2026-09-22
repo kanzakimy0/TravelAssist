@@ -1,5 +1,20 @@
 # TravelAssist 可记录 WBS（Master）
 
+## Japan POI TASK-068~075 develop integration preparation
+
+- Scope：仅将已验收的 TASK-068-B → TASK-070-B → remaining-10097 → TASK-071-B → TASK-072-B → TASK-073-B → TASK-074-B → TASK-075-B 数据链集成到 develop；不包含 TASK-077-B 或 TASK-078-B。
+- Owner：B / Japan POI data integration；本次不创建新业务 Task。
+- Status：待审查；PR #427 尚未合入 develop，等待人工授权。
+- Develop head before integration：f08daa9f8aa9b459fbd294f08e4bd29e16624647。
+- POI source head：d706534dbfd3aa77d2857f3c214f66a8a84d07c3；source Quality Gate 35731940622 = SUCCESS。
+- Merge base：45e9f8830ac66d03b3ace6480d36d3ee31907a2e。
+- Integration branch：integration/b-poi-task075-to-develop；normal merge commit：d1c2bdfe7fe36289bbebc45878e8149b027897f0。
+- PR：#427 → develop；初始 integration exact-head Quality Gate 35752390704 = SUCCESS；WBS 更新后的最终 head 仍需新的 exact-current-head Gate。
+- QA：package checksums/batches PASS；POI focused 50/50；planning contract 21/21；full Node 2710/2710；lint/typecheck/build/format/deploy/diff check PASS。
+- 数据状态：population 10,369；canonical baseline 2,519 scored / 6,209 non-null；TASK-075 semantic package 6,385 non-null after / 176 additions；43/43 fully populated POIs remains 0。
+- Registry rebind = 0；Master Code allocation = 0；candidateKey mutation = 0；production import = 0；auto-merge = prohibited。
+
+
 ## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
 
 - TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
