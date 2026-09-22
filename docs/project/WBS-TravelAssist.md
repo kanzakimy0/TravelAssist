@@ -977,7 +977,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
-| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
+| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 待审查（TASK-050-A canonical POI v1 / admission boundary） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
