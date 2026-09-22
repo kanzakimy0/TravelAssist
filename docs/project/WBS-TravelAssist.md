@@ -961,21 +961,29 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 ## 6. AI 旅行助手（A 全责，个人历史除外）
 
+## AI WBS 状态同步（2026-09-22）
+
+- 6.1 / 6.2 / 6.3 属于本轮 FINAL Architecture 已实际完成并冻结的规格层工作，状态改为 **已完成**。
+- 6.4–6.13 已完成对应架构、Contract、消息、Context、Tool/Action、Planner/Replan、Explanation、Observability/Benchmark 等设计冻结，但生产 AI Provider / Orchestrator / Tool Runtime / Action Runtime 尚未接通，因此统一标记为 **部分完成**，避免把“设计完成”误报为“功能已上线”。
+- 6.14 个人中心 AI 历史仍保持 **未开始**；当前没有独立历史存储/UI 实装。
+- 当前主系统明确事实：AI runtime 尚未真正连接生产模型；后续实现必须复用已冻结设计，不得创建第二套 AI/Planner/Action 架构。
+
+
 | WBS ID | 工作项                             | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ---------------------------------- | ------ | ------ | -------- | ------ |
-| 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 未开始 |
-| 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 未开始 |
-| 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 未开始 |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 未开始 |
-| 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 未开始 |
-| 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 未开始 |
-| 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 未开始 |
-| 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 未开始 |
-| 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 未开始 |
-| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 未开始 |
-| 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 未开始 |
-| 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 未开始 |
-| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 未开始 |
+| 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 已完成（FINAL Architecture 已冻结 AI 能力边界） |
+| 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 已完成（Conversation / Turn / Message / Block / Tool / Citation 模型已冻结） |
+| 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 已完成（v1 分层 Prompt / System Instruction 与版本策略已冻结） |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 部分完成（API Layer / Provider Adapter / Model Router / Usage 设计已冻结；生产 runtime 未接入） |
+| 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 部分完成（Preference Contract + Context Builder 读取优先级已冻结；AI runtime 未接） |
+| 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 部分完成（Tool Router / Action Router / Confirmation / Permission 设计冻结；runtime 未实现） |
+| 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 部分完成（Planning/AI Contract、Candidate/Ranking/Planner 流程已冻结；生成 runtime 未实现） |
+| 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 部分完成（Replan / Impact / Change Set / Safe Action 设计冻结；runtime 未实现） |
+| 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 部分完成（Trade-off / Reason Code / Evidence Explanation 模型已冻结；UI/runtime 未接） |
+| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 部分完成（错误分类、Fallback、Graceful Degradation 设计已冻结；AI runtime 未接） |
+| 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（Decision Trace / token/cost/latency 字段与 Observability 设计已冻结；生产采集未接） |
+| 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（Benchmark / Regression / Golden Case 模型已冻结；AI 专用质量集尚未实装） |
+| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 部分完成（主对话/消息/确认交互设计已冻结；真实 AI/Action runtime 未接） |
 | 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
 
 ## 7. 地图、地点、路线与推荐（A 全责）
