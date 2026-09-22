@@ -263,49 +263,61 @@ Resolver recovery and the parallel semantic Canary passed before production exec
 
 | Feature | Before | After | Delta |
 |---|---:|---:|---:|
-| 01 | 1 | 1 | 0 |
-| 02 | 1 | 1 | 0 |
-| 03 | 1 | 1 | 0 |
-| 04 | 1 | 1 | 0 |
-| 05 | 1 | 1 | 0 |
-| 06 | 1 | 1 | 0 |
-| 07 | 1 | 1 | 0 |
-| 08 | 1 | 1 | 0 |
-| 09 | 1 | 1 | 0 |
-| 10 | 1 | 1 | 0 |
-| 11 | 1 | 1 | 0 |
-| 12 | 1 | 1 | 0 |
-| 13 | 1 | 1 | 0 |
+| 01 | 354 | 354 | 0 |
+| 02 | 1203 | 1225 | 22 |
+| 03 | 588 | 600 | 12 |
+| 04 | 62 | 82 | 20 |
+| 05 | 454 | 472 | 18 |
+| 06 | 708 | 716 | 8 |
+| 07 | 326 | 364 | 38 |
+| 08 | 61 | 65 | 4 |
+| 09 | 22 | 32 | 10 |
+| 10 | 342 | 352 | 10 |
+| 11 | 108 | 123 | 15 |
+| 12 | 638 | 644 | 6 |
+| 13 | 8 | 11 | 3 |
 | 14 | 0 | 0 | 0 |
 | 15 | 0 | 0 | 0 |
-| 16 | 1 | 1 | 0 |
+| 16 | 93 | 93 | 0 |
 | 17 | 0 | 0 | 0 |
-| 18 | 1 | 1 | 0 |
+| 18 | 2 | 2 | 0 |
 | 19 | 1 | 1 | 0 |
-| 20 | 1 | 1 | 0 |
-| 21 | 1 | 1 | 0 |
-| 22 | 1 | 1 | 0 |
-| 23 | 1 | 1 | 0 |
-| 24 | 1 | 1 | 0 |
-| 25 | 1 | 1 | 0 |
-| 26 | 1 | 1 | 0 |
-| 27 | 1 | 1 | 0 |
+| 20 | 102 | 102 | 0 |
+| 21 | 7 | 7 | 0 |
+| 22 | 238 | 239 | 1 |
+| 23 | 163 | 166 | 3 |
+| 24 | 91 | 91 | 0 |
+| 25 | 25 | 29 | 4 |
+| 26 | 8 | 8 | 0 |
+| 27 | 3 | 3 | 0 |
 | 28 | 1 | 1 | 0 |
-| 29 | 1 | 1 | 0 |
+| 29 | 28 | 29 | 1 |
 | 30 | 0 | 0 | 0 |
-| 31 | 1 | 1 | 0 |
-| 32 | 1 | 1 | 0 |
-| 33 | 1 | 1 | 0 |
-| 34 | 1 | 1 | 0 |
-| 35 | 1 | 1 | 0 |
-| 36 | 1 | 1 | 0 |
+| 31 | 92 | 93 | 1 |
+| 32 | 3 | 3 | 0 |
+| 33 | 7 | 7 | 0 |
+| 34 | 15 | 15 | 0 |
+| 35 | 9 | 9 | 0 |
+| 36 | 5 | 5 | 0 |
 | 37 | 0 | 0 | 0 |
-| 38 | 1 | 1 | 0 |
-| 39 | 1 | 1 | 0 |
-| 40 | 1 | 1 | 0 |
-| 41 | 1 | 1 | 0 |
-| 42 | 1 | 1 | 0 |
-| 43 | 1 | 1 | 0 |
+| 38 | 2 | 2 | 0 |
+| 39 | 27 | 27 | 0 |
+| 40 | 168 | 168 | 0 |
+| 41 | 79 | 79 | 0 |
+| 42 | 118 | 118 | 0 |
+| 43 | 48 | 48 | 0 |
+| **Sum** | **6209** | **6385** | **176** |
+
+Coverage aggregation check: **PASS** — sum of populated candidate counts across all 43 features is 6,209 before, 6,385 after, delta 176.
+
+### Identity adjudication clarification
+
+The 5,920 final identity adjudications consist of:
+
+- 5,915 point/candidate enrichment identities.
+- 5 AREA_OR_DISTRICT_ENTITY records.
+
+These 5 area/district records are not unresolved and are not identity failures. Their identities were adjudicated, then they were handled separately as area/district entity types rather than as point/candidate enrichment identities.
 
 ### Coverage bands
 
