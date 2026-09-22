@@ -4,6 +4,15 @@
 
 Completed / WBS 7.4 canonical POI schema ready for human review.
 
+## Execution
+
+- Issue: #399
+- Branch: `codex/a-poi-canonical-schema`
+- Execution baseline: `origin/develop@18f15037908d97a954fef2a7e76200cd0f06d450`
+- Implementation commit: `c4e81a34`
+- Latest develop integration commit: `fc4864485756ae5791ad504e94ff379d18dbfe6a`
+- Pull request: pending Draft PR creation; target `develop`
+
 ## Delivered
 
 - One provider-independent `CanonicalPoiV1` source of truth with strict public parsers.
@@ -23,11 +32,11 @@ Static canonical master data rejects realtime timetable/weather/crowd/queue and 
 
 ## Scope confirmation
 
-No production DB write or migration, live Provider call/purchase/credential, B-corpus mutation, whole-corpus Master Code allocation, Planner UI change, scoring change, Route change or Trip model change was made.
+No production DB write or migration, live Provider call/purchase/credential, B-corpus mutation, whole-corpus Master Code allocation, Planner UI change, scoring change, Route change or Trip model change was made. WBS 7.6, 7.7 and 7.9 remain unstarted.
 
 ## Verification
 
-All required non-Git gates pass:
+All required gates passed after merging the execution-time latest `origin/develop`:
 
 - `npm ci` — PASS, 395 packages installed, 0 vulnerabilities;
 - `npm run test:planning-contracts` — PASS, 21/21;
@@ -42,4 +51,8 @@ All required non-Git gates pass:
 - `npm run typecheck` — PASS;
 - `npm run build` — PASS.
 
-Git operations were not performed by Codex.
+The Node test runner emitted the repository's existing typeless-package warning; it did not fail any gate.
+
+## Review state
+
+WBS 7.4 is `待审查`. The Draft PR must remain open and must not be merged automatically.
