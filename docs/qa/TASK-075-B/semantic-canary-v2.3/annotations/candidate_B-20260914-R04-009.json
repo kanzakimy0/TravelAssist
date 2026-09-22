@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R04-009",
+  "sourceRef": "task-075-v23-canary-source:473ac834fb4ec23af35a5ca5",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/473ac834fb4ec23af35a5ca592fefc8c242fe4a26b66fe0885b5580a87f4fd7a.txt",
+    "locator": {
+      "offset": 0,
+      "length": 4501,
+      "locatorSha256": "473ac834fb4ec23af35a5ca592fefc8c242fe4a26b66fe0885b5580a87f4fd7a",
+      "contentSha256": "473ac834fb4ec23af35a5ca592fefc8c242fe4a26b66fe0885b5580a87f4fd7a"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "03",
+      "sourceFact": "s strictly prohibited to operate Unmanned Aircrafts (UAs) /Drone in Benesse Art Site Naoshima premises without our prior permission due to safety assurance reasons for the people, architecture and artworks. Contact 2252-2 Naoshima, Kagawa 7613110 Japan Tel. +81-(0)87-892-2626 (Town Naoshima Association 8:30 a.m. - 6:00 p.m.) Inquiry form",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target architecture or a built structure; the frozen rubric maps that fact to architecture."
+    },
+    {
+      "featureCode": "04",
+      "sourceFact": "t may infect from person to person through the bathing. A person who has diarrhea. A person who has been drinking too much. A member of organized crime groups. ・Smoking and taking photos inside the building are prohibited. ・Bathing suits may not be worn in the baths. ・Please remove your clothes before entering the bathrooms (lockers are provided). ・Please wash your body with soap before entering a tub. ・Although soap and shampoo is provided,",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "09",
+      "sourceFact": "Naoshima Bath \"I♥︎湯\" This is an art facility created by artist Shinro Ohtake where visitors are actually able to take a bath. \"I♥︎湯\" was created to provide both a place for Naoshima residents to rejuvenate and as a venue for exchanges between Japanese and international vis",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped bathing or hot-spring use; the frozen rubric maps that fact to onsen."
+    }
+  ],
+  "featureCodeCandidates": [
+    "03",
+    "04",
+    "09"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "03",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target architecture or a built structure; the frozen rubric maps that fact to architecture."
+    },
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "09",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped bathing or hot-spring use; the frozen rubric maps that fact to onsen."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "03",
+      "value": 7
+    },
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "09",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

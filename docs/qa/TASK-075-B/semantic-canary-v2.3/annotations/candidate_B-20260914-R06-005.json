@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R06-005",
+  "sourceRef": "task-075-v23-canary-source:6a4f3cfd4ebf25dfcaf39a49",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/6a4f3cfd4ebf25dfcaf39a4978a0b40f3e295b4138e9a295513eb44f2e2663b6.txt",
+    "locator": {
+      "offset": 0,
+      "length": 3587,
+      "locatorSha256": "6a4f3cfd4ebf25dfcaf39a4978a0b40f3e295b4138e9a295513eb44f2e2663b6",
+      "contentSha256": "6a4f3cfd4ebf25dfcaf39a4978a0b40f3e295b4138e9a295513eb44f2e2663b6"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": "ABOUT 清津峡のご紹介 TOP &gt; 清津峡のご紹介 清津峡の誕生 清津峡の歴史 渓谷トンネル 建設の経緯 現代美術による 再生 清津峡の四季 黒部峡谷（富山県）、大杉谷（三重県）とともに日本三大峡谷の一つに数えられている「清津峡」。 清津川を挟んで切り立つ巨大な岸壁がＶ字型の大峡谷をつくり、 雄大な柱状節理の岩肌とエメラルドグリーンの清流が、訪れる人々に深い感動を与えます。 日本有数の景勝地「清津峡」の誕生から歴史、そして現在の「清津峡渓谷トンネル」に至るまでをご紹介いたします。 清津峡の誕生 1500万年前 海底火山の噴火活動により、火山灰が海底に降り積もる。 化学変化で緑色が変色。緑色凝",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "06",
+      "sourceFact": " ※障がい者手帳所持者は無料(手帳かコピーをご提示下さい) ※団体（20人以上）のご利用で入坑料金からお一人につき50円引き 清津峡渓谷 トンネル受付時間 8：30～16：30 （閉抗時間 17：00） 第2見晴所に作品を兼ねた トイレが2つございます。 第一駐車場の公衆トイレも ご利用ください。 清津峡エントランス 営業時間 9:00～16:00 1階 お土産、カフェ 2階 足湯 無料 トイレ 女性用&#9312;、 &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;多目的トイレ&#9312; -->",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped retail, market stalls, or shopping; the frozen rubric maps that fact to shopping."
+    },
+    {
+      "featureCode": "09",
+      "sourceFact": "うなイメージ）一枚岩ではないため、岩は硬いが、もろく崩れやすい。（下記画像参照） ※1 凝灰岩（ぎょうかいがん）…火山灰が固まって岩になったもの。 ※2 ひん岩…マグマが冷えて固まってできた火山岩の一種。安山岩た玄武岩も同じ仲間 ※3 柱状節理(ちゅうじょうせつり)…マグマが冷えて固まる際、収縮して四〜六角形の柱状の岩になったもの。 柱状節理 清津峡の歴史 温泉の存在は、今から約300年前の元禄年間にはすでに知られていた。 そのころから、温泉開発の話はあったのだが、地形など多くの問題があり、長い間手がつけられずにいた。 1862年（江戸時代 文久2年） 地元の人により温泉場がつくられた。 1941年（昭和16年） 峡谷美と柱状節理の地形が見事であるということで、国の名勝・天然記念物に指定された。 1949年（昭和24年） 上信越高原国立公園の一部として指定され、温泉街も整備された。 1984年（昭和59年） 2月 大規模な雪崩がおき、温泉街の一部を直撃し多くの死傷者をだし",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped bathing or hot-spring use; the frozen rubric maps that fact to onsen."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "06",
+    "09"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "06",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped retail, market stalls, or shopping; the frozen rubric maps that fact to shopping."
+    },
+    {
+      "featureCode": "09",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped bathing or hot-spring use; the frozen rubric maps that fact to onsen."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "06",
+      "value": 7
+    },
+    {
+      "featureCode": "09",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

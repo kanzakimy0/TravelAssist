@@ -1,0 +1,57 @@
+{
+  "candidateKey": "candidate:B-20260914-R06-003",
+  "sourceRef": "task-075-v23-canary-source:350158709079426a35435b42",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/350158709079426a35435b42222e9fa91a0bf9e7a346baef1af91e598308c833.txt",
+    "locator": {
+      "offset": 0,
+      "length": 793,
+      "locatorSha256": "350158709079426a35435b42222e9fa91a0bf9e7a346baef1af91e598308c833",
+      "contentSha256": "350158709079426a35435b42222e9fa91a0bf9e7a346baef1af91e598308c833"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "04",
+      "sourceFact": "アクセス 写真：新津保建秀 角川武蔵野ミュージアム 〒359-0023 埼玉県所沢市東所沢和田3-31-3 Google MAPで見る 公共交通機関でお越しのお客様 JR武蔵野線「東所沢」駅から徒歩約10分 主な都市、スポットからのアクセス 【東京駅、上野駅から】 JR京浜東北線・大宮方面行きに乗り、南浦和駅乗り換え。 JR武蔵野線・府中本町方面行きに乗り、東所沢駅下車。 【新宿駅、池袋駅から】 JR埼京線・大宮/川越方面行きに乗り、武蔵浦和駅乗り換え。 JR武蔵野線・府中本町方面行きに乗り、東所沢駅下車。 【西武池袋駅、西武新",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "25",
+      "sourceFact": "アクセス 写真：新津保建秀 角川武蔵野ミュージアム 〒359-0023 埼玉県所沢市東所沢和田3-31-3 Google MAPで見る 公共交通機関でお越しのお客様 JR武蔵野線「東所沢」駅から徒歩約10分 主な都市、スポットからのアクセス 【東京駅、上野駅から】 JR京浜東北線・大宮方面行きに乗り、南浦和駅乗り換え。 JR武蔵野線・府中本町方面行きに乗り、東所沢駅下車。 【新宿駅、池袋駅から】 JR埼京線・大宮/川越方面行きに乗り、武蔵浦和駅乗り換え。 JR武蔵野線・府中本町方面行きに乗り、東所沢駅下車。 【西武池袋駅、西武新宿駅から】 西武鉄道に乗車し、所沢駅下車。 所沢駅東口②番乗り場で東所沢駅方面行きのバスに乗り、東所沢駅バス停下車。 【所沢駅から】 所沢駅東口②番乗り場で東所沢駅方面行きのバスに乗り",
+      "proposedValue": 5,
+      "rationale": "The official target page describes target-scoped walking, an approach path, or an expressly walkable route; the frozen rubric maps that fact to walking."
+    }
+  ],
+  "featureCodeCandidates": [
+    "04",
+    "25"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "25",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped walking, an approach path, or an expressly walkable route; the frozen rubric maps that fact to walking."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "25",
+      "value": 5
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}
