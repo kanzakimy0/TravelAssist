@@ -80,10 +80,30 @@ TASK-076-A uses a provider abstraction plus a server-only OpenAI adapter based o
 
 ## Git / Codex rule
 
-When local AGENTS prohibits Git:
-- Git/worktree/merge/stage/commit/push happen outside Codex;
-- Codex performs zero Git commands;
-- Codex only edits files and runs non-Git validation.
+Current execution rule: **Codex may perform Git operations, but only one Task at a time.**
+
+For the active Task, Codex may:
+- inspect Git state;
+- fetch/prune remotes;
+- create or reuse only the Task's designated branch/worktree;
+- merge execution-time latest `origin/develop` normally;
+- stage only Task-owned files;
+- commit;
+- push without force;
+- create/update one Draft PR to `develop`.
+
+Codex must stop after publishing the active Task Result and Draft PR.
+
+Do not:
+- start the next AI Task automatically;
+- create branches for TASK-077/078/079 while TASK-076 is active;
+- work on two AI Tasks in parallel;
+- rebase/force push;
+- use hard reset or destructive clean;
+- auto-merge a PR.
+
+Sequence remains strictly:
+`TASK-076 → human acceptance/merge → TASK-077 → human acceptance/merge → TASK-078 → ...`.
 
 ## WBS status policy
 
