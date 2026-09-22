@@ -194,11 +194,15 @@ test("local generation has no fake compute stages or percentage", () => {
   assert.match(s, /不代表真实 AI 或路线计算/);
   assert.doesNotMatch(s, /activeStage|STAGES|正在处理|✓|progressbar|百分比/);
 });
-test("AI remains disconnected and Home public fallback remains unchanged", () => {
+test("AI uses the bounded streaming endpoint and Home public fallback remains unchanged", () => {
   const s = read("src/features/home/components/ai-conversation-panel.tsx");
-  assert.match(s, /AI 服务尚未接入/);
-  assert.match(s, /disabled/);
-  assert.doesNotMatch(s, /fetch\(|setTimeout|重试/);
+  const runtime = read(
+    "src/features/home/components/ai-conversation-runtime.tsx",
+  );
+  assert.match(s, /AIConversationRuntime/);
+  assert.match(runtime, /fetch\("\/api\/ai\/conversation"/);
+  assert.match(runtime, /输入内容已保留/);
+  assert.doesNotMatch(runtime, /setTimeout|localStorage|providerRaw/);
   const home = read("src/lib/auth/home-viewer.server.ts");
   assert.match(home, /return error \|\| !data.user \? null/);
 });
@@ -280,13 +284,13 @@ test("actual generation renderer is static local preparation with safe return", 
   assert.match(html, /aria-hidden="true"/);
   assert.doesNotMatch(html, /正在处理|分析您的旅行偏好|生成最佳路线/);
 });
-test("actual AI shell keeps send disabled and has no fake retry", () => {
+test("actual AI shell starts idle with an empty disabled composer", () => {
   const html = render(AIConversationPanel, {
     id: "test-ai",
     closeButtonRef: { current: null },
     onClose: () => {},
   });
-  assert.match(html, /AI 服务尚未接入/);
+  assert.match(html, /可以询问日本旅行与行程规划问题/);
   assert.match(html, /disabled=""/);
   assert.doesNotMatch(html, /重试|正在思考/);
 });

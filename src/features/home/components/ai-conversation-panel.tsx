@@ -1,8 +1,8 @@
 import type { Ref } from "react";
 
-import { StateNotice } from "@/components/ui/state-notice";
 import { Button } from "@/components/ui/button";
 import { FloatingPanel } from "@/components/ui/floating-panel";
+import { AIConversationRuntime } from "./ai-conversation-runtime";
 
 import styles from "./ai-conversation-panel.module.css";
 
@@ -45,27 +45,7 @@ export function AIConversationPanel({
         </Button>
       </div>
 
-      <div className={styles.composer}>
-        <label className={styles.srOnly} htmlFor={`${id}-input`}>
-          告诉 AI 您的旅行想法
-        </label>
-        <textarea
-          id={`${id}-input`}
-          placeholder="例如：秋天想去京都慢慢走走……"
-          rows={4}
-        />
-        <Button aria-label="发送（AI 服务尚未接入）" disabled size="medium">
-          发送
-        </Button>
-      </div>
-      <StateNotice
-        compact
-        kind="info"
-        announcement="off"
-        className={styles.note}
-        title="AI 服务尚未接入"
-        description="您可以继续使用已有规划功能。"
-      />
+      <AIConversationRuntime id={id} />
     </FloatingPanel>
   );
 }

@@ -29,6 +29,7 @@ Initial Itinerary + Recommendation Explanation + AI Quality Benchmark
 ### TASK-076-A — executable now
 
 Satisfied:
+
 - 6.1 AI capability boundary frozen
 - 6.2 message model frozen
 - 6.3 Prompt/System Instruction v1 frozen
@@ -40,9 +41,17 @@ Satisfied:
 
 Requires TASK-076-A merged/accepted.
 
+Implementation status (2026-09-22): TASK-076-A dependency is satisfied. The
+TASK-077-A base conversation runtime, read-only Tool Router, application SSE
+transport and existing Home AI wiring are implemented on the designated branch
+and have passed the required local gates. WBS 6.10 is pending review; WBS 6.13
+remains partial because mutation confirmation and success feedback belong to
+TASK-078-A and were not started.
+
 ### TASK-078-A
 
 Requires:
+
 - TASK-077-A
 - WBS 4.19 / PR #406 accepted + merged
 - accepted Planner Store/Trip persistence
@@ -51,6 +60,7 @@ Requires:
 ### TASK-079-A
 
 Requires:
+
 - TASK-077-A
 - WBS 7.4 Canonical POI accepted/merged
 - WBS 7.9 recommendation scoring complete
@@ -60,6 +70,7 @@ Requires:
 ## Runtime boundaries
 
 AI may:
+
 - understand intent;
 - assemble context;
 - call registered tools;
@@ -67,6 +78,7 @@ AI may:
 - explain deterministic decisions.
 
 AI may not:
+
 - fabricate opening/route/weather/price facts;
 - bypass Validator/Engine;
 - mutate Trip directly;
@@ -83,6 +95,7 @@ TASK-076-A uses a provider abstraction plus a server-only OpenAI adapter based o
 Current execution rule: **Codex may perform Git operations, but only one Task at a time.**
 
 For the active Task, Codex may:
+
 - inspect Git state;
 - fetch/prune remotes;
 - create or reuse only the Task's designated branch/worktree;
@@ -95,6 +108,7 @@ For the active Task, Codex may:
 Codex must stop after publishing the active Task Result and Draft PR.
 
 Do not:
+
 - start the next AI Task automatically;
 - create branches for TASK-077/078/079 while TASK-076 is active;
 - work on two AI Tasks in parallel;

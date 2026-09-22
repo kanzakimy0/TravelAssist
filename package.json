@@ -6,6 +6,8 @@
     "test:trip-plan": "node --test tests/task-019-trip-plan.test.mjs",
     "test:ai-runtime": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-076-ai-runtime.test.mjs",
     "test:ai-runtime:bundle": "node tests/task-076-ai-client-bundle.mjs",
+    "test:ai-conversation": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-077-ai-conversation.test.mjs",
+    "test:ai-conversation:bundle": "node --test tests/task-077-ai-client-bundle.mjs",
     "test:trip-plan:runtime": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-019-trip-plan.runtime.mjs",
     "deploy:validate": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs",
     "deploy:validate:local": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
