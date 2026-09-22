@@ -1,0 +1,57 @@
+{
+  "candidateKey": "candidate:B-20260914-R03-011",
+  "sourceRef": "task-075-v23-canary-source:46c3370cc602cf48de314b20",
+  "sourceTier": "GOVERNMENT_OR_PUBLIC_BODY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/46c3370cc602cf48de314b205eb76c20bf14cb9ef77a4d84b71944a32b4f11a7.txt",
+    "locator": {
+      "offset": 0,
+      "length": 1198,
+      "locatorSha256": "46c3370cc602cf48de314b205eb76c20bf14cb9ef77a4d84b71944a32b4f11a7",
+      "contentSha256": "46c3370cc602cf48de314b205eb76c20bf14cb9ef77a4d84b71944a32b4f11a7"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "05",
+      "sourceFact": "海中鳥居・大魚神社 ｜太良町ホームページ このページではjavascriptを使用しています。 このページの本文へ移動 太良町トップ Foreign Language 文字サイズ 背景色 太良町観光情報 －太良町 月の引力が見える町－ &gt; 観光する &gt;海中鳥居・大魚神社 Tweet 海中鳥居・大魚神社 更新日：2026年9月10日 大魚神社の海中鳥居は、最大6mの日本最大級の干満差が見られる有明海の浅瀬に建っています。 満潮時には浮かんでいるように見え、干潮時には鳥居の下を通ることができます。 【平成29年12月 2",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    },
+    {
+      "featureCode": "11",
+      "sourceFact": "リシー 免責事項について 携帯サイト サイトマップ 太良町役場 法人番号2000020414417 〒849-1698 佐賀県藤津郡太良町大字多良1番地6 電話：0954-67-0311 FAX：0954-67-2425 開庁時間 平日：8時30分～17時15分 第2・第4火曜：8時30分～19時15分（延長時間は本庁窓口・ご予約の方のみ） ※土・日曜日、祝祭日、年末年始（12月29日～1月3日）はお休みです お問い合わせ 組織一覧・直通電話帳 庁舎へのアクセス フロアマップ Copyright Tara Town. All right reserved.",
+      "proposedValue": 7,
+      "rationale": "The official target page describes a target-scoped event or entertainment activity; the frozen rubric maps that fact to entertainment."
+    }
+  ],
+  "featureCodeCandidates": [
+    "05",
+    "11"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "05",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    },
+    {
+      "featureCode": "11",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes a target-scoped event or entertainment activity; the frozen rubric maps that fact to entertainment."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "05",
+      "value": 7
+    },
+    {
+      "featureCode": "11",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

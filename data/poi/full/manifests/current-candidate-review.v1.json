@@ -1,0 +1,439 @@
+{
+  "schemaVersion": "candidate-review-generation-v1",
+  "generation": "remaining-v1",
+  "status": "ALL_ATTEMPTS_DISPOSITIONED_WITH_PENDING_REVIEW",
+  "scope": "CANDIDATE_ONLY_NO_CANONICAL_IMPORT",
+  "interpretation": "Read frozen TASK-070 feature partitions, then replace only candidateKeys listed in the verified feature delta. Pending queues are workflow state, never evidence for scoring.",
+  "baseHead": "302d84431158f6637e36f84a6e1ffbfb6b8af935",
+  "baseFeaturePartitions": [
+    {
+      "path": "data/poi/full/features/batch-0001.jsonl",
+      "sha256": "1cd45fc5c05893874ca187b74efe65c6b18d5d6bc4d3560e73fddba0cb7a7939"
+    },
+    {
+      "path": "data/poi/full/features/batch-0002.jsonl",
+      "sha256": "8777d2567e106c4837751080247a8a28fb274855306c02ce24742afb50394adf"
+    },
+    {
+      "path": "data/poi/full/features/batch-0003.jsonl",
+      "sha256": "095b1de38de45830d7637f6be8625ed8fd9baeaf514bc80b6a1249bbee65e663"
+    },
+    {
+      "path": "data/poi/full/features/batch-0004.jsonl",
+      "sha256": "cf066bbb2675c6e562eed7912d1adbd5831ea1638b33f1f42ec31571a790a598"
+    },
+    {
+      "path": "data/poi/full/features/batch-0005.jsonl",
+      "sha256": "28119351a8fdbacb463c5b234dc1020bd1e287de3cd3aaf7424fbe9c591d3863"
+    },
+    {
+      "path": "data/poi/full/features/batch-0006.jsonl",
+      "sha256": "a55ca93c3b330171ad126cf3135edb5163700f86f448f2a1d75035310947b102"
+    },
+    {
+      "path": "data/poi/full/features/batch-0007.jsonl",
+      "sha256": "6344ad0ef5bf253c7d92344c87c610bb7b93cd8857e83f52c465295086eda5d3"
+    },
+    {
+      "path": "data/poi/full/features/batch-0008.jsonl",
+      "sha256": "0fec2e1a51c70dfbbc216446c5683cc09c25bb14f83b13fdedc692de35b9e5ad"
+    },
+    {
+      "path": "data/poi/full/features/batch-0009.jsonl",
+      "sha256": "b6ed89847a749348cf7ef94ad1281014157feb964bdece38b5085699df5f0555"
+    },
+    {
+      "path": "data/poi/full/features/batch-0010.jsonl",
+      "sha256": "7130d649e27d11c8d6525a196d70155c43cc43e19a2148343bb00f935880c67b"
+    },
+    {
+      "path": "data/poi/full/features/batch-0011.jsonl",
+      "sha256": "5b61f49718121c4ad82472ed49dabf39d082ae1aa604ed75176e331193cc0e62"
+    },
+    {
+      "path": "data/poi/full/features/batch-0012.jsonl",
+      "sha256": "5533e09cf6dbe92b6895ab8ed39ea2508d1b278a84782eba2f135275489c0bea"
+    },
+    {
+      "path": "data/poi/full/features/batch-0013.jsonl",
+      "sha256": "0ff9a77b422b913b4bb27a1f1d6523e2266b6c1ac1d281659b5031e698059793"
+    },
+    {
+      "path": "data/poi/full/features/batch-0014.jsonl",
+      "sha256": "86a499e5f09ef517deea5f49c03f600ad0c53224a1381e0463fad11f043464d8"
+    },
+    {
+      "path": "data/poi/full/features/batch-0015.jsonl",
+      "sha256": "03864d825074e2f838f8b7aafaab4a004fb89bae7e12d4b06a3c0e2e4fc67106"
+    },
+    {
+      "path": "data/poi/full/features/batch-0016.jsonl",
+      "sha256": "bfa8809d193013611ffd9b66c46f2537ae154deed99976b02d2f68ba94bc8f15"
+    },
+    {
+      "path": "data/poi/full/features/batch-0017.jsonl",
+      "sha256": "8e34e9b7f7802885d39f5ccb544a46806c0ab2bc9a2e76718160a07f87571a2a"
+    },
+    {
+      "path": "data/poi/full/features/batch-0018.jsonl",
+      "sha256": "a08da6312675acff8c4a35a08290333c0a3fa4027995ab6cc2e7235c6de46d39"
+    },
+    {
+      "path": "data/poi/full/features/batch-0019.jsonl",
+      "sha256": "1a0846bf669ee1b38f94b92a19b493ed20eb49a5959a19a0d69e1d7fab004cac"
+    },
+    {
+      "path": "data/poi/full/features/batch-0020.jsonl",
+      "sha256": "689c2b5b1e834b3ce7593b313d19fcf7550320d779b63814f3353d92f695ec03"
+    },
+    {
+      "path": "data/poi/full/features/batch-0021.jsonl",
+      "sha256": "9421b089a9c07a976644f27fb9e7f2d3b08f0d773ed9c1a88835a58a97f87f20"
+    },
+    {
+      "path": "data/poi/full/features/batch-0022.jsonl",
+      "sha256": "b6feac12c793e48cb0f3e29eeb7b65d9be539aa0f0b0b0eb3e4b99bfe33a0a67"
+    },
+    {
+      "path": "data/poi/full/features/batch-0023.jsonl",
+      "sha256": "4591e32fa4358cdd8307d3b82002e8aa26e4bd1d3cbea7c5d4ad29d2a2663f25"
+    },
+    {
+      "path": "data/poi/full/features/batch-0024.jsonl",
+      "sha256": "bca3bfd78aca5e660b208223a3333efe33496a9037aac80d0b1b3b03e202dedd"
+    },
+    {
+      "path": "data/poi/full/features/batch-0025.jsonl",
+      "sha256": "a1f90bac393ba92f0b062e19eaf9088e5bf0871e335c829c34207ef7a9a6583f"
+    },
+    {
+      "path": "data/poi/full/features/batch-0026.jsonl",
+      "sha256": "1160f16e41a29719b92d82e1df6999ec1db635d3fbd7881d79d689d99d78530f"
+    },
+    {
+      "path": "data/poi/full/features/batch-0027.jsonl",
+      "sha256": "e58d2a0b8021031261da2aa6c831f43ed43b97e0ad089f61e096c96b8b2efa4a"
+    },
+    {
+      "path": "data/poi/full/features/batch-0028.jsonl",
+      "sha256": "2f00c8885b534f2cd9c65f965bbb246229ec50b43b524dab208922db86723d38"
+    },
+    {
+      "path": "data/poi/full/features/batch-0029.jsonl",
+      "sha256": "f548d9039281a3c019f02723de699e8bd7046df585c781790bf8268d27a992e1"
+    },
+    {
+      "path": "data/poi/full/features/batch-0030.jsonl",
+      "sha256": "fc68f059c15be4b5e41c9e36f5ee67e49826888e81a3d135543783cb8f6ef57d"
+    },
+    {
+      "path": "data/poi/full/features/batch-0031.jsonl",
+      "sha256": "cfe730fdaab41220c87e0fc0543f58c100c30efec549af11d85272ba0d9c1d09"
+    },
+    {
+      "path": "data/poi/full/features/batch-0032.jsonl",
+      "sha256": "b32f49fd49e88df0db9eb6ad4ff9e85796b46ba41c9ba35141e9970f3fd44f28"
+    },
+    {
+      "path": "data/poi/full/features/batch-0033.jsonl",
+      "sha256": "d331fa4fb6b6f30d1512a6617bffb5c3c6da57aa39b415f1e3c59b349d351294"
+    },
+    {
+      "path": "data/poi/full/features/batch-0034.jsonl",
+      "sha256": "9ba7112d288cfc6e6aeb0a1f81178e18e856e8b7a5070f4f0b9bcb261f24c2f3"
+    },
+    {
+      "path": "data/poi/full/features/batch-0035.jsonl",
+      "sha256": "b222d58908db540fb75ef41c9bb5e849b7e325b01ab74ef7ad7539ddb801077f"
+    },
+    {
+      "path": "data/poi/full/features/batch-0036.jsonl",
+      "sha256": "2070cf9802efe44591892c8f633b84a6c736806a3f1f6562030719e99f3b50a3"
+    },
+    {
+      "path": "data/poi/full/features/batch-0037.jsonl",
+      "sha256": "b1b86ac2af4c3a66d7a431b73f73c9069bb3176b23b9a4c294ad74b854273334"
+    },
+    {
+      "path": "data/poi/full/features/batch-0038.jsonl",
+      "sha256": "036850469c4eb117ca667c16b77768910beed6d567c6c14ce3b2206efc7a0a3b"
+    },
+    {
+      "path": "data/poi/full/features/batch-0039.jsonl",
+      "sha256": "06890a3574728111b796d78aea001d3a3d09d5fa43af550ee4b74d0e1e4145b1"
+    },
+    {
+      "path": "data/poi/full/features/batch-0040.jsonl",
+      "sha256": "1a8f97c9a3a11426784d2ff267e948be20735268248a74f6bcf3a12db4758723"
+    },
+    {
+      "path": "data/poi/full/features/batch-0041.jsonl",
+      "sha256": "8b40ec242c41e4fb12f43beb2c0d7c3e1678c0fe9dd44745f20b27cc1a43e9bd"
+    },
+    {
+      "path": "data/poi/full/features/batch-0042.jsonl",
+      "sha256": "851b0f61d1c10e3467d6d8b28f825c5466e1d6d0997d30fb9866b2ff33672f49"
+    },
+    {
+      "path": "data/poi/full/features/batch-0043.jsonl",
+      "sha256": "1884e347a4c99da5e3aba3389b767471c584eff41dcfe42c7c0f2ffa3ca47a70"
+    },
+    {
+      "path": "data/poi/full/features/batch-0044.jsonl",
+      "sha256": "93439525b57ec60506e22e440e62a42fa895f2ecafd7097003a0d2135acf64dd"
+    },
+    {
+      "path": "data/poi/full/features/batch-0045.jsonl",
+      "sha256": "0b3ffdc2f15ef12dcac61b5ba51a7a258d5acf7e08206c0827883d785e632ff3"
+    },
+    {
+      "path": "data/poi/full/features/batch-0046.jsonl",
+      "sha256": "1575a7052da7eeb0f41ed8b3ff1d95b8e148c56661eae8366600737cd5e28ebc"
+    },
+    {
+      "path": "data/poi/full/features/batch-0047.jsonl",
+      "sha256": "06c5cee245e4d2f390c9d6fb5aa9b01e720415e34d3bfab1aecc410651263ed9"
+    },
+    {
+      "path": "data/poi/full/features/batch-0048.jsonl",
+      "sha256": "2e7a0587e78b8aa8021583e6ec1c210181b9b3ff49afb1e0e0756b0ddd68a173"
+    },
+    {
+      "path": "data/poi/full/features/batch-0049.jsonl",
+      "sha256": "72b90fce1df15c5dfd2cc6a10e7331ae4ed46de7768aed3c725d4910f53cf484"
+    },
+    {
+      "path": "data/poi/full/features/batch-0050.jsonl",
+      "sha256": "c95150d7e1bf4754ffa28e703917a1f724af6cf08e56c9752f4d3f7d18f04e84"
+    },
+    {
+      "path": "data/poi/full/features/batch-0051.jsonl",
+      "sha256": "7a4a4cdb7e423d48a6069f4cf5f790fb909f1da29c1227900271591bd2a5f213"
+    },
+    {
+      "path": "data/poi/full/features/batch-0052.jsonl",
+      "sha256": "4937a15a0c10e043350b042b367c7ca7636ea719b485b2b209a43c6df209276c"
+    }
+  ],
+  "protectedPreviousScoredCandidates": 272,
+  "delta": {
+    "path": "data/poi/full/reviews/remaining-v1/feature-delta.jsonl",
+    "sha256": "0576c1254fb01cfc247915a2d97a0580707c5fc5fe132721468cbb3532a01626"
+  },
+  "anchors": {
+    "path": "data/poi/full/reviews/remaining-v1/anchors.jsonl",
+    "sha256": "860383b324567b6e1f980b0609d758dcc71ca3079ea5a44aaef611f5088ced59"
+  },
+  "editorialLedger": {
+    "path": "data/poi/full/sources/remaining-v1/editorial.json",
+    "sha256": "b31ce71bb82b6f3d29d0344347d16feac363f55e4233e55dd8c651d991b461bb"
+  },
+  "pendingBatches": [
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0001.jsonl",
+      "sha256": "3017d2c8dde594533a9b7618b46552713cec7111e2ac18022210a6451b91b96f"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0002.jsonl",
+      "sha256": "80a8c200b28475cae4079c4da404c8c9b20635b6e5e3834d4b110423fc26f2dc"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0003.jsonl",
+      "sha256": "fc6df09394d7894f9270e2c0fc1f601ab4f0be3f6909068574d607d4319ead42"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0004.jsonl",
+      "sha256": "c7895626c99ab42fa2d10a73f371d4fd8740f4e811b87f85610f02e4e0f19f98"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0005.jsonl",
+      "sha256": "3a5b1f938b745a66776097d65aa27e2e2b737f7f9d68264591964c122d1c1ae1"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0006.jsonl",
+      "sha256": "74464d717e71b211aece97b380aca95ea5e0cc913959cbd215e468024f685a15"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0007.jsonl",
+      "sha256": "f42b235701be46baaf5c93e73207804df6822ae481295b2f6292e2d74d8f7287"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0008.jsonl",
+      "sha256": "bc73060b77f21e4a74b2e319db7fe6d4c07b1d9422f60c4ab17e7b27facccaa2"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0009.jsonl",
+      "sha256": "62696730fd19ba713e9939195619dffd7574a5f6b6eb2ecb299953c44e3194ac"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0010.jsonl",
+      "sha256": "f843bb5631bff2abdd0fe170afe6d75a64b17892038f5df834e44d7ef5d8c7ea"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0011.jsonl",
+      "sha256": "5d443ee5f21b04ea63c8806cad690f595cc085f1bd907c7fa22692325b4fa0c9"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0012.jsonl",
+      "sha256": "395925a9b32323b2065fedddb7cfdeb8fc5e75c06f8ff25264a50a3efaa7bace"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0013.jsonl",
+      "sha256": "7e960c323019a603ce6b8742892dbdd868cf1e538994d368a93e615daee2af79"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0014.jsonl",
+      "sha256": "2259da5c154c8a45ba6454370ae4ac4e91bb370bda85a4a34934b617053a1d17"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0015.jsonl",
+      "sha256": "2c2ffb1866e3b934a5a9051c26d23a60232c8b1207a7d516dedbfeb45cad1d7d"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0016.jsonl",
+      "sha256": "361b9f8404be6a2ba280122d334caf5b68c949044b5c7d607987715660e73a91"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0017.jsonl",
+      "sha256": "10cd3eaa6c6ab7d7c4c3bb236ea4bb66c4f956e0d5e1fc9808cfccecba8fd751"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0018.jsonl",
+      "sha256": "6e7936427bea2cd95f48ab4e4aafc186bf81158e31f63c9efa48e6c0c9542c1a"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0019.jsonl",
+      "sha256": "7d88f4bd9696a80401c4deb454b2fb204beead44f3df411ac9b3642242473a52"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0020.jsonl",
+      "sha256": "ce57881827b07e77a9442d430e2228d95586d773d7add73167394e3fc0ebd8df"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0021.jsonl",
+      "sha256": "03d293232a6bbce2877817da04062133518e62f056956cbaeceeba8346cf916a"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0022.jsonl",
+      "sha256": "ad817ff53b93e394637a08cbdd105e40eb4beaf89db6e4780f89ea785816bdcf"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0023.jsonl",
+      "sha256": "f91311fa7cb9eeeb4b06d202e705dbf59eeabb12fa1407f07a9c1828863dba4c"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0024.jsonl",
+      "sha256": "6604074ce163c51fe6903a725161b3c29674217035060bd20558a1b51619f7c4"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0025.jsonl",
+      "sha256": "86d44c98c61ec8dbe37764e64e70cce395b0cb902a2879963b932ce2e02e56cb"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0026.jsonl",
+      "sha256": "fc44fb92459b240b7ce8d235ed9cb3b367ed3f264e995852fb82471076b1270e"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0027.jsonl",
+      "sha256": "09bc2eabc958449e2028b5581d73d0498b774f31dd2c368276bd63c135ca4674"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0028.jsonl",
+      "sha256": "fe59637d2e9a9cc091754481ae712009f3480299009e4b7c4cfab5364aa808b1"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0029.jsonl",
+      "sha256": "7054a5daad46ced31d92e45ae889a7e3a9a8ecfdd479967476fe7d69d8b57f04"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0030.jsonl",
+      "sha256": "236df495be4b41559c8c981f7af7016311e186acf172e2eda2e2d7de9873dbc7"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0031.jsonl",
+      "sha256": "de3acecfe3e566b373160a953ac125183651f9c67e8250ec3e9669d269c5326b"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0032.jsonl",
+      "sha256": "37f87a587188b38d4109d4b22f4127f4e7312fc3e2873b654004709125bf920f"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0033.jsonl",
+      "sha256": "29ba5e1d649f77ceb7a9b2f0d44d2f30fac4ce58d29c1eb11950f12c019cefa1"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0034.jsonl",
+      "sha256": "ec635ea78ab67710df54e01441ed7342d6ce8af8f7c096bec0ecd5b71c1a5fa4"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0035.jsonl",
+      "sha256": "8ac3f814eb752b92b919c6ddc59b1f5170cca4f7d2c45b943875340707e46cc4"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0036.jsonl",
+      "sha256": "5e4de9953af19bc32728c560ef567a27ee9eb6a73f9eaeb466b7295876e276b2"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0037.jsonl",
+      "sha256": "664a636d94475f42547093192d7f9b9a9b776f5c4d6b7c84673225a247a540eb"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0038.jsonl",
+      "sha256": "b8df8589fef05cd6bcd4ab07aa56e511634ef40cf1d2c91efee1d04b7928927c"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0039.jsonl",
+      "sha256": "b2eb568c7725dce78f8f2f3b050c8921576b2bcdf9029b22dd494732f5d0d8a2"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0040.jsonl",
+      "sha256": "a7c184b3c7b6c71d7a9a1b10c8ae913c9cb287fc5f1a809f9164a0a914f3de55"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0041.jsonl",
+      "sha256": "3dfdb2ae566162d2d107e1daea156b5dc63eb8e7b7ccdfa50ce8112c907805b4"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0042.jsonl",
+      "sha256": "884d98ffee0f3e991b99e028c506ccbe5662d3bef0cc91ec2b6fedad1b508400"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0043.jsonl",
+      "sha256": "c2d5e9da9696c7a5aa9aa458dbc000523813216367a9c9a2f9ae13244f3f7671"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0044.jsonl",
+      "sha256": "b19ba2e85d109c09bf3033c65f6047e719e73ddf129b68cf18d7a3b4faaae5b9"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0045.jsonl",
+      "sha256": "ad5ff5117afeb053eb25d1e3052536d3a17573f25fc31255a6ebf23c486eb1eb"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0046.jsonl",
+      "sha256": "a1c7dbabe6bab9bd85f2abb4df74e9b58e7585a73417245d72019f8e7fae35a3"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0047.jsonl",
+      "sha256": "45469b1e3a0bd078a177d363cf606a5c605b8024bbef13d912c829cd3da2a6bd"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0048.jsonl",
+      "sha256": "eefb3ce37d9f340e665a3530172b05b9ff5a3f9d28b117e284860ecb536b09fc"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0049.jsonl",
+      "sha256": "964aaad205e0892d2dda7a952a2aec5bf1f3071922f0cfbb1d0d5aa9cae77c82"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0050.jsonl",
+      "sha256": "1429eac53c89c98711c137260792c9065ebabc16c11c1ead36eebd7551f87a93"
+    },
+    {
+      "path": "data/poi/full/reviews/remaining-v1/pending/R-0051.jsonl",
+      "sha256": "25a6b4836dd4235705144b4d0aa699676719f5fb06a60d6a2b2167380d850ab9"
+    }
+  ],
+  "registrySha256": "9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2",
+  "runtimeImportAuthorized": false
+}

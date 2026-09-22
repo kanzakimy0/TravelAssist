@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R04-005",
+  "sourceRef": "task-075-v23-canary-source:27a6e4614d3da6d988b93c38",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/27a6e4614d3da6d988b93c38b987a916388342185f0d104d016c95fd53ae61cd.txt",
+    "locator": {
+      "offset": 0,
+      "length": 8739,
+      "locatorSha256": "27a6e4614d3da6d988b93c38b987a916388342185f0d104d016c95fd53ae61cd",
+      "contentSha256": "27a6e4614d3da6d988b93c38b987a916388342185f0d104d016c95fd53ae61cd"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "04",
+      "sourceFact": "otherwise pose a disturbance to other visitors. ・Please take any garbage away with you. When viewing the artworks ・Please do not touch the artworks themselves. ・Please do not take photographs, videos, or make sketches in the museum. Visitors are also requested not to use fountain pens, ink, etc. About using drone ・It's strictly prohibited to operate Unmanned Aircrafts (UAs) /Drone in Benesse Art Site Naoshima premises without our prior permi",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "08",
+      "sourceFact": "14, she received the JIA New Architect Award from the Japan Institute of Architects for her architectural work on the Teshima Yokoo House. http://www.yukonagayama.co.jp Programs A Night Tour in Teshima Yokoo House This special tour offers a unique experience, different from the daytime, such as the vividly colorful garden illuminated in the darkness, the reflection of paintings on the glass, and the deepening shade of red glass as the sun se",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped night viewing or illumination; the frozen rubric maps that fact to night."
+    },
+    {
+      "featureCode": "09",
+      "sourceFact": "suitcases, umbrellas, tripods, etc.) into the museum. These should be left at the Ticket Center. ・Pets may not be taken into the museum. ・Visitors may not enter the museum wearing bathing suits. ・Smoking is prohibited on the museum premises. ・Other than in the cafe, visitors may not eat (including candy, gum, boxed lunches, etc.) or drink on the museum premises. ・ Visitors may be refused entry if they appear intoxicated or otherwise pose a ",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped bathing or hot-spring use; the frozen rubric maps that fact to onsen."
+    }
+  ],
+  "featureCodeCandidates": [
+    "04",
+    "08",
+    "09"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "08",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped night viewing or illumination; the frozen rubric maps that fact to night."
+    },
+    {
+      "featureCode": "09",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped bathing or hot-spring use; the frozen rubric maps that fact to onsen."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "08",
+      "value": 7
+    },
+    {
+      "featureCode": "09",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

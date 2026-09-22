@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R03-010",
+  "sourceRef": "task-075-v23-canary-source:6a1e4bbc1e8385a251f3ca0a",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/6a1e4bbc1e8385a251f3ca0af6668f9b1b21ffb10bac18dc9f7f522464367b7a.txt",
+    "locator": {
+      "offset": 0,
+      "length": 5166,
+      "locatorSha256": "6a1e4bbc1e8385a251f3ca0af6668f9b1b21ffb10bac18dc9f7f522464367b7a",
+      "contentSha256": "6a1e4bbc1e8385a251f3ca0af6668f9b1b21ffb10bac18dc9f7f522464367b7a"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": "櫻木神社 平安時代から続く歴史を重ね、美しい桜が印象的な神社 野田市最古の社である櫻木神社には、境内に多くの桜が植えられおり、ご神木「縁結びの桜」があります。「パートナーとの出会い」だけでなく、友人や家族・子宝など多くの人との出会いによるさまざまな「縁」。そんな縁を求める人々から、今も多くの崇敬をあつめている神社です。 神徳を称え、感謝を捧げる例大祭は年に1度、毎年4月17日に執り行われます。コンサートやイベント等が行われ、桜の宮まんじゅうもこの日に限り頒布されるため多くの参拝客で賑わいます。3月には「さくらの日まいり」、夏季には「みそぎ祭」や",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "sourceFact": "s://maruchiba.jp/course/detail_90.html 基本情報 住所 千葉県野田市桜台210 電話番号 04-7121-0001 アクセス（鉄道） 東武野田線（アーバンパークライン）野田市駅から徒歩約10分 駐車場（乗用車／台数） 300台 駐車場（大型バス／台数） 10台 駐車場（有料／無料） 無料 関連リンク ラブちばに投稿された写真を見る 櫻木神社 ※施設情報が変更される場合があります。最新情報は各公式サイト等をご確認ください。 レジャースポット ミュージアム・歴史・文化 体験・見学 景色・展望・ロケ地 ショッピング・道の駅・直売所 グルメ イベント 電気自動車(EV)充電設備 現在地周辺を探す 検索 全画面表示 周辺スポットを表示する Googleマップを開く おすすめ特集報 春 夏 秋 冬 春に読みたい！おすすめ特集 京成バラ園の魅力を徹底解説！開花時期やアクセス情報も紹介しています https://maruchiba.jp/featur",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "05",
+      "sourceFact": " 雪印メグミルク野田工場 https://maruchiba.jp/spot/detail_12503.html 季節の花「秋バラ」／清水公園 https://maruchiba.jp/spot/detail_10805.html 清水公園 https://maruchiba.jp/spot/detail_10004.html 周辺にあるグルメスポット 中華料理 正楽園 https://maruchiba.jp/gourmet/spot/detail_12564.html ホワイト餃子 野田本店 https://maruchiba.jp/gourmet/spot/detail_11121.html 日本料理 しみずや https://maruchiba.jp/gourmet/spot/detail_12565.html セミナトーレ https://maruchiba.jp/gourmet/spot/detail_11085.html このスポット周辺の宿を予約する 周辺",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "04",
+    "05"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "05",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "05",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}
