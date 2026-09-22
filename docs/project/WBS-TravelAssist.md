@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## FINAL Architecture WBS 状态同步（2026-09-22）
+
+- WBS 4.19 = **A / 待审查**：原 TASK-069-A / PR #406 已完成 Save/Read 接线；TASK-073-A / Issue #412 已修复 visual fallback coordinates 可能回写 Canonical 的数据完整性问题。代码、focused tests、lint/typecheck/build/deployment artifact 均通过；真实 Local Supabase Auth/HTTP/RLS/CAS 复验因本机 Docker Desktop Linux engine 不可用而保持 **Blocked**，因此不得标记已完成或合并。
+- WBS 7.4 = **A / 待审查**：TASK-050-A / Issue #399 已实现 Canonical POI v1、严格 parser/validator、Candidate Admission 14 gates 与 Canonical → Planning Projection adapter；相关 Planning/Route/Region/Master Code 测试 123 项通过。等待 Codex 外 Git 收口、Draft PR 与人工架构/Contract 验收。
+- WBS 9.10 = **A / 待审查**：复用现有 PR #231 / TASK-071-A。既有 final head 的 Security tests、tracked/history scan、boundary、canary bundle 与 hosted gates 已通过；因当前 develop 又增加新文档/架构内容，合并 latest develop 后必须完整重扫，禁止创建第二套 Security implementation。
+- WBS 9.11 = **A / 进行中**：复用现有 PR #245 / TASK-072-A。旧 Observability/Performance 实现与历史证据保留，但当前 branch 落后 develop 398 commits，必须按 #405 执行 Full Refresh 后才能重新进入待审查。
+- 上述同步只纠正 Master WBS 当前状态；不代表 PR 已合并，不关闭 Issue，不启动新的下游 WBS。
+
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
 - 用户明确验收 TASK-063-B，授权合并 PR #382，并在合并后将 4.22 更新为 B / 已完成及关闭 Issue #380。
@@ -867,7 +875,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 已完成（#215 / #216；负责人批准的 v1.0 公开契约基线） |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
-| 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
+| 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 待审查（#403 / #412；PR #406；TASK-073-A 修复完成，Local Supabase runtime 因 Docker 阻塞） |
 
 ### 4A. 已有 Planner / Detail UI 及本地补修登记
 
@@ -977,7 +985,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
-| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 未开始 |
+| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 待审查（#399 / TASK-050-A；实现与 Contract/测试通过，等待 Draft PR 与人工架构验收） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
@@ -1034,8 +1042,8 @@ TASK-023-A tracking (2026-09-09):
 | 9.7    | 跨模块 E2E：偏好→Planner                | A+B    | P0     | 4.18,5.14       | 未开始 |
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
-| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
-| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
+| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（#404 / TASK-071-A；PR #231；既有安全门通过，需 latest-develop 合并后完整重扫） |
+| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 进行中（#405 / TASK-072-A；复用 PR #245，需 latest-develop Full Refresh） |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 | 9.13   | Planning Contract Soak / Fuzz / Consistency QA | A | P0 | 4.47 / TASK-036 review-fix semantics | 已完成（TASK-037-A 用户验收授权合并；#298；未开始真实 100 POI Pilot） |
 
