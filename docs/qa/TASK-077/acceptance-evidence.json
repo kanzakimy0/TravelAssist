@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-077-A",
+  "issue": 419,
+  "date": "2026-09-22",
+  "baseDevelopSha": "f08daa9f8aa9b459fbd294f08e4bd29e16624647",
+  "branch": "codex/a-ai-conversation-orchestrator",
+  "runtimeWorkspace": "K:\\CodexWork\\TravelAssist\\TASK-077-A-runtime-20260922",
+  "gates": {
+    "npmCi": "PASS",
+    "focused": { "status": "PASS", "passed": 8, "failed": 0 },
+    "task076Regression": { "status": "PASS", "passed": 14, "failed": 0 },
+    "preferenceSchema": { "status": "PASS", "passed": 503, "failed": 0 },
+    "preferenceReadContract": { "status": "PASS", "passed": 540, "failed": 0 },
+    "preferenceApi": { "status": "PASS", "passed": 37, "failed": 0 },
+    "planningContract": { "status": "PASS", "passed": 21, "failed": 0 },
+    "homeAiUi": { "status": "PASS", "passed": 17, "failed": 0 },
+    "truthfulStateUi": { "status": "PASS", "passed": 37, "failed": 0 },
+    "task077ClientBoundary": { "status": "PASS", "passed": 2, "failed": 0 },
+    "productionBundleLeakage": { "status": "PASS", "chunks": 34 },
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "productionBuild": "PASS"
+  },
+  "liveProviderSmoke": {
+    "status": "DEFERRED",
+    "reason": "OPENAI_API_KEY and OPENAI_MODEL absent"
+  },
+  "toolAvailability": {
+    "user.preference.get": "available",
+    "trip.summary.get": "unavailable_no_safe_summary_boundary",
+    "planning.context.get": "unavailable_no_request_scope"
+  },
+  "scope": {
+    "readOnlyToolsOnly": true,
+    "durableHistory": false,
+    "databaseMigration": false,
+    "task078Started": false,
+    "task079Started": false
+  }
+}

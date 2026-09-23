@@ -1014,10 +1014,10 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 部分完成（#421 / TASK-079-A 已发布；等待 7.4/7.9/#372/Planner Solver Gate） |
 | 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 部分完成（#420 / TASK-078-A 已发布；等待 AI Conversation + Save/Read/Engine Gate） |
 | 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 部分完成（#421 / TASK-079-A；等待确定性 Ranking/Reason Evidence runtime） |
-| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 进行中（#419 / TASK-077-A；在已合并 server fallback 基础上接 streaming/UI degradation） |
+| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 待审查（#419 / TASK-077-A；Loading / Streaming / Tool / Error / Stop 降级状态与安全恢复已实现并通过本地 Gate，待 Draft PR 合并验收） |
 | 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（TASK-076-A usage/token/latency boundary 已合并；生产 exporter 继续由 WBS 9.11 管理） |
 | 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（#421 / TASK-079-A 已发布；等待 Planner/POI/Ranking Gate） |
-| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
+| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 部分完成（#419 / TASK-077-A 基础 Conversation / Orchestrator / 只读 Tool / Streaming UI 已实现并待审查；修改确认与成功反馈仍由 #420 / TASK-078-A 承担） |
 | 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
 
 ## 7. 地图、地点、路线与推荐（A 全责）

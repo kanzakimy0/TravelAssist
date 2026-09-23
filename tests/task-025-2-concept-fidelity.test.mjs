@@ -444,7 +444,7 @@ test("TASK-033-B: AI entry forwards native keyboard/button semantics and its con
   }
 });
 
-test("TASK-033-B: actual panel labels its region and textarea and explicitly disables non-live Send", () => {
+test("TASK-033-B/TASK-077: actual panel labels its region and live conversation composer", () => {
   const { AIConversationPanel } = load(
     "src/features/home/components/ai-conversation-panel.tsx",
   );
@@ -460,13 +460,12 @@ test("TASK-033-B: actual panel labels its region and textarea and explicitly dis
   assert.match(html, /id="task033-panel-title"/);
   assert.match(html, /<label[^>]+for="task033-panel-input"/);
   assert.match(html, /<textarea[^>]+id="task033-panel-input"/);
-  assert.match(
-    html,
-    /<button[^>]+aria-label="发送（AI 服务尚未接入）"[^>]+disabled=""/,
-  );
-  assert.match(html, /AI 服务尚未接入/);
+  assert.match(html, /<button[^>]+aria-label="发送给 AI"[^>]+disabled=""/);
+  assert.match(html, /可以询问日本旅行与行程规划问题/);
   assert.equal((html.match(/<textarea\b/g) || []).length, 1);
-  assert.doesNotMatch(html, /<form|action=|aria-live=|正在生成|生成完成/);
+  assert.match(html, /<form/);
+  assert.match(html, /aria-live="polite"/);
+  assert.doesNotMatch(html, /action=|正在生成|生成完成/);
 });
 
 test("TASK-033-B: panel close delegates to the supplied handler and preserves its focus ref", () => {

@@ -82,11 +82,17 @@ test("fake provider produces a normalized deterministic runtime response", async
 
 test("prompt registry uses immutable versioned checksums and fails closed", () => {
   const prompts = listRegisteredPrompts();
-  assert.equal(prompts.length, 1);
+  assert.equal(prompts.length, 2);
   assert.equal(Object.isFrozen(prompts), true);
-  assert.equal(Object.isFrozen(prompts[0]), true);
-  assert.equal(verifyPromptChecksum(prompts[0]), true);
-  assert.match(prompts[0].checksum, /^sha256:[a-f0-9]{64}$/);
+  for (const prompt of prompts) {
+    assert.equal(Object.isFrozen(prompt), true);
+    assert.equal(verifyPromptChecksum(prompt), true);
+    assert.match(prompt.checksum, /^sha256:[a-f0-9]{64}$/);
+  }
+  assert.equal(
+    resolvePrompt("travel_assistant_conversation", "1.0.0").purpose,
+    "bounded_read_only_conversation",
+  );
   assert.throws(
     () => resolvePrompt("travel_assistant_foundation", "99.0.0"),
     (error) => error.code === "AI_RUNTIME_INVALID_REQUEST",
