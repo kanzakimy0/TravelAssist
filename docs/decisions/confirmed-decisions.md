@@ -117,6 +117,10 @@
 - [已确认] 大范围候选搜索优先依赖 TravelAssist 自有 Region Graph / TravelEdge Prior；Google Routes 只对缩小后的候选、用户变更或需要实时事实的场景按需调用。
 - [已确认] 不以长期缓存 Google Maps Content 作为成本控制手段；缓存 / 持久化必须遵守 Provider Policy 与 Google 条款。
 - [已确认] 不使用 Google Maps Content 生成 TravelAssist 43维 Feature、TravelEdge Prior 或 AI 训练 / 测试 / 微调数据。
+- [已确认] Route Policy Router 采用 L0 / L1 / L2：L0=空间/区域判断，L1=TravelAssist 自有 Route Prior，L2=Google Routes Runtime Fact。
+- [已确认] 关键词与 GPT-6 Luna 的 Intent 只作为 Route Router 信号，最终是否调用 Google 由确定性规则、Fact Freshness、DecisionUse 与 Budget Policy 决定。
+- [已确认] 同一 Planning Run 可做短生命周期 Request Coalescing / Dedup；不得将其演变为 Google Routes 的永久共享缓存。
+- [已确认] 80–95% 的“规划阶段 Route Decision 不调用 Google”作为 Pilot 优化目标，而非牺牲正确性的硬验收门槛。
 
 详细规格：`docs/architecture/map-routing-poi-ai-provider-policy-v1.md`.
 

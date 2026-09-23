@@ -403,6 +403,9 @@ Preference 至少需要区分：
 - POI 图片 / 静态资产默认使用 **Cloudflare R2**，仅保存自有、授权或许可证允许长期保存的素材。
 - 默认 AI Runtime 为 **GPT-6 Luna**；仍必须经 AI Gateway / Model Router，具体 Model ID 与价格放配置层，不写死在领域 Schema。
 - Google Routes 用于少量最终候选的真实路线验证与展示；大规模候选筛选先使用 TravelAssist 自有 Region Graph / TravelEdge Prior，禁止对全量 POI 暴力调用 Route API。
+- 正式采用 Route Policy Router：L0 空间/区域、L1 自有 Route Prior、L2 Google Routes；关键词 / GPT-6 Luna Intent 不能直接绕过 Router 调用 Provider。
+- 同一 Planning Run 允许在 Provider 条款许可范围内进行短生命周期请求去重；Google Runtime Result 不进入永久 TravelEdge Prior。
+- Pilot 以 80–95% 规划阶段 Route Decision 不需要 Google Routes 为成本优化目标，但真实路线正确性优先。
 - Google Maps Content 的缓存、持久化、再展示必须遵守 Provider Policy；不得为了省 API 费用违规长期缓存，也不得由 Google Content 生产 43维、TravelEdge Prior 或 AI 训练 / 评估数据。
 - Transit 多节点行程按 Leg 计算；Google Transit 不支持中间 Waypoint 时不得把多 Leg 错误合并成一条请求。
 - Provider 不可用时可降级为 TravelAssist 自有 Prior 的“规划级估算”，但不得冒充当前真实 Route Fact。

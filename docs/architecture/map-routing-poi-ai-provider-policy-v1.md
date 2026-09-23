@@ -169,6 +169,8 @@ TravelAssist 的长期路线先验必须来自 **自有计算、允许长期保�
 
 成本控制不靠牺牲数据所有权，也不靠违规缓存。
 
+路线调用必须经过 `route-policy-router-v1.md`。关键词、GPT-6 Luna Intent、Trip 日期、Fact Freshness 和 Budget 只作为 Router 输入；**任何单一关键词或 LLM 输出都不得直接触发 Google Routes**。
+
 ### 地图
 
 - Planner 页面生命周期内只初始化一个 Map Instance；
@@ -302,6 +304,7 @@ Google Routes 不可用、Rate Limited 或预算达到 Hard Cap 时：
 - [ ] POI 坐标来自 TravelAssist Master；
 - [ ] Provider Raw JSON 不泄漏到 Planner / AI / UI 公共 Contract；
 - [ ] Google Routes 归一化为 Canonical Route Contract；
+- [ ] 关键词 / AI Intent 不直接触发 Google Routes，必须经过 Route Policy Router；
 - [ ] Map Instance 不因普通状态更新重复初始化；
 - [ ] Transit 多节点按 Leg 处理；
 - [ ] 必要的 Google attribution / warning 已实现；
@@ -316,6 +319,7 @@ Google Routes 不可用、Rate Limited 或预算达到 Hard Cap 时：
 ## 12. 与既有文档关系
 
 - `route-contract.md`：继续作为 Provider-independent Route Wire Contract。
+- `route-policy-router-v1.md`：冻结 L0 / L1 / L2 路线解析层级、RouteNeedScore、Hard Override、短生命周期去重与 Google Call 决策。
 - `trip-engine-poi-ai-provider-design-v0.3.md`：保留整体 Planning / Provider 设计；其中早期 Mapbox 主 Provider 选择由本文件覆盖。
 - `planning-fact-freshness-policy-v0.1.md`：继续控制 Route Fact freshness / provenance / fallback。
 - `db-orm-migration-standards.md`：继续控制 Supabase PostgreSQL / PostGIS / RLS / Migration。

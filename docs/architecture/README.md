@@ -6,6 +6,7 @@
 
 - `web-architecture.md` — Web 工程边界与后续 App 共用原则
 - `map-routing-poi-ai-provider-policy-v1.md` — **Frozen**；Google Maps 仅地图展示、Google Routes 路线、自建 POI / 43维、GPT-6 Luna 默认、R2 图片与缓存/授权/成本边界
+- `route-policy-router-v1.md` — **Frozen**；L0 空间判断 / L1 自有 Route Prior / L2 Google Routes，关键词+AI Intent+Freshness+Budget 的确定性路由与短生命周期去重
 - `db-orm-migration-standards.md` — Supabase PostgreSQL / Drizzle / Migration / RLS / PostGIS 全局规范
 - `trip-plan-data-ai-takeover.md` — Trip / Plan / Version / ChangeSet / Runtime / Booking / AI 接管与离线同步架构
 - `trip-engine-poi-ai-provider-design-v0.3.md` — Trip Planning Engine / Region Graph / POI / AI Gateway / Provider / Token 优化综合设计候选

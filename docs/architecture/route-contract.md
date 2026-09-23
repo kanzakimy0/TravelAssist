@@ -75,3 +75,5 @@ usable without geometry. TASK-022-A did not wire provider geometry directly into
 Google Routes API is the default primary routing provider, normalized through `RoutingProvider` into Route Contract v1.0. Google Maps Platform is the default map renderer. TravelAssist POI identity and coordinates remain owned by TravelAssist; Google Places is not a core POI source. Existing 駅すぱあと evaluation support may remain as an explicit fallback / evaluation adapter.
 
 This selection does not change the provider-independent wire contract. Caching, persistence, attribution, transit-leg handling, key security, and cost controls follow `map-routing-poi-ai-provider-policy-v1.md`.
+
+Route provider invocation is selected by `route-policy-router-v1.md`. The Route Contract only normalizes a route result; it does not decide whether L0, L1, or L2 should be used and must never invoke Google Routes on its own.
