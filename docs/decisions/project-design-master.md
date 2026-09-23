@@ -1,6 +1,6 @@
 # TravelAssist 项目决策与设计总档
 
-> 状态：项目主档 / 2026-09-04 快照  
+> 状态：项目主档 / 2026-09-24 更新  
 > 用途：把当前项目讨论中已经形成的产品、UI/UX、AI、偏好、开发与协作设计集中保存到 GitHub。  
 > 原则：详细规格以对应专题文档为准；本文件负责总览、状态与追踪。
 
@@ -393,6 +393,22 @@ Preference 至少需要区分：
 
 对应 GitHub Issue 已建立，技术文档放在 `docs/architecture/`。
 
+### 12.1 地图 / 路线 / POI / AI 基础设施基线（2026-09-24 已冻结）
+
+- 地图展示采用 **Google Maps Platform**：Web 使用 Maps JavaScript API；后续 Android / iOS 使用 Google Maps SDK。
+- 路线规划默认采用 **Google Routes API**，并通过既有 Provider Adapter → Canonical Route Contract 接入；领域层不得直接依赖 Google Response。
+- **不使用 Google Places 作为 TravelAssist POI 数据源**；Nearby Search / Text Search / Place Details / Rating / Reviews / Opening Hours / Places Photos 不进入核心 POI 管线。
+- 地图底图自带的 Google POI / Label 只用于呈现，不写入 TravelAssist 数据库、推荐或 43维 Feature。
+- POI Master、经纬度、分类、Region、43维 Feature、推荐数据由 **TravelAssist 自建 Supabase PostgreSQL + PostGIS** 管理。
+- POI 图片 / 静态资产默认使用 **Cloudflare R2**，仅保存自有、授权或许可证允许长期保存的素材。
+- 默认 AI Runtime 为 **GPT-6 Luna**；仍必须经 AI Gateway / Model Router，具体 Model ID 与价格放配置层，不写死在领域 Schema。
+- Google Routes 用于少量最终候选的真实路线验证与展示；大规模候选筛选先使用 TravelAssist 自有 Region Graph / TravelEdge Prior，禁止对全量 POI 暴力调用 Route API。
+- Google Maps Content 的缓存、持久化、再展示必须遵守 Provider Policy；不得为了省 API 费用违规长期缓存，也不得由 Google Content 生产 43维、TravelEdge Prior 或 AI 训练 / 评估数据。
+- Transit 多节点行程按 Leg 计算；Google Transit 不支持中间 Waypoint 时不得把多 Leg 错误合并成一条请求。
+- Provider 不可用时可降级为 TravelAssist 自有 Prior 的“规划级估算”，但不得冒充当前真实 Route Fact。
+
+完整冻结规格：`docs/architecture/map-routing-poi-ai-provider-policy-v1.md`。
+
 ---
 
 ## 13. 视觉语言
@@ -472,12 +488,11 @@ Preference 至少需要区分：
 ### 技术
 
 - Web / App 技术栈。
-- 后端与数据库。
+- 后端扩容、备份、跨区域与灾备策略。
 - 部署平台。
-- 地图与路线数据供应商。
 - 公共交通数据供应商。
-- 酒店、景点、餐饮数据源。
-- AI 模型、Agent / Tool 架构和成本控制。
+- 酒店、餐饮实时数据源与公共交通备用 Provider。
+- AI Agent / Tool 编排、Luna → 高阶模型升级阈值和成本 Hard Cap。
 - 上下文持久化和增量重算策略。
 
 ---

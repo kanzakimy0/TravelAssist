@@ -102,6 +102,26 @@
 
 ---
 
+## 2026-09-24
+
+### 地图 / 路线 / POI / AI Provider
+
+- [已确认] Web 地图展示采用 Google Maps Platform / Maps JavaScript API；后续 Android / iOS 地图展示采用 Google Maps SDK。
+- [已确认] Google API 在核心产品中只承担地图展示与路线规划；Google Places 不作为 TravelAssist POI Master 数据源。
+- [已确认] 路线默认使用 Google Routes API，并通过 Provider Adapter 归一化为既有 Canonical Route Contract。
+- [已确认] Transit 多节点路线按 Leg 计算；不因 API 限制而伪造带中间 Waypoint 的 Transit Route。
+- [已确认] TravelAssist POI Master、坐标、分类、Region、43维 Feature 与推荐数据由自建 Supabase PostgreSQL + PostGIS 持有。
+- [已确认] Google 地图底图中可见的 POI / Label 只用于呈现，不进入 TravelAssist POI、评分、Feature 或推荐数据库。
+- [已确认] 默认 AI Runtime 使用 GPT-6 Luna，但继续经 AI Gateway / Model Router；Model ID、价格与升级阈值属于 Config，不写入领域 Schema。
+- [已确认] POI 图片 / 静态对象存储默认使用 Cloudflare R2，只保存 TravelAssist 自有、授权或许可证允许长期保存的内容。
+- [已确认] 大范围候选搜索优先依赖 TravelAssist 自有 Region Graph / TravelEdge Prior；Google Routes 只对缩小后的候选、用户变更或需要实时事实的场景按需调用。
+- [已确认] 不以长期缓存 Google Maps Content 作为成本控制手段；缓存 / 持久化必须遵守 Provider Policy 与 Google 条款。
+- [已确认] 不使用 Google Maps Content 生成 TravelAssist 43维 Feature、TravelEdge Prior 或 AI 训练 / 测试 / 微调数据。
+
+详细规格：`docs/architecture/map-routing-poi-ai-provider-policy-v1.md`.
+
+---
+
 ## 待确认事项入口
 
 待确认项目不要写入本文件，可查看：
