@@ -5,7 +5,7 @@
 TravelAssist owns the provider-independent contract in
 `src/shared/contracts/routes`. Version `1.0` is the only accepted write
 version. Planner, AI, Engine, and future native clients must consume this
-contract rather than 駅すぱあと, Jorudan, NAVITIME, or Mapbox response types.
+contract rather than Google Routes, 駅すぱあと, Jorudan, NAVITIME, Mapbox, or any other provider response types.
 
 The contract is additive on reads: an adapter maps a future provider mode to
 `other` and preserves only its harmless source mode label. Unknown contract
@@ -61,11 +61,17 @@ text are forbidden from the contract and are rejected by validation.
 replacement normalizes its data to Route Contract v1.0 and requires no Planner
 model change. Provider-specific caching and entitlements stay server-side.
 
-## Geometry and Mapbox gate
+## Geometry and map-renderer gate
 
 The public representation can carry canonical geometry when the provider and
 license permit it. The current 駅すぱあと evaluation adapter returns `null`
 geometry because this endpoint does not supply the approved display geometry
 and mixed display rights have not been confirmed. Textual transit facts remain
-usable without geometry. No adapter route is wired to Planner/Mapbox in
-TASK-022-A.
+usable without geometry. TASK-022-A did not wire provider geometry directly into Planner or a map SDK. The current production-provider selection is governed by `map-routing-poi-ai-provider-policy-v1.md`; provider-specific objects must still never leak into this contract.
+
+
+## Current provider policy (2026-09-24)
+
+Google Routes API is the default primary routing provider, normalized through `RoutingProvider` into Route Contract v1.0. Google Maps Platform is the default map renderer. TravelAssist POI identity and coordinates remain owned by TravelAssist; Google Places is not a core POI source. Existing 駅すぱあと evaluation support may remain as an explicit fallback / evaluation adapter.
+
+This selection does not change the provider-independent wire contract. Caching, persistence, attribution, transit-leg handling, key security, and cost controls follow `map-routing-poi-ai-provider-policy-v1.md`.
