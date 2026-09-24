@@ -1,0 +1,77 @@
+{
+  "failureCases": [
+    {
+      "caseId": "duplicate-candidate-id",
+      "expectedCode": "DUPLICATE_ID",
+      "observedCode": "DUPLICATE_ID",
+      "rejected": true
+    },
+    {
+      "caseId": "stale-run-revision",
+      "expectedCode": "STALE_RUN_REVISION",
+      "observedCode": "STALE_RUN_REVISION",
+      "rejected": true
+    },
+    {
+      "caseId": "hard-rejected-candidate-reintroduced",
+      "expectedCode": "HARD_REJECT_REINTRODUCED",
+      "observedCode": "HARD_REJECT_REINTRODUCED",
+      "rejected": true
+    },
+    {
+      "caseId": "unknown-critical-fact-treated-pass",
+      "expectedCode": "NEEDS_FACT_PROMOTED",
+      "observedCode": "NEEDS_FACT_PROMOTED",
+      "rejected": true
+    },
+    {
+      "caseId": "must-go-dropped-without-hard-reason",
+      "expectedCode": "MUST_GO_SILENTLY_DROPPED",
+      "observedCode": "MUST_GO_SILENTLY_DROPPED",
+      "rejected": true
+    },
+    {
+      "caseId": "invalid-region-ref",
+      "expectedCode": "DANGLING_REGION_REF",
+      "observedCode": "DANGLING_REGION_REF",
+      "rejected": true
+    },
+    {
+      "caseId": "invalid-poi-ref",
+      "expectedCode": "DANGLING_POI_REF",
+      "observedCode": "DANGLING_POI_REF",
+      "rejected": true
+    },
+    {
+      "caseId": "pareto-dominated-improper-survivor",
+      "expectedCode": "PARETO_DOMINATED_SURVIVOR",
+      "observedCode": "PARETO_DOMINATED_SURVIVOR",
+      "rejected": true
+    },
+    {
+      "caseId": "diversity-revives-rejected-candidate",
+      "expectedCode": "PRUNED_CANDIDATE_REINTRODUCED",
+      "observedCode": "PRUNED_CANDIDATE_REINTRODUCED",
+      "rejected": true
+    },
+    {
+      "caseId": "expansion-bound-exceeded",
+      "expectedCode": "EXPANSION_BOUND_EXCEEDED",
+      "observedCode": "EXPANSION_BOUND_EXCEEDED",
+      "rejected": true
+    },
+    {
+      "caseId": "local-candidate-id-leak",
+      "expectedCode": "LOCAL_ID_LEAK",
+      "observedCode": "LOCAL_ID_LEAK",
+      "rejected": true
+    },
+    {
+      "caseId": "dangling-candidate-ref",
+      "expectedCode": "DANGLING_CANDIDATE_REF",
+      "observedCode": "DANGLING_CANDIDATE_REF",
+      "rejected": true
+    }
+  ],
+  "schemaVersion": "1.0"
+}
