@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-050-A",
+  "status": "PASS",
+  "planningProjection": "PoiPlanningProjectionV1",
+  "mapping": {
+    "CanonicalPoiV1.internalId": "PoiPlanningProjectionV1.poiRef",
+    "CanonicalPoiV1.features": "PoiPlanningProjectionV1.featureSet",
+    "CanonicalPoiV1.visitProfiles": "PoiPlanningProjectionV1.visitProfiles",
+    "CanonicalPoiV1.regionRelations[].regionRef": "PoiPlanningProjectionV1.regionRefs[]",
+    "CanonicalPoiV1.facts[].factId": "PoiPlanningProjectionV1.factRefs[]"
+  },
+  "invariants": {
+    "existingPlanningTypeModified": false,
+    "existing43dCodebookModified": false,
+    "existingVisitProfileModified": false,
+    "nullDefaultsIntroduced": false,
+    "projectionDeterministic": true,
+    "projectionValidatedByExistingParser": true
+  }
+}

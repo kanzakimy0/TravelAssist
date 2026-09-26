@@ -1,5 +1,21 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-081-A / WBS 7.7 POI 详情 API（2026-09-27）
+
+- Issue #431；[Draft PR #432](https://github.com/kanzakimy0/TravelAssist/pull/432)；implementation branch `codex/a-task-081-poi-detail-api`；WBS 7.7 = **A / 待审查**。
+- 从 `origin/develop@85f5c62361d93f897423e92232547863d46ab0d1` 启动，正常合入 WBS 7.4 候选 head `875caf9e9130514fa99da95ce11d63fca2bf3b1d`；只实现 `GET /api/pois/[poiRef]` 与严格只读 DTO。
+- Canonical runtime 数据源尚未获准导入；端点默认返回稳定 503。候选清单仍为 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT`，`runtimeImportAuthorized=false`。
+- 详情测试 10/10，全仓 Node 回归 2744/2744，7.4/Planning 合约、lint、typecheck、部署构建和产物校验通过。详情见 [Result](../tasks/RESULT-TASK-081-a-poi-detail-api.md) 与 [QA](../qa/TASK-081/README.md)。
+- PR #417 仍为 Open/Draft，TASK-081 不得在其验收合并前合并；WBS 7.6 / 7.9 不在本 Task 范围内。
+
+## TASK-050-A / WBS 7.4 用户验收完成（2026-09-22）
+
+- Issue #399；Owner A；分支 `codex/a-poi-canonical-schema`；状态：已完成（用户于 2026-09-22 明确验收；PR #417 尚未合并）。
+- 执行基线：`origin/develop@18f15037908d97a954fef2a7e76200cd0f06d450`；实现提交 `c4e81a34`；最新 develop 正常整合提交 `fc4864485756ae5791ad504e94ff379d18dbfe6a`。
+- 已建立唯一 provider-independent `CanonicalPoiV1`、strict validator、Candidate Admission 五态/14 Gate、canonical → `PoiPlanningProjectionV1` adapter，并复用既有 43D、Visit Profile、Planning Fact、Master Code 与 Region Graph。
+- 直接测试与回归 123/123；lint、typecheck、production build 通过；无 DB migration、真实 Provider 调用、B Candidate/Evidence Corpus 修改、Planner UI/评分/Route/Trip Model 修改。
+- 用户已验收 [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417)；PR 仍为 Open/Draft，等待外部人工合并，不自动合并。7.6、7.7、7.9 保持未开始。
+
 ## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
 
 - TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
@@ -33,6 +49,7 @@
 - 正式 Registry 不变；175 个旧码冲突、2,979 个未知旧码继续保留，未知号位不视为空闲。其他 WBS、Owner、Runtime、Provider、DB 和部署状态不变，TASK-069-A / #394 不另起 pipeline。
 - [Result](../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) / [QA](../qa/TASK-068/README.md) / [接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)。正式导入需后续单独验收，不自动 merge 或关闭 Issue。
 - 分支：`codex/b-poi-partition-enrichment-transport-linkage`；base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
+
 
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
@@ -1027,10 +1044,11 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
-| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 待审查（#399 / TASK-050-A；实现与 Contract/测试通过，等待 Draft PR 与人工架构验收） |
+| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；Draft PR #417 待人工合并） |
+
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
-| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
+| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已创建并通过本地 QA；等待 #417 合并与 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
