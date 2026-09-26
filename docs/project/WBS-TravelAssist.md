@@ -1,5 +1,15 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-080-A / TASK-081-A — WBS 7.6 / 7.7 并行启动（2026-09-27）
+
+- 用户明确授权并行启动 WBS 7.6 地点搜索 API 与 WBS 7.7 POI 详情 API。
+- TASK-080-A / Issue #430 / branch `codex/a-task-080-poi-search-api`：仅实现 canonical POI search。
+- TASK-081-A / Issue #431 / branch `codex/a-task-081-poi-detail-api`：仅实现 canonical POI detail。
+- 两项允许并行开发，但 **禁止先于 WBS 7.4 / PR #417 验收合并**；执行时消费当前 7.4 schema candidate，不复制第二套 Canonical POI Contract。
+- TASK-068–075 corpus 仍保持 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT` / `runtimeImportAuthorized=false`；7.6/7.7 不得把 candidate sidecar 或 TASK-075 task-scoped state 当作生产 runtime canonical 数据源。
+- 在正式 runtime-authorized Canonical datasource 到位前，两项可完成 Contract / Service / HTTP / Repository boundary / fixtures / QA，但不得宣称 10,369 POI 已由线上 API 实际提供。
+- 并行协调与 merge gate：`docs/project/WBS-7.6-7.7-poi-api-parallel-start.md`。
+
 ## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
 
 - TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
@@ -1029,8 +1039,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 待审查（#399 / TASK-050-A；实现与 Contract/测试通过，等待 Draft PR 与人工架构验收） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
-| 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
-| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
+| 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 进行中（#430 / TASK-080-A；与 7.7 并行；merge Gate = PR #417 + runtime-authorized Canonical datasource） |
+| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 进行中（#431 / TASK-081-A；与 7.6 并行；merge Gate = PR #417 + runtime-authorized Canonical datasource） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
