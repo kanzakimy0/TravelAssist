@@ -34,6 +34,14 @@
 - [Result](../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) / [QA](../qa/TASK-068/README.md) / [接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)。正式导入需后续单独验收，不自动 merge 或关闭 Issue。
 - 分支：`codex/b-poi-partition-enrichment-transport-linkage`；base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
 
+## TASK-050-A / WBS 7.4 用户验收完成（2026-09-22）
+
+- Issue #399；Owner A；分支 `codex/a-poi-canonical-schema`；状态：已完成（用户于 2026-09-22 明确验收；PR #417 尚未合并）。
+- 执行基线：`origin/develop@18f15037908d97a954fef2a7e76200cd0f06d450`；实现提交 `c4e81a34`；最新 develop 正常整合提交 `fc4864485756ae5791ad504e94ff379d18dbfe6a`。
+- 已建立唯一 provider-independent `CanonicalPoiV1`、strict validator、Candidate Admission 五态/14 Gate、canonical → `PoiPlanningProjectionV1` adapter，并复用既有 43D、Visit Profile、Planning Fact、Master Code 与 Region Graph。
+- 直接测试与回归 123/123；lint、typecheck、production build 通过；无 DB migration、真实 Provider 调用、B Candidate/Evidence Corpus 修改、Planner UI/评分/Route/Trip Model 修改。
+- 用户已验收 [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417)；PR 仍为 Open/Draft，等待外部人工合并，不自动合并。7.6、7.7、7.9 保持未开始。
+
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
 - 用户明确验收 TASK-063-B，授权合并 PR #382，并在合并后将 4.22 更新为 B / 已完成及关闭 Issue #380。
@@ -1027,7 +1035,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.1    | 地图 Provider 选型            | A      | P0     | 1.12     | 已完成 |
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
-| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 待审查（#399 / TASK-050-A；实现与 Contract/测试通过，等待 Draft PR 与人工架构验收） |
+| 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；Draft PR #417 待人工合并） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
