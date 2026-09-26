@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-080-A / WBS 7.6 地点搜索 API 待审查（2026-09-27）
+
+- Issue #430；Owner A；唯一实现分支 `codex/a-task-080-poi-search-api`。从 `origin/develop@85f5c62361d93f897423e92232547863d46ab0d1` 开始，消费 PR #417 Canonical Schema head `875caf9e9130514fa99da95ce11d63fca2bf3b1d`。
+- WBS 7.6 = **A / 待审查**：只实现只读 `GET /api/pois/search`、严格查询/安全响应契约、词面搜索、过滤、稳定游标和可注入 Canonical 仓库边界。聚焦 9/9、全仓 Node 2,743/2,743、lint/typecheck/build/制品检查通过；证据见 [Result](../tasks/RESULT-TASK-080-a-poi-search-api.md) 与 [QA](../qa/TASK-080/README.md)。
+- PR #417 仍是 Open/Draft、尚未合并；TASK-080 PR 必须保持 Draft，待 7.4 合并并同步届时最新 develop、通过 exact-head Quality Gate 后才可请求合并。本次不自动合并、不标记 7.6 已完成。
+- 候选清单仍为 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT` / `runtimeImportAuthorized=false`；无生产授权 Canonical 仓库时端点明确返回 503，不导入候选数据。WBS 7.7、7.9 状态和文件不变。
+
 ## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
 
 - TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
@@ -1037,7 +1044,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；Draft PR #417 待人工合并） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
-| 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
+| 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 待审查（#430 / TASK-080-A；只读 Canonical 搜索已实现，Draft PR；待 PR #417 合并及 exact-head Gate） |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
