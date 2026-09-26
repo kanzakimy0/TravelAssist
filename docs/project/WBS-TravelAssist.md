@@ -2,7 +2,7 @@
 
 ## TASK-081-A / WBS 7.7 POI 详情 API（2026-09-27）
 
-- Issue #431；implementation branch `codex/a-task-081-poi-detail-api`；WBS 7.7 = **A / 待审查**。
+- Issue #431；[Draft PR #432](https://github.com/kanzakimy0/TravelAssist/pull/432)；implementation branch `codex/a-task-081-poi-detail-api`；WBS 7.7 = **A / 待审查**。
 - 从 `origin/develop@85f5c62361d93f897423e92232547863d46ab0d1` 启动，正常合入 WBS 7.4 候选 head `875caf9e9130514fa99da95ce11d63fca2bf3b1d`；只实现 `GET /api/pois/[poiRef]` 与严格只读 DTO。
 - Canonical runtime 数据源尚未获准导入；端点默认返回稳定 503。候选清单仍为 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT`，`runtimeImportAuthorized=false`。
 - 详情测试 10/10，全仓 Node 回归 2744/2744，7.4/Planning 合约、lint、typecheck、部署构建和产物校验通过。详情见 [Result](../tasks/RESULT-TASK-081-a-poi-detail-api.md) 与 [QA](../qa/TASK-081/README.md)。
@@ -1048,7 +1048,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
-| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR 已实现并通过本地 QA；等待 #417 合并与 exact-head Quality Gate） |
+| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已创建并通过本地 QA；等待 #417 合并与 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |

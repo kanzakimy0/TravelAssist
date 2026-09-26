@@ -3,6 +3,7 @@
 Date: 2026-09-27
 Issue: #431
 Branch: `codex/a-task-081-poi-detail-api`
+Draft PR: [#432](https://github.com/kanzakimy0/TravelAssist/pull/432)
 Execution-time `origin/develop`: `85f5c62361d93f897423e92232547863d46ab0d1`
 Consumed WBS 7.4 candidate: `875caf9e9130514fa99da95ce11d63fca2bf3b1d`
 

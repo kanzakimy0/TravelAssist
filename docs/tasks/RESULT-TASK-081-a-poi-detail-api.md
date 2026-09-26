@@ -9,8 +9,8 @@
 - Branch: `codex/a-task-081-poi-detail-api`
 - Base `origin/develop`: `85f5c62361d93f897423e92232547863d46ab0d1`
 - Consumed schema head: `875caf9e9130514fa99da95ce11d63fca2bf3b1d` (same as published observed head)
-- Draft PR: to be recorded after push
-- Latest `origin/develop` at precommit fetch: `85f5c62361d93f897423e92232547863d46ab0d1`; final commit to be recorded after finalization
+- Draft PR: [#432](https://github.com/kanzakimy0/TravelAssist/pull/432) (Open/Draft)
+- Latest `origin/develop` at precommit fetch: `85f5c62361d93f897423e92232547863d46ab0d1`; final branch head is recorded on PR #432 after the documentation closeout commit
 
 ## Architecture and endpoint
 
