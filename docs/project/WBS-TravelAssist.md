@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-081-A / WBS 7.7 POI 详情 API（2026-09-27）
+
+- Issue #431；implementation branch `codex/a-task-081-poi-detail-api`；WBS 7.7 = **A / 待审查**。
+- 从 `origin/develop@85f5c62361d93f897423e92232547863d46ab0d1` 启动，正常合入 WBS 7.4 候选 head `875caf9e9130514fa99da95ce11d63fca2bf3b1d`；只实现 `GET /api/pois/[poiRef]` 与严格只读 DTO。
+- Canonical runtime 数据源尚未获准导入；端点默认返回稳定 503。候选清单仍为 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT`，`runtimeImportAuthorized=false`。
+- 详情测试 10/10，全仓 Node 回归 2744/2744，7.4/Planning 合约、lint、typecheck、部署构建和产物校验通过。详情见 [Result](../tasks/RESULT-TASK-081-a-poi-detail-api.md) 与 [QA](../qa/TASK-081/README.md)。
+- PR #417 仍为 Open/Draft，TASK-081 不得在其验收合并前合并；WBS 7.6 / 7.9 不在本 Task 范围内。
+
 ## TASK-050-A / WBS 7.4 用户验收完成（2026-09-22）
 
 - Issue #399；Owner A；分支 `codex/a-poi-canonical-schema`；状态：已完成（用户于 2026-09-22 明确验收；PR #417 尚未合并）。
@@ -7,6 +15,7 @@
 - 已建立唯一 provider-independent `CanonicalPoiV1`、strict validator、Candidate Admission 五态/14 Gate、canonical → `PoiPlanningProjectionV1` adapter，并复用既有 43D、Visit Profile、Planning Fact、Master Code 与 Region Graph。
 - 直接测试与回归 123/123；lint、typecheck、production build 通过；无 DB migration、真实 Provider 调用、B Candidate/Evidence Corpus 修改、Planner UI/评分/Route/Trip Model 修改。
 - 用户已验收 [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417)；PR 仍为 Open/Draft，等待外部人工合并，不自动合并。7.6、7.7、7.9 保持未开始。
+
 ## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
 
 - TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
@@ -1039,7 +1048,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
-| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
+| 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR 已实现并通过本地 QA；等待 #417 合并与 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 未开始 |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
