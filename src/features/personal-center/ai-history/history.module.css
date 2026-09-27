@@ -1,0 +1,134 @@
+.page {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+  max-width: 920px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 34px);
+  overflow-wrap: anywhere;
+}
+
+.header p {
+  margin: 10px 0 0;
+  color: var(--pc-text-secondary);
+  line-height: 1.7;
+}
+
+.list,
+.messages {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.item,
+.message,
+.state {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 18px;
+  background: var(--pc-bg-card);
+  overflow-wrap: anywhere;
+}
+
+.item {
+  color: inherit;
+  text-decoration: none;
+}
+
+.item:hover {
+  border-color: var(--pc-accent-primary);
+}
+
+.item:focus-visible,
+.back:focus-visible,
+.homeLink:focus-visible,
+.actions :focus-visible {
+  outline: 3px solid var(--pc-accent-primary);
+  outline-offset: 3px;
+}
+
+.preview,
+.meta,
+.message time,
+.citation {
+  color: var(--pc-text-secondary);
+}
+
+.meta,
+.message time {
+  font-size: 13px;
+}
+
+.message h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.messageText {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+
+.citation {
+  margin: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.back,
+.homeLink,
+.actions a,
+.actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: fit-content;
+  padding: 8px 14px;
+  border: 1px solid var(--pc-border-subtle);
+  border-radius: 10px;
+  background: var(--pc-bg-card);
+  color: var(--pc-accent-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.state h2,
+.state p {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notice {
+  margin: 0;
+  color: var(--pc-text-secondary);
+}
+
+@media (max-width: 767px) {
+  .page {
+    gap: 18px;
+  }
+
+  .item,
+  .message,
+  .state {
+    padding: 16px;
+  }
+}

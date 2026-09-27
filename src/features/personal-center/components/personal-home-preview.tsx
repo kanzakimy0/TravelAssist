@@ -203,6 +203,20 @@ export function PersonalHomePreview() {
               <span className={styles.comingSoon}>即将开放</span>
             </div>
           </div>
+          <GuardedLink
+            href="/personal-center/ai-history"
+            className={styles.featureCard}
+            aria-label="打开 AI 助手历史"
+          >
+            <span className={styles.featureIcon}>
+              <PersonalIcon name="info" />
+            </span>
+            <div>
+              <h3>AI 助手历史</h3>
+              <p>会话存储接入后可查看</p>
+            </div>
+            <PersonalIcon name="arrow" width="18" />
+          </GuardedLink>
         </div>
       </section>
     </div>
