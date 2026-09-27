@@ -1018,7 +1018,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（TASK-076-A usage/token/latency boundary 已合并；生产 exporter 继续由 WBS 9.11 管理） |
 | 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（#421 / TASK-079-A 已发布；等待 Planner/POI/Ranking Gate） |
 | 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
-| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
+| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 进行中（#434 / TASK-082-B） |
 
 ## 7. 地图、地点、路线与推荐（A 全责）
 
