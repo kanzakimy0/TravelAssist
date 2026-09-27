@@ -37,6 +37,14 @@ Station / Bus Terminal / Airport / Ferry / Ropeway
 
 参数必须配置化，不得硬编码为永久规则。
 
+## TASK-082-A compatibility gate
+
+开始实现前必须读取最新 A `TASK-082-A — POI Edge Graph Generation Pilot` 及其 Result/PR（如已存在）。
+
+- 若 A 已冻结 TransportNode / Mobility Edge contract：B 必须复用，不得复制第二套 schema。
+- 若 A 尚未冻结：B 只能在 task-owned data artifact 中使用最小 data-layer schema，并把 runtime contract integration 标记为 Deferred to A。
+- 不允许 B 修改 A 的 Planner / Route runtime public contract 来迁就离线数据。
+
 ## 3. Directionality
 
 必须生成有向边：
