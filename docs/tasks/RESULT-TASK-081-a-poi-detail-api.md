@@ -2,7 +2,7 @@
 
 ## Status
 
-**Implementation and local QA complete; Draft PR pending review.** WBS 7.7 is `待审查`. Merge is gated on WBS 7.4 PR #417.
+**Implementation and refreshed local QA complete; Draft PR pending exact-head review.** WBS 7.7 is `待审查`. Prerequisite WBS 7.4 PR #417 has merged.
 
 - Repository: `kanzakimy0/TravelAssist`
 - Issue: #431
@@ -10,7 +10,7 @@
 - Base `origin/develop`: `85f5c62361d93f897423e92232547863d46ab0d1`
 - Consumed schema head: `875caf9e9130514fa99da95ce11d63fca2bf3b1d` (same as published observed head)
 - Draft PR: [#432](https://github.com/kanzakimy0/TravelAssist/pull/432) (Open/Draft)
-- Latest `origin/develop` at precommit fetch: `85f5c62361d93f897423e92232547863d46ab0d1`; final branch head is recorded on PR #432 after the documentation closeout commit
+- Latest integrated `origin/develop`: `0950d67a29a44820b7c311dbc4a4e4d8c620913d` (normal merge; integration commit `78b6fec0b3c128f644d18cd18ab6dc8fe00f41af`). Accepted WBS 7.4 schema files are equivalent to PR #417 final head.
 
 ## Architecture and endpoint
 
@@ -31,15 +31,15 @@ The DTO allowlists canonical identity, multilingual names/aliases, classificatio
 - TASK-081 focused: 10/10 PASS.
 - TASK-050 POI contracts: 24/24 PASS.
 - Planning contracts: 21/21 PASS; soak 6/6 PASS.
-- Full Node regression: 2744/2744 PASS.
+- Full Node regression after #417 merge: 2752/2752 PASS (serialized test execution).
 - Lint: PASS with 0 errors and 9 unrelated existing warnings.
 - Typecheck, deployment formatting, local environment validation: PASS.
 - Production deployment build: PASS, including `/api/pois/[poiRef]`.
-- Standalone artifact audit: PASS, 1,883 files, 0 failures.
+- Standalone artifact audit after #417 merge: PASS, 1,908 files, 0 failures.
 - Production HTTP smoke: canonical-shaped ID → 503 unavailable; Master Code path → 400 invalid.
 - Detailed matrix: [QA](../qa/TASK-081/README.md).
 - Exact final-head GitHub Quality Gate: pending after final push.
 
 ## Scope and blockers
 
-PR #417 is Open/Draft and unmerged, so this PR must remain Draft/Open. The canonical runtime datasource has not been separately accepted, so live detail reads correctly return 503 until authorized wiring is supplied. WBS 7.6 search modules and WBS 7.9 scoring were not modified. No Provider purchase, DB migration, mutation or automatic merge was performed.
+PR #417 merged into `develop` as `0950d67a29a44820b7c311dbc4a4e4d8c620913d`. PR #432 remains Draft/Open until its exact final-head Quality Gate and acceptance. The canonical runtime datasource has not been separately accepted, so live detail reads correctly return 503 until authorized wiring is supplied. WBS 7.6 search modules and WBS 7.9 scoring were not modified. No Provider purchase, DB migration or mutation was performed.

@@ -5,7 +5,7 @@ Issue: #431
 Branch: `codex/a-task-081-poi-detail-api`
 Draft PR: [#432](https://github.com/kanzakimy0/TravelAssist/pull/432)
 Execution-time `origin/develop`: `85f5c62361d93f897423e92232547863d46ab0d1`
-Consumed WBS 7.4 candidate: `875caf9e9130514fa99da95ce11d63fca2bf3b1d`
+Consumed WBS 7.4 candidate: `875caf9e9130514fa99da95ce11d63fca2bf3b1d`; accepted PR #417 merged into `develop` at `0950d67a29a44820b7c311dbc4a4e4d8c620913d`.
 
 ## Source and authorization
 
@@ -42,17 +42,17 @@ Tests ran in `K:\CodexWork\TravelAssist\TASK-081-A-runtime-20260927`; dependenci
 | TASK-050 / WBS 7.4 POI contracts | 24/24 PASS |
 | Planning contracts | 21/21 PASS |
 | Planning soak | 6/6 PASS |
-| Full Node regression | 2744/2744 PASS |
+| Full Node regression | 2752/2752 PASS after #417 merge; serialized execution |
 | `npm run lint` | PASS, 0 errors; 9 pre-existing warnings in unrelated POI tools |
 | `npm run typecheck` | PASS |
 | `npm run format:check:deploy` | PASS |
 | `npm run deploy:validate:local` | PASS |
 | `npm run deploy:build:local` | PASS; `/api/pois/[poiRef]` included |
-| `npm run deploy:verify-artifact` | PASS; 1,883 files, 0 failures |
+| `npm run deploy:verify-artifact` | PASS; 1,908 files, 0 failures after #417 merge |
 | Production HTTP smoke (`next start`, port 3134) | `poi:tokyo-station` → 503 unavailable; Master Code `10001` → 400 invalid |
 
 The first unrestricted local regression attempt could not create an external temporary assets directory under the sandbox. After granting writes only to the external QA directory, one test still could not invoke the system `python` alias. The bundled Python passed its own 14 tests; with that executable prepended to the test process PATH, the complete 2,744-test Node regression passed. No test or scanner was disabled.
 
 ## Merge gate
 
-PR #417 is currently Open/Draft and unmerged. TASK-081 remains Draft; after #417 merges, refresh against latest `develop`, verify accepted 7.4 contract ancestry/equivalence, rerun affected validation and obtain an exact-head GitHub Quality Gate before acceptance. No automatic merge.
+PR #417 merged into `develop` at `0950d67a29a44820b7c311dbc4a4e4d8c620913d`. TASK-081 normally merged that latest `develop` into its branch at `78b6fec0b3c128f644d18cd18ab6dc8fe00f41af`; accepted 7.4 schema files were byte-equivalent to #417 final head. Refreshed focused tests 10/10, full Node regression 2752/2752, lint, typecheck, deployment checks and standalone artifact audit passed in `K:\CodexWork\TravelAssist\TASK-081-merge-20260927`. The exact final-head GitHub Quality Gate remains required before #432 acceptance.
