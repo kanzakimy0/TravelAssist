@@ -1062,6 +1062,15 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 未开始（#439 / TASK-082-A；城市级真实 Pilot，禁止全国 N×N；分层 POI↔POI / POI↔TransportNode） |
+
+TASK-082-A tracking (2026-09-27):
+
+- Issue #439；Owner A；WBS 7.13。
+- 目标：建立 directed POI mobility edge contract、bounded candidate generation、POI→TransportNode 分层图及真实城市级 Pilot。
+- 明确禁止全国 POI N×N 全连；默认 Pilot 目标 500 Canonical POI、每 POI 约 40~80 条候选有向边，实际数量以正式 Canonical Registry 为准。
+- Provider 批量查询、cache、retention 或 production 权限不明确时必须 fail-closed；不得用 candidate/enrichment workbook 冒充 Canonical POI。
+- Task：`docs/tasks/TASK-082-a-poi-edge-graph-generation-pilot.md`；Branch：`feature/a-poi-edge-graph-generation-pilot`；未授权自动合并。
 
 TASK-022-A tracking (2026-09-09):
 
