@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation and local QA complete; [Draft PR #435](https://github.com/kanzakimy0/TravelAssist/pull/435) is open. Exact-head Quality Gate pending. WBS 6.14 is 待审查, not complete.
+Implementation and local QA complete; [Draft PR #435](https://github.com/kanzakimy0/TravelAssist/pull/435) is open. The GitHub Quality Gate passed on the implementation PR head and must also pass on this final documentation head before delivery. WBS 6.14 is 待审查, not complete.
 
 ## Base / Tracking
 
@@ -10,7 +10,7 @@ Implementation and local QA complete; [Draft PR #435](https://github.com/kanzaki
 - Branch: `codex/b-wbs-6-14-personal-ai-history`, created directly from that commit in an isolated worktree.
 - Issue: [#434](https://github.com/kanzakimy0/TravelAssist/issues/434), Open.
 - Draft PR: [#435](https://github.com/kanzakimy0/TravelAssist/pull/435) → `develop`.
-- Final head: the PR head verified by the exact-head Quality Gate; its immutable SHA is reported in the final delivery receipt because adding a commit SHA to its own commit would change that SHA.
+- Final head: the delivered PR head verified by the exact-head Quality Gate; its immutable SHA is reported in the final delivery receipt because adding a commit SHA to its own commit would change that SHA.
 - The original checkout's unrelated modified and untracked files were preserved.
 
 ## Dependency Gate
@@ -106,6 +106,7 @@ Browser QA used a temporary development-only preview route with the actual Shell
 - Personal Center regression: 1,823/1,823 pass, zero skips.
 - AI contract/message regression: TASK-076 runtime 14/14 pass; TASK-077 runtime not present in this base.
 - Full tests: prescribed `node --test tests/*.test.mjs` exited 1; it includes files requiring repository-specific Node import flags and encountered worktree write `EPERM` under the default sandbox. The canonical Personal Center and AI aggregates passed. No failure was attributed to TASK-082.
+- GitHub repository tests: 2,717/2,717 pass on the implementation PR head; the final documentation head receives its own exact-head run.
 - `npm run test --if-present`: pass; no default `test` script is defined.
 - Lint: pass, zero errors; existing unrelated POI warnings remain. TASK-owned warning cleanup was applied.
 - Typecheck: pass.
@@ -136,4 +137,4 @@ Browser QA used a temporary development-only preview route with the actual Shell
 
 ## Final
 
-PARTIAL pending exact final-head GitHub Quality Gate. The remaining local limits are recorded above; no durable-history work was performed.
+PARTIAL due to the recorded local raw-glob, full-format and authenticated Local browser limits. GitHub Quality Gate passed on the implementation head; exact final documentation-head PASS is required before delivery. No durable-history work was performed.
