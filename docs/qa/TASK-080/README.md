@@ -29,3 +29,11 @@ The first full Node run had one environment-only failure: the Windows `python` c
 ## Remaining gates
 
 PR #417 remains Open/Draft and unmerged as checked on 2026-09-27; TASK-080 must remain Draft and must not merge until 7.4 is merged, this branch is synced to the resulting latest `develop`, and exact-head Quality Gate passes. There is no accepted production canonical POI repository; the public route correctly stays unavailable until one is separately authorized.
+
+
+## Latest develop refresh
+
+- Refreshed onto `develop@4c7048c4c388068daa0aa49172f6333ac7e262dc` after the original exact-head gate.
+- Develop delta since the original TASK-080 base contains TASK-082 Personal AI History, one POI review workbook and a Master WBS edit; no runtime/search source overlap was found.
+- The sole overlapping file was the Master WBS; resolution preserves latest develop records and TASK-080 7.6 = 待审查 while leaving 7.4 at its current prerequisite state.
+- Refreshed exact-head CI is required because the prior Quality Gate covered `caa68a97994736a5e8534756d100d50293df5b87`, not the synchronized head.

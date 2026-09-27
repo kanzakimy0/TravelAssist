@@ -22,6 +22,11 @@ The storage-agnostic repository accepts a bounded search query and returns canon
 
 ## Verification and gate
 
-See [TASK-080 QA](../qa/TASK-080/README.md): focused tests 9/9, PR #417 contract tests 24/24, Planning tests 21/21, full Node regression 2,743/2,743, lint/typecheck/format/build/deployment artifact checks passed locally. Exact-head GitHub Quality Gate must be recorded after the final push.
+See [TASK-080 QA](../qa/TASK-080/README.md): focused tests 9/9, PR #417 contract tests 24/24, Planning tests 21/21, full Node regression 2,743/2,743, lint/typecheck/format/build/deployment artifact checks passed locally. The original implementation head passed GitHub Quality Gate. The branch was then refreshed onto latest `develop@4c7048c4c388068daa0aa49172f6333ac7e262dc`; the refreshed exact-head Quality Gate must pass before human acceptance.
 
 PR #417 was Open/Draft and unmerged at execution; TASK-080 must remain Draft and cannot merge until PR #417 merges and TASK-080 refreshes onto that accepted `develop` with passing exact-head checks. WBS 7.6 is `待审查`, not `已完成`.
+
+
+## Latest develop refresh
+
+TASK-080 was refreshed onto execution-time latest `develop@4c7048c4c388068daa0aa49172f6333ac7e262dc`. The only overlapping path was `docs/project/WBS-TravelAssist.md`; conflict resolution preserved latest develop's unrelated TASK-082 and POI data records, kept WBS 7.4 at its current `待审查` state, and retained TASK-080 WBS 7.6 = `待审查`. No TASK-081 or WBS 7.9 implementation was introduced.
