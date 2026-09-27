@@ -2,15 +2,15 @@
 
 ## Status
 
-Implementation and local QA complete; Draft PR and exact-head Quality Gate pending. WBS 6.14 remains a review candidate, not complete.
+Implementation and local QA complete; [Draft PR #435](https://github.com/kanzakimy0/TravelAssist/pull/435) is open. Exact-head Quality Gate pending. WBS 6.14 is 待审查, not complete.
 
 ## Base / Tracking
 
 - Execution-time `origin/develop`: `85f5c62361d93f897423e92232547863d46ab0d1`.
 - Branch: `codex/b-wbs-6-14-personal-ai-history`, created directly from that commit in an isolated worktree.
 - Issue: [#434](https://github.com/kanzakimy0/TravelAssist/issues/434), Open.
-- Draft PR: pending.
-- Final head: pending.
+- Draft PR: [#435](https://github.com/kanzakimy0/TravelAssist/pull/435) → `develop`.
+- Final head: the PR head verified by the exact-head Quality Gate; its immutable SHA is reported in the final delivery receipt because adding a commit SHA to its own commit would change that SHA.
 - The original checkout's unrelated modified and untracked files were preserved.
 
 ## Dependency Gate
@@ -118,7 +118,7 @@ Browser QA used a temporary development-only preview route with the actual Shell
 ## WBS
 
 - Start state: 6.14 `未开始` → `进行中（#434 / TASK-082-B）` at implementation start.
-- Final candidate state: `待审查（#434 / TASK-082-B；Draft PR pending）`, to be set after PR creation and QA.
+- Final candidate state: `待审查（#434 / TASK-082-B；Draft PR #435）`.
 - Unrelated WBS changed: none. WBS 6.13, 6.6, 6.8, 8.7 and 8.8 retain their base states.
 
 ## Deferred
@@ -136,4 +136,4 @@ Browser QA used a temporary development-only preview route with the actual Shell
 
 ## Final
 
-PARTIAL pending Draft PR and exact final-head GitHub Quality Gate.
+PARTIAL pending exact final-head GitHub Quality Gate. The remaining local limits are recorded above; no durable-history work was performed.
