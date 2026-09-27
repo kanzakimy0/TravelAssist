@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "task070-first-batch-execution-v1",
+  "status": "PASS",
+  "candidateCount": 200,
+  "rawCacheSha256": "c7b10bc79391e30e0aad29697dbd7caf41d010d335634114122cc534c30b36d3",
+  "unaffectedSidecarPartitionsChecked": 156,
+  "events": [
+    {
+      "name": "first-200-write-and-raw-verification",
+      "startedAt": "2026-09-18T14:41:23.545Z",
+      "completedAt": "2026-09-18T14:41:26.355Z",
+      "result": {
+        "status": "BOUNDED_CHECKPOINT",
+        "rawLocatorsVerified": true,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "WRITTEN_QA_PASS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "identical-skip",
+      "startedAt": "2026-09-18T14:41:26.355Z",
+      "completedAt": "2026-09-18T14:41:28.425Z",
+      "result": {
+        "status": "BOUNDED_CHECKPOINT",
+        "rawLocatorsVerified": false,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "SKIPPED_IDENTICAL"
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-check",
+      "startedAt": "2026-09-18T14:41:28.425Z",
+      "completedAt": "2026-09-18T14:41:30.515Z",
+      "result": {
+        "status": "BOUNDED_CHECKPOINT",
+        "rawLocatorsVerified": true,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "CHECK_PASS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "incomplete-receipt-detected",
+      "error": "Invalid receipt/output P0-0001"
+    },
+    {
+      "name": "incomplete-receipt-recovery",
+      "startedAt": "2026-09-18T14:41:32.460Z",
+      "completedAt": "2026-09-18T14:41:35.572Z",
+      "result": {
+        "status": "BOUNDED_CHECKPOINT",
+        "rawLocatorsVerified": false,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "WRITTEN_QA_PASS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "corrupt-output-detected",
+      "error": "Invalid receipt/output P0-0001"
+    },
+    {
+      "name": "corrupt-output-recovery",
+      "startedAt": "2026-09-18T14:41:37.476Z",
+      "completedAt": "2026-09-18T14:41:40.529Z",
+      "result": {
+        "status": "BOUNDED_CHECKPOINT",
+        "rawLocatorsVerified": false,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "WRITTEN_QA_PASS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "final-batch-check",
+      "startedAt": "2026-09-18T14:41:40.529Z",
+      "completedAt": "2026-09-18T14:41:42.546Z",
+      "result": {
+        "status": "BOUNDED_CHECKPOINT",
+        "rawLocatorsVerified": true,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "CHECK_PASS"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1064,6 +1064,8 @@ Dynamic:
 
 低成本 / 中档 / 高档模型按任务复杂度选择，型号和价格不得写死在领域 Schema。
 
+2026-09-24 默认 Runtime 配置冻结为 **GPT-6 Luna**；高阶模型仅经 Model Router 的显式质量 / 预算策略升级。该默认值属于 Config，不改变本节“领域 Schema 不绑定具体型号”的原则。
+
 ## 17.6 Output Parser
 
 负责把 LLM 原始返回转为可验证结构，不负责业务合法性。
@@ -1732,14 +1734,17 @@ Trip Planning Engine
 
 AI 不接触 Provider Raw JSON。
 
-当前开发期 Provider 决策沿用 v0.2：
+2026-09-24 已确认的 Provider 基线（覆盖 v0.2 的 Mapbox 选择）：
 
 ```text
-Map / Drive / Walk       Mapbox
-Transit                  駅すぱあと（开发期 Provisional / Evaluation）
+Map display              Google Maps Platform
+Drive / Walk / Transit   Google Routes API（默认主 Provider）
+Transit fallback         駅すぱあと（Evaluation / 显式启用时）
+POI Master               TravelAssist 自建 PostgreSQL/PostGIS
+Google Places            核心 POI 管线禁用
 ```
 
-生产 Provider 仍需独立确认价格、授权、覆盖率、缓存、再展示和 attribution。
+完整供应商、缓存、授权、数据所有权和成本治理规则见 `map-routing-poi-ai-provider-policy-v1.md`。生产接入仍必须检查当前价格、授权、覆盖率、缓存、再展示和 attribution；不得由 Google Maps Content 反向生产 TravelAssist Master / 43维 / TravelEdge Prior。
 
 长期可考虑：
 

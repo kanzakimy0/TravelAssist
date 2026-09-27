@@ -8,6 +8,41 @@
 - 直接测试与回归 123/123；lint、typecheck、production build 通过；无 DB migration、真实 Provider 调用、B Candidate/Evidence Corpus 修改、Planner UI/评分/Route/Trip Model 修改。
 - 用户已验收 [Draft PR #417](https://github.com/kanzakimy0/TravelAssist/pull/417)；PR 仍为 Open/Draft，等待外部人工合并，不自动合并。7.6、7.7、7.9 保持未开始。
 
+## TASK-077-A / WBS 6.10 / 6.13 启动（2026-09-22）
+
+- TASK-076-A / PR #422 已验收合并，TASK-077-A 前置满足；用户授权继续按单 Task 串行模式执行。
+- Issue #419 / TASK-077-A 正式启动；唯一 implementation branch = `codex/a-ai-conversation-orchestrator`。
+- WBS 6.10 = **A / 进行中**：在 TASK-076 已完成 server error/fallback 基础上补 streaming/loading/error/degraded UI。
+- WBS 6.13 = **A / 进行中**：本 Task 只实现基础 Conversation / Orchestrator / read-only Tool Router / Streaming UI；修改确认/成功反馈中的 mutation 部分仍由 #420 / TASK-078-A 承接。
+- 本 Task 禁止启动 TASK-078-A / TASK-079-A，禁止 Trip/Planner mutation、Booking/Payment、durable AI history。
+
+## TASK-076-A / WBS 6.4 / 6.5 合并收尾（2026-09-22）
+
+- 用户明确授权合并 PR #422。已验收 exact head `9cbf83718bbc8e52caa24566ffc22f851217d668`，GitHub Quality Gate 成功；PR #422 以 normal merge 合入 `develop`，merge commit `7f87e8979432ef067a4810785f6db321732e2b8f`。
+- WBS 6.4 = **A / 已完成**：provider-independent、server-only AI runtime、OpenAI Responses adapter、Prompt Registry、normalized error/fallback 与 fake provider 已进入 develop。
+- WBS 6.5 = **A / 已完成**：复用 5.14 Planner-readable Preference Contract 的 optional-user Context Builder 已进入 develop，保留 missing/false/neutral/unknown 语义。
+- WBS 6.10 = **部分完成**：server-side error/fallback 已完成；streaming/UI degradation 由 #419 / TASK-077-A 继续。
+- WBS 6.11 = **部分完成**：usage/token/latency/cost-boundary 已完成；production telemetry/export 继续由 WBS 9.11 承接。
+- Live OpenAI smoke 因无已授权 `OPENAI_API_KEY` / `OPENAI_MODEL` 保持 Deferred，不构成本 Task blocker；未提交或暴露 Secret。
+- TASK-077-A / #419 尚未启动；继续遵守“一次一个 AI Task”。
+
+## FINAL Architecture WBS 状态同步（2026-09-22）
+
+- WBS 4.19 = **A / 待审查**：原 TASK-069-A / PR #406 已完成 Save/Read 接线；TASK-073-A / Issue #412 已修复 visual fallback coordinates 可能回写 Canonical 的数据完整性问题。代码、focused tests、lint/typecheck/build/deployment artifact 均通过；真实 Local Supabase Auth/HTTP/RLS/CAS 复验因本机 Docker Desktop Linux engine 不可用而保持 **Blocked**，因此不得标记已完成或合并。
+- WBS 7.4 = **A / 待审查**：TASK-050-A / Issue #399 已实现 Canonical POI v1、严格 parser/validator、Candidate Admission 14 gates 与 Canonical → Planning Projection adapter；相关 Planning/Route/Region/Master Code 测试 123 项通过。等待 Codex 外 Git 收口、Draft PR 与人工架构/Contract 验收。
+- WBS 9.10 = **A / 待审查**：复用现有 PR #231 / TASK-071-A。既有 final head 的 Security tests、tracked/history scan、boundary、canary bundle 与 hosted gates 已通过；因当前 develop 又增加新文档/架构内容，合并 latest develop 后必须完整重扫，禁止创建第二套 Security implementation。
+- WBS 9.11 = **A / 进行中**：复用现有 PR #245 / TASK-072-A。旧 Observability/Performance 实现与历史证据保留，但当前 branch 落后 develop 398 commits，必须按 #405 执行 Full Refresh 后才能重新进入待审查。
+- 上述同步只纠正 Master WBS 当前状态；不代表 PR 已合并，不关闭 Issue，不启动新的下游 WBS。
+## TASK-068-B 候选恢复（2026-09-18）
+
+- Owner：B；Issue #393；状态：B / 待审查（#393 / TASK-068-B；[Draft PR #395](https://github.com/kanzakimy0/TravelAssist/pull/395)）；候选恢复范围，原始完整 occupied 库未认证。
+- 用户明确批准“按恢复方案继续，正式编号不变”；以 [Recovery Amendment v1](../tasks/AMENDMENT-TASK-068-candidate-recovery-v1.md) 为当前执行依据。旧文件不再作为候选加工前置。
+- 10,491 条原观察、10,369 个固定候选和所有历史编号声明完整保留。52 批全部获得明确结果：26 部分、322 待编辑复核、9,859 无匹配保留来源、162 身份隔离。82 个非空特征位、1 个部分 Visit、33 个 Anchor、35 条接入及 2 条邻接；不将评估完成冒充属性齐全。
+- 正式 Registry 不变；175 个旧码冲突、2,979 个未知旧码继续保留，未知号位不视为空闲。其他 WBS、Owner、Runtime、Provider、DB 和部署状态不变，TASK-069-A / #394 不另起 pipeline。
+- [Result](../tasks/RESULT-TASK-068-b-poi-partition-enrichment-transport-linkage.md) / [QA](../qa/TASK-068/README.md) / [接入提案](../architecture/poi-candidate-recovery-integration-proposal-v1.md)。正式导入需后续单独验收，不自动 merge 或关闭 Issue。
+- 分支：`codex/b-poi-partition-enrichment-transport-linkage`；base：`45e9f8830ac66d03b3ace6480d36d3ee31907a2e`。
+
+
 ## TASK-063-B / WBS 4.22 验收与合并完成（2026-09-17）
 
 - 用户明确验收 TASK-063-B，授权合并 PR #382，并在合并后将 4.22 更新为 B / 已完成及关闭 Issue #380。
@@ -875,7 +910,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | 4.16   | Day Plan / Itinerary Core     | A      | P0     | 4.15,7.x     | 进行中（浏览器草案Core；正式服务器Contract未完成） |
 | 4.17   | Trip Plan / Planner Contract  | A      | P0     | 4.15,4.16    | 已完成（#215 / #216；负责人批准的 v1.0 公开契约基线） |
 | 4.18   | Planner 读取用户偏好 Contract | A      | P0     | 4.15,5.14    | 未开始 |
-| 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 未开始 |
+| 4.19   | Planner 调用保存行程 Contract | A      | P1     | 4.17,5.19    | 待审查（#403 / #412；PR #406；TASK-073-A 修复完成，Local Supabase runtime 因 Docker 阻塞） |
 
 ### 4A. 已有 Planner / Detail UI 及本地补修登记
 
@@ -961,22 +996,38 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 
 ## 6. AI 旅行助手（A 全责，个人历史除外）
 
+## AI Runtime Completion 启动（2026-09-22）
+
+- 用户明确要求继续完成所有“部分完成”的 AI WBS。已发布四阶段 runtime 实施链：#418/TASK-076-A、#419/TASK-077-A、#420/TASK-078-A、#421/TASK-079-A。
+- 当前正式启动 **TASK-076-A**：6.4 / 6.5 / 6.10 / 6.11 更新为 **进行中**。
+- TASK-077/078/079 已发布但受依赖 Gate 控制，不因“已发布 Task”提前标记进行中。
+- 完整执行顺序与 Gate：`docs/project/AI-WBS-6.4-6.13-runtime-completion-plan.md`。
+- Runtime 实现继续遵守 FINAL Architecture：AI 不直接写 Trip、不替代 Validator/Ranking、不制造业务事实、不绕过权限/确认/Engine。
+
+## AI WBS 状态同步（2026-09-22）
+
+- 6.1 / 6.2 / 6.3 属于本轮 FINAL Architecture 已实际完成并冻结的规格层工作，状态改为 **已完成**。
+- 6.4–6.13 已完成对应架构、Contract、消息、Context、Tool/Action、Planner/Replan、Explanation、Observability/Benchmark 等设计冻结，但生产 AI Provider / Orchestrator / Tool Runtime / Action Runtime 尚未接通，因此统一标记为 **部分完成**，避免把“设计完成”误报为“功能已上线”。
+- 6.14 个人中心 AI 历史仍保持 **未开始**；当前没有独立历史存储/UI 实装。
+- 当前主系统明确事实：AI runtime 尚未真正连接生产模型；后续实现必须复用已冻结设计，不得创建第二套 AI/Planner/Action 架构。
+
+
 | WBS ID | 工作项                             | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ---------------------------------- | ------ | ------ | -------- | ------ |
-| 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 未开始 |
-| 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 未开始 |
-| 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 未开始 |
-| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 未开始 |
-| 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 未开始 |
-| 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 未开始 |
-| 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 未开始 |
-| 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 未开始 |
-| 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 未开始 |
-| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 未开始 |
-| 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 未开始 |
-| 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 未开始 |
-| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 未开始 |
-| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
+| 6.1    | AI 能力边界定义                    | A      | P0     | 1.15     | 已完成（FINAL Architecture 已冻结 AI 能力边界） |
+| 6.2    | 主系统 AI 对话消息模型             | A      | P0     | 3.5      | 已完成（Conversation / Turn / Message / Block / Tool / Citation 模型已冻结） |
+| 6.3    | Prompt / System Instruction v1     | A      | P0     | 6.1,5.14 | 已完成（v1 分层 Prompt / System Instruction 与版本策略已冻结） |
+| 6.4    | AI API 接入层                      | A      | P0     | 2.5,6.3  | 已完成（TASK-076-A；PR #422 已合并；provider-independent runtime + server-only OpenAI Responses adapter） |
+| 6.5    | AI 读取用户偏好                    | A      | P0     | 5.14,6.4 | 已完成（TASK-076-A；PR #422 已合并；复用 5.14 Preference Contract 的 Context Builder） |
+| 6.6    | AI 修改 Planner / 临时条件 Action  | A      | P0     | 6.5,4.15 | 部分完成（#420 / TASK-078-A 已发布；等待 #419 + PR #406 合并后执行） |
+| 6.7    | AI 生成初始行程                    | A      | P0     | 6.4,7.x  | 部分完成（#421 / TASK-079-A 已发布；等待 7.4/7.9/#372/Planner Solver Gate） |
+| 6.8    | AI 局部修改行程                    | A      | P0     | 6.7,4.15 | 部分完成（#420 / TASK-078-A 已发布；等待 AI Conversation + Save/Read/Engine Gate） |
+| 6.9    | 推荐原因展示                       | A      | P1     | 6.7,1.19 | 部分完成（#421 / TASK-079-A；等待确定性 Ranking/Reason Evidence runtime） |
+| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 进行中（#419 / TASK-077-A；在已合并 server fallback 基础上接 streaming/UI degradation） |
+| 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（TASK-076-A usage/token/latency boundary 已合并；生产 exporter 继续由 WBS 9.11 管理） |
+| 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（#421 / TASK-079-A 已发布；等待 Planner/POI/Ranking Gate） |
+| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
+| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 已完成（#434 / TASK-082-B；用户验收，PR #435 normal merge；只读投影范围） |
 
 ## 7. 地图、地点、路线与推荐（A 全责）
 
@@ -986,6 +1037,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；Draft PR #417 待人工合并） |
+
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 未开始 |
@@ -1042,8 +1094,8 @@ TASK-023-A tracking (2026-09-09):
 | 9.7    | 跨模块 E2E：偏好→Planner                | A+B    | P0     | 4.18,5.14       | 未开始 |
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
-| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 未开始 |
-| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |
+| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（#404 / TASK-071-A；PR #231；既有安全门通过，需 latest-develop 合并后完整重扫） |
+| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 进行中（#405 / TASK-072-A；复用 PR #245，需 latest-develop Full Refresh） |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 | 9.13   | Planning Contract Soak / Fuzz / Consistency QA | A | P0 | 4.47 / TASK-036 review-fix semantics | 已完成（TASK-037-A 用户验收授权合并；#298；未开始真实 100 POI Pilot） |
 

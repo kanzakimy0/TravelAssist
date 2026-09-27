@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "task070-final-runtime-proof-v1",
+  "status": "PASS",
+  "rawCacheSha256": "c7b10bc79391e30e0aad29697dbd7caf41d010d335634114122cc534c30b36d3",
+  "rawArticleCount": 861,
+  "reviewedCandidates": 322,
+  "verifiedFactLocators": 987,
+  "editorialCorrections": [
+    {
+      "position": 3,
+      "change": "Removed unsupported road-mode station relation; feature scores unchanged."
+    },
+    {
+      "position": 201,
+      "change": "Corrected explicitly named bus stop type from rail_station to bus_stop."
+    },
+    {
+      "position": 320,
+      "change": "Removed educational score: priest-guided viewing does not explicitly establish educational interpretation; retained null."
+    }
+  ],
+  "receiptRecoveryFix": "Reject non-date completedAt; queue count counts unique non-partial candidates, including no-supported-attribute outcomes.",
+  "events": [
+    {
+      "name": "final-raw-source-and-all-locators",
+      "startedAt": "2026-09-18T15:12:22.906Z",
+      "completedAt": "2026-09-18T15:12:25.428Z",
+      "result": {
+        "status": "P0_COMPLETE",
+        "rawLocatorsVerified": true,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "CHECK_PASS"
+          },
+          {
+            "id": "P0-0002",
+            "status": "CHECK_PASS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "identical-both-batches-skip",
+      "startedAt": "2026-09-18T15:12:25.428Z",
+      "completedAt": "2026-09-18T15:12:27.917Z",
+      "result": {
+        "status": "P0_COMPLETE",
+        "rawLocatorsVerified": true,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "SKIPPED_IDENTICAL"
+          },
+          {
+            "id": "P0-0002",
+            "status": "SKIPPED_IDENTICAL"
+          }
+        ]
+      }
+    },
+    {
+      "name": "incomplete-second-receipt-rejected",
+      "startedAt": "2026-09-18T15:12:27.919Z",
+      "completedAt": "2026-09-18T15:12:30.088Z",
+      "result": {
+        "detected": true
+      }
+    },
+    {
+      "name": "incomplete-second-receipt-rebuilt",
+      "startedAt": "2026-09-18T15:12:30.088Z",
+      "completedAt": "2026-09-18T15:12:33.661Z",
+      "result": {
+        "status": "P0_COMPLETE",
+        "rawLocatorsVerified": false,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "SKIPPED_IDENTICAL"
+          },
+          {
+            "id": "P0-0002",
+            "status": "WRITTEN_QA_PASS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "malformed-output-rejected",
+      "startedAt": "2026-09-18T15:12:35.395Z",
+      "completedAt": "2026-09-18T15:12:37.238Z",
+      "result": {
+        "path": "data/poi/full/features/batch-0006.jsonl",
+        "detected": true
+      }
+    },
+    {
+      "name": "malformed-output-rebuilt-from-frozen-inputs",
+      "startedAt": "2026-09-18T15:12:37.238Z",
+      "completedAt": "2026-09-18T15:12:40.621Z",
+      "result": {
+        "status": "P0_COMPLETE",
+        "rawLocatorsVerified": false,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "WRITTEN_QA_PASS"
+          },
+          {
+            "id": "P0-0002",
+            "status": "SKIPPED_IDENTICAL"
+          }
+        ]
+      }
+    },
+    {
+      "name": "final-check-after-recovery",
+      "startedAt": "2026-09-18T15:12:40.622Z",
+      "completedAt": "2026-09-18T15:12:43.087Z",
+      "result": {
+        "status": "P0_COMPLETE",
+        "rawLocatorsVerified": true,
+        "results": [
+          {
+            "id": "P0-0001",
+            "status": "CHECK_PASS"
+          },
+          {
+            "id": "P0-0002",
+            "status": "CHECK_PASS"
+          }
+        ]
+      }
+    }
+  ]
+}

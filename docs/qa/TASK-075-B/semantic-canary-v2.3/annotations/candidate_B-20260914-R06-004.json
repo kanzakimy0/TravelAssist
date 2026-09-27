@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R06-004",
+  "sourceRef": "task-075-v23-canary-source:e5d501c1a3210d5ea2da73f0",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/e5d501c1a3210d5ea2da73f01b2177b80a6923c589ddf40af90704a18f22e0b8.txt",
+    "locator": {
+      "offset": 0,
+      "length": 1016,
+      "locatorSha256": "e5d501c1a3210d5ea2da73f01b2177b80a6923c589ddf40af90704a18f22e0b8",
+      "contentSha256": "e5d501c1a3210d5ea2da73f01b2177b80a6923c589ddf40af90704a18f22e0b8"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "11",
+      "sourceFact": "イベント案内 2026.04.20 2026年シルバーウィークに関するお知らせ 2026.04.21 【重要】シルバーウィーク（9/19～9/23）駐車場について 2026.04.23 【4月24日～1月3日】第17期展示「砂で世界旅行・スペイン」開催中！ 2026.05.04 【作品大募集！】小学生絵画コンクール2026（9月30日まで） 2026.05.29 【来期のテーマ決定】第18期展示は「砂で世界旅行・シルクロード」 2026.05.30 ミニ砂像体験 [砂美ワークショップ2026] 2026.06.01 [スペ",
+      "proposedValue": 7,
+      "rationale": "The official target page describes a target-scoped event or entertainment activity; the frozen rubric maps that fact to entertainment."
+    },
+    {
+      "featureCode": "22",
+      "sourceFact": "！ 2026.05.04 【作品大募集！】小学生絵画コンクール2026（9月30日まで） 2026.05.29 【来期のテーマ決定】第18期展示は「砂で世界旅行・シルクロード」 2026.05.30 ミニ砂像体験 [砂美ワークショップ2026] 2026.06.01 [スペイン雑貨フェア] おしゃれでかわいいスペインの雑貨が大集合！ 過去のイベント一覧 砂の美術館からお知らせ 2026.09.22 2026年シルバーウィークに関するお知らせ 2026.09.11 【重要】シルバーウィーク（9/19～9/23）駐車場について 2026.09.19 【11月7日】フィエスタ・デ・エスパーニャ in sand museum 2026.09.11 【11月21日～12月6日】プロジェクションマッピング2026開催決定！ 2026.09.06 【2026年】砂の美術館アンケート 鳥取県産の梨プレゼント当選者発表！ もっと見る 私たちの活動 2026.09.01 砂の美術館で旬の体験「",
+      "proposedValue": 7,
+      "rationale": "The official target page identifies a museum/exhibition or interpretive facility; the frozen rubric maps that target-scoped educational context to educational."
+    },
+    {
+      "featureCode": "23",
+      "sourceFact": "【重要】シルバーウィーク（9/19～9/23）駐車場について 2026.04.23 【4月24日～1月3日】第17期展示「砂で世界旅行・スペイン」開催中！ 2026.05.04 【作品大募集！】小学生絵画コンクール2026（9月30日まで） 2026.05.29 【来期のテーマ決定】第18期展示は「砂で世界旅行・シルクロード」 2026.05.30 ミニ砂像体験 [砂美ワークショップ2026] 2026.06.01 [スペイン雑貨フェア] おしゃれでかわいいスペインの雑貨が大集合！ 過去のイベント一覧 砂の美術館からお知らせ 2026.09.22 2026年シルバーウィークに関するお知らせ 2026.09.11 【重要】シルバーウィーク（9/19～9/23）駐車場について 2026.09.19 【11月7日】フィエスタ・デ・エスパーニャ in sand museum 2026.09.11 【11月21日～12月6日】プロジェクションマッピング2026開催決定！ 2026.",
+      "proposedValue": 7,
+      "rationale": "The official target page describes a target-scoped participatory or interactive activity; the frozen rubric maps that fact to interactive."
+    }
+  ],
+  "featureCodeCandidates": [
+    "11",
+    "22",
+    "23"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "11",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes a target-scoped event or entertainment activity; the frozen rubric maps that fact to entertainment."
+    },
+    {
+      "featureCode": "22",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page identifies a museum/exhibition or interpretive facility; the frozen rubric maps that target-scoped educational context to educational."
+    },
+    {
+      "featureCode": "23",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes a target-scoped participatory or interactive activity; the frozen rubric maps that fact to interactive."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "11",
+      "value": 7
+    },
+    {
+      "featureCode": "22",
+      "value": 7
+    },
+    {
+      "featureCode": "23",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

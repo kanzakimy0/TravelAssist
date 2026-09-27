@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R04-004",
+  "sourceRef": "task-075-v23-canary-source:f44b1197846e3bfcc83e9507",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/f44b1197846e3bfcc83e9507b611c512db01b2ffe7ac061aadde046d8dd75c68.txt",
+    "locator": {
+      "offset": 0,
+      "length": 9684,
+      "locatorSha256": "f44b1197846e3bfcc83e9507b611c512db01b2ffe7ac061aadde046d8dd75c68",
+      "contentSha256": "f44b1197846e3bfcc83e9507b611c512db01b2ffe7ac061aadde046d8dd75c68"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": "ima, so that the museum becomes part of the environment of the Karato area. Walking along the promenade leading to the museum, one can enjoy the beautiful view and learn about the history of the area. Ryue Nishizawa Born in Tokyo, 1966. Degree in M.A. (Architecture), Yokohama National University. Joined Kazuyo Sejima & Associates in 1990, established SANAA with her in 1995, established Office of Ryue Nishizawa in 1997. Professor at Yokohama Gr",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "sourceFact": "otherwise pose a disturbance to other visitors. ・Please take any garbage away with you. When viewing the artworks ・Please do not touch the artworks themselves. ・Please do not take photographs, videos, or make sketches in the museum. Visitors are also requested not to use fountain pens, ink, etc. About using drone ・It's strictly prohibited to operate Unmanned Aircrafts (UAs) /Drone in Benesse Art Site Naoshima premises without our prior permi",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "sourceFact": "pace about 40 by 60 meters and with a maximum height of 4.3 meters. Two oval openings in the shell allow wind, sounds, and light of the world outside into this organic space where nature and architecture intimately interconnect. In the interior space, water continuously springs from the ground in a day long motion. This setting, in which nature, art and architecture come together with such limitless harmony, conjures an inf i nite array of im",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "04",
+    "07"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "07",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}
