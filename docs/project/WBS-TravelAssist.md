@@ -1038,7 +1038,9 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
 | 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 已完成（#434 / TASK-082-B；用户验收，PR #435 normal merge；只读投影范围） |
 
-## 7. 地图、地点、路线与推荐（A 全责）
+## 7. 地图、地点、路线与推荐（A Runtime 主责；B 离线数据生产例外）
+
+> 2026-09-27 用户明确将 7.14-7.16 的离线交通图数据生产交给 B。A 继续拥有 Route runtime / API / Planner / production Provider integration；B 不得创建第二套 runtime contract。
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
@@ -1056,6 +1058,19 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 未开始（#439 / TASK-082-A；城市级真实 Pilot，禁止全国 N×N；分层 POI↔POI / POI↔TransportNode） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 未开始（#441 / TASK-084-B；B 离线数据生产，A runtime owner 不变） |
+| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；200 POI/batch；directed bounded access graph） |
+| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；真实 service topology；禁止 N×N） |
+
+B Transport Graph Data Task Pack tracking (2026-09-27):
+
+- 用户明确授权 B 执行 1) TransportNode 全国节点库、2) POI→TransportNode Access Edge、3) TransportNode→TransportNode 全国交通骨架。
+- TASK-084-B / #441 / WBS 7.14：200 nodes/batch，先 identity + static metadata + provenance。
+- TASK-085-B / #442 / WBS 7.15：依赖 084 PASS；200 Canonical POIs/batch；默认 3~8 nodes/POI，directed access edge。
+- TASK-086-B / #443 / WBS 7.16：依赖 084 PASS；按 route/service pattern 生成真实 directed backbone，禁止 all-pairs。
+- A 的 TASK-082-A / 7.13 继续负责 POI mobility pilot / contract/runtime 边界。B 开始每项前必须读取并复用 A 已冻结 contract；若 A 尚未冻结，只允许 task-owned data-layer schema。
+- 总任务包：`docs/tasks/B-TRANSPORT-GRAPH-DATA-TASK-PACK-2026-09-27.md`。
+- 三项均未开始、不得自动 merge；执行命令可明确授权 084 PASS 后继续 085，再继续 086。
 
 TASK-082-A tracking (2026-09-27):
 
