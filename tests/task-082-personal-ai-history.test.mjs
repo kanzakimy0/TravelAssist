@@ -7,6 +7,7 @@ import {
   projectHistoryDetail,
   projectHistoryList,
 } from "../src/features/personal-center/ai-history/projection.ts";
+import { productionAiHistoryReader } from "../src/features/personal-center/ai-history/production-reader.ts";
 
 const source = {
   id: "canonical-conversation-1",
@@ -53,6 +54,14 @@ const source = {
           raw: "RAW PROVIDER RESPONSE",
         },
         { type: "reasoning", visibility: "internal", text: "CHAIN OF THOUGHT" },
+      ],
+    },
+    {
+      id: "hidden-assistant",
+      role: "assistant",
+      visibility: "internal",
+      blocks: [
+        { type: "text", visibility: "user", text: "SECRET INTERNAL MESSAGE" },
       ],
     },
     {
@@ -188,7 +197,17 @@ test("unknown fields are omitted and no artificial identity or timestamp is inve
   ]);
 });
 
-test("production is unavailable; UI keeps empty, unavailable, error, loading and back paths", () => {
+test("production reader never returns fixture history", async () => {
+  assert.deepEqual(await productionAiHistoryReader.listHistory("owner"), {
+    status: "unavailable",
+  });
+  assert.deepEqual(
+    await productionAiHistoryReader.readHistoryDetail("owner", source.id),
+    { status: "unavailable" },
+  );
+});
+
+test("UI keeps empty, unavailable, error, loading and back paths", () => {
   const reader = readFileSync(
     "src/features/personal-center/ai-history/production-reader.ts",
     "utf8",
@@ -232,6 +251,7 @@ test("history is a secondary entry and five primary destinations remain frozen",
     "utf8",
   );
   assert.match(home, /href="\/personal-center\/ai-history"/);
+  assert.match(home, /会话存储接入后可查看/);
   assert.equal((nav.match(/href: "\/personal-center/g) ?? []).length, 5);
   assert.doesNotMatch(nav, /ai-history/);
 });

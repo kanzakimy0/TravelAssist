@@ -102,7 +102,7 @@ Browser QA used a temporary development-only preview route with the actual Shell
 ## Tests
 
 - `npm ci`: pass, 396 packages installed.
-- Focused TASK-082: 7/7 pass.
+- Focused TASK-082: 8/8 pass after PR #435 review-fix.
 - Personal Center regression: 1,823/1,823 pass, zero skips.
 - AI contract/message regression: TASK-076 runtime 14/14 pass; TASK-077 runtime not present in this base.
 - Full tests: prescribed `node --test tests/*.test.mjs` exited 1; it includes files requiring repository-specific Node import flags and encountered worktree write `EPERM` under the default sandbox. The canonical Personal Center and AI aggregates passed. No failure was attributed to TASK-082.
@@ -134,6 +134,13 @@ Browser QA used a temporary development-only preview route with the actual Shell
 - Current `develop` has no executable frozen 6.2 Conversation type or accepted TASK-077 renderer to import. The adapter seam is deliberately structural and allowlisted; WBS 8.8 must reconcile its reader with the accepted canonical runtime/storage type before returning `ready`.
 - Authenticated production browser and Local database journeys are unavailable on this host. The test-only preview covered visual states and responsiveness; it did not claim to validate a live durable source.
 - Full repository Prettier and raw Node glob commands do not pass this unmodified base's broad data/test set. Task-owned formatting and canonical relevant suites pass.
+
+## Review-fix on PR #435
+
+- GitHub had no submitted review or inline comments when this pass began; the fix is based on a fresh diff review.
+- Explicitly internal user/assistant messages are now omitted even if a nested block claims `visibility: "user"`; the projection marks the detail partial. The focused fixture asserts that this whole-message payload stays out of the DTO.
+- The Personal Center secondary-entry copy now says history is available after session storage is connected, matching the production `unavailable` state.
+- Focused tests now execute the production reader itself and confirm that it returns no fixture data.
 
 ## Final
 

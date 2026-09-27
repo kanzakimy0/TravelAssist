@@ -213,7 +213,7 @@ export function PersonalHomePreview() {
             </span>
             <div>
               <h3>AI 助手历史</h3>
-              <p>查看已保存的可见对话</p>
+              <p>会话存储接入后可查看</p>
             </div>
             <PersonalIcon name="arrow" width="18" />
           </GuardedLink>

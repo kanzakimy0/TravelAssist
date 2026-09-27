@@ -65,6 +65,10 @@ function visibleMessages(source: JsonRecord) {
       continue;
     }
     if (message.role !== "user" && message.role !== "assistant") continue;
+    if (message.visibility !== undefined && message.visibility !== "user") {
+      partial = true;
+      continue;
+    }
     const rawBlocks = Array.isArray(message.blocks) ? message.blocks : [];
     if (!Array.isArray(message.blocks)) partial = true;
     const blocks: PersonalAiHistoryBlockV1[] = [];
