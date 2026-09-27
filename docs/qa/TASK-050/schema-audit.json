@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-050-A",
+  "status": "PASS",
+  "executionBaseline": "18f15037908d97a954fef2a7e76200cd0f06d450",
+  "integratedHead": "fc4864485756ae5791ad504e94ff379d18dbfe6a",
+  "canonicalSource": "src/shared/contracts/poi",
+  "reusedContracts": [
+    "src/shared/contracts/planning/poi.ts",
+    "src/shared/contracts/planning/features.ts",
+    "src/shared/contracts/planning/facts.ts",
+    "src/shared/contracts/planning/regions.ts",
+    "src/shared/master-code/index.ts"
+  ],
+  "positiveFixtureCount": 8,
+  "featureKeyCount": 43,
+  "admissionGateCount": 14,
+  "identityFamiliesSeparated": [
+    "internalId",
+    "masterCode",
+    "candidateKey",
+    "providerId",
+    "assetRef",
+    "regionId",
+    "transportNodeId",
+    "aiLocalId",
+    "databasePrimaryKey"
+  ],
+  "hardBoundaries": {
+    "providerRawAllowed": false,
+    "liveFactAllowedInStaticMaster": false,
+    "unknownCoercionAllowed": false,
+    "databaseWrites": 0,
+    "providerCalls": 0,
+    "candidateCorpusMutations": 0
+  },
+  "verification": {
+    "focusedAndDirectTestsPassed": 123,
+    "focusedAndDirectTestsFailed": 0,
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS"
+  }
+}
