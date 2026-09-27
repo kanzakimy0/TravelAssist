@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-050-A",
+  "states": [
+    {
+      "state": "ADMIT",
+      "fixture": "admittedCandidateFixture",
+      "canonicalized": true
+    },
+    {
+      "state": "REVIEW_REQUIRED",
+      "fixtureMutation": "masterCode=null",
+      "canonicalized": false
+    },
+    {
+      "state": "BLOCKED",
+      "fixtureMutations": [
+        "unknown feature coerced",
+        "unresolved Region",
+        "rights violation",
+        "material conflict"
+      ],
+      "canonicalized": false
+    },
+    {
+      "state": "MERGE_TARGET",
+      "fixture": "mergeTargetCandidateFixture",
+      "canonicalized": false
+    },
+    {
+      "state": "INSUFFICIENT_EVIDENCE",
+      "fixtureMutation": "identityResolution=unresolved",
+      "canonicalized": false
+    }
+  ],
+  "positiveCanonicalFixtures": [
+    "urban attraction with multiple Regions and Access Anchor",
+    "temple/shrine/history POI with supported Visit Profile",
+    "nature/scenic POI with many null 43D values",
+    "onsen/resort POI",
+    "shopping/food/entertainment POI",
+    "temporarily closed POI",
+    "permanently closed historical POI",
+    "merged duplicate pointing to canonical target"
+  ],
+  "providerBoundary": {
+    "transientPhotoPersistenceIntent": "transient",
+    "rawPayloadPresent": false,
+    "providerIdUsedAsCanonicalId": false
+  }
+}
