@@ -2,10 +2,10 @@
 
 ## TASK-083-A / WBS 7.4.1 Real 100 POI Canonical Admission（2026-09-27）
 
-- Issue #438；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 = **A / 待审查**，等待用户验收与人工合并。
-- 从 `develop@2dcf22cca48b920d99bfad416c5e79b13e599327` 执行；v1.66 中冻结 422 条保守可准入池、确定性选择 100 条真实 POI，100/100 经现有 14-gate evaluator 得到 ADMIT，100 个新 Master Code 进入 append-only registry。
+- Issue #438；[Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444)；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 = **A / 待审查**，等待用户验收与人工合并。
+- 从 `develop@2dcf22cca48b920d99bfad416c5e79b13e599327` 执行，正常同步最新 `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`；v1.66 中冻结 422 条保守可准入池、确定性选择 100 条真实 POI，100/100 经现有 14-gate evaluator 得到 ADMIT，100 个新 Master Code 进入 append-only registry。
 - 独立 Pilot-100 runtime manifest 仅授权这 100 条；旧候选 manifest 继续禁止 Canonical runtime import。Detail API 已接真实 server-only repository；WBS 7.6 Search 尚未合入 develop，故未 cherry-pick #433。TASK-081-B 43维仍为 0/4,300，待本 Task 用户验收后恢复。
-- [Result](../tasks/RESULT-TASK-083-a-real-poi-canonical-admission-runtime-import.md) · [QA/handoff](../qa/TASK-083/README.md)。
+- 全仓 Node 回归 2,756/2,756、Detail 100/100 和 Search 兼容接点测试通过；[Result](../tasks/RESULT-TASK-083-a-real-poi-canonical-admission-runtime-import.md) · [QA/handoff](../qa/TASK-083/README.md)。
 
 ## TASK-081-A / WBS 7.7 POI 详情 API（2026-09-27）
 
@@ -1053,7 +1053,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
-| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / TASK-083-A；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
+| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / Draft PR #444；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
