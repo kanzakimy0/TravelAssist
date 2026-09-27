@@ -6,7 +6,8 @@
 - 从 `origin/develop@85f5c62361d93f897423e92232547863d46ab0d1` 启动，正常合入 WBS 7.4 候选 head `875caf9e9130514fa99da95ce11d63fca2bf3b1d`；只实现 `GET /api/pois/[poiRef]` 与严格只读 DTO。
 - Canonical runtime 数据源尚未获准导入；端点默认返回稳定 503。候选清单仍为 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT`，`runtimeImportAuthorized=false`。
 - 详情测试 10/10，全仓 Node 回归 2744/2744，7.4/Planning 合约、lint、typecheck、部署构建和产物校验通过。详情见 [Result](../tasks/RESULT-TASK-081-a-poi-detail-api.md) 与 [QA](../qa/TASK-081/README.md)。
-- PR #417 仍为 Open/Draft，TASK-081 不得在其验收合并前合并；WBS 7.6 / 7.9 不在本 Task 范围内。
+- PR #417 已合入 develop（`0950d67a29a44820b7c311dbc4a4e4d8c620913d`）；TASK-081 已同步该前置。WBS 7.6 / 7.9 不在本 Task 范围内。
+
 
 ## TASK-050-A / WBS 7.4 用户验收完成（2026-09-22）
 
@@ -1035,7 +1036,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.11   | AI 成本 / Token 监控               | A      | P2     | 6.4      | 部分完成（TASK-076-A usage/token/latency boundary 已合并；生产 exporter 继续由 WBS 9.11 管理） |
 | 6.12   | AI 结果质量测试集                  | A      | P1     | 6.7      | 部分完成（#421 / TASK-079-A 已发布；等待 Planner/POI/Ranking Gate） |
 | 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
-| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |
+| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 已完成（#434 / TASK-082-B；用户验收，PR #435 normal merge；只读投影范围） |
 
 ## 7. 地图、地点、路线与推荐（A 全责）
 
