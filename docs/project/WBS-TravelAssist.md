@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-083-A / WBS 7.4.1 启动（2026-09-27）
+
+- 用户明确授权启动 **Real 100 POI Canonical Admission + Runtime Import Gate**；Issue #438；Owner A；Priority P0。
+- 目标：从 v1.66 真实 POI 中依法冻结 100 条，完成 identity / duplicate / Region / provenance / rights、100 个冲突安全的 active POI Master Code、现有 14-gate Candidate Admission 100/100 ADMIT、CanonicalPoiDatasetV1 与独立 runtime-authorized Canonical repository。
+- 本 Task 只解除 TASK-081-B / Draft PR #437 的结构性阻塞；**不执行 100×43=4,300 个 Feature43 格的评分/补齐**。
+- Candidate manifest 继续保持 `CANDIDATE_ONLY_NO_CANONICAL_IMPORT` / `runtimeImportAuthorized=false`；不得改成 runtime 真相。Runtime 授权必须使用单独的 Pilot-100 Canonical manifest。
+- v1.66 的旧编号/历史 claim 不自动视为空闲或正式 Master Code；必须做保守冲突排除，未知/冲突/历史 claim 一律占用，除非精确同一身份且有完整 lineage。
+- Task / Codex / WBS amendment：`docs/tasks/TASK-083-a-real-poi-canonical-admission-runtime-import.md` / `docs/tasks/CODEX-TASK-083-a-real-poi-canonical-admission-runtime-import.md` / `docs/project/WBS-7.4.1-real-poi-canonical-admission-runtime-import.md`。
+
 ## TASK-081-A / WBS 7.7 POI 详情 API（2026-09-27）
 
 - Issue #431；[Draft PR #432](https://github.com/kanzakimy0/TravelAssist/pull/432)；implementation branch `codex/a-task-081-poi-detail-api`；WBS 7.7 = **A / 待审查**。
@@ -1046,6 +1055,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
+| 7.4.1 | Real 100 POI Canonical Admission / Runtime Import Gate | A | P0 | 7.4,2.18 | 进行中（#438 / TASK-083-A；解锁 TASK-081-B / PR #437） |
 
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
