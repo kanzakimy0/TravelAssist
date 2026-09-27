@@ -9,7 +9,12 @@ export type HistoryReadResult<T> =
   | { status: "unavailable" }
   | { status: "error" };
 
-/** Server-side port. WBS 8.8 must authorize every read with actorUserId. */
+/**
+ * Server-side view port. WBS 8.8 must authorize each read with actorUserId,
+ * map its accepted canonical source into PersonalAiHistorySourceRecordV1,
+ * then call projectHistoryList/projectHistoryDetail. This interface returns
+ * view DTOs; it does not define canonical Conversation storage.
+ */
 export interface PersonalAiHistoryReader {
   listHistory(
     actorUserId: string,

@@ -152,7 +152,11 @@ export function HistoryDetail({
               ))}
             </ol>
           ) : (
-            <HistoryState status="empty" />
+            <PersonalEmptyState
+              icon="info"
+              title="这段对话暂无可显示的消息"
+              description="这段对话已找到，但其中没有可在个人中心展示的内容。"
+            />
           )}
         </>
       ) : (

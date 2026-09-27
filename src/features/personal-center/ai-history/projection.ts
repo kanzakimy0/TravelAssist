@@ -1,8 +1,6 @@
-/**
- * Derived read-only Personal Center view. This is neither the WBS 6.2
- * Conversation model nor a persistence schema. A future WBS 8.8 reader must
- * supply canonical IDs and only user-visible records to this allowlist.
- */
+import type { PersonalAiHistorySourceRecordV1 } from "./source-adapter";
+
+/** Derived read-only Personal Center view, not a Conversation model. */
 export type PersonalAiHistoryBlockV1 =
   { kind: "text"; text: string } | { kind: "citation"; label: string };
 
@@ -54,33 +52,38 @@ function bounded(text: string, limit: number): string {
 }
 
 function visibleMessages(source: JsonRecord) {
-  const raw = Array.isArray(source.messages) ? source.messages : [];
-  let partial = !Array.isArray(source.messages);
+  const raw = Array.isArray(source.visibleMessages)
+    ? source.visibleMessages
+    : [];
+  let partial =
+    source.hadOmissions === true || !Array.isArray(source.visibleMessages);
   const messages: PersonalAiHistoryMessageV1[] = [];
 
   for (const candidate of raw) {
     const message = record(candidate);
-    if (!message || !nonEmptyString(message.id)) {
+    if (!message || !nonEmptyString(message.messageId)) {
       partial = true;
       continue;
     }
-    if (message.role !== "user" && message.role !== "assistant") continue;
-    if (message.visibility !== undefined && message.visibility !== "user") {
+    if (message.speaker !== "user" && message.speaker !== "assistant") {
       partial = true;
       continue;
     }
-    const rawBlocks = Array.isArray(message.blocks) ? message.blocks : [];
-    if (!Array.isArray(message.blocks)) partial = true;
+    const rawBlocks = Array.isArray(message.content) ? message.content : [];
+    if (!Array.isArray(message.content)) partial = true;
     const blocks: PersonalAiHistoryBlockV1[] = [];
     for (const candidateBlock of rawBlocks) {
       const block = record(candidateBlock);
-      if (!block || block.visibility !== "user") {
+      if (!block) {
         partial = true;
         continue;
       }
-      if (block.type === "text" && nonEmptyString(block.text)) {
+      if (block.kind === "plainText" && nonEmptyString(block.text)) {
         blocks.push({ kind: "text", text: block.text as string });
-      } else if (block.type === "citation" && nonEmptyString(block.label)) {
+      } else if (
+        block.kind === "citationLabel" &&
+        nonEmptyString(block.label)
+      ) {
         blocks.push({
           kind: "citation",
           label: bounded(block.label as string, 120),
@@ -91,9 +94,9 @@ function visibleMessages(source: JsonRecord) {
     }
     if (blocks.length) {
       messages.push({
-        id: message.id as string,
-        role: message.role,
-        createdAt: timestamp(message.createdAt),
+        id: message.messageId as string,
+        role: message.speaker,
+        createdAt: timestamp(message.sentAt),
         blocks,
       });
     } else if (rawBlocks.length) {
@@ -104,24 +107,23 @@ function visibleMessages(source: JsonRecord) {
 }
 
 export function projectHistoryDetail(
-  source: unknown,
+  source: PersonalAiHistorySourceRecordV1,
 ): PersonalAiHistoryDetailV1 | null {
   const conversation = record(source);
-  if (!conversation || !nonEmptyString(conversation.id)) return null;
+  if (!conversation || !nonEmptyString(conversation.conversationId))
+    return null;
   const { messages, partial } = visibleMessages(conversation);
   const firstUserText = messages
     .filter((message) => message.role === "user")
     .flatMap((message) => message.blocks)
     .find((block) => block.kind === "text");
-  const title =
-    conversation.titleVisibility === "user" &&
-    nonEmptyString(conversation.title)
-      ? bounded(conversation.title as string, 64)
-      : firstUserText?.kind === "text"
-        ? bounded(firstUserText.text, 64)
-        : "未命名对话";
+  const title = nonEmptyString(conversation.visibleTitle)
+    ? bounded(conversation.visibleTitle as string, 64)
+    : firstUserText?.kind === "text"
+      ? bounded(firstUserText.text, 64)
+      : "未命名对话";
   return {
-    conversationId: conversation.id as string,
+    conversationId: conversation.conversationId as string,
     title,
     messages,
     partial,
@@ -129,7 +131,7 @@ export function projectHistoryDetail(
 }
 
 export function projectHistoryList(
-  sources: readonly unknown[],
+  sources: readonly PersonalAiHistorySourceRecordV1[],
 ): PersonalAiHistoryListItemV1[] {
   return sources
     .flatMap((source) => {
@@ -139,7 +141,7 @@ export function projectHistoryList(
       const firstText = detail.messages
         .flatMap((message) => message.blocks)
         .find((block) => block.kind === "text");
-      const lastActivityAt = timestamp(raw.updatedAt);
+      const lastActivityAt = timestamp(raw.lastActivityAt);
       return [
         {
           conversationId: detail.conversationId,

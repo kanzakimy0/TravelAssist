@@ -10,64 +10,48 @@ import {
 import { productionAiHistoryReader } from "../src/features/personal-center/ai-history/production-reader.ts";
 
 const source = {
-  id: "canonical-conversation-1",
-  updatedAt: "2026-09-27T01:00:00.000Z",
-  title: "Hidden system title",
-  messages: [
+  conversationId: "canonical-conversation-1",
+  lastActivityAt: "2026-09-27T01:00:00.000Z",
+  visibleTitle: null,
+  hadOmissions: true,
+  visibleMessages: [
     {
-      id: "system-1",
-      role: "system",
-      blocks: [{ type: "text", visibility: "user", text: "SECRET SYSTEM" }],
+      messageId: "system-1",
+      speaker: "system",
+      content: [{ kind: "plainText", text: "SECRET SYSTEM" }],
     },
     {
-      id: "user-1",
-      role: "user",
-      createdAt: "2026-09-27T00:00:00.000Z",
-      blocks: [
-        {
-          type: "text",
-          visibility: "user",
-          text: "Visit Kyoto <script>alert(1)</script>",
-        },
-        { type: "text", visibility: "internal", text: "HIDDEN USER NOTES" },
+      messageId: "user-1",
+      speaker: "user",
+      sentAt: "2026-09-27T00:00:00.000Z",
+      content: [
+        { kind: "plainText", text: "Visit Kyoto <script>alert(1)</script>" },
+        { kind: "internal", text: "HIDDEN USER NOTES" },
       ],
     },
     {
-      id: "tool-1",
-      role: "tool",
-      blocks: [{ type: "text", visibility: "user", text: "RAW TOOL OUTPUT" }],
+      messageId: "tool-1",
+      speaker: "tool",
+      content: [{ kind: "plainText", text: "RAW TOOL OUTPUT" }],
     },
     {
-      id: "assistant-1",
-      role: "assistant",
-      blocks: [
-        { type: "text", visibility: "user", text: "Try the north path." },
+      messageId: "assistant-1",
+      speaker: "assistant",
+      content: [
+        { kind: "plainText", text: "Try the north path." },
         {
-          type: "citation",
-          visibility: "user",
+          kind: "citationLabel",
           label: "Official guide",
           url: "javascript:alert(1)",
         },
-        {
-          type: "tool_output",
-          visibility: "user",
-          raw: "RAW PROVIDER RESPONSE",
-        },
-        { type: "reasoning", visibility: "internal", text: "CHAIN OF THOUGHT" },
+        { kind: "toolOutput", raw: "RAW PROVIDER RESPONSE" },
+        { kind: "reasoning", text: "CHAIN OF THOUGHT" },
       ],
     },
     {
-      id: "hidden-assistant",
-      role: "assistant",
-      visibility: "internal",
-      blocks: [
-        { type: "text", visibility: "user", text: "SECRET INTERNAL MESSAGE" },
-      ],
-    },
-    {
-      id: "developer-1",
-      role: "developer",
-      blocks: [{ type: "text", visibility: "user", text: "SECRET DEVELOPER" }],
+      messageId: "developer-1",
+      speaker: "developer",
+      content: [{ kind: "plainText", text: "SECRET DEVELOPER" }],
     },
   ],
   providerRequest: { authorization: "TOKEN" },
@@ -83,7 +67,9 @@ function fixtureReader(ownerId, snapshots) {
     },
     async readHistoryDetail(actorId, conversationId) {
       if (actorId !== ownerId) return { status: "unavailable" };
-      const snapshot = snapshots.find((item) => item.id === conversationId);
+      const snapshot = snapshots.find(
+        (item) => item.conversationId === conversationId,
+      );
       return snapshot
         ? { status: "ready", data: projectHistoryDetail(snapshot) }
         : { status: "empty" };
@@ -96,11 +82,11 @@ test("fixture reader distinguishes ready, empty and unavailable with actor scope
   assert.equal((await reader.listHistory("owner")).status, "ready");
   assert.equal((await reader.listHistory("other")).status, "unavailable");
   assert.equal(
-    (await reader.readHistoryDetail("owner", source.id)).status,
+    (await reader.readHistoryDetail("owner", source.conversationId)).status,
     "ready",
   );
   assert.equal(
-    (await reader.readHistoryDetail("other", source.id)).status,
+    (await reader.readHistoryDetail("other", source.conversationId)).status,
     "unavailable",
   );
   assert.equal(
@@ -113,9 +99,9 @@ test("fixture reader distinguishes ready, empty and unavailable with actor scope
   );
 });
 
-test("projection keeps canonical IDs and visible text while dropping internal material", () => {
+test("projection accepts the explicit adapter record and drops unsupported material", () => {
   const detail = projectHistoryDetail(source);
-  assert.equal(detail.conversationId, source.id);
+  assert.equal(detail.conversationId, source.conversationId);
   assert.deepEqual(
     detail.messages.map((message) => message.id),
     ["user-1", "assistant-1"],
@@ -124,7 +110,7 @@ test("projection keeps canonical IDs and visible text while dropping internal ma
   assert.equal(detail.partial, true);
   assert.equal(
     detail.messages[0].blocks[0].text,
-    source.messages[1].blocks[0].text,
+    source.visibleMessages[1].content[0].text,
   );
   assert.deepEqual(detail.messages[1].blocks[1], {
     kind: "citation",
@@ -150,40 +136,45 @@ test("projection keeps canonical IDs and visible text while dropping internal ma
 test("list is newest first with deterministic ties, exact timestamps and bounded previews", () => {
   const older = {
     ...source,
-    id: "older",
-    updatedAt: "2026-09-26T00:00:00.000Z",
+    conversationId: "older",
+    lastActivityAt: "2026-09-26T00:00:00.000Z",
   };
   const tied = {
     ...source,
-    id: "aaa",
-    messages: [
+    conversationId: "aaa",
+    visibleMessages: [
       {
-        id: "u2",
-        role: "user",
-        blocks: [{ type: "text", visibility: "user", text: "x".repeat(300) }],
+        messageId: "u2",
+        speaker: "user",
+        content: [{ kind: "plainText", text: "x".repeat(300) }],
       },
     ],
   };
   const items = projectHistoryList([older, source, tied]);
   assert.deepEqual(
     items.map((item) => item.conversationId),
-    ["aaa", source.id, "older"],
+    ["aaa", source.conversationId, "older"],
   );
-  assert.equal(items[1].lastActivityAt, source.updatedAt);
+  assert.equal(items[1].lastActivityAt, source.lastActivityAt);
   assert.ok(Array.from(items[0].preview).length <= 141);
   assert.equal(items[1].visibleMessageCount, 2);
 });
 
 test("unknown fields are omitted and no artificial identity or timestamp is invented", () => {
   assert.equal(projectHistoryDetail({ messages: [] }), null);
+  assert.equal(projectHistoryDetail({ id: "canonical", messages: [] }), null);
   assert.deepEqual(projectHistoryList([]), []);
   const detail = projectHistoryDetail({
-    id: "canonical",
-    messages: [
+    conversationId: "canonical",
+    lastActivityAt: null,
+    visibleTitle: null,
+    hadOmissions: false,
+    visibleMessages: [
       {
-        id: "m",
-        role: "assistant",
-        blocks: [{ type: "text", visibility: "user", text: "Hello" }],
+        messageId: "m",
+        speaker: "assistant",
+        sentAt: null,
+        content: [{ kind: "plainText", text: "Hello" }],
       },
     ],
   });
@@ -202,7 +193,10 @@ test("production reader never returns fixture history", async () => {
     status: "unavailable",
   });
   assert.deepEqual(
-    await productionAiHistoryReader.readHistoryDetail("owner", source.id),
+    await productionAiHistoryReader.readHistoryDetail(
+      "owner",
+      source.conversationId,
+    ),
     { status: "unavailable" },
   );
 });
@@ -232,6 +226,7 @@ test("UI keeps empty, unavailable, error, loading and back paths", () => {
     "重新加载",
     "返回个人中心",
     "返回 AI 历史",
+    "这段对话暂无可显示的消息",
   ])
     assert.ok(ui.includes(state), state);
   assert.match(loading, /PersonalPageSkeleton/);
