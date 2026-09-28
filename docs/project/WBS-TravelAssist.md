@@ -1062,7 +1062,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
-| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 未开始（#439 / TASK-082-A；城市级真实 Pilot，禁止全国 N×N；分层 POI↔POI / POI↔TransportNode） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
 
 TASK-082-A tracking (2026-09-27):
 
@@ -1071,6 +1071,12 @@ TASK-082-A tracking (2026-09-27):
 - 明确禁止全国 POI N×N 全连；默认 Pilot 目标 500 Canonical POI、每 POI 约 40~80 条候选有向边，实际数量以正式 Canonical Registry 为准。
 - Provider 批量查询、cache、retention 或 production 权限不明确时必须 fail-closed；不得用 candidate/enrichment workbook 冒充 Canonical POI。
 - Task：`docs/tasks/TASK-082-a-poi-edge-graph-generation-pilot.md`；Branch：`feature/a-poi-edge-graph-generation-pilot`；未授权自动合并。
+
+TASK-082-A execution update (2026-09-28):
+
+- Started as **进行中**. On latest develop ef388cdcd0ff5f15ebd404337b4ed29fb3435058, the application Registry has 51 entries and **0 active POI allocations**; the candidate manifest remains runtime-import unauthorized. TASK-083-A / PR #444 is Draft and not in develop.
+- Directed bounded graph contract, four-layer schema, unresolved-mode and score-trace logic, transport fixtures, deterministic QA replay and Planner read-only boundary are implemented. The real Pilot is **BLOCKED** at 0/500 POIs, 0 candidate edges and 0 enriched edges; no candidate workbook, synthetic fixture or evaluation-only Provider route was promoted.
+- WBS 7.13 is **阻塞**, not 已完成. Resume only after an accepted Canonical import with active codes reaches develop; route enrichment requires documented batch/cache/retention/production rights. No nationwide expansion or auto-merge.
 
 TASK-022-A tracking (2026-09-09):
 
