@@ -350,6 +350,17 @@ test("route bans reject only with evaluated route modes", () => {
   );
   assert.equal(reject.constraintGate.status, "REJECT");
   assert.equal(unknown.constraintGate.status, "NEEDS_FACT");
+  const ambiguous = score(
+    values,
+    {},
+    {
+      constraints: { route: { evaluationRequired: true, modes: ["transit"] } },
+    },
+  );
+  assert.equal(ambiguous.constraintGate.status, "NEEDS_FACT");
+  assert.ok(
+    ambiguous.constraintGate.reasonCodes.includes("TRANSIT_SUBMODE_UNKNOWN"),
+  );
 });
 test("score binds all replay revisions and provenance", () => {
   const result = score(

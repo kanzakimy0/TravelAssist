@@ -195,7 +195,7 @@ function hardGate(
     else if (input.schedule.open !== true) needsFact.push("SCHEDULE_UNKNOWN");
   }
   if (input?.route?.evaluationRequired) {
-    if (!input.route.modes) needsFact.push("ROUTE_MODES_UNKNOWN");
+    if (!input.route.modes?.length) needsFact.push("ROUTE_MODES_UNKNOWN");
     else {
       const modes = input.route.modes;
       if (
@@ -209,6 +209,12 @@ function hardGate(
         reject.push("BUS_BANNED");
       if (preference.hardRouteBans.includes("ferry") && modes.includes("ferry"))
         reject.push("FERRY_BANNED");
+      if (
+        modes.includes("transit") &&
+        (preference.hardRouteBans.includes("bus") ||
+          preference.hardRouteBans.includes("ferry"))
+      )
+        needsFact.push("TRANSIT_SUBMODE_UNKNOWN");
     }
   }
   for (const fact of input?.criticalFacts ?? []) {
