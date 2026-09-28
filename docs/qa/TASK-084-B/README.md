@@ -50,7 +50,7 @@ Fixed archive SHA-256: N02 `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28
 | Gate | Result |
 | --- | --- |
 | Prior exact-head GitHub Quality Gate | Commit `9b34f3cd6984aa2d193df3759f86d25b20dbeae9`; run `36425815085`; **SUCCESS** |
-| New exact-head GitHub Quality Gate | Pending for this checkpoint; record after push |
+| Implementation exact-head GitHub Quality Gate | Commit `b2564aa7cccdb42e8f3a679e9718b64e2eb31d83`; run `36443717150`; **SUCCESS** |
 | Focused Python tests | PASS; N02 candidate 4/4 and phase-2 5/5 |
 | POI graph / routing tests | PASS; 15/15 and 28/28 |
 | Lint | PASS; 0 errors, 9 pre-existing unrelated warnings |
