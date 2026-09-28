@@ -68,7 +68,7 @@ def batchify(nodes):
 
 
 def hub_resolution_counts(nodes):
-    allowed = {"ACCEPTED", "UNRESOLVED", "SELF_GATEWAY", "NOT_APPLICABLE"}
+    allowed = {"ACCEPTED", "UNRESOLVED", "HUB_REVIEW_REQUIRED", "SELF_GATEWAY", "NOT_APPLICABLE"}
     counts = Counter()
     for node in nodes:
         status = node["hubResolutionStatus"]
@@ -80,12 +80,25 @@ def hub_resolution_counts(nodes):
             raise RuntimeError("ACCEPTED_HUB_PARENT_MISSING")
         if status != "ACCEPTED" and parent:
             raise RuntimeError("NON_ACCEPTED_HUB_HAS_PARENT")
-        if status in {"SELF_GATEWAY", "NOT_APPLICABLE"} and "PARENT_HUB_UNRESOLVED" in reasons:
+        if status in {"SELF_GATEWAY", "NOT_APPLICABLE"} and ("PARENT_HUB_UNRESOLVED" in reasons or "HUB_RELATION_UNRESOLVED" in reasons):
             raise RuntimeError("STANDALONE_GATEWAY_PARENT_UNRESOLVED")
+        if status == "ACCEPTED" and "HUB_RELATION_UNRESOLVED" in reasons:
+            raise RuntimeError("ACCEPTED_HUB_HAS_STALE_UNRESOLVED_REASON")
         if node["nodeKind"] == "ferry_port" and status != "SELF_GATEWAY":
             raise RuntimeError("FERRY_GATEWAY_HUB_STATUS_INVALID")
         counts[status] += 1
     return counts
+
+
+def validate_n03_rights(rights, nodes):
+    if rights["decision"] not in {"PASS_WITH_ATTRIBUTION", "APPROVAL_REQUIRED", "BLOCKED", "ALTERNATIVE_SOURCE_REQUIRED"}:
+        raise RuntimeError("N03_RIGHTS_DECISION_INVALID")
+    if rights["decision"] != "PASS_WITH_ATTRIBUTION":
+        if rights["productionJoinAllowed"] or any(node["prefectureCode"] is not None or node["municipalityCode"] is not None for node in nodes):
+            raise RuntimeError("ADMIN_ASSIGNMENT_BEFORE_RIGHTS_PASS")
+    elif (not rights["productionJoinAllowed"] or not rights["formalGsiConfirmationOnFile"]
+          or not rights.get("formalGsiDecisionRef") or not rights.get("attributionText")):
+        raise RuntimeError("N03_RIGHTS_PASS_EVIDENCE_MISSING")
 
 
 def write_or_verify(path, body, rebuild):
@@ -204,12 +217,37 @@ def process(args):
         elif decision["componentOrigin"] == "IMMUTABLE_SHINKANSEN_ID":
             if node_id not in old_shinkansen_ids or node["parentHubId"] is not None or node["hubResolutionStatus"] != "UNRESOLVED":
                 raise RuntimeError("ORIGINAL_SHINKANSEN_HUB_LINK_INVALID")
-            node_by_id[node_id] = {**node, "parentHubId": hub_id, "hubResolutionStatus": "ACCEPTED", "unresolvedReasons": [reason for reason in node["unresolvedReasons"] if reason != "PARENT_HUB_UNRESOLVED"]}
+            node_by_id[node_id] = {**node, "parentHubId": hub_id, "hubResolutionStatus": "ACCEPTED", "unresolvedReasons": [reason for reason in node["unresolvedReasons"] if reason not in {"PARENT_HUB_UNRESOLVED", "HUB_RELATION_UNRESOLVED"}]}
         else:
             raise RuntimeError("NATIONAL_HUB_COMPONENT_ORIGIN_INVALID")
         seen_new_decisions.add(node_id)
     if len(new_hub_decisions) != 54 or len(seen_new_decisions & old_shinkansen_ids) != 7 or len(seen_new_decisions & new_rail_ids) != 47:
         raise RuntimeError("NATIONAL_HUB_COMPONENT_COUNT_CHANGED")
+    review_stage = data / "task-084-b-shinkansen-hub-reviewed"
+    review_manifest = json.loads((review_stage / "manifest.json").read_text(encoding="utf-8"))
+    review_path = review_stage / "hub-resolution-decisions.jsonl"
+    review_decisions = rows(review_path)
+    pending_old_ids = {node_id for node_id in old_shinkansen_ids if node_by_id[node_id]["hubResolutionStatus"] == "UNRESOLVED"}
+    if (review_manifest["decisionCount"] != 94 or file_hash(review_path) != review_manifest["artifactSha256"]
+            or len(review_decisions) != 94 or {item["transportNodeId"] for item in review_decisions} != pending_old_ids):
+        raise RuntimeError("SHINKANSEN_HUB_REVIEW_INCOMPLETE")
+    for decision in review_decisions:
+        node_id = decision["transportNodeId"]
+        node = node_by_id[node_id]
+        status = decision["hubResolutionStatus"]
+        if (status not in {"SELF_GATEWAY", "HUB_REVIEW_REQUIRED"} or decision["parentHubId"] is not None
+                or decision["sameNameAloneUsed"] or decision["canonicalNameJa"] != node["canonicalNameJa"]
+                or decision["reviewRadiusM"] != 800 or not decision["decisionReason"]):
+            raise RuntimeError("SHINKANSEN_HUB_REVIEW_INVALID")
+        if status == "SELF_GATEWAY" and (not decision["officialStationGuide"] or decision["nearbyRailComponents"] or decision["nearbyShinkansenTransportNodeIds"]):
+            raise RuntimeError("SHINKANSEN_SELF_GATEWAY_EVIDENCE_INVALID")
+        if status == "HUB_REVIEW_REQUIRED" and decision["officialStationGuide"]:
+            raise RuntimeError("SHINKANSEN_REVIEW_GUIDE_CONFLICT")
+        remaining = [reason for reason in node["unresolvedReasons"] if reason != "HUB_RELATION_UNRESOLVED"]
+        if status == "HUB_REVIEW_REQUIRED":
+            remaining.append("HUB_REVIEW_REQUIRED")
+        node_by_id[node_id] = {**node, "hubResolutionStatus": status, "unresolvedReasons": remaining,
+                               "hubReviewReason": decision["decisionReason"]}
     expanded_hubs = []
     hierarchy_decisions = []
     for hub in hubs:
@@ -257,6 +295,7 @@ def process(args):
         "hub-hierarchy-decisions.jsonl": b"".join(canonical(item) for item in hierarchy_decisions),
         "hub-component-decisions.jsonl": b"".join(canonical(item) for item in hub_decisions + new_hub_decisions),
         "airport-hierarchy-decisions.jsonl": b"".join(canonical(item) for item in airport_decisions),
+        "hub-resolution-decisions.jsonl": b"".join(canonical(item) for item in review_decisions),
     }
     output = Path(args.output)
     chunks = batchify(nodes)
@@ -281,17 +320,22 @@ def process(args):
     kinds = Counter(node["nodeKind"] for node in nodes)
     levels = Counter(node["nodeLevel"] for node in nodes)
     hub_resolution = hub_resolution_counts(nodes)
+    rights_path = data.parent / "n03-2026-source-rights-decision.json"
+    rights = json.loads(rights_path.read_text(encoding="utf-8"))
+    validate_n03_rights(rights, nodes)
     manifest = {
         "task": "TASK-084-B", "nationalMasterStatus": "PARTIAL", "acceptedCount": len(nodes),
         "newAcceptedSincePreviousCheckpoint": 77,
         "nodeKindCounts": dict(sorted(kinds.items())), "nodeLevelCounts": {level: levels[level] for level in ["T0", "T1", "T2", "T3"]},
         "hubAcceptedCount": len(expanded_hubs), "hubLevelCounts": dict(sorted(Counter(hub["nodeLevel"] for hub in expanded_hubs).items())),
-        "hubUnresolvedNodeCount": hub_resolution["UNRESOLVED"],
-        "hubResolutionCounts": {status: hub_resolution[status] for status in ["ACCEPTED", "UNRESOLVED", "SELF_GATEWAY", "NOT_APPLICABLE"]},
+        "hubUnresolvedNodeCount": hub_resolution["UNRESOLVED"] + hub_resolution["HUB_REVIEW_REQUIRED"],
+        "hubResolutionCounts": {status: hub_resolution[status] for status in ["ACCEPTED", "UNRESOLVED", "HUB_REVIEW_REQUIRED", "SELF_GATEWAY", "NOT_APPLICABLE"]},
+        "n03RightsDecision": rights["decision"], "n03RightsDecisionSha256": file_hash(rights_path),
+        "shinkansenHubReviewManifestSha256": file_hash(review_stage / "manifest.json"),
         "currentPrefectureCoverageCount": sum(node["prefectureCode"] is not None for node in nodes),
         "currentMunicipalityCoverageCount": sum(node["municipalityCode"] is not None for node in nodes),
         "coordinateRoleCoverageCount": sum(bool(node["coordinateRole"]) for node in nodes),
-        "licenseBlockedDatasetCount": 3,
+        "licenseBlockedDatasetCount": 2, "licenseApprovalRequiredDatasetCount": 1,
         "batchSize": BATCH_SIZE, "batches": batch_manifest,
         "originalNodeLedgerSha256": ORIGINAL_NODE_LEDGER_SHA, "originalHubLedgerSha256": ORIGINAL_HUB_LEDGER_SHA,
         "railLedgerSha256": file_hash(rail_ledger), "airportLedgerSha256": file_hash(airport_ledger), "regionalAirportLedgerSha256": file_hash(regional_airport_ledger), "ferryLedgerSha256": file_hash(ferry_ledger), "nationalRailLedgerSha256": file_hash(national_rail_ledger), "nationalHubLedgerSha256": file_hash(national_hub_ledger), "busLedgerSha256": file_hash(bus_ledger), "cableLedgerSha256": file_hash(cable_ledger), "gtfsSourceLicenseRegistrySha256": file_hash(gtfs_registry),

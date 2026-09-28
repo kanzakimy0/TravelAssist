@@ -22,6 +22,7 @@ airport = load_script("task084_airport", ROOT / "tools" / "transport" / "task-08
 ferry = load_script("task084_ferry", ROOT / "tools" / "transport" / "task-084-fukuoka-ferry.py")
 bus = load_script("task084_bus", ROOT / "tools" / "transport" / "task-084-nagasaki-bus.py")
 cable = load_script("task084_cable", ROOT / "tools" / "transport" / "task-084-tourism-cable.py")
+hub_review = load_script("task084_hub_review", ROOT / "tools" / "transport" / "task-084-review-shinkansen-hubs.py")
 
 
 class Task084Phase2Tests(unittest.TestCase):
@@ -85,11 +86,54 @@ class Task084Phase2Tests(unittest.TestCase):
         self.assertTrue(all(node["hubResolutionStatus"] == "SELF_GATEWAY" and "PARENT_HUB_UNRESOLVED" not in node["unresolvedReasons"] for node in by_kind["ferry_port"]))
         self.assertTrue(all(node["hubResolutionStatus"] == "SELF_GATEWAY" for node in by_kind["airport"]))
         counts = master.hub_resolution_counts(nodes)
-        self.assertEqual(counts["UNRESOLVED"], 94)
-        self.assertEqual(counts["SELF_GATEWAY"], 65)
+        self.assertEqual(counts["UNRESOLVED"], 0)
+        self.assertEqual(counts["HUB_REVIEW_REQUIRED"], 80)
+        self.assertEqual(counts["SELF_GATEWAY"], 79)
         self.assertEqual(counts["ACCEPTED"], 85)
-        self.assertTrue(all(node["nodeKind"] in {"shinkansen_station", "rail_station", "metro_station", "private_rail_station"} for node in nodes if node["hubResolutionStatus"] == "UNRESOLVED"))
+        self.assertTrue(all(node["nodeKind"] == "shinkansen_station" and node["hubReviewReason"] for node in nodes if node["hubResolutionStatus"] == "HUB_REVIEW_REQUIRED"))
         self.assertTrue(all(node["parentHubId"] for node in nodes if node["hubResolutionStatus"] == "ACCEPTED"))
+        self.assertTrue(all("HUB_RELATION_UNRESOLVED" not in node["unresolvedReasons"] for node in nodes if node["hubResolutionStatus"] in {"ACCEPTED", "SELF_GATEWAY"}))
+
+    def test_shinkansen_hub_review_complete_and_no_silent_parent_rebind(self):
+        original = master.rows(DATA / "task-084-b-accepted" / "transport-nodes.jsonl")
+        combined = {node["transportNodeId"]: node for node in master.rows(DATA / "task-084-b-national-master" / "transport-nodes.jsonl")}
+        decisions = master.rows(DATA / "task-084-b-shinkansen-hub-reviewed" / "hub-resolution-decisions.jsonl")
+        old_accepted = {node["transportNodeId"] for node in original if node["hubResolutionStatus"] == "ACCEPTED"}
+        national_links = {item["transportNodeId"] for item in master.rows(DATA / "task-084-b-national-rail-accepted" / "hub-component-decisions.jsonl") if item["componentOrigin"] == "IMMUTABLE_SHINKANSEN_ID"}
+        self.assertEqual(len(decisions), 94)
+        self.assertEqual({item["transportNodeId"] for item in decisions}, {node["transportNodeId"] for node in original} - old_accepted - national_links)
+        self.assertTrue(all(not item["sameNameAloneUsed"] and item["parentHubId"] is None and item["reviewRadiusM"] == 800 for item in decisions))
+        self.assertEqual(sum(item["hubResolutionStatus"] == "SELF_GATEWAY" for item in decisions), 14)
+        self.assertTrue(all(combined[item["transportNodeId"]]["parentHubId"] is None for item in decisions))
+        for name in ["品川", "米原", "三島", "八戸", "郡山", "高崎", "新青森", "上越妙高", "豊橋", "長岡", "越後湯沢"]:
+            selected = [item for item in decisions if item["canonicalNameJa"] == name]
+            self.assertTrue(selected, name)
+            self.assertTrue(all(item["hubResolutionStatus"] == "HUB_REVIEW_REQUIRED" and (item["nearbyRailComponents"] or item["nearbyShinkansenTransportNodeIds"]) for item in selected), name)
+        for name in hub_review.SELF_GUIDES:
+            selected = [item for item in decisions if item["canonicalNameJa"] == name]
+            self.assertEqual(len(selected), 1)
+            self.assertEqual(selected[0]["hubResolutionStatus"], "SELF_GATEWAY")
+            self.assertTrue(selected[0]["officialStationGuide"])
+
+    def test_hub_review_decision_requires_spatial_and_guide_evidence(self):
+        node = {"transportNodeId": "t:1", "canonicalNameJa": "七戸十和田"}
+        standalone = hub_review.decide(node, [], [])
+        self.assertEqual(standalone["hubResolutionStatus"], "SELF_GATEWAY")
+        self.assertEqual(hub_review.decide(node, [{"name": "rail", "operator": "JR", "line": "local", "distanceM": 50}], [])["hubResolutionStatus"], "HUB_REVIEW_REQUIRED")
+        self.assertEqual(hub_review.decide(node, [], ["t:2"])["hubResolutionStatus"], "HUB_REVIEW_REQUIRED")
+        self.assertEqual(hub_review.decide({"transportNodeId": "t:3", "canonicalNameJa": "unknown"}, [], [])["hubResolutionStatus"], "HUB_REVIEW_REQUIRED")
+
+    def test_n03_rights_gate_fails_closed(self):
+        rights = json.loads((DATA.parent / "n03-2026-source-rights-decision.json").read_text(encoding="utf-8"))
+        nodes = master.rows(DATA / "task-084-b-national-master" / "transport-nodes.jsonl")
+        self.assertEqual(rights["decision"], "APPROVAL_REQUIRED")
+        master.validate_n03_rights(rights, nodes)
+        altered = dict(rights, productionJoinAllowed=True)
+        with self.assertRaisesRegex(RuntimeError, "ADMIN_ASSIGNMENT_BEFORE_RIGHTS_PASS"):
+            master.validate_n03_rights(altered, nodes)
+        altered = dict(rights, decision="PASS_WITH_ATTRIBUTION", productionJoinAllowed=True)
+        with self.assertRaisesRegex(RuntimeError, "N03_RIGHTS_PASS_EVIDENCE_MISSING"):
+            master.validate_n03_rights(altered, nodes)
 
     def test_master_resume_selected_rebuild_corruption_and_batch_limit(self):
         self.assertEqual([len(chunk) for chunk in master.batchify(list(range(205)))], [200, 5])
@@ -104,7 +148,9 @@ class Task084Phase2Tests(unittest.TestCase):
             self.assertEqual(manifest["newAcceptedSincePreviousCheckpoint"], 77)
             self.assertEqual(manifest["nodeLevelCounts"], {"T0": 8, "T1": 40, "T2": 196, "T3": 0})
             self.assertEqual(manifest["hubLevelCounts"], {"T0": 10, "T1": 11})
-            self.assertEqual(manifest["hubUnresolvedNodeCount"], 94)
+            self.assertEqual(manifest["hubUnresolvedNodeCount"], 80)
+            self.assertEqual(manifest["n03RightsDecision"], "APPROVAL_REQUIRED")
+            self.assertEqual((manifest["licenseBlockedDatasetCount"], manifest["licenseApprovalRequiredDatasetCount"]), (2, 1))
             self.assertEqual([len(master.rows(output / "batches" / f"batch-{i:04}.jsonl")) for i in (1, 2)], [200, 44])
             master.process(args)
             args.rebuild = True

@@ -1063,8 +1063,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 TASK-084-B execution checkpoint (2026-09-28):
 
 - 从 `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8` 启动独立分支；国土交通省 N02 2025 铁路数据许可为 CC BY 4.0。110 个新干线 station component 已采用 TravelAssist 自有身份账本验收为 TransportNode，保留 200/batch 回执、校验和及显式未决清单。
-- 保留原有 110 个节点 ID 和 5 个 Hub ID；在已验收的 167 节点基础上新增 47 个全国主要铁路组件、19 个地方机场、5 个长崎主要巴士终端和 6 个旅游缆车站点，合计 244 个 NODE_ACCEPTED、21 个 Hub。实际批次为 200 + 44。Hub 显式关联 85 节点，94 个铁路组件仍未决；65 个机场、渡船、巴士及缆车独立网关不计入 Hub 未决。机场历史参考点与当前身份分离，并独立复核 47 个机场层级。
-- 行政区因 N03/GSI 二次利用条件待确认未导入（当前 0/244）；全国 Bus、其他岛屿渡船、ropeway/shuttle 及旅游走廊仍缺覆盖。084 仍 PARTIAL；085/086 严格保持未开始。实现 head `b2564aa7cccdb42e8f3a679e9718b64e2eb31d83` 的 Quality Gate run `36443717150` 为 SUCCESS。详情见 [Result](../tasks/RESULT-TASK-084-b-japan-transport-node-master.md)、[QA](../qa/TASK-084-B/README.md) 与 [全国覆盖审计](../qa/TASK-084-B/national-coverage-audit.md)。
+- 保留原有 110 个节点 ID 和 5 个 Hub ID；在已验收的 167 节点基础上新增 47 个全国主要铁路组件、19 个地方机场、5 个长崎主要巴士终端和 6 个旅游缆车站点，合计 244 个 NODE_ACCEPTED、21 个 Hub。实际批次为 200 + 44。Hub 显式关联 85 节点；原 94 个待审新干线组件逐项复核后，14 个列为独立网关、80 个保留 `HUB_REVIEW_REQUIRED`，均记录附近组件证据，且不自动改绑父 Hub。独立网关合计 79 个。机场历史参考点与当前身份分离，并独立复核 47 个机场层级。
+- N03/GSI 正式权利判定为内部 `APPROVAL_REQUIRED`，需要 GSI 对指定点在面内行政区派生操作的书面确认；这是 fail-closed Gate，不是法律结论。行政区未导入（当前 0/244），在许可和行政区关联完成前冻结节点扩张；全国 Bus、其他岛屿渡船、ropeway/shuttle 及旅游走廊仍缺覆盖。084 仍 PARTIAL；085/086 严格保持未开始。上一最终 PR head `2481cec58d795d98ee06202e755a2b0fb52e3564` 的 exact-head Quality Gate run `36444366196` 为 SUCCESS；实现 head `b2564aa7cccdb42e8f3a679e9718b64e2eb31d83` 的 run `36443717150` 保留为历史证据。详情见 [Result](../tasks/RESULT-TASK-084-b-japan-transport-node-master.md)、[QA](../qa/TASK-084-B/README.md) 与 [全国覆盖审计](../qa/TASK-084-B/national-coverage-audit.md)。
 
 TASK-082-A tracking (2026-09-27):
 

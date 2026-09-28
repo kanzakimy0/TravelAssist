@@ -1,0 +1,28 @@
+{
+  "task": "TASK-084-B",
+  "source": "MLIT N03 2026 administrative boundaries",
+  "sourceDate": "2026-01-01",
+  "sourceLicense": "CC BY 4.0 with GSI survey-product notice",
+  "proposedOperation": "Use the N03 2026 polygons locally for deterministic point-in-polygon assignment of prefecture name/code and municipality name/code to the 244 accepted TransportNode representative points; persist only derived assignments and source/version/procedure provenance, and redistribute no polygon geometry.",
+  "decision": "APPROVAL_REQUIRED",
+  "decisionMeaning": "Internal fail-closed production gate pending a written GSI determination; this is not a legal conclusion that approval is categorically required.",
+  "formalGsiConfirmationRequired": true,
+  "formalGsiConfirmationOnFile": false,
+  "formalGsiDecisionRef": null,
+  "attributionText": null,
+  "productionJoinAllowed": false,
+  "polygonRedistributionAllowed": false,
+  "reason": "The MLIT N03 page states that GSI secondary use may require an application. The GSI Q&A distinguishes products made under reproduction approval from those made under use approval. N03 carries a reproduction approval number. The navigator's coordinate-bearing/public-distribution branches do not clearly settle this exact derived attribute join. The CC BY 4.0 notice alone does not resolve the GSI condition.",
+  "questionForGsi": "For a CC BY 4.0 N03 2026 dataset carrying GSI reproduction approval R 7JHf 351, may a commercial service run point-in-polygon locally on 244 independently sourced station/airport/terminal coordinates, store and publish only derived prefecture/municipality names and codes with N03/GSI attribution and method provenance, and distribute no N03 polygons, without a new Survey Act application? If an application is required, which reproduction/use category applies to this operation?",
+  "sourceRefs": [
+    "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html",
+    "https://www.gsi.go.jp/LAW/2930-index.html",
+    "https://www.gsi.go.jp/LAW/2930-qa.html",
+    "https://service.gsi.go.jp/onestop/navi/nav1/",
+    "https://service.gsi.go.jp/onestop/navi/nav5-1/",
+    "https://service.gsi.go.jp/onestop/navi/nav5-2/",
+    "https://service.gsi.go.jp/onestop/navi/nav5-3/",
+    "https://service.gsi.go.jp/onestop/navi/nav5-5/"
+  ],
+  "requiredNextEvidence": "Written GSI decision for the described operation, or an independently reviewed alternative source and rights record."
+}

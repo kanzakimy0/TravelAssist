@@ -1,19 +1,19 @@
 # TASK-084-B national coverage audit — 2026-09-28
 
-Status: **PARTIAL**. The 244 accepted nodes are a selected network seed. This audit checks Node inventory only, with no route times, fares, timetable, frequency or walking edges.
+Status: **PARTIAL**. The 244 accepted nodes are a selected network seed. This audit checks Node inventory only, with no route times, fares, timetable, frequency or walking edges. Node expansion is frozen pending the N03/GSI rights and administrative gates.
 
 ## Layer audit
 
 | Layer | Accepted | Remaining national gap |
 | --- | ---: | --- |
-| Shinkansen station components | 110 | 94 rail/station components still lack reviewed Hub relationships |
+| Shinkansen station components | 110 | Of 94 previously unclassified components, 14 are operator-supported standalone gateways and 80 require further Hub/transfer review |
 | Conventional rail / metro / private rail | 40 / 20 / 9 | Selected 21 Hub areas, not all major intercity or metro networks |
 | Airports | 47 | 28 A plus 19 tourism-relevant B; airport-to-city bus/rail readiness incomplete; C28 coordinates historical |
 | Major bus terminals | 5 | Nagasaki selection only; Tokyo, Shinjuku, Nagoya, Osaka, Kyoto, Hiroshima, Fukuoka, Kumamoto and other regions need licensed facility sources |
 | Ferry gateways | 7 | Fukuoka City only; Okinawa, Setouchi, Goto, Amami, Yakushima/Tanegashima and Hokkaido islands unresolved |
 | Tourism special transport | 6 | Selected Takao, Tsukuba, Hiei funiculars; ropeways, other mountain/volcano/onsen and tourist shuttles unresolved |
 
-Twenty-one reviewed Hub identities have 85 explicitly linked station components and T0/T1 counts of 10/11. The 65 airport, bus, ferry and cable self gateways have no required parent Hub. The original 110 node and five Hub IDs remain immutable. TransportNode T0/T1/T2/T3 counts are 8/40/196/0; they are separate from Hub hierarchy.
+Twenty-one reviewed Hub identities have 85 explicitly linked station components and T0/T1 counts of 10/11. There are 79 self gateways, including 65 airport, bus, ferry and cable gateways and 14 reviewed Shinkansen standalone stations. The 80 `HUB_REVIEW_REQUIRED` records have per-ID reasons and proximity evidence; no parent is assigned from proximity or name alone. The original 110 node and five Hub IDs remain immutable. TransportNode T0/T1/T2/T3 counts are 8/40/196/0; they are separate from Hub hierarchy.
 
 ## Administrative coverage: all 47 prefectures
 
@@ -69,7 +69,7 @@ Current prefecture and municipality fields are **0/244**. The third column below
 | 46 | 鹿児島 | 0 | 4 |
 | 47 | 沖縄 | 0 | 5 |
 
-The [N03 2026 source](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html) says GSI secondary use may require an application. No N03 polygon or persisted spatial join is in the production master. Until a rights determination or an admissible alternative source and a validated assignment are available, the 47-prefecture gate cannot PASS.
+The [N03/GSI decision](n03-gsi-rights-decision.md) is `APPROVAL_REQUIRED` as an internal fail-closed gate pending written GSI confirmation for the exact derived-attribute operation. No N03 polygon or persisted spatial join is in the production master. Until that rights gate or an admissible alternative source and validated assignment are available, the 47-prefecture gate cannot PASS.
 
 ## Tourism and intermodal spot checks
 

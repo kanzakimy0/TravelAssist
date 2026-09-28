@@ -19,6 +19,7 @@ python tools/transport/task-084-national-rail-hubs.py --zip $n02 --shinkansen-no
 python tools/transport/task-084-airport-phase2.py --current-html $airports --c28-zip $c28 --a-airports data/transport/nodes/task-084-b-airport-accepted/transport-nodes.jsonl --ledger data/transport/nodes/transport-regional-airport-identity-ledger.jsonl --output data/transport/nodes/task-084-b-regional-airport-accepted
 python tools/transport/task-084-nagasaki-bus.py --zip $bus --ledger data/transport/nodes/transport-nagasaki-bus-identity-ledger.jsonl --output data/transport/nodes/task-084-b-nagasaki-bus-accepted
 python tools/transport/task-084-tourism-cable.py --zip $n02 --ledger data/transport/nodes/transport-tourism-cable-identity-ledger.jsonl --output data/transport/nodes/task-084-b-tourism-cable-accepted
+python tools/transport/task-084-review-shinkansen-hubs.py --zip $n02 --data data/transport/nodes --output data/transport/nodes/task-084-b-shinkansen-hub-reviewed
 python tools/transport/task-084-build-master.py --data data/transport/nodes --output data/transport/nodes/task-084-b-national-master
 python tests/task-084-b-n02-candidates.test.py
 python tests/task-084-b-phase2.test.py
@@ -39,8 +40,9 @@ Fixed archive SHA-256: N02 `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28
 | Bus terminals | 5 reviewed Nagasaki bus/airport terminal facilities from licensed current GTFS; ordinary stops excluded |
 | Tourism cable | 6 selected Takao, Tsukuba and Hiei funicular stations, N02 representative points and operator guide reviews |
 | Combined master | 244 accepted, 0 duplicate IDs; actual batches 200 + 44 |
-| Hubs | 21 accepted, 85 linked nodes, 94 unresolved station components, 65 independent self gateways |
-| Current administrative assignment | 0/244 prefecture and 0/244 municipality; N03/GSI rights review still required |
+| Hubs | 21 accepted, 85 linked nodes, 80 review-required Shinkansen components, 79 independent self gateways; 0 generic unresolved |
+| Shinkansen semantics | 94 per-ID decisions: 14 operator-supported standalone gateways, 80 needing explicit transfer review; no parent rebind |
+| Current administrative assignment | 0/244 prefecture and 0/244 municipality; [N03/GSI decision](n03-gsi-rights-decision.md) `APPROVAL_REQUIRED` pending formal confirmation |
 | National gate | PARTIAL; see [coverage audit](national-coverage-audit.md) |
 
 [MLIT N02 2025](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html), [MLIT C28 2021](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-C28-2021.html), [Fukuoka ferry](https://data.bodik.jp/dataset/9938b52c-e54c-4d92-9975-a98c5f60e727), and [Nagasaki bus](https://data.bodik.jp/dataset/420000_nagasakikeneibus) are the accepted data sources with attribution requirements. [N09](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N09.html) remains excluded for noncommercial terms. [N03 2026](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html) warns that GSI secondary use may require an application; no polygon or persisted join is admitted. [Shimoden ODPT](https://ckan.odpt.org/dataset/shimoden_shimoden_bus_gtfs_realtime) remains blocked by provider-specific terms. [Sakurajima Ferry GTFS](https://ckan.odpt.org/dataset/kagoshima_city_maritime_bureau_all_lines) is CC BY 4.0 but presently requires developer registration to retrieve and verify a feed, so it is source-unresolved and not admitted.
@@ -50,12 +52,13 @@ Fixed archive SHA-256: N02 `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28
 | Gate | Result |
 | --- | --- |
 | Prior exact-head GitHub Quality Gate | Commit `9b34f3cd6984aa2d193df3759f86d25b20dbeae9`; run `36425815085`; **SUCCESS** |
-| Implementation exact-head GitHub Quality Gate | Commit `b2564aa7cccdb42e8f3a679e9718b64e2eb31d83`; run `36443717150`; **SUCCESS** |
-| Focused Python tests | PASS; N02 candidate 4/4 and phase-2 5/5 |
+| Prior final PR exact-head GitHub Quality Gate | Commit `2481cec58d795d98ee06202e755a2b0fb52e3564`; run `36444366196`; **SUCCESS** |
+| Historical implementation exact-head GitHub Quality Gate | Commit `b2564aa7cccdb42e8f3a679e9718b64e2eb31d83`; run `36443717150`; **SUCCESS** |
+| Focused Python tests | PASS; N02 candidate 4/4 and phase-2 8/8, including 94 per-ID decisions and N03 rights fail-closed gate |
 | POI graph / routing tests | PASS; 15/15 and 28/28 |
 | Lint | PASS; 0 errors, 9 pre-existing unrelated warnings |
 | Typecheck / production build | PASS / PASS |
 | Actual 200-node batching, resume, selected batch 2 rebuild, checksum and corruption rejection | PASS; 200 + 44 verified |
 | Staged secret pattern scan / `git diff --cached --check` | PASS / PASS |
 
-Candidate QA, individual NODE_ACCEPTED decisions and NATIONAL_MASTER_PASS are separate gates. The latest combined manifest records `nationalMasterStatus=PARTIAL`. PR #448 must remain Draft and unmerged.
+Candidate QA, individual NODE_ACCEPTED decisions and NATIONAL_MASTER_PASS are separate gates. The latest combined manifest records `nationalMasterStatus=PARTIAL`. Node expansion is frozen until N03/GSI rights and administrative assignment are resolved. PR #448 must remain Draft and unmerged.
