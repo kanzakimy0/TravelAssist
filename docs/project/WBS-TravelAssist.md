@@ -1038,7 +1038,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |
 | 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 已完成（#434 / TASK-082-B；用户验收，PR #435 normal merge；只读投影范围） |
 
-## 7. 地图、地点、路线与推荐（A 全责）
+## 7. 地图、地点、路线与推荐（A Runtime 主责；B 离线交通数据生产例外）
 
 | WBS ID | 工作项                        | 负责人 | 优先级 | 依赖     | 状态   |
 | ------ | ----------------------------- | ------ | ------ | -------- | ------ |
@@ -1055,7 +1055,10 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
-| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；Phase A 等待 #444 同步最新 develop + 人工验收合入后跑真实 100/500 POI→POI；Phase B 等待 B TransportNode 数据合流；Provider 权限仍 fail-closed） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.5 | 未开始（#441 / TASK-084-B；可立即执行；初始验收不等待 #444；T0/T1/T2 全国骨架） |
+| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；需 084 PASS + admitted Canonical POIs；首轮可跑 100 POI） |
+| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；084 PASS 后可执行，不依赖 #444；禁止 N×N） |
 
 TASK-082-A tracking (2026-09-27):
 
@@ -1064,6 +1067,16 @@ TASK-082-A tracking (2026-09-27):
 - 明确禁止全国 POI N×N 全连；默认 Pilot 目标 500 Canonical POI、每 POI 约 40~80 条候选有向边，实际数量以正式 Canonical Registry 为准。
 - Provider 批量查询、cache、retention 或 production 权限不明确时必须 fail-closed；不得用 candidate/enrichment workbook 冒充 Canonical POI。
 - Task：`docs/tasks/TASK-082-a-poi-edge-graph-generation-pilot.md`；Branch：`feature/a-poi-edge-graph-generation-pilot`；未授权自动合并。
+
+POI / Transport parallel execution amendment (2026-09-28):
+
+- Governance fix PR #446 已合入 develop；feature/** 自动 PR 必须 Draft，仓库通用自动合并路径已删除。
+- TASK-082-A 拆为两阶段：Phase A = admitted Canonical POI 的真实 POI→POI local graph；Phase B = 接入 B 的 TransportNode / Access / Backbone 数据后做最终集成验收。
+- TASK-084-B / #441 可立即执行，不等待 #444；初始验收以 T0/T1/T2 全国交通节点骨架、identity、provenance、connectivity 为准，POI-driven T3 扩展可后补。
+- TASK-085-B / #442 需要 084 PASS + Canonical POIs 正式进入 develop；首轮可处理 100 POI，不等待 500。
+- TASK-086-B / #443 仅需 084 PASS + 7.5，可与 A 的 100 POI local-edge Pilot 并行。
+- PR #444 当前 Draft/Open 且旧 exact-head Quality Gate #475 成功，但该分支相对 current develop 已 diverged；必须先正常同步最新 develop、完整复验并取得新的 exact-head Quality Gate，旧 Gate 不作为当前合并依据。
+- 执行修订：`docs/tasks/AMENDMENT-TASK-082-a-parallel-local-edge-transport-integration-v1.md`；并行计划：`docs/tasks/EXECUTION-PLAN-POI-TRANSPORT-GRAPH-PARALLEL-2026-09-28.md`。
 
 TASK-082-A execution update (2026-09-28):
 
