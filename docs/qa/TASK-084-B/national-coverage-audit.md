@@ -1,36 +1,88 @@
 # TASK-084-B national coverage audit — 2026-09-28
 
-Status: **PARTIAL**. The 167 accepted TransportNodes are a selected network seed, not a complete national Planner inventory. This checklist is QA only; corridor examples do not drive the candidate selection scripts.
+Status: **PARTIAL**. The 244 accepted nodes are a selected network seed. This audit checks Node inventory only, with no route times, fares, timetable, frequency or walking edges.
+
+## Layer audit
 
 | Layer | Accepted | Remaining national gap |
 | --- | ---: | --- |
-| Shinkansen station components | 110 | Hub relationships unresolved for 101 |
-| Major conventional JR components | 14 | Only five pre-existing Shinkansen transfer hubs reviewed |
-| Metro components | 5 | Only five pre-existing hubs reviewed |
-| Private railway components | 3 | Only five pre-existing hubs reviewed |
-| Airports | 28 | Aviation Bureau A-class airports only; 2021 C28 reference points are explicitly historical; terminal components pending |
-| Major bus terminals | 0 | No major terminal selected from a licensed feed |
-| Ferry gateways | 7 | Fukuoka municipal ferry only; N09 excluded |
-| Ropeway, cable car, funicular, tourist shuttle | 0 | Sources and tourism relevance pending |
+| Shinkansen station components | 110 | 94 rail/station components still lack reviewed Hub relationships |
+| Conventional rail / metro / private rail | 40 / 20 / 9 | Selected 21 Hub areas, not all major intercity or metro networks |
+| Airports | 47 | 28 A plus 19 tourism-relevant B; airport-to-city bus/rail readiness incomplete; C28 coordinates historical |
+| Major bus terminals | 5 | Nagasaki selection only; Tokyo, Shinjuku, Nagoya, Osaka, Kyoto, Hiroshima, Fukuoka, Kumamoto and other regions need licensed facility sources |
+| Ferry gateways | 7 | Fukuoka City only; Okinawa, Setouchi, Goto, Amami, Yakushima/Tanegashima and Hokkaido islands unresolved |
+| Tourism special transport | 6 | Selected Takao, Tsukuba, Hiei funiculars; ropeways, other mountain/volcano/onsen and tourist shuttles unresolved |
 
-The master has five accepted hub identities. The expanded view has 31 explicitly linked station components: 9 prior Shinkansen and 22 new conventional/metro/private. Its reviewed hierarchy is 3 T0 (Tokyo, Shin-Osaka, Hakata) and 2 T1 (Kyoto, Omiya). The immutable original hub ledger retains its preliminary T0 fields; the national master hierarchy decision file supersedes those fields without changing a `hubId`.
+Twenty-one reviewed Hub identities have 85 explicitly linked station components and T0/T1 counts of 10/11. The 65 airport, bus, ferry and cable self gateways have no required parent Hub. The original 110 node and five Hub IDs remain immutable. TransportNode T0/T1/T2/T3 counts are 8/40/196/0; they are separate from Hub hierarchy.
 
-Current prefecture assignment: **0/167**. Current municipality assignment: **0/167**. C28 holds historical administrative codes for the 28 airports, spanning 21 prefecture prefixes, but these are not promoted to current administrative assignments. The N03/GSI secondary-use decision remains pending. Therefore the 47-prefecture administrative coverage gate is unverified.
+## Administrative coverage: all 47 prefectures
 
-## Corridor spot checks
+Current prefecture and municipality fields are **0/244**. The third column below is only a historical C28 airport crosswalk count and must not be treated as current assignment or as complete transport coverage. Every prefecture remains unverified at the current administrative gate.
 
-| Corridor or gateway | Current evidence | Gap |
+| Code | Prefecture | Current assigned nodes | Historical C28 airport crosswalks |
+| --- | --- | ---: | ---: |
+| 01 | 北海道 | 0 | 8 |
+| 02 | 青森 | 0 | 1 |
+| 03 | 岩手 | 0 | 0 |
+| 04 | 宮城 | 0 | 1 |
+| 05 | 秋田 | 0 | 1 |
+| 06 | 山形 | 0 | 1 |
+| 07 | 福島 | 0 | 0 |
+| 08 | 茨城 | 0 | 0 |
+| 09 | 栃木 | 0 | 0 |
+| 10 | 群馬 | 0 | 0 |
+| 11 | 埼玉 | 0 | 0 |
+| 12 | 千葉 | 0 | 1 |
+| 13 | 東京 | 0 | 2 |
+| 14 | 神奈川 | 0 | 0 |
+| 15 | 新潟 | 0 | 1 |
+| 16 | 富山 | 0 | 1 |
+| 17 | 石川 | 0 | 0 |
+| 18 | 福井 | 0 | 0 |
+| 19 | 山梨 | 0 | 0 |
+| 20 | 長野 | 0 | 1 |
+| 21 | 岐阜 | 0 | 0 |
+| 22 | 静岡 | 0 | 1 |
+| 23 | 愛知 | 0 | 1 |
+| 24 | 三重 | 0 | 0 |
+| 25 | 滋賀 | 0 | 0 |
+| 26 | 京都 | 0 | 0 |
+| 27 | 大阪 | 0 | 2 |
+| 28 | 兵庫 | 0 | 1 |
+| 29 | 奈良 | 0 | 0 |
+| 30 | 和歌山 | 0 | 0 |
+| 31 | 鳥取 | 0 | 0 |
+| 32 | 島根 | 0 | 1 |
+| 33 | 岡山 | 0 | 1 |
+| 34 | 広島 | 0 | 1 |
+| 35 | 山口 | 0 | 1 |
+| 36 | 徳島 | 0 | 0 |
+| 37 | 香川 | 0 | 1 |
+| 38 | 愛媛 | 0 | 1 |
+| 39 | 高知 | 0 | 1 |
+| 40 | 福岡 | 0 | 2 |
+| 41 | 佐賀 | 0 | 0 |
+| 42 | 長崎 | 0 | 3 |
+| 43 | 熊本 | 0 | 1 |
+| 44 | 大分 | 0 | 1 |
+| 45 | 宮崎 | 0 | 1 |
+| 46 | 鹿児島 | 0 | 4 |
+| 47 | 沖縄 | 0 | 5 |
+
+The [N03 2026 source](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html) says GSI secondary use may require an application. No N03 polygon or persisted spatial join is in the production master. Until a rights determination or an admissible alternative source and a validated assignment are available, the 47-prefecture gate cannot PASS.
+
+## Tourism and intermodal spot checks
+
+| Gateway or corridor | Accepted evidence | Open question |
 | --- | --- | --- |
-| Tokyo | Core rail/metro hub and Tokyo international airport | More metro/private rail, airport access railway and bus |
-| Yokohama, Hakone, Kawaguchiko | Shinkansen line coverage near some corridors | Local rail and tourism gateway nodes |
-| Nagoya | Shinkansen components and Chubu airport | Central rail/metro hub and airport access |
-| Kyoto, Osaka, Kobe, Nara | Kyoto and Shin-Osaka hubs; Kansai/Osaka airports | Osaka/Umeda, Kobe, Nara and tourism corridors |
-| Hiroshima | Shinkansen components and airport | Conventional rail/bus transfer |
-| Fukuoka | Hakata hub, Fukuoka airport and seven city ferry gateways | Bus and wider ferry/island networks |
-| Kumamoto, Kagoshima | Shinkansen components and airports | City rail and tourism connections |
-| Kanazawa, Sendai, Sapporo, Hakodate | Some Shinkansen components and regional airports | Major central rail and metro hubs |
-| Okinawa and other islands | Naha airport; Fukuoka island ferry example | Okinawa and other island ferry/bus gateways |
+| Tokyo / Shinjuku / Ueno / Shibuya / Ikebukuro | Reviewed rail Hub components and Tokyo-area airports | Airport-to-city links and major bus terminal identities |
+| Sapporo / Sendai / Kanazawa / Nagoya / Yokohama | Reviewed rail Hub components; selected airports | Metro breadth, airport access and bus terminal facilities |
+| Osaka / Umeda / Kyoto / Kobe / Nara | Separate reviewed rail Hub identities, regional airports | Airport-to-city and tourism corridor access |
+| Hiroshima / Kumamoto / Kagoshima-Chuo | Reviewed rail Hub components and airports | Setouchi/island ferries and bus transfers |
+| Nagasaki / Sasebo / Goto | Five licensed bus/airport terminals; selected airports | Goto ferry gateways and corridor readiness |
+| Takao / Tsukuba / Hiei | Six funicular station identities | Ropeway continuation and walking transfers remain outside this task |
+| Okinawa / Amami / Setouchi / Hokkaido islands | Selected airport identities | Licensed ferry gateway feeds and port terminal coordinates |
 
-The accepted artifacts do not assert connectivity between modes, route times, pedestrian access or service frequency. TASK-085-B and TASK-086-B remain unstarted.
+The [Nagasaki Prefecture bus GTFS](https://data.bodik.jp/dataset/420000_nagasakikeneibus) permits attributed reuse and supports five facility identities. [Sakurajima Ferry](https://ckan.odpt.org/dataset/kagoshima_city_maritime_bureau_all_lines) has CC BY 4.0 terms but its feed needs developer registration before source and stop validation. [N09](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N09.html) is noncommercial; [Shimoden ODPT](https://ckan.odpt.org/dataset/shimoden_shimoden_bus_gtfs_realtime) has provider-specific restrictions. These are source gates, not rejected candidate identities.
 
-Source-unresolved coverage remains explicit: major bus terminals lack a selected admissible feed; ferry and island services outside Fukuoka need provider-specific licensed sources; tourism special transport has no admitted source; and current administrative boundaries await an N03/GSI rights decision or a licensed alternative. These are coverage gaps, not rejected node identities.
+TASK-084 nationalMasterStatus stays PARTIAL. TASK-086-B requires national PASS. TASK-085-B additionally requires a formally available Canonical POI Registry; PR #444 remains Draft.

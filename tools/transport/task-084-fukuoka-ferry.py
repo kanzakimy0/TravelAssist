@@ -150,12 +150,12 @@ def process(args):
             "latitude": observation["latitude"], "longitude": observation["longitude"],
             "coordinateRole": "GTFS_FERRY_STOP_POINT",
             "prefectureCode": None, "municipalityCode": None,
-            "parentHubId": None, "hubResolutionStatus": "UNRESOLVED",
+            "parentHubId": None, "hubResolutionStatus": "SELF_GATEWAY",
             "operatorRefs": identity["operatorRefs"], "lineRefs": [], "serviceRefs": [],
             "externalRefs": identity["externalRefs"], "sourceRefs": identity["sourceRefs"],
             "observedAt": observation["observedAt"], "feedValidFrom": observation["feedValidFrom"], "feedValidThrough": observation["feedValidThrough"],
             "confidence": 0.88,
-            "unresolvedReasons": ["PARENT_HUB_UNRESOLVED", "MUNICIPALITY_UNRESOLVED"],
+            "unresolvedReasons": ["MUNICIPALITY_UNRESOLVED"],
         })
     nodes.sort(key=lambda item: item["transportNodeId"])
     output = Path(args.output)
