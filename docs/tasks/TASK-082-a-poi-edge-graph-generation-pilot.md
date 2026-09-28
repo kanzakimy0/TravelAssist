@@ -563,3 +563,19 @@ Codex 最终返回前必须同步最新 `docs/project/WBS-TravelAssist.md`。
 - next recommended scaling step
 
 不得自动 merge。
+
+
+## 20. 2026-09-28 Resume amendment
+
+Current execution is governed by:
+
+`docs/tasks/AMENDMENT-TASK-082-a-parallel-local-edge-transport-integration-v1.md`.
+
+Key changes:
+
+- Do not wait for TASK-084-B to run the real POI→POI local-edge Pilot.
+- The real Pilot resumes only after a refreshed, user-accepted TASK-083-A / PR #444 is merged into develop.
+- First legal real run is expected to use 100 admitted POIs and report 100/500 with shortfall 400.
+- TransportNode integration remains a later phase after B's accepted transport artifacts.
+- Passing the 100-POI local Pilot alone does not mark WBS 7.13 complete.
+- Provider modes remain unresolved when batch/cache/retention/production rights are not established.
