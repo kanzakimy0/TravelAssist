@@ -7,6 +7,8 @@
 - Issue: #441; WBS 7.14: 阻塞
 - Base: `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8`
 - Branch: `feature/b-japan-transport-node-master`
+- Implementation commit: `bb849c3091d53a1bd23c9b7cf9a00949a330f393`
+- Review: [Draft PR #448](https://github.com/kanzakimy0/TravelAssist/pull/448); do not merge as completed national master
 - Runtime integration: `DEFERRED_TO_A`
 - No TransportNode ID was accepted or allocated; no runtime, Route API, Planner, Provider adapter or cache code was changed.
 
