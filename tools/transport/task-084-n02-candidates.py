@@ -13,7 +13,7 @@ SOURCE = "mlit-n02-2025"
 SOURCE_URL = "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html"
 SNAPSHOT = "2025-12-31"
 BATCH_SIZE = 200
-REASONS = ["IDENTITY_AMBIGUOUS", "HUB_RELATION_UNRESOLVED", "MUNICIPALITY_UNRESOLVED"]
+REASONS = ["HUB_RELATION_UNRESOLVED", "MUNICIPALITY_UNRESOLVED"]
 def canonical(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\n"
 def digest(data):
@@ -34,6 +34,12 @@ def midpoint(coords):
     if not (122 <= lon <= 154 and 20 <= lat <= 46 and math.isfinite(lon) and math.isfinite(lat)):
         raise ValueError("coordinate outside Japan sanity bounds")
     return [round(lon, 7), round(lat, 7)]
+def distance_m(a, b):
+    lat1, lat2 = math.radians(a[1]), math.radians(b[1])
+    dlat = lat2 - lat1
+    dlon = math.radians(b[0] - a[0])
+    hav = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+    return 6371000 * 2 * math.asin(min(1, math.sqrt(hav)))
 def candidates(raw, source_ref=SOURCE_URL):
     features = json.loads(raw)["features"]
     out = []
@@ -51,8 +57,17 @@ def candidates(raw, source_ref=SOURCE_URL):
             if previous["sourceGroupCode"] != str(props["N02_005g"]) or previous["canonicalNameJaCandidate"] != props["N02_005"]:
                 raise RuntimeError("conflicting source component identity")
             previous["sourceGeometryPieces"] += 1
-            previous["pointCandidate"] = None
-            previous["reasons"] = REASONS + ["MULTI_SEGMENT_GEOMETRY_REVIEW"]
+            old_point = previous["pointCandidate"]
+            if old_point is None or distance_m([old_point["longitude"], old_point["latitude"]], point) > 100:
+                previous["pointCandidate"] = None
+                previous["coordinateRole"] = None
+                previous["reasons"] = ["GEOMETRY_CONFLICT"]
+            else:
+                pieces = previous["sourceGeometryPieces"]
+                previous["pointCandidate"] = {
+                    "longitude": round((old_point["longitude"] * (pieces - 1) + point[0]) / pieces, 7),
+                    "latitude": round((old_point["latitude"] * (pieces - 1) + point[1]) / pieces, 7),
+                }
             continue
         out.append({
             "candidateKey": key,
@@ -64,11 +79,12 @@ def candidates(raw, source_ref=SOURCE_URL):
             "nodeKindCandidate": "shinkansen_station",
             "pointCandidate": {"longitude": point[0], "latitude": point[1]},
             "sourceGeometry": "station_line_midpoint_estimate",
+            "coordinateRole": "STATION_GEOMETRY_REPRESENTATIVE",
             "sourceGeometryPieces": 1,
             "sourceRefs": [source_ref],
             "observedAt": SNAPSHOT,
-            "identityStatus": "REVIEW_REQUIRED",
-            "reasons": REASONS + ["LOCATION_GEOMETRY_REVIEW"],
+            "identityStatus": "CANDIDATE",
+            "reasons": REASONS.copy(),
             "transportNodeId": None,
             "parentHubId": None,
             "prefectureCode": None,
@@ -127,7 +143,7 @@ def process(args):
             write_bytes(receipt_path, receipt_body)
         manifest_batches.append({"batchId": batch_id, "receiptSha256": digest(receipt_body)})
     decisions_body = b"".join(canonical({
-        "candidateKey": row["candidateKey"], "decision": "REVIEW_REQUIRED",
+        "candidateKey": row["candidateKey"], "decision": "CANDIDATE",
         "transportNodeId": None, "reasons": row["reasons"],
     }) for row in rows)
     unresolved_body = b"".join(canonical({

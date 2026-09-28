@@ -1056,14 +1056,14 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
-| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 阻塞（#441 / TASK-084-B；官方 N02 新干线候选 110，正式验收 0；身份、枢纽、行政区及其他交通类型待证实） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 部分完成（#441 / TASK-084-B；110 个 N02 新干线组件及 5 个核心 Hub 已正式验收；全国覆盖、行政区及其他交通类型尚未通过 Gate） |
 | 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，且使用正式 Canonical POI） |
 | 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
 
 TASK-084-B execution checkpoint (2026-09-28):
 
-- 从 `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8` 启动独立分支；国土交通省 N02 2025 铁路数据许可为 CC BY 4.0。仅提取 110 个新干线 station component 候选，并保留 200/batch 回执、校验和及显式身份未决清单。
-- 正式 TransportNode 为 0；N02 站码按纬度排序，不直接作为永久 ID；同名/组码不自动合并。084 未 PASS，因此 085/086 严格保持未开始。详情见 [Result](../tasks/RESULT-TASK-084-b-japan-transport-node-master.md) 和 [QA](../qa/TASK-084-B/README.md)。
+- 从 `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8` 启动独立分支；国土交通省 N02 2025 铁路数据许可为 CC BY 4.0。110 个新干线 station component 已采用 TravelAssist 自有身份账本验收为 TransportNode，保留 200/batch 回执、校验和及显式未决清单。
+- 东京、新大阪、京都、大宫、博多 5 个核心 Hub 经官方车站资料审查，关联 9 个组件；101 个组件的 Hub 关系仍未决。站点坐标标为几何代表点而非入口。行政区因 N03 二次利用条件待确认未导入；机场、Bus、Ferry 全国覆盖未完成。084 仍 PARTIAL，085/086 严格保持未开始。详情见 [Result](../tasks/RESULT-TASK-084-b-japan-transport-node-master.md) 和 [QA](../qa/TASK-084-B/README.md)。
 
 TASK-082-A tracking (2026-09-27):
 

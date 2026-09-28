@@ -1,52 +1,48 @@
-# TASK-084-B partial candidate QA
+# TASK-084-B node acceptance QA
 
-Status: **PARTIAL / BLOCKED**. Accepted TransportNodes: **0**.
+Status: **PARTIAL** national master; **110 `NODE_ACCEPTED`** station components and **5 accepted core hubs**. Neither TASK-085-B nor TASK-086-B has started.
 
 ## Reproduction
 
-1. Download the official [MLIT N02 2025 railway ZIP](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html) to a local temporary location. Keep the raw ZIP out of Git.
-2. Verify its SHA-256 equals `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28d744e706cc9f`.
-3. Run:
+Use the [MLIT N02 2025 railway ZIP](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html) outside Git. Verify SHA-256 `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28d744e706cc9f`.
 
 ```powershell
 python tools/transport/task-084-n02-candidates.py --zip <local-zip-path> --output data/transport/nodes/task-084-b-candidates --expected-sha256 aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28d744e706cc9f
+python tools/transport/task-084-accept-nodes.py --candidates data/transport/nodes/task-084-b-candidates --ledger data/transport/nodes/transport-node-identity-ledger.jsonl --hub-ledger data/transport/nodes/transport-hub-identity-ledger.jsonl --output data/transport/nodes/task-084-b-accepted
 python tests/task-084-b-n02-candidates.test.py
 ```
 
-Rerun the first command for checksum-verified resume; add `--rebuild` for deterministic rebuild or `--rebuild --batch 1` for a selected batch. Existing mismatched input, output, receipt, ledger or manifest hashes fail closed. The synthetic test verifies a 205-candidate two-batch corpus, resume, selected rerun, deterministic bytes and corrupted receipt rejection.
+The one-time `--allocate --accepted-at <UTC time>` command created the committed node ledger. The one-time `task-084-review-core-hubs.py` review created the committed hub ledger. **Do not rerun allocation against a new ledger in routine builds:** it would issue different IDs. Routine builds read the committed ledgers. Both candidate and accepted stages support checksum-verified resume, `--rebuild`, `--rebuild --batch 1`, and fail-closed corruption detection.
 
-## Actual source QA
+## Current source and identity audit
 
 | Check | Result |
 | --- | --- |
-| Source ZIP hash | PASS |
-| Station GeoJSON hash | PASS |
-| 112 shinkansen station geometries → 110 source components | PASS |
-| 200-candidate batch limit | PASS (1 batch of 110) |
-| Candidate key uniqueness | PASS |
-| Candidate source attribution | PASS (110/110) |
-| Identity decisions and unresolved ledger | PASS (110/110 REVIEW_REQUIRED) |
-| Accepted stable IDs and municipality/hub review | BLOCKED (0 accepted) |
-| Airport/bus/ferry and 47-prefecture coverage | BLOCKED |
+| Source ZIP / station GeoJSON hashes | PASS / PASS |
+| 112 Shinkansen geometries → 110 candidate components | PASS |
+| Accepted identity ledger uniqueness / source-code independence | PASS (110 / 110) |
+| Accepted station components / accepted hubs | 110 / 5 |
+| Explicit hub links / hub-unresolved components | 9 / 101 |
+| Representative coordinate role / entrance claim | 110 / 110 / 0 |
+| Municipality coverage | 0 / 110; N03 join on hold |
+| Wider rail, airport, bus, ferry coverage | UNRESOLVED; no national PASS |
+| License-blocked datasets | 2: N03 secondary-use determination, N09 noncommercial |
 | Provider bulk/retention rights | UNCONFIRMED; no calls |
 
-N02 [2025 railway license](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html): CC BY 4.0. [MLIT terms](https://nlftp.mlit.go.jp/ksj/other/agreement.html) require source attribution and identifying edits. [N09 passenger-route license](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N09.html): noncommercial, excluded. Source snapshot is 2025-12-31, so no record claims live service or timetable.
+N02 is [CC BY 4.0](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html); the [MLIT terms](https://nlftp.mlit.go.jp/ksj/other/agreement.html) require attribution and identifying edits. [N03 2026](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html) has a GSI secondary-use caveat; it was not imported. [N09](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N09.html) is noncommercial; it was excluded. The [Aviation Bureau list](https://www.mlit.go.jp/koku/15_bf_000310.html) gives current airport identity/classification, while [C28 2021](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-C28-2021.html) permits commercial use of historical spatial data. The C28 ZIP was inspected in a temporary directory: SHA-256 `07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35`, 108 polygon features, 97 reference points and 96 terminal points. Its UTF-8 GeoJSON name attributes contain replacement characters, so it cannot support a trusted name join as-is. The GML XML retains legible Japanese names and needs a separate verified parser/current-list crosswalk. No joined airport node was admitted. Bus GTFS licenses remain feed-specific.
 
 ## Quality gate
 
 | Gate | Result |
 | --- | --- |
-| `npm ci` | PASS; 396 packages, 0 vulnerabilities |
-| `python tests/task-084-b-n02-candidates.test.py` | PASS; 2/2 |
-| `npm run test:poi-edge-graph` | PASS; 15/15 |
-| `npm run test:routing` | PASS; 28/28 |
-| `npm run lint` | PASS; 0 errors, 9 existing warnings in unrelated POI tools |
-| `npm run typecheck` | PASS |
-| `npm run build` | PASS |
-| Real artifact deterministic byte-for-byte rebuild | PASS |
-| Receipt resume / selected batch / corruption rejection | PASS (fixture test and real checksum rerun) |
-| Provenance and aggregate ledger checksum audit | PASS; 110/110 |
-| Secret pattern scan of added files | PASS; 0 matches |
-| `git diff --cached --check` | PASS after removing one trailing blank line |
+| `python tests/task-084-b-n02-candidates.test.py` | PASS; 4/4 |
+| Real accepted-master verified resume | PASS |
+| Deterministic rebuild, selected-batch rerun and receipt corruption rejection | PASS in focused test |
+| `npm run test:poi-edge-graph` and `npm run test:routing` | PASS; 15/15 and 28/28 |
+| `npm run lint` | PASS; 0 errors, 9 existing unrelated warnings |
+| `npm run typecheck` and `npm run build` | PASS |
+| Secret pattern scan of new source, ledgers and reports | PASS; no matches |
+| `git diff --cached --check` | PASS |
+| GitHub exact-head Quality Gate | To verify at updated PR head |
 
-No failing test or build was observed. The nine lint warnings are present in unrelated existing POI tool files; they are not candidate failures.
+Candidate QA passing, node acceptance, and national master passing are separate gates. The latest accepted manifest records `nationalMasterStatus=PARTIAL`.
