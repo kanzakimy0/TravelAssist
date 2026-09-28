@@ -1,6 +1,6 @@
 # RESULT — TASK-083-A Real 100 POI Canonical Admission + Runtime Import Gate
 
-Status: **待审查 / [Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444), no merge**. Issue #438. Implementation branch `codex/a-task-083-real-poi-canonical-admission` from `origin/develop@2dcf22cca48b920d99bfad416c5e79b13e599327`, normally updated with `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`.
+Status: **待审查 / [Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444), no merge**. Issue #438. Implementation branch `codex/a-task-083-real-poi-canonical-admission` from `origin/develop@2dcf22cca48b920d99bfad416c5e79b13e599327`, normally updated with `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058` and latest `develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8`.
 
 ## Outcome and scope
 
@@ -52,3 +52,13 @@ Machine QA: `docs/qa/TASK-083/pilot100-validation.json`; human QA and commands: 
 Full serialized Node regression: **2,756/2,756 PASS** with bundled Python available for the historical offline test. Focused Pilot runtime/Detail/Search-handoff tests: **5/5 PASS**. POI contracts 24/24, Master Code registry 15/15, Region integration 6/6 and Planning contracts 21/21 passed. Lint: 0 errors and 9 pre-existing warnings. Typecheck, Next production build, `deploy:validate:local`, `deploy:build:local`, `deploy:verify-artifact`, `format:check:deploy` and staged `git diff --check` passed. The standalone artifact inventory contained no workbook or candidate-corpus filename. Exact final PR-head GitHub Quality Gate is recorded after final push.
 
 WBS 7.4.1 is `待审查`, not `已完成`. No PR was merged or configured for auto-merge. TASK-081-B remains blocked pending user acceptance of this handoff.
+
+## Latest-develop refresh and reacceptance (2026-09-28)
+
+Old PR head `21713eabfeb2e8507b30ed39bb84b5013bc9e199` was clean and diverged 4 behind / 3 ahead from `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8`. A normal `git merge --no-ff origin/develop` created merge commit `c0472379629061fecc6f961a1b30e2827200b9a8` without conflict. The merge retained PR #445's directed Edge foundation and PR #446's Draft-only feature PR rule, deleted auto-merge workflow and governance regression tests. No TASK-082 Pilot data was regenerated or submitted.
+
+Read-only TASK-083 QA still reports eligible pool 422, sample 100, 100 newly active POI Master Codes, all 100 ADMIT with 14/14 gates, zero review/blocked/merge/insufficient, and 0/4,300 Feature43 cells assessed. The dataset semantic SHA-256 remains `802785ddb24e720698c2813f1f9dce29fe6792cdf02dbd01e9557b385a88bda2`; runtime manifest SHA-256 remains `11fd42f2ded8cc45519767ba86b97bcb1123552550c7f6af6ee60af7436cdbf0`; candidate runtime import remains unauthorized. Actual Detail GET smoke passed 100/100. The TASK-082 read-only admission boundary now has an explicit regression proving it recognizes exactly 100 authorized nodes, 100 matching codes and no rejected nodes. Its separate negative test still rejects candidate-only authorization; only the obsolete assertion that the live registry must contain zero active POIs was removed.
+
+The existing `npm run qa:poi-edge-pilot` deterministic replay is intentionally **not green** on this pre-merge TASK-083 branch: its frozen TASK-082 artifact says 0 Pilot POIs, while replay against the new authorized dataset expects 100. The check correctly identifies the admission change, then rejects the stale artifact (`pilot-poi-manifest.json differs from deterministic replay`). TASK-083 does not overwrite those frozen TASK-082 outputs or claim a completed Edge Pilot; TASK-082 resume must re-baseline its own real-Pilot artifacts after TASK-083 acceptance and merge. WBS 7.13 remains 阻塞.
+
+Current local reacceptance: focused cross-domain suite 90/90 (including TASK-082/TASK-083 runtime 21/21), full Node regression 2,776/2,776 with managed Python, Master Code and Region transition QA, lint (0 errors, 10 warnings), typecheck, `format:check:deploy`, local deployment validation, production standalone build and artifact verification (1,908 files) passed. Repository-wide `format:check` still reports 3,007 unchanged historical files; all four modified files pass their direct Prettier checks. Exact-head GitHub Quality Gate must run on the final pushed PR head; the old #475 success is not a current merge gate.

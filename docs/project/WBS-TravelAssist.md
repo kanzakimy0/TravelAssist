@@ -6,6 +6,7 @@
 - 从 `develop@2dcf22cca48b920d99bfad416c5e79b13e599327` 执行，正常同步最新 `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`；v1.66 中冻结 422 条保守可准入池、确定性选择 100 条真实 POI，100/100 经现有 14-gate evaluator 得到 ADMIT，100 个新 Master Code 进入 append-only registry。
 - 独立 Pilot-100 runtime manifest 仅授权这 100 条；旧候选 manifest 继续禁止 Canonical runtime import。Detail API 已接真实 server-only repository；WBS 7.6 Search 尚未合入 develop，故未 cherry-pick #433。TASK-081-B 43维仍为 0/4,300，待本 Task 用户验收后恢复。
 - 全仓 Node 回归 2,756/2,756、Detail 100/100 和 Search 兼容接点测试通过；[Result](../tasks/RESULT-TASK-083-a-real-poi-canonical-admission-runtime-import.md) · [QA/handoff](../qa/TASK-083/README.md)。
+- 2026-09-28 正常合入 `develop@511508c9` 到 PR #444 分支，保留 #445 Edge foundation 与 #446 PR 治理修复；复验 100/100 ADMIT、100 active Master Codes、Detail GET 100/100、TASK-082 只读准入层识别 100/100；Feature43 仍为 0/4,300。TASK-082 冻结的 0-POI Pilot replay 与新数据不一致，其最终 Edge Pilot 结果未在本 Task 重跑或提交；7.13 继续阻塞，7.4.1 继续待审查。
 
 ## TASK-081-A / WBS 7.7 POI 详情 API（2026-09-27）
 

@@ -8,6 +8,7 @@ import {
   CanonicalPoiRuntimeIntegrityError,
   createCanonicalPoiRuntimeRepository,
 } from "../src/server/poi-runtime/repository.ts";
+import { admittedGraphNodes } from "../src/shared/poi-edge-graph/index.ts";
 
 const read = (path) => JSON.parse(readFileSync(path, "utf8"));
 const dataset = read("src/shared/data/canonical-poi-pilot100.v1.json");
@@ -47,6 +48,25 @@ test("authorized server-only repository exposes exactly 100 canonical records", 
     (await canonicalPoiRuntimeRepository.getByInternalId(rows[0].internalId))
       .names.localized[0].value,
     "tampered",
+  );
+});
+
+test("TASK-082 read-only admission boundary recognizes all 100 real Canonical POIs", () => {
+  const activePoiCodes = registry.entries.filter(
+    (entry) =>
+      entry.lifecycleStatus === "active" && entry.entityType.startsWith("poi."),
+  );
+  assert.equal(activePoiCodes.length, 100);
+  const { nodes, rejected } = admittedGraphNodes(dataset, registry, manifest);
+  assert.equal(nodes.length, 100);
+  assert.deepEqual(rejected, []);
+  assert.deepEqual(
+    nodes.map((node) => node.poiId),
+    manifest.internalIds,
+  );
+  assert.deepEqual(
+    nodes.map((node) => node.masterCode),
+    manifest.masterCodes,
   );
 });
 
