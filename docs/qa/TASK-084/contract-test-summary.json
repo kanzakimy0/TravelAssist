@@ -1,0 +1,42 @@
+{
+  "task": "TASK-084-A",
+  "status": "PASS_RUNTIME",
+  "realPilotStatus": "BLOCKED_REAL_PILOT",
+  "mappingVersion": "preference-to-poi-v1-pilot-candidate",
+  "scoringConfigVersion": "poi-match-v1-pilot-candidate",
+  "featureCodeCount": 43,
+  "preferenceKeyCount": 23,
+  "benchmarkPersonaCount": 8,
+  "targetedContractTestCount": 26,
+  "deterministicSyntheticResultHash": "5e02d862421b4853b435ea71349249943232e27a163453898d650c447457b3d2",
+  "performance": {
+    "onePoiOnePersona": {
+      "callsPerRun": 1,
+      "personasPerRun": 1,
+      "repeats": 25,
+      "p50Ms": 0.082,
+      "p95Ms": 0.177,
+      "lastResultHash": "5e02d862421b4853b435ea71349249943232e27a163453898d650c447457b3d2",
+      "syntheticFixtureOnly": true
+    },
+    "oneHundredPoiOnePersona": {
+      "callsPerRun": 100,
+      "personasPerRun": 1,
+      "repeats": 25,
+      "p50Ms": 3.723,
+      "p95Ms": 4.732,
+      "lastResultHash": "5e02d862421b4853b435ea71349249943232e27a163453898d650c447457b3d2",
+      "syntheticFixtureOnly": true
+    },
+    "oneHundredPoiEightPersonas": {
+      "callsPerRun": 800,
+      "personasPerRun": 8,
+      "repeats": 25,
+      "p50Ms": 24.827,
+      "p95Ms": 28.48,
+      "lastResultHash": "d4cb27489ea94269b1c06f7612ff2d03985360cfb09999d2fdf645f3ac1dd16d",
+      "syntheticFixtureOnly": true
+    }
+  },
+  "caution": "Performance fixture has no real POI data. No real ranking, calibration or pairwise benchmark was run."
+}

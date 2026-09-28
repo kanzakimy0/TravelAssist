@@ -1,0 +1,47 @@
+{
+  "task": "TASK-084-A",
+  "phase": "phase_0",
+  "baseDevelopSha": "511508c9a59c3b94c7d72cedbf5ff559da69ded8",
+  "featureRegistry": "src/shared/contracts/planning/features.ts#POI_FEATURE_DEFINITIONS",
+  "featureCodeCount": 43,
+  "longTermPreferenceRegistry": "src/shared/contracts/preferences/core.ts#preferenceFields",
+  "longTermPreferenceKeyCount": 23,
+  "planningPreferenceContracts": [
+    "src/shared/contracts/planning/features.ts#EffectivePreferenceV1",
+    "src/shared/contracts/planning/features.ts#SparsePreferenceV1"
+  ],
+  "canonicalPoiFeatureContract": "src/shared/contracts/poi/types.ts#CanonicalPoiV1.features",
+  "existingScoreBoundary": "src/shared/contracts/planning/scoring.ts contains score contracts, not a scoring kernel",
+  "prerequisites": {
+    "task083": {
+      "pr": 444,
+      "head": "d54d8e41184598f340cdf44c03f505b0537199c1",
+      "state": "open",
+      "draft": true,
+      "mergedIntoDevelop": false
+    },
+    "task081b": {
+      "pr": 437,
+      "head": "d809ac2377167e76f24362077f40b379b33e93e7",
+      "state": "open",
+      "draft": true,
+      "mergedIntoDevelop": false,
+      "reportedFeature43AssessedCells": 0,
+      "requiredFeature43Cells": 4300
+    }
+  },
+  "developInventory": {
+    "masterCodeRegistryEntries": 51,
+    "activePoiMasterCodes": 0,
+    "pilot100CanonicalDatasetPresent": false,
+    "pilot100RuntimeManifestPresent": false
+  },
+  "realPilotGate": {
+    "status": "BLOCKED_REAL_PILOT",
+    "reasons": [
+      "TASK_083_NOT_ACCEPTED_OR_MERGED",
+      "NO_AUTHORIZED_CANONICAL_PILOT_100_ON_BASE",
+      "TASK_081B_REAL_FEATURE43_NOT_AVAILABLE"
+    ]
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "mappingVersion": "preference-to-poi-v1-pilot-candidate",
+  "preferenceRegistrySource": "src/shared/contracts/preferences/core.ts#preferenceFields",
+  "featureRegistrySource": "src/shared/contracts/planning/features.ts#POI_FEATURE_DEFINITIONS",
+  "categories": [
+    "POI_43D_INPUT",
+    "PLANNER_WEIGHT_INPUT",
+    "ROUTE_HARD_CONSTRAINT",
+    "ROUTE_SOFT_INPUT",
+    "COST_INPUT",
+    "DURATION_OR_PACE_INPUT",
+    "NOT_USED_BY_POI_SCORING_V1"
+  ],
+  "preferenceKeys": [
+    {
+      "key": "mobility.fewerTransfers",
+      "categories": ["ROUTE_SOFT_INPUT"]
+    },
+    {
+      "key": "mobility.walkingTolerance",
+      "categories": ["POI_43D_INPUT", "COST_INPUT", "DURATION_OR_PACE_INPUT"]
+    },
+    {
+      "key": "mobility.noPublicTransit",
+      "categories": ["ROUTE_HARD_CONSTRAINT"]
+    },
+    {
+      "key": "mobility.noBus",
+      "categories": ["ROUTE_HARD_CONSTRAINT"]
+    },
+    {
+      "key": "mobility.noFerry",
+      "categories": ["ROUTE_HARD_CONSTRAINT"]
+    },
+    {
+      "key": "dining.localCuisine",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "dining.smallShops",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "dining.queueTolerance",
+      "categories": ["COST_INPUT", "PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "accommodation.transportConvenience",
+      "categories": ["ROUTE_SOFT_INPUT"]
+    },
+    {
+      "key": "accommodation.comfort",
+      "categories": ["NOT_USED_BY_POI_SCORING_V1"]
+    },
+    {
+      "key": "accommodation.fewerHotelChanges",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "budget.spendingTendency",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "budget.prioritizeAccommodation",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "budget.prioritizeExperience",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "interests.preferences",
+      "categories": ["POI_43D_INPUT"]
+    },
+    {
+      "key": "interests.details",
+      "categories": ["POI_43D_INPUT"]
+    },
+    {
+      "key": "style.pace",
+      "categories": ["DURATION_OR_PACE_INPUT"]
+    },
+    {
+      "key": "style.depth",
+      "categories": ["DURATION_OR_PACE_INPUT"]
+    },
+    {
+      "key": "style.discovery",
+      "categories": ["POI_43D_INPUT", "PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "style.movement",
+      "categories": ["ROUTE_SOFT_INPUT"]
+    },
+    {
+      "key": "style.coverage",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "style.priority",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    },
+    {
+      "key": "style.planning",
+      "categories": ["PLANNER_WEIGHT_INPUT"]
+    }
+  ],
+  "interestMapping": [
+    {
+      "interestCode": "nature_scenery",
+      "featureCodes": ["01", "07"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "history_culture",
+      "featureCodes": ["02", "03"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "food",
+      "featureCodes": ["05"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "photography",
+      "featureCodes": ["04"],
+      "independentDetailFeatures": {
+        "nightscape": ["08"],
+        "architecture": ["03"]
+      }
+    },
+    {
+      "interestCode": "onsen_wellness",
+      "featureCodes": ["09", "20"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "art_museums",
+      "featureCodes": ["10", "22"],
+      "independentDetailFeatures": {
+        "architecture": ["03"]
+      }
+    },
+    {
+      "interestCode": "anime_entertainment",
+      "featureCodes": ["11"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "shopping",
+      "featureCodes": ["06"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "urban_exploration",
+      "featureCodes": ["03", "12"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "outdoor_activity",
+      "featureCodes": ["07", "21"],
+      "independentDetailFeatures": {
+        "skiing": ["38"]
+      }
+    },
+    {
+      "interestCode": "night_experience",
+      "featureCodes": ["08"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "family_activity",
+      "featureCodes": ["16", "23"],
+      "independentDetailFeatures": {
+        "science_museum": ["22"]
+      }
+    },
+    {
+      "interestCode": "traditional_experience",
+      "featureCodes": ["02", "12", "23"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "theme_parks",
+      "featureCodes": ["11", "23"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "rural_towns",
+      "featureCodes": ["12", "14"],
+      "independentDetailFeatures": {}
+    },
+    {
+      "interestCode": "seasonal_events",
+      "featureCodes": ["13"],
+      "independentDetailFeatures": {
+        "cherry_blossom": ["40"],
+        "autumn_leaves": ["42"],
+        "snow_scenery": ["38", "43"]
+      }
+    }
+  ],
+  "note": "No second Preference or Feature43 registry. Classification is not a 43D user vector."
+}
