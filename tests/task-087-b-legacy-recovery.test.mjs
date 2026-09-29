@@ -88,13 +88,19 @@ test("no candidate key, name-only join, rebinding or identity ambiguity", () => 
   assert.equal(candidate.scope, "CANDIDATE_ONLY_NO_CANONICAL_IMPORT");
   assert.ok(sample.records.every((row) => row.candidateLinkage === null));
   assert.ok(
-    crosswalk.every((row) =>
-      row.historicalMatches.every(
-        (match) =>
-          match.matchMethod ===
-            "EXACT_INTERNAL_UUID_THEN_FROZEN_MASTER_CODE_LINEAGE" &&
-          match.candidateKey === null,
-      ),
+    crosswalk.every(
+      (row) =>
+        row.historicalMatches[0].matchMethod ===
+          "EXACT_INTERNAL_UUID_THEN_FROZEN_MASTER_CODE_LINEAGE" &&
+        row.historicalMatches[0].candidateKey === null &&
+        row.historicalMatches
+          .slice(1)
+          .every(
+            (match) =>
+              match.matchMethod ===
+                "EXACT_WIKIDATA_QID_POINTER_ONLY_NOT_ADMITTED" &&
+              match.numericCells === 0,
+          ),
     ),
   );
   assert.equal(new Set(crosswalk.map((row) => row.canonicalPoiId)).size, 100);
@@ -201,6 +207,12 @@ test("candidate partitions, deltas and historical source files inventoried", () 
   assert.deepEqual(
     inventory.candidateFeaturePartitions.exactPilotQidSourceRefHits,
     [],
+  );
+  assert.deepEqual(
+    inventory.candidateFeaturePartitions.exactPilotQidCandidateKeyPointers.map(
+      (pointer) => [pointer.candidateKey, pointer.numericCells],
+    ),
+    [["wikidata:Q270983", 0]],
   );
   assert.equal(
     inventory.candidateFeaturePartitions.canonicalPromotionAllowed,

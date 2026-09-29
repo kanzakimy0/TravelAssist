@@ -167,27 +167,30 @@ def source_inventory():
 
 def candidate_partition_audit(manifest, qids):
     rows = {}
+    origins = {}
     baseline_numeric = 0
     for partition in manifest["baseFeaturePartitions"]:
         path = ROOT / partition["path"]
         if file_hash(path) != partition["sha256"]:
             raise ValueError("Candidate feature partition hash changed")
-        for line in path.read_text(encoding="utf-8").splitlines():
+        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             row = json.loads(line)
             if row["candidateKey"] in rows:
                 raise ValueError("Duplicate candidate key in feature partitions")
             rows[row["candidateKey"]] = row
+            origins[row["candidateKey"]] = partition["path"] + "#" + str(line_number)
             baseline_numeric += sum(isinstance(v, int) and not isinstance(v, bool) for v in row["featureSet"]["values"].values())
     delta_ref = manifest["delta"]
     delta_path = ROOT / delta_ref["path"]
     if file_hash(delta_path) != delta_ref["sha256"]:
         raise ValueError("Candidate delta hash changed")
     delta_count = 0
-    for line in delta_path.read_text(encoding="utf-8").splitlines():
+    for line_number, line in enumerate(delta_path.read_text(encoding="utf-8").splitlines(), 1):
         row = json.loads(line)
         if row["candidateKey"] not in rows:
             raise ValueError("Delta has no baseline candidate")
         rows[row["candidateKey"]] = row
+        origins[row["candidateKey"]] = delta_ref["path"] + "#" + str(line_number)
         delta_count += 1
     current_numeric = sum(
         isinstance(v, int) and not isinstance(v, bool)
@@ -199,6 +202,23 @@ def candidate_partition_audit(manifest, qids):
         matches = sorted(qid for qid in qids if any(qid in str(ref) for ref in refs))
         if matches:
             exact_qid_refs.append({"candidateKey": row["candidateKey"], "qids": matches})
+    exact_qid_pointers = []
+    for qid in sorted(qids):
+        key = "wikidata:" + qid
+        if key not in rows:
+            continue
+        row = rows[key]
+        exact_qid_pointers.append({
+            "candidateKey": key, "qid": qid, "sourceArtifact": origins[key],
+            "numericCells": sum(
+                isinstance(v, int) and not isinstance(v, bool)
+                for v in row["featureSet"]["values"].values()
+            ),
+            "candidateScope": row["scope"],
+            "governance": "HISTORICAL_POINTER_ONLY_NOT_ADMITTED",
+        })
+    if any(pointer["numericCells"] for pointer in exact_qid_pointers):
+        raise ValueError("Exact QID candidate pointer has numeric data requiring explicit review")
     return {
         "candidateCount": len(rows),
         "baselinePartitionCount": len(manifest["baseFeaturePartitions"]),
@@ -206,6 +226,7 @@ def candidate_partition_audit(manifest, qids):
         "deltaRowCount": delta_count,
         "currentCandidateNumericCells": current_numeric,
         "exactPilotQidSourceRefHits": exact_qid_refs,
+        "exactPilotQidCandidateKeyPointers": exact_qid_pointers,
         "canonicalPromotionAllowed": False,
     }
 
@@ -325,21 +346,32 @@ def build():
         score_source = value(feat, 7)
         rubric_sources[str(score_source)] += 1
         reg_ref = "data/poi/full/registry/" + WORKBOOK.name
+        historical_matches = [{
+            "sourceArtifact": reg_ref,
+            "workbookRow": reg_line,
+            "feature43Row": feat_line,
+            "historicalInternalUuid": sample_row["sourceInternalUuid"],
+            "historicalMasterCodeClaim": old_code,
+            "candidateKey": None,
+            "matchMethod": "EXACT_INTERNAL_UUID_THEN_FROZEN_MASTER_CODE_LINEAGE",
+            "matchConfidence": 1.0,
+        }]
+        historical_matches += [{
+            "sourceArtifact": pointer["sourceArtifact"],
+            "candidateKey": pointer["candidateKey"],
+            "historicalInternalUuid": None,
+            "qid": pointer["qid"],
+            "matchMethod": "EXACT_WIKIDATA_QID_POINTER_ONLY_NOT_ADMITTED",
+            "matchConfidence": 1.0,
+            "numericCells": 0,
+        } for pointer in candidate_audit["exactPilotQidCandidateKeyPointers"]
+          if pointer["qid"] == qid]
         crosswalk.append({
             "canonicalPoiId": internal_id,
             "masterCode": sample_row["allocatedMasterCode"],
             "qid": qid,
             "identityDecision": "EXACT_MATCH",
-            "historicalMatches": [{
-                "sourceArtifact": reg_ref,
-                "workbookRow": reg_line,
-                "feature43Row": feat_line,
-                "historicalInternalUuid": sample_row["sourceInternalUuid"],
-                "historicalMasterCodeClaim": old_code,
-                "candidateKey": None,
-                "matchMethod": "EXACT_INTERNAL_UUID_THEN_FROZEN_MASTER_CODE_LINEAGE",
-                "matchConfidence": 1.0,
-            }],
+            "historicalMatches": historical_matches,
             "duplicateHistoricalRows": 0,
             "candidateKeyChanges": [],
             "identityConflict": False,
