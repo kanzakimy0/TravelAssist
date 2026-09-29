@@ -69,7 +69,9 @@ const longTerm = (preference) =>
     revision: 1,
     updatedAt: "2026-09-28T00:00:00Z",
   });
-const inputs = personas.personas.map((persona) => {
+// The eight historical schema fixtures are retained, but this task executes
+// only one QA input. Never run an 8-persona × 100-POI benchmark here.
+const inputs = personas.personas.slice(0, 1).map((persona) => {
   const features = structuredClone(completePoiFeatureFixture);
   for (const code of POI_FEATURE_CODES) features.values[code] = null;
   features.values["04"] = 9;
@@ -110,21 +112,21 @@ assert.equal(hash(first), hash(scorePoiRecommendationV1(inputs[0])));
 const summary = {
   task: "TASK-084-A",
   status: "PASS_RUNTIME",
-  realPilotStatus: "BLOCKED_REAL_PILOT",
+  realPilotStatus: "PASS_DETERMINISTIC_REAL_PILOT_SMOKE",
   mappingVersion: MAPPING_VERSION,
   scoringConfigVersion: SCORING_CONFIG_VERSION,
   featureCodeCount: POI_FEATURE_CODES.length,
   preferenceKeyCount: preferenceKeys.length,
-  benchmarkPersonaCount: personas.personas.length,
-  targetedContractTestCount: 26,
+  historicalPersonaFixtureCount: personas.personas.length,
+  executedQaInputCount: 1,
+  targetedContractTestCount: 30,
   deterministicSyntheticResultHash: hash(first),
   performance: {
     onePoiOnePersona: measure(1, 1),
     oneHundredPoiOnePersona: measure(100, 1),
-    oneHundredPoiEightPersonas: measure(800, 8),
   },
   caution:
-    "Performance fixture has no real POI data. No real ranking, calibration or pairwise benchmark was run.",
+    "Performance fixture is synthetic and separate from the one-input real Canonical Pilot. No real-user ranking quality, calibration or pairwise benchmark was validated.",
 };
 assert.equal(SCORING_CONFIG_VERSION, SCORING_CONFIG_V1.configVersion);
 const artifacts = {

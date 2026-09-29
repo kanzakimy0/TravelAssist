@@ -46,16 +46,8 @@
     "08": 1,
     "09": 1
   },
-  "gamma": {
-    "cost": 2,
-    "risk": 2,
-    "weatherSensitivity": 2
-  },
-  "interestPreference": {
-    "like": 9,
-    "dislike": 1,
-    "detailLike": 7
-  },
+  "gamma": { "cost": 2, "risk": 2, "weatherSensitivity": 2 },
+  "interestPreference": { "like": 9, "dislike": 1, "detailLike": 7 },
   "walkingTolerance": {
     "veryLow": 1,
     "low": 3,
@@ -63,37 +55,13 @@
     "high": 7,
     "veryHigh": 9
   },
-  "queueTolerance": {
-    "low": 1,
-    "medium": 5,
-    "high": 9
-  },
+  "queueTolerance": { "low": 1, "medium": 5, "high": 9 },
   "discoveryPreference": {
-    "1": {
-      "iconic": 9,
-      "hidden": 1,
-      "local": 3
-    },
-    "2": {
-      "iconic": 7,
-      "hidden": 3,
-      "local": 4
-    },
-    "3": {
-      "iconic": 5,
-      "hidden": 5,
-      "local": 5
-    },
-    "4": {
-      "iconic": 3,
-      "hidden": 7,
-      "local": 7
-    },
-    "5": {
-      "iconic": 1,
-      "hidden": 9,
-      "local": 9
-    }
+    "1": { "iconic": 9, "hidden": 1, "local": 3 },
+    "2": { "iconic": 7, "hidden": 3, "local": 4 },
+    "3": { "iconic": 5, "hidden": 5, "local": 5 },
+    "4": { "iconic": 3, "hidden": 7, "local": 7 },
+    "5": { "iconic": 1, "hidden": 9, "local": 9 }
   },
   "defaultTolerance": 5,
   "lowCoverageThreshold": 0.35,
@@ -102,264 +70,49 @@
   "scoreMax": 99,
   "mappingVersion": "preference-to-poi-v1-pilot-candidate",
   "featureRegistry": [
-    {
-      "code": "01",
-      "key": "scenery",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "02",
-      "key": "history",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "03",
-      "key": "architecture",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "04",
-      "key": "photo",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "05",
-      "key": "food",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "06",
-      "key": "shopping",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "07",
-      "key": "nature",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "08",
-      "key": "night",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "09",
-      "key": "onsen",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "10",
-      "key": "art",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "11",
-      "key": "entertainment",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "12",
-      "key": "local",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "13",
-      "key": "unique",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "14",
-      "key": "hidden",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "15",
-      "key": "iconic",
-      "kind": "benefit",
-      "weight": 1
-    },
-    {
-      "code": "16",
-      "key": "family",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "17",
-      "key": "senior",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "18",
-      "key": "couple",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "19",
-      "key": "solo",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "20",
-      "key": "relax",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "21",
-      "key": "adventure",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "22",
-      "key": "educational",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "23",
-      "key": "interactive",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "24",
-      "key": "rest",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "25",
-      "key": "walking",
-      "kind": "cost",
-      "weight": 1
-    },
-    {
-      "code": "26",
-      "key": "physical",
-      "kind": "cost",
-      "weight": 1
-    },
-    {
-      "code": "27",
-      "key": "crowd",
-      "kind": "risk",
-      "weight": 1
-    },
-    {
-      "code": "28",
-      "key": "queue",
-      "kind": "risk",
-      "weight": 1
-    },
-    {
-      "code": "29",
-      "key": "wheelchair",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "30",
-      "key": "stroller",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "31",
-      "key": "morning",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "32",
-      "key": "daytime",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "33",
-      "key": "sunrise",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "34",
-      "key": "sunset",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "35",
-      "key": "rain",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "36",
-      "key": "heat",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "37",
-      "key": "cold",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "38",
-      "key": "snow",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "39",
-      "key": "weather_sensitive",
-      "kind": "risk",
-      "weight": 1
-    },
-    {
-      "code": "40",
-      "key": "spring",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "41",
-      "key": "summer",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "42",
-      "key": "autumn",
-      "kind": "suitability",
-      "weight": 1
-    },
-    {
-      "code": "43",
-      "key": "winter",
-      "kind": "suitability",
-      "weight": 1
-    }
+    { "code": "01", "key": "scenery", "kind": "benefit", "weight": 1 },
+    { "code": "02", "key": "history", "kind": "benefit", "weight": 1 },
+    { "code": "03", "key": "architecture", "kind": "benefit", "weight": 1 },
+    { "code": "04", "key": "photo", "kind": "benefit", "weight": 1 },
+    { "code": "05", "key": "food", "kind": "benefit", "weight": 1 },
+    { "code": "06", "key": "shopping", "kind": "benefit", "weight": 1 },
+    { "code": "07", "key": "nature", "kind": "benefit", "weight": 1 },
+    { "code": "08", "key": "night", "kind": "benefit", "weight": 1 },
+    { "code": "09", "key": "onsen", "kind": "benefit", "weight": 1 },
+    { "code": "10", "key": "art", "kind": "benefit", "weight": 1 },
+    { "code": "11", "key": "entertainment", "kind": "benefit", "weight": 1 },
+    { "code": "12", "key": "local", "kind": "benefit", "weight": 1 },
+    { "code": "13", "key": "unique", "kind": "benefit", "weight": 1 },
+    { "code": "14", "key": "hidden", "kind": "benefit", "weight": 1 },
+    { "code": "15", "key": "iconic", "kind": "benefit", "weight": 1 },
+    { "code": "16", "key": "family", "kind": "suitability", "weight": 1 },
+    { "code": "17", "key": "senior", "kind": "suitability", "weight": 1 },
+    { "code": "18", "key": "couple", "kind": "suitability", "weight": 1 },
+    { "code": "19", "key": "solo", "kind": "suitability", "weight": 1 },
+    { "code": "20", "key": "relax", "kind": "suitability", "weight": 1 },
+    { "code": "21", "key": "adventure", "kind": "suitability", "weight": 1 },
+    { "code": "22", "key": "educational", "kind": "suitability", "weight": 1 },
+    { "code": "23", "key": "interactive", "kind": "suitability", "weight": 1 },
+    { "code": "24", "key": "rest", "kind": "suitability", "weight": 1 },
+    { "code": "25", "key": "walking", "kind": "cost", "weight": 1 },
+    { "code": "26", "key": "physical", "kind": "cost", "weight": 1 },
+    { "code": "27", "key": "crowd", "kind": "risk", "weight": 1 },
+    { "code": "28", "key": "queue", "kind": "risk", "weight": 1 },
+    { "code": "29", "key": "wheelchair", "kind": "suitability", "weight": 1 },
+    { "code": "30", "key": "stroller", "kind": "suitability", "weight": 1 },
+    { "code": "31", "key": "morning", "kind": "suitability", "weight": 1 },
+    { "code": "32", "key": "daytime", "kind": "suitability", "weight": 1 },
+    { "code": "33", "key": "sunrise", "kind": "suitability", "weight": 1 },
+    { "code": "34", "key": "sunset", "kind": "suitability", "weight": 1 },
+    { "code": "35", "key": "rain", "kind": "suitability", "weight": 1 },
+    { "code": "36", "key": "heat", "kind": "suitability", "weight": 1 },
+    { "code": "37", "key": "cold", "kind": "suitability", "weight": 1 },
+    { "code": "38", "key": "snow", "kind": "suitability", "weight": 1 },
+    { "code": "39", "key": "weather_sensitive", "kind": "risk", "weight": 1 },
+    { "code": "40", "key": "spring", "kind": "suitability", "weight": 1 },
+    { "code": "41", "key": "summer", "kind": "suitability", "weight": 1 },
+    { "code": "42", "key": "autumn", "kind": "suitability", "weight": 1 },
+    { "code": "43", "key": "winter", "kind": "suitability", "weight": 1 }
   ],
   "note": "Pilot calibration candidate only; not an empirically validated real-POI calibration."
 }

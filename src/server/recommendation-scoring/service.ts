@@ -2,6 +2,7 @@ import "server-only";
 
 import type { CanonicalPoiV1 } from "../../shared/contracts/poi/types";
 import { parseCanonicalPoiV1 } from "../../shared/contracts/poi/validation";
+import { POI_FEATURE_CODES } from "../../shared/contracts/planning/features";
 import type { LongTermPreferenceReadV1 } from "../../shared/contracts/preferences/read";
 import type { PreferenceV1 } from "../../shared/contracts/preferences/core";
 import {
@@ -15,6 +16,7 @@ export type AuthorizedRecommendationPoiRepository = {
   readonly scope: "CANONICAL_POI_PILOT_100";
   readonly runtimeImportAuthorized: true;
   readonly datasetRevision: string;
+  readonly featureBaselineRevision?: string | null;
   readonly internalIds: readonly string[];
   getByInternalId(internalId: string): Promise<CanonicalPoiV1 | null>;
 };
@@ -57,11 +59,26 @@ export async function scoreAuthorizedCanonicalPoiV1(input: {
     return { status: "unavailable", reason: "CANONICAL_POI_INVALID" };
   if (!poi.features)
     return { status: "unavailable", reason: "FEATURE43_UNAVAILABLE" };
+  // Dataset-level trust authorizes a scoring weight, not a claim of per-cell
+  // evidence confidence or a fresh operational observation.
+  const trustedBaseline =
+    repository.featureBaselineRevision && poi.features.confidence === null
+      ? Object.fromEntries(
+          POI_FEATURE_CODES.map((code) => [
+            code,
+            {
+              confidence: 1,
+              provenanceRef: `TRUSTED_INTERNAL_BASELINE:${repository.featureBaselineRevision}:${poi.features?.sourceRefs[0] ?? ""}`,
+            },
+          ]),
+        )
+      : undefined;
   return {
     status: "scored",
     result: scorePoiRecommendationV1({
       poiRef: poi.internalId,
       features: poi.features,
+      featureEvidence: trustedBaseline,
       longTerm: input.longTerm,
       tripSnapshot: input.tripSnapshot,
       tripSnapshotRef: input.tripSnapshotRef,
@@ -69,7 +86,9 @@ export async function scoreAuthorizedCanonicalPoiV1(input: {
       tripOverrideRevision: input.tripOverrideRevision,
       context: input.context,
       constraints: input.constraints,
-      dataRevision: repository.datasetRevision,
+      dataRevision: repository.featureBaselineRevision
+        ? `${repository.datasetRevision}+${repository.featureBaselineRevision}`
+        : repository.datasetRevision,
     }),
   };
 }

@@ -1,15 +1,16 @@
 # TASK-084-A scoring QA
 
-Status: **PARTIAL / PASS_RUNTIME / BLOCKED_REAL_PILOT**. This directory contains contract fixtures, mapping/config artifacts and a Phase-0 gate audit. It contains **no real POI matching output**.
+Status: **PARTIAL / PASS_RUNTIME / PASS_DETERMINISTIC_REAL_PILOT_SMOKE / NOT_QUALITY_VALIDATED**. The original Phase-0 gate audit and eight synthetic contract fixtures remain historical. The `real-pilot100/` directory now contains one frozen-input, real Canonical-100 × Feature43-43 matrix, not an 8-persona or recommendation-quality Pilot.
 
 ## Sources and replay
 
 - Feature registry: existing src/shared/contracts/planning/features.ts#POI_FEATURE_DEFINITIONS (43 codes).
 - Long-term Preference registry: existing src/shared/contracts/preferences/core.ts#preferenceFields (23 keys).
 - preference-43d-mapping.json and scoring-config.json are generated from versioned TypeScript config by tools/qa/task-084-recommendation-runtime.mjs. Run npm run qa:poi-recommendation to check semantic equivalence.
-- benchmark-personas.json holds eight canonical Preference-schema fixtures, not saved users or scored real POIs.
-- contract-test-summary.json records deterministic fixture hash and local performance. It is not empirical calibration.
+- benchmark-personas.json remains historical schema-fixture inventory; the current QA command executes only one synthetic performance input and never the eight-persona × 100-POI run.
+- contract-test-summary.json records a deterministic fixture hash and single-input local performance. It is not empirical calibration.
 - Runtime tests: npm run test:poi-recommendation.
+- Real Pilot replay: npm run qa:poi-recommendation:real-pilot. Its 4,300 cell rows, 100 aggregates, coverage, component and ranking-smoke outputs are under real-pilot100/; ranking is labeled deterministic smoke only.
 
 ## 23-key classification
 

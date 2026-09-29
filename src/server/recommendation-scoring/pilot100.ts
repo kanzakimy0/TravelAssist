@@ -17,6 +17,8 @@ export const pilot100RecommendationRepository: AuthorizedRecommendationPoiReposi
     scope: "CANONICAL_POI_PILOT_100" as const,
     runtimeImportAuthorized: true as const,
     datasetRevision: canonicalPoiRuntimeRepository.datasetRevision,
+    featureBaselineRevision:
+      canonicalPoiRuntimeRepository.featureBaselineRevision,
     internalIds: Object.freeze([...runtimeManifestJson.internalIds]),
     async getByInternalId(internalId: string) {
       const record =
