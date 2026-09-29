@@ -3,11 +3,17 @@ import { createHash } from "node:crypto";
 
 import datasetJson from "../../shared/data/canonical-poi-pilot100.v1.json" with { type: "json" };
 import runtimeManifestJson from "../../shared/data/canonical-poi-pilot100.runtime-manifest.v1.json" with { type: "json" };
+import trustedBaselineJson from "../../shared/data/canonical-poi-pilot100.feature43-trusted-baseline.v1.json" with { type: "json" };
+import trustedBaselineManifestJson from "../../shared/data/canonical-poi-pilot100.feature43-trusted-baseline.manifest.v1.json" with { type: "json" };
 import registryJson from "../../shared/data/master-code-registry.v1.json" with { type: "json" };
 import { parseCanonicalPoiDatasetV1 } from "../../shared/contracts/poi";
 import type { CanonicalPoiV1 } from "../../shared/contracts/poi/types";
 import { parseMasterCodeRegistryV1 } from "../../shared/master-code";
 import type { PoiDetailRepository } from "../poi-details/repository";
+import {
+  attachTrustedFeature43Baseline,
+  TrustedFeature43BaselineIntegrityError,
+} from "./trusted-baseline";
 
 const DATASET_PATH = "src/shared/data/canonical-poi-pilot100.v1.json";
 const REGISTRY_PATH = "src/shared/data/master-code-registry.v1.json";
@@ -22,7 +28,11 @@ export class CanonicalPoiRuntimeIntegrityError extends Error {
 }
 
 export interface CanonicalPoiRuntimeRepository extends PoiDetailRepository {
+  readonly scope: "CANONICAL_POI_PILOT_100";
+  readonly runtimeImportAuthorized: true;
+  readonly internalIds: readonly string[];
   readonly datasetRevision: string;
+  readonly featureBaselineRevision: string | null;
   list(): Promise<readonly CanonicalPoiV1[]>;
   /** Structural handoff for TASK-080's findCandidates repository contract. */
   findCandidates(query: unknown): Promise<{
@@ -53,6 +63,8 @@ export function createCanonicalPoiRuntimeRepository(
   datasetInput: unknown,
   manifestInput: unknown,
   registryInput: unknown,
+  trustedBaselineInput?: unknown,
+  trustedBaselineManifestInput?: unknown,
 ): CanonicalPoiRuntimeRepository {
   const fail = (): never => {
     throw new CanonicalPoiRuntimeIntegrityError();
@@ -110,18 +122,49 @@ export function createCanonicalPoiRuntimeRepository(
     byId.set(poi.internalId, poi);
   });
   if (byId.size !== 100 || new Set(manifest.masterCodes).size !== 100) fail();
+  if (
+    (trustedBaselineInput === undefined) !==
+    (trustedBaselineManifestInput === undefined)
+  )
+    fail();
+  let effectiveRecords = dataset.records;
+  let featureBaselineRevision: string | null = null;
+  if (trustedBaselineInput !== undefined) {
+    try {
+      const attached = attachTrustedFeature43Baseline(
+        dataset.records,
+        datasetInput,
+        manifestInput,
+        trustedBaselineInput,
+        trustedBaselineManifestInput,
+      );
+      effectiveRecords = attached.records;
+      featureBaselineRevision = attached.revision;
+    } catch (error) {
+      if (error instanceof TrustedFeature43BaselineIntegrityError) fail();
+      throw error;
+    }
+  }
+  const effectiveById = new Map(
+    effectiveRecords.map((record) => [record.internalId, record]),
+  );
   return {
+    scope: "CANONICAL_POI_PILOT_100",
+    runtimeImportAuthorized: true,
+    internalIds: [...manifest.internalIds],
     datasetRevision: dataset.datasetRevision,
+    featureBaselineRevision,
     async getByInternalId(internalId) {
-      const record = byId.get(internalId);
+      const record = effectiveById.get(internalId);
       return record === undefined ? null : structuredClone(record);
     },
     async list() {
-      return dataset.records.map((record) => structuredClone(record));
+      return effectiveRecords.map((record) => structuredClone(record));
     },
     async findCandidates(_query) {
       // The Pilot is bounded to exactly 100; returning all 100 lets TASK-080's
-      // search service apply its own canonical filtering and pagination.
+      // search service apply its own canonical filtering and pagination. Search
+      // does not need restricted internal scoring ratings.
       return {
         datasetRevision: dataset.datasetRevision,
         records: dataset.records.map((record) => structuredClone(record)),
@@ -135,4 +178,6 @@ export const canonicalPoiRuntimeRepository =
     datasetJson,
     runtimeManifestJson,
     registryJson,
+    trustedBaselineJson,
+    trustedBaselineManifestJson,
   );
