@@ -553,3 +553,182 @@ Return:
 - WBS 7.14 state
 
 No merge without user review.
+
+
+## 15. Nationwide bus-terminal discovery source amendment
+
+The following NAVITIME category is authorized as a **discovery-only nationwide bus-terminal candidate source**:
+
+https://www.navitime.co.jp/category/0815/
+
+Important boundary:
+
+- NAVITIME may be used to discover candidate bus terminals / bus centers / highway-bus facilities nationwide.
+- NAVITIME is NOT by itself an acceptance/provenance authority for persistent canonical identity, coordinates, passenger counts, or licensing.
+- Every discovered candidate must be revalidated against an official or operator source before NODE_ACCEPTED.
+- Passenger/use statistics must come from MLIT, municipality, terminal operator, bus operator, or another official source.
+- If official usage is unavailable, keep `USAGE_DATA_UNAVAILABLE`; do not infer traffic from NAVITIME ranking/order.
+
+The national bus candidate inventory must no longer be limited to the current 16 manually selected facilities.
+
+The builder must crawl/discover the full nationwide category hierarchy by prefecture/municipality or other NAVITIME category navigation, deduplicate by physical facility, then official-source validate.
+
+Mandatory major-terminal QA still includes:
+- バスタ新宿
+- 東京 / 八重洲
+- 札幌
+- 仙台
+- 名古屋
+- 京都
+- 大阪 / 梅田 / なんば
+- 広島
+- 博多 / 福岡
+- 熊本
+- 長崎
+
+This is a minimum QA set, not a whitelist.
+
+## 16. Complete official airport inventory amendment
+
+The v2 airport audit must start from the full current MLIT airport list:
+
+https://www.mlit.go.jp/koku/15_bf_000310.html
+
+As of the current MLIT list, audit all public airport categories:
+
+- A 拠点空港: 28
+- B 地方管理空港: 54
+- C その他の空港: 7
+- D 共用空港: 8
+
+Total airport identities to audit: 97, excluding heliports and non-public airfields.
+
+Do not assume every one of the 97 airports must automatically become a T0/T1/T2/T3 Planner node.
+
+For each official airport:
+1. current identity/lifecycle;
+2. scheduled passenger relevance;
+3. annual passenger volume from official MLIT airport statistics;
+4. tourism/regional accessibility role;
+5. fixed-guideway access;
+6. bus/ferry access where relevant;
+7. acceptance decision:
+   - ACCEPT
+   - DEFER_NOT_PLANNER_RELEVANT
+   - REVIEW_REQUIRED
+   - CLOSED/INACTIVE if officially applicable
+
+The final airport audit must show:
+- 97/97 official identities reviewed;
+- accepted count;
+- deferred count;
+- excluded/closed count;
+- missing identity count = 0.
+
+The previous 47-airport inventory is insufficient as a complete airport review.
+
+## 17. Multi-operator major-station merge rule
+
+Large railway stations served by multiple companies MUST NOT be flattened into one TransportNode.
+
+Use two layers:
+
+```text
+TransportHub = the physical/interchange complex
+
+TransportNode component =
+operator × physical station × mode family
+```
+
+Example:
+
+```text
+Tokyo TransportHub
+├ JR East conventional rail
+├ JR East Shinkansen
+├ JR Central Shinkansen
+└ Tokyo Metro
+```
+
+These components may share one parent Hub only when the interchange relationship is supported by official station/transfer evidence.
+
+### 17.1 Merge into the same TransportHub when
+
+All or most of the following are true:
+
+- same physical station complex or directly connected paid/unpaid concourse;
+- official station maps treat the facilities as one interchange complex;
+- official route planners/transfer guides recognize direct transfer;
+- walking transfer is internal or clearly designated;
+- coordinates/platforms are materially co-located;
+- the station complex is marketed/operated as the same interchange identity.
+
+### 17.2 Keep separate TransportHubs when
+
+- same/similar name but physically separate;
+- street-level transfer is material and not treated as one station complex;
+- different neighborhood/facility identity;
+- official sources treat them as separate stations;
+- ambiguity remains.
+
+Examples requiring explicit review rather than name-based merge:
+- 大阪 vs 梅田
+- JR難波 vs なんば vs 大阪難波
+- different same-name stations in different cities/operators
+
+### 17.3 Component lineRefs
+
+Do not create one TransportNode per line by default.
+
+A component can contain multiple served lines:
+
+```text
+JR East conventional Tokyo component
+lineRefs = [東海道線, 東北線, 総武線, 京葉線, ...]
+```
+
+Create separate components only when operator or mode-family identity is materially different.
+
+## 18. Shinkansen usage-data fallback amendment
+
+Some Shinkansen station/operator components do not have directly usable S12 passenger values.
+
+Do not assign an arbitrary low tier.
+
+Use this official-source fallback order:
+
+1. S12 2024 component/station passenger count when the Shinkansen component is directly represented.
+2. Operator official Shinkansen station ridership, when published.
+   - JR East official example:
+     https://www.jreast.co.jp/company/data/passenger/2024_shinkansen.html/
+3. Operator official station-level passenger statistics for the same station/operator.
+4. Official prefectural/municipal statistical yearbook or operator disclosure for the station.
+5. Official station-complex usage metric, clearly marked as `STATION_COMPLEX_PROXY`, only if the specific Shinkansen component metric is unavailable.
+6. If no official utilization number exists:
+   - `usageMetricType=USAGE_DATA_UNAVAILABLE`
+   - no invented passenger value
+   - functional classification review required.
+
+Functional evidence may include:
+- Shinkansen service class stopping pattern;
+- interchange with another Shinkansen line;
+- interchange with major conventional/private/metro network;
+- airport/intercity/ferry gateway role;
+- national/regional tourism gateway role.
+
+Functional promotion remains capped at one tier relative to the best official quantitative base.
+
+If there is no quantitative base, the node may receive a provisional level only with:
+- `manualLevelReview=true`
+- explicit official evidence
+- confidence below fully quantitative decisions
+- review record.
+
+The final v2 report must list every Shinkansen component with:
+- quantitative source used;
+- fallback level;
+- whether station-complex proxy was used;
+- whether manual review remains;
+- final T-level.
+
+No Shinkansen component may silently default to T2/T3 because a numeric field is missing.
