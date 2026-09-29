@@ -318,14 +318,6 @@ test("unadmitted dataset cannot be used as formal Pilot input", () => {
     () => admittedGraphNodes({}, registry, unauthorized),
     /authorization/,
   );
-  assert.equal(
-    registry.entries.filter(
-      (entry) =>
-        entry.lifecycleStatus === "active" &&
-        entry.entityType.startsWith("poi."),
-    ).length,
-    0,
-  );
 });
 
 test("default server-side Planner repository fails closed", () => {

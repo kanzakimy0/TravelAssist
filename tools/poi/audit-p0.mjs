@@ -10,6 +10,7 @@ import {
   buildDataset,
   generateArtifacts,
 } from "./enrich-candidates.mjs";
+import { readFrozenCandidateInput } from "./frozen-master-code-registry.mjs";
 import {
   parsePoiFeatureSetV1,
   parsePoiVisitProfileV1,
@@ -213,7 +214,7 @@ export function audit(root = ROOT) {
   let checksums = 0;
   for (const entry of [...manifest.inputHashes, ...manifest.outputs]) {
     assert.equal(
-      hash(readFileSync(resolve(root, entry.path))),
+      hash(readFrozenCandidateInput(root, entry.path)),
       entry.sha256,
       entry.path,
     );
