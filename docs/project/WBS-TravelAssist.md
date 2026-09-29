@@ -1054,7 +1054,9 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
-| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / Draft PR #444；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
+| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 已完成（#438 / TASK-083-A；100 ADMIT + Pilot-only runtime；PR #444 已验收并 normal merge 至 develop `3fab703d`） |
+| 7.4.2 | Canonical Feature43 Legacy Recovery Audit / 历史43维回收审计 | B | P0 | 7.4.1 | 待审查（#452 / TASK-087-B / Draft PR #454；4,300/4,300 历史值审计完成；旧 per-cell promotion policy 下 0 可升格；作为审计记录保留） |
+| 7.4.3 | Trusted Legacy Feature43 Baseline Adoption / 受信任历史43维基线接入 | B | P0 | 7.4.1 | 未开始（#455 / TASK-088-B；用户明确采用库内 Feature43 为 TRUSTED_INTERNAL_BASELINE，不再要求逐字段 promotion；Pilot-100 目标 4,300/4,300） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
@@ -1064,6 +1066,18 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
+
+TASK-088-B tracking (2026-09-29):
+
+- Issue #455；Owner B；WBS 7.4.3。
+- 用户治理决策：现有内部 Feature43 数据库被指定为 `TRUSTED_INTERNAL_BASELINE`，不再以逐字段 provenance/promotion 作为评分可用性的前置门槛。
+- Pilot-100 目标：对已 admitted 的固定 100 Canonical POI 通过 exact identity 绑定现有 v1.66 43D 数据，形成 100 × 43 = 4,300 个 baseline cells。
+- 该 baseline 是内部评分基线，不是实时事实；crowd/queue/weather/accessibility/seasonal 等后续可被更鲜的 runtime facts 覆盖。
+- PR #454 保留为历史 provenance audit；其“0 个值通过旧 promotion gate”结论不再阻塞 baseline 使用。
+- PR #437 的 17 个 inferred values 仅作为 audit/reference，不作为主 Feature43 数据源。
+- Policy：`docs/design/feature43-trusted-internal-baseline-policy.md`。
+- Task：`docs/tasks/TASK-088-b-trusted-feature43-baseline-adoption.md`。
+- 未授权自动 merge。
 
 TASK-082-A tracking (2026-09-27):
 
