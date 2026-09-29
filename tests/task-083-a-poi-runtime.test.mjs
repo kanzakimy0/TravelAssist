@@ -42,7 +42,16 @@ test("authorized server-only repository exposes exactly 100 canonical records", 
     rows.map((row) => row.masterCode),
     manifest.masterCodes,
   );
-  assert.ok(rows.every((row) => row.features === null));
+  assert.ok(
+    rows.every(
+      (row) =>
+        row.features !== null &&
+        Object.values(row.features.values).length === 43 &&
+        Object.values(row.features.values).every(
+          (value) => Number.isInteger(value) && value >= 0 && value <= 9,
+        ),
+    ),
+  );
   rows[0].names.localized[0].value = "tampered";
   assert.notEqual(
     (await canonicalPoiRuntimeRepository.getByInternalId(rows[0].internalId))

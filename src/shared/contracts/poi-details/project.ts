@@ -10,6 +10,16 @@ const PUBLIC_EVIDENCE_KINDS = new Set([
 
 /** Explicit allowlist. No raw fact, provider ID, locator, asset or rights payload. */
 export function projectPoiDetail(poi: CanonicalPoiV1): PoiDetailV1 {
+  const publicFeatureSources =
+    poi.features !== null &&
+    poi.features.sourceRefs.every((ref) =>
+      poi.sourceRefs.some(
+        (source) =>
+          source.sourceRef === ref &&
+          source.rights.persistence === "allowed" &&
+          source.rights.redistribution === "allowed",
+      ),
+    );
   return {
     schemaVersion: "1.0",
     poiRef: poi.internalId,
@@ -40,7 +50,7 @@ export function projectPoiDetail(poi: CanonicalPoiV1): PoiDetailV1 {
     },
     lifecycle: { ...poi.lifecycle },
     features:
-      poi.features === null
+      poi.features === null || !publicFeatureSources
         ? null
         : {
             featureVersion: poi.features.featureVersion,
