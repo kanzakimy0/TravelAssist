@@ -1066,9 +1066,13 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
-| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（#441 Closed / Completed；TASK-084-B 原始全国规划骨架 Acceptance PASS；244 个 NODE_ACCEPTED、21 个 Hub；PR #448 已合入 develop） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 返工中（#441 已重新打开；PR #448 的 244-node v1 已合入但验收结论撤销；存在层级退化、重大车站组件缺失、机场接驳站缺失、全国长途客运站覆盖不足；按 corrective rework 重建 v2，未通过前禁止作为 7.15/7.16 输入） |
 | 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
 | 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
+
+TASK-084-B quality rework (2026-09-29):
+
+- 用户复核发现已合入 #448 的 244-node master 存在实质性质量缺陷：所有 rail/shinkansen/metro/private rail 节点均被压为 T2、T3=0，品川/机场接驳铁路等组件覆盖不完整，Bus Terminal 仅 5 个且集中长崎，缺失バスタ新宿等全国级客运枢纽。#441 已重新打开，7.14 撤销“已完成”，v1 标记为历史 REJECTED_FOR_REWORK；使用 MLIT S12 2024 官方全国駅別乗降客数及各模式官方利用统计重建 v2。详见 [Corrective Rework Amendment](../tasks/AMENDMENT-TASK-084-b-transport-master-quality-rework.md)。085/086 在 v2 明确验收前不得使用 v1。
 
 TASK-084-B execution checkpoint (2026-09-28):
 
