@@ -1062,7 +1062,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 已完成（#450 / TASK-084-A；PR #451 用户验收并 normal merge；Recommendation Scoring v1 Runtime + Canonical 100×43 deterministic Pilot 已通过；推荐行为质量校准转 7.9.1） |
-| 7.9.1 | 推荐匹配行为质量校准 / Canonical 100 POI Calibration | A | P0 | 7.9,7.4.3 | 未开始（#461 / TASK-090-A；逐 Preference/Context one-factor-at-a-time 校准，方向性/单调性/硬约束/排名敏感度） |
+| 7.9.1 | 推荐匹配行为质量校准 / Canonical 100 POI Calibration | A | P0 | 7.9,7.4.3 | 待审查（#461 / TASK-090-A；98 组单因素探针 × Canonical 100，方向性 97.46%、反向 0、硬约束 100%；Draft PR 待用户验收，敏感度局限见 Result） |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
@@ -1087,6 +1087,7 @@ TASK-090-A tracking (2026-09-29):
 - Task：`docs/tasks/TASK-090-a-recommendation-match-quality-calibration.md`。
 - Codex：`docs/tasks/CODEX-TASK-090-a-recommendation-match-quality-calibration.md`。
 - Draft PR only；不自动 merge。
+- 执行结果：98 probes、9,800 配对观察、19,600 次评分；2,008 个 material cells 中 1,957 个按预期移动、51 个贡献变化被整数分取整吞没、0 个反向；1,000/1,000 hard-gate、50/50 quartile anchors、0 unrelated component movement；详见 [Result](../tasks/RESULT-TASK-090-a-recommendation-match-quality-calibration.md) 与 [QA](../qa/TASK-090-A/calibration-summary.json)。`7.9.1` 仅在 PR 合入且用户验收后可标记已完成。
 
 TASK-082-A tracking (2026-09-27):
 
