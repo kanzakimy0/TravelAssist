@@ -42,7 +42,7 @@ Fixed archive SHA-256: N02 `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28
 | Combined master | 244 accepted, 0 duplicate IDs; actual batches 200 + 44 |
 | Hubs | 21 accepted, 85 linked nodes, 80 review-required Shinkansen components, 79 independent self gateways; 0 generic unresolved |
 | Shinkansen semantics | 94 per-ID decisions: 14 operator-supported standalone gateways, 80 needing explicit transfer review; no parent rebind |
-| Priority interchange evidence | Official operator guides checked for 11 station areas / 14 pending components; the Hub relationship remains pending explicit component and parent review |
+| Priority interchange evidence | Official operator guides checked for 21 station areas / 24 pending components; the Hub relationship remains pending explicit component and parent review |
 | Current administrative assignment | 0/244 prefecture, 0/244 municipality and 0/47 prefectures represented; [N03/GSI decision](n03-gsi-rights-decision.md) `APPROVAL_REQUIRED`, formal reply reference absent |
 | National gate | PARTIAL; see [coverage audit](national-coverage-audit.md) |
 

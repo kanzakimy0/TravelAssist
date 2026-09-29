@@ -47,6 +47,16 @@ REVIEW_GUIDES = {
     "豊橋": ["https://railway.jr-central.co.jp/station-guide/shinkansen/toyohashi/"],
     "長岡": ["https://www.jreast.co.jp/estation/stations/1085.html"],
     "越後湯沢": ["https://www.jreast.co.jp/estation/stations/285.html"],
+    "新横浜": ["https://railway.jr-central.co.jp/station-guide/shinkansen/shin-yokohama/"],
+    "小田原": ["https://railway.jr-central.co.jp/station-guide/shinkansen/odawara/"],
+    "熱海": ["https://www.jreast.co.jp/estation/station/info.aspx?StationCd=64"],
+    "新神戸": ["https://eki.jr-odekake.net/premises?id=0610156"],
+    "新函館北斗": ["https://www.jrhokkaido.co.jp/train/shinkansen.html"],
+    "富山": ["https://eki.jr-odekake.net/premises?id=0541465"],
+    "福井": ["https://eki.jr-odekake.net/premises?id=0541430"],
+    "長崎": ["https://www.jrkyushu.co.jp/railway/station/1191726_1601.html"],
+    "宇都宮": ["https://www.jreast.co.jp/estation/stations/248.html"],
+    "盛岡": ["https://www.jreast.co.jp/estation/stations/1565.html"],
 }
 
 

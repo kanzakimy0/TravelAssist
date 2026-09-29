@@ -105,7 +105,9 @@ class Task084Phase2Tests(unittest.TestCase):
         self.assertTrue(all(not item["sameNameAloneUsed"] and item["parentHubId"] is None and item["reviewRadiusM"] == 800 for item in decisions))
         self.assertEqual(sum(item["hubResolutionStatus"] == "SELF_GATEWAY" for item in decisions), 14)
         self.assertTrue(all(combined[item["transportNodeId"]]["parentHubId"] is None for item in decisions))
-        for name in ["品川", "米原", "三島", "八戸", "郡山", "高崎", "新青森", "上越妙高", "豊橋", "長岡", "越後湯沢"]:
+        self.assertEqual(len(hub_review.REVIEW_GUIDES), 21)
+        self.assertEqual(sum(item["reviewEvidenceStatus"] == "OPERATOR_INTERCHANGE_CONFIRMED" for item in decisions), 24)
+        for name in hub_review.REVIEW_GUIDES:
             selected = [item for item in decisions if item["canonicalNameJa"] == name]
             self.assertTrue(selected, name)
             self.assertTrue(all(item["hubResolutionStatus"] == "HUB_REVIEW_REQUIRED" and (item["nearbyRailComponents"] or item["nearbyShinkansenTransportNodeIds"]) for item in selected), name)

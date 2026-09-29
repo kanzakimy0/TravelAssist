@@ -1046,6 +1046,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
+| 7.4.1 | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / PR #444 于 2026-09-29 合入 develop；Pilot-100 runtime 授权 100 条；显式用户验收证据仍待核对） |
 
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
@@ -1055,9 +1056,9 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
-| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
 | 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 部分完成（#441 / TASK-084-B；当前 244 个 NODE_ACCEPTED、21 个 Hub；全国 Bus、岛屿及行政区覆盖尚未通过 Gate） |
-| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，且使用正式 Canonical POI） |
+| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
 | 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
 
 TASK-084-B execution checkpoint (2026-09-28):
@@ -1074,11 +1075,11 @@ TASK-082-A tracking (2026-09-27):
 - Provider 批量查询、cache、retention 或 production 权限不明确时必须 fail-closed；不得用 candidate/enrichment workbook 冒充 Canonical POI。
 - Task：`docs/tasks/TASK-082-a-poi-edge-graph-generation-pilot.md`；Branch：`feature/a-poi-edge-graph-generation-pilot`；未授权自动合并。
 
-TASK-082-A execution update (2026-09-28):
+TASK-082-A execution update (2026-09-28 historical baseline; 2026-09-29 authorization correction):
 
-- Started as **进行中**. On latest develop ef388cdcd0ff5f15ebd404337b4ed29fb3435058, the application Registry has 51 entries and **0 active POI allocations**; the candidate manifest remains runtime-import unauthorized. TASK-083-A / PR #444 is Draft and not in develop.
-- Directed bounded graph contract, four-layer schema, unresolved-mode and score-trace logic, transport fixtures, deterministic QA replay and Planner read-only boundary are implemented. The real Pilot is **BLOCKED** at 0/500 POIs, 0 candidate edges and 0 enriched edges; no candidate workbook, synthetic fixture or evaluation-only Provider route was promoted.
-- WBS 7.13 is **阻塞**, not 已完成. Resume only after an accepted Canonical import with active codes reaches develop; route enrichment requires documented batch/cache/retention/production rights. No nationwide expansion or auto-merge.
+- The 2026-09-28 replay used `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`, whose application Registry had 51 entries and 0 active POI allocations. That is a historical baseline. PR #444 merged into develop on 2026-09-29 (`3fab703d13694fd1205679c96fb8d1d2e8549fbc`); the Pilot-100 runtime manifest now authorizes exactly 100 Canonical POIs, while the candidate corpus remains unauthorized. The remaining v1.66/workbook/FROZEN rows are not Canonical input.
+- Directed bounded graph contract, four-layer schema, unresolved-mode and score-trace logic, transport fixtures, deterministic QA replay and Planner read-only boundary are implemented. The frozen TASK-082 Pilot artifact still reports the historical 0/500-POI, 0-edge replay; TASK-082 has not regenerated its own real Pilot against the authorized registry. This artifact must not be read as current Canonical POI availability.
+- WBS 7.13 remains **阻塞** pending TASK-082's own Pilot replay and documented Provider batch/cache/retention/production rights. Use the then-current formally authorized registry for any resumed Pilot; do not promote candidate workbook rows or infer a permanent 100-POI corpus.
 
 TASK-022-A tracking (2026-09-09):
 
