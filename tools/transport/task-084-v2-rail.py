@@ -21,7 +21,7 @@ ENTRY = "S12-25_GML/UTF-8/S12-25_NumberOfPassengers.geojson"
 NAMESPACE = uuid.UUID("72c1d06d-8ba0-4f7f-93b3-5366961242e0")
 BATCH_SIZE = 200
 RAIL_KINDS = {"rail_station", "shinkansen_station", "metro_station", "private_rail_station"}
-AIRPORT_STATIONS = {"成田空港", "空港第２ビル", "羽田空港第１・第２ターミナル", "羽田空港第１ターミナル", "羽田空港第２ターミナル", "羽田空港第３ターミナル", "関西空港", "新千歳空港", "福岡空港", "中部国際空港", "仙台空港", "神戸空港"}
+AIRPORT_STATIONS = {"成田空港", "空港第２ビル", "羽田空港第１・第２ターミナル", "羽田空港第１ターミナル", "羽田空港第２ターミナル", "羽田空港第３ターミナル", "関西空港", "新千歳空港", "福岡空港", "中部国際空港", "仙台空港", "神戸空港", "草江"}
 
 
 def airport_access_name(name):
@@ -141,7 +141,12 @@ def build(archive, old_master):
                 reasons.append("SHINKANSEN")
             if airport_access_name(focus["stationName"]):
                 reasons.append("AIRPORT_ACCESS_AUDIT")
-            components.append({"proposedTransportNodeId": node_id, "identityKey": identity_key, "canonicalNameJa": focus["stationName"], "operatorRefs": [focus["operator"]], "lineRefs": lines, "nodeKind": kind(group_key[3]), "modeFamily": group_key[3], "latitude": focus["latitude"], "longitude": focus["longitude"], "sourcePrimaryStationCode": focus["stationCode"], "sourcePrimaryLine": focus["line"], "sourceStationRefs": [{"stationCode": c, "groupCode": g, "line": line} for c,g,line in refs], "dataAvailabilityCode": focus["availabilityCode"], "duplicateCode": focus["duplicateCode"], "usageMetricType": "DAILY_ENTRIES_EXITS" if available else "USAGE_DATA_UNAVAILABLE", "usageValue": usage, "usageUnit": "persons/day" if available else None, "usagePeriod": "FY2024", "usageSource": SOURCE, "sourceObservedAt": "FY2024", "sourceArchiveSha256": ARCHIVE_SHA, "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1", "proposedNodeLevel": metric_tier(usage) if usage is not None else None, "functionalRole": "AIRPORT_ACCESS" if airport_access_name(focus["stationName"]) else "STATION", "promotionReason": None, "decisionReason": "S12_061 usage threshold" if usage is not None else "Official S12 usage unavailable; manual tier review required", "confidence": 0.9 if usage is not None else 0.6, "reviewStatus": "MULTIPLE_PRIMARY_RECORDS_REVIEW_REQUIRED" if len(primary)>1 else "COMPONENT_REVIEW_REQUIRED", "inclusionReasons": reasons, "sourceLicense": "CC BY 4.0", "sourceRefs": [SOURCE]})
+            decision_reason = "Official S12 usage unavailable; manual tier review required"
+            if usage is not None:
+                decision_reason = "S12_061 usage threshold"
+                if usage < 10000:
+                    decision_reason += "; low-flow inclusion justified by " + ("airport access" if airport_access_name(focus["stationName"]) else "Shinkansen inventory")
+            components.append({"proposedTransportNodeId": node_id, "identityKey": identity_key, "canonicalNameJa": focus["stationName"], "operatorRefs": [focus["operator"]], "lineRefs": lines, "nodeKind": kind(group_key[3]), "modeFamily": group_key[3], "latitude": focus["latitude"], "longitude": focus["longitude"], "sourcePrimaryStationCode": focus["stationCode"], "sourcePrimaryLine": focus["line"], "sourceStationRefs": [{"stationCode": c, "groupCode": g, "line": line} for c,g,line in refs], "dataAvailabilityCode": focus["availabilityCode"], "duplicateCode": focus["duplicateCode"], "usageMetricType": "DAILY_ENTRIES_EXITS" if available else "USAGE_DATA_UNAVAILABLE", "usageValue": usage, "usageUnit": "persons/day" if available else None, "usagePeriod": "FY2024", "usageSource": SOURCE, "sourceObservedAt": "FY2024", "sourceArchiveSha256": ARCHIVE_SHA, "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1", "proposedNodeLevel": metric_tier(usage) if usage is not None else None, "functionalRole": "AIRPORT_ACCESS" if airport_access_name(focus["stationName"]) else "STATION", "promotionReason": None, "decisionReason": decision_reason, "confidence": 0.9 if usage is not None else 0.6, "reviewStatus": "MULTIPLE_PRIMARY_RECORDS_REVIEW_REQUIRED" if len(primary)>1 else "COMPONENT_REVIEW_REQUIRED", "inclusionReasons": reasons, "sourceLicense": "CC BY 4.0", "sourceRefs": [SOURCE]})
     for prior in old:
         if prior["transportNodeId"] not in used_old:
             lineage.append({"oldTransportNodeId": prior["transportNodeId"], "newTransportNodeId": None, "decision": "REVIEW_REQUIRED", "reason": "No safe S12 station/operator/mode crosswalk; no silent rebind or rejection"})

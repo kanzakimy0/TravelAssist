@@ -1,6 +1,8 @@
 # RESULT — TASK-084-B Japan TransportNode Master
 
-## Status
+> **HISTORICAL_V1_REJECTED_FOR_REWORK (2026-09-29).** The PASS wording and 244-node statistics below record the earlier PR #448 closeout only; substantive national Master acceptance was revoked after the [v1 rejection audit](../qa/TASK-084-B/TRANSPORT-MASTER-V1-REJECTION-AUDIT.md). WBS 7.14 is 返工中. TASK-085-B and TASK-086-B must not use this v1. See the [v2 corrective review artifacts](../qa/TASK-084-B/TRANSPORT-MASTER-V2-REWORK-RESULTS.md) for current evidence and blockers.
+
+## Historical closeout status (revoked)
 
 **PASS / MERGED / 已完成.** Under the [final closeout amendment](AMENDMENT-TASK-084-b-final-closeout.md), the national planning backbone meets the original TASK-084-B acceptance. The combined master contains **244 NODE_ACCEPTED TransportNodes**, **77 new** since the accepted 167-node checkpoint. [PR #448](https://github.com/kanzakimy0/TravelAssist/pull/448) passed [exact-head Quality Gate #36564684778](https://github.com/kanzakimy0/TravelAssist/actions/runs/36564684778) at `de3fa9dd7f11c391678b2fdbc792a3753267182d` and merged into develop via normal two-parent commit `e3fdef378615f29eb41e6221d3fd46e2e87ac545`; [Issue #441](https://github.com/kanzakimy0/TravelAssist/issues/441) is Closed / Completed. Runtime integration is `DEFERRED_TO_A`. TASK-085-B and TASK-086-B remain unstarted. PR #444 merged into develop on 2026-09-29; its runtime manifest authorizes the Pilot-100 Canonical POI set only. TASK-085-B must read the then-current authorized registry when it starts.
 
