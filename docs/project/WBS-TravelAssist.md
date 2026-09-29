@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-087-B / WBS 7.4.2 Canonical Feature43 Legacy Recovery Audit（2026-09-29）
+
+- Issue #452；分支 feature/b-canonical-feature43-legacy-recovery；状态：B / 待审查（审计产物已生成，旧值升格仍受证据与 rubric Gate 阻塞；Draft PR 待人工验收）。
+- 从已合入 TASK-083-A 的 develop@3fab703d 独立执行，未基于 PR #437。100/100 Canonical UUID 与 v1.66 Registry 精确连接；4,300/4,300 cell 决定、4,317 条历史数值观测、8 组同值和 9 组异值 Draft 对照均留痕。
+- v1.66 的 4,300 个历史数值均未取得可复算的逐字段证据/旧量尺兼容证明；PR #437 的 17 值保持 UNMERGED_DRAFT_REFERENCE。proposed recovery overlay v2 升格 0、最终非空 0、unexplained delta 0、runtimeImportAuthorized=false。保留 #437 Draft，不自动合并或覆盖 Canonical runtime。
+- [Result](../tasks/RESULT-TASK-087-b-canonical-feature43-legacy-recovery.md) 与 [QA](../qa/TASK-087-B/coverage-before-after.json)；大规模新增外部证据应另立 Task。
+
 ## TASK-083-A / WBS 7.4.1 Real 100 POI Canonical Admission（2026-09-27）
 
 - Issue #438；[Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444)；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 = **A / 待审查**，等待用户验收与人工合并。
@@ -1054,7 +1061,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
-| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / Draft PR #444；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
+| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 已完成（#438 / PR #444 用户验收并 normal merge 至 develop 3fab703d；100 ADMIT + Pilot-only runtime） |
+| 7.4.2 | Canonical Feature43 Legacy Recovery Audit / 历史43维回收升格审计 | B | P0 | 7.4.1 | 待审查（#452 / TASK-087-B；4,300 cell 审计；旧值证据/rubric Gate 阻塞升格；Draft PR） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
