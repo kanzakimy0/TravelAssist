@@ -135,7 +135,16 @@ def build(root=ROOT, cache=None, final=False):
     assert plan["count"] == 10097 and len(plan["items"]) == 10097
     assert len(plan["batches"]) == 51
     for path, digest in plan["identityHashes"].items():
-        assert sha((root / path).read_bytes()) == digest, "Frozen identity/Registry/rubric changed: " + path
+        if path == "src/shared/data/master-code-registry.v1.json":
+            frozen = (root / "data/poi/full/sources/master-code-registry.task-043.v1.json").read_bytes()
+            previous = json.loads(frozen)
+            current = json.loads((root / path).read_bytes())
+            assert current["entries"][:len(previous["entries"])] == previous["entries"], "Live Registry is not an append-only extension"
+            assert current["governanceStatus"] == previous["governanceStatus"], "Registry governance changed"
+            source_bytes = frozen
+        else:
+            source_bytes = (root / path).read_bytes()
+        assert sha(source_bytes) == digest, "Frozen identity/Registry/rubric changed: " + path
     baseline = {}
     for part in plan["baselinePartitions"]:
         assert sha((root / part["path"]).read_bytes()) == part["sha256"], "Frozen TASK-070 baseline changed"

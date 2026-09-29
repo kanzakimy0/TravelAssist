@@ -1,9 +1,7 @@
 import "server-only";
 import { NextResponse } from "next/server";
-import {
-  unavailablePoiDetailRepository,
-  type PoiDetailRepository,
-} from "./repository";
+import { canonicalPoiRuntimeRepository } from "../poi-runtime/repository";
+import { type PoiDetailRepository } from "./repository";
 import { PoiDetailError, readPoiDetail } from "./service";
 
 const HEADERS = {
@@ -13,7 +11,7 @@ const HEADERS = {
 
 export async function handlePoiDetail(
   poiRef: unknown,
-  repository: PoiDetailRepository = unavailablePoiDetailRepository,
+  repository: PoiDetailRepository = canonicalPoiRuntimeRepository,
 ): Promise<NextResponse> {
   try {
     const data = await readPoiDetail(poiRef, repository);
