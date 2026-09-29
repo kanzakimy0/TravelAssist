@@ -57,6 +57,6 @@ Validation record: targeted tests **5/5 PASS**; deterministic QA replay PASS; fu
 ## Final review state
 
 - WBS 7.9.1: 待审查 (Draft PR; not merged or accepted).
-- Draft PR: pending creation.
-- Exact-head GitHub Quality Gate: pending.
+- Draft PR: [#463](https://github.com/kanzakimy0/TravelAssist/pull/463), Open / Draft; no merge.
+- Initial exact-head GitHub Quality Gate run [#513](https://github.com/kanzakimy0/TravelAssist/actions/runs/36586744050) on the bot-created PR returned `action_required` with no jobs. A normal branch synchronization is being used to request a fresh exact-head run; do not treat `action_required` as SUCCESS.
 - No auto-merge; no national expansion; no POI-specific bonus; no modification of trusted Feature43 values.
