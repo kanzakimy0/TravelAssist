@@ -1,5 +1,7 @@
 # TASK-084-B v2 纠错重建成果物与审核清单
 
+> 2026-09-29 历史中间成果。当前全国扩审与新增规则结果请读取 [2026-09-30 amendment 审核成果](TRANSPORT-MASTER-V2-AMENDMENT-REVIEW.md)。本文件的 47-airport / 16-bus 数量不再代表当前审核范围。
+
 日期：2026-09-29
 
 状态：**REWORK_IN_PROGRESS / 未形成通过验收的全国 Master**

@@ -69,6 +69,16 @@ def mode(row):
         return "shinkansen"
     if code == 13:
         return "funicular"
+    # S12 legal/technical class 16 includes Sapporo's rubber-tired subway.
+    # The public transport mode takes precedence over propulsion/guideway class.
+    if op in {"札幌市", "神戸市"}:
+        return "metro"
+    # Osaka subway lines can be legally classified as ordinary tramway (21).
+    # Keep New Tram (16/24) separate; legal class 21 is not sufficient alone.
+    if op == "大阪市高速電気軌道" and code in {12, 21}:
+        return "metro"
+    if code == 21:
+        return "tram"
     if code in {14, 15, 16, 22, 23, 24, 25}:
         return "fixed_guideway"
     if "地下鉄" in op or op in {"東京地下鉄", "大阪市高速電気軌道", "名古屋市交通局", "福岡市交通局", "札幌市交通局", "仙台市交通局", "京都市交通局", "神戸市交通局", "横浜市交通局", "仙台市", "名古屋市", "京都市", "横浜市", "福岡市", "大阪市", "札幌市", "神戸市", "東京都"} and ("号線" in line or "地下鉄" in line or "南北線" in line or "東西線" in line or "烏丸線" in line):
@@ -77,7 +87,7 @@ def mode(row):
 
 
 def kind(family):
-    return {"shinkansen": "shinkansen_station", "metro": "metro_station", "conventional_rail": "rail_station", "private_rail": "private_rail_station", "funicular": "funicular_station", "fixed_guideway": "other_tourism_transport"}[family]
+    return {"shinkansen": "shinkansen_station", "metro": "metro_station", "conventional_rail": "rail_station", "private_rail": "private_rail_station", "funicular": "funicular_station", "fixed_guideway": "other_tourism_transport", "tram": "other_tourism_transport"}[family]
 
 
 def source_row(feature):
@@ -95,7 +105,8 @@ def distance_km(a, b):
     return 12742*math.asin(min(1, math.sqrt(h)))
 
 
-def build(archive, old_master):
+def build(archive, old_master, required_components=None):
+    required_components = required_components or {}
     if file_sha(archive) != ARCHIVE_SHA:
         raise RuntimeError("S12_ARCHIVE_SHA256_MISMATCH")
     with zipfile.ZipFile(archive) as z:
@@ -115,13 +126,14 @@ def build(archive, old_master):
     components, lineage = [], []
     for group_key, related in sorted(groups.items()):
         primary = [r for r in related if r["duplicateCode"] == 1 and r["availabilityCode"] == 1]
-        selected = [r for r in primary if r["passengersPerDay"] >= 10000 or group_key[3] == "shinkansen" or airport_access_name(r["stationName"])]
-        if not selected and group_key[3] == "shinkansen":
+        required = required_components.get((group_key[0], group_key[1], group_key[3]))
+        selected = [r for r in primary if r["passengersPerDay"] >= 10000 or group_key[3] == "shinkansen" or airport_access_name(r["stationName"]) or required]
+        if not selected and (group_key[3] == "shinkansen" or required):
             selected = [min(related, key=lambda r: r["stationCode"])]
         for focus in selected:
             # Multiple primary figures at one station can indicate distinct platforms or fare gates.
             # Keep them separate for physical/operational review instead of summing counts.
-            lines = sorted({r["line"] for r in related if len(primary) == 1 or r["line"] == focus["line"]})
+            lines = sorted({r["line"] for r in related if len(primary) <= 1 or r["line"] == focus["line"]})
             candidates = [r for r in old if r["transportNodeId"] not in used_old and r["canonicalNameJa"] == focus["stationName"] and r.get("operatorRefs") == [focus["operator"]] and r["nodeKind"] == kind(group_key[3]) and distance_km(r, focus) <= 1.2]
             candidates.sort(key=lambda r: (r.get("lineRefs", [None])[0] != focus["line"], distance_km(r, focus), r["transportNodeId"]))
             lines = sorted(set(lines) | {line for prior in candidates for line in prior.get("lineRefs", [])})
@@ -141,15 +153,23 @@ def build(archive, old_master):
                 reasons.append("SHINKANSEN")
             if airport_access_name(focus["stationName"]):
                 reasons.append("AIRPORT_ACCESS_AUDIT")
+            if required:
+                reasons.append("OFFICIAL_HUB_COMPONENT_REVIEW")
             decision_reason = "Official S12 usage unavailable; manual tier review required"
             if usage is not None:
                 decision_reason = "S12_061 usage threshold"
                 if usage < 10000:
-                    decision_reason += "; low-flow inclusion justified by " + ("airport access" if airport_access_name(focus["stationName"]) else "Shinkansen inventory")
+                    decision_reason += "; low-flow inclusion justified by " + ("official Hub component review" if required else "airport access" if airport_access_name(focus["stationName"]) else "Shinkansen inventory")
             components.append({"proposedTransportNodeId": node_id, "identityKey": identity_key, "canonicalNameJa": focus["stationName"], "operatorRefs": [focus["operator"]], "lineRefs": lines, "nodeKind": kind(group_key[3]), "modeFamily": group_key[3], "latitude": focus["latitude"], "longitude": focus["longitude"], "sourcePrimaryStationCode": focus["stationCode"], "sourcePrimaryLine": focus["line"], "sourceStationRefs": [{"stationCode": c, "groupCode": g, "line": line} for c,g,line in refs], "dataAvailabilityCode": focus["availabilityCode"], "duplicateCode": focus["duplicateCode"], "usageMetricType": "DAILY_ENTRIES_EXITS" if available else "USAGE_DATA_UNAVAILABLE", "usageValue": usage, "usageUnit": "persons/day" if available else None, "usagePeriod": "FY2024", "usageSource": SOURCE, "sourceObservedAt": "FY2024", "sourceArchiveSha256": ARCHIVE_SHA, "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1", "proposedNodeLevel": metric_tier(usage) if usage is not None else None, "functionalRole": "AIRPORT_ACCESS" if airport_access_name(focus["stationName"]) else "STATION", "promotionReason": None, "decisionReason": decision_reason, "confidence": 0.9 if usage is not None else 0.6, "reviewStatus": "MULTIPLE_PRIMARY_RECORDS_REVIEW_REQUIRED" if len(primary)>1 else "COMPONENT_REVIEW_REQUIRED", "inclusionReasons": reasons, "sourceLicense": "CC BY 4.0", "sourceRefs": [SOURCE]})
     for prior in old:
         if prior["transportNodeId"] not in used_old:
             lineage.append({"oldTransportNodeId": prior["transportNodeId"], "newTransportNodeId": None, "decision": "REVIEW_REQUIRED", "reason": "No safe S12 station/operator/mode crosswalk; no silent rebind or rejection"})
+    for component in components:
+        required = required_components.get((component['canonicalNameJa'],component['operatorRefs'][0],component['modeFamily']))
+        component['manualLevelReview'] = component['usageValue'] is None
+        if required:
+            component['componentInclusionEvidence'] = required
+            component['sourceRefs'] = sorted(set(component['sourceRefs']+[required['officialSource']]))
     components.sort(key=lambda r: (r["canonicalNameJa"], r["operatorRefs"][0], r["modeFamily"], r["identityKey"]))
     ids = [r["proposedTransportNodeId"] for r in components]
     if len(ids) != len(set(ids)):
@@ -177,7 +197,11 @@ def build(archive, old_master):
 
 
 def run(args):
-    components, lineage, high_flow, stats = build(Path(args.archive), Path(args.v1))
+    required_rows = rows(Path(args.component_review)) if args.component_review else []
+    required = {(r['stationName'],r['operator'],r['modeFamily']):r for r in required_rows}
+    if len(required)!=len(required_rows): raise RuntimeError('DUPLICATE_REQUIRED_COMPONENT')
+    components, lineage, high_flow, stats = build(Path(args.archive), Path(args.v1), required)
+    stats['requiredComponentEvidenceSha256'] = file_sha(Path(args.component_review)) if args.component_review else None
     root = Path(args.output)
     artifacts = {"rail-components.jsonl": b"".join(map(enc, components)), "v1-rail-lineage.jsonl": b"".join(map(enc, sorted(lineage, key=lambda r: r["oldTransportNodeId"]))), "s12-high-flow-gate.jsonl": b"".join(map(enc, high_flow))}
     batches = []
@@ -210,4 +234,5 @@ if __name__ == "__main__":
     parser.add_argument("--output", default="data/transport/nodes/task-084-b-v2-rail-candidates")
     parser.add_argument("--rebuild", action="store_true")
     parser.add_argument("--batch", type=int)
+    parser.add_argument("--component-review", default="data/transport/nodes/task-084-b-v2-official-evidence/required-hub-components.jsonl")
     run(parser.parse_args())

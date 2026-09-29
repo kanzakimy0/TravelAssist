@@ -102,6 +102,8 @@ def run(write):
     lines = [
         "# TASK-084-B v2 纠错重建成果物与审核清单",
         "",
+        "> 当前 amendment 扩审结果见 [2026-09-30 审核成果](TRANSPORT-MASTER-V2-AMENDMENT-REVIEW.md)。以下是旧阶段格式的重算，机场与 BUS 范围不是当前全国范围。",
+        "",
         "日期：2026-09-29",
         "",
         "状态：**REWORK_IN_PROGRESS / 未形成通过验收的全国 Master**",

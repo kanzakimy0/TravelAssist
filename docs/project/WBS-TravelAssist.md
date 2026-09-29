@@ -1075,6 +1075,8 @@ TASK-084-B quality rework (2026-09-29):
 - 用户复核发现已合入 #448 的 244-node master 存在实质性质量缺陷：所有 rail/shinkansen/metro/private rail 节点均被压为 T2、T3=0，品川/机场接驳铁路等组件覆盖不完整，Bus Terminal 仅 5 个且集中长崎，缺失バスタ新宿等全国级客运枢纽。#441 已重新打开，7.14 撤销“已完成”，v1 标记为历史 REJECTED_FOR_REWORK；使用 MLIT S12 2024 官方全国駅別乗降客数及各模式官方利用统计重建 v2。详见 [Corrective Rework Amendment](../tasks/AMENDMENT-TASK-084-b-transport-master-quality-rework.md)。085/086 在 v2 明确验收前不得使用 v1。
 - 2026-09-29 v2 中间成果：已生成 S12 全国轨道候选、v1 轨道身份映射、机场客流等级重算、机场轨道接入审计、全国巴士终端候选与 Ferry 阈值校准；逐条结果及未通过项见 [v2 纠错重建成果物与审核清单](../qa/TASK-084-B/TRANSPORT-MASTER-V2-REWORK-RESULTS.md)。当前仍为候选审核阶段，7.14 保持返工中；候选规模不得当作已验收全国 Master。
 
+- 2026-09-30 amendment 扩审：全国 NAVITIME 分类 58 页发现 191 条，合并官方来源线索后为 212 条待去重审核记录；完整官方字段验证 0，不能按 212 个独立终端报验。机场 97/97 身份筛查、96 条年度客流，ACCEPT 0 / DEFER 2 / REVIEW 94 / INACTIVE 1，接入指南已核 49、待核 48。轨道候选 2,203；新增 5 个官方 Hub 缺失组件、72 条候选模式纠正；新干线 S12 48、运营方独立数值 29、站区 proxy 18、数值缺失 13，人工定级待核 60。22 个最小 Hub 审核范围组件存在性缺口 0，但 465 个高等级组件尚无已建立的 Hub 审核范围，不能据此通过全国 Gate。7.14 继续返工中。见 [当前逐项成果物与未通过项](../qa/TASK-084-B/TRANSPORT-MASTER-V2-AMENDMENT-REVIEW.md)。
+
 TASK-084-B execution checkpoint (2026-09-28):
 
 - 从 `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8` 启动独立分支；国土交通省 N02 2025 铁路数据许可为 CC BY 4.0。110 个新干线 station component 已采用 TravelAssist 自有身份账本验收为 TransportNode，保留 200/batch 回执、校验和及显式未决清单。
