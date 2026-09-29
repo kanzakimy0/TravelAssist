@@ -3,8 +3,10 @@
 import argparse
 import hashlib
 import json
+import math
 import sys
 from collections import Counter, defaultdict
+from datetime import datetime
 from pathlib import Path
 
 BATCH_SIZE = 200
@@ -100,6 +102,84 @@ def validate_n03_rights(rights, nodes):
     elif (not rights["productionJoinAllowed"] or not rights["formalGsiConfirmationOnFile"]
           or not rights.get("formalGsiDecisionRef") or not rights.get("attributionText")):
         raise RuntimeError("N03_RIGHTS_PASS_EVIDENCE_MISSING")
+
+
+def apply_accepted_provenance(nodes_by_id, ledger_paths):
+    accepted_at = {}
+    for path in ledger_paths:
+        for entry in rows(path):
+            node_id = entry["transportNodeId"]
+            timestamp = entry.get("acceptedAt")
+            if node_id in accepted_at or not timestamp or not timestamp.endswith("Z"):
+                raise RuntimeError(f"INVALID_ACCEPTED_TIMESTAMP: {node_id}")
+            try:
+                datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+            except ValueError as exc:
+                raise RuntimeError(f"INVALID_ACCEPTED_TIMESTAMP: {node_id}") from exc
+            accepted_at[node_id] = timestamp
+    if set(accepted_at) != set(nodes_by_id):
+        raise RuntimeError("ACCEPTED_TIMESTAMP_ID_SET_MISMATCH")
+    for node_id, node in nodes_by_id.items():
+        timestamp = accepted_at[node_id]
+        if node.get("generatedAt") not in (None, timestamp):
+            raise RuntimeError(f"GENERATED_AT_PROVENANCE_CONFLICT: {node_id}")
+        nodes_by_id[node_id] = {**node, "generatedAt": timestamp,
+                                "administrativeResolutionStatus": "UNRESOLVED"}
+
+
+def validate_final_contract(nodes, hubs, identity_ledger_paths, canonical_poi_ids):
+    allowed_kinds = {"rail_station", "shinkansen_station", "metro_station", "private_rail_station",
+                     "bus_terminal", "airport", "ferry_port", "funicular_station",
+                     "ropeway_station", "cable_car_station", "other_tourism_transport"}
+    ids = [node.get("transportNodeId") for node in nodes]
+    if len(ids) != len(set(ids)) or any(not node_id for node_id in ids):
+        raise RuntimeError("FINAL_DUPLICATE_OR_MISSING_NODE_ID")
+    if set(ids) & canonical_poi_ids:
+        raise RuntimeError("TRANSPORT_POI_ID_COLLISION")
+    ledger = {}
+    for path in identity_ledger_paths:
+        for entry in rows(path):
+            node_id = entry["transportNodeId"]
+            if node_id in ledger:
+                raise RuntimeError("FINAL_DUPLICATE_IDENTITY_LEDGER_ID")
+            ledger[node_id] = entry
+    if set(ledger) != set(ids):
+        raise RuntimeError("FINAL_IDENTITY_LEDGER_SET_MISMATCH")
+    hub_ids = {hub["hubId"] for hub in hubs}
+    if len(hub_ids) != len(hubs):
+        raise RuntimeError("FINAL_DUPLICATE_HUB_ID")
+    for node in nodes:
+        node_id = node["transportNodeId"]
+        latitude, longitude = node.get("latitude"), node.get("longitude")
+        confidence = node.get("confidence")
+        if (node.get("identityStatus") != "NODE_ACCEPTED" or node.get("nodeKind") not in allowed_kinds
+                or node.get("nodeLevel") not in {"T0", "T1", "T2", "T3"}
+                or not node.get("canonicalNameJa") or not node.get("sourceRefs")
+                or not all(isinstance(ref, str) and ref for ref in node["sourceRefs"])
+                or not isinstance(confidence, (int, float)) or not math.isfinite(confidence)
+                or not 0 <= confidence <= 1
+                or not isinstance(latitude, (int, float)) or not math.isfinite(latitude)
+                or not isinstance(longitude, (int, float)) or not math.isfinite(longitude)
+                or not 20 <= latitude <= 46 or not 122 <= longitude <= 154
+                or node.get("generatedAt") != ledger[node_id].get("acceptedAt")
+                or node.get("administrativeResolutionStatus") != "UNRESOLVED"):
+            raise RuntimeError(f"FINAL_NODE_CONTRACT_INVALID: {node_id}")
+        if (node.get("prefectureCode") is not None or node.get("municipalityCode") is not None
+                or node.get("parentHubId") == node_id
+                or (node.get("parentHubId") is not None and node["parentHubId"] not in hub_ids)):
+            raise RuntimeError(f"FINAL_NODE_RELATION_INVALID: {node_id}")
+        if (not set(ledger[node_id]["sourceRefs"]).issubset(set(node["sourceRefs"]))
+                or node.get("externalRefs") != ledger[node_id].get("externalRefs")):
+            raise RuntimeError(f"FINAL_SOURCE_PROVENANCE_CHANGED: {node_id}")
+    node_by_id = {node["transportNodeId"]: node for node in nodes}
+    for hub in hubs:
+        if hub["hubId"] in canonical_poi_ids or hub["hubId"] in ids:
+            raise RuntimeError("FINAL_HUB_ID_COLLISION")
+        components = hub["componentTransportNodeIds"]
+        if (hub.get("parentHubId") is not None or len(components) != len(set(components))
+                or set(components) != {node_id for node_id, node in node_by_id.items()
+                                       if node.get("parentHubId") == hub["hubId"]}):
+            raise RuntimeError(f"FINAL_HUB_COMPONENT_INVALID: {hub['hubId']}")
 
 
 def write_or_verify(path, body, rebuild):
@@ -286,9 +366,23 @@ def process(args):
         if decision["identityObservedAt"] != node["identityObservedAt"] or decision["coordinateObservedAt"] != node["coordinateObservedAt"]:
             raise RuntimeError("AIRPORT_HIERARCHY_TIME_MISMATCH")
         node_by_id[node_id] = {**node, "nodeLevel": decision["nodeLevel"], "hierarchyEvidence": decision["reviewReason"]}
+    identity_ledger_paths = [original_node_ledger, rail_ledger, airport_ledger, ferry_ledger,
+                             national_rail_ledger, regional_airport_ledger, bus_ledger, cable_ledger]
+    apply_accepted_provenance(node_by_id, identity_ledger_paths)
     nodes = sorted(node_by_id.values(), key=lambda item: item["transportNodeId"])
     expanded_hubs.sort(key=lambda item: item["hubId"])
     hierarchy_decisions.sort(key=lambda item: item["hubId"])
+    repository = data.parents[2]
+    poi_manifest = json.loads((repository / "src" / "shared" / "data" / "canonical-poi-pilot100.runtime-manifest.v1.json").read_text(encoding="utf-8"))
+    poi_path = repository / poi_manifest["datasetPath"]
+    if not poi_manifest["runtimeImportAuthorized"] or file_hash(poi_path) != poi_manifest["datasetFileSha256"]:
+        raise RuntimeError("CANONICAL_POI_AUTHORIZATION_INVALID")
+    poi_registry = json.loads(poi_path.read_text(encoding="utf-8"))
+    if len(poi_registry["records"]) != poi_manifest["recordCount"]:
+        raise RuntimeError("CANONICAL_POI_COUNT_CHANGED")
+    canonical_poi_ids = {value for record in poi_registry["records"]
+                         for value in (record["internalId"], record["masterCode"])}
+    validate_final_contract(nodes, expanded_hubs, identity_ledger_paths, canonical_poi_ids)
     body_nodes = b"".join(canonical(item) for item in nodes)
     extras = {
         "transport-nodes.jsonl": body_nodes,
@@ -325,7 +419,10 @@ def process(args):
     rights = json.loads(rights_path.read_text(encoding="utf-8"))
     validate_n03_rights(rights, nodes)
     manifest = {
-        "task": "TASK-084-B", "nationalMasterStatus": "PARTIAL", "acceptedCount": len(nodes),
+        "task": "TASK-084-B", "nationalMasterStatus": "PASS", "acceptedCount": len(nodes),
+        "administrativeEnrichmentStatus": "DEFERRED_ADMINISTRATIVE_ENRICHMENT",
+        "plannerExpansionStatus": "DEFERRED_PLANNER_EXPANSION",
+        "generatedAtCoverageCount": sum(bool(node.get("generatedAt")) for node in nodes),
         "newAcceptedSincePreviousCheckpoint": 77,
         "nodeKindCounts": dict(sorted(kinds.items())), "nodeLevelCounts": {level: levels[level] for level in ["T0", "T1", "T2", "T3"]},
         "hubAcceptedCount": len(expanded_hubs), "hubLevelCounts": dict(sorted(Counter(hub["nodeLevel"] for hub in expanded_hubs).items())),

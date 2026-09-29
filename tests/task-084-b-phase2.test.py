@@ -39,6 +39,24 @@ class Task084Phase2Tests(unittest.TestCase):
         self.assertEqual(len(expanded), 21)
         self.assertEqual(len(combined), len({item["transportNodeId"] for item in combined}))
 
+    def test_final_generated_at_is_immutable_accepted_provenance(self):
+        ledger_paths = sorted(DATA.glob("transport-*-identity-ledger.jsonl"))
+        accepted_at = {entry["transportNodeId"]: entry["acceptedAt"]
+                       for path in ledger_paths for entry in master.rows(path) if "transportNodeId" in entry}
+        stages = ["task-084-b-accepted", "task-084-b-core-rail-accepted", "task-084-b-airport-accepted",
+                  "task-084-b-ferry-accepted", "task-084-b-national-rail-accepted",
+                  "task-084-b-regional-airport-accepted", "task-084-b-nagasaki-bus-accepted",
+                  "task-084-b-tourism-cable-accepted"]
+        source_refs = {node["transportNodeId"]: node["sourceRefs"] for stage in stages
+                       for node in master.rows(DATA / stage / "transport-nodes.jsonl")}
+        combined = master.rows(DATA / "task-084-b-national-master" / "transport-nodes.jsonl")
+        self.assertEqual(len(accepted_at), 244)
+        self.assertEqual({node["transportNodeId"] for node in combined}, set(accepted_at))
+        self.assertTrue(all(node["generatedAt"] == accepted_at[node["transportNodeId"]]
+                            and node["sourceRefs"] == source_refs[node["transportNodeId"]]
+                            and node["administrativeResolutionStatus"] == "UNRESOLVED"
+                            for node in combined))
+
     def test_phase2_identity_and_source_boundaries(self):
         rail_nodes = master.rows(DATA / "task-084-b-core-rail-accepted" / "transport-nodes.jsonl")
         excluded = master.rows(DATA / "task-084-b-core-rail-accepted" / "excluded-same-name.jsonl")
@@ -156,6 +174,9 @@ class Task084Phase2Tests(unittest.TestCase):
             self.assertEqual(first, (DATA / "task-084-b-national-master" / "manifest.json").read_bytes())
             manifest = json.loads(first)
             self.assertEqual(manifest["acceptedCount"], 244)
+            self.assertEqual(manifest["nationalMasterStatus"], "PASS")
+            self.assertEqual(manifest["generatedAtCoverageCount"], 244)
+            self.assertEqual(manifest["administrativeEnrichmentStatus"], "DEFERRED_ADMINISTRATIVE_ENRICHMENT")
             self.assertEqual(manifest["newAcceptedSincePreviousCheckpoint"], 77)
             self.assertEqual(manifest["nodeLevelCounts"], {"T0": 8, "T1": 40, "T2": 196, "T3": 0})
             self.assertEqual(manifest["hubLevelCounts"], {"T0": 10, "T1": 11})
