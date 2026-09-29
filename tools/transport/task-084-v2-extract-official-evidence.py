@@ -75,6 +75,9 @@ def run(a):
       ('鹿児島中央駅前','鹿児島市','tram','https://www.kotsu-city-kagoshima.jp/wp/wp-content/uploads/2023/03/fb07dadc208697dfd4e7327174c0caba.pdf')]
     (out/'required-hub-components.jsonl').write_bytes(b''.join(enc({'stationName':n,'operator':o,'modeFamily':m,'officialSource':s,'reason':'Official station/operator evidence requires component review even below S12 numeric selection threshold or with duplicated/missing S12 count.','parentHubAssignmentAuthorized':False}) for n,o,m,s in required))
     dump(out/'mode-classification-evidence.json',{'metroOverrides':{'札幌市':'https://www.city.sapporo.jp/st/subway/gaiyo/gaiyo.html','神戸市':'https://kotsu.city.kobe.lg.jp/subway/route-map/','大阪市高速電気軌道':'https://subway.osakametro.co.jp/'},'ordinaryTramwayLegalClassS12Code':21,'tramExample':'https://www.hiroden.co.jp/train/route-guide/route-map.html','rule':'Passenger mode takes precedence over technical/legal rail class. Sapporo and Kobe subway are metro; Osaka subway is metro even for legal class 21, while New Tram remains fixed guideway. Other class 21 candidates require tram classification review.'})
+    # Git stores text with LF. Hash the same bytes on Windows and CI.
+    for source in out.glob('*.jsonl'):
+        source.write_bytes(source.read_bytes().replace(b'\r\n', b'\n'))
     dump(out/'evidence-extraction-manifest.json',{'airportIdentities':97,'airportAnnualNumeric':96,'shinkansenFallbackObservations':len(jr),'registeredBusFacilities':26,'artifactSha256':{p.name:sha(p) for p in sorted(out.glob('*.jsonl'))}})
     print(json.dumps({'airportIdentities':97,'annualNumeric':96,'fallbacks':len(jr),'busRegistered':26}))
 

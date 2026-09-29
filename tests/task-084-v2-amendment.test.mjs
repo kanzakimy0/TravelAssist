@@ -24,6 +24,10 @@ test("TASK-084 amendment artifacts and inputs match their checksums", () => {
     );
   }
   for (const [name, expected] of Object.entries(manifest.inputSha256)) {
+    assert.ok(
+      !fs.readFileSync(name).includes(Buffer.from("\r\n")),
+      `LF input: ${name}`,
+    );
     assert.equal(
       crypto.createHash("sha256").update(fs.readFileSync(name)).digest("hex"),
       expected,
