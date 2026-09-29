@@ -1,6 +1,6 @@
 # RESULT — TASK-087-B Canonical Feature43 Legacy Recovery Audit
 
-Status: **PARTIAL / AUDIT READY FOR REVIEW; PROMOTION BLOCKED**. Issue #452. WBS 7.4.2 = B / 待审查. Implementation branch feature/b-canonical-feature43-legacy-recovery, independently created from origin/develop@3fab703d13694fd1205679c96fb8d1d2e8549fbc. No PR was merged and no Canonical runtime import was authorized by this Task.
+Status: **PARTIAL / AUDIT READY FOR REVIEW; PROMOTION BLOCKED**. Issue #452; [Draft PR #454](https://github.com/kanzakimy0/TravelAssist/pull/454). WBS 7.4.2 = B / 待审查. Implementation branch feature/b-canonical-feature43-legacy-recovery, independently created from origin/develop@3fab703d13694fd1205679c96fb8d1d2e8549fbc. No PR was merged and no Canonical runtime import was authorized by this Task.
 
 ## Outcome
 
