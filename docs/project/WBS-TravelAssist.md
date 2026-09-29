@@ -1054,7 +1054,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
-| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / Draft PR #444；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
+| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 已完成（#438 / TASK-083-A；100 ADMIT + Pilot-only runtime；PR #444 用户验收并 normal merge 至 develop `3fab703d`） |
+| 7.4.2 | Canonical Feature43 Legacy Recovery Audit / 历史43维回收升格审计 | B | P0 | 7.4.1 | 未开始（#452 / TASK-087-B；复用历史一万级 POI/Feature43 corpus，对 Pilot-100 做 4,300 cell promotion audit；不强求 43/43） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
@@ -1063,7 +1064,16 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
-| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现；develop 已有 100 Canonical POI，真实 100/500 local-edge Pilot 可恢复；TransportNode integration 与 Provider 批量/留存/生产权限仍待后续） |
+
+TASK-087-B tracking (2026-09-29):
+
+- Issue #452；Owner B；WBS 7.4.2。
+- 目标不是重新生产 100 × 43，而是从现有历史 POI/Feature43 corpus 回收全部 legacy value / provenance，对固定 Canonical Pilot-100 的 4,300 cells 做逐项 promotion audit。
+- Candidate-only 数值不得自动升格；identity 只允许 exact stable-key join；null 不得补 0/5；旧 rubric 与 current rubric 不兼容时必须 REVIEW/REVALIDATE。
+- 输出 identity crosswalk、historical observations、4,300 promotion decisions、rubric compatibility、provenance audit、coverage delta 和 proposed recovery overlay v2。
+- PR #437 的 17 个 inferred values 仅作为 unmerged Draft reference 输入；TASK-087-B 最终必须明确 #437 是 supersede、merge-first、incorporated/close，或继续并存 Draft。
+- Task：`docs/tasks/TASK-087-b-canonical-feature43-legacy-recovery.md`；不自动 merge。
 
 TASK-082-A tracking (2026-09-27):
 
