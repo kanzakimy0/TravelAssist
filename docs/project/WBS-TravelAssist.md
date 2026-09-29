@@ -2,7 +2,8 @@
 
 ## TASK-083-A / WBS 7.4.1 Real 100 POI Canonical Admission（2026-09-27）
 
-- Issue #438；[Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444)；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 = **A / 待审查**，等待用户验收与人工合并。
+- 2026-09-27 历史 checkpoint：Issue #438；[PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444) 当时为 Draft；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 当时为 **A / 待审查**。
+- 2026-09-29 当前状态：PR #444 已人工验收并正常合入 develop，merge `3fab703d13694fd1205679c96fb8d1d2e8549fbc`；WBS 7.4.1 **已完成**。当前 runtime-authorized Canonical POI scope 为 Pilot-100、授权 100 条；candidate corpus 未授权。
 - 从 `develop@2dcf22cca48b920d99bfad416c5e79b13e599327` 执行，正常同步最新 `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`；v1.66 中冻结 422 条保守可准入池、确定性选择 100 条真实 POI，100/100 经现有 14-gate evaluator 得到 ADMIT，100 个新 Master Code 进入 append-only registry。
 - 独立 Pilot-100 runtime manifest 仅授权这 100 条；旧候选 manifest 继续禁止 Canonical runtime import。Detail API 已接真实 server-only repository；WBS 7.6 Search 尚未合入 develop，故未 cherry-pick #433。TASK-081-B 43维仍为 0/4,300，待本 Task 用户验收后恢复。
 - 全仓 Node 回归 2,756/2,756、Detail 100/100 和 Search 兼容接点测试通过；[Result](../tasks/RESULT-TASK-083-a-real-poi-canonical-admission-runtime-import.md) · [QA/handoff](../qa/TASK-083/README.md)。
@@ -1054,7 +1055,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
-| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / Draft PR #444；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
+| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 已完成（#438 / PR #444 已经人工验收并合入 develop；100 ADMIT + Pilot-only runtime） |
+| 7.4.3  | Trusted Feature43 Baseline Runtime Adoption for Pilot-100 | A | P0 | 7.4.1 | 待审查（#455 / Draft PR #458；100/100 Canonical POI、4,300/4,300 内部基线单元已接入；#451 评分服务跨分支 100/100 兼容，待人工验收与合并） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
@@ -1063,7 +1065,16 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
-| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（#441 Closed / Completed；TASK-084-B 原始全国规划骨架 Acceptance PASS；244 个 NODE_ACCEPTED、21 个 Hub；PR #448 已合入 develop） |
+| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
+| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
+
+TASK-084-B execution checkpoint (2026-09-28):
+
+- 从 `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8` 启动独立分支；国土交通省 N02 2025 铁路数据许可为 CC BY 4.0。110 个新干线 station component 已采用 TravelAssist 自有身份账本验收为 TransportNode，保留 200/batch 回执、校验和及显式未决清单。
+- 保留原有 110 个节点 ID 和 5 个 Hub ID；在已验收的 167 节点基础上新增 47 个全国主要铁路组件、19 个地方机场、5 个长崎主要巴士终端和 6 个旅游缆车站点，合计 244 个 NODE_ACCEPTED、21 个 Hub。实际批次为 200 + 44。Hub 显式关联 85 节点；原 94 个待审新干线组件逐项复核后，14 个列为独立网关、80 个保留 `HUB_REVIEW_REQUIRED`，均记录附近组件证据，且不自动改绑父 Hub。独立网关合计 79 个。机场历史参考点与当前身份分离，并独立复核 47 个机场层级。
+- N03/GSI 正式权利判定为内部 `APPROVAL_REQUIRED`，需要 GSI 对指定点在面内行政区派生操作的书面确认；这是 fail-closed Gate，不是法律结论。当前 0/244 行政区赋值与 0/47 行政区审计属于 `DEFERRED_ADMINISTRATIVE_ENRICHMENT`，不阻塞原始 TASK-084 全国规划骨架验收。更多 Bus、岛屿渡船、ropeway/shuttle 及地方旅游节点属于 `DEFERRED_PLANNER_EXPANSION`。按 [Final Closeout Amendment](../tasks/AMENDMENT-TASK-084-b-final-closeout.md)，084 骨架 PASS；PR #448 的最终 head `de3fa9dd7f11c391678b2fdbc792a3753267182d` 通过 exact-head Quality Gate [#36564684778](https://github.com/kanzakimy0/TravelAssist/actions/runs/36564684778)，以 normal merge `e3fdef378615f29eb41e6221d3fd46e2e87ac545` 合入 develop；Issue #441 Closed / Completed。085/086 保持未开始。详情见 [Result](../tasks/RESULT-TASK-084-b-japan-transport-node-master.md)、[QA](../qa/TASK-084-B/README.md) 与 [全国覆盖审计](../qa/TASK-084-B/national-coverage-audit.md)。
 
 TASK-082-A tracking (2026-09-27):
 
@@ -1073,11 +1084,11 @@ TASK-082-A tracking (2026-09-27):
 - Provider 批量查询、cache、retention 或 production 权限不明确时必须 fail-closed；不得用 candidate/enrichment workbook 冒充 Canonical POI。
 - Task：`docs/tasks/TASK-082-a-poi-edge-graph-generation-pilot.md`；Branch：`feature/a-poi-edge-graph-generation-pilot`；未授权自动合并。
 
-TASK-082-A execution update (2026-09-28):
+TASK-082-A execution update (2026-09-28 historical baseline; 2026-09-29 authorization correction):
 
-- Started as **进行中**. On latest develop ef388cdcd0ff5f15ebd404337b4ed29fb3435058, the application Registry has 51 entries and **0 active POI allocations**; the candidate manifest remains runtime-import unauthorized. TASK-083-A / PR #444 is Draft and not in develop.
-- Directed bounded graph contract, four-layer schema, unresolved-mode and score-trace logic, transport fixtures, deterministic QA replay and Planner read-only boundary are implemented. The real Pilot is **BLOCKED** at 0/500 POIs, 0 candidate edges and 0 enriched edges; no candidate workbook, synthetic fixture or evaluation-only Provider route was promoted.
-- WBS 7.13 is **阻塞**, not 已完成. Resume only after an accepted Canonical import with active codes reaches develop; route enrichment requires documented batch/cache/retention/production rights. No nationwide expansion or auto-merge.
+- The 2026-09-28 replay used `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`, whose application Registry had 51 entries and 0 active POI allocations. That is a historical baseline. PR #444 merged into develop on 2026-09-29 (`3fab703d13694fd1205679c96fb8d1d2e8549fbc`); the Pilot-100 runtime manifest now authorizes exactly 100 Canonical POIs, while the candidate corpus remains unauthorized. The remaining v1.66/workbook/FROZEN rows are not Canonical input.
+- Directed bounded graph contract, four-layer schema, unresolved-mode and score-trace logic, transport fixtures, deterministic QA replay and Planner read-only boundary are implemented. The frozen TASK-082 Pilot artifact still reports the historical 0/500-POI, 0-edge replay; TASK-082 has not regenerated its own real Pilot against the authorized registry. This artifact must not be read as current Canonical POI availability.
+- WBS 7.13 remains **阻塞** pending TASK-082's own Pilot replay and documented Provider batch/cache/retention/production rights. Use the then-current formally authorized registry for any resumed Pilot; do not promote candidate workbook rows or infer a permanent 100-POI corpus.
 
 TASK-022-A tracking (2026-09-09):
 
