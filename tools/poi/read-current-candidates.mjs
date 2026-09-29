@@ -4,6 +4,10 @@ import { resolve, relative, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROOT, hash } from "./enrich-candidates.mjs";
 import {
+  LIVE_REGISTRY_PATH,
+  readFrozenMasterCodeRegistry,
+} from "./frozen-master-code-registry.mjs";
+import {
   parsePoiFeatureSetV1,
   parsePoiVisitProfileV1,
 } from "../../src/shared/contracts/planning/validation.ts";
@@ -190,7 +194,10 @@ export function readCurrentCandidateRows(root = ROOT) {
       !isAbsolute(rel) && !rel.startsWith(".."),
       "Manifest path escapes repository",
     );
-    const bytes = readFileSync(path);
+    const bytes =
+      ref.path === LIVE_REGISTRY_PATH
+        ? readFrozenMasterCodeRegistry(root)
+        : readFileSync(path);
     assert.equal(
       hash(bytes),
       ref.sha256,
