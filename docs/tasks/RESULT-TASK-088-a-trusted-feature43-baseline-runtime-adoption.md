@@ -1,6 +1,6 @@
 # RESULT — TASK-088-A Trusted Feature43 Baseline Runtime Adoption
 
-Status: **PASS_BASELINE_RUNTIME / DRAFT_REVIEW**. Issue #455. Branch `feature/a-trusted-feature43-baseline-runtime` from `origin/develop@3fab703d13694fd1205679c96fb8d1d2e8549fbc`. No PR auto-merge. WBS 7.4.3 = **待审查**, not completed.
+Status: **PASS_BASELINE_RUNTIME / DRAFT_REVIEW**. Issue #455; [Draft PR #458](https://github.com/kanzakimy0/TravelAssist/pull/458). Branch `feature/a-trusted-feature43-baseline-runtime` from `origin/develop@3fab703d13694fd1205679c96fb8d1d2e8549fbc`. No PR auto-merge. WBS 7.4.3 = **待审查**, not completed.
 
 ## Governance transition
 
