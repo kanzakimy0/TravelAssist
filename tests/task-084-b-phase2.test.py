@@ -109,6 +109,7 @@ class Task084Phase2Tests(unittest.TestCase):
             selected = [item for item in decisions if item["canonicalNameJa"] == name]
             self.assertTrue(selected, name)
             self.assertTrue(all(item["hubResolutionStatus"] == "HUB_REVIEW_REQUIRED" and (item["nearbyRailComponents"] or item["nearbyShinkansenTransportNodeIds"]) for item in selected), name)
+            self.assertTrue(all(item["reviewEvidenceStatus"] == "OPERATOR_INTERCHANGE_CONFIRMED" and item["officialStationGuide"] in item["sourceRefs"] for item in selected), name)
         for name in hub_review.SELF_GUIDES:
             selected = [item for item in decisions if item["canonicalNameJa"] == name]
             self.assertEqual(len(selected), 1)
@@ -131,7 +132,15 @@ class Task084Phase2Tests(unittest.TestCase):
         altered = dict(rights, productionJoinAllowed=True)
         with self.assertRaisesRegex(RuntimeError, "ADMIN_ASSIGNMENT_BEFORE_RIGHTS_PASS"):
             master.validate_n03_rights(altered, nodes)
+        with self.assertRaisesRegex(RuntimeError, "ADMIN_ASSIGNMENT_BEFORE_RIGHTS_PASS"):
+            master.validate_n03_rights(rights, [{**nodes[0], "municipality": "unapproved"}])
         altered = dict(rights, decision="PASS_WITH_ATTRIBUTION", productionJoinAllowed=True)
+        with self.assertRaisesRegex(RuntimeError, "N03_RIGHTS_PASS_EVIDENCE_MISSING"):
+            master.validate_n03_rights(altered, nodes)
+        altered["formalGsiConfirmationOnFile"] = True
+        with self.assertRaisesRegex(RuntimeError, "N03_RIGHTS_PASS_EVIDENCE_MISSING"):
+            master.validate_n03_rights(altered, nodes)
+        altered["formalGsiDecisionRef"] = "documented-written-response"
         with self.assertRaisesRegex(RuntimeError, "N03_RIGHTS_PASS_EVIDENCE_MISSING"):
             master.validate_n03_rights(altered, nodes)
 

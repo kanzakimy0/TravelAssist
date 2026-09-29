@@ -94,7 +94,8 @@ def validate_n03_rights(rights, nodes):
     if rights["decision"] not in {"PASS_WITH_ATTRIBUTION", "APPROVAL_REQUIRED", "BLOCKED", "ALTERNATIVE_SOURCE_REQUIRED"}:
         raise RuntimeError("N03_RIGHTS_DECISION_INVALID")
     if rights["decision"] != "PASS_WITH_ATTRIBUTION":
-        if rights["productionJoinAllowed"] or any(node["prefectureCode"] is not None or node["municipalityCode"] is not None for node in nodes):
+        assignment_fields = ("prefecture", "prefectureName", "prefectureCode", "municipality", "municipalityName", "municipalityCode", "administrativeSource", "sourceVersion", "joinAlgorithmVersion", "boundaryStatus")
+        if rights["productionJoinAllowed"] or any(any(node.get(field) is not None for field in assignment_fields) for node in nodes):
             raise RuntimeError("ADMIN_ASSIGNMENT_BEFORE_RIGHTS_PASS")
     elif (not rights["productionJoinAllowed"] or not rights["formalGsiConfirmationOnFile"]
           or not rights.get("formalGsiDecisionRef") or not rights.get("attributionText")):
@@ -241,8 +242,8 @@ def process(args):
             raise RuntimeError("SHINKANSEN_HUB_REVIEW_INVALID")
         if status == "SELF_GATEWAY" and (not decision["officialStationGuide"] or decision["nearbyRailComponents"] or decision["nearbyShinkansenTransportNodeIds"]):
             raise RuntimeError("SHINKANSEN_SELF_GATEWAY_EVIDENCE_INVALID")
-        if status == "HUB_REVIEW_REQUIRED" and decision["officialStationGuide"]:
-            raise RuntimeError("SHINKANSEN_REVIEW_GUIDE_CONFLICT")
+        if status == "HUB_REVIEW_REQUIRED" and decision["reviewEvidenceStatus"] == "OPERATOR_INTERCHANGE_CONFIRMED" and (not decision["officialStationGuide"] or decision["officialStationGuide"] not in decision["sourceRefs"] or not decision["nearbyRailComponents"]):
+            raise RuntimeError("SHINKANSEN_INTERCHANGE_EVIDENCE_INVALID")
         remaining = [reason for reason in node["unresolvedReasons"] if reason != "HUB_RELATION_UNRESOLVED"]
         if status == "HUB_REVIEW_REQUIRED":
             remaining.append("HUB_REVIEW_REQUIRED")

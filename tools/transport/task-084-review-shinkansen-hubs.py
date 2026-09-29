@@ -33,6 +33,22 @@ SELF_GUIDES = {
     "東広島": "https://eki.jr-odekake.net/premises?id=0800666",
 }
 
+# These operator pages establish an interchange, but the nearby N02 geometry
+# does not by itself authorize a new component identity or parent Hub link.
+REVIEW_GUIDES = {
+    "品川": ["https://www.jreast.co.jp/estation/stations/788.html"],
+    "米原": ["https://railway.jr-central.co.jp/station-guide/shinkansen/maibara/index.html"],
+    "三島": ["https://railway.jr-central.co.jp/station-guide/shinkansen/mishima/"],
+    "八戸": ["https://www.jreast.co.jp/estation/stations/1230.html"],
+    "郡山": ["https://www.jreast.co.jp/estation/station/info.aspx?StationCd=675"],
+    "高崎": ["https://www.jreast.co.jp/estation/station/info.aspx?StationCd=934"],
+    "新青森": ["https://www.jreast.co.jp/estation/stations/854.html"],
+    "上越妙高": ["https://eki.jr-odekake.net/premises?id=0300201", "https://www.echigo-tokimeki.co.jp/userfiles/elfinder/information/20260314_timetable.pdf"],
+    "豊橋": ["https://railway.jr-central.co.jp/station-guide/shinkansen/toyohashi/"],
+    "長岡": ["https://www.jreast.co.jp/estation/stations/1085.html"],
+    "越後湯沢": ["https://www.jreast.co.jp/estation/stations/285.html"],
+}
+
 
 def canonical(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\n"
@@ -65,18 +81,26 @@ def decide(node, nearby_rail, nearby_shinkansen):
     other_components = sorted(nearby_rail, key=lambda item: (item["distanceM"], item["name"], item["operator"], item["line"]))
     peer_ids = sorted(nearby_shinkansen)
     guide = SELF_GUIDES.get(name)
+    review_guides = REVIEW_GUIDES.get(name, [])
     if guide and not other_components and not peer_ids:
         status, reason = "SELF_GATEWAY", "OPERATOR_GUIDE_AND_NO_OTHER_N02_RAIL_COMPONENT_WITHIN_800M"
+        evidence_status = "STANDALONE_GATEWAY_REVIEWED"
+    elif review_guides and (other_components or peer_ids):
+        status, reason = "HUB_REVIEW_REQUIRED", "OPERATOR_INTERCHANGE_CONFIRMED_EXPLICIT_HUB_COMPONENT_REVIEW_PENDING"
+        evidence_status = "OPERATOR_INTERCHANGE_CONFIRMED"
     elif other_components or peer_ids:
         status, reason = "HUB_REVIEW_REQUIRED", "NEARBY_RAIL_OR_SHINKANSEN_COMPONENT_REQUIRES_OPERATOR_TRANSFER_REVIEW"
+        evidence_status = "PROXIMITY_REVIEW_TRIGGER_ONLY"
     else:
         status, reason = "HUB_REVIEW_REQUIRED", "STANDALONE_GATEWAY_EVIDENCE_PENDING"
+        evidence_status = "STANDALONE_EVIDENCE_PENDING"
     return {
         "transportNodeId": node["transportNodeId"], "canonicalNameJa": name,
         "hubResolutionStatus": status, "decisionReason": reason,
-        "parentHubId": None, "officialStationGuide": guide if status == "SELF_GATEWAY" else None,
+        "parentHubId": None, "officialStationGuide": guide if status == "SELF_GATEWAY" else (review_guides[0] if review_guides else None),
+        "reviewEvidenceStatus": evidence_status,
         "reviewRadiusM": REVIEW_RADIUS_M, "nearbyRailComponents": other_components,
-        "nearbyShinkansenTransportNodeIds": peer_ids, "sourceRefs": [SOURCE_URL] + ([guide] if status == "SELF_GATEWAY" else []),
+        "nearbyShinkansenTransportNodeIds": peer_ids, "sourceRefs": [SOURCE_URL] + ([guide] if status == "SELF_GATEWAY" else review_guides),
         "sameNameAloneUsed": False,
     }
 
@@ -120,6 +144,9 @@ def process(args):
     actual_self = {item["canonicalNameJa"] for item in decisions if item["hubResolutionStatus"] == "SELF_GATEWAY"}
     if actual_self != set(SELF_GUIDES):
         raise RuntimeError(f"SELF_GATEWAY_SPATIAL_EVIDENCE_CHANGED: {sorted(actual_self)}")
+    reviewed_names = {item["canonicalNameJa"] for item in decisions if item["reviewEvidenceStatus"] == "OPERATOR_INTERCHANGE_CONFIRMED"}
+    if reviewed_names != set(REVIEW_GUIDES):
+        raise RuntimeError(f"OPERATOR_INTERCHANGE_EVIDENCE_CHANGED: {sorted(reviewed_names)}")
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     body = b"".join(canonical(item) for item in decisions)
