@@ -15,6 +15,12 @@ const dataset = read("src/shared/data/canonical-poi-pilot100.v1.json");
 const manifest = read(
   "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
 );
+const featureOverlay = read(
+  "src/shared/data/canonical-poi-pilot100.feature43-overlay.v1.json",
+);
+const featureManifest = read(
+  "src/shared/data/canonical-poi-pilot100.feature43-overlay.manifest.v1.json",
+);
 const registry = read("src/shared/data/master-code-registry.v1.json");
 const clone = (value) => structuredClone(value);
 const request = async (poiRef) => {
@@ -30,7 +36,7 @@ const request = async (poiRef) => {
 test("authorized server-only repository exposes exactly 100 canonical records", async () => {
   assert.equal(
     canonicalPoiRuntimeRepository.datasetRevision,
-    manifest.datasetRevision,
+    manifest.datasetRevision + "+" + featureOverlay.revision,
   );
   const rows = await canonicalPoiRuntimeRepository.list();
   assert.equal(rows.length, 100);
@@ -42,7 +48,10 @@ test("authorized server-only repository exposes exactly 100 canonical records", 
     rows.map((row) => row.masterCode),
     manifest.masterCodes,
   );
-  assert.ok(rows.every((row) => row.features === null));
+  assert.deepEqual(
+    rows.map((row) => row.features),
+    featureOverlay.records.map((row) => row.features),
+  );
   rows[0].names.localized[0].value = "tampered";
   assert.notEqual(
     (await canonicalPoiRuntimeRepository.getByInternalId(rows[0].internalId))
@@ -82,20 +91,34 @@ test("unmerged TASK-080 search repository handoff returns a complete bounded can
     cursor: null,
   };
   const result = await canonicalPoiRuntimeRepository.findCandidates(query);
-  assert.equal(result.datasetRevision, manifest.datasetRevision);
+  assert.equal(
+    result.datasetRevision,
+    canonicalPoiRuntimeRepository.datasetRevision,
+  );
   assert.deepEqual(
     result.records.map((record) => record.internalId),
     manifest.internalIds,
   );
-  assert.ok(result.records.every((record) => record.features === null));
+  assert.deepEqual(
+    result.records.map((record) => record.features),
+    featureOverlay.records.map((record) => record.features),
+  );
 });
 
 test("all 100 real canonical internalIds succeed through the actual Detail route", async () => {
-  for (const internalId of manifest.internalIds) {
+  for (const [index, internalId] of manifest.internalIds.entries()) {
     const { response, body } = await request(internalId);
     assert.equal(response.status, 200, internalId);
     assert.equal(body.data.poiRef, internalId);
-    assert.equal(body.data.features, null);
+    assert.deepEqual(
+      body.data.features,
+      featureOverlay.records[index].features === null
+        ? null
+        : {
+            featureVersion: "1.0",
+            values: featureOverlay.records[index].features.values,
+          },
+    );
     assert.equal(body.data.evidence.length, 1);
     assert.equal(body.data.evidence[0].sourceKind, "open_data");
     assert.equal(body.data.externalIds, undefined);
@@ -137,6 +160,51 @@ test("runtime authorization and payload tampering fail closed", () => {
   assert.throws(
     () =>
       createCanonicalPoiRuntimeRepository(dataset, manifest, tamperedRegistry),
+    CanonicalPoiRuntimeIntegrityError,
+  );
+});
+
+test("Feature43 overlay cannot import an extra, reordered, or tampered POI", () => {
+  const reordered = clone(featureOverlay);
+  [reordered.records[0], reordered.records[1]] = [
+    reordered.records[1],
+    reordered.records[0],
+  ];
+  assert.throws(
+    () =>
+      createCanonicalPoiRuntimeRepository(
+        dataset,
+        manifest,
+        registry,
+        reordered,
+        featureManifest,
+      ),
+    CanonicalPoiRuntimeIntegrityError,
+  );
+  const candidate = clone(featureOverlay);
+  candidate.records[0].internalId = "v166:candidate-only";
+  assert.throws(
+    () =>
+      createCanonicalPoiRuntimeRepository(
+        dataset,
+        manifest,
+        registry,
+        candidate,
+        featureManifest,
+      ),
+    CanonicalPoiRuntimeIntegrityError,
+  );
+  const unauthorized = clone(featureManifest);
+  unauthorized.runtimeImportAuthorized = false;
+  assert.throws(
+    () =>
+      createCanonicalPoiRuntimeRepository(
+        dataset,
+        manifest,
+        registry,
+        featureOverlay,
+        unauthorized,
+      ),
     CanonicalPoiRuntimeIntegrityError,
   );
 });

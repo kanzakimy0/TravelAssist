@@ -1,5 +1,11 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-081-B Real Canonical Pilot-100 Feature43（2026-09-29）
+
+- [Draft PR #437](https://github.com/kanzakimy0/TravelAssist/pull/437) 从已合入的 TASK-083-A 固定 100 POI 恢复；WBS 状态 = **待审查 / PARTIAL**，不代表用户验收或 PR 已合并。
+- 100/100 Canonical 身份及原 Master Code 不变；4,300/4,300 逐字段决定，17 个证据支持的推断分数、4,283 个 null（其中 106 个低置信待审），43/43 POI = 0；未将 unknown 转为 0/5。原 admission 数据冻结，运行时使用仅绑定此 100-ID 清单的哈希 Feature43 overlay。
+- 详见 [Result](../tasks/RESULT-TASK-081-b-real-100-poi-pilot.md) 和 docs/qa/TASK-081-B；TASK-084-A 仅验证真实 Feature43 输入可消费，Top-N/校准/Planner ranking 不在本 Task。
+
 ## TASK-083-A / WBS 7.4.1 Real 100 POI Canonical Admission（2026-09-27）
 
 - Issue #438；[Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444)；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 = **A / 待审查**，等待用户验收与人工合并。
@@ -1054,7 +1060,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.2 | Places / POI Provider 选型 | B | P0 | 1.10 | 已完成（#361 / TASK-058-B；用户验收，PR #362 已合并） |
 | 7.3    | Route / Transit Provider 选型 | A      | P0     | 4.7      | 待确认（开发期 Provisional Provider = 駅すぱあと） |
 | 7.4    | POI 标准 Schema               | A      | P0     | 7.2      | 已完成（TASK-050-A 用户验收；PR #417 已合入 develop） |
-| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 待审查（#438 / Draft PR #444；100 ADMIT + Pilot-only runtime；等待用户验收及人工合并） |
+| 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 已完成（#438 / PR #444 已合入 develop；100 ADMIT + Pilot-only runtime；TASK-081-B 仅复用固定样本） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
@@ -1063,7 +1069,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
-| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 正式 Canonical POI=0，真实 Pilot 待 7.4.1 验收合入；Provider 批量/留存/生产权限未确认） |
+| 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 100 admitted Canonical POI；真实 Edge Pilot 尚未恢复，Provider 批量/留存/生产权限未确认） |
 
 TASK-082-A tracking (2026-09-27):
 

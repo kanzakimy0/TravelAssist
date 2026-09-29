@@ -1,0 +1,73 @@
+{
+  "task": "TASK-081-B",
+  "status": "BLOCKED",
+  "baseRef": "origin/develop",
+  "baseSha": "0950d67a29a44820b7c311dbc4a4e4d8c620913d",
+  "taskBranch": "task/real-100-poi-pilot",
+  "expectedPoiCount": 100,
+  "expectedFeatureCount": 43,
+  "expectedCells": 4300,
+  "sample": {
+    "selectionRule": null,
+    "canonicalPoiIds": [],
+    "reason": "No authorized, admitted Canonical POI v1 inventory or real canonical enrichment path is available on this base. The newly merged schema does not promote workbook rows or candidateKeys implicitly."
+  },
+  "assessment": {
+    "processedPois": 0,
+    "assessedCells": 0,
+    "resolvedCells": null,
+    "unresolvedCells": null,
+    "lowConfidenceCells": null,
+    "cellCountsReason": "The 4,300-cell pilot was not started; null counts mean not measured, not zero."
+  },
+  "repositoryEvidence": {
+    "feature43Contract": "src/shared/contracts/planning/features.ts",
+    "feature43DefinitionCount": 43,
+    "canonicalPoiV1ContractPresent": true,
+    "canonicalPoiV1ContractPath": "src/shared/contracts/poi/",
+    "canonicalPoiAdmissionGatePresent": true,
+    "masterCodeRegistry": {
+      "path": "src/shared/data/master-code-registry.v1.json",
+      "sha256": "9efcc0b6172dacdabe846789430d1ed54de98f12827097e96a7651131bf044b2",
+      "governanceStatus": "candidate",
+      "entries": 51,
+      "poiEntries": 0
+    },
+    "spreadsheetInventory": {
+      "path": "data/poi/full/registry/travelassist-japan-poi-master-registry-v1.66-B-5xxxx-7xxxx-feature43-phase2c-review-v2.xlsx",
+      "sha256": "b396723fbe1ed326fc205b7b259dd992019120182ad35044c2a96bd8a54d4014",
+      "registryRows": 10585,
+      "rowsWithInternalUuid": 10585,
+      "interpretation": "Real frozen spreadsheet registry, but not an admitted Canonical POI v1 store or proof of canonical schema/quality-gate passage."
+    },
+    "candidateReviewManifest": {
+      "path": "data/poi/full/manifests/current-candidate-review.v1.json",
+      "sha256": "5b95257ee62c83f14183b729bb2179ace2e98733a11361f0b442d79380457d66",
+      "scope": "CANDIDATE_ONLY_NO_CANONICAL_IMPORT",
+      "runtimeImportAuthorized": false
+    },
+    "availableEnrichmentPath": {
+      "path": "tools/poi/enrich-candidates.mjs",
+      "scope": "CANDIDATE_ONLY_NO_CANONICAL_IMPORT"
+    },
+    "canonicalPoiRuntimeApiPresent": false
+  },
+  "blockingDependencies": [
+    "The newly merged Canonical POI v1 schema/admission gate has fixtures and tests, but no real admitted POI inventory or active POI Master Code allocations on origin/develop.",
+    "No authorized mapping/admission from the frozen spreadsheet registry or B candidate corpus to an application Canonical POI inventory is present.",
+    "The available enrichment path is explicitly candidate-only; no real canonical enrichment run can be made without crossing that boundary.",
+    "No canonical POI runtime API is present on this base, so downstream consumption cannot be tested at that boundary."
+  ],
+  "validation": {
+    "lint": "PASS_WITH_9_EXISTING_WARNINGS",
+    "typecheck": "PASS",
+    "planningContractTests": "21_PASS",
+    "masterCodeRegistryQa": "PASS_50_REGION_ALLOCATIONS",
+    "masterCodeRegistryTests": "15_PASS",
+    "candidateEnrichmentTests": "12_PASS_WITH_REPOSITORY_TS_LOADER",
+    "canonicalPoiSchema": "PASS_24_FIXTURE_TESTS_NO_REAL_RECORDS",
+    "canonicalPoiQualityGate": "IMPLEMENTED_NOT_RUN_ON_REAL_DATA",
+    "pilotRecordValidation": "NOT_RUN_NO_CANONICAL_SAMPLE",
+    "downstreamConsumption": "NOT_RUN_CANONICAL_RUNTIME_BOUNDARY_ABSENT"
+  }
+}
