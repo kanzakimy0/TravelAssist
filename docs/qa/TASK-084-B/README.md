@@ -1,6 +1,6 @@
 # TASK-084-B node acceptance QA
 
-Status: **PASS / READY_TO_MERGE** against the original TASK-084-B acceptance and [final closeout amendment](../../tasks/AMENDMENT-TASK-084-b-final-closeout.md). The national planning backbone has **244 NODE_ACCEPTED TransportNodes**, **77 new** since accepted head `9b34f3cd6984aa2d193df3759f86d25b20dbeae9`. Issue #441 and PR #448 remain the only tracking artifacts. TASK-085-B and TASK-086-B remain unstarted.
+Status: **PASS / MERGED / 已完成** against the original TASK-084-B acceptance and [final closeout amendment](../../tasks/AMENDMENT-TASK-084-b-final-closeout.md). The national planning backbone has **244 NODE_ACCEPTED TransportNodes**, **77 new** since accepted head `9b34f3cd6984aa2d193df3759f86d25b20dbeae9`. PR #448 merged into develop and Issue #441 is Closed / Completed. TASK-085-B and TASK-086-B remain unstarted.
 
 ## Reproduction
 
@@ -61,7 +61,7 @@ Fixed archive SHA-256: N02 `aaf76af133b2e771e538fabc4646d2e443dc1d5a67b221382a28
 | Accepted provenance and static/dynamic boundary | PASS; 244/244 sourceRefs/confidence/coordinates/generatedAt; no timetable, fare, delay or other live field persisted |
 | A Route/Planner runtime ownership | PASS; TASK-084 implementation changes only offline TransportNode data/tools/tests and tracking documents |
 | WBS / Result / QA synchronized | PASS; national backbone PASS, N03 administrative enrichment and later node breadth explicitly deferred |
-| PR review / merge control | Pending exact-head green and authorized normal merge; never auto-merge |
+| PR review / merge control | PASS; exact-head Quality Gate #36564684778 succeeded and PR #448 used a normal two-parent merge; GitHub Actions performed the merge after Ready for Review, contrary to the requested manual execution order |
 
 The accepted master contains 57 distinct source references and no reference to blocked N09, Shimoden or N03 sources. N02, C28, the Aviation Bureau, Fukuoka ferry, Nagasaki GTFS and official operator guides support the persisted rows; the GTFS rights registry records persistence decisions. The 0/47 administrative coverage figure is a deferred enrichment metric, not a national backbone failure.
 
@@ -80,4 +80,4 @@ The accepted master contains 57 distinct source references and no reference to b
 | Actual 200-node batching, resume, selected batch 2 rebuild, checksum and corruption rejection | PASS; 200 + 44 verified |
 | Staged secret pattern scan / `git diff --cached --check` | PASS / PASS |
 
-Candidate QA, individual NODE_ACCEPTED decisions and NATIONAL_MASTER_PASS are separate gates. The combined manifest records `nationalMasterStatus=PASS`; future N03 administrative enrichment still fails closed until rights PASS. Further node breadth is outside this closeout. PR #448 may move from Draft to Ready for Review only after final exact-head Quality Gate succeeds; normal merge remains governed by the amendment's explicit conditions.
+Candidate QA, individual NODE_ACCEPTED decisions and NATIONAL_MASTER_PASS are separate gates. The combined manifest records `nationalMasterStatus=PASS`; future N03 administrative enrichment still fails closed until rights PASS. Further node breadth is outside this closeout. PR #448 was moved from Draft to Ready for Review after exact-head Quality Gate success; the repository's GitHub Actions merged it before the planned manual merge command. The resulting commit is a normal two-parent merge of the verified exact head.
