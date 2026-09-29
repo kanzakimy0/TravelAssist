@@ -1059,7 +1059,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
-| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待审查（#450 / TASK-084-A；PASS_RUNTIME，真实 100 POI Pilot BLOCKED_REAL_PILOT，待 #444/#437 数据 Gate；未验收/未完成） |
+| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待审查（#450 / TASK-084-A；PASS_RUNTIME；#444 的 100 Canonical 已识别，真实 Pilot 待 #437 Feature43；未验收/未完成） |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |

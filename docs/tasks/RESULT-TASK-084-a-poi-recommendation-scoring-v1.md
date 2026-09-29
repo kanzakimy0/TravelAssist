@@ -14,9 +14,15 @@
 
 ## Phase 0 / real-data gate
 
-The [preflight](../qa/TASK-084/preflight.json) records authoritative registries and upstream state. PR #444 remained Draft/Open and unmerged, and its admitted Pilot-100 dataset/runtime manifest was absent from the base. PR #437 remained Draft/Open and reported 0/4,300 real Feature43 cells assessed. The base has no authorized Pilot-100 runtime inventory or accepted 100 × 43 real facts.
+The [preflight](../qa/TASK-084/preflight.json) records the original publication-base state: PR #444 was Draft/Open and its Pilot-100 dataset absent, while PR #437 reported 0/4,300 real Feature43 cells assessed. The latest-develop refresh below supersedes the Canonical inventory portion of that historical audit.
 
 No candidate-only workbook, historical v1.66 score, synthetic POI fixture or unaccepted PR-only data was promoted to Canonical. No real top-20 list, pairwise gold set, rank correlation, calibration delta or 100-POI score file was created.
+
+## Latest-develop refresh
+
+Merged develop 3fab703d13694fd1205679c96fb8d1d2e8549fbc normally into #451 as merge commit 5c27b6142fe2a69240a588f5d26c3b6264da70c7. This preserves TASK-083 Canonical Pilot-100, TASK-082 Edge, PR governance, Preference/Feature43 registries and this scoring runtime.
+
+The TASK-083 server-only repository now authorizes exactly 100 admitted Canonical IDs and 100 active Master Codes. A concrete scoring adapter delegates to that validated repository; the new real boundary test verifies **100/100 repository recognition** and **100/100 FEATURE43_UNAVAILABLE** responses. All 100 admitted records have features: null, so scored real POIs remain **0/100**. This is a fail-closed runtime smoke, not the Real POI Matching Pilot. PR #437 remains Draft/Open and real Feature43 assessment remains 0/4,300.
 
 ## Runtime delivered
 
@@ -32,18 +38,18 @@ Code: src/shared/recommendation-scoring/ and src/server/recommendation-scoring/s
 
 ## QA
 
-The new 26-case contract suite covers the Task's required 24 semantics plus Canonical service boundary and persona schema. Mapping/config artifacts are checked from source. Local synthetic performance is recorded in [contract-test-summary.json](../qa/TASK-084/contract-test-summary.json) for one POI/persona, 100 scorer calls/one persona and 800 calls/eight personas, 25 repeats each. This measures the hot path, not real data quality.
+The 26-case scoring contract suite covers the Task's required 24 semantics plus the generic Canonical service boundary and persona schema. The additional real Canonical-100 boundary test checks the newly admitted repository. Mapping/config artifacts are checked from source. Local synthetic performance is recorded in [contract-test-summary.json](../qa/TASK-084/contract-test-summary.json) for one POI/persona, 100 scorer calls/one persona and 800 calls/eight personas, 25 repeats each. This measures the hot path, not real data quality.
 
-| Gate                                                                          | Result                                                                                                          |
-| ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| New scoring tests                                                             | 26/26 pass                                                                                                      |
-| Preference / Planning / Canonical POI / Edge / governance focused regressions | 1,106/1,106 pass                                                                                                |
-| Full repository Node tests                                                    | 2,796/2,796 pass with bundled Python; initial Windows system Python alias caused one environment-only exit 9009 |
-| Lint                                                                          | Pass; 9 pre-existing unrelated tools/poi warnings, 0 errors                                                     |
-| Typecheck                                                                     | Pass                                                                                                            |
-| Formatting                                                                    | format:check:deploy pass                                                                                        |
-| Build                                                                         | Pass                                                                                                            |
-| Deployment validate/build/artifact                                            | All pass; standalone artifact 1,908 files verified                                                              |
-| Exact-head GitHub Quality Gate                                                | Pending Draft PR head                                                                                           |
+| Gate                                                                                             | Result                                                                                                                           |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| New scoring and Canonical-100 boundary tests                                                     | 27/27 pass                                                                                                                       |
+| Preference / Planning / Canonical POI / TASK-083 runtime / Edge / governance focused regressions | 1,139/1,139 pass                                                                                                                 |
+| Full repository Node tests                                                                       | 2,803/2,803 pass with bundled Python; initial concurrent build caused one transient .next chunk ENOENT, then serial rerun passed |
+| Lint                                                                                             | Pass; 10 pre-existing warnings, 0 errors                                                                                         |
+| Typecheck                                                                                        | Pass                                                                                                                             |
+| Formatting                                                                                       | format:check:deploy pass                                                                                                         |
+| Build                                                                                            | Pass                                                                                                                             |
+| Deployment validate/build/artifact                                                               | All pass; standalone artifact 1,908 files verified                                                                               |
+| Exact-head GitHub Quality Gate                                                                   | Old #487 belongs to the pre-refresh head; new exact-head run pending                                                             |
 
-No accepted real-data calibration was performed. Gamma/weights remain labeled pilot candidates. Once #444 is accepted and merged, #437 must assess/publish real Canonical Feature43 with confidence/provenance and user acceptance; then rerun the fixed 100-POI × 8-persona Pilot and pairwise analysis in a separately reviewed update. Do not treat this runtime PR as full WBS 7.9 completion or auto-merge it.
+No accepted real-data calibration was performed. Gamma/weights remain labeled pilot candidates. #444 is now merged; #437 must still assess/publish real Canonical Feature43 with confidence/provenance and user acceptance before the fixed 100-POI × 8-persona Pilot and pairwise analysis can run. Do not treat this runtime PR as full WBS 7.9 completion or auto-merge it.

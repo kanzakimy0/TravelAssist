@@ -40,4 +40,4 @@ Weights and gamma are explicit pilot-calibration candidates, not empirical truth
 
 ## Real Pilot gate
 
-preflight.json records PR #444 (Canonical Pilot-100) and PR #437 (real 43D, 0/4,300 at preflight) as Draft/Open and not accepted on the base. Current develop has no authorized Pilot-100 or accepted real Feature43 set. The 100-POI × 8-persona benchmark, pairwise calibration and real-rank analysis are intentionally absent. Resume only after both gates pass, never with Candidate workbook values or synthetic fixtures.
+preflight.json preserves the original Phase-0 state and records the latest-develop refresh separately. PR #444 is now merged: exactly 100 Canonical POIs and active Master Codes are authorized. The real boundary test confirms 100/100 repository recognition and 100/100 FEATURE43_UNAVAILABLE responses because every admitted POI still has features: null. PR #437 remains Draft/Open with 0/4,300 accepted real cells. The 100-POI × 8-persona benchmark, pairwise calibration and real-rank analysis are intentionally absent. Resume only after real Canonical Feature43 is accepted, never with Candidate workbook values or synthetic fixtures.
