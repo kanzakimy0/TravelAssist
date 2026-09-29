@@ -7,7 +7,7 @@ import { canonicalPoiRuntimeRepository } from "../src/server/poi-runtime/reposit
 import { pilot100RecommendationRepository } from "../src/server/recommendation-scoring/pilot100.ts";
 import { scoreAuthorizedCanonicalPoiV1 } from "../src/server/recommendation-scoring/service.ts";
 
-test("100 admitted Canonical IDs are recognized; all 100 missing 43D sets fail closed", async () => {
+test("100 admitted Canonical IDs have trusted 43D baseline and enter scorer", async () => {
   const ids = runtimeManifest.internalIds;
   assert.equal(ids.length, 100);
   assert.equal(new Set(ids).size, 100);
@@ -25,12 +25,12 @@ test("100 admitted Canonical IDs are recognized; all 100 missing 43D sets fail c
     updatedAt: null,
   });
   let recognized = 0;
-  let featureUnavailable = 0;
+  let scored = 0;
   for (const poiId of ids) {
     const canonical =
       await canonicalPoiRuntimeRepository.getByInternalId(poiId);
     assert.equal(canonical?.internalId, poiId);
-    assert.equal(canonical?.features, null);
+    assert.equal(Object.keys(canonical?.features?.values ?? {}).length, 43);
     recognized += 1;
     const result = await scoreAuthorizedCanonicalPoiV1({
       repository: pilot100RecommendationRepository,
@@ -38,12 +38,10 @@ test("100 admitted Canonical IDs are recognized; all 100 missing 43D sets fail c
       longTerm: preference,
       context: { contextVersion: "task-084-canonical-boundary-smoke-v1" },
     });
-    assert.deepEqual(result, {
-      status: "unavailable",
-      reason: "FEATURE43_UNAVAILABLE",
-    });
-    featureUnavailable += 1;
+    assert.equal(result.status, "scored");
+    assert.equal(result.result.poiRef, poiId);
+    scored += 1;
   }
   assert.equal(recognized, 100);
-  assert.equal(featureUnavailable, 100);
+  assert.equal(scored, 100);
 });
