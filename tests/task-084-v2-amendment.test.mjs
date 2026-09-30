@@ -256,10 +256,7 @@ test("documented interchange boundaries unify Umeda while preserving operators a
   )) {
     assert.ok(h.boundaryEvidence.length > 0);
     assert.equal(h.missingOperatorModeCount, 0);
-    assert.equal(
-      h.ambiguousComponentCount,
-      h.hubReviewName === "武蔵小杉" ? 1 : 0,
-    );
+    assert.equal(h.ambiguousComponentCount, 0);
     assert.equal(h.parentHubAssignmentAuthorized, false);
   }
   assert.ok(
@@ -341,7 +338,7 @@ test("city coverage expands Tokyo and regional centers without growing Osaka", (
   );
 });
 
-test("ambiguous JR Musashi-Kosugi remains withheld and operator modes stay distinct", () => {
+test("official JR Musashi-Kosugi identity preserves one valid count and distinct operators", () => {
   const hubs = rows("hub-component-completeness-review");
   const kosugi = hubs.find((h) => h.hubReviewName === "武蔵小杉");
   assert.deepEqual(
@@ -357,16 +354,21 @@ test("ambiguous JR Musashi-Kosugi remains withheld and operator modes stay disti
   const jr = kosugi.expectedComponents.find(
     (c) => c.operator === "東日本旅客鉄道",
   );
-  assert.equal(jr.status, "MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED");
-  assert.equal(jr.candidateTransportNodeIds.length, 2);
-  assert.equal(jr.proposedParentHubId, null);
-  assert.ok(
-    rail
-      .filter((c) =>
-        jr.candidateTransportNodeIds.includes(c.proposedTransportNodeId),
-      )
-      .every((c) => c.proposedParentHubId === null),
+  assert.equal(jr.status, "PRESENT_COMPONENT_REVIEW_REQUIRED");
+  assert.equal(jr.candidateTransportNodeIds.length, 1);
+  assert.equal(jr.proposedParentHubId, kosugi.proposedHubId);
+  const merged = rail.find(
+    (c) => c.proposedTransportNodeId === jr.candidateTransportNodeIds[0],
   );
+  assert.equal(merged.usageValue, 226904);
+  assert.deepEqual(merged.lineRefs, ["南武線", "東海道線"]);
+  assert.equal(merged.sourceStationRefs.length, 2);
+  assert.equal(merged.sourceGeometryObservations.length, 2);
+  assert.equal(
+    merged.componentIdentityDecision.usageRule,
+    "KEEP_SINGLE_VALID_S12_PRIMARY_NO_SUM",
+  );
+  assert.equal(rail.filter((c) => c.canonicalNameJa === "武蔵小杉").length, 2);
   const kamiiida = hubs.find((h) => h.hubReviewName === "上飯田");
   assert.equal(
     kamiiida.expectedComponents.find((c) => c.operator === "名古屋市")
@@ -387,5 +389,98 @@ test("ambiguous JR Musashi-Kosugi remains withheld and operator modes stay disti
     hubs
       .find((h) => h.hubReviewName === "蒲田")
       .expectedComponents.every((c) => c.stationName !== "京急蒲田"),
+  );
+});
+
+test("explicit source-bound identity decisions retain lineage and every final target exists", () => {
+  const active = new Map(rail.map((r) => [r.proposedTransportNodeId, r]));
+  const decisions = rows("component-identity-lineage");
+  assert.deepEqual(decisions.map((d) => d.stationName).sort(), [
+    "東京",
+    "武蔵小杉",
+    "池袋",
+  ]);
+  for (const d of decisions) {
+    assert.ok(d.evidence.length >= 2);
+    assert.equal(d.formalAcceptedIdentityRebound, false);
+    assert.equal(
+      active.get(d.retainedCandidateId).usageValue,
+      d.retainedUsageValue,
+    );
+    assert.ok(d.supersededCandidateIds.every((id) => !active.has(id)));
+    assert.equal(
+      d.sourceCandidates.filter((r) => r.usageValue !== null).length,
+      1,
+    );
+  }
+  const resolved = rows("v1-rail-lineage-resolved");
+  assert.equal(resolved.length, 179);
+  assert.ok(
+    resolved.every(
+      (r) => !r.newTransportNodeId || active.has(r.newTransportNodeId),
+    ),
+  );
+  assert.ok(
+    resolved
+      .filter((r) => r.rawSourceCandidateId)
+      .every((r) => r.identityDecisionId),
+  );
+});
+
+test("all 15 boundary followups and all 269 high-tier gaps retain individual evidence and open status", () => {
+  const boundaries = rows("hub-boundary-followup-review");
+  assert.equal(boundaries.length, 15);
+  assert.ok(
+    boundaries.every(
+      (r) =>
+        r.currentStatus === "DOCUMENTED_INTERCHANGE" &&
+        r.boundaryEvidence.length &&
+        !r.missingOperatorModeCount &&
+        !r.ambiguousComponentCount &&
+        !r.finalAcceptanceAuthorized,
+    ),
+  );
+  const hubs = rows("hub-component-completeness-review");
+  assert.ok(
+    hubs
+      .find((h) => h.hubReviewName === "仙台")
+      .expectedComponents.some((c) => c.stationName === "あおば通"),
+  );
+  assert.ok(
+    hubs
+      .find((h) => h.hubReviewName === "上野")
+      .expectedComponents.some((c) => c.stationName === "京成上野"),
+  );
+  assert.ok(
+    hubs
+      .find((h) => h.hubReviewName === "三ノ宮")
+      .expectedComponents.some((c) => c.stationName === "三宮・花時計前"),
+  );
+  const screened = rows("high-tier-followup-review");
+  assert.equal(screened.length, 269);
+  assert.equal(
+    new Set(screened.map((r) => r.candidateTransportNodeId)).size,
+    269,
+  );
+  assert.ok(
+    screened.every(
+      (r) =>
+        r.sourceRelatedComponents.length &&
+        !r.sourceGroupEstablishesPhysicalInterchange &&
+        !r.finalAcceptanceAuthorized,
+    ),
+  );
+  assert.equal(
+    screened.filter((r) => r.currentProposedParentHubId).length,
+    manifest.followup.highTierNewlyScoped,
+  );
+  assert.ok(
+    screened
+      .filter((r) => !r.currentProposedParentHubId)
+      .every(
+        (r) =>
+          r.officialBoundaryEvidence.length === 0 &&
+          r.nextAction.includes("S12 groups do not establish a Hub"),
+      ),
   );
 });

@@ -18,6 +18,51 @@ def load(p): return [json.loads(x) for x in Path(p).read_text(encoding='utf-8').
 def tier(v): return 'T0' if v>=10000000 else 'T1' if v>=1000000 else 'T2' if v>=100000 else 'T3'
 def counts(rows,key): return dict(sorted(Counter(r.get(key) or 'REVIEW_REQUIRED' for r in rows).items()))
 
+def resolve_component_identities(rail,decisions):
+    """Apply only explicit source-bound identity decisions; never infer from names/distance."""
+    result=copy.deepcopy(rail); index={r['proposedTransportNodeId']:r for r in result}
+    if len(index)!=len(result): raise ValueError('DUPLICATE_CANDIDATE_ID')
+    retired=set(); touched=set(); lineage=[]
+    for d in decisions:
+        ids=[d['retainedCandidateId']]+d['supersededCandidateIds']
+        if len(ids)<2 or len(set(ids))!=len(ids) or touched.intersection(ids): raise ValueError('INVALID_IDENTITY_DECISION_IDS')
+        if not d['evidence'] or any(not e.get('url') for e in d['evidence']): raise ValueError('IDENTITY_OFFICIAL_EVIDENCE_REQUIRED')
+        if any(i not in index for i in ids): raise ValueError('IDENTITY_SOURCE_CANDIDATE_MISSING')
+        originals=[copy.deepcopy(index[i]) for i in ids]
+        if any((r['canonicalNameJa'],r['operatorRefs'],r['modeFamily'])!=(d['stationName'],[d['operator']],d['modeFamily']) for r in originals): raise ValueError('IDENTITY_OPERATOR_STATION_MODE_MISMATCH')
+        if sorted({x['groupCode'] for r in originals for x in r['sourceStationRefs']})!=d['expectedSourceGroupCodes']: raise ValueError('IDENTITY_SOURCE_GROUP_MISMATCH')
+        if len({r['sourceArchiveSha256'] for r in originals})!=1: raise ValueError('IDENTITY_SOURCE_VERSION_MISMATCH')
+        if d['usageRule']!='KEEP_SINGLE_VALID_S12_PRIMARY_NO_SUM' or originals[0]['usageValue']!=d['retainedUsageValue'] or originals[0]['duplicateCode']!=1 or originals[0]['dataAvailabilityCode']!=1 or any(r['usageValue'] is not None or r['duplicateCode']!=2 for r in originals[1:]): raise ValueError('IDENTITY_USAGE_DECISION_MISMATCH')
+        target=index[ids[0]]
+        target['lineRefs']=sorted({x for r in originals for x in r['lineRefs']})
+        target['sourceRefs']=sorted({x for r in originals for x in r['sourceRefs']}|{e['url'] for e in d['evidence']})
+        refs={enc(x):x for r in originals for x in r['sourceStationRefs']}
+        target['sourceStationRefs']=[refs[k] for k in sorted(refs)]
+        target['sourceGeometryObservations']=[{k:r[k] for k in ['proposedTransportNodeId','latitude','longitude','sourcePrimaryStationCode','sourcePrimaryLine']} for r in originals]
+        target['componentIdentityDecision']=copy.deepcopy(d)
+        target['identityKeyOrigin']='RETAINED_EXPLICIT_PRIMARY_CANDIDATE_KEY'
+        target['decisionReason']='Explicit official internal-passage identity review; retained valid S12 primary usage without summing duplicate observations.'
+        lineage.append({**copy.deepcopy(d),'decision':'EXPLICIT_OFFICIAL_PHYSICAL_STATION_CONSOLIDATION','sourceCandidates':originals,'retainedCoordinateRule':'KEEP_PRIMARY_SOURCE_COORDINATE_NO_AVERAGING','retiredCandidateCount':len(ids)-1,'runtimeImportAuthorized':False})
+        retired.update(ids[1:]);touched.update(ids)
+    return [r for r in result if r['proposedTransportNodeId'] not in retired],lineage
+
+
+def followup_reviews(baseline_boundaries,screening,hubs,hub_gate):
+    by_name={h['hubReviewName']:h for h in hubs}; by_id={r['candidateTransportNodeId']:r for r in hub_gate}
+    boundary=[]; high=[]
+    for b in baseline_boundaries:
+        h=by_name[b['hubReviewName']]
+        boundary.append({**b,'currentStatus':h['officialInterchangeBoundaryReview'],'boundaryEvidence':h['boundaryEvidence'],'boundaryConclusion':h['notes'],'expectedComponentCount':len(h['expectedComponents']),'missingOperatorModeCount':h['missingOperatorModeCount'],'ambiguousComponentCount':h['ambiguousComponentCount'],'operatorLineageReview':h['operatorLineageReview'],'finalAcceptanceAuthorized':False})
+    for b in screening:
+        current=by_id[b['candidateTransportNodeId']]
+        established=bool(current['proposedParentHubId'])
+        lead_count=len(b['sourceRelatedComponents'])
+        disposition='OFFICIAL_HUB_SCOPE_ADDED_COMPONENT_ACCEPTANCE_PENDING' if established else 'MULTI_COMPONENT_SOURCE_LEAD_OFFICIAL_BOUNDARY_REQUIRED' if lead_count>1 else 'SINGLE_COMPONENT_SOURCE_SCREEN_OFFICIAL_STATION_REVIEW_REQUIRED'
+        evidence=[e for n in current['reviewScopes'] for e in by_name[n]['boundaryEvidence']]
+        high.append({**b,'currentReviewScopes':current['reviewScopes'],'currentProposedParentHubId':current['proposedParentHubId'],'currentStatus':current['status'],'followupDisposition':disposition,'officialBoundaryEvidence':evidence,'nextAction':'Validate component fields/lineage and final acceptance; proposed membership only.' if established else 'Check operator station map and physical interchange boundary; S12 groups do not establish a Hub. Osaka expansion remains frozen by user direction.','finalAcceptanceAuthorized':False})
+    return boundary,high
+
+
 def enrich_rail(rail,fallbacks):
     index=defaultdict(list)
     for f in fallbacks: index[(f['stationName'],f['operator'],f['modeFamily'])].append(f)
@@ -216,7 +261,18 @@ def build(a):
     sources=Path(a.evidence); discovery=Path(a.discovery)
     inputs={}
     def read(p): inputs[str(p).replace('\\','/')]=sha(p.read_bytes()); return load(p)
-    rail,shinkansen=enrich_rail(read(Path(a.rail)/'rail-components.jsonl'),read(sources/'shinkansen-official-fallbacks.jsonl'))
+    identity_rail,identity_lineage=resolve_component_identities(read(Path(a.rail)/'rail-components.jsonl'),read(sources/'component-identity-decisions.jsonl'))
+    rail,shinkansen=enrich_rail(identity_rail,read(sources/'shinkansen-official-fallbacks.jsonl'))
+    resolved_v1_lineage=copy.deepcopy(read(Path(a.rail)/'v1-rail-lineage.jsonl'))
+    identity_targets={old:(d['retainedCandidateId'],d['decisionId']) for d in identity_lineage for old in d['supersededCandidateIds']}
+    active_ids={r['proposedTransportNodeId'] for r in rail}
+    for row in resolved_v1_lineage:
+        raw_target=row.get('newTransportNodeId')
+        if raw_target in identity_targets:
+            row['rawSourceCandidateId']=raw_target
+            row['newTransportNodeId'],row['identityDecisionId']=identity_targets[raw_target]
+            row['identityResolutionReason']='Explicit official component decision resolves the raw source-stage candidate; no formal accepted identity rebound.'
+        if row.get('newTransportNodeId') and row['newTransportNodeId'] not in active_ids: raise ValueError('V1_LINEAGE_TARGET_NOT_ACTIVE')
     previous=read(sources/'previous-v2-rail-identities.jsonl')
     def key(r): return (r['canonicalNameJa'],tuple(r['operatorRefs']),r['sourcePrimaryStationCode'],r['sourcePrimaryLine'])
     prior_index={key(r):r for r in previous}; revisions=[]
@@ -241,8 +297,9 @@ def build(a):
         current=[h for h in hubs if h['cityReviewArea']==city]
         prior=[h for h in baseline if h['cityReviewArea']==city]
         cities.append({'cityReviewArea':city,'labelType':'EDITORIAL_COVERAGE_GROUP_NOT_ADMINISTRATIVE_ASSIGNMENT','baselineCommit':baseline[0]['baselineCommit'],'previousHubScopes':len(prior),'currentHubScopes':len(current),'addedHubScopes':len(current)-len(prior),'previousExpectedComponents':sum(h['expectedComponents'] for h in prior),'currentExpectedComponents':sum(len(h['expectedComponents']) for h in current),'documentedInterchangeScopes':sum(h['officialInterchangeBoundaryReview']=='DOCUMENTED_INTERCHANGE' for h in current),'boundaryPendingScopes':sum(h['officialInterchangeBoundaryReview']!='DOCUMENTED_INTERCHANGE' for h in current),'missingComponents':sum(h['missingOperatorModeCount'] for h in current),'ambiguousComponents':sum(h['ambiguousComponentCount'] for h in current),'formallyAcceptedHubs':0,'nationwideCoverageComplete':False,'hubNames':[h['hubReviewName'] for h in current]})
+    boundary_followup,high_followup=followup_reviews(read(sources/'hub-boundary-followup-baseline.jsonl'),read(sources/'high-tier-followup-screening.jsonl'),hubs,hub_gate)
     distributions_rows=distributions(rail,airport,bus,hubs)
-    rows={'hub-city-coverage-review.jsonl':cities,'rail-components.jsonl':rail,'shinkansen-usage-review.jsonl':shinkansen,'airport-97-audit.jsonl':airport,'airport-planning-candidates.jsonl':[r for r in airport if r['plannerCandidateEligible'] is True],'airport-rail-components.jsonl':access,'bus-candidate-official-review.jsonl':bus,'hub-component-completeness-review.jsonl':hubs,'high-tier-hub-coverage-gate.jsonl':hub_gate,'tier-distributions.jsonl':distributions_rows,'candidate-revision-lineage.jsonl':revisions}
+    rows={'v1-rail-lineage-resolved.jsonl':resolved_v1_lineage,'component-identity-lineage.jsonl':identity_lineage,'hub-boundary-followup-review.jsonl':boundary_followup,'high-tier-followup-review.jsonl':high_followup,'hub-city-coverage-review.jsonl':cities,'rail-components.jsonl':rail,'shinkansen-usage-review.jsonl':shinkansen,'airport-97-audit.jsonl':airport,'airport-planning-candidates.jsonl':[r for r in airport if r['plannerCandidateEligible'] is True],'airport-rail-components.jsonl':access,'bus-candidate-official-review.jsonl':bus,'hub-component-completeness-review.jsonl':hubs,'high-tier-hub-coverage-gate.jsonl':hub_gate,'tier-distributions.jsonl':distributions_rows,'candidate-revision-lineage.jsonl':revisions}
     artifacts={name:b''.join(enc(x) for x in rs) for name,rs in rows.items()}
     batches=[]
     for start in range(0,len(rail),200):
@@ -253,6 +310,7 @@ def build(a):
       'airport':{'officialIdentities':len(airport),'minimumAnnualPassengers':AIRPORT_MIN_ANNUAL_PASSENGERS,'planningCandidates':sum(r['plannerCandidateEligible'] is True for r in airport),'annualUsageBelowThreshold':sum(r['annualUsage'] is not None and r['annualUsage']['usageValue']<AIRPORT_MIN_ANNUAL_PASSENGERS for r in airport),'unknownAnnualUsage':sum(r['annualUsage'] is None for r in airport),'planningInclusionCounts':counts(airport,'planningInclusionStatus'),'categoryCounts':counts(airport,'category'),'identityAudited':len(airport),'annualNumeric':sum(r['annualUsage'] is not None for r in airport),'decisionCounts':counts(airport,'decision'),'missingIdentityCount':0,'accessGuidesReviewed':sum(r['accessReview']['officialAccessGuide'] is not None for r in airport),'accessReviewRequired':sum(r['accessReview']['officialAccessGuide'] is None for r in airport),'expectedRailComponents':len(access),'presentRailComponents':sum(r['status']=='CANDIDATE_PRESENT_REVIEW_REQUIRED' for r in access),'missingRailComponents':sum(r['status']=='COMPONENT_MISSING' for r in access),'railAirportCount':len(set(r['airportName'] for r in access)),'fullAcceptanceAuditPass':False},
       'bus':{'discoveredCandidateReviewRecordsTotal':len(bus),'navitimeDiscovered':sum(r['discovery'] is not None for r in bus),'officialRegisteredFacilities':26,'officialEvidenceAttached':sum(bool(r['officialEvidence']) for r in bus),'navitimeOfficialEvidenceAttached':sum(r['discovery'] is not None and bool(r['officialEvidence']) for r in bus),'fullyOfficialSourceValidated':sum(r['fullyOfficialValidated'] for r in bus),'decisionCounts':counts(bus,'decision'),'physicalFacilityDedupComplete':False,'uniquePhysicalFacilityCount':None,'officialNumericUsage':sum(r['usageValue'] is not None for r in bus)},
       'hubs':{'cityReviewGroupCount':len(cities),'previousReviewScopes':len(baseline),'addedReviewScopes':len(hubs)-len(baseline),'reviewScopes':len(hubs),'expectedComponents':sum(len(h['expectedComponents']) for h in hubs),'documentedInterchangeScopes':sum(h['officialInterchangeBoundaryReview']=='DOCUMENTED_INTERCHANGE' for h in hubs),'osakaReviewScopes':sum(h['regionReviewScope'].startswith('OSAKA_') for h in hubs),'proposedMembershipCount':sum(r.get('proposedParentHubId') is not None for r in rail),'ambiguousComponentExpectations':sum(h['ambiguousComponentCount'] for h in hubs),'complete':0,'componentReviewRequired':len(hubs),'missingOperatorModeExpectations':sum(h['missingOperatorModeCount'] for h in hubs),'highTierComponentCount':len(hub_gate),'highTierWithoutEstablishedHubAuditScope':sum(not r['reviewScopes'] for r in hub_gate),'nationwideHubAuditComplete':False},
+      'followup':{'identityDecisions':len(identity_lineage),'supersededCandidateCount':sum(x['retiredCandidateCount'] for x in identity_lineage),'priorBoundaryPending':len(boundary_followup),'boundaryDocumented':sum(x['currentStatus']=='DOCUMENTED_INTERCHANGE' for x in boundary_followup),'highTierPreviouslyUnscopedScreened':len(high_followup),'highTierNewlyScoped':sum(bool(x['currentProposedParentHubId']) for x in high_followup),'highTierStillUnscoped':sum(not x['currentReviewScopes'] for x in high_followup),'highTierDispositionCounts':counts(high_followup,'followupDisposition')},
       'candidateRevisionCounts':counts(revisions,'decision'),'officialSourceUrlChecks':{'attempted':len(retrievals),'fetched':sum(r['status']=='FETCHED' for r in retrievals),'failed':sum(r['status']=='FETCH_FAILED' for r in retrievals)},
       'inputSha256':inputs,'batchSize':200,'batches':batches,'artifactSha256':{n:sha(b) for n,b in artifacts.items()},'blockers':['BUS_OFFICIAL_VALIDATION_AND_PHYSICAL_DEDUP_INCOMPLETE','AIRPORT_FULL_FIELD_ACCEPTANCE_INCOMPLETE','HUB_OPERATOR_MODE_BOUNDARY_AUDIT_INCOMPLETE','SHINKANSEN_METRIC_MANUAL_REVIEWS_PENDING','V2_LINEAGE_AND_FINAL_ACCEPTANCE_PENDING']}
     artifacts['manifest.json']=enc(manifest)

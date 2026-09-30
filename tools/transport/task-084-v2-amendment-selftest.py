@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Verify resume determinism and fail-before-write corruption handling in a temp dir."""
-import hashlib, json, subprocess, sys, tempfile, importlib.util
+import hashlib, json, subprocess, sys, tempfile, importlib.util, copy
 from pathlib import Path
 
 spec=importlib.util.spec_from_file_location('review','tools/transport/task-084-v2-amendment-review.py')
@@ -9,6 +9,21 @@ assert review.airport_planning_status(999)=='EXCLUDED_ANNUAL_PASSENGERS_BELOW_10
 assert review.airport_planning_status(1000)=='ELIGIBLE_PENDING_ACCEPTANCE'
 assert review.airport_planning_status(None)=='REVIEW_REQUIRED_MISSING_ANNUAL_USAGE'
 assert review.airport_planning_status(1000,True)=='EXCLUDED_INACTIVE'
+raw=review.load('data/transport/nodes/task-084-b-v2-rail-candidates/rail-components.jsonl')
+decisions=review.load('data/transport/nodes/task-084-b-v2-official-evidence/component-identity-decisions.jsonl')
+original=copy.deepcopy(raw)
+resolved,lineage=review.resolve_component_identities(raw,decisions)
+assert raw==original and len(resolved)==len(raw)-3
+for mutation,expected in [('numeric','IDENTITY_USAGE_DECISION_MISMATCH'),('operator','IDENTITY_OPERATOR_STATION_MODE_MISMATCH'),('missing','IDENTITY_SOURCE_CANDIDATE_MISSING'),('evidence','IDENTITY_OFFICIAL_EVIDENCE_REQUIRED')]:
+    altered=copy.deepcopy(raw); altered_decisions=copy.deepcopy(decisions)
+    target=next(r for r in altered if r['proposedTransportNodeId']==decisions[0]['supersededCandidateIds'][0])
+    if mutation=='numeric': target['usageValue']=99
+    elif mutation=='operator': target['operatorRefs']=['another operator']
+    elif mutation=='missing': altered.remove(target)
+    elif mutation=='evidence': altered_decisions[0]['evidence']=[]
+    try: review.resolve_component_identities(altered,altered_decisions)
+    except ValueError as exc: assert expected in str(exc),str(exc)
+    else: raise AssertionError('Identity guard failed: '+mutation)
 with tempfile.TemporaryDirectory(prefix='travelassist-task084-amendment-') as temp:
     out=Path(temp)/'review'
     command=[sys.executable,'tools/transport/task-084-v2-amendment-review.py','--output',str(out)]
