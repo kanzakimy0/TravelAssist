@@ -97,3 +97,5 @@ Ekiworld 仅可按既有评估边界使用；[配置记录](../architecture/ekiw
 ## 恢复条件
 
 上游须在新的 develop 发布明确供 TASK-085 使用的 machine-readable TransportNode artifact，包含 accepted membership、稳定 identity、revision/hash、provenance 和显式 downstream085Authorized 证据；不得恢复被否决 v1 或由本任务擅自提升 candidate。重新读取 Issue #442 最新 comments、当时 Canonical runtime manifest，并处理 sample-manifest hash 差异。之后重新执行 Gate 0 和完整原任务，而不是把本次审计工具当生成器。本次停止 TASK-085，不执行 TASK-086-B。
+
+Publication: [Draft PR #464](https://github.com/kanzakimy0/TravelAssist/pull/464). The PR body is the publication receipt for the final branch SHA and exact-head Quality Gate URL/conclusion, recorded after the commit exists.

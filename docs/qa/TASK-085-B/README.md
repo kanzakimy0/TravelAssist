@@ -36,3 +36,5 @@ Exact-head GitHub Quality Gate 使用最终分支 head 上的 workflow_dispatch�
 ## Integration / scope
 
 复用 TASK-082 的 Canonical admission 和既有 directed/unresolved contract。没有新 Planner contract、runtime/API 行为修改、43D 复制、Provider batch 请求或 payload 持久化。没有把候选节点升为 ACCEPT；没有 TASK-086 工作。WBS 7.15 最终为 **阻塞**。
+
+Publication: [Draft PR #464](https://github.com/kanzakimy0/TravelAssist/pull/464). The PR body is the publication receipt for the final branch SHA and exact-head Quality Gate URL/conclusion, recorded after the commit exists.
