@@ -1066,9 +1066,15 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
-| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 返工中（#441 已重新打开；PR #448 的 244-node v1 已合入但验收结论撤销；存在层级退化、重大车站组件缺失、机场接驳站缺失、全国长途客运站覆盖不足；按 corrective rework 重建 v2，未通过前禁止作为 7.15/7.16 输入） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（2026-09-30 用户明确验收当前 v2 纠错成果物，普通合入 develop，#441 关闭；来源权利、逐组件 runtime 接收及下游机器门禁按现有证据保留；见 v2 用户验收收口记录） |
 | 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
 | 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
+
+TASK-084-B v2 用户验收收口（2026-09-30）：
+
+- 用户明确接受已交付的 23 页 Excel 和当前纠错成果物，并授权合入 develop、关闭 WBS；7.14 = B / 已完成，Issue #441 按本次验收关闭。验收 head `a25ebb928bb1fc8017d8d9e5c050d717ff5b118b`，整合 head `838b50d42b8bb0033b2b50d9beb708cdbd57da29`，正常合并 `db65eedd403ba9d3ee107772bb3385794b78c019`；整合 exact-head [Quality Gate 36674291171](https://github.com/kanzakimy0/TravelAssist/actions/runs/36674291171) 成功。沿用不新建 PR 的约束，直接普通合并。
+- 2,271 个轨道候选、261 个 Hub 范围、582 个组件；三项补查已交付。224 个高等级范围待核及机场/巴士/新干线后续证据事项保留；N03/GSI 仍 APPROVAL_REQUIRED，runtime 和 085/086 机器授权仍 false。任务跟踪完成不替代数据门禁；085/086 保持未开始。
+- 当前状态与证据见 [v2 用户验收与合并收口](../tasks/RESULT-TASK-084-b-v2-user-acceptance-closeout.md)。以下为此前返工/历史 v1 阶段记录，保留其当时状态。
 
 TASK-084-B quality rework (2026-09-29):
 

@@ -1,5 +1,7 @@
 # RESULT — TASK-084-B Japan TransportNode Master
 
+> **当前状态（2026-09-30）：v2 纠错成果物已获用户验收并合入 develop，WBS 7.14 已完成。** 请以 [v2 验收收口与完整 Excel](RESULT-TASK-084-b-v2-user-acceptance-closeout.md) 为准。以下内容是历史 v1 记录，其全国 Master PASS 已在返工时撤销，不作为当前可导入数据。
+
 > **HISTORICAL_V1_REJECTED_FOR_REWORK (2026-09-29).** The PASS wording and 244-node statistics below record the earlier PR #448 closeout only; substantive national Master acceptance was revoked after the [v1 rejection audit](../qa/TASK-084-B/TRANSPORT-MASTER-V1-REJECTION-AUDIT.md). WBS 7.14 is 返工中. TASK-085-B and TASK-086-B must not use this v1. See the [v2 corrective review artifacts](../qa/TASK-084-B/TRANSPORT-MASTER-V2-REWORK-RESULTS.md) for current evidence and blockers.
 
 ## Historical closeout status (revoked)

@@ -1,5 +1,7 @@
 # TASK-084-B node acceptance QA
 
+> **当前状态（2026-09-30）：v2 纠错成果物已获用户验收并合入 develop，WBS 7.14 已完成。** 请以 [v2 验收收口与完整 Excel](../../tasks/RESULT-TASK-084-b-v2-user-acceptance-closeout.md) 为准。以下内容是历史 v1 记录，其全国 Master PASS 已在返工时撤销，不作为当前可导入数据。
+
 Status: **PASS / MERGED / 已完成** against the original TASK-084-B acceptance and [final closeout amendment](../../tasks/AMENDMENT-TASK-084-b-final-closeout.md). The national planning backbone has **244 NODE_ACCEPTED TransportNodes**, **77 new** since accepted head `9b34f3cd6984aa2d193df3759f86d25b20dbeae9`. PR #448 merged into develop and Issue #441 is Closed / Completed. TASK-085-B and TASK-086-B remain unstarted.
 
 ## Reproduction

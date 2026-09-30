@@ -1,5 +1,7 @@
 # TASK-084-B 结果总表（供 A 查阅）
 
+> **当前状态（2026-09-30）：v2 纠错成果物已获用户验收并合入 develop，WBS 7.14 已完成。** 请以 [v2 验收收口与完整 Excel](RESULT-TASK-084-b-v2-user-acceptance-closeout.md) 为准。以下内容是历史 v1 记录，其全国 Master PASS 已在返工时撤销，不作为当前可导入数据。
+
 **截至 2026-09-29：MERGED / PASS。** 本文件是已完成的 B 离线数据任务的只读交接清单，不新增 A 的执行事项。详细定义见[原始 Task](TASK-084-b-japan-transport-node-master.md)和[最终收口 Amendment](AMENDMENT-TASK-084-b-final-closeout.md)；逐项证据见[Result](RESULT-TASK-084-b-japan-transport-node-master.md)及[QA](../qa/TASK-084-B/README.md)。
 
 ## 1. 合并与跟踪
