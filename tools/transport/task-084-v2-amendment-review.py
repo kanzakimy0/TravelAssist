@@ -164,6 +164,12 @@ def hub_reviews(rail,old_hubs,definitions):
             matches=index[(station,op,mode)]
             if expected.get('sourceGroupCodes'):
                 matches=[r for r in matches if any(x['groupCode'] in expected['sourceGroupCodes'] for x in r['sourceStationRefs'])]
+            # S12 may name only the source line even where an official station serves several.
+            # Supplement only a unique operator/station/mode match; never merge identities here.
+            if len(matches)==1 and expected.get('officialServedLineRefs'):
+                r=matches[0]
+                r['lineRefs']=sorted(set(r['lineRefs'])|set(expected['officialServedLineRefs']))
+                r['officialServedLineEvidence']=expected['officialServedLineEvidence']
             component={**expected,'candidateTransportNodeIds':[r['proposedTransportNodeId'] for r in matches],'status':'PRESENT_COMPONENT_REVIEW_REQUIRED' if len(matches)==1 else 'MISSING_OPERATOR_MODE' if not matches else 'MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED','proposedParentHubId':hub_id if documented and len(matches)==1 else None,'lineRefs':sorted({line for r in matches for line in r['lineRefs']}),'componentLevels':[r['proposedNodeLevel'] for r in matches]}
             components.append(component)
             for r in matches:

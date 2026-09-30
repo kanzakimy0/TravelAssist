@@ -344,6 +344,16 @@ test("city coverage expands Tokyo and regional centers without growing Osaka", (
 test("ambiguous JR Musashi-Kosugi remains withheld and operator modes stay distinct", () => {
   const hubs = rows("hub-component-completeness-review");
   const kosugi = hubs.find((h) => h.hubReviewName === "武蔵小杉");
+  assert.deepEqual(
+    kosugi.expectedComponents.find((c) => c.operator === "東急電鉄").lineRefs,
+    ["東横線", "目黒線"],
+  );
+  assert.ok(
+    hubs
+      .find((h) => h.hubReviewName === "日吉")
+      .expectedComponents.find((c) => c.operator === "東急電鉄")
+      .lineRefs.includes("東急新横浜線"),
+  );
   const jr = kosugi.expectedComponents.find(
     (c) => c.operator === "東日本旅客鉄道",
   );
