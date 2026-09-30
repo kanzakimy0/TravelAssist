@@ -1,0 +1,553 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-085-B",
+  "status": "BLOCKED_084_DOWNSTREAM_GATE",
+  "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "issueExecutionGate": "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799",
+  "originalTask": {
+    "pr": 449,
+    "branch": "docs/poi-transport-parallel-execution",
+    "revision": "7073c2a5501e9f7e74361fb0bdc6219a99504f87"
+  },
+  "canonical": {
+    "path": "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
+    "sha256": "11fd42f2ded8cc45519767ba86b97bcb1123552550c7f6af6ee60af7436cdbf0",
+    "datasetPath": "src/shared/data/canonical-poi-pilot100.v1.json",
+    "datasetRevision": "task-083-a-pilot100-v1",
+    "datasetSha256": "802785ddb24e720698c2813f1f9dce29fe6792cdf02dbd01e9557b385a88bda2",
+    "datasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
+    "recordCount": 100,
+    "candidateCorpusAuthorized": false,
+    "membershipAndActiveMasterCodeBindingsVerified": true,
+    "supportingSampleManifest": {
+      "path": "data/poi/canonical/pilot-100/sample-manifest.v1.json",
+      "sha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+      "expectedSha256": "77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82",
+      "hashMatches": false,
+      "disposition": "Record any supporting-evidence drift; never repair or widen authorization in TASK-085"
+    }
+  },
+  "transport": {
+    "authoritativeDownstreamArtifact": null,
+    "authoritativeRevision": null,
+    "authoritativeSha256": null,
+    "acceptedNodeCount": 0,
+    "currentReview": {
+      "path": "data/transport/nodes/task-084-b-v2-amendment-review/manifest.json",
+      "sha256": "b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a",
+      "revision": "a25ebb928bb1fc8017d8d9e5c050d717ff5b118b",
+      "fields": {
+        "downstream085Authorized": false,
+        "runtimeImportAuthorized": false,
+        "nationalMasterStatus": "REWORK_IN_PROGRESS",
+        "nationalMasterPass": false,
+        "formalAcceptedV2NodeCount": 0,
+        "stage": "V2_AMENDMENT_15_18_REVIEW"
+      }
+    },
+    "closeout": {
+      "path": "docs/qa/TASK-084-B/v2-user-acceptance-closeout.json",
+      "sha256": "2f18099d0dfc53d1eaa1cbc12b5fe709368eaf3ec0c2ed10da7cae33b06b671b",
+      "fields": {
+        "nationalMasterStatus": "REWORK_IN_PROGRESS",
+        "nationalMasterPass": false,
+        "runtimeImportAuthorized": false,
+        "formalAcceptedV2NodeCount": 0,
+        "downstream085Authorized": false,
+        "downstream086Authorized": false,
+        "n03ProductionJoinExecuted": false
+      }
+    },
+    "historicalV1": {
+      "path": "data/transport/nodes/task-084-b-national-master/manifest.json",
+      "sha256": "8f6926e8528140dd070610c2dedb0ffef3e284828252318a3dee79b752ddd8ac",
+      "disposition": "REJECTED_FOR_REWORK_DO_NOT_USE"
+    }
+  },
+  "discovery": {
+    "roots": [
+      "data/transport",
+      "docs/qa/TASK-084-B"
+    ],
+    "inspectedJsonCount": 61,
+    "explicitlyAuthorized085Artifacts": [],
+    "inventory": [
+      {
+        "path": "data/transport/n03-2026-source-rights-decision.json",
+        "sha256": "0a2f9a18e5649459bc44692910f5a92516d4784a708ab03dbbd24bd2f379c5b8",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-accepted/batch-receipts/batch-0001.json",
+        "sha256": "a527df0de8453a514b3fa21766b08720d94ab2294a921ba71b8e09b663888ad1",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-accepted/manifest.json",
+        "sha256": "7baec6e1a023bfab9ce842d9b93f0d7556942c6862fab845770a6c4cc501fd20",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-airport-accepted/batch-receipts/batch-0001.json",
+        "sha256": "bfb249312b102e258584108012043167dd288b402b0e05e7c975779a1e55db34",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-airport-accepted/candidate-manifest.json",
+        "sha256": "42bddbf167db8d15e6981a6a290a202df0daaff2e6c86582695fb3f7bb41acab",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-airport-accepted/manifest.json",
+        "sha256": "030fbf32360eeae84f722e15f5098ab763ee5b4bc3b54a430d6abfd8a6d0315b",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "AIRPORT_NODE_ACCEPTANCE"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-candidates/batch-inputs/batch-0001.json",
+        "sha256": "94c57425eea4866c14136529e244283a450affcf652c9c82ad79c18d4e2dba65",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-candidates/batch-receipts/batch-0001.json",
+        "sha256": "02700d638ffb86166ec395477cc5ebf0f55c78ebd6c4455fc98005f168613099",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-candidates/manifest.json",
+        "sha256": "32c51ad844786e10bffbbd2dc395a006dc6b1fa4a362e2908b07675f635b18b0",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-core-rail-accepted/batch-receipts/batch-0001.json",
+        "sha256": "1c05d2859807c3f8984512cb98e837d6e3ee648018747cf875259da2c41a53fa",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-core-rail-accepted/manifest.json",
+        "sha256": "74224e640aebd937ee464341ce6abbf517aeaf7a0f36bc58cdb2f9ca011bd08c",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "CORE_RAIL_EXPANSION"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-ferry-accepted/batch-receipts/batch-0001.json",
+        "sha256": "7ba27754ba303441e7cce97e04dc82e2178e9ed5c48215028e26fe6bfd0029f9",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-ferry-accepted/manifest.json",
+        "sha256": "0db1744acfe79fcf23649bcbabe62712fc08d43ca2dda9a6784e1616c0f4a2eb",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "FUKUOKA_FERRY_GATEWAYS"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-nagasaki-bus-accepted/batch-receipts/batch-0001.json",
+        "sha256": "d9d1a2d5b5e4ccaac7d4aada29c0072cf44827502d50c57c8cda8e1c865776e7",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-nagasaki-bus-accepted/manifest.json",
+        "sha256": "e102a8b6c5a299deefae661b904f30440da019d60ac05abe5a307369a729fc55",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "NAGASAKI_BUS_GATEWAYS"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-national-master/batch-receipts/batch-0001.json",
+        "sha256": "63c637eb15009ebc0ba6d7404b09e4bbe96a192ba5ef43687560af781427cd54",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-national-master/batch-receipts/batch-0002.json",
+        "sha256": "a1db3ee0ba08aff5168582b720fe54a5f0d83fd8f43c4c229c7d75e2c230b31e",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-national-master/manifest.json",
+        "sha256": "8f6926e8528140dd070610c2dedb0ffef3e284828252318a3dee79b752ddd8ac",
+        "fields": {
+          "nationalMasterStatus": "PASS"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-national-rail-accepted/batch-receipts/batch-0001.json",
+        "sha256": "217117fe6ad211362d75fee4b9dd28145981c56e49fce394666c623cf9edb618",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-national-rail-accepted/manifest.json",
+        "sha256": "9e71076295c2e94977b9e401e21250e29ae38e6377fe17c0e38558132a8cbf27",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "NATIONAL_SELECTED_RAIL_HUBS"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-regional-airport-accepted/batch-receipts/batch-0001.json",
+        "sha256": "b1d38b9b4923e45424c150cddc1ac5c81974fd1a36bc01298422ca80b587f785",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-regional-airport-accepted/manifest.json",
+        "sha256": "cb2cdd2d392d303d977ad3eb3ea01c6f21fbecb6e7c1e97036084ce5fc89f703",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "SELECTED_B_AIRPORTS_AND_A_B_HIERARCHY"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-shinkansen-hub-reviewed/manifest.json",
+        "sha256": "f21d4efc7d0d7eb1532cae554536b8a4ff85efb0ed11bd56e033848a7283daf4",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-tourism-cable-accepted/batch-receipts/batch-0001.json",
+        "sha256": "6c27564348c02e39226428ec18cd595e1a813fc2cd4f330c3c0df14fc13365a2",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-tourism-cable-accepted/manifest.json",
+        "sha256": "7fe9a9150c1c53d9ca05064ce23a002c99bcb904e6f347254d69eee27b194356",
+        "fields": {
+          "nationalMasterStatus": "PARTIAL",
+          "stage": "TOURISM_CABLE_GATEWAYS"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-airport-access-review/manifest.json",
+        "sha256": "8ac73db800ddd2d4e95b851fcab29664604788133875e5115f90086a5c526688",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "stage": "V2_AIRPORT_ACCESS_AUDIT"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-airport-review/manifest.json",
+        "sha256": "8013ae8e70c3be1b983cb8f0bc867fb76c49ca6ae2ca0844f17e740d67b0e260",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "stage": "V2_AIRPORT_FY2025_TIER_REVIEW"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0001.json",
+        "sha256": "cff8020a5fba51cb58cb5a1357ccd1f641f3173adb492db725163ff9991f7de4",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0002.json",
+        "sha256": "19162aecf9c8813e054e27e4fae749e8201fbaadb42f464183ad98e0bcc697bd",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0003.json",
+        "sha256": "20b5da0fe6be3759f1f3a0135fd3d92b4aeb909196ef34c7a9c2ac5415ee89fe",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0004.json",
+        "sha256": "958cb785f7850300d4e3f73cad7b6a0400179fedc94b83d69db11d9bce928464",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0005.json",
+        "sha256": "4cfd12774214b82cbae755116339c85f450ddc75b4fb737327392ad3ed33e6ec",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0006.json",
+        "sha256": "062adafe0a45f56b563d3bdd2eeebeb07ec523084bbe51d5c4f298bd0f74674d",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0007.json",
+        "sha256": "492ec7090a2aa8f1829e4f7b33605586e6931b693503d1a5164b1a8d8f68b387",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0008.json",
+        "sha256": "7084247265a23eca7e822c25fb557aa423950c2cfd4f158afe8f745baf214b1c",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0009.json",
+        "sha256": "80dc763d3d6d5083d4fd5d1252792bf22e872d4dd4412a50e0bbe47a1f3d7404",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0010.json",
+        "sha256": "326cb492fcfa3898410d50c5a511ea2f11e4e344a2ff4be3831690ec52bff33a",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0011.json",
+        "sha256": "187f800e4cb5d466525130a94c664211d46fafa19dba21581a6ec1773fa65cff",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/batch-receipts/batch-0012.json",
+        "sha256": "af144f146837c26467bf19d0a4e04fe544b0825b1ce5f6a2b09696fa603b38b9",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/manifest.json",
+        "sha256": "b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a",
+        "fields": {
+          "downstream085Authorized": false,
+          "runtimeImportAuthorized": false,
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "nationalMasterPass": false,
+          "formalAcceptedV2NodeCount": 0,
+          "stage": "V2_AMENDMENT_15_18_REVIEW"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-bus-discovery/navitime-manifest.json",
+        "sha256": "1833d5eceffc4976bfbe6120702f64c1b4ddb91332177fd07c133de5d7738faa",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-bus-review/manifest.json",
+        "sha256": "bdc2db64ebf513551cadbf4398008242f0916626676cde31e026facd5b20f4af",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "stage": "V2_NATIONAL_BUS_TERMINAL_REVIEW"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-ferry-calibration/manifest.json",
+        "sha256": "e8b315880ab860fec205c028c2a198153436cf82646341b232013a44df424588",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "stage": "V2_FERRY_TIER_CALIBRATION_ONLY"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-official-evidence/evidence-extraction-manifest.json",
+        "sha256": "64d5b5693907196dea5726bd04ef28c6d8c9f2a308d5337b4afad45f882854d2",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-official-evidence/mode-classification-evidence.json",
+        "sha256": "a8bc00175129a624ae175608fb284bab475db935926b5642103abc7e65a04be1",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-poi-gateway-review/manifest.json",
+        "sha256": "195bb40c388bc38a9f36fba1b7ae1e6f053b30973f6419f0ffbabf21994a8185",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "stage": "V2_CANONICAL_POI_RAIL_GATEWAY_DISCOVERY_ONLY"
+        }
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0001.json",
+        "sha256": "ad459f86b370c2dcf361352a7a4b1f2997a11e9e9c44773052692333a223af49",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0002.json",
+        "sha256": "105ec86c09d0833dda2c64adc9d3f8958932daa41422bac1ca041cb6e07c86fd",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0003.json",
+        "sha256": "91d2bcad13e76321be18c00349c1d108f7ce64c929a96416bfc0eb2b335c1c0f",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0004.json",
+        "sha256": "8240e4e28dc02753ada551ccd4db37443d3d0da566a8d3bf9cba72d53eada539",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0005.json",
+        "sha256": "d708422cd34a35c3d2cd54dc6ba7d7d11bfb75ccda2e8c4f2cb6ddac01b1dfd1",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0006.json",
+        "sha256": "f5e1fd363f4a48cdd929abea6c7ef20f457cdcd49d1390acf62d60e7b95728fa",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0007.json",
+        "sha256": "5c552881d045dcf01cbc632c9e1bc395a4553e479ebe1825f06076191baee37b",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0008.json",
+        "sha256": "cdc7b4da062fea3253a783adc4b7852ac876376569c3d836158633377b36425a",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0009.json",
+        "sha256": "54def42971c9e0388919357de00ab8592317286be33a942424efbd5bac129c03",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0010.json",
+        "sha256": "58e4f659a43104dd16bd2db14d83bb83d661f0872b105a06416b2e2335600e0c",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0011.json",
+        "sha256": "9e62ff4a565cb64e03a3218ac8856601bbb47bb7de93992732bfc76ad75f663e",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/batch-receipts/batch-0012.json",
+        "sha256": "0d2b71cbab4bdd1fe1da91be3973302895ddeb4288ab6b91a57b43c3b3103fee",
+        "fields": {}
+      },
+      {
+        "path": "data/transport/nodes/task-084-b-v2-rail-candidates/manifest.json",
+        "sha256": "908c78b429b23c0a5a69d44b44e3d3d4f1c716804a5763079be898589e9d7ae4",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS",
+          "acceptanceStatus": "REVIEW_REQUIRED",
+          "stage": "V2_S12_RAIL_CANDIDATE_REBUILD"
+        }
+      },
+      {
+        "path": "docs/qa/TASK-084-B/amendment-local-validation.json",
+        "sha256": "1c373ae8f70304e38325ce15b75f2d3ca9a9739160b1086652be6b4eebc9b8fb",
+        "fields": {
+          "nationalMasterStatus": "REWORK_IN_PROGRESS"
+        }
+      },
+      {
+        "path": "docs/qa/TASK-084-B/v2-user-acceptance-closeout.json",
+        "sha256": "2f18099d0dfc53d1eaa1cbc12b5fe709368eaf3ec0c2ed10da7cae33b06b671b",
+        "fields": {
+          "acceptanceStatus": "USER_ACCEPTED_CORRECTIVE_REWORK_DELIVERABLES"
+        }
+      }
+    ]
+  },
+  "metrics": {
+    "canonicalPoiAuthorizedCount": 100,
+    "canonicalPoiProcessedCount": 0,
+    "shortfall": 100,
+    "shortfallBasis": "Current runtime-authorized corpus minus access-generation processed count",
+    "poisWithAtLeastOneAccessNode": null,
+    "localNodeCoverage": null,
+    "majorHubCoverage": null,
+    "specialTourismAccessCoverage": null,
+    "totalDirectedEdges": 0,
+    "edgesPerPoi": {
+      "mean": null,
+      "median": null,
+      "min": null,
+      "max": null
+    },
+    "walkingResolvedRate": null,
+    "localTransitResolvedRate": null,
+    "taxiResolvedRate": null,
+    "accessibilityKnownRate": null,
+    "extremeDetourCount": null,
+    "unresolvedPoiCount": null,
+    "unresolvedReasonDistribution": {},
+    "gateBlockedPoiCount": 100,
+    "gateBlockerDistribution": {
+      "BLOCKED_084_DOWNSTREAM_GATE": 100
+    },
+    "batchCount": 0,
+    "sourceProvenanceCoverage": null,
+    "metricNote": "Generation/route QA not run. Null is unassessed; zeros only count work actually performed."
+  },
+  "execution": {
+    "stoppedBeforeCandidateGeneration": true,
+    "providerRequests": 0,
+    "rawProviderPayloadsPersisted": 0,
+    "generatedEdgeCount": 0,
+    "batchReceiptsCreated": 0,
+    "batchResume": "NOT_RUN_GATE_0_BLOCKED",
+    "singleBatchRerun": "NOT_RUN_GATE_0_BLOCKED",
+    "corruptedReceiptDetection": "NOT_RUN_NO_BATCH_RECEIPTS",
+    "edgeDeterministicRebuild": "NOT_RUN_GATE_0_BLOCKED",
+    "task086Started": false
+  },
+  "providerLicenseDecision": {
+    "status": "FAIL_CLOSED_NO_BATCH_OR_PERSISTENCE_AUTHORIZATION",
+    "selectedPrimary": "Google Routes (repository frozen policy, not a bulk persistence grant)",
+    "fallback": "Ekiworld evaluation only; persistence=none; ttlSeconds=null",
+    "batchQueryAuthorized": null,
+    "cacheAuthorized": null,
+    "retentionAuthorized": null,
+    "productionBatchAuthorized": null,
+    "derivativePersistenceAuthorized": null,
+    "staticGeodesicCandidates": "Permitted in principle; not executed because Gate 0 is blocked",
+    "n03ProductionJoin": false
+  },
+  "sources": [
+    {
+      "path": "docs/qa/TASK-084-B/v2-user-acceptance-closeout.json",
+      "sha256": "2f18099d0dfc53d1eaa1cbc12b5fe709368eaf3ec0c2ed10da7cae33b06b671b"
+    },
+    {
+      "path": "data/transport/nodes/task-084-b-v2-amendment-review/manifest.json",
+      "sha256": "b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a"
+    },
+    {
+      "path": "docs/tasks/RESULT-TASK-084-b-v2-user-acceptance-closeout.md",
+      "sha256": "e6500f9a5f8fe8e086447fcba49a58ab4157ce76de3a82511e5ed988dc3e041d"
+    },
+    {
+      "path": "docs/tasks/AMENDMENT-TASK-084-b-transport-master-quality-rework.md",
+      "sha256": "26c6cc761ca6934da8f6bf8b0eee51a11c69799f95d4b6c23421d2754907f42d"
+    },
+    {
+      "path": "docs/qa/TASK-084-B/TRANSPORT-MASTER-V1-REJECTION-AUDIT.md",
+      "sha256": "154ba9e9227fe527e2491e24f004316e92966d03c9a4738d08e8b4c56805d5b6"
+    },
+    {
+      "path": "docs/tasks/TASK-082-a-poi-edge-graph-generation-pilot.md",
+      "sha256": "29a1f58d5d636a0a9e6aaf27c914bffd63491d3868357066141186216bcc2f63"
+    },
+    {
+      "path": "docs/tasks/RESULT-TASK-082-a-poi-edge-graph-generation-pilot.md",
+      "sha256": "abacea149713f0af9a82a0db6086d7010dc700e2d25e8ed7ef273962a2e07ddb"
+    },
+    {
+      "path": "docs/qa/TASK-082-a-poi-edge-pilot-qa.md",
+      "sha256": "c5bbdb43ffa23333e85a936df954676e18bc69f07f8d31c7ef93ee360ccd8c41"
+    },
+    {
+      "path": "src/shared/poi-edge-graph/index.ts",
+      "sha256": "b172b004129469f396f55a81bbc04746cca6f0d6400791b7d608dec5bba0218c"
+    },
+    {
+      "path": "src/server/poi-edge-graph/repository.ts",
+      "sha256": "bcba5c43a0f4ea793237d28ff6fb10d1f3d8514a40bdb68e82a7642d625d4390"
+    },
+    {
+      "path": "docs/architecture/route-contract.md",
+      "sha256": "fda7e7c1909c4c95207b45bfd9d43b7d4cfbbfaa96ee464f736592b0c9d8739a"
+    },
+    {
+      "path": "docs/architecture/map-routing-poi-ai-provider-policy-v1.md",
+      "sha256": "1850e98a617ce3497d6d9fcf93ea5dd34ce025cbee8b997f80e47074233d0bba"
+    },
+    {
+      "path": "docs/architecture/ekiworld-evaluation-routing.md",
+      "sha256": "fb9b5ce52d0f2bae501f1f144d4bdff6dcbe255416de98c5b1cdcfa209ad6bcf"
+    },
+    {
+      "path": "data/transport/n03-2026-source-rights-decision.json",
+      "sha256": "0a2f9a18e5649459bc44692910f5a92516d4784a708ab03dbbd24bd2f379c5b8"
+    }
+  ],
+  "wbs715Status": "阻塞"
+}

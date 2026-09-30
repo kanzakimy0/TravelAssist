@@ -1,0 +1,110 @@
+{
+  "task": "TASK-085-B",
+  "status": "BLOCKED_084_DOWNSTREAM_GATE",
+  "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "scope": "Local working-tree validation; not an exact-head CI attestation",
+  "focused": {
+    "command": "node --import ./tests/register-route-ts.mjs --test tests/task-085-b-gate0.test.mjs tests/task-082-a-poi-edge-graph.test.mjs tests/task-084-v2-amendment.test.mjs",
+    "pass": 34,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "fullRegression": {
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=1 tests/*.test.mjs",
+    "tests": 2831,
+    "pass": 2830,
+    "fail": 1,
+    "exitCode": 1,
+    "failure": "task-022-routing-boundary.test.mjs:53 assert.ok(files.length > 0)",
+    "cause": "Build ran concurrently and .next/static existed before browser chunks were written",
+    "baselineFailureClaim": false
+  },
+  "failedFileRecheck": {
+    "command": "node --import ./tests/register-route-ts.mjs --test tests/task-022-routing-boundary.test.mjs",
+    "afterBuildCompleted": true,
+    "pass": 3,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 10,
+    "newFileWarnings": 0
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "format": {
+    "command": "npm run format:check:deploy",
+    "exitCode": 0
+  },
+  "deploymentContract": {
+    "command": "npm run deploy:validate:local",
+    "exitCode": 0
+  },
+  "build": {
+    "command": "npm run deploy:build:local",
+    "exitCode": 0,
+    "artifactAuditPass": true,
+    "fileCount": 1908
+  },
+  "artifactRecheck": {
+    "command": "npm run deploy:verify-artifact",
+    "exitCode": 0,
+    "fileCount": 1908,
+    "failures": []
+  },
+  "deterministicPreflight": {
+    "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-gate0.mjs --check",
+    "status": "PASS"
+  },
+  "exactHeadQualityGate": {
+    "status": "RECORDED_AFTER_PUBLICATION_IN_DRAFT_PR_BODY",
+    "mustMatchFinalBranchHead": true
+  },
+  "logs": [
+    {
+      "localPath": ".cache/qa/task085/task085-artifact-verify.log",
+      "sha256": "d91978586743bfd694be683e4b38304aae42e7a2c7855ceee7736a1a672f8fd4"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-build.log",
+      "sha256": "5c6941e10de975fe5b65803528b7f0d6cec3c85d4ee9a5f0a895a94fbe20146b"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-deploy-validation.log",
+      "sha256": "7f8438dabbe242bbab362ac9481d8261f7a5bc8a2a4db2c2d713e32fb1a7edf7"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-focused.log",
+      "sha256": "707517421655d951c48a5e3f0f31aff8215924faff4aca1930bfb6ba861022ce"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-format.log",
+      "sha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-lint.log",
+      "sha256": "cd2c289637b92fa456f68390c439b0534db98188ce8cda29d22c1b9efa14905f"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-npm-ci.log",
+      "sha256": "b580543bf6594fa14666558108cd3b847ca2057cf96ec9e7d79a9ffb7bb605a9"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-regression.log",
+      "sha256": "9a88d6b2ffd8dc0978a555cb5646d670914e092a13dada07b908d2f04135115a"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-routing-boundary-recheck.log",
+      "sha256": "b3cf132d4dad0358a4b9b941b5e3c8644eb9fccaf1bb549b7638f0c07bf73aac"
+    },
+    {
+      "localPath": ".cache/qa/task085/task085-typecheck.log",
+      "sha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+    }
+  ]
+}
