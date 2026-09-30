@@ -96,7 +96,15 @@ export function auditGate0(root = ROOT) {
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799",
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855",
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675",
+      "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085",
     ],
+    topologyMetricsAmendment: {
+      ...fingerprint(
+        root,
+        "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
+      ),
+      revision: "41389de330df33091af9d33cc825ea8d4387a92d",
+    },
     originalTask: {
       pr: 449,
       branch: "docs/poi-transport-parallel-execution",

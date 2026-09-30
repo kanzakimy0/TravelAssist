@@ -1,73 +1,72 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "task": "TASK-085-B",
+  "round": 2,
   "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "amendmentCommit": "41389de330df33091af9d33cc825ea8d4387a92d",
+  "baselineCheckpoint": "2891bdf806536c039b1071a169e1f38b6f07d3e4",
   "branch": "feature/b-poi-transport-node-access-edges",
-  "inputFingerprint": "14edd8a909cf168bfcb7f046e092672188fc014ef04a6ccfdd4d618821036bfc",
+  "inputFingerprint": "de48e4d636486f60bfa50038439b0127c0acec6de894d4cf57ee1d22f750fea8",
   "dataAcceptance": "FAIL",
-  "globalDiscoveryFixpointProven": false,
+  "status": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+  "globalTopologyDiscoveryFixpoint": "PROVEN",
+  "fixpointScope": "Recorded official-source and licensed-static-input snapshot; external evidence boundary, not proof of fewer than three physical gateways.",
+  "topologyGates": {
+    "pass": 17,
+    "fail": 5
+  },
   "wbs715Status": "进行中",
   "focusedTests": {
     "command": "node --import ./tests/register-route-ts.mjs --test tests/task-085-b-gate0.test.mjs",
-    "pass": 14,
+    "pass": 17,
     "fail": 0,
     "exitCode": 0,
-    "postLfNormalization": true
+    "note": "Standalone run preceded Amendment audit metadata update; all 17 passed again in final full regression after that update."
   },
   "fullRegression": {
-    "initial": {
-      "command": "node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs",
-      "pass": 2837,
-      "fail": 1,
-      "exitCode": 1,
-      "failure": "task-013-1-asset-variants: nightly --dry-run child timeout 30000ms"
-    },
-    "isolatedRecheck": {
-      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-013-1-asset-variants.test.mjs",
-      "pass": 50,
-      "fail": 1,
-      "exitCode": 1,
-      "failure": "Same 30000ms timeout; preserved, not relabeled PASS"
-    },
-    "boundedRerun": {
-      "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=4 tests/*.test.mjs",
-      "pass": 2838,
-      "fail": 0,
-      "exitCode": 0
-    },
-    "note": "No test/source timeout was changed. Full bounded run precedes LF-only normalization; final focused artifact verification is after normalization. Exact-head Linux CI is a separate publication receipt."
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=4 tests/*.test.mjs",
+    "pass": 2841,
+    "fail": 0,
+    "exitCode": 0,
+    "durationMs": 185384.9544,
+    "note": "Round 2. Windows concurrency bound; no test timeout or public behavior changed."
   },
   "lint": {
+    "command": "npm run lint",
     "exitCode": 0,
     "errors": 0,
     "existingWarnings": 10
   },
   "typecheck": {
+    "command": "npm run typecheck",
     "exitCode": 0
   },
   "formatCheckDeploy": {
+    "command": "npm run format:check:deploy",
     "exitCode": 0
   },
   "deployValidateLocal": {
+    "command": "npm run deploy:validate:local",
     "exitCode": 0
   },
   "deployBuildLocal": {
+    "command": "npm run deploy:build:local",
     "exitCode": 0,
     "artifactAudit": true,
     "files": 1908,
-    "buildManifestParentCommit": "a815bf7b2fbeb73d4cf9771b8374ebfd357323a6",
-    "workingTreeChangesIncluded": true
+    "buildManifestParentCommit": "41389de330df33091af9d33cc825ea8d4387a92d",
+    "workingTreeChangesIncluded": true,
+    "note": "Local precommit build. Exact final commit receives separate CI run."
   },
   "artifactVerify": {
+    "command": "npm run deploy:verify-artifact",
     "exitCode": 0,
     "files": 1908,
     "failures": []
   },
   "deterministicRebuild": {
     "status": "PASS",
-    "generatedArtifacts": "Two independent full builds plus separate filesystem byte comparison in focused tests",
-    "sourceExtractionFilesByteIdentical": 5,
-    "excludedNondeterministicMetadata": []
+    "evidence": "Two independent complete artifact builds compared before write and actual filesystem byte comparisons in focused tests; no nondeterministic exclusions."
   },
   "batchChecks": {
     "checksumSkip": "PASS",
@@ -75,76 +74,69 @@
     "corruptedReceiptDetection": "PASS",
     "corruptedArtifactDetection": "PASS",
     "singleBatchRepair": "PASS",
-    "boundary200And201": "PASS"
+    "boundary200And201": "PASS",
+    "unsafeReceiptPathRejection": "PASS"
   },
-  "generation": {
+  "generationResume": {
+    "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --resume",
     "exitCode": 2,
-    "meaning": "Expected fail-closed data-acceptance failure; no usable edge publication"
+    "action": "CHECKSUM_SKIP",
+    "meaning": "Expected data acceptance failure with retained confirmed topology; not a code test failure."
   },
   "artifactCheck": {
+    "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --check",
     "exitCode": 0,
-    "meaning": "Expected blocked artifacts match all bytes; not data acceptance PASS"
+    "meaning": "All committed artifact bytes match the current blocked data state."
   },
   "exactHeadQualityGate": {
     "status": "SEE_DRAFT_PR_PUBLICATION_RECEIPT",
     "url": "https://github.com/kanzakimy0/TravelAssist/pull/464",
-    "requiredHeadMatch": true
+    "requiredHeadMatch": true,
+    "event": "workflow_dispatch"
   },
   "logs": {
-    "artifact-verify.log": {
-      "localPath": ".cache/qa/task085-full/artifact-verify.log",
-      "sha256": "df373d74a5d0af28ed4017991a91603b8fdf4e1b226481307272d2d1160cfffe"
+    "artifact-verify-round2.log": {
+      "localPath": ".cache/qa/task085-full/artifact-verify-round2.log",
+      "sha256": "a998393cca59657ad398db7fb5164d4b0039cbe952e1d4d5336a18d661a42720"
     },
-    "asset-timeout-recheck.log": {
-      "localPath": ".cache/qa/task085-full/asset-timeout-recheck.log",
-      "sha256": "eecd4c202820164509be31c7e8bf0fb4c687b3262950108fd6de6c4a32de8d22"
+    "build-round2.log": {
+      "localPath": ".cache/qa/task085-full/build-round2.log",
+      "sha256": "8c044e11cee712996b0f16ba5647bd02abe8f670624b3263eae8b0dc96ff0177"
     },
-    "build.log": {
-      "localPath": ".cache/qa/task085-full/build.log",
-      "sha256": "99792c4b2a9b21089714307d0894cfa60a823f8ea41adb2fc2fc0e1dd87d886c"
+    "check-round2.log": {
+      "localPath": ".cache/qa/task085-full/check-round2.log",
+      "sha256": "09babe274d45aca8ff78df07b7eef78f591ce66e5c26b13a8231086ce34b923d"
     },
-    "check.log": {
-      "localPath": ".cache/qa/task085-full/check.log",
-      "sha256": "c60a03b33ba071314d237590c28f988240cdfa7b58a1738dd3f37ef978c64bb4"
+    "deploy-validate-round2.log": {
+      "localPath": ".cache/qa/task085-full/deploy-validate-round2.log",
+      "sha256": "ee4f0211b9e4fb0321e2e3ab27831bd657c875f94c22880b86e45787244a6473"
     },
-    "deploy-validate.log": {
-      "localPath": ".cache/qa/task085-full/deploy-validate.log",
-      "sha256": "5952b665eeab7d5b6f5c34458401a15714efdae274621d39cc88015e86673814"
+    "focused-round2.log": {
+      "localPath": ".cache/qa/task085-full/focused-round2.log",
+      "sha256": "5db9b7aa29fe65393a251cfcc9fd4d44b330e9a889efb9a9abb602e2f3c12426"
     },
-    "focused-tests.log": {
-      "localPath": ".cache/qa/task085-full/focused-tests.log",
-      "sha256": "b9691ac716a1f55c3a694ffd89830c141de6c0223aac2e5704fbc7075be5d335"
-    },
-    "format.log": {
-      "localPath": ".cache/qa/task085-full/format.log",
+    "format-round2.log": {
+      "localPath": ".cache/qa/task085-full/format-round2.log",
       "sha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
     },
-    "full-regression-bounded.log": {
-      "localPath": ".cache/qa/task085-full/full-regression-bounded.log",
-      "sha256": "eb732489cfac3b21cd8c4c93558afa385ffb687836ab0f36619b393f3cfa859a"
+    "full-regression-round2.log": {
+      "localPath": ".cache/qa/task085-full/full-regression-round2.log",
+      "sha256": "bdc02d6cdf1139bbb7a39a54a79a5246a61ed3f6c7a9d81545437d4dc4e1fe97"
     },
-    "full-regression.log": {
-      "localPath": ".cache/qa/task085-full/full-regression.log",
-      "sha256": "1c7000d27c983e65aa8a1b0df34de2d1f59b509aeeb60cbce65e364432c7a4d0"
+    "generation-round2.log": {
+      "localPath": ".cache/qa/task085-full/generation-round2.log",
+      "sha256": "a601c0830c12bf2a23b9f4f988464b1f00808ac0d622fa4ec0ad3de4aee71d23"
     },
-    "generation.log": {
-      "localPath": ".cache/qa/task085-full/generation.log",
-      "sha256": "a8848cc5680ff83d0c4d7401dd1a3e041d2d1968a966a6b68f217133f03d3ade"
-    },
-    "lint.log": {
-      "localPath": ".cache/qa/task085-full/lint.log",
+    "lint-round2.log": {
+      "localPath": ".cache/qa/task085-full/lint-round2.log",
       "sha256": "6559ec48217d44241d687c3173b02d7cf61d0a82cc07286b3c51f92ff1470908"
     },
-    "npm-ci.log": {
-      "localPath": ".cache/qa/task085-full/npm-ci.log",
-      "sha256": "37e61fe8e5a37bced65f521420ce21604356df9cbc93f57f99c890f037935ba8"
+    "resume-round2.log": {
+      "localPath": ".cache/qa/task085-full/resume-round2.log",
+      "sha256": "ae04b362f489262b9d206c4e9eaed9a09af5628365e4b4f3085a73bcb4c9a9ab"
     },
-    "source-rebuild.log": {
-      "localPath": ".cache/qa/task085-full/source-rebuild.log",
-      "sha256": "fbf0a2f201b0d30dc7d7f08acc8d4579ab86f5dc3b828f160f1f7bb84e211194"
-    },
-    "typecheck.log": {
-      "localPath": ".cache/qa/task085-full/typecheck.log",
+    "typecheck-round2.log": {
+      "localPath": ".cache/qa/task085-full/typecheck-round2.log",
       "sha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
     }
   }

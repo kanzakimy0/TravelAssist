@@ -65,7 +65,12 @@ export function validateConfig(c) {
   assert.ok(Number.isFinite(Date.parse(c.generatedAt)));
 }
 function kindFor(record) {
-  if (record.nodeKind === "bus_stop") return "bus_stop";
+  if (
+    ["bus_stop", "bus_terminal", "ferry_port", "ropeway_station"].includes(
+      record.nodeKind,
+    )
+  )
+    return record.nodeKind;
   if ([11, 12].includes(record.railClass)) return "railway_station";
   if (record.railClass === 13) return "funicular_station";
   if (record.railClass === 21)
@@ -84,9 +89,9 @@ export function identityFor(record) {
   const externalIds = record.sourceRows
     ? [...new Set(record.sourceRows.map((r) => String(r.stationCode)))].sort()
     : [record.externalId];
-  const authority = record.sourceRows
-    ? "mlit-s12"
-    : record.sourceId.split(/-20/)[0];
+  const authority =
+    record.identityAuthority ??
+    (record.sourceRows ? "mlit-s12" : record.sourceId.split(/-20/)[0]);
   const identityKey = stable([authority, record.operator, externalIds]);
   const nodeId = "transport:task085:" + digest(identityKey).slice(0, 24);
   return {
@@ -128,7 +133,12 @@ export function admitNodes(records, rights, bindings) {
   for (const r of records) {
     const id = identityFor(r).nodeId;
     ids.set(id, (ids.get(id) ?? 0) + 1);
-    const key = stable([r.operator, normalize(r.name)]);
+    const key = stable([
+      r.sourceId,
+      r.identityAuthority ?? "",
+      r.operator,
+      normalize(r.name),
+    ]);
     names.set(key, [...(names.get(key) ?? []), r]);
   }
   return records
@@ -172,7 +182,14 @@ export function admitNodes(records, rights, bindings) {
       if (
         validPoint(r.point) &&
         names
-          .get(stable([r.operator, normalize(r.name)]))
+          .get(
+            stable([
+              r.sourceId,
+              r.identityAuthority ?? "",
+              r.operator,
+              normalize(r.name),
+            ]),
+          )
           .some(
             (other) =>
               other !== r &&
@@ -243,6 +260,7 @@ export function spatialIndex(nodes, cellDegrees) {
       cells.set(key, [...(cells.get(key) ?? []), n]);
     }
   return {
+    byId: new Map(nodes.map((n) => [n.nodeId, n])),
     query(point, radius) {
       const lat = radius / 110000,
         lon =
@@ -271,14 +289,35 @@ export function spatialIndex(nodes, cellDegrees) {
 }
 export function candidatesFor(poi, index, research, config) {
   const scan = index.query(poi.location.point, config.stagedRadiiM.at(-1));
+  // Explicit reviewed joins can lie outside the local radius (mainland ferry
+  // terminals, for example). No arbitrary remote hubs are added.
+  const approved = (research.topologyEvidence ?? []).filter(
+    topologyEvidenceValid,
+  );
+  for (const e of approved) {
+    const node = index.byId.get(e.nodeId);
+    if (node && !scan.found.some((r) => r.node.nodeId === node.nodeId))
+      scan.found.push({
+        node,
+        straightDistanceM: straightDistanceM(poi.location.point, node.point),
+      });
+  }
   const gateways = new Set(research.gatewayNames.map(normalize));
   const special = research.barrierReviewTriggers.some((t) =>
     ["mountain_access", "island_ferry_access", "seasonal_service"].includes(t),
   );
   const rows = scan.found.map(({ node, straightDistanceM: distance }) => {
-    const official = gateways.has(normalize(node.name));
+    const topologyEvidence = approved.filter(
+      (e) =>
+        e.nodeId === node.nodeId &&
+        e.nodeSourceRecordSha256 === node.sourceRecordSha256,
+    );
+    const official =
+      topologyEvidence.length > 0 || gateways.has(normalize(node.name));
     const role =
-      ["funicular_station"].includes(node.nodeKind) ||
+      ["funicular_station", "ferry_port", "ropeway_station"].includes(
+        node.nodeKind,
+      ) ||
       (special && official && node.nodeKind === "bus_stop")
         ? "special_access"
         : official && special
@@ -296,6 +335,7 @@ export function candidatesFor(poi, index, research, config) {
       straightDistanceM: distance,
       sourceRefs: node.sourceRefs,
       officialGatewayMatched: official,
+      topologyEvidence,
       walkability: "unresolved",
       barrierReviewTriggers: research.barrierReviewTriggers,
       usefulDistinctKey: stable([
@@ -317,6 +357,8 @@ export function candidatesFor(poi, index, research, config) {
   rows.sort(
     (a, b) =>
       Number(b.admitted) - Number(a.admitted) ||
+      Number(b.topologyEvidence.length > 0) -
+        Number(a.topologyEvidence.length > 0) ||
       Number(b.officialGatewayMatched) - Number(a.officialGatewayMatched) ||
       b.rankComponents.special - a.rankComponents.special ||
       b.rankComponents.local - a.rankComponents.local ||
@@ -344,13 +386,23 @@ export function candidatesFor(poi, index, research, config) {
     )
       reason = "REMOTE_NODE_WITHOUT_ACCESS_RELEVANCE";
     else if (i >= config.maxDiscoveryCandidatesPerPoi) reason = "DISCOVERY_CAP";
+    else if (
+      node.nodeKind === "bus_stop" &&
+      retained.some(
+        (other) =>
+          other.node.nodeKind === "bus_stop" &&
+          normalize(other.node.name) === normalize(node.name) &&
+          straightDistanceM(other.node.point, node.point) < 150,
+      )
+    )
+      reason = "REDUNDANT_PHYSICAL_BUS_STOP_CLUSTER";
     else if (used.has(row.usefulDistinctKey))
       reason = "REDUNDANT_OPERATOR_LINE_GATEWAY";
     else if (retained.length >= config.maxTotalNodesPerPoi)
       reason = "TOTAL_ROLE_CAP";
     else if ((counts[row.accessRole] ?? 0) >= limits[row.accessRole])
       reason = "ACCESS_ROLE_CAP";
-    else reason = "RETAIN_FOR_DIRECTIONAL_EVIDENCE_ONLY";
+    else reason = "RETAIN_FOR_TOPOLOGY_AND_METRIC_REVIEW";
     const decision = {
       ...row,
       rank: i + 1,
@@ -582,6 +634,28 @@ export function enrichDirection(edge, observations, rights, config, blocker) {
   assert.deepEqual(validateMobilityEdge(result), []);
   return { edge: result, rejected };
 }
+export function topologyEvidenceValid(e) {
+  return (
+    e?.reviewStatus === "APPROVED" &&
+    [
+      "OFFICIAL_VENUE_ACCESS",
+      "OFFICIAL_OPERATOR_GOVERNMENT_ACCESS",
+      "OFFICIAL_TOURISM_ACCESS",
+      "GTFS_WITH_INDEPENDENT_GATEWAY",
+      "LICENSED_ENDPOINT_ROUTE",
+    ].includes(e.evidenceType) &&
+    e.gatewayRelationshipVerified === true &&
+    e.identityJoinVerified === true &&
+    e.currentPublicAccess === true &&
+    e.nodeId &&
+    hex(e.nodeSourceRecordSha256) &&
+    e.evidenceId &&
+    hex(e.sourceFactReviewSha256) &&
+    e.sourceRefs?.length > 0 &&
+    e.sourceRefs.every((s) => s.startsWith("https://")) &&
+    e.factPersistenceDecision === "FACTUAL_TOPOLOGY_ONLY_NO_RAW_PAYLOAD"
+  );
+}
 export function generateBatch(
   pois,
   admissions,
@@ -620,23 +694,77 @@ export function generateBatch(
         rejectedObservations.push(...value.rejected);
         return value.edge;
       });
-      // A one-way observation cannot silently satisfy the required two directed
-      // usable edges. Keep both candidates until each direction is evidenced.
-      const pairAccepted = pair.every(
-        (e) => e.admission === "CONFIRMED_DIRECTION",
-      );
+      const evidence = decision.topologyEvidence.filter(topologyEvidenceValid);
+      const pairAccepted =
+        evidence.length > 0 &&
+        node.downstream085Authorized &&
+        !blocker?.allGeneralTouristModesBlocked &&
+        !blocker?.topologyRejected;
       if (pairAccepted) acceptedPairs++;
-      for (const e of pair) {
-        if (pairAccepted)
-          edges.push({ ...e, admission: "ACCEPTED_USABLE_ACCESS" });
-        else
+      for (let e of pair) {
+        if (pairAccepted) {
+          const prohibition = evidence.find((t) =>
+            t.prohibitedDirections?.includes(e.direction),
+          );
+          e = {
+            ...e,
+            admission: "ACCEPTED_TOPOLOGY_ACCESS",
+            topologyStatus: "CONFIRMED",
+            topologyEvidenceRefs: [
+              ...new Set(evidence.flatMap((t) => t.sourceRefs)),
+            ],
+            topologyEvidenceType: [
+              ...new Set(evidence.map((t) => t.evidenceType)),
+            ],
+            topologyConfidence: 1,
+            topologyConfidenceBasis:
+              "OFFICIAL_GATEWAY_AND_ADMITTED_IDENTITY_VERIFIED",
+            directionalAccessStatus: prohibition
+              ? "UNAVAILABLE"
+              : "NOT_PROHIBITED_BY_TOPOLOGY_EVIDENCE",
+            sourceRefs: [
+              ...new Set([
+                ...e.sourceRefs,
+                ...evidence.flatMap((t) => t.sourceRefs),
+              ]),
+            ],
+            provenance: {
+              ...e.provenance,
+              topologyEvidence: evidence.map((t) => ({
+                evidenceId: t.evidenceId,
+                sha256: digest(t),
+                sourceRefs: t.sourceRefs,
+              })),
+            },
+          };
+          if (prohibition) {
+            e = {
+              ...e,
+              modes: Object.fromEntries(
+                Object.keys(e.modes).map((m) => [
+                  m,
+                  {
+                    status: "unavailable",
+                    reason: "route_unavailable",
+                    metrics: null,
+                  },
+                ]),
+              ),
+              walkingRouteDistanceM: null,
+              walkingDurationMin: null,
+              detourRatio: null,
+              confidence: null,
+            };
+          }
+          edges.push(e);
+        } else
           pending.push({
             ...e,
+            topologyStatus: blocker ? "REJECTED" : "REVIEW_REQUIRED",
             admission: "UNCONFIRMED_CANDIDATE",
-            pendingReason:
-              e.admission === "CONFIRMED_DIRECTION"
-                ? "REVERSE_DIRECTION_NOT_CONFIRMED"
-                : "NO_LEGAL_COMPLETE_DIRECTIONAL_ROUTE",
+            pendingReason: blocker
+              ? blocker.reason
+              : "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED",
           });
         traces.push({
           edgeId: e.edgeId,
@@ -660,7 +788,7 @@ export function generateBatch(
         confirmedUsableNodes: 0,
         reasons: [
           ...(blocker ? [blocker.reason] : []),
-          "NO_LEGAL_COMPLETE_DIRECTIONAL_ROUTE",
+          "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED",
           ...(selection.retained.length ? [] : ["NO_ADMITTED_RELEVANT_NODE"]),
         ],
         officialSourceRefs: r.sourceRefs,

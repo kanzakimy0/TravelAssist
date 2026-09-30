@@ -1,0 +1,94 @@
+{
+  "authoritativeCanonicalCount": 100,
+  "recordsRemovedByB": 0,
+  "upstreamFilesModified": false,
+  "cases": [
+    {
+      "poiId": "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+      "masterCode": "41201",
+      "name": "J-WORLD TOKYO",
+      "canonicalLifecycle": "active",
+      "canonicalAccessAnchors": [],
+      "reason": "VENUE_PERMANENTLY_CLOSED",
+      "sourceRefs": [
+        "https://am.bandainamco-am.co.jp/documents/news/2018/12/20181203_14-P-087.pdf",
+        "https://bandainamco-am.co.jp/company/asobito/article25.html"
+      ],
+      "verifiedOn": "2026-09-30",
+      "allGeneralTouristModesBlocked": true,
+      "resolutionBoundary": "Canonical owner must reconcile lifecycle/identity or authorize an actual accessible endpoint; B cannot replace the POI with its surrounding building, park, mainland port or viewpoint.",
+      "classification": "LIFECYCLE_INVALID"
+    },
+    {
+      "poiId": "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+      "masterCode": "41211",
+      "name": "レインボープール",
+      "canonicalLifecycle": "active",
+      "canonicalAccessAnchors": [],
+      "reason": "VENUE_PERMANENTLY_CLOSED",
+      "sourceRefs": [
+        "https://www.showakinen-koen.jp/facility/facility-615/",
+        "https://www.ktr.mlit.go.jp/showa/"
+      ],
+      "verifiedOn": "2026-09-30",
+      "allGeneralTouristModesBlocked": true,
+      "resolutionBoundary": "Canonical owner must reconcile lifecycle/identity or authorize an actual accessible endpoint; B cannot replace the POI with its surrounding building, park, mainland port or viewpoint.",
+      "classification": "LIFECYCLE_INVALID"
+    },
+    {
+      "poiId": "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+      "masterCode": "31513",
+      "name": "舳倉島",
+      "canonicalLifecycle": "active",
+      "canonicalAccessAnchors": [],
+      "reason": "GENERAL_PUBLIC_FERRY_ACCESS_RESTRICTED",
+      "sourceRefs": [
+        "https://wajimanavi.jp/tourism/hegurajima"
+      ],
+      "verifiedOn": "2026-09-30",
+      "allGeneralTouristModesBlocked": false,
+      "resolutionBoundary": "Canonical owner must reconcile lifecycle/identity or authorize an actual accessible endpoint; B cannot replace the POI with its surrounding building, park, mainland port or viewpoint.",
+      "classification": "PUBLIC_ACCESS_RESTRICTED"
+    },
+    {
+      "poiId": "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+      "masterCode": "11056",
+      "name": "鶴見つばさ橋",
+      "canonicalLifecycle": "active",
+      "canonicalAccessAnchors": [],
+      "reason": "NO_PEDESTRIAN_OR_SAFE_DROPOFF_ENDPOINT",
+      "sourceRefs": [
+        "https://www.shutoko.co.jp/activities/database/bridge/tsubasa/",
+        "https://prd-www.shutoko.jp/driving/precautions/keepout/"
+      ],
+      "verifiedOn": "2026-09-30",
+      "allGeneralTouristModesBlocked": false,
+      "resolutionBoundary": "Canonical owner must reconcile lifecycle/identity or authorize an actual accessible endpoint; B cannot replace the POI with its surrounding building, park, mainland port or viewpoint.",
+      "classification": "CANONICAL_ENDPOINT_AMBIGUOUS"
+    },
+    {
+      "poiId": "poi:6814946e-289b-5931-8f0f-e397e0073627",
+      "name": "我善坊谷",
+      "reason": "HISTORICAL_VALLEY_REDEVELOPED_CURRENT_VISITOR_ENDPOINT_REQUIRES_OWNER",
+      "canonicalLifecycle": "active",
+      "canonicalAccessAnchors": [],
+      "sourceRefs": [
+        "https://www.mori.co.jp/projects/azabudaihills/background/",
+        "https://codh.rois.ac.jp/edo-maps/owariya/04/1850/4-167.html.ja",
+        "https://www.city.minato.tokyo.jp/azabuchikusei/azabu/koho/documents/azabu35.pdf"
+      ],
+      "verifiedOn": "2026-09-30",
+      "topologyRejected": true,
+      "allGeneralTouristModesBlocked": false,
+      "resolutionBoundary": "Historical valley identity is not automatically the 2023 Azabudai Hills complex. Canonical owner must bind an authorized current historical-site endpoint or reconcile lifecycle; B preserves the original POI.",
+      "classification": "CANONICAL_ENDPOINT_AMBIGUOUS"
+    }
+  ],
+  "supportingHash": {
+    "path": "data/poi/canonical/pilot-100/sample-manifest.v1.json",
+    "sha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+    "expectedSha256": "77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82",
+    "hashMatches": false,
+    "disposition": "Existing supporting-evidence drift; no upstream repair or authorization widening in TASK-085"
+  }
+}

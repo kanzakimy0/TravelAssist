@@ -1,196 +1,132 @@
-# RESULT — TASK-085-B POI → TransportNode Access Edge Full Generation
+# RESULT — TASK-085-B POI → TransportNode Access Edge Generation, Round 2
 
-**BLOCKED_CANONICAL_ACCESS_CONTRADICTION / HUMAN_REVIEW_REQUIRED** — 2026-09-30.
-Final data acceptance = **FAIL**. WBS 7.15 = **进行中**. This run does not claim TASK-085 complete.
+**Status: BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT. WBS 7.15: 进行中.**
 
-The later [#442 amendment](https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855)
-and [clarification](https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675)
-were applied: lack of national TASK-084 authorization did not stop local admission.
-Licensed topology and official access research were expanded. Every authorized POI
-has an explicit result, but none has a complete, legally reusable, independently
-evidenced pair of usable access directions. The empty accepted-edge file is intentional.
+The topology/metrics correction is implemented and replayed across every authorized Canonical record. There are **340 confirmed relationships / 680 directed topology records**, covering **94/100 POIs** (94/95 in the explicitly reported valid-accessible assessment subset). Route metrics remain unresolved and no longer delete confirmed topology.
 
-## Execution and authoritative inputs
+The remaining nine valid under-target POIs have hash-bound **SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF** records. These identify external official-access or reusable-identity evidence that is still missing. They are **not** CANDIDATE_EXHAUSTION_PROOF and do not assert that fewer than three nodes physically exist. The topology acceptance gate therefore remains FAIL. This is not READY_EXCEPT_CANONICAL_ADJUDICATION: non-Canonical gates also fail.
 
-| Item | Evidence |
+## Authority and preserved baseline
+
+| Item | Revision / evidence |
 | --- | --- |
-| Base develop SHA | 5b951195698d3e421f34a9922393b454412fa4bb |
-| Branch | feature/b-poi-transport-node-access-edges |
-| Worktree | A new clean managed worktree was created from the base; the existing task branch was continued there, preserving the prior pushed audit commit. |
-| Original TASK | [PR #449](https://github.com/kanzakimy0/TravelAssist/pull/449), docs/poi-transport-parallel-execution, 7073c2a5501e9f7e74361fb0bdc6219a99504f87 |
-| Draft PR | [#464](https://github.com/kanzakimy0/TravelAssist/pull/464) |
-| Canonical runtime manifest | src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json |
-| Manifest file SHA-256 | 11fd42f2ded8cc45519767ba86b97bcb1123552550c7f6af6ee60af7436cdbf0 |
-| Canonical revision | task-083-a-pilot100-v1 |
-| Dataset semantic SHA-256 | 802785ddb24e720698c2813f1f9dce29fe6792cdf02dbd01e9557b385a88bda2 |
-| Dataset file SHA-256 | 611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4 |
-| Authorized POI count | 100, read from manifest and exact membership; no count constant in the generator |
-| TASK-085 node admission artifact | data/transport/access/node-downstream-admission.jsonl |
-| Admission revision | task-085-local-access-v1 |
-| Admission file SHA-256 | 3dbf5706e80aff33768b34cca29c5f196757574344214cd4c7fdbaa18ce26edc |
-| Admission | 2,132 source components: 1,887 ADMIT_TASK_085_TOPOLOGY, 245 HOLD |
+| Latest fetched base develop | `5b951195698d3e421f34a9922393b454412fa4bb` |
+| Continuing branch / Draft PR | `feature/b-poi-transport-node-access-edges` / [#464](https://github.com/kanzakimy0/TravelAssist/pull/464) |
+| Required Amendment | [Access topology / metrics split v2](AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md), commit `41389de330df33091af9d33cc825ea8d4387a92d` is an ancestor of this continuation |
+| Latest execution instruction read | [Issue #442 comment 5909795085](https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085) |
+| Original TASK-085-B | PR #449, branch `docs/poi-transport-parallel-execution`, revision `7073c2a5501e9f7e74361fb0bdc6219a99504f87`; original task, WBS, TASK-084 closeout, TASK-082 task/implementation/Result/QA and route/rights records reviewed |
+| Baseline checkpoint | `2891bdf806536c039b1071a169e1f38b6f07d3e4` |
+| Baseline admissions | All 1,887 admitted and 245 HOLD/rejected records preserved, independently revalidated; 0 missing or changed |
+| Baseline candidates | Original 772 directed candidates retained as discovery evidence with per-record checksums; they need not remain quarantined after valid confirmation |
+| Current task-local nodes | 5,200 admitted / 344 HOLD; 5,544 total reviewed decisions |
+| Current admission artifact | `data/transport/access/node-downstream-admission.jsonl`, revision `task-085-access-topology-route-metrics-v2`, SHA-256 `46aa9adb438fb9bb6a4548adf5232a6b2a8c2c058e9dea2ce0d1daba376aa369` |
 
-The current [manifest](../../data/transport/access/manifest.json) pins every
-task input and implementation file by SHA-256. The final commit and exact-head
-Quality Gate receipt are recorded in the Draft PR body after that commit exists;
-a previous commit's passing CI is not reused.
+[Baseline revalidation](../../data/transport/access/baseline-revalidation.json) records all original decisions and candidate digests. Neither TASK-084 v1 nor unreviewed v2 was consumed.
 
-### Gate 0
+### Gate 0 and Canonical hashes
 
-The latest TASK-084 review manifest remains
-data/transport/nodes/task-084-b-v2-amendment-review/manifest.json,
-revision a25ebb928bb1fc8017d8d9e5c050d717ff5b118b,
-SHA-256 b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a.
-Its downstream085Authorized=false, runtimeImportAuthorized=false,
-nationalMasterStatus=REWORK_IN_PROGRESS, nationalMasterPass=false and
-formalAcceptedV2NodeCount=0 match the closeout snapshot. WBS 7.14 closure
-does not change these fields.
+The TASK-084 review manifest at `data/transport/nodes/task-084-b-v2-amendment-review/manifest.json` remains revision `a25ebb928bb1fc8017d8d9e5c050d717ff5b118b`, SHA-256 `b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a`. Its `downstream085Authorized=false`, `runtimeImportAuthorized=false`, `formalAcceptedV2NodeCount=0`, `nationalMasterPass=false` and `nationalMasterStatus=REWORK_IN_PROGRESS` remain unchanged. The closeout SHA-256 is `2f18099d0dfc53d1eaa1cbc12b5fe709368eaf3ec0c2ed10da7cae33b06b671b`.
 
-The amendment authorizes a separate, explicit task-local subset. The generator
-does not consume the rejected 244-node v1 or promote any v2 REVIEW rows.
-A changed national authorization forces re-evaluation of this execution path.
+The later Issue #442 authorization permits individually reviewed **TASK-085-local admission**; it does not accept the national master. The authoritative input for this run is the task-local admission artifact above, derived from attributed licensed sources and frozen identity bindings. WBS 7.14 closure was not used as authorization.
 
-Core Canonical dataset/registry/admission hashes and TASK-082 admission membership
-pass. A pre-existing supporting-evidence mismatch remains a **failed final gate**:
-sampleManifestSha256 declares
-77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82,
-whereas data/poi/canonical/pilot-100/sample-manifest.v1.json hashes to
-6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51.
-No upstream manifest, lifecycle, registry, candidate corpus or workbook was changed.
+Canonical input is solely `src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json`, revision `task-083-a-pilot100-v1`, runtime file SHA-256 `11fd42f2ded8cc45519767ba86b97bcb1123552550c7f6af6ee60af7436cdbf0`. Its authorized dataset file hash is `611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4`; semantic dataset hash is `802785ddb24e720698c2813f1f9dce29fe6792cdf02dbd01e9557b385a88bda2`. Runtime authorization, registry, admissions, active identities and exact membership were rechecked. Runtime membership determines the population dynamically; 100 is this snapshot's count, not a generator constant. No enrichment workbook or candidate-only POI was used.
 
-## Expansion, admission and selection
+The supporting sample byte-hash gate remains FAIL. [The TASK-083 commit-history audit](../qa/TASK-085-B/canonical-supporting-hash-audit.md) proves the declared hash equals the CRLF representation, whereas Git stores the LF representation. This originated in authorizing commit `32154893fc314844760d059d59a3ef141d462882`, not subsequent membership drift. Actual LF hash: `6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51`; declared/CRLF hash: `77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82`. B changed neither upstream file nor hash. A must regenerate and authorize the corrected receipt.
 
-1. The official MLIT S12 FY2024 archive was downloaded once under its dataset-specific
-   CC BY 4.0 terms. Archive SHA-256:
-   0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28.
-   From 10,534 source features, spatial discovery retained 1,988 components for the
-   authorized POIs. Same-name nearby ambiguity and external-ID collisions remain HOLD.
-   S12 contributes 1,743 admitted topology components, not current operating-route claims.
-2. All 100 POIs received official operator/government/tourism-source research,
-   including island ferry, mountain, funicular, ropeway, tourist bus and airport
-   leads where relevant. Each POI's actual source, finding and remaining gap is in
-   [official-access-research.json](../../data/transport/access/inputs/official-access-research.json).
-   This research is explicitly **not certified exhaustive**.
-3. CC BY 4.0 GTFS expansion added 95 Ikoma community-bus stops and 49 Seki Itadori
-   stops. Archive hashes are respectively
-   b48b71fbc7896fe735a06c5eb7740f055d669e410d250d8ee8cd5423359e0971 and
-   2999dfaf94dec85d11da1f75ad58e251ec894a668b825f988c30ff171acd171c.
-   The latter includes the rural Monet's pond approach. Stop-to-stop timetables
-   do not establish the unmeasured stop-to-POI last leg.
-4. The final approved-input replay produced no new usable edges. The iteration
-   ledger records three expansion stages and a fourth input/constraint recheck.
-   That fourth replay is not represented as a new exhaustive web search.
+## General correction and full replay
 
-Admitted kinds: railway_station 1,603; fixed_guideway_station 70; bus_stop 144;
-funicular_station 22; tram_stop 48. Admission checks official source identity,
-coordinates, kind, archive/source hash, license, frozen identity binding and
-duplicate/rebind conflicts. Confidence distinguishes verified source identity
-from unknown operation and unknown route access. Runtime import is false.
+Official venue, operator/government or tourism access evidence now establishes topology independently of licensed route metrics. The review joins the exact named gateway by node kind, locality and, where available, operator; it binds the reviewed fact, source hash, identity and rights. Mere proximity, S12/P11 membership, an expired event, a namesake, or access to a different facility cannot confirm a relationship. Duplicate physical bus clusters and redundant operator/line representations are not counted as extra useful gateways.
 
-Candidate generation uses a spatial index and 1/4/12 km stages, bounded discovery,
-configurable role caps, official gateway matches and operator/line usefulness.
-Unproven walkability stays unresolved. Remote nodes without access relevance are
-rejected. Every retained/rejected candidate has a deterministic rank and reason;
-no POI×all-nodes edge product is generated. Default target is 3–8 nodes, local cap
-6, major-hub cap 2, tourism cap 3, special cap 3, total cap 8.
+Each confirmed relationship emits POI_TO_NODE and NODE_TO_POI independently. One official source may support both topology records. Each direction's walking/transit/taxi fields starts unresolved and requires its own route observation; prohibited or unsupported direction-specific metrics do not erase the topology pair.
 
-## Exact external constraints and the limits of the fixpoint claim
+The rule is generic. The replay gives 増上寺 6 useful nodes, 大阪ドーム 6, 葛城市相撲館 3, and スカイビル 6 including the separately joined YCAT identity. These are reviewed source inputs, not POI-specific implementation branches.
 
-| POI / Master Code | Runtime ID | Primary evidence / consequence |
-| --- | --- | --- |
-| J-WORLD TOKYO / 41201 | poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254 | [Operator closure release](https://am.bandainamco-am.co.jp/documents/news/2018/12/20181203_14-P-087.pdf) and [later operator history](https://bandainamco-am.co.jp/company/asobito/article25.html): closed 2019-02-17. A route to Sunshine City or a successor is not access to the unchanged venue. |
-| レインボープール / 41211 | poi:208288db-abad-5e91-ab74-4a74d6a6cd68 | [Park operator](https://www.showakinen-koen.jp/facility/facility-615/) states operations ended; [government park office](https://www.ktr.mlit.go.jp/showa/) describes redevelopment of the former pool area. Park admission does not establish pool access. |
-| 舳倉島 / 31513 | poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca | [City tourism authority](https://wajimanavi.jp/tourism/hegurajima): resumed ferry is restricted to residents/recovery workers; general tourist access not confirmed. |
-| 鶴見つばさ橋 / 11056 | poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32 | [Expressway operator](https://www.shutoko.co.jp/activities/database/bridge/tsubasa/) and pedestrian exclusion guidance: the bridge point is not a verified pedestrian destination or legal taxi drop-off. |
+Spatial candidate generation uses indexed 1/4/12 km stages, bounded S12 and P11 pools and exact-name searches for explicitly named official gateways. Configurable target 3–8 and role caps prevent N×N growth or distant-hub padding. All 100 POIs receive an explicit result. Batches remain 200 POIs; this snapshot has one partial batch.
 
-These four cases are HUMAN_REVIEW_REQUIRED; all remain in the authorized denominator.
-The two permanently closed venues have scoped CANDIDATE_EXHAUSTION_PROOF records:
-all discovered candidates and truncated S12 references are enumerated, and any
-additional gateway still fails the same closed-target constraint. A larger radius,
-new station or route license cannot reopen that exact venue.
+The full corpus was replayed after successive official-source, named-identity, P11, GTFS and special-access expansions. The [iteration ledger](../../data/transport/access/auto-fix-iterations.jsonl) preserves observed replay fingerprints, from 570 through 680 edges, plus closure verification; unsaved earlier intermediate runs were not invented. Every remaining valid under-target POI has all nine source categories, full candidate/named-identity dispositions and hash-bound source, license, spatial and admission inventories in [discovery proofs](../../data/transport/access/candidate-exhaustion-proofs.jsonl). Stale hashes, omitted candidates, category labels without findings, or unsupported physical-exhaustion claims invalidate the proof.
 
-**This proves a local, external acceptance constraint, not a global research fixpoint.**
-There is no evidence that every legally usable source for the other 98 POIs has been
-exhausted. Therefore globalDiscoveryFixpointProven=false, 98 under-target POIs have
-NOT_ESTABLISHED exhaustion status, and this deliverable does **not** claim the user's
-full automatic-discovery completion condition. It is a reviewable blocked checkpoint.
-The exact 100 affected POIs, per-POI sources/reasons and incomplete fields are in
-[completeness](../../data/transport/access/poi-access-completeness.json) and
-[unresolved](../../data/transport/access/poi-access-unresolved.jsonl).
+`globalTopologyDiscoveryFixpoint=PROVEN` means the documented **source/license/identity boundary** has been reached for reasonable visitor gateways under this reviewed source snapshot. It does not claim all possible future publications or the whole Internet have been exhausted. New official gateway evidence or reusable node identity invalidates that boundary and requires review/replay.
 
-Canonical ownership must adjudicate the two closed lifecycle/identity records and
-the supporting manifest hash. Other gaps include licensed complete last-mile routes,
-independent reverse directions and verifiable entrances for rivers, lakes, summits
-and redeveloped sites. B has not silently rebound those identities.
+## Remaining external topology boundaries
 
-## Full-run metrics
+| POI | Confirmed nodes | Evidence still required after expansion |
+| --- | ---: | --- |
+| 飛水峡 | 1 | 上麻生 rail confirmed. Official station-bus interchange lacks an exact licensed locality-qualified identity; signal box and a different gorge viewpoint are not substitutes. |
+| 御影大橋 | 2 | Official city/prefectural walk and bus map confirm two. Nearby 御影町/富本町 and other regional nodes lack an explicit bridge visitor-gateway assertion. |
+| 田倉山 | 2 | 上夜久野 rail and bus confirmed. 農匠の郷/白井 and nearby basalt-park access do not establish this summit's trail gateway. |
+| 池原橋 | 1 | 池原大橋 bus confirmed through current local evidence. Historical ferry and dam/park stops do not establish additional current bridge access. |
+| まほろば湖 | 1 | 長谷寺 rail approach confirmed. Other stops need exact shore/trail access evidence. Off-site dam-card collection at 橿原 is not lake access. |
+| みさき公園 | 1 | Current public park/path and rail access confirmed. Named station bus has no exact reusable joined identity; an expired ferry promotion cannot confirm current park access. |
+| 阿瀬川橋 | 0 | Licensed nearby 栗山/三方コミセン stops and official bridge identity exist, but no official source establishes the exact visitor-gateway relationship. Proximity alone is insufficient. |
+| 韮崎中央公園陸上競技場 | 2 | Rail/station bus confirmed. Current new gym/富士見ヶ丘 bus and demand points need exact licensed identities absent from reviewed P11/older GTFS; a building coordinate is not a boarding-stop identity. |
+| ミュージアム都留 | 2 | 谷村町/都留市 rail confirmed. 中央道都留 bus and current demand stop 48 need exact reusable identities; an interchange entity or a different same-name operator stop cannot substitute. |
+
+The nine machine proofs enumerate candidate decisions, concrete URLs, source-category findings, the publisher/owner boundary and the external evidence required to resume. None is relabeled as proof that a third useful node does not exist. Thus **under-target without CANDIDATE_EXHAUSTION_PROOF = 9**, still FAIL.
+
+## Canonical adjudication
+
+[canonical-adjudication-required.json](../../data/transport/access/canonical-adjudication-required.json) retains all five exact identities, official sources and required owner decisions:
+
+- J-WORLD TOKYO: permanent closure; surrounding Sunshine City is a different target.
+- レインボープール: ended operation/redevelopment; surrounding park is not that pool.
+- 舳倉島: ordinary tourist ferry access remains restricted.
+- 鶴見つばさ橋: endpoint/access semantics do not establish a pedestrian destination or safe drop-off.
+- 我善坊谷: historical valley was redeveloped; B cannot silently rebind it to Azabudai Hills.
+
+B removed or edited **zero Canonical records**. All five remain in raw corpus counts; a separately labeled 95-record assessment subset makes the owner exceptions visible. These exceptions did not stop discovery for the rest of the corpus.
+
+## Required full-run metrics
 
 | Metric | Result |
 | --- | --- |
-| Canonical scanned / explicit results | 100/100 / 100/100 |
-| Canonical processed count / usable-access shortfall | 100 / 100 |
-| POIs with >=1 confirmed usable access node | 0/100 |
-| Local / major hub / special tourism usable coverage | 0/100 / 0/100 / 0/100 |
-| Accepted directed edges | 0 |
-| Quarantined independent directed candidates | 772 |
-| Mean / median / min / max useful nodes per POI | 0 / 0 / 0 / 0 |
-| Mean / median / min / max accepted directed edges per POI | 0 / 0 / 0 / 0 |
-| Under-target POIs / scoped exhaustion-proof coverage | 100 / 2%; 98 proofs not established |
-| Walking / transit / taxi resolution among candidates | 0/772 for each mode |
-| Walking / transit / taxi resolution among accepted edges | null for each (0/0), never reported as 100% |
-| Resolved usable-mode POI coverage | 0/100 |
-| Accessibility known rate among accepted edges | null (0/0) |
-| Observed extreme detours | 0; no actual routes were available to assess, so this is not real-route QA clearance |
-| Unresolved POIs | 100 |
-| Reason distribution (non-exclusive) | NO_LEGAL_COMPLETE_DIRECTIONAL_ROUTE 100; NO_ADMITTED_RELEVANT_NODE 14; VENUE_PERMANENTLY_CLOSED 2; NO_PEDESTRIAN_OR_SAFE_DROPOFF_ENDPOINT 1; GENERAL_PUBLIC_FERRY_ACCESS_RESTRICTED 1 |
-| Batches / receipts | 1 / 1; final partial batch of 100, configured size 200 |
-| Accepted-node provenance | 1,887/1,887 = 100% |
-| Accepted-edge provenance | null (0/0), final gate FAIL |
-| Regions | 10 regions scanned fully; each has 0% usable coverage. Tokyo 11 POIs, Yamanashi 9, other eight regions 10 each. |
-| Auto-fix ledger | 3 source/research expansion stages + 1 constrained replay; global discovery fixpoint unproven |
-| Deterministic rebuild | PASS, independent full artifact builds and actual filesystem byte comparison |
-| Resume / checksum skip / source invalidation / single-batch repair / corruption detection | PASS in focused tests, including 201-POI fixture |
-| Final acceptance | FAIL; see every numerator/denominator/threshold in final-acceptance-gate.json |
-| Final WBS 7.15 | 进行中 |
+| Canonical processed / scan / explicit result coverage | 100 / 100% / 100% |
+| POIs with ≥1 useful confirmed topology node | 94/100; 94/95 valid assessment subset |
+| Zero-node shortfall | 6 overall; 1 valid subset |
+| POIs reaching ≥3 nodes | 86/100; 86/95 valid subset |
+| Under-target | 14 overall = 9 external topology boundaries + 5 Canonical cases |
+| Local / major hub POI coverage | 70/100 / 1/100 |
+| Tourism gateway / special access coverage | 44/100 / 18/100; union 45/100 |
+| Confirmed directed edges / relationships | 680 / 340 |
+| Pending directed candidates | 638, separate from confirmed topology |
+| Useful nodes per POI, mean / median / min / max | 3.4 / 3 / 0 / 6; valid mean 3.578947, median 3 |
+| Directed edges per POI, mean / median / min / max | 6.8 / 6 / 0 / 12 |
+| Walking resolved POI coverage / edge rate | 0/100 / 0/680 |
+| Local transit resolved POI coverage / edge rate | 0/100 / 0/680 |
+| Taxi resolved POI coverage / edge rate | 0/100 / 0/680 |
+| Accessibility known POI coverage / edge rate | 0/100 / 0/680 |
+| Stairs / elevation / detour / P90 coverage | Each 0/100 POIs and 0/680 edges |
+| Observed extreme detours | 0; assessable actual routes = 0, not a real-route clearance |
+| Unresolved topology POIs | 6; 680 metric-unresolved edges / 2,040 mode-specific unresolved rows |
+| Unresolved reason distribution, overlapping | VENUE_PERMANENTLY_CLOSED 2; OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED 6; HISTORICAL_VALLEY_REDEVELOPED_CURRENT_VISITOR_ENDPOINT_REQUIRES_OWNER 1; NO_PEDESTRIAN_OR_SAFE_DROPOFF_ENDPOINT 1; GENERAL_PUBLIC_FERRY_ACCESS_RESTRICTED 1; NO_ADMITTED_RELEVANT_NODE 1 |
+| Batches / receipts | 1 / 1, batch size 200 |
+| Accepted node / topology edge provenance | 5,200/5,200 / 680/680 = 100% |
+| Essential topology fields / duplicates / invalid identities | 100% / 0 / 0 |
+| Original v1 usage / unreviewed v2 promotion | 0 / 0 |
+| Deterministic rebuild | PASS: independent full artifact builds compared before write and actual filesystem comparison |
+| Resume / checksum / corruption / single-batch rerun | PASS; source invalidation and 200/201 boundary also tested |
+| Graph growth guard | PASS, 680 ≤ 100 × 8 × 2 |
+| Physical exhaustion proofs / external fixpoint proofs | 0 / 9 |
+| Final topology gates | 17 PASS / 5 FAIL; allPass=false, nonCanonicalPass=false |
+| Final WBS 7.15 | 进行中; not 待审查 |
 
-## Provider/license decision and route integrity
+The five failed gates are supporting Canonical hash, valid POI ≥1 coverage, zero-node valid POIs, under-target without physical exhaustion proof, and Canonical adjudication. Mean and median satisfy the thresholds for both the full corpus and labeled valid subset.
 
-[S12](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html),
-[Ikoma's dataset](https://data.bodik.jp/dataset/292095_1714108666) and
-[Seki's open-data terms](https://www.city.seki.lg.jp/0000010802.html) provide the
-attributed licensed topology. Archive hashes, entry hashes, extraction rules and
-attribution are committed. These grants do not create measured last-mile route data.
+## Provider, licenses and integration boundary
 
-Google Routes default selection is not a batch/cache/retention/production/derivative
-persistence grant. Ekiworld remains evaluation-only with persistence none / TTL null.
-Kyoto ODPT requires its basic and provider-specific terms; a usable current grant
-and download were not established, so no feed was fetched. Public operator access
-pages remain factual discovery references, not a blanket route-payload storage grant.
-No prohibited provider batch calls, raw route-provider payload persistence or N03
-production join occurred.
+Source-specific rights, archive/entry hashes, retention and attribution are in [manifest.json](../../data/transport/access/manifest.json) and [source-rights.json](../../data/transport/access/inputs/source-rights.json). S12 is CC BY 4.0; P11 is PDL 1.0. Licensed community/municipal GTFS inputs provide static stop identities. Four pinned CC0 Wikidata entities supply individually reviewed terminal/port identities, joined to official sources. No GTFS snapshot is treated as evidence of current service or an unmeasured last-mile route.
 
-Every candidate starts with TASK-082 unresolved metrics=null. Haversine is only
-straightDistanceM. Walking resolution requires independently traceable route distance
-and time, approved source/evidence hashes, endpoint binding, last-mile completeness,
-public access, direction and barrier review. Extreme detours, impossible/straight-as-route
-measurements, estimated-speed fill, repeated/round-number metrics, shared remote hubs,
-missing local gateways and fixed node-count concentration are checked. No synthetic
-fixture observation enters the production inputs.
+S12 archive SHA-256: `0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28`. P11 archive SHA-256: `12132cc1c349d5d84c1ae90e7e5fff7c12a79540f4487edfae46e9f640bc1c72`. National scans cover 10,534 S12 features and 278,515 P11 features; only bounded or explicitly named locality-qualified derivatives are retained.
 
-## Integration and validation
+Google Routes has no demonstrated full batch/cache/retention/production/derivative grant; Ekiworld remains evaluation-only; ODPT's inaccessible provider-specific grants were not presumed. All fail closed. **Route-provider batch requests = 0; raw route-provider payloads persisted = 0.** Official access pages contribute short reviewed facts/source links, not copied raw payloads or measured routes.
 
-The additive adapter uses TASK-082 GraphRef and PoiMobilityEdgeV1 through
-candidateToUnresolvedEdge, applyLicensedObservation and validateMobilityEdge.
-Task-specific identity, role and decision metadata wraps that existing contract;
-unsupported node kinds are not mislabeled as the three kinds in TransportNodeV1.
-Independent directions are quarantined until both are evidenced. No Planner,
-Route Runtime, API, shared contract or 43-dimensional POI payload changed.
+Haversine is only `straightDistanceM`. Actual walking distance, duration and detour ratio remain separate nullable fields. Directional routes must independently pass licensing, endpoints, complete last-mile and barrier checks. QA detects extreme detour, river/bridge, rail/highway, mountain, gated and impossible-route cases. Zero/estimated values are not coverage substitutes.
 
-Focused TASK-085 tests: **14/14 PASS**. Full regression, lint, typecheck, formatting,
-build and artifact verification are recorded in
-[QA](../qa/TASK-085-B/README.md) and
-[local-validation.json](../qa/TASK-085-B/local-validation.json).
-Exact-head CI is reported in the Draft PR publication receipt, separately from data acceptance.
-A code Quality Gate PASS cannot turn the failed data acceptance into PASS.
+The task-owned additive adapter wraps TASK-082 GraphRef / PoiMobilityEdgeV1 and reuses its directed/unresolved semantics and validators. No second Planner contract, runtime/API/public behavior change, or 43-dimensional POI copy was introduced.
 
-No merge, auto-merge or TASK-086 execution. WBS 7.15 remains 进行中.
+## Validation and publication
+
+Final replay input fingerprint: `de48e4d636486f60bfa50038439b0127c0acec6de894d4cf57ee1d22f750fea8`.
+
+Focused tests: **17/17 PASS**; full regression: **2,841/2,841 PASS**. Lint (0 errors, 10 existing warnings), typecheck, formatting, deployment validation, production build and artifact verification (1,908 files) all PASS. Commands and log hashes are recorded in [QA README](../qa/TASK-085-B/README.md) and [local-validation.json](../qa/TASK-085-B/local-validation.json).
+
+The final commit's exact-head workflow_dispatch Quality Gate URL, head SHA and conclusion are recorded in the existing Draft PR #464 body after push. A green code Quality Gate does not turn the failed topology data gates into PASS. No merge, auto-merge or TASK-086 execution.

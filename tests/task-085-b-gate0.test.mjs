@@ -32,8 +32,14 @@ import {
   execute,
   validateReceipt,
   chunks,
+  baselineRevalidation,
 } from "../tools/transport/task-085-access-generation.mjs";
 
+import {
+  discoveryInventory,
+  reviewIssues,
+  topologyAcceptance,
+} from "../tools/transport/task-085-topology-acceptance.mjs";
 const input = loadInputs();
 const canonical = input.pois[0];
 const node = input.admissions.find(
@@ -340,65 +346,107 @@ test("085 unknown rights or a closed exact venue cannot create accepted access",
   );
   assert.equal(closed.edge.modes.walking.status, "unavailable");
 });
-test("085 one-way resolved route remains quarantined until the reverse is independently observed", () => {
+test("085 confirmed topology survives unresolved/asymmetric route metrics and directional prohibitions", () => {
   const p = {
     ...canonical,
     location: { ...canonical.location, point: node.point },
+  };
+  const evidence = {
+    poiId: p.internalId,
+    nodeId: node.nodeId,
+    nodeSourceRecordSha256: node.sourceRecordSha256,
+    evidenceId: "fixture-topology",
+    sourceRefs: ["https://example.test/official-access"],
+    evidenceType: "OFFICIAL_VENUE_ACCESS",
+    reviewStatus: "APPROVED",
+    gatewayRelationshipVerified: true,
+    identityJoinVerified: true,
+    currentPublicAccess: true,
+    sourceFactReviewSha256: "a".repeat(64),
+    factPersistenceDecision: "FACTUAL_TOPOLOGY_ONLY_NO_RAW_PAYLOAD",
   };
   const research = [
     {
       poiId: p.internalId,
       gatewayNames: [node.name],
       barrierReviewTriggers: [],
-      sourceRefs: node.sourceRefs,
-      finding: "test",
+      sourceRefs: evidence.sourceRefs,
+      topologyEvidence: [evidence],
     },
   ];
-  const before = generateBatch(
-    [p],
-    [node],
-    research,
-    [],
-    input.rights,
-    config,
-    [],
+  const run = (
+    r = research,
+    observations = [],
+    rights = input.rights,
+    blockers = [],
+  ) => generateBatch([p], [node], r, observations, rights, config, blockers);
+  const before = run();
+  assert.equal(before.edges.length, 2);
+  assert.equal(before.pending.length, 0);
+  assert.ok(
+    before.edges.every(
+      (e) =>
+        e.topologyStatus === "CONFIRMED" && e.walkingRouteDistanceM === null,
+    ),
   );
-  const incoming = before.pending.find((e) => e.direction === "NODE_TO_POI");
+  const incoming = before.edges.find((e) => e.direction === "NODE_TO_POI");
+  const outgoing = before.edges.find((e) => e.direction === "POI_TO_NODE");
   const { source, observation } = routeFixture(incoming);
-  const half = generateBatch(
-    [p],
-    [node],
-    research,
-    [observation],
-    { sources: [source] },
-    config,
-    [],
+  const half = run(research, [observation], { sources: [source] });
+  assert.equal(half.edges.length, 2);
+  assert.equal(
+    half.edges.find((e) => e.direction === "NODE_TO_POI").walkingRouteDistanceM,
+    180,
   );
-  assert.equal(half.edges.length, 0);
-  assert.equal(half.pending.length, 2);
-  assert.equal(half.unresolved.length, 1);
-  const outgoing = before.pending.find((e) => e.direction === "POI_TO_NODE");
+  assert.equal(
+    half.edges.find((e) => e.direction === "POI_TO_NODE").walkingRouteDistanceM,
+    null,
+  );
   const reverse = routeFixture(outgoing).observation;
-  reverse.metrics.distanceM = 191;
-  reverse.metrics.walkDistanceM = 191;
-  reverse.metrics.durationTypicalMin = 4.2;
-  reverse.metrics.walkDurationMin = 4.2;
-  const full = generateBatch(
-    [p],
-    [node],
-    research,
-    [observation, reverse],
-    { sources: [source] },
-    config,
-    [],
-  );
-  assert.equal(full.edges.length, 2);
-  assert.equal(full.unresolved.length, 0);
+  reverse.metrics = {
+    ...reverse.metrics,
+    distanceM: 191,
+    walkDistanceM: 191,
+    durationTypicalMin: 4.2,
+    walkDurationMin: 4.2,
+  };
+  const full = run(research, [observation, reverse], { sources: [source] });
   assert.notEqual(
     full.edges[0].walkingRouteDistanceM,
     full.edges[1].walkingRouteDistanceM,
   );
+  const prohibited = structuredClone(research);
+  prohibited[0].topologyEvidence[0].prohibitedDirections = ["POI_TO_NODE"];
+  const blocked = run(prohibited);
+  assert.equal(blocked.edges.length, 2);
+  assert.equal(
+    blocked.edges.find((e) => e.direction === "POI_TO_NODE").modes.walking
+      .status,
+    "unavailable",
+  );
+  assert.equal(
+    blocked.edges.find((e) => e.direction === "NODE_TO_POI").modes.walking
+      .status,
+    "unresolved",
+  );
+  for (const patch of [
+    { topologyEvidence: [] },
+    {
+      topologyEvidence: [{ ...evidence, evidenceType: "MLIT_PROXIMITY_ONLY" }],
+    },
+    { topologyEvidence: [{ ...evidence, currentPublicAccess: false }] },
+    { topologyEvidence: [{ ...evidence, identityJoinVerified: false }] },
+  ]) {
+    assert.equal(run([{ ...research[0], ...patch }]).edges.length, 0);
+  }
+  assert.equal(
+    run(research, [], input.rights, [
+      { poiId: p.internalId, allGeneralTouristModesBlocked: true },
+    ]).edges.length,
+    0,
+  );
 });
+
 test("085 anomalies catch duplicate edges, metric placeholders and concentration", () => {
   const fixture = fixtureEdge(),
     { source, observation } = routeFixture(fixture);
@@ -431,36 +479,128 @@ test("085 anomalies catch duplicate edges, metric placeholders and concentration
     ),
   );
 });
-test("085 complete scan with zero usable access cannot PASS or forge exhaustive research", () => {
+test("085 full topology coverage and route metrics are separate; no false Canonical PASS", () => {
   const result = buildArtifacts(input);
   assert.equal(
     result.manifest.metrics.canonicalPoiProcessedCount,
     input.pois.length,
   );
-  assert.equal(result.manifest.metrics.totalDirectedEdges, 0);
+  assert.ok(result.manifest.metrics.totalDirectedEdges > 0);
+  assert.equal(
+    result.manifest.metrics.modeResolution.walking.acceptedEdges.numerator,
+    0,
+  );
+  assert.equal(result.manifest.metrics.acceptedEdgeProvenance.actual, 1);
   assert.equal(result.acceptance.allPass, false);
   assert.equal(result.manifest.wbs715Status, "进行中");
-  assert.equal(result.manifest.globalDiscoveryFixpointProven, false);
+  assert.equal(result.manifest.globalTopologyDiscoveryFixpoint, "PROVEN");
   assert.ok(
     result.acceptance.gates.some(
-      (g) => g.name === "Usable access POI coverage" && g.status === "FAIL",
+      (g) =>
+        g.name === "Canonical supporting manifest integrity" &&
+        g.status === "FAIL",
     ),
   );
-  const completeness = JSON.parse(
-    result.artifacts["poi-access-completeness.json"],
+  const noEvidence = {
+    ...input,
+    research: input.research.map((r) => ({ ...r, topologyEvidence: [] })),
+    discoveryReview: [],
+  };
+  const empty = buildArtifacts(noEvidence);
+  assert.equal(empty.manifest.metrics.totalDirectedEdges, 0);
+  assert.equal(empty.acceptance.allPass, false);
+  assert.equal(empty.acceptance.globalTopologyDiscoveryFixpoint, "IN_PROGRESS");
+});
+test("085 original 1887 admissions, 245 HOLD decisions and 772 candidates remain conserved", () => {
+  const b = baselineRevalidation(input);
+  assert.equal(b.status, "PASS");
+  assert.equal(b.originalAdmitted, 1887);
+  assert.equal(b.originalHeld, 245);
+  assert.equal(b.missingOrChanged, 0);
+  assert.equal(b.preservedDirectedCandidates, 772);
+  const modified = {
+    ...input,
+    admissions: input.admissions.filter(
+      (a) => a.nodeId !== input.baselineNodes.records[0].nodeId,
+    ),
+  };
+  assert.equal(baselineRevalidation(modified).status, "FAIL");
+});
+test("085 proof cannot be completed by nine labels, changed inventory, or silent candidate omissions", () => {
+  const built = buildArtifacts(input);
+  const combined = {
+    decisions: built.batches.flatMap((b) => b.data.decisions),
+    scans: built.batches.flatMap((b) => b.data.scans),
+    edges: built.batches.flatMap((b) => b.data.edges),
+  };
+  for (const r of input.discoveryReview) {
+    const inventory = discoveryInventory(input, combined, r.poiId);
+    assert.deepEqual(reviewIssues(r, inventory), []);
+    const stale = structuredClone(r);
+    stale.inventoryHashes.candidateDecisionSha256 = "0".repeat(64);
+    assert.ok(
+      reviewIssues(stale, inventory).includes("STALE_REVIEW_INVENTORY"),
+    );
+    const omitted = structuredClone(r);
+    omitted.candidateDispositions.pop();
+    assert.ok(
+      reviewIssues(omitted, inventory).some((s) =>
+        s.startsWith("UNACCOUNTED_INVENTORY"),
+      ),
+    );
+    const physical = structuredClone(r);
+    physical.exhaustionConclusion = "FEWER_THAN_TARGET_EXIST";
+    assert.ok(
+      reviewIssues(physical, inventory).includes(
+        "NO_AUTHORITATIVE_FEWER_THAN_TARGET_PROOF",
+      ),
+    );
+    const incomplete = structuredClone(r);
+    delete incomplete.categories.ferry_port.finding;
+    assert.ok(
+      reviewIssues(incomplete, inventory).includes(
+        "INCOMPLETE_SOURCE_CATEGORY:ferry_port",
+      ),
+    );
+  }
+});
+test("085 Canonical-only exception yields READY_EXCEPT while metrics remain unresolved", () => {
+  const built = buildArtifacts(input);
+  const rows = JSON.parse(
+    built.artifacts["poi-access-completeness.json"],
+  ).filter((p) => p.usefulDistinctNodes >= 3);
+  const ids = new Set(rows.map((p) => p.poiId));
+  const fixture = {
+    ...input,
+    pois: input.pois.filter((p) => ids.has(p.internalId)),
+    blockers: [],
+    executionVerification: {
+      deterministicRebuild: "PASS_TEST_FIXTURE",
+      receiptIntegrity: "PASS_TEST_FIXTURE",
+    },
+  };
+  const combined = {
+    edges: built.batches
+      .flatMap((b) => b.data.edges)
+      .filter((e) => ids.has(e.poiId)),
+    scans: built.batches
+      .flatMap((b) => b.data.scans)
+      .filter((p) => ids.has(p.poiId)),
+  };
+  const verdict = topologyAcceptance(fixture, combined, rows, []);
+  assert.equal(verdict.status, "READY_EXCEPT_CANONICAL_ADJUDICATION");
+  assert.ok(
+    combined.edges.every((e) => e.modes.walking.status === "unresolved"),
   );
-  assert.equal(completeness.length, input.pois.length);
-  assert.ok(completeness.every((r) => r.result === "NO_CONFIRMED_ACCESS"));
+  const corrected = {
+    ...fixture,
+    preflight: structuredClone(fixture.preflight),
+  };
+  corrected.preflight.canonical.supportingSampleManifest.hashMatches = true;
   assert.equal(
-    result.artifacts["candidate-exhaustion-proofs.jsonl"].trim().split("\n")
-      .length,
-    2,
+    topologyAcceptance(corrected, combined, rows, []).status,
+    "PASS / READY_FOR_REVIEW",
   );
-  assert.equal(
-    result.manifest.metrics.exhaustionProofCoverage.denominator,
-    input.pois.length,
-  );
-  assert.equal(result.manifest.metrics.acceptedEdgeProvenance.actual, null);
 });
 test("085 chunks follow runtime population, including the 200/201 boundary", () => {
   assert.deepEqual(
@@ -535,6 +675,7 @@ test("085 201-POI replay checkpoints at 200 and detects unsafe receipt paths", (
       ...input,
       pois,
       admissions: [],
+      baselineNodes: { records: [] },
       blockers: [],
       observations: [],
       discoveryScans: [],
@@ -583,5 +724,8 @@ test("085 201-POI replay checkpoints at 200 and detects unsafe receipt paths", (
   }
 });
 test("085 committed artifact receipt and all deterministic files match current inputs", () => {
-  assert.equal(execute({ root: ROOT, mode: "check" }).acceptance, "FAIL");
+  assert.equal(
+    execute({ root: ROOT, mode: "check" }).acceptance,
+    "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+  );
 });

@@ -1,17 +1,23 @@
 {
   "schemaVersion": "1.0",
   "task": "TASK-085-B",
-  "revision": "task-085-local-access-v1",
-  "status": "BLOCKED_CANONICAL_ACCESS_CONTRADICTION",
-  "acceptanceStatus": "FAIL",
-  "globalDiscoveryFixpointProven": false,
-  "blockingScope": "Two unchanged Canonical venues have closed; ALL PASS is impossible under current identity/lifecycle authority. Other POI research is not claimed globally exhausted.",
+  "revision": "task-085-access-topology-route-metrics-v2",
+  "status": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+  "acceptanceStatus": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+  "globalTopologyDiscoveryFixpoint": "PROVEN",
+  "blockingScope": "Topology and route metrics evaluated separately; see failed topology gates and explicit per-POI source/identity proof.",
   "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
   "executionRules": [
     "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799",
     "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855",
-    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675"
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675",
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085"
   ],
+  "topologyMetricsAmendment": {
+    "path": "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
+    "sha256": "0ba1be8c699bb2e633ba233710db9dd5e58cd69dde22e535a375d49c9e8a6ea8",
+    "revision": "41389de330df33091af9d33cc825ea8d4387a92d"
+  },
   "originalTask": {
     "pr": 449,
     "branch": "docs/poi-transport-parallel-execution",
@@ -67,66 +73,66 @@
     "v2CandidatesPromoted": 0,
     "integrationBoundary": "Task-owned topology admission and GraphRef adapter only; no Planner/API/runtime contract changes."
   },
-  "inputFingerprint": "14edd8a909cf168bfcb7f046e092672188fc014ef04a6ccfdd4d618821036bfc",
+  "inputFingerprint": "de48e4d636486f60bfa50038439b0127c0acec6de894d4cf57ee1d22f750fea8",
   "transportAdmission": {
     "path": "data/transport/access/node-downstream-admission.jsonl",
-    "revision": "task-085-local-access-v1",
-    "sha256": "3dbf5706e80aff33768b34cca29c5f196757574344214cd4c7fdbaa18ce26edc",
-    "records": 2132,
-    "acceptedTopologyNodes": 1887,
-    "heldNodes": 245,
+    "revision": "task-085-access-topology-route-metrics-v2",
+    "sha256": "46aa9adb438fb9bb6a4548adf5232a6b2a8c2c058e9dea2ce0d1daba376aa369",
+    "records": 5544,
+    "acceptedTopologyNodes": 5200,
+    "heldNodes": 344,
     "nationalMasterAuthorized": false,
     "usableAccessNotImplied": true
   },
   "metrics": {
     "canonicalPoiProcessedCount": 100,
-    "shortfall": 100,
-    "poisWithAtLeastOneAccessNode": 0,
-    "totalDirectedEdges": 0,
-    "unconfirmedDirectedCandidates": 772,
+    "shortfall": 6,
+    "poisWithAtLeastOneAccessNode": 94,
+    "totalDirectedEdges": 680,
+    "unconfirmedDirectedCandidates": 638,
     "usefulNodesPerPoi": {
-      "mean": 0,
-      "median": 0,
+      "mean": 3.4,
+      "median": 3,
       "min": 0,
-      "max": 0
+      "max": 6
     },
     "edgesPerPoi": {
-      "mean": 0,
-      "median": 0,
+      "mean": 6.8,
+      "median": 6,
       "min": 0,
-      "max": 0
+      "max": 12
     },
-    "underTargetPois": 100,
+    "underTargetPois": 14,
     "exhaustionProofCoverage": {
-      "numerator": 2,
-      "denominator": 100,
-      "actual": 0.02
+      "numerator": 0,
+      "denominator": 14,
+      "actual": 0
     },
     "localNodeCoverage": {
-      "numerator": 0,
+      "numerator": 70,
       "denominator": 100,
-      "actual": 0
+      "actual": 0.7
     },
     "majorHubCoverage": {
-      "numerator": 0,
+      "numerator": 1,
       "denominator": 100,
-      "actual": 0
+      "actual": 0.01
     },
     "specialTourismAccessCoverage": {
-      "numerator": 0,
+      "numerator": 45,
       "denominator": 100,
-      "actual": 0
+      "actual": 0.45
     },
     "modeResolution": {
       "walking": {
         "acceptedEdges": {
           "numerator": 0,
-          "denominator": 0,
-          "actual": null
+          "denominator": 680,
+          "actual": 0
         },
         "allDirectedCandidates": {
           "numerator": 0,
-          "denominator": 772,
+          "denominator": 1318,
           "actual": 0
         },
         "usablePoiCoverage": {
@@ -138,12 +144,12 @@
       "transit": {
         "acceptedEdges": {
           "numerator": 0,
-          "denominator": 0,
-          "actual": null
+          "denominator": 680,
+          "actual": 0
         },
         "allDirectedCandidates": {
           "numerator": 0,
-          "denominator": 772,
+          "denominator": 1318,
           "actual": 0
         },
         "usablePoiCoverage": {
@@ -155,12 +161,12 @@
       "taxi": {
         "acceptedEdges": {
           "numerator": 0,
-          "denominator": 0,
-          "actual": null
+          "denominator": 680,
+          "actual": 0
         },
         "allDirectedCandidates": {
           "numerator": 0,
-          "denominator": 772,
+          "denominator": 1318,
           "actual": 0
         },
         "usablePoiCoverage": {
@@ -168,33 +174,132 @@
           "denominator": 100,
           "actual": 0
         }
+      },
+      "directional": {
+        "POI_TO_NODE": {
+          "walking": {
+            "numerator": 0,
+            "denominator": 340,
+            "actual": 0
+          },
+          "transit": {
+            "numerator": 0,
+            "denominator": 340,
+            "actual": 0
+          },
+          "taxi": {
+            "numerator": 0,
+            "denominator": 340,
+            "actual": 0
+          }
+        },
+        "NODE_TO_POI": {
+          "walking": {
+            "numerator": 0,
+            "denominator": 340,
+            "actual": 0
+          },
+          "transit": {
+            "numerator": 0,
+            "denominator": 340,
+            "actual": 0
+          },
+          "taxi": {
+            "numerator": 0,
+            "denominator": 340,
+            "actual": 0
+          }
+        }
+      },
+      "optional": {
+        "accessibility": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 680,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "stairs": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 680,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "elevationGainM": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 680,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "detourRatio": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 680,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "durationP90Min": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 680,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        }
       }
     },
     "accessibilityKnownRate": {
       "numerator": 0,
-      "denominator": 0,
-      "actual": null
+      "denominator": 680,
+      "actual": 0
     },
     "extremeDetourCount": 0,
     "routeBarrierQaAssessableCandidates": 0,
-    "unresolvedPoiCount": 100,
+    "unresolvedPoiCount": 6,
     "unresolvedReasonDistribution": {
-      "NO_LEGAL_COMPLETE_DIRECTIONAL_ROUTE": 100,
-      "NO_ADMITTED_RELEVANT_NODE": 14,
       "VENUE_PERMANENTLY_CLOSED": 2,
+      "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED": 6,
+      "HISTORICAL_VALLEY_REDEVELOPED_CURRENT_VISITOR_ENDPOINT_REQUIRES_OWNER": 1,
       "NO_PEDESTRIAN_OR_SAFE_DROPOFF_ENDPOINT": 1,
-      "GENERAL_PUBLIC_FERRY_ACCESS_RESTRICTED": 1
+      "GENERAL_PUBLIC_FERRY_ACCESS_RESTRICTED": 1,
+      "NO_ADMITTED_RELEVANT_NODE": 1
     },
     "batchCount": 1,
     "acceptedNodeProvenance": {
-      "numerator": 1887,
-      "denominator": 1887,
+      "numerator": 5200,
+      "denominator": 5200,
       "actual": 1
     },
     "acceptedEdgeProvenance": {
-      "numerator": 0,
-      "denominator": 0,
-      "actual": null
+      "numerator": 680,
+      "denominator": 680,
+      "actual": 1
     }
   },
   "providerLicenseDecision": {
@@ -253,6 +358,172 @@
           "derivativePersistence": true
         },
         "routeAccessGrant": false
+      },
+      {
+        "sourceId": "mlit-p11-fy2022",
+        "license": "PDL-1.0",
+        "licenseUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+        "sourceUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+        "archiveUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_SHP.zip",
+        "archiveSha256": "12132cc1c349d5d84c1ae90e7e5fff7c12a79540f4487edfae46e9f640bc1c72",
+        "attribution": "国土数値情報（バス停留所データ・令和4年度）国土交通省を加工してTravelAssistが作成。",
+        "scope": "FY2022_static_bus_topology_only_not_service_or_route_confirmation",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false,
+        "individualLicenseEvidence": [
+          "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+          "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0"
+        ]
+      },
+      {
+        "sourceId": "wikidata-Q11542854-r2433153877",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q11542854",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q11542854.json?revision=2433153877",
+        "archiveSha256": "1a0cd655d749016cc0a27855498d70fc13a397026fc2d6b974cdef6590c23507",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "wikidata-Q115034784-r2455070719",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q115034784",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q115034784.json?revision=2455070719",
+        "archiveSha256": "32b01f32fee039775d203c9aa264795a09aca40de3697627f89dcd77f115576c",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "wikidata-Q21019135-r2483298498",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q21019135",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q21019135.json?revision=2483298498",
+        "archiveSha256": "d6f7f7560a182518c0a2fc030bdd10659507f2df0a2b0cd5f16132001f182f73",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "wikidata-Q117217639-r2547368230",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q117217639",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q117217639.json?revision=2547368230",
+        "archiveSha256": "69ef6b530b90f65e7f57acc066a2b794f3e4c5513346dfa372038c75c8cbf194",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "kitaaikivillage-soneibus-32246a36a0f3",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/kitaaikivillage/feeds/soneibus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/kitaaikivillage/feeds/soneibus/files/feed.zip",
+        "archiveSha256": "32246a36a0f3db2e4edef859e37618f02dff2df2a48c25e9d0b7f116aa259971",
+        "attribution": "kitaaikivillage: soneibus, CC-BY-4.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "kiyosato-kiyosato-picnicbus-62a81300470c",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/kiyosato/feeds/kiyosato-picnicbus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/kiyosato/feeds/kiyosato-picnicbus/files/feed.zip?uid=22ed5e31-0e80-478f-8e7f-a80e6061b1f5",
+        "archiveSha256": "62a81300470c78260f4aba6a728b2f1b36810090b422b9050dffa4d65b6a27f5",
+        "attribution": "kiyosato: kiyosato-picnicbus, CC0-1.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "nirasakicity-shiminbus-fabe809f1234",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/nirasakicity/feeds/shiminbus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/nirasakicity/feeds/shiminbus/files/feed.zip?uid=248948c7-7ef5-4409-b16b-fabaf3b46621",
+        "archiveSha256": "fabe809f1234bb8dd7f757fdb96af077f1200cccb3a208294070d6d5e618464d",
+        "attribution": "nirasakicity: shiminbus, CC0-1.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "yamanashi-hokutocity-hokuto-bus-70412fde4330",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/yamanashi-hokutocity/feeds/hokuto-bus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/yamanashi-hokutocity/feeds/hokuto-bus/files/feed.zip?uid=f1dffba1-0c2d-4729-a797-e2468c04b904",
+        "archiveSha256": "70412fde4330d66e0f65748ae1b83d8153296a89e1c0864870d227e6ebc12892",
+        "attribution": "yamanashi-hokutocity: hokuto-bus, CC-BY-4.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
       }
     ],
     "routeProviders": [
@@ -286,21 +557,61 @@
     "providerBatchRequests": 0,
     "rawRouteProviderPayloadsPersisted": 0,
     "task086Started": false,
-    "autoFixIterationCount": 4,
-    "batchIntegrityQa": "PASS",
-    "accessAcceptance": "FAIL",
-    "globalDiscoveryFixpoint": false,
-    "closedVenueConstraintProofCount": 2
+    "autoFixIterationCount": 13,
+    "batchIntegrityQa": "PASS_GENERATED_RECEIPTS_AND_INJECTED_CORRUPTION",
+    "accessAcceptance": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+    "globalTopologyDiscoveryFixpoint": "PROVEN",
+    "candidateExhaustionProofCount": 0
   },
   "wbs715Status": "进行中",
   "sourceFiles": [
     {
+      "path": "data/transport/access/inputs/baseline-directed-candidates.jsonl",
+      "sha256": "ae6644b4e2010e42ef28d5ef85f53874dbcfe1a5f4ae5695c9e5a84b7855de4a"
+    },
+    {
+      "path": "data/transport/access/inputs/baseline-node-decisions.json",
+      "sha256": "e62b7f3e47ee9bf0ce001434a011851aba6881d46f65a88606122eb41c43d16a"
+    },
+    {
       "path": "data/transport/access/inputs/canonical-access-blockers.json",
-      "sha256": "315b70a7cb2b9f1c34fd418bd4a58a393d5cb0c4441632faa49b233b56be2197"
+      "sha256": "785966d57b0d72785ff23f090ea6900d5823c1bee70b68bad8a8ab18ea4d9f0e"
+    },
+    {
+      "path": "data/transport/access/inputs/canonical-supporting-hash-audit.json",
+      "sha256": "a408f821282486088ca84d0aadf7e36879b9f49e223be679babd231bdb41eb70"
     },
     {
       "path": "data/transport/access/inputs/config.json",
-      "sha256": "0452fe0ab46f5ecbfb59694d83edbcc28c9f7e00685e0bb25c65fcbc60d50500"
+      "sha256": "1d17dc808e425dabb904a4fa45eae28b58af7247b91fef5bb83d30e11c8f9360"
+    },
+    {
+      "path": "data/transport/access/inputs/discovery-review-findings.json",
+      "sha256": "9acd19fdc71146425a631f24024eb904b2f41516b2b67ec182b4640bccf0f91e"
+    },
+    {
+      "path": "data/transport/access/inputs/discovery-review.json",
+      "sha256": "b9588a0423d1577c203ddc59155067070b02ecb11b69c13e23ae67edbecf7ba4"
+    },
+    {
+      "path": "data/transport/access/inputs/expanded-gtfs-extraction.json",
+      "sha256": "5f28e1dc9293bae36e00b2dbced78c8aa75ef4af14080b2aee8809ff08de93a4"
+    },
+    {
+      "path": "data/transport/access/inputs/expanded-gtfs-source-records.jsonl",
+      "sha256": "bbc56e906664cd962d4a600eae224b4d5a31cb7a6106670383c743063da3d8ff"
+    },
+    {
+      "path": "data/transport/access/inputs/expanded-gtfs-sources.json",
+      "sha256": "a9c460a348ddfe6de373f7b6fce90681703c3e531d9fe286079567ffb7caef2d"
+    },
+    {
+      "path": "data/transport/access/inputs/gateway-fact-reviews.json",
+      "sha256": "4b4a0b016ca3e40e5275f479ef7e3f3d35d7f81666f2673e59aae58861df248a"
+    },
+    {
+      "path": "data/transport/access/inputs/gateway-identity-decisions.json",
+      "sha256": "e17556dbcff04e726959378d8198c78b3579e8128599e26bea510df59d976670"
     },
     {
       "path": "data/transport/access/inputs/gtfs-extraction.json",
@@ -311,12 +622,48 @@
       "sha256": "23aea2e53a3da364a0b5f17b727e033d3307321816dd2426e23570c7600d8996"
     },
     {
+      "path": "data/transport/access/inputs/named-extraction.json",
+      "sha256": "39a18090f4d47ba4386368ba785aa8e1dbbb616a055c9e6b55778ccc281c8a3d"
+    },
+    {
+      "path": "data/transport/access/inputs/named-source-records.jsonl",
+      "sha256": "a2a9fa6e3f3e173238241c0ccdb71010f8525421d1e5f81e9f7437337dfcacc5"
+    },
+    {
+      "path": "data/transport/access/inputs/named-source-scans.jsonl",
+      "sha256": "00742b6e531b3b4907cf5733a743c2c15f7b852c01a7e6e26ef511e35e80c8fb"
+    },
+    {
       "path": "data/transport/access/inputs/node-identity-bindings.jsonl",
-      "sha256": "78b5b801b344216ec06d4f40f5f1921dd567c5008250cffb16e7fd7bfb8a3584"
+      "sha256": "6d0bac4771176fd64b8f76334082709242acae5a3234f6d2fca6a96878a410fe"
+    },
+    {
+      "path": "data/transport/access/inputs/observed-replays.json",
+      "sha256": "3862124e1c9eeee7320cd2de99f90603ed44ce86c879351deb61e4b1ce2a3473"
+    },
+    {
+      "path": "data/transport/access/inputs/official-access-expansion.json",
+      "sha256": "d5a23d443d82a0cf24a335b7710c4aea135aea1a305dd5a45b4d3bd09609427e"
     },
     {
       "path": "data/transport/access/inputs/official-access-research.json",
       "sha256": "91cfd91297daa520a7a595444919007d6df4b3b9f0650b95c9f9ec7bfcf26505"
+    },
+    {
+      "path": "data/transport/access/inputs/p11-extraction.json",
+      "sha256": "2dd25c21e280abe2220599aa7c3ced9b705342c38e3e037339fd17e5e257c7b1"
+    },
+    {
+      "path": "data/transport/access/inputs/p11-source-records.jsonl",
+      "sha256": "81cf7ed5721e755c35cc232edf2098820cb707e61a9a05a23ea4034ec8477e35"
+    },
+    {
+      "path": "data/transport/access/inputs/p11-spatial-scan.jsonl",
+      "sha256": "39cb375229a60b577291ae52b53c8c610ba06fc24b1c0f1570f6bd47cede444a"
+    },
+    {
+      "path": "data/transport/access/inputs/reviewed-source-records.jsonl",
+      "sha256": "dc60265c522b2c74ae1480565b863b7fd89307b46108de0641ca93bb6b93e7cc"
     },
     {
       "path": "data/transport/access/inputs/route-observations.jsonl",
@@ -336,19 +683,59 @@
     },
     {
       "path": "data/transport/access/inputs/source-rights.json",
-      "sha256": "feefbce14e5ac00fd011bec8099aa11ac0aef2f2596fc625901d36296f45788c"
+      "sha256": "c7b72a5221c0ce2373963d81fe4b8d811ef11f0d4afa9ae28165bd9bd60b8ef3"
+    },
+    {
+      "path": "data/transport/access/inputs/supplemental-extraction.json",
+      "sha256": "d11796131c40c9b2085542b65af7feb9b0c0f67ee1146fe467e116db31a56e03"
+    },
+    {
+      "path": "data/transport/access/inputs/supplemental-source-records.jsonl",
+      "sha256": "7bd44304dbb20d602ae58b47c586297054da22d94aded5316d8c828600c89cf6"
+    },
+    {
+      "path": "data/transport/access/inputs/topology-review-seal.json",
+      "sha256": "892937dd85747d42111f5f1e896fd051fe56df33334445677cf4f1e2e3af0b22"
+    },
+    {
+      "path": "data/transport/access/inputs/topology-review.json",
+      "sha256": "6807427f25a68dafcab1d1f05c461c3f9170e985e3113411b93d9de16db7282e"
+    },
+    {
+      "path": "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
+      "sha256": "0ba1be8c699bb2e633ba233710db9dd5e58cd69dde22e535a375d49c9e8a6ea8"
     },
     {
       "path": "tools/transport/task-085-gate0.mjs",
-      "sha256": "c5b19baa4b9a075d47eba704fedde96d7fdf274335c0a04fc651a2f3c5b414e1"
+      "sha256": "ac75c3d31b386922cd8531193390e31bcb3a4311c5d5815321f01999261248d4"
+    },
+    {
+      "path": "tools/transport/task-085-topology-acceptance.mjs",
+      "sha256": "1b0799efcf622c934a01990f298a24bc224b6348949f2b6dfd6d1535ad287eea"
+    },
+    {
+      "path": "tools/transport/task-085-p11-extract.py",
+      "sha256": "9042ff6bcf26c567172f879153e737db86cbea024089ae51a4ef5258576876c8"
+    },
+    {
+      "path": "tools/transport/task-085-named-extract.py",
+      "sha256": "b7c2f3e66911a9b8a344185c20b053fae0acb43ffd1c06d34df88dead2209cce"
+    },
+    {
+      "path": "tools/transport/task-085-supplemental-extract.py",
+      "sha256": "5ef310eadd0ddae86c3be9c1b0e32870b3d28803539325469925b8513e905311"
+    },
+    {
+      "path": "tools/transport/task-085-topology-review.mjs",
+      "sha256": "1151f928a10f93a8c08cfea1a26f381d4b8f2e0e19838ff518796ed4e853e7f2"
     },
     {
       "path": "tools/transport/task-085-access-core.mjs",
-      "sha256": "4d5f4b606045aa3d6a0f1b5b2087b7c4af79685eaeb4f26d4de2efc39603ac18"
+      "sha256": "a6d495baed040f0af4317d88bef1f2f5c00ca0c2d1ac6de10082d177705f1381"
     },
     {
       "path": "tools/transport/task-085-access-generation.mjs",
-      "sha256": "3f2a0f2d31497af945709d92c17ad7819f4e6bdb9c91abbeb560619465758260"
+      "sha256": "4f5245f0fb5a506fd2eac4d3ffafcd2c0db61862e6f8220f57de9a08c9f87ebb"
     },
     {
       "path": "tools/transport/task-085-source-extract.py",
@@ -359,33 +746,41 @@
       "sha256": "33f92eab94649a974c1476d5357330588d8237e675841463e63abd77337ee03e"
     },
     {
+      "path": "tools/transport/task-085-expanded-gtfs-extract.py",
+      "sha256": "225cefbe77eef51acc405a75c8b827866c1d81f6b6ea3cacf7ae996e72bcd1d2"
+    },
+    {
       "path": "src/shared/poi-edge-graph/index.ts",
       "sha256": "b172b004129469f396f55a81bbc04746cca6f0d6400791b7d608dec5bba0218c"
     }
   ],
   "generatedArtifactHashes": {
-    "batches/0001/edges.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "batches/0001/unconfirmed-directed-candidates.jsonl": "ae6644b4e2010e42ef28d5ef85f53874dbcfe1a5f4ae5695c9e5a84b7855de4a",
-    "batches/0001/candidate-node-decisions.jsonl": "139deb59579469f26c38d7b08741958242773fe8f0e7633038740dfcff348135",
-    "batches/0001/unresolved.jsonl": "61d72a53b499faf41d45924058baa62926ceed50ab1dc3c244d8e918d184ba1a",
-    "batches/0001/spatial-scans.jsonl": "74f3f18217df9166953d71d1bf93faabf86aa336a8d96974a6be01ef3770b34b",
-    "batches/0001/score-traces.jsonl": "1cc0a17454e82e643393930a53878473e8d4a4ec91e538484419b0d75aa10a17",
+    "batches/0001/edges.jsonl": "5b9ceee353034bfa59d6362860eaf78d32aa841e3f466c00973ea217c23cd0d2",
+    "batches/0001/unconfirmed-directed-candidates.jsonl": "0424738947852d680628c3704c7808c176b9b77243516be6af7cda3784e49aa7",
+    "batches/0001/candidate-node-decisions.jsonl": "ac5d16ff05083d9c7b674f690b10e21725385da7aa50fd778173a425fc350b36",
+    "batches/0001/unresolved.jsonl": "1c8b8cd864648619e153b53e428de1ca9cc390410b4c6aafecd301cb50aadad4",
+    "batches/0001/spatial-scans.jsonl": "7da34ebb1fb7118790b9faeb7486123513810b497c2a2d068db954009a7d5461",
+    "batches/0001/score-traces.jsonl": "7e261b7882e7b38205c88a4c4feec5f47009b3293e7f824293f3ca6b1497048f",
     "batches/0001/rejected-observations.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "batch-receipts/0001.json": "e7927f08c0f461c8c652d62be17460e7e3d8bcc4de2299d81e937ffe1ba3d37c",
-    "poi-transport-access-edges.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "poi-access-unresolved.jsonl": "61d72a53b499faf41d45924058baa62926ceed50ab1dc3c244d8e918d184ba1a",
-    "poi-access-score-traces.jsonl": "1cc0a17454e82e643393930a53878473e8d4a4ec91e538484419b0d75aa10a17",
-    "candidate-node-decisions.jsonl": "139deb59579469f26c38d7b08741958242773fe8f0e7633038740dfcff348135",
-    "node-downstream-admission.jsonl": "3dbf5706e80aff33768b34cca29c5f196757574344214cd4c7fdbaa18ce26edc",
-    "poi-access-completeness.json": "1d49d7a284c9c8b97d4fad28471dad2f4bae5fca8589ab814296b03aeba143df",
-    "under-target-pois.json": "50f60971df56087111a53c0de18e738b5d116caaf44890d711d0b77e7427c204",
-    "candidate-exhaustion-proofs.jsonl": "d5d39c40576ef076a323762b68516b77229a6b6ef696fb3f3ee2ab921ecf1159",
-    "coverage-by-region.json": "2d23b48043b07964806df576b82178e71b9fe5633bdec2f8c85a4c236c88a56e",
-    "access-role-coverage.json": "94ba1b02b02cd2d38922a4cb82fd9881a371f8d662af21f9921e63d783662472",
-    "mode-resolution-coverage.json": "2701673e4b262d495411f27e0618d0a168e3bbbd934ea3408b9a782769598dfa",
+    "batch-receipts/0001.json": "06ba5476ece28b3ffd72bc7d1eb369eb73ab8ada0c425f0f2107ad277e564f3c",
+    "poi-transport-access-edges.jsonl": "5b9ceee353034bfa59d6362860eaf78d32aa841e3f466c00973ea217c23cd0d2",
+    "topology-confirmed-edges.jsonl": "5b9ceee353034bfa59d6362860eaf78d32aa841e3f466c00973ea217c23cd0d2",
+    "route-metric-unresolved.jsonl": "08293085d3beb02a33734f91c062e3e8c8a92e01cfdb0cfb1e689820d53ee5a9",
+    "canonical-adjudication-required.json": "877925ee92fdd6e7d630dd3f2e89314dc84f03564994d32650435be0ce96c770",
+    "baseline-revalidation.json": "2ea767bc29ef04c59ec5ff233b4d6e2c2f0c8087dd1746b9613e715e2b8b9e4c",
+    "poi-access-unresolved.jsonl": "1c8b8cd864648619e153b53e428de1ca9cc390410b4c6aafecd301cb50aadad4",
+    "poi-access-score-traces.jsonl": "7e261b7882e7b38205c88a4c4feec5f47009b3293e7f824293f3ca6b1497048f",
+    "candidate-node-decisions.jsonl": "ac5d16ff05083d9c7b674f690b10e21725385da7aa50fd778173a425fc350b36",
+    "node-downstream-admission.jsonl": "46aa9adb438fb9bb6a4548adf5232a6b2a8c2c058e9dea2ce0d1daba376aa369",
+    "poi-access-completeness.json": "c3d8a8cab0c7a4954ba79529610dc053c98270ca6db3295f76af9db96765230b",
+    "under-target-pois.json": "bed99f2cefec7291e16b9b6d5110fa100624e4379d4a8fbcbf67cd510d64fca1",
+    "candidate-exhaustion-proofs.jsonl": "5a21fc73a39fd61e12a0cb59e54f94c84f162851a4b2e44d86c7cdfeada7e584",
+    "coverage-by-region.json": "b8766314c32e52cad0a585bad9c302b101910ffd0ede83651fc19988a58e9f1a",
+    "access-role-coverage.json": "4e07a0524364810099529a5f3e8822b40f60275930b6f87957054d1a922c47ee",
+    "mode-resolution-coverage.json": "33416e1cdca3ce1860a3ee978041691d1037eca66f2f4551c945d2e8dfdc8ea6",
     "detour-anomalies.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "auto-fix-iterations.jsonl": "89b586fe3451e9653255e18bd31d09c0ea8f9b36e1ba1773459e717860661645",
-    "final-acceptance-gate.json": "c652d30a41904f9becc96447a708d8f08b14c12402655270924aa9b5b9b34305",
+    "auto-fix-iterations.jsonl": "00b841fa2c45b696717b0389605cabbddc6b69c46db636d37b2b4f70c221f5dd",
+    "final-acceptance-gate.json": "a8dd161abb419a527a927eb0981b8a1fd50cce75fe28a265859810868badbf0c",
     "batches/README.md": "146a1ddcdf6be683a1737a109a037156962492f6345a3d992d0c695431db9ba5",
     "batch-receipts/README.md": "70ad0a5b2bddfeb1cb86e252d36acb280c2a55bb2434c59034e6840ba702c5cc"
   }

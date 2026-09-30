@@ -1,3 +1,7 @@
+import {
+  discoveryProofs,
+  topologyAcceptance,
+} from "./task-085-topology-acceptance.mjs";
 import assert from "node:assert/strict";
 import {
   existsSync,
@@ -35,11 +39,18 @@ const readLines = (root, file) =>
     .map(JSON.parse);
 const objectText = (value) => JSON.stringify(value, null, 2) + "\n";
 const codePaths = [
+  "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
   "tools/transport/task-085-gate0.mjs",
+  "tools/transport/task-085-topology-acceptance.mjs",
+  "tools/transport/task-085-p11-extract.py",
+  "tools/transport/task-085-named-extract.py",
+  "tools/transport/task-085-supplemental-extract.py",
+  "tools/transport/task-085-topology-review.mjs",
   "tools/transport/task-085-access-core.mjs",
   "tools/transport/task-085-access-generation.mjs",
   "tools/transport/task-085-source-extract.py",
   "tools/transport/task-085-gtfs-extract.py",
+  "tools/transport/task-085-expanded-gtfs-extract.py",
   "src/shared/poi-edge-graph/index.ts",
 ];
 export function loadInputs(root = ROOT) {
@@ -84,6 +95,88 @@ export function loadInputs(root = ROOT) {
     .records.slice()
     .sort((a, b) => (a.internalId < b.internalId ? -1 : 1));
   const research = readJson(root, INPUT + "/official-access-research.json");
+  const topologyReview = readJson(root, INPUT + "/topology-review.json");
+  const factReviews = readJson(root, INPUT + "/gateway-fact-reviews.json");
+  const seal = readJson(root, INPUT + "/topology-review-seal.json");
+  assert.equal(
+    seal.implementationSha256,
+    fingerprint(root, "tools/transport/task-085-topology-review.mjs").sha256,
+    "REVIEW_IMPLEMENTATION_CHANGED",
+  );
+  assert.equal(
+    seal.canonicalDatasetFileSha256,
+    preflight.canonical.datasetFileSha256,
+    "REVIEW_CANONICAL_CHANGED",
+  );
+  for (const [file, sha] of Object.entries({ ...seal.inputs, ...seal.outputs }))
+    assert.equal(
+      fingerprint(root, INPUT + "/" + file).sha256,
+      sha,
+      "TOPOLOGY_REVIEW_SEAL:" + file,
+    );
+  for (const e of topologyReview) {
+    const fact = factReviews.find(
+      (f) => digest(f) === e.sourceFactReviewSha256,
+    );
+    assert.ok(
+      fact &&
+        fact.poiId === e.poiId &&
+        fact.reviewedOn === e.reviewedOn &&
+        fact.evidenceType === e.evidenceType &&
+        fact.currentPublicAccess === e.currentPublicAccess &&
+        fact.gateways.some((g) => g.name === e.gatewayName) &&
+        stable(fact.sourceRefs) === stable(e.sourceRefs),
+      "TOPOLOGY_FACT_BINDING_INVALID",
+    );
+  }
+  for (const r of research)
+    r.topologyEvidence = topologyReview.filter((e) => e.poiId === r.poiId);
+  const p11 = readJson(root, INPUT + "/p11-extraction.json");
+  for (const [file, sha] of Object.entries(p11.derivedFiles))
+    assert.equal(
+      fingerprint(root, INPUT + "/" + file).sha256,
+      sha,
+      "P11_DERIVED_HASH:" + file,
+    );
+  assert.equal(
+    p11.canonicalDatasetFileSha256,
+    preflight.canonical.datasetFileSha256,
+    "P11_CANONICAL_CHANGED",
+  );
+  assert.deepEqual(
+    p11.spatialConfig,
+    Object.fromEntries(
+      ["cellDegrees", "stagedRadiiM", "p11MaxNearestCandidatesPerPoi"].map(
+        (k) => [k, config[k]],
+      ),
+    ),
+    "P11_CONFIG_CHANGED",
+  );
+  const named = readJson(root, INPUT + "/named-extraction.json");
+  for (const [file, sha] of Object.entries(named.derivedFiles))
+    assert.equal(
+      fingerprint(root, INPUT + "/" + file).sha256,
+      sha,
+      "NAMED_DERIVED_HASH:" + file,
+    );
+  assert.equal(
+    fingerprint(root, INPUT + "/gateway-fact-reviews.json").sha256,
+    named.inputFactReviewsSha256,
+    "FACT_CHANGE_REQUIRES_NAMED_REEXTRACTION",
+  );
+  const supplemental = readJson(root, INPUT + "/supplemental-extraction.json");
+  for (const [file, sha] of Object.entries(supplemental.derivedFiles))
+    assert.equal(
+      fingerprint(root, INPUT + "/" + file).sha256,
+      sha,
+      "SUPPLEMENTAL_DERIVED_HASH:" + file,
+    );
+  const expandedGtfs = readJson(root, INPUT + "/expanded-gtfs-extraction.json");
+  assert.equal(
+    fingerprint(root, INPUT + "/expanded-gtfs-source-records.jsonl").sha256,
+    expandedGtfs.derivedSha256,
+    "EXPANDED_GTFS_DERIVED_HASH",
+  );
   assert.equal(research.length, pois.length);
   assert.deepEqual(
     research.map((r) => r.poiId).sort(),
@@ -94,12 +187,31 @@ export function loadInputs(root = ROOT) {
   const records = [
     ...readLines(root, INPUT + "/s12-source-records.jsonl"),
     ...readLines(root, INPUT + "/gtfs-source-records.jsonl"),
+    ...readLines(root, INPUT + "/expanded-gtfs-source-records.jsonl"),
+    ...readLines(root, INPUT + "/p11-source-records.jsonl"),
+    ...readLines(root, INPUT + "/named-source-records.jsonl"),
+    ...readLines(root, INPUT + "/supplemental-source-records.jsonl"),
+    ...readLines(root, INPUT + "/reviewed-source-records.jsonl"),
   ];
   const observations = readLines(root, INPUT + "/route-observations.jsonl");
   const rights = readJson(root, INPUT + "/source-rights.json"),
     bindings = readLines(root, INPUT + "/node-identity-bindings.jsonl");
   return {
     root,
+    topologyReview,
+    factReviews,
+    identityDecisions: readJson(
+      root,
+      INPUT + "/gateway-identity-decisions.json",
+    ),
+    baselineNodes: readJson(root, INPUT + "/baseline-node-decisions.json"),
+    observedIterations: readJson(root, INPUT + "/observed-replays.json"),
+    discoveryReview: readJson(root, INPUT + "/discovery-review.json"),
+    discoveryFindings: readJson(
+      root,
+      INPUT + "/discovery-review-findings.json",
+    ),
+    baseline: readLines(root, INPUT + "/baseline-directed-candidates.jsonl"),
     preflight,
     config,
     pois,
@@ -110,7 +222,14 @@ export function loadInputs(root = ROOT) {
     rights,
     bindings,
     blockers: readJson(root, INPUT + "/canonical-access-blockers.json"),
-    discoveryScans: readLines(root, INPUT + "/s12-spatial-scan.jsonl"),
+    discoveryScans: [
+      ...readLines(root, INPUT + "/s12-spatial-scan.jsonl").map((r) => ({
+        ...r,
+        sourceId: "mlit-s12-fy2024",
+      })),
+      ...readLines(root, INPUT + "/p11-spatial-scan.jsonl"),
+      ...readLines(root, INPUT + "/named-source-scans.jsonl"),
+    ],
     inputFingerprint: digest({ canonical: preflight.canonical, sourceFiles }),
     admissions: admitNodes(records, rights, bindings),
   };
@@ -194,455 +313,69 @@ const rate = (num, den) => ({
   denominator: den,
   actual: den ? num / den : null,
 });
-function gate(name, num, den, threshold, actual, pass, evidencePath) {
-  return {
-    name,
-    numerator: num,
-    denominator: den,
-    threshold,
-    actual,
-    status: pass ? "PASS" : "FAIL",
-    evidencePath,
-  };
-}
-export function acceptanceFor(
-  input,
-  combined,
-  completeness,
-  proofs,
-  anomalies,
-) {
-  const n = input.pois.length,
-    usable = completeness.filter((p) => p.usefulDistinctNodes > 0).length;
-  const nodeStats = stats(completeness.map((p) => p.usefulDistinctNodes));
-  const admitted = input.admissions.filter((n) => n.downstream085Authorized),
-    edges = combined.edges;
-  const essential = edges.filter(
-    (e) =>
-      e.edgeId &&
-      e.poiId &&
-      e.nodeId &&
-      e.from.kind !== e.to.kind &&
-      e.direction &&
-      e.accessRole &&
-      Number.isFinite(e.straightDistanceM) &&
-      e.sourceRefs.length &&
-      e.confidence > 0 &&
-      e.generatedAt &&
-      e.provenance.routeEvidence?.length &&
-      e.candidateDecisionId,
-  ).length;
-  const under = completeness.filter(
-    (p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
-  );
-  const missingProof = under.filter(
-    (p) =>
-      !proofs.some(
-        (x) => x.poiId === p.poiId && x.status === "CANDIDATE_EXHAUSTION_PROOF",
-      ),
-  ).length;
-  const invalidNodes = edges.filter(
-    (e) => !admitted.some((a) => a.nodeId === e.nodeId),
-  ).length;
-  const invalidIds = edges.filter(
-    (e) =>
-      !input.pois.some((p) => p.internalId === e.poiId) ||
-      !(
-        [e.from.id, e.to.id].includes(e.poiId) &&
-        [e.from.id, e.to.id].includes(e.nodeId)
-      ),
-  ).length;
-  const paired = edges.filter((e) =>
-    edges.some(
-      (other) =>
-        other.poiId === e.poiId &&
-        other.nodeId === e.nodeId &&
-        other.direction !== e.direction &&
-        other.provenance.routeEvidence?.some(
-          (r) => r.direction === other.direction,
-        ),
-    ),
-  ).length;
-  const walking = edges.filter((e) => e.modes.walking.status === "resolved");
-  const realWalking = walking.filter(
-    (e) =>
-      Number.isFinite(e.walkingRouteDistanceM) &&
-      e.walkingRouteDistanceM > 0 &&
-      e.walkingDurationMin > 0 &&
-      e.provenance.routeEvidence?.length,
-  ).length;
-  const capped = input.pois.filter(
-    (p) =>
-      combined.decisions.filter(
-        (d) => d.poiId === p.internalId && d.decision === "RETAIN",
-      ).length <= input.config.maxTotalNodesPerPoi,
-  ).length;
-  const usefulRole = completeness.filter(
-    (p) =>
-      p.usefulDistinctNodes > 0 &&
-      p.accessRoles.some((r) =>
-        ["local_node", "tourism_gateway", "special_access"].includes(r),
-      ),
-  ).length;
-  const g = [
-    gate(
-      "Bidirectional independent usable evidence",
-      paired,
-      edges.length,
-      1,
-      edges.length ? paired / edges.length : null,
-      edges.length > 0 && paired === edges.length,
-      "poi-transport-access-edges.jsonl",
-    ),
-    gate(
-      "Walking route distance/time reality",
-      realWalking,
-      walking.length,
-      1,
-      walking.length ? realWalking / walking.length : null,
-      realWalking === walking.length,
-      "mode-resolution-coverage.json",
-    ),
-    gate(
-      "Useful local/tourism role coverage",
-      usefulRole,
-      n,
-      1,
-      usefulRole / n,
-      usefulRole === n,
-      "access-role-coverage.json",
-    ),
-    gate(
-      "Bounded spatial candidate degree",
-      capped,
-      n,
-      1,
-      capped / n,
-      capped === n,
-      "candidate-node-decisions.jsonl",
-    ),
-    gate(
-      "Canonical supporting evidence hash",
-      input.preflight.canonical.supportingSampleManifest.hashMatches ? 1 : 0,
-      1,
-      1,
-      input.preflight.canonical.supportingSampleManifest.hashMatches ? 1 : 0,
-      input.preflight.canonical.supportingSampleManifest.hashMatches,
-      "manifest.json#/canonical/supportingSampleManifest",
-    ),
-    gate(
-      "Canonical scan coverage",
-      combined.scans.length,
-      n,
-      1,
-      combined.scans.length / n,
-      combined.scans.length === n,
-      "poi-access-completeness.json",
-    ),
-    gate(
-      "Explicit result coverage",
-      completeness.length,
-      n,
-      1,
-      completeness.length / n,
-      completeness.length === n,
-      "poi-access-completeness.json",
-    ),
-    gate(
-      "Usable access POI coverage",
-      usable,
-      n,
-      1,
-      usable / n,
-      usable === n,
-      "poi-access-completeness.json",
-    ),
-    gate(
-      "Resolved usable-mode POI coverage",
-      usable,
-      n,
-      1,
-      usable / n,
-      usable === n,
-      "mode-resolution-coverage.json",
-    ),
-    gate(
-      "Mean useful nodes per POI",
-      completeness.reduce((s, p) => s + p.usefulDistinctNodes, 0),
-      n,
-      ">= " + input.config.targetMinNodesPerPoi,
-      nodeStats.mean,
-      nodeStats.mean >= input.config.targetMinNodesPerPoi,
-      "poi-access-completeness.json",
-    ),
-    gate(
-      "Median useful nodes per POI",
-      null,
-      n,
-      ">= " + input.config.targetMinNodesPerPoi,
-      nodeStats.median,
-      nodeStats.median >= input.config.targetMinNodesPerPoi,
-      "poi-access-completeness.json",
-    ),
-    gate(
-      "POI with zero useful nodes",
-      n - usable,
-      n,
-      0,
-      n - usable,
-      usable === n,
-      "under-target-pois.json",
-    ),
-    gate(
-      "Under-target POI without exhaustion proof",
-      missingProof,
-      under.length,
-      0,
-      missingProof,
-      missingProof === 0,
-      "candidate-exhaustion-proofs.jsonl",
-    ),
-    gate(
-      "Accepted-edge essential fields",
-      essential,
-      edges.length,
-      1,
-      edges.length ? essential / edges.length : null,
-      edges.length > 0 && essential === edges.length,
-      "poi-transport-access-edges.jsonl",
-    ),
-    gate(
-      "NODE_NOT_ACCEPTED",
-      invalidNodes,
-      edges.length,
-      0,
-      invalidNodes,
-      invalidNodes === 0,
-      "node-downstream-admission.jsonl",
-    ),
-    gate(
-      "IDENTITY_MISMATCH",
-      invalidIds,
-      edges.length,
-      0,
-      invalidIds,
-      invalidIds === 0,
-      "poi-transport-access-edges.jsonl",
-    ),
-    gate(
-      "Duplicate accepted edge",
-      edges.length - new Set(edges.map((e) => e.edgeId)).size,
-      edges.length,
-      0,
-      edges.length - new Set(edges.map((e) => e.edgeId)).size,
-      new Set(edges.map((e) => e.edgeId)).size === edges.length,
-      "poi-transport-access-edges.jsonl",
-    ),
-    gate(
-      "Accepted-node provenance",
-      admitted.filter(
-        (a) => a.sourceRefs.length && a.archiveSha256 && a.bindingSha256,
-      ).length,
-      admitted.length,
-      1,
-      admitted.length
-        ? admitted.filter(
-            (a) => a.sourceRefs.length && a.archiveSha256 && a.bindingSha256,
-          ).length / admitted.length
-        : null,
-      admitted.length > 0 &&
-        admitted.every(
-          (a) => a.sourceRefs.length && a.archiveSha256 && a.bindingSha256,
-        ),
-      "node-downstream-admission.jsonl",
-    ),
-    gate(
-      "Accepted-edge provenance",
-      edges.filter((e) => e.provenance.routeEvidence?.length).length,
-      edges.length,
-      1,
-      edges.length
-        ? edges.filter((e) => e.provenance.routeEvidence?.length).length /
-            edges.length
-        : null,
-      edges.length > 0 &&
-        edges.every((e) => e.provenance.routeEvidence?.length),
-      "poi-transport-access-edges.jsonl",
-    ),
-    gate(
-      "Low-quality anomaly count",
-      anomalies.filter((a) => a.reason !== "EXTREME_DETOUR" || !a.reviewed)
+export const acceptanceFor = topologyAcceptance;
+function iterationRecords(input, combined, acceptance) {
+  return [
+    ...(input.observedIterations ?? []),
+    {
+      iteration: (input.observedIterations?.at(-1)?.iteration ?? 0) + 1,
+      stage: "CURRENT_FULL_REPLAY_AND_PROOF_VALIDATION",
+      inputFingerprint: input.inputFingerprint,
+      admittedNodes: input.admissions.filter((n) => n.downstream085Authorized)
         .length,
-      edges.length,
-      0,
-      anomalies.filter((a) => a.reason !== "EXTREME_DETOUR" || !a.reviewed)
-        .length,
-      anomalies.every((a) => a.reason === "EXTREME_DETOUR" && a.reviewed),
-      "detour-anomalies.jsonl",
-    ),
-    gate(
-      "Rejected route observations",
-      combined.rejectedObservations.length,
-      input.observations.length,
-      0,
-      combined.rejectedObservations.length,
-      combined.rejectedObservations.length === 0,
-      "batches/",
-    ),
-    gate(
-      "Canonical access contradictions",
-      input.blockers.filter((b) => b.allGeneralTouristModesBlocked).length,
-      n,
-      0,
-      input.blockers.filter((b) => b.allGeneralTouristModesBlocked).length,
-      !input.blockers.some((b) => b.allGeneralTouristModesBlocked),
-      "inputs/canonical-access-blockers.json",
-    ),
-    gate(
-      "Full deterministic rebuild",
-      1,
-      1,
-      1,
-      1,
-      true,
-      "manifest.json#/execution/deterministicRebuild",
-    ),
-  ];
-  return {
-    schemaVersion: "1.0",
-    allPass: g.every((x) => x.status === "PASS"),
-    status: g.every((x) => x.status === "PASS")
-      ? "PASS / READY_FOR_REVIEW"
-      : "FAIL",
-    inputFingerprint: input.inputFingerprint,
-    gates: g,
-  };
-}
-function makeProofs(input, combined) {
-  return input.blockers
-    .filter((b) => b.allGeneralTouristModesBlocked)
-    .map((b) => ({
-      type: "CANDIDATE_EXHAUSTION_PROOF",
-      status: "CANDIDATE_EXHAUSTION_PROOF",
-      scope: "USABLE_ACCESS_TO_THE_UNCHANGED_PERMANENTLY_CLOSED_VENUE",
-      poiId: b.poiId,
-      masterCode: b.masterCode,
-      name: b.name,
-      sourceRefs: b.sourceRefs,
-      stagedSearch: combined.scans.find((s) => s.poiId === b.poiId),
-      allDiscoveredCandidates: combined.decisions
-        .filter((d) => d.poiId === b.poiId)
-        .map((d) => ({
-          nodeId: d.nodeId,
-          rank: d.rank,
-          sourceRecordSha256: d.sourceRecordSha256,
-          straightDistanceM: d.straightDistanceM,
-          topologyDecision: d.reason,
-          usableAccessDecision: "REJECT_CLOSED_CANONICAL_VENUE",
-        })),
-      discardedAtS12Discovery:
-        input.discoveryScans.find((s) => s.poiId === b.poiId)
-          ?.truncatedSourceRecordHashes ?? [],
-      alternativesReviewed: [
-        "Local rail, bus and taxi to surrounding property",
-        "Current operator closure statement",
-        "Reopening/successor search",
-      ],
-      monotoneBlocker:
-        "Adding a station, route metric or larger radius cannot reopen this exact closed venue. A route to a surrounding property or successor is an identity substitution.",
-      requiredExternalChange: b.resolutionBoundary,
-      doesNotClaimAllInternetSourcesExhausted: true,
-    }));
-}
-function iterationRecords(input, finalCombined, acceptance) {
-  const baseAdmissions = input.admissions.filter(
-    (n) => n.sourceId === "mlit-s12-fy2024",
-  );
-  const blankResearch = input.research.map((r) => ({ ...r, gatewayNames: [] }));
-  const stages = [
-    {
-      name: "LICENSED_S12_TOPOLOGY",
-      admissions: baseAdmissions,
-      research: blankResearch,
-      reason:
-        "Expand to official operator/tourism guidance and special transport; topology alone cannot establish walking.",
-    },
-    {
-      name: "OFFICIAL_GUIDANCE_AND_SPECIAL_ACCESS_REVIEW",
-      admissions: baseAdmissions,
-      research: input.research,
-      reason:
-        "Add CC BY bus-stop feeds; inspect missing last legs, directions, licenses and endpoint identity.",
-    },
-    {
-      name: "CC_BY_GTFS_LOCAL_BUS_EXPANSION",
-      admissions: input.admissions,
-      research: input.research,
-      reason:
-        "Recheck closure/reopening, admission conflicts and every unresolved directional candidate.",
-    },
-  ];
-  let previousNodes = 0,
-    previousEdges = 0,
-    previousUnresolved = input.pois.length;
-  const rows = stages.map((stage, index) => {
-    const data = generateBatch(
-      input.pois,
-      stage.admissions,
-      stage.research,
-      input.observations,
-      input.rights,
-      input.config,
-      input.blockers,
-    );
-    const admitted = stage.admissions.filter(
-      (n) => n.downstream085Authorized,
-    ).length;
-    const r = {
-      iteration: index + 1,
-      stage: stage.name,
-      scope: "OFFLINE_REPLAY_OF_ACTUAL_RESEARCH_AND_SOURCE_EXPANSION",
-      affectedPoiIds: data.unresolved.map((p) => p.poiId),
+      topologyEdges: combined.edges.length,
+      pendingDirectedCandidates: combined.pending.length,
+      reviewedPoiCount: input.discoveryReview?.length ?? 0,
       failedGates: acceptance.gates
         .filter((g) => g.status === "FAIL")
         .map((g) => g.name),
-      discoveredNodes: stage.admissions.length,
-      admittedNodes: admitted,
-      admittedDelta: admitted - previousNodes,
-      rejectedNodes: stage.admissions.length - admitted,
-      edgesAdded: Math.max(0, data.edges.length - previousEdges),
-      edgesRemoved: Math.max(0, previousEdges - data.edges.length),
-      unresolvedReduced: previousUnresolved - data.unresolved.length,
-      nextAction: stage.reason,
-      globalDiscoveryFixpoint: false,
+      globalTopologyDiscoveryFixpoint:
+        acceptance.globalTopologyDiscoveryFixpoint,
+    },
+  ];
+}
+export function baselineRevalidation(input) {
+  const records = (input.baselineNodes?.records ?? []).map((old) => {
+    const now = input.admissions.find(
+      (n) =>
+        n.nodeId === old.nodeId &&
+        n.sourceRecordSha256 === old.sourceRecordSha256,
+    );
+    const changedFields = Object.keys(old).filter(
+      (k) => stable(old[k]) !== stable(now?.[k] ?? null),
+    );
+    return {
+      nodeId: old.nodeId,
+      sourceRecordSha256: old.sourceRecordSha256,
+      previousDecision: old.decision,
+      status: changedFields.length ? "CHANGED_OR_MISSING" : "PRESERVED",
+      changedFields,
     };
-    previousNodes = admitted;
-    previousEdges = data.edges.length;
-    previousUnresolved = data.unresolved.length;
-    return r;
   });
-  rows.push({
-    iteration: 4,
-    stage: "FINAL_INPUT_AND_CONSTRAINT_RECHECK",
-    scope: "COMPLETE_APPROVED_INPUT_REPLAY_NOT_A_NEW_WEB_DISCOVERY_PASS",
-    affectedPoiIds: finalCombined.unresolved.map((p) => p.poiId),
-    failedGates: acceptance.gates
-      .filter((g) => g.status === "FAIL")
-      .map((g) => g.name),
-    discoveredNodes: 0,
-    admittedNodes: 0,
-    rejectedNodes: 0,
-    edgesAdded: 0,
-    edgesRemoved: 0,
-    unresolvedReduced: 0,
-    globalDiscoveryFixpoint: false,
-    closedVenueConstraintFixpointPoiIds: input.blockers
-      .filter((b) => b.allGeneralTouristModesBlocked)
-      .map((b) => b.poiId),
-    nextAction:
-      "No ALL PASS is possible with the unchanged closed Canonical venues. Research of other POIs is not certified exhaustive; upstream lifecycle/endpoint adjudication and reusable complete routes remain necessary.",
-  });
-  return rows;
+  const baselineCandidates = (input.baseline ?? []).map((e) => ({
+    edgeId: e.edgeId,
+    poiId: e.poiId,
+    nodeId: e.nodeId,
+    sha256: digest(e),
+  }));
+  return {
+    baseHead: input.baselineNodes?.baseHead ?? null,
+    baselineAdmissionGitBlobSha256: input.baselineNodes?.gitBlobSha256 ?? null,
+    status: records.every((r) => r.status === "PRESERVED") ? "PASS" : "FAIL",
+    originalAdmitted:
+      input.baselineNodes?.records.filter((r) => r.downstream085Authorized)
+        .length ?? 0,
+    originalHeld:
+      input.baselineNodes?.records.filter((r) => !r.downstream085Authorized)
+        .length ?? 0,
+    missingOrChanged: records.filter((r) => r.status !== "PRESERVED").length,
+    records,
+    preservedDirectedCandidates: baselineCandidates.length,
+    baselineSha256: digest(input.baseline ?? []),
+    candidateRecordChecksums: baselineCandidates,
+    preservationPath: "inputs/baseline-directed-candidates.jsonl",
+    baselineCandidatesAreDiscoveryNotAutomaticAcceptance: true,
+  };
 }
 export function buildArtifacts(input) {
   const batches = chunks(input.pois, input.config.batchSize).map((pois, i) =>
@@ -679,11 +412,19 @@ export function buildArtifacts(input) {
       candidateNodeCount: combined.decisions.filter(
         (d) => d.poiId === p.internalId && d.decision === "RETAIN",
       ).length,
-      sourceRefs: rs.sourceRefs,
+      sourceRefs: [
+        ...new Set([
+          ...rs.sourceRefs,
+          ...es.flatMap((e) => e.topologyEvidenceRefs ?? []),
+        ]),
+      ],
+      canonicalAdjudicationRequired: input.blockers.some(
+        (b) => b.poiId === p.internalId,
+      ),
       barrierReviewTriggers: rs.barrierReviewTriggers,
     };
   });
-  const proofs = makeProofs(input, combined),
+  const proofs = discoveryProofs(input, combined, completeness),
     anomalies = qualityAnomalies(edges, input.pois, input.config);
   const acceptance = acceptanceFor(
     input,
@@ -707,6 +448,63 @@ export function buildArtifacts(input) {
         ),
         usablePoiCoverage: rate(
           completeness.filter((p) => p.resolvedModes.includes(m)).length,
+          input.pois.length,
+        ),
+      },
+    ]),
+  );
+  modes.directional = Object.fromEntries(
+    ["POI_TO_NODE", "NODE_TO_POI"].map((direction) => [
+      direction,
+      Object.fromEntries(
+        ["walking", "transit", "taxi"].map((mode) => [
+          mode,
+          rate(
+            edges.filter(
+              (e) =>
+                e.direction === direction &&
+                e.modes[mode].status === "resolved",
+            ).length,
+            edges.filter((e) => e.direction === direction).length,
+          ),
+        ]),
+      ),
+    ]),
+  );
+  modes.optional = Object.fromEntries(
+    [
+      "accessibility",
+      "stairs",
+      "elevationGainM",
+      "detourRatio",
+      "durationP90Min",
+    ].map((field) => [
+      field,
+      {
+        edges: rate(
+          edges.filter((e) =>
+            Object.values(e.modes).some(
+              (m) =>
+                m.status === "resolved" &&
+                m.metrics?.[field] != null &&
+                m.metrics[field] !== "unknown",
+            ),
+          ).length,
+          edges.length,
+        ),
+        pois: rate(
+          completeness.filter((p) =>
+            edges.some(
+              (e) =>
+                e.poiId === p.poiId &&
+                Object.values(e.modes).some(
+                  (m) =>
+                    m.status === "resolved" &&
+                    m.metrics?.[field] != null &&
+                    m.metrics[field] !== "unknown",
+                ),
+            ),
+          ).length,
           input.pois.length,
         ),
       },
@@ -753,6 +551,51 @@ export function buildArtifacts(input) {
   const artifacts = {
     ...Object.assign({}, ...batches.map((b) => b.artifacts)),
     "poi-transport-access-edges.jsonl": jsonl(edges),
+    "topology-confirmed-edges.jsonl": jsonl(edges),
+    "route-metric-unresolved.jsonl": jsonl(
+      edges.flatMap((e) =>
+        ["walking", "transit", "taxi"]
+          .filter((m) => e.modes[m].status !== "resolved")
+          .map((m) => ({
+            edgeId: e.edgeId,
+            poiId: e.poiId,
+            nodeId: e.nodeId,
+            direction: e.direction,
+            mode: m,
+            status: e.modes[m].status.toUpperCase(),
+            reason:
+              e.directionalAccessStatus === "UNAVAILABLE"
+                ? "DOCUMENTED_DIRECTIONAL_PROHIBITION"
+                : "NO_LEGAL_ENDPOINT_BOUND_DIRECTIONAL_METRICS",
+            topologyStatus: e.topologyStatus,
+            topologyPreserved: true,
+            sourceRefs: e.topologyEvidenceRefs,
+            rightsDecisionPath: "inputs/source-rights.json",
+            distanceM: null,
+            durationTypicalMin: null,
+            durationP90Min: null,
+            stairs: null,
+            elevationGainM: null,
+            accessibility: null,
+            detourRatio: null,
+          })),
+      ),
+    ),
+    "canonical-adjudication-required.json": objectText({
+      authoritativeCanonicalCount: input.pois.length,
+      recordsRemovedByB: 0,
+      upstreamFilesModified: false,
+      cases: input.blockers.map((b) => ({
+        ...b,
+        classification: b.allGeneralTouristModesBlocked
+          ? "LIFECYCLE_INVALID"
+          : b.reason.includes("RESTRICTED")
+            ? "PUBLIC_ACCESS_RESTRICTED"
+            : "CANONICAL_ENDPOINT_AMBIGUOUS",
+      })),
+      supportingHash: input.preflight.canonical.supportingSampleManifest,
+    }),
+    "baseline-revalidation.json": objectText(baselineRevalidation(input)),
     "poi-access-unresolved.jsonl": jsonl(combined.unresolved),
     "poi-access-score-traces.jsonl": jsonl(combined.traces),
     "candidate-node-decisions.jsonl": jsonl(combined.decisions),
@@ -765,9 +608,9 @@ export function buildArtifacts(input) {
         )
         .map((p) => ({
           ...p,
-          exhaustionProof: proofs.some((x) => x.poiId === p.poiId)
-            ? "CANDIDATE_EXHAUSTION_PROOF"
-            : "NOT_ESTABLISHED",
+          exhaustionProof:
+            proofs.find((x) => x.poiId === p.poiId)?.status ??
+            "DISCOVERY_IN_PROGRESS",
         })),
     ),
     "candidate-exhaustion-proofs.jsonl": jsonl(proofs),
@@ -788,15 +631,11 @@ export function buildArtifacts(input) {
     schemaVersion: "1.0",
     task: "TASK-085-B",
     revision: input.config.revision,
-    status: acceptance.allPass
-      ? "PASS / READY_FOR_REVIEW"
-      : input.blockers.some((b) => b.allGeneralTouristModesBlocked)
-        ? "BLOCKED_CANONICAL_ACCESS_CONTRADICTION"
-        : "PARTIAL_ACCESS_EVIDENCE_REQUIRED",
+    status: acceptance.status,
     acceptanceStatus: acceptance.status,
-    globalDiscoveryFixpointProven: false,
+    globalTopologyDiscoveryFixpoint: acceptance.globalTopologyDiscoveryFixpoint,
     blockingScope:
-      "Two unchanged Canonical venues have closed; ALL PASS is impossible under current identity/lifecycle authority. Other POI research is not claimed globally exhausted.",
+      "Topology and route metrics evaluated separately; see failed topology gates and explicit per-POI source/identity proof.",
     ...input.preflight,
     inputFingerprint: input.inputFingerprint,
     transportAdmission: {
@@ -823,7 +662,7 @@ export function buildArtifacts(input) {
         (p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
       ).length,
       exhaustionProofCoverage: rate(
-        proofs.length,
+        proofs.filter((p) => p.status === "CANDIDATE_EXHAUSTION_PROOF").length,
         completeness.filter(
           (p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
         ).length,
@@ -861,22 +700,27 @@ export function buildArtifacts(input) {
         admitted.length,
       ),
       acceptedEdgeProvenance: rate(
-        edges.filter((e) => e.provenance.routeEvidence?.length).length,
+        edges.filter((e) => e.provenance.topologyEvidence?.length).length,
         edges.length,
       ),
     },
     providerLicenseDecision: input.rights,
     execution: {
       deterministicRebuild:
-        "PASS_TWO_INDEPENDENT_FULL_ARTIFACT_BUILDS_COMPARED_BEFORE_WRITE",
+        input.executionVerification?.deterministicRebuild ?? "NOT_RUN",
       providerBatchRequests: 0,
       rawRouteProviderPayloadsPersisted: 0,
       task086Started: false,
-      autoFixIterationCount: 4,
-      batchIntegrityQa: "PASS",
+      autoFixIterationCount: iterationRecords(input, combined, acceptance)
+        .length,
+      batchIntegrityQa:
+        input.executionVerification?.receiptIntegrity ?? "NOT_RUN",
       accessAcceptance: acceptance.status,
-      globalDiscoveryFixpoint: false,
-      closedVenueConstraintProofCount: proofs.length,
+      globalTopologyDiscoveryFixpoint:
+        acceptance.globalTopologyDiscoveryFixpoint,
+      candidateExhaustionProofCount: proofs.filter(
+        (p) => p.status === "CANDIDATE_EXHAUSTION_PROOF",
+      ).length,
     },
     wbs715Status: acceptance.allPass ? "待审查" : "进行中",
     sourceFiles: input.sourceFiles,
@@ -885,15 +729,16 @@ export function buildArtifacts(input) {
     ),
   };
   // preflight.status describes national input selection, not the run outcome.
-  manifest.status = acceptance.allPass
-    ? "PASS / READY_FOR_REVIEW"
-    : input.blockers.some((b) => b.allGeneralTouristModesBlocked)
-      ? "BLOCKED_CANONICAL_ACCESS_CONTRADICTION"
-      : "PARTIAL_ACCESS_EVIDENCE_REQUIRED";
+  manifest.status = acceptance.status;
   artifacts["manifest.json"] = objectText(manifest);
   return { artifacts, batches, manifest, acceptance };
 }
 export function validateReceipt(out, receipt) {
+  return validateReceiptContents(receipt, (file) =>
+    readFileSync(join(out, file), "utf8"),
+  );
+}
+export function validateReceiptContents(receipt, readArtifact) {
   const { receiptSha256, ...unsigned } = receipt;
   assert.equal(receiptSha256, digest(unsigned), "CORRUPTED_RECEIPT");
   assert.equal(receipt.integrityQa, "PASS", "CORRUPTED_RECEIPT_QA");
@@ -902,9 +747,9 @@ export function validateReceipt(out, receipt) {
       /^batches\/\d{4}\/[a-z-]+\.jsonl$/.test(file),
       "UNSAFE_RECEIPT_PATH",
     );
-    assert.ok(existsSync(join(out, file)), "MISSING_BATCH_ARTIFACT:" + file);
+    assert.ok(readArtifact(file) != null, "MISSING_BATCH_ARTIFACT:" + file);
     assert.equal(
-      sha256(readFileSync(join(out, file))),
+      sha256(readArtifact(file)),
       sha,
       "CORRUPTED_BATCH_ARTIFACT:" + file,
     );
@@ -924,6 +769,36 @@ export function execute({
   input = null,
 } = {}) {
   input ??= loadInputs(root);
+  const probe = buildArtifacts(input);
+  assert.deepEqual(
+    probe.artifacts,
+    buildArtifacts(input).artifacts,
+    "NON_DETERMINISTIC_FULL_REBUILD",
+  );
+  for (const b of probe.batches) {
+    const reader = (f) => probe.artifacts[f];
+    validateReceiptContents(b.receipt, reader);
+    assert.throws(
+      () =>
+        validateReceiptContents(
+          { ...b.receipt, poiCount: b.receipt.poiCount + 1 },
+          reader,
+        ),
+      /CORRUPTED_RECEIPT/,
+    );
+    assert.throws(
+      () => validateReceiptContents(b.receipt, () => "corrupted"),
+      /CORRUPTED_BATCH_ARTIFACT/,
+    );
+  }
+  input = {
+    ...input,
+    executionVerification: {
+      deterministicRebuild:
+        "PASS_TWO_INDEPENDENT_FULL_ARTIFACT_BUILDS_COMPARED_BEFORE_WRITE",
+      receiptIntegrity: "PASS_GENERATED_RECEIPTS_AND_INJECTED_CORRUPTION",
+    },
+  };
   const built = buildArtifacts(input),
     second = buildArtifacts(input);
   assert.deepEqual(
@@ -1042,5 +917,12 @@ if (
   const rerunBatch = pos < 0 ? null : Number(args[pos + 1]);
   const report = execute({ mode, rerunBatch });
   console.log(JSON.stringify(report, null, 2));
-  if (mode !== "check" && report.acceptance !== "PASS") process.exitCode = 2;
+  if (
+    mode !== "check" &&
+    ![
+      "PASS / READY_FOR_REVIEW",
+      "READY_EXCEPT_CANONICAL_ADJUDICATION",
+    ].includes(report.acceptance)
+  )
+    process.exitCode = 2;
 }
