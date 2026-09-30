@@ -521,6 +521,7 @@ export function topologyAcceptance(input, combined, completeness, proofs) {
     (p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
   );
   const auditedExceptionsOnly =
+    !input.targetedRepair &&
     replay.status === "PASS" &&
     !unresolvedDiscovery.length &&
     failed.length > 0 &&
@@ -533,15 +534,40 @@ export function topologyAcceptance(input, combined, completeness, proofs) {
     allPass = !failed.length;
   const status = allPass
     ? "PASS / READY_FOR_REVIEW"
-    : auditedExceptionsOnly
-      ? EXCEPTION_STATUS
-      : input.canonicalReplay
-        ? "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY"
-        : nonCanonicalPass
-          ? "READY_EXCEPT_CANONICAL_ADJUDICATION"
-          : !unresolvedDiscovery.length
-            ? "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT"
-            : "REWORK_IN_PROGRESS";
+    : input.targetedRepair
+      ? replay.status === "FAIL"
+        ? "BLOCKED_TARGETED_REPAIR_INTEGRITY"
+        : failed.some(
+              (g) =>
+                ![
+                  ...exceptionGateNames,
+                  "globalTopologyDiscoveryFixpoint",
+                ].includes(g.name),
+            )
+          ? "BLOCKED_TARGETED_REPAIR_GATES"
+          : input.targetedRepair.phase ===
+                "PUBLIC_SOURCE_REVIEW_COMPLETED_WITH_GAPS" &&
+              input.targetedRepair.handoffAuthority ===
+                "USER_2026_10_01_SEARCH_FIRST_THEN_RETAIN_UNRESOLVED_FOR_A" &&
+              affected.every((p) =>
+                input.targetedRepair.findings.some(
+                  (f) =>
+                    f.poiId === p.poiId &&
+                    f.status ===
+                      "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+                ),
+              )
+            ? "PARTIAL_TARGETED_EVIDENCE_REQUIRED"
+            : "REWORK_IN_PROGRESS"
+      : auditedExceptionsOnly
+        ? EXCEPTION_STATUS
+        : input.canonicalReplay
+          ? "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY"
+          : nonCanonicalPass
+            ? "READY_EXCEPT_CANONICAL_ADJUDICATION"
+            : !unresolvedDiscovery.length
+              ? "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT"
+              : "REWORK_IN_PROGRESS";
   return {
     schemaVersion: "2.0",
     status,
@@ -555,8 +581,10 @@ export function topologyAcceptance(input, combined, completeness, proofs) {
       threshold: g.threshold,
       status: g.status,
       affectedPoiIds: (g.name === "Under-target without exhaustion proof"
-        ? affected
-        : valid.filter((p) => !p.usefulDistinctNodes)
+        ? missing
+        : g.name === "globalTopologyDiscoveryFixpoint"
+          ? unresolvedDiscovery
+          : valid.filter((p) => !p.usefulDistinctNodes)
       ).map((p) => p.poiId),
     })),
     userAcceptanceRequired: auditedExceptionsOnly,

@@ -45,7 +45,8 @@ import {
   rebindDiscoveryReviews,
   EXCEPTION_STATUS,
 } from "../tools/transport/task-085-canonical-replay.mjs";
-const input = loadInputs();
+// Historical final-replay invariant tests intentionally exercise the frozen base.
+const input = loadInputs(ROOT, { includeTargeted: false });
 const canonical = input.pois[0];
 const node = input.admissions.find(
   (n) => n.downstream085Authorized && n.sourceId === "mlit-s12-fy2024",
@@ -750,11 +751,17 @@ test("085 201-POI replay checkpoints at 200 and detects unsafe receipt paths", (
     clean(out);
   }
 });
-test("085 committed artifact receipt and all deterministic files match current inputs", () => {
-  assert.equal(
-    execute({ root: ROOT, mode: "check" }).acceptance,
-    EXCEPTION_STATUS,
-  );
+test("085 historical replay remains reproducible separately from new repair evidence", () => {
+  const out = temporary();
+  try {
+    execute({ input, out, mode: "rebuild" });
+    assert.equal(
+      execute({ input, out, mode: "check" }).acceptance,
+      EXCEPTION_STATUS,
+    );
+  } finally {
+    clean(out);
+  }
 });
 
 test("085 replay receipt rejects membership, coordinate, eligibility, source and receipt drift", () => {

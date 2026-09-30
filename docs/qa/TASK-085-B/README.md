@@ -1,53 +1,29 @@
-# TASK-085-B Post-Canonical Final Replay QA
+# TASK-085-B 定向补证 QA
 
-**READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS**. WBS 7.15 = 待审查（audited fixpoint exceptions）, not completed. Draft PR #464 only; no merge, auto-merge or TASK-086.
+**PARTIAL_TARGETED_EVIDENCE_REQUIRED**。五项达到目标，四项经自行检索后仍需资料。WBS 7.15 进行中；20 PASS / 4 FAIL，data allPass=false，global fixpoint=IN_PROGRESS。旧九项 acceptance-exception 状态已撤销，不得继续引用旧 Excel 作为当前结果。
 
-Raw membership/output coverage is 100/100. Authoritative assessment count is 95, confirmed coverage 94/95, >=3 useful nodes 86/95, mean 3.578947, median 3. All 5,200 admitted nodes, 344 HOLD, 340 relationships / 680 directed topology edges and candidate decisions are conserved. A/Canonical gates PASS. Twenty-one topology gates PASS, three remain FAIL exclusively for the nine audited fixpoint cases.
+原 5,200 admitted / 344 HOLD 和 680 directed edges 全部保留；现为 5,202 / 344、347 relationships / 694 directed edges，raw100 / assessed95，94/95 有 topology，91/95 >=3。全部 Canonical gates PASS。详见 [Result](../../tasks/RESULT-TASK-085-b-poi-transport-node-access-edge-generation.md) 与 [九项证据审计和四项交接](targeted-nine-case-source-audit.md)。
 
-## Integration
+## 离线复现
 
-Latest develop: `5123966f62dbe9587a3bbe38e877ccf3ea959b80`. Normal merge into B: `509c9fda40bb443b5a9c4a5e6ef36e875e713744`. Amendment `8ac80bf5d684a34145489f27c6cf2e6bd1e22e67` is included. Five owner-adjudicated records retain identity and raw outputs, with no new visitor endpoint or replacement. Pending Canonical adjudication count is zero.
-
-The [Result](../../tasks/RESULT-TASK-085-b-poi-transport-node-access-edge-generation.md) contains the full authority hashes, nine-case acceptance table, old/new proof hashes and exact failed-gate values. [Supporting-hash audit](canonical-supporting-hash-audit.md) preserves the historical CRLF diagnosis and records PR #465's authorized correction.
-
-## Reproduce offline
-
-~~~sh
+```sh
+python tools/transport/task-085-targeted-source-check.py
 node --import ./tests/register-route-ts.mjs tools/transport/task-085-canonical-replay.mjs --check
+node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --rebuild
 node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --check
 node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --resume
 node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --rerun-batch 1
-node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --rebuild
-node --import ./tests/register-route-ts.mjs --test tests/task-085-b-gate0.test.mjs
-~~~
+node --import ./tests/register-route-ts.mjs --test tests/task-085-b-gate0.test.mjs tests/task-085-b-targeted-repair.test.mjs
+```
 
-No extractor or network discovery command is part of this replay. The receipt audit uses local Git history (fetch-depth 0) to verify the frozen B baseline and merged develop. `--write` is only for explicitly rebuilding that bridge from verified Git blobs; ordinary generation consumes and validates the committed receipt. All original input files remain byte-identical.
+生成器的 --rebuild / --resume 对当前 PARTIAL 返回非零（CLI exit2），输出仍完整且通过内部确定性比较；这是真实的 data gate，不是构建崩溃。`--check` 只检查已有全部生成文件字节，通过则 exit0，但输出 acceptance 仍是 PARTIAL；它不改变数据，也不代表 data PASS。测试用例将 data status 与 artifact integrity 分开，绝不将 failed threshold 改为 PASS。
 
-The replay bridge permits Canonical rebinding only after identity/coordinate/membership, all 95 unchanged records, new owner authority and all original source/review/license inputs validate. Source reviews retain their historical hash on disk. The new Canonical fingerprint invalidates the old intact batch receipt; subsequent resume checksum-skips. One batch contains 100 records under the configured 200 limit. Synthetic tests cover 200/201.
+原21项历史契约测试使用冻结 baseline，新增8项测试覆盖当前定向层：原680条边/全部 admissions/HOLD 不变；receipt/archive corruption；Canonical/scope/source row drift；许可/精确 name/operator join；重复/out-of-scope事实；旧 fixpoint撤销；实际 rebuild/resume/single-batch-rerun/corruption恢复；committed artifacts 精确字节。新增两条 licensed GTFS 行另由 Python verifier 对归档逐项验证，不依赖网络。
 
-The generator returns exit 0 for a deterministic run reaching the explicitly authorized user-acceptance status. That exit code is not data PASS: final-acceptance-gate.json retains `allPass=false`, three failed hard gates and `userAcceptanceRequired=true`. `--check` checks exact artifact bytes without changing them. Unresolved metrics remain null and never delete confirmed topology.
+未重新全国 discovery；当前四项查询失败/资料缺失不当作物理穷尽。保留完整机器来源收据和交接缺口；无额外 Canonical exclusions，未合成 route metrics。Provider batch=0。
 
-## Evidence and tests
+## 验证记录
 
-- [Replay audit](../../../data/transport/access/post-canonical-replay-audit.json): all nine proof validations, exact missing evidence, unchanged source/rights/admission/candidate hashes and no new blocker-releasing evidence from PR #465.
-- [Replay bridge](../../../data/transport/access/inputs/post-canonical-replay.json): old/new authority, baseline record projections and every preserved input hash.
-- [Final gate](../../../data/transport/access/final-acceptance-gate.json): 21 PASS / 3 FAIL, no silent exception-to-PASS conversion.
-- [Completeness](../../../data/transport/access/poi-access-completeness.json): 100 explicit records, owner eligibility per record.
-- [Under-target](../../../data/transport/access/under-target-pois.json): exactly nine assessed cases; no owner exclusions counted as pending failures.
-- [Proofs](../../../data/transport/access/candidate-exhaustion-proofs.jsonl): nine SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF; zero physical exhaustion claims.
-- [Owner cases](../../../data/transport/access/canonical-adjudication-required.json): five resolved owner decisions, zero pending.
-- [Manifest](../../../data/transport/access/manifest.json): input/code hashes, separate raw/assessment counts, unresolved metric coverage and source-license decisions.
+本轮命令、日志 SHA256、退出状态与数据状态见 [local-validation.json](local-validation.json)。首次 Windows 全量运行与构建并行时出现 ENOSPC 和两个30秒子进程超时；清理本任务可重建产物后，最终全量运行使用 --test-concurrency=2，未修改测试超时、断言或公共行为。最终 exact-head workflow_dispatch Quality Gate 必须核对 headSha，结果记录在现有 Draft PR #464 body；代码 CI 通过不能消除四个 data gates。
 
-Twenty-one focused tests cover the original graph/rights/directional/topology/route/batch checks plus replay corruption, changed membership/coordinates/eligibility/source evidence, altered original reviews, a new non-fixpoint failure and exact preservation of nodes/edges/decisions. Actual temporary filesystem tests rebuild independently, compare every byte, skip valid receipts, invalidate changed input, inject corrupt receipts and artifacts, repair one batch, and reject unsafe receipt paths. No Provider metrics are synthesized.
-
-## Validation receipt
-
-[local-validation.json](local-validation.json) records final commands, exit status and local-log SHA256. Full regression uses --test-concurrency=4 on Windows to avoid unrelated child-process contention; no test timeout or public runtime behavior is changed. Focused checks are repeated within the final full suite after all code changes.
-
-Exact final B head and workflow_dispatch Quality Gate run are published in existing Draft PR #464 after push. The workflow must report that exact head, not an earlier head or PR merge ref. The green code gate does not erase the three failed topology thresholds.
-
-Stop at user acceptance of the nine factual data boundaries. No national S12/P11/GTFS rediscovery, rejected v1 usage, unreviewed v2 promotion, route-provider request, raw payload persistence, merge, auto-merge or TASK-086 execution.
-
-Final full regression: **2,850/2,850 PASS**, including all **21/21** focused tests after final code changes. Lint: 0 errors / 10 existing warnings. Typecheck, format and deployment validation PASS.
-
-Production build and standalone artifact re-verification: **PASS**, 1,908 files. Exact final-head CI receipt is in Draft PR #464.
+最终本地全量重跑 **2,858/2,858 PASS**，含 **29/29 TASK-085 focused tests**。Lint 0 errors / 10 existing warnings；typecheck、format、deployment validation、production build 和 standalone verification PASS（1,908 files）。GTFS source-row 校验和 Canonical replay receipt 校验 PASS。首次环境失败与后续完整成功均保留在 validation receipt。

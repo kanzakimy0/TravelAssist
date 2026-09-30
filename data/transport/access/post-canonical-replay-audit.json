@@ -1,453 +1,303 @@
 {
   "status": "PASS",
+  "mode": "USER_AUTHORIZED_TARGETED_REPAIR",
   "issues": [],
-  "receiptSha256": "5a41c3a6bb003a67e1fc7d038d7699a1f3aff4d90930a951aa27f46e3f4a07c9",
-  "latestDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-  "developMergeCommit": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
-  "previousHead": "f70c154a881fd6aa620481639aef0b2e76ff6a46",
+  "receiptSha256": "6e4120ec72992dade60cbba072ff8b8f33fd0aab08cebe181fb6d932771383f3",
   "nationwideDiscoveryPerformed": false,
+  "previousDirectedEdges": 680,
+  "preservedDirectedEdges": 680,
   "cases": [
     {
       "poiId": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
       "name": "飛水峡",
-      "confirmedUsefulNodes": 1,
-      "missingEvidenceType": [
-        "EXTERNAL_LICENSED_IDENTITY_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Prefectural gateway is JR Kami-Asou. The municipal interchange 上麻生駅 is named but has no exact licensed P11 identity; national named scan has no locality-qualified bus record. Shirakawa pocket-park guidance specifies road access, not Shirakawaguchi station. No official passenger ferry or aerial gateway to this gorge was established.",
-          "requiredExternalChange": "Municipality must publish reusable exact station-bus identity; tourism publisher must explicitly validate any additional gorge gateway. A railway signal box is not a tourist station; the Shirakawa viewpoint is not automatically the same entrance.",
-          "sourceRefs": [
-            "https://www.pref.gifu.lg.jp/page/367643.html",
-            "https://www.kankou-gifu.jp/spot/detail_4201.html",
-            "https://www.hichiso.jp/top/life/kurasi/bus/"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "ce7294045070ad14e34784119fe93755b03ed29e725d84f8194dbd82791e5765",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "18e9d8efc8b0dc644b7b1005d02a8f18865f37f9dadb750175ef3ce53a9565bf",
-        "namedGatewaySha256": "02a0c5a06d0069b895bcbbe0e621fe7c0b911ba16437753cfd76c85f0b0a92a2",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "b91d74735152e2d44ae2fa8b003a00d796607158d9a33c60dab21578d94ff2b7",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "ce7294045070ad14e34784119fe93755b03ed29e725d84f8194dbd82791e5765",
-        "namedGatewaySha256": "02a0c5a06d0069b895bcbbe0e621fe7c0b911ba16437753cfd76c85f0b0a92a2",
-        "sourceScanSha256": "b91d74735152e2d44ae2fa8b003a00d796607158d9a33c60dab21578d94ff2b7",
-        "factReviewSha256": "18e9d8efc8b0dc644b7b1005d02a8f18865f37f9dadb750175ef3ce53a9565bf",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "ad410860becf585c14b82095474eeb7959bc2e698370b895a779c365837f5616",
-      "currentProofSha256": "7fbd03263004c2c99885f4b63ef987b6beb7e36286be71e905bc94e44dd1708b",
-      "previousReviewSha256": "587d93261a95eb08a3704cb9cf81b35828954a2f5a4f82a6b52c568f49a8eff0",
-      "currentReviewSha256": "3e2b2e81e39f9498aa07d748231291367f5ddef0753708cd62b2aaff837b0f25",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "previousUsefulNodes": 1,
+      "confirmedUsefulNodes": 3,
+      "result": "TARGET_MET",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": null,
+      "finding": {
+        "name": "飛水峡",
+        "poiId": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+        "reviewedOn": "2026-10-01",
+        "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [
+          "上麻生駅",
+          "木の国七宗コミュニティ－センタ－前"
+        ],
+        "sourceRefs": [
+          "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus",
+          "https://www.hichiso.jp/top/life/kurasi/bus/",
+          "https://www.hichiso.jp/wp-content/uploads/koho/2024-12%E5%BA%83%E5%A0%B1%E3%81%B2%E3%81%A1%E3%81%9D%E3%81%86NO621.pdf",
+          "https://www.pref.gifu.lg.jp/page/367643.html"
+        ],
+        "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+      }
     },
     {
       "poiId": "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
       "name": "御影大橋",
-      "confirmedUsefulNodes": 2,
-      "missingEvidenceType": [
-        "EXTERNAL_LICENSED_IDENTITY_REQUIRED",
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Visual city walking course, prefectural Kanazawa station circuit and tourism Flat Bus map confirm two useful identities. Nearby Mikagecho/Tomimotocho stops are inventory candidates, but no exact bridge-access instruction establishes them. Kobe/Yokohama namesakes and Komatsu factory-event shuttle are different destinations.",
-          "requiredExternalChange": "Additional bus stop needs a published bridge approach/gateway assertion. Airport and port are regional destinations without a documented useful last-mile relationship; geometric proximity is insufficient.",
-          "sourceRefs": [
-            "https://www4.city.kanazawa.lg.jp/material/files/group/67/mikage.pdf",
-            "https://www.pref.ishikawa.jp/seikatu/kouryu/02kenkouPDF/aruku/cousemap/map4moritomizu.pdf",
-            "https://www.kanazawa-kankoukyoukai.or.jp/lsc/upfile/pamphlet/0000/0077/77_1_file.pdf"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "6c20b5939d25ff6ac3a254dc82643fa1f5a59078a0673adcec50a8b6cb17eba3",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "3f0f7336fad4ebe12993a64b1e4fce306fff960cf0914bf3d9b055fadbd8e070",
-        "namedGatewaySha256": "f958cb5f1c6f4e57c53293d030eea77b4ac7b97580f19ab4f26575f63e68b1ff",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "ae44c4da43278a0d6b28f9be7c25ac34fb1e8b19c2fc4b0c4e7968ce60821978",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "6c20b5939d25ff6ac3a254dc82643fa1f5a59078a0673adcec50a8b6cb17eba3",
-        "namedGatewaySha256": "f958cb5f1c6f4e57c53293d030eea77b4ac7b97580f19ab4f26575f63e68b1ff",
-        "sourceScanSha256": "ae44c4da43278a0d6b28f9be7c25ac34fb1e8b19c2fc4b0c4e7968ce60821978",
-        "factReviewSha256": "3f0f7336fad4ebe12993a64b1e4fce306fff960cf0914bf3d9b055fadbd8e070",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "2faee6d61b08fd2a2ef2d2345d5a2f56f7515a3c56a4e84bf9f5a9ea0d45b7a4",
-      "currentProofSha256": "2e085d74972c00d0e23daefec94365ba4d0e46447d65af55564698787b3d8a51",
-      "previousReviewSha256": "21727696c811d222e628711e33b6d063e1533ebbc54b3e2dc1c75684a514ccc7",
-      "currentReviewSha256": "713909f29130a4a8f0324c8f5a6fb25add25e09aa08ffc3640290f645b223a72",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "previousUsefulNodes": 2,
+      "confirmedUsefulNodes": 3,
+      "result": "TARGET_MET",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": null,
+      "finding": {
+        "name": "御影大橋",
+        "poiId": "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
+        "reviewedOn": "2026-10-01",
+        "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [
+          "中村神社"
+        ],
+        "sourceRefs": [
+          "https://www.kanazawa-kankoukyoukai.or.jp/lsc/upfile/pamphlet/0000/0077/77_1_file.pdf",
+          "https://www4.city.kanazawa.lg.jp/material/files/group/67/mikage.pdf"
+        ],
+        "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+      }
     },
     {
       "poiId": "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
       "name": "田倉山",
-      "confirmedUsefulNodes": 2,
-      "missingEvidenceType": [
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Takurayama/Hozan is reached from Kami-Yakuno rail and its municipal bus interchange. The local bus network contains Noshonosato and Shirai, but neither is an official mountain-trail gateway in reviewed sources. Basalt park and Wadayama regional access do not bind this summit. No additional current ropeway/ferry/shuttle gateway was found.",
-          "requiredExternalChange": "City/tourism owner must identify additional actual trail access stops. Adjacent facilities or inactive Noshonosato buildings cannot establish mountain access; no evidence proving physical nonexistence of a third gateway.",
-          "sourceRefs": [
-            "https://www.city.fukuchiyama.lg.jp/soshiki/7/1164.html",
-            "https://www.kyoto-kankou.or.jp/info_search/3853",
-            "https://www.city.fukuchiyama.lg.jp/soshiki/30/1508.html"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "9a7aeaae6e98355d4136172f91bf6e3e721bce480442f975023df2a7f554d46d",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "45643315e9d174e82d80592132b168c13fb5ca181af281f38afe987d428161a5",
-        "namedGatewaySha256": "630a67f67767dbf8deca591b32b316d72eb76c647a26a8ff96e0919220ed9661",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "849d0d14350b23e3d9bb19e4b5e208bcb90fa1a1fd36b5e000a726f520727f67",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "9a7aeaae6e98355d4136172f91bf6e3e721bce480442f975023df2a7f554d46d",
-        "namedGatewaySha256": "630a67f67767dbf8deca591b32b316d72eb76c647a26a8ff96e0919220ed9661",
-        "sourceScanSha256": "849d0d14350b23e3d9bb19e4b5e208bcb90fa1a1fd36b5e000a726f520727f67",
-        "factReviewSha256": "45643315e9d174e82d80592132b168c13fb5ca181af281f38afe987d428161a5",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "4f23caf6eb168e45b21a34f58e64d57df6b406da2052f4da3a2bfa49d415fa26",
-      "currentProofSha256": "2d19cd7ec520d796e93db4f3717f7a8ce3aecb1bf364c38cbc6c9ba27ead3297",
-      "previousReviewSha256": "66933cadc0eb72ac7f4dabff3df36a1cd6cd6829d09fefcb74bf9b610189a8ff",
-      "currentReviewSha256": "1d3975a0674266c717dffd08ba3dc773ef3f6f9551965000bce0e8c193065f08",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "previousUsefulNodes": 2,
+      "confirmedUsefulNodes": 3,
+      "result": "TARGET_MET",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": null,
+      "finding": {
+        "name": "田倉山",
+        "poiId": "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
+        "reviewedOn": "2026-10-01",
+        "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [
+          "農匠の郷"
+        ],
+        "sourceRefs": [
+          "https://dokkoise.com/spare/mountains/",
+          "https://www.city.fukuchiyama.lg.jp/soshiki/7/1164.html"
+        ],
+        "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+      }
     },
     {
       "poiId": "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
       "name": "池原橋",
+      "previousUsefulNodes": 1,
       "confirmedUsefulNodes": 1,
-      "missingEvidenceType": [
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "2026 engineering field report documents village interpretation board and Ikehara-Ohashi stop at the actual bridge. Village network offers the R169 bus. The pre-1929 ferry is historical, not an active port. Ikehara/dam/sports-park stops and distant Yamato-Kamiichi rail are not individually asserted as this bridge's visitor gateways.",
-          "requiredExternalChange": "Bridge/village access publisher must validate another exact gateway or publish a bounded definitive access inventory. Regional bus connectivity alone does not authorize all route stops or a distant rail hub.",
-          "sourceRefs": [
-            "https://kansai-doboku-style.com/post-2275/",
-            "https://www.vill.shimokitayama.nara.jp/oshirase/file/93ee7e55c5c65ccf0538dcd7c51762c08c9e2bca.pdf",
-            "https://www.vill.shimokitayama.nara.jp/oshirase/2026/07/0000741.html"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "5904c567597edcd0f3c7ab4f147117b37e43a600d7ee106359782295c39f58b4",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "d99fe2b354c3d6c8e1ae93c601bf5df1c76923375bdb0b1208d11229f0443c5c",
-        "namedGatewaySha256": "ba7db77324c9125d49f9a2ac98694320788a224d328ca2837148177c5b5a6f7d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "633fd9cfb93f4d7ccc3b9e944ee7185f0f7f4fb92aaa22215de6602e2dddd18f",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "5904c567597edcd0f3c7ab4f147117b37e43a600d7ee106359782295c39f58b4",
-        "namedGatewaySha256": "ba7db77324c9125d49f9a2ac98694320788a224d328ca2837148177c5b5a6f7d",
-        "sourceScanSha256": "633fd9cfb93f4d7ccc3b9e944ee7185f0f7f4fb92aaa22215de6602e2dddd18f",
-        "factReviewSha256": "d99fe2b354c3d6c8e1ae93c601bf5df1c76923375bdb0b1208d11229f0443c5c",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "3b15b92321014914c8412507c10a1098135c717a787a53952f465026a0a3f71f",
-      "currentProofSha256": "18b8abb97e9e8af80190a435d272c6bb333ef7aed8f8beddfb299d2805e2bd16",
-      "previousReviewSha256": "4dd2ab79ec17702a56bec4d122d4de17d1857f29576ff214c8d8a5713eb79e19",
-      "currentReviewSha256": "90681e5e751f12f26a12406089e4b52cd597d36fbdf378ac00163dd802fc5fe2",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "result": "DISCOVERY_IN_PROGRESS",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": "ca7745c47984dd804fe5353fc31851b903d6dd7a88a93ff2a4bb68026a590f91",
+      "finding": {
+        "name": "池原橋",
+        "poiId": "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "reviewedOn": "2026-10-01",
+        "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [],
+        "sourceRefs": [
+          "https://www.vill.shimokitayama.nara.jp/about/access.html",
+          "https://www.vill.shimokitayama.nara.jp/about/file/6ad29eec28d6f89d5792d9cb90d92db5fc4ce2be.pdf",
+          "https://www.vill.shimokitayama.nara.jp/oshirase/2026/07/0000741.html",
+          "https://www.vill.shimokitayama.nara.jp/about/post.html",
+          "https://kansai-doboku-style.com/post-2275/",
+          "https://nara-wu.repo.nii.ac.jp/record/2005627/files/jointreseachreport_matsuda-okajima.pdf"
+        ],
+        "finding": "Village sources confirm pedestrian passage on Ikehara Bridge and distinguish the regional and village-loop buses. They direct park visitors to Ikehara but do not establish each additional named stop as a bridge gateway. The open-data download page is under maintenance. A university historical fieldwork report suggests a walk via the sports park but does not provide a current official stop-to-bridge access instruction. Neither a generic only-bus assertion nor a search miss proves fewer than three reasonable gateways.",
+        "missingEvidenceTypes": [
+          "ADDITIONAL_OFFICIAL_VISITOR_GATEWAY_RELATIONSHIP",
+          "AUTHORITATIVE_EXHAUSTION_ATTESTATION"
+        ],
+        "candidateNames": [
+          "池原",
+          "池峯公園",
+          "スポーツ公園入口前",
+          "スポーツ公園宿舎前"
+        ],
+        "requiredEvidence": "Current village/tourism bridge access map identifying the named approach stops, or a complete reviewed local gateway inventory with an authoritative fewer-than-three conclusion.",
+        "requestedOwnerAction": "A to coordinate village access/endpoint review; do not change Canonical identity or accept proximity-only relationships.",
+        "physicalExhaustionProven": false,
+        "externalContactPerformed": false
+      }
     },
     {
       "poiId": "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
       "name": "まほろば湖",
-      "confirmedUsefulNodes": 1,
-      "missingEvidenceType": [
-        "EXTERNAL_LICENSED_IDENTITY_REQUIRED",
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Reservoir identity and Hasedera-station shore hike confirmed. Local stops Yokiura/Hasedera-sandoguchi and Hase visitor centre do not independently bind the lake shore. Dam-card access is to Kashihara government office, explicitly separate from the dam, and must not be imported as lake topology. An old city brochure URL returned 404; current owner/tourism and operator alternatives were examined.",
-          "requiredExternalChange": "Dam/city owner must identify additional shore/trail gateway stops; do not route to the water centroid or substitute the off-site card collection office. No definitive fewer-than-three assertion was published.",
-          "sourceRefs": [
-            "https://www.pref.nara.lg.jp/n144/12718.html",
-            "https://www.city.sakurai.lg.jp/material/files/group/16/1352.pdf",
-            "https://www.narakotsu.co.jp/route/noriba/",
-            "https://www.mlit.go.jp/river/kankyo/campaign/shunnkan/damcard86.html"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "83062b1296a3828c7bb8ed3d7f681d8d6e7a49f5e6fc4aff58b7fc84a303597a",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "687d4c27b331b75838ea3da69825d2be07566793e51900b6cb128ca0278a628d",
-        "namedGatewaySha256": "410d241615666dc2447ab5242d33a0ee1fdbbfc0d2752584e0b4fe1206a29859",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "13a4ff51bee44ee2fa4b372fbd49b75610e15c8d86bc291e5d719c060ff03878",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "83062b1296a3828c7bb8ed3d7f681d8d6e7a49f5e6fc4aff58b7fc84a303597a",
-        "namedGatewaySha256": "410d241615666dc2447ab5242d33a0ee1fdbbfc0d2752584e0b4fe1206a29859",
-        "sourceScanSha256": "13a4ff51bee44ee2fa4b372fbd49b75610e15c8d86bc291e5d719c060ff03878",
-        "factReviewSha256": "687d4c27b331b75838ea3da69825d2be07566793e51900b6cb128ca0278a628d",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "f4001e9a86eee39dcee58042b425ea8c5685fae9673c07f01286bf798d60ad7c",
-      "currentProofSha256": "d1de1c0f5147a1953a697ad0d943e0a3514b69422ba4608d6b284d232d6250d6",
-      "previousReviewSha256": "6e8444d01683357374ea9f4da53f6b83c98afbb0dd4c95d814d4dd147f62f75f",
-      "currentReviewSha256": "d48a83871233e24c744080e537d0178282c93e3408f8d96be4b2fe65dff8eef4",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "previousUsefulNodes": 1,
+      "confirmedUsefulNodes": 3,
+      "result": "TARGET_MET",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": null,
+      "finding": {
+        "name": "まほろば湖",
+        "poiId": "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+        "reviewedOn": "2026-10-01",
+        "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [
+          "榛原",
+          "榛原駅（北口）"
+        ],
+        "sourceRefs": [
+          "https://www.kintetsu.co.jp/zigyou/teku2/pdf/nara14.pdf",
+          "https://www.narakotsu.co.jp/news/general/31474/",
+          "https://www.pref.nara.lg.jp/n061/43111.html",
+          "https://www.pref.nara.lg.jp/n144/12718.html"
+        ],
+        "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+      }
     },
     {
       "poiId": "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
       "name": "みさき公園",
+      "previousUsefulNodes": 1,
       "confirmedUsefulNodes": 1,
-      "missingEvidenceType": [
-        "EXTERNAL_LICENSED_IDENTITY_REQUIRED",
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Current town rules preserve public station-plaza/path access; former amusement rides remain excluded. Named station bus interchange lacks exact reusable stop identity in national P11 and reviewed GTFS. Fuke-Sumoto ferry serves another port; regional port promotion and the expired 2006 discount are not an exact current park gateway statement.",
-          "requiredExternalChange": "Town/operator needs reusable precise identity for the station bus stop; a railway centroid cannot become a bus boarding point. Additional coastal entrances need explicit park-gateway evidence; no new Canonical exclusion used.",
-          "sourceRefs": [
-            "https://www.town.misaki.osaka.jp/soshiki/toshi_seibi/sangyo/kannkou/aratanamisakikouen/3141.html",
-            "https://www.town.misaki.osaka.jp/soshiki/toshi_seibi/sangyo/kannkou/aratanamisakikouen/3554.html",
-            "https://www.town.misaki.osaka.jp/soshiki/shiawase/kankyou/kotsu/900.html",
-            "https://www.town.misaki.osaka.jp/material/files/group/7/TM2025siryou2.pdf"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "3ed212e3460fa620e2c8b8bb61df4cd62e758dcce0fecfae74322d5a2a22eea2",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "dab54a080e9109c613a34d509f96d7d1cd3a581755d8339024073662af15e703",
-        "namedGatewaySha256": "d16883ae4be9e60c6f8a6569015198319126116d0e8763a76751ae43c821052b",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "5c2080b01821c40638be7fbceb9ad019a17b457c14e885148c6110bcc2c28100",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "3ed212e3460fa620e2c8b8bb61df4cd62e758dcce0fecfae74322d5a2a22eea2",
-        "namedGatewaySha256": "d16883ae4be9e60c6f8a6569015198319126116d0e8763a76751ae43c821052b",
-        "sourceScanSha256": "5c2080b01821c40638be7fbceb9ad019a17b457c14e885148c6110bcc2c28100",
-        "factReviewSha256": "dab54a080e9109c613a34d509f96d7d1cd3a581755d8339024073662af15e703",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "e569b7f79278c0dfd74392059f3180bb73f22fa6a27526f46f315a055bfc7338",
-      "currentProofSha256": "68b326f01f84e2ee3896b0e4969c0589c3d1f8cb796c08549d0d1423b929fe04",
-      "previousReviewSha256": "7f3b95634c946275ca43ea2e1b7006b98e21c93942d24d2f5b7a65b2b0df5e55",
-      "currentReviewSha256": "cab793b5aba478f1df85edb05394193b84d286ea717a77f809aa2c6bbffce46f",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "result": "DISCOVERY_IN_PROGRESS",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": "8b36738f3258664d72d63b91dfa18e9ec790729cc3452a0b8fe09040e7d8b1c6",
+      "finding": {
+        "name": "みさき公園",
+        "poiId": "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "reviewedOn": "2026-10-01",
+        "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [],
+        "sourceRefs": [
+          "https://www.town.misaki.osaka.jp/soshiki/shiawase/kankyou/kotsu/900.html",
+          "https://www.town.misaki.osaka.jp/material/files/group/33/unnkourosenn.pdf",
+          "https://www.town.misaki.osaka.jp/soshiki/soumu/digital/5582.html",
+          "https://data.bodik.jp/organization/273660",
+          "https://www.nankai.co.jp/traffic/station/misakikoen.html",
+          "https://www.town.misaki.osaka.jp/soshiki/toshi_seibi/sangyo/kannkou/aratanamisakikouen/3141.html"
+        ],
+        "finding": "Current municipal bus route/timetable names the station and east-exit stops and the Yatetsu operator. The official route diagram is schematic and does not supply reproducible WGS84 boarding points. The CC BY municipal catalog has three population/cadastral datasets, no stop table. Rail-station coordinates cannot replace the bus points. The 2016 walking map and former amusement-park entrances cannot alone establish the current restricted-open park access. Bounded OSM queries returned TLS errors, HTTP 406 or timeouts; no OSM record was obtained or admitted.",
+        "missingEvidenceTypes": [
+          "LICENSED_STOP_COORDINATE_IDENTITY",
+          "CURRENT_PUBLIC_ENTRANCE_JOIN"
+        ],
+        "candidateNames": [
+          "みさき公園駅",
+          "みさき公園駅東口"
+        ],
+        "requiredEvidence": "Attribution/derivative-permitted coordinates of both boarding locations and a current station-exit/public-park-entry join; alternatively surveyed stop identities with reuse permission.",
+        "requestedOwnerAction": "A to obtain the municipal/operator boarding-location table and confirm the current public entrance; retain the existing rail edge.",
+        "physicalExhaustionProven": false,
+        "externalContactPerformed": false
+      }
     },
     {
       "poiId": "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
       "name": "阿瀬川橋",
+      "previousUsefulNodes": 0,
       "confirmedUsefulNodes": 0,
-      "missingEvidenceType": [
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "City inventory identifies bridge 1148 on Shinogaki/Kuriyama old road. Licensed P11 has Kuriyama and Mikata community-centre stops at 25m/18m; 2026 Mikata bus network confirms their service. Neither source says these stops are an actual visitor gateway for the bridge. Tourism map, demand-stop map and historical shrine record did not establish that relationship. Tokushima namesake rejected.",
-          "requiredExternalChange": "The bridge/road/tourism authority must publish an exact visitor endpoint and a useful transport gateway relationship. All nearby records remain candidates; no proximity-only acceptance, Canonical deletion or inferred tourist restriction.",
-          "sourceRefs": [
-            "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/002/945/toyooka.bridge-tennkennkekka2025.pdf",
-            "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/004/514/guidemap-2.pdf",
-            "https://www.city.toyooka.lg.jp/kurashi/dorokotsu/buskotsu/1019743.html",
-            "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/019/743/2026.4mikata.pdf"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "d03450a3ade6711ad4b214a7a8fa19e8732c70a7310d2e7cff5ca8e20cdf16b4",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "namedGatewaySha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "f049905cda8eef4a3c09d88ae22156573a79b6c45db4e20008e7dea70f588ff4",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "d03450a3ade6711ad4b214a7a8fa19e8732c70a7310d2e7cff5ca8e20cdf16b4",
-        "namedGatewaySha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "sourceScanSha256": "f049905cda8eef4a3c09d88ae22156573a79b6c45db4e20008e7dea70f588ff4",
-        "factReviewSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "972c01329edbd06383695298e083ae3c8cf7e942dc1628c6bae4aa603791f4ca",
-      "currentProofSha256": "d0fd7917524f6d57d17366d6c3f255c9767fc92e3492e08648c4c146c164529e",
-      "previousReviewSha256": "8a651299f7936ef5d9911209302501c9dcc7b871a98cd811d7c53833bbcad710",
-      "currentReviewSha256": "795e828ba0290c937173e3b21a50268ae841877c462e3a2d8a66b7c8f0b1d4f5",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "result": "DISCOVERY_IN_PROGRESS",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": "10a7af8cb4e20f2ceca17ef6f76e4284b48b2218f1a8d9ad7464d67f6a36af9d",
+      "finding": {
+        "name": "阿瀬川橋",
+        "poiId": "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "reviewedOn": "2026-10-01",
+        "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [],
+        "sourceRefs": [
+          "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/002/945/toyooka.bridge-tennkennkekka2025.pdf",
+          "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/002/945/toyooka.bridge2025.pdf",
+          "https://www.city.toyooka.lg.jp/kurashi/dorokotsu/buskotsu/1019743.html",
+          "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/019/743/2026.4mikata.pdf",
+          "https://web.pref.hyogo.lg.jp/ks05/gtfs-jp.html",
+          "https://lib.city.toyooka.lg.jp/kyoudo/komonjo/5ae6b4a8b3124e1c9a896ee4b749641093910208.pdf"
+        ],
+        "finding": "Municipal inventory identifies bridge 1148 on the Shinogaki/Kuriyama old prefectural-road route, and current bus sources establish local service. The historic shrine reference at the western abutment does not establish a current visitor access point or stop-to-endpoint approach. River-camera and similarly named gorge/bridge results do not supply that relation. Existing nearby licensed coordinates are retained as candidates; their 18-25m proximity is not a route or public-access proof.",
+        "missingEvidenceTypes": [
+          "EXACT_PUBLIC_VISITOR_ENDPOINT",
+          "OFFICIAL_OR_LICENSED_ENDPOINT_BOUND_ACCESS"
+        ],
+        "candidateNames": [
+          "栗山",
+          "三方コミセン",
+          "栗山新道"
+        ],
+        "requiredEvidence": "Road/venue owner confirmation of the legitimate current visitor endpoint plus an access map or legally reusable endpoint-bound route from named stops.",
+        "requestedOwnerAction": "A to coordinate road/Canonical owner endpoint evidence. No deletion, relocation, replacement or extra denominator exclusion by B.",
+        "physicalExhaustionProven": false,
+        "externalContactPerformed": false
+      }
     },
     {
       "poiId": "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
       "name": "韮崎中央公園陸上競技場",
+      "previousUsefulNodes": 2,
       "confirmedUsefulNodes": 2,
-      "missingEvidenceType": [
-        "EXTERNAL_LICENSED_IDENTITY_REQUIRED",
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Venue/tourism explicitly name new gym bus and Fujimigaoka hall access; demand network points 118/120 corroborate names. Licensed Nirasaki GTFS available snapshot ends 2026-03-31 and lacks the new gym/hall stops; current feed lists no active file. P11 predates the 2025 service. Park mini-SL is a recreational ride, not an arrival transport gateway.",
-          "requiredExternalChange": "Operator/city must publish licensed stop coordinates/identity for the gym/hall. Do not reuse arena/building centroid as stop coordinate; nearby older bus stops have no independent venue access assertion.",
-          "sourceRefs": [
-            "https://shisetsu.mizuno.jp/7609-1/access",
-            "https://www.nirasaki-kankou.jp/kankou_spot/kouen_bijyutsukan_shiryokan/kouen_teien/4327.html",
-            "https://www.city.nirasaki.lg.jp/soshikiichiran/zaimuseisakuka/seisakutyouseitanto/2/1305.html",
-            "https://www.city.nirasaki.lg.jp/material/files/group/1/MP.pdf"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "f66f7f3ddcd312e3089ff328f75fd7fb3c1ffdf32fd7df3f8aae31dfee4e72d7",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "c1302600f4fbe4f0631ff0ab7cccf9a2140b26c4ab77ab20155e065617c3a983",
-        "namedGatewaySha256": "b273ffae58500baf8f2f327153c91ed58d7ca48b7126c79f4245ad11be8a911e",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "adea4ed6db234849f373888cf59b110a9750b90edaa3ce84d4137c3a39680c2d",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "f66f7f3ddcd312e3089ff328f75fd7fb3c1ffdf32fd7df3f8aae31dfee4e72d7",
-        "namedGatewaySha256": "b273ffae58500baf8f2f327153c91ed58d7ca48b7126c79f4245ad11be8a911e",
-        "sourceScanSha256": "adea4ed6db234849f373888cf59b110a9750b90edaa3ce84d4137c3a39680c2d",
-        "factReviewSha256": "c1302600f4fbe4f0631ff0ab7cccf9a2140b26c4ab77ab20155e065617c3a983",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "0f9695866e48647f0690916e0c22d491c6f978e0cf5fcfc7d537445a4522c201",
-      "currentProofSha256": "bda516af66b7e32c23dedffd0b62f78b10057c7658f18c365dbafafda320c30c",
-      "previousReviewSha256": "61632b8350a1ac139205b1191e6a79fc904a929c884b50bfae3ef80bf6d7bfe1",
-      "currentReviewSha256": "aea2ab724d5b5fab635b112298a670e692d89890d6f52af763ab66b4710ffea8",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "result": "DISCOVERY_IN_PROGRESS",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": "6aedd539c0c0d943088ef8a528e9fa57e034aa4dd6908620684412bb3ec404a4",
+      "finding": {
+        "name": "韮崎中央公園陸上競技場",
+        "poiId": "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
+        "reviewedOn": "2026-10-01",
+        "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [],
+        "sourceRefs": [
+          "https://shisetsu.mizuno.jp/7609-1/access",
+          "https://www.nirasaki-kankou.jp/kankou_spot/kouen_bijyutsukan_shiryokan/kouen_teien/4327.html",
+          "https://www.city.nirasaki.lg.jp/soshikiichiran/zaimuseisakuka/seisakutyouseitanto/2/1305.html",
+          "https://www.city.nirasaki.lg.jp/material/files/group/1/uakaaaws.pdf",
+          "https://api.gtfs-data.jp/v2/organizations/nirasakicity/feeds/shiminbus",
+          "https://www.city.nirasaki.lg.jp/soshikiichiran/digitalsenryakuka/dx/1/opendata.html"
+        ],
+        "finding": "Venue, city and tourism authority explicitly confirm the new arena stop as park/stadium access; the relationship is not missing. The official GTFS metadata is CC0 but currently returns gtfs_files=[] and empty current/next download URLs. The archived feed and P11 do not contain the new September 2025 arena boarding point. Municipal open-data facility coordinates describe buildings, not the stop. Commercial maps were not copied without persistence rights. The mini-SL is an internal attraction and cannot fill a transport access quota.",
+        "missingEvidenceTypes": [
+          "LICENSED_BOARDING_COORDINATES_FOR_NEW_STOP"
+        ],
+        "candidateNames": [
+          "韮崎中央体育館",
+          "富士見ヶ丘公民館"
+        ],
+        "observedMetadataSha256": "5f1012902f82c5763ca19a95b44967fb66308f1d6481b29bd71cda1a5ae2e8ae",
+        "requiredEvidence": "A current licensed stops.txt or operator/city-provided WGS84 point for the arena boarding stop, explicitly distinguishing the 2025 relocated arena from the former gym.",
+        "requestedOwnerAction": "A to obtain the new-stop location/identity from the city or operator; exact venue access evidence is already available and reusable as a factual summary.",
+        "physicalExhaustionProven": false,
+        "externalContactPerformed": false
+      }
     },
     {
       "poiId": "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753",
       "name": "ミュージアム都留",
-      "confirmedUsefulNodes": 2,
-      "missingEvidenceType": [
-        "EXTERNAL_LICENSED_IDENTITY_REQUIRED",
-        "EXTERNAL_OFFICIAL_RELATIONSHIP_REQUIRED"
-      ],
-      "exactBlockers": [
-        {
-          "finding": "Venue station and nearby city-station walk are confirmed. Official highway stop Chuo-do Tsuru and demand pickup 48 at museum are factual gateways but have no exact licensed node join. Wikidata Tsuru interchange is a highway junction, not a bus stop. Existing P11 Yamuramachi bus belongs to Fujikyu Bus; current demand operator is Fujikyu Yamanashi Hire, so same station name alone cannot establish the same boarding point.",
-          "requiredExternalChange": "Municipality/operator must provide reusable highway-stop/demand-pickup point identities. No junction-to-stop alias, operator-blind join, or remote walk start used to meet quota.",
-          "sourceRefs": [
-            "https://www.city.tsuru.yamanashi.jp/benri_service/facility_map/1/7/9370.html",
-            "https://rekishinomichi-yamanashi.jp/ja/course/2-1.html",
-            "https://www.city.tsuru.yamanashi.jp/material/files/group/7/r8-ai-tsuru-to-honkaku.pdf",
-            "https://www.city.tsuru.yamanashi.jp/soshiki/sangyo/shoko_t/1/11927.html"
-          ]
-        }
-      ],
-      "scope": "Source/license/identity fixpoint for reasonable visitor gateways under the recorded official-source and licensed-static-input snapshot. Every known candidate is confirmed, rejected with reason, or needs specified external evidence. This is NOT proof that fewer than three gateways physically exist and does NOT satisfy the candidate-exhaustion Hard Gate. New publisher evidence invalidates the proof and requires replay.",
-      "previousInventoryHashes": {
-        "candidateDecisionSha256": "6e804609d9db26a3959a4211a16dfdb22e4f68d2a5564ff18d3cbbe3ca5a1bff",
-        "canonicalDatasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
-        "factReviewSha256": "1b44402664e0596fbf1be8886808f9a2e45be09d86f3def98162bf713c813452",
-        "namedGatewaySha256": "be06ecd883dc416386012f1e9d1b9d89debc77c3e2b015fe56c175c106a7c3b2",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "sourceScanSha256": "c163ac78b8c8788d65e92a63cbdff2d8aaef5fdbed350514f8e7f335458b196d",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9"
-      },
-      "currentInventoryHashes": {
-        "candidateDecisionSha256": "6e804609d9db26a3959a4211a16dfdb22e4f68d2a5564ff18d3cbbe3ca5a1bff",
-        "namedGatewaySha256": "be06ecd883dc416386012f1e9d1b9d89debc77c3e2b015fe56c175c106a7c3b2",
-        "sourceScanSha256": "c163ac78b8c8788d65e92a63cbdff2d8aaef5fdbed350514f8e7f335458b196d",
-        "factReviewSha256": "1b44402664e0596fbf1be8886808f9a2e45be09d86f3def98162bf713c813452",
-        "sourceRightsSha256": "3194050038ee403337e2b065f12dd7d983458653cc2a3a21b1c2ac55d6da1e8d",
-        "nodeAdmissionsSha256": "5ca4f67b8126bed67981e4c90660b8784dcfc2c207110ad62d89211d13aa771a",
-        "spatialConfigSha256": "c95d3cef461b4f84fa8e2d29e15cbfed47b7ea3b8f691b94eb9125616c08a0d9",
-        "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
-      },
-      "previousProofSha256": "36a75f7c32f53661add6dfa39b8765ea247256d5de3d26e290bf5f600c89e486",
-      "currentProofSha256": "ab077dc677aa8470f132b4faaddd6b0cd2e1fa7b7d922e0e752cfcbf058a4f84",
-      "previousReviewSha256": "fe9a0b7091bdbcc4519978ce3d71401ba81cd558a7238cf0e0f5738ef1cf6896",
-      "currentReviewSha256": "72a378c7e3b3328285d19bcf98fc87988f3d4acad40365d5ea5034df994242e7",
-      "unchangedNonCanonicalHashes": true,
-      "proofValidAfterMerge": true,
-      "newBlockerReleasingEvidenceFromPR465": false,
-      "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
+      "previousUsefulNodes": 2,
+      "confirmedUsefulNodes": 3,
+      "result": "TARGET_MET",
+      "priorFixpointSuperseded": true,
+      "proofValidAfterMerge": false,
+      "currentProofSha256": null,
+      "finding": {
+        "name": "ミュージアム都留",
+        "poiId": "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753",
+        "reviewedOn": "2026-10-01",
+        "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+        "priorFixpointSuperseded": true,
+        "newGatewayNames": [
+          "都留市駅"
+        ],
+        "sourceRefs": [
+          "https://www.city.tsuru.yamanashi.jp/soshiki/sangyo/shoko_t/1/11927.html",
+          "https://www.fujikyubus.co.jp/pdf/rosen/tsuru/tsuru-otuki_202602.pdf",
+          "https://www.fujikyubus.co.jp/regular/",
+          "https://www.yamanashi-kankou.jp/course/study/014.html"
+        ],
+        "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+      }
     }
   ]
 }

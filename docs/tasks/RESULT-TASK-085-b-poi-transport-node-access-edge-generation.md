@@ -1,10 +1,10 @@
-# RESULT — TASK-085-B Post-Canonical Final Replay
+# RESULT — TASK-085-B 九项定向补证
 
-**READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS**
+**PARTIAL_TARGETED_EVIDENCE_REQUIRED**
 
-WBS 7.15 = **待审查（audited fixpoint exceptions）**, not completed. Draft PR [#464](https://github.com/kanzakimy0/TravelAssist/pull/464) remains open; no merge, auto-merge or TASK-086 execution.
+九项中五项补齐至 3 个确认节点。另四项已自行检索并记录准确缺口，依用户最新指示保留给 A 补证；没有把例外自动验收。WBS 7.15 = **进行中（5项已补齐，4项待补证）**。沿用 Draft PR [#464](https://github.com/kanzakimy0/TravelAssist/pull/464)，未 merge、auto-merge 或执行 TASK-086。
 
-Canonical owner gates now PASS. Raw membership and explicit outputs remain 100; the hash-validated owner adjudication defines the 95-record general-tourist assessment subset. All 340 confirmed relationships / 680 directed edges are preserved. The only remaining failures concern the same nine audited external fixpoint cases. They remain SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF, never physical CANDIDATE_EXHAUSTION_PROOF. User acceptance is required; overall topology allPass remains false.
+此前九项 fixpoint 的来源检索范围不足，本轮找到可用官方证据，因此撤销其在当前数据上的有效性。当前 `globalTopologyDiscoveryFixpoint=IN_PROGRESS`，不再把旧快照已审计当成穷尽证明。详见 [九项补证与四项 A 交接表](../qa/TASK-085-B/targeted-nine-case-source-audit.md)。
 
 ## Integration and authority
 
@@ -28,108 +28,65 @@ Runtime path: `src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json`.
 
 The merge was conflict-free and preserved newer develop WBS facts. Final B head and exact-head CI are recorded in the existing PR body after commit/push, avoiding a self-referential committed head hash.
 
-## Offline evidence replay
+## 本轮修复
 
-[inputs/post-canonical-replay.json](../../data/transport/access/inputs/post-canonical-replay.json) is an explicit replay receipt built from Git blobs at the frozen B checkpoint and merged develop. It verifies exact ordered membership, all 95 non-excluded records byte-semantically unchanged, and unchanged identity/name/coordinate/code fields for the five owner-adjudicated records. Source/review/license inputs are byte-identical to the frozen B checkpoint. No S12/P11/GTFS extraction, national search, web discovery or Provider query ran.
+用户授权对九项定向补证，随后明确“自己去寻找，实在找不到之后再保留交给 A 处理”。本轮没有全国重新提取 S12/P11。新增七宗町官方许可 GTFS 的两个 boarding identities；通过官方游客路线、场馆/政府旅游说明及当前运营商资料新增七个关系。保留原有所有 5,200 admitted、344 HOLD、680 directed topology records，不修改 Canonical 或 Planner/API/runtime public behavior。
 
-The original extraction receipts and discovery reviews keep their old dataset hash. The replay adapter first validates the old and new authority, unchanged per-record projections and every source input hash. Only then does it produce an in-memory review with the new Canonical binding. Missing/stale review, changed source/rights/config, changed non-excluded record or coordinate, or unexpected membership fails closed. It never silently replaces original review evidence or expands the physical-exhaustion claim.
+通用 additive receipt adapter 验证 scope、许可、ZIP/source-record/row hashes、精确 name/operator join、空间上限及重复关系，使用现有 TASK-082 graph contract 生成两个独立方向记录。route metrics 不镜像、不填估值；两个方向允许共享 topology evidence。
 
-[post-canonical-replay-audit.json](../../data/transport/access/post-canonical-replay-audit.json) verifies byte-identical admission records (5,200 admitted / 344 HOLD), all 680 confirmed directed edges and all candidate decisions. The existing 1,887/245 baseline and 772 directed-candidate preservation checks also PASS. The original topology fact review and its source/identity seals are revalidated without regenerating them.
-
-The new Canonical fingerprint invalidates the intact old batch receipt, triggering normal regeneration of derived metadata. Subsequent checksum skip, full rebuild, single-batch rerun and corruption tests verify determinism. The generated timestamp retains its documented source-review snapshot meaning.
-
-## Owner exclusions, retained in raw outputs
-
-| Identity | Authoritative owner decision |
-| --- | --- |
-| J-WORLD TOKYO | permanently_closed; no Sunshine City substitution |
-| レインボープール | permanently_closed; no park/new facility substitution |
-| 舳倉島 | temporarily_closed for ordinary tourism; resident/recovery-only access |
-| 鶴見つばさ橋 | active infrastructure, NOT_A_VISITOR_ENDPOINT |
-| 我善坊谷 | active historical identity, HISTORICAL_RECORD_ONLY |
-
-All five have FINAL owner decisions, `generalTouristAccessEligible=false`, null visitor endpoint and null replacement. They remain explicit in completeness/raw unresolved outputs with OWNER_ADJUDICATED_EXCLUDED; `canonicalAdjudicationRequired=false`. The pending owner count is zero. Under-target assessment and fixpoint proofs include only the nine remaining assessed cases. No identity was deleted, rebound or substituted.
-
-## Nine cases requiring user acceptance
-
-| POI | Confirmed useful nodes | Exact missing source/license/identity evidence |
+| POI | 原节点 → 当前 | 本轮结果 |
 | --- | ---: | --- |
-| 飛水峡 | 1 | 上麻生 rail confirmed. Official station-bus interchange lacks an exact licensed locality-qualified identity; signal box and a different gorge viewpoint are not substitutes. |
-| 御影大橋 | 2 | Official city/prefectural walk and bus map confirm two. Nearby 御影町/富本町 and other regional nodes lack an explicit bridge visitor-gateway assertion. |
-| 田倉山 | 2 | 上夜久野 rail and bus confirmed. 農匠の郷/白井 and nearby basalt-park access do not establish this summit's trail gateway. |
-| 池原橋 | 1 | 池原大橋 bus confirmed through current local evidence. Historical ferry and dam/park stops do not establish additional current bridge access. |
-| まほろば湖 | 1 | 長谷寺 rail approach confirmed. Other stops need exact shore/trail access evidence. Off-site dam-card collection at 橿原 is not lake access. |
-| みさき公園 | 1 | Current public park/path and rail access confirmed. Named station bus has no exact reusable joined identity; an expired ferry promotion cannot confirm current park access. |
-| 阿瀬川橋 | 0 | Licensed nearby 栗山/三方コミセン stops and official bridge identity exist, but no official source establishes the exact visitor-gateway relationship. Proximity alone is insufficient. |
-| 韮崎中央公園陸上競技場 | 2 | Rail/station bus confirmed. Current new gym/富士見ヶ丘 bus and demand points need exact licensed identities absent from reviewed P11/older GTFS; a building coordinate is not a boarding-stop identity. |
-| ミュージアム都留 | 2 | 谷村町/都留市 rail confirmed. 中央道都留 bus and current demand stop 48 need exact reusable identities; an interchange entity or a different same-name operator stop cannot substitute. |
+| 飛水峡 | 1 → 3 | 达到 3 个确认节点 |
+| 御影大橋 | 2 → 3 | 达到 3 个确认节点 |
+| 田倉山 | 2 → 3 | 达到 3 个确认节点 |
+| 池原橋 | 1 → 1 | 来源/身份/接入证据仍不足，详见交接表 |
+| まほろば湖 | 1 → 3 | 达到 3 个确认节点 |
+| みさき公園 | 1 → 1 | 来源/身份/接入证据仍不足，详见交接表 |
+| 阿瀬川橋 | 0 → 0 | 来源/身份/接入证据仍不足，详见交接表 |
+| 韮崎中央公園陸上競技場 | 2 → 2 | 来源/身份/接入证据仍不足，详见交接表 |
+| ミュージアム都留 | 2 → 3 | 达到 3 个确认节点 |
 
-For every case, merge-time proof validation = PASS and PR #465 introduced no blocker-releasing evidence. Exact source URLs, per-candidate/name dispositions, missing evidence types, required publisher changes and all full proof-bound hashes are in the machine audit linked above. Source/license/identity fixpoint is PROVEN within the frozen reviewed source snapshot; it is not a claim of physical non-existence or Internet-wide exhaustion.
+剩余四项：池原桥缺额外 stop-to-bridge 官方接入关系或可靠穷尽证明；みさき公園缺可复用 bus boarding 坐标及当前入口 join；阿瀬川桥缺公共游客 endpoint 和接入关系；韮崎竞技场已有官方 bus 接入关系，但缺新体育馆站可复用的精确 boarding 坐标。未用距离、建筑中心或远处 hub 凑数。
 
-| POI | Previous proof SHA256 | Replayed proof SHA256 | Valid after merge / new relieving evidence |
-| --- | --- | --- | --- |
-| 飛水峡 | `ad410860becf585c14b82095474eeb7959bc2e698370b895a779c365837f5616` | `7fbd03263004c2c99885f4b63ef987b6beb7e36286be71e905bc94e44dd1708b` | PASS / none |
-| 御影大橋 | `2faee6d61b08fd2a2ef2d2345d5a2f56f7515a3c56a4e84bf9f5a9ea0d45b7a4` | `2e085d74972c00d0e23daefec94365ba4d0e46447d65af55564698787b3d8a51` | PASS / none |
-| 田倉山 | `4f23caf6eb168e45b21a34f58e64d57df6b406da2052f4da3a2bfa49d415fa26` | `2d19cd7ec520d796e93db4f3717f7a8ce3aecb1bf364c38cbc6c9ba27ead3297` | PASS / none |
-| 池原橋 | `3b15b92321014914c8412507c10a1098135c717a787a53952f465026a0a3f71f` | `18b8abb97e9e8af80190a435d272c6bb333ef7aed8f8beddfb299d2805e2bd16` | PASS / none |
-| まほろば湖 | `f4001e9a86eee39dcee58042b425ea8c5685fae9673c07f01286bf798d60ad7c` | `d1de1c0f5147a1953a697ad0d943e0a3514b69422ba4608d6b284d232d6250d6` | PASS / none |
-| みさき公園 | `e569b7f79278c0dfd74392059f3180bb73f22fa6a27526f46f315a055bfc7338` | `68b326f01f84e2ee3896b0e4969c0589c3d1f8cb796c08549d0d1423b929fe04` | PASS / none |
-| 阿瀬川橋 | `972c01329edbd06383695298e083ae3c8cf7e942dc1628c6bae4aa603791f4ca` | `d0fd7917524f6d57d17366d6c3f255c9767fc92e3492e08648c4c146c164529e` | PASS / none |
-| 韮崎中央公園陸上競技場 | `0f9695866e48647f0690916e0c22d491c6f978e0cf5fcfc7d537445a4522c201` | `bda516af66b7e32c23dedffd0b62f78b10057c7658f18c365dbafafda320c30c` | PASS / none |
-| ミュージアム都留 | `36a75f7c32f53661add6dfa39b8765ea247256d5de3d26e290bf5f600c89e486` | `ab077dc677aa8470f132b4faaddd6b0cd2e1fa7b7d922e0e752cfcbf058a4f84` | PASS / none |
+## 指标和门禁
 
-Each proof retains the original candidate-decision, named-gateway, source-scan, fact-review, source-rights, node-admission and spatial-config hashes. Only Canonical dataset binding and its resulting review/proof digests change. The shared original/new dataset hashes, every old/new inventory field and per-case validation result are recorded in the audit. No additional non-fixpoint failure exists.
+| 指标 | 当前值 |
+| --- | --- |
+| Canonical processed / scan / explicit outputs | 100 / 100% / 100% |
+| Assessment denominator | 95 |
+| Confirmed topology | raw 94/100；assessment 94/95 |
+| Zero-node | raw 6（5 owner exclusions + 阿瀬川桥）；assessment 1 |
+| >=3 useful nodes | raw 91/100；assessment 91/95 |
+| Useful-node mean / median / min / max | raw 3.47 / 3 / 0 / 6；assessment 3.652632 / 3 / 0 / 6 |
+| Confirmed relationships / directed edges | 347 / 694 |
+| Directed edges/POI mean / median / min / max | 6.94 / 6 / 0 / 12 |
+| Under-target | raw 9（含5 owner exclusions）；assessment 4 |
+| Admitted / HOLD | 5,202 / 344 |
+| Unconfirmed directed candidates | 632 |
+| Local node / major hub coverage | 70/100；1/100 |
+| Tourism gateway / special access / union | 45/100；18/100；46/100 |
+| Walking / transit / taxi resolved POIs | 各 0/100 raw、0/95 assessed |
+| Accessibility / stairs / elevation / detour / P90 known POIs | 各 0/100 raw、0/95 assessed |
+| Observed extreme detour | 0，实际路线可测样本为0，不能视为无绕行 |
+| Unresolved POI / shortfall >=1 | raw 6；assessment 1 |
+| Node / edge provenance | 5,202/5,202；694/694 |
+| Batch | 1，配置每200个 POI |
+| Physical exhaustion proofs | 0 |
 
-## Final metrics and failed gates
+[manifest.json](../../data/transport/access/manifest.json)保存全量 hash、分母、directional metric coverage 和 unresolved reason distribution：closed 2；identity/access join required 1；historical 1；not visitor endpoint 1；restricted 1。2,082 条方向/模式 unresolved rows；指标未解析不删除确认 topology。
 
-| Metric | Raw corpus | Authoritative assessment |
-| --- | --- | --- |
-| Count / scan / explicit outcomes | 100 / 100% / 100% | 95 |
-| Confirmed topology coverage | 94/100 | 94/95 = 98.9474% |
-| Zero-node count | 6, including 5 owner exclusions | 1: 阿瀬川橋 |
-| At least 3 useful nodes | 86/100 | 86/95 |
-| Mean / median useful nodes | 3.4 / 3 | 3.578947 / 3 |
-| Min / max useful nodes | 0 / 6 | 0 / 6 |
-| Under-target | 14, including 5 owner exclusions | 9 audited fixpoint exceptions |
-| Confirmed relationships / directed edges | 340 / 680 | 340 / 680 |
-| Pending directed candidates | 638 | Quarantined, not accepted edges |
-| Walking / transit / taxi resolved POIs | Each 0/100 | Each 0/95 |
-| Accessibility / stairs / elevation / detour / P90 known POIs | Each 0/100 | Each 0/95 |
+20/24 topology gates PASS。四项 FAIL：有效 POI coverage 94/95（需95/95）；有效零节点 1（需0）；under-target 无可靠穷尽证明 4（需0）；global fixpoint IN_PROGRESS（需PROVEN）。第四个 FAIL 是撤销旧快照的过强结论，不是数据损坏。全部 Canonical gates PASS，raw membership/owner exclusions 不变；duplicate edge、invalid identity、v1 usage、v2 bulk promotion 均0。确定性、batch receipt/corruption、graph-growth gates PASS。
 
-Local-node coverage is 70/100; major hub 1/100; tourism gateway 44/100; special access 18/100, union 45/100. Directed edges/POI mean/median/min/max = 6.8/6/0/12. All 680 edges have unresolved route metrics: 2,040 mode-specific unresolved rows. Observed extreme detours = 0 with zero assessable actual routes; this is not real-route clearance. Detailed raw unresolved reason distribution is in manifest.json; owner exclusions are separately classified from the one assessed zero-node case.
+## Gate 0、许可和集成边界
 
-Topology gates: **21 PASS / 3 FAIL**, including all A/Canonical gates PASS. The three failures remain factual:
+TASK-084 national v2 仍没有可直接下游消费的 accepted Master；历史244-node v1未读取。按已合入 execution amendment 使用 task-owned、逐节点有 provenance/license/identity 的 additive admission，未把 v2 candidate bulk accept。
 
-| Gate | Actual | Required | Audited cases |
-| --- | --- | --- | --- |
-| Valid Canonical POIs with confirmed useful topology | 94/95 | 95/95 | 阿瀬川橋 |
-| Zero-node valid accessible POIs | 1 | 0 | 阿瀬川橋 |
-| Under-target without physical exhaustion proof | 9 | 0 | All nine cases above |
+原 S12/P11/GTFS/CC0 静态授权保持冻结。新增七宗町静态 GTFS 为 CC BY 4.0，完整署名、许可、ZIP/entry/row hashes 见 [targeted-repair.json](../../data/transport/access/inputs/targeted-repair.json)。有版权的官方地图只保留事实摘要和 source URL；不持久化其原始 payload。Google Routes/Ekiworld/其他 route providers 未得到所需 batch/cache/retention/production/derivative 授权，继续 fail-closed。Provider batch requests=0；raw route payloads persisted=0。Haversine 只用于 straightDistanceM 和有界候选，不当作 walking。
 
-Accepted node provenance 5,200/5,200; edge provenance and essential fields 680/680. Duplicate edges, invalid identities, rejected v1 usage and unreviewed v2 promotion are all zero. Graph growth PASS, 680 <= 100 × 8 × 2. One batch/receipt, configured size 200. Physical CANDIDATE_EXHAUSTION_PROOF count remains zero. `globalTopologyDiscoveryFixpoint=PROVEN`.
+## 验证与交付状态
 
-The exception status is available only when the failed-gate set is confined to those three gates, affected POIs equal the audited nine-case set, A/Canonical gates all PASS, and replay/provenance/identity/determinism/batch/growth checks PASS. Any new failure or stale proof produces BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY. This policy does not turn failed gates into PASS or complete WBS 7.15.
+独立双重全量重建逐字节一致；原 680 条边和所有原 admission/HOLD 逐条一致。收据 resume、single-batch rerun、corruption detection 由实际临时文件测试覆盖。`--rebuild` / `--resume` 对数据未达标返回 CLI exit2；`--check` 的 exit0 只表示生成文件字节一致，输出 acceptance 仍为 PARTIAL。不能将过程成功当成 data PASS。
 
-## Provider, licenses and integration boundary
+本轮 focused/full regression、lint/typecheck/format/build 与 source extraction 校验记录见 [QA](../qa/TASK-085-B/README.md) 和 [local-validation.json](../qa/TASK-085-B/local-validation.json)。最终 commit 和 exact-head Quality Gate 在同一 Draft PR #464 body 中记录，避免把旧 head 的绿灯用于本轮。
 
-
-Source-specific rights, archive/entry hashes, retention and attribution are in [manifest.json](../../data/transport/access/manifest.json) and [source-rights.json](../../data/transport/access/inputs/source-rights.json). S12 is CC BY 4.0; P11 is PDL 1.0. Licensed community/municipal GTFS inputs provide static stop identities. Four pinned CC0 Wikidata entities supply individually reviewed terminal/port identities, joined to official sources. No GTFS snapshot is treated as evidence of current service or an unmeasured last-mile route.
-
-S12 archive SHA-256: `0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28`. P11 archive SHA-256: `12132cc1c349d5d84c1ae90e7e5fff7c12a79540f4487edfae46e9f640bc1c72`. National scans cover 10,534 S12 features and 278,515 P11 features; only bounded or explicitly named locality-qualified derivatives are retained.
-
-Google Routes has no demonstrated full batch/cache/retention/production/derivative grant; Ekiworld remains evaluation-only; ODPT's inaccessible provider-specific grants were not presumed. All fail closed. **Route-provider batch requests = 0; raw route-provider payloads persisted = 0.** Official access pages contribute short reviewed facts/source links, not copied raw payloads or measured routes.
-
-Haversine is only `straightDistanceM`. Actual walking distance, duration and detour ratio remain separate nullable fields. Directional routes must independently pass licensing, endpoints, complete last-mile and barrier checks. QA detects extreme detour, river/bridge, rail/highway, mountain, gated and impossible-route cases. Zero/estimated values are not coverage substitutes.
-
-The task-owned additive adapter wraps TASK-082 GraphRef / PoiMobilityEdgeV1 and reuses its directed/unresolved semantics and validators. No second Planner contract, runtime/API/public behavior change, or 43-dimensional POI copy was introduced.
-
-
-## Verification and handoff
-
-Final replay inputFingerprint: `61b4cbd5425d24fc41283b448e78ccb24b4f6b63bbc81f575fcc179125ffe834`.
-
-Focused tests: 21/21 PASS, all repeated in the final full regression: **2,850/2,850 PASS**. Lint: 0 errors / 10 existing warnings. Typecheck and formatting PASS. Deterministic filesystem rebuild, checksum skip, input invalidation, injected receipt/artifact corruption detection and single-batch rerun PASS.
-
-Validation results and log hashes are recorded in [QA](../qa/TASK-085-B/README.md) and [local-validation.json](../qa/TASK-085-B/local-validation.json). Final code checks and exact-head Quality Gate are recorded after validation and push in Draft PR #464. The user must decide whether to accept these nine real-data boundaries before final merge/closure. This run stops at that decision; no merge, auto-merge or TASK-086.
-
-Production build and standalone artifact re-verification: **PASS**, 1,908 files. Exact final-head CI receipt is in Draft PR #464.
+最终状态仍为 PARTIAL，WBS 7.15 进行中；不交付“已全部修复”的 Excel。四项所需官方/现场资料已具体化，待证据补齐后再重放验收。

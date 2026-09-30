@@ -5,6 +5,7 @@ import {
   replayOutcome,
   EXCEPTION_STATUS,
 } from "./task-085-canonical-replay.mjs";
+import { applyTargetedRepair } from "./task-085-targeted-repair.mjs";
 import {
   discoveryProofs,
   topologyAcceptance,
@@ -48,6 +49,8 @@ const objectText = (value) => JSON.stringify(value, null, 2) + "\n";
 const codePaths = [
   "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
   "tools/transport/task-085-canonical-replay.mjs",
+  "tools/transport/task-085-targeted-repair.mjs",
+  "tools/transport/task-085-targeted-source-check.py",
   "src/server/poi-runtime/access-adjudication.ts",
   "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
   "tools/transport/task-085-gate0.mjs",
@@ -63,7 +66,7 @@ const codePaths = [
   "tools/transport/task-085-expanded-gtfs-extract.py",
   "src/shared/poi-edge-graph/index.ts",
 ];
-export function loadInputs(root = ROOT) {
+export function loadInputs(root = ROOT, { includeTargeted = true } = {}) {
   const preflight = auditGate0(root),
     config = readJson(root, INPUT + "/config.json");
   validateConfig(config);
@@ -207,7 +210,7 @@ export function loadInputs(root = ROOT) {
   const observations = readLines(root, INPUT + "/route-observations.jsonl");
   const rights = readJson(root, INPUT + "/source-rights.json"),
     bindings = readLines(root, INPUT + "/node-identity-bindings.jsonl");
-  return {
+  const input = {
     root,
     topologyReview,
     factReviews,
@@ -262,6 +265,7 @@ export function loadInputs(root = ROOT) {
     inputFingerprint: digest({ canonical: preflight.canonical, sourceFiles }),
     admissions: admitNodes(records, rights, bindings),
   };
+  return includeTargeted ? applyTargetedRepair(root, input) : input;
 }
 export function chunks(items, size = 200) {
   const result = [];
@@ -908,7 +912,11 @@ export function execute({
           : [name];
       });
     const unexpected = inventory(out).filter(
-      (name) => !(name in built.artifacts),
+      (name) =>
+        !(name in built.artifacts) &&
+        !input.targetedRepair?.sourceFiles.some(
+          (f) => f.path === OUTPUT + "/" + name,
+        ),
     );
     assert.deepEqual(unexpected, [], "UNEXPECTED_OR_STALE_TASK_ARTIFACTS");
   }

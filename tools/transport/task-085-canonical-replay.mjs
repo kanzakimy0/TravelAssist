@@ -5,6 +5,10 @@ import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { digest, stable, jsonl } from "./task-085-access-core.mjs";
 import {
+  TARGETED_PATH,
+  targetedRepairOutcome,
+} from "./task-085-targeted-repair.mjs";
+import {
   ROOT,
   OUTPUT,
   CANONICAL,
@@ -104,7 +108,7 @@ export function loadCanonicalReplay(root, canonical, pois) {
   );
   const files = readdirSync(join(root, OUTPUT, "inputs"))
     .map((f) => OUTPUT + "/inputs/" + f)
-    .filter((f) => f !== REPLAY_PATH)
+    .filter((f) => f !== REPLAY_PATH && f !== TARGETED_PATH)
     .sort();
   equal(
     files,
@@ -149,6 +153,8 @@ export function rebindDiscoveryReviews(reviews, receipt) {
   });
 }
 export function replayOutcome(input, combined, proofs) {
+  if (input.targetedRepair)
+    return targetedRepairOutcome(input, combined, proofs);
   if (!input.canonicalReplay) return { status: "NOT_APPLICABLE", issues: [] };
   const r = input.canonicalReplay,
     issues = [];
@@ -268,7 +274,7 @@ export function createReplayReceipt(root = ROOT) {
     readdirSync(join(root, OUTPUT, "inputs"))
       .sort()
       .map((f) => OUTPUT + "/inputs/" + f)
-      .filter((f) => f !== REPLAY_PATH)
+      .filter((f) => f !== REPLAY_PATH && f !== TARGETED_PATH)
       .map((p) => {
         const hash = sha256(blob(REPLAY_BASE, p));
         assert.equal(

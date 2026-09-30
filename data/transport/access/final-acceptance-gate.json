@@ -1,10 +1,10 @@
 {
   "schemaVersion": "2.0",
-  "status": "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
+  "status": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
   "allPass": false,
   "nonCanonicalPass": false,
-  "auditedExceptionsOnly": true,
-  "auditedFixpointExceptionCount": 9,
+  "auditedExceptionsOnly": false,
+  "auditedFixpointExceptionCount": 0,
   "remainingFailedGates": [
     {
       "name": "Valid Canonical POIs with confirmed useful topology",
@@ -26,30 +26,37 @@
     },
     {
       "name": "Under-target without exhaustion proof",
-      "actual": 9,
+      "actual": 4,
       "threshold": 0,
       "status": "FAIL",
       "affectedPoiIds": [
-        "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
-        "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
-        "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
         "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
-        "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
         "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
         "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
-        "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
-        "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753"
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594"
+      ]
+    },
+    {
+      "name": "globalTopologyDiscoveryFixpoint",
+      "actual": "IN_PROGRESS",
+      "threshold": "PROVEN",
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594"
       ]
     }
   ],
-  "userAcceptanceRequired": true,
+  "userAcceptanceRequired": false,
   "canonicalPendingAdjudicationCount": 0,
-  "inputFingerprint": "61b4cbd5425d24fc41283b448e78ccb24b4f6b63bbc81f575fcc179125ffe834",
+  "inputFingerprint": "4ead87f53d07f28db10bf750ab0bdc3ed6068c2cadd576348ebcea86e115e682",
   "authoritativeCanonicalCount": 100,
   "canonicalAdjudicationCount": 5,
   "validAccessibleAssessmentCount": 95,
   "denominatorPolicy": "All authorized Canonical records remain in outputs and raw coverage. Exceptions are explicit owner adjudications, never deleted or silently accepted. Both full-corpus and valid-subset counts are reported.",
-  "globalTopologyDiscoveryFixpoint": "PROVEN",
+  "globalTopologyDiscoveryFixpoint": "IN_PROGRESS",
   "topologyGates": [
     {
       "name": "Canonical scan coverage",
@@ -85,7 +92,7 @@
     },
     {
       "name": "Mean useful topology nodes per valid POI",
-      "actual": 3.5789473684210527,
+      "actual": 3.6526315789473682,
       "threshold": ">=3",
       "status": "PASS",
       "evidencePath": "poi-access-completeness.json",
@@ -109,7 +116,7 @@
     },
     {
       "name": "Under-target without exhaustion proof",
-      "actual": 9,
+      "actual": 4,
       "threshold": 0,
       "status": "FAIL",
       "evidencePath": "candidate-exhaustion-proofs.jsonl",
@@ -205,7 +212,7 @@
     },
     {
       "name": "Graph growth guard",
-      "actual": 680,
+      "actual": 694,
       "threshold": "<= canonicalCount * maxNodes * 2",
       "status": "PASS",
       "evidencePath": "manifest.json#/metrics",
@@ -213,9 +220,9 @@
     },
     {
       "name": "globalTopologyDiscoveryFixpoint",
-      "actual": "PROVEN",
+      "actual": "IN_PROGRESS",
       "threshold": "PROVEN",
-      "status": "PASS",
+      "status": "FAIL",
       "evidencePath": "candidate-exhaustion-proofs.jsonl",
       "owner": "B"
     },
@@ -279,7 +286,7 @@
     },
     {
       "name": "Mean useful topology nodes per valid POI",
-      "actual": 3.5789473684210527,
+      "actual": 3.6526315789473682,
       "threshold": ">=3",
       "status": "PASS",
       "evidencePath": "poi-access-completeness.json",
@@ -303,7 +310,7 @@
     },
     {
       "name": "Under-target without exhaustion proof",
-      "actual": 9,
+      "actual": 4,
       "threshold": 0,
       "status": "FAIL",
       "evidencePath": "candidate-exhaustion-proofs.jsonl",
@@ -399,7 +406,7 @@
     },
     {
       "name": "Graph growth guard",
-      "actual": 680,
+      "actual": 694,
       "threshold": "<= canonicalCount * maxNodes * 2",
       "status": "PASS",
       "evidencePath": "manifest.json#/metrics",
@@ -407,9 +414,9 @@
     },
     {
       "name": "globalTopologyDiscoveryFixpoint",
-      "actual": "PROVEN",
+      "actual": "IN_PROGRESS",
       "threshold": "PROVEN",
-      "status": "PASS",
+      "status": "FAIL",
       "evidencePath": "candidate-exhaustion-proofs.jsonl",
       "owner": "B"
     },
