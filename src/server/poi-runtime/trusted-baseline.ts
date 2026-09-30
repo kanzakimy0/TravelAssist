@@ -16,7 +16,7 @@ const SOURCE_WORKBOOK_PATH =
 const SOURCE_WORKBOOK_SHA256 =
   "b396723fbe1ed326fc205b7b259dd992019120182ad35044c2a96bd8a54d4014";
 const BASELINE_MANIFEST_SHA256 =
-  "6f809282e7129e78333ec0d66213dacf66005009fa0ef2a2221f4bea2b3e8564";
+  "9cfb584c6594d44181278d889a56707f0ed6af5e537cb23bd15752592fa1bbac";
 const BASE_DATASET_PATH = "src/shared/data/canonical-poi-pilot100.v1.json";
 
 const digest = (value: unknown): string =>

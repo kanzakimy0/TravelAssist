@@ -1,4 +1,6 @@
 import "server-only";
+import accessAdjudicationJson from "../../shared/data/canonical-poi-pilot100.access-adjudication.v1.json" with { type: "json" };
+import { validateCanonicalAccessAdjudication } from "./access-adjudication";
 import { createHash } from "node:crypto";
 
 import datasetJson from "../../shared/data/canonical-poi-pilot100.v1.json" with { type: "json" };
@@ -65,6 +67,7 @@ export function createCanonicalPoiRuntimeRepository(
   registryInput: unknown,
   trustedBaselineInput?: unknown,
   trustedBaselineManifestInput?: unknown,
+  accessAdjudicationInput: unknown = accessAdjudicationJson,
 ): CanonicalPoiRuntimeRepository {
   const fail = (): never => {
     throw new CanonicalPoiRuntimeIntegrityError();
@@ -105,6 +108,15 @@ export function createCanonicalPoiRuntimeRepository(
     dataset.records.length !== 100
   )
     fail();
+  try {
+    validateCanonicalAccessAdjudication(
+      dataset,
+      manifestInput,
+      accessAdjudicationInput,
+    );
+  } catch {
+    fail();
+  }
   const allocations = new Map(
     registry.entries.map((entry) => [entry.masterCode, entry]),
   );
