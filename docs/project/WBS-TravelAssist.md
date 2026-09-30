@@ -1154,6 +1154,7 @@ TASK-023-A tracking (2026-09-09):
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 进行中（#405 / TASK-072-A；复用 PR #245，需 latest-develop Full Refresh） |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 | 9.13   | Planning Contract Soak / Fuzz / Consistency QA | A | P0 | 4.47 / TASK-036 review-fix semantics | 已完成（TASK-037-A 用户验收授权合并；#298；未开始真实 100 POI Pilot） |
+| 9.14 | Canonical Replay Cross-platform Hash Hardening | A | P0 | 7.4.1,7.4.3 | 未开始（#459 / TASK-089-A；修复 TASK-083 文本 raw SHA 的 LF/CRLF 平台敏感，不改 Canonical 数据语义） |
 
 ## 10. 发布与运营准备（A 主责）
 
