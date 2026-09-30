@@ -1,0 +1,84 @@
+{
+  "reviewedOn": "2026-09-30",
+  "sources": [
+    {
+      "sourceId": "mlit-s12-fy2024",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+      "archiveUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/S12/S12-25/S12-25_GML.zip",
+      "archiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+      "attribution": "国土数値情報（駅別乗降客数データ・令和6年度）国土交通省を加工してTravelAssistが作成。Representative points and bounded selection are TravelAssist derivatives.",
+      "scope": "station_topology_only",
+      "rights": {
+        "bulkDatasetDownload": true,
+        "cache": true,
+        "retention": true,
+        "production": true,
+        "derivativePersistence": true
+      },
+      "routeAccessGrant": false
+    },
+    {
+      "sourceId": "ikoma-community-20260314",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://data.bodik.jp/dataset/292095_1714108666",
+      "archiveUrl": "https://data.bodik.jp/dataset/f305e5a9-a0ee-4d71-8313-2cf7e25bc483/resource/bb299b6f-5560-417d-b183-6d11c0a55726/download/ikoma20260314.zip",
+      "archiveSha256": "b48b71fbc7896fe735a06c5eb7740f055d669e410d250d8ee8cd5423359e0971",
+      "attribution": "生駒市 コミュニティバスGTFSデータ; CC BY 4.0; TravelAssist extracted stop identities and route references.",
+      "scope": "gtfs_stop_topology_and_stop_to_stop_timetable_only",
+      "rights": {
+        "bulkDatasetDownload": true,
+        "cache": true,
+        "retention": true,
+        "production": true,
+        "derivativePersistence": true
+      },
+      "routeAccessGrant": false
+    },
+    {
+      "sourceId": "seki-itadori-20260401",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://www.city.seki.lg.jp/0000010802.html",
+      "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/sekicity/feeds/itadorifureaibus/files/feed.zip?rid=current",
+      "archiveSha256": "2999dfaf94dec85d11da1f75ad58e251ec894a668b825f988c30ff171acd171c",
+      "attribution": "関市 板取ふれあいバス; CC BY 4.0; TravelAssist extracted stop identities and route references.",
+      "scope": "gtfs_stop_topology_and_stop_to_stop_timetable_only",
+      "rights": {
+        "bulkDatasetDownload": true,
+        "cache": true,
+        "retention": true,
+        "production": true,
+        "derivativePersistence": true
+      },
+      "routeAccessGrant": false
+    }
+  ],
+  "routeProviders": [
+    {
+      "provider": "Google Routes",
+      "decision": "FAIL_CLOSED",
+      "reason": "Repository choice is not a bulk/cache/retention/production/derived-edge persistence grant."
+    },
+    {
+      "provider": "Ekiworld",
+      "decision": "FAIL_CLOSED",
+      "reason": "Evaluation only; persistence none; TTL null."
+    },
+    {
+      "provider": "Kyoto City Bus ODPT",
+      "decision": "FAIL_CLOSED",
+      "sourceUrl": "https://ckan.odpt.org/dataset/kyoto_municipal_transportation_kyoto_city_bus_gtfs",
+      "reason": "Dataset requires basic and provider-specific terms; current resource download/grants not accessible without developer workflow. No feed fetched."
+    },
+    {
+      "provider": "Official access webpages",
+      "decision": "DISCOVERY_AND_FACTUAL_REVIEW_ONLY",
+      "reason": "No full payload stored; public visibility is not a verified route-metric persistence grant. Most approaches also omit distance, reverse direction or complete last leg."
+    }
+  ],
+  "providerBatchRequests": 0,
+  "rawRouteProviderPayloadsPersisted": 0
+}

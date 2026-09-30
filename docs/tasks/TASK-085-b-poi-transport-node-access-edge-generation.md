@@ -437,6 +437,25 @@ data/transport/access/
 
 完成后停止，不自动开始 TASK-086-B，除非执行指令明确授权前置通过后自动进入下一任务。
 
-## 2026-09-30 execution gate / blocked attempt
+## 2026-09-30 amendments applied to this execution
 
-Issue #442 comment https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799 supersedes any inference from WBS closure or the historical 100-POI wording above. Always read the then-current runtime-authorized Canonical manifest; the count is not a permanent constant. Before any edge, require explicit TASK-085 downstream machine authorization for accepted TransportNodes. Historical 244-node v1 is rejected; candidate/REVIEW v2 rows cannot be promoted by this task. Current attempt: BLOCKED_084_DOWNSTREAM_GATE; see RESULT and QA. TASK-086-B is not authorized by this execution.
+The original PR #449 specification above is preserved. Issue #442's
+[Automatic Acceptance Amendment](https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855)
+and [clarification](https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675)
+supersede the earlier immediate Gate-0 stop. Missing national TASK-084
+downstream authorization requires independently verified TASK-085-local
+node admission and official-source expansion; it does not permit v1 reuse
+or v2 REVIEW promotion.
+
+All current runtime-authorized Canonical POIs must have explicit results.
+Automatic PASS requires 100% usable access, independently evidenced
+directions, at least one resolved usable mode per POI, mean/median useful
+nodes >=3, no zero-node POI, and credible exhaustion proofs for every
+under-target POI. Candidates, topology admission, scan completion and
+integrity QA never count as usable access.
+
+The task-owned artifacts retain all failed gates. WBS 7.15 stays 进行中
+until every acceptance gate passes; then it may become 待审查.
+True no-access cases require HUMAN_REVIEW_REQUIRED. The current Result
+distinguishes closed-venue constraints from unproven global discovery
+exhaustion. No TASK-086, merge or auto-merge is authorized.

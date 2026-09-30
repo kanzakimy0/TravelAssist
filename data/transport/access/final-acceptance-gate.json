@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "1.0",
+  "allPass": false,
+  "status": "FAIL",
+  "inputFingerprint": "14edd8a909cf168bfcb7f046e092672188fc014ef04a6ccfdd4d618821036bfc",
+  "gates": [
+    {
+      "name": "Bidirectional independent usable evidence",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 1,
+      "actual": null,
+      "status": "FAIL",
+      "evidencePath": "poi-transport-access-edges.jsonl"
+    },
+    {
+      "name": "Walking route distance/time reality",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 1,
+      "actual": null,
+      "status": "PASS",
+      "evidencePath": "mode-resolution-coverage.json"
+    },
+    {
+      "name": "Useful local/tourism role coverage",
+      "numerator": 0,
+      "denominator": 100,
+      "threshold": 1,
+      "actual": 0,
+      "status": "FAIL",
+      "evidencePath": "access-role-coverage.json"
+    },
+    {
+      "name": "Bounded spatial candidate degree",
+      "numerator": 100,
+      "denominator": 100,
+      "threshold": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidencePath": "candidate-node-decisions.jsonl"
+    },
+    {
+      "name": "Canonical supporting evidence hash",
+      "numerator": 0,
+      "denominator": 1,
+      "threshold": 1,
+      "actual": 0,
+      "status": "FAIL",
+      "evidencePath": "manifest.json#/canonical/supportingSampleManifest"
+    },
+    {
+      "name": "Canonical scan coverage",
+      "numerator": 100,
+      "denominator": 100,
+      "threshold": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json"
+    },
+    {
+      "name": "Explicit result coverage",
+      "numerator": 100,
+      "denominator": 100,
+      "threshold": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json"
+    },
+    {
+      "name": "Usable access POI coverage",
+      "numerator": 0,
+      "denominator": 100,
+      "threshold": 1,
+      "actual": 0,
+      "status": "FAIL",
+      "evidencePath": "poi-access-completeness.json"
+    },
+    {
+      "name": "Resolved usable-mode POI coverage",
+      "numerator": 0,
+      "denominator": 100,
+      "threshold": 1,
+      "actual": 0,
+      "status": "FAIL",
+      "evidencePath": "mode-resolution-coverage.json"
+    },
+    {
+      "name": "Mean useful nodes per POI",
+      "numerator": 0,
+      "denominator": 100,
+      "threshold": ">= 3",
+      "actual": 0,
+      "status": "FAIL",
+      "evidencePath": "poi-access-completeness.json"
+    },
+    {
+      "name": "Median useful nodes per POI",
+      "numerator": null,
+      "denominator": 100,
+      "threshold": ">= 3",
+      "actual": 0,
+      "status": "FAIL",
+      "evidencePath": "poi-access-completeness.json"
+    },
+    {
+      "name": "POI with zero useful nodes",
+      "numerator": 100,
+      "denominator": 100,
+      "threshold": 0,
+      "actual": 100,
+      "status": "FAIL",
+      "evidencePath": "under-target-pois.json"
+    },
+    {
+      "name": "Under-target POI without exhaustion proof",
+      "numerator": 98,
+      "denominator": 100,
+      "threshold": 0,
+      "actual": 98,
+      "status": "FAIL",
+      "evidencePath": "candidate-exhaustion-proofs.jsonl"
+    },
+    {
+      "name": "Accepted-edge essential fields",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 1,
+      "actual": null,
+      "status": "FAIL",
+      "evidencePath": "poi-transport-access-edges.jsonl"
+    },
+    {
+      "name": "NODE_NOT_ACCEPTED",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidencePath": "node-downstream-admission.jsonl"
+    },
+    {
+      "name": "IDENTITY_MISMATCH",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidencePath": "poi-transport-access-edges.jsonl"
+    },
+    {
+      "name": "Duplicate accepted edge",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidencePath": "poi-transport-access-edges.jsonl"
+    },
+    {
+      "name": "Accepted-node provenance",
+      "numerator": 1887,
+      "denominator": 1887,
+      "threshold": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidencePath": "node-downstream-admission.jsonl"
+    },
+    {
+      "name": "Accepted-edge provenance",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 1,
+      "actual": null,
+      "status": "FAIL",
+      "evidencePath": "poi-transport-access-edges.jsonl"
+    },
+    {
+      "name": "Low-quality anomaly count",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidencePath": "detour-anomalies.jsonl"
+    },
+    {
+      "name": "Rejected route observations",
+      "numerator": 0,
+      "denominator": 0,
+      "threshold": 0,
+      "actual": 0,
+      "status": "PASS",
+      "evidencePath": "batches/"
+    },
+    {
+      "name": "Canonical access contradictions",
+      "numerator": 2,
+      "denominator": 100,
+      "threshold": 0,
+      "actual": 2,
+      "status": "FAIL",
+      "evidencePath": "inputs/canonical-access-blockers.json"
+    },
+    {
+      "name": "Full deterministic rebuild",
+      "numerator": 1,
+      "denominator": 1,
+      "threshold": 1,
+      "actual": 1,
+      "status": "PASS",
+      "evidencePath": "manifest.json#/execution/deterministicRebuild"
+    }
+  ]
+}
