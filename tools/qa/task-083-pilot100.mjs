@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { supportingManifestSha256 } from "./canonical-supporting-hash.mjs";
+import { validateCanonicalAccessAdjudication } from "../../src/server/poi-runtime/access-adjudication.ts";
 import { createHash } from "node:crypto";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
@@ -302,6 +304,9 @@ saveOrVerify(
   `${results.map((result) => JSON.stringify(result)).join("\n")}\n`,
 );
 
+const adjudicationPath =
+  "src/shared/data/canonical-poi-pilot100.access-adjudication.v1.json";
+const adjudication = read(adjudicationPath);
 const runtimeManifest = {
   schemaVersion: "1.0",
   scope: "CANONICAL_POI_PILOT_100",
@@ -316,7 +321,9 @@ const runtimeManifest = {
   internalIds: sample.records.map((r) => r.internalId),
   masterCodes: sample.records.map((r) => r.allocatedMasterCode),
   sampleManifestPath: `${root}/sample-manifest.v1.json`,
-  sampleManifestSha256: rawSha(`${root}/sample-manifest.v1.json`),
+  sampleManifestSha256: supportingManifestSha256(
+    readFileSync(`${root}/sample-manifest.v1.json`),
+  ),
   registryPath,
   registryRevision: registry.registryRevision,
   registrySha256: sha(JSON.stringify(registry)),
@@ -324,9 +331,15 @@ const runtimeManifest = {
   admissionResultsPath: admissionPath,
   admissionResultsSha256: rawSha(admissionPath),
   candidateCorpusAuthorized: false,
+  accessAdjudicationPath: adjudicationPath,
+  accessAdjudicationRevision: adjudication.revision,
+  accessAdjudicationSha256: sha(JSON.stringify(adjudication)),
+  accessAdjudicationFileSha256: rawSha(adjudicationPath),
+  canonicalOwnerReauthorizedAt: adjudication.decidedAt,
   boundary:
     "Only these 100 admitted Canonical POIs are authorized; all other v1.66/workbook/candidate rows remain unauthorized.",
 };
+validateCanonicalAccessAdjudication(dataset, runtimeManifest, adjudication);
 const manifestPath =
   "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json";
 saveOrVerify(manifestPath, json(runtimeManifest));

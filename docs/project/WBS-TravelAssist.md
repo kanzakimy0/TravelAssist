@@ -4,6 +4,7 @@
 
 - 2026-09-27 历史 checkpoint：Issue #438；[PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444) 当时为 Draft；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 当时为 **A / 待审查**。
 - 2026-09-29 当前状态：PR #444 已人工验收并正常合入 develop，merge `3fab703d13694fd1205679c96fb8d1d2e8549fbc`；WBS 7.4.1 **已完成**。当前 runtime-authorized Canonical POI scope 为 Pilot-100、授权 100 条；candidate corpus 未授权。
+- 2026-09-30 Canonical owner correction：保持 100 条 membership/Code/坐标，重授权 LF supporting hash；5 个 lifecycle/public-access 裁决已形成机器记录，见 [Result](../tasks/RESULT-TASK-083-a-canonical-owner-correction.md)。TASK-085 topology 未改；B 在修正合入后同步并 replay final acceptance。
 - 从 `develop@2dcf22cca48b920d99bfad416c5e79b13e599327` 执行，正常同步最新 `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058`；v1.66 中冻结 422 条保守可准入池、确定性选择 100 条真实 POI，100/100 经现有 14-gate evaluator 得到 ADMIT，100 个新 Master Code 进入 append-only registry。
 - 独立 Pilot-100 runtime manifest 仅授权这 100 条；旧候选 manifest 继续禁止 Canonical runtime import。Detail API 已接真实 server-only repository；WBS 7.6 Search 尚未合入 develop，故未 cherry-pick #433。TASK-081-B 43维仍为 0/4,300，待本 Task 用户验收后恢复。
 - 全仓 Node 回归 2,756/2,756、Detail 100/100 和 Search 兼容接点测试通过；[Result](../tasks/RESULT-TASK-083-a-real-poi-canonical-admission-runtime-import.md) · [QA/handoff](../qa/TASK-083/README.md)。

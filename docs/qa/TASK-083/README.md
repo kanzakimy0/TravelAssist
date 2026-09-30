@@ -1,5 +1,7 @@
 # TASK-083-A QA — Real Pilot-100 Canonical Admission
 
+> Current reauthorization (2026-09-30): [Canonical owner correction QA](canonical-owner-correction/README.md). Same 100 members; supporting hash repaired; five final owner decisions; historical admission is not a public-access guarantee.
+
 Authoritative machine artifacts:
 
 - `pilot100-validation.json`: 422 eligible, exactly 100 sampled, 100 active appended codes, 100/100 ADMIT with 14/14 PASS, Feature43 0/4300.

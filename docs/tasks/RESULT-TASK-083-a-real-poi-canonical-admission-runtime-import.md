@@ -1,5 +1,7 @@
 # RESULT — TASK-083-A Real 100 POI Canonical Admission + Runtime Import Gate
 
+> Current authorization (2026-09-30): see [Canonical owner correction](RESULT-TASK-083-a-canonical-owner-correction.md) for the repaired LF supporting hash, updated runtime revision and five final lifecycle/access decisions. Earlier hashes below are historical checkpoints.
+
 Status: **待审查 / [Draft PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444), no merge**. Issue #438. Implementation branch `codex/a-task-083-real-poi-canonical-admission` from `origin/develop@2dcf22cca48b920d99bfad416c5e79b13e599327`, normally updated with `develop@ef388cdcd0ff5f15ebd404337b4ed29fb3435058` and latest `develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8`.
 
 ## Outcome and scope
