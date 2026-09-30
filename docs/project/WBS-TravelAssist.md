@@ -1066,9 +1066,16 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
-| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（#441 Closed / Completed；TASK-084-B 原始全国规划骨架 Acceptance PASS；244 个 NODE_ACCEPTED、21 个 Hub；PR #448 已合入 develop） |
+| 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 返工中（#441 已重新打开；PR #448 的 244-node v1 已合入但验收结论撤销；存在层级退化、重大车站组件缺失、机场接驳站缺失、全国长途客运站覆盖不足；按 corrective rework 重建 v2，未通过前禁止作为 7.15/7.16 输入） |
 | 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
 | 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
+
+TASK-084-B quality rework (2026-09-29):
+
+- 用户复核发现已合入 #448 的 244-node master 存在实质性质量缺陷：所有 rail/shinkansen/metro/private rail 节点均被压为 T2、T3=0，品川/机场接驳铁路等组件覆盖不完整，Bus Terminal 仅 5 个且集中长崎，缺失バスタ新宿等全国级客运枢纽。#441 已重新打开，7.14 撤销“已完成”，v1 标记为历史 REJECTED_FOR_REWORK；使用 MLIT S12 2024 官方全国駅別乗降客数及各模式官方利用统计重建 v2。详见 [Corrective Rework Amendment](../tasks/AMENDMENT-TASK-084-b-transport-master-quality-rework.md)。085/086 在 v2 明确验收前不得使用 v1。
+- 2026-09-29 v2 中间成果：已生成 S12 全国轨道候选、v1 轨道身份映射、机场客流等级重算、机场轨道接入审计、全国巴士终端候选与 Ferry 阈值校准；逐条结果及未通过项见 [v2 纠错重建成果物与审核清单](../qa/TASK-084-B/TRANSPORT-MASTER-V2-REWORK-RESULTS.md)。当前仍为候选审核阶段，7.14 保持返工中；候选规模不得当作已验收全国 Master。
+
+- 2026-09-30 amendment 扩审：全国 NAVITIME 分类 58 页发现 191 条，合并官方来源线索后为 212 条待去重审核记录；完整官方字段验证 0，不能按 212 个独立终端报验。机场 97/97 身份筛查、96 条年度客流，ACCEPT 0 / DEFER 9 / REVIEW 87 / INACTIVE 1，接入指南已核 49、待核 48。轨道候选 2,271；机场年旅客量 <1,000 排除，规划候选 86、未知年度值 1；新增组件均有官方换乘范围依据；新干线 S12 48、运营方独立数值 29、站区 proxy 18、数值缺失 13，人工定级待核 60。261 个 Hub 审核范围、582 个期望组件（大阪相关 52 个范围）；大阪・梅田统一为 7 个组件，261 个范围有官方边界证据；已列组件存在性缺口 0、归组歧义 0。原 15 处边界全部补证；武藏小杉 JR、东京 JR、池袋 Metro 的重复源分组按官方连接资料显式归组并保留沿革，不叠加客流。原 269 个高等级缺口已逐项筛查，45 个补入官方 Hub 范围，224 个仍待建立范围；大阪范围本轮未增加，不能据此通过全国 Gate。7.14 继续返工中。见 [当前逐项成果物与未通过项](../qa/TASK-084-B/TRANSPORT-MASTER-V2-AMENDMENT-REVIEW.md)。
 
 TASK-084-B execution checkpoint (2026-09-28):
 
