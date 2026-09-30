@@ -77,6 +77,9 @@ def mode(row):
     # Keep New Tram (16/24) separate; legal class 21 is not sufficient alone.
     if op == "大阪市高速電気軌道" and code in {12, 21}:
         return "metro"
+    # Kintetsu Keihanna / former Higashi-Osaka is rapid rail despite legal class 21.
+    if op == "近畿日本鉄道" and line in {"けいはんな線", "東大阪線"}:
+        return "private_rail"
     if code == 21:
         return "tram"
     if code in {14, 15, 16, 22, 23, 24, 25}:
@@ -234,5 +237,5 @@ if __name__ == "__main__":
     parser.add_argument("--output", default="data/transport/nodes/task-084-b-v2-rail-candidates")
     parser.add_argument("--rebuild", action="store_true")
     parser.add_argument("--batch", type=int)
-    parser.add_argument("--component-review", default="data/transport/nodes/task-084-b-v2-official-evidence/required-hub-components.jsonl")
+    parser.add_argument("--component-review", default="data/transport/nodes/task-084-b-v2-official-evidence/required-hub-components-expanded.jsonl")
     run(parser.parse_args())

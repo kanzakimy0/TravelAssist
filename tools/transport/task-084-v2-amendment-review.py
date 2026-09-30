@@ -52,6 +52,15 @@ def enrich_rail(rail,fallbacks):
         result.append(r)
     return result,audit
 
+AIRPORT_MIN_ANNUAL_PASSENGERS=1000
+
+def airport_planning_status(value,inactive=False):
+    if inactive: return 'EXCLUDED_INACTIVE'
+    if value is None: return 'REVIEW_REQUIRED_MISSING_ANNUAL_USAGE'
+    if value < AIRPORT_MIN_ANNUAL_PASSENGERS: return 'EXCLUDED_ANNUAL_PASSENGERS_BELOW_1000'
+    return 'ELIGIBLE_PENDING_ACCEPTANCE'
+
+
 def airports(observations,old_access,rail,prior):
     access={r['airportName'].removesuffix('空港'):r for r in old_access}
     idx=defaultdict(list)
@@ -83,6 +92,15 @@ def airports(observations,old_access,rail,prior):
             r['decision']='CLOSED/INACTIVE'; r['decisionReason']='MLIT current airport profile explicitly suspends operation through 2031-03-31.'; r['decisionEvidence']=[r['profileEvidence']]; r['proposedNodeLevel']=None
         elif name in defer:
             r['decision']='DEFER_NOT_PLANNER_RELEVANT'; r['decisionReason']=defer[name][1]; r['decisionEvidence']=[{'url':defer[name][0]}]; r['proposedNodeLevel']=None
+        annual=r['annualUsage']['usageValue'] if r['annualUsage'] else None
+        r['planningInclusionStatus']=airport_planning_status(annual,r['decision']=='CLOSED/INACTIVE')
+        r['minimumAnnualPassengers']=AIRPORT_MIN_ANNUAL_PASSENGERS
+        r['thresholdEvidence']={'authority':'USER_INSTRUCTION','confirmedAt':'2026-09-30','metric':'ANNUAL_AIRPORT_PASSENGER_ENTRIES_EXITS','comparison':'usageValue < 1000 excludes; exactly 1000 remains eligible; null is unknown'}
+        r['plannerCandidateEligible']=True if r['planningInclusionStatus']=='ELIGIBLE_PENDING_ACCEPTANCE' else None if annual is None else False
+        if r['planningInclusionStatus']=='EXCLUDED_ANNUAL_PASSENGERS_BELOW_1000':
+            r['decision']='DEFER_NOT_PLANNER_RELEVANT'
+            r['decisionReason']='Excluded from planning candidates by confirmed annual-passenger threshold (<1000); this is not a closure finding.'
+            r['decisionEvidence'].append(r['annualUsage']); r['proposedNodeLevel']=None
         r['auditScope']='ALL_97_IDENTITY_AND_OFFICIAL_USAGE_SCREENING_WITH_EXPLICIT_OPEN_FIELDS'
         r['runtimeImportAuthorized']=False
         audits.append(r)
@@ -131,47 +149,45 @@ def buses(discovered,registered,seeds):
         if s['canonicalNameJa'] not in covered_seed: result.append(make('prior:'+s['proposedTransportNodeId'],s['canonicalNameJa'],seed=[s]))
     return sorted(result,key=lambda r:r['candidateReviewId'])
 
-def hub_reviews(rail,old_hubs):
-    # Each tuple is an expected component to review, not a name-based merge rule.
-    E='東日本旅客鉄道'; W='西日本旅客鉄道'; C='東海旅客鉄道'; K='九州旅客鉄道'; M='東京地下鉄'; O='大阪市高速電気軌道'
-    definitions={
-      '東京':[('東京',E,'conventional_rail'),('東京',E,'shinkansen'),('東京',C,'shinkansen'),('東京',M,'metro')],
-      '品川':[('品川',E,'conventional_rail'),('品川',C,'shinkansen'),('品川','京浜急行電鉄','private_rail')],
-      '横浜':[('横浜',E,'conventional_rail'),('横浜','京浜急行電鉄','private_rail'),('横浜','東急電鉄','private_rail'),('横浜','相模鉄道','private_rail'),('横浜','横浜高速鉄道','private_rail'),('横浜','横浜市','metro')],
-      '渋谷':[('渋谷',E,'conventional_rail'),('渋谷','東急電鉄','private_rail'),('渋谷','京王電鉄','private_rail'),('渋谷',M,'metro')],
-      '大阪':[('大阪',W,'conventional_rail')],
-      '大宮':[('大宮',E,'conventional_rail'),('大宮',E,'shinkansen'),('大宮','東武鉄道','private_rail'),('大宮','埼玉新都市交通','fixed_guideway')],
-      '京都':[('京都',W,'conventional_rail'),('京都',C,'shinkansen'),('京都','近畿日本鉄道','private_rail'),('京都','京都市','metro')],
-      '梅田':[('大阪梅田','阪急電鉄','private_rail'),('大阪梅田','阪神電気鉄道','private_rail'),('梅田',O,'metro')],
-      '新宿':[('新宿',E,'conventional_rail'),('新宿','小田急電鉄','private_rail'),('新宿','京王電鉄','private_rail'),('新宿',M,'metro'),('新宿','東京都','metro')],
-      '池袋':[('池袋',E,'conventional_rail'),('池袋','東武鉄道','private_rail'),('池袋','西武鉄道','private_rail'),('池袋',M,'metro')],
-      '新大阪':[('新大阪',W,'conventional_rail'),('新大阪',W,'shinkansen'),('新大阪',C,'shinkansen'),('新大阪',O,'metro')],
-      '名古屋':[('名古屋',C,'conventional_rail'),('名古屋',C,'shinkansen'),('名古屋','名古屋市','metro'),('名古屋','名古屋臨海高速鉄道','private_rail'),('名鉄名古屋','名古屋鉄道','private_rail'),('近鉄名古屋','近畿日本鉄道','private_rail')],
-      '奈良':[('奈良',W,'conventional_rail')],
-      '三ノ宮':[('三ノ宮',W,'conventional_rail'),('神戸三宮','阪急電鉄','private_rail'),('神戸三宮','阪神電気鉄道','private_rail'),('三宮','神戸市','metro'),('三宮','神戸新交通','fixed_guideway')],
-      '仙台':[('仙台',E,'conventional_rail'),('仙台',E,'shinkansen'),('仙台','仙台市','metro')],
-      '博多':[('博多',W,'shinkansen'),('博多',K,'shinkansen'),('博多',K,'conventional_rail'),('博多','福岡市','metro')],
-      '広島':[('広島',W,'conventional_rail'),('広島',W,'shinkansen'),('広島駅','広島電鉄','tram')],
-      '金沢':[('金沢',W,'shinkansen'),('金沢','IRいしかわ鉄道','private_rail'),('北鉄金沢','北陸鉄道','private_rail')],
-      '熊本':[('熊本',K,'conventional_rail'),('熊本',K,'shinkansen'),('熊本駅前','熊本市','tram')],
-      '上野':[('上野',E,'conventional_rail'),('上野',E,'shinkansen'),('上野',M,'metro')],
-      '鹿児島中央':[('鹿児島中央',K,'conventional_rail'),('鹿児島中央',K,'shinkansen'),('鹿児島中央駅前','鹿児島市','tram')],
-      '札幌':[('札幌','北海道旅客鉄道','conventional_rail'),('さっぽろ','札幌市','metro')],
-    }
+def hub_reviews(rail,old_hubs,definitions):
     index=defaultdict(list)
     for r in rail: index[(r['canonicalNameJa'],r['operatorRefs'][0],r['modeFamily'])].append(r)
     old={h['canonicalNameJa']:h for h in old_hubs}; out=[]; coverage={}
-    for name,expected in definitions.items():
-        components=[]
-        for station,op,mode in expected:
+    for definition in definitions:
+        name=definition['hubReviewName']; documented=definition['boundaryEvidenceStatus']=='DOCUMENTED_INTERCHANGE'
+        evidence=definition['boundaryEvidence']
+        if documented and not evidence: raise ValueError('HUB_BOUNDARY_EVIDENCE_REQUIRED')
+        hub_id='transport-hub-review:'+str(uuid.uuid5(uuid.NAMESPACE_URL,'TravelAssist/TASK-084-B/v2/hub/'+definition['hubReviewKey']))
+        components=[]; component_levels=[]
+        for expected in definition['components']:
+            station,op,mode=(expected[k] for k in ['stationName','operator','modeFamily'])
             matches=index[(station,op,mode)]
-            components.append({'stationName':station,'operator':op,'modeFamily':mode,'candidateTransportNodeIds':[r['proposedTransportNodeId'] for r in matches],'status':'PRESENT_COMPONENT_REVIEW_REQUIRED' if len(matches)==1 else 'MISSING_OPERATOR_MODE' if not matches else 'MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED'})
-            for r in matches: coverage.setdefault(r['proposedTransportNodeId'],[]).append(name)
-        guides=old.get(name,{}).get('officialStationGuides',[])
-        if name=='品川': guides=['https://www.jreast.co.jp/estation/stations/788.html','https://www.keikyu.co.jp/ride/kakueki/KK01.html','https://railway.jr-central.co.jp/station-guide/shinkansen/shinagawa/map.html']
-        out.append({'hubReviewName':name,'priorHubId':old.get(name,{}).get('hubId'),'priorHubLevel':old.get(name,{}).get('nodeLevel'),'officialStationGuideLeads':guides,'expectedComponents':components,'expectationScope':'MINIMUM_OPERATOR_MODE_REVIEW_NOT_EXHAUSTIVE','status':'COMPONENT_REVIEW_REQUIRED','missingOperatorModeCount':sum(c['status']=='MISSING_OPERATOR_MODE' for c in components),'v2HubLevel':None,'parentHubAssignmentAuthorized':False,'officialInterchangeBoundaryReview':'PENDING','sameNameMergeUsed':False,'distanceOnlyMergeUsed':False,'notes':'Names/operators locate review candidates only. No Hub membership is assigned. Review physical interchange boundaries, every served operator/mode, bus inclusion and lineRefs.'})
-    high=[{'candidateTransportNodeId':r['proposedTransportNodeId'],'stationName':r['canonicalNameJa'],'operator':r['operatorRefs'][0],'modeFamily':r['modeFamily'],'proposedNodeLevel':r['proposedNodeLevel'],'reviewScopes':coverage.get(r['proposedTransportNodeId'],[]),'status':'HUB_SCOPE_EVIDENCE_REVIEW_REQUIRED' if coverage.get(r['proposedTransportNodeId']) else 'HUB_AUDIT_SCOPE_NOT_YET_ESTABLISHED'} for r in rail if r['proposedNodeLevel'] in ('T0','T1')]
+            if expected.get('sourceGroupCodes'):
+                matches=[r for r in matches if any(x['groupCode'] in expected['sourceGroupCodes'] for x in r['sourceStationRefs'])]
+            component={**expected,'candidateTransportNodeIds':[r['proposedTransportNodeId'] for r in matches],'status':'PRESENT_COMPONENT_REVIEW_REQUIRED' if len(matches)==1 else 'MISSING_OPERATOR_MODE' if not matches else 'MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED','proposedParentHubId':hub_id if documented and len(matches)==1 else None,'lineRefs':sorted({line for r in matches for line in r['lineRefs']}),'componentLevels':[r['proposedNodeLevel'] for r in matches]}
+            components.append(component)
+            for r in matches:
+                coverage.setdefault(r['proposedTransportNodeId'],[]).append(name)
+                if r['proposedNodeLevel']: component_levels.append(r['proposedNodeLevel'])
+        prior_names=definition['supersedesReviewNames']
+        prior_ids=sorted({old[n]['hubId'] for n in prior_names if n in old})
+        proposed_level=min(component_levels,key=LEVELS.index) if component_levels else None
+        out.append({'hubReviewName':name,'proposedHubId':hub_id,'regionReviewScope':definition['region'],'priorHubId':prior_ids[0] if len(prior_ids)==1 else None,'priorHubIds':prior_ids,'priorReviewNames':prior_names,'priorHubLevel':old.get(name,{}).get('nodeLevel'),'officialStationGuideLeads':sorted({e['url'] for e in evidence}),'boundaryEvidence':evidence,'expectedComponents':components,'expectationScope':'OFFICIAL_RAIL_INTERCHANGE_COMPONENT_INVENTORY' if documented else 'MINIMUM_OPERATOR_MODE_REVIEW_NOT_EXHAUSTIVE','status':'COMPONENT_REVIEW_REQUIRED','missingOperatorModeCount':sum(c['status']=='MISSING_OPERATOR_MODE' for c in components),'ambiguousComponentCount':sum(c['status']=='MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED' for c in components),'proposedHubLevel':proposed_level,'proposedHubLevelMethod':'HIGHEST_KNOWN_COMPONENT_TIER_FOR_REVIEW_NO_PASSENGER_SUM','v2HubLevel':None,'parentHubAssignmentAuthorized':False,'officialInterchangeBoundaryReview':definition['boundaryEvidenceStatus'],'sameNameMergeUsed':False,'distanceOnlyMergeUsed':False,'notes':definition['boundaryScope'],'operatorLineageReview':definition.get('operatorLineageReview')})
+    membership={}
+    for h in out:
+        for c in h['expectedComponents']:
+            if c['proposedParentHubId']:
+                for ident in c['candidateTransportNodeIds']:
+                    if ident in membership and membership[ident]!=h['proposedHubId']: raise ValueError('CONFLICTING_PROPOSED_HUB_MEMBERSHIP: '+ident)
+                    membership[ident]=h['proposedHubId']
+    for r in rail:
+        r['proposedParentHubId']=membership.get(r['proposedTransportNodeId'])
+        r['parentHubAssignmentAuthorized']=False
+        if r['operatorRefs']==['泉北高速鉄道']:
+            r['currentOperatorReview']={'historicalSourceOperator':'泉北高速鉄道','documentedSuccessor':'南海電気鉄道','effectiveDate':'2025-04-01','officialSource':'https://www.nankai.co.jp/news/241101_1.html','status':'HISTORICAL_S12_OPERATOR_IDENTITY_REVIEW_REQUIRED','identityRebound':False}
+    high=[{'candidateTransportNodeId':r['proposedTransportNodeId'],'stationName':r['canonicalNameJa'],'operator':r['operatorRefs'][0],'modeFamily':r['modeFamily'],'proposedNodeLevel':r['proposedNodeLevel'],'reviewScopes':coverage.get(r['proposedTransportNodeId'],[]),'proposedParentHubId':membership.get(r['proposedTransportNodeId']),'status':'DOCUMENTED_HUB_COMPONENT_REVIEW_REQUIRED' if r['proposedTransportNodeId'] in membership else 'HUB_SCOPE_EVIDENCE_REVIEW_REQUIRED' if coverage.get(r['proposedTransportNodeId']) else 'HUB_AUDIT_SCOPE_NOT_YET_ESTABLISHED'} for r in rail if r['proposedNodeLevel'] in ('T0','T1')]
     return out,high
+
 
 def distributions(rail,airports,bus,hubs):
     out=[]
@@ -185,9 +201,9 @@ def distributions(rail,airports,bus,hubs):
         return {'東日本旅客鉄道':'JR East','東海旅客鉄道':'JR Central','西日本旅客鉄道':'JR West','九州旅客鉄道':'JR Kyushu','北海道旅客鉄道':'JR Hokkaido','四国旅客鉄道':'JR Shikoku'}.get(op,'Municipal/Metro' if r['modeFamily']=='metro' else 'Private/Other')
     add('RAIL_COMPONENT_CANDIDATE',rail,'operator_family',family,'proposedNodeLevel')
     add('RAIL_COMPONENT_CANDIDATE',rail,'operator',lambda r:r['operatorRefs'][0],'proposedNodeLevel')
-    add('AIRPORT_AUDIT_PROPOSED_ONLY',airports,'mode',lambda r:'airport','proposedNodeLevel')
+    add('AIRPORT_PLANNING_CANDIDATE_PROPOSED_ONLY',[r for r in airports if r['plannerCandidateEligible'] is True],'mode',lambda r:'airport','proposedNodeLevel')
     add('BUS_SOURCE_REVIEW_RECORD_NOT_DEDUPED_FACILITY',bus,'mode',lambda r:'bus_terminal','proposedNodeLevel')
-    add('HUB_BOUNDARY_REVIEW_SCOPE',hubs,'entity_layer',lambda r:'Hub','v2HubLevel')
+    add('HUB_BOUNDARY_REVIEW_SCOPE',hubs,'entity_layer',lambda r:'Hub','proposedHubLevel')
     return out
 
 def build(a):
@@ -210,9 +226,11 @@ def build(a):
         for e in r['officialEvidence']: e['latestUrlRetrieval']=retrieval_index.get(e['url'])
     for r in airport:
         r['accessReview']['latestUrlRetrieval']=retrieval_index.get(r['accessReview']['officialAccessGuide'])
-    hubs,hub_gate=hub_reviews(rail,read(BASE/'task-084-b-national-master/transport-hubs.jsonl'))
+    hubs,hub_gate=hub_reviews(rail,read(BASE/'task-084-b-national-master/transport-hubs.jsonl'),read(sources/'hub-interchange-definitions.jsonl'))
+    read(sources/'osaka-official-transfer-observations.jsonl')
+    read(sources/'mode-classification-evidence.json')
     distributions_rows=distributions(rail,airport,bus,hubs)
-    rows={'rail-components.jsonl':rail,'shinkansen-usage-review.jsonl':shinkansen,'airport-97-audit.jsonl':airport,'airport-rail-components.jsonl':access,'bus-candidate-official-review.jsonl':bus,'hub-component-completeness-review.jsonl':hubs,'high-tier-hub-coverage-gate.jsonl':hub_gate,'tier-distributions.jsonl':distributions_rows,'candidate-revision-lineage.jsonl':revisions}
+    rows={'rail-components.jsonl':rail,'shinkansen-usage-review.jsonl':shinkansen,'airport-97-audit.jsonl':airport,'airport-planning-candidates.jsonl':[r for r in airport if r['plannerCandidateEligible'] is True],'airport-rail-components.jsonl':access,'bus-candidate-official-review.jsonl':bus,'hub-component-completeness-review.jsonl':hubs,'high-tier-hub-coverage-gate.jsonl':hub_gate,'tier-distributions.jsonl':distributions_rows,'candidate-revision-lineage.jsonl':revisions}
     artifacts={name:b''.join(enc(x) for x in rs) for name,rs in rows.items()}
     batches=[]
     for start in range(0,len(rail),200):
@@ -220,9 +238,9 @@ def build(a):
         receipt={'file':name,'count':len(rail[start:start+200]),'sha256':sha(body)}; batches.append(receipt); artifacts[name.replace('batches/','batch-receipts/').replace('.jsonl','.json')]=enc(receipt)
     manifest={'task':'TASK-084-B','rulesCommit':RULE,'stage':'V2_AMENDMENT_15_18_REVIEW','nationalMasterStatus':'REWORK_IN_PROGRESS','runtimeImportAuthorized':False,'nationalMasterPass':False,'formalAcceptedV2NodeCount':0,'downstream085Authorized':False,'downstream086Authorized':False,'n03ProductionJoinExecuted':False,
       'rail':{'candidateComponents':len(rail),'shinkansenComponents':len(shinkansen),'numericS12':sum(s['usageFallbackLevel']==1 for s in shinkansen),'operatorOfficialNumeric':sum(s['usageFallbackLevel']==2 for s in shinkansen),'stationComplexProxy':sum(s['usageMetricType']=='STATION_COMPLEX_PROXY' for s in shinkansen),'usageUnavailable':sum(s['usageValue'] is None for s in shinkansen),'manualLevelReviewCount':sum(s['manualLevelReview'] for s in shinkansen),'proposedTierCounts':counts(rail,'proposedNodeLevel')},
-      'airport':{'officialIdentities':len(airport),'categoryCounts':counts(airport,'category'),'identityAudited':len(airport),'annualNumeric':sum(r['annualUsage'] is not None for r in airport),'decisionCounts':counts(airport,'decision'),'missingIdentityCount':0,'accessGuidesReviewed':sum(r['accessReview']['officialAccessGuide'] is not None for r in airport),'accessReviewRequired':sum(r['accessReview']['officialAccessGuide'] is None for r in airport),'expectedRailComponents':len(access),'presentRailComponents':sum(r['status']=='CANDIDATE_PRESENT_REVIEW_REQUIRED' for r in access),'missingRailComponents':sum(r['status']=='COMPONENT_MISSING' for r in access),'railAirportCount':len(set(r['airportName'] for r in access)),'fullAcceptanceAuditPass':False},
+      'airport':{'officialIdentities':len(airport),'minimumAnnualPassengers':AIRPORT_MIN_ANNUAL_PASSENGERS,'planningCandidates':sum(r['plannerCandidateEligible'] is True for r in airport),'annualUsageBelowThreshold':sum(r['annualUsage'] is not None and r['annualUsage']['usageValue']<AIRPORT_MIN_ANNUAL_PASSENGERS for r in airport),'unknownAnnualUsage':sum(r['annualUsage'] is None for r in airport),'planningInclusionCounts':counts(airport,'planningInclusionStatus'),'categoryCounts':counts(airport,'category'),'identityAudited':len(airport),'annualNumeric':sum(r['annualUsage'] is not None for r in airport),'decisionCounts':counts(airport,'decision'),'missingIdentityCount':0,'accessGuidesReviewed':sum(r['accessReview']['officialAccessGuide'] is not None for r in airport),'accessReviewRequired':sum(r['accessReview']['officialAccessGuide'] is None for r in airport),'expectedRailComponents':len(access),'presentRailComponents':sum(r['status']=='CANDIDATE_PRESENT_REVIEW_REQUIRED' for r in access),'missingRailComponents':sum(r['status']=='COMPONENT_MISSING' for r in access),'railAirportCount':len(set(r['airportName'] for r in access)),'fullAcceptanceAuditPass':False},
       'bus':{'discoveredCandidateReviewRecordsTotal':len(bus),'navitimeDiscovered':sum(r['discovery'] is not None for r in bus),'officialRegisteredFacilities':26,'officialEvidenceAttached':sum(bool(r['officialEvidence']) for r in bus),'navitimeOfficialEvidenceAttached':sum(r['discovery'] is not None and bool(r['officialEvidence']) for r in bus),'fullyOfficialSourceValidated':sum(r['fullyOfficialValidated'] for r in bus),'decisionCounts':counts(bus,'decision'),'physicalFacilityDedupComplete':False,'uniquePhysicalFacilityCount':None,'officialNumericUsage':sum(r['usageValue'] is not None for r in bus)},
-      'hubs':{'reviewScopes':len(hubs),'complete':0,'componentReviewRequired':len(hubs),'missingOperatorModeExpectations':sum(h['missingOperatorModeCount'] for h in hubs),'highTierComponentCount':len(hub_gate),'highTierWithoutEstablishedHubAuditScope':sum(not r['reviewScopes'] for r in hub_gate),'nationwideHubAuditComplete':False},
+      'hubs':{'reviewScopes':len(hubs),'expectedComponents':sum(len(h['expectedComponents']) for h in hubs),'documentedInterchangeScopes':sum(h['officialInterchangeBoundaryReview']=='DOCUMENTED_INTERCHANGE' for h in hubs),'osakaReviewScopes':sum(h['regionReviewScope'].startswith('OSAKA_') for h in hubs),'proposedMembershipCount':sum(r.get('proposedParentHubId') is not None for r in rail),'ambiguousComponentExpectations':sum(h['ambiguousComponentCount'] for h in hubs),'complete':0,'componentReviewRequired':len(hubs),'missingOperatorModeExpectations':sum(h['missingOperatorModeCount'] for h in hubs),'highTierComponentCount':len(hub_gate),'highTierWithoutEstablishedHubAuditScope':sum(not r['reviewScopes'] for r in hub_gate),'nationwideHubAuditComplete':False},
       'candidateRevisionCounts':counts(revisions,'decision'),'officialSourceUrlChecks':{'attempted':len(retrievals),'fetched':sum(r['status']=='FETCHED' for r in retrievals),'failed':sum(r['status']=='FETCH_FAILED' for r in retrievals)},
       'inputSha256':inputs,'batchSize':200,'batches':batches,'artifactSha256':{n:sha(b) for n,b in artifacts.items()},'blockers':['BUS_OFFICIAL_VALIDATION_AND_PHYSICAL_DEDUP_INCOMPLETE','AIRPORT_FULL_FIELD_ACCEPTANCE_INCOMPLETE','HUB_OPERATOR_MODE_BOUNDARY_AUDIT_INCOMPLETE','SHINKANSEN_METRIC_MANUAL_REVIEWS_PENDING','V2_LINEAGE_AND_FINAL_ACCEPTANCE_PENDING']}
     artifacts['manifest.json']=enc(manifest)

@@ -1,9 +1,9 @@
 {
   "task": "TASK-084-B",
   "scope": "LOCAL_AMENDMENT_REVIEW_VALIDATION",
-  "manifestSha256": "131c67cc812cc65732149cbb4bed038244d7493260fc1308b44dd889e4c04395",
+  "manifestSha256": "296cafbb9d3786cb61a232e53a113dd53f6cd9d6827fc806a5cf93f6f23122bb",
   "semanticNodeTests": {
-    "passed": 6,
+    "passed": 8,
     "failed": 0
   },
   "deterministicRebuild": "PASS",
@@ -13,5 +13,18 @@
   "amendmentFailBeforeWrite": "PASS",
   "nationalMasterStatus": "REWORK_IN_PROGRESS",
   "exactHeadQualityGate": "MUST_VERIFY_REMOTE_RUN_AFTER_PUSH",
-  "inputLineEndingPortability": "LF_CANONICAL_BYTES"
+  "inputLineEndingPortability": "LF_CANONICAL_BYTES",
+  "airportBoundaryTests": [
+    "999 EXCLUDED",
+    "1000 ELIGIBLE",
+    "null UNKNOWN",
+    "inactive OVERRIDES"
+  ],
+  "hubBoundaryRegressions": [
+    "Osaka-Umeda 7 distinct components",
+    "Skytree 5 distinct components",
+    "Nerima multiline",
+    "JR Noda and Hanshin Noda separated",
+    "Senboku historical operator flagged"
+  ]
 }

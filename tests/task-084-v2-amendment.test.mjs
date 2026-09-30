@@ -198,6 +198,95 @@ test("incomplete national coverage cannot authorize v2 or TASK-085/086", () => {
     rows("candidate-revision-lineage").filter(
       (r) => r.decision === "ADDED_OFFICIAL_HUB_COMPONENT_REVIEW",
     ).length,
+    manifest.candidateRevisionCounts.ADDED_OFFICIAL_HUB_COMPONENT_REVIEW,
+  );
+});
+
+test("documented interchange boundaries unify Umeda while preserving operators and physical stations", () => {
+  const hubs = rows("hub-component-completeness-review");
+  const hub = (name) => hubs.find((h) => h.hubReviewName === name);
+  const umeda = hub("大阪・梅田");
+  assert.equal(umeda.expectedComponents.length, 7);
+  assert.equal(umeda.proposedHubLevel, "T0");
+  assert.deepEqual(umeda.priorReviewNames, ["大阪", "梅田"]);
+  assert.ok(!hub("大阪") && !hub("梅田"));
+  assert.equal(
+    new Set(
+      umeda.expectedComponents.flatMap((c) => c.candidateTransportNodeIds),
+    ).size,
+    7,
+  );
+  assert.ok(
+    umeda.expectedComponents.every(
+      (c) => c.proposedParentHubId === umeda.proposedHubId,
+    ),
+  );
+  assert.equal(hub("なんば・大阪難波").expectedComponents.length, 5);
+  assert.equal(hub("天王寺・大阪阿部野橋").expectedComponents.length, 4);
+  assert.equal(
+    hub("押上・とうきょうスカイツリー").expectedComponents.length,
     5,
+  );
+  assert.equal(
+    hub("押上・とうきょうスカイツリー").expectedComponents.filter(
+      (c) => c.operator === "東武鉄道",
+    ).length,
+    2,
+  );
+  assert.equal(hub("練馬").expectedComponents.length, 2);
+  assert.equal(
+    hub("練馬").expectedComponents.find((c) => c.operator === "西武鉄道")
+      .lineRefs.length,
+    3,
+  );
+  // Same-name JR Noda and Hanshin Noda belong to different documented areas.
+  const noda = rail.filter(
+    (r) =>
+      r.canonicalNameJa === "野田" &&
+      ["西日本旅客鉄道", "阪神電気鉄道"].includes(r.operatorRefs[0]),
+  );
+  assert.equal(new Set(noda.map((r) => r.proposedParentHubId)).size, 2);
+  assert.ok(
+    hub("浅草").expectedComponents.every(
+      (c) => c.operator !== "首都圏新都市鉄道",
+    ),
+  );
+  for (const h of hubs.filter(
+    (r) => r.officialInterchangeBoundaryReview === "DOCUMENTED_INTERCHANGE",
+  )) {
+    assert.ok(h.boundaryEvidence.length > 0);
+    assert.equal(h.missingOperatorModeCount, 0);
+    assert.equal(h.ambiguousComponentCount, 0);
+    assert.equal(h.parentHubAssignmentAuthorized, false);
+  }
+  assert.ok(
+    hub("なかもず・中百舌鳥").expectedComponents.every(
+      (c) => c.operator !== "泉北高速鉄道",
+    ),
+  );
+});
+
+test("annual airport threshold excludes low-volume identities without dropping their audit history", () => {
+  const all = rows("airport-97-audit");
+  const selected = rows("airport-planning-candidates");
+  assert.equal(all.length, 97);
+  assert.equal(selected.length, 86);
+  assert.ok(
+    selected.every(
+      (r) =>
+        r.annualUsage.usageValue >= 1000 && r.plannerCandidateEligible === true,
+    ),
+  );
+  const sado = all.find((r) => r.officialName === "佐渡");
+  assert.equal(sado.decision, "DEFER_NOT_PLANNER_RELEVANT");
+  assert.equal(sado.annualUsage.usageValue, 0);
+  assert.equal(sado.proposedNodeLevel, null);
+  assert.equal(
+    all.find((r) => r.officialName === "千歳").plannerCandidateEligible,
+    null,
+  );
+  assert.equal(
+    all.find((r) => r.officialName === "礼文").decision,
+    "CLOSED/INACTIVE",
   );
 });

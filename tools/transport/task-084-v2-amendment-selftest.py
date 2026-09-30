@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """Verify resume determinism and fail-before-write corruption handling in a temp dir."""
-import hashlib, json, subprocess, sys, tempfile
+import hashlib, json, subprocess, sys, tempfile, importlib.util
 from pathlib import Path
 
+spec=importlib.util.spec_from_file_location('review','tools/transport/task-084-v2-amendment-review.py')
+review=importlib.util.module_from_spec(spec);spec.loader.exec_module(review)
+assert review.airport_planning_status(999)=='EXCLUDED_ANNUAL_PASSENGERS_BELOW_1000'
+assert review.airport_planning_status(1000)=='ELIGIBLE_PENDING_ACCEPTANCE'
+assert review.airport_planning_status(None)=='REVIEW_REQUIRED_MISSING_ANNUAL_USAGE'
+assert review.airport_planning_status(1000,True)=='EXCLUDED_INACTIVE'
 with tempfile.TemporaryDirectory(prefix='travelassist-task084-amendment-') as temp:
     out=Path(temp)/'review'
     command=[sys.executable,'tools/transport/task-084-v2-amendment-review.py','--output',str(out)]
