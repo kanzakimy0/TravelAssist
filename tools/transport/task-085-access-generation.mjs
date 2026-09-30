@@ -1,4 +1,11 @@
 import {
+  loadCanonicalReplay,
+  validatePriorCanonicalBinding,
+  rebindDiscoveryReviews,
+  replayOutcome,
+  EXCEPTION_STATUS,
+} from "./task-085-canonical-replay.mjs";
+import {
   discoveryProofs,
   topologyAcceptance,
 } from "./task-085-topology-acceptance.mjs";
@@ -39,6 +46,9 @@ const readLines = (root, file) =>
     .map(JSON.parse);
 const objectText = (value) => JSON.stringify(value, null, 2) + "\n";
 const codePaths = [
+  "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
+  "tools/transport/task-085-canonical-replay.mjs",
+  "src/server/poi-runtime/access-adjudication.ts",
   "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
   "tools/transport/task-085-gate0.mjs",
   "tools/transport/task-085-topology-acceptance.mjs",
@@ -57,6 +67,10 @@ export function loadInputs(root = ROOT) {
   const preflight = auditGate0(root),
     config = readJson(root, INPUT + "/config.json");
   validateConfig(config);
+  const pois = readJson(root, preflight.canonical.datasetPath)
+    .records.slice()
+    .sort((a, b) => (a.internalId < b.internalId ? -1 : 1));
+  const canonicalReplay = loadCanonicalReplay(root, preflight.canonical, pois);
   const files = readdirSync(join(root, INPUT))
     .sort()
     .map((name) => INPUT + "/" + name);
@@ -77,10 +91,10 @@ export function loadInputs(root = ROOT) {
     gtfs.derivedSha256,
     "GTFS_DERIVED_HASH",
   );
-  assert.equal(
+  validatePriorCanonicalBinding(
     s12.canonicalDatasetFileSha256,
     preflight.canonical.datasetFileSha256,
-    "CHANGED_CANONICAL_REQUIRES_SOURCE_REEXTRACTION",
+    canonicalReplay,
   );
   assert.deepEqual(
     s12.spatialConfig,
@@ -91,9 +105,6 @@ export function loadInputs(root = ROOT) {
     ),
     "CHANGED_SPATIAL_CONFIG_REQUIRES_REEXTRACTION",
   );
-  const pois = readJson(root, preflight.canonical.datasetPath)
-    .records.slice()
-    .sort((a, b) => (a.internalId < b.internalId ? -1 : 1));
   const research = readJson(root, INPUT + "/official-access-research.json");
   const topologyReview = readJson(root, INPUT + "/topology-review.json");
   const factReviews = readJson(root, INPUT + "/gateway-fact-reviews.json");
@@ -103,10 +114,10 @@ export function loadInputs(root = ROOT) {
     fingerprint(root, "tools/transport/task-085-topology-review.mjs").sha256,
     "REVIEW_IMPLEMENTATION_CHANGED",
   );
-  assert.equal(
+  validatePriorCanonicalBinding(
     seal.canonicalDatasetFileSha256,
     preflight.canonical.datasetFileSha256,
-    "REVIEW_CANONICAL_CHANGED",
+    canonicalReplay,
   );
   for (const [file, sha] of Object.entries({ ...seal.inputs, ...seal.outputs }))
     assert.equal(
@@ -138,10 +149,10 @@ export function loadInputs(root = ROOT) {
       sha,
       "P11_DERIVED_HASH:" + file,
     );
-  assert.equal(
+  validatePriorCanonicalBinding(
     p11.canonicalDatasetFileSha256,
     preflight.canonical.datasetFileSha256,
-    "P11_CANONICAL_CHANGED",
+    canonicalReplay,
   );
   assert.deepEqual(
     p11.spatialConfig,
@@ -206,7 +217,11 @@ export function loadInputs(root = ROOT) {
     ),
     baselineNodes: readJson(root, INPUT + "/baseline-node-decisions.json"),
     observedIterations: readJson(root, INPUT + "/observed-replays.json"),
-    discoveryReview: readJson(root, INPUT + "/discovery-review.json"),
+    canonicalReplay,
+    discoveryReview: rebindDiscoveryReviews(
+      readJson(root, INPUT + "/discovery-review.json"),
+      canonicalReplay,
+    ),
     discoveryFindings: readJson(
       root,
       INPUT + "/discovery-review-findings.json",
@@ -221,7 +236,21 @@ export function loadInputs(root = ROOT) {
     observations,
     rights,
     bindings,
-    blockers: readJson(root, INPUT + "/canonical-access-blockers.json"),
+    blockers: readJson(root, INPUT + "/canonical-access-blockers.json").map(
+      (b) => {
+        const owner = preflight.canonical.accessAdjudication.records.find(
+          (r) => r.internalId === b.poiId,
+        );
+        assert.ok(owner, "UNADJUDICATED_CANONICAL_BLOCKER:" + b.poiId);
+        return {
+          ...b,
+          canonicalLifecycle: owner.lifecycleStatus,
+          ownerAdjudicated: true,
+          ownerDecision: owner,
+          topologyRejected: true,
+        };
+      },
+    ),
     discoveryScans: [
       ...readLines(root, INPUT + "/s12-spatial-scan.jsonl").map((r) => ({
         ...r,
@@ -395,11 +424,15 @@ export function buildArtifacts(input) {
       name: p.names.localized[0].value,
       region: p.regionRelations.find((r) => r.primary)?.regionRef ?? "unknown",
       result: es.length ? "CONFIRMED_ACCESS" : "NO_CONFIRMED_ACCESS",
-      reviewStatus: input.blockers.some((b) => b.poiId === p.internalId)
-        ? "HUMAN_REVIEW_REQUIRED"
-        : es.length
-          ? "CONFIRMED"
-          : "EVIDENCE_REQUIRED",
+      reviewStatus: input.blockers.some(
+        (b) => b.poiId === p.internalId && b.ownerAdjudicated,
+      )
+        ? "OWNER_ADJUDICATED_EXCLUDED"
+        : input.blockers.some((b) => b.poiId === p.internalId)
+          ? "HUMAN_REVIEW_REQUIRED"
+          : es.length
+            ? "CONFIRMED"
+            : "EVIDENCE_REQUIRED",
       usefulDistinctNodes: new Set(es.map((e) => e.nodeId)).size,
       directedEdges: es.length,
       localNodeCount: new Set(
@@ -419,8 +452,16 @@ export function buildArtifacts(input) {
         ]),
       ],
       canonicalAdjudicationRequired: input.blockers.some(
-        (b) => b.poiId === p.internalId,
+        (b) => b.poiId === p.internalId && !b.ownerAdjudicated,
       ),
+      assessmentEligible:
+        !input.preflight.canonical.accessAdjudication.excludedInternalIds.includes(
+          p.internalId,
+        ),
+      ownerAdjudication:
+        input.preflight.canonical.accessAdjudication.records.find(
+          (r) => r.internalId === p.internalId,
+        ) ?? null,
       barrierReviewTriggers: rs.barrierReviewTriggers,
     };
   });
@@ -449,6 +490,12 @@ export function buildArtifacts(input) {
         usablePoiCoverage: rate(
           completeness.filter((p) => p.resolvedModes.includes(m)).length,
           input.pois.length,
+        ),
+        assessedPoiCoverage: rate(
+          completeness.filter(
+            (p) => p.assessmentEligible && p.resolvedModes.includes(m),
+          ).length,
+          completeness.filter((p) => p.assessmentEligible).length,
         ),
       },
     ]),
@@ -585,7 +632,12 @@ export function buildArtifacts(input) {
       authoritativeCanonicalCount: input.pois.length,
       recordsRemovedByB: 0,
       upstreamFilesModified: false,
+      pendingCount: input.blockers.filter((b) => !b.ownerAdjudicated).length,
+      ownerAdjudication: input.preflight.canonical.accessAdjudication,
       cases: input.blockers.map((b) => ({
+        disposition: b.ownerAdjudicated
+          ? "RESOLVED_BY_CANONICAL_OWNER"
+          : "OWNER_REVIEW_REQUIRED",
         ...b,
         classification: b.allGeneralTouristModesBlocked
           ? "LIFECYCLE_INVALID"
@@ -596,6 +648,9 @@ export function buildArtifacts(input) {
       supportingHash: input.preflight.canonical.supportingSampleManifest,
     }),
     "baseline-revalidation.json": objectText(baselineRevalidation(input)),
+    "post-canonical-replay-audit.json": objectText(
+      replayOutcome(input, combined, proofs),
+    ),
     "poi-access-unresolved.jsonl": jsonl(combined.unresolved),
     "poi-access-score-traces.jsonl": jsonl(combined.traces),
     "candidate-node-decisions.jsonl": jsonl(combined.decisions),
@@ -604,7 +659,9 @@ export function buildArtifacts(input) {
     "under-target-pois.json": objectText(
       completeness
         .filter(
-          (p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
+          (p) =>
+            p.assessmentEligible &&
+            p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
         )
         .map((p) => ({
           ...p,
@@ -650,6 +707,30 @@ export function buildArtifacts(input) {
     },
     metrics: {
       canonicalPoiProcessedCount: input.pois.length,
+      assessment: {
+        denominator: completeness.filter((p) => p.assessmentEligible).length,
+        withConfirmedTopology: completeness.filter(
+          (p) => p.assessmentEligible && p.usefulDistinctNodes > 0,
+        ).length,
+        underTarget: completeness.filter(
+          (p) =>
+            p.assessmentEligible &&
+            p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
+        ).length,
+        zeroNodes: completeness.filter(
+          (p) => p.assessmentEligible && !p.usefulDistinctNodes,
+        ).length,
+        atLeastTarget: completeness.filter(
+          (p) =>
+            p.assessmentEligible &&
+            p.usefulDistinctNodes >= input.config.targetMinNodesPerPoi,
+        ).length,
+        usefulNodesPerPoi: stats(
+          completeness
+            .filter((p) => p.assessmentEligible)
+            .map((p) => p.usefulDistinctNodes),
+        ),
+      },
       shortfall: completeness.filter((p) => !p.usefulDistinctNodes).length,
       poisWithAtLeastOneAccessNode: completeness.filter(
         (p) => p.usefulDistinctNodes > 0,
@@ -722,7 +803,11 @@ export function buildArtifacts(input) {
         (p) => p.status === "CANDIDATE_EXHAUSTION_PROOF",
       ).length,
     },
-    wbs715Status: acceptance.allPass ? "待审查" : "进行中",
+    wbs715Status: acceptance.allPass
+      ? "待审查"
+      : acceptance.status === EXCEPTION_STATUS
+        ? "待审查（audited fixpoint exceptions）"
+        : "进行中",
     sourceFiles: input.sourceFiles,
     generatedArtifactHashes: Object.fromEntries(
       Object.entries(artifacts).map(([path, text]) => [path, sha256(text)]),
@@ -922,6 +1007,7 @@ if (
     ![
       "PASS / READY_FOR_REVIEW",
       "READY_EXCEPT_CANONICAL_ADJUDICATION",
+      EXCEPTION_STATUS,
     ].includes(report.acceptance)
   )
     process.exitCode = 2;

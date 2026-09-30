@@ -1,4 +1,11 @@
-# Canonical supporting hash audit
+# Canonical supporting hash audit — owner resolution consumed
+
+**Current gate: PASS.** PR #465, develop `5123966f62dbe9587a3bbe38e877ccf3ea959b80`, reissued the authoritative receipt with `sampleManifestSha256=6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51`. B normal-merged that authority in `509c9fda40bb443b5a9c4a5e6ef36e875e713744` and compared raw Git-normalized LF bytes. Dataset revision is `task-083-a-pilot100-owner-adjudication-v2`; runtime file hash is `b4f714078d2780324f9e98fbaf58001177040dbc30d9693e7bfef1019d6643df`.
+
+No B-side hash bypass, supporting-file rewrite or membership change. See [A owner reauthorization](../TASK-083/canonical-owner-correction/reauthorization.json) and [B replay audit](../../../data/transport/access/post-canonical-replay-audit.json).
+
+## Historical Round-2 finding (before PR #465)
+
 
 TASK-085-B / 2026-09-30 / amendment 41389de330df33091af9d33cc825ea8d4387a92d.
 

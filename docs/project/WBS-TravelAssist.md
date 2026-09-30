@@ -1068,7 +1068,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
 | 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（2026-09-30 用户明确验收当前 v2 纠错成果物，普通合入 develop，#441 关闭；来源权利、逐组件 runtime 接收及下游机器门禁按现有证据保留；见 v2 用户验收收口记录） |
-| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 进行中（TASK-085 第二轮 topology/metrics 分离；100/100 明确结果，94/100 有接入、680 directed topology edges；9 个 source/license/identity fixpoint、5 个 Canonical 待裁决及 supporting hash 不符；Topology Hard Gates 17 PASS / 5 FAIL，BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT，非待审查；见 RESULT-TASK-085-b） |
+| 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 待审查（audited fixpoint exceptions）；TASK-085 Final Replay 已消费 PR #465 Canonical authority：raw 100、assessment 95，94/95 有 topology、86/95 达到≥3、340 relationships / 680 directed edges；A/Canonical gates PASS，21 gates PASS / 3 coverage gates FAIL，仅剩9个有效 SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF；READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS，等待用户裁决，非已完成；见 RESULT-TASK-085-b 与 Draft PR #464 |
 | 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 未开始（#443 / TASK-086-B；须先通过 084） |
 
 TASK-084-B v2 用户验收收口（2026-09-30）：

@@ -762,9 +762,11 @@ export function generateBatch(
             ...e,
             topologyStatus: blocker ? "REJECTED" : "REVIEW_REQUIRED",
             admission: "UNCONFIRMED_CANDIDATE",
-            pendingReason: blocker
-              ? blocker.reason
-              : "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED",
+            pendingReason: blocker?.ownerAdjudicated
+              ? "OWNER_ADJUDICATED_" + blocker.ownerDecision.publicAccess
+              : blocker
+                ? blocker.reason
+                : "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED",
           });
         traces.push({
           edgeId: e.edgeId,
@@ -783,14 +785,23 @@ export function generateBatch(
         poiId: poi.internalId,
         masterCode: poi.masterCode,
         result: "NO_CONFIRMED_ACCESS",
-        reviewStatus: blocker ? "HUMAN_REVIEW_REQUIRED" : "EVIDENCE_REQUIRED",
+        reviewStatus: blocker?.ownerAdjudicated
+          ? "OWNER_ADJUDICATED_EXCLUDED"
+          : blocker
+            ? "HUMAN_REVIEW_REQUIRED"
+            : "EVIDENCE_REQUIRED",
         candidateNodes: selection.retained.length,
         confirmedUsableNodes: 0,
-        reasons: [
-          ...(blocker ? [blocker.reason] : []),
-          "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED",
-          ...(selection.retained.length ? [] : ["NO_ADMITTED_RELEVANT_NODE"]),
-        ],
+        assessmentEligible: !blocker?.ownerAdjudicated,
+        reasons: blocker?.ownerAdjudicated
+          ? ["OWNER_ADJUDICATED_" + blocker.ownerDecision.publicAccess]
+          : [
+              ...(blocker ? [blocker.reason] : []),
+              "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED",
+              ...(selection.retained.length
+                ? []
+                : ["NO_ADMITTED_RELEVANT_NODE"]),
+            ],
         officialSourceRefs: r.sourceRefs,
         barrierReviewTriggers: r.barrierReviewTriggers,
         explanation: r.finding,

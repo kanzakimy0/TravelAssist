@@ -1,3 +1,7 @@
+import {
+  replayOutcome,
+  EXCEPTION_STATUS,
+} from "./task-085-canonical-replay.mjs";
 import { digest, stable } from "./task-085-access-core.mjs";
 export const categories = [
   "official_venue",
@@ -173,10 +177,16 @@ export function reviewIssues(review, inventory) {
 }
 export function discoveryProofs(input, combined, completeness) {
   return completeness
-    .filter((p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi)
+    .filter(
+      (p) =>
+        p.assessmentEligible !== false &&
+        p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
+    )
     .map((p) => {
       const review = input.discoveryReview?.find((r) => r.poiId === p.poiId);
-      const canonical = input.blockers.find((b) => b.poiId === p.poiId);
+      const canonical = input.blockers.find(
+        (b) => b.poiId === p.poiId && !b.ownerAdjudicated,
+      );
       const inventory = discoveryInventory(input, combined, p.poiId);
       const issues = reviewIssues(review, inventory);
       const status = canonical
@@ -217,7 +227,11 @@ export function discoveryProofs(input, combined, completeness) {
 }
 export function topologyAcceptance(input, combined, completeness, proofs) {
   const all = input.pois.length,
-    exceptions = new Set(input.blockers.map((b) => b.poiId));
+    exceptions = new Set(
+      input.preflight.canonical.accessAdjudication?.excludedInternalIds ??
+        input.blockers.map((b) => b.poiId),
+    );
+  const pendingCanonical = input.blockers.filter((b) => !b.ownerAdjudicated);
   const valid = completeness.filter((p) => !exceptions.has(p.poiId)),
     n = valid.length;
   const counts = valid.map((p) => p.usefulDistinctNodes).sort((a, b) => a - b);
@@ -469,28 +483,84 @@ export function topologyAcceptance(input, combined, completeness, proofs) {
   );
   add(
     "Canonical lifecycle public access and endpoint adjudication",
-    exceptions.size,
+    pendingCanonical.length,
     0,
-    exceptions.size === 0,
+    pendingCanonical.length === 0 &&
+      input.preflight.canonical.accessAdjudication?.status === "PASS",
     "canonical-adjudication-required.json",
     "A_CANONICAL",
   );
+  const replay = replayOutcome(input, combined, proofs);
+  add(
+    "Canonical owner assessment denominator",
+    n,
+    input.preflight.canonical.accessAdjudication?.assessmentCount ?? n,
+    input.preflight.canonical.accessAdjudication?.status === "PASS" &&
+      n === input.preflight.canonical.accessAdjudication.assessmentCount,
+    "canonical-adjudication-required.json",
+    "A_CANONICAL",
+  );
+  add(
+    "Post-Canonical evidence and fixpoint proof replay",
+    replay.status,
+    "PASS",
+    replay.status === "PASS" || !input.canonicalReplay,
+    "post-canonical-replay-audit.json",
+  );
+  const failed = gates.filter((g) => g.status === "FAIL");
+  const exceptionGateNames = [
+    "Valid Canonical POIs with confirmed useful topology",
+    "Zero-node valid accessible POIs",
+    "Under-target without exhaustion proof",
+  ];
+  const auditedIds = new Set(
+    replay.cases?.filter((p) => p.proofValidAfterMerge).map((p) => p.poiId) ??
+      [],
+  );
+  const affected = valid.filter(
+    (p) => p.usefulDistinctNodes < input.config.targetMinNodesPerPoi,
+  );
+  const auditedExceptionsOnly =
+    replay.status === "PASS" &&
+    !unresolvedDiscovery.length &&
+    failed.length > 0 &&
+    failed.every((g) => exceptionGateNames.includes(g.name)) &&
+    affected.length === auditedIds.size &&
+    affected.every((p) => auditedIds.has(p.poiId));
   const nonCanonicalPass = gates
       .filter((g) => g.owner !== "A_CANONICAL")
       .every((g) => g.status === "PASS"),
-    allPass = gates.every((g) => g.status === "PASS");
+    allPass = !failed.length;
   const status = allPass
     ? "PASS / READY_FOR_REVIEW"
-    : nonCanonicalPass
-      ? "READY_EXCEPT_CANONICAL_ADJUDICATION"
-      : !unresolvedDiscovery.length
-        ? "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT"
-        : "REWORK_IN_PROGRESS";
+    : auditedExceptionsOnly
+      ? EXCEPTION_STATUS
+      : input.canonicalReplay
+        ? "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY"
+        : nonCanonicalPass
+          ? "READY_EXCEPT_CANONICAL_ADJUDICATION"
+          : !unresolvedDiscovery.length
+            ? "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT"
+            : "REWORK_IN_PROGRESS";
   return {
     schemaVersion: "2.0",
     status,
     allPass,
     nonCanonicalPass,
+    auditedExceptionsOnly,
+    auditedFixpointExceptionCount: auditedIds.size,
+    remainingFailedGates: failed.map((g) => ({
+      name: g.name,
+      actual: g.actual,
+      threshold: g.threshold,
+      status: g.status,
+      affectedPoiIds: (g.name === "Under-target without exhaustion proof"
+        ? affected
+        : valid.filter((p) => !p.usefulDistinctNodes)
+      ).map((p) => p.poiId),
+    })),
+    userAcceptanceRequired: auditedExceptionsOnly,
+    canonicalPendingAdjudicationCount: pendingCanonical.length,
     inputFingerprint: input.inputFingerprint,
     authoritativeCanonicalCount: all,
     canonicalAdjudicationCount: exceptions.size,

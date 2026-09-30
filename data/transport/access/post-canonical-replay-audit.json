@@ -1,25 +1,12 @@
 {
-  "schemaVersion": "3.0",
-  "task": "TASK-085-B",
-  "phase": "POST_CANONICAL_FINAL_REPLAY",
-  "amendmentCommit": "8ac80bf5d684a34145489f27c6cf2e6bd1e22e67",
+  "status": "PASS",
+  "issues": [],
+  "receiptSha256": "5a41c3a6bb003a67e1fc7d038d7699a1f3aff4d90930a951aa27f46e3f4a07c9",
   "latestDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
   "developMergeCommit": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
-  "branch": "feature/b-poi-transport-node-access-edges",
-  "inputFingerprint": "61b4cbd5425d24fc41283b448e78ccb24b4f6b63bbc81f575fcc179125ffe834",
-  "status": "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
-  "allTopologyHardGatesPass": false,
-  "userAcceptanceRequired": true,
-  "globalTopologyDiscoveryFixpoint": "PROVEN",
-  "canonicalRawCount": 100,
-  "assessmentDenominator": 95,
-  "pendingCanonicalAdjudication": 0,
-  "topologyGates": {
-    "pass": 21,
-    "fail": 3
-  },
-  "proofValidCount": 9,
-  "proofCases": [
+  "previousHead": "f70c154a881fd6aa620481639aef0b2e76ff6a46",
+  "nationwideDiscoveryPerformed": false,
+  "cases": [
     {
       "poiId": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
       "name": "飛水峡",
@@ -462,70 +449,5 @@
       "newBlockerReleasingEvidenceFromPR465": false,
       "evidenceDecision": "PR #465 changes only five excluded Canonical records and supporting authority; all source/review/license/admission inputs and this assessed record are unchanged."
     }
-  ],
-  "deterministicRebuild": "PASS_INDEPENDENT_FULL_FILESYSTEM_BUILDS_BYTE_EQUAL",
-  "resumeChecksumCorruptionSingleBatch": "PASS_ACTUAL_FILESYSTEM_TESTS_IN_FULL_REGRESSION",
-  "wbs715Status": "待审查（audited fixpoint exceptions）",
-  "checks": {
-    "full-tests": {
-      "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=4 tests/*.test.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "38843846e8eedf676f8d130a4fdda03b02708385e0a346f0d4177d73a878a77e",
-      "pass": 2850,
-      "fail": 0,
-      "includesFinalFocusedTests": 21
-    },
-    "lint": {
-      "command": "npm run lint",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "38d027e92da4b0f79160534203e93d11f935cfebf4478bb719899a178ec3ae2d",
-      "errors": 0,
-      "existingWarnings": 10
-    },
-    "typecheck": {
-      "command": "npm run typecheck",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
-    },
-    "format-check-deploy": {
-      "command": "npm run format:check:deploy",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
-    },
-    "deploy-validate-local": {
-      "command": "npm run deploy:validate:local",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "fb870e88ac95467b28f26f5cff5a037fad71c50ef019beaf99e6c5a356e017d7"
-    },
-    "build": {
-      "command": "npm run deploy:build:local",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "631545e4c2ab0c31b9dabfec750cf3b35d015bc5a860aa0d82f378b8288d28bd"
-    },
-    "artifact": {
-      "command": "npm run deploy:verify-artifact",
-      "exitCode": 0,
-      "status": "PASS",
-      "logSha256": "06d1fa5e4d48031f81d5018a97d3211fe6a965c65f5f827f73bba23b7561faa7",
-      "fileCount": 1908
-    },
-    "authority-replay": {
-      "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-canonical-replay.mjs --check",
-      "status": "PASS",
-      "logSha256": "3865f0e2b1c6b34a645b90eafaa812b406437f7a4919294f82ddd4cf7f66d7bb"
-    }
-  },
-  "testedWorkingTreeBasedOn": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
-  "localArtifactHeadNote": "Local build was performed on the final uncommitted implementation based on this merge commit. Exact final committed head is independently tested by workflow_dispatch after push; PR body carries its immutable head and run receipt.",
-  "nationwideDiscoveryPerformed": false,
-  "providerBatchRequests": 0,
-  "rawRoutePayloadPersisted": 0,
-  "task086Started": false,
-  "mergeOrAutoMergeEnabled": false
+  ]
 }

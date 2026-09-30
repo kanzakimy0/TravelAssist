@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
+import { validateCanonicalAccessAdjudication } from "../../src/server/poi-runtime/access-adjudication.ts";
 import { admittedGraphNodes } from "../../src/shared/poi-edge-graph/index.ts";
 
 export const BASE = "5b951195698d3e421f34a9922393b454412fa4bb";
@@ -38,6 +39,13 @@ export function auditCanonical(root = ROOT) {
     );
   const dataset = readJson(root, runtime.datasetPath);
   const registry = readJson(root, runtime.registryPath);
+  const adjudication = readJson(root, runtime.accessAdjudicationPath);
+  assert.equal(
+    fingerprint(root, runtime.accessAdjudicationPath).sha256,
+    runtime.accessAdjudicationFileSha256,
+    "OWNER_ADJUDICATION_FILE_HASH",
+  );
+  validateCanonicalAccessAdjudication(dataset, runtime, adjudication);
   assert.equal(dataset.datasetRevision, runtime.datasetRevision);
   assert.equal(dataset.records.length, runtime.recordCount);
   assert.equal(sha256(JSON.stringify(dataset)), runtime.datasetSha256);
@@ -56,6 +64,15 @@ export function auditCanonical(root = ROOT) {
     datasetSha256: runtime.datasetSha256,
     datasetFileSha256: runtime.datasetFileSha256,
     recordCount: admitted.nodes.length,
+    accessAdjudication: {
+      ...fingerprint(root, runtime.accessAdjudicationPath),
+      revision: adjudication.revision,
+      status: "PASS",
+      excludedInternalIds:
+        adjudication.downstreamAssessment.excludedInternalIds,
+      assessmentCount: adjudication.downstreamAssessment.remainingRecordCount,
+      records: adjudication.records,
+    },
     candidateCorpusAuthorized: false,
     membershipAndActiveMasterCodeBindingsVerified: true,
     supportingSampleManifest: {
@@ -65,7 +82,7 @@ export function auditCanonical(root = ROOT) {
         fingerprint(root, runtime.sampleManifestPath).sha256 ===
         runtime.sampleManifestSha256,
       disposition:
-        "Existing supporting-evidence drift; no upstream repair or authorization widening in TASK-085",
+        "PR #465 owner-reissued receipt; raw committed LF bytes verified without changing membership",
     },
   };
 }
@@ -92,11 +109,21 @@ export function auditGate0(root = ROOT) {
   return {
     status: "TASK_085_LOCAL_ADMISSION_REQUIRED",
     baseDevelopSha: BASE,
+    latestDevelopSha: "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+    developMergeCommit: "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
+    postCanonicalReplayAmendment: {
+      ...fingerprint(
+        root,
+        "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
+      ),
+      revision: "8ac80bf5d684a34145489f27c6cf2e6bd1e22e67",
+    },
     executionRules: [
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799",
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855",
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675",
       "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085",
+      "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5912322940",
     ],
     topologyMetricsAmendment: {
       ...fingerprint(

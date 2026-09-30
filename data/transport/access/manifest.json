@@ -2,16 +2,24 @@
   "schemaVersion": "1.0",
   "task": "TASK-085-B",
   "revision": "task-085-access-topology-route-metrics-v2",
-  "status": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
-  "acceptanceStatus": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+  "status": "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
+  "acceptanceStatus": "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
   "globalTopologyDiscoveryFixpoint": "PROVEN",
   "blockingScope": "Topology and route metrics evaluated separately; see failed topology gates and explicit per-POI source/identity proof.",
   "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "latestDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+  "developMergeCommit": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
+  "postCanonicalReplayAmendment": {
+    "path": "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
+    "sha256": "32f11db52aa2ddb8976f8c72b646e674576a5deb203fe3b8a3d6f11862b50c3b",
+    "revision": "8ac80bf5d684a34145489f27c6cf2e6bd1e22e67"
+  },
   "executionRules": [
     "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799",
     "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855",
     "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675",
-    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085"
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085",
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5912322940"
   ],
   "topologyMetricsAmendment": {
     "path": "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
@@ -25,20 +33,173 @@
   },
   "canonical": {
     "path": "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
-    "sha256": "11fd42f2ded8cc45519767ba86b97bcb1123552550c7f6af6ee60af7436cdbf0",
+    "sha256": "b4f714078d2780324f9e98fbaf58001177040dbc30d9693e7bfef1019d6643df",
     "datasetPath": "src/shared/data/canonical-poi-pilot100.v1.json",
-    "datasetRevision": "task-083-a-pilot100-v1",
-    "datasetSha256": "802785ddb24e720698c2813f1f9dce29fe6792cdf02dbd01e9557b385a88bda2",
-    "datasetFileSha256": "611c6e33324a35e70f1a0afbdbf86fa87ac356d53068d9e4ae95c4c12fea0ee4",
+    "datasetRevision": "task-083-a-pilot100-owner-adjudication-v2",
+    "datasetSha256": "0a91f0ec36c193b4a95c15dcad01338286ea91afb5003f3e1abdf7c7a9366ad5",
+    "datasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af",
     "recordCount": 100,
+    "accessAdjudication": {
+      "path": "src/shared/data/canonical-poi-pilot100.access-adjudication.v1.json",
+      "sha256": "b80ae442d6a5fe883e9491fce6d242c7edce1d4c119e03975a1df43fd0be3d85",
+      "revision": "task-083-a-access-adjudication-20260930-v1",
+      "status": "PASS",
+      "excludedInternalIds": [
+        "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+        "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+        "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+        "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+        "poi:6814946e-289b-5931-8f0f-e397e0073627"
+      ],
+      "assessmentCount": 95,
+      "records": [
+        {
+          "internalId": "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+          "lifecycleStatus": "permanently_closed",
+          "publicAccess": "CLOSED",
+          "entityTreatment": "RETAIN_CLOSED_IDENTITY",
+          "effectiveDate": "2019-02-17",
+          "reasonCode": "VENUE_PERMANENTLY_CLOSED",
+          "evidence": [
+            {
+              "url": "https://bandainamco-am.co.jp/company/asobito/article25.html",
+              "finding": "Operator history states J-WORLD TOKYO closed on 2019-02-17."
+            }
+          ],
+          "decision": "Retain the closed venue identity. Sunshine City and successor venues are not replacements.",
+          "name": "J-WORLD TOKYO",
+          "masterCode": "41201",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+          "lifecycleStatus": "permanently_closed",
+          "publicAccess": "CLOSED",
+          "entityTreatment": "RETAIN_CLOSED_IDENTITY",
+          "effectiveDate": null,
+          "reasonCode": "POOL_OPERATION_ENDED_REDEVELOPMENT",
+          "evidence": [
+            {
+              "url": "https://www.showakinen-koen.jp/facility/facility-615/",
+              "finding": "Park operator states Rainbow Pool ended operations because of ageing facilities and redevelopment."
+            }
+          ],
+          "decision": "Retire this pool as an operating destination. The surrounding park and future water facility are different identities. Exact closure date remains unknown.",
+          "name": "レインボープール",
+          "masterCode": "41211",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+          "lifecycleStatus": "temporarily_closed",
+          "publicAccess": "RESTRICTED_RESIDENTS_RECOVERY_ONLY",
+          "entityTreatment": "RETAIN_ISLAND_IDENTITY",
+          "effectiveDate": null,
+          "reasonCode": "GENERAL_TOURIST_ACCESS_RESTRICTED",
+          "evidence": [
+            {
+              "url": "https://wajimanavi.jp/tourism/hegurajima",
+              "finding": "Official Wajima tourism states ferry resumed on 2026-05-18 for island residents and recovery workers only."
+            }
+          ],
+          "decision": "Temporary closure means unavailable to ordinary tourists, not disappearance of the island. Reopening requires new official public-access evidence and owner reauthorization; no inferred reopen date.",
+          "name": "舳倉島",
+          "masterCode": "31513",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+          "lifecycleStatus": "active",
+          "publicAccess": "NOT_A_VISITOR_ENDPOINT",
+          "entityTreatment": "RETAIN_OPERATING_INFRASTRUCTURE",
+          "effectiveDate": null,
+          "reasonCode": "ROAD_BRIDGE_NOT_AUTHORIZED_VISITOR_DESTINATION",
+          "evidence": [
+            {
+              "url": "https://www.shutoko.co.jp/activities/database/bridge/tsubasa/",
+              "finding": "Operator identifies Tsurumi Tsubasa Bridge as expressway infrastructure."
+            },
+            {
+              "url": "https://www.shutoko.jp/driving/precautions/keepout/",
+              "finding": "Expressway operator prohibits entry by pedestrians and bicycles."
+            }
+          ],
+          "decision": "Keep the operating bridge identity. Do not authorize its representative point as a pedestrian destination or safe drop-off. No replacement viewpoint, parking area or visitor endpoint is designated.",
+          "name": "鶴見つばさ橋",
+          "masterCode": "11056",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:6814946e-289b-5931-8f0f-e397e0073627",
+          "lifecycleStatus": "active",
+          "publicAccess": "HISTORICAL_RECORD_ONLY",
+          "entityTreatment": "RETAIN_HISTORICAL_ENTITY_NO_VISIT_ENDPOINT",
+          "effectiveDate": null,
+          "reasonCode": "HISTORICAL_ENTITY_NOT_CURRENT_VISITOR_DESTINATION",
+          "evidence": [
+            {
+              "url": "https://www.city.minato.tokyo.jp/kouhou/kuse/gaiyo/chimerekishi/index-azabu.html",
+              "finding": "Municipal place-name history identifies Gazenbo valley and the historical Gazenbocho area within present Azabudai."
+            },
+            {
+              "url": "https://www.city.minato.tokyo.jp/matizukurikeikakutan/erimanekatudou.html",
+              "finding": "Municipality describes the redeveloped Azabudai Hills public spaces as the current development."
+            },
+            {
+              "url": "https://www.mori.co.jp/projects/azabudaihills/background/",
+              "finding": "Project owner documents the redevelopment history of the Azabudai Hills area."
+            }
+          ],
+          "decision": "Retain the historical entity in the catalog with active identity, historical-record-only use and no current visitor endpoint. This is an owner eligibility decision, not a claim that the geographic valley ceased to exist. Do not merge or rebind it to Azabudai Hills or the memorial park.",
+          "name": "我善坊谷",
+          "masterCode": "31568",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        }
+      ]
+    },
     "candidateCorpusAuthorized": false,
     "membershipAndActiveMasterCodeBindingsVerified": true,
     "supportingSampleManifest": {
       "path": "data/poi/canonical/pilot-100/sample-manifest.v1.json",
       "sha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
-      "expectedSha256": "77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82",
-      "hashMatches": false,
-      "disposition": "Existing supporting-evidence drift; no upstream repair or authorization widening in TASK-085"
+      "expectedSha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+      "hashMatches": true,
+      "disposition": "PR #465 owner-reissued receipt; raw committed LF bytes verified without changing membership"
     }
   },
   "transport": {
@@ -73,7 +234,7 @@
     "v2CandidatesPromoted": 0,
     "integrationBoundary": "Task-owned topology admission and GraphRef adapter only; no Planner/API/runtime contract changes."
   },
-  "inputFingerprint": "de48e4d636486f60bfa50038439b0127c0acec6de894d4cf57ee1d22f750fea8",
+  "inputFingerprint": "61b4cbd5425d24fc41283b448e78ccb24b4f6b63bbc81f575fcc179125ffe834",
   "transportAdmission": {
     "path": "data/transport/access/node-downstream-admission.jsonl",
     "revision": "task-085-access-topology-route-metrics-v2",
@@ -86,6 +247,19 @@
   },
   "metrics": {
     "canonicalPoiProcessedCount": 100,
+    "assessment": {
+      "denominator": 95,
+      "withConfirmedTopology": 94,
+      "underTarget": 9,
+      "zeroNodes": 1,
+      "atLeastTarget": 86,
+      "usefulNodesPerPoi": {
+        "mean": 3.5789473684210527,
+        "median": 3,
+        "min": 0,
+        "max": 6
+      }
+    },
     "shortfall": 6,
     "poisWithAtLeastOneAccessNode": 94,
     "totalDirectedEdges": 680,
@@ -139,6 +313,11 @@
           "numerator": 0,
           "denominator": 100,
           "actual": 0
+        },
+        "assessedPoiCoverage": {
+          "numerator": 0,
+          "denominator": 95,
+          "actual": 0
         }
       },
       "transit": {
@@ -156,6 +335,11 @@
           "numerator": 0,
           "denominator": 100,
           "actual": 0
+        },
+        "assessedPoiCoverage": {
+          "numerator": 0,
+          "denominator": 95,
+          "actual": 0
         }
       },
       "taxi": {
@@ -172,6 +356,11 @@
         "usablePoiCoverage": {
           "numerator": 0,
           "denominator": 100,
+          "actual": 0
+        },
+        "assessedPoiCoverage": {
+          "numerator": 0,
+          "denominator": 95,
           "actual": 0
         }
       },
@@ -283,12 +472,11 @@
     "routeBarrierQaAssessableCandidates": 0,
     "unresolvedPoiCount": 6,
     "unresolvedReasonDistribution": {
-      "VENUE_PERMANENTLY_CLOSED": 2,
-      "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED": 6,
-      "HISTORICAL_VALLEY_REDEVELOPED_CURRENT_VISITOR_ENDPOINT_REQUIRES_OWNER": 1,
-      "NO_PEDESTRIAN_OR_SAFE_DROPOFF_ENDPOINT": 1,
-      "GENERAL_PUBLIC_FERRY_ACCESS_RESTRICTED": 1,
-      "NO_ADMITTED_RELEVANT_NODE": 1
+      "OWNER_ADJUDICATED_CLOSED": 2,
+      "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED": 1,
+      "OWNER_ADJUDICATED_HISTORICAL_RECORD_ONLY": 1,
+      "OWNER_ADJUDICATED_NOT_A_VISITOR_ENDPOINT": 1,
+      "OWNER_ADJUDICATED_RESTRICTED_RESIDENTS_RECOVERY_ONLY": 1
     },
     "batchCount": 1,
     "acceptedNodeProvenance": {
@@ -559,11 +747,11 @@
     "task086Started": false,
     "autoFixIterationCount": 13,
     "batchIntegrityQa": "PASS_GENERATED_RECEIPTS_AND_INJECTED_CORRUPTION",
-    "accessAcceptance": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+    "accessAcceptance": "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
     "globalTopologyDiscoveryFixpoint": "PROVEN",
     "candidateExhaustionProofCount": 0
   },
-  "wbs715Status": "进行中",
+  "wbs715Status": "待审查（audited fixpoint exceptions）",
   "sourceFiles": [
     {
       "path": "data/transport/access/inputs/baseline-directed-candidates.jsonl",
@@ -662,6 +850,10 @@
       "sha256": "39cb375229a60b577291ae52b53c8c610ba06fc24b1c0f1570f6bd47cede444a"
     },
     {
+      "path": "data/transport/access/inputs/post-canonical-replay.json",
+      "sha256": "37af909d082acc2f32e22470d316c596606a2220f4cbd34c3ce06469d0ec01e0"
+    },
+    {
       "path": "data/transport/access/inputs/reviewed-source-records.jsonl",
       "sha256": "dc60265c522b2c74ae1480565b863b7fd89307b46108de0641ca93bb6b93e7cc"
     },
@@ -702,16 +894,28 @@
       "sha256": "6807427f25a68dafcab1d1f05c461c3f9170e985e3113411b93d9de16db7282e"
     },
     {
+      "path": "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
+      "sha256": "32f11db52aa2ddb8976f8c72b646e674576a5deb203fe3b8a3d6f11862b50c3b"
+    },
+    {
+      "path": "tools/transport/task-085-canonical-replay.mjs",
+      "sha256": "6320ec239088284ec6133ee19f49e0cddff156d6c71041a634430a5c0bd41c6c"
+    },
+    {
+      "path": "src/server/poi-runtime/access-adjudication.ts",
+      "sha256": "e895111f14a1deff7b44b4ae350b9bcd60eb5296c05501415a0d31813b7deb1e"
+    },
+    {
       "path": "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
       "sha256": "0ba1be8c699bb2e633ba233710db9dd5e58cd69dde22e535a375d49c9e8a6ea8"
     },
     {
       "path": "tools/transport/task-085-gate0.mjs",
-      "sha256": "ac75c3d31b386922cd8531193390e31bcb3a4311c5d5815321f01999261248d4"
+      "sha256": "94c51773384c296e6f4c5bb95e1af44e83feb491dc0dabb9d73c10e0170a3576"
     },
     {
       "path": "tools/transport/task-085-topology-acceptance.mjs",
-      "sha256": "1b0799efcf622c934a01990f298a24bc224b6348949f2b6dfd6d1535ad287eea"
+      "sha256": "ee2505e657ce92bd111ca1ff5b9cfcea042296a7784b4a67c9b3ea22931fcdbb"
     },
     {
       "path": "tools/transport/task-085-p11-extract.py",
@@ -731,11 +935,11 @@
     },
     {
       "path": "tools/transport/task-085-access-core.mjs",
-      "sha256": "a6d495baed040f0af4317d88bef1f2f5c00ca0c2d1ac6de10082d177705f1381"
+      "sha256": "a8dda431b052aabc0e69ca193d130ad6da0f41d6fbd5a9862c53174498b5d5b3"
     },
     {
       "path": "tools/transport/task-085-access-generation.mjs",
-      "sha256": "4f5245f0fb5a506fd2eac4d3ffafcd2c0db61862e6f8220f57de9a08c9f87ebb"
+      "sha256": "0092b7204c5cedec5727658cff03cc389cfc04dc4d2693857de1224ded4b28af"
     },
     {
       "path": "tools/transport/task-085-source-extract.py",
@@ -756,31 +960,32 @@
   ],
   "generatedArtifactHashes": {
     "batches/0001/edges.jsonl": "5b9ceee353034bfa59d6362860eaf78d32aa841e3f466c00973ea217c23cd0d2",
-    "batches/0001/unconfirmed-directed-candidates.jsonl": "0424738947852d680628c3704c7808c176b9b77243516be6af7cda3784e49aa7",
+    "batches/0001/unconfirmed-directed-candidates.jsonl": "10d54eaf3b624596b01362c0fc308f75d6fff122accfa5f66592fdf625eb3c35",
     "batches/0001/candidate-node-decisions.jsonl": "ac5d16ff05083d9c7b674f690b10e21725385da7aa50fd778173a425fc350b36",
-    "batches/0001/unresolved.jsonl": "1c8b8cd864648619e153b53e428de1ca9cc390410b4c6aafecd301cb50aadad4",
+    "batches/0001/unresolved.jsonl": "fad729fc8498cc7ee201ce21db3093e4f498412a37219aa6c84256b67dbbc3ef",
     "batches/0001/spatial-scans.jsonl": "7da34ebb1fb7118790b9faeb7486123513810b497c2a2d068db954009a7d5461",
     "batches/0001/score-traces.jsonl": "7e261b7882e7b38205c88a4c4feec5f47009b3293e7f824293f3ca6b1497048f",
     "batches/0001/rejected-observations.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "batch-receipts/0001.json": "06ba5476ece28b3ffd72bc7d1eb369eb73ab8ada0c425f0f2107ad277e564f3c",
+    "batch-receipts/0001.json": "5787eae25e9ec1b3ad2d643f9b2bc94b0b75cd453c2a4d2672b4d344d2046d00",
     "poi-transport-access-edges.jsonl": "5b9ceee353034bfa59d6362860eaf78d32aa841e3f466c00973ea217c23cd0d2",
     "topology-confirmed-edges.jsonl": "5b9ceee353034bfa59d6362860eaf78d32aa841e3f466c00973ea217c23cd0d2",
     "route-metric-unresolved.jsonl": "08293085d3beb02a33734f91c062e3e8c8a92e01cfdb0cfb1e689820d53ee5a9",
-    "canonical-adjudication-required.json": "877925ee92fdd6e7d630dd3f2e89314dc84f03564994d32650435be0ce96c770",
+    "canonical-adjudication-required.json": "a9d39db599fef700aa241680dc23cbe0b48256936c97b83b74d8f224e60370eb",
     "baseline-revalidation.json": "2ea767bc29ef04c59ec5ff233b4d6e2c2f0c8087dd1746b9613e715e2b8b9e4c",
-    "poi-access-unresolved.jsonl": "1c8b8cd864648619e153b53e428de1ca9cc390410b4c6aafecd301cb50aadad4",
+    "post-canonical-replay-audit.json": "fa74186e6c9f4cefbf626ceb60e1824091d96107a9b37b4abeca94271e685dfa",
+    "poi-access-unresolved.jsonl": "fad729fc8498cc7ee201ce21db3093e4f498412a37219aa6c84256b67dbbc3ef",
     "poi-access-score-traces.jsonl": "7e261b7882e7b38205c88a4c4feec5f47009b3293e7f824293f3ca6b1497048f",
     "candidate-node-decisions.jsonl": "ac5d16ff05083d9c7b674f690b10e21725385da7aa50fd778173a425fc350b36",
     "node-downstream-admission.jsonl": "46aa9adb438fb9bb6a4548adf5232a6b2a8c2c058e9dea2ce0d1daba376aa369",
-    "poi-access-completeness.json": "c3d8a8cab0c7a4954ba79529610dc053c98270ca6db3295f76af9db96765230b",
-    "under-target-pois.json": "bed99f2cefec7291e16b9b6d5110fa100624e4379d4a8fbcbf67cd510d64fca1",
-    "candidate-exhaustion-proofs.jsonl": "5a21fc73a39fd61e12a0cb59e54f94c84f162851a4b2e44d86c7cdfeada7e584",
+    "poi-access-completeness.json": "ab29fdfbf9c03ed49774c12d82374d3b8477d90a58f1ba74be527c04bb750896",
+    "under-target-pois.json": "3c0dffeb3b2a4fe576c5638d180485f6a188689a164a8c9f7e56511a45a47ac4",
+    "candidate-exhaustion-proofs.jsonl": "bba4b7d737022f1c94541cb862e442d9f2912cbc70efc4b1c5f4e07ae1cf2b8d",
     "coverage-by-region.json": "b8766314c32e52cad0a585bad9c302b101910ffd0ede83651fc19988a58e9f1a",
     "access-role-coverage.json": "4e07a0524364810099529a5f3e8822b40f60275930b6f87957054d1a922c47ee",
-    "mode-resolution-coverage.json": "33416e1cdca3ce1860a3ee978041691d1037eca66f2f4551c945d2e8dfdc8ea6",
+    "mode-resolution-coverage.json": "305235a1083cf7c81fd6d08a55250aabfbde49f24c368b8004fc76b26058e455",
     "detour-anomalies.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "auto-fix-iterations.jsonl": "00b841fa2c45b696717b0389605cabbddc6b69c46db636d37b2b4f70c221f5dd",
-    "final-acceptance-gate.json": "a8dd161abb419a527a927eb0981b8a1fd50cce75fe28a265859810868badbf0c",
+    "auto-fix-iterations.jsonl": "af00a7bd3b23768889ee890644c2411aa0531f8361a01523af49d5b93ec6f43c",
+    "final-acceptance-gate.json": "433776bf5d54185745a826a9773252a1873106483f52fffa1b134f9d4f36e5da",
     "batches/README.md": "146a1ddcdf6be683a1737a109a037156962492f6345a3d992d0c695431db9ba5",
     "batch-receipts/README.md": "70ad0a5b2bddfeb1cb86e252d36acb280c2a55bb2434c59034e6840ba702c5cc"
   }

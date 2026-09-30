@@ -40,6 +40,11 @@ import {
   reviewIssues,
   topologyAcceptance,
 } from "../tools/transport/task-085-topology-acceptance.mjs";
+import {
+  validateReplayReceipt,
+  rebindDiscoveryReviews,
+  EXCEPTION_STATUS,
+} from "../tools/transport/task-085-canonical-replay.mjs";
 const input = loadInputs();
 const canonical = input.pois[0];
 const node = input.admissions.find(
@@ -479,8 +484,14 @@ test("085 anomalies catch duplicate edges, metric placeholders and concentration
     ),
   );
 });
-test("085 full topology coverage and route metrics are separate; no false Canonical PASS", () => {
-  const result = buildArtifacts(input);
+test("085 full topology coverage and route metrics are separate; owner authority clears only upstream gates", () => {
+  const result = buildArtifacts({
+    ...input,
+    executionVerification: {
+      deterministicRebuild: "PASS_TEST_FIXTURE",
+      receiptIntegrity: "PASS_TEST_FIXTURE",
+    },
+  });
   assert.equal(
     result.manifest.metrics.canonicalPoiProcessedCount,
     input.pois.length,
@@ -492,13 +503,16 @@ test("085 full topology coverage and route metrics are separate; no false Canoni
   );
   assert.equal(result.manifest.metrics.acceptedEdgeProvenance.actual, 1);
   assert.equal(result.acceptance.allPass, false);
-  assert.equal(result.manifest.wbs715Status, "进行中");
+  assert.equal(
+    result.manifest.wbs715Status,
+    "待审查（audited fixpoint exceptions）",
+  );
   assert.equal(result.manifest.globalTopologyDiscoveryFixpoint, "PROVEN");
   assert.ok(
     result.acceptance.gates.some(
       (g) =>
         g.name === "Canonical supporting manifest integrity" &&
-        g.status === "FAIL",
+        g.status === "PASS",
     ),
   );
   const noEvidence = {
@@ -573,6 +587,19 @@ test("085 Canonical-only exception yields READY_EXCEPT while metrics remain unre
   const fixture = {
     ...input,
     pois: input.pois.filter((p) => ids.has(p.internalId)),
+    canonicalReplay: null,
+    preflight: {
+      ...input.preflight,
+      canonical: {
+        ...input.preflight.canonical,
+        supportingSampleManifest: { hashMatches: false },
+        accessAdjudication: {
+          status: "PASS",
+          excludedInternalIds: [],
+          assessmentCount: rows.length,
+        },
+      },
+    },
     blockers: [],
     executionVerification: {
       deterministicRebuild: "PASS_TEST_FIXTURE",
@@ -726,6 +753,178 @@ test("085 201-POI replay checkpoints at 200 and detects unsafe receipt paths", (
 test("085 committed artifact receipt and all deterministic files match current inputs", () => {
   assert.equal(
     execute({ root: ROOT, mode: "check" }).acceptance,
-    "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+    EXCEPTION_STATUS,
+  );
+});
+
+test("085 replay receipt rejects membership, coordinate, eligibility, source and receipt drift", () => {
+  const r = input.canonicalReplay,
+    c = input.preflight.canonical;
+  const files = (path) => r.preservedFiles[path];
+  assert.equal(validateReplayReceipt(r, c, input.pois, files), r);
+  assert.throws(
+    () =>
+      validateReplayReceipt(
+        { ...r, baseHead: "changed" },
+        c,
+        input.pois,
+        files,
+      ),
+    /REPLAY_RECEIPT_CORRUPTED/,
+  );
+  assert.throws(
+    () => validateReplayReceipt(r, c, input.pois.slice(1), files),
+    /REPLAY_MEMBERSHIP_DRIFT/,
+  );
+  const moved = structuredClone(input.pois);
+  moved[0].location.point.latitude += 0.1;
+  assert.throws(
+    () => validateReplayReceipt(r, c, moved, files),
+    /REPLAY_IDENTITY_COORDINATE_DRIFT/,
+  );
+  const changed = structuredClone(input.pois);
+  const assessed = changed.find(
+    (p) => !c.accessAdjudication.excludedInternalIds.includes(p.internalId),
+  );
+  assessed.lifecycle.status = "permanently_closed";
+  assert.throws(
+    () => validateReplayReceipt(r, c, changed, files),
+    /REPLAY_NON_EXCLUDED_RECORD_CHANGED/,
+  );
+  assert.throws(
+    () => validateReplayReceipt(r, c, input.pois, () => "0".repeat(64)),
+    /REPLAY_EVIDENCE_CHANGED/,
+  );
+  assert.throws(
+    () =>
+      validateReplayReceipt(
+        r,
+        {
+          ...c,
+          accessAdjudication: {
+            ...c.accessAdjudication,
+            excludedInternalIds: [],
+          },
+        },
+        input.pois,
+        files,
+      ),
+    /REPLAY_EXCLUSIONS_CHANGED/,
+  );
+});
+
+test("085 prior review is retained and only a validated Canonical binding can be refreshed", () => {
+  const reviews = JSON.parse(
+    readFileSync(
+      join(ROOT, "data/transport/access/inputs/discovery-review.json"),
+      "utf8",
+    ),
+  );
+  const previous = structuredClone(reviews);
+  const rebound = rebindDiscoveryReviews(reviews, input.canonicalReplay);
+  assert.deepEqual(reviews, previous);
+  assert.equal(rebound.length, 9);
+  assert.ok(
+    rebound.every(
+      (r) =>
+        r.inventoryHashes.canonicalDatasetFileSha256 ===
+        input.preflight.canonical.datasetFileSha256,
+    ),
+  );
+  reviews[0].externalBlockers = [];
+  assert.throws(
+    () => rebindDiscoveryReviews(reviews, input.canonicalReplay),
+    /REPLAY_OLD_REVIEW_CHANGED/,
+  );
+});
+
+test("085 acceptance exception never masks missing execution checks or new non-fixpoint failures", () => {
+  const verified = {
+    ...input,
+    executionVerification: {
+      deterministicRebuild: "PASS_TEST_FIXTURE",
+      receiptIntegrity: "PASS_TEST_FIXTURE",
+    },
+  };
+  const built = buildArtifacts(verified);
+  assert.equal(built.acceptance.status, EXCEPTION_STATUS);
+  assert.equal(built.acceptance.allPass, false);
+  assert.equal(built.acceptance.userAcceptanceRequired, true);
+  assert.equal(built.acceptance.validAccessibleAssessmentCount, 95);
+  assert.equal(
+    built.acceptance.gates.filter((g) => g.status === "FAIL").length,
+    3,
+  );
+  assert.ok(
+    built.acceptance.gates
+      .filter((g) => g.owner === "A_CANONICAL")
+      .every((g) => g.status === "PASS"),
+  );
+  assert.equal(
+    buildArtifacts(input).acceptance.status,
+    "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY",
+  );
+  const rows = JSON.parse(built.artifacts["poi-access-completeness.json"]);
+  const combined = {
+    edges: built.batches.flatMap((b) => b.data.edges),
+    decisions: built.batches.flatMap((b) => b.data.decisions),
+    scans: built.batches.flatMap((b) => b.data.scans),
+  };
+  const proofs = built.artifacts["candidate-exhaustion-proofs.jsonl"]
+    .trim()
+    .split("\n")
+    .map(JSON.parse);
+  const addedFailure = structuredClone(rows);
+  addedFailure.find(
+    (p) => p.assessmentEligible && p.usefulDistinctNodes >= 3,
+  ).usefulDistinctNodes = 0;
+  assert.equal(
+    topologyAcceptance(verified, combined, addedFailure, proofs).status,
+    "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY",
+  );
+  const staleProofs = structuredClone(proofs);
+  staleProofs[0].inventoryHashes.sourceRightsSha256 = "0".repeat(64);
+  assert.equal(
+    topologyAcceptance(verified, combined, rows, staleProofs).status,
+    "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY",
+  );
+});
+
+test("085 final replay conserves nodes, decisions and edges while keeping five owner exclusions explicit", () => {
+  const built = buildArtifacts(input);
+  const audit = JSON.parse(built.artifacts["post-canonical-replay-audit.json"]);
+  assert.equal(audit.status, "PASS");
+  assert.equal(audit.cases.length, 9);
+  assert.ok(
+    audit.cases.every(
+      (p) =>
+        p.proofValidAfterMerge &&
+        p.unchangedNonCanonicalHashes &&
+        !p.newBlockerReleasingEvidenceFromPR465 &&
+        p.missingEvidenceType.length > 0,
+    ),
+  );
+  assert.equal(built.manifest.transportAdmission.acceptedTopologyNodes, 5200);
+  assert.equal(built.manifest.transportAdmission.heldNodes, 344);
+  assert.equal(built.manifest.metrics.totalDirectedEdges, 680);
+  const rows = JSON.parse(built.artifacts["poi-access-completeness.json"]);
+  assert.equal(rows.length, 100);
+  assert.equal(rows.filter((p) => p.assessmentEligible).length, 95);
+  assert.ok(
+    rows
+      .filter((p) => !p.assessmentEligible)
+      .every(
+        (p) =>
+          !p.canonicalAdjudicationRequired &&
+          p.reviewStatus === "OWNER_ADJUDICATED_EXCLUDED" &&
+          p.ownerAdjudication.visitorEndpoint === null &&
+          !p.directedEdges,
+      ),
+  );
+  assert.equal(JSON.parse(built.artifacts["under-target-pois.json"]).length, 9);
+  assert.equal(
+    built.artifacts["candidate-exhaustion-proofs.jsonl"].trim().split("\n")
+      .length,
+    9,
   );
 });

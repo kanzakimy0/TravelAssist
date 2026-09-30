@@ -1,9 +1,50 @@
 {
   "schemaVersion": "2.0",
-  "status": "BLOCKED_SOURCE_LICENSE_IDENTITY_FIXPOINT",
+  "status": "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
   "allPass": false,
   "nonCanonicalPass": false,
-  "inputFingerprint": "de48e4d636486f60bfa50038439b0127c0acec6de894d4cf57ee1d22f750fea8",
+  "auditedExceptionsOnly": true,
+  "auditedFixpointExceptionCount": 9,
+  "remainingFailedGates": [
+    {
+      "name": "Valid Canonical POIs with confirmed useful topology",
+      "actual": 0.9894736842105263,
+      "threshold": 1,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ]
+    },
+    {
+      "name": "Zero-node valid accessible POIs",
+      "actual": 1,
+      "threshold": 0,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ]
+    },
+    {
+      "name": "Under-target without exhaustion proof",
+      "actual": 9,
+      "threshold": 0,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+        "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
+        "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
+        "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+        "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
+        "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753"
+      ]
+    }
+  ],
+  "userAcceptanceRequired": true,
+  "canonicalPendingAdjudicationCount": 0,
+  "inputFingerprint": "61b4cbd5425d24fc41283b448e78ccb24b4f6b63bbc81f575fcc179125ffe834",
   "authoritativeCanonicalCount": 100,
   "canonicalAdjudicationCount": 5,
   "validAccessibleAssessmentCount": 95,
@@ -28,9 +69,9 @@
     },
     {
       "name": "Canonical supporting manifest integrity",
-      "actual": false,
+      "actual": true,
       "threshold": true,
-      "status": "FAIL",
+      "status": "PASS",
       "evidencePath": "../../../docs/qa/TASK-085-B/canonical-supporting-hash-audit.md",
       "owner": "A_CANONICAL"
     },
@@ -180,11 +221,27 @@
     },
     {
       "name": "Canonical lifecycle public access and endpoint adjudication",
-      "actual": 5,
+      "actual": 0,
       "threshold": 0,
-      "status": "FAIL",
+      "status": "PASS",
       "evidencePath": "canonical-adjudication-required.json",
       "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Canonical owner assessment denominator",
+      "actual": 95,
+      "threshold": 95,
+      "status": "PASS",
+      "evidencePath": "canonical-adjudication-required.json",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Post-Canonical evidence and fixpoint proof replay",
+      "actual": "PASS",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "post-canonical-replay-audit.json",
+      "owner": "B"
     }
   ],
   "gates": [
@@ -206,9 +263,9 @@
     },
     {
       "name": "Canonical supporting manifest integrity",
-      "actual": false,
+      "actual": true,
       "threshold": true,
-      "status": "FAIL",
+      "status": "PASS",
       "evidencePath": "../../../docs/qa/TASK-085-B/canonical-supporting-hash-audit.md",
       "owner": "A_CANONICAL"
     },
@@ -358,11 +415,27 @@
     },
     {
       "name": "Canonical lifecycle public access and endpoint adjudication",
-      "actual": 5,
+      "actual": 0,
       "threshold": 0,
-      "status": "FAIL",
+      "status": "PASS",
       "evidencePath": "canonical-adjudication-required.json",
       "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Canonical owner assessment denominator",
+      "actual": 95,
+      "threshold": 95,
+      "status": "PASS",
+      "evidencePath": "canonical-adjudication-required.json",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Post-Canonical evidence and fixpoint proof replay",
+      "actual": "PASS",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "post-canonical-replay-audit.json",
+      "owner": "B"
     }
   ],
   "metricGates": {
