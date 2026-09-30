@@ -256,7 +256,10 @@ test("documented interchange boundaries unify Umeda while preserving operators a
   )) {
     assert.ok(h.boundaryEvidence.length > 0);
     assert.equal(h.missingOperatorModeCount, 0);
-    assert.equal(h.ambiguousComponentCount, 0);
+    assert.equal(
+      h.ambiguousComponentCount,
+      h.hubReviewName === "武蔵小杉" ? 1 : 0,
+    );
     assert.equal(h.parentHubAssignmentAuthorized, false);
   }
   assert.ok(
@@ -288,5 +291,91 @@ test("annual airport threshold excludes low-volume identities without dropping t
   assert.equal(
     all.find((r) => r.officialName === "礼文").decision,
     "CLOSED/INACTIVE",
+  );
+});
+
+test("city coverage expands Tokyo and regional centers without growing Osaka", () => {
+  const cities = rows("hub-city-coverage-review");
+  const hubs = rows("hub-component-completeness-review");
+  assert.equal(
+    cities.reduce((n, c) => n + c.currentHubScopes, 0),
+    hubs.length,
+  );
+  assert.equal(
+    cities.reduce((n, c) => n + c.previousHubScopes, 0),
+    104,
+  );
+  assert.equal(
+    cities.reduce((n, c) => n + c.currentExpectedComponents, 0),
+    manifest.hubs.expectedComponents,
+  );
+  const city = (name) => cities.find((c) => c.cityReviewArea === name);
+  assert.equal(
+    city("大阪圈").currentHubScopes,
+    city("大阪圈").previousHubScopes,
+  );
+  assert.equal(
+    city("大阪圈").currentExpectedComponents,
+    city("大阪圈").previousExpectedComponents,
+  );
+  for (const name of [
+    "东京23区",
+    "东京多摩",
+    "名古屋圈",
+    "神户",
+    "福冈",
+    "札幌",
+    "仙台",
+    "广岛",
+  ])
+    assert.ok(city(name).addedHubScopes > 0, name);
+  assert.ok(
+    cities.every(
+      (c) => c.formallyAcceptedHubs === 0 && !c.nationwideCoverageComplete,
+    ),
+  );
+  assert.ok(
+    rows("high-tier-hub-coverage-gate")
+      .filter((c) => c.proposedNodeLevel === "T0")
+      .every((c) => c.reviewScopes.length > 0),
+  );
+});
+
+test("ambiguous JR Musashi-Kosugi remains withheld and operator modes stay distinct", () => {
+  const hubs = rows("hub-component-completeness-review");
+  const kosugi = hubs.find((h) => h.hubReviewName === "武蔵小杉");
+  const jr = kosugi.expectedComponents.find(
+    (c) => c.operator === "東日本旅客鉄道",
+  );
+  assert.equal(jr.status, "MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED");
+  assert.equal(jr.candidateTransportNodeIds.length, 2);
+  assert.equal(jr.proposedParentHubId, null);
+  assert.ok(
+    rail
+      .filter((c) =>
+        jr.candidateTransportNodeIds.includes(c.proposedTransportNodeId),
+      )
+      .every((c) => c.proposedParentHubId === null),
+  );
+  const kamiiida = hubs.find((h) => h.hubReviewName === "上飯田");
+  assert.equal(
+    kamiiida.expectedComponents.find((c) => c.operator === "名古屋市")
+      .modeFamily,
+    "metro",
+  );
+  assert.equal(
+    kamiiida.expectedComponents.find((c) => c.operator === "名古屋鉄道")
+      .modeFamily,
+    "private_rail",
+  );
+  const tachikawa = hubs.find((h) => h.hubReviewName === "立川");
+  assert.deepEqual(
+    tachikawa.expectedComponents.map((c) => c.stationName),
+    ["立川", "立川北", "立川南"],
+  );
+  assert.ok(
+    hubs
+      .find((h) => h.hubReviewName === "蒲田")
+      .expectedComponents.every((c) => c.stationName !== "京急蒲田"),
   );
 });

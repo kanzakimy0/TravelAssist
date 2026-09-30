@@ -10,7 +10,7 @@
 
 | 项目                 | 当前结果                                                                       | 尚未通过                                                                 |
 | -------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| 轨道组件             | 2228                                                                           | 全部保留 COMPONENT_REVIEW_REQUIRED                                       |
+| 轨道组件             | 2271                                                                           | 全部保留 COMPONENT_REVIEW_REQUIRED                                       |
 | 机场身份审核         | 97 / 97                                                                        | 当前服务与完整接入审核仍有缺口                                           |
 | 机场决定             | {'CLOSED/INACTIVE': 1, 'DEFER_NOT_PLANNER_RELEVANT': 9, 'REVIEW_REQUIRED': 87} | 不能将 97 身份筛查当作 97 个机场接收                                     |
 | 机场规划候选         | 86                                                                             | 年旅客量至少 1,000 人；10 个低于阈值排除（含礼文停用），1 个未知继续待核 |
@@ -21,13 +21,47 @@
 | NAVITIME 发现        | 191                                                                            | 全国分类及可用都道府县分页已遍历至末页                                   |
 | BUS 已附部分官方证据 | 42                                                                             | NAVITIME 对应 21；完整官方字段验证 0                                     |
 | BUS 决定             | ACCEPT 0 / REVIEW 211 / DEFER 0 / INACTIVE 1                                   | 坐标、服务、统计和物理终端去重仍未齐备                                   |
-| Hub 审核范围         | 104                                                                            | complete 0 / component-review-required 104                               |
+| Hub 审核范围         | 229                                                                            | complete 0 / component-review-required 229                               |
 | 所列最小组件缺口     | 0                                                                              | 缺口计数仅限所列期望清单，不代表全国 Hub 完整                            |
-| 高等级组件 Hub Gate  | 519                                                                            | 370 尚未建立官方 Hub 审核范围                                            |
+| 高等级组件 Hub Gate  | 519                                                                            | 269 尚未建立官方 Hub 审核范围                                            |
+
+## 城市 Hub 覆盖补充
+
+城市/圈标签仅用于人工覆盖审核，不是 N03 行政归属。大阪范围本轮不增加。
+
+| 城市/审核圈  | 原 Hub | 本轮 Hub | 新增 | 期望组件 | 官方边界已附 | 边界待核 |
+| ------------ | ------ | -------- | ---- | -------- | ------------ | -------- |
+| 三重主要城市 | 0      | 5        | 5    | 13       | 5            | 0        |
+| 东京23区     | 33     | 63       | 30   | 160      | 59           | 4        |
+| 东京多摩     | 0      | 17       | 17   | 31       | 17           | 0        |
+| 京都         | 5      | 8        | 3    | 18       | 7            | 1        |
+| 仙台         | 1      | 3        | 2    | 7        | 2            | 1        |
+| 北九州       | 0      | 1        | 1    | 3        | 1            | 0        |
+| 千叶圈       | 1      | 4        | 3    | 11       | 4            | 0        |
+| 名古屋圈     | 1      | 22       | 21   | 43       | 22           | 0        |
+| 埼玉圈       | 1      | 5        | 4    | 10       | 4            | 1        |
+| 大阪圈       | 52     | 52       | 0    | 112      | 52           | 0        |
+| 奈良         | 1      | 4        | 3    | 4        | 3            | 1        |
+| 川崎圈       | 0      | 5        | 5    | 8        | 5            | 0        |
+| 广岛         | 1      | 4        | 3    | 9        | 3            | 1        |
+| 札幌         | 1      | 4        | 3    | 7        | 3            | 1        |
+| 横滨圈       | 1      | 5        | 4    | 14       | 4            | 1        |
+| 熊本         | 1      | 1        | 0    | 3        | 0            | 1        |
+| 神奈川其他   | 0      | 9        | 9    | 20       | 9            | 0        |
+| 神户         | 1      | 8        | 7    | 19       | 7            | 1        |
+| 福冈         | 1      | 6        | 5    | 14       | 6            | 0        |
+| 金泽         | 1      | 1        | 0    | 3        | 0            | 1        |
+| 阪神其他     | 1      | 1        | 0    | 2        | 1            | 0        |
+| 鹿儿岛       | 1      | 1        | 0    | 3        | 0            | 1        |
+
+新增 125 个审核范围。东京圈包括武藏小杉、吉祥寺、町田、立川、日暮里、滨松町、千叶、船桥、柏等；名古屋、神户、福冈、札幌、仙台、广岛及京都/奈良/三重均有补充。
+
+- 全部 80 个拟 T0 组件现已纳入所列 Hub 审核范围，但这不是正式接收或全国完整性通过。武藏小杉 JR 的两个 S12 分组仍有实体归组歧义，保持 1 项 MULTIPLE_COMPONENT_IDENTITIES_REVIEW_REQUIRED；两个候选都不强行写入拟 parentHub。
+- 名古屋市上饭田线按官方地铁分类更正，名铁小牧线仍单独保留；旧候选 ID 变化写入沿革。大阪 52 个范围及组件清单保持原状。
 
 ## 本轮 Hub 与机场更正
 
-- Hub 范围 104 个、期望组件 270 个；其中大阪相关 52 个范围。85 个范围有官方换乘边界证据，200 个组件写入 proposedParentHubId；正式 parentHubId 授权仍为 false。
+- Hub 范围 229 个、期望组件 514 个；其中大阪相关 52 个范围。214 个范围有官方换乘边界证据，462 个组件写入 proposedParentHubId；正式 parentHubId 授权仍为 false。
 - 大阪・梅田统一为 7 个组件：JR 大阪、JR 北新地、阪急大阪梅田、阪神大阪梅田、Metro 梅田、东梅田、西梅田。旧范围及旧 Hub ID 显式保留沿革。
 - 押上・とうきょうスカイツリー保留 5 个组件（东武两个物理站）；练马 2 个；难波 5 个；天王寺・大阪阿部野桥 4 个。
 - 官方读取 Osaka Metro 134 个站点页，并用联络出口资料确认不同站名；JR 野田与阪神野田保留在不同换乘区，浅草不含独立的 TX 浅草。
@@ -60,23 +94,23 @@ JR 东日本 FY2024 的数值是上车人数，未乘二。JR 东海 FY2025 括�
 
 | 范围                                          | 维度            | 分组              | T0  | T1  | T2  | T3  | 待核 |
 | --------------------------------------------- | --------------- | ----------------- | --- | --- | --- | --- | ---- |
-| RAIL_COMPONENT_CANDIDATE                      | mode            | conventional_rail | 40  | 160 | 433 | 4   | 1    |
-| RAIL_COMPONENT_CANDIDATE                      | mode            | fixed_guideway    | 0   | 3   | 68  | 1   | 2    |
-| RAIL_COMPONENT_CANDIDATE                      | mode            | metro             | 18  | 125 | 381 | 1   | 7    |
-| RAIL_COMPONENT_CANDIDATE                      | mode            | private_rail      | 22  | 146 | 681 | 5   | 7    |
+| RAIL_COMPONENT_CANDIDATE                      | mode            | conventional_rail | 40  | 160 | 433 | 11  | 7    |
+| RAIL_COMPONENT_CANDIDATE                      | mode            | fixed_guideway    | 0   | 3   | 68  | 5   | 2    |
+| RAIL_COMPONENT_CANDIDATE                      | mode            | metro             | 18  | 125 | 382 | 3   | 12   |
+| RAIL_COMPONENT_CANDIDATE                      | mode            | private_rail      | 22  | 146 | 680 | 13  | 14   |
 | RAIL_COMPONENT_CANDIDATE                      | mode            | shinkansen        | 0   | 5   | 8   | 35  | 60   |
-| RAIL_COMPONENT_CANDIDATE                      | mode            | tram              | 0   | 0   | 8   | 7   | 0    |
-| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR Central        | 1   | 15  | 33  | 3   | 6    |
-| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR East           | 33  | 122 | 189 | 14  | 26   |
+| RAIL_COMPONENT_CANDIDATE                      | mode            | tram              | 0   | 0   | 8   | 11  | 0    |
+| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR Central        | 1   | 15  | 33  | 6   | 9    |
+| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR East           | 33  | 122 | 189 | 15  | 28   |
 | RAIL_COMPONENT_CANDIDATE                      | operator_family | JR Hokkaido       | 0   | 1   | 13  | 3   | 1    |
-| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR Kyushu         | 1   | 1   | 38  | 5   | 13   |
+| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR Kyushu         | 1   | 1   | 38  | 5   | 14   |
 | RAIL_COMPONENT_CANDIDATE                      | operator_family | JR Shikoku        | 0   | 0   | 3   | 0   | 0    |
-| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR West           | 5   | 26  | 165 | 14  | 15   |
-| RAIL_COMPONENT_CANDIDATE                      | operator_family | Municipal/Metro   | 18  | 125 | 381 | 1   | 7    |
-| RAIL_COMPONENT_CANDIDATE                      | operator_family | Private/Other     | 22  | 149 | 757 | 13  | 9    |
+| RAIL_COMPONENT_CANDIDATE                      | operator_family | JR West           | 5   | 26  | 165 | 17  | 15   |
+| RAIL_COMPONENT_CANDIDATE                      | operator_family | Municipal/Metro   | 18  | 125 | 382 | 3   | 12   |
+| RAIL_COMPONENT_CANDIDATE                      | operator_family | Private/Other     | 22  | 149 | 756 | 29  | 16   |
 | AIRPORT_PLANNING_CANDIDATE_PROPOSED_ONLY      | mode            | airport           | 8   | 23  | 37  | 18  | 0    |
 | BUS_SOURCE_REVIEW_RECORD_NOT_DEDUPED_FACILITY | mode            | bus_terminal      | 1   | 0   | 0   | 0   | 211  |
-| HUB_BOUNDARY_REVIEW_SCOPE                     | entity_layer    | Hub               | 32  | 37  | 35  | 0   | 0    |
+| HUB_BOUNDARY_REVIEW_SCOPE                     | entity_layer    | Hub               | 55  | 81  | 88  | 5   | 0    |
 
 完整 operator 逐项分布见 `tier-distributions.jsonl`。Ferry 120 港口统计仍是港口汇总，不能替代码头客流；未新增已接受 Ferry/cable 节点。
 
@@ -99,7 +133,8 @@ JR 东日本 FY2024 的数值是上车人数，未乘二。JR 东海 FY2025 括�
 | [airport-planning-candidates.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/airport-planning-candidates.jsonl)             | 年旅客量门槛通过的 86 个规划候选，仍未正式接收    |
 | [airport-rail-components.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/airport-rail-components.jsonl)                     | 21 个已知机场轨道组件与候选 ID                    |
 | [bus-candidate-official-review.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/bus-candidate-official-review.jsonl)         | 212 条跨来源终端审核记录                          |
-| [hub-component-completeness-review.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/hub-component-completeness-review.jsonl) | 104 个范围、270 个期望组件、官方边界与拟 Hub 对应 |
+| [hub-component-completeness-review.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/hub-component-completeness-review.jsonl) | 229 个范围、514 个期望组件、官方边界与拟 Hub 对应 |
+| [hub-city-coverage-review.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/hub-city-coverage-review.jsonl)                   | 城市审核圈的基线、本轮数量、增量与边界缺口        |
 | [high-tier-hub-coverage-gate.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/high-tier-hub-coverage-gate.jsonl)             | 全部 519 个高等级组件的 Hub 审核覆盖缺口          |
 | [shinkansen-usage-review.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/shinkansen-usage-review.jsonl)                     | 108 个新干线组件逐项定量来源与人工审核状态        |
 | [candidate-revision-lineage.jsonl](../../../data/transport/nodes/task-084-b-v2-amendment-review/candidate-revision-lineage.jsonl)               | 本轮候选模式更正及新增记录                        |
@@ -119,7 +154,7 @@ node --test tests/task-084-v2-amendment.test.mjs
 python tools/transport/task-084-v2-amendment-report.py
 ```
 
-轨道实际批次：200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 28。普通续跑对全部派生文件逐字节比较，遇到不一致先报错；必须显式 --rebuild 才允许刷新。
+轨道实际批次：200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 71。普通续跑对全部派生文件逐字节比较，遇到不一致先报错；必须显式 --rebuild 才允许刷新。
 
 Exact-head Quality Gate 必须在本轮提交推送后独立核实。本文件不预写 CI 成功，也不随 SHA 变更单独追加追踪提交。
 

@@ -71,7 +71,7 @@ def mode(row):
         return "funicular"
     # S12 legal/technical class 16 includes Sapporo's rubber-tired subway.
     # The public transport mode takes precedence over propulsion/guideway class.
-    if op in {"札幌市", "神戸市"}:
+    if op in {"札幌市", "神戸市"} or (op == "名古屋市" and line == "上飯田線"):
         return "metro"
     # Osaka subway lines can be legally classified as ordinary tramway (21).
     # Keep New Tram (16/24) separate; legal class 21 is not sufficient alone.
