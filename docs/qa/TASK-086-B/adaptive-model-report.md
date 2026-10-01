@@ -78,5 +78,16 @@ The original ten iteration records are retained byte-for-byte. Subsequent phases
 | 80 | 080-kumamoto-airport-licensed-trips-and-current-gateways | 89 | 428 | 9 | 32 | 37 | True |
 | 81 | 081-kirishima-current-calls-and-kagoshima-shinkansen-gateway | 89 | 429 | 9 | 8 | 20 | True |
 | 82 | 082-tobu-tojo-current-partner-northbound-ordinary | 89 | 433 | 9 | 8 | 19 | True |
+| 83 | 083-nanpu-current-kochi-rail-backbone | 89 | 433 | 9 | 11 | 22 | False |
+| 84 | 084-kochi-airport-licensed-trips-and-current-gateways | 89 | 434 | 9 | 22 | 27 | True |
+| 85 | 085-shinkoshigaya-current-jr-municipal-interchange | 89 | 435 | 9 | 1 | 2 | True |
+| 86 | 086-uzushio-current-tokushima-rail-and-takamatsu-concourse | 89 | 435 | 9 | 8 | 16 | False |
+| 87 | 087-tokushima-airport-licensed-naruto-trips-and-public-gateways | 89 | 436 | 9 | 88 | 107 | True |
+| 88 | 088-nagasaki-airport-current-public-terminal-and-existing-licensed-stops | 89 | 437 | 9 | 1 | 6 | True |
+| 89 | 089-oita-airport-licensed-airliner-trips-and-public-gateways | 89 | 437 | 9 | 7 | 10 | False |
+| 90 | 090-sonic-current-oita-backbone-and-kokura-monorail-concourse | 89 | 438 | 9 | 8 | 18 | True |
+| 91 | 091-tokyo-four-hub-passages-and-narimasu-t1-connection | 89 | 439 | 9 | 1 | 10 | True |
+| 92 | 092-hiroshima-airport-cc0-saijo-trips-and-current-sanyo-connection | 89 | 440 | 9 | 14 | 28 | True |
+| 93 | 093-tokyo-six-current-component-passages | 89 | 440 | 9 | 0 | 12 | True |
 
 Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).

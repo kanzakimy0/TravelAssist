@@ -1,0 +1,254 @@
+{
+  "phaseId": "086-uzushio-current-tokushima-rail-and-takamatsu-concourse",
+  "strategy": [
+    "JR_SHIKOKU_EXACT_CURRENT_UZUSHIO_CALLS",
+    "CURRENT_TAKAMATSU_SHARED_CONCOURSE",
+    "TOKUSHIMA_AIRPORT_BACKBONE_PREREQUISITE"
+  ],
+  "completedActionIds": [
+    "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+    "hub:takamatsu:current-yosan-kotoku-common-concourse"
+  ],
+  "facts": [
+    {
+      "factId": "uzushio-3009D-current-takamatsu-tokushima",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/90171?date=20261001",
+      "observedResponseSha256": "3565f3ba4a33657c70bab71cbd5f3d9dc5719992dd2a52d18f53151ea728f43c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+          "url": "https://timetable.jr-odekake.net/line-timetable/2479?year=2026&month=10&day=1",
+          "observedResponseSha256": "caf673c65eb418f47ffcec67aca009c905ecaffaa48fb13a18395c0ae97d23d7"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/uzushio.html",
+          "observedResponseSha256": "a043526d71c61f6d63063a0b806bb0a9615532ee7b3e048919606012bed95236"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-yosan-kotoku-common-concourse",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/takamatsu/images/kounai_1f.gif",
+          "observedResponseSha256": "05edadd00cffc980795176b627475781d39d5dbbc87c170566c50b13f1c1cbdb"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-yosan-kotoku-common-concourse",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/takamatsu/",
+          "observedResponseSha256": "a101c8c898318942f21bdc0de54ecdb9811c93c00b0db421ce7e717240189246"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-yosan-kotoku-common-concourse",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/takamatsu.pdf",
+          "observedResponseSha256": "4c9478959e683292efbaa185ebca75106a427597bf7800ec88241d56c6279592"
+        }
+      ],
+      "locator": "Exact current 3009D / うずしお9号 independently resolved from its 20261001 line-table detail link, then checked against train identity and explicit calling rows. Each direction has nine actual calls; passing rows are excluded. Preserve only this train-specific static ordered topology, with no timetable clocks, platform assignments or live operation assertion. The selected service remains wholly within JR Shikoku Kotoku Line; no optional-stop overview or reversal inference substitutes for the independently inspected opposite train. Takamatsu is an existing single physical JR operator component whose discovery record contains both Yosan 008164 and Kotoku 008163; each line identity is independently rechecked against its exact S12 record. The current station page identifies Y00/T28 and the station diagram explicitly joins all platform faces at one common concourse. This separately reviewed physical continuity supports reuse of that existing component for both lines. No self-transfer or new station identity is created; group code and coordinate equality are not the physical proof.",
+      "line": "うずしお・高松徳島区間",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急うずしお",
+      "direction": "outbound",
+      "callingStations": [
+        "高松",
+        "栗林",
+        "屋島",
+        "志度",
+        "三本松",
+        "引田",
+        "板野",
+        "池谷",
+        "徳島"
+      ],
+      "callingComponents": [
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "栗林",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "屋島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "志度",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三本松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "引田",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "板野",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "池谷",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "徳島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_CALLS_INDEPENDENT_EACH_DIRECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "samePhysicalOperatorComponentReview": {
+        "name": "高松",
+        "operator": "四国旅客鉄道",
+        "stationCodes": [
+          "008163",
+          "008164"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    },
+    {
+      "factId": "uzushio-3010D-current-takamatsu-tokushima",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/75801?date=20261001",
+      "observedResponseSha256": "dc25b6f0d9febb263ed87995b49bb9b2eb02cf88f637a70820d3f01dee5f0852",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+          "url": "https://timetable.jr-odekake.net/line-timetable/2480?year=2026&month=10&day=1",
+          "observedResponseSha256": "cf10153fdece0f70b6efa2be10ba60010b44b99335a82d5fade7f5ec74a45f84"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/uzushio.html",
+          "observedResponseSha256": "a043526d71c61f6d63063a0b806bb0a9615532ee7b3e048919606012bed95236"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-yosan-kotoku-common-concourse",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/takamatsu/images/kounai_1f.gif",
+          "observedResponseSha256": "05edadd00cffc980795176b627475781d39d5dbbc87c170566c50b13f1c1cbdb"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-yosan-kotoku-common-concourse",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/takamatsu/",
+          "observedResponseSha256": "a101c8c898318942f21bdc0de54ecdb9811c93c00b0db421ce7e717240189246"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-yosan-kotoku-common-concourse",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/takamatsu.pdf",
+          "observedResponseSha256": "4c9478959e683292efbaa185ebca75106a427597bf7800ec88241d56c6279592"
+        }
+      ],
+      "locator": "Exact current 3010D / うずしお10号 independently resolved from its 20261001 line-table detail link, then checked against train identity and explicit calling rows. Each direction has nine actual calls; passing rows are excluded. Preserve only this train-specific static ordered topology, with no timetable clocks, platform assignments or live operation assertion. The selected service remains wholly within JR Shikoku Kotoku Line; no optional-stop overview or reversal inference substitutes for the independently inspected opposite train. Takamatsu is an existing single physical JR operator component whose discovery record contains both Yosan 008164 and Kotoku 008163; each line identity is independently rechecked against its exact S12 record. The current station page identifies Y00/T28 and the station diagram explicitly joins all platform faces at one common concourse. This separately reviewed physical continuity supports reuse of that existing component for both lines. No self-transfer or new station identity is created; group code and coordinate equality are not the physical proof.",
+      "line": "うずしお・高松徳島区間",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急うずしお",
+      "direction": "inbound",
+      "callingStations": [
+        "徳島",
+        "池谷",
+        "板野",
+        "引田",
+        "三本松",
+        "志度",
+        "屋島",
+        "栗林",
+        "高松"
+      ],
+      "callingComponents": [
+        {
+          "name": "徳島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "池谷",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "板野",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "引田",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三本松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "志度",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "屋島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "栗林",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_CALLS_INDEPENDENT_EACH_DIRECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "samePhysicalOperatorComponentReview": {
+        "name": "高松",
+        "operator": "四国旅客鉄道",
+        "stationCodes": [
+          "008163",
+          "008164"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    }
+  ]
+}

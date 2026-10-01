@@ -1431,3 +1431,75 @@ test("TASK086 existing GTFS interchange keeps exact stop identity and rejects sa
     /OFFICIAL_TRANSFER_SOURCE_BINDING_MISMATCH/,
   );
 });
+
+test("TASK086 airfield suffix requires explicit official name correspondence bound to observed evidence", () => {
+  const record = {
+    airportName: "徳島飛行場",
+    referencePointId: "cf03_00055",
+    latitude: 34.132778,
+    longitude: 134.605833,
+  };
+  const requirement = {
+    requirementId: "review:official-airport:徳島",
+    name: "徳島",
+    tier: "T1",
+    kind: "airport",
+  };
+  requirement.nodeId = id("node", requirement.requirementId);
+  const nameEvidence = {
+    officialName: "徳島飛行場",
+    publicName: "徳島阿波おどり空港",
+    requirementName: "徳島",
+    url: "https://example.test/official-airport-overview",
+    observedResponseSha256: "a".repeat(64),
+  };
+  const selector = {
+    name: record.airportName,
+    operator: "airport-facility:cf03_00055",
+    line: "airport:cf03_00055",
+    mode: "flight",
+    airportIdentity: {
+      dataset: "C28-21",
+      referencePointId: record.referencePointId,
+      requirementId: requirement.requirementId,
+      expectedRequirementName: requirement.name,
+      method: "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+      currentPassengerAccessReview: "Reviewed terminal public frontage",
+      officialNameEvidence: nameEvidence,
+    },
+  };
+  const fact = {
+    corroboratingEvidence: [
+      {
+        url: nameEvidence.url,
+        observedResponseSha256: nameEvidence.observedResponseSha256,
+      },
+    ],
+  };
+  const build = (s = selector, f = fact) =>
+    airportCandidate(s, record, requirement, ["identity", "access"], f);
+  assert.equal(id("node", build().identityAnchor), requirement.nodeId);
+  assert.deepEqual(
+    build().independentReview.officialNameEvidence,
+    nameEvidence,
+  );
+  for (const change of [
+    { officialName: "小松飛行場" },
+    { requirementName: "小松" },
+    { publicName: "小松空港" },
+    { observedResponseSha256: "b".repeat(64) },
+    { url: "https://example.test/unreviewed" },
+  ]) {
+    const s = structuredClone(selector);
+    Object.assign(s.airportIdentity.officialNameEvidence, change);
+    assert.throws(() => build(s), /AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH/);
+  }
+  assert.throws(
+    () => build(selector, {}),
+    /AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH/,
+  );
+  const unreviewed = structuredClone(selector);
+  unreviewed.airportIdentity.method =
+    "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX";
+  assert.throws(() => build(unreviewed), /AIRPORT_REQUIREMENT_REVIEW_MISMATCH/);
+});

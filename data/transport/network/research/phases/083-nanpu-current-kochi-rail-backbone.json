@@ -1,0 +1,273 @@
+{
+  "phaseId": "083-nanpu-current-kochi-rail-backbone",
+  "strategy": [
+    "JR_SHIKOKU_EXACT_CURRENT_NANPU_CALLS",
+    "KOJIMA_REVIEWED_COMPANY_GATEWAY",
+    "KOCHI_AIRPORT_BACKBONE_PREREQUISITE"
+  ],
+  "completedActionIds": [
+    "rail:jr-shikoku:nanpu-current-kochi-backbone"
+  ],
+  "facts": [
+    {
+      "factId": "nanpu-33D-current-kojima-kochi-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:nanpu-current-kochi-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/150681?date=20261001",
+      "observedResponseSha256": "9dd75e24e520856813c185bc43a70d1e41468a744c1cfde3661f899a9a53b59c",
+      "corroboratingEvidence": [
+        {
+          "url": "https://timetable.jr-odekake.net/station-timetable/3508040001?date=20261001",
+          "observedResponseSha256": "d54bb6610c665e53dc0f0d6be928060a978389c0f6ec37ca80b5fe27db6b1c17"
+        },
+        {
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/nanpu.html",
+          "observedResponseSha256": "303bc2d7b6e5f75fd7df60ff709d9124a789f2e2b99ba5b3eee05c26fcd989c1"
+        }
+      ],
+      "locator": "Current train 33D / 南風3号 is resolved from the 20261001 Kojima station page and independently checked against its train identity and explicit station calling rows. Retain only the contiguous JR Shikoku-operated Kojima–Kochi section; the full reviewed parent calling sequence retains the omitted Okayama call. Passing rows are excluded. Existing separately reviewed Kojima company-boundary interchange connects this section to the national backbone. This is static scheduled topology, not real-time availability; no timetable clocks, platforms or calendar data are stored.",
+      "line": "南風・児島高知区間",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急南風",
+      "direction": "outbound",
+      "parentCallingStations": [
+        "岡山",
+        "児島",
+        "宇多津",
+        "丸亀",
+        "多度津",
+        "善通寺",
+        "琴平",
+        "阿波池田",
+        "大歩危",
+        "大杉",
+        "土佐山田",
+        "後免",
+        "高知"
+      ],
+      "sectionStartIndex": 1,
+      "callingStations": [
+        "児島",
+        "宇多津",
+        "丸亀",
+        "多度津",
+        "善通寺",
+        "琴平",
+        "阿波池田",
+        "大歩危",
+        "大杉",
+        "土佐山田",
+        "後免",
+        "高知"
+      ],
+      "callingComponents": [
+        {
+          "name": "児島",
+          "operator": "四国旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇多津",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "丸亀",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "多度津",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "善通寺",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "琴平",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿波池田",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大歩危",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大杉",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "土佐山田",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "後免",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高知",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_OPERATOR_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "nanpu-34D-current-kojima-kochi-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:nanpu-current-kochi-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/59421?date=20261001",
+      "observedResponseSha256": "42f410a57ab08aa6a4cca69c5205a0ea948b0e32182c7125fa9441132a059fc7",
+      "corroboratingEvidence": [
+        {
+          "url": "https://timetable.jr-odekake.net/station-timetable/3508040002?date=20261001",
+          "observedResponseSha256": "c91731216fdafd1472bd9ef4f632fc51e06d3821264d85e0f7cd22f96c551dce"
+        },
+        {
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/nanpu.html",
+          "observedResponseSha256": "303bc2d7b6e5f75fd7df60ff709d9124a789f2e2b99ba5b3eee05c26fcd989c1"
+        }
+      ],
+      "locator": "Current train 34D / 南風4号 is resolved from the 20261001 Kojima station page and independently checked against its train identity and explicit station calling rows. Retain only the contiguous JR Shikoku-operated Kojima–Kochi section; the full reviewed parent calling sequence retains the omitted Okayama call. Passing rows are excluded. Existing separately reviewed Kojima company-boundary interchange connects this section to the national backbone. This is static scheduled topology, not real-time availability; no timetable clocks, platforms or calendar data are stored.",
+      "line": "南風・児島高知区間",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急南風",
+      "direction": "inbound",
+      "parentCallingStations": [
+        "高知",
+        "後免",
+        "土佐山田",
+        "大杉",
+        "大歩危",
+        "阿波池田",
+        "琴平",
+        "善通寺",
+        "多度津",
+        "丸亀",
+        "宇多津",
+        "児島",
+        "岡山"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "高知",
+        "後免",
+        "土佐山田",
+        "大杉",
+        "大歩危",
+        "阿波池田",
+        "琴平",
+        "善通寺",
+        "多度津",
+        "丸亀",
+        "宇多津",
+        "児島"
+      ],
+      "callingComponents": [
+        {
+          "name": "高知",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "後免",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "土佐山田",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大杉",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大歩危",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿波池田",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "琴平",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "善通寺",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "多度津",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "丸亀",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇多津",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "児島",
+          "operator": "四国旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_OPERATOR_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+    }
+  ]
+}

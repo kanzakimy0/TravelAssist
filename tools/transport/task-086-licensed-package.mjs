@@ -27,6 +27,30 @@ export function prepareLicensedGtfsPackage(
       s.rawPayloadRetained &&
       s.contentSha256 === source.contentSha256,
   );
+  const licenseDecisions = {
+    "CC BY 4.0": "PASS_CC_BY_4_0_ATTRIBUTION",
+    "CC0 1.0": "PASS_CC0_1_0_PUBLIC_DOMAIN",
+  };
+  invariant(
+    Object.hasOwn(licenseDecisions, source.license) &&
+      source.license === (pack.selection.license ?? "CC BY 4.0") &&
+      source.rightsDecision === licenseDecisions[source.license] &&
+      (source.license !== "CC0 1.0" ||
+        (source.licenseEvidence?.url === source.datasetUrl &&
+          /^[a-f0-9]{64}$/.test(
+            source.licenseEvidence?.observedResponseSha256 ?? "",
+          ) &&
+          hash(source.licenseEvidence) ===
+            hash(pack.selection.licenseEvidence ?? null) &&
+          action?.sourcesChecked.some(
+            (s) =>
+              s.purpose === "terms" &&
+              s.status === 200 &&
+              s.url === source.licenseEvidence.url &&
+              s.contentSha256 === source.licenseEvidence.observedResponseSha256,
+          ))),
+    "LICENSED_GTFS_LICENSE_BINDING_MISMATCH",
+  );
   invariant(
     binding.packageSha256 === hash(pack) &&
       binding.sourceActionId === action?.actionId &&

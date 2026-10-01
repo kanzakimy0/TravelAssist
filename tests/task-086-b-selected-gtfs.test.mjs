@@ -122,3 +122,100 @@ print('selected GTFS semantic checks PASS')`;
   );
   assert.equal(result.status, 0, result.stdout + result.stderr);
 });
+
+test("TASK086 CC0 selected package binds its distinct license to the reviewed primary terms response", () => {
+  const cc0 = JSON.parse(
+    fs.readFileSync(
+      "data/transport/network/sources/geiyo-saijo-airport.json",
+      "utf8",
+    ),
+  );
+  const bytes = fs.readFileSync(
+    "data/transport/network/" + cc0.source.retainedArchive,
+  );
+  const review = {
+    actionId: cc0.selection.sourceActionId,
+    state: "RIGHTS_REVIEWED",
+    rightsFindings: [{ rightsClass: "RAW_PERSISTENCE_ALLOWED" }],
+    sourcesChecked: [
+      {
+        url: cc0.source.url,
+        status: 200,
+        rawPayloadRetained: true,
+        contentSha256: cc0.source.contentSha256,
+      },
+      {
+        url: cc0.source.licenseEvidence.url,
+        purpose: "terms",
+        status: 200,
+        contentSha256: cc0.source.licenseEvidence.observedResponseSha256,
+      },
+    ],
+  };
+  const check = (p = cc0, a = review) =>
+    prepare(
+      p,
+      {
+        packageFile: "geiyo-saijo-airport.json",
+        packageSha256: hash(p),
+        sourceActionId: p.selection.sourceActionId,
+      },
+      a,
+      bytes,
+    );
+  assert.equal(check().admitted.length, 4);
+  assert.equal(check().groups.length, 2);
+  assert.equal(cc0.source.license, "CC0 1.0");
+  assert.equal(cc0.source.rightsDecision, "PASS_CC0_1_0_PUBLIC_DOMAIN");
+  for (const change of [
+    (p) => (p.source.license = "CC BY 4.0"),
+    (p) => (p.selection.license = "CC BY 4.0"),
+    (p) => (p.source.rightsDecision = "PASS_CC_BY_4_0_ATTRIBUTION"),
+    (p) => (p.source.licenseEvidence.url = "https://unreviewed.example/"),
+    (p) => (p.source.licenseEvidence.observedResponseSha256 = "0".repeat(64)),
+    (p) => delete p.selection.licenseEvidence,
+    (p) => (p.source.license = "unreviewed"),
+  ]) {
+    const p = structuredClone(cc0);
+    change(p);
+    assert.throws(() => check(p), /LICENSE_BINDING/);
+  }
+  assert.throws(
+    () =>
+      check(cc0, {
+        ...review,
+        sourcesChecked: review.sourcesChecked.slice(0, 1),
+      }),
+    /LICENSE_BINDING/,
+  );
+  assert.throws(
+    () =>
+      check(cc0, {
+        ...review,
+        sourcesChecked: review.sourcesChecked.map((s) => ({
+          ...s,
+          purpose: "topology",
+        })),
+      }),
+    /LICENSE_BINDING/,
+  );
+});
+
+test("TASK086 CC0 extraction preserves dataset license and rejects missing or unknown license evidence", () => {
+  const code = String.raw`import copy,importlib.util,json
+from pathlib import Path
+s=importlib.util.spec_from_file_location('selected','tools/transport/task-086-extract-selected-gtfs.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+p=json.loads(Path('data/transport/network/sources/geiyo-saijo-airport.json').read_text(encoding='utf8'));r=p['selection'];raw=Path('data/transport/network/'+p['source']['retainedArchive']).read_bytes();assert m.extract(raw,r)==p
+for field,value in [('license','unreviewed'),('licenseEvidence',None),('licenseEvidence',{}),('licenseEvidence',{'url':r['datasetUrl'],'observedResponseSha256':'bad'}),('licenseEvidence',{'url':'https://unreviewed.example/','observedResponseSha256':'0'*64})]:
+ q=copy.deepcopy(r);q[field]=value
+ try:m.extract(raw,q)
+ except ValueError as e:assert 'LICENSE' in str(e)
+ else:raise AssertionError('unreviewed license accepted')
+print('CC0 license evidence checks PASS')`;
+  const result = spawnSync(
+    process.platform === "win32" ? "python" : "python3",
+    ["-X", "utf8", "-c", code],
+    { encoding: "utf8" },
+  );
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+});

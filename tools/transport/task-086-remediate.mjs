@@ -361,10 +361,13 @@ export function runRemediation({
         "C28-21 airport/reference-point join " + record.referencePointId,
         ["c28", record],
       );
-      const candidate = airportCandidate(selector, record, requirement, [
-        ref,
-        serviceEvidenceRef,
-      ]);
+      const candidate = airportCandidate(
+        selector,
+        record,
+        requirement,
+        [ref, serviceEvidenceRef],
+        evidence.get(serviceEvidenceRef).record,
+      );
       const admitted = admitNodes([candidate], sources, evidence, [])[0];
       invariant(
         admitted.decision === "ADMIT_TASK_086_TOPOLOGY",

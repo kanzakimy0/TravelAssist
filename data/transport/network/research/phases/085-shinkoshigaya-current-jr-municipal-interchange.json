@@ -1,0 +1,57 @@
+{
+  "phaseId": "085-shinkoshigaya-current-jr-municipal-interchange",
+  "strategy": [
+    "CURRENT_JR_STATION_PUBLIC_EXIT",
+    "MUNICIPAL_EXACT_OPERATOR_FORECOURT_REVIEW",
+    "T1_TOBU_INTERCHANGE_ADMISSION"
+  ],
+  "completedActionIds": [
+    "hub:shinkoshigaya:current-jr-municipal-passages"
+  ],
+  "facts": [
+    {
+      "factId": "jr-minamikoshigaya-south-exit-to-tobu-shinkoshigaya-east-exit",
+      "kind": "transfer",
+      "sourceActionId": "hub:shinkoshigaya:current-jr-municipal-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/1482_1f-2f.png",
+      "observedResponseSha256": "40eabcef8e3c57041dc19f2aa37fc47be14ff6dae6d937f80b83e449605187c3",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.city.koshigaya.saitama.jp/kurashi_shisei/kurashi/sumai/koukyokoutsu/basunorinbatakushi-noriba_images_shinnannkoshi2.jpg",
+          "observedResponseSha256": "99a7544c4863ea68fcb5b9a95859e2093d1943fc4817d43b2d5bb9c6b64eeaa6"
+        },
+        {
+          "url": "https://www.city.koshigaya.saitama.jp/citypromotion/oshiete/gaiyo/access.html",
+          "observedResponseSha256": "4d11fbc794521dac7c5732c45e5e9721d5bda937e59e53139fa81fe1a74c30de"
+        }
+      ],
+      "locator": "The current JR station diagram dated January 2026 explicitly directs passengers from the first-floor gate/south exit toward Tobu Skytree Line. The municipal forecourt diagram separately labels JR Minami-Koshigaya south exit and Tobu Shin-Koshigaya east exit on the shared public forecourt; the city access page confirms JR Musashino and Tobu railway identities. Bind the two independently reviewed S12 operator/physical-line components through this public route. No name equality, geographic proximity, paid-area continuity, walking time, accessibility guarantee or invented Tobu service pattern is inferred.",
+      "components": [
+        {
+          "name": "南越谷",
+          "operator": "東日本旅客鉄道",
+          "line": "武蔵野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新越谷",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_JR_EXIT_DIRECTION_AND_MUNICIPAL_PUBLIC_FORECOURT",
+      "hubScopeComplete": false
+    }
+  ]
+}

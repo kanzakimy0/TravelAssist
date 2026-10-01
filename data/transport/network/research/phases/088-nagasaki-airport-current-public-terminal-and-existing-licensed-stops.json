@@ -1,0 +1,208 @@
+{
+  "phaseId": "088-nagasaki-airport-current-public-terminal-and-existing-licensed-stops",
+  "strategy": [
+    "T1_AIRPORT_SURFACE_DEFICIT",
+    "REUSE_EXISTING_LICENSED_SERVICE_ENDPOINTS",
+    "CURRENT_PUBLIC_TERMINAL_AND_OPERATOR_ENDPOINT_EVIDENCE"
+  ],
+  "completedActionIds": [
+    "airport:nagasaki:current-terminal-existing-licensed-endpoints"
+  ],
+  "facts": [
+    {
+      "factId": "nagasaki-airport-public-facility-to-existing-gtfs-886625_04",
+      "kind": "transfer",
+      "sourceActionId": "airport:nagasaki:current-terminal-existing-licensed-endpoints",
+      "sourceUrl": "https://nagasaki-airport.jp/access/bus/images/img02.jpg",
+      "observedResponseSha256": "a868cc78e69231882870875af5de2c9beddece9294b22fd6ef15c91759eba43c",
+      "corroboratingEvidence": [
+        {
+          "url": "https://nagasaki-airport.jp/shop/floor/1f/",
+          "observedResponseSha256": "c06f60bf5c4ef2126c188dad8733ddee092b750fcf0ec3a5a58809a6a26e193c"
+        },
+        {
+          "url": "https://nagasaki-airport.jp/access/guide/",
+          "observedResponseSha256": "1029ae2d7c12ebdaa97d4c973692240b5f9804eb9e911e97960419e27a6fc259"
+        },
+        {
+          "url": "https://www.keneibus.jp/cellular/limousine/nagasaki/index.html",
+          "observedResponseSha256": "528e2f8e601072d5b1d168f13d17ca0cb72f3e9f1f992821403ff7d790b85e2d"
+        }
+      ],
+      "locator": "The current airport terminal/boarding diagram explicitly depicts public terminal exits opening onto the forecourt and separately labels departure bay 4 (Showamachi/Urakami) and bay 5 (limousine Nagasaki station). The current operator service page corroborates those exact departure components. Bind the independently licensed exact GTFS 886625_04 to the C28 whole-airport facility through the depicted public frontage. Preserve provider platform metadata and pickup/drop restrictions; do not merge the points, use a spatial-only edge or infer live platform, walking time or accessibility.",
+      "components": [
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The current airport terminal/boarding diagram explicitly depicts public terminal exits opening onto the forecourt and separately labels departure bay 4 (Showamachi/Urakami) and bay 5 (limousine Nagasaki station). The current operator service page corroborates those exact departure components. Bind the independently licensed exact GTFS 886625_04 to the C28 whole-airport facility through the depicted public frontage. Preserve provider platform metadata and pickup/drop restrictions; do not merge the points, use a spatial-only edge or infer live platform, walking time or accessibility."
+          }
+        },
+        {
+          "name": "長崎空港",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:20",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "886625_04",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "3cdd088b68158f5f8e7a4869de26869d7fcc33793252c519c961a60de267af90",
+            "expectedPlatformCode": "4",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current airport terminal/boarding diagram explicitly depicts public terminal exits opening onto the forecourt and separately labels departure bay 4 (Showamachi/Urakami) and bay 5 (limousine Nagasaki station). The current operator service page corroborates those exact departure components. Bind the independently licensed exact GTFS 886625_04 to the C28 whole-airport facility through the depicted public frontage. Preserve provider platform metadata and pickup/drop restrictions; do not merge the points, use a spatial-only edge or infer live platform, walking time or accessibility."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_TERMINAL_FRONTAGE_AND_EXACT_GTFS_BOARDING_POINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nagasaki-airport-public-facility-to-existing-gtfs-886625_05",
+      "kind": "transfer",
+      "sourceActionId": "airport:nagasaki:current-terminal-existing-licensed-endpoints",
+      "sourceUrl": "https://nagasaki-airport.jp/access/bus/images/img02.jpg",
+      "observedResponseSha256": "a868cc78e69231882870875af5de2c9beddece9294b22fd6ef15c91759eba43c",
+      "corroboratingEvidence": [
+        {
+          "url": "https://nagasaki-airport.jp/shop/floor/1f/",
+          "observedResponseSha256": "c06f60bf5c4ef2126c188dad8733ddee092b750fcf0ec3a5a58809a6a26e193c"
+        },
+        {
+          "url": "https://nagasaki-airport.jp/access/guide/",
+          "observedResponseSha256": "1029ae2d7c12ebdaa97d4c973692240b5f9804eb9e911e97960419e27a6fc259"
+        },
+        {
+          "url": "https://www.keneibus.jp/cellular/limousine/nagasaki/index.html",
+          "observedResponseSha256": "528e2f8e601072d5b1d168f13d17ca0cb72f3e9f1f992821403ff7d790b85e2d"
+        }
+      ],
+      "locator": "The current airport terminal/boarding diagram explicitly depicts public terminal exits opening onto the forecourt and separately labels departure bay 4 (Showamachi/Urakami) and bay 5 (limousine Nagasaki station). The current operator service page corroborates those exact departure components. Bind the independently licensed exact GTFS 886625_05 to the C28 whole-airport facility through the depicted public frontage. Preserve provider platform metadata and pickup/drop restrictions; do not merge the points, use a spatial-only edge or infer live platform, walking time or accessibility.",
+      "components": [
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The current airport terminal/boarding diagram explicitly depicts public terminal exits opening onto the forecourt and separately labels departure bay 4 (Showamachi/Urakami) and bay 5 (limousine Nagasaki station). The current operator service page corroborates those exact departure components. Bind the independently licensed exact GTFS 886625_05 to the C28 whole-airport facility through the depicted public frontage. Preserve provider platform metadata and pickup/drop restrictions; do not merge the points, use a spatial-only edge or infer live platform, walking time or accessibility."
+          }
+        },
+        {
+          "name": "長崎空港",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:20",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "886625_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "ba3a395b57ba07097f6ffee450c2f916bd2988fadaa41e0859314d886c2ddb20",
+            "expectedPlatformCode": "5",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current airport terminal/boarding diagram explicitly depicts public terminal exits opening onto the forecourt and separately labels departure bay 4 (Showamachi/Urakami) and bay 5 (limousine Nagasaki station). The current operator service page corroborates those exact departure components. Bind the independently licensed exact GTFS 886625_05 to the C28 whole-airport facility through the depicted public frontage. Preserve provider platform metadata and pickup/drop restrictions; do not merge the points, use a spatial-only edge or infer live platform, walking time or accessibility."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_TERMINAL_FRONTAGE_AND_EXACT_GTFS_BOARDING_POINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nagasaki-airport-public-facility-to-existing-gtfs-886625_06",
+      "kind": "transfer",
+      "sourceActionId": "airport:nagasaki:current-terminal-existing-licensed-endpoints",
+      "sourceUrl": "https://nagasaki-airport.jp/access/bus/images/img02.jpg",
+      "observedResponseSha256": "a868cc78e69231882870875af5de2c9beddece9294b22fd6ef15c91759eba43c",
+      "corroboratingEvidence": [
+        {
+          "url": "https://nagasaki-airport.jp/shop/floor/1f/",
+          "observedResponseSha256": "c06f60bf5c4ef2126c188dad8733ddee092b750fcf0ec3a5a58809a6a26e193c"
+        },
+        {
+          "url": "https://nagasaki-airport.jp/access/guide/",
+          "observedResponseSha256": "1029ae2d7c12ebdaa97d4c973692240b5f9804eb9e911e97960419e27a6fc259"
+        },
+        {
+          "url": "https://www.keneibus.jp/cellular/limousine/nagasaki/index.html",
+          "observedResponseSha256": "528e2f8e601072d5b1d168f13d17ca0cb72f3e9f1f992821403ff7d790b85e2d"
+        }
+      ],
+      "locator": "The bus operator current airport-route page independently confirms the inbound Nagasaki Airport passenger endpoint; the retained licensed GTFS exact arrival-only point 886625_06 belongs to that operator airport service. Bind that point to the whole independently identified C28 passenger-airport gateway, supported by the current airport public terminal/forecourt diagrams. This is facility-level terminal access, not an asserted exact curb or entrance location. The raw blank platform remains blank; public bay 6 on the airport diagram is taxi and is NOT raw stop _06. No distance/name match creates this relation, and no walking time, live dropoff location or accessibility guarantee is asserted.",
+      "components": [
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The bus operator current airport-route page independently confirms the inbound Nagasaki Airport passenger endpoint; the retained licensed GTFS exact arrival-only point 886625_06 belongs to that operator airport service. Bind that point to the whole independently identified C28 passenger-airport gateway, supported by the current airport public terminal/forecourt diagrams. This is facility-level terminal access, not an asserted exact curb or entrance location. The raw blank platform remains blank; public bay 6 on the airport diagram is taxi and is NOT raw stop _06. No distance/name match creates this relation, and no walking time, live dropoff location or accessibility guarantee is asserted."
+          }
+        },
+        {
+          "name": "長崎空港",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:20",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "886625_06",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "3b12b4ef02c1d07d1b4d9f29b7b02a897f25f88cbbc872671d34413a2c78702c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The bus operator current airport-route page independently confirms the inbound Nagasaki Airport passenger endpoint; the retained licensed GTFS exact arrival-only point 886625_06 belongs to that operator airport service. Bind that point to the whole independently identified C28 passenger-airport gateway, supported by the current airport public terminal/forecourt diagrams. This is facility-level terminal access, not an asserted exact curb or entrance location. The raw blank platform remains blank; public bay 6 on the airport diagram is taxi and is NOT raw stop _06. No distance/name match creates this relation, and no walking time, live dropoff location or accessibility guarantee is asserted."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_ARRIVAL_ENDPOINT_AND_WHOLE_PUBLIC_TERMINAL_GATEWAY",
+      "hubScopeComplete": false
+    }
+  ]
+}

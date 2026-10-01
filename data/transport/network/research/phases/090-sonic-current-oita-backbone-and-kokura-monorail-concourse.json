@@ -1,0 +1,340 @@
+{
+  "phaseId": "090-sonic-current-oita-backbone-and-kokura-monorail-concourse",
+  "strategy": [
+    "JR_KYUSHU_EXACT_CURRENT_SONIC_CALLS",
+    "KOKURA_INDEPENDENT_COMMON_CONCOURSE_REVIEW",
+    "CLOSE_OITA_T1_AIRPORT_BACKBONE_PREREQUISITE"
+  ],
+  "completedActionIds": [
+    "rail:jr-kyushu:sonic-current-oita-backbone"
+  ],
+  "facts": [
+    {
+      "factId": "sonic-3003M-current-kokura-oita-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:sonic-current-oita-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001",
+      "observedResponseSha256": "cb8f2984c3955d86d5f6a5acd6ee5e343caaabc2f66e55e8ddf1cdd05bccb7fd",
+      "corroboratingEvidence": [
+        {
+          "url": "https://timetable.jr-odekake.net/station-timetable/4102120002?date=20261001",
+          "observedResponseSha256": "ec4c1de5094ff82d75ffd9fe86b500a54cce0e1984b64bbc5ffff2ebfe66ae42"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2024/05/07/kokuraeki_kounaizu_2024.5.7.pdf",
+          "observedResponseSha256": "9747879b5872aa26bd287734d6a4a83e114bd9263379abe72fa1fef022535c89"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191572_1601.html",
+          "observedResponseSha256": "ad9d25253bea07c1df466f8c95034b6b3d7fad70a4ef1c52ae72b08bdcc88e42"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/english/train/sonic.html",
+          "observedResponseSha256": "fce0630da18a067958fb75282ca54ad7885cce79131e0901ca9fceab028b6051"
+        }
+      ],
+      "locator": "Exact current 3003M / ソニック3号 independently resolved from the 20261001 station page and verified against actual calling rows. Preserve the complete reviewed parent calling names, then generate only the contiguous Kokura–Oita section; no passing rows, clocks, live platform or invented reverse. The published 柳ケ浦 spelling is independently bound to exact S12 009103 柳ヶ浦 / JR Kyushu / Nippo Line; no broad fuzzy match is used. Kokura is one existing physical JR Kyushu component containing independently checked S12 Kagoshima 008683 and Nippo 008684 records. Its current-linked station diagram depicts all conventional platforms sharing one paid concourse, supporting reuse of that component and no self-transfer. No raw copyrighted timetable/map is retained.",
+      "line": "ソニック・小倉大分区間",
+      "operator": "九州旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急ソニック",
+      "direction": "outbound",
+      "parentCallingStations": [
+        "博多",
+        "香椎",
+        "福間",
+        "赤間",
+        "折尾",
+        "黒崎",
+        "小倉",
+        "行橋",
+        "宇島",
+        "中津",
+        "柳ケ浦",
+        "宇佐",
+        "杵築",
+        "別府",
+        "大分"
+      ],
+      "sectionStartIndex": 6,
+      "callingStations": [
+        "小倉",
+        "行橋",
+        "宇島",
+        "中津",
+        "柳ケ浦",
+        "宇佐",
+        "杵築",
+        "別府",
+        "大分"
+      ],
+      "callingComponents": [
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "行橋",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇島",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "中津",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "柳ヶ浦",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "柳ケ浦",
+            "stationCode": "009103"
+          }
+        },
+        {
+          "name": "宇佐",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "杵築",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "別府",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "reviewedNameCorrespondences": [
+        {
+          "publishedName": "柳ケ浦",
+          "canonicalName": "柳ヶ浦",
+          "stationCode": "009103",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "method": "EXPLICIT_REVIEWED_SMALL_KANA_VARIANT_SAME_EXACT_OPERATOR_LINE_RECORD"
+        }
+      ],
+      "samePhysicalOperatorComponentReview": {
+        "name": "小倉",
+        "operator": "九州旅客鉄道",
+        "stationCodes": [
+          "008683",
+          "008684"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_LINKED_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    },
+    {
+      "factId": "sonic-3006M-current-kokura-oita-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:sonic-current-oita-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001",
+      "observedResponseSha256": "eb6a94ea1b6393ae841bafbc9a7c8a07e1c7c56c60a797678522f19319bed59e",
+      "corroboratingEvidence": [
+        {
+          "url": "https://timetable.jr-odekake.net/station-timetable/4084120001?date=20261001",
+          "observedResponseSha256": "71c6f9ca9c567969334ddaddcd3e2efcd189d4083174337d79b9bdfa5ade1fa0"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2024/05/07/kokuraeki_kounaizu_2024.5.7.pdf",
+          "observedResponseSha256": "9747879b5872aa26bd287734d6a4a83e114bd9263379abe72fa1fef022535c89"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191572_1601.html",
+          "observedResponseSha256": "ad9d25253bea07c1df466f8c95034b6b3d7fad70a4ef1c52ae72b08bdcc88e42"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/english/train/sonic.html",
+          "observedResponseSha256": "fce0630da18a067958fb75282ca54ad7885cce79131e0901ca9fceab028b6051"
+        }
+      ],
+      "locator": "Exact current 3006M / ソニック6号 independently resolved from the 20261001 station page and verified against actual calling rows. Preserve the complete reviewed parent calling names, then generate only the contiguous Kokura–Oita section; no passing rows, clocks, live platform or invented reverse. The published 柳ケ浦 spelling is independently bound to exact S12 009103 柳ヶ浦 / JR Kyushu / Nippo Line; no broad fuzzy match is used. Kokura is one existing physical JR Kyushu component containing independently checked S12 Kagoshima 008683 and Nippo 008684 records. Its current-linked station diagram depicts all conventional platforms sharing one paid concourse, supporting reuse of that component and no self-transfer. No raw copyrighted timetable/map is retained.",
+      "line": "ソニック・小倉大分区間",
+      "operator": "九州旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急ソニック",
+      "direction": "inbound",
+      "parentCallingStations": [
+        "大分",
+        "別府",
+        "杵築",
+        "宇佐",
+        "柳ケ浦",
+        "中津",
+        "宇島",
+        "行橋",
+        "小倉",
+        "黒崎",
+        "折尾",
+        "赤間",
+        "福間",
+        "博多"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "大分",
+        "別府",
+        "杵築",
+        "宇佐",
+        "柳ケ浦",
+        "中津",
+        "宇島",
+        "行橋",
+        "小倉"
+      ],
+      "callingComponents": [
+        {
+          "name": "大分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "別府",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "杵築",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇佐",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "柳ヶ浦",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "柳ケ浦",
+            "stationCode": "009103"
+          }
+        },
+        {
+          "name": "中津",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇島",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "行橋",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "reviewedNameCorrespondences": [
+        {
+          "publishedName": "柳ケ浦",
+          "canonicalName": "柳ヶ浦",
+          "stationCode": "009103",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "method": "EXPLICIT_REVIEWED_SMALL_KANA_VARIANT_SAME_EXACT_OPERATOR_LINE_RECORD"
+        }
+      ],
+      "samePhysicalOperatorComponentReview": {
+        "name": "小倉",
+        "operator": "九州旅客鉄道",
+        "stationCodes": [
+          "008683",
+          "008684"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_LINKED_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    },
+    {
+      "factId": "kokura-jr-monorail-public-common-concourse",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-kyushu:sonic-current-oita-backbone",
+      "sourceUrl": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2024/05/07/kokuraeki_kounaizu_2024.5.7.pdf",
+      "observedResponseSha256": "9747879b5872aa26bd287734d6a4a83e114bd9263379abe72fa1fef022535c89",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191572_1601.html",
+          "observedResponseSha256": "ad9d25253bea07c1df466f8c95034b6b3d7fad70a4ef1c52ae72b08bdcc88e42"
+        }
+      ],
+      "locator": "The correct current JR Kyushu Kokura station page links this 2024-03 layout. It explicitly depicts the monorail ticket gate and platforms on the same public station concourse between the Shinkansen/north and Kokura Castle/south exits, with JR conventional gates opening onto that public space. Independently bind the S12 Kitakyushu monorail Kokura Line station 008685 to the existing JR Kyushu conventional component via those physical gates and public concourse. This is a walking transfer between separate operator components, not same-name collapse or proximity inference; no walking duration, live platform, timetable or accessibility guarantee.",
+      "components": [
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小倉",
+          "operator": "北九州高速鉄道",
+          "line": "小倉線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_OPERATOR_GATES_AND_PUBLIC_CONCOURSE",
+      "hubScopeComplete": false
+    }
+  ]
+}

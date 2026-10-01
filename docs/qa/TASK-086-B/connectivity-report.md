@@ -2,20 +2,20 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-| Measure | Preserved checkpoint 1236238c8 | Current phase 82 |
+| Measure | Preserved checkpoint 1236238c8 | Current phase 93 |
 | --- | ---: | ---: |
-| Required inventory | 1038 | 2691 |
-| ADMIT / HOLD | 327 / 711 | 2607 / 84 |
-| Lines / service patterns | 9 / 63 | 172 / 403 |
-| Directed edges | 1339 | 6570 |
-| Batches | 88 | 607 |
-| Adaptive iterations | 10 | 82 |
+| Required inventory | 1038 | 2845 |
+| ADMIT / HOLD | 327 / 711 | 2768 / 77 |
+| Lines / service patterns | 9 / 63 | 182 / 419 |
+| Directed edges | 1339 | 6828 |
+| Batches | 88 | 653 |
+| Adaptive iterations | 10 | 93 |
 | Connected T0 | 0 / 89 | 89 / 89 |
-| Connected T1 | 0 / 462 | 433 / 462 |
-| Connected required nodes | 0 / 1038 | 2362 / 2691 |
+| Connected T1 | 0 / 462 | 440 / 462 |
+| Connected required nodes | 0 / 1038 | 2509 / 2845 |
 | Mandatory corridors | 0 / 9 | 9 / 9 |
 
-Independent component review has converted **627 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
+Independent component review has converted **634 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
 
 ## Mandatory graph queries
 
@@ -37,33 +37,33 @@ Queries require independently evidenced forward and reverse paths. Previously ab
 
 | Mode | Directed edges |
 | --- | ---: |
-| airport_bus | 138 |
-| conventional_rail | 1513 |
+| airport_bus | 163 |
+| conventional_rail | 1585 |
 | ferry | 11 |
 | fixed_guideway | 56 |
 | flight | 2 |
 | highway_bus | 1059 |
-| local_bus | 156 |
+| local_bus | 257 |
 | metro | 1112 |
 | private_rail | 1719 |
 | shinkansen | 289 |
-| transfer | 515 |
+| transfer | 575 |
 
-Original hub scopes: 100 complete, 118 pending or partial. A hub is complete only when every expected component is independently admitted and mutually reachable using reviewed transfer edges inside that hub. New boundary/interchange nodes outside the original 218 scopes are separately evidenced; no same-name or S12 group-code transfer is synthesized.
+Original hub scopes: 111 complete, 107 pending or partial. A hub is complete only when every expected component is independently admitted and mutually reachable using reviewed transfer edges inside that hub. New boundary/interchange nodes outside the original 218 scopes are separately evidenced; no same-name or S12 group-code transfer is synthesized.
 
 ## Remaining hard deficits
 
 | Class | Count |
 | --- | ---: |
 | AIRPORT_SURFACE_GAP | 75 |
-| CORRIDOR_UNREACHABLE | 370 |
+| CORRIDOR_UNREACHABLE | 372 |
 | DISCONNECTED_T0 | 0 |
-| DISCONNECTED_T1 | 29 |
+| DISCONNECTED_T1 | 22 |
 | HIGHWAY_BUS_GAP | 1 |
-| HUB_TRANSFER_GAP | 118 |
+| HUB_TRANSFER_GAP | 107 |
 | ISLAND_FERRY_GAP | 7 |
-| MISSING_INTERMEDIATE_NODE | 300 |
-| NODE_IDENTITY_GAP | 84 |
+| MISSING_INTERMEDIATE_NODE | 314 |
+| NODE_IDENTITY_GAP | 77 |
 | SERVICE_PATTERN_GAP | 2 |
 | SOURCE_LICENSE_GAP | 1 |
 | TOURISM_SPECIAL_MODE_GAP | 1 |
