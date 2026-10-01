@@ -1,0 +1,301 @@
+{
+  "phaseId": "022-hokkaido-hokuto-gateway",
+  "strategy": [
+    "JR_HOKKAIDO_BASE_PATTERN_EXCEPTION_REVIEW",
+    "FEBRUARY_2026_GATEWAY_MAP",
+    "rail"
+  ],
+  "facts": [
+    {
+      "kind": "service",
+      "sourceActionId": "rail:jr-hokkaido",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/global/english/train/guide/hakodate.html",
+      "line": "函館・室蘭・千歳線",
+      "operator": "北海道旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "北斗（基本停車パターン）",
+      "serviceState": "active",
+      "serviceStateScope": "OFFICIAL_MARCH_2026_SERVICE_GUIDE_NOT_REALTIME",
+      "excludedTrainNumbers": ["2", "4", "21"],
+      "locator": "Official Hokuto Stops diagram and its numbered exceptions: base pattern excludes trains 2, 4 and 21; those exceptions are not combined into a synthetic pattern. Bidirectional Sapporo-Hakodate service family, no timetable values retained.",
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_BASE_PATTERN_WITH_EXPLICIT_EXCEPTION_EXCLUSION",
+      "factId": "hokuto-base-southbound",
+      "direction": "southbound",
+      "callingStations": [
+        "札幌",
+        "新札幌",
+        "南千歳",
+        "苫小牧",
+        "白老",
+        "登別",
+        "東室蘭",
+        "伊達紋別",
+        "洞爺",
+        "長万部",
+        "八雲",
+        "森",
+        "大沼公園",
+        "新函館北斗",
+        "五稜郭",
+        "函館"
+      ],
+      "callingComponents": [
+        {
+          "name": "札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "千歳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南千歳",
+          "operator": "北海道旅客鉄道",
+          "line": "千歳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "苫小牧",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "白老",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "登別",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東室蘭",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊達紋別",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "洞爺",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長万部",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八雲",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "森",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大沼公園",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新函館北斗",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "五稜郭",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "函館",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "kind": "service",
+      "sourceActionId": "rail:jr-hokkaido",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/global/english/train/guide/hakodate.html",
+      "line": "函館・室蘭・千歳線",
+      "operator": "北海道旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "北斗（基本停車パターン）",
+      "serviceState": "active",
+      "serviceStateScope": "OFFICIAL_MARCH_2026_SERVICE_GUIDE_NOT_REALTIME",
+      "excludedTrainNumbers": ["2", "4", "21"],
+      "locator": "Official Hokuto Stops diagram and its numbered exceptions: base pattern excludes trains 2, 4 and 21; those exceptions are not combined into a synthetic pattern. Bidirectional Sapporo-Hakodate service family, no timetable values retained.",
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_BASE_PATTERN_WITH_EXPLICIT_EXCEPTION_EXCLUSION",
+      "factId": "hokuto-base-northbound",
+      "direction": "northbound",
+      "callingStations": [
+        "函館",
+        "五稜郭",
+        "新函館北斗",
+        "大沼公園",
+        "森",
+        "八雲",
+        "長万部",
+        "洞爺",
+        "伊達紋別",
+        "東室蘭",
+        "登別",
+        "白老",
+        "苫小牧",
+        "南千歳",
+        "新札幌",
+        "札幌"
+      ],
+      "callingComponents": [
+        {
+          "name": "函館",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "五稜郭",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新函館北斗",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大沼公園",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "森",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八雲",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長万部",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "洞爺",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊達紋別",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東室蘭",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "登別",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "白老",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "苫小牧",
+          "operator": "北海道旅客鉄道",
+          "line": "室蘭線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南千歳",
+          "operator": "北海道旅客鉄道",
+          "line": "千歳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "千歳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "shinhakodate-shinkansen-conventional-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-hokkaido",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/network/station/images/9643.jpg",
+      "locator": "February 2026 official station plan: Shinkansen platforms 11/12 and conventional platforms 1-4 connect through station concourse/gates; both passenger directions reviewed.",
+      "components": [
+        {
+          "name": "新函館北斗",
+          "operator": "北海道旅客鉄道",
+          "line": "北海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新函館北斗",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_PLATFORM_CONCOURSE_AND_TRANSFER_GATES"
+    }
+  ],
+  "completedActionIds": ["rail:jr-hokkaido"]
+}

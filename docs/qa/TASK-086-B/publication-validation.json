@@ -1,100 +1,85 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-01T04:41:21.220873+00:00",
-  "taskAcceptanceStatus": "BLOCKED_NATIONAL_SOURCE_IDENTITY_COVERAGE",
+  "recordedAt": "2026-10-01T06:23:39.268107+00:00",
+  "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
+  "terminal": false,
   "baseDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+  "validationParentHead": "82536f92514fdc3a3b71ec25f3498cc5100e4c56",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "manifestSha256": "0c0b3e2fec204a3dca6e32c799e44dbc014488859c9416efb08794a97b8a2bf8",
+  "manifestSha256": "af40e765afec3ea58655b0a1afcc6a15a7352c0ca2f516eaea9c11070014ce7f",
   "focused": {
     "status": "PASS",
-    "command": "node --test tests/task-086-b-mobility-backbone.test.mjs",
-    "tests": 37,
-    "pass": 37,
+    "tests": 49,
+    "pass": 49,
     "fail": 0,
-    "cancelled": 0,
-    "skipped": 0,
-    "logPath": ".cache/task-086/focused-final.log",
-    "logSha256": "2da7e810b88fb75374a69afc420dfaf01adf920ac117837ea231e92ab112b62a"
+    "logPath": ".cache/task-086/focused-checkpoint.log",
+    "logSha256": "ce6f2d2cca4f2ee989f4ae13d9152d4bff5ad2921cb614d1f682a6e8c1d93b0a"
   },
   "fullRegression": {
     "status": "PASS",
-    "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=1 \"tests/*.test.mjs\"",
-    "tests": 2867,
-    "pass": 2867,
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
+    "tests": 2879,
+    "pass": 2879,
     "fail": 0,
     "cancelled": 0,
     "skipped": 0,
-    "logPath": ".cache/task-086/full-regression-publication.log",
-    "logSha256": "412cddbf40912351b10ec13c3441bcaab36269719cf10e05ba564abd6c900166"
+    "logPath": ".cache/task-086/full-tests-24-limited.log",
+    "logSha256": "26ad847fea56df40585b30ba46b1a2750d9a514f9ff171dc4b358d023a7bd045"
   },
-  "deterministicRebuild": {
-    "status": "PASS",
-    "evidence": "docs/qa/TASK-086-B/deterministic-rebuild.json",
-    "rawExtraction": "PASS",
-    "twoFullRebuilds": "PASS",
-    "resumeChecksumSkipBatches": 88
-  },
+  "deterministicRebuildReceiptSha256": "30f08893b0ab15abde16ad6bce6a61a44df064d93e1c4b5b2d633c8384d36ee8",
   "checks": [
     {
       "command": "npm run lint",
       "status": "PASS",
-      "logSha256": "fd7d6bd55b64d4512966f172918154baff18447ea3eebc20a6094d6bffdc3269",
-      "notes": "0 errors; 10 existing warnings"
+      "notes": "0 errors; 10 pre-existing warnings",
+      "logPath": ".cache/task-086/lint-24-final.log",
+      "logSha256": "fd7d6bd55b64d4512966f172918154baff18447ea3eebc20a6094d6bffdc3269"
     },
     {
       "command": "npm run typecheck",
       "status": "PASS",
-      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
-      "notes": null
+      "notes": "Next type generation and TypeScript passed",
+      "logPath": ".cache/task-086/typecheck-24.log",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
     },
     {
       "command": "npm run format:check:deploy",
       "status": "PASS",
-      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
-      "notes": null
+      "notes": "All matched files use Prettier style",
+      "logPath": ".cache/task-086/format-24.log",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
     },
     {
       "command": "npm run deploy:build:local",
       "status": "PASS",
-      "logSha256": "525b163ec2d61dbfd89739aaa814879c9d23ed2225ae94c848827740a14f5897",
-      "notes": "Standalone artifact audit: 1908 files"
+      "notes": "Standalone artifact audit passed; 1908 files; parent HEAD recorded because validation preceded checkpoint commit",
+      "logPath": ".cache/task-086/build-24.log",
+      "logSha256": "53afe7d7136002c2158f9df912e2b7e967fb68d50127f1fb8a7afa5852babe94"
     },
     {
       "command": "npm run deploy:verify-artifact",
       "status": "PASS",
-      "logSha256": "f6ea6fcb244b99be5fadb761a566215541822775be278fc88fca27446b3455e1",
-      "notes": "Standalone artifact audit: 1908 files"
+      "notes": "1908 files; no failures",
+      "logPath": ".cache/task-086/artifact-24.log",
+      "logSha256": "dd2f08b46702891d53c99c5dac191720ef5c0335da4005ea90bdaa63a6b9ccba"
     }
   ],
   "earlierRunDisclosure": {
     "initial": {
-      "tests": 2861,
-      "pass": 2860,
+      "tests": 2879,
+      "pass": 2878,
       "fail": 1,
-      "cancelled": 0,
-      "skipped": 0,
-      "logPath": ".cache/task-086/full-regression.log",
-      "logSha256": "a75c5e091bdaf7539fac34dd9c3a8d889709b44ed1781502ba865f4ff4520e92"
+      "logPath": ".cache/task-086/full-tests-24.log",
+      "logSha256": "e5953645a04d77deb24e552d5b2968e1d6e941270e8017e1c9ebbae67a993414"
     },
-    "failure": "Existing tests/task-013-1-asset-variants.test.mjs nightly --dry-run subprocess reached its unchanged 30-second timeout while independent build/lint were also running.",
-    "isolatedRetry": {
-      "status": "PASS",
-      "logSha256": "42da0d18993c4594fded3f1e172f1979c2399994ccdd762aa5a11ec446f121af"
-    },
-    "secondFullRun": {
-      "tests": 2862,
-      "pass": 2862,
-      "fail": 0,
-      "cancelled": 0,
-      "skipped": 0,
-      "logPath": ".cache/task-086/full-regression-final.log",
-      "logSha256": "eb6c4a38c9aa0c7ce3b14a377d63fd49d36f4065d8d3a10306612b1be25f3134"
-    },
+    "failure": "Existing TASK-013 nightly --dry-run subprocess reached its unchanged 30-second timeout during unrestricted parallel test execution.",
+    "secondFullRun": "PASS with test-concurrency=2; no assertion or timeout changed",
     "testThresholdsChanged": false
   },
   "exactHeadQualityGate": {
+    "status": "PENDING_CHECKPOINT_COMMIT",
     "resultLocation": "https://github.com/kanzakimy0/TravelAssist/pull/466",
-    "publicationRule": "After committing, dispatch quality-gate.yml on the execution branch, verify run.headSha equals the final head, and record run URL/result in the Draft PR description and final report. This pre-commit receipt does not claim CI success."
+    "publicationRule": "Dispatch quality-gate.yml on the existing branch after commit; require run.headSha to match the committed checkpoint. A checkpoint CI success does not close ordinary remediation."
   },
   "wbs716": "进行中",
   "mergePerformed": false,
@@ -102,10 +87,16 @@
   "validationImplementationHashes": {
     "tools/transport/task-086-batches.mjs": "196d7dee00b83db75b67393aaec420829077ec7865783c161686f8c3b44c2ca9",
     "tools/transport/task-086-extract-gtfs.py": "1f20a1b18e2bd8ba23928e01c6c8f4f1faa09f2c3a5adee45f63765786529fa6",
-    "tools/transport/task-086-model.mjs": "82a6870821556d83c2b043526ba4074d507e90e2c119a06f6b88ae333ffdb692",
-    "tools/transport/task-086-run.mjs": "654fca8529dc1adaa8be06993510f8b49bdab3afc05ca3fb13b80aa436252d31",
-    "tools/transport/task-086-verify.mjs": "4ec5713cf1f612bfa7ebb6b0827cef416656436a3455a1c5798e7074de823f2c",
-    "tests/task-086-b-mobility-backbone.test.mjs": "8d16f3061cebef7eb8b14c0cb3c32f56e2a6aae38fefbb3f670bde107fd92ce8",
+    "tools/transport/task-086-extract-identities.py": "00dc89c2971be20c61010857e0106614d8cb15c8262297f26da7da8ed1827988",
+    "tools/transport/task-086-extract-jreast.py": "950f9fe58488f0325cfde273b94a91cbc9282f073a0f72137764365a3c36e113",
+    "tools/transport/task-086-model.mjs": "acfa71974453894b5b54192804250f924334535cb9883a74961564442ab8a4bd",
+    "tools/transport/task-086-remediate.mjs": "58d1208e0a1d37dd4a3b672bb3651ddfe60e257c7338a8654d0002b6e3ff9ab7",
+    "tools/transport/task-086-run.mjs": "b3ef0b99275f053ca291fdc2b7b150e7817a65cb64efa9a98952cf4cf06959e8",
+    "tools/transport/task-086-source-actions.mjs": "731968baf0414421612d2f0c9759223ec3392625b39ba290e9b75f0cd01c4486",
+    "tools/transport/task-086-verify.mjs": "2ad6a274bf7f1cf016fe575761fcb31eed3d96051bb96f8c894087852c724e58",
+    "tests/task-086-b-autonomous-remediation.test.mjs": "adabf3b0b95aeed043ec2a421b1767fde78b725c382f3c4c84b9c66d45cbfb73",
+    "tests/task-086-b-mobility-backbone.test.mjs": "6a9e3c25230c3fa7a4096d15480733737509050cfb183df89087d188a790eb8b",
     "tests/task-086-b-rebuild.test.mjs": "f3875f8f11f77a4daaa7dcf177e0fea7f541c2df96afbb5527a0475802436e9b"
-  }
+  },
+  "lineEndingVerification": "Python generators normalized to LF before deterministic rebuild and staging; executable logic unchanged."
 }

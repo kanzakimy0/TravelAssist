@@ -1,32 +1,36 @@
-# RESULT — TASK-086-B TransportNode mobility backbone
+# TASK-086-B execution checkpoint — national mobility backbone
 
-**BLOCKED_NATIONAL_SOURCE_IDENTITY_COVERAGE**. The requested national mobility backbone is not complete. No audited fixpoint is claimed and WBS 7.16 remains **进行中**.
+**IN_PROGRESS_AUTO_REMEDIATION**. This document replaces the invalid early-stop wording at checkpoint `1236238c89e83088e0454d16c6eb86050e8f935c`. It is not a terminal result. The [mandatory amendment](AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md) requires continued acquisition, review, admission and replay while ordinary work remains.
 
-Base develop: `5123966f62dbe9587a3bbe38e877ccf3ea959b80`. Task commit: `f3e0c696a20b34c4e9dd6d2021cb046eeab8ceff`. Branch: `feature/b-transport-node-mobility-backbone`. Existing [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466) remains Draft; no merge or auto-merge. Final head and exact-head Quality Gate are reported with publication evidence, avoiding a self-referential commit hash in this file.
+Branch: `feature/b-transport-node-mobility-backbone`. Existing [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466), base `develop`. No merge or auto-merge. WBS 7.16 remains **进行中**.
 
-## Produced and verified scope
+| Measure                  | Preserved checkpoint 1236238c8 | Current phase 24 |
+| ------------------------ | -----------------------------: | ---------------: |
+| Required inventory       |                           1038 |             1135 |
+| ADMIT / HOLD             |                      327 / 711 |        571 / 564 |
+| Lines / service patterns |                         9 / 63 |         25 / 109 |
+| Directed edges           |                           1339 |             1922 |
+| Batches                  |                             88 |              145 |
+| Adaptive iterations      |                             10 |               24 |
+| Connected T0             |                         0 / 89 |          10 / 89 |
+| Connected T1             |                        0 / 462 |         32 / 462 |
+| Connected required nodes |                       0 / 1038 |       244 / 1135 |
+| Mandatory corridors      |                          0 / 9 |            9 / 9 |
 
-- Offline task-owned model, independent deterministic node admission, exact service calling sequences, directed edges, official transfers, source-bound metrics and graph-derived QA.
-- 327 admitted / 711 HOLD / 0 rejected. All admitted identities are independently derived from licensed GTFS; no rejected 084 v1 identity or unreviewed v2 bulk promotion is used.
-- Required inventory: 1038 entries, including protected national discovery obligations. T0 89, T1 462, other 487. Admitted T0/T1 count is zero; the proposed national tiers are explicitly held.
-- 9 lines, 63 service patterns, 1339 directed edges: 1,314 service segments, 25 transfers, zero direct shortcuts. Modes: highway bus 1,059; tourism/local bus 156; airport bus 88; ferry 11; transfer 25. No real rail/flight/special-mode edge is claimed from synthetic tests.
-- 88 deterministic batches, capped at 200 edges; source/node/pattern inputs, QA receipts, corruption detection, resume/skip, changed-source invalidation and explicit single-batch rerun.
-- 10 adaptive replay iterations, with every parameter change, source fingerprint and deficit delta recorded. National T0/T1 deltas remain zero; this is not convergence.
+Independent component review has converted **147 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
 
-## Hard topology failures
+## Executed remediation
 
-T0 **0/89**, T1 **0/462**, all national required connected **0/1038**. Mandatory named corridors **0/9**, all graph-derived corridor queries **22/1109**. Explicit GTFS transfer topology **25/25**; held v2 multi-component hub reviews **218**. Airport surface, national ferry/island connection, national highway/tourism bus coverage, special tourism modes and Shinkansen/major rail continuity do not pass.
+15 source actions have actual acquisition attempts, with 77 recorded source/terms responses. Operator evidence now covers JR Central, JR West, JR Kyushu, JR East, JR Hokkaido and Fujikyu. MLIT S12 supplies independently re-extracted station-code/operator/line/coordinate identities. Original GTFS bus and ferry topology is preserved.
 
-The reviewed nationwide options do not yet provide an admitted identity/service/rights package. Additional ordinary discovery and component review remain. The machine result therefore has `globalTopologyDiscoveryFixpoint=NOT_PROVEN`, zero validated exceptions and an empty `fixpoint-proofs.jsonl`. The next-source-action ledger makes the remaining acquisition work concrete. No fixpoint exception table is offered for acceptance because there are no proved exceptions.
+Official train columns or service-specific stopping diagrams establish directed calls. Company-boundary concourses and explicit station gates establish physical transfers. Full operator timetables, prose and map artwork are not distributed; only reviewed minimal static facts and response fingerprints are retained. MLIT and the two original CC BY 4.0 GTFS archives retain their licensed raw data.
 
-## Dynamic metrics
+## Remaining execution
 
-Calendar coverage: 1,314/1,339 edges. Transfer-time coverage: 24/25 transfer edges (24/1,339 overall). Duration, fare, frequency, first/last departures, reservation, seasonal, accessibility and P90 remain unresolved. Unknown metrics preserve confirmed topology and do not cause the national blocker.
+The graph still has held identities, disconnected required components, 217 incomplete original hub scopes, airport-surface and island links, and unreviewed railway/private/metro/service scopes. All mandatory sample corridors passing does not establish national completion. Remaining source actions are executable queue states, not a handoff to the user. No fixpoint proof or exception is claimed.
 
-## Evidence and reproduction
+`ordinaryDiscoveryRemaining=true`; `globalTopologyDiscoveryFixpoint=NOT_PROVEN`; `terminal=false`. A final-delivery invocation with this state throws `TERMINAL_RESULT_FORBIDDEN_ORDINARY_REMEDIATION_REMAINS`. Each replay selects the next source action and records measured hard-deficit changes; two consecutive stagnant iterations prohibit repeating the same strategy.
 
-[QA and commands](../qa/TASK-086-B/README.md), [connectivity](../qa/TASK-086-B/connectivity-report.md), [source/license decisions](../qa/TASK-086-B/source-license-summary.md), [all adaptive parameter changes](../qa/TASK-086-B/adaptive-model-report.md), [deterministic verification](../qa/TASK-086-B/deterministic-rebuild.json), [complete input hashes and inventory checksum](../../data/transport/network/manifest.json).
+## Evidence and verification
 
-The current Nagasaki feed is `VER_20261001`, SHA-256 `add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc`; it differs from the 084 snapshot and was re-parsed independently. Fukuoka ferry ZIP is `b39a7590d454e37a400f724472e4969133c7b9f54b8600dce68bc47fa0da1b9e`.
-
-Production build/artifact verification, typecheck and lint (0 errors, 10 existing warnings) passed. Local validation is recorded in [the publication receipt](../qa/TASK-086-B/publication-validation.json). Final exact-head CI is linked from the Draft PR description and final execution report, after the commit exists. No Route runtime, API, Planner behavior, Canonical POI truth, TASK-085 data or N03 administrative assignment was changed.
+[QA commands and verification](../qa/TASK-086-B/README.md), [connectivity](../qa/TASK-086-B/connectivity-report.md), [source rights](../qa/TASK-086-B/source-license-summary.md), [iteration deltas](../qa/TASK-086-B/adaptive-model-report.md), [rebuild receipt](../qa/TASK-086-B/deterministic-rebuild.json), and [manifest](../../data/transport/network/manifest.json). Publication validation is recorded only after the corresponding checks finish. Previous exact-head CI is historical checkpoint evidence and is not presented as validation of uncommitted changes.

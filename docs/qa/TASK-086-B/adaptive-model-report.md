@@ -1,56 +1,24 @@
-# TASK-086-B adaptive execution report
+# TASK-086-B adaptive execution checkpoint
 
-The loop selected from available licensed evidence after every full replay. It did not use a fixed iteration limit. It stops in an explicit non-converged source/identity state when that evidence pool has no eligible action. It does **not** claim that this is global topology convergence. External acquisition is an open next action, not automatically executed by this runner.
+Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-## Iteration deltas
+The original ten iteration records are retained byte-for-byte. Subsequent phases acquire actual operator evidence, independently bind station identities, generate directed service/transfer edges and replay all gates. Numeric tuning alone is not remediation.
 
-| Iteration | Action                                       | Nodes + | Edges + | T0 delta | T1 delta | Corridor failures delta | Hub gaps delta | Pattern gaps delta | Topology defects delta | Metric-only delta |
-| --------- | -------------------------------------------- | ------: | ------: | -------: | -------: | ----------------------: | -------------: | -----------------: | ---------------------: | ----------------: |
-| 1         | line:gtfs:nagasaki-bus:route:45              |     136 |     464 |        0 |        0 |                       0 |              0 |                -15 |                   -151 |              4640 |
-| 2         | line:gtfs:nagasaki-bus:route:50              |      87 |     156 |        0 |        0 |                      -4 |              0 |                 -6 |                    -97 |              1560 |
-| 3         | line:gtfs:nagasaki-bus:route:40              |      54 |     547 |        0 |        0 |                      -7 |              0 |                -21 |                    -82 |              5470 |
-| 4         | line:gtfs:nagasaki-bus:route:20              |      36 |      88 |        0 |        0 |                       0 |              0 |                 -6 |                    -42 |               880 |
-| 5         | line:gtfs:nagasaki-bus:route:10              |       7 |      48 |        0 |        0 |                       0 |              0 |                 -6 |                    -13 |               480 |
-| 6         | line:gtfs:fukuoka-ferry:route:[01]志賀島航路 |       3 |       5 |        0 |        0 |                      -3 |              0 |                 -3 |                     -9 |                50 |
-| 7         | line:gtfs:fukuoka-ferry:route:[02]能古航路   |       2 |       2 |        0 |        0 |                      -2 |              0 |                 -2 |                     -6 |                20 |
-| 8         | line:gtfs:fukuoka-ferry:route:[03]玄界島航路 |       1 |       2 |        0 |        0 |                      -2 |              0 |                 -2 |                     -5 |                20 |
-| 9         | line:gtfs:fukuoka-ferry:route:[04]小呂島航路 |       1 |       2 |        0 |        0 |                      -2 |              0 |                 -2 |                     -5 |                20 |
-| 10        | transfer:gtfs                                |       0 |      25 |        0 |        0 |                      -2 |            -25 |                  0 |                    -27 |               251 |
+| Iteration | Action                         | T0 connected | T1 connected | Mandatory corridors | New ADMIT | New edges | Hard-gate improvement |
+| --------: | ------------------------------ | -----------: | -----------: | ------------------: | --------: | --------: | --------------------- |
+|        11 | 011-jrc-shinkansen             |            0 |            0 |                   0 |        48 |        90 | False                 |
+|        12 | 012-tokyo-kyoto-hubs           |            2 |            5 |                   1 |         2 |         4 | True                  |
+|        13 | 013-shinosaka-boundary         |            2 |            6 |                   1 |         1 |         6 | True                  |
+|        14 | 014-jrwest-mandatory-rail      |            4 |           13 |                   5 |        51 |       104 | True                  |
+|        15 | 015-kyushu-shinkansen-bridges  |            5 |           13 |                   6 |        13 |        30 | True                  |
+|        16 | 016-jreast-tohoku-south        |            5 |           13 |                   6 |        18 |        69 | False                 |
+|        17 | 017-tokyo-east-gateway         |            5 |           14 |                   6 |         1 |         4 | True                  |
+|        18 | 018-hokkaido-kamui             |            5 |           14 |                   7 |         7 |        12 | True                  |
+|        19 | 019-joetsu                     |            5 |           14 |                   7 |         9 |        32 | False                 |
+|        20 | 020-hokuriku                   |            5 |           14 |                   7 |        20 |        57 | False                 |
+|        21 | 021-tohoku-hokkaido            |            5 |           14 |                   7 |        10 |        45 | False                 |
+|        22 | 022-hokkaido-hokuto-gateway    |            5 |           15 |                   8 |        15 |        32 | True                  |
+|        23 | 023-chuo                       |           10 |           32 |                   8 |        31 |        62 | True                  |
+|        24 | 024-fujikyu-mandatory-corridor |           10 |           32 |                   9 |        18 |        36 | True                  |
 
-All iterations have zero newly connected national required nodes, zero removals and zero false-edge removals. Regional improvements do not satisfy national connectivity.
-
-## Every parameter change
-
-| Iteration | Parameter                    | Previous                                                                                                      | New                                                                                                           |
-| --------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 1         | maxNewEdgesPerIteration      | 200                                                                                                           | 464                                                                                                           |
-| 1         | maxNewNodesPerIteration      | 100                                                                                                           | 136                                                                                                           |
-| 1         | modeExpansionPriority        | shinkansen, rail, metro, private_rail, airport_bus, ferry, highway_bus, local_bus, flight, ropeway, cable_car | highway_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, local_bus, flight, ropeway, cable_car |
-| 1         | servicePatternExpansionDepth | 1                                                                                                             | 37                                                                                                            |
-| 2         | maxNewEdgesPerIteration      | 464                                                                                                           | 156                                                                                                           |
-| 2         | maxNewNodesPerIteration      | 136                                                                                                           | 90                                                                                                            |
-| 2         | modeExpansionPriority        | highway_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, local_bus, flight, ropeway, cable_car | local_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, highway_bus, flight, ropeway, cable_car |
-| 2         | servicePatternExpansionDepth | 37                                                                                                            | 36                                                                                                            |
-| 3         | maxNewEdgesPerIteration      | 156                                                                                                           | 547                                                                                                           |
-| 3         | maxNewNodesPerIteration      | 90                                                                                                            | 82                                                                                                            |
-| 3         | modeExpansionPriority        | local_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, highway_bus, flight, ropeway, cable_car | highway_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, local_bus, flight, ropeway, cable_car |
-| 4         | maxNewEdgesPerIteration      | 547                                                                                                           | 88                                                                                                            |
-| 4         | maxNewNodesPerIteration      | 82                                                                                                            | 54                                                                                                            |
-| 4         | modeExpansionPriority        | highway_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, local_bus, flight, ropeway, cable_car | airport_bus, shinkansen, rail, metro, private_rail, ferry, highway_bus, local_bus, flight, ropeway, cable_car |
-| 4         | servicePatternExpansionDepth | 36                                                                                                            | 21                                                                                                            |
-| 5         | maxNewEdgesPerIteration      | 88                                                                                                            | 48                                                                                                            |
-| 5         | maxNewNodesPerIteration      | 54                                                                                                            | 20                                                                                                            |
-| 5         | modeExpansionPriority        | airport_bus, shinkansen, rail, metro, private_rail, ferry, highway_bus, local_bus, flight, ropeway, cable_car | highway_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, local_bus, flight, ropeway, cable_car |
-| 5         | servicePatternExpansionDepth | 21                                                                                                            | 11                                                                                                            |
-| 6         | maxNewEdgesPerIteration      | 48                                                                                                            | 5                                                                                                             |
-| 6         | maxNewNodesPerIteration      | 20                                                                                                            | 3                                                                                                             |
-| 6         | modeExpansionPriority        | highway_bus, shinkansen, rail, metro, private_rail, airport_bus, ferry, local_bus, flight, ropeway, cable_car | ferry, shinkansen, rail, metro, private_rail, airport_bus, highway_bus, local_bus, flight, ropeway, cable_car |
-| 6         | servicePatternExpansionDepth | 11                                                                                                            | 3                                                                                                             |
-| 7         | maxNewEdgesPerIteration      | 5                                                                                                             | 2                                                                                                             |
-| 7         | maxNewNodesPerIteration      | 3                                                                                                             | 2                                                                                                             |
-| 7         | servicePatternExpansionDepth | 3                                                                                                             | 2                                                                                                             |
-| 10        | hubTransferReviewDepth       | 1                                                                                                             | 25                                                                                                            |
-
-`routeChunkSize` stays at 200. `maxNewEdgesPerIteration` may exceed 200 because an iteration contains multiple independently verified batches. The ledger records trigger deficit IDs and expected/actual improvement with every change. No acceptance threshold is mutable. A failed source/mode/strategy fingerprint is barred from repetition even under a renamed action.
-
-No valid fixpoint exception exists. Required inventory cannot shrink, rebind or downgrade tiers silently. Missing national nodes and unreviewed hub scopes remain in the denominator.
+Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).

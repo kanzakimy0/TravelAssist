@@ -74,9 +74,29 @@ export function invariant(condition, message) {
 export function unique(rows, key, label) {
   invariant(new Set(rows.map(key)).size === rows.length, `DUPLICATE_${label}`);
 }
+export const SOURCE_RIGHTS = [
+  "RAW_PERSISTENCE_ALLOWED",
+  "DERIVED_STATIC_FACTS_ALLOWED",
+  "TOPOLOGY_FACT_ONLY_ALLOWED",
+  "REFERENCE_ONLY_DISCOVERY",
+  "LICENSE_BLOCKED",
+];
 export function sourceAllowed(source) {
+  const decision =
+    source?.rightsClass ??
+    (source?.persistenceAllowed === true ? "RAW_PERSISTENCE_ALLOWED" : null);
+  const minimumFacts = [
+    "DERIVED_STATIC_FACTS_ALLOWED",
+    "TOPOLOGY_FACT_ONLY_ALLOWED",
+  ].includes(decision);
   return (
-    source?.persistenceAllowed === true &&
+    (decision === "RAW_PERSISTENCE_ALLOWED" ||
+      (minimumFacts &&
+        source?.rawPayloadRetained === false &&
+        source?.rightsReview?.scope ===
+          "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS" &&
+        source?.rightsReview?.termsUrl &&
+        source?.rightsReview?.reason)) &&
     source?.derivedDataAllowed === true &&
     source?.redistributionAllowed === true &&
     /^[a-f0-9]{64}$/.test(source?.contentSha256 ?? "") &&
@@ -121,6 +141,16 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
           Number(node.identityRecord.stop_lon) !== node.longitude ||
           node.identityRecord.stop_name !== node.canonicalNameJa ||
           !node.identityAnchor.endsWith(":stop:" + node.identityRecord.stop_id))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE" &&
+        (node.canonicalNameJa !== node.identityRecord.stationName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          !node.lineRefs.includes(node.identityRecord.line))
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
@@ -191,6 +221,9 @@ export function metricFields(values, sources) {
         const source = sources.get(item.sourceId);
         invariant(
           sourceAllowed(source) &&
+            (!source.rightsClass ||
+              source.metricPersistenceAllowed === true ||
+              source.rightsClass === "RAW_PERSISTENCE_ALLOWED") &&
             item.sourceSha256 === source.contentSha256 &&
             item.observedAt &&
             item.validFrom &&
@@ -299,6 +332,63 @@ export function generatePattern(
       "GTFS_PATTERN_SOURCE_BINDING_MISMATCH",
     );
   }
+  if (
+    pattern.sequenceEvidence === "OFFICIAL_CALLING_SEQUENCE" &&
+    (pattern.strictFactBinding ||
+      pattern.evidenceRefs.some((ref) =>
+        ["DERIVED_STATIC_FACTS_ALLOWED", "TOPOLOGY_FACT_ONLY_ALLOWED"].includes(
+          sources.get(evidence.get(ref).sourceId)?.rightsClass,
+        ),
+      ))
+  ) {
+    invariant(
+      pattern.evidenceRefs.every((ref) => {
+        const record = evidence.get(ref).record;
+        return (
+          canonical(record.callingNodes) === canonical(pattern.callingNodes) &&
+          record.lineRef === pattern.lineRef &&
+          record.operatorRef === pattern.operatorRef &&
+          record.mode === pattern.mode &&
+          record.serviceClass === pattern.serviceClass &&
+          record.direction === pattern.direction &&
+          verifyEvidence([record.sourceFactRef], sources, evidence) &&
+          evidence.get(record.sourceFactRef).record.kind === "service" &&
+          evidence
+            .get(record.sourceFactRef)
+            .record.callingStations.every((sourceName, i) => {
+              const fact = evidence.get(record.sourceFactRef).record;
+              const selector = fact.callingComponents?.[i] ?? {
+                name: sourceName,
+                operator: fact.operator,
+                line: fact.line,
+                mode: fact.mode,
+              };
+              const node = nodes.get(pattern.callingNodes[i]?.nodeId);
+              if (
+                !node ||
+                node.canonicalNameJa !== selector.name ||
+                !node.operatorRefs.includes(selector.operator) ||
+                !node.lineRefs.includes(selector.line) ||
+                node.mode !== selector.mode
+              )
+                return false;
+              if (sourceName === selector.name) return true;
+              const review = selector.nameVariantReview;
+              return (
+                review?.kind === "JAPANESE_SMALL_KE" &&
+                review.sourceName === sourceName &&
+                review.stationCode === node.identityRecord?.stationCode &&
+                sourceName.replaceAll("ヶ", "ケ") ===
+                  selector.name.replaceAll("ヶ", "ケ")
+              );
+            }) &&
+          evidence.get(record.sourceFactRef).record.callingStations.length ===
+            pattern.callingNodes.length
+        );
+      }),
+      "OFFICIAL_PATTERN_SOURCE_BINDING_MISMATCH",
+    );
+  }
   invariant(
     pattern.segmentOperators?.length === pattern.callingNodes.length - 1,
     "OPERATOR_BOUNDARY_MISSING",
@@ -394,6 +484,49 @@ export function generateTransfer(
       }),
       "GTFS_TRANSFER_SOURCE_BINDING_MISMATCH",
     );
+  if (
+    transfer.evidenceKind === "OFFICIAL_INTERCHANGE" &&
+    (transfer.strictFactBinding ||
+      transfer.evidenceRefs.some((ref) =>
+        ["DERIVED_STATIC_FACTS_ALLOWED", "TOPOLOGY_FACT_ONLY_ALLOWED"].includes(
+          sources.get(evidence.get(ref).sourceId)?.rightsClass,
+        ),
+      ))
+  ) {
+    invariant(
+      transfer.evidenceRefs.every((ref) => {
+        const record = evidence.get(ref).record;
+        if (
+          record.from !== transfer.from ||
+          record.to !== transfer.to ||
+          record.hubRef !== transfer.hubRef ||
+          !verifyEvidence([record.sourceFactRef], sources, evidence)
+        )
+          return false;
+        const fact = evidence.get(record.sourceFactRef).record;
+        return (
+          fact.kind === "transfer" &&
+          fact.directions.some(([a, b]) => {
+            const match = (selector, nodeId) => {
+              const node = nodes.get(nodeId);
+              return (
+                node &&
+                node.canonicalNameJa === selector.name &&
+                node.operatorRefs.includes(selector.operator) &&
+                node.lineRefs.includes(selector.line) &&
+                node.mode === selector.mode
+              );
+            };
+            return (
+              match(fact.components[a], transfer.from) &&
+              match(fact.components[b], transfer.to)
+            );
+          })
+        );
+      }),
+      "OFFICIAL_TRANSFER_SOURCE_BINDING_MISMATCH",
+    );
+  }
   invariant(
     nodes.get(transfer.from)?.decision === "ADMIT_TASK_086_TOPOLOGY" &&
       nodes.get(transfer.to)?.decision === "ADMIT_TASK_086_TOPOLOGY",
@@ -568,6 +701,100 @@ export function queryGraph(edges, from, to) {
   }
   return null;
 }
+// Traverse once per anchor direction, retaining the same onboard restrictions.
+export function reachablePaths(edges, from) {
+  const adjacency = new Map();
+  for (const e of edges) {
+    if (!adjacency.has(e.fromTransportNodeId))
+      adjacency.set(e.fromTransportNodeId, []);
+    adjacency.get(e.fromTransportNodeId).push(e);
+  }
+  for (const items of adjacency.values())
+    items.sort((a, b) => compare(a.edgeId, b.edgeId));
+  const queue = [
+      { node: from, pattern: null, index: null, canAlight: true, path: [] },
+    ],
+    seen = new Set(),
+    paths = new Map();
+  for (let i = 0; i < queue.length; i++) {
+    const state = queue[i],
+      key = canonical([
+        state.node,
+        state.pattern,
+        state.index,
+        state.canAlight,
+      ]);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    if (state.canAlight && !paths.has(state.node))
+      paths.set(state.node, state.path);
+    for (const e of adjacency.get(state.node) ?? []) {
+      const continuing =
+        e.edgeKind === "service_segment" &&
+        state.pattern === e.servicePatternRef &&
+        state.index + 1 === e.segmentIndex;
+      if (!continuing && (!state.canAlight || e.boardAllowed === false))
+        continue;
+      queue.push({
+        node: e.toTransportNodeId,
+        pattern: e.servicePatternRef ?? null,
+        index: e.segmentIndex ?? null,
+        canAlight: e.alightAllowed !== false,
+        path: [...state.path, e.edgeId],
+      });
+    }
+  }
+  return paths;
+}
+export function anchorQueries(edges, anchor) {
+  // Direct shortcuts have different start/end segment indexes; use the general
+  // forward query for those graphs until their reverse state is represented.
+  const forward = reachablePaths(edges, anchor);
+  const backward = edges.some((e) => e.edgeKind === "direct_service")
+    ? null
+    : reachablePaths(
+        edges.map((e) => ({
+          ...e,
+          fromTransportNodeId: e.toTransportNodeId,
+          toTransportNodeId: e.fromTransportNodeId,
+          boardAllowed: e.alightAllowed,
+          alightAllowed: e.boardAllowed,
+          segmentIndex:
+            e.segmentIndex === undefined ? undefined : -e.segmentIndex,
+        })),
+        anchor,
+      );
+  return (from, to) =>
+    !from || !to
+      ? null
+      : from === anchor
+        ? (forward.get(to) ?? null)
+        : to === anchor && backward
+          ? backward.has(from)
+            ? [...backward.get(from)].reverse()
+            : null
+          : queryGraph(edges, from, to);
+}
+// Resolve only previously absent query endpoints from independently admitted rail
+// components. This creates a QA query, never an edge or an identity admission.
+export function resolveCorridorEndpoints(corridor, nodes) {
+  const names = String(corridor.corridorId).split(":");
+  const result = { ...corridor };
+  for (const [index, key] of [
+    [0, "from"],
+    [1, "to"],
+  ]) {
+    if (result[key] !== null && result[key] !== undefined) continue;
+    const matches = nodes.filter(
+      (n) =>
+        n.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+        n.canonicalNameJa === names[index] &&
+        ["conventional_rail", "private_rail"].includes(n.mode),
+    );
+    if (matches.length === 1) result[key] = matches[0].nodeId;
+  }
+  return result;
+}
 export function auditGraph({
   nodes,
   patterns,
@@ -578,6 +805,7 @@ export function auditGraph({
   anchorNodeId,
   discoveryGaps = [],
 }) {
+  const query = anchorQueries(edges, anchorNodeId);
   const deficits = discoveryGaps.map((d) => ({ ...d }));
   const byId = new Map(nodes.map((n) => [n.nodeId, n]));
   const connected = [],
@@ -595,8 +823,8 @@ export function auditGraph({
     const reachable =
       accepted &&
       anchorNodeId &&
-      queryGraph(edges, anchorNodeId, node.nodeId) !== null &&
-      queryGraph(edges, node.nodeId, anchorNodeId) !== null;
+      query(anchorNodeId, node.nodeId) !== null &&
+      query(node.nodeId, anchorNodeId) !== null;
     if (reachable) {
       group.connected++;
       connected.push(requirement.requirementId);
@@ -646,8 +874,8 @@ export function auditGraph({
       origin: "REQUIRED_INVENTORY",
     }));
   const results = [...corridors, ...generatedCorridors].map((c) => {
-    const forward = queryGraph(edges, c.from, c.to),
-      reverse = queryGraph(edges, c.to, c.from);
+    const forward = query(c.from, c.to),
+      reverse = query(c.to, c.from);
     const pass = forward !== null && reverse !== null;
     if (!pass)
       deficits.push({
@@ -849,7 +1077,13 @@ export function validateFixpoint(proof, deficit, readEvidence) {
     ),
   );
 }
-export function acceptance(audit, proofs, readEvidence, integrity) {
+export function acceptance(
+  audit,
+  proofs,
+  readEvidence,
+  integrity,
+  actions = [],
+) {
   const validExceptions = audit.deficits.filter((d) =>
     proofs.some((p) => validateFixpoint(p, d, readEvidence)),
   );
@@ -863,10 +1097,17 @@ export function acceptance(audit, proofs, readEvidence, integrity) {
     audit.tier.T1.connected > 0 &&
     nationalCorridors.length > 0 &&
     nationalCorridors.every((c) => c.status === "PASS");
-  const converged = integrityPass && nationalCore && unproved === 0;
+  const openActions = actions.filter(
+    (a) => !["INGESTED", "SUPERSEDED_BY_ALTERNATIVE"].includes(a.state),
+  );
+  const ordinaryDiscoveryRemaining =
+    unproved > 0 ||
+    openActions.some((a) => a.state !== "EXTERNAL_APPROVAL_REQUIRED");
+  const converged =
+    integrityPass && nationalCore && unproved === 0 && openActions.length === 0;
   return {
     status: !converged
-      ? "BLOCKED_NATIONAL_SOURCE_IDENTITY_COVERAGE"
+      ? "IN_PROGRESS_AUTO_REMEDIATION"
       : validExceptions.length
         ? "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS"
         : "PASS / READY_FOR_REVIEW",
@@ -876,7 +1117,28 @@ export function acceptance(audit, proofs, readEvidence, integrity) {
     unresolvedTopologyCount: audit.deficits.length,
     unprovedDeficitCount: unproved,
     validatedExceptionCount: validExceptions.length,
-    ordinaryDiscoveryRemaining: unproved > 0,
+    ordinaryDiscoveryRemaining,
+    terminal: converged,
+    openSourceActionCount: openActions.length,
     runtimeImportAuthorized: false,
   };
+}
+
+export function assertTerminalResult(gate, actions = []) {
+  invariant(
+    gate.terminal === true &&
+      gate.ordinaryDiscoveryRemaining === false &&
+      gate.globalTopologyDiscoveryFixpoint === "PROVEN" &&
+      !actions.some((a) =>
+        [
+          "PENDING_RESEARCH",
+          "RESEARCHING",
+          "SOURCE_FOUND",
+          "RIGHTS_REVIEWED",
+          "NO_SOURCE_FOUND",
+        ].includes(a.state),
+      ),
+    "TERMINAL_RESULT_FORBIDDEN_ORDINARY_REMEDIATION_REMAINS",
+  );
+  return true;
 }

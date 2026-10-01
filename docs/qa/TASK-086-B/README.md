@@ -1,17 +1,30 @@
-# TASK-086-B validation
+# TASK-086-B QA
 
-Status: **BLOCKED_NATIONAL_SOURCE_IDENTITY_COVERAGE**. This delivery is an executable offline regional source pipeline and an incomplete national dataset. It is not READY_FOR_REVIEW and is not an audited fixpoint acceptance.
+Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-The required inventory has 1038 entries: 327 independently admitted GTFS stops and 711 held national discovery obligations. V2 candidate tiers are preserved as review obligations; they are not accepted graph nodes. No TASK-084 v1 or TASK-085 node is imported. The application's Route API, Planner and public graph contract are unchanged.
+| Measure                  | Preserved checkpoint 1236238c8 | Current phase 24 |
+| ------------------------ | -----------------------------: | ---------------: |
+| Required inventory       |                           1038 |             1135 |
+| ADMIT / HOLD             |                      327 / 711 |        571 / 564 |
+| Lines / service patterns |                         9 / 63 |         25 / 109 |
+| Directed edges           |                           1339 |             1922 |
+| Batches                  |                             88 |              145 |
+| Adaptive iterations      |                             10 |               24 |
+| Connected T0             |                         0 / 89 |          10 / 89 |
+| Connected T1             |                        0 / 462 |         32 / 462 |
+| Connected required nodes |                       0 / 1038 |       244 / 1135 |
+| Mandatory corridors      |                          0 / 9 |            9 / 9 |
+
+Independent component review has converted **147 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
 
 ## Reproduce
 
-```text
-python -X utf8 tools/transport/task-086-extract-gtfs.py
+```sh
+python tools/transport/task-086-extract-identities.py --output /tmp/s12-identities.jsonl
 node tools/transport/task-086-run.mjs
 node tools/transport/task-086-verify.mjs --publish
-node --test tests/task-086-b-mobility-backbone.test.mjs tests/task-086-b-rebuild.test.mjs
-node --import ./tests/register-route-ts.mjs --test --test-concurrency=1 "tests/*.test.mjs"
+node --test tests/task-086-b-mobility-backbone.test.mjs tests/task-086-b-autonomous-remediation.test.mjs
+node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"
 npm run lint
 npm run typecheck
 npm run format:check:deploy
@@ -19,19 +32,8 @@ npm run deploy:build:local
 npm run deploy:verify-artifact
 ```
 
-The parser defaults to the retained, attributed CC BY 4.0 archives, with no network request. Use `--input-dir` and `--output` to re-extract separately. The runner discovers licensed JSON source packages under `data/transport/network/sources`, preserves the required denominator, and selects replay actions by deficits. New source acquisition and rights review remain explicit open work; the runner does not automate external permission decisions.
+On Windows, select a writable scratch volume for `TEMP` and `TMP`. No network request is made during deterministic rebuild. The immutable archive in `checkpoints/1236238c8.json.gz` preserves the original 196 artifact files, including all 88 batches, receipts and the exact ten-record history prefix. Independent MLIT extraction must reproduce the persisted identity JSONL. Full rebuild twice and checksum-resume are compared; corruption and source invalidation have negative tests.
 
-Batches follow source/operator/route/pattern boundaries and have at most 200 directed edges. Every batch includes inputs, node decisions, evidence references, unresolved fields, output checksum and a sealed QA receipt. A changed source/generator fingerprint invalidates the corresponding batch; a mismatching receipt or output fails closed. `--batch <batch-id>` reruns a single batch, and `--batch <batch-id> --repair` explicitly repairs its corrupt receipt. Per-iteration QA passes before expansion proceeds. `checkpoint.json` records passed batches.
+`task-086-source-actions.mjs acquire <review-request.json>` executes public evidence acquisition, response hashing and rights-state transitions. `reference` records a reviewed public reference with an explicit observation fingerprint instead of claiming raw source bytes. `next` prioritizes Shinkansen, conventional/private/metro, transfers and national modal bridges. `task-086-remediate.mjs --final` intentionally fails until the final gate is legitimate.
 
-## Evidence
-
-- [Deterministic extraction/rebuild receipt](deterministic-rebuild.json)
-- [Connectivity report](connectivity-report.md)
-- [Source/license summary](source-license-summary.md)
-- [Adaptive report, including every parameter change](adaptive-model-report.md)
-- [Acceptance gate](../../../data/transport/network/final-acceptance-gate.json)
-- [Required inventory](../../../data/transport/network/required-backbone-inventory.json)
-- [Input and output hashes](../../../data/transport/network/manifest.json)
-- [Pending source actions](../../../data/transport/network/next-source-actions.jsonl)
-
-Local dependency installation, typecheck, lint and standalone build/artifact verification passed. Local validation is recorded in [the publication receipt](publication-validation.json). Final exact-head CI is linked from the Draft PR description and final execution report after the commit exists. Test fixture flight, rail, Shinkansen and through-service behavior is never counted as real network coverage.
+[Rebuild receipt](deterministic-rebuild.json) binds generator and input hashes. [Publication validation](publication-validation.json) identifies the validation checkpoint. [Connectivity](connectivity-report.md), [rights](source-license-summary.md), and [adaptive progress](adaptive-model-report.md) describe the current execution scope. No production routing/API/planner integration is authorized by these task-local artifacts.

@@ -1,3 +1,4 @@
+import { runRemediation } from "./task-086-remediate.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -43,7 +44,10 @@ export function run({
   output = rel("data/transport/network"),
   rerunBatch = null,
   repair = false,
+  terminal = false,
 } = {}) {
+  if (fs.existsSync(rel("data/transport/network/checkpoints/origin.json")))
+    return runRemediation({ output, rerunBatch, repair, terminal });
   const inputPaths = [
     upstream + "manifest.json",
     upstream + "rail-components.jsonl",
@@ -691,6 +695,7 @@ if (
         output: value("--output"),
         rerunBatch: value("--batch"),
         repair: args.includes("--repair"),
+        terminal: args.includes("--final"),
       }),
       null,
       2,

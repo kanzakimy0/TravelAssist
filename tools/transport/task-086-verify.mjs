@@ -44,6 +44,31 @@ export function verifyRebuild({ publish = false } = {}) {
         ),
         "Raw GTFS extraction differs: " + name,
       );
+    const identities = path.join(scratch, "s12-identities.jsonl");
+    const identityExtraction = spawnSync(
+      process.platform === "win32" ? "python" : "python3",
+      [
+        "-X",
+        "utf8",
+        path.join(root, "tools/transport/task-086-extract-identities.py"),
+        "--output",
+        identities,
+      ],
+      { encoding: "utf8" },
+    );
+    assert.equal(identityExtraction.status, 0, identityExtraction.stderr);
+    assert.equal(
+      hash(fs.readFileSync(identities)),
+      hash(
+        fs.readFileSync(
+          path.join(
+            root,
+            "data/transport/network/research/s12-identities.jsonl",
+          ),
+        ),
+      ),
+      "Raw S12 identity extraction differs",
+    );
     const firstPath = path.join(scratch, "first"),
       secondPath = path.join(scratch, "second");
     const first = run({ output: firstPath }),
@@ -63,6 +88,7 @@ export function verifyRebuild({ publish = false } = {}) {
       task: "TASK-086-B",
       status: "PASS",
       rawGtfsExtraction: "PASS",
+      rawS12IdentityExtraction: "PASS",
       fullDeterministicRebuild: "PASS",
       resumeChecksumSkip: "PASS",
       batchCount: first.manifest.batchReceipts.length,
@@ -83,6 +109,7 @@ export function verifyRebuild({ publish = false } = {}) {
         [
           "--test",
           path.join(root, "tests/task-086-b-mobility-backbone.test.mjs"),
+          path.join(root, "tests/task-086-b-autonomous-remediation.test.mjs"),
         ],
         { cwd: root, encoding: "utf8" },
       );
@@ -119,6 +146,7 @@ export function verifyRebuild({ publish = false } = {}) {
           deterministicRebuild: "PASS",
           resumeCorruptionInvalidation: "PASS",
         },
+        readRows(path.join(output, "next-source-actions.jsonl")),
       );
       gate.integrityEvidence = "docs/qa/TASK-086-B/deterministic-rebuild.json";
       atomicWrite(

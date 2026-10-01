@@ -538,7 +538,7 @@ test("TASK086 fixpoint requires every category, matching proof hash and no ordin
 });
 test("TASK086 empty national graph cannot claim PASS or a discovery fixpoint", () => {
   const result = acceptance(audit(), [], () => "", { deterministic: "PASS" });
-  assert.match(result.status, /BLOCKED/);
+  assert.match(result.status, /^IN_PROGRESS_AUTO_REMEDIATION$/);
   assert.equal(result.globalTopologyDiscoveryFixpoint, "NOT_PROVEN");
 });
 test("TASK086 batch checksum skip, resume and deterministic output", (t) => {
@@ -731,12 +731,12 @@ test("TASK086 regional T0/T1 connectivity alone cannot declare a national core",
   };
   assert.match(
     acceptance(state, [], () => "", { checks: "PASS" }).status,
-    /BLOCKED/,
+    /^IN_PROGRESS_AUTO_REMEDIATION$/,
   );
   state.corridors = [{ origin: "TASK_MANDATORY_QUERY_ONLY", status: "FAIL" }];
   assert.match(
     acceptance(state, [], () => "", { checks: "PASS" }).status,
-    /BLOCKED/,
+    /^IN_PROGRESS_AUTO_REMEDIATION$/,
   );
   state.corridors[0].status = "PASS";
   assert.equal(
@@ -745,7 +745,7 @@ test("TASK086 regional T0/T1 connectivity alone cannot declare a national core",
   );
   assert.match(
     acceptance(state, [], () => "", { checks: "NOT_RUN" }).status,
-    /BLOCKED/,
+    /^IN_PROGRESS_AUTO_REMEDIATION$/,
   );
 });
 
