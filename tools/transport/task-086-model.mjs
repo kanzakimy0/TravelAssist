@@ -149,6 +149,76 @@ export function verifyEvidence(refs, sources, evidence) {
     })
   );
 }
+// A current operator/line may differ from archival S12 only through a reviewed,
+// dated merger fact. Station codes stay exact; this is not a fuzzy name alias.
+export function reviewedRailTransition(selector, fact, observedAt) {
+  const review = selector.operatorTransitionReview;
+  if (!review) return null;
+  const matches = (fact.operatorTransitions ?? []).filter(
+    (t) => t.transitionId === review.transitionId,
+  );
+  invariant(matches.length === 1, "RAIL_TRANSITION_NOT_UNIQUE");
+  const transition = matches[0];
+  invariant(
+    transition.method === "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS" &&
+      transition.fromOperator &&
+      transition.fromLine &&
+      transition.toOperator === selector.operator &&
+      transition.toLine === selector.line &&
+      /^\d{6}$/.test(review.stationCode ?? "") &&
+      /^\d{4}-\d{2}-\d{2}$/.test(transition.effectiveDate ?? "") &&
+      Number.isFinite(Date.parse(transition.effectiveDate)) &&
+      Number.isFinite(Date.parse(observedAt)) &&
+      Date.parse(transition.effectiveDate) <= Date.parse(observedAt) &&
+      transition.fromOperator !== transition.toOperator &&
+      transition.evidence?.sourceActionId &&
+      transition.evidence?.url &&
+      /^[a-f0-9]{64}$/.test(
+        transition.evidence?.observedResponseSha256 ?? "",
+      ) &&
+      (fact.corroboratingEvidence ?? []).some(
+        (r) => canonical(r) === canonical(transition.evidence),
+      ),
+    "RAIL_TRANSITION_REVIEW_REQUIRED",
+  );
+  return { ...transition, stationCode: review.stationCode };
+}
+function railTransitionBound(node, sources, evidence) {
+  if (!node.identityTransition) return false;
+  return (
+    node.evidenceRefs?.some((ref) => {
+      if (!verifyEvidence([ref], sources, evidence)) return false;
+      const row = evidence.get(ref),
+        fact = row.record;
+      return (fact.callingComponents ?? fact.components ?? []).some(
+        (selector) => {
+          try {
+            const t = reviewedRailTransition(
+              selector,
+              fact,
+              sources.get(row.sourceId)?.observedAt,
+            );
+            return (
+              t &&
+              canonical(t) === canonical(node.identityTransition) &&
+              selector.name === node.canonicalNameJa &&
+              selector.mode === node.mode &&
+              t.stationCode === node.identityRecord.stationCode &&
+              t.fromOperator === node.identityRecord.operator &&
+              t.fromLine === node.identityRecord.line &&
+              node.operatorRefs.length === 1 &&
+              node.operatorRefs[0] === t.toOperator &&
+              node.lineRefs.length === 1 &&
+              node.lineRefs[0] === t.toLine
+            );
+          } catch {
+            return false;
+          }
+        },
+      );
+    }) ?? false
+  );
+}
 export function admitNodes(candidates, sources, evidence, prior = []) {
   unique(candidates, (n) => n.identityAnchor, "NODE_ANCHOR");
   const previous = new Map(prior.map((n) => [n.nodeId, n]));
@@ -176,9 +246,11 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
           node.canonicalNameJa !== node.identityRecord.stationName ||
           node.latitude !== node.identityRecord.latitude ||
           node.longitude !== node.identityRecord.longitude ||
-          node.operatorRefs.length !== 1 ||
-          node.operatorRefs[0] !== node.identityRecord.operator ||
-          !node.lineRefs.includes(node.identityRecord.line))
+          (node.identityTransition
+            ? !railTransitionBound(node, sources, evidence)
+            : node.operatorRefs.length !== 1 ||
+              node.operatorRefs[0] !== node.identityRecord.operator ||
+              !node.lineRefs.includes(node.identityRecord.line)))
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
 
@@ -442,9 +514,11 @@ export function generatePattern(
               if (sourceName === selector.name) return true;
               const review = selector.nameVariantReview;
               return (
-                ["JAPANESE_SMALL_KE", "JAPANESE_DIGIT_WIDTH"].includes(
-                  review?.kind,
-                ) &&
+                [
+                  "JAPANESE_SMALL_KE",
+                  "JAPANESE_DIGIT_WIDTH",
+                  "JAPANESE_PAREN_WIDTH",
+                ].includes(review?.kind) &&
                 review.sourceName === sourceName &&
                 node.evidenceRefs?.some((identityRef) => {
                   const identity = evidence.get(identityRef)?.record;
@@ -459,12 +533,15 @@ export function generatePattern(
                 (review.kind === "JAPANESE_SMALL_KE"
                   ? sourceName.replaceAll("ヶ", "ケ") ===
                     selector.name.replaceAll("ヶ", "ケ")
-                  : sourceName.replace(/[０-９]/g, (digit) =>
-                      String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
-                    ) ===
-                    selector.name.replace(/[０-９]/g, (digit) =>
-                      String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
-                    ))
+                  : review.kind === "JAPANESE_PAREN_WIDTH"
+                    ? sourceName.replaceAll("（", "(").replaceAll("）", ")") ===
+                      selector.name.replaceAll("（", "(").replaceAll("）", ")")
+                    : sourceName.replace(/[０-９]/g, (digit) =>
+                        String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
+                      ) ===
+                      selector.name.replace(/[０-９]/g, (digit) =>
+                        String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
+                      ))
               );
             }) &&
           evidence.get(record.sourceFactRef).record.callingStations.length ===

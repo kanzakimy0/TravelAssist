@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import {
   hash,
   factCallingRestrictions,
+  reviewedRailTransition,
   RAIL_NODE_KIND_BY_MODE,
   id,
   canonical,
@@ -440,13 +441,21 @@ export function runRemediation({
       return admitted.nodeId;
     }
 
+    const serviceEvidence = evidence.get(serviceEvidenceRef);
+    const transition = reviewedRailTransition(
+      selector,
+      serviceEvidence.record,
+      sources.get(serviceEvidence.sourceId).observedAt,
+    );
+    const archivalOperator = transition?.fromOperator ?? selector.operator;
+    const archivalLine = transition?.fromLine ?? selector.line;
     const possible = discovery.filter(
       (n) =>
         n.canonicalNameJa === selector.name &&
         n.operatorRefs.length === 1 &&
-        n.operatorRefs[0] === selector.operator &&
+        n.operatorRefs[0] === archivalOperator &&
         n.modeFamily === selector.mode &&
-        n.lineRefs.includes(selector.line),
+        n.lineRefs.includes(archivalLine),
     );
     invariant(
       possible.length <= 1,
@@ -456,11 +465,12 @@ export function runRemediation({
     const raw = identities.filter(
       (r) =>
         r.stationName === selector.name &&
-        r.operator === selector.operator &&
-        r.line === selector.line &&
+        r.operator === archivalOperator &&
+        r.line === archivalLine &&
+        (!transition || r.stationCode === transition.stationCode) &&
         (!candidate ||
           r.stationCode ===
-            (candidate.sourceStationRefs.find((r) => r.line === selector.line)
+            (candidate.sourceStationRefs.find((r) => r.line === archivalLine)
               ?.stationCode ?? candidate.sourcePrimaryStationCode)),
     );
     invariant(
@@ -489,11 +499,13 @@ export function runRemediation({
     if (previous?.decision === "ADMIT_TASK_086_TOPOLOGY") {
       invariant(
         previous.canonicalNameJa === record.stationName &&
-          previous.operatorRefs.includes(record.operator),
+          previous.operatorRefs.includes(selector.operator) &&
+          canonical(previous.identityTransition ?? null) ===
+            canonical(transition),
         "ADMISSION_REBIND",
       );
       previous.lineRefs = [
-        ...new Set([...previous.lineRefs, record.line]),
+        ...new Set([...previous.lineRefs, selector.line]),
       ].sort(compare);
       previous.evidenceRefs = [
         ...new Set([...previous.evidenceRefs, ref, serviceEvidenceRef]),
@@ -506,8 +518,9 @@ export function runRemediation({
       nodeKind: RAIL_NODE_KIND_BY_MODE[selector.mode],
       nodeLevel: previous?.nodeLevel ?? candidate?.proposedNodeLevel ?? "T3",
       mode: selector.mode,
-      operatorRefs: [record.operator],
-      lineRefs: [record.line],
+      operatorRefs: [selector.operator],
+      lineRefs: [selector.line],
+      ...(transition ? { identityTransition: transition } : {}),
       latitude: record.latitude,
       longitude: record.longitude,
       identityRecord: record,
@@ -516,8 +529,9 @@ export function runRemediation({
       independentReview: {
         decision: "ADMIT_TASK_086_TOPOLOGY",
         recordSha256: hash(record),
-        method:
-          "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
+        method: transition
+          ? "EXACT_ARCHIVAL_STATION_CODE_AND_EVIDENCED_CURRENT_OPERATOR_TRANSITION"
+          : "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
         sourceArchiveSha256: identitySource.contentSha256,
       },
       hubSemantics: "PHYSICAL_OPERATOR_COMPONENT_NO_IMPLICIT_TRANSFER",

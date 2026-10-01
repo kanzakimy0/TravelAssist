@@ -9,6 +9,7 @@ import {
   hash,
   id,
   admitNodes,
+  reviewedRailTransition,
   auditGraph,
   sourceAllowed,
   metricFields,
@@ -564,6 +565,53 @@ test("TASK086 fullwidth digit review preserves every non-digit character and exa
   }
 });
 
+test("TASK086 parenthesis-width review preserves operator prefixes and exact independent station identity", () => {
+  const f = boundOfficialFixture();
+  const node = f.nodes.get("B");
+  node.canonicalNameJa = "西鉄福岡（天神）";
+  const identity = {
+    stationName: node.canonicalNameJa,
+    stationCode: "nishitetsu-tenjin",
+    operator: "operator",
+    line: "line",
+  };
+  node.evidenceRefs = [f.put("identity", identity)];
+  const selector = {
+    name: node.canonicalNameJa,
+    operator: "operator",
+    line: "line",
+    mode: "conventional_rail",
+    nameVariantReview: {
+      kind: "JAPANESE_PAREN_WIDTH",
+      sourceName: "西鉄福岡(天神)",
+      stationCode: "nishitetsu-tenjin",
+    },
+  };
+  const fact = {
+    ...f.evidence.get("fact").record,
+    callingStations: ["A", "西鉄福岡(天神)"],
+    callingComponents: [
+      {
+        name: "A",
+        operator: "operator",
+        line: "line",
+        mode: "conventional_rail",
+      },
+      selector,
+    ],
+  };
+  f.put("fact", fact);
+  const generate = () =>
+    generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-01");
+  assert.equal(generate().length, 1);
+  for (const invalid of ["福岡(天神)", "西鉄福岡(博多)", "西鉄福岡［天神］"]) {
+    fact.callingStations[1] = invalid;
+    selector.nameVariantReview.sourceName = invalid;
+    f.put("fact", fact);
+    assert.throws(generate, /OFFICIAL_PATTERN_SOURCE_BINDING/);
+  }
+});
+
 test("TASK086 airport admission binds independent reference point, protected requirement and current access", () => {
   const record = {
     airportName: "福岡空港",
@@ -1045,4 +1093,132 @@ for edit,error in [(lambda r:r.update(serviceDate='20281001'),'FEED_NOT_CURRENT'
     { encoding: "utf8" },
   );
   assert.equal(run.status, 0, run.stderr || run.stdout);
+});
+
+test("TASK086 dated operator mergers preserve exact archival identity and reject unsupported crosswalks", () => {
+  const merger = {
+    transitionId: "reviewed-merger",
+    fromOperator: "旧鉄道",
+    fromLine: "旧線",
+    toOperator: "新鉄道",
+    toLine: "新線",
+    effectiveDate: "2025-04-01",
+    method: "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS",
+    evidence: {
+      sourceActionId: "merger",
+      url: "https://operator.invalid/merger",
+      observedResponseSha256: hash("merger"),
+    },
+  };
+  const selector = {
+    name: "松戸",
+    operator: "新鉄道",
+    line: "新線",
+    mode: "private_rail",
+    operatorTransitionReview: {
+      transitionId: merger.transitionId,
+      stationCode: "003138",
+    },
+  };
+  const fact = {
+    callingComponents: [selector],
+    operatorTransitions: [merger],
+    corroboratingEvidence: [merger.evidence],
+  };
+  const raw = {
+    stationName: "松戸",
+    stationCode: "003138",
+    operator: "旧鉄道",
+    line: "旧線",
+    latitude: 35.784,
+    longitude: 139.901,
+  };
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const put = (record) => ({
+    sourceId: minimal.sourceId,
+    sourceSha256: minimal.contentSha256,
+    record,
+    recordSha256: hash(record),
+    locator: "independent reviewed record",
+  });
+  const evidence = new Map([
+    ["raw", put(raw)],
+    ["fact", put(fact)],
+  ]);
+  const node = {
+    identityAnchor: "review:unchanged-requirement",
+    canonicalNameJa: "松戸",
+    nodeKind: "private_rail_station",
+    mode: "private_rail",
+    operatorRefs: ["新鉄道"],
+    lineRefs: ["新線"],
+    latitude: raw.latitude,
+    longitude: raw.longitude,
+    identityRecord: raw,
+    origin: "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE",
+    evidenceRefs: ["raw", "fact"],
+    hubSemantics: "PHYSICAL_OPERATOR_COMPONENT_NO_IMPLICIT_TRANSFER",
+    independentReview: {
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+      recordSha256: hash(raw),
+    },
+    identityTransition: reviewedRailTransition(
+      selector,
+      fact,
+      minimal.observedAt,
+    ),
+  };
+  const admitted = admitNodes([node], sources, evidence)[0];
+  assert.equal(admitted.decision, "ADMIT_TASK_086_TOPOLOGY");
+  assert.equal(admitted.nodeId, id("node", node.identityAnchor));
+  assert.equal(admitted.identityRecord.operator, "旧鉄道");
+  assert.deepEqual(admitted.operatorRefs, ["新鉄道"]);
+  for (const changed of [
+    { ...node, identityTransition: undefined },
+    {
+      ...node,
+      identityTransition: { ...node.identityTransition, stationCode: "003139" },
+    },
+    { ...node, operatorRefs: ["another operator"] },
+    { ...node, lineRefs: ["旧線"] },
+    { ...node, canonicalNameJa: "同名別駅" },
+    { ...node, evidenceRefs: ["raw"] },
+  ])
+    assert.ok(
+      admitNodes([changed], sources, evidence)[0].reasons.includes(
+        "IDENTITY_SOURCE_BINDING_MISMATCH",
+      ),
+    );
+  for (const changed of [
+    { ...fact, corroboratingEvidence: [] },
+    {
+      ...fact,
+      operatorTransitions: [{ ...merger, effectiveDate: "2028-01-01" }],
+    },
+    {
+      ...fact,
+      operatorTransitions: [{ ...merger, toOperator: "another operator" }],
+    },
+    {
+      ...fact,
+      operatorTransitions: [{ ...merger, method: "SAME_NAME_GUESS" }],
+    },
+    { ...fact, operatorTransitions: [] },
+  ])
+    assert.throws(
+      () => reviewedRailTransition(selector, changed, minimal.observedAt),
+      /RAIL_TRANSITION_/,
+    );
+  const corrupted = new Map(evidence);
+  corrupted.set("fact", { ...put(fact), recordSha256: hash("unrelated") });
+  assert.ok(
+    admitNodes([node], sources, corrupted)[0].reasons.includes(
+      "IDENTITY_SOURCE_BINDING_MISMATCH",
+    ),
+  );
+  assert.throws(
+    () =>
+      validateCorroboratingEvidence({ ...fact, sourceActionId: "merger" }, []),
+    /CORROBORATING_SOURCE_NOT_BOUND/,
+  );
 });

@@ -2,7 +2,7 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-Executed source actions: **55**. Recorded source/terms observations: **337**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 4, 'TOPOLOGY_FACT_ONLY_ALLOWED': 48, 'REFERENCE_ONLY_DISCOVERY': 3}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
+Executed source actions: **79**. Recorded source/terms observations: **441**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 4, 'TOPOLOGY_FACT_ONLY_ALLOWED': 70, 'REFERENCE_ONLY_DISCOVERY': 5}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
 
 ## Retained representations
 
@@ -80,6 +80,30 @@ Executed source actions: **55**. Recorded source/terms observations: **337**. La
 | private:kintetsu:official-rights-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
 | private:hanshin:partner-nara-local-pattern | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | rail:toei:ccby-gtfs-train | INGESTED | 1 | 4 | RAW_PERSISTENCE_ALLOWED |
+| private:sotetsu:reviewed-local-branches | INGESTED | 1 | 6 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:kita-osaka:directional-boarding-and-boundary | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:nishitetsu:local-stopping-rows | INGESTED | 1 | 8 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:fukuoka:nishitetsu-yakuin-kaizuka | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:tx:ordinary-and-nagareyama-interchanges | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:keisei:ordinary-branches-and-jr-gateways | INGESTED | 1 | 15 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:rinkai:explicit-all-stations-rule | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jrwest:hiroshima-kokura-shinkansen-conventional | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jreast:niigata-sendai-shinkansen-conventional | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:sendai:current-municipal-subway-guide | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:sendai-airport:explicit-ordinary-stopping-rule | INGESTED | 1 | 5 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| airport:sendai:explicit-terminal-rail-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:nankai:koya-local-branches | INGESTED | 1 | 7 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:keihan:commercial-use-terms-alternative-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:sapporo:current-jr-municipal-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:yurikamome:shimbashi-gateway-and-bounded-last-train | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| metro:sapporo:n06-n07-current-directional-section | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jreast:hamamatsucho-monorail-transfer-gate | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| metro:sapporo:ekibus-restricted-alternative-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| rail:jreast:mito-hitachi-actual-trips | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:tobu:tojo-mm21-f-liner-alternative | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:keisei:matsudo-reviewed-2025-merger | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:tobu:jr-partner-three-urban-park-gateways | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:tobu:oshiage-metro-published-joint-station | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 
 ## Primary evidence ledger
 

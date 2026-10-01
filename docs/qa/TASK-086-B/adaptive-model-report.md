@@ -56,5 +56,20 @@ The original ten iteration records are retained byte-for-byte. Subsequent phases
 | 58 | 058-kyoto-metro-and-minatomirai-local-gateways | 89 | 383 | 9 | 37 | 76 | True |
 | 59 | 059-partner-published-kintetsu-nara-ordinary | 89 | 385 | 9 | 22 | 46 | True |
 | 60 | 060-toei-licensed-mita-oedo-actual-trips | 89 | 390 | 9 | 45 | 128 | True |
+| 61 | 061-sotetsu-reviewed-local-branches | 89 | 393 | 9 | 23 | 52 | True |
+| 62 | 062-kita-osaka-directional-service-and-esaka-boundary | 89 | 394 | 9 | 5 | 10 | True |
+| 63 | 063-nishitetsu-ordinary-branches-and-fukuoka-gateways | 89 | 395 | 9 | 74 | 146 | True |
+| 64 | 064-tx-ordinary-service-and-nagareyama-interchanges | 89 | 399 | 9 | 18 | 42 | True |
+| 65 | 065-keisei-ordinary-branches-and-explicit-gateways | 89 | 403 | 9 | 64 | 132 | True |
+| 66 | 066-rinkai-explicit-all-stations-service | 89 | 404 | 9 | 6 | 14 | True |
+| 67 | 067-required-jr-shinkansen-conventional-gateways | 89 | 408 | 9 | 4 | 8 | True |
+| 68 | 068-sendai-municipal-metro-and-airport-rail-gateways | 89 | 410 | 9 | 10 | 20 | True |
+| 69 | 069-nankai-koya-local-branches-and-shinimamiya-gateway | 89 | 412 | 9 | 44 | 92 | True |
+| 70 | 070-sapporo-and-yurikamome-explicit-t1-gateways | 89 | 414 | 9 | 3 | 6 | True |
+| 71 | 071-sapporo-current-short-section-and-hamamatsucho-gate | 89 | 416 | 9 | 2 | 4 | True |
+| 72 | 072-jreast-mito-distinct-hitachi-actual-calls | 89 | 417 | 9 | 11 | 24 | True |
+| 73 | 073-tobu-tojo-partner-reviewed-f-liner-stops | 89 | 419 | 9 | 14 | 28 | True |
+| 74 | 074-keisei-matsudo-current-operator-and-local-calls | 89 | 421 | 9 | 24 | 48 | True |
+| 75 | 075-tobu-four-partner-published-t1-gateways | 89 | 425 | 9 | 4 | 8 | True |
 
 Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).
