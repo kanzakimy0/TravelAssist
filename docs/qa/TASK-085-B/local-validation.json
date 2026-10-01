@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "5.0",
+  "task": "TASK-085-B",
+  "phase": "REVIEW_IDENTITY_RESTRICTIONS_AND_AUTHORIZED_EXPANSION",
+  "baselineHead": "445fbfd57d09108b271261a3d24ba51cd83103ad",
+  "latestDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+  "developMergeCommit": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
+  "branch": "feature/b-poi-transport-node-access-edges",
+  "inputFingerprint": "1acb122f7d655c36009b133127815ff4aa4a16aa6dce814afdb1f5a557ee7764",
+  "status": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
+  "allTopologyHardGatesPass": false,
+  "canonicalRawCount": 100,
+  "assessmentDenominator": 95,
+  "topologyGates": {
+    "pass": 21,
+    "fail": 4
+  },
+  "remainingFailedGates": [
+    {
+      "name": "Valid Canonical POIs with confirmed useful topology",
+      "actual": 0.9894736842105263,
+      "threshold": 1,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ]
+    },
+    {
+      "name": "Zero-node valid accessible POIs",
+      "actual": 1,
+      "threshold": 0,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ]
+    },
+    {
+      "name": "Under-target without exhaustion proof",
+      "actual": 4,
+      "threshold": 0,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594"
+      ]
+    },
+    {
+      "name": "globalTopologyDiscoveryFixpoint",
+      "actual": "IN_PROGRESS",
+      "threshold": "PROVEN",
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594"
+      ]
+    }
+  ],
+  "targetedReceiptSha256": "e8c0740237d9cb76b5f0e9adf028a849ff5a8180913c53c9fd8011a1187622bb",
+  "reviewCorrectionReceiptSha256": "8599269606401750c7fbde3f02ccdb22fbb50cd1ea6c01271f1b3b069c939301",
+  "transportAdmission": {
+    "path": "data/transport/access/node-downstream-admission.jsonl",
+    "revision": "task-085-access-topology-route-metrics-v2",
+    "sha256": "4c23fd1923eed147ce0889d470ef84265114dc464fa79cacdff74fa533dfe07f",
+    "records": 5546,
+    "acceptedTopologyNodes": 5201,
+    "heldNodes": 345,
+    "heldRecordCount": 345,
+    "heldUniqueNodeIdCount": 315,
+    "admittedUniqueNodeIdCount": 5201,
+    "nationalMasterAuthorized": false,
+    "usableAccessNotImplied": true
+  },
+  "checks": [
+    {
+      "check": "full regression repair phase",
+      "exitCode": 1,
+      "logSha256": "671401f00a811a2663e62c8fc459eeddeba8f52707718d4d69b9fcc9615f853f",
+      "tests": 2865,
+      "pass": 2864,
+      "fail": 1,
+      "issue": "one asset child-process 30-second timeout"
+    },
+    {
+      "check": "isolated failed asset file retry",
+      "exitCode": 0,
+      "logSha256": "8c03b47e8cb86db9556c955cd6bd6dfa99e4a0240fca5f24cd016e7396146bde",
+      "tests": 51,
+      "pass": 51,
+      "fail": 0
+    },
+    {
+      "check": "lint",
+      "exitCode": 0,
+      "logSha256": "b8868f0cfdb5622bd5f55eabce65161c098d6d242fd27ef0ef846b2b81da461c",
+      "errors": 0,
+      "warnings": 10
+    },
+    {
+      "check": "type generation",
+      "exitCode": 0,
+      "logSha256": "8b0db89a1e25137a4cb79143a4ea63ae347e6f5f2247f026d984e133255d3084"
+    },
+    {
+      "check": "typecheck",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "format",
+      "exitCode": 0,
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "check": "deployment validate",
+      "exitCode": 0,
+      "logSha256": "083e0a0676cdd45d8ab3ff17cb86f06d40daaf390ad9ae1e4049ca50dac0d676"
+    },
+    {
+      "check": "production build",
+      "exitCode": 0,
+      "logSha256": "bd17094b660140bcfbd53b44e09d30ebd4bea45363b2671293864667c52e6ea8",
+      "artifactFiles": 1908
+    },
+    {
+      "check": "artifact verification",
+      "exitCode": 0,
+      "logSha256": "62c9fe461e08520f875ba218a361cba865e62471a6c58ec9900718bf59f54306"
+    },
+    {
+      "check": "expansion 39 batches",
+      "exitCode": 0,
+      "logSha256": "36d23942ff0b9dd75fc26eb10567093a9bfbe28336445ba4e2cff11108975ea3",
+      "targets": 7791,
+      "canonicalAdmitted": 100,
+      "canonicalHold": 7691,
+      "newCoverage": 0
+    }
+  ],
+  "focusedTests": {
+    "existingAndReview": 36,
+    "expansion": 4,
+    "total": 40,
+    "pass": 40
+  },
+  "fullRegression": "2865 executed; 2864 passed, one asset timeout; isolated file retry 51/51 passed. Final exact-head CI runs all 2869 tests.",
+  "exactHeadQualityGate": "Run workflow_dispatch after push; verified final head and outcome recorded in PR #464 body and delivered workbook.",
+  "runtimeImportAuthorized": false,
+  "productionImportPerformed": false,
+  "task086Started": false
+}

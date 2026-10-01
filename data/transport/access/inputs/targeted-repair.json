@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "1.0",
+  "authorization": "USER_REQUEST_NINE_CASE_REPAIR_2026_10_01",
+  "baseHead": "0cae8b371b717d30d3bace3c6763b11a34e09347",
+  "canonicalDatasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af",
+  "poiIds": [
+    "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+    "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
+    "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
+    "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+    "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+    "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+    "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+    "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
+    "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753"
+  ],
+  "sourceFiles": [
+    {
+      "path": "data/transport/access/sources/hichiso-b5b31423.zip",
+      "sha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea"
+    }
+  ],
+  "extraction": {
+    "entryHashes": {
+      "agency.txt": "ee63fdaf98cf72432c3a00203884c20bc0039e897d0f2924745a38e89cc4f739",
+      "calendar.txt": "df473b07c7b10de7242fcf281041c9a2cb234f869080626559d3a4feb2b72920",
+      "calendar_dates.txt": "12b0e45302f9943455bf281ab3e80fffd19f39f822a7dcf2b03016300fec6ac5",
+      "fare_attributes.txt": "8966de00aba58318d623109d541e278d77a74403670e38d8d60637931c54b471",
+      "fare_rules.txt": "42b8bb55707b9a89c2118fb7735e6edb7dedcc0689e81a9c100f9e5b80d1863c",
+      "feed_info.txt": "39fa7eb8d82f3cfedd1064572224cd0c31886aca997fac143a5bde28df0ba207",
+      "routes.txt": "0be5689b6fa57c4100ae8b5c7681d80a894e0d4b1818ba4e496ba2476b9c9912",
+      "stop_times.txt": "a405d347d640a64a4eb9a48720bbeed538d4c907626043117912c22611896279",
+      "stops.txt": "f39e10139a3a433057b84ea8eac1da9a1c63470e10b22f7c1a9df0e884025c1e",
+      "transfers.txt": "7196a6796eeaa35dcfb2ad8ef125be6786e2e95406d9e10e49dd0d434048938d",
+      "translations.txt": "aa207e6644ab9bcc0d400e5bf667f8992ceca5b9a31446bff5da78e2f294eec6",
+      "trips.txt": "c43cd85f3270b52297625fba12b71308b0739db019ec67d108a492ab85bec68e"
+    },
+    "feedInfo": [
+      {
+        "feed_publisher_name": "七宗町",
+        "feed_publisher_url": "https://www.hichiso.jp/",
+        "feed_lang": "ja",
+        "feed_start_date": "20260401",
+        "feed_end_date": "20270331",
+        "feed_version": "2026/04/01改正-見える化ver2.6"
+      }
+    ],
+    "agencies": [
+      {
+        "agency_id": "9000020215040",
+        "agency_name": "七宗町",
+        "agency_url": "https://www.hichiso.jp/top/life/kurasi/bus/",
+        "agency_timezone": "Asia/Tokyo",
+        "agency_lang": "ja",
+        "agency_phone": "0574-48-1111",
+        "agency_fare_url": "",
+        "agency_email": "t-ido@town.hichiso.ig.jp"
+      }
+    ],
+    "stopCount": 62,
+    "selectedStopIds": [
+      "1_01",
+      "52_01"
+    ]
+  },
+  "rights": [
+    {
+      "sourceId": "hichisotown-choeibus-2047e7b3c4c7",
+      "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus",
+      "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus/files/feed.zip?uid=b5b31423-6012-4a7a-933d-be0b29158c7c",
+      "archiveSha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "七宗町 七宗町営バス GTFS (2026-03-25, CC BY 4.0); TravelAssist selected static stop identities. No route metrics extracted.",
+      "scope": "TWO_REVIEWED_OFFICIAL_GATEWAYS_STATIC_GTFS_ONLY",
+      "rights": {
+        "bulkDatasetDownload": true,
+        "cache": true,
+        "retention": true,
+        "production": true,
+        "derivativePersistence": true
+      },
+      "routeAccessGrant": false
+    }
+  ],
+  "records": [
+    {
+      "sourceId": "hichisotown-choeibus-2047e7b3c4c7",
+      "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus",
+      "archiveSha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea",
+      "name": "上麻生駅",
+      "operator": "七宗町",
+      "nodeKind": "bus_stop",
+      "point": {
+        "latitude": 35.541672,
+        "longitude": 137.118735
+      },
+      "coordinateSemantics": "GTFS_WGS84_boarding_stop_not_POI_entrance",
+      "externalId": "1_01",
+      "sourceRow": {
+        "stop_id": "1_01",
+        "stop_code": "",
+        "stop_name": "上麻生駅",
+        "stop_desc": "",
+        "stop_lat": "35.541672",
+        "stop_lon": "137.118735",
+        "zone_id": "1_01",
+        "stop_url": "",
+        "location_type": "0",
+        "platform_code": ""
+      },
+      "sourceRowSha256": "a046e1520606888ad0deea0b802a7e43c2b0a53a0bf15aa06019f5e2a00bddae",
+      "lines": [],
+      "sourceRecordSha256": "0195de4f29b0410661b38a56ec7cd28cefd0ce2296c73cd60170fa5d95b21f8a"
+    },
+    {
+      "sourceId": "hichisotown-choeibus-2047e7b3c4c7",
+      "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus",
+      "archiveSha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea",
+      "name": "木の国七宗コミュニティ－センタ－前",
+      "operator": "七宗町",
+      "nodeKind": "bus_stop",
+      "point": {
+        "latitude": 35.54187,
+        "longitude": 137.122354
+      },
+      "coordinateSemantics": "GTFS_WGS84_boarding_stop_not_POI_entrance",
+      "externalId": "52_01",
+      "sourceRow": {
+        "stop_id": "52_01",
+        "stop_code": "",
+        "stop_name": "木の国七宗コミュニティ－センタ－前",
+        "stop_desc": "",
+        "stop_lat": "35.54187",
+        "stop_lon": "137.122354",
+        "zone_id": "52_01",
+        "stop_url": "",
+        "location_type": "0",
+        "platform_code": ""
+      },
+      "sourceRowSha256": "b1ef64b3079db7be7088bea3e299dc6b73621958f4d597cb62fd0d0fdb9c4abf",
+      "lines": [],
+      "sourceRecordSha256": "ebdf2063fdbababc0ae7e0f8ee225e6e6bc83a9626b4f3f425169a994433c1a4"
+    }
+  ],
+  "facts": [
+    {
+      "poiId": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+      "poiName": "飛水峡",
+      "gatewayName": "上麻生駅",
+      "operator": "七宗町",
+      "nodeSourceRecordSha256": "0195de4f29b0410661b38a56ec7cd28cefd0ce2296c73cd60170fa5d95b21f8a",
+      "sourceRefs": [
+        "https://www.pref.gifu.lg.jp/page/367643.html",
+        "https://www.hichiso.jp/top/life/kurasi/bus/",
+        "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus"
+      ],
+      "finding": "The existing prefectural Kami-Asou gorge approach and municipal bus interchange now join to publisher GTFS stop 1_01. The March 2026 CC BY 4.0 release was omitted in the previous discovery review. Rail and municipal bus are distinct modal access nodes; no station centroid was reused.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": []
+    },
+    {
+      "poiId": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+      "poiName": "飛水峡",
+      "gatewayName": "木の国七宗コミュニティ－センタ－前",
+      "operator": "七宗町",
+      "nodeSourceRecordSha256": "ebdf2063fdbababc0ae7e0f8ee225e6e6bc83a9626b4f3f425169a994433c1a4",
+      "sourceRefs": [
+        "https://www.hichiso.jp/wp-content/uploads/koho/2024-12%E5%BA%83%E5%A0%B1%E3%81%B2%E3%81%A1%E3%81%9D%E3%81%86NO621.pdf",
+        "https://www.hichiso.jp/top/life/kurasi/bus/",
+        "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus"
+      ],
+      "finding": "Municipal newsletter no.621 page 15 describes the Hisuikyo visitor walk beginning at Kino-kuni Hichiso Community Centre and proceeding towards the gorge. Current licensed municipal GTFS identifies the stop at this exact named departure facility (52_01). This establishes a factual trail approach; the historical event timetable and full-course duration are not imported as current route metrics.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": [
+        "Gorge trail approach; directional route metrics and current trail barrier details remain unresolved."
+      ]
+    },
+    {
+      "poiId": "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
+      "poiName": "田倉山",
+      "gatewayName": "農匠の郷",
+      "operator": "福知山市",
+      "nodeSourceRecordSha256": "ee810273e5f12ac728d545f61678d34d9ad71594332b5717c1bb21076d26c60b",
+      "sourceRefs": [
+        "https://dokkoise.com/spare/mountains/",
+        "https://www.city.fukuchiyama.lg.jp/soshiki/7/1164.html"
+      ],
+      "finding": "Fukuchiyama tourism association explicitly names the municipal Nosho-no-Sato bus stop as access to the Takara/Hozan trailhead. Municipal identity source establishes Takurayama/Hozan equivalence. Exact named P11 municipality/operator record already admitted; the nearby closed indoor facilities are not the endpoint.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": [
+        "Mountain trail access; route metrics and seasonal trail conditions unresolved."
+      ]
+    },
+    {
+      "poiId": "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
+      "poiName": "御影大橋",
+      "gatewayName": "中村神社",
+      "operator": "西日本ジェイアールバス（株）",
+      "nodeSourceRecordSha256": "5b2b384459ddfbdd00cdfaa7ec879083acbb36f19bd7a63c3397335f642bbeab",
+      "sourceRefs": [
+        "https://www4.city.kanazawa.lg.jp/material/files/group/67/mikage.pdf",
+        "https://www.kanazawa-kankoukyoukai.or.jp/lsc/upfile/pamphlet/0000/0077/77_1_file.pdf"
+      ],
+      "finding": "Visual join of municipal Mikage visitor walking guide (course through Nakamura Shrine, Kasuga Shrine and Mikage Bridge) with official tourism Flat Bus map page 2: Nagamachi stop 11 is at Nakamura Shrine on that visitor course. This is a named visitor-route entry point, not a distance-only candidate; P11 exact stop and operator identity matches.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": [
+        "Official visitor walking-course approach; full walking route distance and duration unresolved."
+      ]
+    },
+    {
+      "poiId": "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+      "poiName": "まほろば湖",
+      "gatewayName": "榛原",
+      "operator": "近畿日本鉄道",
+      "nodeSourceRecordSha256": "74e9d3aad984de3fbdebe959e84da2d38eb4143c3677c6528994360f3eab095e",
+      "sourceRefs": [
+        "https://www.kintetsu.co.jp/zigyou/teku2/pdf/nara14.pdf",
+        "https://www.pref.nara.lg.jp/n144/12718.html"
+      ],
+      "finding": "Kintetsu Tekuteku Nara-14 map visually confirms Haibara station north exit as the start of the Torimiyama/Hase-Dam/Hasedera hiking course and labels Mahoroba Lake. Retain as a purposeful mountain hiking approach to the reservoir shore, not the water centroid or a convenient short walk. Map copyright content and full-course metrics are not persisted.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": [
+        "MOUNTAIN_HIKING_APPROACH_NOT_SHORT_LOCAL_WALK",
+        "SHORE_TRAIL_ACCESS_NOT_WATER_CENTROID",
+        "CURRENT_TRAIL_METRICS_UNRESOLVED"
+      ]
+    },
+    {
+      "poiId": "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+      "poiName": "まほろば湖",
+      "gatewayName": "榛原駅（北口）",
+      "operator": "奈良交通（株）",
+      "nodeSourceRecordSha256": "5ba1892c337f075659946acfa6b83e55c4b0de2156318e945ac0819e66460126",
+      "sourceRefs": [
+        "https://www.kintetsu.co.jp/zigyou/teku2/pdf/nara14.pdf",
+        "https://www.pref.nara.lg.jp/n061/43111.html",
+        "https://www.narakotsu.co.jp/news/general/31474/"
+      ],
+      "finding": "Kintetsu visitor hiking map begins at Haibara north exit. Nara prefecture explicitly identifies the Nara Kotsu north-exit bus terminal, and the operator May 2026 timetable notice confirms service there. Exact P11 north-exit stop provides a separate bus entry to the same official shore-hiking approach; no rail coordinates copied and no remote through-station padding.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": [
+        "MOUNTAIN_HIKING_APPROACH_NOT_SHORT_LOCAL_WALK",
+        "SHORE_TRAIL_ACCESS_NOT_WATER_CENTROID",
+        "CURRENT_TRAIL_METRICS_UNRESOLVED"
+      ]
+    },
+    {
+      "poiId": "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753",
+      "poiName": "ミュージアム都留",
+      "gatewayName": "都留市駅",
+      "operator": "富士急バス（株）",
+      "nodeSourceRecordSha256": "8fbda534cb754068ab88353ec548028cac5b515fdd3900bd8f315e2ab694365d",
+      "sourceRefs": [
+        "https://www.yamanashi-kankou.jp/course/study/014.html",
+        "https://www.city.tsuru.yamanashi.jp/soshiki/sangyo/shoko_t/1/11927.html",
+        "https://www.fujikyubus.co.jp/regular/",
+        "https://www.fujikyubus.co.jp/pdf/rosen/tsuru/tsuru-otuki_202602.pdf"
+      ],
+      "finding": "The official prefectural walking course connects Museum Tsuru to Tsuru-shi station; this is already an accepted pedestrian gateway. The operator explicitly confirms that the Tsuru-shi to Otsuki regional bus remains in service after the March 2026 local-bus closures. Exact licensed P11 Tsuru-shi station bus stop establishes the distinct modal arrival node at this gateway. Do not use the discontinued Yamuramachi local bus or substitute the demand-taxi operator.",
+      "reviewStatus": "OFFICIAL_GATEWAY_FACT_REVIEWED",
+      "reviewedOn": "2026-10-01",
+      "evidenceType": "OFFICIAL_TOURISM_ACCESS",
+      "currentPublicAccess": true,
+      "accessConditions": [
+        "Official pedestrian visitor-course approach; direction-specific metrics unresolved."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "name": "飛水峡",
+      "poiId": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+      "reviewedOn": "2026-10-01",
+      "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [
+        "上麻生駅",
+        "木の国七宗コミュニティ－センタ－前"
+      ],
+      "sourceRefs": [
+        "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus",
+        "https://www.hichiso.jp/top/life/kurasi/bus/",
+        "https://www.hichiso.jp/wp-content/uploads/koho/2024-12%E5%BA%83%E5%A0%B1%E3%81%B2%E3%81%A1%E3%81%9D%E3%81%86NO621.pdf",
+        "https://www.pref.gifu.lg.jp/page/367643.html"
+      ],
+      "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+    },
+    {
+      "name": "御影大橋",
+      "poiId": "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
+      "reviewedOn": "2026-10-01",
+      "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [
+        "中村神社"
+      ],
+      "sourceRefs": [
+        "https://www.kanazawa-kankoukyoukai.or.jp/lsc/upfile/pamphlet/0000/0077/77_1_file.pdf",
+        "https://www4.city.kanazawa.lg.jp/material/files/group/67/mikage.pdf"
+      ],
+      "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+    },
+    {
+      "name": "田倉山",
+      "poiId": "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
+      "reviewedOn": "2026-10-01",
+      "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [
+        "農匠の郷"
+      ],
+      "sourceRefs": [
+        "https://dokkoise.com/spare/mountains/",
+        "https://www.city.fukuchiyama.lg.jp/soshiki/7/1164.html"
+      ],
+      "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+    },
+    {
+      "name": "池原橋",
+      "poiId": "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+      "reviewedOn": "2026-10-01",
+      "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [],
+      "sourceRefs": [
+        "https://www.vill.shimokitayama.nara.jp/about/access.html",
+        "https://www.vill.shimokitayama.nara.jp/about/file/6ad29eec28d6f89d5792d9cb90d92db5fc4ce2be.pdf",
+        "https://www.vill.shimokitayama.nara.jp/oshirase/2026/07/0000741.html",
+        "https://www.vill.shimokitayama.nara.jp/about/post.html",
+        "https://kansai-doboku-style.com/post-2275/",
+        "https://nara-wu.repo.nii.ac.jp/record/2005627/files/jointreseachreport_matsuda-okajima.pdf"
+      ],
+      "finding": "Village sources confirm pedestrian passage on Ikehara Bridge and distinguish the regional and village-loop buses. They direct park visitors to Ikehara but do not establish each additional named stop as a bridge gateway. The open-data download page is under maintenance. A university historical fieldwork report suggests a walk via the sports park but does not provide a current official stop-to-bridge access instruction. Neither a generic only-bus assertion nor a search miss proves fewer than three reasonable gateways.",
+      "missingEvidenceTypes": [
+        "ADDITIONAL_OFFICIAL_VISITOR_GATEWAY_RELATIONSHIP",
+        "AUTHORITATIVE_EXHAUSTION_ATTESTATION"
+      ],
+      "candidateNames": [
+        "池原",
+        "池峯公園",
+        "スポーツ公園入口前",
+        "スポーツ公園宿舎前"
+      ],
+      "requiredEvidence": "Current village/tourism bridge access map identifying the named approach stops, or a complete reviewed local gateway inventory with an authoritative fewer-than-three conclusion.",
+      "requestedOwnerAction": "A to coordinate village access/endpoint review; do not change Canonical identity or accept proximity-only relationships.",
+      "physicalExhaustionProven": false,
+      "externalContactPerformed": false
+    },
+    {
+      "name": "まほろば湖",
+      "poiId": "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+      "reviewedOn": "2026-10-01",
+      "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [
+        "榛原",
+        "榛原駅（北口）"
+      ],
+      "sourceRefs": [
+        "https://www.kintetsu.co.jp/zigyou/teku2/pdf/nara14.pdf",
+        "https://www.narakotsu.co.jp/news/general/31474/",
+        "https://www.pref.nara.lg.jp/n061/43111.html",
+        "https://www.pref.nara.lg.jp/n144/12718.html"
+      ],
+      "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+    },
+    {
+      "name": "みさき公園",
+      "poiId": "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+      "reviewedOn": "2026-10-01",
+      "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [],
+      "sourceRefs": [
+        "https://www.town.misaki.osaka.jp/soshiki/shiawase/kankyou/kotsu/900.html",
+        "https://www.town.misaki.osaka.jp/material/files/group/33/unnkourosenn.pdf",
+        "https://www.town.misaki.osaka.jp/soshiki/soumu/digital/5582.html",
+        "https://data.bodik.jp/organization/273660",
+        "https://www.nankai.co.jp/traffic/station/misakikoen.html",
+        "https://www.town.misaki.osaka.jp/soshiki/toshi_seibi/sangyo/kannkou/aratanamisakikouen/3141.html",
+        "https://www.town.misaki.osaka.jp/material/files/group/20/areamap.pdf"
+      ],
+      "finding": "The municipal page updated 2026-07-16 and official areamap.pdf positively establish current restricted opening: A station-front plaza and marked coastal passage; C closed; B parking has separate use rules. The map does not establish licensed precise bus boarding coordinates or each bus stop-to-current-A-entrance join. Current municipal bus documents identify stop names and Yatetsu service, but schematic locations and railway coordinates cannot substitute for bus boarding points. The 2016 walking map is historical, not a 2026 whole-park opening guarantee. Missing identity/access evidence remains HOLD, not a physical exhaustion proof.",
+      "missingEvidenceTypes": [
+        "LICENSED_STOP_COORDINATE_IDENTITY",
+        "CURRENT_PUBLIC_ENTRANCE_JOIN"
+      ],
+      "candidateNames": [
+        "みさき公園駅",
+        "みさき公園駅東口"
+      ],
+      "requiredEvidence": "Attribution/derivative-permitted coordinates of both boarding locations and a current station-exit/public-park-entry join; alternatively surveyed stop identities with reuse permission.",
+      "requestedOwnerAction": "A to obtain the municipal/operator boarding-location table and confirm the current public entrance; retain the existing rail edge.",
+      "physicalExhaustionProven": false,
+      "externalContactPerformed": false
+    },
+    {
+      "name": "阿瀬川橋",
+      "poiId": "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+      "reviewedOn": "2026-10-01",
+      "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [],
+      "sourceRefs": [
+        "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/002/945/toyooka.bridge-tennkennkekka2025.pdf",
+        "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/002/945/toyooka.bridge2025.pdf",
+        "https://www.city.toyooka.lg.jp/kurashi/dorokotsu/buskotsu/1019743.html",
+        "https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/019/743/2026.4mikata.pdf",
+        "https://web.pref.hyogo.lg.jp/ks05/gtfs-jp.html",
+        "https://lib.city.toyooka.lg.jp/kyoudo/komonjo/5ae6b4a8b3124e1c9a896ee4b749641093910208.pdf"
+      ],
+      "finding": "Municipal inventory identifies bridge 1148 on the Shinogaki/Kuriyama old prefectural-road route, and current bus sources establish local service. The historic shrine reference at the western abutment does not establish a current visitor access point or stop-to-endpoint approach. River-camera and similarly named gorge/bridge results do not supply that relation. Existing nearby licensed coordinates are retained as candidates; their 18-25m proximity is not a route or public-access proof.",
+      "missingEvidenceTypes": [
+        "EXACT_PUBLIC_VISITOR_ENDPOINT",
+        "OFFICIAL_OR_LICENSED_ENDPOINT_BOUND_ACCESS"
+      ],
+      "candidateNames": [
+        "栗山",
+        "三方コミセン",
+        "栗山新道"
+      ],
+      "requiredEvidence": "Road/venue owner confirmation of the legitimate current visitor endpoint plus an access map or legally reusable endpoint-bound route from named stops.",
+      "requestedOwnerAction": "A to coordinate road/Canonical owner endpoint evidence. No deletion, relocation, replacement or extra denominator exclusion by B.",
+      "physicalExhaustionProven": false,
+      "externalContactPerformed": false
+    },
+    {
+      "name": "韮崎中央公園陸上競技場",
+      "poiId": "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
+      "reviewedOn": "2026-10-01",
+      "status": "PUBLIC_SOURCE_SEARCH_COMPLETED_EVIDENCE_REQUIRED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [],
+      "sourceRefs": [
+        "https://shisetsu.mizuno.jp/7609-1/access",
+        "https://www.nirasaki-kankou.jp/kankou_spot/kouen_bijyutsukan_shiryokan/kouen_teien/4327.html",
+        "https://www.city.nirasaki.lg.jp/soshikiichiran/zaimuseisakuka/seisakutyouseitanto/2/1305.html",
+        "https://www.city.nirasaki.lg.jp/material/files/group/1/uakaaaws.pdf",
+        "https://api.gtfs-data.jp/v2/organizations/nirasakicity/feeds/shiminbus",
+        "https://www.city.nirasaki.lg.jp/soshikiichiran/digitalsenryakuka/dx/1/opendata.html"
+      ],
+      "finding": "Venue, city and tourism authority explicitly confirm the new arena stop as park/stadium access; the relationship is not missing. The official GTFS metadata is CC0 but currently returns gtfs_files=[] and empty current/next download URLs. The archived feed and P11 do not contain the new September 2025 arena boarding point. Municipal open-data facility coordinates describe buildings, not the stop. Commercial maps were not copied without persistence rights. The mini-SL is an internal attraction and cannot fill a transport access quota.",
+      "missingEvidenceTypes": [
+        "LICENSED_BOARDING_COORDINATES_FOR_NEW_STOP"
+      ],
+      "candidateNames": [
+        "韮崎中央体育館",
+        "富士見ヶ丘公民館"
+      ],
+      "observedMetadataSha256": "5f1012902f82c5763ca19a95b44967fb66308f1d6481b29bd71cda1a5ae2e8ae",
+      "requiredEvidence": "A current licensed stops.txt or operator/city-provided WGS84 point for the arena boarding stop, explicitly distinguishing the 2025 relocated arena from the former gym.",
+      "requestedOwnerAction": "A to obtain the new-stop location/identity from the city or operator; exact venue access evidence is already available and reusable as a factual summary.",
+      "physicalExhaustionProven": false,
+      "externalContactPerformed": false
+    },
+    {
+      "name": "ミュージアム都留",
+      "poiId": "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753",
+      "reviewedOn": "2026-10-01",
+      "status": "NEW_OFFICIAL_EVIDENCE_REVIEWED",
+      "priorFixpointSuperseded": true,
+      "newGatewayNames": [
+        "都留市駅"
+      ],
+      "sourceRefs": [
+        "https://www.city.tsuru.yamanashi.jp/soshiki/sangyo/shoko_t/1/11927.html",
+        "https://www.fujikyubus.co.jp/pdf/rosen/tsuru/tsuru-otuki_202602.pdf",
+        "https://www.fujikyubus.co.jp/regular/",
+        "https://www.yamanashi-kankou.jp/course/study/014.html"
+      ],
+      "finding": "New evidence requires regeneration and gate evaluation; old fixpoint is not reused."
+    }
+  ],
+  "discoveryReviews": [],
+  "phase": "PUBLIC_SOURCE_REVIEW_COMPLETED_WITH_GAPS",
+  "handoffAuthority": "USER_2026_10_01_SEARCH_FIRST_THEN_RETAIN_UNRESOLVED_FOR_A",
+  "receiptSha256": "e8c0740237d9cb76b5f0e9adf028a849ff5a8180913c53c9fd8011a1187622bb"
+}

@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": "1.0",
+  "task": "TASK-085-B",
+  "revision": "task-085-access-topology-route-metrics-v2",
+  "status": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
+  "acceptanceStatus": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
+  "globalTopologyDiscoveryFixpoint": "IN_PROGRESS",
+  "blockingScope": "Topology and route metrics evaluated separately; see failed topology gates and explicit per-POI source/identity proof.",
+  "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "latestDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+  "developMergeCommit": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
+  "postCanonicalReplayAmendment": {
+    "path": "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
+    "sha256": "32f11db52aa2ddb8976f8c72b646e674576a5deb203fe3b8a3d6f11862b50c3b",
+    "revision": "8ac80bf5d684a34145489f27c6cf2e6bd1e22e67"
+  },
+  "executionRules": [
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5905235799",
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906414855",
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5906421675",
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5909795085",
+    "https://github.com/kanzakimy0/TravelAssist/issues/442#issuecomment-5912322940"
+  ],
+  "topologyMetricsAmendment": {
+    "path": "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
+    "sha256": "0ba1be8c699bb2e633ba233710db9dd5e58cd69dde22e535a375d49c9e8a6ea8",
+    "revision": "41389de330df33091af9d33cc825ea8d4387a92d"
+  },
+  "originalTask": {
+    "pr": 449,
+    "branch": "docs/poi-transport-parallel-execution",
+    "revision": "7073c2a5501e9f7e74361fb0bdc6219a99504f87"
+  },
+  "canonical": {
+    "path": "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
+    "sha256": "b4f714078d2780324f9e98fbaf58001177040dbc30d9693e7bfef1019d6643df",
+    "datasetPath": "src/shared/data/canonical-poi-pilot100.v1.json",
+    "datasetRevision": "task-083-a-pilot100-owner-adjudication-v2",
+    "datasetSha256": "0a91f0ec36c193b4a95c15dcad01338286ea91afb5003f3e1abdf7c7a9366ad5",
+    "datasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af",
+    "recordCount": 100,
+    "accessAdjudication": {
+      "path": "src/shared/data/canonical-poi-pilot100.access-adjudication.v1.json",
+      "sha256": "b80ae442d6a5fe883e9491fce6d242c7edce1d4c119e03975a1df43fd0be3d85",
+      "revision": "task-083-a-access-adjudication-20260930-v1",
+      "status": "PASS",
+      "excludedInternalIds": [
+        "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+        "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+        "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+        "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+        "poi:6814946e-289b-5931-8f0f-e397e0073627"
+      ],
+      "assessmentCount": 95,
+      "records": [
+        {
+          "internalId": "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+          "lifecycleStatus": "permanently_closed",
+          "publicAccess": "CLOSED",
+          "entityTreatment": "RETAIN_CLOSED_IDENTITY",
+          "effectiveDate": "2019-02-17",
+          "reasonCode": "VENUE_PERMANENTLY_CLOSED",
+          "evidence": [
+            {
+              "url": "https://bandainamco-am.co.jp/company/asobito/article25.html",
+              "finding": "Operator history states J-WORLD TOKYO closed on 2019-02-17."
+            }
+          ],
+          "decision": "Retain the closed venue identity. Sunshine City and successor venues are not replacements.",
+          "name": "J-WORLD TOKYO",
+          "masterCode": "41201",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+          "lifecycleStatus": "permanently_closed",
+          "publicAccess": "CLOSED",
+          "entityTreatment": "RETAIN_CLOSED_IDENTITY",
+          "effectiveDate": null,
+          "reasonCode": "POOL_OPERATION_ENDED_REDEVELOPMENT",
+          "evidence": [
+            {
+              "url": "https://www.showakinen-koen.jp/facility/facility-615/",
+              "finding": "Park operator states Rainbow Pool ended operations because of ageing facilities and redevelopment."
+            }
+          ],
+          "decision": "Retire this pool as an operating destination. The surrounding park and future water facility are different identities. Exact closure date remains unknown.",
+          "name": "レインボープール",
+          "masterCode": "41211",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+          "lifecycleStatus": "temporarily_closed",
+          "publicAccess": "RESTRICTED_RESIDENTS_RECOVERY_ONLY",
+          "entityTreatment": "RETAIN_ISLAND_IDENTITY",
+          "effectiveDate": null,
+          "reasonCode": "GENERAL_TOURIST_ACCESS_RESTRICTED",
+          "evidence": [
+            {
+              "url": "https://wajimanavi.jp/tourism/hegurajima",
+              "finding": "Official Wajima tourism states ferry resumed on 2026-05-18 for island residents and recovery workers only."
+            }
+          ],
+          "decision": "Temporary closure means unavailable to ordinary tourists, not disappearance of the island. Reopening requires new official public-access evidence and owner reauthorization; no inferred reopen date.",
+          "name": "舳倉島",
+          "masterCode": "31513",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+          "lifecycleStatus": "active",
+          "publicAccess": "NOT_A_VISITOR_ENDPOINT",
+          "entityTreatment": "RETAIN_OPERATING_INFRASTRUCTURE",
+          "effectiveDate": null,
+          "reasonCode": "ROAD_BRIDGE_NOT_AUTHORIZED_VISITOR_DESTINATION",
+          "evidence": [
+            {
+              "url": "https://www.shutoko.co.jp/activities/database/bridge/tsubasa/",
+              "finding": "Operator identifies Tsurumi Tsubasa Bridge as expressway infrastructure."
+            },
+            {
+              "url": "https://www.shutoko.jp/driving/precautions/keepout/",
+              "finding": "Expressway operator prohibits entry by pedestrians and bicycles."
+            }
+          ],
+          "decision": "Keep the operating bridge identity. Do not authorize its representative point as a pedestrian destination or safe drop-off. No replacement viewpoint, parking area or visitor endpoint is designated.",
+          "name": "鶴見つばさ橋",
+          "masterCode": "11056",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        },
+        {
+          "internalId": "poi:6814946e-289b-5931-8f0f-e397e0073627",
+          "lifecycleStatus": "active",
+          "publicAccess": "HISTORICAL_RECORD_ONLY",
+          "entityTreatment": "RETAIN_HISTORICAL_ENTITY_NO_VISIT_ENDPOINT",
+          "effectiveDate": null,
+          "reasonCode": "HISTORICAL_ENTITY_NOT_CURRENT_VISITOR_DESTINATION",
+          "evidence": [
+            {
+              "url": "https://www.city.minato.tokyo.jp/kouhou/kuse/gaiyo/chimerekishi/index-azabu.html",
+              "finding": "Municipal place-name history identifies Gazenbo valley and the historical Gazenbocho area within present Azabudai."
+            },
+            {
+              "url": "https://www.city.minato.tokyo.jp/matizukurikeikakutan/erimanekatudou.html",
+              "finding": "Municipality describes the redeveloped Azabudai Hills public spaces as the current development."
+            },
+            {
+              "url": "https://www.mori.co.jp/projects/azabudaihills/background/",
+              "finding": "Project owner documents the redevelopment history of the Azabudai Hills area."
+            }
+          ],
+          "decision": "Retain the historical entity in the catalog with active identity, historical-record-only use and no current visitor endpoint. This is an owner eligibility decision, not a claim that the geographic valley ceased to exist. Do not merge or rebind it to Azabudai Hills or the memorial park.",
+          "name": "我善坊谷",
+          "masterCode": "31568",
+          "previousLifecycleStatus": "active",
+          "decisionStatus": "FINAL",
+          "owner": "A_CANONICAL",
+          "decidedAt": "2026-09-30T12:58:43Z",
+          "generalTouristAccessEligible": false,
+          "visitorEndpoint": null,
+          "replacementPoiRef": null,
+          "locationPointSemantics": "IDENTITY_REFERENCE_ONLY_NOT_A_VISITOR_ENDPOINT"
+        }
+      ]
+    },
+    "candidateCorpusAuthorized": false,
+    "membershipAndActiveMasterCodeBindingsVerified": true,
+    "supportingSampleManifest": {
+      "path": "data/poi/canonical/pilot-100/sample-manifest.v1.json",
+      "sha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+      "expectedSha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+      "hashMatches": true,
+      "disposition": "PR #465 owner-reissued receipt; raw committed LF bytes verified without changing membership"
+    }
+  },
+  "transport": {
+    "authoritativeNationalDownstreamArtifact": null,
+    "currentReview": {
+      "path": "data/transport/nodes/task-084-b-v2-amendment-review/manifest.json",
+      "sha256": "b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a",
+      "revision": "a25ebb928bb1fc8017d8d9e5c050d717ff5b118b",
+      "downstream085Authorized": false,
+      "runtimeImportAuthorized": false,
+      "nationalMasterStatus": "REWORK_IN_PROGRESS",
+      "nationalMasterPass": false,
+      "formalAcceptedV2NodeCount": 0
+    },
+    "closeout": {
+      "path": "docs/qa/TASK-084-B/v2-user-acceptance-closeout.json",
+      "sha256": "2f18099d0dfc53d1eaa1cbc12b5fe709368eaf3ec0c2ed10da7cae33b06b671b",
+      "fields": {
+        "nationalMasterStatus": "REWORK_IN_PROGRESS",
+        "nationalMasterPass": false,
+        "runtimeImportAuthorized": false,
+        "formalAcceptedV2NodeCount": 0,
+        "downstream085Authorized": false,
+        "downstream086Authorized": false,
+        "n03ProductionJoinExecuted": false
+      }
+    },
+    "historicalV1": {
+      "disposition": "REJECTED_DO_NOT_READ_OR_USE",
+      "consumed": false
+    },
+    "v2CandidatesPromoted": 0,
+    "integrationBoundary": "Task-owned topology admission and GraphRef adapter only; no Planner/API/runtime contract changes."
+  },
+  "inputFingerprint": "1acb122f7d655c36009b133127815ff4aa4a16aa6dce814afdb1f5a557ee7764",
+  "transportAdmission": {
+    "path": "data/transport/access/node-downstream-admission.jsonl",
+    "revision": "task-085-access-topology-route-metrics-v2",
+    "sha256": "4c23fd1923eed147ce0889d470ef84265114dc464fa79cacdff74fa533dfe07f",
+    "records": 5546,
+    "acceptedTopologyNodes": 5201,
+    "heldNodes": 345,
+    "heldRecordCount": 345,
+    "heldUniqueNodeIdCount": 315,
+    "admittedUniqueNodeIdCount": 5201,
+    "nationalMasterAuthorized": false,
+    "usableAccessNotImplied": true
+  },
+  "metrics": {
+    "canonicalPoiProcessedCount": 100,
+    "assessment": {
+      "denominator": 95,
+      "withConfirmedTopology": 94,
+      "underTarget": 4,
+      "zeroNodes": 1,
+      "atLeastTarget": 91,
+      "usefulNodesPerPoi": {
+        "mean": 3.6526315789473682,
+        "median": 3,
+        "min": 0,
+        "max": 6
+      }
+    },
+    "shortfall": 6,
+    "poisWithAtLeastOneAccessNode": 94,
+    "totalDirectedEdges": 694,
+    "unconfirmedDirectedCandidates": 632,
+    "usefulNodesPerPoi": {
+      "mean": 3.47,
+      "median": 3,
+      "min": 0,
+      "max": 6
+    },
+    "edgesPerPoi": {
+      "mean": 6.94,
+      "median": 6,
+      "min": 0,
+      "max": 12
+    },
+    "underTargetPois": 9,
+    "exhaustionProofCoverage": {
+      "numerator": 0,
+      "denominator": 9,
+      "actual": 0
+    },
+    "localNodeCoverage": {
+      "numerator": 70,
+      "denominator": 100,
+      "actual": 0.7
+    },
+    "majorHubCoverage": {
+      "numerator": 1,
+      "denominator": 100,
+      "actual": 0.01
+    },
+    "specialTourismAccessCoverage": {
+      "numerator": 46,
+      "denominator": 100,
+      "actual": 0.46
+    },
+    "modeResolution": {
+      "walking": {
+        "acceptedEdges": {
+          "numerator": 0,
+          "denominator": 694,
+          "actual": 0
+        },
+        "allDirectedCandidates": {
+          "numerator": 0,
+          "denominator": 1326,
+          "actual": 0
+        },
+        "usablePoiCoverage": {
+          "numerator": 0,
+          "denominator": 100,
+          "actual": 0
+        },
+        "assessedPoiCoverage": {
+          "numerator": 0,
+          "denominator": 95,
+          "actual": 0
+        }
+      },
+      "transit": {
+        "acceptedEdges": {
+          "numerator": 0,
+          "denominator": 694,
+          "actual": 0
+        },
+        "allDirectedCandidates": {
+          "numerator": 0,
+          "denominator": 1326,
+          "actual": 0
+        },
+        "usablePoiCoverage": {
+          "numerator": 0,
+          "denominator": 100,
+          "actual": 0
+        },
+        "assessedPoiCoverage": {
+          "numerator": 0,
+          "denominator": 95,
+          "actual": 0
+        }
+      },
+      "taxi": {
+        "acceptedEdges": {
+          "numerator": 0,
+          "denominator": 694,
+          "actual": 0
+        },
+        "allDirectedCandidates": {
+          "numerator": 0,
+          "denominator": 1326,
+          "actual": 0
+        },
+        "usablePoiCoverage": {
+          "numerator": 0,
+          "denominator": 100,
+          "actual": 0
+        },
+        "assessedPoiCoverage": {
+          "numerator": 0,
+          "denominator": 95,
+          "actual": 0
+        }
+      },
+      "directional": {
+        "POI_TO_NODE": {
+          "walking": {
+            "numerator": 0,
+            "denominator": 347,
+            "actual": 0
+          },
+          "transit": {
+            "numerator": 0,
+            "denominator": 347,
+            "actual": 0
+          },
+          "taxi": {
+            "numerator": 0,
+            "denominator": 347,
+            "actual": 0
+          }
+        },
+        "NODE_TO_POI": {
+          "walking": {
+            "numerator": 0,
+            "denominator": 347,
+            "actual": 0
+          },
+          "transit": {
+            "numerator": 0,
+            "denominator": 347,
+            "actual": 0
+          },
+          "taxi": {
+            "numerator": 0,
+            "denominator": 347,
+            "actual": 0
+          }
+        }
+      },
+      "optional": {
+        "accessibility": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 694,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "stairs": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 694,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "elevationGainM": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 694,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "detourRatio": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 694,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        },
+        "durationP90Min": {
+          "edges": {
+            "numerator": 0,
+            "denominator": 694,
+            "actual": 0
+          },
+          "pois": {
+            "numerator": 0,
+            "denominator": 100,
+            "actual": 0
+          }
+        }
+      }
+    },
+    "accessibilityKnownRate": {
+      "numerator": 0,
+      "denominator": 694,
+      "actual": 0
+    },
+    "extremeDetourCount": 0,
+    "routeBarrierQaAssessableCandidates": 0,
+    "unresolvedPoiCount": 6,
+    "unresolvedReasonDistribution": {
+      "OWNER_ADJUDICATED_CLOSED": 2,
+      "OFFICIAL_GATEWAY_IDENTITY_JOIN_REQUIRED": 1,
+      "OWNER_ADJUDICATED_HISTORICAL_RECORD_ONLY": 1,
+      "OWNER_ADJUDICATED_NOT_A_VISITOR_ENDPOINT": 1,
+      "OWNER_ADJUDICATED_RESTRICTED_RESIDENTS_RECOVERY_ONLY": 1
+    },
+    "batchCount": 1,
+    "acceptedNodeProvenance": {
+      "numerator": 5201,
+      "denominator": 5201,
+      "actual": 1
+    },
+    "acceptedEdgeProvenance": {
+      "numerator": 694,
+      "denominator": 694,
+      "actual": 1
+    }
+  },
+  "providerLicenseDecision": {
+    "reviewedOn": "2026-09-30",
+    "sources": [
+      {
+        "sourceId": "mlit-s12-fy2024",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+        "archiveUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/S12/S12-25/S12-25_GML.zip",
+        "archiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+        "attribution": "国土数値情報（駅別乗降客数データ・令和6年度）国土交通省を加工してTravelAssistが作成。Representative points and bounded selection are TravelAssist derivatives.",
+        "scope": "station_topology_only",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "ikoma-community-20260314",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://data.bodik.jp/dataset/292095_1714108666",
+        "archiveUrl": "https://data.bodik.jp/dataset/f305e5a9-a0ee-4d71-8313-2cf7e25bc483/resource/bb299b6f-5560-417d-b183-6d11c0a55726/download/ikoma20260314.zip",
+        "archiveSha256": "b48b71fbc7896fe735a06c5eb7740f055d669e410d250d8ee8cd5423359e0971",
+        "attribution": "生駒市 コミュニティバスGTFSデータ; CC BY 4.0; TravelAssist extracted stop identities and route references.",
+        "scope": "gtfs_stop_topology_and_stop_to_stop_timetable_only",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "seki-itadori-20260401",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://www.city.seki.lg.jp/0000010802.html",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/sekicity/feeds/itadorifureaibus/files/feed.zip?rid=current",
+        "archiveSha256": "2999dfaf94dec85d11da1f75ad58e251ec894a668b825f988c30ff171acd171c",
+        "attribution": "関市 板取ふれあいバス; CC BY 4.0; TravelAssist extracted stop identities and route references.",
+        "scope": "gtfs_stop_topology_and_stop_to_stop_timetable_only",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "mlit-p11-fy2022",
+        "license": "PDL-1.0",
+        "licenseUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+        "sourceUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+        "archiveUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_SHP.zip",
+        "archiveSha256": "12132cc1c349d5d84c1ae90e7e5fff7c12a79540f4487edfae46e9f640bc1c72",
+        "attribution": "国土数値情報（バス停留所データ・令和4年度）国土交通省を加工してTravelAssistが作成。",
+        "scope": "FY2022_static_bus_topology_only_not_service_or_route_confirmation",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false,
+        "individualLicenseEvidence": [
+          "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+          "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0"
+        ]
+      },
+      {
+        "sourceId": "wikidata-Q11542854-r2433153877",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q11542854",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q11542854.json?revision=2433153877",
+        "archiveSha256": "1a0cd655d749016cc0a27855498d70fc13a397026fc2d6b974cdef6590c23507",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "wikidata-Q115034784-r2455070719",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q115034784",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q115034784.json?revision=2455070719",
+        "archiveSha256": "32b01f32fee039775d203c9aa264795a09aca40de3697627f89dcd77f115576c",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "wikidata-Q21019135-r2483298498",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q21019135",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q21019135.json?revision=2483298498",
+        "archiveSha256": "d6f7f7560a182518c0a2fc030bdd10659507f2df0a2b0cd5f16132001f182f73",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "wikidata-Q117217639-r2547368230",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q117217639",
+        "archiveUrl": "https://www.wikidata.org/wiki/Special:EntityData/Q117217639.json?revision=2547368230",
+        "archiveSha256": "69ef6b530b90f65e7f57acc066a2b794f3e4c5513346dfa372038c75c8cbf194",
+        "attribution": "Wikidata structured data (CC0); TravelAssist reviewed named identity against official facility/operator sources. No images, prose, route payload or OSM database imported.",
+        "scope": "FOUR_REVIEWED_STATIC_IDENTITIES_ONLY_NOT_ROUTE_METRICS",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "kitaaikivillage-soneibus-32246a36a0f3",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/kitaaikivillage/feeds/soneibus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/kitaaikivillage/feeds/soneibus/files/feed.zip",
+        "archiveSha256": "32246a36a0f3db2e4edef859e37618f02dff2df2a48c25e9d0b7f116aa259971",
+        "attribution": "kitaaikivillage: soneibus, CC-BY-4.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "kiyosato-kiyosato-picnicbus-62a81300470c",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/kiyosato/feeds/kiyosato-picnicbus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/kiyosato/feeds/kiyosato-picnicbus/files/feed.zip?uid=22ed5e31-0e80-478f-8e7f-a80e6061b1f5",
+        "archiveSha256": "62a81300470c78260f4aba6a728b2f1b36810090b422b9050dffa4d65b6a27f5",
+        "attribution": "kiyosato: kiyosato-picnicbus, CC0-1.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "nirasakicity-shiminbus-fabe809f1234",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/nirasakicity/feeds/shiminbus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/nirasakicity/feeds/shiminbus/files/feed.zip?uid=248948c7-7ef5-4409-b16b-fabaf3b46621",
+        "archiveSha256": "fabe809f1234bb8dd7f757fdb96af077f1200cccb3a208294070d6d5e618464d",
+        "attribution": "nirasakicity: shiminbus, CC0-1.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "yamanashi-hokutocity-hokuto-bus-70412fde4330",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/yamanashi-hokutocity/feeds/hokuto-bus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/yamanashi-hokutocity/feeds/hokuto-bus/files/feed.zip?uid=f1dffba1-0c2d-4729-a797-e2468c04b904",
+        "archiveSha256": "70412fde4330d66e0f65748ae1b83d8153296a89e1c0864870d227e6ebc12892",
+        "attribution": "yamanashi-hokutocity: hokuto-bus, CC-BY-4.0. TravelAssist derived static stop identities; timetable freshness is not asserted.",
+        "scope": "STATIC_STOP_IDENTITY_ONLY_INDEPENDENT_OFFICIAL_GATEWAY_EVIDENCE_REQUIRED",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      },
+      {
+        "sourceId": "hichisotown-choeibus-2047e7b3c4c7",
+        "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus",
+        "archiveUrl": "https://api.gtfs-data.jp/v2/organizations/hichisotown/feeds/choeibus/files/feed.zip?uid=b5b31423-6012-4a7a-933d-be0b29158c7c",
+        "archiveSha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea",
+        "license": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "七宗町 七宗町営バス GTFS (2026-03-25, CC BY 4.0); TravelAssist selected static stop identities. No route metrics extracted.",
+        "scope": "TWO_REVIEWED_OFFICIAL_GATEWAYS_STATIC_GTFS_ONLY",
+        "rights": {
+          "bulkDatasetDownload": true,
+          "cache": true,
+          "retention": true,
+          "production": true,
+          "derivativePersistence": true
+        },
+        "routeAccessGrant": false
+      }
+    ],
+    "routeProviders": [
+      {
+        "provider": "Google Routes",
+        "decision": "FAIL_CLOSED",
+        "reason": "Repository choice is not a bulk/cache/retention/production/derived-edge persistence grant."
+      },
+      {
+        "provider": "Ekiworld",
+        "decision": "FAIL_CLOSED",
+        "reason": "Evaluation only; persistence none; TTL null."
+      },
+      {
+        "provider": "Kyoto City Bus ODPT",
+        "decision": "FAIL_CLOSED",
+        "sourceUrl": "https://ckan.odpt.org/dataset/kyoto_municipal_transportation_kyoto_city_bus_gtfs",
+        "reason": "Dataset requires basic and provider-specific terms; current resource download/grants not accessible without developer workflow. No feed fetched."
+      },
+      {
+        "provider": "Official access webpages",
+        "decision": "DISCOVERY_AND_FACTUAL_REVIEW_ONLY",
+        "reason": "No full payload stored; public visibility is not a verified route-metric persistence grant. Most approaches also omit distance, reverse direction or complete last leg."
+      }
+    ],
+    "providerBatchRequests": 0,
+    "rawRouteProviderPayloadsPersisted": 0
+  },
+  "execution": {
+    "deterministicRebuild": "PASS_TWO_INDEPENDENT_FULL_ARTIFACT_BUILDS_COMPARED_BEFORE_WRITE",
+    "providerBatchRequests": 0,
+    "rawRouteProviderPayloadsPersisted": 0,
+    "task086Started": false,
+    "autoFixIterationCount": 13,
+    "batchIntegrityQa": "PASS_GENERATED_RECEIPTS_AND_INJECTED_CORRUPTION",
+    "accessAcceptance": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
+    "globalTopologyDiscoveryFixpoint": "IN_PROGRESS",
+    "candidateExhaustionProofCount": 0
+  },
+  "wbs715Status": "进行中",
+  "sourceFiles": [
+    {
+      "path": "data/transport/access/inputs/baseline-directed-candidates.jsonl",
+      "sha256": "ae6644b4e2010e42ef28d5ef85f53874dbcfe1a5f4ae5695c9e5a84b7855de4a"
+    },
+    {
+      "path": "data/transport/access/inputs/baseline-node-decisions.json",
+      "sha256": "e62b7f3e47ee9bf0ce001434a011851aba6881d46f65a88606122eb41c43d16a"
+    },
+    {
+      "path": "data/transport/access/inputs/canonical-access-blockers.json",
+      "sha256": "785966d57b0d72785ff23f090ea6900d5823c1bee70b68bad8a8ab18ea4d9f0e"
+    },
+    {
+      "path": "data/transport/access/inputs/canonical-supporting-hash-audit.json",
+      "sha256": "a408f821282486088ca84d0aadf7e36879b9f49e223be679babd231bdb41eb70"
+    },
+    {
+      "path": "data/transport/access/inputs/config.json",
+      "sha256": "1d17dc808e425dabb904a4fa45eae28b58af7247b91fef5bb83d30e11c8f9360"
+    },
+    {
+      "path": "data/transport/access/inputs/discovery-review-findings.json",
+      "sha256": "9acd19fdc71146425a631f24024eb904b2f41516b2b67ec182b4640bccf0f91e"
+    },
+    {
+      "path": "data/transport/access/inputs/discovery-review.json",
+      "sha256": "b9588a0423d1577c203ddc59155067070b02ecb11b69c13e23ae67edbecf7ba4"
+    },
+    {
+      "path": "data/transport/access/inputs/expanded-gtfs-extraction.json",
+      "sha256": "5f28e1dc9293bae36e00b2dbced78c8aa75ef4af14080b2aee8809ff08de93a4"
+    },
+    {
+      "path": "data/transport/access/inputs/expanded-gtfs-source-records.jsonl",
+      "sha256": "bbc56e906664cd962d4a600eae224b4d5a31cb7a6106670383c743063da3d8ff"
+    },
+    {
+      "path": "data/transport/access/inputs/expanded-gtfs-sources.json",
+      "sha256": "a9c460a348ddfe6de373f7b6fce90681703c3e531d9fe286079567ffb7caef2d"
+    },
+    {
+      "path": "data/transport/access/inputs/gateway-fact-reviews.json",
+      "sha256": "4b4a0b016ca3e40e5275f479ef7e3f3d35d7f81666f2673e59aae58861df248a"
+    },
+    {
+      "path": "data/transport/access/inputs/gateway-identity-decisions.json",
+      "sha256": "e17556dbcff04e726959378d8198c78b3579e8128599e26bea510df59d976670"
+    },
+    {
+      "path": "data/transport/access/inputs/gtfs-extraction.json",
+      "sha256": "8d7f8dfc407c5e8a487df27a17a257237fb81e1c7f2df685d3ad8ffb662c4483"
+    },
+    {
+      "path": "data/transport/access/inputs/gtfs-source-records.jsonl",
+      "sha256": "23aea2e53a3da364a0b5f17b727e033d3307321816dd2426e23570c7600d8996"
+    },
+    {
+      "path": "data/transport/access/inputs/named-extraction.json",
+      "sha256": "39a18090f4d47ba4386368ba785aa8e1dbbb616a055c9e6b55778ccc281c8a3d"
+    },
+    {
+      "path": "data/transport/access/inputs/named-source-records.jsonl",
+      "sha256": "a2a9fa6e3f3e173238241c0ccdb71010f8525421d1e5f81e9f7437337dfcacc5"
+    },
+    {
+      "path": "data/transport/access/inputs/named-source-scans.jsonl",
+      "sha256": "00742b6e531b3b4907cf5733a743c2c15f7b852c01a7e6e26ef511e35e80c8fb"
+    },
+    {
+      "path": "data/transport/access/inputs/node-identity-bindings.jsonl",
+      "sha256": "6d0bac4771176fd64b8f76334082709242acae5a3234f6d2fca6a96878a410fe"
+    },
+    {
+      "path": "data/transport/access/inputs/observed-replays.json",
+      "sha256": "3862124e1c9eeee7320cd2de99f90603ed44ce86c879351deb61e4b1ce2a3473"
+    },
+    {
+      "path": "data/transport/access/inputs/official-access-expansion.json",
+      "sha256": "d5a23d443d82a0cf24a335b7710c4aea135aea1a305dd5a45b4d3bd09609427e"
+    },
+    {
+      "path": "data/transport/access/inputs/official-access-research.json",
+      "sha256": "91cfd91297daa520a7a595444919007d6df4b3b9f0650b95c9f9ec7bfcf26505"
+    },
+    {
+      "path": "data/transport/access/inputs/p11-extraction.json",
+      "sha256": "2dd25c21e280abe2220599aa7c3ced9b705342c38e3e037339fd17e5e257c7b1"
+    },
+    {
+      "path": "data/transport/access/inputs/p11-source-records.jsonl",
+      "sha256": "81cf7ed5721e755c35cc232edf2098820cb707e61a9a05a23ea4034ec8477e35"
+    },
+    {
+      "path": "data/transport/access/inputs/p11-spatial-scan.jsonl",
+      "sha256": "39cb375229a60b577291ae52b53c8c610ba06fc24b1c0f1570f6bd47cede444a"
+    },
+    {
+      "path": "data/transport/access/inputs/post-canonical-replay.json",
+      "sha256": "37af909d082acc2f32e22470d316c596606a2220f4cbd34c3ce06469d0ec01e0"
+    },
+    {
+      "path": "data/transport/access/inputs/reviewed-source-records.jsonl",
+      "sha256": "dc60265c522b2c74ae1480565b863b7fd89307b46108de0641ca93bb6b93e7cc"
+    },
+    {
+      "path": "data/transport/access/inputs/route-observations.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/transport/access/inputs/s12-extraction.json",
+      "sha256": "cb63b2a7eb70bfd91f2381d8dadf13bec03fa4d7c90be7789ff03d3ef60f7abb"
+    },
+    {
+      "path": "data/transport/access/inputs/s12-source-records.jsonl",
+      "sha256": "8322f2141f7f54f6d739267861dfcdf0abfb01a15f8f6fa3115c552a93b0a812"
+    },
+    {
+      "path": "data/transport/access/inputs/s12-spatial-scan.jsonl",
+      "sha256": "46ae7b8f491b3ecbb9921d3fb70c82e9a3da8fe58192e59056f930fced87680a"
+    },
+    {
+      "path": "data/transport/access/inputs/source-rights.json",
+      "sha256": "c7b72a5221c0ce2373963d81fe4b8d811ef11f0d4afa9ae28165bd9bd60b8ef3"
+    },
+    {
+      "path": "data/transport/access/inputs/supplemental-extraction.json",
+      "sha256": "d11796131c40c9b2085542b65af7feb9b0c0f67ee1146fe467e116db31a56e03"
+    },
+    {
+      "path": "data/transport/access/inputs/supplemental-source-records.jsonl",
+      "sha256": "7bd44304dbb20d602ae58b47c586297054da22d94aded5316d8c828600c89cf6"
+    },
+    {
+      "path": "data/transport/access/inputs/targeted-repair.json",
+      "sha256": "9bd8399e8b72f0b9f748b45727f2167807bb7d21c11ffb0979fb4fa5643cca6f"
+    },
+    {
+      "path": "data/transport/access/inputs/topology-review-seal.json",
+      "sha256": "892937dd85747d42111f5f1e896fd051fe56df33334445677cf4f1e2e3af0b22"
+    },
+    {
+      "path": "data/transport/access/inputs/topology-review.json",
+      "sha256": "6807427f25a68dafcab1d1f05c461c3f9170e985e3113411b93d9de16db7282e"
+    },
+    {
+      "path": "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
+      "sha256": "32f11db52aa2ddb8976f8c72b646e674576a5deb203fe3b8a3d6f11862b50c3b"
+    },
+    {
+      "path": "tools/transport/task-085-canonical-replay.mjs",
+      "sha256": "2adbf28d76984cbbeb087ce1084adfd75b49ee45e51d906b29502ae9a6dfadf6"
+    },
+    {
+      "path": "tools/transport/task-085-targeted-repair.mjs",
+      "sha256": "6d976c08c995aba06f2f4e282c0b6702cf36aa2b13fe29f7e72d80755a316ca2"
+    },
+    {
+      "path": "tools/transport/task-085-review-corrections.mjs",
+      "sha256": "c6f45508d2dd4252cc3aa7b386b39918f9255dee65de99c78ab361839da52771"
+    },
+    {
+      "path": "tools/transport/task-085-targeted-source-check.py",
+      "sha256": "363ffc1f225c288f33b00238f52ebf468587f76c4a32409cb904d5d64c608e71"
+    },
+    {
+      "path": "src/server/poi-runtime/access-adjudication.ts",
+      "sha256": "e895111f14a1deff7b44b4ae350b9bcd60eb5296c05501415a0d31813b7deb1e"
+    },
+    {
+      "path": "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
+      "sha256": "0ba1be8c699bb2e633ba233710db9dd5e58cd69dde22e535a375d49c9e8a6ea8"
+    },
+    {
+      "path": "tools/transport/task-085-gate0.mjs",
+      "sha256": "94c51773384c296e6f4c5bb95e1af44e83feb491dc0dabb9d73c10e0170a3576"
+    },
+    {
+      "path": "tools/transport/task-085-topology-acceptance.mjs",
+      "sha256": "6dcab0af92f5967d03561a9a6952c450ecdb930fe333a2952cbcbb1efe358d6d"
+    },
+    {
+      "path": "tools/transport/task-085-p11-extract.py",
+      "sha256": "9042ff6bcf26c567172f879153e737db86cbea024089ae51a4ef5258576876c8"
+    },
+    {
+      "path": "tools/transport/task-085-named-extract.py",
+      "sha256": "b7c2f3e66911a9b8a344185c20b053fae0acb43ffd1c06d34df88dead2209cce"
+    },
+    {
+      "path": "tools/transport/task-085-supplemental-extract.py",
+      "sha256": "5ef310eadd0ddae86c3be9c1b0e32870b3d28803539325469925b8513e905311"
+    },
+    {
+      "path": "tools/transport/task-085-topology-review.mjs",
+      "sha256": "1151f928a10f93a8c08cfea1a26f381d4b8f2e0e19838ff518796ed4e853e7f2"
+    },
+    {
+      "path": "tools/transport/task-085-access-core.mjs",
+      "sha256": "a488fa8cf3377d2785760adad4fc9e79cc821c14ec0578ae8c6fa9fdc537e007"
+    },
+    {
+      "path": "tools/transport/task-085-access-generation.mjs",
+      "sha256": "664f07cf1b3e2a9c39ecb796c5b43a5d47aac8518469775553fa26c5ad217868"
+    },
+    {
+      "path": "tools/transport/task-085-source-extract.py",
+      "sha256": "9ae51270b921a29666c1fd43202619c5ecfd85cafc5078a3d42a6f6ecf0f8adb"
+    },
+    {
+      "path": "tools/transport/task-085-gtfs-extract.py",
+      "sha256": "33f92eab94649a974c1476d5357330588d8237e675841463e63abd77337ee03e"
+    },
+    {
+      "path": "tools/transport/task-085-expanded-gtfs-extract.py",
+      "sha256": "225cefbe77eef51acc405a75c8b827866c1d81f6b6ea3cacf7ae996e72bcd1d2"
+    },
+    {
+      "path": "src/shared/poi-edge-graph/index.ts",
+      "sha256": "b172b004129469f396f55a81bbc04746cca6f0d6400791b7d608dec5bba0218c"
+    },
+    {
+      "path": "data/transport/access/reviews/identity-corrections.json",
+      "sha256": "5af2e3872f5fbc3b87ae726eb59c2a4d3b3b5d14533527a1457b59234361d68d"
+    },
+    {
+      "path": "data/transport/access/sources/hichiso-b5b31423.zip",
+      "sha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea"
+    }
+  ],
+  "generatedArtifactHashes": {
+    "batches/0001/edges.jsonl": "81cfd0d95e5590a60d18549cae1375d01baab55123cb0ba3c7404d08a3b3ce0c",
+    "batches/0001/unconfirmed-directed-candidates.jsonl": "b737246077e32e502e5b6e9dbd2f68cd440144e6837b7e4ac4a24c5f5b776e61",
+    "batches/0001/candidate-node-decisions.jsonl": "2d9b336b866f80a0c24b11b11df21709fbc78110c35101bf156830c6f1947bda",
+    "batches/0001/unresolved.jsonl": "fad729fc8498cc7ee201ce21db3093e4f498412a37219aa6c84256b67dbbc3ef",
+    "batches/0001/spatial-scans.jsonl": "ff72ec04418b4ad3c90f64fde94c1e162eb777f1e0537c83d6c5cb12da77bbe9",
+    "batches/0001/score-traces.jsonl": "45fa571860e26d841737796089d49b4af2973e48a2b08db0bb0f07b77b3da395",
+    "batches/0001/rejected-observations.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "batch-receipts/0001.json": "a4ab9061dcc870a87e1aafbc562e56ffea356b48ee897a34662e1efca43c8fcb",
+    "poi-transport-access-edges.jsonl": "81cfd0d95e5590a60d18549cae1375d01baab55123cb0ba3c7404d08a3b3ce0c",
+    "topology-confirmed-edges.jsonl": "81cfd0d95e5590a60d18549cae1375d01baab55123cb0ba3c7404d08a3b3ce0c",
+    "route-metric-unresolved.jsonl": "814bb4e0e3f6084e79941aa0884ac5972e5d25bac6cd75cd67e259fa27f556d1",
+    "canonical-adjudication-required.json": "a9d39db599fef700aa241680dc23cbe0b48256936c97b83b74d8f224e60370eb",
+    "baseline-revalidation.json": "fa8d564b3f8feb5f9ad7472094dff3ddeee0c8dc8a9792d4c4f3c5b74f04ac7c",
+    "post-canonical-replay-audit.json": "54169c913fe3673ecb16bbc8e4d5a567553749114f4774ee1c40593def021652",
+    "poi-access-unresolved.jsonl": "fad729fc8498cc7ee201ce21db3093e4f498412a37219aa6c84256b67dbbc3ef",
+    "poi-access-score-traces.jsonl": "45fa571860e26d841737796089d49b4af2973e48a2b08db0bb0f07b77b3da395",
+    "candidate-node-decisions.jsonl": "2d9b336b866f80a0c24b11b11df21709fbc78110c35101bf156830c6f1947bda",
+    "node-downstream-admission.jsonl": "4c23fd1923eed147ce0889d470ef84265114dc464fa79cacdff74fa533dfe07f",
+    "topology-evidence-export.jsonl": "d22cbc0d49398e5576495381484facae99364ec1de550191aeb38c5e09ce8c4f",
+    "identity-correction-audit.json": "5af2e3872f5fbc3b87ae726eb59c2a4d3b3b5d14533527a1457b59234361d68d",
+    "review-remediation-audit.json": "430cf6fe5f7bf06e1a39684541d84b3ff0488287d163e40eed4c1d76fb94b55c",
+    "poi-access-completeness.json": "6acdd81f614e9a23a16bf93d3171e2898d8b348fa115ee8445c720f5056cb5f6",
+    "under-target-pois.json": "2234bdbae84cd1e5d8ea7ba811f4c69d91722d2f1716dbd40267167ac258307f",
+    "candidate-exhaustion-proofs.jsonl": "65245af79f8a5085b415c01edae85e3b16d1eae8a61222b556da7a2bd0a55192",
+    "coverage-by-region.json": "b8766314c32e52cad0a585bad9c302b101910ffd0ede83651fc19988a58e9f1a",
+    "access-role-coverage.json": "31015c182ce8e141161a408042b6cdf6cfbf1b3803a95614b3cedffa5e25a03b",
+    "mode-resolution-coverage.json": "ccc9d37e6162c880a2454ada1b8056d194e6be486cf164374917f907ab570e7b",
+    "detour-anomalies.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "auto-fix-iterations.jsonl": "46c8f6065030bea35a71c1084f6b92fc51af4d3a80743d4cb12ca722ad3e8b77",
+    "final-acceptance-gate.json": "5243587ab6422a69fbb8394a91843f05c911e8c78a858d2b591020543e93cd86",
+    "batches/README.md": "146a1ddcdf6be683a1737a109a037156962492f6345a3d992d0c695431db9ba5",
+    "batch-receipts/README.md": "70ad0a5b2bddfeb1cb86e252d36acb280c2a55bb2434c59034e6840ba702c5cc"
+  }
+}

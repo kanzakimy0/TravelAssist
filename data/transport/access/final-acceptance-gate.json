@@ -1,0 +1,471 @@
+{
+  "schemaVersion": "2.0",
+  "status": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
+  "allPass": false,
+  "nonCanonicalPass": false,
+  "auditedExceptionsOnly": false,
+  "auditedFixpointExceptionCount": 0,
+  "remainingFailedGates": [
+    {
+      "name": "Valid Canonical POIs with confirmed useful topology",
+      "actual": 0.9894736842105263,
+      "threshold": 1,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ]
+    },
+    {
+      "name": "Zero-node valid accessible POIs",
+      "actual": 1,
+      "threshold": 0,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ]
+    },
+    {
+      "name": "Under-target without exhaustion proof",
+      "actual": 4,
+      "threshold": 0,
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594"
+      ]
+    },
+    {
+      "name": "globalTopologyDiscoveryFixpoint",
+      "actual": "IN_PROGRESS",
+      "threshold": "PROVEN",
+      "status": "FAIL",
+      "affectedPoiIds": [
+        "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+        "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+        "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+        "poi:6013cd32-977a-500b-9de7-a7a2538f7594"
+      ]
+    }
+  ],
+  "userAcceptanceRequired": false,
+  "canonicalPendingAdjudicationCount": 0,
+  "inputFingerprint": "1acb122f7d655c36009b133127815ff4aa4a16aa6dce814afdb1f5a557ee7764",
+  "authoritativeCanonicalCount": 100,
+  "canonicalAdjudicationCount": 5,
+  "validAccessibleAssessmentCount": 95,
+  "denominatorPolicy": "All authorized Canonical records remain in outputs and raw coverage. Exceptions are explicit owner adjudications, never deleted or silently accepted. Both full-corpus and valid-subset counts are reported.",
+  "globalTopologyDiscoveryFixpoint": "IN_PROGRESS",
+  "topologyGates": [
+    {
+      "name": "Canonical scan coverage",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Explicit result coverage",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Canonical supporting manifest integrity",
+      "actual": true,
+      "threshold": true,
+      "status": "PASS",
+      "evidencePath": "../../../docs/qa/TASK-085-B/canonical-supporting-hash-audit.md",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Valid Canonical POIs with confirmed useful topology",
+      "actual": 0.9894736842105263,
+      "threshold": 1,
+      "status": "FAIL",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Mean useful topology nodes per valid POI",
+      "actual": 3.6526315789473682,
+      "threshold": ">=3",
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Median useful topology nodes per valid POI",
+      "actual": 3,
+      "threshold": ">=3",
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Zero-node valid accessible POIs",
+      "actual": 1,
+      "threshold": 0,
+      "status": "FAIL",
+      "evidencePath": "under-target-pois.json",
+      "owner": "B"
+    },
+    {
+      "name": "Under-target without exhaustion proof",
+      "actual": 4,
+      "threshold": 0,
+      "status": "FAIL",
+      "evidencePath": "candidate-exhaustion-proofs.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Accepted node provenance",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "node-downstream-admission.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Topology edge provenance",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Essential topology fields",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Duplicate topology edge",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Invalid identity",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Two directed topology records per relationship",
+      "actual": true,
+      "threshold": true,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Original baseline decisions preserved",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "baseline-revalidation.json",
+      "owner": "B"
+    },
+    {
+      "name": "Access restrictions preserved and runtime disabled",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl#/task085Access",
+      "owner": "B"
+    },
+    {
+      "name": "Rejected TASK-084 v1 usage",
+      "actual": false,
+      "threshold": false,
+      "status": "PASS",
+      "evidencePath": "manifest.json",
+      "owner": "B"
+    },
+    {
+      "name": "Unreviewed TASK-084 v2 bulk promotion",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "manifest.json",
+      "owner": "B"
+    },
+    {
+      "name": "Deterministic rebuild",
+      "actual": "PASS_TWO_INDEPENDENT_FULL_ARTIFACT_BUILDS_COMPARED_BEFORE_WRITE",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "manifest.json#/execution",
+      "owner": "B"
+    },
+    {
+      "name": "Batch resume checksum corruption detection",
+      "actual": "PASS_GENERATED_RECEIPTS_AND_INJECTED_CORRUPTION",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "batch-receipts/",
+      "owner": "B"
+    },
+    {
+      "name": "Graph growth guard",
+      "actual": 694,
+      "threshold": "<= canonicalCount * maxNodes * 2",
+      "status": "PASS",
+      "evidencePath": "manifest.json#/metrics",
+      "owner": "B"
+    },
+    {
+      "name": "globalTopologyDiscoveryFixpoint",
+      "actual": "IN_PROGRESS",
+      "threshold": "PROVEN",
+      "status": "FAIL",
+      "evidencePath": "candidate-exhaustion-proofs.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Canonical lifecycle public access and endpoint adjudication",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "canonical-adjudication-required.json",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Canonical owner assessment denominator",
+      "actual": 95,
+      "threshold": 95,
+      "status": "PASS",
+      "evidencePath": "canonical-adjudication-required.json",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Post-Canonical evidence and fixpoint proof replay",
+      "actual": "PASS",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "post-canonical-replay-audit.json",
+      "owner": "B"
+    }
+  ],
+  "gates": [
+    {
+      "name": "Canonical scan coverage",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Explicit result coverage",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Canonical supporting manifest integrity",
+      "actual": true,
+      "threshold": true,
+      "status": "PASS",
+      "evidencePath": "../../../docs/qa/TASK-085-B/canonical-supporting-hash-audit.md",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Valid Canonical POIs with confirmed useful topology",
+      "actual": 0.9894736842105263,
+      "threshold": 1,
+      "status": "FAIL",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Mean useful topology nodes per valid POI",
+      "actual": 3.6526315789473682,
+      "threshold": ">=3",
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Median useful topology nodes per valid POI",
+      "actual": 3,
+      "threshold": ">=3",
+      "status": "PASS",
+      "evidencePath": "poi-access-completeness.json",
+      "owner": "B"
+    },
+    {
+      "name": "Zero-node valid accessible POIs",
+      "actual": 1,
+      "threshold": 0,
+      "status": "FAIL",
+      "evidencePath": "under-target-pois.json",
+      "owner": "B"
+    },
+    {
+      "name": "Under-target without exhaustion proof",
+      "actual": 4,
+      "threshold": 0,
+      "status": "FAIL",
+      "evidencePath": "candidate-exhaustion-proofs.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Accepted node provenance",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "node-downstream-admission.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Topology edge provenance",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Essential topology fields",
+      "actual": 1,
+      "threshold": 1,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Duplicate topology edge",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Invalid identity",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Two directed topology records per relationship",
+      "actual": true,
+      "threshold": true,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Original baseline decisions preserved",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "baseline-revalidation.json",
+      "owner": "B"
+    },
+    {
+      "name": "Access restrictions preserved and runtime disabled",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "topology-confirmed-edges.jsonl#/task085Access",
+      "owner": "B"
+    },
+    {
+      "name": "Rejected TASK-084 v1 usage",
+      "actual": false,
+      "threshold": false,
+      "status": "PASS",
+      "evidencePath": "manifest.json",
+      "owner": "B"
+    },
+    {
+      "name": "Unreviewed TASK-084 v2 bulk promotion",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "manifest.json",
+      "owner": "B"
+    },
+    {
+      "name": "Deterministic rebuild",
+      "actual": "PASS_TWO_INDEPENDENT_FULL_ARTIFACT_BUILDS_COMPARED_BEFORE_WRITE",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "manifest.json#/execution",
+      "owner": "B"
+    },
+    {
+      "name": "Batch resume checksum corruption detection",
+      "actual": "PASS_GENERATED_RECEIPTS_AND_INJECTED_CORRUPTION",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "batch-receipts/",
+      "owner": "B"
+    },
+    {
+      "name": "Graph growth guard",
+      "actual": 694,
+      "threshold": "<= canonicalCount * maxNodes * 2",
+      "status": "PASS",
+      "evidencePath": "manifest.json#/metrics",
+      "owner": "B"
+    },
+    {
+      "name": "globalTopologyDiscoveryFixpoint",
+      "actual": "IN_PROGRESS",
+      "threshold": "PROVEN",
+      "status": "FAIL",
+      "evidencePath": "candidate-exhaustion-proofs.jsonl",
+      "owner": "B"
+    },
+    {
+      "name": "Canonical lifecycle public access and endpoint adjudication",
+      "actual": 0,
+      "threshold": 0,
+      "status": "PASS",
+      "evidencePath": "canonical-adjudication-required.json",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Canonical owner assessment denominator",
+      "actual": 95,
+      "threshold": 95,
+      "status": "PASS",
+      "evidencePath": "canonical-adjudication-required.json",
+      "owner": "A_CANONICAL"
+    },
+    {
+      "name": "Post-Canonical evidence and fixpoint proof replay",
+      "actual": "PASS",
+      "threshold": "PASS",
+      "status": "PASS",
+      "evidencePath": "post-canonical-replay-audit.json",
+      "owner": "B"
+    }
+  ],
+  "metricGates": {
+    "affectTopologyExistence": false,
+    "walking": "Separate directional resolution coverage",
+    "transit": "Separate directional resolution coverage",
+    "taxi": "Separate directional resolution coverage",
+    "evidencePath": "mode-resolution-coverage.json"
+  }
+}
