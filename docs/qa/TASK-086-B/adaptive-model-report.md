@@ -119,5 +119,16 @@ The original ten iteration records are retained byte-for-byte. Subsequent phases
 | 121 | 121-hikawadai-municipal-actual-directional-bus-and-tobunerima-gateway | 89 | 461 | 9 | 15 | 23 | True |
 | 122 | 122-ou54-directional-gateway-and-reviewed-current-stop-name | 89 | 462 | 9 | 12 | 24 | True |
 | 123 | 123-toei-licensed-tram-liner-and-three-hub-connections | 89 | 462 | 9 | 42 | 90 | True |
+| 124 | 124-meitetsu-three-directional-sections-and-metro-boundary-hubs | 89 | 462 | 9 | 34 | 70 | True |
+| 125 | 125-four-current-exact-component-passenger-connections | 89 | 462 | 9 | 4 | 8 | True |
+| 126 | 126-four-tama-area-hubs-with-six-reviewed-component-pairs | 89 | 462 | 9 | 5 | 12 | True |
+| 127 | 127-chiba-and-omiya-t0-current-public-component-connections | 89 | 462 | 9 | 2 | 8 | True |
+| 128 | 128-three-hankai-metro-current-public-passenger-connections | 89 | 462 | 9 | 3 | 8 | True |
+| 129 | 129-oshiage-skytree-current-public-surface-connection | 89 | 462 | 9 | 1 | 2 | True |
+| 130 | 130-three-t1-current-component-passenger-connections | 89 | 462 | 9 | 3 | 6 | True |
+| 131 | 131-ichinomiya-and-fujigaoka-current-public-connections | 89 | 462 | 9 | 2 | 4 | True |
+| 132 | 132-four-regional-t1-current-component-connections | 89 | 462 | 9 | 4 | 8 | True |
+| 133 | 133-hakkei-and-motoyawata-missing-public-connections | 89 | 462 | 9 | 1 | 4 | True |
+| 134 | 134-mishima-three-current-rail-component-transfer-gates | 89 | 462 | 9 | 1 | 4 | True |
 
 Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).

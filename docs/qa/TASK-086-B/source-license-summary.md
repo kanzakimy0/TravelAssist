@@ -2,7 +2,7 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-Executed source actions: **208**. Recorded source/terms observations: **1121**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 13, 'TOPOLOGY_FACT_ONLY_ALLOWED': 173, 'REFERENCE_ONLY_DISCOVERY': 22}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
+Executed source actions: **258**. Recorded source/terms observations: **1327**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 13, 'TOPOLOGY_FACT_ONLY_ALLOWED': 213, 'REFERENCE_ONLY_DISCOVERY': 32}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
 
 ## Retained representations
 
@@ -238,6 +238,56 @@ Executed source actions: **208**. Recorded source/terms observations: **1121**. 
 | hub:keisei:machiya-current-public-metro-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | hub:jr-east:oji-current-central-exit-tram-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | hub:toei:machiya-oji-nishinippori-current-interchange-corroboration | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:meitetsu:three-actual-directional-metro-boundary-sections | INGESTED | 1 | 9 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:nagoya:three-meitetsu-boundary-platform-correspondences | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:yurikamome:toyosu-current-public-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:metro:toyosu-current-exits-sixb-seven | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:seibu:musashisakai-current-dedicated-jr-gate | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-east:musashisakai-and-totsuka-current-concourses | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:osaka-metro:takaida-current-exit-two-jr-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:yokohama:totsuka-current-public-underground-access | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:yokohama:navi-totsuka-restrictive-map-rights-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:tama-monorail:four-interchange-current-exit-passages | INGESTED | 1 | 6 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:seibu:tamagawa-josui-current-monorail-footbridge | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:keio:takahata-and-tama-center-current-public-exits | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:odakyu:tama-center-current-monorail-public-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-east:tachikawa-current-north-south-public-concourse | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:tama-monorail:odpt-basic-license-catalog-alternative-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:jr-east:chiba-and-omiya-current-public-concourses | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:chiba-monorail:current-jr-connecting-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:new-shuttle:omiya-current-public-jr-tobu-connections | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:keisei:chiba-current-west-gate-jr-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:osaka-metro:three-current-hankai-passenger-exits | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:hankai:three-current-metro-interchange-identities | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-west:shinimamiya-current-east-public-metro-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:metro:oshiage-current-a3-surface-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:sumida:skytree-current-gates-and-public-street-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:solamachi:current-floor-map-restrictive-terms-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:skytree:current-access-restrictive-terms-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:tobu:skytree-new-gate-restrictive-primary-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:jr-east:kameido-current-public-tobu-gate-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:metro:akabaneiwabuchi-current-shared-platform-components | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:osaka-metro:higobashi-current-keihan-public-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:nakanoshima-rapid:watanabebashi-higobashi-passenger-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:keisei:yawata-current-public-toei-stair-connection | INGESTED | 1 | 0 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:saitama-railway:current-joint-station-restrictive-terms-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:keihan:watanabebashi-current-map-restrictive-terms-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:toei:motoyawata-current-page-map-protection-response-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:meitetsu:ichinomiya-current-public-jr-north-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:linimo:fujigaoka-current-metro-interchange | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:nagoya:fujigaoka-current-linimo-public-exits | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:izuhakone:mishima-current-transfer-faq-restrictive-terms | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:sendai:aobadori-current-senseki-transfer-gate | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:sendai-city:r8-aobadori-current-transfer-guide | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:fukuoka:meinohama-current-two-operator-platforms | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:hiroden:hiroshima-2026-current-elevated-jr-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-west:hiroshima-and-kobe-current-public-subway-tram-connections | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:seaside:kanazawahakkei-current-keikyu-concourse | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:keikyu:kanazawahakkei-current-elevated-gate-review | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jrtk:motoyawata-current-designated-public-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-east:motoyawata-current-central-gate-approach | INGESTED | 2 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-central:mishima-current-three-component-gates | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:tokyu-hotels:mishima-independent-route-reference-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
 
 ## Primary evidence ledger
 

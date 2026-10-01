@@ -926,6 +926,68 @@ test("TASK086 flight reachability does not substitute for airport surface access
   );
 });
 
+test("TASK086 admitted legacy GTFS bus stops satisfy only real bidirectional airport surface access", () => {
+  const edge = (from, to, mode = "transfer") => ({
+    edgeId: from + to,
+    fromTransportNodeId: from,
+    toTransportNodeId: to,
+    mode,
+    edgeKind: mode === "flight" ? "service_segment" : "hub_transfer",
+    metrics: metricFields({}, new Map()),
+  });
+  const audit = (peer, extra) =>
+    auditGraph({
+      nodes: [
+        {
+          nodeId: "anchor",
+          mode: "flight",
+          decision: "ADMIT_TASK_086_TOPOLOGY",
+        },
+        {
+          nodeId: "airport",
+          mode: "flight",
+          decision: "ADMIT_TASK_086_TOPOLOGY",
+        },
+        {
+          nodeId: "legacy-stop",
+          nodeKind: "bus_stop",
+          decision: "ADMIT_TASK_086_TOPOLOGY",
+          ...peer,
+        },
+      ],
+      patterns: [],
+      transfers: [],
+      edges: [
+        edge("anchor", "airport", "flight"),
+        edge("airport", "anchor", "flight"),
+        ...extra,
+      ],
+      inventory: [
+        {
+          requirementId: "airport",
+          nodeId: "airport",
+          kind: "airport",
+          tier: "T1",
+        },
+      ],
+      anchorNodeId: "anchor",
+    }).counts.AIRPORT_SURFACE_GAP;
+  const outward = edge("airport", "legacy-stop");
+  const inward = edge("legacy-stop", "airport");
+  assert.equal(audit({}, [outward, inward]), 0);
+  assert.equal(audit({}, [outward]), 1);
+  assert.equal(audit({}, [inward]), 1);
+  assert.equal(audit({ decision: "HOLD" }, [outward, inward]), 1);
+  assert.equal(audit({ nodeKind: "ferry_port" }, [outward, inward]), 1);
+  assert.equal(
+    audit({ nodeKind: "other_tourism_transport" }, [outward, inward]),
+    1,
+  );
+  assert.equal(audit({ mode: "flight" }, [outward, inward]), 1);
+  assert.equal(audit({}, [{ ...outward, mode: "ferry" }, inward]), 1);
+  assert.equal(audit({}, [outward, { ...inward, mode: "flight" }]), 1);
+});
+
 test("TASK086 terminal identities cannot merge a namesake, another operator or unreviewed requirement", () => {
   const record = {
     stopRecordId: "P36-23_13:kbs288",

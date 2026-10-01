@@ -1142,6 +1142,13 @@ export function auditGraph({
     "airport_bus",
     "highway_bus",
   ]);
+  // Licensed GTFS bus stops predate the optional mode field. Their admitted
+  // nodeKind still establishes surface transport; do not infer it for ports or
+  // generic tourism facilities, and preserve any explicit mode classification.
+  const isSurfaceNode = (node) =>
+    surfaceModes.has(
+      node?.mode ?? (node?.nodeKind === "bus_stop" ? "bus" : null),
+    );
   const connected = [],
     disconnected = [];
   const tier = {
@@ -1193,7 +1200,7 @@ export function auditGraph({
             e.mode !== "ferry" &&
             byId.get(e.toTransportNodeId)?.decision ===
               "ADMIT_TASK_086_TOPOLOGY" &&
-            surfaceModes.has(byId.get(e.toTransportNodeId)?.mode),
+            isSurfaceNode(byId.get(e.toTransportNodeId)),
         )
         .map((e) => e.toTransportNodeId),
     );
