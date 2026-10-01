@@ -457,3 +457,103 @@ test("TASK086 reviewed evidence remains schedulable and failed terms do not eras
   );
   assert.equal(readRows(queuePath)[0].state, "SOURCE_FOUND");
 });
+
+test("TASK086 small-ke review binds the selected line identity at a multiline component", () => {
+  const f = boundOfficialFixture();
+  const node = f.nodes.get("B");
+  node.canonicalNameJa = "霞ヶ関";
+  node.identityRecord = { stationCode: "primary", line: "other-line" };
+  const identity = {
+    stationName: "霞ヶ関",
+    stationCode: "selected",
+    operator: "operator",
+    line: "line",
+  };
+  node.evidenceRefs = [f.put("identity", identity)];
+  const fact = {
+    ...f.evidence.get("fact").record,
+    callingStations: ["A", "霞ケ関"],
+    callingComponents: [
+      {
+        name: "A",
+        operator: "operator",
+        line: "line",
+        mode: "conventional_rail",
+      },
+      {
+        name: "霞ヶ関",
+        operator: "operator",
+        line: "line",
+        mode: "conventional_rail",
+        nameVariantReview: {
+          kind: "JAPANESE_SMALL_KE",
+          sourceName: "霞ケ関",
+          stationCode: "selected",
+        },
+      },
+    ],
+  };
+  f.put("fact", fact);
+  const generate = () =>
+    generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-01");
+  assert.equal(generate().length, 1);
+  for (const changed of [
+    { line: "other-line" },
+    { operator: "namesake" },
+    { stationCode: "wrong-code" },
+    { stationName: "different" },
+  ]) {
+    f.put("identity", { ...identity, ...changed });
+    assert.throws(generate, /OFFICIAL_PATTERN_SOURCE_BINDING/);
+  }
+  f.put("identity", identity);
+  f.evidence.get("identity").recordSha256 = hash("tampered");
+  assert.throws(generate, /OFFICIAL_PATTERN_SOURCE_BINDING/);
+});
+
+test("TASK086 fullwidth digit review preserves every non-digit character and exact station identity", () => {
+  const f = boundOfficialFixture();
+  const node = f.nodes.get("B");
+  node.canonicalNameJa = "空港第2ビル";
+  const identity = {
+    stationName: node.canonicalNameJa,
+    stationCode: "airport-two",
+    operator: "operator",
+    line: "line",
+  };
+  node.evidenceRefs = [f.put("identity", identity)];
+  const selector = {
+    name: node.canonicalNameJa,
+    operator: "operator",
+    line: "line",
+    mode: "conventional_rail",
+    nameVariantReview: {
+      kind: "JAPANESE_DIGIT_WIDTH",
+      sourceName: "空港第２ビル",
+      stationCode: "airport-two",
+    },
+  };
+  const fact = {
+    ...f.evidence.get("fact").record,
+    callingStations: ["A", "空港第２ビル"],
+    callingComponents: [
+      {
+        name: "A",
+        operator: "operator",
+        line: "line",
+        mode: "conventional_rail",
+      },
+      selector,
+    ],
+  };
+  f.put("fact", fact);
+  const generate = () =>
+    generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-01");
+  assert.equal(generate().length, 1);
+  for (const invalid of ["空港第３ビル", "空港２ビル", "空港第２ターミナル"]) {
+    fact.callingStations[1] = invalid;
+    selector.nameVariantReview.sourceName = invalid;
+    f.put("fact", fact);
+    assert.throws(generate, /OFFICIAL_PATTERN_SOURCE_BINDING/);
+  }
+});

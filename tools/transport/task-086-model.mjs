@@ -375,11 +375,29 @@ export function generatePattern(
               if (sourceName === selector.name) return true;
               const review = selector.nameVariantReview;
               return (
-                review?.kind === "JAPANESE_SMALL_KE" &&
+                ["JAPANESE_SMALL_KE", "JAPANESE_DIGIT_WIDTH"].includes(
+                  review?.kind,
+                ) &&
                 review.sourceName === sourceName &&
-                review.stationCode === node.identityRecord?.stationCode &&
-                sourceName.replaceAll("ヶ", "ケ") ===
-                  selector.name.replaceAll("ヶ", "ケ")
+                node.evidenceRefs?.some((identityRef) => {
+                  const identity = evidence.get(identityRef)?.record;
+                  return (
+                    verifyEvidence([identityRef], sources, evidence) &&
+                    identity?.stationCode === review.stationCode &&
+                    identity.stationName === selector.name &&
+                    identity.operator === selector.operator &&
+                    identity.line === selector.line
+                  );
+                }) &&
+                (review.kind === "JAPANESE_SMALL_KE"
+                  ? sourceName.replaceAll("ヶ", "ケ") ===
+                    selector.name.replaceAll("ヶ", "ケ")
+                  : sourceName.replace(/[０-９]/g, (digit) =>
+                      String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
+                    ) ===
+                    selector.name.replace(/[０-９]/g, (digit) =>
+                      String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
+                    ))
               );
             }) &&
           evidence.get(record.sourceFactRef).record.callingStations.length ===
