@@ -1,87 +1,89 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-01T15:11:12.387085+00:00",
+  "recordedAt": "2026-10-01T17:01:58.034448+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 93,
+  "phase": 104,
   "baseDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-  "validationParentHead": "6cbba095f07607b58738dab6291bd61078c9b9d6",
+  "validationParentHead": "549f44ef20db03a2a8db888ffe12a4343f5cfd05",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "manifestSha256": "d2a7cdf5d9d935237ae41bf1df9ad095a870805b4825f7654f3527e3992fbf53",
+  "manifestSha256": "734ee1ecf8ddc5458e1095c680c1c6d0a32316a9f60521f38e8db0958d310b83",
   "focused": {
     "status": "PASS",
-    "tests": 66,
-    "pass": 66,
+    "tests": 70,
+    "pass": 70,
     "fail": 0,
     "evidence": "deterministic-rebuild.json focusedTests and focusedTestOutputSha256"
   },
   "fullRegression": {
     "status": "PASS",
     "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
-    "tests": 2896,
-    "pass": 2896,
+    "tests": 2900,
+    "pass": 2900,
     "fail": 0,
     "cancelled": 0,
     "skipped": 0,
-    "logPath": ".cache/task-086/full-tests-93.log",
-    "logSha256": "2e98d5076f598d9b4beefac0a47411300bf945371e2dba61842c7352c9733e08"
+    "logPath": ".cache/task-086/full-tests-104.log",
+    "logSha256": "12c5a23989b420857d2974ea72015e98c8485ae717183b1d57690f399ba8c375"
   },
-  "deterministicRebuildReceiptSha256": "1fd7e8cb575a733472e31380b890213d09999da8e5ee28a83e826e4af39ccda9",
+  "deterministicRebuildReceiptSha256": "f965cee42f805fda0e7e1aeacc112d8f1704445f7efe6df8dcaf88924d1759bd",
   "checks": [
     {
       "command": "npm run lint",
       "status": "PASS",
       "notes": "0 errors; 10 existing warnings",
-      "logPath": ".cache/task-086/lint-93.log",
+      "logPath": ".cache/task-086/lint-104.log",
       "logSha256": "fd7d6bd55b64d4512966f172918154baff18447ea3eebc20a6094d6bffdc3269"
     },
     {
       "command": "npm run typecheck",
       "status": "PASS",
       "notes": "Next type generation and TypeScript passed",
-      "logPath": ".cache/task-086/typecheck-93.log",
+      "logPath": ".cache/task-086/typecheck-104.log",
       "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
     },
     {
       "command": "npm run format:check:deploy",
       "status": "PASS",
       "notes": "All matched files use Prettier style",
-      "logPath": ".cache/task-086/format-93.log",
+      "logPath": ".cache/task-086/format-104.log",
       "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
     },
     {
       "command": "npm run deploy:build:local",
       "status": "PASS",
       "notes": "Standalone artifact audit passed; 1908 files; validation precedes checkpoint commit",
-      "logPath": ".cache/task-086/build-93.log",
-      "logSha256": "3d60c40cb2d77eee953dd152ebee15f855d680470806bf555102c296e86f08a2"
+      "logPath": ".cache/task-086/build-104.log",
+      "logSha256": "3ce224c47b1f84e42c94052a0f7167bfca847d8c28431814b0f15c320e28583c"
     },
     {
       "command": "npm run deploy:verify-artifact",
       "status": "PASS",
       "notes": "1908 files; no failures",
-      "logPath": ".cache/task-086/artifact-93.log",
-      "logSha256": "da7570beb1ffe18dd6e3beb6114b5ab13d21ca82b4b48dd72dae9bb9e9a54c40"
+      "logPath": ".cache/task-086/artifact-104.log",
+      "logSha256": "46510fadd32c1942c48e86b5dd436af38ef5bf60d6c94bbdc3d709aff2107b9e"
     }
   ],
   "historicalExactHeadQualityGate": {
     "status": "PASS",
-    "headSha": "6cbba095f07607b58738dab6291bd61078c9b9d6",
-    "runId": 36871084086,
-    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36871084086",
-    "scope": "Committed phase-82 checkpoint only; subsequent remediation remains unvalidated until its own checks."
+    "headSha": "549f44ef20db03a2a8db888ffe12a4343f5cfd05",
+    "runId": 36882529075,
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36882529075",
+    "scope": "Committed phase-93 checkpoint only; subsequent local remediation requires its own validation."
   },
   "exactHeadQualityGate": {
     "status": "PENDING_CHECKPOINT_PUSH",
-    "scope": "Phase-93 local checks cover these working-tree inputs; committed-head Quality Gate is pending."
+    "scope": "Phase-104 local checks cover these working-tree inputs; committed-head Quality Gate is pending."
   },
   "wbs716": "进行中",
   "mergePerformed": false,
   "autoMergeEnabled": false,
   "validationImplementationHashes": {
-    "tools/transport/task-086-airport-identities.mjs": "82d7f590e3f79fc713bf881ae417260ddc10a71171e37209b2a2fe47307fe6f5",
+    "tools/transport/task-086-airport-identities.mjs": "dff05d80f03c754d91a492635cc662425c50a4a669601052e3b1d59afa1ba56f",
     "tools/transport/task-086-batches.mjs": "196d7dee00b83db75b67393aaec420829077ec7865783c161686f8c3b44c2ca9",
+    "tools/transport/task-086-bus-identities.mjs": "12e5e269abab952be015906fcfdedaf105605bb006d5ea79039253674b1496a3",
     "tools/transport/task-086-extract-airports.py": "e5a4604391711d2901a8ec66ef566dab91563207cc87d98939761da268133312",
+    "tools/transport/task-086-extract-bus-stops.py": "1d2c9d7a729739113472ce91f74028cf5226bbad39341aaa15864764173d5051",
     "tools/transport/task-086-extract-gtfs.py": "1f20a1b18e2bd8ba23928e01c6c8f4f1faa09f2c3a5adee45f63765786529fa6",
     "tools/transport/task-086-extract-highway-stops.py": "ad58bf5d26c1177ecfbe183e9b91641b10724ee3e3a415145034bc6a7e550c89",
     "tools/transport/task-086-extract-identities.py": "00dc89c2971be20c61010857e0106614d8cb15c8262297f26da7da8ed1827988",
@@ -89,18 +91,18 @@
     "tools/transport/task-086-extract-rail-gtfs.py": "3206ce271630ea41a8ba57609200bee6328943fcd66b932b828e8238e30e6031",
     "tools/transport/task-086-extract-selected-gtfs.py": "0b49ae8c39976be54679c7620cf22c59a9a0954524a8d558f2645f56be8b5403",
     "tools/transport/task-086-licensed-package.mjs": "2c793007d033ab3ef1b31eb2d6da6fd9d25f252c05a241613337a2a2d12eb524",
-    "tools/transport/task-086-model.mjs": "f07ad05821920a33529a8d86d08ca1b22e239c1246da7c2c4341260bcf235d9c",
-    "tools/transport/task-086-remediate.mjs": "7bfd43a74ef38922fa3be216302e41d512ed52663e47f350a8d438ee51ba6321",
+    "tools/transport/task-086-model.mjs": "a437b34ac4447155138e65fa52a501baf1a7d12893a28991298a1a3a12250dcf",
+    "tools/transport/task-086-remediate.mjs": "8557cf8ba76e88156f04df1fdad90fbe0b1c68fa3ed98857b31f4384d41ddf08",
     "tools/transport/task-086-road-identities.mjs": "e09265de9f5647fda80772a01a88d5b8704c82d7b2be550275c74b66dde3aa35",
     "tools/transport/task-086-run.mjs": "b3ef0b99275f053ca291fdc2b7b150e7817a65cb64efa9a98952cf4cf06959e8",
     "tools/transport/task-086-source-actions.mjs": "8f5310578da27e533273c278324ce24d1963aa69d9f08eb780dd23fe6dc0eeff",
-    "tools/transport/task-086-verify.mjs": "63affbde33f9d5045d3f0ec9de7ee7812b853ad12df69d5341277d2e50e66cd0",
-    "tests/task-086-b-autonomous-remediation.test.mjs": "a50423b6b5a857c4dd1fc035153311b03ad9fc29e7a4dee08e92c33f71b230cd",
+    "tools/transport/task-086-verify.mjs": "5273304f6c8cdaa47d4571b67ef267f4560551537d635dcbac3c983660f8a549",
+    "tests/task-086-b-autonomous-remediation.test.mjs": "cc8a735e6949fff21ac6338e5cc16180f4247982e4365aa8d6088dbe45db071d",
     "tests/task-086-b-mobility-backbone.test.mjs": "6a9e3c25230c3fa7a4096d15480733737509050cfb183df89087d188a790eb8b",
     "tests/task-086-b-rebuild.test.mjs": "f3875f8f11f77a4daaa7dcf177e0fea7f541c2df96afbb5527a0475802436e9b",
     "tests/task-086-b-selected-gtfs.test.mjs": "ebda9dd8ee875bdfcb7ad19d656922e54671a6232029dd30f9042803795e5a79"
   },
-  "lineEndingVerification": "Generator and test bytes use the Git LF representation. Raw data re-extraction, deterministic rebuild twice and resume, 66 focused tests and 2896 full regression tests passed with these exact bytes.",
+  "lineEndingVerification": "Generator and test bytes use the Git LF representation. Raw data re-extraction, deterministic rebuild twice and resume, 70 focused tests and 2900 full regression tests passed with these exact bytes.",
   "initialPhase82BuildOverlapAttempt": {
     "status": "FAIL",
     "tests": 2893,

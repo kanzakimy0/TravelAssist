@@ -25,23 +25,42 @@ export function airportCandidate(
   );
   const airfieldReview =
     review.method === "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX";
+  const newAirportReview =
+    review.method === "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX";
   const nameEvidence = review.officialNameEvidence;
-  if (airfieldReview) {
+  const boundReference = (ref) =>
+    typeof ref?.url === "string" &&
+    /^https:\/\//.test(ref.url) &&
+    /^[a-f0-9]{64}$/.test(ref.observedResponseSha256 ?? "") &&
+    serviceFact?.corroboratingEvidence?.some(
+      (e) =>
+        e.url === ref.url &&
+        e.observedResponseSha256 === ref.observedResponseSha256,
+    );
+  if (airfieldReview || newAirportReview) {
     invariant(
       nameEvidence?.officialName === record.airportName &&
         nameEvidence.requirementName === requirement?.name &&
         typeof nameEvidence.publicName === "string" &&
-        nameEvidence.publicName.startsWith(requirement.name) &&
-        nameEvidence.publicName.endsWith("空港") &&
-        typeof nameEvidence.url === "string" &&
-        /^https:\/\//.test(nameEvidence.url) &&
-        /^[a-f0-9]{64}$/.test(nameEvidence.observedResponseSha256 ?? "") &&
-        serviceFact?.corroboratingEvidence?.some(
-          (e) =>
-            e.url === nameEvidence.url &&
-            e.observedResponseSha256 === nameEvidence.observedResponseSha256,
-        ),
+        (newAirportReview
+          ? nameEvidence.publicName === requirement.name + "空港"
+          : nameEvidence.publicName.startsWith(requirement.name) &&
+            nameEvidence.publicName.endsWith("空港")) &&
+        boundReference(nameEvidence),
       "AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH",
+    );
+  }
+  const closure = review.predecessorClosureEvidence;
+  if (newAirportReview) {
+    invariant(
+      closure?.currentReferencePointId === record.referencePointId &&
+        closure.closedPredecessorName === requirement?.name + "空港" &&
+        closure.closedPredecessorExcluded === true &&
+        Number.isInteger(closure.closureYear) &&
+        closure.closureYear >= 1900 &&
+        closure.closureYear < Number(record.identityAsOf?.slice(0, 4)) &&
+        boundReference(closure),
+      "AIRPORT_CLOSED_PREDECESSOR_NOT_EXCLUDED",
     );
   }
   invariant(
@@ -49,9 +68,12 @@ export function airportCandidate(
       requirement.requirementId === review.requirementId &&
       requirement.name === review.expectedRequirementName &&
       record.airportName ===
-        requirement.name + (airfieldReview ? "飛行場" : "空港") &&
+        (newAirportReview ? "新" : "") +
+          requirement.name +
+          (airfieldReview ? "飛行場" : "空港") &&
       requirement.nodeId === id("node", requirement.requirementId) &&
       (airfieldReview ||
+        newAirportReview ||
         review.method === "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX") &&
       !!review.currentPassengerAccessReview &&
       evidenceRefs.length === 2,
@@ -78,7 +100,10 @@ export function airportCandidate(
         "EXACT_C28_REFERENCE_ID_AND_REVIEWED_REQUIREMENT_PLUS_CURRENT_PRIMARY_ACCESS",
       sourceArchiveSha256: C28_ARCHIVE_SHA256,
       currentPassengerAccessReview: review.currentPassengerAccessReview,
-      ...(airfieldReview ? { officialNameEvidence: nameEvidence } : {}),
+      ...(airfieldReview || newAirportReview
+        ? { officialNameEvidence: nameEvidence }
+        : {}),
+      ...(newAirportReview ? { predecessorClosureEvidence: closure } : {}),
       coordinateScope: record.coordinateScope,
       identityAsOf: record.identityAsOf,
     },

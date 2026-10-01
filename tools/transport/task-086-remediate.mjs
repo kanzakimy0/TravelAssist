@@ -1,3 +1,7 @@
+import {
+  busStopCandidate,
+  P11_ARCHIVE_SHA256,
+} from "./task-086-bus-identities.mjs";
 import fs from "node:fs";
 import { prepareLicensedGtfsPackage } from "./task-086-licensed-package.mjs";
 import path from "node:path";
@@ -109,6 +113,9 @@ export function runRemediation({
   );
   const highwayIdentities = readRows(
     path.join(networkRoot, "research/p36-identities.jsonl"),
+  );
+  const busIdentities = readRows(
+    path.join(networkRoot, "research/p11-identities.jsonl"),
   );
   const discovery = readRows(path.join(upstream, "rail-components.jsonl"));
   const hubScopes = readRows(
@@ -254,6 +261,41 @@ export function runRemediation({
   };
   sources.set(highwaySource.sourceId, highwaySource);
 
+  const busAction = actions.find(
+    (a) => a.actionId === "government:p11:reviewed-airport-bus-identities",
+  );
+  const busRaw = busAction?.sourcesChecked.find(
+    (s) => s.rawPayloadRetained && s.status === 200,
+  );
+  invariant(
+    busRaw &&
+      busRaw.contentSha256 === P11_ARCHIVE_SHA256 &&
+      hash(fs.readFileSync(path.join(root, busRaw.retainedPath))) ===
+        P11_ARCHIVE_SHA256 &&
+      ["RIGHTS_REVIEWED", "INGESTED"].includes(busAction.state) &&
+      busAction.rightsFindings.at(-1)?.rightsClass ===
+        "RAW_PERSISTENCE_ALLOWED",
+    "P11_ARCHIVE_BINDING",
+  );
+  const busSource = {
+    sourceId: "mlit:p11:22",
+    url: busRaw.url,
+    contentSha256: P11_ARCHIVE_SHA256,
+    observedAt: busRaw.observedAt,
+    rightsClass: "RAW_PERSISTENCE_ALLOWED",
+    persistenceAllowed: true,
+    derivedDataAllowed: true,
+    redistributionAllowed: true,
+    rightsDecision: "MLIT_P11_2022_OPEN_DATA_PDL_1_0_ATTRIBUTION",
+    termsUrl: "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+    attribution:
+      "国土数値情報（バス停留所 P11-22、2022年度）（国土交通省）をTravelAssistが加工して作成。2022年度オープンデータ・PDL 1.0。https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+    limitations:
+      "Source combines same-road, same-operator, same-name directions. Historical representative operator-stop identity only; not a platform, entrance, route order, present service or transfer. Current independently reviewed service and passenger access required. The separate noncommercial 2010 edition is excluded.",
+    retainedArchive: "sources/raw/mlit-p11-22.zip",
+  };
+  sources.set(busSource.sourceId, busSource);
+
   const makeEvidence = (source, record, locator, key) => {
     const row = {
       evidenceId: id("evidence", key),
@@ -345,6 +387,59 @@ export function runRemediation({
         "GTFS_REUSE_TRANSFER_ONLY",
       );
       return reviewedGtfsComponent(selector, nodes, sources, evidence).nodeId;
+    }
+    if (selector.busIdentity) {
+      const matches = busIdentities.filter(
+        (r) => r.stopRecordId === selector.busIdentity.stopRecordId,
+      );
+      invariant(matches.length === 1, "P11_RAW_IDENTITY_NOT_UNIQUE");
+      const record = matches[0];
+      const ref = makeEvidence(
+        busSource,
+        record,
+        "P11-22 exact operator-stop and point-reference join " +
+          record.stopRecordId,
+        ["p11", record],
+      );
+      const candidate = busStopCandidate(
+        selector,
+        record,
+        [ref, serviceEvidenceRef],
+        evidence.get(serviceEvidenceRef).record,
+      );
+      const admitted = admitNodes([candidate], sources, evidence, [])[0];
+      invariant(
+        admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
+        "P11_ADMISSION_FAILED",
+      );
+      const previous = nodes.get(admitted.nodeId);
+      if (previous?.decision === "ADMIT_TASK_086_TOPOLOGY") {
+        invariant(
+          previous.identitySignature === admitted.identitySignature,
+          "P11_ADMISSION_REBIND",
+        );
+        previous.evidenceRefs = [
+          ...new Set([...previous.evidenceRefs, ref, serviceEvidenceRef]),
+        ].sort(compare);
+        return admitted.nodeId;
+      }
+      nodes.set(admitted.nodeId, admitted);
+      nodeReviews.push({
+        nodeId: admitted.nodeId,
+        previousDecision: previous?.decision ?? "NOT_IN_REQUIRED_INVENTORY",
+        decision: admitted.decision,
+        identityRecordSha256: hash(record),
+        rawIdentityEvidenceRef: ref,
+        serviceEvidenceRef,
+        matchedFields: [
+          "stopRecordId",
+          "stopName",
+          "operator",
+          "pointReferenceId",
+        ],
+        sameGroupNotInterchange: true,
+      });
+      return admitted.nodeId;
     }
     if (selector.airportIdentity) {
       const matches = airportIdentities.filter(
@@ -645,6 +740,8 @@ export function runRemediation({
     "task-086-airport-identities.mjs",
     "task-086-extract-highway-stops.py",
     "task-086-road-identities.mjs",
+    "task-086-bus-identities.mjs",
+    "task-086-extract-bus-stops.py",
     "task-086-extract-jreast.py",
     "task-086-extract-rail-gtfs.py",
     "task-086-extract-selected-gtfs.py",
@@ -778,6 +875,7 @@ export function runRemediation({
           serviceClass: fact.serviceClass,
           direction: fact.direction,
           sourceFactRef: factRef,
+          ...(fact.mode.includes("bus") ? { purpose: fact.purpose } : {}),
         };
         const resolvedRef = makeEvidence(source, resolved, fact.locator, [
           "resolved-pattern",
@@ -823,6 +921,9 @@ export function runRemediation({
             identitySource,
             ...(fact.callingComponents?.some((c) => c.airportIdentity)
               ? [airportSource]
+              : []),
+            ...(fact.callingComponents?.some((c) => c.busIdentity)
+              ? [busSource]
               : []),
             ...(fact.callingComponents?.some((c) => c.terminalIdentity)
               ? [highwaySource]
@@ -907,6 +1008,7 @@ export function runRemediation({
             ...(fact.components?.some((c) => c.airportIdentity)
               ? [airportSource]
               : []),
+            ...(fact.components?.some((c) => c.busIdentity) ? [busSource] : []),
             ...(fact.components?.some((c) => c.terminalIdentity)
               ? [highwaySource]
               : []),
@@ -1020,6 +1122,9 @@ export function runRemediation({
           : []),
         ...(actionId === "government:p36:highway-stop-identities"
           ? ["p36-identities:" + hash(highwayIdentities)]
+          : []),
+        ...(actionId === "government:p11:reviewed-airport-bus-identities"
+          ? ["p11-identities:" + hash(busIdentities)]
           : []),
         ...(actionId === "government-s12"
           ? ["s12-identities:" + hash(identities)]
@@ -1191,6 +1296,9 @@ export function runRemediation({
     "research/c28-identities.jsonl",
     "sources/raw/mlit-p36-23.zip",
     "research/p36-identities.jsonl",
+    "sources/raw/mlit-p11-22.zip",
+    "research/p11-identities.jsonl",
+    "research/p11-selection.json",
     "sources/raw/toei-train-20261001.zip",
     "research/toei-train-selection.json",
     "checkpoints/origin.json",

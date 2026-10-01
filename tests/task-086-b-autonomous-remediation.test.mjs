@@ -1503,3 +1503,364 @@ test("TASK086 airfield suffix requires explicit official name correspondence bou
     "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX";
   assert.throws(() => build(unreviewed), /AIRPORT_REQUIREMENT_REVIEW_MISMATCH/);
 });
+
+test("TASK086 relocated airport name requires current exact name and separately bound predecessor closure", () => {
+  const record = {
+    airportName: "新石垣空港",
+    referencePointId: "cf03_00064",
+    identityAsOf: "2021-12-31",
+    latitude: 24.39638888,
+    longitude: 124.245,
+  };
+  const requirement = {
+    requirementId: "review:official-airport:石垣",
+    name: "石垣",
+    tier: "T1",
+    kind: "airport",
+  };
+  requirement.nodeId = id("node", requirement.requirementId);
+  const officialNameEvidence = {
+    officialName: record.airportName,
+    publicName: "石垣空港",
+    requirementName: "石垣",
+    url: "https://example.test/current-formal-name",
+    observedResponseSha256: "a".repeat(64),
+  };
+  const predecessorClosureEvidence = {
+    currentReferencePointId: record.referencePointId,
+    closedPredecessorName: "石垣空港",
+    closedPredecessorExcluded: true,
+    closureYear: 2013,
+    url: "https://example.test/predecessor-history",
+    observedResponseSha256: "b".repeat(64),
+  };
+  const selector = {
+    name: record.airportName,
+    operator: "airport-facility:" + record.referencePointId,
+    line: "airport:" + record.referencePointId,
+    mode: "flight",
+    airportIdentity: {
+      dataset: "C28-21",
+      referencePointId: record.referencePointId,
+      requirementId: requirement.requirementId,
+      expectedRequirementName: requirement.name,
+      method: "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX",
+      currentPassengerAccessReview:
+        "Current licensed bus stop linked to public terminal frontage",
+      officialNameEvidence,
+      predecessorClosureEvidence,
+    },
+  };
+  const fact = {
+    corroboratingEvidence: [
+      officialNameEvidence,
+      predecessorClosureEvidence,
+    ].map(({ url, observedResponseSha256 }) => ({
+      url,
+      observedResponseSha256,
+    })),
+  };
+  const build = (s = selector, f = fact) =>
+    airportCandidate(s, record, requirement, ["identity", "access"], f);
+  assert.equal(id("node", build().identityAnchor), requirement.nodeId);
+  assert.deepEqual(
+    build().independentReview.predecessorClosureEvidence,
+    predecessorClosureEvidence,
+  );
+  for (const change of [
+    { officialName: "石垣空港" },
+    { publicName: "旧石垣空港" },
+    { requirementName: "宮古" },
+    { observedResponseSha256: "c".repeat(64) },
+  ]) {
+    const s = structuredClone(selector);
+    Object.assign(s.airportIdentity.officialNameEvidence, change);
+    assert.throws(() => build(s), /AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH/);
+  }
+  for (const change of [
+    { currentReferencePointId: "cf03_00062" },
+    { closedPredecessorName: "宮古空港" },
+    { closedPredecessorExcluded: false },
+    { closureYear: 2022 },
+    { closureYear: 2013.5 },
+    { url: "https://example.test/unreviewed" },
+    { observedResponseSha256: "c".repeat(64) },
+  ]) {
+    const s = structuredClone(selector);
+    Object.assign(s.airportIdentity.predecessorClosureEvidence, change);
+    assert.throws(() => build(s), /AIRPORT_CLOSED_PREDECESSOR_NOT_EXCLUDED/);
+  }
+  assert.throws(
+    () =>
+      build(selector, {
+        corroboratingEvidence: fact.corroboratingEvidence.slice(0, 1),
+      }),
+    /AIRPORT_CLOSED_PREDECESSOR_NOT_EXCLUDED/,
+  );
+  const s = structuredClone(selector);
+  s.airportIdentity.method = "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX";
+  assert.throws(() => build(s), /AIRPORT_REQUIREMENT_REVIEW_MISMATCH/);
+});
+import { busStopCandidate } from "../tools/transport/task-086-bus-identities.mjs";
+
+test("TASK086 P11 stop identity excludes colocated operators and requires current bound evidence", () => {
+  const record = {
+    stopRecordId: "P11-22_17:bs3685",
+    stopName: "小松空港",
+    operator: "北鉄加賀バス（株）",
+    historicalRoutes: [{ name: "空港連絡線", typeCode: "1" }],
+    latitude: 36.40216803,
+    longitude: 136.41295198,
+    coordinateScope:
+      "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+    identityAsOf: "2022-08",
+  };
+  const current = {
+    recordOperator: record.operator,
+    currentOperatorName: "北鉄加賀バス株式会社",
+    currentStopName: record.stopName,
+    historicalRoute: "空港連絡線",
+    url: "https://city.example/current-operator",
+    observedResponseSha256: "a".repeat(64),
+  };
+  const selector = {
+    name: record.stopName,
+    operator: record.operator,
+    line: "p11-stop:" + record.stopRecordId,
+    mode: "airport_bus",
+    nodeKind: "bus_stop",
+    busIdentity: {
+      dataset: "P11-22",
+      stopRecordId: record.stopRecordId,
+      recordSha256: hash(record),
+      method: "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+      coordinateScope: record.coordinateScope,
+      currentPassengerAccessReview:
+        "Reviewed independent current terminal access",
+      currentOperatorEvidence: current,
+    },
+  };
+  const fact = {
+    corroboratingEvidence: [
+      {
+        url: current.url,
+        observedResponseSha256: current.observedResponseSha256,
+      },
+    ],
+  };
+  const build = (s = selector, f = fact) =>
+    busStopCandidate(s, record, ["raw", "current"], f);
+  const candidate = build();
+  assert.equal(candidate.identityAnchor, "p11:22:P11-22_17:bs3685");
+  for (const changed of [
+    { operator: "小松市" },
+    { name: "小松駅" },
+    { mode: "highway_bus" },
+    { nodeKind: "bus_terminal" },
+    { line: "p11-stop:P11-22_17:bs3686" },
+  ])
+    assert.throws(
+      () => build({ ...selector, ...changed }),
+      /P11_IDENTITY_SELECTOR_MISMATCH/,
+    );
+  for (const changed of [
+    { dataset: "P11-10" },
+    { stopRecordId: "P11-22_17:bs3686" },
+    { recordSha256: "b".repeat(64) },
+    { method: "NAME_AND_PROXIMITY" },
+    { coordinateScope: "PRECISE_PLATFORM" },
+    { currentPassengerAccessReview: "" },
+  ])
+    assert.throws(
+      () =>
+        build({
+          ...selector,
+          busIdentity: { ...selector.busIdentity, ...changed },
+        }),
+      /P11_/,
+    );
+  for (const changed of [
+    { recordOperator: "小松市" },
+    { currentStopName: "小松駅" },
+    { currentOperatorName: "" },
+    { historicalRoute: "未確認" },
+    { url: "https://city.example/unreviewed" },
+    { observedResponseSha256: "b".repeat(64) },
+  ])
+    assert.throws(
+      () =>
+        build({
+          ...selector,
+          busIdentity: {
+            ...selector.busIdentity,
+            currentOperatorEvidence: { ...current, ...changed },
+          },
+        }),
+      /P11_CURRENT_OPERATOR_EVIDENCE_NOT_BOUND/,
+    );
+  assert.throws(
+    () => build(selector, {}),
+    /P11_CURRENT_OPERATOR_EVIDENCE_NOT_BOUND/,
+  );
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    [
+      "raw",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record,
+        recordSha256: hash(record),
+        locator: "exact operator-stop",
+      },
+    ],
+    [
+      "current",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record: fact,
+        recordSha256: hash(fact),
+        locator: "current access",
+      },
+    ],
+  ]);
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  for (const changed of [
+    { operatorRefs: ["小松市"] },
+    { identityAnchor: "p11:22:P11-22_17:bs3686" },
+    { latitude: 0 },
+    { lineRefs: ["wrong"] },
+    { nodeKind: "bus_terminal" },
+    { mode: "highway_bus" },
+  ])
+    assert.ok(
+      admitNodes(
+        [{ ...candidate, ...changed }],
+        sources,
+        evidence,
+      )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
+    );
+});
+
+test("TASK086 P11 raw selection rejects wrong operator and duplicate feature requests", () => {
+  const scratch = fs.mkdtempSync(
+    path.join(os.tmpdir(), "task086-p11-selection-"),
+  );
+  try {
+    const base = JSON.parse(
+      fs.readFileSync(
+        "data/transport/network/research/p11-selection.json",
+        "utf8",
+      ),
+    );
+    const run = (request) => {
+      const selected = path.join(scratch, "selection.json");
+      fs.writeFileSync(selected, JSON.stringify(request));
+      return spawnSync(
+        process.platform === "win32" ? "python" : "python3",
+        [
+          "-X",
+          "utf8",
+          "tools/transport/task-086-extract-bus-stops.py",
+          "--selection",
+          selected,
+          "--output",
+          path.join(scratch, "out.jsonl"),
+        ],
+        { encoding: "utf8" },
+      );
+    };
+    assert.equal(run(base).status, 0);
+    const wrong = structuredClone(base);
+    wrong.stops[0].expectedOperator = "小松市";
+    assert.match(run(wrong).stderr, /P11_EXACT_SELECTOR_MISMATCH/);
+    const duplicate = structuredClone(base);
+    duplicate.stops.push(duplicate.stops[0]);
+    assert.match(run(duplicate).stderr, /P11_SELECTION_DUPLICATE/);
+    const changedHash = { ...base, sourceArchiveSha256: "b".repeat(64) };
+    assert.notEqual(run(changedHash).status, 0);
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+});
+test("TASK086 official bus purpose is source-bound and cannot expand to unrestricted local ingestion", () => {
+  const sources = new Map([[minimal.sourceId, minimal]]),
+    evidence = new Map();
+  const put = (key, record) =>
+    evidence.set(key, {
+      sourceId: minimal.sourceId,
+      sourceSha256: minimal.contentSha256,
+      record,
+      recordSha256: hash(record),
+      locator: key,
+    });
+  const nodes = new Map(
+    ["A", "B"].map((name) => [
+      name,
+      {
+        nodeId: name,
+        decision: "ADMIT_TASK_086_TOPOLOGY",
+        canonicalNameJa: name,
+        operatorRefs: ["bus"],
+        lineRefs: ["airport-link"],
+        mode: "airport_bus",
+      },
+    ]),
+  );
+  const fact = {
+    kind: "service",
+    callingStations: ["A", "B"],
+    operator: "bus",
+    line: "airport-link",
+    mode: "airport_bus",
+    purpose: "airport",
+  };
+  const resolved = {
+    callingNodes: ["A", "B"].map((nodeId, i) => ({
+      nodeId,
+      sequence: i + 1,
+      pickupType: "0",
+      dropOffType: "0",
+    })),
+    lineRef: "line",
+    operatorRef: "bus",
+    mode: "airport_bus",
+    serviceClass: "direct",
+    direction: "outbound",
+    sourceFactRef: "fact",
+    purpose: "airport",
+  };
+  put("fact", fact);
+  put("resolved", resolved);
+  const pattern = {
+    ...resolved,
+    servicePatternId: "pattern",
+    evidenceRefs: ["resolved"],
+    sequenceEvidence: "OFFICIAL_CALLING_SEQUENCE",
+    strictFactBinding: true,
+    segmentOperators: ["bus"],
+    serviceState: "active",
+    metrics: {},
+  };
+  const run = (p) => generatePattern(p, nodes, sources, evidence, "2026-10-01");
+  assert.equal(run(pattern).length, 1);
+  assert.throws(
+    () => run({ ...pattern, purpose: "tourism" }),
+    /OFFICIAL_PATTERN_SOURCE_BINDING_MISMATCH/,
+  );
+  put("resolved", { ...resolved, purpose: "tourism" });
+  assert.throws(
+    () => run({ ...pattern, purpose: "tourism" }),
+    /OFFICIAL_PATTERN_SOURCE_BINDING_MISMATCH/,
+  );
+  put("fact", { ...fact, purpose: "unrestricted_local" });
+  put("resolved", { ...resolved, purpose: "unrestricted_local" });
+  assert.throws(
+    () => run({ ...pattern, purpose: "unrestricted_local" }),
+    /BUS_EXPANSION_NOT_BOUNDED/,
+  );
+});

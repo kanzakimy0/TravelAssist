@@ -150,6 +150,31 @@ export function verifyRebuild({ publish = false } = {}) {
       ),
       "Raw rail GTFS trip extraction differs",
     );
+    const busIdentities = path.join(scratch, "p11-identities.jsonl");
+    const busExtraction = spawnSync(
+      process.platform === "win32" ? "python" : "python3",
+      [
+        "-X",
+        "utf8",
+        path.join(root, "tools/transport/task-086-extract-bus-stops.py"),
+        "--output",
+        busIdentities,
+      ],
+      { encoding: "utf8" },
+    );
+    assert.equal(busExtraction.status, 0, busExtraction.stderr);
+    assert.equal(
+      hash(fs.readFileSync(busIdentities)),
+      hash(
+        fs.readFileSync(
+          path.join(
+            root,
+            "data/transport/network/research/p11-identities.jsonl",
+          ),
+        ),
+      ),
+      "Raw selected P11 identity extraction differs",
+    );
     const selectedGtfsPackages = [];
     for (const phaseFile of fs
       .readdirSync(path.join(root, "data/transport/network/research/phases"))
@@ -222,6 +247,7 @@ export function verifyRebuild({ publish = false } = {}) {
       rawS12IdentityExtraction: "PASS",
       rawC28IdentityExtraction: "PASS",
       rawP36IdentityExtraction: "PASS",
+      rawSelectedP11IdentityExtraction: "PASS",
       rawRailGtfsTripExtraction: "PASS",
       rawSelectedGtfsExtraction: {
         status: "PASS",

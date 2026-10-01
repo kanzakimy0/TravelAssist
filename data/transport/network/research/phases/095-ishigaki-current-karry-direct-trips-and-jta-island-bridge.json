@@ -1,0 +1,314 @@
+{
+  "phaseId": "095-ishigaki-current-karry-direct-trips-and-jta-island-bridge",
+  "strategy": [
+    "LICENSED_ACTIVE_KARRY_DIRECT_TRIPS_AFTER_EXPIRED_AZUMA_ALTERNATIVE",
+    "EXPLICIT_NEW_AIRPORT_IDENTITY_AND_PREDECESSOR_EXCLUSION",
+    "CURRENT_DIRECTED_JTA_AIRPORT_PAIR"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "karry-ishigaki-airport.json",
+      "packageSha256": "dc6341b655a85947826593bc1156161d0dcf74cb2254e27acac2c33de3fc6d8c",
+      "sourceActionId": "bus:karry:ccby-current-ishigaki-direct-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:karry:ccby-current-ishigaki-direct-trips",
+    "airport:ishigaki:current-terminal-and-formal-name-review",
+    "flight:jta:current-naha-ishigaki-directed-pair"
+  ],
+  "facts": [
+    {
+      "factId": "new-ishigaki-current-karry-S5393-public-terminal",
+      "kind": "transfer",
+      "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+      "sourceUrl": "https://www.ishigaki-airport.co.jp/access/traffic-guide_map_bus.jpg",
+      "observedResponseSha256": "fb8d1fabf69ede8ead7efcaeecd9e8f4fe7ebc89b2b66f9f4b5380ec7eca9100",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+          "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+          "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/access/bus-taxi/index.html",
+          "observedResponseSha256": "a756fd07eb668a760f5bb825e61b37e2de07de6f96723ef1005e2814e4140335"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://karrykanko.com/ishigaki/",
+          "observedResponseSha256": "62a7ff6b6587310512a0a9117ef80849129fee7ab610c48e9a0aa70fbefb8b28"
+        }
+      ],
+      "locator": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim.",
+      "components": [
+        {
+          "name": "新石垣空港",
+          "operator": "airport-facility:cf03_00064",
+          "line": "airport:cf03_00064",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00064",
+            "requirementId": "review:transport-node:95363cc3-5ee1-588c-b00a-555abd5bb8c7",
+            "expectedRequirementName": "石垣",
+            "method": "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX",
+            "currentPassengerAccessReview": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim.",
+            "officialNameEvidence": {
+              "officialName": "新石垣空港",
+              "publicName": "石垣空港",
+              "requirementName": "石垣",
+              "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+              "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+            },
+            "predecessorClosureEvidence": {
+              "currentReferencePointId": "cf03_00064",
+              "closedPredecessorName": "石垣空港",
+              "closedPredecessorExcluded": true,
+              "closureYear": 2013,
+              "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+              "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+            }
+          }
+        },
+        {
+          "name": "石垣空港",
+          "operator": "有限会社カリー観光",
+          "line": "gtfs:karry-ishigaki-airport:route:287",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:karry-ishigaki-airport",
+            "stopId": "S5393",
+            "sourceArchiveSha256": "5a562f95d2690dc7a0d19c2b57078d1a062e72cbced887f947282f3b48a320bb",
+            "recordSha256": "d26f296932198aacbec83c7b9307a67b1deb9ae5a5d824b5e4d6479e82c6976b",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_TERMINAL_PASSAGE_AND_RELOCATED_FACILITY_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "jta-naha-ishigaki-current-nu601",
+      "kind": "service",
+      "sourceActionId": "flight:jta:current-naha-ishigaki-directed-pair",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:jta:current-naha-ishigaki-directed-pair",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+          "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+          "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/access/bus-taxi/index.html",
+          "observedResponseSha256": "a756fd07eb668a760f5bb825e61b37e2de07de6f96723ef1005e2814e4140335"
+        }
+      ],
+      "locator": "Current October 1–31 2026 Naha Airport monthly schedule independently identifies Japan Transocean Air NU601 OKA-ISG. Exact record has no restrictive date or operator-override remark. Retain only minimal actual passenger carrier-and-directed-airport relation; no clocks, schedule payload, fare, availability or inferred codeshare. ISG is explicitly bound to present C28 New Ishigaki Airport using the formal-name release and separate predecessor-closure proof; no service to the closed previous facility.",
+      "line": "那覇・石垣国内線",
+      "operator": "日本トランスオーシャン航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NU601",
+      "direction": "OKA-ISG",
+      "callingStations": [
+        "那覇空港",
+        "新石垣空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Naha Airport official FAQ explicitly connects the domestic-terminal second-floor public passage with Yui Rail Naha-Airport Station. C28 whole-airport reference is the gateway only; no navigation precision or international-terminal shortcut."
+          }
+        },
+        {
+          "name": "新石垣空港",
+          "operator": "airport-facility:cf03_00064",
+          "line": "airport:cf03_00064",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00064",
+            "requirementId": "review:transport-node:95363cc3-5ee1-588c-b00a-555abd5bb8c7",
+            "expectedRequirementName": "石垣",
+            "method": "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX",
+            "currentPassengerAccessReview": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim.",
+            "officialNameEvidence": {
+              "officialName": "新石垣空港",
+              "publicName": "石垣空港",
+              "requirementName": "石垣",
+              "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+              "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+            },
+            "predecessorClosureEvidence": {
+              "currentReferencePointId": "cf03_00064",
+              "closedPredecessorName": "石垣空港",
+              "closedPredecessorExcluded": true,
+              "closureYear": 2013,
+              "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+              "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+            }
+          }
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "code": "OKA",
+          "sourceName": "那覇",
+          "canonicalAirportName": "那覇空港",
+          "referencePointId": "cf03_00088"
+        },
+        {
+          "code": "ISG",
+          "sourceName": "石垣 / Ishigaki Airport",
+          "canonicalAirportName": "新石垣空港",
+          "referencePointId": "cf03_00064"
+        }
+      ],
+      "reviewMethod": "EXACT_CURRENT_AIRPORT_PUBLISHED_FLIGHT_RECORD_AND_REVIEWED_C28_FACILITIES",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "jta-naha-ishigaki-current-nu600",
+      "kind": "service",
+      "sourceActionId": "flight:jta:current-naha-ishigaki-directed-pair",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:jta:current-naha-ishigaki-directed-pair",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+          "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+          "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/access/bus-taxi/index.html",
+          "observedResponseSha256": "a756fd07eb668a760f5bb825e61b37e2de07de6f96723ef1005e2814e4140335"
+        }
+      ],
+      "locator": "Current October 1–31 2026 Naha Airport monthly schedule independently identifies Japan Transocean Air NU600 ISG-OKA. Exact record has no restrictive date or operator-override remark. Retain only minimal actual passenger carrier-and-directed-airport relation; no clocks, schedule payload, fare, availability or inferred codeshare. ISG is explicitly bound to present C28 New Ishigaki Airport using the formal-name release and separate predecessor-closure proof; no service to the closed previous facility.",
+      "line": "那覇・石垣国内線",
+      "operator": "日本トランスオーシャン航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NU600",
+      "direction": "ISG-OKA",
+      "callingStations": [
+        "新石垣空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "新石垣空港",
+          "operator": "airport-facility:cf03_00064",
+          "line": "airport:cf03_00064",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00064",
+            "requirementId": "review:transport-node:95363cc3-5ee1-588c-b00a-555abd5bb8c7",
+            "expectedRequirementName": "石垣",
+            "method": "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX",
+            "currentPassengerAccessReview": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim.",
+            "officialNameEvidence": {
+              "officialName": "新石垣空港",
+              "publicName": "石垣空港",
+              "requirementName": "石垣",
+              "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+              "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+            },
+            "predecessorClosureEvidence": {
+              "currentReferencePointId": "cf03_00064",
+              "closedPredecessorName": "石垣空港",
+              "closedPredecessorExcluded": true,
+              "closureYear": 2013,
+              "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+              "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+            }
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Naha Airport official FAQ explicitly connects the domestic-terminal second-floor public passage with Yui Rail Naha-Airport Station. C28 whole-airport reference is the gateway only; no navigation precision or international-terminal shortcut."
+          }
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "code": "OKA",
+          "sourceName": "那覇",
+          "canonicalAirportName": "那覇空港",
+          "referencePointId": "cf03_00088"
+        },
+        {
+          "code": "ISG",
+          "sourceName": "石垣 / Ishigaki Airport",
+          "canonicalAirportName": "新石垣空港",
+          "referencePointId": "cf03_00064"
+        }
+      ],
+      "reviewMethod": "EXACT_CURRENT_AIRPORT_PUBLISHED_FLIGHT_RECORD_AND_REVIEWED_C28_FACILITIES",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

@@ -336,6 +336,20 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
           node.lineRefs[0] !== "p36-stop:" + node.identityRecord.stopRecordId)
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_P11_AND_CURRENT_SERVICE" &&
+        (node.identityAnchor !== "p11:22:" + node.identityRecord.stopRecordId ||
+          node.canonicalNameJa !== node.identityRecord.stopName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "bus_stop" ||
+          node.mode !== "airport_bus" ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !== "p11-stop:" + node.identityRecord.stopRecordId)
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
         reasons.push("REJECTED_V1");
       if (
@@ -536,6 +550,10 @@ export function generatePattern(
           record.direction === pattern.direction &&
           verifyEvidence([record.sourceFactRef], sources, evidence) &&
           evidence.get(record.sourceFactRef).record.kind === "service" &&
+          (!pattern.mode.includes("bus") ||
+            (pattern.purpose === record.purpose &&
+              pattern.purpose ===
+                evidence.get(record.sourceFactRef).record.purpose)) &&
           canonical(
             factCallingRestrictions(evidence.get(record.sourceFactRef).record),
           ) ===

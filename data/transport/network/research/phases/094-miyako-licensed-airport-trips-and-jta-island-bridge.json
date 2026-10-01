@@ -1,0 +1,254 @@
+{
+  "phaseId": "094-miyako-licensed-airport-trips-and-jta-island-bridge",
+  "strategy": [
+    "LICENSED_CURRENT_MIYAKO_AIRPORT_BUS_TRIPS",
+    "EXACT_JTA_CURRENT_DIRECTED_FLIGHTS",
+    "EXPLICIT_PUBLIC_TERMINAL_PASSAGE"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "miyako-kyoei-airport.json",
+      "packageSha256": "17cba481a4280a395119e74506d336886ca0a7de1f335ed112c46ac8748b1a92",
+      "sourceActionId": "bus:miyako-kyoei:ccby-current-airport-resort-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:miyako-kyoei:ccby-current-airport-resort-trips",
+    "airport:miyako:current-public-terminal-bus-passage",
+    "flight:jta:current-naha-miyako-directed-pair"
+  ],
+  "facts": [
+    {
+      "factId": "miyako-terminal-kyoei-S1754-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "airport:miyako:current-public-terminal-bus-passage",
+      "sourceUrl": "https://miyakoap.co.jp/wp-content/themes/cerulean-custom/assets/img/bus-taxi_img01.png",
+      "observedResponseSha256": "04b246cda507e50ded5d998dfa932f85bc259ac2b909bd141aaf653f5ef70578",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:miyako:current-public-terminal-bus-passage",
+          "url": "https://miyakoap.co.jp/bus-taxi/",
+          "observedResponseSha256": "baf8c2b47766e6035e4a4e743341fab0973702af4c3f6bb8aaaf8dadb3b6a6ed"
+        },
+        {
+          "sourceActionId": "airport:miyako:current-public-terminal-bus-passage",
+          "url": "https://miyakoap.co.jp/departure-arrival/",
+          "observedResponseSha256": "a32a790c96615fd0a47ac3871011baafab66c4d429574a78b83dd2dcfe1bcb01"
+        },
+        {
+          "sourceActionId": "airport:miyako:current-public-terminal-bus-passage",
+          "url": "https://miyakoap.co.jp/wp-content/uploads/2025/11/1763085814.pdf",
+          "observedResponseSha256": "b5efa820bf159ac1012ebf4b0c0442d4313ed31d9e39743edb8259a86438a409"
+        }
+      ],
+      "locator": "Current Miyako Airport bus page explicitly identifies Miyako Kyoei. The current-linked bus access diagram and June 20 2025 terminal floor plan were visually reviewed: a continuous public first-floor arrival/central lobby and exterior sidewalk connects the bus frontage beside the arrival exit. Bind exact licensed S1754 Miyako Airport with blank platform to the whole C28 airport facility. S1860 airport entrance is a distinct stop and supplies no terminal transfer. No proximity-only link, platform invention, time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "宮古空港",
+          "operator": "airport-facility:cf03_00062",
+          "line": "airport:cf03_00062",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00062",
+            "requirementId": "review:transport-node:0dcd77e4-39ae-5d32-8802-decc25c29434",
+            "expectedRequirementName": "宮古",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Miyako Airport bus page explicitly identifies Miyako Kyoei. The current-linked bus access diagram and June 20 2025 terminal floor plan were visually reviewed: a continuous public first-floor arrival/central lobby and exterior sidewalk connects the bus frontage beside the arrival exit. Bind exact licensed S1754 Miyako Airport with blank platform to the whole C28 airport facility. S1860 airport entrance is a distinct stop and supplies no terminal transfer. No proximity-only link, platform invention, time or accessibility guarantee."
+          }
+        },
+        {
+          "name": "宮古空港",
+          "operator": "宮古協栄バス（資）",
+          "line": "gtfs:miyako-kyoei-airport:route:887",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:miyako-kyoei-airport",
+            "stopId": "S1754",
+            "sourceArchiveSha256": "526ba6b0a3cfb9b7fe3a8d4fcc1a65539609f0642ed8d2caa53beecd0fcbe48d",
+            "recordSha256": "652e993dd668099871e6a0dae63d98a2c8dee3714cc9b4cf6804e06e0822789f",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current Miyako Airport bus page explicitly identifies Miyako Kyoei. The current-linked bus access diagram and June 20 2025 terminal floor plan were visually reviewed: a continuous public first-floor arrival/central lobby and exterior sidewalk connects the bus frontage beside the arrival exit. Bind exact licensed S1754 Miyako Airport with blank platform to the whole C28 airport facility. S1860 airport entrance is a distinct stop and supplies no terminal transfer. No proximity-only link, platform invention, time or accessibility guarantee."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_AIRPORT_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "jta-naha-miyako-current-nu551",
+      "kind": "service",
+      "sourceActionId": "flight:jta:current-naha-miyako-directed-pair",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:jta:current-naha-miyako-directed-pair",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "flight:jta:current-naha-miyako-directed-pair",
+          "url": "https://miyakoap.co.jp/schedule/",
+          "observedResponseSha256": "15bab2001869195c6a0a36a5a110b3153d397ffb8ab08a4c2f582d7323a8bca9"
+        },
+        {
+          "sourceActionId": "airport:miyako:current-public-terminal-bus-passage",
+          "url": "https://miyakoap.co.jp/departure-arrival/",
+          "observedResponseSha256": "a32a790c96615fd0a47ac3871011baafab66c4d429574a78b83dd2dcfe1bcb01"
+        }
+      ],
+      "locator": "Current airport-published monthly data_range covers October 1–31 2026. Independently inspected exact JTA NU551 record explicitly names Japan Transocean Air and OKA-MMY with no date restriction or operator override in remarks. Miyako Airport independently lists the same directional service. Retain minimal actual passenger topology, not timetable clocks, calendar payload, real-time availability or code-share expansion. MMY / Miyako, historically labelled Hirara in the Naha English field, is independently bound to the current Japanese Miyako Airport terminal and exact C28 facility. Both directions are separately observed.",
+      "line": "那覇・宮古国内線",
+      "operator": "日本トランスオーシャン航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NU551",
+      "direction": "OKA-MMY",
+      "callingStations": [
+        "那覇空港",
+        "宮古空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Existing independently reviewed phase-55 Naha whole-airport facility and second-floor public connection to Yui Rail are preserved. Current October 2026 airport-published JTA flights identify OKA / Naha. This service creates no internal terminal transfer."
+          }
+        },
+        {
+          "name": "宮古空港",
+          "operator": "airport-facility:cf03_00062",
+          "line": "airport:cf03_00062",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00062",
+            "requirementId": "review:transport-node:0dcd77e4-39ae-5d32-8802-decc25c29434",
+            "expectedRequirementName": "宮古",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Miyako Airport bus page explicitly identifies Miyako Kyoei. The current-linked bus access diagram and June 20 2025 terminal floor plan were visually reviewed: a continuous public first-floor arrival/central lobby and exterior sidewalk connects the bus frontage beside the arrival exit. Bind exact licensed S1754 Miyako Airport with blank platform to the whole C28 airport facility. S1860 airport entrance is a distinct stop and supplies no terminal transfer. No proximity-only link, platform invention, time or accessibility guarantee."
+          }
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "code": "OKA",
+          "sourceName": "那覇",
+          "canonicalAirportName": "那覇空港",
+          "referencePointId": "cf03_00088"
+        },
+        {
+          "code": "MMY",
+          "sourceName": "宮古 / Hirara Airport",
+          "canonicalAirportName": "宮古空港",
+          "referencePointId": "cf03_00062"
+        }
+      ],
+      "reviewMethod": "EXACT_CURRENT_AIRPORT_PUBLISHED_FLIGHT_RECORD_AND_REVIEWED_C28_FACILITIES",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "jta-naha-miyako-current-nu552",
+      "kind": "service",
+      "sourceActionId": "flight:jta:current-naha-miyako-directed-pair",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:jta:current-naha-miyako-directed-pair",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "flight:jta:current-naha-miyako-directed-pair",
+          "url": "https://miyakoap.co.jp/schedule/",
+          "observedResponseSha256": "15bab2001869195c6a0a36a5a110b3153d397ffb8ab08a4c2f582d7323a8bca9"
+        },
+        {
+          "sourceActionId": "airport:miyako:current-public-terminal-bus-passage",
+          "url": "https://miyakoap.co.jp/departure-arrival/",
+          "observedResponseSha256": "a32a790c96615fd0a47ac3871011baafab66c4d429574a78b83dd2dcfe1bcb01"
+        }
+      ],
+      "locator": "Current airport-published monthly data_range covers October 1–31 2026. Independently inspected exact JTA NU552 record explicitly names Japan Transocean Air and MMY-OKA with no date restriction or operator override in remarks. Miyako Airport independently lists the same directional service. Retain minimal actual passenger topology, not timetable clocks, calendar payload, real-time availability or code-share expansion. MMY / Miyako, historically labelled Hirara in the Naha English field, is independently bound to the current Japanese Miyako Airport terminal and exact C28 facility. Both directions are separately observed.",
+      "line": "那覇・宮古国内線",
+      "operator": "日本トランスオーシャン航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NU552",
+      "direction": "MMY-OKA",
+      "callingStations": [
+        "宮古空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "宮古空港",
+          "operator": "airport-facility:cf03_00062",
+          "line": "airport:cf03_00062",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00062",
+            "requirementId": "review:transport-node:0dcd77e4-39ae-5d32-8802-decc25c29434",
+            "expectedRequirementName": "宮古",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Miyako Airport bus page explicitly identifies Miyako Kyoei. The current-linked bus access diagram and June 20 2025 terminal floor plan were visually reviewed: a continuous public first-floor arrival/central lobby and exterior sidewalk connects the bus frontage beside the arrival exit. Bind exact licensed S1754 Miyako Airport with blank platform to the whole C28 airport facility. S1860 airport entrance is a distinct stop and supplies no terminal transfer. No proximity-only link, platform invention, time or accessibility guarantee."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Existing independently reviewed phase-55 Naha whole-airport facility and second-floor public connection to Yui Rail are preserved. Current October 2026 airport-published JTA flights identify OKA / Naha. This service creates no internal terminal transfer."
+          }
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "code": "OKA",
+          "sourceName": "那覇",
+          "canonicalAirportName": "那覇空港",
+          "referencePointId": "cf03_00088"
+        },
+        {
+          "code": "MMY",
+          "sourceName": "宮古 / Hirara Airport",
+          "canonicalAirportName": "宮古空港",
+          "referencePointId": "cf03_00062"
+        }
+      ],
+      "reviewMethod": "EXACT_CURRENT_AIRPORT_PUBLISHED_FLIGHT_RECORD_AND_REVIEWED_C28_FACILITIES",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "phaseId": "100-four-central-japan-hubs-and-ozone-reviewed-component-pair",
+  "strategy": [
+    "CURRENT_MUNICIPAL_DIAGRAM_METADATA_AND_ACTUAL_MAP_REVIEW",
+    "JR_EXPLICIT_INTER_OPERATOR_AND_SHINKANSEN_CONNECTING_GATES",
+    "PRESERVE_UNREVIEWED_OZONE_COMPONENTS"
+  ],
+  "completedActionIds": [
+    "hub:nagoya:four-current-municipal-public-passages",
+    "hub:jr-central:kanayama-and-shizuoka-current-component-passages"
+  ],
+  "facts": [
+    {
+      "factId": "千種-current-jr-metro-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/H12_Chikusa.gif",
+      "observedResponseSha256": "376c661a9cd01cb8baf4f23fa22b83e29e35d7848487d1e6091aa0c8612ebc80",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E5%8D%83%E7%A8%AE",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/ticket/trp0001550.htm",
+          "observedResponseSha256": "072bd935c2969ea8c8e79335d4c0049ab6e22e6140bd5f9d276e1842019f7bb9"
+        }
+      ],
+      "locator": "East public gate concourse explicitly leads to the JR Chikusa stair connection; preserve distinct railway/metro paid zones. Current-linked actual diagram visually reviewed. Current municipality interchange list corroborates exact JR station. Minimal physical fact only; no raw diagram, distance-inferred edge, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "千種",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "千種",
+          "operator": "東海旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_PUBLIC_PASSAGE_AND_NAMED_JR_INTERCHANGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "鶴舞-current-jr-metro-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/T10_Tsurumai.gif",
+      "observedResponseSha256": "1377c1f6e316738c0700125c43c585f9a0161a039217cb07604d6c016ae91061",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E9%B6%B4%E8%88%9E",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/ticket/trp0001550.htm",
+          "observedResponseSha256": "072bd935c2969ea8c8e79335d4c0049ab6e22e6140bd5f9d276e1842019f7bb9"
+        }
+      ],
+      "locator": "Public station concourse leads to exit 3 explicitly signed for JR. The limited-hours annotations belong to other exits 2/4/5; no unrestricted-access timing claim is introduced. Current-linked actual diagram visually reviewed. Current municipality interchange list corroborates exact JR station. Minimal physical fact only; no raw diagram, distance-inferred edge, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "鶴舞",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "鶴舞",
+          "operator": "東海旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_PUBLIC_PASSAGE_AND_NAMED_JR_INTERCHANGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "金山-current-jr-metro-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/M01_E01_Kanayama.gif",
+      "observedResponseSha256": "072b20186e7c5c8c455b505fcf0455f75efc00d7f52655ebaf17a536c04dddd1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E9%87%91%E5%B1%B1",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/ticket/trp0001550.htm",
+          "observedResponseSha256": "072bd935c2969ea8c8e79335d4c0049ab6e22e6140bd5f9d276e1842019f7bb9"
+        },
+        {
+          "sourceActionId": "hub:jr-central:kanayama-and-shizuoka-current-component-passages",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/kanayama/_img/kanayama_181105.gif",
+          "observedResponseSha256": "f6f83595f75a01e0bb3f87582c0aa09568d9881694098d453362a182fde0c570"
+        }
+      ],
+      "locator": "South public concourse has explicit JR/Meitetsu approach via the drawn escalator/stair bank. JR current map independently shows the public hall joining its gate and the subway direction. Current-linked actual diagram visually reviewed. Current municipality interchange list corroborates exact JR station. Minimal physical fact only; no raw diagram, distance-inferred edge, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "金山",
+          "operator": "東海旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_PUBLIC_PASSAGE_AND_NAMED_JR_INTERCHANGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "大曽根-current-jr-metro-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/M12_Ozone.gif",
+      "observedResponseSha256": "f0ba4805836d70e2ea1f55819301dad7f09d5850322e9e7d7037ae08eeeb4f07",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E5%A4%A7%E6%9B%BD%E6%A0%B9",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:four-current-municipal-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/ticket/trp0001550.htm",
+          "observedResponseSha256": "072bd935c2969ea8c8e79335d4c0049ab6e22e6140bd5f9d276e1842019f7bb9"
+        }
+      ],
+      "locator": "East public gate approach explicitly points to west station plaza for JR, Meitetsu and guideway bus. Admit only the already reviewed JR Chuo and Metro components here; remaining Meitetsu/guideway obligations are not silently closed. Current-linked actual diagram visually reviewed. Current municipality interchange list corroborates exact JR station. Minimal physical fact only; no raw diagram, distance-inferred edge, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "大曽根",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "大曽根",
+          "operator": "東海旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_PUBLIC_PASSAGE_AND_NAMED_JR_INTERCHANGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kanayama-current-jr-reviewed-connecting-gate",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:kanayama-and-shizuoka-current-component-passages",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/kanayama/_img/kanayama_181105.gif",
+      "observedResponseSha256": "f6f83595f75a01e0bb3f87582c0aa09568d9881694098d453362a182fde0c570",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:kanayama-and-shizuoka-current-component-passages",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/kanayama/map.html",
+          "observedResponseSha256": "23b5626d699a5530bce3db2c84e2757b6de1fc9b88484eed82730efe218ef412"
+        }
+      ],
+      "locator": "Current linked JR Kanayama layout explicitly marks the Meitetsu connecting gate between the two operators; independently preserve that gate relation. No through-train or ticket-free passage is claimed. Exact current-linked diagram visually reviewed; no raw artwork, same-name inference, duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "金山",
+          "operator": "東海旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "金山",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_JR_CONNECTING_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shizuoka-current-jr-reviewed-connecting-gate",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:kanayama-and-shizuoka-current-component-passages",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/shizuoka/_img/shizuoka_240205.gif",
+      "observedResponseSha256": "03621156f5d4575d9609993353c01f8012da2d1c84c6be98f5f397bf029daa52",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:kanayama-and-shizuoka-current-component-passages",
+          "url": "https://railway.jr-central.co.jp/station-guide/shinkansen/shizuoka/map.html",
+          "observedResponseSha256": "9f497cc2bf15f5d52b77baa7a77bd3f4ce0c3b79ccda73f04de8cced3bb6a1cc"
+        }
+      ],
+      "locator": "Current linked JR Shizuoka layout explicitly shows the transfer gate connecting Tokaido conventional and Shinkansen concourses. Select that gate rather than the separately marked Parche shopping-hours exits. Exact current-linked diagram visually reviewed; no raw artwork, same-name inference, duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "静岡",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "静岡",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_JR_CONNECTING_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    }
+  ]
+}
