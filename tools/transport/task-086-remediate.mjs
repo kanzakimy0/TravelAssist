@@ -4,6 +4,7 @@ import { gunzipSync } from "node:zlib";
 import { fileURLToPath } from "node:url";
 import {
   hash,
+  factCallingRestrictions,
   RAIL_NODE_KIND_BY_MODE,
   id,
   canonical,
@@ -30,12 +31,17 @@ import {
 } from "./task-086-batches.mjs";
 import {
   transitionAction,
+  validateCorroboratingEvidence,
   nextSourceAction,
 } from "./task-086-source-actions.mjs";
 import {
   airportCandidate,
   C28_ARCHIVE_SHA256,
 } from "./task-086-airport-identities.mjs";
+import {
+  roadTerminalCandidate,
+  P36_ARCHIVE_SHA256,
+} from "./task-086-road-identities.mjs";
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../..",
@@ -97,6 +103,9 @@ export function runRemediation({
   );
   const airportIdentities = readRows(
     path.join(networkRoot, "research/c28-identities.jsonl"),
+  );
+  const highwayIdentities = readRows(
+    path.join(networkRoot, "research/p36-identities.jsonl"),
   );
   const discovery = readRows(path.join(upstream, "rail-components.jsonl"));
   const hubScopes = readRows(
@@ -209,6 +218,38 @@ export function runRemediation({
     retainedArchive: "sources/raw/mlit-c28-21.zip",
   };
   sources.set(airportSource.sourceId, airportSource);
+  const highwayAction = actions.find(
+    (a) => a.actionId === "government:p36:highway-stop-identities",
+  );
+  const highwayRaw = highwayAction?.sourcesChecked.find(
+    (s) => s.rawPayloadRetained && s.status === 200,
+  );
+  invariant(
+    highwayRaw &&
+      highwayRaw.contentSha256 === P36_ARCHIVE_SHA256 &&
+      hash(fs.readFileSync(path.join(root, highwayRaw.retainedPath))) ===
+        P36_ARCHIVE_SHA256,
+    "P36_ARCHIVE_BINDING",
+  );
+  const highwaySource = {
+    sourceId: "mlit:p36:23",
+    url: highwayRaw.url,
+    contentSha256: P36_ARCHIVE_SHA256,
+    observedAt: highwayRaw.observedAt,
+    rightsClass: "RAW_PERSISTENCE_ALLOWED",
+    persistenceAllowed: true,
+    derivedDataAllowed: true,
+    redistributionAllowed: true,
+    rightsDecision: "CC_BY_4_0_ATTRIBUTION",
+    termsUrl:
+      "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P36-2023.html",
+    attribution:
+      "国土交通省 国土数値情報 高速バス停留所 P36-23 (2023年度); CC BY 4.0; TravelAssist independently extracts operator-specific identity and explicit point-reference relationships.",
+    limitations:
+      "Source dates vary around November 2023. Representative operator stops, not individual platforms or precise navigation. No current service order or transfer inference. Same-place records remain distinct.",
+    retainedArchive: "sources/raw/mlit-p36-23.zip",
+  };
+  sources.set(highwaySource.sourceId, highwaySource);
 
   const makeEvidence = (source, record, locator, key) => {
     const row = {
@@ -225,6 +266,7 @@ export function runRemediation({
     return row.evidenceId;
   };
   const factSource = (fact) => {
+    validateCorroboratingEvidence(fact, actions);
     const action = actions.find((a) => a.actionId === fact.sourceActionId);
     invariant(
       action && ["RIGHTS_REVIEWED", "INGESTED"].includes(action.state),
@@ -241,6 +283,14 @@ export function runRemediation({
       .at(-1);
     const rights = action.rightsFindings.at(-1);
     invariant(observed && rights, "FACT_SOURCE_NOT_OBSERVED:" + fact.factId);
+    if (observed.rawPayloadRetained)
+      invariant(
+        rights.rightsClass === "RAW_PERSISTENCE_ALLOWED" &&
+          observed.retainedPath &&
+          hash(fs.readFileSync(path.join(root, observed.retainedPath))) ===
+            observed.contentSha256,
+        "RETAINED_FACT_SOURCE_HASH_MISMATCH",
+      );
     const recordSet = sourceFacts.filter(
       (f) =>
         f.sourceActionId === fact.sourceActionId &&
@@ -255,20 +305,32 @@ export function runRemediation({
         observed.fingerprintScope ?? "RAW_RESPONSE_BYTES",
       observedAt: observed.observedAt,
       rightsClass: rights.rightsClass,
-      rawPayloadRetained: false,
+      rawPayloadRetained: observed.rawPayloadRetained === true,
+      ...(observed.rawPayloadRetained
+        ? {
+            retainedArchive: path
+              .relative(networkRoot, path.join(root, observed.retainedPath))
+              .split(path.sep)
+              .join("/"),
+            retainedArchiveSha256: observed.contentSha256,
+          }
+        : {}),
       derivedDataAllowed: true,
       redistributionAllowed: true,
       metricPersistenceAllowed: false,
-      rightsDecision: "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      rightsDecision: observed.rawPayloadRetained
+        ? "LICENSED_RAW_WITH_REVIEWED_TOPOLOGY_DERIVATION"
+        : "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
       rightsReview: {
         scope: "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
         termsUrl: rights.termsUrl,
         reason: rights.reason,
       },
       attribution:
+        fact.sourceAttribution ??
         fact.sourceUrl +
-        "; operator factual topology; reviewed " +
-        observed.observedAt,
+          "; operator factual topology; reviewed " +
+          observed.observedAt,
     };
     sources.set(source.sourceId, source);
     return source;
@@ -323,6 +385,56 @@ export function runRemediation({
           "airportName",
           "reviewedRequirementId",
         ],
+        sameGroupNotInterchange: true,
+      });
+      return admitted.nodeId;
+    }
+    if (selector.terminalIdentity) {
+      const matches = highwayIdentities.filter(
+        (r) => r.stopRecordId === selector.terminalIdentity.stopRecordId,
+      );
+      invariant(matches.length === 1, "ROAD_TERMINAL_RAW_IDENTITY_NOT_UNIQUE");
+      const record = matches[0];
+      const requirement = originalInventory.find(
+        (r) => r.requirementId === selector.terminalIdentity.requirementId,
+      );
+      const ref = makeEvidence(
+        highwaySource,
+        record,
+        "P36-23 exact operator-stop and point-reference join " +
+          record.stopRecordId,
+        ["p36", record],
+      );
+      const candidate = roadTerminalCandidate(selector, record, requirement, [
+        ref,
+        serviceEvidenceRef,
+      ]);
+      const admitted = admitNodes([candidate], sources, evidence, [])[0];
+      invariant(
+        admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
+        "ROAD_TERMINAL_ADMISSION_FAILED",
+      );
+      const previous = nodes.get(admitted.nodeId);
+      if (previous?.decision === "ADMIT_TASK_086_TOPOLOGY") {
+        invariant(
+          previous.identitySignature === admitted.identitySignature,
+          "ROAD_TERMINAL_ADMISSION_REBIND",
+        );
+        previous.evidenceRefs = [
+          ...new Set([...previous.evidenceRefs, ref, serviceEvidenceRef]),
+        ].sort(compare);
+        return admitted.nodeId;
+      }
+      nodes.set(admitted.nodeId, admitted);
+      nodeReviews.push({
+        nodeId: admitted.nodeId,
+        previousDecision: previous?.decision ?? "NOT_IN_REQUIRED_INVENTORY",
+        decision: admitted.decision,
+        identityRecordSha256: hash(record),
+        rawIdentityEvidenceRef: ref,
+        serviceEvidenceRef,
+        discoveryCandidateRef: admitted.discoveryCandidateRef,
+        matchedFields: ["stopRecordId", "stopName", "reviewedRequirementId"],
         sameGroupNotInterchange: true,
       });
       return admitted.nodeId;
@@ -505,7 +617,10 @@ export function runRemediation({
     "task-086-extract-identities.py",
     "task-086-extract-airports.py",
     "task-086-airport-identities.mjs",
+    "task-086-extract-highway-stops.py",
+    "task-086-road-identities.mjs",
     "task-086-extract-jreast.py",
+    "task-086-extract-rail-gtfs.py",
   ];
   const generatorHashes = Object.fromEntries(
     generatorPaths.map((n) => [
@@ -549,6 +664,7 @@ export function runRemediation({
             ) === canonical(fact.callingStations),
             "NONCONTIGUOUS_OPERATOR_SECTION",
           );
+        const restrictions = factCallingRestrictions(fact);
         const calls = fact.callingStations.map((name, i) => ({
           nodeId: bind(
             fact.callingComponents?.[i] ?? {
@@ -560,8 +676,7 @@ export function runRemediation({
             factRef,
           ),
           sequence: i + 1,
-          pickupType: "0",
-          dropOffType: "0",
+          ...restrictions[i],
         }));
         const lineRef = id("line", [fact.operator, fact.line]);
         const resolved = {
@@ -618,6 +733,9 @@ export function runRemediation({
             identitySource,
             ...(fact.callingComponents?.some((c) => c.airportIdentity)
               ? [airportSource]
+              : []),
+            ...(fact.callingComponents?.some((c) => c.terminalIdentity)
+              ? [highwaySource]
               : []),
           ],
           nodes: [...new Set(calls.map((c) => c.nodeId))].map((n) =>
@@ -698,6 +816,9 @@ export function runRemediation({
             identitySource,
             ...(fact.components?.some((c) => c.airportIdentity)
               ? [airportSource]
+              : []),
+            ...(fact.components?.some((c) => c.terminalIdentity)
+              ? [highwaySource]
               : []),
           ],
           nodes: componentIds.map((n) => structuredClone(nodes.get(n))),
@@ -784,12 +905,22 @@ export function runRemediation({
     invariant(index >= 0, "COMPLETED_ACTION_MISSING");
     const action = actions[index];
     const facts = phase.facts
-      .filter((f) => f.sourceActionId === actionId)
+      .filter(
+        (f) =>
+          f.sourceActionId === actionId ||
+          f.corroboratingEvidence?.some((r) => r.sourceActionId === actionId),
+      )
       .map((f) => f.factId);
     action.extractedFacts = [
       ...new Set([
         ...action.extractedFacts,
         ...facts,
+        ...(actionId === "government:c28:airport-identities"
+          ? ["c28-identities:" + hash(airportIdentities)]
+          : []),
+        ...(actionId === "government:p36:highway-stop-identities"
+          ? ["p36-identities:" + hash(highwayIdentities)]
+          : []),
         ...(actionId === "government-s12"
           ? ["s12-identities:" + hash(identities)]
           : []),
@@ -958,6 +1089,10 @@ export function runRemediation({
     "sources/raw/mlit-s12-25.zip",
     "sources/raw/mlit-c28-21.zip",
     "research/c28-identities.jsonl",
+    "sources/raw/mlit-p36-23.zip",
+    "research/p36-identities.jsonl",
+    "sources/raw/toei-train-20261001.zip",
+    "research/toei-train-selection.json",
     "checkpoints/origin.json",
     "checkpoints/" + origin.archive,
     "research/s12-identities.jsonl",

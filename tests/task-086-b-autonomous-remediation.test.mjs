@@ -1,3 +1,4 @@
+import { roadTerminalCandidate } from "../tools/transport/task-086-road-identities.mjs";
 import { airportCandidate } from "../tools/transport/task-086-airport-identities.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -21,6 +22,7 @@ import {
 } from "../tools/transport/task-086-model.mjs";
 import {
   transitionAction,
+  validateCorroboratingEvidence,
   nextSourceAction,
   acquireEvidence,
   recordReferenceEvidence,
@@ -796,4 +798,251 @@ test("TASK086 flight reachability does not substitute for airport surface access
     ]).counts.AIRPORT_SURFACE_GAP,
     1,
   );
+});
+
+test("TASK086 terminal identities cannot merge a namesake, another operator or unreviewed requirement", () => {
+  const record = {
+    stopRecordId: "P36-23_13:kbs288",
+    stopName: "バスタ新宿",
+    operator: "ジェイアールバス関東（株）",
+    latitude: 35.689,
+    longitude: 139.701,
+  };
+  const requirement = {
+    requirementId: "review:protected-terminal",
+    name: "バスタ新宿",
+    tier: "T0",
+    kind: "bus_terminal",
+  };
+  requirement.nodeId = id("node", requirement.requirementId);
+  const selector = {
+    name: record.stopName,
+    operator: record.operator,
+    line: "p36-stop:" + record.stopRecordId,
+    mode: "highway_bus",
+    terminalIdentity: {
+      dataset: "P36-23",
+      stopRecordId: record.stopRecordId,
+      requirementId: requirement.requirementId,
+      expectedRequirementName: requirement.name,
+      method: "EXACT_P36_OPERATOR_COMPONENT_AND_CURRENT_TERMINAL_ACCESS",
+      currentOperatorReview: "Current operator boarding/alighting guide",
+      currentPassengerAccessReview:
+        "Reviewed station gate and terminal passage",
+    },
+  };
+  const candidate = roadTerminalCandidate(selector, record, requirement, [
+    "identity",
+    "access",
+  ]);
+  assert.equal(id("node", candidate.identityAnchor), requirement.nodeId);
+  assert.equal(candidate.nodeLevel, "T0");
+  for (const changed of [
+    { ...selector, operator: "another operator" },
+    { ...selector, name: "新宿西口" },
+    { ...selector, line: "nearby-stop" },
+    { ...selector, mode: "local_bus" },
+    {
+      ...selector,
+      terminalIdentity: {
+        ...selector.terminalIdentity,
+        stopRecordId: "P36-23_14:kbs288",
+      },
+    },
+    {
+      ...selector,
+      terminalIdentity: {
+        ...selector.terminalIdentity,
+        currentOperatorReview: "",
+      },
+    },
+    {
+      ...selector,
+      terminalIdentity: {
+        ...selector.terminalIdentity,
+        currentPassengerAccessReview: "",
+      },
+    },
+  ]) {
+    assert.throws(
+      () =>
+        roadTerminalCandidate(changed, record, requirement, [
+          "identity",
+          "access",
+        ]),
+      /ROAD_TERMINAL_/,
+    );
+  }
+  assert.throws(
+    () =>
+      roadTerminalCandidate(
+        selector,
+        record,
+        { ...requirement, name: "新宿駅" },
+        ["identity", "access"],
+      ),
+    /ROAD_TERMINAL_/,
+  );
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    [
+      "identity",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record,
+        recordSha256: hash(record),
+        locator: "licensed point reference",
+      },
+    ],
+    [
+      "access",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record: { access: true },
+        recordSha256: hash({ access: true }),
+        locator: "current operator access",
+      },
+    ],
+  ]);
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  for (const changed of [
+    { latitude: 34 },
+    { longitude: 130 },
+    { mode: "conventional_rail" },
+    { nodeKind: "bus_stop" },
+    { operatorRefs: [record.operator, "unreviewed colocated operator"] },
+    { lineRefs: ["wrong"] },
+  ]) {
+    assert.ok(
+      admitNodes(
+        [{ ...candidate, ...changed }],
+        sources,
+        evidence,
+      )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
+    );
+  }
+});
+
+test("TASK086 corroborating evidence must bind an observed hash and usable rights in its own action", () => {
+  const fact = {
+    factId: "access",
+    sourceActionId: "primary",
+    corroboratingEvidence: [
+      {
+        sourceActionId: "secondary",
+        url: "https://official.invalid/access",
+        observedResponseSha256: hash("reviewed-response"),
+      },
+    ],
+  };
+  const action = {
+    actionId: "secondary",
+    state: "RIGHTS_REVIEWED",
+    rightsFindings: [{ rightsClass: "TOPOLOGY_FACT_ONLY_ALLOWED" }],
+    sourcesChecked: [
+      {
+        url: fact.corroboratingEvidence[0].url,
+        status: 200,
+        contentSha256: hash("reviewed-response"),
+      },
+    ],
+  };
+  assert.equal(validateCorroboratingEvidence(fact, [action]), true);
+  for (const changed of [
+    { ...action, state: "PENDING_RESEARCH" },
+    { ...action, actionId: "wrong" },
+    {
+      ...action,
+      rightsFindings: [{ rightsClass: "REFERENCE_ONLY_DISCOVERY" }],
+    },
+    {
+      ...action,
+      sourcesChecked: [{ ...action.sourcesChecked[0], status: 404 }],
+    },
+    {
+      ...action,
+      sourcesChecked: [
+        { ...action.sourcesChecked[0], contentSha256: hash("different") },
+      ],
+    },
+  ]) {
+    assert.throws(
+      () => validateCorroboratingEvidence(fact, [changed]),
+      /CORROBORATING_SOURCE_NOT_BOUND/,
+    );
+  }
+});
+import { spawnSync } from "node:child_process";
+
+test("TASK086 rail fact boarding restrictions survive resolution and cannot be erased in a resolved record", () => {
+  const f = boundOfficialFixture();
+  const fact = {
+    ...f.evidence.get("fact").record,
+    callingRestrictions: [
+      { pickupType: "1", dropOffType: "0" },
+      { pickupType: "0", dropOffType: "1" },
+    ],
+  };
+  f.put("fact", fact);
+  f.pattern.callingNodes = f.pattern.callingNodes.map((c, i) => ({
+    ...c,
+    ...fact.callingRestrictions[i],
+  }));
+  f.put("resolved", {
+    ...f.evidence.get("resolved").record,
+    callingNodes: f.pattern.callingNodes,
+  });
+  const [edge] = generatePattern(
+    f.pattern,
+    f.nodes,
+    f.sources,
+    f.evidence,
+    "2026-10-01",
+  );
+  assert.equal(edge.boardAllowed, false);
+  assert.equal(edge.alightAllowed, false);
+  f.pattern.callingNodes[0].pickupType = "0";
+  f.put("resolved", {
+    ...f.evidence.get("resolved").record,
+    callingNodes: f.pattern.callingNodes,
+  });
+  assert.throws(
+    () =>
+      generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-01"),
+    /OFFICIAL_PATTERN_SOURCE_BINDING/,
+  );
+  fact.callingRestrictions[0].pickupType = "2";
+  f.put("fact", fact);
+  assert.throws(
+    () =>
+      generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-01"),
+    /INVALID_FACT_BOARDING_RESTRICTIONS/,
+  );
+});
+
+test("TASK086 licensed rail GTFS rejects stale feed, inactive calendar, changed identity and changed endpoint scope", () => {
+  const code = `
+import importlib.util,json
+from pathlib import Path
+s=importlib.util.spec_from_file_location('rail','tools/transport/task-086-extract-rail-gtfs.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+p=Path('data/transport/network');raw=(p/'sources/raw/toei-train-20261001.zip').read_bytes();req=json.loads((p/'research/toei-train-selection.json').read_text(encoding='utf8'))
+f=m.extract(raw,req)['facts'];assert len(f)==4 and len(f[2]['callingStations'])==39 and f[2]['callingStations'].count('都庁前')==2
+assert f[0]['callingRestrictions'][-1]['pickupType']=='1'
+for edit,error in [(lambda r:r.update(serviceDate='20281001'),'FEED_NOT_CURRENT'),(lambda r:r.update(serviceDate='20261004'),'TRIP_NOT_ACTIVE'),(lambda r:r['trips'][0].update(direction='1'),'TRIP_IDENTITY_MISMATCH'),(lambda r:r['trips'][0].update(reviewedEndpointsAndCount=['目黒','西高島平',26]),'REVIEW_SCOPE_CHANGED'),(lambda r:r.update(archiveSha256='0'*64),'ARCHIVE_HASH_MISMATCH')]:
+ r=json.loads(json.dumps(req));edit(r)
+ try:m.extract(raw,r)
+ except ValueError as e:assert error in str(e),(error,str(e))
+ else:raise AssertionError(error)
+`;
+  const run = spawnSync(
+    process.platform === "win32" ? "python" : "python3",
+    ["-X", "utf8", "-c", code],
+    { encoding: "utf8" },
+  );
+  assert.equal(run.status, 0, run.stderr || run.stdout);
 });

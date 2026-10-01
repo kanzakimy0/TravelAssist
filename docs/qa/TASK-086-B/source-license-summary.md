@@ -2,12 +2,14 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-Executed source actions: **43**. Recorded source/terms observations: **292**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 2, 'TOPOLOGY_FACT_ONLY_ALLOWED': 40, 'REFERENCE_ONLY_DISCOVERY': 1}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
+Executed source actions: **55**. Recorded source/terms observations: **337**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 4, 'TOPOLOGY_FACT_ONLY_ALLOWED': 48, 'REFERENCE_ONLY_DISCOVERY': 3}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
 
 ## Retained representations
 
 - MLIT S12 FY2024 (published 2026): independently acquired CC BY 4.0 archive `0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28`; station-code/operator/line/coordinate identity facts only. Spatial group codes do not establish interchange.
 - MLIT C28-21: commercial-use archive `07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35` under its dataset-specific legacy terms. Explicit polygon-to-reference-point IDs produce 97 identities; coordinates describe whole airport facilities, not precise terminal gates. The 2021 identity snapshot establishes no current manager or concessionaire claim. Current passenger access is separately reviewed.
+- MLIT P36-23: CC BY 4.0 archive `50d92052dd15ccf29fa86bee74b18ce7c95fcb9cb93678395842e67658f26de4`; 9,224 operator-specific highway-stop records resolve explicit GML point references. Busta Shinjuku admission covers only the reviewed JR Bus Kanto component and its current terminal connection, without claiming platform precision or all terminal operators.
+- Toei Train GTFS: CC BY 4.0 archive `dd5757062317dcf18b8eeaf8bf83f6624ecd3c9fc4fe99918981e5ec2b42d8c4`, credited to 東京都交通局・公共交通オープンデータ協議会. Feed version 20260921 and validity window 20260314–20270312 support four selected actual Mita/Oedo trips on 20261001. The separate contest-only Pathways dataset is not used.
 - Original Fukuoka passenger ferry and Nagasaki purpose-bounded bus CC BY 4.0 raw GTFS archives remain unchanged; extraction and exact trip/call/transfer binding are revalidated.
 - Official rail/metro/private-rail sources: minimal nonexpressive static calling order, component selectors and explicitly reviewed interchange facts. No redistribution permission for expressive tables, pages or maps is asserted. Operator and third-party copyrights remain reserved. No timetable clocks, fares or service calendars are copied from fact-only sources.
 - Every minimal fact source retains both the minimal-fact-set fingerprint and the observed response fingerprint. Public-reference fallbacks label their fingerprint as a reviewed observation, never raw source bytes.
@@ -56,7 +58,7 @@ Executed source actions: **43**. Recorded source/terms observations: **292**. La
 | private:tobu:official-rights-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
 | rail:jr-east:kanto-remaining-calls | INGESTED | 1 | 11 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | rail:jr-central:ordinary-tokaido-chuo | INGESTED | 1 | 8 | TOPOLOGY_FACT_ONLY_ALLOWED |
-| government:c28:airport-identities | INGESTED | 1 | 0 | RAW_PERSISTENCE_ALLOWED |
+| government:c28:airport-identities | INGESTED | 1 | 1 | RAW_PERSISTENCE_ALLOWED |
 | airport:haneda:rail-access | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | airport:fukuoka:metro-access | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | rail:jr-hokkaido:airport-special-rapid | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
@@ -66,6 +68,18 @@ Executed source actions: **43**. Recorded source/terms observations: **292**. La
 | private:hankyu:reviewed-local-patterns | INGESTED | 1 | 21 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | private:hanshin:reviewed-local-patterns | INGESTED | 2 | 9 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | rail:osaka-monorail:itami-airport-gateway | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| air:ana:official-rights-review | SUPERSEDED_BY_ALTERNATIVE | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| rail:yui:current-directional-service | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| airport:naha:monthly-flight-and-surface | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| government:p36:highway-stop-identities | INGESTED | 1 | 1 | RAW_PERSISTENCE_ALLOWED |
+| hub:busta-shinjuku:current-jr-access | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| bus:jr-kanto:busta-current-component | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:jr-west:remaining-kansai-local | INGESTED | 1 | 6 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:kyoto-metro:local-and-interchange | INGESTED | 1 | 6 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:mm21:local-and-interchange | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:kintetsu:official-rights-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| private:hanshin:partner-nara-local-pattern | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:toei:ccby-gtfs-train | INGESTED | 1 | 4 | RAW_PERSISTENCE_ALLOWED |
 
 ## Primary evidence ledger
 

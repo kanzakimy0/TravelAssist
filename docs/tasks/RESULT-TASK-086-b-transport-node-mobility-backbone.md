@@ -4,30 +4,30 @@
 
 Branch: `feature/b-transport-node-mobility-backbone`. Existing [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466), base `develop`. No merge or auto-merge. WBS 7.16 remains **进行中**.
 
-| Measure | Preserved checkpoint 1236238c8 | Current phase 54 |
+| Measure | Preserved checkpoint 1236238c8 | Current phase 60 |
 | --- | ---: | ---: |
-| Required inventory | 1038 | 2173 |
-| ADMIT / HOLD | 327 / 711 | 2022 / 151 |
-| Lines / service patterns | 9 / 63 | 129 / 318 |
-| Directed edges | 1339 | 5367 |
-| Batches | 88 | 483 |
-| Adaptive iterations | 10 | 54 |
-| Connected T0 | 0 / 89 | 87 / 89 |
-| Connected T1 | 0 / 462 | 368 / 462 |
-| Connected required nodes | 0 / 1038 | 1695 / 2173 |
+| Required inventory | 1038 | 2343 |
+| ADMIT / HOLD | 327 / 711 | 2216 / 127 |
+| Lines / service patterns | 9 / 63 | 140 / 340 |
+| Directed edges | 1339 | 5803 |
+| Batches | 88 | 509 |
+| Adaptive iterations | 10 | 60 |
+| Connected T0 | 0 / 89 | 89 / 89 |
+| Connected T1 | 0 / 462 | 390 / 462 |
+| Connected required nodes | 0 / 1038 | 1889 / 2343 |
 | Mandatory corridors | 0 / 9 | 9 / 9 |
 
-Independent component review has converted **560 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
+Independent component review has converted **584 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
 
 ## Executed remediation
 
-43 source actions have actual acquisition attempts, with 292 recorded source/terms responses. Operator evidence now covers all six JR passenger companies, Fujikyu, Tokyo Metro, Osaka Metro, Fukuoka and Nagoya municipal metros, Tokyu, Odakyu, Keikyu, Keio, Seibu, Toei, Meitetsu, Hankyu, Hanshin and Osaka Monorail. MLIT C28 supplies independently reviewed airport identities and current operator evidence binds terminal access. MLIT S12 supplies independently re-extracted station-code/operator/line/coordinate identities. Original GTFS bus and ferry topology is preserved.
+55 source actions have actual acquisition attempts, with 337 recorded source/terms responses. Operator evidence now covers all six JR passenger companies, Fujikyu, Tokyo Metro, Osaka Metro, Fukuoka and Nagoya municipal metros, Tokyu, Odakyu, Keikyu, Keio, Seibu, Toei, Meitetsu, Hankyu, Hanshin, Osaka Monorail, Yui Rail, Kyoto municipal subway and Minatomirai Railway. JAL services published by Naha Airport provide a reviewed Haneda–Naha bridge. MLIT P36 supplies an operator-specific Busta Shinjuku identity tied to current JR Bus Kanto and terminal access evidence. MLIT C28 supplies independently reviewed airport identities and current operator evidence binds terminal access. MLIT S12 supplies independently re-extracted station-code/operator/line/coordinate identities. Original GTFS bus and ferry topology is preserved.
 
-Official train columns or service-specific stopping diagrams establish directed calls. Company-boundary concourses and explicit station gates establish physical transfers. Full operator timetables, prose and map artwork are not distributed; only reviewed minimal static facts and response fingerprints are retained. MLIT S12 and the two original CC BY 4.0 GTFS archives retain their licensed raw data. MLIT C28-21 is retained under its separate commercial-use National Land Numerical Information terms, with attribution and processing notice; it is not labelled CC BY.
+Official train columns or service-specific stopping diagrams establish directed calls. Company-boundary concourses and explicit station gates establish physical transfers. Copyright-reserved operator timetables, prose and map artwork are not distributed; those sources retain only reviewed minimal static facts and response fingerprints. MLIT S12, P36 and the two original CC BY 4.0 GTFS archives retain their licensed raw data. The separately CC BY 4.0 Toei Train GTFS archive is also retained with attribution; its four selected actual trips preserve calendar validity, repeated calls and boarding restrictions. MLIT C28-21 is retained under its separate commercial-use National Land Numerical Information terms, with attribution and processing notice; it is not labelled CC BY.
 
 ## Remaining execution
 
-The graph still has held identities, disconnected required components, 129 incomplete original hub scopes, airport-surface and island links, and unreviewed railway/private/metro/service scopes. All mandatory sample corridors passing does not establish national completion. Remaining source actions are executable queue states, not a handoff to the user. No fixpoint proof or exception is claimed.
+The graph still has held identities, disconnected required components, 127 incomplete original hub scopes, airport-surface and island links, and unreviewed railway/private/metro/service scopes. All mandatory sample corridors passing does not establish national completion. Remaining source actions are executable queue states, not a handoff to the user. No fixpoint proof or exception is claimed.
 
 `ordinaryDiscoveryRemaining=true`; `globalTopologyDiscoveryFixpoint=NOT_PROVEN`; `terminal=false`. A final-delivery invocation with this state throws `TERMINAL_RESULT_FORBIDDEN_ORDINARY_REMEDIATION_REMAINS`. Each replay selects the next source action and records measured hard-deficit changes; two consecutive stagnant iterations prohibit repeating the same strategy.
 

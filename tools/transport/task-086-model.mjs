@@ -88,6 +88,26 @@ export const SOURCE_RIGHTS = [
   "REFERENCE_ONLY_DISCOVERY",
   "LICENSE_BLOCKED",
 ];
+export function factCallingRestrictions(fact) {
+  const rows =
+    fact.callingRestrictions ??
+    fact.callingStations.map(() => ({ pickupType: "0", dropOffType: "0" }));
+  invariant(
+    Array.isArray(rows) &&
+      rows.length === fact.callingStations.length &&
+      rows.every(
+        (r) =>
+          r &&
+          ["0", "1"].includes(r.pickupType) &&
+          ["0", "1"].includes(r.dropOffType),
+      ),
+    "INVALID_FACT_BOARDING_RESTRICTIONS",
+  );
+  return rows.map(({ pickupType, dropOffType }) => ({
+    pickupType,
+    dropOffType,
+  }));
+}
 export function sourceAllowed(source) {
   const decision =
     source?.rightsClass ??
@@ -175,6 +195,20 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
           node.lineRefs.length !== 1 ||
           node.lineRefs[0] !==
             "airport:" + node.identityRecord.referencePointId)
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin ===
+          "TASK_086_INDEPENDENT_P36_AND_CURRENT_TERMINAL_ACCESS" &&
+        (node.canonicalNameJa !== node.identityRecord.stopName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "bus_terminal" ||
+          node.mode !== "highway_bus" ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !== "p36-stop:" + node.identityRecord.stopRecordId)
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
@@ -377,6 +411,15 @@ export function generatePattern(
           record.direction === pattern.direction &&
           verifyEvidence([record.sourceFactRef], sources, evidence) &&
           evidence.get(record.sourceFactRef).record.kind === "service" &&
+          canonical(
+            factCallingRestrictions(evidence.get(record.sourceFactRef).record),
+          ) ===
+            canonical(
+              pattern.callingNodes.map(({ pickupType, dropOffType }) => ({
+                pickupType,
+                dropOffType,
+              })),
+            ) &&
           evidence
             .get(record.sourceFactRef)
             .record.callingStations.every((sourceName, i) => {

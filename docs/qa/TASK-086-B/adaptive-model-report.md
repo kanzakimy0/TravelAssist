@@ -50,5 +50,11 @@ The original ten iteration records are retained byte-for-byte. Subsequent phases
 | 52 | 052-hankyu-reviewed-local-branches | 86 | 363 | 9 | 86 | 182 | True |
 | 53 | 053-hanshin-local-and-reviewed-interchanges | 86 | 368 | 9 | 44 | 104 | True |
 | 54 | 054-itami-airport-monorail-hankyu-bridge | 87 | 368 | 9 | 3 | 6 | True |
+| 55 | 055-naha-haneda-flight-and-yui-airport-bridge | 88 | 368 | 9 | 20 | 40 | True |
+| 56 | 056-busta-shinjuku-reviewed-jr-terminal-gateway | 89 | 368 | 9 | 1 | 2 | True |
+| 57 | 057-jrwest-kobe-biwako-tozai-local-sections | 89 | 377 | 9 | 69 | 144 | True |
+| 58 | 058-kyoto-metro-and-minatomirai-local-gateways | 89 | 383 | 9 | 37 | 76 | True |
+| 59 | 059-partner-published-kintetsu-nara-ordinary | 89 | 385 | 9 | 22 | 46 | True |
+| 60 | 060-toei-licensed-mita-oedo-actual-trips | 89 | 390 | 9 | 45 | 128 | True |
 
 Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).

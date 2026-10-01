@@ -94,6 +94,62 @@ export function verifyRebuild({ publish = false } = {}) {
       ),
       "Raw C28 identity extraction differs",
     );
+    const highwayIdentities = path.join(scratch, "p36-identities.jsonl");
+    const highwayExtraction = spawnSync(
+      process.platform === "win32" ? "python" : "python3",
+      [
+        "-X",
+        "utf8",
+        path.join(root, "tools/transport/task-086-extract-highway-stops.py"),
+        "--output",
+        highwayIdentities,
+      ],
+      { encoding: "utf8" },
+    );
+    assert.equal(highwayExtraction.status, 0, highwayExtraction.stderr);
+    assert.equal(
+      hash(fs.readFileSync(highwayIdentities)),
+      hash(
+        fs.readFileSync(
+          path.join(
+            root,
+            "data/transport/network/research/p36-identities.jsonl",
+          ),
+        ),
+      ),
+      "Raw P36 identity extraction differs",
+    );
+    const railPhase = "060-toei-licensed-mita-oedo-actual-trips.json";
+    const railExtraction = spawnSync(
+      process.platform === "win32" ? "python" : "python3",
+      [
+        "-X",
+        "utf8",
+        path.join(root, "tools/transport/task-086-extract-rail-gtfs.py"),
+        path.join(
+          root,
+          "data/transport/network/research/toei-train-selection.json",
+        ),
+        "--archive",
+        path.join(
+          root,
+          "data/transport/network/sources/raw/toei-train-20261001.zip",
+        ),
+        "--output",
+        path.join(scratch, railPhase),
+      ],
+      { encoding: "utf8" },
+    );
+    assert.equal(railExtraction.status, 0, railExtraction.stderr);
+    assert.equal(
+      hash(fs.readFileSync(path.join(scratch, railPhase))),
+      hash(
+        fs.readFileSync(
+          path.join(root, "data/transport/network/research/phases", railPhase),
+        ),
+      ),
+      "Raw rail GTFS trip extraction differs",
+    );
     const firstPath = path.join(scratch, "first"),
       secondPath = path.join(scratch, "second");
     const first = run({ output: firstPath }),
@@ -115,6 +171,8 @@ export function verifyRebuild({ publish = false } = {}) {
       rawGtfsExtraction: "PASS",
       rawS12IdentityExtraction: "PASS",
       rawC28IdentityExtraction: "PASS",
+      rawP36IdentityExtraction: "PASS",
+      rawRailGtfsTripExtraction: "PASS",
       fullDeterministicRebuild: "PASS",
       resumeChecksumSkip: "PASS",
       batchCount: first.manifest.batchReceipts.length,

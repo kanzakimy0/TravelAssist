@@ -71,6 +71,32 @@ export function transitionAction(action, state, detail, observedAt) {
     events: [...(action.events ?? []), { ...event, eventSha256: hash(event) }],
   };
 }
+export function validateCorroboratingEvidence(fact, actions) {
+  for (const ref of fact.corroboratingEvidence ?? []) {
+    const action = actions.find(
+      (a) => a.actionId === (ref.sourceActionId ?? fact.sourceActionId),
+    );
+    invariant(
+      action &&
+        ["RIGHTS_REVIEWED", "INGESTED"].includes(action.state) &&
+        [
+          "RAW_PERSISTENCE_ALLOWED",
+          "DERIVED_STATIC_FACTS_ALLOWED",
+          "TOPOLOGY_FACT_ONLY_ALLOWED",
+        ].includes(action.rightsFindings.at(-1)?.rightsClass) &&
+        /^[a-f0-9]{64}$/.test(ref.observedResponseSha256 ?? "") &&
+        action.sourcesChecked.some(
+          (s) =>
+            s.url === ref.url &&
+            [200, "REFERENCE_RETRIEVED"].includes(s.status) &&
+            s.contentSha256 === ref.observedResponseSha256,
+        ),
+      "CORROBORATING_SOURCE_NOT_BOUND:" + fact.factId,
+    );
+  }
+  return true;
+}
+
 export function nextSourceAction(actions) {
   const phase = {
     shinkansen: 0,
