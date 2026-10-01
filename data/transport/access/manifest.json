@@ -234,14 +234,17 @@
     "v2CandidatesPromoted": 0,
     "integrationBoundary": "Task-owned topology admission and GraphRef adapter only; no Planner/API/runtime contract changes."
   },
-  "inputFingerprint": "4ead87f53d07f28db10bf750ab0bdc3ed6068c2cadd576348ebcea86e115e682",
+  "inputFingerprint": "1acb122f7d655c36009b133127815ff4aa4a16aa6dce814afdb1f5a557ee7764",
   "transportAdmission": {
     "path": "data/transport/access/node-downstream-admission.jsonl",
     "revision": "task-085-access-topology-route-metrics-v2",
-    "sha256": "3bdc9cee664371530fe2e0d09bdceb96651faceb1eb806fef2fd8c3747eb2d78",
+    "sha256": "4c23fd1923eed147ce0889d470ef84265114dc464fa79cacdff74fa533dfe07f",
     "records": 5546,
-    "acceptedTopologyNodes": 5202,
-    "heldNodes": 344,
+    "acceptedTopologyNodes": 5201,
+    "heldNodes": 345,
+    "heldRecordCount": 345,
+    "heldUniqueNodeIdCount": 315,
+    "admittedUniqueNodeIdCount": 5201,
     "nationalMasterAuthorized": false,
     "usableAccessNotImplied": true
   },
@@ -480,8 +483,8 @@
     },
     "batchCount": 1,
     "acceptedNodeProvenance": {
-      "numerator": 5202,
-      "denominator": 5202,
+      "numerator": 5201,
+      "denominator": 5201,
       "actual": 1
     },
     "acceptedEdgeProvenance": {
@@ -905,7 +908,7 @@
     },
     {
       "path": "data/transport/access/inputs/targeted-repair.json",
-      "sha256": "8fdd73b25b0d0dfa62fb4eb711a33016ad3a48ba1da58dc86d8bd49785b3fb17"
+      "sha256": "9bd8399e8b72f0b9f748b45727f2167807bb7d21c11ffb0979fb4fa5643cca6f"
     },
     {
       "path": "data/transport/access/inputs/topology-review-seal.json",
@@ -921,11 +924,15 @@
     },
     {
       "path": "tools/transport/task-085-canonical-replay.mjs",
-      "sha256": "e4fbdf977ea0d47c3b054e3783dd18b051334f818be9d41f07b26f1b02103985"
+      "sha256": "2adbf28d76984cbbeb087ce1084adfd75b49ee45e51d906b29502ae9a6dfadf6"
     },
     {
       "path": "tools/transport/task-085-targeted-repair.mjs",
-      "sha256": "2fca28b58d14dbf40852d5eb01cdf9ba13fbe93b505d4a1c395cb3a42eca8602"
+      "sha256": "6d976c08c995aba06f2f4e282c0b6702cf36aa2b13fe29f7e72d80755a316ca2"
+    },
+    {
+      "path": "tools/transport/task-085-review-corrections.mjs",
+      "sha256": "c6f45508d2dd4252cc3aa7b386b39918f9255dee65de99c78ab361839da52771"
     },
     {
       "path": "tools/transport/task-085-targeted-source-check.py",
@@ -945,7 +952,7 @@
     },
     {
       "path": "tools/transport/task-085-topology-acceptance.mjs",
-      "sha256": "8f2171eede229695c3ba624781d5291acfc5ab6e04404156d31fb431867e2d0e"
+      "sha256": "6dcab0af92f5967d03561a9a6952c450ecdb930fe333a2952cbcbb1efe358d6d"
     },
     {
       "path": "tools/transport/task-085-p11-extract.py",
@@ -965,11 +972,11 @@
     },
     {
       "path": "tools/transport/task-085-access-core.mjs",
-      "sha256": "a8dda431b052aabc0e69ca193d130ad6da0f41d6fbd5a9862c53174498b5d5b3"
+      "sha256": "a488fa8cf3377d2785760adad4fc9e79cc821c14ec0578ae8c6fa9fdc537e007"
     },
     {
       "path": "tools/transport/task-085-access-generation.mjs",
-      "sha256": "a4ad3f9e5712a0fda83ee1378d7ce15c881eb826f95545492af544bfe02950db"
+      "sha256": "664f07cf1b3e2a9c39ecb796c5b43a5d47aac8518469775553fa26c5ad217868"
     },
     {
       "path": "tools/transport/task-085-source-extract.py",
@@ -988,38 +995,45 @@
       "sha256": "b172b004129469f396f55a81bbc04746cca6f0d6400791b7d608dec5bba0218c"
     },
     {
+      "path": "data/transport/access/reviews/identity-corrections.json",
+      "sha256": "5af2e3872f5fbc3b87ae726eb59c2a4d3b3b5d14533527a1457b59234361d68d"
+    },
+    {
       "path": "data/transport/access/sources/hichiso-b5b31423.zip",
       "sha256": "2047e7b3c4c7e5072bf06339ce76ae629d40cffaab7a5e250e3b779d8ba8aaea"
     }
   ],
   "generatedArtifactHashes": {
-    "batches/0001/edges.jsonl": "60f9a0dc51c8f690274bc9123a8f0f4a2f2eeded13258f48ee2e0ff7083dc375",
+    "batches/0001/edges.jsonl": "81cfd0d95e5590a60d18549cae1375d01baab55123cb0ba3c7404d08a3b3ce0c",
     "batches/0001/unconfirmed-directed-candidates.jsonl": "b737246077e32e502e5b6e9dbd2f68cd440144e6837b7e4ac4a24c5f5b776e61",
-    "batches/0001/candidate-node-decisions.jsonl": "32556d2b1ffb536bae837b775591a550b127a282a38b00f09b8242437a7e7266",
+    "batches/0001/candidate-node-decisions.jsonl": "2d9b336b866f80a0c24b11b11df21709fbc78110c35101bf156830c6f1947bda",
     "batches/0001/unresolved.jsonl": "fad729fc8498cc7ee201ce21db3093e4f498412a37219aa6c84256b67dbbc3ef",
     "batches/0001/spatial-scans.jsonl": "ff72ec04418b4ad3c90f64fde94c1e162eb777f1e0537c83d6c5cb12da77bbe9",
-    "batches/0001/score-traces.jsonl": "f833a528931a34897473ad88e851ae0532059e2391dd1809fde0870af80deeee",
+    "batches/0001/score-traces.jsonl": "45fa571860e26d841737796089d49b4af2973e48a2b08db0bb0f07b77b3da395",
     "batches/0001/rejected-observations.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "batch-receipts/0001.json": "84b8bae46879e74948897cb84e341afd996331dbdfcf058cfada8ea0d34be01b",
-    "poi-transport-access-edges.jsonl": "60f9a0dc51c8f690274bc9123a8f0f4a2f2eeded13258f48ee2e0ff7083dc375",
-    "topology-confirmed-edges.jsonl": "60f9a0dc51c8f690274bc9123a8f0f4a2f2eeded13258f48ee2e0ff7083dc375",
-    "route-metric-unresolved.jsonl": "82c935ed0b323f1cc07fb6026d3603880d88304940d1303c0a19ead15ec9a8fd",
+    "batch-receipts/0001.json": "a4ab9061dcc870a87e1aafbc562e56ffea356b48ee897a34662e1efca43c8fcb",
+    "poi-transport-access-edges.jsonl": "81cfd0d95e5590a60d18549cae1375d01baab55123cb0ba3c7404d08a3b3ce0c",
+    "topology-confirmed-edges.jsonl": "81cfd0d95e5590a60d18549cae1375d01baab55123cb0ba3c7404d08a3b3ce0c",
+    "route-metric-unresolved.jsonl": "814bb4e0e3f6084e79941aa0884ac5972e5d25bac6cd75cd67e259fa27f556d1",
     "canonical-adjudication-required.json": "a9d39db599fef700aa241680dc23cbe0b48256936c97b83b74d8f224e60370eb",
-    "baseline-revalidation.json": "2ea767bc29ef04c59ec5ff233b4d6e2c2f0c8087dd1746b9613e715e2b8b9e4c",
-    "post-canonical-replay-audit.json": "c6029882d1fc7c4edb9f4d7a38de619891670f4f3b6c56667ecf8bbce7292aea",
+    "baseline-revalidation.json": "fa8d564b3f8feb5f9ad7472094dff3ddeee0c8dc8a9792d4c4f3c5b74f04ac7c",
+    "post-canonical-replay-audit.json": "54169c913fe3673ecb16bbc8e4d5a567553749114f4774ee1c40593def021652",
     "poi-access-unresolved.jsonl": "fad729fc8498cc7ee201ce21db3093e4f498412a37219aa6c84256b67dbbc3ef",
-    "poi-access-score-traces.jsonl": "f833a528931a34897473ad88e851ae0532059e2391dd1809fde0870af80deeee",
-    "candidate-node-decisions.jsonl": "32556d2b1ffb536bae837b775591a550b127a282a38b00f09b8242437a7e7266",
-    "node-downstream-admission.jsonl": "3bdc9cee664371530fe2e0d09bdceb96651faceb1eb806fef2fd8c3747eb2d78",
+    "poi-access-score-traces.jsonl": "45fa571860e26d841737796089d49b4af2973e48a2b08db0bb0f07b77b3da395",
+    "candidate-node-decisions.jsonl": "2d9b336b866f80a0c24b11b11df21709fbc78110c35101bf156830c6f1947bda",
+    "node-downstream-admission.jsonl": "4c23fd1923eed147ce0889d470ef84265114dc464fa79cacdff74fa533dfe07f",
+    "topology-evidence-export.jsonl": "d22cbc0d49398e5576495381484facae99364ec1de550191aeb38c5e09ce8c4f",
+    "identity-correction-audit.json": "5af2e3872f5fbc3b87ae726eb59c2a4d3b3b5d14533527a1457b59234361d68d",
+    "review-remediation-audit.json": "430cf6fe5f7bf06e1a39684541d84b3ff0488287d163e40eed4c1d76fb94b55c",
     "poi-access-completeness.json": "6acdd81f614e9a23a16bf93d3171e2898d8b348fa115ee8445c720f5056cb5f6",
     "under-target-pois.json": "2234bdbae84cd1e5d8ea7ba811f4c69d91722d2f1716dbd40267167ac258307f",
-    "candidate-exhaustion-proofs.jsonl": "f2395547ec03d3b757fca903d81b1a503fb2f86670285a52f20087a028fcf959",
+    "candidate-exhaustion-proofs.jsonl": "65245af79f8a5085b415c01edae85e3b16d1eae8a61222b556da7a2bd0a55192",
     "coverage-by-region.json": "b8766314c32e52cad0a585bad9c302b101910ffd0ede83651fc19988a58e9f1a",
     "access-role-coverage.json": "31015c182ce8e141161a408042b6cdf6cfbf1b3803a95614b3cedffa5e25a03b",
     "mode-resolution-coverage.json": "ccc9d37e6162c880a2454ada1b8056d194e6be486cf164374917f907ab570e7b",
     "detour-anomalies.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "auto-fix-iterations.jsonl": "8e90757cd61bbbf4233a9c0f762e78308ad9f2b1c94fa7553027985b9d636abb",
-    "final-acceptance-gate.json": "4eaa495327f60d0c8f7547bb56e2a47a086942d44cb51f628ea790ea124f14b5",
+    "auto-fix-iterations.jsonl": "46c8f6065030bea35a71c1084f6b92fc51af4d3a80743d4cb12ca722ad3e8b77",
+    "final-acceptance-gate.json": "5243587ab6422a69fbb8394a91843f05c911e8c78a858d2b591020543e93cd86",
     "batches/README.md": "146a1ddcdf6be683a1737a109a037156962492f6345a3d992d0c695431db9ba5",
     "batch-receipts/README.md": "70ad0a5b2bddfeb1cb86e252d36acb280c2a55bb2434c59034e6840ba702c5cc"
   }

@@ -7,6 +7,12 @@ import {
 } from "./task-085-canonical-replay.mjs";
 import { applyTargetedRepair } from "./task-085-targeted-repair.mjs";
 import {
+  applyReviewCorrections,
+  correctedBaselineDecision,
+  auditReviewConservation,
+  CORRECTIONS_PATH,
+} from "./task-085-review-corrections.mjs";
+import {
   discoveryProofs,
   topologyAcceptance,
 } from "./task-085-topology-acceptance.mjs";
@@ -50,6 +56,7 @@ const codePaths = [
   "docs/tasks/AMENDMENT-TASK-085-b-post-canonical-final-replay.md",
   "tools/transport/task-085-canonical-replay.mjs",
   "tools/transport/task-085-targeted-repair.mjs",
+  "tools/transport/task-085-review-corrections.mjs",
   "tools/transport/task-085-targeted-source-check.py",
   "src/server/poi-runtime/access-adjudication.ts",
   "docs/tasks/AMENDMENT-TASK-085-b-access-topology-route-metrics-split-v2.md",
@@ -265,7 +272,8 @@ export function loadInputs(root = ROOT, { includeTargeted = true } = {}) {
     inputFingerprint: digest({ canonical: preflight.canonical, sourceFiles }),
     admissions: admitNodes(records, rights, bindings),
   };
-  return includeTargeted ? applyTargetedRepair(root, input) : input;
+  const corrected = applyReviewCorrections(root, input);
+  return includeTargeted ? applyTargetedRepair(root, corrected) : corrected;
 }
 export function chunks(items, size = 200) {
   const result = [];
@@ -370,9 +378,7 @@ function iterationRecords(input, combined, acceptance) {
 export function baselineRevalidation(input) {
   const records = (input.baselineNodes?.records ?? []).map((old) => {
     const now = input.admissions.find(
-      (n) =>
-        n.nodeId === old.nodeId &&
-        n.sourceRecordSha256 === old.sourceRecordSha256,
+      (n) => n.sourceRecordSha256 === old.sourceRecordSha256,
     );
     const changedFields = Object.keys(old).filter(
       (k) => stable(old[k]) !== stable(now?.[k] ?? null),
@@ -381,7 +387,13 @@ export function baselineRevalidation(input) {
       nodeId: old.nodeId,
       sourceRecordSha256: old.sourceRecordSha256,
       previousDecision: old.decision,
-      status: changedFields.length ? "CHANGED_OR_MISSING" : "PRESERVED",
+      status: correctedBaselineDecision(input, old, now)
+        ? "AUDITED_IDENTITY_CORRECTION"
+        : changedFields.length
+          ? "CHANGED_OR_MISSING"
+          : "PRESERVED",
+      currentNodeId: now?.nodeId ?? null,
+      currentDecision: now?.decision ?? null,
       changedFields,
     };
   });
@@ -394,14 +406,20 @@ export function baselineRevalidation(input) {
   return {
     baseHead: input.baselineNodes?.baseHead ?? null,
     baselineAdmissionGitBlobSha256: input.baselineNodes?.gitBlobSha256 ?? null,
-    status: records.every((r) => r.status === "PRESERVED") ? "PASS" : "FAIL",
+    status: records.every((r) => r.status !== "CHANGED_OR_MISSING")
+      ? "PASS"
+      : "FAIL",
     originalAdmitted:
       input.baselineNodes?.records.filter((r) => r.downstream085Authorized)
         .length ?? 0,
     originalHeld:
       input.baselineNodes?.records.filter((r) => !r.downstream085Authorized)
         .length ?? 0,
-    missingOrChanged: records.filter((r) => r.status !== "PRESERVED").length,
+    missingOrChanged: records.filter((r) => r.status === "CHANGED_OR_MISSING")
+      .length,
+    auditedIdentityCorrections: records.filter(
+      (r) => r.status === "AUDITED_IDENTITY_CORRECTION",
+    ).length,
     records,
     preservedDirectedCandidates: baselineCandidates.length,
     baselineSha256: digest(input.baseline ?? []),
@@ -659,6 +677,15 @@ export function buildArtifacts(input) {
     "poi-access-score-traces.jsonl": jsonl(combined.traces),
     "candidate-node-decisions.jsonl": jsonl(combined.decisions),
     "node-downstream-admission.jsonl": jsonl(input.admissions),
+    "topology-evidence-export.jsonl": jsonl(input.topologyReview),
+    "identity-correction-audit.json": objectText(
+      input.reviewCorrections ?? null,
+    ),
+    "review-remediation-audit.json": objectText(
+      input.targetedRepair
+        ? auditReviewConservation(input, edges)
+        : { status: "NOT_APPLICABLE_TO_PRE_TARGETED_FIXTURE" },
+    ),
     "poi-access-completeness.json": objectText(completeness),
     "under-target-pois.json": objectText(
       completeness
@@ -706,6 +733,13 @@ export function buildArtifacts(input) {
       records: input.admissions.length,
       acceptedTopologyNodes: admitted.length,
       heldNodes: input.admissions.length - admitted.length,
+      heldRecordCount: input.admissions.length - admitted.length,
+      heldUniqueNodeIdCount: new Set(
+        input.admissions
+          .filter((n) => !n.downstream085Authorized)
+          .map((n) => n.nodeId),
+      ).size,
+      admittedUniqueNodeIdCount: new Set(admitted.map((n) => n.nodeId)).size,
       nationalMasterAuthorized: false,
       usableAccessNotImplied: true,
     },
@@ -914,6 +948,7 @@ export function execute({
     const unexpected = inventory(out).filter(
       (name) =>
         !(name in built.artifacts) &&
+        OUTPUT + "/" + name !== CORRECTIONS_PATH &&
         !input.targetedRepair?.sourceFiles.some(
           (f) => f.path === OUTPUT + "/" + name,
         ),

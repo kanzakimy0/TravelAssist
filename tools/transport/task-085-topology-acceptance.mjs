@@ -2,7 +2,8 @@ import {
   replayOutcome,
   EXCEPTION_STATUS,
 } from "./task-085-canonical-replay.mjs";
-import { digest, stable } from "./task-085-access-core.mjs";
+import { digest, stable, readTask085Access } from "./task-085-access-core.mjs";
+import { correctedBaselineDecision } from "./task-085-review-corrections.mjs";
 export const categories = [
   "official_venue",
   "official_tourism",
@@ -420,10 +421,9 @@ export function topologyAcceptance(input, combined, completeness, proofs) {
   );
   const changedBaseline = (input.baselineNodes?.records ?? []).filter((old) => {
     const now = input.admissions.find(
-      (n) =>
-        n.nodeId === old.nodeId &&
-        n.sourceRecordSha256 === old.sourceRecordSha256,
+      (n) => n.sourceRecordSha256 === old.sourceRecordSha256,
     );
+    if (correctedBaselineDecision(input, old, now)) return false;
     return Object.keys(old).some(
       (k) => stable(old[k]) !== stable(now?.[k] ?? null),
     );
@@ -434,6 +434,27 @@ export function topologyAcceptance(input, combined, completeness, proofs) {
     0,
     changedBaseline.length === 0,
     "baseline-revalidation.json",
+  );
+  const conditionFailures = edges.filter((e) => {
+    try {
+      const evidence = input.topologyReview.filter((t) =>
+        e.provenance.topologyEvidence.some(
+          (p) => p.evidenceId === t.evidenceId && p.sha256 === digest(t),
+        ),
+      );
+      if (!evidence.length) return true;
+      readTask085Access(e, evidence);
+      return false;
+    } catch {
+      return true;
+    }
+  });
+  add(
+    "Access restrictions preserved and runtime disabled",
+    conditionFailures.length,
+    0,
+    conditionFailures.length === 0,
+    "topology-confirmed-edges.jsonl#/task085Access",
   );
   add(
     "Rejected TASK-084 v1 usage",

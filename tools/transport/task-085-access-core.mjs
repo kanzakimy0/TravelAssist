@@ -86,13 +86,21 @@ function kindFor(record) {
 export function identityFor(record) {
   // The identity excludes the position. A changed position must pass an explicit
   // binding update, never silently create a nearby replacement for an old ID.
-  const externalIds = record.sourceRows
-    ? [...new Set(record.sourceRows.map((r) => String(r.stationCode)))].sort()
+  const rawIds = record.sourceRows
+    ? record.sourceRows.map((r) => r.stationCode)
     : [record.externalId];
+  const externalIds = [
+    ...new Set(rawIds.filter(validExternalId).map((id) => String(id).trim())),
+  ].sort();
   const authority =
     record.identityAuthority ??
     (record.sourceRows ? "mlit-s12" : record.sourceId.split(/-20/)[0]);
-  const identityKey = stable([authority, record.operator, externalIds]);
+  const identityKey = externalIds.length
+    ? stable([authority, record.operator, externalIds])
+    : stable([
+        "QUARANTINED_MISSING_EXTERNAL_ID",
+        record.sourceRecordSha256 ?? digest(record),
+      ]);
   const nodeId = "transport:task085:" + digest(identityKey).slice(0, 24);
   return {
     nodeId,
@@ -105,6 +113,14 @@ export function identityFor(record) {
       nodeKind: kindFor(record),
     }),
   };
+}
+export function validExternalId(value) {
+  return (
+    (typeof value === "string" ||
+      (typeof value === "number" && Number.isFinite(value))) &&
+    String(value).trim().length > 0 &&
+    !/^(null|undefined|nan)$/i.test(String(value).trim())
+  );
 }
 export function makeBindings(records) {
   const grouped = new Map();
@@ -153,7 +169,7 @@ export function admitNodes(records, rights, bindings) {
         !r.operator?.trim() ||
         !nodeKind ||
         !identity.externalIds.length ||
-        identity.externalIds.some((id) => !id)
+        identity.externalIds.some((id) => !validExternalId(id))
       )
         failures.push("IDENTITY_INCOMPLETE");
       if (
@@ -656,6 +672,51 @@ export function topologyEvidenceValid(e) {
     e.factPersistenceDecision === "FACTUAL_TOPOLOGY_ONLY_NO_RAW_PAYLOAD"
   );
 }
+/** Task-owned metadata. It is deliberately not a new Planner contract. */
+export function accessMetadata(edge, evidence) {
+  const value = {
+    schemaVersion: "1.0",
+    edgeId: edge.edgeId,
+    poiId: edge.poiId,
+    nodeId: edge.nodeId,
+    direction: edge.direction,
+    conditions: evidence.map((e) => ({
+      evidenceId: e.evidenceId,
+      evidenceSha256: digest(e),
+      sourceRefs: e.sourceRefs,
+      accessConditions: e.accessConditions ?? [],
+      accessConditionAmendment: e.accessConditionAmendment ?? null,
+      prohibitedDirections: e.prohibitedDirections ?? [],
+      appliesToDirection: edge.direction,
+      finding: e.finding ?? null,
+      reviewedOn: e.reviewedOn,
+    })),
+    currentFullJourneyAccess: "UNRESOLVED",
+    visitorEndpointStatus: "REQUIRES_DIRECTIONAL_ROUTE_VALIDATION",
+    independentVisitorEntranceCount: null,
+    runtimeImportAuthorized: false,
+    routable: false,
+    consumerIntegration: "NOT_CONNECTED_TO_A_RUNTIME",
+  };
+  return { ...value, sha256: digest(value) };
+}
+
+/** B review/export consumer: missing, altered or cross-edge metadata fails closed. */
+export function readTask085Access(edge, evidence) {
+  assert.ok(edge.task085Access, "ACCESS_METADATA_MISSING");
+  const { sha256, ...body } = edge.task085Access;
+  assert.equal(digest(body), sha256, "ACCESS_METADATA_CORRUPTED");
+  for (const key of ["edgeId", "poiId", "nodeId", "direction"])
+    assert.equal(body[key], edge[key], "ACCESS_METADATA_WRONG_EDGE:" + key);
+  assert.deepEqual(
+    edge.task085Access,
+    accessMetadata(edge, evidence),
+    "ACCESS_CONDITIONS_NOT_PROPAGATED",
+  );
+  assert.equal(body.runtimeImportAuthorized, false);
+  assert.equal(body.routable, false);
+  return { ...body, routeEligible: false };
+}
 export function generateBatch(
   pois,
   admissions,
@@ -719,6 +780,7 @@ export function generateBatch(
             topologyConfidence: 1,
             topologyConfidenceBasis:
               "OFFICIAL_GATEWAY_AND_ADMITTED_IDENTITY_VERIFIED",
+            task085Access: accessMetadata(e, evidence),
             directionalAccessStatus: prohibition
               ? "UNAVAILABLE"
               : "NOT_PROHIBITED_BY_TOPOLOGY_EVIDENCE",

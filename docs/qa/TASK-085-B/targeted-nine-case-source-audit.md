@@ -1,3 +1,5 @@
+> 本轮审查纠错以 [身份与限制修复记录](review-445fbfd5-remediation.md) 为准。当前5,201 ADMIT、345 HOLD记录／315唯一ID；347关系／694方向。
+
 # TASK-085-B 九项定向补证审计（2026-10-01）
 
 **PARTIAL_TARGETED_EVIDENCE_REQUIRED**。本轮自行检索并复核了官方场馆、旅游机构、政府、运营商、GTFS/开放数据、限定范围的地理资料。五项达到 3 个节点，四项尚缺明确证据。用户最新授权是“自己去寻找，实在找不到之后再保留交给 A 处理”；本表交接证据缺口，不请求接受未达标数据。未联系外部运营商。
@@ -83,7 +85,7 @@ Fukuchiyama tourism association explicitly names the municipal Nosho-no-Sato bus
 
 ## 池原橋 — 1 个确认节点
 
-当前 proof SHA256：`ca7745c47984dd804fe5353fc31851b903d6dd7a88a93ff2a4bb68026a590f91`。旧 fixpoint：superseded。
+当前 proof SHA256：`1af77ed832703c68c5c4ae5ffcaf13afc4ff2de82bf5252c577d24ff5e53c482`。旧 fixpoint：superseded。
 
 Village sources confirm pedestrian passage on Ikehara Bridge and distinguish the regional and village-loop buses. They direct park visitors to Ikehara but do not establish each additional named stop as a bridge gateway. The open-data download page is under maintenance. A university historical fieldwork report suggests a walk via the sports park but does not provide a current official stop-to-bridge access instruction. Neither a generic only-bus assertion nor a search miss proves fewer than three reasonable gateways.
 
@@ -131,9 +133,9 @@ Kintetsu visitor hiking map begins at Haibara north exit. Nara prefecture explic
 
 ## みさき公園 — 1 个确认节点
 
-当前 proof SHA256：`8b36738f3258664d72d63b91dfa18e9ec790729cc3452a0b8fe09040e7d8b1c6`。旧 fixpoint：superseded。
+当前 proof SHA256：`6d2366de452e1ea3a486fe7e5dd3707f44acc9daa081d6ccbce5d67d09c12e3f`。旧 fixpoint：superseded。
 
-Current municipal bus route/timetable names the station and east-exit stops and the Yatetsu operator. The official route diagram is schematic and does not supply reproducible WGS84 boarding points. The CC BY municipal catalog has three population/cadastral datasets, no stop table. Rail-station coordinates cannot replace the bus points. The 2016 walking map and former amusement-park entrances cannot alone establish the current restricted-open park access. Bounded OSM queries returned TLS errors, HTTP 406 or timeouts; no OSM record was obtained or admitted.
+The municipal page updated 2026-07-16 and official areamap.pdf positively establish current restricted opening: A station-front plaza and marked coastal passage; C closed; B parking has separate use rules. The map does not establish licensed precise bus boarding coordinates or each bus stop-to-current-A-entrance join. Current municipal bus documents identify stop names and Yatetsu service, but schematic locations and railway coordinates cannot substitute for bus boarding points. The 2016 walking map is historical, not a 2026 whole-park opening guarantee. Missing identity/access evidence remains HOLD, not a physical exhaustion proof.
 
 缺失类型：`LICENSED_STOP_COORDINATE_IDENTITY`, `CURRENT_PUBLIC_ENTRANCE_JOIN`。
 
@@ -152,7 +154,7 @@ A 交接动作：A to obtain the municipal/operator boarding-location table and 
 
 ## 阿瀬川橋 — 0 个确认节点
 
-当前 proof SHA256：`10a7af8cb4e20f2ceca17ef6f76e4284b48b2218f1a8d9ad7464d67f6a36af9d`。旧 fixpoint：superseded。
+当前 proof SHA256：`37998d97690d776f35e7ee39ece8fac71480c59aec554f554761855427aaae52`。旧 fixpoint：superseded。
 
 Municipal inventory identifies bridge 1148 on the Shinogaki/Kuriyama old prefectural-road route, and current bus sources establish local service. The historic shrine reference at the western abutment does not establish a current visitor access point or stop-to-endpoint approach. River-camera and similarly named gorge/bridge results do not supply that relation. Existing nearby licensed coordinates are retained as candidates; their 18-25m proximity is not a route or public-access proof.
 
@@ -173,7 +175,7 @@ A 交接动作：A to coordinate road/Canonical owner endpoint evidence. No dele
 
 ## 韮崎中央公園陸上競技場 — 2 个确认节点
 
-当前 proof SHA256：`6aedd539c0c0d943088ef8a528e9fa57e034aa4dd6908620684412bb3ec404a4`。旧 fixpoint：superseded。
+当前 proof SHA256：`2bfee7b1e624f550a6d48c7609995dfa00e90385039f353b05c02b717c121e26`。旧 fixpoint：superseded。
 
 Venue, city and tourism authority explicitly confirm the new arena stop as park/stadium access; the relationship is not missing. The official GTFS metadata is CC0 but currently returns gtfs_files=[] and empty current/next download URLs. The archived feed and P11 do not contain the new September 2025 arena boarding point. Municipal open-data facility coordinates describe buildings, not the stop. Commercial maps were not copied without persistence rights. The mini-SL is an internal attraction and cannot fill a transport access quota.
 
@@ -217,9 +219,9 @@ The official prefectural walking course connects Museum Tsuru to Tsuru-shi stati
 - 未采用场馆建筑中心/旧体育馆坐标替代新 boarding stop；未复制无已确认留存权的商业地图坐标。
 - OSM/Overpass 的限定查询发生证书链错误、HTTP 406 或超时，没有取得记录。失败响应不等于空库存，不能证明节点不存在；没有关闭 TLS 验证，也没有导入 OSM 数据。
 - 池原桥 2026 年官方公告允许行人通行，不自动等于每个附近站点都是桥的游客 gateway。阿瀬川桥的桥梁台账、历史神社记录及 18–25 m 附近站点不自动证明当前游客接入。
-- みさき公園旧游乐园/2016 地图不能直接证明当前开放区入口。韮崎官方 GTFS 元数据目前无下载文件，不能据此声称新站不存在。
+- 已补录2026官方A区开放图及限制；旧游乐园/2016地图不作为当前全程开放保证。韮崎官方 GTFS 元数据目前无下载文件，不能据此声称新站不存在。
 - 所有新增 topology 的 walking/transit/taxi、detour、stairs/elevation、P90 和无障碍指标均 unresolved。官方页面只保留事实摘要和链接，不保留原始版权地图或 route Provider payload。
 
 ## 验收结论
 
-20/24 topology gates PASS，4 FAIL：94/95 coverage、1 个零节点、4 个 under-target 无可靠物理穷尽证明，以及 global fixpoint 未确立。A/Canonical、来源、identity、确定性、batch、graph-growth gates 均 PASS。第四个 FAIL 是撤销旧 fixpoint 过强结论后如实暴露的，不是新增数据损坏。WBS 7.15 保持进行中，不是待审查/已完成。
+21/25 topology gates PASS（新增限制传播 gate PASS），4 FAIL：94/95 coverage、1 个零节点、4 个 under-target 无可靠物理穷尽证明，以及 global fixpoint 未确立。A/Canonical、来源、identity、确定性、batch、graph-growth gates 均 PASS。第四个 FAIL 是撤销旧 fixpoint 过强结论后如实暴露的，不是新增数据损坏。WBS 7.15 保持进行中，不是待审查/已完成。

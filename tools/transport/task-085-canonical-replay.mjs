@@ -163,7 +163,11 @@ export function replayOutcome(input, combined, proofs) {
     ["topology-confirmed-edges.jsonl", jsonl(combined.edges)],
     ["candidate-node-decisions.jsonl", jsonl(combined.decisions)],
   ])
-    if (sha256(actual) !== r.preservedOutputHashes[name])
+    if (
+      sha256(actual) !==
+      (input.reviewCorrections?.correctedBaseOutputHashes[name] ??
+        r.preservedOutputHashes[name])
+    )
       issues.push("REPLAY_OUTPUT_CHANGED:" + name);
   const cases = r.fixpointCases.map((old) => {
     const p = proofs.find((p) => p.poiId === old.poiId);

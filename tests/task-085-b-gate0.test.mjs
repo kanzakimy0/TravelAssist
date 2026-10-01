@@ -43,9 +43,8 @@ import {
 import {
   validateReplayReceipt,
   rebindDiscoveryReviews,
-  EXCEPTION_STATUS,
 } from "../tools/transport/task-085-canonical-replay.mjs";
-// Historical final-replay invariant tests intentionally exercise the frozen base.
+// Frozen source evidence, replayed under corrected identities and access rules.
 const input = loadInputs(ROOT, { includeTargeted: false });
 const canonical = input.pois[0];
 const node = input.admissions.find(
@@ -504,11 +503,8 @@ test("085 full topology coverage and route metrics are separate; owner authority
   );
   assert.equal(result.manifest.metrics.acceptedEdgeProvenance.actual, 1);
   assert.equal(result.acceptance.allPass, false);
-  assert.equal(
-    result.manifest.wbs715Status,
-    "待审查（audited fixpoint exceptions）",
-  );
-  assert.equal(result.manifest.globalTopologyDiscoveryFixpoint, "PROVEN");
+  assert.equal(result.manifest.wbs715Status, "进行中");
+  assert.equal(result.manifest.globalTopologyDiscoveryFixpoint, "IN_PROGRESS");
   assert.ok(
     result.acceptance.gates.some(
       (g) =>
@@ -550,7 +546,7 @@ test("085 proof cannot be completed by nine labels, changed inventory, or silent
   };
   for (const r of input.discoveryReview) {
     const inventory = discoveryInventory(input, combined, r.poiId);
-    assert.deepEqual(reviewIssues(r, inventory), []);
+    assert.ok(reviewIssues(r, inventory).includes("STALE_REVIEW_INVENTORY"));
     const stale = structuredClone(r);
     stale.inventoryHashes.candidateDecisionSha256 = "0".repeat(64);
     assert.ok(
@@ -751,13 +747,13 @@ test("085 201-POI replay checkpoints at 200 and detects unsafe receipt paths", (
     clean(out);
   }
 });
-test("085 historical replay remains reproducible separately from new repair evidence", () => {
+test("085 old fixpoint cannot survive corrected admission inventory merely by replay", () => {
   const out = temporary();
   try {
     execute({ input, out, mode: "rebuild" });
     assert.equal(
       execute({ input, out, mode: "check" }).acceptance,
-      EXCEPTION_STATUS,
+      "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY",
     );
   } finally {
     clean(out);
@@ -854,13 +850,16 @@ test("085 acceptance exception never masks missing execution checks or new non-f
     },
   };
   const built = buildArtifacts(verified);
-  assert.equal(built.acceptance.status, EXCEPTION_STATUS);
+  assert.equal(
+    built.acceptance.status,
+    "BLOCKED_POST_CANONICAL_REPLAY_INTEGRITY",
+  );
   assert.equal(built.acceptance.allPass, false);
-  assert.equal(built.acceptance.userAcceptanceRequired, true);
+  assert.equal(built.acceptance.userAcceptanceRequired, false);
   assert.equal(built.acceptance.validAccessibleAssessmentCount, 95);
   assert.equal(
     built.acceptance.gates.filter((g) => g.status === "FAIL").length,
-    3,
+    5,
   );
   assert.ok(
     built.acceptance.gates
@@ -897,22 +896,22 @@ test("085 acceptance exception never masks missing execution checks or new non-f
   );
 });
 
-test("085 final replay conserves nodes, decisions and edges while keeping five owner exclusions explicit", () => {
+test("085 corrected base keeps relationships and owner exclusions while invalidating stale proofs", () => {
   const built = buildArtifacts(input);
   const audit = JSON.parse(built.artifacts["post-canonical-replay-audit.json"]);
-  assert.equal(audit.status, "PASS");
+  assert.equal(audit.status, "FAIL");
   assert.equal(audit.cases.length, 9);
   assert.ok(
     audit.cases.every(
       (p) =>
-        p.proofValidAfterMerge &&
-        p.unchangedNonCanonicalHashes &&
+        !p.proofValidAfterMerge &&
+        !p.unchangedNonCanonicalHashes &&
         !p.newBlockerReleasingEvidenceFromPR465 &&
         p.missingEvidenceType.length > 0,
     ),
   );
-  assert.equal(built.manifest.transportAdmission.acceptedTopologyNodes, 5200);
-  assert.equal(built.manifest.transportAdmission.heldNodes, 344);
+  assert.equal(built.manifest.transportAdmission.acceptedTopologyNodes, 5199);
+  assert.equal(built.manifest.transportAdmission.heldNodes, 345);
   assert.equal(built.manifest.metrics.totalDirectedEdges, 680);
   const rows = JSON.parse(built.artifacts["poi-access-completeness.json"]);
   assert.equal(rows.length, 100);

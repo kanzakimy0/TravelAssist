@@ -13,6 +13,7 @@ import {
 } from "./task-085-access-core.mjs";
 import { sha256 } from "./task-085-gate0.mjs";
 import { straightDistanceM } from "../../src/shared/poi-edge-graph/index.ts";
+import { auditReviewConservation } from "./task-085-review-corrections.mjs";
 
 export const TARGETED_PATH =
   "data/transport/access/inputs/targeted-repair.json";
@@ -79,7 +80,8 @@ export function applyTargetedRepair(root, input) {
   ]) {
     assert.equal(
       sha256(jsonl(data)),
-      input.canonicalReplay.preservedOutputHashes[name],
+      input.reviewCorrections?.correctedBaseOutputHashes[name] ??
+        input.canonicalReplay.preservedOutputHashes[name],
       "TARGETED_BASELINE_DRIFT:" + name,
     );
   }
@@ -268,6 +270,8 @@ export function applyTargetedRepair(root, input) {
 export function targetedRepairOutcome(input, combined, proofs) {
   const r = input.targetedRepair,
     issues = [];
+  if (input.reviewCorrections)
+    issues.push(...auditReviewConservation(input, combined.edges).issues);
   const previous = new Set(r.baselineEdges.map(stable));
   const current = new Set(combined.edges.map(stable));
   for (const e of r.baselineEdges) {

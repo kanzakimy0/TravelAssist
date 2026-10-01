@@ -1,21 +1,18 @@
 {
-  "schemaVersion": "4.0",
+  "schemaVersion": "5.0",
   "task": "TASK-085-B",
-  "phase": "USER_AUTHORIZED_NINE_CASE_TARGETED_REPAIR",
-  "baselineHead": "0cae8b371b717d30d3bace3c6763b11a34e09347",
+  "phase": "REVIEW_IDENTITY_RESTRICTIONS_AND_AUTHORIZED_EXPANSION",
+  "baselineHead": "445fbfd57d09108b271261a3d24ba51cd83103ad",
   "latestDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
   "developMergeCommit": "509c9fda40bb443b5a9c4a5e6ef36e875e713744",
   "branch": "feature/b-poi-transport-node-access-edges",
-  "inputFingerprint": "4ead87f53d07f28db10bf750ab0bdc3ed6068c2cadd576348ebcea86e115e682",
-  "targetedReceiptSha256": "6e4120ec72992dade60cbba072ff8b8f33fd0aab08cebe181fb6d932771383f3",
+  "inputFingerprint": "1acb122f7d655c36009b133127815ff4aa4a16aa6dce814afdb1f5a557ee7764",
   "status": "PARTIAL_TARGETED_EVIDENCE_REQUIRED",
   "allTopologyHardGatesPass": false,
-  "userAcceptanceRequired": false,
-  "globalTopologyDiscoveryFixpoint": "IN_PROGRESS",
   "canonicalRawCount": 100,
   "assessmentDenominator": 95,
   "topologyGates": {
-    "pass": 20,
+    "pass": 21,
     "fail": 4
   },
   "remainingFailedGates": [
@@ -62,95 +59,96 @@
       ]
     }
   ],
-  "caseAuditFile": "data/transport/access/post-canonical-replay-audit.json",
-  "caseAuditFileSha256": "c6029882d1fc7c4edb9f4d7a38de619891670f4f3b6c56667ecf8bbce7292aea",
+  "targetedReceiptSha256": "e8c0740237d9cb76b5f0e9adf028a849ff5a8180913c53c9fd8011a1187622bb",
+  "reviewCorrectionReceiptSha256": "8599269606401750c7fbde3f02ccdb22fbb50cd1ea6c01271f1b3b069c939301",
+  "transportAdmission": {
+    "path": "data/transport/access/node-downstream-admission.jsonl",
+    "revision": "task-085-access-topology-route-metrics-v2",
+    "sha256": "4c23fd1923eed147ce0889d470ef84265114dc464fa79cacdff74fa533dfe07f",
+    "records": 5546,
+    "acceptedTopologyNodes": 5201,
+    "heldNodes": 345,
+    "heldRecordCount": 345,
+    "heldUniqueNodeIdCount": 315,
+    "admittedUniqueNodeIdCount": 5201,
+    "nationalMasterAuthorized": false,
+    "usableAccessNotImplied": true
+  },
   "checks": [
     {
-      "log": ".cache/qa/task085-targeted-lint.log",
-      "command": "npm run lint",
-      "exitCode": 0,
-      "logSha256": "38d027e92da4b0f79160534203e93d11f935cfebf4478bb719899a178ec3ae2d"
+      "check": "full regression repair phase",
+      "exitCode": 1,
+      "logSha256": "671401f00a811a2663e62c8fc459eeddeba8f52707718d4d69b9fcc9615f853f",
+      "tests": 2865,
+      "pass": 2864,
+      "fail": 1,
+      "issue": "one asset child-process 30-second timeout"
     },
     {
-      "log": ".cache/qa/task085-targeted-typecheck.log",
-      "command": "npm run typecheck",
+      "check": "isolated failed asset file retry",
       "exitCode": 0,
-      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+      "logSha256": "8c03b47e8cb86db9556c955cd6bd6dfa99e4a0240fca5f24cd016e7396146bde",
+      "tests": 51,
+      "pass": 51,
+      "fail": 0
     },
     {
-      "log": ".cache/qa/task085-targeted-format-check-deploy.log",
-      "command": "npm run format:check:deploy",
+      "check": "lint",
       "exitCode": 0,
-      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+      "logSha256": "b8868f0cfdb5622bd5f55eabce65161c098d6d242fd27ef0ef846b2b81da461c",
+      "errors": 0,
+      "warnings": 10
     },
     {
-      "log": ".cache/qa/task085-targeted-deploy-validate-local.log",
-      "command": "npm run deploy:validate:local",
+      "check": "type generation",
       "exitCode": 0,
-      "logSha256": "5ffefb5b40de9a86391c7d347a4e9d8313011ffef0a64d2b8a6f7ba48746d8db"
+      "logSha256": "8b0db89a1e25137a4cb79143a4ea63ae347e6f5f2247f026d984e133255d3084"
     },
     {
-      "log": ".cache/qa/task085-targeted-deploy-build-local.log",
-      "command": "npm run deploy:build:local",
+      "check": "typecheck",
       "exitCode": 0,
-      "logSha256": "75945c7bceb9d9f88542a5877737409ce8c731d86e9bf7cc5a3ab6e4e3960ae5"
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "log": ".cache/qa/task085-targeted-deploy-verify-artifact.log",
-      "command": "npm run deploy:verify-artifact",
+      "check": "format",
       "exitCode": 0,
-      "logSha256": "058e65f947487bd4f0fda453dcf19b0f593b47090373d5303fdc041ee50efbea"
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
     },
     {
-      "command": "python tools/transport/task-085-targeted-source-check.py",
-      "log": ".cache/qa/task085-targeted-source-check.log",
+      "check": "deployment validate",
       "exitCode": 0,
-      "logSha256": "e3ddde14ff255ce378ee05a8541502c721a9f6eab894ad0efadb9a18cca90834"
+      "logSha256": "083e0a0676cdd45d8ab3ff17cb86f06d40daaf390ad9ae1e4049ca50dac0d676"
     },
     {
-      "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-canonical-replay.mjs --check",
-      "log": ".cache/qa/task085-targeted-canonical-check.log",
+      "check": "production build",
       "exitCode": 0,
-      "logSha256": "22dc767ff7f713f931a43c24c26adb85cd68fa50bb78f92911cbd72702dcd93f"
+      "logSha256": "bd17094b660140bcfbd53b44e09d30ebd4bea45363b2671293864667c52e6ea8",
+      "artifactFiles": 1908
     },
     {
-      "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --check",
-      "log": ".cache/qa/task085-targeted-artifact-check.log",
+      "check": "artifact verification",
       "exitCode": 0,
-      "meaning": "Exact generated bytes verified; data acceptance remains PARTIAL.",
-      "logSha256": "d0261a87f50fd0baf0d497c7adb5e3075b6540cbad22b38e167451c48baf5d7b"
+      "logSha256": "62c9fe461e08520f875ba218a361cba865e62471a6c58ec9900718bf59f54306"
     },
     {
-      "command": "node --import ./tests/register-route-ts.mjs tools/transport/task-085-access-generation.mjs --resume",
-      "log": ".cache/qa/task085-targeted-resume.log",
-      "exitCode": 2,
-      "meaning": "Expected data PARTIAL nonzero; receipt CHECKSUM_SKIP and deterministic rebuild PASS.",
-      "logSha256": "4565599549af7511b475f607837d24f45c866cf6915f2079757dd0a3adfe24c6"
-    },
-    {
-      "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
-      "log": ".cache/qa/task085-targeted-full-retry.log",
+      "check": "expansion 39 batches",
       "exitCode": 0,
-      "tests": 2858,
-      "pass": 2858,
-      "fail": 0,
-      "focusedIncluded": 29,
-      "logSha256": "8ab62e4ddda9c7976c09f6549996e4e07d5b6d837c76bcd75b8530f71a69233a"
+      "logSha256": "36d23942ff0b9dd75fc26eb10567093a9bfbe28336445ba4e2cff11108975ea3",
+      "targets": 7791,
+      "canonicalAdmitted": 100,
+      "canonicalHold": 7691,
+      "newCoverage": 0
     }
   ],
-  "firstFullAttempt": {
-    "tests": 2858,
-    "pass": 2855,
-    "fail": 3,
-    "issues": [
-      "task-085 temporary artifact write ENOSPC",
-      "two task-013 asset child process 30-second timeouts during concurrent local build"
-    ],
-    "logSha256": "fef87c4c0e71e6215dd64b727ad5a39878a92ee8fb184709c8c9285fd20a40da",
-    "remedy": "Removed only verified generated build/test directories in this task; full retry with concurrency 2, no changed test timeout or assertion."
+  "focusedTests": {
+    "existingAndReview": 36,
+    "expansion": 4,
+    "total": 40,
+    "pass": 40
   },
-  "focusedInitialCorrection": "Temporary historical-test prefix corrected to use existing safe temporary()/clean() pair; final full suite includes all 29 focused tests.",
-  "lintWarnings": 10,
-  "buildArtifactFileCount": 1908,
-  "exactHeadQualityGateReceipt": "Published in existing Draft PR #464 body after final commit; never substitute a prior or PR-merge-ref run."
+  "fullRegression": "2865 executed; 2864 passed, one asset timeout; isolated file retry 51/51 passed. Final exact-head CI runs all 2869 tests.",
+  "exactHeadQualityGate": "Run workflow_dispatch after push; verified final head and outcome recorded in PR #464 body and delivered workbook.",
+  "runtimeImportAuthorized": false,
+  "productionImportPerformed": false,
+  "task086Started": false
 }
