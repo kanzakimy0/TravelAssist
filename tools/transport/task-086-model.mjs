@@ -15,6 +15,13 @@ export const DEFICITS = [
   "SOURCE_LICENSE_GAP",
   "DYNAMIC_METRIC_ONLY_GAP",
 ];
+export const RAIL_NODE_KIND_BY_MODE = Object.freeze({
+  shinkansen: "shinkansen_station",
+  conventional_rail: "rail_station",
+  metro: "metro_station",
+  private_rail: "private_rail_station",
+  fixed_guideway: "other_tourism_transport",
+});
 export const METRICS = [
   "durationTypicalMin",
   "durationP90Min",
@@ -145,12 +152,29 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (
         node.origin === "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE" &&
-        (node.canonicalNameJa !== node.identityRecord.stationName ||
+        (node.nodeKind !== RAIL_NODE_KIND_BY_MODE[node.mode] ||
+          node.canonicalNameJa !== node.identityRecord.stationName ||
           node.latitude !== node.identityRecord.latitude ||
           node.longitude !== node.identityRecord.longitude ||
           node.operatorRefs.length !== 1 ||
           node.operatorRefs[0] !== node.identityRecord.operator ||
           !node.lineRefs.includes(node.identityRecord.line))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+
+      if (
+        node.origin === "TASK_086_INDEPENDENT_C28_AND_CURRENT_ACCESS" &&
+        (node.canonicalNameJa !== node.identityRecord.airportName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "airport" ||
+          node.mode !== "flight" ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !==
+            "airport-facility:" + node.identityRecord.referencePointId ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !==
+            "airport:" + node.identityRecord.referencePointId)
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
@@ -826,6 +850,17 @@ export function auditGraph({
   const query = anchorQueries(edges, anchorNodeId);
   const deficits = discoveryGaps.map((d) => ({ ...d }));
   const byId = new Map(nodes.map((n) => [n.nodeId, n]));
+  const surfaceModes = new Set([
+    "shinkansen",
+    "conventional_rail",
+    "private_rail",
+    "metro",
+    "fixed_guideway",
+    "bus",
+    "local_bus",
+    "airport_bus",
+    "highway_bus",
+  ]);
   const connected = [],
     disconnected = [];
   const tier = {
@@ -868,12 +903,36 @@ export function auditGraph({
       ferry_port: "ISLAND_FERRY_GAP",
       bus_terminal: "HIGHWAY_BUS_GAP",
     }[requirement.kind];
-    if (modeDeficit && !reachable)
+    const surfacePeers = new Set(
+      (requirement.kind === "airport" ? edges : [])
+        .filter(
+          (e) =>
+            e.fromTransportNodeId === requirement.nodeId &&
+            e.mode !== "flight" &&
+            e.mode !== "ferry" &&
+            byId.get(e.toTransportNodeId)?.decision ===
+              "ADMIT_TASK_086_TOPOLOGY" &&
+            surfaceModes.has(byId.get(e.toTransportNodeId)?.mode),
+        )
+        .map((e) => e.toTransportNodeId),
+    );
+    const airportSurfaceConnected =
+      requirement.kind !== "airport" ||
+      edges.some(
+        (e) =>
+          e.toTransportNodeId === requirement.nodeId &&
+          e.mode !== "flight" &&
+          e.mode !== "ferry" &&
+          surfacePeers.has(e.fromTransportNodeId),
+      );
+    if (modeDeficit && (!reachable || !airportSurfaceConnected))
       deficits.push({
         deficitId: `mode:${requirement.requirementId}`,
         class: modeDeficit,
         requirementId: requirement.requirementId,
-        reason: "REQUIRED_GATEWAY_NOT_CONNECTED_TO_NATIONAL_BACKBONE",
+        reason: !reachable
+          ? "REQUIRED_GATEWAY_NOT_CONNECTED_TO_NATIONAL_BACKBONE"
+          : "AIRPORT_BIDIRECTIONAL_SURFACE_CONNECTION_REQUIRED",
       });
     if (!accepted)
       deficits.push({

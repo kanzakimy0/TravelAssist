@@ -1,3 +1,4 @@
+import { airportCandidate } from "../tools/transport/task-086-airport-identities.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -5,6 +6,9 @@ import os from "node:os";
 import path from "node:path";
 import {
   hash,
+  id,
+  admitNodes,
+  auditGraph,
   sourceAllowed,
   metricFields,
   acceptance,
@@ -556,4 +560,240 @@ test("TASK086 fullwidth digit review preserves every non-digit character and exa
     f.put("fact", fact);
     assert.throws(generate, /OFFICIAL_PATTERN_SOURCE_BINDING/);
   }
+});
+
+test("TASK086 airport admission binds independent reference point, protected requirement and current access", () => {
+  const record = {
+    airportName: "福岡空港",
+    referencePointId: "cf03_00083",
+    latitude: 33.585,
+    longitude: 130.45,
+    identityAsOf: "2021-12-31",
+    coordinateScope:
+      "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+  };
+  const requirement = {
+    requirementId: "review:airport-fukuoka",
+    name: "福岡",
+    tier: "T0",
+    kind: "airport",
+  };
+  requirement.nodeId = id("node", requirement.requirementId);
+  const selector = {
+    name: "福岡空港",
+    operator: "airport-facility:cf03_00083",
+    line: "airport:cf03_00083",
+    mode: "flight",
+    airportIdentity: {
+      dataset: "C28-21",
+      referencePointId: "cf03_00083",
+      requirementId: requirement.requirementId,
+      expectedRequirementName: "福岡",
+      method: "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+      currentPassengerAccessReview:
+        "Official municipal station guide explicitly identifies terminal-to-concourse access.",
+    },
+  };
+  const candidate = airportCandidate(selector, record, requirement, [
+    "identity",
+    "access",
+  ]);
+  assert.equal(id("node", candidate.identityAnchor), requirement.nodeId);
+  assert.equal(candidate.nodeLevel, "T0");
+  for (const changed of [
+    { ...selector, name: "東京国際空港" },
+    { ...selector, operator: "airline:unreviewed" },
+    {
+      ...selector,
+      airportIdentity: {
+        ...selector.airportIdentity,
+        referencePointId: "wrong",
+      },
+    },
+    {
+      ...selector,
+      airportIdentity: {
+        ...selector.airportIdentity,
+        currentPassengerAccessReview: "",
+      },
+    },
+  ])
+    assert.throws(
+      () =>
+        airportCandidate(changed, record, requirement, ["identity", "access"]),
+      /AIRPORT_/,
+    );
+  assert.throws(
+    () =>
+      airportCandidate(selector, record, { ...requirement, name: "東京国際" }, [
+        "identity",
+        "access",
+      ]),
+    /AIRPORT_/,
+  );
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    [
+      "identity",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record,
+        recordSha256: hash(record),
+        locator: "independent raw C28 record",
+      },
+    ],
+    [
+      "access",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record: { connection: "airport to station" },
+        recordSha256: hash({ connection: "airport to station" }),
+        locator: "current access",
+      },
+    ],
+  ]);
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  for (const changed of [
+    { ...candidate, latitude: 35 },
+    { ...candidate, canonicalNameJa: "東京国際空港" },
+    { ...candidate, operatorRefs: ["airline:unreviewed"] },
+    { ...candidate, nodeKind: "rail_station" },
+  ])
+    assert.ok(
+      admitNodes([changed], sources, evidence)[0].reasons.includes(
+        "IDENTITY_SOURCE_BINDING_MISMATCH",
+      ),
+    );
+});
+
+test("TASK086 fixed guideway identity cannot silently become conventional rail", () => {
+  const record = {
+    stationName: "三宮",
+    operator: "神戸新交通",
+    line: "ポートアイランド線",
+    stationCode: "007125",
+    latitude: 34.694,
+    longitude: 135.195,
+  };
+  const candidate = {
+    identityAnchor: "s12:test:portliner",
+    canonicalNameJa: "三宮",
+    nodeKind: "other_tourism_transport",
+    nodeLevel: "T1",
+    mode: "fixed_guideway",
+    operatorRefs: [record.operator],
+    lineRefs: [record.line],
+    latitude: record.latitude,
+    longitude: record.longitude,
+    identityRecord: record,
+    origin: "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE",
+    evidenceRefs: ["identity"],
+    independentReview: {
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+      recordSha256: hash(record),
+    },
+    hubSemantics: "PHYSICAL_OPERATOR_COMPONENT_NO_IMPLICIT_TRANSFER",
+    parentHubId: null,
+  };
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    [
+      "identity",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record,
+        recordSha256: hash(record),
+        locator: "independent S12 fixed guideway identity",
+      },
+    ],
+  ]);
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  for (const changed of [
+    { ...candidate, nodeKind: "rail_station" },
+    { ...candidate, mode: "conventional_rail" },
+    { ...candidate, mode: "unreviewed" },
+  ])
+    assert.ok(
+      admitNodes([changed], sources, evidence)[0].reasons.includes(
+        "IDENTITY_SOURCE_BINDING_MISMATCH",
+      ),
+    );
+});
+
+test("TASK086 flight reachability does not substitute for airport surface access", () => {
+  const nodes = [
+    {
+      nodeId: "airport-a",
+      mode: "flight",
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+    },
+    {
+      nodeId: "airport-b",
+      mode: "flight",
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+    },
+    {
+      nodeId: "surface",
+      mode: "fixed_guideway",
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+    },
+  ];
+  const edge = (from, to, mode) => ({
+    edgeId: from + to,
+    fromTransportNodeId: from,
+    toTransportNodeId: to,
+    mode,
+    edgeKind: mode === "flight" ? "service_segment" : "hub_transfer",
+    metrics: metricFields({}, new Map()),
+  });
+  const flight = [
+    edge("airport-a", "airport-b", "flight"),
+    edge("airport-b", "airport-a", "flight"),
+  ];
+  const audit = (extra) =>
+    auditGraph({
+      nodes,
+      patterns: [],
+      transfers: [],
+      edges: [...flight, ...extra],
+      inventory: [
+        {
+          requirementId: "required-airport",
+          nodeId: "airport-b",
+          kind: "airport",
+          tier: "T0",
+        },
+      ],
+      anchorNodeId: "airport-a",
+    });
+  assert.equal(audit([]).tier.T0.connected, 1);
+  assert.equal(audit([]).counts.AIRPORT_SURFACE_GAP, 1);
+  assert.equal(
+    audit([edge("airport-b", "surface", "transfer")]).counts
+      .AIRPORT_SURFACE_GAP,
+    1,
+  );
+  assert.equal(
+    audit([
+      edge("airport-b", "surface", "transfer"),
+      edge("surface", "airport-b", "transfer"),
+    ]).counts.AIRPORT_SURFACE_GAP,
+    0,
+  );
+  assert.equal(
+    audit([
+      edge("airport-b", "surface", "flight"),
+      edge("surface", "airport-b", "flight"),
+    ]).counts.AIRPORT_SURFACE_GAP,
+    1,
+  );
 });

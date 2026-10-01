@@ -4,6 +4,7 @@ import { gunzipSync } from "node:zlib";
 import { fileURLToPath } from "node:url";
 import {
   hash,
+  RAIL_NODE_KIND_BY_MODE,
   id,
   canonical,
   compare,
@@ -31,6 +32,10 @@ import {
   transitionAction,
   nextSourceAction,
 } from "./task-086-source-actions.mjs";
+import {
+  airportCandidate,
+  C28_ARCHIVE_SHA256,
+} from "./task-086-airport-identities.mjs";
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../..",
@@ -89,6 +94,9 @@ export function runRemediation({
   }
   const identities = readRows(
     path.join(networkRoot, "research/s12-identities.jsonl"),
+  );
+  const airportIdentities = readRows(
+    path.join(networkRoot, "research/c28-identities.jsonl"),
   );
   const discovery = readRows(path.join(upstream, "rail-components.jsonl"));
   const hubScopes = readRows(
@@ -170,6 +178,38 @@ export function runRemediation({
     retainedArchive: "sources/raw/mlit-s12-25.zip",
   };
   sources.set(identitySource.sourceId, identitySource);
+  const airportAction = actions.find(
+    (a) => a.actionId === "government:c28:airport-identities",
+  );
+  const airportRaw = airportAction?.sourcesChecked.find(
+    (s) => s.rawPayloadRetained && s.status === 200,
+  );
+  invariant(
+    airportRaw &&
+      airportRaw.contentSha256 === C28_ARCHIVE_SHA256 &&
+      hash(fs.readFileSync(path.join(root, airportRaw.retainedPath))) ===
+        C28_ARCHIVE_SHA256,
+    "C28_ARCHIVE_BINDING",
+  );
+  const airportSource = {
+    sourceId: "mlit:c28:21",
+    url: airportRaw.url,
+    contentSha256: C28_ARCHIVE_SHA256,
+    observedAt: airportRaw.observedAt,
+    rightsClass: "RAW_PERSISTENCE_ALLOWED",
+    persistenceAllowed: true,
+    derivedDataAllowed: true,
+    redistributionAllowed: true,
+    rightsDecision: "MLIT_C28_COMMERCIAL_USE_ATTRIBUTION_AND_LIMITATIONS",
+    termsUrl: "https://nlftp.mlit.go.jp/ksj/other/agreement_02.html",
+    attribution:
+      "国土数値情報（空港 C28-21、2021-12-31時点）（国土交通省）をTravelAssistが加工して作成。商用可・旧国土情報利用約款。出典・加工者・権利と適用限界を継承。https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-C28-v3_0.html ; https://nlftp.mlit.go.jp/ksj/other/agreement_02.html",
+    limitations:
+      "Historical whole-airport reference coordinates may contain spatial/time errors. Not terminal entrances, precise navigation, current manager, current service or interchange evidence. Independently checked current passenger access is required.",
+    retainedArchive: "sources/raw/mlit-c28-21.zip",
+  };
+  sources.set(airportSource.sourceId, airportSource);
+
   const makeEvidence = (source, record, locator, key) => {
     const row = {
       evidenceId: id("evidence", key),
@@ -234,6 +274,60 @@ export function runRemediation({
     return source;
   };
   const bind = (selector, serviceEvidenceRef) => {
+    if (selector.airportIdentity) {
+      const matches = airportIdentities.filter(
+        (r) => r.referencePointId === selector.airportIdentity.referencePointId,
+      );
+      invariant(matches.length === 1, "AIRPORT_RAW_IDENTITY_NOT_UNIQUE");
+      const record = matches[0];
+      const requirement = originalInventory.find(
+        (r) => r.requirementId === selector.airportIdentity.requirementId,
+      );
+      const ref = makeEvidence(
+        airportSource,
+        record,
+        "C28-21 airport/reference-point join " + record.referencePointId,
+        ["c28", record],
+      );
+      const candidate = airportCandidate(selector, record, requirement, [
+        ref,
+        serviceEvidenceRef,
+      ]);
+      const admitted = admitNodes([candidate], sources, evidence, [])[0];
+      invariant(
+        admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
+        "AIRPORT_ADMISSION_FAILED",
+      );
+      const previous = nodes.get(admitted.nodeId);
+      if (previous?.decision === "ADMIT_TASK_086_TOPOLOGY") {
+        invariant(
+          previous.identitySignature === admitted.identitySignature,
+          "AIRPORT_ADMISSION_REBIND",
+        );
+        previous.evidenceRefs = [
+          ...new Set([...previous.evidenceRefs, ref, serviceEvidenceRef]),
+        ].sort(compare);
+        return admitted.nodeId;
+      }
+      nodes.set(admitted.nodeId, admitted);
+      nodeReviews.push({
+        nodeId: admitted.nodeId,
+        previousDecision: previous?.decision ?? "NOT_IN_REQUIRED_INVENTORY",
+        decision: admitted.decision,
+        identityRecordSha256: hash(record),
+        rawIdentityEvidenceRef: ref,
+        serviceEvidenceRef,
+        discoveryCandidateRef: admitted.discoveryCandidateRef,
+        matchedFields: [
+          "referencePointId",
+          "airportName",
+          "reviewedRequirementId",
+        ],
+        sameGroupNotInterchange: true,
+      });
+      return admitted.nodeId;
+    }
+
     const possible = discovery.filter(
       (n) =>
         n.canonicalNameJa === selector.name &&
@@ -297,14 +391,7 @@ export function runRemediation({
     const node = {
       identityAnchor: anchor,
       canonicalNameJa: record.stationName,
-      nodeKind:
-        selector.mode === "shinkansen"
-          ? "shinkansen_station"
-          : selector.mode === "metro"
-            ? "metro_station"
-            : selector.mode === "private_rail"
-              ? "private_rail_station"
-              : "rail_station",
+      nodeKind: RAIL_NODE_KIND_BY_MODE[selector.mode],
       nodeLevel: previous?.nodeLevel ?? candidate?.proposedNodeLevel ?? "T3",
       mode: selector.mode,
       operatorRefs: [record.operator],
@@ -416,6 +503,8 @@ export function runRemediation({
     "task-086-source-actions.mjs",
     "task-086-remediate.mjs",
     "task-086-extract-identities.py",
+    "task-086-extract-airports.py",
+    "task-086-airport-identities.mjs",
     "task-086-extract-jreast.py",
   ];
   const generatorHashes = Object.fromEntries(
@@ -524,7 +613,13 @@ export function runRemediation({
           groupId: pattern.servicePatternId,
           pattern,
           edges: generated,
-          sources: [source, identitySource],
+          sources: [
+            source,
+            identitySource,
+            ...(fact.callingComponents?.some((c) => c.airportIdentity)
+              ? [airportSource]
+              : []),
+          ],
           nodes: [...new Set(calls.map((c) => c.nodeId))].map((n) =>
             structuredClone(nodes.get(n)),
           ),
@@ -598,7 +693,13 @@ export function runRemediation({
           groupId: "hub:" + fact.factId,
           pattern: fact,
           edges: generated,
-          sources: [source, identitySource],
+          sources: [
+            source,
+            identitySource,
+            ...(fact.components?.some((c) => c.airportIdentity)
+              ? [airportSource]
+              : []),
+          ],
           nodes: componentIds.map((n) => structuredClone(nodes.get(n))),
           generatorSha256: hash(generatorHashes),
           nextActionDeficitSummary: before.counts,
@@ -855,6 +956,8 @@ export function runRemediation({
   for (const [n, body] of files) atomicWrite(path.join(output, n), body);
   const inputPaths = [
     "sources/raw/mlit-s12-25.zip",
+    "sources/raw/mlit-c28-21.zip",
+    "research/c28-identities.jsonl",
     "checkpoints/origin.json",
     "checkpoints/" + origin.archive,
     "research/s12-identities.jsonl",

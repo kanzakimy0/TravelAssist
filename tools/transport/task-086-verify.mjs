@@ -69,6 +69,31 @@ export function verifyRebuild({ publish = false } = {}) {
       ),
       "Raw S12 identity extraction differs",
     );
+    const airportIdentities = path.join(scratch, "c28-identities.jsonl");
+    const airportExtraction = spawnSync(
+      process.platform === "win32" ? "python" : "python3",
+      [
+        "-X",
+        "utf8",
+        path.join(root, "tools/transport/task-086-extract-airports.py"),
+        "--output",
+        airportIdentities,
+      ],
+      { encoding: "utf8" },
+    );
+    assert.equal(airportExtraction.status, 0, airportExtraction.stderr);
+    assert.equal(
+      hash(fs.readFileSync(airportIdentities)),
+      hash(
+        fs.readFileSync(
+          path.join(
+            root,
+            "data/transport/network/research/c28-identities.jsonl",
+          ),
+        ),
+      ),
+      "Raw C28 identity extraction differs",
+    );
     const firstPath = path.join(scratch, "first"),
       secondPath = path.join(scratch, "second");
     const first = run({ output: firstPath }),
@@ -89,6 +114,7 @@ export function verifyRebuild({ publish = false } = {}) {
       status: "PASS",
       rawGtfsExtraction: "PASS",
       rawS12IdentityExtraction: "PASS",
+      rawC28IdentityExtraction: "PASS",
       fullDeterministicRebuild: "PASS",
       resumeChecksumSkip: "PASS",
       batchCount: first.manifest.batchReceipts.length,
