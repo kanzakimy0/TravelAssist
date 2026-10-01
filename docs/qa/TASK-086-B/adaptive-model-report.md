@@ -71,5 +71,12 @@ The original ten iteration records are retained byte-for-byte. Subsequent phases
 | 73 | 073-tobu-tojo-partner-reviewed-f-liner-stops | 89 | 419 | 9 | 14 | 28 | True |
 | 74 | 074-keisei-matsudo-current-operator-and-local-calls | 89 | 421 | 9 | 24 | 48 | True |
 | 75 | 075-tobu-four-partner-published-t1-gateways | 89 | 425 | 9 | 4 | 8 | True |
+| 76 | 076-kobe-portliner-ordinary-airport-branch-and-terminal | 89 | 426 | 9 | 9 | 18 | True |
+| 77 | 077-nagasaki-rail-to-licensed-traffic-plaza | 89 | 426 | 9 | 0 | 2 | False |
+| 78 | 078-takamatsu-airport-licensed-trips-and-current-gateways | 89 | 427 | 9 | 23 | 29 | True |
+| 79 | 079-miyazaki-airport-current-ordinary-rail-and-terminal | 89 | 427 | 9 | 5 | 8 | False |
+| 80 | 080-kumamoto-airport-licensed-trips-and-current-gateways | 89 | 428 | 9 | 32 | 37 | True |
+| 81 | 081-kirishima-current-calls-and-kagoshima-shinkansen-gateway | 89 | 429 | 9 | 8 | 20 | True |
+| 82 | 082-tobu-tojo-current-partner-northbound-ordinary | 89 | 433 | 9 | 8 | 19 | True |
 
 Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).

@@ -10,6 +10,7 @@ import {
   id,
   admitNodes,
   reviewedRailTransition,
+  reviewedGtfsComponent,
   auditGraph,
   sourceAllowed,
   metricFields,
@@ -182,6 +183,21 @@ test("TASK086 real acquisition records response fingerprints, rights findings an
   );
   assert.equal(result.sourcesChecked[0].rawPayloadRetained, false);
   assert.equal(readRows(queuePath)[0].state, result.state);
+  assert.equal(result.nextAction, "EXTRACT_AND_BIND_MINIMAL_FACTS");
+  for (const rightsClass of ["REFERENCE_ONLY_DISCOVERY", "LICENSE_BLOCKED"]) {
+    const restricted = await acquireEvidence(
+      { ...request, rightsClass },
+      {
+        queuePath,
+        now: () => minimal.observedAt,
+        network: async () =>
+          new Response("restricted reference", { status: 200 }),
+      },
+    );
+    assert.equal(restricted.nextAction, "SEARCH_NEXT_LAWFUL_ALTERNATIVE");
+    assert.ok(restricted.sourcesChecked.every((s) => !s.rawPayloadRetained));
+    assert.deepEqual(restricted.extractedFacts, []);
+  }
 });
 test("TASK086 reference evidence explicitly fingerprints the observation instead of claiming raw source bytes", (t) => {
   const dir = temp(t),
@@ -1220,5 +1236,198 @@ test("TASK086 dated operator mergers preserve exact archival identity and reject
     () =>
       validateCorroboratingEvidence({ ...fact, sourceActionId: "merger" }, []),
     /CORROBORATING_SOURCE_NOT_BOUND/,
+  );
+});
+
+test("TASK086 existing GTFS interchange keeps exact stop identity and rejects same-name platform rebinding", () => {
+  const source = {
+    ...minimal,
+    sourceId: "gtfs:fixture",
+    rightsClass: "RAW_PERSISTENCE_ALLOWED",
+    persistenceAllowed: true,
+    retainedArchive: "fixture.zip",
+    agencies: [{ agency_name: "Bus operator" }],
+  };
+  const sources = new Map([
+    [source.sourceId, source],
+    [minimal.sourceId, minimal],
+  ]);
+  const raw = {
+    stop_id: "airport_out",
+    stop_name: "空港",
+    stop_lat: "33",
+    stop_lon: "130",
+    platform_code: "5",
+  };
+  const row = {
+    sourceId: source.sourceId,
+    sourceSha256: source.contentSha256,
+    locator: "stops.txt:airport_out",
+    record: raw,
+    recordSha256: hash(raw),
+  };
+  const evidence = new Map([["raw", row]]);
+  const candidate = {
+    identityAnchor: "gtfs:fixture:stop:airport_out",
+    canonicalNameJa: "空港",
+    nodeKind: "bus_stop",
+    operatorRefs: ["Bus operator"],
+    lineRefs: ["gtfs:fixture:route:airport"],
+    latitude: 33,
+    longitude: 130,
+    identityRecord: raw,
+    origin: "TASK_086_INDEPENDENT_GTFS",
+    evidenceRefs: ["raw"],
+    hubSemantics: "GTFS_STOP_POINT_NO_SAME_NAME_COLLAPSE",
+    independentReview: {
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+      recordSha256: hash(raw),
+    },
+  };
+  const node = admitNodes([candidate], sources, evidence)[0];
+  const nodes = new Map([[node.nodeId, node]]);
+  const selector = {
+    name: "空港",
+    operator: "Bus operator",
+    line: "gtfs:fixture:route:airport",
+    nodeKind: "bus_stop",
+    gtfsIdentity: {
+      sourceId: source.sourceId,
+      stopId: raw.stop_id,
+      sourceArchiveSha256: source.contentSha256,
+      recordSha256: hash(raw),
+      expectedPlatformCode: "5",
+      method: "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+      currentPassengerAccessReview:
+        "Current airport diagram explicitly connects this boarding point to the terminal.",
+    },
+  };
+  assert.equal(
+    reviewedGtfsComponent(selector, nodes, sources, evidence).nodeId,
+    node.nodeId,
+  );
+  for (const patch of [
+    { stopId: "airport_in" },
+    { expectedPlatformCode: "6" },
+    { sourceArchiveSha256: hash("changed") },
+    { recordSha256: hash("changed") },
+    { sourceId: "gtfs:other" },
+    { currentPassengerAccessReview: "" },
+    { method: "PARENT_STATION_GUESS" },
+  ]) {
+    assert.throws(
+      () =>
+        reviewedGtfsComponent(
+          { ...selector, gtfsIdentity: { ...selector.gtfsIdentity, ...patch } },
+          nodes,
+          sources,
+          evidence,
+        ),
+      /GTFS_COMPONENT_/,
+    );
+  }
+  for (const patch of [
+    { name: "同名別駅" },
+    { operator: "Other operator" },
+    { line: "gtfs:fixture:route:other" },
+    { nodeKind: "rail_station" },
+    { mode: "airport_bus" },
+  ]) {
+    assert.throws(
+      () =>
+        reviewedGtfsComponent(
+          { ...selector, ...patch },
+          nodes,
+          sources,
+          evidence,
+        ),
+      /GTFS_COMPONENT_/,
+    );
+  }
+  const wrong = new Map(evidence);
+  wrong.set("raw", { ...row, recordSha256: hash("changed") });
+  assert.throws(
+    () => reviewedGtfsComponent(selector, nodes, sources, wrong),
+    /GTFS_COMPONENT_/,
+  );
+  const rawTwin = { ...raw, stop_id: "airport_in", platform_code: "" };
+  const twinRow = {
+    ...row,
+    locator: "stops.txt:airport_in",
+    record: rawTwin,
+    recordSha256: hash(rawTwin),
+  };
+  evidence.set("twin", twinRow);
+  const twin = admitNodes(
+    [
+      {
+        ...candidate,
+        identityAnchor: "gtfs:fixture:stop:airport_in",
+        identityRecord: rawTwin,
+        evidenceRefs: ["twin"],
+        independentReview: {
+          decision: "ADMIT_TASK_086_TOPOLOGY",
+          recordSha256: hash(rawTwin),
+        },
+      },
+    ],
+    sources,
+    evidence,
+  )[0];
+  nodes.set(twin.nodeId, twin);
+  const put = (key, record) =>
+    evidence.set(key, {
+      sourceId: minimal.sourceId,
+      sourceSha256: minimal.contentSha256,
+      record,
+      recordSha256: hash(record),
+      locator: key,
+    });
+  const twinSelector = {
+    ...selector,
+    gtfsIdentity: {
+      ...selector.gtfsIdentity,
+      stopId: rawTwin.stop_id,
+      recordSha256: hash(rawTwin),
+      expectedPlatformCode: "",
+    },
+  };
+  put("fact", {
+    kind: "transfer",
+    components: [selector, twinSelector],
+    directions: [[0, 1]],
+  });
+  const resolved = {
+    from: node.nodeId,
+    to: twin.nodeId,
+    hubRef: "reviewed",
+    sourceFactRef: "fact",
+  };
+  put("resolved", resolved);
+  const transfer = {
+    ...resolved,
+    evidenceKind: "OFFICIAL_INTERCHANGE",
+    directed: true,
+    strictFactBinding: true,
+    evidenceRefs: ["resolved"],
+    sourceRefs: [minimal.url],
+  };
+  assert.equal(
+    generateTransfer(transfer, nodes, sources, evidence, "2026-10-01")
+      .toTransportNodeId,
+    twin.nodeId,
+  );
+  const swapped = { ...resolved, from: twin.nodeId, to: node.nodeId };
+  put("resolved", swapped);
+  assert.throws(
+    () =>
+      generateTransfer(
+        { ...transfer, ...swapped },
+        nodes,
+        sources,
+        evidence,
+        "2026-10-01",
+      ),
+    /OFFICIAL_TRANSFER_SOURCE_BINDING_MISMATCH/,
   );
 });

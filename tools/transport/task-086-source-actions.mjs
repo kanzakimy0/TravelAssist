@@ -210,7 +210,11 @@ export function recordReferenceEvidence(
     "RIGHTS_REVIEWED",
     {
       result: request.rightsClass,
-      nextAction: "EXTRACT_AND_BIND_MINIMAL_FACTS",
+      nextAction: ["REFERENCE_ONLY_DISCOVERY", "LICENSE_BLOCKED"].includes(
+        request.rightsClass,
+      )
+        ? "SEARCH_NEXT_LAWFUL_ALTERNATIVE"
+        : "EXTRACT_AND_BIND_MINIMAL_FACTS",
     },
     request.observedAt,
   );
@@ -340,7 +344,11 @@ export async function acquireEvidence(
       "RIGHTS_REVIEWED",
       {
         result: request.rightsClass,
-        nextAction: "EXTRACT_AND_BIND_MINIMAL_FACTS",
+        nextAction: ["REFERENCE_ONLY_DISCOVERY", "LICENSE_BLOCKED"].includes(
+          request.rightsClass,
+        )
+          ? "SEARCH_NEXT_LAWFUL_ALTERNATIVE"
+          : "EXTRACT_AND_BIND_MINIMAL_FACTS",
       },
       observedAt,
     );

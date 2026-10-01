@@ -150,6 +150,56 @@ export function verifyRebuild({ publish = false } = {}) {
       ),
       "Raw rail GTFS trip extraction differs",
     );
+    const selectedGtfsPackages = [];
+    for (const phaseFile of fs
+      .readdirSync(path.join(root, "data/transport/network/research/phases"))
+      .filter((n) => n.endsWith(".json"))
+      .sort()) {
+      const phase = readJson(
+        path.join(root, "data/transport/network/research/phases", phaseFile),
+      );
+      for (const binding of phase.licensedGtfsPackages ?? []) {
+        const packagePath = path.join(
+          root,
+          "data/transport/network/sources",
+          binding.packageFile,
+        );
+        const pack = readJson(packagePath);
+        const extractedPackage = path.join(scratch, binding.packageFile);
+        const extraction = spawnSync(
+          process.platform === "win32" ? "python" : "python3",
+          [
+            "-X",
+            "utf8",
+            path.join(
+              root,
+              "tools/transport/task-086-extract-selected-gtfs.py",
+            ),
+            path.join(
+              root,
+              "data/transport/network",
+              pack.selection.requestPath,
+            ),
+            "--archive",
+            path.join(
+              root,
+              "data/transport/network",
+              pack.source.retainedArchive,
+            ),
+            "--output",
+            extractedPackage,
+          ],
+          { encoding: "utf8" },
+        );
+        assert.equal(extraction.status, 0, extraction.stderr);
+        assert.equal(
+          hash(fs.readFileSync(extractedPackage)),
+          hash(fs.readFileSync(packagePath)),
+          "Selected GTFS extraction differs: " + binding.packageFile,
+        );
+        selectedGtfsPackages.push(binding.packageFile);
+      }
+    }
     const firstPath = path.join(scratch, "first"),
       secondPath = path.join(scratch, "second");
     const first = run({ output: firstPath }),
@@ -173,6 +223,10 @@ export function verifyRebuild({ publish = false } = {}) {
       rawC28IdentityExtraction: "PASS",
       rawP36IdentityExtraction: "PASS",
       rawRailGtfsTripExtraction: "PASS",
+      rawSelectedGtfsExtraction: {
+        status: "PASS",
+        packages: selectedGtfsPackages,
+      },
       fullDeterministicRebuild: "PASS",
       resumeChecksumSkip: "PASS",
       batchCount: first.manifest.batchReceipts.length,
@@ -194,6 +248,7 @@ export function verifyRebuild({ publish = false } = {}) {
           "--test",
           path.join(root, "tests/task-086-b-mobility-backbone.test.mjs"),
           path.join(root, "tests/task-086-b-autonomous-remediation.test.mjs"),
+          path.join(root, "tests/task-086-b-selected-gtfs.test.mjs"),
         ],
         { cwd: root, encoding: "utf8" },
       );

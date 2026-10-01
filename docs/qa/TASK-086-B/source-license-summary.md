@@ -2,7 +2,7 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-Executed source actions: **79**. Recorded source/terms observations: **441**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 4, 'TOPOLOGY_FACT_ONLY_ALLOWED': 70, 'REFERENCE_ONLY_DISCOVERY': 5}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
+Executed source actions: **93**. Recorded source/terms observations: **504**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 7, 'TOPOLOGY_FACT_ONLY_ALLOWED': 81, 'REFERENCE_ONLY_DISCOVERY': 5}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
 
 ## Retained representations
 
@@ -10,6 +10,8 @@ Executed source actions: **79**. Recorded source/terms observations: **441**. La
 - MLIT C28-21: commercial-use archive `07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35` under its dataset-specific legacy terms. Explicit polygon-to-reference-point IDs produce 97 identities; coordinates describe whole airport facilities, not precise terminal gates. The 2021 identity snapshot establishes no current manager or concessionaire claim. Current passenger access is separately reviewed.
 - MLIT P36-23: CC BY 4.0 archive `50d92052dd15ccf29fa86bee74b18ce7c95fcb9cb93678395842e67658f26de4`; 9,224 operator-specific highway-stop records resolve explicit GML point references. Busta Shinjuku admission covers only the reviewed JR Bus Kanto component and its current terminal connection, without claiming platform precision or all terminal operators.
 - Toei Train GTFS: CC BY 4.0 archive `dd5757062317dcf18b8eeaf8bf83f6624ecd3c9fc4fe99918981e5ec2b42d8c4`, credited to 東京都交通局・公共交通オープンデータ協議会. Feed version 20260921 and validity window 20260314–20270312 support four selected actual Mita/Oedo trips on 20261001. The separate contest-only Pathways dataset is not used.
+- Kotoden airport GTFS: CC BY 4.0 archive `6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6`, credited to ことでんバス株式会社. Two selected 20261001 trips retain 22 distinct boarding points. Kyushu Sanko airport GTFS: CC BY 4.0 archive `78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c`, credited to 九州産交バス / 産交バス GTFS repository; two selected trips retain 31 distinct stops. Current official terminal diagrams have separate fact-only rights and are not covered by the GTFS licenses.
+- MLIT P11-22 bus-stop archive `e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1` is retained under the current Public Data License 1.0 decision for this open 2022 edition. It remains research input, not admitted platform identity or route topology.
 - Original Fukuoka passenger ferry and Nagasaki purpose-bounded bus CC BY 4.0 raw GTFS archives remain unchanged; extraction and exact trip/call/transfer binding are revalidated.
 - Official rail/metro/private-rail sources: minimal nonexpressive static calling order, component selectors and explicitly reviewed interchange facts. No redistribution permission for expressive tables, pages or maps is asserted. Operator and third-party copyrights remain reserved. No timetable clocks, fares or service calendars are copied from fact-only sources.
 - Every minimal fact source retains both the minimal-fact-set fingerprint and the observed response fingerprint. Public-reference fallbacks label their fingerprint as a reviewed observation, never raw source bytes.
@@ -98,12 +100,26 @@ Executed source actions: **79**. Recorded source/terms observations: **441**. La
 | rail:yurikamome:shimbashi-gateway-and-bounded-last-train | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | metro:sapporo:n06-n07-current-directional-section | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | hub:jreast:hamamatsucho-monorail-transfer-gate | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
-| metro:sapporo:ekibus-restricted-alternative-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| metro:sapporo:ekibus-restricted-alternative-review | RIGHTS_REVIEWED | 2 | 0 | REFERENCE_ONLY_DISCOVERY |
 | rail:jreast:mito-hitachi-actual-trips | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | private:tobu:tojo-mm21-f-liner-alternative | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | private:keisei:matsudo-reviewed-2025-merger | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | hub:tobu:jr-partner-three-urban-park-gateways | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | hub:tobu:oshiage-metro-published-joint-station | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:kobe-portliner:ordinary-airport-branch-and-terminal | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:nagasaki:current-kamome-traffic-plaza | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| bus:nagasaki:current-station-boarding-components | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| government:p11:reviewed-airport-bus-identities | RIGHTS_REVIEWED | 1 | 0 | RAW_PERSISTENCE_ALLOWED |
+| bus:kotoden:licensed-current-airport-trips | INGESTED | 1 | 1 | RAW_PERSISTENCE_ALLOWED |
+| hub:takamatsu:current-station-bus-gateway | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| airport:takamatsu:current-terminal-bus-passages | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:jr-kyushu:miyazaki-airport-current-ordinary | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| airport:miyazaki:current-terminal-rail-passage | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| bus:sankobus:licensed-current-airport-trips | INGESTED | 1 | 1 | RAW_PERSISTENCE_ALLOWED |
+| hub:kumamoto:current-jr-forecourt-gtfs-platforms | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| airport:kumamoto:current-limousine-terminal-passages | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:tobu:tojo-current-partner-northbound-local | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 
 ## Primary evidence ledger
 

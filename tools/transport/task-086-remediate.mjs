@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { prepareLicensedGtfsPackage } from "./task-086-licensed-package.mjs";
 import path from "node:path";
 import { gunzipSync } from "node:zlib";
 import { fileURLToPath } from "node:url";
@@ -6,6 +7,7 @@ import {
   hash,
   factCallingRestrictions,
   reviewedRailTransition,
+  reviewedGtfsComponent,
   RAIL_NODE_KIND_BY_MODE,
   id,
   canonical,
@@ -337,6 +339,13 @@ export function runRemediation({
     return source;
   };
   const bind = (selector, serviceEvidenceRef) => {
+    if (selector.gtfsIdentity) {
+      invariant(
+        evidence.get(serviceEvidenceRef)?.record.kind === "transfer",
+        "GTFS_REUSE_TRANSFER_ONLY",
+      );
+      return reviewedGtfsComponent(selector, nodes, sources, evidence).nodeId;
+    }
     if (selector.airportIdentity) {
       const matches = airportIdentities.filter(
         (r) => r.referencePointId === selector.airportIdentity.referencePointId,
@@ -635,6 +644,8 @@ export function runRemediation({
     "task-086-road-identities.mjs",
     "task-086-extract-jreast.py",
     "task-086-extract-rail-gtfs.py",
+    "task-086-extract-selected-gtfs.py",
+    "task-086-licensed-package.mjs",
   ];
   const generatorHashes = Object.fromEntries(
     generatorPaths.map((n) => [
@@ -660,6 +671,68 @@ export function runRemediation({
       ),
       "STALLED_STRATEGY_MUST_CHANGE_SOURCE_OPERATOR_OR_METHOD",
     );
+    for (const binding of phase.licensedGtfsPackages ?? []) {
+      invariant(
+        /^[a-z0-9-]+\.json$/.test(binding.packageFile),
+        "LICENSED_GTFS_PACKAGE_PATH_INVALID",
+      );
+      const pack = readJson(
+        path.join(networkRoot, "sources", binding.packageFile),
+      );
+      const action = actions.find((a) => a.actionId === binding.sourceActionId);
+      const raw = fs.readFileSync(
+        path.join(networkRoot, pack.source.retainedArchive),
+      );
+      const prepared = prepareLicensedGtfsPackage(
+        pack,
+        binding,
+        action,
+        raw,
+        nodes,
+        sources,
+        evidence,
+        generatedAt,
+      );
+      for (const node of prepared.admitted) {
+        nodes.set(node.nodeId, node);
+        nodeReviews.push({
+          nodeId: node.nodeId,
+          previousDecision: "NOT_IN_REQUIRED_INVENTORY",
+          decision: node.decision,
+          identityRecordSha256: hash(node.identityRecord),
+          rawIdentityEvidenceRef: node.evidenceRefs[0],
+          matchedFields: [
+            "exactFeedStopId",
+            "exactLicensedStopRecord",
+            "actualCurrentTrip",
+          ],
+          sameGroupNotInterchange: true,
+        });
+      }
+      for (const line of pack.lines) {
+        invariant(
+          !lines.some((l) => l.lineRef === line.lineRef),
+          "LICENSED_GTFS_PACKAGE_DUPLICATE_LINE",
+        );
+        lines.push(line);
+      }
+      for (const item of prepared.groups) {
+        const pattern = item.pattern;
+        patterns.push(pattern);
+        edges.push(...item.edges);
+        groups.push({
+          groupId: pattern.servicePatternId,
+          pattern,
+          edges: item.edges,
+          sources: [pack.source],
+          nodes: [...new Set(pattern.callingNodes.map((c) => c.nodeId))].map(
+            (n) => structuredClone(nodes.get(n)),
+          ),
+          generatorSha256: hash(generatorHashes),
+          nextActionDeficitSummary: before.counts,
+        });
+      }
+    }
     for (const fact of phase.facts) {
       const source = factSource(fact);
       const factRef = makeEvidence(source, fact, fact.locator, [
@@ -834,6 +907,13 @@ export function runRemediation({
             ...(fact.components?.some((c) => c.terminalIdentity)
               ? [highwaySource]
               : []),
+            ...[
+              ...new Set(
+                fact.components
+                  .filter((c) => c.gtfsIdentity)
+                  .map((c) => c.gtfsIdentity.sourceId),
+              ),
+            ].map((sourceId) => sources.get(sourceId)),
           ],
           nodes: componentIds.map((n) => structuredClone(nodes.get(n))),
           generatorSha256: hash(generatorHashes),
@@ -929,6 +1009,9 @@ export function runRemediation({
       ...new Set([
         ...action.extractedFacts,
         ...facts,
+        ...(phase.licensedGtfsPackages ?? [])
+          .filter((p) => p.sourceActionId === actionId)
+          .map((p) => "licensed-gtfs-package:" + p.packageSha256),
         ...(actionId === "government:c28:airport-identities"
           ? ["c28-identities:" + hash(airportIdentities)]
           : []),
@@ -1110,6 +1193,16 @@ export function runRemediation({
     "checkpoints/origin.json",
     "checkpoints/" + origin.archive,
     "research/s12-identities.jsonl",
+    ...phases.flatMap((p) =>
+      (p.licensedGtfsPackages ?? []).flatMap((b) => {
+        const pack = readJson(path.join(networkRoot, "sources", b.packageFile));
+        return [
+          "sources/" + b.packageFile,
+          pack.source.retainedArchive,
+          pack.selection.requestPath,
+        ];
+      }),
+    ),
     ...phaseFiles.map((n) => "research/phases/" + n),
   ];
   const inputHashes = {

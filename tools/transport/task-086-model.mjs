@@ -219,6 +219,59 @@ function railTransitionBound(node, sources, evidence) {
     }) ?? false
   );
 }
+// Reuse only an already admitted, exact licensed GTFS boarding point. This
+// does not collapse parent stations or infer access from matching names.
+export function reviewedGtfsComponent(selector, nodes, sources, evidence) {
+  const review = selector.gtfsIdentity;
+  invariant(
+    review &&
+      review.method === "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE" &&
+      review.currentPassengerAccessReview &&
+      selector.mode === undefined,
+    "GTFS_COMPONENT_REVIEW_REQUIRED",
+  );
+  const source = sources.get(review.sourceId);
+  const anchor = `${review.sourceId}:stop:${review.stopId}`;
+  const node = nodes.get(id("node", anchor));
+  invariant(
+    sourceAllowed(source) &&
+      source.persistenceAllowed === true &&
+      source.retainedArchive &&
+      source.contentSha256 === review.sourceArchiveSha256 &&
+      source.agencies?.some((a) => a.agency_name === selector.operator),
+    "GTFS_COMPONENT_SOURCE_MISMATCH",
+  );
+  invariant(
+    node &&
+      node.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      node.origin === "TASK_086_INDEPENDENT_GTFS" &&
+      node.identityAnchor === anchor &&
+      ["bus_stop", "ferry_port"].includes(node.nodeKind) &&
+      node.nodeKind === selector.nodeKind &&
+      node.canonicalNameJa === selector.name &&
+      node.operatorRefs.includes(selector.operator) &&
+      node.lineRefs.includes(selector.line) &&
+      selector.line.startsWith(review.sourceId + ":route:") &&
+      node.identityRecord.stop_id === review.stopId &&
+      node.identityRecord.stop_name === selector.name &&
+      node.identityRecord.platform_code === review.expectedPlatformCode &&
+      hash(node.identityRecord) === review.recordSha256 &&
+      node.latitude === Number(node.identityRecord.stop_lat) &&
+      node.longitude === Number(node.identityRecord.stop_lon) &&
+      node.evidenceRefs.some((ref) => {
+        const row = evidence.get(ref);
+        return (
+          verifyEvidence([ref], sources, evidence) &&
+          row.sourceId === review.sourceId &&
+          row.locator === "stops.txt:" + review.stopId &&
+          row.recordSha256 === review.recordSha256 &&
+          canonical(row.record) === canonical(node.identityRecord)
+        );
+      }),
+    "GTFS_COMPONENT_IDENTITY_MISMATCH",
+  );
+  return node;
+}
 export function admitNodes(candidates, sources, evidence, prior = []) {
   unique(candidates, (n) => n.identityAnchor, "NODE_ANCHOR");
   const previous = new Map(prior.map((n) => [n.nodeId, n]));
@@ -670,6 +723,16 @@ export function generateTransfer(
           fact.kind === "transfer" &&
           fact.directions.some(([a, b]) => {
             const match = (selector, nodeId) => {
+              if (selector.gtfsIdentity) {
+                try {
+                  return (
+                    reviewedGtfsComponent(selector, nodes, sources, evidence)
+                      .nodeId === nodeId
+                  );
+                } catch {
+                  return false;
+                }
+              }
               const node = nodes.get(nodeId);
               return (
                 node &&
