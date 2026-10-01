@@ -1,0 +1,111 @@
+{
+  "task": "TASK-086-B",
+  "recordedAt": "2026-10-01T04:41:21.220873+00:00",
+  "taskAcceptanceStatus": "BLOCKED_NATIONAL_SOURCE_IDENTITY_COVERAGE",
+  "baseDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+  "branch": "feature/b-transport-node-mobility-backbone",
+  "manifestSha256": "0c0b3e2fec204a3dca6e32c799e44dbc014488859c9416efb08794a97b8a2bf8",
+  "focused": {
+    "status": "PASS",
+    "command": "node --test tests/task-086-b-mobility-backbone.test.mjs",
+    "tests": 37,
+    "pass": 37,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "logPath": ".cache/task-086/focused-final.log",
+    "logSha256": "2da7e810b88fb75374a69afc420dfaf01adf920ac117837ea231e92ab112b62a"
+  },
+  "fullRegression": {
+    "status": "PASS",
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=1 \"tests/*.test.mjs\"",
+    "tests": 2867,
+    "pass": 2867,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "logPath": ".cache/task-086/full-regression-publication.log",
+    "logSha256": "412cddbf40912351b10ec13c3441bcaab36269719cf10e05ba564abd6c900166"
+  },
+  "deterministicRebuild": {
+    "status": "PASS",
+    "evidence": "docs/qa/TASK-086-B/deterministic-rebuild.json",
+    "rawExtraction": "PASS",
+    "twoFullRebuilds": "PASS",
+    "resumeChecksumSkipBatches": 88
+  },
+  "checks": [
+    {
+      "command": "npm run lint",
+      "status": "PASS",
+      "logSha256": "fd7d6bd55b64d4512966f172918154baff18447ea3eebc20a6094d6bffdc3269",
+      "notes": "0 errors; 10 existing warnings"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+      "notes": null
+    },
+    {
+      "command": "npm run format:check:deploy",
+      "status": "PASS",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "notes": null
+    },
+    {
+      "command": "npm run deploy:build:local",
+      "status": "PASS",
+      "logSha256": "525b163ec2d61dbfd89739aaa814879c9d23ed2225ae94c848827740a14f5897",
+      "notes": "Standalone artifact audit: 1908 files"
+    },
+    {
+      "command": "npm run deploy:verify-artifact",
+      "status": "PASS",
+      "logSha256": "f6ea6fcb244b99be5fadb761a566215541822775be278fc88fca27446b3455e1",
+      "notes": "Standalone artifact audit: 1908 files"
+    }
+  ],
+  "earlierRunDisclosure": {
+    "initial": {
+      "tests": 2861,
+      "pass": 2860,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "logPath": ".cache/task-086/full-regression.log",
+      "logSha256": "a75c5e091bdaf7539fac34dd9c3a8d889709b44ed1781502ba865f4ff4520e92"
+    },
+    "failure": "Existing tests/task-013-1-asset-variants.test.mjs nightly --dry-run subprocess reached its unchanged 30-second timeout while independent build/lint were also running.",
+    "isolatedRetry": {
+      "status": "PASS",
+      "logSha256": "42da0d18993c4594fded3f1e172f1979c2399994ccdd762aa5a11ec446f121af"
+    },
+    "secondFullRun": {
+      "tests": 2862,
+      "pass": 2862,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "logPath": ".cache/task-086/full-regression-final.log",
+      "logSha256": "eb6c4a38c9aa0c7ce3b14a377d63fd49d36f4065d8d3a10306612b1be25f3134"
+    },
+    "testThresholdsChanged": false
+  },
+  "exactHeadQualityGate": {
+    "resultLocation": "https://github.com/kanzakimy0/TravelAssist/pull/466",
+    "publicationRule": "After committing, dispatch quality-gate.yml on the execution branch, verify run.headSha equals the final head, and record run URL/result in the Draft PR description and final report. This pre-commit receipt does not claim CI success."
+  },
+  "wbs716": "进行中",
+  "mergePerformed": false,
+  "autoMergeEnabled": false,
+  "validationImplementationHashes": {
+    "tools/transport/task-086-batches.mjs": "196d7dee00b83db75b67393aaec420829077ec7865783c161686f8c3b44c2ca9",
+    "tools/transport/task-086-extract-gtfs.py": "1f20a1b18e2bd8ba23928e01c6c8f4f1faa09f2c3a5adee45f63765786529fa6",
+    "tools/transport/task-086-model.mjs": "82a6870821556d83c2b043526ba4074d507e90e2c119a06f6b88ae333ffdb692",
+    "tools/transport/task-086-run.mjs": "654fca8529dc1adaa8be06993510f8b49bdab3afc05ca3fb13b80aa436252d31",
+    "tools/transport/task-086-verify.mjs": "4ec5713cf1f612bfa7ebb6b0827cef416656436a3455a1c5798e7074de823f2c",
+    "tests/task-086-b-mobility-backbone.test.mjs": "8d16f3061cebef7eb8b14c0cb3c32f56e2a6aae38fefbb3f670bde107fd92ce8",
+    "tests/task-086-b-rebuild.test.mjs": "f3875f8f11f77a4daaa7dcf177e0fea7f541c2df96afbb5527a0475802436e9b"
+  }
+}
