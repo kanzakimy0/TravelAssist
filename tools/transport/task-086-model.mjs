@@ -21,6 +21,7 @@ export const RAIL_NODE_KIND_BY_MODE = Object.freeze({
   metro: "metro_station",
   private_rail: "private_rail_station",
   fixed_guideway: "other_tourism_transport",
+  tram: "other_tourism_transport",
 });
 export const METRICS = [
   "durationTypicalMin",
@@ -388,7 +389,8 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
           node.latitude !== node.identityRecord.latitude ||
           node.longitude !== node.identityRecord.longitude ||
           node.nodeKind !== "bus_stop" ||
-          node.mode !== "airport_bus" ||
+          !["airport_bus", "local_bus"].includes(node.mode) ||
+          node.mode !== node.independentReview?.mode ||
           node.operatorRefs.length !== 1 ||
           node.operatorRefs[0] !== node.identityRecord.operator ||
           node.lineRefs.length !== 1 ||
@@ -1134,6 +1136,7 @@ export function auditGraph({
     "private_rail",
     "metro",
     "fixed_guideway",
+    "tram",
     "bus",
     "local_bus",
     "airport_bus",

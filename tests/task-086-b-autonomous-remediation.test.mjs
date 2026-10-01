@@ -796,6 +796,67 @@ test("TASK086 fixed guideway identity cannot silently become conventional rail",
     );
 });
 
+test("TASK086 tram identity preserves the independently reviewed component mode", () => {
+  const record = {
+    stationName: "山下",
+    operator: "東急電鉄",
+    line: "世田谷線",
+    stationCode: "003957",
+    latitude: 34.694,
+    longitude: 135.195,
+  };
+  const candidate = {
+    identityAnchor:
+      "review:transport-node:d624e4c2-f8ce-5f4e-8c48-112c3a8a086d",
+    canonicalNameJa: "山下",
+    nodeKind: "other_tourism_transport",
+    nodeLevel: "T1",
+    mode: "tram",
+    operatorRefs: [record.operator],
+    lineRefs: [record.line],
+    latitude: record.latitude,
+    longitude: record.longitude,
+    identityRecord: record,
+    origin: "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE",
+    evidenceRefs: ["identity"],
+    independentReview: {
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+      recordSha256: hash(record),
+    },
+    hubSemantics: "PHYSICAL_OPERATOR_COMPONENT_NO_IMPLICIT_TRANSFER",
+    parentHubId: null,
+  };
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    [
+      "identity",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record,
+        recordSha256: hash(record),
+        locator: "independent S12 tram identity",
+      },
+    ],
+  ]);
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  for (const changed of [
+    { ...candidate, nodeKind: "rail_station" },
+    { ...candidate, nodeKind: "private_rail_station" },
+    { ...candidate, mode: "private_rail" },
+    { ...candidate, mode: "conventional_rail" },
+    { ...candidate, mode: "unreviewed" },
+  ])
+    assert.ok(
+      admitNodes([changed], sources, evidence)[0].reasons.includes(
+        "IDENTITY_SOURCE_BINDING_MISMATCH",
+      ),
+    );
+});
+
 test("TASK086 flight reachability does not substitute for airport surface access", () => {
   const nodes = [
     {
@@ -1829,6 +1890,7 @@ test("TASK086 P11 stop identity excludes colocated operators and requires curren
     { lineRefs: ["wrong"] },
     { nodeKind: "bus_terminal" },
     { mode: "highway_bus" },
+    { mode: "local_bus" },
   ])
     assert.ok(
       admitNodes(
@@ -1837,6 +1899,200 @@ test("TASK086 P11 stop identity excludes colocated operators and requires curren
         evidence,
       )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
     );
+});
+
+test("TASK086 municipal P11 local bus retains provider identity and binds the reviewed mode", () => {
+  const record = {
+    stopRecordId: "P11-22_13:bs2512",
+    stopName: "氷川台駅",
+    operator: "練馬区",
+    historicalRoutes: [{ name: "氷川台ルート", typeCode: "1" }],
+    latitude: 35.75,
+    longitude: 139.666,
+    coordinateScope:
+      "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+    identityAsOf: "2022-08",
+  };
+  const current = {
+    recordOperator: record.operator,
+    currentOperatorName: "練馬区（運行委託：国際興業株式会社）",
+    currentStopName: record.stopName,
+    historicalRoute: "氷川台ルート",
+    url: "https://city.example/municipal-route",
+    observedResponseSha256: "c".repeat(64),
+  };
+  const selector = {
+    name: record.stopName,
+    operator: record.operator,
+    line: "p11-stop:" + record.stopRecordId,
+    mode: "local_bus",
+    nodeKind: "bus_stop",
+    busIdentity: {
+      dataset: "P11-22",
+      stopRecordId: record.stopRecordId,
+      recordSha256: hash(record),
+      method: "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+      coordinateScope: record.coordinateScope,
+      currentPassengerAccessReview:
+        "Current municipal general-passenger service; contractor distinguished from P11 provider.",
+      currentOperatorEvidence: current,
+    },
+  };
+  const fact = {
+    corroboratingEvidence: [
+      {
+        url: current.url,
+        observedResponseSha256: current.observedResponseSha256,
+      },
+    ],
+  };
+  const candidate = busStopCandidate(
+    selector,
+    record,
+    ["raw", "current"],
+    fact,
+  );
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map(
+    [
+      ["raw", record],
+      ["current", fact],
+    ].map(([key, value]) => [
+      key,
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record: value,
+        recordSha256: hash(value),
+        locator: key,
+      },
+    ]),
+  );
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  assert.deepEqual(candidate.operatorRefs, ["練馬区"]);
+  for (const changed of [
+    { mode: "airport_bus" },
+    { mode: "highway_bus" },
+    { operatorRefs: ["国際興業株式会社"] },
+    { independentReview: { ...candidate.independentReview, mode: undefined } },
+  ])
+    assert.ok(
+      admitNodes(
+        [{ ...candidate, ...changed }],
+        sources,
+        evidence,
+      )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
+    );
+});
+
+test("TASK086 renamed P11 stop requires two source-bound same-operator physical continuity reviews", () => {
+  const record = {
+    stopRecordId: "P11-22_13:bs1738",
+    stopName: "北豊島工業高校",
+    operator: "国際興業（株）",
+    historicalRoutes: [{ name: "王54/54-2", typeCode: "1" }],
+    latitude: 35.762,
+    longitude: 139.699,
+    coordinateScope:
+      "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+    identityAsOf: "2022-08",
+  };
+  const historical = {
+    stopName: record.stopName,
+    operator: record.operator,
+    url: "https://school.example/historical.pdf",
+    observedResponseSha256: "a".repeat(64),
+    locator: "Historical paired road stops beside the north school approach.",
+  };
+  const current = {
+    ...historical,
+    stopName: "北豊島工科高校",
+    url: "https://school.example/current.pdf",
+    observedResponseSha256: "b".repeat(64),
+    locator: "Current same paired road stops, same road and school approach.",
+  };
+  const review = {
+    method: "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+    recordStopName: record.stopName,
+    currentStopName: current.stopName,
+    operator: record.operator,
+    physicalContinuityReview:
+      "Independently viewed primary historical/current maps identify the same road-stop component, without an exact-pole claim.",
+    historicalEvidence: historical,
+    currentEvidence: current,
+  };
+  const selector = {
+    name: record.stopName,
+    operator: record.operator,
+    line: "p11-stop:" + record.stopRecordId,
+    mode: "local_bus",
+    nodeKind: "bus_stop",
+    busIdentity: {
+      dataset: "P11-22",
+      stopRecordId: record.stopRecordId,
+      recordSha256: hash(record),
+      method: "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+      coordinateScope: record.coordinateScope,
+      currentPassengerAccessReview:
+        "Current route and general passenger access separately reviewed.",
+      currentOperatorEvidence: {
+        recordOperator: record.operator,
+        currentOperatorName: "国際興業株式会社",
+        currentStopName: current.stopName,
+        historicalRoute: "王54/54-2",
+        url: current.url,
+        observedResponseSha256: current.observedResponseSha256,
+      },
+      currentStopNameReview: review,
+    },
+  };
+  const fact = { corroboratingEvidence: [historical, current] };
+  const build = (s = selector, f = fact) =>
+    busStopCandidate(s, record, ["raw", "current"], f);
+  const candidate = build();
+  assert.equal(candidate.canonicalNameJa, record.stopName);
+  assert.equal(
+    candidate.independentReview.currentStopNameReview.currentStopName,
+    current.stopName,
+  );
+  assert.throws(
+    () =>
+      build({
+        ...selector,
+        busIdentity: {
+          ...selector.busIdentity,
+          currentStopNameReview: undefined,
+        },
+      }),
+    /P11_CURRENT_OPERATOR_EVIDENCE_NOT_BOUND/,
+  );
+  for (const change of [
+    { method: "FUZZY_NAME" },
+    { recordStopName: "別停留所" },
+    { currentStopName: "別停留所" },
+    { operator: "別事業者" },
+    { physicalContinuityReview: "" },
+    { historicalEvidence: { ...historical, url: current.url } },
+    { currentEvidence: { ...current, observedResponseSha256: "c".repeat(64) } },
+  ])
+    assert.throws(
+      () =>
+        build({
+          ...selector,
+          busIdentity: {
+            ...selector.busIdentity,
+            currentStopNameReview: { ...review, ...change },
+          },
+        }),
+      /P11_CURRENT_STOP_NAME_REVIEW_NOT_BOUND/,
+    );
+  assert.throws(
+    () => build(selector, { corroboratingEvidence: [current] }),
+    /P11_CURRENT_STOP_NAME_REVIEW_NOT_BOUND/,
+  );
 });
 
 test("TASK086 P11 raw selection rejects wrong operator and duplicate feature requests", () => {

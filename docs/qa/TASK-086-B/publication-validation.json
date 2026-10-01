@@ -1,79 +1,80 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-01T19:03:27.320997+00:00",
+  "recordedAt": "2026-10-01T21:14:44.762360+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 116,
+  "phase": 123,
   "baseDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-  "validationParentHead": "0d1037f2ba2c759c9beb38f5c46e51772359ad24",
+  "validationParentHead": "ac5e171f460f6fad28fc5a1d1507546de735d9d6",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "manifestSha256": "aaa574240870256d5ceb7baeba2d511395aefaa2f8ba816c01b2be6d3a2ddf64",
+  "manifestSha256": "415a79a3d2e9bda14dc556c619c7427dac6202d8c02ef8e4ec973288bd0636e6",
   "focused": {
     "status": "PASS",
-    "tests": 73,
-    "pass": 73,
+    "tests": 76,
+    "pass": 76,
     "fail": 0,
     "evidence": "deterministic-rebuild.json focusedTests and focusedTestOutputSha256"
   },
   "fullRegression": {
     "status": "PASS",
     "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
-    "tests": 2903,
-    "pass": 2903,
+    "tests": 2906,
+    "pass": 2906,
     "fail": 0,
     "cancelled": 0,
     "skipped": 0,
-    "logPath": ".cache/task-086/full-tests-116.log",
-    "logSha256": "4bba46a34aa6a2382b3eb4e53b4abfa46a1a63db024f5b28d75aa49535e7c52d"
+    "logPath": ".cache/task-086/full-tests-123.log",
+    "logSha256": "c21dcf52e7c41762e7aac7ce02ac6553f7413d22e45e0d99fcc2d7475e6cabb2"
   },
-  "deterministicRebuildReceiptSha256": "5821399cf9f7dc8a82685062c8c16a65c937db9a63fe790f9ce7291a3d30018f",
+  "deterministicRebuildReceiptSha256": "0e32d92b31970365c38c8d6b4b07306798bccdfa998ad893095710c83f911f49",
   "checks": [
     {
       "command": "npm run lint",
       "status": "PASS",
-      "notes": "0 errors; 10 existing warnings",
-      "logPath": ".cache/task-086/lint-116.log",
-      "logSha256": "fd7d6bd55b64d4512966f172918154baff18447ea3eebc20a6094d6bffdc3269"
+      "notes": "0 errors; 10 existing repository warnings and 1 scratch-only acquisition-helper unused import warning; no new tracked-code warnings",
+      "logPath": ".cache/task-086/lint-123.log",
+      "logSha256": "3c8011da638bdf29c1316cbdbf74c4405a866b68e96b60865b573234a3c79133"
     },
     {
       "command": "npm run typecheck",
       "status": "PASS",
       "notes": "Next type generation and TypeScript passed",
-      "logPath": ".cache/task-086/typecheck-116.log",
+      "logPath": ".cache/task-086/typecheck-123.log",
       "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
     },
     {
       "command": "npm run format:check:deploy",
       "status": "PASS",
       "notes": "All matched files use Prettier style",
-      "logPath": ".cache/task-086/format-116.log",
+      "logPath": ".cache/task-086/format-123.log",
       "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
     },
     {
       "command": "npm run deploy:build:local",
       "status": "PASS",
       "notes": "Standalone artifact audit passed; 1908 files; validation precedes checkpoint commit",
-      "logPath": ".cache/task-086/build-116.log",
-      "logSha256": "1f079deaefaeee3a59a104a179989ae4b3775f2463e1eddff067cc50b646002e"
+      "logPath": ".cache/task-086/build-123.log",
+      "logSha256": "d8b06d9b88c8f50e1be6a98f1eabc39ba4533252dccd3ac62863322b982e08e4"
     },
     {
       "command": "npm run deploy:verify-artifact",
       "status": "PASS",
       "notes": "1908 files; no failures",
-      "logPath": ".cache/task-086/artifact-116.log",
-      "logSha256": "d5eb5ff3f3527ef5aeba76bbf4299ec8f33bae8185a81f234c8b79c5d5b3a1e0"
+      "logPath": ".cache/task-086/artifact-123.log",
+      "logSha256": "a69e0aab3f6c01131ece10238821424fabe1b34584501fb955c32bfded2dcc29"
     }
   ],
   "historicalExactHeadQualityGate": {
     "status": "PASS",
-    "head": "0d1037f2ba2c759c9beb38f5c46e51772359ad24",
-    "runId": 36896619063,
-    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36896619063",
-    "scope": "Committed phase-104 checkpoint only; subsequent local remediation requires its own validation."
+    "head": "ac5e171f460f6fad28fc5a1d1507546de735d9d6",
+    "runId": 36911658858,
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36911658858",
+    "completedAt": "2026-10-01T19:20:23Z",
+    "scope": "Committed phase-116 checkpoint only; subsequent local remediation requires its own validation."
   },
   "exactHeadQualityGate": {
     "status": "PENDING_CHECKPOINT_PUSH",
-    "scope": "Phase-116 local checks cover these working-tree inputs; committed-head Quality Gate is pending."
+    "scope": "Phase-123 local checks cover these working-tree inputs; committed-head Quality Gate is pending."
   },
   "wbs716": "进行中",
   "mergePerformed": false,
@@ -81,28 +82,28 @@
   "validationImplementationHashes": {
     "tools/transport/task-086-airport-identities.mjs": "752e47b7d093be11ff66b9d6c80f3ad8c38e2535b60bb04a140685d46346e4e9",
     "tools/transport/task-086-batches.mjs": "196d7dee00b83db75b67393aaec420829077ec7865783c161686f8c3b44c2ca9",
-    "tools/transport/task-086-bus-identities.mjs": "12e5e269abab952be015906fcfdedaf105605bb006d5ea79039253674b1496a3",
+    "tools/transport/task-086-bus-identities.mjs": "79321698b7c642e9118cce0d1a4e729131c90ebb9e711b8fc7187e8dbeba43c8",
     "tools/transport/task-086-extract-airports.py": "e5a4604391711d2901a8ec66ef566dab91563207cc87d98939761da268133312",
     "tools/transport/task-086-extract-bus-stops.py": "1d2c9d7a729739113472ce91f74028cf5226bbad39341aaa15864764173d5051",
     "tools/transport/task-086-extract-gtfs.py": "1f20a1b18e2bd8ba23928e01c6c8f4f1faa09f2c3a5adee45f63765786529fa6",
     "tools/transport/task-086-extract-highway-stops.py": "ad58bf5d26c1177ecfbe183e9b91641b10724ee3e3a415145034bc6a7e550c89",
     "tools/transport/task-086-extract-identities.py": "00dc89c2971be20c61010857e0106614d8cb15c8262297f26da7da8ed1827988",
     "tools/transport/task-086-extract-jreast.py": "950f9fe58488f0325cfde273b94a91cbc9282f073a0f72137764365a3c36e113",
-    "tools/transport/task-086-extract-rail-gtfs.py": "3206ce271630ea41a8ba57609200bee6328943fcd66b932b828e8238e30e6031",
+    "tools/transport/task-086-extract-rail-gtfs.py": "7aeb4ed2d04cdfbe5b88134815c446b3c9b9f27953ce2eab742eaa65c980a619",
     "tools/transport/task-086-extract-selected-gtfs.py": "0b49ae8c39976be54679c7620cf22c59a9a0954524a8d558f2645f56be8b5403",
     "tools/transport/task-086-licensed-package.mjs": "2c793007d033ab3ef1b31eb2d6da6fd9d25f252c05a241613337a2a2d12eb524",
-    "tools/transport/task-086-model.mjs": "46e3b54364a836f01a3e71e47ba5b140f0b7d83d3978a970bef00fde90a0f77e",
-    "tools/transport/task-086-remediate.mjs": "c6a275215d05666bf4c003cf8b01931161256c8471f6c5f8590b1449879af65b",
+    "tools/transport/task-086-model.mjs": "7d9c7ff2a06d360ecdcea98945e0582bfd6c6bc95edeca60521a37d429bd0afa",
+    "tools/transport/task-086-remediate.mjs": "7ddff05777831244373929e1c2f1c62c688dc3053dbdb68a2d29aecc7e4ec47d",
     "tools/transport/task-086-road-identities.mjs": "e09265de9f5647fda80772a01a88d5b8704c82d7b2be550275c74b66dde3aa35",
     "tools/transport/task-086-run.mjs": "b3ef0b99275f053ca291fdc2b7b150e7817a65cb64efa9a98952cf4cf06959e8",
     "tools/transport/task-086-source-actions.mjs": "8f5310578da27e533273c278324ce24d1963aa69d9f08eb780dd23fe6dc0eeff",
-    "tools/transport/task-086-verify.mjs": "5273304f6c8cdaa47d4571b67ef267f4560551537d635dcbac3c983660f8a549",
-    "tests/task-086-b-autonomous-remediation.test.mjs": "a001c95b9f1b59d31e370f2e2b90adf5283377c8407a3a58813001426382a941",
+    "tools/transport/task-086-verify.mjs": "45c2690229a432c1411cb7faa167139b467294dd6be0a15c07de58f2ac84ab24",
+    "tests/task-086-b-autonomous-remediation.test.mjs": "691b91da6e7551bef2871253b4f98bd4c9ca6164b61a33f40af54c0eb6e1d20f",
     "tests/task-086-b-mobility-backbone.test.mjs": "6a9e3c25230c3fa7a4096d15480733737509050cfb183df89087d188a790eb8b",
     "tests/task-086-b-rebuild.test.mjs": "f3875f8f11f77a4daaa7dcf177e0fea7f541c2df96afbb5527a0475802436e9b",
     "tests/task-086-b-selected-gtfs.test.mjs": "ebda9dd8ee875bdfcb7ad19d656922e54671a6232029dd30f9042803795e5a79"
   },
-  "lineEndingVerification": "Generator and test bytes use the Git LF representation. Raw data re-extraction, deterministic rebuild twice and resume, 73 focused tests and 2903 full regression tests passed with these exact bytes.",
+  "lineEndingVerification": "Generator and test bytes use the Git LF representation. Raw data re-extraction, deterministic rebuild twice and resume, 76 focused tests and 2906 full regression tests passed with these exact bytes.",
   "initialPhase82BuildOverlapAttempt": {
     "status": "FAIL",
     "tests": 2893,

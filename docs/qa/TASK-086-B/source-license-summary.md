@@ -2,7 +2,7 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-Executed source actions: **183**. Recorded source/terms observations: **995**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 13, 'TOPOLOGY_FACT_ONLY_ALLOWED': 153, 'REFERENCE_ONLY_DISCOVERY': 17}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
+Executed source actions: **208**. Recorded source/terms observations: **1121**. Latest reviewed-action rights decisions: `{'RAW_PERSISTENCE_ALLOWED': 13, 'TOPOLOGY_FACT_ONLY_ALLOWED': 173, 'REFERENCE_ONLY_DISCOVERY': 22}`. The queue retains actual attempts, URLs, response fingerprints, rights findings, extracted fact IDs, deficit targets, results and next actions.
 
 ## Retained representations
 
@@ -13,7 +13,7 @@ Executed source actions: **183**. Recorded source/terms observations: **995**. L
 - Kotoden airport GTFS: CC BY 4.0 archive `6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6`, credited to ことでんバス株式会社. Two selected 20261001 trips retain 22 distinct boarding points. Kyushu Sanko airport GTFS: CC BY 4.0 archive `78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c`, credited to 九州産交バス / 産交バス GTFS repository; two selected trips retain 31 distinct stops. Current official terminal diagrams have separate fact-only rights and are not covered by the GTFS licenses.
 - Additional CC BY 4.0 airport-scope GTFS archives: Tosaden `c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee`, Tokushima Bus `d71d6bb1743a77bb21f2d044e9ddca326cf0859b281ebc4fae57eef338ef36da`, and Oita Kotsu `981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e`. Exact actual trips retain repeated calls, directional flags and separate terminal endpoints.
 - Geiyo Saijo Airport Limousine GTFS archive `85778d27f8588cbe77a7bc70ba22258c2884bdd2380ab26965803b5012065fcc` is published by the Hiroshima Bus Association under **CC0 1.0**. Two selected trips are explicitly active through date exceptions. Primary terms URL/hash bind the CC0 decision; the dataset is not relabelled CC BY and does not license unrelated terminal illustrations.
-- MLIT P11-22 bus-stop archive `e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1` is retained under the current Public Data License 1.0 decision for this open 2022 edition. Six selected Komatsu/Okayama/Asahikawa records are now independently re-extracted and admitted only with current operator-stop and passenger-access evidence. Their coordinate scope is an operator road-stop representative, never a platform or entrance. Historical P11 route labels provide identity context only; separate actual current trips establish directed topology.
+- MLIT P11-22 bus-stop archive `e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1` is retained under the current Public Data License 1.0 decision for this open 2022 edition. 31 selected Komatsu/Okayama/Asahikawa, Nerima municipal-gateway and Ou54 road-stop records are now independently re-extracted and admitted only with current operator-stop and passenger-access evidence. Their coordinate scope is an operator road-stop representative, never a platform or entrance. Historical P11 route labels provide identity context only; separate actual current trips establish directed topology.
 - Miyako Kyoei and Karry Ishigaki selected airport GTFS packages retain separate OTTOP CC BY 4.0 licenses, active actual-trip dates and exact boarding stops. Inactive Azuma trips and the closed predecessor Ishigaki airport are excluded from admission.
 - Original Fukuoka passenger ferry and Nagasaki purpose-bounded bus CC BY 4.0 raw GTFS archives remain unchanged; extraction and exact trip/call/transfer binding are revalidated.
 - Official rail/metro/private-rail sources: minimal nonexpressive static calling order, component selectors and explicitly reviewed interchange facts. No redistribution permission for expressive tables, pages or maps is asserted. Operator and third-party copyrights remain reserved. No timetable clocks, fares or service calendars are copied from fact-only sources.
@@ -84,7 +84,7 @@ Executed source actions: **183**. Recorded source/terms observations: **995**. L
 | rail:mm21:local-and-interchange | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | private:kintetsu:official-rights-review | RIGHTS_REVIEWED | 2 | 0 | REFERENCE_ONLY_DISCOVERY |
 | private:hanshin:partner-nara-local-pattern | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
-| rail:toei:ccby-gtfs-train | INGESTED | 1 | 4 | RAW_PERSISTENCE_ALLOWED |
+| rail:toei:ccby-gtfs-train | INGESTED | 1 | 8 | RAW_PERSISTENCE_ALLOWED |
 | private:sotetsu:reviewed-local-branches | INGESTED | 1 | 6 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | private:kita-osaka:directional-boarding-and-boundary | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | private:nishitetsu:local-stopping-rows | INGESTED | 1 | 8 | TOPOLOGY_FACT_ONLY_ALLOWED |
@@ -112,7 +112,7 @@ Executed source actions: **183**. Recorded source/terms observations: **995**. L
 | rail:kobe-portliner:ordinary-airport-branch-and-terminal | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | hub:nagasaki:current-kamome-traffic-plaza | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | bus:nagasaki:current-station-boarding-components | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
-| government:p11:reviewed-airport-bus-identities | INGESTED | 1 | 3 | RAW_PERSISTENCE_ALLOWED |
+| government:p11:reviewed-airport-bus-identities | INGESTED | 1 | 5 | RAW_PERSISTENCE_ALLOWED |
 | bus:kotoden:licensed-current-airport-trips | INGESTED | 1 | 1 | RAW_PERSISTENCE_ALLOWED |
 | hub:takamatsu:current-station-bus-gateway | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | airport:takamatsu:current-terminal-bus-passages | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
@@ -213,6 +213,31 @@ Executed source actions: **183**. Recorded source/terms observations: **995**. L
 | airport:kagoshima-prefecture:five-island-actual-carrier-review | INGESTED | 2 | 10 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | flight:naha-airport:ibaraki-iwakuni-directional-pairs | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
 | airport:mlit:hyakuri-iwakuni-explicit-public-name-review | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:tobu:metro-published-actual-northbound-local | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| private:tobu:government-short-local-section-crosscheck | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| private:tobu:current-campus-tojo-completeness-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| bus:kokusai-kogyo:remaining-t1-gateway-rights-review | RIGHTS_REVIEWED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| tram:tokyu:setagaya-mode-identity-correction | INGESTED | 1 | 5 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:nagoya:yada-sunadabashi-public-guideway-approaches | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:osaka:nishiumeda-kitashinchi-explicit-public-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-west:kitashinchi-west-public-passage-correspondence | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs | INGESTED | 1 | 5 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:hankyu:yamada-minamiibaraki-current-monorail-passages | INGESTED | 1 | 2 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:hankyu:kyotokawaramachi-gionshijo-current-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:shijo-association:gionshijo-public-bridge-access | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:kyoto-municipal-portal:cross-station-walk-rights-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| hub:jrtk:motoyawata-facility-diagram-rights-review | INGESTED | 1 | 0 | REFERENCE_ONLY_DISCOVERY |
+| bus:nerima:current-hikawadai-nerima-line-directional-sections | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:itabashi:tobunerima-south-exit-midori-bus-gateway | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:tokyometro:hikawadai-public-exits-municipal-bus-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| bus:tokyo-association:ou54-independent-directional-stop-sections | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:itabashi:kamiitabashi-ou54-honcho-public-gateways | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| bus:tokyo-public-school:kitatoshima-stop-name-location-continuity | INGESTED | 1 | 4 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:yamato-hospital:honcho-public-street-ou54-stop-access | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:metro:machiya-public-exits-and-nishinippori-liner-passage | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:keisei:machiya-current-public-metro-approach | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:jr-east:oji-current-central-exit-tram-connection | INGESTED | 1 | 1 | TOPOLOGY_FACT_ONLY_ALLOWED |
+| hub:toei:machiya-oji-nishinippori-current-interchange-corroboration | INGESTED | 1 | 3 | TOPOLOGY_FACT_ONLY_ALLOWED |
 
 ## Primary evidence ledger
 

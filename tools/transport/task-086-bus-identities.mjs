@@ -11,7 +11,7 @@ export function busStopCandidate(selector, record, evidenceRefs, fact) {
       selector.name === record.stopName &&
       selector.operator === record.operator &&
       selector.line === "p11-stop:" + record.stopRecordId &&
-      selector.mode === "airport_bus" &&
+      ["airport_bus", "local_bus"].includes(selector.mode) &&
       selector.nodeKind === "bus_stop",
     "P11_IDENTITY_SELECTOR_MISMATCH",
   );
@@ -25,10 +25,42 @@ export function busStopCandidate(selector, record, evidenceRefs, fact) {
     "P11_COMPONENT_REVIEW_REQUIRED",
   );
   const current = review.currentOperatorEvidence;
+  const nameReview = review.currentStopNameReview;
+  if (nameReview) {
+    invariant(
+      nameReview.method === "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY" &&
+        nameReview.recordStopName === record.stopName &&
+        nameReview.currentStopName === current?.currentStopName &&
+        nameReview.currentStopName !== record.stopName &&
+        nameReview.operator === record.operator &&
+        nameReview.physicalContinuityReview &&
+        nameReview.historicalEvidence?.url !==
+          nameReview.currentEvidence?.url &&
+        [
+          [nameReview.historicalEvidence, record.stopName],
+          [nameReview.currentEvidence, current?.currentStopName],
+        ].every(
+          ([proof, name]) =>
+            proof?.stopName === name &&
+            proof.operator === record.operator &&
+            proof.locator &&
+            /^[a-f0-9]{64}$/.test(proof.observedResponseSha256 ?? "") &&
+            fact?.corroboratingEvidence?.some(
+              (e) =>
+                e.url === proof.url &&
+                e.observedResponseSha256 === proof.observedResponseSha256,
+            ),
+        ) &&
+        nameReview.currentEvidence.url === current.url &&
+        nameReview.currentEvidence.observedResponseSha256 ===
+          current.observedResponseSha256,
+      "P11_CURRENT_STOP_NAME_REVIEW_NOT_BOUND",
+    );
+  }
   invariant(
     current?.recordOperator === record.operator &&
       current.currentOperatorName &&
-      current.currentStopName === record.stopName &&
+      (current.currentStopName === record.stopName || nameReview) &&
       current.historicalRoute &&
       record.historicalRoutes.some((r) => r.name === current.historicalRoute) &&
       /^[a-f0-9]{64}$/.test(current.observedResponseSha256 ?? "") &&
@@ -57,9 +89,11 @@ export function busStopCandidate(selector, record, evidenceRefs, fact) {
     independentReview: {
       decision: "ADMIT_TASK_086_TOPOLOGY",
       recordSha256: hash(record),
+      mode: selector.mode,
       method: review.method,
       sourceArchiveSha256: P11_ARCHIVE_SHA256,
       currentOperatorEvidence: current,
+      ...(nameReview ? { currentStopNameReview: nameReview } : {}),
       currentPassengerAccessReview: review.currentPassengerAccessReview,
       coordinateScope: record.coordinateScope,
       identityAsOf: record.identityAsOf,

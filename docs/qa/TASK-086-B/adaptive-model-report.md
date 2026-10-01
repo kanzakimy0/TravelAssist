@@ -106,11 +106,18 @@ The original ten iteration records are retained byte-for-byte. Subsequent phases
 | 108 | 108-three-remaining-t1-airports-independent-current-flight-pairs | 89 | 453 | 9 | 3 | 6 | True |
 | 109 | 109-metro-published-th-liner-current-restricted-through-trains | 89 | 455 | 9 | 4 | 23 | True |
 | 110 | 110-five-kanto-current-public-hub-passages | 89 | 455 | 9 | 0 | 10 | True |
-| 111 | 111-setagaya-current-full-route-locals-and-three-rail-passages | 89 | 455 | 9 | 10 | 24 | False |
+| 111 | 111-setagaya-current-full-route-locals-and-three-rail-passages | 89 | 455 | 9 | 10 | 24 | True |
 | 112 | 112-five-kanto-current-public-rail-connections | 89 | 455 | 9 | 0 | 10 | True |
 | 113 | 113-university-published-current-keihan-limited-express | 89 | 456 | 9 | 8 | 22 | True |
 | 114 | 114-seven-required-island-airports-naha-current-directional-pairs | 89 | 456 | 9 | 7 | 14 | False |
 | 115 | 115-five-kagoshima-island-airports-prefectural-actual-carriers | 89 | 456 | 9 | 5 | 10 | False |
 | 116 | 116-hyakuri-iwakuni-official-name-equivalence-and-naha-flight-pairs | 89 | 456 | 9 | 2 | 4 | False |
+| 117 | 117-metro-published-actual-tobu-northbound-local | 89 | 460 | 9 | 17 | 21 | True |
+| 118 | 118-three-current-nagoya-osaka-public-hub-connections | 89 | 460 | 9 | 0 | 6 | True |
+| 119 | 119-osaka-monorail-actual-mainline-trains-and-three-hubs | 89 | 460 | 9 | 12 | 32 | True |
+| 120 | 120-kyoto-kawaramachi-gionshijo-reviewed-public-walk | 89 | 460 | 9 | 0 | 2 | True |
+| 121 | 121-hikawadai-municipal-actual-directional-bus-and-tobunerima-gateway | 89 | 461 | 9 | 15 | 23 | True |
+| 122 | 122-ou54-directional-gateway-and-reviewed-current-stop-name | 89 | 462 | 9 | 12 | 24 | True |
+| 123 | 123-toei-licensed-tram-liner-and-three-hub-connections | 89 | 462 | 9 | 42 | 90 | True |
 
 Two consecutive stagnant iterations with the same strategy fingerprint reject a third repetition. Source/operator/mode/identity/service method must change. No fixed iteration count is a stopping condition. The original protected denominator remains in every replay, with newly evidenced intermediates added monotonically. Full hashes and detailed deficit deltas are in [adaptive-model-iterations.jsonl](../../../data/transport/network/adaptive-model-iterations.jsonl).

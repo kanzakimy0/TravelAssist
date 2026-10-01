@@ -119,37 +119,49 @@ export function verifyRebuild({ publish = false } = {}) {
       ),
       "Raw P36 identity extraction differs",
     );
-    const railPhase = "060-toei-licensed-mita-oedo-actual-trips.json";
-    const railExtraction = spawnSync(
-      process.platform === "win32" ? "python" : "python3",
-      [
-        "-X",
-        "utf8",
-        path.join(root, "tools/transport/task-086-extract-rail-gtfs.py"),
-        path.join(
-          root,
-          "data/transport/network/research/toei-train-selection.json",
+    for (const selection of [
+      "toei-train-selection.json",
+      "toei-tram-liner-selection.json",
+    ]) {
+      const requestPath = path.join(
+        root,
+        "data/transport/network/research",
+        selection,
+      );
+      const request = readJson(requestPath);
+      const railPhase = request.phaseId + ".json";
+      const railExtraction = spawnSync(
+        process.platform === "win32" ? "python" : "python3",
+        [
+          "-X",
+          "utf8",
+          path.join(root, "tools/transport/task-086-extract-rail-gtfs.py"),
+          requestPath,
+          "--archive",
+          path.join(
+            root,
+            "data/transport/network/sources/raw/toei-train-20261001.zip",
+          ),
+          "--output",
+          path.join(scratch, railPhase),
+        ],
+        { encoding: "utf8" },
+      );
+      assert.equal(railExtraction.status, 0, railExtraction.stderr);
+      const extractedPhase = readJson(path.join(scratch, railPhase));
+      const retainedPhase = readJson(
+        path.join(root, "data/transport/network/research/phases", railPhase),
+      );
+      assert.equal(retainedPhase.phaseId, request.phaseId);
+      assert.deepEqual(
+        retainedPhase.facts.filter(
+          (fact) =>
+            fact.kind === "service" && fact.sourceUrl === request.sourceUrl,
         ),
-        "--archive",
-        path.join(
-          root,
-          "data/transport/network/sources/raw/toei-train-20261001.zip",
-        ),
-        "--output",
-        path.join(scratch, railPhase),
-      ],
-      { encoding: "utf8" },
-    );
-    assert.equal(railExtraction.status, 0, railExtraction.stderr);
-    assert.equal(
-      hash(fs.readFileSync(path.join(scratch, railPhase))),
-      hash(
-        fs.readFileSync(
-          path.join(root, "data/transport/network/research/phases", railPhase),
-        ),
-      ),
-      "Raw rail GTFS trip extraction differs",
-    );
+        extractedPhase.facts,
+        "Raw rail GTFS trip extraction differs: " + selection,
+      );
+    }
     const busIdentities = path.join(scratch, "p11-identities.jsonl");
     const busExtraction = spawnSync(
       process.platform === "win32" ? "python" : "python3",

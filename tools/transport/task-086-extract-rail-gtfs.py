@@ -54,7 +54,7 @@ def extract(raw, request):
             raise ValueError('RAIL_GTFS_CONDITIONAL_BOARDING_REQUIRES_REVIEW')
         facts.append(dict(
             factId=spec['factId'], kind='service', sourceActionId=request['sourceActionId'], sourceUrl=request['sourceUrl'], observedResponseSha256=digest,
-            locator='Licensed GTFS trips.txt trip_id=' + trip['trip_id'] + '; exact ordered stop_times.txt calls and calendar on ' + date + '. Feed headsign beyond the Toei boundary does not add any call. Repeated Tochomae calls remain in their real sequence.',
+            locator='Licensed GTFS trips.txt trip_id=' + trip['trip_id'] + '; exact ordered stop_times.txt calls and calendar on ' + date + '. ' + request.get('scopeNote', 'Feed headsign beyond the Toei boundary does not add any call. Repeated Tochomae calls remain in their real sequence.'),
             line=spec['line'], operator=spec['operator'], mode=spec['mode'], serviceClass='GTFS exact trip; service class unspecified', direction=trip['direction_id'],
             callingStations=names, callingComponents=[dict(name=n, operator=spec['operator'], line=spec['line'], mode=spec['mode']) for n in names],
             callingRestrictions=restrictions, sourceStopIds=[c['stop_id'] for c in calls], sourceStopSequences=sequences, sourceTripId=trip['trip_id'],
