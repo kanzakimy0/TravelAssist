@@ -23,7 +23,10 @@ export function airportCandidate(
       selector.mode === "flight",
     "AIRPORT_IDENTITY_SELECTOR_MISMATCH",
   );
+  const publicAliasReview =
+    review.method === "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS";
   const airfieldReview =
+    publicAliasReview ||
     review.method === "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX";
   const newAirportReview =
     review.method === "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX";
@@ -44,8 +47,16 @@ export function airportCandidate(
         typeof nameEvidence.publicName === "string" &&
         (newAirportReview
           ? nameEvidence.publicName === requirement.name + "空港"
-          : nameEvidence.publicName.startsWith(requirement.name) &&
-            nameEvidence.publicName.endsWith("空港")) &&
+          : nameEvidence.publicName.endsWith("空港") &&
+            (publicAliasReview
+              ? nameEvidence.equivalenceKind ===
+                  "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME" &&
+                typeof nameEvidence.locator === "string" &&
+                nameEvidence.locator.trim().length > 0 &&
+                serviceFact?.reviewedAirportPublicNames?.includes(
+                  nameEvidence.publicName,
+                )
+              : nameEvidence.publicName.startsWith(requirement.name))) &&
         boundReference(nameEvidence),
       "AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH",
     );

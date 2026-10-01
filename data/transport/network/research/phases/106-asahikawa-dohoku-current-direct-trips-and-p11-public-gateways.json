@@ -1,0 +1,341 @@
+{
+  "phaseId": "106-asahikawa-dohoku-current-direct-trips-and-p11-public-gateways",
+  "strategy": [
+    "EXACT_P11_OPERATOR_ROAD_STOP_WITH_CURRENT_DIRECT_TRIPS",
+    "INDEPENDENT_DIRECTIONAL_ALL_DAYS_SERVICE",
+    "PUBLIC_AIRPORT_FRONTAGE_AND_JR_NORTH_CONCOURSE"
+  ],
+  "completedActionIds": [
+    "bus:dohoku:current-direct-airport-and-exact-p11-components",
+    "airport:asahikawa:current-public-entrance-airport-bus",
+    "hub:jr-hokkaido:asahikawa-current-public-north-concourse"
+  ],
+  "facts": [
+    {
+      "factId": "asahikawa-dohoku-current-direct-outbound",
+      "kind": "service",
+      "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+      "sourceUrl": "https://www.dohokubus.com/passing/27.pdf",
+      "observedResponseSha256": "58f7545bac4be0d2f7652403ada1d4f1815b68fa2c7d4c197a6f2410f2b176cb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/rosen_bus5.html",
+          "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/rosen_passing.html",
+          "observedResponseSha256": "f9222135248423cf61b9ce41dd80589eda1a5b31525f8ce4af2cd74aaa168343"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://dohokubus.com/files/airport.pdf",
+          "observedResponseSha256": "4459219faed66bcc9c55976ceb2631f0ab609f1b2abd625fb6e24177575363fe"
+        }
+      ],
+      "locator": "Current operator passage index dated revision 2025-11-01 links this route-79 all-days table; current airport-line index and airport operator separately confirm the direct passenger service. Visually reviewed independent two-call actual trip. Upper table first actual route-79 column, from station to airport. Retain ordered calls and service class only, without clocks, fares or timetable reproduction. Airport Denki route 77 and its intermediate calls are distinct and excluded.",
+      "line": "旭川空港線（直行）",
+      "operator": "道北バス株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "直行79",
+      "direction": "旭川駅前→旭川空港",
+      "callingStations": [
+        "旭川駅前",
+        "旭川空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "旭川駅前",
+          "operator": "道北バス（株）",
+          "line": "p11-stop:P11-22_01:bs3200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs3200",
+            "recordSha256": "7d4101e0e0be26287c23dfae11769d5389b544cf03741e2753baa0e45f8ec05b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Dohoku road-stop component independently matched to current route 79 direct airport service, actual directional tables and operator boarding diagram. Preserve distinct operator identity from Asahikawa Denki stops. P11 is a same-operator road-stop representative, not a precise platform coordinate; airport boarding and alighting positions are separately shown on the terminal frontage.",
+            "currentOperatorEvidence": {
+              "recordOperator": "道北バス（株）",
+              "currentOperatorName": "道北バス株式会社",
+              "currentStopName": "旭川駅前",
+              "historicalRoute": "79-　旭川空港線（直行）",
+              "url": "https://www.dohokubus.com/rosen_bus5.html",
+              "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+            }
+          }
+        },
+        {
+          "name": "旭川空港",
+          "operator": "道北バス（株）",
+          "line": "p11-stop:P11-22_01:bs3767",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs3767",
+            "recordSha256": "f4395399579dab22bff2a26b3b3e894a7ee6f1149e5fa9ba657d2616f797f396",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Dohoku road-stop component independently matched to current route 79 direct airport service, actual directional tables and operator boarding diagram. Preserve distinct operator identity from Asahikawa Denki stops. P11 is a same-operator road-stop representative, not a precise platform coordinate; airport boarding and alighting positions are separately shown on the terminal frontage.",
+            "currentOperatorEvidence": {
+              "recordOperator": "道北バス（株）",
+              "currentOperatorName": "道北バス株式会社",
+              "currentStopName": "旭川空港",
+              "historicalRoute": "79-　旭川空港線（直行）",
+              "url": "https://www.dohokubus.com/rosen_bus5.html",
+              "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECTIONAL_DIRECT_TRIP",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_ALL_DAYS_DIRECT_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "asahikawa-dohoku-current-direct-inbound",
+      "kind": "service",
+      "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+      "sourceUrl": "https://www.dohokubus.com/passing/27.pdf",
+      "observedResponseSha256": "58f7545bac4be0d2f7652403ada1d4f1815b68fa2c7d4c197a6f2410f2b176cb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/rosen_bus5.html",
+          "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/rosen_passing.html",
+          "observedResponseSha256": "f9222135248423cf61b9ce41dd80589eda1a5b31525f8ce4af2cd74aaa168343"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://dohokubus.com/files/airport.pdf",
+          "observedResponseSha256": "4459219faed66bcc9c55976ceb2631f0ab609f1b2abd625fb6e24177575363fe"
+        }
+      ],
+      "locator": "Current operator passage index dated revision 2025-11-01 links this route-79 all-days table; current airport-line index and airport operator separately confirm the direct passenger service. Visually reviewed independent two-call actual trip. Lower table first actual route-79 column, from airport to station. Retain ordered calls and service class only, without clocks, fares or timetable reproduction. Airport Denki route 77 and its intermediate calls are distinct and excluded.",
+      "line": "旭川空港線（直行）",
+      "operator": "道北バス株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "直行79",
+      "direction": "旭川空港→旭川駅前",
+      "callingStations": [
+        "旭川空港",
+        "旭川駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "旭川空港",
+          "operator": "道北バス（株）",
+          "line": "p11-stop:P11-22_01:bs3767",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs3767",
+            "recordSha256": "f4395399579dab22bff2a26b3b3e894a7ee6f1149e5fa9ba657d2616f797f396",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Dohoku road-stop component independently matched to current route 79 direct airport service, actual directional tables and operator boarding diagram. Preserve distinct operator identity from Asahikawa Denki stops. P11 is a same-operator road-stop representative, not a precise platform coordinate; airport boarding and alighting positions are separately shown on the terminal frontage.",
+            "currentOperatorEvidence": {
+              "recordOperator": "道北バス（株）",
+              "currentOperatorName": "道北バス株式会社",
+              "currentStopName": "旭川空港",
+              "historicalRoute": "79-　旭川空港線（直行）",
+              "url": "https://www.dohokubus.com/rosen_bus5.html",
+              "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+            }
+          }
+        },
+        {
+          "name": "旭川駅前",
+          "operator": "道北バス（株）",
+          "line": "p11-stop:P11-22_01:bs3200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs3200",
+            "recordSha256": "7d4101e0e0be26287c23dfae11769d5389b544cf03741e2753baa0e45f8ec05b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Dohoku road-stop component independently matched to current route 79 direct airport service, actual directional tables and operator boarding diagram. Preserve distinct operator identity from Asahikawa Denki stops. P11 is a same-operator road-stop representative, not a precise platform coordinate; airport boarding and alighting positions are separately shown on the terminal frontage.",
+            "currentOperatorEvidence": {
+              "recordOperator": "道北バス（株）",
+              "currentOperatorName": "道北バス株式会社",
+              "currentStopName": "旭川駅前",
+              "historicalRoute": "79-　旭川空港線（直行）",
+              "url": "https://www.dohokubus.com/rosen_bus5.html",
+              "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECTIONAL_DIRECT_TRIP",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_ALL_DAYS_DIRECT_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "asahikawa-current-public-airport-frontage-dohoku",
+      "kind": "transfer",
+      "sourceActionId": "airport:asahikawa:current-public-entrance-airport-bus",
+      "sourceUrl": "https://www.hokkaido-airports.com/ja/asahikawa/access/bus/",
+      "observedResponseSha256": "2e345b351db438a9fdfdffefe29a4f33c70afc70153750a617f33ffdae7761cb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/rosen_bus5.html",
+          "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/passing/27.pdf",
+          "observedResponseSha256": "58f7545bac4be0d2f7652403ada1d4f1815b68fa2c7d4c197a6f2410f2b176cb"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://dohokubus.com/files/airport.pdf",
+          "observedResponseSha256": "4459219faed66bcc9c55976ceb2631f0ab609f1b2abd625fb6e24177575363fe"
+        }
+      ],
+      "locator": "Current airport operator bus-access page explicitly names public exit 4 and exterior walkway toward Asahikawa bus position 1. Visually reviewed Dohoku map shows boarding position 1 and terminal-front alighting position serving the same road-stop component. Public frontage connects both to the passenger terminal. No proximity inference, platform coordinate, walking-time or step-free guarantee.",
+      "components": [
+        {
+          "name": "旭川空港",
+          "operator": "airport-facility:cf03_00015",
+          "line": "airport:cf03_00015",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00015",
+            "requirementId": "review:transport-node:58140a28-f4d8-5524-8e01-ee6d07e35304",
+            "expectedRequirementName": "旭川",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport operator explicitly directs passengers through public exit 4 to the exterior bus area and identifies position 1 for Asahikawa city. Dohoku diagram independently identifies its boarding position 1 and separate terminal-front alighting location on this public frontage. C28 is the whole airport reference, not a terminal door or bus bay coordinate."
+          }
+        },
+        {
+          "name": "旭川空港",
+          "operator": "道北バス（株）",
+          "line": "p11-stop:P11-22_01:bs3767",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs3767",
+            "recordSha256": "f4395399579dab22bff2a26b3b3e894a7ee6f1149e5fa9ba657d2616f797f396",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Dohoku road-stop component independently matched to current route 79 direct airport service, actual directional tables and operator boarding diagram. Preserve distinct operator identity from Asahikawa Denki stops. P11 is a same-operator road-stop representative, not a precise platform coordinate; airport boarding and alighting positions are separately shown on the terminal frontage.",
+            "currentOperatorEvidence": {
+              "recordOperator": "道北バス（株）",
+              "currentOperatorName": "道北バス株式会社",
+              "currentStopName": "旭川空港",
+              "historicalRoute": "79-　旭川空港線（直行）",
+              "url": "https://www.dohokubus.com/rosen_bus5.html",
+              "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_AIRPORT_PUBLIC_EXIT_AND_CURRENT_OPERATOR_BOARDING_FRONTAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "asahikawa-jr-public-north-concourse-dohoku-airport-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-hokkaido:asahikawa-current-public-north-concourse",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/network/station/images/84.jpg",
+      "observedResponseSha256": "0a839c62dd08f03a79a5e6a59f2b1ea04a907ad862d1fa147f15ae2ae045def6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-hokkaido:asahikawa-current-public-north-concourse",
+          "url": "https://www.jrhokkaido.co.jp/network/station/station.html?id=84",
+          "observedResponseSha256": "f511bdd8af76a92639d3268be0e4217b722d18aabaaa19dff253e3a8ff278159"
+        },
+        {
+          "sourceActionId": "hub:jr-hokkaido:asahikawa-current-public-north-concourse",
+          "url": "https://www.jrhokkaido.co.jp/network/station/csv/station.csv",
+          "observedResponseSha256": "b054d3f45391496c2c723899928e50cb3d3dd241efdcbd7bdaa2d900377355d7"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/rosen_bus5.html",
+          "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://dohokubus.com/files/airport.pdf",
+          "observedResponseSha256": "4459219faed66bcc9c55976ceb2631f0ab609f1b2abd625fb6e24177575363fe"
+        },
+        {
+          "sourceActionId": "bus:dohoku:current-direct-airport-and-exact-p11-components",
+          "url": "https://www.dohokubus.com/busstop_list.html",
+          "observedResponseSha256": "41f99641dda799ad8e9b7ac468fb775b68786504b3737474e334cfb14ba4c591"
+        }
+      ],
+      "locator": "Current JR Hokkaido station ID 84 metadata dates diagram September 2026. Visually reviewed platform access and gates to public first-floor concourse and north exits; independent Dohoku diagram shows station forecourt pedestrian route to stand 9, explicitly both boarding and alighting. Current stand list assigns direct airport route 79 to stand 9. Bind existing JR Hakodate-line component through public concourse to exact Dohoku P11 road-stop. No paid-area shortcut, same-name transfer, distance/time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "旭川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "旭川駅前",
+          "operator": "道北バス（株）",
+          "line": "p11-stop:P11-22_01:bs3200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs3200",
+            "recordSha256": "7d4101e0e0be26287c23dfae11769d5389b544cf03741e2753baa0e45f8ec05b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Dohoku road-stop component independently matched to current route 79 direct airport service, actual directional tables and operator boarding diagram. Preserve distinct operator identity from Asahikawa Denki stops. P11 is a same-operator road-stop representative, not a precise platform coordinate; airport boarding and alighting positions are separately shown on the terminal frontage.",
+            "currentOperatorEvidence": {
+              "recordOperator": "道北バス（株）",
+              "currentOperatorName": "道北バス株式会社",
+              "currentStopName": "旭川駅前",
+              "historicalRoute": "79-　旭川空港線（直行）",
+              "url": "https://www.dohokubus.com/rosen_bus5.html",
+              "observedResponseSha256": "6b900a4cd6447831f9a2d2b9d2e4c6366d73d92e12e6e8d72e800d5e5648bcb4"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_JR_NORTH_PUBLIC_CONCOURSE_AND_OPERATOR_FORECOURT_MAP",
+      "hubScopeComplete": false
+    }
+  ]
+}

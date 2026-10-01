@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import {
   hash,
   factCallingRestrictions,
+  factThroughOperators,
   reviewedRailTransition,
   reviewedGtfsComponent,
   RAIL_NODE_KIND_BY_MODE,
@@ -852,6 +853,7 @@ export function runRemediation({
             "NONCONTIGUOUS_OPERATOR_SECTION",
           );
         const restrictions = factCallingRestrictions(fact);
+        const through = factThroughOperators(fact);
         const calls = fact.callingStations.map((name, i) => ({
           nodeId: bind(
             fact.callingComponents?.[i] ?? {
@@ -875,6 +877,7 @@ export function runRemediation({
           serviceClass: fact.serviceClass,
           direction: fact.direction,
           sourceFactRef: factRef,
+          ...(through ?? {}),
           ...(fact.mode.includes("bus") ? { purpose: fact.purpose } : {}),
         };
         const resolvedRef = makeEvidence(source, resolved, fact.locator, [
@@ -888,7 +891,10 @@ export function runRemediation({
           evidenceRefs: [resolvedRef],
           sourceRefs: [source.url],
           sequenceEvidence: "OFFICIAL_CALLING_SEQUENCE",
-          segmentOperators: Array(calls.length - 1).fill(fact.operator),
+          segmentOperators:
+            through?.segmentOperators ??
+            Array(calls.length - 1).fill(fact.operator),
+          ...(through ? { throughServiceEvidenceRefs: [factRef] } : {}),
           serviceState: fact.serviceState,
           serviceStateScope: fact.serviceStateScope,
           metrics: {},

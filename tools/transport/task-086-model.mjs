@@ -108,6 +108,51 @@ export function factCallingRestrictions(fact) {
     dropOffType,
   }));
 }
+// A through train may cross an operator boundary between passenger calls.
+// Keep both operators on that interval without inventing a passenger stop.
+export function factThroughOperators(fact) {
+  if (!fact.segmentOperatorRefs && !fact.throughServiceReview) return null;
+  const review = fact.throughServiceReview;
+  const components = fact.callingComponents;
+  invariant(
+    Array.isArray(components) &&
+      components.length === fact.callingStations.length &&
+      components.every((c) => typeof c.operator === "string" && c.operator),
+    "THROUGH_COMPONENT_OPERATORS_REQUIRED",
+  );
+  const expected = components
+    .slice(0, -1)
+    .map((from, i) => [
+      ...new Set([from.operator, components[i + 1].operator]),
+    ]);
+  const operators = [...new Set(components.map((c) => c.operator))];
+  const proof = review?.evidence;
+  invariant(
+    operators.length > 1 &&
+      canonical(fact.segmentOperatorRefs) === canonical(expected) &&
+      review?.kind === "EXPLICIT_CURRENT_THROUGH_TRAIN" &&
+      review.passengerInterchangeRequired === false &&
+      typeof review.serviceIdentifier === "string" &&
+      !!review.serviceIdentifier &&
+      review.serviceIdentifier === fact.reviewedTrainCode &&
+      canonical(review.operatorRefs) === canonical(operators) &&
+      review.boundaryScope === "BETWEEN_CONSECUTIVE_PASSENGER_CALLS" &&
+      typeof proof?.url === "string" &&
+      /^[a-f0-9]{64}$/.test(proof.observedResponseSha256 ?? "") &&
+      fact.corroboratingEvidence?.some(
+        (e) =>
+          e.url === proof.url &&
+          e.observedResponseSha256 === proof.observedResponseSha256 &&
+          e.sourceActionId === proof.sourceActionId,
+      ),
+    "THROUGH_OPERATOR_FACT_NOT_BOUND",
+  );
+  return {
+    segmentOperatorRefs: expected,
+    segmentOperators: expected.map((operators) => operators.join("・")),
+    throughServiceReview: review,
+  };
+}
 export function sourceAllowed(source) {
   const decision =
     source?.rightsClass ??
@@ -541,7 +586,29 @@ export function generatePattern(
     invariant(
       pattern.evidenceRefs.every((ref) => {
         const record = evidence.get(ref).record;
+        const fact = evidence.get(record.sourceFactRef)?.record;
+        const through = fact ? factThroughOperators(fact) : null;
         return (
+          canonical(pattern.segmentOperators) ===
+            canonical(
+              through?.segmentOperators ??
+                Array((fact?.callingStations?.length ?? 1) - 1).fill(
+                  fact?.operator,
+                ),
+            ) &&
+          canonical(pattern.segmentOperatorRefs ?? null) ===
+            canonical(through?.segmentOperatorRefs ?? null) &&
+          canonical(record.segmentOperatorRefs ?? null) ===
+            canonical(through?.segmentOperatorRefs ?? null) &&
+          canonical(pattern.throughServiceReview ?? null) ===
+            canonical(through?.throughServiceReview ?? null) &&
+          canonical(record.throughServiceReview ?? null) ===
+            canonical(through?.throughServiceReview ?? null) &&
+          (!through ||
+            (canonical(record.segmentOperators) ===
+              canonical(through.segmentOperators) &&
+              canonical(pattern.throughServiceEvidenceRefs) ===
+                canonical([record.sourceFactRef]))) &&
           canonical(record.callingNodes) === canonical(pattern.callingNodes) &&
           record.lineRef === pattern.lineRef &&
           record.operatorRef === pattern.operatorRef &&
@@ -668,6 +735,16 @@ export function generatePattern(
       edgeKind: "service_segment",
       mode: pattern.mode,
       operatorRef: pattern.segmentOperators[index],
+      ...(pattern.segmentOperatorRefs
+        ? {
+            operatorRefs: pattern.segmentOperatorRefs[index],
+            ...(pattern.segmentOperatorRefs[index].length > 1
+              ? {
+                  operatorBoundaryScope: "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+                }
+              : {}),
+          }
+        : {}),
       lineRef: pattern.lineRef,
       servicePatternRef: pattern.servicePatternId,
       segmentIndex: index,

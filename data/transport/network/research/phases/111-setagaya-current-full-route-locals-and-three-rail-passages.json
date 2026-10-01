@@ -1,0 +1,370 @@
+{
+  "phaseId": "111-setagaya-current-full-route-locals-and-three-rail-passages",
+  "strategy": [
+    "CURRENT_DIRECTIONAL_LOCAL_SERVICE_WITH_ALL_CALLS",
+    "THREE_EXPLICIT_RAIL_COMPONENT_INTERCHANGES"
+  ],
+  "completedActionIds": [
+    "private:tokyu:setagaya-current-independent-directional-locals",
+    "hub:tokyu:setagaya-three-current-rail-passages"
+  ],
+  "facts": [
+    {
+      "factId": "setagaya-current-first-weekday-full-route-shimotakaidobound",
+      "kind": "service",
+      "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/timetable/pdf/202503_sg01_sangenjaya2.pdf",
+      "observedResponseSha256": "6c4b295014739ee09c7b997e25d1561f1c2ba874870f9ca11304e4a1704038f4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+          "url": "https://www.tokyu.co.jp/global/railway/line/sg/",
+          "observedResponseSha256": "a40485fc6adeb6543e7ad8bae87f794637ee855f48dfd3adbdc95f1f0e27b8a4"
+        },
+        {
+          "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+          "url": "https://www.tokyu.co.jp/railway/timetable/",
+          "observedResponseSha256": "7c9d57ffec208c262aecc2bfcf5b033de6fb77359b70a66292b65c770614f69e"
+        },
+        {
+          "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+          "url": "https://www.tokyu.co.jp/company/news/detail/59881.html",
+          "observedResponseSha256": "d2c3e1dc9f7b8b8e84530873673546e92d5207e69951d002124200d7f1c49fd0"
+        }
+      ],
+      "locator": "Visually reviewed current-linked March 15 2025 shimotakaidobound PDF, weekday first departure, whose unmarked destination legend is the opposite terminal and whose only train class is local. Independently checked both terminal departure publications. Current operator line page supplies every ordered local call and each station direction; January 2026 operator notice explicitly excludes Setagaya from March 2026 timetable changes. Retain the full-route local topology only; exclude marked Kamimachi short turns. No timetable clock values or train number invented.",
+      "line": "世田谷線",
+      "operator": "東急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "shimotakaidobound",
+      "callingStations": [
+        "三軒茶屋",
+        "西太子堂",
+        "若林",
+        "松陰神社前",
+        "世田谷",
+        "上町",
+        "宮の坂",
+        "山下",
+        "松原",
+        "下高井戸"
+      ],
+      "callingComponents": [
+        {
+          "name": "三軒茶屋",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西太子堂",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "若林",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松陰神社前",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "世田谷",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上町",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宮の坂",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山下",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松原",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下高井戸",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTION_SPECIFIC_FULL_ROUTE_LOCAL_PLUS_EXPLICIT_ALL_STOP_LIST",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_OPERATOR_STATIC_TOPOLOGY_NOT_REALTIME"
+    },
+    {
+      "factId": "setagaya-current-first-weekday-full-route-sangenjayabound",
+      "kind": "service",
+      "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/timetable/pdf/202503_sg10_shimotakaido.pdf",
+      "observedResponseSha256": "96e2cc26c38cd1e7914943080141f8dd5fe62d0a13c17ea30c0b34ea037dbec5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+          "url": "https://www.tokyu.co.jp/global/railway/line/sg/",
+          "observedResponseSha256": "a40485fc6adeb6543e7ad8bae87f794637ee855f48dfd3adbdc95f1f0e27b8a4"
+        },
+        {
+          "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+          "url": "https://www.tokyu.co.jp/railway/timetable/",
+          "observedResponseSha256": "7c9d57ffec208c262aecc2bfcf5b033de6fb77359b70a66292b65c770614f69e"
+        },
+        {
+          "sourceActionId": "private:tokyu:setagaya-current-independent-directional-locals",
+          "url": "https://www.tokyu.co.jp/company/news/detail/59881.html",
+          "observedResponseSha256": "d2c3e1dc9f7b8b8e84530873673546e92d5207e69951d002124200d7f1c49fd0"
+        }
+      ],
+      "locator": "Visually reviewed current-linked March 15 2025 sangenjayabound PDF, weekday first departure, whose unmarked destination legend is the opposite terminal and whose only train class is local. Independently checked both terminal departure publications. Current operator line page supplies every ordered local call and each station direction; January 2026 operator notice explicitly excludes Setagaya from March 2026 timetable changes. Retain the full-route local topology only; exclude marked Kamimachi short turns. No timetable clock values or train number invented.",
+      "line": "世田谷線",
+      "operator": "東急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "sangenjayabound",
+      "callingStations": [
+        "下高井戸",
+        "松原",
+        "山下",
+        "宮の坂",
+        "上町",
+        "世田谷",
+        "松陰神社前",
+        "若林",
+        "西太子堂",
+        "三軒茶屋"
+      ],
+      "callingComponents": [
+        {
+          "name": "下高井戸",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松原",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山下",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宮の坂",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上町",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "世田谷",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松陰神社前",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "若林",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西太子堂",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三軒茶屋",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTION_SPECIFIC_FULL_ROUTE_LOCAL_PLUS_EXPLICIT_ALL_STOP_LIST",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_OPERATOR_STATIC_TOPOLOGY_NOT_REALTIME"
+    },
+    {
+      "factId": "setagaya-sangen-jaya-reviewed-current-public-rail-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/station_map/image/map_dt-sangen-jaya_floor_1.jpg",
+      "observedResponseSha256": "4f762ab012e5e78cc22e5acccce163e69bb696de42f4d10c663564f56d0418fd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/area/sangen-jaya/station/",
+          "observedResponseSha256": "eeba207e084a18266b903e485e908d32c1b41bfd50d98ebcb5bf375a78aeda1a"
+        },
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/railway/station_map/image/map_dt-sangen-jaya_3d_2.jpg",
+          "observedResponseSha256": "cb041a9aea14ab14be894b0ee24dc9c7156071f1989220035f7ca458b2dbd38a"
+        },
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/railway/station_map/image/map_st-sangen-jaya_floor.jpg",
+          "observedResponseSha256": "1e54767b0095553fea6e931eb3b25ac3b9621d456a245104fb2d249bd7ba6fdc"
+        }
+      ],
+      "locator": "September 16 2026 Den-en-toshi floor plan explicitly connects its west gate public passage to Sancha Patio and the Setagaya terminal. Current-linked Setagaya terminal floor plan independently signs that same underground Den-en-toshi connection. Avoid the marked construction areas; use the regular western public passage and passenger stairs. Individually visually reviewed; no raw diagram, walking-time or live accessibility guarantee retained.",
+      "components": [
+        {
+          "name": "三軒茶屋",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三軒茶屋",
+          "operator": "東急電鉄",
+          "line": "田園都市線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_OPERATOR_PUBLIC_PASSAGE_WITH_DISTINCT_LINE_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "setagaya-yamashita-reviewed-current-public-rail-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/station_map/image/map_yamashita_floor_0.jpg",
+      "observedResponseSha256": "8fd9fe52e3f2452399c5878575ebbaf6faa0c6fa22ce9096fabc395cf77a497f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/area/yamashita/station/",
+          "observedResponseSha256": "f1a593372f75264c32fb1959e3fa227cd843f011918b1a7d25dc09f3ad8220b4"
+        },
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/railway/station_map/image/map_yamashita_3d.jpg",
+          "observedResponseSha256": "3cc659326444bcd57671c5ed306217edaebd3fd0266d4fdc0f6431345efef1af"
+        }
+      ],
+      "locator": "Current-linked October 1 2022 Yamashita plan explicitly signs the street approaches from both directional platforms toward Odakyu Gotokuji, including pedestrian level-crossing access. This is an outside-gate walk with separate railway identities. Individually visually reviewed; no raw diagram, walking-time or live accessibility guarantee retained.",
+      "components": [
+        {
+          "name": "山下",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豪徳寺",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_OPERATOR_PUBLIC_PASSAGE_WITH_DISTINCT_LINE_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "setagaya-shimo-takaido-reviewed-current-public-rail-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/station_map/image/map_shimo-takaido_floor.jpg",
+      "observedResponseSha256": "33c41567cd0becf7e65970aae403b85145b96de5817e0c16b4e83cc4c182c985",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/area/shimo-takaido/station/",
+          "observedResponseSha256": "8917e18b348ccc9729e8bd9a2a9ea6e56affeaaa30c4e83a17cc846ebcd944e5"
+        },
+        {
+          "sourceActionId": "hub:tokyu:setagaya-three-current-rail-passages",
+          "url": "https://www.tokyu.co.jp/railway/station_map/image/map_shimo-takaido_3d.jpg",
+          "observedResponseSha256": "9fe6e227867c6ef50e41b43bfb31312e533c2fe2636acf76594776e414edb52c"
+        }
+      ],
+      "locator": "Current-linked June 18 2021 plan explicitly connects Setagaya boarding/alighting platforms through the west public entrance stair/elevator approach to the 2F Keio gate. Exclude the eastern time-limited crossing/gate; no same-name merger or paid-area equivalence. Individually visually reviewed; no raw diagram, walking-time or live accessibility guarantee retained.",
+      "components": [
+        {
+          "name": "下高井戸",
+          "operator": "東急電鉄",
+          "line": "世田谷線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下高井戸",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_OPERATOR_PUBLIC_PASSAGE_WITH_DISTINCT_LINE_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

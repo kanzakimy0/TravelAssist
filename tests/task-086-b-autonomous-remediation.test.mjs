@@ -20,6 +20,7 @@ import {
   anchorQueries,
   resolveCorridorEndpoints,
   generatePattern,
+  factThroughOperators,
   generateTransfer,
 } from "../tools/transport/task-086-model.mjs";
 import {
@@ -1504,6 +1505,98 @@ test("TASK086 airfield suffix requires explicit official name correspondence bou
   assert.throws(() => build(unreviewed), /AIRPORT_REQUIREMENT_REVIEW_MISMATCH/);
 });
 
+test("TASK086 different public airport name requires an explicit primary alias bound to current service", () => {
+  const record = {
+    airportName: "百里飛行場",
+    referencePointId: "test-hyakuri",
+    latitude: 36.181,
+    longitude: 140.415,
+  };
+  const requirement = {
+    requirementId: "review:official-airport:百里",
+    name: "百里",
+    tier: "T2",
+    kind: "airport",
+  };
+  requirement.nodeId = id("node", requirement.requirementId);
+  const officialNameEvidence = {
+    officialName: record.airportName,
+    publicName: "茨城空港",
+    requirementName: requirement.name,
+    equivalenceKind: "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+    locator:
+      "Government airport heading states formal and public names together",
+    url: "https://example.test/official-name-equivalence",
+    observedResponseSha256: "a".repeat(64),
+  };
+  const selector = {
+    name: record.airportName,
+    operator: "airport-facility:" + record.referencePointId,
+    line: "airport:" + record.referencePointId,
+    mode: "flight",
+    airportIdentity: {
+      dataset: "C28-21",
+      referencePointId: record.referencePointId,
+      requirementId: requirement.requirementId,
+      expectedRequirementName: requirement.name,
+      method: "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+      currentPassengerAccessReview:
+        "Current independent airport schedule identifies Ibaraki",
+      officialNameEvidence,
+    },
+  };
+  const fact = {
+    reviewedAirportPublicNames: ["茨城空港", "那覇空港"],
+    corroboratingEvidence: [
+      {
+        url: officialNameEvidence.url,
+        observedResponseSha256: officialNameEvidence.observedResponseSha256,
+      },
+    ],
+  };
+  const build = (s = selector, f = fact, r = requirement) =>
+    airportCandidate(s, record, r, ["identity", "current-service"], f);
+  assert.equal(id("node", build().identityAnchor), requirement.nodeId);
+  assert.deepEqual(
+    build().independentReview.officialNameEvidence,
+    officialNameEvidence,
+  );
+  for (const change of [
+    { officialName: "札幌飛行場" },
+    { requirementName: "札幌" },
+    { publicName: "丘珠空港" },
+    { equivalenceKind: "NAME_SIMILARITY" },
+    { locator: " " },
+    { observedResponseSha256: "b".repeat(64) },
+    { url: "https://example.test/unreviewed" },
+  ]) {
+    const s = structuredClone(selector);
+    Object.assign(s.airportIdentity.officialNameEvidence, change);
+    assert.throws(() => build(s), /AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH/);
+  }
+  for (const f of [
+    { ...fact, reviewedAirportPublicNames: ["丘珠空港"] },
+    { ...fact, corroboratingEvidence: [] },
+    {},
+  ])
+    assert.throws(
+      () => build(selector, f),
+      /AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH/,
+    );
+  const unreviewed = structuredClone(selector);
+  unreviewed.airportIdentity.method =
+    "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX";
+  assert.throws(
+    () => build(unreviewed),
+    /AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH/,
+  );
+  assert.throws(
+    () =>
+      build(selector, fact, { ...requirement, nodeId: id("node", "wrong") }),
+    /AIRPORT_REQUIREMENT_REVIEW_MISMATCH/,
+  );
+});
+
 test("TASK086 relocated airport name requires current exact name and separately bound predecessor closure", () => {
   const record = {
     airportName: "新石垣空港",
@@ -1862,5 +1955,113 @@ test("TASK086 official bus purpose is source-bound and cannot expand to unrestri
   assert.throws(
     () => run({ ...pattern, purpose: "unrestricted_local" }),
     /BUS_EXPANSION_NOT_BOUNDED/,
+  );
+});
+
+test("TASK086 through-train operator intervals retain boarding restrictions and reject rewritten boundaries", () => {
+  const f = boundOfficialFixture();
+  const proof = {
+    sourceActionId: "partner",
+    url: "https://operator.invalid/current-through-train",
+    observedResponseSha256: hash("independent current operator diagram"),
+  };
+  f.nodes.get("C").operatorRefs = ["partner"];
+  const fact = {
+    ...f.evidence.get("fact").record,
+    reviewedTrainCode: "TH-test",
+    callingStations: ["A", "B", "C"],
+    callingComponents: ["A", "B", "C"].map((name) => ({
+      name,
+      operator: name === "C" ? "partner" : "operator",
+      line: "line",
+      mode: "conventional_rail",
+    })),
+    callingRestrictions: [
+      { pickupType: "0", dropOffType: "1" },
+      { pickupType: "0", dropOffType: "1" },
+      { pickupType: "1", dropOffType: "0" },
+    ],
+    segmentOperatorRefs: [["operator"], ["operator", "partner"]],
+    corroboratingEvidence: [proof],
+    throughServiceReview: {
+      kind: "EXPLICIT_CURRENT_THROUGH_TRAIN",
+      serviceIdentifier: "TH-test",
+      operatorRefs: ["operator", "partner"],
+      passengerInterchangeRequired: false,
+      boundaryScope: "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+      evidence: proof,
+    },
+  };
+  f.put("fact", fact);
+  const through = factThroughOperators(fact);
+  const callingNodes = ["A", "B", "C"].map((nodeId, i) => ({
+    nodeId,
+    sequence: i + 1,
+    ...fact.callingRestrictions[i],
+  }));
+  f.pattern = {
+    ...f.pattern,
+    ...through,
+    callingNodes,
+    throughServiceEvidenceRefs: ["fact"],
+  };
+  f.put("resolved", {
+    ...f.evidence.get("resolved").record,
+    ...through,
+    callingNodes,
+  });
+  const generate = () =>
+    generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-02");
+  const edges = generate();
+  assert.equal(edges.length, 2);
+  assert.deepEqual(edges[1].operatorRefs, ["operator", "partner"]);
+  assert.equal(
+    edges[1].operatorBoundaryScope,
+    "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+  );
+  assert.equal(queryGraph(edges, "A", "B"), null);
+  assert.ok(queryGraph(edges, "A", "C"));
+  assert.ok(queryGraph(edges, "B", "C"));
+  assert.equal(edges[0].alightAllowed, false);
+  const original = structuredClone(f.pattern);
+  for (const change of [
+    { segmentOperators: ["operator", "partner"] },
+    { segmentOperatorRefs: [["operator"], ["partner", "operator"]] },
+    {
+      throughServiceReview: {
+        ...through.throughServiceReview,
+        passengerInterchangeRequired: true,
+      },
+    },
+    { throughServiceEvidenceRefs: ["resolved"] },
+  ]) {
+    f.pattern = { ...structuredClone(original), ...change };
+    // Even a freshly hashed resolved record cannot rewrite the reviewed fact.
+    f.put("resolved", { ...f.evidence.get("resolved").record, ...f.pattern });
+    assert.throws(generate, /OFFICIAL_PATTERN_SOURCE_BINDING/);
+  }
+  for (const change of [
+    { segmentOperatorRefs: [["operator"], ["partner"]] },
+    { reviewedTrainCode: "different train" },
+    { corroboratingEvidence: [] },
+    { throughServiceReview: undefined },
+  ])
+    assert.throws(
+      () => factThroughOperators({ ...fact, ...change }),
+      /THROUGH_OPERATOR_FACT_NOT_BOUND/,
+    );
+});
+
+test("TASK086 ordinary official patterns cannot acquire an unreviewed operator boundary", () => {
+  const f = boundOfficialFixture();
+  f.pattern.segmentOperators = ["unreviewed operator"];
+  f.put("resolved", {
+    ...f.evidence.get("resolved").record,
+    segmentOperators: f.pattern.segmentOperators,
+  });
+  assert.throws(
+    () =>
+      generatePattern(f.pattern, f.nodes, f.sources, f.evidence, "2026-10-02"),
+    /OFFICIAL_PATTERN_SOURCE_BINDING/,
   );
 });
