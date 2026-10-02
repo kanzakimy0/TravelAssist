@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "auditBefore": {
+    "command": "auditGraph current phase162 snapshot",
+    "elapsedMs": 8195.311800000001,
+    "connected": 3095,
+    "deficits": 654
+  },
+  "auditAfter": {
+    "command": "auditGraph current phase162 snapshot",
+    "elapsedMs": 1294.4925,
+    "connected": 3095,
+    "deficits": 654
+  },
+  "fullReplay": {
+    "elapsedMs": 177791.60330000002,
+    "counts": {
+      "required": 3363,
+      "admitted": 3338,
+      "hold": 25,
+      "rejected": 0,
+      "lines": 260,
+      "servicePatterns": 572,
+      "edges": 8045,
+      "iterations": 162
+    },
+    "dispositions": {
+      "SOURCE_OR_GENERATOR_INVALIDATED": 884,
+      "CHECKSUM_SKIP": 88
+    }
+  },
+  "fullRegression": {
+    "command": "full regression including one deterministic rebuild/publish verification; final LF input bytes",
+    "elapsedMs": 1094681.0356,
+    "exitCode": 0
+  },
+  "checks": {
+    "lint": {
+      "exitCode": 0,
+      "elapsedMs": 47891.0555
+    },
+    "typecheck": {
+      "elapsedMs": 9775.6507,
+      "exitCode": 0
+    },
+    "format": {
+      "exitCode": 0,
+      "elapsedMs": 21478.7178
+    },
+    "build": {
+      "elapsedMs": 62018.9563,
+      "exitCode": 0
+    },
+    "artifact": {
+      "elapsedMs": 2738.2403,
+      "exitCode": 0
+    }
+  },
+  "comparisonScope": "One paired auditGraph run on identical phase-162 graph/corridor inputs. Full-pipeline before timing unavailable; do not extrapolate.",
+  "newTransportSourceRequestsThisCloseout": 0,
+  "newNodesOrEdgesThisCloseout": 0,
+  "originalRequirementsConnected": {
+    "phase159": 826,
+    "preservedPhase162": 830,
+    "newlyConnectedByCloseoutFixes": 0
+  },
+  "uniqueRootsClosedByReviewCorrection": 3
+}

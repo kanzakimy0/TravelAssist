@@ -6,7 +6,10 @@ test(
   "TASK086 raw GTFS extraction and full deterministic graph rebuild",
   { timeout: 240000 },
   () => {
-    const result = verifyRebuild();
+    // A local release regression may publish the same verified run once; CI remains isolated.
+    const result = verifyRebuild({
+      publish: process.env.TASK086_PUBLISH_VALIDATION === "1",
+    });
     assert.equal(result.status, "PASS");
     assert.equal(result.rawGtfsExtraction, "PASS");
     assert.equal(result.fullDeterministicRebuild, "PASS");

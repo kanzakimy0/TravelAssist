@@ -1,8 +1,47 @@
 {
   "task": "TASK-086-B",
-  "observedAt": "2026-10-01",
-  "conclusion": "NATIONAL_SOURCE_COVERAGE_UNRESOLVED_NOT_A_FIXPOINT",
-  "reviews": [
+  "observedAt": "2026-10-02",
+  "conclusion": "VERSIONED_PER_OBLIGATION_REVIEW_REPLACES_UNCONDITIONAL_EARLY_GAPS",
+  "gaps": [
+    {
+      "deficitId": "source:national-stopping-patterns",
+      "class": "SOURCE_LICENSE_GAP",
+      "mode": "rail",
+      "reason": "REUSABLE_NATIONAL_SERVICE_PATTERN_SOURCE_NOT_ESTABLISHED",
+      "reviewIds": [
+        "official-shinkansen",
+        "odpt-national-rail",
+        "government-s12",
+        "government-n02",
+        "alternative-network"
+      ]
+    },
+    {
+      "deficitId": "service:shinkansen-continuity",
+      "class": "SERVICE_PATTERN_GAP",
+      "mode": "shinkansen",
+      "reason": "OFFICIAL_STOPPING_PATTERNS_AND_COMPONENT_ADMISSION_UNRESOLVED"
+    },
+    {
+      "deficitId": "service:major-rail-private-metro",
+      "class": "SERVICE_PATTERN_GAP",
+      "mode": "rail",
+      "reason": "NATIONAL_PATTERN_DISCOVERY_AND_IDENTITY_REVIEW_OPEN"
+    },
+    {
+      "deficitId": "mode:required-highway-gateways",
+      "class": "HIGHWAY_BUS_GAP",
+      "mode": "highway_bus",
+      "reason": "NATIONAL_TERMINAL_COMPONENTS_AND_BRIDGES_UNRESOLVED"
+    },
+    {
+      "deficitId": "mode:required-special-tourism",
+      "class": "TOURISM_SPECIAL_MODE_GAP",
+      "mode": "ropeway",
+      "reason": "REQUIRED_TOURISM_SPECIAL_MODE_INVENTORY_AND_PRIMARY_EVIDENCE_OPEN"
+    }
+  ],
+  "historicalReviews": [
     {
       "reviewId": "official-shinkansen",
       "category": "official_operator",
@@ -70,43 +109,42 @@
       "nextEvidence": "Deficit-targeted licensed feeds or official static relationship evidence; never all-pairs Provider lookup."
     }
   ],
-  "gaps": [
+  "currentReviewInput": "research/global-review.v1.json",
+  "reviews": [
     {
       "deficitId": "source:national-stopping-patterns",
-      "class": "SOURCE_LICENSE_GAP",
-      "mode": "rail",
-      "reason": "REUSABLE_NATIONAL_SERVICE_PATTERN_SOURCE_NOT_ESTABLISHED",
-      "reviewIds": [
-        "official-shinkansen",
-        "odpt-national-rail",
-        "government-s12",
-        "government-n02",
-        "alternative-network"
-      ]
+      "status": "REVIEWED_CLOSED",
+      "currentReason": "Current individually reviewed minimal rail facts and licensed GTFS have replaced the historical requirement for one redistributable nationwide timetable. Raw expression redistribution is not assumed.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
     },
     {
       "deficitId": "service:shinkansen-continuity",
-      "class": "SERVICE_PATTERN_GAP",
-      "mode": "shinkansen",
-      "reason": "OFFICIAL_STOPPING_PATTERNS_AND_COMPONENT_ADMISSION_UNRESOLVED"
+      "status": "REVIEWED_CLOSED",
+      "currentReason": "Reviewed actual directional Shinkansen services now cover the frozen required components, with exact source and identity binding.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
     },
     {
       "deficitId": "service:major-rail-private-metro",
-      "class": "SERVICE_PATTERN_GAP",
-      "mode": "rail",
-      "reason": "NATIONAL_PATTERN_DISCOVERY_AND_IDENTITY_REVIEW_OPEN"
+      "status": "REVIEWED_CLOSED",
+      "currentReason": "Reviewed actual conventional/private/metro services now cover the frozen required rail components. This does not claim every Japanese service variant.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
     },
     {
       "deficitId": "mode:required-highway-gateways",
-      "class": "HIGHWAY_BUS_GAP",
-      "mode": "highway_bus",
-      "reason": "NATIONAL_TERMINAL_COMPONENTS_AND_BRIDGES_UNRESOLVED"
+      "status": "OPEN",
+      "currentReason": "Some existing licensed highway service components remain disconnected from the national backbone; public gateway/transfer evidence is still required.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
     },
     {
       "deficitId": "mode:required-special-tourism",
-      "class": "TOURISM_SPECIAL_MODE_GAP",
-      "mode": "ropeway",
-      "reason": "REQUIRED_TOURISM_SPECIAL_MODE_INVENTORY_AND_PRIMARY_EVIDENCE_OPEN"
+      "status": "OPEN",
+      "currentReason": "The inherited special-tourism obligation lacks an enumerated ropeway/funicular target inventory. Existing monorail/tram coverage alone does not prove it fulfilled; scope and primary service evidence remain to be reviewed.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
     }
   ]
 }

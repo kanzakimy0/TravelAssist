@@ -1,3 +1,4 @@
+import { loadAcceptanceInputs } from "./task-086-acceptance-inputs.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
@@ -17,6 +18,9 @@ const root = path.resolve(
   "../..",
 );
 export function verifyRebuild({ publish = false } = {}) {
+  const proofInputs = loadAcceptanceInputs(
+    path.join(root, "data/transport/network"),
+  );
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), "task-086-rebuild-"));
   try {
     const extracted = path.join(scratch, "extracted");
@@ -252,7 +256,19 @@ export function verifyRebuild({ publish = false } = {}) {
       resumed.manifest,
       "Resume changes artifacts",
     );
+    assert.equal(
+      loadAcceptanceInputs(path.join(root, "data/transport/network"))
+        .proofInputSha256,
+      proofInputs.proofInputSha256,
+      "Rebuild mutated independent proof input",
+    );
+    assert.deepEqual(
+      readRows(path.join(firstPath, "fixpoint-proofs.jsonl")),
+      proofInputs.proofs,
+      "Valid proof input lost in clean rebuild",
+    );
     const receipt = {
+      exceptionProofInputPreserved: "PASS",
       task: "TASK-086-B",
       status: "PASS",
       rawGtfsExtraction: "PASS",
@@ -287,6 +303,7 @@ export function verifyRebuild({ publish = false } = {}) {
           path.join(root, "tests/task-086-b-mobility-backbone.test.mjs"),
           path.join(root, "tests/task-086-b-autonomous-remediation.test.mjs"),
           path.join(root, "tests/task-086-b-selected-gtfs.test.mjs"),
+          path.join(root, "tests/task-086-b-stage-closeout.test.mjs"),
         ],
         { cwd: root, encoding: "utf8" },
       );
@@ -316,7 +333,7 @@ export function verifyRebuild({ publish = false } = {}) {
           corridors: corridors.results,
           deficits: readRows(path.join(output, "topology-unresolved.jsonl")),
         },
-        readRows(path.join(output, "fixpoint-proofs.jsonl")),
+        proofInputs.proofs,
         (p) => fs.readFileSync(path.join(root, p)),
         {
           ...unverifiedGate.integrity,
@@ -324,18 +341,52 @@ export function verifyRebuild({ publish = false } = {}) {
           resumeCorruptionInvalidation: "PASS",
         },
         readRows(path.join(output, "next-source-actions.jsonl")),
+        proofInputs.context,
       );
       gate.integrityEvidence = "docs/qa/TASK-086-B/deterministic-rebuild.json";
       atomicWrite(
         path.join(output, "final-acceptance-gate.json"),
         jsonBytes(gate),
       );
+      const state = readJson(path.join(output, "adaptive-model-state.json"));
+      Object.assign(state, {
+        converged: gate.terminal,
+        status: gate.status,
+        remainingOrdinaryDiscovery: gate.ordinaryDiscoveryRemaining,
+        globalTopologyDiscoveryFixpoint: gate.globalTopologyDiscoveryFixpoint,
+        stopReason: gate.terminal ? gate.status : null,
+        executionState: gate.terminal
+          ? gate.status
+          : "SOURCE_REMEDIATION_REQUIRED",
+      });
+      atomicWrite(
+        path.join(output, "adaptive-model-state.json"),
+        jsonBytes(state),
+      );
       const manifest = readJson(path.join(output, "manifest.json"));
+      manifest.status = gate.status;
+      manifest.artifactHashes["adaptive-model-state.json"] = hash(
+        fs.readFileSync(path.join(output, "adaptive-model-state.json")),
+      );
       manifest.artifactHashes["final-acceptance-gate.json"] = hash(
         fs.readFileSync(path.join(output, "final-acceptance-gate.json")),
       );
       atomicWrite(path.join(output, "manifest.json"), jsonBytes(manifest));
     }
+    const after = loadAcceptanceInputs(
+      path.join(root, "data/transport/network"),
+    );
+    assert.equal(
+      after.proofInputSha256,
+      proofInputs.proofInputSha256,
+      "Rebuild mutated independent exception proofs",
+    );
+    assert.deepEqual(
+      readRows(path.join(firstPath, "fixpoint-proofs.jsonl")),
+      proofInputs.proofs,
+      "Proof materialization lost reviewed input",
+    );
+    receipt.exceptionProofInputPreserved = "PASS";
     return receipt;
   } finally {
     // Only the unique directory allocated above can be removed.

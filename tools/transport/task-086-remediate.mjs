@@ -1,4 +1,8 @@
 import {
+  loadAcceptanceInputs,
+  reviewGlobalGaps,
+} from "./task-086-acceptance-inputs.mjs";
+import {
   busStopCandidate,
   P11_ARCHIVE_SHA256,
 } from "./task-086-bus-identities.mjs";
@@ -169,6 +173,15 @@ export function runRemediation({
       to: e.toTransportNodeId,
     }));
   const review = readJson(path.join(networkRoot, "sources/source-review.json"));
+  const globalReviews = readJson(
+    path.join(networkRoot, "research/global-review.v1.json"),
+  );
+  const acceptanceInputs = loadAcceptanceInputs(networkRoot);
+  const reviewBytes = new Map(
+    globalReviews.reviews
+      .flatMap((r) => r.inputBindings)
+      .map((r) => [r.path, fs.readFileSync(path.join(root, r.path))]),
+  );
   const sourceFacts = phases.flatMap((p) => p.facts);
   const nodeReviews = [],
     hubReviews = [],
@@ -752,6 +765,8 @@ export function runRemediation({
   let audit = replay();
   const generatorPaths = [
     "task-086-model.mjs",
+    "task-086-acceptance-inputs.mjs",
+    "task-086-log-safety.mjs",
     "task-086-batches.mjs",
     "task-086-source-actions.mjs",
     "task-086-remediate.mjs",
@@ -1193,9 +1208,30 @@ export function runRemediation({
     inventoryCheck.length >= origin.counts.required,
     "BASELINE_INVENTORY_LOST",
   );
+  const connectedNodeIds = new Set(
+    inventory
+      .filter((r) => audit.connected.includes(r.requirementId))
+      .map((r) => r.nodeId),
+  );
+  const currentGlobalGaps = reviewGlobalGaps(review, globalReviews, {
+    nodes: [...nodes.values()],
+    patterns,
+    edges,
+    connected: connectedNodeIds,
+    readInput: (p) => reviewBytes.get(p),
+  });
+  const globalIds = new Set(review.gaps.map((g) => g.deficitId));
+  audit.deficits = [
+    ...audit.deficits.filter((d) => !globalIds.has(d.deficitId)),
+    ...currentGlobalGaps,
+  ];
+  audit.hardDeficitCount = audit.deficits.length;
+  for (const k of Object.keys(audit.counts))
+    if (k !== "DYNAMIC_METRIC_ONLY_GAP")
+      audit.counts[k] = audit.deficits.filter((d) => d.class === k).length;
   const gate = acceptance(
     audit,
-    [],
+    acceptanceInputs.proofs,
     (p) => fs.readFileSync(path.join(root, p)),
     {
       baselinePreservation: "PASS",
@@ -1205,6 +1241,7 @@ export function runRemediation({
       resumeCorruptionInvalidation: "NOT_RUN",
     },
     actions,
+    acceptanceInputs.context,
   );
   const files = new Map(),
     j = (n, v) => files.set(n, jsonBytes(v)),
@@ -1240,7 +1277,7 @@ export function runRemediation({
     );
   l("topology-unresolved.jsonl", audit.deficits);
   l("dynamic-field-unresolved.jsonl", audit.metricOnly);
-  l("fixpoint-proofs.jsonl", []);
+  l("fixpoint-proofs.jsonl", acceptanceInputs.proofs);
   l("next-source-actions.jsonl", actions);
   l("independent-node-reviews.jsonl", nodeReviews);
   l("official-hub-reviews.jsonl", hubReviews);
@@ -1292,11 +1329,11 @@ export function runRemediation({
   j("adaptive-model-state.json", {
     ...obj("adaptive-model-state.json"),
     iterationCount: history.length,
-    converged: false,
+    converged: gate.terminal,
     status: gate.status,
     globalTopologyDiscoveryFixpoint: gate.globalTopologyDiscoveryFixpoint,
-    stopReason: null,
-    executionState: "SOURCE_REMEDIATION_REQUIRED",
+    stopReason: gate.terminal ? gate.status : null,
+    executionState: gate.terminal ? gate.status : "SOURCE_REMEDIATION_REQUIRED",
     remainingOrdinaryDiscovery: gate.ordinaryDiscoveryRemaining,
     nextAction: nextSourceAction(actions),
     remainingDeficits: audit.counts,
@@ -1312,10 +1349,14 @@ export function runRemediation({
     lastPassedBatchId: receipts.at(-1).batchId,
     receipts,
     complete: true,
-    terminal: false,
+    terminal: gate.terminal,
   });
   for (const [n, body] of files) atomicWrite(path.join(output, n), body);
   const inputPaths = [
+    "research/exception-proofs.v1.json",
+    "research/stage-scope.json",
+    "research/global-review.v1.json",
+    "sources/source-review.json",
     "sources/raw/mlit-s12-25.zip",
     "sources/raw/mlit-c28-21.zip",
     "research/c28-identities.jsonl",

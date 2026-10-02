@@ -489,7 +489,13 @@ test("TASK086 parameters are traced and thresholds cannot change", () => {
 test("TASK086 fixpoint requires every category, matching proof hash and no ordinary work", () => {
   const deficit = { deficitId: "external" };
   const bytes = "actual evidence";
+  const context = { inputVersion: hash("inputs"), asOf: "2026-10-02" };
   const body = {
+    schemaVersion: 1,
+    inputVersion: context.inputVersion,
+    deficitSha256: hash(deficit),
+    reviewedAt: "2026-10-01",
+    validUntil: "2026-11-01",
     type: "SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF",
     deficitId: "external",
     externalBlocker: "Denied source scope",
@@ -512,7 +518,7 @@ test("TASK086 fixpoint requires every category, matching proof hash and no ordin
   };
   const proof = { ...body, proofSha256: hash(body) };
   assert.equal(
-    validateFixpoint(proof, deficit, () => bytes),
+    validateFixpoint(proof, deficit, () => bytes, context),
     true,
   );
   assert.equal(
@@ -520,11 +526,12 @@ test("TASK086 fixpoint requires every category, matching proof hash and no ordin
       { ...proof, ordinaryWorkRemaining: true },
       deficit,
       () => bytes,
+      context,
     ),
     false,
   );
   assert.equal(
-    validateFixpoint(proof, deficit, () => "corrupt"),
+    validateFixpoint(proof, deficit, () => "corrupt", context),
     false,
   );
   assert.equal(
@@ -532,6 +539,7 @@ test("TASK086 fixpoint requires every category, matching proof hash and no ordin
       { ...proof, searches: body.searches.slice(1) },
       deficit,
       () => bytes,
+      context,
     ),
     false,
   );

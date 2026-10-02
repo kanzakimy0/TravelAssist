@@ -1163,7 +1163,11 @@ export function anchorQueries(edges, anchor) {
           ? backward.has(from)
             ? [...backward.get(from)].reverse()
             : null
-          : queryGraph(edges, from, to);
+          : from === to
+            ? []
+            : backward?.has(from) && forward.has(to)
+              ? [...backward.get(from)].reverse().concat(forward.get(to))
+              : queryGraph(edges, from, to);
 }
 // Resolve only previously absent query endpoints from independently admitted rail
 // components. This creates a QA query, never an edge or an identity admission.
@@ -1478,9 +1482,18 @@ export function adaptParameters(previous, action, audit) {
     }));
   return { next, changes };
 }
-export function validateFixpoint(proof, deficit, readEvidence) {
+export function validateFixpoint(proof, deficit, readEvidence, context = {}) {
   if (
     !proof ||
+    proof.schemaVersion !== 1 ||
+    !context.inputVersion ||
+    proof.inputVersion !== context.inputVersion ||
+    proof.deficitSha256 !== hash(deficit) ||
+    !Number.isFinite(Date.parse(context.asOf)) ||
+    !Number.isFinite(Date.parse(proof.reviewedAt)) ||
+    !Number.isFinite(Date.parse(proof.validUntil)) ||
+    Date.parse(proof.reviewedAt) > Date.parse(context.asOf) ||
+    Date.parse(proof.validUntil) < Date.parse(context.asOf) ||
     proof.type !== "SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF" ||
     proof.deficitId !== deficit.deficitId ||
     !proof.externalBlocker ||
@@ -1500,15 +1513,19 @@ export function validateFixpoint(proof, deficit, readEvidence) {
     "identity",
     "alternative_connection",
   ];
-  return categories.every((category) =>
-    proof.searches.some(
-      (s) =>
-        s.category === category &&
-        s.outcome &&
-        s.evidencePath &&
-        hash(readEvidence(s.evidencePath)) === s.evidenceSha256,
-    ),
-  );
+  try {
+    return categories.every((category) =>
+      proof.searches.some(
+        (s) =>
+          s.category === category &&
+          s.outcome &&
+          s.evidencePath &&
+          hash(readEvidence(s.evidencePath)) === s.evidenceSha256,
+      ),
+    );
+  } catch {
+    return false;
+  }
 }
 export function acceptance(
   audit,
@@ -1516,12 +1533,15 @@ export function acceptance(
   readEvidence,
   integrity,
   actions = [],
+  proofContext = {},
 ) {
   const validExceptions = audit.deficits.filter((d) =>
-    proofs.some((p) => validateFixpoint(p, d, readEvidence)),
+    proofs.some((p) => validateFixpoint(p, d, readEvidence, proofContext)),
   );
   const unproved = audit.deficits.length - validExceptions.length;
-  const integrityPass = Object.values(integrity).every((v) => v === "PASS");
+  const integrityPass =
+    Object.keys(integrity).length > 0 &&
+    Object.values(integrity).every((v) => v === "PASS");
   const nationalCorridors = (audit.corridors ?? []).filter(
     (c) => c.origin === "TASK_MANDATORY_QUERY_ONLY",
   );
@@ -1533,17 +1553,47 @@ export function acceptance(
   const openActions = actions.filter(
     (a) => !["INGESTED", "SUPERSEDED_BY_ALTERNATIVE"].includes(a.state),
   );
+  const provenClosedAction = (a) => {
+    const event = a.events?.at(-1);
+    return (
+      ["EXTERNAL_APPROVAL_REQUIRED", "NO_SOURCE_FOUND"].includes(a.state) &&
+      event &&
+      (a.state !== "EXTERNAL_APPROVAL_REQUIRED" || event.approvalAuthority) &&
+      (a.affectedDeficits ?? []).length > 0 &&
+      a.affectedDeficits.every((id) =>
+        audit.deficits.some(
+          (d) =>
+            d.deficitId === id &&
+            proofs.some(
+              (p) =>
+                (
+                  event.fixpointProofSha256s ?? [event.fixpointProofSha256]
+                ).includes(p.proofSha256) &&
+                (a.state === "EXTERNAL_APPROVAL_REQUIRED"
+                  ? p.approvalAuthority === event.approvalAuthority &&
+                    p.resolution === "EXTERNAL_APPROVAL_REQUIRED"
+                  : p.resolution === "AUDITED_FIXPOINT_EXCEPTION") &&
+                validateFixpoint(p, d, readEvidence, proofContext),
+            ),
+        ),
+      )
+    );
+  };
   const ordinaryDiscoveryRemaining =
-    unproved > 0 ||
-    openActions.some((a) => a.state !== "EXTERNAL_APPROVAL_REQUIRED");
+    unproved > 0 || openActions.some((a) => !provenClosedAction(a));
   const converged =
-    integrityPass && nationalCore && unproved === 0 && openActions.length === 0;
+    integrityPass && nationalCore && !ordinaryDiscoveryRemaining;
   return {
     status: !converged
       ? "IN_PROGRESS_AUTO_REMEDIATION"
-      : validExceptions.length
-        ? "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS"
-        : "PASS / READY_FOR_REVIEW",
+      : openActions.some(
+            (a) =>
+              a.state === "EXTERNAL_APPROVAL_REQUIRED" && provenClosedAction(a),
+          )
+        ? "BLOCKED_EXTERNAL_APPROVAL_REQUIRED"
+        : validExceptions.length
+          ? "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS"
+          : "PASS / READY_FOR_REVIEW",
     globalTopologyDiscoveryFixpoint: converged ? "PROVEN" : "NOT_PROVEN",
     integrity,
     nationalCoreConnected: nationalCore,
@@ -1553,6 +1603,9 @@ export function acceptance(
     ordinaryDiscoveryRemaining,
     terminal: converged,
     openSourceActionCount: openActions.length,
+    auditedClosedActionIds: openActions
+      .filter(provenClosedAction)
+      .map((a) => a.actionId),
     runtimeImportAuthorized: false,
   };
 }
@@ -1562,14 +1615,19 @@ export function assertTerminalResult(gate, actions = []) {
     gate.terminal === true &&
       gate.ordinaryDiscoveryRemaining === false &&
       gate.globalTopologyDiscoveryFixpoint === "PROVEN" &&
-      !actions.some((a) =>
-        [
-          "PENDING_RESEARCH",
-          "RESEARCHING",
-          "SOURCE_FOUND",
-          "RIGHTS_REVIEWED",
-          "NO_SOURCE_FOUND",
-        ].includes(a.state),
+      !actions.some(
+        (a) =>
+          [
+            "PENDING_RESEARCH",
+            "RESEARCHING",
+            "SOURCE_FOUND",
+            "RIGHTS_REVIEWED",
+            "NO_SOURCE_FOUND",
+          ].includes(a.state) &&
+          !(
+            a.state === "NO_SOURCE_FOUND" &&
+            gate.auditedClosedActionIds?.includes(a.actionId)
+          ),
       ),
     "TERMINAL_RESULT_FORBIDDEN_ORDINARY_REMEDIATION_REMAINS",
   );

@@ -1,3 +1,8 @@
+import {
+  safeSourceUrl,
+  safeLogText,
+  sanitizeEvidence,
+} from "./task-086-log-safety.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { hash, invariant, compare, SOURCE_RIGHTS } from "./task-086-model.mjs";
@@ -53,7 +58,8 @@ export function transitionAction(action, state, detail, observedAt) {
     invariant(detail.alternativeActionId, "ALTERNATIVE_ACTION_REQUIRED");
   if (state === "EXTERNAL_APPROVAL_REQUIRED")
     invariant(
-      detail.fixpointProofSha256 && detail.approvalAuthority,
+      (detail.fixpointProofSha256 || detail.fixpointProofSha256s?.length) &&
+        detail.approvalAuthority,
       "EXTERNAL_APPROVAL_NOT_PROVEN",
     );
   const event = {
@@ -161,14 +167,14 @@ export function recordReferenceEvidence(
       request.observedAt,
     );
   const checked = request.observations.map((o) => ({
-    url: o.url,
+    url: safeSourceUrl(o.url),
     purpose: o.purpose,
     status: "REFERENCE_RETRIEVED",
     observedVia: request.observedVia,
     observedAt: request.observedAt,
     fingerprintScope: "MINIMUM_REVIEWED_OBSERVATION_NOT_SOURCE_BYTES",
-    contentSha256: hash(o),
-    observation: o,
+    contentSha256: hash(sanitizeEvidence(o)),
+    observation: sanitizeEvidence(o),
     rawPayloadRetained: false,
   }));
   action.attempts.push({
@@ -181,7 +187,10 @@ export function recordReferenceEvidence(
   action.sourcesChecked.push(...checked);
   invariant(
     checked.some((s) => s.purpose === "topology") &&
-      checked.some((s) => s.purpose === "terms" && s.url === request.termsUrl),
+      checked.some(
+        (s) =>
+          s.purpose === "terms" && s.url === safeSourceUrl(request.termsUrl),
+      ),
     "REFERENCE_TOPOLOGY_AND_TERMS_REQUIRED",
   );
   action = transitionAction(
@@ -200,8 +209,8 @@ export function recordReferenceEvidence(
   );
   action.rightsFindings.push({
     rightsClass: request.rightsClass,
-    reason: request.rightsFinding,
-    termsUrl: request.termsUrl,
+    reason: safeLogText(request.rightsFinding),
+    termsUrl: safeSourceUrl(request.termsUrl),
     observedAt: request.observedAt,
     rawReuseClaimed: false,
   });
@@ -235,6 +244,22 @@ export async function acquireEvidence(
   const actions = readRows(queuePath),
     index = actions.findIndex((a) => a.actionId === request.actionId);
   invariant(index >= 0, "SOURCE_ACTION_NOT_FOUND");
+  const requestFingerprint = hash(
+    sanitizeEvidence({
+      actionId: request.actionId,
+      urls: request.urls,
+      termsUrl: request.termsUrl,
+      rightsClass: request.rightsClass,
+      sourceVersion: request.sourceVersion ?? null,
+      parserVersion: request.parserVersion ?? null,
+      identityVersion: request.identityVersion ?? null,
+      rightsVersion: request.rightsVersion ?? null,
+    }),
+  );
+  const reusable = actions[index].attempts?.find(
+    (a) => a.requestFingerprint === requestFingerprint,
+  );
+  if (reusable && reusable.outcome === "NO_SOURCE_FOUND") return actions[index];
   const observedAt = now();
   actions[index] = transitionAction(
     actions[index],
@@ -248,14 +273,17 @@ export async function acquireEvidence(
   const attempt = {
     attempt: actions[index].attempts.length + 1,
     observedAt,
-    requestSha256: hash(request),
+    requestSha256: requestFingerprint,
+    requestFingerprint,
+    retryCondition:
+      "SOURCE_VERSION_PARSER_IDENTITY_OR_RIGHTS_REVIEW_INPUT_CHANGED",
     sources: [],
     outcome: "IN_PROGRESS",
   };
   actions[index].attempts.push(attempt);
   atomicWrite(queuePath, jsonlBytes(actions));
   for (const item of request.urls) {
-    const entry = { url: item.url, purpose: item.purpose };
+    const entry = { url: safeSourceUrl(item.url), purpose: item.purpose };
     try {
       const response = await network(item.url, {
         signal: AbortSignal.timeout(45000),
@@ -263,7 +291,7 @@ export async function acquireEvidence(
       });
       const raw = Buffer.from(await response.arrayBuffer());
       Object.assign(entry, {
-        finalUrl: response.url || item.url,
+        finalUrl: safeSourceUrl(response.url || item.url),
         status: response.status,
         contentSha256: hash(raw),
         bytes: raw.length,
@@ -293,7 +321,7 @@ export async function acquireEvidence(
           .join("/");
       }
     } catch (error) {
-      entry.error = String(error.message);
+      entry.error = safeLogText(error.message);
     }
     attempt.sources.push(entry);
     actions[index].sourcesChecked.push({
@@ -328,14 +356,14 @@ export async function acquireEvidence(
     );
     invariant(
       attempt.sources.some(
-        (s) => s.url === request.termsUrl && s.status === 200,
+        (s) => s.url === safeSourceUrl(request.termsUrl) && s.status === 200,
       ),
       "TERMS_NOT_OBSERVED",
     );
     actions[index].rightsFindings.push({
       rightsClass: request.rightsClass,
-      reason: request.rightsFinding,
-      termsUrl: request.termsUrl,
+      reason: safeLogText(request.rightsFinding),
+      termsUrl: safeSourceUrl(request.termsUrl),
       observedAt,
       rawReuseClaimed: request.rightsClass === "RAW_PERSISTENCE_ALLOWED",
     });
