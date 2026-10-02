@@ -48,6 +48,7 @@ import {
 } from "./task-086-airport-identities.mjs";
 import {
   roadTerminalCandidate,
+  roadStopCandidate,
   P36_ARCHIVE_SHA256,
 } from "./task-086-road-identities.mjs";
 const root = path.resolve(
@@ -498,14 +499,19 @@ export function runRemediation({
       });
       return admitted.nodeId;
     }
-    if (selector.terminalIdentity) {
+    if (selector.terminalIdentity || selector.roadStopIdentity) {
+      invariant(
+        !(selector.terminalIdentity && selector.roadStopIdentity),
+        "P36_AMBIGUOUS_REVIEW_KIND",
+      );
+      const review = selector.terminalIdentity ?? selector.roadStopIdentity;
       const matches = highwayIdentities.filter(
-        (r) => r.stopRecordId === selector.terminalIdentity.stopRecordId,
+        (r) => r.stopRecordId === review.stopRecordId,
       );
       invariant(matches.length === 1, "ROAD_TERMINAL_RAW_IDENTITY_NOT_UNIQUE");
       const record = matches[0];
       const requirement = originalInventory.find(
-        (r) => r.requirementId === selector.terminalIdentity.requirementId,
+        (r) => r.requirementId === review.requirementId,
       );
       const ref = makeEvidence(
         highwaySource,
@@ -514,10 +520,17 @@ export function runRemediation({
           record.stopRecordId,
         ["p36", record],
       );
-      const candidate = roadTerminalCandidate(selector, record, requirement, [
-        ref,
-        serviceEvidenceRef,
-      ]);
+      const candidate = selector.roadStopIdentity
+        ? roadStopCandidate(
+            selector,
+            record,
+            [ref, serviceEvidenceRef],
+            evidence.get(serviceEvidenceRef).record,
+          )
+        : roadTerminalCandidate(selector, record, requirement, [
+            ref,
+            serviceEvidenceRef,
+          ]);
       const admitted = admitNodes([candidate], sources, evidence, [])[0];
       invariant(
         admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
@@ -543,7 +556,9 @@ export function runRemediation({
         rawIdentityEvidenceRef: ref,
         serviceEvidenceRef,
         discoveryCandidateRef: admitted.discoveryCandidateRef,
-        matchedFields: ["stopRecordId", "stopName", "reviewedRequirementId"],
+        matchedFields: selector.roadStopIdentity
+          ? ["stopRecordId", "stopName", "operator", "pointReferenceId"]
+          : ["stopRecordId", "stopName", "reviewedRequirementId"],
         sameGroupNotInterchange: true,
       });
       return admitted.nodeId;

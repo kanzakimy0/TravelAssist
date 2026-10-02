@@ -2534,3 +2534,174 @@ test("TASK086 ordinary official patterns cannot acquire an unreviewed operator b
     /OFFICIAL_PATTERN_SOURCE_BINDING/,
   );
 });
+
+import { roadStopCandidate } from "../tools/transport/task-086-road-identities.mjs";
+
+test("TASK086 P36 airport road stop requires exact archive identity and current operator evidence", () => {
+  const record = {
+    stopRecordId: "P36-23_07:kbs188",
+    stopName: "福島空港",
+    operator: "福島交通（株）",
+    latitude: 37.22772512055902,
+    longitude: 140.43389288666623,
+    coordinateScope:
+      "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+    identityAsOf: "2023-11",
+  };
+  const current = {
+    recordOperator: record.operator,
+    currentOperatorName: "福島交通株式会社",
+    currentStopName: record.stopName,
+    url: "https://city.example/current-operator",
+    observedResponseSha256: "a".repeat(64),
+  };
+  const selector = {
+    name: record.stopName,
+    operator: record.operator,
+    line: "p36-stop:" + record.stopRecordId,
+    mode: "airport_bus",
+    nodeKind: "bus_stop",
+    roadStopIdentity: {
+      dataset: "P36-23",
+      stopRecordId: record.stopRecordId,
+      recordSha256: hash(record),
+      method: "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+      coordinateScope: record.coordinateScope,
+      currentPassengerAccessReview:
+        "Reviewed independent current terminal access",
+      currentOperatorEvidence: current,
+    },
+  };
+  const fact = {
+    corroboratingEvidence: [
+      {
+        url: current.url,
+        observedResponseSha256: current.observedResponseSha256,
+      },
+    ],
+  };
+  const build = (s = selector, f = fact) =>
+    roadStopCandidate(s, record, ["raw", "current"], f);
+  const candidate = build();
+  assert.equal(build({ ...selector, mode: "highway_bus" }).mode, "highway_bus");
+  assert.equal(candidate.identityAnchor, "p36:23:P36-23_07:kbs188");
+  for (const changed of [
+    { operator: "玉川村" },
+    { name: "郡山駅前" },
+    { mode: "local_bus" },
+    { terminalIdentity: {} },
+    { nodeKind: "bus_terminal" },
+    { line: "p36-stop:P36-23_07:kbs189" },
+  ])
+    assert.throws(
+      () => build({ ...selector, ...changed }),
+      /P36_STOP_IDENTITY_SELECTOR_MISMATCH/,
+    );
+  for (const changed of [
+    { dataset: "P36_STOP-10" },
+    { stopRecordId: "P36-23_07:kbs189" },
+    { recordSha256: "b".repeat(64) },
+    { method: "NAME_AND_PROXIMITY" },
+    { coordinateScope: "PRECISE_PLATFORM" },
+    { currentPassengerAccessReview: "" },
+  ])
+    assert.throws(
+      () =>
+        build({
+          ...selector,
+          roadStopIdentity: { ...selector.roadStopIdentity, ...changed },
+        }),
+      /P36_STOP_/,
+    );
+  for (const changed of [
+    { recordOperator: "玉川村" },
+    { currentStopName: "郡山駅前" },
+    { currentOperatorName: "" },
+    { currentOperatorName: "別の交通株式会社" },
+    { url: "https://city.example/unreviewed" },
+    { observedResponseSha256: "b".repeat(64) },
+  ])
+    assert.throws(
+      () =>
+        build({
+          ...selector,
+          roadStopIdentity: {
+            ...selector.roadStopIdentity,
+            currentOperatorEvidence: { ...current, ...changed },
+          },
+        }),
+      /P36_STOP_CURRENT_OPERATOR_EVIDENCE_NOT_BOUND/,
+    );
+  assert.throws(
+    () => build(selector, {}),
+    /P36_STOP_CURRENT_OPERATOR_EVIDENCE_NOT_BOUND/,
+  );
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    [
+      "raw",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record,
+        recordSha256: hash(record),
+        locator: "exact operator-stop",
+      },
+    ],
+    [
+      "current",
+      {
+        sourceId: minimal.sourceId,
+        sourceSha256: minimal.contentSha256,
+        record: fact,
+        recordSha256: hash(fact),
+        locator: "current access",
+      },
+    ],
+  ]);
+  assert.equal(
+    admitNodes([candidate], sources, evidence)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+  for (const changed of [
+    { operatorRefs: ["玉川村"] },
+    { identityAnchor: "p36:23:P36-23_07:kbs189" },
+    { latitude: 0 },
+    { lineRefs: ["wrong"] },
+    { nodeKind: "bus_terminal" },
+    { mode: "highway_bus" },
+    { mode: "local_bus" },
+  ])
+    assert.ok(
+      admitNodes(
+        [{ ...candidate, ...changed }],
+        sources,
+        evidence,
+      )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
+    );
+
+  for (const changed of [
+    { method: "NAME_AND_PROXIMITY" },
+    { sourceArchiveSha256: "0".repeat(64) },
+    { coordinateScope: "EXACT_PLATFORM" },
+    { currentOperatorEvidence: { ...current, currentStopName: "wrong" } },
+    {
+      currentOperatorEvidence: {
+        ...current,
+        observedResponseSha256: "b".repeat(64),
+      },
+    },
+  ])
+    assert.ok(
+      admitNodes(
+        [
+          {
+            ...candidate,
+            independentReview: { ...candidate.independentReview, ...changed },
+          },
+        ],
+        sources,
+        evidence,
+      )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
+    );
+});

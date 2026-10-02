@@ -426,6 +426,45 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
           node.lineRefs[0] !== "p11-stop:" + node.identityRecord.stopRecordId)
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_P36_AND_CURRENT_STOP_SERVICE" &&
+        (node.identityAnchor !== "p36:23:" + node.identityRecord.stopRecordId ||
+          node.canonicalNameJa !== node.identityRecord.stopName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "bus_stop" ||
+          !["airport_bus", "highway_bus"].includes(node.mode) ||
+          node.mode !== node.independentReview?.mode ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !== "p36-stop:" + node.identityRecord.stopRecordId ||
+          node.independentReview?.method !==
+            "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE" ||
+          node.independentReview?.sourceArchiveSha256 !==
+            "50d92052dd15ccf29fa86bee74b18ce7c95fcb9cb93678395842e67658f26de4" ||
+          node.independentReview?.currentOperatorEvidence?.recordOperator !==
+            node.identityRecord.operator ||
+          node.independentReview?.currentOperatorEvidence?.currentStopName !==
+            node.identityRecord.stopName ||
+          node.independentReview?.coordinateScope !==
+            node.identityRecord.coordinateScope ||
+          node.independentReview?.coordinateScope !==
+            "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION" ||
+          !node.evidenceRefs.some((ref) =>
+            evidence
+              .get(ref)
+              ?.record?.corroboratingEvidence?.some(
+                (e) =>
+                  e.url ===
+                    node.independentReview?.currentOperatorEvidence?.url &&
+                  e.observedResponseSha256 ===
+                    node.independentReview?.currentOperatorEvidence
+                      ?.observedResponseSha256,
+              ),
+          ))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
         reasons.push("REJECTED_V1");
       if (

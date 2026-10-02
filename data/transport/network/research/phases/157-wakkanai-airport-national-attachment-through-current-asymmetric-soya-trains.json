@@ -1,0 +1,325 @@
+{
+  "phaseId": "157-wakkanai-airport-national-attachment-through-current-asymmetric-soya-trains",
+  "strategy": [
+    "REPLAY_DISCOVERED_LOCAL_COMPONENT_REQUIRES_NATIONAL_RAIL_ATTACHMENT",
+    "CURRENT_INDEPENDENT_ACTUAL_THROUGH_TRAINS",
+    "DIRECTION_SPECIFIC_BIBAI_SUNAGAWA_CALLS",
+    "EXACT_S12_HAKODATE_SOYA_COMPONENTS"
+  ],
+  "completedActionIds": [
+    "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+    "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule"
+  ],
+  "facts": [
+    {
+      "factId": "soya-51D-current-independent-actual-through-train",
+      "kind": "service",
+      "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+      "sourceUrl": "https://jrhokkaidonorikae.com/vtime/vtime.php?s=110&d=20261001",
+      "observedResponseSha256": "a2fd18c9af56c84e11f01486281f68a35d597cf4fab0bf9f4aa06185cf55c358",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+          "url": "https://www.jrhokkaido.co.jp/network/",
+          "observedResponseSha256": "1f45ca734d4fa36213b490f3bc6f5b58e9b6c98d755c3b8b13544a9c4e748779"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+          "url": "https://jrhokkaidonorikae.com/pc/support.html",
+          "observedResponseSha256": "fd511b9f651a59c7c09aef312b644ebd827ad09a6441c05beb7a284afbde1fb7"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
+          "url": "https://www.jrhokkaido.co.jp/global/chinese/train/guide/wakkanai.html",
+          "observedResponseSha256": "4836e35e7482f69d276f2aab632fd436c2decb415e6d3fb1651ba62f31604442"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
+          "url": "https://www.jrhokkaido.co.jp/global/images/train/guide/tw/tr005_s.gif",
+          "observedResponseSha256": "8034a09f2dae76021741566037d498a6b65e457dcafef2e81a88aabc93a5f40b"
+        }
+      ],
+      "locator": "Independently read October 1 2026 51D actual whole train column: 17 calls with no additional operation restriction. Down 51D calls Bibai and Sunagawa; up 52D passes both. Exclude Pippu/Kembuchi pass markers and unrelated Sekihoku branch rows. Continuous actual train crosses Hakodate/Soya line boundary; retain exact operator/station component identities without inventing a transfer. No timetable values, fare, service frequency, copied artwork or live operation claim.",
+      "line": "函館線・宗谷線",
+      "operator": "北海道旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "宗谷",
+      "reviewedTrainCode": "51D",
+      "direction": "wakkanai-bound",
+      "callingStations": [
+        "札幌",
+        "岩見沢",
+        "美唄",
+        "砂川",
+        "滝川",
+        "深川",
+        "旭川",
+        "和寒",
+        "士別",
+        "名寄",
+        "美深",
+        "音威子府",
+        "天塩中川",
+        "幌延",
+        "豊富",
+        "南稚内",
+        "稚内"
+      ],
+      "callingComponents": [
+        {
+          "name": "札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岩見沢",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "美唄",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "砂川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "滝川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "深川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "旭川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和寒",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "士別",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名寄",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "美深",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "音威子府",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天塩中川",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "幌延",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "豊富",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南稚内",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "稚内",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_THROUGH_TRAIN_AND_DIRECTIONAL_SERVICE_GUIDE",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_1_2026_CURRENT_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "soya-52D-current-independent-actual-through-train",
+      "kind": "service",
+      "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+      "sourceUrl": "https://jrhokkaidonorikae.com/vtime/vtime.php?s=111&d=20261001",
+      "observedResponseSha256": "49180da056773185eb68fd5172c43343ca4dee8a095ac4ca334776aa1c22f1c7",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+          "url": "https://www.jrhokkaido.co.jp/network/",
+          "observedResponseSha256": "1f45ca734d4fa36213b490f3bc6f5b58e9b6c98d755c3b8b13544a9c4e748779"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
+          "url": "https://jrhokkaidonorikae.com/pc/support.html",
+          "observedResponseSha256": "fd511b9f651a59c7c09aef312b644ebd827ad09a6441c05beb7a284afbde1fb7"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
+          "url": "https://www.jrhokkaido.co.jp/global/chinese/train/guide/wakkanai.html",
+          "observedResponseSha256": "4836e35e7482f69d276f2aab632fd436c2decb415e6d3fb1651ba62f31604442"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
+          "url": "https://www.jrhokkaido.co.jp/global/images/train/guide/tw/tr005_s.gif",
+          "observedResponseSha256": "8034a09f2dae76021741566037d498a6b65e457dcafef2e81a88aabc93a5f40b"
+        }
+      ],
+      "locator": "Independently read October 1 2026 52D actual whole train column: 15 calls with no additional operation restriction. Down 51D calls Bibai and Sunagawa; up 52D passes both. Exclude Pippu/Kembuchi pass markers and unrelated Sekihoku branch rows. Continuous actual train crosses Hakodate/Soya line boundary; retain exact operator/station component identities without inventing a transfer. No timetable values, fare, service frequency, copied artwork or live operation claim.",
+      "line": "函館線・宗谷線",
+      "operator": "北海道旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "宗谷",
+      "reviewedTrainCode": "52D",
+      "direction": "sapporo-bound",
+      "callingStations": [
+        "稚内",
+        "南稚内",
+        "豊富",
+        "幌延",
+        "天塩中川",
+        "音威子府",
+        "美深",
+        "名寄",
+        "士別",
+        "和寒",
+        "旭川",
+        "深川",
+        "滝川",
+        "岩見沢",
+        "札幌"
+      ],
+      "callingComponents": [
+        {
+          "name": "稚内",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南稚内",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "豊富",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "幌延",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天塩中川",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "音威子府",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "美深",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名寄",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "士別",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和寒",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "旭川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "深川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "滝川",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岩見沢",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_THROUGH_TRAIN_AND_DIRECTIONAL_SERVICE_GUIDE",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_1_2026_CURRENT_STATIC_TRAIN_NOT_REALTIME"
+    }
+  ]
+}
