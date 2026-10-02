@@ -14,6 +14,7 @@ import {
 import {
   loadAcceptanceInputs,
   reviewGlobalGaps,
+  staticReviewInputHashes,
 } from "../tools/transport/task-086-acceptance-inputs.mjs";
 import {
   safeSourceUrl,
@@ -772,4 +773,315 @@ test("TASK086 package order keeps original airports ahead of bus volume and coun
   );
   assert.equal(packages[1].originalRequiredCount, 1);
   assert.equal(packages[2].originalRequiredCount, 3);
+});
+
+function specialReviewFixture() {
+  const gap = {
+    deficitId: "mode:required-special-tourism",
+    class: "TOURISM_SPECIAL_MODE_GAP",
+  };
+  const decision = {
+    kind: "REQUIRED_SPECIAL_APPLICABILITY_V1",
+    deficitId: gap.deficitId,
+    status: "REVIEWED_CLOSED",
+    requiredNodeIds: ["a", "b", "interchange"],
+    requiredPatternIds: ["p"],
+    reviewedSpecialModes: ["fixed_guideway"],
+    inputBindings: [{ path: "scope", sha256: hash("scope") }],
+  };
+  const state = {
+    inventory: decision.requiredNodeIds.map((nodeId) => ({
+      nodeId,
+      kind: "other_tourism_transport",
+    })),
+    nodes: decision.requiredNodeIds.map((nodeId) => ({
+      nodeId,
+      nodeKind: "other_tourism_transport",
+      mode: "fixed_guideway",
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+    })),
+    patterns: [
+      {
+        servicePatternId: "p",
+        mode: "fixed_guideway",
+        serviceState: "active",
+        callingNodes: [{ nodeId: "a" }, { nodeId: "b" }],
+      },
+    ],
+    edges: [{ edgeKind: "service_segment", servicePatternRef: "p" }],
+    connected: new Set(decision.requiredNodeIds),
+    readInput: () => "scope",
+  };
+  return { gap, decision, state };
+}
+function specialReviewResult(f) {
+  return reviewGlobalGaps(
+    { gaps: [f.gap] },
+    { reviews: [f.decision] },
+    f.state,
+  );
+}
+test("TASK086 special applicability permits required interchange components without claiming ride coverage", () => {
+  const f = specialReviewFixture();
+  assert.deepEqual(specialReviewResult(f), []);
+  assert.equal(
+    f.state.patterns.some((p) =>
+      p.callingNodes.some((c) => c.nodeId === "interchange"),
+    ),
+    false,
+  );
+  assert.equal(f.decision.rideCoverage, undefined);
+});
+for (const [name, mutate] of [
+  ["missing inventory", (f) => delete f.state.inventory],
+  ["missing explicit review kind", (f) => delete f.decision.kind],
+  ["missing reviewed modes", (f) => delete f.decision.reviewedSpecialModes],
+  ["required subset", (f) => f.decision.requiredNodeIds.pop()],
+  ["duplicate reviewed node", (f) => f.decision.requiredNodeIds.push("a")],
+  [
+    "new required special component despite fresh scope hash",
+    (f) => {
+      f.state.inventory.push({
+        nodeId: "new",
+        kind: "other_tourism_transport",
+      });
+      f.state.nodes.push({
+        nodeId: "new",
+        nodeKind: "other_tourism_transport",
+        mode: "fixed_guideway",
+        decision: "ADMIT_TASK_086_TOPOLOGY",
+      });
+      f.state.connected.add("new");
+      f.state.readInput = () => "refreshed";
+      f.decision.inputBindings[0].sha256 = hash("refreshed");
+    },
+  ],
+  [
+    "new ropeway cannot be covered by old patterns even after listing node and mode",
+    (f) => {
+      f.state.inventory.push({ nodeId: "rope", kind: "ropeway_station" });
+      f.state.nodes.push({
+        nodeId: "rope",
+        nodeKind: "ropeway_station",
+        mode: "ropeway",
+        decision: "ADMIT_TASK_086_TOPOLOGY",
+      });
+      f.state.connected.add("rope");
+      f.decision.requiredNodeIds.push("rope");
+      f.decision.reviewedSpecialModes.push("ropeway");
+      f.state.readInput = () => "refreshed";
+      f.decision.inputBindings[0].sha256 = hash("refreshed");
+    },
+  ],
+  [
+    "mislabeled inventory kind cannot hide actual funicular mode",
+    (f) => {
+      f.state.inventory.push({ nodeId: "fun", kind: "rail_station" });
+      f.state.nodes.push({
+        nodeId: "fun",
+        nodeKind: "rail_station",
+        mode: "funicular",
+        decision: "ADMIT_TASK_086_TOPOLOGY",
+      });
+      f.state.connected.add("fun");
+    },
+  ],
+  [
+    "new relevant pattern missing from audit",
+    (f) =>
+      f.state.patterns.push({ ...f.state.patterns[0], servicePatternId: "p2" }),
+  ],
+  ["removed actual pattern", (f) => (f.state.patterns = [])],
+  ["removed listed pattern", (f) => (f.decision.requiredPatternIds = [])],
+  [
+    "unrelated conventional rail appended by generic reconciliation",
+    (f) => {
+      f.state.patterns.push({
+        ...f.state.patterns[0],
+        servicePatternId: "rail",
+        mode: "conventional_rail",
+      });
+      f.state.edges.push({
+        edgeKind: "service_segment",
+        servicePatternRef: "rail",
+      });
+      f.decision.requiredPatternIds.push("rail");
+    },
+  ],
+  ["source binding changed", (f) => (f.state.readInput = () => "changed")],
+  ["node no longer admitted", (f) => (f.state.nodes[0].decision = "HOLD")],
+  [
+    "required component disconnected",
+    (f) => f.state.connected.delete("interchange"),
+  ],
+  ["incomplete service edges", (f) => (f.state.edges = [])],
+  [
+    "inactive actual pattern",
+    (f) => (f.state.patterns[0].serviceState = "inactive"),
+  ],
+])
+  test("TASK086 special applicability reopens for " + name, () => {
+    const f = specialReviewFixture();
+    mutate(f);
+    assert.equal(specialReviewResult(f)[0]?.deficitId, f.gap.deficitId);
+  });
+test("TASK086 newly reviewed ascent service requires its own actual mode and complete pattern", () => {
+  const f = specialReviewFixture();
+  f.state.nodes.forEach((n) => {
+    n.mode = "funicular";
+    n.nodeKind = "funicular_station";
+  });
+  f.state.inventory.forEach((n) => (n.kind = "funicular_station"));
+  f.decision.reviewedSpecialModes = ["funicular"];
+  f.state.patterns[0].mode = "funicular";
+  assert.deepEqual(specialReviewResult(f), []);
+});
+test("TASK086 special review kind cannot replace unrelated global obligation", () => {
+  const f = specialReviewFixture();
+  f.gap.deficitId = "service:other";
+  f.decision.deficitId = f.gap.deficitId;
+  assert.equal(specialReviewResult(f)[0]?.deficitId, f.gap.deficitId);
+});
+test("TASK086 current required special applicability preflight preserves original Hamamatsucho transfer-only role", () => {
+  const root = "data/transport/network/";
+  const readRows = (n) =>
+    fs
+      .readFileSync(root + n, "utf8")
+      .trim()
+      .split(/\r?\n/)
+      .filter(Boolean)
+      .map(JSON.parse);
+  const inventory = JSON.parse(
+    fs.readFileSync(root + "required-backbone-inventory.json", "utf8"),
+  ).nodes;
+  const nodes = readRows("node-downstream-admission.jsonl"),
+    patterns = readRows("service-patterns.jsonl"),
+    edges = readRows("transport-node-edges.jsonl");
+  const required = inventory.filter(
+    (n) => n.kind === "other_tourism_transport",
+  );
+  const ids = new Set(required.map((n) => n.nodeId));
+  const specialPatterns = patterns.filter(
+    (p) =>
+      ["fixed_guideway", "tram"].includes(p.mode) &&
+      p.callingNodes.some((c) => ids.has(c.nodeId)),
+  );
+  const audit = JSON.parse(
+    fs.readFileSync(root + "connectivity-audit.json", "utf8"),
+  );
+  const connectedRequirements = new Set(audit.connectedRequiredNodes);
+  const connected = new Set(
+    inventory
+      .filter((r) => connectedRequirements.has(r.requirementId))
+      .map((r) => r.nodeId),
+  );
+  const f = specialReviewFixture();
+  f.decision.requiredNodeIds = [...ids];
+  f.decision.requiredPatternIds = specialPatterns.map(
+    (p) => p.servicePatternId,
+  );
+  f.decision.reviewedSpecialModes = ["fixed_guideway", "tram"];
+  f.state = {
+    inventory,
+    nodes,
+    patterns,
+    edges,
+    connected,
+    readInput: () => "scope",
+  };
+  assert.ok(required.length >= 152);
+  assert.ok(specialPatterns.length >= 20);
+  assert.deepEqual(specialReviewResult(f), []);
+  const originalHamamatsucho =
+    "transport-node:086:6c0e9b255e45772433f26e3494333db6";
+  assert.ok(ids.has(originalHamamatsucho));
+  assert.ok(connected.has(originalHamamatsucho));
+  assert.equal(
+    patterns.some((p) =>
+      p.callingNodes.some((c) => c.nodeId === originalHamamatsucho),
+    ),
+    false,
+  );
+  assert.equal(
+    edges
+      .filter((e) =>
+        [e.fromTransportNodeId, e.toTransportNodeId].includes(
+          originalHamamatsucho,
+        ),
+      )
+      .every((e) => e.edgeKind === "hub_transfer"),
+    true,
+  );
+});
+
+test("TASK086 actual static review input bytes join manifest fingerprints without generated output cycles", () => {
+  const staticPath =
+    "data/transport/network/research/special-applicability.v1.json";
+  const generated = "data/transport/network/next-source-actions.jsonl";
+  const bytes = new Map([
+    [staticPath, Buffer.from("review bytes")],
+    [generated, Buffer.from("output")],
+  ]);
+  assert.deepEqual(staticReviewInputHashes(bytes, new Set([generated])), {
+    [staticPath]: hash("review bytes"),
+  });
+});
+test("TASK086 changed static review evidence invalidates both unreplayed checks and old rebuild proof", (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "task086-static-review-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const input = "data/transport/network/research/special-applicability.v1.json";
+  const file = path.join(dir, "audit.json");
+  fs.writeFileSync(file, "original audit");
+  const current = () =>
+    staticReviewInputHashes(
+      new Map([[input, fs.readFileSync(file)]]),
+      new Set(),
+    );
+  const f = stageFixture();
+  f.coreBlockers = [];
+  f.manifest.inputHashes = current();
+  f.verification.inputHashes = structuredClone(f.manifest.inputHashes);
+  assert.equal(assessStageStatus(f).status, "CORE_STAGE_PASS");
+  fs.writeFileSync(file, "changed audit");
+  assert.notDeepEqual(current(), f.manifest.inputHashes);
+  // This is the same raw_content_hashes_and_retained_input_versions check
+  // stage performs before accepting any published receipt, without replay.
+  const unchangedChecks = structuredClone(f.checks);
+  f.checks.push({
+    name: "raw_content_hashes_and_retained_input_versions",
+    status:
+      hash(fs.readFileSync(file)) === f.manifest.inputHashes[input]
+        ? "PASS"
+        : "FAIL",
+  });
+  assert.equal(assessStageStatus(f).status, "CORE_STAGE_FAILED");
+  // After a rebuild records the new bytes, the old receipt is still stale.
+  f.checks = unchangedChecks;
+  f.manifest.inputHashes = current();
+  const r = assessStageStatus(f);
+  assert.equal(r.status, "CORE_STAGE_UNVERIFIED");
+  assert.equal(r.rebuildVerified, false);
+});
+test("TASK086 review fingerprint paths reject traversal absolute aliases and review self-binding", () => {
+  for (const p of [
+    "../evidence.json",
+    "/evidence.json",
+    "C:/evidence.json",
+    "a/../evidence.json",
+    "a\\evidence.json",
+  ])
+    assert.throws(
+      () => staticReviewInputHashes(new Map([[p, "x"]]), new Set()),
+      /GLOBAL_REVIEW_INPUT_PATH_NOT_ROOT_RELATIVE/,
+    );
+  assert.throws(
+    () =>
+      staticReviewInputHashes(
+        new Map([
+          ["data/transport/network/research/global-review.v1.json", "x"],
+        ]),
+        new Set(),
+      ),
+    /GLOBAL_REVIEW_INPUT_SELF_BINDING/,
+  );
 });

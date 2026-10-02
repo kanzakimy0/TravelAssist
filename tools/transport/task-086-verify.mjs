@@ -1,3 +1,7 @@
+import {
+  verifyDerivedGtfsReview,
+  buildDerivedGtfsPackage,
+} from "./task-086-derived-gtfs.mjs";
 import { loadAcceptanceInputs } from "./task-086-acceptance-inputs.mjs";
 import fs from "node:fs";
 import path from "node:path";
@@ -191,7 +195,11 @@ export function verifyRebuild({ publish = false } = {}) {
       ),
       "Raw selected P11 identity extraction differs",
     );
-    const selectedGtfsPackages = [];
+    const selectedGtfsPackages = [],
+      derivedGtfsPackages = [];
+    const sourceActions = readRows(
+      path.join(root, "data/transport/network/next-source-actions.jsonl"),
+    );
     for (const phaseFile of fs
       .readdirSync(path.join(root, "data/transport/network/research/phases"))
       .filter((n) => n.endsWith(".json"))
@@ -240,6 +248,31 @@ export function verifyRebuild({ publish = false } = {}) {
         );
         selectedGtfsPackages.push(binding.packageFile);
       }
+      for (const binding of phase.derivedGtfsPackages ?? []) {
+        assert.match(binding.packageFile, /^[a-z0-9-]+\.json$/);
+        const doc = readJson(
+          path.join(
+            root,
+            "data/transport/network/sources",
+            binding.packageFile,
+          ),
+        );
+        const date = doc.projection.serviceDate;
+        const proof = verifyDerivedGtfsReview(
+          doc,
+          binding,
+          sourceActions.find((a) => a.actionId === binding.sourceActionId),
+          `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}T00:00:00Z`,
+        );
+        assert.equal(
+          hash(buildDerivedGtfsPackage(doc)),
+          hash(buildDerivedGtfsPackage(structuredClone(doc))),
+        );
+        derivedGtfsPackages.push({
+          packageFile: binding.packageFile,
+          ...proof,
+        });
+      }
     }
     const firstPath = path.join(scratch, "first"),
       secondPath = path.join(scratch, "second");
@@ -286,6 +319,16 @@ export function verifyRebuild({ publish = false } = {}) {
         status: "PASS",
         packages: selectedGtfsPackages,
       },
+      ...(derivedGtfsPackages.length
+        ? {
+            reviewedDerivedGtfsRebuild: {
+              status: "PASS",
+              rebuildBasis: "REVIEWED_DERIVED_STATIC_INPUT",
+              rawByteReproductionAvailable: false,
+              packages: derivedGtfsPackages,
+            },
+          }
+        : {}),
       fullDeterministicRebuild: "PASS",
       resumeChecksumSkip: "PASS",
       batchCount: first.manifest.batchReceipts.length,
@@ -308,6 +351,9 @@ export function verifyRebuild({ publish = false } = {}) {
           path.join(root, "tests/task-086-b-mobility-backbone.test.mjs"),
           path.join(root, "tests/task-086-b-autonomous-remediation.test.mjs"),
           path.join(root, "tests/task-086-b-selected-gtfs.test.mjs"),
+          path.join(root, "tests/task-086-b-gtfs-sections.test.mjs"),
+          path.join(root, "tests/task-086-b-derived-gtfs.test.mjs"),
+          path.join(root, "tests/task-086-b-p11-succession.test.mjs"),
           path.join(root, "tests/task-086-b-stage-closeout.test.mjs"),
         ],
         { cwd: root, encoding: "utf8" },

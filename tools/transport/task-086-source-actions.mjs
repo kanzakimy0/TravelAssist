@@ -5,7 +5,13 @@ import {
 } from "./task-086-log-safety.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { hash, invariant, compare, SOURCE_RIGHTS } from "./task-086-model.mjs";
+import {
+  hash,
+  invariant,
+  compare,
+  SOURCE_RIGHTS,
+  sourceAllowed,
+} from "./task-086-model.mjs";
 import {
   readRows,
   readJson,
@@ -194,6 +200,19 @@ const transitions = {
   EXTERNAL_APPROVAL_REQUIRED: ["RESEARCHING", "SUPERSEDED_BY_ALTERNATIVE"],
   SUPERSEDED_BY_ALTERNATIVE: [],
 };
+// A newly reviewed source may have no extraction yet. Malformed retained
+// evidence must fail closed rather than silently being discarded on replay.
+export function retainedExtractedFacts(action) {
+  if (action.extractedFacts === undefined) return [];
+  invariant(
+    Array.isArray(action.extractedFacts) &&
+      action.extractedFacts.every(
+        (fact) => typeof fact === "string" && fact.length > 0,
+      ),
+    "INVALID_EXTRACTED_FACTS:" + action.actionId,
+  );
+  return action.extractedFacts;
+}
 export function transitionAction(action, state, detail, observedAt) {
   invariant(
     ACTION_STATES.includes(state) && transitions[action.state].includes(state),
@@ -225,6 +244,51 @@ export function transitionAction(action, state, detail, observedAt) {
     nextAction: detail.nextAction,
     events: [...(action.events ?? []), { ...event, eventSha256: hash(event) }],
   };
+}
+// Reuse this admission preflight before expensive historical graph replay.
+// It validates the same observed source selected by factSource, without I/O.
+export function reviewedFactAction(fact, actions) {
+  validateCorroboratingEvidence(fact, actions);
+  const action = actions.find((a) => a.actionId === fact.sourceActionId);
+  invariant(
+    action && ["RIGHTS_REVIEWED", "INGESTED"].includes(action.state),
+    "FACT_RIGHTS_REVIEW_REQUIRED:" + fact.factId,
+  );
+  const observed = action.sourcesChecked
+    .filter(
+      (s) =>
+        s.url === fact.sourceUrl &&
+        [200, "REFERENCE_RETRIEVED"].includes(s.status) &&
+        (!fact.observedResponseSha256 ||
+          s.contentSha256 === fact.observedResponseSha256),
+    )
+    .at(-1);
+  const rights = action.rightsFindings.at(-1);
+  invariant(observed && rights, "FACT_SOURCE_NOT_OBSERVED:" + fact.factId);
+  invariant(
+    observed.rawPayloadRetained === undefined ||
+      typeof observed.rawPayloadRetained === "boolean",
+    "FACT_RAW_RETENTION_FLAG_INVALID:" + fact.factId,
+  );
+  invariant(
+    sourceAllowed({
+      url: fact.sourceUrl,
+      contentSha256: observed.contentSha256,
+      observedAt: observed.observedAt,
+      rightsClass: rights.rightsClass,
+      rawPayloadRetained: observed.rawPayloadRetained === true,
+      derivedDataAllowed: true,
+      redistributionAllowed: true,
+      rightsDecision: "REVIEWED_FACT_SOURCE",
+      rightsReview: {
+        scope: "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        termsUrl: rights.termsUrl,
+        reason: rights.reason,
+      },
+    }),
+    "FACT_SOURCE_LICENSE_OR_PROVENANCE:" + fact.factId,
+  );
+  return { action, observed, rights };
 }
 export function validateCorroboratingEvidence(fact, actions) {
   for (const ref of fact.corroboratingEvidence ?? []) {

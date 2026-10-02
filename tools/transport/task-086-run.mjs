@@ -1,3 +1,4 @@
+import { assertBaselineGtfsPackage } from "./task-086-licensed-package.mjs";
 import { runRemediation } from "./task-086-remediate.mjs";
 import fs from "node:fs";
 import path from "node:path";
@@ -5,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import {
   DEFAULT_PARAMETERS,
   hash,
+  exactRecordMap,
   id,
   compare,
   invariant,
@@ -70,6 +72,7 @@ export function run({
     const inputPath = `data/transport/network/sources/${name}`;
     inputPaths.push(inputPath);
     const pack = readJson(rel(inputPath));
+    assertBaselineGtfsPackage(pack);
     const rawPath = `data/transport/network/${pack.source.retainedArchive}`;
     inputPaths.push(rawPath);
     invariant(
@@ -85,6 +88,7 @@ export function run({
     "tools/transport/task-086-model.mjs",
     "tools/transport/task-086-batches.mjs",
     "tools/transport/task-086-run.mjs",
+    "tools/transport/task-086-licensed-package.mjs",
     "tools/transport/task-086-extract-gtfs.py",
   ];
   const generatorHashes = Object.fromEntries(
@@ -93,9 +97,15 @@ export function run({
   const review = readJson(
     rel("data/transport/network/sources/source-review.json"),
   );
-  const sources = new Map(packs.map((p) => [p.source.sourceId, p.source]));
-  const evidence = new Map(
-    packs.flatMap((p) => p.evidence).map((e) => [e.evidenceId, e]),
+  const sources = exactRecordMap(
+    packs.map((p) => p.source),
+    "sourceId",
+    "SOURCE",
+  );
+  const evidence = exactRecordMap(
+    packs.flatMap((p) => p.evidence),
+    "evidenceId",
+    "EVIDENCE",
   );
   const candidates = packs.flatMap((p) => p.nodes);
   const priorNodesPath = path.join(output, "node-downstream-admission.jsonl");

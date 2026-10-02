@@ -1,294 +1,287 @@
 # TASK-086-B 剩余根因目录
 
-288个OPEN唯一根因；全部原始要求保留，报告不停止执行。完整依赖、路线和证据见机器JSONL。
+281 个 OPEN 唯一根因；原始要求保留，检查点后继续执行。
 
-| 稳定根因ID | 类别 | 原始required数 | 核心required数 | 原检查数 |
-| --- | --- | ---: | ---: | ---: |
-| root:airport:review:official-airport:奥尻 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:北大東 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:波照間 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:沖永良部 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:大島 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:大館能代 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:但馬 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:徳之島 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:調布 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:多良間 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:花巻 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:久米島 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:利尻 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:美保 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:名古屋 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:南大東 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:南紀白浜 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:能登 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:鳥取 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:三宅島 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:神津島 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:石見 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:粟国 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:天草 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:紋別 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:喜界 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:新島 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:岩国 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:壱岐 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:与論 | C | 1 | 0 | 1 |
-| root:airport:review:official-airport:札幌 | D | 1 | 0 | 4 |
-| root:airport:review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03 | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665 | D | 1 | 0 | 4 |
-| root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:6e4a29e1-46af-5d04-926f-d248759e7203 | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:717612ec-e655-5ac0-855a-d2afaf8ab1c0 | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:9a55f8a8-6e00-5c21-8cdb-eb11825997dc | D | 1 | 0 | 4 |
-| root:airport:review:transport-node:ac448d92-cf2b-57d7-b48b-7350b6129461 | D | 1 | 0 | 4 |
-| root:airport:review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661 | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:cd521eca-00cc-55da-b9ea-b0092ee28574 | D | 1 | 0 | 4 |
-| root:airport:review:transport-node:e498a8df-df5a-5533-8cc0-7289ef679061 | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5 | C | 1 | 0 | 1 |
-| root:airport:review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374 | C | 1 | 0 | 1 |
-| root:direction:component:031854a4112a1bdba2ea | C | 1 | 0 | 3 |
-| root:direction:component:033be1bbef2705423aa7 | C | 1 | 0 | 3 |
-| root:direction:component:03e564cef00f16c5f55b | C | 1 | 0 | 3 |
-| root:direction:component:05b097445d4cf4920a25 | C | 1 | 0 | 3 |
-| root:direction:component:06e9e32c2539e5b85c30 | C | 1 | 0 | 2 |
-| root:direction:component:07c7818524b3bb0b64a4 | C | 1 | 0 | 3 |
-| root:direction:component:0a196d6203e9e557617a | C | 1 | 0 | 3 |
-| root:direction:component:0b115f42b1cd55c78dae | C | 1 | 0 | 3 |
-| root:direction:component:0b48d7aac0492b4ab390 | C | 1 | 0 | 3 |
-| root:direction:component:0b654efe4515b243221a | C | 1 | 0 | 2 |
-| root:direction:component:0c9a753f4a4565277e54 | C | 1 | 0 | 3 |
-| root:direction:component:0dca8549cffd6d0828ef | C | 1 | 0 | 3 |
-| root:direction:component:0ed154c7fee6a6d56033 | C | 1 | 0 | 3 |
-| root:direction:component:0eec614b8788f64d5865 | C | 1 | 0 | 2 |
-| root:direction:component:1068ba529609ee355f81 | C | 1 | 0 | 3 |
-| root:direction:component:10e15f918e27d2039a47 | C | 1 | 0 | 6 |
-| root:direction:component:124532407be537e09f28 | C | 1 | 0 | 3 |
-| root:direction:component:151b6dfc14f88e48e1dc | C | 1 | 0 | 3 |
-| root:direction:component:16a062275f80ed78de4f | C | 1 | 0 | 3 |
-| root:direction:component:185aaef36b9da298bd1d | C | 1 | 0 | 3 |
-| root:direction:component:18ed29e98b7bcd8b980e | C | 1 | 0 | 3 |
-| root:direction:component:1ab9e7abc9e37b2b43bd | C | 1 | 0 | 3 |
-| root:direction:component:1af75eb15018d9c409a0 | C | 1 | 0 | 3 |
-| root:direction:component:1dcff9c5a38728e5dd93 | C | 1 | 0 | 3 |
-| root:direction:component:1df548bb4e218199d61c | C | 1 | 0 | 2 |
-| root:direction:component:1fc55b66331060086a42 | C | 1 | 0 | 3 |
-| root:direction:component:1fe2d0745776eae89b1b | C | 1 | 0 | 3 |
-| root:direction:component:21adf7f48dc94f3f47aa | C | 1 | 0 | 3 |
-| root:direction:component:246ee746a1b1971fe3f3 | C | 1 | 0 | 3 |
-| root:direction:component:26f4adf711143a1fa5dd | C | 1 | 0 | 3 |
-| root:direction:component:26f5c2b05d15af3eeb9d | C | 1 | 0 | 3 |
-| root:direction:component:274694145a2f9455d6bf | C | 1 | 0 | 3 |
-| root:direction:component:2a2dfe7c130a035f5d9a | C | 1 | 0 | 3 |
-| root:direction:component:2bc8a56898a9b4562ce4 | C | 1 | 0 | 2 |
-| root:direction:component:2c4972bea167f5eb11e9 | C | 1 | 0 | 3 |
-| root:direction:component:359928b42d6b74c3ede6 | C | 1 | 0 | 3 |
-| root:direction:component:363658884512f41a37d7 | C | 1 | 0 | 3 |
-| root:direction:component:379f054449c0e1dbda41 | C | 1 | 0 | 3 |
-| root:direction:component:39e60860dc171684dc01 | C | 1 | 0 | 3 |
-| root:direction:component:3ad128ab6d152b63fa6a | C | 1 | 0 | 7 |
-| root:direction:component:3d98d6faf8746fce866c | C | 1 | 0 | 3 |
-| root:direction:component:3e3dfba65b078e2f90ce | C | 1 | 0 | 3 |
-| root:direction:component:3ea8f288f52429a104aa | C | 1 | 0 | 3 |
-| root:direction:component:4366a7191596c4b0a521 | C | 1 | 0 | 3 |
-| root:direction:component:4516374f05cda3a3809f | C | 1 | 0 | 3 |
-| root:direction:component:46848750b554187cbdcb | C | 1 | 0 | 3 |
-| root:direction:component:46ea4a83e6e4a4e1fcba | C | 1 | 0 | 3 |
-| root:direction:component:4a31dfa3a7c0d28ba7c6 | C | 1 | 0 | 3 |
-| root:direction:component:4c8a418cedf0cb390cf8 | C | 1 | 0 | 3 |
-| root:direction:component:4ebda81b9e421b62c121 | C | 1 | 0 | 3 |
-| root:direction:component:4f2aa01b152098f04eb8 | C | 1 | 0 | 3 |
-| root:direction:component:508d2e682cf42e50d871 | C | 1 | 0 | 2 |
-| root:direction:component:50d4db558d4968b3b773 | C | 1 | 0 | 10 |
-| root:direction:component:514a9f9a62f4a7141eed | C | 1 | 0 | 2 |
-| root:direction:component:51b2154e0d9f178f3fbb | C | 1 | 0 | 2 |
-| root:direction:component:52422ad77b49cfeb4e7d | C | 1 | 0 | 3 |
-| root:direction:component:52b7f85b0fa05b7fcfde | C | 1 | 0 | 3 |
-| root:direction:component:53a73fde65b3d3d2c553 | C | 1 | 0 | 3 |
-| root:direction:component:57e19f714a5e4a743f2a | C | 1 | 0 | 3 |
-| root:direction:component:598e79843dd1611c287b | C | 1 | 0 | 11 |
-| root:direction:component:5aa4326de15a81aceb45 | C | 1 | 0 | 4 |
-| root:direction:component:5bd2c49d6648af1e2159 | C | 1 | 0 | 3 |
-| root:direction:component:5d42c52843362adeeefc | C | 1 | 0 | 6 |
-| root:direction:component:5e4bb9027b265696b3ba | C | 1 | 0 | 3 |
-| root:direction:component:5eaf80512eb36054d7e5 | C | 1 | 0 | 3 |
-| root:direction:component:5f5f5a0984fb1e6f0c33 | C | 1 | 0 | 3 |
-| root:direction:component:629a00cc1e5ade147d32 | C | 1 | 0 | 3 |
-| root:direction:component:62b4892a40d30e9669a3 | C | 1 | 0 | 3 |
-| root:direction:component:658c39dc5a1bbab121ea | C | 1 | 0 | 3 |
-| root:direction:component:659d1af0eff421d6c8e2 | C | 1 | 0 | 3 |
-| root:direction:component:66248fdc74557aa870e1 | C | 1 | 0 | 2 |
-| root:direction:component:662a9755abeab5d52770 | C | 1 | 0 | 3 |
-| root:direction:component:66b4f3e76c2df4e6c39e | C | 1 | 0 | 3 |
-| root:direction:component:6d1835f87fd77b37991e | C | 1 | 0 | 3 |
-| root:direction:component:6d74fd550a0b4ff8587f | C | 1 | 0 | 3 |
-| root:direction:component:6d83632f21a2469a4a9f | C | 1 | 0 | 3 |
-| root:direction:component:6df803bf98b4d6be95f7 | C | 1 | 0 | 3 |
-| root:direction:component:6f07aa552706368101bb | C | 1 | 0 | 3 |
-| root:direction:component:6f31dd763ba34eb33b44 | C | 1 | 0 | 3 |
-| root:direction:component:6f9ea2173ec613a24887 | C | 1 | 0 | 3 |
-| root:direction:component:6feea55ad2f0c26432b0 | C | 1 | 0 | 3 |
-| root:direction:component:7167e2b771d2bef5e73d | C | 1 | 0 | 3 |
-| root:direction:component:721da444a79d0f953fa9 | C | 1 | 0 | 3 |
-| root:direction:component:7357c086526d31d62768 | C | 1 | 0 | 3 |
-| root:direction:component:73603080b04e11e88c5a | C | 1 | 0 | 3 |
-| root:direction:component:75a517a3d377c8b095c5 | C | 1 | 0 | 3 |
-| root:direction:component:76052c54b4dac4aa161d | C | 1 | 0 | 3 |
-| root:direction:component:79b921ab9cb00cb1d063 | C | 1 | 0 | 3 |
-| root:direction:component:79e154834e4fdb138721 | C | 1 | 0 | 3 |
-| root:direction:component:7b35afe9270d76b32958 | C | 1 | 0 | 2 |
-| root:direction:component:7be65105a4a83988ec72 | C | 1 | 0 | 3 |
-| root:direction:component:7c3cc595139a4b403ce1 | C | 1 | 0 | 3 |
-| root:direction:component:7cfeb8b8e663f6593f1b | C | 1 | 0 | 3 |
-| root:direction:component:7e0cb19c2cbc6932da69 | C | 1 | 0 | 3 |
-| root:direction:component:7e1d1b25d154b9ae91d4 | C | 1 | 0 | 3 |
-| root:direction:component:7f21dcafcfdb5d366a39 | C | 1 | 0 | 3 |
-| root:direction:component:7f845ffc0a1fc9af6869 | C | 1 | 0 | 3 |
-| root:direction:component:7faf9134a532c46bff92 | C | 1 | 0 | 3 |
-| root:direction:component:8000fbb3df5d1118ea19 | C | 1 | 0 | 3 |
-| root:direction:component:8050804d37a00ec8f275 | C | 1 | 0 | 3 |
-| root:direction:component:80754831e83c494feb89 | C | 1 | 0 | 2 |
-| root:direction:component:80d8580498bd41996a0d | C | 1 | 0 | 3 |
-| root:direction:component:8169918b413d050251c4 | C | 1 | 0 | 3 |
-| root:direction:component:8342a0c2bce13775f263 | C | 1 | 0 | 3 |
-| root:direction:component:8920a45355eaecd5fe8a | C | 1 | 0 | 3 |
-| root:direction:component:8a5b56cbbc54743ea134 | C | 1 | 0 | 3 |
-| root:direction:component:8b3872e6b881562cd0d6 | C | 1 | 0 | 2 |
-| root:direction:component:8e796be0d8dc9622e3b2 | C | 1 | 0 | 3 |
-| root:direction:component:8f25c44e48032d016434 | C | 1 | 0 | 3 |
-| root:direction:component:91378025a59875422ee5 | C | 1 | 0 | 3 |
-| root:direction:component:955da6099258de2879b1 | C | 1 | 0 | 3 |
-| root:direction:component:95fcbced624d4ba4f59c | C | 1 | 0 | 3 |
-| root:direction:component:9630ce237479ac491e11 | C | 1 | 0 | 3 |
-| root:direction:component:96c48a5a79fdcab6defb | C | 1 | 0 | 3 |
-| root:direction:component:986ed5176b149f2984e2 | C | 1 | 0 | 3 |
-| root:direction:component:99ac394f5bec6c87633e | C | 1 | 0 | 3 |
-| root:direction:component:9b3f6a5973ab615bdab4 | C | 1 | 0 | 3 |
-| root:direction:component:9df3f14f351d442374fb | C | 1 | 0 | 3 |
-| root:direction:component:a04d3dc8ef91b7bdc974 | C | 1 | 0 | 3 |
-| root:direction:component:a1c2e01c075cdace2aa2 | C | 1 | 0 | 3 |
-| root:direction:component:a42348ba71f34d42167a | C | 1 | 0 | 3 |
-| root:direction:component:a6989e88e5c7a604c5fc | C | 1 | 0 | 3 |
-| root:direction:component:aa9b4c698bd6e006ab5e | C | 1 | 0 | 3 |
-| root:direction:component:adaa071e16666f0f1250 | C | 1 | 0 | 5 |
-| root:direction:component:afb2cb0bf36f8d4a6a36 | C | 1 | 0 | 3 |
-| root:direction:component:b0113734cbf9ca433e70 | C | 1 | 0 | 3 |
-| root:direction:component:b05947f9342669587cf9 | C | 1 | 0 | 3 |
-| root:direction:component:b089ed7f9946533172f0 | C | 1 | 0 | 3 |
-| root:direction:component:b1e444f70fcf03282df0 | C | 1 | 0 | 3 |
-| root:direction:component:b353a5b5049df4ab8479 | C | 1 | 0 | 3 |
-| root:direction:component:b38e670e4daea803133e | C | 1 | 0 | 3 |
-| root:direction:component:b4f5008fcefdf116ba82 | C | 1 | 0 | 9 |
-| root:direction:component:b7f6fddc6d47b1b51a05 | C | 1 | 0 | 3 |
-| root:direction:component:b9c92a7626841e01935a | C | 1 | 0 | 3 |
-| root:direction:component:bcb8e18cee0bb3319142 | C | 1 | 0 | 3 |
-| root:direction:component:be8a3033f27b614973b3 | C | 1 | 0 | 3 |
-| root:direction:component:bfa52ab17e9af88008f6 | C | 1 | 0 | 3 |
-| root:direction:component:c03d2629ab769b5a9923 | C | 1 | 0 | 3 |
-| root:direction:component:c152a8c1a3c42ec72ae6 | C | 1 | 0 | 3 |
-| root:direction:component:c2bb7dbcdb86737fc217 | C | 1 | 0 | 3 |
-| root:direction:component:c38cbe2cfbdd5814a825 | C | 1 | 0 | 3 |
-| root:direction:component:c3c411ea8c2cb0af4fad | C | 1 | 0 | 3 |
-| root:direction:component:c68e50bc1d4ccd5c655e | C | 1 | 0 | 3 |
-| root:direction:component:cdb5939683ed546563ce | C | 1 | 0 | 3 |
-| root:direction:component:cddcc8716667f5755c61 | C | 1 | 0 | 2 |
-| root:direction:component:ceea3eeca5e4f9c8b420 | C | 1 | 0 | 3 |
-| root:direction:component:d0feeec1642648745873 | C | 1 | 0 | 3 |
-| root:direction:component:d248ac6402247cc3460e | C | 1 | 0 | 3 |
-| root:direction:component:d5be4e1c6e0f73bff0e2 | C | 1 | 0 | 3 |
-| root:direction:component:d85515868c632d73abb3 | C | 1 | 0 | 3 |
-| root:direction:component:d858927db0d8aa1ef819 | C | 1 | 0 | 3 |
-| root:direction:component:d88e04e0ca3223835ba3 | C | 1 | 0 | 3 |
-| root:direction:component:d91c3af4a36945707f20 | C | 1 | 0 | 3 |
-| root:direction:component:da3f4ef8f7b6f60645aa | C | 1 | 0 | 3 |
-| root:direction:component:da82c21cf3db0c229813 | C | 1 | 0 | 2 |
-| root:direction:component:dac6261784d213bfa2be | C | 1 | 0 | 5 |
-| root:direction:component:db726a56ab6026de755e | C | 1 | 0 | 3 |
-| root:direction:component:dbdab86fc4fcbfd07475 | C | 1 | 0 | 3 |
-| root:direction:component:dd1dc8bc5827da5be8bd | C | 1 | 0 | 3 |
-| root:direction:component:df953e2ab8489b8d32bf | C | 1 | 0 | 3 |
-| root:direction:component:e010460fa3120cb5fefe | C | 1 | 0 | 3 |
-| root:direction:component:e16a1aa0ed209ac2eea9 | C | 1 | 0 | 3 |
-| root:direction:component:e1e97874b092ae4ef037 | C | 1 | 0 | 3 |
-| root:direction:component:e67fe230798a3fb2ae54 | C | 1 | 0 | 3 |
-| root:direction:component:e74cc3521f7b928e4260 | C | 1 | 0 | 3 |
-| root:direction:component:ea38c62ad2a4644d1bdb | C | 1 | 0 | 3 |
-| root:direction:component:ea41f118cfa630c463b9 | C | 1 | 0 | 3 |
-| root:direction:component:ea57054f8ef192180057 | C | 1 | 0 | 3 |
-| root:direction:component:eb1ca87e41dba0e30543 | C | 1 | 0 | 3 |
-| root:direction:component:ec62da5e6c56b91fbe44 | C | 1 | 0 | 3 |
-| root:direction:component:edbbcc24927b6ab34c5e | C | 1 | 0 | 3 |
-| root:direction:component:eed8849801d31881377d | C | 1 | 0 | 3 |
-| root:direction:component:ef4b3b68e882fc19fb16 | C | 1 | 0 | 3 |
-| root:direction:component:f3d7b0f0f2bf42b00e76 | C | 1 | 0 | 3 |
-| root:direction:component:f8198e42e8d3122baae2 | C | 1 | 0 | 3 |
-| root:direction:component:f8c2c4aa28e5beb416c2 | C | 1 | 0 | 3 |
-| root:direction:component:f985b7c84025bce21177 | C | 1 | 0 | 3 |
-| root:direction:component:faf3533cb63b374599af | C | 1 | 0 | 6 |
-| root:direction:component:fc42e2e896454b6b4772 | C | 1 | 0 | 3 |
-| root:direction:component:fdf6f950ce1043cbc77b | C | 1 | 0 | 6 |
-| root:direction:component:ff442abdd9eca4fbdc0a | C | 1 | 0 | 3 |
-| root:direction:component:ff8b0a14b087777a6f06 | C | 1 | 0 | 3 |
-| root:direction:component:ffc62a3f062902160f51 | C | 1 | 0 | 3 |
-| root:direction:component:174e3b9ee8a707b5777a | C | 0 | 0 | 2 |
-| root:direction:component:1903a5247a4b915a5a62 | C | 0 | 0 | 2 |
-| root:direction:component:19b37aa06417df5c2a2a | C | 0 | 0 | 2 |
-| root:direction:component:19cfdcb624a239d6c66d | C | 0 | 0 | 2 |
-| root:direction:component:1f120e0f81eda8366810 | C | 0 | 0 | 2 |
-| root:direction:component:22abb78bd3ec80e19de8 | C | 0 | 0 | 2 |
-| root:direction:component:26325527d95127027462 | C | 0 | 0 | 2 |
-| root:direction:component:26b86c4fba6b0d78e500 | C | 0 | 0 | 2 |
-| root:direction:component:2be8cc173d1768e7aa1e | C | 0 | 0 | 2 |
-| root:direction:component:334416d45e275ad99cef | C | 0 | 0 | 2 |
-| root:direction:component:34036124ed468f295266 | C | 0 | 0 | 2 |
-| root:direction:component:36c0866ab113139f22eb | C | 0 | 0 | 2 |
-| root:direction:component:378b2fdd553adb85a099 | C | 0 | 0 | 2 |
-| root:direction:component:3b57278ddd9860e2b4a8 | C | 0 | 0 | 2 |
-| root:direction:component:4897ce3db1c0769215f0 | C | 0 | 0 | 2 |
-| root:direction:component:4fc21d164a9ad45d72f2 | C | 0 | 0 | 2 |
-| root:direction:component:52430131496520d97183 | C | 0 | 0 | 2 |
-| root:direction:component:53893e084c29d6e37ad4 | C | 0 | 0 | 2 |
-| root:direction:component:54bac1c26a5e0d1e057f | C | 0 | 0 | 2 |
-| root:direction:component:54d66bff8b64afb78740 | C | 0 | 0 | 2 |
-| root:direction:component:5b1ccda2fab69bcb0551 | C | 0 | 0 | 2 |
-| root:direction:component:6622a26557c4aeaeebfd | C | 0 | 0 | 2 |
-| root:direction:component:66ced99219b08aa0c7ff | C | 0 | 0 | 2 |
-| root:direction:component:6728c67a05cae0d8b0f6 | C | 0 | 0 | 2 |
-| root:direction:component:6d30805fcf42b79ee6ea | C | 0 | 0 | 2 |
-| root:direction:component:6d59a695a9f6b8bdde5f | C | 0 | 0 | 2 |
-| root:direction:component:718e5d5303f96101c20a | C | 0 | 0 | 2 |
-| root:direction:component:75eb2f05d805421d2270 | C | 0 | 0 | 2 |
-| root:direction:component:76dd24e1b29403b10045 | C | 0 | 0 | 2 |
-| root:direction:component:87461a69eec33b698037 | C | 0 | 0 | 2 |
-| root:direction:component:8ce9ccabe03db0c99551 | C | 0 | 0 | 2 |
-| root:direction:component:8e122de93c21b2ead1ab | C | 0 | 0 | 2 |
-| root:direction:component:914521c656becf1d227c | C | 0 | 0 | 2 |
-| root:direction:component:93c9cb64c8c15aabd308 | C | 0 | 0 | 2 |
-| root:direction:component:9d725da987529aa4da94 | C | 0 | 0 | 2 |
-| root:direction:component:a35e53bc7aa92ffe4556 | C | 0 | 0 | 2 |
-| root:direction:component:aa294f0e5fbf67e5dd45 | C | 0 | 0 | 2 |
-| root:direction:component:ae83f00b93a3cdd4f7af | C | 0 | 0 | 2 |
-| root:direction:component:b05d2adb43e9dccb1adc | C | 0 | 0 | 2 |
-| root:direction:component:b287b15eca53565264ff | C | 0 | 0 | 2 |
-| root:direction:component:b7baff6dd9efa001b3dc | C | 0 | 0 | 2 |
-| root:direction:component:b7daf077ffe621385e96 | C | 0 | 0 | 2 |
-| root:direction:component:ba1064f8c9b4742fff7a | C | 0 | 0 | 2 |
-| root:direction:component:bc6b2d3b380079b603fe | C | 0 | 0 | 2 |
-| root:direction:component:c6e77b230e3f1db965c6 | C | 0 | 0 | 2 |
-| root:direction:component:c8bb060e9ef64f956d18 | C | 0 | 0 | 3 |
-| root:direction:component:cac1ab1262baecd8e728 | C | 0 | 0 | 2 |
-| root:direction:component:cd6988c8c95b7ba71660 | C | 0 | 0 | 2 |
-| root:direction:component:ce6ff22376a187fd29de | C | 0 | 0 | 2 |
-| root:direction:component:d32e26b2911dffecea64 | C | 0 | 0 | 2 |
-| root:direction:component:d369f2045176d2ab112e | C | 0 | 0 | 2 |
-| root:direction:component:db6cff2110e9400c29eb | C | 0 | 0 | 2 |
-| root:direction:component:e544e78f31637c347c2a | C | 0 | 0 | 2 |
-| root:direction:component:e78f2057ec875604c4f2 | C | 0 | 0 | 2 |
-| root:direction:component:f24dff50f7dd7c2d99f9 | C | 0 | 0 | 2 |
-| root:direction:component:f3b35febcb7a7d4d678c | C | 0 | 0 | 2 |
-| root:direction:component:f59a2d76ec37203ed78f | C | 0 | 0 | 2 |
-| root:direction:component:f656d4356759b615399c | C | 0 | 0 | 2 |
-| root:direction:component:fcea1d44018e23ee92da | C | 0 | 0 | 2 |
-| root:direction:component:ffce88d4d3f84df13e09 | C | 0 | 0 | 2 |
-| root:obligation:mode:required-special-tourism | C | 0 | 0 | 1 |
+| 稳定根因ID | 类别 | 原始required数 | 原检查数 |
+| --- | --- | ---: | ---: |
+| root:airport:review:official-airport:奥尻 | D | 1 | 4 |
+| root:airport:review:official-airport:北大東 | C | 1 | 1 |
+| root:airport:review:official-airport:波照間 | D | 1 | 4 |
+| root:airport:review:official-airport:沖永良部 | C | 1 | 1 |
+| root:airport:review:official-airport:大島 | D | 1 | 4 |
+| root:airport:review:official-airport:但馬 | D | 1 | 4 |
+| root:airport:review:official-airport:徳之島 | C | 1 | 1 |
+| root:airport:review:official-airport:調布 | D | 1 | 4 |
+| root:airport:review:official-airport:多良間 | D | 1 | 4 |
+| root:airport:review:official-airport:久米島 | C | 1 | 1 |
+| root:airport:review:official-airport:利尻 | D | 1 | 4 |
+| root:airport:review:official-airport:美保 | D | 1 | 4 |
+| root:airport:review:official-airport:南大東 | C | 1 | 1 |
+| root:airport:review:official-airport:南紀白浜 | D | 1 | 4 |
+| root:airport:review:official-airport:能登 | D | 1 | 4 |
+| root:airport:review:official-airport:鳥取 | D | 1 | 4 |
+| root:airport:review:official-airport:三宅島 | D | 1 | 4 |
+| root:airport:review:official-airport:神津島 | D | 1 | 4 |
+| root:airport:review:official-airport:石見 | D | 1 | 4 |
+| root:airport:review:official-airport:粟国 | D | 1 | 4 |
+| root:airport:review:official-airport:天草 | D | 1 | 4 |
+| root:airport:review:official-airport:紋別 | D | 1 | 4 |
+| root:airport:review:official-airport:喜界 | C | 1 | 1 |
+| root:airport:review:official-airport:新島 | D | 1 | 4 |
+| root:airport:review:official-airport:壱岐 | D | 1 | 4 |
+| root:airport:review:official-airport:与論 | C | 1 | 1 |
+| root:airport:review:official-airport:札幌 | D | 1 | 4 |
+| root:airport:review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03 | C | 1 | 1 |
+| root:airport:review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665 | D | 1 | 4 |
+| root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e | C | 1 | 1 |
+| root:airport:review:transport-node:9a55f8a8-6e00-5c21-8cdb-eb11825997dc | D | 1 | 4 |
+| root:airport:review:transport-node:ac448d92-cf2b-57d7-b48b-7350b6129461 | D | 1 | 4 |
+| root:airport:review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe | C | 1 | 1 |
+| root:airport:review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661 | C | 1 | 1 |
+| root:airport:review:transport-node:cd521eca-00cc-55da-b9ea-b0092ee28574 | D | 1 | 4 |
+| root:airport:review:transport-node:e498a8df-df5a-5533-8cc0-7289ef679061 | C | 1 | 1 |
+| root:airport:review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5 | C | 1 | 1 |
+| root:airport:review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374 | C | 1 | 1 |
+| root:direction:component:031854a4112a1bdba2ea | C | 1 | 3 |
+| root:direction:component:033be1bbef2705423aa7 | C | 1 | 3 |
+| root:direction:component:03e564cef00f16c5f55b | C | 1 | 3 |
+| root:direction:component:05b097445d4cf4920a25 | C | 1 | 3 |
+| root:direction:component:06e9e32c2539e5b85c30 | C | 1 | 2 |
+| root:direction:component:07c7818524b3bb0b64a4 | C | 1 | 3 |
+| root:direction:component:0a196d6203e9e557617a | C | 1 | 3 |
+| root:direction:component:0b115f42b1cd55c78dae | C | 1 | 3 |
+| root:direction:component:0b48d7aac0492b4ab390 | C | 1 | 3 |
+| root:direction:component:0b654efe4515b243221a | C | 1 | 2 |
+| root:direction:component:0c9a753f4a4565277e54 | C | 1 | 3 |
+| root:direction:component:0dca8549cffd6d0828ef | C | 1 | 3 |
+| root:direction:component:0ed154c7fee6a6d56033 | C | 1 | 3 |
+| root:direction:component:0eec614b8788f64d5865 | C | 1 | 2 |
+| root:direction:component:1068ba529609ee355f81 | C | 1 | 3 |
+| root:direction:component:10e15f918e27d2039a47 | C | 1 | 6 |
+| root:direction:component:124532407be537e09f28 | C | 1 | 3 |
+| root:direction:component:151b6dfc14f88e48e1dc | C | 1 | 3 |
+| root:direction:component:16a062275f80ed78de4f | C | 1 | 3 |
+| root:direction:component:185aaef36b9da298bd1d | C | 1 | 3 |
+| root:direction:component:18ed29e98b7bcd8b980e | C | 1 | 3 |
+| root:direction:component:1ab9e7abc9e37b2b43bd | C | 1 | 3 |
+| root:direction:component:1af75eb15018d9c409a0 | C | 1 | 3 |
+| root:direction:component:1dcff9c5a38728e5dd93 | C | 1 | 3 |
+| root:direction:component:1df548bb4e218199d61c | C | 1 | 2 |
+| root:direction:component:1fc55b66331060086a42 | C | 1 | 3 |
+| root:direction:component:1fe2d0745776eae89b1b | C | 1 | 3 |
+| root:direction:component:21adf7f48dc94f3f47aa | C | 1 | 3 |
+| root:direction:component:246ee746a1b1971fe3f3 | C | 1 | 3 |
+| root:direction:component:26f4adf711143a1fa5dd | C | 1 | 3 |
+| root:direction:component:26f5c2b05d15af3eeb9d | C | 1 | 3 |
+| root:direction:component:274694145a2f9455d6bf | C | 1 | 3 |
+| root:direction:component:2a2dfe7c130a035f5d9a | C | 1 | 3 |
+| root:direction:component:2bc8a56898a9b4562ce4 | C | 1 | 2 |
+| root:direction:component:2c4972bea167f5eb11e9 | C | 1 | 3 |
+| root:direction:component:359928b42d6b74c3ede6 | C | 1 | 3 |
+| root:direction:component:363658884512f41a37d7 | C | 1 | 3 |
+| root:direction:component:379f054449c0e1dbda41 | C | 1 | 3 |
+| root:direction:component:39e60860dc171684dc01 | C | 1 | 3 |
+| root:direction:component:3ad128ab6d152b63fa6a | C | 1 | 7 |
+| root:direction:component:3d98d6faf8746fce866c | C | 1 | 3 |
+| root:direction:component:3e3dfba65b078e2f90ce | C | 1 | 3 |
+| root:direction:component:3ea8f288f52429a104aa | C | 1 | 3 |
+| root:direction:component:4366a7191596c4b0a521 | C | 1 | 3 |
+| root:direction:component:4516374f05cda3a3809f | C | 1 | 3 |
+| root:direction:component:46848750b554187cbdcb | C | 1 | 3 |
+| root:direction:component:46ea4a83e6e4a4e1fcba | C | 1 | 3 |
+| root:direction:component:4a31dfa3a7c0d28ba7c6 | C | 1 | 3 |
+| root:direction:component:4c8a418cedf0cb390cf8 | C | 1 | 3 |
+| root:direction:component:4ebda81b9e421b62c121 | C | 1 | 3 |
+| root:direction:component:4f2aa01b152098f04eb8 | C | 1 | 3 |
+| root:direction:component:508d2e682cf42e50d871 | C | 1 | 2 |
+| root:direction:component:50d4db558d4968b3b773 | C | 1 | 10 |
+| root:direction:component:514a9f9a62f4a7141eed | C | 1 | 2 |
+| root:direction:component:51b2154e0d9f178f3fbb | C | 1 | 2 |
+| root:direction:component:52422ad77b49cfeb4e7d | C | 1 | 3 |
+| root:direction:component:52b7f85b0fa05b7fcfde | C | 1 | 3 |
+| root:direction:component:53a73fde65b3d3d2c553 | C | 1 | 3 |
+| root:direction:component:57e19f714a5e4a743f2a | C | 1 | 3 |
+| root:direction:component:598e79843dd1611c287b | C | 1 | 11 |
+| root:direction:component:5aa4326de15a81aceb45 | C | 1 | 4 |
+| root:direction:component:5bd2c49d6648af1e2159 | C | 1 | 3 |
+| root:direction:component:5d42c52843362adeeefc | C | 1 | 6 |
+| root:direction:component:5e4bb9027b265696b3ba | C | 1 | 3 |
+| root:direction:component:5eaf80512eb36054d7e5 | C | 1 | 3 |
+| root:direction:component:5f5f5a0984fb1e6f0c33 | C | 1 | 3 |
+| root:direction:component:629a00cc1e5ade147d32 | C | 1 | 3 |
+| root:direction:component:62b4892a40d30e9669a3 | C | 1 | 3 |
+| root:direction:component:658c39dc5a1bbab121ea | C | 1 | 3 |
+| root:direction:component:659d1af0eff421d6c8e2 | C | 1 | 3 |
+| root:direction:component:66248fdc74557aa870e1 | C | 1 | 2 |
+| root:direction:component:662a9755abeab5d52770 | C | 1 | 3 |
+| root:direction:component:66b4f3e76c2df4e6c39e | C | 1 | 3 |
+| root:direction:component:6d1835f87fd77b37991e | C | 1 | 3 |
+| root:direction:component:6d74fd550a0b4ff8587f | C | 1 | 3 |
+| root:direction:component:6d83632f21a2469a4a9f | C | 1 | 3 |
+| root:direction:component:6df803bf98b4d6be95f7 | C | 1 | 3 |
+| root:direction:component:6f07aa552706368101bb | C | 1 | 3 |
+| root:direction:component:6f31dd763ba34eb33b44 | C | 1 | 3 |
+| root:direction:component:6f9ea2173ec613a24887 | C | 1 | 3 |
+| root:direction:component:6feea55ad2f0c26432b0 | C | 1 | 3 |
+| root:direction:component:7167e2b771d2bef5e73d | C | 1 | 3 |
+| root:direction:component:721da444a79d0f953fa9 | C | 1 | 3 |
+| root:direction:component:7357c086526d31d62768 | C | 1 | 3 |
+| root:direction:component:73603080b04e11e88c5a | C | 1 | 3 |
+| root:direction:component:75a517a3d377c8b095c5 | C | 1 | 3 |
+| root:direction:component:76052c54b4dac4aa161d | C | 1 | 3 |
+| root:direction:component:79b921ab9cb00cb1d063 | C | 1 | 3 |
+| root:direction:component:79e154834e4fdb138721 | C | 1 | 3 |
+| root:direction:component:7b35afe9270d76b32958 | C | 1 | 2 |
+| root:direction:component:7be65105a4a83988ec72 | C | 1 | 3 |
+| root:direction:component:7c3cc595139a4b403ce1 | C | 1 | 3 |
+| root:direction:component:7cfeb8b8e663f6593f1b | C | 1 | 3 |
+| root:direction:component:7e0cb19c2cbc6932da69 | C | 1 | 3 |
+| root:direction:component:7e1d1b25d154b9ae91d4 | C | 1 | 3 |
+| root:direction:component:7f21dcafcfdb5d366a39 | C | 1 | 3 |
+| root:direction:component:7f845ffc0a1fc9af6869 | C | 1 | 3 |
+| root:direction:component:7faf9134a532c46bff92 | C | 1 | 3 |
+| root:direction:component:8000fbb3df5d1118ea19 | C | 1 | 3 |
+| root:direction:component:8050804d37a00ec8f275 | C | 1 | 3 |
+| root:direction:component:80754831e83c494feb89 | C | 1 | 2 |
+| root:direction:component:80d8580498bd41996a0d | C | 1 | 3 |
+| root:direction:component:8169918b413d050251c4 | C | 1 | 3 |
+| root:direction:component:8342a0c2bce13775f263 | C | 1 | 3 |
+| root:direction:component:8920a45355eaecd5fe8a | C | 1 | 3 |
+| root:direction:component:8a5b56cbbc54743ea134 | C | 1 | 3 |
+| root:direction:component:8b3872e6b881562cd0d6 | C | 1 | 2 |
+| root:direction:component:8e796be0d8dc9622e3b2 | C | 1 | 3 |
+| root:direction:component:8f25c44e48032d016434 | C | 1 | 3 |
+| root:direction:component:91378025a59875422ee5 | C | 1 | 3 |
+| root:direction:component:955da6099258de2879b1 | C | 1 | 3 |
+| root:direction:component:95fcbced624d4ba4f59c | C | 1 | 3 |
+| root:direction:component:9630ce237479ac491e11 | C | 1 | 3 |
+| root:direction:component:96c48a5a79fdcab6defb | C | 1 | 3 |
+| root:direction:component:986ed5176b149f2984e2 | C | 1 | 3 |
+| root:direction:component:99ac394f5bec6c87633e | C | 1 | 3 |
+| root:direction:component:9b3f6a5973ab615bdab4 | C | 1 | 3 |
+| root:direction:component:9df3f14f351d442374fb | C | 1 | 3 |
+| root:direction:component:a04d3dc8ef91b7bdc974 | C | 1 | 3 |
+| root:direction:component:a1c2e01c075cdace2aa2 | C | 1 | 3 |
+| root:direction:component:a42348ba71f34d42167a | C | 1 | 3 |
+| root:direction:component:a6989e88e5c7a604c5fc | C | 1 | 3 |
+| root:direction:component:aa9b4c698bd6e006ab5e | C | 1 | 3 |
+| root:direction:component:adaa071e16666f0f1250 | C | 1 | 5 |
+| root:direction:component:afb2cb0bf36f8d4a6a36 | C | 1 | 3 |
+| root:direction:component:b0113734cbf9ca433e70 | C | 1 | 3 |
+| root:direction:component:b05947f9342669587cf9 | C | 1 | 3 |
+| root:direction:component:b089ed7f9946533172f0 | C | 1 | 3 |
+| root:direction:component:b1e444f70fcf03282df0 | C | 1 | 3 |
+| root:direction:component:b353a5b5049df4ab8479 | C | 1 | 3 |
+| root:direction:component:b38e670e4daea803133e | C | 1 | 3 |
+| root:direction:component:b4f5008fcefdf116ba82 | C | 1 | 9 |
+| root:direction:component:b7f6fddc6d47b1b51a05 | C | 1 | 3 |
+| root:direction:component:b9c92a7626841e01935a | C | 1 | 3 |
+| root:direction:component:bcb8e18cee0bb3319142 | C | 1 | 3 |
+| root:direction:component:be8a3033f27b614973b3 | C | 1 | 3 |
+| root:direction:component:bfa52ab17e9af88008f6 | C | 1 | 3 |
+| root:direction:component:c03d2629ab769b5a9923 | C | 1 | 3 |
+| root:direction:component:c152a8c1a3c42ec72ae6 | C | 1 | 3 |
+| root:direction:component:c2bb7dbcdb86737fc217 | C | 1 | 3 |
+| root:direction:component:c38cbe2cfbdd5814a825 | C | 1 | 3 |
+| root:direction:component:c3c411ea8c2cb0af4fad | C | 1 | 3 |
+| root:direction:component:c68e50bc1d4ccd5c655e | C | 1 | 3 |
+| root:direction:component:cdb5939683ed546563ce | C | 1 | 3 |
+| root:direction:component:cddcc8716667f5755c61 | C | 1 | 2 |
+| root:direction:component:ceea3eeca5e4f9c8b420 | C | 1 | 3 |
+| root:direction:component:d0feeec1642648745873 | C | 1 | 3 |
+| root:direction:component:d248ac6402247cc3460e | C | 1 | 3 |
+| root:direction:component:d5be4e1c6e0f73bff0e2 | C | 1 | 3 |
+| root:direction:component:d85515868c632d73abb3 | C | 1 | 3 |
+| root:direction:component:d858927db0d8aa1ef819 | C | 1 | 3 |
+| root:direction:component:d88e04e0ca3223835ba3 | C | 1 | 3 |
+| root:direction:component:d91c3af4a36945707f20 | C | 1 | 3 |
+| root:direction:component:da3f4ef8f7b6f60645aa | C | 1 | 3 |
+| root:direction:component:da82c21cf3db0c229813 | C | 1 | 2 |
+| root:direction:component:dac6261784d213bfa2be | C | 1 | 5 |
+| root:direction:component:db726a56ab6026de755e | C | 1 | 3 |
+| root:direction:component:dbdab86fc4fcbfd07475 | C | 1 | 3 |
+| root:direction:component:dd1dc8bc5827da5be8bd | C | 1 | 3 |
+| root:direction:component:df953e2ab8489b8d32bf | C | 1 | 3 |
+| root:direction:component:e010460fa3120cb5fefe | C | 1 | 3 |
+| root:direction:component:e16a1aa0ed209ac2eea9 | C | 1 | 3 |
+| root:direction:component:e1e97874b092ae4ef037 | C | 1 | 3 |
+| root:direction:component:e67fe230798a3fb2ae54 | C | 1 | 3 |
+| root:direction:component:e74cc3521f7b928e4260 | C | 1 | 3 |
+| root:direction:component:ea38c62ad2a4644d1bdb | C | 1 | 3 |
+| root:direction:component:ea41f118cfa630c463b9 | C | 1 | 3 |
+| root:direction:component:ea57054f8ef192180057 | C | 1 | 3 |
+| root:direction:component:eb1ca87e41dba0e30543 | C | 1 | 3 |
+| root:direction:component:ec62da5e6c56b91fbe44 | C | 1 | 3 |
+| root:direction:component:edbbcc24927b6ab34c5e | C | 1 | 3 |
+| root:direction:component:eed8849801d31881377d | C | 1 | 3 |
+| root:direction:component:ef4b3b68e882fc19fb16 | C | 1 | 3 |
+| root:direction:component:f3d7b0f0f2bf42b00e76 | C | 1 | 3 |
+| root:direction:component:f8198e42e8d3122baae2 | C | 1 | 3 |
+| root:direction:component:f8c2c4aa28e5beb416c2 | C | 1 | 3 |
+| root:direction:component:f985b7c84025bce21177 | C | 1 | 3 |
+| root:direction:component:faf3533cb63b374599af | C | 1 | 6 |
+| root:direction:component:fc42e2e896454b6b4772 | C | 1 | 3 |
+| root:direction:component:fdf6f950ce1043cbc77b | C | 1 | 6 |
+| root:direction:component:ff442abdd9eca4fbdc0a | C | 1 | 3 |
+| root:direction:component:ff8b0a14b087777a6f06 | C | 1 | 3 |
+| root:direction:component:ffc62a3f062902160f51 | C | 1 | 3 |
+| root:direction:component:174e3b9ee8a707b5777a | C | 0 | 2 |
+| root:direction:component:1903a5247a4b915a5a62 | C | 0 | 2 |
+| root:direction:component:19b37aa06417df5c2a2a | C | 0 | 2 |
+| root:direction:component:19cfdcb624a239d6c66d | C | 0 | 2 |
+| root:direction:component:1f120e0f81eda8366810 | C | 0 | 2 |
+| root:direction:component:22abb78bd3ec80e19de8 | C | 0 | 2 |
+| root:direction:component:26325527d95127027462 | C | 0 | 2 |
+| root:direction:component:26b86c4fba6b0d78e500 | C | 0 | 2 |
+| root:direction:component:2be8cc173d1768e7aa1e | C | 0 | 2 |
+| root:direction:component:334416d45e275ad99cef | C | 0 | 2 |
+| root:direction:component:34036124ed468f295266 | C | 0 | 2 |
+| root:direction:component:36c0866ab113139f22eb | C | 0 | 2 |
+| root:direction:component:378b2fdd553adb85a099 | C | 0 | 2 |
+| root:direction:component:3b57278ddd9860e2b4a8 | C | 0 | 2 |
+| root:direction:component:4897ce3db1c0769215f0 | C | 0 | 2 |
+| root:direction:component:4fc21d164a9ad45d72f2 | C | 0 | 2 |
+| root:direction:component:52430131496520d97183 | C | 0 | 2 |
+| root:direction:component:53893e084c29d6e37ad4 | C | 0 | 2 |
+| root:direction:component:54bac1c26a5e0d1e057f | C | 0 | 2 |
+| root:direction:component:54d66bff8b64afb78740 | C | 0 | 2 |
+| root:direction:component:5b1ccda2fab69bcb0551 | C | 0 | 2 |
+| root:direction:component:6622a26557c4aeaeebfd | C | 0 | 2 |
+| root:direction:component:66ced99219b08aa0c7ff | C | 0 | 2 |
+| root:direction:component:6728c67a05cae0d8b0f6 | C | 0 | 2 |
+| root:direction:component:6d30805fcf42b79ee6ea | C | 0 | 2 |
+| root:direction:component:6d59a695a9f6b8bdde5f | C | 0 | 2 |
+| root:direction:component:718e5d5303f96101c20a | C | 0 | 2 |
+| root:direction:component:75eb2f05d805421d2270 | C | 0 | 2 |
+| root:direction:component:76dd24e1b29403b10045 | C | 0 | 2 |
+| root:direction:component:87461a69eec33b698037 | C | 0 | 2 |
+| root:direction:component:8ce9ccabe03db0c99551 | C | 0 | 2 |
+| root:direction:component:8e122de93c21b2ead1ab | C | 0 | 2 |
+| root:direction:component:914521c656becf1d227c | C | 0 | 2 |
+| root:direction:component:93c9cb64c8c15aabd308 | C | 0 | 2 |
+| root:direction:component:9d725da987529aa4da94 | C | 0 | 2 |
+| root:direction:component:a35e53bc7aa92ffe4556 | C | 0 | 2 |
+| root:direction:component:aa294f0e5fbf67e5dd45 | C | 0 | 2 |
+| root:direction:component:ae83f00b93a3cdd4f7af | C | 0 | 2 |
+| root:direction:component:b05d2adb43e9dccb1adc | C | 0 | 2 |
+| root:direction:component:b287b15eca53565264ff | C | 0 | 2 |
+| root:direction:component:b7baff6dd9efa001b3dc | C | 0 | 2 |
+| root:direction:component:b7daf077ffe621385e96 | C | 0 | 2 |
+| root:direction:component:ba1064f8c9b4742fff7a | C | 0 | 2 |
+| root:direction:component:bc6b2d3b380079b603fe | C | 0 | 2 |
+| root:direction:component:c6e77b230e3f1db965c6 | C | 0 | 2 |
+| root:direction:component:c8bb060e9ef64f956d18 | C | 0 | 3 |
+| root:direction:component:cac1ab1262baecd8e728 | C | 0 | 2 |
+| root:direction:component:cd6988c8c95b7ba71660 | C | 0 | 2 |
+| root:direction:component:ce6ff22376a187fd29de | C | 0 | 2 |
+| root:direction:component:d32e26b2911dffecea64 | C | 0 | 2 |
+| root:direction:component:d369f2045176d2ab112e | C | 0 | 2 |
+| root:direction:component:db6cff2110e9400c29eb | C | 0 | 2 |
+| root:direction:component:e544e78f31637c347c2a | C | 0 | 2 |
+| root:direction:component:e78f2057ec875604c4f2 | C | 0 | 2 |
+| root:direction:component:f24dff50f7dd7c2d99f9 | C | 0 | 2 |
+| root:direction:component:f3b35febcb7a7d4d678c | C | 0 | 2 |
+| root:direction:component:f59a2d76ec37203ed78f | C | 0 | 2 |
+| root:direction:component:f656d4356759b615399c | C | 0 | 2 |
+| root:direction:component:fcea1d44018e23ee92da | C | 0 | 2 |
+| root:direction:component:ffce88d4d3f84df13e09 | C | 0 | 2 |

@@ -82,6 +82,23 @@ export function invariant(condition, message) {
 export function unique(rows, key, label) {
   invariant(new Set(rows.map(key)).size === rows.length, `DUPLICATE_${label}`);
 }
+// Repeated references may share an ID only when the complete records agree.
+export function exactRecordMap(rows, key, label) {
+  const result = new Map();
+  for (const row of rows) {
+    invariant(
+      row && typeof row[key] === "string" && row[key],
+      `INVALID_${label}_ID`,
+    );
+    invariant(
+      !result.has(row[key]) ||
+        canonical(result.get(row[key])) === canonical(row),
+      `CONFLICTING_${label}_ID:${row[key]}`,
+    );
+    result.set(row[key], row);
+  }
+  return result;
+}
 export const SOURCE_RIGHTS = [
   "RAW_PERSISTENCE_ALLOWED",
   "DERIVED_STATIC_FACTS_ALLOWED",
@@ -347,6 +364,89 @@ export function reviewedGtfsComponent(selector, nodes, sources, evidence) {
   );
   return node;
 }
+// Derived GTFS identities have a separate evidence contract. Do not let the
+// generic station-name matcher turn a malformed selector into an interchange.
+export function reviewedDerivedGtfsComponent(
+  selector,
+  nodes,
+  sources,
+  evidence,
+) {
+  const r = selector.derivedGtfsIdentity;
+  const source = sources.get(r?.sourceId);
+  const anchor = `${r?.sourceId}:stop:${r?.stopId}`;
+  const node = nodes.get(id("node", anchor));
+  invariant(
+    r?.method === "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE" &&
+      r.currentPassengerAccessReview &&
+      selector.mode === undefined &&
+      selector.nodeKind === "bus_stop" &&
+      sourceAllowed(source) &&
+      source.sourceId === "gtfs:tokachi-airport" &&
+      source.rightsClass === "DERIVED_STATIC_FACTS_ALLOWED" &&
+      source.rightsDecision === "PASS_OPERATOR_ROUTE_GUIDANCE_STATIC_FACTS" &&
+      source.rightsReview?.termsUrl ===
+        "https://www.tokachibus.jp/rosenbus/opendata/" &&
+      source.rightsReview?.usage === "ROUTE_GUIDANCE" &&
+      source.derivedRedistributionScope ===
+        "ROUTE_GUIDANCE_MINIMAL_STATIC_FACTS" &&
+      [
+        "rawPayloadRetained",
+        "persistenceAllowed",
+        "rawPersistenceAllowed",
+        "rawRedistributionAllowed",
+        "rawByteReproductionAvailable",
+      ].every((k) => source[k] === false) &&
+      !source.retainedArchive &&
+      source.rebuildBasis === "REVIEWED_DERIVED_STATIC_INPUT" &&
+      /^\d{8}$/.test(r.serviceDate ?? "") &&
+      source.validFrom <= r.serviceDate &&
+      r.serviceDate <= source.validTo &&
+      source.rightsReview.validFrom <= r.serviceDate &&
+      r.serviceDate <= source.rightsReview.validTo,
+    "DERIVED_GTFS_COMPONENT_REVIEW_REQUIRED",
+  );
+  invariant(
+    node?.nodeId === id("node", anchor) &&
+      node.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      node.origin === "TASK_086_INDEPENDENT_GTFS" &&
+      node.nodeKind === "bus_stop" &&
+      node.identityAnchor === anchor &&
+      node.canonicalNameJa === selector.name &&
+      node.operatorRefs.includes(selector.operator) &&
+      source.agency?.agency_name === selector.operator &&
+      selector.line.startsWith(r.sourceId + ":route:") &&
+      node.lineRefs.includes(selector.line) &&
+      node.identityRecord.stop_id === r.stopId &&
+      node.identityRecord.stop_name === selector.name &&
+      node.identityRecord.platform_code === r.expectedPlatformCode &&
+      hash(node.identityRecord) === r.recordSha256 &&
+      node.latitude === Number(node.identityRecord.stop_lat) &&
+      node.longitude === Number(node.identityRecord.stop_lon) &&
+      node.independentReview?.method === "EXACT_REVIEWED_DERIVED_GTFS_STOP" &&
+      node.independentReview.recordSha256 === r.recordSha256 &&
+      /^[a-f0-9]{64}$/.test(r.derivedInputSha256 ?? "") &&
+      node.independentReview.derivedInputSha256 === r.derivedInputSha256 &&
+      r.sourceArchiveSha256 === source.contentSha256 &&
+      r.derivedProjectionSha256 === source.derivedProjectionSha256 &&
+      node.independentReview.derivedProjectionSha256 ===
+        r.derivedProjectionSha256 &&
+      node.evidenceRefs.some((ref) => {
+        const e = evidence.get(ref);
+        return (
+          verifyEvidence([ref], sources, evidence) &&
+          e.sourceId === r.sourceId &&
+          e.locator === "derived-static:stops.txt:" + r.stopId &&
+          e.derivedInputSha256 === r.derivedInputSha256 &&
+          e.derivedProjectionSha256 === r.derivedProjectionSha256 &&
+          e.evidenceKind === "REVIEWED_DERIVED_STATIC_INPUT" &&
+          canonical(e.record) === canonical(node.identityRecord)
+        );
+      }),
+    "DERIVED_GTFS_COMPONENT_IDENTITY_MISMATCH",
+  );
+  return node;
+}
 export function admitNodes(candidates, sources, evidence, prior = []) {
   unique(candidates, (n) => n.identityAnchor, "NODE_ANCHOR");
   const previous = new Map(prior.map((n) => [n.nodeId, n]));
@@ -570,6 +670,119 @@ export function metricFields(values, sources) {
     }),
   );
 }
+// Artifact generation time is not the service calendar date. Only an explicit
+// independently reviewed date may override the legacy generation-day default.
+export function gtfsServiceDateBound(review, serviceDate, generatedAt) {
+  const expected = Object.hasOwn(review, "reviewedServiceDate")
+    ? review.reviewedServiceDate
+    : generatedAt.slice(0, 10).replaceAll("-", "");
+  if (
+    typeof expected !== "string" ||
+    !/^\d{8}$/.test(expected) ||
+    serviceDate !== expected
+  )
+    return false;
+  const date = new Date(
+    `${expected.slice(0, 4)}-${expected.slice(4, 6)}-${expected.slice(6, 8)}T00:00:00Z`,
+  );
+  return (
+    Number.isFinite(date.getTime()) &&
+    date.toISOString().slice(0, 10).replaceAll("-", "") === expected
+  );
+}
+
+// A section keeps its full native parent as separate evidence. Calendar and
+// direction belong to that parent, including a fallback direction without ID.
+function gtfsSectionBound(row, pattern, sources, evidence, generatedAt) {
+  const section = row.record.section;
+  if (!section || canonical(section) !== canonical(pattern.gtfsSection))
+    return false;
+  const parent = evidence.get(section.parentEvidenceRef);
+  if (
+    !parent ||
+    !verifyEvidence([section.parentEvidenceRef], sources, evidence) ||
+    parent.sourceId !== row.sourceId ||
+    parent.sourceSha256 !== row.sourceSha256 ||
+    parent.record.section
+  )
+    return false;
+  const { trip, calls, calendar, exceptions, serviceDate } = parent.record;
+  if (
+    !trip ||
+    !Array.isArray(calls) ||
+    calls.length < 2 ||
+    hash(calls) !== section.fullParentCallsSha256 ||
+    !["trip", "calendar", "exceptions", "serviceDate"].every(
+      (k) => canonical(parent.record[k]) === canonical(row.record[k]),
+    ) ||
+    !gtfsServiceDateBound(pattern, serviceDate, generatedAt) ||
+    !calls.every(
+      (c, i) =>
+        c.trip_id === trip.trip_id &&
+        Number.isInteger(Number(c.stop_sequence)) &&
+        Number(c.stop_sequence) >= 0 &&
+        (i === 0 ||
+          Number(c.stop_sequence) > Number(calls[i - 1].stop_sequence)),
+    )
+  )
+    return false;
+  const from = calls.findIndex(
+    (c) => Number(c.stop_sequence) === section.fromStopSequence,
+  );
+  const to = calls.findIndex(
+    (c) => Number(c.stop_sequence) === section.toStopSequence,
+  );
+  const direction =
+    trip.direction_id || `ordered:${calls[0].stop_id}>${calls.at(-1).stop_id}`;
+  const source = sources.get(row.sourceId);
+  if (
+    !Number.isInteger(section.fromStopSequence) ||
+    !Number.isInteger(section.toStopSequence) ||
+    from < 0 ||
+    to <= from ||
+    canonical(calls.slice(from, to + 1)) !== canonical(row.record.calls) ||
+    section.expectedDirectionId !== direction ||
+    pattern.direction !== direction ||
+    serviceDate < source.validFrom ||
+    serviceDate > source.validTo ||
+    !Array.isArray(exceptions) ||
+    exceptions.length > 1 ||
+    !exceptions.every(
+      (e) =>
+        e.service_id === trip.service_id &&
+        e.date === serviceDate &&
+        ["1", "2"].includes(e.exception_type),
+    )
+  )
+    return false;
+  const date = new Date(
+    `${serviceDate.slice(0, 4)}-${serviceDate.slice(4, 6)}-${serviceDate.slice(6, 8)}T00:00:00Z`,
+  );
+  const weekday = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ][date.getUTCDay()];
+  const active = exceptions.length
+    ? exceptions[0].exception_type === "1"
+    : calendar &&
+      calendar.service_id === trip.service_id &&
+      calendar.start_date <= serviceDate &&
+      serviceDate <= calendar.end_date &&
+      calendar[weekday] === "1";
+  return (
+    !!active &&
+    row.record.calls.every((c) =>
+      [c.pickup_type || "0", c.drop_off_type || "0"].every((v) =>
+        ["0", "1"].includes(v),
+      ),
+    )
+  );
+}
 export function generatePattern(
   pattern,
   nodes,
@@ -600,6 +813,7 @@ export function generatePattern(
   );
   invariant(
     pattern.sequenceEvidence === "GTFS_TRIP_STOP_SEQUENCE" ||
+      pattern.sequenceEvidence === "REVIEWED_GTFS_STATIC_SEQUENCE" ||
       pattern.sequenceEvidence === "OFFICIAL_CALLING_SEQUENCE",
     "PHYSICAL_ADJACENCY_NOT_SERVICE_PATTERN",
   );
@@ -610,20 +824,68 @@ export function generatePattern(
     "SERVICE_STATE_MISSING",
   );
   if (["inactive", "suspended"].includes(pattern.serviceState)) return [];
-  if (pattern.sequenceEvidence === "GTFS_TRIP_STOP_SEQUENCE") {
+  if (
+    ["GTFS_TRIP_STOP_SEQUENCE", "REVIEWED_GTFS_STATIC_SEQUENCE"].includes(
+      pattern.sequenceEvidence,
+    )
+  ) {
     const rows = pattern.evidenceRefs.map((ref) => evidence.get(ref));
+    if (pattern.sequenceEvidence === "GTFS_TRIP_STOP_SEQUENCE")
+      invariant(
+        rows.every(
+          (row) =>
+            row.evidenceKind !== "REVIEWED_DERIVED_STATIC_INPUT" &&
+            sources.get(row.sourceId)?.rebuildBasis !==
+              "REVIEWED_DERIVED_STATIC_INPUT",
+        ),
+        "DERIVED_GTFS_CANNOT_CLAIM_RAW_SEQUENCE",
+      );
+    if (pattern.sequenceEvidence === "REVIEWED_GTFS_STATIC_SEQUENCE")
+      invariant(
+        rows.every((row) => {
+          const source = sources.get(row.sourceId);
+          return (
+            source.rightsClass === "DERIVED_STATIC_FACTS_ALLOWED" &&
+            source.rawPayloadRetained === false &&
+            source.rawRedistributionAllowed === false &&
+            source.rawByteReproductionAvailable === false &&
+            source.rebuildBasis === "REVIEWED_DERIVED_STATIC_INPUT" &&
+            !source.retainedArchive &&
+            row.evidenceKind === "REVIEWED_DERIVED_STATIC_INPUT" &&
+            /^[a-f0-9]{64}$/.test(pattern.derivedInputSha256 ?? "") &&
+            row.derivedInputSha256 === pattern.derivedInputSha256 &&
+            row.derivedProjectionSha256 === source.derivedProjectionSha256 &&
+            pattern.derivedProjectionSha256 ===
+              source.derivedProjectionSha256 &&
+            row.record.section &&
+            evidence.get(row.record.section.parentEvidenceRef)
+              ?.derivedInputSha256 === pattern.derivedInputSha256
+          );
+        }),
+        "DERIVED_GTFS_PATTERN_PROVENANCE",
+      );
     invariant(
       rows.every((row) => {
         const { trip, calls } = row.record;
+        if (
+          Object.hasOwn(pattern, "reviewedServiceDate") &&
+          !gtfsServiceDateBound(pattern, row.record.serviceDate, generatedAt)
+        )
+          return false;
         if (
           !trip ||
           !Array.isArray(calls) ||
           calls.length !== pattern.callingNodes.length
         )
           return false;
-        const direction =
-          trip.direction_id ||
-          `ordered:${calls[0].stop_id}>${calls.at(-1).stop_id}`;
+        if (row.record.section || pattern.gtfsSection) {
+          if (!gtfsSectionBound(row, pattern, sources, evidence, generatedAt))
+            return false;
+        }
+        const direction = row.record.section
+          ? row.record.section.expectedDirectionId
+          : trip.direction_id ||
+            `ordered:${calls[0].stop_id}>${calls.at(-1).stop_id}`;
         return (
           pattern.lineRef === `${row.sourceId}:route:${trip.route_id}` &&
           pattern.direction === direction &&
@@ -888,6 +1150,20 @@ export function generateTransfer(
           fact.kind === "transfer" &&
           fact.directions.some(([a, b]) => {
             const match = (selector, nodeId) => {
+              if (selector.derivedGtfsIdentity) {
+                try {
+                  return (
+                    reviewedDerivedGtfsComponent(
+                      selector,
+                      nodes,
+                      sources,
+                      evidence,
+                    ).nodeId === nodeId
+                  );
+                } catch {
+                  return false;
+                }
+              }
               if (selector.gtfsIdentity) {
                 try {
                   return (

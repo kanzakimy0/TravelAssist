@@ -1,33 +1,112 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
   "checks": {
     "full": {
-      "command": "full repository regression including deterministic rebuild/resume/corruption; phase169",
-      "publishValidation": true,
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=4",
+        "tests/*.test.mjs"
+      ],
+      "elapsedSeconds": 773.9732903000258,
       "exitCode": 0,
-      "elapsedSeconds": 808.857526
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
     },
     "lint": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "lint"
+      ],
+      "elapsedSeconds": 28.981000400002813,
       "exitCode": 0,
-      "elapsedSeconds": 35.0190026
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
     },
     "typecheck": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "typecheck"
+      ],
+      "elapsedSeconds": 5.157981399999699,
       "exitCode": 0,
-      "elapsedSeconds": 7.0530436
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+    },
+    "format": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "format:check:deploy"
+      ],
+      "elapsedSeconds": 11.999640399997588,
+      "exitCode": 0,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
     },
     "artifact": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:build:local"
+      ],
+      "elapsedSeconds": 50.67226570000639,
       "exitCode": 0,
-      "elapsedSeconds": 54.9756799
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+    },
+    "artifact-verify": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "elapsedSeconds": 1.8889315999986138,
+      "exitCode": 0,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
     }
   },
-  "priorLocalFullSeconds": 933.4090898,
-  "comparison": "Different inputs/code/workload; not attributable speed or model cost savings",
-  "airportRootsClosedSince167": 2,
-  "airportRootsClosedSince164": 5,
-  "newOriginalAllModeReachability": 0,
-  "tokenCostAvailable": false,
+  "priorFull169Seconds": 808.8,
+  "comparison": "Different inputs/code/environment workload: cannot attribute an end-to-end speedup or billing reduction.",
+  "firstLintFailure": {
+    "command": [
+      "npm.cmd",
+      "run",
+      "lint"
+    ],
+    "elapsedSeconds": 33.958836400008295,
+    "exitCode": 1,
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+  },
+  "lintRetryReason": "Private downloaded third-party JavaScript responses were stored with executable extensions; preserved identical bytes/hashes as passive .js.txt evidence and updated private cache references. No repository lint rule/config/code/test input changed.",
+  "firstFullRegressionFailure": {
+    "command": [
+      "node",
+      "--import",
+      "./tests/register-route-ts.mjs",
+      "--test",
+      "tests/*.test.mjs"
+    ],
+    "elapsedSeconds": 740.3665440000186,
+    "exitCode": 1,
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+  },
+  "isolatedAssetDiagnostic": {
+    "elapsedSeconds": 13.1562417,
+    "testTimeoutChanged": false,
+    "exitCode": 0
+  },
+  "fullRegressionRetryReason": "One unrelated asset child hit unchanged30s timeout; isolated test passed13.16s; repeat all tests with concurrency4, no threshold/skip changes.",
+  "failed174ReplaySeconds": [
+    155.7460568,
+    158.8815807
+  ],
+  "failed175ReplaySeconds": [
+    158.9819735,
+    161.4068751
+  ],
+  "packageMetrics": "data/transport/network/research/work-package-ledger.v1.json",
   "tokenCount": null,
   "billedCost": null,
-  "packageMetrics": "data/transport/network/research/work-package-ledger.v1.json"
+  "modelCacheHitCount": null
 }

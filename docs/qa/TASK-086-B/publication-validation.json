@@ -1,65 +1,133 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-02T16:40:32.579704+00:00",
+  "recordedAt": "2026-10-02T20:22:02.506545+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 169,
-  "validationParentHead": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
+  "phase": 175,
+  "validationParentHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
-  "manifestSha256": "d6a12148a847ca23bb8a1c86da8b0f37d40c7b1f0bda1de932219a1ac2e41b53",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
+  "manifestSha256": "bfa182ccbfc742b70a662238a603adc8a641256a5b0370b0707f0a7281309ba3",
   "fullRegression": {
     "status": "PASS",
-    "tests": 2933,
-    "pass": 2933,
+    "tests": 3008,
+    "pass": 3008,
     "fail": 0,
     "skipped": 0,
-    "logSha256": "ac9134a8eddffdb8acab42aec51a1eeabe66af5c489c7c921deaf2ed4e66590d",
+    "logSha256": "382162653e6e4507f5d99903cc52912b8f948e8ab530b8a3785c58d9e61d5b40",
     "timing": {
-      "command": "full repository regression including deterministic rebuild/resume/corruption; phase169",
-      "publishValidation": true,
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=4",
+        "tests/*.test.mjs"
+      ],
+      "elapsedSeconds": 773.9732903000258,
       "exitCode": 0,
-      "elapsedSeconds": 808.857526
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
     },
-    "coverage": "Single full regression includes deterministic clean rebuild, raw extraction, recovery and corruption negatives; no standalone duplicate verifier."
+    "coverage": "One full regression includes deterministic clean rebuild, raw extraction, recovery/corruption and all shared parser negatives. No independent duplicate rebuild."
   },
-  "deterministicRebuildReceiptSha256": "fd6c58ebde422c6ee76fdd71f30c494254c223e2389a513a7344b7dac5dc3fa5",
+  "deterministicRebuildReceiptSha256": "72026ba2fb93815a8c58244e29bef06d91355d3cf8983c8646fe994285b68e3d",
   "checks": [
     {
-      "command": "npm run lint",
+      "command": [
+        "npm.cmd",
+        "run",
+        "lint"
+      ],
       "status": "PASS",
       "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "lint"
+        ],
+        "elapsedSeconds": 28.981000400002813,
         "exitCode": 0,
-        "elapsedSeconds": 35.0190026
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
       },
-      "logSha256": "e8aa79502c0385dbb99c35abdaf59b7e81eacb7c51e26d6f3d1d4ecfbfde7f56"
+      "logSha256": "0ddfe4b68fe76f705d1fdc54def518ed407c117e3a391ccb9454eb55d8803aa8"
     },
     {
-      "command": "npm run typecheck",
+      "command": [
+        "npm.cmd",
+        "run",
+        "typecheck"
+      ],
       "status": "PASS",
       "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "typecheck"
+        ],
+        "elapsedSeconds": 5.157981399999699,
         "exitCode": 0,
-        "elapsedSeconds": 7.0530436
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
       },
-      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+      "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
     },
     {
-      "command": "npm run deploy:build:local and deploy:verify-artifact (includes production build)",
+      "command": [
+        "npm.cmd",
+        "run",
+        "format:check:deploy"
+      ],
       "status": "PASS",
       "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "format:check:deploy"
+        ],
+        "elapsedSeconds": 11.999640399997588,
         "exitCode": 0,
-        "elapsedSeconds": 54.9756799
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
       },
-      "logSha256": "8e7cffbc475d56ffa225c2d668047060a91ed339c1c34d3ad67313fcff8f955e"
+      "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
     },
     {
-      "command": "npm run format:check:deploy",
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:build:local"
+      ],
       "status": "PASS",
-      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:build:local"
+        ],
+        "elapsedSeconds": 50.67226570000639,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      },
+      "logSha256": "af13d466971a074a9b74332c8742167885c42b1569c9392344cfb146ba120846"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        "elapsedSeconds": 1.8889315999986138,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      },
+      "logSha256": "582455178e753aa00b9c6857b9c766cc7a896a9d481b910619b4f8188c0eefb1"
     }
   ],
-  "lintNotes": "0 errors,19 warnings",
-  "artifactIsCleanHeadBuild": false,
   "validationEnvironment": {
     "node": "v24.18.0",
     "python": "3.14.6",
@@ -98,34 +166,34 @@
       "directBranchHeadTest": false
     }
   ],
-  "phase167QualityGates": {
+  "phase169QualityGates": {
     "schemaVersion": 1,
-    "observedAt": "2026-10-02T16:02:24.731988+00:00",
-    "branchHeadSha": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
+    "observedAt": "2026-10-02T16:59:44.439763+00:00",
+    "branchHeadSha": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
     "records": [
       {
-        "runId": 37029687253,
-        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37029687253",
+        "runId": 37035853212,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37035853212",
         "status": "PASS",
         "event": "workflow_dispatch",
         "revision": {
           "schemaVersion": 1,
           "eventName": "workflow_dispatch",
           "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
-          "branchHeadSha": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
-          "checkoutSha": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
+          "branchHeadSha": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+          "checkoutSha": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
           "checkoutParents": [
-            "54186b39e133b9f7de102b4dce4bdf72a4884e6f"
+            "ff5e411359d789f7423f9ece32c78842a64f5c0b"
           ],
-          "eventSha": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
+          "eventSha": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
           "baseSha": null,
           "pullRequestNumber": null,
           "checkoutKind": "BRANCH_HEAD_DIRECT",
           "directBranchHeadTest": true
         },
         "tests": {
-          "tests": 2932,
-          "pass": 2932,
+          "tests": 2933,
+          "pass": 2933,
           "fail": 0,
           "skipped": 0
         },
@@ -195,32 +263,32 @@
             "conclusion": "success"
           }
         ],
-        "logSha256": "502f8c3fba19b4d8a946dd34c91d240f6a16a8a875172d8cc7c96e50e66c5330"
+        "logSha256": "b1b253bbff4fa2e3861bda7e3d4818c16ae348b287954713496b38aceb15bf31"
       },
       {
-        "runId": 37029697756,
-        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37029697756",
+        "runId": 37035860168,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37035860168",
         "status": "PASS",
         "event": "pull_request",
         "revision": {
           "schemaVersion": 1,
           "eventName": "pull_request",
           "ref": "refs/pull/466/merge",
-          "branchHeadSha": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
-          "checkoutSha": "565f8e9dc6ccb6a83551a8aea1396a0fc561856e",
+          "branchHeadSha": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+          "checkoutSha": "c0e48a55cac70569eb281c153be1a54565fa49e2",
           "checkoutParents": [
             "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-            "ff5e411359d789f7423f9ece32c78842a64f5c0b"
+            "fea76d8d0691008551bd6d345e92bfc1ef91b263"
           ],
-          "eventSha": "565f8e9dc6ccb6a83551a8aea1396a0fc561856e",
+          "eventSha": "c0e48a55cac70569eb281c153be1a54565fa49e2",
           "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
           "pullRequestNumber": 466,
           "checkoutKind": "PULL_REQUEST_MERGE_TEST",
           "directBranchHeadTest": false
         },
         "tests": {
-          "tests": 2932,
-          "pass": 2932,
+          "tests": 2933,
+          "pass": 2933,
           "fail": 0,
           "skipped": 0
         },
@@ -290,13 +358,14 @@
             "conclusion": "success"
           }
         ],
-        "logSha256": "2579aa47d4c17cfa75453f3248acd3ea2b1d2833ff8f4f21969f71b5db12c276"
+        "logSha256": "9f133d4a44d16d598d16292bf3408b14c27b6fcdcde9f90643af9ee5a6ae94a9"
       }
     ],
     "rawLogsRetained": false
   },
   "currentQualityGate": {
     "status": "PENDING_CHECKPOINT_PUSH",
-    "requiredRecord": "Read branch HEAD and actual checkout SHA from CI_REVISION. PR merge tests are not direct branch tests; phase167 CI does not cover169."
-  }
+    "requiredRecord": "branchHeadSha and actual checkoutSha from CI_REVISION; PR merge revision differs from direct workflow_dispatch branch checkout."
+  },
+  "artifactIsCleanHeadBuild": false
 }

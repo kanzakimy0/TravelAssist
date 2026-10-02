@@ -25,6 +25,8 @@ import {
 } from "../tools/transport/task-086-model.mjs";
 import {
   transitionAction,
+  retainedExtractedFacts,
+  reviewedFactAction,
   validateCorroboratingEvidence,
   nextSourceAction,
   acquireEvidence,
@@ -2131,8 +2133,9 @@ test("TASK086 municipal P11 local bus retains provider identity and binds the re
     currentOperatorName: "練馬区（運行委託：国際興業株式会社）",
     currentStopName: record.stopName,
     historicalRoute: "氷川台ルート",
-    url: "https://city.example/municipal-route",
-    observedResponseSha256: "c".repeat(64),
+    url: "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+    observedResponseSha256:
+      "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0",
   };
   const selector = {
     name: record.stopName,
@@ -2704,4 +2707,75 @@ test("TASK086 P36 airport road stop requires exact archive identity and current 
         evidence,
       )[0].reasons.includes("IDENTITY_SOURCE_BINDING_MISMATCH"),
     );
+});
+
+test("TASK086 newly reviewed package actions may omit extraction but replay preserves existing evidence", () => {
+  assert.deepEqual(retainedExtractedFacts({ actionId: "new-package" }), []);
+  const facts = ["licensed-gtfs-package:retained", "previous-fact"];
+  assert.deepEqual(
+    retainedExtractedFacts({ actionId: "retained", extractedFacts: facts }),
+    facts,
+  );
+  assert.deepEqual(
+    retainedExtractedFacts({ actionId: "empty", extractedFacts: [] }),
+    [],
+  );
+});
+
+test("TASK086 replay rejects malformed retained extraction evidence", () => {
+  for (const extractedFacts of [null, "fact", {}, [null], [42], [""]]) {
+    assert.throws(
+      () => retainedExtractedFacts({ actionId: "broken", extractedFacts }),
+      /INVALID_EXTRACTED_FACTS:broken/,
+    );
+  }
+});
+
+test("TASK086 source preflight rejects incomplete provenance before historical replay", () => {
+  const fact = {
+    factId: "new",
+    sourceActionId: "official",
+    sourceUrl: "https://operator.invalid/access",
+    observedResponseSha256: hash("response"),
+  };
+  const reviewed = {
+    actionId: "official",
+    state: "RIGHTS_REVIEWED",
+    sourcesChecked: [
+      {
+        url: fact.sourceUrl,
+        status: 200,
+        contentSha256: fact.observedResponseSha256,
+        observedAt: "2026-10-02",
+        rawPayloadRetained: false,
+      },
+    ],
+    rightsFindings: [
+      {
+        rightsClass: "TOPOLOGY_FACT_ONLY_ALLOWED",
+        termsUrl: "https://operator.invalid/terms",
+        reason: "Minimum nonexpressive public access facts only",
+      },
+    ],
+  };
+  assert.equal(
+    reviewedFactAction(fact, [reviewed]).observed.observedAt,
+    "2026-10-02",
+  );
+  for (const change of [
+    { observedAt: undefined },
+    { rawPayloadRetained: "PRIVATE_VISUAL_REVIEW_ONLY" },
+    { rawPayloadRetained: true },
+    { contentSha256: hash("unrelated") },
+  ]) {
+    const bad = structuredClone(reviewed);
+    Object.assign(bad.sourcesChecked[0], change);
+    assert.throws(() => reviewedFactAction(fact, [bad]), /FACT_(SOURCE|RAW)/);
+  }
+  const bad = structuredClone(reviewed);
+  bad.rightsFindings[0].termsUrl = undefined;
+  assert.throws(
+    () => reviewedFactAction(fact, [bad]),
+    /FACT_SOURCE_LICENSE_OR_PROVENANCE/,
+  );
 });

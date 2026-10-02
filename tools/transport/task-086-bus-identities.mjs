@@ -2,6 +2,27 @@ import { hash, invariant } from "./task-086-model.mjs";
 export const P11_ARCHIVE_SHA256 =
   "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1";
 
+// Only these two current descriptions have an existing reviewed municipal
+// identity binding. Neither entry licenses arbitrary suffix/contractor aliases.
+const MUNICIPAL_OPERATOR_DESCRIPTIONS = [
+  {
+    historical: "練馬区",
+    current: "練馬区（運行委託：国際興業株式会社）",
+    url: "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+    sha256: "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0",
+  },
+  {
+    historical: "宇部市",
+    current: "宇部市交通局",
+    url: "https://ubebus.jp/pages/532/",
+    sha256: "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1",
+  },
+];
+const normalizedLegalName = (name) =>
+  typeof name === "string"
+    ? name.replaceAll("（株）", "株式会社").replace(/\s+/g, "")
+    : "";
+
 export function busStopCandidate(selector, record, evidenceRefs, fact) {
   const review = selector.busIdentity;
   invariant(
@@ -25,6 +46,48 @@ export function busStopCandidate(selector, record, evidenceRefs, fact) {
     "P11_COMPONENT_REVIEW_REQUIRED",
   );
   const current = review.currentOperatorEvidence;
+  const succession = review.currentOperatorSuccessionReview;
+  if (Object.hasOwn(review, "currentOperatorSuccessionReview")) {
+    invariant(
+      succession &&
+        typeof succession === "object" &&
+        !Array.isArray(succession),
+      "P11_OPERATOR_SUCCESSION_REVIEW_NOT_BOUND",
+    );
+    const proof = succession.evidence;
+    const validDate = (date) =>
+      /^\d{4}-\d{2}-\d{2}$/.test(date ?? "") &&
+      Number.isFinite(Date.parse(date)) &&
+      new Date(date).toISOString().slice(0, 10) === date;
+    invariant(
+      succession.method === "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP" &&
+        succession.recordOperator === record.operator &&
+        Array.isArray(succession.predecessorLegalNames) &&
+        succession.predecessorLegalNames.includes(
+          normalizedLegalName(record.operator),
+        ) &&
+        succession.currentLegalName === current?.currentOperatorName &&
+        succession.physicalStopContinuityReview &&
+        validDate(succession.effectiveDate) &&
+        validDate(succession.reviewedForServiceDate) &&
+        succession.reviewedForServiceDate === fact?.serviceDate &&
+        succession.effectiveDate <= succession.reviewedForServiceDate &&
+        proof?.currentLegalName === succession.currentLegalName &&
+        Array.isArray(proof.predecessorLegalNames) &&
+        hash(proof.predecessorLegalNames) ===
+          hash(succession.predecessorLegalNames) &&
+        proof.effectiveDate === succession.effectiveDate &&
+        proof.locator &&
+        /^https:\/\//.test(proof.url ?? "") &&
+        /^[a-f0-9]{64}$/.test(proof.observedResponseSha256 ?? "") &&
+        fact?.corroboratingEvidence?.some(
+          (entry) =>
+            entry.url === proof.url &&
+            entry.observedResponseSha256 === proof.observedResponseSha256,
+        ),
+      "P11_OPERATOR_SUCCESSION_REVIEW_NOT_BOUND",
+    );
+  }
   const nameReview = review.currentStopNameReview;
   if (nameReview) {
     invariant(
@@ -71,6 +134,24 @@ export function busStopCandidate(selector, record, evidenceRefs, fact) {
       ),
     "P11_CURRENT_OPERATOR_EVIDENCE_NOT_BOUND",
   );
+  const historicalName = normalizedLegalName(record.operator);
+  const currentName = normalizedLegalName(current.currentOperatorName);
+  const municipalDescription = MUNICIPAL_OPERATOR_DESCRIPTIONS.some(
+    (entry) =>
+      historicalName === entry.historical &&
+      currentName === entry.current &&
+      current.url === entry.url &&
+      current.observedResponseSha256 === entry.sha256,
+  );
+  // Compare the complete physical-component identity. A real service may be
+  // run by one carrier of a combined operator component; fact.operator is not
+  // an identity alias and is deliberately not used in this comparison.
+  invariant(
+    historicalName &&
+      currentName &&
+      (historicalName === currentName || municipalDescription || succession),
+    "P11_OPERATOR_CONTINUITY_REVIEW_REQUIRED",
+  );
   return {
     identityAnchor: "p11:22:" + record.stopRecordId,
     canonicalNameJa: record.stopName,
@@ -94,6 +175,7 @@ export function busStopCandidate(selector, record, evidenceRefs, fact) {
       sourceArchiveSha256: P11_ARCHIVE_SHA256,
       currentOperatorEvidence: current,
       ...(nameReview ? { currentStopNameReview: nameReview } : {}),
+      ...(succession ? { currentOperatorSuccessionReview: succession } : {}),
       currentPassengerAccessReview: review.currentPassengerAccessReview,
       coordinateScope: record.coordinateScope,
       identityAsOf: record.identityAsOf,

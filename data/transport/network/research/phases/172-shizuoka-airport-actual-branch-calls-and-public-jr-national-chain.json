@@ -1,0 +1,587 @@
+{
+  "phaseId": "172-shizuoka-airport-actual-branch-calls-and-public-jr-national-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT",
+    "EXACT_NATIVE_P11",
+    "ACTUAL_BRANCH_CALLS",
+    "ALIGHTING_ONLY_RETAINED",
+    "PUBLIC_FRONTAGE_MAP_REVIEW",
+    "EXISTING_JR_NATIONAL_ANCHOR"
+  ],
+  "completedActionIds": [
+    "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+    "public:shizuoka-airport:terminal-frontage-stand3"
+  ],
+  "facts": [
+    {
+      "factId": "shizuoka-airport-airport-to-shizuoka",
+      "kind": "service",
+      "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+      "sourceUrl": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%A9%E8%B7%AF%E3%80%91-8/",
+      "observedResponseSha256": "abfade629a4b17b34f2a1d25f1954e11abc0a1875614b4b1e0489b5c89f62933",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+          "url": "https://www.mtfuji-shizuokaairport.jp/access/bus-train/shizuokasta02/",
+          "observedResponseSha256": "20ecc834ad0b344fe48bbe6bc2b49443028719775f7c4f3bc35fd1ddb5ba6cec"
+        },
+        {
+          "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+          "url": "https://www.mtfuji-shizuokaairport.jp/media/jikoku2026.pdf",
+          "observedResponseSha256": "e49cb5ca828d21debc92d3a75606aff29000b3a4a4bea109ee5322e475c6375d"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/busstop/kuko/",
+          "observedResponseSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+          "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+          "observedResponseSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+        }
+      ],
+      "callingStations": [
+        "富士山静岡空港",
+        "井口堺",
+        "東名大井川",
+        "東名焼津西",
+        "静岡IC入口",
+        "静岡駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "富士山静岡空港",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6383",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6383",
+            "recordSha256": "43daadd7f91cd72fd0320b56a94f998379eac8e2d31893c868025ee41372ffba",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "富士山静岡空港",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/busstop/kuko/",
+              "observedResponseSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+            }
+          }
+        },
+        {
+          "name": "井口堺",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6401",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6401",
+            "recordSha256": "e137b624df44e7f62ced3875f3c561136f8069542a436f70c31d455224b90f10",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "井口堺",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "東名大井川",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6022",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6022",
+            "recordSha256": "04b10a992de3a1d349a6fa964513853609f257aad48ddce9a153485d9bcefad7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "東名大井川",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "東名焼津西",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs5449",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs5449",
+            "recordSha256": "793132f095bad7a121b1650a463ff700817e020f62b9c12bad8328f522b5fe6f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "東名焼津西",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "静岡IC入口",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs4801",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs4801",
+            "recordSha256": "1b5f2b78998cd37c95692aac9685a852ac824631aa58da171d57469a1b8ce748",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "静岡IC入口",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "静岡駅前",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs4455",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs4455",
+            "recordSha256": "836f1f9708c5b5bbcbe6a541feb70cc7adb8f86daa97014454d769a46e51d815",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "静岡駅前",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+              "observedResponseSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "富士山静岡空港静岡線",
+      "operator": "しずてつジャストライン株式会社",
+      "direction": "airport-to-shizuoka",
+      "serviceClass": "空港アクセスバス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_ROWS_WITH_BRANCH_AND_ALIGHTING_RESTRICTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_OCTOBER24_2026_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "Independent March29 2026 daily airport-origin row, ordered airport→Iguchizakai→Tomei Oigawa→Tomei Yaizu Nishi→ShizuokaIC→JR Shizuoka, then ShinShizuoka beyond bounded national anchor. Intermediate calls explicitly alighting-only; retain pickup1. No reverse inference. Six actual contiguous calls per direction; selected city-origin row via井口堺 excludes skipped吉田IC. Source stopabbreviations resolve to ownofficialmap names, noclock/dynamicguarantee."
+    },
+    {
+      "factId": "shizuoka-airport-shizuoka-to-airport",
+      "kind": "service",
+      "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+      "sourceUrl": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+      "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+          "url": "https://www.mtfuji-shizuokaairport.jp/access/bus-train/shizuokasta02/",
+          "observedResponseSha256": "20ecc834ad0b344fe48bbe6bc2b49443028719775f7c4f3bc35fd1ddb5ba6cec"
+        },
+        {
+          "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+          "url": "https://www.mtfuji-shizuokaairport.jp/media/jikoku2026.pdf",
+          "observedResponseSha256": "e49cb5ca828d21debc92d3a75606aff29000b3a4a4bea109ee5322e475c6375d"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+          "observedResponseSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+          "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/busstop/kuko/",
+          "observedResponseSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+        }
+      ],
+      "callingStations": [
+        "静岡駅前",
+        "静岡IC入口",
+        "東名焼津西",
+        "東名大井川",
+        "井口堺",
+        "富士山静岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "静岡駅前",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs4455",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs4455",
+            "recordSha256": "836f1f9708c5b5bbcbe6a541feb70cc7adb8f86daa97014454d769a46e51d815",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "静岡駅前",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+              "observedResponseSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+            }
+          }
+        },
+        {
+          "name": "静岡IC入口",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs4801",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs4801",
+            "recordSha256": "1b5f2b78998cd37c95692aac9685a852ac824631aa58da171d57469a1b8ce748",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "静岡IC入口",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "東名焼津西",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs5449",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs5449",
+            "recordSha256": "793132f095bad7a121b1650a463ff700817e020f62b9c12bad8328f522b5fe6f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "東名焼津西",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "東名大井川",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6022",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6022",
+            "recordSha256": "04b10a992de3a1d349a6fa964513853609f257aad48ddce9a153485d9bcefad7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "東名大井川",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "井口堺",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6401",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6401",
+            "recordSha256": "e137b624df44e7f62ced3875f3c561136f8069542a436f70c31d455224b90f10",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "井口堺",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "observedResponseSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            }
+          }
+        },
+        {
+          "name": "富士山静岡空港",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6383",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6383",
+            "recordSha256": "43daadd7f91cd72fd0320b56a94f998379eac8e2d31893c868025ee41372ffba",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "富士山静岡空港",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/busstop/kuko/",
+              "observedResponseSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "富士山静岡空港静岡線",
+      "operator": "しずてつジャストライン株式会社",
+      "direction": "shizuoka-to-airport",
+      "serviceClass": "空港アクセスバス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_ROWS_WITH_BRANCH_AND_ALIGHTING_RESTRICTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_OCTOBER24_2026_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "March29 2026 daily operator PDF. Reviewed one actual city-to-airport run: bounded JR Shizuoka→Shizuoka IC→Tomei Yaizu Nishi→Tomei Oigawa→Iguchizakai→airport. YoshidaIC column is pass-through on this run; earlier marked runs use different branch. Prior ShinShizuoka outside section. No clock payload retained. Six actual contiguous calls per direction; selected city-origin row via井口堺 excludes skipped吉田IC. Source stopabbreviations resolve to ownofficialmap names, noclock/dynamicguarantee."
+    },
+    {
+      "factId": "shizuoka-airport-public-terminal-to-stand3",
+      "kind": "transfer",
+      "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+      "sourceUrl": "https://www.mtfuji-shizuokaairport.jp/media/jikoku2026.pdf",
+      "observedResponseSha256": "e49cb5ca828d21debc92d3a75606aff29000b3a4a4bea109ee5322e475c6375d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+          "url": "https://www.mtfuji-shizuokaairport.jp/enjoy/floor/",
+          "observedResponseSha256": "968a4d4786f5ba8ed4285c3212743ba4481bc5237e5c8b52ea1fac0ae9f68c2a"
+        },
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/busstop/kuko/",
+          "observedResponseSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+        }
+      ],
+      "components": [
+        {
+          "name": "静岡空港",
+          "operator": "airport-facility:cf03_00093",
+          "line": "airport:cf03_00093",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00093",
+            "requirementId": "review:transport-node:6e4a29e1-46af-5d04-926f-d248759e7203",
+            "expectedRequirementName": "静岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "富士山静岡空港",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs6383",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs6383",
+            "recordSha256": "43daadd7f91cd72fd0320b56a94f998379eac8e2d31893c868025ee41372ffba",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "富士山静岡空港",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/busstop/kuko/",
+              "observedResponseSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_FRONTAGE_DIAGRAM_AND_CURRENT_OPERATOR_STAND3",
+      "hubScopeComplete": false,
+      "locator": "Native currentairportPDFpage2 public terminalfrontage directly connects bay3; firstfloorarrivallobby officialpage corroborates. Selected daytimeactualruns within6:40-22 terminalopening. Noairside/coordinatewalk/geometry/allhours claim."
+    },
+    {
+      "factId": "shizuoka-jr-north-public-frontage-airport-bay14",
+      "kind": "transfer",
+      "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+      "sourceUrl": "https://www.justline.co.jp/wp-content/themes/justline/pdf/route_map.pdf",
+      "observedResponseSha256": "38efd402b72d6e270df21d603302b2a19a74aeccf9ef3ef8ae6db9650175b321",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:shizutetsu:shizuoka-airport-actual-calls-public-station-frontage",
+          "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+          "observedResponseSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+        },
+        {
+          "sourceActionId": "public:shizuoka-airport:terminal-frontage-stand3",
+          "url": "https://www.mtfuji-shizuokaairport.jp/media/jikoku2026.pdf",
+          "observedResponseSha256": "e49cb5ca828d21debc92d3a75606aff29000b3a4a4bea109ee5322e475c6375d"
+        }
+      ],
+      "components": [
+        {
+          "name": "静岡駅前",
+          "operator": "しずてつジャストライン（株）",
+          "line": "p11-stop:P11-22_22:bs4455",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_22:bs4455",
+            "recordSha256": "836f1f9708c5b5bbcbe6a541feb70cc7adb8f86daa97014454d769a46e51d815",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact nativeP11 stop/operator/airport-line, current ownoperator PDF/baytable binds active service. Historical same-road representative identity, notcurrentplatformcoordinates or oppositeGTFSpointcollapse. Alighting-only airport-origin intermediate restriction retained.",
+            "currentOperatorEvidence": {
+              "recordOperator": "しずてつジャストライン（株）",
+              "currentOperatorName": "しずてつジャストライン株式会社",
+              "currentStopName": "静岡駅前",
+              "historicalRoute": "富士山静岡空港静岡線",
+              "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+              "observedResponseSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+            }
+          }
+        },
+        {
+          "name": "静岡",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_STATION_FRONTAGE_PUBLIC_TERMINAL_GUIDE_AND_CURRENT_A1_BAY14",
+      "hubScopeComplete": false,
+      "locator": "Operator native April2026 PDF station inset reviewed: bay14 atJRnorthpublicfrontage oncontinuousstation-sidepavement; separateundergroundnetwork depicted but notneededtoinferroadcrossing. Airportcurrentguide andoperatorbaytable agreeJRnorth14. ExactexistingconventionalJRanchor, noShinkansen/freegate substitution orcoordinate proximity."
+    }
+  ]
+}

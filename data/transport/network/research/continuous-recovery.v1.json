@@ -1,20 +1,29 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02T16:42:04.781095+00:00",
+  "updatedAt": "2026-10-02T20:23:36.237411+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
-  "currentStage": "CORE_STAGE_PASS",
+  "lastPushedCheckpoint": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
+  "currentStage": "CHECKPOINT175_LOCAL_FULL_GATES_PASS_COMMIT_AND_CI_PENDING",
   "ordinaryWorkRemaining": true,
   "completedSinceCheckpoint": [
-    "Original Hyakuri/Ibaraki airport ground chain: two independently published direct bus directions and two reviewed public transfers; 6 edges,2 P36stopnodes",
-    "Package ordering regression: original-airport work before bus volume; original requirements counted separately from necessary intermediates",
-    "Niigata E22 nineteen independently reviewed calls eachdirection + Bandaiexplicitpublicwalk + independentprefectureterminalfrontage continuity;40edges19P11nodes; originalinventory preserved; sevenairportgroundmilestone reachedincrementally only"
+    "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
+    "Phase171 Nagoya actual asymmetric Aoi bus calls plus public airport/JR/metro connections:14edges,6necessaryP11nodes, explicit Sakae alighting-only. Incremental replay/preservationPASS.",
+    "Phase172 Shizuoka exact6P11nodes/current actual branch-specific service, inbound alighting-only and native public terminal/JRfrontageproof;14edges. IncrementalreplayPASS,preservationPASS.",
+    "Phase173 Yamagata reviewedcorporatesuccession,5P11stops,currentasymmetricexclusiveboardingbus,2actualsixcallTsubasasectionsvia5OucomponentsandexistingFukushimaShinkansenanchor;22edges. ReplayPASS,preservationPASS.",
+    "Phase174 Hanamaki reviewed licensed October2 GTFS two real directional sections and three public transfers,22edges; explicit reviewed serviceDate contract and missing extractedFacts branch fixed, replay/preservationPASS.",
+    "Phase175 Odate-Noshiro exact original C28 requirement admitted with unchangedID, two independently sourced buses, two actual Tsugaru sections toAkita and publictransfers,18edges; sourceobservedAt/rawretentionmetadata corrected, early933factpreflightPASS and replay/preservationPASS."
   ],
   "currentCounts": {
-    "airportSurfaceGaps": 44,
-    "openUniqueRoots": 288
+    "admitted": 3475,
+    "edges": 8329,
+    "hold": 24,
+    "iterations": 175,
+    "lines": 281,
+    "rejected": 0,
+    "required": 3499,
+    "servicePatterns": 614
   },
   "validation": {
     "focusedTests": 65,
@@ -27,13 +36,212 @@
       "failed": 0,
       "deterministicRebuild": "PASS",
       "currentScope": "TASK086-FULL-ORIGINAL-PHASE169-v2",
-      "ci": "PENDING_CHECKPOINT_PUSH"
-    }
+      "ci": "PASS direct37035853212 checkoutfea76d8d0691008551bd6d345e92bfc1ef91b263; PR37035860168 checkoutc0e48a55cac70569eb281c153be1a54565fa49e2; historical170notcovered"
+    },
+    "phase170Replay": {
+      "result": "PASS",
+      "priorFailure": "Missing fact-level corroborating references repaired; P11/C28/source prechecks passed",
+      "elapsed": {
+        "exitCode": 0,
+        "priorFailedSeconds": 151.77937,
+        "elapsedSeconds": 158.1383907
+      },
+      "preservation": "PASS:8201 edges/596 patterns/3435 requirements unchanged",
+      "finalGate": "PENDING: scope/global binding reconciliation and pending common parser edits invalidate prior proof; no current verified claim"
+    },
+    "phase171Replay": {
+      "result": "PASS",
+      "elapsed": {
+        "elapsedSeconds": 162.9590864,
+        "exitCode": 0
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+        "retainedPhaseCount": 160,
+        "retainedEdgeCount": 8239,
+        "retainedPatternCount": 600,
+        "retainedRequirementCount": 3452,
+        "originalRequirements": 1038,
+        "newCounts": {
+          "admitted": 3433,
+          "edges": 8253,
+          "hold": 25,
+          "iterations": 171,
+          "lines": 275,
+          "rejected": 0,
+          "required": 3458,
+          "servicePatterns": 602
+        },
+        "airportSurfaceGaps": 42,
+        "fullGate": "PENDING"
+      },
+      "fullGate": "PENDING_COMMON_CODE_AND_LATEST_INPUTS"
+    },
+    "p11Succession": {
+      "focusedTestsPassed": 26,
+      "retainedSelectorsPassed": 346,
+      "status": "PASS_TARGETED_ONLY"
+    },
+    "phase172": {
+      "status": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+      "facts": 4,
+      "directedEdges": 14,
+      "newP11Nodes": 6,
+      "elapsed": {
+        "exitCode": 0,
+        "elapsedSeconds": 164.2988811
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+        "retainedPhaseCount": 161,
+        "retainedEdgeCount": 8253,
+        "retainedPatternCount": 602,
+        "retainedRequirementCount": 3458,
+        "originalRequirements": 1038,
+        "newCounts": {
+          "admitted": 3439,
+          "edges": 8267,
+          "hold": 25,
+          "iterations": 172,
+          "lines": 276,
+          "rejected": 0,
+          "required": 3464,
+          "servicePatterns": 604
+        },
+        "airportSurfaceGaps": 41,
+        "fullGate": "PENDING"
+      }
+    },
+    "phase173Replay": {
+      "status": "PASS_FULL_GATE_PENDING",
+      "elapsed": {
+        "exitCode": 0,
+        "elapsedSeconds": 169.1900569
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+        "retainedPhaseCount": 162,
+        "retainedEdgeCount": 8267,
+        "retainedPatternCount": 604,
+        "retainedRequirementCount": 3464,
+        "originalRequirements": 1038,
+        "newCounts": {
+          "admitted": 3449,
+          "edges": 8289,
+          "hold": 25,
+          "iterations": 173,
+          "lines": 278,
+          "rejected": 0,
+          "required": 3474,
+          "servicePatterns": 608
+        },
+        "airportSurfaceGaps": 40,
+        "fullGate": "PENDING"
+      }
+    },
+    "specialApplicability": {
+      "focusedTestsPassed": 43,
+      "status": "PASS_TARGETED_INCLUDING_STATIC_INPUT_FINGERPRINT_NEGATIVES",
+      "fullRebuild": "PENDING"
+    },
+    "phase174": {
+      "status": "PASS_INCREMENTAL_FULL_GATE_PENDING",
+      "timing": {
+        "exitCode": 0,
+        "elapsedSeconds": 166.8011756,
+        "priorFailedSeconds": [
+          155.7460568,
+          158.8815807
+        ]
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+        "retainedPhaseCount": 163,
+        "retainedEdgeCount": 8289,
+        "retainedPatternCount": 608,
+        "retainedRequirementCount": 3474,
+        "originalRequirements": 1038,
+        "admissionUpgrades": [],
+        "newCounts": {
+          "admitted": 3466,
+          "edges": 8311,
+          "hold": 25,
+          "iterations": 174,
+          "lines": 279,
+          "rejected": 0,
+          "required": 3491,
+          "servicePatterns": 610
+        },
+        "airportSurfaceGaps": 39,
+        "fullGate": "PENDING"
+      },
+      "repairedFailures": [
+        "REVIEWED_SERVICE_DATE_VS_GENERATION_DATE",
+        "OPTIONAL_NEW_SOURCE_EXTRACTION_LIST"
+      ],
+      "sourcePreflightTestCount": 41
+    },
+    "phase175": {
+      "status": "PASS_INCREMENTAL_FULL_GATE_PENDING",
+      "timing": {
+        "elapsedSeconds": 168.7859174,
+        "priorFailedSeconds": [
+          158.9819735,
+          161.4068751
+        ],
+        "exitCode": 0
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+        "retainedPhaseCount": 164,
+        "retainedEdgeCount": 8311,
+        "retainedPatternCount": 610,
+        "retainedRequirementCount": 3491,
+        "originalRequirements": 1038,
+        "admissionUpgrades": [
+          {
+            "requirementId": "review:official-airport:大館能代",
+            "nodeId": "transport-node:086:c2bc14cd815bf3bfb98ad50380386a6a",
+            "from": "HOLD",
+            "to": "ADMIT_TASK_086_TOPOLOGY",
+            "evidenceRefs": [
+              "transport-evidence:086:39953a3f6a5aa8b8fe48117ddb9b2e8b",
+              "transport-evidence:086:44efba827690267e0c8b22edf9c6a47c"
+            ]
+          }
+        ],
+        "newCounts": {
+          "admitted": 3475,
+          "edges": 8329,
+          "hold": 24,
+          "iterations": 175,
+          "lines": 281,
+          "rejected": 0,
+          "required": 3499,
+          "servicePatterns": 614
+        },
+        "airportSurfaceGaps": 38,
+        "fullGate": "PENDING"
+      },
+      "repairedFailures": [
+        "MISSING_OBSERVATION_TIMESTAMP: explicit cached-review-time, no invented original fetch time",
+        "PRIVATE_VISUAL_REVIEW_STRING_USED_AS_RAW_RETENTION_BOOL: canonical false and separate private scope"
+      ],
+      "earlySourcePreflightFacts": 933
+    },
+    "fullGate": "LOCAL_PASS_175_CI_PENDING"
   },
-  "nextConcreteAction": "Commit/push verifiedphase169checkpoint, recorddirectbranchandPRcheckoutCIseparately; continueIwakuni currentJRWest16callsectionandrail/busstopidentitybinding. Obihiro independentdatedJRrailsource andGTFSrightsresearch active. Reportsnotstopconditions.",
+  "nextConcreteAction": "Input/code freeze at175: run one full regression including deterministic rebuild/recovery/corruption, then applicable lint/type/format/artifact gates; stage report/preservation/secrets; commit/push and record exact branch/checkout CI. Continue176Sapporo and original airport/bus scope after checkpoint.",
   "independentWork": [
-    "Iwakuni original airport ground-chain source extraction",
-    "Obihiro original airport ground-chain source extraction"
+    "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
+    "Tottori original airport/current complete calling sequences and rail dependency",
+    "Obihiro remaining16 native direction links/conditional city-feed cycle",
+    "Chofu original airport lawful operator/government source alternative after hosted timetable automated-use exclusion"
   ],
   "deferredOrdinaryWork": [
     {
@@ -77,8 +285,136 @@
     {
       "path": ".cache/task-086/airports7/smallreview169.json",
       "sha256": "0dc4722a232492b6351674a2e4768e76f1dca6c3b8d89d4e2fc9bc7ecb09897e"
+    },
+    {
+      "path": ".cache/task-086/iwakuni170/iwakuni-rights-identity-review-v1.json",
+      "sha256": "43bf1f2ca6f2aeb5bbb6c851e62b5b492b436cbcef37e4e86fc6ed0a69eaaea1"
+    },
+    {
+      "path": ".cache/task-086/obihiro171/obihiro-airport-chain-extraction-v2.json",
+      "sha256": "cac15dc0e9348612fbdf99598716ef9cc260c48cb0b7af6c0a3743aa86377905"
     }
   ],
   "runtimeLimitPolicy": "On actual interruption resume stated action and caches. Not completion; no automatic restart promise.",
-  "runningProcesses": {}
+  "runningProcesses": {
+    "sharedWriter": "Full regression next; canonical imports and code edits frozen until gates finish",
+    "privateResearch": "Read-only sources/private cache work may continue"
+  },
+  "nextExactAction": "python -X utf8 .cache/task-086/airports7/validate-checkpoint.py 175",
+  "pendingSharedCode": [],
+  "specialApplicability": {
+    "input": "data/transport/network/research/special-applicability.v1.json",
+    "snapshotScopeId": "TASK086-FULL-ORIGINAL-PHASE173-v2",
+    "requiredNodes": 152,
+    "actualServiceCallNodes": 128,
+    "transferOnlyNodes": 24,
+    "patterns": 20,
+    "status": "STRICT_REPLAY_PASS_FULL_DETERMINISTIC_RECEIPT_PENDING",
+    "universalRopewayCoverageClaimed": false
+  },
+  "recoveryPolicy": "Continue entire original TASK086 after packages/reports/checkpoints. No production/API/planner/merge/release. Platform interruption is not completion.",
+  "currentScopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
+  "currentValidationAttempt": {
+    "phase": 175,
+    "status": "FULL_AND_REMAINING_LOCAL_GATES_PASS",
+    "firstFullSeconds": 740.366544,
+    "firstFullTests": 3008,
+    "firstFullPassed": 3007,
+    "failure": "Unrelated asset nightly dry-run child process exceeded its unchanged 30000 ms timeout under default full-suite concurrency.",
+    "isolatedDiagnosticSeconds": 13.1562417,
+    "isolatedDiagnosticStatus": "PASS",
+    "nextAction": "Run identical full test selection with --test-concurrency=4; retain original timeout and all gates. Concurrency explanation is a hypothesis pending result.",
+    "tests": 3008,
+    "passed": 3008,
+    "failed": 0,
+    "seconds": 773.9732903000258,
+    "lintInitialFailure": "Thirdparty private downloaded JS source treated as projectcode; preserved identicalbytes/hash in .js.txt passive evidence, updatedprivatepath, projectlint rules unchanged.",
+    "checks": {
+      "lint": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "lint"
+        ],
+        "elapsedSeconds": 28.981000400002813,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      },
+      "typecheck": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "typecheck"
+        ],
+        "elapsedSeconds": 5.157981399999699,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      },
+      "format": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "format:check:deploy"
+        ],
+        "elapsedSeconds": 11.999640399997588,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      },
+      "artifact": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:build:local"
+        ],
+        "elapsedSeconds": 50.67226570000639,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      },
+      "artifact-verify": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        "elapsedSeconds": 1.8889315999986138,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      }
+    },
+    "coreStage": "CORE_STAGE_PASS",
+    "uniqueOpenRoots": 281,
+    "ci": "PENDING_NEW_COMMIT_DIRECT_AND_PR_ACTUAL_CHECKOUT_RECORDS"
+  },
+  "nextAction": "Commit/push all preserved phase170–175 results on existing branch/DraftPR466, dispatch directHEAD Qualitygate and record actualcheckoutSHA for it and PRmerge separately. Then serialimport privateSapporo176 and reconcile. Apply reviewed privateChofu exactformal-airfield codepatch/negatives and import177 only after targetedpreflight.",
+  "privatePackages": {
+    "sapporo176": {
+      "path": ".cache/task-086/sapporo177/phase176-review-plan.json",
+      "status": "ROOT_REVIEWED_PRIVATE_READY_AFTER_175_GATES",
+      "facts": 4,
+      "directedEdges": 8,
+      "importer": ".cache/task-086/sapporo177/import176.mjs"
+    },
+    "chofu177": {
+      "path": ".cache/task-086/chofu179/phase177-review-plan.json",
+      "status": "PRIVATE_SOURCE_P11_PREFLIGHT_PASS_FORMAL_NAME_VALIDATOR_FIX_PENDING",
+      "facts": 4,
+      "directedEdges": 20,
+      "nextAction": "Apply strict exact current formal-airfield branch proposal and negative tests only after175checkpoint, then run airport/schema/full-chain incremental checks."
+    },
+    "tottori": {
+      "path": ".cache/task-086/tottori178/tottori-airport-chain-evidence-v4.json",
+      "status": "ACTIVE_ALTERNATIVE_SERVICE_AND_RIGHTS_RESEARCH",
+      "nextAction": "Licensed independent actual53-call local loop may provide full chain; never merge differing airport nativeIDs or call flight-linked inbound6calls complete despite operator footnote."
+    },
+    "obihiro": {
+      "path": ".cache/task-086/obihiro171/obihiro-crossfeed-directional-review-v6.json",
+      "status": "ACTIVE_16_DIRECTIONAL_PHYSICAL_MAPPING_GAPS",
+      "nextAction": "Use existing111edge reduced cityfeed proposal only after required terminal and directional crossfeed links reviewed; no source exhaustion claim."
+    },
+    "miho": {
+      "path": ".cache/task-086/miho-preflight-v1",
+      "status": "ACTIVE_ORIGINAL_AIRPORT_PRIVATE_RESEARCH",
+      "nextAction": "Reuse sharedTottoriHinomaru2.zip currentnativefeed20261001–20270331; strongreviewer owns common licence review; cheapextractor nativeMiho directions and lawful public interfaces. No redownload based on staleportal displaydate."
+    }
+  }
 }
