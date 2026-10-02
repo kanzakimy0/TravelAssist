@@ -1,68 +1,52 @@
 {
   "schemaVersion": 1,
-  "auditBefore": {
-    "command": "auditGraph current phase162 snapshot",
-    "elapsedMs": 8195.311800000001,
-    "connected": 3095,
-    "deficits": 654
-  },
-  "auditAfter": {
-    "command": "auditGraph current phase162 snapshot",
-    "elapsedMs": 1294.4925,
-    "connected": 3095,
-    "deficits": 654
-  },
-  "fullReplay": {
-    "elapsedMs": 177791.60330000002,
-    "counts": {
-      "required": 3363,
-      "admitted": 3338,
-      "hold": 25,
-      "rejected": 0,
-      "lines": 260,
-      "servicePatterns": 572,
-      "edges": 8045,
-      "iterations": 162
-    },
-    "dispositions": {
-      "SOURCE_OR_GENERATOR_INVALIDATED": 884,
-      "CHECKSUM_SKIP": 88
-    }
-  },
+  "scopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
   "fullRegression": {
-    "command": "full regression including one deterministic rebuild/publish verification; final LF input bytes",
-    "elapsedMs": 1094681.0356,
+    "elapsedMs": 1092014.5659,
     "exitCode": 0
   },
   "checks": {
     "lint": {
       "exitCode": 0,
-      "elapsedMs": 47891.0555
+      "elapsedMs": 50382.2022
     },
     "typecheck": {
-      "elapsedMs": 9775.6507,
+      "elapsedMs": 8940.0931,
       "exitCode": 0
     },
     "format": {
       "exitCode": 0,
-      "elapsedMs": 21478.7178
+      "elapsedMs": 19246.984
     },
     "build": {
-      "elapsedMs": 62018.9563,
+      "elapsedMs": 64781.5769,
       "exitCode": 0
     },
     "artifact": {
-      "elapsedMs": 2738.2403,
+      "elapsedMs": 2663.2946,
       "exitCode": 0
     }
   },
-  "comparisonScope": "One paired auditGraph run on identical phase-162 graph/corridor inputs. Full-pipeline before timing unavailable; do not extrapolate.",
-  "newTransportSourceRequestsThisCloseout": 0,
-  "newNodesOrEdgesThisCloseout": 0,
-  "originalRequirementsConnected": {
-    "phase159": 826,
-    "preservedPhase162": 830,
-    "newlyConnectedByCloseoutFixes": 0
+  "priorPhase162FullRegression": {
+    "command": "full regression including one deterministic rebuild/publish verification; final LF input bytes",
+    "elapsedMs": 1094681.0356,
+    "exitCode": 0
   },
-  "uniqueRootsClosedByReviewCorrection": 3
+  "comparison": "Different code/input/graph fingerprints; raw elapsed observations only, no causal speedup percentage. No comparable model/tool-call baseline.",
+  "sourceAcquisition": {
+    "cachedHttpAttemptRecords": 65,
+    "distinctUrls": 65,
+    "http200": 62,
+    "otherOrError": 3,
+    "scope": "Saved HTTP acquisition metadata for this seven-airport research only; not all browser/search/model calls. Cache-backed evidence import makes no new source request."
+  },
+  "outputs": {
+    "originalGroundAccessRequirementsClosed": 3,
+    "uniqueAirportRootsClosed": 3,
+    "originalAllModeReachabilityBefore": 830,
+    "originalAllModeReachabilityAfter": 830,
+    "newEssentialNodes": 15,
+    "newDirectedEdges": 34
+  },
+  "priorSameInputAuditOptimization": "Historical phase162 8.195s to1.294s single paired auditGraph measurement retained in Git; it is not a measured speedup for this phase164 work."
 }

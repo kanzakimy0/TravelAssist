@@ -1,14 +1,12 @@
-# TASK-086-B QA — phase162 bounded closeout
+# TASK-086-B QA — phase164 fixed seven-airport checkpoint
 
-**Verified checkpoint with 7 core airport blockers; nationwide incomplete.** User-authorized bounded closeout supersedes continued automatic acquisition for this execution. No phase163. See [complete stage report](stage-closeout-report.md), [root index](residual-root-index.md), [current validation](publication-validation.json), [rebuild receipt](deterministic-rebuild.json), and [performance](closeout-performance.json).
+**Verified checkpoint with four core airport blockers; nationwide incomplete.** Phase163 closes Kagoshima and Kitakyushu; phase164 closes Izumo through Matsue and Okayama. All original requirements and earlier phase files remain intact. See [six-part report](stage-closeout-report.md), [root index](residual-root-index.md), [validation](publication-validation.json), [rebuild receipt](deterministic-rebuild.json), and [preservation](phase164-preservation.json).
 
-The detailed phase159 narrative and source-review history remain available at [431986ba](https://github.com/kanzakimy0/TravelAssist/tree/431986ba92a0b0f41ee4429f7c78f8850f827474/docs/qa/TASK-086-B); all imported graph/evidence/rights records are preserved in the current artifacts.
+Input scope: `TASK086-CORE-AIRPORTS7-PHASE164-v1`. Core stage `VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS` is allowed only after all nine technical checks and a fresh input/code/scope-bound rebuild receipt pass. Missing, stale, expired or malformed receipts yield UNVERIFIED; technical/rebuild failure yields FAILED. Ordinary airport research is never an exception proof. WBS7.16 and nationwide work remain in progress; PR466 remains Draft.
 
-Scope: `TASK086-CORE-STAGE-PHASE162-v1`. Preserve original1038 + required intermediates2325. T0 89/89, T1 462/462 and 9/9 mandatory corridors pass connectivity; seven core airport surface chains still fail. No exception proofs are claimed. WBS7.16 remains in progress; Draft [PR466](https://github.com/kanzakimy0/TravelAssist/pull/466), no merge or production authorization.
+## Reproduce
 
-## Reproduce current checks
-
-Run shared-output commands serially. Set TEMP/TMP to a writable scratch volume. No transport source requests are needed for replay. The full suite already includes independent extraction, two clean builds, checksum resume and corruption/invalidation negative tests; do not run a second identical verify command unnecessarily.
+Run shared-output graph writers/validators serially, using writable TEMP/TMP. The full suite embeds independent extraction, two clean builds, checksum resume and corruption/invalidation negative tests. Do not repeat an identical graph-only verifier after it passes.
 
 ```sh
 TASK086_PUBLISH_VALIDATION=1 node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 "tests/*.test.mjs"
@@ -20,6 +18,4 @@ npm run deploy:build:local
 npm run deploy:verify-artifact
 ```
 
-PowerShell: set `$env:TASK086_PUBLISH_VALIDATION='1'` before the test command. The CI default omits publication and uses isolated build output. A standalone graph-only verification is `node tools/transport/task-086-verify.mjs --publish`; it is an alternative to the embedded verification, not an additional required identical run. The versioned independent exception input must remain unchanged across both workflows. `--final` still rejects ordinary unfinished national work; bounded checkpoint delivery does not relabel the nationwide gate.
-
-Actual current results: 2921/2921 full tests, 91/91 focused tests, two deterministic rebuilds and 972-batch resume PASS. All seven independent stage technical checks PASS; core acceptance FAIL for the seven airport chains. Exact committed-head Quality Gate is recorded separately on the PR after push. Prior159 CI is historical only.
+PowerShell sets `$env:TASK086_PUBLISH_VALIDATION='1'` first. CI omits publication and verifies in isolated scratch directories. `--final` continues to reject ordinary incomplete national work. Local full regression 2928/2928 PASS. CI separately records branch HEAD and actual checkout: PR merge testing is identified as merge testing; a matching workflow-dispatch checkout can be reported as direct HEAD testing. Historical159/162 CI cannot validate this new revision.

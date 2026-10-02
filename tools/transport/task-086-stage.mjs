@@ -128,6 +128,100 @@ export function validPath(ids, from, to, byEdge) {
   }
   return Array.isArray(ids) && node === to && canAlight;
 }
+export const STAGE_TECHNICAL_CHECKS = [
+  "identity_admission_all_retained_nodes",
+  "provenance_direction_duplicates",
+  "actual_ordered_patterns_rights_and_boarding",
+  "public_transfer_evidence_endpoint_and_direction",
+  "all_published_corridor_witnesses_obey_boarding_and_direction",
+  "raw_content_hashes_and_retained_input_versions",
+  "passenger_component_classification_matches_restricted_queries",
+  "current_generator_implementation_matches_manifest",
+  "published_artifact_bytes_match_manifest",
+];
+export function assessStageStatus({
+  checks,
+  coreBlockers,
+  manifest,
+  verification,
+  scopeId,
+  verifierSha256,
+  asOf = new Date().toISOString(),
+}) {
+  const reasons = [];
+  const technicalFailed = checks.some((c) => c.status === "FAIL");
+  const technicalComplete =
+    STAGE_TECHNICAL_CHECKS.every(
+      (name) =>
+        checks.filter((c) => c.name === name && c.status === "PASS").length ===
+        1,
+    ) && checks.every((c) => c.status === "PASS");
+  if (technicalFailed) reasons.push("TECHNICAL_CHECK_FAILED");
+  else if (!technicalComplete) reasons.push("TECHNICAL_CHECKS_INCOMPLETE");
+  let rebuildVerified = false;
+  let rebuildFailed = false;
+  if (!verification) reasons.push("REBUILD_PROOF_MISSING");
+  else {
+    rebuildFailed = [
+      verification.status,
+      verification.fullDeterministicRebuild,
+      verification.resumeChecksumSkip,
+      verification.exceptionProofInputPreserved,
+    ].includes("FAIL");
+    if (rebuildFailed) reasons.push("REBUILD_PROOF_FAILED");
+    const complete =
+      verification.status === "PASS" &&
+      verification.fullDeterministicRebuild === "PASS" &&
+      verification.resumeChecksumSkip === "PASS" &&
+      verification.exceptionProofInputPreserved === "PASS";
+    if (!complete) reasons.push("REBUILD_PROOF_INCOMPLETE");
+    const bound =
+      scopeId &&
+      verification.scopeId === scopeId &&
+      Boolean(verifierSha256) &&
+      verification.verifierSha256 === verifierSha256 &&
+      Object.keys(verification.generatorHashes ?? {}).length > 0 &&
+      Object.keys(verification.inputHashes ?? {}).length > 0 &&
+      Object.keys(manifest.generatorHashes ?? {}).length > 0 &&
+      Object.keys(manifest.inputHashes ?? {}).length > 0 &&
+      hash(verification.generatorHashes) === hash(manifest.generatorHashes) &&
+      hash(verification.inputHashes) === hash(manifest.inputHashes);
+    if (!bound) reasons.push("REBUILD_PROOF_STALE_OR_UNBOUND");
+    const now = Date.parse(asOf),
+      verifiedAt = Date.parse(verification.verifiedAt);
+    const timeValid =
+      Number.isFinite(now) &&
+      Number.isFinite(verifiedAt) &&
+      verifiedAt <= now &&
+      (verification.validUntil === undefined ||
+        (Number.isFinite(Date.parse(verification.validUntil)) &&
+          verifiedAt <= Date.parse(verification.validUntil) &&
+          now <= Date.parse(verification.validUntil)));
+    if (!timeValid) reasons.push("REBUILD_PROOF_EXPIRED_OR_INVALID_DATE");
+    rebuildVerified = complete && bound && timeValid;
+  }
+  return {
+    status:
+      technicalFailed || rebuildFailed
+        ? "CORE_STAGE_FAILED"
+        : !technicalComplete || !rebuildVerified
+          ? "CORE_STAGE_UNVERIFIED"
+          : coreBlockers.length
+            ? "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS"
+            : "CORE_STAGE_PASS",
+    reasons,
+    technicalChecksComplete: technicalComplete,
+    rebuildVerified,
+  };
+}
+export function readStageVerification(file) {
+  if (!fs.existsSync(file)) return null;
+  try {
+    return readJson(file);
+  } catch {
+    return { status: "INVALID", reason: "UNREADABLE_REBUILD_PROOF" };
+  }
+}
 export function buildStageReport() {
   const j = (n) => readJson(path.join(base, n)),
     r = (n) => readRows(path.join(base, n)),
@@ -264,6 +358,22 @@ export function buildStageReport() {
       count++;
     }
     return count;
+  });
+  check("current_generator_implementation_matches_manifest", () => {
+    const entries = Object.entries(manifest.generatorHashes ?? {});
+    if (!entries.length) throw Error("GENERATOR_BINDINGS_MISSING");
+    for (const [p, h] of entries)
+      if (hash(fs.readFileSync(path.join(root, p))) !== h)
+        throw Error("Generator changed " + p);
+    return entries.length;
+  });
+  check("published_artifact_bytes_match_manifest", () => {
+    const entries = Object.entries(manifest.artifactHashes ?? {});
+    if (!entries.length) throw Error("ARTIFACT_BINDINGS_MISSING");
+    for (const [p, h] of entries)
+      if (hash(fs.readFileSync(path.join(base, p))) !== h)
+        throw Error("Artifact changed " + p);
+    return entries.length;
   });
   const components = passengerComponents(nodes, edges),
     anchorComponent = components.get(audit.anchorNodeId),
@@ -552,25 +662,26 @@ export function buildStageReport() {
       (d.corridorId &&
         byCorridor.get(d.corridorId)?.origin === "TASK_MANDATORY_QUERY_ONLY"),
   );
-  const verification = fs.existsSync(
+  const verification = readStageVerification(
     path.join(root, "docs/qa/TASK-086-B/deterministic-rebuild.json"),
-  )
-    ? readJson(path.join(root, "docs/qa/TASK-086-B/deterministic-rebuild.json"))
-    : null;
-  const cleanVerified =
-    verification?.status === "PASS" &&
-    hash(verification.generatorHashes) === hash(manifest.generatorHashes) &&
-    hash(verification.inputHashes) === hash(manifest.inputHashes);
+  );
+  const verificationAssessment = assessStageStatus({
+    checks,
+    coreBlockers,
+    manifest,
+    verification,
+    scopeId: scope.scopeId,
+    verifierSha256: hash(
+      fs.readFileSync(path.join(root, "tools/transport/task-086-verify.mjs")),
+    ),
+  });
+  const cleanVerified = verificationAssessment.rebuildVerified;
   const stage = {
     schemaVersion: 1,
     scopeId: scope.scopeId,
     stageGeneratorSha256: hash(fs.readFileSync(fileURLToPath(import.meta.url))),
-    status:
-      checks.every((x) => x.status === "PASS") &&
-      coreBlockers.length === 0 &&
-      cleanVerified
-        ? "CORE_STAGE_PASS"
-        : "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
+    status: verificationAssessment.status,
+    verificationAssessment,
     nationwideComplete: false,
     scopeInputSha256: hash(
       fs.readFileSync(path.join(base, "research/stage-scope.json")),
@@ -656,7 +767,7 @@ export function buildStageReport() {
     jsonBytes({
       schemaVersion: 1,
       scopeId: scope.scopeId,
-      phase: 162,
+      phase: manifest.counts.iterations,
       stageStatus: stage.status,
       nationalStatus: j("final-acceptance-gate.json").status,
       counts: manifest.counts,

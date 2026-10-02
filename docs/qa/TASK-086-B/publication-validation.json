@@ -1,57 +1,54 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-02T10:23:14.700297+00:00",
+  "recordedAt": "2026-10-02T12:44:09.495606+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 162,
+  "phase": 164,
   "baseDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-  "validationParentHead": "431986ba92a0b0f41ee4429f7c78f8850f827474",
+  "validationParentHead": "5f8533de99ee4397fa404c202e02c37c120d67ad",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "manifestSha256": "1414f5ea791dc35faf7f5b148d1829cf9a5f3965183d3190c139e1abf0f3b914",
+  "manifestSha256": "26bc382b007873814d38a39752fea25aa8973648242b90759cee53c82d59f6bc",
   "focused": {
     "status": "PASS",
-    "tests": 91,
-    "pass": 91,
-    "fail": 0,
-    "evidence": "deterministic-rebuild.json focusedTests and focusedTestOutputSha256"
+    "scope": "Four focused suites invoked by current verifier, including stage-status negative cases. CI revision cases are additionally in full regression.",
+    "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "fullRegression": {
     "status": "PASS",
     "command": "TASK086_PUBLISH_VALIDATION=1 node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
-    "tests": 2921,
-    "pass": 2921,
+    "tests": 2928,
+    "pass": 2928,
     "fail": 0,
     "cancelled": 0,
     "skipped": 0,
-    "logPath": ".cache/task-086/closeout-full-tests.log",
-    "logSha256": "48570cab2721782b65a8e99101dccb9311ff157c0a7e2424afef78351985f0ad",
+    "logPath": ".cache/task-086/airports7/full-tests.log",
+    "logSha256": "e16765d4c8e40b58bda45db0ffef5b3bb43a4166227a1d63e33574105f95e89a",
     "timing": {
-      "command": "full regression including one deterministic rebuild/publish verification; final LF input bytes",
-      "elapsedMs": 1094681.0356,
+      "elapsedMs": 1092014.5659,
       "exitCode": 0
     }
   },
-  "deterministicRebuildReceiptSha256": "f8dd35b747bce42b365ea15c563c76f2f6d9671985f7cc296d723a03d86dcbbc",
+  "deterministicRebuildReceiptSha256": "a7ce74f41ee6e2b3dabf9c47e2fe868acb92416d0bbfea98b352c211915d695a",
   "checks": [
     {
       "command": "npm run lint",
       "status": "PASS",
-      "notes": "0 errors, 17 pre-existing repository/scratch warnings; no new tracked-code warnings.",
-      "logPath": ".cache/task-086/closeout-lint.log",
-      "logSha256": "b9744dfa93f4d68d0529994f1bc93f8816cb3c67580571f38721309d6241f68e",
+      "notes": "0 errors; 19 warnings, including 2 in new ignored research-cache helpers; no new tracked-code warning.",
+      "logPath": ".cache/task-086/airports7/lint.log",
+      "logSha256": "e8aa79502c0385dbb99c35abdaf59b7e81eacb7c51e26d6f3d1d4ecfbfde7f56",
       "timing": {
         "exitCode": 0,
-        "elapsedMs": 47891.0555
+        "elapsedMs": 50382.2022
       }
     },
     {
       "command": "npm run typecheck",
       "status": "PASS",
       "notes": "Next type generation and TypeScript passed",
-      "logPath": ".cache/task-086/closeout-typecheck.log",
+      "logPath": ".cache/task-086/airports7/typecheck.log",
       "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
       "timing": {
-        "elapsedMs": 9775.6507,
+        "elapsedMs": 8940.0931,
         "exitCode": 0
       }
     },
@@ -59,57 +56,48 @@
       "command": "npm run format:check:deploy",
       "status": "PASS",
       "notes": "All matched files use Prettier style",
-      "logPath": ".cache/task-086/closeout-format.log",
+      "logPath": ".cache/task-086/airports7/format.log",
       "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
       "timing": {
         "exitCode": 0,
-        "elapsedMs": 21478.7178
+        "elapsedMs": 19246.984
       }
     },
     {
       "command": "npm run deploy:build:local",
       "status": "PASS",
-      "notes": "Local standalone build and artifact audit passed; no deployment.",
-      "logPath": ".cache/task-086/closeout-build.log",
-      "logSha256": "0776b57c2d6e6fed18935119164579be291b72812c70a8c73ae021c2c6d49301",
+      "notes": "Local standalone build only; no deploy.",
+      "logPath": ".cache/task-086/airports7/build.log",
+      "logSha256": "cfab0fd7dff253c401509d9990a15329fd2c2d1ffee253dccf7548c114a98ba4",
       "timing": {
-        "elapsedMs": 62018.9563,
+        "elapsedMs": 64781.5769,
         "exitCode": 0
       }
     },
     {
       "command": "npm run deploy:verify-artifact",
       "status": "PASS",
-      "notes": "Standalone artifact verified; see bound log for current file count.",
-      "logPath": ".cache/task-086/closeout-artifact.log",
-      "logSha256": "ceea447f8ac47acf7dc61c9c0f42a3e48805551fa47a5d4cc268592b57730404",
+      "notes": "Artifact audit passed; current count is in bound log.",
+      "logPath": ".cache/task-086/airports7/artifact.log",
+      "logSha256": "653c9f279b3ac239395346243065771441a359e1335a6aca1592468e39182662",
       "timing": {
-        "elapsedMs": 2738.2403,
+        "elapsedMs": 2663.2946,
         "exitCode": 0
       }
     }
   ],
-  "historicalExactHeadQualityGate": {
-    "status": "PASS",
-    "head": "431986ba92a0b0f41ee4429f7c78f8850f827474",
-    "runId": 36966963730,
-    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36966963730",
-    "completedAt": "2026-10-02T05:22:57Z",
-    "scope": "Historical phase 159 only; not validation of phases 160–162 or closeout changes."
-  },
-  "exactHeadQualityGate": {
-    "status": "PENDING_CHECKPOINT_PUSH",
-    "scope": "Final committed revision must receive its own Quality Gate. The PR and final delivery will link that run; a self-referential commit hash is not fabricated in this file."
-  },
   "wbs716": "进行中",
   "mergePerformed": false,
   "autoMergeEnabled": false,
   "validationImplementationHashes": {
+    ".github/workflows/quality-gate.yml": "1ea179b70b970a05fbefd1497bef1facad28ee8f16ffc927337d0c17ef09047a",
     "tests/task-086-b-autonomous-remediation.test.mjs": "31408608ed736222a4b24ed7ad7f34a10f2b63bea24ff1854e81207de328d5c4",
+    "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
     "tests/task-086-b-mobility-backbone.test.mjs": "e8ec8b2659960c9239932e7282423aee1703545fd7a64ccaf360bfa90fbe7fd8",
     "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
     "tests/task-086-b-selected-gtfs.test.mjs": "1aaac00d4202e69fb38baebd1f8114c7c687b33ae1089cba6f6f862bdd68f43c",
-    "tests/task-086-b-stage-closeout.test.mjs": "22ac34a4cf840afc540f0cf1cf4b60533388306d60ec7c8cf66c0d61955a779b",
+    "tests/task-086-b-stage-closeout.test.mjs": "5e5ebcfe8df51e8a670fd2a3a4019456e4d865a18f050ebe4bacb0cb063a0061",
+    "tools/qa/ci-revision.mjs": "9a006512f405f478ee3e330ebb2eedcd005f51b7f3c0f602a482a4869ecbfd97",
     "tools/transport/task-086-acceptance-inputs.mjs": "33691f5bf44aafb2d250d105a94f6aecf46ac42de92f3b3d997a99b7f216287c",
     "tools/transport/task-086-airport-identities.mjs": "752e47b7d093be11ff66b9d6c80f3ad8c38e2535b60bb04a140685d46346e4e9",
     "tools/transport/task-086-batches.mjs": "196d7dee00b83db75b67393aaec420829077ec7865783c161686f8c3b44c2ca9",
@@ -129,8 +117,8 @@
     "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
     "tools/transport/task-086-run.mjs": "b3ef0b99275f053ca291fdc2b7b150e7817a65cb64efa9a98952cf4cf06959e8",
     "tools/transport/task-086-source-actions.mjs": "c2d26d6efe7caa6bd24114f8684b6150021ab5793804a1e2cda889c9a821cfbb",
-    "tools/transport/task-086-stage.mjs": "dfddb5674a05ec081565c2198d48f4129ed0f947571edd456ec2a30f788b21a4",
-    "tools/transport/task-086-verify.mjs": "c37f1fff3b2fa45ce2081cfbfd40bbab8f4676323e7633c6f7f262c8ca7ae0b2"
+    "tools/transport/task-086-stage.mjs": "2a283bd5fa9d50a712d34ff346345ff5e379ab7372a98e284ef60994de5e6d9a",
+    "tools/transport/task-086-verify.mjs": "add4f3e40e4ddbc6786778712c4070afc3469f416ba36d3ed90dff6044d69da5"
   },
   "lineEndingVerification": "LF generator/test bytes. Current inputs independently re-extracted, rebuilt twice and resumed; focused and full tests passed. Final staged bytes are checked against these hashes.",
   "initialPhase82BuildOverlapAttempt": {
@@ -152,7 +140,7 @@
     "logSha256": "9f0edd739e31ff8a555b02434f2dd83c186056f85880ad6098ef9959e5680d07",
     "isolatedRetestSha256": "c5f8373a298f622a1b22b5a1dfb3336f05d73eafcdf32f6ce728b13d4211a2f4"
   },
-  "stageScopeId": "TASK086-CORE-STAGE-PHASE162-v1",
+  "stageScopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
   "stageAcceptanceStatus": "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
   "boundedCloseoutAuthorized": true,
   "nationwideComplete": false,
@@ -166,7 +154,7 @@
       ".nvmrc": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
       "tsconfig.json": "ff91c38f2cb3aafd505312ef01f1300200562d7683b9b539f6331e4ad16d2e55",
       "eslint.config.mjs": "7754db6914dbabce8895021567beec069ff65ec22abe6e23c5b052110cef6323",
-      ".github\\workflows\\quality-gate.yml": "4263031b738b83ed9c9122a1203b40b75e38a9168cde8d87edd0f4a5736fe62a"
+      ".github/workflows/quality-gate.yml": "1ea179b70b970a05fbefd1497bef1facad28ee8f16ffc927337d0c17ef09047a"
     },
     "reusedPriorHeadValidation": false
   },
@@ -190,5 +178,34 @@
     },
     "manifestSha256": "a4add9416c5a8f44754a977dbc3d4e0deec453a144fffa7749b2b73b6eb89c0f",
     "stageScopeId": "TASK086-CORE-STAGE-PHASE162-v1"
+  },
+  "historicalQualityGates": [
+    {
+      "phase": 159,
+      "status": "PASS",
+      "runId": 36966963730,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36966963730",
+      "branchHeadSha": "431986ba92a0b0f41ee4429f7c78f8850f827474",
+      "checkoutSha": "3cafe580888266e07922d838055f8dbcb3d41f35",
+      "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+      "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+      "directBranchHeadTest": false
+    },
+    {
+      "phase": 162,
+      "status": "PASS",
+      "runId": 36995377311,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36995377311",
+      "branchHeadSha": "5f8533de99ee4397fa404c202e02c37c120d67ad",
+      "checkoutSha": "cdb4369dd6087273274a1b18af4cbcadb95fcc4b",
+      "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+      "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+      "directBranchHeadTest": false
+    }
+  ],
+  "currentQualityGate": {
+    "status": "PENDING_CHECKPOINT_PUSH",
+    "requiredRecord": "CI_REVISION records branchHeadSha, checkoutSha, event and parents. PR merge checkout is not direct branch HEAD. Request workflow_dispatch for direct HEAD validation; final run URLs/SHAs are bound in the PR and delivery after this commit.",
+    "priorRunsDoNotValidateCurrentInput": true
   }
 }

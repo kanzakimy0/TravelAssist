@@ -1,16 +1,13 @@
 # TASK-086-B 剩余根因目录
 
-当前296个OPEN根因。完整机器记录包含依赖、证据哈希、分量、方向限制、路线和原始检查关联。这里只提供可读索引，不能用同名/距离推断换乘。
+当前 293 个 OPEN 唯一根因。保留每条原始检查，完整依赖、分量、受影响路线及证据见 residual-root-causes.jsonl / deficit-root-links.jsonl。七机场本次证据与下一步见 data/transport/network/research/core-seven-progress.v1.json。未完成研究不是例外。
 
 | 稳定根因ID | 类别 | 节点/义务 | 原始required数 | 核心required数 | 原检查数 |
 | --- | --- | --- | ---: | ---: | ---: |
-| root:airport:review:official-airport:出雲 | C | 出雲空港 | 1 | 1 | 1 |
 | root:airport:review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8 | C | 青森空港 | 1 | 1 | 1 |
-| root:airport:review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4 | C | 鹿児島空港 | 1 | 1 | 1 |
 | root:airport:review:transport-node:8d87ee3a-7f0b-541e-b717-9cd0baf1844c | C | 秋田空港 | 1 | 1 | 1 |
 | root:airport:review:transport-node:9df3dd1d-5a8e-5a68-b6bc-407d8bf070dc | C | 松山空港 | 1 | 1 | 1 |
 | root:airport:review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af | C | 新潟空港 | 1 | 1 | 1 |
-| root:airport:review:transport-node:fbaf00c2-a946-52b8-9920-9a493ad20d20 | C | 北九州空港 | 1 | 1 | 1 |
 | root:airport:review:official-airport:奥尻 | D | 奥尻 | 1 | 0 | 4 |
 | root:airport:review:official-airport:百里 | C | 百里飛行場 | 1 | 0 | 1 |
 | root:airport:review:official-airport:北大東 | C | 北大東空港 | 1 | 0 | 1 |
@@ -299,4 +296,4 @@
 | root:direction:component:f656d4356759b615399c | C | 瓦町 | 0 | 0 | 2 |
 | root:direction:component:fcea1d44018e23ee92da | C | 桜町バスターミナル | 0 | 0 | 2 |
 | root:direction:component:ffce88d4d3f84df13e09 | C | 高知駅前 | 0 | 0 | 2 |
-| root:obligation:mode:required-special-tourism | C | The inherited special-tourism obligation lacks an enumerated ropeway/funicular target inventory. Existing monorail/tram coverage alone does not prove it fulfilled; scope and primary service evidence remain to be reviewed. | 0 | 0 | 1 |
+| root:obligation:mode:required-special-tourism | C |  | 0 | 0 | 1 |

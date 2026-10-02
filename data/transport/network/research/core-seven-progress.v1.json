@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "scopeId": "TASK086-NEXT-CORE-AIRPORTS-7-v1",
+  "inputScopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
+  "asOf": "2026-10-02",
+  "stageStopCondition": "Deliver verified bounded checkpoint with explicit hard core blockers; no nationwide completion or source-exhaustion claim.",
+  "airports": [
+    {
+      "rootCauseId": "root:airport:review:official-airport:出雲",
+      "airport": "出雲",
+      "requirementIds": [
+        "review:official-airport:出雲"
+      ],
+      "nodeIds": [
+        "transport-node:086:9ff7a5a8b4d18340ece9bf6f7dda9c8d"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "VERIFIED_CHAIN",
+      "completeChain": "出雲空港→松江一畑バス→JR松江→実列車やくも→岡山既存主網",
+      "currentEvidence": "phase164: independent airport bus sections, actual asymmetric 1001M/1002M contiguous calls, public airport/Matsue transfers; existing Okayama transfer reused.",
+      "nextAction": "Preserve verified chain; re-review only when bound source/input changes.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "izumo-route",
+          "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+          "status": 200,
+          "contentSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4",
+          "bytes": 255106
+        },
+        {
+          "key": "izumo-pdf",
+          "url": "https://t-matsue.ichibata.co.jp/wp-content/media/出雲空港連絡バス時刻表新）2026.10.1-10.24.pdf",
+          "status": 200,
+          "contentSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572",
+          "bytes": 237820
+        },
+        {
+          "key": "izumo-privacy-full",
+          "url": "https://t-matsue.ichibata.co.jp/wp-content/media/privacypolicy.pdf",
+          "status": 200,
+          "contentSha256": "895a4d53b0cc2b1e01eb4039c667ae5ecd26cece2fb02fbd29e0c3ae01dc34e7",
+          "bytes": 156107
+        },
+        {
+          "key": "yakumo-new",
+          "url": "https://www.jr-odekake.net/railroad/train/yakumo/",
+          "status": 200,
+          "contentSha256": "7d8daa1068dd4ff1e374196787db8c1a9e4a8f2f3d8509e7e8e64099565bfba8",
+          "bytes": 101863
+        },
+        {
+          "key": "yakumo-pdf",
+          "url": "https://www.jr-odekake.net/railroad/train/yakumo/pdf/jikokuhyo.pdf",
+          "status": 200,
+          "contentSha256": "44cc1b2e0f6752df686a9a068f8e0f7bb31eef2d068f2bcd2135f6999b560958",
+          "bytes": 486908
+        },
+        {
+          "key": "matsue-jr-gif",
+          "url": "https://eki.jr-odekake.net/premises/0640734_1d441930-9961-4e32-b584-b0844549f3bc.gif",
+          "status": 200,
+          "contentSha256": "3dccb469d3b607c53b718ebe2ba165329cd5bcf86fd34ea9a1c5725e8115dbfc",
+          "bytes": 46655
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    },
+    {
+      "rootCauseId": "root:airport:review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8",
+      "airport": "青森",
+      "requirementIds": [
+        "review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8"
+      ],
+      "nodeIds": [
+        "transport-node:086:f9735fcdb04cca82e672744ac91642b1"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "OPEN_ORDINARY_RESEARCH",
+      "completeChain": "青森空港→JRバス9停留所→JR青森→奥羽線→新青森既存主網",
+      "currentEvidence": "Current bus and two actual rail directions acquired; P11 same-operator candidates identified. Public airport transfer not admitted: airport terms cover all information and commercial links. Station and terminal passenger-path/rights review remains incomplete.",
+      "nextAction": "Finish independent lawful terminal/public-station access evidence, exact nine-stop identities, October2 train calendar review, then import entire chain; do not repeat unchanged 403.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "aomori-route",
+          "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+          "status": 200,
+          "contentSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c",
+          "bytes": 31613
+        },
+        {
+          "key": "aomori-bus-privacy",
+          "url": "https://www.jrbustohoku.co.jp/privacy/",
+          "status": 200,
+          "contentSha256": "ddc358f8e696b2e64784d756cf84875e8aba95814e72936894d50a031897cd36",
+          "bytes": 28639
+        },
+        {
+          "key": "aomori-airport-terms",
+          "url": "https://www.aomori-airport.co.jp/cr_l",
+          "status": 200,
+          "contentSha256": "a6645d7656ccc467b9b4b0075524a58f7845319c46b859906a1cfea03590de8e",
+          "bytes": 38461
+        },
+        {
+          "key": "aomori-airport-arrival",
+          "url": "https://www.aomori-airport.co.jp/flight/departures_and_arrivals/departures_and_arrivals_domestic_arri",
+          "status": 200,
+          "contentSha256": "95ce987c0fecd85ecc4400634c2ee987ddfdb2eacfd9f2062f40d19e0bd1e481",
+          "bytes": 40356
+        },
+        {
+          "key": "aomori-station-buses",
+          "url": "https://www.aomoribus.or.jp/aboard_buses.html",
+          "status": 200,
+          "contentSha256": "a0a5d55d08fa438ebd1ba0d9ecbfdad6075ab48ff496bb1ab645356c45ef2bed",
+          "bytes": 31512
+        },
+        {
+          "key": "aomori-rail-out",
+          "url": "https://timetables.jreast.co.jp/2610/train/015/015001.html",
+          "status": 200,
+          "contentSha256": "0a31645f00bb15df42a0c91e388768be8271e3aaea8330e4c3ea0d48199f12ac",
+          "bytes": 28907
+        },
+        {
+          "key": "aomori-rail-in",
+          "url": "https://timetables.jreast.co.jp/2610/train/010/014651.html",
+          "status": 200,
+          "contentSha256": "9f0eebbe7e8d6a0cfb9272be7f431eb4da7725170de607dd3b3a1b133e087038",
+          "bytes": 28907
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    },
+    {
+      "rootCauseId": "root:airport:review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+      "airport": "鹿児島",
+      "requirementIds": [
+        "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4"
+      ],
+      "nodeIds": [
+        "transport-node:086:de7c084b22e560650e8881474ca96e5a"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "VERIFIED_CHAIN",
+      "completeChain": "鹿児島空港→南国交通→鹿児島中央共同運行バス停→JR鹿児島中央既存主網",
+      "currentEvidence": "phase163 exact joint P11 components; independent outbound/inbound services and public underpass.",
+      "nextAction": "Preserve verified chain; re-review only when bound source/input changes.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "kago-route",
+          "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+          "status": 200,
+          "contentSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd",
+          "bytes": 53283
+        },
+        {
+          "key": "kago-timetable",
+          "url": "https://nangoku-kotsu.com/wp-content/uploads/pdf/airport_2026_0401.pdf",
+          "status": 200,
+          "contentSha256": "0dde56773a70b09a68a6b24ee24ff32d5ce13398173c25811b95193a33c35fbd",
+          "bytes": 629030
+        },
+        {
+          "key": "kago-stationmap",
+          "url": "https://nangoku-kotsu.com/wp-content/themes/nkkwp_tpl/img/img_noriba_chuost1.gif",
+          "status": 200,
+          "contentSha256": "f45697e48f10e7dc7808bb2a5dde09a4e554b78518ba4802c4a9b68febb58888",
+          "bytes": 48791
+        },
+        {
+          "key": "kago-terms",
+          "url": "https://nangoku-kotsu.com/sitepolicy",
+          "status": 200,
+          "contentSha256": "fc361d09e27596e317bc1dffecb50d1a921d8eb803d98d9f1d14c552ddb253cf",
+          "bytes": 43370
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    },
+    {
+      "rootCauseId": "root:airport:review:transport-node:8d87ee3a-7f0b-541e-b717-9cd0baf1844c",
+      "airport": "秋田",
+      "requirementIds": [
+        "review:transport-node:8d87ee3a-7f0b-541e-b717-9cd0baf1844c"
+      ],
+      "nodeIds": [
+        "transport-node:086:1847237df5f3e4abb1e5dc95a111a000"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "OPEN_ORDINARY_RESEARCH",
+      "completeChain": "秋田空港→秋田中央交通→JR秋田→独立したこまち上下実列車→盛岡既存主網",
+      "currentEvidence": "Current October1-24 dynamic carrier tables retrieved. Outbound seven-call section and inbound six-call section differ. Remaining work: exact P11 identity of intermediate calls, public terminal/west-exit transfer, independent reverse Komachi calls and physical rail components.",
+      "nextAction": "Review remaining identities and both actual Komachi directions as one chain; bind terms/public gateways, exclude arbitrary reversed sequence.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "akita-route",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+          "status": 200,
+          "contentSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06",
+          "bytes": 14603
+        },
+        {
+          "key": "akita-bus-tabs",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=tab&tab=0&term=0&busstop=1",
+          "status": 200,
+          "contentSha256": "01d7d4e256750603270af7b49d5d039e3e7c00affcc329531f253ab7e6ff43cb",
+          "bytes": 652
+        },
+        {
+          "key": "akita-bus-out",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=0&term=0&busstop=1",
+          "status": 200,
+          "contentSha256": "06e36b098f369796ee0aec258e7101efcf2ba92f5f779dd1826d942e43be9ee2",
+          "bytes": 12408
+        },
+        {
+          "key": "akita-bus-in",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=1&term=0&busstop=1",
+          "status": 200,
+          "contentSha256": "23c962731484a0ce3e258517491798f54672c227308ae3648a1d5b562cafdef7",
+          "bytes": 11565
+        },
+        {
+          "key": "akita-terms",
+          "url": "https://www2.akita-chuoukotsu.co.jp/privacy_policy.html",
+          "status": 200,
+          "contentSha256": "3df776db4ee93e1ce110ef03c6b6d198a0c58128d999a828b308821f87b1aebe",
+          "bytes": 8177
+        },
+        {
+          "key": "akita-airport-access",
+          "url": "https://www.akita-airport.com/pages/access",
+          "status": 200,
+          "contentSha256": "8127de254f43616a911f4883c5874a91a20c22223e4c756a2dc39394598e0d2c",
+          "bytes": 37036
+        },
+        {
+          "key": "akita-airport-terms",
+          "url": "https://www.akita-airport.com/pages/copyright",
+          "status": 200,
+          "contentSha256": "cd264437a591654ebcb055f7d8283d46c19c8b527a64c0dc0993ed229a1e2033",
+          "bytes": 20860
+        },
+        {
+          "key": "akita-airportliner-frontage",
+          "url": "https://akita.airportliner.net/jp/taxi_stand/",
+          "status": 200,
+          "contentSha256": "8b669565f56aefae58ac96be0bbb517cf180781161f93d8556bd0a48903156d9",
+          "bytes": 33848
+        },
+        {
+          "key": "akita-frontage-terms",
+          "url": "https://akita.airportliner.net/jp/agreement/",
+          "status": 200,
+          "contentSha256": "02cc310120cc3e1be7feefb6cbb59a9103870ff341b9ac550d09e4dd19751d80",
+          "bytes": 32224
+        },
+        {
+          "key": "komachi-rail-out",
+          "url": "https://timetables.jreast.co.jp/2610/train/030/033011.html",
+          "status": 200,
+          "contentSha256": "5dc7855da5f6b4868bd8750bb9b96d026fe3e749f86c6f76360baa6a1bd06566",
+          "bytes": 30312
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    },
+    {
+      "rootCauseId": "root:airport:review:transport-node:9df3dd1d-5a8e-5a68-b6bc-407d8bf070dc",
+      "airport": "松山",
+      "requirementIds": [
+        "review:transport-node:9df3dd1d-5a8e-5a68-b6bc-407d8bf070dc"
+      ],
+      "nodeIds": [
+        "transport-node:086:721c5b26892aee1f801d97627ec277ea"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "OPEN_ORDINARY_RESEARCH",
+      "completeChain": "松山空港→伊予鉄リムジン→JR松山→実列車しおかぜ→宇多津既存主網",
+      "currentEvidence": "Current October bus table and actual March14 rail columns acquired. 2024 station relocation and current airport bus bay6 require explicit present public passage and historical road-component continuity review; old bay5 guide must not be treated as current. No bus/rail service has been imported from these candidates.",
+      "nextAction": "Bind current same road-stop identity and relocated-station public gateway, finish independent Shiokaze4/1 actual call review, then import dependent chain only.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "matsu-route",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+          "status": 200,
+          "contentSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606",
+          "bytes": 47944
+        },
+        {
+          "key": "matsu-pdf",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+          "status": 200,
+          "contentSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d",
+          "bytes": 363229
+        },
+        {
+          "key": "matsu-terms",
+          "url": "https://www.iyotetsu.co.jp/group/policy/site.html",
+          "status": 200,
+          "contentSha256": "765bf70455b76f09dadd73b49fc42557b71662e3d07757a0f74c66df12519c14",
+          "bytes": 14997
+        },
+        {
+          "key": "matsu-bus-jr",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=jr",
+          "status": 200,
+          "contentSha256": "80af73b9dccfd8e372af50f0346b3de664da8068142311ed03c76ffab5bd4dba",
+          "bytes": 15860
+        },
+        {
+          "key": "matsu-newstation",
+          "url": "https://www.jr-shikoku.co.jp/03_news/press/2024%2008%2002%2004.pdf",
+          "status": 200,
+          "contentSha256": "43293e42fa57981119bc3ea1bacae610c876b60804d1327a95c974a6448f0d7f",
+          "bytes": 882334
+        },
+        {
+          "key": "shikoku-full",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+          "status": 200,
+          "contentSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab",
+          "bytes": 913925
+        },
+        {
+          "key": "jrshikoku-terms-current",
+          "url": "https://www.jr-shikoku.co.jp/site_policy/jrshikoku_sitepolicy.pdf",
+          "status": 200,
+          "contentSha256": "22810d16d150ffe0ffdddac3b5d37d6d68c4ea764dc309c9f389cb48381a40ad",
+          "bytes": 338196
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    },
+    {
+      "rootCauseId": "root:airport:review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af",
+      "airport": "新潟",
+      "requirementIds": [
+        "review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af"
+      ],
+      "nodeIds": [
+        "transport-node:086:6ed10120537a49922dd24c8a1e929bb9"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "OPEN_IDENTITY_EVIDENCE",
+      "completeChain": "新潟空港→新潟交通直行バス→新潟駅高架下18番→既存JR新潟主網",
+      "currentEvidence": "Current airport timetable acquired, but P11-22 south-exit stop predates relocation into elevated-station terminal. Name continuity does not prove same physical component. Municipal GTFS excluding Niigata Kotsu is not substitute evidence.",
+      "nextAction": "Obtain current licensed stop identity for actual relocated terminal or a properly licensed carrier dataset; complete current passenger access/rights review. Do not relabel old south-exit coordinates, fabricate reverse trips, or claim exhaustion.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "niigata-current",
+          "url": "https://www.niigata-airport.gr.jp/news/detail/?id=264&lang=ja",
+          "status": 200,
+          "contentSha256": "7afb0887e8d6a47313eb973e08f88123f61d98eafb5b910f3cedf6fde7db46bf",
+          "bytes": 25609
+        },
+        {
+          "key": "niigata-pdf",
+          "url": "https://www.niigata-airport.gr.jp/common/img/upload/files/202608_%E3%83%AA%E3%83%A0%E3%82%B8%E3%83%B3%E3%83%90%E3%82%B99%E6%9C%88%E3%83%80%E3%82%A4%E3%83%A4%E6%94%B9%E6%AD%A3_A4%E3%83%81%E3%83%A9%E3%82%B7(1).pdf",
+          "status": 200,
+          "contentSha256": "dfc5659e6dab980047dbbe759b77981964319cff1829908c080ac1cd5863b5db",
+          "bytes": 1459401
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    },
+    {
+      "rootCauseId": "root:airport:review:transport-node:fbaf00c2-a946-52b8-9920-9a493ad20d20",
+      "airport": "北九州",
+      "requirementIds": [
+        "review:transport-node:fbaf00c2-a946-52b8-9920-9a493ad20d20"
+      ],
+      "nodeIds": [
+        "transport-node:086:7572340edf68ab39b4eeb1289488011a"
+      ],
+      "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
+      "status": "VERIFIED_CHAIN",
+      "completeChain": "空港→小倉駅新幹線口降車→JR小倉; JR小倉→小倉駅バスセンター→空港",
+      "currentEvidence": "phase163 preserves different outbound Bus Center and inbound dropoff-only north exit.",
+      "nextAction": "Preserve verified chain; re-review only when bound source/input changes.",
+      "exceptionProof": null,
+      "ordinaryResearchMayRemain": true,
+      "reviewedOrCandidateSources": [
+        {
+          "key": "kita-guide",
+          "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+          "status": 200,
+          "contentSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+          "bytes": 5034637
+        },
+        {
+          "key": "kita-route",
+          "url": "https://nishitetsu-ktq.jp/archives/9209",
+          "status": 200,
+          "contentSha256": "5daad2107950c8c3152d06be1d6e61ce3c372be43d80737054dd16ae1e37cb6a",
+          "bytes": 40659
+        },
+        {
+          "key": "kita-kokuramap",
+          "url": "https://nishitetsu-ktq.jp/noribaannai/img/01-kokura_20251001.jpg",
+          "status": 200,
+          "contentSha256": "b8f860fddf5a9c6d03721883eb1c3b6934218756f5fe8c6dfccfc8066f080b07",
+          "bytes": 5224529
+        },
+        {
+          "key": "kita-apmap",
+          "url": "https://www.kitakyu-air.jp/rev-access/img/busstopmap-airport-20260413.png",
+          "status": 200,
+          "contentSha256": "eac1a2a8dd6aeefe5bb1d09539b7768cb7ef427a71d607e0f632a39d832e2b62",
+          "bytes": 25764
+        },
+        {
+          "key": "kita-terms",
+          "url": "https://www.nishitetsu.jp/nnr/site-kitei/",
+          "status": 200,
+          "contentSha256": "32f9bec5c97f2f41c9c4781dc44c8b6aa55e1764c4d40b2cd69fd17f4144a4dc",
+          "bytes": 43735
+        }
+      ],
+      "sourceRecordsAreNotAdmission": true
+    }
+  ],
+  "excluded": "All other airports and nonessential bus nodes remain deferred.",
+  "manualDecision": "No new permission needed for ordinary remaining research. A new rights grant/identity dataset would need source evidence; no exhaustion or external-approval proof has been claimed.",
+  "validation": {
+    "status": "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
+    "scopeSha256": "55547b736bf6cfdd9a94b3ef9a15a3e77e432bdef2d153a68bc75a44ca19195b",
+    "manifestSha256": "26bc382b007873814d38a39752fea25aa8973648242b90759cee53c82d59f6bc",
+    "rebuildReceiptSha256": "a7ce74f41ee6e2b3dabf9c47e2fe868acb92416d0bbfea98b352c211915d695a"
+  }
+}

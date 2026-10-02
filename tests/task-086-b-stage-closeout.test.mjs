@@ -22,6 +22,9 @@ import {
 } from "../tools/transport/task-086-log-safety.mjs";
 import { acquireEvidence } from "../tools/transport/task-086-source-actions.mjs";
 import {
+  readStageVerification,
+  assessStageStatus,
+  STAGE_TECHNICAL_CHECKS,
   passengerComponents,
   validPath,
 } from "../tools/transport/task-086-stage.mjs";
@@ -452,4 +455,104 @@ test("TASK086 proven exhausted alternatives close only the specifically bound no
     ).terminal,
     false,
   );
+});
+
+const stageFixture = () => ({
+  scopeId: "fixture-scope",
+  verifierSha256: hash("verifier"),
+  asOf: "2026-10-02T10:00:00Z",
+  checks: STAGE_TECHNICAL_CHECKS.map((name) => ({ name, status: "PASS" })),
+  coreBlockers: [{ deficitId: "airport:fixture" }],
+  manifest: {
+    generatorHashes: { generator: hash("code") },
+    inputHashes: { input: hash("data") },
+  },
+  verification: {
+    scopeId: "fixture-scope",
+    verifierSha256: hash("verifier"),
+    verifiedAt: "2026-10-02T09:00:00Z",
+    status: "PASS",
+    fullDeterministicRebuild: "PASS",
+    resumeChecksumSkip: "PASS",
+    exceptionProofInputPreserved: "PASS",
+    generatorHashes: { generator: hash("code") },
+    inputHashes: { input: hash("data") },
+  },
+});
+test("TASK086 stage cannot label technical failures or incomplete checks verified", () => {
+  for (const coreBlockers of [[], [{ deficitId: "airport:fixture" }]]) {
+    const f = stageFixture();
+    f.coreBlockers = coreBlockers;
+    f.checks[0].status = "FAIL";
+    assert.equal(assessStageStatus(f).status, "CORE_STAGE_FAILED");
+    f.checks = [];
+    assert.equal(assessStageStatus(f).status, "CORE_STAGE_UNVERIFIED");
+  }
+});
+test("TASK086 stage rejects missing, stale, expired or incomplete rebuild proofs", () => {
+  const bad = [
+    null,
+    { status: "PASS" },
+    { ...stageFixture().verification, scopeId: "old" },
+    { ...stageFixture().verification, verifierSha256: hash("old verifier") },
+    { ...stageFixture().verification, inputHashes: { input: hash("old") } },
+    {
+      ...stageFixture().verification,
+      generatorHashes: { generator: hash("old") },
+    },
+    { ...stageFixture().verification, verifiedAt: "2026-10-03" },
+    { ...stageFixture().verification, validUntil: "2026-10-02T09:30:00Z" },
+    { ...stageFixture().verification, verifiedAt: undefined },
+    { ...stageFixture().verification, resumeChecksumSkip: "NOT_RUN" },
+  ];
+  for (const verification of bad)
+    for (const coreBlockers of [[], [{ deficitId: "airport:fixture" }]]) {
+      const r = assessStageStatus({
+        ...stageFixture(),
+        verification,
+        coreBlockers,
+      });
+      assert.equal(r.status, "CORE_STAGE_UNVERIFIED");
+      assert.equal(r.rebuildVerified, false);
+    }
+  assert.equal(
+    assessStageStatus({
+      ...stageFixture(),
+      verification: { ...stageFixture().verification, status: "FAIL" },
+    }).status,
+    "CORE_STAGE_FAILED",
+  );
+});
+test("TASK086 verified business blockers are distinct from actual core pass", () => {
+  assert.equal(
+    assessStageStatus(stageFixture()).status,
+    "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
+  );
+  assert.equal(
+    assessStageStatus({ ...stageFixture(), coreBlockers: [] }).status,
+    "CORE_STAGE_PASS",
+  );
+});
+
+test("TASK086 malformed or unbound rebuild receipts remain unverified", (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "task086-receipt-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const file = path.join(dir, "receipt.json");
+  assert.equal(readStageVerification(file), null);
+  fs.writeFileSync(file, "{broken");
+  assert.equal(
+    assessStageStatus({
+      ...stageFixture(),
+      verification: readStageVerification(file),
+    }).status,
+    "CORE_STAGE_UNVERIFIED",
+  );
+  for (const key of ["generatorHashes", "inputHashes"]) {
+    const v = { ...stageFixture().verification };
+    delete v[key];
+    assert.equal(
+      assessStageStatus({ ...stageFixture(), verification: v }).status,
+      "CORE_STAGE_UNVERIFIED",
+    );
+  }
 });

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "scopeId": "TASK086-NEXT-CORE-AIRPORTS-7-v1",
   "parentScopeId": "TASK086-CORE-STAGE-PHASE162-v1",
-  "status": "DEFINED_NOT_STARTED",
-  "newSourceAcquisitionThisCloseout": false,
+  "status": "BOUNDED_CHECKPOINT_DELIVERED_WITH_4_OPEN_AIRPORTS",
+  "newSourceAcquisitionThisCloseout": true,
   "requirementIds": [
     "review:official-airport:出雲",
     "review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8",
@@ -169,7 +169,7 @@
     "All seven exact original airport requirements have current, independently evidenced bidirectional surface-to-national chains.",
     "Identity, license, content hashes, actual stopping order, direction, boarding/alighting, public transfer validity and all nine mandatory corridors pass.",
     "Original requirements remain intact; no invented reverse trips, approximate transfers, fabricated service or blanket exhaustion proofs.",
-    "Affected tests, final full regression, deterministic rebuild/resume/corruption checks and exact-head CI pass.",
+    "Affected tests, final full regression, deterministic rebuild/resume/corruption checks and CI recording branch HEAD and actual checkout SHA; direct HEAD verification identified separately pass.",
     "If lawful evidence or approval is blocked, bind a valid versioned deficit-specific proof; ordinary research remains open."
   ],
   "excluded": [
@@ -178,5 +178,19 @@
     "Unenumerated special-tourism scope",
     "Optional expansion",
     "Production import, routing API, planner integration, merge and release"
-  ]
+  ],
+  "activeInputScopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
+  "remainingAirportNames": [
+    "青森",
+    "秋田",
+    "松山",
+    "新潟"
+  ],
+  "completedChainAirportNames": [
+    "鹿児島",
+    "北九州",
+    "出雲"
+  ],
+  "progressEvidence": "research/core-seven-progress.v1.json",
+  "stopCondition": "Verified checkpoint plus explicit hard core blockers is authorized; ordinary research remains OPEN without exhaustion or approval proofs."
 }

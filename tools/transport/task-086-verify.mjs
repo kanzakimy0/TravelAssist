@@ -268,6 +268,11 @@ export function verifyRebuild({ publish = false } = {}) {
       "Valid proof input lost in clean rebuild",
     );
     const receipt = {
+      verifierSha256: hash(fs.readFileSync(fileURLToPath(import.meta.url))),
+      scopeId: readJson(
+        path.join(root, "data/transport/network/research/stage-scope.json"),
+      ).scopeId,
+      verifiedAt: new Date().toISOString(),
       exceptionProofInputPreserved: "PASS",
       task: "TASK-086-B",
       status: "PASS",
