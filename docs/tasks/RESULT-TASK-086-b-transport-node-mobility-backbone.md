@@ -1,5 +1,5 @@
-# TASK-086-B full original scope — continuous execution
+# TASK-086-B full original scope — in progress
 
-Phase167 is a verified checkpoint with business blockers, not task completion. Latest full-scope authorization supersedes the former seven-airport stopping rule. Aomori, Akita and Matsuyama add three validated ground chains; Niigata and the full original residual backlog remain active. Execution stays CONTINUE after this report and checkpoint.
+Phase169 passes the verified core and seven-airport milestone. This is not nationwide task completion:288 unique roots remain. Full original scope execution continues after reports and checkpoints. Original1038 requirements and all prior data remain preserved. No exceptions replace missing data.
 
-See [current report](../qa/TASK-086-B/stage-closeout-report.md), [root backlog](../qa/TASK-086-B/residual-root-index.md), [validation](../qa/TASK-086-B/publication-validation.json), and research/task-revision.v2.json. Original1038 requirements are retained. WBS7.16 stays in progress and PR466 stays Draft. No production import, API/planner integration, merge or release.
+See [current report](../qa/TASK-086-B/stage-closeout-report.md), [root backlog](../qa/TASK-086-B/residual-root-index.md), [validation](../qa/TASK-086-B/publication-validation.json), and the persistent research/task-revision.v2.json. PR466 remains Draft; no production import, routing/planner integration, merge or release.

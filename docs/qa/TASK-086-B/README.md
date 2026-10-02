@@ -1,21 +1,11 @@
-# TASK-086-B QA — phase167 full-original continuous execution
+# TASK-086-B reproducible full-scope checkpoint169
 
-Latest full-original authorization supersedes the seven-airport stopping rule. Phase165–167 added Aomori, Akita and Matsuyama ground chains. Niigata and all remaining original roots stay active; a checkpoint/report never stops execution. See [current report](stage-closeout-report.md), [root index](residual-root-index.md), [validation](publication-validation.json), [rebuild receipt](deterministic-rebuild.json), and [preservation](phase167-preservation.json).
+Core and seven-airport milestone:PASS on current local inputs. Whole original task:IN_PROGRESS;288 unique roots remain. Reports/checkpoints preserve CONTINUE. PR466 remains Draft.
 
-Input scope: `TASK086-FULL-ORIGINAL-PHASE167-v2`. VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS requires all nine technical checks plus a fresh code/input/scope-bound rebuild receipt. Missing/stale/expired/malformed proofs remain UNVERIFIED; technical/rebuild failures remain FAILED. Full task completion additionally requires all original applicable acceptance, without unresolved work. WBS7.16 remains in progress; PR466 remains Draft.
+- Latest policy:data/transport/network/research/task-revision.v2.json; scopes stage-scope.json and next-stage-scope.v1.json retain1038 original requirements.
+- Results:stage-closeout-report.md, residual-root-index.md, publication-validation.json, deterministic-rebuild.json, phase169-preservation.json.
+- Prior committed branch ff5e411359d789f7423f9ece32c78842a64f5c0b has separately verified direct/PR checkout records in phase167-ci-revisions.json. Those runs do not validate169.
+- Current full regression2933/2933 includes raw extraction, deterministic rebuild, recovery and corruption negatives. Lint (19warnings/0errors), typecheck, format, standalone build and artifact verification pass. Current exact-head CI is recorded after checkpoint push.
+- Research recovery:data/transport/network/research/continuous-recovery.v1.json and work-package-ledger.v1.json. Private caches are evidence working files, not raw content redistribution authorization.
 
-## Reproduce
-
-Run shared-output graph writers/validators serially, using writable TEMP/TMP. The full suite embeds independent extraction, two clean builds, checksum resume and corruption/invalidation negative tests. Do not repeat an identical graph-only verifier after it passes.
-
-```sh
-TASK086_PUBLISH_VALIDATION=1 node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 "tests/*.test.mjs"
-node tools/transport/task-086-stage.mjs
-npm run lint
-npm run typecheck
-npm run format:check:deploy
-npm run deploy:build:local
-npm run deploy:verify-artifact
-```
-
-PowerShell sets `$env:TASK086_PUBLISH_VALIDATION='1'` first. CI omits publication and verifies in isolated scratch directories. `--final` continues to reject ordinary incomplete national work. Local full regression 2932/2932 PASS. CI separately records branch HEAD and actual checkout: PR merge testing is identified as merge testing; a matching workflow-dispatch checkout can be reported as direct HEAD testing. Historical159/162 CI cannot validate this new revision.
+Run shared-output generators serially. Full gate: `node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 tests/*.test.mjs` with `TASK086_PUBLISH_VALIDATION=1`, followed by `node tools/transport/task-086-stage.mjs`. On Windows set TEMP/TMP to an available private workspace cache. Standalone `task-086-remediate.mjs` replays inputs and does not perform research; `next` only chooses work. No production import, routing/planner, merge or release.

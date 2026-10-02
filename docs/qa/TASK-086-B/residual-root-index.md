@@ -1,12 +1,10 @@
 # TASK-086-B 剩余根因目录
 
-当前290个OPEN唯一根因。原始要求保留；报告不停止全量执行。机器记录包含完整分量、依赖、受影响路线和证据。
+288个OPEN唯一根因；全部原始要求保留，报告不停止执行。完整依赖、路线和证据见机器JSONL。
 
 | 稳定根因ID | 类别 | 原始required数 | 核心required数 | 原检查数 |
 | --- | --- | ---: | ---: | ---: |
-| root:airport:review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af | C | 1 | 1 | 1 |
 | root:airport:review:official-airport:奥尻 | D | 1 | 0 | 4 |
-| root:airport:review:official-airport:百里 | C | 1 | 0 | 1 |
 | root:airport:review:official-airport:北大東 | C | 1 | 0 | 1 |
 | root:airport:review:official-airport:波照間 | D | 1 | 0 | 4 |
 | root:airport:review:official-airport:沖永良部 | C | 1 | 0 | 1 |

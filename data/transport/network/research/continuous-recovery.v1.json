@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-02T16:42:04.781095+00:00",
+  "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
+  "lastPushedCheckpoint": "ff5e411359d789f7423f9ece32c78842a64f5c0b",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
+  "currentStage": "CORE_STAGE_PASS",
+  "ordinaryWorkRemaining": true,
+  "completedSinceCheckpoint": [
+    "Original Hyakuri/Ibaraki airport ground chain: two independently published direct bus directions and two reviewed public transfers; 6 edges,2 P36stopnodes",
+    "Package ordering regression: original-airport work before bus volume; original requirements counted separately from necessary intermediates",
+    "Niigata E22 nineteen independently reviewed calls eachdirection + Bandaiexplicitpublicwalk + independentprefectureterminalfrontage continuity;40edges19P11nodes; originalinventory preserved; sevenairportgroundmilestone reachedincrementally only"
+  ],
+  "currentCounts": {
+    "airportSurfaceGaps": 44,
+    "openUniqueRoots": 288
+  },
+  "validation": {
+    "focusedTests": 65,
+    "focusedPassed": 65,
+    "phase168Replays": "Both PASS; original records preserved. Reconciled inputs published. Current clean-rebuild receipt still pending; phase167 proof not reused.",
+    "phase169Replay": "PASS;44airportgaps; preserved168records; currentfullregression/rebuild pending",
+    "phase169FullRegression": {
+      "tests": 2933,
+      "passed": 2933,
+      "failed": 0,
+      "deterministicRebuild": "PASS",
+      "currentScope": "TASK086-FULL-ORIGINAL-PHASE169-v2",
+      "ci": "PENDING_CHECKPOINT_PUSH"
+    }
+  },
+  "nextConcreteAction": "Commit/push verifiedphase169checkpoint, recorddirectbranchandPRcheckoutCIseparately; continueIwakuni currentJRWest16callsectionandrail/busstopidentitybinding. Obihiro independentdatedJRrailsource andGTFSrightsresearch active. Reportsnotstopconditions.",
+  "independentWork": [
+    "Iwakuni original airport ground-chain source extraction",
+    "Obihiro original airport ground-chain source extraction"
+  ],
+  "deferredOrdinaryWork": [
+    {
+      "package": "25 original HOLDairport identities",
+      "result": "ExactC28 suffix/explicitMLITalias mayadmit threeHokkaido identities onceactualserviceandpublicconnection evidencebound. No IATAcode/exactterminalcoordinate invented requirement. Okadama curbidentity/currentHoktooperator remains ordinaryresearch, not audited external approval."
+    }
+  ],
+  "privateEvidenceIndex": [
+    {
+      "path": ".cache/task-086/hokkaido-identity25/evidence-review-v1.json",
+      "sha256": "bec1a093487d3953d9c7ecd3fcb6c8b5d8f0d6c9cbd5e800538dc18e045bb07c"
+    },
+    {
+      "path": ".cache/task-086/hokkaido-identity25/identity-rights-review-v2.json",
+      "sha256": "82b3e2d213be9e4a3bb45b949e4ed1cf0f643d0cb9236a876c8e645e34007786"
+    },
+    {
+      "path": ".cache/task-086/hokkaido-identity25/okadama-national-chain-plan-v1.json",
+      "sha256": "b9695db3fc8fee2142a48934416f10fbebdb6a55b9e4a5bc2654ddb6edc670d5"
+    },
+    {
+      "path": ".cache/task-086/hokkaido-identity25/okadama-stop-identity-review-v1.json",
+      "sha256": "e58508d8319551fb8b5f5e04614b1164bd158a6dee7930c1528e53cf1377b7e2"
+    },
+    {
+      "path": ".cache/task-086/remaining-airport-ground-preflight-v1.json",
+      "sha256": "1db8be8316c7699ae547e65938c448e771a0beed07e5d5c399efd74d91de5274"
+    },
+    {
+      "path": ".cache/task-086/ibaraki168/rights-review-v1.json",
+      "sha256": "ca2e6a28a4b38aec24f7e1b3bc87d746f4e74b6b38a28a32eeb43fef3a2c01bb"
+    },
+    {
+      "path": ".cache/task-086/ibaraki168/mito-final-rights-access-review.json",
+      "sha256": "25f28515e162f3a2c25e009fa3b6637474eb93c43bc0272a51d6d91d4c8f4470"
+    },
+    {
+      "path": ".cache/task-086/airports7/niigata-bandai-public-walk-review-v1.json",
+      "sha256": "4f49e395fe7d741f66b293fad5b890b9a697872effdf5da500e378ffc402be4a"
+    },
+    {
+      "path": ".cache/task-086/airports7/smallreview169.json",
+      "sha256": "0dc4722a232492b6351674a2e4768e76f1dca6c3b8d89d4e2fc9bc7ecb09897e"
+    }
+  ],
+  "runtimeLimitPolicy": "On actual interruption resume stated action and caches. Not completion; no automatic restart promise.",
+  "runningProcesses": {}
+}

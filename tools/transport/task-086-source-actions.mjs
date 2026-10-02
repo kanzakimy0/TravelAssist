@@ -19,8 +19,15 @@ const root = path.resolve(
 // Compact packages reuse the root index; choosing one does not acquire evidence.
 export function buildWorkPackages(
   roots,
-  { priorityRootIds = [], acquisitionIndex = [], ledger = [] } = {},
+  {
+    priorityRootIds = [],
+    acquisitionIndex = [],
+    ledger = [],
+    originalRequirementIds = null,
+  } = {},
 ) {
+  const original =
+    originalRequirementIds === null ? null : new Set(originalRequirementIds);
   const groups = new Map();
   for (const r of roots.filter(
     (r) => r.status === "OPEN" && r.classification !== "E",
@@ -55,12 +62,23 @@ export function buildWorkPackages(
         rootCauseIds,
         sourceActionIds: actionIds,
         priority,
+        scopePriority: Math.min(
+          ...rootCauseIds.map((id) =>
+            id.startsWith("root:airport:")
+              ? 0
+              : id.startsWith("root:direction:")
+                ? 1
+                : 2,
+          ),
+        ),
         coreRequiredCount: rows.reduce(
           (n, r) => n + (r.coreRequiredCount || 0),
           0,
         ),
         originalRequiredCount: new Set(
-          rows.flatMap((r) => r.requirementIds || []),
+          rows
+            .flatMap((r) => r.requirementIds || [])
+            .filter((id) => original === null || original.has(id)),
         ).size,
         dependencies: [
           ...new Set(rows.flatMap((r) => r.dependencies || [])),
@@ -80,6 +98,7 @@ export function buildWorkPackages(
     .sort(
       (a, b) =>
         a.priority - b.priority ||
+        a.scopePriority - b.scopePriority ||
         b.coreRequiredCount - a.coreRequiredCount ||
         b.originalRequiredCount - a.originalRequiredCount ||
         a.packageId.localeCompare(b.packageId),

@@ -1,0 +1,334 @@
+{
+  "phaseId": "168-hyakuri-ibaraki-native-mito-directed-ground-chain",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT",
+    "INDEPENDENT_AIRPORT_FACTS_RESTRICTED_CARRIER_EXCLUDED",
+    "EXACT_P36_OPERATOR_COMPONENT",
+    "EXISTING_CONNECTED_MITO_ANCHOR",
+    "PUBLIC_CONCOURSE_REVIEW"
+  ],
+  "completedActionIds": [
+    "airport:ibaraki:native-october-mito-service-and-public-terminal",
+    "public:mito-city:south-station-public-plaza",
+    "public:mito-tourism:jr-south-public-concourse"
+  ],
+  "facts": [
+    {
+      "factId": "ibaraki-mito-native-airport-bound",
+      "kind": "service",
+      "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+      "sourceUrl": "https://www.ibaraki-airport.net/access/bus/mito/",
+      "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+          "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+          "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+        }
+      ],
+      "callingStations": [
+        "水戸駅南口",
+        "茨城空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "水戸駅南口",
+          "operator": "茨城交通（株）",
+          "line": "p36-stop:P36-23_08:kbs104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_08:kbs104",
+            "recordSha256": "a851876dff044cf4e8632b48ed340076b5c78cd4b35702362b44d773877f0988",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact operator-specific P36stop component; airport own current timetable independently names IbarakiKotsu at bothendpoints. Coarsepublicterminal/forecourtcomponentonly, bay4/2 naming supplies serviceboarding notgeometry. Publicairportexit andstationplaza/concourse separatelyreviewed; no co-locatedoperator collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "茨城交通（株）",
+              "currentOperatorName": "茨城交通",
+              "currentStopName": "水戸駅南口",
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            }
+          }
+        },
+        {
+          "name": "茨城空港",
+          "operator": "茨城交通（株）",
+          "line": "p36-stop:P36-23_08:kbs136",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_08:kbs136",
+            "recordSha256": "0ed6783ae5f001f6819c4b0ac097919ba3ed2a6abc7da589273b0762a238d7dc",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact operator-specific P36stop component; airport own current timetable independently names IbarakiKotsu at bothendpoints. Coarsepublicterminal/forecourtcomponentonly, bay4/2 naming supplies serviceboarding notgeometry. Publicairportexit andstationplaza/concourse separatelyreviewed; no co-locatedoperator collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "茨城交通（株）",
+              "currentOperatorName": "茨城交通",
+              "currentStopName": "茨城空港",
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "茨城空港・水戸駅南口高速直行",
+      "operator": "茨城交通",
+      "direction": "airport-bound",
+      "serviceClass": "空港高速直行バス",
+      "serviceState": "active",
+      "serviceStateScope": "SEPTEMBER1_OCTOBER24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "reviewMethod": "INDEPENDENT_AIRPORT_NATIVE_TWO_DIRECTION_ACTUAL_ROWS",
+      "locator": "Native September1-October24 table0 row2 IbarakiKotsu firstactualdailyrow; explicitlyhighwaydirectSouthExitservice. Otheroperatorrows andTueThuSat-onlyrowexcluded forFridayOctober2. Nointermediatepassengercalls omitted orreversefabricated; no clocksretained."
+    },
+    {
+      "factId": "ibaraki-mito-native-mito-bound",
+      "kind": "service",
+      "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+      "sourceUrl": "https://www.ibaraki-airport.net/access/bus/mito/",
+      "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+          "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+          "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+        }
+      ],
+      "callingStations": [
+        "茨城空港",
+        "水戸駅南口"
+      ],
+      "callingComponents": [
+        {
+          "name": "茨城空港",
+          "operator": "茨城交通（株）",
+          "line": "p36-stop:P36-23_08:kbs136",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_08:kbs136",
+            "recordSha256": "0ed6783ae5f001f6819c4b0ac097919ba3ed2a6abc7da589273b0762a238d7dc",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact operator-specific P36stop component; airport own current timetable independently names IbarakiKotsu at bothendpoints. Coarsepublicterminal/forecourtcomponentonly, bay4/2 naming supplies serviceboarding notgeometry. Publicairportexit andstationplaza/concourse separatelyreviewed; no co-locatedoperator collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "茨城交通（株）",
+              "currentOperatorName": "茨城交通",
+              "currentStopName": "茨城空港",
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            }
+          }
+        },
+        {
+          "name": "水戸駅南口",
+          "operator": "茨城交通（株）",
+          "line": "p36-stop:P36-23_08:kbs104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_08:kbs104",
+            "recordSha256": "a851876dff044cf4e8632b48ed340076b5c78cd4b35702362b44d773877f0988",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact operator-specific P36stop component; airport own current timetable independently names IbarakiKotsu at bothendpoints. Coarsepublicterminal/forecourtcomponentonly, bay4/2 naming supplies serviceboarding notgeometry. Publicairportexit andstationplaza/concourse separatelyreviewed; no co-locatedoperator collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "茨城交通（株）",
+              "currentOperatorName": "茨城交通",
+              "currentStopName": "水戸駅南口",
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "茨城空港・水戸駅南口高速直行",
+      "operator": "茨城交通",
+      "direction": "mito-bound",
+      "serviceClass": "空港高速直行バス",
+      "serviceState": "active",
+      "serviceStateScope": "SEPTEMBER1_OCTOBER24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "reviewMethod": "INDEPENDENT_AIRPORT_NATIVE_TWO_DIRECTION_ACTUAL_ROWS",
+      "locator": "Native September1-October24 table1 row3 IbarakiKotsu firstactualairportdeparture; independentSouthExitdestination, explicitlydirect. Otheroperator/general-road/northexitservicesexcluded; no clocks/frequencyguarantee."
+    },
+    {
+      "factId": "ibaraki-public-terminal-mito-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+      "sourceUrl": "https://www.ibaraki-airport.net/facilities/bus-taxi/",
+      "observedResponseSha256": "e3a40fa599b73703edfef59218a0869374022b6e6c9a991e973a3a2dce8f783f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+          "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+          "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+        },
+        {
+          "sourceActionId": "airport:mlit:hyakuri-iwakuni-explicit-public-name-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/ibaraki.html",
+          "observedResponseSha256": "8dc313dafaa2e5d454b01c5a6ae10a6ba6ba5348f855ec0771bf3925ea1e67af"
+        }
+      ],
+      "reviewedAirportPublicNames": [
+        "茨城空港"
+      ],
+      "components": [
+        {
+          "name": "百里飛行場",
+          "operator": "airport-facility:cf03_00003",
+          "line": "airport:cf03_00003",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00003",
+            "requirementId": "review:official-airport:百里",
+            "expectedRequirementName": "百里",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "officialNameEvidence": {
+              "officialName": "百里飛行場",
+              "requirementName": "百里",
+              "publicName": "茨城空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "Tokyo CAB current airport heading explicitly pairs Hyakuri airfield with Ibaraki Airport.",
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/ibaraki.html",
+              "observedResponseSha256": "8dc313dafaa2e5d454b01c5a6ae10a6ba6ba5348f855ec0771bf3925ea1e67af"
+            },
+            "currentPassengerAccessReview": "Airportcurrentnativefacilities explicitlyconnectpublicterminalexit turning leftto busfrontage; owncurrentservicenamesairportbay2. Civilianterminalonly; no militaryarea/airside, coordinateproximity orprecisegeometry."
+          }
+        },
+        {
+          "name": "茨城空港",
+          "operator": "茨城交通（株）",
+          "line": "p36-stop:P36-23_08:kbs136",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_08:kbs136",
+            "recordSha256": "0ed6783ae5f001f6819c4b0ac097919ba3ed2a6abc7da589273b0762a238d7dc",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact operator-specific P36stop component; airport own current timetable independently names IbarakiKotsu at bothendpoints. Coarsepublicterminal/forecourtcomponentonly, bay4/2 naming supplies serviceboarding notgeometry. Publicairportexit andstationplaza/concourse separatelyreviewed; no co-locatedoperator collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "茨城交通（株）",
+              "currentOperatorName": "茨城交通",
+              "currentStopName": "茨城空港",
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_AIRPORT_PUBLIC_EXIT_AND_OPERATOR_SPECIFIC_ROAD_COMPONENT",
+      "hubScopeComplete": false,
+      "locator": "Nativeairportfacilities specifiesterminalexit leftbusarea. Airportownedcurrenttimetable binds IbarakiKotsu bay2. Existingexact MLITformal/publicnamealias reused; nopermissionboundarycrossing, no coordinates-derivedwalk."
+    },
+    {
+      "factId": "mito-south-public-concourse-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "public:mito-city:south-station-public-plaza",
+      "sourceUrl": "https://www.city.mito.lg.jp/page/2253.html",
+      "observedResponseSha256": "1a615bb073a54ea7b84710680de0bc410b02338c1016b9dee4250ed6d24d9878",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:mito-city:south-station-public-plaza",
+          "url": "https://www.city.mito.lg.jp/uploaded/attachment/3628.pdf",
+          "observedResponseSha256": "70f9b2c96e46d285bf8f0ee959d5bdf524447883f130759b0f8a4ff301e7971c"
+        },
+        {
+          "sourceActionId": "public:mito-tourism:jr-south-public-concourse",
+          "url": "https://mitokoumon.com/koumon/hanabi.html",
+          "observedResponseSha256": "3b1c4b3fe6c897c7a66643700546f67cb47a4893f1e0e40b2df15c683dadf000"
+        },
+        {
+          "sourceActionId": "airport:ibaraki:native-october-mito-service-and-public-terminal",
+          "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+          "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+        }
+      ],
+      "components": [
+        {
+          "name": "水戸",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "水戸駅南口",
+          "operator": "茨城交通（株）",
+          "line": "p36-stop:P36-23_08:kbs104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_08:kbs104",
+            "recordSha256": "a851876dff044cf4e8632b48ed340076b5c78cd4b35702362b44d773877f0988",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact operator-specific P36stop component; airport own current timetable independently names IbarakiKotsu at bothendpoints. Coarsepublicterminal/forecourtcomponentonly, bay4/2 naming supplies serviceboarding notgeometry. Publicairportexit andstationplaza/concourse separatelyreviewed; no co-locatedoperator collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "茨城交通（株）",
+              "currentOperatorName": "茨城交通",
+              "currentStopName": "水戸駅南口",
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "observedResponseSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "PUBLIC_MUNICIPAL_STATION_PLAZA_CURRENT_PRIMARY_CONCOURSE_AND_AIRPORT_ENDPOINT",
+      "hubScopeComplete": false,
+      "locator": "CityexplicitpublicSouthExitplaza/deck andviewedmap; current2026officialtourism nativeguide establishes ordinaryJRgatepublicconcourse toSouthExit/deck/ground beforefestivalrestrictionboundary. Airportnative table independentlynames bothSouthExitarrival andbay4departure. CoarseP36operatorstopconnection only, no exactbay/arrivalposition, walkingtime/accessibility or ticketedfestivalroute."
+    }
+  ]
+}

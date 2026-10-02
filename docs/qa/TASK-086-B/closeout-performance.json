@@ -1,34 +1,33 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE167-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE169-v2",
   "checks": {
     "full": {
-      "reason": "P11-selection CRLF normalized to repository LF; prior fingerprint not reused",
-      "elapsedSeconds": 933.4090898,
-      "exitCode": 0
+      "command": "full repository regression including deterministic rebuild/resume/corruption; phase169",
+      "publishValidation": true,
+      "exitCode": 0,
+      "elapsedSeconds": 808.857526
     },
     "lint": {
       "exitCode": 0,
-      "elapsedSeconds": 86.7834101
+      "elapsedSeconds": 35.0190026
     },
     "typecheck": {
       "exitCode": 0,
-      "elapsedSeconds": 15.5058244
+      "elapsedSeconds": 7.0530436
     },
-    "build": {
+    "artifact": {
       "exitCode": 0,
-      "elapsedSeconds": 47.5473792
+      "elapsedSeconds": 54.9756799
     }
   },
-  "previousFullRegressionSeconds": 1092.0145659,
-  "comparison": "Different input/code and concurrent machine workload; elapsed observations only, not attributable optimization or token/cost saving.",
-  "newAirportGroundRootsClosed": 3,
-  "newOriginalGraphReachability": 0,
-  "newNecessaryNodes": 36,
-  "newDirectedEdges": 76,
-  "modelTokens": null,
-  "modelCachedTokens": null,
+  "priorLocalFullSeconds": 933.4090898,
+  "comparison": "Different inputs/code/workload; not attributable speed or model cost savings",
+  "airportRootsClosedSince167": 2,
+  "airportRootsClosedSince164": 5,
+  "newOriginalAllModeReachability": 0,
+  "tokenCostAvailable": false,
+  "tokenCount": null,
   "billedCost": null,
-  "modelUsageAvailability": "Per-task/model accounting unavailable; account quota is not task billing.",
-  "packageMetrics": "research/work-package-ledger.v1.json"
+  "packageMetrics": "data/transport/network/research/work-package-ledger.v1.json"
 }

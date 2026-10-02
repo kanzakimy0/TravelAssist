@@ -829,6 +829,7 @@ export function buildStageReport() {
     .filter(Boolean);
   const packages = buildWorkPackages(open, {
     priorityRootIds,
+    originalRequirementIds: [...original],
     acquisitionIndex,
     ledger,
   });

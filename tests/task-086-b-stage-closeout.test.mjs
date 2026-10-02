@@ -737,3 +737,39 @@ test("TASK086 package checkpoint survives reload and redacts secrets without ass
     fs.rmSync(tmp, { recursive: true, force: true });
   }
 });
+
+test("TASK086 package order keeps original airports ahead of bus volume and counts only original requirements", () => {
+  const roots = [
+    {
+      ...packageRoot,
+      rootCauseId: "root:direction:many",
+      researchBatchKey: "bus",
+      coreRequiredCount: 0,
+      requirementIds: ["a", "b", "c"],
+    },
+    {
+      ...packageRoot,
+      rootCauseId: "root:airport:ordinary",
+      researchBatchKey: "airport",
+      coreRequiredCount: 0,
+      requirementIds: ["a", "intermediate"],
+    },
+    {
+      ...packageRoot,
+      rootCauseId: "root:airport:milestone",
+      researchBatchKey: "milestone",
+      coreRequiredCount: 0,
+      requirementIds: ["b"],
+    },
+  ];
+  const packages = buildWorkPackages(roots, {
+    priorityRootIds: ["root:airport:milestone"],
+    originalRequirementIds: ["a", "b", "c"],
+  });
+  assert.deepEqual(
+    packages.map((p) => p.packageId),
+    ["milestone", "airport", "bus"],
+  );
+  assert.equal(packages[1].originalRequiredCount, 1);
+  assert.equal(packages[2].originalRequiredCount, 3);
+});

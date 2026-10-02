@@ -4,29 +4,17 @@
   "packages": [
     {
       "packageId": "research:03b09beeec61f1a0a808",
-      "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
-      "status": "IN_PROGRESS",
-      "nextAction": "Review currentpubliccrossingsandNagaokaactualarrivalaccess fromcachedcarrierstopindex, preserveexactdirectionalGTFSIDsunlesscoarseaccessproven; seekdistinctcurrentterminalidentitydataset; continueindependent25originalairportidentitypreflight.",
+      "inputFingerprint": "99e4b8a7eb7993da6541679ff66ced8a2afe4883a4005f37ed56dc6aab1c7271",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
       "resumeEvidence": [
         {
-          "path": ".cache/task-086/airports7/niigata-identity-options-v1.json",
-          "sha256": "01d5f0e808c8dcd57455930dd3686ea274950927db37825139f194d0735fde97",
-          "status": "RESEARCH_NOT_ADMISSION"
+          "path": ".cache/task-086/airports7/phase169.json",
+          "sha256": "64de73d32f58cdc6f4f380cf0e7c760baa49c1ffaddfdd6cbd44a140f6a17d2e"
         },
         {
-          "path": ".cache/task-086/airports7/niigata-alt-chain-v1.json",
-          "sha256": "3d815a30b41f9595c9fb259bc3fc67e7c5fdca8d9e530aa484aa44ba73c823d8",
-          "status": "RESEARCH_NOT_ADMISSION"
-        },
-        {
-          "path": ".cache/task-086/airports7/niigata-e22-extraction-v1.json",
-          "sha256": "fee6c6d6e02013ffc4b9a260a7949cbf54e07f60f625303eefe56f6f2a299c65",
-          "status": "RESEARCH_NOT_ADMISSION"
-        },
-        {
-          "path": ".cache/task-086/airports7/niigata-p36-identity-review-v1.json",
-          "sha256": "0fd0c4d7368c5b45f25b1064bfa563b69a33a38c7d93d9b167755f2f86a1b545",
-          "status": "RESEARCH_NOT_ADMISSION"
+          "path": ".cache/task-086/airports7/niigata-bandai-public-walk-review-v1.json",
+          "sha256": "2792151e22151f7749e99b08f93c3ec23606a37dbf7672e8416e22fcf7e3c14c"
         }
       ],
       "attempts": [
@@ -245,6 +233,137 @@
           },
           "nextAction": "Review currentpubliccrossingsandNagaokaactualarrivalaccess fromcachedcarrierstopindex, preserveexactdirectionalGTFSIDsunlesscoarseaccessproven; seekdistinctcurrentterminalidentitydataset; continueindependent25originalairportidentitypreflight.",
           "retryCondition": "No unchangedGTFS/OSMrefetch; no repeatJREast403 or prioridentitysearchwithoutnewsource/version/parser. Distinctofficialpublic-accessmaporlicensedcurrentidentityneeded."
+        },
+        {
+          "observedAt": "2026-10-02T16:19:38.563Z",
+          "inputFingerprint": "99e4b8a7eb7993da6541679ff66ced8a2afe4883a4005f37ed56dc6aab1c7271",
+          "method": "Alternative E22 localbus plus explicitly evidenced Bandai publicwalk; independentprefectureterminalproof after airportsite reuse restriction; nativeP11 identity",
+          "result": "Four reviewedfacts,40directededges,19nativeP11components; nationalJRNiigataanchor reused; obsoletecityterminal/highwaydependencies excluded",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/files/weekday/e2_w.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "608cc5b8ce18d40d3acc05b2364c9e2c3c82c605fbe1825723e10b50a77604f1"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/noriai/20150716privacy.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b00a4857fea98f64d643ce562d2b5c0683fba2b3206892ff5bd8ba938ce48f90"
+            },
+            {
+              "url": "https://bandaicity.com/access/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "8dbfe60d36f884276c7fb9b09ddf92c1c672a3e77509b482902db72f8f6504c6"
+            },
+            {
+              "url": "https://bandaicity.com/privacy/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "85a5a12e256a392358631ff6d55dc0bf96829ef2a956d0a420fafd1c8c9e8b3c"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/kurashi/doro/ekisyu/ekisyu-osirase/hirobaseibisintyoku.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "94d39d1a49983bca45bfeb7e4407f407164d9419660c672cb8b00f08a0dbb551"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/kurashi/doro/ekisyu/ekisyu-osirase/hirobaseibisintyoku.files/20260918_annaizu.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "79e6acfa11da5d34d47248ce988c5a62f8d6466499447132c8905a652858dd72"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/kurashi/doro/airport/access/kuukouhenoakusesu.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b4f270ce7abb3a3d0a53663607bcb60f61871123c056d93aeff0d95a2bb959f0"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/homepage/unei/chosakuken.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "cefa8653a2c8b6bebcb98cfb7b509ed8aaa1d4d28fc5d43b12e3d91fe479d2e1"
+            },
+            {
+              "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/181380.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "2c412f75005857f9ee305e09305c0660aac929f8e3b41e3ead0274903767cfa9"
+            },
+            {
+              "url": "https://www.pref.niigata.lg.jp/site/userguide/chosakuken.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "8ed118a21ba8f2805be24e3d427dec4e8e82b63cd31f1eff1ad9d9f97f6166df"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase169.json",
+              "sha256": "64de73d32f58cdc6f4f380cf0e7c760baa49c1ffaddfdd6cbd44a140f6a17d2e"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-bandai-public-walk-review-v1.json",
+              "sha256": "2792151e22151f7749e99b08f93c3ec23606a37dbf7672e8416e22fcf7e3c14c"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 12,
+            "webSearchQueries": 6,
+            "sourceCacheResponsesReused": 13,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 161.4251457
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:3bff3ceee766c194facd",
+      "inputFingerprint": "2e40e7d5eec4dd162a4b70c908fcdc9c86dba94f136f937daa761977bf874cb5",
+      "status": "IN_PROGRESS",
+      "nextAction": "Findcached/currentJRWestactualtraincolumns betweenIwakuniandexistingconnectedSanyoanchor; preserveallintermediatecalls; thenbindIwakuniEastpublicbusrailpassage",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/iwakuni170/iwakuni-extraction-v1.json",
+          "sha256": "06cfd309ec039e7a86ffd87abd2b1b8ce378400d2bd89e80dadd3d424a414d2f"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T16:27:31.576Z",
+          "inputFingerprint": "2e40e7d5eec4dd162a4b70c908fcdc9c86dba94f136f937daa761977bf874cb5",
+          "method": "Preflightoriginalairportgroundchain; independentlyextractcurrentairport-toJR_Iwakuni_bus; seekclosestexistingconnectedSanyoRailanchor",
+          "result": "Airportbus currenttwo-direction3calls established; JR_Iwakuni notyetadmitted; necessaryrealrailconnectionresearchactive. No partialchainadmitted.",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/iwakuni170/iwakuni-extraction-v1.json",
+              "sha256": "06cfd309ec039e7a86ffd87abd2b1b8ce378400d2bd89e80dadd3d424a414d2f"
+            }
+          ],
+          "metrics": {
+            "tokens": null,
+            "billedCost": null,
+            "sourceRequests": "Recordedbyextractionmetadata; do notdoublecountadministrativecheckpoint"
+          },
+          "nextAction": "Findcached/currentJRWestactualtraincolumns betweenIwakuniandexistingconnectedSanyoanchor; preserveallintermediatecalls; thenbindIwakuniEastpublicbusrailpassage",
+          "retryCondition": "Distinctnecessaryrailsource/cachemethod orchangedversion/identity/rights; no unchangedfailedfetch"
         }
       ]
     },
@@ -383,6 +502,98 @@
           },
           "nextAction": "Continue next original package; final full gate pending",
           "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    },
+    {
+      "packageId": "research:574ab4a2f66bab2760ce",
+      "inputFingerprint": "31e98d9d809b45c80a8f6c60ce5ffcafd5b645fa8fa67233bef000f6fdcfea3e",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/ibaraki168/phase168.json",
+          "sha256": "4c3d1ae263e24453046bbf8e1447abd941296612a18ad4d85f46e300deef0055"
+        },
+        {
+          "path": ".cache/task-086/ibaraki168/mito-final-rights-access-review.json",
+          "sha256": "25f28515e162f3a2c25e009fa3b6637474eb93c43bc0272a51d6d91d4c8f4470"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T15:59:55.477Z",
+          "inputFingerprint": "31e98d9d809b45c80a8f6c60ce5ffcafd5b645fa8fa67233bef000f6fdcfea3e",
+          "method": "Independent airport native timetable after carrier rights rejection; exactP36identity; municipal publicplaza andcurrenttourism publicconcourse",
+          "result": "Four reviewedfacts,sixdirectededges prepared; nationalMitoanchor reused; no newrailservice",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            },
+            {
+              "url": "https://www.ibaraki-airport.net/facilities/bus-taxi/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "e3a40fa599b73703edfef59218a0869374022b6e6c9a991e973a3a2dce8f783f"
+            },
+            {
+              "url": "https://www.ibaraki-airport.net/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "68eae03305e1f18a07ebd980faf5f1a1d3ed36516c22834177a6286d33d0e944"
+            },
+            {
+              "url": "https://www.city.mito.lg.jp/page/2253.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "1a615bb073a54ea7b84710680de0bc410b02338c1016b9dee4250ed6d24d9878"
+            },
+            {
+              "url": "https://www.city.mito.lg.jp/uploaded/attachment/3628.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "70f9b2c96e46d285bf8f0ee959d5bdf524447883f130759b0f8a4ff301e7971c"
+            },
+            {
+              "url": "https://www.city.mito.lg.jp/page/18265.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "c427e33cba42791c1983cefdf971ef73c4514d28293d7b8a1e118d8e2c403be0"
+            },
+            {
+              "url": "https://mitokoumon.com/koumon/hanabi.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "3b1c4b3fe6c897c7a66643700546f67cb47a4893f1e0e40b2df15c683dadf000"
+            },
+            {
+              "url": "https://mitokoumon.com/privacy-policy/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "264b3c9b9a668edaef6105da0a4cab0bdb202e5d966300bece29d3576c9c780d"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/ibaraki168/phase168.json",
+              "sha256": "4c3d1ae263e24453046bbf8e1447abd941296612a18ad4d85f46e300deef0055"
+            },
+            {
+              "path": ".cache/task-086/ibaraki168/mito-final-rights-access-review.json",
+              "sha256": "25f28515e162f3a2c25e009fa3b6637474eb93c43bc0272a51d6d91d4c8f4470"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 17,
+            "webSearchQueries": 6,
+            "sourceCacheResponsesReused": 8,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 159.9586629,
+            "reconciledReplayElapsedSeconds": 156.1738368,
+            "focusedTestCount": 65,
+            "focusedTestsPassed": 65
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
         }
       ]
     },
