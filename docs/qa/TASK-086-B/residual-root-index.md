@@ -1,8 +1,8 @@
-# TASK-086-B 剩余根因目录
+# TASK-086-B 剩余唯一根因
 
-281 个 OPEN 唯一根因；原始要求保留，检查点后继续执行。
+277 OPEN；机场33、巴士方向243、铁路来源总审核1。来源总审核内部8事实属于同一审核义务，不能与总审核重复计数。原始验收项完整保留。
 
-| 稳定根因ID | 类别 | 原始required数 | 原检查数 |
+| 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
 | root:airport:review:official-airport:奥尻 | D | 1 | 4 |
 | root:airport:review:official-airport:北大東 | C | 1 | 1 |
@@ -11,15 +11,11 @@
 | root:airport:review:official-airport:大島 | D | 1 | 4 |
 | root:airport:review:official-airport:但馬 | D | 1 | 4 |
 | root:airport:review:official-airport:徳之島 | C | 1 | 1 |
-| root:airport:review:official-airport:調布 | D | 1 | 4 |
 | root:airport:review:official-airport:多良間 | D | 1 | 4 |
-| root:airport:review:official-airport:久米島 | C | 1 | 1 |
 | root:airport:review:official-airport:利尻 | D | 1 | 4 |
-| root:airport:review:official-airport:美保 | D | 1 | 4 |
 | root:airport:review:official-airport:南大東 | C | 1 | 1 |
 | root:airport:review:official-airport:南紀白浜 | D | 1 | 4 |
 | root:airport:review:official-airport:能登 | D | 1 | 4 |
-| root:airport:review:official-airport:鳥取 | D | 1 | 4 |
 | root:airport:review:official-airport:三宅島 | D | 1 | 4 |
 | root:airport:review:official-airport:神津島 | D | 1 | 4 |
 | root:airport:review:official-airport:石見 | D | 1 | 4 |
@@ -30,7 +26,6 @@
 | root:airport:review:official-airport:新島 | D | 1 | 4 |
 | root:airport:review:official-airport:壱岐 | D | 1 | 4 |
 | root:airport:review:official-airport:与論 | C | 1 | 1 |
-| root:airport:review:official-airport:札幌 | D | 1 | 4 |
 | root:airport:review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03 | C | 1 | 1 |
 | root:airport:review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665 | D | 1 | 4 |
 | root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e | C | 1 | 1 |
@@ -285,3 +280,4 @@
 | root:direction:component:f656d4356759b615399c | C | 0 | 2 |
 | root:direction:component:fcea1d44018e23ee92da | C | 0 | 2 |
 | root:direction:component:ffce88d4d3f84df13e09 | C | 0 | 2 |
+| root:obligation:source:national-stopping-patterns | C | 0 | 1 |

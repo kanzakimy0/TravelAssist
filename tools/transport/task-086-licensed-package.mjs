@@ -119,6 +119,62 @@ function mergeLine(line, existing, source, sources, evidence, reuse) {
   };
 }
 
+function ccBy21EvidenceBound(source, selection, action) {
+  const e = source.licenseEvidence;
+  const text = (v) => typeof v === "string" && v.trim().length > 0;
+  const ref = (v) =>
+    typeof v?.url === "string" &&
+    v.url.startsWith("https://") &&
+    /^[a-f0-9]{64}$/.test(v.observedResponseSha256 ?? "") &&
+    text(v.locator) &&
+    action?.sourcesChecked?.some(
+      (s) =>
+        s.status === 200 &&
+        s.url === v.url &&
+        s.contentSha256 === v.observedResponseSha256,
+    );
+  const parties = e?.attributionParties;
+  return (
+    ref(e) &&
+    ref(e.catalogEvidence) &&
+    ref(e.publisherAuthorityEvidence) &&
+    e.scope === "PREFECTURE_COMMISSIONED_GTFS_PORTAL_CC_BY_2_1_JP" &&
+    e.licenseUrl === "https://creativecommons.org/licenses/by/2.1/jp/" &&
+    e.reviewedDatasetUrl === source.datasetUrl &&
+    e.catalogEvidence.url === source.datasetUrl &&
+    e.resourceUrl === source.url &&
+    e.sourceArchiveSha256 === source.contentSha256 &&
+    text(e.publisher) &&
+    e.publisher === source.feedInfo?.feed_publisher_name &&
+    e.operator === selection.operator &&
+    source.agencies?.some(
+      (a) => a.agency_id === selection.agencyId && a.agency_name === e.operator,
+    ) &&
+    text(e.licensor) &&
+    Array.isArray(parties) &&
+    parties.every(text) &&
+    [e.publisher, e.operator, e.licensor].every((v) => parties.includes(v)) &&
+    text(e.modificationNotice) &&
+    typeof source.attribution === "string" &&
+    [...parties, e.modificationNotice, e.licenseUrl].every((v) =>
+      source.attribution.includes(v),
+    ) &&
+    e.resourceExceptionReview?.status ===
+      "NO_DATASET_SPECIFIC_OVERRIDE_OBSERVED" &&
+    text(e.resourceExceptionReview.locator) &&
+    action?.rightsFindings?.at(-1)?.license === "CC BY 2.1 Japan" &&
+    e.url === action?.rightsFindings?.at(-1)?.termsUrl &&
+    hash(e) === hash(selection.licenseEvidence ?? null) &&
+    action.sourcesChecked.some(
+      (s) =>
+        s.purpose === "terms" &&
+        s.status === 200 &&
+        s.url === e.url &&
+        s.contentSha256 === e.observedResponseSha256,
+    )
+  );
+}
+
 // Admit only a reviewed, hash-bound package at its declared phase. Exact GTFS
 // boarding points stay distinct, including same-name arrival/departure stops.
 export function prepareLicensedGtfsPackage(
@@ -152,7 +208,10 @@ export function prepareLicensedGtfsPackage(
     pack.selection.trips.some((t) => t.section);
   if (reuse || pack.selection.baseSource)
     invariant(
-      reuse?.method === "EXACT_EXISTING_GTFS_ANCHOR_SAME_ARCHIVE" &&
+      [
+        "EXACT_EXISTING_GTFS_ANCHOR_SAME_ARCHIVE",
+        "EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE",
+      ].includes(reuse?.method) &&
         reuse.sourceDescriptorSha256 === hash(source) &&
         canonical(pack.selection.baseSource) === canonical(source),
       "LICENSED_GTFS_REUSE_SOURCE_MISMATCH",
@@ -164,7 +223,20 @@ export function prepareLicensedGtfsPackage(
       s.rawPayloadRetained &&
       s.contentSha256 === source.contentSha256,
   );
+  if (
+    [
+      source.licenseEvidence?.scope,
+      pack.selection.licenseEvidence?.scope,
+    ].includes("PREFECTURE_COMMISSIONED_GTFS_PORTAL_CC_BY_2_1_JP") ||
+    action?.rightsFindings?.at(-1)?.license === "CC BY 2.1 Japan"
+  )
+    invariant(
+      source.license === "CC BY 2.1 Japan" &&
+        pack.selection.license === "CC BY 2.1 Japan",
+      "LICENSED_GTFS_LICENSE_BINDING_MISMATCH",
+    );
   const licenseDecisions = {
+    "CC BY 2.1 Japan": "PASS_CC_BY_2_1_JP_ATTRIBUTION",
     "CC BY 4.0": "PASS_CC_BY_4_0_ATTRIBUTION",
     "CC0 1.0": "PASS_CC0_1_0_PUBLIC_DOMAIN",
     "Operator unrestricted-use terms": "PASS_OPERATOR_UNRESTRICTED_USE",
@@ -173,28 +245,32 @@ export function prepareLicensedGtfsPackage(
     Object.hasOwn(licenseDecisions, source.license) &&
       source.license === (pack.selection.license ?? "CC BY 4.0") &&
       source.rightsDecision === licenseDecisions[source.license] &&
-      (source.license === "CC BY 4.0" ||
-        ((source.license === "CC0 1.0"
-          ? source.licenseEvidence?.url === source.datasetUrl
-          : source.licenseEvidence?.scope ===
-              "EXPLICIT_OPERATOR_GTFS_UNRESTRICTED_USE" &&
-            source.licenseEvidence?.reviewedDatasetUrl === source.datasetUrl &&
-            source.licenseEvidence?.publisher === pack.selection.operator &&
-            source.licenseEvidence?.url ===
-              action?.rightsFindings.at(-1)?.termsUrl &&
-            /^https:\/\//.test(source.licenseEvidence?.url ?? "")) &&
-          /^[a-f0-9]{64}$/.test(
-            source.licenseEvidence?.observedResponseSha256 ?? "",
-          ) &&
-          hash(source.licenseEvidence) ===
-            hash(pack.selection.licenseEvidence ?? null) &&
-          action?.sourcesChecked.some(
-            (s) =>
-              s.purpose === "terms" &&
-              s.status === 200 &&
-              s.url === source.licenseEvidence.url &&
-              s.contentSha256 === source.licenseEvidence.observedResponseSha256,
-          ))),
+      (source.license === "CC BY 2.1 Japan"
+        ? ccBy21EvidenceBound(source, pack.selection, action)
+        : source.license === "CC BY 4.0" ||
+          ((source.license === "CC0 1.0"
+            ? source.licenseEvidence?.url === source.datasetUrl
+            : source.licenseEvidence?.scope ===
+                "EXPLICIT_OPERATOR_GTFS_UNRESTRICTED_USE" &&
+              source.licenseEvidence?.reviewedDatasetUrl ===
+                source.datasetUrl &&
+              source.licenseEvidence?.publisher === pack.selection.operator &&
+              source.licenseEvidence?.url ===
+                action?.rightsFindings.at(-1)?.termsUrl &&
+              /^https:\/\//.test(source.licenseEvidence?.url ?? "")) &&
+            /^[a-f0-9]{64}$/.test(
+              source.licenseEvidence?.observedResponseSha256 ?? "",
+            ) &&
+            hash(source.licenseEvidence) ===
+              hash(pack.selection.licenseEvidence ?? null) &&
+            action?.sourcesChecked.some(
+              (s) =>
+                s.purpose === "terms" &&
+                s.status === 200 &&
+                s.url === source.licenseEvidence.url &&
+                s.contentSha256 ===
+                  source.licenseEvidence.observedResponseSha256,
+            ))),
     "LICENSED_GTFS_LICENSE_BINDING_MISMATCH",
   );
   invariant(
@@ -228,7 +304,11 @@ export function prepareLicensedGtfsPackage(
       ),
     "LICENSED_GTFS_PACKAGE_TRIP_SCOPE_MISMATCH",
   );
-  if (extension || Object.hasOwn(binding, "reviewedServiceDate"))
+  if (
+    source.license === "CC BY 2.1 Japan" ||
+    extension ||
+    Object.hasOwn(binding, "reviewedServiceDate")
+  )
     verifyNativePackage(pack, raw);
   unique(pack.nodes, (n) => n.identityAnchor, "NODE_ANCHOR");
   unique(pack.lines, (l) => l.lineRef, "LINE_REF");
@@ -277,7 +357,36 @@ export function prepareLicensedGtfsPackage(
       evidenceRefs: union(previous.evidenceRefs, candidate.evidenceRefs),
     });
   }
-  invariant(!reuse || reused.length > 0, "LICENSED_GTFS_REUSE_ANCHOR_REQUIRED");
+  if (reuse?.method === "EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE") {
+    const witnessId = id(
+      "node",
+      `${source.sourceId}:stop:${reuse.existingDatasetStopId}`,
+    );
+    const witness = nodes.get(witnessId);
+    invariant(
+      witness?.nodeId === witnessId &&
+        witness.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+        stopBound(witness, source, sources, evidence) &&
+        witness.identityRecord.stop_id === reuse.existingDatasetStopId &&
+        hash(witness.identityRecord) === reuse.existingDatasetRecordSha256 &&
+        (!Object.hasOwn(witness.independentReview, "sourceArchiveSha256") ||
+          witness.independentReview.sourceArchiveSha256 ===
+            source.contentSha256) &&
+        witness.identitySignature ===
+          hash([
+            witness.identityAnchor,
+            witness.canonicalNameJa,
+            witness.nodeKind,
+            witness.operatorRefs,
+          ]),
+      "LICENSED_GTFS_EXISTING_DATASET_PROOF_MISMATCH",
+    );
+  } else {
+    invariant(
+      !reuse || reused.length > 0,
+      "LICENSED_GTFS_REUSE_ANCHOR_REQUIRED",
+    );
+  }
   const admitted = admitNodes(fresh, sources, evidence, [...nodes.values()]);
   invariant(
     admitted.every(

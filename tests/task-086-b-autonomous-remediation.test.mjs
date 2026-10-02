@@ -2779,3 +2779,266 @@ test("TASK086 source preflight rejects incomplete provenance before historical r
     /FACT_SOURCE_LICENSE_OR_PROVENANCE/,
   );
 });
+
+function exactCurrentAirfieldFixture() {
+  const record = {
+    airportName: "調布飛行場",
+    referencePointId: "cf03_00029",
+    latitude: 35.671667,
+    longitude: 139.528056,
+    coordinateScope:
+      "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+    identityAsOf: "2021-12-31",
+  };
+  const requirement = {
+    requirementId: "review:official-airport:調布",
+    name: "調布",
+    kind: "airport",
+    tier: "T2",
+    nodeId: id("node", "review:official-airport:調布"),
+  };
+  const officialNameEvidence = {
+    officialName: record.airportName,
+    publicName: record.airportName,
+    requirementName: requirement.name,
+    equivalenceKind: "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+    locator: "Current authority passenger airfield access heading",
+    url: "https://example.test/chofu/formal-name",
+    observedResponseSha256: "a".repeat(64),
+  };
+  return {
+    record,
+    requirement,
+    selector: {
+      name: record.airportName,
+      operator: "airport-facility:" + record.referencePointId,
+      line: "airport:" + record.referencePointId,
+      mode: "flight",
+      airportIdentity: {
+        dataset: "C28-21",
+        referencePointId: record.referencePointId,
+        requirementId: requirement.requirementId,
+        expectedRequirementName: requirement.name,
+        method: "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+        currentPassengerAccessReview:
+          "Reviewed current public terminal connection",
+        officialNameEvidence,
+      },
+    },
+    fact: {
+      corroboratingEvidence: [
+        {
+          url: officialNameEvidence.url,
+          observedResponseSha256: officialNameEvidence.observedResponseSha256,
+        },
+      ],
+    },
+    evidenceRefs: ["identity", "current-access"],
+  };
+}
+function buildExactCurrentAirfield(f) {
+  return airportCandidate(
+    f.selector,
+    f.record,
+    f.requirement,
+    f.evidenceRefs,
+    f.fact,
+  );
+}
+test("TASK086 exact current formal airfield name preserves original identity without an airport alias", () => {
+  const f = exactCurrentAirfieldFixture(),
+    before = structuredClone(f);
+  const node = buildExactCurrentAirfield(f);
+  assert.equal(id("node", node.identityAnchor), f.requirement.nodeId);
+  assert.equal(node.canonicalNameJa, "調布飛行場");
+  assert.deepEqual(node.identityRecord, f.record);
+  assert.equal(node.independentReview.recordSha256, hash(f.record));
+  assert.equal(
+    node.independentReview.coordinateScope,
+    f.record.coordinateScope,
+  );
+  assert.equal(node.latitude, f.record.latitude);
+  assert.equal(node.longitude, f.record.longitude);
+  assert.deepEqual(
+    node.independentReview.officialNameEvidence,
+    f.selector.airportIdentity.officialNameEvidence,
+  );
+  assert.deepEqual(f, before);
+});
+const formalAirfieldNegativeCases = [
+  [
+    "wrong native reference",
+    (f) => {
+      f.selector.airportIdentity.referencePointId = "cf03_wrong";
+    },
+  ],
+  [
+    "wrong native record",
+    (f) => {
+      f.record.airportName = "徳島飛行場";
+    },
+  ],
+  [
+    "wrong selector operator",
+    (f) => {
+      f.selector.operator = "airport-facility:wrong";
+    },
+  ],
+  [
+    "wrong selector line",
+    (f) => {
+      f.selector.line = "airport:wrong";
+    },
+  ],
+  [
+    "wrong original requirement",
+    (f) => {
+      f.requirement.requirementId = "review:official-airport:徳島";
+    },
+  ],
+  [
+    "wrong original node",
+    (f) => {
+      f.requirement.nodeId = id("node", "wrong");
+    },
+  ],
+  [
+    "wrong requirement name",
+    (f) => {
+      f.requirement.name = "徳島";
+    },
+  ],
+  [
+    "empty formal name",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.officialName = "";
+    },
+  ],
+  [
+    "invented airport public alias",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.publicName = "調布空港";
+      f.fact.reviewedAirportPublicNames = ["調布空港"];
+    },
+  ],
+  [
+    "prefix-only current name",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.publicName =
+        "調布飛行場別館";
+    },
+  ],
+  [
+    "empty current public name",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.publicName = "";
+    },
+  ],
+  [
+    "wrong evidence requirement",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.requirementName = "徳島";
+    },
+  ],
+  [
+    "empty current access",
+    (f) => {
+      f.selector.airportIdentity.currentPassengerAccessReview = "";
+    },
+  ],
+  [
+    "whitespace current access",
+    (f) => {
+      f.selector.airportIdentity.currentPassengerAccessReview = "  ";
+    },
+  ],
+  [
+    "nontext current access",
+    (f) => {
+      f.selector.airportIdentity.currentPassengerAccessReview = {};
+    },
+  ],
+  [
+    "empty locator",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.locator = "  ";
+    },
+  ],
+  [
+    "alias equivalence kind",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.equivalenceKind =
+        "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME";
+    },
+  ],
+  [
+    "changed source hash",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.observedResponseSha256 =
+        "b".repeat(64);
+    },
+  ],
+  [
+    "missing source hash",
+    (f) => {
+      delete f.selector.airportIdentity.officialNameEvidence
+        .observedResponseSha256;
+    },
+  ],
+  [
+    "changed source URL",
+    (f) => {
+      f.selector.airportIdentity.officialNameEvidence.url =
+        "https://example.test/other";
+    },
+  ],
+  [
+    "unbound source",
+    (f) => {
+      f.fact.corroboratingEvidence = [];
+    },
+  ],
+  [
+    "split source URL and hash",
+    (f) => {
+      f.fact.corroboratingEvidence = [
+        {
+          url: "https://example.test/chofu/formal-name",
+          observedResponseSha256: "b".repeat(64),
+        },
+        {
+          url: "https://example.test/other",
+          observedResponseSha256: "a".repeat(64),
+        },
+      ];
+    },
+  ],
+  [
+    "missing access evidence",
+    (f) => {
+      f.evidenceRefs = ["identity"];
+    },
+  ],
+  [
+    "legacy alias path cannot accept formal-only evidence",
+    (f) => {
+      f.selector.airportIdentity.method =
+        "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS";
+      f.fact.reviewedAirportPublicNames = ["調布飛行場"];
+    },
+  ],
+  [
+    "legacy suffix path stays unchanged",
+    (f) => {
+      f.selector.airportIdentity.method =
+        "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX";
+    },
+  ],
+];
+for (const [name, mutate] of formalAirfieldNegativeCases) {
+  test("TASK086 exact current formal airfield rejects " + name, () => {
+    const f = exactCurrentAirfieldFixture();
+    mutate(f);
+    assert.throws(() => buildExactCurrentAirfield(f), /AIRPORT_.*MISMATCH/);
+  });
+}

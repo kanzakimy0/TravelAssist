@@ -1085,3 +1085,46 @@ test("TASK086 review fingerprint paths reject traversal absolute aliases and rev
     /GLOBAL_REVIEW_INPUT_SELF_BINDING/,
   );
 });
+
+test("TASK086 remaining packages preserve T2 before T3 regardless of batch key or root volume", () => {
+  const roots = [
+    {
+      ...packageRoot,
+      rootCauseId: "root:airport:small-island",
+      researchBatchKey: "a-t3",
+      requirementIds: ["t3a", "t3b"],
+    },
+    {
+      ...packageRoot,
+      rootCauseId: "root:airport:regional",
+      researchBatchKey: "z-t2",
+      requirementIds: ["t2"],
+    },
+    {
+      ...packageRoot,
+      rootCauseId: "root:airport:untyped",
+      researchBatchKey: "a-unknown",
+      requirementIds: ["unknown"],
+    },
+  ];
+  const options = {
+    originalRequirementIds: ["t2", "t3a", "t3b"],
+    requirementTiers: { t2: "T2", t3a: "T3", t3b: "T3" },
+  };
+  const ordered = buildWorkPackages(roots, options);
+  assert.deepEqual(
+    ordered.map((p) => p.packageId),
+    ["z-t2", "a-t3", "a-unknown"],
+  );
+  assert.deepEqual(
+    ordered.map((p) => p.requirementTierPriority),
+    [2, 3, 4],
+  );
+  assert.deepEqual(
+    buildWorkPackages(roots, {
+      ...options,
+      priorityRootIds: ["root:airport:small-island"],
+    }).map((p) => p.packageId),
+    ["a-t3", "z-t2", "a-unknown"],
+  );
+});

@@ -25,7 +25,10 @@ export function airportCandidate(
   );
   const publicAliasReview =
     review.method === "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS";
+  const exactCurrentAirfieldReview =
+    review.method === "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME";
   const airfieldReview =
+    exactCurrentAirfieldReview ||
     publicAliasReview ||
     review.method === "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX";
   const newAirportReview =
@@ -47,16 +50,23 @@ export function airportCandidate(
         typeof nameEvidence.publicName === "string" &&
         (newAirportReview
           ? nameEvidence.publicName === requirement.name + "空港"
-          : nameEvidence.publicName.endsWith("空港") &&
-            (publicAliasReview
-              ? nameEvidence.equivalenceKind ===
-                  "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME" &&
-                typeof nameEvidence.locator === "string" &&
-                nameEvidence.locator.trim().length > 0 &&
-                serviceFact?.reviewedAirportPublicNames?.includes(
-                  nameEvidence.publicName,
-                )
-              : nameEvidence.publicName.startsWith(requirement.name))) &&
+          : exactCurrentAirfieldReview
+            ? nameEvidence.publicName === record.airportName &&
+              nameEvidence.publicName === requirement.name + "飛行場" &&
+              nameEvidence.equivalenceKind ===
+                "EXACT_PRIMARY_CURRENT_FORMAL_NAME" &&
+              typeof nameEvidence.locator === "string" &&
+              nameEvidence.locator.trim().length > 0
+            : nameEvidence.publicName.endsWith("空港") &&
+              (publicAliasReview
+                ? nameEvidence.equivalenceKind ===
+                    "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME" &&
+                  typeof nameEvidence.locator === "string" &&
+                  nameEvidence.locator.trim().length > 0 &&
+                  serviceFact?.reviewedAirportPublicNames?.includes(
+                    nameEvidence.publicName,
+                  )
+                : nameEvidence.publicName.startsWith(requirement.name))) &&
         boundReference(nameEvidence),
       "AIRPORT_OFFICIAL_NAME_EVIDENCE_MISMATCH",
     );
@@ -86,7 +96,10 @@ export function airportCandidate(
       (airfieldReview ||
         newAirportReview ||
         review.method === "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX") &&
-      !!review.currentPassengerAccessReview &&
+      (exactCurrentAirfieldReview
+        ? typeof review.currentPassengerAccessReview === "string" &&
+          review.currentPassengerAccessReview.trim().length > 0
+        : !!review.currentPassengerAccessReview) &&
       evidenceRefs.length === 2,
     "AIRPORT_REQUIREMENT_REVIEW_MISMATCH",
   );

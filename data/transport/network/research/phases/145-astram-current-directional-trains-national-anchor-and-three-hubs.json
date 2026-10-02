@@ -388,46 +388,15 @@
     {
       "factId": "sanyo-1501M-current-hiroshima-shin-hakushima-section",
       "kind": "service",
-      "sourceActionId": "rail:jr-west:current-shin-hakushima-national-anchor-sections",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/127051?date=20261001",
-      "observedResponseSha256": "ec25a07f911bed31a03008626ca00eb51e9ef4a355facaae2030a1f8a75f7e89",
-      "locator": "Current 20261001 actual 1501M page independently reviewed in this acquisition session; full parent order agrees with the existing phase 092 audit. Retain only the contiguous two-call section 広島 to 新白島 as a national-anchor prerequisite, without inferring reverse service. Current page reports ordinary daily service. No clocks, platform identifiers, calendars or timetable compilation retained.",
+      "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+      "sourceUrl": "https://dive-hiroshima.com/information/faq-004/",
+      "observedResponseSha256": "d56154d8334d279d74900e695e71749c8b3c440d5aa70ffb57f3c9674adfa03b",
+      "locator": "Independent minimum static two-call passenger relation only. Westbound: current Hiroshima City/Hiroshima Tourism Association FAQ004 explicitly instructs passengers to ride JR Hiroshima to JR Shin-Hakushima before transferring. Eastbound: independently cached native JR Shin-Hakushima station platform direction guide explicitly offers Sanyo-line Hiroshima/Mihara-bound boarding. Current JR cnh station map establishes the exact adjacent pair without another passenger station. Direction existence is supplied by separate published passenger guides, not inferred from physical line order or reversal. Pattern/fact IDs remain stable identifiers only; no 1501M/302M, operating date, all-stop rule for other Sanyo segments, frequency or clock is claimed. No prose, map artwork or timetable payload is reproduced.",
       "line": "山陽線・広島新白島区間",
       "operator": "西日本旅客鉄道",
       "mode": "conventional_rail",
-      "serviceClass": "普通",
-      "reviewedTrainCode": "1501M",
+      "serviceClass": "static_adjacent_passenger_service",
       "direction": "westbound",
-      "parentCallingStations": [
-        "白市",
-        "西高屋",
-        "西条",
-        "寺家",
-        "八本松",
-        "瀬野",
-        "中野東",
-        "安芸中野",
-        "海田市",
-        "向洋",
-        "天神川",
-        "広島",
-        "新白島",
-        "横川",
-        "西広島",
-        "新井口",
-        "五日市",
-        "廿日市",
-        "宮内串戸",
-        "阿品",
-        "宮島口",
-        "前空",
-        "大野浦",
-        "玖波",
-        "大竹",
-        "和木",
-        "岩国"
-      ],
-      "sectionStartIndex": 11,
       "callingStations": [
         "広島",
         "新白島"
@@ -446,58 +415,34 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "ACTUAL_CURRENT_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "reviewMethod": "INDEPENDENT_OFFICIAL_DIRECTIONAL_PASSENGER_GUIDES_AND_EXACT_ADJACENCY",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://eki.jr-odekake.net/premises?id=0800670",
+          "observedResponseSha256": "7e9e64799017960bb3f8c89db03bbb298368470461dbfe9d43f5fa97ae95a1d1"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
     },
     {
       "factId": "sanyo-302M-current-hiroshima-shin-hakushima-section",
       "kind": "service",
-      "sourceActionId": "rail:jr-west:current-shin-hakushima-national-anchor-sections",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/196691?date=20261001",
-      "observedResponseSha256": "cdf1f61091dfb3e2ed87eb2fcfe9dbeadd6a3ee42b1df075f1d12a3f7f9c1b5b",
-      "locator": "Current 20261001 actual 302M page independently reviewed in this acquisition session; full parent order agrees with the existing phase 092 audit. Retain only the contiguous two-call section 新白島 to 広島 as a national-anchor prerequisite, without inferring reverse service. Current page reports ordinary daily service. No clocks, platform identifiers, calendars or timetable compilation retained.",
+      "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+      "sourceUrl": "https://eki.jr-odekake.net/premises?id=0800670",
+      "observedResponseSha256": "7e9e64799017960bb3f8c89db03bbb298368470461dbfe9d43f5fa97ae95a1d1",
+      "locator": "Independent minimum static two-call passenger relation only. Westbound: current Hiroshima City/Hiroshima Tourism Association FAQ004 explicitly instructs passengers to ride JR Hiroshima to JR Shin-Hakushima before transferring. Eastbound: independently cached native JR Shin-Hakushima station platform direction guide explicitly offers Sanyo-line Hiroshima/Mihara-bound boarding. Current JR cnh station map establishes the exact adjacent pair without another passenger station. Direction existence is supplied by separate published passenger guides, not inferred from physical line order or reversal. Pattern/fact IDs remain stable identifiers only; no 1501M/302M, operating date, all-stop rule for other Sanyo segments, frequency or clock is claimed. No prose, map artwork or timetable payload is reproduced.",
       "line": "山陽線・広島新白島区間",
       "operator": "西日本旅客鉄道",
       "mode": "conventional_rail",
-      "serviceClass": "普通",
-      "reviewedTrainCode": "302M",
+      "serviceClass": "static_adjacent_passenger_service",
       "direction": "eastbound",
-      "parentCallingStations": [
-        "岩国",
-        "和木",
-        "大竹",
-        "玖波",
-        "大野浦",
-        "前空",
-        "宮島口",
-        "阿品",
-        "宮内串戸",
-        "廿日市",
-        "五日市",
-        "新井口",
-        "西広島",
-        "横川",
-        "新白島",
-        "広島",
-        "天神川",
-        "向洋",
-        "海田市",
-        "安芸中野",
-        "中野東",
-        "瀬野",
-        "八本松",
-        "寺家",
-        "西条",
-        "西高屋",
-        "白市",
-        "入野",
-        "河内",
-        "本郷",
-        "三原",
-        "糸崎"
-      ],
-      "sectionStartIndex": 14,
       "callingStations": [
         "新白島",
         "広島"
@@ -516,9 +461,21 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "ACTUAL_CURRENT_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "reviewMethod": "INDEPENDENT_OFFICIAL_DIRECTIONAL_PASSENGER_GUIDES_AND_EXACT_ADJACENCY",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://dive-hiroshima.com/information/faq-004/",
+          "observedResponseSha256": "d56154d8334d279d74900e695e71749c8b3c440d5aa70ffb57f3c9674adfa03b"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
     },
     {
       "factId": "astram-current-0800670-jr-public-passage",

@@ -30,6 +30,7 @@ export function buildWorkPackages(
     acquisitionIndex = [],
     ledger = [],
     originalRequirementIds = null,
+    requirementTiers = {},
   } = {},
 ) {
   const original =
@@ -77,6 +78,15 @@ export function buildWorkPackages(
                 : 2,
           ),
         ),
+        requirementTierPriority: Math.min(
+          ...rows
+            .flatMap((r) => r.requirementIds || [])
+            .map(
+              (id) =>
+                ({ T0: 0, T1: 1, T2: 2, T3: 3 })[requirementTiers[id]] ?? 4,
+            ),
+          4,
+        ),
         coreRequiredCount: rows.reduce(
           (n, r) => n + (r.coreRequiredCount || 0),
           0,
@@ -105,6 +115,7 @@ export function buildWorkPackages(
       (a, b) =>
         a.priority - b.priority ||
         a.scopePriority - b.scopePriority ||
+        a.requirementTierPriority - b.requirementTierPriority ||
         b.coreRequiredCount - a.coreRequiredCount ||
         b.originalRequiredCount - a.originalRequiredCount ||
         a.packageId.localeCompare(b.packageId),

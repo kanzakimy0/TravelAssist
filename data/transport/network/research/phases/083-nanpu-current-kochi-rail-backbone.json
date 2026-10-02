@@ -12,20 +12,17 @@
     {
       "factId": "nanpu-33D-current-kojima-kochi-section",
       "kind": "service",
-      "sourceActionId": "rail:jr-shikoku:nanpu-current-kochi-backbone",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/150681?date=20261001",
-      "observedResponseSha256": "9dd75e24e520856813c185bc43a70d1e41468a744c1cfde3661f899a9a53b59c",
+      "sourceActionId": "rail:jr-shikoku:independent-native-minimum-nanpu083",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/sukumo_kochi.pdf",
+      "observedResponseSha256": "4af339eb7a4f2239396127ba72a9ce1ca9fdd2d7ec9e6b75fc1ac7ffa51b534d",
       "corroboratingEvidence": [
         {
-          "url": "https://timetable.jr-odekake.net/station-timetable/3508040001?date=20261001",
-          "observedResponseSha256": "d54bb6610c665e53dc0f0d6be928060a978389c0f6ec37ca80b5fe27db6b1c17"
-        },
-        {
-          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/nanpu.html",
-          "observedResponseSha256": "303bc2d7b6e5f75fd7df60ff709d9124a789f2e2b99ba5b3eee05c26fcd989c1"
+          "sourceActionId": "rail:jr-shikoku:independent-native-minimum-nanpu083",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/",
+          "observedResponseSha256": "00b2650e50cd4a02c5b9882909b0527009309a2c7c7411f887383448f3f8dab5"
         }
       ],
-      "locator": "Current train 33D / 南風3号 is resolved from the 20261001 Kojima station page and independently checked against its train identity and explicit station calling rows. Retain only the contiguous JR Shikoku-operated Kojima–Kochi section; the full reviewed parent calling sequence retains the omitted Okayama call. Passing rows are excluded. Existing separately reviewed Kojima company-boundary interchange connects this section to the national backbone. This is static scheduled topology, not real-time availability; no timetable clocks, platforms or calendar data are stored.",
+      "locator": "Independent current operator-hosted PDF, 2026-03-14 edition, 33D column visually inspected against every candidate calling row. Kochi/Okayama section: keep only the contiguous Kojima-Kochi service section; duplicated arrival/departure rows collapse to one actual call. Retain only a minimal static ordered station relation; no clocks, full table, artwork, train/date/calendar promise or raw database retained. Legacy factId remains opaque for exact pattern continuity.",
       "line": "南風・児島高知区間",
       "operator": "四国旅客鉄道",
       "mode": "conventional_rail",
@@ -135,27 +132,24 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_OPERATOR_SECTION",
+      "reviewMethod": "INDEPENDENT_OPERATOR_NATIVE_PUBLICATION_MINIMUM_STATIC_CALL_RELATION",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_VARIANT_NO_TRAIN_DATE_CALENDAR_OR_REALTIME"
     },
     {
       "factId": "nanpu-34D-current-kojima-kochi-section",
       "kind": "service",
-      "sourceActionId": "rail:jr-shikoku:nanpu-current-kochi-backbone",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/59421?date=20261001",
-      "observedResponseSha256": "42f410a57ab08aa6a4cca69c5205a0ea948b0e32182c7125fa9441132a059fc7",
+      "sourceActionId": "rail:jr-shikoku:independent-native-minimum-nanpu083",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/sukumo_kochi.pdf",
+      "observedResponseSha256": "4af339eb7a4f2239396127ba72a9ce1ca9fdd2d7ec9e6b75fc1ac7ffa51b534d",
       "corroboratingEvidence": [
         {
-          "url": "https://timetable.jr-odekake.net/station-timetable/3508040002?date=20261001",
-          "observedResponseSha256": "c91731216fdafd1472bd9ef4f632fc51e06d3821264d85e0f7cd22f96c551dce"
-        },
-        {
-          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/nanpu.html",
-          "observedResponseSha256": "303bc2d7b6e5f75fd7df60ff709d9124a789f2e2b99ba5b3eee05c26fcd989c1"
+          "sourceActionId": "rail:jr-shikoku:independent-native-minimum-nanpu083",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/",
+          "observedResponseSha256": "00b2650e50cd4a02c5b9882909b0527009309a2c7c7411f887383448f3f8dab5"
         }
       ],
-      "locator": "Current train 34D / 南風4号 is resolved from the 20261001 Kojima station page and independently checked against its train identity and explicit station calling rows. Retain only the contiguous JR Shikoku-operated Kojima–Kochi section; the full reviewed parent calling sequence retains the omitted Okayama call. Passing rows are excluded. Existing separately reviewed Kojima company-boundary interchange connects this section to the national backbone. This is static scheduled topology, not real-time availability; no timetable clocks, platforms or calendar data are stored.",
+      "locator": "Independent current operator-hosted PDF, 2026-03-14 edition, 34D column visually inspected against every candidate calling row. Kochi/Okayama section: keep only the contiguous Kojima-Kochi service section; duplicated arrival/departure rows collapse to one actual call. Retain only a minimal static ordered station relation; no clocks, full table, artwork, train/date/calendar promise or raw database retained. Legacy factId remains opaque for exact pattern continuity.",
       "line": "南風・児島高知区間",
       "operator": "四国旅客鉄道",
       "mode": "conventional_rail",
@@ -265,9 +259,9 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_OPERATOR_SECTION",
+      "reviewMethod": "INDEPENDENT_OPERATOR_NATIVE_PUBLICATION_MINIMUM_STATIC_CALL_RELATION",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_VARIANT_NO_TRAIN_DATE_CALENDAR_OR_REALTIME"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
   "checks": {
     "full": {
       "command": [
@@ -11,9 +11,9 @@
         "--test-concurrency=4",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 773.9732903000258,
+      "elapsedSeconds": 807.1280074999959,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     },
     "lint": {
       "command": [
@@ -21,9 +21,9 @@
         "run",
         "lint"
       ],
-      "elapsedSeconds": 28.981000400002813,
+      "elapsedSeconds": 56.38308309999411,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     },
     "typecheck": {
       "command": [
@@ -31,9 +31,9 @@
         "run",
         "typecheck"
       ],
-      "elapsedSeconds": 5.157981399999699,
+      "elapsedSeconds": 9.262105999980122,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     },
     "format": {
       "command": [
@@ -41,9 +41,9 @@
         "run",
         "format:check:deploy"
       ],
-      "elapsedSeconds": 11.999640399997588,
+      "elapsedSeconds": 13.275631900003646,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     },
     "artifact": {
       "command": [
@@ -51,9 +51,9 @@
         "run",
         "deploy:build:local"
       ],
-      "elapsedSeconds": 50.67226570000639,
+      "elapsedSeconds": 52.25271790000261,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     },
     "artifact-verify": {
       "command": [
@@ -61,50 +61,44 @@
         "run",
         "deploy:verify-artifact"
       ],
-      "elapsedSeconds": 1.8889315999986138,
+      "elapsedSeconds": 1.9397921000199858,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     }
   },
-  "priorFull169Seconds": 808.8,
-  "comparison": "Different inputs/code/environment workload: cannot attribute an end-to-end speedup or billing reduction.",
-  "firstLintFailure": {
-    "command": [
-      "npm.cmd",
-      "run",
-      "lint"
-    ],
-    "elapsedSeconds": 33.958836400008295,
+  "priorFull175Seconds": 773.9732903000258,
+  "comparison": "Different code and inputs:175 has3008 tests,180 has3081. No measurable end-to-end or billing saving claimed.",
+  "failed179Replay": {
     "exitCode": 1,
-    "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
-  },
-  "lintRetryReason": "Private downloaded third-party JavaScript responses were stored with executable extensions; preserved identical bytes/hashes as passive .js.txt evidence and updated private cache references. No repository lint rule/config/code/test input changed.",
-  "firstFullRegressionFailure": {
+    "elapsedSeconds": 0.7192693999968469,
+    "inputScope": "TASK086-FULL-ORIGINAL-PHASE179-v2",
     "command": [
       "node",
-      "--import",
-      "./tests/register-route-ts.mjs",
-      "--test",
-      "tests/*.test.mjs"
+      "tools/transport/task-086-remediate.mjs"
     ],
-    "elapsedSeconds": 740.3665440000186,
-    "exitCode": 1,
-    "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+    "includedSourceRebinding": "phase157 twoSoya staticdirectionalpatterns, exactnodes/calls/constraints preserved"
   },
-  "isolatedAssetDiagnostic": {
-    "elapsedSeconds": 13.1562417,
-    "testTimeoutChanged": false,
-    "exitCode": 0
+  "repaired179Replay": {
+    "exitCode": 0,
+    "elapsedSeconds": 173.12120130000403,
+    "inputScope": "TASK086-FULL-ORIGINAL-PHASE179-v2",
+    "command": [
+      "node",
+      "tools/transport/task-086-remediate.mjs"
+    ],
+    "includedSourceRebinding": "phase157 exact preserved Soya directional calls; independently bound sources",
+    "previousFailedReceipt": "replay179-179-timing.json"
   },
-  "fullRegressionRetryReason": "One unrelated asset child hit unchanged30s timeout; isolated test passed13.16s; repeat all tests with concurrency4, no threshold/skip changes.",
-  "failed174ReplaySeconds": [
-    155.7460568,
-    158.8815807
-  ],
-  "failed175ReplaySeconds": [
-    158.9819735,
-    161.4068751
-  ],
+  "replay180": {
+    "exitCode": 0,
+    "elapsedSeconds": 177.5982810999849,
+    "inputScope": "TASK086-FULL-ORIGINAL-PHASE180-v2",
+    "command": [
+      "node",
+      "tools/transport/task-086-remediate.mjs"
+    ],
+    "includedSourceRebindings": "10 independently reviewed existing rail facts, exact calls and restrictions retained, accurate static service scope"
+  },
   "packageMetrics": "data/transport/network/research/work-package-ledger.v1.json",
   "tokenCount": null,
   "billedCost": null,

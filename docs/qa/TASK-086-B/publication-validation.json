@@ -1,20 +1,20 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-02T20:22:02.506545+00:00",
+  "recordedAt": "2026-10-02T22:54:37.271430+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 175,
-  "validationParentHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
+  "phase": 180,
+  "validationParentHead": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
-  "manifestSha256": "bfa182ccbfc742b70a662238a603adc8a641256a5b0370b0707f0a7281309ba3",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
+  "manifestSha256": "1f437a35cf1222cb32626af5d023c111caaf6ac41fc482f09904b51110b5bb1a",
   "fullRegression": {
     "status": "PASS",
-    "tests": 3008,
-    "pass": 3008,
+    "tests": 3081,
+    "pass": 3081,
     "fail": 0,
     "skipped": 0,
-    "logSha256": "382162653e6e4507f5d99903cc52912b8f948e8ab530b8a3785c58d9e61d5b40",
+    "logSha256": "97cc7a169580ee041ded103b274808dcea337aecf2477ccd2e8c8aded8a71260",
     "timing": {
       "command": [
         "node",
@@ -24,13 +24,13 @@
         "--test-concurrency=4",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 773.9732903000258,
+      "elapsedSeconds": 807.1280074999959,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
     },
     "coverage": "One full regression includes deterministic clean rebuild, raw extraction, recovery/corruption and all shared parser negatives. No independent duplicate rebuild."
   },
-  "deterministicRebuildReceiptSha256": "72026ba2fb93815a8c58244e29bef06d91355d3cf8983c8646fe994285b68e3d",
+  "deterministicRebuildReceiptSha256": "cdb3c3abb9d33ceb08d86d2a78d250ba1900461d26b4ca5ecfd5b00c2441ceb9",
   "checks": [
     {
       "command": [
@@ -45,11 +45,11 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 28.981000400002813,
+        "elapsedSeconds": 56.38308309999411,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
       },
-      "logSha256": "0ddfe4b68fe76f705d1fdc54def518ed407c117e3a391ccb9454eb55d8803aa8"
+      "logSha256": "678858a87ae7958c2feed8582034e70f63e2fb4cb4ba6181b85059aadbb0933e"
     },
     {
       "command": [
@@ -64,9 +64,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 5.157981399999699,
+        "elapsedSeconds": 9.262105999980122,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
       },
       "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
     },
@@ -83,9 +83,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 11.999640399997588,
+        "elapsedSeconds": 13.275631900003646,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
       },
       "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
     },
@@ -102,11 +102,11 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 50.67226570000639,
+        "elapsedSeconds": 52.25271790000261,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
       },
-      "logSha256": "af13d466971a074a9b74332c8742167885c42b1569c9392344cfb146ba120846"
+      "logSha256": "f0414e22e2fc562a68f2a488fa82382d011787c79358957f9121d618a7352014"
     },
     {
       "command": [
@@ -121,11 +121,11 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.8889315999986138,
+        "elapsedSeconds": 1.9397921000199858,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
       },
-      "logSha256": "582455178e753aa00b9c6857b9c766cc7a896a9d481b910619b4f8188c0eefb1"
+      "logSha256": "68e6df1ee15f00404fe05d1547042f9674970717e14166852fa29e66bdc237f4"
     }
   ],
   "validationEnvironment": {

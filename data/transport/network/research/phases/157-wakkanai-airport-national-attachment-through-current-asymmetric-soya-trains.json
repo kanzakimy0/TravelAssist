@@ -1,50 +1,43 @@
 {
   "phaseId": "157-wakkanai-airport-national-attachment-through-current-asymmetric-soya-trains",
   "strategy": [
-    "REPLAY_DISCOVERED_LOCAL_COMPONENT_REQUIRES_NATIONAL_RAIL_ATTACHMENT",
-    "CURRENT_INDEPENDENT_ACTUAL_THROUGH_TRAINS",
-    "DIRECTION_SPECIFIC_BIBAI_SUNAGAWA_CALLS",
-    "EXACT_S12_HAKODATE_SOYA_COMPONENTS"
+    "REVIEWED_SOURCE_REBIND_PRESERVE_EVERY_PATTERN_AND_NODE",
+    "INDEPENDENT_OPERATOR_STATIC_SERVICE_GUIDE",
+    "DIRECTION_SPECIFIC_BIBAI_SUNAGAWA_RULE",
+    "CURRENT_NATIVE_ROUTE_MAP_ORDER_NOT_COORDINATE_INFERENCE"
   ],
   "completedActionIds": [
-    "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-    "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule"
+    "rail:jr-hokkaido:independent-static-soya-guide-and-native-order"
   ],
   "facts": [
     {
       "factId": "soya-51D-current-independent-actual-through-train",
       "kind": "service",
-      "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-      "sourceUrl": "https://jrhokkaidonorikae.com/vtime/vtime.php?s=110&d=20261001",
-      "observedResponseSha256": "a2fd18c9af56c84e11f01486281f68a35d597cf4fab0bf9f4aa06185cf55c358",
+      "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/global/chinese/train/guide/wakkanai.html",
+      "observedResponseSha256": "2d92491ae5414669424c650d578140de5b49092b69fd1ce2d348a8929b09d0be",
       "corroboratingEvidence": [
         {
-          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-          "url": "https://www.jrhokkaido.co.jp/network/",
-          "observedResponseSha256": "1f45ca734d4fa36213b490f3bc6f5b58e9b6c98d755c3b8b13544a9c4e748779"
-        },
-        {
-          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-          "url": "https://jrhokkaidonorikae.com/pc/support.html",
-          "observedResponseSha256": "fd511b9f651a59c7c09aef312b644ebd827ad09a6441c05beb7a284afbde1fb7"
-        },
-        {
-          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
-          "url": "https://www.jrhokkaido.co.jp/global/chinese/train/guide/wakkanai.html",
-          "observedResponseSha256": "4836e35e7482f69d276f2aab632fd436c2decb415e6d3fb1651ba62f31604442"
-        },
-        {
-          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
+          "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
           "url": "https://www.jrhokkaido.co.jp/global/images/train/guide/tw/tr005_s.gif",
           "observedResponseSha256": "8034a09f2dae76021741566037d498a6b65e457dcafef2e81a88aabc93a5f40b"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
+          "url": "https://www.jrhokkaido.co.jp/global/pdf/route_map.pdf",
+          "observedResponseSha256": "0a54567718a0f195d5b6459444eaad1f7a0e3cedd1029417a74f77764d05de3a"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
+          "url": "https://www.jrhokkaido.co.jp/global/chinese/train/index.html",
+          "observedResponseSha256": "1d837684896f00a9a5a92a7f1223927c3650cd94421c95aa0067f4f974bb3988"
         }
       ],
-      "locator": "Independently read October 1 2026 51D actual whole train column: 17 calls with no additional operation restriction. Down 51D calls Bibai and Sunagawa; up 52D passes both. Exclude Pippu/Kembuchi pass markers and unrelated Sekihoku branch rows. Continuous actual train crosses Hakodate/Soya line boundary; retain exact operator/station component identities without inventing a transfer. No timetable values, fare, service frequency, copied artwork or live operation claim.",
+      "locator": "Operator-owned March2026 Soya guide identifies continuous Sapporo-Wakkanai service and15base passenger calls in its dedicated diagram; guide explicitly limits Bibai and Sunagawa calls to Wakkanai-bound trains. Independently current-linked JRHroute map dated2026-04-01 establishes Hakodate-line order Iwamizawa A13, Bibai A16, Sunagawa A20, Takikawa A21. Combine only those two additional service calls with15baseguidecalls for Wakkanai direction; Sapporo direction excludes both per explicit rule. No coordinates used for order and no timetable-derived actual-train/date claim. Existing factId remains an opaque historical identifier; 51D/52D text therein is not an asserted current train number.",
       "line": "函館線・宗谷線",
       "operator": "北海道旅客鉄道",
       "mode": "conventional_rail",
       "serviceClass": "宗谷",
-      "reviewedTrainCode": "51D",
       "direction": "wakkanai-bound",
       "callingStations": [
         "札幌",
@@ -169,44 +162,47 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_THROUGH_TRAIN_AND_DIRECTIONAL_SERVICE_GUIDE",
+      "reviewMethod": "INDEPENDENT_OPERATOR_STATIC_STOPPING_GUIDE_DIRECTIONAL_RULE_AND_NATIVE_ROUTE_ORDER",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_OCTOBER_1_2026_CURRENT_STATIC_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_LINKED_MARCH_2026_OPERATOR_STATIC_SERVICE_GUIDE_NOT_TRAIN_DATE_OR_LIVE_OPERATION",
+      "sourceRebindingReview": {
+        "method": "PRESERVE_EXISTING_PATTERN_ID_CALLS_AND_PHYSICAL_COMPONENTS",
+        "priorFactId": "soya-51D-current-independent-actual-through-train",
+        "priorPhaseFile": "data/transport/network/research/phases/157-wakkanai-airport-national-attachment-through-current-asymmetric-soya-trains.json",
+        "priorPhaseFileSha256": "84f885b964143fb2d1c2d34dc6bb362f7af05b98e13bbf59f15e1586add7c5db",
+        "supersededEvidenceScope": "Restricted actual train timetable no longer supplies these static service facts",
+        "newClaimScope": "Regular static Soya directional service topology only; exact day,train number,calendar,clocks unasserted",
+        "priorFactIdentifierIsOpaque": true
+      }
     },
     {
       "factId": "soya-52D-current-independent-actual-through-train",
       "kind": "service",
-      "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-      "sourceUrl": "https://jrhokkaidonorikae.com/vtime/vtime.php?s=111&d=20261001",
-      "observedResponseSha256": "49180da056773185eb68fd5172c43343ca4dee8a095ac4ca334776aa1c22f1c7",
+      "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/global/chinese/train/guide/wakkanai.html",
+      "observedResponseSha256": "2d92491ae5414669424c650d578140de5b49092b69fd1ce2d348a8929b09d0be",
       "corroboratingEvidence": [
         {
-          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-          "url": "https://www.jrhokkaido.co.jp/network/",
-          "observedResponseSha256": "1f45ca734d4fa36213b490f3bc6f5b58e9b6c98d755c3b8b13544a9c4e748779"
-        },
-        {
-          "sourceActionId": "rail:jr-hokkaido:current-actual-soya-directional-through-trains",
-          "url": "https://jrhokkaidonorikae.com/pc/support.html",
-          "observedResponseSha256": "fd511b9f651a59c7c09aef312b644ebd827ad09a6441c05beb7a284afbde1fb7"
-        },
-        {
-          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
-          "url": "https://www.jrhokkaido.co.jp/global/chinese/train/guide/wakkanai.html",
-          "observedResponseSha256": "4836e35e7482f69d276f2aab632fd436c2decb415e6d3fb1651ba62f31604442"
-        },
-        {
-          "sourceActionId": "rail:jr-hokkaido:current-soya-service-guide-directional-stop-rule",
+          "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
           "url": "https://www.jrhokkaido.co.jp/global/images/train/guide/tw/tr005_s.gif",
           "observedResponseSha256": "8034a09f2dae76021741566037d498a6b65e457dcafef2e81a88aabc93a5f40b"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
+          "url": "https://www.jrhokkaido.co.jp/global/pdf/route_map.pdf",
+          "observedResponseSha256": "0a54567718a0f195d5b6459444eaad1f7a0e3cedd1029417a74f77764d05de3a"
+        },
+        {
+          "sourceActionId": "rail:jr-hokkaido:independent-static-soya-guide-and-native-order",
+          "url": "https://www.jrhokkaido.co.jp/global/chinese/train/index.html",
+          "observedResponseSha256": "1d837684896f00a9a5a92a7f1223927c3650cd94421c95aa0067f4f974bb3988"
         }
       ],
-      "locator": "Independently read October 1 2026 52D actual whole train column: 15 calls with no additional operation restriction. Down 51D calls Bibai and Sunagawa; up 52D passes both. Exclude Pippu/Kembuchi pass markers and unrelated Sekihoku branch rows. Continuous actual train crosses Hakodate/Soya line boundary; retain exact operator/station component identities without inventing a transfer. No timetable values, fare, service frequency, copied artwork or live operation claim.",
+      "locator": "Operator-owned March2026 Soya guide identifies continuous Sapporo-Wakkanai service and15base passenger calls in its dedicated diagram; guide explicitly limits Bibai and Sunagawa calls to Wakkanai-bound trains. Independently current-linked JRHroute map dated2026-04-01 establishes Hakodate-line order Iwamizawa A13, Bibai A16, Sunagawa A20, Takikawa A21. Combine only those two additional service calls with15baseguidecalls for Wakkanai direction; Sapporo direction excludes both per explicit rule. No coordinates used for order and no timetable-derived actual-train/date claim. Existing factId remains an opaque historical identifier; 51D/52D text therein is not an asserted current train number.",
       "line": "函館線・宗谷線",
       "operator": "北海道旅客鉄道",
       "mode": "conventional_rail",
       "serviceClass": "宗谷",
-      "reviewedTrainCode": "52D",
       "direction": "sapporo-bound",
       "callingStations": [
         "稚内",
@@ -317,9 +313,18 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_THROUGH_TRAIN_AND_DIRECTIONAL_SERVICE_GUIDE",
+      "reviewMethod": "INDEPENDENT_OPERATOR_STATIC_STOPPING_GUIDE_DIRECTIONAL_RULE_AND_NATIVE_ROUTE_ORDER",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_OCTOBER_1_2026_CURRENT_STATIC_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_LINKED_MARCH_2026_OPERATOR_STATIC_SERVICE_GUIDE_NOT_TRAIN_DATE_OR_LIVE_OPERATION",
+      "sourceRebindingReview": {
+        "method": "PRESERVE_EXISTING_PATTERN_ID_CALLS_AND_PHYSICAL_COMPONENTS",
+        "priorFactId": "soya-52D-current-independent-actual-through-train",
+        "priorPhaseFile": "data/transport/network/research/phases/157-wakkanai-airport-national-attachment-through-current-asymmetric-soya-trains.json",
+        "priorPhaseFileSha256": "84f885b964143fb2d1c2d34dc6bb362f7af05b98e13bbf59f15e1586add7c5db",
+        "supersededEvidenceScope": "Restricted actual train timetable no longer supplies these static service facts",
+        "newClaimScope": "Regular static Soya directional service topology only; exact day,train number,calendar,clocks unasserted",
+        "priorFactIdentifierIsOpaque": true
+      }
     }
   ]
 }

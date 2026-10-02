@@ -540,3 +540,141 @@ test("GTFS explicit reviewed date cannot rehash a weekday native section into an
     /GTFS_/,
   );
 });
+const selectedIds = new Set(
+  pack.nodes.map((n) => id("node", n.identityAnchor)),
+);
+const disjointBaseline = new Map(
+  [...baseline].filter(([key]) => !selectedIds.has(key)),
+);
+const datasetWitness = [...disjointBaseline.values()][0];
+function extractDatasetRequest(request) {
+  const script = String.raw`
+import importlib.util,json,sys
+from pathlib import Path
+s=importlib.util.spec_from_file_location('selected','tools/transport/task-086-extract-selected-gtfs.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+r=json.load(sys.stdin);raw=Path('data/transport/network/'+r['retainedArchive']).read_bytes();print(json.dumps(m.extract(raw,r),ensure_ascii=False))`;
+  return spawnSync(
+    process.platform === "win32" ? "python" : "python3",
+    ["-B", "-X", "utf8", "-c", script],
+    {
+      input: JSON.stringify(request),
+      encoding: "utf8",
+      maxBuffer: 8 * 1024 * 1024,
+    },
+  );
+}
+const datasetRequest = structuredClone(pack.selection);
+datasetRequest.existingAnchorReuse = {
+  method: "EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE",
+  sourceDescriptorSha256: hash(base.source),
+  existingDatasetStopId: datasetWitness.identityRecord.stop_id,
+  existingDatasetRecordSha256: hash(datasetWitness.identityRecord),
+};
+const datasetExtraction = extractDatasetRequest(datasetRequest);
+assert.equal(datasetExtraction.status, 0, datasetExtraction.stderr);
+const datasetPack = JSON.parse(datasetExtraction.stdout);
+test("GTFS exact dataset reuse admits disjoint selection without inventing shared anchors or edges", () => {
+  const before = canonical([...disjointBaseline]);
+  const result = check(datasetPack, disjointBaseline);
+  assert.equal(result.admitted.length, 5);
+  assert.equal(result.reused.length, 0);
+  assert.equal(result.updatedNodes.length, 0);
+  assert.equal(result.groups[0].edges.length, 4);
+  assert.ok(
+    result.groups[0].pattern.callingNodes.every(
+      (c) => c.nodeId !== datasetWitness.nodeId,
+    ),
+  );
+  assert.equal(canonical([...disjointBaseline]), before);
+  assert.throws(() => check(pack, disjointBaseline), /REUSE_ANCHOR_REQUIRED/);
+  assert.throws(
+    () => assertBaselineGtfsPackage(datasetPack),
+    /EXTENSION_REQUIRES/,
+  );
+});
+for (const field of [
+  "existingDatasetStopId",
+  "existingDatasetRecordSha256",
+  "sourceDescriptorSha256",
+]) {
+  test("GTFS dataset reuse rejects wrong native proof " + field, () => {
+    const request = structuredClone(datasetRequest);
+    request.existingAnchorReuse[field] = "wrong";
+    assert.notEqual(extractDatasetRequest(request).status, 0);
+    const changed = structuredClone(datasetPack);
+    changed.selection = request;
+    assert.throws(() => check(changed, disjointBaseline), /MISMATCH/);
+  });
+}
+for (const name of [
+  "absent",
+  "not admitted",
+  "record",
+  "coordinate",
+  "archive",
+  "source",
+  "signature",
+]) {
+  test(
+    "GTFS dataset reuse rejects invalid retained dataset proof " + name,
+    () => {
+      const nodes = new Map(
+        [...disjointBaseline].map(([k, v]) => [k, structuredClone(v)]),
+      );
+      const w = nodes.get(datasetWitness.nodeId);
+      if (name === "absent") nodes.delete(w.nodeId);
+      if (name === "not admitted") w.decision = "HOLD";
+      if (name === "record") w.identityRecord.stop_name = "different";
+      if (name === "coordinate") w.latitude += 0.01;
+      if (name === "archive")
+        w.independentReview.sourceArchiveSha256 = "0".repeat(64);
+      if (name === "source")
+        w.identityAnchor = "gtfs:other:stop:" + w.identityRecord.stop_id;
+      if (name === "signature") w.identitySignature = "0".repeat(64);
+      assert.throws(
+        () => check(datasetPack, nodes),
+        /EXISTING_DATASET_PROOF_MISMATCH/,
+      );
+    },
+  );
+}
+test("GTFS dataset reuse retains native reextraction and duplicate conflict guards", () => {
+  const changed = structuredClone(datasetPack);
+  changed.nodes[0].latitude += 0.01;
+  assert.throws(
+    () => check(changed, disjointBaseline),
+    /NATIVE_PACKAGE_MISMATCH/,
+  );
+  const source = structuredClone(base.source);
+  source.contentSha256 = "0".repeat(64);
+  assert.throws(
+    () =>
+      check(
+        datasetPack,
+        disjointBaseline,
+        [],
+        [],
+        new Map([[source.sourceId, source]]),
+      ),
+    /SOURCE_DESCRIPTOR_MISMATCH/,
+  );
+  const first = check(datasetPack, disjointBaseline);
+  const nodes = new Map([
+    ...disjointBaseline,
+    ...first.admitted.map((n) => [n.nodeId, n]),
+  ]);
+  assert.throws(
+    () =>
+      check(
+        datasetPack,
+        nodes,
+        first.lines,
+        first.groups.map((g) => g.pattern),
+      ),
+    /DUPLICATE_PATTERN/,
+  );
+  const bad = structuredClone(first.admitted[0]);
+  bad.latitude += 0.01;
+  nodes.set(bad.nodeId, bad);
+  assert.throws(() => check(datasetPack, nodes), /EXISTING_ANCHOR_MISMATCH/);
+});

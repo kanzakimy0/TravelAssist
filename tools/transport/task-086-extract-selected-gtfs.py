@@ -20,12 +20,46 @@ def sha(value):
     return hashlib.sha256(value if isinstance(value, bytes) else canonical(value).encode()).hexdigest()
 
 
+
+def review_cc_by_21(request, digest, feed, agencies):
+    e = request.get('licenseEvidence')
+    text = lambda v: isinstance(v, str) and bool(v.strip())
+    def ref(v):
+        return (isinstance(v, dict) and isinstance(v.get('url'), str)
+                and v['url'].startswith('https://')
+                and isinstance(v.get('observedResponseSha256'), str)
+                and re.fullmatch(r'[a-f0-9]{64}', v['observedResponseSha256'])
+                and text(v.get('locator')))
+    if not isinstance(e, dict):
+        raise ValueError('SELECTED_GTFS_CC_BY_21_EVIDENCE_REQUIRED')
+    catalog, publisher = e.get('catalogEvidence'), e.get('publisherAuthorityEvidence')
+    parties, notice = e.get('attributionParties'), e.get('modificationNotice')
+    valid = (ref(e) and ref(catalog) and ref(publisher)
+        and e.get('scope') == 'PREFECTURE_COMMISSIONED_GTFS_PORTAL_CC_BY_2_1_JP'
+        and e.get('licenseUrl') == 'https://creativecommons.org/licenses/by/2.1/jp/'
+        and e.get('reviewedDatasetUrl') == request['datasetUrl'] == catalog['url']
+        and e.get('resourceUrl') == request['sourceUrl']
+        and e.get('sourceArchiveSha256') == digest
+        and text(e.get('publisher')) and e['publisher'] == feed.get('feed_publisher_name')
+        and e.get('operator') == request['operator'] == agencies.get(request['agencyId'], {}).get('agency_name')
+        and text(e.get('licensor'))
+        and isinstance(parties, list) and all(text(v) for v in parties)
+        and all(v in parties for v in [e['publisher'], e['operator'], e['licensor']])
+        and text(notice) and isinstance(request.get('attribution'), str)
+        and all(v in request['attribution'] for v in parties + [notice, e['licenseUrl']])
+        and e.get('resourceExceptionReview', {}).get('status') == 'NO_DATASET_SPECIFIC_OVERRIDE_OBSERVED'
+        and text(e.get('resourceExceptionReview', {}).get('locator')))
+    if not valid:
+        raise ValueError('SELECTED_GTFS_CC_BY_21_EVIDENCE_REQUIRED')
+
 def extract(raw, request):
     license_name = request.get('license', 'CC BY 4.0')
-    decisions = {'CC BY 4.0': 'PASS_CC_BY_4_0_ATTRIBUTION', 'CC0 1.0': 'PASS_CC0_1_0_PUBLIC_DOMAIN', 'Operator unrestricted-use terms': 'PASS_OPERATOR_UNRESTRICTED_USE'}
+    decisions = {'CC BY 2.1 Japan': 'PASS_CC_BY_2_1_JP_ATTRIBUTION', 'CC BY 4.0': 'PASS_CC_BY_4_0_ATTRIBUTION', 'CC0 1.0': 'PASS_CC0_1_0_PUBLIC_DOMAIN', 'Operator unrestricted-use terms': 'PASS_OPERATOR_UNRESTRICTED_USE'}
     if license_name not in decisions:
         raise ValueError('SELECTED_GTFS_LICENSE_UNREVIEWED')
     license_evidence = request.get('licenseEvidence')
+    if isinstance(license_evidence, dict) and license_evidence.get('scope') == 'PREFECTURE_COMMISSIONED_GTFS_PORTAL_CC_BY_2_1_JP' and license_name != 'CC BY 2.1 Japan':
+        raise ValueError('SELECTED_GTFS_LICENSE_VERSION_MISMATCH')
     if license_name == 'CC0 1.0' and (not isinstance(license_evidence, dict) or license_evidence.get('url') != request['datasetUrl'] or not re.fullmatch(r'[a-f0-9]{64}', license_evidence.get('observedResponseSha256', ''))):
         raise ValueError('SELECTED_GTFS_LICENSE_EVIDENCE_REQUIRED')
     if license_name == 'Operator unrestricted-use terms' and (
@@ -55,6 +89,8 @@ def extract(raw, request):
     if len(feeds) != 1:
         raise ValueError('SELECTED_GTFS_FEED_AMBIGUOUS')
     feed, date = feeds[0], request['serviceDate']
+    if license_name == 'CC BY 2.1 Japan':
+        review_cc_by_21(request, digest, feed, agencies)
     if not feed['feed_start_date'] <= date <= feed['feed_end_date']:
         raise ValueError('SELECTED_GTFS_FEED_NOT_CURRENT')
     if request['mode'] not in ('airport_bus', 'local_bus', 'highway_bus') or not request['attribution']:
@@ -127,19 +163,24 @@ def extract(raw, request):
         anchor = source_id + ':stop:' + stop_id
         nodes.append(dict(identityAnchor=anchor, canonicalNameJa=record['stop_name'], nodeKind='bus_stop', nodeLevel='T3', latitude=float(record['stop_lat']), longitude=float(record['stop_lon']), operatorRefs=[request['operator']], lineRefs=sorted({p['lineRef'] for p in patterns if any(c['identityAnchor'] == anchor for c in p['callingNodes'])}), sourceRefs=[request['datasetUrl'],request['sourceUrl']], evidenceRefs=[ev('stop', 'stops.txt:' + stop_id, record)], identityRecord=record, origin='TASK_086_INDEPENDENT_GTFS', hubSemantics='GTFS_STOP_POINT_NO_SAME_NAME_COLLAPSE', parentHubId=None, independentReview=dict(decision='ADMIT_TASK_086_TOPOLOGY', recordSha256=sha(record), method='EXACT_LICENSED_STOP_USED_IN_REVIEWED_ACTIVE_TRIP', sourceArchiveSha256=digest)))
     source = dict(sourceId=source_id,url=request['sourceUrl'],datasetUrl=request['datasetUrl'],observedAt=request['observedAt'],contentSha256=digest,license=license_name,rightsClass='RAW_PERSISTENCE_ALLOWED',rightsDecision=decisions[license_name],persistenceAllowed=True,derivedDataAllowed=True,redistributionAllowed=True,freshnessClass='SCHEDULED_SOURCE_SNAPSHOT',validFrom=feed['feed_start_date'],validTo=feed['feed_end_date'],feedInfo=feed,agencies=[agencies[request['agencyId']]],attribution=request['attribution'],retainedArchive=request['retainedArchive'])
-    if license_name in ('CC0 1.0', 'Operator unrestricted-use terms'):
+    if license_name in ('CC BY 2.1 Japan', 'CC0 1.0', 'Operator unrestricted-use terms'):
         source['licenseEvidence'] = license_evidence
     reuse = request.get('existingAnchorReuse')
     if reuse is not None or 'baseSource' in request:
         base = request.get('baseSource')
         if (not isinstance(base, dict) or not isinstance(reuse, dict)
-            or reuse.get('method') != 'EXACT_EXISTING_GTFS_ANCHOR_SAME_ARCHIVE'
+            or reuse.get('method') not in ('EXACT_EXISTING_GTFS_ANCHOR_SAME_ARCHIVE', 'EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE')
             or reuse.get('sourceDescriptorSha256') != sha(base)
             or any(base.get(k) != source.get(k) for k in ('sourceId','url','datasetUrl','contentSha256','license','rightsDecision','persistenceAllowed','derivedDataAllowed','redistributionAllowed','validFrom','validTo','feedInfo','retainedArchive','attribution','observedAt'))
             or base.get('rightsClass', 'RAW_PERSISTENCE_ALLOWED') != 'RAW_PERSISTENCE_ALLOWED'
             or base.get('agencies') != list(agencies.values())
             or base.get('licenseEvidence') != source.get('licenseEvidence')):
             raise ValueError('SELECTED_GTFS_BASE_SOURCE_MISMATCH')
+        if reuse['method'] == 'EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE':
+            witness = stops.get(reuse.get('existingDatasetStopId'))
+            record = {k:witness.get(k, '') for k in ('stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','platform_code')} if witness else None
+            if record is None or reuse.get('existingDatasetRecordSha256') != sha(record):
+                raise ValueError('SELECTED_GTFS_EXISTING_DATASET_RECORD_MISMATCH')
         source = base
     return dict(source=source,nodes=nodes,lines=list(selected_routes.values()),patterns=patterns,transfers=[],evidence=list({e['evidenceId']:e for e in evidence}.values()),selection=request)
 

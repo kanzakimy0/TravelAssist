@@ -830,6 +830,9 @@ export function buildStageReport() {
   const packages = buildWorkPackages(open, {
     priorityRootIds,
     originalRequirementIds: [...original],
+    requirementTiers: Object.fromEntries(
+      inv.map((n) => [n.requirementId, n.tier]),
+    ),
     acquisitionIndex,
     ledger,
   });

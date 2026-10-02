@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02T20:23:36.237411+00:00",
+  "updatedAt": "2026-10-02T22:54:37.323000+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
-  "currentStage": "CHECKPOINT175_LOCAL_FULL_GATES_PASS_COMMIT_AND_CI_PENDING",
+  "lastPushedCheckpoint": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
+  "currentStage": "PHASE180_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "completedSinceCheckpoint": [
     "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
@@ -16,14 +16,14 @@
     "Phase175 Odate-Noshiro exact original C28 requirement admitted with unchangedID, two independently sourced buses, two actual Tsugaru sections toAkita and publictransfers,18edges; sourceobservedAt/rawretentionmetadata corrected, early933factpreflightPASS and replay/preservationPASS."
   ],
   "currentCounts": {
-    "admitted": 3475,
-    "edges": 8329,
-    "hold": 24,
-    "iterations": 175,
-    "lines": 281,
+    "admitted": 3666,
+    "edges": 8565,
+    "hold": 20,
+    "iterations": 180,
+    "lines": 287,
     "rejected": 0,
-    "required": 3499,
-    "servicePatterns": 614
+    "required": 3686,
+    "servicePatterns": 625
   },
   "validation": {
     "focusedTests": 65,
@@ -234,9 +234,223 @@
       ],
       "earlySourcePreflightFacts": 933
     },
-    "fullGate": "LOCAL_PASS_175_CI_PENDING"
+    "fullGate": "LOCAL_PASS_175_CI_PENDING",
+    "phase178": {
+      "replay": "PASS",
+      "elapsedSeconds": 178.86035130001255,
+      "preservation": "PASS",
+      "airportGapCount": 35,
+      "originalRequirements": 1038,
+      "fullGate": "PENDING",
+      "sourceEligibility": "OPEN_ORDINARY_RESEARCH"
+    },
+    "phase179": {
+      "status": "REPAIRED_REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
+      "timing": {
+        "exitCode": 0,
+        "elapsedSeconds": 173.12120130000403,
+        "inputScope": "TASK086-FULL-ORIGINAL-PHASE179-v2",
+        "command": [
+          "node",
+          "tools/transport/task-086-remediate.mjs"
+        ],
+        "includedSourceRebinding": "phase157 exact preserved Soya directional calls; independently bound sources",
+        "previousFailedReceipt": "replay179-179-timing.json"
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
+        "baselineIteration": 178,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE179-v2",
+        "originalRequirements": 1038,
+        "retainedEdges": 8425,
+        "retainedPatterns": 620,
+        "retainedRequirements": 3573,
+        "admissionUpgrades": [
+          {
+            "requirementId": "review:official-airport:鳥取",
+            "nodeId": "transport-node:086:565bb01b4b53f94f9f83e780a76240c3",
+            "from": "HOLD",
+            "to": "ADMIT_TASK_086_TOPOLOGY"
+          }
+        ],
+        "reviewedSourceRebinding": {
+          "phasePath": "data/transport/network/research/phases/157-wakkanai-airport-national-attachment-through-current-asymmetric-soya-trains.json",
+          "preservedPatterns": 2,
+          "preservedEdges": 30,
+          "onlyReviewedProvenanceAndScopeFieldsChanged": true
+        },
+        "newCounts": {
+          "admitted": 3612,
+          "edges": 8495,
+          "hold": 20,
+          "iterations": 179,
+          "lines": 286,
+          "rejected": 0,
+          "required": 3632,
+          "servicePatterns": 623
+        },
+        "airportSurfaceGaps": 34,
+        "actualClosedRootIds": [
+          "root:airport:review:official-airport:鳥取"
+        ],
+        "actualOpenedRootIds": [
+          "root:obligation:mode:required-special-tourism"
+        ],
+        "fullGate": "PENDING_AFTER_REVIEW_INPUT_RECONCILIATION"
+      },
+      "priorFailureRetained": ".cache\\task-086\\airports7\\replay179-179-timing.json",
+      "currentGlobalReview": "Read-only production reviewGlobalGaps confirms special applicability no longer invalid after phase157 evidence rebind; generated unresolved still needs next serial replay. Source rights and highway gateway obligations remain OPEN."
+    },
+    "phase180": {
+      "status": "REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
+      "timing": {
+        "exitCode": 0,
+        "elapsedSeconds": 177.5982810999849,
+        "inputScope": "TASK086-FULL-ORIGINAL-PHASE180-v2",
+        "command": [
+          "node",
+          "tools/transport/task-086-remediate.mjs"
+        ],
+        "includedSourceRebindings": "10 independently reviewed existing rail facts, exact calls and restrictions retained, accurate static service scope"
+      },
+      "preservation": {
+        "status": "PASS",
+        "baselineHead": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
+        "baselineIteration": 179,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
+        "originalRequirements": 1038,
+        "retainedEdges": 8495,
+        "retainedPatterns": 623,
+        "retainedRequirements": 3632,
+        "admissionUpgrades": [],
+        "reviewedSourceRebinding": [
+          {
+            "phasePath": "data/transport/network/research/phases/151-wadamisaki-current-jr-branch-trains-and-explicit-subway-entrances.json",
+            "preservedPatterns": 2,
+            "preservedEdges": 2,
+            "allowedPatternChangedFields": [
+              "evidenceRefs",
+              "sourceFactRef",
+              "sourceRefs",
+              "serviceStateScope",
+              "serviceClass"
+            ],
+            "allowedEdgeChangedFields": [
+              "topologyEvidenceRefs",
+              "sourceRefs",
+              "serviceClass"
+            ],
+            "allOtherStructuralFieldsUnchanged": true
+          },
+          {
+            "phasePath": "data/transport/network/research/phases/083-nanpu-current-kochi-rail-backbone.json",
+            "preservedPatterns": 2,
+            "preservedEdges": 22,
+            "allowedPatternChangedFields": [
+              "evidenceRefs",
+              "sourceFactRef",
+              "sourceRefs",
+              "serviceStateScope"
+            ],
+            "allowedEdgeChangedFields": [
+              "topologyEvidenceRefs",
+              "sourceRefs"
+            ],
+            "allOtherStructuralFieldsUnchanged": true
+          },
+          {
+            "phasePath": "data/transport/network/research/phases/086-uzushio-current-tokushima-rail-and-takamatsu-concourse.json",
+            "preservedPatterns": 2,
+            "preservedEdges": 16,
+            "allowedPatternChangedFields": [
+              "evidenceRefs",
+              "sourceFactRef",
+              "sourceRefs",
+              "serviceStateScope"
+            ],
+            "allowedEdgeChangedFields": [
+              "topologyEvidenceRefs",
+              "sourceRefs"
+            ],
+            "allOtherStructuralFieldsUnchanged": true
+          },
+          {
+            "phasePath": "data/transport/network/research/phases/032-shikoku-seto-ohashi-gateway.json",
+            "preservedPatterns": 2,
+            "preservedEdges": 4,
+            "allowedPatternChangedFields": [
+              "evidenceRefs",
+              "sourceFactRef",
+              "sourceRefs",
+              "serviceStateScope"
+            ],
+            "allowedEdgeChangedFields": [
+              "topologyEvidenceRefs",
+              "sourceRefs"
+            ],
+            "allOtherStructuralFieldsUnchanged": true
+          },
+          {
+            "phasePath": "data/transport/network/research/phases/145-astram-current-directional-trains-national-anchor-and-three-hubs.json",
+            "preservedPatterns": 2,
+            "preservedEdges": 2,
+            "allowedPatternChangedFields": [
+              "evidenceRefs",
+              "sourceFactRef",
+              "sourceRefs",
+              "serviceStateScope",
+              "serviceClass"
+            ],
+            "allowedEdgeChangedFields": [
+              "topologyEvidenceRefs",
+              "sourceRefs",
+              "serviceClass"
+            ],
+            "allOtherStructuralFieldsUnchanged": true
+          }
+        ],
+        "newCounts": {
+          "admitted": 3666,
+          "edges": 8565,
+          "hold": 20,
+          "iterations": 180,
+          "lines": 287,
+          "rejected": 0,
+          "required": 3686,
+          "servicePatterns": 625
+        },
+        "airportSurfaceGaps": 33,
+        "actualClosedRootIds": [
+          "root:airport:review:official-airport:久米島"
+        ],
+        "actualOpenedRootIds": [],
+        "fullGate": "PENDING_AFTER_REVIEW_INPUT_RECONCILIATION"
+      },
+      "ordinaryFollowup": "33 airport roots,243 bus direction roots; source review8 facts/3 shared groups remain; full gate pending"
+    },
+    "phase180FullRegression": {
+      "tests": 3081,
+      "passed": 3081,
+      "timing": {
+        "command": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=4",
+          "tests/*.test.mjs"
+        ],
+        "elapsedSeconds": 807.1280074999959,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
+      },
+      "deterministicRebuild": "PASS",
+      "remainingChecks": "PASS",
+      "ci": "PENDING_NEW_CHECKPOINT"
+    }
   },
-  "nextConcreteAction": "Input/code freeze at175: run one full regression including deterministic rebuild/recovery/corruption, then applicable lint/type/format/artifact gates; stage report/preservation/secrets; commit/push and record exact branch/checkout CI. Continue176Sapporo and original airport/bus scope after checkpoint.",
+  "nextConcreteAction": "Commit/push validated180 checkpoint; record direct HEAD and PR checkout separately; continue Nagasaki cached zero-new-node direction package and Hachijo original airport chain; remainingJRsource8 reviewed independently.",
   "independentWork": [
     "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
     "Tottori original airport/current complete calling sequences and rail dependency",
@@ -383,9 +597,10 @@
     },
     "coreStage": "CORE_STAGE_PASS",
     "uniqueOpenRoots": 281,
-    "ci": "PENDING_NEW_COMMIT_DIRECT_AND_PR_ACTUAL_CHECKOUT_RECORDS"
+    "ci": "PASS175branchc64cf9a1f42ed8dee2698f08dbda686a8f6fc250; direct37060459479actualsameSHA; PR37060466329actual2c770f602c8d3d25df40c80ff0ef9d7c4143ee90; no177coverage",
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
   },
-  "nextAction": "Commit/push all preserved phase170–175 results on existing branch/DraftPR466, dispatch directHEAD Qualitygate and record actualcheckoutSHA for it and PRmerge separately. Then serialimport privateSapporo176 and reconcile. Apply reviewed privateChofu exactformal-airfield codepatch/negatives and import177 only after targetedpreflight.",
+  "nextAction": "Finish privateCCBY2.1JP sharedHinomaru licence adapter/negative tests and sourceauthority binding; then serially import real Tottori178 loop+rail+public chain and Miho179 bus+public chain, preserve differentnativeIDs. Root Noto180 originalairport preflight uses existingKanazawa anchor/directcurrentexpress, no newrail assumption. Check175CI runs37060459479direct /37060466329PR and record actualcheckout SHAs whencomplete; do not attribute to177.",
   "privatePackages": {
     "sapporo176": {
       "path": ".cache/task-086/sapporo177/phase176-review-plan.json",
@@ -396,14 +611,14 @@
     },
     "chofu177": {
       "path": ".cache/task-086/chofu179/phase177-review-plan.json",
-      "status": "PRIVATE_SOURCE_P11_PREFLIGHT_PASS_FORMAL_NAME_VALIDATOR_FIX_PENDING",
+      "status": "PRIVATE_REAL20EDGE_PREFLIGHT_PASS_CANONICAL_CODE67TESTPASS_PENDING176",
       "facts": 4,
       "directedEdges": 20,
       "nextAction": "Apply strict exact current formal-airfield branch proposal and negative tests only after175checkpoint, then run airport/schema/full-chain incremental checks."
     },
     "tottori": {
-      "path": ".cache/task-086/tottori178/tottori-airport-chain-evidence-v4.json",
-      "status": "ACTIVE_ALTERNATIVE_SERVICE_AND_RIGHTS_RESEARCH",
+      "path": ".cache/task-086/tottori178/tottori-loop-national-chain-candidate-v2.json",
+      "status": "PRIVATE178_NATIVE53CALL_LOOP_AND_TWO_REALRAIL_DIRECTIONS_PREPARING",
       "nextAction": "Licensed independent actual53-call local loop may provide full chain; never merge differing airport nativeIDs or call flight-linked inbound6calls complete despite operator footnote."
     },
     "obihiro": {
@@ -413,8 +628,49 @@
     },
     "miho": {
       "path": ".cache/task-086/miho-preflight-v1",
-      "status": "ACTIVE_ORIGINAL_AIRPORT_PRIVATE_RESEARCH",
+      "status": "PRIVATE179_REAL3CALL_TWO_DIRECTIONS_AND_PUBLIC_INTERFACES_PREPARING",
       "nextAction": "Reuse sharedTottoriHinomaru2.zip currentnativefeed20261001–20270331; strongreviewer owns common licence review; cheapextractor nativeMiho directions and lawful public interfaces. No redownload based on staleportal displaydate."
+    },
+    "noto180": {
+      "path": ".cache/task-086/noto180/preflight-v1.json",
+      "status": "ACTIVE_ORIGINAL_T2_AIRPORT_NO_PRIOR_SOURCE_CACHE",
+      "nextAction": "Current Hokutetsu20260315direct Notoairport/Kanazawa express actualcalls+licence+publicterminalandstation proof; primarysourcesfound, no directHTTPyet."
     }
-  }
+  },
+  "phase176Replay": {
+    "status": "PASS_FULL_GATE_PENDING",
+    "elapsedSeconds": 169.388858899998,
+    "airportSurfaceGaps": 37,
+    "priorDataPreservation": "PASS"
+  },
+  "phase177Replay": {
+    "status": "PASS_FULL_GATE_PENDING",
+    "elapsedSeconds": 171.8127897999948,
+    "airportSurfaceGaps": 36,
+    "priorDataPreservation": "PASS",
+    "newFormalNameBranchFocusedTests": 67,
+    "negativeTestsAdded": 25
+  },
+  "currentTechnicalStatus": {
+    "status": "CORE_STAGE_FAILED",
+    "reason": "Reconciliation updated global-review.v1.json after177replay; manifest retainedInputHash still pre-reconciliation. Stage correctly fails this actual mismatch and does not reuse175cleanproof.",
+    "ordinaryFix": "Next controlled replay/required checkpoint full clean rebuild must bind reconciled current review inputs. Do not relabel175CI as177proof or ignore failedcheck.",
+    "uniqueOpenRootsIncludingTransientReviews": 282,
+    "underlyingAirportGaps": 36,
+    "busDirectionRoots": 243,
+    "transientGlobalReviewGaps": 3,
+    "execution": "CONTINUE"
+  },
+  "sharedHinomaruLicenseAdapter": {
+    "status": "APPLIED_FOCUSED40PASS_FULLGATEPENDING",
+    "license": "CC BY 2.1 Japan",
+    "negativeScope": "terms/catalog/publisherauthority exactURLandresponsehash, sourcearchive/agency/publisher, attribution/changes, noexplicitresourceexception, exactversion; nativeZIPreproductionmandatory"
+  },
+  "nextConcreteActions": [
+    "Run full current180 regression/rebuild/recovery/corruption and lint/type/artifact gates, no input changes during execution.",
+    "Complete Shirahama five real direction-platform public passages using newly cached official maps; highway airport↔JR Osaka endpoint proof already exists.",
+    "Research Hachijo exact licensed feed/official airport public passage within originalT2 scope.",
+    "Yonaguni retains verified28-edge licensed loop privately; exact public airport-to-S2690 walking passage missing, no transfer invented.",
+    "Continue eight independently sourced rail facts grouped Sanyo/MarineWest/Sonic; not OSM primary by assumption."
+  ]
 }
