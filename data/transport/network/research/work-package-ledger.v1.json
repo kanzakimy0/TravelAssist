@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 1,
+  "taskRevision": "TASK086-FULL-ORIGINAL-CONTINUOUS-v2",
+  "packages": [
+    {
+      "packageId": "research:03b09beeec61f1a0a808",
+      "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+      "status": "IN_PROGRESS",
+      "nextAction": "Review currentpubliccrossingsandNagaokaactualarrivalaccess fromcachedcarrierstopindex, preserveexactdirectionalGTFSIDsunlesscoarseaccessproven; seekdistinctcurrentterminalidentitydataset; continueindependent25originalairportidentitypreflight.",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/niigata-identity-options-v1.json",
+          "sha256": "01d5f0e808c8dcd57455930dd3686ea274950927db37825139f194d0735fde97",
+          "status": "RESEARCH_NOT_ADMISSION"
+        },
+        {
+          "path": ".cache/task-086/airports7/niigata-alt-chain-v1.json",
+          "sha256": "3d815a30b41f9595c9fb259bc3fc67e7c5fdca8d9e530aa484aa44ba73c823d8",
+          "status": "RESEARCH_NOT_ADMISSION"
+        },
+        {
+          "path": ".cache/task-086/airports7/niigata-e22-extraction-v1.json",
+          "sha256": "fee6c6d6e02013ffc4b9a260a7949cbf54e07f60f625303eefe56f6f2a299c65",
+          "status": "RESEARCH_NOT_ADMISSION"
+        },
+        {
+          "path": ".cache/task-086/airports7/niigata-p36-identity-review-v1.json",
+          "sha256": "0fd0c4d7368c5b45f25b1064bfa563b69a33a38c7d93d9b167755f2f86a1b545",
+          "status": "RESEARCH_NOT_ADMISSION"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:57:27.226Z",
+          "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+          "method": "PRIMARY_GTFS_CONTENT_INSPECTION_AND_CURRENT_RELOCATED_TERMINAL_IDENTITY_RESEARCH",
+          "result": "HIGHWAY_FEED_HAS_NO_AIRPORT_SERVICE; CURRENT_STATION_BAY18_REQUIRES_DISTINCT_IDENTITY",
+          "failureReason": "P11-22 south-entrance stop predates physical relocation in2024; publishedGTFS onlytwohighwayroutes, no applicableairportstop",
+          "sources": [
+            {
+              "key": "niigata-busvision-gtfs",
+              "url": "https://loc.bus-vision.jp/gtfs_v2/niigatakotsu/gtfsFeed",
+              "status": 200,
+              "bytes": 18147,
+              "contentSha256": "8d1bfce320eb432fa1c806318182d985763721c55426d4efe452a81a8355bdaa",
+              "file": ".cache\\task-086\\airports7\\niigata-busvision-gtfs.zip",
+              "rightsStatus": "PRIMARY_LICENSE_REVIEW_PENDING_PRIVATE_RESEARCH_ONLY"
+            }
+          ],
+          "evidence": [
+            ".cache/task-086/airports7/niigata-busvision-gtfs.zip",
+            ".cache/task-086/airports7/niigata-pdf.pdf"
+          ],
+          "metrics": {
+            "searchQueries": 8,
+            "httpRequests": 1,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "VERIFY_CURRENT_TERMINAL_IDENTITY_OPEN_DATA_OR_LEGAL_ALTERNATIVE_COMPLETE_CHAIN; inspect cachedcurrentairporttimetable andprimaryrights",
+          "retryCondition": "Do not refetch unchangedhighwayGTFS forairportidentity; newapplicabledataset/version or alternateactualchain required"
+        },
+        {
+          "observedAt": "2026-10-02T14:59:48.773Z",
+          "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+          "method": "PRIMARY_GTFS_CONTENT_INSPECTION_AND_CURRENT_RELOCATED_TERMINAL_IDENTITY_RESEARCH",
+          "result": "DUPLICATE_ADMINISTRATIVE_CHECKPOINT_NO_NEW_RESEARCH",
+          "failureReason": "P11-22 south-entrance stop predates physical relocation in2024; publishedGTFS onlytwohighwayroutes, no applicableairportstop",
+          "sources": [
+            {
+              "key": "niigata-busvision-gtfs",
+              "url": "https://loc.bus-vision.jp/gtfs_v2/niigatakotsu/gtfsFeed",
+              "status": 200,
+              "bytes": 18147,
+              "contentSha256": "8d1bfce320eb432fa1c806318182d985763721c55426d4efe452a81a8355bdaa",
+              "file": ".cache\\task-086\\airports7\\niigata-busvision-gtfs.zip",
+              "rightsStatus": "PRIMARY_LICENSE_REVIEW_PENDING_PRIVATE_RESEARCH_ONLY"
+            }
+          ],
+          "evidence": [
+            ".cache/task-086/airports7/niigata-busvision-gtfs.zip",
+            ".cache/task-086/airports7/niigata-pdf.pdf"
+          ],
+          "metrics": {
+            "httpRequests": 0,
+            "searchQueries": 0,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "VERIFY_CURRENT_TERMINAL_IDENTITY_OPEN_DATA_OR_LEGAL_ALTERNATIVE_COMPLETE_CHAIN; inspect cachedcurrentairporttimetable andprimaryrights",
+          "retryCondition": "Do not refetch unchangedhighwayGTFS forairportidentity; newapplicabledataset/version or alternateactualchain required"
+        },
+        {
+          "observedAt": "2026-10-02T15:24:14.068Z",
+          "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+          "method": "CURRENT_OPERATOR_MAPS_AND_TIMETABLES;PRIMARY_CC_BY_GTFS;OSM_CURRENT_MAP_AND_COARSE_IDENTITY_QUALITY_REVIEW",
+          "result": "SERVICE_AND_LICENSE_EVIDENCE_CACHED; DIRECT_TERMINAL_IDENTITY_OR_ALTERNATIVE_PUBLIC_ACCESS_DEPENDENCIES_STILL_OPEN",
+          "failureReason": "OSMmapretainsoldlimousinestop5,nocurrent18; JREaststationpage403. Alternativehighwaycoarseningwouldallowunreviewedcross-directiontransfers;県庁/県庁東different;Nagaokaarrival56_1mustnotbeclaimedbay4boarding.",
+          "sources": [
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+              "status": 200,
+              "contentSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-airport-operator.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/bandaicity.html",
+              "status": 200,
+              "contentSha256": "4948694441cf25e347142984b5a46c915e921ea09a669d389de277fa46b8392b",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-bandai-current.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+              "status": 200,
+              "contentSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-bandai-map.pdf"
+            },
+            {
+              "url": "https://loc.bus-vision.jp/gtfs_v2/niigatakotsu/gtfsFeed",
+              "status": 200,
+              "contentSha256": "8d1bfce320eb432fa1c806318182d985763721c55426d4efe452a81a8355bdaa",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-busvision-gtfs.zip"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/noriai/20150716privacy.pdf",
+              "status": 200,
+              "contentSha256": "b00a4857fea98f64d643ce562d2b5c0683fba2b3206892ff5bd8ba938ce48f90",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-carrier-terms.pdf"
+            },
+            {
+              "url": "https://www.niigata-airport.gr.jp/news/detail/?id=264&lang=ja",
+              "status": 200,
+              "contentSha256": "7afb0887e8d6a47313eb973e08f88123f61d98eafb5b910f3cedf6fde7db46bf",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-current.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "status": 200,
+              "contentSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-e2-map.pdf"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/files/weekday/e2_w.pdf",
+              "status": 200,
+              "contentSha256": "608cc5b8ce18d40d3acc05b2364c9e2c3c82c605fbe1825723e10b50a77604f1",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-e2-weekday.pdf"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/highway-bus/intra-pref/map/",
+              "status": 200,
+              "contentSha256": "1c5f07b63d7c807502c96c5969ddbdeadbd07673bba34941fdea92b3dac7a199",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-highway-stops.html"
+            },
+            {
+              "url": "https://www.jreast.co.jp/estation/stations/1085.html",
+              "status": 403,
+              "contentSha256": "71e12df1edf7f51b88aa127adf5dfc6e84fab2e745af5c2ace0e01fe6ad6e69c",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-jr-floor.html"
+            },
+            {
+              "url": "https://www.echigo-kotsu.co.jp/contents/diagram/hw_bus-stop/img/bs_map/nagaoka_sta.png",
+              "status": 200,
+              "contentSha256": "2dbc97ac82f0bc47ef7f87aacb4c5b4ca038bc5d908c99f94304f719107a2dd1",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-map.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/highway-bus/intra-pref/nagaoka.html",
+              "status": 200,
+              "contentSha256": "56a6baf0b00e7b7931ecedd65df05a910a0b397513a9956dc1a6472151e684fd",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-route.html"
+            },
+            {
+              "url": "https://www.echigo-kotsu.co.jp/contents/diagram/hw_bus-stop/bs_nagaoka_sta.html",
+              "status": 200,
+              "contentSha256": "cbc9d7cbb74c012e5f9bb11046a9a45413c0bb3f3bbe0ea6a1309f1d7c11d1c1",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-station-current.html"
+            },
+            {
+              "url": "https://api.openstreetmap.org/api/0.6/map?bbox=139.0595,37.9108,139.0635,37.9135",
+              "status": 200,
+              "contentSha256": "5ccb6e967de9001a024c2b01e09e961ef450d29412f258575863de3ac992a924",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-osm-current-map.osm"
+            },
+            {
+              "url": "https://www.niigata-airport.gr.jp/common/img/upload/files/202608_%E3%83%AA%E3%83%A0%E3%82%B8%E3%83%B3%E3%83%90%E3%82%B99%E6%9C%88%E3%83%80%E3%82%A4%E3%83%A4%E6%94%B9%E6%AD%A3_A4%E3%83%81%E3%83%A9%E3%82%B7(1).pdf",
+              "status": 200,
+              "contentSha256": "dfc5659e6dab980047dbbe759b77981964319cff1829908c080ac1cd5863b5db",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-pdf.pdf"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/route_e.html",
+              "status": 200,
+              "contentSha256": "008e71404645d848ffe7215b251d307b0ecf37dc2b4e870b29df7009e22ff6af",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-route-list.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/niigatasta.html",
+              "status": 200,
+              "contentSha256": "060eb0bb381db9fcc250d1457cbb09b61a30c148f76f14cb5250c39cdede13e2",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-station-current.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/eki.pdf",
+              "status": 200,
+              "contentSha256": "c3805229c7e3ea2a6bf6c3bab6b9ba10a4fbf011eea608b21be78dea5f74208a",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-station-map.pdf"
+            },
+            {
+              "url": "https://loc.bus-vision.jp/toki-liner/view/opendataNiigata.html",
+              "status": 200,
+              "contentSha256": "52c1b7759860ecf2512ce705bcc567cba4f06ade34d745297fcf912cce7d4ae8",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-toki-rights.html"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/niigata-identity-options-v1.json",
+              "sha256": "01d5f0e808c8dcd57455930dd3686ea274950927db37825139f194d0735fde97",
+              "status": "RESEARCH_NOT_ADMISSION"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-alt-chain-v1.json",
+              "sha256": "3d815a30b41f9595c9fb259bc3fc67e7c5fdca8d9e530aa484aa44ba73c823d8",
+              "status": "RESEARCH_NOT_ADMISSION"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-e22-extraction-v1.json",
+              "sha256": "fee6c6d6e02013ffc4b9a260a7949cbf54e07f60f625303eefe56f6f2a299c65",
+              "status": "RESEARCH_NOT_ADMISSION"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-p36-identity-review-v1.json",
+              "sha256": "0fd0c4d7368c5b45f25b1064bfa563b69a33a38c7d93d9b167755f2f86a1b545",
+              "status": "RESEARCH_NOT_ADMISSION"
+            }
+          ],
+          "metrics": {
+            "httpRequests": 16,
+            "searchQueries": 25,
+            "cacheHitCount": null,
+            "cacheHitCountNote": "Reused cachedsourcebytesforagentextractionandrootreview; readsnotinstrumented, no inventedcount.",
+            "tokens": null,
+            "billedCost": null,
+            "uniqueRootsClosed": 0
+          },
+          "nextAction": "Review currentpubliccrossingsandNagaokaactualarrivalaccess fromcachedcarrierstopindex, preserveexactdirectionalGTFSIDsunlesscoarseaccessproven; seekdistinctcurrentterminalidentitydataset; continueindependent25originalairportidentitypreflight.",
+          "retryCondition": "No unchangedGTFS/OSMrefetch; no repeatJREast403 or prioridentitysearchwithoutnewsource/version/parser. Distinctofficialpublic-accessmaporlicensedcurrentidentityneeded."
+        }
+      ]
+    },
+    {
+      "packageId": "research:3e0e34601b7c79790d17",
+      "inputFingerprint": "dbb468993afd16ffe2107709f46cb36d362361655de2bb864158435ca3b803d5",
+      "status": "READY",
+      "nextAction": "Retainexactboardingpoints; acquirecurrentpublicaccessfortargetedphysicalstopgroup; neverreverseorcollapsebyname",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/nagasaki-bus-preflight-v1.json",
+          "sha256": "4f713fa1eeacc18dcb969af7b4202871300bd1e565ab8ef99685385aa9318ede"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T15:37:35.552Z",
+          "inputFingerprint": "dbb468993afd16ffe2107709f46cb36d362361655de2bb864158435ca3b803d5",
+          "method": "SCRIPTED_EXISTING_ROOT_SOURCE_AND_IDENTITY_CACHE_PREFLIGHT",
+          "result": "183 sharedboarding/public-transfer gaps; existingparser preservesactualdirections",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-bus-preflight-v1.json",
+              "sha256": "4f713fa1eeacc18dcb969af7b4202871300bd1e565ab8ef99685385aa9318ede"
+            }
+          ],
+          "metrics": {
+            "httpRequests": 0,
+            "searchQueries": 0,
+            "uniqueRootsClosed": 0,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "Retainexactboardingpoints; acquirecurrentpublicaccessfortargetedphysicalstopgroup; neverreverseorcollapsebyname",
+          "retryCondition": "Newapplicableevidenceorreviewedparserchange; samecachedsourcesnotrefetched"
+        }
+      ]
+    },
+    {
+      "packageId": "research:53421425bede9d486344",
+      "inputFingerprint": "6bf5d30f1f7b64fc67b89f494c0ccc96349784c6122b91206b401e316d609370",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase166.json",
+          "sha256": "2e3aa7354986a4149d787c6071d6a058faccc60b29f8c6dc9e20b9a8d79c7f63"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:33:27.802Z",
+          "inputFingerprint": "6bf5d30f1f7b64fc67b89f494c0ccc96349784c6122b91206b401e316d609370",
+          "method": "Cached independent bus/train extraction plus new primary public-passage and bus-signage review",
+          "result": "Six evidence-bound facts prepared;23 directed edges;7 exactP11 and5 rail necessary components",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=tab&tab=0&term=0&busstop=1",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "01d7d4e256750603270af7b49d5d039e3e7c00affcc329531f253ab7e6ff43cb"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=0&term=0&busstop=1",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "06e36b098f369796ee0aec258e7101efcf2ba92f5f779dd1826d942e43be9ee2"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=1&term=0&busstop=1",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "23c962731484a0ce3e258517491798f54672c227308ae3648a1d5b562cafdef7"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/pdf/noriba-map.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "28e9dbd8add54655dcf119d6cabc8eea250067b6e1f4eabba0d2b71282b9dac9"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/privacy_policy.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "3df776db4ee93e1ce110ef03c6b6d198a0c58128d999a828b308821f87b1aebe"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/030/033011.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "5dc7855da5f6b4868bd8750bb9b96d026fe3e749f86c6f76360baa6a1bd06566"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/095/098191.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "d93478f6357f983816091aceca9644ea9f78ee104e52852b141739c5bd92a1be"
+            },
+            {
+              "url": "https://www.jreast.co.jp/site/rules.html/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "06963917acbddf0038f1e6b32d736628fa6912fcd96ca9aed177527087f30abb"
+            },
+            {
+              "url": "https://akita.airportliner.net/jp/taxi_stand/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "8b669565f56aefae58ac96be0bbb517cf180781161f93d8556bd0a48903156d9"
+            },
+            {
+              "url": "https://akita.airportliner.net/jp/imgs/taxi_stand/taxistand_03.jpg",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "ce026b82bb9c11775983b03d4d3550a5c38b03dde026f24b140b4fd5b359111b"
+            },
+            {
+              "url": "https://akita.airportliner.net/jp/agreement/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "02cc310120cc3e1be7feefb6cbb59a9103870ff341b9ac550d09e4dd19751d80"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase166.json",
+              "sha256": "2e3aa7354986a4149d787c6071d6a058faccc60b29f8c6dc9e20b9a8d79c7f63"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 7,
+            "sourceCacheResponsesReused": 12,
+            "webSearchQueries": 4,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 169.2626486
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    },
+    {
+      "packageId": "research:6381f66dd83685d68ea8",
+      "inputFingerprint": "d5aa7297173eb82a8e114e9c6d196b49a6b6f8fcfe5b2f0f76c1c6a855b8379c",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Replay phase165; verify full directed airport chain and all existing obligations; reconcile frozen essential inventory; continue Akita package",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase165.json",
+          "sha256": "6859aaf0b88c8e9105eb135663f72be593478d979e46a46539179c538808bc11"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:18:10.115Z",
+          "inputFingerprint": "d5aa7297173eb82a8e114e9c6d196b49a6b6f8fcfe5b2f0f76c1c6a855b8379c",
+          "method": "Cached independent bus/train extraction plus new primary public-passage and bus-signage review",
+          "result": "Six evidence-bound facts prepared;22 directed edges;9 exactP11 and1 rail necessary components",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            },
+            {
+              "url": "https://www.jrbustohoku.co.jp/privacy/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "ddc358f8e696b2e64784d756cf84875e8aba95814e72936894d50a031897cd36"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/015/015001.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "0a31645f00bb15df42a0c91e388768be8271e3aaea8330e4c3ea0d48199f12ac"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/010/014651.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "9f0eebbe7e8d6a0cfb9272be7f431eb4da7725170de607dd3b3a1b133e087038"
+            },
+            {
+              "url": "https://www.jreast.co.jp/site/rules.html/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "06963917acbddf0038f1e6b32d736628fa6912fcd96ca9aed177527087f30abb"
+            },
+            {
+              "url": "https://rental.timescar.jp/aomori/shop/0208/route01.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "0421808afc851cc6ae8e44a1ec7a1af460ad237875614390be084ced9ec916c5"
+            },
+            {
+              "url": "https://rental.timescar.jp/aomori/items/shop/aomori-0001.jpg",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "61e9ee16561db09b6b8c7104ca68ebb700a20372f627ed0e2924659810486257"
+            },
+            {
+              "url": "https://rental.timescar.jp/available/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "354e6ff3b7fbacedbf8606d5c606806a1fe7e3a1300db9908bde5da49377c87d"
+            },
+            {
+              "url": "https://www.city.aomori.aomori.jp/kurashi_kankyo/koutsuu/1002395/1002396.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "44b79d914be472ab1657efc11a469c2b28a3b65c3b30d4822cb7d47fd1705b55"
+            },
+            {
+              "url": "https://www.city.aomori.aomori.jp/_res/projects/default_project/_page_/001/006/804/20240315-20.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "8ac6c62e52cee26f7f9ca59c5da8b937dfe28ed81ae4a0155aa2437ba226e772"
+            },
+            {
+              "url": "https://www.city.aomori.aomori.jp/about/1007400.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "b76290024a3071595bc5651339ffe901e92963c685a90a874b2b8098b13bb5e3"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase165.json",
+              "sha256": "6859aaf0b88c8e9105eb135663f72be593478d979e46a46539179c538808bc11"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 8,
+            "sourceCacheResponsesReused": 11,
+            "webSearchQueries": 2,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 169.1343415
+          },
+          "nextAction": "Replay phase165; verify full directed airport chain and all existing obligations; reconcile frozen essential inventory; continue Akita package",
+          "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    },
+    {
+      "packageId": "research:643d5437104296e21d90",
+      "inputFingerprint": "1f73d440e63ad86840fcb721e09552b1312185c46c5c5575db0fdc66d7152729",
+      "status": "READY",
+      "nextAction": "Currentlawfulairport/governmentdatedflightsandpublicaccessfor奥尻/利尻/丘珠; no repeatedrestrictedJAL/ANA source",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airport-identity25-preflight-v1.json",
+          "sha256": "aee64ff23b2e0eb3c5a87d13548e23c76bb8057f9b87ef9e0f8f2a9aed821a14"
+        },
+        {
+          "path": ".cache/task-086/airport-identity25-flight-cache-plan-v1.json",
+          "sha256": "a3ca9bdc72fba1cf2268de364661c918aec848781a6ce6a08936e588686d5313"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T15:37:35.546Z",
+          "inputFingerprint": "1f73d440e63ad86840fcb721e09552b1312185c46c5c5575db0fdc66d7152729",
+          "method": "SCRIPTED_EXISTING_ROOT_SOURCE_AND_IDENTITY_CACHE_PREFLIGHT",
+          "result": "25 uniqueC28lexicalcandidates; allHOLDmissingcurrentidentity/service; no applicablecachedactualJAL/HAC/ANAtripfacts",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airport-identity25-preflight-v1.json",
+              "sha256": "aee64ff23b2e0eb3c5a87d13548e23c76bb8057f9b87ef9e0f8f2a9aed821a14"
+            },
+            {
+              "path": ".cache/task-086/airport-identity25-flight-cache-plan-v1.json",
+              "sha256": "a3ca9bdc72fba1cf2268de364661c918aec848781a6ce6a08936e588686d5313"
+            }
+          ],
+          "metrics": {
+            "httpRequests": 0,
+            "searchQueries": 0,
+            "uniqueRootsClosed": 0,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "Currentlawfulairport/governmentdatedflightsandpublicaccessfor奥尻/利尻/丘珠; no repeatedrestrictedJAL/ANA source",
+          "retryCondition": "Newapplicableevidenceorreviewedparserchange; samecachedsourcesnotrefetched"
+        }
+      ]
+    },
+    {
+      "packageId": "research:d4617074db92f3552021",
+      "inputFingerprint": "68d899d9f464b56b7e5590537284acc7da59c3af01cd8560d0c5f07b110922ac",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase167.json",
+          "sha256": "d1f746fc95537915bab964020bf9d24f3861f5918947e52d46a72dc73184f6ac"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:45:19.930Z",
+          "inputFingerprint": "68d899d9f464b56b7e5590537284acc7da59c3af01cd8560d0c5f07b110922ac",
+          "method": "Cached independent bus/train extraction plus new primary public-passage and bus-signage review",
+          "result": "Six evidence-bound facts prepared;31 directed edges;2 exactP11 and necessary Yosan rail components",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=jr",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "80af73b9dccfd8e372af50f0346b3de664da8068142311ed03c76ffab5bd4dba"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=airport",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "447e928e244f62edcf9b69d1880604aca7488ac657a9b324df4d9e5faeb9f820"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/group/policy/site.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "765bf70455b76f09dadd73b49fc42557b71662e3d07757a0f74c66df12519c14"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "6d65199c4eb997b341bd37be4f0d16015e0e47562cd24b6cb1acbb171edd20f1"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/kounai_map.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "5bb4eef0a7c83fac17efb2add042962ed6b23655231405fd6760c0e949026464"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/images/kounai.gif",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "5317054bf7e5c86d6e07e8e30960dace75f88c025b14b56d0aee6a7084e5e3d9"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/site_policy/jrshikoku_sitepolicy.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "22810d16d150ffe0ffdddac3b5d37d6d68c4ea764dc309c9f389cb48381a40ad"
+            },
+            {
+              "url": "https://www.city.matsuyama.ehime.jp/shisei/machizukuri/matsuyamaeki/machidukuri/koujiosirase/kasetsutsuro.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "d7526accbcb6010319b5cd7eee866a09e831612f6e7e625a9b961bf52ae4cd89"
+            },
+            {
+              "url": "https://www.city.matsuyama.ehime.jp/shisei/machizukuri/matsuyamaeki/machidukuri/koujiosirase/kasetsutsuro.images/ichizu.png",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "9fca26ef09e237b5fd44406066a69031dba7b420d24606e8620f50bce37cf6e8"
+            },
+            {
+              "url": "https://www.city.matsuyama.ehime.jp/aboutweb/copyright.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "ef0888d445f1631787e73d39ec8faa3d16fa37909291f892c7cce7c7a9104674"
+            },
+            {
+              "url": "https://www.matsuyama-airport.co.jp/floormap/terminal.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "f57607c040339e8d2f63ce7664f8de83e37fd5ee7cd958dd8b90a7ad10555097"
+            },
+            {
+              "url": "https://www.matsuyama-airport.co.jp/assets/pdf/floormap/map_ja.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "51bd6e08bfbae01210b31c70f08eba7dd17fa52877731fbec6c58e701286d826"
+            },
+            {
+              "url": "https://www.matsuyama-airport.co.jp/privacy.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "21dbd730e9dd0f7824fc067728e79db595f4e43dbc013293220ff9e3bd0bae40"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase167.json",
+              "sha256": "d1f746fc95537915bab964020bf9d24f3861f5918947e52d46a72dc73184f6ac"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 12,
+            "sourceCacheResponsesReused": 16,
+            "webSearchQueries": 5,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 171.0174831
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    }
+  ]
+}

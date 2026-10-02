@@ -16,6 +16,136 @@ const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../..",
 );
+// Compact packages reuse the root index; choosing one does not acquire evidence.
+export function buildWorkPackages(
+  roots,
+  { priorityRootIds = [], acquisitionIndex = [], ledger = [] } = {},
+) {
+  const groups = new Map();
+  for (const r of roots.filter(
+    (r) => r.status === "OPEN" && r.classification !== "E",
+  )) {
+    const key = r.researchBatchKey || r.rootCauseId;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(r);
+  }
+  return [...groups]
+    .map(([packageId, rows]) => {
+      rows.sort((a, b) => a.rootCauseId.localeCompare(b.rootCauseId));
+      const rootCauseIds = rows.map((r) => r.rootCauseId);
+      const actionIds = [
+        ...new Set(rows.flatMap((r) => r.sourceActionIds || [])),
+      ].sort();
+      const sources = acquisitionIndex.filter((a) =>
+        actionIds.includes(a.actionId),
+      );
+      const inputFingerprint = hash({ roots: rows, sources });
+      const history = ledger.find((p) => p.packageId === packageId);
+      const previous =
+        history?.inputFingerprint === inputFingerprint ? history : null;
+      const priority = Math.min(
+        ...rootCauseIds.map((id) => {
+          const n = priorityRootIds.indexOf(id);
+          return n < 0 ? Number.MAX_SAFE_INTEGER : n;
+        }),
+      );
+      return {
+        packageId,
+        inputFingerprint,
+        rootCauseIds,
+        sourceActionIds: actionIds,
+        priority,
+        coreRequiredCount: rows.reduce(
+          (n, r) => n + (r.coreRequiredCount || 0),
+          0,
+        ),
+        originalRequiredCount: new Set(
+          rows.flatMap((r) => r.requirementIds || []),
+        ).size,
+        dependencies: [
+          ...new Set(rows.flatMap((r) => r.dependencies || [])),
+        ].sort(),
+        sources,
+        status: previous?.status === "IN_PROGRESS" ? "IN_PROGRESS" : "READY",
+        nextAction:
+          previous?.nextAction ||
+          "PREFLIGHT_CACHED_IDENTITIES_SOURCES_AND_COMPLETE_CHAIN_DEPENDENCIES",
+        attempts: history?.attempts || [],
+        resumeEvidence: previous?.resumeEvidence || [],
+        researchCompletedBySelection: false,
+        retryCondition:
+          "Changed source/version/parser/identity/rights or a distinct justified method; never repeat unchanged failed retrieval",
+      };
+    })
+    .sort(
+      (a, b) =>
+        a.priority - b.priority ||
+        b.coreRequiredCount - a.coreRequiredCount ||
+        b.originalRequiredCount - a.originalRequiredCount ||
+        a.packageId.localeCompare(b.packageId),
+    );
+}
+export function recordWorkPackage(
+  request,
+  {
+    ledgerPath = path.join(
+      root,
+      "data/transport/network/research/work-package-ledger.v1.json",
+    ),
+    now = () => new Date().toISOString(),
+  } = {},
+) {
+  invariant(
+    request.packageId && /^[a-f0-9]{64}$/.test(request.inputFingerprint),
+    "PACKAGE_AND_INPUT_FINGERPRINT_REQUIRED",
+  );
+  invariant(
+    [
+      "IN_PROGRESS",
+      "READY",
+      "VALIDATION_PENDING",
+      "EXTERNAL_EVIDENCE_PENDING",
+    ].includes(request.status),
+    "PACKAGE_STATUS_NOT_COMPLETION_PROOF",
+  );
+  invariant(
+    request.nextAction &&
+      request.method &&
+      request.result &&
+      request.retryCondition,
+    "PACKAGE_RECOVERY_DETAILS_REQUIRED",
+  );
+  const ledger = readJson(ledgerPath);
+  const previous = ledger.packages.find(
+    (p) => p.packageId === request.packageId,
+  );
+  const event = sanitizeEvidence({
+    observedAt: now(),
+    inputFingerprint: request.inputFingerprint,
+    method: request.method,
+    result: request.result,
+    failureReason: request.failureReason || null,
+    sources: request.sources || [],
+    evidence: request.evidence || [],
+    metrics: request.metrics || { tokens: null, billedCost: null },
+    nextAction: request.nextAction,
+    retryCondition: request.retryCondition,
+  });
+  const current = {
+    packageId: request.packageId,
+    inputFingerprint: request.inputFingerprint,
+    status: request.status,
+    nextAction: request.nextAction,
+    resumeEvidence: event.evidence,
+    attempts: [...(previous?.attempts || []), event],
+  };
+  ledger.packages = [
+    ...ledger.packages.filter((p) => p.packageId !== request.packageId),
+    current,
+  ].sort((a, b) => a.packageId.localeCompare(b.packageId));
+  atomicWrite(ledgerPath, JSON.stringify(ledger, null, 2) + "\n");
+  return current;
+}
 export const ACTION_STATES = [
   "PENDING_RESEARCH",
   "RESEARCHING",
@@ -389,7 +519,9 @@ if (
   path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
 ) {
   const [command, argument] = process.argv.slice(2);
-  if (command === "acquire")
+  if (command === "record-package")
+    console.log(JSON.stringify(recordWorkPackage(readJson(argument)), null, 2));
+  else if (command === "acquire")
     console.log(
       JSON.stringify(await acquireEvidence(readJson(argument)), null, 2),
     );

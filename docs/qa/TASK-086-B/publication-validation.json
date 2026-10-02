@@ -1,149 +1,76 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-02T12:44:09.495606+00:00",
+  "recordedAt": "2026-10-02T15:47:07.877992+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 164,
-  "baseDevelopSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-  "validationParentHead": "5f8533de99ee4397fa404c202e02c37c120d67ad",
+  "phase": 167,
+  "validationParentHead": "54186b39e133b9f7de102b4dce4bdf72a4884e6f",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "manifestSha256": "26bc382b007873814d38a39752fea25aa8973648242b90759cee53c82d59f6bc",
-  "focused": {
-    "status": "PASS",
-    "scope": "Four focused suites invoked by current verifier, including stage-status negative cases. CI revision cases are additionally in full regression.",
-    "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  },
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE167-v2",
+  "manifestSha256": "da3b627840cd26cca8ab48cc31b4628fb323acb3dc01209b6804b74a681f564c",
   "fullRegression": {
     "status": "PASS",
-    "command": "TASK086_PUBLISH_VALIDATION=1 node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
-    "tests": 2928,
-    "pass": 2928,
+    "tests": 2932,
+    "pass": 2932,
     "fail": 0,
-    "cancelled": 0,
-    "skipped": 0,
-    "logPath": ".cache/task-086/airports7/full-tests.log",
-    "logSha256": "e16765d4c8e40b58bda45db0ffef5b3bb43a4166227a1d63e33574105f95e89a",
+    "logPath": ".cache/task-086/airports7/full167lf.log",
+    "logSha256": "ef4c46b815678bb4762833c167ab780680f3f1d4856375e06aa07f32a7e31211",
     "timing": {
-      "elapsedMs": 1092014.5659,
+      "reason": "P11-selection CRLF normalized to repository LF; prior fingerprint not reused",
+      "elapsedSeconds": 933.4090898,
       "exitCode": 0
-    }
+    },
+    "coverage": "Includes deterministic clean rebuild, raw extraction, resume and corruption negatives; same published verifier run, no duplicate verification copy."
   },
-  "deterministicRebuildReceiptSha256": "a7ce74f41ee6e2b3dabf9c47e2fe868acb92416d0bbfea98b352c211915d695a",
+  "deterministicRebuildReceiptSha256": "465d999771b700ffebe941ef0c7237a081b757c691f17b2d5cbde728d6e4fd91",
   "checks": [
     {
       "command": "npm run lint",
       "status": "PASS",
-      "notes": "0 errors; 19 warnings, including 2 in new ignored research-cache helpers; no new tracked-code warning.",
-      "logPath": ".cache/task-086/airports7/lint.log",
       "logSha256": "e8aa79502c0385dbb99c35abdaf59b7e81eacb7c51e26d6f3d1d4ecfbfde7f56",
       "timing": {
         "exitCode": 0,
-        "elapsedMs": 50382.2022
+        "elapsedSeconds": 86.7834101
       }
     },
     {
       "command": "npm run typecheck",
       "status": "PASS",
-      "notes": "Next type generation and TypeScript passed",
-      "logPath": ".cache/task-086/airports7/typecheck.log",
       "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
       "timing": {
-        "elapsedMs": 8940.0931,
-        "exitCode": 0
+        "exitCode": 0,
+        "elapsedSeconds": 15.5058244
+      }
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "logSha256": "1efafc576156c49b2d521b04ea2ae454555b4951972d249e60204f617395a145",
+      "timing": {
+        "exitCode": 0,
+        "elapsedSeconds": 47.5473792
       }
     },
     {
       "command": "npm run format:check:deploy",
       "status": "PASS",
-      "notes": "All matched files use Prettier style",
-      "logPath": ".cache/task-086/airports7/format.log",
-      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "timing": {
+        "elapsedSeconds": 15.6246808,
+        "exitCode": 0
+      },
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    {
+      "command": "npm run deploy:build:local && npm run deploy:verify-artifact",
+      "status": "PASS",
       "timing": {
         "exitCode": 0,
-        "elapsedMs": 19246.984
-      }
-    },
-    {
-      "command": "npm run deploy:build:local",
-      "status": "PASS",
-      "notes": "Local standalone build only; no deploy.",
-      "logPath": ".cache/task-086/airports7/build.log",
-      "logSha256": "cfab0fd7dff253c401509d9990a15329fd2c2d1ffee253dccf7548c114a98ba4",
-      "timing": {
-        "elapsedMs": 64781.5769,
-        "exitCode": 0
-      }
-    },
-    {
-      "command": "npm run deploy:verify-artifact",
-      "status": "PASS",
-      "notes": "Artifact audit passed; current count is in bound log.",
-      "logPath": ".cache/task-086/airports7/artifact.log",
-      "logSha256": "653c9f279b3ac239395346243065771441a359e1335a6aca1592468e39182662",
-      "timing": {
-        "elapsedMs": 2663.2946,
-        "exitCode": 0
-      }
+        "elapsedSeconds": 59.5247944
+      },
+      "logSha256": "8406ad0fea4280c8aecdbf269941a1f865d43b8cb325bf57d03105c14c0f82a9"
     }
   ],
-  "wbs716": "进行中",
-  "mergePerformed": false,
-  "autoMergeEnabled": false,
-  "validationImplementationHashes": {
-    ".github/workflows/quality-gate.yml": "1ea179b70b970a05fbefd1497bef1facad28ee8f16ffc927337d0c17ef09047a",
-    "tests/task-086-b-autonomous-remediation.test.mjs": "31408608ed736222a4b24ed7ad7f34a10f2b63bea24ff1854e81207de328d5c4",
-    "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
-    "tests/task-086-b-mobility-backbone.test.mjs": "e8ec8b2659960c9239932e7282423aee1703545fd7a64ccaf360bfa90fbe7fd8",
-    "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
-    "tests/task-086-b-selected-gtfs.test.mjs": "1aaac00d4202e69fb38baebd1f8114c7c687b33ae1089cba6f6f862bdd68f43c",
-    "tests/task-086-b-stage-closeout.test.mjs": "5e5ebcfe8df51e8a670fd2a3a4019456e4d865a18f050ebe4bacb0cb063a0061",
-    "tools/qa/ci-revision.mjs": "9a006512f405f478ee3e330ebb2eedcd005f51b7f3c0f602a482a4869ecbfd97",
-    "tools/transport/task-086-acceptance-inputs.mjs": "33691f5bf44aafb2d250d105a94f6aecf46ac42de92f3b3d997a99b7f216287c",
-    "tools/transport/task-086-airport-identities.mjs": "752e47b7d093be11ff66b9d6c80f3ad8c38e2535b60bb04a140685d46346e4e9",
-    "tools/transport/task-086-batches.mjs": "196d7dee00b83db75b67393aaec420829077ec7865783c161686f8c3b44c2ca9",
-    "tools/transport/task-086-bus-identities.mjs": "79321698b7c642e9118cce0d1a4e729131c90ebb9e711b8fc7187e8dbeba43c8",
-    "tools/transport/task-086-extract-airports.py": "e5a4604391711d2901a8ec66ef566dab91563207cc87d98939761da268133312",
-    "tools/transport/task-086-extract-bus-stops.py": "1d2c9d7a729739113472ce91f74028cf5226bbad39341aaa15864764173d5051",
-    "tools/transport/task-086-extract-gtfs.py": "1f20a1b18e2bd8ba23928e01c6c8f4f1faa09f2c3a5adee45f63765786529fa6",
-    "tools/transport/task-086-extract-highway-stops.py": "ad58bf5d26c1177ecfbe183e9b91641b10724ee3e3a415145034bc6a7e550c89",
-    "tools/transport/task-086-extract-identities.py": "00dc89c2971be20c61010857e0106614d8cb15c8262297f26da7da8ed1827988",
-    "tools/transport/task-086-extract-jreast.py": "950f9fe58488f0325cfde273b94a91cbc9282f073a0f72137764365a3c36e113",
-    "tools/transport/task-086-extract-rail-gtfs.py": "7aeb4ed2d04cdfbe5b88134815c446b3c9b9f27953ce2eab742eaa65c980a619",
-    "tools/transport/task-086-extract-selected-gtfs.py": "1ea1e76f7ca09ed8df4d6bdd5243f110f13b4ff36ffe50a1aed068abe0d460f7",
-    "tools/transport/task-086-licensed-package.mjs": "2d62269b48024364e313be656bce919216489d8caebb42c7fa302d0ba1514703",
-    "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
-    "tools/transport/task-086-model.mjs": "f544ee42b8b7348f1d0e585606437448422366480d9284a0a74ffc273e26e963",
-    "tools/transport/task-086-remediate.mjs": "d5c86aed1c9e2d1b17cf4cee70883e90a92af96bd7ae8d19c544f721df52216d",
-    "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
-    "tools/transport/task-086-run.mjs": "b3ef0b99275f053ca291fdc2b7b150e7817a65cb64efa9a98952cf4cf06959e8",
-    "tools/transport/task-086-source-actions.mjs": "c2d26d6efe7caa6bd24114f8684b6150021ab5793804a1e2cda889c9a821cfbb",
-    "tools/transport/task-086-stage.mjs": "2a283bd5fa9d50a712d34ff346345ff5e379ab7372a98e284ef60994de5e6d9a",
-    "tools/transport/task-086-verify.mjs": "add4f3e40e4ddbc6786778712c4070afc3469f416ba36d3ed90dff6044d69da5"
-  },
-  "lineEndingVerification": "LF generator/test bytes. Current inputs independently re-extracted, rebuilt twice and resumed; focused and full tests passed. Final staged bytes are checked against these hashes.",
-  "initialPhase82BuildOverlapAttempt": {
-    "status": "FAIL",
-    "tests": 2893,
-    "pass": 2892,
-    "fail": 1,
-    "logPath": ".cache/task-086/full-tests-82-build-race.log",
-    "logSha256": "2df47e40b49ec908a8e72dfcd99692fab43c8da61b094572e95be2d7c110b0b3",
-    "reason": "TASK-022 browser boundary check observed zero chunk files while the concurrent deployment build recreated its output; rerun after build completes, without assertion or timeout changes."
-  },
-  "historicalPhase75ConcurrencyAttempt": {
-    "status": "FAIL_TIMEOUT",
-    "tests": 2890,
-    "pass": 2889,
-    "fail": 1,
-    "failedTest": "TASK-013.1 nightly --dry-run does not write canonical catalogs",
-    "reason": "Unbounded local concurrency exceeded its unchanged 30000ms child-process timeout. All TASK-086 tests passed. Isolated asset suite then passed 51/51, followed by full regression at concurrency 2.",
-    "logSha256": "9f0edd739e31ff8a555b02434f2dd83c186056f85880ad6098ef9959e5680d07",
-    "isolatedRetestSha256": "c5f8373a298f622a1b22b5a1dfb3336f05d73eafcdf32f6ce728b13d4211a2f4"
-  },
-  "stageScopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
-  "stageAcceptanceStatus": "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
-  "boundedCloseoutAuthorized": true,
-  "nationwideComplete": false,
+  "lintNotes": "0 errors,19 warnings",
   "validationEnvironment": {
     "node": "v24.18.0",
     "python": "3.14.6",
@@ -157,27 +84,6 @@
       ".github/workflows/quality-gate.yml": "1ea179b70b970a05fbefd1497bef1facad28ee8f16ffc927337d0c17ef09047a"
     },
     "reusedPriorHeadValidation": false
-  },
-  "supersededLocalValidation": {
-    "reason": "Only independent exception input CRLF-to-LF normalization changed after byte check. This earlier PASS is retained as historical evidence, not reused for the final graph fingerprint.",
-    "fullRegression": {
-      "status": "PASS",
-      "command": "TASK086_PUBLISH_VALIDATION=1 node --import ./tests/register-route-ts.mjs --test --test-concurrency=2 \"tests/*.test.mjs\"",
-      "tests": 2921,
-      "pass": 2921,
-      "fail": 0,
-      "cancelled": 0,
-      "skipped": 0,
-      "logPath": ".cache/task-086/closeout-full-tests.log",
-      "logSha256": "c4a593c16cbb9fdb21f442520c79edc2a9997eaff77ccf5a95672d91c92af5e7",
-      "timing": {
-        "command": "full regression including one deterministic rebuild/publish verification",
-        "exitCode": 0,
-        "elapsedMs": 1016065
-      }
-    },
-    "manifestSha256": "a4add9416c5a8f44754a977dbc3d4e0deec453a144fffa7749b2b73b6eb89c0f",
-    "stageScopeId": "TASK086-CORE-STAGE-PHASE162-v1"
   },
   "historicalQualityGates": [
     {
@@ -205,7 +111,14 @@
   ],
   "currentQualityGate": {
     "status": "PENDING_CHECKPOINT_PUSH",
-    "requiredRecord": "CI_REVISION records branchHeadSha, checkoutSha, event and parents. PR merge checkout is not direct branch HEAD. Request workflow_dispatch for direct HEAD validation; final run URLs/SHAs are bound in the PR and delivery after this commit.",
-    "priorRunsDoNotValidateCurrentInput": true
-  }
+    "requiredRecord": "Record branch HEAD and actual checkout SHA separately; PR merge test is not direct HEAD. Historical54186 runs do not validatephase167."
+  },
+  "supersededLocalRegression": {
+    "tests": 2932,
+    "status": "PASS_ON_PRIOR_CRLF_INPUT_NOT_CURRENT",
+    "elapsedSeconds": 962.9050607,
+    "reason": "P11 selection normalized to repository LF. Current full regression reran against corrected bytes."
+  },
+  "artifactParentHead": "54186b39e133b9f7de102b4dce4bdf72a4884e6f",
+  "artifactIsCleanHeadBuild": false
 }

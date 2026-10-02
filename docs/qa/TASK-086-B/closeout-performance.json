@@ -1,52 +1,34 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
-  "fullRegression": {
-    "elapsedMs": 1092014.5659,
-    "exitCode": 0
-  },
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE167-v2",
   "checks": {
+    "full": {
+      "reason": "P11-selection CRLF normalized to repository LF; prior fingerprint not reused",
+      "elapsedSeconds": 933.4090898,
+      "exitCode": 0
+    },
     "lint": {
       "exitCode": 0,
-      "elapsedMs": 50382.2022
+      "elapsedSeconds": 86.7834101
     },
     "typecheck": {
-      "elapsedMs": 8940.0931,
-      "exitCode": 0
-    },
-    "format": {
       "exitCode": 0,
-      "elapsedMs": 19246.984
+      "elapsedSeconds": 15.5058244
     },
     "build": {
-      "elapsedMs": 64781.5769,
-      "exitCode": 0
-    },
-    "artifact": {
-      "elapsedMs": 2663.2946,
-      "exitCode": 0
+      "exitCode": 0,
+      "elapsedSeconds": 47.5473792
     }
   },
-  "priorPhase162FullRegression": {
-    "command": "full regression including one deterministic rebuild/publish verification; final LF input bytes",
-    "elapsedMs": 1094681.0356,
-    "exitCode": 0
-  },
-  "comparison": "Different code/input/graph fingerprints; raw elapsed observations only, no causal speedup percentage. No comparable model/tool-call baseline.",
-  "sourceAcquisition": {
-    "cachedHttpAttemptRecords": 65,
-    "distinctUrls": 65,
-    "http200": 62,
-    "otherOrError": 3,
-    "scope": "Saved HTTP acquisition metadata for this seven-airport research only; not all browser/search/model calls. Cache-backed evidence import makes no new source request."
-  },
-  "outputs": {
-    "originalGroundAccessRequirementsClosed": 3,
-    "uniqueAirportRootsClosed": 3,
-    "originalAllModeReachabilityBefore": 830,
-    "originalAllModeReachabilityAfter": 830,
-    "newEssentialNodes": 15,
-    "newDirectedEdges": 34
-  },
-  "priorSameInputAuditOptimization": "Historical phase162 8.195s to1.294s single paired auditGraph measurement retained in Git; it is not a measured speedup for this phase164 work."
+  "previousFullRegressionSeconds": 1092.0145659,
+  "comparison": "Different input/code and concurrent machine workload; elapsed observations only, not attributable optimization or token/cost saving.",
+  "newAirportGroundRootsClosed": 3,
+  "newOriginalGraphReachability": 0,
+  "newNecessaryNodes": 36,
+  "newDirectedEdges": 76,
+  "modelTokens": null,
+  "modelCachedTokens": null,
+  "billedCost": null,
+  "modelUsageAvailability": "Per-task/model accounting unavailable; account quota is not task billing.",
+  "packageMetrics": "research/work-package-ledger.v1.json"
 }

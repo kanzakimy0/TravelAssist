@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "scopeId": "TASK086-NEXT-CORE-AIRPORTS-7-v1",
-  "inputScopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
+  "inputScopeId": "TASK086-FULL-ORIGINAL-PHASE167-v2",
   "asOf": "2026-10-02",
-  "stageStopCondition": "Deliver verified bounded checkpoint with explicit hard core blockers; no nationwide completion or source-exhaustion claim.",
+  "stageStopCondition": "MILESTONE_ONLY_CONTINUE_FULL_ORIGINAL_TASK",
   "airports": [
     {
       "rootCauseId": "root:airport:review:official-airport:出雲",
@@ -77,10 +77,10 @@
         "transport-node:086:f9735fcdb04cca82e672744ac91642b1"
       ],
       "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
-      "status": "OPEN_ORDINARY_RESEARCH",
-      "completeChain": "青森空港→JRバス9停留所→JR青森→奥羽線→新青森既存主網",
-      "currentEvidence": "Current bus and two actual rail directions acquired; P11 same-operator candidates identified. Public airport transfer not admitted: airport terms cover all information and commercial links. Station and terminal passenger-path/rights review remains incomplete.",
-      "nextAction": "Finish independent lawful terminal/public-station access evidence, exact nine-stop identities, October2 train calendar review, then import entire chain; do not repeat unchanged 403.",
+      "status": "CHAIN_IMPORTED_INCREMENTAL_VALIDATION_PASS_FULL_GATE_PENDING",
+      "completeChain": "青森空港→JRバス東北→青森駅公共自由通路→実列車642M/621M→新青森既存主網",
+      "currentEvidence": "Phase165 actual independent restricted calls, public exit bus sign and municipal free-passage evidence; full regression/rebuild receipt pending.",
+      "nextAction": "Final full gate after current dependent work; continue Akita ordinary package.",
       "exceptionProof": null,
       "ordinaryResearchMayRemain": true,
       "reviewedOrCandidateSources": [
@@ -194,10 +194,10 @@
         "transport-node:086:1847237df5f3e4abb1e5dc95a111a000"
       ],
       "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
-      "status": "OPEN_ORDINARY_RESEARCH",
+      "status": "CHAIN_IMPORTED_INCREMENTAL_VALIDATION_PASS_FULL_GATE_PENDING",
       "completeChain": "秋田空港→秋田中央交通→JR秋田→独立したこまち上下実列車→盛岡既存主網",
-      "currentEvidence": "Current October1-24 dynamic carrier tables retrieved. Outbound seven-call section and inbound six-call section differ. Remaining work: exact P11 identity of intermediate calls, public terminal/west-exit transfer, independent reverse Komachi calls and physical rail components.",
-      "nextAction": "Review remaining identities and both actual Komachi directions as one chain; bind terms/public gateways, exclude arbitrary reversed sequence.",
+      "currentEvidence": "Phase166 independently reviewed actual directed complete chain, physical identities and public transfers; full regression/rebuild receipt pending.",
+      "nextAction": "Continue next original package; final full gate remains required",
       "exceptionProof": null,
       "ordinaryResearchMayRemain": true,
       "reviewedOrCandidateSources": [
@@ -284,10 +284,10 @@
         "transport-node:086:721c5b26892aee1f801d97627ec277ea"
       ],
       "scopeOrigin": "ORIGINAL_REQUIRED_T1_AIRPORT",
-      "status": "OPEN_ORDINARY_RESEARCH",
+      "status": "CHAIN_IMPORTED_INCREMENTAL_VALIDATION_PASS_FULL_GATE_PENDING",
       "completeChain": "松山空港→伊予鉄リムジン→JR松山→実列車しおかぜ→宇多津既存主網",
-      "currentEvidence": "Current October bus table and actual March14 rail columns acquired. 2024 station relocation and current airport bus bay6 require explicit present public passage and historical road-component continuity review; old bay5 guide must not be treated as current. No bus/rail service has been imported from these candidates.",
-      "nextAction": "Bind current same road-stop identity and relocated-station public gateway, finish independent Shiokaze4/1 actual call review, then import dependent chain only.",
+      "currentEvidence": "Phase167 independently reviewed actual directed complete chain, physical identities and public transfers; full regression/rebuild receipt pending.",
+      "nextAction": "Continue next original package; final full gate remains required",
       "exceptionProof": null,
       "ordinaryResearchMayRemain": true,
       "reviewedOrCandidateSources": [
@@ -440,5 +440,6 @@
     "scopeSha256": "55547b736bf6cfdd9a94b3ef9a15a3e77e432bdef2d153a68bc75a44ca19195b",
     "manifestSha256": "26bc382b007873814d38a39752fea25aa8973648242b90759cee53c82d59f6bc",
     "rebuildReceiptSha256": "a7ce74f41ee6e2b3dabf9c47e2fe868acb92416d0bbfea98b352c211915d695a"
-  }
+  },
+  "executionPolicy": "research/task-revision.v2.json"
 }

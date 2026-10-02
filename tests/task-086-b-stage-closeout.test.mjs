@@ -20,8 +20,13 @@ import {
   safeLogText,
   sanitizeEvidence,
 } from "../tools/transport/task-086-log-safety.mjs";
-import { acquireEvidence } from "../tools/transport/task-086-source-actions.mjs";
 import {
+  buildWorkPackages,
+  recordWorkPackage,
+  acquireEvidence,
+} from "../tools/transport/task-086-source-actions.mjs";
+import {
+  deriveExecutionState,
   readStageVerification,
   assessStageStatus,
   STAGE_TECHNICAL_CHECKS,
@@ -554,5 +559,181 @@ test("TASK086 malformed or unbound rebuild receipts remain unverified", (t) => {
       assessStageStatus({ ...stageFixture(), verification: v }).status,
       "CORE_STAGE_UNVERIFIED",
     );
+  }
+});
+
+const continuousPolicy = {
+  revisionId: "full-v2",
+  continueAfterMilestones: true,
+  newSourceAcquisitionAuthorized: true,
+  scope: "ORIGINAL",
+};
+const unfinishedGate = {
+  status: "IN_PROGRESS_AUTO_REMEDIATION",
+  terminal: false,
+  ordinaryDiscoveryRemaining: true,
+  unresolvedTopologyCount: 1,
+  validatedExceptionCount: 0,
+};
+const verifiedStage = {
+  status: "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
+  cleanDeterministicRebuildForCurrentInputs: true,
+  fullScope: { uniqueOpenRoots: 1 },
+};
+const packageRoot = {
+  rootCauseId: "airport:a",
+  status: "OPEN",
+  classification: "C",
+  researchBatchKey: "operator:a",
+  requirementIds: ["original:a"],
+  sourceActionIds: [],
+  coreRequiredCount: 1,
+};
+test("TASK086 stage report retains next ordinary package beyond milestone and technical failures", () => {
+  const packages = buildWorkPackages([packageRoot]);
+  for (const status of [
+    "CORE_STAGE_PASS",
+    "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS",
+    "CORE_STAGE_FAILED",
+    "CORE_STAGE_UNVERIFIED",
+  ]) {
+    const result = deriveExecutionState({
+      policy: continuousPolicy,
+      stage: { ...verifiedStage, status },
+      gate: unfinishedGate,
+      packages,
+    });
+    assert.equal(result.executionStatus, "CONTINUE");
+    assert.equal(result.taskComplete, false);
+    assert.equal(result.newSourceAcquisitionAuthorized, true);
+    assert.equal(result.nextWorkPackage.packageId, "operator:a");
+    assert.equal(result.milestoneIsStopCondition, false);
+  }
+});
+test("TASK086 full completion cannot use stale rebuild, terminal exceptions or remaining roots", () => {
+  const gate = {
+    ...unfinishedGate,
+    status: "PASS / READY_FOR_REVIEW",
+    terminal: true,
+    ordinaryDiscoveryRemaining: false,
+    unresolvedTopologyCount: 0,
+  };
+  const stage = {
+    ...verifiedStage,
+    status: "CORE_STAGE_PASS",
+    fullScope: { uniqueOpenRoots: 0 },
+  };
+  const run = (s = stage, g = gate, packages = []) =>
+    deriveExecutionState({
+      policy: continuousPolicy,
+      stage: s,
+      gate: g,
+      packages,
+    });
+  assert.equal(run().taskComplete, true);
+  assert.equal(
+    run({ ...stage, cleanDeterministicRebuildForCurrentInputs: false })
+      .taskComplete,
+    false,
+  );
+  assert.equal(
+    run({ ...stage, status: "CORE_STAGE_UNVERIFIED" }).taskComplete,
+    false,
+  );
+  assert.equal(
+    run(stage, { ...gate, validatedExceptionCount: 1 }).taskComplete,
+    false,
+  );
+  assert.equal(run(verifiedStage).taskComplete, false);
+  assert.equal(
+    run(stage, gate, buildWorkPackages([packageRoot])).taskComplete,
+    false,
+  );
+  const external = run(stage, {
+    ...gate,
+    status: "BLOCKED_EXTERNAL_APPROVAL_REQUIRED",
+    validatedExceptionCount: 1,
+  });
+  assert.equal(external.executionStatus, "AWAITING_AUDITED_EXTERNAL_DECISION");
+  assert.equal(external.taskComplete, false);
+  assert.equal(
+    run(
+      stage,
+      {
+        ...gate,
+        status: "BLOCKED_EXTERNAL_APPROVAL_REQUIRED",
+        ordinaryDiscoveryRemaining: true,
+      },
+      buildWorkPackages([packageRoot]),
+    ).executionStatus,
+    "CONTINUE",
+  );
+});
+test("TASK086 root packages reuse operator cache, skip resolved and optional roots, retain recovery without pretending research", () => {
+  const roots = [
+    packageRoot,
+    {
+      ...packageRoot,
+      rootCauseId: "airport:b",
+      requirementIds: ["original:b"],
+    },
+    { ...packageRoot, rootCauseId: "closed", status: "RESOLVED" },
+    { ...packageRoot, rootCauseId: "optional", classification: "E" },
+  ];
+  const [p] = buildWorkPackages(roots);
+  assert.deepEqual(p.rootCauseIds, ["airport:a", "airport:b"]);
+  assert.equal(p.researchCompletedBySelection, false);
+  const saved = {
+    ...p,
+    status: "IN_PROGRESS",
+    nextAction: "CHECK_EXACT_PUBLIC_PASSAGE",
+    attempts: [{ result: "MISSING_PUBLIC_EVIDENCE" }],
+    resumeEvidence: ["hash-bound-cache"],
+  };
+  assert.equal(
+    buildWorkPackages(roots, { ledger: [saved] })[0].nextAction,
+    saved.nextAction,
+  );
+  const changed = buildWorkPackages(
+    [{ ...packageRoot, reason: "source changed" }],
+    { ledger: [saved] },
+  )[0];
+  assert.equal(changed.status, "READY");
+  assert.equal(changed.attempts.length, 1);
+  assert.deepEqual(changed.resumeEvidence, []);
+});
+test("TASK086 package checkpoint survives reload and redacts secrets without asserting completion", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "task086-package-"));
+  try {
+    const ledgerPath = path.join(tmp, "ledger.json");
+    fs.writeFileSync(
+      ledgerPath,
+      JSON.stringify({ schemaVersion: 1, packages: [] }),
+    );
+    const request = {
+      packageId: "operator:a",
+      inputFingerprint: hash("input"),
+      status: "IN_PROGRESS",
+      method: "cached parse",
+      result: "missing interchange",
+      nextAction: "review public guide",
+      retryCondition: "new method",
+      sources: [
+        { url: "https://example.test/data?X-Amz-Signature=secret-value" },
+      ],
+    };
+    recordWorkPackage(request, { ledgerPath });
+    assert.equal(
+      JSON.parse(fs.readFileSync(ledgerPath)).packages[0].attempts.length,
+      1,
+    );
+    assert.ok(!fs.readFileSync(ledgerPath, "utf8").includes("secret-value"));
+    assert.throws(
+      () =>
+        recordWorkPackage({ ...request, status: "COMPLETE" }, { ledgerPath }),
+      /PACKAGE_STATUS_NOT_COMPLETION_PROOF/,
+    );
+  } finally {
+    fs.rmSync(tmp, { recursive: true, force: true });
   }
 });

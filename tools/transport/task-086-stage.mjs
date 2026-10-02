@@ -18,6 +18,7 @@ import {
   jsonlBytes,
 } from "./task-086-batches.mjs";
 import { safeSourceUrl } from "./task-086-log-safety.mjs";
+import { buildWorkPackages } from "./task-086-source-actions.mjs";
 const root = path.resolve(
     path.dirname(fileURLToPath(import.meta.url)),
     "../..",
@@ -221,6 +222,60 @@ export function readStageVerification(file) {
   } catch {
     return { status: "INVALID", reason: "UNREADABLE_REBUILD_PROOF" };
   }
+}
+export function deriveExecutionState({ policy, stage, gate, packages }) {
+  if (
+    policy?.continueAfterMilestones !== true ||
+    policy?.newSourceAcquisitionAuthorized !== true
+  )
+    throw Error("LATEST_FULL_SCOPE_EXECUTION_POLICY_REQUIRED");
+  const verified =
+    ["CORE_STAGE_PASS", "VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS"].includes(
+      stage.status,
+    ) && stage.cleanDeterministicRebuildForCurrentInputs === true;
+  const complete =
+    verified &&
+    gate.status === "PASS / READY_FOR_REVIEW" &&
+    gate.terminal === true &&
+    gate.ordinaryDiscoveryRemaining === false &&
+    gate.unresolvedTopologyCount === 0 &&
+    gate.validatedExceptionCount === 0 &&
+    stage.fullScope.uniqueOpenRoots === 0 &&
+    packages.length === 0;
+  const externallyAwaiting =
+    verified &&
+    gate.terminal === true &&
+    !gate.ordinaryDiscoveryRemaining &&
+    [
+      "BLOCKED_EXTERNAL_APPROVAL_REQUIRED",
+      "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS",
+    ].includes(gate.status);
+  const nextPackage =
+    packages.find((p) => p.status === "IN_PROGRESS") || packages[0] || null;
+  return {
+    taskRevision: policy.revisionId,
+    taskComplete: complete,
+    executionStatus: complete
+      ? "COMPLETE"
+      : externallyAwaiting
+        ? "AWAITING_AUDITED_EXTERNAL_DECISION"
+        : "CONTINUE",
+    nextAction: complete
+      ? "DELIVER_FULL_ACCEPTANCE_REPORT"
+      : !verified
+        ? "REPAIR_OR_REFRESH_TECHNICAL_AND_REBUILD_VALIDATION_THEN_CONTINUE"
+        : externallyAwaiting
+          ? "CONSOLIDATE_SPECIFIC_EXTERNAL_DECISIONS_WITH_UNFINISHED_SCOPE"
+          : nextPackage
+            ? nextPackage.nextAction
+            : "RECONCILE_UNRESOLVED_GATE_AND_BUILD_MISSING_WORK_PACKAGE",
+    nextWorkPackage: complete || externallyAwaiting ? null : nextPackage,
+    ordinaryPackageCount: externallyAwaiting ? 0 : packages.length,
+    newSourceAcquisitionAuthorized: policy.newSourceAcquisitionAuthorized,
+    acquisitionBoundary: policy.scope,
+    milestoneIsStopCondition: false,
+    optionalExpansionScope: [],
+  };
 }
 export function buildStageReport() {
   const j = (n) => readJson(path.join(base, n)),
@@ -762,6 +817,29 @@ export function buildStageReport() {
       rule: "Lookup exact identities and directed existing relationships before research; same names do not establish transfers.",
     }),
   );
+  const policy = j(scope.executionPolicy);
+  const milestones = j("research/core-seven-progress.v1.json");
+  const ledgerPath = path.join(base, "research/work-package-ledger.v1.json");
+  const ledger = fs.existsSync(ledgerPath) ? readJson(ledgerPath).packages : [];
+  const priorityRootIds = policy.firstAirportNames
+    .map(
+      (name) =>
+        milestones.airports.find((a) => a.airport === name)?.rootCauseId,
+    )
+    .filter(Boolean);
+  const packages = buildWorkPackages(open, {
+    priorityRootIds,
+    acquisitionIndex,
+    ledger,
+  });
+  const execution = deriveExecutionState({
+    policy,
+    stage,
+    gate: j("final-acceptance-gate.json"),
+    packages,
+  });
+  stage.nationwideComplete = execution.taskComplete;
+  atomicWrite(path.join(base, "core-stage-acceptance.json"), jsonBytes(stage));
   atomicWrite(
     path.join(base, "execution-state.json"),
     jsonBytes({
@@ -782,9 +860,7 @@ export function buildStageReport() {
         "SIGNED_URL_REDACTION",
       ],
       unresolvedRootCount: open.length,
-      nextAction: "COMPLETE_STAGE_VALIDATION_AND_REPORT_THEN_STOP",
-      newSourceAcquisitionAuthorized: false,
-      optionalExpansionScope: [],
+      ...execution,
     }),
   );
   return stage;

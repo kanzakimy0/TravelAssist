@@ -1,5 +1,5 @@
-# TASK-086-B fixed seven-airport checkpoint
+# TASK-086-B full original scope — continuous execution
 
-**Core remains blocked by four airport chains; nationwide completion is not claimed.** Stage-status failure handling and CI revision attribution are repaired with negative tests. Kagoshima, Kitakyushu and Izumo chains are added and verified; Aomori, Akita, Matsuyama and Niigata remain explicit ordinary/identity-evidence gaps.
+Phase167 is a verified checkpoint with business blockers, not task completion. Latest full-scope authorization supersedes the former seven-airport stopping rule. Aomori, Akita and Matsuyama add three validated ground chains; Niigata and the full original residual backlog remain active. Execution stays CONTINUE after this report and checkpoint.
 
-See the [six-part report](../qa/TASK-086-B/stage-closeout-report.md), [unique-root backlog](../qa/TASK-086-B/residual-root-index.md), [validation](../qa/TASK-086-B/publication-validation.json), and fixed seven-airport scope. All prior160–162 work is preserved. WBS7.16 remains in progress, PR466 remains Draft. This bounded execution stops after delivery; no merge, production import, API/planner integration or deployment.
+See [current report](../qa/TASK-086-B/stage-closeout-report.md), [root backlog](../qa/TASK-086-B/residual-root-index.md), [validation](../qa/TASK-086-B/publication-validation.json), and research/task-revision.v2.json. Original1038 requirements are retained. WBS7.16 stays in progress and PR466 stays Draft. No production import, API/planner integration, merge or release.

@@ -1355,6 +1355,8 @@ export function runRemediation({
   const inputPaths = [
     "research/exception-proofs.v1.json",
     "research/stage-scope.json",
+    "research/task-revision.v2.json",
+    "research/next-stage-scope.v1.json",
     "research/global-review.v1.json",
     "sources/source-review.json",
     "sources/raw/mlit-s12-25.zip",

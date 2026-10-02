@@ -1,8 +1,8 @@
-# TASK-086-B QA — phase164 fixed seven-airport checkpoint
+# TASK-086-B QA — phase167 full-original continuous execution
 
-**Verified checkpoint with four core airport blockers; nationwide incomplete.** Phase163 closes Kagoshima and Kitakyushu; phase164 closes Izumo through Matsue and Okayama. All original requirements and earlier phase files remain intact. See [six-part report](stage-closeout-report.md), [root index](residual-root-index.md), [validation](publication-validation.json), [rebuild receipt](deterministic-rebuild.json), and [preservation](phase164-preservation.json).
+Latest full-original authorization supersedes the seven-airport stopping rule. Phase165–167 added Aomori, Akita and Matsuyama ground chains. Niigata and all remaining original roots stay active; a checkpoint/report never stops execution. See [current report](stage-closeout-report.md), [root index](residual-root-index.md), [validation](publication-validation.json), [rebuild receipt](deterministic-rebuild.json), and [preservation](phase167-preservation.json).
 
-Input scope: `TASK086-CORE-AIRPORTS7-PHASE164-v1`. Core stage `VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS` is allowed only after all nine technical checks and a fresh input/code/scope-bound rebuild receipt pass. Missing, stale, expired or malformed receipts yield UNVERIFIED; technical/rebuild failure yields FAILED. Ordinary airport research is never an exception proof. WBS7.16 and nationwide work remain in progress; PR466 remains Draft.
+Input scope: `TASK086-FULL-ORIGINAL-PHASE167-v2`. VERIFIED_CORE_CHECKPOINT_WITH_BLOCKERS requires all nine technical checks plus a fresh code/input/scope-bound rebuild receipt. Missing/stale/expired/malformed proofs remain UNVERIFIED; technical/rebuild failures remain FAILED. Full task completion additionally requires all original applicable acceptance, without unresolved work. WBS7.16 remains in progress; PR466 remains Draft.
 
 ## Reproduce
 
@@ -18,4 +18,4 @@ npm run deploy:build:local
 npm run deploy:verify-artifact
 ```
 
-PowerShell sets `$env:TASK086_PUBLISH_VALIDATION='1'` first. CI omits publication and verifies in isolated scratch directories. `--final` continues to reject ordinary incomplete national work. Local full regression 2928/2928 PASS. CI separately records branch HEAD and actual checkout: PR merge testing is identified as merge testing; a matching workflow-dispatch checkout can be reported as direct HEAD testing. Historical159/162 CI cannot validate this new revision.
+PowerShell sets `$env:TASK086_PUBLISH_VALIDATION='1'` first. CI omits publication and verifies in isolated scratch directories. `--final` continues to reject ordinary incomplete national work. Local full regression 2932/2932 PASS. CI separately records branch HEAD and actual checkout: PR merge testing is identified as merge testing; a matching workflow-dispatch checkout can be reported as direct HEAD testing. Historical159/162 CI cannot validate this new revision.

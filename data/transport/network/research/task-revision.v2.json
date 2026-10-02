@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "revisionId": "TASK086-FULL-ORIGINAL-CONTINUOUS-v2",
+  "asOf": "2026-10-02",
+  "supersedes": "Bounded seven-airport/core checkpoint stop authorization",
+  "scope": "ALL_ORIGINAL_TASK086_REQUIREMENTS_AND_NECESSARY_DEPENDENCIES",
+  "continueAfterMilestones": true,
+  "newSourceAcquisitionAuthorized": true,
+  "ordinaryWorkRequiresNewPermission": false,
+  "completion": "ALL_APPLICABLE_ORIGINAL_ACCEPTANCE_PASSES_WITHOUT_UNRESOLVED_DATA_OR_UNVERIFIED_GATES",
+  "exceptionPolicy": "Audit exceptions under original specification; never describe exceptions or external approval as completed data. Continue all independent ordinary work first.",
+  "firstAirportNames": ["青森", "秋田", "松山", "新潟"],
+  "then": [
+    "Remaining original airport roots",
+    "Bus direction and public-transfer roots grouped by researchBatchKey",
+    "Original special-transport applicability"
+  ],
+  "excluded": [
+    "Optional coverage expansion",
+    "Paid access",
+    "Extra permissions",
+    "Access restriction bypass",
+    "Unlicensed data use",
+    "Production import",
+    "Routing API",
+    "Planner integration",
+    "Merge",
+    "Release"
+  ],
+  "maxDirectedEdgesPerBatch": 200,
+  "sharedWriters": "SERIAL_OR_ISOLATED",
+  "research": "Reuse root/acquisition/connection indexes; select complete chain, preflight cache and dependencies, acquire lawful evidence, extract and bind, minimally change, validate, repair, save, continue. Selecting next or replaying run is not research.",
+  "cache": "One retrieval per source/version/rights scope. Record methods, result, failure and retry conditions; do not retry identical failed inputs. Change evidence-based method on repeated no improvement; never infer exhaustion from attempt count.",
+  "validation": "Preserve identity, rights, directions, ordered calls, boarding/alighting, public transfers, hashes and thresholds; affected tests per package, broaden shared algorithm tests; final full regression, deterministic rebuild, resume and corruption tests, lint/types/build and CI. Reuse only identical code/input/config/dependency/environment fingerprints.",
+  "ci": "Record branch HEAD and actual checkout SHA separately; PR merge tests are not direct HEAD tests.",
+  "secrets": "Redact signed URL secrets in all evidence/logs; do not rewrite history, close alerts or rotate credentials.",
+  "metrics": "Actual elapsed time/search/HTTP/cache hits/unique roots closed; token/cache billing/cost only when available. No invented savings.",
+  "communication": "Ordinary rounds in ledger; report milestones/real authorization/final result without stopping. On hard platform interruption save package/version/evidence/exact next action, never completed or automatic session restart.",
+  "git": "Continue existing branch and Draft PR466; commit/push use existing authorization."
+}
