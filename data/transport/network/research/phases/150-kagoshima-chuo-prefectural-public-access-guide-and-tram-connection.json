@@ -1,0 +1,70 @@
+{
+  "phaseId": "150-kagoshima-chuo-prefectural-public-access-guide-and-tram-connection",
+  "strategy": [
+    "CURRENT_EXPLICIT_PUBLIC_JR_EXIT_TO_TRAM_BRANCH",
+    "INDEPENDENT_PREFECTURAL_FACILITY_IDENTITY",
+    "PRESERVE_DISTINCT_OPERATOR_COMPONENTS"
+  ],
+  "completedActionIds": [
+    "hub:kagoshima-prefectural-accessibility-center:jr-east-exit-tram-branch",
+    "hub:kagoshima-prefecture:chuo-tram-identity-and-accessibility-source-authority"
+  ],
+  "facts": [
+    {
+      "factId": "kagoshima-chuo-current-public-east-exit-tram-boarding-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:kagoshima-prefectural-accessibility-center:jr-east-exit-tram-branch",
+      "sourceUrl": "https://www.shichocenter.kagoshima.kagoshima.jp/shikaku_sub/access.html",
+      "observedResponseSha256": "57e8dcb717c0ae00e9986cba0d80d9b5c79dfa67cab255692a1b9d6ed8ffe0f3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kagoshima-prefectural-accessibility-center:jr-east-exit-tram-branch",
+          "url": "https://shichocenter.kagoshima.kagoshima.jp/wordpress/access",
+          "observedResponseSha256": "7f527b7fb5031a12470d2766383b187c7b84901a85a172ad7774c3ee30b5651f"
+        },
+        {
+          "sourceActionId": "hub:kagoshima-prefectural-accessibility-center:jr-east-exit-tram-branch",
+          "url": "https://shichocenter.kagoshima.kagoshima.jp/wordpress/about",
+          "observedResponseSha256": "1726fec30136537e85507fdedb5457c87326d862edd0d113118bb2ec419aa4bb"
+        },
+        {
+          "sourceActionId": "hub:kagoshima-prefecture:chuo-tram-identity-and-accessibility-source-authority",
+          "url": "https://www.pref.kagoshima.jp/suisuinavi/23117.html",
+          "observedResponseSha256": "059aa236c72f8221b72329115e247e600e4b56838ac90bf4e5a4aff39ac36404"
+        },
+        {
+          "sourceActionId": "hub:kagoshima-prefecture:chuo-tram-identity-and-accessibility-source-authority",
+          "url": "https://www.pref.kagoshima.jp/ab06/kensei/gyokaku/shiteikanri/jokyo/h31shitei.html",
+          "observedResponseSha256": "0dc79a6d73bd1faad95927feb261063ae2166cb66b8598684f9850d530de70b0"
+        }
+      ],
+      "locator": "Currently linked prefectural accessibility-center audio-access page explicitly identifies JR gate, east/Sakurajima exit, public concourse and tram-boarding branch. Prefectural facility page independently confirms exact tram stop and municipal operator. Retain only the bidirectional ordinary passenger connection between these separate licensed components; no quoted step-by-step directions, generic nearby-station merge, underground-path inference, bus pattern, clock/fare/duration or universal accessible-route guarantee. Source dates remain explicit in rights review.",
+      "components": [
+        {
+          "name": "鹿児島中央",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鹿児島中央駅前",
+          "operator": "鹿児島市",
+          "line": "第二期線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PUBLIC_ACCESS_GUIDE_EXPLICIT_JR_GATE_TO_TRAM_BRANCH_AND_PREFECTURAL_COMPONENT_IDENTITY",
+      "hubScopeComplete": false
+    }
+  ]
+}

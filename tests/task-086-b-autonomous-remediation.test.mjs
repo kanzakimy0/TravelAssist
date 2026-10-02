@@ -1363,6 +1363,157 @@ test("TASK086 dated operator mergers preserve exact archival identity and reject
   );
 });
 
+test("TASK086 legal-form correction requires independent primary evidence and preserves raw identity", () => {
+  const correction = {
+    transitionId: "reviewed-legal-form",
+    fromOperator: "一般社団法人札幌市交通事業振興公社",
+    fromLine: "山鼻線",
+    toOperator: "一般財団法人札幌市交通事業振興公社",
+    toLine: "山鼻線",
+    effectiveDate: "2012-04-01",
+    effectiveDateScope: "CURRENT_LEGAL_FORM_EFFECTIVE_DATE_NOT_OPERATOR_MERGER",
+    method: "OFFICIAL_ARCHIVE_OPERATOR_LEGAL_FORM_CORRECTION",
+    scope: "S12_LEGAL_FORM_PREFIX_ONLY_SAME_PHYSICAL_STATION",
+    corporateNumber: "1430005010801",
+    evidence: {
+      sourceActionId: "operator-identity",
+      url: "https://operator.invalid/about",
+      observedResponseSha256: hash("operator identity"),
+    },
+    authorityEvidence: {
+      sourceActionId: "municipal-identity",
+      url: "https://municipality.invalid/tram-operator",
+      observedResponseSha256: hash("municipal identity"),
+    },
+  };
+  const selector = {
+    name: "すすきの",
+    operator: correction.toOperator,
+    line: "山鼻線",
+    mode: "tram",
+    operatorTransitionReview: {
+      transitionId: correction.transitionId,
+      stationCode: "000251",
+    },
+  };
+  const fact = {
+    components: [selector],
+    operatorTransitions: [correction],
+    corroboratingEvidence: [correction.evidence, correction.authorityEvidence],
+  };
+  const raw = {
+    stationName: "すすきの",
+    stationCode: "000251",
+    operator: correction.fromOperator,
+    line: "山鼻線",
+    latitude: 43.05556,
+    longitude: 141.35273,
+  };
+  const put = (record) => ({
+    sourceId: minimal.sourceId,
+    sourceSha256: minimal.contentSha256,
+    record,
+    recordSha256: hash(record),
+    locator: "independently reviewed identity",
+  });
+  const sources = new Map([[minimal.sourceId, minimal]]);
+  const evidence = new Map([
+    ["raw", put(raw)],
+    ["fact", put(fact)],
+  ]);
+  const node = {
+    identityAnchor: "review:original-susukino-requirement",
+    canonicalNameJa: "すすきの",
+    nodeKind: "other_tourism_transport",
+    mode: "tram",
+    operatorRefs: [correction.toOperator],
+    lineRefs: ["山鼻線"],
+    latitude: raw.latitude,
+    longitude: raw.longitude,
+    identityRecord: raw,
+    origin: "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE",
+    evidenceRefs: ["raw", "fact"],
+    hubSemantics: "PHYSICAL_OPERATOR_COMPONENT_NO_IMPLICIT_TRANSFER",
+    independentReview: {
+      decision: "ADMIT_TASK_086_TOPOLOGY",
+      recordSha256: hash(raw),
+    },
+    identityTransition: reviewedRailTransition(
+      selector,
+      fact,
+      minimal.observedAt,
+    ),
+  };
+  const admitted = admitNodes([node], sources, evidence)[0];
+  assert.equal(admitted.decision, "ADMIT_TASK_086_TOPOLOGY");
+  assert.equal(admitted.nodeId, id("node", node.identityAnchor));
+  assert.deepEqual(admitted.identityRecord, raw);
+  assert.deepEqual(admitted.operatorRefs, [correction.toOperator]);
+  for (const change of [
+    { authorityEvidence: undefined },
+    {
+      authorityEvidence: {
+        ...correction.authorityEvidence,
+        observedResponseSha256: hash("unbound"),
+      },
+    },
+    {
+      authorityEvidence: {
+        ...correction.authorityEvidence,
+        url: "https://operator.invalid/other",
+      },
+    },
+    {
+      authorityEvidence: {
+        ...correction.authorityEvidence,
+        sourceActionId: correction.evidence.sourceActionId,
+      },
+    },
+    { fromOperator: "一般社団法人別の法人" },
+    { fromLine: "別の線" },
+    { effectiveDateScope: "OPERATOR_MERGER" },
+    { effectiveDate: "2028-01-01" },
+    { corporateNumber: "123" },
+    { scope: "SAME_NAME" },
+  ]) {
+    const changed = { ...correction, ...change };
+    const changedFact = { ...fact, operatorTransitions: [changed] };
+    // Bind same-host and same-action variants too: independence itself must fail.
+    if (
+      change.authorityEvidence?.url === "https://operator.invalid/other" ||
+      change.authorityEvidence?.sourceActionId ===
+        correction.evidence.sourceActionId
+    )
+      changedFact.corroboratingEvidence = [
+        changed.evidence,
+        changed.authorityEvidence,
+      ];
+    assert.throws(
+      () => reviewedRailTransition(selector, changedFact, minimal.observedAt),
+      /RAIL_TRANSITION_/,
+    );
+  }
+  for (const changed of [
+    { ...node, identityTransition: undefined },
+    {
+      ...node,
+      identityTransition: { ...node.identityTransition, stationCode: "000252" },
+    },
+    { ...node, identityRecord: { ...raw, operator: correction.toOperator } },
+    { ...node, evidenceRefs: ["raw"] },
+  ])
+    assert.notEqual(
+      admitNodes([changed], sources, evidence)[0].decision,
+      "ADMIT_TASK_086_TOPOLOGY",
+    );
+  const unbound = new Map(evidence);
+  unbound.set("fact", { ...put(fact), recordSha256: hash("different fact") });
+  assert.notEqual(
+    admitNodes([node], sources, unbound)[0].decision,
+    "ADMIT_TASK_086_TOPOLOGY",
+  );
+});
+
 test("TASK086 existing GTFS interchange keeps exact stop identity and rejects same-name platform rebinding", () => {
   const source = {
     ...minimal,

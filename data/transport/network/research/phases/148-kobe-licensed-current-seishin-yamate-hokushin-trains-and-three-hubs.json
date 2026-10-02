@@ -1,0 +1,452 @@
+{
+  "phaseId": "148-kobe-licensed-current-seishin-yamate-hokushin-trains-and-three-hubs",
+  "strategy": [
+    "LICENSED_CITY_CATALOG_ACTUAL_DIRECTIONAL_TRAINS",
+    "CURRENT_OPERATOR_REVISION_CROSSCHECK",
+    "EXPLICIT_OPERATOR_PLATFORM_AND_CONCOURSE_CONNECTIONS",
+    "EXCLUDE_OUTDATED_KAIGAN_CATALOG_SERVICE"
+  ],
+  "completedActionIds": [
+    "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+    "rail:kobe-city:current-open-data-version-reference",
+    "hub:shintetsu:current-tanigami-and-minatogawa-subway-passages",
+    "hub:sanyo:current-itayado-municipal-underground-connection"
+  ],
+  "facts": [
+    {
+      "factId": "kobe-current-seishin-yamate-hokushin-eastbound-actual-full-line-csv-train",
+      "kind": "service",
+      "sourceActionId": "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+      "sourceUrl": "https://catalog.city.kobe.lg.jp/dataset/f2d416e9-7dae-4938-b62e-7c717002d715/resource/5b9ddc3a-0089-4817-bfb1-84dfd5086ff6/download/open_seishin_w_east_r070315.csv",
+      "observedResponseSha256": "d1731678eca5d0f4eee5c790c2aa0e84217c54a00d74981077608974bf2c8e79",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+          "url": "https://catalog.city.kobe.lg.jp/dataset/3541-5-2-2-2-f6a28b58cd4c8777-6741f3e3e026f2c8",
+          "observedResponseSha256": "35260c45e549706e54937f1af2dab79a20d5659c124f747d8423cf7bf9bff89c"
+        },
+        {
+          "sourceActionId": "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+          "url": "https://catalog.city.kobe.lg.jp/api/3/action/package_show?id=f2d416e9-7dae-4938-b62e-7c717002d715",
+          "observedResponseSha256": "22cf57ce236ec8aea32c01d644af9904cfa531ff7ad45304258b3ac7d0807e99"
+        },
+        {
+          "sourceActionId": "rail:kobe-city:current-open-data-version-reference",
+          "url": "https://kotsu.city.kobe.lg.jp/company/overview/open-data/subway-opendata/",
+          "observedResponseSha256": "19fc02df3cfb3c54fcbc9b450b0ff03e7148cd93e5257440dce7422723468d89"
+        }
+      ],
+      "locator": "Independently reviewed actual weekday eastbound CSV data column 2 (excluding first station-name column), all 17 station rows explicitly nonempty; origin/destination match selected full-line train. Short-working earlier columns are excluded. Directional columns independently inspected, no reversed-service inference. Official operator index confirms March 15 2025 revision remains published. Exact licensed line components preserve Seishin/Yamate/Hokushin physical identity. Attribution City of Kobe / 神戸市交通局; CC BY 2.1 JP https://creativecommons.org/licenses/by/2.1/jp/; processed into static calls only, without clocks/fares/frequency or endorsement.",
+      "line": "西神・山手線・北神線",
+      "operator": "神戸市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "eastbound",
+      "callingStations": [
+        "西神中央",
+        "西神南",
+        "伊川谷",
+        "学園都市",
+        "総合運動公園",
+        "名谷",
+        "妙法寺",
+        "板宿",
+        "新長田",
+        "長田",
+        "上沢",
+        "湊川公園",
+        "大倉山",
+        "県庁前",
+        "三宮",
+        "新神戸",
+        "谷上"
+      ],
+      "callingComponents": [
+        {
+          "name": "西神中央",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "西神南",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "伊川谷",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "学園都市",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "総合運動公園",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "名谷",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "妙法寺",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "板宿",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "新長田",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "長田",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "上沢",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "湊川公園",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "大倉山",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "県庁前",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "三宮",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "新神戸",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "谷上",
+          "operator": "神戸市",
+          "line": "北神線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "LICENSED_DIRECTIONAL_ACTUAL_CSV_COLUMN_AND_CURRENT_OPERATOR_REVISION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_2025_REVISION_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "kobe-current-seishin-yamate-hokushin-westbound-actual-full-line-csv-train",
+      "kind": "service",
+      "sourceActionId": "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+      "sourceUrl": "https://catalog.city.kobe.lg.jp/dataset/f2d416e9-7dae-4938-b62e-7c717002d715/resource/cae1c6b6-f784-4cd4-bdf9-8b0b91ef404f/download/open_seishin_w_west_r070315.csv",
+      "observedResponseSha256": "2055295d7001fa251b4a92f4547fd6ae3e8100b43519f4896c0509f7d3293574",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+          "url": "https://catalog.city.kobe.lg.jp/dataset/3541-5-2-2-2-f6a28b58cd4c8777-6741f3e3e026f2c8",
+          "observedResponseSha256": "35260c45e549706e54937f1af2dab79a20d5659c124f747d8423cf7bf9bff89c"
+        },
+        {
+          "sourceActionId": "rail:kobe-city:licensed-current-seishin-yamate-hokushin-directional-csv",
+          "url": "https://catalog.city.kobe.lg.jp/api/3/action/package_show?id=f2d416e9-7dae-4938-b62e-7c717002d715",
+          "observedResponseSha256": "22cf57ce236ec8aea32c01d644af9904cfa531ff7ad45304258b3ac7d0807e99"
+        },
+        {
+          "sourceActionId": "rail:kobe-city:current-open-data-version-reference",
+          "url": "https://kotsu.city.kobe.lg.jp/company/overview/open-data/subway-opendata/",
+          "observedResponseSha256": "19fc02df3cfb3c54fcbc9b450b0ff03e7148cd93e5257440dce7422723468d89"
+        }
+      ],
+      "locator": "Independently reviewed actual weekday westbound CSV data column 3 (excluding first station-name column), all 17 station rows explicitly nonempty; origin/destination match selected full-line train. Short-working earlier columns are excluded. Directional columns independently inspected, no reversed-service inference. Official operator index confirms March 15 2025 revision remains published. Exact licensed line components preserve Seishin/Yamate/Hokushin physical identity. Attribution City of Kobe / 神戸市交通局; CC BY 2.1 JP https://creativecommons.org/licenses/by/2.1/jp/; processed into static calls only, without clocks/fares/frequency or endorsement.",
+      "line": "西神・山手線・北神線",
+      "operator": "神戸市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "westbound",
+      "callingStations": [
+        "谷上",
+        "新神戸",
+        "三宮",
+        "県庁前",
+        "大倉山",
+        "湊川公園",
+        "上沢",
+        "長田",
+        "新長田",
+        "板宿",
+        "妙法寺",
+        "名谷",
+        "総合運動公園",
+        "学園都市",
+        "伊川谷",
+        "西神南",
+        "西神中央"
+      ],
+      "callingComponents": [
+        {
+          "name": "谷上",
+          "operator": "神戸市",
+          "line": "北神線",
+          "mode": "metro"
+        },
+        {
+          "name": "新神戸",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "三宮",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "県庁前",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "大倉山",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "湊川公園",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "上沢",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "長田",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "新長田",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "板宿",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "妙法寺",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "名谷",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "総合運動公園",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "学園都市",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "伊川谷",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "西神南",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        },
+        {
+          "name": "西神中央",
+          "operator": "神戸市",
+          "line": "西神延伸線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "LICENSED_DIRECTIONAL_ACTUAL_CSV_COLUMN_AND_CURRENT_OPERATOR_REVISION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_2025_REVISION_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "tanigami-shintetsu-subway-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:shintetsu:current-tanigami-and-minatogawa-subway-passages",
+      "sourceUrl": "https://www.shintetsu.co.jp/cms/wp-content/uploads/station-docs/maps/tanigami-map.pdf",
+      "observedResponseSha256": "8b3e1be5591bd532b0646080eca1c2e63fec415cf691743056d52744a5a2e732",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:shintetsu:current-tanigami-and-minatogawa-subway-passages",
+          "url": "https://www.shintetsu.co.jp/railway/station/tanigami/",
+          "observedResponseSha256": "f6e7b09f6243441814cc80a38d02cc10d79b88c823146f6329ec340d16fd99d8"
+        }
+      ],
+      "locator": "Current-linked official diagram individually viewed and source hash matched. Current plan explicitly shows Shintetsu and municipal subway faces of shared island platform and common paid concourse linking platform groups. Preserve separate operator/line components; no fare, walking-time, all-hours, guaranteed same-platform or universal accessibility assertion.",
+      "components": [
+        {
+          "name": "谷上",
+          "operator": "神戸市",
+          "line": "北神線",
+          "mode": "metro"
+        },
+        {
+          "name": "谷上",
+          "operator": "神戸電鉄",
+          "line": "有馬線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OFFICIAL_INTEROPERATOR_PASSENGER_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "minatogawa-shintetsu-subway-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:shintetsu:current-tanigami-and-minatogawa-subway-passages",
+      "sourceUrl": "https://www.shintetsu.co.jp/cms/wp-content/uploads/station-docs/maps/minatogawa-map.pdf",
+      "observedResponseSha256": "6cc145e793d82316fb62533b680395ef38371f8727fb24420183ced80593faba",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:shintetsu:current-tanigami-and-minatogawa-subway-passages",
+          "url": "https://www.shintetsu.co.jp/railway/station/minatogawa/",
+          "observedResponseSha256": "b91e0e3da4f2e96bcf75bfe9306e044e368ec821c73402817e2237b09468cefd"
+        }
+      ],
+      "locator": "Current-linked official diagram individually viewed and source hash matched. Current plan shows both Shintetsu directions through gate to public B1 concourse and explicit municipal Minatogawa-koen east/west gate connections. Preserve separate operator/line components; no fare, walking-time, all-hours, guaranteed same-platform or universal accessibility assertion.",
+      "components": [
+        {
+          "name": "湊川公園",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "湊川",
+          "operator": "神戸電鉄",
+          "line": "有馬線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OFFICIAL_INTEROPERATOR_PASSENGER_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "itayado-sanyo-subway-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:sanyo:current-itayado-municipal-underground-connection",
+      "sourceUrl": "https://www.sanyo-railway.co.jp/assets/img/railway/station/map_img/itayado.png",
+      "observedResponseSha256": "9725b43a6e95d7378023016f9003cca4b14ced50f3a0d18b2a49774007828436",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:sanyo:current-itayado-municipal-underground-connection",
+          "url": "https://www.sanyo-railway.co.jp/railway/station/itayado.html",
+          "observedResponseSha256": "d33cd9e7af9b72b98c34a23d046603cebb1b74acd251bf67cf17b98a8888e68d"
+        }
+      ],
+      "locator": "Current-linked official diagram individually viewed and source hash matched. Current plan routes both Sanyo platform directions through gate to ordinary concourse and explicitly signed municipal subway passage. Preserve separate operator/line components; no fare, walking-time, all-hours, guaranteed same-platform or universal accessibility assertion.",
+      "components": [
+        {
+          "name": "板宿",
+          "operator": "神戸市",
+          "line": "西神線",
+          "mode": "metro"
+        },
+        {
+          "name": "板宿",
+          "operator": "山陽電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OFFICIAL_INTEROPERATOR_PASSENGER_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

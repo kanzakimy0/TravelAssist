@@ -637,9 +637,13 @@ export function runRemediation({
       independentReview: {
         decision: "ADMIT_TASK_086_TOPOLOGY",
         recordSha256: hash(record),
-        method: transition
-          ? "EXACT_ARCHIVAL_STATION_CODE_AND_EVIDENCED_CURRENT_OPERATOR_TRANSITION"
-          : "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
+        method:
+          transition?.method ===
+          "OFFICIAL_ARCHIVE_OPERATOR_LEGAL_FORM_CORRECTION"
+            ? "EXACT_ARCHIVAL_STATION_CODE_AND_DUAL_PRIMARY_LEGAL_FORM_CORRECTION"
+            : transition
+              ? "EXACT_ARCHIVAL_STATION_CODE_AND_EVIDENCED_CURRENT_OPERATOR_TRANSITION"
+              : "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
         sourceArchiveSha256: identitySource.contentSha256,
       },
       hubSemantics: "PHYSICAL_OPERATOR_COMPONENT_NO_IMPLICIT_TRANSFER",

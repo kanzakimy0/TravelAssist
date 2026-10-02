@@ -1,0 +1,130 @@
+{
+  "phaseId": "151-wadamisaki-current-jr-branch-trains-and-explicit-subway-entrances",
+  "strategy": [
+    "INDEPENDENT_ACTUAL_DIRECTIONAL_BRANCH_TRAINS",
+    "CURRENT_LINKED_EXPLICIT_PUBLIC_SUBWAY_CONNECTION",
+    "CURRENT_MUNICIPAL_COMPONENT_CORROBORATION"
+  ],
+  "completedActionIds": [
+    "rail:jr-west:wadamisaki-current-directional-trains-and-subway-entrances",
+    "hub:kobe-city:wadamisaki-current-kaigan-component-and-public-concourse"
+  ],
+  "facts": [
+    {
+      "factId": "wadamisaki-521M-current-actual-two-call-train",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:wadamisaki-current-directional-trains-and-subway-entrances",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/133731?date=20261001",
+      "observedResponseSha256": "5bad0b61ce27816f2548d5c5255909ea2959e1cb304dcba237165ac3885ee86f",
+      "locator": "Independently read complete actual 521M sequence with both calls and explicit no-weekend/holiday restriction; October 1 2026 Thursday falls inside published operation. Retain only this static train relationship and exact identity. No direction reversal, invented intermediate call, clocks, fare, frequency or every-day claim.",
+      "line": "山陽線・和田岬支線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "521M",
+      "direction": "wadamisaki-bound",
+      "callingStations": [
+        "兵庫",
+        "和田岬"
+      ],
+      "callingComponents": [
+        {
+          "name": "兵庫",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和田岬",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TWO_CALL_BRANCH_TRAIN",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_2026_10_01_WEEKDAY_SERVICE_NOT_DAILY_OR_REALTIME"
+    },
+    {
+      "factId": "wadamisaki-524M-current-actual-two-call-train",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:wadamisaki-current-directional-trains-and-subway-entrances",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/133911?date=20261001",
+      "observedResponseSha256": "d4b2252588c8c4a79637ba499c1060cae092f127f9be078e7f1935cdba851a33",
+      "locator": "Independently read complete actual 524M sequence with both calls and explicit no-weekend/holiday restriction; October 1 2026 Thursday falls inside published operation. Retain only this static train relationship and exact identity. No direction reversal, invented intermediate call, clocks, fare, frequency or every-day claim.",
+      "line": "山陽線・和田岬支線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "524M",
+      "direction": "hyogo-bound",
+      "callingStations": [
+        "和田岬",
+        "兵庫"
+      ],
+      "callingComponents": [
+        {
+          "name": "和田岬",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "兵庫",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TWO_CALL_BRANCH_TRAIN",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_2026_10_01_WEEKDAY_SERVICE_NOT_DAILY_OR_REALTIME"
+    },
+    {
+      "factId": "wadamisaki-current-linked-jr-platform-to-explicit-kaigan-entrances",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-west:wadamisaki-current-directional-trains-and-subway-entrances",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0610642_ea1db3e1-96ef-4594-b337-370f4c31b9c5.pdf",
+      "observedResponseSha256": "7598f1446efa5a95d713c6e55f78e6610ff36945d60d8f814604ce7fc289b929",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:wadamisaki-current-directional-trains-and-subway-entrances",
+          "url": "https://eki.jr-odekake.net/premises?id=0610642",
+          "observedResponseSha256": "41f73abf71bea041186173335275f072236e4001b639bd1b4b1e2995a072e35f"
+        },
+        {
+          "sourceActionId": "hub:kobe-city:wadamisaki-current-kaigan-component-and-public-concourse",
+          "url": "https://kotsu.city.kobe.lg.jp/subway/timetable1/wadamisaki/",
+          "observedResponseSha256": "06f3f4c41cd6947a9c7363c9c92a6264ad137acb26d497e4a2ad360d5cc62aa2"
+        }
+      ],
+      "locator": "Individually viewed JR plan dated September 24 2012, still linked from current station page, explicitly routes JR passenger platform along public ground approach to Kaigan subway Wadamisaki stairs/lift. Current municipal K06 page independently confirms same active component and single B1 gate linked to both B2 platform directions. Retain coarse bidirectional passenger connection, preserving source dates and separate components; no proximity-only merge, exact-coordinate, walking-time, fare, same-paid-area or universal accessible-route claim.",
+      "components": [
+        {
+          "name": "和田岬",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和田岬",
+          "operator": "神戸市",
+          "line": "海岸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_JR_TO_SUBWAY_ENTRANCES_AND_CURRENT_MUNICIPAL_COMPONENT",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -196,7 +196,8 @@ export function verifyEvidence(refs, sources, evidence) {
   );
 }
 // A current operator/line may differ from archival S12 only through a reviewed,
-// dated merger fact. Station codes stay exact; this is not a fuzzy name alias.
+// dated merger or dual-primary legal-form correction. Station codes stay exact;
+// neither path permits a fuzzy name alias or rewriting the archival record.
 export function reviewedRailTransition(selector, fact, observedAt) {
   const review = selector.operatorTransitionReview;
   if (!review) return null;
@@ -206,7 +207,10 @@ export function reviewedRailTransition(selector, fact, observedAt) {
   invariant(matches.length === 1, "RAIL_TRANSITION_NOT_UNIQUE");
   const transition = matches[0];
   invariant(
-    transition.method === "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS" &&
+    [
+      "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS",
+      "OFFICIAL_ARCHIVE_OPERATOR_LEGAL_FORM_CORRECTION",
+    ].includes(transition.method) &&
       transition.fromOperator &&
       transition.fromLine &&
       transition.toOperator === selector.operator &&
@@ -227,6 +231,31 @@ export function reviewedRailTransition(selector, fact, observedAt) {
       ),
     "RAIL_TRANSITION_REVIEW_REQUIRED",
   );
+  if (transition.method === "OFFICIAL_ARCHIVE_OPERATOR_LEGAL_FORM_CORRECTION") {
+    const authority = transition.authorityEvidence;
+    const operatorUrl = URL.parse(transition.evidence.url);
+    const authorityUrl = URL.parse(authority?.url ?? "");
+    invariant(
+      transition.scope === "S12_LEGAL_FORM_PREFIX_ONLY_SAME_PHYSICAL_STATION" &&
+        transition.effectiveDateScope ===
+          "CURRENT_LEGAL_FORM_EFFECTIVE_DATE_NOT_OPERATOR_MERGER" &&
+        /^一般社団法人.+$/.test(transition.fromOperator) &&
+        transition.toOperator ===
+          transition.fromOperator.replace(/^一般社団法人/, "一般財団法人") &&
+        transition.fromLine === transition.toLine &&
+        /^\d{13}$/.test(transition.corporateNumber ?? "") &&
+        authority?.sourceActionId &&
+        authority.sourceActionId !== transition.evidence.sourceActionId &&
+        /^[a-f0-9]{64}$/.test(authority.observedResponseSha256 ?? "") &&
+        operatorUrl?.protocol === "https:" &&
+        authorityUrl?.protocol === "https:" &&
+        operatorUrl.hostname !== authorityUrl.hostname &&
+        (fact.corroboratingEvidence ?? []).some(
+          (r) => canonical(r) === canonical(authority),
+        ),
+      "RAIL_TRANSITION_LEGAL_FORM_DUAL_PRIMARY_REVIEW_REQUIRED",
+    );
+  }
   return { ...transition, stationCode: review.stationCode };
 }
 function railTransitionBound(node, sources, evidence) {

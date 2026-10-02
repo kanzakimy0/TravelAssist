@@ -2,17 +2,17 @@
 
 Status: **IN_PROGRESS_AUTO_REMEDIATION**. This is an ongoing-work checkpoint under [the no-early-exit amendment](../../tasks/AMENDMENT-TASK-086-b-autonomous-source-acquisition-no-early-exit-v2.md), not a terminal Result or acceptance request. Ordinary discovery remains and the global fixpoint is not proven. Work continues on the same branch and [Draft PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466).
 
-| Measure                  | Preserved checkpoint 1236238c8 | Current phase 142 |
+| Measure                  | Preserved checkpoint 1236238c8 | Current phase 151 |
 | ------------------------ | -----------------------------: | ----------------: |
-| Required inventory       |                           1038 |              3175 |
-| ADMIT / HOLD             |                      327 / 711 |         3144 / 31 |
-| Lines / service patterns |                         9 / 63 |         241 / 534 |
-| Directed edges           |                           1339 |              7655 |
-| Batches                  |                             88 |               891 |
-| Adaptive iterations      |                             10 |               142 |
+| Required inventory       |                           1038 |              3247 |
+| ADMIT / HOLD             |                      327 / 711 |         3216 / 31 |
+| Lines / service patterns |                         9 / 63 |         248 / 548 |
+| Directed edges           |                           1339 |              7803 |
+| Batches                  |                             88 |               928 |
+| Adaptive iterations      |                             10 |               151 |
 | Connected T0             |                         0 / 89 |           89 / 89 |
 | Connected T1             |                        0 / 462 |         462 / 462 |
-| Connected required nodes |                       0 / 1038 |       2897 / 3175 |
+| Connected required nodes |                       0 / 1038 |       2969 / 3247 |
 | Mandatory corridors      |                          0 / 9 |             9 / 9 |
 
 Independent component review has converted **680 original HOLD records to ADMIT**. Additional actual service intermediates expand the denominator; no original requirement was dropped or downgraded.
@@ -38,19 +38,19 @@ Queries require independently evidenced forward and reverse paths. Previously ab
 | Mode              | Directed edges |
 | ----------------- | -------------: |
 | airport_bus       |            305 |
-| conventional_rail |           1585 |
+| conventional_rail |           1611 |
 | ferry             |             11 |
-| fixed_guideway    |            122 |
+| fixed_guideway    |            164 |
 | flight            |             72 |
 | highway_bus       |           1059 |
 | local_bus         |            296 |
-| metro             |           1112 |
+| metro             |           1146 |
 | private_rail      |           1907 |
 | shinkansen        |            289 |
 | tram              |             76 |
-| transfer          |            821 |
+| transfer          |            867 |
 
-Original hub scopes: 199 complete, 19 pending or partial. A hub is complete only when every expected component is independently admitted and mutually reachable using reviewed transfer edges inside that hub. New boundary/interchange nodes outside the original 218 scopes are separately evidenced; no same-name or S12 group-code transfer is synthesized.
+Original hub scopes: 218 complete, 0 pending or partial. A hub is complete only when every expected component is independently admitted and mutually reachable using reviewed transfer edges inside that hub. New boundary/interchange nodes outside the original 218 scopes are separately evidenced; no same-name or S12 group-code transfer is synthesized.
 
 ## Remaining hard deficits
 
@@ -61,7 +61,7 @@ Original hub scopes: 199 complete, 19 pending or partial. A hub is complete only
 | DISCONNECTED_T0           |     0 |
 | DISCONNECTED_T1           |     0 |
 | HIGHWAY_BUS_GAP           |     1 |
-| HUB_TRANSFER_GAP          |    19 |
+| HUB_TRANSFER_GAP          |     0 |
 | ISLAND_FERRY_GAP          |     7 |
 | MISSING_INTERMEDIATE_NODE |   278 |
 | NODE_IDENTITY_GAP         |    31 |
