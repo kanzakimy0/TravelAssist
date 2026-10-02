@@ -219,3 +219,98 @@ print('CC0 license evidence checks PASS')`;
   );
   assert.equal(result.status, 0, result.stdout + result.stderr);
 });
+
+test("TASK086 operator-specific unrestricted GTFS grant binds publisher, dataset and exact primary terms", () => {
+  const custom = JSON.parse(
+    fs.readFileSync(
+      "data/transport/network/sources/nemuro-nakashibetsu-airport.json",
+      "utf8",
+    ),
+  );
+  const bytes = fs.readFileSync(
+    "data/transport/network/" + custom.source.retainedArchive,
+  );
+  const review = fs
+    .readFileSync("data/transport/network/next-source-actions.jsonl", "utf8")
+    .trim()
+    .split("\n")
+    .map((row) => JSON.parse(row))
+    .find((a) => a.actionId === custom.selection.sourceActionId);
+  const check = (p = custom, a = review) =>
+    prepare(
+      p,
+      {
+        packageFile: "nemuro-nakashibetsu-airport.json",
+        packageSha256: hash(p),
+        sourceActionId: p.selection.sourceActionId,
+      },
+      a,
+      bytes,
+    );
+  const result = check();
+  assert.equal(result.admitted.length, 58);
+  assert.deepEqual(
+    result.groups.map((g) => g.pattern.callingNodes.length),
+    [33, 33],
+  );
+  assert.equal(custom.source.license, "Operator unrestricted-use terms");
+  assert.equal(custom.source.rightsDecision, "PASS_OPERATOR_UNRESTRICTED_USE");
+  assert.equal(
+    custom.nodes.filter((n) => n.canonicalNameJa === "中標津空港").length,
+    2,
+  );
+  for (const change of [
+    (p) => delete p.source.licenseEvidence,
+    (p) => (p.source.license = "CC BY 4.0"),
+    (p) => (p.source.rightsDecision = "PASS_CC0_1_0_PUBLIC_DOMAIN"),
+    (p) => delete p.selection.licenseEvidence,
+    (p) => (p.source.licenseEvidence.publisher = "other operator"),
+    (p) =>
+      (p.source.licenseEvidence.reviewedDatasetUrl =
+        "https://unreviewed.example/"),
+    (p) => (p.source.licenseEvidence.scope = "PRIVATE_USE_ONLY"),
+    (p) => (p.source.licenseEvidence.observedResponseSha256 = "0".repeat(64)),
+  ]) {
+    const changed = structuredClone(custom);
+    change(changed);
+    assert.throws(() => check(changed), /LICENSE_BINDING/);
+  }
+  for (const change of [
+    (a) =>
+      (a.sourcesChecked = a.sourcesChecked.filter(
+        (s) => s.purpose !== "terms",
+      )),
+    (a) =>
+      (a.sourcesChecked = a.sourcesChecked.map((s) =>
+        s.purpose === "terms" ? { ...s, status: 404 } : s,
+      )),
+    (a) => (a.rightsFindings.at(-1).termsUrl = "https://unreviewed.example/"),
+  ]) {
+    const changed = structuredClone(review);
+    change(changed);
+    assert.throws(() => check(custom, changed), /LICENSE_BINDING/);
+  }
+});
+
+test("TASK086 operator-specific extraction preserves its grant and rejects unreviewed grant metadata", () => {
+  const code = String.raw`import copy,importlib.util,json
+from pathlib import Path
+s=importlib.util.spec_from_file_location('selected','tools/transport/task-086-extract-selected-gtfs.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+p=json.loads(Path('data/transport/network/sources/nemuro-nakashibetsu-airport.json').read_text(encoding='utf8'));r=p['selection'];raw=Path('data/transport/network/'+p['source']['retainedArchive']).read_bytes();assert m.extract(raw,r)==p
+cases=[]
+for field,value in [('url','http://unreviewed.example/'),('observedResponseSha256','bad'),('publisher','other'),('reviewedDatasetUrl','https://unreviewed.example/'),('scope','PRIVATE_USE_ONLY')]:
+ q=copy.deepcopy(r);q['licenseEvidence'][field]=value;cases.append(q)
+for value in [None,{}]:
+ q=copy.deepcopy(r);q['licenseEvidence']=value;cases.append(q)
+for q in cases:
+ try:m.extract(raw,q)
+ except ValueError as e:assert 'OPERATOR_TERMS_EVIDENCE_REQUIRED' in str(e)
+ else:raise AssertionError('unreviewed operator grant accepted')
+print('operator-specific grant extraction checks PASS')`;
+  const result = spawnSync(
+    process.platform === "win32" ? "python" : "python3",
+    ["-X", "utf8", "-c", code],
+    { encoding: "utf8" },
+  );
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+});

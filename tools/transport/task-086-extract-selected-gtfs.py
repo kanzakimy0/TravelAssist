@@ -20,12 +20,22 @@ def sha(value):
 
 def extract(raw, request):
     license_name = request.get('license', 'CC BY 4.0')
-    decisions = {'CC BY 4.0': 'PASS_CC_BY_4_0_ATTRIBUTION', 'CC0 1.0': 'PASS_CC0_1_0_PUBLIC_DOMAIN'}
+    decisions = {'CC BY 4.0': 'PASS_CC_BY_4_0_ATTRIBUTION', 'CC0 1.0': 'PASS_CC0_1_0_PUBLIC_DOMAIN', 'Operator unrestricted-use terms': 'PASS_OPERATOR_UNRESTRICTED_USE'}
     if license_name not in decisions:
         raise ValueError('SELECTED_GTFS_LICENSE_UNREVIEWED')
     license_evidence = request.get('licenseEvidence')
     if license_name == 'CC0 1.0' and (not isinstance(license_evidence, dict) or license_evidence.get('url') != request['datasetUrl'] or not re.fullmatch(r'[a-f0-9]{64}', license_evidence.get('observedResponseSha256', ''))):
         raise ValueError('SELECTED_GTFS_LICENSE_EVIDENCE_REQUIRED')
+    if license_name == 'Operator unrestricted-use terms' and (
+        not isinstance(license_evidence, dict)
+        or not isinstance(license_evidence.get('url'), str)
+        or not license_evidence['url'].startswith('https://')
+        or not re.fullmatch(r'[a-f0-9]{64}', license_evidence.get('observedResponseSha256', ''))
+        or license_evidence.get('reviewedDatasetUrl') != request['datasetUrl']
+        or license_evidence.get('publisher') != request['operator']
+        or license_evidence.get('scope') != 'EXPLICIT_OPERATOR_GTFS_UNRESTRICTED_USE'
+    ):
+        raise ValueError('SELECTED_GTFS_OPERATOR_TERMS_EVIDENCE_REQUIRED')
     digest = sha(raw)
     if digest != request['archiveSha256']:
         raise ValueError('SELECTED_GTFS_ARCHIVE_HASH_MISMATCH')
@@ -94,7 +104,7 @@ def extract(raw, request):
         anchor = source_id + ':stop:' + stop_id
         nodes.append(dict(identityAnchor=anchor, canonicalNameJa=record['stop_name'], nodeKind='bus_stop', nodeLevel='T3', latitude=float(record['stop_lat']), longitude=float(record['stop_lon']), operatorRefs=[request['operator']], lineRefs=sorted({p['lineRef'] for p in patterns if any(c['identityAnchor'] == anchor for c in p['callingNodes'])}), sourceRefs=[request['datasetUrl'],request['sourceUrl']], evidenceRefs=[ev('stop', 'stops.txt:' + stop_id, record)], identityRecord=record, origin='TASK_086_INDEPENDENT_GTFS', hubSemantics='GTFS_STOP_POINT_NO_SAME_NAME_COLLAPSE', parentHubId=None, independentReview=dict(decision='ADMIT_TASK_086_TOPOLOGY', recordSha256=sha(record), method='EXACT_LICENSED_STOP_USED_IN_REVIEWED_ACTIVE_TRIP', sourceArchiveSha256=digest)))
     source = dict(sourceId=source_id,url=request['sourceUrl'],datasetUrl=request['datasetUrl'],observedAt=request['observedAt'],contentSha256=digest,license=license_name,rightsClass='RAW_PERSISTENCE_ALLOWED',rightsDecision=decisions[license_name],persistenceAllowed=True,derivedDataAllowed=True,redistributionAllowed=True,freshnessClass='SCHEDULED_SOURCE_SNAPSHOT',validFrom=feed['feed_start_date'],validTo=feed['feed_end_date'],feedInfo=feed,agencies=[agencies[request['agencyId']]],attribution=request['attribution'],retainedArchive=request['retainedArchive'])
-    if license_name == 'CC0 1.0':
+    if license_name in ('CC0 1.0', 'Operator unrestricted-use terms'):
         source['licenseEvidence'] = license_evidence
     return dict(source=source,nodes=nodes,lines=list(selected_routes.values()),patterns=patterns,transfers=[],evidence=list({e['evidenceId']:e for e in evidence}.values()),selection=request)
 

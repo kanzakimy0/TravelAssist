@@ -30,13 +30,22 @@ export function prepareLicensedGtfsPackage(
   const licenseDecisions = {
     "CC BY 4.0": "PASS_CC_BY_4_0_ATTRIBUTION",
     "CC0 1.0": "PASS_CC0_1_0_PUBLIC_DOMAIN",
+    "Operator unrestricted-use terms": "PASS_OPERATOR_UNRESTRICTED_USE",
   };
   invariant(
     Object.hasOwn(licenseDecisions, source.license) &&
       source.license === (pack.selection.license ?? "CC BY 4.0") &&
       source.rightsDecision === licenseDecisions[source.license] &&
-      (source.license !== "CC0 1.0" ||
-        (source.licenseEvidence?.url === source.datasetUrl &&
+      (source.license === "CC BY 4.0" ||
+        ((source.license === "CC0 1.0"
+          ? source.licenseEvidence?.url === source.datasetUrl
+          : source.licenseEvidence?.scope ===
+              "EXPLICIT_OPERATOR_GTFS_UNRESTRICTED_USE" &&
+            source.licenseEvidence?.reviewedDatasetUrl === source.datasetUrl &&
+            source.licenseEvidence?.publisher === pack.selection.operator &&
+            source.licenseEvidence?.url ===
+              action?.rightsFindings.at(-1)?.termsUrl &&
+            /^https:\/\//.test(source.licenseEvidence?.url ?? "")) &&
           /^[a-f0-9]{64}$/.test(
             source.licenseEvidence?.observedResponseSha256 ?? "",
           ) &&
