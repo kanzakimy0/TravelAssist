@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2",
   "authorization": "Latest user revision: complete entire original TASK086 and necessary dependencies continuously; seven airports and core reports are milestones, never stop conditions.",
   "snapshotHead": "54186b39e133b9f7de102b4dce4bdf72a4884e6f",
   "asOf": "2026-10-02",
   "counts": {
-    "admitted": 3940,
-    "edges": 9185,
+    "admitted": 3942,
+    "edges": 9190,
     "hold": 9,
-    "iterations": 209,
-    "lines": 364,
+    "iterations": 211,
+    "lines": 365,
     "rejected": 0,
-    "required": 3949,
-    "servicePatterns": 785
+    "required": 3951,
+    "servicePatterns": 787
   },
   "originalRequirements": [
     {
@@ -9048,6 +9048,13 @@
       "name": "草薙"
     },
     {
+      "requirementId": "transport-node:086:16b5311f230b0a071dc0646870dbf66b",
+      "nodeId": "transport-node:086:16b5311f230b0a071dc0646870dbf66b",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "嶋仲"
+    },
+    {
       "requirementId": "transport-node:086:16dadce83aab2022925db699258b2540",
       "nodeId": "transport-node:086:16dadce83aab2022925db699258b2540",
       "tier": "T2",
@@ -11636,6 +11643,13 @@
       "tier": "T3",
       "kind": "bus_stop",
       "name": "紡績口"
+    },
+    {
+      "requirementId": "transport-node:086:38af656e28f3948c29e4cf8d795251f3",
+      "nodeId": "transport-node:086:38af656e28f3948c29e4cf8d795251f3",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "空港"
     },
     {
       "requirementId": "transport-node:086:38b493fa729860916304370b491b4747",
@@ -27861,7 +27875,9 @@
     "206-tajima-two-adjacent-p11-directions-jac-pair-and-coarse-airport-gateway.json",
     "207-tokunoshima-ordinary-native-airport-asama-and-coarse-public-gateway.json",
     "208-monbetsu-hokumon-ordinary-three-stop-airport-deviation-and-ana-haneda-chain.json",
-    "209-nagasaki-shinchi-public-street-direction-closure.json"
+    "209-nagasaki-shinchi-public-street-direction-closure.json",
+    "210-nagasaki-roadside-arrival-terminal-public-frontage.json",
+    "211-yonaguni-minimal-two-native-calls-and-coarse-airport-gateway.json"
   ],
   "inputHashes": {
     "data/transport/gtfs-source-license-registry.jsonl": "87a31fcc396079d49ac496e9973253a8672717caa58a8c3d66c2659152cd7609",
@@ -28139,7 +28155,9 @@
     "data/transport/network/research/phases/206-tajima-two-adjacent-p11-directions-jac-pair-and-coarse-airport-gateway.json": "80df5f5a1d23685b942d93a65fa8bd310ca039464a31df6277bb9e00232ee1ab",
     "data/transport/network/research/phases/207-tokunoshima-ordinary-native-airport-asama-and-coarse-public-gateway.json": "739b306bb0fa65f3bbc88652eae31e92096212c342fa9c48f017c7836b26c37b",
     "data/transport/network/research/phases/208-monbetsu-hokumon-ordinary-three-stop-airport-deviation-and-ana-haneda-chain.json": "bf38913c94091fa3b9f98486912cce75087cef26718476f657c6362aa7559a48",
-    "data/transport/network/research/phases/209-nagasaki-shinchi-public-street-direction-closure.json": "6927540590b93ded1e4d14337f44e0de23cfe8566bdfcb8d734d5dd162e8f214"
+    "data/transport/network/research/phases/209-nagasaki-shinchi-public-street-direction-closure.json": "6927540590b93ded1e4d14337f44e0de23cfe8566bdfcb8d734d5dd162e8f214",
+    "data/transport/network/research/phases/210-nagasaki-roadside-arrival-terminal-public-frontage.json": "65d0b016e69374e307593689894de4119785ca6c5e9c18f297a0798696cc10bc",
+    "data/transport/network/research/phases/211-yonaguni-minimal-two-native-calls-and-coarse-airport-gateway.json": "bd03c8798f0e2348c640a479a641cccf8d3ff653ec2c4af62db66ff0e6bdbca8"
   },
   "baselineArtifactHashes": {
     "adaptive-model-iterations.jsonl": "53e4923e72818a3fef513f2a4f2b2f7da416dfc39255d006371692dc28785d17",
@@ -28723,7 +28741,7 @@
   "coreMandatoryCorridorCount": 9,
   "newDiscoveriesPolicy": "BACKLOG_ONLY_NO_AUTOMATIC_SCOPE_GROWTH",
   "runtimeImportAuthorized": false,
-  "parentScopeId": "TASK086-FULL-ORIGINAL-PHASE208-v2",
+  "parentScopeId": "TASK086-FULL-ORIGINAL-PHASE210-v2",
   "authorizedAirportRequirementIds": [
     "review:official-airport:三宅島",
     "review:official-airport:三沢",

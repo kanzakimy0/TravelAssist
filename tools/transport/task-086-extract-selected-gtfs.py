@@ -52,6 +52,61 @@ def review_cc_by_21(request, digest, feed, agencies):
     if not valid:
         raise ValueError('SELECTED_GTFS_CC_BY_21_EVIDENCE_REQUIRED')
 
+
+# Source-bound reviewed adapter: exact immutable source; never infer unnamed schema fields.
+REVIEWED_TRAILING_PROFILE = {'reviewId': 'MEMANBETSU_20261001_EXPLICIT_UNINTERPRETED_TRIP_TRAILING_FIELDS_V1', 'sourceUrl': 'https://www.abashiribus.com/open_data/gtfs_abashiribus_latest.zip', 'archiveSha256': 'af1f68b7d6ea81a56b2f702de72aec9663800b49812d724d9d2876c5f0106272', 'member': 'trips.txt', 'memberSha256': 'ba7f32d55073a67a875442432b14db984f53519b2ab629169fe468e0da87e94c', 'header': ['route_id', 'service_id', 'trip_id', 'trip_headsign', 'direction_id'], 'headerSha256': '207dd2514a9f70a2068101f9fffda616420b6fbc1dc2191aa21119b679dd6b7b', 'rowWidth': 7, 'rowCount': 136, 'namedFieldsCount': 5, 'namedRowsSha256': 'fd64ffccab1cd645d52b651aab70d5fec1e1d65865c9fed87a3a998e01dc1d9c', 'uninterpretedTrailingRowsSha256': '34a29cea0ee5ef63bf1128b9b1a5416d1e5ec425f46c25b431ff315776a485dd', 'sourceSchemaStatus': 'NONSTANDARD_SURPLUS_COLUMNS_EXPLICITLY_PRESERVED_NOT_GTFS_SCHEMA_CERTIFIED', 'reviewScope': 'Exact immutable source only. Retain unnamed columns as ordered uninterpreted arrays; do not infer block_id/shape_id.'}
+UNINTERPRETED_TRAILING_FIELD = 'uninterpretedTrailingFields'
+
+def read_native_table(z, name, request, archive_sha256, reviewed_members):
+    member = name + '.txt'
+    if member not in z.namelist():
+        return []
+    data = z.read(member)
+    try:
+        rows = list(csv.reader(io.StringIO(data.decode('utf-8-sig')), strict=True))
+    except (UnicodeDecodeError, csv.Error) as error:
+        raise ValueError('SELECTED_GTFS_CSV_ENCODING_OR_SYNTAX:' + member) from error
+    if not rows or not rows[0]:
+        raise ValueError('SELECTED_GTFS_CSV_HEADER_MISSING:' + member)
+    header = rows[0]
+    # DictReader ignores physical blank lines ([]), but not delimiter/empty-cell rows.
+    body = [row for row in rows[1:] if row]
+    if any(not value for value in header) or len(header) != len(set(header)):
+        raise ValueError('SELECTED_GTFS_CSV_HEADER_DUPLICATE_OR_EMPTY:' + member)
+    if UNINTERPRETED_TRAILING_FIELD in header:
+        raise ValueError('SELECTED_GTFS_CSV_RESERVED_FIELD:' + member)
+    if name == 'trips' and not {'route_id','service_id','trip_id'}.issubset(header):
+        raise ValueError('SELECTED_GTFS_CSV_CORE_HEADER_MISSING:' + member)
+    if any(len(row) < len(header) for row in body):
+        raise ValueError('SELECTED_GTFS_CSV_SHORT_ROW:' + member)
+    if name == 'trips' and any(any(row[header.index(k)] == '' for k in ('route_id','service_id','trip_id')) for row in body):
+        raise ValueError('SELECTED_GTFS_CSV_CORE_VALUE_MISSING:' + member)
+    surplus = any(len(row) > len(header) for row in body)
+    supplied = request.get('sourceCsvLayoutReview')
+    reviewed_member = isinstance(supplied, dict) and supplied.get('member') == member
+    if not surplus and not reviewed_member:
+        return [dict(zip(header, row)) for row in body]
+    expected = REVIEWED_TRAILING_PROFILE
+    if not reviewed_member or supplied != expected:
+        raise ValueError('SELECTED_GTFS_CSV_SURPLUS_LAYOUT_REVIEW_REQUIRED:' + member)
+    if (request['sourceUrl'] != expected['sourceUrl']
+            or archive_sha256 != expected['archiveSha256']
+            or member != expected['member'] or sha(data) != expected['memberSha256']):
+        raise ValueError('SELECTED_GTFS_CSV_LAYOUT_SOURCE_MISMATCH:' + member)
+    if (header != expected['header'] or sha(header) != expected['headerSha256']
+            or len(body) != expected['rowCount']
+            or any(len(row) != expected['rowWidth'] for row in body)):
+        raise ValueError('SELECTED_GTFS_CSV_LAYOUT_SHAPE_MISMATCH:' + member)
+    named = [dict(zip(header, row[:len(header)])) for row in body]
+    extra = [row[len(header):] for row in body]
+    if (sha(named) != expected['namedRowsSha256']
+            or sha(extra) != expected['uninterpretedTrailingRowsSha256']):
+        raise ValueError('SELECTED_GTFS_CSV_LAYOUT_CELL_MISMATCH:' + member)
+    reviewed_members.add(member)
+    for record, trailing in zip(named, extra):
+        record[UNINTERPRETED_TRAILING_FIELD] = trailing
+    return named
+
 def extract(raw, request):
     license_name = request.get('license', 'CC BY 4.0')
     decisions = {'CC BY 2.1 Japan': 'PASS_CC_BY_2_1_JP_ATTRIBUTION', 'CC BY 4.0': 'PASS_CC_BY_4_0_ATTRIBUTION', 'CC0 1.0': 'PASS_CC0_1_0_PUBLIC_DOMAIN', 'Operator unrestricted-use terms': 'PASS_OPERATOR_UNRESTRICTED_USE'}
@@ -75,9 +130,10 @@ def extract(raw, request):
     digest = sha(raw)
     if digest != request['archiveSha256']:
         raise ValueError('SELECTED_GTFS_ARCHIVE_HASH_MISMATCH')
+    reviewed_members = set()
     with zipfile.ZipFile(io.BytesIO(raw)) as z:
         def table(name):
-            return list(csv.DictReader(io.StringIO(z.read(name + '.txt').decode('utf-8-sig')))) if name + '.txt' in z.namelist() else []
+            return read_native_table(z, name, request, digest, reviewed_members)
         def keyed(name, field):
             rows = table(name)
             if len(rows) != len({r[field] for r in rows}):
@@ -86,6 +142,8 @@ def extract(raw, request):
         stops, routes, trips = keyed('stops', 'stop_id'), keyed('routes', 'route_id'), keyed('trips', 'trip_id')
         agencies, calendars = keyed('agency', 'agency_id'), keyed('calendar', 'service_id')
         feeds, exceptions, times = table('feed_info'), table('calendar_dates'), table('stop_times')
+    if request.get('sourceCsvLayoutReview') is not None and (not isinstance(request['sourceCsvLayoutReview'], dict) or request['sourceCsvLayoutReview'].get('member') not in reviewed_members):
+        raise ValueError('SELECTED_GTFS_CSV_LAYOUT_REVIEW_NOT_CONSUMED')
     if len(feeds) != 1:
         raise ValueError('SELECTED_GTFS_FEED_AMBIGUOUS')
     feed, date = feeds[0], request['serviceDate']
@@ -165,6 +223,10 @@ def extract(raw, request):
     source = dict(sourceId=source_id,url=request['sourceUrl'],datasetUrl=request['datasetUrl'],observedAt=request['observedAt'],contentSha256=digest,license=license_name,rightsClass='RAW_PERSISTENCE_ALLOWED',rightsDecision=decisions[license_name],persistenceAllowed=True,derivedDataAllowed=True,redistributionAllowed=True,freshnessClass='SCHEDULED_SOURCE_SNAPSHOT',validFrom=feed['feed_start_date'],validTo=feed['feed_end_date'],feedInfo=feed,agencies=[agencies[request['agencyId']]],attribution=request['attribution'],retainedArchive=request['retainedArchive'])
     if license_name in ('CC BY 2.1 Japan', 'CC0 1.0', 'Operator unrestricted-use terms'):
         source['licenseEvidence'] = license_evidence
+    if request.get('sourceCsvLayoutReview') is not None:
+        if request['sourceCsvLayoutReview'] != REVIEWED_TRAILING_PROFILE:
+            raise ValueError('SELECTED_GTFS_CSV_LAYOUT_REVIEW_UNKNOWN')
+        source['sourceCsvLayoutReview'] = request['sourceCsvLayoutReview']
     reuse = request.get('existingAnchorReuse')
     if reuse is not None or 'baseSource' in request:
         base = request.get('baseSource')

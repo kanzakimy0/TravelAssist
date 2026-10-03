@@ -1,33 +1,33 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T10:32:51.935326+00:00",
+  "updatedAt": "2026-10-03T12:00:17.042630+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "86c8d8c55d9086362da9420454d1aed12d099f04",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2",
-  "currentStage": "PHASE209_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "3255a9bd3ed3ae92c051a0e5396ac046fdc9388f",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2",
+  "currentStage": "PHASE211_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "currentCounts": {
-    "admitted": 3940,
-    "edges": 9185,
+    "admitted": 3942,
+    "edges": 9190,
     "hold": 9,
-    "iterations": 209,
-    "lines": 364,
+    "iterations": 211,
+    "lines": 365,
     "rejected": 0,
-    "required": 3949,
-    "servicePatterns": 785
+    "required": 3951,
+    "servicePatterns": 787
   },
   "currentRootAudit": {
-    "uniqueOpenRoots": 54,
-    "airportRoots": 16,
-    "busDirectionRoots": 37,
+    "uniqueOpenRoots": 52,
+    "airportRoots": 15,
+    "busDirectionRoots": 36,
     "railSourceReviewRoots": 1,
     "railSourceFactsRemaining": 5
   },
   "validation": {
     "tests": {
-      "tests": 3084,
-      "pass": 3084,
+      "tests": 3085,
+      "pass": 3085,
       "fail": 0,
       "skipped": 0
     },
@@ -41,9 +41,9 @@
           "--test-concurrency=1",
           "tests/*.test.mjs"
         ],
-        "elapsedSeconds": 1342.9772116999957,
+        "elapsedSeconds": 1382.6392005999805,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
       },
       "lint": {
         "command": [
@@ -51,9 +51,9 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 35.801612200040836,
+        "elapsedSeconds": 70.78384950000327,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
       },
       "typecheck": {
         "command": [
@@ -61,9 +61,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 6.403781600005459,
+        "elapsedSeconds": 9.89229410002008,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
       },
       "format": {
         "command": [
@@ -71,9 +71,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 13.677412400022149,
+        "elapsedSeconds": 12.88665930001298,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
       },
       "artifact": {
         "command": [
@@ -81,9 +81,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 46.25572670000838,
+        "elapsedSeconds": 50.82013230002485,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
       },
       "artifact-verify": {
         "command": [
@@ -91,17 +91,17 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.9108425000449643,
+        "elapsedSeconds": 1.7154329000040889,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
       }
     },
     "deterministicRebuild": "PASS",
     "currentCI": "PENDING_CHECKPOINT_PUSH",
-    "prior203CI": "docs/qa/TASK-086-B/phase203-ci-revisions.json"
+    "prior209CI": "docs/qa/TASK-086-B/phase209-ci-revisions.json"
   },
   "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
-  "nextConcreteAction": "Commit/push209; record exact direct and PR CI separately. Preflight private Nagasaki station881010_01 to881010_02 public ground-level path; then integrate audited PUBLIC booking contract with default-query fail-closed negatives and independent current identities. Continue other original airports,bus and five rail source facts. Shared writers serialized.",
+  "nextConcreteAction": "Commit/push211 and record direct branch HEAD and actual PR merge checkout separately. Review and register private Memanbetsu212 full48edge airport chain on stable211. Continue private actual conditional access integration, independent remaining identities and rail fact correction with all original obligations preserved. Shared writers serialized.",
   "privatePackages": {
     "oita": {
       "ledger": ".cache/task-086/oita-public-next/research-ledger.json",
@@ -178,6 +178,27 @@
     "shirahama": {
       "ledger": ".cache/task-086/shirahama181/phase203-production-preflight.json",
       "status": "CLOSED_BY203_FULL_GATE_PASS"
+    },
+    "nagasaki210": {
+      "status": "PRIVATE_PRODUCTION_PREFLIGHT_PASS_PENDING_COMBINED_REGISTRATION",
+      "phase": ".cache/task-086/nagasaki-public-path-next/phase210-private.json",
+      "proof": ".cache/task-086/nagasaki-public-path-next/terminal210-private-preflight.json",
+      "expectedRootsClosed": 1,
+      "newNodes": 0,
+      "newDirectedEdges": 1
+    },
+    "yonaguni211": {
+      "status": "MINIMAL_TWO_NATIVE_STOP_TWO_ACTUAL_ADJACENT_SECTIONS_IN_PREPARATION",
+      "fullParentCallingCount": 29,
+      "expectedNewNodes": 2,
+      "expectedNewDirectedEdges": 4,
+      "ordinaryWork": true
+    },
+    "conditionalContract": {
+      "status": "PRIVATE_PURE_MODULE_45_NEGATIVE_AND_POSITIVE_TESTS_PASS_PRODUCTION_PENDING",
+      "directory": ".cache/task-086/tanegashima-next",
+      "identityGap": "Current exact bank-front component coordinate still absent; no old operator identity reuse",
+      "externalApprovalRequired": false
     }
   },
   "capabilityLimits": {

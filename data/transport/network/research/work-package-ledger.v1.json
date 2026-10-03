@@ -677,13 +677,13 @@
     },
     {
       "packageId": "research:3e0e34601b7c79790d17",
-      "inputFingerprint": "c934f731e5096c7326809f92e7acabab0aabe18fd3e4954e29f067db1d6ec9d1",
+      "inputFingerprint": "a95c2c1085824bd28482fd7d702369dee6c825e773680d9bb0c09897bba164bc",
       "status": "READY",
       "nextAction": "Continue next executable original package",
       "resumeEvidence": [
         {
-          "path": ".cache/task-086/nagasaki-public-path-next/phase209-private.json",
-          "sha256": "6927540590b93ded1e4d14337f44e0de23cfe8566bdfcb8d734d5dd162e8f214"
+          "path": ".cache/task-086/nagasaki-public-path-next/phase210-private.json",
+          "sha256": "48672aac96ef3bfa54495bac59dcac8581e5bd03670a0f1402343200d346118d"
         }
       ],
       "attempts": [
@@ -839,6 +839,32 @@
             "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay208-209-timing.json"
           },
           "nextAction": "One serial national replay for batch208-209, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T11:02:37.301Z",
+          "inputFingerprint": "a95c2c1085824bd28482fd7d702369dee6c825e773680d9bb0c09897bba164bc",
+          "method": "EXACT_NATIVE_ARRIVAL_TO_TERMINAL_PUBLIC_GROUND_FRONTAGE_WITH_UNCHANGED_BOARDING",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-public-path-next/phase210-private.json",
+              "sha256": "48672aac96ef3bfa54495bac59dcac8581e5bd03670a0f1402343200d346118d"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-public-path-next/independent-review210.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3085_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay210-211-timing.json"
+          },
+          "nextAction": "One serial national replay for batch210-211, then preservation, actual root delta, and required full gate",
           "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
         }
       ]
@@ -2242,6 +2268,46 @@
           },
           "nextAction": "Continue next original package; final full gate pending",
           "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:ca5fdca899d66762ffd3",
+      "inputFingerprint": "d28a06610012be7139d1b1b72250b82811a84e2490ec1baa19706c13e4546440",
+      "status": "READY",
+      "nextAction": "Continue next executable original package",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/yonaguni-next/phase211-private/phase211-candidate-private.json",
+          "sha256": "bd03c8798f0e2348c640a479a641cccf8d3ff653ec2c4af62db66ff0e6bdbca8"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T11:02:37.305Z",
+          "inputFingerprint": "d28a06610012be7139d1b1b72250b82811a84e2490ec1baa19706c13e4546440",
+          "method": "MINIMAL_TWO_EXACT_NATIVE_SECTIONS_FROM_COMPLETE_PARENT_AND_COARSE_PUBLIC_AIRPORT",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/yonaguni-next/phase211-private/phase211-candidate-private.json",
+              "sha256": "bd03c8798f0e2348c640a479a641cccf8d3ff653ec2c4af62db66ff0e6bdbca8"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/yonaguni-next/phase211-private/production-preflight-private.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3085_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay210-211-timing.json"
+          },
+          "nextAction": "One serial national replay for batch210-211, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
         }
       ]
     },
