@@ -1,0 +1,66 @@
+{
+  "phaseId": "198-harimaya-reviewed-public-east-crossing",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOTS",
+    "OPERATOR_EXPLICIT_PUBLIC_CROSSING",
+    "PRESERVE_DISTINCT_NATIVE_POLES_AND_BOARDING"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:harimaya-public-east-crossing"
+  ],
+  "facts": [
+    {
+      "factId": "harimaya-tourist-terminal-to-dentetsu-boarding-public-east-crossing",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:harimaya-public-east-crossing",
+      "sourceUrl": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+      "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "はりまや橋観光バスターミナル",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3992_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "9e714ff0e376ffd3570a647bbeaf6726b584fa1b2b3867d11995598262fe426e",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator airport-access map dated20260201, same response hash as the reviewed shared map. The enlarged Harimayabashi inset separately labels airport boarding はりまや橋 at the Dentetsu building on the north side of the east arm and airport alighting はりまや橋観光バスターミナル on its south-side frontage farther east. It explicitly draws zebra pedestrian crossings over the east arm/tram corridor at Harimayabashi junction. Review a coarse public walk from the tourist-terminal frontage west along the south-side public street frontage to this marked crossing, cross at the marked pedestrian crossing, then east on the north frontage to the named airport boarding point. Exact existing licensed stop3992_01 is alighting-only and3906_01 boarding-only; distinct IDs and every service restriction retained. No coordinate-only relation, no direct unmarked road crossing, no metric/geometry/step-free claim. Only two existing original-required nodes; no local network expansion."
+          }
+        },
+        {
+          "name": "はりまや橋",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3906_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "0b3882e5655704cb9e0b94a651186950d6b2dabc54c0e4aaee9ff4799f097773",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator airport-access map dated20260201, same response hash as the reviewed shared map. The enlarged Harimayabashi inset separately labels airport boarding はりまや橋 at the Dentetsu building on the north side of the east arm and airport alighting はりまや橋観光バスターミナル on its south-side frontage farther east. It explicitly draws zebra pedestrian crossings over the east arm/tram corridor at Harimayabashi junction. Review a coarse public walk from the tourist-terminal frontage west along the south-side public street frontage to this marked crossing, cross at the marked pedestrian crossing, then east on the north frontage to the named airport boarding point. Exact existing licensed stop3992_01 is alighting-only and3906_01 boarding-only; distinct IDs and every service restriction retained. No coordinate-only relation, no direct unmarked road crossing, no metric/geometry/step-free claim. Only two existing original-required nodes; no local network expansion."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_DIAGRAM_PUBLIC_CROSSING_DISTINCT_DIRECTIONAL_STOPS",
+      "hubScopeComplete": false,
+      "locator": "Current operator airport-access map dated20260201, same response hash as the reviewed shared map. The enlarged Harimayabashi inset separately labels airport boarding はりまや橋 at the Dentetsu building on the north side of the east arm and airport alighting はりまや橋観光バスターミナル on its south-side frontage farther east. It explicitly draws zebra pedestrian crossings over the east arm/tram corridor at Harimayabashi junction. Review a coarse public walk from the tourist-terminal frontage west along the south-side public street frontage to this marked crossing, cross at the marked pedestrian crossing, then east on the north frontage to the named airport boarding point. Exact existing licensed stop3992_01 is alighting-only and3906_01 boarding-only; distinct IDs and every service restriction retained. No coordinate-only relation, no direct unmarked road crossing, no metric/geometry/step-free claim. Only two existing original-required nodes; no local network expansion."
+    }
+  ]
+}

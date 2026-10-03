@@ -1,5 +1,5 @@
 {
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
   "checks": {
     "full": {
       "command": [
@@ -10,9 +10,9 @@
         "--test-concurrency=2",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 1265.690503699996,
+      "elapsedSeconds": 1267.9758964000503,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     },
     "lint": {
       "command": [
@@ -20,9 +20,9 @@
         "run",
         "lint"
       ],
-      "elapsedSeconds": 43.5140711000422,
+      "elapsedSeconds": 42.63859390001744,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     },
     "typecheck": {
       "command": [
@@ -30,9 +30,9 @@
         "run",
         "typecheck"
       ],
-      "elapsedSeconds": 6.890814599988516,
+      "elapsedSeconds": 7.0636278000310995,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     },
     "format": {
       "command": [
@@ -40,9 +40,9 @@
         "run",
         "format:check:deploy"
       ],
-      "elapsedSeconds": 15.720599300053436,
+      "elapsedSeconds": 15.771864499954972,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     },
     "artifact": {
       "command": [
@@ -50,9 +50,9 @@
         "run",
         "deploy:build:local"
       ],
-      "elapsedSeconds": 52.406453599978704,
+      "elapsedSeconds": 52.044921900029294,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     },
     "artifact-verify": {
       "command": [
@@ -60,24 +60,35 @@
         "run",
         "deploy:verify-artifact"
       ],
-      "elapsedSeconds": 2.267063499952201,
+      "elapsedSeconds": 2.154203200014308,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     }
   },
-  "priorFull196Seconds": 1342.8305477,
-  "comparison": "Same3081 tests; different inputs/load. No measurable end-to-end/token/billing savings claim.",
-  "uniqueRootsClosedSince196": 2,
-  "newDirectedEdgesSince196": 2,
-  "newRequiredIntermediatesSince196": 0,
-  "nativeHttpRequestsByPackage": {
-    "197": 9
+  "priorFull197Seconds": 1265.6905037,
+  "comparison": "Same3081 tests; different inputs/load. One full regression for two completed small connection packages; no measurable end-to-end/token/billing savings claim.",
+  "uniqueRootsClosedSince197": 3,
+  "newDirectedEdgesSince197": 4,
+  "newRequiredIntermediatesSince197": 0,
+  "replays": {
+    "198": {
+      "exitCode": 0,
+      "elapsedSeconds": 263.537591899978,
+      "inputScope": "TASK086-FULL-ORIGINAL-PHASE198-v2",
+      "logSha256": "8541e438cb8f4ca8889c3fdc1e52657e79d8f35866bfb10c05aa07b640b933b9"
+    },
+    "199": {
+      "exitCode": 0,
+      "elapsedSeconds": 262.5635816999711,
+      "inputScope": "TASK086-FULL-ORIGINAL-PHASE199-v2",
+      "logSha256": "73984abc744a4b6a9e5280e2794152c44bd1e71bc47a5f99f3b4a4d668821686"
+    }
   },
-  "nativeHttpFailuresByPackage": {
-    "197": 0
+  "nativeHttpRequestsByCompletedPackage": {
+    "198": 1,
+    "199": 8
   },
-  "httpMetricScope": "Completed public-footbridge package only; other private research separately counted; web backend HTTP unavailable.",
-  "replay197Seconds": 258.9942008,
+  "httpMetricScope": "198 source reread for visual evidence;199 hotel/operator research. Independent incomplete research counted in per-package ledgers; web backend HTTP unavailable.",
   "tokenCount": null,
   "billedCost": null,
   "modelCacheHitCount": null

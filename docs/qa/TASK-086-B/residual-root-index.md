@@ -1,6 +1,6 @@
 # TASK-086-B 剩余唯一根因
 
-68 OPEN：25机场、42巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
+65 OPEN：25机场、39巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
 
 | 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
@@ -62,13 +62,10 @@
 | root:direction:component:76dd24e1b29403b10045 | C | 0 | 2 |
 | root:direction:component:87461a69eec33b698037 | C | 0 | 2 |
 | root:direction:component:8ce9ccabe03db0c99551 | C | 0 | 2 |
-| root:direction:component:914521c656becf1d227c | C | 0 | 2 |
 | root:direction:component:9d725da987529aa4da94 | C | 0 | 2 |
 | root:direction:component:ae83f00b93a3cdd4f7af | C | 0 | 2 |
 | root:direction:component:b287b15eca53565264ff | C | 0 | 2 |
 | root:direction:component:c6e77b230e3f1db965c6 | C | 0 | 2 |
 | root:direction:component:c8bb060e9ef64f956d18 | C | 0 | 3 |
-| root:direction:component:db6cff2110e9400c29eb | C | 0 | 2 |
-| root:direction:component:e544e78f31637c347c2a | C | 0 | 2 |
 | root:direction:component:ffce88d4d3f84df13e09 | C | 0 | 2 |
 | root:obligation:source:national-stopping-patterns | C | 0 | 1 |

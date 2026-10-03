@@ -1,20 +1,20 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-03T05:15:37.948541+00:00",
+  "recordedAt": "2026-10-03T05:57:09.956175+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 197,
-  "validationParentHead": "70f95926b3a7692d4951435247c3a1e679f31ad0",
+  "phase": 199,
+  "validationParentHead": "a50842eaa4e797e10e276c2aae40b3302af311e0",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2",
-  "manifestSha256": "a9a03611f12c9b0890358f3e1032f77aa516ac909664632423d4fce60990db75",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
+  "manifestSha256": "298aaa8767626dc641a78494a1ad6a55207993c975eb4ce729b8183d5a70e872",
   "fullRegression": {
     "status": "PASS",
     "tests": 3081,
     "pass": 3081,
     "fail": 0,
     "skipped": 0,
-    "logSha256": "90120fe5875527a0b580b1c932534549ef53785a53783ab420b11c23a9f8f415",
+    "logSha256": "2b4c26f3bc78eb22a029540fe47fa256502d86e871bb5ea3892eebf1aa6f1866",
     "timing": {
       "command": [
         "node",
@@ -24,13 +24,13 @@
         "--test-concurrency=2",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 1265.690503699996,
+      "elapsedSeconds": 1267.9758964000503,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
     },
     "coverage": "One full regression includes deterministic clean rebuild, raw extraction, recovery/corruption and all shared parser negatives. No independent duplicate rebuild."
   },
-  "deterministicRebuildReceiptSha256": "9ad2c72031d0576bf398f8f5b0ddd0fe5c8f4038c9249ca0b7d2984ca4601b85",
+  "deterministicRebuildReceiptSha256": "ec601a9078a88d8d785c6629b6da95eab9195505bd8880a2bbfb829ea632bc5f",
   "checks": [
     {
       "command": [
@@ -45,11 +45,11 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 43.5140711000422,
+        "elapsedSeconds": 42.63859390001744,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
-      "logSha256": "64a038ddf7a18acc521c65d1d2a28b0546901579ab9b98d1ca16ab5f4787352f"
+      "logSha256": "511d390cd72bcd3af104be6c20811a71c7af221e6555e3131d49daef02e8b730"
     },
     {
       "command": [
@@ -64,9 +64,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 6.890814599988516,
+        "elapsedSeconds": 7.0636278000310995,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
     },
@@ -83,9 +83,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 15.720599300053436,
+        "elapsedSeconds": 15.771864499954972,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
     },
@@ -102,11 +102,11 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 52.406453599978704,
+        "elapsedSeconds": 52.044921900029294,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
-      "logSha256": "b39ce631c38f8c628d8fba23520747dc13e63ad054ea269ca7c82946c8c4195a"
+      "logSha256": "bc33a079712c3d5c6903f35e8b262f1e9670c8336f378ec112fabc150b024050"
     },
     {
       "command": [
@@ -121,11 +121,11 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 2.267063499952201,
+        "elapsedSeconds": 2.154203200014308,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
-      "logSha256": "888120f6c80d1aa435d57fe927fe0685e49ed82516531336d9cd351166100820"
+      "logSha256": "c6791952e798348529e65176d62feb8b7c01319cb4cd07ea4560f4befae66c95"
     }
   ],
   "validationEnvironment": {
@@ -565,26 +565,26 @@
     "requiredRecord": "branchHeadSha and actual checkoutSha from CI_REVISION; PR merge revision differs from direct workflow_dispatch branch checkout."
   },
   "artifactIsCleanHeadBuild": false,
-  "phase196QualityGates": {
+  "phase197QualityGates": {
     "schemaVersion": 1,
-    "observedAt": "2026-10-03T05:11:13.574745+00:00",
-    "branchHeadSha": "70f95926b3a7692d4951435247c3a1e679f31ad0",
+    "observedAt": "2026-10-03T05:37:03.610585+00:00",
+    "branchHeadSha": "a50842eaa4e797e10e276c2aae40b3302af311e0",
     "records": [
       {
-        "runId": 37097436293,
-        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37097436293",
+        "runId": 37099379057,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37099379057",
         "status": "PASS",
         "event": "workflow_dispatch",
         "revision": {
           "schemaVersion": 1,
           "eventName": "workflow_dispatch",
           "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
-          "branchHeadSha": "70f95926b3a7692d4951435247c3a1e679f31ad0",
-          "checkoutSha": "70f95926b3a7692d4951435247c3a1e679f31ad0",
+          "branchHeadSha": "a50842eaa4e797e10e276c2aae40b3302af311e0",
+          "checkoutSha": "a50842eaa4e797e10e276c2aae40b3302af311e0",
           "checkoutParents": [
-            "1573226ffe92be31593747e78655caefb76d6bde"
+            "70f95926b3a7692d4951435247c3a1e679f31ad0"
           ],
-          "eventSha": "70f95926b3a7692d4951435247c3a1e679f31ad0",
+          "eventSha": "a50842eaa4e797e10e276c2aae40b3302af311e0",
           "baseSha": null,
           "pullRequestNumber": null,
           "checkoutKind": "BRANCH_HEAD_DIRECT",
@@ -662,24 +662,24 @@
             "conclusion": "success"
           }
         ],
-        "logSha256": "a4a4fd180394898b2c14b31d431b8265679825d024a764ae95a47f5a0243b14e"
+        "logSha256": "bd45579fcfaf103428376ae652552fe093839463ba138e2804248c6027692360"
       },
       {
-        "runId": 37097439158,
-        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37097439158",
+        "runId": 37099331610,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37099331610",
         "status": "PASS",
         "event": "pull_request",
         "revision": {
           "schemaVersion": 1,
           "eventName": "pull_request",
           "ref": "refs/pull/466/merge",
-          "branchHeadSha": "70f95926b3a7692d4951435247c3a1e679f31ad0",
-          "checkoutSha": "d7354261dd1105a2e80b07de3666db40cad55da8",
+          "branchHeadSha": "a50842eaa4e797e10e276c2aae40b3302af311e0",
+          "checkoutSha": "edd4b6d15e4bf0f12328d17e61d8f6866e575f23",
           "checkoutParents": [
             "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-            "70f95926b3a7692d4951435247c3a1e679f31ad0"
+            "a50842eaa4e797e10e276c2aae40b3302af311e0"
           ],
-          "eventSha": "d7354261dd1105a2e80b07de3666db40cad55da8",
+          "eventSha": "edd4b6d15e4bf0f12328d17e61d8f6866e575f23",
           "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
           "pullRequestNumber": 466,
           "checkoutKind": "PULL_REQUEST_MERGE_TEST",
@@ -757,7 +757,7 @@
             "conclusion": "success"
           }
         ],
-        "logSha256": "bd92a7c6540596b468410b3ca8082faa8afe67c34145b127537759f0ce2e4daa"
+        "logSha256": "4bafd0b331ff8f7e33098b74dd1fbabd44621d9b46a2c181efbd48cd987083ea"
       }
     ],
     "rawLogsRetained": false

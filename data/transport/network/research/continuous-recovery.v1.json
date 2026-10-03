@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T05:15:38.012672+00:00",
+  "updatedAt": "2026-10-03T05:57:10.024525+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "70f95926b3a7692d4951435247c3a1e679f31ad0",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2",
-  "currentStage": "PHASE197_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "a50842eaa4e797e10e276c2aae40b3302af311e0",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
+  "currentStage": "PHASE199_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "currentCounts": {
     "admitted": 3793,
-    "edges": 9009,
+    "edges": 9013,
     "hold": 14,
-    "iterations": 197,
+    "iterations": 199,
     "lines": 346,
     "rejected": 0,
     "required": 3807,
     "servicePatterns": 755
   },
   "currentRootAudit": {
-    "uniqueOpenRoots": 68,
+    "uniqueOpenRoots": 65,
     "airportRoots": 25,
-    "busDirectionRoots": 42,
+    "busDirectionRoots": 39,
     "railSourceReviewRoots": 1,
     "railSourceFactsRemaining": 5
   },
@@ -41,9 +41,9 @@
           "--test-concurrency=2",
           "tests/*.test.mjs"
         ],
-        "elapsedSeconds": 1265.690503699996,
+        "elapsedSeconds": 1267.9758964000503,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "lint": {
         "command": [
@@ -51,9 +51,9 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 43.5140711000422,
+        "elapsedSeconds": 42.63859390001744,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "typecheck": {
         "command": [
@@ -61,9 +61,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 6.890814599988516,
+        "elapsedSeconds": 7.0636278000310995,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "format": {
         "command": [
@@ -71,9 +71,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 15.720599300053436,
+        "elapsedSeconds": 15.771864499954972,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "artifact": {
         "command": [
@@ -81,9 +81,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 52.406453599978704,
+        "elapsedSeconds": 52.044921900029294,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       },
       "artifact-verify": {
         "command": [
@@ -91,38 +91,45 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 2.267063499952201,
+        "elapsedSeconds": 2.154203200014308,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE197-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
       }
     },
     "deterministicRebuild": "PASS",
     "currentCI": "PENDING_CHECKPOINT_PUSH",
-    "prior196CI": "docs/qa/TASK-086-B/phase196-ci-revisions.json"
+    "prior197CI": "docs/qa/TASK-086-B/phase197-ci-revisions.json"
   },
   "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
-  "nextConcreteAction": "Commit/push197; register198 east Harimaya public-crossing two edges zero nodes, incremental strict gate then continue ordinary work. Full final gates required; no report stopping condition.",
+  "nextConcreteAction": "Commit/push199 and separately verify actual CI checkout; continue Oita exact native curb/public crossing evidence from existing cache, then next independent ordinary package. Reports are not stopping conditions.",
   "privatePackages": {
-    "198": {
-      "path": ".cache/task-086/tosaden-regular-next/phase198-private.json",
-      "preflight": ".cache/task-086/tosaden-regular-next/harimaya-east198-private-preflight.json",
-      "status": "PASS_PRIVATE_NOT_IMPORTED"
+    "oita": {
+      "ledger": ".cache/task-086/oita-public-next/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "kikai": {
+      "ledger": ".cache/task-086/kikai-next/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "monbetsu": {
+      "ledger": ".cache/task-086/monbetsu-next/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
     },
     "kochiSouth": {
-      "review": ".cache/task-086/tosaden-regular-next/kochi-south-interface-review.json",
-      "status": "POLE_MAPPING_UNRESOLVED"
+      "ledger": ".cache/task-086/tosaden-regular-next/kochi-south-interface-review.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
     },
     "amakusa": {
       "ledger": ".cache/task-086/amakusa-next/research-ledger.json",
-      "status": "PUBLIC_INTERFACE_UNRESOLVED"
+      "status": "ORDINARY_EVIDENCE_PENDING"
     },
     "niijima": {
       "ledger": ".cache/task-086/tokyo-islands-next/niijima-research-ledger.json",
-      "status": "PUBLIC_INTERFACE_AND_CONDITIONAL_CALL_UNRESOLVED"
+      "status": "ORDINARY_EVIDENCE_PENDING"
     },
     "tajima": {
       "ledger": ".cache/task-086/tajima-next/research-ledger.json",
-      "status": "PUBLIC_INTERFACE_UNRESOLVED"
+      "status": "ORDINARY_EVIDENCE_PENDING"
     }
   },
   "capabilityLimits": {
