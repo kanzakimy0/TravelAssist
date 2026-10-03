@@ -366,6 +366,19 @@ export function reviewedGtfsComponent(selector, nodes, sources, evidence) {
 }
 // Derived GTFS identities have a separate evidence contract. Do not let the
 // generic station-name matcher turn a malformed selector into an interchange.
+export function tokachiDerivedGtfsMode(source) {
+  const patterns = {
+    "gtfs:tokachi-airport":
+      /^https:\/\/www\.tokachibus\.jp\/download\/\d{8}GTFS-airport\.zip$/,
+    "gtfs:tokachi-city":
+      /^https:\/\/www\.tokachibus\.jp\/download\/\d{8}GTFS-dia\.zip$/,
+  };
+  if (!patterns[source?.sourceId]?.test(source.url)) return null;
+  return source.sourceId === "gtfs:tokachi-airport"
+    ? "airport_bus"
+    : "local_bus";
+}
+
 export function reviewedDerivedGtfsComponent(
   selector,
   nodes,
@@ -382,7 +395,7 @@ export function reviewedDerivedGtfsComponent(
       selector.mode === undefined &&
       selector.nodeKind === "bus_stop" &&
       sourceAllowed(source) &&
-      source.sourceId === "gtfs:tokachi-airport" &&
+      tokachiDerivedGtfsMode(source) !== null &&
       source.rightsClass === "DERIVED_STATIC_FACTS_ALLOWED" &&
       source.rightsDecision === "PASS_OPERATOR_ROUTE_GUIDANCE_STATIC_FACTS" &&
       source.rightsReview?.termsUrl ===

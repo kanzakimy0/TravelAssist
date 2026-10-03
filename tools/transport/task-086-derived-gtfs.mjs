@@ -1,5 +1,6 @@
 import {
   admitNodes,
+  tokachiDerivedGtfsMode,
   reviewedDerivedGtfsComponent as reviewedDerivedGtfsComponentModel,
   canonical,
   exactRecordMap,
@@ -87,10 +88,7 @@ function validSource(source, date) {
   );
   const r = source.rightsReview;
   invariant(
-    source.sourceId === "gtfs:tokachi-airport" &&
-      /^https:\/\/www\.tokachibus\.jp\/download\/\d{8}GTFS-airport\.zip$/.test(
-        source.url,
-      ) &&
+    tokachiDerivedGtfsMode(source) !== null &&
       source.datasetUrl === TOKACHI_GRANT_URL &&
       source.agency.agency_name.trim() === "十勝バス株式会社" &&
       text(source.agency.agency_id) &&
@@ -476,7 +474,7 @@ export function buildDerivedGtfsPackage(doc) {
         hash(calls).slice(0, 24),
       lineRef: source.sourceId + ":route:" + parent.trip.route_id,
       operatorRef: source.agency.agency_name,
-      mode: "airport_bus",
+      mode: tokachiDerivedGtfsMode(source),
       purpose: "airport",
       direction: s.expectedDirectionId,
       serviceClass: "not_specified_by_feed",
@@ -501,7 +499,7 @@ export function buildDerivedGtfsPackage(doc) {
     lineRef: source.sourceId + ":route:" + r.route_id,
     operatorRef: source.agency.agency_name,
     name: r.route_long_name,
-    mode: "airport_bus",
+    mode: tokachiDerivedGtfsMode(source),
     purpose: "airport",
     sourceRoute: r,
     evidenceRefs: [ev("route", "derived-static:routes.txt:" + r.route_id, r)],

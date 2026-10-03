@@ -610,3 +610,149 @@ test("derived GTFS override rejects implicit mismatched malformed and expired re
     /DERIVED_GTFS_VERSIONED_REVIEW_BINDING/,
   );
 });
+
+const cityDoc = JSON.parse(
+  python(nativeFixture.replaceAll("GTFS-airport.zip", "GTFS-dia.zip")),
+);
+function cityReview() {
+  const b = {
+    ...binding,
+    packageSha256: hash(cityDoc),
+    nativeAuditSha256: hash(cityDoc.nativeAudit),
+    derivedInputSha256: cityDoc.nativeAudit.derivedInputSha256,
+  };
+  const a = structuredClone(action);
+  a.sourcesChecked[0].contentSha256 = cityDoc.nativeAudit.grantResponseSha256;
+  a.sourcesChecked[1].url = cityDoc.source.url;
+  a.sourcesChecked[1].contentSha256 = cityDoc.source.contentSha256;
+  a.derivedGtfsReviews[0] = {
+    ...a.derivedGtfsReviews[0],
+    packageSha256: b.packageSha256,
+    nativeAuditSha256: b.nativeAuditSha256,
+    derivedInputSha256: b.derivedInputSha256,
+    sourceArchiveSha256: cityDoc.source.contentSha256,
+    grantResponseSha256: cityDoc.nativeAudit.grantResponseSha256,
+    extractorSha256: cityDoc.nativeAudit.extractorSha256,
+  };
+  return { b, a };
+}
+test("Tokachi city dependency preserves independent source identity, local mode and boarding restrictions", () => {
+  const { b, a } = cityReview(),
+    result = prepare(cityDoc, b, a),
+    cityPack = buildDerivedGtfsPackage(cityDoc);
+  assert.equal(cityDoc.source.sourceId, "gtfs:tokachi-city");
+  assert.ok(result.groups.every((g) => g.pattern.mode === "local_bus"));
+  assert.ok(cityPack.lines.every((l) => l.mode === "local_bus"));
+  assert.deepEqual(
+    result.groups.map((g) =>
+      g.pattern.callingNodes.map((c) => [
+        c.sequence,
+        c.pickupType,
+        c.dropOffType,
+      ]),
+    ),
+    prepare().groups.map((g) =>
+      g.pattern.callingNodes.map((c) => [
+        c.sequence,
+        c.pickupType,
+        c.dropOffType,
+      ]),
+    ),
+  );
+  assert.equal(result.groups.flatMap((g) => g.edges).length, 4);
+  const airportIds = new Set(prepare().admitted.map((n) => n.nodeId));
+  assert.ok(result.admitted.every((n) => !airportIds.has(n.nodeId)));
+  const n = result.admitted.find(
+      (n) => n.identityRecord.stop_id === "station6",
+    ),
+    sources = new Map([[cityDoc.source.sourceId, cityDoc.source]]),
+    evidence = exactRecordMap(cityPack.evidence, "evidenceId", "EVIDENCE"),
+    nodes = new Map(result.admitted.map((n) => [n.nodeId, n]));
+  const selector = {
+    name: n.canonicalNameJa,
+    operator: n.operatorRefs[0],
+    line: n.lineRefs[0],
+    nodeKind: "bus_stop",
+    derivedGtfsIdentity: {
+      method: "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+      currentPassengerAccessReview: "Synthetic public passage fixture",
+      sourceId: cityDoc.source.sourceId,
+      stopId: "station6",
+      serviceDate: "20261002",
+      expectedPlatformCode: "6",
+      recordSha256: hash(n.identityRecord),
+      sourceArchiveSha256: cityDoc.source.contentSha256,
+      derivedInputSha256: cityDoc.nativeAudit.derivedInputSha256,
+      derivedProjectionSha256: cityDoc.source.derivedProjectionSha256,
+    },
+  };
+  assert.equal(
+    reviewedDerivedGtfsComponent(selector, nodes, sources, evidence).nodeId,
+    n.nodeId,
+  );
+  selector.derivedGtfsIdentity.sourceId = doc.source.sourceId;
+  assert.throws(
+    () => reviewedDerivedGtfsComponent(selector, nodes, sources, evidence),
+    /DERIVED_GTFS_COMPONENT/,
+  );
+});
+test("Tokachi derived source family cannot be swapped or expanded by rehashing", () => {
+  for (const original of [doc, cityDoc])
+    for (const mutate of [
+      (d) =>
+        (d.source.sourceId =
+          d.source.sourceId === "gtfs:tokachi-city"
+            ? "gtfs:tokachi-airport"
+            : "gtfs:tokachi-city"),
+      (d) => {
+        d.source.url = d.source.url.replace(".zip", "-extra.zip");
+        d.source.rightsReview.sourceUrl = d.source.url;
+      },
+      (d) => {
+        d.source.url = d.source.url.replace(
+          "www.tokachibus.jp",
+          "other.example",
+        );
+        d.source.rightsReview.sourceUrl = d.source.url;
+      },
+    ]) {
+      const d = structuredClone(original);
+      mutate(d);
+      rehash(d);
+      assert.throws(() => validateDerivedGtfsInput(d), /DERIVED_GTFS_GRANT/);
+    }
+  const { b, a } = cityReview();
+  for (const mutate of [
+    (x) => (x.sourcesChecked[1].url = doc.source.url),
+    (x) => (x.derivedGtfsReviews[0].validTo = "20261001"),
+    (x) => (x.sourcesChecked[1].contentSha256 = "0".repeat(64)),
+  ]) {
+    const changed = structuredClone(a);
+    mutate(changed);
+    assert.throws(
+      () => prepare(cityDoc, b, changed),
+      /VERSIONED_REVIEW_BINDING/,
+    );
+  }
+});
+test("native city projection requires its own exact archive link in the same current operator grant", () => {
+  const code = nativeFixture
+    .replaceAll("GTFS-airport.zip", "GTFS-dia.zip")
+    .replace(
+      "print(json.dumps(doc,ensure_ascii=False))",
+      String.raw`
+assert doc['source']['sourceId']=='gtfs:tokachi-city'
+assert m.verify(raw,grant,r,doc)==doc['nativeAudit']
+bad=grant.replace(b'GTFS-dia.zip',b'GTFS-airport.zip');q=copy.deepcopy(r);q['grantReview']['observedResponseSha256']=m.sha(bad)
+try:m.extract(raw,bad,q)
+except ValueError as e:assert 'GRANT_CURRENT_ARCHIVE_BINDING' in str(e)
+else:raise AssertionError('airport-only link authorized city archive')
+for url in ['https://www.tokachibus.jp/download/20261001GTFS-dia-extra.zip','https://other.example/download/20261001GTFS-dia.zip']:
+ q=copy.deepcopy(r);q['sourceUrl']=url
+ try:m.extract(raw,grant,q)
+ except ValueError as e:assert 'SOURCE_SCOPE' in str(e)
+ else:raise AssertionError('unsupported archive source accepted')
+print('city native negative PASS')`,
+    );
+  assert.match(python(code), /city native negative PASS/);
+});

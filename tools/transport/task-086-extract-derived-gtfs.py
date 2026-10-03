@@ -1,4 +1,4 @@
-"""Audit private Tokachi airport GTFS into reviewed minimum route-guidance facts.
+"""Audit private Tokachi airport/local GTFS into reviewed minimum route-guidance facts.
 
 The output is not a raw GTFS distribution. Native bytes remain private; clean
 rebuilds validate the reviewed, versioned projection rather than reproduce ZIPs.
@@ -45,7 +45,9 @@ def extract(raw, grant_raw, request):
     review = request['grantReview']
     url, date = request['sourceUrl'], request['serviceDate']
     require(digest == request['archiveSha256'], 'ARCHIVE_HASH_MISMATCH')
-    require(re.fullmatch(r'https://www\.tokachibus\.jp/download/\d{8}GTFS-airport\.zip', url), 'SOURCE_SCOPE')
+    source_match = re.fullmatch(r'https://www\.tokachibus\.jp/download/\d{8}GTFS-(airport|dia)\.zip', url)
+    require(source_match, 'SOURCE_SCOPE')
+    source_id = SOURCE_ID if source_match.group(1) == 'airport' else 'gtfs:tokachi-city'
     require(review['termsUrl'] == GRANT_URL and review['observedResponseSha256'] == grant_hash
             and review['usage'] == 'ROUTE_GUIDANCE' and review['validFrom'] <= date <= review['validTo']
             and review['reviewedAt'] and review['reason'] and request['sourceActionId']
@@ -112,7 +114,7 @@ def extract(raw, grant_raw, request):
     selected_stops = [project(stops[s], STOP_FIELDS) for s in sorted(used)]
     require(all(s['location_type'] in ('', '0') and 20 <= float(s['stop_lat']) <= 46 and 122 <= float(s['stop_lon']) <= 154 for s in selected_stops), 'STOP_IDENTITY')
     projection = dict(serviceDate=date, stops=selected_stops, routes=list(selected_routes.values()), parents=list(parents.values()), sections=sections)
-    source = dict(sourceId=SOURCE_ID, url=url, datasetUrl=GRANT_URL, contentSha256=digest, observedAt=request['observedAt'],
+    source = dict(sourceId=source_id, url=url, datasetUrl=GRANT_URL, contentSha256=digest, observedAt=request['observedAt'],
         validFrom=feed['feed_start_date'], validTo=feed['feed_end_date'], feedVersion=feed['feed_version'],
         agency=project(agency, ('agency_id', 'agency_name')), attribution=request['attribution'],
         license='Tokachi Bus static GTFS route-guidance use grant', rightsClass='DERIVED_STATIC_FACTS_ALLOWED',
