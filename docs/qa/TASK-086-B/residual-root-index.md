@@ -1,23 +1,18 @@
 # TASK-086-B 剩余唯一根因
 
-61 OPEN：21机场、39巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
+54 OPEN：16机场、37巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
 
 | 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
 | root:airport:review:official-airport:奥尻 | D | 1 | 4 |
 | root:airport:review:official-airport:北大東 | C | 1 | 1 |
 | root:airport:review:official-airport:波照間 | D | 1 | 4 |
-| root:airport:review:official-airport:但馬 | D | 1 | 4 |
-| root:airport:review:official-airport:徳之島 | C | 1 | 1 |
-| root:airport:review:official-airport:多良間 | D | 1 | 4 |
 | root:airport:review:official-airport:南大東 | C | 1 | 1 |
 | root:airport:review:official-airport:能登 | D | 1 | 4 |
 | root:airport:review:official-airport:三宅島 | D | 1 | 4 |
 | root:airport:review:official-airport:神津島 | D | 1 | 4 |
 | root:airport:review:official-airport:石見 | D | 1 | 4 |
 | root:airport:review:official-airport:粟国 | D | 1 | 4 |
-| root:airport:review:official-airport:天草 | D | 1 | 4 |
-| root:airport:review:official-airport:紋別 | D | 1 | 4 |
 | root:airport:review:official-airport:喜界 | C | 1 | 1 |
 | root:airport:review:official-airport:新島 | D | 1 | 4 |
 | root:airport:review:official-airport:与論 | C | 1 | 1 |
@@ -25,7 +20,6 @@
 | root:airport:review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe | C | 1 | 1 |
 | root:airport:review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661 | C | 1 | 1 |
 | root:airport:review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374 | C | 1 | 1 |
-| root:direction:component:06e9e32c2539e5b85c30 | C | 1 | 2 |
 | root:direction:component:0eec614b8788f64d5865 | C | 1 | 2 |
 | root:direction:component:16a062275f80ed78de4f | C | 1 | 3 |
 | root:direction:component:1df548bb4e218199d61c | C | 1 | 2 |
@@ -36,7 +30,6 @@
 | root:direction:component:5d42c52843362adeeefc | C | 1 | 6 |
 | root:direction:component:66248fdc74557aa870e1 | C | 1 | 2 |
 | root:direction:component:662a9755abeab5d52770 | C | 1 | 3 |
-| root:direction:component:7b35afe9270d76b32958 | C | 1 | 2 |
 | root:direction:component:80754831e83c494feb89 | C | 1 | 2 |
 | root:direction:component:8b3872e6b881562cd0d6 | C | 1 | 2 |
 | root:direction:component:91378025a59875422ee5 | C | 1 | 3 |

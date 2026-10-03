@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T09:32:10.642799+00:00",
+  "updatedAt": "2026-10-03T10:32:51.935326+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "dc787a40b331b2a6cac273d13bb71002366446b2",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2",
-  "currentStage": "PHASE203_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "86c8d8c55d9086362da9420454d1aed12d099f04",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2",
+  "currentStage": "PHASE209_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "currentCounts": {
-    "admitted": 3925,
-    "edges": 9155,
-    "hold": 13,
-    "iterations": 203,
-    "lines": 354,
+    "admitted": 3940,
+    "edges": 9185,
+    "hold": 9,
+    "iterations": 209,
+    "lines": 364,
     "rejected": 0,
-    "required": 3938,
-    "servicePatterns": 767
+    "required": 3949,
+    "servicePatterns": 785
   },
   "currentRootAudit": {
-    "uniqueOpenRoots": 61,
-    "airportRoots": 21,
-    "busDirectionRoots": 39,
+    "uniqueOpenRoots": 54,
+    "airportRoots": 16,
+    "busDirectionRoots": 37,
     "railSourceReviewRoots": 1,
     "railSourceFactsRemaining": 5
   },
@@ -41,9 +41,9 @@
           "--test-concurrency=1",
           "tests/*.test.mjs"
         ],
-        "elapsedSeconds": 1254.5869721999625,
+        "elapsedSeconds": 1342.9772116999957,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
       },
       "lint": {
         "command": [
@@ -51,9 +51,9 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 33.254841699963436,
+        "elapsedSeconds": 35.801612200040836,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
       },
       "typecheck": {
         "command": [
@@ -61,9 +61,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 5.561229599989019,
+        "elapsedSeconds": 6.403781600005459,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
       },
       "format": {
         "command": [
@@ -71,9 +71,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 12.788705300015863,
+        "elapsedSeconds": 13.677412400022149,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
       },
       "artifact": {
         "command": [
@@ -81,9 +81,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 49.69884569995338,
+        "elapsedSeconds": 46.25572670000838,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
       },
       "artifact-verify": {
         "command": [
@@ -91,17 +91,17 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.9144543000147678,
+        "elapsedSeconds": 1.9108425000449643,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE209-v2"
       }
     },
     "deterministicRebuild": "PASS",
     "currentCI": "PENDING_CHECKPOINT_PUSH",
-    "prior202CI": "docs/qa/TASK-086-B/phase202-ci-revisions.json"
+    "prior203CI": "docs/qa/TASK-086-B/phase203-ci-revisions.json"
   },
   "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
-  "nextConcreteAction": "Commit/push203; record exact direct and PR CI separately. Register preflighted204 Tarama,205 Amakusa,206 Tajima,207 Tokunoshima when each production preflight passes; preserve old native identities and requirements. Shared writers serialized. Continue remaining original airport/bus/source packages automatically.",
+  "nextConcreteAction": "Commit/push209; record exact direct and PR CI separately. Preflight private Nagasaki station881010_01 to881010_02 public ground-level path; then integrate audited PUBLIC booking contract with default-query fail-closed negatives and independent current identities. Continue other original airports,bus and five rail source facts. Shared writers serialized.",
   "privatePackages": {
     "oita": {
       "ledger": ".cache/task-086/oita-public-next/research-ledger.json",

@@ -1,0 +1,732 @@
+{
+  "phaseId": "208-monbetsu-hokumon-ordinary-three-stop-airport-deviation-and-ana-haneda-chain",
+  "strategy": [
+    "CURRENT_2026_ORDINARY_OPERATOR_NOT_UNPROVEN_FREE_SHUTTLE",
+    "TWO_INDEPENDENT_CONTIGUOUS_45_CALL_PARENT_SECTIONS",
+    "DISTINCT_TERMINAL_AND_ROAD_NATIVE_IDENTITIES",
+    "EXPLICIT_ANA_OPERATING_COMPANY"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+    "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+    "airport:monbetsu:public-ordinary-bus-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "monbetsu-hokumon-ordinary-outbound-airport-deviation-section",
+      "kind": "service",
+      "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+      "sourceUrl": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+      "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+          "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+          "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+        },
+        {
+          "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+          "url": "https://www.hokumonbus.com/timetable",
+          "observedResponseSha256": "1a6dcdac60ddcc72dad8aa4d4ca0c375325cd8287ad3f45d4804c167f9e93ea5"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "airport:monbetsu:public-ordinary-bus-gateway",
+          "url": "https://www.ok-m.jp/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+          "observedResponseSha256": "fe593244cb72e073e8af32870f7eb185761493641b4a75e85a650efd6d47ca0e"
+        }
+      ],
+      "operator": "北紋バス株式会社",
+      "line": "湧紋線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "紋別→中湧別 actual11",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current own-operator revision2026-04-01; selected black ordinary operating columns actual11/7. Static topology only; no clock connection, seat or realtime guarantee. Red weekday-only Kitami connection rows excluded.",
+      "sourcePublishedParentCallingStations": [
+        "紋別",
+        "北海道銀行前（本町5丁目）",
+        "本町7丁目",
+        "南が丘1丁目",
+        "南が丘3丁目",
+        "南が丘",
+        "南が丘4丁目",
+        "ハロ-ワ-ク",
+        "南が丘7丁目",
+        "7丁目会館前",
+        "ｵﾎｰﾂｸﾀﾜｰ入口",
+        "元紋別",
+        "ｵﾎｰﾂｸ流氷公園前",
+        "流氷公園",
+        "まきばのパークゴルフ場",
+        "紋別空港",
+        "ｵﾎｰﾂｸ紋別空港",
+        "小向7線",
+        "八十士",
+        "原生花園",
+        "小向11線",
+        "小向12線",
+        "小向",
+        "小向14線",
+        "共和",
+        "弘道",
+        "水谷",
+        "秋平",
+        "キャンプ場入口",
+        "沼の上",
+        "信部内",
+        "加藤牧場",
+        "川西8線",
+        "川西7線",
+        "川西6線",
+        "川西5線",
+        "川西",
+        "川西３線",
+        "湧別4号線",
+        "湧別5号線",
+        "湧別6号線",
+        "湧別7号線",
+        "五鹿山通",
+        "中湧別市街",
+        "中湧別文化センタートム"
+      ],
+      "parentCallingStations": [
+        "紋別",
+        "北海道銀行前（本町5丁目）",
+        "本町7丁目",
+        "南が丘1丁目",
+        "南が丘3丁目",
+        "南が丘",
+        "南が丘4丁目",
+        "ハロ-ワ-ク",
+        "南が丘7丁目",
+        "7丁目会館前",
+        "ｵﾎｰﾂｸﾀﾜｰ入口",
+        "元紋別",
+        "ｵﾎｰﾂｸ流氷公園前",
+        "流氷公園",
+        "まきばのパークゴルフ場",
+        "紋別空港",
+        "オホーツク紋別空港",
+        "小向7線",
+        "八十士",
+        "原生花園",
+        "小向11線",
+        "小向12線",
+        "小向",
+        "小向14線",
+        "共和",
+        "弘道",
+        "水谷",
+        "秋平",
+        "キャンプ場入口",
+        "沼の上",
+        "信部内",
+        "加藤牧場",
+        "川西8線",
+        "川西7線",
+        "川西6線",
+        "川西5線",
+        "川西",
+        "川西３線",
+        "湧別4号線",
+        "湧別5号線",
+        "湧別6号線",
+        "湧別7号線",
+        "五鹿山通",
+        "中湧別市街",
+        "中湧別文化センタートム"
+      ],
+      "sectionStartIndex": 14,
+      "callingStations": [
+        "まきばのパークゴルフ場",
+        "紋別空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "まきばのパークゴルフ場",
+          "operator": "北紋バス（株）",
+          "line": "p11-stop:P11-22_01:bs855",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs855",
+            "recordSha256": "f9dce249cfbedc7d678a4bb4d2ad878710f92d01cacd453731e9bc645b13ec91",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current own-carrier ordinary Yu-mon timetable confirms this exact stop in actual airport deviation columns. Native same-road same-operator representative only; terminal 紋別空港 and road オホーツク紋別空港 remain distinct. No free-shuttle carrier inference or pole walking join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北紋バス（株）",
+              "currentOperatorName": "北紋バス株式会社",
+              "currentStopName": "まきばのパークゴルフ場",
+              "historicalRoute": "遠軽線",
+              "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+              "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+            }
+          }
+        },
+        {
+          "name": "紋別空港",
+          "operator": "北紋バス（株）",
+          "line": "p11-stop:P11-22_01:bs878",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs878",
+            "recordSha256": "4c2cf87a4d895048f09be07fa659758d042178e62e376d8ba1b002b2ad598167",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current own-carrier ordinary Yu-mon timetable confirms this exact stop in actual airport deviation columns. Native same-road same-operator representative only; terminal 紋別空港 and road オホーツク紋別空港 remain distinct. No free-shuttle carrier inference or pole walking join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北紋バス（株）",
+              "currentOperatorName": "北紋バス株式会社",
+              "currentStopName": "紋別空港",
+              "historicalRoute": "遠軽線",
+              "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+              "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedServiceDate": "20261003",
+      "locator": "Visually reviewed full current operator PDF page1 column11, actual45calling-stop parent. Select consecutive indexes14 through15. Selected column is black ordinary service; airport cell is populated. Inbound column passes 紋別高校 and does not call; separate 北海道北見バス connecting service not included. No pickup/dropoff-only marker for selected local calls. Airport terminal 紋別空港 and road ｵﾎｰﾂｸ紋別空港 stay distinct; full printed names preserved separately from narrowly reviewed identity-resolved label.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS_NO_CLOCKS_FARES_FREQUENCIES"
+    },
+    {
+      "factId": "monbetsu-hokumon-ordinary-inbound-airport-deviation-section",
+      "kind": "service",
+      "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+      "sourceUrl": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+      "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+          "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+          "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+        },
+        {
+          "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+          "url": "https://www.hokumonbus.com/timetable",
+          "observedResponseSha256": "1a6dcdac60ddcc72dad8aa4d4ca0c375325cd8287ad3f45d4804c167f9e93ea5"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "airport:monbetsu:public-ordinary-bus-gateway",
+          "url": "https://www.ok-m.jp/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+          "observedResponseSha256": "fe593244cb72e073e8af32870f7eb185761493641b4a75e85a650efd6d47ca0e"
+        }
+      ],
+      "operator": "北紋バス株式会社",
+      "line": "湧紋線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "中湧別→紋別 actual7",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current own-operator revision2026-04-01; selected black ordinary operating columns actual11/7. Static topology only; no clock connection, seat or realtime guarantee. Red weekday-only Kitami connection rows excluded.",
+      "sourcePublishedParentCallingStations": [
+        "中湧別文化センタートム",
+        "中湧別市街",
+        "五鹿山通",
+        "湧別7号線",
+        "湧別6号線",
+        "湧別5号線",
+        "湧別4号線",
+        "川西３線",
+        "川西",
+        "川西5線",
+        "川西6線",
+        "川西7線",
+        "川西8線",
+        "加藤牧場",
+        "信部内",
+        "沼の上",
+        "ｷｬﾝﾌﾟ場入口",
+        "秋平",
+        "水谷",
+        "弘道",
+        "共和",
+        "小向14線",
+        "小向",
+        "小向12線",
+        "小向11線",
+        "原生花園",
+        "八十士",
+        "小向7線",
+        "紋別空港",
+        "ｵﾎｰﾂｸ紋別空港",
+        "まきばのパークゴルフ場",
+        "流氷公園",
+        "ｵﾎｰﾂｸ流氷公園前",
+        "元紋別",
+        "ｵﾎｰﾂｸﾀﾜｰ入口",
+        "7丁目会館前",
+        "南が丘7丁目",
+        "ハロ-ワ-ク",
+        "南が丘4丁目",
+        "南が丘",
+        "南が丘3丁目",
+        "南が丘1丁目",
+        "本町6丁目",
+        "北海道銀行前（本町5丁目）",
+        "紋別"
+      ],
+      "parentCallingStations": [
+        "中湧別文化センタートム",
+        "中湧別市街",
+        "五鹿山通",
+        "湧別7号線",
+        "湧別6号線",
+        "湧別5号線",
+        "湧別4号線",
+        "川西３線",
+        "川西",
+        "川西5線",
+        "川西6線",
+        "川西7線",
+        "川西8線",
+        "加藤牧場",
+        "信部内",
+        "沼の上",
+        "ｷｬﾝﾌﾟ場入口",
+        "秋平",
+        "水谷",
+        "弘道",
+        "共和",
+        "小向14線",
+        "小向",
+        "小向12線",
+        "小向11線",
+        "原生花園",
+        "八十士",
+        "小向7線",
+        "紋別空港",
+        "オホーツク紋別空港",
+        "まきばのパークゴルフ場",
+        "流氷公園",
+        "ｵﾎｰﾂｸ流氷公園前",
+        "元紋別",
+        "ｵﾎｰﾂｸﾀﾜｰ入口",
+        "7丁目会館前",
+        "南が丘7丁目",
+        "ハロ-ワ-ク",
+        "南が丘4丁目",
+        "南が丘",
+        "南が丘3丁目",
+        "南が丘1丁目",
+        "本町6丁目",
+        "北海道銀行前（本町5丁目）",
+        "紋別"
+      ],
+      "sectionStartIndex": 28,
+      "callingStations": [
+        "紋別空港",
+        "オホーツク紋別空港",
+        "まきばのパークゴルフ場"
+      ],
+      "callingComponents": [
+        {
+          "name": "紋別空港",
+          "operator": "北紋バス（株）",
+          "line": "p11-stop:P11-22_01:bs878",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs878",
+            "recordSha256": "4c2cf87a4d895048f09be07fa659758d042178e62e376d8ba1b002b2ad598167",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current own-carrier ordinary Yu-mon timetable confirms this exact stop in actual airport deviation columns. Native same-road same-operator representative only; terminal 紋別空港 and road オホーツク紋別空港 remain distinct. No free-shuttle carrier inference or pole walking join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北紋バス（株）",
+              "currentOperatorName": "北紋バス株式会社",
+              "currentStopName": "紋別空港",
+              "historicalRoute": "遠軽線",
+              "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+              "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+            }
+          }
+        },
+        {
+          "name": "オホーツク紋別空港",
+          "operator": "北紋バス（株）",
+          "line": "p11-stop:P11-22_01:bs873",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs873",
+            "recordSha256": "74fd50585292a1b777cb9c58b6465b35face57054648b3773b2b99b1768a2414",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current own-carrier ordinary Yu-mon timetable confirms this exact stop in actual airport deviation columns. Native same-road same-operator representative only; terminal 紋別空港 and road オホーツク紋別空港 remain distinct. No free-shuttle carrier inference or pole walking join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北紋バス（株）",
+              "currentOperatorName": "北紋バス株式会社",
+              "currentStopName": "ｵﾎｰﾂｸ紋別空港",
+              "historicalRoute": "遠軽線",
+              "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+              "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "オホーツク紋別空港",
+              "currentStopName": "ｵﾎｰﾂｸ紋別空港",
+              "operator": "北紋バス（株）",
+              "physicalContinuityReview": "Exact Hokumon P11 historical corridor identity, current same-carrier airport deviation retains separately named terminal and road airport stops and adjacent Makiba component. Difference here is explicitly reviewed half-width printing of the Okhotsk prefix, not an automatic fuzzy alias or merger with 紋別空港. Native fields and printed parent sequence both preserved.",
+              "historicalEvidence": {
+                "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+                "stopName": "オホーツク紋別空港",
+                "operator": "北紋バス（株）",
+                "locator": "Exact P11-22_01 bs873 retained native record"
+              },
+              "currentEvidence": {
+                "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+                "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+                "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7",
+                "stopName": "ｵﾎｰﾂｸ紋別空港",
+                "operator": "北紋バス（株）",
+                "locator": "Both actual selected ordinary timetable columns print the distinct road airport call using half-width katakana."
+              }
+            }
+          }
+        },
+        {
+          "name": "まきばのパークゴルフ場",
+          "operator": "北紋バス（株）",
+          "line": "p11-stop:P11-22_01:bs855",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs855",
+            "recordSha256": "f9dce249cfbedc7d678a4bb4d2ad878710f92d01cacd453731e9bc645b13ec91",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current own-carrier ordinary Yu-mon timetable confirms this exact stop in actual airport deviation columns. Native same-road same-operator representative only; terminal 紋別空港 and road オホーツク紋別空港 remain distinct. No free-shuttle carrier inference or pole walking join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北紋バス（株）",
+              "currentOperatorName": "北紋バス株式会社",
+              "currentStopName": "まきばのパークゴルフ場",
+              "historicalRoute": "遠軽線",
+              "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+              "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedServiceDate": "20261003",
+      "locator": "Visually reviewed full current operator PDF page2 column7, actual45calling-stop parent. Select consecutive indexes28 through30. Selected column is black ordinary service; airport cell is populated. Inbound column passes 紋別高校 and does not call; separate 北海道北見バス connecting service not included. No pickup/dropoff-only marker for selected local calls. Airport terminal 紋別空港 and road ｵﾎｰﾂｸ紋別空港 stay distinct; full printed names preserved separately from narrowly reviewed identity-resolved label.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS_NO_CLOCKS_FARES_FREQUENCIES"
+    },
+    {
+      "factId": "monbetsu-ana-375-actual-directed-service",
+      "kind": "service",
+      "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+      "sourceUrl": "https://www.ok-m.jp/%E7%99%BA%E7%9D%80%E4%BE%BF%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85-%E9%81%8B%E8%88%AA%E7%8A%B6%E6%B3%81/",
+      "observedResponseSha256": "95233104ce724a016cc4b856bc9d082921f559f3c7516d0c7fb95106230b7faa",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+          "url": "https://www.ok-m.jp/%E7%99%BA%E7%9D%80%E4%BE%BF%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85-%E9%81%8B%E8%88%AA%E7%8A%B6%E6%B3%81/",
+          "observedResponseSha256": "95233104ce724a016cc4b856bc9d082921f559f3c7516d0c7fb95106230b7faa"
+        },
+        {
+          "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+          "url": "https://www.okhotsk.pref.hokkaido.lg.jp/kk/akk/monbetsu/teikibin.html",
+          "observedResponseSha256": "d19baa8282a8a1cca3e31377d3f071c4e5e0d79514aa95147d4a73e8346f8829"
+        },
+        {
+          "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+          "url": "https://mombetsu.jp/tourism/?content=5334",
+          "observedResponseSha256": "0e16540354870be3f38131aa55acd132208cd2af1e7753b069da264e168942bb"
+        }
+      ],
+      "operator": "全日本空輸株式会社",
+      "line": "羽田・紋別国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HND-MBE",
+      "serviceState": "active",
+      "serviceStateScope": "Current airport-published period2025-10-26 through2026-10-24, independently city2026-10-01 and still-published Hokkaido2024-11-22 actual operating-company corroboration; not realtime.",
+      "reviewedServiceDate": "20261003",
+      "reviewedFlightCode": "ANA375",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "オホーツク紋別",
+          "canonicalAirportName": "紋別空港",
+          "referencePointId": "cf03_00014"
+        },
+        {
+          "sourceName": "羽田",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "callingStations": [
+        "東京国際空港",
+        "紋別空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-owned flight page explicitly shows Haneda as opposite endpoint of actual ANA375/376, with operating ANA carrier separately identified by Hokkaido airport administrator. Reuse exact already-admitted C28 Tokyo International/Haneda facility and existing national chain; no new terminal/gate connection or codeshare."
+          }
+        },
+        {
+          "name": "紋別空港",
+          "operator": "airport-facility:cf03_00014",
+          "line": "airport:cf03_00014",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00014",
+            "requirementId": "review:official-airport:紋別",
+            "expectedRequirementName": "紋別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport-owned passenger bus-access section explicitly publishes city/airport services and paid Hokumon operator access. Current own-carrier ordinary timetable independently calls exact terminal 紋別空港 in both directions; coarse whole-airport gateway only, not road stop オホーツク紋別空港 or precise door/curb. Current directional ANA flights and Hokkaido actual operating-company source independently establish passenger airport service."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Airport-own current flight page independently names ANA375 Haneda→Okhotsk Monbetsu and ANA376 reverse. Hokkaido airport administration section 運航会社 expressly identifies ANA（全日本空輸株式会社）; no marketing-carrier-only inference. Airport public brand and C28 exact identity preserved. No ANA website source, codeshare expansion, flight clocks, guaranteed transfers, baggage or gate/terminal claim."
+    },
+    {
+      "factId": "monbetsu-ana-376-actual-directed-service",
+      "kind": "service",
+      "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+      "sourceUrl": "https://www.ok-m.jp/%E7%99%BA%E7%9D%80%E4%BE%BF%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85-%E9%81%8B%E8%88%AA%E7%8A%B6%E6%B3%81/",
+      "observedResponseSha256": "95233104ce724a016cc4b856bc9d082921f559f3c7516d0c7fb95106230b7faa",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+          "url": "https://www.ok-m.jp/%E7%99%BA%E7%9D%80%E4%BE%BF%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85-%E9%81%8B%E8%88%AA%E7%8A%B6%E6%B3%81/",
+          "observedResponseSha256": "95233104ce724a016cc4b856bc9d082921f559f3c7516d0c7fb95106230b7faa"
+        },
+        {
+          "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+          "url": "https://www.okhotsk.pref.hokkaido.lg.jp/kk/akk/monbetsu/teikibin.html",
+          "observedResponseSha256": "d19baa8282a8a1cca3e31377d3f071c4e5e0d79514aa95147d4a73e8346f8829"
+        },
+        {
+          "sourceActionId": "airport:monbetsu:ana-current-375-376-carrier-reviewed",
+          "url": "https://mombetsu.jp/tourism/?content=5334",
+          "observedResponseSha256": "0e16540354870be3f38131aa55acd132208cd2af1e7753b069da264e168942bb"
+        }
+      ],
+      "operator": "全日本空輸株式会社",
+      "line": "羽田・紋別国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "MBE-HND",
+      "serviceState": "active",
+      "serviceStateScope": "Current airport-published period2025-10-26 through2026-10-24, independently city2026-10-01 and still-published Hokkaido2024-11-22 actual operating-company corroboration; not realtime.",
+      "reviewedServiceDate": "20261003",
+      "reviewedFlightCode": "ANA376",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "オホーツク紋別",
+          "canonicalAirportName": "紋別空港",
+          "referencePointId": "cf03_00014"
+        },
+        {
+          "sourceName": "羽田",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "callingStations": [
+        "紋別空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "紋別空港",
+          "operator": "airport-facility:cf03_00014",
+          "line": "airport:cf03_00014",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00014",
+            "requirementId": "review:official-airport:紋別",
+            "expectedRequirementName": "紋別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport-owned passenger bus-access section explicitly publishes city/airport services and paid Hokumon operator access. Current own-carrier ordinary timetable independently calls exact terminal 紋別空港 in both directions; coarse whole-airport gateway only, not road stop オホーツク紋別空港 or precise door/curb. Current directional ANA flights and Hokkaido actual operating-company source independently establish passenger airport service."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-owned flight page explicitly shows Haneda as opposite endpoint of actual ANA375/376, with operating ANA carrier separately identified by Hokkaido airport administrator. Reuse exact already-admitted C28 Tokyo International/Haneda facility and existing national chain; no new terminal/gate connection or codeshare."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Airport-own current flight page independently names ANA375 Haneda→Okhotsk Monbetsu and ANA376 reverse. Hokkaido airport administration section 運航会社 expressly identifies ANA（全日本空輸株式会社）; no marketing-carrier-only inference. Airport public brand and C28 exact identity preserved. No ANA website source, codeshare expansion, flight clocks, guaranteed transfers, baggage or gate/terminal claim."
+    },
+    {
+      "factId": "monbetsu-public-airport-to-exact-hokumon-terminal-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:monbetsu:public-ordinary-bus-gateway",
+      "sourceUrl": "https://www.ok-m.jp/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+      "observedResponseSha256": "fe593244cb72e073e8af32870f7eb185761493641b4a75e85a650efd6d47ca0e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:monbetsu:public-ordinary-bus-gateway",
+          "url": "https://www.ok-m.jp/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+          "observedResponseSha256": "fe593244cb72e073e8af32870f7eb185761493641b4a75e85a650efd6d47ca0e"
+        },
+        {
+          "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+          "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+          "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+        },
+        {
+          "sourceActionId": "bus:monbetsu:hokumon-current-ordinary-airport-deviation",
+          "url": "https://www.hokumonbus.com/timetable",
+          "observedResponseSha256": "1a6dcdac60ddcc72dad8aa4d4ca0c375325cd8287ad3f45d4804c167f9e93ea5"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "components": [
+        {
+          "name": "紋別空港",
+          "operator": "airport-facility:cf03_00014",
+          "line": "airport:cf03_00014",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00014",
+            "requirementId": "review:official-airport:紋別",
+            "expectedRequirementName": "紋別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport-owned passenger bus-access section explicitly publishes city/airport services and paid Hokumon operator access. Current own-carrier ordinary timetable independently calls exact terminal 紋別空港 in both directions; coarse whole-airport gateway only, not road stop オホーツク紋別空港 or precise door/curb. Current directional ANA flights and Hokkaido actual operating-company source independently establish passenger airport service."
+          }
+        },
+        {
+          "name": "紋別空港",
+          "operator": "北紋バス（株）",
+          "line": "p11-stop:P11-22_01:bs878",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs878",
+            "recordSha256": "4c2cf87a4d895048f09be07fa659758d042178e62e376d8ba1b002b2ad598167",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current own-carrier ordinary Yu-mon timetable confirms this exact stop in actual airport deviation columns. Native same-road same-operator representative only; terminal 紋別空港 and road オホーツク紋別空港 remain distinct. No free-shuttle carrier inference or pole walking join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北紋バス（株）",
+              "currentOperatorName": "北紋バス株式会社",
+              "currentStopName": "紋別空港",
+              "historicalRoute": "遠軽線",
+              "url": "https://www.hokumonbus.com/wp-content/uploads/yuumon_R8_4_1.pdf",
+              "observedResponseSha256": "9d8ef770eb9caae87dbf1639a00210bbe1c0337cb2996f0ae217f2d08a79f3b7"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "AIRPORT_SPECIFIC_PAID_OPERATOR_ACCESS_AND_ACTUAL_DISTINCT_TERMINAL_CALL",
+      "locator": "Airport-own access page bus section explicitly links paid local/suburban operator Hokumon separately from free city and reserved Engaru services. Current Hokumon PDF actual columns11/7 each serve terminal 紋別空港 and separately name road ｵﾎｰﾂｸ紋別空港. This binds public whole-airport facility to exact native terminal bus component, not to adjacent road stop or guessed curb. No physical pole merge, door/curb/navigation/accessible-path claim."
+    }
+  ],
+  "scope": "3 genuine bus components and3 real contiguous ride segments form a directed loop via actual opposite-direction services. 2 coarsely evidenced public gateway edges and2 actual ANA flights. Free shuttle excluded because carrier unproven; no fabricated reversal or entire route import.",
+  "metrics": {
+    "busRideEdges": 3,
+    "flightEdges": 2,
+    "publicWalkEdges": 2,
+    "newP11Identities": 3,
+    "newHttpRequests": 2
+  }
+}
