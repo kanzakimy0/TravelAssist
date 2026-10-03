@@ -369,9 +369,9 @@
     {
       "factId": "iwakuni-hiroshima-307M",
       "kind": "service",
-      "sourceActionId": "rail:jr-west:iwakuni-hiroshima-actual-october2-chain",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/166131?date=20261002",
-      "observedResponseSha256": "68360d8550c5083675275985c2b7b91ae37e2b4c10b17f8780a41a78249bb193",
+      "sourceActionId": "rail:jr-west:jnto-independent-hiroshima-iwakuni-static-local-westbound",
+      "sourceUrl": "https://www.japan.travel/en/destinations/chugoku/yamaguchi/iwakuni/",
+      "observedResponseSha256": "881348945ccfb95701c051a1f21581a6ee44b8ca31afbe28be1ac277eb291b0a",
       "callingStations": [
         "広島",
         "新白島",
@@ -493,12 +493,23 @@
       "line": "山陽本線・岩国広島区間",
       "operator": "西日本旅客鉄道",
       "direction": "広島→岩国",
-      "serviceClass": "普通",
-      "serviceNumber": "307M",
-      "reviewMethod": "INDEPENDENT_DATED_ACTUAL_TRAIN_COMPLETE_CONTIGUOUS_S12_SECTION",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_GOVERNMENT_DIRECTIONAL_LOCAL_GUIDE_EXPLICIT_LOCAL_DEFINITION_AND_OPERATOR_STATION_ORDER",
       "serviceState": "active",
-      "serviceStateScope": "OCTOBER2_2026_FRIDAY_ELIGIBLE_PUBLISHED_WEEKDAY_SERVICE_NOT_REALTIME",
-      "locator": "307M actual October2 source; all16 actual calls in selected continuous section. Prior糸崎-Hiroshima outside dependency excluded. NativeS12山陽線 identities; no trainreverse, clocks/frequency or busconnectionpromise."
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "locator": "Bounded independent combination: JNTO current Iwakuni destination recommends a Sanyo Main Line local train from Hiroshima to Iwakuni. Its current rail guide explicitly separates local all-station service from rapid service. Current operator cnh map supplies exact R01-R16 station order, not service existence. This supports only this westbound static local stopping pattern; does not assert all Japanese ordinary trains stop everywhere, reverse service, 307M, October2 operation, clocks or frequency. Every original native component remains distinct. Raw JNTO response bytes were hashed in memory and discarded; no prose, image, map or timetable is redistributed.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:jnto-independent-hiroshima-iwakuni-static-local-westbound",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:jr-west:jnto-independent-hiroshima-iwakuni-static-local-westbound",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
     },
     {
       "factId": "iwakuni-airport-public-exit-local-bus-frontage",

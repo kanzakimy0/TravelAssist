@@ -22,57 +22,9 @@
     {
       "factId": "sanyo-302M-hiroshima-saijo-current-section",
       "kind": "service",
-      "sourceActionId": "rail:jr-west:current-saijo-airport-prerequisite",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/196691?date=20261001",
-      "observedResponseSha256": "cdf1f61091dfb3e2ed87eb2fcfe9dbeadd6a3ee42b1df075f1d12a3f7f9c1b5b",
-      "corroboratingEvidence": [
-        {
-          "sourceActionId": "rail:jr-west:current-saijo-airport-prerequisite",
-          "url": "https://timetable.jr-odekake.net/station-timetable/3863022002?date=20261001",
-          "observedResponseSha256": "4ecd60293c680e56cd41a8a580714a6aad9389614a8bfeeaea7212a9d3f2fc41"
-        }
-      ],
-      "locator": "Exact current 302M resolved independently from the 20261001 station direction page. Review every actual called station in this parent sequence and preserve only the contiguous ten-call Hiroshima–Saijo section. Both directions are separately observed. Bind exact JR West / Sanyo Line S12 identities; no timetable clocks, platforms, calendar database, copied tables or inferred reverse service. Hiroshima already has an independently reviewed conventional/Shinkansen interchange.",
-      "line": "山陽線・広島西条区間",
-      "operator": "西日本旅客鉄道",
-      "mode": "conventional_rail",
-      "serviceClass": "普通",
-      "direction": "outbound",
-      "parentCallingStations": [
-        "岩国",
-        "和木",
-        "大竹",
-        "玖波",
-        "大野浦",
-        "前空",
-        "宮島口",
-        "阿品",
-        "宮内串戸",
-        "廿日市",
-        "五日市",
-        "新井口",
-        "西広島",
-        "横川",
-        "新白島",
-        "広島",
-        "天神川",
-        "向洋",
-        "海田市",
-        "安芸中野",
-        "中野東",
-        "瀬野",
-        "八本松",
-        "寺家",
-        "西条",
-        "西高屋",
-        "白市",
-        "入野",
-        "河内",
-        "本郷",
-        "三原",
-        "糸崎"
-      ],
-      "sectionStartIndex": 15,
+      "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+      "sourceUrl": "https://www.hiroshima-u.ac.jp/en/access/higashihiroshima",
+      "observedResponseSha256": "92c1acd76c6bc37182634fe5ab628813b7cd743600e1cdd40c9a22da43229aae",
       "callingStations": [
         "広島",
         "天神川",
@@ -147,59 +99,40 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "ACTUAL_CURRENT_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽線・広島西条区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "outbound",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_UNIVERSITY_EXPLICIT_DIRECTIONAL_LOCAL_RELATION_GOVERNMENT_LOCAL_DEFINITION_AND_OPERATOR_STATION_ORDER",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "locator": "Bounded static composite: current central Hiroshima University access explicitly recommends a local train Hiroshima to Saijo. Its own RISE native table explicitly marks Hiroshima city <–> Higashi Hiroshima city and identifies JR local train Hiroshima Station–Saijo Station, supporting each direction rather than mechanically reversing. JNTO separately defines local as all-station and rapid as distinct; JR cnh current map provides exact G01–G10 order only. RISE has undated stale Green Phoenix bus content, explicitly contradicted by updated central guidance; that bus content and all clocks/fares are excluded. Current railway existence is corroborated by central guide, but no particular train, October service day or frequency is claimed. Ten original components/restrictions remain unchanged. No restricted timetable processing.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://rise.hiroshima-u.ac.jp/en/about/access/",
+          "observedResponseSha256": "f3630a0d3fa3feff414d422dfdc76dbf3ad600d8cce815c4c346a43cef2825cf"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
     },
     {
       "factId": "sanyo-1501M-hiroshima-saijo-current-section",
       "kind": "service",
-      "sourceActionId": "rail:jr-west:current-saijo-airport-prerequisite",
-      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/127051?date=20261001",
-      "observedResponseSha256": "ec25a07f911bed31a03008626ca00eb51e9ef4a355facaae2030a1f8a75f7e89",
-      "corroboratingEvidence": [
-        {
-          "sourceActionId": "rail:jr-west:current-saijo-airport-prerequisite",
-          "url": "https://timetable.jr-odekake.net/station-timetable/3857022001?date=20261001",
-          "observedResponseSha256": "918f047bce703238582a7e07111a9675606eebeef724acb0efe40e83f63905e5"
-        }
-      ],
-      "locator": "Exact current 1501M resolved independently from the 20261001 station direction page. Review every actual called station in this parent sequence and preserve only the contiguous ten-call Hiroshima–Saijo section. Both directions are separately observed. Bind exact JR West / Sanyo Line S12 identities; no timetable clocks, platforms, calendar database, copied tables or inferred reverse service. Hiroshima already has an independently reviewed conventional/Shinkansen interchange.",
-      "line": "山陽線・広島西条区間",
-      "operator": "西日本旅客鉄道",
-      "mode": "conventional_rail",
-      "serviceClass": "普通",
-      "direction": "inbound",
-      "parentCallingStations": [
-        "白市",
-        "西高屋",
-        "西条",
-        "寺家",
-        "八本松",
-        "瀬野",
-        "中野東",
-        "安芸中野",
-        "海田市",
-        "向洋",
-        "天神川",
-        "広島",
-        "新白島",
-        "横川",
-        "西広島",
-        "新井口",
-        "五日市",
-        "廿日市",
-        "宮内串戸",
-        "阿品",
-        "宮島口",
-        "前空",
-        "大野浦",
-        "玖波",
-        "大竹",
-        "和木",
-        "岩国"
-      ],
-      "sectionStartIndex": 2,
+      "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+      "sourceUrl": "https://rise.hiroshima-u.ac.jp/en/about/access/",
+      "observedResponseSha256": "f3630a0d3fa3feff414d422dfdc76dbf3ad600d8cce815c4c346a43cef2825cf",
       "callingStations": [
         "西条",
         "寺家",
@@ -274,9 +207,33 @@
           "mode": "conventional_rail"
         }
       ],
-      "reviewMethod": "ACTUAL_CURRENT_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽線・広島西条区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "inbound",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_UNIVERSITY_EXPLICIT_DIRECTIONAL_LOCAL_RELATION_GOVERNMENT_LOCAL_DEFINITION_AND_OPERATOR_STATION_ORDER",
       "serviceState": "active",
-      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME"
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "locator": "Bounded static composite: current central Hiroshima University access explicitly recommends a local train Hiroshima to Saijo. Its own RISE native table explicitly marks Hiroshima city <–> Higashi Hiroshima city and identifies JR local train Hiroshima Station–Saijo Station, supporting each direction rather than mechanically reversing. JNTO separately defines local as all-station and rapid as distinct; JR cnh current map provides exact G01–G10 order only. RISE has undated stale Green Phoenix bus content, explicitly contradicted by updated central guidance; that bus content and all clocks/fares are excluded. Current railway existence is corroborated by central guide, but no particular train, October service day or frequency is claimed. Ten original components/restrictions remain unchanged. No restricted timetable processing.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://www.hiroshima-u.ac.jp/en/access/higashihiroshima",
+          "observedResponseSha256": "92c1acd76c6bc37182634fe5ab628813b7cd743600e1cdd40c9a22da43229aae"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
     },
     {
       "factId": "saijo-jr-public-north-gateway-2065_8",

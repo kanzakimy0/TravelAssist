@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02T22:54:37.323000+00:00",
+  "updatedAt": "2026-10-03T00:46:04.498803+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
-  "currentStage": "PHASE180_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2",
+  "currentStage": "PHASE187_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "completedSinceCheckpoint": [
     "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
@@ -16,14 +16,14 @@
     "Phase175 Odate-Noshiro exact original C28 requirement admitted with unchangedID, two independently sourced buses, two actual Tsugaru sections toAkita and publictransfers,18edges; sourceobservedAt/rawretentionmetadata corrected, early933factpreflightPASS and replay/preservationPASS."
   ],
   "currentCounts": {
-    "admitted": 3666,
-    "edges": 8565,
-    "hold": 20,
-    "iterations": 180,
-    "lines": 287,
+    "admitted": 3774,
+    "edges": 8966,
+    "hold": 19,
+    "iterations": 187,
+    "lines": 333,
     "rejected": 0,
-    "required": 3686,
-    "servicePatterns": 625
+    "required": 3793,
+    "servicePatterns": 730
   },
   "validation": {
     "focusedTests": 65,
@@ -448,9 +448,66 @@
       "deterministicRebuild": "PASS",
       "remainingChecks": "PASS",
       "ci": "PENDING_NEW_CHECKPOINT"
+    },
+    "phase181": {
+      "status": "EXACT_EXISTING_GRAPH_AND_ORIGINAL_REQUIREMENTS_PRESERVED_64_LOCAL_ROOTS_CLOSED_GLOBAL_TASK_IN_PROGRESS",
+      "report": ".cache/task-086/airports7/preservation181-production-outcome.json",
+      "sharedGlobalFailureRetained": true,
+      "ci180Runs": [
+        37075327108,
+        37075237772
+      ],
+      "ci180Status": "RUNNING_FOR_B3E5ABB8_ONLY_NOT181"
+    },
+    "phase180CI": {
+      "status": "PASS",
+      "branchHeadSha": "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf",
+      "directRun": 37075327108,
+      "directCheckout": "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf",
+      "prRun": 37075237772,
+      "prMergeCheckout": "be86527263eead9b76031bba2dd01db6457c456f",
+      "coverage": "Onlycommitted180;not181andlater"
+    },
+    "phase182to183": {
+      "replay": "PASS",
+      "elapsedSeconds": 182.47210959999938,
+      "preservation": ".cache/task-086/airports7/preservation182-183-production-outcome.json",
+      "packageRootsClosed": 70,
+      "transientInvalidatedReviewRootsClosedAfterEvidenceRefresh": 2,
+      "currentOpenRoots": 143,
+      "currentOriginalConnected": 969,
+      "fullGate": "PENDING_UPDATED_SCOPE_REBUILD",
+      "stageStatus": "CORE_STAGE_FAILED",
+      "technicalFailures": [
+        {
+          "name": "raw_content_hashes_and_retained_input_versions",
+          "reason": "Input changed data/transport/network/research/stage-scope.json",
+          "status": "FAIL"
+        }
+      ]
+    },
+    "phase187FullRegression": {
+      "tests": 3081,
+      "passed": 3081,
+      "timing": {
+        "command": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=4",
+          "tests/*.test.mjs"
+        ],
+        "elapsedSeconds": 879.280419799994,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      },
+      "deterministicRebuild": "PASS",
+      "remainingChecks": "PASS",
+      "ci": "PENDING_NEW_CHECKPOINT"
     }
   },
-  "nextConcreteAction": "Commit/push validated180 checkpoint; record direct HEAD and PR checkout separately; continue Nagasaki cached zero-new-node direction package and Hachijo original airport chain; remainingJRsource8 reviewed independently.",
+  "nextConcreteAction": "Commit/push validated187 checkpoint and record direct HEAD/PR checkout independently; continue Amami native two-direction adjacent-call/public-airport-interface candidate using cached own-operator maps and airport map. Tourism source excluded for explicit information-use restriction.",
   "independentWork": [
     "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
     "Tottori original airport/current complete calling sequences and rail dependency",
@@ -667,10 +724,35 @@
     "negativeScope": "terms/catalog/publisherauthority exactURLandresponsehash, sourcearchive/agency/publisher, attribution/changes, noexplicitresourceexception, exactversion; nativeZIPreproductionmandatory"
   },
   "nextConcreteActions": [
-    "Run full current180 regression/rebuild/recovery/corruption and lint/type/artifact gates, no input changes during execution.",
-    "Complete Shirahama five real direction-platform public passages using newly cached official maps; highway airport↔JR Osaka endpoint proof already exists.",
-    "Research Hachijo exact licensed feed/official airport public passage within originalT2 scope.",
-    "Yonaguni retains verified28-edge licensed loop privately; exact public airport-to-S2690 walking passage missing, no transfer invented.",
-    "Continue eight independently sourced rail facts grouped Sanyo/MarineWest/Sonic; not OSM primary by assumption."
-  ]
+    "Run validate-checkpoint.py187 after all inputs stabilize; phase186 first full3080pass1fail preserved, native P11 row-order repair reextracted all174identical records and replayPASS.",
+    "After full gate pass, update publication/report and stage manifest; secret-scan and commit/push existing branch/DraftPR466, record actual directHEADvsPRmergecheckoutSHAs.",
+    "Continue original32airport,46bus direction and5rail-source-fact research; reports do not stop. Ordinary tosaden other15points and Okinoerabu terminal interface evidence remain OPEN."
+  ],
+  "currentAgentCapabilityLimit": {
+    "event": "followup_task to existing aomori_extract returned agent thread limit reached",
+    "actualModelSelectionPreviouslyAvailable": true,
+    "fallback": "Root model plus deterministic scripts and local source cache; no extra configuration required",
+    "tokens": "unavailable",
+    "billing": "unavailable"
+  },
+  "currentRootAudit": {
+    "lastActualGraphPhase": 187,
+    "openRootsInLastStageReport": 81,
+    "airportRoots": 32,
+    "busDirectionRoots": 46,
+    "railSourceFactsRemaining": 5,
+    "temporaryGlobalRevalidationDeficits": 2,
+    "expectedUniqueRootsAfterActualCleanRebuildNotYetClaimed": 79
+  },
+  "privateSourceCacheNext": {
+    "folder": ".cache/task-086/tosaden-regular-next",
+    "nativeHttpRequests": 4,
+    "searchQueries": 6,
+    "webOpenRequests": 5,
+    "identityComparison": "0/17 identical stop IDs across different published feeds; ordinary evidence research remains",
+    "license": "CC BY4.0 catalog directly observed",
+    "noCanonicalImport": true,
+    "webClickRequests": 2,
+    "webScreenshotRequests": 1
+  }
 }
