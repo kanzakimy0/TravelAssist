@@ -1,906 +1,59 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T03:56:57.144469+00:00",
+  "updatedAt": "2026-10-03T04:41:29.810717+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "97af9e084f2238b59522f74bae066408a8853547",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2",
-  "currentStage": "PHASE195_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "1573226ffe92be31593747e78655caefb76d6bde",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2",
+  "currentStage": "PHASE196_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
-  "completedSinceCheckpoint": [
-    "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
-    "Phase171 Nagoya actual asymmetric Aoi bus calls plus public airport/JR/metro connections:14edges,6necessaryP11nodes, explicit Sakae alighting-only. Incremental replay/preservationPASS.",
-    "Phase172 Shizuoka exact6P11nodes/current actual branch-specific service, inbound alighting-only and native public terminal/JRfrontageproof;14edges. IncrementalreplayPASS,preservationPASS.",
-    "Phase173 Yamagata reviewedcorporatesuccession,5P11stops,currentasymmetricexclusiveboardingbus,2actualsixcallTsubasasectionsvia5OucomponentsandexistingFukushimaShinkansenanchor;22edges. ReplayPASS,preservationPASS.",
-    "Phase174 Hanamaki reviewed licensed October2 GTFS two real directional sections and three public transfers,22edges; explicit reviewed serviceDate contract and missing extractedFacts branch fixed, replay/preservationPASS.",
-    "Phase175 Odate-Noshiro exact original C28 requirement admitted with unchangedID, two independently sourced buses, two actual Tsugaru sections toAkita and publictransfers,18edges; sourceobservedAt/rawretentionmetadata corrected, early933factpreflightPASS and replay/preservationPASS."
-  ],
   "currentCounts": {
-    "admitted": 3790,
-    "edges": 9001,
-    "hold": 15,
-    "iterations": 195,
-    "lines": 344,
+    "admitted": 3793,
+    "edges": 9007,
+    "hold": 14,
+    "iterations": 196,
+    "lines": 346,
     "rejected": 0,
-    "required": 3805,
-    "servicePatterns": 751
+    "required": 3807,
+    "servicePatterns": 755
+  },
+  "currentRootAudit": {
+    "uniqueOpenRoots": 70,
+    "airportRoots": 25,
+    "busDirectionRoots": 44,
+    "railSourceReviewRoots": 1,
+    "railSourceFactsRemaining": 5
   },
   "validation": {
-    "focusedTests": 65,
-    "focusedPassed": 65,
-    "phase168Replays": "Both PASS; original records preserved. Reconciled inputs published. Current clean-rebuild receipt still pending; phase167 proof not reused.",
-    "phase169Replay": "PASS;44airportgaps; preserved168records; currentfullregression/rebuild pending",
-    "phase169FullRegression": {
-      "tests": 2933,
-      "passed": 2933,
-      "failed": 0,
-      "deterministicRebuild": "PASS",
-      "currentScope": "TASK086-FULL-ORIGINAL-PHASE169-v2",
-      "ci": "PASS direct37035853212 checkoutfea76d8d0691008551bd6d345e92bfc1ef91b263; PR37035860168 checkoutc0e48a55cac70569eb281c153be1a54565fa49e2; historical170notcovered"
-    },
-    "phase170Replay": {
-      "result": "PASS",
-      "priorFailure": "Missing fact-level corroborating references repaired; P11/C28/source prechecks passed",
-      "elapsed": {
-        "exitCode": 0,
-        "priorFailedSeconds": 151.77937,
-        "elapsedSeconds": 158.1383907
-      },
-      "preservation": "PASS:8201 edges/596 patterns/3435 requirements unchanged",
-      "finalGate": "PENDING: scope/global binding reconciliation and pending common parser edits invalidate prior proof; no current verified claim"
-    },
-    "phase171Replay": {
-      "result": "PASS",
-      "elapsed": {
-        "elapsedSeconds": 162.9590864,
-        "exitCode": 0
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
-        "retainedPhaseCount": 160,
-        "retainedEdgeCount": 8239,
-        "retainedPatternCount": 600,
-        "retainedRequirementCount": 3452,
-        "originalRequirements": 1038,
-        "newCounts": {
-          "admitted": 3433,
-          "edges": 8253,
-          "hold": 25,
-          "iterations": 171,
-          "lines": 275,
-          "rejected": 0,
-          "required": 3458,
-          "servicePatterns": 602
-        },
-        "airportSurfaceGaps": 42,
-        "fullGate": "PENDING"
-      },
-      "fullGate": "PENDING_COMMON_CODE_AND_LATEST_INPUTS"
-    },
-    "p11Succession": {
-      "focusedTestsPassed": 26,
-      "retainedSelectorsPassed": 346,
-      "status": "PASS_TARGETED_ONLY"
-    },
-    "phase172": {
-      "status": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
-      "facts": 4,
-      "directedEdges": 14,
-      "newP11Nodes": 6,
-      "elapsed": {
-        "exitCode": 0,
-        "elapsedSeconds": 164.2988811
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
-        "retainedPhaseCount": 161,
-        "retainedEdgeCount": 8253,
-        "retainedPatternCount": 602,
-        "retainedRequirementCount": 3458,
-        "originalRequirements": 1038,
-        "newCounts": {
-          "admitted": 3439,
-          "edges": 8267,
-          "hold": 25,
-          "iterations": 172,
-          "lines": 276,
-          "rejected": 0,
-          "required": 3464,
-          "servicePatterns": 604
-        },
-        "airportSurfaceGaps": 41,
-        "fullGate": "PENDING"
-      }
-    },
-    "phase173Replay": {
-      "status": "PASS_FULL_GATE_PENDING",
-      "elapsed": {
-        "exitCode": 0,
-        "elapsedSeconds": 169.1900569
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
-        "retainedPhaseCount": 162,
-        "retainedEdgeCount": 8267,
-        "retainedPatternCount": 604,
-        "retainedRequirementCount": 3464,
-        "originalRequirements": 1038,
-        "newCounts": {
-          "admitted": 3449,
-          "edges": 8289,
-          "hold": 25,
-          "iterations": 173,
-          "lines": 278,
-          "rejected": 0,
-          "required": 3474,
-          "servicePatterns": 608
-        },
-        "airportSurfaceGaps": 40,
-        "fullGate": "PENDING"
-      }
-    },
-    "specialApplicability": {
-      "focusedTestsPassed": 43,
-      "status": "PASS_TARGETED_INCLUDING_STATIC_INPUT_FINGERPRINT_NEGATIVES",
-      "fullRebuild": "PENDING"
-    },
-    "phase174": {
-      "status": "PASS_INCREMENTAL_FULL_GATE_PENDING",
-      "timing": {
-        "exitCode": 0,
-        "elapsedSeconds": 166.8011756,
-        "priorFailedSeconds": [
-          155.7460568,
-          158.8815807
-        ]
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
-        "retainedPhaseCount": 163,
-        "retainedEdgeCount": 8289,
-        "retainedPatternCount": 608,
-        "retainedRequirementCount": 3474,
-        "originalRequirements": 1038,
-        "admissionUpgrades": [],
-        "newCounts": {
-          "admitted": 3466,
-          "edges": 8311,
-          "hold": 25,
-          "iterations": 174,
-          "lines": 279,
-          "rejected": 0,
-          "required": 3491,
-          "servicePatterns": 610
-        },
-        "airportSurfaceGaps": 39,
-        "fullGate": "PENDING"
-      },
-      "repairedFailures": [
-        "REVIEWED_SERVICE_DATE_VS_GENERATION_DATE",
-        "OPTIONAL_NEW_SOURCE_EXTRACTION_LIST"
-      ],
-      "sourcePreflightTestCount": 41
-    },
-    "phase175": {
-      "status": "PASS_INCREMENTAL_FULL_GATE_PENDING",
-      "timing": {
-        "elapsedSeconds": 168.7859174,
-        "priorFailedSeconds": [
-          158.9819735,
-          161.4068751
-        ],
-        "exitCode": 0
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "fea76d8d0691008551bd6d345e92bfc1ef91b263",
-        "retainedPhaseCount": 164,
-        "retainedEdgeCount": 8311,
-        "retainedPatternCount": 610,
-        "retainedRequirementCount": 3491,
-        "originalRequirements": 1038,
-        "admissionUpgrades": [
-          {
-            "requirementId": "review:official-airport:大館能代",
-            "nodeId": "transport-node:086:c2bc14cd815bf3bfb98ad50380386a6a",
-            "from": "HOLD",
-            "to": "ADMIT_TASK_086_TOPOLOGY",
-            "evidenceRefs": [
-              "transport-evidence:086:39953a3f6a5aa8b8fe48117ddb9b2e8b",
-              "transport-evidence:086:44efba827690267e0c8b22edf9c6a47c"
-            ]
-          }
-        ],
-        "newCounts": {
-          "admitted": 3475,
-          "edges": 8329,
-          "hold": 24,
-          "iterations": 175,
-          "lines": 281,
-          "rejected": 0,
-          "required": 3499,
-          "servicePatterns": 614
-        },
-        "airportSurfaceGaps": 38,
-        "fullGate": "PENDING"
-      },
-      "repairedFailures": [
-        "MISSING_OBSERVATION_TIMESTAMP: explicit cached-review-time, no invented original fetch time",
-        "PRIVATE_VISUAL_REVIEW_STRING_USED_AS_RAW_RETENTION_BOOL: canonical false and separate private scope"
-      ],
-      "earlySourcePreflightFacts": 933
-    },
-    "fullGate": "LOCAL_PASS_175_CI_PENDING",
-    "phase178": {
-      "replay": "PASS",
-      "elapsedSeconds": 178.86035130001255,
-      "preservation": "PASS",
-      "airportGapCount": 35,
-      "originalRequirements": 1038,
-      "fullGate": "PENDING",
-      "sourceEligibility": "OPEN_ORDINARY_RESEARCH"
-    },
-    "phase179": {
-      "status": "REPAIRED_REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
-      "timing": {
-        "exitCode": 0,
-        "elapsedSeconds": 173.12120130000403,
-        "inputScope": "TASK086-FULL-ORIGINAL-PHASE179-v2",
-        "command": [
-          "node",
-          "tools/transport/task-086-remediate.mjs"
-        ],
-        "includedSourceRebinding": "phase157 exact preserved Soya directional calls; independently bound sources",
-        "previousFailedReceipt": "replay179-179-timing.json"
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
-        "baselineIteration": 178,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE179-v2",
-        "originalRequirements": 1038,
-        "retainedEdges": 8425,
-        "retainedPatterns": 620,
-        "retainedRequirements": 3573,
-        "admissionUpgrades": [
-          {
-            "requirementId": "review:official-airport:鳥取",
-            "nodeId": "transport-node:086:565bb01b4b53f94f9f83e780a76240c3",
-            "from": "HOLD",
-            "to": "ADMIT_TASK_086_TOPOLOGY"
-          }
-        ],
-        "reviewedSourceRebinding": {
-          "phasePath": "data/transport/network/research/phases/157-wakkanai-airport-national-attachment-through-current-asymmetric-soya-trains.json",
-          "preservedPatterns": 2,
-          "preservedEdges": 30,
-          "onlyReviewedProvenanceAndScopeFieldsChanged": true
-        },
-        "newCounts": {
-          "admitted": 3612,
-          "edges": 8495,
-          "hold": 20,
-          "iterations": 179,
-          "lines": 286,
-          "rejected": 0,
-          "required": 3632,
-          "servicePatterns": 623
-        },
-        "airportSurfaceGaps": 34,
-        "actualClosedRootIds": [
-          "root:airport:review:official-airport:鳥取"
-        ],
-        "actualOpenedRootIds": [
-          "root:obligation:mode:required-special-tourism"
-        ],
-        "fullGate": "PENDING_AFTER_REVIEW_INPUT_RECONCILIATION"
-      },
-      "priorFailureRetained": ".cache\\task-086\\airports7\\replay179-179-timing.json",
-      "currentGlobalReview": "Read-only production reviewGlobalGaps confirms special applicability no longer invalid after phase157 evidence rebind; generated unresolved still needs next serial replay. Source rights and highway gateway obligations remain OPEN."
-    },
-    "phase180": {
-      "status": "REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
-      "timing": {
-        "exitCode": 0,
-        "elapsedSeconds": 177.5982810999849,
-        "inputScope": "TASK086-FULL-ORIGINAL-PHASE180-v2",
-        "command": [
-          "node",
-          "tools/transport/task-086-remediate.mjs"
-        ],
-        "includedSourceRebindings": "10 independently reviewed existing rail facts, exact calls and restrictions retained, accurate static service scope"
-      },
-      "preservation": {
-        "status": "PASS",
-        "baselineHead": "c64cf9a1f42ed8dee2698f08dbda686a8f6fc250",
-        "baselineIteration": 179,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2",
-        "originalRequirements": 1038,
-        "retainedEdges": 8495,
-        "retainedPatterns": 623,
-        "retainedRequirements": 3632,
-        "admissionUpgrades": [],
-        "reviewedSourceRebinding": [
-          {
-            "phasePath": "data/transport/network/research/phases/151-wadamisaki-current-jr-branch-trains-and-explicit-subway-entrances.json",
-            "preservedPatterns": 2,
-            "preservedEdges": 2,
-            "allowedPatternChangedFields": [
-              "evidenceRefs",
-              "sourceFactRef",
-              "sourceRefs",
-              "serviceStateScope",
-              "serviceClass"
-            ],
-            "allowedEdgeChangedFields": [
-              "topologyEvidenceRefs",
-              "sourceRefs",
-              "serviceClass"
-            ],
-            "allOtherStructuralFieldsUnchanged": true
-          },
-          {
-            "phasePath": "data/transport/network/research/phases/083-nanpu-current-kochi-rail-backbone.json",
-            "preservedPatterns": 2,
-            "preservedEdges": 22,
-            "allowedPatternChangedFields": [
-              "evidenceRefs",
-              "sourceFactRef",
-              "sourceRefs",
-              "serviceStateScope"
-            ],
-            "allowedEdgeChangedFields": [
-              "topologyEvidenceRefs",
-              "sourceRefs"
-            ],
-            "allOtherStructuralFieldsUnchanged": true
-          },
-          {
-            "phasePath": "data/transport/network/research/phases/086-uzushio-current-tokushima-rail-and-takamatsu-concourse.json",
-            "preservedPatterns": 2,
-            "preservedEdges": 16,
-            "allowedPatternChangedFields": [
-              "evidenceRefs",
-              "sourceFactRef",
-              "sourceRefs",
-              "serviceStateScope"
-            ],
-            "allowedEdgeChangedFields": [
-              "topologyEvidenceRefs",
-              "sourceRefs"
-            ],
-            "allOtherStructuralFieldsUnchanged": true
-          },
-          {
-            "phasePath": "data/transport/network/research/phases/032-shikoku-seto-ohashi-gateway.json",
-            "preservedPatterns": 2,
-            "preservedEdges": 4,
-            "allowedPatternChangedFields": [
-              "evidenceRefs",
-              "sourceFactRef",
-              "sourceRefs",
-              "serviceStateScope"
-            ],
-            "allowedEdgeChangedFields": [
-              "topologyEvidenceRefs",
-              "sourceRefs"
-            ],
-            "allOtherStructuralFieldsUnchanged": true
-          },
-          {
-            "phasePath": "data/transport/network/research/phases/145-astram-current-directional-trains-national-anchor-and-three-hubs.json",
-            "preservedPatterns": 2,
-            "preservedEdges": 2,
-            "allowedPatternChangedFields": [
-              "evidenceRefs",
-              "sourceFactRef",
-              "sourceRefs",
-              "serviceStateScope",
-              "serviceClass"
-            ],
-            "allowedEdgeChangedFields": [
-              "topologyEvidenceRefs",
-              "sourceRefs",
-              "serviceClass"
-            ],
-            "allOtherStructuralFieldsUnchanged": true
-          }
-        ],
-        "newCounts": {
-          "admitted": 3666,
-          "edges": 8565,
-          "hold": 20,
-          "iterations": 180,
-          "lines": 287,
-          "rejected": 0,
-          "required": 3686,
-          "servicePatterns": 625
-        },
-        "airportSurfaceGaps": 33,
-        "actualClosedRootIds": [
-          "root:airport:review:official-airport:久米島"
-        ],
-        "actualOpenedRootIds": [],
-        "fullGate": "PENDING_AFTER_REVIEW_INPUT_RECONCILIATION"
-      },
-      "ordinaryFollowup": "33 airport roots,243 bus direction roots; source review8 facts/3 shared groups remain; full gate pending"
-    },
-    "phase180FullRegression": {
+    "tests": {
       "tests": 3081,
-      "passed": 3081,
-      "timing": {
-        "command": [
-          "node",
-          "--import",
-          "./tests/register-route-ts.mjs",
-          "--test",
-          "--test-concurrency=4",
-          "tests/*.test.mjs"
-        ],
-        "elapsedSeconds": 807.1280074999959,
-        "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE180-v2"
-      },
-      "deterministicRebuild": "PASS",
-      "remainingChecks": "PASS",
-      "ci": "PENDING_NEW_CHECKPOINT"
+      "pass": 3081,
+      "fail": 0,
+      "skipped": 0
     },
-    "phase181": {
-      "status": "EXACT_EXISTING_GRAPH_AND_ORIGINAL_REQUIREMENTS_PRESERVED_64_LOCAL_ROOTS_CLOSED_GLOBAL_TASK_IN_PROGRESS",
-      "report": ".cache/task-086/airports7/preservation181-production-outcome.json",
-      "sharedGlobalFailureRetained": true,
-      "ci180Runs": [
-        37075327108,
-        37075237772
-      ],
-      "ci180Status": "RUNNING_FOR_B3E5ABB8_ONLY_NOT181"
-    },
-    "phase180CI": {
-      "status": "PASS",
-      "branchHeadSha": "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf",
-      "directRun": 37075327108,
-      "directCheckout": "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf",
-      "prRun": 37075237772,
-      "prMergeCheckout": "be86527263eead9b76031bba2dd01db6457c456f",
-      "coverage": "Onlycommitted180;not181andlater"
-    },
-    "phase182to183": {
-      "replay": "PASS",
-      "elapsedSeconds": 182.47210959999938,
-      "preservation": ".cache/task-086/airports7/preservation182-183-production-outcome.json",
-      "packageRootsClosed": 70,
-      "transientInvalidatedReviewRootsClosedAfterEvidenceRefresh": 2,
-      "currentOpenRoots": 143,
-      "currentOriginalConnected": 969,
-      "fullGate": "PENDING_UPDATED_SCOPE_REBUILD",
-      "stageStatus": "CORE_STAGE_FAILED",
-      "technicalFailures": [
-        {
-          "name": "raw_content_hashes_and_retained_input_versions",
-          "reason": "Input changed data/transport/network/research/stage-scope.json",
-          "status": "FAIL"
-        }
-      ]
-    },
-    "phase187FullRegression": {
-      "tests": 3081,
-      "passed": 3081,
-      "timing": {
-        "command": [
-          "node",
-          "--import",
-          "./tests/register-route-ts.mjs",
-          "--test",
-          "--test-concurrency=4",
-          "tests/*.test.mjs"
-        ],
-        "elapsedSeconds": 879.280419799994,
-        "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
-      },
-      "deterministicRebuild": "PASS",
-      "remainingChecks": "PASS",
-      "ci": "PENDING_NEW_CHECKPOINT"
-    },
-    "phase187ExactCi": {
-      "schemaVersion": 1,
-      "observedAt": "2026-10-03T01:00:57.744051+00:00",
-      "branchHeadSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
-      "records": [
-        {
-          "runId": 37083563838,
-          "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37083563838",
-          "status": "PASS",
-          "event": "workflow_dispatch",
-          "revision": {
-            "schemaVersion": 1,
-            "eventName": "workflow_dispatch",
-            "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
-            "branchHeadSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
-            "checkoutSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
-            "checkoutParents": [
-              "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf"
-            ],
-            "eventSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
-            "baseSha": null,
-            "pullRequestNumber": null,
-            "checkoutKind": "BRANCH_HEAD_DIRECT",
-            "directBranchHeadTest": true
-          },
-          "tests": {
-            "tests": 3081,
-            "pass": 3081,
-            "fail": 0,
-            "skipped": 0
-          },
-          "steps": [
-            {
-              "name": "Set up job",
-              "conclusion": "success"
-            },
-            {
-              "name": "Check out the exact event revision",
-              "conclusion": "success"
-            },
-            {
-              "name": "Use repository Node version",
-              "conclusion": "success"
-            },
-            {
-              "name": "Record branch HEAD and actual checkout revision",
-              "conclusion": "success"
-            },
-            {
-              "name": "Install locked dependencies",
-              "conclusion": "success"
-            },
-            {
-              "name": "Validate local deployment contract",
-              "conclusion": "success"
-            },
-            {
-              "name": "Run repository tests",
-              "conclusion": "success"
-            },
-            {
-              "name": "Lint",
-              "conclusion": "success"
-            },
-            {
-              "name": "Typecheck",
-              "conclusion": "success"
-            },
-            {
-              "name": "Check formatting",
-              "conclusion": "success"
-            },
-            {
-              "name": "Build and audit standalone artifact",
-              "conclusion": "success"
-            },
-            {
-              "name": "Verify artifact again before use",
-              "conclusion": "success"
-            },
-            {
-              "name": "Check whitespace",
-              "conclusion": "success"
-            },
-            {
-              "name": "Post Use repository Node version",
-              "conclusion": "success"
-            },
-            {
-              "name": "Post Check out the exact event revision",
-              "conclusion": "success"
-            },
-            {
-              "name": "Complete job",
-              "conclusion": "success"
-            }
-          ],
-          "logSha256": "47036f1fecaf7e32639ae37e1ea773264968fdb9d924c615d79b2d4e765459d1"
-        },
-        {
-          "runId": 37083500446,
-          "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37083500446",
-          "status": "PASS",
-          "event": "pull_request",
-          "revision": {
-            "schemaVersion": 1,
-            "eventName": "pull_request",
-            "ref": "refs/pull/466/merge",
-            "branchHeadSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
-            "checkoutSha": "cfb8ae09ebac692a1eeea94ed62c26c88fae8218",
-            "checkoutParents": [
-              "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-              "21a0b670dede06f7f6092315aea9cfa820c481d0"
-            ],
-            "eventSha": "cfb8ae09ebac692a1eeea94ed62c26c88fae8218",
-            "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-            "pullRequestNumber": 466,
-            "checkoutKind": "PULL_REQUEST_MERGE_TEST",
-            "directBranchHeadTest": false
-          },
-          "tests": {
-            "tests": 3081,
-            "pass": 3081,
-            "fail": 0,
-            "skipped": 0
-          },
-          "steps": [
-            {
-              "name": "Set up job",
-              "conclusion": "success"
-            },
-            {
-              "name": "Check out the exact event revision",
-              "conclusion": "success"
-            },
-            {
-              "name": "Use repository Node version",
-              "conclusion": "success"
-            },
-            {
-              "name": "Record branch HEAD and actual checkout revision",
-              "conclusion": "success"
-            },
-            {
-              "name": "Install locked dependencies",
-              "conclusion": "success"
-            },
-            {
-              "name": "Validate local deployment contract",
-              "conclusion": "success"
-            },
-            {
-              "name": "Run repository tests",
-              "conclusion": "success"
-            },
-            {
-              "name": "Lint",
-              "conclusion": "success"
-            },
-            {
-              "name": "Typecheck",
-              "conclusion": "success"
-            },
-            {
-              "name": "Check formatting",
-              "conclusion": "success"
-            },
-            {
-              "name": "Build and audit standalone artifact",
-              "conclusion": "success"
-            },
-            {
-              "name": "Verify artifact again before use",
-              "conclusion": "success"
-            },
-            {
-              "name": "Check whitespace",
-              "conclusion": "success"
-            },
-            {
-              "name": "Post Use repository Node version",
-              "conclusion": "success"
-            },
-            {
-              "name": "Post Check out the exact event revision",
-              "conclusion": "success"
-            },
-            {
-              "name": "Complete job",
-              "conclusion": "success"
-            }
-          ],
-          "logSha256": "01ba218df7e79432f517dae86e026f8dc6d27845dffc63dbcfcc23f7aefc91a3"
-        }
-      ],
-      "rawLogsRetained": false
-    },
-    "phase188Replay": {
-      "status": "PASS",
-      "timing": 213.25147069999366,
-      "oldEdgesRetained": 8966,
-      "newEdges": 4,
-      "airportRootClosed": "Amami",
-      "fullGate": "PENDING_CURRENT_INPUT"
-    },
-    "phase189": {
-      "replay": "PASS",
-      "elapsedSeconds": 215.85470650001662,
-      "preservation": "PASS: all188nodes/edges/patterns/requirements preserved; Yakushima originalairportrootclosed",
-      "bindingReview": "PASS 2closedreviews revalidated, allOPENunchanged",
-      "fullGate": "UNVERIFIED_PENDING_CURRENT_REBUILD",
-      "incrementalUniqueAirportRootsClosed": 1
-    },
-    "phase190191Replay": {
-      "status": "PASS",
-      "seconds": 223.91761760000372,
-      "uniqueRootsClosed": 2,
-      "fullGate": "PENDING"
-    },
-    "phase191FullRegression": {
-      "tests": 3081,
-      "passed": 3081,
-      "timing": {
-        "command": [
-          "node",
-          "--import",
-          "./tests/register-route-ts.mjs",
-          "--test",
-          "--test-concurrency=2",
-          "tests/*.test.mjs"
-        ],
-        "elapsedSeconds": 994.0759838000522,
-        "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
-      },
-      "deterministicRebuild": "PASS",
-      "remainingChecks": "PASS",
-      "ci": "PENDING_NEW_CHECKPOINT"
-    },
-    "phase194Incremental": {
-      "replaySeconds": 219.12414659996284,
-      "exactRootsClosed": 3,
-      "status": "PASS_FULL_GATE_PENDING",
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE194-v2",
-      "counts": {
-        "admitted": 3787,
-        "hold": 16,
-        "required": 3803,
-        "edges": 8995
-      }
-    },
-    "phase194FullRegression": {
-      "tests": 3081,
-      "passed": 3081,
-      "timing": {
-        "command": [
-          "node",
-          "--import",
-          "./tests/register-route-ts.mjs",
-          "--test",
-          "--test-concurrency=2",
-          "tests/*.test.mjs"
-        ],
-        "elapsedSeconds": 1032.1030870999675,
-        "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE194-v2"
-      },
-      "deterministicRebuild": "PASS",
-      "remainingChecks": "PASS",
-      "ci": "PENDING_NEW_CHECKPOINT"
-    },
-    "phase195FullRegression": {
-      "tests": 3081,
-      "passed": 3081,
-      "timing": {
-        "command": [
-          "node",
-          "--import",
-          "./tests/register-route-ts.mjs",
-          "--test",
-          "--test-concurrency=2",
-          "tests/*.test.mjs"
-        ],
-        "elapsedSeconds": 1020.4462798000313,
-        "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2"
-      },
-      "deterministicRebuild": "PASS",
-      "remainingChecks": "PASS",
-      "ci": "PENDING_NEW_CHECKPOINT"
-    }
-  },
-  "nextConcreteAction": "Commit/push195; capture direct HEAD and actual PR merge checkout separately. Register exact private196 two P11 records and six edges, preserve original same-ID upgrade. Replay and audit old data/root/direction paths. Continue Kozushima public interface research and original scope.",
-  "independentWork": [
-    "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
-    "Tottori original airport/current complete calling sequences and rail dependency",
-    "Obihiro remaining16 native direction links/conditional city-feed cycle",
-    "Chofu original airport lawful operator/government source alternative after hosted timetable automated-use exclusion"
-  ],
-  "deferredOrdinaryWork": [
-    {
-      "package": "25 original HOLDairport identities",
-      "result": "ExactC28 suffix/explicitMLITalias mayadmit threeHokkaido identities onceactualserviceandpublicconnection evidencebound. No IATAcode/exactterminalcoordinate invented requirement. Okadama curbidentity/currentHoktooperator remains ordinaryresearch, not audited external approval."
-    }
-  ],
-  "privateEvidenceIndex": [
-    {
-      "path": ".cache/task-086/hokkaido-identity25/evidence-review-v1.json",
-      "sha256": "bec1a093487d3953d9c7ecd3fcb6c8b5d8f0d6c9cbd5e800538dc18e045bb07c"
-    },
-    {
-      "path": ".cache/task-086/hokkaido-identity25/identity-rights-review-v2.json",
-      "sha256": "82b3e2d213be9e4a3bb45b949e4ed1cf0f643d0cb9236a876c8e645e34007786"
-    },
-    {
-      "path": ".cache/task-086/hokkaido-identity25/okadama-national-chain-plan-v1.json",
-      "sha256": "b9695db3fc8fee2142a48934416f10fbebdb6a55b9e4a5bc2654ddb6edc670d5"
-    },
-    {
-      "path": ".cache/task-086/hokkaido-identity25/okadama-stop-identity-review-v1.json",
-      "sha256": "e58508d8319551fb8b5f5e04614b1164bd158a6dee7930c1528e53cf1377b7e2"
-    },
-    {
-      "path": ".cache/task-086/remaining-airport-ground-preflight-v1.json",
-      "sha256": "1db8be8316c7699ae547e65938c448e771a0beed07e5d5c399efd74d91de5274"
-    },
-    {
-      "path": ".cache/task-086/ibaraki168/rights-review-v1.json",
-      "sha256": "ca2e6a28a4b38aec24f7e1b3bc87d746f4e74b6b38a28a32eeb43fef3a2c01bb"
-    },
-    {
-      "path": ".cache/task-086/ibaraki168/mito-final-rights-access-review.json",
-      "sha256": "25f28515e162f3a2c25e009fa3b6637474eb93c43bc0272a51d6d91d4c8f4470"
-    },
-    {
-      "path": ".cache/task-086/airports7/niigata-bandai-public-walk-review-v1.json",
-      "sha256": "4f49e395fe7d741f66b293fad5b890b9a697872effdf5da500e378ffc402be4a"
-    },
-    {
-      "path": ".cache/task-086/airports7/smallreview169.json",
-      "sha256": "0dc4722a232492b6351674a2e4768e76f1dca6c3b8d89d4e2fc9bc7ecb09897e"
-    },
-    {
-      "path": ".cache/task-086/iwakuni170/iwakuni-rights-identity-review-v1.json",
-      "sha256": "43bf1f2ca6f2aeb5bbb6c851e62b5b492b436cbcef37e4e86fc6ed0a69eaaea1"
-    },
-    {
-      "path": ".cache/task-086/obihiro171/obihiro-airport-chain-extraction-v2.json",
-      "sha256": "cac15dc0e9348612fbdf99598716ef9cc260c48cb0b7af6c0a3743aa86377905"
-    }
-  ],
-  "runtimeLimitPolicy": "On actual interruption resume stated action and caches. Not completion; no automatic restart promise.",
-  "runningProcesses": {
-    "sharedWriter": "Full regression next; canonical imports and code edits frozen until gates finish",
-    "privateResearch": "Read-only sources/private cache work may continue"
-  },
-  "nextExactAction": "python -X utf8 .cache/task-086/airports7/validate-checkpoint.py 175",
-  "pendingSharedCode": [],
-  "specialApplicability": {
-    "input": "data/transport/network/research/special-applicability.v1.json",
-    "snapshotScopeId": "TASK086-FULL-ORIGINAL-PHASE173-v2",
-    "requiredNodes": 152,
-    "actualServiceCallNodes": 128,
-    "transferOnlyNodes": 24,
-    "patterns": 20,
-    "status": "STRICT_REPLAY_PASS_FULL_DETERMINISTIC_RECEIPT_PENDING",
-    "universalRopewayCoverageClaimed": false
-  },
-  "recoveryPolicy": "Continue entire original TASK086 after packages/reports/checkpoints. No production/API/planner/merge/release. Platform interruption is not completion.",
-  "currentScopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2",
-  "currentValidationAttempt": {
-    "phase": 175,
-    "status": "FULL_AND_REMAINING_LOCAL_GATES_PASS",
-    "firstFullSeconds": 740.366544,
-    "firstFullTests": 3008,
-    "firstFullPassed": 3007,
-    "failure": "Unrelated asset nightly dry-run child process exceeded its unchanged 30000 ms timeout under default full-suite concurrency.",
-    "isolatedDiagnosticSeconds": 13.1562417,
-    "isolatedDiagnosticStatus": "PASS",
-    "nextAction": "Run identical full test selection with --test-concurrency=4; retain original timeout and all gates. Concurrency explanation is a hypothesis pending result.",
-    "tests": 3008,
-    "passed": 3008,
-    "failed": 0,
-    "seconds": 773.9732903000258,
-    "lintInitialFailure": "Thirdparty private downloaded JS source treated as projectcode; preserved identicalbytes/hash in .js.txt passive evidence, updatedprivatepath, projectlint rules unchanged.",
     "checks": {
+      "full": {
+        "command": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=2",
+          "tests/*.test.mjs"
+        ],
+        "elapsedSeconds": 1342.8305476999958,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2"
+      },
       "lint": {
         "command": [
           "npm.cmd",
           "run",
           "lint"
         ],
-        "elapsedSeconds": 28.981000400002813,
+        "elapsedSeconds": 82.16048989997944,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2"
       },
       "typecheck": {
         "command": [
@@ -908,9 +61,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 5.157981399999699,
+        "elapsedSeconds": 11.764830100000836,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2"
       },
       "format": {
         "command": [
@@ -918,9 +71,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 11.999640399997588,
+        "elapsedSeconds": 15.74618499999633,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2"
       },
       "artifact": {
         "command": [
@@ -928,9 +81,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 50.67226570000639,
+        "elapsedSeconds": 64.61059659998864,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2"
       },
       "artifact-verify": {
         "command": [
@@ -938,119 +91,33 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.8889315999986138,
+        "elapsedSeconds": 2.209660900000017,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE196-v2"
       }
     },
-    "coreStage": "CORE_STAGE_PASS",
-    "uniqueOpenRoots": 281,
-    "ci": "PASS175branchc64cf9a1f42ed8dee2698f08dbda686a8f6fc250; direct37060459479actualsameSHA; PR37060466329actual2c770f602c8d3d25df40c80ff0ef9d7c4143ee90; no177coverage",
-    "scopeId": "TASK086-FULL-ORIGINAL-PHASE175-v2"
+    "deterministicRebuild": "PASS",
+    "currentCI": "PENDING_CHECKPOINT_PUSH",
+    "prior195CI": "docs/qa/TASK-086-B/phase195-ci-revisions.json"
   },
-  "nextAction": "Finish privateCCBY2.1JP sharedHinomaru licence adapter/negative tests and sourceauthority binding; then serially import real Tottori178 loop+rail+public chain and Miho179 bus+public chain, preserve differentnativeIDs. Root Noto180 originalairport preflight uses existingKanazawa anchor/directcurrentexpress, no newrail assumption. Check175CI runs37060459479direct /37060466329PR and record actualcheckout SHAs whencomplete; do not attribute to177.",
+  "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
+  "nextConcreteAction": "Commit/push196; record actual direct/PR checkout separately. Register private197 public footbridge two edges, zero new nodes; replay, verify preservation and two root closures. Continue Amakusa original airport evidence.",
   "privatePackages": {
-    "sapporo176": {
-      "path": ".cache/task-086/sapporo177/phase176-review-plan.json",
-      "status": "ROOT_REVIEWED_PRIVATE_READY_AFTER_175_GATES",
-      "facts": 4,
-      "directedEdges": 8,
-      "importer": ".cache/task-086/sapporo177/import176.mjs"
+    "197": {
+      "path": ".cache/task-086/nagasaki-public-path-next/phase197-private.json",
+      "preflight": ".cache/task-086/nagasaki-public-path-next/oroshihonmachi197-private-preflight.json",
+      "status": "PASS_PRIVATE_NOT_IMPORTED"
     },
-    "chofu177": {
-      "path": ".cache/task-086/chofu179/phase177-review-plan.json",
-      "status": "PRIVATE_REAL20EDGE_PREFLIGHT_PASS_CANONICAL_CODE67TESTPASS_PENDING176",
-      "facts": 4,
-      "directedEdges": 20,
-      "nextAction": "Apply strict exact current formal-airfield branch proposal and negative tests only after175checkpoint, then run airport/schema/full-chain incremental checks."
-    },
-    "tottori": {
-      "path": ".cache/task-086/tottori178/tottori-loop-national-chain-candidate-v2.json",
-      "status": "PRIVATE178_NATIVE53CALL_LOOP_AND_TWO_REALRAIL_DIRECTIONS_PREPARING",
-      "nextAction": "Licensed independent actual53-call local loop may provide full chain; never merge differing airport nativeIDs or call flight-linked inbound6calls complete despite operator footnote."
-    },
-    "obihiro": {
-      "path": ".cache/task-086/obihiro171/obihiro-crossfeed-directional-review-v6.json",
-      "status": "ACTIVE_16_DIRECTIONAL_PHYSICAL_MAPPING_GAPS",
-      "nextAction": "Use existing111edge reduced cityfeed proposal only after required terminal and directional crossfeed links reviewed; no source exhaustion claim."
-    },
-    "miho": {
-      "path": ".cache/task-086/miho-preflight-v1",
-      "status": "PRIVATE179_REAL3CALL_TWO_DIRECTIONS_AND_PUBLIC_INTERFACES_PREPARING",
-      "nextAction": "Reuse sharedTottoriHinomaru2.zip currentnativefeed20261001–20270331; strongreviewer owns common licence review; cheapextractor nativeMiho directions and lawful public interfaces. No redownload based on staleportal displaydate."
-    },
-    "noto180": {
-      "path": ".cache/task-086/noto180/preflight-v1.json",
-      "status": "ACTIVE_ORIGINAL_T2_AIRPORT_NO_PRIOR_SOURCE_CACHE",
-      "nextAction": "Current Hokutetsu20260315direct Notoairport/Kanazawa express actualcalls+licence+publicterminalandstation proof; primarysourcesfound, no directHTTPyet."
+    "amakusa": {
+      "path": ".cache/task-086/amakusa-next",
+      "next": "Read second bus direction, current AMX schedule/cancellations and government airport public bus-interface proof; no admission until complete."
     }
   },
-  "phase176Replay": {
-    "status": "PASS_FULL_GATE_PENDING",
-    "elapsedSeconds": 169.388858899998,
-    "airportSurfaceGaps": 37,
-    "priorDataPreservation": "PASS"
+  "capabilityLimits": {
+    "subagents": "Existing platform thread limit; root with scripts/cache continues",
+    "tokens": null,
+    "billing": null,
+    "modelCacheHits": null
   },
-  "phase177Replay": {
-    "status": "PASS_FULL_GATE_PENDING",
-    "elapsedSeconds": 171.8127897999948,
-    "airportSurfaceGaps": 36,
-    "priorDataPreservation": "PASS",
-    "newFormalNameBranchFocusedTests": 67,
-    "negativeTestsAdded": 25
-  },
-  "currentTechnicalStatus": {
-    "status": "CORE_STAGE_FAILED",
-    "reason": "Reconciliation updated global-review.v1.json after177replay; manifest retainedInputHash still pre-reconciliation. Stage correctly fails this actual mismatch and does not reuse175cleanproof.",
-    "ordinaryFix": "Next controlled replay/required checkpoint full clean rebuild must bind reconciled current review inputs. Do not relabel175CI as177proof or ignore failedcheck.",
-    "uniqueOpenRootsIncludingTransientReviews": 282,
-    "underlyingAirportGaps": 36,
-    "busDirectionRoots": 243,
-    "transientGlobalReviewGaps": 3,
-    "execution": "CONTINUE"
-  },
-  "sharedHinomaruLicenseAdapter": {
-    "status": "APPLIED_FOCUSED40PASS_FULLGATEPENDING",
-    "license": "CC BY 2.1 Japan",
-    "negativeScope": "terms/catalog/publisherauthority exactURLandresponsehash, sourcearchive/agency/publisher, attribution/changes, noexplicitresourceexception, exactversion; nativeZIPreproductionmandatory"
-  },
-  "nextConcreteActions": [
-    "Run validate-checkpoint.py187 after all inputs stabilize; phase186 first full3080pass1fail preserved, native P11 row-order repair reextracted all174identical records and replayPASS.",
-    "After full gate pass, update publication/report and stage manifest; secret-scan and commit/push existing branch/DraftPR466, record actual directHEADvsPRmergecheckoutSHAs.",
-    "Continue original32airport,46bus direction and5rail-source-fact research; reports do not stop. Ordinary tosaden other15points and Okinoerabu terminal interface evidence remain OPEN."
-  ],
-  "currentAgentCapabilityLimit": {
-    "event": "followup_task to existing aomori_extract returned agent thread limit reached",
-    "actualModelSelectionPreviouslyAvailable": true,
-    "fallback": "Root model plus deterministic scripts and local source cache; no extra configuration required",
-    "tokens": "unavailable",
-    "billing": "unavailable"
-  },
-  "currentRootAudit": {
-    "lastActualGraphPhase": 187,
-    "openRootsInLastStageReport": 81,
-    "airportRoots": 32,
-    "busDirectionRoots": 46,
-    "railSourceFactsRemaining": 5,
-    "temporaryGlobalRevalidationDeficits": 2,
-    "expectedUniqueRootsAfterActualCleanRebuildNotYetClaimed": 79
-  },
-  "privateSourceCacheNext": {
-    "folder": ".cache/task-086/tosaden-regular-next",
-    "nativeHttpRequests": 4,
-    "searchQueries": 6,
-    "webOpenRequests": 5,
-    "identityComparison": "0/17 identical stop IDs across different published feeds; ordinary evidence research remains",
-    "license": "CC BY4.0 catalog directly observed",
-    "noCanonicalImport": true,
-    "webClickRequests": 2,
-    "webScreenshotRequests": 1
-  },
-  "savedHead": "dacda287f1fb8b50183b249a75b2f6d28540f895",
-  "ci191": {
-    "branchHeadSha": "dacda287f1fb8b50183b249a75b2f6d28540f895",
-    "directRun": 37091101716,
-    "prMergeRun": 37091068812,
-    "status": "IN_PROGRESS_ACTUAL_CHECKOUT_NOT_YET_COLLECTED"
-  }
+  "policy": "Original scope only; ordinary work continues after milestones. No production/API/planner/merge/release. No automatic restart claim."
 }
