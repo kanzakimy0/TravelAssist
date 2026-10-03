@@ -1,0 +1,559 @@
+{
+  "phaseId": "061-sotetsu-reviewed-local-branches",
+  "strategy": [
+    "SOTETSU_GREY_LOCAL_STOPPING_ROW",
+    "REVIEWED_SMALL_KE_AND_BRANCH_COMPONENTS",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:sotetsu:reviewed-local-branches"
+  ],
+  "facts": [
+    {
+      "factId": "sotetsu-0-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:sotetsu:reviewed-local-branches",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2023/train/stations/download/route-map-download-230318detail.pdf",
+      "observedResponseSha256": "17914b2df94b66938a6e3d1e6a0677a332a92f8a4fc74568719f43fd86c74a60",
+      "locator": "Current station portal links this detailed service-specific stop diagram. Visually reviewed grey Local row only, separately for Main, Izumino and Shin-Yokohama sections. Other operators and all express rows excluded. Large/small ke variants at Tsurugamine and Kibogaoka explicitly bind to exact S12 station codes. Existing independently reviewed Yokohama/Yamato/Ebina interchange components join the national graph; no spatial transfer inferred.",
+      "line": "相鉄本線",
+      "operator": "相模鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "outbound",
+      "callingStations": [
+        "横浜",
+        "平沼橋",
+        "西横浜",
+        "天王町",
+        "星川",
+        "和田町",
+        "上星川",
+        "西谷",
+        "鶴ケ峰",
+        "二俣川",
+        "希望ケ丘",
+        "三ツ境",
+        "瀬谷",
+        "大和",
+        "相模大塚",
+        "さがみ野",
+        "かしわ台",
+        "海老名"
+      ],
+      "callingComponents": [
+        {
+          "name": "横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "平沼橋",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天王町",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "星川",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "和田町",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上星川",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西谷",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴ヶ峰",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "鶴ケ峰",
+            "stationCode": "004604"
+          }
+        },
+        {
+          "name": "二俣川",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "希望ヶ丘",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "希望ケ丘",
+            "stationCode": "004652"
+          }
+        },
+        {
+          "name": "三ツ境",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "瀬谷",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大和",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相模大塚",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "さがみ野",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "かしわ台",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "海老名",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_GREY_LOCAL_ROW_PER_BRANCH_AND_EXACT_OPERATOR_S12_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sotetsu-0-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:sotetsu:reviewed-local-branches",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2023/train/stations/download/route-map-download-230318detail.pdf",
+      "observedResponseSha256": "17914b2df94b66938a6e3d1e6a0677a332a92f8a4fc74568719f43fd86c74a60",
+      "locator": "Current station portal links this detailed service-specific stop diagram. Visually reviewed grey Local row only, separately for Main, Izumino and Shin-Yokohama sections. Other operators and all express rows excluded. Large/small ke variants at Tsurugamine and Kibogaoka explicitly bind to exact S12 station codes. Existing independently reviewed Yokohama/Yamato/Ebina interchange components join the national graph; no spatial transfer inferred.",
+      "line": "相鉄本線",
+      "operator": "相模鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "inbound",
+      "callingStations": [
+        "海老名",
+        "かしわ台",
+        "さがみ野",
+        "相模大塚",
+        "大和",
+        "瀬谷",
+        "三ツ境",
+        "希望ケ丘",
+        "二俣川",
+        "鶴ケ峰",
+        "西谷",
+        "上星川",
+        "和田町",
+        "星川",
+        "天王町",
+        "西横浜",
+        "平沼橋",
+        "横浜"
+      ],
+      "callingComponents": [
+        {
+          "name": "海老名",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "かしわ台",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "さがみ野",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相模大塚",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大和",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "瀬谷",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三ツ境",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "希望ヶ丘",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "希望ケ丘",
+            "stationCode": "004652"
+          }
+        },
+        {
+          "name": "二俣川",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴ヶ峰",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "鶴ケ峰",
+            "stationCode": "004604"
+          }
+        },
+        {
+          "name": "西谷",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上星川",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "和田町",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "星川",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天王町",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "平沼橋",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_GREY_LOCAL_ROW_PER_BRANCH_AND_EXACT_OPERATOR_S12_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sotetsu-1-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:sotetsu:reviewed-local-branches",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2023/train/stations/download/route-map-download-230318detail.pdf",
+      "observedResponseSha256": "17914b2df94b66938a6e3d1e6a0677a332a92f8a4fc74568719f43fd86c74a60",
+      "locator": "Current station portal links this detailed service-specific stop diagram. Visually reviewed grey Local row only, separately for Main, Izumino and Shin-Yokohama sections. Other operators and all express rows excluded. Large/small ke variants at Tsurugamine and Kibogaoka explicitly bind to exact S12 station codes. Existing independently reviewed Yokohama/Yamato/Ebina interchange components join the national graph; no spatial transfer inferred.",
+      "line": "相鉄いずみ野線",
+      "operator": "相模鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "outbound",
+      "callingStations": [
+        "二俣川",
+        "南万騎が原",
+        "緑園都市",
+        "弥生台",
+        "いずみ野",
+        "いずみ中央",
+        "ゆめが丘",
+        "湘南台"
+      ],
+      "callingComponents": [
+        {
+          "name": "二俣川",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南万騎が原",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "緑園都市",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "弥生台",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "いずみ野",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "いずみ中央",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ゆめが丘",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "湘南台",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_GREY_LOCAL_ROW_PER_BRANCH_AND_EXACT_OPERATOR_S12_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sotetsu-1-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:sotetsu:reviewed-local-branches",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2023/train/stations/download/route-map-download-230318detail.pdf",
+      "observedResponseSha256": "17914b2df94b66938a6e3d1e6a0677a332a92f8a4fc74568719f43fd86c74a60",
+      "locator": "Current station portal links this detailed service-specific stop diagram. Visually reviewed grey Local row only, separately for Main, Izumino and Shin-Yokohama sections. Other operators and all express rows excluded. Large/small ke variants at Tsurugamine and Kibogaoka explicitly bind to exact S12 station codes. Existing independently reviewed Yokohama/Yamato/Ebina interchange components join the national graph; no spatial transfer inferred.",
+      "line": "相鉄いずみ野線",
+      "operator": "相模鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "inbound",
+      "callingStations": [
+        "湘南台",
+        "ゆめが丘",
+        "いずみ中央",
+        "いずみ野",
+        "弥生台",
+        "緑園都市",
+        "南万騎が原",
+        "二俣川"
+      ],
+      "callingComponents": [
+        {
+          "name": "湘南台",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ゆめが丘",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "いずみ中央",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "いずみ野",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "弥生台",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "緑園都市",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南万騎が原",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "二俣川",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_GREY_LOCAL_ROW_PER_BRANCH_AND_EXACT_OPERATOR_S12_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sotetsu-2-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:sotetsu:reviewed-local-branches",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2023/train/stations/download/route-map-download-230318detail.pdf",
+      "observedResponseSha256": "17914b2df94b66938a6e3d1e6a0677a332a92f8a4fc74568719f43fd86c74a60",
+      "locator": "Current station portal links this detailed service-specific stop diagram. Visually reviewed grey Local row only, separately for Main, Izumino and Shin-Yokohama sections. Other operators and all express rows excluded. Large/small ke variants at Tsurugamine and Kibogaoka explicitly bind to exact S12 station codes. Existing independently reviewed Yokohama/Yamato/Ebina interchange components join the national graph; no spatial transfer inferred.",
+      "line": "相鉄新横浜線",
+      "operator": "相模鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "outbound",
+      "callingStations": [
+        "西谷",
+        "羽沢横浜国大",
+        "新横浜"
+      ],
+      "callingComponents": [
+        {
+          "name": "西谷",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "羽沢横浜国大",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_GREY_LOCAL_ROW_PER_BRANCH_AND_EXACT_OPERATOR_S12_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sotetsu-2-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:sotetsu:reviewed-local-branches",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2023/train/stations/download/route-map-download-230318detail.pdf",
+      "observedResponseSha256": "17914b2df94b66938a6e3d1e6a0677a332a92f8a4fc74568719f43fd86c74a60",
+      "locator": "Current station portal links this detailed service-specific stop diagram. Visually reviewed grey Local row only, separately for Main, Izumino and Shin-Yokohama sections. Other operators and all express rows excluded. Large/small ke variants at Tsurugamine and Kibogaoka explicitly bind to exact S12 station codes. Existing independently reviewed Yokohama/Yamato/Ebina interchange components join the national graph; no spatial transfer inferred.",
+      "line": "相鉄新横浜線",
+      "operator": "相模鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "inbound",
+      "callingStations": [
+        "新横浜",
+        "羽沢横浜国大",
+        "西谷"
+      ],
+      "callingComponents": [
+        {
+          "name": "新横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "羽沢横浜国大",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西谷",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_GREY_LOCAL_ROW_PER_BRANCH_AND_EXACT_OPERATOR_S12_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    }
+  ]
+}

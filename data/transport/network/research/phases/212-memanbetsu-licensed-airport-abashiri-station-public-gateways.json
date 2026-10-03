@@ -1,0 +1,204 @@
+{
+  "phaseId": "212-memanbetsu-licensed-airport-abashiri-station-public-gateways",
+  "strategy": [
+    "TWO_INDEPENDENT_NATIVE23_CALL_SECTIONS_FULL28_CALL_PARENT_RETAINED",
+    "SOURCE_BOUND_UNINTERPRETED_CSV_TRAILING_FIELDS",
+    "EXACT_EXISTING_C28_FLIGHT_NATIONAL_ATTACHMENT",
+    "OFFICIAL_COARSE_PUBLIC_AIRPORT_AND_STATION_INTERFACES",
+    "INDEPENDENT_GSI_MARKED_PUBLIC_CROSSING_CORROBORATION"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "abashiri-airport-station-package212.json",
+      "packageSha256": "27e60c3cd1f724d6123355f0bdfc6923361b02917279c6be2b49fb447e421c9f",
+      "sourceActionId": "bus:memanbetsu:licensed-active-airport-abashiri212",
+      "reviewedServiceDate": "20261003"
+    }
+  ],
+  "completedActionIds": [
+    "bus:memanbetsu:licensed-active-airport-abashiri212",
+    "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+    "government:gsi:abashiri-station-public-crossing212"
+  ],
+  "facts": [
+    {
+      "factId": "memanbetsu-public-airport-departure190_2",
+      "components": [
+        {
+          "name": "女満別空港",
+          "operator": "airport-facility:cf03_00013",
+          "line": "airport:cf03_00013",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00013",
+            "requirementId": "review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374",
+            "expectedRequirementName": "女満別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independent official tourism visitor map explicitly shows whole-airport public1F arrival/check-in exterior exits with Abashiri bus boarding frontage. Current official tourism access page describes the actual airport passenger bus and independent airport-bound service. Retain only coarse whole-airport/public-bus gateway relations, exact licensed arriving190_1 and departing190_2 remain distinct. No curb, walking duration, accessibility or timed connection is claimed."
+          }
+        },
+        {
+          "name": "女満別空港",
+          "operator": "網走バス",
+          "line": "gtfs:abashiribus:airport-20261001:route:711",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:abashiribus:airport-20261001",
+            "stopId": "190_2",
+            "sourceArchiveSha256": "af1f68b7d6ea81a56b2f702de72aec9663800b49812d724d9d2876c5f0106272",
+            "recordSha256": "44a70bf84e8d58d2987c6db9bfe44ce7193b5dcf2f62b4ba8bda390fa4ea4995",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Independent official tourism visitor map explicitly shows whole-airport public1F arrival/check-in exterior exits with Abashiri bus boarding frontage. Current official tourism access page describes the actual airport passenger bus and independent airport-bound service. Retain only coarse whole-airport/public-bus gateway relations, exact licensed arriving190_1 and departing190_2 remain distinct. No curb, walking duration, accessibility or timed connection is claimed."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "locator": "Independent official tourism visitor map explicitly shows whole-airport public1F arrival/check-in exterior exits with Abashiri bus boarding frontage. Current official tourism access page describes the actual airport passenger bus and independent airport-bound service. Retain only coarse whole-airport/public-bus gateway relations, exact licensed arriving190_1 and departing190_2 remain distinct. No curb, walking duration, accessibility or timed connection is claimed.",
+      "kind": "transfer",
+      "sourceActionId": "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+      "sourceUrl": "https://visit-abashiri.jp/assets/a1b952db5a811e0a72c7fd0687e0a4bd79fa5848.pdf",
+      "observedResponseSha256": "cca8611f7a40b571e218c60d4109a9c0a72b72487128a6a3a179489a2d087910",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+          "url": "https://visit-abashiri.jp/access/",
+          "observedResponseSha256": "7956a01b0117b81b18aa04700f185ffffcc3a5557340ea14e2c7d10da75e95a0"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_PUBLIC_PASSENGER_GATEWAY_AT_FACILITY_SCALE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "memanbetsu-arrival190_1-public-airport",
+      "components": [
+        {
+          "name": "女満別空港",
+          "operator": "網走バス",
+          "line": "gtfs:abashiribus:airport-20261001:route:701",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:abashiribus:airport-20261001",
+            "stopId": "190_1",
+            "sourceArchiveSha256": "af1f68b7d6ea81a56b2f702de72aec9663800b49812d724d9d2876c5f0106272",
+            "recordSha256": "2fc36821e449cdae2c8ccff9b1e49e69c2c9721af7c276a2b6a95e0f24c15121",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Independent official tourism visitor map explicitly shows whole-airport public1F arrival/check-in exterior exits with Abashiri bus boarding frontage. Current official tourism access page describes the actual airport passenger bus and independent airport-bound service. Retain only coarse whole-airport/public-bus gateway relations, exact licensed arriving190_1 and departing190_2 remain distinct. No curb, walking duration, accessibility or timed connection is claimed."
+          }
+        },
+        {
+          "name": "女満別空港",
+          "operator": "airport-facility:cf03_00013",
+          "line": "airport:cf03_00013",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00013",
+            "requirementId": "review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374",
+            "expectedRequirementName": "女満別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independent official tourism visitor map explicitly shows whole-airport public1F arrival/check-in exterior exits with Abashiri bus boarding frontage. Current official tourism access page describes the actual airport passenger bus and independent airport-bound service. Retain only coarse whole-airport/public-bus gateway relations, exact licensed arriving190_1 and departing190_2 remain distinct. No curb, walking duration, accessibility or timed connection is claimed."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "locator": "Independent official tourism visitor map explicitly shows whole-airport public1F arrival/check-in exterior exits with Abashiri bus boarding frontage. Current official tourism access page describes the actual airport passenger bus and independent airport-bound service. Retain only coarse whole-airport/public-bus gateway relations, exact licensed arriving190_1 and departing190_2 remain distinct. No curb, walking duration, accessibility or timed connection is claimed.",
+      "kind": "transfer",
+      "sourceActionId": "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+      "sourceUrl": "https://visit-abashiri.jp/assets/a1b952db5a811e0a72c7fd0687e0a4bd79fa5848.pdf",
+      "observedResponseSha256": "cca8611f7a40b571e218c60d4109a9c0a72b72487128a6a3a179489a2d087910",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+          "url": "https://visit-abashiri.jp/access/",
+          "observedResponseSha256": "7956a01b0117b81b18aa04700f185ffffcc3a5557340ea14e2c7d10da75e95a0"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_PUBLIC_PASSENGER_GATEWAY_AT_FACILITY_SCALE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "abashiri-station-public-passenger-platform3-platform2",
+      "components": [
+        {
+          "name": "網走駅前",
+          "operator": "網走バス",
+          "line": "gtfs:abashiribus:airport-20261001:route:711",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:abashiribus:airport-20261001",
+            "stopId": "71_3",
+            "sourceArchiveSha256": "af1f68b7d6ea81a56b2f702de72aec9663800b49812d724d9d2876c5f0106272",
+            "recordSha256": "d652ce8e1007582b9b3fd87a077e96247cca55e6b4f228c17e942e66cef72e62",
+            "expectedPlatformCode": "3",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Official Abashiri tourism station-front guide independently identifies public platform2 toward Memanbetsu airport and platform3 toward the city; current licensed20261001 native trips arrive71_3 and depart71_2. Root visually reviewed exact GSI seamlessphoto tiles18/236112/95300 and18/236113/95300: Route39 has an actual marked pedestrian crossing west of the station frontage and public street-side pedestrian margins connecting the two sides. Bind only a coarse public walking interchange using that crossing, not a direct straight-line crossing between poles. Different native stops are preserved; no same-name merge. Image capture date is unavailable, so imagery is static corroboration alongside current operator records and official visitor guide, not a2026 capture claim. No exact walking geometry, distance, duration, curb identity, accessibility or signal guarantee is asserted; no JR service imported."
+          }
+        },
+        {
+          "name": "網走駅前",
+          "operator": "網走バス",
+          "line": "gtfs:abashiribus:airport-20261001:route:701",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:abashiribus:airport-20261001",
+            "stopId": "71_2",
+            "sourceArchiveSha256": "af1f68b7d6ea81a56b2f702de72aec9663800b49812d724d9d2876c5f0106272",
+            "recordSha256": "5f76d6182e4f0b442ac4eec022a32669342f4bf59ffbb04465dedb878ef2c69e",
+            "expectedPlatformCode": "2",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Official Abashiri tourism station-front guide independently identifies public platform2 toward Memanbetsu airport and platform3 toward the city; current licensed20261001 native trips arrive71_3 and depart71_2. Root visually reviewed exact GSI seamlessphoto tiles18/236112/95300 and18/236113/95300: Route39 has an actual marked pedestrian crossing west of the station frontage and public street-side pedestrian margins connecting the two sides. Bind only a coarse public walking interchange using that crossing, not a direct straight-line crossing between poles. Different native stops are preserved; no same-name merge. Image capture date is unavailable, so imagery is static corroboration alongside current operator records and official visitor guide, not a2026 capture claim. No exact walking geometry, distance, duration, curb identity, accessibility or signal guarantee is asserted; no JR service imported."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "locator": "Official Abashiri tourism station-front guide independently identifies public platform2 toward Memanbetsu airport and platform3 toward the city; current licensed20261001 native trips arrive71_3 and depart71_2. Root visually reviewed exact GSI seamlessphoto tiles18/236112/95300 and18/236113/95300: Route39 has an actual marked pedestrian crossing west of the station frontage and public street-side pedestrian margins connecting the two sides. Bind only a coarse public walking interchange using that crossing, not a direct straight-line crossing between poles. Different native stops are preserved; no same-name merge. Image capture date is unavailable, so imagery is static corroboration alongside current operator records and official visitor guide, not a2026 capture claim. No exact walking geometry, distance, duration, curb identity, accessibility or signal guarantee is asserted; no JR service imported.",
+      "kind": "transfer",
+      "sourceActionId": "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+      "sourceUrl": "https://visit-abashiri.jp/assets/a1b952db5a811e0a72c7fd0687e0a4bd79fa5848.pdf",
+      "observedResponseSha256": "cca8611f7a40b571e218c60d4109a9c0a72b72487128a6a3a179489a2d087910",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:memanbetsu:independent-tourism-public-airport-station-gateways212",
+          "url": "https://visit-abashiri.jp/access/",
+          "observedResponseSha256": "7956a01b0117b81b18aa04700f185ffffcc3a5557340ea14e2c7d10da75e95a0"
+        },
+        {
+          "sourceActionId": "government:gsi:abashiri-station-public-crossing212",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/236112/95300.jpg",
+          "observedResponseSha256": "2e97cb31d4a7b624f20d89433447d169eafad76d1f9f9d4ea2e3b2a6bd410b2a",
+          "locator": "Root visual review: marked public Route39 pedestrian crossing and station-front street margins; static corroboration, capture date unavailable."
+        },
+        {
+          "sourceActionId": "government:gsi:abashiri-station-public-crossing212",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/236113/95300.jpg",
+          "observedResponseSha256": "6a262c9ea6bad4b71b992ac247a5ce862f891aa7c52d5408cccff4185c6f7a12",
+          "locator": "Root visual review: marked public Route39 pedestrian crossing and station-front street margins; static corroboration, capture date unavailable."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_STATION_GUIDE_WITH_INDEPENDENT_MARKED_PUBLIC_CROSSING",
+      "hubScopeComplete": false
+    }
+  ]
+}

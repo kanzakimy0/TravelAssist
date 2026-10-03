@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "contexts": [
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": true,
+      "planningAt": "2026-10-04T08:00:00+09:00",
+      "travelDate": "2026-10-04",
+      "acceptedContracts": [
+        "88ba2bae3e68828331ed4083342915e782dabd2af1d1b1a62dcb917c9914a7d3"
+      ],
+      "odReservationIntents": [
+        {
+          "odId": "transport-od:086:54da7612cb9029e7055f3e4744e0cae8",
+          "kind": "REQUEST_BEFORE_PICKUP",
+          "channel": "PHONE",
+          "profile": "PUBLIC_VISITOR",
+          "payment": "CASH",
+          "requestAt": "2026-10-04T09:30:00+09:00",
+          "pickupAt": "2026-10-04T10:00:00+09:00"
+        },
+        {
+          "odId": "transport-od:086:3d81ab1d6bb12b6780df4ebfe31dafc8",
+          "kind": "REQUEST_BEFORE_PICKUP",
+          "channel": "PHONE",
+          "profile": "PUBLIC_VISITOR",
+          "payment": "CASH",
+          "requestAt": "2026-10-04T09:30:00+09:00",
+          "pickupAt": "2026-10-04T10:00:00+09:00"
+        }
+      ]
+    },
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": true,
+      "travelDate": "2026-10-04",
+      "acceptedContracts": [
+        "e680987a41ffe2f5e418b2152ebb171c045c5b22c0efeabd844619a0b1eede06"
+      ],
+      "reservationIntents": [
+        {
+          "contractSha256": "e680987a41ffe2f5e418b2152ebb171c045c5b22c0efeabd844619a0b1eede06",
+          "travelDate": "2026-10-04",
+          "kind": "REQUEST_BEFORE_DEADLINE",
+          "planningAt": "2026-10-03T02:00:00+09:00",
+          "requestAt": "2026-10-03T09:00:00+09:00",
+          "channel": "PHONE",
+          "payment": "CASH",
+          "acceptedPassengerRulesSha256": "3113a96a4692aa5ba79b43aeb3aaa9f0e2479823007d970f0dd9c4814d435b7f"
+        }
+      ]
+    }
+  ]
+}

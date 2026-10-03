@@ -1,0 +1,875 @@
+{
+  "phaseId": "069-nankai-koya-local-branches-and-shinimamiya-gateway",
+  "strategy": [
+    "NANKAI_CURRENT_EXPLICIT_LOCAL_SERVICE",
+    "T1_SHINIMAMIYA_SAKAIHIGASHI",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:nankai:koya-local-branches"
+  ],
+  "facts": [
+    {
+      "factId": "nankai-koya-urban-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/railway.html?line=koya_line",
+      "observedResponseSha256": "2b7117495e8d2452e2f22eb70a3d7199a44e777d4df52210c72ec94042876abe",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nankai.co.jp/sites/default/files/imce/pdf/lib/traffic/railmap/pdf/routemap_koyaline_260330.pdf",
+          "observedResponseSha256": "5fa18f6c5fa88173d6e382829d3be43537c1556257caf0a15f902cec346caaea"
+        }
+      ],
+      "locator": "Current official station list labels each retained call as local; 2026-03-30 diagram grey local column independently reviewed. Bounded segments split at Hashimoto; no claim of one end-to-end scheduled train. Source order is Kii-Hosokawa then Kii-Kamiya, not S12 row order. Current spelling Mikunigaoka taken from HTML. Namba phonetic-name crosswalk, Semboku operator reorganization and Koyasan cableway excluded.",
+      "line": "高野線・各停 urban",
+      "operator": "南海電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "outbound",
+      "callingStations": [
+        "今宮戎",
+        "新今宮",
+        "萩ノ茶屋",
+        "天下茶屋",
+        "岸里玉出",
+        "帝塚山",
+        "住吉東",
+        "沢ノ町",
+        "我孫子前",
+        "浅香山",
+        "堺東",
+        "三国ヶ丘",
+        "百舌鳥八幡",
+        "中百舌鳥",
+        "白鷺",
+        "初芝",
+        "萩原天神",
+        "北野田",
+        "狭山",
+        "大阪狭山市",
+        "金剛",
+        "滝谷",
+        "千代田",
+        "河内長野",
+        "三日市町",
+        "美加の台",
+        "千早口",
+        "天見",
+        "紀見峠",
+        "林間田園都市",
+        "御幸辻",
+        "橋本"
+      ],
+      "callingComponents": [
+        {
+          "name": "今宮戎",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "萩ノ茶屋",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天下茶屋",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岸里玉出",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "帝塚山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "住吉東",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "沢ノ町",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "我孫子前",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "浅香山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "堺東",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三国ヶ丘",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "百舌鳥八幡",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中百舌鳥",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "白鷺",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "初芝",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "萩原天神",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野田",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "狭山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪狭山市",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金剛",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "滝谷",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千代田",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "河内長野",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三日市町",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "美加の台",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千早口",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天見",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀見峠",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "林間田園都市",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "御幸辻",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "橋本",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_STATION_SERVICE_CLASS_AND_VISUAL_LOCAL_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nankai-koya-urban-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/railway.html?line=koya_line",
+      "observedResponseSha256": "2b7117495e8d2452e2f22eb70a3d7199a44e777d4df52210c72ec94042876abe",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nankai.co.jp/sites/default/files/imce/pdf/lib/traffic/railmap/pdf/routemap_koyaline_260330.pdf",
+          "observedResponseSha256": "5fa18f6c5fa88173d6e382829d3be43537c1556257caf0a15f902cec346caaea"
+        }
+      ],
+      "locator": "Current official station list labels each retained call as local; 2026-03-30 diagram grey local column independently reviewed. Bounded segments split at Hashimoto; no claim of one end-to-end scheduled train. Source order is Kii-Hosokawa then Kii-Kamiya, not S12 row order. Current spelling Mikunigaoka taken from HTML. Namba phonetic-name crosswalk, Semboku operator reorganization and Koyasan cableway excluded.",
+      "line": "高野線・各停 urban",
+      "operator": "南海電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "inbound",
+      "callingStations": [
+        "橋本",
+        "御幸辻",
+        "林間田園都市",
+        "紀見峠",
+        "天見",
+        "千早口",
+        "美加の台",
+        "三日市町",
+        "河内長野",
+        "千代田",
+        "滝谷",
+        "金剛",
+        "大阪狭山市",
+        "狭山",
+        "北野田",
+        "萩原天神",
+        "初芝",
+        "白鷺",
+        "中百舌鳥",
+        "百舌鳥八幡",
+        "三国ヶ丘",
+        "堺東",
+        "浅香山",
+        "我孫子前",
+        "沢ノ町",
+        "住吉東",
+        "帝塚山",
+        "岸里玉出",
+        "天下茶屋",
+        "萩ノ茶屋",
+        "新今宮",
+        "今宮戎"
+      ],
+      "callingComponents": [
+        {
+          "name": "橋本",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "御幸辻",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "林間田園都市",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀見峠",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天見",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千早口",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "美加の台",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三日市町",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "河内長野",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千代田",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "滝谷",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金剛",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪狭山市",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "狭山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野田",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "萩原天神",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "初芝",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "白鷺",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中百舌鳥",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "百舌鳥八幡",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三国ヶ丘",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "堺東",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "浅香山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "我孫子前",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "沢ノ町",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "住吉東",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "帝塚山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岸里玉出",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天下茶屋",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "萩ノ茶屋",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "今宮戎",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_STATION_SERVICE_CLASS_AND_VISUAL_LOCAL_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nankai-koya-mountain-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/railway.html?line=koya_line",
+      "observedResponseSha256": "2b7117495e8d2452e2f22eb70a3d7199a44e777d4df52210c72ec94042876abe",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nankai.co.jp/sites/default/files/imce/pdf/lib/traffic/railmap/pdf/routemap_koyaline_260330.pdf",
+          "observedResponseSha256": "5fa18f6c5fa88173d6e382829d3be43537c1556257caf0a15f902cec346caaea"
+        }
+      ],
+      "locator": "Current official station list labels each retained call as local; 2026-03-30 diagram grey local column independently reviewed. Bounded segments split at Hashimoto; no claim of one end-to-end scheduled train. Source order is Kii-Hosokawa then Kii-Kamiya, not S12 row order. Current spelling Mikunigaoka taken from HTML. Namba phonetic-name crosswalk, Semboku operator reorganization and Koyasan cableway excluded.",
+      "line": "高野線・各停 mountain",
+      "operator": "南海電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "outbound",
+      "callingStations": [
+        "橋本",
+        "紀伊清水",
+        "学文路",
+        "九度山",
+        "高野下",
+        "下古沢",
+        "上古沢",
+        "紀伊細川",
+        "紀伊神谷",
+        "極楽橋"
+      ],
+      "callingComponents": [
+        {
+          "name": "橋本",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀伊清水",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "学文路",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "九度山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高野下",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下古沢",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上古沢",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀伊細川",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀伊神谷",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "極楽橋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_STATION_SERVICE_CLASS_AND_VISUAL_LOCAL_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nankai-koya-mountain-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/railway.html?line=koya_line",
+      "observedResponseSha256": "2b7117495e8d2452e2f22eb70a3d7199a44e777d4df52210c72ec94042876abe",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nankai.co.jp/sites/default/files/imce/pdf/lib/traffic/railmap/pdf/routemap_koyaline_260330.pdf",
+          "observedResponseSha256": "5fa18f6c5fa88173d6e382829d3be43537c1556257caf0a15f902cec346caaea"
+        }
+      ],
+      "locator": "Current official station list labels each retained call as local; 2026-03-30 diagram grey local column independently reviewed. Bounded segments split at Hashimoto; no claim of one end-to-end scheduled train. Source order is Kii-Hosokawa then Kii-Kamiya, not S12 row order. Current spelling Mikunigaoka taken from HTML. Namba phonetic-name crosswalk, Semboku operator reorganization and Koyasan cableway excluded.",
+      "line": "高野線・各停 mountain",
+      "operator": "南海電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "inbound",
+      "callingStations": [
+        "極楽橋",
+        "紀伊神谷",
+        "紀伊細川",
+        "上古沢",
+        "下古沢",
+        "高野下",
+        "九度山",
+        "学文路",
+        "紀伊清水",
+        "橋本"
+      ],
+      "callingComponents": [
+        {
+          "name": "極楽橋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀伊神谷",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀伊細川",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上古沢",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下古沢",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高野下",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "九度山",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "学文路",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紀伊清水",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "橋本",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_STATION_SERVICE_CLASS_AND_VISUAL_LOCAL_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nankai-koya-shiomibashi-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/railway.html?line=shiomibashi_line",
+      "observedResponseSha256": "552850b5cbff0289a074e9c484835b3931937a0a37e50bfddc96378321a1d8e8",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nankai.co.jp/sites/default/files/imce/pdf/lib/traffic/railmap/pdf/routemap_koyaline_260330.pdf",
+          "observedResponseSha256": "5fa18f6c5fa88173d6e382829d3be43537c1556257caf0a15f902cec346caaea"
+        }
+      ],
+      "locator": "Current official station list labels each retained call as local; 2026-03-30 diagram grey local column independently reviewed. Bounded segments split at Hashimoto; no claim of one end-to-end scheduled train. Source order is Kii-Hosokawa then Kii-Kamiya, not S12 row order. Current spelling Mikunigaoka taken from HTML. Namba phonetic-name crosswalk, Semboku operator reorganization and Koyasan cableway excluded.",
+      "line": "高野線・各停 shiomibashi",
+      "operator": "南海電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "outbound",
+      "callingStations": [
+        "汐見橋",
+        "芦原町",
+        "木津川",
+        "津守",
+        "西天下茶屋",
+        "岸里玉出"
+      ],
+      "callingComponents": [
+        {
+          "name": "汐見橋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦原町",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "木津川",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津守",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西天下茶屋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岸里玉出",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_STATION_SERVICE_CLASS_AND_VISUAL_LOCAL_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nankai-koya-shiomibashi-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/railway.html?line=shiomibashi_line",
+      "observedResponseSha256": "552850b5cbff0289a074e9c484835b3931937a0a37e50bfddc96378321a1d8e8",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nankai.co.jp/sites/default/files/imce/pdf/lib/traffic/railmap/pdf/routemap_koyaline_260330.pdf",
+          "observedResponseSha256": "5fa18f6c5fa88173d6e382829d3be43537c1556257caf0a15f902cec346caaea"
+        }
+      ],
+      "locator": "Current official station list labels each retained call as local; 2026-03-30 diagram grey local column independently reviewed. Bounded segments split at Hashimoto; no claim of one end-to-end scheduled train. Source order is Kii-Hosokawa then Kii-Kamiya, not S12 row order. Current spelling Mikunigaoka taken from HTML. Namba phonetic-name crosswalk, Semboku operator reorganization and Koyasan cableway excluded.",
+      "line": "高野線・各停 shiomibashi",
+      "operator": "南海電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各停",
+      "direction": "inbound",
+      "callingStations": [
+        "岸里玉出",
+        "西天下茶屋",
+        "津守",
+        "木津川",
+        "芦原町",
+        "汐見橋"
+      ],
+      "callingComponents": [
+        {
+          "name": "岸里玉出",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西天下茶屋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津守",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "木津川",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦原町",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "汐見橋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_STATION_SERVICE_CLASS_AND_VISUAL_LOCAL_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nankai-shinimamiya-explicit-jr-interchange",
+      "kind": "transfer",
+      "sourceActionId": "private:nankai:koya-local-branches",
+      "sourceUrl": "https://www.nankai.co.jp/traffic/station/shinimamiya.html",
+      "observedResponseSha256": "1f4ef694258e4270d1d3f7a37f7215e2d88b571e0d8a4347be9afe43676ec91c",
+      "locator": "Current Shin-Imamiya page explicitly lists JR Osaka Loop and Yamatoji railway interchange. Bind only the independently identified same-named Nankai and JR Osaka Loop components; do not infer nearby metro or Hankai walking links from their operator names.",
+      "components": [
+        {
+          "name": "新今宮",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_OPERATOR_INTERCHANGE_AND_EXACT_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

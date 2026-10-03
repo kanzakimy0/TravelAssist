@@ -1,0 +1,337 @@
+{
+  "phaseId": "097-seven-tokyo-toei-jr-seibu-public-passages",
+  "strategy": [
+    "VISUALLY_REVIEWED_JR_AND_SEIBU_CURRENT_STATION_DIAGRAMS",
+    "INDEPENDENT_TOEI_PUBLIC_REFERENCE_NO_CHALLENGE_AS_CONTENT",
+    "EXACT_OPERATOR_COMPONENT_TRANSFER_CLOSURE"
+  ],
+  "completedActionIds": [
+    "hub:tokyo:five-jr-toei-current-public-passages",
+    "hub:tokyo:seibu-nakai-nerima-current-toei-passages",
+    "hub:tokyo:toei-seven-interchange-reference-review"
+  ],
+  "facts": [
+    {
+      "factId": "sugamo-current-jr-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0896_b1-1f.png",
+      "observedResponseSha256": "92bd0d92318a5d5be9dade949469f091302a47ecd490d822eea08f48636ed6c9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/896.html",
+          "observedResponseSha256": "05dac5a9af205d4021a16aba4175fb09e4d511263a9aab7427d16dfe9da44883"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/sugamo.html",
+          "observedResponseSha256": "ed955b5bdf311cc90be3c7cafd60aacefab2f59b0d02b61436bc49f6614fed4c"
+        }
+      ],
+      "locator": "The currently linked September 2025 JR layout explicitly shows the Mita-line stair connection from the public ground-floor concourse near the front/north entrance. Keep JR and Toei paid areas separate. Visually reviewed exact diagram. Minimal physical relation only; no raw artwork, distance-based inference, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "巣鴨",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "巣鴨",
+          "operator": "東京都",
+          "line": "6号線三田線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_DIAGRAM_PUBLIC_GATEWAY_WITH_INDEPENDENT_INTERCHANGE_REFERENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "yoyogi-current-jr-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/1654_1f-2f.png",
+      "observedResponseSha256": "fd300e2f0756e69e877b82fbe94c2d242d9a0d8ce3d8e283964dd90818b9206c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/1654.html",
+          "observedResponseSha256": "d9e6d8141451b531d39508f3f45ce6c0aad35e581b775f894eefcdcc97f22aaa"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/yoyogi.html",
+          "observedResponseSha256": "87a17cfbb7c65bdc4b2e1d1b4fe59ba23018e23b6b4be9a786bf205ef8579288"
+        }
+      ],
+      "locator": "The currently linked November 2025 JR layout explicitly signs Oedo-line connections from north and west public gate areas. Use the north public connection; the JR consolidated Yamanote/Chuo component remains one reviewed component. Visually reviewed exact diagram. Minimal physical relation only; no raw artwork, distance-based inference, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "代々木",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "代々木",
+          "operator": "東京都",
+          "line": "12号線大江戸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_DIAGRAM_PUBLIC_GATEWAY_WITH_INDEPENDENT_INTERCHANGE_REFERENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "asakusabashi-current-jr-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0047_1f-2f.png",
+      "observedResponseSha256": "9709f2d3ea2c8c2b488968f78afec17a2c67160ca954871254a8f8ce4c9057d9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/47.html",
+          "observedResponseSha256": "ebed21d91df8008b4fe6f7b65ea52201a347ec74b782e92dd14c4e396eec61de"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/asakusabashi.html",
+          "observedResponseSha256": "ea063b9ffcdfe66e738d5af9654a3fda7fe21dc54ee051c24aa76a63e340cbd2"
+        }
+      ],
+      "locator": "The current-linked August 2022 JR diagram explicitly signs the Asakusa-line connection from the east exit and its ground-floor stair approach. No claim of a shared paid concourse or step-free route. Visually reviewed exact diagram. Minimal physical relation only; no raw artwork, distance-based inference, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "浅草橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "浅草橋",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_DIAGRAM_PUBLIC_GATEWAY_WITH_INDEPENDENT_INTERCHANGE_REFERENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "suidobashi-current-jr-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0891_1f-2f.png",
+      "observedResponseSha256": "bf11f05323ecfe5c270b3ba8691a857ff618d01e9a71cb4d420e4fd4431f9203",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/891.html",
+          "observedResponseSha256": "c74ee13323bb715cf08fa57fbb2385d1f18562ab371650addff25328062ae392"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/suidobashi.html",
+          "observedResponseSha256": "25fb9951c73c2f6e819bdee2eb2682a79626cd2b16ca8b326edb5595675c7a38"
+        }
+      ],
+      "locator": "The current-linked October 2024 JR layout explicitly directs the east public exit toward Toei Mita Line. Toei current station page independently confirms the JR local-service interchange; this is an outside-gate passenger walk, not shared paid space. Visually reviewed exact diagram. Minimal physical relation only; no raw artwork, distance-based inference, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "水道橋",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "水道橋",
+          "operator": "東京都",
+          "line": "6号線三田線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_DIAGRAM_PUBLIC_GATEWAY_WITH_INDEPENDENT_INTERCHANGE_REFERENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "higashi-nakano-current-jr-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/1295_1f-2f.png",
+      "observedResponseSha256": "5fd989ec17bc4aaed428bb4cd73835b5e81e8afc43b89b6d0558212a4368a857",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:five-jr-toei-current-public-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/1295.html",
+          "observedResponseSha256": "2688ec5472e5ace5233bcc1b874eb6136e6daf03a2b60f1ef3b27335dd55177e"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/higashi-nakano.html",
+          "observedResponseSha256": "14c4544a07888db2f58c99ced0b8516669abbbfe3dc9185d68b6c01df91401ec"
+        }
+      ],
+      "locator": "The current-linked October 2022 JR layout explicitly signs Oedo Higashi-nakano from its west public concourse, independently corroborated by the current Toei interchange page. No east-exit shortcut is inferred. Visually reviewed exact diagram. Minimal physical relation only; no raw artwork, distance-based inference, walking time or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "東中野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東中野",
+          "operator": "東京都",
+          "line": "12号線大江戸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_DIAGRAM_PUBLIC_GATEWAY_WITH_INDEPENDENT_INTERCHANGE_REFERENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nakai-current-seibu-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:seibu-nakai-nerima-current-toei-passages",
+      "sourceUrl": "https://www.seiburailway.jp/railway/station/image/SS04.png",
+      "observedResponseSha256": "1a65a040fd76b337241acc706f8ef07b52a648ad2908a1fd4853a3b862e69f29",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:seibu-nakai-nerima-current-toei-passages",
+          "url": "https://www.seiburailway.jp/railway/station/nakai/",
+          "observedResponseSha256": "2f73dd489b701d741488f32dee6e0daf003b8b9e9a837a0c41f7578e7551c1de"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/nakai.html",
+          "observedResponseSha256": "3b0a9f9c0d84d189fa0e918f03660bba4ab849549652f7c5751b26e11c3a53a9"
+        }
+      ],
+      "locator": "The September 24 2025 Seibu diagram shows the underground gate/public concourse connecting up to south exit, explicitly signed for Oedo transfer. Review this outside-gate passenger connection, not a joined paid zone. Individually viewed exact diagram; no unviewed Toei map claim, inferred through train, raw artwork, same-name merge, duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "中井",
+          "operator": "西武鉄道",
+          "line": "新宿線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中井",
+          "operator": "東京都",
+          "line": "12号線大江戸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_SEIBU_PUBLIC_GATEWAY_WITH_INDEPENDENT_TOEI_REFERENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nerima-current-seibu-toei-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:seibu-nakai-nerima-current-toei-passages",
+      "sourceUrl": "https://www.seiburailway.jp/railway/station/image/SI06.png",
+      "observedResponseSha256": "ccc69da0178806ea2f537bd7a701f98f177ae2ef2da9094aef657d4477064a09",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:seibu-nakai-nerima-current-toei-passages",
+          "url": "https://www.seiburailway.jp/railway/station/nerima/",
+          "observedResponseSha256": "6527bc077c74a497a40826c368ac71b47c1626a9b69b6fc9c701d526dcb3ffb2"
+        },
+        {
+          "sourceActionId": "hub:tokyo:toei-seven-interchange-reference-review",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/nerima.html",
+          "observedResponseSha256": "5ec1ce825de524783e801a3cde69a4179157e287aeef91949204856581836b1f"
+        }
+      ],
+      "locator": "The July 3 2025 Seibu diagram explicitly connects the central public concourse via A/B vertical connections to the B1 passage signed for Toei Oedo Nerima. West-gate operating hours do not constrain the selected central connection. Individually viewed exact diagram; no unviewed Toei map claim, inferred through train, raw artwork, same-name merge, duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "練馬",
+          "operator": "西武鉄道",
+          "line": "池袋線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "練馬",
+          "operator": "東京都",
+          "line": "12号線大江戸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_SEIBU_PUBLIC_GATEWAY_WITH_INDEPENDENT_TOEI_REFERENCE",
+      "hubScopeComplete": false
+    }
+  ]
+}

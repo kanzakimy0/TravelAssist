@@ -1,0 +1,338 @@
+{
+  "phaseId": "015-kyushu-shinkansen-bridges",
+  "strategy": [
+    "JR_KYUSHU_REAL_TRAIN_COLUMNS_AND_JR_WEST_MAP_ALTERNATIVE",
+    "EXPLICIT_INTERCHANGE",
+    "shinkansen"
+  ],
+  "facts": [
+    {
+      "factId": "hakata-shinkansen-concourses",
+      "kind": "transfer",
+      "sourceActionId": "hub:hakata",
+      "sourceUrl": "https://www.westjr.co.jp/global/en/timetable/pdf/station_hakata.pdf",
+      "locator": "Page 1 current linked official map as of 2025-09-18: Shinkansen platforms 11-16 share concourse for Tokyo/Shin-Osaka and Kagoshima-Chuo; Central and North Transfer Gates connect conventional platforms 1-8",
+      "components": [
+        {
+          "name": "博多",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "博多",
+          "operator": "九州旅客鉄道",
+          "line": "九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "博多",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+        [1, 2],
+        [2, 1]
+      ],
+      "reviewMethod": "VISUAL_PRIMARY_PHYSICAL_TRANSFER_EVIDENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kumamoto-shinkansen-conventional",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-kyushu",
+      "sourceUrl": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2025/03/31/kumamotoeki_kounaizu20250401.pdf",
+      "locator": "Page 1; 新幹線乗換口 connects platforms 11-14 and 1-6. KOTSUSHIMBUNSHA map artwork is not retained.",
+      "components": [
+        {
+          "name": "熊本",
+          "operator": "九州旅客鉄道",
+          "line": "九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "熊本",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "VISUAL_PRIMARY_PHYSICAL_TRANSFER_EVIDENCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kamome-1",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu",
+      "sourceUrl": "https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf",
+      "locator": "Page 5, Kamome 1 individual southbound column, five actual calls",
+      "callingStations": ["武雄温泉", "嬉野温泉", "新大村", "諫早", "長崎"],
+      "callingComponents": [
+        {
+          "name": "武雄温泉",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "嬉野温泉",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新大村",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "諫早",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "長崎",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "line": "西九州新幹線",
+      "operator": "九州旅客鉄道",
+      "mode": "shinkansen",
+      "serviceClass": "Kamome",
+      "serviceNumber": "1",
+      "direction": "outbound",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_BASE_SCHEDULE_NOT_LIVE_DISRUPTION_STATUS",
+      "reviewMethod": "VISUAL_ACTUAL_TRAIN_COLUMN"
+    },
+    {
+      "factId": "kamome-2",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu",
+      "sourceUrl": "https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf",
+      "locator": "Page 5, Kamome 2 individual northbound column, five actual calls",
+      "callingStations": ["長崎", "諫早", "新大村", "嬉野温泉", "武雄温泉"],
+      "callingComponents": [
+        {
+          "name": "長崎",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "諫早",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新大村",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "嬉野温泉",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "武雄温泉",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "line": "西九州新幹線",
+      "operator": "九州旅客鉄道",
+      "mode": "shinkansen",
+      "serviceClass": "Kamome",
+      "serviceNumber": "2",
+      "direction": "inbound",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_BASE_SCHEDULE_NOT_LIVE_DISRUPTION_STATUS",
+      "reviewMethod": "VISUAL_ACTUAL_TRAIN_COLUMN"
+    },
+    {
+      "factId": "relay-kamome-1",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu",
+      "sourceUrl": "https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf",
+      "locator": "Page 5, Relay Kamome 1 actual column, seven calls",
+      "callingStations": [
+        "博多",
+        "二日市",
+        "鳥栖",
+        "新鳥栖",
+        "佐賀",
+        "江北",
+        "武雄温泉"
+      ],
+      "callingComponents": [
+        {
+          "name": "博多",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "二日市",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳥栖",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新鳥栖",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "佐賀",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "江北",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "武雄温泉",
+          "operator": "九州旅客鉄道",
+          "line": "佐世保線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "line": "長崎線",
+      "operator": "九州旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "Relay Kamome",
+      "serviceNumber": "1",
+      "direction": "outbound",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_BASE_SCHEDULE_NOT_LIVE_DISRUPTION_STATUS",
+      "reviewMethod": "VISUAL_ACTUAL_TRAIN_COLUMN"
+    },
+    {
+      "factId": "relay-kamome-2",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu",
+      "sourceUrl": "https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf",
+      "locator": "Page 5, Relay Kamome 2 actual column, seven calls",
+      "callingStations": [
+        "武雄温泉",
+        "江北",
+        "佐賀",
+        "新鳥栖",
+        "鳥栖",
+        "二日市",
+        "博多"
+      ],
+      "callingComponents": [
+        {
+          "name": "武雄温泉",
+          "operator": "九州旅客鉄道",
+          "line": "佐世保線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "江北",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "佐賀",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新鳥栖",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳥栖",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "二日市",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "博多",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "line": "長崎線",
+      "operator": "九州旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "Relay Kamome",
+      "serviceNumber": "2",
+      "direction": "inbound",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_BASE_SCHEDULE_NOT_LIVE_DISRUPTION_STATUS",
+      "reviewMethod": "VISUAL_ACTUAL_TRAIN_COLUMN"
+    },
+    {
+      "factId": "takeo-onsen-cross-platform",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-kyushu",
+      "sourceUrl": "https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf",
+      "locator": "Page 5 yellow cells explicitly denote same-platform transfer: Relay Kamome 1 to Kamome 1 and Kamome 2 to Relay Kamome 2; independently inspected both directions",
+      "components": [
+        {
+          "name": "武雄温泉",
+          "operator": "九州旅客鉄道",
+          "line": "佐世保線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "武雄温泉",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "VISUAL_PRIMARY_PHYSICAL_TRANSFER_EVIDENCE",
+      "hubScopeComplete": false
+    }
+  ],
+  "completedActionIds": ["hub:hakata", "rail:jr-kyushu"]
+}

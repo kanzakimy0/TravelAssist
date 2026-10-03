@@ -1,0 +1,189 @@
+{
+  "phaseId": "146-takeda-saiin-and-hatta-current-explicit-component-connections",
+  "strategy": [
+    "CURRENT_OFFICIAL_EXPLICIT_SHARED_PLATFORM_PASSAGES",
+    "DIRECTIONAL_TRAM_PLATFORM_PUBLIC_GATES",
+    "DISTINCT_JR_KINTETSU_PUBLIC_CONNECTIONS"
+  ],
+  "completedActionIds": [
+    "hub:kyoto-city:takeda-current-shared-platform-passages",
+    "hub:hankyu:saiin-current-randen-directional-platform-gates",
+    "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages"
+  ],
+  "facts": [
+    {
+      "factId": "takeda-subway-kintetsu-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:kyoto-city:takeda-current-shared-platform-passages",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/img/map/sta/pdf/k15map.pdf",
+      "observedResponseSha256": "27eec76df68698394405576607c18ec1a8eb0b192b5aaf6514e78fa1be5be65c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kyoto-city:takeda-current-shared-platform-passages",
+          "url": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/menu0225.htm",
+          "observedResponseSha256": "d18f3363855856b39a9c1c9ce7786aebd326099dab471848e5a295ce22a2dae9"
+        }
+      ],
+      "locator": "Individually viewed currently linked official diagram. Current K15 plan explicitly labels subway Kokusai-kaikan and Kintetsu Kyoto/Nara platform faces with common passenger concourses/stairs. Preserve exact separate licensed components. No detailed coordinate, walking time, fare, guaranteed accessibility or inferred through-service claim.",
+      "components": [
+        {
+          "name": "竹田",
+          "operator": "京都市",
+          "line": "烏丸線",
+          "mode": "metro"
+        },
+        {
+          "name": "竹田",
+          "operator": "近畿日本鉄道",
+          "line": "京都線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_EXPLICIT_PLATFORM_GATE_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "saiin-hankyu-randen-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:hankyu:saiin-current-randen-directional-platform-gates",
+      "sourceUrl": "https://www.hankyu.co.jp/station/map/img/saiin.svg",
+      "observedResponseSha256": "f325d5f1c411b5dc9f9f39b093cc3ca32df3ba17dc0cf91b98d9904b80587325",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:hankyu:saiin-current-randen-directional-platform-gates",
+          "url": "https://www.hankyu.co.jp/station/saiin.html",
+          "observedResponseSha256": "0da853053cdfd5f53ef52c88e37166661e6f11541875a8b11aa43ee6e04354bc"
+        }
+      ],
+      "locator": "Individually viewed currently linked official diagram. Current plan explicitly connects Hankyu north gate to Randen Arashiyama-direction platform and south gate to Randen Shijo-Omiya-direction platform; ordinary west concourse joins Hankyu directions. Preserve exact separate licensed components. No detailed coordinate, walking time, fare, guaranteed accessibility or inferred through-service claim.",
+      "components": [
+        {
+          "name": "西院",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西院",
+          "operator": "京福電気鉄道",
+          "line": "嵐山本線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_EXPLICIT_PLATFORM_GATE_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hatta-metro-jr-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/H02_Hatta.gif",
+      "observedResponseSha256": "d3d4e7e02bd4dcacb3cea27129c5d6f7b580caddb3af62977967f2c9530620d3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E5%85%AB%E7%94%B0",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        }
+      ],
+      "locator": "Individually viewed currently linked official diagram. Current municipal Hatta plan explicitly connects metro gate/public concourse via stairs and escalators to JR Hatta; both metro platform directions reach the gate. Preserve exact separate licensed components. No detailed coordinate, walking time, fare, guaranteed accessibility or inferred through-service claim.",
+      "components": [
+        {
+          "name": "八田",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "八田",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_EXPLICIT_PLATFORM_GATE_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hatta-metro-kintetsu-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/H02_Hatta.gif",
+      "observedResponseSha256": "d3d4e7e02bd4dcacb3cea27129c5d6f7b580caddb3af62977967f2c9530620d3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E5%85%AB%E7%94%B0",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya-city:hatta-current-metro-jr-kintetsu-public-passages",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        }
+      ],
+      "locator": "Individually viewed currently linked official diagram. Current municipal Hatta plan explicitly connects metro public concourse via separate stairs/escalators to Kintetsu Hatta; this is distinct from the JR connector and street entrances. Preserve exact separate licensed components. No detailed coordinate, walking time, fare, guaranteed accessibility or inferred through-service claim.",
+      "components": [
+        {
+          "name": "八田",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "近鉄八田",
+          "operator": "近畿日本鉄道",
+          "line": "名古屋線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_EXPLICIT_PLATFORM_GATE_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

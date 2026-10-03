@@ -1,0 +1,3073 @@
+{
+  "schemaVersion": 1,
+  "taskRevision": "TASK086-FULL-ORIGINAL-CONTINUOUS-v2",
+  "packages": [
+    {
+      "packageId": "research:03b09beeec61f1a0a808",
+      "inputFingerprint": "99e4b8a7eb7993da6541679ff66ced8a2afe4883a4005f37ed56dc6aab1c7271",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase169.json",
+          "sha256": "64de73d32f58cdc6f4f380cf0e7c760baa49c1ffaddfdd6cbd44a140f6a17d2e"
+        },
+        {
+          "path": ".cache/task-086/airports7/niigata-bandai-public-walk-review-v1.json",
+          "sha256": "2792151e22151f7749e99b08f93c3ec23606a37dbf7672e8416e22fcf7e3c14c"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:57:27.226Z",
+          "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+          "method": "PRIMARY_GTFS_CONTENT_INSPECTION_AND_CURRENT_RELOCATED_TERMINAL_IDENTITY_RESEARCH",
+          "result": "HIGHWAY_FEED_HAS_NO_AIRPORT_SERVICE; CURRENT_STATION_BAY18_REQUIRES_DISTINCT_IDENTITY",
+          "failureReason": "P11-22 south-entrance stop predates physical relocation in2024; publishedGTFS onlytwohighwayroutes, no applicableairportstop",
+          "sources": [
+            {
+              "key": "niigata-busvision-gtfs",
+              "url": "https://loc.bus-vision.jp/gtfs_v2/niigatakotsu/gtfsFeed",
+              "status": 200,
+              "bytes": 18147,
+              "contentSha256": "8d1bfce320eb432fa1c806318182d985763721c55426d4efe452a81a8355bdaa",
+              "file": ".cache\\task-086\\airports7\\niigata-busvision-gtfs.zip",
+              "rightsStatus": "PRIMARY_LICENSE_REVIEW_PENDING_PRIVATE_RESEARCH_ONLY"
+            }
+          ],
+          "evidence": [
+            ".cache/task-086/airports7/niigata-busvision-gtfs.zip",
+            ".cache/task-086/airports7/niigata-pdf.pdf"
+          ],
+          "metrics": {
+            "searchQueries": 8,
+            "httpRequests": 1,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "VERIFY_CURRENT_TERMINAL_IDENTITY_OPEN_DATA_OR_LEGAL_ALTERNATIVE_COMPLETE_CHAIN; inspect cachedcurrentairporttimetable andprimaryrights",
+          "retryCondition": "Do not refetch unchangedhighwayGTFS forairportidentity; newapplicabledataset/version or alternateactualchain required"
+        },
+        {
+          "observedAt": "2026-10-02T14:59:48.773Z",
+          "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+          "method": "PRIMARY_GTFS_CONTENT_INSPECTION_AND_CURRENT_RELOCATED_TERMINAL_IDENTITY_RESEARCH",
+          "result": "DUPLICATE_ADMINISTRATIVE_CHECKPOINT_NO_NEW_RESEARCH",
+          "failureReason": "P11-22 south-entrance stop predates physical relocation in2024; publishedGTFS onlytwohighwayroutes, no applicableairportstop",
+          "sources": [
+            {
+              "key": "niigata-busvision-gtfs",
+              "url": "https://loc.bus-vision.jp/gtfs_v2/niigatakotsu/gtfsFeed",
+              "status": 200,
+              "bytes": 18147,
+              "contentSha256": "8d1bfce320eb432fa1c806318182d985763721c55426d4efe452a81a8355bdaa",
+              "file": ".cache\\task-086\\airports7\\niigata-busvision-gtfs.zip",
+              "rightsStatus": "PRIMARY_LICENSE_REVIEW_PENDING_PRIVATE_RESEARCH_ONLY"
+            }
+          ],
+          "evidence": [
+            ".cache/task-086/airports7/niigata-busvision-gtfs.zip",
+            ".cache/task-086/airports7/niigata-pdf.pdf"
+          ],
+          "metrics": {
+            "httpRequests": 0,
+            "searchQueries": 0,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "VERIFY_CURRENT_TERMINAL_IDENTITY_OPEN_DATA_OR_LEGAL_ALTERNATIVE_COMPLETE_CHAIN; inspect cachedcurrentairporttimetable andprimaryrights",
+          "retryCondition": "Do not refetch unchangedhighwayGTFS forairportidentity; newapplicabledataset/version or alternateactualchain required"
+        },
+        {
+          "observedAt": "2026-10-02T15:24:14.068Z",
+          "inputFingerprint": "21dea94bb436d2aa9e6a380c877b7494b6947c8e67d3913ab4cce1a4b7bdff67",
+          "method": "CURRENT_OPERATOR_MAPS_AND_TIMETABLES;PRIMARY_CC_BY_GTFS;OSM_CURRENT_MAP_AND_COARSE_IDENTITY_QUALITY_REVIEW",
+          "result": "SERVICE_AND_LICENSE_EVIDENCE_CACHED; DIRECT_TERMINAL_IDENTITY_OR_ALTERNATIVE_PUBLIC_ACCESS_DEPENDENCIES_STILL_OPEN",
+          "failureReason": "OSMmapretainsoldlimousinestop5,nocurrent18; JREaststationpage403. Alternativehighwaycoarseningwouldallowunreviewedcross-directiontransfers;県庁/県庁東different;Nagaokaarrival56_1mustnotbeclaimedbay4boarding.",
+          "sources": [
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+              "status": 200,
+              "contentSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-airport-operator.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/bandaicity.html",
+              "status": 200,
+              "contentSha256": "4948694441cf25e347142984b5a46c915e921ea09a669d389de277fa46b8392b",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-bandai-current.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+              "status": 200,
+              "contentSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-bandai-map.pdf"
+            },
+            {
+              "url": "https://loc.bus-vision.jp/gtfs_v2/niigatakotsu/gtfsFeed",
+              "status": 200,
+              "contentSha256": "8d1bfce320eb432fa1c806318182d985763721c55426d4efe452a81a8355bdaa",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-busvision-gtfs.zip"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/noriai/20150716privacy.pdf",
+              "status": 200,
+              "contentSha256": "b00a4857fea98f64d643ce562d2b5c0683fba2b3206892ff5bd8ba938ce48f90",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-carrier-terms.pdf"
+            },
+            {
+              "url": "https://www.niigata-airport.gr.jp/news/detail/?id=264&lang=ja",
+              "status": 200,
+              "contentSha256": "7afb0887e8d6a47313eb973e08f88123f61d98eafb5b910f3cedf6fde7db46bf",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-current.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "status": 200,
+              "contentSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-e2-map.pdf"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/files/weekday/e2_w.pdf",
+              "status": 200,
+              "contentSha256": "608cc5b8ce18d40d3acc05b2364c9e2c3c82c605fbe1825723e10b50a77604f1",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-e2-weekday.pdf"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/highway-bus/intra-pref/map/",
+              "status": 200,
+              "contentSha256": "1c5f07b63d7c807502c96c5969ddbdeadbd07673bba34941fdea92b3dac7a199",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-highway-stops.html"
+            },
+            {
+              "url": "https://www.jreast.co.jp/estation/stations/1085.html",
+              "status": 403,
+              "contentSha256": "71e12df1edf7f51b88aa127adf5dfc6e84fab2e745af5c2ace0e01fe6ad6e69c",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-jr-floor.html"
+            },
+            {
+              "url": "https://www.echigo-kotsu.co.jp/contents/diagram/hw_bus-stop/img/bs_map/nagaoka_sta.png",
+              "status": 200,
+              "contentSha256": "2dbc97ac82f0bc47ef7f87aacb4c5b4ca038bc5d908c99f94304f719107a2dd1",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-map.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/highway-bus/intra-pref/nagaoka.html",
+              "status": 200,
+              "contentSha256": "56a6baf0b00e7b7931ecedd65df05a910a0b397513a9956dc1a6472151e684fd",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-route.html"
+            },
+            {
+              "url": "https://www.echigo-kotsu.co.jp/contents/diagram/hw_bus-stop/bs_nagaoka_sta.html",
+              "status": 200,
+              "contentSha256": "cbc9d7cbb74c012e5f9bb11046a9a45413c0bb3f3bbe0ea6a1309f1d7c11d1c1",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-nagaoka-station-current.html"
+            },
+            {
+              "url": "https://api.openstreetmap.org/api/0.6/map?bbox=139.0595,37.9108,139.0635,37.9135",
+              "status": 200,
+              "contentSha256": "5ccb6e967de9001a024c2b01e09e961ef450d29412f258575863de3ac992a924",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-osm-current-map.osm"
+            },
+            {
+              "url": "https://www.niigata-airport.gr.jp/common/img/upload/files/202608_%E3%83%AA%E3%83%A0%E3%82%B8%E3%83%B3%E3%83%90%E3%82%B99%E6%9C%88%E3%83%80%E3%82%A4%E3%83%A4%E6%94%B9%E6%AD%A3_A4%E3%83%81%E3%83%A9%E3%82%B7(1).pdf",
+              "status": 200,
+              "contentSha256": "dfc5659e6dab980047dbbe759b77981964319cff1829908c080ac1cd5863b5db",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-pdf.pdf"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/route_e.html",
+              "status": 200,
+              "contentSha256": "008e71404645d848ffe7215b251d307b0ecf37dc2b4e870b29df7009e22ff6af",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-route-list.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/niigatasta.html",
+              "status": 200,
+              "contentSha256": "060eb0bb381db9fcc250d1457cbb09b61a30c148f76f14cb5250c39cdede13e2",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-station-current.html"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/eki.pdf",
+              "status": 200,
+              "contentSha256": "c3805229c7e3ea2a6bf6c3bab6b9ba10a4fbf011eea608b21be78dea5f74208a",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-station-map.pdf"
+            },
+            {
+              "url": "https://loc.bus-vision.jp/toki-liner/view/opendataNiigata.html",
+              "status": 200,
+              "contentSha256": "52c1b7759860ecf2512ce705bcc567cba4f06ade34d745297fcf912cce7d4ae8",
+              "cacheFile": ".cache\\task-086\\airports7\\niigata-toki-rights.html"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/niigata-identity-options-v1.json",
+              "sha256": "01d5f0e808c8dcd57455930dd3686ea274950927db37825139f194d0735fde97",
+              "status": "RESEARCH_NOT_ADMISSION"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-alt-chain-v1.json",
+              "sha256": "3d815a30b41f9595c9fb259bc3fc67e7c5fdca8d9e530aa484aa44ba73c823d8",
+              "status": "RESEARCH_NOT_ADMISSION"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-e22-extraction-v1.json",
+              "sha256": "fee6c6d6e02013ffc4b9a260a7949cbf54e07f60f625303eefe56f6f2a299c65",
+              "status": "RESEARCH_NOT_ADMISSION"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-p36-identity-review-v1.json",
+              "sha256": "0fd0c4d7368c5b45f25b1064bfa563b69a33a38c7d93d9b167755f2f86a1b545",
+              "status": "RESEARCH_NOT_ADMISSION"
+            }
+          ],
+          "metrics": {
+            "httpRequests": 16,
+            "searchQueries": 25,
+            "cacheHitCount": null,
+            "cacheHitCountNote": "Reused cachedsourcebytesforagentextractionandrootreview; readsnotinstrumented, no inventedcount.",
+            "tokens": null,
+            "billedCost": null,
+            "uniqueRootsClosed": 0
+          },
+          "nextAction": "Review currentpubliccrossingsandNagaokaactualarrivalaccess fromcachedcarrierstopindex, preserveexactdirectionalGTFSIDsunlesscoarseaccessproven; seekdistinctcurrentterminalidentitydataset; continueindependent25originalairportidentitypreflight.",
+          "retryCondition": "No unchangedGTFS/OSMrefetch; no repeatJREast403 or prioridentitysearchwithoutnewsource/version/parser. Distinctofficialpublic-accessmaporlicensedcurrentidentityneeded."
+        },
+        {
+          "observedAt": "2026-10-02T16:19:38.563Z",
+          "inputFingerprint": "99e4b8a7eb7993da6541679ff66ced8a2afe4883a4005f37ed56dc6aab1c7271",
+          "method": "Alternative E22 localbus plus explicitly evidenced Bandai publicwalk; independentprefectureterminalproof after airportsite reuse restriction; nativeP11 identity",
+          "result": "Four reviewedfacts,40directededges,19nativeP11components; nationalJRNiigataanchor reused; obsoletecityterminal/highwaydependencies excluded",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/files/weekday/e2_w.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "608cc5b8ce18d40d3acc05b2364c9e2c3c82c605fbe1825723e10b50a77604f1"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530"
+            },
+            {
+              "url": "https://www.niigata-kotsu.co.jp/noriai/20150716privacy.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b00a4857fea98f64d643ce562d2b5c0683fba2b3206892ff5bd8ba938ce48f90"
+            },
+            {
+              "url": "https://bandaicity.com/access/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "8dbfe60d36f884276c7fb9b09ddf92c1c672a3e77509b482902db72f8f6504c6"
+            },
+            {
+              "url": "https://bandaicity.com/privacy/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "85a5a12e256a392358631ff6d55dc0bf96829ef2a956d0a420fafd1c8c9e8b3c"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/kurashi/doro/ekisyu/ekisyu-osirase/hirobaseibisintyoku.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "94d39d1a49983bca45bfeb7e4407f407164d9419660c672cb8b00f08a0dbb551"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/kurashi/doro/ekisyu/ekisyu-osirase/hirobaseibisintyoku.files/20260918_annaizu.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "79e6acfa11da5d34d47248ce988c5a62f8d6466499447132c8905a652858dd72"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/kurashi/doro/airport/access/kuukouhenoakusesu.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b4f270ce7abb3a3d0a53663607bcb60f61871123c056d93aeff0d95a2bb959f0"
+            },
+            {
+              "url": "https://www.city.niigata.lg.jp/homepage/unei/chosakuken.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "cefa8653a2c8b6bebcb98cfb7b509ed8aaa1d4d28fc5d43b12e3d91fe479d2e1"
+            },
+            {
+              "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/181380.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "2c412f75005857f9ee305e09305c0660aac929f8e3b41e3ead0274903767cfa9"
+            },
+            {
+              "url": "https://www.pref.niigata.lg.jp/site/userguide/chosakuken.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "8ed118a21ba8f2805be24e3d427dec4e8e82b63cd31f1eff1ad9d9f97f6166df"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase169.json",
+              "sha256": "64de73d32f58cdc6f4f380cf0e7c760baa49c1ffaddfdd6cbd44a140f6a17d2e"
+            },
+            {
+              "path": ".cache/task-086/airports7/niigata-bandai-public-walk-review-v1.json",
+              "sha256": "2792151e22151f7749e99b08f93c3ec23606a37dbf7672e8416e22fcf7e3c14c"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 12,
+            "webSearchQueries": 6,
+            "sourceCacheResponsesReused": 13,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 161.4251457
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:0a61927c49acb4a72b0a",
+      "inputFingerprint": "017147959e5c2840efc4e8c3ec33a9cdab4161f11314f1e50f5844b4d46f0c17",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/tosaden-regular-next/phase198-private.json",
+          "sha256": "eb138b37d91bf77200882c9ec6575d3c62526bc258bf910c453f1fce91b9d7e0"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T00:17:06.321Z",
+          "inputFingerprint": "8f6f11c778a9cb5eb0ca7e539d830e178a8fb1d011fdbe63b04bd76a3c329560",
+          "method": "REVIEWED_OPERATOR_PUBLIC_CROSSING_BETWEEN_EXACT_DISTINCT_GTFS_POLES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tosaden-regular-next/phase187-private.json",
+              "sha256": "e8bf8f0aa4ca42abe27a54936eb2e23904870e0f2238f7ea823c56b57c51ad71"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tosaden-regular-next/harimaya187-private-preflight.json",
+            "uniqueRootsClosed": 2,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay187-187-timing.json"
+          },
+          "nextAction": "One serial national replay for batch187-187, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T05:17:54.383Z",
+          "inputFingerprint": "017147959e5c2840efc4e8c3ec33a9cdab4161f11314f1e50f5844b4d46f0c17",
+          "method": "CURRENT_OPERATOR_EXPLICIT_PUBLIC_EAST_CROSSING_DISTINCT_GTFS_POLES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tosaden-regular-next/phase198-private.json",
+              "sha256": "eb138b37d91bf77200882c9ec6575d3c62526bc258bf910c453f1fce91b9d7e0"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tosaden-regular-next/harimaya-east198-private-preflight.json",
+            "uniqueRootsClosed": 2,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay198-198-timing.json"
+          },
+          "nextAction": "One serial national replay for batch198-198, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:10dd33d37e25ceb69be1",
+      "inputFingerprint": "f976b69883e717e0bcdc684264a9a145ee0ef8f67f10a979e893d10f81769936",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/amami-next/phase188-private.json",
+          "sha256": "3e289c02595f0c858e37fd6a424dbd3cc4d13bb41d84382d54eca4a821c8df84"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T00:54:45.986Z",
+          "inputFingerprint": "f976b69883e717e0bcdc684264a9a145ee0ef8f67f10a979e893d10f81769936",
+          "method": "TWO_INDEPENDENT_OPERATOR_ADJACENT_SECTIONS_AND_AIRPORT_OWN_PUBLIC_INTERFACE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/amami-next/phase188-private.json",
+              "sha256": "3e289c02595f0c858e37fd6a424dbd3cc4d13bb41d84382d54eca4a821c8df84"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/amami-next/amami188-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay188-188-timing.json"
+          },
+          "nextAction": "One serial national replay for batch188-188, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:37ec1e01c153e1434b2c",
+      "inputFingerprint": "971e6610efe93b248060bf456adf8495d69dda162453518fa427332f0949925b",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/kotoden-hyogomachi-next/phase199-private.json",
+          "sha256": "3788c9fbcc92c0cdff5ad63203843f7693bb2693b203546cfdef405e19756a71"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T23:52:17.031Z",
+          "inputFingerprint": "bf51a7b518cd30459ae441ee7797dd18d9109bc2941cf82fd6a8f9ab08a25efa",
+          "method": "COMPLETE_LICENSED_NATIVE_MULTITRIP_CHAINS_WITH_INTERMEDIATE_DEPENDENCY_CLOSURE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/bus-source-overlays/kotoden-local-sections186/phase186.json",
+              "sha256": "f7494e2b25aa70b54d8b8d6802479eb6a6a0088da06d95947867c2df17579720"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/bus-source-overlays/kotoden-local-sections186/production-preflight186.json",
+            "uniqueRootsClosed": 16,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay185-186-retry1-timing.json"
+          },
+          "nextAction": "One serial national replay for batch185-186, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T05:24:15.821Z",
+          "inputFingerprint": "971e6610efe93b248060bf456adf8495d69dda162453518fa427332f0949925b",
+          "method": "EXPLICIT_PRIMARY_HOTEL_FRONTAGE_TO_JR_PUBLIC_PEDESTRIAN_ACCESS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/kotoden-hyogomachi-next/phase199-private.json",
+              "sha256": "3788c9fbcc92c0cdff5ad63203843f7693bb2693b203546cfdef405e19756a71"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/kotoden-hyogomachi-next/hyogomachi199-private-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay199-199-timing.json"
+          },
+          "nextAction": "One serial national replay for batch199-199, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:3bff3ceee766c194facd",
+      "inputFingerprint": "ce6998024625e2d56b6fb7a5afda6a7a677ef6730683ef3960bfdd021e56bc03",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase170.json",
+          "sha256": "0105fed1e7ca3b52e5bcbf83407fb370743bf1aea0d9a88ebe562dc3d0cb6ab5"
+        },
+        {
+          "path": ".cache/task-086/airports7/../iwakuni170/iwakuni-rights-identity-review-v1.json",
+          "sha256": "43bf1f2ca6f2aeb5bbb6c851e62b5b492b436cbcef37e4e86fc6ed0a69eaaea1"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T16:27:31.576Z",
+          "inputFingerprint": "2e40e7d5eec4dd162a4b70c908fcdc9c86dba94f136f937daa761977bf874cb5",
+          "method": "Preflightoriginalairportgroundchain; independentlyextractcurrentairport-toJR_Iwakuni_bus; seekclosestexistingconnectedSanyoRailanchor",
+          "result": "Airportbus currenttwo-direction3calls established; JR_Iwakuni notyetadmitted; necessaryrealrailconnectionresearchactive. No partialchainadmitted.",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/iwakuni170/iwakuni-extraction-v1.json",
+              "sha256": "06cfd309ec039e7a86ffd87abd2b1b8ce378400d2bd89e80dadd3d424a414d2f"
+            }
+          ],
+          "metrics": {
+            "tokens": null,
+            "billedCost": null,
+            "sourceRequests": "Recordedbyextractionmetadata; do notdoublecountadministrativecheckpoint"
+          },
+          "nextAction": "Findcached/currentJRWestactualtraincolumns betweenIwakuniandexistingconnectedSanyoanchor; preserveallintermediatecalls; thenbindIwakuniEastpublicbusrailpassage",
+          "retryCondition": "Distinctnecessaryrailsource/cachemethod orchangedversion/identity/rights; no unchangedfailedfetch"
+        },
+        {
+          "observedAt": "2026-10-02T16:57:34.518Z",
+          "inputFingerprint": "ce6998024625e2d56b6fb7a5afda6a7a677ef6730683ef3960bfdd021e56bc03",
+          "method": "Independent current Iwakuni localbus and actual October2 JRWest16call sections via existingconventionalHiroshima; exactP11labels, reviewedpublicEastExitpassage; highwayalternativehasunconnectedBCdependency",
+          "result": "Six reviewedfacts,38directededges;3exactP11buscomponents plus necessaryS12rails; preservephase116airportformal-publicnameproof; correctedaircraftcolumnandnativeintermediatelabel",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.iwakuni-airport.jp/access/access-bus/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "ddcc152a49aef0e525b761e51cd17787baa6dde3e09f1bd47378c89cde173874"
+            },
+            {
+              "url": "https://www.iwakuni-airport.jp/timetable/2026-3-29-2026-10-24/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "6a0d59ab2b54cb71f2ee2cb08eea6c6ebd41693ee8f1180a34442303f38fc55c"
+            },
+            {
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            },
+            {
+              "url": "https://www.iwakuni-airport.jp/floormap/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "c8dc9d2c24ae9a84c94e9825e9f203b15c64883722868dbbae9abcf8b8de1bac"
+            },
+            {
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/floormap-terminal1f.png",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b728801357422a6ddf97789aed70b122df1f89b5dfd0053b6b1bfedd3836784d"
+            },
+            {
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/accessmap-bus.png",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "17e543d3cd5b6058a366aba7d8ba35551cb6b2679a48ebc414335bf56e7e53a6"
+            },
+            {
+              "url": "https://www.iwakuni-airport.jp/access/access-bus/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "ddcc152a49aef0e525b761e51cd17787baa6dde3e09f1bd47378c89cde173874"
+            },
+            {
+              "url": "https://timetable.jr-odekake.net/train-timetable/169461?date=20261002",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "9354ef05864e95becd5cb419732ccc4eb03553f9629cab88f9cba21d04325e19"
+            },
+            {
+              "url": "https://timetable.jr-odekake.net/train-timetable/166131?date=20261002",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "68360d8550c5083675275985c2b7b91ae37e2b4c10b17f8780a41a78249bb193"
+            },
+            {
+              "url": "https://eki.jr-odekake.net/premises?id=0800622",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "7d526c179911a0cf959d25380d6e7d1333e5ee7b952d04b59d9c7d1f5af72bef"
+            },
+            {
+              "url": "https://eki.jr-odekake.net/premises/0800622_d4d4269c-b49d-48c5-a817-3d087f20c045.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "fbe5e4ae84838c1e4ac8ccdb548ea6ea9ec8094a6d66f2b42ba2b75c5e23332f"
+            },
+            {
+              "url": "https://www.jr-odekake.net/use/about.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "c66721174e23599714a91a34633b3e50d845b66a3c061d051951296c07311d79"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase170.json",
+              "sha256": "0105fed1e7ca3b52e5bcbf83407fb370743bf1aea0d9a88ebe562dc3d0cb6ab5"
+            },
+            {
+              "path": ".cache/task-086/airports7/../iwakuni170/iwakuni-rights-identity-review-v1.json",
+              "sha256": "43bf1f2ca6f2aeb5bbb6c851e62b5b492b436cbcef37e4e86fc6ed0a69eaaea1"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 15,
+            "webSearchQueries": null,
+            "sourceCacheResponsesReused": 12,
+            "searchCountStatus": "Unavailable for initial extractor; strongrightsreview2 boundedqueries; do notfabricate total",
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 158.1383907
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:3ce8b499a048d1a49981",
+      "inputFingerprint": "b78ffd14e4e899a74d352c25e12409958f976b3a8206a5c4139b4fb8276c7e34",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/obihiro171/phase202-private.json",
+          "sha256": "958d80fa98a6ba03a2d38b8d597611704ef34127bc748d3d53203aa0f838526d"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T08:00:29.607Z",
+          "inputFingerprint": "b78ffd14e4e899a74d352c25e12409958f976b3a8206a5c4139b4fb8276c7e34",
+          "method": "MINIMAL_NATIVE_SAME_STOP_CITY_CYCLE_AND_EXPLICIT_DIRECTIONAL_KOFUKU_INTERCHANGES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/obihiro171/phase202-private.json",
+              "sha256": "958d80fa98a6ba03a2d38b8d597611704ef34127bc748d3d53203aa0f838526d"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/obihiro171/obihiro-minimal-chain-recovery-v8.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay202-202-timing.json"
+          },
+          "nextAction": "One serial national replay for batch202-202, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:3e0e34601b7c79790d17",
+      "inputFingerprint": "a95c2c1085824bd28482fd7d702369dee6c825e773680d9bb0c09897bba164bc",
+      "status": "READY",
+      "nextAction": "Continue next executable original package",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/nagasaki-public-path-next/phase210-private.json",
+          "sha256": "48672aac96ef3bfa54495bac59dcac8581e5bd03670a0f1402343200d346118d"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T15:37:35.552Z",
+          "inputFingerprint": "dbb468993afd16ffe2107709f46cb36d362361655de2bb864158435ca3b803d5",
+          "method": "SCRIPTED_EXISTING_ROOT_SOURCE_AND_IDENTITY_CACHE_PREFLIGHT",
+          "result": "183 sharedboarding/public-transfer gaps; existingparser preservesactualdirections",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-bus-preflight-v1.json",
+              "sha256": "4f713fa1eeacc18dcb969af7b4202871300bd1e565ab8ef99685385aa9318ede"
+            }
+          ],
+          "metrics": {
+            "httpRequests": 0,
+            "searchQueries": 0,
+            "uniqueRootsClosed": 0,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "Retainexactboardingpoints; acquirecurrentpublicaccessfortargetedphysicalstopgroup; neverreverseorcollapsebyname",
+          "retryCondition": "Newapplicableevidenceorreviewedparserchange; samecachedsourcesnotrefetched"
+        },
+        {
+          "observedAt": "2026-10-02T23:01:19.183Z",
+          "inputFingerprint": "dbb468993afd16ffe2107709f46cb36d362361655de2bb864158435ca3b803d5",
+          "method": "EXACT_EXISTING_NATIVE_GTFS_LOCAL_SECTIONS_CLOSE_ORIGINAL_DIRECTION_ROOTS",
+          "result": "64 exact original direction roots closed by unchanged production classifier; shared highway aggregate remains OPEN. Private airport-only helper failed on a shared obligation; unchanged helper and failure retained.",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-next/phase181.json",
+              "sha256": "f65a63c3f57b50ff6b005646dedd59e1844fef185e5df88390975d946bc428bc"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-next/production-preflight-report.json",
+            "uniqueRootsClosed": 64,
+            "validation": "PRODUCTION_REPLAY_AND_EXACT_GRAPH_PRESERVATION_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay181-181-timing.json",
+            "replayReceiptAnnotation": ".cache/task-086/airports7/replay181-181-receipt-annotation.json"
+          },
+          "nextAction": "Continue original packages; full regression/rebuild after complete batch chain",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-02T23:17:58.971Z",
+          "inputFingerprint": "d3c2cb353b6b72ee8199736e774aacc495072eb56ef531bbff034a713cc0ed34",
+          "method": "LICENSED_NATIVE_CONTIGUOUS_DIRECTION_CYCLES_WITH_ALL_NEW_POINTS_BIDIRECTIONAL",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-next2/phase183.json",
+              "sha256": "adc2ebff78c9093ac4ac19f646a6f0d5f73e14e56e91e21473fb209d72b0edd9"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-next2/production-incremental-preflight-report.json",
+            "uniqueRootsClosed": 69,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay182-183-timing.json"
+          },
+          "nextAction": "One serial national replay for batch182-183, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-02T23:37:39.713Z",
+          "inputFingerprint": "78ddec8e09fe7f48293a64c41d027482099b42867e40488bfe4a89706763f6fb",
+          "method": "LICENSED_NATIVE_MULTITRIP_SAME_STOP_PASSENGER_STATE_CHAINS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-next3/phase184.json",
+              "sha256": "84ac2b14d8b6557e5b5f04d38fc21ec9a2e27412037c25b8239a4d55baeb8cb6"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-next3/production-chain-preflight.json",
+            "uniqueRootsClosed": 26,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay184-184-timing.json"
+          },
+          "nextAction": "One serial national replay for batch184-184, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T04:43:18.684Z",
+          "inputFingerprint": "c1de6f603f060253ed4b26631561586f5a2eff75cfaa254ac4457e1744a854b6",
+          "method": "CURRENT_OFFICIAL_PUBLIC_FOOTBRIDGE_EXACT_EXISTING_GTFS_POLES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-public-path-next/phase197-private.json",
+              "sha256": "3de25b9c134134324aace87b3eac12832ec137ca5001525c443c1bd8c79d2ef6"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-public-path-next/oroshihonmachi197-private-preflight.json",
+            "uniqueRootsClosed": 2,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay197-197-timing.json"
+          },
+          "nextAction": "One serial national replay for batch197-197, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T10:01:30.210Z",
+          "inputFingerprint": "c934f731e5096c7326809f92e7acabab0aabe18fd3e4954e29f067db1d6ec9d1",
+          "method": "EXACT_NATIVE_ALIGHT_BOARD_RESTRICTIONS_WITH_CURRENT_PUBLISHED_PUBLIC_STREET_GUIDE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-public-path-next/phase209-private.json",
+              "sha256": "6927540590b93ded1e4d14337f44e0de23cfe8566bdfcb8d734d5dd162e8f214"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-public-path-next/research-cycle209-ledger.json",
+            "uniqueRootsClosed": 2,
+            "validation": "FULL_3084_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay208-209-timing.json"
+          },
+          "nextAction": "One serial national replay for batch208-209, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T11:02:37.301Z",
+          "inputFingerprint": "a95c2c1085824bd28482fd7d702369dee6c825e773680d9bb0c09897bba164bc",
+          "method": "EXACT_NATIVE_ARRIVAL_TO_TERMINAL_PUBLIC_GROUND_FRONTAGE_WITH_UNCHANGED_BOARDING",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-public-path-next/phase210-private.json",
+              "sha256": "48672aac96ef3bfa54495bac59dcac8581e5bd03670a0f1402343200d346118d"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-public-path-next/independent-review210.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3085_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay210-211-timing.json"
+          },
+          "nextAction": "One serial national replay for batch210-211, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:4176a890fb93d21b1c24",
+      "inputFingerprint": "42a2636d43273a0e3eeb59a0a3561f596f5e5584c2a8528dc7150c5d47037114",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/memanbetsu-next/phase212-final-private.json",
+          "sha256": "33252e1b014c54b388d28e34b6d88eeb7e98bec8501ed3edbcc4e5cc83611174"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T12:19:21.572Z",
+          "inputFingerprint": "42a2636d43273a0e3eeb59a0a3561f596f5e5584c2a8528dc7150c5d47037114",
+          "method": "COMPLETE_LICENSED_TWO23_CALL_AIRPORT_CHAIN_WITH_OFFICIAL_GUIDE_AND_MARKED_GSI_CROSSING",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/memanbetsu-next/phase212-final-private.json",
+              "sha256": "33252e1b014c54b388d28e34b6d88eeb7e98bec8501ed3edbcc4e5cc83611174"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/memanbetsu-next/root-review212.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_COVERAGE_3205_PASS_WITH_ONE_EXACT_FINGERPRINT_REBUILD_REUSE",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay212-access-repair-timing.json",
+            "validationScopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
+            "validationReceipt": "docs/qa/TASK-086-B/publication-validation.json"
+          },
+          "nextAction": "One serial national replay for batch212-212, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:446915035bcac92f6bfb",
+      "inputFingerprint": "2bbe8384b0e4b2755af8ee22f5d98452907afa581c867edbbff427d943896c47",
+      "status": "READY",
+      "nextAction": "Continue next executable original package",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/tokunoshima-next/phase207-tokunoshima-private.json",
+          "sha256": "739b306bb0fa65f3bbc88652eae31e92096212c342fa9c48f017c7836b26c37b"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T09:45:50.669Z",
+          "inputFingerprint": "2bbe8384b0e4b2755af8ee22f5d98452907afa581c867edbbff427d943896c47",
+          "method": "EXACT_NATIVE_IDENTITIES_INDEPENDENT_SERVICE_DIRECTIONS_COARSE_PUBLIC_GATEWAY_AND_EXISTING_NATIONAL_ANCHOR",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tokunoshima-next/phase207-tokunoshima-private.json",
+              "sha256": "739b306bb0fa65f3bbc88652eae31e92096212c342fa9c48f017c7836b26c37b"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tokunoshima-next/phase207-tokunoshima-handoff.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3084_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay204-207-timing.json"
+          },
+          "nextAction": "One serial national replay for batch204-207, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:53421425bede9d486344",
+      "inputFingerprint": "6bf5d30f1f7b64fc67b89f494c0ccc96349784c6122b91206b401e316d609370",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase166.json",
+          "sha256": "2e3aa7354986a4149d787c6071d6a058faccc60b29f8c6dc9e20b9a8d79c7f63"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:33:27.802Z",
+          "inputFingerprint": "6bf5d30f1f7b64fc67b89f494c0ccc96349784c6122b91206b401e316d609370",
+          "method": "Cached independent bus/train extraction plus new primary public-passage and bus-signage review",
+          "result": "Six evidence-bound facts prepared;23 directed edges;7 exactP11 and5 rail necessary components",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=tab&tab=0&term=0&busstop=1",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "01d7d4e256750603270af7b49d5d039e3e7c00affcc329531f253ab7e6ff43cb"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=0&term=0&busstop=1",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "06e36b098f369796ee0aec258e7101efcf2ba92f5f779dd1826d942e43be9ee2"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=1&term=0&busstop=1",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "23c962731484a0ce3e258517491798f54672c227308ae3648a1d5b562cafdef7"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/pdf/noriba-map.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "28e9dbd8add54655dcf119d6cabc8eea250067b6e1f4eabba0d2b71282b9dac9"
+            },
+            {
+              "url": "https://www2.akita-chuoukotsu.co.jp/privacy_policy.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "3df776db4ee93e1ce110ef03c6b6d198a0c58128d999a828b308821f87b1aebe"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/030/033011.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "5dc7855da5f6b4868bd8750bb9b96d026fe3e749f86c6f76360baa6a1bd06566"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/095/098191.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "d93478f6357f983816091aceca9644ea9f78ee104e52852b141739c5bd92a1be"
+            },
+            {
+              "url": "https://www.jreast.co.jp/site/rules.html/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "06963917acbddf0038f1e6b32d736628fa6912fcd96ca9aed177527087f30abb"
+            },
+            {
+              "url": "https://akita.airportliner.net/jp/taxi_stand/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "8b669565f56aefae58ac96be0bbb517cf180781161f93d8556bd0a48903156d9"
+            },
+            {
+              "url": "https://akita.airportliner.net/jp/imgs/taxi_stand/taxistand_03.jpg",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "ce026b82bb9c11775983b03d4d3550a5c38b03dde026f24b140b4fd5b359111b"
+            },
+            {
+              "url": "https://akita.airportliner.net/jp/agreement/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "02cc310120cc3e1be7feefb6cbb59a9103870ff341b9ac550d09e4dd19751d80"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase166.json",
+              "sha256": "2e3aa7354986a4149d787c6071d6a058faccc60b29f8c6dc9e20b9a8d79c7f63"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 7,
+            "sourceCacheResponsesReused": 12,
+            "webSearchQueries": 4,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 169.2626486
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    },
+    {
+      "packageId": "research:574ab4a2f66bab2760ce",
+      "inputFingerprint": "31e98d9d809b45c80a8f6c60ce5ffcafd5b645fa8fa67233bef000f6fdcfea3e",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/ibaraki168/phase168.json",
+          "sha256": "4c3d1ae263e24453046bbf8e1447abd941296612a18ad4d85f46e300deef0055"
+        },
+        {
+          "path": ".cache/task-086/ibaraki168/mito-final-rights-access-review.json",
+          "sha256": "25f28515e162f3a2c25e009fa3b6637474eb93c43bc0272a51d6d91d4c8f4470"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T15:59:55.477Z",
+          "inputFingerprint": "31e98d9d809b45c80a8f6c60ce5ffcafd5b645fa8fa67233bef000f6fdcfea3e",
+          "method": "Independent airport native timetable after carrier rights rejection; exactP36identity; municipal publicplaza andcurrenttourism publicconcourse",
+          "result": "Four reviewedfacts,sixdirectededges prepared; nationalMitoanchor reused; no newrailservice",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.ibaraki-airport.net/access/bus/mito/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "4ce3613e278fd214427ef7939bf611242c0b89543b917d7da72c0d96228e6c7f"
+            },
+            {
+              "url": "https://www.ibaraki-airport.net/facilities/bus-taxi/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "e3a40fa599b73703edfef59218a0869374022b6e6c9a991e973a3a2dce8f783f"
+            },
+            {
+              "url": "https://www.ibaraki-airport.net/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "68eae03305e1f18a07ebd980faf5f1a1d3ed36516c22834177a6286d33d0e944"
+            },
+            {
+              "url": "https://www.city.mito.lg.jp/page/2253.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "1a615bb073a54ea7b84710680de0bc410b02338c1016b9dee4250ed6d24d9878"
+            },
+            {
+              "url": "https://www.city.mito.lg.jp/uploaded/attachment/3628.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "70f9b2c96e46d285bf8f0ee959d5bdf524447883f130759b0f8a4ff301e7971c"
+            },
+            {
+              "url": "https://www.city.mito.lg.jp/page/18265.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "c427e33cba42791c1983cefdf971ef73c4514d28293d7b8a1e118d8e2c403be0"
+            },
+            {
+              "url": "https://mitokoumon.com/koumon/hanabi.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "3b1c4b3fe6c897c7a66643700546f67cb47a4893f1e0e40b2df15c683dadf000"
+            },
+            {
+              "url": "https://mitokoumon.com/privacy-policy/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "264b3c9b9a668edaef6105da0a4cab0bdb202e5d966300bece29d3576c9c780d"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/ibaraki168/phase168.json",
+              "sha256": "4c3d1ae263e24453046bbf8e1447abd941296612a18ad4d85f46e300deef0055"
+            },
+            {
+              "path": ".cache/task-086/ibaraki168/mito-final-rights-access-review.json",
+              "sha256": "25f28515e162f3a2c25e009fa3b6637474eb93c43bc0272a51d6d91d4c8f4470"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 17,
+            "webSearchQueries": 6,
+            "sourceCacheResponsesReused": 8,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 159.9586629,
+            "reconciledReplayElapsedSeconds": 156.1738368,
+            "focusedTestCount": 65,
+            "focusedTestsPassed": 65
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:60dacc85da91fa05f872",
+      "inputFingerprint": "8131b247add479a6e6327b4bdd55c00cfba8c306a5fe505881b967961349874a",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/hanamaki172/phase174.json",
+          "sha256": "55a804bf60e860cf012da7a66210f794e6a45625664f375d8583a049a89b0c61"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T18:48:27.474Z",
+          "inputFingerprint": "8131b247add479a6e6327b4bdd55c00cfba8c306a5fe505881b967961349874a",
+          "method": "Current CC BY licensed Hanamaki GTFS two-direction section extraction, exact airport C28 and existing JR Shin-Hanamaki anchor, and reviewed public-frontage/bay4-bay5 transfer facts",
+          "result": "Three transfer facts and two exact nine-call sections prepared; 17 native stops, 16 service segments, 6 directed transfers; serial replay pending",
+          "failureReason": "Service date20261002 was incorrectly constrained by immutable artifact generatedAt20261001; exact ZIP/source/hash/rights binding precheck passed.",
+          "sources": [
+            {
+              "url": "https://api.gtfs-data.jp/v2/organizations/hanamakicity/feeds/hanamaki",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "42e3d40fc9a9c71693deba3e90bb48989f8aa2b0bab3d9a4968b2822ad9afdf1"
+            },
+            {
+              "url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "cf5b3d5b092076f0c146b9c41d7bca8a5ad5171660b7033cd8125ba5ac6d0382"
+            },
+            {
+              "url": "https://api.gtfs-data.jp/v2/organizations/hanamakicity/feeds/hanamaki/files/feed.zip?rid=current",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "56de80fcfbb27dfcd73b62f8379a63394ab7a35983d75afe8019d9324f9c0c5e"
+            },
+            {
+              "url": "https://www.hna-terminal.co.jp/images/facilities/floor-map1.png",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "f5053ad9f97cdb1db23620d23828b4ef65cc69ac892347cc6d53c519c0483890"
+            },
+            {
+              "url": "https://www.hna-terminal.co.jp/access/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "fe2738b05a2d33e396acf84f6818391eb0614805fc850b97b8460fb80b6191bc"
+            },
+            {
+              "url": "https://www.hna-terminal.co.jp/access/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "1b59dccaa40ca7e6fb3643448e686df7b781be292110249f7af47e6f8d5081e1"
+            },
+            {
+              "url": "https://www.city.hanamaki.iwate.jp/_res/projects/default_project/_page_/001/017/294/jikoku.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "353512ccb27aa69718420cf838e8fd3c2d77dfb113a57a22ab0c8d3e658b2d47"
+            },
+            {
+              "url": "https://www.iwatebus.or.jp/wrdprss/wp-content/uploads/2019/11/bus_stop_shinhana.png",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "29fba4276c93352d0e957e81654435736427bf69ff38cbe6fc01fda72d465bbd"
+            },
+            {
+              "url": "https://www.city.hanamaki.iwate.jp/kurashi/douro_kotsu/bus_parking_airport/1001114/1008653/1017294.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "795527d997d2fca209a94058ecf5ba87d0e264eecbebe2782a00c9c989aac284"
+            },
+            {
+              "url": "https://www.city.hanamaki.iwate.jp/kurashi/douro_kotsu/bus_parking_airport/1001114/1008653/1017294.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "0f945cc4aa382952bdc30d661b378035c6b5b93f083e1a5ec7260e918b7014a7"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/hanamaki172/phase174.json",
+              "sha256": "55a804bf60e860cf012da7a66210f794e6a45625664f375d8583a049a89b0c61"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 11,
+            "sourceCacheResponsesReused": null,
+            "cacheReuseCountNote": "Existing private cache reused; per-file read count not instrumented.",
+            "webSearchQueries": null,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "newHttpRequestsScope": "Recorded research HTTP: prior-cache acquisition7 + access supplement2 + registry/deed2; preparation reused source bytes. Request logs aggregate unavailable beyond these reports.",
+            "knownAdditionalReportedSearchQueries": 23,
+            "failedReplayElapsedSeconds": 155.7460568,
+            "replayElapsedSeconds": 166.8011756
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/version, parser, identity or rights input changes; never rerun unchanged retrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:6381f66dd83685d68ea8",
+      "inputFingerprint": "d5aa7297173eb82a8e114e9c6d196b49a6b6f8fcfe5b2f0f76c1c6a855b8379c",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Replay phase165; verify full directed airport chain and all existing obligations; reconcile frozen essential inventory; continue Akita package",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase165.json",
+          "sha256": "6859aaf0b88c8e9105eb135663f72be593478d979e46a46539179c538808bc11"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:18:10.115Z",
+          "inputFingerprint": "d5aa7297173eb82a8e114e9c6d196b49a6b6f8fcfe5b2f0f76c1c6a855b8379c",
+          "method": "Cached independent bus/train extraction plus new primary public-passage and bus-signage review",
+          "result": "Six evidence-bound facts prepared;22 directed edges;9 exactP11 and1 rail necessary components",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            },
+            {
+              "url": "https://www.jrbustohoku.co.jp/privacy/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "ddc358f8e696b2e64784d756cf84875e8aba95814e72936894d50a031897cd36"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/015/015001.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "0a31645f00bb15df42a0c91e388768be8271e3aaea8330e4c3ea0d48199f12ac"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/010/014651.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "9f0eebbe7e8d6a0cfb9272be7f431eb4da7725170de607dd3b3a1b133e087038"
+            },
+            {
+              "url": "https://www.jreast.co.jp/site/rules.html/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "06963917acbddf0038f1e6b32d736628fa6912fcd96ca9aed177527087f30abb"
+            },
+            {
+              "url": "https://rental.timescar.jp/aomori/shop/0208/route01.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "0421808afc851cc6ae8e44a1ec7a1af460ad237875614390be084ced9ec916c5"
+            },
+            {
+              "url": "https://rental.timescar.jp/aomori/items/shop/aomori-0001.jpg",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "61e9ee16561db09b6b8c7104ca68ebb700a20372f627ed0e2924659810486257"
+            },
+            {
+              "url": "https://rental.timescar.jp/available/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "354e6ff3b7fbacedbf8606d5c606806a1fe7e3a1300db9908bde5da49377c87d"
+            },
+            {
+              "url": "https://www.city.aomori.aomori.jp/kurashi_kankyo/koutsuu/1002395/1002396.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "44b79d914be472ab1657efc11a469c2b28a3b65c3b30d4822cb7d47fd1705b55"
+            },
+            {
+              "url": "https://www.city.aomori.aomori.jp/_res/projects/default_project/_page_/001/006/804/20240315-20.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "8ac6c62e52cee26f7f9ca59c5da8b937dfe28ed81ae4a0155aa2437ba226e772"
+            },
+            {
+              "url": "https://www.city.aomori.aomori.jp/about/1007400.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "b76290024a3071595bc5651339ffe901e92963c685a90a874b2b8098b13bb5e3"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase165.json",
+              "sha256": "6859aaf0b88c8e9105eb135663f72be593478d979e46a46539179c538808bc11"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 8,
+            "sourceCacheResponsesReused": 11,
+            "webSearchQueries": 2,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 169.1343415
+          },
+          "nextAction": "Replay phase165; verify full directed airport chain and all existing obligations; reconcile frozen essential inventory; continue Akita package",
+          "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    },
+    {
+      "packageId": "research:643d5437104296e21d90",
+      "inputFingerprint": "d0a861a28041e193a6597c4bf4fbfd27c4e24113643f9a2eb7206639fc660781",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "One serial national replay for batch218-220, then preservation, actual root delta, and required full gate",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/tokyo-islands-next/phase220-kozushima-private.json",
+          "sha256": "399d5c429fd1b5986f006e95114e1de72b96acfb599bd03ac34b011101391c2e"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T15:37:35.546Z",
+          "inputFingerprint": "1f73d440e63ad86840fcb721e09552b1312185c46c5c5575db0fdc66d7152729",
+          "method": "SCRIPTED_EXISTING_ROOT_SOURCE_AND_IDENTITY_CACHE_PREFLIGHT",
+          "result": "25 uniqueC28lexicalcandidates; allHOLDmissingcurrentidentity/service; no applicablecachedactualJAL/HAC/ANAtripfacts",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airport-identity25-preflight-v1.json",
+              "sha256": "aee64ff23b2e0eb3c5a87d13548e23c76bb8057f9b87ef9e0f8f2a9aed821a14"
+            },
+            {
+              "path": ".cache/task-086/airport-identity25-flight-cache-plan-v1.json",
+              "sha256": "a3ca9bdc72fba1cf2268de364661c918aec848781a6ce6a08936e588686d5313"
+            }
+          ],
+          "metrics": {
+            "httpRequests": 0,
+            "searchQueries": 0,
+            "uniqueRootsClosed": 0,
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "Currentlawfulairport/governmentdatedflightsandpublicaccessfor奥尻/利尻/丘珠; no repeatedrestrictedJAL/ANA source",
+          "retryCondition": "Newapplicableevidenceorreviewedparserchange; samecachedsourcesnotrefetched"
+        },
+        {
+          "observedAt": "2026-10-02T19:21:11.441Z",
+          "inputFingerprint": "cdda731eeff2c16653a571aaf58b25a8d65bef67dc6cb3cadb4be172a5f984f9",
+          "method": "Ōdate-Noshiro current C28 airport, exact P11 bus stops with normalized legal operator spelling, two independently sourced asymmetric bus directions, two actual Tsugaru October 2 rail directions and explicit public airport/station transfer links.",
+          "result": "Six private facts validated with 18 directed edges; 160-record private P11 extraction; current airport identity remains HOLD until controlled reconciliation review.",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://onj-airterminal.com/access/bus",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "5e884ac7d27306d0cb4d78298e841f33e0d39ca559dee6d96445400bc49ba6f5"
+            },
+            {
+              "url": "https://onj-airterminal.com/access/train",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "2b9e706f6b48b0debda47b1bc4df35a365088d052db07e59660397d00655a275"
+            },
+            {
+              "url": "https://onj-airterminal.com/spend/floor-map",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "73b54f6e01dc911c1e13413c902652d712a56bea603df43ec6302a8bbb1b498a"
+            },
+            {
+              "url": "https://onj-airterminal.com/privacypolicy",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "526438aeb05dee5d801d42cdd553b4e50171038b2f6efa872ab9082d1e662a3c"
+            },
+            {
+              "url": "https://onj-airterminal.com/uploads/contents/pages_0000000233_00/floormap_1f.png?20251223=",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "b110cf4960a9d82e126a90c9f9fbb23d3c36be6b3d91d232cb4733295ace3a17"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/taxi/limousine.html",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "6a70b1977edb84a95a06f0ba3145929c3939ad126794489d456271d6574fd3b8"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/privacy.html",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "f652a66a1d2b30aecb46e9e5d7ea965bed15da12c33a4aea8eadf65cee7203cd"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/taxi/limousine.html",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "acb481be96436681b263dfa6c078ee564a972f825b13df660e447e956a05a883"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/taxi/js/timetable.js",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "36c89b43e77e785951e5dd78d118e144581199ed62dc3ef3a0a1edd63eaf9d1d"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/taxi/json/periods.json",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "422f22f90c35eec3916593ffceef4b57cd6c29f1a9670f67b9c755831a5dc6e7"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/taxi/json/outbound.json",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "2c613ba8563adf99cf3c7f40e65ec27d2917ace103b2397aba21a824ad514ffa"
+            },
+            {
+              "url": "https://shuhokubus-gr.co.jp/taxi/json/inbound.json",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "74aacd182e8340d1e8bfa208917ca47ce8017fa8e96f00660dbd21808cede7d8"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/005/008181.html",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "e5c1c60e9692e0a5ea0ca1fd2fad853ae29b52a7e5f4a349732ef481e8757b47"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/005/008191.html",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "748bf43b1712de49f20fb2bd8c8d5cce3742a6c446bb83cdb6396640d0e52cca"
+            },
+            {
+              "url": "https://www.jreast.co.jp/site/rules.html/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "06963917acbddf0038f1e6b32d736628fa6912fcd96ca9aed177527087f30abb"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/odatenoshiro176/phase175.json",
+              "sha256": "740809f056f8d521f93dbe70cca60d156f6c25c4882717cf5a65038ffa2c8f0b"
+            },
+            {
+              "path": ".cache/task-086/odatenoshiro176/phase175-review-plan.json",
+              "sha256": "387c6a77663d870de5c499a5dc286ca7f4497fbc5fd1409c34b307fe8ce0fd09"
+            },
+            {
+              "path": ".cache/task-086/odatenoshiro176/p11-identities175.jsonl",
+              "sha256": "0b0c3708d79c34457bd51a4d4bfc90f559b740a1959179fae9a4ad7505d3fc9a"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 12,
+            "webSearchQueries": 19,
+            "requestCountScope": "Known reported package research: extractor6 plus root6 directHTTP; extractor17 plus root2 webqueries; web backend requests unavailable. Import itself makes0HTTP.",
+            "sourceCacheResponsesReused": 3,
+            "sourceCacheReuseScope": "Importer validates3 prepared evidence artifacts; total research cache hits unavailable.",
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 168.7859174
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Retry only on changed source/version/parser/identity/rights or a distinct justified method; do not repeat unchanged source retrieval."
+        },
+        {
+          "observedAt": "2026-10-02T20:26:16.267Z",
+          "inputFingerprint": "f5854a5bf7240290ff7c1bcae882e12e03ad85379cdaceae0baf7e5df89db1b8",
+          "method": "Current Okadama airport C28 formal/public alias, exact historical P11 same-operator stop identities, independently reviewed asymmetric current bus directions and public airport/JR Sapporo frontage interfaces.",
+          "result": "Four source-bound facts and eight directed edges privately reviewed. No Sakaemachi metro or curb-to-curb link, no additional rail nodes.",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://okadama-airport.co.jp/access/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "a96a8f958689ab99b5eed26a4fbcd95064e3d56e285bbf0414d5a8ae3a682851"
+            },
+            {
+              "url": "https://okadama-airport.co.jp/access/info/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "9228ca23682f76a8c54ed03141fd1c0732e82ecdbc8779c48e26c092aea2fff3"
+            },
+            {
+              "url": "https://okadama-airport.co.jp/terminal/1f/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "0151535f4f554da10928b465b3618bfe650fa47b66f09456497ec352d44d56bc"
+            },
+            {
+              "url": "https://okadama-airport.co.jp/terminal/img/floor_map_1f_260331.png",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "3f592c7a324b7a6299f63454c55932082a65c29ebd21f628712965083fbaecbf"
+            },
+            {
+              "url": "https://okadama-airport.co.jp/privacy/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "3aa74a6e5d0e88f7f639f34d71c49880ac55ea48e82c864cbae70857993096be"
+            },
+            {
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            },
+            {
+              "url": "https://www.hokto.co.jp/wp-content/uploads/2026/07/%E3%80%90%E6%9C%AD%E5%B9%8C%E9%83%BD%E5%BF%83%E2%87%94%E4%B8%98%E7%8F%A0%E7%A9%BA%E6%B8%AF%E7%B7%9A%E3%80%91%E8%BF%82%E5%9B%9E%E8%B7%AF%E8%A8%AD%E5%AE%9A_%E9%81%8B%E8%A1%8C%E7%B3%BB%E7%B5%B1%E5%9B%B3_%E8%BF%82%E5%9B%9E%E8%B7%AF%E6%A0%84%E7%94%BA_page-0001-1-1024x724.jpg",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "eaccf58ea55c311ceacbed7199b01f7fe5ea9be710ae94f320630bbc26063005"
+            },
+            {
+              "url": "https://www.hokto.co.jp/privacy/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "b2befa26b6f37de781263b5036e1b88127585781deeb95221be8ce72b5329256"
+            },
+            {
+              "url": "https://www.jrhokkaido.co.jp/construction/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "f8738b185119c7018e0ca83f4ab0f47a53541f38567059700511f3befd48afe7"
+            },
+            {
+              "url": "https://www.jrhokkaido.co.jp/construction/images/const-02.jpg",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "76b4c04dc912eb525cfa95dd89bb57258ca1e57a6d2a427dddf78dc7e5c0874c"
+            },
+            {
+              "url": "https://www.jrhokkaido.co.jp/other/goriyou.html",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "bfd21ef60162bcbc26ba6a375b9cd159b899163873f4c3a65154ced7f8decdb8"
+            },
+            {
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+              "version": "2026-10-02_SERVICE_DATE",
+              "contentSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/sapporo177/phase176.json",
+              "sha256": "41edcd201fdd662bd75cb12e952c3e29c38430762cf5c3a7e01a08d87e51f8b9"
+            },
+            {
+              "path": ".cache/task-086/sapporo177/phase176-review-plan.json",
+              "sha256": "4706af95d904f15e241dff3639dd58f01ab1b8707eb285f64d7039db985bb4c9"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "webSearchQueries": 0,
+            "requestCountScope": "This controlled import uses existing private source cache only. Full prior research request count unavailable here; do not present zero as whole-package acquisition count.",
+            "sourceCacheResponsesReused": 11,
+            "sourceCacheReuseScope": "Eleven cached primary source artifacts used by private preparation; total research cache hits unavailable.",
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 169.388858899998
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Changed source/version/parser/identity/rights or distinct justified method only."
+        },
+        {
+          "observedAt": "2026-10-02T20:29:28.553Z",
+          "inputFingerprint": "f5854a5bf7240290ff7c1bcae882e12e03ad85379cdaceae0baf7e5df89db1b8",
+          "method": "Current exact formal Chofu airfield C28 identity without invented public airport alias, nine exact same-operator P11 components, official bidirectional static route40 graph with separate directions and real public terminal/Keio station interfaces.",
+          "result": "Four source-bound facts and20directed edges privately reviewed. No exact trip/calendar/clock/fare/frequency claims, no Navitime data, no new rail node.",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            {
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/shisetuannai/",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "52fb61efd1c07bf1a6f966bd53ee305a9e73ba2bda5cd0492b2e4e5a66f49201"
+            },
+            {
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/documents/39915617/53103491/33541_chofuairdromeheimenzu.png/4fbe8157-5fab-ff0d-d081-aeddd16f5919?version=1.0&t=1724729473604",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "612d4cd6ff7de4c294d9b5b07be09ce864ffd52b9b9c5d3ba1b37630fe4f3fab"
+            },
+            {
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/policy",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "2df6a5d0aed46e1a9c7ed8ea13fc91cad383addc7c90eda14fbbe51affccb9da"
+            },
+            {
+              "url": "https://www.odakyubus.co.jp/",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "ae2cd589f4d4029c14ec50076c0e93889e69b8fdf21aa361a0f57522892cac26"
+            },
+            {
+              "url": "https://www.odakyubus.co.jp/regular/map/",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "9d374beef1221f02147f8d33e08faa96f962c30a7812c5cc31d671e5756952b2"
+            },
+            {
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/mapA.pdf",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "3e4033977d31a8d854acf82818b7f0e07827ed998221f8db5fd08e8551f3a294"
+            },
+            {
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            },
+            {
+              "url": "https://www.keio.co.jp/train/station/station_map/pdf/ko18_chofu.pdf",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "b7d94f98dd2c54c6eacc60e9bb4b676c94ae9354ca5b75a9e33a30531cdd88ea"
+            },
+            {
+              "url": "https://www.keio.co.jp/train/station/ko18_chofu/",
+              "version": "2026-10-01_CURRENT_STATIC_MAP_INDEX_NO_TRIP_DATE_CLAIM",
+              "contentSha256": "114c767cd9d4d4bd68fc139e7e5831aa5f9cfcb20b3852108afb7e879ad75288"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/chofu179/phase177.json",
+              "sha256": "2a49cfd17557946c41199dd8464847e714b331da6f7cbef7879e473ffb3833e1"
+            },
+            {
+              "path": ".cache/task-086/chofu179/phase177-review-plan.json",
+              "sha256": "7ae1f6e58ac7a657a658899e2d8d235d1c3b5baf6ed7f28425811c50afec4d5b"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 10,
+            "webSearchQueries": 16,
+            "requestCountScope": "Known root direct acquisition and search calls for Chofu package; webbackendHTTP/modelusage unavailable. Import itself uses cache only.",
+            "sourceCacheResponsesReused": 10,
+            "sourceCacheReuseScope": "Ten retained primarysource artifacts used by preparation; total research cache hits unavailable.",
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 171.8127897999948
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Changed source/version/parser/identity/rights or distinct justified method only."
+        },
+        {
+          "observedAt": "2026-10-02T21:16:11.714Z",
+          "inputFingerprint": "352a524d23495858e7ca07957c543f0af19900298c12a66a7618f0a613fc6d68",
+          "method": "Review current airport/operator full-chain source rights before timetable ingestion",
+          "result": "Current directKanazawachain identified; explicitsecondaryuse terms requireanotherlawfulsource method",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/noto180/preflight-v1.json",
+              "sha256": "acbdce50ae8b59a8f875c5b23cee23401fe2aad58fa2049e4c1cefd7ad4a1814"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "webSearchQueries": 7,
+            "uniqueRootsClosed": 0,
+            "validation": "RESEARCH_OR_PRIVATE_PREFLIGHT_ONLY",
+            "modelTokens": null,
+            "modelCacheHits": null,
+            "billedCost": null,
+            "cacheResponseReuse": "Recordedperpackage, noaggregatehitcountinstrumentation"
+          },
+          "nextAction": "Find independentlylicensedoperator/prefecture completecurrentcalls; existingKanazawaanchors reused",
+          "retryCondition": "Changedsource/version/rights/identity/parser or documented distinctmethod; unchangedfailedquery/download mustnotrepeat"
+        },
+        {
+          "observedAt": "2026-10-02T21:16:11.786Z",
+          "inputFingerprint": "352a524d23495858e7ca07957c543f0af19900298c12a66a7618f0a613fc6d68",
+          "method": "Switch failed operatorfetch andobsolete2025PDF tocurrent2026municipaltransportdiagram",
+          "result": "2026citydiagramandactualairportendpointdirectionscached; fullintermediatebuscalls notyetunambiguous",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/iwami182/preflight-v1.json",
+              "sha256": "aabb9feba6fe2b79f8501eb0293a61ca04e6ef9a1e5179292f9537b33113e2ca"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 6,
+            "webSearchQueries": 9,
+            "uniqueRootsClosed": 0,
+            "validation": "RESEARCH_OR_PRIVATE_PREFLIGHT_ONLY",
+            "modelTokens": null,
+            "modelCacheHits": null,
+            "billedCost": null,
+            "cacheResponseReuse": "Recordedperpackage, noaggregatehitcountinstrumentation"
+          },
+          "nextAction": "Find officialcompleteairportbuscallpattern and actualMasuda-Matsueraildependency; do notinferstop-allfromsharedroadmap",
+          "retryCondition": "Changedsource/version/rights/identity/parser or documented distinctmethod; unchangedfailedquery/download mustnotrepeat"
+        },
+        {
+          "observedAt": "2026-10-02T21:16:11.796Z",
+          "inputFingerprint": "352a524d23495858e7ca07957c543f0af19900298c12a66a7618f0a613fc6d68",
+          "method": "LicensedMeikoexacttwoactualsections pluscurrentpublicairportfrontage andindependentJRrailchain",
+          "result": "10nativebuspoints9ridesand2publicairportinterfacesprepared; independent9callrailpairsidentified; privatewholechainassemblyinprogress",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/shirahama181/preflight-v1.json",
+              "sha256": "c3fab991a8740d19b4cee0ce9a66b01efdc1ae4851232f29ef4d68fe2ed32814"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 10,
+            "webSearchQueries": 6,
+            "uniqueRootsClosed": 0,
+            "validation": "RESEARCH_OR_PRIVATE_PREFLIGHT_ONLY",
+            "modelTokens": null,
+            "modelCacheHits": null,
+            "billedCost": null,
+            "cacheResponseReuse": "Recordedperpackage, noaggregatehitcountinstrumentation"
+          },
+          "nextAction": "Reviewphase180wholechainprivatepackage after178/179; preservenativeplatforms and distinctWakayamaKisei/Hanwacomponents",
+          "retryCondition": "Changedsource/version/rights/identity/parser or documented distinctmethod; unchangedfailedquery/download mustnotrepeat"
+        },
+        {
+          "observedAt": "2026-10-02T21:37:21.097Z",
+          "inputFingerprint": "352a524d23495858e7ca07957c543f0af19900298c12a66a7618f0a613fc6d68",
+          "method": "COMPLETE_CURRENT_REGULAR_NATIVE_GTFS_CHAIN_WITH_EXACT_PUBLIC_INTERFACES_REPLACES_DIRECTIONALLY_INCOMPLETE_FLIGHT_BRANCH",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/miho-preflight-v1/phase178-miho-standalone-private.json",
+              "sha256": "5e92943704ee04b799f5b6d5be81eea1724dd577ba56c9d4b9a8a3cc841ed276"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/miho-preflight-v1/phase178-miho-standalone-handoff.json",
+            "uniqueRootsClosed": 1,
+            "validation": "COMBINED_NATIONAL_REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayBatch": "178-178",
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay178-178-timing.json"
+          },
+          "nextAction": "Required full regression and stable clean-rebuild receipt; then continue remaining original scope",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-02T21:51:31.927Z",
+          "inputFingerprint": "e2d890913d4beabed9045f697642eb381af50c3d1d15cdce8cf839717f6a888b",
+          "method": "LICENSED_LOOP_PLUS_INDEPENDENT_OPERATOR_THROUGH_SERVICE_AND_EVIDENCED_PUBLIC_INTERFACES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tottori178/phase179.json",
+              "sha256": "767292332f8081e88c7fcd18ad719e22392544847881d47ad80a9d9e3f254a30"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tottori178/phase179-memory-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "COMBINED_NATIONAL_REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayBatch": "179-179",
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay179-179-repaired-timing.json"
+          },
+          "nextAction": "Required full regression and stable clean-rebuild receipt; then continue remaining original scope",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-02T23:17:58.968Z",
+          "inputFingerprint": "3b5a6f009c9a3d4b454330d90f2fbbf10aa63505922d88fca5fc875b755900d8",
+          "method": "TWO_INDEPENDENT_NATIVE_ADJACENT_AIRPORT_BUS_SECTIONS_EXPLICIT_FLIGHT_PAIR_AND_PUBLIC_INTERFACE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/hachijo-t2/phase182-hachijo-private.json",
+              "sha256": "6386774e3500269208322593e1233a556541e8ec1ab5a99a44dd7faa6aaf79c8"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/hachijo-t2/phase182-hachijo-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay182-183-timing.json"
+          },
+          "nextAction": "One serial national replay for batch182-183, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T02:49:46.418Z",
+          "inputFingerprint": "0bd6555c701b3492fa4e8d5255b93e399c287cca8b421383df900c1e0a04c286",
+          "method": "TWO_NATIVE_P11_ADJACENT_DIRECTIONS_INDEPENDENT_ORC_AND_PUBLIC_TERMINAL",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/fukue-next/phase192-fukue-private.json",
+              "sha256": "ff76228dfa5e3962f0002fa94c2dda29f9170e782e33f757c8f8aa7ac63cf568"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/fukue-next/phase192-fukue-production-preflight.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch192-194, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T02:49:46.422Z",
+          "inputFingerprint": "0bd6555c701b3492fa4e8d5255b93e399c287cca8b421383df900c1e0a04c286",
+          "method": "CONDITIONAL_CURRENT_BUS_INDEPENDENT_FLIGHTS_OFFICIAL_PUBLIC_ENTRANCE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/iki-next/phase193-iki-private.json",
+              "sha256": "62a57275ae0a2ad14a6f9dfc62b1fa11c53faffe6ad128f130e818b41dd0ce78"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/iki-next/phase193-iki-production-preflight.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch192-194, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T02:49:46.426Z",
+          "inputFingerprint": "0bd6555c701b3492fa4e8d5255b93e399c287cca8b421383df900c1e0a04c286",
+          "method": "EXPLICIT_TWO_BUS_DIRECTIONS_CURRENT_JAC_DIRECTIONAL_TABLE_PUBLIC_FRONTAGE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/oki-next/phase194-oki-private.json",
+              "sha256": "67712cff3606b8ba1b9080fd39be0e75e234d3d51ba197f7004da4c16b96689e"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/oki-next/phase194-oki-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay192-194-timing.json"
+          },
+          "nextAction": "One serial national replay for batch192-194, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T03:20:59.994Z",
+          "inputFingerprint": "54c5cd21a2ae66961bafeef7130906c36e126bd29c49de51432cdd12dbac7590",
+          "method": "INDEPENDENT_WINTER_LOCAL_BUS_CURRENT_HAC_PUBLIC_TERMINAL_EXISTING_ALIAS_REUSE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/rishiri-next/phase195-rishiri-private.json",
+              "sha256": "80d8a50c55dbde60c84cf966a6fdb8ff45314016b340699e637d005b4f0e3c2e"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/rishiri-next/phase195-rishiri-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay195-195-timing.json"
+          },
+          "nextAction": "One serial national replay for batch195-195, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T04:02:53.260Z",
+          "inputFingerprint": "038c8aea7dc01cf518f10e67201c06cefc157eca60a4cc654b5fb29371d3227c",
+          "method": "INDEPENDENT_BUS_DIRECTIONS_EXPLICIT_OFFICIAL_PUBLIC_WALK_NCA_CURRENT_CHOFU_REUSE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tokyo-islands-next/phase196-oshima-private.json",
+              "sha256": "b28c5ab530398417f364c0b138b36baff1853a8a6989acb2da9d0ed1a10c8360"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tokyo-islands-next/phase196-oshima-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay196-196-timing.json"
+          },
+          "nextAction": "One serial national replay for batch196-196, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T08:56:43.727Z",
+          "inputFingerprint": "4ed4c246e63ec765bce3e6a46eb4665e1ddc125bf8226183c0505523da2b2ae6",
+          "method": "MINIMAL_LICENSED_NATIVE_CYCLE_PUBLIC_TERMINAL_FRONTAGE_AND_SEPARATE_CURRENT_FLIGHTS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/shirahama181/phase203-private.json",
+              "sha256": "9a68f107bd8f42a0fc884d393087ec02e9dbac97bc0545525f889109767aeeb1"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/shirahama181/flight203-research-ledger.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3084_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay203-203-timing.json"
+          },
+          "nextAction": "One serial national replay for batch203-203, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T09:45:50.657Z",
+          "inputFingerprint": "08871001eb77982deac905eecd800964e374bf313c20995329675482767b8da3",
+          "method": "EXACT_NATIVE_IDENTITIES_INDEPENDENT_SERVICE_DIRECTIONS_COARSE_PUBLIC_GATEWAY_AND_EXISTING_NATIONAL_ANCHOR",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tarama-next/phase204-private/phase204-private.json",
+              "sha256": "0f0472be26dd0a0dfbecf63ef55db7b7a2b902de247b91262331135cc52f7479"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tarama-next/interface-contract-private/report.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch204-207, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T09:45:50.661Z",
+          "inputFingerprint": "08871001eb77982deac905eecd800964e374bf313c20995329675482767b8da3",
+          "method": "EXACT_NATIVE_IDENTITIES_INDEPENDENT_SERVICE_DIRECTIONS_COARSE_PUBLIC_GATEWAY_AND_EXISTING_NATIONAL_ANCHOR",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/amakusa-next/phase205-private.json",
+              "sha256": "68fd6ebdd70aa8a0ced18f2f7fe2c28d7573f6c8bf0e5cd96564933a0dfa1dd7"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/amakusa-next/independent-chain-review205.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch204-207, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T09:45:50.665Z",
+          "inputFingerprint": "08871001eb77982deac905eecd800964e374bf313c20995329675482767b8da3",
+          "method": "EXACT_NATIVE_IDENTITIES_INDEPENDENT_SERVICE_DIRECTIONS_COARSE_PUBLIC_GATEWAY_AND_EXISTING_NATIONAL_ANCHOR",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tajima-next/phase206-private/phase206-private.json",
+              "sha256": "80df5f5a1d23685b942d93a65fa8bd310ca039464a31df6277bb9e00232ee1ab"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tajima-next/independent-review206.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3084_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay204-207-timing.json"
+          },
+          "nextAction": "One serial national replay for batch204-207, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T10:01:30.206Z",
+          "inputFingerprint": "b4d98366fc61e144cc3aea2916fbca2f109d8ca0d9e106609175b5c22edc8f8d",
+          "method": "TWO_REAL_ORDINARY_COLUMNS_THREE_STOP_LOOP_PUBLIC_GATEWAY_AND_CURRENT_ANA_PAIR",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/monbetsu-next/phase208-monbetsu-private.json",
+              "sha256": "bf38913c94091fa3b9f98486912cce75087cef26718476f657c6362aa7559a48"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/monbetsu-next/research-ledger.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3084_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay208-209-timing.json"
+          },
+          "nextAction": "One serial national replay for batch208-209, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T12:58:40.393Z",
+          "inputFingerprint": "adbdab3f73ab54a067a4e5d784ad3aa44250a36bd19af53e2e9ba04f68445bf7",
+          "method": "COMPLETE_TWO_NATIVE_P11_CURRENT_VILLAGE_BUS_PUBLIC_AIRPORT_AND_INDEPENDENT_NCA_CHAIN",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tokyo-islands-next/phase213-miyake-private.json",
+              "sha256": "35b392e09a65588cf49392dc2e1f7dd6eca8a929ec35b534415707ec99ebf7f1"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tokyo-islands-next/miyake-chain213-evidence-review.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch213-214, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T12:58:40.397Z",
+          "inputFingerprint": "adbdab3f73ab54a067a4e5d784ad3aa44250a36bd19af53e2e9ba04f68445bf7",
+          "method": "EXACT_REVIEWED_RETIREMENT_OF_THREE_UNSUPPORTED_LATER_IMPLEMENTATIONS_WITH_NEW_INDEPENDENT_LOCAL_SERVICES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/jr-timetable-rights/correction-production-private/phase214-root-final.json",
+              "sha256": "8fcdd23e10abc6e8d5eab1ef661f856d25cd5116503f393f1b407e91c7e597ff"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/jr-timetable-rights/correction-production-private/implementation-handoff-service-access-merged.json",
+            "uniqueRootsClosed": 0,
+            "validation": "FULL_COVERAGE_3205_PASS_WITH_ONE_EXACT_FINGERPRINT_REBUILD_REUSE",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay213-214-timing.json",
+            "validationScopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
+            "validationReceipt": "docs/qa/TASK-086-B/publication-validation.json"
+          },
+          "nextAction": "One serial national replay for batch213-214, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T15:25:17.557Z",
+          "inputFingerprint": "379a62d50d181e56489b37f42a21e96affc66572d8f26a70b2ac86d2b0654db6",
+          "method": "TWO_P11_NAMED_STOPS_AND_INDEPENDENT_BIDIRECTIONAL_BUS_FLIGHT_TERMINAL_FACTS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tsushima-next/phase217-root-reviewed.json",
+              "sha256": "6a72ac181f466be990ee699cc7c276f7c67081242f4ac0fcdb6acd07739ab856"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tsushima-next/research215-root.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch215-217, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T16:10:58.361Z",
+          "inputFingerprint": "d0a861a28041e193a6597c4bf4fbfd27c4e24113643f9a2eb7206639fc660781",
+          "method": "STRICT_EXACT_TWO_UNSUPPORTED_SONIC_RETIREMENTS_AND_EIGHT_SEPARATE_LAWFUL_SUCCESSOR_SERVICES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/jr-timetable-rights/sonic219-private/phase219-private.json",
+              "sha256": "62d83b419867c5bc00a48d6dffd804b152c56c0c2137eb619d771c12acfc3f7e"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/jr-timetable-rights/sonic219-private/handoff219-frozen.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch218-220, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T16:10:58.365Z",
+          "inputFingerprint": "d0a861a28041e193a6597c4bf4fbfd27c4e24113643f9a2eb7206639fc660781",
+          "method": "EXACT_LICENSED_GTFS_TWO_ACTUAL_CYCLE_TRIPS_AND_PUBLIC_AIRPORT_GATEWAY_WITH_INDEPENDENT_NCA_DIRECTIONS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tokyo-islands-next/phase220-kozushima-private.json",
+              "sha256": "399d5c429fd1b5986f006e95114e1de72b96acfb599bd03ac34b011101391c2e"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/tokyo-islands-next/registration220-handoff.json",
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch218-220, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:6eb577cd68c43728cd21",
+      "inputFingerprint": "58ef6b9468b6bbceeec848b0357b25ef724759ce2b98908e4ebeb57170be96ea",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Required full regression and stable clean-rebuild receipt; then continue remaining original scope",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/islands-t2/phase180-kumejima-private.json",
+          "sha256": "5848fa37b6a1af88eaf16deab7fd806938173c1fd33fbe1f1c744ab0f1e0ad34"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T22:24:17.272Z",
+          "inputFingerprint": "58ef6b9468b6bbceeec848b0357b25ef724759ce2b98908e4ebeb57170be96ea",
+          "method": "LICENSED_OTTOP_REAL_DIRECTIONAL_PAIR_AND_EXPLICIT_PUBLIC_AIRPORT_FRONTAGE_TO_EXISTING_FLIGHT_BACKBONE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/islands-t2/phase180-kumejima-private.json",
+              "sha256": "5848fa37b6a1af88eaf16deab7fd806938173c1fd33fbe1f1c744ab0f1e0ad34"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/islands-t2/kumejima180-actual-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "COMBINED_NATIONAL_REPLAY_AND_PRESERVATION_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayBatch": "180-180",
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay180-180-timing.json"
+          },
+          "nextAction": "Required full regression and stable clean-rebuild receipt; then continue remaining original scope",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:8d46b295849b740bfee0",
+      "inputFingerprint": "5d07aecc360e1ede592c0a454d8b4a6807446d11b729887fa724ea548e39545b",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase173.json",
+          "sha256": "761c8826495af0a1318814ff4257039c7d081f383d01c1b7bd40017620b22d50"
+        },
+        {
+          "path": ".cache/task-086/airports7/../yamagata173/yamagata173-phase-plan-v1.json",
+          "sha256": "d556fc2b130605da300930882afb240bb8c1e4f526c1e6d744cad40444ac6d66"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T18:06:55.258Z",
+          "inputFingerprint": "5d07aecc360e1ede592c0a454d8b4a6807446d11b729887fa724ea548e39545b",
+          "method": "Yamagata documentedApril1corporatesuccession,5exactP11components,currentasymmetricrestrictedbus,2independentactual6callTsubasasectionsvia5OucomponentsandexistingFukushimaShinkansenanchor",
+          "result": "Sixreviewedfacts,22directededges,10necessarycomponents; explicitpublicterminal/JReastfrontageconnections, no syntheticrailtransfer",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.yamagatakotsu.jp/post-10.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "8c308adbaae7016b0e9171bcd24e9122b8892d1a39f55a7b01bc003feaddc3b3"
+            },
+            {
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            },
+            {
+              "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899"
+            },
+            {
+              "url": "https://www.yamagata-airport.co.jp/img/main/access/liner/liner_01/2026route.png?202604=",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "f17963c81f9aafaa0ec44126b21b06813dbdc12bc0c63f55c4d7ee79afdd425a"
+            },
+            {
+              "url": "https://www.yamagatakotsu.jp/policy.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "aed92b9b477e0791a1bd8391608930f341a02002830fb57c92b0eb70e91e921f"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/030/030191.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "e7e7d22768e0cb308697dbe2cb2fafe8c2cfedbda4224b607db881cf4c899cfd"
+            },
+            {
+              "url": "https://timetables.jreast.co.jp/2610/train/020/022711.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "9fe988834f9f04e66b44396a2863a512e38d5e7b6985e2b2603956b0f4b30dd4"
+            },
+            {
+              "url": "https://www.jreast.co.jp/site/rules.html/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b24265ce5111cdfe5fc7ba34fc45818e850b5e5e8074d7d1d096e4c50f302667"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase173.json",
+              "sha256": "761c8826495af0a1318814ff4257039c7d081f383d01c1b7bd40017620b22d50"
+            },
+            {
+              "path": ".cache/task-086/airports7/../yamagata173/yamagata173-phase-plan-v1.json",
+              "sha256": "d556fc2b130605da300930882afb240bb8c1e4f526c1e6d744cad40444ac6d66"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 13,
+            "webSearchQueries": null,
+            "sourceCacheResponsesReused": null,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 169.1900569,
+            "nativeIdentityCacheReused": true,
+            "webReferenceBackendHttpRequests": null,
+            "metricLimitations": "Direct HTTP counts recorded; exact web-reference backend HTTP/cache counts unavailable. No fabricated cache-hit or cost reduction claim."
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:b69422b34ba2350448c5",
+      "inputFingerprint": "cb932eec60f69167954c80363d0df42c2288714ecd973371f4c9a66778920139",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase172.json",
+          "sha256": "5faee68b0a4e34dd675c4fade4e8e65ab4a3651d461a95ac9253d8effa188025"
+        },
+        {
+          "path": ".cache/task-086/airports7/../shizuoka173/shizuoka-airport-ground-chain-v1.json",
+          "sha256": "ea3b6f2978f0e188b98a6bf6fc8892846a9e805b6c6fb2610375531f81545e4a"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T17:46:48.047Z",
+          "inputFingerprint": "cb932eec60f69167954c80363d0df42c2288714ecd973371f4c9a66778920139",
+          "method": "CurrentShizutetsu actualbranchspecificcalls withalightingrestriction, exact6P11components, nativepublicterminalandJRfrontagemaps",
+          "result": "Four reviewedfacts,14directededges;6P11components, existingJR静岡anchor; independent actualcalls andpublicfrontageproof; originalphase107airportproofreused",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%A9%BA%E6%B8%AF%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%80%E8%B7%AF%E3%80%91-10/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "37f247bfb2a80c8b70ab12b00e24d8edc2994d4125d66acf4c6c2172c73bf758"
+            },
+            {
+              "url": "https://www.justline.co.jp/timetable-2/186_%E3%80%90%E5%85%A8%E6%97%A5%E3%80%91_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E9%9D%99%E5%B2%A1%E7%B7%9A%E3%80%90%E5%BE%A9%E8%B7%AF%E3%80%91-8/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "abfade629a4b17b34f2a1d25f1954e11abc0a1875614b4b1e0489b5c89f62933"
+            },
+            {
+              "url": "https://www.justline.co.jp/busstop/kuko/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "5463c1c1340f8967f1646b48bcd55330c284fb8eee83a132e2106d102bcd983e"
+            },
+            {
+              "url": "https://www.justline.co.jp/busstop/jr-shizuoka-2/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "6f4ad3e518020626cb23975a47d8d89d29dc389c8ed8100d80cacfa7d5132a4e"
+            },
+            {
+              "url": "https://www.justline.co.jp/wp-content/themes/justline/pdf/route_map.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "38efd402b72d6e270df21d603302b2a19a74aeccf9ef3ef8ae6db9650175b321"
+            },
+            {
+              "url": "https://www.justline.co.jp/privacy/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "aec694bebd3e00ab109e4df872cecd043dbd559830ef00863101376cb13118e2"
+            },
+            {
+              "url": "https://www.mtfuji-shizuokaairport.jp/access/bus-train/shizuokasta02/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "20ecc834ad0b344fe48bbe6bc2b49443028719775f7c4f3bc35fd1ddb5ba6cec"
+            },
+            {
+              "url": "https://www.mtfuji-shizuokaairport.jp/media/jikoku2026.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "e49cb5ca828d21debc92d3a75606aff29000b3a4a4bea109ee5322e475c6375d"
+            },
+            {
+              "url": "https://www.mtfuji-shizuokaairport.jp/enjoy/floor/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "968a4d4786f5ba8ed4285c3212743ba4481bc5237e5c8b52ea1fac0ae9f68c2a"
+            },
+            {
+              "url": "https://www.mtfuji-shizuokaairport.jp/siteuse/site-policy/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "937b7107540afd3619638e837d67ab6e7bc2b6416d1598cf407e9a71bee9a422"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase172.json",
+              "sha256": "5faee68b0a4e34dd675c4fade4e8e65ab4a3651d461a95ac9253d8effa188025"
+            },
+            {
+              "path": ".cache/task-086/airports7/../shizuoka173/shizuoka-airport-ground-chain-v1.json",
+              "sha256": "ea3b6f2978f0e188b98a6bf6fc8892846a9e805b6c6fb2610375531f81545e4a"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 12,
+            "webSearchQueries": 6,
+            "sourceCacheResponsesReused": null,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 164.2988811,
+            "nativeIdentityCacheReused": true,
+            "webReferenceBackendHttpRequests": null,
+            "metricLimitations": "Direct HTTP counts recorded; exact web-reference backend HTTP/cache counts unavailable. No fabricated cache-hit or cost reduction claim."
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:c0deb5189485215e6cff",
+      "inputFingerprint": "f5457df33a8a26ad291ae09be6956ded589086de9165e5315b637a8a1a6a088e",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "One serial national replay for batch215-217, then preservation, actual root delta, and required full gate",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/daito-applicability-next/od-production214-private/registration-candidate/phase-private.json",
+          "sha256": "13f4ede0a7ee983339a261b9270c23c11bca1a36d3e612e6def0dd4d7fb00a14"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T15:25:17.554Z",
+          "inputFingerprint": "f5457df33a8a26ad291ae09be6956ded589086de9165e5315b637a8a1a6a088e",
+          "method": "SOURCE_BOUND_PUBLIC_PHONE_OD_EXACT_P05_OFFICE_AND_EXISTING_NATIONAL_AIRPORT",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/daito-applicability-next/od-production214-private/registration-candidate/phase-private.json",
+              "sha256": "13f4ede0a7ee983339a261b9270c23c11bca1a36d3e612e6def0dd4d7fb00a14"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": null,
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch215-217, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:c343277b6f06e69abca5",
+      "inputFingerprint": "d888ecda70e0c4efcbeec609786f4f0151628161e1e352555973ee5640ece78c",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "One serial national replay for batch218-220, then preservation, actual root delta, and required full gate",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/tanegashima-next/fixed-phone214-private/registration218/phase218-private.json",
+          "sha256": "58557f1d94b549c0294220eb901e3d62bdd870b654155a8d8b7b7ffc96f8d399"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T16:10:58.358Z",
+          "inputFingerprint": "d888ecda70e0c4efcbeec609786f4f0151628161e1e352555973ee5640ece78c",
+          "method": "EXACT_NATIVE_CITY_STOP_C28_AIRPORT_PUBLIC_PHONE_CONDITIONS_BOTH_FIXED_DIRECTIONS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/tanegashima-next/fixed-phone214-private/registration218/phase218-private.json",
+              "sha256": "58557f1d94b549c0294220eb901e3d62bdd870b654155a8d8b7b7ffc96f8d399"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": null,
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch218-220, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:ca5fdca899d66762ffd3",
+      "inputFingerprint": "d28a06610012be7139d1b1b72250b82811a84e2490ec1baa19706c13e4546440",
+      "status": "READY",
+      "nextAction": "Continue next executable original package",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/yonaguni-next/phase211-private/phase211-candidate-private.json",
+          "sha256": "bd03c8798f0e2348c640a479a641cccf8d3ff653ec2c4af62db66ff0e6bdbca8"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T11:02:37.305Z",
+          "inputFingerprint": "d28a06610012be7139d1b1b72250b82811a84e2490ec1baa19706c13e4546440",
+          "method": "MINIMAL_TWO_EXACT_NATIVE_SECTIONS_FROM_COMPLETE_PARENT_AND_COARSE_PUBLIC_AIRPORT",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/yonaguni-next/phase211-private/phase211-candidate-private.json",
+              "sha256": "bd03c8798f0e2348c640a479a641cccf8d3ff653ec2c4af62db66ff0e6bdbca8"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/yonaguni-next/phase211-private/production-preflight-private.json",
+            "uniqueRootsClosed": 1,
+            "validation": "FULL_3085_AND_CURRENT_REBUILD_PASS",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay210-211-timing.json"
+          },
+          "nextAction": "One serial national replay for batch210-211, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:d4617074db92f3552021",
+      "inputFingerprint": "68d899d9f464b56b7e5590537284acc7da59c3af01cd8560d0c5f07b110922ac",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase167.json",
+          "sha256": "d1f746fc95537915bab964020bf9d24f3861f5918947e52d46a72dc73184f6ac"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T14:45:19.930Z",
+          "inputFingerprint": "68d899d9f464b56b7e5590537284acc7da59c3af01cd8560d0c5f07b110922ac",
+          "method": "Cached independent bus/train extraction plus new primary public-passage and bus-signage review",
+          "result": "Six evidence-bound facts prepared;31 directed edges;2 exactP11 and necessary Yosan rail components",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=jr",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "80af73b9dccfd8e372af50f0346b3de664da8068142311ed03c76ffab5bd4dba"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=airport",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "447e928e244f62edcf9b69d1880604aca7488ac657a9b324df4d9e5faeb9f820"
+            },
+            {
+              "url": "https://www.iyotetsu.co.jp/group/policy/site.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "765bf70455b76f09dadd73b49fc42557b71662e3d07757a0f74c66df12519c14"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "6d65199c4eb997b341bd37be4f0d16015e0e47562cd24b6cb1acbb171edd20f1"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/kounai_map.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "5bb4eef0a7c83fac17efb2add042962ed6b23655231405fd6760c0e949026464"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/images/kounai.gif",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "5317054bf7e5c86d6e07e8e30960dace75f88c025b14b56d0aee6a7084e5e3d9"
+            },
+            {
+              "url": "https://www.jr-shikoku.co.jp/site_policy/jrshikoku_sitepolicy.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "22810d16d150ffe0ffdddac3b5d37d6d68c4ea764dc309c9f389cb48381a40ad"
+            },
+            {
+              "url": "https://www.city.matsuyama.ehime.jp/shisei/machizukuri/matsuyamaeki/machidukuri/koujiosirase/kasetsutsuro.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "d7526accbcb6010319b5cd7eee866a09e831612f6e7e625a9b961bf52ae4cd89"
+            },
+            {
+              "url": "https://www.city.matsuyama.ehime.jp/shisei/machizukuri/matsuyamaeki/machidukuri/koujiosirase/kasetsutsuro.images/ichizu.png",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "9fca26ef09e237b5fd44406066a69031dba7b420d24606e8620f50bce37cf6e8"
+            },
+            {
+              "url": "https://www.city.matsuyama.ehime.jp/aboutweb/copyright.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "ef0888d445f1631787e73d39ec8faa3d16fa37909291f892c7cce7c7a9104674"
+            },
+            {
+              "url": "https://www.matsuyama-airport.co.jp/floormap/terminal.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "f57607c040339e8d2f63ce7664f8de83e37fd5ee7cd958dd8b90a7ad10555097"
+            },
+            {
+              "url": "https://www.matsuyama-airport.co.jp/assets/pdf/floormap/map_ja.pdf",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "51bd6e08bfbae01210b31c70f08eba7dd17fa52877731fbec6c58e701286d826"
+            },
+            {
+              "url": "https://www.matsuyama-airport.co.jp/privacy.html",
+              "version": "REVIEWED_OCTOBER2",
+              "contentSha256": "21dbd730e9dd0f7824fc067728e79db595f4e43dbc013293220ff9e3bd0bae40"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase167.json",
+              "sha256": "d1f746fc95537915bab964020bf9d24f3861f5918947e52d46a72dc73184f6ac"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 12,
+            "sourceCacheResponsesReused": 16,
+            "webSearchQueries": 5,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 171.0174831
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change or a new specific missing-evidence method"
+        }
+      ]
+    },
+    {
+      "packageId": "research:d4e8d56b63fc1c5b220a",
+      "inputFingerprint": "a80bc7596fa3eb0b53016bf081eb65154d4eec39a005f4b052c5496d037e775a",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue next original package; final full gate pending",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/airports7/phase171.json",
+          "sha256": "c9e0e8b4bdf6bc03d70cacd77e25591b537a8ced940f82dd31bfd31380101a95"
+        },
+        {
+          "path": ".cache/task-086/airports7/../nagoya174/nagoya-complete-chain-review-v1.json",
+          "sha256": "d7df178caec89fbba57190809734f0906c95a8d4fa8d918b64badbb269c64ff4"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T17:23:43.596Z",
+          "inputFingerprint": "a80bc7596fa3eb0b53016bf081eb65154d4eec39a005f4b052c5496d037e775a",
+          "method": "Existingcache currentAoi asymmetricairportbus; exact6P11components, Sakae explicitdropoff-only plusreviewedpublicmetroexit10square; airportfrontage andMidlandJRcrossings",
+          "result": "Five reviewedfacts,14directededges;6P11components, existingJR名古屋 andmetro栄anchors; currentoperatorfullstopguides; originalphase107formalairportproofreused",
+          "failureReason": null,
+          "sources": [
+            {
+              "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+            },
+            {
+              "url": "https://aoi-komaki.jp/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "d4a6b6f369d4e6491c2cdbfa284abee890158bbb2ed78d220c1955c9067d19f5"
+            },
+            {
+              "url": "https://aoi-komaki.jp/archives/107",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+            },
+            {
+              "url": "https://aoi-komaki.jp/archives/93",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+            },
+            {
+              "url": "https://aoi-komaki.jp/archives/112",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "8b3688d84abb94e8dede0006a10ecb6d5ede51efffe2316bd13448690ad7ca76"
+            },
+            {
+              "url": "https://aoi-komaki.jp/archives/127",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "df8445846b67e2852a6ece7e2f1e78f1bbbfef50d7327922767548570243ccff"
+            },
+            {
+              "url": "https://aoi-komaki.jp/privacypolicy",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "35827be5d002ff2d26f3fa669ba32b67cf9bfb6dce66e90c388262aa05185183"
+            },
+            {
+              "url": "https://nagoya-airport.jp/facilities/index.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "6987948b84f9a70af35f366b8c4c19c3e76c094adce4f0cd5c4f132720020273"
+            },
+            {
+              "url": "https://nagoya-airport.jp/files/floormap.png",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "67809e7867f763e434466ee4a5566a256457b254f255658f2f71a369895a7e12"
+            },
+            {
+              "url": "https://nagoya-airport.jp/contact/contact.html",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "3bfe1c4eecd3d0a136ff6b4892c62254a8a3a79c17c96fc0d5e6764f8c7ce3c8"
+            },
+            {
+              "url": "https://www.midland-square.com/access/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "eede41ef209d8ce489aea2fa5fa5fa69f77c577a44ee4b68fb9047de84a6d1cb"
+            },
+            {
+              "url": "https://www.midland-square.com/images/access/map-image01.png?260310",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "2b88a2bfb8159ede08a80ff4b7b9c8f65eca4f6199846ae23f6fc92dd526ab0e"
+            },
+            {
+              "url": "https://www.midland-square.com/siteinfo/",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "b223710e58ed9017a10d961878475da6ef2aa5da4b54132554440a4a03b929f5"
+            },
+            {
+              "url": "https://map.kotsu.city.nagoya.jp/rp/reader/trp0000713.htm",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "f8fb12d6ac60996c1eeca2f92fb3b3356f85577f6ee3c504b89ab07a662742fe"
+            },
+            {
+              "url": "https://map.kotsu.city.nagoya.jp/rp/WEBSITE/trp0000834.htm",
+              "version": "REVIEWED_OCTOBER2_2026",
+              "contentSha256": "3c6e44969b6f624084d53b2a5bece882dc48844fb161afcb17638455f6bd0e60"
+            }
+          ],
+          "evidence": [
+            {
+              "path": ".cache/task-086/airports7/phase171.json",
+              "sha256": "c9e0e8b4bdf6bc03d70cacd77e25591b537a8ced940f82dd31bfd31380101a95"
+            },
+            {
+              "path": ".cache/task-086/airports7/../nagoya174/nagoya-complete-chain-review-v1.json",
+              "sha256": "d7df178caec89fbba57190809734f0906c95a8d4fa8d918b64badbb269c64ff4"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "webSearchQueries": 3,
+            "sourceCacheResponsesReused": 15,
+            "uniqueRootsClosed": 1,
+            "validation": "INCREMENTAL_REPLAY_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "replayElapsedSeconds": 162.9590864
+          },
+          "nextAction": "Continue next original package; final full gate pending",
+          "retryCondition": "Source/identity/rights/parser change ornewboundedmethodonly"
+        }
+      ]
+    },
+    {
+      "packageId": "research:dba9c649d5df1e733756",
+      "inputFingerprint": "1aba012c853d8ff1a85b44c9b8a332626bb8d64bc4533bb9fdf2e9015938882b",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/sakuramachi-next/phase190-private.json",
+          "sha256": "2c76bb19ac23c91e598c0a8b6a762be7c3714348183740d8b26535346c13c92f"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-02T23:52:17.027Z",
+          "inputFingerprint": "ac7b5a3a59c2200b5130b22f8d5eb1c5b558bc004f283b803b374254f553b440",
+          "method": "COMPLETE_LICENSED_NATIVE_MULTITRIP_CHAINS_WITH_INTERMEDIATE_DEPENDENCY_CLOSURE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/kyushu-bus-next/complete-chain-v2/phase185.json",
+              "sha256": "9adca4aa99a6e2e38e1b16411a2f405836166a526b92866bbc209b7b275b069a"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/kyushu-bus-next/complete-chain-v2/production-preflight185.json",
+            "uniqueRootsClosed": 20,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay185-186-retry1-timing.json"
+          },
+          "nextAction": "One serial national replay for batch185-186, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T01:34:52.416Z",
+          "inputFingerprint": "1aba012c853d8ff1a85b44c9b8a332626bb8d64bc4533bb9fdf2e9015938882b",
+          "method": "EXACT_PUBLIC_RED_CONCOURSE_PRESERVING_PLATFORM_NINE_ALIGHTING_ONLY",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/sakuramachi-next/phase190-private.json",
+              "sha256": "2c76bb19ac23c91e598c0a8b6a762be7c3714348183740d8b26535346c13c92f"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/sakuramachi-next/sakuramachi190-private-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay190-191-timing.json"
+          },
+          "nextAction": "One serial national replay for batch190-191, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:df57d6ab380a71f01a63",
+      "inputFingerprint": "75995b6393e62e8929dafab3c56b937ba2539f9448657954ba65fde1a6fa81ff",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/kushiro-next/phase200-private.json",
+          "sha256": "a369a61f96d82698759f12a6ad3184b0eb54f3cc86de8ab2eb3caa5cd19ff244"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T06:18:44.072Z",
+          "inputFingerprint": "75995b6393e62e8929dafab3c56b937ba2539f9448657954ba65fde1a6fa81ff",
+          "method": "EXACT_LICENSED_BIDIRECTIONAL_NATIVE_SECTIONS_AND_EXPLICIT_PUBLIC_AIRPORT_FRONTAGE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/kushiro-next/phase200-private.json",
+              "sha256": "a369a61f96d82698759f12a6ad3184b0eb54f3cc86de8ab2eb3caa5cd19ff244"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/kushiro-next/kushiro200-private-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay200-200-timing.json"
+          },
+          "nextAction": "One serial national replay for batch200-200, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:dfc109432293ae455de9",
+      "inputFingerprint": "2c468dd930df80bde1fd732a0d9ab61042942805676621b8b68c03258a66e315",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/soya-local-next/phase191-private.json",
+          "sha256": "68a8288f0001861d488ce951a3643b06816d3ec599cafcedcef762b6a0b2898c"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T01:34:52.420Z",
+          "inputFingerprint": "2c468dd930df80bde1fd732a0d9ab61042942805676621b8b68c03258a66e315",
+          "method": "ONE_ACTUAL_LOCAL_SERVICE_EXISTING_P11_STOP_DEPENDENCY_RETAINING_AIRPORT_RESTRICTIONS",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/soya-local-next/phase191-private.json",
+              "sha256": "68a8288f0001861d488ce951a3643b06816d3ec599cafcedcef762b6a0b2898c"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/soya-local-next/soya191-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay190-191-timing.json"
+          },
+          "nextAction": "One serial national replay for batch190-191, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:ede4a51cda09804a5622",
+      "inputFingerprint": "712d32f1ff7837c39caf7d2c73f68ff09a808d7293dac53d5aa5464abb0e8132",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/yakushima-next/phase189-private.json",
+          "sha256": "69bbc9538f5176330338b8c5a965d055c17c8a24e40c49c2359bac1fd6b0db67"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T01:16:48.391Z",
+          "inputFingerprint": "712d32f1ff7837c39caf7d2c73f68ff09a808d7293dac53d5aa5464abb0e8132",
+          "method": "INDEPENDENT_CURRENT_OPERATOR_DIRECTIONS_COMPLETE_MAP_ADJACENCY_AND_PUBLIC_TERMINAL_FRONTAGE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/yakushima-next/phase189-private.json",
+              "sha256": "69bbc9538f5176330338b8c5a965d055c17c8a24e40c49c2359bac1fd6b0db67"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/yakushima-next/yakushima189-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay189-189-timing.json"
+          },
+          "nextAction": "One serial national replay for batch189-189, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:f0d7a124f7732d87d949",
+      "inputFingerprint": "3af1824bc1a8af51e1376f566536e56ae3774ab79a5030845decf93c38ec0e02",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/okinoerabu-t2/phase201-private.json",
+          "sha256": "0afe6419046db2a34685f8fc5c8962b1d0bdaa29193ca142c6611f1631473b4a"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T07:18:53.614Z",
+          "inputFingerprint": "3af1824bc1a8af51e1376f566536e56ae3774ab79a5030845decf93c38ec0e02",
+          "method": "EXACT_MUNICIPAL_P11_COMMISSIONED_SERVICE_AND_LICENSED_PHYSICAL_PUBLIC_FRONTAGE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/okinoerabu-t2/phase201-private.json",
+              "sha256": "0afe6419046db2a34685f8fc5c8962b1d0bdaa29193ca142c6611f1631473b4a"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/physical-interface-photos/research-ledger.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay201-201-timing.json"
+          },
+          "nextAction": "One serial national replay for batch201-201, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    },
+    {
+      "packageId": "research:f55c77cfd918b94ffa58",
+      "inputFingerprint": "00faa07840887b24b8195e7fd87b6cfdee67462eb4023e1355a993a3c0c1aab4",
+      "status": "VALIDATION_PENDING",
+      "nextAction": "One serial national replay for batch215-217, then preservation, actual root delta, and required full gate",
+      "resumeEvidence": [
+        {
+          "path": ".cache/task-086/towada215-private/phase215-private.json",
+          "sha256": "7c90c1f8a375c5bafb474009de6e4c69dc76b0da5c998c1dd58aa6a129ee6d40"
+        }
+      ],
+      "attempts": [
+        {
+          "observedAt": "2026-10-03T15:25:17.550Z",
+          "inputFingerprint": "00faa07840887b24b8195e7fd87b6cfdee67462eb4023e1355a993a3c0c1aab4",
+          "method": "EXACT_GTFS_DIRECTIONAL_POLES_REVIEWED_PUBLIC_SIDEWALK_CROSSING_WITH_ODBL_BINDING",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/towada215-private/phase215-private.json",
+              "sha256": "7c90c1f8a375c5bafb474009de6e4c69dc76b0da5c998c1dd58aa6a129ee6d40"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": null,
+            "uniqueRootsClosed": 0,
+            "validation": "PENDING",
+            "tokens": null,
+            "billedCost": null
+          },
+          "nextAction": "One serial national replay for batch215-217, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        }
+      ]
+    }
+  ]
+}

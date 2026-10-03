@@ -1,0 +1,116 @@
+{
+  "phaseId": "191-soya-minato-one-existing-stop-local-southbound-dependency",
+  "strategy": [
+    "ORIGINAL_BUS_DIRECTION_ROOT",
+    "EXISTING_NATIVE_P11_COMPONENTS",
+    "ORDINARY_LOCAL_SERVICE_NOT_REVERSED_AIRPORT_BUS",
+    "ONE_ADJACENT_DEPENDENCY"
+  ],
+  "completedActionIds": [
+    "bus:soya:current-local-line-one-minato-one-to-two"
+  ],
+  "facts": [
+    {
+      "factId": "soya-local-line-one-southbound-minato-one-two-adjacent",
+      "kind": "service",
+      "sourceActionId": "bus:soya:current-local-line-one-minato-one-to-two",
+      "sourceUrl": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu_wakkanai-shinaisen.pdf",
+      "observedResponseSha256": "86fc7fd652f6cc4d2e0b86a2b181f507f2e4ec9df8766300916f965c4068f2d6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:soya:current-local-line-one-minato-one-to-two",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu_wakkanai-shinaisen.pdf",
+          "observedResponseSha256": "86fc7fd652f6cc4d2e0b86a2b181f507f2e4ec9df8766300916f965c4068f2d6"
+        },
+        {
+          "sourceActionId": "bus:soya:current-local-line-one-minato-one-to-two",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routebus/w_shinai_0405.pdf",
+          "observedResponseSha256": "092856962ef8556ee0eb1f89da5749d0f1a569d519a0e0991944512a621857fe"
+        },
+        {
+          "sourceActionId": "bus:soya:current-local-line-one-minato-one-to-two",
+          "url": "http://www.soyabus.co.jp/routebus/wakkanai",
+          "observedResponseSha256": "b8e4803352ff657284812683459234b183f4e22c88bbc94745b8aa1374e118db"
+        }
+      ],
+      "operator": "宗谷バス（株）",
+      "line": "稚内市内線1系統",
+      "mode": "local_bus",
+      "purpose": "required_gateway",
+      "direction": "southbound-to-shiomi-five",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Operator April5,2026 regular local line1 weekday timetable plus independently drawn current-linked December1,2025 southbound map. Static minimum adjacent relation only, not a dynamic timetable guarantee.",
+      "callingStations": [
+        "港一丁目",
+        "港二丁目"
+      ],
+      "callingComponents": [
+        {
+          "name": "港一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs67",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs67",
+            "recordSha256": "4a838f10462e4f45193b5d8d105f35a7131c7991e85f8903f7e1a6b8facc3710",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact existing same-operator P11 road-stop representative. Current ordinary city route1 southbound full map shows Minato1 andMinato2 as consecutive marked passenger stops; canonical Japanese numeral spelling denotes identical chome. Same source historic city-line context independently corroborated by current2026regularservice. No new platform identity, crossing, stopmerge or inferred opposite service.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港一丁目",
+              "historicalRoute": "市内線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu_wakkanai-shinaisen.pdf",
+              "observedResponseSha256": "86fc7fd652f6cc4d2e0b86a2b181f507f2e4ec9df8766300916f965c4068f2d6"
+            }
+          }
+        },
+        {
+          "name": "港二丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs71",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs71",
+            "recordSha256": "df724cdd3fb5be29b2b08dad0f69c308429b547f5a807e9c29a5555620d57d19",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact existing same-operator P11 road-stop representative. Current ordinary city route1 southbound full map shows Minato1 andMinato2 as consecutive marked passenger stops; canonical Japanese numeral spelling denotes identical chome. Same source historic city-line context independently corroborated by current2026regularservice. No new platform identity, crossing, stopmerge or inferred opposite service.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港二丁目",
+              "historicalRoute": "市内線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu_wakkanai-shinaisen.pdf",
+              "observedResponseSha256": "86fc7fd652f6cc4d2e0b86a2b181f507f2e4ec9df8766300916f965c4068f2d6"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_LOCAL_SERVICE_SEPARATE_SOUTHBOUND_FULL_MAP_CONTIGUOUS_CALLS",
+      "locator": "Complete route PDF page2 explicitly labeled route1 return direction Noshappu→WakkanaiStationTerminal→Shiomi5; Minato1→Minato2 consecutive marked stops with no intervening call. April2026 weekday timetable right southbound table first ordinary route1 row calls Minato1 and continues toward Minato3/Shiomi5; major-stop table is not mistaken for all-stop order. This ordinary city route has both boarding/alighting and is separate from airport-limited service. Existing airport pattern pickup/dropoff restrictions remain unchanged. Only one needed true southbound ride added; no reverse invented, no fullcitynetwork expansion.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks, fares, frequency, guaranteed transfer or realtime dispatch."
+    }
+  ],
+  "scope": "One current local southbound adjacent ride between two already admitted same-operator stops. Existing airport bus and national rail paths reused without altered restrictions, new identities or walk transfers.",
+  "metrics": {
+    "newNodes": 0,
+    "directedEdges": 1
+  }
+}

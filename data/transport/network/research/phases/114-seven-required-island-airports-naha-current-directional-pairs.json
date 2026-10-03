@@ -1,0 +1,825 @@
+{
+  "phaseId": "114-seven-required-island-airports-naha-current-directional-pairs",
+  "strategy": [
+    "INDEPENDENT_AIRPORT_SCHEDULE_WITH_FULL_TERMS_REVIEW",
+    "REJECT_INCONSISTENT_SOURCE_DIRECTIONS_AND_CODE_SHARE_DUPLICATES",
+    "EXACT_C28_LOCAL_ADMISSION_AND_ISLAND_CONNECTIVITY"
+  ],
+  "completedActionIds": [
+    "flight:naha-airport:seven-current-island-directional-pairs"
+  ],
+  "facts": [
+    {
+      "factId": "naha-october-2026-jl3715",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record JL3715, explicitly OKA to OKE. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Japanese and English operating notes identify Japan Air Commuter despite JL marketing code; omit duplicate NH codeshare. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "沖永良部・那覇国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "JL3715",
+      "direction": "那覇空港→沖永良部空港",
+      "callingStations": [
+        "那覇空港",
+        "沖永良部空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "沖永良部空港",
+          "operator": "airport-facility:cf03_00056",
+          "line": "airport:cf03_00056",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00056",
+            "requirementId": "review:official-airport:沖永良部",
+            "expectedRequirementName": "沖永良部",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-jl3716",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record JL3716, explicitly OKE to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Japanese and English operating notes identify Japan Air Commuter despite JL marketing code; omit duplicate NH codeshare. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "沖永良部・那覇国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "JL3716",
+      "direction": "沖永良部空港→那覇空港",
+      "callingStations": [
+        "沖永良部空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "沖永良部空港",
+          "operator": "airport-facility:cf03_00056",
+          "line": "airport:cf03_00056",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00056",
+            "requirementId": "review:official-airport:沖永良部",
+            "expectedRequirementName": "沖永良部",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc815",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record RC815, explicitly OKA to RNJ. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "与論・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC815",
+      "direction": "那覇空港→与論空港",
+      "callingStations": [
+        "那覇空港",
+        "与論空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "与論空港",
+          "operator": "airport-facility:cf03_00057",
+          "line": "airport:cf03_00057",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00057",
+            "requirementId": "review:official-airport:与論",
+            "expectedRequirementName": "与論",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc816",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record RC816, explicitly RNJ to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "与論・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC816",
+      "direction": "与論空港→那覇空港",
+      "callingStations": [
+        "与論空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "与論空港",
+          "operator": "airport-facility:cf03_00057",
+          "line": "airport:cf03_00057",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00057",
+            "requirementId": "review:official-airport:与論",
+            "expectedRequirementName": "与論",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-bc543",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record BC543, explicitly OKA to SHI. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "下地島・那覇国内線",
+      "operator": "スカイマーク",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "BC543",
+      "direction": "那覇空港→下地島空港",
+      "callingStations": [
+        "那覇空港",
+        "下地島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "下地島空港",
+          "operator": "airport-facility:cf03_00063",
+          "line": "airport:cf03_00063",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00063",
+            "requirementId": "review:transport-node:fbdd6a31-4339-583b-bed2-7895472da7ed",
+            "expectedRequirementName": "下地島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-bc542",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record BC542, explicitly SHI to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "下地島・那覇国内線",
+      "operator": "スカイマーク",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "BC542",
+      "direction": "下地島空港→那覇空港",
+      "callingStations": [
+        "下地島空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "下地島空港",
+          "operator": "airport-facility:cf03_00063",
+          "line": "airport:cf03_00063",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00063",
+            "requirementId": "review:transport-node:fbdd6a31-4339-583b-bed2-7895472da7ed",
+            "expectedRequirementName": "下地島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-nu211",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record NU211, explicitly OKA to UEO. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "久米島・那覇国内線",
+      "operator": "日本トランスオーシャン航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NU211",
+      "direction": "那覇空港→久米島空港",
+      "callingStations": [
+        "那覇空港",
+        "久米島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "久米島空港",
+          "operator": "airport-facility:cf03_00061",
+          "line": "airport:cf03_00061",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00061",
+            "requirementId": "review:official-airport:久米島",
+            "expectedRequirementName": "久米島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-nu212",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record NU212, explicitly UEO to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "久米島・那覇国内線",
+      "operator": "日本トランスオーシャン航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NU212",
+      "direction": "久米島空港→那覇空港",
+      "callingStations": [
+        "久米島空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "久米島空港",
+          "operator": "airport-facility:cf03_00061",
+          "line": "airport:cf03_00061",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00061",
+            "requirementId": "review:official-airport:久米島",
+            "expectedRequirementName": "久米島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc841",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record RC841, explicitly OKA to KTD. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "北大東・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC841",
+      "direction": "那覇空港→北大東空港",
+      "callingStations": [
+        "那覇空港",
+        "北大東空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "北大東空港",
+          "operator": "airport-facility:cf03_00058",
+          "line": "airport:cf03_00058",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00058",
+            "requirementId": "review:official-airport:北大東",
+            "expectedRequirementName": "北大東",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc842",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record RC842, explicitly KTD to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "北大東・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC842",
+      "direction": "北大東空港→那覇空港",
+      "callingStations": [
+        "北大東空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "北大東空港",
+          "operator": "airport-facility:cf03_00058",
+          "line": "airport:cf03_00058",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00058",
+            "requirementId": "review:official-airport:北大東",
+            "expectedRequirementName": "北大東",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc861",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record RC861, explicitly OKA to MMD. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "南大東・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC861",
+      "direction": "那覇空港→南大東空港",
+      "callingStations": [
+        "那覇空港",
+        "南大東空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "南大東空港",
+          "operator": "airport-facility:cf03_00059",
+          "line": "airport:cf03_00059",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00059",
+            "requirementId": "review:official-airport:南大東",
+            "expectedRequirementName": "南大東",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc862",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record RC862, explicitly MMD to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "南大東・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC862",
+      "direction": "南大東空港→那覇空港",
+      "callingStations": [
+        "南大東空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "南大東空港",
+          "operator": "airport-facility:cf03_00059",
+          "line": "airport:cf03_00059",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00059",
+            "requirementId": "review:official-airport:南大東",
+            "expectedRequirementName": "南大東",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc721",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned depart_flight_schedule record RC721, explicitly OKA to OGN. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "与那国・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC721",
+      "direction": "那覇空港→与那国空港",
+      "callingStations": [
+        "那覇空港",
+        "与那国空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "与那国空港",
+          "operator": "airport-facility:cf03_00066",
+          "line": "airport:cf03_00066",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00066",
+            "requirementId": "review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661",
+            "expectedRequirementName": "与那国",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-rc724",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "locator": "Airport-owned arrival_flight_schedule record RC724, explicitly OGN to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "line": "与那国・那覇国内線",
+      "operator": "琉球エアーコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "RC724",
+      "direction": "与那国空港→那覇空港",
+      "callingStations": [
+        "与那国空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "与那国空港",
+          "operator": "airport-facility:cf03_00066",
+          "line": "airport:cf03_00066",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00066",
+            "requirementId": "review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661",
+            "expectedRequirementName": "与那国",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    }
+  ]
+}

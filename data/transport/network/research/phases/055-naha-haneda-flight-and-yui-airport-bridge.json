@@ -1,0 +1,519 @@
+{
+  "phaseId": "055-naha-haneda-flight-and-yui-airport-bridge",
+  "strategy": [
+    "CURRENT_AIRPORT_PUBLISHED_JAL_DIRECTIONAL_PAIR",
+    "YUI_EXACT_DIRECTIONAL_TRAINS",
+    "flight",
+    "fixed_guideway"
+  ],
+  "completedActionIds": [
+    "rail:yui:current-directional-service",
+    "airport:naha:monthly-flight-and-surface"
+  ],
+  "facts": [
+    {
+      "factId": "yui-current-train-603",
+      "kind": "service",
+      "sourceActionId": "rail:yui:current-directional-service",
+      "sourceUrl": "https://www.yui-rail.co.jp/common/json/timetable/normal/12280_1.json",
+      "observedResponseSha256": "15d22f3fa310e1b254bd34ec200117d964d2a0d8fd09b74ca9c2f380aba5d055",
+      "locator": "Current official calendar selects post 12280 pattern 1 for 2026-10-01. Exact downLine train 603 is present once at each of 19 stations; chronological departure/arrival order was checked in memory. Only station order and train identifier retained; no times or calendar payload. Short workings and Friday extras are not merged into this train.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.yui-rail.co.jp/common/json/data/calendar.json",
+          "observedResponseSha256": "4490b477210bfc5add45639a7d7b0c0035128a5f1185bc70ed438f94723348a7"
+        }
+      ],
+      "line": "沖縄都市モノレール線",
+      "operator": "沖縄都市モノレール",
+      "mode": "fixed_guideway",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "603",
+      "direction": "downLine",
+      "callingStations": [
+        "那覇空港",
+        "赤嶺",
+        "小禄",
+        "奥武山公園",
+        "壺川",
+        "旭橋",
+        "県庁前",
+        "美栄橋",
+        "牧志",
+        "安里",
+        "おもろまち",
+        "古島",
+        "市立病院前",
+        "儀保",
+        "首里",
+        "石嶺",
+        "経塚",
+        "浦添前田",
+        "てだこ浦西"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "赤嶺",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "小禄",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "奥武山公園",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "壺川",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "旭橋",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "県庁前",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "美栄橋",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "牧志",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "安里",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "おもろまち",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "古島",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "市立病院前",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "儀保",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "首里",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "石嶺",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "経塚",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "浦添前田",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "てだこ浦西",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_CALENDAR_AND_EXACT_DIRECTIONAL_TRAIN_RECORDS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "yui-current-train-504",
+      "kind": "service",
+      "sourceActionId": "rail:yui:current-directional-service",
+      "sourceUrl": "https://www.yui-rail.co.jp/common/json/timetable/normal/12280_1.json",
+      "observedResponseSha256": "15d22f3fa310e1b254bd34ec200117d964d2a0d8fd09b74ca9c2f380aba5d055",
+      "locator": "Current official calendar selects post 12280 pattern 1 for 2026-10-01. Exact upLine train 504 is present once at each of 19 stations; chronological departure/arrival order was checked in memory. Only station order and train identifier retained; no times or calendar payload. Short workings and Friday extras are not merged into this train.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.yui-rail.co.jp/common/json/data/calendar.json",
+          "observedResponseSha256": "4490b477210bfc5add45639a7d7b0c0035128a5f1185bc70ed438f94723348a7"
+        }
+      ],
+      "line": "沖縄都市モノレール線",
+      "operator": "沖縄都市モノレール",
+      "mode": "fixed_guideway",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "504",
+      "direction": "upLine",
+      "callingStations": [
+        "てだこ浦西",
+        "浦添前田",
+        "経塚",
+        "石嶺",
+        "首里",
+        "儀保",
+        "市立病院前",
+        "古島",
+        "おもろまち",
+        "安里",
+        "牧志",
+        "美栄橋",
+        "県庁前",
+        "旭橋",
+        "壺川",
+        "奥武山公園",
+        "小禄",
+        "赤嶺",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "てだこ浦西",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "浦添前田",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "経塚",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "石嶺",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "首里",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "儀保",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "市立病院前",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "古島",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "おもろまち",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "安里",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "牧志",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "美栄橋",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "県庁前",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "旭橋",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "壺川",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "奥武山公園",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "小禄",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "赤嶺",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "那覇空港",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_CALENDAR_AND_EXACT_DIRECTIONAL_TRAIN_RECORDS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-airport-yui-terminal-passage",
+      "kind": "transfer",
+      "sourceActionId": "airport:naha:monthly-flight-and-surface",
+      "sourceUrl": "https://www.naha-airport.co.jp/faq/",
+      "observedResponseSha256": "c7e001fcaa9479ece1200d04da02cb202ed50875956c2effc2b0dd32cdcea51a",
+      "locator": "Naha Airport official FAQ explicitly connects the domestic-terminal second-floor public passage with Yui Rail Naha-Airport Station. C28 whole-airport reference is the gateway only; no navigation precision or international-terminal shortcut.",
+      "components": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Naha Airport official FAQ explicitly connects the domestic-terminal second-floor public passage with Yui Rail Naha-Airport Station. C28 whole-airport reference is the gateway only; no navigation precision or international-terminal shortcut."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "沖縄都市モノレール",
+          "line": "沖縄都市モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "C28_AND_OFFICIAL_AIRPORT_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "naha-haneda-jal-900",
+      "kind": "service",
+      "sourceActionId": "airport:naha:monthly-flight-and-surface",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "locator": "Airport-published monthly schedule currently covers October 2026. Exact JL 900 record explicitly names Japan Airlines and OKA -> HND with no code-share operator override in remarks. Retain only directional regular passenger topology; no fare, clock, seat, calendar or real-time availability. Airport codes/names explicitly reviewed against the C28 facility selectors; this is not an airline code-share expansion.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "line": "羽田・那覇国内線",
+      "operator": "日本航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "JL900",
+      "direction": "OKA-HND",
+      "callingStations": [
+        "那覇空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Naha Airport official FAQ explicitly connects the domestic-terminal second-floor public passage with Yui Rail Naha-Airport Station. C28 whole-airport reference is the gateway only; no navigation precision or international-terminal shortcut."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Naha Airport October 2026 regular passenger flight schedule identifies HND / Haneda Airport. Explicit reviewed facility correspondence to Tokyo International Airport (Haneda); existing separately reviewed phase-48 Keikyu terminal access is preserved. This flight fact does not create or infer an internal terminal transfer."
+          }
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "code": "OKA",
+          "sourceName": "那覇",
+          "canonicalAirportName": "那覇空港",
+          "referencePointId": "cf03_00088"
+        },
+        {
+          "code": "HND",
+          "sourceName": "羽田 / Haneda Airport",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "reviewMethod": "EXACT_CURRENT_AIRPORT_PUBLISHED_FLIGHT_RECORD_AND_REVIEWED_C28_FACILITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-haneda-jal-901",
+      "kind": "service",
+      "sourceActionId": "airport:naha:monthly-flight-and-surface",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "locator": "Airport-published monthly schedule currently covers October 2026. Exact JL 901 record explicitly names Japan Airlines and HND -> OKA with no code-share operator override in remarks. Retain only directional regular passenger topology; no fare, clock, seat, calendar or real-time availability. Airport codes/names explicitly reviewed against the C28 facility selectors; this is not an airline code-share expansion.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "line": "羽田・那覇国内線",
+      "operator": "日本航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "JL901",
+      "direction": "HND-OKA",
+      "callingStations": [
+        "東京国際空港",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Naha Airport October 2026 regular passenger flight schedule identifies HND / Haneda Airport. Explicit reviewed facility correspondence to Tokyo International Airport (Haneda); existing separately reviewed phase-48 Keikyu terminal access is preserved. This flight fact does not create or infer an internal terminal transfer."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Naha Airport official FAQ explicitly connects the domestic-terminal second-floor public passage with Yui Rail Naha-Airport Station. C28 whole-airport reference is the gateway only; no navigation precision or international-terminal shortcut."
+          }
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "code": "OKA",
+          "sourceName": "那覇",
+          "canonicalAirportName": "那覇空港",
+          "referencePointId": "cf03_00088"
+        },
+        {
+          "code": "HND",
+          "sourceName": "羽田 / Haneda Airport",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "reviewMethod": "EXACT_CURRENT_AIRPORT_PUBLISHED_FLIGHT_RECORD_AND_REVIEWED_C28_FACILITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

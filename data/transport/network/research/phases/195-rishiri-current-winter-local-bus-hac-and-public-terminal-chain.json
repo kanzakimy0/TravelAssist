@@ -1,0 +1,487 @@
+{
+  "phaseId": "195-rishiri-current-winter-local-bus-hac-and-public-terminal-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_SAME_ID_ADMISSION",
+    "INDEPENDENT_CURRENT_WINTER_LOCAL_BUS_DIRECTIONS",
+    "CURRENT_OFFICIAL_DAILY_BOARD_DIRECTIONS",
+    "PUBLIC_MUNICIPAL_TERMINAL_INTERFACE",
+    "EXISTING_FORMAL_AIRFIELD_ALIAS_REUSE"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+    "airport:rishiri:current-okadama-hac-and-municipal-public-frontage"
+  ],
+  "facts": [
+    {
+      "factId": "rishiri-winter-airport-adjacent-direction-0",
+      "kind": "service",
+      "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+      "sourceUrl": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routebus/rishiri_r8_summer.pdf",
+      "observedResponseSha256": "407e44a0389451c5f2b1116f167a4e4b32a17ce6f096852a40b87a2081c87419",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routebus/rishiri_r8_summer.pdf",
+          "observedResponseSha256": "407e44a0389451c5f2b1116f167a4e4b32a17ce6f096852a40b87a2081c87419"
+        },
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+          "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+        },
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/routebus/rishiri/",
+          "observedResponseSha256": "5935094e50362916cd0dcd19f819f0b4bf1e9c8bbc37110e97fae3f8e0cb264e"
+        }
+      ],
+      "operator": "宗谷バス（株）",
+      "line": "利尻線",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "direction": "winter-b3-motodomari-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current2026-04-28 published ordinary local winter timetable October1-May31; airport-serving A3/B3 separately witnessed. Jan1-3 all services suspended. Designated free boarding areas may allow other pickup locations; represented topology only named calls. No expired seasonal ANA shuttle, guaranteed flight connection, calendar expansion or realtime dispatch.",
+      "callingStations": [
+        "本泊",
+        "利尻空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "本泊",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs200",
+            "recordSha256": "b88a89e1006b5cea31ecb8b2486f6c7b19873c2f4ce1e1a449ad15a12bc06a59",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native same-carrier P11利尻線 representative. Current2026-04-28 full map names本泊 and利尻空港; same-date timetable winter A3 and B3 independently call adjacent airport、本泊 in opposite order. Timetable shorthand空港(54) resolved by full map named airport branch. No opposite pole merge or invented precise boarding coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス（株）",
+              "currentStopName": "本泊",
+              "historicalRoute": "利尻線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+              "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+            }
+          }
+        },
+        {
+          "name": "利尻空港",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs203",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs203",
+            "recordSha256": "7686d9734721c2dbe628e533d2e535cf017dab825a39b29338d8760fff0d80ed",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native same-carrier P11利尻線 representative. Current2026-04-28 full map names本泊 and利尻空港; same-date timetable winter A3 and B3 independently call adjacent airport、本泊 in opposite order. Timetable shorthand空港(54) resolved by full map named airport branch. No opposite pole merge or invented precise boarding coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス（株）",
+              "currentStopName": "利尻空港",
+              "historicalRoute": "利尻線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+              "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Right-half冬期ダイヤ Bコース third column separately calls本泊 then空港(54). Airport-skipping columns markedarrows are not used; independent service, no reverse inference.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks/fares/frequency/guaranteed operation persisted."
+    },
+    {
+      "factId": "rishiri-winter-airport-adjacent-direction-1",
+      "kind": "service",
+      "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+      "sourceUrl": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routebus/rishiri_r8_summer.pdf",
+      "observedResponseSha256": "407e44a0389451c5f2b1116f167a4e4b32a17ce6f096852a40b87a2081c87419",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routebus/rishiri_r8_summer.pdf",
+          "observedResponseSha256": "407e44a0389451c5f2b1116f167a4e4b32a17ce6f096852a40b87a2081c87419"
+        },
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+          "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+        },
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/routebus/rishiri/",
+          "observedResponseSha256": "5935094e50362916cd0dcd19f819f0b4bf1e9c8bbc37110e97fae3f8e0cb264e"
+        }
+      ],
+      "operator": "宗谷バス（株）",
+      "line": "利尻線",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "direction": "winter-a3-airport-to-motodomari",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current2026-04-28 published ordinary local winter timetable October1-May31; airport-serving A3/B3 separately witnessed. Jan1-3 all services suspended. Designated free boarding areas may allow other pickup locations; represented topology only named calls. No expired seasonal ANA shuttle, guaranteed flight connection, calendar expansion or realtime dispatch.",
+      "callingStations": [
+        "利尻空港",
+        "本泊"
+      ],
+      "callingComponents": [
+        {
+          "name": "利尻空港",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs203",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs203",
+            "recordSha256": "7686d9734721c2dbe628e533d2e535cf017dab825a39b29338d8760fff0d80ed",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native same-carrier P11利尻線 representative. Current2026-04-28 full map names本泊 and利尻空港; same-date timetable winter A3 and B3 independently call adjacent airport、本泊 in opposite order. Timetable shorthand空港(54) resolved by full map named airport branch. No opposite pole merge or invented precise boarding coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス（株）",
+              "currentStopName": "利尻空港",
+              "historicalRoute": "利尻線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+              "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+            }
+          }
+        },
+        {
+          "name": "本泊",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs200",
+            "recordSha256": "b88a89e1006b5cea31ecb8b2486f6c7b19873c2f4ce1e1a449ad15a12bc06a59",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native same-carrier P11利尻線 representative. Current2026-04-28 full map names本泊 and利尻空港; same-date timetable winter A3 and B3 independently call adjacent airport、本泊 in opposite order. Timetable shorthand空港(54) resolved by full map named airport branch. No opposite pole merge or invented precise boarding coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス（株）",
+              "currentStopName": "本泊",
+              "historicalRoute": "利尻線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+              "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Right-half冬期ダイヤ Aコース third column separately calls空港(54) then本泊. Same-version full map names airport branch and confirms no other named stop between airport and本泊.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks/fares/frequency/guaranteed operation persisted."
+    },
+    {
+      "factId": "rishiri-hac-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+      "sourceUrl": "https://okadama-airport.co.jp/flight/",
+      "observedResponseSha256": "34b770131315c568e2d4403a7976aeac7459f118e5f0eda604f95885f6bbd164",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+          "url": "https://okadama-airport.co.jp/flight/",
+          "observedResponseSha256": "34b770131315c568e2d4403a7976aeac7459f118e5f0eda604f95885f6bbd164"
+        },
+        {
+          "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+          "url": "https://www.town.rishirifuji.hokkaido.jp/rishirifuji/1187.htm",
+          "observedResponseSha256": "18fbd9020213978b848950bea67d4f20bb4aff939ad1e6e74701e41c8a02cd4f"
+        },
+        {
+          "sourceActionId": "government:mlit:sapporo-airfield-public-name-fact-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+          "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+        }
+      ],
+      "operator": "HAC",
+      "line": "札幌丘珠・利尻国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "OKD-RIS",
+      "serviceState": "active",
+      "serviceStateScope": "Current official airport public daily board observed at source timestamp, static directional relation only. Not a future schedule or guaranteed timed connection. PhysicalHAC operator corroborated by municipal airport pairing; JAL marketing label not duplicate service.",
+      "callingStations": [
+        "札幌飛行場",
+        "利尻空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "札幌飛行場",
+          "operator": "airport-facility:cf03_00017",
+          "line": "airport:cf03_00017",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00017",
+            "requirementId": "review:official-airport:札幌",
+            "expectedRequirementName": "札幌",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "officialNameEvidence": {
+              "officialName": "札幌飛行場",
+              "requirementName": "札幌",
+              "publicName": "丘珠空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "Cached MLIT airport listing links 札幌飛行場（丘珠空港） and pairs 札幌 with 丘珠; see prior alias review line 167/405 and row 817.",
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+              "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+            },
+            "currentPassengerAccessReview": "Current airport-owned terminal/access pages identify passenger arrival frontage, current airport-liner terminal endpoint and named stops. This C28 reference point remains airport-level only; it is not used as the terminal or curb location."
+          }
+        },
+        {
+          "name": "利尻空港",
+          "operator": "airport-facility:cf03_00008",
+          "line": "airport:cf03_00008",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00008",
+            "requirementId": "review:official-airport:利尻",
+            "expectedRequirementName": "利尻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Municipal own linked airport floor map explicitly marks public arrival lobby, exterior exit and bus symbol beside public frontage. Current carrier local timetable/map independently names airport stop. Exact C28 whole-airport point only, no doorway coordinates or old map accessibility guarantee."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportPublicNames": [
+        "丘珠空港"
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "利尻",
+          "canonicalAirportName": "利尻空港",
+          "referencePointId": "cf03_00008"
+        },
+        {
+          "sourceName": "札幌丘珠",
+          "canonicalAirportName": "札幌飛行場",
+          "referencePointId": "cf03_00017"
+        }
+      ],
+      "locator": "Okadama Airport own public daily board departure section independently lists2783便 with destination利尻. Existing MLIT formal札幌飛行場（丘珠空港） alias review reused exactly. No reverse inference, clocks or dates invented."
+    },
+    {
+      "factId": "rishiri-hac-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+      "sourceUrl": "https://okadama-airport.co.jp/flight/",
+      "observedResponseSha256": "34b770131315c568e2d4403a7976aeac7459f118e5f0eda604f95885f6bbd164",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+          "url": "https://okadama-airport.co.jp/flight/",
+          "observedResponseSha256": "34b770131315c568e2d4403a7976aeac7459f118e5f0eda604f95885f6bbd164"
+        },
+        {
+          "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+          "url": "https://www.town.rishirifuji.hokkaido.jp/rishirifuji/1187.htm",
+          "observedResponseSha256": "18fbd9020213978b848950bea67d4f20bb4aff939ad1e6e74701e41c8a02cd4f"
+        },
+        {
+          "sourceActionId": "government:mlit:sapporo-airfield-public-name-fact-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+          "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+        }
+      ],
+      "operator": "HAC",
+      "line": "札幌丘珠・利尻国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RIS-OKD",
+      "serviceState": "active",
+      "serviceStateScope": "Current official airport public daily board observed at source timestamp, static directional relation only. Not a future schedule or guaranteed timed connection. PhysicalHAC operator corroborated by municipal airport pairing; JAL marketing label not duplicate service.",
+      "callingStations": [
+        "利尻空港",
+        "札幌飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "利尻空港",
+          "operator": "airport-facility:cf03_00008",
+          "line": "airport:cf03_00008",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00008",
+            "requirementId": "review:official-airport:利尻",
+            "expectedRequirementName": "利尻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Municipal own linked airport floor map explicitly marks public arrival lobby, exterior exit and bus symbol beside public frontage. Current carrier local timetable/map independently names airport stop. Exact C28 whole-airport point only, no doorway coordinates or old map accessibility guarantee."
+          }
+        },
+        {
+          "name": "札幌飛行場",
+          "operator": "airport-facility:cf03_00017",
+          "line": "airport:cf03_00017",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00017",
+            "requirementId": "review:official-airport:札幌",
+            "expectedRequirementName": "札幌",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "officialNameEvidence": {
+              "officialName": "札幌飛行場",
+              "requirementName": "札幌",
+              "publicName": "丘珠空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "Cached MLIT airport listing links 札幌飛行場（丘珠空港） and pairs 札幌 with 丘珠; see prior alias review line 167/405 and row 817.",
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+              "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+            },
+            "currentPassengerAccessReview": "Current airport-owned terminal/access pages identify passenger arrival frontage, current airport-liner terminal endpoint and named stops. This C28 reference point remains airport-level only; it is not used as the terminal or curb location."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportPublicNames": [
+        "丘珠空港"
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "利尻",
+          "canonicalAirportName": "利尻空港",
+          "referencePointId": "cf03_00008"
+        },
+        {
+          "sourceName": "札幌丘珠",
+          "canonicalAirportName": "札幌飛行場",
+          "referencePointId": "cf03_00017"
+        }
+      ],
+      "locator": "Okadama Airport own public daily board arrival section independently lists2784便 with departure location利尻. Municipal airport page separately identifies HAC between丘珠 and利尻; no old seat/frequency figures used."
+    },
+    {
+      "factId": "rishiri-municipal-public-arrival-exit-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+      "sourceUrl": "https://www.town.rishirifuji.hokkaido.jp/rishirifuji/1186.htm",
+      "observedResponseSha256": "8877235bde310fe982ba7aa1f7a8ee350176b0dc6e2089d494c791a1b63ae678",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:rishiri:current-okadama-hac-and-municipal-public-frontage",
+          "url": "https://www.town.rishirifuji.hokkaido.jp/rishirifuji/secure/1294/floormap.pdf",
+          "observedResponseSha256": "3ec30c4a28586f04994739422d8a9d07c3f83a24a86b8a7bcc5dafb93fa4b7e3"
+        },
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routebus/rishiri_r8_summer.pdf",
+          "observedResponseSha256": "407e44a0389451c5f2b1116f167a4e4b32a17ce6f096852a40b87a2081c87419"
+        },
+        {
+          "sourceActionId": "bus:rishiri:current-winter-a-b-airport-motodomari-sections",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+          "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+        }
+      ],
+      "components": [
+        {
+          "name": "利尻空港",
+          "operator": "airport-facility:cf03_00008",
+          "line": "airport:cf03_00008",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00008",
+            "requirementId": "review:official-airport:利尻",
+            "expectedRequirementName": "利尻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Municipal own linked airport floor map explicitly marks public arrival lobby, exterior exit and bus symbol beside public frontage. Current carrier local timetable/map independently names airport stop. Exact C28 whole-airport point only, no doorway coordinates or old map accessibility guarantee."
+          }
+        },
+        {
+          "name": "利尻空港",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs203",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs203",
+            "recordSha256": "7686d9734721c2dbe628e533d2e535cf017dab825a39b29338d8760fff0d80ed",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native same-carrier P11利尻線 representative. Current2026-04-28 full map names本泊 and利尻空港; same-date timetable winter A3 and B3 independently call adjacent airport、本泊 in opposite order. Timetable shorthand空港(54) resolved by full map named airport branch. No opposite pole merge or invented precise boarding coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス（株）",
+              "currentStopName": "利尻空港",
+              "historicalRoute": "利尻線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/rosenzu-rishiri02.pdf",
+              "observedResponseSha256": "ac896817b158bd8ff7ccfbbdea8c78ff400f5263681217d46db108711268da20"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "MUNICIPAL_CURRENT_LINKED_FLOOR_GUIDE_PUBLIC_BUS_FRONTAGE",
+      "locator": "Official municipal airport current linked floor plan marks public arrival lobby exiting to frontage, taxi and bus symbols immediately outside; departure public ticket lobby connects across landside hall. Current carrier full-map names airport-stop branch. Coarse public whole-airport interface only, no coordinate-distance linkage, exact curb/pole, accessibility, duration or airside reverse edge."
+    }
+  ],
+  "scope": "Original Rishiri airport chain only, two exact P11 representatives and original same-ID HOLD upgrade, six edges. No island loop expansion, ferry terminal or seasonalANA extension."
+}

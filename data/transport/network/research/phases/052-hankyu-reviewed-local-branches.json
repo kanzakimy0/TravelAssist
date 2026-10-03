@@ -1,0 +1,1847 @@
+{
+  "phaseId": "052-hankyu-reviewed-local-branches",
+  "strategy": [
+    "HANKYU_BLACK_ORDINARY_STOPPING_ROWS",
+    "IMAZU_BRANCH_SPLIT_AND_CURRENT_OPERATOR_BOUNDARIES",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:hankyu:reviewed-local-patterns"
+  ],
+  "facts": [
+    {
+      "factId": "hankyu-0-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "神戸線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "大阪梅田",
+        "中津",
+        "十三",
+        "神崎川",
+        "園田",
+        "塚口",
+        "武庫之荘",
+        "西宮北口",
+        "夙川",
+        "芦屋川",
+        "岡本",
+        "御影",
+        "六甲",
+        "王子公園",
+        "春日野道",
+        "神戸三宮"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中津",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "十三",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神崎川",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "園田",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "塚口",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武庫之荘",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西宮北口",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "夙川",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦屋川",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岡本",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "御影",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "六甲",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "王子公園",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日野道",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神戸三宮",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-0-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "神戸線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "神戸三宮",
+        "春日野道",
+        "王子公園",
+        "六甲",
+        "御影",
+        "岡本",
+        "芦屋川",
+        "夙川",
+        "西宮北口",
+        "武庫之荘",
+        "塚口",
+        "園田",
+        "神崎川",
+        "十三",
+        "中津",
+        "大阪梅田"
+      ],
+      "callingComponents": [
+        {
+          "name": "神戸三宮",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日野道",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "王子公園",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "六甲",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "御影",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岡本",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦屋川",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "夙川",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西宮北口",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武庫之荘",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "塚口",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "園田",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神崎川",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "十三",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中津",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-1-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_takarazuka.pdf",
+      "observedResponseSha256": "9e2dea38ae65863912176c9ae8cd43833470f3737538aa3356c6fb56e585319a",
+      "locator": "Current linked takarazuka stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "宝塚線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "大阪梅田",
+        "中津",
+        "十三",
+        "三国",
+        "庄内",
+        "服部天神",
+        "曽根",
+        "岡町",
+        "豊中",
+        "蛍池",
+        "石橋阪大前",
+        "池田",
+        "川西能勢口",
+        "雲雀丘花屋敷",
+        "山本",
+        "中山観音",
+        "売布神社",
+        "清荒神",
+        "宝塚"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中津",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "十三",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三国",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "庄内",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "服部天神",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "曽根",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岡町",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豊中",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "蛍池",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石橋阪大前",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "池田",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "川西能勢口",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "雲雀丘花屋敷",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山本",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中山観音",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "売布神社",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "清荒神",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宝塚",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-1-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_takarazuka.pdf",
+      "observedResponseSha256": "9e2dea38ae65863912176c9ae8cd43833470f3737538aa3356c6fb56e585319a",
+      "locator": "Current linked takarazuka stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "宝塚線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "宝塚",
+        "清荒神",
+        "売布神社",
+        "中山観音",
+        "山本",
+        "雲雀丘花屋敷",
+        "川西能勢口",
+        "池田",
+        "石橋阪大前",
+        "蛍池",
+        "豊中",
+        "岡町",
+        "曽根",
+        "服部天神",
+        "庄内",
+        "三国",
+        "十三",
+        "中津",
+        "大阪梅田"
+      ],
+      "callingComponents": [
+        {
+          "name": "宝塚",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "清荒神",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "売布神社",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中山観音",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山本",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "雲雀丘花屋敷",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "川西能勢口",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "池田",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石橋阪大前",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "蛍池",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豊中",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岡町",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "曽根",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "服部天神",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "庄内",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三国",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "十三",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中津",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-2-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kyoto.pdf",
+      "observedResponseSha256": "99c4da1347c60904c5f3b29c07b603450d560ac2eb7c1aae9c6877a5d904fba2",
+      "locator": "Current linked kyoto stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "京都線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "大阪梅田",
+        "十三",
+        "南方",
+        "崇禅寺",
+        "淡路",
+        "上新庄",
+        "相川",
+        "正雀",
+        "摂津市",
+        "南茨木",
+        "茨木市",
+        "総持寺",
+        "富田",
+        "高槻市",
+        "上牧",
+        "水無瀬",
+        "大山崎",
+        "西山天王山",
+        "長岡天神",
+        "西向日",
+        "東向日",
+        "洛西口",
+        "桂",
+        "西京極",
+        "西院",
+        "大宮",
+        "烏丸",
+        "京都河原町"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "十三",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南方",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "崇禅寺",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "淡路",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上新庄",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相川",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "正雀",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "摂津市",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南茨木",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "茨木市",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "総持寺",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "富田",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高槻市",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上牧",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "水無瀬",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大山崎",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西山天王山",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長岡天神",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西向日",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東向日",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "洛西口",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桂",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西京極",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西院",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大宮",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "烏丸",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京都河原町",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-2-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kyoto.pdf",
+      "observedResponseSha256": "99c4da1347c60904c5f3b29c07b603450d560ac2eb7c1aae9c6877a5d904fba2",
+      "locator": "Current linked kyoto stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "京都線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "京都河原町",
+        "烏丸",
+        "大宮",
+        "西院",
+        "西京極",
+        "桂",
+        "洛西口",
+        "東向日",
+        "西向日",
+        "長岡天神",
+        "西山天王山",
+        "大山崎",
+        "水無瀬",
+        "上牧",
+        "高槻市",
+        "富田",
+        "総持寺",
+        "茨木市",
+        "南茨木",
+        "摂津市",
+        "正雀",
+        "相川",
+        "上新庄",
+        "淡路",
+        "崇禅寺",
+        "南方",
+        "十三",
+        "大阪梅田"
+      ],
+      "callingComponents": [
+        {
+          "name": "京都河原町",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "烏丸",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大宮",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西院",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西京極",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桂",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "洛西口",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東向日",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西向日",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長岡天神",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西山天王山",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大山崎",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "水無瀬",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上牧",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高槻市",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "富田",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "総持寺",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "茨木市",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南茨木",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "摂津市",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "正雀",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相川",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上新庄",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "淡路",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "崇禅寺",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南方",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "十三",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-3-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "伊丹線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "塚口",
+        "稲野",
+        "新伊丹",
+        "伊丹"
+      ],
+      "callingComponents": [
+        {
+          "name": "塚口",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "稲野",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新伊丹",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "伊丹",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-3-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "伊丹線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "伊丹",
+        "新伊丹",
+        "稲野",
+        "塚口"
+      ],
+      "callingComponents": [
+        {
+          "name": "伊丹",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新伊丹",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "稲野",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "塚口",
+          "operator": "阪急電鉄",
+          "line": "伊丹線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-4-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "今津北線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "西宮北口",
+        "門戸厄神",
+        "甲東園",
+        "仁川",
+        "小林",
+        "逆瀬川",
+        "宝塚南口",
+        "宝塚"
+      ],
+      "callingComponents": [
+        {
+          "name": "西宮北口",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "門戸厄神",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "甲東園",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "仁川",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小林",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "逆瀬川",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宝塚南口",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宝塚",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-4-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "今津北線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "宝塚",
+        "宝塚南口",
+        "逆瀬川",
+        "小林",
+        "仁川",
+        "甲東園",
+        "門戸厄神",
+        "西宮北口"
+      ],
+      "callingComponents": [
+        {
+          "name": "宝塚",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宝塚南口",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "逆瀬川",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小林",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "仁川",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "甲東園",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "門戸厄神",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西宮北口",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-5-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "今津南線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "西宮北口",
+        "阪神国道",
+        "今津"
+      ],
+      "callingComponents": [
+        {
+          "name": "西宮北口",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "阪神国道",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "今津",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-5-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "今津南線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "今津",
+        "阪神国道",
+        "西宮北口"
+      ],
+      "callingComponents": [
+        {
+          "name": "今津",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "阪神国道",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西宮北口",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-6-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "甲陽線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "夙川",
+        "苦楽園口",
+        "甲陽園"
+      ],
+      "callingComponents": [
+        {
+          "name": "夙川",
+          "operator": "阪急電鉄",
+          "line": "甲陽線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "苦楽園口",
+          "operator": "阪急電鉄",
+          "line": "甲陽線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "甲陽園",
+          "operator": "阪急電鉄",
+          "line": "甲陽線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-6-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kobe.pdf",
+      "observedResponseSha256": "5c1d916878c00833e8c44ae23b708f3fc251169e42b3c3fb6b0cae0f652e5287",
+      "locator": "Current linked kobe stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "甲陽線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "甲陽園",
+        "苦楽園口",
+        "夙川"
+      ],
+      "callingComponents": [
+        {
+          "name": "甲陽園",
+          "operator": "阪急電鉄",
+          "line": "甲陽線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "苦楽園口",
+          "operator": "阪急電鉄",
+          "line": "甲陽線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "夙川",
+          "operator": "阪急電鉄",
+          "line": "甲陽線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-7-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_takarazuka.pdf",
+      "observedResponseSha256": "9e2dea38ae65863912176c9ae8cd43833470f3737538aa3356c6fb56e585319a",
+      "locator": "Current linked takarazuka stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "箕面線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "石橋阪大前",
+        "桜井",
+        "牧落",
+        "箕面"
+      ],
+      "callingComponents": [
+        {
+          "name": "石橋阪大前",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜井",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "牧落",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "箕面",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-7-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_takarazuka.pdf",
+      "observedResponseSha256": "9e2dea38ae65863912176c9ae8cd43833470f3737538aa3356c6fb56e585319a",
+      "locator": "Current linked takarazuka stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "箕面線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "箕面",
+        "牧落",
+        "桜井",
+        "石橋阪大前"
+      ],
+      "callingComponents": [
+        {
+          "name": "箕面",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "牧落",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜井",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石橋阪大前",
+          "operator": "阪急電鉄",
+          "line": "箕面線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-8-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kyoto.pdf",
+      "observedResponseSha256": "99c4da1347c60904c5f3b29c07b603450d560ac2eb7c1aae9c6877a5d904fba2",
+      "locator": "Current linked kyoto stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "千里線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "天神橋筋六丁目",
+        "柴島",
+        "淡路",
+        "下新庄",
+        "吹田",
+        "豊津",
+        "関大前",
+        "千里山",
+        "南千里",
+        "山田",
+        "北千里"
+      ],
+      "callingComponents": [
+        {
+          "name": "天神橋筋六丁目",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柴島",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "淡路",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下新庄",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "吹田",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豊津",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "関大前",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千里山",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南千里",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山田",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北千里",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-8-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kyoto.pdf",
+      "observedResponseSha256": "99c4da1347c60904c5f3b29c07b603450d560ac2eb7c1aae9c6877a5d904fba2",
+      "locator": "Current linked kyoto stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "千里線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "北千里",
+        "山田",
+        "南千里",
+        "千里山",
+        "関大前",
+        "豊津",
+        "吹田",
+        "下新庄",
+        "淡路",
+        "柴島",
+        "天神橋筋六丁目"
+      ],
+      "callingComponents": [
+        {
+          "name": "北千里",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山田",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南千里",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千里山",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "関大前",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豊津",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "吹田",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下新庄",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "淡路",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柴島",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天神橋筋六丁目",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-9-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kyoto.pdf",
+      "observedResponseSha256": "99c4da1347c60904c5f3b29c07b603450d560ac2eb7c1aae9c6877a5d904fba2",
+      "locator": "Current linked kyoto stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "嵐山線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "桂",
+        "上桂",
+        "松尾大社",
+        "嵐山"
+      ],
+      "callingComponents": [
+        {
+          "name": "桂",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上桂",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松尾大社",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "嵐山",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-9-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_kyoto.pdf",
+      "observedResponseSha256": "99c4da1347c60904c5f3b29c07b603450d560ac2eb7c1aae9c6877a5d904fba2",
+      "locator": "Current linked kyoto stopping diagram page 1, black ordinary service row. Each branch separately reviewed; Imazu split at Nishinomiya-Kitaguchi. Kyoto service excludes Nakatsu and uses the independent Osaka-Umeda Takarazuka physical component; Kobe retained only to Kobe-Sannomiya, Senri only Hankyu territory. No express union, Nose or other-operator continuation inferred.",
+      "line": "嵐山線",
+      "operator": "阪急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "嵐山",
+        "松尾大社",
+        "上桂",
+        "桂"
+      ],
+      "callingComponents": [
+        {
+          "name": "嵐山",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松尾大社",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上桂",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桂",
+          "operator": "阪急電鉄",
+          "line": "嵐山線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_BLACK_ORDINARY_SERVICE_ROW_WITH_BRANCH_AND_OPERATOR_BOUNDARY_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hankyu-takarazuka-jr-gateway",
+      "kind": "transfer",
+      "sourceActionId": "private:hankyu:reviewed-local-patterns",
+      "sourceUrl": "https://www.hankyu.co.jp/station/pdf/map_railway_takarazuka.pdf",
+      "observedResponseSha256": "9e2dea38ae65863912176c9ae8cd43833470f3737538aa3356c6fb56e585319a",
+      "locator": "Official stopping diagram explicitly marks JR interchange at Takarazuka. Bind only independently resolved same-name Hankyu and JR Fukuchiyama physical components. No distance-only transfer or fully connected hub inferred.",
+      "components": [
+        {
+          "name": "宝塚",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宝塚",
+          "operator": "西日本旅客鉄道",
+          "line": "福知山線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_JR_INTERCHANGE_AND_EXACT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

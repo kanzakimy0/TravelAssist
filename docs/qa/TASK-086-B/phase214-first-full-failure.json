@@ -1,0 +1,15 @@
+{
+  "status": "STOPPED_AFTER_CONFIRMED_REGRESSION_FAILURES_PENDING_FIX_AND_COMPLETE_RERUN",
+  "at": "2026-10-03T13:21:32.993060+00:00",
+  "failureLines": [
+    "✖ TASK086 flight reachability does not substitute for airport surface access (2.3213ms)",
+    "✖ TASK086 admitted legacy GTFS bus stops satisfy only real bidirectional airport surface access (0.4804ms)"
+  ],
+  "logSha256": "52edecf919a377fc006b507f90d42accd31b43bd51ccc6d3ee7e70bb541dd598",
+  "reason": "Two airport surface regression failures found. Stop remaining known-invalid calculation; retain all checks, apply role predicate and real-service fixture repair, then rerun complete repository gate.",
+  "taskOwnedProcessesStopped": [
+    11164,
+    35692
+  ],
+  "taskAcceptance": "UNVERIFIED_NOT_COMPLETE"
+}

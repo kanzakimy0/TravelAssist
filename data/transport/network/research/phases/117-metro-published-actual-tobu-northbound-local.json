@@ -1,0 +1,204 @@
+{
+  "phaseId": "117-metro-published-actual-tobu-northbound-local",
+  "strategy": [
+    "CURRENT_PARTNER_PUBLIC_TIMETABLE_UI_DATA",
+    "ONE_EXPLICIT_ACTUAL_NORTHBOUND_TRAIN_ONLY",
+    "REPAIR_FOUR_REMAINING_SKYTREE_T1_COMPONENTS"
+  ],
+  "completedActionIds": [
+    "private:tobu:metro-published-actual-northbound-local"
+  ],
+  "facts": [
+    {
+      "factId": "metro-published-weekday-tobu-local-northbound-selected-table-2",
+      "kind": "service",
+      "sourceActionId": "private:tobu:metro-published-actual-northbound-local",
+      "sourceUrl": "https://www.tokyometro.jp/library/station/json/hibiya_b_h.json",
+      "observedResponseSha256": "cb17fa9cf5327cb2842c223230a5f48661ea34b52a0b04bd0ba6138b29b0b222",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:tobu:metro-published-actual-northbound-local",
+          "url": "https://www.tokyometro.jp/library/station/js/train_timetable.js",
+          "observedResponseSha256": "a3438b9ef11f8a2df51c8b40f5dd468485902ae45ee2f9e4a03fd6032bc18cb4"
+        },
+        {
+          "sourceActionId": "private:tobu:metro-published-actual-northbound-local",
+          "url": "https://www.tokyometro.jp/station/timetable.html?dr=b&dt=h&h=13&ln=hibiya&m=07&st=kasumigaseki",
+          "observedResponseSha256": "ce095a5637638504cd4d3687b313a1c638445fb47bbd8c5917735ae7d0013f3e"
+        },
+        {
+          "sourceActionId": "private:tobu:metro-published-actual-northbound-local",
+          "url": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+          "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3"
+        }
+      ],
+      "locator": "Current production Hibiya weekday northbound public timetable JSON tables[1] (zero-based), ordinary train from Naka-meguro to Tobu-dobutsu-koen. Retain the complete contiguous Tobu section beginning at the explicitly calling Kita-senju row through the terminal; all 22 rows have explicit arrival/departure calls and no skipped station. The public UI script maps train_type 1 to ordinary and binds every station slug to its Japanese name; the production directory is distinct from archived kaiteimae. No clocks or entire JSON retained. The reverse publication omits Tobu-origin calls and does not justify a reverse fact. This is one actual northbound train segment, not a bidirectional standard-class inference or a physical-adjacency connection. No Metro-to-Tobu transfer or operator-boundary edge is created by this fact.",
+      "line": "伊勢崎線",
+      "operator": "東武鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "northbound",
+      "callingStations": [
+        "北千住",
+        "小菅",
+        "五反野",
+        "梅島",
+        "西新井",
+        "竹ノ塚",
+        "谷塚",
+        "草加",
+        "獨協大学前",
+        "新田",
+        "蒲生",
+        "新越谷",
+        "越谷",
+        "北越谷",
+        "大袋",
+        "せんげん台",
+        "武里",
+        "一ノ割",
+        "春日部",
+        "北春日部",
+        "姫宮",
+        "東武動物公園"
+      ],
+      "callingComponents": [
+        {
+          "name": "北千住",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小菅",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "五反野",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "梅島",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西新井",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "竹ノ塚",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "谷塚",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "草加",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "獨協大学前",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新田",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "蒲生",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新越谷",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "越谷",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北越谷",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大袋",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "せんげん台",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武里",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "一ノ割",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日部",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北春日部",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "姫宮",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東武動物公園",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_PARTNER_PUBLISHED_ACTUAL_TRAIN_CONTIGUOUS_OPERATOR_SEGMENT",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PRODUCTION_WEEKDAY_STATIC_CALLS_NOT_REALTIME"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "phaseId": "144-kuwana-current-four-operator-public-passenger-connections",
+  "strategy": [
+    "CURRENT_POST_2020_SEPARATE_GATES",
+    "EXPLICIT_PUBLIC_PASSAGE_AND_NISHI_KUWANA_CONNECTION"
+  ],
+  "completedActionIds": [
+    "hub:jr-central:kuwana-current-three-operator-free-passage",
+    "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+    "hub:sangi:current-nishi-kuwana-interchange-guide"
+  ],
+  "facts": [
+    {
+      "factId": "kuwana-current-jr-kintetsu-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:kuwana-current-three-operator-free-passage",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/kuwana/_img/kuwana_220308.gif",
+      "observedResponseSha256": "f2c1e36fc4701494e2fa02f675e626bed6876ff91d6f2d8dc240f6d599dba9b4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:kuwana-current-three-operator-free-passage",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/kuwana/map.html",
+          "observedResponseSha256": "d435f989a5e24a19a8031bd232049024fbad2c5079009faf9c36666c958ab633"
+        },
+        {
+          "sourceActionId": "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+          "url": "https://www.hokuseisen.com/news/20200901.html",
+          "observedResponseSha256": "4bb2dff1946083132ea3fea39faf7f5893c2fb470ca5cd666b5cb2fd5c8ccf45"
+        },
+        {
+          "sourceActionId": "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+          "url": "https://www.hokuseisen.com/news/pdf/20200901-1.pdf",
+          "observedResponseSha256": "3004d9906acc95af0dd94e0d4b2a677f1259a31b13f9c07457bada7a3885122e"
+        }
+      ],
+      "locator": "Individually viewed current JR diagram: JR Kansai platforms connect via JR gate to completed east-west public passage. Western passage explicitly signs exact Kintetsu and Yoro stations; the council opening record independently establishes the post-2020 public passage and closure of the old station access. Retain coarse public gate-to-gate relation, not a shared paid concourse or old direct gate. Preserve exact separate licensed components. No distance, walking time, fare or universal accessibility promise.",
+      "components": [
+        {
+          "name": "桑名",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桑名",
+          "operator": "近畿日本鉄道",
+          "line": "名古屋線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_EXPLICIT_PUBLIC_PASSAGE_AND_COUNCIL_COMPLETED_ACCESS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kuwana-current-jr-yoro-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:kuwana-current-three-operator-free-passage",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/kuwana/_img/kuwana_220308.gif",
+      "observedResponseSha256": "f2c1e36fc4701494e2fa02f675e626bed6876ff91d6f2d8dc240f6d599dba9b4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:kuwana-current-three-operator-free-passage",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/kuwana/map.html",
+          "observedResponseSha256": "d435f989a5e24a19a8031bd232049024fbad2c5079009faf9c36666c958ab633"
+        },
+        {
+          "sourceActionId": "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+          "url": "https://www.hokuseisen.com/news/20200901.html",
+          "observedResponseSha256": "4bb2dff1946083132ea3fea39faf7f5893c2fb470ca5cd666b5cb2fd5c8ccf45"
+        },
+        {
+          "sourceActionId": "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+          "url": "https://www.hokuseisen.com/news/pdf/20200901-1.pdf",
+          "observedResponseSha256": "3004d9906acc95af0dd94e0d4b2a677f1259a31b13f9c07457bada7a3885122e"
+        }
+      ],
+      "locator": "Individually viewed current JR diagram: JR Kansai platforms connect via JR gate to completed east-west public passage. Western passage explicitly signs exact Kintetsu and Yoro stations; the council opening record independently establishes the post-2020 public passage and closure of the old station access. Retain coarse public gate-to-gate relation, not a shared paid concourse or old direct gate. Preserve exact separate licensed components. No distance, walking time, fare or universal accessibility promise.",
+      "components": [
+        {
+          "name": "桑名",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桑名",
+          "operator": "養老鉄道",
+          "line": "養老線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_EXPLICIT_PUBLIC_PASSAGE_AND_COUNCIL_COMPLETED_ACCESS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kuwana-current-jr-sangi-nishi-kuwana-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:kuwana-current-three-operator-free-passage",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/kuwana/_img/kuwana_220308.gif",
+      "observedResponseSha256": "f2c1e36fc4701494e2fa02f675e626bed6876ff91d6f2d8dc240f6d599dba9b4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:kuwana-current-three-operator-free-passage",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/kuwana/map.html",
+          "observedResponseSha256": "d435f989a5e24a19a8031bd232049024fbad2c5079009faf9c36666c958ab633"
+        },
+        {
+          "sourceActionId": "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+          "url": "https://www.hokuseisen.com/news/20200901.html",
+          "observedResponseSha256": "4bb2dff1946083132ea3fea39faf7f5893c2fb470ca5cd666b5cb2fd5c8ccf45"
+        },
+        {
+          "sourceActionId": "hub:hokusei-council:kuwana-free-passage-and-nishi-kuwana-connection",
+          "url": "https://www.hokuseisen.com/news/pdf/20200901-1.pdf",
+          "observedResponseSha256": "3004d9906acc95af0dd94e0d4b2a677f1259a31b13f9c07457bada7a3885122e"
+        },
+        {
+          "sourceActionId": "hub:sangi:current-nishi-kuwana-interchange-guide",
+          "url": "https://sangirail.co.jp/kouhou/benri/route/",
+          "observedResponseSha256": "3aaf0b67e6963a175025f30a17255cdfc01b114abb311521bec2edb3f09ba631"
+        }
+      ],
+      "locator": "Individually viewed current JR diagram: JR Kansai platforms connect via JR gate to completed east-west public passage. Eastern ground exit explicitly signs Sangi Nishi-Kuwana; municipal/operator council poster explicitly draws the pedestrian relation from that east exit to exact Nishi-Kuwana. Current Sangi guide corroborates the interchange identity, without retaining its distance/direction wording. Preserve exact separate licensed components. No distance, walking time, fare or universal accessibility promise.",
+      "components": [
+        {
+          "name": "桑名",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西桑名",
+          "operator": "三岐鉄道",
+          "line": "北勢線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_EXPLICIT_PUBLIC_PASSAGE_AND_COUNCIL_COMPLETED_ACCESS",
+      "hubScopeComplete": false
+    }
+  ]
+}

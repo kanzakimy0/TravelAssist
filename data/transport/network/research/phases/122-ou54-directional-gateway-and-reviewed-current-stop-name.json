@@ -1,0 +1,971 @@
+{
+  "phaseId": "122-ou54-directional-gateway-and-reviewed-current-stop-name",
+  "strategy": [
+    "REPAIR_LAST_T1_WITH_BOUNDED_GENERAL_PASSENGER_BUS",
+    "INDEPENDENT_DIRECTIONAL_STOP_TABLES_NOT_COARSE_MAP_ADJACENCY",
+    "SOURCE_BOUND_PRIMARY_HISTORICAL_CURRENT_STOP_CONTINUITY",
+    "DISTINCT_RAIL_AND_OPERATOR_ROAD_STOP_PUBLIC_GATEWAYS"
+  ],
+  "completedActionIds": [
+    "bus:tokyo-association:ou54-independent-directional-stop-sections",
+    "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+    "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+    "hub:yamato-hospital:honcho-public-street-ou54-stop-access"
+  ],
+  "facts": [
+    {
+      "factId": "ou54-oji-bound-kamiitabashi-yamatocho-section",
+      "kind": "service",
+      "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+      "sourceUrl": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+      "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+          "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_2659_19_1506_0/pageID/1/stop_id/2683",
+          "observedResponseSha256": "0595b8d8d7a42be74888a0da71f696b7df97c57e9d2fed927ef1005c2c1ac501"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navilist2/stop_id/2683",
+          "observedResponseSha256": "0869a4a3f2d4a71cebf86679f8a1b9d0f183bcb695a48fbabfb0e9abcfc0ed36"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/area/k_guide2026/003.pdf",
+          "observedResponseSha256": "e43cf186c0e46dffdea0b9063165ea0dfb96e42fe2ee01e15c117afb7fbb58c2"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/kusei/kouhou/guide/1009403.html",
+          "observedResponseSha256": "17be199cc30cdda31c845241e4ecbf59c36ca744c6bb49f1acb5cca53e0e9f7a"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/site/zen/content/000237061.pdf",
+          "observedResponseSha256": "8318e4f4d726a54c7949238727f4ad17d6f6be87d235d1bdd069fc26278f0de0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+          "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/img_sub/access_img1.jpg",
+          "observedResponseSha256": "90f7946d02003771f2e4e73c48d38dffc7900852937a9b266f84f9d8b07b59a0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/access/access.html",
+          "observedResponseSha256": "aacebbb6b7887a310abfb207e33e9473b2ce36395d52e174647378e0211afcf0"
+        }
+      ],
+      "locator": "Independent association directional route 1507_1, retained contiguous positions 1-11 of the published 25-stop Ou54 service. Both directional tables individually read; Ou54-2 alternative terminus excluded. Calls include Kyoiku-kagakukan, Fujimidai-school and Kitatoshima school, not just the coarse municipal diagram endpoints. Historical P11 canonical labels identify components; current school-stop public name is independently bound to primary historical/current same-road maps. Central-dori Itabashi and Fujimicho Itabashi qualifiers disambiguate names; Yamatocho Itabashihoncho parenthesis identifies the rail gateway. No original clocks, fares or source map data persisted.",
+      "line": "王54・上板橋駅大和町区間",
+      "operator": "国際興業株式会社",
+      "mode": "local_bus",
+      "purpose": "required_gateway",
+      "serviceClass": "王54一般旅客バス",
+      "direction": "oji-bound",
+      "callingStations": [
+        "上板橋駅",
+        "教育科学館",
+        "中央通り",
+        "常盤台教会",
+        "ときわ台駅",
+        "常盤台一丁目",
+        "常盤台郵便局",
+        "富士見台小学校",
+        "北豊島工業高校",
+        "富士見町",
+        "大和町"
+      ],
+      "callingComponents": [
+        {
+          "name": "上板橋駅",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1681",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1681",
+            "recordSha256": "1e2c43c1ba2c93d5a87f660fa3aa32e640ea0840732aca40d7d51857e5b1b6d7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "上板橋駅",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "教育科学館",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1706",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1706",
+            "recordSha256": "6b6015cab35bbd952bb90c97817e1352138475bcc7f75a3e80c9886c1f4ff578",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "教育科学館",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "中央通り",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1811",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1811",
+            "recordSha256": "e83ba1e54b128015d64eacc82b1263e4956a0ea670fedfe90a67799796c1fdc3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "中央通り",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "常盤台教会",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1896",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1896",
+            "recordSha256": "dd751e730f2c5e181ba85b00c44987a6bf3dd842f6e4529603c6a81a4218783a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "常盤台教会",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "ときわ台駅",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1935",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1935",
+            "recordSha256": "4c225f7d640d5b5f6a7bf1d4a96824d4ea8997fa6f82d4663b85f8af38b7a02f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "ときわ台駅",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "常盤台一丁目",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1817",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1817",
+            "recordSha256": "7ad600b9e3023500669780296838a1be4ca1c6098e6f10e2de4b6189566ffe90",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "常盤台一丁目",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "常盤台郵便局",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1729",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1729",
+            "recordSha256": "85a40c673da5a2ca567e7ec4fb2d87f93da39b8263d5595e400147945393a790",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "常盤台郵便局",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "富士見台小学校",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1716",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1716",
+            "recordSha256": "2b0f6e6aa947c4d207d75b3a18f701184c0b4e8d5287fc0ae4b6cfa528e1a882",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "富士見台小学校",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "北豊島工業高校",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1738",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1738",
+            "recordSha256": "9c9921dc770d2c195e7600d38f08bcb66f6335137654643c45eee3b045d27186",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "北豊島工科高校",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+              "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "北豊島工業高校",
+              "currentStopName": "北豊島工科高校",
+              "operator": "国際興業（株）",
+              "physicalContinuityReview": "Individually viewed historical primary school diagram and current school diagram/May 2026-produced school guide show the same paired bus stops on SB-dori at the north school approach, with the same road junctions and school site. Both attribute the service to Kokusai Kogyo. Separately licensed P11 exact operator and historical Ou54/54-2 context anchor the historical component. The current school guide explicitly confirms Kamiitabashi/Oji service. This is an independently reviewed road-stop representative correspondence, not fuzzy-name matching, exact-pole equivalence or an inferred effective rename date.",
+              "historicalEvidence": {
+                "stopName": "北豊島工業高校",
+                "operator": "国際興業（株）",
+                "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+                "url": "https://www.metro.ed.jp/kitatoshimakoka-h/site/zen/content/000237061.pdf",
+                "observedResponseSha256": "8318e4f4d726a54c7949238727f4ad17d6f6be87d235d1bdd069fc26278f0de0",
+                "locator": "Historical school access PDF single page: paired SB-dori stops immediately by north school approach, Kokusai Kogyo identified below."
+              },
+              "currentEvidence": {
+                "stopName": "北豊島工科高校",
+                "operator": "国際興業（株）",
+                "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+                "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+                "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0",
+                "locator": "Current May 19 2026-produced school guide, printed back-cover page 8: paired SB-dori school stops and current public name, with Kokusai Kogyo Kamiitabashi/Oji service explicitly identified."
+              }
+            }
+          }
+        },
+        {
+          "name": "富士見町",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1818",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1818",
+            "recordSha256": "bd27da387a2d085d264e6e63dc9cf28090fd0be37b77bb0b6cc628b8d66e4092",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "富士見町",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "大和町",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1812",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1812",
+            "recordSha256": "4f4f4b06c9a1e8de1f65b114419b4dcf2432e3a627fee3e85f9a4f4725fd44b8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "大和町",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        }
+      ],
+      "reviewedCurrentPublicStopNames": [
+        "上板橋駅",
+        "教育科学館",
+        "中央通り",
+        "常盤台教会",
+        "ときわ台駅",
+        "常盤台一丁目",
+        "常盤台郵便局",
+        "富士見台小学校",
+        "北豊島工科高校",
+        "富士見町",
+        "大和町"
+      ],
+      "canonicalNameScope": "HISTORICAL_LICENSED_P11_IDENTITY_WITH_SEPARATELY_BOUND_CURRENT_PUBLIC_NAMING",
+      "reviewMethod": "INDEPENDENT_ASSOCIATION_DIRECTIONAL_ROUTE_CALLS_CURRENT_PRIMARY_CORRIDOR_AND_P11_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_STATIC_ROUTE_SECTION_CORROBORATED_BY_PRIMARY_LOCAL_ACCESS_NOT_REALTIME"
+    },
+    {
+      "factId": "ou54-kamiitabashi-bound-kamiitabashi-yamatocho-section",
+      "kind": "service",
+      "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+      "sourceUrl": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_2659_19_1506_0/pageID/1/stop_id/2683",
+      "observedResponseSha256": "0595b8d8d7a42be74888a0da71f696b7df97c57e9d2fed927ef1005c2c1ac501",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+          "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_2659_19_1506_0/pageID/1/stop_id/2683",
+          "observedResponseSha256": "0595b8d8d7a42be74888a0da71f696b7df97c57e9d2fed927ef1005c2c1ac501"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navilist2/stop_id/2683",
+          "observedResponseSha256": "0869a4a3f2d4a71cebf86679f8a1b9d0f183bcb695a48fbabfb0e9abcfc0ed36"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/area/k_guide2026/003.pdf",
+          "observedResponseSha256": "e43cf186c0e46dffdea0b9063165ea0dfb96e42fe2ee01e15c117afb7fbb58c2"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/kusei/kouhou/guide/1009403.html",
+          "observedResponseSha256": "17be199cc30cdda31c845241e4ecbf59c36ca744c6bb49f1acb5cca53e0e9f7a"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/site/zen/content/000237061.pdf",
+          "observedResponseSha256": "8318e4f4d726a54c7949238727f4ad17d6f6be87d235d1bdd069fc26278f0de0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+          "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/img_sub/access_img1.jpg",
+          "observedResponseSha256": "90f7946d02003771f2e4e73c48d38dffc7900852937a9b266f84f9d8b07b59a0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/access/access.html",
+          "observedResponseSha256": "aacebbb6b7887a310abfb207e33e9473b2ce36395d52e174647378e0211afcf0"
+        }
+      ],
+      "locator": "Independent association directional route 1506_0, retained contiguous positions 15-25 of the published 25-stop Ou54 service. Both directional tables individually read; Ou54-2 alternative terminus excluded. Calls include Kyoiku-kagakukan, Fujimidai-school and Kitatoshima school, not just the coarse municipal diagram endpoints. Historical P11 canonical labels identify components; current school-stop public name is independently bound to primary historical/current same-road maps. Central-dori Itabashi and Fujimicho Itabashi qualifiers disambiguate names; Yamatocho Itabashihoncho parenthesis identifies the rail gateway. No original clocks, fares or source map data persisted.",
+      "line": "王54・上板橋駅大和町区間",
+      "operator": "国際興業株式会社",
+      "mode": "local_bus",
+      "purpose": "required_gateway",
+      "serviceClass": "王54一般旅客バス",
+      "direction": "kamiitabashi-bound",
+      "callingStations": [
+        "大和町",
+        "富士見町",
+        "北豊島工業高校",
+        "富士見台小学校",
+        "常盤台郵便局",
+        "常盤台一丁目",
+        "ときわ台駅",
+        "常盤台教会",
+        "中央通り",
+        "教育科学館",
+        "上板橋駅"
+      ],
+      "callingComponents": [
+        {
+          "name": "大和町",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1812",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1812",
+            "recordSha256": "4f4f4b06c9a1e8de1f65b114419b4dcf2432e3a627fee3e85f9a4f4725fd44b8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "大和町",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "富士見町",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1818",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1818",
+            "recordSha256": "bd27da387a2d085d264e6e63dc9cf28090fd0be37b77bb0b6cc628b8d66e4092",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "富士見町",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "北豊島工業高校",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1738",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1738",
+            "recordSha256": "9c9921dc770d2c195e7600d38f08bcb66f6335137654643c45eee3b045d27186",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "北豊島工科高校",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+              "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "北豊島工業高校",
+              "currentStopName": "北豊島工科高校",
+              "operator": "国際興業（株）",
+              "physicalContinuityReview": "Individually viewed historical primary school diagram and current school diagram/May 2026-produced school guide show the same paired bus stops on SB-dori at the north school approach, with the same road junctions and school site. Both attribute the service to Kokusai Kogyo. Separately licensed P11 exact operator and historical Ou54/54-2 context anchor the historical component. The current school guide explicitly confirms Kamiitabashi/Oji service. This is an independently reviewed road-stop representative correspondence, not fuzzy-name matching, exact-pole equivalence or an inferred effective rename date.",
+              "historicalEvidence": {
+                "stopName": "北豊島工業高校",
+                "operator": "国際興業（株）",
+                "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+                "url": "https://www.metro.ed.jp/kitatoshimakoka-h/site/zen/content/000237061.pdf",
+                "observedResponseSha256": "8318e4f4d726a54c7949238727f4ad17d6f6be87d235d1bdd069fc26278f0de0",
+                "locator": "Historical school access PDF single page: paired SB-dori stops immediately by north school approach, Kokusai Kogyo identified below."
+              },
+              "currentEvidence": {
+                "stopName": "北豊島工科高校",
+                "operator": "国際興業（株）",
+                "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+                "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+                "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0",
+                "locator": "Current May 19 2026-produced school guide, printed back-cover page 8: paired SB-dori school stops and current public name, with Kokusai Kogyo Kamiitabashi/Oji service explicitly identified."
+              }
+            }
+          }
+        },
+        {
+          "name": "富士見台小学校",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1716",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1716",
+            "recordSha256": "2b0f6e6aa947c4d207d75b3a18f701184c0b4e8d5287fc0ae4b6cfa528e1a882",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "富士見台小学校",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "常盤台郵便局",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1729",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1729",
+            "recordSha256": "85a40c673da5a2ca567e7ec4fb2d87f93da39b8263d5595e400147945393a790",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "常盤台郵便局",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "常盤台一丁目",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1817",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1817",
+            "recordSha256": "7ad600b9e3023500669780296838a1be4ca1c6098e6f10e2de4b6189566ffe90",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "常盤台一丁目",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "ときわ台駅",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1935",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1935",
+            "recordSha256": "4c225f7d640d5b5f6a7bf1d4a96824d4ea8997fa6f82d4663b85f8af38b7a02f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "ときわ台駅",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "常盤台教会",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1896",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1896",
+            "recordSha256": "dd751e730f2c5e181ba85b00c44987a6bf3dd842f6e4529603c6a81a4218783a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "常盤台教会",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "中央通り",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1811",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1811",
+            "recordSha256": "e83ba1e54b128015d64eacc82b1263e4956a0ea670fedfe90a67799796c1fdc3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "中央通り",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "教育科学館",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1706",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1706",
+            "recordSha256": "6b6015cab35bbd952bb90c97817e1352138475bcc7f75a3e80c9886c1f4ff578",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "教育科学館",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "上板橋駅",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1681",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1681",
+            "recordSha256": "1e2c43c1ba2c93d5a87f660fa3aa32e640ea0840732aca40d7d51857e5b1b6d7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "上板橋駅",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        }
+      ],
+      "reviewedCurrentPublicStopNames": [
+        "大和町",
+        "富士見町",
+        "北豊島工科高校",
+        "富士見台小学校",
+        "常盤台郵便局",
+        "常盤台一丁目",
+        "ときわ台駅",
+        "常盤台教会",
+        "中央通り",
+        "教育科学館",
+        "上板橋駅"
+      ],
+      "canonicalNameScope": "HISTORICAL_LICENSED_P11_IDENTITY_WITH_SEPARATELY_BOUND_CURRENT_PUBLIC_NAMING",
+      "reviewMethod": "INDEPENDENT_ASSOCIATION_DIRECTIONAL_ROUTE_CALLS_CURRENT_PRIMARY_CORRIDOR_AND_P11_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_STATIC_ROUTE_SECTION_CORROBORATED_BY_PRIMARY_LOCAL_ACCESS_NOT_REALTIME"
+    },
+    {
+      "factId": "kamiitabashi-north-public-exit-ou54-operator-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+      "sourceUrl": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/016/268/kamiitamap202209.pdf",
+      "observedResponseSha256": "57e08b898bdc20f636d829de02cffedeb65b6cc0ef2f93554da5622e04d2c4c2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/bousai/toshikeiakku/kotsu/1016261/1016268.html",
+          "observedResponseSha256": "978d153a84e8528bb49ecd6b5280fe93e9fd89d8449b32b56dfcc9466941c9c3"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+          "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_2659_19_1506_0/pageID/1/stop_id/2683",
+          "observedResponseSha256": "0595b8d8d7a42be74888a0da71f696b7df97c57e9d2fed927ef1005c2c1ac501"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navilist2/stop_id/2683",
+          "observedResponseSha256": "0869a4a3f2d4a71cebf86679f8a1b9d0f183bcb695a48fbabfb0e9abcfc0ed36"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/area/k_guide2026/003.pdf",
+          "observedResponseSha256": "e43cf186c0e46dffdea0b9063165ea0dfb96e42fe2ee01e15c117afb7fbb58c2"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/kusei/kouhou/guide/1009403.html",
+          "observedResponseSha256": "17be199cc30cdda31c845241e4ecbf59c36ca744c6bb49f1acb5cca53e0e9f7a"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/site/zen/content/000237061.pdf",
+          "observedResponseSha256": "8318e4f4d726a54c7949238727f4ad17d6f6be87d235d1bdd069fc26278f0de0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+          "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/img_sub/access_img1.jpg",
+          "observedResponseSha256": "90f7946d02003771f2e4e73c48d38dffc7900852937a9b266f84f9d8b07b59a0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/access/access.html",
+          "observedResponseSha256": "aacebbb6b7887a310abfb207e33e9473b2ce36395d52e174647378e0211afcf0"
+        }
+      ],
+      "locator": "Individually viewed municipal September 2022 station access diagram, still current-linked, explicitly places Ou54 Kamiitabashi station stop at the north public exit/forecourt. Independent association terminal is Kamiitabashi station, not the distinct Kamiitabashi-ekimae terminus of Ou54-2. Keep coarse public railway/bus forecourt interchange only; no raw map, paid-area connection, walking duration or exact boarding-bay claim.",
+      "components": [
+        {
+          "name": "上板橋",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上板橋駅",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1681",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1681",
+            "recordSha256": "1e2c43c1ba2c93d5a87f660fa3aa32e640ea0840732aca40d7d51857e5b1b6d7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "上板橋駅",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_MUNICIPAL_STATION_FORECOURT_AND_DISTINCT_SERVICE_TERMINUS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "itabashihoncho-yamatocho-kannana-ou54-public-exit-walk",
+      "kind": "transfer",
+      "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+      "sourceUrl": "https://www.city.itabashi.tokyo.jp/bousai/toshikeiakku/kotsu/1016261/1016312.html",
+      "observedResponseSha256": "b201421f53fa8e149326e5d71bd44c994aa3bf9f28b2cad6661afcccdb7572da",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+          "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_2659_19_1506_0/pageID/1/stop_id/2683",
+          "observedResponseSha256": "0595b8d8d7a42be74888a0da71f696b7df97c57e9d2fed927ef1005c2c1ac501"
+        },
+        {
+          "sourceActionId": "bus:tokyo-association:ou54-independent-directional-stop-sections",
+          "url": "https://www.tokyobus.or.jp/app/navi/navilist2/stop_id/2683",
+          "observedResponseSha256": "0869a4a3f2d4a71cebf86679f8a1b9d0f183bcb695a48fbabfb0e9abcfc0ed36"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/area/k_guide2026/003.pdf",
+          "observedResponseSha256": "e43cf186c0e46dffdea0b9063165ea0dfb96e42fe2ee01e15c117afb7fbb58c2"
+        },
+        {
+          "sourceActionId": "hub:itabashi:kamiitabashi-ou54-honcho-public-gateways",
+          "url": "https://www.city.itabashi.tokyo.jp/kusei/kouhou/guide/1009403.html",
+          "observedResponseSha256": "17be199cc30cdda31c845241e4ecbf59c36ca744c6bb49f1acb5cca53e0e9f7a"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/site/zen/content/000237061.pdf",
+          "observedResponseSha256": "8318e4f4d726a54c7949238727f4ad17d6f6be87d235d1bdd069fc26278f0de0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/assets/pamphlet/pamphlet-pdffile-1873.pdf",
+          "observedResponseSha256": "d7ee2321cf5dc57edf44905f590a0750ce0f71b784804bd59d0d7e65d3f188b0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/img_sub/access_img1.jpg",
+          "observedResponseSha256": "90f7946d02003771f2e4e73c48d38dffc7900852937a9b266f84f9d8b07b59a0"
+        },
+        {
+          "sourceActionId": "bus:tokyo-public-school:kitatoshima-stop-name-location-continuity",
+          "url": "https://www.metro.ed.jp/kitatoshimakoka-h/access/access.html",
+          "observedResponseSha256": "aacebbb6b7887a310abfb207e33e9473b2ce36395d52e174647378e0211afcf0"
+        },
+        {
+          "sourceActionId": "hub:yamato-hospital:honcho-public-street-ou54-stop-access",
+          "url": "https://tokyoyamato-hp.com/access/",
+          "observedResponseSha256": "c80c603eec8109f5cdf3ff68f251ea0a35a1ed60bb69beca28e7561fdef339cd"
+        },
+        {
+          "sourceActionId": "hub:yamato-hospital:honcho-public-street-ou54-stop-access",
+          "url": "https://tokyoyamato-hp.com/wp-uploads/img_access_map.png",
+          "observedResponseSha256": "1939a764812498308771262c58d926b15d0b459b13ef85c85e1569546ae4c80f"
+        },
+        {
+          "sourceActionId": "hub:yamato-hospital:honcho-public-street-ou54-stop-access",
+          "url": "https://tokyoyamato-hp.com/wp-uploads/img_access_a2.jpg",
+          "observedResponseSha256": "159ac225774686d14e229642b3cea73d119fe7249ff8dcd6e17a5801727b33a4"
+        }
+      ],
+      "locator": "Municipal station page explicitly identifies Ou54 Kamiitabashi/Oji access from the Kannana Yamatocho stop, separate from Nakasendo stops. Independently viewed current neighboring hospital map and access text identify east-side public station exits A1/A2 and Kannana stops b toward Oji/c toward Kamiitabashi. Public crossing between A1 and A2 is explicitly described; bus approaches follow the public Kannana street. The hospital is a primary local-access publisher, not a transfer node or an internal shortcut. Bind only the P11 Kokusai Kogyo representative with Ou54 context, excluding colocated Toei and joint Kanto road-stop records. No precise curb, paid-area equivalence, walking time or universal step-free guarantee.",
+      "components": [
+        {
+          "name": "大和町",
+          "operator": "国際興業（株）",
+          "line": "p11-stop:P11-22_13:bs1812",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1812",
+            "recordSha256": "4f4f4b06c9a1e8de1f65b114419b4dcf2432e3a627fee3e85f9a4f4725fd44b8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Kokusai Kogyo road-stop representative and historical Ou54/54-2 context matched to independently viewed Ou54 directional tables. General public passenger service, current corridor corroborated by municipal, school and neighboring-facility publications. Geographic qualifiers in published Central-dori, Fujimicho and Yamatocho labels are explicitly reviewed; same-name municipal/Toei/joint Kanto stops excluded. No precise curb, pole, paid area or automatic transfer. Historical canonical source name remains stable; reviewed current public naming is separate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "国際興業（株）",
+              "currentOperatorName": "国際興業株式会社",
+              "currentStopName": "大和町",
+              "historicalRoute": "王54/54-2",
+              "url": "https://www.tokyobus.or.jp/app/navi/navitime2/lineval/2683_6898_19_1507_1/pageID/1/stop_id/2683",
+              "observedResponseSha256": "b79c7647ac6a1b9cc336299004ceb7145e7efedddb62062905afd5f004e027ec"
+            }
+          }
+        },
+        {
+          "name": "板橋本町",
+          "operator": "東京都",
+          "line": "6号線三田線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "MUNICIPAL_EXPLICIT_RAIL_BUS_CONNECTION_AND_PRIMARY_PUBLIC_STREET_EXITS",
+      "hubScopeComplete": false
+    }
+  ]
+}

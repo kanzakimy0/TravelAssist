@@ -1,0 +1,3339 @@
+{
+  "phaseId": "028-tokyo-metro-network",
+  "strategy": [
+    "TOKYO_METRO_OFFICIAL_STOPPING_LIST",
+    "LOCAL_CLASS_AND_BRANCH_SPECIFIC_STATION_REVIEW",
+    "metro"
+  ],
+  "completedActionIds": [],
+  "facts": [
+    {
+      "factId": "chiyoda-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_chiyoda/index.html",
+      "observedResponseSha256": "c42272af6ef302c137435ffbba02569c7c8803e1dd009c0c74315e3367e4e729",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "9号線千代田線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "代々木上原",
+        "代々木公園",
+        "明治神宮前",
+        "表参道",
+        "乃木坂",
+        "赤坂",
+        "国会議事堂前",
+        "霞ケ関",
+        "日比谷",
+        "二重橋前",
+        "大手町",
+        "新御茶ノ水",
+        "湯島",
+        "根津",
+        "千駄木",
+        "西日暮里",
+        "町屋",
+        "北千住",
+        "綾瀬",
+        "北綾瀬"
+      ],
+      "callingComponents": [
+        {
+          "name": "代々木上原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "代々木公園",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "明治神宮前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "表参道",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "乃木坂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "赤坂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "国会議事堂前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "霞ヶ関",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "霞ケ関",
+            "stationCode": "003820",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "日比谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "二重橋前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "新御茶ノ水",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "湯島",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "根津",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "千駄木",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "西日暮里",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "町屋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "北千住",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "綾瀬",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "北綾瀬",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "代々木上原",
+          "publishedDisplayName": "代々木上原",
+          "stationPage": "https://www.tokyometro.jp/station/yoyogi-uehara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "代々木公園",
+          "publishedDisplayName": "代々木公園",
+          "stationPage": "https://www.tokyometro.jp/station/yoyogi-koen/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "明治神宮前",
+          "publishedDisplayName": "明治神宮前〈原宿〉",
+          "stationPage": "https://www.tokyometro.jp/station/meiji-jingumae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "表参道",
+          "publishedDisplayName": "表参道",
+          "stationPage": "https://www.tokyometro.jp/station/omote-sando/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "乃木坂",
+          "publishedDisplayName": "乃木坂",
+          "stationPage": "https://www.tokyometro.jp/station/nogizaka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "赤坂",
+          "publishedDisplayName": "赤坂",
+          "stationPage": "https://www.tokyometro.jp/station/akasaka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "国会議事堂前",
+          "publishedDisplayName": "国会議事堂前",
+          "stationPage": "https://www.tokyometro.jp/station/kokkai-gijidomae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "霞ケ関",
+          "publishedDisplayName": "霞ケ関",
+          "stationPage": "https://www.tokyometro.jp/station/kasumigaseki/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "日比谷",
+          "publishedDisplayName": "日比谷",
+          "stationPage": "https://www.tokyometro.jp/station/hibiya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "二重橋前",
+          "publishedDisplayName": "二重橋前〈丸の内〉",
+          "stationPage": "https://www.tokyometro.jp/station/nijubashimae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "大手町",
+          "publishedDisplayName": "大手町",
+          "stationPage": "https://www.tokyometro.jp/station/otemachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新御茶ノ水",
+          "publishedDisplayName": "新御茶ノ水",
+          "stationPage": "https://www.tokyometro.jp/station/shin-ochanomizu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "湯島",
+          "publishedDisplayName": "湯島",
+          "stationPage": "https://www.tokyometro.jp/station/yushima/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "根津",
+          "publishedDisplayName": "根津",
+          "stationPage": "https://www.tokyometro.jp/station/nezu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "千駄木",
+          "publishedDisplayName": "千駄木",
+          "stationPage": "https://www.tokyometro.jp/station/sendagi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西日暮里",
+          "publishedDisplayName": "西日暮里",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-nippori/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "町屋",
+          "publishedDisplayName": "町屋",
+          "stationPage": "https://www.tokyometro.jp/station/machiya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "北千住",
+          "publishedDisplayName": "北千住",
+          "stationPage": "https://www.tokyometro.jp/station/kita-senju/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "綾瀬",
+          "publishedDisplayName": "綾瀬",
+          "stationPage": "https://www.tokyometro.jp/station/ayase/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "北綾瀬",
+          "publishedDisplayName": "北綾瀬",
+          "stationPage": "https://www.tokyometro.jp/station/kita-ayase/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "chiyoda-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_chiyoda/index.html",
+      "observedResponseSha256": "c42272af6ef302c137435ffbba02569c7c8803e1dd009c0c74315e3367e4e729",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "9号線千代田線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "北綾瀬",
+        "綾瀬",
+        "北千住",
+        "町屋",
+        "西日暮里",
+        "千駄木",
+        "根津",
+        "湯島",
+        "新御茶ノ水",
+        "大手町",
+        "二重橋前",
+        "日比谷",
+        "霞ケ関",
+        "国会議事堂前",
+        "赤坂",
+        "乃木坂",
+        "表参道",
+        "明治神宮前",
+        "代々木公園",
+        "代々木上原"
+      ],
+      "callingComponents": [
+        {
+          "name": "北綾瀬",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "綾瀬",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "北千住",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "町屋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "西日暮里",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "千駄木",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "根津",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "湯島",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "新御茶ノ水",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "二重橋前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "日比谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "霞ヶ関",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "霞ケ関",
+            "stationCode": "003820",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "国会議事堂前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "赤坂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "乃木坂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "表参道",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "明治神宮前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "代々木公園",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        },
+        {
+          "name": "代々木上原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "9号線千代田線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "北綾瀬",
+          "publishedDisplayName": "北綾瀬",
+          "stationPage": "https://www.tokyometro.jp/station/kita-ayase/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "綾瀬",
+          "publishedDisplayName": "綾瀬",
+          "stationPage": "https://www.tokyometro.jp/station/ayase/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "北千住",
+          "publishedDisplayName": "北千住",
+          "stationPage": "https://www.tokyometro.jp/station/kita-senju/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "町屋",
+          "publishedDisplayName": "町屋",
+          "stationPage": "https://www.tokyometro.jp/station/machiya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西日暮里",
+          "publishedDisplayName": "西日暮里",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-nippori/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "千駄木",
+          "publishedDisplayName": "千駄木",
+          "stationPage": "https://www.tokyometro.jp/station/sendagi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "根津",
+          "publishedDisplayName": "根津",
+          "stationPage": "https://www.tokyometro.jp/station/nezu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "湯島",
+          "publishedDisplayName": "湯島",
+          "stationPage": "https://www.tokyometro.jp/station/yushima/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新御茶ノ水",
+          "publishedDisplayName": "新御茶ノ水",
+          "stationPage": "https://www.tokyometro.jp/station/shin-ochanomizu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "大手町",
+          "publishedDisplayName": "大手町",
+          "stationPage": "https://www.tokyometro.jp/station/otemachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "二重橋前",
+          "publishedDisplayName": "二重橋前〈丸の内〉",
+          "stationPage": "https://www.tokyometro.jp/station/nijubashimae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "日比谷",
+          "publishedDisplayName": "日比谷",
+          "stationPage": "https://www.tokyometro.jp/station/hibiya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "霞ケ関",
+          "publishedDisplayName": "霞ケ関",
+          "stationPage": "https://www.tokyometro.jp/station/kasumigaseki/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "国会議事堂前",
+          "publishedDisplayName": "国会議事堂前",
+          "stationPage": "https://www.tokyometro.jp/station/kokkai-gijidomae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "赤坂",
+          "publishedDisplayName": "赤坂",
+          "stationPage": "https://www.tokyometro.jp/station/akasaka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "乃木坂",
+          "publishedDisplayName": "乃木坂",
+          "stationPage": "https://www.tokyometro.jp/station/nogizaka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "表参道",
+          "publishedDisplayName": "表参道",
+          "stationPage": "https://www.tokyometro.jp/station/omote-sando/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "明治神宮前",
+          "publishedDisplayName": "明治神宮前〈原宿〉",
+          "stationPage": "https://www.tokyometro.jp/station/meiji-jingumae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "代々木公園",
+          "publishedDisplayName": "代々木公園",
+          "stationPage": "https://www.tokyometro.jp/station/yoyogi-koen/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "代々木上原",
+          "publishedDisplayName": "代々木上原",
+          "stationPage": "https://www.tokyometro.jp/station/yoyogi-uehara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "yurakucho-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_yurakucho/index.html",
+      "observedResponseSha256": "4d64406f8062fc371ea753bc60951c0e2766d1caf5ce3df21cf276cb9476656b",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "8号線有楽町線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "和光市",
+        "地下鉄成増",
+        "地下鉄赤塚",
+        "平和台",
+        "氷川台",
+        "小竹向原",
+        "千川",
+        "要町",
+        "池袋",
+        "東池袋",
+        "護国寺",
+        "江戸川橋",
+        "飯田橋",
+        "市ケ谷",
+        "麹町",
+        "永田町",
+        "桜田門",
+        "有楽町",
+        "銀座一丁目",
+        "新富町",
+        "月島",
+        "豊洲",
+        "辰巳",
+        "新木場"
+      ],
+      "callingComponents": [
+        {
+          "name": "和光市",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄成増",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄赤塚",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "平和台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "氷川台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "小竹向原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "千川",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "要町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "池袋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "東池袋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "護国寺",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "江戸川橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "市ヶ谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "市ケ谷",
+            "stationCode": "003671",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "麹町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "桜田門",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "有楽町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "銀座一丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "新富町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "月島",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "豊洲",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "辰巳",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "新木場",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "和光市",
+          "publishedDisplayName": "和光市",
+          "stationPage": "https://www.tokyometro.jp/station/wakoshi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄成増",
+          "publishedDisplayName": "地下鉄成増",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-narimasu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄赤塚",
+          "publishedDisplayName": "地下鉄赤塚",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-akatsuka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "平和台",
+          "publishedDisplayName": "平和台",
+          "stationPage": "https://www.tokyometro.jp/station/heiwadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "氷川台",
+          "publishedDisplayName": "氷川台",
+          "stationPage": "https://www.tokyometro.jp/station/hikawadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "小竹向原",
+          "publishedDisplayName": "小竹向原",
+          "stationPage": "https://www.tokyometro.jp/station/kotake-mukaihara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "千川",
+          "publishedDisplayName": "千川",
+          "stationPage": "https://www.tokyometro.jp/station/senkawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "要町",
+          "publishedDisplayName": "要町",
+          "stationPage": "https://www.tokyometro.jp/station/kanamecho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "池袋",
+          "publishedDisplayName": "池袋",
+          "stationPage": "https://www.tokyometro.jp/station/ikebukuro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東池袋",
+          "publishedDisplayName": "東池袋",
+          "stationPage": "https://www.tokyometro.jp/station/higashi-ikebukuro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "護国寺",
+          "publishedDisplayName": "護国寺",
+          "stationPage": "https://www.tokyometro.jp/station/gokokuji/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "江戸川橋",
+          "publishedDisplayName": "江戸川橋",
+          "stationPage": "https://www.tokyometro.jp/station/edogawabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "飯田橋",
+          "publishedDisplayName": "飯田橋",
+          "stationPage": "https://www.tokyometro.jp/station/iidabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "市ケ谷",
+          "publishedDisplayName": "市ケ谷",
+          "stationPage": "https://www.tokyometro.jp/station/ichigaya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "麹町",
+          "publishedDisplayName": "麹町",
+          "stationPage": "https://www.tokyometro.jp/station/kojimachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "永田町",
+          "publishedDisplayName": "永田町",
+          "stationPage": "https://www.tokyometro.jp/station/nagatacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "桜田門",
+          "publishedDisplayName": "桜田門",
+          "stationPage": "https://www.tokyometro.jp/station/sakuradamon/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "有楽町",
+          "publishedDisplayName": "有楽町",
+          "stationPage": "https://www.tokyometro.jp/station/yurakucho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "銀座一丁目",
+          "publishedDisplayName": "銀座一丁目",
+          "stationPage": "https://www.tokyometro.jp/station/ginza-itchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新富町",
+          "publishedDisplayName": "新富町",
+          "stationPage": "https://www.tokyometro.jp/station/shintomicho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "月島",
+          "publishedDisplayName": "月島",
+          "stationPage": "https://www.tokyometro.jp/station/tsukishima/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "豊洲",
+          "publishedDisplayName": "豊洲",
+          "stationPage": "https://www.tokyometro.jp/station/toyosu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "辰巳",
+          "publishedDisplayName": "辰巳",
+          "stationPage": "https://www.tokyometro.jp/station/tatsumi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新木場",
+          "publishedDisplayName": "新木場",
+          "stationPage": "https://www.tokyometro.jp/station/shin-kiba/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "yurakucho-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_yurakucho/index.html",
+      "observedResponseSha256": "4d64406f8062fc371ea753bc60951c0e2766d1caf5ce3df21cf276cb9476656b",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "8号線有楽町線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "新木場",
+        "辰巳",
+        "豊洲",
+        "月島",
+        "新富町",
+        "銀座一丁目",
+        "有楽町",
+        "桜田門",
+        "永田町",
+        "麹町",
+        "市ケ谷",
+        "飯田橋",
+        "江戸川橋",
+        "護国寺",
+        "東池袋",
+        "池袋",
+        "要町",
+        "千川",
+        "小竹向原",
+        "氷川台",
+        "平和台",
+        "地下鉄赤塚",
+        "地下鉄成増",
+        "和光市"
+      ],
+      "callingComponents": [
+        {
+          "name": "新木場",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "辰巳",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "豊洲",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "月島",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "新富町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "銀座一丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "有楽町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "桜田門",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "麹町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "市ヶ谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "市ケ谷",
+            "stationCode": "003671",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "江戸川橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "護国寺",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "東池袋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "池袋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "要町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "千川",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "小竹向原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "氷川台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "平和台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄赤塚",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄成増",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "和光市",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "新木場",
+          "publishedDisplayName": "新木場",
+          "stationPage": "https://www.tokyometro.jp/station/shin-kiba/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "辰巳",
+          "publishedDisplayName": "辰巳",
+          "stationPage": "https://www.tokyometro.jp/station/tatsumi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "豊洲",
+          "publishedDisplayName": "豊洲",
+          "stationPage": "https://www.tokyometro.jp/station/toyosu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "月島",
+          "publishedDisplayName": "月島",
+          "stationPage": "https://www.tokyometro.jp/station/tsukishima/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新富町",
+          "publishedDisplayName": "新富町",
+          "stationPage": "https://www.tokyometro.jp/station/shintomicho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "銀座一丁目",
+          "publishedDisplayName": "銀座一丁目",
+          "stationPage": "https://www.tokyometro.jp/station/ginza-itchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "有楽町",
+          "publishedDisplayName": "有楽町",
+          "stationPage": "https://www.tokyometro.jp/station/yurakucho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "桜田門",
+          "publishedDisplayName": "桜田門",
+          "stationPage": "https://www.tokyometro.jp/station/sakuradamon/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "永田町",
+          "publishedDisplayName": "永田町",
+          "stationPage": "https://www.tokyometro.jp/station/nagatacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "麹町",
+          "publishedDisplayName": "麹町",
+          "stationPage": "https://www.tokyometro.jp/station/kojimachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "市ケ谷",
+          "publishedDisplayName": "市ケ谷",
+          "stationPage": "https://www.tokyometro.jp/station/ichigaya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "飯田橋",
+          "publishedDisplayName": "飯田橋",
+          "stationPage": "https://www.tokyometro.jp/station/iidabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "江戸川橋",
+          "publishedDisplayName": "江戸川橋",
+          "stationPage": "https://www.tokyometro.jp/station/edogawabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "護国寺",
+          "publishedDisplayName": "護国寺",
+          "stationPage": "https://www.tokyometro.jp/station/gokokuji/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東池袋",
+          "publishedDisplayName": "東池袋",
+          "stationPage": "https://www.tokyometro.jp/station/higashi-ikebukuro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "池袋",
+          "publishedDisplayName": "池袋",
+          "stationPage": "https://www.tokyometro.jp/station/ikebukuro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "要町",
+          "publishedDisplayName": "要町",
+          "stationPage": "https://www.tokyometro.jp/station/kanamecho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "千川",
+          "publishedDisplayName": "千川",
+          "stationPage": "https://www.tokyometro.jp/station/senkawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "小竹向原",
+          "publishedDisplayName": "小竹向原",
+          "stationPage": "https://www.tokyometro.jp/station/kotake-mukaihara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "氷川台",
+          "publishedDisplayName": "氷川台",
+          "stationPage": "https://www.tokyometro.jp/station/hikawadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "平和台",
+          "publishedDisplayName": "平和台",
+          "stationPage": "https://www.tokyometro.jp/station/heiwadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄赤塚",
+          "publishedDisplayName": "地下鉄赤塚",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-akatsuka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄成増",
+          "publishedDisplayName": "地下鉄成増",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-narimasu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "和光市",
+          "publishedDisplayName": "和光市",
+          "stationPage": "https://www.tokyometro.jp/station/wakoshi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "hanzomon-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hanzomon/index.html",
+      "observedResponseSha256": "822ee6e6986921f53ff320d33df2eb3187a1fcadba82046a373f52ab6abfe5a2",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "11号線半蔵門線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "渋谷",
+        "表参道",
+        "青山一丁目",
+        "永田町",
+        "半蔵門",
+        "九段下",
+        "神保町",
+        "大手町",
+        "三越前",
+        "水天宮前",
+        "清澄白河",
+        "住吉",
+        "錦糸町",
+        "押上"
+      ],
+      "callingComponents": [
+        {
+          "name": "渋谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "表参道",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "青山一丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "半蔵門",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "九段下",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "神保町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "三越前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "水天宮前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "清澄白河",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "住吉",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "錦糸町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "押上",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "渋谷",
+          "publishedDisplayName": "渋谷",
+          "stationPage": "https://www.tokyometro.jp/station/shibuya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "表参道",
+          "publishedDisplayName": "表参道",
+          "stationPage": "https://www.tokyometro.jp/station/omote-sando/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "青山一丁目",
+          "publishedDisplayName": "青山一丁目",
+          "stationPage": "https://www.tokyometro.jp/station/aoyama-itchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "永田町",
+          "publishedDisplayName": "永田町",
+          "stationPage": "https://www.tokyometro.jp/station/nagatacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "半蔵門",
+          "publishedDisplayName": "半蔵門",
+          "stationPage": "https://www.tokyometro.jp/station/hanzomon/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "九段下",
+          "publishedDisplayName": "九段下",
+          "stationPage": "https://www.tokyometro.jp/station/kudanshita/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "神保町",
+          "publishedDisplayName": "神保町",
+          "stationPage": "https://www.tokyometro.jp/station/jimbocho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "大手町",
+          "publishedDisplayName": "大手町",
+          "stationPage": "https://www.tokyometro.jp/station/otemachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "三越前",
+          "publishedDisplayName": "三越前",
+          "stationPage": "https://www.tokyometro.jp/station/mitsukoshimae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "水天宮前",
+          "publishedDisplayName": "水天宮前",
+          "stationPage": "https://www.tokyometro.jp/station/suitengumae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "清澄白河",
+          "publishedDisplayName": "清澄白河",
+          "stationPage": "https://www.tokyometro.jp/station/kiyosumi-shirakawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "住吉",
+          "publishedDisplayName": "住吉",
+          "stationPage": "https://www.tokyometro.jp/station/sumiyoshi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "錦糸町",
+          "publishedDisplayName": "錦糸町",
+          "stationPage": "https://www.tokyometro.jp/station/kinshicho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "押上",
+          "publishedDisplayName": "押上〈スカイツリー前〉",
+          "stationPage": "https://www.tokyometro.jp/station/oshiage/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "hanzomon-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hanzomon/index.html",
+      "observedResponseSha256": "822ee6e6986921f53ff320d33df2eb3187a1fcadba82046a373f52ab6abfe5a2",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "11号線半蔵門線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "押上",
+        "錦糸町",
+        "住吉",
+        "清澄白河",
+        "水天宮前",
+        "三越前",
+        "大手町",
+        "神保町",
+        "九段下",
+        "半蔵門",
+        "永田町",
+        "青山一丁目",
+        "表参道",
+        "渋谷"
+      ],
+      "callingComponents": [
+        {
+          "name": "押上",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "錦糸町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "住吉",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "清澄白河",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "水天宮前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "三越前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "神保町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "九段下",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "半蔵門",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "青山一丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "表参道",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "11号線半蔵門線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "押上",
+          "publishedDisplayName": "押上〈スカイツリー前〉",
+          "stationPage": "https://www.tokyometro.jp/station/oshiage/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "錦糸町",
+          "publishedDisplayName": "錦糸町",
+          "stationPage": "https://www.tokyometro.jp/station/kinshicho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "住吉",
+          "publishedDisplayName": "住吉",
+          "stationPage": "https://www.tokyometro.jp/station/sumiyoshi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "清澄白河",
+          "publishedDisplayName": "清澄白河",
+          "stationPage": "https://www.tokyometro.jp/station/kiyosumi-shirakawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "水天宮前",
+          "publishedDisplayName": "水天宮前",
+          "stationPage": "https://www.tokyometro.jp/station/suitengumae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "三越前",
+          "publishedDisplayName": "三越前",
+          "stationPage": "https://www.tokyometro.jp/station/mitsukoshimae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "大手町",
+          "publishedDisplayName": "大手町",
+          "stationPage": "https://www.tokyometro.jp/station/otemachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "神保町",
+          "publishedDisplayName": "神保町",
+          "stationPage": "https://www.tokyometro.jp/station/jimbocho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "九段下",
+          "publishedDisplayName": "九段下",
+          "stationPage": "https://www.tokyometro.jp/station/kudanshita/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "半蔵門",
+          "publishedDisplayName": "半蔵門",
+          "stationPage": "https://www.tokyometro.jp/station/hanzomon/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "永田町",
+          "publishedDisplayName": "永田町",
+          "stationPage": "https://www.tokyometro.jp/station/nagatacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "青山一丁目",
+          "publishedDisplayName": "青山一丁目",
+          "stationPage": "https://www.tokyometro.jp/station/aoyama-itchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "表参道",
+          "publishedDisplayName": "表参道",
+          "stationPage": "https://www.tokyometro.jp/station/omote-sando/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "渋谷",
+          "publishedDisplayName": "渋谷",
+          "stationPage": "https://www.tokyometro.jp/station/shibuya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "namboku-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_namboku/index.html",
+      "observedResponseSha256": "79485e5d0a5639a36538c3b6955d6b34a5adeea6d231b2c89292c5e8f1395f23",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "7号線南北線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "目黒",
+        "白金台",
+        "白金高輪",
+        "麻布十番",
+        "六本木一丁目",
+        "溜池山王",
+        "永田町",
+        "四ツ谷",
+        "市ケ谷",
+        "飯田橋",
+        "後楽園",
+        "東大前",
+        "本駒込",
+        "駒込",
+        "西ケ原",
+        "王子",
+        "王子神谷",
+        "志茂",
+        "赤羽岩淵"
+      ],
+      "callingComponents": [
+        {
+          "name": "目黒",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "白金台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "白金高輪",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "麻布十番",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "六本木一丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "溜池山王",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "四ツ谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "市ヶ谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "市ケ谷",
+            "stationCode": "003670",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "後楽園",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "東大前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "本駒込",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "駒込",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "西ヶ原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "西ケ原",
+            "stationCode": "003279",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "王子",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "王子神谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "志茂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "赤羽岩淵",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "目黒",
+          "publishedDisplayName": "目黒",
+          "stationPage": "https://www.tokyometro.jp/station/meguro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "白金台",
+          "publishedDisplayName": "白金台",
+          "stationPage": "https://www.tokyometro.jp/station/shirokanedai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "白金高輪",
+          "publishedDisplayName": "白金高輪",
+          "stationPage": "https://www.tokyometro.jp/station/shirokane-takanawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "麻布十番",
+          "publishedDisplayName": "麻布十番",
+          "stationPage": "https://www.tokyometro.jp/station/azabu-juban/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "六本木一丁目",
+          "publishedDisplayName": "六本木一丁目",
+          "stationPage": "https://www.tokyometro.jp/station/roppongi-itchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "溜池山王",
+          "publishedDisplayName": "溜池山王",
+          "stationPage": "https://www.tokyometro.jp/station/tameike-sanno/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "永田町",
+          "publishedDisplayName": "永田町",
+          "stationPage": "https://www.tokyometro.jp/station/nagatacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "四ツ谷",
+          "publishedDisplayName": "四ツ谷",
+          "stationPage": "https://www.tokyometro.jp/station/yotsuya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "市ケ谷",
+          "publishedDisplayName": "市ケ谷",
+          "stationPage": "https://www.tokyometro.jp/station/ichigaya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "飯田橋",
+          "publishedDisplayName": "飯田橋",
+          "stationPage": "https://www.tokyometro.jp/station/iidabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "後楽園",
+          "publishedDisplayName": "後楽園",
+          "stationPage": "https://www.tokyometro.jp/station/korakuen/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東大前",
+          "publishedDisplayName": "東大前",
+          "stationPage": "https://www.tokyometro.jp/station/todaimae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "本駒込",
+          "publishedDisplayName": "本駒込",
+          "stationPage": "https://www.tokyometro.jp/station/hon-komagome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "駒込",
+          "publishedDisplayName": "駒込",
+          "stationPage": "https://www.tokyometro.jp/station/komagome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西ケ原",
+          "publishedDisplayName": "西ケ原",
+          "stationPage": "https://www.tokyometro.jp/station/nishigahara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "王子",
+          "publishedDisplayName": "王子",
+          "stationPage": "https://www.tokyometro.jp/station/oji/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "王子神谷",
+          "publishedDisplayName": "王子神谷",
+          "stationPage": "https://www.tokyometro.jp/station/oji-kamiya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "志茂",
+          "publishedDisplayName": "志茂",
+          "stationPage": "https://www.tokyometro.jp/station/shimo/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "赤羽岩淵",
+          "publishedDisplayName": "赤羽岩淵",
+          "stationPage": "https://www.tokyometro.jp/station/akabane-iwabuchi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "namboku-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_namboku/index.html",
+      "observedResponseSha256": "79485e5d0a5639a36538c3b6955d6b34a5adeea6d231b2c89292c5e8f1395f23",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "7号線南北線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "赤羽岩淵",
+        "志茂",
+        "王子神谷",
+        "王子",
+        "西ケ原",
+        "駒込",
+        "本駒込",
+        "東大前",
+        "後楽園",
+        "飯田橋",
+        "市ケ谷",
+        "四ツ谷",
+        "永田町",
+        "溜池山王",
+        "六本木一丁目",
+        "麻布十番",
+        "白金高輪",
+        "白金台",
+        "目黒"
+      ],
+      "callingComponents": [
+        {
+          "name": "赤羽岩淵",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "志茂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "王子神谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "王子",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "西ヶ原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "西ケ原",
+            "stationCode": "003279",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "駒込",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "本駒込",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "東大前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "後楽園",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "市ヶ谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "市ケ谷",
+            "stationCode": "003670",
+            "review": "Operator public station name and S12 exact station code/operator/line differ only in Japanese small-ke orthography."
+          }
+        },
+        {
+          "name": "四ツ谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "溜池山王",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "六本木一丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "麻布十番",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "白金高輪",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "白金台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        },
+        {
+          "name": "目黒",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "7号線南北線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "赤羽岩淵",
+          "publishedDisplayName": "赤羽岩淵",
+          "stationPage": "https://www.tokyometro.jp/station/akabane-iwabuchi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "志茂",
+          "publishedDisplayName": "志茂",
+          "stationPage": "https://www.tokyometro.jp/station/shimo/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "王子神谷",
+          "publishedDisplayName": "王子神谷",
+          "stationPage": "https://www.tokyometro.jp/station/oji-kamiya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "王子",
+          "publishedDisplayName": "王子",
+          "stationPage": "https://www.tokyometro.jp/station/oji/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西ケ原",
+          "publishedDisplayName": "西ケ原",
+          "stationPage": "https://www.tokyometro.jp/station/nishigahara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "駒込",
+          "publishedDisplayName": "駒込",
+          "stationPage": "https://www.tokyometro.jp/station/komagome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "本駒込",
+          "publishedDisplayName": "本駒込",
+          "stationPage": "https://www.tokyometro.jp/station/hon-komagome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東大前",
+          "publishedDisplayName": "東大前",
+          "stationPage": "https://www.tokyometro.jp/station/todaimae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "後楽園",
+          "publishedDisplayName": "後楽園",
+          "stationPage": "https://www.tokyometro.jp/station/korakuen/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "飯田橋",
+          "publishedDisplayName": "飯田橋",
+          "stationPage": "https://www.tokyometro.jp/station/iidabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "市ケ谷",
+          "publishedDisplayName": "市ケ谷",
+          "stationPage": "https://www.tokyometro.jp/station/ichigaya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "四ツ谷",
+          "publishedDisplayName": "四ツ谷",
+          "stationPage": "https://www.tokyometro.jp/station/yotsuya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "永田町",
+          "publishedDisplayName": "永田町",
+          "stationPage": "https://www.tokyometro.jp/station/nagatacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "溜池山王",
+          "publishedDisplayName": "溜池山王",
+          "stationPage": "https://www.tokyometro.jp/station/tameike-sanno/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "六本木一丁目",
+          "publishedDisplayName": "六本木一丁目",
+          "stationPage": "https://www.tokyometro.jp/station/roppongi-itchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "麻布十番",
+          "publishedDisplayName": "麻布十番",
+          "stationPage": "https://www.tokyometro.jp/station/azabu-juban/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "白金高輪",
+          "publishedDisplayName": "白金高輪",
+          "stationPage": "https://www.tokyometro.jp/station/shirokane-takanawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "白金台",
+          "publishedDisplayName": "白金台",
+          "stationPage": "https://www.tokyometro.jp/station/shirokanedai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "目黒",
+          "publishedDisplayName": "目黒",
+          "stationPage": "https://www.tokyometro.jp/station/meguro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "fukutoshin-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_fukutoshin/index.html",
+      "observedResponseSha256": "e8a63c4fd2a589adde809b2a7d36e44cce1bb0c262c79cbc863c25c8e82d3753",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "13号線副都心線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "和光市",
+        "地下鉄成増",
+        "地下鉄赤塚",
+        "平和台",
+        "氷川台",
+        "小竹向原",
+        "千川",
+        "要町",
+        "池袋",
+        "雑司が谷",
+        "西早稲田",
+        "東新宿",
+        "新宿三丁目",
+        "北参道",
+        "明治神宮前",
+        "渋谷"
+      ],
+      "callingComponents": [
+        {
+          "name": "和光市",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄成増",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄赤塚",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "平和台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "氷川台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "小竹向原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "千川",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "要町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "池袋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "雑司が谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "西早稲田",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "東新宿",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "新宿三丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "北参道",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "明治神宮前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "和光市",
+          "publishedDisplayName": "和光市",
+          "stationPage": "https://www.tokyometro.jp/station/wakoshi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄成増",
+          "publishedDisplayName": "地下鉄成増",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-narimasu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄赤塚",
+          "publishedDisplayName": "地下鉄赤塚",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-akatsuka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "平和台",
+          "publishedDisplayName": "平和台",
+          "stationPage": "https://www.tokyometro.jp/station/heiwadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "氷川台",
+          "publishedDisplayName": "氷川台",
+          "stationPage": "https://www.tokyometro.jp/station/hikawadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "小竹向原",
+          "publishedDisplayName": "小竹向原",
+          "stationPage": "https://www.tokyometro.jp/station/kotake-mukaihara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "千川",
+          "publishedDisplayName": "千川",
+          "stationPage": "https://www.tokyometro.jp/station/senkawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "要町",
+          "publishedDisplayName": "要町",
+          "stationPage": "https://www.tokyometro.jp/station/kanamecho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "池袋",
+          "publishedDisplayName": "池袋",
+          "stationPage": "https://www.tokyometro.jp/station/ikebukuro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "雑司が谷",
+          "publishedDisplayName": "雑司が谷",
+          "stationPage": "https://www.tokyometro.jp/station/zoshigaya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西早稲田",
+          "publishedDisplayName": "西早稲田",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-waseda/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東新宿",
+          "publishedDisplayName": "東新宿",
+          "stationPage": "https://www.tokyometro.jp/station/higashi-shinjuku/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新宿三丁目",
+          "publishedDisplayName": "新宿三丁目",
+          "stationPage": "https://www.tokyometro.jp/station/shinjuku-sanchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "北参道",
+          "publishedDisplayName": "北参道",
+          "stationPage": "https://www.tokyometro.jp/station/kita-sando/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "明治神宮前",
+          "publishedDisplayName": "明治神宮前〈原宿〉",
+          "stationPage": "https://www.tokyometro.jp/station/meiji-jingumae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "渋谷",
+          "publishedDisplayName": "渋谷",
+          "stationPage": "https://www.tokyometro.jp/station/shibuya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "fukutoshin-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_fukutoshin/index.html",
+      "observedResponseSha256": "e8a63c4fd2a589adde809b2a7d36e44cce1bb0c262c79cbc863c25c8e82d3753",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "13号線副都心線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "渋谷",
+        "明治神宮前",
+        "北参道",
+        "新宿三丁目",
+        "東新宿",
+        "西早稲田",
+        "雑司が谷",
+        "池袋",
+        "要町",
+        "千川",
+        "小竹向原",
+        "氷川台",
+        "平和台",
+        "地下鉄赤塚",
+        "地下鉄成増",
+        "和光市"
+      ],
+      "callingComponents": [
+        {
+          "name": "渋谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "明治神宮前",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "北参道",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "新宿三丁目",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "東新宿",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "西早稲田",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "雑司が谷",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "池袋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "要町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "千川",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "小竹向原",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "13号線副都心線"
+        },
+        {
+          "name": "氷川台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "平和台",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄赤塚",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "地下鉄成増",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        },
+        {
+          "name": "和光市",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "8号線有楽町線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "渋谷",
+          "publishedDisplayName": "渋谷",
+          "stationPage": "https://www.tokyometro.jp/station/shibuya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "明治神宮前",
+          "publishedDisplayName": "明治神宮前〈原宿〉",
+          "stationPage": "https://www.tokyometro.jp/station/meiji-jingumae/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "北参道",
+          "publishedDisplayName": "北参道",
+          "stationPage": "https://www.tokyometro.jp/station/kita-sando/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "新宿三丁目",
+          "publishedDisplayName": "新宿三丁目",
+          "stationPage": "https://www.tokyometro.jp/station/shinjuku-sanchome/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東新宿",
+          "publishedDisplayName": "東新宿",
+          "stationPage": "https://www.tokyometro.jp/station/higashi-shinjuku/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西早稲田",
+          "publishedDisplayName": "西早稲田",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-waseda/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "雑司が谷",
+          "publishedDisplayName": "雑司が谷",
+          "stationPage": "https://www.tokyometro.jp/station/zoshigaya/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "池袋",
+          "publishedDisplayName": "池袋",
+          "stationPage": "https://www.tokyometro.jp/station/ikebukuro/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "要町",
+          "publishedDisplayName": "要町",
+          "stationPage": "https://www.tokyometro.jp/station/kanamecho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "千川",
+          "publishedDisplayName": "千川",
+          "stationPage": "https://www.tokyometro.jp/station/senkawa/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "小竹向原",
+          "publishedDisplayName": "小竹向原",
+          "stationPage": "https://www.tokyometro.jp/station/kotake-mukaihara/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "氷川台",
+          "publishedDisplayName": "氷川台",
+          "stationPage": "https://www.tokyometro.jp/station/hikawadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "平和台",
+          "publishedDisplayName": "平和台",
+          "stationPage": "https://www.tokyometro.jp/station/heiwadai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄赤塚",
+          "publishedDisplayName": "地下鉄赤塚",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-akatsuka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "地下鉄成増",
+          "publishedDisplayName": "地下鉄成増",
+          "stationPage": "https://www.tokyometro.jp/station/chikatetsu-narimasu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "和光市",
+          "publishedDisplayName": "和光市",
+          "stationPage": "https://www.tokyometro.jp/station/wakoshi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "tozai-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_tozai/index.html",
+      "observedResponseSha256": "44abf8795d2be09fba51f0cac13bc896f9258306651ab5b111a1f1c5b373b605",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "5号線東西線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "中野",
+        "落合",
+        "高田馬場",
+        "早稲田",
+        "神楽坂",
+        "飯田橋",
+        "九段下",
+        "竹橋",
+        "大手町",
+        "日本橋",
+        "茅場町",
+        "門前仲町",
+        "木場",
+        "東陽町",
+        "南砂町",
+        "西葛西",
+        "葛西",
+        "浦安",
+        "南行徳",
+        "行徳",
+        "妙典",
+        "原木中山",
+        "西船橋"
+      ],
+      "callingComponents": [
+        {
+          "name": "中野",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "落合",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "高田馬場",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "早稲田",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "神楽坂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "九段下",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "竹橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "日本橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "茅場町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "門前仲町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "木場",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "東陽町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "南砂町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "西葛西",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "葛西",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "浦安",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "南行徳",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "行徳",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "妙典",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "原木中山",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "西船橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "中野",
+          "publishedDisplayName": "中野",
+          "stationPage": "https://www.tokyometro.jp/station/nakano/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "落合",
+          "publishedDisplayName": "落合",
+          "stationPage": "https://www.tokyometro.jp/station/ochiai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "高田馬場",
+          "publishedDisplayName": "高田馬場",
+          "stationPage": "https://www.tokyometro.jp/station/takadanobaba/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "早稲田",
+          "publishedDisplayName": "早稲田",
+          "stationPage": "https://www.tokyometro.jp/station/waseda/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "神楽坂",
+          "publishedDisplayName": "神楽坂",
+          "stationPage": "https://www.tokyometro.jp/station/kagurazaka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "飯田橋",
+          "publishedDisplayName": "飯田橋",
+          "stationPage": "https://www.tokyometro.jp/station/iidabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "九段下",
+          "publishedDisplayName": "九段下",
+          "stationPage": "https://www.tokyometro.jp/station/kudanshita/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "竹橋",
+          "publishedDisplayName": "竹橋",
+          "stationPage": "https://www.tokyometro.jp/station/takebashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "大手町",
+          "publishedDisplayName": "大手町",
+          "stationPage": "https://www.tokyometro.jp/station/otemachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "日本橋",
+          "publishedDisplayName": "日本橋",
+          "stationPage": "https://www.tokyometro.jp/station/nihombashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "茅場町",
+          "publishedDisplayName": "茅場町",
+          "stationPage": "https://www.tokyometro.jp/station/kayabacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "門前仲町",
+          "publishedDisplayName": "門前仲町",
+          "stationPage": "https://www.tokyometro.jp/station/monzen-nakacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "木場",
+          "publishedDisplayName": "木場",
+          "stationPage": "https://www.tokyometro.jp/station/kiba/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東陽町",
+          "publishedDisplayName": "東陽町",
+          "stationPage": "https://www.tokyometro.jp/station/toyocho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "南砂町",
+          "publishedDisplayName": "南砂町",
+          "stationPage": "https://www.tokyometro.jp/station/minami-sunamachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西葛西",
+          "publishedDisplayName": "西葛西",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-kasai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "葛西",
+          "publishedDisplayName": "葛西",
+          "stationPage": "https://www.tokyometro.jp/station/kasai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "浦安",
+          "publishedDisplayName": "浦安",
+          "stationPage": "https://www.tokyometro.jp/station/urayasu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "南行徳",
+          "publishedDisplayName": "南行徳",
+          "stationPage": "https://www.tokyometro.jp/station/minami-gyotoku/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "行徳",
+          "publishedDisplayName": "行徳",
+          "stationPage": "https://www.tokyometro.jp/station/gyotoku/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "妙典",
+          "publishedDisplayName": "妙典",
+          "stationPage": "https://www.tokyometro.jp/station/myoden/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "原木中山",
+          "publishedDisplayName": "原木中山",
+          "stationPage": "https://www.tokyometro.jp/station/baraki-nakayama/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西船橋",
+          "publishedDisplayName": "西船橋",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-funabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "tozai-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_tozai/index.html",
+      "observedResponseSha256": "44abf8795d2be09fba51f0cac13bc896f9258306651ab5b111a1f1c5b373b605",
+      "locator": "Operator stopping-station list linked as 停車駅一覧 from station timetable pages. Review covers ordinary all-station service within Tokyo Metro only, in each published direction. Marunouchi main and branch are separate; no rapid/commuter rapid/S-TRAIN/TH-Liner/Romancecar stop union or through-operator continuation.",
+      "line": "5号線東西線",
+      "operator": "東京地下鉄",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "西船橋",
+        "原木中山",
+        "妙典",
+        "行徳",
+        "南行徳",
+        "浦安",
+        "葛西",
+        "西葛西",
+        "南砂町",
+        "東陽町",
+        "木場",
+        "門前仲町",
+        "茅場町",
+        "日本橋",
+        "大手町",
+        "竹橋",
+        "九段下",
+        "飯田橋",
+        "神楽坂",
+        "早稲田",
+        "高田馬場",
+        "落合",
+        "中野"
+      ],
+      "callingComponents": [
+        {
+          "name": "西船橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "原木中山",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "妙典",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "行徳",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "南行徳",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "浦安",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "葛西",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "西葛西",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "南砂町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "東陽町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "木場",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "門前仲町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "茅場町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "日本橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "竹橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "九段下",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "神楽坂",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "早稲田",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "高田馬場",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "落合",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        },
+        {
+          "name": "中野",
+          "operator": "東京地下鉄",
+          "mode": "metro",
+          "line": "5号線東西線"
+        }
+      ],
+      "reviewedStationNames": [
+        {
+          "name": "西船橋",
+          "publishedDisplayName": "西船橋",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-funabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "原木中山",
+          "publishedDisplayName": "原木中山",
+          "stationPage": "https://www.tokyometro.jp/station/baraki-nakayama/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "妙典",
+          "publishedDisplayName": "妙典",
+          "stationPage": "https://www.tokyometro.jp/station/myoden/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "行徳",
+          "publishedDisplayName": "行徳",
+          "stationPage": "https://www.tokyometro.jp/station/gyotoku/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "南行徳",
+          "publishedDisplayName": "南行徳",
+          "stationPage": "https://www.tokyometro.jp/station/minami-gyotoku/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "浦安",
+          "publishedDisplayName": "浦安",
+          "stationPage": "https://www.tokyometro.jp/station/urayasu/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "葛西",
+          "publishedDisplayName": "葛西",
+          "stationPage": "https://www.tokyometro.jp/station/kasai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "西葛西",
+          "publishedDisplayName": "西葛西",
+          "stationPage": "https://www.tokyometro.jp/station/nishi-kasai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "南砂町",
+          "publishedDisplayName": "南砂町",
+          "stationPage": "https://www.tokyometro.jp/station/minami-sunamachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "東陽町",
+          "publishedDisplayName": "東陽町",
+          "stationPage": "https://www.tokyometro.jp/station/toyocho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "木場",
+          "publishedDisplayName": "木場",
+          "stationPage": "https://www.tokyometro.jp/station/kiba/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "門前仲町",
+          "publishedDisplayName": "門前仲町",
+          "stationPage": "https://www.tokyometro.jp/station/monzen-nakacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "茅場町",
+          "publishedDisplayName": "茅場町",
+          "stationPage": "https://www.tokyometro.jp/station/kayabacho/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "日本橋",
+          "publishedDisplayName": "日本橋",
+          "stationPage": "https://www.tokyometro.jp/station/nihombashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "大手町",
+          "publishedDisplayName": "大手町",
+          "stationPage": "https://www.tokyometro.jp/station/otemachi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "竹橋",
+          "publishedDisplayName": "竹橋",
+          "stationPage": "https://www.tokyometro.jp/station/takebashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "九段下",
+          "publishedDisplayName": "九段下",
+          "stationPage": "https://www.tokyometro.jp/station/kudanshita/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "飯田橋",
+          "publishedDisplayName": "飯田橋",
+          "stationPage": "https://www.tokyometro.jp/station/iidabashi/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "神楽坂",
+          "publishedDisplayName": "神楽坂",
+          "stationPage": "https://www.tokyometro.jp/station/kagurazaka/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "早稲田",
+          "publishedDisplayName": "早稲田",
+          "stationPage": "https://www.tokyometro.jp/station/waseda/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "高田馬場",
+          "publishedDisplayName": "高田馬場",
+          "stationPage": "https://www.tokyometro.jp/station/takadanobaba/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "落合",
+          "publishedDisplayName": "落合",
+          "stationPage": "https://www.tokyometro.jp/station/ochiai/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        },
+        {
+          "name": "中野",
+          "publishedDisplayName": "中野",
+          "stationPage": "https://www.tokyometro.jp/station/nakano/index.html",
+          "review": "Literal base station name; bracketed landmark alias is recorded separately and is not a second station."
+        }
+      ],
+      "reviewMethod": "OFFICIAL_OPERATOR_LOCAL_STOP_LIST_WITH_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

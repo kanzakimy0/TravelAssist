@@ -1,0 +1,451 @@
+{
+  "phaseId": "101-seto-actual-directional-local-trains-and-two-hub-passages",
+  "strategy": [
+    "ACTUAL_SETO_LOCAL_TRAIN_COLUMNS_INDEPENDENT_DIRECTIONS",
+    "EXPLICIT_CURRENT_PUBLIC_COMPONENT_PASSAGES"
+  ],
+  "completedActionIds": [
+    "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+    "hub:nagoya:ozone-meitetsu-current-public-passage"
+  ],
+  "facts": [
+    {
+      "factId": "seto-ordinary-551",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_ST_W1.pdf",
+      "observedResponseSha256": "0a8c867e587ba3f1e74bc1c7fbcaaeb23f2401933fd403aba7de6ed9d43624ea",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+          "url": "https://www.meitetsu.co.jp/train/timetable/",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        },
+        {
+          "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line16/index.html",
+          "observedResponseSha256": "9bdaa379d266c10e041153af34a7744458a0b737049f85242183533dd1fe7504"
+        }
+      ],
+      "locator": "Current 2026-03-14 weekday PDF page 1, printed 104, upper table third actual train column 551. All station rows visually checked: ordinary full-route train with calls at each retained station; repeated Ozone and Kitayama arrival/departure rows collapsed. Source uses 尼ケ坂 glyph, explicitly matched to S12 station 005403 尼ヶ坂 under the same exact operator/line and surrounding Shimizu/Morishita stops; no generic fuzzy alias. Both directions reviewed independently, not inferred by reversing adjacency. No clock values or raw table retained.",
+      "line": "瀬戸線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "owarisetobound",
+      "trainCode": "551",
+      "callingStations": [
+        "栄町",
+        "東大手",
+        "清水",
+        "尼ヶ坂",
+        "森下",
+        "大曽根",
+        "矢田",
+        "守山自衛隊前",
+        "瓢箪山",
+        "小幡",
+        "喜多山",
+        "大森・金城学院前",
+        "印場",
+        "旭前",
+        "尾張旭",
+        "三郷",
+        "水野",
+        "新瀬戸",
+        "瀬戸市役所前",
+        "尾張瀬戸"
+      ],
+      "callingComponents": [
+        {
+          "name": "栄町",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東大手",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "清水",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼ヶ坂",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "森下",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "矢田",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "守山自衛隊前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "瓢箪山",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小幡",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "喜多山",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大森・金城学院前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "印場",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "旭前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尾張旭",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三郷",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "水野",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新瀬戸",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "瀬戸市役所前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尾張瀬戸",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_ORDINARY_TRAIN_COLUMN_ALL_STATION_ROWS_REVIEWED",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "seto-ordinary-550",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_ST_W2.pdf",
+      "observedResponseSha256": "a3e158278db5aa666b7d8765bbf00cb89b8066a38f78abf928b23210f1b1b5ae",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+          "url": "https://www.meitetsu.co.jp/train/timetable/",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        },
+        {
+          "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line16/index.html",
+          "observedResponseSha256": "9bdaa379d266c10e041153af34a7744458a0b737049f85242183533dd1fe7504"
+        }
+      ],
+      "locator": "Current 2026-03-14 weekday PDF page 1, printed 108, upper table second actual train column 550. All station rows visually checked: ordinary full-route train with calls at each retained station; repeated Ozone and Kitayama arrival/departure rows collapsed. Source uses 尼ケ坂 glyph, explicitly matched to S12 station 005403 尼ヶ坂 under the same exact operator/line and surrounding Shimizu/Morishita stops; no generic fuzzy alias. Both directions reviewed independently, not inferred by reversing adjacency. No clock values or raw table retained.",
+      "line": "瀬戸線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "sakaemachibound",
+      "trainCode": "550",
+      "callingStations": [
+        "尾張瀬戸",
+        "瀬戸市役所前",
+        "新瀬戸",
+        "水野",
+        "三郷",
+        "尾張旭",
+        "旭前",
+        "印場",
+        "大森・金城学院前",
+        "喜多山",
+        "小幡",
+        "瓢箪山",
+        "守山自衛隊前",
+        "矢田",
+        "大曽根",
+        "森下",
+        "尼ヶ坂",
+        "清水",
+        "東大手",
+        "栄町"
+      ],
+      "callingComponents": [
+        {
+          "name": "尾張瀬戸",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "瀬戸市役所前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新瀬戸",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "水野",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三郷",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尾張旭",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "旭前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "印場",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大森・金城学院前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "喜多山",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小幡",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "瓢箪山",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "守山自衛隊前",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "矢田",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "森下",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼ヶ坂",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "清水",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東大手",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "栄町",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_ORDINARY_TRAIN_COLUMN_ALL_STATION_ROWS_REVIEWED",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sakaemachi-sakae-reviewed-public-underground-passage",
+      "kind": "transfer",
+      "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/guidance/barrier_free/data16/data/__icsFiles/afieldfile/2026/06/03/sakaemachi.jpg",
+      "observedResponseSha256": "3dcc43973ab34fbdb069d763608a1d4a26663dada7c61db4d5cce2ea701460a3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line16/station/3701.html",
+          "observedResponseSha256": "289d9a6d544404223e9887d7d834709e484247695d0bcaf0d9edae7e27a5e027"
+        }
+      ],
+      "locator": "Current linked diagram visually reviewed: Meitetsu Sakaemachi B1 public gate hall has explicit passages toward subway Higashiyama/Meijo Sakae. Bind to the already consolidated subway Sakae component. The separately labelled Sakura-dori Hisaya-odori direction and Oasis21 lift do not establish further pairs. Minimal physical fact only; no raw map, duration or 24-hour/accessibility guarantee.",
+      "components": [
+        {
+          "name": "栄町",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "栄",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_MAP_EXPLICIT_NAMED_METRO_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "ozone-meitetsu-metro-reviewed-public-plaza-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:ozone-meitetsu-current-public-passage",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/M12_Ozone.gif",
+      "observedResponseSha256": "f0ba4805836d70e2ea1f55819301dad7f09d5850322e9e7d7037ae08eeeb4f07",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:ozone-meitetsu-current-public-passage",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:ozone-meitetsu-current-public-passage",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E5%A4%A7%E6%9B%BD%E6%A0%B9",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "private:meitetsu:seto-current-two-local-trains-and-sakaemachi-passage",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line16/station/3731.html",
+          "observedResponseSha256": "6dc7ae9349b1ba1c814d9d0bdaf8ca05dbe181559dfaa8cb2c33d6ad41c497fb"
+        }
+      ],
+      "locator": "Current municipal diagram visually reviewed: east public gate concourse leads explicitly to the west station plaza for Meitetsu/JR/Yutorito. Current Meitetsu Ozone station independently lists subway Meijo interchange. Bind only Meitetsu Seto and Metro pair; guideway remains unadmitted/unreviewed. No distance inference, raw artwork, walking time or common-paid-zone claim.",
+      "components": [
+        {
+          "name": "大曽根",
+          "operator": "名古屋鉄道",
+          "line": "瀬戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "MUNICIPAL_EXPLICIT_PUBLIC_PASSAGE_AND_OPERATOR_INTERCHANGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

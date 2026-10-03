@@ -1,0 +1,156 @@
+{
+  "phaseId": "075-tobu-four-partner-published-t1-gateways",
+  "strategy": [
+    "LAWFUL_PARTNER_OPERATOR_GATEWAYS",
+    "T1_TOBU_COMPONENT_REVIEW",
+    "transfer"
+  ],
+  "completedActionIds": [
+    "hub:tobu:jr-partner-three-urban-park-gateways",
+    "hub:tobu:oshiage-metro-published-joint-station"
+  ],
+  "facts": [
+    {
+      "factId": "tobu-partner-reviewed-gateway-柏",
+      "kind": "transfer",
+      "sourceActionId": "hub:tobu:jr-partner-three-urban-park-gateways",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0434_1f-2f.png",
+      "observedResponseSha256": "d66c456222b05a27ea0d13fc94bae01d0d7efbb59dc7370bce73fa9b550fe10f",
+      "locator": "Currently linked JR map explicitly labels the west/central public-concourse direction toward Tobu Noda Line. Ordinary central gate and public concourse, not the weekday IC-only rapid-platform gate.",
+      "components": [
+        {
+          "name": "柏",
+          "operator": "東武鉄道",
+          "line": "野田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柏",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PARTNER_PUBLISHED_INTERCHANGE_AND_EXACT_S12_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tobu-partner-reviewed-gateway-船橋",
+      "kind": "transfer",
+      "sourceActionId": "hub:tobu:jr-partner-three-urban-park-gateways",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/1382_1f-2f.png",
+      "observedResponseSha256": "296a0248ecf42c1dc6989676d17b833954e075aafb3d8262d30a69cc55a57969",
+      "locator": "Currently linked JR map: leave JR central gate to public concourse and head north along the explicitly marked Tobu Noda Line/north exit connection. Excludes restricted Shapo gate.",
+      "components": [
+        {
+          "name": "船橋",
+          "operator": "東武鉄道",
+          "line": "野田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PARTNER_PUBLISHED_INTERCHANGE_AND_EXACT_S12_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tobu-partner-reviewed-gateway-大宮",
+      "kind": "transfer",
+      "sourceActionId": "hub:tobu:jr-partner-three-urban-park-gateways",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/350.html",
+      "observedResponseSha256": "c2d7980bd8b9818891872837776b98414c00991375a7b585f496c438855d1b99",
+      "locator": "JR current station page explicitly lists Tobu Railway under Shinkansen interchange connections. Retain only the existence and component endpoints, not the published standard minutes.",
+      "components": [
+        {
+          "name": "大宮",
+          "operator": "東武鉄道",
+          "line": "野田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大宮",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PARTNER_PUBLISHED_INTERCHANGE_AND_EXACT_S12_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tobu-partner-reviewed-gateway-押上",
+      "kind": "transfer",
+      "sourceActionId": "hub:tobu:oshiage-metro-published-joint-station",
+      "sourceUrl": "https://www.tokyometro.jp/station/oshiage/index.html",
+      "observedResponseSha256": "e0cc34d9e7f7a6c9f9b2c1adf1dd9bda93532a965504ce84bcc121ec73f583d3",
+      "locator": "Current Metro Oshiage page explicitly lists Tobu among connecting operators; 2025 Metro factbook confirms the shared Metro/Tobu station boundary. Topology connector between physical operator components; no assertion that passengers must alight or that through service is guaranteed.",
+      "components": [
+        {
+          "name": "押上",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "押上",
+          "operator": "東京地下鉄",
+          "line": "11号線半蔵門線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PARTNER_PUBLISHED_INTERCHANGE_AND_EXACT_S12_COMPONENTS",
+      "hubScopeComplete": false,
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.tokyometro.jp/corporate/ir/library/factbook/pdf/factbook_2025.pdf",
+          "observedResponseSha256": "d0cbcb4f28afc710df0be633f8576f3816823cda701ba7bd1409c6d5807f12c6"
+        }
+      ]
+    }
+  ]
+}

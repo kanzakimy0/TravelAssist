@@ -1,0 +1,485 @@
+{
+  "phaseId": "109-metro-published-th-liner-current-restricted-through-trains",
+  "strategy": [
+    "CURRENT_INDEPENDENT_PARTNER_THROUGH_TRAIN_EVIDENCE",
+    "PRESERVE_BOARDING_ONLY_AND_ALIGHTING_ONLY_CALLS",
+    "EXPLICIT_OPERATOR_BOUNDARY_BETWEEN_PASSENGER_CALLS"
+  ],
+  "completedActionIds": [
+    "private:tobu:metro-published-current-th-liner-restricted-through-trips"
+  ],
+  "facts": [
+    {
+      "factId": "th-liner-current-th2-restricted-through",
+      "kind": "service",
+      "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+      "sourceUrl": "https://www.tokyometro.jp/library/th-liner/images/table_05.jpg",
+      "observedResponseSha256": "d61a363c0d23886d74637bd78176ac096cd775a00f8d70a6f962e81fdac9bf8c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/th-liner/index.html",
+          "observedResponseSha256": "73c8eaa75165b1a50185781e64e9d8621c975f4a4c82d3317f4c6435292d0b8e"
+        },
+        {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/library/th-liner/images/station_01.jpg",
+          "observedResponseSha256": "48dabab74b3cf70c1387c603fd30c9ab95dafa4712c2ad01d93849ded78256fe"
+        },
+        {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+          "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3"
+        }
+      ],
+      "locator": "Current Metro Hibiya line page links its own TH-liner service page and current directional timetable images. Visually reviewed weekday TH2 actual full ordered passenger calls and current colored stop diagram. For southbound: all five Tobu calls are boarding-only; Ueno through Ginza are alighting-only; Kasumigaseki through Ebisu allow both. For northbound: all five Metro calls are boarding-only and all five Tobu calls are alighting-only. Preserve this asymmetric permission exactly. Same named physical station components remain independent by operator and line. The diagram explicitly changes physical operator between Shin-koshigaya and Ueno passenger calls; retain both operators on that interval without inventing a passenger call, transfer, or boundary coordinate. This current-linked publication corroborates current service topology, not a new timetable revision date. Do not reuse 2020/2021/2022 clock values, old temporary Soka calls, restricted Tobu-site or Navitime payloads. No clocks or source artwork retained.",
+      "line": "THライナー・東武伊勢崎線日比谷線直通",
+      "operator": "東武鉄道・東京地下鉄",
+      "mode": "private_rail",
+      "modeScope": "THROUGH_PRIVATE_RAIL_SERVICE_WITH_INDEPENDENT_METRO_ENDPOINT_COMPONENTS",
+      "serviceClass": "座席指定THライナー",
+      "reviewedTrainCode": "TH2",
+      "direction": "southbound",
+      "callingStations": [
+        "久喜",
+        "東武動物公園",
+        "春日部",
+        "せんげん台",
+        "新越谷",
+        "上野",
+        "秋葉原",
+        "茅場町",
+        "銀座",
+        "霞ケ関",
+        "虎ノ門ヒルズ",
+        "神谷町",
+        "六本木",
+        "広尾",
+        "恵比寿"
+      ],
+      "callingComponents": [
+        {
+          "name": "久喜",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東武動物公園",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日部",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "せんげん台",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新越谷",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上野",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "秋葉原",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "茅場町",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "銀座",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "霞ヶ関",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "霞ケ関",
+            "stationCode": "003805"
+          }
+        },
+        {
+          "name": "虎ノ門ヒルズ",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "神谷町",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "六本木",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "広尾",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "恵比寿",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "segmentOperatorRefs": [
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道",
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ]
+      ],
+      "throughServiceReview": {
+        "kind": "EXPLICIT_CURRENT_THROUGH_TRAIN",
+        "serviceIdentifier": "TH2",
+        "operatorRefs": [
+          "東武鉄道",
+          "東京地下鉄"
+        ],
+        "passengerInterchangeRequired": false,
+        "boundaryScope": "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+        "evidence": {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/library/th-liner/images/station_01.jpg",
+          "observedResponseSha256": "48dabab74b3cf70c1387c603fd30c9ab95dafa4712c2ad01d93849ded78256fe"
+        }
+      },
+      "reviewMethod": "CURRENT_PARTNER_ACTUAL_THROUGH_TRAIN_WITH_DIRECTIONAL_BOARDING_AND_OPERATOR_PROOF",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_OFFICIAL_TH_TRAIN_TOPOLOGY_NOT_REALTIME"
+    },
+    {
+      "factId": "th-liner-current-th1-restricted-through",
+      "kind": "service",
+      "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+      "sourceUrl": "https://www.tokyometro.jp/library/th-liner/images/table_06.jpg",
+      "observedResponseSha256": "d86190206b57ac6ad7eb62d25c66ae0f1dd5b86883aaff4d4bb6073947af4782",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/th-liner/index.html",
+          "observedResponseSha256": "73c8eaa75165b1a50185781e64e9d8621c975f4a4c82d3317f4c6435292d0b8e"
+        },
+        {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/library/th-liner/images/station_01.jpg",
+          "observedResponseSha256": "48dabab74b3cf70c1387c603fd30c9ab95dafa4712c2ad01d93849ded78256fe"
+        },
+        {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+          "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3"
+        }
+      ],
+      "locator": "Current Metro Hibiya line page links its own TH-liner service page and current directional timetable images. Visually reviewed weekday TH1 actual full ordered passenger calls and current colored stop diagram. For southbound: all five Tobu calls are boarding-only; Ueno through Ginza are alighting-only; Kasumigaseki through Ebisu allow both. For northbound: all five Metro calls are boarding-only and all five Tobu calls are alighting-only. Preserve this asymmetric permission exactly. Same named physical station components remain independent by operator and line. The diagram explicitly changes physical operator between Shin-koshigaya and Ueno passenger calls; retain both operators on that interval without inventing a passenger call, transfer, or boundary coordinate. This current-linked publication corroborates current service topology, not a new timetable revision date. Do not reuse 2020/2021/2022 clock values, old temporary Soka calls, restricted Tobu-site or Navitime payloads. No clocks or source artwork retained.",
+      "line": "THライナー・東武伊勢崎線日比谷線直通",
+      "operator": "東武鉄道・東京地下鉄",
+      "mode": "private_rail",
+      "modeScope": "THROUGH_PRIVATE_RAIL_SERVICE_WITH_INDEPENDENT_METRO_ENDPOINT_COMPONENTS",
+      "serviceClass": "座席指定THライナー",
+      "reviewedTrainCode": "TH1",
+      "direction": "northbound",
+      "callingStations": [
+        "霞ケ関",
+        "銀座",
+        "茅場町",
+        "秋葉原",
+        "上野",
+        "新越谷",
+        "せんげん台",
+        "春日部",
+        "東武動物公園",
+        "久喜"
+      ],
+      "callingComponents": [
+        {
+          "name": "霞ヶ関",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "霞ケ関",
+            "stationCode": "003805"
+          }
+        },
+        {
+          "name": "銀座",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "茅場町",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "秋葉原",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "上野",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "新越谷",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "せんげん台",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日部",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東武動物公園",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "久喜",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "segmentOperatorRefs": [
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄"
+        ],
+        [
+          "東京地下鉄",
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ],
+        [
+          "東武鉄道"
+        ]
+      ],
+      "throughServiceReview": {
+        "kind": "EXPLICIT_CURRENT_THROUGH_TRAIN",
+        "serviceIdentifier": "TH1",
+        "operatorRefs": [
+          "東京地下鉄",
+          "東武鉄道"
+        ],
+        "passengerInterchangeRequired": false,
+        "boundaryScope": "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+        "evidence": {
+          "sourceActionId": "private:tobu:metro-published-current-th-liner-restricted-through-trips",
+          "url": "https://www.tokyometro.jp/library/th-liner/images/station_01.jpg",
+          "observedResponseSha256": "48dabab74b3cf70c1387c603fd30c9ab95dafa4712c2ad01d93849ded78256fe"
+        }
+      },
+      "reviewMethod": "CURRENT_PARTNER_ACTUAL_THROUGH_TRAIN_WITH_DIRECTIONAL_BOARDING_AND_OPERATOR_PROOF",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_OFFICIAL_TH_TRAIN_TOPOLOGY_NOT_REALTIME"
+    }
+  ]
+}

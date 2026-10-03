@@ -31,6 +31,9 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
+      - name: Record branch HEAD and actual checkout revision
+        run: node tools/qa/ci-revision.mjs
+
       - name: Install locked dependencies
         run: npm ci
 

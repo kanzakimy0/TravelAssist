@@ -1,0 +1,89 @@
+{
+  "operator": "株式会社 市丸タクシー",
+  "serviceName": "種子島空港予約型乗合タクシー（西之表線）",
+  "validFrom": "2026-09-01",
+  "validTo": "2026-10-20",
+  "reservation": {
+    "required": true,
+    "method": "PHONE",
+    "deadlineDaysBefore": 1,
+    "deadlineLocalTime": "17:00",
+    "timeZone": "Asia/Tokyo",
+    "noBookingNoDispatch": true,
+    "bookingReceiptObtained": false
+  },
+  "rightsReview": {
+    "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+    "rightsClassProposal": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "termsUrl": "https://www.city.nishinoomote.lg.jp/admin/homepage/2202.html",
+    "termsSha256": "7071fc052178856076de6ab43b87db23146d5332c6d850abcfb6f474ec072467",
+    "finding": "Copyright remains with city; unauthorized republication of articles/photos/tables is prohibited except legally permitted uses. No public raw PDF/HTML/image or timetable layout/clock/fare copying, and no open license claimed. Proposed retained items only independently reviewed factual operator, endpoints/order, public eligibility and booking/OD restrictions. Parent review before canonical admission.",
+    "sourceSpecific": true,
+    "rawRedistributionAllowed": false,
+    "privateCachesOnly": true,
+    "separateNakataneTermsNotInherited": true
+  },
+  "sourceObservations": {
+    "city-current-taxi": {
+      "url": "https://www.city.nishinoomote.lg.jp/material/files/group/89/kukotaxijikokuhyou0901.pdf",
+      "observedAt": "2026-10-03T10:03:04.033966+00:00",
+      "status": 200,
+      "contentSha256": "333b163d65c6d247f20578a8f286220f844ada37991a305317e026c086b19141",
+      "bytes": 428037,
+      "rawPayloadRetained": false,
+      "pages": 1,
+      "extractedTextLength": 1034
+    },
+    "city-current-access": {
+      "url": "https://www.city.nishinoomote.lg.jp/admin/soshiki/kikaku/seisakusuishin/koutuu/8270.html",
+      "observedAt": "2026-10-03T10:03:03.795958+00:00",
+      "status": 200,
+      "contentSha256": "274724f4f7f2ed182d7e3a5ad6ba5ea242525ceef4351a01e89af30cb9d2ce75",
+      "bytes": 44476,
+      "rawPayloadRetained": true
+    },
+    "city-rights": {
+      "url": "https://www.city.nishinoomote.lg.jp/admin/homepage/2202.html",
+      "observedAt": "2026-10-03T10:03:48.357877+00:00",
+      "status": 200,
+      "contentSha256": "7071fc052178856076de6ab43b87db23146d5332c6d850abcfb6f474ec072467",
+      "bytes": 42912,
+      "rawPayloadRetained": true
+    }
+  },
+  "outbound": {
+    "parent": ["西之表港", "相互信用金庫前", "種子島空港"],
+    "pickupDropoff": [
+      {
+        "pickupType": "0",
+        "dropOffType": "1"
+      },
+      {
+        "pickupType": "0",
+        "dropOffType": "1"
+      },
+      {
+        "pickupType": "1",
+        "dropOffType": "0"
+      }
+    ]
+  },
+  "inbound": {
+    "parent": ["種子島空港", "相互信用金庫前", "西之表港"],
+    "pickupDropoff": [
+      {
+        "pickupType": "0",
+        "dropOffType": "1"
+      },
+      {
+        "pickupType": "1",
+        "dropOffType": "0"
+      },
+      {
+        "pickupType": "1",
+        "dropOffType": "0"
+      }
+    ]
+  },
+  "fixtureScope": "Minimum independently reviewed facts only. Not raw license, node admission, booking confirmation or full-gate acceptance."
+}

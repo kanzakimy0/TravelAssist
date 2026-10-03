@@ -1,0 +1,1382 @@
+{
+  "phaseId": "063-nishitetsu-ordinary-branches-and-fukuoka-gateways",
+  "strategy": [
+    "NISHITETSU_GREY_ORDINARY_STOPPING_ROWS",
+    "YAKUIN_KAIZUKA_PUBLIC_CONCOURSE_CONNECTIONS",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:nishitetsu:local-stopping-rows",
+    "hub:fukuoka:nishitetsu-yakuin-kaizuka"
+  ],
+  "facts": [
+    {
+      "factId": "nishitetsu-0-ordinary-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "天神大牟田線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "西鉄福岡(天神)",
+        "薬院",
+        "西鉄平尾",
+        "高宮",
+        "大橋",
+        "井尻",
+        "雑餉隈",
+        "桜並木",
+        "春日原",
+        "白木原",
+        "下大利",
+        "都府楼前",
+        "西鉄二日市",
+        "紫",
+        "朝倉街道",
+        "桜台",
+        "筑紫",
+        "津古",
+        "三国が丘",
+        "三沢",
+        "大保",
+        "西鉄小郡",
+        "端間",
+        "味坂",
+        "宮の陣",
+        "櫛原",
+        "西鉄久留米",
+        "花畑",
+        "聖マリア病院前",
+        "津福",
+        "安武",
+        "大善寺",
+        "三潴",
+        "犬塚",
+        "大溝",
+        "八丁牟田",
+        "蒲池",
+        "矢加部",
+        "西鉄柳川",
+        "徳益",
+        "塩塚",
+        "西鉄中島",
+        "江の浦",
+        "開",
+        "西鉄渡瀬",
+        "倉永",
+        "東甘木",
+        "西鉄銀水",
+        "新栄町",
+        "大牟田"
+      ],
+      "callingComponents": [
+        {
+          "name": "西鉄福岡（天神）",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_PAREN_WIDTH",
+            "sourceName": "西鉄福岡(天神)",
+            "stationCode": "009036"
+          }
+        },
+        {
+          "name": "薬院",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄平尾",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高宮",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大橋",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "井尻",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "雑餉隈",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜並木",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日原",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "白木原",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下大利",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "都府楼前",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄二日市",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紫",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "朝倉街道",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜台",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "筑紫",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津古",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三国が丘",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三沢",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大保",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄小郡",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "端間",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味坂",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宮の陣",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "櫛原",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄久留米",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "花畑",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "聖マリア病院前",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津福",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "安武",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大善寺",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三潴",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "犬塚",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大溝",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "八丁牟田",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "蒲池",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "矢加部",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄柳川",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "徳益",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "塩塚",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄中島",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "江の浦",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "開",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄渡瀬",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "倉永",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東甘木",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄銀水",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新栄町",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大牟田",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-0-ordinary-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "天神大牟田線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "大牟田",
+        "新栄町",
+        "西鉄銀水",
+        "東甘木",
+        "倉永",
+        "西鉄渡瀬",
+        "開",
+        "江の浦",
+        "西鉄中島",
+        "塩塚",
+        "徳益",
+        "西鉄柳川",
+        "矢加部",
+        "蒲池",
+        "八丁牟田",
+        "大溝",
+        "犬塚",
+        "三潴",
+        "大善寺",
+        "安武",
+        "津福",
+        "聖マリア病院前",
+        "花畑",
+        "西鉄久留米",
+        "櫛原",
+        "宮の陣",
+        "味坂",
+        "端間",
+        "西鉄小郡",
+        "大保",
+        "三沢",
+        "三国が丘",
+        "津古",
+        "筑紫",
+        "桜台",
+        "朝倉街道",
+        "紫",
+        "西鉄二日市",
+        "都府楼前",
+        "下大利",
+        "白木原",
+        "春日原",
+        "桜並木",
+        "雑餉隈",
+        "井尻",
+        "大橋",
+        "高宮",
+        "西鉄平尾",
+        "薬院",
+        "西鉄福岡(天神)"
+      ],
+      "callingComponents": [
+        {
+          "name": "大牟田",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新栄町",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄銀水",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東甘木",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "倉永",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄渡瀬",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "開",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "江の浦",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄中島",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "塩塚",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "徳益",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄柳川",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "矢加部",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "蒲池",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "八丁牟田",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大溝",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "犬塚",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三潴",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大善寺",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "安武",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津福",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "聖マリア病院前",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "花畑",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄久留米",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "櫛原",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宮の陣",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味坂",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "端間",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄小郡",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大保",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三沢",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三国が丘",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津古",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "筑紫",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜台",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "朝倉街道",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "紫",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄二日市",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "都府楼前",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下大利",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "白木原",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日原",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜並木",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "雑餉隈",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "井尻",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大橋",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高宮",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄平尾",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "薬院",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄福岡（天神）",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_PAREN_WIDTH",
+            "sourceName": "西鉄福岡(天神)",
+            "stationCode": "009036"
+          }
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-1-ordinary-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "太宰府線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "西鉄二日市",
+        "西鉄五条",
+        "太宰府"
+      ],
+      "callingComponents": [
+        {
+          "name": "西鉄二日市",
+          "operator": "西日本鉄道",
+          "line": "太宰府線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄五条",
+          "operator": "西日本鉄道",
+          "line": "太宰府線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "太宰府",
+          "operator": "西日本鉄道",
+          "line": "太宰府線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-1-ordinary-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "太宰府線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "太宰府",
+        "西鉄五条",
+        "西鉄二日市"
+      ],
+      "callingComponents": [
+        {
+          "name": "太宰府",
+          "operator": "西日本鉄道",
+          "line": "太宰府線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄五条",
+          "operator": "西日本鉄道",
+          "line": "太宰府線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄二日市",
+          "operator": "西日本鉄道",
+          "line": "太宰府線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-2-ordinary-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "甘木線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "宮の陣",
+        "五郎丸",
+        "学校前",
+        "古賀茶屋",
+        "北野",
+        "大城",
+        "金島",
+        "大堰",
+        "本郷",
+        "上浦",
+        "馬田",
+        "甘木"
+      ],
+      "callingComponents": [
+        {
+          "name": "宮の陣",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "五郎丸",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "学校前",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "古賀茶屋",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大城",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金島",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大堰",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本郷",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上浦",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "馬田",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "甘木",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-2-ordinary-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "甘木線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "甘木",
+        "馬田",
+        "上浦",
+        "本郷",
+        "大堰",
+        "金島",
+        "大城",
+        "北野",
+        "古賀茶屋",
+        "学校前",
+        "五郎丸",
+        "宮の陣"
+      ],
+      "callingComponents": [
+        {
+          "name": "甘木",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "馬田",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上浦",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本郷",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大堰",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金島",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大城",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "古賀茶屋",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "学校前",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "五郎丸",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宮の陣",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-3-ordinary-outbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "貝塚線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "貝塚",
+        "名島",
+        "西鉄千早",
+        "香椎宮前",
+        "西鉄香椎",
+        "香椎花園前",
+        "唐の原",
+        "和白",
+        "三苫",
+        "西鉄新宮"
+      ],
+      "callingComponents": [
+        {
+          "name": "貝塚",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "名島",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄千早",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "香椎宮前",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄香椎",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "香椎花園前",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "唐の原",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "和白",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三苫",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄新宮",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-3-ordinary-inbound",
+      "kind": "service",
+      "sourceActionId": "private:nishitetsu:local-stopping-rows",
+      "sourceUrl": "https://www.nishitetsu.jp/assets/images/common/train_routemap_ext.png",
+      "observedResponseSha256": "378351687147ed2160f8fdffdcd96c0780a0e088087f84bcf60ee316da2853e3",
+      "locator": "Current official stopping diagram, grey ordinary row and separately reviewed Dazaifu/Amagi/Kaizuka branches. Includes Sakuranamiki and current Saint Mary Hospital name. Station portal corroborates each ordinary stop and the full operator-prefixed Tenjin station label; only parentheses width varies against S12. Tofuro-mae secondary branding is not part of the independent station name. No express-stop union or through-service across branch boundaries inferred.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "url": "https://www.nishitetsu.jp/train/rosen/print/",
+          "observedResponseSha256": "29bfbf70fdd30fc353aabb1af1fa22e785bf4b26e1c6d085e409dfeba7bd342c"
+        }
+      ],
+      "line": "貝塚線",
+      "operator": "西日本鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "西鉄新宮",
+        "三苫",
+        "和白",
+        "唐の原",
+        "香椎花園前",
+        "西鉄香椎",
+        "香椎宮前",
+        "西鉄千早",
+        "名島",
+        "貝塚"
+      ],
+      "callingComponents": [
+        {
+          "name": "西鉄新宮",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三苫",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "和白",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "唐の原",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "香椎花園前",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄香椎",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "香椎宮前",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西鉄千早",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "名島",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "貝塚",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_ORDINARY_ROW_AND_CURRENT_BRANCH_STOP_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-metro-yakuin-interchange",
+      "kind": "transfer",
+      "sourceActionId": "hub:fukuoka:nishitetsu-yakuin-kaizuka",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_yakuin.jpg",
+      "observedResponseSha256": "27cee96bda4d028d2f388cc0bf7503b6eb75eff6a69bc7787ef0c61ff390df66",
+      "locator": "Official 3D map shows the subway concourse public exit 1 leading to the named Nishitetsu Yakuin station; retain this public entrance connection only.",
+      "components": [
+        {
+          "name": "薬院",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "薬院",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_OPERATOR_CONCOURSE_AND_INDEPENDENT_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nishitetsu-metro-kaizuka-interchange",
+      "kind": "transfer",
+      "sourceActionId": "hub:fukuoka:nishitetsu-yakuin-kaizuka",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_kaizuka.jpg",
+      "observedResponseSha256": "8e6bca8bd57c9bfe22b8f17b0a35f40de57da8e28dd248fcf042393a56b8a1ac",
+      "locator": "Official 3D map shows both distinct subway and Nishitetsu platforms with their gates joined through the public concourse. Do not infer rail through-running across these terminating platforms.",
+      "components": [
+        {
+          "name": "貝塚",
+          "operator": "西日本鉄道",
+          "line": "貝塚線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "貝塚",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_OPERATOR_CONCOURSE_AND_INDEPENDENT_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

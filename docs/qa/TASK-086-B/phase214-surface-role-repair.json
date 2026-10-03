@@ -1,0 +1,54 @@
+{
+  "files": [
+    {
+      "path": "tools/transport/task-086-model.mjs",
+      "oldSha256": "929eaeea6e9a93084ca1e97f4e5c7bb99f9861cb181b0f9a84f231ee728d4a9a",
+      "newSha256": "4900017d6fec17417aaab2aacb149bc99c9886dda545001e4e5395944009cbb2",
+      "candidate": ".cache/task-086/surface-regression214-private/tools/transport/task-086-model.mjs"
+    },
+    {
+      "path": "tests/task-086-b-autonomous-remediation.test.mjs",
+      "oldSha256": "bbed18fdb5459de236cb566ca417639d9c812e066d1138596baeb5f20ecd2d7a",
+      "newSha256": "8c1282e9992c6361b97c3cbc67c0c8d1a7817cac80d7a8368e348d29fdacdc6d",
+      "candidate": ".cache/task-086/surface-regression214-private/tests/task-086-b-autonomous-remediation.test.mjs"
+    }
+  ],
+  "checks": [
+    {
+      "name": "root-targeted157",
+      "exitCode": 0,
+      "seconds": 1.9004304999834858,
+      "log": ".cache\\task-086\\surface-regression214-private\\root-targeted157.log"
+    },
+    {
+      "name": "root-targeted2",
+      "exitCode": 0,
+      "seconds": 0.18233610002789646,
+      "log": ".cache\\task-086\\surface-regression214-private\\root-targeted2.log"
+    },
+    {
+      "name": "root-format",
+      "exitCode": 1,
+      "seconds": 0.5832802999648266,
+      "log": ".cache\\task-086\\surface-regression214-private\\root-format.log"
+    }
+  ],
+  "postFormattingHashes": {
+    "tools/transport/task-086-model.mjs": "05e93b09354f0f85c4c83645971df13dd10d10d71a36878d0a98c6968072027f",
+    "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9"
+  },
+  "finalFormatting": {
+    "status": "PASS",
+    "command": [
+      "node",
+      "node_modules/prettier/bin/prettier.cjs",
+      "--check",
+      "tools/transport/task-086-model.mjs",
+      "tests/task-086-b-autonomous-remediation.test.mjs"
+    ],
+    "observedToolOutput": "All matched files use Prettier code style!",
+    "observation": "Successful check immediately before full214-r2 launch; earlier failed format check retained in checks and original log.",
+    "elapsedSeconds": null
+  },
+  "status": "APPLIED_TARGETED_TESTS_PASS_FORMAT_REPAIRED_FULL_RETRY_RUNNING"
+}
