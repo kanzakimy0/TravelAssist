@@ -354,6 +354,7 @@ export function verifyRebuild({ publish = false } = {}) {
           path.join(root, "tests/task-086-b-gtfs-sections.test.mjs"),
           path.join(root, "tests/task-086-b-derived-gtfs.test.mjs"),
           path.join(root, "tests/task-086-b-p11-succession.test.mjs"),
+          path.join(root, "tests/task-086-b-pattern-corrections.test.mjs"),
           path.join(root, "tests/task-086-b-stage-closeout.test.mjs"),
         ],
         { cwd: root, encoding: "utf8" },

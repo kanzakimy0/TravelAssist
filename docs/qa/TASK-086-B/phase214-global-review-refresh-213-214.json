@@ -1,0 +1,41 @@
+{
+  "status": "PASS_EXACT_REVIEWED_NEW_ACTIONS_OLD_FACT_PRESERVATION_AND_REAL_COVERAGE",
+  "oldActionsPreserved": 487,
+  "newActions": 8,
+  "reviewedPhases": [
+    {
+      "phase": 213,
+      "phaseSha256": "ec74ae5432ccdcecdab421fc5d5d02bd31434229f287f1722396838202d3bab2"
+    },
+    {
+      "phase": 214,
+      "phaseSha256": "8de7d2370bf9e80eb5352d09ea08e067718a112192f425dc0495d0dc38f9a952"
+    }
+  ],
+  "additions": [
+    {
+      "actionId": "government:p11:reviewed-airport-bus-identities",
+      "exactAddedFactBindings": [
+        "p11-identities:49cb19b1fa74d6ff2da98ded42767f10a85f09fc3d89ccd0b3fcbbbd13edd7f6"
+      ]
+    }
+  ],
+  "changed": [
+    {
+      "deficitId": "service:shinkansen-continuity",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "oldSha256": "4d3c647c88bd1eb6e66c4f43a16b9001678ea5e909ac52ab5addce221776cafa",
+      "newSha256": "fd0e7b5272a2eff04bacbb1545b5f20fcd6b451a9736827f08edc3a730d499da"
+    },
+    {
+      "deficitId": "service:major-rail-private-metro",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "oldSha256": "4d3c647c88bd1eb6e66c4f43a16b9001678ea5e909ac52ab5addce221776cafa",
+      "newSha256": "fd0e7b5272a2eff04bacbb1545b5f20fcd6b451a9736827f08edc3a730d499da"
+    }
+  ],
+  "remainingGlobalDeficits": [
+    "source:national-stopping-patterns",
+    "mode:required-highway-gateways"
+  ]
+}

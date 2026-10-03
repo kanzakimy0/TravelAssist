@@ -1,6 +1,6 @@
 # TASK-086-B 剩余唯一根因
 
-52 OPEN：15机场、36巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
+50 OPEN：13机场、36巴士方向、1铁路来源总审核。铁路内部2项事实不重复计数。
 
 | 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
@@ -9,7 +9,6 @@
 | root:airport:review:official-airport:波照間 | D | 1 | 4 |
 | root:airport:review:official-airport:南大東 | C | 1 | 1 |
 | root:airport:review:official-airport:能登 | D | 1 | 4 |
-| root:airport:review:official-airport:三宅島 | D | 1 | 4 |
 | root:airport:review:official-airport:神津島 | D | 1 | 4 |
 | root:airport:review:official-airport:石見 | D | 1 | 4 |
 | root:airport:review:official-airport:粟国 | D | 1 | 4 |
@@ -18,7 +17,6 @@
 | root:airport:review:official-airport:与論 | C | 1 | 1 |
 | root:airport:review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665 | D | 1 | 4 |
 | root:airport:review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe | C | 1 | 1 |
-| root:airport:review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374 | C | 1 | 1 |
 | root:direction:component:0eec614b8788f64d5865 | C | 1 | 2 |
 | root:direction:component:16a062275f80ed78de4f | C | 1 | 3 |
 | root:direction:component:1df548bb4e218199d61c | C | 1 | 2 |

@@ -380,8 +380,8 @@ test("TASK086 licensed bus-stop missing optional mode is surface transport witho
   ];
   const edge = (id, a, b) => ({
     edgeId: id,
-    edgeKind: "hub_transfer",
-    mode: "transfer",
+    edgeKind: "service_segment",
+    mode: "local_bus",
     fromTransportNodeId: a,
     toTransportNodeId: b,
     metrics: {},
@@ -426,6 +426,13 @@ test("TASK086 licensed bus-stop missing optional mode is surface transport witho
     });
   assert.equal(run(edges).counts.AIRPORT_SURFACE_GAP, 0);
   assert.equal(run(edges.slice(0, 1)).counts.AIRPORT_SURFACE_GAP, 1);
+  assert.equal(run(edges.slice(1)).counts.AIRPORT_SURFACE_GAP, 1);
+  assert.equal(
+    run(
+      edges.map((e) => ({ ...e, edgeKind: "hub_transfer", mode: "transfer" })),
+    ).counts.AIRPORT_SURFACE_GAP,
+    1,
+  );
 });
 
 test("TASK086 proven exhausted alternatives close only the specifically bound no-source action", () => {

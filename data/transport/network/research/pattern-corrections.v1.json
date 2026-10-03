@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "kind": "EXACT_REVIEWED_RAIL_CORRECTIONS_V1",
+  "archivePath": "data/transport/network/research/pattern-correction-archive.v1.json",
+  "inputBindings": [
+    {
+      "path": "data/transport/network/research/pattern-correction-archive.v1.json",
+      "sha256": "eaa6f5fbd716fe1e5a47cd8197ddf1e79cd1e8996758cd41282e854304ded204"
+    },
+    {
+      "path": "data/transport/network/research/pattern-correction-review.v1.json",
+      "sha256": "8c07d9dc2e45733ed67c2f2272d16875232cfcee04e8dd3269cbc7251e93c7cf"
+    },
+    {
+      "path": "data/transport/network/research/phases/214-independent-static-rail-source-corrections.json",
+      "sha256": "8fcdd23e10abc6e8d5eab1ef661f856d25cd5116503f393f1b407e91c7e597ff"
+    },
+    {
+      "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+      "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+    },
+    {
+      "path": "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+      "sha256": "0e56c47350f1ed668b92257a2b52a03c0d21b3f06f4397f657e39c40cdc783e1"
+    },
+    {
+      "path": "data/transport/network/research/jr-timetable-rights-review.v1.json",
+      "sha256": "033d4e2dc0d022deb2f273cb01b65f464aef38bcdbde4c677174d3514e87df9d"
+    },
+    {
+      "path": "data/transport/network/research/phases/032-shikoku-seto-ohashi-gateway.json",
+      "sha256": "99fae6a85f5103657bc43d80f75c3fade53c2c105cf5f6d99ad562d66d1543dd"
+    },
+    {
+      "path": "data/transport/network/research/phases/170-iwakuni-airport-east-exit-actual-sanyo-national-chain.json",
+      "sha256": "1e4684739b39e5b511f3d57c23d7b267b396e771411f57cc1b9e34dd7ff2c727"
+    }
+  ],
+  "entries": [
+    {
+      "oldPatternId": "transport-pattern:086:227b50b76a82c195171bcd4ddbddc5ff",
+      "oldPhaseId": "032-shikoku-seto-ohashi-gateway",
+      "oldFactId": "marine-3135M-west",
+      "oldPatternSha256": "509e1f8ac74c51b0521509cccf98de094f83a778522b64115d31a61daa815338",
+      "oldFactSha256": "3b8bf4c587f229981ce51d741b7f6f2a238074e1a6066a855546c76628fbc1d8",
+      "oldEdgeSha256ById": {
+        "transport-edge:086:3820a51e1ce5a9ccd077875ebcdc9db2": "3aba2db6c88fc4e52ee0f00a5336fc1919c8dc90510c9f660e64289c419d36f2",
+        "transport-edge:086:d37e5bdf6166a57ac912ac32d6c37e83": "24cf5fdfd22d406a4d6871e9cc4e33e6578fbef669c44bd3d56e2e181d36e542",
+        "transport-edge:086:e5f373f8669eaca1baea488ba4318652": "2cea88a9f2c29396a192a37c320a4692b94c036e40033ff59ab3fb04e7b247f7"
+      },
+      "reason": "SOURCE_SPECIFIC_UNSUPPORTED_IMPLEMENTATION",
+      "decision": "REVIEWED_EXPLICIT_IMPLEMENTATION_CORRECTION",
+      "originalRequiredServiceClass": null,
+      "originalRequirementBasis": [
+        "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "data/transport/network/research/pattern-correction-review.v1.json"
+      ],
+      "successorPhaseId": "214-independent-static-rail-source-corrections",
+      "successorFactId": "okayama-kojima-static-local-214-okayama-to-kojima",
+      "successorFactSha256": "ff500d37e5f63a9a8be58fcc31e67566bc6161465a943158ae1b880a14b64d18",
+      "successorPatternId": "transport-pattern:086:8781e6c3b07b2d7aeaa4f4f6cce790e9",
+      "sourceActionBindings": {
+        "rail:independent-static-correction-214:prefectural-tourism": "4e2ac22e7e3be0718b0f4636d6286a3401f0532488db947ebbc383614c7b7991",
+        "rail:independent-static-correction-214:operator": "8ce892a1611e41d76a54e02f47cc941390218544ce30bbac3e9aeed3ea8aa133",
+        "rail:independent-static-correction-214:map": "8db7fe702cfe27d6857130f1dc149b4e94b78eed6bc04b706a352abb442b450a",
+        "rail:independent-static-correction-214:jnto": "b62d403ec1bf7ae5e21261325727c56d9b465b80f88c12d04df9f6e5e3d094ef"
+      },
+      "oldNodeIds": [
+        "transport-node:086:a4d85a57331e7c7a85f8a646bae8d27a",
+        "transport-node:086:cbb566e368486115bc6a5e49265ccdef",
+        "transport-node:086:8e793e22ea23460f3f8bd4785c43ea65",
+        "transport-node:086:cdcb3fd732cf46f4b6e8e65e9e8c2d50"
+      ],
+      "newCallCount": 12
+    },
+    {
+      "oldPatternId": "transport-pattern:086:5fb4245b79538fe67680858624cd3671",
+      "oldPhaseId": "032-shikoku-seto-ohashi-gateway",
+      "oldFactId": "marine-3110M-west",
+      "oldPatternSha256": "b219fda6d469778dd44fcaa61cf724a31b06f19a285ca35d5173d9736702cae7",
+      "oldFactSha256": "d8c4d593b5b2f550a6aa5409fb9795f7b5171bcd72539886603dc461103faef0",
+      "oldEdgeSha256ById": {
+        "transport-edge:086:079cc75dc9f015f64a16dfabe4356094": "9384d968f15df624913d9906136b2e78b1e4d09a98e3339509f1ab332507c1d6",
+        "transport-edge:086:319a7496e83f8927eab1316beddff57f": "bd3c447446ce7a7f7c96dcc9bff92259d6870b199752ad47d236004dc8989954",
+        "transport-edge:086:3f98baeb65af9f4c20aa4e7c714e90a2": "f05a8985b842dc53a9dbd82c9797fc6f6ca814a4a984250ca02737cfd201e7a4",
+        "transport-edge:086:40b5ef4746794aa3a8f122d3203a3760": "24d891db7f7c21cb5c2e8ff9640ea2eb02f2c613c77d68a697089b10b04c69f2",
+        "transport-edge:086:44936e34a0955de4fba57f82a34cfcfc": "52f187206b88839ca45a897410b78014a469e0379843a036f7ed0d8fbf203240",
+        "transport-edge:086:54f753d64d6a5295ad8d0ee86a0e6878": "fe3e40e4f8899dfbc9fef5d37ac83a2c5ad0b9b673d592eb8bf5eea394dacc14",
+        "transport-edge:086:8a18dda7d6ceb096ab27513580b87479": "8438e760fdd7ad45f3706c3ba308f0edc302f4c7ceef9be96dfb925952e621f6",
+        "transport-edge:086:a215fb9b03f1312fbcd1305ae99758da": "1b65c1600ef4ba0216eda43a1f43f83dc1803d887c0951a1418a6164836e79ae",
+        "transport-edge:086:a381929738d8bccb4880f8882fc77ad6": "6f8a4b31d3e2e64a9278938ac071a03cb91c3ea9bb1f8759c320ca37434d4ffa"
+      },
+      "reason": "SOURCE_SPECIFIC_UNSUPPORTED_IMPLEMENTATION",
+      "decision": "REVIEWED_EXPLICIT_IMPLEMENTATION_CORRECTION",
+      "originalRequiredServiceClass": null,
+      "originalRequirementBasis": [
+        "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "data/transport/network/research/pattern-correction-review.v1.json"
+      ],
+      "successorPhaseId": "214-independent-static-rail-source-corrections",
+      "successorFactId": "okayama-kojima-static-local-214-kojima-to-okayama",
+      "successorFactSha256": "3e0162ad9ac6d26e3fc90c7b4ff1d28818f0b4b0fd577057c43b1709bad0b71f",
+      "successorPatternId": "transport-pattern:086:4ec5d7242934a149489fcf6c918c01c4",
+      "sourceActionBindings": {
+        "rail:independent-static-correction-214:operator": "8ce892a1611e41d76a54e02f47cc941390218544ce30bbac3e9aeed3ea8aa133",
+        "rail:independent-static-correction-214:prefectural-tourism": "4e2ac22e7e3be0718b0f4636d6286a3401f0532488db947ebbc383614c7b7991",
+        "rail:independent-static-correction-214:map": "8db7fe702cfe27d6857130f1dc149b4e94b78eed6bc04b706a352abb442b450a",
+        "rail:independent-static-correction-214:jnto": "b62d403ec1bf7ae5e21261325727c56d9b465b80f88c12d04df9f6e5e3d094ef"
+      },
+      "oldNodeIds": [
+        "transport-node:086:cdcb3fd732cf46f4b6e8e65e9e8c2d50",
+        "transport-node:086:1ed485ad7642f2cbb17aaa4b6d924812",
+        "transport-node:086:da9cd86de69519744192c48383ef8ebd",
+        "transport-node:086:7db5c069008901373eb8fb197e621604",
+        "transport-node:086:8e793e22ea23460f3f8bd4785c43ea65",
+        "transport-node:086:cbb566e368486115bc6a5e49265ccdef",
+        "transport-node:086:323622d7e27304bf27ad57e8dc5e1059",
+        "transport-node:086:2d37b2ec4f8490f949e16e618b6d0051",
+        "transport-node:086:511662cf8f1e3fee4d25ffea6548fa64",
+        "transport-node:086:a4d85a57331e7c7a85f8a646bae8d27a"
+      ],
+      "newCallCount": 12
+    },
+    {
+      "oldPatternId": "transport-pattern:086:fc54dd86d4778bb7905bec7de80c5a5a",
+      "oldPhaseId": "170-iwakuni-airport-east-exit-actual-sanyo-national-chain",
+      "oldFactId": "iwakuni-hiroshima-510M",
+      "oldPatternSha256": "d734268f2e855a3ffb385c3f929eaf36f12086215be9ff62796975846180c36d",
+      "oldFactSha256": "c95db9f50c4e07b1b5e6b23ea2dc79b1ba8836fd4ba5e4ec7f36c198eca5a90f",
+      "oldEdgeSha256ById": {
+        "transport-edge:086:10f69d64defc5b10ab6908f0131e207e": "83ca74679ee821279ddb3eac36e1c4381d3be1dcd91a25052b521814202cfed6",
+        "transport-edge:086:290d84d6504d289783fbf94a98001b91": "8856732517dc0825717faf316465acf2473407e46692bac3aacd31c148e71f4c",
+        "transport-edge:086:5fac3d8ac2da3a2e060669239983b53a": "3290ae5fda8a022a549f804238c1f785888169c48731ff1197efda9d0b6b4366",
+        "transport-edge:086:62cf79f1e634323560e77fb5ec8313fe": "4142d06b96f36c7c0da71bce27ac65c7caf529087fc64c9489fdd231ef9e8d35",
+        "transport-edge:086:6392ae512918af67e8ab77e34a89b0c1": "ff3edb8a89618a61b0e213a87f11db39ec4d50ff9621846a0f09a80005b221ce",
+        "transport-edge:086:6b2d49c005e434edb28f3ac54b2f0994": "a7324ca57097189e3ab6f43019334b7bffa9064ed2336bfec60174d54461d0cd",
+        "transport-edge:086:7f3245d369f72d4fc301f57426348aae": "251447dc5c7e9d961c97dc637579e6f46dffb6c8e87721271e42179943e84d57",
+        "transport-edge:086:8c1facdcb2cd7235bfe3e673339cda28": "c650cb0c7a2e96aa8b69602ca157f1b079085697b8187335067c6aa9b0cb9853",
+        "transport-edge:086:a79b8355455464b8ec98c4e8c767bada": "19cd589adf5981c2507f1d9e945f5c3972d25f7a055cb9b7c1e2d962d3f7df29",
+        "transport-edge:086:c40a44539fb126bf753becd4ae9c9329": "1ba8b44b0d2ad4cf6944c0b5edd0e56dc1ff5586fbdbd03c633b059b369490f9",
+        "transport-edge:086:ce2c57dc826f392c7b5fade66f4d65f6": "468422be09cac099144e1b6e0b4fa38dcdc4c9fcce9ba74608edd2542fe9de37",
+        "transport-edge:086:d2e1b2474f42115833605c6033e11162": "20d1fce4c05a3b3b49c9a51cc54a56322e453a4964d2d70ff8a81f55834280f8",
+        "transport-edge:086:f59f83b192aa279b553614e5101af0a6": "7939e3175d91a62c970cbe08cebe1b086945069749ab5f80cc41779cd2791ee5",
+        "transport-edge:086:fbb017d46f8213848324a92b2c5f5ca9": "a440c7229d3cbbfb84cf1e76a6bffc589355a30f95d4c6259ec45f079555f011",
+        "transport-edge:086:fbbc780e7042dfc9370c6397926f22bd": "9a92330ada15572ed40f00c11a777b90daafabb3132d0c08eae34d21b6f5e360"
+      },
+      "reason": "SOURCE_SPECIFIC_UNSUPPORTED_IMPLEMENTATION",
+      "decision": "REVIEWED_EXPLICIT_IMPLEMENTATION_CORRECTION",
+      "originalRequiredServiceClass": "普通",
+      "originalRequirementBasis": [
+        "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "data/transport/network/research/pattern-correction-review.v1.json"
+      ],
+      "successorPhaseId": "214-independent-static-rail-source-corrections",
+      "successorFactId": "iwakuni-hiroshima-independent-static-local-eastbound",
+      "successorFactSha256": "165d0225589f5526f48cd4884223f02b10c86cb77caea2314d3d809ffc68a874",
+      "successorPatternId": "transport-pattern:086:8fbbafdbe2d8eec239919fa15a742044",
+      "sourceActionBindings": {
+        "rail:independent-static-correction-214:operator": "8ce892a1611e41d76a54e02f47cc941390218544ce30bbac3e9aeed3ea8aa133",
+        "rail:independent-static-correction-214:city": "db0d2c9edecba50cd1efe2f160d11c6bceea542bebc454970df2fc2aa6b5fa57",
+        "rail:independent-static-correction-214:jnto": "b62d403ec1bf7ae5e21261325727c56d9b465b80f88c12d04df9f6e5e3d094ef",
+        "rail:independent-static-correction-214:map": "8db7fe702cfe27d6857130f1dc149b4e94b78eed6bc04b706a352abb442b450a"
+      },
+      "oldNodeIds": [
+        "transport-node:086:f5bc53fa71f09a70b453e795ea5d84fb",
+        "transport-node:086:05bf735b8772db1eb3cdb6a75de9fb80",
+        "transport-node:086:1e9631bcf4c1a737bd3482abe6c4ab09",
+        "transport-node:086:6f2fe9161dd32da178f94e952d0abb13",
+        "transport-node:086:3aea1128e8ae7b3412507b9232c723d5",
+        "transport-node:086:fe222f2e1fbcf9f13ae5297780923ac2",
+        "transport-node:086:2757767fe73d494802c46b59dd05f681",
+        "transport-node:086:ffa734935d852fbd12893dabcc0f4686",
+        "transport-node:086:fa087288ad4a6c04358659d8efb390d7",
+        "transport-node:086:629a7513c84b43597b5e4ce2c0275b0d",
+        "transport-node:086:e31060f508b46b801ffe95597af6f243",
+        "transport-node:086:5df1d79d8371fc484bded9489d5f6324",
+        "transport-node:086:a0c648e430a86ae1589fe2619ce36a05",
+        "transport-node:086:0d019364a1312bd33adffeaa2d83166e",
+        "transport-node:086:957ad1b474243ef7b4afb53f550d763a",
+        "transport-node:086:7bd0b39e0979945a5a8bcde9b7f947ab"
+      ],
+      "newCallCount": 16
+    }
+  ]
+}

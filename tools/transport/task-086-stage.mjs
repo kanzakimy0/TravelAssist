@@ -9,6 +9,7 @@ import {
   generateTransfer,
   validateEdges,
   anchorQueries,
+  allowsServiceAccess,
 } from "./task-086-model.mjs";
 import {
   readJson,
@@ -25,7 +26,8 @@ const root = path.resolve(
   ),
   base = path.join(root, "data/transport/network");
 // Expanded passenger-state SCCs respect boarding, alighting and continued rides.
-export function passengerComponents(nodes, edges) {
+export function passengerComponents(nodes, edges, accessContext) {
+  edges = edges.filter((e) => allowsServiceAccess(e, accessContext));
   const adj = new Map(),
     rev = new Map();
   const add = (v) => {
@@ -109,14 +111,19 @@ export function passengerComponents(nodes, edges) {
     ]),
   );
 }
-export function validPath(ids, from, to, byEdge) {
+export function validPath(ids, from, to, byEdge, accessContext) {
   let node = from,
     pattern = null,
     index = null,
     canAlight = true;
   for (const id of ids ?? []) {
     const e = byEdge.get(id);
-    if (!e || e.fromTransportNodeId !== node) return false;
+    if (
+      !e ||
+      e.fromTransportNodeId !== node ||
+      !allowsServiceAccess(e, accessContext)
+    )
+      return false;
     const continuing =
       e.edgeKind === "service_segment" &&
       pattern === e.servicePatternRef &&
@@ -277,7 +284,7 @@ export function deriveExecutionState({ policy, stage, gate, packages }) {
     optionalExpansionScope: [],
   };
 }
-export function buildStageReport() {
+export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
   const j = (n) => readJson(path.join(base, n)),
     r = (n) => readRows(path.join(base, n)),
     scope = j("research/stage-scope.json"),
@@ -344,7 +351,11 @@ export function buildStageReport() {
     return admitted.length;
   });
   check("provenance_direction_duplicates", () => {
-    validateEdges(edges);
+    validateEdges(edges, {
+      sources,
+      evidence,
+      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    });
     return edges.length;
   });
   check("actual_ordered_patterns_rights_and_boarding", () => {
@@ -767,6 +778,16 @@ export function buildStageReport() {
       disconnectedNodes: audit.disconnectedRequiredNodes.length,
       proofExceptions: 0,
     },
+    ...(conditionalAccessContexts.length
+      ? {
+          passengerViews: passengerViewReports(
+            nodes,
+            edges,
+            audit.anchorNodeId,
+            conditionalAccessContexts,
+          ),
+        }
+      : {}),
     runtimeImportAuthorized: false,
     productionIntegrationAuthorized: false,
   };
@@ -886,4 +907,35 @@ if (
       2,
     ),
   );
+}
+
+export function passengerViewReports(nodes, edges, anchor, contexts = []) {
+  const view = (context) => {
+    const components = passengerComponents(nodes, edges, context),
+      query = anchorQueries(edges, anchor, context),
+      byEdge = new Map(edges.map((e) => [e.edgeId, e]));
+    return {
+      contextSha256: context ? hash(context) : null,
+      components: Object.fromEntries(components),
+      nodes: nodes.map((n) => {
+        const forward = query(anchor, n.nodeId),
+          reverse = query(n.nodeId, anchor);
+        return {
+          nodeId: n.nodeId,
+          forward,
+          reverse,
+          valid:
+            validPath(forward, anchor, n.nodeId, byEdge, context) &&
+            validPath(reverse, n.nodeId, anchor, byEdge, context),
+        };
+      }),
+    };
+  };
+  return {
+    defaultUnconditional: view(undefined),
+    evidencedPublicConditionalStructure: contexts
+      .filter((c) => c?.publicStructureOnly === true)
+      .map(view),
+    defaultChecksUnchanged: true,
+  };
 }

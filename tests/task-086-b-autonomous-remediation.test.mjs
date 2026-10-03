@@ -882,7 +882,7 @@ test("TASK086 flight reachability does not substitute for airport surface access
     fromTransportNodeId: from,
     toTransportNodeId: to,
     mode,
-    edgeKind: mode === "flight" ? "service_segment" : "hub_transfer",
+    edgeKind: mode === "transfer" ? "hub_transfer" : "service_segment",
     metrics: metricFields({}, new Map()),
   });
   const flight = [
@@ -917,6 +917,13 @@ test("TASK086 flight reachability does not substitute for airport surface access
       edge("airport-b", "surface", "transfer"),
       edge("surface", "airport-b", "transfer"),
     ]).counts.AIRPORT_SURFACE_GAP,
+    1,
+  );
+  assert.equal(
+    audit([
+      edge("airport-b", "surface", "fixed_guideway"),
+      edge("surface", "airport-b", "fixed_guideway"),
+    ]).counts.AIRPORT_SURFACE_GAP,
     0,
   );
   assert.equal(
@@ -934,7 +941,7 @@ test("TASK086 admitted legacy GTFS bus stops satisfy only real bidirectional air
     fromTransportNodeId: from,
     toTransportNodeId: to,
     mode,
-    edgeKind: mode === "flight" ? "service_segment" : "hub_transfer",
+    edgeKind: mode === "transfer" ? "hub_transfer" : "service_segment",
     metrics: metricFields({}, new Map()),
   });
   const audit = (peer, extra) =>
@@ -974,9 +981,13 @@ test("TASK086 admitted legacy GTFS bus stops satisfy only real bidirectional air
       ],
       anchorNodeId: "anchor",
     }).counts.AIRPORT_SURFACE_GAP;
-  const outward = edge("airport", "legacy-stop");
-  const inward = edge("legacy-stop", "airport");
+  const outward = edge("airport", "legacy-stop", "local_bus");
+  const inward = edge("legacy-stop", "airport", "local_bus");
   assert.equal(audit({}, [outward, inward]), 0);
+  assert.equal(
+    audit({}, [edge("airport", "legacy-stop"), edge("legacy-stop", "airport")]),
+    1,
+  );
   assert.equal(audit({}, [outward]), 1);
   assert.equal(audit({}, [inward]), 1);
   assert.equal(audit({ decision: "HOLD" }, [outward, inward]), 1);

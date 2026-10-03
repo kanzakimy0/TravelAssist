@@ -29,6 +29,7 @@ export function executeBatches(
   groups,
   {
     chunkSize = 200,
+    validationContext,
     rerunBatch = null,
     repair = false,
     crashAfter = Infinity,
@@ -39,6 +40,17 @@ export function executeBatches(
     Number.isInteger(chunkSize) && chunkSize > 0 && chunkSize <= 200,
     "BATCH_HARD_CAP",
   );
+  invariant(
+    validationContext?.sources instanceof Map &&
+      validationContext?.evidence instanceof Map &&
+      validationContext?.patternById instanceof Map,
+    "BATCH_VALIDATION_CONTEXT_REQUIRED",
+  );
+  const validationContextSha256 = hash({
+    sources: [...validationContext.sources].sort(),
+    evidence: [...validationContext.evidence].sort(),
+    patterns: [...validationContext.patternById].sort(),
+  });
   const results = [],
     receipts = [];
   for (const group of groups)
@@ -53,6 +65,7 @@ export function executeBatches(
         start,
         chunkSize,
         generatorSha256: group.generatorSha256,
+        validationContextSha256,
         deficitStateSha256: hash(group.nextActionDeficitSummary ?? {}),
       };
       const fingerprint = hash(input);
@@ -76,7 +89,7 @@ export function executeBatches(
         ),
         nextActionDeficitSummary: group.nextActionDeficitSummary,
       };
-      validateEdges(edges);
+      validateEdges(edges, validationContext);
       const body = jsonBytes(batch),
         outputSha256 = hash(body);
       const receipt = {

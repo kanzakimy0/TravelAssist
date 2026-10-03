@@ -23,7 +23,7 @@ import {
   acceptance,
 } from "../tools/transport/task-086-model.mjs";
 import {
-  executeBatches,
+  executeBatches as executeProductionBatches,
   readJson,
 } from "../tools/transport/task-086-batches.mjs";
 const source = {
@@ -102,6 +102,15 @@ function pattern(overrides = {}) {
     ...overrides,
   };
 }
+const executeBatches = (output, groups, options = {}) =>
+  executeProductionBatches(output, groups, {
+    ...options,
+    validationContext: {
+      sources,
+      evidence,
+      patternById: new Map([[pattern().servicePatternId, pattern()]]),
+    },
+  });
 const generate = (p) =>
   generatePattern(p, nodes, sources, evidence, "fixture-snapshot");
 const temp = (t) => {

@@ -1,3 +1,4 @@
+import { createServiceAccessContract } from "./task-086-service-access-contract.mjs";
 import { createHash } from "node:crypto";
 
 export const DEFICITS = [
@@ -73,6 +74,13 @@ export const hash = (value) =>
         : canonical(value),
     )
     .digest("hex");
+const serviceAccess = createServiceAccessContract({
+  canonical,
+  hash,
+  invariant,
+  verifyEvidence,
+});
+export const allowsServiceAccess = serviceAccess.allowsEdge;
 export const id = (kind, anchor) =>
   `transport-${kind}:086:${hash(anchor).slice(0, 32)}`;
 export const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -820,6 +828,7 @@ export function generatePattern(
     verifyEvidence(pattern.evidenceRefs, sources, evidence),
     "PATTERN_EVIDENCE_INVALID",
   );
+  const accessContract = serviceAccess.bindPattern(pattern, sources, evidence);
   invariant(
     Array.isArray(pattern.callingNodes) && pattern.callingNodes.length >= 2,
     "PATTERN_SEQUENCE_INVALID",
@@ -1097,7 +1106,15 @@ export function generatePattern(
       direction: pattern.direction,
       boardAllowed: from.pickupType !== "1",
       alightAllowed: to.dropOffType !== "1",
-      topologyEvidenceRefs: pattern.evidenceRefs,
+      ...serviceAccess.edgeFields(accessContract),
+      topologyEvidenceRefs: accessContract
+        ? [
+            ...new Set([
+              ...pattern.evidenceRefs,
+              ...accessContract.sourceEvidenceRefs,
+            ]),
+          ]
+        : pattern.evidenceRefs,
       sourceRefs: pattern.sourceRefs,
       confidence: 1,
       metrics: metricFields(pattern.metrics, sources),
@@ -1288,7 +1305,7 @@ export function generateDirect(
     generatedAt,
   };
 }
-export function validateEdges(edges) {
+export function validateEdges(edges, validationContext) {
   unique(edges, (e) => e.edgeId, "EDGE_ID");
   unique(
     edges,
@@ -1306,6 +1323,36 @@ export function validateEdges(edges) {
     edges.every((e) => e.directed === true && e.topologyEvidenceRefs?.length),
     "EDGE_PROVENANCE_OR_DIRECTION",
   );
+  for (const edge of edges) {
+    if (validationContext) {
+      const { sources, evidence, patternById } = validationContext;
+      invariant(
+        sources instanceof Map &&
+          evidence instanceof Map &&
+          patternById instanceof Map,
+        "EDGE_VALIDATION_CONTEXT_INCOMPLETE",
+      );
+      invariant(
+        edge.edgeKind !== "service_segment" ||
+          patternById.has(edge.servicePatternRef),
+        "EDGE_PATTERN_REGISTRY_INCOMPLETE",
+      );
+      serviceAccess.bindEdge(
+        edge,
+        sources,
+        evidence,
+        patternById.get(edge.servicePatternRef),
+      );
+    } else {
+      invariant(
+        !Object.hasOwn(edge, "accessContract") &&
+          edge.accessContractSha256 === undefined &&
+          edge.conditionalTopology === undefined &&
+          !serviceAccess.requiresReservation(edge),
+        "EDGE_ACCESS_VALIDATION_CONTEXT_REQUIRED",
+      );
+    }
+  }
 }
 export function growInventory(previous, proposed, removals = []) {
   unique(proposed, (n) => n.requirementId, "REQUIREMENT");
@@ -1337,7 +1384,7 @@ export function growInventory(previous, proposed, removals = []) {
 }
 // Reachability retains the onboard service state: pickup/drop-off restrictions never
 // create a spurious interchange at an intermediate stop. No all-pairs edge generation.
-export function queryGraph(edges, from, to) {
+export function queryGraph(edges, from, to, accessContext) {
   if (!from || !to) return null;
   const adjacency = new Map();
   for (const edge of edges) {
@@ -1363,6 +1410,7 @@ export function queryGraph(edges, from, to) {
     seen.add(key);
     if (state.node === to && state.canAlight) return state.path;
     for (const edge of adjacency.get(state.node) ?? []) {
+      if (!serviceAccess.allowsEdge(edge, accessContext)) continue;
       const continuing =
         edge.edgeKind === "service_segment" &&
         state.pattern === edge.servicePatternRef &&
@@ -1381,7 +1429,7 @@ export function queryGraph(edges, from, to) {
   return null;
 }
 // Traverse once per anchor direction, retaining the same onboard restrictions.
-export function reachablePaths(edges, from) {
+export function reachablePaths(edges, from, accessContext) {
   const adjacency = new Map();
   for (const e of edges) {
     if (!adjacency.has(e.fromTransportNodeId))
@@ -1408,6 +1456,7 @@ export function reachablePaths(edges, from) {
     if (state.canAlight && !paths.has(state.node))
       paths.set(state.node, state.path);
     for (const e of adjacency.get(state.node) ?? []) {
+      if (!serviceAccess.allowsEdge(e, accessContext)) continue;
       const continuing =
         e.edgeKind === "service_segment" &&
         state.pattern === e.servicePatternRef &&
@@ -1425,10 +1474,11 @@ export function reachablePaths(edges, from) {
   }
   return paths;
 }
-export function anchorQueries(edges, anchor) {
+export function anchorQueries(edges, anchor, accessContext) {
+  edges = edges.filter((e) => serviceAccess.allowsEdge(e, accessContext));
   // Direct shortcuts have different start/end segment indexes; use the general
   // forward query for those graphs until their reverse state is represented.
-  const forward = reachablePaths(edges, anchor);
+  const forward = reachablePaths(edges, anchor, accessContext);
   const backward = edges.some((e) => e.edgeKind === "direct_service")
     ? null
     : reachablePaths(
@@ -1442,6 +1492,7 @@ export function anchorQueries(edges, anchor) {
             e.segmentIndex === undefined ? undefined : -e.segmentIndex,
         })),
         anchor,
+        accessContext,
       );
   return (from, to) =>
     !from || !to
@@ -1456,7 +1507,7 @@ export function anchorQueries(edges, anchor) {
             ? []
             : backward?.has(from) && forward.has(to)
               ? [...backward.get(from)].reverse().concat(forward.get(to))
-              : queryGraph(edges, from, to);
+              : queryGraph(edges, from, to, accessContext);
 }
 // Resolve only previously absent query endpoints from independently admitted rail
 // components. This creates a QA query, never an edge or an identity admission.
@@ -1487,29 +1538,21 @@ export function auditGraph({
   corridors = [],
   anchorNodeId,
   discoveryGaps = [],
+  validationContext,
+  conditionalAccessContexts = [],
 }) {
   const query = anchorQueries(edges, anchorNodeId);
+  const airportSurfaceViews = [];
+  if (validationContext) validateEdges(edges, validationContext);
+  const defaultSurfaceIndex = buildSurfaceIndex(nodes, edges);
+  const conditionalSurfaceIndexes = new Map(
+    conditionalAccessContexts.map((c) => [
+      c,
+      buildSurfaceIndex(nodes, edges, c),
+    ]),
+  );
   const deficits = discoveryGaps.map((d) => ({ ...d }));
   const byId = new Map(nodes.map((n) => [n.nodeId, n]));
-  const surfaceModes = new Set([
-    "shinkansen",
-    "conventional_rail",
-    "private_rail",
-    "metro",
-    "fixed_guideway",
-    "tram",
-    "bus",
-    "local_bus",
-    "airport_bus",
-    "highway_bus",
-  ]);
-  // Licensed GTFS bus stops predate the optional mode field. Their admitted
-  // nodeKind still establishes surface transport; do not infer it for ports or
-  // generic tourism facilities, and preserve any explicit mode classification.
-  const isSurfaceNode = (node) =>
-    surfaceModes.has(
-      node?.mode ?? (node?.nodeKind === "bus_stop" ? "bus" : null),
-    );
   const connected = [],
     disconnected = [];
   const tier = {
@@ -1552,28 +1595,48 @@ export function auditGraph({
       ferry_port: "ISLAND_FERRY_GAP",
       bus_terminal: "HIGHWAY_BUS_GAP",
     }[requirement.kind];
-    const surfacePeers = new Set(
-      (requirement.kind === "airport" ? edges : [])
-        .filter(
-          (e) =>
-            e.fromTransportNodeId === requirement.nodeId &&
-            e.mode !== "flight" &&
-            e.mode !== "ferry" &&
-            byId.get(e.toTransportNodeId)?.decision ===
-              "ADMIT_TASK_086_TOPOLOGY" &&
-            isSurfaceNode(byId.get(e.toTransportNodeId)),
-        )
-        .map((e) => e.toTransportNodeId),
-    );
+    const defaultSurfaceWitness =
+      requirement.kind === "airport"
+        ? validatedSurfaceServiceRoundTrip(
+            nodes,
+            edges,
+            requirement.nodeId,
+            undefined,
+            defaultSurfaceIndex,
+          )
+        : null;
+    const conditionalSurfaceWitnesses =
+      requirement.kind === "airport"
+        ? conditionalAccessContexts
+            .map((context) => {
+              invariant(
+                context?.publicStructureOnly === true,
+                "AIRPORT_PUBLIC_CONTEXT_REQUIRED",
+              );
+              invariant(
+                validationContext,
+                "AIRPORT_CONDITIONAL_VALIDATION_CONTEXT_REQUIRED",
+              );
+              return validatedSurfaceServiceRoundTrip(
+                nodes,
+                edges,
+                requirement.nodeId,
+                context,
+                conditionalSurfaceIndexes.get(context),
+              );
+            })
+            .filter(Boolean)
+        : [];
+    if (requirement.kind === "airport")
+      airportSurfaceViews.push({
+        requirementId: requirement.requirementId,
+        defaultUnconditional: defaultSurfaceWitness,
+        evidencedPublicConditionalStructure: conditionalSurfaceWitnesses,
+        defaultCheckId: `mode:${requirement.requirementId}`,
+        defaultCheckUnchanged: true,
+      });
     const airportSurfaceConnected =
-      requirement.kind !== "airport" ||
-      edges.some(
-        (e) =>
-          e.toTransportNodeId === requirement.nodeId &&
-          e.mode !== "flight" &&
-          e.mode !== "ferry" &&
-          surfacePeers.has(e.fromTransportNodeId),
-      );
+      requirement.kind !== "airport" || defaultSurfaceWitness !== null;
     if (modeDeficit && (!reachable || !airportSurfaceConnected))
       deficits.push({
         deficitId: `mode:${requirement.requirementId}`,
@@ -1684,6 +1747,7 @@ export function auditGraph({
     disconnected,
     corridors: results,
     transferResults,
+    airportSurfaceViews,
     metrics,
     metricOnly,
     hardDeficitCount: deficits.length,
@@ -1921,4 +1985,224 @@ export function assertTerminalResult(gate, actions = []) {
     "TERMINAL_RESULT_FORBIDDEN_ORDINARY_REMEDIATION_REMAINS",
   );
   return true;
+}
+
+// Both public interfaces and real surface rides must exist in each direction.
+// Conditional evidence is a separate structural view; it never deletes a default check.
+export function surfaceServiceRoundTrip(
+  nodes,
+  edges,
+  airportNodeId,
+  accessContext,
+  validationContext,
+) {
+  if (accessContext && accessContext.publicStructureOnly !== true) return null;
+  if (validationContext) validateEdges(edges, validationContext);
+  else if (accessContext)
+    throw Error("AIRPORT_CONDITIONAL_VALIDATION_CONTEXT_REQUIRED");
+  return validatedSurfaceServiceRoundTrip(
+    nodes,
+    edges,
+    airportNodeId,
+    accessContext,
+  );
+}
+function buildSurfaceIndex(nodes, edges, accessContext) {
+  const admitted = new Set(
+    nodes
+      .filter((n) => n.decision === "ADMIT_TASK_086_TOPOLOGY")
+      .map((n) => n.nodeId),
+  );
+  const modes = new Set([
+    "shinkansen",
+    "conventional_rail",
+    "private_rail",
+    "metro",
+    "fixed_guideway",
+    "tram",
+    "bus",
+    "local_bus",
+    "airport_bus",
+    "highway_bus",
+    "demand_shared_taxi",
+  ]);
+  // Legacy licensed bus stops may omit mode. An explicit non-surface mode
+  // always takes precedence; ports and generic facilities cannot be witnesses.
+  const byId = new Map(nodes.map((node) => [node.nodeId, node]));
+  const isSurfaceNode = (node) =>
+    modes.has(node?.mode ?? (node?.nodeKind === "bus_stop" ? "bus" : null));
+  const isRide = (e) => e.edgeKind === "service_segment" && modes.has(e.mode);
+  // Actual segments are required; shortcuts never stand in for the ride witness.
+  const filtered = edges.filter(
+    (e) =>
+      admitted.has(e.fromTransportNodeId) &&
+      admitted.has(e.toTransportNodeId) &&
+      e.mode !== "flight" &&
+      e.mode !== "ferry" &&
+      e.edgeKind !== "direct_service" &&
+      allowsServiceAccess(e, accessContext),
+  );
+  const forward = new Map(),
+    reverse = new Map(),
+    byEdge = new Map(),
+    candidates = new Set();
+  for (const e of filtered) {
+    byEdge.set(e.edgeId, e);
+    if (!forward.has(e.fromTransportNodeId))
+      forward.set(e.fromTransportNodeId, []);
+    if (!reverse.has(e.toTransportNodeId)) reverse.set(e.toTransportNodeId, []);
+    forward.get(e.fromTransportNodeId).push(e);
+    reverse.get(e.toTransportNodeId).push({
+      ...e,
+      fromTransportNodeId: e.toTransportNodeId,
+      toTransportNodeId: e.fromTransportNodeId,
+      boardAllowed: e.alightAllowed,
+      alightAllowed: e.boardAllowed,
+      segmentIndex: e.segmentIndex === undefined ? undefined : -e.segmentIndex,
+    });
+    if (isRide(e)) {
+      if (isSurfaceNode(byId.get(e.fromTransportNodeId)))
+        candidates.add(e.fromTransportNodeId);
+      if (isSurfaceNode(byId.get(e.toTransportNodeId)))
+        candidates.add(e.toTransportNodeId);
+    }
+  }
+  for (const m of [forward, reverse])
+    for (const values of m.values())
+      values.sort((a, b) => compare(a.edgeId, b.edgeId));
+  return { admitted, isRide, forward, reverse, byEdge, candidates };
+}
+function validatedSurfaceServiceRoundTrip(
+  nodes,
+  edges,
+  airportNodeId,
+  accessContext,
+  sharedIndex,
+) {
+  const index = sharedIndex ?? buildSurfaceIndex(nodes, edges, accessContext);
+  if (!index.admitted.has(airportNodeId)) return null;
+  const initial = () => ({
+    node: airportNodeId,
+    pattern: null,
+    index: null,
+    canAlight: true,
+    hasRide: false,
+    hasPublicConditionalRide: false,
+    previous: null,
+    edgeId: null,
+  });
+  const sides = [
+    {
+      adj: index.forward,
+      queue: [initial()],
+      next: 0,
+      seen: new Set(),
+      reached: new Map(),
+    },
+    {
+      adj: index.reverse,
+      queue: [initial()],
+      next: 0,
+      seen: new Set(),
+      reached: new Map(),
+    },
+  ];
+  const pathOf = (state) => {
+    const result = [];
+    while (state.previous) {
+      result.push(state.edgeId);
+      state = state.previous;
+    }
+    return result.reverse();
+  };
+  function witness(other) {
+    const forward = pathOf(sides[0].reached.get(other)),
+      reverse = pathOf(sides[1].reached.get(other)).reverse();
+    const out = forward.map((id) => index.byEdge.get(id)),
+      back = reverse.map((id) => index.byEdge.get(id)),
+      conditional = [...out, ...back].filter((e) => e.accessContract);
+    if (conditional.some((e) => e.accessContract.audience !== "PUBLIC"))
+      return null;
+    return {
+      kind: accessContext
+        ? "EVIDENCED_PUBLIC_CONDITIONAL_SURFACE_ROUND_TRIP"
+        : "UNCONDITIONAL_SURFACE_SERVICE_ROUND_TRIP",
+      airportNodeId,
+      otherNodeId: other,
+      forwardEdgeIds: forward,
+      reverseEdgeIds: reverse,
+      surfaceRideEdgeIds: [...out, ...back]
+        .filter(index.isRide)
+        .map((e) => e.edgeId),
+      conditions: [
+        ...new Map(
+          conditional.map((e) => [
+            e.accessContractSha256,
+            {
+              sha256: e.accessContractSha256,
+              contract: e.accessContract,
+              sourceEvidenceRefs: e.accessContract.sourceEvidenceRefs,
+            },
+          ]),
+        ).values(),
+      ],
+      contextSha256: accessContext ? hash(accessContext) : null,
+      bookingConfirmed: false,
+      capacityGuaranteed: false,
+      unconditional: !accessContext,
+      globalGateClosed: false,
+    };
+  }
+  // Finite passenger-state search, interleaved by direction. Stop at the first
+  // common alightable ride endpoint. No distance cutoff or inferred reverse edge.
+  while (sides.some((side) => side.next < side.queue.length))
+    for (let direction = 0; direction < 2; direction++) {
+      const side = sides[direction];
+      if (side.next >= side.queue.length) continue;
+      const state = side.queue[side.next++],
+        key = canonical([
+          state.node,
+          state.pattern,
+          state.index,
+          state.canAlight,
+          state.hasRide,
+          state.hasPublicConditionalRide,
+        ]);
+      if (side.seen.has(key)) continue;
+      side.seen.add(key);
+      if (
+        state.node !== airportNodeId &&
+        state.canAlight &&
+        state.hasRide &&
+        (!accessContext || state.hasPublicConditionalRide) &&
+        index.candidates.has(state.node)
+      ) {
+        if (!side.reached.has(state.node)) side.reached.set(state.node, state);
+        if (sides[1 - direction].reached.has(state.node)) {
+          const result = witness(state.node);
+          if (result) return result;
+        }
+      }
+      for (const e of side.adj.get(state.node) ?? []) {
+        const continuing =
+          e.edgeKind === "service_segment" &&
+          state.pattern === e.servicePatternRef &&
+          state.index + 1 === e.segmentIndex;
+        if (!continuing && (!state.canAlight || e.boardAllowed === false))
+          continue;
+        side.queue.push({
+          node: e.toTransportNodeId,
+          pattern: e.servicePatternRef ?? null,
+          index: e.segmentIndex ?? null,
+          canAlight: e.alightAllowed !== false,
+          hasRide: state.hasRide || index.isRide(e),
+          hasPublicConditionalRide:
+            state.hasPublicConditionalRide ||
+            (index.isRide(e) && e.accessContract?.audience === "PUBLIC"),
+          previous: state,
+          edgeId: e.edgeId,
+        });
+      }
+    }
+  return null;
 }

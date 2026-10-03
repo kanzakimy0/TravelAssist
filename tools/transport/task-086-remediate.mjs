@@ -1,4 +1,13 @@
 import {
+  prepareExactPatternCorrections,
+  isRetiredCorrectionFact,
+  assertCorrectionGraph,
+} from "./task-086-pattern-corrections.mjs";
+import {
+  bindReviewedConditionEvidence,
+  resolvedAccessFields,
+} from "./task-086-condition-evidence.mjs";
+import {
   DERIVED_GTFS_KIND,
   buildDerivedGtfsPackage,
   prepareDerivedGtfsPackage,
@@ -90,6 +99,7 @@ export function runRemediation({
   rerunBatch = null,
   repair = false,
   terminal = false,
+  conditionalAccessContexts = [],
 } = {}) {
   const origin = readJson(path.join(networkRoot, "checkpoints/origin.json"));
   const archive = fs.readFileSync(
@@ -200,7 +210,48 @@ export function runRemediation({
       .flatMap((r) => r.inputBindings)
       .map((r) => [r.path, fs.readFileSync(path.join(root, r.path))]),
   );
-  const sourceFacts = phases.flatMap((p) => p.facts);
+  const correctionFile =
+    "data/transport/network/research/pattern-corrections.v1.json";
+  let correctionDocument = null;
+  if (fs.existsSync(path.join(root, correctionFile))) {
+    reviewBytes.set(
+      correctionFile,
+      fs.readFileSync(path.join(root, correctionFile)),
+    );
+    correctionDocument = JSON.parse(reviewBytes.get(correctionFile));
+    for (const binding of correctionDocument.inputBindings ?? []) {
+      invariant(
+        typeof binding.path === "string" &&
+          !binding.path.includes("\\") &&
+          !binding.path.includes(":") &&
+          !path.posix.isAbsolute(binding.path) &&
+          path.posix.normalize(binding.path) === binding.path &&
+          !binding.path.split("/").includes(".."),
+        "CORRECTION_INPUT_PATH_INVALID",
+      );
+      invariant(
+        binding.path !== correctionFile &&
+          binding.path !==
+            "data/transport/network/research/global-review.v1.json",
+        "CORRECTION_SELF_BINDING",
+      );
+      reviewBytes.set(
+        binding.path,
+        fs.readFileSync(path.join(root, binding.path)),
+      );
+    }
+  }
+  const patternCorrections = prepareExactPatternCorrections(
+    correctionDocument,
+    {
+      readInput: (p) => reviewBytes.get(p),
+      phases,
+      actions,
+    },
+  );
+  const sourceFacts = phases.flatMap((p) =>
+    p.facts.filter((f) => !isRetiredCorrectionFact(patternCorrections, p, f)),
+  );
   for (const fact of sourceFacts) reviewedFactAction(fact, actions);
   const nodeReviews = [],
     hubReviews = [],
@@ -744,6 +795,12 @@ export function runRemediation({
   const replay = () => {
     const pendingHubs = hubAudit().filter((h) => h.status !== "COMPLETE");
     return auditGraph({
+      validationContext: {
+        sources,
+        evidence,
+        patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+      },
+      conditionalAccessContexts,
       nodes: [...nodes.values()],
       patterns,
       transfers,
@@ -776,7 +833,10 @@ export function runRemediation({
   let audit = replay();
   const generatorPaths = [
     "task-086-model.mjs",
+    "task-086-service-access-contract.mjs",
+    "task-086-condition-evidence.mjs",
     "task-086-acceptance-inputs.mjs",
+    "task-086-pattern-corrections.mjs",
     "task-086-log-safety.mjs",
     "task-086-batches.mjs",
     "task-086-source-actions.mjs",
@@ -905,6 +965,10 @@ export function runRemediation({
       }
     }
     for (const fact of phase.facts) {
+      if (isRetiredCorrectionFact(patternCorrections, phase, fact)) continue;
+      bindReviewedConditionEvidence(fact, actions, sources, evidence, (p) =>
+        fs.readFileSync(path.join(root, p)),
+      );
       const source = factSource(fact);
       const factRef = makeEvidence(source, fact, fact.locator, [
         "fact",
@@ -947,6 +1011,7 @@ export function runRemediation({
           serviceClass: fact.serviceClass,
           direction: fact.direction,
           sourceFactRef: factRef,
+          ...resolvedAccessFields(fact),
           ...(through ?? {}),
           ...(fact.mode.includes("bus") ? { purpose: fact.purpose } : {}),
         };
@@ -995,6 +1060,9 @@ export function runRemediation({
           sources: [
             source,
             identitySource,
+            ...(fact.accessContract?.sourceEvidenceRefs ?? []).map((ref) =>
+              sources.get(evidence.get(ref).sourceId),
+            ),
             ...(fact.callingComponents?.some((c) => c.airportIdentity)
               ? [airportSource]
               : []),
@@ -1104,7 +1172,11 @@ export function runRemediation({
         });
       } else throw new Error("UNKNOWN_FACT_KIND:" + fact.kind);
     }
-    validateEdges(edges);
+    validateEdges(edges, {
+      sources,
+      evidence,
+      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    });
     const proposed = inventory.map((r) => ({
       ...r,
       admission: nodes.get(r.nodeId)?.decision ?? r.admission,
@@ -1236,6 +1308,11 @@ export function runRemediation({
       ]),
     ].sort(compare);
   const batches = executeBatches(output, groups, {
+    validationContext: {
+      sources,
+      evidence,
+      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    },
     rerunBatch,
     repair,
     allowMissingRerun: true,
@@ -1254,6 +1331,15 @@ export function runRemediation({
       .filter((r) => audit.connected.includes(r.requirementId))
       .map((r) => r.nodeId),
   );
+  const correctionAudit = assertCorrectionGraph(patternCorrections, {
+    nodes,
+    patterns,
+    edges,
+    sources,
+    evidence,
+    generatedAt,
+    connected: connectedNodeIds,
+  });
   const currentGlobalGaps = reviewGlobalGaps(review, globalReviews, {
     inventory,
     nodes: [...nodes.values()],
@@ -1261,6 +1347,10 @@ export function runRemediation({
     edges,
     connected: connectedNodeIds,
     readInput: (p) => reviewBytes.get(p),
+    patternCorrections,
+    sources,
+    evidence,
+    generatedAt,
   });
   const globalIds = new Set(review.gaps.map((g) => g.deficitId));
   audit.deficits = [
@@ -1288,6 +1378,14 @@ export function runRemediation({
   const files = new Map(),
     j = (n, v) => files.set(n, jsonBytes(v)),
     l = (n, v) => files.set(n, jsonlBytes(v));
+  if (patternCorrections)
+    j("pattern-correction-audit.json", {
+      kind: correctionDocument.kind,
+      inputSha256: hash(reviewBytes.get(correctionFile)),
+      originalRequiredPatternIds: patternCorrections.archive.requiredPatternIds,
+      originalRequiredNodeIds: patternCorrections.archive.requiredNodeIds,
+      entries: correctionAudit,
+    });
   j("required-backbone-inventory.json", {
     ...obj("required-backbone-inventory.json"),
     nodes: inventory,

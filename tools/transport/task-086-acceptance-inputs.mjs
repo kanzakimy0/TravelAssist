@@ -1,3 +1,7 @@
+import {
+  exactCorrectionCovers,
+  correctionObligationsPreserved,
+} from "./task-086-pattern-corrections.mjs";
 import fs from "node:fs";
 import { hash, invariant } from "./task-086-model.mjs";
 import { readJson } from "./task-086-batches.mjs";
@@ -20,6 +24,12 @@ export function loadAcceptanceInputs(networkRoot) {
     "research/p36-identities.jsonl",
     ...scope.phaseFiles.map((n) => "research/phases/" + n),
   ];
+  if (
+    fs.existsSync(
+      path.join(networkRoot, "research/pattern-corrections.v1.json"),
+    )
+  )
+    paths.push("research/pattern-corrections.v1.json");
   const currentPhases = fs
     .readdirSync(path.join(networkRoot, "research/phases"))
     .filter((n) => n.endsWith(".json"))
@@ -162,7 +172,18 @@ function specialApplicabilityCovered(decision, inventory, byNode, patterns) {
 export function reviewGlobalGaps(
   review,
   decisions,
-  { nodes, patterns, edges, connected, readInput, inventory },
+  {
+    nodes,
+    patterns,
+    edges,
+    connected,
+    readInput,
+    inventory,
+    patternCorrections,
+    sources,
+    evidence,
+    generatedAt,
+  },
 ) {
   const byNode = new Map(nodes.map((n) => [n.nodeId, n])),
     byPattern = new Map(patterns.map((p) => [p.servicePatternId, p]));
@@ -189,7 +210,30 @@ export function reviewGlobalGaps(
         byNode.get(id)?.decision === "ADMIT_TASK_086_TOPOLOGY" &&
         connected.has(id),
     );
+    if (
+      [
+        "source:national-stopping-patterns",
+        "service:major-rail-private-metro",
+      ].includes(g.deficitId)
+    )
+      valid &&= correctionObligationsPreserved(patternCorrections, d);
     valid &&= d.requiredPatternIds.every((id) => {
+      if (
+        [
+          "source:national-stopping-patterns",
+          "service:major-rail-private-metro",
+        ].includes(g.deficitId) &&
+        patternCorrections?.contexts.has(id)
+      )
+        return exactCorrectionCovers(patternCorrections, id, {
+          nodes,
+          patterns,
+          edges,
+          connected,
+          sources,
+          evidence,
+          generatedAt,
+        });
       const p = byPattern.get(id);
       return (
         p &&

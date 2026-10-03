@@ -47,9 +47,16 @@ export function run({
   rerunBatch = null,
   repair = false,
   terminal = false,
+  conditionalAccessContexts = [],
 } = {}) {
   if (fs.existsSync(rel("data/transport/network/checkpoints/origin.json")))
-    return runRemediation({ output, rerunBatch, repair, terminal });
+    return runRemediation({
+      output,
+      rerunBatch,
+      repair,
+      terminal,
+      conditionalAccessContexts,
+    });
   const inputPaths = [
     upstream + "manifest.json",
     upstream + "rail-components.jsonl",
@@ -86,6 +93,8 @@ export function run({
   );
   const generatorPaths = [
     "tools/transport/task-086-model.mjs",
+    "tools/transport/task-086-service-access-contract.mjs",
+    "tools/transport/task-086-condition-evidence.mjs",
     "tools/transport/task-086-batches.mjs",
     "tools/transport/task-086-run.mjs",
     "tools/transport/task-086-licensed-package.mjs",
@@ -394,6 +403,12 @@ export function run({
   let parameters = { ...DEFAULT_PARAMETERS };
   const replay = () =>
     auditGraph({
+      validationContext: {
+        sources,
+        evidence,
+        patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+      },
+      conditionalAccessContexts,
       nodes: [...activeNodes.values()],
       patterns,
       transfers,
@@ -469,8 +484,17 @@ export function run({
         });
       }
     }
-    validateEdges(edges);
+    validateEdges(edges, {
+      sources,
+      evidence,
+      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    });
     executeBatches(output, groups, {
+      validationContext: {
+        sources,
+        evidence,
+        patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+      },
       chunkSize: parameters.routeChunkSize,
       rerunBatch: repair ? rerunBatch : null,
       repair,
@@ -529,6 +553,11 @@ export function run({
     });
   }
   const batches = executeBatches(output, groups, {
+    validationContext: {
+      sources,
+      evidence,
+      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    },
     chunkSize: parameters.routeChunkSize,
     rerunBatch,
     repair,

@@ -1,33 +1,34 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T12:00:17.042630+00:00",
+  "updatedAt": "2026-10-03T14:16:35.602866+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "3255a9bd3ed3ae92c051a0e5396ac046fdc9388f",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2",
-  "currentStage": "PHASE211_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
+  "currentStage": "PHASE214_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "currentCounts": {
-    "admitted": 3942,
-    "edges": 9190,
-    "hold": 9,
-    "iterations": 211,
-    "lines": 365,
+    "admitted": 3993,
+    "edges": 9254,
+    "hold": 8,
+    "iterations": 214,
+    "lines": 369,
     "rejected": 0,
-    "required": 3951,
-    "servicePatterns": 787
+    "required": 4001,
+    "servicePatterns": 793
   },
   "currentRootAudit": {
-    "uniqueOpenRoots": 52,
-    "airportRoots": 15,
+    "uniqueOpenRoots": 50,
+    "airportRoots": 13,
     "busDirectionRoots": 36,
     "railSourceReviewRoots": 1,
-    "railSourceFactsRemaining": 5
+    "railSourceFactsRemaining": 2
   },
   "validation": {
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
     "tests": {
-      "tests": 3085,
-      "pass": 3085,
+      "tests": 3205,
+      "pass": 3205,
       "fail": 0,
       "skipped": 0
     },
@@ -39,11 +40,129 @@
           "./tests/register-route-ts.mjs",
           "--test",
           "--test-concurrency=1",
-          "tests/*.test.mjs"
+          "tests/browser-trip-save.test.mjs",
+          "tests/bulk-booking.test.mjs",
+          "tests/detail-card-actions.test.mjs",
+          "tests/detail-compact-board.test.mjs",
+          "tests/detail-overview-locations.test.mjs",
+          "tests/planner-artwork.test.mjs",
+          "tests/planner-audit-fixes.test.mjs",
+          "tests/planner-audit-regressions.test.mjs",
+          "tests/planner-concept-refinement.test.mjs",
+          "tests/planner-local-integration.test.mjs",
+          "tests/planner-meal-booking-refinement.test.mjs",
+          "tests/planner-quick-menu-design.test.mjs",
+          "tests/planner-range-enrichment.test.mjs",
+          "tests/planner-responsive-density.test.mjs",
+          "tests/planner-route-board.test.mjs",
+          "tests/planner-sight-timeline.test.mjs",
+          "tests/planner-status-stack.test.mjs",
+          "tests/planner-track-actions.test.mjs",
+          "tests/planner-working-plan.test.mjs",
+          "tests/poi-remaining-review.test.mjs",
+          "tests/pr-governance.test.mjs",
+          "tests/task-007-background.test.mjs",
+          "tests/task-007-calendar.test.mjs",
+          "tests/task-007-info-popover.test.mjs",
+          "tests/task-008-planner.test.mjs",
+          "tests/task-0081-map-booking.test.mjs",
+          "tests/task-0082-visuals.test.mjs",
+          "tests/task-0083-interactions.test.mjs",
+          "tests/task-010-b-global-logo-navigation.test.mjs",
+          "tests/task-010-navigation.test.mjs",
+          "tests/task-011-trip-detail-workspace.test.mjs",
+          "tests/task-012-planner-v05.test.mjs",
+          "tests/task-013-1-asset-variants.test.mjs",
+          "tests/task-013-2-core-generation-manifest.test.mjs",
+          "tests/task-013-3-1-japan-destination-closure.test.mjs",
+          "tests/task-013-3-japan-destination-resolution.test.mjs",
+          "tests/task-013-assets.test.mjs",
+          "tests/task-015-db-foundation.test.mjs",
+          "tests/task-016-user-profile.test.mjs",
+          "tests/task-018-authentication.test.mjs",
+          "tests/task-019-trip-plan.test.mjs",
+          "tests/task-022-ekiworld-routing.test.mjs",
+          "tests/task-022-route-contract.test.mjs",
+          "tests/task-022-routing-boundary.test.mjs",
+          "tests/task-023-planner-route-integration.test.mjs",
+          "tests/task-024-main-shell.test.mjs",
+          "tests/task-025-2-concept-fidelity.test.mjs",
+          "tests/task-025-2-coral-palette.test.mjs",
+          "tests/task-025-2-v11.test.mjs",
+          "tests/task-025-environment-deployment.test.mjs",
+          "tests/task-036-planning-contracts.test.mjs",
+          "tests/task-037-planning-contract-soak.test.mjs",
+          "tests/task-041-region-graph-pilot.test.mjs",
+          "tests/task-042-preference-schema.test.mjs",
+          "tests/task-043-master-code-registry.test.mjs",
+          "tests/task-044-companion-schema.test.mjs",
+          "tests/task-045-preference-api.test.mjs",
+          "tests/task-045-region-master-code-integration.test.mjs",
+          "tests/task-046-preference-contract.test.mjs",
+          "tests/task-047-companion-api.test.mjs",
+          "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+          "tests/task-048-trip-persistence-model.test.mjs",
+          "tests/task-049-trip-library-api.test.mjs",
+          "tests/task-050-a-poi-schema.test.mjs",
+          "tests/task-050-profile-api.test.mjs",
+          "tests/task-051-a-planner-store.test.mjs",
+          "tests/task-052-account-deletion.test.mjs",
+          "tests/task-053-preference-presets.test.mjs",
+          "tests/task-054-personal-center-migration.test.mjs",
+          "tests/task-055-private-boundaries.test.mjs",
+          "tests/task-055-test-runner.test.mjs",
+          "tests/task-060-profile-ui.test.mjs",
+          "tests/task-061-trip-library-live.test.mjs",
+          "tests/task-062-schema-union.test.mjs",
+          "tests/task-063-engine-apply.test.mjs",
+          "tests/task-064-runtime-rollback.test.mjs",
+          "tests/task-065-engine-certification.test.mjs",
+          "tests/task-067-main-system-state.test.mjs",
+          "tests/task-068-candidate-enrichment.test.mjs",
+          "tests/task-068-corpus-combination.test.mjs",
+          "tests/task-070-p0-evidence-review.test.mjs",
+          "tests/task-076-ai-runtime.test.mjs",
+          "tests/task-081-a-poi-detail-api.test.mjs",
+          "tests/task-082-a-poi-edge-graph.test.mjs",
+          "tests/task-082-personal-ai-history.test.mjs",
+          "tests/task-083-a-poi-runtime.test.mjs",
+          "tests/task-083-canonical-owner-correction.test.mjs",
+          "tests/task-084-a-canonical100-boundary.test.mjs",
+          "tests/task-084-a-real-pilot100.test.mjs",
+          "tests/task-084-a-recommendation-scoring.test.mjs",
+          "tests/task-084-v2-amendment.test.mjs",
+          "tests/task-086-b-autonomous-remediation.test.mjs",
+          "tests/task-086-b-ci-revision.test.mjs",
+          "tests/task-086-b-derived-gtfs.test.mjs",
+          "tests/task-086-b-gtfs-sections.test.mjs",
+          "tests/task-086-b-mobility-backbone.test.mjs",
+          "tests/task-086-b-p11-succession.test.mjs",
+          "tests/task-086-b-pattern-corrections.test.mjs",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+          "tests/task-086-b-selected-gtfs.test.mjs",
+          "tests/task-086-b-stage-closeout.test.mjs",
+          "tests/task-086-service-access-contract.test.mjs",
+          "tests/task-086-service-access-pipeline.test.mjs",
+          "tests/task-088-a-trusted-baseline.test.mjs",
+          "tests/trip-preparation.test.mjs",
+          "tests/trip-status-personal-center-followup.test.mjs",
+          "tests/wbs-4-17-trip-contract.test.mjs",
+          "tests/wbs-4-21-rule-feasibility.test.mjs",
+          "tests/wbs-5-10-trip-library.test.mjs",
+          "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+          "tests/wbs-5-3-auth-callback.test.mjs",
+          "tests/wbs-5-3-auth-user-flow.test.mjs",
+          "tests/wbs-5-5-preferences.test.mjs",
+          "tests/wbs-5-6-companions.test.mjs",
+          "tests/wbs-5-7-mobility-preference.test.mjs",
+          "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+          "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+          "tests/wbs-5.4-v2.test.mjs",
+          "tests/wbs-9-12-personal-center-qa.test.mjs"
         ],
-        "elapsedSeconds": 1382.6392005999805,
+        "elapsedSeconds": 381.53752370004077,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
       },
       "lint": {
         "command": [
@@ -51,9 +170,9 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 70.78384950000327,
+        "elapsedSeconds": 59.770413500024006,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
       },
       "typecheck": {
         "command": [
@@ -61,9 +180,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 9.89229410002008,
+        "elapsedSeconds": 6.032643900020048,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
       },
       "format": {
         "command": [
@@ -71,9 +190,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 12.88665930001298,
+        "elapsedSeconds": 13.53766849997919,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
       },
       "artifact": {
         "command": [
@@ -81,9 +200,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 50.82013230002485,
+        "elapsedSeconds": 60.37158209999325,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
       },
       "artifact-verify": {
         "command": [
@@ -91,17 +210,17 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.7154329000040889,
+        "elapsedSeconds": 1.9007311000023037,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE211-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
       }
     },
     "deterministicRebuild": "PASS",
     "currentCI": "PENDING_CHECKPOINT_PUSH",
-    "prior209CI": "docs/qa/TASK-086-B/phase209-ci-revisions.json"
+    "prior211CI": "docs/qa/TASK-086-B/phase211-ci-revisions.json"
   },
   "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
-  "nextConcreteAction": "Commit/push211 and record direct branch HEAD and actual PR merge checkout separately. Review and register private Memanbetsu212 full48edge airport chain on stable211. Continue private actual conditional access integration, independent remaining identities and rail fact correction with all original obligations preserved. Shared writers serialized.",
+  "nextConcreteAction": "Commit/push214 and record direct HEAD versus actual PR merge checkout. Continue Towada public walk candidate; independent OD and Tanegashima source-bound conditional implementation; remaining Sonic source repair. Preserve all original requirements; shared writers serialized.",
   "privatePackages": {
     "oita": {
       "ledger": ".cache/task-086/oita-public-next/research-ledger.json",
@@ -221,5 +340,10 @@
     "originalTimeoutMilliseconds": 30000,
     "isolatedDiagnostic": ".cache\\task-086\\airports7\\asset-dryrun200-diagnostic.json",
     "changedMethod": "Full regression concurrency2→1; no test or quality threshold edits"
+  },
+  "currentValidation": {
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
+    "full": "PASS",
+    "priorFailedAttempt": "docs/qa/TASK-086-B/phase214-first-full-failure.json"
   }
 }
