@@ -1,0 +1,90 @@
+{
+  "status": "PRIVATE_OPTIMIZATION_READY_FOR_ROOT_REVIEW",
+  "recordedAt": "2026-10-03T17:01:32.330168+00:00",
+  "files": [
+    {
+      "target": "tools/transport/task-086-model.mjs",
+      "baseSha256": "5241c2ddabdfcd71c045a7b7ffc184f8dd359aeea431c9733cacac8e5476a7d4",
+      "candidateSha256": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+      "privateFile": ".cache/task-086/conditional-performance220-private/candidate/tools/transport/task-086-model.mjs"
+    },
+    {
+      "target": "tools/transport/task-086-public-conditional-applicability.mjs",
+      "baseSha256": "7ec07e4b76f06432b9c4c4efe287a4d9069c2c1fc775a45647b0ddc0774c0114",
+      "candidateSha256": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+      "privateFile": ".cache/task-086/conditional-performance220-private/candidate/tools/transport/task-086-public-conditional-applicability.mjs"
+    }
+  ],
+  "patchSha256": "38daed2a64e3fdfba458c1b9b382ca57c24caa9b2ed1e16347591b2f8c78f9cc",
+  "patchLines": 142,
+  "measurement": {
+    "status": "EXACT_OUTPUT_AND_PATH_PARITY",
+    "sample": {
+      "actualNodes": 2,
+      "actualOD": 2,
+      "syntheticDistinctObligationAliases": 40,
+      "contexts": 3,
+      "noNationalReplay": true
+    },
+    "baseline": {
+      "elapsedMs": 325.4787,
+      "counts": {
+        "eligibility": 480,
+        "odEligibility": 480,
+        "searches": 300,
+        "adjacencyBuilds": 300
+      }
+    },
+    "optimized": {
+      "elapsedMs": 25.02049999999997,
+      "counts": {
+        "eligibility": 6,
+        "odEligibility": 6,
+        "searches": 15,
+        "adjacencyBuilds": 6
+      }
+    },
+    "speedup": 13.008481045542672,
+    "outputSha256": "aa13a1ea57cedb3d5f863ca69e16607e13f486f6132c93c21acf7b4e7dbd368f",
+    "invalidNewCallOutputSha256": "077ea70807a9e5e29791bca9d5f0d79851c78bfe43ee23311c80b2c769ffdd8d",
+    "invalidNewCallCounts": {
+      "eligibility": 6,
+      "odEligibility": 6,
+      "searches": 15,
+      "adjacencyBuilds": 6
+    },
+    "allChangedIntentChecksReopen": true
+  },
+  "tests": {
+    "passed": 39,
+    "failed": 0,
+    "originalFocused": 34,
+    "newParityAndInvalidation": 5,
+    "command": "node --test .cache/task-086/conditional-performance220-private/candidate/legacy.test.mjs .cache/task-086/conditional-performance220-private/candidate/parity.test.mjs",
+    "logSha256": "562191fc3762cedb16bddf07c6221f5307cd5f81a26a97a2ff087ed9fcf323cb",
+    "newTestSha256": "47378713d8a7fe554df24ee29cc47d4703edf03983a86dff434cdfcc1514596d"
+  },
+  "benchmarkCommand": "node .cache/task-086/conditional-performance220-private/benchmark.mjs",
+  "benchmarkScriptSha256": "2138c622f478437a03b5a6e3e8112a58deaa99de384df124f0cc73f780238006",
+  "benchmarkResultSha256": "e1736690cab406ae00c1e068a9bf1c978646376a6c7a6b2e4437ec99e0d1f9a0",
+  "proof": [
+    "Same source/identity/edge validation still executes at the start of EVERY assess invocation.",
+    "Caches exist only inside each synchronous assessment view closure: exact edge-object WeakMap and fixed context; no module/global cache, no timestamp/ID-only cache, no source revision reuse.",
+    "The private prepareConditionalQueries function is not exported and cannot be supplied through accessContext. Factory injection is model code only, analogous to existing authoritative validation callbacks.",
+    "BFS onboard pattern/index/canAlight state, board/alight checks, sorted edge ID adjacency, first matching target and path arrays retain original algorithm.",
+    "Queries reuse only exact (from,to,full-or-ground) results within the same view; each returned path array is copied.",
+    "Proof uses the same authoritative memoized eligibility as BFS. Node admission remains independently revalidated with the existing per-assessment nodeProof.",
+    "Default queryGraph calls do not use caches and preserve old behavior. Eager all-view evaluation remains unchanged.",
+    "Across calls, changed mutable intent reopens to OPEN. Revoked source fails closed by the same original exception; it cannot reuse prior success. Restoring the source triggers a fresh pass."
+  ],
+  "limits": [
+    "Benchmark is a small synthetic obligation-multiplicity sample over real two-node source-bound OD, not a national performance forecast. No shared generator/full national replay was run.",
+    "Registry hash/full validateEdges and source-independent BFS costs remain; this does not establish that all 790-second runtime is this hotspot.",
+    "The temporary benchmark models add counters only; instrumented files are NOT production targets. Only the two candidate targets above may be applied.",
+    "Permanent added parity tests should be integrated with existing tracked fixture imports rather than the private benchmark directory.",
+    "Noto six-file frozen proposal has an earlier model base; after applying this performance patch, merge/rebase its separate model factory/identity hunks, never overwrite the new model with the whole old Noto private copy. No Noto frozen artifact was changed."
+  ],
+  "canonicalWrites": 0,
+  "sharedGeneratorRuns": 0,
+  "newHTTPRequests": 0
+}

@@ -18,6 +18,77 @@ import {
   atomicWrite,
   jsonlBytes,
 } from "./task-086-batches.mjs";
+const RIGHTS_BINDING_KEYS = [
+  "license",
+  "attribution",
+  "shareAlikeRequired",
+  "shareAlikeScope",
+];
+function validateCompleteRightsBinding(binding, code) {
+  invariant(
+    binding && typeof binding.license === "string" && binding.license.trim(),
+    code + "_LICENSE",
+  );
+  invariant(
+    typeof binding.attribution === "string" && binding.attribution.trim(),
+    code + "_ATTRIBUTION",
+  );
+  invariant(
+    typeof binding.shareAlikeRequired === "boolean",
+    code + "_SHAREALIKE_BOOLEAN",
+  );
+  invariant(
+    typeof binding.shareAlikeScope === "string" &&
+      binding.shareAlikeScope.trim(),
+    code + "_SHAREALIKE_SCOPE",
+  );
+}
+export function validateRightsBinding(actionRights, expectedFact = undefined) {
+  const expectedPresent =
+    expectedFact !== undefined &&
+    (Object.hasOwn(expectedFact, "rightsBindingSchemaVersion") ||
+      Object.hasOwn(expectedFact, "rightsBinding"));
+  const marked =
+    actionRights?.rightsBindingSchemaVersion !== undefined ||
+    actionRights?.rightsBinding !== undefined;
+  if (!expectedPresent && !marked) return null; // Unmarked legacy top-level fields retain their old projection.
+  invariant(
+    actionRights?.rightsBindingSchemaVersion === 1,
+    expectedPresent
+      ? "FACT_RIGHTS_BINDING_VERSION_REQUIRED"
+      : "RIGHTS_BINDING_VERSION_REQUIRED",
+  );
+  validateCompleteRightsBinding(
+    actionRights.rightsBinding,
+    "ACTION_RIGHTS_BINDING",
+  );
+  if (expectedPresent) {
+    invariant(
+      expectedFact.rightsBindingSchemaVersion === 1,
+      "FACT_RIGHTS_BINDING_VERSION_REQUIRED",
+    );
+    validateCompleteRightsBinding(
+      expectedFact.rightsBinding,
+      "FACT_RIGHTS_BINDING",
+    );
+    invariant(
+      RIGHTS_BINDING_KEYS.every(
+        (key) =>
+          actionRights.rightsBinding[key] === expectedFact.rightsBinding[key],
+      ),
+      "FACT_RIGHTS_BINDING_MISMATCH",
+    );
+  }
+  return actionRights.rightsBinding;
+}
+function rightsBinding(request) {
+  const hasMarker = Object.hasOwn(request, "rightsBindingSchemaVersion");
+  const hasBinding = Object.hasOwn(request, "rightsBinding");
+  if (!hasMarker && !hasBinding) return {};
+  const binding = validateRightsBinding(request);
+  return { rightsBindingSchemaVersion: 1, rightsBinding: binding };
+}
+
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../..",
@@ -276,6 +347,7 @@ export function reviewedFactAction(fact, actions) {
     .at(-1);
   const rights = action.rightsFindings.at(-1);
   invariant(observed && rights, "FACT_SOURCE_NOT_OBSERVED:" + fact.factId);
+  validateRightsBinding(rights, fact);
   invariant(
     observed.rawPayloadRetained === undefined ||
       typeof observed.rawPayloadRetained === "boolean",
@@ -437,6 +509,7 @@ export function recordReferenceEvidence(
     termsUrl: safeSourceUrl(request.termsUrl),
     observedAt: request.observedAt,
     rawReuseClaimed: false,
+    ...rightsBinding(request),
   });
   actions[index] = transitionAction(
     action,
@@ -478,6 +551,7 @@ export async function acquireEvidence(
       parserVersion: request.parserVersion ?? null,
       identityVersion: request.identityVersion ?? null,
       rightsVersion: request.rightsVersion ?? null,
+      ...rightsBinding(request),
     }),
   );
   const reusable = actions[index].attempts?.find(
@@ -590,6 +664,7 @@ export async function acquireEvidence(
       termsUrl: safeSourceUrl(request.termsUrl),
       observedAt,
       rawReuseClaimed: request.rightsClass === "RAW_PERSISTENCE_ALLOWED",
+      ...rightsBinding(request),
     });
     actions[index] = transitionAction(
       actions[index],

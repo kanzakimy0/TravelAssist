@@ -50,7 +50,38 @@ export function executeBatches(
     sources: [...validationContext.sources].sort(),
     evidence: [...validationContext.evidence].sort(),
     patterns: [...validationContext.patternById].sort(),
+    ...(validationContext.dynamicODById?.size
+      ? {
+          dynamicOD: [...validationContext.dynamicODById].sort(),
+          nativeFacilities: [
+            ...validationContext.nativeFacilityByAnchor,
+          ].sort(),
+          nodes: [...validationContext.nodes].sort(),
+        }
+      : {}),
   });
+  // Validate the complete independent registry before partitioning the edge set.
+  if (validationContext.dynamicODById?.size) {
+    invariant(
+      validationContext.dynamicODValidationScope === undefined,
+      "BATCH_COMPLETE_OD_CONTEXT_REQUIRED",
+    );
+    validateEdges(
+      groups.flatMap((group) => group.edges),
+      validationContext,
+    );
+    for (const group of groups)
+      for (const edge of group.edges)
+        if (edge.edgeKind === "dynamic_od_ride")
+          invariant(
+            group.dynamicOD?.odId === edge.dynamicODRef &&
+              canonical(group.dynamicOD) ===
+                canonical(
+                  validationContext.dynamicODById.get(edge.dynamicODRef),
+                ),
+            "BATCH_OD_INPUT_REGISTRY_MISMATCH",
+          );
+  }
   const results = [],
     receipts = [];
   for (const group of groups)
@@ -62,6 +93,7 @@ export function executeBatches(
         sourceManifest: group.sources,
         inputNodeManifest: group.nodes,
         servicePatternInput: group.pattern,
+        ...(group.dynamicOD ? { dynamicODInput: group.dynamicOD } : {}),
         start,
         chunkSize,
         generatorSha256: group.generatorSha256,
@@ -89,7 +121,10 @@ export function executeBatches(
         ),
         nextActionDeficitSummary: group.nextActionDeficitSummary,
       };
-      validateEdges(edges, validationContext);
+      validateEdges(edges, {
+        ...validationContext,
+        dynamicODValidationScope: "PARTIAL_BATCH",
+      });
       const body = jsonBytes(batch),
         outputSha256 = hash(body);
       const receipt = {

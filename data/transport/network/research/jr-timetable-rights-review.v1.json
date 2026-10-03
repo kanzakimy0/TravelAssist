@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewId": "JR_TIMETABLE_SOURCE_SCOPE_REVIEW_V1",
-  "status": "OPEN_ORDINARY_INDEPENDENT_SOURCE_RESEARCH",
+  "status": "REVIEWED_CORRECTION_SUCCESSORS_PRIVATE_VALIDATED_CANONICAL_REPLAY_PENDING",
   "reviewedAt": "2026-10-02T21:35:33.439792+00:00",
   "decisionNature": "Project source-eligibility recommendation, not legal conclusion that bare facts are copyrighted or all past rail data unlawful.",
   "finding": "Prior Iwakuni review acknowledged the clause but relied on omitting clocks and general rail:jr-west minimum-facts decision. This does not establish an applicable permission/exclusion for creating a selected ordered train-call database. Do not treat 時刻データ as proven limited only to numeric clock cells.",
@@ -165,7 +165,7 @@
       "New publisher of same credited timetable is not independent alternative"
     ]
   },
-  "nextAction": "Review each listed service fact against its own retained independent source support; replace uncertain timetable-derived ordered calls using lawful independently supported service patterns. Preserve original obligations and existing records; no source exhaustion or external-approval exception. Continue independent lawful packages.",
+  "nextAction": "Only close the bounded source review after strict five-record correction, all original scope bindings, actual graph preservation and canonical replay pass. Fifteen original patterns independently corroborated; five unsupported implementations retired, never described as original train facts proved.",
   "exceptionsGenerated": 0,
   "rawTimetableRedistributionAuthorized": false,
   "reviewReportSha256": "60a242005fdd4788c0ffc14fe83cb18d02154c1ed8b6186544532a9262b85446",
@@ -336,13 +336,43 @@
     }
   ],
   "resolvedFactCount": 15,
-  "remainingDirectFactCount": 5,
-  "latestValidationInputScopeId": "TASK086-FULL-ORIGINAL-PHASE184-v2",
-  "remainingFactIds": [
-    "iwakuni-hiroshima-510M",
-    "marine-3110M-west",
-    "marine-3135M-west",
-    "sonic-3003M-current-kokura-oita-section",
-    "sonic-3006M-current-kokura-oita-section"
-  ]
+  "remainingDirectFactCount": 0,
+  "latestValidationInputScopeId": "TASK086-FULL-ORIGINAL-PHASE219-CANDIDATE",
+  "remainingFactIds": [],
+  "preCorrectionStatus": {
+    "status": "OPEN_ORDINARY_INDEPENDENT_SOURCE_RESEARCH",
+    "latestValidationInputScopeId": "TASK086-FULL-ORIGINAL-PHASE184-v2",
+    "resolvedFactCount": 15,
+    "remainingDirectFactCount": 5,
+    "remainingFactIds": [
+      "iwakuni-hiroshima-510M",
+      "marine-3110M-west",
+      "marine-3135M-west",
+      "sonic-3003M-current-kokura-oita-section",
+      "sonic-3006M-current-kokura-oita-section"
+    ]
+  },
+  "retiredUnsupportedImplementationCount": 5,
+  "correctionAdjudication": {
+    "originalFactCount": 20,
+    "independentlyCorroboratedOriginalCount": 15,
+    "retiredOriginalCount": 5,
+    "newSuccessorPatternCount": 11,
+    "oldTrainFactsProvedByDifferentServices": false,
+    "archivePath": "data/transport/network/research/pattern-correction-archive.v1.json",
+    "correctionPath": "data/transport/network/research/pattern-corrections.v1.json",
+    "originalAffectedFactsAndRemediationsPreserved": true,
+    "retiredFactIds": [
+      "marine-3135M-west",
+      "marine-3110M-west",
+      "iwakuni-hiroshima-510M",
+      "sonic-3003M-current-kokura-oita-section",
+      "sonic-3006M-current-kokura-oita-section"
+    ],
+    "successorPhaseIds": [
+      "214-independent-static-rail-source-corrections",
+      "219-independent-nippo-rail-source-correction-chain"
+    ],
+    "validationStatus": "PRIVATE_PRODUCTION_CHECK_PENDING_CANONICAL_REPLAY_REQUIRED"
+  }
 }

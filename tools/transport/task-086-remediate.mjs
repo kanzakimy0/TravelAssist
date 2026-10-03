@@ -1,3 +1,11 @@
+import { materializeDynamicODFact } from "./task-086-dynamic-od-intake.mjs";
+import {
+  OD_REGISTRY_FILE,
+  FACILITY_REGISTRY_FILE,
+  loadODFacilityInputs,
+  attachODContexts,
+  loadConditionalContextInputs,
+} from "./task-086-dynamic-od-registry.mjs";
 import {
   prepareExactPatternCorrections,
   isRetiredCorrectionFact,
@@ -63,9 +71,11 @@ import {
   retainedExtractedFacts,
   reviewedFactAction,
   nextSourceAction,
+  validateRightsBinding,
 } from "./task-086-source-actions.mjs";
 import {
   airportCandidate,
+  preflightAirportSelectors,
   C28_ARCHIVE_SHA256,
 } from "./task-086-airport-identities.mjs";
 import {
@@ -94,13 +104,233 @@ const countBy = (rows, key) =>
   );
 const parseRows = (s) =>
   s.trim().split(/\r?\n/).filter(Boolean).map(JSON.parse);
+export function buildReviewedFactSourceRecord({
+  fact,
+  observed,
+  rights,
+  recordSet,
+  rootPath = root,
+  networkRootPath = networkRoot,
+}) {
+  const typedRights = validateRightsBinding(rights, fact);
+  if (fact.sourceAttribution && typedRights?.attribution)
+    invariant(
+      fact.sourceAttribution === typedRights.attribution,
+      "FACT_SOURCE_ATTRIBUTION_MISMATCH",
+    );
+  if (observed.rawPayloadRetained)
+    invariant(
+      rights.rightsClass === "RAW_PERSISTENCE_ALLOWED" &&
+        observed.retainedPath &&
+        hash(fs.readFileSync(path.join(rootPath, observed.retainedPath))) ===
+          observed.contentSha256,
+      "RETAINED_FACT_SOURCE_HASH_MISMATCH",
+    );
+  return {
+    sourceId: id("source", [fact.sourceActionId, fact.sourceUrl]),
+    url: fact.sourceUrl,
+    contentSha256: hash(recordSet),
+    evidenceContentSha256: observed.contentSha256,
+    evidenceFingerprintScope: observed.fingerprintScope ?? "RAW_RESPONSE_BYTES",
+    observedAt: observed.observedAt,
+    rightsClass: rights.rightsClass,
+    ...(typedRights
+      ? {
+          license: typedRights.license,
+          attribution: typedRights.attribution,
+          shareAlikeRequired: typedRights.shareAlikeRequired,
+          shareAlikeScope: typedRights.shareAlikeScope,
+        }
+      : {}),
+    rawPayloadRetained: observed.rawPayloadRetained === true,
+    ...(observed.rawPayloadRetained
+      ? {
+          retainedArchive: path
+            .relative(
+              networkRootPath,
+              path.join(rootPath, observed.retainedPath),
+            )
+            .split(path.sep)
+            .join("/"),
+          retainedArchiveSha256: observed.contentSha256,
+        }
+      : {}),
+    derivedDataAllowed: true,
+    redistributionAllowed: true,
+    metricPersistenceAllowed: false,
+    rightsDecision: observed.rawPayloadRetained
+      ? "LICENSED_RAW_WITH_REVIEWED_TOPOLOGY_DERIVATION"
+      : "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    rightsReview: {
+      scope: "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      termsUrl: rights.termsUrl,
+      reason: rights.reason,
+      ...(typedRights
+        ? {
+            license: typedRights.license,
+            attribution: typedRights.attribution,
+            shareAlikeRequired: typedRights.shareAlikeRequired,
+            shareAlikeScope: typedRights.shareAlikeScope,
+          }
+        : {}),
+    },
+    attribution:
+      typedRights?.attribution ??
+      fact.sourceAttribution ??
+      fact.sourceUrl +
+        "; operator factual topology; reviewed " +
+        observed.observedAt,
+  };
+}
+export function buildSourceRightsRegistry(base, sources, actions) {
+  return {
+    ...base,
+    sources: [...sources.values()],
+    nationalSourceReviews: actions.map((a) => ({
+      actionId: a.actionId,
+      state: a.state,
+      rightsFindings: a.rightsFindings,
+      ordinaryWorkRemaining: ![
+        "INGESTED",
+        "SUPERSEDED_BY_ALTERNATIVE",
+      ].includes(a.state),
+    })),
+  };
+}
+// Check only the existing replay header contract before checkpoint I/O or graph work.
+// Source rights, identity, service semantics and package contents keep their later validators.
+export function preflightPhaseHeaders(phases, actions) {
+  invariant(
+    Array.isArray(phases) && Array.isArray(actions),
+    "PHASE_HEADER_INPUT_ARRAYS_REQUIRED",
+  );
+  const actionIds = new Set();
+  for (const action of actions) {
+    invariant(
+      typeof action?.actionId === "string" && action.actionId.trim(),
+      "PHASE_HEADER_ACTION_ID_INVALID",
+    );
+    invariant(
+      !actionIds.has(action.actionId),
+      "PHASE_HEADER_DUPLICATE_ACTION_ID:" + action.actionId,
+    );
+    actionIds.add(action.actionId);
+  }
+  const phaseIds = new Set();
+  for (const [index, phase] of phases.entries()) {
+    invariant(
+      phase &&
+        typeof phase === "object" &&
+        !Array.isArray(phase) &&
+        typeof phase.phaseId === "string" &&
+        phase.phaseId.trim(),
+      "PHASE_HEADER_PHASE_ID_INVALID:" + index,
+    );
+    const label = phase.phaseId;
+    invariant(!phaseIds.has(label), "PHASE_HEADER_DUPLICATE_PHASE_ID:" + label);
+    phaseIds.add(label);
+    invariant(
+      Object.hasOwn(phase, "strategy") &&
+        phase.strategy !== undefined &&
+        phase.strategy !== null,
+      "PHASE_HEADER_STRATEGY_REQUIRED:" + label,
+    );
+    let strategyJson;
+    try {
+      strategyJson = JSON.stringify(phase.strategy);
+    } catch {
+      /* Fail below with the phase locator. */
+    }
+    invariant(
+      typeof strategyJson === "string" &&
+        (typeof phase.strategy !== "number" || Number.isFinite(phase.strategy)),
+      "PHASE_HEADER_STRATEGY_NOT_JSON:" + label,
+    );
+    invariant(
+      Array.isArray(phase.facts),
+      "PHASE_HEADER_FACTS_REQUIRED:" + label,
+    );
+    invariant(
+      Array.isArray(phase.completedActionIds),
+      "PHASE_HEADER_COMPLETED_ACTION_IDS_REQUIRED:" + label,
+    );
+    const requireAction = (actionId) =>
+      invariant(
+        typeof actionId === "string" &&
+          actionId.trim() &&
+          actionIds.has(actionId),
+        "PHASE_HEADER_ACTION_NOT_FOUND:" + label + ":" + String(actionId),
+      );
+    const completed = new Set();
+    for (const actionId of phase.completedActionIds) {
+      requireAction(actionId);
+      invariant(
+        !completed.has(actionId),
+        "PHASE_HEADER_DUPLICATE_COMPLETED_ACTION:" + label + ":" + actionId,
+      );
+      completed.add(actionId);
+    }
+    const requireFactActions = (fact) => {
+      requireAction(fact.sourceActionId);
+      for (const ref of fact.corroboratingEvidence ?? [])
+        requireAction(ref.sourceActionId ?? fact.sourceActionId);
+    };
+    const factIds = new Set();
+    for (const fact of phase.facts) {
+      invariant(
+        fact &&
+          typeof fact === "object" &&
+          !Array.isArray(fact) &&
+          typeof fact.factId === "string" &&
+          fact.factId.trim(),
+        "PHASE_HEADER_FACT_ID_INVALID:" + label,
+      );
+      invariant(
+        !factIds.has(fact.factId),
+        "PHASE_HEADER_DUPLICATE_FACT_ID:" + label + ":" + fact.factId,
+      );
+      factIds.add(fact.factId);
+      invariant(
+        ["service", "transfer", "dynamic_od"].includes(fact.kind),
+        "PHASE_HEADER_FACT_KIND_INVALID:" + label + ":" + fact.factId,
+      );
+      requireFactActions(fact);
+      for (const observation of fact.conditionObservations ?? [])
+        requireFactActions(observation);
+    }
+    for (const key of ["licensedGtfsPackages", "derivedGtfsPackages"])
+      if (phase[key] !== undefined) {
+        invariant(
+          Array.isArray(phase[key]),
+          "PHASE_HEADER_PACKAGE_ARRAY_REQUIRED:" + label + ":" + key,
+        );
+        for (const binding of phase[key])
+          requireAction(binding?.sourceActionId);
+      }
+  }
+  return phases.length;
+}
 export function runRemediation({
   output = networkRoot,
   rerunBatch = null,
   repair = false,
   terminal = false,
-  conditionalAccessContexts = [],
+  conditionalAccessContexts,
 } = {}) {
+  const actions = readRows(path.join(networkRoot, "next-source-actions.jsonl"));
+  const phaseFiles = fs
+    .readdirSync(path.join(networkRoot, "research/phases"))
+    .filter((n) => n.endsWith(".json"))
+    .sort(compare);
+  const phases = phaseFiles.map((n) =>
+    readJson(path.join(networkRoot, "research/phases", n)),
+  );
+  preflightPhaseHeaders(phases, actions);
+  const conditionalInputs = loadConditionalContextInputs(
+    networkRoot,
+    conditionalAccessContexts,
+  );
+  conditionalAccessContexts = conditionalInputs.contexts;
   const origin = readJson(path.join(networkRoot, "checkpoints/origin.json"));
   const archive = fs.readFileSync(
     path.join(networkRoot, "checkpoints", origin.archive),
@@ -146,14 +376,6 @@ export function runRemediation({
   const hubScopes = readRows(
     path.join(upstream, "hub-component-completeness-review.jsonl"),
   ).filter((h) => h.expectedComponents.length > 1);
-  const actions = readRows(path.join(networkRoot, "next-source-actions.jsonl"));
-  const phaseFiles = fs
-    .readdirSync(path.join(networkRoot, "research/phases"))
-    .filter((n) => n.endsWith(".json"))
-    .sort(compare);
-  const phases = phaseFiles.map((n) =>
-    readJson(path.join(networkRoot, "research/phases", n)),
-  );
   const packs = fs
     .readdirSync(path.join(networkRoot, "sources"))
     .filter((n) => n.endsWith(".json"))
@@ -178,6 +400,24 @@ export function runRemediation({
   const patterns = rows("service-patterns.jsonl"),
     lines = rows("transport-lines.jsonl"),
     edges = rows("transport-node-edges.jsonl");
+  const dynamicODById = exactRecordMap(
+    old[OD_REGISTRY_FILE] ? parseRows(old[OD_REGISTRY_FILE]) : [],
+    "odId",
+    "DYNAMIC_OD",
+  );
+  const {
+    nativeFacilityByAnchor,
+    candidates: publicODFacilityCandidates,
+    inputPaths: odFacilityInputPaths,
+  } = loadODFacilityInputs(networkRoot, sources, evidence, actions);
+  const odValidationContext = () => ({
+    sources,
+    evidence,
+    nodes,
+    patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    dynamicODById,
+    nativeFacilityByAnchor,
+  });
   const history = rows("adaptive-model-iterations.jsonl"),
     originalHistoryLength = history.length;
   let inventory = obj("required-backbone-inventory.json").nodes;
@@ -253,6 +493,7 @@ export function runRemediation({
     p.facts.filter((f) => !isRetiredCorrectionFact(patternCorrections, p, f)),
   );
   for (const fact of sourceFacts) reviewedFactAction(fact, actions);
+  preflightAirportSelectors(sourceFacts, airportIdentities, originalInventory);
   const nodeReviews = [],
     hubReviews = [],
     groups = [],
@@ -397,55 +638,19 @@ export function runRemediation({
   };
   const factSource = (fact) => {
     const { observed, rights } = reviewedFactAction(fact, actions);
-    if (observed.rawPayloadRetained)
-      invariant(
-        rights.rightsClass === "RAW_PERSISTENCE_ALLOWED" &&
-          observed.retainedPath &&
-          hash(fs.readFileSync(path.join(root, observed.retainedPath))) ===
-            observed.contentSha256,
-        "RETAINED_FACT_SOURCE_HASH_MISMATCH",
-      );
     const recordSet = sourceFacts.filter(
       (f) =>
         f.sourceActionId === fact.sourceActionId &&
         f.sourceUrl === fact.sourceUrl,
     );
-    const source = {
-      sourceId: id("source", [fact.sourceActionId, fact.sourceUrl]),
-      url: fact.sourceUrl,
-      contentSha256: hash(recordSet),
-      evidenceContentSha256: observed.contentSha256,
-      evidenceFingerprintScope:
-        observed.fingerprintScope ?? "RAW_RESPONSE_BYTES",
-      observedAt: observed.observedAt,
-      rightsClass: rights.rightsClass,
-      rawPayloadRetained: observed.rawPayloadRetained === true,
-      ...(observed.rawPayloadRetained
-        ? {
-            retainedArchive: path
-              .relative(networkRoot, path.join(root, observed.retainedPath))
-              .split(path.sep)
-              .join("/"),
-            retainedArchiveSha256: observed.contentSha256,
-          }
-        : {}),
-      derivedDataAllowed: true,
-      redistributionAllowed: true,
-      metricPersistenceAllowed: false,
-      rightsDecision: observed.rawPayloadRetained
-        ? "LICENSED_RAW_WITH_REVIEWED_TOPOLOGY_DERIVATION"
-        : "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
-      rightsReview: {
-        scope: "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
-        termsUrl: rights.termsUrl,
-        reason: rights.reason,
-      },
-      attribution:
-        fact.sourceAttribution ??
-        fact.sourceUrl +
-          "; operator factual topology; reviewed " +
-          observed.observedAt,
-    };
+    const source = buildReviewedFactSourceRecord({
+      fact,
+      observed,
+      rights,
+      recordSet,
+      rootPath: root,
+      networkRootPath: networkRoot,
+    });
     sources.set(source.sourceId, source);
     return source;
   };
@@ -795,12 +1000,11 @@ export function runRemediation({
   const replay = () => {
     const pendingHubs = hubAudit().filter((h) => h.status !== "COMPLETE");
     return auditGraph({
-      validationContext: {
-        sources,
-        evidence,
-        patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
-      },
-      conditionalAccessContexts,
+      validationContext: odValidationContext(),
+      conditionalAccessContexts: attachODContexts(
+        conditionalAccessContexts,
+        odValidationContext(),
+      ),
       nodes: [...nodes.values()],
       patterns,
       transfers,
@@ -833,6 +1037,11 @@ export function runRemediation({
   let audit = replay();
   const generatorPaths = [
     "task-086-model.mjs",
+    "task-086-dynamic-od.mjs",
+    "task-086-dynamic-od-intake.mjs",
+    "task-086-dynamic-od-registry.mjs",
+    "task-086-public-conditional-applicability.mjs",
+    "task-086-public-od-facility.mjs",
     "task-086-service-access-contract.mjs",
     "task-086-condition-evidence.mjs",
     "task-086-acceptance-inputs.mjs",
@@ -1079,6 +1288,45 @@ export function runRemediation({
           generatorSha256: hash(generatorHashes),
           nextActionDeficitSummary: before.counts,
         });
+      } else if (fact.kind === "dynamic_od") {
+        for (const anchor of fact.endpointIdentityAnchors ?? [])
+          if (publicODFacilityCandidates.has(anchor)) {
+            const candidate = publicODFacilityCandidates.get(anchor);
+            const admitted = admitNodes(
+              [candidate],
+              sources,
+              evidence,
+              [...nodes.values()],
+              { nativeFacilityByAnchor },
+            )[0];
+            invariant(
+              admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
+              "OD_FACILITY_ADMISSION:" + admitted.reasons.join(","),
+            );
+            nodes.set(admitted.nodeId, admitted);
+          }
+        const materialized = materializeDynamicODFact(fact, {
+          phaseId: phase.phaseId,
+          actions,
+          sources,
+          evidence,
+          nodes,
+          nativeFacilityByAnchor,
+          makeEvidence,
+          factSource,
+          generatedAt,
+        });
+        invariant(
+          !dynamicODById.has(materialized.od.odId),
+          "OD_REBIND_OR_DUPLICATE",
+        );
+        dynamicODById.set(materialized.od.odId, materialized.od);
+        edges.push(materialized.edge);
+        groups.push({
+          ...materialized.group,
+          generatorSha256: hash(generatorHashes),
+          nextActionDeficitSummary: before.counts,
+        });
       } else if (fact.kind === "transfer") {
         const componentIds = fact.components.map((c) => bind(c, factRef));
         const candidate = discovery.find(
@@ -1172,11 +1420,7 @@ export function runRemediation({
         });
       } else throw new Error("UNKNOWN_FACT_KIND:" + fact.kind);
     }
-    validateEdges(edges, {
-      sources,
-      evidence,
-      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
-    });
+    validateEdges(edges, odValidationContext());
     const proposed = inventory.map((r) => ({
       ...r,
       admission: nodes.get(r.nodeId)?.decision ?? r.admission,
@@ -1308,11 +1552,7 @@ export function runRemediation({
       ]),
     ].sort(compare);
   const batches = executeBatches(output, groups, {
-    validationContext: {
-      sources,
-      evidence,
-      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
-    },
+    validationContext: odValidationContext(),
     rerunBatch,
     repair,
     allowMissingRerun: true,
@@ -1394,6 +1634,13 @@ export function runRemediation({
     "node-downstream-admission.jsonl",
     [...nodes.values()].sort((a, b) => compare(a.nodeId, b.nodeId)),
   );
+  if (dynamicODById.size)
+    l(
+      OD_REGISTRY_FILE,
+      [...dynamicODById.values()].sort((a, b) => compare(a.odId, b.odId)),
+    );
+  if (nativeFacilityByAnchor.size)
+    j(FACILITY_REGISTRY_FILE, [...nativeFacilityByAnchor].sort());
   l(
     "service-patterns.jsonl",
     patterns.sort((a, b) => compare(a.servicePatternId, b.servicePatternId)),
@@ -1410,6 +1657,7 @@ export function runRemediation({
     ["service-segment-edges", "service_segment"],
     ["hub-transfer-edges", "hub_transfer"],
     ["direct-service-edges", "direct_service"],
+    ["dynamic-od-edges", "dynamic_od_ride"],
   ])
     l(
       name + ".jsonl",
@@ -1426,22 +1674,20 @@ export function runRemediation({
     "topology-evidence.jsonl",
     [...evidence.values()].sort((a, b) => compare(a.evidenceId, b.evidenceId)),
   );
-  j("source-rights.json", {
-    ...obj("source-rights.json"),
-    sources: [...sources.values()],
-    nationalSourceReviews: actions.map((a) => ({
-      actionId: a.actionId,
-      state: a.state,
-      rightsFindings: a.rightsFindings,
-      ordinaryWorkRemaining: ![
-        "INGESTED",
-        "SUPERSEDED_BY_ALTERNATIVE",
-      ].includes(a.state),
-    })),
-  });
+  j(
+    "source-rights.json",
+    buildSourceRightsRegistry(obj("source-rights.json"), sources, actions),
+  );
   j("connectivity-audit.json", {
     anchorNodeId,
     counts: audit.counts,
+    ...(audit.conditionalApplicability
+      ? {
+          conditionalApplicability: audit.conditionalApplicability,
+          defaultDiagnostics: audit.defaultDiagnostics,
+          structuralChecks: audit.structuralChecks,
+        }
+      : {}),
     tier: audit.tier,
     connectedRequiredNodes: audit.connected,
     disconnectedRequiredNodes: audit.disconnected,
@@ -1493,6 +1739,8 @@ export function runRemediation({
   });
   for (const [n, body] of files) atomicWrite(path.join(output, n), body);
   const inputPaths = [
+    ...conditionalInputs.inputPaths,
+    ...odFacilityInputPaths,
     "research/exception-proofs.v1.json",
     "research/stage-scope.json",
     "research/task-revision.v2.json",

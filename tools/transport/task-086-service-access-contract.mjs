@@ -47,7 +47,8 @@ export function createServiceAccessContract({
     o && Object.keys(o).every((k) => keys.includes(k));
   function validateAccessContract(c) {
     invariant(
-      c?.schemaVersion === 1 && c.kind === "BOOKABLE_PASSENGER_SERVICE",
+      [1, 2].includes(c?.schemaVersion) &&
+        c.kind === "BOOKABLE_PASSENGER_SERVICE",
       "ACCESS_CONTRACT_KIND",
     );
     invariant(
@@ -61,12 +62,14 @@ export function createServiceAccessContract({
         "validTo",
         "operatingDays",
         "sourceEvidenceRefs",
+        ...(c.schemaVersion === 2 ? ["payment", "passengerRules"] : []),
       ]) &&
         exactKeys(c.reservation, [
           "requirement",
           "method",
           "deadline",
           "noBookingNoDispatch",
+          ...(c.schemaVersion === 2 ? ["reception"] : []),
         ]) &&
         exactKeys(c.reservation.deadline, [
           "daysBefore",
@@ -103,6 +106,48 @@ export function createServiceAccessContract({
         c.reservation.deadline.timeZone === "Asia/Tokyo",
       "UNSUPPORTED_RESERVATION_DEADLINE",
     );
+    if (c.schemaVersion === 2) {
+      const reception = c.reservation.reception;
+      invariant(
+        exactKeys(reception, ["startLocalTime", "endLocalTime", "timeZone"]) &&
+          reception?.startLocalTime === "09:00" &&
+          reception.endLocalTime === "17:00" &&
+          reception.timeZone === "Asia/Tokyo",
+        "ACCESS_PHONE_RECEPTION_REQUIRED",
+      );
+      invariant(c.payment === "CASH_ONLY", "ACCESS_PAYMENT_REQUIRED");
+      const rules = c.passengerRules;
+      invariant(
+        exactKeys(rules, [
+          "petsAllowed",
+          "dangerousGoodsAllowed",
+          "smokingAllowed",
+          "drinkingAllowed",
+          "largeLuggageNoticeThresholdMetres",
+          "largeLuggageNoticeAtBooking",
+          "cancellationNoticeHours",
+          "bookingDetailsRequired",
+        ]) &&
+          rules?.petsAllowed === false &&
+          rules.dangerousGoodsAllowed === false &&
+          rules.smokingAllowed === false &&
+          rules.drinkingAllowed === false &&
+          rules.largeLuggageNoticeThresholdMetres === 1.5 &&
+          rules.largeLuggageNoticeAtBooking === true &&
+          rules.cancellationNoticeHours === 2 &&
+          canonical(rules.bookingDetailsRequired) ===
+            canonical([
+              "NAME",
+              "PHONE",
+              "PASSENGER_COUNT",
+              "TRAVEL_DATE",
+              "SERVICE",
+              "PICKUP",
+              "DROPOFF",
+            ]),
+        "ACCESS_PASSENGER_RULES_REQUIRED",
+      );
+    }
     invariant(
       validDateOnly(c.validFrom) &&
         validDateOnly(c.validTo) &&
@@ -309,6 +354,25 @@ export function createServiceAccessContract({
     const planningInstant = strictPlanningInstant(intent?.planningAt);
     if (!intent || planningInstant === null || planningInstant > deadline)
       return false;
+    if (c.schemaVersion === 2) {
+      const requestInstant = strictPlanningInstant(intent.requestAt);
+      if (
+        requestInstant === null ||
+        requestInstant < planningInstant ||
+        requestInstant > deadline
+      )
+        return false;
+      const local = new Date(requestInstant + 9 * 3600000).toISOString();
+      const clock = local.slice(11, 23);
+      if (clock < "09:00:00.000" || clock > "17:00:00.000") return false;
+      if (
+        intent.channel !== "PHONE" ||
+        intent.payment !== "CASH" ||
+        intent.acceptedPassengerRulesSha256 !== hash(c.passengerRules)
+      )
+        return false;
+      // A feasible future telephone request is a planning condition, never an accepted booking.
+    }
     // Do not assert a reservation exists or automatically satisfy a hotel/flight-user restriction.
     if (
       c.eligibilityKeys.length &&

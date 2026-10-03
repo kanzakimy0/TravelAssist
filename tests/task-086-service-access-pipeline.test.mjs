@@ -315,7 +315,7 @@ test("actual stage SCC and path implementations separate default and explicit pu
     true,
   );
 });
-test("actual airport audit retains original default gap and reports true PUBLIC ride witness separately", () => {
+test("actual airport audit retains default diagnostic while source-bound PUBLIC rides satisfy the structural check", () => {
   const f = fixture();
   const audit = auditGraph({
     nodes: [...f.nodes.values()],
@@ -331,11 +331,27 @@ test("actual airport audit retains original default gap and reports true PUBLIC 
       },
     ],
     anchorNodeId: f.ids.airport,
-    validationContext: context(f),
+    validationContext: { ...context(f), nodes: f.nodes },
     conditionalAccessContexts: [f.context],
   });
   assert.ok(
+    audit.defaultDiagnostics.deficits.some(
+      (x) => x.deficitId === "mode:original-airport",
+    ),
+  );
+  assert.equal(
     audit.deficits.some((x) => x.deficitId === "mode:original-airport"),
+    false,
+  );
+  assert.equal(
+    audit.structuralChecks.find((x) => x.checkId === "mode:original-airport")
+      .status,
+    "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS",
+  );
+  assert.equal(
+    audit.structuralChecks.find((x) => x.checkId === "mode:original-airport")
+      .defaultDiagnostic,
+    "FAIL",
   );
   assert.equal(audit.airportSurfaceViews[0].defaultUnconditional, null);
   assert.equal(

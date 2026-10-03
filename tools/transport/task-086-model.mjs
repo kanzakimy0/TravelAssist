@@ -1,3 +1,5 @@
+import { createPublicConditionalApplicability } from "./task-086-public-conditional-applicability.mjs";
+import { createDynamicOD } from "./task-086-dynamic-od.mjs";
 import { createServiceAccessContract } from "./task-086-service-access-contract.mjs";
 import { createHash } from "node:crypto";
 
@@ -80,9 +82,21 @@ const serviceAccess = createServiceAccessContract({
   invariant,
   verifyEvidence,
 });
-export const allowsServiceAccess = serviceAccess.allowsEdge;
+export const allowsServiceAccess = (edge, context) =>
+  dynamicOD.isOD(edge, context?.odValidationContext)
+    ? dynamicOD.allows(edge, context)
+    : serviceAccess.allowsEdge(edge, context);
 export const id = (kind, anchor) =>
   `transport-${kind}:086:${hash(anchor).slice(0, 32)}`;
+export const dynamicOD = createDynamicOD({
+  canonical,
+  hash,
+  id,
+  invariant,
+  verifyEvidence,
+  metricFields,
+});
+export const generateDynamicOD = dynamicOD.generate;
 export const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 export function invariant(condition, message) {
   if (!condition) throw new Error(message);
@@ -468,7 +482,13 @@ export function reviewedDerivedGtfsComponent(
   );
   return node;
 }
-export function admitNodes(candidates, sources, evidence, prior = []) {
+export function admitNodes(
+  candidates,
+  sources,
+  evidence,
+  prior = [],
+  identityContext = {},
+) {
   unique(candidates, (n) => n.identityAnchor, "NODE_ANCHOR");
   const previous = new Map(prior.map((n) => [n.nodeId, n]));
   return candidates
@@ -584,6 +604,15 @@ export function admitNodes(candidates, sources, evidence, prior = []) {
                       ?.observedResponseSha256,
               ),
           ))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_P05_AND_PUBLIC_OD" &&
+        !dynamicOD.facilityBound(node, {
+          sources,
+          evidence,
+          nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+        })
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
@@ -1323,7 +1352,17 @@ export function validateEdges(edges, validationContext) {
     edges.every((e) => e.directed === true && e.topologyEvidenceRefs?.length),
     "EDGE_PROVENANCE_OR_DIRECTION",
   );
+  if (validationContext?.dynamicODValidationScope !== "PARTIAL_BATCH")
+    for (const od of validationContext?.dynamicODById?.values() ?? [])
+      invariant(
+        edges.some((e) => e.edgeId === id("edge", ["dynamic-od", od.odId])),
+        "OD_REGISTERED_EDGE_MISSING",
+      );
   for (const edge of edges) {
+    if (dynamicOD.isOD(edge, validationContext)) {
+      dynamicOD.bindEdge(edge, validationContext);
+      continue;
+    }
     if (validationContext) {
       const { sources, evidence, patternById } = validationContext;
       invariant(
@@ -1384,8 +1423,7 @@ export function growInventory(previous, proposed, removals = []) {
 }
 // Reachability retains the onboard service state: pickup/drop-off restrictions never
 // create a spurious interchange at an intermediate stop. No all-pairs edge generation.
-export function queryGraph(edges, from, to, accessContext) {
-  if (!from || !to) return null;
+function passengerAdjacency(edges) {
   const adjacency = new Map();
   for (const edge of edges) {
     if (!adjacency.has(edge.fromTransportNodeId))
@@ -1394,6 +1432,10 @@ export function queryGraph(edges, from, to, accessContext) {
   }
   for (const values of adjacency.values())
     values.sort((a, b) => compare(a.edgeId, b.edgeId));
+  return adjacency;
+}
+function queryPassengerAdjacency(adjacency, from, to, eligible) {
+  if (!from || !to) return null;
   const queue = [
     { node: from, pattern: null, index: null, canAlight: true, path: [] },
   ];
@@ -1410,7 +1452,7 @@ export function queryGraph(edges, from, to, accessContext) {
     seen.add(key);
     if (state.node === to && state.canAlight) return state.path;
     for (const edge of adjacency.get(state.node) ?? []) {
-      if (!serviceAccess.allowsEdge(edge, accessContext)) continue;
+      if (!eligible(edge)) continue;
       const continuing =
         edge.edgeKind === "service_segment" &&
         state.pattern === edge.servicePatternRef &&
@@ -1428,8 +1470,49 @@ export function queryGraph(edges, from, to, accessContext) {
   }
   return null;
 }
+export function queryGraph(edges, from, to, accessContext) {
+  if (!from || !to) return null;
+  return queryPassengerAdjacency(passengerAdjacency(edges), from, to, (edge) =>
+    allowsServiceAccess(edge, accessContext),
+  );
+}
+// Internal synchronous assessment scope only: callers cannot inject eligibility caches
+// through accessContext. Every new assessment constructs new maps over its exact inputs.
+function prepareConditionalQueries(edges, ground, accessContext) {
+  const eligibility = new WeakMap(),
+    allowed = (edge) => {
+      if (!eligibility.has(edge))
+        eligibility.set(edge, allowsServiceAccess(edge, accessContext));
+      return eligibility.get(edge);
+    },
+    graphs = [passengerAdjacency(edges), passengerAdjacency(ground)],
+    paths = [new Map(), new Map()];
+  return {
+    allows: allowed,
+    query(from, to, groundOnly = false) {
+      const index = groundOnly ? 1 : 0,
+        key = canonical([from, to]),
+        memo = paths[index];
+      if (!memo.has(key))
+        memo.set(
+          key,
+          queryPassengerAdjacency(graphs[index], from, to, allowed),
+        );
+      const value = memo.get(key);
+      return value === null ? null : [...value];
+    },
+  };
+}
 // Traverse once per anchor direction, retaining the same onboard restrictions.
 export function reachablePaths(edges, from, accessContext) {
+  return reachablePassengerPaths(edges, from, accessContext, false);
+}
+function reachablePassengerPaths(
+  edges,
+  from,
+  accessContext,
+  eligibilityAlreadyVerified,
+) {
   const adjacency = new Map();
   for (const e of edges) {
     if (!adjacency.has(e.fromTransportNodeId))
@@ -1456,7 +1539,8 @@ export function reachablePaths(edges, from, accessContext) {
     if (state.canAlight && !paths.has(state.node))
       paths.set(state.node, state.path);
     for (const e of adjacency.get(state.node) ?? []) {
-      if (!serviceAccess.allowsEdge(e, accessContext)) continue;
+      if (!eligibilityAlreadyVerified && !allowsServiceAccess(e, accessContext))
+        continue;
       const continuing =
         e.edgeKind === "service_segment" &&
         state.pattern === e.servicePatternRef &&
@@ -1475,13 +1559,13 @@ export function reachablePaths(edges, from, accessContext) {
   return paths;
 }
 export function anchorQueries(edges, anchor, accessContext) {
-  edges = edges.filter((e) => serviceAccess.allowsEdge(e, accessContext));
+  edges = edges.filter((e) => allowsServiceAccess(e, accessContext));
   // Direct shortcuts have different start/end segment indexes; use the general
   // forward query for those graphs until their reverse state is represented.
   const forward = reachablePaths(edges, anchor, accessContext);
   const backward = edges.some((e) => e.edgeKind === "direct_service")
     ? null
-    : reachablePaths(
+    : reachablePassengerPaths(
         edges.map((e) => ({
           ...e,
           fromTransportNodeId: e.toTransportNodeId,
@@ -1493,6 +1577,7 @@ export function anchorQueries(edges, anchor, accessContext) {
         })),
         anchor,
         accessContext,
+        true,
       );
   return (from, to) =>
     !from || !to
@@ -1730,6 +1815,68 @@ export function auditGraph({
       }),
     ),
   );
+  // Preserve the default diagnostics and every original check ID. Only independently
+  // revalidated PUBLIC structural witnesses satisfy the corresponding business check.
+  const defaultDiagnostics = conditionalAccessContexts.length
+    ? {
+        deficits: structuredClone(deficits),
+        tier: structuredClone(tier),
+        connected: [...connected],
+        disconnected: [...disconnected],
+        corridors: structuredClone(results),
+      }
+    : null;
+  const conditionalApplicability = conditionalAccessContexts.length
+    ? publicConditionalApplicability({
+        nodes,
+        edges,
+        inventory,
+        anchorNodeId,
+        deficits,
+        corridors: results,
+        contexts: conditionalAccessContexts,
+        validationContext,
+      })
+    : null;
+  if (conditionalApplicability) {
+    const qualified = new Map(
+      conditionalApplicability.assessments
+        .filter(
+          (a) =>
+            a.status ===
+            "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS",
+        )
+        .map((a) => [a.checkId, a]),
+    );
+    for (let i = deficits.length - 1; i >= 0; i--)
+      if (qualified.has(deficits[i].deficitId)) deficits.splice(i, 1);
+    for (const requirement of inventory)
+      if (qualified.has(`connect:${requirement.requirementId}`)) {
+        const position = disconnected.indexOf(requirement.requirementId);
+        if (position >= 0) {
+          disconnected.splice(position, 1);
+          connected.push(requirement.requirementId);
+          (tier[requirement.tier] ?? tier.other).connected++;
+        }
+      }
+    for (const corridor of results) {
+      const q = qualified.get(`corridor:${corridor.corridorId}`);
+      if (q) {
+        corridor.status = "PASS";
+        corridor.connectivity =
+          "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS";
+        corridor.defaultDiagnostic = "FAIL";
+        corridor.forwardEdgeIds = q.nationalOrCorridorWitness.forward.edgeIds;
+        corridor.reverseEdgeIds = q.nationalOrCorridorWitness.reverse.edgeIds;
+        corridor.forwardAccessContext =
+          q.nationalOrCorridorWitness.forward.accessContext;
+        corridor.reverseAccessContext =
+          q.nationalOrCorridorWitness.reverse.accessContext;
+        corridor.validationBindingSha256 =
+          conditionalApplicability.validationBindingSha256;
+      }
+    }
+  }
   const counts = Object.fromEntries(
     DEFICITS.map((key) => [
       key,
@@ -1748,6 +1895,22 @@ export function auditGraph({
     corridors: results,
     transferResults,
     airportSurfaceViews,
+    ...(conditionalApplicability
+      ? {
+          conditionalApplicability,
+          defaultDiagnostics,
+          structuralChecks: conditionalApplicability.assessments.map((a) => ({
+            checkId: a.checkId,
+            status:
+              a.status === "OPEN"
+                ? "FAIL"
+                : "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS",
+            defaultDiagnostic: "FAIL",
+            witnessBindingSha256:
+              conditionalApplicability.validationBindingSha256,
+          })),
+        }
+      : {}),
     metrics,
     metricOnly,
     hardDeficitCount: deficits.length,
@@ -2031,7 +2194,9 @@ function buildSurfaceIndex(nodes, edges, accessContext) {
   const byId = new Map(nodes.map((node) => [node.nodeId, node]));
   const isSurfaceNode = (node) =>
     modes.has(node?.mode ?? (node?.nodeKind === "bus_stop" ? "bus" : null));
-  const isRide = (e) => e.edgeKind === "service_segment" && modes.has(e.mode);
+  const isRide = (e) =>
+    ["service_segment", "dynamic_od_ride"].includes(e.edgeKind) &&
+    modes.has(e.mode);
   // Actual segments are required; shortcuts never stand in for the ride witness.
   const filtered = edges.filter(
     (e) =>
@@ -2206,3 +2371,15 @@ function validatedSurfaceServiceRoundTrip(
     }
   return null;
 }
+
+export const publicConditionalApplicability =
+  createPublicConditionalApplicability({
+    canonical,
+    hash,
+    invariant,
+    validateEdges,
+    admitNodes,
+    queryGraph,
+    allowsServiceAccess,
+    prepareConditionalQueries,
+  });

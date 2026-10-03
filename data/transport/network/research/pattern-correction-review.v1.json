@@ -54,12 +54,12 @@
       }
     ],
     "literalNameScan": {
+      "403": false,
+      "2521": false,
       "Marine": false,
       "マリンライナー": false,
       "3135M": false,
       "3110M": false,
-      "403": false,
-      "2521": false,
       "快速": false
     },
     "originalOkayamaDiscovery": [
@@ -451,5 +451,82 @@
     ],
     "productionProof": ".cache/task-086/jr-timetable-rights/correction-production-private/actual-root-final-receipt.json",
     "fullGate": "PENDING_CURRENT_REPLAY_AND_FULL_REGRESSION"
+  },
+  "sonic219": {
+    "decision": "ROOT_REVIEWED_EXPLICIT_IMPLEMENTATION_CORRECTION",
+    "originalTaskDoesNotSpecifySonic3Or6OrThisCorridorLimitedExpressClass": true,
+    "rootSourceReview": {
+      "sourcePage": "sonic31-airport-required-page-v38.page1.review.png",
+      "pageSha256": "99e13763991116abd89a3e99e90569df2f14fb51103dd3fa76757e420e639caf",
+      "nativeSha256": "2eac57da7b3c555293c2b3d599d82a7a115aa20ed352b94f47f6f9ef2fac5faa",
+      "termsSha256": "b7b2f42b2a6cd3476a247d77f2a2260b1511f8c6e4c83c9ef42d62ab62a09214",
+      "author": "JR Kyushu",
+      "publisher": "Kitakyushu Air Terminal airport website",
+      "decision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "scope": "Sonic31 selected three actual calls only; five intervening noncalls independently corroborated. No raw timetable, clocks, prose, artwork or commercial-link license; does not prove Sonic3/6.",
+      "rootPersonallyReviewed": true
+    },
+    "newServicePatternsRemainSeparate": true,
+    "oldLimitedExpressServicesProved": false,
+    "oldPatternIds": [
+      "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643"
+    ],
+    "successorPhaseId": "219-independent-nippo-rail-source-correction-chain",
+    "successors": [
+      {
+        "factId": "nippo-yanagigaura-kokura-independent-static-local-v28",
+        "sha256": "1d6b21ace74ed62c4d9b79e54d109c9f8842ee2142b5f9b460984de254ce9f94",
+        "serviceClass": "static_local_all_stop",
+        "direction": "柳ヶ浦→小倉"
+      },
+      {
+        "factId": "sonic31-independent-nakatsu-usa-three-call-section-v32",
+        "sha256": "1b968fdb2ea8680e86b41e6018f935d1d6bf3920ac0ad861fe6563cacd0e2da2",
+        "serviceClass": "特急ソニック",
+        "direction": "中津→宇佐"
+      },
+      {
+        "factId": "nippo-usa-beppu-static-ordinary-return-v35",
+        "sha256": "acf377d7e226c9f2effa5051e9bce97168eab36c0c87b7bb5a7aa7d97fae1204",
+        "serviceClass": "static_local_all_stop",
+        "direction": "宇佐→別府"
+      },
+      {
+        "factId": "nippo-kokura-yoshitomi-static-local-south-v37",
+        "sha256": "bb887aedeb40a82dec8b9933fc483b1d822190b4c7806dbdfe9e5868f9451dc9",
+        "serviceClass": "static_local_all_stop",
+        "direction": "小倉→吉富"
+      },
+      {
+        "factId": "nippo-kusami-nakatsu-static-local-south-v37",
+        "sha256": "787fe47de17411ed45af51691478281053026988f3022e8a3e7c0facf9289645",
+        "serviceClass": "static_local_all_stop",
+        "direction": "朽網→中津"
+      },
+      {
+        "factId": "nippo-beppu-nakatsu-static-local-north-v37",
+        "sha256": "d55e9c94c9d1e2fba8f25879a80909dac90f67ff70cdc00b5991129c7416169b",
+        "serviceClass": "static_local_all_stop",
+        "direction": "別府→中津"
+      },
+      {
+        "factId": "nippo-beppu-oita-static-local-south-v37",
+        "sha256": "94ff88d976a60c8016aafa9b1b5479b8d8777e87a8a03e3b87d63f51f8f35c04",
+        "serviceClass": "static_local_all_stop",
+        "direction": "別府→大分"
+      },
+      {
+        "factId": "nippo-oita-beppudaigaku-static-local-north-v37",
+        "sha256": "6189b1c9b92262c92a695eaa7d046da277946839ae394df4bf269f3534513ff9",
+        "serviceClass": "static_local_all_stop",
+        "direction": "大分→別府大学"
+      }
+    ],
+    "originalRequiredPatternCount": 403,
+    "originalRequiredNodeCount": 2521,
+    "secondaryPatternCount": 375,
+    "secondaryNodeCount": 2421,
+    "allOldThreeCorrectionsRetained": true
   }
 }

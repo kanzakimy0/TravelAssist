@@ -1,3 +1,8 @@
+import {
+  loadPublishedODContext,
+  attachODContexts,
+  loadConditionalContextInputs,
+} from "./task-086-dynamic-od-registry.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -6,6 +11,8 @@ import {
   canonical,
   admitNodes,
   generatePattern,
+  generateDynamicOD,
+  publicConditionalApplicability,
   generateTransfer,
   validateEdges,
   anchorQueries,
@@ -140,6 +147,7 @@ export const STAGE_TECHNICAL_CHECKS = [
   "identity_admission_all_retained_nodes",
   "provenance_direction_duplicates",
   "actual_ordered_patterns_rights_and_boarding",
+  "actual_dynamic_od_rights_and_direction",
   "public_transfer_evidence_endpoint_and_direction",
   "all_published_corridor_witnesses_obey_boarding_and_direction",
   "raw_content_hashes_and_retained_input_versions",
@@ -284,7 +292,11 @@ export function deriveExecutionState({ policy, stage, gate, packages }) {
     optionalExpansionScope: [],
   };
 }
-export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
+export function buildStageReport({ conditionalAccessContexts } = {}) {
+  conditionalAccessContexts = loadConditionalContextInputs(
+    base,
+    conditionalAccessContexts,
+  ).contexts;
   const j = (n) => readJson(path.join(base, n)),
     r = (n) => readRows(path.join(base, n)),
     scope = j("research/stage-scope.json"),
@@ -311,6 +323,29 @@ export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
     connected = new Set(audit.connectedRequiredNodes),
     nodeReq = new Map(inv.map((x) => [x.nodeId, x])),
     core = new Set(scope.coreRequirementIds);
+  const odValidationContext = loadPublishedODContext(base, {
+    sources,
+    evidence,
+    nodes: byNode,
+    patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+    actions,
+  });
+  conditionalAccessContexts = attachODContexts(
+    conditionalAccessContexts,
+    odValidationContext,
+  );
+  const reviewedApplicability = conditionalAccessContexts.length
+    ? publicConditionalApplicability({
+        nodes,
+        edges,
+        inventory: inv,
+        anchorNodeId: audit.anchorNodeId,
+        deficits: audit.defaultDiagnostics?.deficits ?? deficits,
+        corridors: audit.defaultDiagnostics?.corridors ?? corridors,
+        contexts: conditionalAccessContexts,
+        validationContext: odValidationContext,
+      })
+    : null;
   const frozen = [
     ...scope.originalRequirements,
     ...scope.addedRequiredIntermediates,
@@ -334,11 +369,33 @@ export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
         checks.push({ name, status: "FAIL", reason: e.message });
       }
     };
+  check(
+    "public_conditional_applicability_replayed_against_independent_registry",
+    () => {
+      if (
+        canonical(reviewedApplicability) !==
+        canonical(audit.conditionalApplicability ?? null)
+      )
+        throw Error("PUBLIC_APPLICABILITY_REPLAY_MISMATCH");
+      assertPublicStructuralConsumption(
+        reviewedApplicability,
+        audit.structuralChecks,
+        deficits,
+        new Set(j("sources/source-review.json").gaps.map((g) => g.deficitId)),
+      );
+      return (
+        reviewedApplicability?.assessments.filter((a) => a.status !== "OPEN")
+          .length ?? 0
+      );
+    },
+  );
   check("identity_admission_all_retained_nodes", () => {
     const admitted = nodes.filter(
       (n) => n.decision === "ADMIT_TASK_086_TOPOLOGY",
     );
-    const rebuilt = admitNodes(admitted, sources, evidence);
+    const rebuilt = admitNodes(admitted, sources, evidence, [], {
+      nativeFacilityByAnchor: odValidationContext.nativeFacilityByAnchor,
+    });
     const failed = rebuilt.filter(
       (n) => n.decision !== "ADMIT_TASK_086_TOPOLOGY",
     );
@@ -351,12 +408,22 @@ export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
     return admitted.length;
   });
   check("provenance_direction_duplicates", () => {
-    validateEdges(edges, {
-      sources,
-      evidence,
-      patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
-    });
+    validateEdges(edges, odValidationContext);
     return edges.length;
+  });
+  check("actual_dynamic_od_rights_and_direction", () => {
+    for (const od of odValidationContext.dynamicODById.values()) {
+      const actual = edges.find((e) => e.dynamicODRef === od.odId);
+      if (
+        !actual ||
+        canonical(actual) !==
+          canonical(
+            generateDynamicOD(od, odValidationContext, actual.generatedAt),
+          )
+      )
+        throw Error("OD_REPLAY_MISMATCH:" + od.odId);
+    }
+    return odValidationContext.dynamicODById.size;
   });
   check("actual_ordered_patterns_rights_and_boarding", () => {
     for (const p of patterns) {
@@ -408,12 +475,59 @@ export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
     return count;
   });
   check("all_published_corridor_witnesses_obey_boarding_and_direction", () => {
-    for (const c of corridors.filter((c) => c.status === "PASS"))
+    for (const c of corridors.filter((c) => c.status === "PASS")) {
       if (
-        !validPath(c.forwardEdgeIds, c.from, c.to, byEdge) ||
-        !validPath(c.reverseEdgeIds, c.to, c.from, byEdge)
+        c.connectivity ===
+        "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS"
+      ) {
+        const proof = reviewedApplicability?.assessments.find(
+          (a) =>
+            a.checkId === `corridor:${c.corridorId}` &&
+            a.status ===
+              "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS",
+        );
+        if (
+          !proof ||
+          c.defaultDiagnostic !== "FAIL" ||
+          c.validationBindingSha256 !==
+            reviewedApplicability.validationBindingSha256 ||
+          canonical([
+            c.forwardEdgeIds,
+            c.reverseEdgeIds,
+            c.forwardAccessContext,
+            c.reverseAccessContext,
+          ]) !==
+            canonical([
+              proof.nationalOrCorridorWitness.forward.edgeIds,
+              proof.nationalOrCorridorWitness.reverse.edgeIds,
+              proof.nationalOrCorridorWitness.forward.accessContext,
+              proof.nationalOrCorridorWitness.reverse.accessContext,
+            ])
+        )
+          throw Error("CONDITIONAL_CORRIDOR_PROOF_MISMATCH:" + c.corridorId);
+      }
+      if (
+        !validPath(
+          c.forwardEdgeIds,
+          c.from,
+          c.to,
+          byEdge,
+          c.forwardAccessContext
+            ? { ...c.forwardAccessContext, odValidationContext }
+            : undefined,
+        ) ||
+        !validPath(
+          c.reverseEdgeIds,
+          c.to,
+          c.from,
+          byEdge,
+          c.reverseAccessContext
+            ? { ...c.reverseAccessContext, odValidationContext }
+            : undefined,
+        )
       )
         throw Error("Invalid witness " + c.corridorId);
+    }
     return corridors.filter((c) => c.status === "PASS").length;
   });
   check("raw_content_hashes_and_retained_input_versions", () => {
@@ -780,6 +894,9 @@ export function buildStageReport({ conditionalAccessContexts = [] } = {}) {
     },
     ...(conditionalAccessContexts.length
       ? {
+          publicConditionalApplicability: reviewedApplicability,
+          defaultDiagnostics: audit.defaultDiagnostics,
+          structuralChecks: audit.structuralChecks,
           passengerViews: passengerViewReports(
             nodes,
             edges,
@@ -938,4 +1055,36 @@ export function passengerViewReports(nodes, edges, anchor, contexts = []) {
       .map(view),
     defaultChecksUnchanged: true,
   };
+}
+
+// Global gaps are subsequently evaluated by reviewGlobalGaps, independently of
+// conditional applicability. This check never grants them a conditional PASS.
+export function assertPublicStructuralConsumption(
+  report,
+  checks,
+  remaining,
+  independentlyReviewedGlobalIds = new Set(),
+) {
+  if (!report) return;
+  const expected = report.assessments.map((a) => ({
+    checkId: a.checkId,
+    status:
+      a.status === "OPEN" ? "FAIL" : "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS",
+    defaultDiagnostic: "FAIL",
+    witnessBindingSha256: report.validationBindingSha256,
+  }));
+  if (canonical(expected) !== canonical(checks))
+    throw Error("PUBLIC_STRUCTURAL_CHECK_REGISTRY_CHANGED");
+  for (const a of report.assessments) {
+    if (independentlyReviewedGlobalIds.has(a.checkId)) {
+      if (a.status !== "OPEN")
+        throw Error("PUBLIC_CONDITIONS_CANNOT_CLOSE_GLOBAL:" + a.checkId);
+      continue;
+    }
+    if (
+      remaining.some((d) => d.deficitId === a.checkId) !==
+      (a.status === "OPEN")
+    )
+      throw Error("PUBLIC_STRUCTURAL_DEFICIT_STATE_MISMATCH:" + a.checkId);
+  }
 }

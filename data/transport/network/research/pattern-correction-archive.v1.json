@@ -3226,6 +3226,293 @@
       "serviceState": "active",
       "serviceStateScope": "OCTOBER2_2026_FRIDAY_ELIGIBLE_PUBLISHED_WEEKDAY_SERVICE_NOT_REALTIME",
       "locator": "510M actual October2 source; all16 actual calls in selected continuous section. CompleteIwakuni-Hiroshima trip. NativeS12山陽線 identities; no trainreverse, clocks/frequency or busconnectionpromise."
+    },
+    {
+      "factId": "sonic-3003M-current-kokura-oita-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:sonic-current-oita-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001",
+      "observedResponseSha256": "cb8f2984c3955d86d5f6a5acd6ee5e343caaabc2f66e55e8ddf1cdd05bccb7fd",
+      "corroboratingEvidence": [
+        {
+          "url": "https://timetable.jr-odekake.net/station-timetable/4102120002?date=20261001",
+          "observedResponseSha256": "ec4c1de5094ff82d75ffd9fe86b500a54cce0e1984b64bbc5ffff2ebfe66ae42"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2024/05/07/kokuraeki_kounaizu_2024.5.7.pdf",
+          "observedResponseSha256": "9747879b5872aa26bd287734d6a4a83e114bd9263379abe72fa1fef022535c89"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191572_1601.html",
+          "observedResponseSha256": "ad9d25253bea07c1df466f8c95034b6b3d7fad70a4ef1c52ae72b08bdcc88e42"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/english/train/sonic.html",
+          "observedResponseSha256": "fce0630da18a067958fb75282ca54ad7885cce79131e0901ca9fceab028b6051"
+        }
+      ],
+      "locator": "Exact current 3003M / ソニック3号 independently resolved from the 20261001 station page and verified against actual calling rows. Preserve the complete reviewed parent calling names, then generate only the contiguous Kokura–Oita section; no passing rows, clocks, live platform or invented reverse. The published 柳ケ浦 spelling is independently bound to exact S12 009103 柳ヶ浦 / JR Kyushu / Nippo Line; no broad fuzzy match is used. Kokura is one existing physical JR Kyushu component containing independently checked S12 Kagoshima 008683 and Nippo 008684 records. Its current-linked station diagram depicts all conventional platforms sharing one paid concourse, supporting reuse of that component and no self-transfer. No raw copyrighted timetable/map is retained.",
+      "line": "ソニック・小倉大分区間",
+      "operator": "九州旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急ソニック",
+      "direction": "outbound",
+      "parentCallingStations": [
+        "博多",
+        "香椎",
+        "福間",
+        "赤間",
+        "折尾",
+        "黒崎",
+        "小倉",
+        "行橋",
+        "宇島",
+        "中津",
+        "柳ケ浦",
+        "宇佐",
+        "杵築",
+        "別府",
+        "大分"
+      ],
+      "sectionStartIndex": 6,
+      "callingStations": [
+        "小倉",
+        "行橋",
+        "宇島",
+        "中津",
+        "柳ケ浦",
+        "宇佐",
+        "杵築",
+        "別府",
+        "大分"
+      ],
+      "callingComponents": [
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "行橋",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇島",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "中津",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "柳ヶ浦",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "柳ケ浦",
+            "stationCode": "009103"
+          }
+        },
+        {
+          "name": "宇佐",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "杵築",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "別府",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "reviewedNameCorrespondences": [
+        {
+          "publishedName": "柳ケ浦",
+          "canonicalName": "柳ヶ浦",
+          "stationCode": "009103",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "method": "EXPLICIT_REVIEWED_SMALL_KANA_VARIANT_SAME_EXACT_OPERATOR_LINE_RECORD"
+        }
+      ],
+      "samePhysicalOperatorComponentReview": {
+        "name": "小倉",
+        "operator": "九州旅客鉄道",
+        "stationCodes": [
+          "008683",
+          "008684"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_LINKED_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    },
+    {
+      "factId": "sonic-3006M-current-kokura-oita-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:sonic-current-oita-backbone",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001",
+      "observedResponseSha256": "eb6a94ea1b6393ae841bafbc9a7c8a07e1c7c56c60a797678522f19319bed59e",
+      "corroboratingEvidence": [
+        {
+          "url": "https://timetable.jr-odekake.net/station-timetable/4084120001?date=20261001",
+          "observedResponseSha256": "71c6f9ca9c567969334ddaddcd3e2efcd189d4083174337d79b9bdfa5ade1fa0"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2024/05/07/kokuraeki_kounaizu_2024.5.7.pdf",
+          "observedResponseSha256": "9747879b5872aa26bd287734d6a4a83e114bd9263379abe72fa1fef022535c89"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191572_1601.html",
+          "observedResponseSha256": "ad9d25253bea07c1df466f8c95034b6b3d7fad70a4ef1c52ae72b08bdcc88e42"
+        },
+        {
+          "url": "https://www.jrkyushu.co.jp/english/train/sonic.html",
+          "observedResponseSha256": "fce0630da18a067958fb75282ca54ad7885cce79131e0901ca9fceab028b6051"
+        }
+      ],
+      "locator": "Exact current 3006M / ソニック6号 independently resolved from the 20261001 station page and verified against actual calling rows. Preserve the complete reviewed parent calling names, then generate only the contiguous Kokura–Oita section; no passing rows, clocks, live platform or invented reverse. The published 柳ケ浦 spelling is independently bound to exact S12 009103 柳ヶ浦 / JR Kyushu / Nippo Line; no broad fuzzy match is used. Kokura is one existing physical JR Kyushu component containing independently checked S12 Kagoshima 008683 and Nippo 008684 records. Its current-linked station diagram depicts all conventional platforms sharing one paid concourse, supporting reuse of that component and no self-transfer. No raw copyrighted timetable/map is retained.",
+      "line": "ソニック・小倉大分区間",
+      "operator": "九州旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急ソニック",
+      "direction": "inbound",
+      "parentCallingStations": [
+        "大分",
+        "別府",
+        "杵築",
+        "宇佐",
+        "柳ケ浦",
+        "中津",
+        "宇島",
+        "行橋",
+        "小倉",
+        "黒崎",
+        "折尾",
+        "赤間",
+        "福間",
+        "博多"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "大分",
+        "別府",
+        "杵築",
+        "宇佐",
+        "柳ケ浦",
+        "中津",
+        "宇島",
+        "行橋",
+        "小倉"
+      ],
+      "callingComponents": [
+        {
+          "name": "大分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "別府",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "杵築",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇佐",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "柳ヶ浦",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "柳ケ浦",
+            "stationCode": "009103"
+          }
+        },
+        {
+          "name": "中津",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇島",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "行橋",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_NAMED_TRAIN_AND_CONTIGUOUS_REVIEWED_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "reviewedNameCorrespondences": [
+        {
+          "publishedName": "柳ケ浦",
+          "canonicalName": "柳ヶ浦",
+          "stationCode": "009103",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "method": "EXPLICIT_REVIEWED_SMALL_KANA_VARIANT_SAME_EXACT_OPERATOR_LINE_RECORD"
+        }
+      ],
+      "samePhysicalOperatorComponentReview": {
+        "name": "小倉",
+        "operator": "九州旅客鉄道",
+        "stationCodes": [
+          "008683",
+          "008684"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_LINKED_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
     }
   ],
   "patterns": [
@@ -3508,6 +3795,180 @@
       "sourceFactRef": "transport-evidence:086:5fcfb2675079dcfc7cbb664e40e20d22",
       "sourceRefs": [
         "https://timetable.jr-odekake.net/train-timetable/169461?date=20261002"
+      ],
+      "strictFactBinding": true
+    },
+    {
+      "callingNodes": [
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:1af36c0ff6325f0146262571c852d3bf",
+          "pickupType": "0",
+          "sequence": 1
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+          "pickupType": "0",
+          "sequence": 2
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+          "pickupType": "0",
+          "sequence": 3
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+          "pickupType": "0",
+          "sequence": 4
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+          "pickupType": "0",
+          "sequence": 5
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+          "pickupType": "0",
+          "sequence": 6
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+          "pickupType": "0",
+          "sequence": 7
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+          "pickupType": "0",
+          "sequence": 8
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:0dc04c874b150fcf205c580d62c1a18b",
+          "pickupType": "0",
+          "sequence": 9
+        }
+      ],
+      "direction": "outbound",
+      "evidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "factId": "sonic-3003M-current-kokura-oita-section",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {},
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentOperators": [
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道"
+      ],
+      "sequenceEvidence": "OFFICIAL_CALLING_SEQUENCE",
+      "serviceClass": "特急ソニック",
+      "servicePatternId": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "sourceFactRef": "transport-evidence:086:d9e7c1dc38b830e57ed3d2cfb6c55f85",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "strictFactBinding": true
+    },
+    {
+      "callingNodes": [
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:0dc04c874b150fcf205c580d62c1a18b",
+          "pickupType": "0",
+          "sequence": 1
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+          "pickupType": "0",
+          "sequence": 2
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+          "pickupType": "0",
+          "sequence": 3
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+          "pickupType": "0",
+          "sequence": 4
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+          "pickupType": "0",
+          "sequence": 5
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+          "pickupType": "0",
+          "sequence": 6
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+          "pickupType": "0",
+          "sequence": 7
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+          "pickupType": "0",
+          "sequence": 8
+        },
+        {
+          "dropOffType": "0",
+          "nodeId": "transport-node:086:1af36c0ff6325f0146262571c852d3bf",
+          "pickupType": "0",
+          "sequence": 9
+        }
+      ],
+      "direction": "inbound",
+      "evidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "factId": "sonic-3006M-current-kokura-oita-section",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {},
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentOperators": [
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道",
+        "九州旅客鉄道"
+      ],
+      "sequenceEvidence": "OFFICIAL_CALLING_SEQUENCE",
+      "serviceClass": "特急ソニック",
+      "servicePatternId": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_2026_10_01_TRAIN_NOT_REALTIME",
+      "sourceFactRef": "transport-evidence:086:fb2c1acf0baffc818b77fe4ad7e4da66",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
       ],
       "strictFactBinding": true
     }
@@ -5967,6 +6428,1462 @@
       "toTransportNodeId": "transport-node:086:2757767fe73d494802c46b59dd05f681",
       "topologyEvidenceRefs": [
         "transport-evidence:086:819ae0249c67354d0d1bea712324ec30"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:0e92f6043c50f21f5ed341ecc92a2c10",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 4,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:3d950c49058cbc9d48f947f105e9b6ae",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 7,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:1af36c0ff6325f0146262571c852d3bf",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:1af36c0ff6325f0146262571c852d3bf",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:521e6b1ebc7a5904302c9652002f8049",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 3,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:52b4603f9b9a1aeadc36b75afff53a49",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 7,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:0dc04c874b150fcf205c580d62c1a18b",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:0dc04c874b150fcf205c580d62c1a18b",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:6154f4d0ec9ed5ac205c8336f094c1c6",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 6,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:9ad1bf76f777d31e62e53b8d475fea51",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 4,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:a1de3ccdb8e76bb16df8206c2912fdc8",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 5,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:ad6b0d6b6e88105385bb6660794dd8ab",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:0dc04c874b150fcf205c580d62c1a18b",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:0dc04c874b150fcf205c580d62c1a18b",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 0,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:d1fae01a938f0651af096be1a7318f73",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 1,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:d8f768f3d80075afeb536a2af66836a7",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 1,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:e2446669e2696a718aa808944c3f9c22",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:1af36c0ff6325f0146262571c852d3bf",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:1af36c0ff6325f0146262571c852d3bf",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 0,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:0240dfa6afaf57d46513ca1484555ad3",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:f12c07afa8146d71984f7018922de94f",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 3,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:6af80ff88c17276c21fc538933cea176",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:f2c12eaf32ba969e645b32dcaa1d6cd1",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 5,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "inbound",
+      "edgeId": "transport-edge:086:f61acce6306fa00bdde76a8a725ac5d2",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 2,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28121?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:5424cde94f280111e29d885160a2d4a9",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:9d9edff86f945da0c12e50b386c3e52a"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:f91a76b60ba751eeba49c23bd414adae",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:a5cdd1219926ebb5e67585afb30da327",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 2,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:5a517939cd9e5f16dffb6290166958f4",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
+      ],
+      "topologyStatus": "CONFIRMED"
+    },
+    {
+      "alightAllowed": true,
+      "boardAllowed": true,
+      "confidence": 1,
+      "directed": true,
+      "direction": "outbound",
+      "edgeId": "transport-edge:086:fd281cc95562a4ffff2e47c10d425ac6",
+      "edgeKind": "service_segment",
+      "from": {
+        "id": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+        "kind": "transport"
+      },
+      "fromTransportNodeId": "transport-node:086:03b00f146db8bc04b8bbaf690d8c6a36",
+      "generatedAt": "2026-10-01T00:00:00Z",
+      "layer": "transport_network",
+      "lineRef": "transport-line:086:7cd76ab217eaf709548b4b915ba91b7f",
+      "metrics": {
+        "accessibility": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "calendar": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationP90Min": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "durationTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "fareTypicalYen": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "firstDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "frequencyTypicalMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "lastDeparture": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "reservation": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "seasonal": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        },
+        "transferTimeMin": {
+          "reason": "NO_LICENSED_FIELD_OBSERVATION",
+          "status": "unresolved",
+          "value": null
+        }
+      },
+      "mode": "conventional_rail",
+      "operatorRef": "九州旅客鉄道",
+      "segmentIndex": 6,
+      "serviceClass": "特急ソニック",
+      "servicePatternRef": "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "sourceRefs": [
+        "https://timetable.jr-odekake.net/train-timetable/28061?date=20261001"
+      ],
+      "to": {
+        "id": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+        "kind": "transport"
+      },
+      "toTransportNodeId": "transport-node:086:40bf0743cb26957482a20c6657f5d424",
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5afb98b534375b14c6e529ac3167fa40"
       ],
       "topologyStatus": "CONFIRMED"
     }
@@ -11703,6 +13620,43 @@
         "transport-node:086:ffa99cdcaa8857c301b65c4203443613",
         "transport-node:086:ffce1c9d39f4e4a463294c1427c1d36d"
       ]
+    }
+  },
+  "appendedRecordProvenance": {
+    "phase219": {
+      "baseline": "217",
+      "snapshotHashes": {
+        "node-downstream-admission.jsonl": "280249836cec8558b44b1b3a8a8e8d256c9110d4153e7844acd3ff9b6e456765",
+        "source-rights.json": "700cf31e02b896412b0317d5f95b880f4da7f7e370e17d5fcf742e0fa49c7932",
+        "topology-evidence.jsonl": "c6d6405d4d0b552f39e8da021bf6c8b6774495feccafbeb6e0861ae4badde505",
+        "transport-node-edges.jsonl": "88ee6375cca0fea4923690a24c7204dc778922850f6a28fa0fb98e5645b9beca",
+        "service-patterns.jsonl": "162e761846f46cb3e279fe2c9cba2c1de45ee7b14938a56c5f2b1e2314706cde",
+        "next-source-actions.jsonl": "acd46e522b4c38882802728f5b24e23cdb3ac5883efe443ea52f1a48b20a9bae",
+        "research/global-review.v1.json": "44f37bd5cae753ed23506591979577c4a32a21586a2d13d43d319b6ced00f47c"
+      },
+      "patternIds": [
+        "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+        "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643"
+      ],
+      "edgeIds": [
+        "transport-edge:086:0e92f6043c50f21f5ed341ecc92a2c10",
+        "transport-edge:086:3d950c49058cbc9d48f947f105e9b6ae",
+        "transport-edge:086:521e6b1ebc7a5904302c9652002f8049",
+        "transport-edge:086:52b4603f9b9a1aeadc36b75afff53a49",
+        "transport-edge:086:6154f4d0ec9ed5ac205c8336f094c1c6",
+        "transport-edge:086:9ad1bf76f777d31e62e53b8d475fea51",
+        "transport-edge:086:a1de3ccdb8e76bb16df8206c2912fdc8",
+        "transport-edge:086:ad6b0d6b6e88105385bb6660794dd8ab",
+        "transport-edge:086:d1fae01a938f0651af096be1a7318f73",
+        "transport-edge:086:d8f768f3d80075afeb536a2af66836a7",
+        "transport-edge:086:e2446669e2696a718aa808944c3f9c22",
+        "transport-edge:086:f12c07afa8146d71984f7018922de94f",
+        "transport-edge:086:f2c12eaf32ba969e645b32dcaa1d6cd1",
+        "transport-edge:086:f61acce6306fa00bdde76a8a725ac5d2",
+        "transport-edge:086:f91a76b60ba751eeba49c23bd414adae",
+        "transport-edge:086:fd281cc95562a4ffff2e47c10d425ac6"
+      ],
+      "note": "Original immutable-Git records remain unchanged; the two appended patterns and 16 edges were captured from the stable phase217 generated snapshot, with original phase090 fact hashes."
     }
   }
 }

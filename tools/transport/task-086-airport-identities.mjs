@@ -137,3 +137,39 @@ export function airportCandidate(
     discoveryCandidateRef: requirement.requirementId.slice("review:".length),
   };
 }
+
+// Fail malformed facility selectors before replaying historical graph phases.
+// Uses the same authoritative identity contract as actual node admission.
+export function preflightAirportSelectors(facts, records, inventory) {
+  let checked = 0;
+  for (const fact of facts) {
+    for (const selector of [
+      ...(fact.callingComponents ?? []),
+      ...(fact.components ?? []),
+    ]) {
+      if (
+        !selector.airportIdentity &&
+        !selector.operator?.startsWith("airport-facility:") &&
+        !selector.line?.startsWith("airport:")
+      )
+        continue;
+      invariant(selector.airportIdentity, "AIRPORT_IDENTITY_SELECTOR_REQUIRED");
+      const matches = records.filter(
+        (r) => r.referencePointId === selector.airportIdentity.referencePointId,
+      );
+      invariant(matches.length === 1, "AIRPORT_RAW_IDENTITY_NOT_UNIQUE");
+      const requirement = inventory.find(
+        (r) => r.requirementId === selector.airportIdentity.requirementId,
+      );
+      airportCandidate(
+        selector,
+        matches[0],
+        requirement,
+        ["preflight-native-identity", "preflight-service-fact"],
+        fact,
+      );
+      checked++;
+    }
+  }
+  return checked;
+}

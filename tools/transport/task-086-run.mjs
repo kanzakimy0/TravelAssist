@@ -47,7 +47,7 @@ export function run({
   rerunBatch = null,
   repair = false,
   terminal = false,
-  conditionalAccessContexts = [],
+  conditionalAccessContexts,
 } = {}) {
   if (fs.existsSync(rel("data/transport/network/checkpoints/origin.json")))
     return runRemediation({
@@ -57,6 +57,13 @@ export function run({
       terminal,
       conditionalAccessContexts,
     });
+  conditionalAccessContexts ??= [];
+  invariant(
+    !fs.existsSync(
+      rel("data/transport/network/research/public-od-facilities.v1.json"),
+    ),
+    "OD_REQUIRES_TASK086_REMEDIATION_CHECKPOINT",
+  );
   const inputPaths = [
     upstream + "manifest.json",
     upstream + "rail-components.jsonl",
