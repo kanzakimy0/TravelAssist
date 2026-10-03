@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T02:46:53.561952+00:00",
+  "updatedAt": "2026-10-03T03:17:20.127721+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
   "lastPushedCheckpoint": "21a0b670dede06f7f6092315aea9cfa820c481d0",
   "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
-  "currentStage": "PHASE191_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE194-v2",
+  "currentStage": "PHASE194_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "completedSinceCheckpoint": [
     "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
@@ -744,9 +744,41 @@
       "deterministicRebuild": "PASS",
       "remainingChecks": "PASS",
       "ci": "PENDING_NEW_CHECKPOINT"
+    },
+    "phase194Incremental": {
+      "replaySeconds": 219.12414659996284,
+      "exactRootsClosed": 3,
+      "status": "PASS_FULL_GATE_PENDING",
+      "inputScope": "TASK086-FULL-ORIGINAL-PHASE194-v2",
+      "counts": {
+        "admitted": 3787,
+        "hold": 16,
+        "required": 3803,
+        "edges": 8995
+      }
+    },
+    "phase194FullRegression": {
+      "tests": 3081,
+      "passed": 3081,
+      "timing": {
+        "command": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=2",
+          "tests/*.test.mjs"
+        ],
+        "elapsedSeconds": 1032.1030870999675,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE194-v2"
+      },
+      "deterministicRebuild": "PASS",
+      "remainingChecks": "PASS",
+      "ci": "PENDING_NEW_CHECKPOINT"
     }
   },
-  "nextConcreteAction": "Commit/push191; record direct branch HEAD and actual PR merge checkout separately. Register boundedFukue192+Iki193+Oki194 exact6 P11 records/18edges after shared validation completes; preserve original HOLD airport ID, replay and strict root/preservation audits. Continue original scope.",
+  "nextConcreteAction": "Commit/push194; obtain direct branch HEAD and actual PR merge checkout separately. Register exact privateRishiri195 two P11 records and six edges with original same-ID HOLD upgrade, replay and strict preservation/root/path validation. Continue original scope including Okushiri current2026Oct1 bus revision.",
   "independentWork": [
     "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
     "Tottori original airport/current complete calling sequences and rail dependency",
@@ -993,5 +1025,12 @@
     "noCanonicalImport": true,
     "webClickRequests": 2,
     "webScreenshotRequests": 1
+  },
+  "savedHead": "dacda287f1fb8b50183b249a75b2f6d28540f895",
+  "ci191": {
+    "branchHeadSha": "dacda287f1fb8b50183b249a75b2f6d28540f895",
+    "directRun": 37091101716,
+    "prMergeRun": 37091068812,
+    "status": "IN_PROGRESS_ACTUAL_CHECKOUT_NOT_YET_COLLECTED"
   }
 }

@@ -1,0 +1,477 @@
+{
+  "phaseId": "192-fukue-independent-airport-bus-sections-orc-and-public-terminal-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_IDENTITY_UPGRADE_WITHOUT_REPLACEMENT",
+    "EXACT_NATIVE_P11_TWO_ADJACENT_CALLS",
+    "INDEPENDENT_FLIGHT_DIRECTIONS",
+    "PUBLIC_TERMINAL_INTERFACE"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:fukue:current-independent-sakanoue-airport-sections",
+    "airport:fukue:current-orc-fukuoka-and-public-terminal-stop"
+  ],
+  "facts": [
+    {
+      "factId": "fukue-airport-adjacent-direction-0",
+      "kind": "service",
+      "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+      "sourceUrl": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+      "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+          "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/index.html",
+          "observedResponseSha256": "97701c15143801b232de5991a628f90c04131d3cd9c15745d86a3ee471e2c98c"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/teiryuushoR2.10.01.pdf",
+          "observedResponseSha256": "39c9f7caa3de6a117d0357c4452e574191025c1fee88ec7416117cd51407f035"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/kuukousen2020.12.1.pdf",
+          "observedResponseSha256": "83bd265dbf301ff4b5e2f35b389d5128c7317176c8dba2c9400c384c9e3b272a"
+        },
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/contents/flite/",
+          "observedResponseSha256": "635b9b731368d4b53dcd8aedc6c6e39dd2137f67f3b4b043555b567ce5b75eed"
+        }
+      ],
+      "operator": "五島自動車（株）",
+      "line": "空港線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "sakanoue-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current-linked2026 summer airport timetable period ending2026-10-24, corroborated by terminal operator current2026 flight schedule. Static adjacent section only, not live dispatch or guaranteed timed connection.",
+      "callingStations": [
+        "坂の上",
+        "空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "坂の上",
+          "operator": "五島自動車（株）",
+          "line": "p11-stop:P11-22_42:bs109",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs109",
+            "recordSha256": "c012e722dc31e64c629a436a993b04078c586408f1efac5e7aec23afed5faeeb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 road-stop representative. Current operator full-stop map makes 坂の上 and 空港 consecutive, and independent 空港方面/福江方面 timetable entries prove both directions. No physical pole, platform or precise entrance location inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "五島自動車（株）",
+              "currentOperatorName": "五島自動車（株）",
+              "currentStopName": "坂の上",
+              "historicalRoute": "福江（本町通）空港",
+              "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+              "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+            }
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "五島自動車（株）",
+          "line": "p11-stop:P11-22_42:bs137",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs137",
+            "recordSha256": "8cc263a86c00671947fd8fc858107479041ec92e424382c723ea99501072d45d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 road-stop representative. Current operator full-stop map makes 坂の上 and 空港 consecutive, and independent 空港方面/福江方面 timetable entries prove both directions. No physical pole, platform or precise entrance location inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "五島自動車（株）",
+              "currentOperatorName": "五島自動車（株）",
+              "currentStopName": "空港",
+              "historicalRoute": "福江（本町通）空港",
+              "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+              "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Native stop timetable p1 空港方面 first ordinary row calls坂の上 then airport terminus; full-stop map proves no intervening stop. Airport-bound table omits terminal arrival clock, not its explicitly named destination. No invented arrival clock.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no fares, clocks, frequency or runtime service assertion."
+    },
+    {
+      "factId": "fukue-airport-adjacent-direction-1",
+      "kind": "service",
+      "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+      "sourceUrl": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+      "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+          "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/index.html",
+          "observedResponseSha256": "97701c15143801b232de5991a628f90c04131d3cd9c15745d86a3ee471e2c98c"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/teiryuushoR2.10.01.pdf",
+          "observedResponseSha256": "39c9f7caa3de6a117d0357c4452e574191025c1fee88ec7416117cd51407f035"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/kuukousen2020.12.1.pdf",
+          "observedResponseSha256": "83bd265dbf301ff4b5e2f35b389d5128c7317176c8dba2c9400c384c9e3b272a"
+        },
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/contents/flite/",
+          "observedResponseSha256": "635b9b731368d4b53dcd8aedc6c6e39dd2137f67f3b4b043555b567ce5b75eed"
+        }
+      ],
+      "operator": "五島自動車（株）",
+      "line": "空港線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-to-sakanoue",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current-linked2026 summer airport timetable period ending2026-10-24, corroborated by terminal operator current2026 flight schedule. Static adjacent section only, not live dispatch or guaranteed timed connection.",
+      "callingStations": [
+        "空港",
+        "坂の上"
+      ],
+      "callingComponents": [
+        {
+          "name": "空港",
+          "operator": "五島自動車（株）",
+          "line": "p11-stop:P11-22_42:bs137",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs137",
+            "recordSha256": "8cc263a86c00671947fd8fc858107479041ec92e424382c723ea99501072d45d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 road-stop representative. Current operator full-stop map makes 坂の上 and 空港 consecutive, and independent 空港方面/福江方面 timetable entries prove both directions. No physical pole, platform or precise entrance location inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "五島自動車（株）",
+              "currentOperatorName": "五島自動車（株）",
+              "currentStopName": "空港",
+              "historicalRoute": "福江（本町通）空港",
+              "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+              "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+            }
+          }
+        },
+        {
+          "name": "坂の上",
+          "operator": "五島自動車（株）",
+          "line": "p11-stop:P11-22_42:bs109",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs109",
+            "recordSha256": "c012e722dc31e64c629a436a993b04078c586408f1efac5e7aec23afed5faeeb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 road-stop representative. Current operator full-stop map makes 坂の上 and 空港 consecutive, and independent 空港方面/福江方面 timetable entries prove both directions. No physical pole, platform or precise entrance location inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "五島自動車（株）",
+              "currentOperatorName": "五島自動車（株）",
+              "currentStopName": "坂の上",
+              "historicalRoute": "福江（本町通）空港",
+              "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+              "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Native stop timetable p1 福江方面 first ordinary row calls空港 then坂の上; full-stop map independently proves adjacency. No inferred reversal.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no fares, clocks, frequency or runtime service assertion."
+    },
+    {
+      "factId": "fukue-orc-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+      "sourceUrl": "https://www.fukuekuko.jp/contents/flite/",
+      "observedResponseSha256": "635b9b731368d4b53dcd8aedc6c6e39dd2137f67f3b4b043555b567ce5b75eed",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/contents/flite/",
+          "observedResponseSha256": "635b9b731368d4b53dcd8aedc6c6e39dd2137f67f3b4b043555b567ce5b75eed"
+        }
+      ],
+      "operator": "ORC",
+      "line": "福岡・福江国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "FUK-FUJ",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_SUMMER_PUBLISHED_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "福岡空港",
+        "福江空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Fukue operator flight table identifies Fukuoka endpoint in independent inbound/outbound headings. Reuse admitted C28福岡空港 and existing public ground/national connections without new internal terminal claim."
+          }
+        },
+        {
+          "name": "福江空港",
+          "operator": "airport-facility:cf03_00043",
+          "line": "airport:cf03_00043",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00043",
+            "requirementId": "review:transport-node:cd521eca-00cc-55da-b9ea-b0092ee28574",
+            "expectedRequirementName": "福江",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current 福江空港 terminal operator main site identifies its public first-floor entrance and item8 bus stop, showing 五島バス 空港 pole; same-airport C28 formal name. Native airport point stays whole-facility only. Current flight table provides explicit ORC services separately to/from福岡. No precise terminal/door navigation coordinate."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "福江",
+          "canonicalAirportName": "福江空港",
+          "referencePointId": "cf03_00043"
+        },
+        {
+          "sourceName": "福岡",
+          "canonicalAirportName": "福岡空港",
+          "referencePointId": "cf03_00083"
+        }
+      ],
+      "locator": "Terminal current flight table2026 summer 福岡発→福江着 explicitly ORC95 shown alongside ANA codeshare4695. Independent directional source, no reverse inference. No schedules/numbers/connection guarantee in resulting pattern."
+    },
+    {
+      "factId": "fukue-orc-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+      "sourceUrl": "https://www.fukuekuko.jp/contents/flite/",
+      "observedResponseSha256": "635b9b731368d4b53dcd8aedc6c6e39dd2137f67f3b4b043555b567ce5b75eed",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/contents/flite/",
+          "observedResponseSha256": "635b9b731368d4b53dcd8aedc6c6e39dd2137f67f3b4b043555b567ce5b75eed"
+        }
+      ],
+      "operator": "ORC",
+      "line": "福岡・福江国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "FUJ-FUK",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_SUMMER_PUBLISHED_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "福江空港",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "福江空港",
+          "operator": "airport-facility:cf03_00043",
+          "line": "airport:cf03_00043",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00043",
+            "requirementId": "review:transport-node:cd521eca-00cc-55da-b9ea-b0092ee28574",
+            "expectedRequirementName": "福江",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current 福江空港 terminal operator main site identifies its public first-floor entrance and item8 bus stop, showing 五島バス 空港 pole; same-airport C28 formal name. Native airport point stays whole-facility only. Current flight table provides explicit ORC services separately to/from福岡. No precise terminal/door navigation coordinate."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Fukue operator flight table identifies Fukuoka endpoint in independent inbound/outbound headings. Reuse admitted C28福岡空港 and existing public ground/national connections without new internal terminal claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "福江",
+          "canonicalAirportName": "福江空港",
+          "referencePointId": "cf03_00043"
+        },
+        {
+          "sourceName": "福岡",
+          "canonicalAirportName": "福岡空港",
+          "referencePointId": "cf03_00083"
+        }
+      ],
+      "locator": "Terminal current flight table2026 summer 福江発→福岡着 explicitly ORC94 shown alongside ANA codeshare4694. Select one physical ORC relation, no duplicate marketing-carrier edge."
+    },
+    {
+      "factId": "fukue-terminal-public-first-floor-bus-stop-eight",
+      "kind": "transfer",
+      "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+      "sourceUrl": "https://www.fukuekuko.jp/contents/facility/",
+      "observedResponseSha256": "0c5a321f5923d6b44ca4fc4b516755bf07880324240fb2ec2d6c6f634eb248e9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/img/contents/facility/floor1.png",
+          "observedResponseSha256": "0e41337fdb95cc653ee34d8a833c49035498f8f4c0104bc018f4b31a6e982bdd"
+        },
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/img/contents/facility/1_8.jpg",
+          "observedResponseSha256": "e9304b2f889fb9a401f0ed6b5cb93534da45e0f5fa6f6e95d73826ef854ecad7"
+        },
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/css/layout.css?20260401",
+          "observedResponseSha256": "dcde779c7721f8191f5741b53d6326819c37e4531fbb32d7606eefe9141ea50a"
+        },
+        {
+          "sourceActionId": "airport:fukue:current-orc-fukuoka-and-public-terminal-stop",
+          "url": "https://www.fukuekuko.jp/contents/access/",
+          "observedResponseSha256": "678f29c887a37a0bcd67315c2d64ea96468bd6eff3b2c35a22c08fd3c60487d9"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+          "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+        },
+        {
+          "sourceActionId": "bus:fukue:current-independent-sakanoue-airport-sections",
+          "url": "https://goto-sight.com/gotobus/_userdata/teiryuushoR2.10.01.pdf",
+          "observedResponseSha256": "39c9f7caa3de6a117d0357c4452e574191025c1fee88ec7416117cd51407f035"
+        }
+      ],
+      "components": [
+        {
+          "name": "福江空港",
+          "operator": "airport-facility:cf03_00043",
+          "line": "airport:cf03_00043",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00043",
+            "requirementId": "review:transport-node:cd521eca-00cc-55da-b9ea-b0092ee28574",
+            "expectedRequirementName": "福江",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current 福江空港 terminal operator main site identifies its public first-floor entrance and item8 bus stop, showing 五島バス 空港 pole; same-airport C28 formal name. Native airport point stays whole-facility only. Current flight table provides explicit ORC services separately to/from福岡. No precise terminal/door navigation coordinate."
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "五島自動車（株）",
+          "line": "p11-stop:P11-22_42:bs137",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs137",
+            "recordSha256": "8cc263a86c00671947fd8fc858107479041ec92e424382c723ea99501072d45d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 road-stop representative. Current operator full-stop map makes 坂の上 and 空港 consecutive, and independent 空港方面/福江方面 timetable entries prove both directions. No physical pole, platform or precise entrance location inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "五島自動車（株）",
+              "currentOperatorName": "五島自動車（株）",
+              "currentStopName": "空港",
+              "historicalRoute": "福江（本町通）空港",
+              "url": "https://goto-sight.com/gotobus/_userdata/kuukoujikann2020.12.1.pdf",
+              "observedResponseSha256": "36f637c6c0a2c73603be5feab9f6c0fcced3bab4b77be51b2b5518d95801cc62"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "OPERATOR_PUBLIC_FIRST_FLOOR_FACILITY_NAMED_STOP",
+      "locator": "Terminal operator first-floor guide names public main entrance, taxi stop7 and bus stop8. Native HTML ballon7 binds stop8 photograph to the floor; own layout CSS places it on the exterior public frontage below arrivals. Photo independently labels 五島バス 空港. Coarse whole-airport to representative public bus-stop access only, no invented crossing, exact pole, doorway coordinate, timing, step-free or airside relation. Native layout/photo evidence, not coordinate proximity."
+    }
+  ],
+  "scope": "Original Fukue airport chain only; two new P11 representatives, original airport HOLD upgrade, six edges. No island-wide expansion."
+}
