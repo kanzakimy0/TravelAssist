@@ -585,13 +585,13 @@
     },
     {
       "packageId": "research:3e0e34601b7c79790d17",
-      "inputFingerprint": "78ddec8e09fe7f48293a64c41d027482099b42867e40488bfe4a89706763f6fb",
+      "inputFingerprint": "c1de6f603f060253ed4b26631561586f5a2eff75cfaa254ac4457e1744a854b6",
       "status": "VALIDATION_PENDING",
-      "nextAction": "Continue original work; remaining5sourcefacts remain OPEN; full regression/current deterministic rebuild required.",
+      "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
       "resumeEvidence": [
         {
-          "path": ".cache/task-086/nagasaki-next3/phase184.json",
-          "sha256": "84ac2b14d8b6557e5b5f04d38fc21ec9a2e27412037c25b8239a4d55baeb8cb6"
+          "path": ".cache/task-086/nagasaki-public-path-next/phase197-private.json",
+          "sha256": "3de25b9c134134324aace87b3eac12832ec137ca5001525c443c1bd8c79d2ef6"
         }
       ],
       "attempts": [
@@ -695,6 +695,32 @@
             "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay184-184-timing.json"
           },
           "nextAction": "One serial national replay for batch184-184, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T04:43:18.684Z",
+          "inputFingerprint": "c1de6f603f060253ed4b26631561586f5a2eff75cfaa254ac4457e1744a854b6",
+          "method": "CURRENT_OFFICIAL_PUBLIC_FOOTBRIDGE_EXACT_EXISTING_GTFS_POLES",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/nagasaki-public-path-next/phase197-private.json",
+              "sha256": "3de25b9c134134324aace87b3eac12832ec137ca5001525c443c1bd8c79d2ef6"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/nagasaki-public-path-next/oroshihonmachi197-private-preflight.json",
+            "uniqueRootsClosed": 2,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay197-197-timing.json"
+          },
+          "nextAction": "One serial national replay for batch197-197, then preservation, actual root delta, and required full gate",
           "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
         }
       ]
