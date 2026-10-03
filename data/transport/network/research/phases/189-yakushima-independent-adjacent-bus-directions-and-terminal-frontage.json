@@ -1,0 +1,308 @@
+{
+  "phaseId": "189-yakushima-independent-adjacent-bus-directions-and-terminal-frontage",
+  "strategy": [
+    "ORIGINAL_AIRPORT_GROUND_GAP",
+    "TWO_INDEPENDENT_OPERATOR_TIMETABLE_SECTIONS",
+    "EXISTING_REVIEWED_NATIONAL_FLIGHTS_REUSED",
+    "EXACT_P11_C28_IDENTITIES"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+    "airport:yakushima:operator-exact-terminal-public-bus-interface"
+  ],
+  "facts": [
+    {
+      "factId": "yakushima-current-airport-bound-adjacent-airport-shionomichi",
+      "kind": "service",
+      "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+      "sourceUrl": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2026/09/JIKOKUHYOU.pdf",
+      "observedResponseSha256": "f23cb07ff2b19e9e8e03577cb2383ed7a9965b1d23c4084d0642a31a24967a62",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2026/09/JIKOKUHYOU.pdf",
+          "observedResponseSha256": "f23cb07ff2b19e9e8e03577cb2383ed7a9965b1d23c4084d0642a31a24967a62"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+          "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/route-bus/yakushima-free-pass/",
+          "observedResponseSha256": "b2dd4bdbb2ec622e1cb926adbffb066846dc27311133b012221294b13fc43973"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/post-3902-2/",
+          "observedResponseSha256": "a5c94b9e98149748ff5ab33e923b4255af177fa2508e5f696d975d5abf8f912c"
+        }
+      ],
+      "operator": "種子島・屋久島交通（株）",
+      "line": "屋久島沿岸路線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-bound",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current operator October1,2026 timetable corroborated by currently linked complete stop map. Separate September suspension notice is specifically Shiratani Unsuikyo line, not selected airport coastal pair. Static topology only; no realtime or dispatch guarantee.",
+      "callingStations": [
+        "塩ノ道",
+        "空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "塩ノ道",
+          "operator": "種子島・屋久島交通（株）",
+          "line": "p11-stop:P11-22_46:bs617",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs617",
+            "recordSha256": "6b5f95a4634283a9345f01c360956985b7c9de9c52c1a6e741c77f93301a4fe8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator complete map explicitly numbers48 Shionomichi and49 Airport as consecutive ordinary coastal-service stops. October2026 timetable independently lists the selected adjacent48→49 and49→48 sections in opposite directional tables. Same native P11 operator and service context; coordinate represents operator road-stop component only, not either directional Shionomichi pole or exact airport entrance. No proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "種子島・屋久島交通（株）",
+              "currentOperatorName": "種子島・屋久島交通株式会社",
+              "currentStopName": "塩ノ道",
+              "historicalRoute": "屋久島（永田～宮之浦～空港～安房～尾之間～栗生～大川の滝）",
+              "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+              "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+            }
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "種子島・屋久島交通（株）",
+          "line": "p11-stop:P11-22_46:bs618",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs618",
+            "recordSha256": "4aaa5c717f1467fd4a294e1548aace8c7e60fe60a819a54f5861323e1e70d79f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator complete map explicitly numbers48 Shionomichi and49 Airport as consecutive ordinary coastal-service stops. October2026 timetable independently lists the selected adjacent48→49 and49→48 sections in opposite directional tables. Same native P11 operator and service context; coordinate represents operator road-stop component only, not either directional Shionomichi pole or exact airport entrance. No proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "種子島・屋久島交通（株）",
+              "currentOperatorName": "種子島・屋久島交通株式会社",
+              "currentStopName": "空港",
+              "historicalRoute": "屋久島（永田～宮之浦～空港～安房～尾之間～栗生～大川の滝）",
+              "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+              "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_DIRECTIONAL_TIMETABLE_CALLS_WITH_FULL_OPERATOR_MAP_ADJACENCY",
+      "locator": "Visually reviewed left southbound table, ordinary MiyanouraPort08:00 column:48Shionomichi08:22 then49Airport08:23, both nonblank. Full map48→49 has no intervening stop. Clocks serve private evidence location only and are not graph metrics.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; exact daily calendar, clocks, fares, frequency and runtime availability not persisted as metrics."
+    },
+    {
+      "factId": "yakushima-current-miyanoura-bound-adjacent-airport-shionomichi",
+      "kind": "service",
+      "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+      "sourceUrl": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2026/09/JIKOKUHYOU.pdf",
+      "observedResponseSha256": "f23cb07ff2b19e9e8e03577cb2383ed7a9965b1d23c4084d0642a31a24967a62",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2026/09/JIKOKUHYOU.pdf",
+          "observedResponseSha256": "f23cb07ff2b19e9e8e03577cb2383ed7a9965b1d23c4084d0642a31a24967a62"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+          "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/route-bus/yakushima-free-pass/",
+          "observedResponseSha256": "b2dd4bdbb2ec622e1cb926adbffb066846dc27311133b012221294b13fc43973"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/post-3902-2/",
+          "observedResponseSha256": "a5c94b9e98149748ff5ab33e923b4255af177fa2508e5f696d975d5abf8f912c"
+        }
+      ],
+      "operator": "種子島・屋久島交通（株）",
+      "line": "屋久島沿岸路線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "miyanoura-bound",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current operator October1,2026 timetable corroborated by currently linked complete stop map. Separate September suspension notice is specifically Shiratani Unsuikyo line, not selected airport coastal pair. Static topology only; no realtime or dispatch guarantee.",
+      "callingStations": [
+        "空港",
+        "塩ノ道"
+      ],
+      "callingComponents": [
+        {
+          "name": "空港",
+          "operator": "種子島・屋久島交通（株）",
+          "line": "p11-stop:P11-22_46:bs618",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs618",
+            "recordSha256": "4aaa5c717f1467fd4a294e1548aace8c7e60fe60a819a54f5861323e1e70d79f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator complete map explicitly numbers48 Shionomichi and49 Airport as consecutive ordinary coastal-service stops. October2026 timetable independently lists the selected adjacent48→49 and49→48 sections in opposite directional tables. Same native P11 operator and service context; coordinate represents operator road-stop component only, not either directional Shionomichi pole or exact airport entrance. No proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "種子島・屋久島交通（株）",
+              "currentOperatorName": "種子島・屋久島交通株式会社",
+              "currentStopName": "空港",
+              "historicalRoute": "屋久島（永田～宮之浦～空港～安房～尾之間～栗生～大川の滝）",
+              "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+              "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+            }
+          }
+        },
+        {
+          "name": "塩ノ道",
+          "operator": "種子島・屋久島交通（株）",
+          "line": "p11-stop:P11-22_46:bs617",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs617",
+            "recordSha256": "6b5f95a4634283a9345f01c360956985b7c9de9c52c1a6e741c77f93301a4fe8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator complete map explicitly numbers48 Shionomichi and49 Airport as consecutive ordinary coastal-service stops. October2026 timetable independently lists the selected adjacent48→49 and49→48 sections in opposite directional tables. Same native P11 operator and service context; coordinate represents operator road-stop component only, not either directional Shionomichi pole or exact airport entrance. No proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "種子島・屋久島交通（株）",
+              "currentOperatorName": "種子島・屋久島交通株式会社",
+              "currentStopName": "塩ノ道",
+              "historicalRoute": "屋久島（永田～宮之浦～空港～安房～尾之間～栗生～大川の滝）",
+              "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+              "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_DIRECTIONAL_TIMETABLE_CALLS_WITH_FULL_OPERATOR_MAP_ADJACENCY",
+      "locator": "Visually reviewed right northbound table, ordinary AnboPort09:03 column:49Airport09:19 then48Shionomichi09:20, both nonblank. Full map49→48 has no intervening stop. This is independently observed actual northbound service, not generated reversal. Clocks serve private evidence location only and are not graph metrics.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; exact daily calendar, clocks, fares, frequency and runtime availability not persisted as metrics."
+    },
+    {
+      "factId": "yakushima-operator-terminal-public-airport-stop-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:yakushima:operator-exact-terminal-public-bus-interface",
+      "sourceUrl": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+      "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:yakushima:operator-exact-terminal-public-bus-interface",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+          "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+          "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2026/09/JIKOKUHYOU.pdf",
+          "observedResponseSha256": "f23cb07ff2b19e9e8e03577cb2383ed7a9965b1d23c4084d0642a31a24967a62"
+        },
+        {
+          "sourceActionId": "bus:yakushima:current-independent-airport-shionomichi-adjacent-sections",
+          "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/route-bus/yakushima-free-pass/",
+          "observedResponseSha256": "b2dd4bdbb2ec622e1cb926adbffb066846dc27311133b012221294b13fc43973"
+        }
+      ],
+      "components": [
+        {
+          "name": "屋久島空港",
+          "operator": "airport-facility:cf03_00048",
+          "line": "airport:cf03_00048",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00048",
+            "requirementId": "review:transport-node:e498a8df-df5a-5533-8cc0-7289ef679061",
+            "expectedRequirementName": "屋久島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current operator official boarding inset places the airport stop for both Anbo and Miyanoura at public terminal frontage inside terminal forecourt, distinct from two Shionomichi poles on public road. Whole-airport reference point to operator stop representative only. No airside path, inferred road crossing, entrance coordinate, geometry, duration or accessibility claim."
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "種子島・屋久島交通（株）",
+          "line": "p11-stop:P11-22_46:bs618",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs618",
+            "recordSha256": "4aaa5c717f1467fd4a294e1548aace8c7e60fe60a819a54f5861323e1e70d79f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator complete map explicitly numbers48 Shionomichi and49 Airport as consecutive ordinary coastal-service stops. October2026 timetable independently lists the selected adjacent48→49 and49→48 sections in opposite directional tables. Same native P11 operator and service context; coordinate represents operator road-stop component only, not either directional Shionomichi pole or exact airport entrance. No proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "種子島・屋久島交通（株）",
+              "currentOperatorName": "種子島・屋久島交通株式会社",
+              "currentStopName": "空港",
+              "historicalRoute": "屋久島（永田～宮之浦～空港～安房～尾之間～栗生～大川の滝）",
+              "url": "https://www.iwasaki-corp.com/kagoshima_kotsu/wp-content/uploads/sites/8/2025/10/40dbc07d5a11844541648a358a8dfa9b.pdf",
+              "observedResponseSha256": "cb314f0f44cb2de09513ef4f5789cb017136fda8afba5d887a9e98164159757a"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "OFFICIAL_OPERATOR_EXPLICIT_PUBLIC_TERMINAL_BOARDING_INSET",
+      "locator": "Operator full-map inset49Airport/48Shionomichi explicitly places Airport boarding for both Anbo and Miyanoura directly against public terminal frontage in forecourt. Roadside Shionomichi stops are separately labeled and are NOT walk-connected by inference. Coarse public airport landside interface supports access and egress; no exact door/curb geometry, road-crossing transfer, time or accessibility assertion. Native P11 airport component is this operator airport stop, not Matsubanda same-name stop."
+    }
+  ],
+  "scope": "Two exact native operator stops, two independent adjacent ride edges, two coarse public airport-frontage interfaces. Existing reviewed national flights reused. No other island bus routes, poles, operator stops or airport services added.",
+  "metrics": {
+    "busRideEdges": 2,
+    "flightEdges": 0,
+    "publicWalkEdges": 2,
+    "newP11Identities": 2
+  }
+}

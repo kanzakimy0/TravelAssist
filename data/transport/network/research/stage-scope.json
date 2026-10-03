@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
   "authorization": "Latest user revision: complete entire original TASK086 and necessary dependencies continuously; seven airports and core reports are milestones, never stop conditions.",
   "snapshotHead": "54186b39e133b9f7de102b4dce4bdf72a4884e6f",
   "asOf": "2026-10-02",
   "counts": {
-    "admitted": 3774,
-    "edges": 8966,
+    "admitted": 3778,
+    "edges": 8977,
     "hold": 19,
-    "iterations": 187,
-    "lines": 333,
+    "iterations": 191,
+    "lines": 336,
     "rejected": 0,
-    "required": 3793,
-    "servicePatterns": 730
+    "required": 3797,
+    "servicePatterns": 735
   },
   "originalRequirements": [
     {
@@ -9307,6 +9307,13 @@
       "name": "鳥羽"
     },
     {
+      "requirementId": "transport-node:086:1ac7e85cb2dcae5d7995c66f7e57b8f3",
+      "nodeId": "transport-node:086:1ac7e85cb2dcae5d7995c66f7e57b8f3",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "奄美空港"
+    },
+    {
       "requirementId": "transport-node:086:1aeee676e0abd25bea96aed784ba07b6",
       "nodeId": "transport-node:086:1aeee676e0abd25bea96aed784ba07b6",
       "tier": "T3",
@@ -11923,6 +11930,13 @@
       "tier": "T3",
       "kind": "bus_stop",
       "name": "こどもセンター前"
+    },
+    {
+      "requirementId": "transport-node:086:4024a329925b3fac96594de9e0bae0f9",
+      "nodeId": "transport-node:086:4024a329925b3fac96594de9e0bae0f9",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "空港"
     },
     {
       "requirementId": "transport-node:086:4024cae97d518614647ef95be3808ed5",
@@ -18337,6 +18351,13 @@
       "name": "東桂"
     },
     {
+      "requirementId": "transport-node:086:970912e4c6ba365afba45e84905ea4f9",
+      "nodeId": "transport-node:086:970912e4c6ba365afba45e84905ea4f9",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "和野"
+    },
+    {
       "requirementId": "transport-node:086:9709e5c92cfa1ac0b20d2052afc58096",
       "nodeId": "transport-node:086:9709e5c92cfa1ac0b20d2052afc58096",
       "tier": "T3",
@@ -22768,6 +22789,13 @@
       "name": "柴島"
     },
     {
+      "requirementId": "transport-node:086:cebc356a9edf4c8e002e9a0c2e251e4c",
+      "nodeId": "transport-node:086:cebc356a9edf4c8e002e9a0c2e251e4c",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "塩ノ道"
+    },
+    {
       "requirementId": "transport-node:086:cec26cbe4c85cae5d7b1b919fb998f79",
       "nodeId": "transport-node:086:cec26cbe4c85cae5d7b1b919fb998f79",
       "tier": "T3",
@@ -26747,7 +26775,11 @@
     "184-nagasaki-cached-multitrip-native-direction-chains.json",
     "185-sankobus-local-sections185-complete-native-direction-chains.json",
     "186-kotoden-local-sections186-complete-native-direction-chains.json",
-    "187-kita-harimaya-reviewed-public-north-crossing.json"
+    "187-kita-harimaya-reviewed-public-north-crossing.json",
+    "188-amami-independent-adjacent-bus-directions-and-public-terminal-interface.json",
+    "189-yakushima-independent-adjacent-bus-directions-and-terminal-frontage.json",
+    "190-sakuramachi-reviewed-public-red-concourse.json",
+    "191-soya-minato-one-existing-stop-local-southbound-dependency.json"
   ],
   "inputHashes": {
     "data/transport/gtfs-source-license-registry.jsonl": "87a31fcc396079d49ac496e9973253a8672717caa58a8c3d66c2659152cd7609",
@@ -27003,7 +27035,11 @@
     "data/transport/network/research/phases/184-nagasaki-cached-multitrip-native-direction-chains.json": "84ac2b14d8b6557e5b5f04d38fc21ec9a2e27412037c25b8239a4d55baeb8cb6",
     "data/transport/network/research/phases/185-sankobus-local-sections185-complete-native-direction-chains.json": "9adca4aa99a6e2e38e1b16411a2f405836166a526b92866bbc209b7b275b069a",
     "data/transport/network/research/phases/186-kotoden-local-sections186-complete-native-direction-chains.json": "a3724e70339ed4927093bfb1265474655948606f6dac531f84d4d965d9ee4409",
-    "data/transport/network/research/phases/187-kita-harimaya-reviewed-public-north-crossing.json": "e8bf8f0aa4ca42abe27a54936eb2e23904870e0f2238f7ea823c56b57c51ad71"
+    "data/transport/network/research/phases/187-kita-harimaya-reviewed-public-north-crossing.json": "e8bf8f0aa4ca42abe27a54936eb2e23904870e0f2238f7ea823c56b57c51ad71",
+    "data/transport/network/research/phases/188-amami-independent-adjacent-bus-directions-and-public-terminal-interface.json": "3e289c02595f0c858e37fd6a424dbd3cc4d13bb41d84382d54eca4a821c8df84",
+    "data/transport/network/research/phases/189-yakushima-independent-adjacent-bus-directions-and-terminal-frontage.json": "69bbc9538f5176330338b8c5a965d055c17c8a24e40c49c2359bac1fd6b0db67",
+    "data/transport/network/research/phases/190-sakuramachi-reviewed-public-red-concourse.json": "2c76bb19ac23c91e598c0a8b6a762be7c3714348183740d8b26535346c13c92f",
+    "data/transport/network/research/phases/191-soya-minato-one-existing-stop-local-southbound-dependency.json": "68a8288f0001861d488ce951a3643b06816d3ec599cafcedcef762b6a0b2898c"
   },
   "baselineArtifactHashes": {
     "adaptive-model-iterations.jsonl": "53e4923e72818a3fef513f2a4f2b2f7da416dfc39255d006371692dc28785d17",
@@ -27587,7 +27623,7 @@
   "coreMandatoryCorridorCount": 9,
   "newDiscoveriesPolicy": "BACKLOG_ONLY_NO_AUTOMATIC_SCOPE_GROWTH",
   "runtimeImportAuthorized": false,
-  "parentScopeId": "TASK086-FULL-ORIGINAL-PHASE186-v2",
+  "parentScopeId": "TASK086-FULL-ORIGINAL-PHASE190-v2",
   "authorizedAirportRequirementIds": [
     "review:official-airport:三宅島",
     "review:official-airport:三沢",

@@ -1,6 +1,6 @@
 # TASK-086-B 剩余唯一根因
 
-79 OPEN：32机场地面接驳、46巴士方向、1铁路来源总审核。最后一项内部5条事实不能重复计数。原验收项完整保留。
+75 OPEN：30机场、44巴士方向、1铁路来源总审核。原检查逐项保留，铁路审核内部5项事实不重复计算。
 
 | 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
@@ -26,14 +26,12 @@
 | root:airport:review:official-airport:新島 | D | 1 | 4 |
 | root:airport:review:official-airport:壱岐 | D | 1 | 4 |
 | root:airport:review:official-airport:与論 | C | 1 | 1 |
-| root:airport:review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03 | C | 1 | 1 |
 | root:airport:review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665 | D | 1 | 4 |
 | root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e | C | 1 | 1 |
 | root:airport:review:transport-node:ac448d92-cf2b-57d7-b48b-7350b6129461 | D | 1 | 4 |
 | root:airport:review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe | C | 1 | 1 |
 | root:airport:review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661 | C | 1 | 1 |
 | root:airport:review:transport-node:cd521eca-00cc-55da-b9ea-b0092ee28574 | D | 1 | 4 |
-| root:airport:review:transport-node:e498a8df-df5a-5533-8cc0-7289ef679061 | C | 1 | 1 |
 | root:airport:review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5 | C | 1 | 1 |
 | root:airport:review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374 | C | 1 | 1 |
 | root:direction:component:06e9e32c2539e5b85c30 | C | 1 | 2 |
@@ -77,9 +75,7 @@
 | root:direction:component:b287b15eca53565264ff | C | 0 | 2 |
 | root:direction:component:c6e77b230e3f1db965c6 | C | 0 | 2 |
 | root:direction:component:c8bb060e9ef64f956d18 | C | 0 | 3 |
-| root:direction:component:cac1ab1262baecd8e728 | C | 0 | 2 |
 | root:direction:component:db6cff2110e9400c29eb | C | 0 | 2 |
 | root:direction:component:e544e78f31637c347c2a | C | 0 | 2 |
-| root:direction:component:fcea1d44018e23ee92da | C | 0 | 2 |
 | root:direction:component:ffce88d4d3f84df13e09 | C | 0 | 2 |
 | root:obligation:source:national-stopping-patterns | C | 0 | 1 |

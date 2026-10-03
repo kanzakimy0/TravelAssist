@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
   "checks": {
     "full": {
       "command": [
@@ -8,12 +8,12 @@
         "--import",
         "./tests/register-route-ts.mjs",
         "--test",
-        "--test-concurrency=4",
+        "--test-concurrency=2",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 879.280419799994,
+      "elapsedSeconds": 994.0759838000522,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
     },
     "lint": {
       "command": [
@@ -21,9 +21,9 @@
         "run",
         "lint"
       ],
-      "elapsedSeconds": 70.87698900001124,
+      "elapsedSeconds": 83.92891229997622,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
     },
     "typecheck": {
       "command": [
@@ -31,9 +31,9 @@
         "run",
         "typecheck"
       ],
-      "elapsedSeconds": 10.243077799997991,
+      "elapsedSeconds": 11.455120200000238,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
     },
     "format": {
       "command": [
@@ -41,9 +41,9 @@
         "run",
         "format:check:deploy"
       ],
-      "elapsedSeconds": 12.655901000020094,
+      "elapsedSeconds": 15.67716909997398,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
     },
     "artifact": {
       "command": [
@@ -51,9 +51,9 @@
         "run",
         "deploy:build:local"
       ],
-      "elapsedSeconds": 53.23876759997802,
+      "elapsedSeconds": 60.92809890001081,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
     },
     "artifact-verify": {
       "command": [
@@ -61,66 +61,25 @@
         "run",
         "deploy:verify-artifact"
       ],
-      "elapsedSeconds": 1.9359165000205394,
+      "elapsedSeconds": 2.0821053000399843,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
     }
   },
-  "priorFull180Seconds": 807.1280074999959,
-  "comparison": "Both3081 tests; different graph/source/identity inputs and machine load. Current879.28s versus prior807.13s; no end-to-end or billing saving inferred.",
-  "replayAndFailureReceipts": {
-    "replay181-181-timing.json": {
-      "exitCode": 0,
-      "elapsedSeconds": 178.5757390000217,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE181-v2"
-    },
-    "replay182-183-timing.json": {
-      "exitCode": 0,
-      "elapsedSeconds": 182.47210959999938,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE183-v2"
-    },
-    "replay184-184-timing.json": {
-      "exitCode": 0,
-      "elapsedSeconds": 182.4129905999871,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE184-v2"
-    },
-    "replay185-186-timing.json": {
-      "exitCode": 1,
-      "elapsedSeconds": 183.2077675999899,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE186-v2"
-    },
-    "replay185-186-retry1-timing.json": {
-      "exitCode": 0,
-      "elapsedSeconds": 195.8896540000278,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE186-v2"
-    },
-    "replay186-native-order-timing.json": {
-      "exitCode": 0,
-      "elapsedSeconds": 191.71986180002568,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE186-v2"
-    },
-    "replay187-187-timing.json": {
-      "exitCode": 0,
-      "elapsedSeconds": 198.48764569999184,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE187-v2"
-    },
-    "full186-timing.json": {
-      "exitCode": 1,
-      "elapsedSeconds": 112.92947730000014,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE186-v2"
-    }
-  },
-  "uniqueRootsClosedSince180": 198,
-  "originalConnectedDelta": 160,
-  "knownZeroNewHttpPackages": [
-    181,
-    183,
-    184,
-    185,
-    186
-  ],
+  "priorFull187Seconds": 879.2804198,
+  "comparison": "Same3081 tests; current LF inputs 994.08s versus prior879.28s. First191 pass1004.02s preserved but superseded after staged/working input line-ending mismatch. Changed data/load; no end-to-end or billing savings inferred.",
+  "uniqueRootsClosedSince187": 4,
+  "newDirectedEdgesSince187": 11,
+  "newRequiredIntermediatesSince187": 4,
   "packageMetrics": "data/transport/network/research/work-package-ledger.v1.json",
-  "sourceRequestMetricLimit": "Per-package known counts only; no invented aggregate of earlier unknown calls.",
+  "nativeHttpRequestsByPackage": {
+    "188": 11,
+    "189": 5,
+    "190": 4,
+    "191": 3
+  },
+  "httpMetricScope": "Recorded native requests;190 includes2failedPythonTLS attempts followed by2successful normal verifiedOStrust curl requests. Web backend count unavailable.",
+  "replay190191Seconds": 223.91761760000372,
   "tokenCount": null,
   "billedCost": null,
   "modelCacheHitCount": null

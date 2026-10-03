@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T00:46:04.498803+00:00",
+  "updatedAt": "2026-10-03T02:46:53.561952+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE187-v2",
-  "currentStage": "PHASE187_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "21a0b670dede06f7f6092315aea9cfa820c481d0",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
+  "currentStage": "PHASE191_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "completedSinceCheckpoint": [
     "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
@@ -16,14 +16,14 @@
     "Phase175 Odate-Noshiro exact original C28 requirement admitted with unchangedID, two independently sourced buses, two actual Tsugaru sections toAkita and publictransfers,18edges; sourceobservedAt/rawretentionmetadata corrected, early933factpreflightPASS and replay/preservationPASS."
   ],
   "currentCounts": {
-    "admitted": 3774,
-    "edges": 8966,
+    "admitted": 3778,
+    "edges": 8977,
     "hold": 19,
-    "iterations": 187,
-    "lines": 333,
+    "iterations": 191,
+    "lines": 336,
     "rejected": 0,
-    "required": 3793,
-    "servicePatterns": 730
+    "required": 3797,
+    "servicePatterns": 735
   },
   "validation": {
     "focusedTests": 65,
@@ -505,9 +505,248 @@
       "deterministicRebuild": "PASS",
       "remainingChecks": "PASS",
       "ci": "PENDING_NEW_CHECKPOINT"
+    },
+    "phase187ExactCi": {
+      "schemaVersion": 1,
+      "observedAt": "2026-10-03T01:00:57.744051+00:00",
+      "branchHeadSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
+      "records": [
+        {
+          "runId": 37083563838,
+          "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37083563838",
+          "status": "PASS",
+          "event": "workflow_dispatch",
+          "revision": {
+            "schemaVersion": 1,
+            "eventName": "workflow_dispatch",
+            "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
+            "branchHeadSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
+            "checkoutSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
+            "checkoutParents": [
+              "b3e5abb8a9c88c061a6e64e67af4edf6882abfaf"
+            ],
+            "eventSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
+            "baseSha": null,
+            "pullRequestNumber": null,
+            "checkoutKind": "BRANCH_HEAD_DIRECT",
+            "directBranchHeadTest": true
+          },
+          "tests": {
+            "tests": 3081,
+            "pass": 3081,
+            "fail": 0,
+            "skipped": 0
+          },
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the exact event revision",
+              "conclusion": "success"
+            },
+            {
+              "name": "Use repository Node version",
+              "conclusion": "success"
+            },
+            {
+              "name": "Record branch HEAD and actual checkout revision",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate local deployment contract",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run repository tests",
+              "conclusion": "success"
+            },
+            {
+              "name": "Lint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Typecheck",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check formatting",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and audit standalone artifact",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify artifact again before use",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check whitespace",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Use repository Node version",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the exact event revision",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ],
+          "logSha256": "47036f1fecaf7e32639ae37e1ea773264968fdb9d924c615d79b2d4e765459d1"
+        },
+        {
+          "runId": 37083500446,
+          "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37083500446",
+          "status": "PASS",
+          "event": "pull_request",
+          "revision": {
+            "schemaVersion": 1,
+            "eventName": "pull_request",
+            "ref": "refs/pull/466/merge",
+            "branchHeadSha": "21a0b670dede06f7f6092315aea9cfa820c481d0",
+            "checkoutSha": "cfb8ae09ebac692a1eeea94ed62c26c88fae8218",
+            "checkoutParents": [
+              "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+              "21a0b670dede06f7f6092315aea9cfa820c481d0"
+            ],
+            "eventSha": "cfb8ae09ebac692a1eeea94ed62c26c88fae8218",
+            "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+            "pullRequestNumber": 466,
+            "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+            "directBranchHeadTest": false
+          },
+          "tests": {
+            "tests": 3081,
+            "pass": 3081,
+            "fail": 0,
+            "skipped": 0
+          },
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the exact event revision",
+              "conclusion": "success"
+            },
+            {
+              "name": "Use repository Node version",
+              "conclusion": "success"
+            },
+            {
+              "name": "Record branch HEAD and actual checkout revision",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install locked dependencies",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate local deployment contract",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run repository tests",
+              "conclusion": "success"
+            },
+            {
+              "name": "Lint",
+              "conclusion": "success"
+            },
+            {
+              "name": "Typecheck",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check formatting",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and audit standalone artifact",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify artifact again before use",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check whitespace",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Use repository Node version",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the exact event revision",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ],
+          "logSha256": "01ba218df7e79432f517dae86e026f8dc6d27845dffc63dbcfcc23f7aefc91a3"
+        }
+      ],
+      "rawLogsRetained": false
+    },
+    "phase188Replay": {
+      "status": "PASS",
+      "timing": 213.25147069999366,
+      "oldEdgesRetained": 8966,
+      "newEdges": 4,
+      "airportRootClosed": "Amami",
+      "fullGate": "PENDING_CURRENT_INPUT"
+    },
+    "phase189": {
+      "replay": "PASS",
+      "elapsedSeconds": 215.85470650001662,
+      "preservation": "PASS: all188nodes/edges/patterns/requirements preserved; Yakushima originalairportrootclosed",
+      "bindingReview": "PASS 2closedreviews revalidated, allOPENunchanged",
+      "fullGate": "UNVERIFIED_PENDING_CURRENT_REBUILD",
+      "incrementalUniqueAirportRootsClosed": 1
+    },
+    "phase190191Replay": {
+      "status": "PASS",
+      "seconds": 223.91761760000372,
+      "uniqueRootsClosed": 2,
+      "fullGate": "PENDING"
+    },
+    "phase191FullRegression": {
+      "tests": 3081,
+      "passed": 3081,
+      "timing": {
+        "command": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=2",
+          "tests/*.test.mjs"
+        ],
+        "elapsedSeconds": 994.0759838000522,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2"
+      },
+      "deterministicRebuild": "PASS",
+      "remainingChecks": "PASS",
+      "ci": "PENDING_NEW_CHECKPOINT"
     }
   },
-  "nextConcreteAction": "Commit/push validated187 checkpoint and record direct HEAD/PR checkout independently; continue Amami native two-direction adjacent-call/public-airport-interface candidate using cached own-operator maps and airport map. Tourism source excluded for explicit information-use restriction.",
+  "nextConcreteAction": "Commit/push191; record direct branch HEAD and actual PR merge checkout separately. Register boundedFukue192+Iki193+Oki194 exact6 P11 records/18edges after shared validation completes; preserve original HOLD airport ID, replay and strict root/preservation audits. Continue original scope.",
   "independentWork": [
     "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
     "Tottori original airport/current complete calling sequences and rail dependency",
