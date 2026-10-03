@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T03:17:20.127721+00:00",
+  "updatedAt": "2026-10-03T03:56:57.144469+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "21a0b670dede06f7f6092315aea9cfa820c481d0",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE191-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE194-v2",
-  "currentStage": "PHASE194_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "97af9e084f2238b59522f74bae066408a8853547",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2",
+  "currentStage": "PHASE195_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "completedSinceCheckpoint": [
     "Phase170 Iwakuni publicexit→exact3callbus→EastExitpublicJRpassage→two independentactual16callSanyo sections→existingHiroshima anchor.38edges,17necessarynewnodes; sourcecolumn andcitationbindingerrors corrected; existingoriginalrequirements/data preserved.",
@@ -16,14 +16,14 @@
     "Phase175 Odate-Noshiro exact original C28 requirement admitted with unchangedID, two independently sourced buses, two actual Tsugaru sections toAkita and publictransfers,18edges; sourceobservedAt/rawretentionmetadata corrected, early933factpreflightPASS and replay/preservationPASS."
   ],
   "currentCounts": {
-    "admitted": 3778,
-    "edges": 8977,
-    "hold": 19,
-    "iterations": 191,
-    "lines": 336,
+    "admitted": 3790,
+    "edges": 9001,
+    "hold": 15,
+    "iterations": 195,
+    "lines": 344,
     "rejected": 0,
-    "required": 3797,
-    "servicePatterns": 735
+    "required": 3805,
+    "servicePatterns": 751
   },
   "validation": {
     "focusedTests": 65,
@@ -776,9 +776,29 @@
       "deterministicRebuild": "PASS",
       "remainingChecks": "PASS",
       "ci": "PENDING_NEW_CHECKPOINT"
+    },
+    "phase195FullRegression": {
+      "tests": 3081,
+      "passed": 3081,
+      "timing": {
+        "command": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=2",
+          "tests/*.test.mjs"
+        ],
+        "elapsedSeconds": 1020.4462798000313,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2"
+      },
+      "deterministicRebuild": "PASS",
+      "remainingChecks": "PASS",
+      "ci": "PENDING_NEW_CHECKPOINT"
     }
   },
-  "nextConcreteAction": "Commit/push194; obtain direct branch HEAD and actual PR merge checkout separately. Register exact privateRishiri195 two P11 records and six edges with original same-ID HOLD upgrade, replay and strict preservation/root/path validation. Continue original scope including Okushiri current2026Oct1 bus revision.",
+  "nextConcreteAction": "Commit/push195; capture direct HEAD and actual PR merge checkout separately. Register exact private196 two P11 records and six edges, preserve original same-ID upgrade. Replay and audit old data/root/direction paths. Continue Kozushima public interface research and original scope.",
   "independentWork": [
     "Sapporo176 private exact P11 representative3-call complete bus/public JR chain",
     "Tottori original airport/current complete calling sequences and rail dependency",

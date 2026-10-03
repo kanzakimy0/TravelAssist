@@ -1085,13 +1085,13 @@
     },
     {
       "packageId": "research:643d5437104296e21d90",
-      "inputFingerprint": "0bd6555c701b3492fa4e8d5255b93e399c287cca8b421383df900c1e0a04c286",
+      "inputFingerprint": "54c5cd21a2ae66961bafeef7130906c36e126bd29c49de51432cdd12dbac7590",
       "status": "VALIDATION_PENDING",
       "nextAction": "Continue executable original work; full regression/rebuild after stable complete batch chain",
       "resumeEvidence": [
         {
-          "path": ".cache/task-086/oki-next/phase194-oki-private.json",
-          "sha256": "67712cff3606b8ba1b9080fd39be0e75e234d3d51ba197f7004da4c16b96689e"
+          "path": ".cache/task-086/rishiri-next/phase195-rishiri-private.json",
+          "sha256": "80d8a50c55dbde60c84cf966a6fdb8ff45314016b340699e637d005b4f0e3c2e"
         }
       ],
       "attempts": [
@@ -1642,6 +1642,32 @@
             "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay192-194-timing.json"
           },
           "nextAction": "One serial national replay for batch192-194, then preservation, actual root delta, and required full gate",
+          "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
+        },
+        {
+          "observedAt": "2026-10-03T03:20:59.994Z",
+          "inputFingerprint": "54c5cd21a2ae66961bafeef7130906c36e126bd29c49de51432cdd12dbac7590",
+          "method": "INDEPENDENT_WINTER_LOCAL_BUS_CURRENT_HAC_PUBLIC_TERMINAL_EXISTING_ALIAS_REUSE",
+          "result": "Reviewed complete package registered in bounded batch; shared national replay still pending",
+          "failureReason": null,
+          "sources": [],
+          "evidence": [
+            {
+              "path": ".cache/task-086/rishiri-next/phase195-rishiri-private.json",
+              "sha256": "80d8a50c55dbde60c84cf966a6fdb8ff45314016b340699e637d005b4f0e3c2e"
+            }
+          ],
+          "metrics": {
+            "newHttpRequests": 0,
+            "registrationOnly": true,
+            "wholePackageAcquisitionMetrics": ".cache/task-086/rishiri-next/phase195-rishiri-production-preflight.json",
+            "uniqueRootsClosed": 1,
+            "validation": "EXACT_PRESERVATION_AND_PRODUCTION_ROOT_OUTCOME_PASS_FULL_GATE_PENDING",
+            "tokens": null,
+            "billedCost": null,
+            "sharedReplayTimingReceipt": ".cache/task-086/airports7/replay195-195-timing.json"
+          },
+          "nextAction": "One serial national replay for batch195-195, then preservation, actual root delta, and required full gate",
           "retryCondition": "Onlychanged source/input/parser/identity/rights; no unchangedretrieval"
         }
       ]

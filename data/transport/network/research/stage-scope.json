@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE194-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE195-v2",
   "authorization": "Latest user revision: complete entire original TASK086 and necessary dependencies continuously; seven airports and core reports are milestones, never stop conditions.",
   "snapshotHead": "54186b39e133b9f7de102b4dce4bdf72a4884e6f",
   "asOf": "2026-10-02",
   "counts": {
-    "admitted": 3787,
-    "edges": 8995,
-    "hold": 16,
-    "iterations": 194,
-    "lines": 342,
+    "admitted": 3790,
+    "edges": 9001,
+    "hold": 15,
+    "iterations": 195,
+    "lines": 344,
     "rejected": 0,
-    "required": 3803,
-    "servicePatterns": 747
+    "required": 3805,
+    "servicePatterns": 751
   },
   "originalRequirements": [
     {
@@ -8453,6 +8453,13 @@
       "name": "甲府"
     },
     {
+      "requirementId": "transport-node:086:100675efc544a7947b1affeed5954f18",
+      "nodeId": "transport-node:086:100675efc544a7947b1affeed5954f18",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "利尻空港"
+    },
+    {
       "requirementId": "transport-node:086:100fcbf1d31c56ea2e60adf063df1c1c",
       "nodeId": "transport-node:086:100fcbf1d31c56ea2e60adf063df1c1c",
       "tier": "T3",
@@ -16655,6 +16662,13 @@
       "tier": "T3",
       "kind": "bus_stop",
       "name": "宮古島市役所"
+    },
+    {
+      "requirementId": "transport-node:086:7e7a55a5740246c56adb251991816b31",
+      "nodeId": "transport-node:086:7e7a55a5740246c56adb251991816b31",
+      "tier": "T3",
+      "kind": "bus_stop",
+      "name": "本泊"
     },
     {
       "requirementId": "transport-node:086:7e92a7a9954b64327f166f8417466d31",
@@ -26824,7 +26838,8 @@
     "191-soya-minato-one-existing-stop-local-southbound-dependency.json",
     "192-fukue-independent-airport-bus-sections-orc-and-public-terminal-chain.json",
     "193-iki-independent-airport-bus-sections-orc-and-public-terminal-chain.json",
-    "194-oki-independent-airport-bus-sections-jac-and-public-terminal-chain.json"
+    "194-oki-independent-airport-bus-sections-jac-and-public-terminal-chain.json",
+    "195-rishiri-current-winter-local-bus-hac-and-public-terminal-chain.json"
   ],
   "inputHashes": {
     "data/transport/gtfs-source-license-registry.jsonl": "87a31fcc396079d49ac496e9973253a8672717caa58a8c3d66c2659152cd7609",
@@ -27087,7 +27102,8 @@
     "data/transport/network/research/phases/191-soya-minato-one-existing-stop-local-southbound-dependency.json": "68a8288f0001861d488ce951a3643b06816d3ec599cafcedcef762b6a0b2898c",
     "data/transport/network/research/phases/192-fukue-independent-airport-bus-sections-orc-and-public-terminal-chain.json": "ff76228dfa5e3962f0002fa94c2dda29f9170e782e33f757c8f8aa7ac63cf568",
     "data/transport/network/research/phases/193-iki-independent-airport-bus-sections-orc-and-public-terminal-chain.json": "62a57275ae0a2ad14a6f9dfc62b1fa11c53faffe6ad128f130e818b41dd0ce78",
-    "data/transport/network/research/phases/194-oki-independent-airport-bus-sections-jac-and-public-terminal-chain.json": "67712cff3606b8ba1b9080fd39be0e75e234d3d51ba197f7004da4c16b96689e"
+    "data/transport/network/research/phases/194-oki-independent-airport-bus-sections-jac-and-public-terminal-chain.json": "67712cff3606b8ba1b9080fd39be0e75e234d3d51ba197f7004da4c16b96689e",
+    "data/transport/network/research/phases/195-rishiri-current-winter-local-bus-hac-and-public-terminal-chain.json": "80d8a50c55dbde60c84cf966a6fdb8ff45314016b340699e637d005b4f0e3c2e"
   },
   "baselineArtifactHashes": {
     "adaptive-model-iterations.jsonl": "53e4923e72818a3fef513f2a4f2b2f7da416dfc39255d006371692dc28785d17",
@@ -27671,7 +27687,7 @@
   "coreMandatoryCorridorCount": 9,
   "newDiscoveriesPolicy": "BACKLOG_ONLY_NO_AUTOMATIC_SCOPE_GROWTH",
   "runtimeImportAuthorized": false,
-  "parentScopeId": "TASK086-FULL-ORIGINAL-PHASE193-v2",
+  "parentScopeId": "TASK086-FULL-ORIGINAL-PHASE194-v2",
   "authorizedAirportRequirementIds": [
     "review:official-airport:三宅島",
     "review:official-airport:三沢",

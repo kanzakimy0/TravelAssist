@@ -1,6 +1,6 @@
 # TASK-086-B 剩余唯一根因
 
-72 OPEN：27机场、44巴士方向、1铁路来源总审核。原检查逐项保留，铁路审核内部5项事实不重复计算。
+71 OPEN：26机场、44巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
 
 | 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
@@ -12,7 +12,6 @@
 | root:airport:review:official-airport:但馬 | D | 1 | 4 |
 | root:airport:review:official-airport:徳之島 | C | 1 | 1 |
 | root:airport:review:official-airport:多良間 | D | 1 | 4 |
-| root:airport:review:official-airport:利尻 | D | 1 | 4 |
 | root:airport:review:official-airport:南大東 | C | 1 | 1 |
 | root:airport:review:official-airport:南紀白浜 | D | 1 | 4 |
 | root:airport:review:official-airport:能登 | D | 1 | 4 |
