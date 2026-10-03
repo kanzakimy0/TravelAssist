@@ -1,5 +1,5 @@
 {
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2",
   "checks": {
     "full": {
       "command": [
@@ -7,12 +7,12 @@
         "--import",
         "./tests/register-route-ts.mjs",
         "--test",
-        "--test-concurrency=2",
+        "--test-concurrency=1",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 1267.9758964000503,
+      "elapsedSeconds": 1230.0468785999692,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
     },
     "lint": {
       "command": [
@@ -20,9 +20,9 @@
         "run",
         "lint"
       ],
-      "elapsedSeconds": 42.63859390001744,
+      "elapsedSeconds": 38.98458940000273,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
     },
     "typecheck": {
       "command": [
@@ -30,9 +30,9 @@
         "run",
         "typecheck"
       ],
-      "elapsedSeconds": 7.0636278000310995,
+      "elapsedSeconds": 5.798080000036862,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
     },
     "format": {
       "command": [
@@ -40,9 +40,9 @@
         "run",
         "format:check:deploy"
       ],
-      "elapsedSeconds": 15.771864499954972,
+      "elapsedSeconds": 12.829699599999003,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
     },
     "artifact": {
       "command": [
@@ -50,9 +50,9 @@
         "run",
         "deploy:build:local"
       ],
-      "elapsedSeconds": 52.044921900029294,
+      "elapsedSeconds": 48.11496999999508,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
     },
     "artifact-verify": {
       "command": [
@@ -60,35 +60,32 @@
         "run",
         "deploy:verify-artifact"
       ],
-      "elapsedSeconds": 2.154203200014308,
+      "elapsedSeconds": 1.7069658000255004,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
     }
   },
-  "priorFull197Seconds": 1265.6905037,
-  "comparison": "Same3081 tests; different inputs/load. One full regression for two completed small connection packages; no measurable end-to-end/token/billing savings claim.",
-  "uniqueRootsClosedSince197": 3,
-  "newDirectedEdgesSince197": 4,
-  "newRequiredIntermediatesSince197": 0,
-  "replays": {
-    "198": {
-      "exitCode": 0,
-      "elapsedSeconds": 263.537591899978,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE198-v2",
-      "logSha256": "8541e438cb8f4ca8889c3fdc1e52657e79d8f35866bfb10c05aa07b640b933b9"
-    },
-    "199": {
-      "exitCode": 0,
-      "elapsedSeconds": 262.5635816999711,
-      "inputScope": "TASK086-FULL-ORIGINAL-PHASE199-v2",
-      "logSha256": "73984abc744a4b6a9e5280e2794152c44bd1e71bc47a5f99f3b4a4d668821686"
-    }
+  "priorFull199Seconds": 1267.9758964,
+  "failedFirstFullSeconds": 1220.072334400029,
+  "isolatedDiagnosticSeconds": 18.988836999982595,
+  "allLocalValidationSeconds": 2576.54235480004,
+  "comparison": "Same3081 tests, changed inputs/load. No comparable end-to-end/token/billing benchmark; no savings claim.",
+  "uniqueRootsClosedSince199": 1,
+  "newDirectedEdgesSince199": 42,
+  "newRequiredIntermediatesSince199": 40,
+  "replay": {
+    "exitCode": 0,
+    "elapsedSeconds": 267.378763900022,
+    "inputScope": "TASK086-FULL-ORIGINAL-PHASE200-v2",
+    "logSha256": "adaa6432e0a24e9b671ce257351801bc1392d106c2617026d3f507d51dd7525c"
   },
   "nativeHttpRequestsByCompletedPackage": {
-    "198": 1,
-    "199": 8
+    "200": 6
   },
-  "httpMetricScope": "198 source reread for visual evidence;199 hotel/operator research. Independent incomplete research counted in per-package ledgers; web backend HTTP unavailable.",
+  "webSearchQueriesByCompletedPackage": {
+    "200": 4
+  },
+  "httpMetricScope": "Kushiro completed package only; independent research in per-package ledgers. Web backend HTTP unavailable.",
   "tokenCount": null,
   "billedCost": null,
   "modelCacheHitCount": null

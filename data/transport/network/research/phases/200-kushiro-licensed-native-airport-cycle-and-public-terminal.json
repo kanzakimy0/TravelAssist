@@ -1,0 +1,98 @@
+{
+  "phaseId": "200-kushiro-licensed-native-airport-cycle-and-public-terminal",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT",
+    "EXACT_CURRENT_LICENSED_GTFS_IDENTITY",
+    "TWO_INDEPENDENT_CONTIGUOUS_NATIVE_SECTIONS",
+    "EXACT_SHARED_NATIVE_TRANSFER_STOP_NO_OPPOSITE_CURB_MERGE",
+    "EXISTING_AIRDO_NATIONAL_ANCHOR",
+    "OPERATOR_DIRECT_LICENSE_WITH_RETAINED_EXPORTER_NOTICE"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "akanbus-kushiro-airport-package.json",
+      "packageSha256": "ecb5ceabbb534f6d8f55edd92ac3911d414abb9f6cfe740a15ece1b3f4ee5d85",
+      "sourceActionId": "bus:akanbus:licensed-current-kushiro-airport-cycle",
+      "reviewedServiceDate": "20261001"
+    }
+  ],
+  "completedActionIds": [
+    "bus:akanbus:licensed-current-kushiro-airport-cycle",
+    "airport:kushiro:current-public-exits-akan-native-airport-stop"
+  ],
+  "facts": [
+    {
+      "factId": "kushiro-public-lobby-exits-to-akan-native-airport-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:kushiro:current-public-exits-akan-native-airport-stop",
+      "sourceUrl": "https://www.hokkaido-airports.com/ja/kushiro/assets/pages/floormap/images/kushiro_1Fol.png",
+      "observedResponseSha256": "b57a2b03ef323fa10beda2b99d181391ba8ccd91da397df82b178826f68be4fd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        },
+        {
+          "sourceActionId": "airport:kushiro:current-public-exits-akan-native-airport-stop",
+          "url": "https://www.hokkaido-airports.com/ja/kushiro/floormap/",
+          "observedResponseSha256": "188a961abb25204e5f0b39eafdf1e2f3b32e53e7f9c318a6a3c3e3c08b78ee72"
+        },
+        {
+          "sourceActionId": "airport:kushiro:current-public-exits-akan-native-airport-stop",
+          "url": "https://www.hokkaido-airports.com/ja/kushiro/access/transportation/",
+          "observedResponseSha256": "1027ae5257a1426d2d7a9f3bdd4ce7fdeea103d012c984d89efe62e05dd416e4"
+        },
+        {
+          "sourceActionId": "airport:kushiro:current-public-exits-akan-native-airport-stop",
+          "url": "https://www.akanbus.co.jp/airport/",
+          "observedResponseSha256": "4e57c3454f921c2038e98c8d0cc67cf4d94b08fd7df86b68f82768f634619cda"
+        }
+      ],
+      "components": [
+        {
+          "name": "釧路空港",
+          "operator": "airport-facility:cf03_00010",
+          "line": "airport:cf03_00010",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00010",
+            "requirementId": "review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5",
+            "expectedRequirementName": "釧路",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "たんちょう釧路空港",
+          "operator": "阿寒バス株式会社",
+          "line": "gtfs:akanbus-current:route:阿寒線（夏）(0018)",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:akanbus-current",
+            "stopId": "54_01",
+            "sourceArchiveSha256": "4f32facfa3d4bb71d82534792e8fd9f24b4979f9690e31870273c35e275b10b4",
+            "recordSha256": "00bc8ed50bef61d5448dfe5c3b15d2c73c797070b851620223bb61cedde9da4d",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Official current1F floor diagram shows public lobby exits onto continuous landside terminal frontage with bus stands1 and2. Current airport access identifies Akan regular route through the airport in both directions. Exact licensed stop54_01 is a single native public airport stop in both independent actual selected trips; platform_code is blank, so no exact numbered-bay identity is invented. Use coarse public airport/bus-stop connection, preserve separate whole C28 facility and GTFS point. Two actual21-call contiguous sections go from airport to shared native78_01 roadside station and back, with all retained pickup/dropoff0, not mechanically reversed or merged opposite road stops. No travel time, coordinate proximity, airside passage or guaranteed timed connection."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_LANDSIDE_EXIT_FRONTAGE_AND_EXACT_LICENSED_AIRPORT_STOP",
+      "hubScopeComplete": false,
+      "locator": "Official current1F floor diagram shows public lobby exits onto continuous landside terminal frontage with bus stands1 and2. Current airport access identifies Akan regular route through the airport in both directions. Exact licensed stop54_01 is a single native public airport stop in both independent actual selected trips; platform_code is blank, so no exact numbered-bay identity is invented. Use coarse public airport/bus-stop connection, preserve separate whole C28 facility and GTFS point. Two actual21-call contiguous sections go from airport to shared native78_01 roadside station and back, with all retained pickup/dropoff0, not mechanically reversed or merged opposite road stops. No travel time, coordinate proximity, airside passage or guaranteed timed connection."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # TASK-086-B 剩余唯一根因
 
-65 OPEN：25机场、39巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
+64 OPEN：24机场、39巴士方向、1铁路来源总审核。铁路内部5项事实不重复计数。
 
 | 稳定ID | 类别 | 原始required数 | 原检查数 |
 | --- | --- | ---: | ---: |
@@ -27,7 +27,6 @@
 | root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e | C | 1 | 1 |
 | root:airport:review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe | C | 1 | 1 |
 | root:airport:review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661 | C | 1 | 1 |
-| root:airport:review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5 | C | 1 | 1 |
 | root:airport:review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374 | C | 1 | 1 |
 | root:direction:component:06e9e32c2539e5b85c30 | C | 1 | 2 |
 | root:direction:component:0eec614b8788f64d5865 | C | 1 | 2 |

@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T05:57:10.024525+00:00",
+  "updatedAt": "2026-10-03T07:13:40.423206+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "a50842eaa4e797e10e276c2aae40b3302af311e0",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2",
-  "currentStage": "PHASE199_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "f80aec4386f3df038a993ec40fee04184147c710",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2",
+  "currentStage": "PHASE200_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "currentCounts": {
-    "admitted": 3793,
-    "edges": 9013,
+    "admitted": 3833,
+    "edges": 9055,
     "hold": 14,
-    "iterations": 199,
-    "lines": 346,
+    "iterations": 200,
+    "lines": 348,
     "rejected": 0,
-    "required": 3807,
-    "servicePatterns": 755
+    "required": 3847,
+    "servicePatterns": 757
   },
   "currentRootAudit": {
-    "uniqueOpenRoots": 65,
-    "airportRoots": 25,
+    "uniqueOpenRoots": 64,
+    "airportRoots": 24,
     "busDirectionRoots": 39,
     "railSourceReviewRoots": 1,
     "railSourceFactsRemaining": 5
@@ -38,12 +38,12 @@
           "--import",
           "./tests/register-route-ts.mjs",
           "--test",
-          "--test-concurrency=2",
+          "--test-concurrency=1",
           "tests/*.test.mjs"
         ],
-        "elapsedSeconds": 1267.9758964000503,
+        "elapsedSeconds": 1230.0468785999692,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
       },
       "lint": {
         "command": [
@@ -51,9 +51,9 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 42.63859390001744,
+        "elapsedSeconds": 38.98458940000273,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
       },
       "typecheck": {
         "command": [
@@ -61,9 +61,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 7.0636278000310995,
+        "elapsedSeconds": 5.798080000036862,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
       },
       "format": {
         "command": [
@@ -71,9 +71,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 15.771864499954972,
+        "elapsedSeconds": 12.829699599999003,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
       },
       "artifact": {
         "command": [
@@ -81,9 +81,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 52.044921900029294,
+        "elapsedSeconds": 48.11496999999508,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
       },
       "artifact-verify": {
         "command": [
@@ -91,17 +91,17 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 2.154203200014308,
+        "elapsedSeconds": 1.7069658000255004,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE199-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
       }
     },
     "deterministicRebuild": "PASS",
     "currentCI": "PENDING_CHECKPOINT_PUSH",
-    "prior197CI": "docs/qa/TASK-086-B/phase197-ci-revisions.json"
+    "prior199CI": "docs/qa/TASK-086-B/phase199-ci-revisions.json"
   },
   "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
-  "nextConcreteAction": "Commit/push199 and separately verify actual CI checkout; continue Oita exact native curb/public crossing evidence from existing cache, then next independent ordinary package. Reports are not stopping conditions.",
+  "nextConcreteAction": "Commit/push200 and verify actual CI checkout; register and replay the already privately validated four-edge Okinoerabu201 complete chain, then continue Tarama exact airport public interface using cached GTFS/C28/RAC dependencies. No repeated download/generic query. Reports are not stopping conditions.",
   "privatePackages": {
     "oita": {
       "ledger": ".cache/task-086/oita-public-next/research-ledger.json",
@@ -130,6 +130,34 @@
     "tajima": {
       "ledger": ".cache/task-086/tajima-next/research-ledger.json",
       "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "kushiro": {
+      "ledger": ".cache/task-086/kushiro-next/research-ledger.json",
+      "status": "REGISTERED_INCREMENTAL_PASS_FULL_GATE_PENDING"
+    },
+    "iwami": {
+      "ledger": ".cache/task-086/iwami182/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "okinoerabu": {
+      "ledger": ".cache/task-086/okinoerabu-t2/phase201-production-preflight.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "physicalPhotos": {
+      "ledger": ".cache/task-086/physical-interface-photos/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "tarama": {
+      "ledger": ".cache/task-086/tarama-next/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "daitoApplicability": {
+      "ledger": ".cache/task-086/daito-applicability-next/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
+    },
+    "memanbetsu": {
+      "ledger": ".cache/task-086/memanbetsu-next/research-ledger.json",
+      "status": "ORDINARY_EVIDENCE_PENDING"
     }
   },
   "capabilityLimits": {
@@ -144,5 +172,13 @@
     "directRun": 37097436293,
     "prMergeRun": 37097439158,
     "status": "IN_PROGRESS_ACTUAL_CHECKOUT_PENDING"
+  },
+  "phase200ValidationFailure": {
+    "fullLog": ".cache\\task-086\\airports7\\full200-attempt1.log",
+    "timing": ".cache\\task-086\\airports7\\full200-attempt1-timing.json",
+    "failedTest": "nightly --dry-run does not write canonical catalogs",
+    "originalTimeoutMilliseconds": 30000,
+    "isolatedDiagnostic": ".cache\\task-086\\airports7\\asset-dryrun200-diagnostic.json",
+    "changedMethod": "Full regression concurrency2→1; no test or quality threshold edits"
   }
 }
