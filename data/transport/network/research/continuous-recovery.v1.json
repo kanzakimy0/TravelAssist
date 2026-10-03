@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T08:49:02.784458+00:00",
+  "updatedAt": "2026-10-03T09:32:10.642799+00:00",
   "taskStatus": "CONTINUE_FULL_ORIGINAL_SCOPE",
-  "lastPushedCheckpoint": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
-  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2",
-  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2",
-  "currentStage": "PHASE202_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
+  "lastPushedCheckpoint": "dc787a40b331b2a6cac273d13bb71002366446b2",
+  "currentInputScopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2",
+  "lastFullyValidatedScopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2",
+  "currentStage": "PHASE203_FULL_LOCAL_GATE_PASS_CI_PENDING_CONTINUE",
   "ordinaryWorkRemaining": true,
   "currentCounts": {
-    "admitted": 3918,
-    "edges": 9144,
-    "hold": 14,
-    "iterations": 202,
-    "lines": 351,
+    "admitted": 3925,
+    "edges": 9155,
+    "hold": 13,
+    "iterations": 203,
+    "lines": 354,
     "rejected": 0,
-    "required": 3932,
-    "servicePatterns": 763
+    "required": 3938,
+    "servicePatterns": 767
   },
   "currentRootAudit": {
-    "uniqueOpenRoots": 62,
-    "airportRoots": 22,
+    "uniqueOpenRoots": 61,
+    "airportRoots": 21,
     "busDirectionRoots": 39,
     "railSourceReviewRoots": 1,
     "railSourceFactsRemaining": 5
@@ -41,9 +41,9 @@
           "--test-concurrency=1",
           "tests/*.test.mjs"
         ],
-        "elapsedSeconds": 1306.2191953000147,
+        "elapsedSeconds": 1254.5869721999625,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "lint": {
         "command": [
@@ -51,9 +51,9 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 37.51004640001338,
+        "elapsedSeconds": 33.254841699963436,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "typecheck": {
         "command": [
@@ -61,9 +61,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 5.789830599969719,
+        "elapsedSeconds": 5.561229599989019,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "format": {
         "command": [
@@ -71,9 +71,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 13.833892600028776,
+        "elapsedSeconds": 12.788705300015863,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "artifact": {
         "command": [
@@ -81,9 +81,9 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 44.88734730001306,
+        "elapsedSeconds": 49.69884569995338,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "artifact-verify": {
         "command": [
@@ -91,17 +91,17 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.8341917999787256,
+        "elapsedSeconds": 1.9144543000147678,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       }
     },
     "deterministicRebuild": "PASS",
     "currentCI": "PENDING_CHECKPOINT_PUSH",
-    "prior200CI": "docs/qa/TASK-086-B/phase200-ci-revisions.json"
+    "prior202CI": "docs/qa/TASK-086-B/phase202-ci-revisions.json"
   },
   "historicalRecovery": "docs/qa/TASK-086-B/continuous-recovery-history-through196.json",
-  "nextConcreteAction": "Commit/push202 and verify actual CI checkout; preflight Shirahama phase203 minimal six-native-stop cycle plus separately evidenced current JAL flights and public terminal frontage, then Yoron known airport-shuttle scope and eligibility review; ring-bus-only absence is insufficient for exemption, then remaining original airport/bus/source packages. No repeated generic source queries. Reports are not stopping conditions.",
+  "nextConcreteAction": "Commit/push203; record exact direct and PR CI separately. Register preflighted204 Tarama,205 Amakusa,206 Tajima,207 Tokunoshima when each production preflight passes; preserve old native identities and requirements. Shared writers serialized. Continue remaining original airport/bus/source packages automatically.",
   "privatePackages": {
     "oita": {
       "ledger": ".cache/task-086/oita-public-next/research-ledger.json",
@@ -148,8 +148,8 @@
       "status": "ORDINARY_EVIDENCE_PENDING"
     },
     "tarama": {
-      "ledger": ".cache/task-086/tarama-next/research-ledger.json",
-      "status": "ORDINARY_EVIDENCE_PENDING"
+      "ledger": ".cache/task-086/tarama-next/interface-contract-private/report.json",
+      "status": "NEW_COARSE_PUBLIC_ACCESS_EVIDENCE_UNDER_INDEPENDENT_REVIEW_AND_PRIVATE_FULL_CHAIN_PREPARATION"
     },
     "daitoApplicability": {
       "ledger": ".cache/task-086/daito-applicability-next/research-ledger.json",
@@ -168,12 +168,16 @@
       "status": "CLOSED_BY202"
     },
     "yoronApplicability": {
-      "ledger": ".cache/task-086/yoron-applicability-next/research-ledger.json",
-      "status": "PARTIAL_BUS_ABSENCE_CONFIRMED_SHUTTLE_APPLICABILITY_PENDING"
+      "ledger": ".cache/task-086/yoron-applicability-next/shuttle-research-ledger-v2.json",
+      "status": "REAL_SHUTTLE_IDENTIFIED_ELIGIBILITY_AND_IDENTITY_CONTRACT_PENDING_NO_EXEMPTION"
     },
     "towada": {
       "ledger": ".cache/task-086/towada-general-next/research-ledger.json",
       "status": "PUBLIC_PASSAGE_PENDING"
+    },
+    "shirahama": {
+      "ledger": ".cache/task-086/shirahama181/phase203-production-preflight.json",
+      "status": "CLOSED_BY203_FULL_GATE_PASS"
     }
   },
   "capabilityLimits": {

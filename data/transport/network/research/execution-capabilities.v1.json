@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-10-02",
+  "asOf": "2026-10-03",
   "observedFrom": "Current callable collaboration tool schema and account usage tool",
   "subagentsSupported": true,
   "maximumConcurrentAgentsIncludingRoot": 4,
@@ -19,10 +19,14 @@
   "actualTaskCachedTokens": null,
   "actualTaskBilledCost": null,
   "unavailableReason": "Tools expose account quota, not per-task token/cache/cost accounting",
-  "accountOrdinaryQuotaUsedPercent": 100,
+  "accountOrdinaryQuotaUsedPercent": 24,
   "creditsAvailable": true,
   "quotaResetOrBillingChanged": false,
   "deterministicWork": "Scripts",
   "sourceCache": ".cache/task-086/airports7",
-  "modelSelfRatingsAreEvidence": false
+  "modelSelfRatingsAreEvidence": false,
+  "accountQuotaObservation": ".cache/task-086/airports7/runtime-usage202.json",
+  "existingSubagentReuseSupported": true,
+  "newAgentSpawnLimit": "Prior platform thread-limit failure; not re-probed unchanged",
+  "modelSelectionForExistingAgent": "followup_task has no model override; inherited existing agent model, no claimed low-cost switch"
 }

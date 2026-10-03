@@ -1,20 +1,20 @@
 {
   "task": "TASK-086-B",
-  "recordedAt": "2026-10-03T08:49:02.727284+00:00",
+  "recordedAt": "2026-10-03T09:32:10.594327+00:00",
   "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
   "terminal": false,
-  "phase": 202,
-  "validationParentHead": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
+  "phase": 203,
+  "validationParentHead": "dc787a40b331b2a6cac273d13bb71002366446b2",
   "branch": "feature/b-transport-node-mobility-backbone",
-  "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2",
-  "manifestSha256": "146625e51dc142779f4c5c132774203cf149a65bcfe57354a1e04eead926cfd8",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2",
+  "manifestSha256": "b5a00c0224edb75863fd652dd906b3905eac964ef82fb828fa192d163e42baa7",
   "fullRegression": {
     "status": "PASS",
     "tests": 3084,
     "pass": 3084,
     "fail": 0,
     "skipped": 0,
-    "logSha256": "a9117655f876b4a9dfeaad631fbe2562a92819658641ad38a029071434d5a200",
+    "logSha256": "4ad6b93d13b57bbc5a840b4e3b260a9cc8a719f5dbeabb0402e4979b6ad4d840",
     "timing": {
       "command": [
         "node",
@@ -24,13 +24,13 @@
         "--test-concurrency=1",
         "tests/*.test.mjs"
       ],
-      "elapsedSeconds": 1306.2191953000147,
+      "elapsedSeconds": 1254.5869721999625,
       "exitCode": 0,
-      "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
     },
     "coverage": "One full regression includes deterministic clean rebuild, raw extraction, recovery/corruption and all shared parser negatives. No independent duplicate rebuild."
   },
-  "deterministicRebuildReceiptSha256": "452601bd9df1fe4f9f1d0eb44b09afab384cc9fd990b7cfb0e89ba39e4b67597",
+  "deterministicRebuildReceiptSha256": "a890a1b1451e971ff55fe8076708bf6a8b1fae32cf5e832d1956de150eff2af9",
   "checks": [
     {
       "command": [
@@ -45,11 +45,11 @@
           "run",
           "lint"
         ],
-        "elapsedSeconds": 37.51004640001338,
+        "elapsedSeconds": 33.254841699963436,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
-      "logSha256": "449e6ef0cf9887b478950476da955b11d2696e17810774bab67a145332618017"
+      "logSha256": "3f58900af8f632e44bb5fd6ef4cd7b646095005055d2e12dc6c882cf4ad37399"
     },
     {
       "command": [
@@ -64,9 +64,9 @@
           "run",
           "typecheck"
         ],
-        "elapsedSeconds": 5.789830599969719,
+        "elapsedSeconds": 5.561229599989019,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
     },
@@ -83,9 +83,9 @@
           "run",
           "format:check:deploy"
         ],
-        "elapsedSeconds": 13.833892600028776,
+        "elapsedSeconds": 12.788705300015863,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
       "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
     },
@@ -102,11 +102,11 @@
           "run",
           "deploy:build:local"
         ],
-        "elapsedSeconds": 44.88734730001306,
+        "elapsedSeconds": 49.69884569995338,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
-      "logSha256": "3b5e61013dcdc497570ac2ac3120805de1c0df3a09be790d6194c57a69e1696a"
+      "logSha256": "41b90e2d77fd114253bf22ea8942764a5c6f4416b7cc47beba785b66321cc60a"
     },
     {
       "command": [
@@ -121,11 +121,11 @@
           "run",
           "deploy:verify-artifact"
         ],
-        "elapsedSeconds": 1.8341917999787256,
+        "elapsedSeconds": 1.9144543000147678,
         "exitCode": 0,
-        "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2"
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE203-v2"
       },
-      "logSha256": "59ce790e97d40d34f94b9757a60db037407403dc0478e6f0190b3489cc2c6c2f"
+      "logSha256": "d3c0f0175927005b4b474c4fefd4e2ac9cbe2c2e3a19dc49efa00e6ea83a044b"
     }
   ],
   "validationEnvironment": {
@@ -565,34 +565,34 @@
     "requiredRecord": "branchHeadSha and actual checkoutSha from CI_REVISION; PR merge revision differs from direct workflow_dispatch branch checkout."
   },
   "artifactIsCleanHeadBuild": false,
-  "phase200QualityGates": {
+  "phase202QualityGates": {
     "schemaVersion": 1,
-    "observedAt": "2026-10-03T07:39:24.003212+00:00",
-    "branchHeadSha": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
+    "observedAt": "2026-10-03T09:08:32.056965+00:00",
+    "branchHeadSha": "dc787a40b331b2a6cac273d13bb71002366446b2",
     "records": [
       {
-        "runId": 37105758452,
-        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37105758452",
+        "runId": 37111140480,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37111140480",
         "status": "PASS",
         "event": "workflow_dispatch",
         "revision": {
           "schemaVersion": 1,
           "eventName": "workflow_dispatch",
           "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
-          "branchHeadSha": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
-          "checkoutSha": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
+          "branchHeadSha": "dc787a40b331b2a6cac273d13bb71002366446b2",
+          "checkoutSha": "dc787a40b331b2a6cac273d13bb71002366446b2",
           "checkoutParents": [
-            "f80aec4386f3df038a993ec40fee04184147c710"
+            "3ae2ce4a1454741c545ef6ead42096ed490cb96a"
           ],
-          "eventSha": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
+          "eventSha": "dc787a40b331b2a6cac273d13bb71002366446b2",
           "baseSha": null,
           "pullRequestNumber": null,
           "checkoutKind": "BRANCH_HEAD_DIRECT",
           "directBranchHeadTest": true
         },
         "tests": {
-          "tests": 3081,
-          "pass": 3081,
+          "tests": 3084,
+          "pass": 3084,
           "fail": 0,
           "skipped": 0
         },
@@ -662,32 +662,32 @@
             "conclusion": "success"
           }
         ],
-        "logSha256": "ad089d26f9f2678942ea566e3afd0465685cf20a726febb78952874d86a8480c"
+        "logSha256": "bdaabc6cf1950e2d7b995df77d74967e467259394d513b7f902c6f45a611a1c2"
       },
       {
-        "runId": 37105762370,
-        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37105762370",
+        "runId": 37111084341,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37111084341",
         "status": "PASS",
         "event": "pull_request",
         "revision": {
           "schemaVersion": 1,
           "eventName": "pull_request",
           "ref": "refs/pull/466/merge",
-          "branchHeadSha": "3ae2ce4a1454741c545ef6ead42096ed490cb96a",
-          "checkoutSha": "238fe470ddfa75b860b046af62976da0a934929e",
+          "branchHeadSha": "dc787a40b331b2a6cac273d13bb71002366446b2",
+          "checkoutSha": "450b12f7a96342a41be7c363021584682f392f75",
           "checkoutParents": [
             "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
-            "3ae2ce4a1454741c545ef6ead42096ed490cb96a"
+            "dc787a40b331b2a6cac273d13bb71002366446b2"
           ],
-          "eventSha": "238fe470ddfa75b860b046af62976da0a934929e",
+          "eventSha": "450b12f7a96342a41be7c363021584682f392f75",
           "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
           "pullRequestNumber": 466,
           "checkoutKind": "PULL_REQUEST_MERGE_TEST",
           "directBranchHeadTest": false
         },
         "tests": {
-          "tests": 3081,
-          "pass": 3081,
+          "tests": 3084,
+          "pass": 3084,
           "fail": 0,
           "skipped": 0
         },
@@ -757,10 +757,9 @@
             "conclusion": "success"
           }
         ],
-        "logSha256": "3ed7bb73c7f1fdee6896a8996584cdbd3e384c3d1e378ff48cee0db3ef20c3a2"
+        "logSha256": "04a56a81b5f694220e733bbc2c61641eb4951a203ff9693b87ef4835ba828fe6"
       }
     ],
     "rawLogsRetained": false
-  },
-  "prior201Validation": "phase201-pre-normalization-validation.json"
+  }
 }
