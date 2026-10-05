@@ -1,0 +1,304 @@
+{
+  "phaseId": "kikai-historical-front-stop-private",
+  "strategy": [
+    "REUSE_EXISTING_ADMITTED_AIRPORT_AND_NATIONAL_FLIGHTS",
+    "EXACT_LICENSED_P04_HISTORICAL_SITE_REFERENCE",
+    "EXPLICIT_EXISTING_STOP_RENAME_AND_SEPARATE_MUNICIPAL_HANDOFF",
+    "TWO_INDEPENDENT_REAL_ADJACENT_PUBLIC_BUS_DIRECTIONS"
+  ],
+  "completedActionIds": [
+    "kikai:226:current-municipal-service-and-historical-component",
+    "kikai:226:current-municipal-service-and-historical-component:service"
+  ],
+  "facts": [
+    {
+      "factId": "kikai226-independent-adjacent-0",
+      "kind": "service",
+      "sourceActionId": "kikai:226:current-municipal-service-and-historical-component:service",
+      "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+      "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+          "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+          "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+          "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+        }
+      ],
+      "operator": "喜界町",
+      "operatorRole": "MUNICIPAL_TEMPORARY_PUBLIC_SERVICE_ORGANIZER",
+      "line": "南中央線",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "町営路線バス",
+      "direction": "南中央線:parent-10",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published June1,2026 service; north18:00 excluded. No live dispatch or timetable itinerary guarantee.",
+      "callingStations": ["旧病院前", "喜界空港"],
+      "sourceCallingNames": ["旧病院前", "空港"],
+      "callingComponents": [
+        {
+          "name": "旧病院前",
+          "operator": "喜界町",
+          "line": "kikai:municipal-central",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "P04-20",
+            "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+            "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+            "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2"
+        },
+        {
+          "name": "喜界空港",
+          "operator": "airport-facility:cf03_00086",
+          "line": "airport:cf03_00086",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00086",
+            "requirementId": "review:official-airport:喜界",
+            "expectedRequirementName": "喜界",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current municipal public bus table explicitly calls this island airport in two actual independent adjacent directions; town service plan names continued island public routes. Whole airport passenger gateway only, no arbitrary free boarding across airport land, invented walk, curb or entrance precision."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "parentCallingSequence": {
+        "calls": [
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所",
+          "Aコープ",
+          "鹿銀前",
+          "湾港前",
+          "農機具センター",
+          "信号機前",
+          "湾",
+          "旧病院前",
+          "空港",
+          "ふくり東口",
+          "荒木",
+          "手久津久",
+          "上嘉鉄",
+          "先山",
+          "浦原",
+          "花良治",
+          "蒲生",
+          "阿伝",
+          "嘉鈍",
+          "白水",
+          "早町",
+          "塩道",
+          "佐手久",
+          "志戸桶",
+          "小野津",
+          "伊実久",
+          "伊砂",
+          "坂嶺",
+          "中熊",
+          "先内",
+          "中間",
+          "池治",
+          "高校前",
+          "赤連",
+          "海岸通り",
+          "仮屋跡前",
+          "湾港前",
+          "農機具センター",
+          "信号機前",
+          "空港",
+          "ふくり東口",
+          "中里",
+          "旧病院前",
+          "湾",
+          "Aコープ",
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所"
+        ],
+        "selectedStartIndex": 10,
+        "selectedEndIndex": 11,
+        "parentCallsSha256": "64e89abd40333e3cf0d43c1d55fbc888e03e563eb9d1dea766eb5355bbad7873"
+      },
+      "sourceNameNormalization": [
+        {
+          "sourceName": "空港",
+          "canonicalName": "喜界空港",
+          "scope": "Single island airport under current town route; independently identified original C28 facility, no stop-name coordinate join."
+        }
+      ],
+      "locator": "南中央線 independently reviewed source column, exact contiguous parent positions 10–11. Full parent provenance retained, no reversal."
+    },
+    {
+      "factId": "kikai226-independent-adjacent-1",
+      "kind": "service",
+      "sourceActionId": "kikai:226:current-municipal-service-and-historical-component:service",
+      "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+      "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+          "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+          "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+          "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+        }
+      ],
+      "operator": "喜界町",
+      "operatorRole": "MUNICIPAL_TEMPORARY_PUBLIC_SERVICE_ORGANIZER",
+      "line": "北中央線",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "町営路線バス",
+      "direction": "北中央線:parent-40",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published June1,2026 service; north18:00 excluded. No live dispatch or timetable itinerary guarantee.",
+      "callingStations": ["喜界空港", "旧病院前"],
+      "sourceCallingNames": ["空港", "旧病院前"],
+      "callingComponents": [
+        {
+          "name": "喜界空港",
+          "operator": "airport-facility:cf03_00086",
+          "line": "airport:cf03_00086",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00086",
+            "requirementId": "review:official-airport:喜界",
+            "expectedRequirementName": "喜界",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current municipal public bus table explicitly calls this island airport in two actual independent adjacent directions; town service plan names continued island public routes. Whole airport passenger gateway only, no arbitrary free boarding across airport land, invented walk, curb or entrance precision."
+          }
+        },
+        {
+          "name": "旧病院前",
+          "operator": "喜界町",
+          "line": "kikai:municipal-central",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "P04-20",
+            "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+            "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+            "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "parentCallingSequence": {
+        "calls": [
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所",
+          "Aコープ",
+          "湾",
+          "旧病院前",
+          "中里",
+          "ふくり東口",
+          "空港",
+          "信号機前",
+          "農機具センター",
+          "湾港前",
+          "仮屋跡前",
+          "海岸通り",
+          "赤連",
+          "高校前",
+          "池治",
+          "中間",
+          "先内",
+          "中熊",
+          "坂嶺",
+          "伊砂",
+          "伊実久",
+          "小野津",
+          "志戸桶",
+          "佐手久",
+          "塩道",
+          "早町",
+          "白水",
+          "嘉鈍",
+          "阿伝",
+          "蒲生",
+          "花良治",
+          "浦原",
+          "先山",
+          "上嘉鉄",
+          "手久津久",
+          "荒木",
+          "ふくり東口",
+          "空港",
+          "旧病院前",
+          "湾",
+          "信号機前",
+          "農機具センター",
+          "湾港前",
+          "鹿銀前",
+          "Aコープ",
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所"
+        ],
+        "selectedStartIndex": 40,
+        "selectedEndIndex": 41,
+        "parentCallsSha256": "54909aea0f96c1017d2f42e3517aea059dcd26c1d671ac3cff5f16fddcc95eed"
+      },
+      "sourceNameNormalization": [
+        {
+          "sourceName": "空港",
+          "canonicalName": "喜界空港",
+          "scope": "Single island airport under current town route; independently identified original C28 facility, no stop-name coordinate join."
+        }
+      ],
+      "locator": "北中央線 independently reviewed source column, exact contiguous parent positions 40–41. Full parent provenance retained, no reversal."
+    }
+  ],
+  "scope": "One current historical-facility-front public stop represented by exact historical native facility reference point; two independently sourced adjacent public bus directions. No bus pole/door, current hospital, corporate succession, extra flight or walk claim."
+}

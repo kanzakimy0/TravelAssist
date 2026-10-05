@@ -1,0 +1,2905 @@
+{
+  "nodes": [
+    {
+      "canonicalNameJa": "北大東空港",
+      "decision": "ADMIT_TASK_086_TOPOLOGY",
+      "discoveryCandidateRef": "official-airport:北大東",
+      "evidenceRefs": [
+        "transport-evidence:086:42962d4d027880fd58889df8d21250b2",
+        "transport-evidence:086:9e2f58092ff85c76edba4781820becc2",
+        "transport-evidence:086:d3a82022489d1de261729239aea1a81b"
+      ],
+      "hubSemantics": "AIRPORT_FACILITY_GATEWAY_EXPLICIT_TERMINAL_ACCESS_ONLY",
+      "identityAnchor": "review:official-airport:北大東",
+      "identityRecord": {
+        "administrativeAreaCodes": ["47358"],
+        "airportFeatureIds": ["cf02_00058"],
+        "airportName": "北大東空港",
+        "coordinateScope": "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+        "establisherClassCode": 5,
+        "identityAsOf": "2021-12-31",
+        "latitude": 25.944722,
+        "longitude": 131.326944,
+        "managerClassCode": 5,
+        "referencePointId": "cf03_00058"
+      },
+      "identitySignature": "e2f54fece035fc74fe9db37b0b96aa3a5c673b25fb7252354fbb8493576c8785",
+      "independentReview": {
+        "coordinateScope": "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+        "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference.",
+        "decision": "ADMIT_TASK_086_TOPOLOGY",
+        "identityAsOf": "2021-12-31",
+        "method": "EXACT_C28_REFERENCE_ID_AND_REVIEWED_REQUIREMENT_PLUS_CURRENT_PRIMARY_ACCESS",
+        "recordSha256": "d9597f8692d3ee509d3b971b17f89410ad4ff6aed726882cf29c3c7f2623b564",
+        "sourceArchiveSha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35"
+      },
+      "latitude": 25.944722,
+      "lineRefs": ["airport:cf03_00058"],
+      "longitude": 131.326944,
+      "mode": "flight",
+      "nodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+      "nodeKind": "airport",
+      "nodeLevel": "T3",
+      "operatorReferenceScope": "AIRPORT_FACILITY_ID_NOT_AIRLINE_OR_CONCESSIONAIRE",
+      "operatorRefs": ["airport-facility:cf03_00058"],
+      "origin": "TASK_086_INDEPENDENT_C28_AND_CURRENT_ACCESS",
+      "parentHubId": null,
+      "reasons": [],
+      "runtimeImportAuthorized": false
+    },
+    {
+      "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+      "origin": "TASK_086_INDEPENDENT_ABR_PRIVATE_HOTEL",
+      "canonicalNameJa": "ハマユウ荘 うふあがり島",
+      "nodeKind": "private_hotel_pickup_facility",
+      "mode": "airport_bus",
+      "longitude": 131.295571787,
+      "latitude": 25.948402551,
+      "operatorRefs": ["facility:hamayuso-hotel"],
+      "lineRefs": ["facility:hamayuso-hotel"],
+      "evidenceRefs": [
+        "transport-evidence:086:0127731ecb0193cd4841f2a101d38b0a",
+        "transport-evidence:086:086f4151ec10840ccb381306b100b960",
+        "transport-evidence:086:2f8681fec2542877e771dc095a2d62d1",
+        "transport-evidence:086:43471ded514a4aac702c2b6a96d765bc",
+        "transport-evidence:086:45335aead0d94f7651bfa8227e491e7a",
+        "transport-evidence:086:89a3ff40451770c9df27e12cf447b73c",
+        "transport-evidence:086:b84d12fce1beb1040cb1b61e69b711dd",
+        "transport-evidence:086:d0377a4e9a5a08dd24e56486b0e223bc"
+      ],
+      "identityRecord": {
+        "dataset": "ABR_EXACT_PRIVATE_HOTEL_PARCEL",
+        "nativeRecord": {
+          "master": {
+            "lg_code": "473588",
+            "machiaza_id": "0004000",
+            "prc_id": "001520000900000",
+            "city": "北大東村",
+            "ward": "",
+            "oaza_cho": "字中野",
+            "chome": "",
+            "koaza": "",
+            "machiaza_dist": "",
+            "prc_num1": "152",
+            "prc_num2": "9",
+            "prc_num3": "",
+            "rsdt_addr_flg": "0",
+            "prc_rec_flg": "1",
+            "prc_area_code": "",
+            "efct_date": "1947-04-17",
+            "ablt_date": "",
+            "src_code": "1",
+            "remarks": "",
+            "real_prop_num": ""
+          },
+          "position": {
+            "lg_code": "473588",
+            "machiaza_id": "0004000",
+            "prc_id": "001520000900000",
+            "rep_lon": "131.295571787",
+            "rep_lat": "25.948402551",
+            "rep_srid": "EPSG:6668",
+            "rep_scale": "2500",
+            "rep_src_code": "1",
+            "plygn_fname": "",
+            "plygn_kcode": "",
+            "plygn_fmt": "",
+            "plygn_srid": "EPSG:6668",
+            "plygn_scale": "2500",
+            "plygn_src_code": "1",
+            "moj_map_city_code": "47358",
+            "moj_map_oaza_code": "002",
+            "moj_map_chome_code": "000",
+            "moj_map_koaza_code": "0000",
+            "moj_map_spare_code": "00",
+            "moj_map_brushid": "H000000487"
+          },
+          "hotelFacilityAddressReview": {
+            "kind": "REVIEWED_OFFICIAL_NAMED_PRIVATE_HOTEL_EXACT_PARCEL",
+            "sourceFactId": "hamayuso-owner-exact-address",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "municipalityCode": "473588",
+            "city": "北大東村",
+            "oazaCho": "字中野",
+            "parcelNumbers": ["152", "9", ""],
+            "facilityName": "ハマユウ荘 うふあがり島",
+            "officialAddress": "沖縄県島尻郡北大東村字中野152-9",
+            "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "coordinateProximityUsed": false,
+            "googleCoordinatesUsed": false,
+            "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY"
+          }
+        },
+        "nativeRecordSha256": "80b9ccd98837a5e562f323123c7f80b7b93ef32b3322b15b22a33a75ccf103b8",
+        "archiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+        "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+        "memberSha256": "37faa83b011ef034be2d1ec847333e2a75f26e1743d0bb71662345b39cb01661",
+        "positionMemberSha256": "026cf86cdf4f4700e5e00a8a33f37ffa199323881b0f54fb5c3f7c582e3f0e77",
+        "name": "ハマユウ荘 うふあがり島",
+        "address": "沖縄県島尻郡北大東村字中野152-9",
+        "municipalityCode": "473588",
+        "latitude": 25.948402551,
+        "longitude": 131.295571787,
+        "coordinateReferenceSystem": "EPSG:6668",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility"
+      },
+      "hubSemantics": "EXPLICIT_WHOLE_PRIVATE_HOTEL_FACILITY_NOT_PUBLIC_HUB",
+      "independentReview": {
+        "decision": "ADMIT_TASK_086_TOPOLOGY",
+        "recordSha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e",
+        "method": "EXACT_ABR_DUAL_ARCHIVE_PRIVATE_HOTEL_OWNER_ADDRESS",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+      },
+      "nodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+      "identitySignature": "d8cf666daefc5a5aa3ad9d541dc3b66ebdb04a2a4925789de4ec09ed509e11d4",
+      "decision": "ADMIT_TASK_086_TOPOLOGY",
+      "reasons": []
+    }
+  ],
+  "patterns": [
+    {
+      "factId": "hamayuso230-airport_to_hotel",
+      "sourceFactRef": "transport-evidence:086:086f4151ec10840ccb381306b100b960",
+      "callingNodes": [
+        {
+          "nodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+          "sequence": 1,
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "nodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+          "sequence": 2,
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "lineRef": "transport-line:086:f739a02b0bb9063b4fe35ca1c077bf8a",
+      "operatorRef": "ハマユウ荘 うふあがり島",
+      "mode": "airport_bus",
+      "serviceClass": "宿泊先無料送迎",
+      "direction": "AIRPORT_TO_HOTEL",
+      "purpose": "airport",
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+        "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "hamayuso:lodging-guest",
+          "nansei:confirmed-kitadaito-product-participant"
+        ],
+        "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "requiredConditions": {
+          "actualHotelGuest": true,
+          "confirmedExactTourProduct": true,
+          "arrivalFlightInformationReportedToHotel": true,
+          "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+          "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+          "unconditionalPublicAccess": false
+        },
+        "unknowns": {
+          "legalMotorCarrier": null,
+          "shuttleBookingLeadMinutes": null,
+          "exactTimetable": null,
+          "capacity": null,
+          "dispatchGuarantee": null
+        },
+        "direction": "AIRPORT_TO_HOTEL",
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+          "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+        ]
+      },
+      "servicePatternId": "transport-pattern:086:30826d1b1a33edcff100dfaf8b57980f",
+      "evidenceRefs": [
+        "transport-evidence:086:99a3371a50a7758e4f32d006c4403127"
+      ],
+      "sourceRefs": ["https://south-west.co.jp/tour/okinawa_kitadaitou/"],
+      "sequenceEvidence": "OFFICIAL_CALLING_SEQUENCE",
+      "segmentOperators": ["ハマユウ荘 うふあがり島"],
+      "strictFactBinding": true,
+      "serviceState": "active",
+      "serviceStateScope": "Current publicly offered named package and current hotel access; static qualified structure only, no exact-date dispatch/seat/timed-connection promise.",
+      "metrics": {}
+    },
+    {
+      "factId": "hamayuso230-hotel_to_airport",
+      "sourceFactRef": "transport-evidence:086:45335aead0d94f7651bfa8227e491e7a",
+      "callingNodes": [
+        {
+          "nodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+          "sequence": 1,
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "nodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+          "sequence": 2,
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "lineRef": "transport-line:086:f739a02b0bb9063b4fe35ca1c077bf8a",
+      "operatorRef": "ハマユウ荘 うふあがり島",
+      "mode": "airport_bus",
+      "serviceClass": "宿泊先無料送迎",
+      "direction": "HOTEL_TO_AIRPORT",
+      "purpose": "airport",
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+        "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "hamayuso:lodging-guest",
+          "nansei:confirmed-kitadaito-product-participant"
+        ],
+        "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "requiredConditions": {
+          "actualHotelGuest": true,
+          "confirmedExactTourProduct": true,
+          "arrivalFlightInformationReportedToHotel": true,
+          "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+          "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+          "unconditionalPublicAccess": false
+        },
+        "unknowns": {
+          "legalMotorCarrier": null,
+          "shuttleBookingLeadMinutes": null,
+          "exactTimetable": null,
+          "capacity": null,
+          "dispatchGuarantee": null
+        },
+        "direction": "HOTEL_TO_AIRPORT",
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+          "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+        ]
+      },
+      "servicePatternId": "transport-pattern:086:13ac8eb43ecc16537c341b209a92d20d",
+      "evidenceRefs": [
+        "transport-evidence:086:4b455f366bef037fddc6a8b1c0c532ee"
+      ],
+      "sourceRefs": ["https://south-west.co.jp/tour/okinawa_kitadaitou/"],
+      "sequenceEvidence": "OFFICIAL_CALLING_SEQUENCE",
+      "segmentOperators": ["ハマユウ荘 うふあがり島"],
+      "strictFactBinding": true,
+      "serviceState": "active",
+      "serviceStateScope": "Current publicly offered named package and current hotel access; static qualified structure only, no exact-date dispatch/seat/timed-connection promise.",
+      "metrics": {}
+    }
+  ],
+  "edges": [
+    {
+      "edgeId": "transport-edge:086:58dad54490cc8caae770635f678720d5",
+      "from": {
+        "kind": "transport",
+        "id": "transport-node:086:7523deba1977cac488a45c7185a95ad7"
+      },
+      "to": {
+        "kind": "transport",
+        "id": "transport-node:086:70816934d71e010ae20e94d77acd4b24"
+      },
+      "fromTransportNodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+      "toTransportNodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+      "layer": "transport_network",
+      "directed": true,
+      "topologyStatus": "CONFIRMED",
+      "edgeKind": "service_segment",
+      "mode": "airport_bus",
+      "operatorRef": "ハマユウ荘 うふあがり島",
+      "lineRef": "transport-line:086:f739a02b0bb9063b4fe35ca1c077bf8a",
+      "servicePatternRef": "transport-pattern:086:30826d1b1a33edcff100dfaf8b57980f",
+      "segmentIndex": 0,
+      "serviceClass": "宿泊先無料送迎",
+      "direction": "AIRPORT_TO_HOTEL",
+      "boardAllowed": true,
+      "alightAllowed": true,
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+        "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "hamayuso:lodging-guest",
+          "nansei:confirmed-kitadaito-product-participant"
+        ],
+        "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "requiredConditions": {
+          "actualHotelGuest": true,
+          "confirmedExactTourProduct": true,
+          "arrivalFlightInformationReportedToHotel": true,
+          "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+          "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+          "unconditionalPublicAccess": false
+        },
+        "unknowns": {
+          "legalMotorCarrier": null,
+          "shuttleBookingLeadMinutes": null,
+          "exactTimetable": null,
+          "capacity": null,
+          "dispatchGuarantee": null
+        },
+        "direction": "AIRPORT_TO_HOTEL",
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+          "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+        ]
+      },
+      "accessContractSha256": "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+      "conditionalTopology": true,
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:99a3371a50a7758e4f32d006c4403127",
+        "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+        "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+      ],
+      "sourceRefs": ["https://south-west.co.jp/tour/okinawa_kitadaitou/"],
+      "confidence": 1,
+      "metrics": {
+        "durationTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "durationP90Min": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "fareTypicalYen": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "frequencyTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "firstDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "lastDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "calendar": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "reservation": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "seasonal": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "transferTimeMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "accessibility": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        }
+      },
+      "generatedAt": "2026-10-01T00:00:00Z"
+    },
+    {
+      "edgeId": "transport-edge:086:b4159f9d5f7b463eb397f0897b81b91a",
+      "from": {
+        "kind": "transport",
+        "id": "transport-node:086:70816934d71e010ae20e94d77acd4b24"
+      },
+      "to": {
+        "kind": "transport",
+        "id": "transport-node:086:7523deba1977cac488a45c7185a95ad7"
+      },
+      "fromTransportNodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+      "toTransportNodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+      "layer": "transport_network",
+      "directed": true,
+      "topologyStatus": "CONFIRMED",
+      "edgeKind": "service_segment",
+      "mode": "airport_bus",
+      "operatorRef": "ハマユウ荘 うふあがり島",
+      "lineRef": "transport-line:086:f739a02b0bb9063b4fe35ca1c077bf8a",
+      "servicePatternRef": "transport-pattern:086:13ac8eb43ecc16537c341b209a92d20d",
+      "segmentIndex": 0,
+      "serviceClass": "宿泊先無料送迎",
+      "direction": "HOTEL_TO_AIRPORT",
+      "boardAllowed": true,
+      "alightAllowed": true,
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+        "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "hamayuso:lodging-guest",
+          "nansei:confirmed-kitadaito-product-participant"
+        ],
+        "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "requiredConditions": {
+          "actualHotelGuest": true,
+          "confirmedExactTourProduct": true,
+          "arrivalFlightInformationReportedToHotel": true,
+          "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+          "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+          "unconditionalPublicAccess": false
+        },
+        "unknowns": {
+          "legalMotorCarrier": null,
+          "shuttleBookingLeadMinutes": null,
+          "exactTimetable": null,
+          "capacity": null,
+          "dispatchGuarantee": null
+        },
+        "direction": "HOTEL_TO_AIRPORT",
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+          "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+        ]
+      },
+      "accessContractSha256": "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e",
+      "conditionalTopology": true,
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:4b455f366bef037fddc6a8b1c0c532ee",
+        "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+        "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+      ],
+      "sourceRefs": ["https://south-west.co.jp/tour/okinawa_kitadaitou/"],
+      "confidence": 1,
+      "metrics": {
+        "durationTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "durationP90Min": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "fareTypicalYen": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "frequencyTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "firstDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "lastDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "calendar": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "reservation": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "seasonal": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "transferTimeMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "accessibility": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        }
+      },
+      "generatedAt": "2026-10-01T00:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "transport-source:086:8101357b89423b7fa82a3cc2041a39d1",
+      "url": "https://hamayuso.com/content3.html",
+      "contentSha256": "7fef10f5124c45281cd18fcb8b75d2b658eb1cf07366cb16efa1fba36ea083cd",
+      "evidenceContentSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T20:16:05.146Z",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://hamayuso.com/content3.html",
+        "reason": "Hotel-authored public access and exact address; only minimal independent name/address/arrival pickup facts. Current lodging page confirms live operation but room booking deadline is not shuttle lead. No raw HTML/artwork/clocks redistribution."
+      },
+      "attribution": "https://hamayuso.com/content3.html; operator factual topology; reviewed 2026-10-03T20:16:05.146Z"
+    },
+    {
+      "sourceId": "transport-source:086:321a4d889870502ddc3d89971f30b12e",
+      "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+      "contentSha256": "c7e7fb6a76b9944d1a938bfafe9e4b4c31e5f1540ee6424ab7e0875c09e03644",
+      "evidenceContentSha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T19:44:55.661683+00:00",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.digital.go.jp/policies/base_registry_address_tos",
+        "reason": "PDL1.0 and MOJ reuse terms separately bound; exact named commercial hotel parcel with attribution and processing disclosure, no private owner/person inference."
+      },
+      "attribution": "https://www.digital.go.jp/policies/base_registry_address_tos; operator factual topology; reviewed 2026-10-03T19:44:55.661683+00:00"
+    },
+    {
+      "sourceId": "transport-source:086:c69dfb567c21a81d2bae95cb85cfaf25",
+      "url": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+      "contentSha256": "31b5d1c462624d095d5ad6b70f07f4f6809d7e2c04be80202ae2a6978875781b",
+      "evidenceContentSha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T19:44:55.835016+00:00",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.digital.go.jp/policies/base_registry_address_tos",
+        "reason": "PDL1.0 and MOJ reuse terms separately bound; exact named commercial hotel parcel with attribution and processing disclosure, no private owner/person inference."
+      },
+      "attribution": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf; operator factual topology; reviewed 2026-10-03T19:44:55.835016+00:00"
+    },
+    {
+      "sourceId": "hamayuso230:abr:master",
+      "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473588.csv.zip",
+      "observedAt": "2026-10-03T20:17:36.645361+00:00",
+      "contentSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+      "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+      "rightsDecision": "REVIEWED_PDL_1_0_PLUS_MOJ_TERMS",
+      "license": "PDL-1.0+MOJ-MAP-DATA-TERMS",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "PDL-1.0+MOJ-MAP-DATA-TERMS",
+        "attribution": "デジタル庁 アドレス・ベース・レジストリ 地番マスター/位置参照 北大東村; 法務省地図データ. TravelAssist: named hotel address exact parcel join; representative point only.",
+        "shareAlikeRequired": false,
+        "shareAlikeScope": "NONE"
+      },
+      "attribution": "デジタル庁 アドレス・ベース・レジストリ 地番マスター/位置参照 北大東村; 法務省地図データ. TravelAssist: named hotel address exact parcel join; representative point only.",
+      "persistenceAllowed": true,
+      "rawPayloadRetained": true,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "retainedArchive": "sources/raw/hamayuso-abr-master-473588.zip",
+      "retainedArchiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+      "nativeArchiveRole": "ABR_MASTER",
+      "rightsReview": {
+        "pdlTermsResponseSha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+        "mojTermsResponseSha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+        "processingDisclosure": "Exact native parcel pair joined to hotel owner address; no personal owner inference, no curb/entrance/public-facility claim.",
+        "noIndividualIdentification": true,
+        "termsEvidenceRefs": [
+          "transport-evidence:086:89a3ff40451770c9df27e12cf447b73c",
+          "transport-evidence:086:0127731ecb0193cd4841f2a101d38b0a"
+        ]
+      }
+    },
+    {
+      "sourceId": "hamayuso230:abr:position",
+      "url": "https://data.address-br.digital.go.jp/mt_parcel_pos/city/mt_parcel_pos_city473588.csv.zip",
+      "observedAt": "2026-10-03T20:17:36.846135+00:00",
+      "contentSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+      "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+      "rightsDecision": "REVIEWED_PDL_1_0_PLUS_MOJ_TERMS",
+      "license": "PDL-1.0+MOJ-MAP-DATA-TERMS",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "PDL-1.0+MOJ-MAP-DATA-TERMS",
+        "attribution": "デジタル庁 アドレス・ベース・レジストリ 地番マスター/位置参照 北大東村; 法務省地図データ. TravelAssist: named hotel address exact parcel join; representative point only.",
+        "shareAlikeRequired": false,
+        "shareAlikeScope": "NONE"
+      },
+      "attribution": "デジタル庁 アドレス・ベース・レジストリ 地番マスター/位置参照 北大東村; 法務省地図データ. TravelAssist: named hotel address exact parcel join; representative point only.",
+      "persistenceAllowed": true,
+      "rawPayloadRetained": true,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "retainedArchive": "sources/raw/hamayuso-abr-position-473588.zip",
+      "retainedArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+      "nativeArchiveRole": "ABR_POSITION",
+      "rightsReview": {
+        "pdlTermsResponseSha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+        "mojTermsResponseSha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+        "processingDisclosure": "Exact native parcel pair joined to hotel owner address; no personal owner inference, no curb/entrance/public-facility claim.",
+        "noIndividualIdentification": true,
+        "termsEvidenceRefs": [
+          "transport-evidence:086:89a3ff40451770c9df27e12cf447b73c",
+          "transport-evidence:086:0127731ecb0193cd4841f2a101d38b0a"
+        ]
+      }
+    },
+    {
+      "sourceId": "transport-source:086:00ee8c6fbec29168b0b59e65b23012b4",
+      "url": "https://hamayuso.com/content3.html",
+      "contentSha256": "8f45ff5dfdc4a547f7632893963ab20edcc58140b7f89ab442102cb83f3ac4c9",
+      "evidenceContentSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T20:16:05.146Z",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://hamayuso.com/content3.html",
+        "reason": "Hotel-authored public access and exact address; only minimal independent name/address/arrival pickup facts. Current lodging page confirms live operation but room booking deadline is not shuttle lead. No raw HTML/artwork/clocks redistribution."
+      }
+    },
+    {
+      "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+      "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "contentSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f",
+      "evidenceContentSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T20:16:05.500Z",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "reason": "Travel organizer own named current package independently describes airport-to-Hamayuso and final hotel-to-airport accommodation transfer. Scope only actual operator-confirmed exact product participant staying at this hotel; not all hotel guests. Minimum directional and qualification facts; no raw product/table/fare/flight data reuse."
+      }
+    },
+    {
+      "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+      "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "contentSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683",
+      "evidenceContentSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T20:16:05.500Z",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "reason": "Travel organizer own named current package independently describes airport-to-Hamayuso and final hotel-to-airport accommodation transfer. Scope only actual operator-confirmed exact product participant staying at this hotel; not all hotel guests. Minimum directional and qualification facts; no raw product/table/fare/flight data reuse."
+      },
+      "attribution": "https://south-west.co.jp/tour/okinawa_kitadaitou/; operator factual topology; reviewed 2026-10-03T20:16:05.500Z"
+    },
+    {
+      "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+      "url": "https://hamayuso.com/content3.html",
+      "contentSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c",
+      "evidenceContentSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T20:16:05.146Z",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://hamayuso.com/content3.html",
+        "reason": "Hotel-authored public access and exact address; only minimal independent name/address/arrival pickup facts. Current lodging page confirms live operation but room booking deadline is not shuttle lead. No raw HTML/artwork/clocks redistribution."
+      }
+    },
+    {
+      "sourceId": "transport-source:086:46fa9928f8ca6ca9b28fa7b2945a96ab",
+      "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "contentSha256": "e8eb0ceddaa097e44c84c57f51be5093942f795d688a054e656685b65fbff333",
+      "evidenceContentSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T20:16:05.500Z",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "reason": "Travel organizer own named current package independently describes airport-to-Hamayuso and final hotel-to-airport accommodation transfer. Scope only actual operator-confirmed exact product participant staying at this hotel; not all hotel guests. Minimum directional and qualification facts; no raw product/table/fare/flight data reuse."
+      }
+    },
+    {
+      "attribution": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json; operator factual topology; reviewed 2026-10-01T18:17:01.942Z",
+      "contentSha256": "4c106deaed17132a60c6c5770a4a6f24555b14876609383ab62e3736a4b6c2ed",
+      "derivedDataAllowed": true,
+      "evidenceContentSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "metricPersistenceAllowed": false,
+      "observedAt": "2026-10-01T18:17:01.942Z",
+      "rawPayloadRetained": false,
+      "redistributionAllowed": true,
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "reason": "Naha Airport independently publishes this October 1-31 2026 planned regular passenger schedule. Its complete monthly schedule conditions and copyright footer were reviewed: accuracy and operational changes are disclaimed; no raw redistribution licence is claimed. Preserve only seven minimal directed airport pairs with actual operating carrier, reviewed service code and evidence fingerprints. Exclude clocks, fare, full schedule compilation and images. JAC operating notes override JL marketing carrier for OKE; no duplicate ANA codeshare edges. Exclude the ASJ arrival group because its contained endpoints still say OKA to ASJ; do not reverse malformed source data. IBR/IWK remain for separate formal facility alias review. No source from the restricted ANA/JAL websites is used. Flight admission does not assert a surface connection.",
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.naha-airport.co.jp/flight/month/"
+      },
+      "sourceId": "transport-source:086:383edae41f43480caa4b16f786ce010e",
+      "url": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json"
+    },
+    {
+      "attribution": "国土数値情報（空港 C28-21、2021-12-31時点）（国土交通省）をTravelAssistが加工して作成。商用可・旧国土情報利用約款。出典・加工者・権利と適用限界を継承。https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-C28-v3_0.html ; https://nlftp.mlit.go.jp/ksj/other/agreement_02.html",
+      "contentSha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35",
+      "derivedDataAllowed": true,
+      "limitations": "Historical whole-airport reference coordinates may contain spatial/time errors. Not terminal entrances, precise navigation, current manager, current service or interchange evidence. Independently checked current passenger access is required.",
+      "observedAt": "2026-10-01T08:14:39.685Z",
+      "persistenceAllowed": true,
+      "redistributionAllowed": true,
+      "retainedArchive": "sources/raw/mlit-c28-21.zip",
+      "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+      "rightsDecision": "MLIT_C28_COMMERCIAL_USE_ATTRIBUTION_AND_LIMITATIONS",
+      "sourceId": "mlit:c28:21",
+      "termsUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement_02.html",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/C28/C28-21/C28-21_GML.zip"
+    },
+    {
+      "attribution": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json; operator factual topology; reviewed 2026-10-01T18:17:01.942Z",
+      "contentSha256": "1a7328c5cf72e83ddf6fe8e62a844bdd019011d2b1eaddc95084b2f1fa000566",
+      "derivedDataAllowed": true,
+      "evidenceContentSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "metricPersistenceAllowed": false,
+      "observedAt": "2026-10-01T18:17:01.942Z",
+      "rawPayloadRetained": false,
+      "redistributionAllowed": true,
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "reason": "Naha Airport independently publishes this October 1-31 2026 planned regular passenger schedule. Its complete monthly schedule conditions and copyright footer were reviewed: accuracy and operational changes are disclaimed; no raw redistribution licence is claimed. Preserve only seven minimal directed airport pairs with actual operating carrier, reviewed service code and evidence fingerprints. Exclude clocks, fare, full schedule compilation and images. JAC operating notes override JL marketing carrier for OKE; no duplicate ANA codeshare edges. Exclude the ASJ arrival group because its contained endpoints still say OKA to ASJ; do not reverse malformed source data. IBR/IWK remain for separate formal facility alias review. No source from the restricted ANA/JAL websites is used. Flight admission does not assert a surface connection.",
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.naha-airport.co.jp/flight/month/"
+      },
+      "sourceId": "transport-source:086:45e9c9a0f6e2c63b860ceb89f483f403",
+      "url": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json"
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:43471ded514a4aac702c2b6a96d765bc",
+      "sourceId": "transport-source:086:8101357b89423b7fa82a3cc2041a39d1",
+      "sourceSha256": "7fef10f5124c45281cd18fcb8b75d2b658eb1cf07366cb16efa1fba36ea083cd",
+      "record": {
+        "kind": "REVIEWED_OFFICIAL_NAMED_PRIVATE_HOTEL_EXACT_PARCEL",
+        "sourceFactId": "hamayuso-owner-exact-address",
+        "sourceActionId": "northdaito:qualified:hamayuso-owner",
+        "sourceUrl": "https://hamayuso.com/content3.html",
+        "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+        "municipalityCode": "473588",
+        "city": "北大東村",
+        "oazaCho": "字中野",
+        "parcelNumbers": ["152", "9", ""],
+        "facilityName": "ハマユウ荘 うふあがり島",
+        "officialAddress": "沖縄県島尻郡北大東村字中野152-9",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "coordinateProximityUsed": false,
+        "googleCoordinatesUsed": false,
+        "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY"
+      },
+      "recordSha256": "9e3412e0ad57717e1263109a0d251f05bc4ae826af6493c6dd1b6d4d99501283",
+      "locator": "Reviewed minimum native private hotel/source permission facts"
+    },
+    {
+      "evidenceId": "transport-evidence:086:2f8681fec2542877e771dc095a2d62d1",
+      "sourceId": "transport-source:086:8101357b89423b7fa82a3cc2041a39d1",
+      "sourceSha256": "7fef10f5124c45281cd18fcb8b75d2b658eb1cf07366cb16efa1fba36ea083cd",
+      "record": {
+        "kind": "REVIEWED_PRIVATE_HOTEL_FACILITY_ROLE",
+        "factId": "hamayuso230:REVIEWED_PRIVATE_HOTEL_FACILITY_ROLE",
+        "sourceActionId": "northdaito:qualified:hamayuso-owner",
+        "sourceUrl": "https://hamayuso.com/content3.html",
+        "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+        "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "nativeIdentitySha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e",
+        "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY",
+        "hotelName": "ハマユウ荘 うふあがり島",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content1.html",
+            "observedResponseSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14"
+          }
+        ]
+      },
+      "recordSha256": "3a9b7f98eef9a00c870c1a4e66448655becbb51a07c12e9a420ff9db20535d98",
+      "locator": "Reviewed minimum native private hotel/source permission facts"
+    },
+    {
+      "evidenceId": "transport-evidence:086:89a3ff40451770c9df27e12cf447b73c",
+      "sourceId": "transport-source:086:321a4d889870502ddc3d89971f30b12e",
+      "sourceSha256": "c7e7fb6a76b9944d1a938bfafe9e4b4c31e5f1540ee6424ab7e0875c09e03644",
+      "record": {
+        "kind": "REVIEWED_NATIVE_REUSE_TERMS",
+        "factId": "hamayuso230:terms:pdl",
+        "sourceActionId": "northdaito:qualified:abr-terms",
+        "sourceUrl": "https://www.digital.go.jp/policies/base_registry_address_tos",
+        "observedResponseSha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+        "termsType": "PDL-1.0",
+        "commercialReuseAllowed": true,
+        "attributionRequired": true,
+        "processingDisclosureRequired": true,
+        "noIndividualIdentification": true
+      },
+      "recordSha256": "91e08171c939d83857bdc8b55128b255667f1dd4677fd83777a8e0905978b071",
+      "locator": "Reviewed minimum native private hotel/source permission facts"
+    },
+    {
+      "evidenceId": "transport-evidence:086:0127731ecb0193cd4841f2a101d38b0a",
+      "sourceId": "transport-source:086:c69dfb567c21a81d2bae95cb85cfaf25",
+      "sourceSha256": "31b5d1c462624d095d5ad6b70f07f4f6809d7e2c04be80202ae2a6978875781b",
+      "record": {
+        "kind": "REVIEWED_NATIVE_REUSE_TERMS",
+        "factId": "hamayuso230:terms:moj",
+        "sourceActionId": "northdaito:qualified:abr-terms",
+        "sourceUrl": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+        "observedResponseSha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+        "termsType": "MOJ_MAP_DATA_TERMS",
+        "commercialReuseAllowed": true,
+        "attributionRequired": true,
+        "processingDisclosureRequired": true,
+        "noIndividualIdentification": true
+      },
+      "recordSha256": "4caae251d65c3e0796ca1c22e74f15cca1cd751948eba992ea82140382a9da76",
+      "locator": "Reviewed minimum native private hotel/source permission facts"
+    },
+    {
+      "evidenceId": "transport-evidence:086:b84d12fce1beb1040cb1b61e69b711dd",
+      "sourceId": "hamayuso230:abr:master",
+      "sourceSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+      "record": {
+        "dataset": "ABR_EXACT_PRIVATE_HOTEL_PARCEL",
+        "nativeRecord": {
+          "master": {
+            "lg_code": "473588",
+            "machiaza_id": "0004000",
+            "prc_id": "001520000900000",
+            "city": "北大東村",
+            "ward": "",
+            "oaza_cho": "字中野",
+            "chome": "",
+            "koaza": "",
+            "machiaza_dist": "",
+            "prc_num1": "152",
+            "prc_num2": "9",
+            "prc_num3": "",
+            "rsdt_addr_flg": "0",
+            "prc_rec_flg": "1",
+            "prc_area_code": "",
+            "efct_date": "1947-04-17",
+            "ablt_date": "",
+            "src_code": "1",
+            "remarks": "",
+            "real_prop_num": ""
+          },
+          "position": {
+            "lg_code": "473588",
+            "machiaza_id": "0004000",
+            "prc_id": "001520000900000",
+            "rep_lon": "131.295571787",
+            "rep_lat": "25.948402551",
+            "rep_srid": "EPSG:6668",
+            "rep_scale": "2500",
+            "rep_src_code": "1",
+            "plygn_fname": "",
+            "plygn_kcode": "",
+            "plygn_fmt": "",
+            "plygn_srid": "EPSG:6668",
+            "plygn_scale": "2500",
+            "plygn_src_code": "1",
+            "moj_map_city_code": "47358",
+            "moj_map_oaza_code": "002",
+            "moj_map_chome_code": "000",
+            "moj_map_koaza_code": "0000",
+            "moj_map_spare_code": "00",
+            "moj_map_brushid": "H000000487"
+          },
+          "hotelFacilityAddressReview": {
+            "kind": "REVIEWED_OFFICIAL_NAMED_PRIVATE_HOTEL_EXACT_PARCEL",
+            "sourceFactId": "hamayuso-owner-exact-address",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "municipalityCode": "473588",
+            "city": "北大東村",
+            "oazaCho": "字中野",
+            "parcelNumbers": ["152", "9", ""],
+            "facilityName": "ハマユウ荘 うふあがり島",
+            "officialAddress": "沖縄県島尻郡北大東村字中野152-9",
+            "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "coordinateProximityUsed": false,
+            "googleCoordinatesUsed": false,
+            "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY"
+          }
+        },
+        "nativeRecordSha256": "80b9ccd98837a5e562f323123c7f80b7b93ef32b3322b15b22a33a75ccf103b8",
+        "archiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+        "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+        "memberSha256": "37faa83b011ef034be2d1ec847333e2a75f26e1743d0bb71662345b39cb01661",
+        "positionMemberSha256": "026cf86cdf4f4700e5e00a8a33f37ffa199323881b0f54fb5c3f7c582e3f0e77",
+        "name": "ハマユウ荘 うふあがり島",
+        "address": "沖縄県島尻郡北大東村字中野152-9",
+        "municipalityCode": "473588",
+        "latitude": 25.948402551,
+        "longitude": 131.295571787,
+        "coordinateReferenceSystem": "EPSG:6668",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility"
+      },
+      "recordSha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e",
+      "locator": "Exact native licensed master and position archive join"
+    },
+    {
+      "evidenceId": "transport-evidence:086:d0377a4e9a5a08dd24e56486b0e223bc",
+      "sourceId": "hamayuso230:abr:position",
+      "sourceSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+      "record": {
+        "kind": "REVIEWED_ABR_POSITION_ARCHIVE_BINDING",
+        "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "nativeIdentitySha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e",
+        "masterArchiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+        "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+        "positionMemberSha256": "026cf86cdf4f4700e5e00a8a33f37ffa199323881b0f54fb5c3f7c582e3f0e77",
+        "positionRecord": {
+          "lg_code": "473588",
+          "machiaza_id": "0004000",
+          "prc_id": "001520000900000",
+          "rep_lon": "131.295571787",
+          "rep_lat": "25.948402551",
+          "rep_srid": "EPSG:6668",
+          "rep_scale": "2500",
+          "rep_src_code": "1",
+          "plygn_fname": "",
+          "plygn_kcode": "",
+          "plygn_fmt": "",
+          "plygn_srid": "EPSG:6668",
+          "plygn_scale": "2500",
+          "plygn_src_code": "1",
+          "moj_map_city_code": "47358",
+          "moj_map_oaza_code": "002",
+          "moj_map_chome_code": "000",
+          "moj_map_koaza_code": "0000",
+          "moj_map_spare_code": "00",
+          "moj_map_brushid": "H000000487"
+        }
+      },
+      "recordSha256": "0858cc2355a61c339b963bde1fdb53d2a8f898d2725439055c26151ed7bd4960",
+      "locator": "Separate native position archive binding"
+    },
+    {
+      "evidenceId": "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+      "sourceId": "transport-source:086:00ee8c6fbec29168b0b59e65b23012b4",
+      "sourceSha256": "8f45ff5dfdc4a547f7632893963ab20edcc58140b7f89ab442102cb83f3ac4c9",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-owner",
+        "sourceActionId": "northdaito:qualified:hamayuso-owner",
+        "sourceUrl": "https://hamayuso.com/content3.html",
+        "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "AIRPORT_TO_HOTEL"
+        },
+        "corroboratingEvidence": []
+      },
+      "recordSha256": "8f45ff5dfdc4a547f7632893963ab20edcc58140b7f89ab442102cb83f3ac4c9",
+      "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity."
+    },
+    {
+      "evidenceId": "transport-evidence:086:ab5eebfca27d3f401a116455373e03da",
+      "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+      "sourceSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-product",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "AIRPORT_TO_HOTEL"
+        },
+        "corroboratingEvidence": []
+      },
+      "recordSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f",
+      "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product."
+    },
+    {
+      "evidenceId": "transport-evidence:086:086f4151ec10840ccb381306b100b960",
+      "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+      "sourceSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683",
+      "record": {
+        "factId": "hamayuso230-airport_to_hotel",
+        "kind": "service",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b"
+          },
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content1.html",
+            "observedResponseSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14"
+          }
+        ],
+        "operator": "ハマユウ荘 うふあがり島",
+        "operatorRole": "NAMED_ACCOMMODATION_SHUTTLE_PROVIDER_NOT_UNIDENTIFIED_LICENSED_MOTOR_CARRIER",
+        "legalMotorCarrier": "NOT_IDENTIFIED",
+        "line": "北大東空港・ハマユウ荘 実予約旅行商品宿泊客送迎",
+        "mode": "airport_bus",
+        "purpose": "airport",
+        "serviceClass": "宿泊先無料送迎",
+        "direction": "AIRPORT_TO_HOTEL",
+        "serviceState": "active",
+        "serviceStateScope": "Current publicly offered named package and current hotel access; static qualified structure only, no exact-date dispatch/seat/timed-connection promise.",
+        "callingStations": ["北大東空港", "ハマユウ荘 うふあがり島"],
+        "callingComponents": [
+          {
+            "name": "北大東空港",
+            "operator": "airport-facility:cf03_00058",
+            "line": "airport:cf03_00058",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00058",
+              "requirementId": "review:official-airport:北大東",
+              "expectedRequirementName": "北大東",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Hotel owner explicitly airport arrival pickup; independently published named travel product separately states hotel-to-airport accommodation shuttle. Same official whole-airport gateway, no invented curb geometry."
+            }
+          },
+          {
+            "name": "ハマユウ荘 うふあがり島",
+            "operator": "facility:hamayuso-hotel",
+            "line": "facility:hamayuso-hotel",
+            "mode": "airport_bus",
+            "privateHotelIdentity": {
+              "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "recordSha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e"
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "accessContract": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "AIRPORT_TO_HOTEL",
+          "sourceEvidenceRefs": [
+            "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+            "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+          ]
+        },
+        "conditionEvidence": [
+          {
+            "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-owner",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "AIRPORT_TO_HOTEL"
+            }
+          },
+          {
+            "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-product",
+            "sourceActionId": "northdaito:qualified:confirmed-product",
+            "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+            "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "AIRPORT_TO_HOTEL"
+            }
+          }
+        ],
+        "corroboratingConditionEvidenceRefs": [
+          "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+          "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+        ],
+        "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+      },
+      "recordSha256": "9e31ad80152b5b81fb2a153396a3ef8f6f923b5dbfa99825a486da1ce1976af1",
+      "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:99a3371a50a7758e4f32d006c4403127",
+      "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+      "sourceSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683",
+      "record": {
+        "factId": "hamayuso230-airport_to_hotel",
+        "sourceFactRef": "transport-evidence:086:086f4151ec10840ccb381306b100b960",
+        "callingNodes": [
+          {
+            "nodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+            "sequence": 1,
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "nodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+            "sequence": 2,
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "lineRef": "transport-line:086:f739a02b0bb9063b4fe35ca1c077bf8a",
+        "operatorRef": "ハマユウ荘 うふあがり島",
+        "mode": "airport_bus",
+        "serviceClass": "宿泊先無料送迎",
+        "direction": "AIRPORT_TO_HOTEL",
+        "purpose": "airport",
+        "accessContract": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "AIRPORT_TO_HOTEL",
+          "sourceEvidenceRefs": [
+            "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+            "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+          ]
+        }
+      },
+      "recordSha256": "80eddc7dc105fe07fbab69c357bcba3707d03bd017d25482c8f5020b1ffa953f",
+      "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:45335aead0d94f7651bfa8227e491e7a",
+      "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+      "sourceSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683",
+      "record": {
+        "factId": "hamayuso230-hotel_to_airport",
+        "kind": "service",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b"
+          },
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content1.html",
+            "observedResponseSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14"
+          }
+        ],
+        "operator": "ハマユウ荘 うふあがり島",
+        "operatorRole": "NAMED_ACCOMMODATION_SHUTTLE_PROVIDER_NOT_UNIDENTIFIED_LICENSED_MOTOR_CARRIER",
+        "legalMotorCarrier": "NOT_IDENTIFIED",
+        "line": "北大東空港・ハマユウ荘 実予約旅行商品宿泊客送迎",
+        "mode": "airport_bus",
+        "purpose": "airport",
+        "serviceClass": "宿泊先無料送迎",
+        "direction": "HOTEL_TO_AIRPORT",
+        "serviceState": "active",
+        "serviceStateScope": "Current publicly offered named package and current hotel access; static qualified structure only, no exact-date dispatch/seat/timed-connection promise.",
+        "callingStations": ["ハマユウ荘 うふあがり島", "北大東空港"],
+        "callingComponents": [
+          {
+            "name": "ハマユウ荘 うふあがり島",
+            "operator": "facility:hamayuso-hotel",
+            "line": "facility:hamayuso-hotel",
+            "mode": "airport_bus",
+            "privateHotelIdentity": {
+              "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "recordSha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e"
+            }
+          },
+          {
+            "name": "北大東空港",
+            "operator": "airport-facility:cf03_00058",
+            "line": "airport:cf03_00058",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00058",
+              "requirementId": "review:official-airport:北大東",
+              "expectedRequirementName": "北大東",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Hotel owner explicitly airport arrival pickup; independently published named travel product separately states hotel-to-airport accommodation shuttle. Same official whole-airport gateway, no invented curb geometry."
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "accessContract": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "HOTEL_TO_AIRPORT",
+          "sourceEvidenceRefs": [
+            "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+            "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+          ]
+        },
+        "conditionEvidence": [
+          {
+            "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-owner",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "HOTEL_TO_AIRPORT"
+            }
+          },
+          {
+            "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-product",
+            "sourceActionId": "northdaito:qualified:confirmed-product",
+            "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+            "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "HOTEL_TO_AIRPORT"
+            }
+          }
+        ],
+        "corroboratingConditionEvidenceRefs": [
+          "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+          "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+        ],
+        "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+      },
+      "recordSha256": "457fcac0998276d2b7f53629f61d2a5602baec1573e376c55def40aaf14c807e",
+      "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:4b455f366bef037fddc6a8b1c0c532ee",
+      "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+      "sourceSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683",
+      "record": {
+        "factId": "hamayuso230-hotel_to_airport",
+        "sourceFactRef": "transport-evidence:086:45335aead0d94f7651bfa8227e491e7a",
+        "callingNodes": [
+          {
+            "nodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+            "sequence": 1,
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "nodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+            "sequence": 2,
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "lineRef": "transport-line:086:f739a02b0bb9063b4fe35ca1c077bf8a",
+        "operatorRef": "ハマユウ荘 うふあがり島",
+        "mode": "airport_bus",
+        "serviceClass": "宿泊先無料送迎",
+        "direction": "HOTEL_TO_AIRPORT",
+        "purpose": "airport",
+        "accessContract": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "HOTEL_TO_AIRPORT",
+          "sourceEvidenceRefs": [
+            "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+            "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+          ]
+        }
+      },
+      "recordSha256": "ea0af1c32cf323aff80c6f5387e034f1dcabc86020ca8c547ec4eb00ef934028",
+      "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+      "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+      "sourceSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-owner",
+        "sourceActionId": "northdaito:qualified:hamayuso-owner",
+        "sourceUrl": "https://hamayuso.com/content3.html",
+        "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "HOTEL_TO_AIRPORT"
+        },
+        "corroboratingEvidence": []
+      },
+      "recordSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c",
+      "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity."
+    },
+    {
+      "evidenceId": "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab",
+      "sourceId": "transport-source:086:46fa9928f8ca6ca9b28fa7b2945a96ab",
+      "sourceSha256": "e8eb0ceddaa097e44c84c57f51be5093942f795d688a054e656685b65fbff333",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-product",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "HOTEL_TO_AIRPORT"
+        },
+        "corroboratingEvidence": []
+      },
+      "recordSha256": "e8eb0ceddaa097e44c84c57f51be5093942f795d688a054e656685b65fbff333",
+      "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product."
+    },
+    {
+      "evidenceId": "transport-evidence:086:42962d4d027880fd58889df8d21250b2",
+      "locator": "Airport-owned arrival_flight_schedule record RC842, explicitly KTD to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "record": {
+        "callingComponents": [
+          {
+            "airportIdentity": {
+              "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference.",
+              "dataset": "C28-21",
+              "expectedRequirementName": "北大東",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "referencePointId": "cf03_00058",
+              "requirementId": "review:official-airport:北大東"
+            },
+            "line": "airport:cf03_00058",
+            "mode": "flight",
+            "name": "北大東空港",
+            "operator": "airport-facility:cf03_00058"
+          },
+          {
+            "airportIdentity": {
+              "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference.",
+              "dataset": "C28-21",
+              "expectedRequirementName": "那覇",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "referencePointId": "cf03_00088",
+              "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4"
+            },
+            "line": "airport:cf03_00088",
+            "mode": "flight",
+            "name": "那覇空港",
+            "operator": "airport-facility:cf03_00088"
+          }
+        ],
+        "callingStations": ["北大東空港", "那覇空港"],
+        "corroboratingEvidence": [
+          {
+            "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4",
+            "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+            "url": "https://www.naha-airport.co.jp/common/json/date_range.json"
+          }
+        ],
+        "direction": "北大東空港→那覇空港",
+        "factId": "naha-october-2026-rc842",
+        "kind": "service",
+        "line": "北大東・那覇国内線",
+        "locator": "Airport-owned arrival_flight_schedule record RC842, explicitly KTD to OKA. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+        "mode": "flight",
+        "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+        "operator": "琉球エアーコミューター",
+        "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+        "reviewedFlightCode": "RC842",
+        "serviceClass": "定期旅客便",
+        "serviceState": "active",
+        "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME",
+        "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+        "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json"
+      },
+      "recordSha256": "0a639970e935c7672236ce1e74b91b15339978c7ea057e03a77fa271960a6ef8",
+      "sourceId": "transport-source:086:383edae41f43480caa4b16f786ce010e",
+      "sourceSha256": "4c106deaed17132a60c6c5770a4a6f24555b14876609383ab62e3736a4b6c2ed"
+    },
+    {
+      "evidenceId": "transport-evidence:086:9e2f58092ff85c76edba4781820becc2",
+      "locator": "C28-21 airport/reference-point join cf03_00058",
+      "record": {
+        "administrativeAreaCodes": ["47358"],
+        "airportFeatureIds": ["cf02_00058"],
+        "airportName": "北大東空港",
+        "coordinateScope": "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+        "establisherClassCode": 5,
+        "identityAsOf": "2021-12-31",
+        "latitude": 25.944722,
+        "longitude": 131.326944,
+        "managerClassCode": 5,
+        "referencePointId": "cf03_00058"
+      },
+      "recordSha256": "d9597f8692d3ee509d3b971b17f89410ad4ff6aed726882cf29c3c7f2623b564",
+      "sourceId": "mlit:c28:21",
+      "sourceSha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35"
+    },
+    {
+      "evidenceId": "transport-evidence:086:d3a82022489d1de261729239aea1a81b",
+      "locator": "Airport-owned depart_flight_schedule record RC841, explicitly OKA to KTD. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+      "record": {
+        "callingComponents": [
+          {
+            "airportIdentity": {
+              "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference.",
+              "dataset": "C28-21",
+              "expectedRequirementName": "那覇",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "referencePointId": "cf03_00088",
+              "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4"
+            },
+            "line": "airport:cf03_00088",
+            "mode": "flight",
+            "name": "那覇空港",
+            "operator": "airport-facility:cf03_00088"
+          },
+          {
+            "airportIdentity": {
+              "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference.",
+              "dataset": "C28-21",
+              "expectedRequirementName": "北大東",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "referencePointId": "cf03_00058",
+              "requirementId": "review:official-airport:北大東"
+            },
+            "line": "airport:cf03_00058",
+            "mode": "flight",
+            "name": "北大東空港",
+            "operator": "airport-facility:cf03_00058"
+          }
+        ],
+        "callingStations": ["那覇空港", "北大東空港"],
+        "corroboratingEvidence": [
+          {
+            "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4",
+            "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+            "url": "https://www.naha-airport.co.jp/common/json/date_range.json"
+          }
+        ],
+        "direction": "那覇空港→北大東空港",
+        "factId": "naha-october-2026-rc841",
+        "kind": "service",
+        "line": "北大東・那覇国内線",
+        "locator": "Airport-owned depart_flight_schedule record RC841, explicitly OKA to KTD. October 1-31 2026 range is separately bound. Each direction independently selected and endpoint-validated. Both Japanese and English special-date/operator notes are blank after whitespace normalization. Exclude differently dated alternative flights, copied clock values and any inferred reverse service.",
+        "mode": "flight",
+        "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+        "operator": "琉球エアーコミューター",
+        "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ROWS_ENDPOINT_AND_OPERATING_CARRIER_VALIDATED",
+        "reviewedFlightCode": "RC841",
+        "serviceClass": "定期旅客便",
+        "serviceState": "active",
+        "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME",
+        "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+        "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json"
+      },
+      "recordSha256": "1304b256c49aa8110ae232497e958bdebb74943b3f84099e2b594bc4694c0e7f",
+      "sourceId": "transport-source:086:45e9c9a0f6e2c63b860ceb89f483f403",
+      "sourceSha256": "1a7328c5cf72e83ddf6fe8e62a844bdd019011d2b1eaddc95084b2f1fa000566"
+    }
+  ],
+  "nativeFacilityByAnchor": [
+    [
+      "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+      {
+        "dataset": "ABR_EXACT_PRIVATE_HOTEL_PARCEL",
+        "nativeRecord": {
+          "master": {
+            "lg_code": "473588",
+            "machiaza_id": "0004000",
+            "prc_id": "001520000900000",
+            "city": "北大東村",
+            "ward": "",
+            "oaza_cho": "字中野",
+            "chome": "",
+            "koaza": "",
+            "machiaza_dist": "",
+            "prc_num1": "152",
+            "prc_num2": "9",
+            "prc_num3": "",
+            "rsdt_addr_flg": "0",
+            "prc_rec_flg": "1",
+            "prc_area_code": "",
+            "efct_date": "1947-04-17",
+            "ablt_date": "",
+            "src_code": "1",
+            "remarks": "",
+            "real_prop_num": ""
+          },
+          "position": {
+            "lg_code": "473588",
+            "machiaza_id": "0004000",
+            "prc_id": "001520000900000",
+            "rep_lon": "131.295571787",
+            "rep_lat": "25.948402551",
+            "rep_srid": "EPSG:6668",
+            "rep_scale": "2500",
+            "rep_src_code": "1",
+            "plygn_fname": "",
+            "plygn_kcode": "",
+            "plygn_fmt": "",
+            "plygn_srid": "EPSG:6668",
+            "plygn_scale": "2500",
+            "plygn_src_code": "1",
+            "moj_map_city_code": "47358",
+            "moj_map_oaza_code": "002",
+            "moj_map_chome_code": "000",
+            "moj_map_koaza_code": "0000",
+            "moj_map_spare_code": "00",
+            "moj_map_brushid": "H000000487"
+          },
+          "hotelFacilityAddressReview": {
+            "kind": "REVIEWED_OFFICIAL_NAMED_PRIVATE_HOTEL_EXACT_PARCEL",
+            "sourceFactId": "hamayuso-owner-exact-address",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "municipalityCode": "473588",
+            "city": "北大東村",
+            "oazaCho": "字中野",
+            "parcelNumbers": ["152", "9", ""],
+            "facilityName": "ハマユウ荘 うふあがり島",
+            "officialAddress": "沖縄県島尻郡北大東村字中野152-9",
+            "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "coordinateProximityUsed": false,
+            "googleCoordinatesUsed": false,
+            "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY"
+          }
+        },
+        "nativeRecordSha256": "80b9ccd98837a5e562f323123c7f80b7b93ef32b3322b15b22a33a75ccf103b8",
+        "archiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+        "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+        "memberSha256": "37faa83b011ef034be2d1ec847333e2a75f26e1743d0bb71662345b39cb01661",
+        "positionMemberSha256": "026cf86cdf4f4700e5e00a8a33f37ffa199323881b0f54fb5c3f7c582e3f0e77",
+        "name": "ハマユウ荘 うふあがり島",
+        "address": "沖縄県島尻郡北大東村字中野152-9",
+        "municipalityCode": "473588",
+        "latitude": 25.948402551,
+        "longitude": 131.295571787,
+        "coordinateReferenceSystem": "EPSG:6668",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility"
+      }
+    ]
+  ],
+  "actions": [
+    {
+      "actionId": "northdaito:qualified:hamayuso-owner",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://hamayuso.com/content3.html",
+          "observedAt": "2026-10-03T20:16:05.146Z",
+          "nativeHttpRequests": 1,
+          "purpose": "Original NorthDaito required airport ground service; qualified lodging source review only; no booking or raw redistribution",
+          "httpStatus": 200,
+          "sha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+          "bytes": 20919,
+          "sanitizedCacheSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+          "payloadSanitized": false,
+          "elapsedSeconds": 0.3114867,
+          "status": 200,
+          "contentSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+          "rawPayloadRetained": false
+        },
+        {
+          "url": "https://hamayuso.com/content1.html",
+          "observedAt": "2026-10-03T20:16:05.460Z",
+          "nativeHttpRequests": 1,
+          "purpose": "Original NorthDaito required airport ground service; qualified lodging source review only; no booking or raw redistribution",
+          "httpStatus": 200,
+          "sha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14",
+          "bytes": 23698,
+          "sanitizedCacheSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14",
+          "payloadSanitized": false,
+          "elapsedSeconds": 0.039618999999999974,
+          "status": 200,
+          "contentSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14",
+          "rawPayloadRetained": false
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+          "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+          "termsUrl": "https://hamayuso.com/content3.html",
+          "observedAt": "2026-10-03T20:16:05.146Z",
+          "rawReuseClaimed": false,
+          "reason": "Hotel-authored public access and exact address; only minimal independent name/address/arrival pickup facts. Current lodging page confirms live operation but room booking deadline is not shuttle lead. No raw HTML/artwork/clocks redistribution."
+        }
+      ]
+    },
+    {
+      "actionId": "northdaito:qualified:confirmed-product",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "observedAt": "2026-10-03T20:16:05.500Z",
+          "nativeHttpRequests": 1,
+          "purpose": "Original NorthDaito required airport ground service; qualified lodging source review only; no booking or raw redistribution",
+          "httpStatus": 200,
+          "sha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+          "bytes": 86030,
+          "sanitizedCacheSha256": "76add76a3364618d9f936e7d7834a0e8d2ab16fcb5f91090ab85ba9a79bd5905",
+          "payloadSanitized": true,
+          "elapsedSeconds": 0.5797041,
+          "status": 200,
+          "contentSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+          "rawPayloadRetained": false
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+          "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+          "termsUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "observedAt": "2026-10-03T20:16:05.500Z",
+          "rawReuseClaimed": false,
+          "reason": "Travel organizer own named current package independently describes airport-to-Hamayuso and final hotel-to-airport accommodation transfer. Scope only actual operator-confirmed exact product participant staying at this hotel; not all hotel guests. Minimum directional and qualification facts; no raw product/table/fare/flight data reuse."
+        }
+      ]
+    },
+    {
+      "actionId": "northdaito:qualified:abr-terms",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+          "observedAt": "2026-10-03T19:44:55.661683+00:00",
+          "nativeHttpRequests": 1,
+          "purpose": "Original TASK086 Hateruma public park parcel identity research; no individual-owner data",
+          "automaticRetry": false,
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "lastModified": "Fri, 02 Oct 2026 09:42:58 GMT",
+          "sha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+          "bytes": 53570,
+          "elapsedSeconds": 0.17269219999434426,
+          "status": 200,
+          "contentSha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+          "rawPayloadRetained": false
+        },
+        {
+          "url": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+          "observedAt": "2026-10-03T19:44:55.835016+00:00",
+          "nativeHttpRequests": 1,
+          "purpose": "Original TASK086 Hateruma public park parcel identity research; no individual-owner data",
+          "automaticRetry": false,
+          "httpStatus": 200,
+          "contentType": "application/pdf",
+          "lastModified": "Wed, 26 Aug 2026 05:24:25 GMT",
+          "sha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+          "bytes": 141976,
+          "elapsedSeconds": 0.3627056999830529,
+          "status": 200,
+          "contentSha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+          "rawPayloadRetained": false
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+          "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+          "termsUrl": "https://www.digital.go.jp/policies/base_registry_address_tos",
+          "observedAt": "2026-10-03T19:44:55.661683+00:00",
+          "rawReuseClaimed": false,
+          "reason": "PDL1.0 and MOJ reuse terms separately bound; exact named commercial hotel parcel with attribution and processing disclosure, no private owner/person inference."
+        }
+      ]
+    },
+    {
+      "actionId": "northdaito:qualified:abr-master",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473588.csv.zip",
+          "observedAt": "2026-10-03T20:17:36.645361+00:00",
+          "nativeHttpRequests": 1,
+          "purpose": "Exact facility parcel identity original required NorthDaito airport hotel shuttle; validate city/name after fetch",
+          "licenseTermsReusedFrom": ".cache/task-086/hateruma-next/abr-use-terms.html",
+          "additionalMojTerms": ".cache/task-086/hateruma-next/moj-use-terms-tellus.pdf",
+          "httpStatus": 200,
+          "bytes": 20892,
+          "sha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+          "lastModified": "Wed, 25 Feb 2026 17:57:36 GMT",
+          "elapsedSeconds": 0.20011560001876205,
+          "status": 200,
+          "contentSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+          "rawPayloadRetained": true
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+          "scope": "EXACT_LICENSED_ABR_DUAL_ARCHIVE",
+          "termsUrl": "https://www.digital.go.jp/policies/base_registry_address_tos",
+          "observedAt": "2026-10-03T19:44:55.661683+00:00",
+          "rawReuseClaimed": true,
+          "reason": "Licensed original ABR master archive; exact named hotel address join, PDL+MOJ obligations preserved."
+        }
+      ]
+    },
+    {
+      "actionId": "northdaito:qualified:abr-position",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://data.address-br.digital.go.jp/mt_parcel_pos/city/mt_parcel_pos_city473588.csv.zip",
+          "observedAt": "2026-10-03T20:17:36.846135+00:00",
+          "nativeHttpRequests": 1,
+          "purpose": "Exact facility parcel identity original required NorthDaito airport hotel shuttle; validate city/name after fetch",
+          "licenseTermsReusedFrom": ".cache/task-086/hateruma-next/abr-use-terms.html",
+          "additionalMojTerms": ".cache/task-086/hateruma-next/moj-use-terms-tellus.pdf",
+          "httpStatus": 200,
+          "bytes": 50619,
+          "sha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+          "lastModified": "Tue, 23 Jun 2026 11:49:35 GMT",
+          "elapsedSeconds": 0.11229740001726896,
+          "status": 200,
+          "contentSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+          "rawPayloadRetained": true
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+          "scope": "EXACT_LICENSED_ABR_DUAL_ARCHIVE",
+          "termsUrl": "https://www.digital.go.jp/policies/base_registry_address_tos",
+          "observedAt": "2026-10-03T19:44:55.661683+00:00",
+          "rawReuseClaimed": true,
+          "reason": "Licensed original ABR position archive; parcel representative only, not entrance/curb/public facility."
+        }
+      ]
+    }
+  ],
+  "phase": {
+    "phaseId": "230-kitadaito-qualified-product-hotel-shuttle",
+    "strategy": "Original Kitadaito airport: same confirmed exact travel product lodging qualification for two separately published hotel shuttle directions; exact licensed private ABR hotel, no public claim or unknown numeric lead invented.",
+    "completedActionIds": [
+      "northdaito:qualified:hamayuso-owner",
+      "northdaito:qualified:confirmed-product",
+      "northdaito:qualified:abr-terms",
+      "northdaito:qualified:abr-master",
+      "northdaito:qualified:abr-position"
+    ],
+    "facts": [
+      {
+        "factId": "hamayuso230-airport_to_hotel",
+        "kind": "service",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b"
+          },
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content1.html",
+            "observedResponseSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14"
+          }
+        ],
+        "operator": "ハマユウ荘 うふあがり島",
+        "operatorRole": "NAMED_ACCOMMODATION_SHUTTLE_PROVIDER_NOT_UNIDENTIFIED_LICENSED_MOTOR_CARRIER",
+        "legalMotorCarrier": "NOT_IDENTIFIED",
+        "line": "北大東空港・ハマユウ荘 実予約旅行商品宿泊客送迎",
+        "mode": "airport_bus",
+        "purpose": "airport",
+        "serviceClass": "宿泊先無料送迎",
+        "direction": "AIRPORT_TO_HOTEL",
+        "serviceState": "active",
+        "serviceStateScope": "Current publicly offered named package and current hotel access; static qualified structure only, no exact-date dispatch/seat/timed-connection promise.",
+        "callingStations": ["北大東空港", "ハマユウ荘 うふあがり島"],
+        "callingComponents": [
+          {
+            "name": "北大東空港",
+            "operator": "airport-facility:cf03_00058",
+            "line": "airport:cf03_00058",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00058",
+              "requirementId": "review:official-airport:北大東",
+              "expectedRequirementName": "北大東",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Hotel owner explicitly airport arrival pickup; independently published named travel product separately states hotel-to-airport accommodation shuttle. Same official whole-airport gateway, no invented curb geometry."
+            }
+          },
+          {
+            "name": "ハマユウ荘 うふあがり島",
+            "operator": "facility:hamayuso-hotel",
+            "line": "facility:hamayuso-hotel",
+            "mode": "airport_bus",
+            "privateHotelIdentity": {
+              "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "recordSha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e"
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "accessContract": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "AIRPORT_TO_HOTEL",
+          "sourceEvidenceRefs": [
+            "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+            "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+          ]
+        },
+        "conditionEvidence": [
+          {
+            "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-owner",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "AIRPORT_TO_HOTEL"
+            }
+          },
+          {
+            "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-product",
+            "sourceActionId": "northdaito:qualified:confirmed-product",
+            "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+            "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "AIRPORT_TO_HOTEL"
+            }
+          }
+        ],
+        "corroboratingConditionEvidenceRefs": [
+          "transport-evidence:086:00ee8c6fbec29168b0b59e65b23012b4",
+          "transport-evidence:086:ab5eebfca27d3f401a116455373e03da"
+        ],
+        "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+      },
+      {
+        "factId": "hamayuso230-hotel_to_airport",
+        "kind": "service",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b"
+          },
+          {
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "url": "https://hamayuso.com/content1.html",
+            "observedResponseSha256": "326e93bc8738be6654c8ffb6a8a77f7e415a5a8a0bd2922aace0ed8a7b31cc14"
+          }
+        ],
+        "operator": "ハマユウ荘 うふあがり島",
+        "operatorRole": "NAMED_ACCOMMODATION_SHUTTLE_PROVIDER_NOT_UNIDENTIFIED_LICENSED_MOTOR_CARRIER",
+        "legalMotorCarrier": "NOT_IDENTIFIED",
+        "line": "北大東空港・ハマユウ荘 実予約旅行商品宿泊客送迎",
+        "mode": "airport_bus",
+        "purpose": "airport",
+        "serviceClass": "宿泊先無料送迎",
+        "direction": "HOTEL_TO_AIRPORT",
+        "serviceState": "active",
+        "serviceStateScope": "Current publicly offered named package and current hotel access; static qualified structure only, no exact-date dispatch/seat/timed-connection promise.",
+        "callingStations": ["ハマユウ荘 うふあがり島", "北大東空港"],
+        "callingComponents": [
+          {
+            "name": "ハマユウ荘 うふあがり島",
+            "operator": "facility:hamayuso-hotel",
+            "line": "facility:hamayuso-hotel",
+            "mode": "airport_bus",
+            "privateHotelIdentity": {
+              "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "recordSha256": "1e61ccfae60cec9ad5896c0971880381dc8ccefc487dd6a2b564548d9897f03e"
+            }
+          },
+          {
+            "name": "北大東空港",
+            "operator": "airport-facility:cf03_00058",
+            "line": "airport:cf03_00058",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00058",
+              "requirementId": "review:official-airport:北大東",
+              "expectedRequirementName": "北大東",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Hotel owner explicitly airport arrival pickup; independently published named travel product separately states hotel-to-airport accommodation shuttle. Same official whole-airport gateway, no invented curb geometry."
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "accessContract": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "HOTEL_TO_AIRPORT",
+          "sourceEvidenceRefs": [
+            "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+            "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+          ]
+        },
+        "conditionEvidence": [
+          {
+            "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-owner",
+            "sourceActionId": "northdaito:qualified:hamayuso-owner",
+            "sourceUrl": "https://hamayuso.com/content3.html",
+            "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+            "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "HOTEL_TO_AIRPORT"
+            }
+          },
+          {
+            "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-product",
+            "sourceActionId": "northdaito:qualified:confirmed-product",
+            "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+            "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product.",
+            "accessTerms": {
+              "schemaVersion": 1,
+              "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+              "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+              "audience": "ELIGIBILITY_RESTRICTED",
+              "eligibilityKeys": [
+                "hamayuso:lodging-guest",
+                "nansei:confirmed-kitadaito-product-participant"
+              ],
+              "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+              "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+              "requiredConditions": {
+                "actualHotelGuest": true,
+                "confirmedExactTourProduct": true,
+                "arrivalFlightInformationReportedToHotel": true,
+                "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+                "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+                "unconditionalPublicAccess": false
+              },
+              "unknowns": {
+                "legalMotorCarrier": null,
+                "shuttleBookingLeadMinutes": null,
+                "exactTimetable": null,
+                "capacity": null,
+                "dispatchGuarantee": null
+              },
+              "direction": "HOTEL_TO_AIRPORT"
+            }
+          }
+        ],
+        "corroboratingConditionEvidenceRefs": [
+          "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+          "transport-evidence:086:46fa9928f8ca6ca9b28fa7b2945a96ab"
+        ],
+        "locator": "Each direction independently described by organizer own product. Actual confirmed package guest and lodging qualification; unknown shuttle cutoff/dispatch/carrier preserved. No clock table copied."
+      }
+    ]
+  },
+  "hotelConfig": {
+    "schemaVersion": 1,
+    "facilities": [
+      {
+        "facilityKind": "HAMAYUSO_ABR_PRIVATE_HOTEL",
+        "archivePath": "sources/raw/hamayuso-abr-master-473588.zip",
+        "positionArchivePath": "sources/raw/hamayuso-abr-position-473588.zip",
+        "extraction": {
+          "dataset": "ABR_EXACT_PRIVATE_HOTEL_PARCEL",
+          "archiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+          "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+          "review": {
+            "nativeKey": {
+              "lg_code": "473588",
+              "machiaza_id": "0004000",
+              "prc_id": "001520000900000"
+            },
+            "masterRecordSha256": "cd7e2807d8135388ec974572ce135f1e76f3bfafe56ad182a5919ce8508cf8b8",
+            "positionRecordSha256": "979766935d5bdb8f404bde1a343248793efdd449ac36e434153523bfbd5fd98a",
+            "hotelFacilityAddressReview": {
+              "kind": "REVIEWED_OFFICIAL_NAMED_PRIVATE_HOTEL_EXACT_PARCEL",
+              "sourceFactId": "hamayuso-owner-exact-address",
+              "sourceActionId": "northdaito:qualified:hamayuso-owner",
+              "sourceUrl": "https://hamayuso.com/content3.html",
+              "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+              "municipalityCode": "473588",
+              "city": "北大東村",
+              "oazaCho": "字中野",
+              "parcelNumbers": ["152", "9", ""],
+              "facilityName": "ハマユウ荘 うふあがり島",
+              "officialAddress": "沖縄県島尻郡北大東村字中野152-9",
+              "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+              "coordinateProximityUsed": false,
+              "googleCoordinatesUsed": false,
+              "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY"
+            },
+            "hotelFacilityAddressReviewSha256": "9e3412e0ad57717e1263109a0d251f05bc4ae826af6493c6dd1b6d4d99501283",
+            "masterArchiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+            "masterMember": "mt_parcel_city473588.csv",
+            "masterMemberSha256": "37faa83b011ef034be2d1ec847333e2a75f26e1743d0bb71662345b39cb01661",
+            "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+            "positionMember": "mt_parcel_pos_city473588.csv",
+            "positionMemberSha256": "026cf86cdf4f4700e5e00a8a33f37ffa199323881b0f54fb5c3f7c582e3f0e77"
+          }
+        },
+        "nativeIdentity": {
+          "dataset": "ABR_EXACT_PRIVATE_HOTEL_PARCEL",
+          "nativeRecord": {
+            "master": {
+              "lg_code": "473588",
+              "machiaza_id": "0004000",
+              "prc_id": "001520000900000",
+              "city": "北大東村",
+              "ward": "",
+              "oaza_cho": "字中野",
+              "chome": "",
+              "koaza": "",
+              "machiaza_dist": "",
+              "prc_num1": "152",
+              "prc_num2": "9",
+              "prc_num3": "",
+              "rsdt_addr_flg": "0",
+              "prc_rec_flg": "1",
+              "prc_area_code": "",
+              "efct_date": "1947-04-17",
+              "ablt_date": "",
+              "src_code": "1",
+              "remarks": "",
+              "real_prop_num": ""
+            },
+            "position": {
+              "lg_code": "473588",
+              "machiaza_id": "0004000",
+              "prc_id": "001520000900000",
+              "rep_lon": "131.295571787",
+              "rep_lat": "25.948402551",
+              "rep_srid": "EPSG:6668",
+              "rep_scale": "2500",
+              "rep_src_code": "1",
+              "plygn_fname": "",
+              "plygn_kcode": "",
+              "plygn_fmt": "",
+              "plygn_srid": "EPSG:6668",
+              "plygn_scale": "2500",
+              "plygn_src_code": "1",
+              "moj_map_city_code": "47358",
+              "moj_map_oaza_code": "002",
+              "moj_map_chome_code": "000",
+              "moj_map_koaza_code": "0000",
+              "moj_map_spare_code": "00",
+              "moj_map_brushid": "H000000487"
+            },
+            "hotelFacilityAddressReview": {
+              "kind": "REVIEWED_OFFICIAL_NAMED_PRIVATE_HOTEL_EXACT_PARCEL",
+              "sourceFactId": "hamayuso-owner-exact-address",
+              "sourceActionId": "northdaito:qualified:hamayuso-owner",
+              "sourceUrl": "https://hamayuso.com/content3.html",
+              "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+              "municipalityCode": "473588",
+              "city": "北大東村",
+              "oazaCho": "字中野",
+              "parcelNumbers": ["152", "9", ""],
+              "facilityName": "ハマユウ荘 うふあがり島",
+              "officialAddress": "沖縄県島尻郡北大東村字中野152-9",
+              "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+              "coordinateProximityUsed": false,
+              "googleCoordinatesUsed": false,
+              "facilityRole": "PRIVATE_HOTEL_NOT_PUBLIC_FACILITY"
+            }
+          },
+          "nativeRecordSha256": "80b9ccd98837a5e562f323123c7f80b7b93ef32b3322b15b22a33a75ccf103b8",
+          "archiveSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6",
+          "positionArchiveSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e",
+          "memberSha256": "37faa83b011ef034be2d1ec847333e2a75f26e1743d0bb71662345b39cb01661",
+          "positionMemberSha256": "026cf86cdf4f4700e5e00a8a33f37ffa199323881b0f54fb5c3f7c582e3f0e77",
+          "name": "ハマユウ荘 うふあがり島",
+          "address": "沖縄県島尻郡北大東村字中野152-9",
+          "municipalityCode": "473588",
+          "latitude": 25.948402551,
+          "longitude": 131.295571787,
+          "coordinateReferenceSystem": "EPSG:6668",
+          "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+          "identityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility"
+        },
+        "nativeEvidenceRef": "transport-evidence:086:b84d12fce1beb1040cb1b61e69b711dd",
+        "supplementalEvidenceRefs": [
+          "transport-evidence:086:d0377a4e9a5a08dd24e56486b0e223bc",
+          "transport-evidence:086:43471ded514a4aac702c2b6a96d765bc",
+          "transport-evidence:086:2f8681fec2542877e771dc095a2d62d1",
+          "transport-evidence:086:89a3ff40451770c9df27e12cf447b73c",
+          "transport-evidence:086:0127731ecb0193cd4841f2a101d38b0a"
+        ],
+        "nativeActionIds": {
+          "ABR_MASTER": "northdaito:qualified:abr-master",
+          "ABR_POSITION": "northdaito:qualified:abr-position"
+        },
+        "sourcePackagePaths": [
+          "sources/hamayuso230-afd32b9b9ba6cfab.json",
+          "sources/hamayuso230-5da44480f9e5e03a.json",
+          "sources/hamayuso230-a845109528e7ceae.json",
+          "sources/hamayuso230-522562194a712de6.json",
+          "sources/hamayuso230-cc5bfc700b0c33cd.json",
+          "sources/hamayuso230-6730489bdc93530a.json",
+          "sources/hamayuso230-7ce72bc6f68bbd46.json",
+          "sources/hamayuso230-caa71ab2660490c6.json",
+          "sources/hamayuso230-9277df91156222e1.json",
+          "sources/hamayuso230-be29e0130b902dce.json"
+        ]
+      }
+    ]
+  },
+  "context": {
+    "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+    "publicStructureOnly": false,
+    "travelDate": "2026-10-05",
+    "eligibilityKeys": [
+      "hamayuso:lodging-guest",
+      "nansei:confirmed-kitadaito-product-participant"
+    ],
+    "acceptedContracts": [
+      "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+      "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e"
+    ],
+    "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+    "hotelGuestStatus": "ACTUAL_LODGING_GUEST",
+    "tourProductStatus": "OPERATOR_CONFIRMED_EXACT_PRODUCT_BOOKING",
+    "arrivalFlightInformationStatus": "REPORTED_TO_HOTEL",
+    "flightServiceStatus": "PLANNED_OPERATING",
+    "acceptsUnknownShuttleDispatchAndCapacity": true
+  },
+  "contexts": [
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": false,
+      "travelDate": "2026-10-05",
+      "eligibilityKeys": [
+        "hamayuso:lodging-guest",
+        "nansei:confirmed-kitadaito-product-participant"
+      ],
+      "acceptedContracts": [
+        "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+        "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e"
+      ],
+      "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+      "hotelGuestStatus": "ACTUAL_LODGING_GUEST",
+      "tourProductStatus": "OPERATOR_CONFIRMED_EXACT_PRODUCT_BOOKING",
+      "arrivalFlightInformationStatus": "REPORTED_TO_HOTEL",
+      "flightServiceStatus": "PLANNED_OPERATING",
+      "acceptsUnknownShuttleDispatchAndCapacity": true,
+      "qualificationReview": {
+        "kind": "REVIEWED_QUALIFIED_AIRPORT_SURFACE_V1",
+        "requirementId": "review:official-airport:北大東",
+        "checkId": "mode:review:official-airport:北大東",
+        "airportNodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+        "endpointNodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+        "endpointIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "eligibilityKeys": [
+          "hamayuso:lodging-guest",
+          "nansei:confirmed-kitadaito-product-participant"
+        ],
+        "contextSha256": "d54c925d8857455bce90ac69c807d078a517c7d7fb167e62002d77336f9a39d8",
+        "originalScopeBasis": "TASK086_17_6_WHERE_SERVICE_EXISTS_NO_PUBLIC_ONLY_QUALIFIER",
+        "phaseId": "230-kitadaito-qualified-product-hotel-shuttle",
+        "phaseFile": "research/phases/230-kitadaito-qualified-product-hotel-shuttle.json",
+        "factBindings": [
+          [
+            "hamayuso230-airport_to_hotel",
+            "9e31ad80152b5b81fb2a153396a3ef8f6f923b5dbfa99825a486da1ce1976af1"
+          ],
+          [
+            "hamayuso230-hotel_to_airport",
+            "457fcac0998276d2b7f53629f61d2a5602baec1573e376c55def40aaf14c807e"
+          ]
+        ],
+        "patternIds": [
+          "transport-pattern:086:30826d1b1a33edcff100dfaf8b57980f",
+          "transport-pattern:086:13ac8eb43ecc16537c341b209a92d20d"
+        ],
+        "edgeIds": [
+          "transport-edge:086:58dad54490cc8caae770635f678720d5",
+          "transport-edge:086:b4159f9d5f7b463eb397f0897b81b91a"
+        ],
+        "contractSha256s": [
+          "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+          "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e"
+        ],
+        "sourceBindings": [
+          {
+            "sourceId": "hamayuso230:abr:master",
+            "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473588.csv.zip",
+            "contentSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6"
+          },
+          {
+            "sourceId": "hamayuso230:abr:position",
+            "url": "https://data.address-br.digital.go.jp/mt_parcel_pos/city/mt_parcel_pos_city473588.csv.zip",
+            "contentSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e"
+          },
+          {
+            "sourceId": "transport-source:086:00ee8c6fbec29168b0b59e65b23012b4",
+            "url": "https://hamayuso.com/content3.html",
+            "contentSha256": "8f45ff5dfdc4a547f7632893963ab20edcc58140b7f89ab442102cb83f3ac4c9"
+          },
+          {
+            "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+            "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "contentSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683"
+          },
+          {
+            "sourceId": "transport-source:086:321a4d889870502ddc3d89971f30b12e",
+            "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+            "contentSha256": "c7e7fb6a76b9944d1a938bfafe9e4b4c31e5f1540ee6424ab7e0875c09e03644"
+          },
+          {
+            "sourceId": "transport-source:086:46fa9928f8ca6ca9b28fa7b2945a96ab",
+            "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "contentSha256": "e8eb0ceddaa097e44c84c57f51be5093942f795d688a054e656685b65fbff333"
+          },
+          {
+            "sourceId": "transport-source:086:8101357b89423b7fa82a3cc2041a39d1",
+            "url": "https://hamayuso.com/content3.html",
+            "contentSha256": "7fef10f5124c45281cd18fcb8b75d2b658eb1cf07366cb16efa1fba36ea083cd"
+          },
+          {
+            "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+            "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+            "contentSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f"
+          },
+          {
+            "sourceId": "transport-source:086:c69dfb567c21a81d2bae95cb85cfaf25",
+            "url": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+            "contentSha256": "31b5d1c462624d095d5ad6b70f07f4f6809d7e2c04be80202ae2a6978875781b"
+          },
+          {
+            "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+            "url": "https://hamayuso.com/content3.html",
+            "contentSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c"
+          }
+        ],
+        "inputBindings": [
+          {
+            "path": "research/qualified-hamayuso-original-task.md",
+            "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+          },
+          {
+            "path": "research/qualified-hamayuso-scope-review.json",
+            "sha256": "f5717a6f29bf2cf615973431195782b839ce32568d4382b6abc7ac66b4b5b1e9"
+          },
+          {
+            "path": "research/qualified-hamayuso-native-review.json",
+            "sha256": "3436fa122f959a96a27b390b2cafde6ef95c7cd4a8630c1d7b46a32ee87e3e99"
+          }
+        ]
+      },
+      "qualifiedInputBindings": [
+        [
+          "research/qualified-hamayuso-original-task.md",
+          "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+        ],
+        [
+          "research/qualified-hamayuso-scope-review.json",
+          "f5717a6f29bf2cf615973431195782b839ce32568d4382b6abc7ac66b4b5b1e9"
+        ],
+        [
+          "research/qualified-hamayuso-native-review.json",
+          "3436fa122f959a96a27b390b2cafde6ef95c7cd4a8630c1d7b46a32ee87e3e99"
+        ]
+      ],
+      "qualificationInputError": null
+    }
+  ],
+  "review": {
+    "kind": "REVIEWED_QUALIFIED_AIRPORT_SURFACE_V1",
+    "requirementId": "review:official-airport:北大東",
+    "checkId": "mode:review:official-airport:北大東",
+    "airportNodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+    "endpointNodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+    "endpointIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+    "eligibilityKeys": [
+      "hamayuso:lodging-guest",
+      "nansei:confirmed-kitadaito-product-participant"
+    ],
+    "contextSha256": "d54c925d8857455bce90ac69c807d078a517c7d7fb167e62002d77336f9a39d8",
+    "originalScopeBasis": "TASK086_17_6_WHERE_SERVICE_EXISTS_NO_PUBLIC_ONLY_QUALIFIER",
+    "phaseId": "230-kitadaito-qualified-product-hotel-shuttle",
+    "phaseFile": "research/phases/230-kitadaito-qualified-product-hotel-shuttle.json",
+    "factBindings": [
+      [
+        "hamayuso230-airport_to_hotel",
+        "9e31ad80152b5b81fb2a153396a3ef8f6f923b5dbfa99825a486da1ce1976af1"
+      ],
+      [
+        "hamayuso230-hotel_to_airport",
+        "457fcac0998276d2b7f53629f61d2a5602baec1573e376c55def40aaf14c807e"
+      ]
+    ],
+    "patternIds": [
+      "transport-pattern:086:30826d1b1a33edcff100dfaf8b57980f",
+      "transport-pattern:086:13ac8eb43ecc16537c341b209a92d20d"
+    ],
+    "edgeIds": [
+      "transport-edge:086:58dad54490cc8caae770635f678720d5",
+      "transport-edge:086:b4159f9d5f7b463eb397f0897b81b91a"
+    ],
+    "contractSha256s": [
+      "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+      "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e"
+    ],
+    "sourceBindings": [
+      {
+        "sourceId": "hamayuso230:abr:master",
+        "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473588.csv.zip",
+        "contentSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6"
+      },
+      {
+        "sourceId": "hamayuso230:abr:position",
+        "url": "https://data.address-br.digital.go.jp/mt_parcel_pos/city/mt_parcel_pos_city473588.csv.zip",
+        "contentSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e"
+      },
+      {
+        "sourceId": "transport-source:086:00ee8c6fbec29168b0b59e65b23012b4",
+        "url": "https://hamayuso.com/content3.html",
+        "contentSha256": "8f45ff5dfdc4a547f7632893963ab20edcc58140b7f89ab442102cb83f3ac4c9"
+      },
+      {
+        "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+        "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "contentSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683"
+      },
+      {
+        "sourceId": "transport-source:086:321a4d889870502ddc3d89971f30b12e",
+        "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+        "contentSha256": "c7e7fb6a76b9944d1a938bfafe9e4b4c31e5f1540ee6424ab7e0875c09e03644"
+      },
+      {
+        "sourceId": "transport-source:086:46fa9928f8ca6ca9b28fa7b2945a96ab",
+        "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "contentSha256": "e8eb0ceddaa097e44c84c57f51be5093942f795d688a054e656685b65fbff333"
+      },
+      {
+        "sourceId": "transport-source:086:8101357b89423b7fa82a3cc2041a39d1",
+        "url": "https://hamayuso.com/content3.html",
+        "contentSha256": "7fef10f5124c45281cd18fcb8b75d2b658eb1cf07366cb16efa1fba36ea083cd"
+      },
+      {
+        "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+        "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "contentSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f"
+      },
+      {
+        "sourceId": "transport-source:086:c69dfb567c21a81d2bae95cb85cfaf25",
+        "url": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+        "contentSha256": "31b5d1c462624d095d5ad6b70f07f4f6809d7e2c04be80202ae2a6978875781b"
+      },
+      {
+        "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+        "url": "https://hamayuso.com/content3.html",
+        "contentSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c"
+      }
+    ],
+    "inputBindings": [
+      {
+        "path": "research/qualified-hamayuso-original-task.md",
+        "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+      },
+      {
+        "path": "research/qualified-hamayuso-scope-review.json",
+        "sha256": "f5717a6f29bf2cf615973431195782b839ce32568d4382b6abc7ac66b4b5b1e9"
+      },
+      {
+        "path": "research/qualified-hamayuso-native-review.json",
+        "sha256": "3436fa122f959a96a27b390b2cafde6ef95c7cd4a8630c1d7b46a32ee87e3e99"
+      }
+    ]
+  }
+}

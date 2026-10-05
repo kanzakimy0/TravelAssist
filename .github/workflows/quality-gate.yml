@@ -5,6 +5,20 @@ on:
   push:
     branches: [develop]
   workflow_dispatch:
+    inputs:
+      task086FinalCloseout:
+        description: Verify the frozen TASK-086 published artifacts and retain rebuild proof
+        type: boolean
+        default: false
+      expectedHead:
+        description: Optional exact branch SHA expected for publication recovery
+        type: string
+        default: ""
+      validationTimeoutMinutes:
+        description: Bounded budget for the expanded frozen-data regression
+        type: choice
+        options: ["35", "90"]
+        default: "35"
 
 permissions:
   contents: read
@@ -15,9 +29,10 @@ concurrency:
 
 jobs:
   verify:
+    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone') }}
     name: Install, test and build
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: ${{ fromJSON(inputs.validationTimeoutMinutes || '35') }}
     steps:
       - name: Check out the exact event revision
         uses: actions/checkout@v4
@@ -41,7 +56,21 @@ jobs:
         run: npm run deploy:validate:local
 
       - name: Run repository tests
+        env:
+          TASK086_VERIFY_PUBLISHED: ${{ inputs.task086FinalCloseout && '1' || '0' }}
+          TASK086_REBUILD_RECEIPT: ${{ inputs.task086FinalCloseout && format('{0}/task086-deterministic-rebuild.json', runner.temp) || '' }}
         run: node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"
+
+      - name: Retain final-closeout revision and deterministic proof
+        if: always() && inputs.task086FinalCloseout
+        uses: actions/upload-artifact@v4
+        with:
+          name: task086-final-closeout-${{ github.sha }}
+          path: |
+            .artifacts/ci/revision.json
+            ${{ runner.temp }}/task086-deterministic-rebuild.json
+          if-no-files-found: error
+          include-hidden-files: true
 
       - name: Lint
         run: npm run lint
@@ -60,3 +89,259 @@ jobs:
 
       - name: Check whitespace
         run: git diff --check
+
+  regression:
+    name: Full Node regression / ${{ matrix.lane }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [assets, regression-0, regression-1, regression-2, regression-3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Verify and record actual event checkout
+        env:
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          node tools/qa/ci-revision.mjs
+      - run: npm ci
+      - run: node tools/qa/task-086-regression-lanes.mjs ${{ matrix.lane }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task086-regression-${{ matrix.lane }}-${{ github.sha }}
+          path: |
+            .artifacts/ci/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 3
+
+  graph:
+    name: Clean graph / ${{ matrix.lane }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [first, second]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Verify and record actual event checkout
+        env:
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          node tools/qa/ci-revision.mjs
+      - run: npm ci
+      - run: timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs ${{ matrix.lane }} .artifacts/task086-lanes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task086-graph-${{ matrix.lane }}-${{ github.sha }}
+          path: |
+            .artifacts/ci/revision.json
+            .artifacts/task086-lanes/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 3
+
+  extraction:
+    name: Retained raw source reproduction
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Verify and record actual event checkout
+        env:
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          node tools/qa/ci-revision.mjs
+      - run: npm ci
+      - run: timeout --signal=TERM --kill-after=30s 1200s node tools/transport/task-086-validation.mjs extract .artifacts/task086-lanes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task086-extraction-${{ github.sha }}
+          path: |
+            .artifacts/ci/revision.json
+            .artifacts/task086-lanes/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 3
+
+  resume:
+    name: Stable complete graph resume
+    needs: graph
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Verify and record actual event checkout
+        env:
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          node tools/qa/ci-revision.mjs
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: task086-graph-first-${{ github.sha }}
+          path: .artifacts
+      - run: timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs resume .artifacts/task086-lanes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task086-resume-${{ github.sha }}
+          path: |
+            .artifacts/ci/revision.json
+            .artifacts/task086-lanes/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 3
+
+  proof:
+    name: Deterministic, recovery and published-artifact proof
+    needs: [graph, extraction, resume]
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Verify and record actual event checkout
+        env:
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          node tools/qa/ci-revision.mjs
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: task086-graph-*-${{ github.sha }}
+          merge-multiple: true
+          path: .artifacts
+      - uses: actions/download-artifact@v4
+        with:
+          name: task086-resume-${{ github.sha }}
+          path: .artifacts
+      - uses: actions/download-artifact@v4
+        with:
+          name: task086-extraction-${{ github.sha }}
+          path: .artifacts
+      - name: Execute original rebuild regression with complete exact-head lane receipts
+        env:
+          TASK086_VERIFIED_LANES_DIR: ${{ github.workspace }}/.artifacts/task086-lanes
+          TASK086_VERIFY_PUBLISHED: "1"
+          TASK086_REBUILD_RECEIPT: ${{ github.workspace }}/.artifacts/task086-lanes/deterministic-recovery-proof.json
+        run: node tools/qa/task-086-regression-lanes.mjs rebuild
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task086-proof-${{ github.sha }}
+          path: |
+            .artifacts/ci/
+            .artifacts/task086-lanes/*.receipt.json
+            .artifacts/task086-lanes/deterministic-recovery-proof.json
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 3
+
+  quality:
+    name: Lint, types, formatting and build
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Verify and record actual event checkout
+        env:
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          node tools/qa/ci-revision.mjs
+      - run: npm ci
+      - run: npm run deploy:validate:local
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run format:check:deploy
+      - run: npm run deploy:build:local
+      - run: npm run deploy:verify-artifact
+      - run: git diff --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task086-quality-${{ github.sha }}
+          path: |
+            .artifacts/ci/revision.json
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 3
+
+  closeout-quality-gate:
+    name: TASK086 exact-head Quality Gate
+    needs: [regression, graph, extraction, resume, proof, quality]
+    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fail closed unless every required lane completed
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+          EXPECTED_HEAD: ${{ inputs.expectedHead }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          needs=json.loads(os.environ['RESULTS'])
+          assert all(v['result']=='success' for v in needs.values()),needs
+          expected=os.environ.get('EXPECTED_HEAD')
+          assert not expected or expected==os.environ['GITHUB_SHA']
+          print(json.dumps({'status':'PASS','eventSha':os.environ['GITHUB_SHA'],'lanes':needs}))
+          PY

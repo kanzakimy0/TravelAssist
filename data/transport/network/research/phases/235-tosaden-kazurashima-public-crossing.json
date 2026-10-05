@@ -1,0 +1,83 @@
+{
+  "phaseId": "235-tosaden-kazurashima-public-crossing",
+  "strategy": [
+    "ORIGINAL_TOSADEN_AIRPORT_DIRECTION_ROOTS_ONLY",
+    "EXACT_OSM_CONNECTED_PUBLIC_SIDEWALK_CHAIN",
+    "PRESERVE_DISTINCT_NATIVE_STOPS",
+    "NO_NEW_NODES"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:kazurashima-reviewed-public-crossing-235",
+    "transfer:tosaden:kazurashima-reviewed-public-crossing-235:independent-facility-direction-map",
+    "transfer:tosaden:kazurashima-reviewed-public-crossing-235:company-public-access"
+  ],
+  "facts": [
+    {
+      "factId": "kazurashima-alight-to-airport-board-public-crossing",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:kazurashima-reviewed-public-crossing-235",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=133.5468,33.5558,133.5725,33.5596",
+      "observedResponseSha256": "c183490ae21209d24fafbcf9eb1f3fff31d7ca0d7b5d7357dcd5f3d9693df1bd",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:kazurashima-reviewed-public-crossing-235:independent-facility-direction-map",
+          "url": "https://www.system-tokki.co.jp/images/map/map4.png",
+          "observedResponseSha256": "fec26e482207ffdd6ad23bdc3316c933f3f17640d34eef6087765244d4748f0e"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:kazurashima-reviewed-public-crossing-235:company-public-access",
+          "url": "https://www.system-tokki.co.jp/map/map4.html",
+          "observedResponseSha256": "329ab7c8463424d4b3eca80acbda6bbf6e94c8be1383b451fe5b2d3339763e53"
+        }
+      ],
+      "components": [
+        {
+          "name": "葛島",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3940_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "5ff0dfea7297b9b74bc2491ca69160483a199db730f676c5c92607afd3016a7b",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Personally viewed company-owned map4.png linked currentcompany access page. It separately names south-side Kazurashima bus stop toward KochiStation and north-side Kazurashima bus stop toward airport on NankokuBypass, with distinct flanking street blocks. The same owner public access text explicitly identifies airportbus arrival at Kazurashima and pedestrian continuation. Exact current licensed TosadenGTFS independently preserves the two named directional native records and actual airport service pickup/dropoff restrictions. Five original OSM public sidewalk/marked-crossing ways join by4exactnative nodes across NankokuBypass and its north-side intersecting street. The private source review binds coarse named public roadside components using independently published directional map and actual native service, not coordinate proximity or nearestnode. Source map is schematic and undated; observed date is not layout date. No currentoperator map coverage is claimed. No nearestcoordinate/nativeidentity substitution, exactcurb/door, accessibility/time, privatebuildingpassage or rawartwork reuse."
+          }
+        },
+        {
+          "name": "葛島",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3940_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "bcee3d3d2b465238da45a4b4877804ebfdd94af56370f956e8faf9bef18ba91d",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Personally viewed company-owned map4.png linked currentcompany access page. It separately names south-side Kazurashima bus stop toward KochiStation and north-side Kazurashima bus stop toward airport on NankokuBypass, with distinct flanking street blocks. The same owner public access text explicitly identifies airportbus arrival at Kazurashima and pedestrian continuation. Exact current licensed TosadenGTFS independently preserves the two named directional native records and actual airport service pickup/dropoff restrictions. Five original OSM public sidewalk/marked-crossing ways join by4exactnative nodes across NankokuBypass and its north-side intersecting street. The private source review binds coarse named public roadside components using independently published directional map and actual native service, not coordinate proximity or nearestnode. Source map is schematic and undated; observed date is not layout date. No currentoperator map coverage is claimed. No nearestcoordinate/nativeidentity substitution, exactcurb/door, accessibility/time, privatebuildingpassage or rawartwork reuse."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_DIRECTIONAL_GTFS_PLUS_INDEPENDENT_FACILITY_DIRECTION_MAP_AND_ODBL_CONTIGUOUS_PUBLIC_WAYS",
+      "hubScopeComplete": false,
+      "locator": "Personally viewed company-owned map4.png linked currentcompany access page. It separately names south-side Kazurashima bus stop toward KochiStation and north-side Kazurashima bus stop toward airport on NankokuBypass, with distinct flanking street blocks. The same owner public access text explicitly identifies airportbus arrival at Kazurashima and pedestrian continuation. Exact current licensed TosadenGTFS independently preserves the two named directional native records and actual airport service pickup/dropoff restrictions. Five original OSM public sidewalk/marked-crossing ways join by4exactnative nodes across NankokuBypass and its north-side intersecting street. The private source review binds coarse named public roadside components using independently published directional map and actual native service, not coordinate proximity or nearestnode. Source map is schematic and undated; observed date is not layout date. No currentoperator map coverage is claimed. No nearestcoordinate/nativeidentity substitution, exactcurb/door, accessibility/time, privatebuildingpassage or rawartwork reuse."
+    }
+  ]
+}

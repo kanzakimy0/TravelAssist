@@ -10,3 +10,10 @@
 # Preserve the exact bytes of immutable, hash-bound TASK-086 audit inputs.
 data/transport/network/research/pattern-correction-archive.v1.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/transport/network/research/pattern-correction-review.v1.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# TASK-086 snapshots and reviewed generator versions are byte-bound inputs.
+# Preserve their original bytes across Windows and Linux; keep diffs/checks enabled.
+data/transport/network/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tools/transport/task-086-extract-abr-facility.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tools/transport/task-086-extract-abr-private-hotel.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tools/transport/task-086-extract-official-bus-facility.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

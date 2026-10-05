@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "scopeId": "TASK086-NEXT-FULL-ORIGINAL-v2",
   "parentScopeId": "TASK086-CORE-AIRPORTS7-PHASE164-v1",
-  "status": "CONTINUE_FULL_ORIGINAL_TASK",
-  "newSourceAcquisitionThisCloseout": true,
+  "status": "FINAL_CERTIFICATION_ONLY",
+  "newSourceAcquisitionThisCloseout": false,
   "plan": [
     "Before browsing, reuse the acquisition index, exact identities, retained sources, current trips and existing public transfers.",
     "For each airport, name the actual surface service, exact boarding/alighting stops, evidenced public interchange, and a currently national-connected node before importing. Unknown links remain explicit evidence gaps.",
@@ -30,9 +30,9 @@
     "Merge",
     "Release"
   ],
-  "activeInputScopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+  "activeInputScopeId": "TASK086-FULL-ORIGINAL-PHASE244-v2",
   "progressEvidence": "research/core-seven-progress.v1.json",
-  "stopCondition": "ALL_APPLICABLE_ORIGINAL_ACCEPTANCE_PASSES_WITHOUT_UNRESOLVED_DATA_OR_UNVERIFIED_GATES",
+  "stopCondition": "DELIVER_PASS_OR_BLOCKED_AND_STOP",
   "executionPolicy": "research/task-revision.v2.json",
   "initialMilestoneRequirementIds": [
     "review:official-airport:出雲",
@@ -1316,5 +1316,7 @@
     "鳥取"
   ],
   "currentOpenRootIndex": "residual-root-causes.jsonl",
-  "currentSourceEligibilityReview": "research/jr-timetable-rights-review.v1.json"
+  "currentSourceEligibilityReview": "research/jr-timetable-rights-review.v1.json",
+  "authorization": "Final closeout of frozen TASK086 only; no ordinary discovery or automatic continuation",
+  "finalCloseoutOnly": true
 }

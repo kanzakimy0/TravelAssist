@@ -61,7 +61,10 @@ export function run({
   invariant(
     !fs.existsSync(
       rel("data/transport/network/research/public-od-facilities.v1.json"),
-    ),
+    ) &&
+      !fs.existsSync(
+        rel("data/transport/network/research/public-bus-facilities.v1.json"),
+      ),
     "OD_REQUIRES_TASK086_REMEDIATION_CHECKPOINT",
   );
   const inputPaths = [
@@ -99,7 +102,29 @@ export function run({
     inputPaths.map((p) => [p, hash(fs.readFileSync(rel(p)))]),
   );
   const generatorPaths = [
+    "tools/transport/task-086-pricia-facility.mjs",
+    "tools/transport/task-086-abr-private-hotel.mjs",
+    "tools/transport/task-086-hamayuso-facility.mjs",
+    "tools/transport/task-086-hamayuso-access.mjs",
+    "tools/transport/task-086-extract-abr-private-hotel.py",
+
+    "tools/transport/task-086-aguni-od-capability.mjs",
+    "tools/transport/task-086-okushiri-od-capability.mjs",
+    "tools/transport/task-086-okushiri-od-facility.mjs",
+    "tools/transport/task-086-od-capability-context.mjs",
+    "tools/transport/task-086-od-capability-applicability.mjs",
+    "tools/transport/task-086-od-capability-inputs.mjs",
+    "tools/transport/task-086-qualified-inputs.mjs",
+    "tools/transport/task-086-qualified-airport-applicability.mjs",
     "tools/transport/task-086-model.mjs",
+    "tools/transport/task-086-onboard-request.mjs",
+    "tools/transport/task-086-air-passenger-shuttle.mjs",
+    "tools/transport/task-086-abr-public-facility.mjs",
+    "tools/transport/task-086-extract-abr-facility.py",
+    "tools/transport/task-086-official-facility-bus.mjs",
+    "tools/transport/task-086-historical-facility-stop.mjs",
+    "tools/transport/task-086-official-facility-bus-registry.mjs",
+    "tools/transport/task-086-extract-official-bus-facility.py",
     "tools/transport/task-086-service-access-contract.mjs",
     "tools/transport/task-086-condition-evidence.mjs",
     "tools/transport/task-086-batches.mjs",

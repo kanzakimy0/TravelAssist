@@ -1,0 +1,91 @@
+{
+  "status": "REVIEWED_BOUNDED_PUBLIC_OD_CAPABILITY_NOT_BOOKING",
+  "sourceEvidence": [
+    {
+      "file": "municipal-plan2026.pdf",
+      "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+      "responseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d",
+      "cacheSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+    },
+    {
+      "file": "current-od-systems2026.pdf",
+      "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/3_hyou1_R8_1.pdf",
+      "responseSha256": "e7780fc7b56e3c3d298ce24a0f8cd352a718373e9e4365f45c5582e44d5384b4",
+      "cacheSha256": "e7780fc7b56e3c3d298ce24a0f8cd352a718373e9e4365f45c5582e44d5384b4"
+    },
+    {
+      "file": "council-minutes2026.pdf",
+      "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2026_giziroku.pdf",
+      "responseSha256": "56a14159c2f48306ec4c10561d8e2192bf1cdc3cf97a5ab1040baaed734596f1",
+      "cacheSha256": "56a14159c2f48306ec4c10561d8e2192bf1cdc3cf97a5ab1040baaed734596f1"
+    },
+    {
+      "file": "access.html",
+      "url": "https://www.vill.aguni.okinawa.jp/sonsei/60.html",
+      "responseSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b",
+      "cacheSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b"
+    },
+    {
+      "file": "renewal-application2025.pdf",
+      "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/7_kousinnsinnsei_R7_1.pdf",
+      "responseSha256": "c2a8a1a256c40a9e150f9b34be5668903bdbb8cbcb64db021b27a9ef8f524abc",
+      "cacheSha256": "c2a8a1a256c40a9e150f9b34be5668903bdbb8cbcb64db021b27a9ef8f524abc"
+    },
+    {
+      "file": "october-flight.pdf",
+      "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/R8-10-unnkouyoteihyou.pdf",
+      "responseSha256": "c0916305d1ca177e28a900fa9c0fefe1185ff3e5c4263ae70acdef4603652ed6",
+      "cacheSha256": "c0916305d1ca177e28a900fa9c0fefe1185ff3e5c4263ae70acdef4603652ed6"
+    },
+    {
+      "file": "website-disclaimer.html",
+      "url": "https://www.vill.aguni.okinawa.jp/10/71.html",
+      "responseSha256": "327149c98ced8b6b5de07979c4516949f719d6d4984cedb22c45e262909c5092",
+      "cacheSha256": "327149c98ced8b6b5de07979c4516949f719d6d4984cedb22c45e262909c5092"
+    }
+  ],
+  "originalSpec": {
+    "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+    "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2",
+    "lines": [
+      "112-127 static/dynamic distinct",
+      "182-202 real service/direction/identity/provenance",
+      "294-298 reservation metadata includes unknown",
+      "331 broad reservation semantics",
+      "349-351 unresolved dynamics do not delete topology",
+      "732-748 original truth and connectivity retained",
+      "757 airport structural coverage where service exists"
+    ]
+  },
+  "serviceFinding": {
+    "R8Table1": "Personally viewed saved image: village demand operator, 浜西東, 区域運行, 海港等と空港接続. Note2 expressly says area operations need not fill fixed origin/destination fields. Not a fixed calling sequence.",
+    "R8Plan": "Existing operation for East major facilities including office and port/airport; maintains demand service, expressly visitors as well as residents. AllJune22agenda agreed; continued current service corroborated current access andSeptembernewsletter.",
+    "directionInterpretation": "Area-demand destination-request semantics supports independently selecting airport→named East office and office→airport requests. This is a reviewed bounded interpretation of the published service type+area and named facilities, not a mechanically reversed fixed trip and not evidence of actual completed rides.",
+    "airportInterface": "Published area service explicitly connects airport, combined with current passenger flight facility and independently observed prior actual demand use to airport; coarse whole-airport pickup is conditional on operator arrangement, not a coordinate-derived walk.",
+    "officeInterface": "Named public office in current East-facility plan and actual current office address East483 exactly joins licensed P05_845; representative point only, no bus pole/curb/door navigation.",
+    "validity": "Current2026 maintained area service, selected structural snapshotOct17 with separately published actual flight directions. No newly inventedODopening/enddate or exact dispatch."
+  },
+  "conflictsRetained": {
+    "fixedBus": "ApprovedOct2026 fixed-bus abolition directly prevents accepting old linked airport loop as current. It is excluded. Actual implementation date not claimed observed.",
+    "windows": "Current page reception08:30-16:15/service08:30-16:30; linked older timetable differs. Both observations retained, no invented unified timetable. Capability has no actual pickup clock or asserted schedule feasibility.",
+    "lead": "Historic2023thirty-minute rule not proven current, remains external research audit only; newcontract value null, current status not published.",
+    "payment": "UNKNOWN; published fare does not prove cash/payment method."
+  },
+  "capabilityMeaning": "If operator accepts each exact direction request and agrees pickup/dropoff within the proven service scope and dispatch is available, the real public OD service supports that directed structural connection. Predicate is not satisfied by a claimed actual reservation and is not a booking promise. Default and ordinary PUBLIC/actual/request query contexts deny; only separately source-reviewed capability audit may evaluate the proposition.",
+  "retainedChecks": [
+    "exact original C28airport ID and original requirement/check",
+    "licensed exact P05rawarchive/member/nativefeature and currentfacility source",
+    "two independently represented areaODdirections, no fixed calls",
+    "actualtwoOctober17DAIflightdirections to existingNaha",
+    "wholegraph edge/source/native validation and both-direction national paths",
+    "all383frozenhashes and alloriginalrequirements/edges retained",
+    "permission/source/condition/date/scopechange reopens"
+  ],
+  "rights": "Reuse previously reviewed municipal source minimal independently structured facts only, DAI actualflightauthorship explicit; no raw table/map/prose clocks redistribution. Exact MLITP05 retains existing licensed native raw source; no newlicenseinference.",
+  "counters": {
+    "newHTTP": 0,
+    "newSearchQueries": 0,
+    "sourceBytesDownloaded": 0
+  },
+  "canonicalWrites": 0
+}

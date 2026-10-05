@@ -7,11 +7,13 @@ import {
   unique,
   verifyEvidence,
   generatePattern,
+  generateTransfer,
   gtfsServiceDateBound,
   hash,
   id,
   invariant,
   sourceAllowed,
+  validateEdges,
 } from "./task-086-model.mjs";
 
 export function assertBaselineGtfsPackage(pack) {
@@ -48,6 +50,150 @@ function verifyNativePackage(pack, raw) {
     "LICENSED_GTFS_NATIVE_PACKAGE_MISMATCH:" +
       (result.error?.message ?? result.stderr),
   );
+}
+
+// Replayed checkpoints contain the original GTFS transfers, but a reviewed
+// transfer can acquire its second endpoint in a later licensed package.
+// Read the retained archive again before admitting such a transfer.
+export function newlyAvailableGtfsTransfers(packs, nodesBefore, nodes) {
+  const newlyAdmitted = new Set(
+    [...nodes.keys()].filter((nodeId) => !nodesBefore.has(nodeId)),
+  );
+  return packs
+    .map((pack) => ({
+      ...pack,
+      transfers: (pack.transfers ?? []).filter((t) => {
+        const from = id("node", t.fromAnchor);
+        const to = id("node", t.toAnchor);
+        return (
+          (newlyAdmitted.has(from) || newlyAdmitted.has(to)) &&
+          nodes.get(from)?.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+          nodes.get(to)?.decision === "ADMIT_TASK_086_TOPOLOGY"
+        );
+      }),
+    }))
+    .filter((pack) => pack.transfers.length);
+}
+
+export function prepareRetainedGtfsTransfers(
+  packs,
+  nodes,
+  sources,
+  evidence,
+  edges,
+  generatedAt,
+  readArchive,
+) {
+  const existing = new Set(edges.map((e) => e.edgeId));
+  const prepared = [];
+  for (const pack of packs.filter((p) => p.transfers?.length)) {
+    const source = pack.source;
+    invariant(
+      canonical(sources.get(source.sourceId)) === canonical(source) &&
+        /^sources\/raw\/[a-z0-9-]+\.zip$/.test(source.retainedArchive),
+      "GTFS_TRANSFER_SOURCE_DESCRIPTOR_MISMATCH",
+    );
+    const { bytes: raw, path: archivePath } = readArchive(
+      source.retainedArchive,
+    );
+    invariant(
+      hash(raw) === source.contentSha256,
+      "GTFS_TRANSFER_ARCHIVE_MISMATCH",
+    );
+    const missing = pack.transfers.filter((t) => {
+      const edgeId = id("edge", [
+        "transfer",
+        id("node", t.fromAnchor),
+        id("node", t.toAnchor),
+        t.hubRef,
+      ]);
+      return !existing.has(edgeId);
+    });
+    if (!missing.length) continue;
+    const result = spawnSync(
+      process.platform === "win32" ? "python" : "python3",
+      [
+        "-B",
+        "-X",
+        "utf8",
+        "-c",
+        `import csv,io,json,sys,zipfile
+request=json.load(sys.stdin)
+with zipfile.ZipFile(request['archive']) as archive:
+    rows=list(csv.DictReader(io.StringIO(archive.read('transfers.txt').decode('utf-8-sig'))))
+if any(rows.count(record)!=1 for record in request['records']):
+    sys.exit('GTFS_TRANSFER_NATIVE_ROW_MISMATCH')`,
+      ],
+      {
+        input: JSON.stringify({
+          archive: archivePath,
+          records: missing.map((t) => t.sourceTransfer),
+        }),
+        encoding: "utf8",
+        timeout: 60000,
+      },
+    );
+    invariant(
+      result.status === 0,
+      "GTFS_TRANSFER_NATIVE_ROW_MISMATCH:" +
+        (result.error?.message ?? result.stderr),
+    );
+    for (const t of missing) {
+      const from = id("node", t.fromAnchor);
+      const to = id("node", t.toAnchor);
+      invariant(
+        nodes.get(from)?.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+          nodes.get(to)?.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+          t.fromAnchor ===
+            `${source.sourceId}:stop:${t.sourceTransfer.from_stop_id}` &&
+          t.toAnchor ===
+            `${source.sourceId}:stop:${t.sourceTransfer.to_stop_id}` &&
+          t.evidenceRefs.length === 1 &&
+          canonical(evidence.get(t.evidenceRefs[0])?.record) ===
+            canonical(t.sourceTransfer),
+        "GTFS_TRANSFER_CROSS_PACKAGE_ENDPOINT_MISMATCH",
+      );
+      const transfer = {
+        ...t,
+        from,
+        to,
+        metrics: t.sourceTransfer.min_transfer_time
+          ? {
+              transferTimeMin: {
+                value: Number(t.sourceTransfer.min_transfer_time) / 60,
+                sourceId: source.sourceId,
+                sourceSha256: source.contentSha256,
+                observedAt: source.observedAt,
+                validFrom: source.validFrom,
+                validTo: source.validTo,
+                freshnessClass: source.freshnessClass,
+                rightsDecision: source.rightsDecision,
+              },
+            }
+          : {},
+      };
+      const edge = generateTransfer(
+        transfer,
+        nodes,
+        sources,
+        evidence,
+        generatedAt,
+      );
+      invariant(!existing.has(edge.edgeId), "DUPLICATE_GTFS_TRANSFER_REPLAY");
+      existing.add(edge.edgeId);
+      prepared.push({ transfer, edge, source });
+    }
+  }
+  validateEdges(
+    prepared.map((p) => p.edge),
+    {
+      sources,
+      evidence,
+      nodes,
+      patternById: new Map(),
+    },
+  );
+  return prepared;
 }
 
 const union = (a, b) => [...new Set([...a, ...b])];

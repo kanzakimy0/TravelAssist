@@ -9,6 +9,8 @@ test(
     // A local release regression may publish the same verified run once; CI remains isolated.
     const result = verifyRebuild({
       publish: process.env.TASK086_PUBLISH_VALIDATION === "1",
+      verifyPublished: process.env.TASK086_VERIFY_PUBLISHED === "1",
+      receiptPath: process.env.TASK086_REBUILD_RECEIPT || null,
     });
     assert.equal(result.status, "PASS");
     assert.equal(result.rawGtfsExtraction, "PASS");

@@ -1,0 +1,77 @@
+{
+  "phaseId": "224-kochi-bridge-public-sidewalk-crossing-candidate",
+  "strategy": [
+    "ORIGINAL_TOSADEN_AIRPORT_DIRECTION_ROOTS_ONLY",
+    "EXACT_OSM_CONNECTED_SIDEWALK_CROSSING",
+    "PRESERVE_DISTINCT_NATIVE_STOPS",
+    "NO_NEW_NODES"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:kochi-bridge-public-sidewalk-crossing-224",
+    "transfer:tosaden:kochi-bridge-public-sidewalk-crossing-224:operator-direction-map"
+  ],
+  "facts": [
+    {
+      "factId": "kochi-bridge-north-alight-to-east-board-public-crossing-walk",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:kochi-bridge-public-sidewalk-crossing-224",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=133.5428,33.5639,133.5443,33.5653",
+      "observedResponseSha256": "cb4aeb0eb1986a5a1a236477dc345c375540079df3e5b61c2568a4670b7d4a8b",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:kochi-bridge-public-sidewalk-crossing-224:operator-direction-map",
+          "url": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+          "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83"
+        }
+      ],
+      "components": [
+        {
+          "name": "高知橋",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3903_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "8265713729e77cb2b34b03e4f07b1c9abfa01187856e44b4206956b7a0af670c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current Tosaden airport access diagram dated 2026-02-01 labels the exact airport-feed 高知橋 alighting point (3903_01) west of the national-road/tram corridor and the boarding point (3903_02) east of it. OSM current raw response (ODbL 1.0; 2026-10-04) supplies a topologically connected public route: west roadside sidewalk way 556416252 → signalized crossing way 556416254 → east roadside sidewalk way 602443312. The sidewalk/crossing ways share exact OSM node 5367549782 at the west junction and node 5722293791 at the east junction; the crossing way includes exact vertices on both carriageway ways and the tram crossing. Bind only a coarse public path between the separately admitted native stops, using the operator map for directional-side semantics and the OSM way graph for the continuous public path. Do not merge stops, use straight-line joins, infer exact curb nodes, copy map geometry, or assert accessibility or travel time."
+          }
+        },
+        {
+          "name": "高知橋",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3903_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "98621490ac77d2aa3c844fc08767b357e231a839a8def2fb77a9b0354fdd678e",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current Tosaden airport access diagram dated 2026-02-01 labels the exact airport-feed 高知橋 alighting point (3903_01) west of the national-road/tram corridor and the boarding point (3903_02) east of it. OSM current raw response (ODbL 1.0; 2026-10-04) supplies a topologically connected public route: west roadside sidewalk way 556416252 → signalized crossing way 556416254 → east roadside sidewalk way 602443312. The sidewalk/crossing ways share exact OSM node 5367549782 at the west junction and node 5722293791 at the east junction; the crossing way includes exact vertices on both carriageway ways and the tram crossing. Bind only a coarse public path between the separately admitted native stops, using the operator map for directional-side semantics and the OSM way graph for the continuous public path. Do not merge stops, use straight-line joins, infer exact curb nodes, copy map geometry, or assert accessibility or travel time."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_DIRECTIONAL_GTFS_PLUS_CURRENT_OPERATOR_POLES_AND_ODBL_CONNECTED_SIDEWALK_CROSSING",
+      "hubScopeComplete": false,
+      "locator": "The current Tosaden airport access diagram dated 2026-02-01 labels the exact airport-feed 高知橋 alighting point (3903_01) west of the national-road/tram corridor and the boarding point (3903_02) east of it. OSM current raw response (ODbL 1.0; 2026-10-04) supplies a topologically connected public route: west roadside sidewalk way 556416252 → signalized crossing way 556416254 → east roadside sidewalk way 602443312. The sidewalk/crossing ways share exact OSM node 5367549782 at the west junction and node 5722293791 at the east junction; the crossing way includes exact vertices on both carriageway ways and the tram crossing. Bind only a coarse public path between the separately admitted native stops, using the operator map for directional-side semantics and the OSM way graph for the continuous public path. Do not merge stops, use straight-line joins, infer exact curb nodes, copy map geometry, or assert accessibility or travel time."
+    }
+  ]
+}

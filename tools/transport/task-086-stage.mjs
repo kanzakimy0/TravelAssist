@@ -12,7 +12,8 @@ import {
   admitNodes,
   generatePattern,
   generateDynamicOD,
-  publicConditionalApplicability,
+  reviewedConditionalApplicability,
+  publicStructuralResult,
   generateTransfer,
   validateEdges,
   anchorQueries,
@@ -32,6 +33,36 @@ const root = path.resolve(
     "../..",
   ),
   base = path.join(root, "data/transport/network");
+export function assertPublishedGlobalReviewChecks(
+  review,
+  decisions,
+  deficits,
+  published,
+  readInput,
+) {
+  const remainingIds = new Set(deficits.map((d) => d.deficitId));
+  const expected = review.gaps.map((g) => {
+    const decision = decisions.reviews.find((r) => r.deficitId === g.deficitId);
+    const status = remainingIds.has(g.deficitId) ? "FAIL" : "PASS";
+    if (
+      status === "PASS" &&
+      (decision?.status !== "REVIEWED_CLOSED" ||
+        !decision.inputBindings?.length ||
+        !decision.inputBindings.every(
+          (binding) => hash(readInput(binding.path)) === binding.sha256,
+        ))
+    )
+      throw Error("GLOBAL_REVIEW_INPUT_BINDING_INVALID:" + g.deficitId);
+    return {
+      checkId: g.deficitId,
+      status,
+      reviewDecisionSha256: hash(decision ?? null),
+    };
+  });
+  if (canonical(published) !== canonical(expected))
+    throw Error("PUBLISHED_GLOBAL_REVIEW_CHECKS_MISMATCH");
+  return expected.length;
+}
 // Expanded passenger-state SCCs respect boarding, alighting and continued rides.
 export function passengerComponents(nodes, edges, accessContext) {
   edges = edges.filter((e) => allowsServiceAccess(e, accessContext));
@@ -239,6 +270,22 @@ export function readStageVerification(file) {
   }
 }
 export function deriveExecutionState({ policy, stage, gate, packages }) {
+  if (policy?.finalCloseoutOnly === true) {
+    return {
+      taskRevision: policy.revisionId,
+      taskComplete: false,
+      executionStatus: "FINAL_CERTIFICATION_ONLY",
+      nextAction:
+        "CERTIFY_FROZEN_BACKBONE_AND_DELIVER_PASS_OR_BLOCKED_THEN_STOP",
+      nextWorkPackage: null,
+      ordinaryPackageCount: packages.length,
+      newSourceAcquisitionAuthorized: false,
+      acquisitionBoundary:
+        "FROZEN_TASK086_FINAL_ACCEPTANCE_BLOCKING_DEFECTS_ONLY",
+      milestoneIsStopCondition: false,
+      optionalExpansionScope: [],
+    };
+  }
   if (
     policy?.continueAfterMilestones !== true ||
     policy?.newSourceAcquisitionAuthorized !== true
@@ -335,7 +382,7 @@ export function buildStageReport({ conditionalAccessContexts } = {}) {
     odValidationContext,
   );
   const reviewedApplicability = conditionalAccessContexts.length
-    ? publicConditionalApplicability({
+    ? reviewedConditionalApplicability({
         nodes,
         edges,
         inventory: inv,
@@ -389,6 +436,15 @@ export function buildStageReport({ conditionalAccessContexts } = {}) {
       );
     },
   );
+  check("published_global_reviews_match_current_inputs_and_deficits", () =>
+    assertPublishedGlobalReviewChecks(
+      j("sources/source-review.json"),
+      j("research/global-review.v1.json"),
+      deficits,
+      audit.globalReviewChecks,
+      (p) => fs.readFileSync(path.join(root, p)),
+    ),
+  );
   check("identity_admission_all_retained_nodes", () => {
     const admitted = nodes.filter(
       (n) => n.decision === "ADMIT_TASK_086_TOPOLOGY",
@@ -438,6 +494,7 @@ export function buildStageReport({ conditionalAccessContexts } = {}) {
         sources,
         evidence,
         "2026-10-01T00:00:00Z",
+        odValidationContext,
       );
       if (
         hash(actual) !==
@@ -477,14 +534,17 @@ export function buildStageReport({ conditionalAccessContexts } = {}) {
   check("all_published_corridor_witnesses_obey_boarding_and_direction", () => {
     for (const c of corridors.filter((c) => c.status === "PASS")) {
       if (
-        c.connectivity ===
-        "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS"
+        [
+          "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS",
+          "STRUCTURALLY_CONNECTED_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS",
+          "STRUCTURALLY_CONNECTED_WITH_REVIEWED_QUALIFICATION",
+          "STRUCTURALLY_CONNECTED_WITH_REVIEWED_OD_CAPABILITY",
+        ].includes(c.connectivity)
       ) {
         const proof = reviewedApplicability?.assessments.find(
           (a) =>
             a.checkId === `corridor:${c.corridorId}` &&
-            a.status ===
-              "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS",
+            a.status === c.connectivity,
         );
         if (
           !proof ||
@@ -878,6 +938,7 @@ export function buildStageReport({ conditionalAccessContexts } = {}) {
     coreTier: audit.tier,
     coreBlockers,
     technicalChecks: checks,
+    globalReviewChecks: audit.globalReviewChecks,
     cleanDeterministicRebuildForCurrentInputs: cleanVerified,
     fullScope: {
       rawFailedChecks: deficits.length,
@@ -1053,6 +1114,13 @@ export function passengerViewReports(nodes, edges, anchor, contexts = []) {
     evidencedPublicConditionalStructure: contexts
       .filter((c) => c?.publicStructureOnly === true)
       .map(view),
+    ...(contexts.some((c) => c?.publicStructureOnly === false)
+      ? {
+          evidencedEligibilityRestrictedStructure: contexts
+            .filter((c) => c?.publicStructureOnly === false)
+            .map(view),
+        }
+      : {}),
     defaultChecksUnchanged: true,
   };
 }
@@ -1068,8 +1136,7 @@ export function assertPublicStructuralConsumption(
   if (!report) return;
   const expected = report.assessments.map((a) => ({
     checkId: a.checkId,
-    status:
-      a.status === "OPEN" ? "FAIL" : "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS",
+    status: publicStructuralResult(a.status),
     defaultDiagnostic: "FAIL",
     witnessBindingSha256: report.validationBindingSha256,
   }));

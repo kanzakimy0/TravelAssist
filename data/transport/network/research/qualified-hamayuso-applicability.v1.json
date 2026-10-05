@@ -1,0 +1,104 @@
+{
+  "kind": "REVIEWED_QUALIFIED_AIRPORT_SURFACE_V1",
+  "requirementId": "review:official-airport:北大東",
+  "checkId": "mode:review:official-airport:北大東",
+  "airportNodeId": "transport-node:086:7523deba1977cac488a45c7185a95ad7",
+  "endpointNodeId": "transport-node:086:70816934d71e010ae20e94d77acd4b24",
+  "endpointIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+  "eligibilityKeys": [
+    "hamayuso:lodging-guest",
+    "nansei:confirmed-kitadaito-product-participant"
+  ],
+  "contextSha256": "d54c925d8857455bce90ac69c807d078a517c7d7fb167e62002d77336f9a39d8",
+  "originalScopeBasis": "TASK086_17_6_WHERE_SERVICE_EXISTS_NO_PUBLIC_ONLY_QUALIFIER",
+  "phaseId": "230-kitadaito-qualified-product-hotel-shuttle",
+  "phaseFile": "research/phases/230-kitadaito-qualified-product-hotel-shuttle.json",
+  "factBindings": [
+    [
+      "hamayuso230-airport_to_hotel",
+      "9e31ad80152b5b81fb2a153396a3ef8f6f923b5dbfa99825a486da1ce1976af1"
+    ],
+    [
+      "hamayuso230-hotel_to_airport",
+      "457fcac0998276d2b7f53629f61d2a5602baec1573e376c55def40aaf14c807e"
+    ]
+  ],
+  "patternIds": [
+    "transport-pattern:086:30826d1b1a33edcff100dfaf8b57980f",
+    "transport-pattern:086:13ac8eb43ecc16537c341b209a92d20d"
+  ],
+  "edgeIds": [
+    "transport-edge:086:58dad54490cc8caae770635f678720d5",
+    "transport-edge:086:b4159f9d5f7b463eb397f0897b81b91a"
+  ],
+  "contractSha256s": [
+    "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+    "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e"
+  ],
+  "sourceBindings": [
+    {
+      "sourceId": "hamayuso230:abr:master",
+      "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473588.csv.zip",
+      "contentSha256": "7bc5b2e82723ed08ab7a00c56fce1a26779d16624e261547ecbf8f482b4f1ef6"
+    },
+    {
+      "sourceId": "hamayuso230:abr:position",
+      "url": "https://data.address-br.digital.go.jp/mt_parcel_pos/city/mt_parcel_pos_city473588.csv.zip",
+      "contentSha256": "6eff08ac631ee7cbae61f9bd77f4c99e4ce14146fae17126c3e9599dec21029e"
+    },
+    {
+      "sourceId": "transport-source:086:00ee8c6fbec29168b0b59e65b23012b4",
+      "url": "https://hamayuso.com/content3.html",
+      "contentSha256": "8f45ff5dfdc4a547f7632893963ab20edcc58140b7f89ab442102cb83f3ac4c9"
+    },
+    {
+      "sourceId": "transport-source:086:06c834e2e6d935ecc205e4d051ad289b",
+      "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "contentSha256": "0f009250b4650e134eeec3d1e5e5caea1129db14a10d49c4c883ec7c51f22683"
+    },
+    {
+      "sourceId": "transport-source:086:321a4d889870502ddc3d89971f30b12e",
+      "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+      "contentSha256": "c7e7fb6a76b9944d1a938bfafe9e4b4c31e5f1540ee6424ab7e0875c09e03644"
+    },
+    {
+      "sourceId": "transport-source:086:46fa9928f8ca6ca9b28fa7b2945a96ab",
+      "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "contentSha256": "e8eb0ceddaa097e44c84c57f51be5093942f795d688a054e656685b65fbff333"
+    },
+    {
+      "sourceId": "transport-source:086:8101357b89423b7fa82a3cc2041a39d1",
+      "url": "https://hamayuso.com/content3.html",
+      "contentSha256": "7fef10f5124c45281cd18fcb8b75d2b658eb1cf07366cb16efa1fba36ea083cd"
+    },
+    {
+      "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+      "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "contentSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f"
+    },
+    {
+      "sourceId": "transport-source:086:c69dfb567c21a81d2bae95cb85cfaf25",
+      "url": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+      "contentSha256": "31b5d1c462624d095d5ad6b70f07f4f6809d7e2c04be80202ae2a6978875781b"
+    },
+    {
+      "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+      "url": "https://hamayuso.com/content3.html",
+      "contentSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c"
+    }
+  ],
+  "inputBindings": [
+    {
+      "path": "research/qualified-hamayuso-original-task.md",
+      "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+    },
+    {
+      "path": "research/qualified-hamayuso-scope-review.json",
+      "sha256": "f5717a6f29bf2cf615973431195782b839ce32568d4382b6abc7ac66b4b5b1e9"
+    },
+    {
+      "path": "research/qualified-hamayuso-native-review.json",
+      "sha256": "3436fa122f959a96a27b390b2cafde6ef95c7cd4a8630c1d7b46a32ee87e3e99"
+    }
+  ]
+}

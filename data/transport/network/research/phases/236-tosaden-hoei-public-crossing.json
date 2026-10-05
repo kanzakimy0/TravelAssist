@@ -1,0 +1,77 @@
+{
+  "phaseId": "236-tosaden-hoei-public-crossing",
+  "strategy": [
+    "ORIGINAL_TWO_TOSADEN_DIRECTION_ROOTS_ONLY",
+    "EXACT_NATIVE_IDENTITIES_AND_RESTRICTIONS",
+    "CONTIGUOUS_PUBLIC_WAYS_NO_COORDINATE_SNAP",
+    "NO_NEW_NODES"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:hoei-reviewed-public-crossing-236",
+    "transfer:tosaden:hoei-reviewed-public-crossing-236:operator-direction-map"
+  ],
+  "facts": [
+    {
+      "factId": "hoei-alight-to-airport-board-public-crossing-236",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:hoei-reviewed-public-crossing-236",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=133.5468,33.5558,133.5725,33.5596",
+      "observedResponseSha256": "c183490ae21209d24fafbcf9eb1f3fff31d7ca0d7b5d7357dcd5f3d9693df1bd",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:hoei-reviewed-public-crossing-236:operator-direction-map",
+          "url": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+          "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83"
+        }
+      ],
+      "components": [
+        {
+          "name": "宝永町",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3908_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "ee233b754e69082e76d3273490fbf5f1be6dd5c4b9bebc95b9020b3f2c3db884",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current Tosaden airport-only map dated 2026-02-01 explicitly names Hoeicho airport alighting on the south side and airport boarding on the north side of the tram street. Exact licensed GTFS 3908_01 and 3908_02 retain independent directional identities and restrictions. Original OSM public sidewalk/crossing ways 652167267 → 652167272 → 649925483 → 649925486 → 182231418 share nodes 6114648465,6114648468,6098577059,6098577061. This binds a coarse public street-side passenger-component relation, not a curb coordinate snap or a regular-bus stop alias. The operator map identifies the sides; OSM proves actual continuous public ways, including crossings. No private premises, reverse transfer, navigation geometry, travel time or accessibility assertion."
+          }
+        },
+        {
+          "name": "宝永町",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3908_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "94554250bde101b112a6a98582e5b11d728aab26cb98b26aa65ab4bd48036409",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current Tosaden airport-only map dated 2026-02-01 explicitly names Hoeicho airport alighting on the south side and airport boarding on the north side of the tram street. Exact licensed GTFS 3908_01 and 3908_02 retain independent directional identities and restrictions. Original OSM public sidewalk/crossing ways 652167267 → 652167272 → 649925483 → 649925486 → 182231418 share nodes 6114648465,6114648468,6098577059,6098577061. This binds a coarse public street-side passenger-component relation, not a curb coordinate snap or a regular-bus stop alias. The operator map identifies the sides; OSM proves actual continuous public ways, including crossings. No private premises, reverse transfer, navigation geometry, travel time or accessibility assertion."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_DIRECTIONAL_GTFS_PLUS_CURRENT_OPERATOR_ROADSIDE_COMPONENTS_AND_ODBL_CONTIGUOUS_PUBLIC_WAYS",
+      "hubScopeComplete": false,
+      "locator": "Current Tosaden airport-only map dated 2026-02-01 explicitly names Hoeicho airport alighting on the south side and airport boarding on the north side of the tram street. Exact licensed GTFS 3908_01 and 3908_02 retain independent directional identities and restrictions. Original OSM public sidewalk/crossing ways 652167267 → 652167272 → 649925483 → 649925486 → 182231418 share nodes 6114648465,6114648468,6098577059,6098577061. This binds a coarse public street-side passenger-component relation, not a curb coordinate snap or a regular-bus stop alias. The operator map identifies the sides; OSM proves actual continuous public ways, including crossings. No private premises, reverse transfer, navigation geometry, travel time or accessibility assertion."
+    }
+  ]
+}

@@ -39,6 +39,9 @@ export function findCachedSourceMetadata(cacheRoot, requestedUrl = null) {
         continue;
       }
       if (
+        !metadata ||
+        typeof metadata !== "object" ||
+        Array.isArray(metadata) ||
         typeof metadata.url !== "string" ||
         !/^https?:\/\//.test(metadata.url)
       )

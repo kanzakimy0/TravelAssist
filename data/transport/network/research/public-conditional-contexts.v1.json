@@ -49,6 +49,138 @@
           "acceptedPassengerRulesSha256": "3113a96a4692aa5ba79b43aeb3aaa9f0e2479823007d970f0dd9c4814d435b7f"
         }
       ]
+    },
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": true,
+      "planningAt": "2026-10-02T09:00:00+09:00",
+      "travelDate": "2026-10-03",
+      "acceptedContracts": [
+        "31f5975cda19d7e68b48693641a56a271a7bb38deab94d5eaf5233dc4f6ad308",
+        "8314093eaab02c96bbc69caa29fab70474dd0f57f7a4e82b133b5fe8c807bb87"
+      ],
+      "odReservationIntents": [
+        {
+          "odId": "transport-od:086:b498dac87cec9c4088dee053b20deeb7",
+          "kind": "REQUEST_BEFORE_PICKUP",
+          "channel": "PHONE",
+          "profile": "PUBLIC_AIRPORT_SERVICE_REQUEST",
+          "payment": "CASH",
+          "requestAt": "2026-10-02T15:00:00+09:00",
+          "pickupAt": "2026-10-03T11:00:00+09:00",
+          "flightCode": "NH747",
+          "flightServicePatternId": "transport-pattern:086:f094ff84190b073675733e885f4f7d0d",
+          "flightServiceStatus": "PLANNED_OPERATING",
+          "acceptsOperatorAssignedPlace": true,
+          "requestsOperatorConfirmation": true,
+          "acceptsNoDispatchGuarantee": true
+        },
+        {
+          "odId": "transport-od:086:f11d4424930c4c82916ca59e98e90161",
+          "kind": "REQUEST_BEFORE_PICKUP",
+          "channel": "PHONE",
+          "profile": "PUBLIC_AIRPORT_SERVICE_REQUEST",
+          "payment": "CASH",
+          "requestAt": "2026-10-02T15:00:00+09:00",
+          "pickupAt": "2026-10-03T11:00:00+09:00",
+          "flightCode": "NH748",
+          "flightServicePatternId": "transport-pattern:086:560f56a69faa3d0dd2cd0b773fe870b8",
+          "flightServiceStatus": "PLANNED_OPERATING",
+          "acceptsOperatorAssignedPlace": true,
+          "requestsOperatorConfirmation": true,
+          "acceptsNoDispatchGuarantee": true
+        }
+      ]
+    },
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": true,
+      "travelDate": "2026-10-04",
+      "acceptedContracts": [
+        "a5cfdea86c1077aa344dfb2c415630de2ecac48984a8bcaad15d1d45f5f7b59f"
+      ],
+      "reservationIntents": [
+        {
+          "kind": "REQUEST_BEFORE_DEADLINE",
+          "contractSha256": "a5cfdea86c1077aa344dfb2c415630de2ecac48984a8bcaad15d1d45f5f7b59f",
+          "travelDate": "2026-10-04",
+          "planningAt": "2026-10-03T12:00:00+09:00",
+          "channel": "PHONE",
+          "flightCode": "ANA725",
+          "flightServicePatternId": "transport-pattern:086:a60c03206c44cf73f7de9f4b62732ffe",
+          "flightServiceStatus": "PLANNED_OPERATING",
+          "acceptedPassengerRulesSha256": "766b051e4da45c187df99b8d6a9f4ee1c43a1adf57ebf4b5206825b7424e8887",
+          "acceptsNoDispatchGuarantee": true
+        }
+      ]
+    },
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": true,
+      "travelDate": "2026-10-04",
+      "acceptedContracts": [
+        "b94a8925cd75289ce495ffa64c1c58ee8f73777c5e470a7166d105e4b652845d"
+      ],
+      "reservationIntents": [
+        {
+          "kind": "REQUEST_BEFORE_DEADLINE",
+          "contractSha256": "b94a8925cd75289ce495ffa64c1c58ee8f73777c5e470a7166d105e4b652845d",
+          "travelDate": "2026-10-04",
+          "planningAt": "2026-10-03T12:00:00+09:00",
+          "channel": "PHONE",
+          "flightCode": "ANA726",
+          "flightServicePatternId": "transport-pattern:086:ff13e6a501e058571dd18040aa6eb103",
+          "flightServiceStatus": "PLANNED_OPERATING",
+          "acceptedPassengerRulesSha256": "766b051e4da45c187df99b8d6a9f4ee1c43a1adf57ebf4b5206825b7424e8887",
+          "acceptsNoDispatchGuarantee": true
+        }
+      ]
+    },
+    {
+      "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+      "publicStructureOnly": true,
+      "travelDate": "2026-10-04",
+      "acceptedContracts": [
+        "c15a931e3d9b01320eff7787ec440f9b883e20200c7a5834fc01889852b85b50",
+        "fa273f25684e28b304bcf43f38a353662e0ba13dc994f512ef361acb6ff02bb9",
+        "e56546d2ca6b8a33683d32c7c47badb363258291e6bea60f4229e9a4c80f2a15"
+      ],
+      "onboardIntents": [
+        {
+          "contractSha256": "c15a931e3d9b01320eff7787ec440f9b883e20200c7a5834fc01889852b85b50",
+          "travelDate": "2026-10-04",
+          "purpose": "ORDINARY_POINT_TO_POINT",
+          "purposeExplicitlyDeclared": true,
+          "acceptedPassengerRulesSha256": "712f1a3f11b29c3e08ae0cfc29616c25895425640493a180a81c19ae140a25d8",
+          "carriesSurfboard": false,
+          "carriesInconveniencingLargeLuggage": false,
+          "acceptsNoSeatOrDispatchGuarantee": true
+        },
+        {
+          "contractSha256": "fa273f25684e28b304bcf43f38a353662e0ba13dc994f512ef361acb6ff02bb9",
+          "travelDate": "2026-10-04",
+          "purpose": "ORDINARY_POINT_TO_POINT",
+          "purposeExplicitlyDeclared": true,
+          "acceptedPassengerRulesSha256": "712f1a3f11b29c3e08ae0cfc29616c25895425640493a180a81c19ae140a25d8",
+          "carriesSurfboard": false,
+          "carriesInconveniencingLargeLuggage": false,
+          "acceptsNoSeatOrDispatchGuarantee": true
+        },
+        {
+          "contractSha256": "e56546d2ca6b8a33683d32c7c47badb363258291e6bea60f4229e9a4c80f2a15",
+          "travelDate": "2026-10-04",
+          "purpose": "ORDINARY_POINT_TO_POINT",
+          "purposeExplicitlyDeclared": true,
+          "acceptedPassengerRulesSha256": "712f1a3f11b29c3e08ae0cfc29616c25895425640493a180a81c19ae140a25d8",
+          "carriesSurfboard": false,
+          "carriesInconveniencingLargeLuggage": false,
+          "acceptsNoSeatOrDispatchGuarantee": true,
+          "driverRequestMethod": "ONBOARD_TELL_DRIVER",
+          "requestedDropoffNodeIds": [
+            "transport-node:086:1da99940296788f8105ed91db05007b2"
+          ]
+        }
+      ]
     }
   ]
 }

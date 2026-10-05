@@ -23,7 +23,7 @@ def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + '\n', encoding='utf-8', newline='\n')
 
-def extract(feed, archive_path, url, dataset_url, purposes):
+def extract(feed, archive_path, url, dataset_url, purposes, cross_pack_transfer_pairs=frozenset()):
     raw = archive_path.read_bytes()
     content_hash = sha(raw)
     source_id = 'gtfs:' + feed
@@ -94,7 +94,10 @@ def extract(feed, archive_path, url, dataset_url, purposes):
         nodes.append({'identityAnchor': anchor(stop_id), 'canonicalNameJa': stop['stop_name'], 'nodeKind': 'ferry_port' if feed == 'fukuoka-ferry' else 'bus_stop', 'nodeLevel': 'T2', 'latitude': float(stop['stop_lat']), 'longitude': float(stop['stop_lon']), 'operatorRefs': sorted({p['operatorRef'] for p in relevant}), 'lineRefs': sorted({p['lineRef'] for p in relevant}), 'sourceRefs': [dataset_url, url], 'evidenceRefs': refs, 'identityRecord': record, 'origin': 'TASK_086_INDEPENDENT_GTFS', 'hubSemantics': 'GTFS_STOP_POINT_NO_SAME_NAME_COLLAPSE', 'parentHubId': None, 'sourceParentStation': stop.get('parent_station') or None, 'independentReview': {'decision': 'ADMIT_TASK_086_TOPOLOGY', 'recordSha256': sha(record), 'method': 'EXACT_LICENSED_STOP_USED_IN_REAL_TRIP', 'duplicateCheck': 'EXACT_FEED_STOP_ID', 'componentRule': 'Distinct boarding points retained; parent group is not transfer evidence'}})
     transfer_inputs = []
     for t in transfers:
-        if t['from_stop_id'] not in used or t['to_stop_id'] not in used or t['from_stop_id'] == t['to_stop_id'] or t.get('transfer_type') == '3':
+        pair = (t['from_stop_id'], t['to_stop_id'])
+        # Preserve explicitly reviewed transfers whose other admitted endpoint is in a separate package.
+        cross_pack = pair in cross_pack_transfer_pairs and pair[0] in used and pair[1] in stops
+        if (not ({pair[0], pair[1]} <= used or cross_pack)) or pair[0] == pair[1] or t.get('transfer_type') == '3':
             continue
         # Route/trip-specific restrictions cannot be generalized to hub-wide transfer.
         if any(t.get(k) for k in ['from_route_id','to_route_id','from_trip_id','to_trip_id']):
@@ -116,4 +119,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     OUT = args.output
     extract('fukuoka-ferry', args.input_dir / 'fukuoka-ferry.zip', 'https://data.bodik.jp/dataset/9938b52c-e54c-4d92-9975-a98c5f60e727/resource/499f5b3d-093e-4c32-9636-2b91b227e6c2/download/data.zip', 'https://data.bodik.jp/dataset/9938b52c-e54c-4d92-9975-a98c5f60e727', {})
-    extract('nagasaki-bus', args.input_dir / 'nagasaki-bus.zip', 'https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download', 'https://data.bodik.jp/dataset/420000_nagasakikeneibus', {'10':'highway','20':'airport','40':'highway','45':'highway','50':'tourism'})
+    extract('nagasaki-bus', args.input_dir / 'nagasaki-bus.zip', 'https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download', 'https://data.bodik.jp/dataset/420000_nagasakikeneibus', {'10':'highway','20':'airport','40':'highway','45':'highway','50':'tourism'}, {('886085_04', '886085_01')})

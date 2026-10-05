@@ -1,0 +1,69 @@
+{
+  "source": {
+    "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+    "url": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+    "contentSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f",
+    "evidenceContentSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T20:16:05.500Z",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+      "reason": "Travel organizer own named current package independently describes airport-to-Hamayuso and final hotel-to-airport accommodation transfer. Scope only actual operator-confirmed exact product participant staying at this hotel; not all hotel guests. Minimum directional and qualification facts; no raw product/table/fare/flight data reuse."
+    }
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:ab5eebfca27d3f401a116455373e03da",
+      "sourceId": "transport-source:086:ab5eebfca27d3f401a116455373e03da",
+      "sourceSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hamayuso230-AIRPORT_TO_HOTEL-product",
+        "sourceActionId": "northdaito:qualified:confirmed-product",
+        "sourceUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+        "observedResponseSha256": "802617d6c2961867e04bb8a1c6922d353c26f160545c097076746fbce81b14d3",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "AIRPORT_TO_HOTEL"
+        },
+        "corroboratingEvidence": []
+      },
+      "recordSha256": "a1b6d1b13c354b354eeb95c335f4bc3b1a4db13df4f4a5ac762829989355bf6f",
+      "locator": "Exact product: first-day airport to named lodging and last-day lodging to airport each explicit. Eligibility not extrapolated outside confirmed product."
+    }
+  ],
+  "candidates": [],
+  "patterns": [],
+  "transfers": []
+}

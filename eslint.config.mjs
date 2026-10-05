@@ -11,6 +11,7 @@ export default defineConfig([
     "build/**",
     "coverage/**",
     ".artifacts/**",
+    ".cache/**",
     "next-env.d.ts",
   ]),
 ]);

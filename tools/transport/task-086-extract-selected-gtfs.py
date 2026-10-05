@@ -235,7 +235,10 @@ def extract(raw, request):
             or reuse.get('sourceDescriptorSha256') != sha(base)
             or any(base.get(k) != source.get(k) for k in ('sourceId','url','datasetUrl','contentSha256','license','rightsDecision','persistenceAllowed','derivedDataAllowed','redistributionAllowed','validFrom','validTo','feedInfo','retainedArchive','attribution','observedAt'))
             or base.get('rightsClass', 'RAW_PERSISTENCE_ALLOWED') != 'RAW_PERSISTENCE_ALLOWED'
-            or base.get('agencies') != list(agencies.values())
+            or not isinstance(base.get('agencies'), list) or not base['agencies']
+            or any(not isinstance(a, dict) or agencies.get(a.get('agency_id')) != a for a in base['agencies'])
+            or len({a['agency_id'] for a in base['agencies']}) != len(base['agencies'])
+            or agencies.get(request['agencyId']) not in base['agencies']
             or base.get('licenseEvidence') != source.get('licenseEvidence')):
             raise ValueError('SELECTED_GTFS_BASE_SOURCE_MISMATCH')
         if reuse['method'] == 'EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE':

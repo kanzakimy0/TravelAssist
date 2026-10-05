@@ -255,6 +255,23 @@ test("TASK086 signed URL and error sanitization preserves stable version and has
     },
   );
 });
+test("TASK086 cached HTML sanitization removes hidden CSRF values but preserves source facts", () => {
+  const body =
+    '<meta name="_csrf" content="fixture-csrf-secret">' +
+    "<META content='fixture-csrf-parameter' name='_csrf_parameter'>" +
+    '<input type="hidden" value="fixture-session-secret" name="_csrf">' +
+    '<input name=access_token value="fixture-unquoted-secret">' +
+    '<p>Public airport boarding point</p><meta name="dataset-version" content="20261001">';
+  const safe = safeLogText(body);
+  assert.ok(!safe.includes("fixture-"));
+  assert.ok(safe.includes("Public airport boarding point"));
+  assert.ok(safe.includes('content="20261001"'));
+  assert.equal(safeLogText(safe), safe);
+  const wireHash = hash(body);
+  const record = sanitizeEvidence({ html: body, contentSha256: wireHash });
+  assert.equal(record.contentSha256, wireHash);
+  assert.equal(record.html, safe);
+});
 test("TASK086 identical failed acquisition is reused until a substantive request version changes", async (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "task086-dedup-"));
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
@@ -1133,5 +1150,53 @@ test("TASK086 remaining packages preserve T2 before T3 regardless of batch key o
       priorityRootIds: ["root:airport:small-island"],
     }).map((p) => p.packageId),
     ["a-t3", "z-t2", "a-unknown"],
+  );
+});
+
+test("source cache ignores null and malformed metadata without hiding valid cached sources", async () => {
+  const { findCachedSourceMetadata } =
+    await import("../tools/transport/task-086-source-cache.mjs");
+  const directory = fs.mkdtempSync(
+    path.join(os.tmpdir(), "task086-cache-shape-"),
+  );
+  try {
+    for (const [name, bytes] of Object.entries({
+      null: "null",
+      array: "[]",
+      scalar: "3",
+      broken: "{",
+      invalidUrl: JSON.stringify({ url: "https://[" }),
+      valid: JSON.stringify({
+        url: "https://example.org/source?version=1",
+        status: 200,
+        sha256: "a".repeat(64),
+      }),
+    }))
+      fs.writeFileSync(path.join(directory, name + ".metadata.json"), bytes);
+    const found = findCachedSourceMetadata(
+      directory,
+      "https://example.org/source?version=1",
+    );
+    assert.equal(found.length, 1);
+    assert.equal(found[0].responseSha256, "a".repeat(64));
+    assert.equal(found[0].reviewRequired, true);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("TASK086 cached HTML removes embedded browser nonces while preserving facts and wire hashes", () => {
+  const text =
+    '<script>window.publicSettings={"nonce":"fixture-browser-value","stop":"Airport bay3"};</script>' +
+    "<style nonce=fixture-csp-value>.bay{display:block}</style>" +
+    "<script nonce='fixture-quoted-value'></script>";
+  const safe = safeLogText(text);
+  assert.ok(!safe.includes("fixture-"));
+  assert.ok(safe.includes('"stop":"Airport bay3"'));
+  assert.ok(safe.includes(".bay{display:block}"));
+  assert.equal(safeLogText(safe), safe);
+  assert.equal(
+    sanitizeEvidence({ html: text, contentSha256: hash(text) }).contentSha256,
+    hash(text),
   );
 });

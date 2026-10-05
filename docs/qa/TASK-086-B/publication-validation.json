@@ -842,8 +842,37 @@
     "rawLogsRetained": false
   },
   "currentQualityGate": {
-    "status": "PENDING_CHECKPOINT_PUSH",
-    "requiredRecord": "branchHeadSha and actual checkoutSha separately; PR merge tests are not direct branch HEAD tests"
+    "status": "PASS_FOR_PHASE220_COMMIT_ONLY",
+    "branchHeadSha": "406d31f0a6b52f321b79fa4694f985709288407f",
+    "evidencePath": "docs/qa/TASK-086-B/phase220-ci-revisions.json",
+    "evidenceSha256": "495974091447d264afa1bdf2b44ba09bd979109f7b5aa9c92e95e59791f6cf5b",
+    "runs": [
+      {
+        "runId": 37146456508,
+        "event": "workflow_dispatch",
+        "checkoutSha": "406d31f0a6b52f321b79fa4694f985709288407f",
+        "directBranchHeadTest": true,
+        "tests": {
+          "tests": 3411,
+          "pass": 3411,
+          "fail": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "runId": 37146405841,
+        "event": "pull_request",
+        "checkoutSha": "797fb54b3d2efdaf492d333381186139797b305c",
+        "directBranchHeadTest": false,
+        "tests": {
+          "tests": 3411,
+          "pass": 3411,
+          "fail": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "laterUncommittedInputsCovered": false
   },
   "artifactIsCleanHeadBuild": false
 }

@@ -1,0 +1,695 @@
+{
+  "phaseId": "niijima-public-driver-request-private",
+  "strategy": [
+    "ORIGINAL_C28_AIRPORT_HOLD_UPGRADE",
+    "TWO_LICENSED_EXACT_OFFICIAL_FACILITY_IDENTITIES",
+    "CURRENT_MUNICIPAL_EXPLICIT_NAMED_BUS_COMPONENTS",
+    "INDEPENDENT_PARENT_CONTIGUOUS_SECTIONS",
+    "SOURCE_BOUND_ONBOARD_DRIVER_REQUEST_AND_PASSENGER_RESTRICTIONS",
+    "INDEPENDENT_CURRENT_CARRIER_NATIVE_DIRECTIONS"
+  ],
+  "completedActionIds": [
+    "niijima:private:bus",
+    "niijima:private:air",
+    "niijima:private:facility"
+  ],
+  "facts": [
+    {
+      "factId": "niijima-fureai-adjacent-private-0",
+      "kind": "service",
+      "sourceActionId": "niijima:private:bus",
+      "sourceUrl": "https://niijima.com/shoukai/access/files/bustimetabale202511.pdf",
+      "observedResponseSha256": "17ff66f6b045fcd1375d736de2d830b92b06d7898d7fdce1f397527b776c9eb6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "niijima:private:bus",
+          "url": "https://niijima.com/shoukai/access/fureai-bus.html",
+          "observedResponseSha256": "1c80b4137774a4ba5634306d4212354086d3a0ad4c8e8b7133dd99f36677d21e"
+        },
+        {
+          "sourceActionId": "niijima:private:facility",
+          "url": "https://www.niijima.com/gyousei/keikaku/files/dataniijima_2025_final.pdf",
+          "observedResponseSha256": "fc4ce7c8e1029ffdc80c1fb93370c207554f3e2f0ff48bf3e6ea3aa2e43ed367"
+        }
+      ],
+      "operator": "新島村",
+      "operatorRole": "PUBLIC_SERVICE_ORGANIZER",
+      "physicalVehicleOperator": "NOT_IDENTIFIED_NO_PRIVATE_CARRIER_GUESSED",
+      "line": "ふれあいバス",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "無料巡回バス",
+      "direction": "第3便:parent-index-0",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published municipal timetable filename202511, not a new2026 revision. Reviewed20261004 ordinary point-to-point service only, independent source parent retained. No timed itinerary, seat or actual dispatch guarantee.",
+      "parentCallingSequence": {
+        "sourceTripLabel": "第3便",
+        "calls": [
+          "空港",
+          "住民センター",
+          "新島高校正門前",
+          "B堤駐車場",
+          "住民センター",
+          "健康センター",
+          "若郷診療所前",
+          "若郷消防詰所",
+          "若郷防災コミュニティセンター前",
+          "住民センター",
+          "老人ホーム",
+          "まました温泉",
+          "住民センター",
+          "健康センター",
+          "若郷診療所前",
+          "健康センター"
+        ],
+        "selectedStartIndex": 0,
+        "selectedEndIndex": 1
+      },
+      "callingStations": [
+        "空港",
+        "住民センター"
+      ],
+      "callingComponents": [
+        {
+          "name": "新島空港",
+          "operator": "airport-facility:cf03_00033",
+          "line": "airport:cf03_00033",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00033",
+            "requirementId": "review:official-airport:新島",
+            "expectedRequirementName": "新島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Tokyo airport authority identifies passenger airport and NCA; carrier current public independent directions and municipal ordinary bus table airport calls establish coarse whole-airport passenger interface. No coordinates-derived walk, curb, platform or accessibility claim."
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:5375ea1d00a41c8b60f7f222b320598d"
+        },
+        {
+          "name": "新島住民センター",
+          "operator": "新島村",
+          "line": "niijima:fureai-bus",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "P05-22",
+            "identityAnchor": "mlit-p05:22:13:新島住民センター:新島村本村1-1-1",
+            "nativeRecordSha256": "034630300011ea35ee6ae683e33be60e195f2406f1faafbe6166d55918b54f91",
+            "archiveSha256": "576e86da9142bedb839cae3b09e074a1c1a63264349b8adc41365c7574a309e5",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:6f962c40c21e0c40de50b04df93d415d"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "PUBLIC_BUS_ONBOARD_REQUEST",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reviewedServiceDate": "2026-10-04",
+        "driverRequestDropoffNodeIds": [],
+        "passengerRules": {
+          "listedBoardingStopsOnly": true,
+          "surfboardsAllowed": false,
+          "inconveniencingLargeLuggageAllowed": false,
+          "excursion": {
+            "maximumPerRun": 6,
+            "mayRefuseOrRequireAlighting": true,
+            "excludedPeriods": [
+              "GOLDEN_WEEK",
+              "JUL21_AUG31",
+              "SILVER_WEEK"
+            ],
+            "unresolvedAnnualHolidayDates": true
+          }
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:d6c599f7b6490eabfffbfab8e4ed523f"
+        ]
+      },
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:d6c599f7b6490eabfffbfab8e4ed523f"
+      ],
+      "conditionEvidence": [
+        {
+          "conditionId": "niijima-onboard-0",
+          "sourceActionId": "niijima:private:bus",
+          "sourceUrl": "https://niijima.com/shoukai/access/fureai-bus.html",
+          "observedResponseSha256": "1c80b4137774a4ba5634306d4212354086d3a0ad4c8e8b7133dd99f36677d21e",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "PUBLIC_BUS_ONBOARD_REQUEST",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reviewedServiceDate": "2026-10-04",
+            "driverRequestDropoffNodeIds": [],
+            "passengerRules": {
+              "listedBoardingStopsOnly": true,
+              "surfboardsAllowed": false,
+              "inconveniencingLargeLuggageAllowed": false,
+              "excursion": {
+                "maximumPerRun": 6,
+                "mayRefuseOrRequireAlighting": true,
+                "excludedPeriods": [
+                  "GOLDEN_WEEK",
+                  "JUL21_AUG31",
+                  "SILVER_WEEK"
+                ],
+                "unresolvedAnnualHolidayDates": true
+              }
+            }
+          },
+          "locator": "Current municipal rider conditions; exact minimum normalized passenger rules and independent airport dropoff request scope"
+        }
+      ],
+      "locator": "第3便 independently printed sequence, exact contiguous indices 0 to 1; no reverse or stop removal."
+    },
+    {
+      "factId": "niijima-fureai-adjacent-private-1",
+      "kind": "service",
+      "sourceActionId": "niijima:private:bus",
+      "sourceUrl": "https://niijima.com/shoukai/access/files/bustimetabale202511.pdf",
+      "observedResponseSha256": "17ff66f6b045fcd1375d736de2d830b92b06d7898d7fdce1f397527b776c9eb6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "niijima:private:bus",
+          "url": "https://niijima.com/shoukai/access/fureai-bus.html",
+          "observedResponseSha256": "1c80b4137774a4ba5634306d4212354086d3a0ad4c8e8b7133dd99f36677d21e"
+        },
+        {
+          "sourceActionId": "niijima:private:facility",
+          "url": "https://www.niijima.com/gyousei/keikaku/files/dataniijima_2025_final.pdf",
+          "observedResponseSha256": "fc4ce7c8e1029ffdc80c1fb93370c207554f3e2f0ff48bf3e6ea3aa2e43ed367"
+        }
+      ],
+      "operator": "新島村",
+      "operatorRole": "PUBLIC_SERVICE_ORGANIZER",
+      "physicalVehicleOperator": "NOT_IDENTIFIED_NO_PRIVATE_CARRIER_GUESSED",
+      "line": "ふれあいバス",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "無料巡回バス",
+      "direction": "第2便:parent-index-9",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published municipal timetable filename202511, not a new2026 revision. Reviewed20261004 ordinary point-to-point service only, independent source parent retained. No timed itinerary, seat or actual dispatch guarantee.",
+      "parentCallingSequence": {
+        "sourceTripLabel": "第2便",
+        "calls": [
+          "健康センター",
+          "若郷診療所前",
+          "若郷消防詰所",
+          "若郷防災コミュニティセンター前",
+          "本村診療所",
+          "老人ホーム",
+          "まました温泉",
+          "B堤駐車場",
+          "本村診療所",
+          "住民センター",
+          "健康センター",
+          "空港",
+          "若郷診療所前",
+          "健康センター"
+        ],
+        "selectedStartIndex": 9,
+        "selectedEndIndex": 10
+      },
+      "callingStations": [
+        "住民センター",
+        "健康センター"
+      ],
+      "callingComponents": [
+        {
+          "name": "新島住民センター",
+          "operator": "新島村",
+          "line": "niijima:fureai-bus",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "P05-22",
+            "identityAnchor": "mlit-p05:22:13:新島住民センター:新島村本村1-1-1",
+            "nativeRecordSha256": "034630300011ea35ee6ae683e33be60e195f2406f1faafbe6166d55918b54f91",
+            "archiveSha256": "576e86da9142bedb839cae3b09e074a1c1a63264349b8adc41365c7574a309e5",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:75cc748ebd4df13257d61209c7dda29e"
+        },
+        {
+          "name": "さわやか健康センター",
+          "operator": "新島村",
+          "line": "niijima:fureai-bus",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "TOKYO_PUBLIC_EVACUATION_FACILITIES",
+            "identityAnchor": "tokyo-evacuation-facility:133639:さわやか健康センター:新島村本村3-12-8",
+            "nativeRecordSha256": "e9789a74635796b403c501c7cf3ed85ce6b132c89ae39c0f3cf937e7d1084d43",
+            "archiveSha256": "dc6cc97a78d613ae4beab1dfbbd56280a3652d67f5f49ba31c39a5579d22483d",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:278689cc7dc1ec77259aebfd92b9ea5a"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "PUBLIC_BUS_ONBOARD_REQUEST",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reviewedServiceDate": "2026-10-04",
+        "driverRequestDropoffNodeIds": [],
+        "passengerRules": {
+          "listedBoardingStopsOnly": true,
+          "surfboardsAllowed": false,
+          "inconveniencingLargeLuggageAllowed": false,
+          "excursion": {
+            "maximumPerRun": 6,
+            "mayRefuseOrRequireAlighting": true,
+            "excludedPeriods": [
+              "GOLDEN_WEEK",
+              "JUL21_AUG31",
+              "SILVER_WEEK"
+            ],
+            "unresolvedAnnualHolidayDates": true
+          }
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:db758dd9e6fadb75aaf97084825fd064"
+        ]
+      },
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:db758dd9e6fadb75aaf97084825fd064"
+      ],
+      "conditionEvidence": [
+        {
+          "conditionId": "niijima-onboard-1",
+          "sourceActionId": "niijima:private:bus",
+          "sourceUrl": "https://niijima.com/shoukai/access/fureai-bus.html",
+          "observedResponseSha256": "1c80b4137774a4ba5634306d4212354086d3a0ad4c8e8b7133dd99f36677d21e",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "PUBLIC_BUS_ONBOARD_REQUEST",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reviewedServiceDate": "2026-10-04",
+            "driverRequestDropoffNodeIds": [],
+            "passengerRules": {
+              "listedBoardingStopsOnly": true,
+              "surfboardsAllowed": false,
+              "inconveniencingLargeLuggageAllowed": false,
+              "excursion": {
+                "maximumPerRun": 6,
+                "mayRefuseOrRequireAlighting": true,
+                "excludedPeriods": [
+                  "GOLDEN_WEEK",
+                  "JUL21_AUG31",
+                  "SILVER_WEEK"
+                ],
+                "unresolvedAnnualHolidayDates": true
+              }
+            }
+          },
+          "locator": "Current municipal rider conditions; exact minimum normalized passenger rules and independent airport dropoff request scope"
+        }
+      ],
+      "locator": "第2便 independently printed sequence, exact contiguous indices 9 to 10; no reverse or stop removal."
+    },
+    {
+      "factId": "niijima-fureai-adjacent-private-2",
+      "kind": "service",
+      "sourceActionId": "niijima:private:bus",
+      "sourceUrl": "https://niijima.com/shoukai/access/files/bustimetabale202511.pdf",
+      "observedResponseSha256": "17ff66f6b045fcd1375d736de2d830b92b06d7898d7fdce1f397527b776c9eb6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "niijima:private:bus",
+          "url": "https://niijima.com/shoukai/access/fureai-bus.html",
+          "observedResponseSha256": "1c80b4137774a4ba5634306d4212354086d3a0ad4c8e8b7133dd99f36677d21e"
+        },
+        {
+          "sourceActionId": "niijima:private:facility",
+          "url": "https://www.niijima.com/gyousei/keikaku/files/dataniijima_2025_final.pdf",
+          "observedResponseSha256": "fc4ce7c8e1029ffdc80c1fb93370c207554f3e2f0ff48bf3e6ea3aa2e43ed367"
+        }
+      ],
+      "operator": "新島村",
+      "operatorRole": "PUBLIC_SERVICE_ORGANIZER",
+      "physicalVehicleOperator": "NOT_IDENTIFIED_NO_PRIVATE_CARRIER_GUESSED",
+      "line": "ふれあいバス",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "無料巡回バス",
+      "direction": "第2便:parent-index-10",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published municipal timetable filename202511, not a new2026 revision. Reviewed20261004 ordinary point-to-point service only, independent source parent retained. No timed itinerary, seat or actual dispatch guarantee.",
+      "parentCallingSequence": {
+        "sourceTripLabel": "第2便",
+        "calls": [
+          "健康センター",
+          "若郷診療所前",
+          "若郷消防詰所",
+          "若郷防災コミュニティセンター前",
+          "本村診療所",
+          "老人ホーム",
+          "まました温泉",
+          "B堤駐車場",
+          "本村診療所",
+          "住民センター",
+          "健康センター",
+          "空港",
+          "若郷診療所前",
+          "健康センター"
+        ],
+        "selectedStartIndex": 10,
+        "selectedEndIndex": 11
+      },
+      "callingStations": [
+        "健康センター",
+        "空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "さわやか健康センター",
+          "operator": "新島村",
+          "line": "niijima:fureai-bus",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "TOKYO_PUBLIC_EVACUATION_FACILITIES",
+            "identityAnchor": "tokyo-evacuation-facility:133639:さわやか健康センター:新島村本村3-12-8",
+            "nativeRecordSha256": "e9789a74635796b403c501c7cf3ed85ce6b132c89ae39c0f3cf937e7d1084d43",
+            "archiveSha256": "dc6cc97a78d613ae4beab1dfbbd56280a3652d67f5f49ba31c39a5579d22483d",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:48ccc3cff0689c1e1ee071e751c964c7"
+        },
+        {
+          "name": "新島空港",
+          "operator": "airport-facility:cf03_00033",
+          "line": "airport:cf03_00033",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00033",
+            "requirementId": "review:official-airport:新島",
+            "expectedRequirementName": "新島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Tokyo airport authority identifies passenger airport and NCA; carrier current public independent directions and municipal ordinary bus table airport calls establish coarse whole-airport passenger interface. No coordinates-derived walk, curb, platform or accessibility claim."
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:08eee8b552604fb6e06543baa86735f3"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "3"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "PUBLIC_BUS_ONBOARD_REQUEST",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reviewedServiceDate": "2026-10-04",
+        "driverRequestDropoffNodeIds": [
+          "transport-node:086:1da99940296788f8105ed91db05007b2"
+        ],
+        "passengerRules": {
+          "listedBoardingStopsOnly": true,
+          "surfboardsAllowed": false,
+          "inconveniencingLargeLuggageAllowed": false,
+          "excursion": {
+            "maximumPerRun": 6,
+            "mayRefuseOrRequireAlighting": true,
+            "excludedPeriods": [
+              "GOLDEN_WEEK",
+              "JUL21_AUG31",
+              "SILVER_WEEK"
+            ],
+            "unresolvedAnnualHolidayDates": true
+          }
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:f97ee4a792a7fa629caa64376cc566a5"
+        ]
+      },
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:f97ee4a792a7fa629caa64376cc566a5"
+      ],
+      "conditionEvidence": [
+        {
+          "conditionId": "niijima-onboard-2",
+          "sourceActionId": "niijima:private:bus",
+          "sourceUrl": "https://niijima.com/shoukai/access/fureai-bus.html",
+          "observedResponseSha256": "1c80b4137774a4ba5634306d4212354086d3a0ad4c8e8b7133dd99f36677d21e",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "PUBLIC_BUS_ONBOARD_REQUEST",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reviewedServiceDate": "2026-10-04",
+            "driverRequestDropoffNodeIds": [
+              "transport-node:086:1da99940296788f8105ed91db05007b2"
+            ],
+            "passengerRules": {
+              "listedBoardingStopsOnly": true,
+              "surfboardsAllowed": false,
+              "inconveniencingLargeLuggageAllowed": false,
+              "excursion": {
+                "maximumPerRun": 6,
+                "mayRefuseOrRequireAlighting": true,
+                "excludedPeriods": [
+                  "GOLDEN_WEEK",
+                  "JUL21_AUG31",
+                  "SILVER_WEEK"
+                ],
+                "unresolvedAnnualHolidayDates": true
+              }
+            }
+          },
+          "locator": "Current municipal rider conditions; exact minimum normalized passenger rules and independent airport dropoff request scope"
+        }
+      ],
+      "locator": "第2便 independently printed sequence, exact contiguous indices 10 to 11; no reverse or stop removal."
+    },
+    {
+      "logicalRowIndex": 6,
+      "blockStartIndex": 3,
+      "nativeRecordSha256": "18bd575aa91be900cf6c95528f635951705751effff2d1d582a9edee78d4c0eb",
+      "nativeBlockSha256": "316c40a430ef198b08f448169f5983199734cfbb379610e9345aa98b6dec38c7",
+      "reviewedFlightCode": "201",
+      "reviewedServiceDate": "20261004",
+      "callingStations": [
+        "調布飛行場",
+        "新島空港"
+      ],
+      "factId": "niijima-nca-native-direction-private-0",
+      "kind": "service",
+      "sourceActionId": "niijima:private:air",
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1uRcJ7q_bbLLlUY0zZcQZrTjZFREG-uSijPVu3dmYMmo/gviz/tq?tqx=out:csv&gid=1183522561",
+      "observedResponseSha256": "b7ef0b2c6b58ce0780619db7db178bff291dc6f0afc863b699167d11bf6ae548",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "niijima:private:air",
+          "url": "https://central-air.co.jp/js/schedule.js",
+          "observedResponseSha256": "acdc25fd0c2f0502d85c2f1eaa5970ac8f5eb08043898fafb67559c0f3f7ce0c"
+        },
+        {
+          "sourceActionId": "niijima:private:air",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "niijima:private:air",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/niijima/niijima_service",
+          "observedResponseSha256": "f1fd7c6096d9ec2c95909b8d36315885435d24bae1c678fec04adc95a5a76115"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・新島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RJTF-RJAN",
+      "serviceState": "active",
+      "serviceStateScope": "Explicit20261004 carrier published scheduled service; blank live-status field is not a claim of actual operation. No clocks, seats, itinerary or booking guarantee.",
+      "callingComponents": [
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        },
+        {
+          "name": "新島空港",
+          "operator": "airport-facility:cf03_00033",
+          "line": "airport:cf03_00033",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00033",
+            "requirementId": "review:official-airport:新島",
+            "expectedRequirementName": "新島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Tokyo airport authority identifies passenger airport and NCA; carrier current public independent directions and municipal ordinary bus table airport calls establish coarse whole-airport passenger interface. No coordinates-derived walk, curb, platform or accessibility claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Exact carrier public CSV row6, independently mapped A block by its own public script."
+    },
+    {
+      "logicalRowIndex": 6,
+      "blockStartIndex": 11,
+      "nativeRecordSha256": "18bd575aa91be900cf6c95528f635951705751effff2d1d582a9edee78d4c0eb",
+      "nativeBlockSha256": "ee386c074e76f784f5d5461522d10eb746f5baa9144a550ceaa8c3cae50cf240",
+      "reviewedFlightCode": "202",
+      "reviewedServiceDate": "20261004",
+      "callingStations": [
+        "新島空港",
+        "調布飛行場"
+      ],
+      "factId": "niijima-nca-native-direction-private-1",
+      "kind": "service",
+      "sourceActionId": "niijima:private:air",
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1uRcJ7q_bbLLlUY0zZcQZrTjZFREG-uSijPVu3dmYMmo/gviz/tq?tqx=out:csv&gid=1183522561",
+      "observedResponseSha256": "b7ef0b2c6b58ce0780619db7db178bff291dc6f0afc863b699167d11bf6ae548",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "niijima:private:air",
+          "url": "https://central-air.co.jp/js/schedule.js",
+          "observedResponseSha256": "acdc25fd0c2f0502d85c2f1eaa5970ac8f5eb08043898fafb67559c0f3f7ce0c"
+        },
+        {
+          "sourceActionId": "niijima:private:air",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "niijima:private:air",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/niijima/niijima_service",
+          "observedResponseSha256": "f1fd7c6096d9ec2c95909b8d36315885435d24bae1c678fec04adc95a5a76115"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・新島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RJAN-RJTF",
+      "serviceState": "active",
+      "serviceStateScope": "Explicit20261004 carrier published scheduled service; blank live-status field is not a claim of actual operation. No clocks, seats, itinerary or booking guarantee.",
+      "callingComponents": [
+        {
+          "name": "新島空港",
+          "operator": "airport-facility:cf03_00033",
+          "line": "airport:cf03_00033",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00033",
+            "requirementId": "review:official-airport:新島",
+            "expectedRequirementName": "新島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Tokyo airport authority identifies passenger airport and NCA; carrier current public independent directions and municipal ordinary bus table airport calls establish coarse whole-airport passenger interface. No coordinates-derived walk, curb, platform or accessibility claim."
+          }
+        },
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Exact carrier public CSV row6, independently mapped B block by its own public script."
+    }
+  ],
+  "scope": "2 new exact native public facility candidates, original airport HOLD upgrade, 3 adjacent bus rides and2 independently published scheduled flights. No new walks, curb coordinates, booking or unrestricted default paths."
+}

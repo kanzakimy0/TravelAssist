@@ -36,6 +36,14 @@ export function createServiceAccessContract({
   hash,
   invariant,
   verifyEvidence,
+  validateFlightDependency,
+  onboardRequestFactory,
+  validateOnboardNode,
+  validateQualifiedHotelNode,
+  hamayusoAccessFactory,
+  validateHamayusoNode,
+  airPassengerShuttleFactory,
+  generatePassengerFlight,
 }) {
   if (
     ![canonical, hash, invariant, verifyEvidence].every(
@@ -43,11 +51,155 @@ export function createServiceAccessContract({
     )
   )
     throw new TypeError("ACCESS_CALLBACKS_REQUIRED");
+  const hamayuso = hamayusoAccessFactory?.({
+    canonical,
+    hash,
+    invariant,
+    verifyEvidence,
+    validateNode: validateHamayusoNode,
+  });
+  const ONBOARD_KIND = "PUBLIC_BUS_ONBOARD_REQUEST";
+  const onboard = onboardRequestFactory?.({
+    canonical,
+    hash,
+    invariant,
+    validDateOnly,
+    verifyEvidence,
+    validateNode: validateOnboardNode,
+  });
+  const AIR_PASSENGER_KIND = "AIR_PASSENGER_PUBLIC_SHUTTLE";
+  const airPassenger = airPassengerShuttleFactory?.({
+    canonical,
+    hash,
+    invariant,
+    verifyEvidence,
+    validDateOnly,
+    validateNode: validateOnboardNode,
+    generateFlightPattern: generatePassengerFlight,
+  });
   const exactKeys = (o, keys) =>
     o && Object.keys(o).every((k) => keys.includes(k));
-  function validateAccessContract(c) {
+  function validatePricia(c) {
     invariant(
-      [1, 2].includes(c?.schemaVersion) &&
+      exactKeys(c, [
+        "schemaVersion",
+        "kind",
+        "profile",
+        "audience",
+        "eligibilityKeys",
+        "hotelIdentityAnchor",
+        "qualificationBasis",
+        "contact",
+        "flightAssociation",
+        "boardingRules",
+        "unknowns",
+        "sourceEvidenceRefs",
+      ]),
+      "PRICIA_UNMODELED_CONDITION",
+    );
+    invariant(
+      c.schemaVersion === 1 &&
+        c.kind === "QUALIFIED_HOTEL_SHUTTLE" &&
+        c.profile === "PRICIA_LODGING_GUEST_SHUTTLE_V1" &&
+        c.audience === "ELIGIBILITY_RESTRICTED" &&
+        canonical(c.eligibilityKeys) === canonical(["pricia:lodging-guest"]) &&
+        c.hotelIdentityAnchor === "osm:way:1353020075:pricia-hotel" &&
+        c.qualificationBasis ===
+          "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+      "PRICIA_ELIGIBILITY",
+    );
+    invariant(
+      canonical(c.contact) ===
+        canonical({
+          advanceContact: "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+          unbookedBoarding:
+            "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+          deadline: null,
+        }),
+      "PRICIA_CONTACT_TERMS",
+    );
+    invariant(
+      ["ARRIVAL", "DEPARTURE"].includes(c.flightAssociation) &&
+        canonical(c.boardingRules) ===
+          canonical({
+            reportToStaff: true,
+            departureMayOccurWithoutUnreportedPassenger: true,
+            hotelDepartureLobbyLeadMinutes: 10,
+            otherDestinationsAllowed: false,
+          }) &&
+        canonical(c.unknowns) ===
+          canonical({
+            legalMotorCarrier: null,
+            exactTimetable: null,
+            price: null,
+            dispatchGuarantee: null,
+          }),
+      "PRICIA_OPERATION_TERMS",
+    );
+    invariant(
+      Array.isArray(c.sourceEvidenceRefs) &&
+        c.sourceEvidenceRefs.length > 0 &&
+        new Set(c.sourceEvidenceRefs).size === c.sourceEvidenceRefs.length,
+      "PRICIA_SOURCE_REFS",
+    );
+    return c;
+  }
+  function allowsPricia(edge, context) {
+    const c = edge.accessContract,
+      v = context?.odValidationContext;
+    if (
+      !v ||
+      context.kind !== "EXPLICIT_CONDITIONAL_PLANNING" ||
+      context.publicStructureOnly === true ||
+      !context.acceptedContracts?.includes(hash(c)) ||
+      !context.eligibilityKeys?.includes("pricia:lodging-guest") ||
+      context.hotelIdentityAnchor !== c.hotelIdentityAnchor ||
+      context.qualificationStatus !== "ACTUAL_LODGING_GUEST" ||
+      context.flightServiceStatus !== "PLANNED_OPERATING" ||
+      context.acceptsFlightAssociatedOnly !== true ||
+      context.acceptsNoDispatchGuarantee !== true ||
+      context.acknowledgesStaffReporting !== true ||
+      context.advanceContactStatus !== "REPORTED_FOR_THIS_SHUTTLE"
+    )
+      return false;
+    try {
+      bindEdge(
+        edge,
+        v.sources,
+        v.evidence,
+        v.patternById?.get(edge.servicePatternRef),
+        v,
+      );
+      const hotel = [...v.nodes.values()].find(
+        (n) => n.identityAnchor === c.hotelIdentityAnchor,
+      );
+      if (
+        !hotel ||
+        hotel.decision !== "ADMIT_TASK_086_TOPOLOGY" ||
+        !validateQualifiedHotelNode?.(hotel, v)
+      )
+        return false;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  function validateAccessContract(c) {
+    if (c?.kind === "QUALIFIED_PACKAGE_HOTEL_SHUTTLE") {
+      invariant(hamayuso, "HAMAYUSO_FACTORY_REQUIRED");
+      return hamayuso.validate(c);
+    }
+    if (c?.kind === AIR_PASSENGER_KIND) {
+      invariant(airPassenger, "AIR_SHUTTLE_VALIDATOR_REQUIRED");
+      return airPassenger.validate(c);
+    }
+    if (c?.kind === "QUALIFIED_HOTEL_SHUTTLE") return validatePricia(c);
+    if (c?.kind === ONBOARD_KIND) {
+      invariant(onboard, "ONBOARD_CONTRACT_VALIDATOR_REQUIRED");
+      return onboard.validate(c);
+    }
+    invariant(
+      [1, 2, 3].includes(c?.schemaVersion) &&
         c.kind === "BOOKABLE_PASSENGER_SERVICE",
       "ACCESS_CONTRACT_KIND",
     );
@@ -63,6 +215,9 @@ export function createServiceAccessContract({
         "operatingDays",
         "sourceEvidenceRefs",
         ...(c.schemaVersion === 2 ? ["payment", "passengerRules"] : []),
+        ...(c.schemaVersion === 3
+          ? ["flightService", "flightDispatch", "passengerRules"]
+          : []),
       ]) &&
         exactKeys(c.reservation, [
           "requirement",
@@ -148,6 +303,77 @@ export function createServiceAccessContract({
         "ACCESS_PASSENGER_RULES_REQUIRED",
       );
     }
+    if (c.schemaVersion === 3) {
+      const b = c.flightService,
+        d = c.flightDispatch,
+        r = c.passengerRules;
+      invariant(
+        exactKeys(b, [
+          "servicePatternId",
+          "sourceFactRef",
+          "flightCode",
+          "reviewedServiceDate",
+        ]) &&
+          [b?.servicePatternId, b?.sourceFactRef, b?.flightCode].every(
+            (x) => typeof x === "string" && x.length > 0,
+          ) &&
+          /^\d{8}$/.test(b.reviewedServiceDate) &&
+          validDateOnly(
+            b.reviewedServiceDate.replace(
+              /^(\d{4})(\d{2})(\d{2})$/,
+              "$1-$2-$3",
+            ),
+          ),
+        "ACCESS_FLIGHT_SERVICE_REQUIRED",
+      );
+      invariant(
+        exactKeys(d, [
+          "airportNodeId",
+          "relation",
+          "delay",
+          "cancellation",
+          "diversion",
+          "noBookingOrCapacityGuarantee",
+        ]) &&
+          typeof d?.airportNodeId === "string" &&
+          d.airportNodeId.length > 0 &&
+          ["ARRIVAL", "DEPARTURE"].includes(d.relation) &&
+          d.noBookingOrCapacityGuarantee === true &&
+          (d.relation === "ARRIVAL"
+            ? d.delay === "WAIT_FOR_ARRIVAL" &&
+              d.cancellation === "NO_DISPATCH" &&
+              d.diversion === "NO_DISPATCH"
+            : d.delay === "SCHEDULED_DEPARTURE" &&
+              d.cancellation === "NO_DISPATCH_OR_RETURN_IF_ALREADY_STARTED" &&
+              d.diversion === "NOT_STATED"),
+        "ACCESS_FLIGHT_DISPATCH_RULES_REQUIRED",
+      );
+      invariant(
+        exactKeys(r, [
+          "offStopPickupDropoffAllowed",
+          "luggageMustFitTrunk",
+          "luggageConsultAtBooking",
+          "smokingAllowed",
+          "drinkingAllowed",
+          "arrivalLeadMinutes",
+        ]) &&
+          r?.offStopPickupDropoffAllowed === false &&
+          r.luggageMustFitTrunk === true &&
+          r.luggageConsultAtBooking === true &&
+          r.smokingAllowed === false &&
+          r.drinkingAllowed === false &&
+          r.arrivalLeadMinutes === 5,
+        "ACCESS_FIXED_PASSENGER_RULES_REQUIRED",
+      );
+      invariant(
+        c.audience === "PUBLIC" &&
+          c.validFrom === "2026-03-29" &&
+          c.validTo === "2026-10-24" &&
+          b.reviewedServiceDate >= c.validFrom.replaceAll("-", "") &&
+          b.reviewedServiceDate <= c.validTo.replaceAll("-", ""),
+        "ACCESS_FLIGHT_PROFILE_VALIDITY",
+      );
+    }
     invariant(
       validDateOnly(c.validFrom) &&
         validDateOnly(c.validTo) &&
@@ -184,7 +410,7 @@ export function createServiceAccessContract({
         fact: evidence.get(x.record.sourceFactRef)?.record,
       }));
   }
-  function bindPattern(pattern, sources, evidence) {
+  function bindPattern(pattern, sources, evidence, validationContext) {
     const bindings = resolvedFacts(pattern.evidenceRefs, evidence);
     const any =
       hasContract(pattern) ||
@@ -195,6 +421,10 @@ export function createServiceAccessContract({
         (x) => requiresReservation(x.record) || requiresReservation(x.fact),
       );
     if (!any) {
+      invariant(
+        !bindings.some((x) => airPassenger?.restrictedFact(x.fact)),
+        "AIR_SHUTTLE_CONTRACT_STRIPPED",
+      );
       invariant(!required, "REQUIRED_RESERVATION_WITHOUT_ACCESS_CONTRACT");
       return null;
     }
@@ -208,6 +438,36 @@ export function createServiceAccessContract({
       verifyEvidence(c.sourceEvidenceRefs, sources, evidence),
       "ACCESS_CONDITION_PROVENANCE",
     );
+    if (c.kind === "QUALIFIED_PACKAGE_HOTEL_SHUTTLE") {
+      hamayuso.sources(c, sources, evidence);
+      hamayuso.pattern(c, pattern, validationContext);
+    }
+    if (c.kind === "QUALIFIED_HOTEL_SHUTTLE") {
+      const expected = [
+        [
+          "https://www.pricia.co.jp/access/",
+          "c4ecb6d645e2cd250ff5c6c4558cf0ee63a88b27815d3b4469783b61ad23a1b8",
+        ],
+        [
+          "https://www.pricia.co.jp/staffblog/hotel/25137/",
+          "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439",
+        ],
+      ];
+      const actual = c.sourceEvidenceRefs
+        .map((ref) => {
+          const row = evidence.get(ref),
+            source = sources.get(row?.sourceId);
+          return [
+            source?.url,
+            source?.evidenceContentSha256 ?? source?.contentSha256,
+          ];
+        })
+        .sort((a, b) => a[0].localeCompare(b[0]));
+      invariant(
+        canonical(actual) === canonical(expected),
+        "PRICIA_EXACT_CONDITION_SOURCE_BINDING",
+      );
+    }
     const { sourceEvidenceRefs, ...terms } = c;
     invariant(
       sourceEvidenceRefs.every((ref) => {
@@ -237,6 +497,19 @@ export function createServiceAccessContract({
       ),
       "ACCESS_CONTRACT_SOURCE_BINDING",
     );
+    if (c.schemaVersion === 3) {
+      invariant(
+        typeof validateFlightDependency === "function",
+        "ACCESS_ACTUAL_FLIGHT_VALIDATOR_REQUIRED",
+      );
+      validateFlightDependency(c, pattern, validationContext);
+    }
+    if (bindings.some((x) => airPassenger?.restrictedFact(x.fact)))
+      invariant(c.kind === AIR_PASSENGER_KIND, "AIR_SHUTTLE_CONTRACT_REPLACED");
+    if (c.kind === AIR_PASSENGER_KIND)
+      airPassenger.pattern(c, pattern, bindings, validationContext);
+    if (c.kind === ONBOARD_KIND)
+      onboard.pattern(c, pattern, bindings, validationContext);
     return c;
   }
   function edgeFields(c) {
@@ -246,9 +519,18 @@ export function createServiceAccessContract({
       accessContract: structuredClone(c),
       accessContractSha256: hash(c),
       conditionalTopology: true,
+      ...(c.kind === AIR_PASSENGER_KIND
+        ? { serviceAccessProfile: AIR_PASSENGER_KIND }
+        : {}),
     };
   }
-  function bindEdge(edge, sources, evidence, expectedPattern) {
+  function bindEdge(
+    edge,
+    sources,
+    evidence,
+    expectedPattern,
+    validationContext,
+  ) {
     const bindings = [
       ...resolvedFacts(edge.topologyEvidenceRefs, evidence),
       ...resolvedFacts(expectedPattern?.evidenceRefs, evidence),
@@ -266,6 +548,10 @@ export function createServiceAccessContract({
         (x) => requiresReservation(x.record) || requiresReservation(x.fact),
       );
     if (!any) {
+      invariant(
+        !bindings.some((x) => airPassenger?.restrictedFact(x.fact)),
+        "AIR_SHUTTLE_CONTRACT_STRIPPED",
+      );
       invariant(!required, "REQUIRED_RESERVATION_WITHOUT_ACCESS_CONTRACT");
       return null;
     }
@@ -273,7 +559,12 @@ export function createServiceAccessContract({
       expectedPattern?.servicePatternId === edge.servicePatternRef,
       "ACCESS_PATTERN_REGISTRY_REQUIRED",
     );
-    const expected = bindPattern(expectedPattern, sources, evidence);
+    const expected = bindPattern(
+      expectedPattern,
+      sources,
+      evidence,
+      validationContext,
+    );
     invariant(
       expected !== null &&
         canonical(expected) === canonical(edge.accessContract),
@@ -313,9 +604,22 @@ export function createServiceAccessContract({
         ),
       "EDGE_ACCESS_FACT_BINDING",
     );
+    if (c.kind === AIR_PASSENGER_KIND)
+      airPassenger.edge(c, edge, expectedPattern);
+    if (c.kind === ONBOARD_KIND) onboard.edge(c, edge, expectedPattern);
     return c;
   }
   function allowsEdge(edge, context) {
+    if (airPassenger?.restrictedEdge(edge, context?.odValidationContext))
+      return airPassenger.allows(edge, context, bindEdge);
+    const registered = context?.odValidationContext?.patternById?.get(
+      edge.servicePatternRef,
+    );
+    if (
+      edge.accessContract?.kind === ONBOARD_KIND ||
+      registered?.accessContract?.kind === ONBOARD_KIND
+    )
+      return onboard.allows(edge, context, bindEdge);
     if (
       !hasContract(edge) &&
       edge.conditionalTopology === undefined &&
@@ -330,6 +634,10 @@ export function createServiceAccessContract({
     }
     if (!edge.conditionalTopology || edge.accessContractSha256 !== hash(c))
       return false;
+    if (c.kind === "QUALIFIED_PACKAGE_HOTEL_SHUTTLE")
+      return hamayuso.allows(edge, context, bindEdge);
+    if (c.kind === "QUALIFIED_HOTEL_SHUTTLE")
+      return allowsPricia(edge, context);
     if (
       context?.kind !== "EXPLICIT_CONDITIONAL_PLANNING" ||
       !Array.isArray(context.acceptedContracts) ||
@@ -372,6 +680,36 @@ export function createServiceAccessContract({
       )
         return false;
       // A feasible future telephone request is a planning condition, never an accepted booking.
+    }
+    if (c.schemaVersion === 3) {
+      const v = context.odValidationContext,
+        b = c.flightService;
+      if (
+        !v ||
+        context.travelDate.replaceAll("-", "") !== b.reviewedServiceDate ||
+        intent.channel !== "PHONE" ||
+        intent.flightCode !== b.flightCode ||
+        intent.flightServicePatternId !== b.servicePatternId ||
+        intent.flightServiceStatus !== "PLANNED_OPERATING" ||
+        intent.acceptedPassengerRulesSha256 !== hash(c.passengerRules) ||
+        intent.acceptsNoDispatchGuarantee !== true
+      )
+        return false;
+      try {
+        const expected = v.patternById?.get(edge.servicePatternRef);
+        bindEdge(edge, v.sources, v.evidence, expected, v);
+        const digest = hash({
+          sources: [...v.sources].sort(),
+          evidence: [...v.evidence].sort(),
+          nodes: [...v.nodes].sort(),
+          patterns: [...v.patternById].sort(),
+          dynamicOD: [...(v.dynamicODById ?? [])].sort(),
+          nativeFacilities: [...(v.nativeFacilityByAnchor ?? [])].sort(),
+        });
+        if (context.evidenceContextSha256 !== digest) return false;
+      } catch {
+        return false;
+      }
     }
     // Do not assert a reservation exists or automatically satisfy a hotel/flight-user restriction.
     if (

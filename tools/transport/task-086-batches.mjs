@@ -46,13 +46,24 @@ export function executeBatches(
       validationContext?.patternById instanceof Map,
     "BATCH_VALIDATION_CONTEXT_REQUIRED",
   );
+  const hasFixedFlightContract = [
+    ...validationContext.patternById.values(),
+  ].some((p) => p.accessContract?.schemaVersion === 3);
+  const hasOnboardContract = [...validationContext.patternById.values()].some(
+    (p) =>
+      ["PUBLIC_BUS_ONBOARD_REQUEST", "AIR_PASSENGER_PUBLIC_SHUTTLE"].includes(
+        p.accessContract?.kind,
+      ),
+  );
   const validationContextSha256 = hash({
     sources: [...validationContext.sources].sort(),
     evidence: [...validationContext.evidence].sort(),
     patterns: [...validationContext.patternById].sort(),
-    ...(validationContext.dynamicODById?.size
+    ...(validationContext.dynamicODById?.size ||
+    hasFixedFlightContract ||
+    hasOnboardContract
       ? {
-          dynamicOD: [...validationContext.dynamicODById].sort(),
+          dynamicOD: [...(validationContext.dynamicODById ?? [])].sort(),
           nativeFacilities: [
             ...validationContext.nativeFacilityByAnchor,
           ].sort(),
@@ -61,7 +72,11 @@ export function executeBatches(
       : {}),
   });
   // Validate the complete independent registry before partitioning the edge set.
-  if (validationContext.dynamicODById?.size) {
+  if (
+    validationContext.dynamicODById?.size ||
+    hasFixedFlightContract ||
+    hasOnboardContract
+  ) {
     invariant(
       validationContext.dynamicODValidationScope === undefined,
       "BATCH_COMPLETE_OD_CONTEXT_REQUIRED",

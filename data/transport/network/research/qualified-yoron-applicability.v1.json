@@ -1,0 +1,88 @@
+{
+  "kind": "REVIEWED_QUALIFIED_AIRPORT_SURFACE_V1",
+  "requirementId": "review:official-airport:与論",
+  "checkId": "mode:review:official-airport:与論",
+  "airportNodeId": "transport-node:086:87f1c97334b47f9c39c3a832a017a56f",
+  "endpointNodeId": "transport-node:086:abb0b7b8b446842e6e344c5013c6dca0",
+  "endpointIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+  "eligibilityKeys": [
+    "pricia:lodging-guest"
+  ],
+  "contextSha256": "10ba34de915438dc2bb7818cdcc19f074192d07c84b911360bef0e927443aca6",
+  "originalScopeBasis": "TASK086_17_6_WHERE_SERVICE_EXISTS_NO_PUBLIC_ONLY_QUALIFIER",
+  "phaseId": "226-yoron-qualified-hotel-shuttle",
+  "phaseFile": "research/phases/226-yoron-qualified-hotel-shuttle.json",
+  "factBindings": [
+    [
+      "pricia-hotel-arrival",
+      "e921fb178a7e7ee400730be53f4f1c9369aa59416f03a3cacf6ce37278f35460"
+    ],
+    [
+      "pricia-hotel-departure",
+      "92a891803cfffdbe8a8c195bdabf7c34019d8132369a835f208f0597d7f58cd8"
+    ]
+  ],
+  "patternIds": [
+    "transport-pattern:086:e3f1a3da2140499fe798c4b09ff146ea",
+    "transport-pattern:086:4c13d37d8b3d8ab3d4e147487f3ca20c"
+  ],
+  "edgeIds": [
+    "transport-edge:086:745ceb9b9dbe016acc84ce0ad68f2933",
+    "transport-edge:086:9098dfc4a4e6c186caae66e28f5e9ef1"
+  ],
+  "contractSha256s": [
+    "f6dec7df8b28fc373a6babe437e02e28f45cdaf6fc5aeea116d53a4c2d175747",
+    "7d8dc99e6e6e46239c49f0d0312eb688664f432a6685181a3cf08c81db231f38"
+  ],
+  "sourceBindings": [
+    {
+      "sourceId": "transport-source:086:00e218fb8bd8db4dee198a87b3559e22",
+      "url": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "contentSha256": "d81a784b54aa3bb94578e15805f29d735d47a4a67ab3a137d02575c27a5247f5"
+    },
+    {
+      "sourceId": "transport-source:086:42e9cf5907e9c4f7c9d328e18022b351",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=128.395,27.047,128.402,27.052",
+      "contentSha256": "bee8c040baf0a7315236deb67e15d4fe3866c07a27b26d19bffc038fb31c63b1"
+    },
+    {
+      "sourceId": "transport-source:086:5268e4ede7a0c7de7084e0138d756d21",
+      "url": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "contentSha256": "359e228c78da6d116c1b795b57e3425d681bbce495bcf542c0854ee7fd0bdc67"
+    },
+    {
+      "sourceId": "transport-source:086:656322ac414c416700bff108a9b5fc33",
+      "url": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "contentSha256": "07841d3773cb61f9e89b652694baff3a94e97b678e734a19205e6bbc986cd58d"
+    },
+    {
+      "sourceId": "transport-source:086:b075a15c7504f1461c31c7417e17fce9",
+      "url": "https://www.pricia.co.jp/access/",
+      "contentSha256": "7c29b6c0d5f9979ddd85409ec89ccd5a0d6e7e4532f231752e3b412f5f2264fe"
+    },
+    {
+      "sourceId": "transport-source:086:e6199f8d2d159a327a2bfd59c1b84103",
+      "url": "https://www.pricia.co.jp/access/",
+      "contentSha256": "49f39f135805c11bcd582a8f31aa563305e2547119523e198f5a6a73e49d3f7f"
+    },
+    {
+      "sourceId": "transport-source:086:e680ef48e16c0703ad621f55cd20a223",
+      "url": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "contentSha256": "06f8b501bec60d0ff5b07a1dbe02fc1ef4781736d89bce1acc7c7a2a3a565a9f"
+    }
+  ],
+  "inputBindings": [
+    {
+      "path": "research/qualified-yoron-original-task.md",
+      "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+    },
+    {
+      "path": "research/qualified-yoron-scope-review.json",
+      "sha256": "98e920c3391f5880c3e623394584e2c5e09a1dd850a95eb32cd3760c59a9f493"
+    },
+    {
+      "path": "research/qualified-yoron-native-selection.json",
+      "sha256": "fca79c05df5a8c83676754967e7825d1c710901317251134b05951b533b11110"
+    }
+  ]
+}

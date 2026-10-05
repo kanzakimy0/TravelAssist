@@ -1,3 +1,12 @@
+import { createODCapabilityApplicability } from "./task-086-od-capability-applicability.mjs";
+import { createHamayusoFacility } from "./task-086-hamayuso-facility.mjs";
+import { abrSourcesBound } from "./task-086-abr-private-hotel.mjs";
+import { createHamayusoAccess } from "./task-086-hamayuso-access.mjs";
+import { createAirPassengerShuttle } from "./task-086-air-passenger-shuttle.mjs";
+import { createQualifiedAirportApplicability } from "./task-086-qualified-airport-applicability.mjs";
+import { createOnboardRequest } from "./task-086-onboard-request.mjs";
+import { createOfficialFacilityBus } from "./task-086-official-facility-bus.mjs";
+import { createPriciaFacility } from "./task-086-pricia-facility.mjs";
 import { createPublicConditionalApplicability } from "./task-086-public-conditional-applicability.mjs";
 import { createDynamicOD } from "./task-086-dynamic-od.mjs";
 import { createServiceAccessContract } from "./task-086-service-access-contract.mjs";
@@ -39,6 +48,18 @@ export const METRICS = [
   "transferTimeMin",
   "accessibility",
 ];
+export function publicStructuralResult(status) {
+  if (status === "STRUCTURALLY_CONNECTED_WITH_REVIEWED_OD_CAPABILITY")
+    return "PASS_WITH_REVIEWED_OD_CAPABILITY";
+  if (status === "STRUCTURALLY_CONNECTED_WITH_REVIEWED_QUALIFICATION")
+    return "PASS_WITH_REVIEWED_QUALIFICATION";
+  if (status === "OPEN") return "FAIL";
+  if (status === "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS")
+    return "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS";
+  if (status === "STRUCTURALLY_CONNECTED_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS")
+    return "PASS_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS";
+  throw new Error("UNKNOWN_PUBLIC_STRUCTURAL_STATUS");
+}
 export const DEFAULT_PARAMETERS = Object.freeze({
   maxNewNodesPerIteration: 100,
   maxNewEdgesPerIteration: 200,
@@ -76,12 +97,112 @@ export const hash = (value) =>
         : canonical(value),
     )
     .digest("hex");
+const priciaFacility = createPriciaFacility({
+  hash,
+  canonical,
+  invariant,
+  verifyEvidence,
+});
+const officialFacilityBus = createOfficialFacilityBus({
+  canonical,
+  hash,
+  verifyEvidence,
+});
+const hamayusoFacility = createHamayusoFacility({
+  hash,
+  canonical,
+  invariant,
+  verifyEvidence,
+  abrSourcesBound,
+});
 const serviceAccess = createServiceAccessContract({
+  hamayusoAccessFactory: createHamayusoAccess,
+  validateHamayusoNode: (node, v) => hamayusoFacility.bound(node, v),
+  validateQualifiedHotelNode: (node, v) => priciaFacility.bound(node, v),
+  onboardRequestFactory: createOnboardRequest,
+  airPassengerShuttleFactory: createAirPassengerShuttle,
+  generatePassengerFlight: (p, v) =>
+    generatePattern(
+      p,
+      v.nodes,
+      v.sources,
+      v.evidence,
+      "2026-10-01T00:00:00Z",
+      v,
+    ),
+  validateOnboardNode: (node, v) => {
+    const reviewed = admitNodes([node], v.sources, v.evidence, [], v)[0];
+    return (
+      reviewed.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      reviewed.identitySignature === node.identitySignature
+    );
+  },
   canonical,
   hash,
   invariant,
   verifyEvidence,
+  validateFlightDependency: validateFixedFlightDependency,
 });
+function validateFixedFlightDependency(c, groundPattern, v) {
+  const b = c.flightService,
+    d = c.flightDispatch,
+    p = v?.patternById?.get(b.servicePatternId),
+    raw = v?.evidence?.get(b.sourceFactRef)?.record;
+  invariant(
+    v?.nodes instanceof Map &&
+      v.sources instanceof Map &&
+      v.evidence instanceof Map &&
+      p,
+    "ACCESS_FLIGHT_REGISTRY_REQUIRED",
+  );
+  invariant(
+    p.mode === "flight" &&
+      p.serviceState === "active" &&
+      p.strictFactBinding === true &&
+      !p.accessContract &&
+      p.sourceFactRef === b.sourceFactRef &&
+      raw?.kind === "service" &&
+      raw.serviceState === "active" &&
+      raw.mode === "flight" &&
+      raw.operator === p.operatorRef &&
+      raw.reviewedFlightCode === b.flightCode &&
+      raw.reviewedServiceDate === b.reviewedServiceDate &&
+      verifyEvidence(
+        [b.sourceFactRef, ...p.evidenceRefs],
+        v.sources,
+        v.evidence,
+      ),
+    "ACCESS_ACTUAL_FLIGHT_SOURCE_BINDING",
+  );
+  invariant(
+    p.callingNodes?.length === 2 &&
+      p.callingNodes.every(
+        (c) =>
+          v.nodes.get(c.nodeId)?.nodeKind === "airport" &&
+          v.nodes.get(c.nodeId)?.mode === "flight",
+      ) &&
+      groundPattern.callingNodes?.length >= 2 &&
+      (d.relation === "ARRIVAL"
+        ? p.callingNodes[1].nodeId === d.airportNodeId &&
+          groundPattern.callingNodes[0].nodeId === d.airportNodeId
+        : p.callingNodes[0].nodeId === d.airportNodeId &&
+          groundPattern.callingNodes.at(-1).nodeId === d.airportNodeId),
+    "ACCESS_FLIGHT_DIRECTION_MISMATCH",
+  );
+  const generated = generatePattern(
+    p,
+    v.nodes,
+    v.sources,
+    v.evidence,
+    "2026-10-01T00:00:00Z",
+  );
+  invariant(
+    generated.length === 1 &&
+      generated[0].boardAllowed &&
+      generated[0].alightAllowed,
+    "ACCESS_FLIGHT_ACTUAL_BOARDING",
+  );
+}
 export const allowsServiceAccess = (edge, context) =>
   dynamicOD.isOD(edge, context?.odValidationContext)
     ? dynamicOD.allows(edge, context)
@@ -95,6 +216,7 @@ export const dynamicOD = createDynamicOD({
   invariant,
   verifyEvidence,
   metricFields,
+  generatePattern,
 });
 export const generateDynamicOD = dynamicOD.generate;
 export const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -139,7 +261,9 @@ export function factCallingRestrictions(fact) {
         (r) =>
           r &&
           ["0", "1"].includes(r.pickupType) &&
-          ["0", "1"].includes(r.dropOffType),
+          (["0", "1"].includes(r.dropOffType) ||
+            (r.dropOffType === "3" &&
+              fact.accessContract?.kind === "PUBLIC_BUS_ONBOARD_REQUEST")),
       ),
     "INVALID_FACT_BOARDING_RESTRICTIONS",
   );
@@ -607,8 +731,42 @@ export function admitNodes(
       )
         reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
       if (
-        node.origin === "TASK_086_INDEPENDENT_P05_AND_PUBLIC_OD" &&
+        [
+          "TASK_086_INDEPENDENT_P05_AND_PUBLIC_OD",
+          "TASK_086_INDEPENDENT_P04_AND_PUBLIC_OD",
+          "TASK_086_INDEPENDENT_P05_AND_PUBLIC_FIXED_SERVICE",
+        ].includes(node.origin) &&
         !dynamicOD.facilityBound(node, {
+          sources,
+          evidence,
+          nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+        })
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        (node.origin === "TASK_086_OFFICIAL_PUBLIC_FACILITY_AND_BUS" ||
+          (node.nodeKind === "public_pickup_facility" &&
+            node.mode === "local_bus")) &&
+        (node.origin !== "TASK_086_OFFICIAL_PUBLIC_FACILITY_AND_BUS" ||
+          !officialFacilityBus.facilityBound(node, {
+            sources,
+            evidence,
+            nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+          }))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_OFFICIAL_PRIVATE_HOTEL_AND_OSM" &&
+        !priciaFacility.bound(node, {
+          sources,
+          evidence,
+          nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+        })
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_ABR_PRIVATE_HOTEL" &&
+        !hamayusoFacility.bound(node, {
           sources,
           evidence,
           nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
@@ -839,6 +997,7 @@ export function generatePattern(
   sources,
   evidence,
   generatedAt,
+  validationContext,
 ) {
   invariant(
     pattern.direction !== null &&
@@ -857,7 +1016,12 @@ export function generatePattern(
     verifyEvidence(pattern.evidenceRefs, sources, evidence),
     "PATTERN_EVIDENCE_INVALID",
   );
-  const accessContract = serviceAccess.bindPattern(pattern, sources, evidence);
+  const accessContract = serviceAccess.bindPattern(
+    pattern,
+    sources,
+    evidence,
+    validationContext,
+  );
   invariant(
     Array.isArray(pattern.callingNodes) && pattern.callingNodes.length >= 2,
     "PATTERN_SEQUENCE_INVALID",
@@ -1033,6 +1197,21 @@ export function generatePattern(
               )
                 return false;
               if (sourceName === selector.name) return true;
+              if (
+                [
+                  "PUBLIC_BUS_ONBOARD_REQUEST",
+                  "AIR_PASSENGER_PUBLIC_SHUTTLE",
+                ].includes(fact.accessContract?.kind) &&
+                officialFacilityBus.selectorBound(
+                  selector,
+                  sourceName,
+                  node,
+                  fact,
+                  sources,
+                  evidence,
+                )
+              )
+                return true;
               const review = selector.nameVariantReview;
               return (
                 [
@@ -1381,6 +1560,7 @@ export function validateEdges(edges, validationContext) {
         sources,
         evidence,
         patternById.get(edge.servicePatternRef),
+        validationContext,
       );
     } else {
       invariant(
@@ -1693,6 +1873,7 @@ export function auditGraph({
     const conditionalSurfaceWitnesses =
       requirement.kind === "airport"
         ? conditionalAccessContexts
+            .filter((c) => c.publicStructureOnly === true)
             .map((context) => {
               invariant(
                 context?.publicStructureOnly === true,
@@ -1827,7 +2008,7 @@ export function auditGraph({
       }
     : null;
   const conditionalApplicability = conditionalAccessContexts.length
-    ? publicConditionalApplicability({
+    ? reviewedConditionalApplicability({
         nodes,
         edges,
         inventory,
@@ -1841,10 +2022,13 @@ export function auditGraph({
   if (conditionalApplicability) {
     const qualified = new Map(
       conditionalApplicability.assessments
-        .filter(
-          (a) =>
-            a.status ===
+        .filter((a) =>
+          [
             "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS",
+            "STRUCTURALLY_CONNECTED_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS",
+            "STRUCTURALLY_CONNECTED_WITH_REVIEWED_QUALIFICATION",
+            "STRUCTURALLY_CONNECTED_WITH_REVIEWED_OD_CAPABILITY",
+          ].includes(a.status),
         )
         .map((a) => [a.checkId, a]),
     );
@@ -1863,8 +2047,7 @@ export function auditGraph({
       const q = qualified.get(`corridor:${corridor.corridorId}`);
       if (q) {
         corridor.status = "PASS";
-        corridor.connectivity =
-          "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS";
+        corridor.connectivity = q.status;
         corridor.defaultDiagnostic = "FAIL";
         corridor.forwardEdgeIds = q.nationalOrCorridorWitness.forward.edgeIds;
         corridor.reverseEdgeIds = q.nationalOrCorridorWitness.reverse.edgeIds;
@@ -1901,10 +2084,7 @@ export function auditGraph({
           defaultDiagnostics,
           structuralChecks: conditionalApplicability.assessments.map((a) => ({
             checkId: a.checkId,
-            status:
-              a.status === "OPEN"
-                ? "FAIL"
-                : "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS",
+            status: publicStructuralResult(a.status),
             defaultDiagnostic: "FAIL",
             witnessBindingSha256:
               conditionalApplicability.validationBindingSha256,
@@ -2383,3 +2563,25 @@ export const publicConditionalApplicability =
     allowsServiceAccess,
     prepareConditionalQueries,
   });
+
+const qualifiedConditionalApplicability = createQualifiedAirportApplicability({
+  hash,
+  canonical,
+  admitNodes,
+  validateEdges,
+  queryGraph,
+  allowsServiceAccess,
+  publicAssess: publicConditionalApplicability,
+});
+
+export const reviewedConditionalApplicability = createODCapabilityApplicability(
+  {
+    hash,
+    canonical,
+    admitNodes,
+    validateEdges,
+    queryGraph,
+    allowsServiceAccess,
+    priorAssess: qualifiedConditionalApplicability,
+  },
+);

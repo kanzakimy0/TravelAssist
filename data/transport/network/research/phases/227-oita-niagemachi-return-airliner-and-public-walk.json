@@ -1,0 +1,136 @@
+{
+  "phaseId": "227-oita-niagemachi-return-airliner-and-public-walk",
+  "strategy": [
+    "EXACT_CURRENT_OPERATOR_ROLE_LABELLED_STOP_POINTS",
+    "LICENSED_GTFS_ACTIVE_20261002_ROUTE50_FULL_PARENT",
+    "PRESERVE_FULL_PARENT_TRIP_AND_ALL_INTERMEDIATE_CALL_RESTRICTIONS",
+    "COARSE_ODBL_PUBLIC_SIDEWALK_AND_CROSSING_CHAIN"
+  ],
+  "completedActionIds": [
+    "bus:oitakotsu:licensed-niagemachi-airport-return-section",
+    "transfer:oita:niagemachi-operator-role-labelled-stop-points",
+    "transfer:oita:niagemachi-public-sidewalk-crossing"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "oitakotsu-niagemachi-airport-return-package.json",
+      "packageSha256": "e69ed5d10e8467e54467d2b81954e713fb8c7cfec4ad23be9fcb13b082d60874",
+      "sourceActionId": "bus:oitakotsu:licensed-niagemachi-airport-return-section",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "oita-niagemachi-85-0-85-2-public-sidewalk-crossings",
+      "kind": "transfer",
+      "sourceActionId": "transfer:oita:niagemachi-public-sidewalk-crossing",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=131.6060,33.2400,131.6090,33.2423",
+      "observedResponseSha256": "00974059fab6e29fafd11ba67995e5fd079ad3d00612a92d99d6e325ec85d156",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only the two OSM-derived Niagemachi transfer topology edges if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not classify unrelated canonical records as OSM-derived."
+      },
+      "locator": "The operator role-labelled points and the exact GTFS identities place the alighting-only 85 0 stop on the west side and the boarding-only 85 2 stop on the east side. The cached OSM map225 shows the connected public sidewalk/crossing chain between those sides (marked and signalized crossings, ways 544104763, 544104764, 544104762, 544104761, 544104760, 1137137362, 954579768, 904987469, 904987470, 904987471, 904987472). Coarse public walk relation only; no curb/door snapping, shared GTFS/OSM identity, exact pole-to-crossing geometry, accessibility or time claim.",
+      "components": [
+        {
+          "name": "荷揚町",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:51",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "85 0",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "2444bdf5a5eb5b8e2966bad13b361e432a7c015d146f419072995cd305905526",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The exact licensed stop ID 85 0 is called on active 20261002 route 481 with pickup_type=1, drop_off_type=0; Oita Kotsu current stop page identifies its separate 【降車専用】荷揚町ダイワロイネットホテル前 point on the west side."
+          }
+        },
+        {
+          "name": "荷揚町",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "85 2",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "e20866b7028850829e5c157dbebbbae9cb5f5288594477e826766a24272d60ee",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact licensed native85 2 is the second call of full active20261002 route50 trip a6abae94-d38b-4fa6-8308-ffbfbb788875, pickup0/dropoff1. Operator current page independently identifies the separate airport boarding point on the east side."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OPERATOR_ROLE_LABELLED_POINT_AND_OSM_CONTINUOUS_PUBLIC_SIDEWALK_CROSSING_CHAIN",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:oita:niagemachi-operator-role-labelled-stop-points",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/maps/map.php?TB_iframe=true&height=600&placeValuesBeforeTB_=savedValues&tei=%E8%8D%B7%E6%8F%9A%E7%94%BA&width=900",
+          "observedResponseSha256": "aacd75c903fd227cc02723c7c25b55c524cbc7809f563b1b8ea4c471041ca37d"
+        },
+        {
+          "sourceActionId": "bus:oitakotsu:licensed-niagemachi-airport-return-section",
+          "url": "https://data.bodik.jp/dataset/09f3116a-418d-42be-9bd5-4d395c7b3467/resource/899d5ccc-75ee-48a8-bc96-e241a6a0c0cd/download/gtfs04_oitakotsu.zip",
+          "observedResponseSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e"
+        }
+      ],
+      "operatorPointFacts": [
+        {
+          "role": "【降車専用】荷揚町ダイワロイネットホテル前",
+          "point": [
+            33.2406498699178,
+            131.60706815925954
+          ]
+        },
+        {
+          "role": "【乗車専用】荷揚町ダイワロイネットホテル前",
+          "point": [
+            33.24042510894802,
+            131.6073792709872
+          ]
+        }
+      ],
+      "topology": {
+        "westSideWalkway": "544104763",
+        "eastSideWalkway": "904987472",
+        "continuousWays": [
+          "544104763",
+          "544104764",
+          "544104762",
+          "544104761",
+          "544104760",
+          "1137137362",
+          "954579768",
+          "904987469",
+          "904987470",
+          "904987471",
+          "904987472"
+        ],
+        "namedOsmStopNode": "5213074241",
+        "rawRedistribution": false,
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true
+      }
+    }
+  ],
+  "notes": [
+    "Full actual4-call route50 parent replaces previously unpublished route480 section2-10. Same archive/operator/date, independently verified actual different native trip; no skipped stop or reversal. Only2 necessary new nodes.",
+    "Niagemachi physical public walk and directions are unchanged; its boarding component line/current service binding is updated from480 to independently native route50.",
+    "Shinkawa pole5-to-pole1 public walk is separate phase238. No shared generation performed."
+  ]
+}

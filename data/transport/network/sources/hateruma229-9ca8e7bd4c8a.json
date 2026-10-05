@@ -1,0 +1,64 @@
+{
+  "kind": "REVIEWED_NATIVE_OR_MINIMAL_FACTS",
+  "source": {
+    "sourceId": "transport-source:086:8b1e7f104ade0d2c4dbe5aa6d330db48",
+    "url": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+    "contentSha256": "bec6be48525bc70037cc8cd06eae0bc941130062d1ffc56c17376c56836466a9",
+    "evidenceContentSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T18:06:36.035271+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "reason": "Only exact minimum passenger-use conditions independently stated in current town page and flyer. Flight users only; narrow non-lodging contexts, no implied general-public qualification."
+    },
+    "attribution": "https://www.town.taketomi.lg.jp/topics/1753249932/; operator factual topology; reviewed 2026-10-03T18:06:36.035271+00:00"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:fcf7701cb42324a068dd6e4366754b1e",
+      "sourceId": "transport-source:086:8b1e7f104ade0d2c4dbe5aa6d330db48",
+      "sourceSha256": "bec6be48525bc70037cc8cd06eae0bc941130062d1ffc56c17376c56836466a9",
+      "record": {
+        "kind": "REVIEWED_FLIGHT_USER_SHUTTLE_CONDITIONS",
+        "factId": "hateruma229:REVIEWED_FLIGHT_USER_SHUTTLE_CONDITIONS",
+        "sourceActionId": "hateruma229:rules-static",
+        "sourceUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+        "observedResponseSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+        "reviewedTermsEffectiveFrom": "2026-01-05",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "CURRENT_LINKED_FLIGHT_USER",
+          "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+        ],
+        "reservationRequirement": "NOT_REQUIRED",
+        "passengerRules": {
+          "maximumPartySize": 9,
+          "overcrowdingMayRefuse": true,
+          "noCapacityGuarantee": true,
+          "wetBodyAllowed": false,
+          "intermediateAlightingAllowed": false,
+          "eatingAllowed": false,
+          "drinkingAllowed": false,
+          "smokingIncludingHeatedAndElectronicAllowed": false,
+          "lodgingVisitorPolicy": "PRINCIPALLY_ACCOMMODATION_PICKUP_EXCLUDED_FROM_THIS_REVIEW"
+        },
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "hateruma229:rules-static",
+            "url": "https://www.town.taketomi.lg.jp/userfiles/files/topics/seisakusuishin/koustu-syoko/080105haterumabasu.pdf",
+            "observedResponseSha256": "41e15a42ebd4c35db848d65e2a8353941738f9d45daa4284bcdf457a65482f8e"
+          }
+        ]
+      },
+      "recordSha256": "9cce74d1a94f0477ca98c3411abcd3a6d4a04e60be43e2219c44b85154fff36e",
+      "locator": "Independently reviewed minimum factual source record"
+    }
+  ]
+}

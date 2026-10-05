@@ -1,3 +1,4 @@
+import { bindQualifiedHotelSelector } from "./task-086-qualified-inputs.mjs";
 import { materializeDynamicODFact } from "./task-086-dynamic-od-intake.mjs";
 import {
   OD_REGISTRY_FILE,
@@ -31,7 +32,11 @@ import {
   P11_ARCHIVE_SHA256,
 } from "./task-086-bus-identities.mjs";
 import fs from "node:fs";
-import { prepareLicensedGtfsPackage } from "./task-086-licensed-package.mjs";
+import {
+  prepareLicensedGtfsPackage,
+  newlyAvailableGtfsTransfers,
+  prepareRetainedGtfsTransfers,
+} from "./task-086-licensed-package.mjs";
 import path from "node:path";
 import { gunzipSync } from "node:zlib";
 import { fileURLToPath } from "node:url";
@@ -376,14 +381,18 @@ export function runRemediation({
   const hubScopes = readRows(
     path.join(upstream, "hub-component-completeness-review.jsonl"),
   ).filter((h) => h.expectedComponents.length > 1);
-  const packs = fs
+  const sourcePackageFiles = fs
     .readdirSync(path.join(networkRoot, "sources"))
-    .filter((n) => n.endsWith(".json"))
-    .map((n) => readJson(path.join(networkRoot, "sources", n)))
-    .filter((p) => p.source)
-    .map((p) =>
-      p.kind === DERIVED_GTFS_KIND ? buildDerivedGtfsPackage(p) : p,
-    );
+    .filter((n) => n.endsWith(".json"));
+  const sourcePacks = sourcePackageFiles
+    .map((name) => ({
+      name,
+      pack: readJson(path.join(networkRoot, "sources", name)),
+    }))
+    .filter(({ pack }) => pack.source);
+  const packs = sourcePacks.map(({ pack }) =>
+    pack.kind === DERIVED_GTFS_KIND ? buildDerivedGtfsPackage(pack) : pack,
+  );
   const sources = exactRecordMap(
     packs.map((p) => p.source),
     "sourceId",
@@ -655,6 +664,76 @@ export function runRemediation({
     return source;
   };
   const bind = (selector, serviceEvidenceRef) => {
+    if (selector.privateHotelIdentity) {
+      const previous = [...nodes.values()].find(
+        (n) =>
+          n.identityAnchor === selector.privateHotelIdentity.identityAnchor,
+      );
+      const nodeId = bindQualifiedHotelSelector(selector, serviceEvidenceRef, {
+        candidates: publicODFacilityCandidates,
+        nodes,
+        sources,
+        evidence,
+        nativeFacilityByAnchor,
+      });
+      if (previous?.decision !== "ADMIT_TASK_086_TOPOLOGY")
+        nodeReviews.push({
+          nodeId,
+          previousDecision: previous?.decision ?? "NOT_IN_REQUIRED_INVENTORY",
+          decision: nodes.get(nodeId).decision,
+          identityRecordSha256: hash(nodes.get(nodeId).identityRecord),
+          serviceEvidenceRef,
+          coordinateScope:
+            "NAMED_HOTEL_FACILITY_REPRESENTATIVE_NOT_PICKUP_CURB",
+          publicFacilityClaim: false,
+        });
+      return nodeId;
+    }
+    if (selector.publicFacilityIdentity) {
+      const ref = selector.publicFacilityIdentity,
+        candidate = publicODFacilityCandidates.get(ref.identityAnchor),
+        fact = evidence.get(serviceEvidenceRef)?.record;
+      invariant(
+        candidate?.origin ===
+          "TASK_086_INDEPENDENT_P05_AND_PUBLIC_FIXED_SERVICE" &&
+          ref.recordSha256 === hash(candidate.identityRecord) &&
+          selector.name === candidate.canonicalNameJa &&
+          selector.operator === candidate.operatorRefs[0] &&
+          selector.line === candidate.lineRefs[0] &&
+          selector.mode === candidate.mode &&
+          fact?.kind === "service" &&
+          fact.operator === "株式会社Fromハート" &&
+          fact.accessContract?.schemaVersion === 3,
+        "PUBLIC_FIXED_FACILITY_SELECTOR_BINDING",
+      );
+      const admitted = admitNodes(
+        [
+          {
+            ...candidate,
+            evidenceRefs: [...candidate.evidenceRefs, serviceEvidenceRef],
+          },
+        ],
+        sources,
+        evidence,
+        [...nodes.values()],
+        { nativeFacilityByAnchor },
+      )[0];
+      invariant(
+        admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
+        "PUBLIC_FIXED_FACILITY_ADMISSION",
+      );
+      const old = nodes.get(admitted.nodeId);
+      if (old?.decision === "ADMIT_TASK_086_TOPOLOGY") {
+        invariant(
+          old.identitySignature === admitted.identitySignature,
+          "PUBLIC_FIXED_FACILITY_REBIND",
+        );
+        old.evidenceRefs = [
+          ...new Set([...old.evidenceRefs, ...admitted.evidenceRefs]),
+        ].sort(compare);
+      } else nodes.set(admitted.nodeId, admitted);
+      return admitted.nodeId;
+    }
     if (selector.derivedGtfsIdentity) {
       invariant(
         evidence.get(serviceEvidenceRef)?.record.kind === "transfer",
@@ -721,6 +800,69 @@ export function runRemediation({
         ],
         sameGroupNotInterchange: true,
       });
+      return admitted.nodeId;
+    }
+    if (selector.officialFacilityIdentity) {
+      const review = selector.officialFacilityIdentity,
+        candidate = publicODFacilityCandidates.get(review.identityAnchor);
+      invariant(
+        candidate &&
+          review.method ===
+            "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT" &&
+          candidate.canonicalNameJa === selector.name &&
+          candidate.mode === selector.mode &&
+          candidate.operatorRefs.includes(selector.operator) &&
+          candidate.lineRefs.includes(selector.line) &&
+          candidate.identityRecord.nativeRecordSha256 ===
+            review.nativeRecordSha256 &&
+          candidate.identityRecord.archiveSha256 === review.archiveSha256,
+        "OFFICIAL_BUS_FACILITY_SELECTOR_BINDING",
+      );
+      invariant(
+        candidate.evidenceRefs.includes(
+          selector.publicFacilityComponentReviewEvidenceRef,
+        ),
+        "OFFICIAL_BUS_COMPONENT_SELECTOR_NOT_REVIEWED",
+      );
+      const admitted = admitNodes(
+        [
+          {
+            ...candidate,
+            evidenceRefs: [
+              ...new Set([...candidate.evidenceRefs, serviceEvidenceRef]),
+            ],
+          },
+        ],
+        sources,
+        evidence,
+        [],
+        { nativeFacilityByAnchor },
+      )[0];
+      invariant(
+        admitted.decision === "ADMIT_TASK_086_TOPOLOGY",
+        "OFFICIAL_BUS_FACILITY_ADMISSION",
+      );
+      const previous = nodes.get(admitted.nodeId);
+      if (previous?.decision === "ADMIT_TASK_086_TOPOLOGY") {
+        invariant(
+          previous.identitySignature === admitted.identitySignature,
+          "OFFICIAL_BUS_FACILITY_REBIND",
+        );
+        previous.evidenceRefs = [
+          ...new Set([...previous.evidenceRefs, ...admitted.evidenceRefs]),
+        ].sort(compare);
+      } else {
+        nodes.set(admitted.nodeId, admitted);
+        nodeReviews.push({
+          nodeId: admitted.nodeId,
+          previousDecision: previous?.decision ?? "NOT_IN_REQUIRED_INVENTORY",
+          decision: admitted.decision,
+          identityRecordSha256: hash(candidate.identityRecord),
+          serviceEvidenceRef,
+          coordinateScope: candidate.independentReview.coordinateScope,
+          sameGroupNotInterchange: true,
+        });
+      }
       return admitted.nodeId;
     }
     if (selector.airportIdentity) {
@@ -1037,6 +1179,28 @@ export function runRemediation({
   let audit = replay();
   const generatorPaths = [
     "task-086-model.mjs",
+    "task-086-onboard-request.mjs",
+    "task-086-air-passenger-shuttle.mjs",
+    "task-086-abr-public-facility.mjs",
+    "task-086-extract-abr-facility.py",
+    "task-086-pricia-facility.mjs",
+    "task-086-abr-private-hotel.mjs",
+    "task-086-hamayuso-facility.mjs",
+    "task-086-hamayuso-access.mjs",
+    "task-086-extract-abr-private-hotel.py",
+
+    "task-086-aguni-od-capability.mjs",
+    "task-086-okushiri-od-capability.mjs",
+    "task-086-okushiri-od-facility.mjs",
+    "task-086-od-capability-context.mjs",
+    "task-086-od-capability-applicability.mjs",
+    "task-086-od-capability-inputs.mjs",
+    "task-086-qualified-inputs.mjs",
+    "task-086-qualified-airport-applicability.mjs",
+    "task-086-official-facility-bus.mjs",
+    "task-086-historical-facility-stop.mjs",
+    "task-086-official-facility-bus-registry.mjs",
+    "task-086-extract-official-bus-facility.py",
     "task-086-dynamic-od.mjs",
     "task-086-dynamic-od-intake.mjs",
     "task-086-dynamic-od-registry.mjs",
@@ -1060,6 +1224,7 @@ export function runRemediation({
     "task-086-extract-jreast.py",
     "task-086-extract-rail-gtfs.py",
     "task-086-extract-selected-gtfs.py",
+    "task-086-extract-gtfs.py",
     "task-086-licensed-package.mjs",
     "task-086-derived-gtfs.mjs",
     "task-086-extract-derived-gtfs.py",
@@ -1076,6 +1241,7 @@ export function runRemediation({
       oldAdmitted = [...nodes.values()].filter(
         (n) => n.decision === "ADMIT_TASK_086_TOPOLOGY",
       ).length;
+    const nodesBeforePhase = new Set(nodes.keys());
     const strategyFingerprint = hash(phase.strategy);
     const recent = history.slice(originalHistoryLength).slice(-2);
     invariant(
@@ -1173,6 +1339,40 @@ export function runRemediation({
         });
       }
     }
+    const candidates = newlyAvailableGtfsTransfers(
+      packs,
+      nodesBeforePhase,
+      nodes,
+    );
+    if (candidates.length) {
+      const reviewed = prepareRetainedGtfsTransfers(
+        candidates,
+        nodes,
+        sources,
+        evidence,
+        edges,
+        generatedAt,
+        (name) => ({
+          path: path.join(networkRoot, name),
+          bytes: fs.readFileSync(path.join(networkRoot, name)),
+        }),
+      );
+      for (const { transfer, edge, source } of reviewed) {
+        transfers.push(transfer);
+        edges.push(edge);
+        groups.push({
+          groupId: transfer.transferId,
+          pattern: transfer,
+          edges: [edge],
+          sources: [source],
+          nodes: [nodes.get(transfer.from), nodes.get(transfer.to)].map((n) =>
+            structuredClone(n),
+          ),
+          generatorSha256: hash(generatorHashes),
+          nextActionDeficitSummary: before.counts,
+        });
+      }
+    }
     for (const fact of phase.facts) {
       if (isRetiredCorrectionFact(patternCorrections, phase, fact)) continue;
       bindReviewedConditionEvidence(fact, actions, sources, evidence, (p) =>
@@ -1260,6 +1460,14 @@ export function runRemediation({
           sources,
           evidence,
           generatedAt,
+          {
+            nodes,
+            sources,
+            evidence,
+            nativeFacilityByAnchor,
+            dynamicODById,
+            patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
+          },
         );
         edges.push(...generated);
         groups.push({
@@ -1269,6 +1477,20 @@ export function runRemediation({
           sources: [
             source,
             identitySource,
+            ...(fact.callingComponents?.some(
+              (c) => c.officialFacilityIdentity || c.privateHotelIdentity,
+            )
+              ? [
+                  ...new Map(
+                    calls
+                      .flatMap((c) => nodes.get(c.nodeId).evidenceRefs)
+                      .map((ref) => {
+                        const s = sources.get(evidence.get(ref).sourceId);
+                        return [s.sourceId, s];
+                      }),
+                  ).values(),
+                ]
+              : []),
             ...(fact.accessContract?.sourceEvidenceRefs ?? []).map((ref) =>
               sources.get(evidence.get(ref).sourceId),
             ),
@@ -1306,6 +1528,7 @@ export function runRemediation({
             nodes.set(admitted.nodeId, admitted);
           }
         const materialized = materializeDynamicODFact(fact, {
+          patternById: new Map(patterns.map((p) => [p.servicePatternId, p])),
           phaseId: phase.phaseId,
           actions,
           sources,
@@ -1593,6 +1816,14 @@ export function runRemediation({
     generatedAt,
   });
   const globalIds = new Set(review.gaps.map((g) => g.deficitId));
+  const currentGlobalIds = new Set(currentGlobalGaps.map((g) => g.deficitId));
+  audit.globalReviewChecks = review.gaps.map((g) => ({
+    checkId: g.deficitId,
+    status: currentGlobalIds.has(g.deficitId) ? "FAIL" : "PASS",
+    reviewDecisionSha256: hash(
+      globalReviews.reviews.find((r) => r.deficitId === g.deficitId) ?? null,
+    ),
+  }));
   audit.deficits = [
     ...audit.deficits.filter((d) => !globalIds.has(d.deficitId)),
     ...currentGlobalGaps,
@@ -1688,6 +1919,7 @@ export function runRemediation({
           structuralChecks: audit.structuralChecks,
         }
       : {}),
+    globalReviewChecks: audit.globalReviewChecks,
     tier: audit.tier,
     connectedRequiredNodes: audit.connected,
     disconnectedRequiredNodes: audit.disconnected,
@@ -1741,6 +1973,8 @@ export function runRemediation({
   const inputPaths = [
     ...conditionalInputs.inputPaths,
     ...odFacilityInputPaths,
+    ...sourcePacks.map(({ name }) => "sources/" + name),
+    ...packs.map((p) => p.source.retainedArchive).filter(Boolean),
     "research/exception-proofs.v1.json",
     "research/stage-scope.json",
     "research/task-revision.v2.json",

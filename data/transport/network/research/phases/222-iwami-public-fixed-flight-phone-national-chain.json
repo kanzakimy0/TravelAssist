@@ -1,0 +1,619 @@
+{
+  "phaseId": "222-iwami-public-fixed-flight-phone-national-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_IDENTITY_UPGRADE",
+    "TWO_ACTUAL_FLIGHT_DIRECTIONS",
+    "EXACT_NATIVE_P05_PUBLIC_FIXED_ENDPOINT",
+    "SOURCE_BOUND_FIXED_PHONE_FLIGHT_DISPATCH",
+    "DEFAULT_DENIAL_PUBLIC_CONDITIONAL_STRUCTURAL_VIEW"
+  ],
+  "completedActionIds": [
+    "flight:iwami:independent-current-haneda-pair",
+    "taxi:iwami:hamada:fixed-flight-phone:20260329",
+    "government:p05:misumi-fixed-public-facility"
+  ],
+  "facts": [
+    {
+      "factId": "iwami-haneda-arrival",
+      "kind": "service",
+      "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+      "sourceUrl": "https://hagiiwami.jp/flight/",
+      "observedResponseSha256": "589e85e36bfeec3af4f265e17d9c16dc4c2a1019d63469d5106561d05215d071",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+          "url": "https://www.pref.shimane.lg.jp/infra/port/kikan/masuda_kendo/iwamikukokanri/index.data/2026_IWJinfo.pdf",
+          "observedResponseSha256": "18c1ed9a738f7b54aa0f5aaf0592c52e476e12c3f9f4f2193caf2a4b5a6375bf"
+        },
+        {
+          "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+          "url": "https://hagiiwami.jp/guide/",
+          "observedResponseSha256": "9c34557881c8145adba6aeac88094026b1e2a13336a773fc093416a6b714a9ff"
+        },
+        {
+          "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+          "url": "https://hagiiwami.jp/access/",
+          "observedResponseSha256": "98d353bccff5de4eb24c5092d965c3b511e54d1a4519669f4d549e55fc9eb471"
+        }
+      ],
+      "operator": "全日本空輸",
+      "line": "石見・東京国際国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HND-IWJ",
+      "serviceState": "active",
+      "serviceStateScope": "Current airport own seasonal2026March29-October24 table; static operating relation selectedOctober4, no live status guarantee. Pref2026 regularflight table is historical corroboration only.",
+      "reviewedFlightCode": "ANA725",
+      "reviewedServiceDate": "20261004",
+      "callingStations": [
+        "東京国際空港",
+        "石見空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Existing admitted exact TokyoInternational/Haneda C28 gateway; current airportIWJ own Tokyo/HND flight table separately gives both actual ANA directions. No new Haneda transfer or precise terminal claim."
+          }
+        },
+        {
+          "name": "石見空港",
+          "operator": "airport-facility:cf03_00080",
+          "line": "airport:cf03_00080",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00080",
+            "requirementId": "review:official-airport:石見",
+            "expectedRequirementName": "石見",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport flight/access/terminal and independent prefecture2026 official facility identify original passenger airport. Dedicated current airport shared-taxi source independently gives both airport directions at whole-airport facility scope, not invented curb or coordinate-nearness walk."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Airport-owned current Tokyo/HND table independently printed arrivalANA725; retain minimum actual service binding, no clocks/fares/raw layout."
+    },
+    {
+      "factId": "iwami-haneda-departure",
+      "kind": "service",
+      "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+      "sourceUrl": "https://hagiiwami.jp/flight/",
+      "observedResponseSha256": "589e85e36bfeec3af4f265e17d9c16dc4c2a1019d63469d5106561d05215d071",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+          "url": "https://www.pref.shimane.lg.jp/infra/port/kikan/masuda_kendo/iwamikukokanri/index.data/2026_IWJinfo.pdf",
+          "observedResponseSha256": "18c1ed9a738f7b54aa0f5aaf0592c52e476e12c3f9f4f2193caf2a4b5a6375bf"
+        },
+        {
+          "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+          "url": "https://hagiiwami.jp/guide/",
+          "observedResponseSha256": "9c34557881c8145adba6aeac88094026b1e2a13336a773fc093416a6b714a9ff"
+        },
+        {
+          "sourceActionId": "flight:iwami:independent-current-haneda-pair",
+          "url": "https://hagiiwami.jp/access/",
+          "observedResponseSha256": "98d353bccff5de4eb24c5092d965c3b511e54d1a4519669f4d549e55fc9eb471"
+        }
+      ],
+      "operator": "全日本空輸",
+      "line": "石見・東京国際国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "IWJ-HND",
+      "serviceState": "active",
+      "serviceStateScope": "Current airport own seasonal2026March29-October24 table; static operating relation selectedOctober4, no live status guarantee. Pref2026 regularflight table is historical corroboration only.",
+      "reviewedFlightCode": "ANA726",
+      "reviewedServiceDate": "20261004",
+      "callingStations": [
+        "石見空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "石見空港",
+          "operator": "airport-facility:cf03_00080",
+          "line": "airport:cf03_00080",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00080",
+            "requirementId": "review:official-airport:石見",
+            "expectedRequirementName": "石見",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport flight/access/terminal and independent prefecture2026 official facility identify original passenger airport. Dedicated current airport shared-taxi source independently gives both airport directions at whole-airport facility scope, not invented curb or coordinate-nearness walk."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Existing admitted exact TokyoInternational/Haneda C28 gateway; current airportIWJ own Tokyo/HND flight table separately gives both actual ANA directions. No new Haneda transfer or precise terminal claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Airport-owned current Tokyo/HND table independently printed departureANA726; retain minimum actual service binding, no clocks/fares/raw layout."
+    },
+    {
+      "factId": "iwami-misumi-fixed-arrival",
+      "kind": "service",
+      "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+      "sourceUrl": "https://hagiiwami.jp/access/",
+      "observedResponseSha256": "98d353bccff5de4eb24c5092d965c3b511e54d1a4519669f4d549e55fc9eb471",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://www.city.hamada.shimane.jp/www/contents/1551852609919/index.html",
+          "observedResponseSha256": "3bc9675bd4eef9e23e3a0b23b10f6461afa6ee09edc36be02553287a5793b393"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://www.city.hamada.shimane.jp/www/contents/1720165444044/index.html",
+          "observedResponseSha256": "4df765a9d96d8d76ca3d1e2229ac1bfdc99a4385325f20269f82e4f95da6cb95"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://hagiiwami.jp/wordpress/wp-content/themes/hagiiwami-v3/images/other/ilst_flow_hamada.png",
+          "observedResponseSha256": "cbf4b360028eb5f59c8ec388a2fb04b7689f1eac4ad29b6b57baab336a3926fd"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://hagiiwami.jp/flight/",
+          "observedResponseSha256": "589e85e36bfeec3af4f265e17d9c16dc4c2a1019d63469d5106561d05215d071"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://hagiiwami.jp/guide/",
+          "observedResponseSha256": "9c34557881c8145adba6aeac88094026b1e2a13336a773fc093416a6b714a9ff"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://www.pref.shimane.lg.jp/infra/port/kikan/masuda_kendo/iwamikukokanri/index.data/2026_IWJinfo.pdf",
+          "observedResponseSha256": "18c1ed9a738f7b54aa0f5aaf0592c52e476e12c3f9f4f2193caf2a4b5a6375bf"
+        }
+      ],
+      "operator": "株式会社Fromハート",
+      "line": "萩・石見空港リムジンタクシー浜田線",
+      "mode": "demand_shared_taxi",
+      "purpose": "airport",
+      "serviceClass": "公共予約型乗合タクシー",
+      "direction": "IWJ-MISUMI",
+      "serviceState": "active",
+      "serviceStateScope": "Published fixed airport feeder seasonal2026Mar29-Oct24 only, mandatory reservation and linkedflight conditions; no accepted booking, capacity, actual flight or timed itinerary guarantee.",
+      "reservation": "required",
+      "parentCallingStations": [
+        "石見空港",
+        "市役所三隅支所",
+        "浜田駅北口ロータリー"
+      ],
+      "publishedParentCallingStations": [
+        "萩・石見空港",
+        "浜田市役所三隅支所",
+        "浜田駅北口ロータリー"
+      ],
+      "sectionStartIndex": 0,
+      "parentCallingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "callingStations": [
+        "石見空港",
+        "市役所三隅支所"
+      ],
+      "callingComponents": [
+        {
+          "name": "石見空港",
+          "operator": "airport-facility:cf03_00080",
+          "line": "airport:cf03_00080",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00080",
+            "requirementId": "review:official-airport:石見",
+            "expectedRequirementName": "石見",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport flight/access/terminal and independent prefecture2026 official facility identify original passenger airport. Dedicated current airport shared-taxi source independently gives both airport directions at whole-airport facility scope, not invented curb or coordinate-nearness walk."
+          }
+        },
+        {
+          "name": "市役所三隅支所",
+          "operator": "facility:P05-22:32:P05_220",
+          "line": "facility:P05-22:32:P05_220",
+          "mode": "demand_shared_taxi",
+          "publicFacilityIdentity": {
+            "identityAnchor": "p05:22:32:P05_220",
+            "recordSha256": "bc8c1fa0ab38355898d203be3443c5c0687adad362b1995012a9e98dc5742460"
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 3,
+        "kind": "BOOKABLE_PASSENGER_SERVICE",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reservation": {
+          "requirement": "REQUIRED",
+          "method": "PHONE",
+          "deadline": {
+            "daysBefore": 1,
+            "localTime": "17:00",
+            "timeZone": "Asia/Tokyo"
+          },
+          "noBookingNoDispatch": true
+        },
+        "validFrom": "2026-03-29",
+        "validTo": "2026-10-24",
+        "operatingDays": "DAILY",
+        "flightService": {
+          "servicePatternId": "transport-pattern:086:a60c03206c44cf73f7de9f4b62732ffe",
+          "sourceFactRef": "transport-evidence:086:7531fbf365e57c8cf7292e0baf01342f",
+          "flightCode": "ANA725",
+          "reviewedServiceDate": "20261004"
+        },
+        "flightDispatch": {
+          "airportNodeId": "transport-node:086:afa9121c3ce9a1075f2e32867e21ba61",
+          "relation": "ARRIVAL",
+          "delay": "WAIT_FOR_ARRIVAL",
+          "cancellation": "NO_DISPATCH",
+          "diversion": "NO_DISPATCH",
+          "noBookingOrCapacityGuarantee": true
+        },
+        "passengerRules": {
+          "offStopPickupDropoffAllowed": false,
+          "luggageMustFitTrunk": true,
+          "luggageConsultAtBooking": true,
+          "smokingAllowed": false,
+          "drinkingAllowed": false,
+          "arrivalLeadMinutes": 5
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:e79f1b616563beb49145d96b3febd573"
+        ]
+      },
+      "conditionEvidence": [
+        {
+          "conditionId": "iwami-public-fixed-arrival",
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "sourceUrl": "https://hagiiwami.jp/access/",
+          "observedResponseSha256": "98d353bccff5de4eb24c5092d965c3b511e54d1a4519669f4d549e55fc9eb471",
+          "locator": "Hamada-only current seasonal service, PHONE previous-day17, listed stoponly, all passenger conditions and direction-specific delayed/cancelled/diverted flight table. No reception hours or payment restriction claimed. Linked actualflight code/date from independently currentairporttable.",
+          "accessTerms": {
+            "schemaVersion": 3,
+            "kind": "BOOKABLE_PASSENGER_SERVICE",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reservation": {
+              "requirement": "REQUIRED",
+              "method": "PHONE",
+              "deadline": {
+                "daysBefore": 1,
+                "localTime": "17:00",
+                "timeZone": "Asia/Tokyo"
+              },
+              "noBookingNoDispatch": true
+            },
+            "validFrom": "2026-03-29",
+            "validTo": "2026-10-24",
+            "operatingDays": "DAILY",
+            "flightService": {
+              "servicePatternId": "transport-pattern:086:a60c03206c44cf73f7de9f4b62732ffe",
+              "sourceFactRef": "transport-evidence:086:7531fbf365e57c8cf7292e0baf01342f",
+              "flightCode": "ANA725",
+              "reviewedServiceDate": "20261004"
+            },
+            "flightDispatch": {
+              "airportNodeId": "transport-node:086:afa9121c3ce9a1075f2e32867e21ba61",
+              "relation": "ARRIVAL",
+              "delay": "WAIT_FOR_ARRIVAL",
+              "cancellation": "NO_DISPATCH",
+              "diversion": "NO_DISPATCH",
+              "noBookingOrCapacityGuarantee": true
+            },
+            "passengerRules": {
+              "offStopPickupDropoffAllowed": false,
+              "luggageMustFitTrunk": true,
+              "luggageConsultAtBooking": true,
+              "smokingAllowed": false,
+              "drinkingAllowed": false,
+              "arrivalLeadMinutes": 5
+            }
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+              "url": "https://www.city.hamada.shimane.jp/www/contents/1551852609919/index.html",
+              "observedResponseSha256": "3bc9675bd4eef9e23e3a0b23b10f6461afa6ee09edc36be02553287a5793b393"
+            },
+            {
+              "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+              "url": "https://hagiiwami.jp/flight/",
+              "observedResponseSha256": "589e85e36bfeec3af4f265e17d9c16dc4c2a1019d63469d5106561d05215d071"
+            }
+          ]
+        }
+      ],
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:e79f1b616563beb49145d96b3febd573"
+      ],
+      "locator": "Independent complete3-call parent and contiguous2-call airport/Misumi segment, no reversal or droppedintermediate; native municipal facility name retained with explicit municipality-prefix/current-address binding. Published outward calls shown as arrivalonly at Misumi/Hamada and inward as pickupdeparture; no town-to-townride inferred."
+    },
+    {
+      "factId": "iwami-misumi-fixed-departure",
+      "kind": "service",
+      "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+      "sourceUrl": "https://hagiiwami.jp/access/",
+      "observedResponseSha256": "98d353bccff5de4eb24c5092d965c3b511e54d1a4519669f4d549e55fc9eb471",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://www.city.hamada.shimane.jp/www/contents/1551852609919/index.html",
+          "observedResponseSha256": "3bc9675bd4eef9e23e3a0b23b10f6461afa6ee09edc36be02553287a5793b393"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://www.city.hamada.shimane.jp/www/contents/1720165444044/index.html",
+          "observedResponseSha256": "4df765a9d96d8d76ca3d1e2229ac1bfdc99a4385325f20269f82e4f95da6cb95"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://hagiiwami.jp/wordpress/wp-content/themes/hagiiwami-v3/images/other/ilst_flow_hamada_2.png",
+          "observedResponseSha256": "70e57e0c280d55d37e519a8381e1f5496c1f01a17b2410462a02be6f4304d57b"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://hagiiwami.jp/flight/",
+          "observedResponseSha256": "589e85e36bfeec3af4f265e17d9c16dc4c2a1019d63469d5106561d05215d071"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://hagiiwami.jp/guide/",
+          "observedResponseSha256": "9c34557881c8145adba6aeac88094026b1e2a13336a773fc093416a6b714a9ff"
+        },
+        {
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "url": "https://www.pref.shimane.lg.jp/infra/port/kikan/masuda_kendo/iwamikukokanri/index.data/2026_IWJinfo.pdf",
+          "observedResponseSha256": "18c1ed9a738f7b54aa0f5aaf0592c52e476e12c3f9f4f2193caf2a4b5a6375bf"
+        }
+      ],
+      "operator": "株式会社Fromハート",
+      "line": "萩・石見空港リムジンタクシー浜田線",
+      "mode": "demand_shared_taxi",
+      "purpose": "airport",
+      "serviceClass": "公共予約型乗合タクシー",
+      "direction": "MISUMI-IWJ",
+      "serviceState": "active",
+      "serviceStateScope": "Published fixed airport feeder seasonal2026Mar29-Oct24 only, mandatory reservation and linkedflight conditions; no accepted booking, capacity, actual flight or timed itinerary guarantee.",
+      "reservation": "required",
+      "parentCallingStations": [
+        "浜田駅北口ロータリー",
+        "市役所三隅支所",
+        "石見空港"
+      ],
+      "publishedParentCallingStations": [
+        "浜田駅北口ロータリー",
+        "浜田市役所三隅支所",
+        "萩・石見空港"
+      ],
+      "sectionStartIndex": 1,
+      "parentCallingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "callingStations": [
+        "市役所三隅支所",
+        "石見空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "市役所三隅支所",
+          "operator": "facility:P05-22:32:P05_220",
+          "line": "facility:P05-22:32:P05_220",
+          "mode": "demand_shared_taxi",
+          "publicFacilityIdentity": {
+            "identityAnchor": "p05:22:32:P05_220",
+            "recordSha256": "bc8c1fa0ab38355898d203be3443c5c0687adad362b1995012a9e98dc5742460"
+          }
+        },
+        {
+          "name": "石見空港",
+          "operator": "airport-facility:cf03_00080",
+          "line": "airport:cf03_00080",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00080",
+            "requirementId": "review:official-airport:石見",
+            "expectedRequirementName": "石見",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport flight/access/terminal and independent prefecture2026 official facility identify original passenger airport. Dedicated current airport shared-taxi source independently gives both airport directions at whole-airport facility scope, not invented curb or coordinate-nearness walk."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 3,
+        "kind": "BOOKABLE_PASSENGER_SERVICE",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reservation": {
+          "requirement": "REQUIRED",
+          "method": "PHONE",
+          "deadline": {
+            "daysBefore": 1,
+            "localTime": "17:00",
+            "timeZone": "Asia/Tokyo"
+          },
+          "noBookingNoDispatch": true
+        },
+        "validFrom": "2026-03-29",
+        "validTo": "2026-10-24",
+        "operatingDays": "DAILY",
+        "flightService": {
+          "servicePatternId": "transport-pattern:086:ff13e6a501e058571dd18040aa6eb103",
+          "sourceFactRef": "transport-evidence:086:94f5f6df9a19a956a0cd7ab5b8f1aab8",
+          "flightCode": "ANA726",
+          "reviewedServiceDate": "20261004"
+        },
+        "flightDispatch": {
+          "airportNodeId": "transport-node:086:afa9121c3ce9a1075f2e32867e21ba61",
+          "relation": "DEPARTURE",
+          "delay": "SCHEDULED_DEPARTURE",
+          "cancellation": "NO_DISPATCH_OR_RETURN_IF_ALREADY_STARTED",
+          "diversion": "NOT_STATED",
+          "noBookingOrCapacityGuarantee": true
+        },
+        "passengerRules": {
+          "offStopPickupDropoffAllowed": false,
+          "luggageMustFitTrunk": true,
+          "luggageConsultAtBooking": true,
+          "smokingAllowed": false,
+          "drinkingAllowed": false,
+          "arrivalLeadMinutes": 5
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:cac794df9144a36aec42d5417dadbbd6"
+        ]
+      },
+      "conditionEvidence": [
+        {
+          "conditionId": "iwami-public-fixed-departure",
+          "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+          "sourceUrl": "https://hagiiwami.jp/access/",
+          "observedResponseSha256": "98d353bccff5de4eb24c5092d965c3b511e54d1a4519669f4d549e55fc9eb471",
+          "locator": "Hamada-only current seasonal service, PHONE previous-day17, listed stoponly, all passenger conditions and direction-specific delayed/cancelled/diverted flight table. No reception hours or payment restriction claimed. Linked actualflight code/date from independently currentairporttable.",
+          "accessTerms": {
+            "schemaVersion": 3,
+            "kind": "BOOKABLE_PASSENGER_SERVICE",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reservation": {
+              "requirement": "REQUIRED",
+              "method": "PHONE",
+              "deadline": {
+                "daysBefore": 1,
+                "localTime": "17:00",
+                "timeZone": "Asia/Tokyo"
+              },
+              "noBookingNoDispatch": true
+            },
+            "validFrom": "2026-03-29",
+            "validTo": "2026-10-24",
+            "operatingDays": "DAILY",
+            "flightService": {
+              "servicePatternId": "transport-pattern:086:ff13e6a501e058571dd18040aa6eb103",
+              "sourceFactRef": "transport-evidence:086:94f5f6df9a19a956a0cd7ab5b8f1aab8",
+              "flightCode": "ANA726",
+              "reviewedServiceDate": "20261004"
+            },
+            "flightDispatch": {
+              "airportNodeId": "transport-node:086:afa9121c3ce9a1075f2e32867e21ba61",
+              "relation": "DEPARTURE",
+              "delay": "SCHEDULED_DEPARTURE",
+              "cancellation": "NO_DISPATCH_OR_RETURN_IF_ALREADY_STARTED",
+              "diversion": "NOT_STATED",
+              "noBookingOrCapacityGuarantee": true
+            },
+            "passengerRules": {
+              "offStopPickupDropoffAllowed": false,
+              "luggageMustFitTrunk": true,
+              "luggageConsultAtBooking": true,
+              "smokingAllowed": false,
+              "drinkingAllowed": false,
+              "arrivalLeadMinutes": 5
+            }
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+              "url": "https://www.city.hamada.shimane.jp/www/contents/1551852609919/index.html",
+              "observedResponseSha256": "3bc9675bd4eef9e23e3a0b23b10f6461afa6ee09edc36be02553287a5793b393"
+            },
+            {
+              "sourceActionId": "taxi:iwami:hamada:fixed-flight-phone:20260329",
+              "url": "https://hagiiwami.jp/flight/",
+              "observedResponseSha256": "589e85e36bfeec3af4f265e17d9c16dc4c2a1019d63469d5106561d05215d071"
+            }
+          ]
+        }
+      ],
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:cac794df9144a36aec42d5417dadbbd6"
+      ],
+      "locator": "Independent complete3-call parent and contiguous2-call airport/Misumi segment, no reversal or droppedintermediate; native municipal facility name retained with explicit municipality-prefix/current-address binding. Published outward calls shown as arrivalonly at Misumi/Hamada and inward as pickupdeparture; no town-to-townride inferred."
+    }
+  ]
+}

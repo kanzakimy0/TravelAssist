@@ -71,7 +71,13 @@ export function materializeDynamicODFact(fact, context) {
   };
   const edge = generateDynamicOD(
     od,
-    { sources, evidence, nodes, nativeFacilityByAnchor },
+    {
+      sources,
+      evidence,
+      nodes,
+      nativeFacilityByAnchor,
+      patternById: context.patternById,
+    },
     generatedAt,
   );
   return {

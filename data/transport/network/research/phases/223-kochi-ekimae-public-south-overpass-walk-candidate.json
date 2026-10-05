@@ -1,0 +1,69 @@
+{
+  "phaseId": "223-kochi-ekimae-public-south-overpass-walk-candidate",
+  "strategy": [
+    "ORIGINAL_AIRPORT_FEED_DIRECTION_ROOTS_ONLY",
+    "PRESERVE_DISTINCT_DIRECTIONAL_STOPS",
+    "ONE_PUBLIC_WALK_NO_NODE_EXPANSION"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:kochi-ekimae-public-south-walk-222",
+    "transfer:tosaden:kochi-ekimae-public-south-walk-222:prefecture-aerial"
+  ],
+  "facts": [
+    {
+      "factId": "kochi-ekimae-north-alight-to-south-board-public-overpass-walk",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:kochi-ekimae-public-south-walk-222",
+      "sourceUrl": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+      "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:kochi-ekimae-public-south-walk-222:prefecture-aerial",
+          "url": "https://www.pref.kochi.lg.jp/doc/toshikeikaku/file_contents/file_2024262135315_1.pdf",
+          "observedResponseSha256": "a40e37137e63025676a869a06506711f75af05534c30bb64f4f36fca5d0d6271"
+        }
+      ],
+      "components": [
+        {
+          "name": "高知駅前",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3902_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "e8094710ac6333efe1bf33b8cbbb9471046b4ae5ef81c13daf7fed6cf19da2a2",
+            "expectedPlatformCode": "2",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current Tosaden airport-access map (2026-02-01) distinguishes the airport-feed Kochi-ekimae alighting position north of the boarding position. The official Kochi Prefecture completed JR Kochi station aerial, published in its 2023 urban-planning report (table current to 2023-03-31; photograph capture date unstated), depicts public station-front sidewalks/plaza and the pedestrian overpass east of the tram intersection joining the north/south sidewalk sides. Review the coarse public walking relation from the north-side alighting sidewalk to that overpass, across it, and along the south-side sidewalk to the boarding position. Do not infer a curb merge, exact traced geometry, private-property passage, accessibility, distance, or timetable. The operator map binds the two directional poles; the aerial corroborates the public passage only. Native stop identities and GTFS pickup/dropoff constraints remain distinct and unchanged."
+          }
+        },
+        {
+          "name": "高知駅前",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3902_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "8165c607d798fdadff97d33420e3438ab628c644ededfb24132a848a4686997f",
+            "expectedPlatformCode": "1",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current Tosaden airport-access map (2026-02-01) distinguishes the airport-feed Kochi-ekimae alighting position north of the boarding position. The official Kochi Prefecture completed JR Kochi station aerial, published in its 2023 urban-planning report (table current to 2023-03-31; photograph capture date unstated), depicts public station-front sidewalks/plaza and the pedestrian overpass east of the tram intersection joining the north/south sidewalk sides. Review the coarse public walking relation from the north-side alighting sidewalk to that overpass, across it, and along the south-side sidewalk to the boarding position. Do not infer a curb merge, exact traced geometry, private-property passage, accessibility, distance, or timetable. The operator map binds the two directional poles; the aerial corroborates the public passage only. Native stop identities and GTFS pickup/dropoff constraints remain distinct and unchanged."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_DIRECTIONAL_POLES_WITH_OFFICIAL_COMPLETED_PUBLIC_STATION_PASSAGE",
+      "hubScopeComplete": false,
+      "locator": "The current Tosaden airport-access map (2026-02-01) distinguishes the airport-feed Kochi-ekimae alighting position north of the boarding position. The official Kochi Prefecture completed JR Kochi station aerial, published in its 2023 urban-planning report (table current to 2023-03-31; photograph capture date unstated), depicts public station-front sidewalks/plaza and the pedestrian overpass east of the tram intersection joining the north/south sidewalk sides. Review the coarse public walking relation from the north-side alighting sidewalk to that overpass, across it, and along the south-side sidewalk to the boarding position. Do not infer a curb merge, exact traced geometry, private-property passage, accessibility, distance, or timetable. The operator map binds the two directional poles; the aerial corroborates the public passage only. Native stop identities and GTFS pickup/dropoff constraints remain distinct and unchanged."
+    }
+  ]
+}

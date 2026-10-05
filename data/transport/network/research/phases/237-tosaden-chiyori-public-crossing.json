@@ -1,0 +1,89 @@
+{
+  "phaseId": "237-tosaden-chiyori-public-crossing",
+  "strategy": [
+    "ORIGINAL_TOSADEN_AIRPORT_DIRECTION_ROOTS_ONLY",
+    "EXACT_OSM_CONNECTED_PUBLIC_SIDEWALK_CHAIN",
+    "PRESERVE_DISTINCT_NATIVE_STOPS",
+    "NO_NEW_NODES"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:chiyori-reviewed-public-crossing-237",
+    "transfer:tosaden:chiyori-reviewed-public-crossing-237:operator-authored-directional-points",
+    "transfer:tosaden:chiyori-reviewed-public-crossing-237:gsi-228327",
+    "transfer:tosaden:chiyori-reviewed-public-crossing-237:gsi-228328"
+  ],
+  "facts": [
+    {
+      "factId": "chiyori-alight-to-airport-board-public-crossing-237",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:chiyori-reviewed-public-crossing-237",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=133.5468,33.5558,133.5725,33.5596",
+      "observedResponseSha256": "c183490ae21209d24fafbcf9eb1f3fff31d7ca0d7b5d7357dcd5f3d9693df1bd",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:chiyori-reviewed-public-crossing-237:operator-authored-directional-points",
+          "url": "https://kochiekimaekanko.jp/airportbus/7/",
+          "observedResponseSha256": "4a4ec98f31ea4abd874b28b70be6df777c4270c8cddf57cb7c64b831c32bad25"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:chiyori-reviewed-public-crossing-237:gsi-228327",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/228327/105105.jpg",
+          "observedResponseSha256": "3011ab673e6c433c25bce8874c16ee07c70b7e3e25f93b8dd61e3820319a2437"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:chiyori-reviewed-public-crossing-237:gsi-228328",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/228328/105105.jpg",
+          "observedResponseSha256": "6e7bba031da01e8f666815e75465118f5650dc755c9ab73b87b2d12c05a27f61"
+        }
+      ],
+      "components": [
+        {
+          "name": "知寄町",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3910_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "918f6855ac6b085914f792b589ea95b2027b5a7bffcdc551e6dc7ef5587006e1",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Existing current joint airport operator own inline data explicitly names Chiyoricho as alight only and Chiyoricho2chome as airportboarding only, with independently authored precise point fields. Exact licensed Tosaden native records/current callingpattern direction agrees. No thirdparty basemap read. Personally inspected2GSIseamlessphoto tiles. Published operator point forboarding maps to228327/105105 pixel235.80,94.79 on northpublic roadside; alighting maps to228328/105105 pixel51.37,155.51 on southpublic roadside. Paved roadside approaches and intervening east intersection are visible. No visiblebuspole identity asserted; observeddate is not capturedate, which is UNKNOWN. The3source-native OSMways southside651637028, markedcrossing651917050 and northside651917051 join by2exactnative sharednodes6110242094 and6112664307. Allselectednodes/ways have no recordedprivate/nofoot restriction. OSM supplies publiccrossing permission/topology; imagery supplies pavement continuity context only. Componentidentity derives from sameexact currentairportdirection/native record plus operatorpublished location, not a nearby facility/tram/OSMstop name. Publicroadside component binding is visual and directional, not nearestnode/pole-distance snap. Neither a precisecurb nor accessibility/time is claimed. Attribution: 国土地理院 全国最新写真（シームレス）; © OpenStreetMap contributors."
+          }
+        },
+        {
+          "name": "知寄町二丁目",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3909_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "4359637c285bad95d415656046922146e36df550079a5c8d9da98b22e26d2ed5",
+            "expectedPlatformCode": "2",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Existing current joint airport operator own inline data explicitly names Chiyoricho as alight only and Chiyoricho2chome as airportboarding only, with independently authored precise point fields. Exact licensed Tosaden native records/current callingpattern direction agrees. No thirdparty basemap read. Personally inspected2GSIseamlessphoto tiles. Published operator point forboarding maps to228327/105105 pixel235.80,94.79 on northpublic roadside; alighting maps to228328/105105 pixel51.37,155.51 on southpublic roadside. Paved roadside approaches and intervening east intersection are visible. No visiblebuspole identity asserted; observeddate is not capturedate, which is UNKNOWN. The3source-native OSMways southside651637028, markedcrossing651917050 and northside651917051 join by2exactnative sharednodes6110242094 and6112664307. Allselectednodes/ways have no recordedprivate/nofoot restriction. OSM supplies publiccrossing permission/topology; imagery supplies pavement continuity context only. Componentidentity derives from sameexact currentairportdirection/native record plus operatorpublished location, not a nearby facility/tram/OSMstop name. Publicroadside component binding is visual and directional, not nearestnode/pole-distance snap. Neither a precisecurb nor accessibility/time is claimed. Attribution: 国土地理院 全国最新写真（シームレス）; © OpenStreetMap contributors."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_DIRECTIONAL_GTFS_PLUS_OPERATOR_AUTHORED_DIRECTIONAL_POINTS_GSI_PUBLIC_ROADSIDE_CONTEXT_AND_ODBL_CONTIGUOUS_PUBLIC_WAYS",
+      "hubScopeComplete": false,
+      "locator": "Existing current joint airport operator own inline data explicitly names Chiyoricho as alight only and Chiyoricho2chome as airportboarding only, with independently authored precise point fields. Exact licensed Tosaden native records/current callingpattern direction agrees. No thirdparty basemap read. Personally inspected2GSIseamlessphoto tiles. Published operator point forboarding maps to228327/105105 pixel235.80,94.79 on northpublic roadside; alighting maps to228328/105105 pixel51.37,155.51 on southpublic roadside. Paved roadside approaches and intervening east intersection are visible. No visiblebuspole identity asserted; observeddate is not capturedate, which is UNKNOWN. The3source-native OSMways southside651637028, markedcrossing651917050 and northside651917051 join by2exactnative sharednodes6110242094 and6112664307. Allselectednodes/ways have no recordedprivate/nofoot restriction. OSM supplies publiccrossing permission/topology; imagery supplies pavement continuity context only. Componentidentity derives from sameexact currentairportdirection/native record plus operatorpublished location, not a nearby facility/tram/OSMstop name. Publicroadside component binding is visual and directional, not nearestnode/pole-distance snap. Neither a precisecurb nor accessibility/time is claimed. Attribution: 国土地理院 全国最新写真（シームレス）; © OpenStreetMap contributors."
+    }
+  ]
+}

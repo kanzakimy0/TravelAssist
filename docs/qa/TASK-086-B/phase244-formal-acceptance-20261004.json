@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "task": "TASK-086",
+  "runKind": "SINGLE_FROZEN_FORMAL_ACCEPTANCE",
+  "recordedAtUtc": "2026-10-04T13:22:58.513443+00:00",
+  "worktree": "F:\\CodexWorktrees\\TravelAssist-TASK086",
+  "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+  "actualCheckoutSha": "406d31f0a6b52f321b79fa4694f985709288407f",
+  "frozenInputAggregateSha256": "07f4e84d122b7e248937272908da56de9b491c5b7b1c2afc81c772093f2198e3",
+  "frozenInputFileCount": 1355,
+  "frozenInputsChangedAfterValidation": 0,
+  "backup": {
+    "freezePath": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\freeze-inputs.v1.json",
+    "freezeSha256": "07f4e84d122b7e248937272908da56de9b491c5b7b1c2afc81c772093f2198e3",
+    "inputFiles": 1355,
+    "backupPath": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\frozen-working-tree-20261004T114950Z.zip",
+    "backupSha256": "3b44974a3a872b1f40e99ce52ed89422aba9de5e6ccfbc673682b2dd1cb4654a",
+    "backupFiles": 2812,
+    "backupBytes": 83083943,
+    "backupCrc": "PASS",
+    "head": "406d31f0a6b52f321b79fa4694f985709288407f",
+    "branch": "feature/b-transport-node-mobility-backbone",
+    "versions": {
+      "node": "v24.18.0",
+      "python": "Python 3.14.6",
+      "npm": "11.16.0"
+    }
+  },
+  "commands": {
+    "deploy-build-local": {
+      "step": "deploy-build-local",
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:build:local"
+      ],
+      "requestedTimeoutSeconds": 1200,
+      "effectiveTimeoutSeconds": 1200,
+      "startedAtUtc": "2026-10-04T12:16:56.117567+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\deploy-build-local.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 3620,
+      "endedAtUtc": "2026-10-04T12:18:01.101950+00:00",
+      "elapsedSeconds": 64.98,
+      "logBytes": 3197,
+      "logSha256": "1fc28bc55b5578789627c5cd42b928fe830846ffe90ce7107159b9b8263908ce"
+    },
+    "deploy-validate-local": {
+      "step": "deploy-validate-local",
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:validate:local"
+      ],
+      "requestedTimeoutSeconds": 600,
+      "effectiveTimeoutSeconds": 600,
+      "startedAtUtc": "2026-10-04T12:16:36.930446+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\deploy-validate-local.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 23920,
+      "endedAtUtc": "2026-10-04T12:16:37.584761+00:00",
+      "elapsedSeconds": 0.65,
+      "logBytes": 1129,
+      "logSha256": "220a6c7f7aaabf735b099bc340c25f524c3f9e23f2f43e66ab299170187daffa"
+    },
+    "deploy-verify-artifact": {
+      "step": "deploy-verify-artifact",
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "requestedTimeoutSeconds": 600,
+      "effectiveTimeoutSeconds": 600,
+      "startedAtUtc": "2026-10-04T12:18:28.416683+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\deploy-verify-artifact.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 11932,
+      "endedAtUtc": "2026-10-04T12:18:30.432897+00:00",
+      "elapsedSeconds": 2.02,
+      "logBytes": 727,
+      "logSha256": "1583e0cbf05dfd3cb43891c8ca3ea2a95196dd6b5b7459466d3e2b84043ee909"
+    },
+    "format": {
+      "step": "format",
+      "command": [
+        "npm.cmd",
+        "run",
+        "format:check:deploy"
+      ],
+      "requestedTimeoutSeconds": 900,
+      "effectiveTimeoutSeconds": 900,
+      "startedAtUtc": "2026-10-04T12:12:05.130661+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\format.log",
+      "status": "FAIL",
+      "exitCode": 1,
+      "pid": 2704,
+      "endedAtUtc": "2026-10-04T12:12:22.310394+00:00",
+      "elapsedSeconds": 17.18,
+      "logBytes": 3754,
+      "logSha256": "53765f91af116a511b22242121ff08409ee6bb210afad9ff3623b504db9573cb"
+    },
+    "full-regression": {
+      "step": "full-regression",
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=2",
+        "tests/*.test.mjs"
+      ],
+      "requestedTimeoutSeconds": 2700,
+      "effectiveTimeoutSeconds": 2700,
+      "startedAtUtc": "2026-10-04T12:29:00.017009+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\full-regression.log",
+      "status": "TIMEOUT",
+      "exitCode": 124,
+      "pid": 41688,
+      "endedAtUtc": "2026-10-04T13:14:00.309463+00:00",
+      "elapsedSeconds": 2700.23,
+      "logBytes": 232242,
+      "logSha256": "c71b5f3ead35777e6c24fea344e923a5b03a6f0597c541c34a71f672e141ff0e",
+      "selectedEnvironment": {
+        "TASK086_PUBLISH_VALIDATION": "1"
+      }
+    },
+    "generate": {
+      "step": "generate",
+      "command": [
+        "node",
+        "tools/transport/task-086-remediate.mjs"
+      ],
+      "requestedTimeoutSeconds": 2400,
+      "effectiveTimeoutSeconds": 2400,
+      "startedAtUtc": "2026-10-04T11:50:15.988425+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\generate.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 35008,
+      "endedAtUtc": "2026-10-04T12:26:43.875812+00:00",
+      "elapsedSeconds": 2187.84,
+      "logBytes": 153,
+      "logSha256": "a0c99352188ff7a514021bf2b8a55913a9334b306a400da1cc7ab3264a013fe5"
+    },
+    "lint": {
+      "step": "lint",
+      "command": [
+        "npm.cmd",
+        "run",
+        "lint"
+      ],
+      "requestedTimeoutSeconds": 900,
+      "effectiveTimeoutSeconds": 900,
+      "startedAtUtc": "2026-10-04T12:12:03.693405+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\lint.log",
+      "status": "FAIL",
+      "exitCode": 1,
+      "pid": 39780,
+      "endedAtUtc": "2026-10-04T12:14:45.044367+00:00",
+      "elapsedSeconds": 161.35,
+      "logBytes": 193861,
+      "logSha256": "47250f9e6f69f8eb885c15cd347ce3313931ea9f9cf24f0eaccc3aaede3a020d"
+    },
+    "recovery-corruption-tests": {
+      "step": "recovery-corruption-tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/task-086-b-mobility-backbone.test.mjs"
+      ],
+      "requestedTimeoutSeconds": 300,
+      "effectiveTimeoutSeconds": 300,
+      "startedAtUtc": "2026-10-04T13:20:50.521578+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\recovery-corruption-tests.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 31200,
+      "endedAtUtc": "2026-10-04T13:20:50.921395+00:00",
+      "elapsedSeconds": 0.4,
+      "logBytes": 3253,
+      "logSha256": "78705c800c8554b7f07b44c321d1dee389f262af7f34c3f90a51331e27d040e8"
+    },
+    "scoped-global-review": {
+      "step": "scoped-global-review",
+      "command": [
+        "node",
+        ".cache/task-086/closeout-B/review-current.mjs"
+      ],
+      "requestedTimeoutSeconds": 600,
+      "effectiveTimeoutSeconds": 600,
+      "startedAtUtc": "2026-10-04T12:40:41.100638+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\scoped-global-review.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 37116,
+      "endedAtUtc": "2026-10-04T12:40:42.696346+00:00",
+      "elapsedSeconds": 1.6,
+      "logBytes": 414,
+      "logSha256": "f9d9cbdc82bc28d7c9080fae954eaa96e5484aacbab1f7d109aada5419068da8"
+    },
+    "stage": {
+      "step": "stage",
+      "command": [
+        "node",
+        "tools/transport/task-086-stage.mjs"
+      ],
+      "requestedTimeoutSeconds": 600,
+      "effectiveTimeoutSeconds": 600,
+      "startedAtUtc": "2026-10-04T13:14:24.289200+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\stage.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 9572,
+      "endedAtUtc": "2026-10-04T13:16:42.906151+00:00",
+      "elapsedSeconds": 138.61,
+      "logBytes": 1737,
+      "logSha256": "7b8422aae349957c91053154a30754713b2ec34c8f65d29401e255b24960881b"
+    },
+    "targeted-technical-tests": {
+      "step": "targeted-technical-tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-service-access-pipeline.test.mjs",
+        "tests/task-086-rights-binding.test.mjs"
+      ],
+      "requestedTimeoutSeconds": 600,
+      "effectiveTimeoutSeconds": 600,
+      "startedAtUtc": "2026-10-04T13:19:31.260677+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\targeted-technical-tests.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 29100,
+      "endedAtUtc": "2026-10-04T13:19:31.977532+00:00",
+      "elapsedSeconds": 0.72,
+      "logBytes": 8719,
+      "logSha256": "fe2aa4d0fdbb23f9f1e0c487c8a9cff753fb922cb8ef26a07a96673b2495193e"
+    },
+    "typecheck": {
+      "step": "typecheck",
+      "command": [
+        "npm.cmd",
+        "run",
+        "typecheck"
+      ],
+      "requestedTimeoutSeconds": 1200,
+      "effectiveTimeoutSeconds": 1200,
+      "startedAtUtc": "2026-10-04T12:15:40.822092+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\typecheck.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 5148,
+      "endedAtUtc": "2026-10-04T12:15:53.705448+00:00",
+      "elapsedSeconds": 12.88,
+      "logBytes": 124,
+      "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
+    },
+    "whitespace": {
+      "step": "whitespace",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=F:/CodexWorktrees/TravelAssist-TASK086",
+        "diff",
+        "--check"
+      ],
+      "requestedTimeoutSeconds": 120,
+      "effectiveTimeoutSeconds": 120,
+      "startedAtUtc": "2026-10-04T12:41:12.720323+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\whitespace.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 12736,
+      "endedAtUtc": "2026-10-04T12:41:31.061140+00:00",
+      "elapsedSeconds": 18.34,
+      "logBytes": 141,
+      "logSha256": "9132e3084613a0cf47ef6d8f906937a4f245fd481a5bd35626d49d919f5f60e3"
+    },
+    "whitespace-final": {
+      "step": "whitespace-final",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=F:/CodexWorktrees/TravelAssist-TASK086",
+        "diff",
+        "--check"
+      ],
+      "requestedTimeoutSeconds": 120,
+      "effectiveTimeoutSeconds": 120,
+      "startedAtUtc": "2026-10-04T13:25:04.748283+00:00",
+      "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+      "log": "F:\\CodexWorktrees\\TravelAssist-TASK086\\.cache\\task-086\\formal-acceptance-20261004\\whitespace-final.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "pid": 21324,
+      "endedAtUtc": "2026-10-04T13:25:11.020448+00:00",
+      "elapsedSeconds": 6.27,
+      "logBytes": 141,
+      "logSha256": "9132e3084613a0cf47ef6d8f906937a4f245fd481a5bd35626d49d919f5f60e3"
+    }
+  },
+  "technicalAcceptance": "FAIL",
+  "nationalCoverageAcceptance": "FAIL",
+  "stageStatus": "CORE_STAGE_FAILED",
+  "stageTechnicalChecks": [
+    {
+      "detail": 45,
+      "name": "public_conditional_applicability_replayed_against_independent_registry",
+      "status": "PASS"
+    },
+    {
+      "detail": 4061,
+      "name": "identity_admission_all_retained_nodes",
+      "status": "PASS"
+    },
+    {
+      "detail": 9408,
+      "name": "provenance_direction_duplicates",
+      "status": "PASS"
+    },
+    {
+      "detail": 8,
+      "name": "actual_dynamic_od_rights_and_direction",
+      "status": "PASS"
+    },
+    {
+      "detail": 836,
+      "name": "actual_ordered_patterns_rights_and_boarding",
+      "status": "PASS"
+    },
+    {
+      "detail": 1071,
+      "name": "public_transfer_evidence_endpoint_and_direction",
+      "status": "PASS"
+    },
+    {
+      "detail": 4897,
+      "name": "all_published_corridor_witnesses_obey_boarding_and_direction",
+      "status": "PASS"
+    },
+    {
+      "name": "raw_content_hashes_and_retained_input_versions",
+      "reason": "Input changed data/transport/network/sources/nagasaki-bus.json",
+      "status": "FAIL"
+    },
+    {
+      "detail": 48,
+      "name": "current_generator_implementation_matches_manifest",
+      "status": "PASS"
+    },
+    {
+      "detail": 27,
+      "name": "published_artifact_bytes_match_manifest",
+      "status": "PASS"
+    },
+    {
+      "detail": 4061,
+      "name": "passenger_component_classification_matches_restricted_queries",
+      "status": "PASS"
+    }
+  ],
+  "globalReview": [
+    {
+      "checkId": "service:major-rail-private-metro",
+      "scopedStatus": "CLOSED",
+      "publishedCheckStatus": "FAIL"
+    },
+    {
+      "checkId": "service:shinkansen-continuity",
+      "scopedStatus": "CLOSED",
+      "publishedCheckStatus": "FAIL"
+    },
+    {
+      "checkId": "source:national-stopping-patterns",
+      "scopedStatus": "CLOSED",
+      "publishedCheckStatus": "FAIL"
+    },
+    {
+      "checkId": "mode:required-special-tourism",
+      "scopedStatus": "CLOSED",
+      "publishedCheckStatus": "FAIL"
+    }
+  ],
+  "sakurbaba": {
+    "sourceTransferId": "gtfs:nagasaki-bus:transfer:460726fa4183908add612653",
+    "expectedEdgeId": "transport-edge:086:82ed0dd594061301415987c9aa2168f4",
+    "presentInFormalGraph": false,
+    "originalConnectCheckStatus": "FAIL",
+    "originalCorridorCheckStatus": "FAIL",
+    "sourcePackSha256": "8bb150802f44f1fef4d07a717be761473ac0c5edb018cff99f39ff3abd60cb93",
+    "manifestSourceInputHash": "8eb3eda240f251558c5b5c8dd21655eb3f26912817782112451ff7aac577c6e9"
+  },
+  "coverage": {
+    "requiredNodes": 4061,
+    "directedEdges": 9408,
+    "servicePatterns": 836,
+    "disconnectedRequiredNodes": 6,
+    "openUniqueRoots": 6,
+    "openRootIds": [
+      "root:direction:component:2c4972bea167f5eb11e9",
+      "root:direction:component:4516374f05cda3a3809f",
+      "root:direction:component:662a9755abeab5d52770",
+      "root:direction:component:91378025a59875422ee5",
+      "root:direction:component:bcb8e18cee0bb3319142",
+      "root:direction:component:cdb5939683ed546563ce"
+    ],
+    "rawFailedChecks": 15
+  },
+  "cleanRebuild": {
+    "currentInputProofValid": false,
+    "fullRegressionStatus": "TIMEOUT",
+    "oldProofScopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+    "oldProofVerifiedAt": "2026-10-03T18:38:59.676Z",
+    "oldProofCannotBeReused": true
+  },
+  "ci": {
+    "exactHeadCI": "NOT_RUN_NO_PUSH",
+    "prMergeCheckoutCI": "NOT_RUN",
+    "localQualityOnly": true
+  },
+  "noRetryOrPostFailureFix": true,
+  "artifactsSha256": {
+    "data/transport/network/manifest.json": "f200b4bc0ccf998a80a8e372a78a6f10f23791118955eb4905e4f47802d41aaa",
+    "data/transport/network/transport-node-edges.jsonl": "c21e697f6926b5f962f9dae5c1f82cfab77facbacb53a7d977e25c48d63bd954",
+    "data/transport/network/connectivity-audit.json": "e4ac4dc4848657b4a4710004c4f1f69dab40cbd97553a512997151e30da4690d",
+    "data/transport/network/core-stage-acceptance.json": "c5c77e678bcd9abed8460d405b004383b3d932d2a3b0cc2f0104ab9ea8d45987",
+    "docs/qa/TASK-086-B/deterministic-rebuild.json": "eb5b18445b4c533c775d7a92d1289c73cc1c7800c129e794bba7ac77f757d5f0"
+  },
+  "finalRecordedAtUtc": "2026-10-04T13:25:58.900637+00:00"
+}

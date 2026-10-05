@@ -16,6 +16,22 @@ export function safeSourceUrl(text) {
 }
 export function safeLogText(text) {
   return String(text)
+    .replace(/<(?:meta|input)\b[^>]*>/gi, (tag) => {
+      const names = [
+        ...tag.matchAll(
+          /(?:^|\s)(?:name|id)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi,
+        ),
+      ].map((match) => match[1] ?? match[2] ?? match[3]);
+      return names.some((name) =>
+        /csrf|token|session.?id|signature|credential|api.?key/i.test(name),
+      )
+        ? "<!-- REDACTED_EPHEMERAL_FIELD -->"
+        : tag;
+    })
+    .replace(
+      /((?:"nonce"|'nonce'|\bnonce)\s*[:=]\s*)(?:"[^"\r\n]*"|'[^'\r\n]*'|[^\s,;<>}]+)/gi,
+      '$1"[REDACTED]"',
+    )
     .replace(/https?:\/\/[^\s<>"']+/g, (u) => safeSourceUrl(u))
     .replace(/\b(Bearer\s+)[A-Za-z0-9._~+\/-]+=*/gi, "$1[REDACTED]")
     .replace(

@@ -208258,6 +208258,19 @@
       "sourceSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc"
     },
     {
+      "evidenceId": "gtfs:nagasaki-bus:transfer:460726fa4183908add612653",
+      "locator": "transfers.txt:886085_04>886085_01",
+      "record": {
+        "from_stop_id": "886085_04",
+        "min_transfer_time": "300",
+        "to_stop_id": "886085_01",
+        "transfer_type": "2"
+      },
+      "recordSha256": "460726fa4183908add6126534b104748ab27b266f11a3c4f82b8721573e9508b",
+      "sourceId": "gtfs:nagasaki-bus",
+      "sourceSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc"
+    },
+    {
       "evidenceId": "gtfs:nagasaki-bus:transfer:dd0b97243a3c5d612983bfdf",
       "locator": "transfers.txt:886085_05>886085_02",
       "record": {
@@ -242929,6 +242942,27 @@
       },
       "toAnchor": "gtfs:nagasaki-bus:stop:886060_01",
       "transferId": "gtfs:nagasaki-bus:transfer:abde2765e6969e137de62095"
+    },
+    {
+      "directed": true,
+      "evidenceKind": "GTFS_TRANSFER",
+      "evidenceRefs": [
+        "gtfs:nagasaki-bus:transfer:460726fa4183908add612653"
+      ],
+      "fromAnchor": "gtfs:nagasaki-bus:stop:886085_04",
+      "hubRef": "gtfs:nagasaki-bus:explicit-transfer:04e8fb1860430174",
+      "sourceRefs": [
+        "https://data.bodik.jp/dataset/420000_nagasakikeneibus",
+        "https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download"
+      ],
+      "sourceTransfer": {
+        "from_stop_id": "886085_04",
+        "min_transfer_time": "300",
+        "to_stop_id": "886085_01",
+        "transfer_type": "2"
+      },
+      "toAnchor": "gtfs:nagasaki-bus:stop:886085_01",
+      "transferId": "gtfs:nagasaki-bus:transfer:460726fa4183908add612653"
     },
     {
       "directed": true,

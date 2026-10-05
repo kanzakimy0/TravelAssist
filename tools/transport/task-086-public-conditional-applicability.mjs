@@ -258,12 +258,38 @@ export function createPublicConditionalApplicability({
               ]
             : []),
         ].length > 0;
+      const conditionKinds = conditional
+        ? [
+            ...new Set(
+              [
+                ...pair.forward.conditionalEdgeIds,
+                ...pair.reverse.conditionalEdgeIds,
+                ...(ground
+                  ? [
+                      ...ground.forward.conditionalEdgeIds,
+                      ...ground.reverse.conditionalEdgeIds,
+                    ]
+                  : []),
+              ]
+                .map((eid) => byEdge.get(eid)?.accessContract?.kind)
+                .filter(Boolean),
+            ),
+          ]
+        : [];
+      const usesOnboardRequest = conditionKinds.includes(
+        "PUBLIC_BUS_ONBOARD_REQUEST",
+      );
       return {
         checkId: d.deficitId,
         originalDefaultFailure: structuredClone(d),
         defaultStatus: "FAIL",
+        ...(usesOnboardRequest
+          ? { conditionKinds, advanceReservationImplied: false }
+          : {}),
         status: conditional
-          ? "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS"
+          ? usesOnboardRequest
+            ? "STRUCTURALLY_CONNECTED_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS"
+            : "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS"
           : "OPEN",
         nationalOrCorridorWitness: conditional ? pair : null,
         surfaceWitness: conditional ? ground : null,
@@ -283,7 +309,7 @@ export function createPublicConditionalApplicability({
       reportsOnlyApplicableStructuralAssessments: true,
       consumedByAuditAndAcceptance: true,
       interpretation:
-        "Directed structural witnesses may use independent reservation request contexts. Default failures remain; source/identity/global obligations are never closed by this report.",
+        "Directed structural witnesses may use independent source-bound service-access contexts; onboard driver requests do not imply advance reservations. Default failures remain; source/identity/global obligations are never closed by this report.",
     };
   }
   return assess;
