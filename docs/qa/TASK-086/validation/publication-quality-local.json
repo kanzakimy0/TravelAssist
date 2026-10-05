@@ -1,0 +1,17 @@
+{
+  "step": "publication-quality-local",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "npm run deploy:validate:local; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run lint; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run typecheck; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run format:check:deploy; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run deploy:build:local; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run deploy:verify-artifact; exit $LASTEXITCODE"
+  ],
+  "timeoutSeconds": 900,
+  "status": "FAIL",
+  "exitCode": 1,
+  "startedAt": "2026-10-05T10:49:56.923999+00:00",
+  "endedAt": "2026-10-05T10:52:04.561721+00:00",
+  "elapsedSeconds": 127.64,
+  "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-quality-local.log",
+  "logSha256": "3e4c5a9fe682079aea6dca014f43684ed41bb043979357ffb1b7df0f8894358c"
+}
