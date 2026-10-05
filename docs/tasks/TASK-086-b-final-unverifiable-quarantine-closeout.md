@@ -6,9 +6,11 @@ User directive: 2026-10-05.
 
 This is the final acceptance amendment for **TASK-086-B / WBS 7.16 TransportNode→TransportNode Japan Mobility Backbone**.
 
-The user explicitly chooses to stop further evidence discovery for entities that cannot be sufficiently certified with the already collected evidence. Such entities must **not** be invented, promoted, or silently treated as certified. They must instead be retained as auditable records and made **non-routable / fail-closed**.
+The user explicitly authorizes **continued bounded certification** of currently non-certified entities before final exclusion. The objective is to certify as much safe, useful coverage as reasonably possible, especially high-value national corridors, gateways and transfer chains. Certification may use existing retained evidence and new authoritative/public evidence or rights evidence when it can be obtained reliably.
 
-This task exists to end TASK-086-B completely, not to start another discovery cycle.
+This is **not** an instruction to research forever. If an entity still cannot be safely certified after a bounded good-faith certification attempt, it must be retained as an auditable, **non-routable / fail-closed but future-readmittable** exclusion. Such exclusions do not block final TASK-086 completion.
+
+This task exists to end TASK-086-B completely after one final bounded certification-and-classification pass, not to start an open-ended discovery cycle.
 
 Repository: `kanzakimy0/TravelAssist`  
 Existing branch: `feature/b-transport-node-mobility-backbone`  
@@ -53,11 +55,11 @@ The final model is:
    - Evidence and rights/identity requirements are sufficient.
    - Entity may appear in the certified routing export.
 
-2. **ROUTE_DISABLED_UNVERIFIABLE**
-   - Required evidence cannot be obtained or verified from the existing evidence set.
-   - No more discovery is required by TASK-086.
-   - Entity remains preserved for audit/future remediation.
-   - Entity must not be used by routing.
+2. **ROUTE_DISABLED_UNVERIFIABLE / READMITTABLE**
+   - Required evidence could not be obtained or verified after the final bounded certification attempt.
+   - Entity remains preserved for audit and future re-admission.
+   - Entity must not be used by routing now.
+   - A later dedicated re-certification task may promote it to ROUTE_ENABLED when sufficient evidence becomes available.
 
 3. **ROUTE_DISABLED_RIGHTS_UNVERIFIED**
    - Source facts may exist, but runtime/redistribution permission is not sufficiently certified.
@@ -80,7 +82,7 @@ A route-disabled item is **not a blocker to closing TASK-086**.
 
 It is a documented coverage exclusion.
 
-Historical blocker counts must remain visible in the old Result/QA evidence, but the final closeout must report them as **accepted exclusions**, not open TASK-086 work.
+Historical blocker counts must remain visible in the old Result/QA evidence. After the final bounded certification pass, unresolved roots must be reported as **accepted readmittable exclusions**, not open TASK-086 work.
 
 ### 2.3 No false national PASS claim
 
@@ -88,7 +90,7 @@ Do **not** claim that the certified-only graph is fully connected nationally.
 
 Replace the old acceptance interpretation with:
 
-`COMPLETE_WITH_UNVERIFIABLE_EXCLUSIONS`
+`COMPLETE_WITH_READMITTABLE_UNVERIFIED_EXCLUSIONS`
 
 or an equivalent unambiguous status.
 
@@ -104,20 +106,55 @@ WBS completion means the backbone inventory/classification and safe routing elig
 
 ---
 
-## 3. Strict no-more-discovery rule
+## 3. Final bounded certification rule
 
-For this final closeout:
+Before assigning a route-disabled terminal state, continue certification where there is a realistic path to reliable evidence.
 
-- Do **not** perform new web/source discovery.
-- Do **not** make new HTTP research requests.
-- Do **not** keep retrying unreachable evidence.
+### 3.1 Priority order
+
+Work in this order:
+
+1. non-certified nodes/edges/transfers affecting major national corridors and regional gateway connectivity;
+2. Shinkansen / intercity rail / major conventional rail continuity;
+3. airport, ferry and major bus gateway access;
+4. high-value interchange / transfer relationships;
+5. remaining unresolved entities with an identifiable authoritative evidence path;
+6. residual items with no practical authoritative evidence path.
+
+Do not optimize counts by certifying low-value items while leaving obvious high-value corridor gaps untouched.
+
+### 3.2 Allowed certification work
+
+You MAY:
+
+- use already retained TASK-086 evidence;
+- retrieve new authoritative/public operator, government, GTFS or other repository-approved evidence;
+- verify source identity, service direction, boarding/alighting rules, transfer relationships and source/runtime rights;
+- certify an item only when the existing TASK-086 certification rules are actually satisfied.
+
+### 3.3 Bounded-stop rule
+
+Do **not** turn this into an unbounded research loop.
+
+For each unresolved certification root:
+
+- first inspect all already-retained evidence;
+- if there is a concrete authoritative evidence path, make a bounded good-faith certification attempt;
+- avoid repeated equivalent searches or repeated retries against the same unavailable source;
+- if authoritative evidence is unavailable, contradictory, inaccessible, insufficient, or rights remain unverified, stop researching that root and assign the appropriate `ROUTE_DISABLED_* / READMITTABLE` terminal state;
+- record the attempted evidence path and why certification could not close.
+
+There must be **zero TASK-086 acceptance roots left in an open research state** at final closeout.
+
+### 3.4 Safety rules
+
 - Do **not** invent source rights.
 - Do **not** infer identities from proximity alone.
 - Do **not** promote REVIEW/QUARANTINE candidates merely to improve connectivity.
 - Do **not** relax direction, pickup/dropoff, transfer, identity, serialization, or evidence-integrity rules.
-- Do **not** delete candidate/raw evidence just because it is non-routable.
-
-Use only the evidence already retained by TASK-086.
+- Do **not** delete candidate/raw evidence because it is non-routable.
+- Do **not** silently route through a non-certified entity.
+- Route-disabled entities remain eligible for future dedicated re-certification/re-admission.
 
 ---
 
@@ -191,7 +228,7 @@ For every currently retained certification root:
 - map it to the affected stable IDs;
 - assign a final route-disabled reason or confirm the affected entity is already route-enabled;
 - record the historical blocker ID;
-- mark the root as `CLOSED_AS_ACCEPTED_EXCLUSION` or equivalent when it cannot be certified from existing evidence;
+- after the final bounded certification attempt, mark the root as `CLOSED_AS_READMITTABLE_EXCLUSION` or equivalent when it still cannot be certified;
 - ensure no root remains `PENDING`, `MANUAL`, or `TECH_BLOCKED` **for TASK-086 acceptance** after final classification.
 
 Historical ledgers may retain their original labels in immutable historical evidence, but the new final-closeout projection must give each root a terminal closeout disposition.
@@ -279,9 +316,11 @@ Append a clearly dated **Final User-Directed Acceptance Amendment / Closeout** s
 
 It must state:
 
-- no additional discovery was performed;
+- final bounded re-certification was performed and its scope/counts are recorded;
 - old blocker counts are preserved as historical evidence;
-- unresolved evidence/rights/identity items are now terminal route-disabled accepted exclusions;
+- exact counts of newly certified nodes/edges/transfers during this final pass;
+- exact list/count of high-value corridor/gateway gaps recovered during this pass;
+- unresolved evidence/rights/identity items are now terminal route-disabled, future-readmittable accepted exclusions;
 - exact final counts of route-enabled and route-disabled nodes/edges/transfers;
 - exact number of terminal exclusion roots;
 - zero pending TASK-086 decisions;
@@ -313,11 +352,11 @@ After merge:
 
 Update WBS 7.16 to:
 
-`B / 已完成（认证可路由子图 + 无法取证/权限未确认项终态隔离；覆盖缺口保留但不再阻塞 TASK-086）`
+`B / 已完成（最终有界再认证完成；认证项进入可路由子图；仍无法取证/权限未确认/身份未闭合项以可未来重新认证的 route-disabled 终态隔离；覆盖缺口保留但不再阻塞 TASK-086）`
 
 Close Issue #443 as completed with a link to the final Result and merge SHA.
 
-Record that future evidence recovery is a separate enhancement/re-admission task, not a reopening of TASK-086.
+Record that future evidence recovery/re-certification is explicitly allowed as a separate re-admission enhancement task; it does not reopen TASK-086.
 
 ### If PR cannot be merged only because publication must be done manually
 
@@ -334,7 +373,7 @@ Once the actual merge is observed, mechanically change WBS to `已完成`.
 Do not finish with:
 
 - `BLOCKED_CERTIFIED_NATIONAL_BACKBONE` as the current final acceptance status;
-- another request for ordinary discovery;
+- another open-ended discovery/research cycle after the bounded final certification pass;
 - another open-ended “research these sources later” blocker list;
 - invented evidence;
 - silently enabled unverified edges;
@@ -346,4 +385,4 @@ Do not finish with:
 
 The target final status is:
 
-**TASK-086-B COMPLETE WITH EXPLICIT UNVERIFIABLE / RIGHTS / IDENTITY EXCLUSIONS, FAIL-CLOSED FOR FUTURE ROUTING.**
+**TASK-086-B COMPLETE AFTER FINAL BOUNDED RE-CERTIFICATION, WITH REMAINING UNVERIFIED / RIGHTS / IDENTITY EXCLUSIONS FAIL-CLOSED NOW AND EXPLICITLY READMITTABLE LATER.**
