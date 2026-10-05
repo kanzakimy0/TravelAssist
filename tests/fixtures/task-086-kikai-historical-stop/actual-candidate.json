@@ -1,0 +1,1516 @@
+{
+  "facts": [
+    {
+      "factId": "kikai226-independent-adjacent-0",
+      "kind": "service",
+      "sourceActionId": "kikai:226:current-municipal-service-and-historical-component:service",
+      "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+      "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+          "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+          "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+          "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+        }
+      ],
+      "operator": "喜界町",
+      "operatorRole": "MUNICIPAL_TEMPORARY_PUBLIC_SERVICE_ORGANIZER",
+      "line": "南中央線",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "町営路線バス",
+      "direction": "南中央線:parent-10",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published June1,2026 service; north18:00 excluded. No live dispatch or timetable itinerary guarantee.",
+      "callingStations": ["旧病院前", "喜界空港"],
+      "sourceCallingNames": ["旧病院前", "空港"],
+      "callingComponents": [
+        {
+          "name": "旧病院前",
+          "operator": "喜界町",
+          "line": "kikai:municipal-central",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "P04-20",
+            "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+            "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+            "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2"
+        },
+        {
+          "name": "喜界空港",
+          "operator": "airport-facility:cf03_00086",
+          "line": "airport:cf03_00086",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00086",
+            "requirementId": "review:official-airport:喜界",
+            "expectedRequirementName": "喜界",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current municipal public bus table explicitly calls this island airport in two actual independent adjacent directions; town service plan names continued island public routes. Whole airport passenger gateway only, no arbitrary free boarding across airport land, invented walk, curb or entrance precision."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "parentCallingSequence": {
+        "calls": [
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所",
+          "Aコープ",
+          "鹿銀前",
+          "湾港前",
+          "農機具センター",
+          "信号機前",
+          "湾",
+          "旧病院前",
+          "空港",
+          "ふくり東口",
+          "荒木",
+          "手久津久",
+          "上嘉鉄",
+          "先山",
+          "浦原",
+          "花良治",
+          "蒲生",
+          "阿伝",
+          "嘉鈍",
+          "白水",
+          "早町",
+          "塩道",
+          "佐手久",
+          "志戸桶",
+          "小野津",
+          "伊実久",
+          "伊砂",
+          "坂嶺",
+          "中熊",
+          "先内",
+          "中間",
+          "池治",
+          "高校前",
+          "赤連",
+          "海岸通り",
+          "仮屋跡前",
+          "湾港前",
+          "農機具センター",
+          "信号機前",
+          "空港",
+          "ふくり東口",
+          "中里",
+          "旧病院前",
+          "湾",
+          "Aコープ",
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所"
+        ],
+        "selectedStartIndex": 10,
+        "selectedEndIndex": 11,
+        "parentCallsSha256": "64e89abd40333e3cf0d43c1d55fbc888e03e563eb9d1dea766eb5355bbad7873"
+      },
+      "sourceNameNormalization": [
+        {
+          "sourceName": "空港",
+          "canonicalName": "喜界空港",
+          "scope": "Single island airport under current town route; independently identified original C28 facility, no stop-name coordinate join."
+        }
+      ],
+      "locator": "南中央線 independently reviewed source column, exact contiguous parent positions 10–11. Full parent provenance retained, no reversal."
+    },
+    {
+      "factId": "kikai226-independent-adjacent-1",
+      "kind": "service",
+      "sourceActionId": "kikai:226:current-municipal-service-and-historical-component:service",
+      "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+      "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+          "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+          "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+        },
+        {
+          "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+          "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+          "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+        }
+      ],
+      "operator": "喜界町",
+      "operatorRole": "MUNICIPAL_TEMPORARY_PUBLIC_SERVICE_ORGANIZER",
+      "line": "北中央線",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "町営路線バス",
+      "direction": "北中央線:parent-40",
+      "serviceState": "active",
+      "serviceStateScope": "Currently published June1,2026 service; north18:00 excluded. No live dispatch or timetable itinerary guarantee.",
+      "callingStations": ["喜界空港", "旧病院前"],
+      "sourceCallingNames": ["空港", "旧病院前"],
+      "callingComponents": [
+        {
+          "name": "喜界空港",
+          "operator": "airport-facility:cf03_00086",
+          "line": "airport:cf03_00086",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00086",
+            "requirementId": "review:official-airport:喜界",
+            "expectedRequirementName": "喜界",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current municipal public bus table explicitly calls this island airport in two actual independent adjacent directions; town service plan names continued island public routes. Whole airport passenger gateway only, no arbitrary free boarding across airport land, invented walk, curb or entrance precision."
+          }
+        },
+        {
+          "name": "旧病院前",
+          "operator": "喜界町",
+          "line": "kikai:municipal-central",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "P04-20",
+            "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+            "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+            "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "parentCallingSequence": {
+        "calls": [
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所",
+          "Aコープ",
+          "湾",
+          "旧病院前",
+          "中里",
+          "ふくり東口",
+          "空港",
+          "信号機前",
+          "農機具センター",
+          "湾港前",
+          "仮屋跡前",
+          "海岸通り",
+          "赤連",
+          "高校前",
+          "池治",
+          "中間",
+          "先内",
+          "中熊",
+          "坂嶺",
+          "伊砂",
+          "伊実久",
+          "小野津",
+          "志戸桶",
+          "佐手久",
+          "塩道",
+          "早町",
+          "白水",
+          "嘉鈍",
+          "阿伝",
+          "蒲生",
+          "花良治",
+          "浦原",
+          "先山",
+          "上嘉鉄",
+          "手久津久",
+          "荒木",
+          "ふくり東口",
+          "空港",
+          "旧病院前",
+          "湾",
+          "信号機前",
+          "農機具センター",
+          "湾港前",
+          "鹿銀前",
+          "Aコープ",
+          "旧湾営業所",
+          "徳洲会病院",
+          "役場前",
+          "旧湾営業所"
+        ],
+        "selectedStartIndex": 40,
+        "selectedEndIndex": 41,
+        "parentCallsSha256": "54909aea0f96c1017d2f42e3517aea059dcd26c1d671ac3cff5f16fddcc95eed"
+      },
+      "sourceNameNormalization": [
+        {
+          "sourceName": "空港",
+          "canonicalName": "喜界空港",
+          "scope": "Single island airport under current town route; independently identified original C28 facility, no stop-name coordinate join."
+        }
+      ],
+      "locator": "北中央線 independently reviewed source column, exact contiguous parent positions 40–41. Full parent provenance retained, no reversal."
+    }
+  ],
+  "actions": [
+    {
+      "actionId": "kikai:226:current-municipal-service-and-historical-component",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+          "observedAt": "2026-10-03T05:37:47.566242+00:00",
+          "status": 200,
+          "contentSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+          "bytes": 75598,
+          "rawPayloadRetained": false,
+          "pages": 1,
+          "extractedTextLength": 4908
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+          "observedAt": "2026-10-03T05:37:47.275155+00:00",
+          "status": 200,
+          "contentSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74",
+          "bytes": 20648,
+          "rawPayloadRetained": false
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+          "observedAt": "2026-10-03T05:37:49.074656+00:00",
+          "status": 200,
+          "contentSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23",
+          "bytes": 4332697,
+          "rawPayloadRetained": false,
+          "pages": 42,
+          "extractedTextLength": 28181
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+          "observedAt": "2026-10-03T05:37:47.485143+00:00",
+          "status": 200,
+          "contentSha256": "45a3aead7759b349127190b2469a01c4fb9ce65962f98b2d5d3d1a56f8f27020",
+          "bytes": 16848,
+          "rawPayloadRetained": false
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+          "observedAt": "2026-10-03T19:39:58.085688+00:00",
+          "attemptCount": 1,
+          "status": 200,
+          "contentSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd",
+          "bytes": 945693,
+          "rawPayloadRetained": false,
+          "pages": 16
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+          "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+          "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+          "observedAt": "2026-10-03T05:37:47.566242+00:00",
+          "rawReuseClaimed": false,
+          "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+        }
+      ]
+    },
+    {
+      "actionId": "kikai:226:current-municipal-service-and-historical-component:service",
+      "purpose": "airport",
+      "state": "RIGHTS_REVIEWED",
+      "sourcesChecked": [
+        {
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+          "observedAt": "2026-10-03T05:37:47.566242+00:00",
+          "status": 200,
+          "contentSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+          "bytes": 75598,
+          "rawPayloadRetained": false,
+          "pages": 1,
+          "extractedTextLength": 4908
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+          "observedAt": "2026-10-03T05:37:47.275155+00:00",
+          "status": 200,
+          "contentSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74",
+          "bytes": 20648,
+          "rawPayloadRetained": false
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+          "observedAt": "2026-10-03T05:37:49.074656+00:00",
+          "status": 200,
+          "contentSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23",
+          "bytes": 4332697,
+          "rawPayloadRetained": false,
+          "pages": 42,
+          "extractedTextLength": 28181
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+          "observedAt": "2026-10-03T05:37:47.485143+00:00",
+          "status": 200,
+          "contentSha256": "45a3aead7759b349127190b2469a01c4fb9ce65962f98b2d5d3d1a56f8f27020",
+          "bytes": 16848,
+          "rawPayloadRetained": false
+        },
+        {
+          "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+          "observedAt": "2026-10-03T19:39:58.085688+00:00",
+          "attemptCount": 1,
+          "status": 200,
+          "contentSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd",
+          "bytes": 945693,
+          "rawPayloadRetained": false,
+          "pages": 16
+        }
+      ],
+      "rightsFindings": [
+        {
+          "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+          "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+          "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+          "observedAt": "2026-10-03T05:37:47.566242+00:00",
+          "rawReuseClaimed": false,
+          "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+        }
+      ]
+    }
+  ],
+  "nativeFacilityEntry": {
+    "archivePath": "sources/raw/kikai-p04-20_46.zip",
+    "extraction": {
+      "dataset": "P04-20",
+      "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+      "member": "P04-20_46_GML/P04-20_46.geojson",
+      "memberSha256": "76a22c6e5c92674648099a96c7dbc8ca0e97a3e61e47c505a44f0a23a6f684a0",
+      "featureIndex": 466,
+      "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235"
+    },
+    "nativeIdentity": {
+      "dataset": "P04-20",
+      "member": "P04-20_46_GML/P04-20_46.geojson",
+      "featureIndex": 466,
+      "nativeRecord": {
+        "type": "Feature",
+        "properties": {
+          "P04_001": 1,
+          "P04_002": "医療法人徳洲会　喜界徳洲会病院",
+          "P04_003": "大島郡喜界町湾字前金久３１５",
+          "P04_004": "内　神内　消　循　小　外　整　脳　皮　泌　産婦　眼　耳　リハ　形",
+          "P04_005": null,
+          "P04_006": null,
+          "P04_007": 4,
+          "P04_008": 89,
+          "P04_009": 1,
+          "P04_010": 9
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [129.93325886725643, 28.31792737863217]
+        }
+      },
+      "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+      "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+      "memberSha256": "76a22c6e5c92674648099a96c7dbc8ca0e97a3e61e47c505a44f0a23a6f684a0",
+      "name": "医療法人徳洲会　喜界徳洲会病院",
+      "address": "大島郡喜界町湾字前金久３１５",
+      "longitude": 129.93325886725643,
+      "latitude": 28.31792737863217,
+      "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+      "nativeFacilityStatus": "HISTORICAL_2020_SITE_NOT_CURRENT_HOSPITAL",
+      "coordinateScope": "OFFICIAL_HISTORICAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+    },
+    "nativeIdentityEvidenceRef": "transport-evidence:086:5361d1d37e8c004264bccdce641439c9",
+    "componentEvidenceRefs": [
+      "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2",
+      "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0"
+    ],
+    "serviceOperator": "喜界町",
+    "lineRef": "kikai:municipal-central",
+    "sourcePackagePaths": ["sources/kikai226-reviewed-facts.json"]
+  },
+  "nodes": [
+    {
+      "canonicalNameJa": "喜界空港",
+      "decision": "ADMIT_TASK_086_TOPOLOGY",
+      "discoveryCandidateRef": "official-airport:喜界",
+      "evidenceRefs": [
+        "transport-evidence:086:0c3ce8ae9a588a315f9697be678c9a0f",
+        "transport-evidence:086:80e8230f8a22857ca8ed7472ecd49c03",
+        "transport-evidence:086:be3c8d277348de83088699d1281eea25"
+      ],
+      "hubSemantics": "AIRPORT_FACILITY_GATEWAY_EXPLICIT_TERMINAL_ACCESS_ONLY",
+      "identityAnchor": "review:official-airport:喜界",
+      "identityRecord": {
+        "administrativeAreaCodes": ["46529"],
+        "airportFeatureIds": ["cf02_00086"],
+        "airportName": "喜界空港",
+        "coordinateScope": "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+        "establisherClassCode": 5,
+        "identityAsOf": "2021-12-31",
+        "latitude": 28.321389,
+        "longitude": 129.928056,
+        "managerClassCode": 5,
+        "referencePointId": "cf03_00086"
+      },
+      "identitySignature": "4e5e0f8f917747d0fbc4483f8af950e4889e9c42fa3e0c3e4c0d97e0587abe04",
+      "independentReview": {
+        "coordinateScope": "AIRPORT_REFERENCE_POINT_NOT_TERMINAL_OR_PRECISE_NAVIGATION",
+        "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference.",
+        "decision": "ADMIT_TASK_086_TOPOLOGY",
+        "identityAsOf": "2021-12-31",
+        "method": "EXACT_C28_REFERENCE_ID_AND_REVIEWED_REQUIREMENT_PLUS_CURRENT_PRIMARY_ACCESS",
+        "recordSha256": "9e96691633e1fa3924cebc2881ec66d76705bab28e296a2d6468327a49bc588d",
+        "sourceArchiveSha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35"
+      },
+      "latitude": 28.321389,
+      "lineRefs": ["airport:cf03_00086"],
+      "longitude": 129.928056,
+      "mode": "flight",
+      "nodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+      "nodeKind": "airport",
+      "nodeLevel": "T3",
+      "operatorReferenceScope": "AIRPORT_FACILITY_ID_NOT_AIRLINE_OR_CONCESSIONAIRE",
+      "operatorRefs": ["airport-facility:cf03_00086"],
+      "origin": "TASK_086_INDEPENDENT_C28_AND_CURRENT_ACCESS",
+      "parentHubId": null,
+      "reasons": [],
+      "runtimeImportAuthorized": false
+    },
+    {
+      "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+      "canonicalNameJa": "旧病院前",
+      "nodeKind": "public_pickup_facility",
+      "mode": "local_bus",
+      "operatorRefs": ["喜界町"],
+      "operatorReferenceScope": "PUBLIC_SERVICE_ORGANIZER_NOT_UNIDENTIFIED_VEHICLE_CONTRACTOR",
+      "lineRefs": ["kikai:municipal-central"],
+      "latitude": 28.31792737863217,
+      "longitude": 129.93325886725643,
+      "identityRecord": {
+        "dataset": "P04-20",
+        "member": "P04-20_46_GML/P04-20_46.geojson",
+        "featureIndex": 466,
+        "nativeRecord": {
+          "type": "Feature",
+          "properties": {
+            "P04_001": 1,
+            "P04_002": "医療法人徳洲会　喜界徳洲会病院",
+            "P04_003": "大島郡喜界町湾字前金久３１５",
+            "P04_004": "内　神内　消　循　小　外　整　脳　皮　泌　産婦　眼　耳　リハ　形",
+            "P04_005": null,
+            "P04_006": null,
+            "P04_007": 4,
+            "P04_008": 89,
+            "P04_009": 1,
+            "P04_010": 9
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [129.93325886725643, 28.31792737863217]
+          }
+        },
+        "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+        "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+        "memberSha256": "76a22c6e5c92674648099a96c7dbc8ca0e97a3e61e47c505a44f0a23a6f684a0",
+        "name": "医療法人徳洲会　喜界徳洲会病院",
+        "address": "大島郡喜界町湾字前金久３１５",
+        "longitude": 129.93325886725643,
+        "latitude": 28.31792737863217,
+        "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+        "nativeFacilityStatus": "HISTORICAL_2020_SITE_NOT_CURRENT_HOSPITAL",
+        "coordinateScope": "OFFICIAL_HISTORICAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+      },
+      "origin": "TASK_086_OFFICIAL_PUBLIC_FACILITY_AND_BUS",
+      "evidenceRefs": [
+        "transport-evidence:086:5361d1d37e8c004264bccdce641439c9",
+        "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2",
+        "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0"
+      ],
+      "independentReview": {
+        "decision": "ADMIT_TASK_086_TOPOLOGY",
+        "recordSha256": "82287a003da423b2ff31bd0d6f2a99474e4b72adeb33a8d3939037173707436c",
+        "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+      },
+      "hubSemantics": "EXPLICIT_NAMED_PUBLIC_FACILITY_SERVICE_COMPONENT",
+      "nodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+      "identitySignature": "78da770d0fd2009d7aeac4d8f73b99f22d19acefdfe5fafba5970048c8e88e65",
+      "decision": "ADMIT_TASK_086_TOPOLOGY",
+      "reasons": []
+    }
+  ],
+  "patterns": [
+    {
+      "factId": "kikai226-independent-adjacent-0",
+      "sourceFactRef": "transport-evidence:086:2b5d1f28731eb6d2bddefb6ea88872c6",
+      "callingNodes": [
+        {
+          "nodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+          "sequence": 1,
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "nodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+          "sequence": 2,
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "lineRef": "transport-line:086:fb2379ada9bf8706044694c521fdf299",
+      "operatorRef": "喜界町",
+      "mode": "local_bus",
+      "serviceClass": "町営路線バス",
+      "direction": "南中央線:parent-10",
+      "purpose": "airport",
+      "servicePatternId": "transport-pattern:086:85a9ce22c317d510c3e87abdb4991461",
+      "segmentOperators": ["喜界町"],
+      "evidenceRefs": [
+        "transport-evidence:086:7ed16a2ea12eea59e94df9eeb0a1c262"
+      ],
+      "sourceRefs": [
+        "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf"
+      ],
+      "sequenceEvidence": "OFFICIAL_CALLING_SEQUENCE",
+      "strictFactBinding": true,
+      "serviceState": "active",
+      "metrics": {}
+    },
+    {
+      "factId": "kikai226-independent-adjacent-1",
+      "sourceFactRef": "transport-evidence:086:6e28135cd6c3c39ee08e064142792cec",
+      "callingNodes": [
+        {
+          "nodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+          "sequence": 1,
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "nodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+          "sequence": 2,
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "lineRef": "transport-line:086:ffd05b987c8c6e34dfa43f389b33da0e",
+      "operatorRef": "喜界町",
+      "mode": "local_bus",
+      "serviceClass": "町営路線バス",
+      "direction": "北中央線:parent-40",
+      "purpose": "airport",
+      "servicePatternId": "transport-pattern:086:3f20ce04a51f18bacfcf3a5f5ff43af5",
+      "segmentOperators": ["喜界町"],
+      "evidenceRefs": [
+        "transport-evidence:086:5b376471e100b645921bd07d4833a7f6"
+      ],
+      "sourceRefs": [
+        "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf"
+      ],
+      "sequenceEvidence": "OFFICIAL_CALLING_SEQUENCE",
+      "strictFactBinding": true,
+      "serviceState": "active",
+      "metrics": {}
+    }
+  ],
+  "edges": [
+    {
+      "edgeId": "transport-edge:086:8e4595461fab9eb30d82cf4121a88120",
+      "from": {
+        "kind": "transport",
+        "id": "transport-node:086:1e4e7758026e32c39b432d5e477541c0"
+      },
+      "to": {
+        "kind": "transport",
+        "id": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3"
+      },
+      "fromTransportNodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+      "toTransportNodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+      "layer": "transport_network",
+      "directed": true,
+      "topologyStatus": "CONFIRMED",
+      "edgeKind": "service_segment",
+      "mode": "local_bus",
+      "operatorRef": "喜界町",
+      "lineRef": "transport-line:086:fb2379ada9bf8706044694c521fdf299",
+      "servicePatternRef": "transport-pattern:086:85a9ce22c317d510c3e87abdb4991461",
+      "segmentIndex": 0,
+      "serviceClass": "町営路線バス",
+      "direction": "南中央線:parent-10",
+      "boardAllowed": true,
+      "alightAllowed": true,
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:7ed16a2ea12eea59e94df9eeb0a1c262"
+      ],
+      "sourceRefs": [
+        "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf"
+      ],
+      "confidence": 1,
+      "metrics": {
+        "durationTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "durationP90Min": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "fareTypicalYen": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "frequencyTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "firstDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "lastDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "calendar": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "reservation": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "seasonal": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "transferTimeMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "accessibility": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        }
+      },
+      "generatedAt": "2026-10-01T00:00:00Z"
+    },
+    {
+      "edgeId": "transport-edge:086:cbca415eddbcd5d3dad75b195004dfd0",
+      "from": {
+        "kind": "transport",
+        "id": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3"
+      },
+      "to": {
+        "kind": "transport",
+        "id": "transport-node:086:1e4e7758026e32c39b432d5e477541c0"
+      },
+      "fromTransportNodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+      "toTransportNodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+      "layer": "transport_network",
+      "directed": true,
+      "topologyStatus": "CONFIRMED",
+      "edgeKind": "service_segment",
+      "mode": "local_bus",
+      "operatorRef": "喜界町",
+      "lineRef": "transport-line:086:ffd05b987c8c6e34dfa43f389b33da0e",
+      "servicePatternRef": "transport-pattern:086:3f20ce04a51f18bacfcf3a5f5ff43af5",
+      "segmentIndex": 0,
+      "serviceClass": "町営路線バス",
+      "direction": "北中央線:parent-40",
+      "boardAllowed": true,
+      "alightAllowed": true,
+      "topologyEvidenceRefs": [
+        "transport-evidence:086:5b376471e100b645921bd07d4833a7f6"
+      ],
+      "sourceRefs": [
+        "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf"
+      ],
+      "confidence": 1,
+      "metrics": {
+        "durationTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "durationP90Min": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "fareTypicalYen": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "frequencyTypicalMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "firstDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "lastDeparture": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "calendar": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "reservation": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "seasonal": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "transferTimeMin": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        },
+        "accessibility": {
+          "status": "unresolved",
+          "value": null,
+          "reason": "NO_LICENSED_FIELD_OBSERVATION"
+        }
+      },
+      "generatedAt": "2026-10-01T00:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "transport-source:086:e6b551c44dbab1b4b99e2ba79f38bde1",
+      "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+      "contentSha256": "4c907cdda9ad39f3c3178368f356a9e0a8bb05c83b094789f91c5c18fbc00241",
+      "evidenceContentSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T19:39:58.085688+00:00",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+        "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+      },
+      "attribution": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf; operator factual topology; reviewed 2026-10-03T19:39:58.085688+00:00"
+    },
+    {
+      "sourceId": "transport-source:086:f73326dbb78565f8d7b60a5d53fa387a",
+      "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+      "contentSha256": "94574b9cae07f3febad6bddb8826f71ddab4cd3adb6b86029c4189b517bdf151",
+      "evidenceContentSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T05:37:49.074656+00:00",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+        "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+      },
+      "attribution": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf; operator factual topology; reviewed 2026-10-03T05:37:49.074656+00:00"
+    },
+    {
+      "sourceId": "transport-source:086:f91769fea5c3bc096dd967419701dbb2",
+      "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+      "contentSha256": "b623b0653dd6f540f218842aea82a00fba03fce1fe25188f562824ba937cf211",
+      "evidenceContentSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T05:37:47.566242+00:00",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+        "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+      },
+      "attribution": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf; operator factual topology; reviewed 2026-10-03T05:37:47.566242+00:00"
+    },
+    {
+      "sourceId": "transport-source:086:af1b115e483766970a2150bdf2891131",
+      "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+      "contentSha256": "c2dcd51ad961010a942d564933a282ffedda351850f06e8ea26a2fd65787838a",
+      "evidenceContentSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+      "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+      "observedAt": "2026-10-03T05:37:47.566242+00:00",
+      "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+      "rawPayloadRetained": false,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "metricPersistenceAllowed": false,
+      "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "rightsReview": {
+        "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+        "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+        "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+      },
+      "attribution": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf; operator factual topology; reviewed 2026-10-03T05:37:47.566242+00:00"
+    },
+    {
+      "sourceId": "kikai226:native:P04-20:46",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P04/P04-20/P04-20_46_GML.zip",
+      "observedAt": "2026-10-03T19:39:57.765679+00:00",
+      "contentSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+      "persistenceAllowed": true,
+      "rawPayloadRetained": true,
+      "derivedDataAllowed": true,
+      "redistributionAllowed": true,
+      "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+      "rightsDecision": "CC_BY_4_0",
+      "license": "CC-BY-4.0",
+      "attribution": "国土交通省 国土数値情報 医療機関データ（2020年度）",
+      "rightsReview": {
+        "licenseEvidenceSha256": "ae6d3657d0d6259fc387cf0b44d0a567b592da7e7557a70b79e808f7bd0e5dcc",
+        "termsUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P04-2020.html",
+        "attribution": "国土交通省 国土数値情報 医療機関データ（2020年度）",
+        "changes": "Select exact original GeoJSON historical record only; separate current front-stop semantic review."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:39d39ae20a10dfd694b27639125ca2df",
+      "sourceId": "transport-source:086:e6b551c44dbab1b4b99e2ba79f38bde1",
+      "sourceSha256": "4c907cdda9ad39f3c3178368f356a9e0a8bb05c83b094789f91c5c18fbc00241",
+      "record": {
+        "kind": "REVIEWED_EXISTING_STOP_RENAME",
+        "factId": "kikai:226:REVIEWED_EXISTING_STOP_RENAME",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+        "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd",
+        "oldStopName": "病院前",
+        "newStopName": "旧病院前",
+        "originalFacilityName": "喜界徳洲会病院",
+        "existingStopRenamed": true,
+        "newHospitalStopSeparate": true,
+        "effectiveDate": "2024-12-01",
+        "physicalRelation": "EXISTING_STOP_RENAME_AFTER_FACILITY_RELOCATION",
+        "locator": "Page3 資料1-1, existing stop renamed; new hospital stop separately introduced. Visually reviewed."
+      },
+      "recordSha256": "e3a8894cbede2ed10e8dce81546f832b3fe4c6c74b12e49eea3d47e0020e96bd",
+      "locator": "Source-bound minimum independent historical component/current service fact"
+    },
+    {
+      "evidenceId": "transport-evidence:086:797c7ece5d91b6a7365858ebff9076ff",
+      "sourceId": "transport-source:086:f73326dbb78565f8d7b60a5d53fa387a",
+      "sourceSha256": "94574b9cae07f3febad6bddb8826f71ddab4cd3adb6b86029c4189b517bdf151",
+      "record": {
+        "kind": "REVIEWED_MUNICIPAL_OPERATION_REPLACEMENT",
+        "factId": "kikai:226:REVIEWED_MUNICIPAL_OPERATION_REPLACEMENT",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+        "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23",
+        "predecessorOperator": "株式会社奄美航空",
+        "currentServiceOrganizer": "喜界町",
+        "corporateSuccession": false,
+        "effectiveMonth": "2025-12",
+        "sameNamedRoutesContinued": true,
+        "locator": "Printed p6, same 喜界バス南中央/北中央 routes; predecessor withdrawal and temporary town operation explicitly stated."
+      },
+      "recordSha256": "48caf30d43d59a5e05169d6d90da07530687f0676d7f53f4e810b13e0f5f7513",
+      "locator": "Source-bound minimum independent historical component/current service fact"
+    },
+    {
+      "evidenceId": "transport-evidence:086:42ed0eb2c0749d3c42470e5e632c7fba",
+      "sourceId": "transport-source:086:f91769fea5c3bc096dd967419701dbb2",
+      "sourceSha256": "b623b0653dd6f540f218842aea82a00fba03fce1fe25188f562824ba937cf211",
+      "record": {
+        "kind": "REVIEWED_CURRENT_HISTORICAL_FRONT_STOP",
+        "factId": "kikai:226:REVIEWED_CURRENT_HISTORICAL_FRONT_STOP",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+        "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "currentStopName": "旧病院前",
+        "currentNewHospitalStopName": "徳洲会病院",
+        "effectiveDate": "2026-06-01",
+        "ordinaryPublicService": true,
+        "north1800Excluded": true,
+        "southAdjacentDirection": "旧病院前→空港",
+        "northAdjacentDirection": "空港→旧病院前",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+            "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+            "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+          }
+        ],
+        "locator": "June2026 currently published table; independent selected populated columns, not crossed-out north18:00."
+      },
+      "recordSha256": "679ce55ebb2f15208cb512e21032a64ef9b53005444f33d8eea4425b0ddedd71",
+      "locator": "Source-bound minimum independent historical component/current service fact"
+    },
+    {
+      "evidenceId": "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2",
+      "sourceId": "transport-source:086:f91769fea5c3bc096dd967419701dbb2",
+      "sourceSha256": "b623b0653dd6f540f218842aea82a00fba03fce1fe25188f562824ba937cf211",
+      "record": {
+        "kind": "REVIEWED_EXACT_NAMED_PUBLIC_FACILITY_BUS_COMPONENT",
+        "factId": "kikai226-component:kikai226-independent-adjacent-0",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+        "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "sourceFactId": "kikai226-independent-adjacent-0",
+        "serviceResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "sourceCallName": "旧病院前",
+        "nativeName": "旧病院前",
+        "nativeFacilityName": "医療法人徳洲会　喜界徳洲会病院",
+        "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+        "identityRecordSha256": "82287a003da423b2ff31bd0d6f2a99474e4b72adeb33a8d3939037173707436c",
+        "publicServiceOperator": "喜界町",
+        "componentScope": "COARSE_NAMED_PUBLIC_FACILITY_NOT_CURB_OR_NAVIGATION",
+        "coordinateProximityUsed": false,
+        "googleCoordinatesUsed": false,
+        "currentHospitalClaimed": false,
+        "componentType": "HISTORIC_FACILITY_FRONT_PUBLIC_STOP",
+        "currentOfficialFacilityEvidenceRefs": [
+          "transport-evidence:086:39d39ae20a10dfd694b27639125ca2df",
+          "transport-evidence:086:797c7ece5d91b6a7365858ebff9076ff",
+          "transport-evidence:086:42ed0eb2c0749d3c42470e5e632c7fba"
+        ],
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+            "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+            "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+          }
+        ],
+        "reviewMethod": "Explicit existing 病院前→旧病院前 rename ties physical public stop to relocation of uniquely identified old hospital; current town service retains exact old/new distinction. Historical facility representative point only, not hospital operation or bus pole."
+      },
+      "recordSha256": "f95593d44ecb8a27c1764405b7cbb8602d7747c7b3c01195280867e529f51238",
+      "locator": "Source-bound minimum independent historical component/current service fact"
+    },
+    {
+      "evidenceId": "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0",
+      "sourceId": "transport-source:086:f91769fea5c3bc096dd967419701dbb2",
+      "sourceSha256": "b623b0653dd6f540f218842aea82a00fba03fce1fe25188f562824ba937cf211",
+      "record": {
+        "kind": "REVIEWED_EXACT_NAMED_PUBLIC_FACILITY_BUS_COMPONENT",
+        "factId": "kikai226-component:kikai226-independent-adjacent-1",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+        "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "sourceFactId": "kikai226-independent-adjacent-1",
+        "serviceResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "sourceCallName": "旧病院前",
+        "nativeName": "旧病院前",
+        "nativeFacilityName": "医療法人徳洲会　喜界徳洲会病院",
+        "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+        "identityRecordSha256": "82287a003da423b2ff31bd0d6f2a99474e4b72adeb33a8d3939037173707436c",
+        "publicServiceOperator": "喜界町",
+        "componentScope": "COARSE_NAMED_PUBLIC_FACILITY_NOT_CURB_OR_NAVIGATION",
+        "coordinateProximityUsed": false,
+        "googleCoordinatesUsed": false,
+        "currentHospitalClaimed": false,
+        "componentType": "HISTORIC_FACILITY_FRONT_PUBLIC_STOP",
+        "currentOfficialFacilityEvidenceRefs": [
+          "transport-evidence:086:39d39ae20a10dfd694b27639125ca2df",
+          "transport-evidence:086:797c7ece5d91b6a7365858ebff9076ff",
+          "transport-evidence:086:42ed0eb2c0749d3c42470e5e632c7fba"
+        ],
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+            "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+            "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+          }
+        ],
+        "reviewMethod": "Explicit existing 病院前→旧病院前 rename ties physical public stop to relocation of uniquely identified old hospital; current town service retains exact old/new distinction. Historical facility representative point only, not hospital operation or bus pole."
+      },
+      "recordSha256": "ad4de80165d41190deb7bf64e9aedc72fe66abb77fab6047a2350aa17553a1b5",
+      "locator": "Source-bound minimum independent historical component/current service fact"
+    },
+    {
+      "evidenceId": "transport-evidence:086:2b5d1f28731eb6d2bddefb6ea88872c6",
+      "sourceId": "transport-source:086:af1b115e483766970a2150bdf2891131",
+      "sourceSha256": "c2dcd51ad961010a942d564933a282ffedda351850f06e8ea26a2fd65787838a",
+      "record": {
+        "factId": "kikai226-independent-adjacent-0",
+        "kind": "service",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component:service",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+        "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+            "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+            "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+            "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+          }
+        ],
+        "operator": "喜界町",
+        "operatorRole": "MUNICIPAL_TEMPORARY_PUBLIC_SERVICE_ORGANIZER",
+        "line": "南中央線",
+        "mode": "local_bus",
+        "purpose": "airport",
+        "serviceClass": "町営路線バス",
+        "direction": "南中央線:parent-10",
+        "serviceState": "active",
+        "serviceStateScope": "Currently published June1,2026 service; north18:00 excluded. No live dispatch or timetable itinerary guarantee.",
+        "callingStations": ["旧病院前", "喜界空港"],
+        "sourceCallingNames": ["旧病院前", "空港"],
+        "callingComponents": [
+          {
+            "name": "旧病院前",
+            "operator": "喜界町",
+            "line": "kikai:municipal-central",
+            "mode": "local_bus",
+            "nodeKind": "public_pickup_facility",
+            "officialFacilityIdentity": {
+              "dataset": "P04-20",
+              "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+              "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+              "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+              "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+              "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+            },
+            "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2"
+          },
+          {
+            "name": "喜界空港",
+            "operator": "airport-facility:cf03_00086",
+            "line": "airport:cf03_00086",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00086",
+              "requirementId": "review:official-airport:喜界",
+              "expectedRequirementName": "喜界",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Current municipal public bus table explicitly calls this island airport in two actual independent adjacent directions; town service plan names continued island public routes. Whole airport passenger gateway only, no arbitrary free boarding across airport land, invented walk, curb or entrance precision."
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "parentCallingSequence": {
+          "calls": [
+            "旧湾営業所",
+            "徳洲会病院",
+            "役場前",
+            "旧湾営業所",
+            "Aコープ",
+            "鹿銀前",
+            "湾港前",
+            "農機具センター",
+            "信号機前",
+            "湾",
+            "旧病院前",
+            "空港",
+            "ふくり東口",
+            "荒木",
+            "手久津久",
+            "上嘉鉄",
+            "先山",
+            "浦原",
+            "花良治",
+            "蒲生",
+            "阿伝",
+            "嘉鈍",
+            "白水",
+            "早町",
+            "塩道",
+            "佐手久",
+            "志戸桶",
+            "小野津",
+            "伊実久",
+            "伊砂",
+            "坂嶺",
+            "中熊",
+            "先内",
+            "中間",
+            "池治",
+            "高校前",
+            "赤連",
+            "海岸通り",
+            "仮屋跡前",
+            "湾港前",
+            "農機具センター",
+            "信号機前",
+            "空港",
+            "ふくり東口",
+            "中里",
+            "旧病院前",
+            "湾",
+            "Aコープ",
+            "旧湾営業所",
+            "徳洲会病院",
+            "役場前",
+            "旧湾営業所"
+          ],
+          "selectedStartIndex": 10,
+          "selectedEndIndex": 11,
+          "parentCallsSha256": "64e89abd40333e3cf0d43c1d55fbc888e03e563eb9d1dea766eb5355bbad7873"
+        },
+        "sourceNameNormalization": [
+          {
+            "sourceName": "空港",
+            "canonicalName": "喜界空港",
+            "scope": "Single island airport under current town route; independently identified original C28 facility, no stop-name coordinate join."
+          }
+        ],
+        "locator": "南中央線 independently reviewed source column, exact contiguous parent positions 10–11. Full parent provenance retained, no reversal."
+      },
+      "recordSha256": "f4f0c90766471c780376f8ab6fb2bb3a50ca255affea730b8cde5fd977325a02",
+      "locator": "南中央線 independently reviewed source column, exact contiguous parent positions 10–11. Full parent provenance retained, no reversal."
+    },
+    {
+      "evidenceId": "transport-evidence:086:6e28135cd6c3c39ee08e064142792cec",
+      "sourceId": "transport-source:086:af1b115e483766970a2150bdf2891131",
+      "sourceSha256": "c2dcd51ad961010a942d564933a282ffedda351850f06e8ea26a2fd65787838a",
+      "record": {
+        "factId": "kikai226-independent-adjacent-1",
+        "kind": "service",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component:service",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/documents/basujikoku.pdf",
+        "observedResponseSha256": "8e1b392c492c37fcc62cfae1fe62f06dad5d27daa8c2e98c1059d293fea17060",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kankou/kanko-iju/kotsuannai/chonai.html",
+            "observedResponseSha256": "efdf0c8ababed782574de2d7bfc0ae2ee28a85a6e917e893a0a48f22c2e40c74"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/koukyoutoutuu/documents/hontai.pdf",
+            "observedResponseSha256": "17b90942583c5b50ce754d591b35f17a7c989fbc29b84a8abe598e8d51be8c23"
+          },
+          {
+            "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+            "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+            "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd"
+          }
+        ],
+        "operator": "喜界町",
+        "operatorRole": "MUNICIPAL_TEMPORARY_PUBLIC_SERVICE_ORGANIZER",
+        "line": "北中央線",
+        "mode": "local_bus",
+        "purpose": "airport",
+        "serviceClass": "町営路線バス",
+        "direction": "北中央線:parent-40",
+        "serviceState": "active",
+        "serviceStateScope": "Currently published June1,2026 service; north18:00 excluded. No live dispatch or timetable itinerary guarantee.",
+        "callingStations": ["喜界空港", "旧病院前"],
+        "sourceCallingNames": ["空港", "旧病院前"],
+        "callingComponents": [
+          {
+            "name": "喜界空港",
+            "operator": "airport-facility:cf03_00086",
+            "line": "airport:cf03_00086",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00086",
+              "requirementId": "review:official-airport:喜界",
+              "expectedRequirementName": "喜界",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Current municipal public bus table explicitly calls this island airport in two actual independent adjacent directions; town service plan names continued island public routes. Whole airport passenger gateway only, no arbitrary free boarding across airport land, invented walk, curb or entrance precision."
+            }
+          },
+          {
+            "name": "旧病院前",
+            "operator": "喜界町",
+            "line": "kikai:municipal-central",
+            "mode": "local_bus",
+            "nodeKind": "public_pickup_facility",
+            "officialFacilityIdentity": {
+              "dataset": "P04-20",
+              "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+              "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+              "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+              "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+              "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+            },
+            "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0"
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "parentCallingSequence": {
+          "calls": [
+            "旧湾営業所",
+            "徳洲会病院",
+            "役場前",
+            "旧湾営業所",
+            "Aコープ",
+            "湾",
+            "旧病院前",
+            "中里",
+            "ふくり東口",
+            "空港",
+            "信号機前",
+            "農機具センター",
+            "湾港前",
+            "仮屋跡前",
+            "海岸通り",
+            "赤連",
+            "高校前",
+            "池治",
+            "中間",
+            "先内",
+            "中熊",
+            "坂嶺",
+            "伊砂",
+            "伊実久",
+            "小野津",
+            "志戸桶",
+            "佐手久",
+            "塩道",
+            "早町",
+            "白水",
+            "嘉鈍",
+            "阿伝",
+            "蒲生",
+            "花良治",
+            "浦原",
+            "先山",
+            "上嘉鉄",
+            "手久津久",
+            "荒木",
+            "ふくり東口",
+            "空港",
+            "旧病院前",
+            "湾",
+            "信号機前",
+            "農機具センター",
+            "湾港前",
+            "鹿銀前",
+            "Aコープ",
+            "旧湾営業所",
+            "徳洲会病院",
+            "役場前",
+            "旧湾営業所"
+          ],
+          "selectedStartIndex": 40,
+          "selectedEndIndex": 41,
+          "parentCallsSha256": "54909aea0f96c1017d2f42e3517aea059dcd26c1d671ac3cff5f16fddcc95eed"
+        },
+        "sourceNameNormalization": [
+          {
+            "sourceName": "空港",
+            "canonicalName": "喜界空港",
+            "scope": "Single island airport under current town route; independently identified original C28 facility, no stop-name coordinate join."
+          }
+        ],
+        "locator": "北中央線 independently reviewed source column, exact contiguous parent positions 40–41. Full parent provenance retained, no reversal."
+      },
+      "recordSha256": "80b10cb5bb146995a0c5926849052ed0ddc1482a7adb0b0d9074483d6374117e",
+      "locator": "北中央線 independently reviewed source column, exact contiguous parent positions 40–41. Full parent provenance retained, no reversal."
+    },
+    {
+      "evidenceId": "transport-evidence:086:5361d1d37e8c004264bccdce641439c9",
+      "sourceId": "kikai226:native:P04-20:46",
+      "sourceSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+      "record": {
+        "dataset": "P04-20",
+        "member": "P04-20_46_GML/P04-20_46.geojson",
+        "featureIndex": 466,
+        "nativeRecord": {
+          "type": "Feature",
+          "properties": {
+            "P04_001": 1,
+            "P04_002": "医療法人徳洲会　喜界徳洲会病院",
+            "P04_003": "大島郡喜界町湾字前金久３１５",
+            "P04_004": "内　神内　消　循　小　外　整　脳　皮　泌　産婦　眼　耳　リハ　形",
+            "P04_005": null,
+            "P04_006": null,
+            "P04_007": 4,
+            "P04_008": 89,
+            "P04_009": 1,
+            "P04_010": 9
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [129.93325886725643, 28.31792737863217]
+          }
+        },
+        "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+        "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+        "memberSha256": "76a22c6e5c92674648099a96c7dbc8ca0e97a3e61e47c505a44f0a23a6f684a0",
+        "name": "医療法人徳洲会　喜界徳洲会病院",
+        "address": "大島郡喜界町湾字前金久３１５",
+        "longitude": 129.93325886725643,
+        "latitude": 28.31792737863217,
+        "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+        "nativeFacilityStatus": "HISTORICAL_2020_SITE_NOT_CURRENT_HOSPITAL",
+        "coordinateScope": "OFFICIAL_HISTORICAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+      },
+      "recordSha256": "82287a003da423b2ff31bd0d6f2a99474e4b72adeb33a8d3939037173707436c",
+      "locator": "P04-20_46 native GeoJSON /features/466. Full XML parse fails elsewhere, not used or repaired; no native GML ID invented."
+    },
+    {
+      "evidenceId": "transport-evidence:086:7ed16a2ea12eea59e94df9eeb0a1c262",
+      "sourceId": "transport-source:086:af1b115e483766970a2150bdf2891131",
+      "sourceSha256": "c2dcd51ad961010a942d564933a282ffedda351850f06e8ea26a2fd65787838a",
+      "record": {
+        "factId": "kikai226-independent-adjacent-0",
+        "sourceFactRef": "transport-evidence:086:2b5d1f28731eb6d2bddefb6ea88872c6",
+        "callingNodes": [
+          {
+            "nodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+            "sequence": 1,
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "nodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+            "sequence": 2,
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "lineRef": "transport-line:086:fb2379ada9bf8706044694c521fdf299",
+        "operatorRef": "喜界町",
+        "mode": "local_bus",
+        "serviceClass": "町営路線バス",
+        "direction": "南中央線:parent-10",
+        "purpose": "airport"
+      },
+      "recordSha256": "8eb77ce9f1dc216b728d8adf5cb7c560cbb6d44fe04185a93289aafffe5b384f",
+      "locator": "南中央線 independently reviewed source column, exact contiguous parent positions 10–11. Full parent provenance retained, no reversal."
+    },
+    {
+      "evidenceId": "transport-evidence:086:5b376471e100b645921bd07d4833a7f6",
+      "sourceId": "transport-source:086:af1b115e483766970a2150bdf2891131",
+      "sourceSha256": "c2dcd51ad961010a942d564933a282ffedda351850f06e8ea26a2fd65787838a",
+      "record": {
+        "factId": "kikai226-independent-adjacent-1",
+        "sourceFactRef": "transport-evidence:086:6e28135cd6c3c39ee08e064142792cec",
+        "callingNodes": [
+          {
+            "nodeId": "transport-node:086:e72d45c105e932cd9a57fa63d789c6f3",
+            "sequence": 1,
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "nodeId": "transport-node:086:1e4e7758026e32c39b432d5e477541c0",
+            "sequence": 2,
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "lineRef": "transport-line:086:ffd05b987c8c6e34dfa43f389b33da0e",
+        "operatorRef": "喜界町",
+        "mode": "local_bus",
+        "serviceClass": "町営路線バス",
+        "direction": "北中央線:parent-40",
+        "purpose": "airport"
+      },
+      "recordSha256": "e6f6e75adb408946cea0bda864b4cd3d9d1dd319f313a668040fac3114e60987",
+      "locator": "北中央線 independently reviewed source column, exact contiguous parent positions 40–41. Full parent provenance retained, no reversal."
+    }
+  ]
+}

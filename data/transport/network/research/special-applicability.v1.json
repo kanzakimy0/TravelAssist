@@ -1,0 +1,1690 @@
+{
+  "schemaVersion": 1,
+  "counts": {
+    "required": 3474,
+    "original": 1038,
+    "originalPreserved": 1038,
+    "currentSpecial": 152,
+    "originalSpecial": 3,
+    "actualModes": {
+      "fixed_guideway": 102,
+      "tram": 50
+    },
+    "all152AdmittedAndBidirectionallyConnected": true,
+    "serviceCallComponents": 128,
+    "transferOnlyComponents": 24,
+    "specialPatterns": 20,
+    "patternModes": {
+      "fixed_guideway": 16,
+      "tram": 4
+    },
+    "fullV2Discovery": 2271,
+    "fullV2DiscoveryModes": {
+      "conventional_rail": 650,
+      "private_rail": 876,
+      "metro": 540,
+      "shinkansen": 108,
+      "fixed_guideway": 78,
+      "tram": 19
+    },
+    "fullV2Special": 97,
+    "ropewayCableFunicularRequiredOrAcceptedNodes": 0,
+    "ropewayCableFunicularPatterns": 0,
+    "ropewayCableFunicularV2Discovery": 0,
+    "edges": 8289,
+    "patterns": 608
+  },
+  "specification": [
+    {
+      "section": "11.5",
+      "text": "Add when needed for real tourism access or backbone continuity."
+    },
+    {
+      "section": "16",
+      "text": "all accepted special transport nodes actually required by the graph; inventory may grow and may not shrink merely to make coverage pass."
+    },
+    {
+      "section": "17.4",
+      "text": "all required T1 nodes have a path into a T0/T1 backbone, except audited external-fixpoint exceptions"
+    },
+    {
+      "section": "17.3",
+      "text": "accepted service-pattern references valid; ordered stop sequences valid; direction resolved for accepted patterns"
+    },
+    {
+      "section": "17.6",
+      "text": "special tourism transport coverage PASS where required"
+    },
+    {
+      "section": "5.3/12",
+      "interpretation": "A real independently evidenced public transfer is its own topology concept. Required transfers are audited for accepted multi-component hubs; these clauses do not require every component to have a separately modeled ride."
+    },
+    {
+      "section": "2/4",
+      "text": "Historical rejected TASK-084 v1 must never be revived; v2 artifacts are discovery inputs only."
+    }
+  ],
+  "originalSpecial": [
+    {
+      "requirement": {
+        "admission": "ADMIT_TASK_086_TOPOLOGY",
+        "evidencePath": "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "evidenceSha256": "85a59b70fb33b044ad54da99f3c972e5f8bc690526f56c86d62b2766da261600",
+        "kind": "other_tourism_transport",
+        "name": "新橋",
+        "nodeId": "transport-node:086:d6d3671959a38211338252d7de3e6435",
+        "reason": "V2_HIGH_TIER_OR_NATIONAL_SERVICE_DISCOVERY_OBLIGATION",
+        "requirementId": "review:transport-node:9cd723d9-3d15-5eaa-9fad-9a5429183295",
+        "tier": "T1"
+      },
+      "nodeIdentity": {
+        "nodeId": "transport-node:086:d6d3671959a38211338252d7de3e6435",
+        "name": "新橋",
+        "mode": "fixed_guideway",
+        "operatorRefs": [
+          "ゆりかもめ"
+        ],
+        "lineRefs": [
+          "東京臨海新交通臨海線"
+        ],
+        "identityAnchor": "review:transport-node:9cd723d9-3d15-5eaa-9fad-9a5429183295",
+        "identityRecord": {
+          "groupCode": "003872",
+          "latitude": 35.6655833,
+          "line": "東京臨海新交通臨海線",
+          "longitude": 139.7595867,
+          "operator": "ゆりかもめ",
+          "railClassCode": 24,
+          "stationCode": "003882",
+          "stationName": "新橋"
+        },
+        "independentReview": {
+          "decision": "ADMIT_TASK_086_TOPOLOGY",
+          "method": "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
+          "recordSha256": "eb7a52b12465df352054a82d081c557d66675bc35b16ef245b8204be48350113",
+          "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28"
+        }
+      },
+      "originalDiscovery": {
+        "canonicalNameJa": "新橋",
+        "componentInclusionEvidence": {
+          "modeFamily": "fixed_guideway",
+          "officialSource": "https://www.tokyometro.jp/station/shimbashi/index.html",
+          "operator": "ゆりかもめ",
+          "parentHubAssignmentAuthorized": false,
+          "reason": "Official interchange inventory requires operator/physical-station/mode review regardless of S12 selection threshold.",
+          "sourceGroupCodes": [
+            "003872"
+          ],
+          "stationName": "新橋"
+        },
+        "confidence": 0.9,
+        "dataAvailabilityCode": 1,
+        "decisionReason": "S12_061 usage threshold",
+        "duplicateCode": 1,
+        "functionalRole": "STATION",
+        "identityKey": "station-component|新橋|ゆりかもめ|fixed_guideway|35.6656|139.7596|",
+        "inclusionReasons": [
+          "S12_061_GE_10000",
+          "OFFICIAL_HUB_COMPONENT_REVIEW"
+        ],
+        "latitude": 35.6655833,
+        "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1",
+        "lineRefs": [
+          "東京臨海新交通臨海線"
+        ],
+        "longitude": 139.7595867,
+        "manualLevelReview": false,
+        "modeFamily": "fixed_guideway",
+        "nodeKind": "other_tourism_transport",
+        "operatorRefs": [
+          "ゆりかもめ"
+        ],
+        "parentHubAssignmentAuthorized": false,
+        "promotionReason": null,
+        "proposedNodeLevel": "T1",
+        "proposedParentHubId": "transport-hub-review:f4456bf1-0cdc-59c4-adfe-e49b3f6ec32e",
+        "proposedTransportNodeId": "transport-node:9cd723d9-3d15-5eaa-9fad-9a5429183295",
+        "reviewStatus": "COMPONENT_REVIEW_REQUIRED",
+        "runtimeImportAuthorized": false,
+        "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+        "sourceLicense": "CC BY 4.0",
+        "sourceObservedAt": "FY2024",
+        "sourcePrimaryLine": "東京臨海新交通臨海線",
+        "sourcePrimaryStationCode": "003882",
+        "sourceRefs": [
+          "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+          "https://www.tokyometro.jp/station/shimbashi/index.html"
+        ],
+        "sourceStationRefs": [
+          {
+            "groupCode": "003872",
+            "line": "東京臨海新交通臨海線",
+            "stationCode": "003882"
+          }
+        ],
+        "usageMetricType": "DAILY_ENTRIES_EXITS",
+        "usagePeriod": "FY2024",
+        "usageSource": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+        "usageUnit": "persons/day",
+        "usageValue": 58257
+      },
+      "role": "ACTUAL_SERVICE_CALL_AND_CONNECTED_COMPONENT",
+      "patternIds": [
+        "transport-pattern:086:69ec19fc170df1886aab6b248a683107",
+        "transport-pattern:086:81c2a313b1c24c04b005728f63f60850"
+      ],
+      "incidentEdgeIds": [
+        "transport-edge:086:0350c2f978d563ceb7c41878aff2c3ec",
+        "transport-edge:086:2b4fc5350c1452943568648d66685b4e",
+        "transport-edge:086:7c88e407d20d0b1080beee90ad43790f",
+        "transport-edge:086:f6c6c1c76fd5304ec3c0f42229c39318"
+      ],
+      "incidentEdgeKinds": [
+        "service_segment",
+        "hub_transfer"
+      ],
+      "publicEvidenceUrls": [
+        "https://www.yurikamome.co.jp/station-timetable/search.html",
+        "https://www.yurikamome.co.jp/station-timetable/station_jp_Part1.pdf"
+      ],
+      "evidenceBindings": [
+        {
+          "evidenceId": "transport-evidence:086:5dfbc01e3a7df9116d0e92d0c1025818",
+          "sourceId": "mlit:s12:25",
+          "sourceSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+          "recordSha256": "eb7a52b12465df352054a82d081c557d66675bc35b16ef245b8204be48350113",
+          "locator": "S12-25_NumberOfPassengers.geojson station 003882 / ゆりかもめ / 東京臨海新交通臨海線"
+        },
+        {
+          "evidenceId": "transport-evidence:086:90aac86aa740564487da0e838c10edfb",
+          "sourceId": "transport-source:086:5bb11ab9dcb99a5759bdd5983529eadc",
+          "sourceSha256": "2c2bf31e8c419ca970ed932fd20f9550e569902e7cb06a0dabf1c3c1df3d068c",
+          "recordSha256": "ae21738dbdb22ef26208158ffa5234b952614e4c466061154c907b9758b7437a",
+          "locator": "Current official Shimbashi map: west ticket gate joins public concourse and 1A stairs/escalator toward explicitly labeled JR connection. This is a public out-of-gate interchange; no direct train operation or guaranteed accessible path implied."
+        },
+        {
+          "evidenceId": "transport-evidence:086:ec70b46359395f3541811f2d200d0d8a",
+          "sourceId": "transport-source:086:099e38d819724cfc474d8adac30dbc9b",
+          "sourceSha256": "92feabca571f34cced361d931507a16c021ae6f49b2813b8355786c943938f8f",
+          "recordSha256": "c3e8e0f19b9bf44d814041a80efdcfd6430392ff08b3fa5722c4fcefd147f53d",
+          "locator": "Current official major-station last-train table: Toyosu-bound final train and Shimbashi-bound final train explicitly call both adjacent U01/U02 stations. Retain only this bounded two-call segment; omitted intermediate stations in the major-station table do not become skipped calls or express services. No clocks retained."
+        },
+        {
+          "evidenceId": "transport-evidence:086:f2c596f75d2292b27218b7c53a6210ee",
+          "sourceId": "transport-source:086:099e38d819724cfc474d8adac30dbc9b",
+          "sourceSha256": "92feabca571f34cced361d931507a16c021ae6f49b2813b8355786c943938f8f",
+          "recordSha256": "6b73fbe126a029bb468e2facf2d002511d57e683481b878940824f60ca177158",
+          "locator": "Current official major-station last-train table: Toyosu-bound final train and Shimbashi-bound final train explicitly call both adjacent U01/U02 stations. Retain only this bounded two-call segment; omitted intermediate stations in the major-station table do not become skipped calls or express services. No clocks retained."
+        },
+        {
+          "evidenceId": "transport-evidence:086:2c465f92d78cc75a2ac1eef66e5638f5",
+          "sourceId": "transport-source:086:099e38d819724cfc474d8adac30dbc9b",
+          "sourceSha256": "92feabca571f34cced361d931507a16c021ae6f49b2813b8355786c943938f8f",
+          "recordSha256": "e0d0a44ee6058e808b7155b5f2ec532916f7e4f509133922bfae0db98656c237",
+          "locator": "Current official major-station last-train table: Toyosu-bound final train and Shimbashi-bound final train explicitly call both adjacent U01/U02 stations. Retain only this bounded two-call segment; omitted intermediate stations in the major-station table do not become skipped calls or express services. No clocks retained."
+        },
+        {
+          "evidenceId": "transport-evidence:086:5acf058b87785151432c55e4c69385c4",
+          "sourceId": "transport-source:086:5bb11ab9dcb99a5759bdd5983529eadc",
+          "sourceSha256": "2c2bf31e8c419ca970ed932fd20f9550e569902e7cb06a0dabf1c3c1df3d068c",
+          "recordSha256": "33d978952157df80ff06444602832aa7a96abf108d7f96bc223b2f316affda5f",
+          "locator": "Current official Shimbashi map: west ticket gate joins public concourse and 1A stairs/escalator toward explicitly labeled JR connection. This is a public out-of-gate interchange; no direct train operation or guaranteed accessible path implied."
+        },
+        {
+          "evidenceId": "transport-evidence:086:167e6fcf91bba49058fbc072f0207970",
+          "sourceId": "transport-source:086:099e38d819724cfc474d8adac30dbc9b",
+          "sourceSha256": "92feabca571f34cced361d931507a16c021ae6f49b2813b8355786c943938f8f",
+          "recordSha256": "8addac8930d3c8ad8124e87459ed1e8c7cc60a15affc9006baff85afa881ad08",
+          "locator": "Current official major-station last-train table: Toyosu-bound final train and Shimbashi-bound final train explicitly call both adjacent U01/U02 stations. Retain only this bounded two-call segment; omitted intermediate stations in the major-station table do not become skipped calls or express services. No clocks retained."
+        },
+        {
+          "evidenceId": "transport-evidence:086:fff48768d36229946bc53c61cee23a63",
+          "sourceId": "transport-source:086:5bb11ab9dcb99a5759bdd5983529eadc",
+          "sourceSha256": "2c2bf31e8c419ca970ed932fd20f9550e569902e7cb06a0dabf1c3c1df3d068c",
+          "recordSha256": "18c8105c0896cd67c8256e3e25a866cddae771cbb1c364019f64218b591231be",
+          "locator": "Current official Shimbashi map: west ticket gate joins public concourse and 1A stairs/escalator toward explicitly labeled JR connection. This is a public out-of-gate interchange; no direct train operation or guaranteed accessible path implied."
+        }
+      ],
+      "fromNationalEdgeIds": [
+        "transport-edge:086:a97d529973ac342c06736e0dcc0bb9d7",
+        "transport-edge:086:f6c6c1c76fd5304ec3c0f42229c39318"
+      ],
+      "toNationalEdgeIds": [
+        "transport-edge:086:2b4fc5350c1452943568648d66685b4e",
+        "transport-edge:086:d872ed90f8bdd4180f90561d0bc266c3"
+      ]
+    },
+    {
+      "requirement": {
+        "admission": "ADMIT_TASK_086_TOPOLOGY",
+        "evidencePath": "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "evidenceSha256": "86b246994f174b2170ffea2e98b1de394cb4df845a7762cadaf36b27baf362c4",
+        "kind": "other_tourism_transport",
+        "name": "モノレール浜松町",
+        "nodeId": "transport-node:086:6c0e9b255e45772433f26e3494333db6",
+        "reason": "V2_HIGH_TIER_OR_NATIONAL_SERVICE_DISCOVERY_OBLIGATION",
+        "requirementId": "review:transport-node:ba9746c4-c5b1-508d-af0f-b53c36267121",
+        "tier": "T1"
+      },
+      "nodeIdentity": {
+        "nodeId": "transport-node:086:6c0e9b255e45772433f26e3494333db6",
+        "name": "モノレール浜松町",
+        "mode": "fixed_guideway",
+        "operatorRefs": [
+          "東京モノレール"
+        ],
+        "lineRefs": [
+          "東京モノレール羽田空港線"
+        ],
+        "identityAnchor": "review:transport-node:ba9746c4-c5b1-508d-af0f-b53c36267121",
+        "identityRecord": {
+          "groupCode": "003946",
+          "latitude": 35.655745,
+          "line": "東京モノレール羽田空港線",
+          "longitude": 139.75667,
+          "operator": "東京モノレール",
+          "railClassCode": 15,
+          "stationCode": "003946",
+          "stationName": "モノレール浜松町"
+        },
+        "independentReview": {
+          "decision": "ADMIT_TASK_086_TOPOLOGY",
+          "method": "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
+          "recordSha256": "a348f965d61b174425ce531216346113909c29f121abbf4ad649e59c473326a2",
+          "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28"
+        }
+      },
+      "originalDiscovery": {
+        "canonicalNameJa": "モノレール浜松町",
+        "componentInclusionEvidence": {
+          "modeFamily": "fixed_guideway",
+          "officialSource": "https://www.kotsu.metro.tokyo.jp/subway/stations/daimon.html",
+          "operator": "東京モノレール",
+          "parentHubAssignmentAuthorized": false,
+          "reason": "Official interchange inventory requires operator/physical-station/mode review regardless of S12 selection threshold.",
+          "sourceGroupCodes": [
+            "003946"
+          ],
+          "stationName": "モノレール浜松町"
+        },
+        "confidence": 0.9,
+        "dataAvailabilityCode": 1,
+        "decisionReason": "S12_061 usage threshold",
+        "duplicateCode": 1,
+        "functionalRole": "STATION",
+        "identityKey": "station-component|モノレール浜松町|東京モノレール|fixed_guideway|35.6557|139.7567|",
+        "inclusionReasons": [
+          "S12_061_GE_10000",
+          "OFFICIAL_HUB_COMPONENT_REVIEW"
+        ],
+        "latitude": 35.655745,
+        "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1",
+        "lineRefs": [
+          "東京モノレール羽田空港線"
+        ],
+        "longitude": 139.75667,
+        "manualLevelReview": false,
+        "modeFamily": "fixed_guideway",
+        "nodeKind": "other_tourism_transport",
+        "operatorRefs": [
+          "東京モノレール"
+        ],
+        "parentHubAssignmentAuthorized": false,
+        "promotionReason": null,
+        "proposedNodeLevel": "T1",
+        "proposedParentHubId": "transport-hub-review:f5527a45-84f9-5ed7-92ba-fde5ceafd3da",
+        "proposedTransportNodeId": "transport-node:ba9746c4-c5b1-508d-af0f-b53c36267121",
+        "reviewStatus": "COMPONENT_REVIEW_REQUIRED",
+        "runtimeImportAuthorized": false,
+        "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+        "sourceLicense": "CC BY 4.0",
+        "sourceObservedAt": "FY2024",
+        "sourcePrimaryLine": "東京モノレール羽田空港線",
+        "sourcePrimaryStationCode": "003946",
+        "sourceRefs": [
+          "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+          "https://www.kotsu.metro.tokyo.jp/subway/stations/daimon.html"
+        ],
+        "sourceStationRefs": [
+          {
+            "groupCode": "003946",
+            "line": "東京モノレール羽田空港線",
+            "stationCode": "003946"
+          }
+        ],
+        "usageMetricType": "DAILY_ENTRIES_EXITS",
+        "usagePeriod": "FY2024",
+        "usageSource": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+        "usageUnit": "persons/day",
+        "usageValue": 94252
+      },
+      "role": "ORIGINAL_REQUIRED_INTERCHANGE_COMPONENT_NO_RIDE_PATTERN",
+      "patternIds": [],
+      "incidentEdgeIds": [
+        "transport-edge:086:a8693ced1ee6704bf47038c5507fba1c",
+        "transport-edge:086:ee3b06ca3dce06266c6501cb972be0a1"
+      ],
+      "incidentEdgeKinds": [
+        "hub_transfer"
+      ],
+      "publicEvidenceUrls": [
+        "https://www.jreast.co.jp/estation/station/info.aspx?StationCd=1248"
+      ],
+      "evidenceBindings": [
+        {
+          "evidenceId": "transport-evidence:086:847ec67ec2638821cce226678b212a1c",
+          "sourceId": "mlit:s12:25",
+          "sourceSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+          "recordSha256": "a348f965d61b174425ce531216346113909c29f121abbf4ad649e59c473326a2",
+          "locator": "S12-25_NumberOfPassengers.geojson station 003946 / 東京モノレール / 東京モノレール羽田空港線"
+        },
+        {
+          "evidenceId": "transport-evidence:086:7b05cd036c9256a3a2bdbdabe1154831",
+          "sourceId": "transport-source:086:c5f67534bd46f5e19e62cfc7740a610e",
+          "sourceSha256": "f3a2360186df744cae36c556c596b9768177665b496abe73c0113c1af2070887",
+          "recordSha256": "d2dc84495ad8bc3888af2a81272375687845780c9fe852e25d1bc1c2d871c413",
+          "locator": "Current JR East Hamamatsucho station information explicitly lists an operational monorail interchange gate. Bind independently identified JR Hamamatsucho and Monorail Hamamatsucho components. No old construction-plan walking route or proposed future station layout used."
+        },
+        {
+          "evidenceId": "transport-evidence:086:dcad45e0cbfeabf350947e82cc4474c2",
+          "sourceId": "transport-source:086:c5f67534bd46f5e19e62cfc7740a610e",
+          "sourceSha256": "f3a2360186df744cae36c556c596b9768177665b496abe73c0113c1af2070887",
+          "recordSha256": "6e672941b7b10f725e71078157e7b32c622c5ffb7a97275eb68e54e02053ed2f",
+          "locator": "Current JR East Hamamatsucho station information explicitly lists an operational monorail interchange gate. Bind independently identified JR Hamamatsucho and Monorail Hamamatsucho components. No old construction-plan walking route or proposed future station layout used."
+        },
+        {
+          "evidenceId": "transport-evidence:086:565190d77bf190b6ab6db9a33666d771",
+          "sourceId": "transport-source:086:c5f67534bd46f5e19e62cfc7740a610e",
+          "sourceSha256": "f3a2360186df744cae36c556c596b9768177665b496abe73c0113c1af2070887",
+          "recordSha256": "23e45e0cabda6d36573ab0b0add982438807adfee9888768d4d1f41e68529583",
+          "locator": "Current JR East Hamamatsucho station information explicitly lists an operational monorail interchange gate. Bind independently identified JR Hamamatsucho and Monorail Hamamatsucho components. No old construction-plan walking route or proposed future station layout used."
+        }
+      ],
+      "fromNationalEdgeIds": [
+        "transport-edge:086:a97d529973ac342c06736e0dcc0bb9d7",
+        "transport-edge:086:701dbaafc288937b2ad7bd3c0ac64f69",
+        "transport-edge:086:ee3b06ca3dce06266c6501cb972be0a1"
+      ],
+      "toNationalEdgeIds": [
+        "transport-edge:086:a8693ced1ee6704bf47038c5507fba1c",
+        "transport-edge:086:6b9ca18b0e8aeb6e79b2d4a20ac39bd0",
+        "transport-edge:086:d872ed90f8bdd4180f90561d0bc266c3"
+      ]
+    },
+    {
+      "requirement": {
+        "admission": "ADMIT_TASK_086_TOPOLOGY",
+        "evidencePath": "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "evidenceSha256": "9103311090f89b05e84158f6a9f3430f4426c02bd13e0c78d82bafaa9b1e7177",
+        "kind": "other_tourism_transport",
+        "name": "三宮",
+        "nodeId": "transport-node:086:8c80a0e5360549b49935a8ee1fe23c53",
+        "reason": "V2_HIGH_TIER_OR_NATIONAL_SERVICE_DISCOVERY_OBLIGATION",
+        "requirementId": "review:transport-node:d7c94818-e1b3-5dbb-baf2-8f05cb2702a1",
+        "tier": "T1"
+      },
+      "nodeIdentity": {
+        "nodeId": "transport-node:086:8c80a0e5360549b49935a8ee1fe23c53",
+        "name": "三宮",
+        "mode": "fixed_guideway",
+        "operatorRefs": [
+          "神戸新交通"
+        ],
+        "lineRefs": [
+          "ポートアイランド線"
+        ],
+        "identityAnchor": "review:transport-node:d7c94818-e1b3-5dbb-baf2-8f05cb2702a1",
+        "identityRecord": {
+          "groupCode": "007108",
+          "latitude": 34.69451,
+          "line": "ポートアイランド線",
+          "longitude": 135.195295,
+          "operator": "神戸新交通",
+          "railClassCode": 24,
+          "stationCode": "007108",
+          "stationName": "三宮"
+        },
+        "independentReview": {
+          "decision": "ADMIT_TASK_086_TOPOLOGY",
+          "method": "EXACT_RAW_STATION_CODE_OPERATOR_LINE_NAME_PLUS_PRIMARY_SERVICE_FACT",
+          "recordSha256": "7f8026ec1619dd5b17891b3c26231b0373ae8840a0026d7e79a0c8b2fe01c30e",
+          "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28"
+        }
+      },
+      "originalDiscovery": {
+        "canonicalNameJa": "三宮",
+        "componentInclusionEvidence": {
+          "modeFamily": "fixed_guideway",
+          "officialSource": "https://kotsu.city.kobe.lg.jp/chinese-trad/cnt-subway-map/",
+          "operator": "神戸新交通",
+          "parentHubAssignmentAuthorized": false,
+          "reason": "Official interchange inventory requires operator/physical-station/mode review regardless of S12 selection threshold.",
+          "sourceGroupCodes": [
+            "007108"
+          ],
+          "stationName": "三宮"
+        },
+        "confidence": 0.9,
+        "dataAvailabilityCode": 1,
+        "decisionReason": "S12_061 usage threshold",
+        "duplicateCode": 1,
+        "functionalRole": "STATION",
+        "identityKey": "station-component|三宮|神戸新交通|fixed_guideway|34.6945|135.1953|",
+        "inclusionReasons": [
+          "S12_061_GE_10000",
+          "OFFICIAL_HUB_COMPONENT_REVIEW"
+        ],
+        "latitude": 34.69451,
+        "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1",
+        "lineRefs": [
+          "ポートアイランド線"
+        ],
+        "longitude": 135.195295,
+        "manualLevelReview": false,
+        "modeFamily": "fixed_guideway",
+        "nodeKind": "other_tourism_transport",
+        "operatorRefs": [
+          "神戸新交通"
+        ],
+        "parentHubAssignmentAuthorized": false,
+        "promotionReason": null,
+        "proposedNodeLevel": "T1",
+        "proposedParentHubId": "transport-hub-review:842e847d-eb2e-565f-829e-04fdc20c430b",
+        "proposedTransportNodeId": "transport-node:d7c94818-e1b3-5dbb-baf2-8f05cb2702a1",
+        "reviewStatus": "COMPONENT_REVIEW_REQUIRED",
+        "runtimeImportAuthorized": false,
+        "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+        "sourceLicense": "CC BY 4.0",
+        "sourceObservedAt": "FY2024",
+        "sourcePrimaryLine": "ポートアイランド線",
+        "sourcePrimaryStationCode": "007108",
+        "sourceRefs": [
+          "https://kotsu.city.kobe.lg.jp/chinese-trad/cnt-subway-map/",
+          "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html"
+        ],
+        "sourceStationRefs": [
+          {
+            "groupCode": "007108",
+            "line": "ポートアイランド線",
+            "stationCode": "007108"
+          }
+        ],
+        "usageMetricType": "DAILY_ENTRIES_EXITS",
+        "usagePeriod": "FY2024",
+        "usageSource": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+        "usageUnit": "persons/day",
+        "usageValue": 69871
+      },
+      "role": "ACTUAL_SERVICE_CALL_AND_CONNECTED_COMPONENT",
+      "patternIds": [
+        "transport-pattern:086:2a330c99c27516bddf58b1a9d24a9428",
+        "transport-pattern:086:2ab1ab7726aac519c7d9adad1142d558"
+      ],
+      "incidentEdgeIds": [
+        "transport-edge:086:728d26a406e1f44b416ea63bbb8b90a7",
+        "transport-edge:086:8a3e67576ac6f0b733dcce4376cddd44",
+        "transport-edge:086:cfa3b5f8b69b3d0c7a0e11560c3a79cd",
+        "transport-edge:086:e91295d2ca42154ab9613e498c074c1d"
+      ],
+      "incidentEdgeKinds": [
+        "service_segment",
+        "hub_transfer"
+      ],
+      "publicEvidenceUrls": [
+        "https://www.knt-liner.co.jp/station/",
+        "https://www.hanshin.co.jp/uploads/guidemap/sannomiya.pdf"
+      ],
+      "evidenceBindings": [
+        {
+          "evidenceId": "transport-evidence:086:47217fdebac4f4522e361ca9fdb5b04e",
+          "sourceId": "mlit:s12:25",
+          "sourceSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+          "recordSha256": "7f8026ec1619dd5b17891b3c26231b0373ae8840a0026d7e79a0c8b2fe01c30e",
+          "locator": "S12-25_NumberOfPassengers.geojson station 007108 / 神戸新交通 / ポートアイランド線"
+        },
+        {
+          "evidenceId": "transport-evidence:086:68a43790f0cedd16ab1622e0684a8044",
+          "sourceId": "transport-source:086:29aee518ccd39f6a7249d4f0131528e8",
+          "sourceSha256": "4d700b7d2ffa9016166acc6d702a96883eb18fc02683594739f067726051acf3",
+          "recordSha256": "1f57d31d9bd1756fdac98a609e5ddd0b1a6183d611f1d3d2e72303a5e04be174",
+          "locator": "Current P01-P09 airport branch station diagram and directional station timetables, which continue to identify the 2016-03-28 revision. The official revision notice page 1 explicitly converts every rapid train to ordinary. Bind only the nine-station ordinary airport branch; exclude PL07-PL09 loop, short workings, temporary trains, old station aliases, travel times and timetable clocks. Both directions are independently published at the current terminal timetable URLs."
+        },
+        {
+          "evidenceId": "transport-evidence:086:7cf542795404b7c9506edcf3ef7fb4e4",
+          "sourceId": "transport-source:086:f5b657b782e960b275942d070a5486ba",
+          "sourceSha256": "fc6ff0319ac6614e0aea5f1892bd9ca58f74986ecceb4ea0bbbd192aa1f77c61",
+          "recordSha256": "cc08c9ea0f25b1898f48d842f9706274751ae34a67bea352bde85f5b66a79c3a",
+          "locator": "Map dated 2025-12-31 traces active public west-concourse access toward named Hankyu Kobe-Sannomiya and subway Sannomiya, east access toward JR Sannomiya and Port Liner, and Sanchika access toward Sannomiya-Hanadokeimae. Construction-closed passage excluded; signed alternative JR stairs/surface crossing retained at topology-only scope. Explicit different-name operator identities; no assumed co-location or travel times."
+        },
+        {
+          "evidenceId": "transport-evidence:086:915bdd9a63a844ea0690a0dea0db297e",
+          "sourceId": "transport-source:086:29aee518ccd39f6a7249d4f0131528e8",
+          "sourceSha256": "4d700b7d2ffa9016166acc6d702a96883eb18fc02683594739f067726051acf3",
+          "recordSha256": "5b431b5a4fe77422884acc34eaeb7d8356b02d1da46d7292df82bca7570092f9",
+          "locator": "Current P01-P09 airport branch station diagram and directional station timetables, which continue to identify the 2016-03-28 revision. The official revision notice page 1 explicitly converts every rapid train to ordinary. Bind only the nine-station ordinary airport branch; exclude PL07-PL09 loop, short workings, temporary trains, old station aliases, travel times and timetable clocks. Both directions are independently published at the current terminal timetable URLs."
+        },
+        {
+          "evidenceId": "transport-evidence:086:048d779d8840765313c1d7e46f79adbb",
+          "sourceId": "transport-source:086:29aee518ccd39f6a7249d4f0131528e8",
+          "sourceSha256": "4d700b7d2ffa9016166acc6d702a96883eb18fc02683594739f067726051acf3",
+          "recordSha256": "462348121228e26c1a0624980a85eb55035af0595687c4ceacb9f6b3b96d60dd",
+          "locator": "Current P01-P09 airport branch station diagram and directional station timetables, which continue to identify the 2016-03-28 revision. The official revision notice page 1 explicitly converts every rapid train to ordinary. Bind only the nine-station ordinary airport branch; exclude PL07-PL09 loop, short workings, temporary trains, old station aliases, travel times and timetable clocks. Both directions are independently published at the current terminal timetable URLs."
+        },
+        {
+          "evidenceId": "transport-evidence:086:37d422338cd44d1d2eda40f5e1f763b9",
+          "sourceId": "transport-source:086:29aee518ccd39f6a7249d4f0131528e8",
+          "sourceSha256": "4d700b7d2ffa9016166acc6d702a96883eb18fc02683594739f067726051acf3",
+          "recordSha256": "770bd1afcd48e28df591ae2f820d19caf0831d9cad32c27c349d0973d820fc3f",
+          "locator": "Current P01-P09 airport branch station diagram and directional station timetables, which continue to identify the 2016-03-28 revision. The official revision notice page 1 explicitly converts every rapid train to ordinary. Bind only the nine-station ordinary airport branch; exclude PL07-PL09 loop, short workings, temporary trains, old station aliases, travel times and timetable clocks. Both directions are independently published at the current terminal timetable URLs."
+        },
+        {
+          "evidenceId": "transport-evidence:086:dd60d1ee18a1b95ac29ae66fb36adde5",
+          "sourceId": "transport-source:086:f5b657b782e960b275942d070a5486ba",
+          "sourceSha256": "fc6ff0319ac6614e0aea5f1892bd9ca58f74986ecceb4ea0bbbd192aa1f77c61",
+          "recordSha256": "a6708978a59230d77dc37df9218d534ec8e42bb3186e66655c60d05f4c3503d3",
+          "locator": "Map dated 2025-12-31 traces active public west-concourse access toward named Hankyu Kobe-Sannomiya and subway Sannomiya, east access toward JR Sannomiya and Port Liner, and Sanchika access toward Sannomiya-Hanadokeimae. Construction-closed passage excluded; signed alternative JR stairs/surface crossing retained at topology-only scope. Explicit different-name operator identities; no assumed co-location or travel times."
+        },
+        {
+          "evidenceId": "transport-evidence:086:6f2f730c024e4f23f2e74260185bfdce",
+          "sourceId": "transport-source:086:f5b657b782e960b275942d070a5486ba",
+          "sourceSha256": "fc6ff0319ac6614e0aea5f1892bd9ca58f74986ecceb4ea0bbbd192aa1f77c61",
+          "recordSha256": "9c58da57a94830fcb5aac2b83529a04d996933e10e4f5c2d59be3a88dcb9941a",
+          "locator": "Map dated 2025-12-31 traces active public west-concourse access toward named Hankyu Kobe-Sannomiya and subway Sannomiya, east access toward JR Sannomiya and Port Liner, and Sanchika access toward Sannomiya-Hanadokeimae. Construction-closed passage excluded; signed alternative JR stairs/surface crossing retained at topology-only scope. Explicit different-name operator identities; no assumed co-location or travel times."
+        }
+      ],
+      "fromNationalEdgeIds": [
+        "transport-edge:086:77e131db8a5e33838e33c8c0749f6fc6",
+        "transport-edge:086:33d84e226df7bfe6d0918009a57ae83d",
+        "transport-edge:086:387307457f240608eaa28316ac7585a2",
+        "transport-edge:086:764a334efd1e9c5c841d3c09681d7df8",
+        "transport-edge:086:8304f717e554e2c0cbfc380b85543ed6",
+        "transport-edge:086:1093bc1ea8219061832c2593d1aca8ca",
+        "transport-edge:086:2b97e6c40cffa5f67eac12b87a1c68f2",
+        "transport-edge:086:a8a0e5fab4c249371b729760c61ad6d1",
+        "transport-edge:086:087ea49fa1164667dde75f3201cff65d",
+        "transport-edge:086:01bcacecc37298b42064acc5bb9204f6",
+        "transport-edge:086:cfe38e75af1c34879f454bae51281dba",
+        "transport-edge:086:f14559e91d7b8d13a74196f7cb332210",
+        "transport-edge:086:9ec745554b5757770a930af5f8595933",
+        "transport-edge:086:a3d90f8835d67538f597368bce9d59da",
+        "transport-edge:086:ac67b0802619d1d9d9038c610267cef8",
+        "transport-edge:086:a8d7f814e4acf377586b4ec31467809e",
+        "transport-edge:086:77a893d3d7b356d5ebe017e72d635c5f",
+        "transport-edge:086:d1dce286e3b4677fc3853f3d907e371e",
+        "transport-edge:086:f2bef1e8bd4f3af94c62239bd2df1136",
+        "transport-edge:086:b777509bd19bb03326df2cce5e73da88",
+        "transport-edge:086:0f03652410a00cf2b19f78524eafa731",
+        "transport-edge:086:f4277eb92a5ac307b5978c2c3042a17c",
+        "transport-edge:086:e91295d2ca42154ab9613e498c074c1d"
+      ],
+      "toNationalEdgeIds": [
+        "transport-edge:086:cfa3b5f8b69b3d0c7a0e11560c3a79cd",
+        "transport-edge:086:0e81244d64e2500e728ad34256b1f2e4",
+        "transport-edge:086:0762b742249618c89d1a09dbd0b1465d",
+        "transport-edge:086:0167013a51d950345db54a1441e077b4",
+        "transport-edge:086:17569904263553d1ce7d08c2829719b8",
+        "transport-edge:086:45bb39bb5ffe5f108f89a7cdf0318ff0",
+        "transport-edge:086:02f1630a94dfa6e726c4bfd215bd69f4",
+        "transport-edge:086:aaa7d8fa2ad0b3d3d638361d2e2ab03d",
+        "transport-edge:086:e741550776a3cf63f76f09a28804e1ad",
+        "transport-edge:086:59128ad5c4e0a52515c50b15c7b92fd4",
+        "transport-edge:086:65ce454c1778aa4224204e81d9d1e713",
+        "transport-edge:086:bf2d4ef8fd36f0bf4bdffd49bbec44b8",
+        "transport-edge:086:2e2462393036156b81ae35bd4e083bc3",
+        "transport-edge:086:d8aae2b79e04e1c91806a043f6b0d5fa",
+        "transport-edge:086:f7fe40144613ae96115d5817bf043dd8",
+        "transport-edge:086:c35d375d16e22ed760481257e709a45e",
+        "transport-edge:086:aeac5d9235e1955fa81e9701518b49f7",
+        "transport-edge:086:0f032a9221b2242587ec536de2af2a7f",
+        "transport-edge:086:a939f16fcb747c69b5062577bab8f705",
+        "transport-edge:086:b0b30b3332e46d7dd34aed05a57bf227",
+        "transport-edge:086:affd1cec01681f68aaf84a7c1880a751",
+        "transport-edge:086:8f588c9d103d40d958b8d008c36ea6c4",
+        "transport-edge:086:8b4bc6bc1f217b8a161fa7173417c621"
+      ]
+    }
+  ],
+  "scopeAssessment": {
+    "basis": "ALL_ORIGINAL_TASK086_REQUIREMENTS_AND_NECESSARY_DEPENDENCIES",
+    "newDiscoveriesPolicy": "Additional original-scope necessities remain executable; unrelated optional coverage is not automatically required.",
+    "mandatoryTargetsFound": [],
+    "finding": "Within the full preserved original inventory and its necessary admitted dependencies, no concrete unfulfilled ropeway/cable/funicular service or access obligation is enumerated. This is bounded applicability evidence, not a national assertion that no such transport exists or matters.",
+    "discoveryLimit": "The entire allowed v2 rail inventory is 2271 reviewed/candidate components, not all Japanese stations or a complete ropeway census. Its 97 special-kind candidates are 78 fixed guideway plus 19 tram. Absence alone cannot establish universal non-applicability; frozen authorization and actual required topology provide the boundary.",
+    "oldV1": "A historical tourism-cable tool names Takao/Tsukuba/Hiei stations. These are not accepted current v2 identities or frozen 086 requirements; do not revive rejected v1 nodes or turn old script names into mandatory new scope.",
+    "currentGate": {
+      "deficitId": "mode:required-special-tourism",
+      "status": "OPEN",
+      "currentReason": "The inherited special-tourism obligation lacks an enumerated ropeway/funicular target inventory. Existing monorail/tram coverage alone does not prove it fulfilled; scope and primary service evidence remain to be reviewed.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "requiredNodeIds": [],
+      "requiredPatternIds": [],
+      "inputBindings": [],
+      "notClaimed": "All Japanese operators/services or unrestricted raw timetable reuse",
+      "reviewedAt": "2026-10-02"
+    }
+  },
+  "hamamatsucho": {
+    "nodeId": "transport-node:086:6c0e9b255e45772433f26e3494333db6",
+    "status": "ORIGINAL_INTERCHANGE_CONNECTIVITY_SATISFIED; TOKYO_MONORAIL_RIDE_COVERAGE_NOT_PRESENT_OR_CLAIMED",
+    "originalReason": "V2 componentInclusionEvidence explicitly requires official interchange inventory review; T1, 94252 daily usage. It does not prescribe an airport ride corridor.",
+    "currentProof": "Phase071 hamamatsucho-jr-explicit-monorail-gate; current JR operational monorail transfer gate in both directions, hash f07508b678257f80746da414eeaa596e0401d9a99199767b800469df6d0a1217.",
+    "normativeConclusion": "No inspected clause imposes one actual ride segment per required node. Consequently absence of a Tokyo Monorail pattern alone is not a proven failed original acceptance item. Do not say this line is service-covered.",
+    "independentReopenRule": "If a concrete original/accepted airport access or tourism corridor requires a Tokyo Monorail ride, retain a separately identified SERVICE_PATTERN_GAP with its exact endpoints and obligation evidence, then research only the necessary contiguous actual directional service section. Applicability closure must not suppress that root."
+  },
+  "addedTransferOnly": {
+    "count": 23,
+    "assessment": "Keep every component and its actual public interchange evidence. They are necessary interchange components, not automatic requirements to ingest 23 whole transport lines."
+  },
+  "requiredNodeIds": [
+    "transport-node:086:00dbef0356b31e17bf088d9a44940832",
+    "transport-node:086:02c8d6b8161fc5124620c028109b4da6",
+    "transport-node:086:04804eecd0998eb7d9410e277767b1cc",
+    "transport-node:086:05de65a08b41b8b797c7bcc5e219fdc2",
+    "transport-node:086:09c3b6708ed963507ec6f7b44bfcbee8",
+    "transport-node:086:1083bcc061fc36654d9ccb6171663cee",
+    "transport-node:086:1364a805064c8c6d02d7c5255a3c402b",
+    "transport-node:086:1568f936725724506633ebb0a6c7a238",
+    "transport-node:086:1757a04cf9e01e12732d7b40b794e5d4",
+    "transport-node:086:18b23dace77c51435be6e45989779d99",
+    "transport-node:086:18e8fde07534c892b35a00904ee2791a",
+    "transport-node:086:1e883a6d79a7f94efb4f5ca9e4b42d0c",
+    "transport-node:086:212711e99540dfb78de3dda26e635001",
+    "transport-node:086:212afb84bb9ec20a36a8be2891d3ac31",
+    "transport-node:086:2303a823f580b2e023fdbda494ace168",
+    "transport-node:086:235fc5461a23dd337d60e43fb51ff95d",
+    "transport-node:086:23a2c1c483c6987b0811ec7061e943bd",
+    "transport-node:086:240dab9a6ee1f28045da13bdcbdb285f",
+    "transport-node:086:243db0f551ebe1b773fd19c4febd6802",
+    "transport-node:086:2771238ef4f13e6f2981376cf51c3dbb",
+    "transport-node:086:2999a23518218901e14ea87db877189a",
+    "transport-node:086:2c1a56e01e9a241f88eb4cd71199ef1a",
+    "transport-node:086:2c5b314ab571842279852535fd291972",
+    "transport-node:086:2ca859d8a0571c2870444b87912e839a",
+    "transport-node:086:31bad376a3d87aa9d055d2a7c1bf93b2",
+    "transport-node:086:334b55c284aa8a0d7fd4e96d511aa63b",
+    "transport-node:086:352d5cd78eea9d8d480b49bdf39368b0",
+    "transport-node:086:3a8a45cf163117ae28b4a6a763cdc7c6",
+    "transport-node:086:3b851d6638d4c4b05a51b7b9f972a9df",
+    "transport-node:086:3ee55beed35a173f029295ee1e330c26",
+    "transport-node:086:3f62b879d16fad0d49b96e8089cf343b",
+    "transport-node:086:41514fcbd99145d1f5c2af707d6855b8",
+    "transport-node:086:426c7bbba10bb96de7fe29dfaca990eb",
+    "transport-node:086:427eae3612236ea9f203085b5d231b62",
+    "transport-node:086:4327d777d4027dea99b94110cbc92830",
+    "transport-node:086:45fbf0e04133db7f8caff65b3b589e0a",
+    "transport-node:086:463e09d2ab01e45bf98a18bf76355360",
+    "transport-node:086:4afe58bd4dc28a672d3d454b94edcc16",
+    "transport-node:086:4b79539e7735a455a5ec6d4b5f273fef",
+    "transport-node:086:4c6f0854f6d833b4ce89de5f2dc050a4",
+    "transport-node:086:50a8d03825b7e18f6d1de0bcd9920168",
+    "transport-node:086:5133be787e6c6fa8a3ed46529b5aabe5",
+    "transport-node:086:52c84d1489a78c9ab4ec035a2a06f131",
+    "transport-node:086:5392c6a48bfd4540be605a39948c67f0",
+    "transport-node:086:5593c4f0b510e569eaa2f78cfe982369",
+    "transport-node:086:55dde32a06505ba8b8bfaae544ed0163",
+    "transport-node:086:57ff43b6f37aa0c4b754e25eabeb8ffc",
+    "transport-node:086:5c362858f095ab3f4b1cc8da9c19e178",
+    "transport-node:086:5e4fa5742740841bc75b18f83dd5e187",
+    "transport-node:086:5eb28b1c136b4aaeba879baee87118c4",
+    "transport-node:086:5f183d8f3dfc35e238332b9b38ddb42e",
+    "transport-node:086:62ccc79b0f784303f042f496399d1e3e",
+    "transport-node:086:641fc0baaa09dbf82ecaaa7419676097",
+    "transport-node:086:657941c7741b32a5f5116ecc0da39cd1",
+    "transport-node:086:6758a3c1742ed79df99a136ca59ede58",
+    "transport-node:086:67bdf04f71c83c20e11402becb8f6581",
+    "transport-node:086:684d4a5147b7d82f44c62e89678c524c",
+    "transport-node:086:6931bb012d9477599ccd7f8e39293882",
+    "transport-node:086:6b7762fbdccc5cb6ade9e77cd2973537",
+    "transport-node:086:6c0e9b255e45772433f26e3494333db6",
+    "transport-node:086:6ea7e8f0ceac30c906b1beb724acf2a9",
+    "transport-node:086:6ec6093875c570493157eb4b7544be48",
+    "transport-node:086:6f2cdaebcb7b0275ec1c8492fa38a957",
+    "transport-node:086:700d0a8f0e6ecf12c24d1dd30a36ba8b",
+    "transport-node:086:71e1277c93271241ff677b00932bfb69",
+    "transport-node:086:724a12ec84302650b00b3bbefdf9a8c3",
+    "transport-node:086:725ca7834d263e4c877cfb900ff67c8f",
+    "transport-node:086:729d12d2f5aeee24950da8a858e7e035",
+    "transport-node:086:72eea1f0dd5fdea6bcc1a9f3af6b7996",
+    "transport-node:086:7a785fd5472c8f23546641354ff9af0e",
+    "transport-node:086:7a901ab9808dc4d179eff448114735da",
+    "transport-node:086:7c58f8c732e363a8da2500b30d732ce1",
+    "transport-node:086:7dace74765b04def9b7610275ff016b5",
+    "transport-node:086:7e16fabc6a69e0fc5924daeda9f82eaa",
+    "transport-node:086:812fdbb8c314fd99bac0e07e2490f075",
+    "transport-node:086:83f8cd58904dbf8e5912bbb6affa07ff",
+    "transport-node:086:840f2e7b7e8aa3551d701cb5cbd30ec1",
+    "transport-node:086:84400652d5378c4bf4e82140ba0f0d12",
+    "transport-node:086:87437372f6e0c0f40f88211ae7892e30",
+    "transport-node:086:87b9980020a4a4d7c566f7e42afced81",
+    "transport-node:086:88fb598e7b34b3d4b55d415cfd86b7fb",
+    "transport-node:086:8c80a0e5360549b49935a8ee1fe23c53",
+    "transport-node:086:8d0a655b64a0e9130df862b0ff962568",
+    "transport-node:086:8da57a3e110711a49b1131b69143ea89",
+    "transport-node:086:8f64d99e33da5eaf08351f16199bc827",
+    "transport-node:086:90fb66b77685c9504ae3cbdcdbb21b64",
+    "transport-node:086:91bfb25a97da8d0d313d15d6c731cf9b",
+    "transport-node:086:91ef8ef66623aa2876d43be839b376ae",
+    "transport-node:086:96ad00ac3fbc3247bc3d9ca0454ceb69",
+    "transport-node:086:99a7537f8128a0c64ccce36be1ea058a",
+    "transport-node:086:9cfceb90ba9e6543af513671488b0359",
+    "transport-node:086:9d65314977ab71895fe6ef9e11374039",
+    "transport-node:086:9e0ebea66f3f5c0d6b6ac1afd05ad031",
+    "transport-node:086:9f88294c04c0a3790a96186a1f4c90e0",
+    "transport-node:086:a312318cd3e8513edc12e8af3b1750d2",
+    "transport-node:086:a3229c9459bfc442b47f7617f56c791f",
+    "transport-node:086:a42bc07863d88f6b900b34dc9adc7b87",
+    "transport-node:086:a9760c8f337c0fd2d4ce04cbe16c5bac",
+    "transport-node:086:ab4353cc679dae75ea76e1006fb59505",
+    "transport-node:086:ab69a1859c814cb5597b2a7180b3096d",
+    "transport-node:086:ae0b13a96674450a45678f4cfb6f40b4",
+    "transport-node:086:aff9c727d65104b827c4bfd36c8f01f1",
+    "transport-node:086:b20600caa945e6a4ea01816c7336c99d",
+    "transport-node:086:b404cd72d198d7494c3622c3ff900f8a",
+    "transport-node:086:b6eb5e57ec12924241c1e56db5d01eb6",
+    "transport-node:086:b80a894af1588194d35b0177b7439ebd",
+    "transport-node:086:b9384d6ec7fe29b754952fb1c3c5704a",
+    "transport-node:086:b93a183694b52f3062ef4dfc772360f4",
+    "transport-node:086:bc6cab24dbd5a7c7be291cbda7e3cdc3",
+    "transport-node:086:bcc6ec76d86f00c52303bf91e09fe2ac",
+    "transport-node:086:bd02cb5b878f4a4463eceac78a0345ba",
+    "transport-node:086:bd133c9ac0730b749343f10ffaa69309",
+    "transport-node:086:bed6ad96706e42a75d9ec317cfd7f55d",
+    "transport-node:086:bee9dc7b97c2b375475d77c877f004aa",
+    "transport-node:086:c27c76868b134b4718e84f64845e2ce0",
+    "transport-node:086:c432c3e04a17ea57398c52714dbf31ad",
+    "transport-node:086:c7d6f3d05922e76baa154ddebe4c4ec2",
+    "transport-node:086:c9125ec48393a4da5adb4585cd94f69f",
+    "transport-node:086:ca708c13b2bed4c0b907737ae09ea455",
+    "transport-node:086:cca32ebd6a8eb927b6e16926fee37556",
+    "transport-node:086:cf0bc7bf287efe5e22d8e07e691c8727",
+    "transport-node:086:d040645599091c48e1f55b182a04668c",
+    "transport-node:086:d08eeb7012824f24661ddbab03b1d2a9",
+    "transport-node:086:d3769fe701eac8ef92b2878cface3bcb",
+    "transport-node:086:d3a84853c37c6a9960515340ea7a4f35",
+    "transport-node:086:d63d585a4d1e7ad6551c6f24f3491635",
+    "transport-node:086:d6d3671959a38211338252d7de3e6435",
+    "transport-node:086:d749c089be5cc47669622efbc293e845",
+    "transport-node:086:d96266b08a00a7c6935518119447bb02",
+    "transport-node:086:d9b0499fae55148cb32b60e57d9075b0",
+    "transport-node:086:da4b8f464388229641a1a6f03040b959",
+    "transport-node:086:da74706898a877d9a4a613e607d62bf0",
+    "transport-node:086:db7edbbb75c7c988eec4eae87ceabaaa",
+    "transport-node:086:df1949dfb115e8a135044be322b1b047",
+    "transport-node:086:e1525d5e88fdd947ddb9f9ca9e2b8cc0",
+    "transport-node:086:e31b5ddc2165b03bb35004016d1f81ce",
+    "transport-node:086:e5741878b66bdafff34beaa4a1f0d29f",
+    "transport-node:086:e59121bddeb1afba072da5700a7f86ab",
+    "transport-node:086:e6da9e9e5da7495f93f594844b9b1106",
+    "transport-node:086:e6f1b3202cc5f6bca56d1332d60d3ba2",
+    "transport-node:086:e7f88059ece0018322ac000a07b7bedd",
+    "transport-node:086:e95bb50d1f3e66393a90115564d610ce",
+    "transport-node:086:eb44c59eba07611f41a4ffd707c647e6",
+    "transport-node:086:ebaa52082cc7d508f165b4185a54fc44",
+    "transport-node:086:ebda58f8b3ab5145997976fbe29cd5d0",
+    "transport-node:086:ec4dc3a859910acefad2a36c5fbc7193",
+    "transport-node:086:eed83d23cab52b558dfc4bbdfb843930",
+    "transport-node:086:f5242c02b466cb28d9ee5a8148470b94",
+    "transport-node:086:f67015dc1590d9f6c156b4ba40e22879",
+    "transport-node:086:f6b0a1710d83558f7815ca7c357711bd",
+    "transport-node:086:f7c7f4c6f09f9c2af6eca8eefbe7232b",
+    "transport-node:086:fca710f255f45dcd36c0e28a54d91367"
+  ],
+  "requiredPatternIds": [
+    "transport-pattern:086:05284e54f75500f02454e26a7ceb839c",
+    "transport-pattern:086:10e854ef2e5f1240de33da8142889bee",
+    "transport-pattern:086:207b3c3a801855e0d2af340bae43e276",
+    "transport-pattern:086:224072789fa6934eb16baac9f6a7be87",
+    "transport-pattern:086:229c449f2505e6e07219ba35879e3e8f",
+    "transport-pattern:086:2a330c99c27516bddf58b1a9d24a9428",
+    "transport-pattern:086:2ab1ab7726aac519c7d9adad1142d558",
+    "transport-pattern:086:4bc1801b337dd00c5407e1b1df22a242",
+    "transport-pattern:086:4c90889d489d4a5b866499996a8ff748",
+    "transport-pattern:086:69ec19fc170df1886aab6b248a683107",
+    "transport-pattern:086:6c9001a6fce10eaa92ec51dfc0e0126e",
+    "transport-pattern:086:81c2a313b1c24c04b005728f63f60850",
+    "transport-pattern:086:83ad53491283cdf3a8a3b434445ae202",
+    "transport-pattern:086:aa8aa95e94e1d40e836bb22d05396bb8",
+    "transport-pattern:086:b75b562b4088bb23dfbe3f9a8f04c8b5",
+    "transport-pattern:086:bcd88e00b1af4cb23f8101b739f24128",
+    "transport-pattern:086:c149465c9237407de4ee57ae3a13e9c1",
+    "transport-pattern:086:df9527119241ff91a6cfbab612127933",
+    "transport-pattern:086:ee525792bf985fc31b5b920f9ec4b90b",
+    "transport-pattern:086:f6320d838a20b5a0f922360c1ba0b53a"
+  ],
+  "patterns": [
+    {
+      "servicePatternId": "transport-pattern:086:05284e54f75500f02454e26a7ceb839c",
+      "mode": "fixed_guideway",
+      "factId": "astram-current-weekday-up-first-full-line-train",
+      "operatorRef": "広島高速交通",
+      "callingNodeIds": [
+        "transport-node:086:18e8fde07534c892b35a00904ee2791a",
+        "transport-node:086:eed83d23cab52b558dfc4bbdfb843930",
+        "transport-node:086:da74706898a877d9a4a613e607d62bf0",
+        "transport-node:086:463e09d2ab01e45bf98a18bf76355360",
+        "transport-node:086:6ec6093875c570493157eb4b7544be48",
+        "transport-node:086:5eb28b1c136b4aaeba879baee87118c4",
+        "transport-node:086:91ef8ef66623aa2876d43be839b376ae",
+        "transport-node:086:c27c76868b134b4718e84f64845e2ce0",
+        "transport-node:086:9cfceb90ba9e6543af513671488b0359",
+        "transport-node:086:6931bb012d9477599ccd7f8e39293882",
+        "transport-node:086:641fc0baaa09dbf82ecaaa7419676097",
+        "transport-node:086:e7f88059ece0018322ac000a07b7bedd",
+        "transport-node:086:c7d6f3d05922e76baa154ddebe4c4ec2",
+        "transport-node:086:2771238ef4f13e6f2981376cf51c3dbb",
+        "transport-node:086:7c58f8c732e363a8da2500b30d732ce1",
+        "transport-node:086:5c362858f095ab3f4b1cc8da9c19e178",
+        "transport-node:086:41514fcbd99145d1f5c2af707d6855b8",
+        "transport-node:086:02c8d6b8161fc5124620c028109b4da6",
+        "transport-node:086:3a8a45cf163117ae28b4a6a763cdc7c6",
+        "transport-node:086:57ff43b6f37aa0c4b754e25eabeb8ffc",
+        "transport-node:086:e31b5ddc2165b03bb35004016d1f81ce",
+        "transport-node:086:334b55c284aa8a0d7fd4e96d511aa63b"
+      ],
+      "sourceRefs": [
+        "https://www.astramline.co.jp/Portals/0/pdf/timetable/20260314_daiya.heijitu.nobori.pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:696cdf91423046c4f9fd68eb2b22e2b4"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:0b5dd1a5fb6c81b7b1543ac0df18c03b",
+        "transport-edge:086:0bee71dfc93918fd30137ae0ea8ebcb3",
+        "transport-edge:086:1441a35114356109dadc4652f436bd87",
+        "transport-edge:086:3b37cb5bc9776c2c887d6060109cf8f8",
+        "transport-edge:086:5b1192585cd817b4c940ac638aa9833e",
+        "transport-edge:086:68489642db42ff6e8eaf6fa9b3f670f1",
+        "transport-edge:086:68702211b720967d0271d5ad520f7874",
+        "transport-edge:086:79f84081282234064fce2615afdc9c7b",
+        "transport-edge:086:8564597e82de169ba2240f16b83b5e14",
+        "transport-edge:086:928a76ea5b83b8e051d086f05c35f539",
+        "transport-edge:086:97e8593a2da8766d11114b3c5d6edd13",
+        "transport-edge:086:a32e045e10878e787acbbe1515e2a3be",
+        "transport-edge:086:a704cbef9208afd80655f59afa2cd24f",
+        "transport-edge:086:b8303e571767900df8a70620ffacd0ad",
+        "transport-edge:086:c376fd86ac11870465d60666f93216d7",
+        "transport-edge:086:d187cbf4c978b6c0c9090f5996421884",
+        "transport-edge:086:db89da02ee1d9fc8143c0cb434666ead",
+        "transport-edge:086:e120edb4deafce369bacbf88bfb022e3",
+        "transport-edge:086:ecb1755a845d3f6ee34e61ac1efc3842",
+        "transport-edge:086:f3bd0721608718d0c7c2897bed4f6c09",
+        "transport-edge:086:f94a130ec3e28ff2d6c3fb74d49676ef"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:10e854ef2e5f1240de33da8142889bee",
+      "mode": "fixed_guideway",
+      "factId": "osaka-monorail-mainline-actual-weekday-1001",
+      "operatorRef": "大阪モノレール",
+      "callingNodeIds": [
+        "transport-node:086:84400652d5378c4bf4e82140ba0f0d12",
+        "transport-node:086:840f2e7b7e8aa3551d701cb5cbd30ec1",
+        "transport-node:086:ebda58f8b3ab5145997976fbe29cd5d0",
+        "transport-node:086:4b79539e7735a455a5ec6d4b5f273fef",
+        "transport-node:086:67bdf04f71c83c20e11402becb8f6581",
+        "transport-node:086:d040645599091c48e1f55b182a04668c",
+        "transport-node:086:7a785fd5472c8f23546641354ff9af0e",
+        "transport-node:086:f67015dc1590d9f6c156b4ba40e22879",
+        "transport-node:086:cca32ebd6a8eb927b6e16926fee37556",
+        "transport-node:086:243db0f551ebe1b773fd19c4febd6802",
+        "transport-node:086:bee9dc7b97c2b375475d77c877f004aa",
+        "transport-node:086:d63d585a4d1e7ad6551c6f24f3491635",
+        "transport-node:086:d96266b08a00a7c6935518119447bb02",
+        "transport-node:086:a312318cd3e8513edc12e8af3b1750d2"
+      ],
+      "sourceRefs": [
+        "https://www.osaka-monorail.co.jp/upload/info/newPDF/he5(1).pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:7a259c82e674d2c380d7967b657cd52c"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:030b461436c2afc81a323db8adac249a",
+        "transport-edge:086:056c956c92ba498ea00a712b74a1c461",
+        "transport-edge:086:162aab28f5c36addaef3ae6fbb2489a8",
+        "transport-edge:086:1ecbd16a275571d829042b26ba1fe848",
+        "transport-edge:086:4860da950a869a172bd6d13cce60b261",
+        "transport-edge:086:731ce4c9561a1538c6fd2e8689d92a90",
+        "transport-edge:086:751e6aef43487de7fc1ed5f37c00f5f3",
+        "transport-edge:086:8e8d04bc147de0c0753647debe725a6e",
+        "transport-edge:086:9af6449cc15f11a730114399a15027b3",
+        "transport-edge:086:c31ecd165b2365419c1f1c8f1179d697",
+        "transport-edge:086:f431875bac08fe220d4b097ed919f6ce",
+        "transport-edge:086:f81146c80bf157ad922156a1a0450ad8",
+        "transport-edge:086:fa45e1e5ed2f2d6be434ce812fa70a37"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:207b3c3a801855e0d2af340bae43e276",
+      "mode": "fixed_guideway",
+      "factId": "osaka-monorail-mainline-actual-weekday-1010",
+      "operatorRef": "大阪モノレール",
+      "callingNodeIds": [
+        "transport-node:086:a312318cd3e8513edc12e8af3b1750d2",
+        "transport-node:086:d96266b08a00a7c6935518119447bb02",
+        "transport-node:086:d63d585a4d1e7ad6551c6f24f3491635",
+        "transport-node:086:bee9dc7b97c2b375475d77c877f004aa",
+        "transport-node:086:243db0f551ebe1b773fd19c4febd6802",
+        "transport-node:086:cca32ebd6a8eb927b6e16926fee37556",
+        "transport-node:086:f67015dc1590d9f6c156b4ba40e22879",
+        "transport-node:086:7a785fd5472c8f23546641354ff9af0e",
+        "transport-node:086:d040645599091c48e1f55b182a04668c",
+        "transport-node:086:67bdf04f71c83c20e11402becb8f6581",
+        "transport-node:086:4b79539e7735a455a5ec6d4b5f273fef",
+        "transport-node:086:ebda58f8b3ab5145997976fbe29cd5d0",
+        "transport-node:086:840f2e7b7e8aa3551d701cb5cbd30ec1",
+        "transport-node:086:84400652d5378c4bf4e82140ba0f0d12"
+      ],
+      "sourceRefs": [
+        "https://www.osaka-monorail.co.jp/upload/info/newPDF/he5(1).pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:4a59836c38143098d670281c30fe1705"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:055dac45b064a33f90c292a0053d7969",
+        "transport-edge:086:06d211a674477e40f255287c94077e31",
+        "transport-edge:086:0a40e7d249e3b33c3376a0fec4e45464",
+        "transport-edge:086:17e715d9734a1992c0f664c87be7d039",
+        "transport-edge:086:1c89bbc986860bcd0cddaf8b6ef47b87",
+        "transport-edge:086:2c37eee9ec428d322449a1dbad8b0266",
+        "transport-edge:086:2faba46e2817a36d35cc0aa6cb2f41b0",
+        "transport-edge:086:5d3a6abe85c0c5183257be9872eb7bd0",
+        "transport-edge:086:6a74d481c1429c8a07b4656d5beb2511",
+        "transport-edge:086:758042d7ec7b4689a3a7c679075fe405",
+        "transport-edge:086:a8efb7914e2764c0591ea03f47d16d21",
+        "transport-edge:086:d663ea93015245f677b7d68ea9039a56",
+        "transport-edge:086:e5473dec72d1457b4b11552109c43d54"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:224072789fa6934eb16baac9f6a7be87",
+      "mode": "fixed_guideway",
+      "factId": "yutorito-current-municipal-guideway-pattern-ozonebound",
+      "operatorRef": "名古屋ガイドウェイバス",
+      "callingNodeIds": [
+        "transport-node:086:fca710f255f45dcd36c0e28a54d91367",
+        "transport-node:086:bed6ad96706e42a75d9ec317cfd7f55d",
+        "transport-node:086:55dde32a06505ba8b8bfaae544ed0163",
+        "transport-node:086:df1949dfb115e8a135044be322b1b047",
+        "transport-node:086:e5741878b66bdafff34beaa4a1f0d29f",
+        "transport-node:086:9f88294c04c0a3790a96186a1f4c90e0",
+        "transport-node:086:235fc5461a23dd337d60e43fb51ff95d",
+        "transport-node:086:52c84d1489a78c9ab4ec035a2a06f131",
+        "transport-node:086:a3229c9459bfc442b47f7617f56c791f"
+      ],
+      "sourceRefs": [
+        "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/RosenMapKikanDetail?code=3&direction=%E5%BE%A9&from=%E5%A4%A7%E6%9B%BD%E6%A0%B9&name=%E3%82%86%E3%81%A8%E3%82%8A%E3%83%BC%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%B3&to=%E9%AB%98%E8%94%B5%E5%AF%BA"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:774c0ed2a450cfae0198b3d81d7d8a87"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:04b7955e06e8593cb8d18c347f4c3f34",
+        "transport-edge:086:23f7bda3c60c1fd0773d45d8dc1c2bf3",
+        "transport-edge:086:45c67903cb2def873f5ba975b9722dfa",
+        "transport-edge:086:7dcd9d7638feb9d076f5f2ce6da7278c",
+        "transport-edge:086:96ba3d1bcc09fc28cc985fa80e7844b8",
+        "transport-edge:086:e5b7a82782a481bfbefc1b24b3d36e35",
+        "transport-edge:086:eeaec96839d428bc20ad0cece428a365",
+        "transport-edge:086:f0c6de1a09a8f937dde250a094552b17"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:229c449f2505e6e07219ba35879e3e8f",
+      "mode": "tram",
+      "factId": "toei-gtfs-61014000",
+      "operatorRef": "東京都",
+      "callingNodeIds": [
+        "transport-node:086:1757a04cf9e01e12732d7b40b794e5d4",
+        "transport-node:086:3ee55beed35a173f029295ee1e330c26",
+        "transport-node:086:3b851d6638d4c4b05a51b7b9f972a9df",
+        "transport-node:086:bd02cb5b878f4a4463eceac78a0345ba",
+        "transport-node:086:f6b0a1710d83558f7815ca7c357711bd",
+        "transport-node:086:18b23dace77c51435be6e45989779d99",
+        "transport-node:086:812fdbb8c314fd99bac0e07e2490f075",
+        "transport-node:086:725ca7834d263e4c877cfb900ff67c8f",
+        "transport-node:086:d08eeb7012824f24661ddbab03b1d2a9",
+        "transport-node:086:05de65a08b41b8b797c7bcc5e219fdc2",
+        "transport-node:086:ebaa52082cc7d508f165b4185a54fc44",
+        "transport-node:086:729d12d2f5aeee24950da8a858e7e035",
+        "transport-node:086:a9760c8f337c0fd2d4ce04cbe16c5bac",
+        "transport-node:086:a42bc07863d88f6b900b34dc9adc7b87",
+        "transport-node:086:7a901ab9808dc4d179eff448114735da",
+        "transport-node:086:bcc6ec76d86f00c52303bf91e09fe2ac",
+        "transport-node:086:db7edbbb75c7c988eec4eae87ceabaaa",
+        "transport-node:086:1e883a6d79a7f94efb4f5ca9e4b42d0c",
+        "transport-node:086:1364a805064c8c6d02d7c5255a3c402b",
+        "transport-node:086:c432c3e04a17ea57398c52714dbf31ad",
+        "transport-node:086:1568f936725724506633ebb0a6c7a238",
+        "transport-node:086:2999a23518218901e14ea87db877189a",
+        "transport-node:086:99a7537f8128a0c64ccce36be1ea058a",
+        "transport-node:086:6ea7e8f0ceac30c906b1beb724acf2a9",
+        "transport-node:086:e59121bddeb1afba072da5700a7f86ab",
+        "transport-node:086:b93a183694b52f3062ef4dfc772360f4",
+        "transport-node:086:426c7bbba10bb96de7fe29dfaca990eb",
+        "transport-node:086:b80a894af1588194d35b0177b7439ebd",
+        "transport-node:086:212711e99540dfb78de3dda26e635001",
+        "transport-node:086:7dace74765b04def9b7610275ff016b5"
+      ],
+      "sourceRefs": [
+        "https://api-public.odpt.org/api/v4/files/Toei/data/Toei-Train-GTFS.zip"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:72c57c3a695024235c9680b93c50dec5"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:0ff484d13490e4baf99208375dc8db72",
+        "transport-edge:086:2236087f6568410b8256a0ad479de28b",
+        "transport-edge:086:2ebbbedecc445061939399c0cef954cb",
+        "transport-edge:086:39f7acefbf0a823841aa5e988e8531fd",
+        "transport-edge:086:41242b01a2576778c3209c9deb062cc0",
+        "transport-edge:086:429fe63df5698405efd77cf8e07773b9",
+        "transport-edge:086:508a5ff4ebbe4a93c9eabafa44d246e7",
+        "transport-edge:086:5633d5435b63b954f5e03164a3d8424d",
+        "transport-edge:086:6a921bff59517325993258540874687f",
+        "transport-edge:086:70ce2cbab36d90b85c08bc3e6897e3fb",
+        "transport-edge:086:7f7d43d145ca1da14547c84b062b5c60",
+        "transport-edge:086:8020034e63674ac97f9677dcaeb272b8",
+        "transport-edge:086:8d7bf724159689b9f4cb0a90d0b97982",
+        "transport-edge:086:97e7d336f9a0d65b7f3a785f011e1b01",
+        "transport-edge:086:9afd52b2c1548f1609ab1e13fa81dc76",
+        "transport-edge:086:abcfe8a5cba5c1051d495182040fdf61",
+        "transport-edge:086:b713339ed9032c5b086fcba4c0358fbf",
+        "transport-edge:086:c4131ed3fe0e9674aea103a974bad788",
+        "transport-edge:086:c667c0a5636bfc403ca4c7983c090e97",
+        "transport-edge:086:cd0b7a25e3224f49b04aa79574c4fa62",
+        "transport-edge:086:cea1145931fb16ed724e4da876d0b29d",
+        "transport-edge:086:d6e458f324bd931693e00a23b8b3c6ea",
+        "transport-edge:086:dd75446153986be629498fc7d00ccb57",
+        "transport-edge:086:df43d644f457a7d4f7b8854c31a5310a",
+        "transport-edge:086:e5c6f07c73b8ca64643893193d8ae730",
+        "transport-edge:086:e8a2388d92117a65899efa88dbf8107a",
+        "transport-edge:086:f069161f64487587c3fa35382c5dd5eb",
+        "transport-edge:086:f24b7a51d9f3a517e60635ed0b7d7eba",
+        "transport-edge:086:fef729449b4e74f72d2791fe8379191b"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:2a330c99c27516bddf58b1a9d24a9428",
+      "mode": "fixed_guideway",
+      "factId": "kobe-portliner-ordinary-airport-branch-airport-bound",
+      "operatorRef": "神戸新交通",
+      "callingNodeIds": [
+        "transport-node:086:8c80a0e5360549b49935a8ee1fe23c53",
+        "transport-node:086:2c1a56e01e9a241f88eb4cd71199ef1a",
+        "transport-node:086:d9b0499fae55148cb32b60e57d9075b0",
+        "transport-node:086:5392c6a48bfd4540be605a39948c67f0",
+        "transport-node:086:b404cd72d198d7494c3622c3ff900f8a",
+        "transport-node:086:3f62b879d16fad0d49b96e8089cf343b",
+        "transport-node:086:427eae3612236ea9f203085b5d231b62",
+        "transport-node:086:352d5cd78eea9d8d480b49bdf39368b0",
+        "transport-node:086:04804eecd0998eb7d9410e277767b1cc"
+      ],
+      "sourceRefs": [
+        "https://www.knt-liner.co.jp/station/"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:048d779d8840765313c1d7e46f79adbb"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:461559149cd2871a5486d469d99d85dd",
+        "transport-edge:086:5227a15ae6035af8dae55740292a2bcb",
+        "transport-edge:086:66af7ebf5cceb10b73aeb10202093ba4",
+        "transport-edge:086:728d26a406e1f44b416ea63bbb8b90a7",
+        "transport-edge:086:996104ff50919f1cf97f6fdfebd23625",
+        "transport-edge:086:b7a6231870edf97edd6c3cdfca5d8570",
+        "transport-edge:086:b9c0fd78e11892c9b9df0d5b664956bd",
+        "transport-edge:086:c982b28c19f49a3937a4f9dd675313b3"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:2ab1ab7726aac519c7d9adad1142d558",
+      "mode": "fixed_guideway",
+      "factId": "kobe-portliner-ordinary-airport-branch-sannomiya-bound",
+      "operatorRef": "神戸新交通",
+      "callingNodeIds": [
+        "transport-node:086:04804eecd0998eb7d9410e277767b1cc",
+        "transport-node:086:352d5cd78eea9d8d480b49bdf39368b0",
+        "transport-node:086:427eae3612236ea9f203085b5d231b62",
+        "transport-node:086:3f62b879d16fad0d49b96e8089cf343b",
+        "transport-node:086:b404cd72d198d7494c3622c3ff900f8a",
+        "transport-node:086:5392c6a48bfd4540be605a39948c67f0",
+        "transport-node:086:d9b0499fae55148cb32b60e57d9075b0",
+        "transport-node:086:2c1a56e01e9a241f88eb4cd71199ef1a",
+        "transport-node:086:8c80a0e5360549b49935a8ee1fe23c53"
+      ],
+      "sourceRefs": [
+        "https://www.knt-liner.co.jp/station/"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:37d422338cd44d1d2eda40f5e1f763b9"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:04accc6dd92e304a62529aea32254741",
+        "transport-edge:086:24849c23f6af658d5053428878f4c224",
+        "transport-edge:086:57b9160ca680f5d00d785578d81e4fe8",
+        "transport-edge:086:6eb5f38c01ad43d3bfa9cd629eb326f1",
+        "transport-edge:086:8825b42c2bb6653f3b664c95646a1f68",
+        "transport-edge:086:8a3e67576ac6f0b733dcce4376cddd44",
+        "transport-edge:086:dc8400bc6fd918fc02e83f0e0455e9ac",
+        "transport-edge:086:fcef0bbfcfcba03a85a3682a2cecf24f"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:4bc1801b337dd00c5407e1b1df22a242",
+      "mode": "tram",
+      "factId": "setagaya-current-first-weekday-full-route-sangenjayabound",
+      "operatorRef": "東急電鉄",
+      "callingNodeIds": [
+        "transport-node:086:724a12ec84302650b00b3bbefdf9a8c3",
+        "transport-node:086:90fb66b77685c9504ae3cbdcdbb21b64",
+        "transport-node:086:e6da9e9e5da7495f93f594844b9b1106",
+        "transport-node:086:7e16fabc6a69e0fc5924daeda9f82eaa",
+        "transport-node:086:d3769fe701eac8ef92b2878cface3bcb",
+        "transport-node:086:d749c089be5cc47669622efbc293e845",
+        "transport-node:086:71e1277c93271241ff677b00932bfb69",
+        "transport-node:086:87437372f6e0c0f40f88211ae7892e30",
+        "transport-node:086:aff9c727d65104b827c4bfd36c8f01f1",
+        "transport-node:086:2303a823f580b2e023fdbda494ace168"
+      ],
+      "sourceRefs": [
+        "https://www.tokyu.co.jp/railway/timetable/pdf/202503_sg10_shimotakaido.pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:e91471ca150696fce71e8ee20b01a8b4"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:1eb808ffef929d53a9f9617b850c9545",
+        "transport-edge:086:260188d903c3535195f2fc2b4410cbce",
+        "transport-edge:086:5a8b699b08ce9ba2b5f2f77d70856861",
+        "transport-edge:086:6121055095dba2fd4820b0ed4e42b626",
+        "transport-edge:086:765c27a2f60ad5a4870bba3d6d00a27a",
+        "transport-edge:086:ad3200d7369c3c94c07a9377dfac4dd3",
+        "transport-edge:086:c4ef57afc38d8b27dae375e1badbe62b",
+        "transport-edge:086:c925bfcf3bbc239f04025c005beb12aa",
+        "transport-edge:086:df0863b7f0bcbb1f73533c2bcaee5c82"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:4c90889d489d4a5b866499996a8ff748",
+      "mode": "tram",
+      "factId": "setagaya-current-first-weekday-full-route-shimotakaidobound",
+      "operatorRef": "東急電鉄",
+      "callingNodeIds": [
+        "transport-node:086:2303a823f580b2e023fdbda494ace168",
+        "transport-node:086:aff9c727d65104b827c4bfd36c8f01f1",
+        "transport-node:086:87437372f6e0c0f40f88211ae7892e30",
+        "transport-node:086:71e1277c93271241ff677b00932bfb69",
+        "transport-node:086:d749c089be5cc47669622efbc293e845",
+        "transport-node:086:d3769fe701eac8ef92b2878cface3bcb",
+        "transport-node:086:7e16fabc6a69e0fc5924daeda9f82eaa",
+        "transport-node:086:e6da9e9e5da7495f93f594844b9b1106",
+        "transport-node:086:90fb66b77685c9504ae3cbdcdbb21b64",
+        "transport-node:086:724a12ec84302650b00b3bbefdf9a8c3"
+      ],
+      "sourceRefs": [
+        "https://www.tokyu.co.jp/railway/timetable/pdf/202503_sg01_sangenjaya2.pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:d40b6522c11740a3ec8716ad52b5c3ee"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:1dfc061f04a2ec7f93a64579ff16afa7",
+        "transport-edge:086:28e0a515a1c25498fa087d52f4fed6ee",
+        "transport-edge:086:28e984996305415100b1191756d217f5",
+        "transport-edge:086:495ea65486a91e82ec9306fc85bc8e7b",
+        "transport-edge:086:67a8c6ff1e417bcbec816dac90de5df4",
+        "transport-edge:086:6baea229e083b65a530bedc24b5928dd",
+        "transport-edge:086:7c472fd63413291413937f91998ea0cd",
+        "transport-edge:086:b702d790b011a44bb8896889771d510d",
+        "transport-edge:086:b9bb0af7b1ae73977c776d44b179eab4"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:69ec19fc170df1886aab6b248a683107",
+      "mode": "fixed_guideway",
+      "factId": "yurikamome-last-train-bounded-inbound",
+      "operatorRef": "ゆりかもめ",
+      "callingNodeIds": [
+        "transport-node:086:eb44c59eba07611f41a4ffd707c647e6",
+        "transport-node:086:d6d3671959a38211338252d7de3e6435"
+      ],
+      "sourceRefs": [
+        "https://www.yurikamome.co.jp/station-timetable/search.html"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:2c465f92d78cc75a2ac1eef66e5638f5"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:0350c2f978d563ceb7c41878aff2c3ec"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:6c9001a6fce10eaa92ec51dfc0e0126e",
+      "mode": "fixed_guideway",
+      "factId": "astram-current-weekday-down-first-full-line-train",
+      "operatorRef": "広島高速交通",
+      "callingNodeIds": [
+        "transport-node:086:334b55c284aa8a0d7fd4e96d511aa63b",
+        "transport-node:086:e31b5ddc2165b03bb35004016d1f81ce",
+        "transport-node:086:57ff43b6f37aa0c4b754e25eabeb8ffc",
+        "transport-node:086:3a8a45cf163117ae28b4a6a763cdc7c6",
+        "transport-node:086:02c8d6b8161fc5124620c028109b4da6",
+        "transport-node:086:41514fcbd99145d1f5c2af707d6855b8",
+        "transport-node:086:5c362858f095ab3f4b1cc8da9c19e178",
+        "transport-node:086:7c58f8c732e363a8da2500b30d732ce1",
+        "transport-node:086:2771238ef4f13e6f2981376cf51c3dbb",
+        "transport-node:086:c7d6f3d05922e76baa154ddebe4c4ec2",
+        "transport-node:086:e7f88059ece0018322ac000a07b7bedd",
+        "transport-node:086:641fc0baaa09dbf82ecaaa7419676097",
+        "transport-node:086:6931bb012d9477599ccd7f8e39293882",
+        "transport-node:086:9cfceb90ba9e6543af513671488b0359",
+        "transport-node:086:c27c76868b134b4718e84f64845e2ce0",
+        "transport-node:086:91ef8ef66623aa2876d43be839b376ae",
+        "transport-node:086:5eb28b1c136b4aaeba879baee87118c4",
+        "transport-node:086:6ec6093875c570493157eb4b7544be48",
+        "transport-node:086:463e09d2ab01e45bf98a18bf76355360",
+        "transport-node:086:da74706898a877d9a4a613e607d62bf0",
+        "transport-node:086:eed83d23cab52b558dfc4bbdfb843930",
+        "transport-node:086:18e8fde07534c892b35a00904ee2791a"
+      ],
+      "sourceRefs": [
+        "https://www.astramline.co.jp/Portals/0/pdf/timetable/20260314_daiya.heijitu.kudari.pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:6196d5d5623c1ae04284ebe7a89920c9"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:01452e7e70d108f4f1c8e28f5d6771be",
+        "transport-edge:086:1698c36e6c2d15a6e9296343404c3be2",
+        "transport-edge:086:22aaa94d0dad2fb5480a107e5a0323cc",
+        "transport-edge:086:26899e19e32cb7bd1b40a3b0996d6a71",
+        "transport-edge:086:2ef83ee4db90733598d2aef66e71d1b7",
+        "transport-edge:086:39e78b14a73f37101d1b0bd4122fcfa7",
+        "transport-edge:086:4fe2b2d32a272981cbefad2b74c82a30",
+        "transport-edge:086:527fb848f0477c81af0d7159d4a3dcd1",
+        "transport-edge:086:5ee051d27c408f11ffdedb80ba42e2b7",
+        "transport-edge:086:6abb701ccf880c5b3898add076d55cc5",
+        "transport-edge:086:78a981f0857202b762a66e1f45cd2506",
+        "transport-edge:086:7c6a297be5db1ddead469df1f7937641",
+        "transport-edge:086:87174ffcfa234cc0f00d22ab6729577b",
+        "transport-edge:086:8f57fe1f402c10470565eabe79a75291",
+        "transport-edge:086:a16ed00bb70de7e91ba410f96bf6e239",
+        "transport-edge:086:b5b58f9c9b6a51dda5bc1ef814022538",
+        "transport-edge:086:b5e4d4cead0fba8a80ec2321e8d7a601",
+        "transport-edge:086:c7735473fa710602ffa3f01f59a324b6",
+        "transport-edge:086:ca01132574f362360f7099780254ac62",
+        "transport-edge:086:e28c69f210b9f311521ab462c1499544",
+        "transport-edge:086:e6581e0271f592591864895a387f2c8f"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:81c2a313b1c24c04b005728f63f60850",
+      "mode": "fixed_guideway",
+      "factId": "yurikamome-last-train-bounded-outbound",
+      "operatorRef": "ゆりかもめ",
+      "callingNodeIds": [
+        "transport-node:086:d6d3671959a38211338252d7de3e6435",
+        "transport-node:086:eb44c59eba07611f41a4ffd707c647e6"
+      ],
+      "sourceRefs": [
+        "https://www.yurikamome.co.jp/station-timetable/search.html"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:167e6fcf91bba49058fbc072f0207970"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:7c88e407d20d0b1080beee90ad43790f"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:83ad53491283cdf3a8a3b434445ae202",
+      "mode": "tram",
+      "factId": "toei-gtfs-60010700",
+      "operatorRef": "東京都",
+      "callingNodeIds": [
+        "transport-node:086:7dace74765b04def9b7610275ff016b5",
+        "transport-node:086:212711e99540dfb78de3dda26e635001",
+        "transport-node:086:b80a894af1588194d35b0177b7439ebd",
+        "transport-node:086:426c7bbba10bb96de7fe29dfaca990eb",
+        "transport-node:086:b93a183694b52f3062ef4dfc772360f4",
+        "transport-node:086:e59121bddeb1afba072da5700a7f86ab",
+        "transport-node:086:6ea7e8f0ceac30c906b1beb724acf2a9",
+        "transport-node:086:99a7537f8128a0c64ccce36be1ea058a",
+        "transport-node:086:2999a23518218901e14ea87db877189a",
+        "transport-node:086:1568f936725724506633ebb0a6c7a238",
+        "transport-node:086:c432c3e04a17ea57398c52714dbf31ad",
+        "transport-node:086:1364a805064c8c6d02d7c5255a3c402b",
+        "transport-node:086:1e883a6d79a7f94efb4f5ca9e4b42d0c",
+        "transport-node:086:db7edbbb75c7c988eec4eae87ceabaaa",
+        "transport-node:086:bcc6ec76d86f00c52303bf91e09fe2ac",
+        "transport-node:086:7a901ab9808dc4d179eff448114735da",
+        "transport-node:086:a42bc07863d88f6b900b34dc9adc7b87",
+        "transport-node:086:a9760c8f337c0fd2d4ce04cbe16c5bac",
+        "transport-node:086:729d12d2f5aeee24950da8a858e7e035",
+        "transport-node:086:ebaa52082cc7d508f165b4185a54fc44",
+        "transport-node:086:05de65a08b41b8b797c7bcc5e219fdc2",
+        "transport-node:086:d08eeb7012824f24661ddbab03b1d2a9",
+        "transport-node:086:725ca7834d263e4c877cfb900ff67c8f",
+        "transport-node:086:812fdbb8c314fd99bac0e07e2490f075",
+        "transport-node:086:18b23dace77c51435be6e45989779d99",
+        "transport-node:086:f6b0a1710d83558f7815ca7c357711bd",
+        "transport-node:086:bd02cb5b878f4a4463eceac78a0345ba",
+        "transport-node:086:3b851d6638d4c4b05a51b7b9f972a9df",
+        "transport-node:086:3ee55beed35a173f029295ee1e330c26",
+        "transport-node:086:1757a04cf9e01e12732d7b40b794e5d4"
+      ],
+      "sourceRefs": [
+        "https://api-public.odpt.org/api/v4/files/Toei/data/Toei-Train-GTFS.zip"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:6f459af0fa8aa92acdd805c12795eaed"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:06f47d86bcf6913f2db0558c079b3122",
+        "transport-edge:086:128d4cc36c03fd980b65a03cc64c137d",
+        "transport-edge:086:197f0f273c3796d615b50afe5df17c97",
+        "transport-edge:086:21667e68d7e1beace13b64413b8a510b",
+        "transport-edge:086:23958cfeb1c92efc8f60a4322ab8adbc",
+        "transport-edge:086:35ac17147ee31bac455cd79a51e2ff86",
+        "transport-edge:086:3c21c42aa213d20343882c4249aadc36",
+        "transport-edge:086:52e02a82fbfb6219336c4cbce25cb1a8",
+        "transport-edge:086:7a7b3c637658ea8d371ef392b03c61d0",
+        "transport-edge:086:90bd56e32433178d1ebdaebcd1143fc3",
+        "transport-edge:086:9ce82bd7f6cb0aa8a86f3e8202dd342c",
+        "transport-edge:086:9ee4a99c1b83cfd270fd4e8930f603f3",
+        "transport-edge:086:a521184c9e9d7b8bc47bf70df270b5f8",
+        "transport-edge:086:a60ae399ac59db3717614524d3fecc51",
+        "transport-edge:086:a7b23936c1743f5a793de0adf6dcb834",
+        "transport-edge:086:a8ebdfc741ffeb88cba0cc59e95aec64",
+        "transport-edge:086:bde9279a66226fd94262b7dfeb860cb8",
+        "transport-edge:086:c1059256ad097da48e2a854ab06e4b1d",
+        "transport-edge:086:c3cf9747da7c4a8fa18006ba7a1547bd",
+        "transport-edge:086:c6964eac2a3491740a2b52043e05e69c",
+        "transport-edge:086:e41914774f854d986ac172ced93a3bf3",
+        "transport-edge:086:e454c1bdaed8788072579c2f887148d4",
+        "transport-edge:086:e5823d2f24e82a9e38d2b0d331706278",
+        "transport-edge:086:e5aabb2fe2bc708619be1ce52bee748e",
+        "transport-edge:086:e6c53416b9c2a39dad32113299bbc999",
+        "transport-edge:086:eaf0c3b6bdeda5b8808a538907c53b73",
+        "transport-edge:086:f0b818ca64c8bc125dce7653ba0511b2",
+        "transport-edge:086:f754c3a98669ca360ee55a3de28d6beb",
+        "transport-edge:086:fe6dad9a04d0cec727a739930cbde7cc"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:aa8aa95e94e1d40e836bb22d05396bb8",
+      "mode": "fixed_guideway",
+      "factId": "yui-current-train-603",
+      "operatorRef": "沖縄都市モノレール",
+      "callingNodeIds": [
+        "transport-node:086:9d65314977ab71895fe6ef9e11374039",
+        "transport-node:086:da4b8f464388229641a1a6f03040b959",
+        "transport-node:086:e95bb50d1f3e66393a90115564d610ce",
+        "transport-node:086:e1525d5e88fdd947ddb9f9ca9e2b8cc0",
+        "transport-node:086:45fbf0e04133db7f8caff65b3b589e0a",
+        "transport-node:086:09c3b6708ed963507ec6f7b44bfcbee8",
+        "transport-node:086:87b9980020a4a4d7c566f7e42afced81",
+        "transport-node:086:2ca859d8a0571c2870444b87912e839a",
+        "transport-node:086:ca708c13b2bed4c0b907737ae09ea455",
+        "transport-node:086:b9384d6ec7fe29b754952fb1c3c5704a",
+        "transport-node:086:bd133c9ac0730b749343f10ffaa69309",
+        "transport-node:086:4afe58bd4dc28a672d3d454b94edcc16",
+        "transport-node:086:bc6cab24dbd5a7c7be291cbda7e3cdc3",
+        "transport-node:086:f5242c02b466cb28d9ee5a8148470b94",
+        "transport-node:086:c9125ec48393a4da5adb4585cd94f69f",
+        "transport-node:086:5f183d8f3dfc35e238332b9b38ddb42e",
+        "transport-node:086:4327d777d4027dea99b94110cbc92830",
+        "transport-node:086:700d0a8f0e6ecf12c24d1dd30a36ba8b",
+        "transport-node:086:91bfb25a97da8d0d313d15d6c731cf9b"
+      ],
+      "sourceRefs": [
+        "https://www.yui-rail.co.jp/common/json/timetable/normal/12280_1.json"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:dfe99033bceb83aa6e4f703d8ded7504"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:0e1f58cb8659f1964885fabb14e55eac",
+        "transport-edge:086:1da64dd61846233d4dbab0624e0486e1",
+        "transport-edge:086:2a86ddb52b44a40e12464549b56e74eb",
+        "transport-edge:086:2feb92dd003a279dfd8558211626b200",
+        "transport-edge:086:4704d3f7342a136ad0d787c6016e298e",
+        "transport-edge:086:4c5dd263eccaf97b9a5f32a6125a7006",
+        "transport-edge:086:4fd9acd2cf0c18f57fb8d7e655c434bb",
+        "transport-edge:086:727e32e38bb05f29e9dfb498fd6ac589",
+        "transport-edge:086:740bc4b62090b3ecc5505d921a8de6af",
+        "transport-edge:086:7fa2effaf46ef178f2737bae0f409a9a",
+        "transport-edge:086:86a2691d5e5b9987760c62707a09fb14",
+        "transport-edge:086:8e30ac0cd239ea65e11f6b6f4278ebbe",
+        "transport-edge:086:9652ce992be2d7c579ae9228890647ef",
+        "transport-edge:086:9d306fe5bd8b1806d3bd5527078f7806",
+        "transport-edge:086:c66b1f3594c994b3c432dddf1b30b19c",
+        "transport-edge:086:dab6bf729ae0068ea6eefc1df8d1e820",
+        "transport-edge:086:e54f7ab50574d791900b1c29dfb982db",
+        "transport-edge:086:ee8098fbb0a896dd6019da169045816c"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:b75b562b4088bb23dfbe3f9a8f04c8b5",
+      "mode": "fixed_guideway",
+      "factId": "osaka-monorail-airport-adjacent-hotarugaike-bound",
+      "operatorRef": "大阪モノレール",
+      "callingNodeIds": [
+        "transport-node:086:84400652d5378c4bf4e82140ba0f0d12",
+        "transport-node:086:840f2e7b7e8aa3551d701cb5cbd30ec1"
+      ],
+      "sourceRefs": [
+        "https://www.osaka-monorail.co.jp/upload/timetable/r11_osaka_air_t2026.pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:80a540f1154c5f8a8b1e91e45dbf86a5"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:114741479a68d7d33a09dcd9a642162c"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:bcd88e00b1af4cb23f8101b739f24128",
+      "mode": "fixed_guideway",
+      "factId": "toei-gtfs-510550A0",
+      "operatorRef": "東京都",
+      "callingNodeIds": [
+        "transport-node:086:d3a84853c37c6a9960515340ea7a4f35",
+        "transport-node:086:88fb598e7b34b3d4b55d415cfd86b7fb",
+        "transport-node:086:ec4dc3a859910acefad2a36c5fbc7193",
+        "transport-node:086:cf0bc7bf287efe5e22d8e07e691c8727",
+        "transport-node:086:2c5b314ab571842279852535fd291972",
+        "transport-node:086:6f2cdaebcb7b0275ec1c8492fa38a957",
+        "transport-node:086:00dbef0356b31e17bf088d9a44940832",
+        "transport-node:086:ab69a1859c814cb5597b2a7180b3096d",
+        "transport-node:086:240dab9a6ee1f28045da13bdcbdb285f",
+        "transport-node:086:50a8d03825b7e18f6d1de0bcd9920168",
+        "transport-node:086:72eea1f0dd5fdea6bcc1a9f3af6b7996",
+        "transport-node:086:83f8cd58904dbf8e5912bbb6affa07ff",
+        "transport-node:086:5593c4f0b510e569eaa2f78cfe982369"
+      ],
+      "sourceRefs": [
+        "https://api-public.odpt.org/api/v4/files/Toei/data/Toei-Train-GTFS.zip"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:a1da78a1f720961962529d4601b5b3f5"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:375393e3b35746994dfc9978d285a754",
+        "transport-edge:086:438593948ad11aa860d19ff99075bb76",
+        "transport-edge:086:5d540312625b8eb6fc3e94291556dc97",
+        "transport-edge:086:6554995c53d4a64708d3658ef2166c33",
+        "transport-edge:086:6af44001e451fe90ce7e7aa5809129a8",
+        "transport-edge:086:709cf94bce8b7ff5df5d6eb373fe9515",
+        "transport-edge:086:777ace250463ee5e35b915547739806b",
+        "transport-edge:086:8185e8c0bf55bf3a50c22d067fc33f12",
+        "transport-edge:086:9a63fbb42447eae5e86ba95d535da01f",
+        "transport-edge:086:c1bb1a8325acd102d055c037f3b0f9eb",
+        "transport-edge:086:d56d007ffb643fbb1abf7111ec5ab2f6",
+        "transport-edge:086:dd54b53d4391491fa713cf0b677ebc87"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:c149465c9237407de4ee57ae3a13e9c1",
+      "mode": "fixed_guideway",
+      "factId": "yutorito-current-municipal-guideway-pattern-obataryokuchibound",
+      "operatorRef": "名古屋ガイドウェイバス",
+      "callingNodeIds": [
+        "transport-node:086:a3229c9459bfc442b47f7617f56c791f",
+        "transport-node:086:52c84d1489a78c9ab4ec035a2a06f131",
+        "transport-node:086:235fc5461a23dd337d60e43fb51ff95d",
+        "transport-node:086:9f88294c04c0a3790a96186a1f4c90e0",
+        "transport-node:086:e5741878b66bdafff34beaa4a1f0d29f",
+        "transport-node:086:df1949dfb115e8a135044be322b1b047",
+        "transport-node:086:55dde32a06505ba8b8bfaae544ed0163",
+        "transport-node:086:bed6ad96706e42a75d9ec317cfd7f55d",
+        "transport-node:086:fca710f255f45dcd36c0e28a54d91367"
+      ],
+      "sourceRefs": [
+        "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/RosenMapKikanDetail?code=3&direction=%E5%BE%80&from=%E5%A4%A7%E6%9B%BD%E6%A0%B9&name=%E3%82%86%E3%81%A8%E3%82%8A%E3%83%BC%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%B3&to=%E9%AB%98%E8%94%B5%E5%AF%BA"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:fee33df96d7b2f79d3af5e9d4fcf66ac"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:293da7ed2d63f5cfb93b039a15e0fd54",
+        "transport-edge:086:8531331ae18fcc34457bf9cc93ae17ae",
+        "transport-edge:086:95b1c208707c79f9c31033bec89ce632",
+        "transport-edge:086:9a09c90773cc63f74ca0ac33a2b67a32",
+        "transport-edge:086:cf384555d62d9f979d0e485db935a8d2",
+        "transport-edge:086:d61a3f06984d651db9120773ede22c4e",
+        "transport-edge:086:dd08afe7fba1a078e2ae094dc26b0f1a",
+        "transport-edge:086:ebdde47156b707dd616667aa90f69310"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:df9527119241ff91a6cfbab612127933",
+      "mode": "fixed_guideway",
+      "factId": "yui-current-train-504",
+      "operatorRef": "沖縄都市モノレール",
+      "callingNodeIds": [
+        "transport-node:086:91bfb25a97da8d0d313d15d6c731cf9b",
+        "transport-node:086:700d0a8f0e6ecf12c24d1dd30a36ba8b",
+        "transport-node:086:4327d777d4027dea99b94110cbc92830",
+        "transport-node:086:5f183d8f3dfc35e238332b9b38ddb42e",
+        "transport-node:086:c9125ec48393a4da5adb4585cd94f69f",
+        "transport-node:086:f5242c02b466cb28d9ee5a8148470b94",
+        "transport-node:086:bc6cab24dbd5a7c7be291cbda7e3cdc3",
+        "transport-node:086:4afe58bd4dc28a672d3d454b94edcc16",
+        "transport-node:086:bd133c9ac0730b749343f10ffaa69309",
+        "transport-node:086:b9384d6ec7fe29b754952fb1c3c5704a",
+        "transport-node:086:ca708c13b2bed4c0b907737ae09ea455",
+        "transport-node:086:2ca859d8a0571c2870444b87912e839a",
+        "transport-node:086:87b9980020a4a4d7c566f7e42afced81",
+        "transport-node:086:09c3b6708ed963507ec6f7b44bfcbee8",
+        "transport-node:086:45fbf0e04133db7f8caff65b3b589e0a",
+        "transport-node:086:e1525d5e88fdd947ddb9f9ca9e2b8cc0",
+        "transport-node:086:e95bb50d1f3e66393a90115564d610ce",
+        "transport-node:086:da4b8f464388229641a1a6f03040b959",
+        "transport-node:086:9d65314977ab71895fe6ef9e11374039"
+      ],
+      "sourceRefs": [
+        "https://www.yui-rail.co.jp/common/json/timetable/normal/12280_1.json"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:c97220da4c12700c301656abf7b1e9de"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:07c98de561abe3691a9ad37f7a96e392",
+        "transport-edge:086:1202faa6bb6b017ab587f96ba2ea2b19",
+        "transport-edge:086:1e14b7be23499f52cab744e3075dd282",
+        "transport-edge:086:295ce3ae86a4035d9d0a679ba20a9579",
+        "transport-edge:086:35e133c7b043bb8924e0b7efdfa4d57c",
+        "transport-edge:086:379fe4da23b57ca5d1671cf09ffb3d08",
+        "transport-edge:086:4698b1023c8d87f7168d1a1596780ec7",
+        "transport-edge:086:632b88903886462ba7dc477bf91a2339",
+        "transport-edge:086:6ba6fe7e272c704538bdea6cfe01a2c8",
+        "transport-edge:086:6fed0caf8b05a68a7e647e16fbc0a957",
+        "transport-edge:086:7b7a612891b1843a5b69d73cb6ee745e",
+        "transport-edge:086:995f39b657b24b2918770726f35271b6",
+        "transport-edge:086:b8c403200c759a3e871fa53c2afbae3f",
+        "transport-edge:086:ba5b5421d468fb2a6f7ba67da29f3dcc",
+        "transport-edge:086:c0a371788d4d71f14b41c25015900268",
+        "transport-edge:086:c5bae0005d3b60da536aa57a803386f6",
+        "transport-edge:086:ca896f0df525670638e297eaf485f852",
+        "transport-edge:086:d174a8b5154d5579c004c4754fa4a1cc"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:ee525792bf985fc31b5b920f9ec4b90b",
+      "mode": "fixed_guideway",
+      "factId": "toei-gtfs-500551B0",
+      "operatorRef": "東京都",
+      "callingNodeIds": [
+        "transport-node:086:5593c4f0b510e569eaa2f78cfe982369",
+        "transport-node:086:83f8cd58904dbf8e5912bbb6affa07ff",
+        "transport-node:086:72eea1f0dd5fdea6bcc1a9f3af6b7996",
+        "transport-node:086:50a8d03825b7e18f6d1de0bcd9920168",
+        "transport-node:086:240dab9a6ee1f28045da13bdcbdb285f",
+        "transport-node:086:ab69a1859c814cb5597b2a7180b3096d",
+        "transport-node:086:00dbef0356b31e17bf088d9a44940832",
+        "transport-node:086:6f2cdaebcb7b0275ec1c8492fa38a957",
+        "transport-node:086:2c5b314ab571842279852535fd291972",
+        "transport-node:086:cf0bc7bf287efe5e22d8e07e691c8727",
+        "transport-node:086:ec4dc3a859910acefad2a36c5fbc7193",
+        "transport-node:086:88fb598e7b34b3d4b55d415cfd86b7fb",
+        "transport-node:086:d3a84853c37c6a9960515340ea7a4f35"
+      ],
+      "sourceRefs": [
+        "https://api-public.odpt.org/api/v4/files/Toei/data/Toei-Train-GTFS.zip"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:7241151ca80b169f0ad06c3d151298f5"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:16826ceaaf87ca3feea7cca5ed6f64bb",
+        "transport-edge:086:23d794d3076c6cf1087f55bd4429a2ac",
+        "transport-edge:086:37025ace9e4af3433e9003af0c773110",
+        "transport-edge:086:47533b3e5074f06a143605fa039994db",
+        "transport-edge:086:8ba30fa89b9224485d23614bc077d904",
+        "transport-edge:086:8bab259b61a05bdbb4193f558efb5552",
+        "transport-edge:086:adf000b4eb590254f48e222a6e85947a",
+        "transport-edge:086:b33508a9c8d39a196b20d3ad978c6b90",
+        "transport-edge:086:b70f6d6a0f7d22e249fe047917e0f695",
+        "transport-edge:086:c594ac9a4650e9b63e7f22e82b296c1f",
+        "transport-edge:086:db044259002e8d6366fd167cf816c590",
+        "transport-edge:086:fda33b7f482e003f08c92fc3e199e62b"
+      ]
+    },
+    {
+      "servicePatternId": "transport-pattern:086:f6320d838a20b5a0f922360c1ba0b53a",
+      "mode": "fixed_guideway",
+      "factId": "osaka-monorail-airport-adjacent-airport-bound",
+      "operatorRef": "大阪モノレール",
+      "callingNodeIds": [
+        "transport-node:086:840f2e7b7e8aa3551d701cb5cbd30ec1",
+        "transport-node:086:84400652d5378c4bf4e82140ba0f0d12"
+      ],
+      "sourceRefs": [
+        "https://www.osaka-monorail.co.jp/upload/timetable/r12_hotarugaike_t2026.pdf"
+      ],
+      "evidenceRefs": [
+        "transport-evidence:086:84327188a37cb5509a12963874977bd2"
+      ],
+      "segmentEdges": [
+        "transport-edge:086:e014d8d846adec440ecaf61b03904184"
+      ]
+    }
+  ],
+  "snapshotScopeId": "TASK086-FULL-ORIGINAL-PHASE173-v2",
+  "decision": "REQUIRED_SPECIAL_APPLICABILITY_REVIEWED_WITH_EXPLICIT_COVERAGE_LIMITS",
+  "reviewedAt": "2026-10-02T18:36:28.993842+00:00",
+  "coverageLimits": [
+    "This is bounded original-scope applicability, not a claim of nationwide ropeway completeness.",
+    "128 special nodes have accepted service calls; 24 only have reviewed public interchange links. Tokyo Monorail ride coverage is not present or claimed.",
+    "Any concrete original-scope airport/tourism access corridor requiring additional special-mode service remains an ordinary required work package."
+  ],
+  "auditSnapshotHashes": {
+    "special-applicability-review-v1.json": "9815e84b9972bb063c8611cc056916879e0575121a642786f903bae702b927fe",
+    "special-required-node-audit-v1.json": "98ee0eba7b65378e9a7c12b5b7fdb91a311cc47060245c89fba7fac023ddb5da",
+    "all-required-preservation-v1.json": "00b0942e4a8e21a15dc5965a2c52fc6ff1a8abeb2fd366895d57ad84e6c0f4d8"
+  }
+}

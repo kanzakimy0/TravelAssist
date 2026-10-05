@@ -1,0 +1,329 @@
+{
+  "phaseId": "096-komatsu-municipal-direct-bus-and-reviewed-p11-gateway",
+  "strategy": [
+    "P11_EXACT_OPERATOR_COMPONENT_CURRENT_MUNICIPAL_SERVICE",
+    "INDEPENDENT_TWO_DIRECTION_DIRECT_TRIPS",
+    "CURRENT_AIRFIELD_AND_SHINKANSEN_PUBLIC_PASSAGES"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "bus:komatsu-city:current-direct-airport-services",
+    "airport:komatsu:current-public-terminal-and-airfield-review",
+    "transfer:komatsu:shinkansen-west-exit-airport-bus"
+  ],
+  "facts": [
+    {
+      "factId": "komatsu-current-direct-bus-outbound",
+      "kind": "service",
+      "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+      "sourceUrl": "https://www.city.komatsu.lg.jp/soshiki/1985/rosenbasu/4/16580.html",
+      "observedResponseSha256": "87d335ab05facaa43e5f8b6af966e4586f60aef6f7a44a7c437c1d12a65daee3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+          "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+          "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+        },
+        {
+          "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+          "url": "https://www.city.komatsu.lg.jp/soshiki/1985/rosenbasu/4/16328.html",
+          "observedResponseSha256": "12433ca0417f753728653991dee09171e7c191e172b2def7bb3e095d8f29d5e6"
+        }
+      ],
+      "locator": "Independently reviewed first published row in the 小松駅→小松空港 columns of the current city December 1 2025 revised table, on a page updated September 11 2026. Current introduction page explicitly states no intermediate stops; 2026 meeting page 57 identifies current operator. Service restarted September 14 and is temporarily manually driven. Retain only two-stop calling relation, not clocks, fare, whole timetable or autonomous-level claim. Opposite direction is independently observed, never inferred from line adjacency.",
+      "line": "小松駅・小松空港直通連絡線",
+      "operator": "北鉄加賀バス（株）",
+      "mode": "airport_bus",
+      "serviceClass": "快速直通便",
+      "direction": "小松駅→小松空港",
+      "callingStations": [
+        "小松駅",
+        "小松空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "小松駅",
+          "operator": "北鉄加賀バス（株）",
+          "line": "p11-stop:P11-22_17:bs3693",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_17:bs3693",
+            "recordSha256": "605ca167b3d2c4806ac26a1193e7277c09df5a7f68b09b7c58cf122a9b699504",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current municipal direct-route notice, explicit no-intermediate-stop description and January 2026 meeting page 57 independently identify Hokutetsu Kaga Bus and these two public endpoints. Match only the exact P11 operator component. Same-name city and Keifuku records are excluded. P11 coordinates represent merged opposite-direction road stops; no precise bay, platform or transfer follows from coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北鉄加賀バス（株）",
+              "currentOperatorName": "北鉄加賀バス株式会社",
+              "currentStopName": "小松駅",
+              "historicalRoute": "空港連絡線",
+              "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+              "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+            }
+          }
+        },
+        {
+          "name": "小松空港",
+          "operator": "北鉄加賀バス（株）",
+          "line": "p11-stop:P11-22_17:bs3685",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_17:bs3685",
+            "recordSha256": "53c95c5761c619b782c3a00b45332487f81dbdda0150c04347844d479bb548ba",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current municipal direct-route notice, explicit no-intermediate-stop description and January 2026 meeting page 57 independently identify Hokutetsu Kaga Bus and these two public endpoints. Match only the exact P11 operator component. Same-name city and Keifuku records are excluded. P11 coordinates represent merged opposite-direction road stops; no precise bay, platform or transfer follows from coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北鉄加賀バス（株）",
+              "currentOperatorName": "北鉄加賀バス株式会社",
+              "currentStopName": "小松空港",
+              "historicalRoute": "空港連絡線",
+              "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+              "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_INDEPENDENT_DIRECTIONAL_TRIP_AND_EXPLICIT_NO_INTERMEDIATE_STOPS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_STATIC_SERVICE_NOT_REALTIME",
+      "purpose": "airport"
+    },
+    {
+      "factId": "komatsu-current-direct-bus-inbound",
+      "kind": "service",
+      "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+      "sourceUrl": "https://www.city.komatsu.lg.jp/soshiki/1985/rosenbasu/4/16580.html",
+      "observedResponseSha256": "87d335ab05facaa43e5f8b6af966e4586f60aef6f7a44a7c437c1d12a65daee3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+          "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+          "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+        },
+        {
+          "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+          "url": "https://www.city.komatsu.lg.jp/soshiki/1985/rosenbasu/4/16328.html",
+          "observedResponseSha256": "12433ca0417f753728653991dee09171e7c191e172b2def7bb3e095d8f29d5e6"
+        }
+      ],
+      "locator": "Independently reviewed first published row in the 小松空港→小松駅 columns of the current city December 1 2025 revised table, on a page updated September 11 2026. Current introduction page explicitly states no intermediate stops; 2026 meeting page 57 identifies current operator. Service restarted September 14 and is temporarily manually driven. Retain only two-stop calling relation, not clocks, fare, whole timetable or autonomous-level claim. Opposite direction is independently observed, never inferred from line adjacency.",
+      "line": "小松駅・小松空港直通連絡線",
+      "operator": "北鉄加賀バス（株）",
+      "mode": "airport_bus",
+      "serviceClass": "快速直通便",
+      "direction": "小松空港→小松駅",
+      "callingStations": [
+        "小松空港",
+        "小松駅"
+      ],
+      "callingComponents": [
+        {
+          "name": "小松空港",
+          "operator": "北鉄加賀バス（株）",
+          "line": "p11-stop:P11-22_17:bs3685",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_17:bs3685",
+            "recordSha256": "53c95c5761c619b782c3a00b45332487f81dbdda0150c04347844d479bb548ba",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current municipal direct-route notice, explicit no-intermediate-stop description and January 2026 meeting page 57 independently identify Hokutetsu Kaga Bus and these two public endpoints. Match only the exact P11 operator component. Same-name city and Keifuku records are excluded. P11 coordinates represent merged opposite-direction road stops; no precise bay, platform or transfer follows from coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北鉄加賀バス（株）",
+              "currentOperatorName": "北鉄加賀バス株式会社",
+              "currentStopName": "小松空港",
+              "historicalRoute": "空港連絡線",
+              "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+              "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+            }
+          }
+        },
+        {
+          "name": "小松駅",
+          "operator": "北鉄加賀バス（株）",
+          "line": "p11-stop:P11-22_17:bs3693",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_17:bs3693",
+            "recordSha256": "605ca167b3d2c4806ac26a1193e7277c09df5a7f68b09b7c58cf122a9b699504",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current municipal direct-route notice, explicit no-intermediate-stop description and January 2026 meeting page 57 independently identify Hokutetsu Kaga Bus and these two public endpoints. Match only the exact P11 operator component. Same-name city and Keifuku records are excluded. P11 coordinates represent merged opposite-direction road stops; no precise bay, platform or transfer follows from coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北鉄加賀バス（株）",
+              "currentOperatorName": "北鉄加賀バス株式会社",
+              "currentStopName": "小松駅",
+              "historicalRoute": "空港連絡線",
+              "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+              "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_INDEPENDENT_DIRECTIONAL_TRIP_AND_EXPLICIT_NO_INTERMEDIATE_STOPS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_STATIC_SERVICE_NOT_REALTIME",
+      "purpose": "airport"
+    },
+    {
+      "factId": "komatsu-airfield-public-terminal-hokutetsu-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:komatsu:current-public-terminal-and-airfield-review",
+      "sourceUrl": "https://www.komatsuairport.jp/access/images/busstop2024.png",
+      "observedResponseSha256": "f80e7fb1b9a945ec58ed2fa8472db13fa3b58ddce50aa3f3a3f59264b39cc545",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+          "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+          "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+        },
+        {
+          "sourceActionId": "airport:komatsu:current-public-terminal-and-airfield-review",
+          "url": "https://www.komatsuairport.jp/about/history.html",
+          "observedResponseSha256": "b76f80cbae608f7cf9795364262ad7db894a59db9e54ecc18de73e8d6e71c743"
+        },
+        {
+          "sourceActionId": "airport:komatsu:current-public-terminal-and-airfield-review",
+          "url": "https://www.komatsuairport.jp/access/bus_kagaonsen.html",
+          "observedResponseSha256": "97a339f38e9f40d098eac4df74c7be1b701ddba3fae4d95e3cf3f8f6834f8734"
+        }
+      ],
+      "locator": "Visually reviewed current official airport bus-stop inset: terminal exit opens to continuous public bus frontage, with Komatsu-station service separately identified at boarding position 3. Bind only the existing Hokutetsu Kaga Bus representative operator-stop component. No proximity-based walking edge, military gate access, bay-coordinate fabrication or walking-time claim.",
+      "components": [
+        {
+          "name": "小松飛行場",
+          "operator": "airport-facility:cf03_00071",
+          "line": "airport:cf03_00071",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00071",
+            "requirementId": "review:official-airport:小松",
+            "expectedRequirementName": "小松",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "currentPassengerAccessReview": "Current airport history explicitly uses the formal Komatsu airfield name for the public civil/military facility; current airport bus map identifies public terminal frontage serving Komatsu station. Reference point is the whole airfield, not the military gate or a precise terminal entrance.",
+            "officialNameEvidence": {
+              "officialName": "小松飛行場",
+              "publicName": "小松空港",
+              "requirementName": "小松",
+              "url": "https://www.komatsuairport.jp/about/history.html",
+              "observedResponseSha256": "b76f80cbae608f7cf9795364262ad7db894a59db9e54ecc18de73e8d6e71c743"
+            }
+          }
+        },
+        {
+          "name": "小松空港",
+          "operator": "北鉄加賀バス（株）",
+          "line": "p11-stop:P11-22_17:bs3685",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_17:bs3685",
+            "recordSha256": "53c95c5761c619b782c3a00b45332487f81dbdda0150c04347844d479bb548ba",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current municipal direct-route notice, explicit no-intermediate-stop description and January 2026 meeting page 57 independently identify Hokutetsu Kaga Bus and these two public endpoints. Match only the exact P11 operator component. Same-name city and Keifuku records are excluded. P11 coordinates represent merged opposite-direction road stops; no precise bay, platform or transfer follows from coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北鉄加賀バス（株）",
+              "currentOperatorName": "北鉄加賀バス株式会社",
+              "currentStopName": "小松空港",
+              "historicalRoute": "空港連絡線",
+              "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+              "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_TERMINAL_MAP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "komatsu-shinkansen-public-concourse-west-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "transfer:komatsu:shinkansen-west-exit-airport-bus",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0541442_1fe72e10-e7c6-46cf-af98-98f9f7cfb446.pdf",
+      "observedResponseSha256": "f68253197c6deb923085ffc262dbec152801d2584cb3cc224c4943568cee32a8",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:komatsu-city:current-direct-airport-services",
+          "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+          "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+        },
+        {
+          "sourceActionId": "transfer:komatsu:shinkansen-west-exit-airport-bus",
+          "url": "https://eki.jr-odekake.net/premises?id=0541442",
+          "observedResponseSha256": "434c0303dee3a1b7c1f272da21e347687d17c0cb131abfa7a3135b846ddead5a"
+        },
+        {
+          "sourceActionId": "transfer:komatsu:shinkansen-west-exit-airport-bus",
+          "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260315-1_heijitsu.pdf",
+          "observedResponseSha256": "43bd086a024de5979c5d4ea96aa10c40e970978ceea293af19a93440747c0d59"
+        }
+      ],
+      "locator": "Visually reviewed JR current linked March 29 2024 station map: Shinkansen gate on ground floor connects through public concourse to west exit and bus frontage. Municipal March 15 2026 guide page 1 separately assigns airport/autonomous service to station boarding position 4. No paid-area direct interchange is implied. Exact S12 Komatsu Shinkansen component and P11 Hokutetsu Kaga Bus stop component only; no conventional railway admission, same-name merge, distance-based transfer, time or accessibility claim.",
+      "components": [
+        {
+          "name": "小松",
+          "operator": "西日本旅客鉄道",
+          "line": "北陸新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "小松駅",
+          "operator": "北鉄加賀バス（株）",
+          "line": "p11-stop:P11-22_17:bs3693",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_17:bs3693",
+            "recordSha256": "605ca167b3d2c4806ac26a1193e7277c09df5a7f68b09b7c58cf122a9b699504",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current municipal direct-route notice, explicit no-intermediate-stop description and January 2026 meeting page 57 independently identify Hokutetsu Kaga Bus and these two public endpoints. Match only the exact P11 operator component. Same-name city and Keifuku records are excluded. P11 coordinates represent merged opposite-direction road stops; no precise bay, platform or transfer follows from coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北鉄加賀バス（株）",
+              "currentOperatorName": "北鉄加賀バス株式会社",
+              "currentStopName": "小松駅",
+              "historicalRoute": "空港連絡線",
+              "url": "https://www.city.komatsu.lg.jp/material/files/group/71/20260121_kaigishiryou.pdf",
+              "observedResponseSha256": "6c63fc878c561e30a7b932b98c5c866260e6711168f62fbde945a8e826bcba58"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_JR_PUBLIC_CONCOURSE_AND_CURRENT_MUNICIPAL_BUS_GUIDE",
+      "hubScopeComplete": false
+    }
+  ]
+}

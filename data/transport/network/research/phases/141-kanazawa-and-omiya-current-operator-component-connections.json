@@ -1,0 +1,120 @@
+{
+  "phaseId": "141-kanazawa-and-omiya-current-operator-component-connections",
+  "strategy": [
+    "CURRENT_OPERATOR_BOUNDARIES_AND_PUBLIC_ENTRANCES",
+    "REMAINING_LOWER_TIER_HUB_CLOSURE",
+    "DOCUMENT_CHECKED_RESTRICTED_ALTERNATIVES"
+  ],
+  "completedActionIds": [
+    "hub:jr-west:kanazawa-current-ir-and-hokutetsu-public-connections",
+    "hub:hankyu:omiya-current-south-exit-randen-public-connection",
+    "hub:jr-kagoshima-city:restricted-facility-source-alternative-review"
+  ],
+  "facts": [
+    {
+      "factId": "kanazawa-current-shinkansen-ir-mezzanine-gate",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:kanazawa-current-ir-and-hokutetsu-public-connections",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0541449_63ed00d6-04bc-429d-a167-98e1b8a124ee.pdf",
+      "observedResponseSha256": "cb903c9983619991eeac93f6a30d8b5f90e1a9045a4f48b19cab01bb8daff4fb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:kanazawa-current-ir-and-hokutetsu-public-connections",
+          "url": "https://eki.jr-odekake.net/premises?id=0541449",
+          "observedResponseSha256": "0aaf4b6c4d427482adee4a7a4504ed2df48838645f11fe6fa2f9fc17f088a695"
+        }
+      ],
+      "locator": "Current three-page plan dated November 28 2024 individually viewed: Shinkansen platforms 11-14 and IR platforms 1-7 join the mezzanine transfer gate, explicitly labeled on both isometric and floor plans. Bind current IR Ishikawa rather than retired JR Hokuriku-line operator identity; no inferred new scheduled service. Minimum physical passenger topology only; no fare, walking duration, all-hours, real-time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "金沢",
+          "operator": "西日本旅客鉄道",
+          "line": "北陸新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "金沢",
+          "operator": "IRいしかわ鉄道",
+          "line": "IRいしかわ鉄道線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_GATES_AND_PUBLIC_OTHER_OPERATOR_ENTRANCES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kanazawa-current-shinkansen-public-east-hokutetsu-entry",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:kanazawa-current-ir-and-hokutetsu-public-connections",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0541449_63ed00d6-04bc-429d-a167-98e1b8a124ee.pdf",
+      "observedResponseSha256": "cb903c9983619991eeac93f6a30d8b5f90e1a9045a4f48b19cab01bb8daff4fb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:kanazawa-current-ir-and-hokutetsu-public-connections",
+          "url": "https://eki.jr-odekake.net/premises?id=0541449",
+          "observedResponseSha256": "0aaf4b6c4d427482adee4a7a4504ed2df48838645f11fe6fa2f9fc17f088a695"
+        }
+      ],
+      "locator": "Current three-page plan shows Shinkansen platforms/gate to ground public concourse at Kenrokuen east exit and explicitly labeled downward entrance toward Hokutetsu Kanazawa. Current station page separately recognizes Hokutetsu as transfer railway. Use public approach without routing through Rinto or Anto retail facilities; no distance-only or same-name merge. Minimum physical passenger topology only; no fare, walking duration, all-hours, real-time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "金沢",
+          "operator": "西日本旅客鉄道",
+          "line": "北陸新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "北鉄金沢",
+          "operator": "北陸鉄道",
+          "line": "浅野川線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_GATES_AND_PUBLIC_OTHER_OPERATOR_ENTRANCES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "omiya-current-east-gate-south-two-b-randen-approach",
+      "kind": "transfer",
+      "sourceActionId": "hub:hankyu:omiya-current-south-exit-randen-public-connection",
+      "sourceUrl": "https://www.hankyu.co.jp/station/map/img/omiya.svg",
+      "observedResponseSha256": "ed236c001edc608a86819876d494f0e8ddeb2ebf324bffd5f9e6831800a7a2a1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:hankyu:omiya-current-south-exit-randen-public-connection",
+          "url": "https://www.hankyu.co.jp/station/omiya.html",
+          "observedResponseSha256": "417f4a7a70100191a03311fc0ee340760fac69acc18be8d6286df45f66455f0b"
+        }
+      ],
+      "locator": "Current-linked SVG individually inspected on white: both Kyoto platforms join east gate and south exit 2B explicitly signed toward Keifuku boarding area. Current station transfer section links Keifuku Shijo-Omiya independently. Exclude the limited-hours west gate; no invented underground paid through-connection or Saitama Omiya identity. Minimum physical passenger topology only; no fare, walking duration, all-hours, real-time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "大宮",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "四条大宮",
+          "operator": "京福電気鉄道",
+          "line": "嵐山本線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_GATES_AND_PUBLIC_OTHER_OPERATOR_ENTRANCES",
+      "hubScopeComplete": false
+    }
+  ]
+}

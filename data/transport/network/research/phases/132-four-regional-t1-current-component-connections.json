@@ -1,0 +1,201 @@
+{
+  "phaseId": "132-four-regional-t1-current-component-connections",
+  "strategy": [
+    "T1_REMAINING_COMPONENT_PRIORITY",
+    "CURRENT_RELOCATED_HIROSHIMA_TRAM_STATION",
+    "REAL_PASSENGER_PASSAGES_WITHOUT_SERVICE_INFERENCE"
+  ],
+  "completedActionIds": [
+    "hub:sendai:aobadori-current-senseki-transfer-gate",
+    "hub:sendai-city:r8-aobadori-current-transfer-guide",
+    "hub:fukuoka:meinohama-current-two-operator-platforms",
+    "hub:hiroden:hiroshima-2026-current-elevated-jr-connection",
+    "hub:jr-west:hiroshima-and-kobe-current-public-subway-tram-connections"
+  ],
+  "facts": [
+    {
+      "factId": "sendai-aobadori-current-reviewed-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:sendai-city:r8-aobadori-current-transfer-guide",
+      "sourceUrl": "https://www.city.sendai.jp/kokyo/kurashi/machi/kotsu/annai/documents/noritsugi_r8_small.pdf",
+      "observedResponseSha256": "b7087122a2b4e1804633ae18d606211125ca8f2664960b1471a59ee7b2c13a00",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:sendai-city:r8-aobadori-current-transfer-guide",
+          "url": "https://www.city.sendai.jp/kokyo/kurashi/machi/kotsu/annai/noritsugi.html",
+          "observedResponseSha256": "eeebf1e6d5904d9897a5d74ff1978821e1b88cbd7674c0588583a2efde57f6a3"
+        },
+        {
+          "sourceActionId": "hub:sendai:aobadori-current-senseki-transfer-gate",
+          "url": "https://www.kotsu.city.sendai.jp/subway/station/list/sendai-ew/",
+          "observedResponseSha256": "82052bee057edbc0fdc8ed8cdfd709d1638249fb0f9152fbfd89cffb7640191c"
+        },
+        {
+          "sourceActionId": "hub:sendai:aobadori-current-senseki-transfer-gate",
+          "url": "https://www.kotsu.city.sendai.jp/wp-content/uploads/2026/08/T07_sendaieki_26.pdf",
+          "observedResponseSha256": "777a70b4752a1b3d417bc39b96c39142a6da45c5dabe884cdba05196f5b0a690"
+        }
+      ],
+      "locator": "R8 city guide page 7 explicitly marks Aoba-dori JR Senseki transfer gate from subway Sendai platforms. Current August 2026 operator diagram independently confirms the same connection; preserve distinct JR Aoba-dori and JR Sendai identities and exclude closed North 5 exit. Cited diagrams individually viewed and hash-matched. Coarse bidirectional passenger relation only; no fare, timing or universal accessibility claim.",
+      "components": [
+        {
+          "name": "仙台",
+          "operator": "仙台市",
+          "line": "南北線",
+          "mode": "metro"
+        },
+        {
+          "name": "あおば通",
+          "operator": "東日本旅客鉄道",
+          "line": "仙石線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_COMPONENTS_AND_PRIMARY_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "meinohama-jr-metro-current-reviewed-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:fukuoka:meinohama-current-two-operator-platforms",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_meinohama.jpg",
+      "observedResponseSha256": "fbe881eab2bb0ef7e2e762cb75b423b52d345e74965ebe5d5bb5ac1ed3b0121f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:fukuoka:meinohama-current-two-operator-platforms",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/meinohama.php?lan=ja",
+          "observedResponseSha256": "05e54730ca2222fb88a36b8b63ec4d0d5349bf94155c209e7fb8ae6c3c8050a9"
+        }
+      ],
+      "locator": "Current municipal station JPEG shows both direction platform islands joined by common stairs/concourse: Tenjin/municipal Airport Line and Karatsu/Shimoyamato JR Chikuhi Line. Retain separate operator components with physical passenger interchange; no through service or train-change requirement inferred. Missing PDF was not used. Cited diagrams individually viewed and hash-matched. Coarse bidirectional passenger relation only; no fare, timing or universal accessibility claim.",
+      "components": [
+        {
+          "name": "姪浜",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "姪浜",
+          "operator": "九州旅客鉄道",
+          "line": "筑肥線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_COMPONENTS_AND_PRIMARY_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hiroshima-jr-tram-current-reviewed-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:hiroden:hiroshima-2026-current-elevated-jr-connection",
+      "sourceUrl": "https://www.hiroden.co.jp/topics/2026/images/0328-hiroshimast/platform.png",
+      "observedResponseSha256": "6ecd3c73ef7f9ef19ecd9fced326741a181464db4c50b9f8dd2d036a0b8f53f2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:hiroden:hiroshima-2026-current-elevated-jr-connection",
+          "url": "https://www.hiroden.co.jp/topics/2026/0328-hiroshimast.html",
+          "observedResponseSha256": "633b54bb012a4aa532963efd12d0a1b80e906961ae29e0e9cc401a695fc0ce43"
+        },
+        {
+          "sourceActionId": "hub:jr-west:hiroshima-and-kobe-current-public-subway-tram-connections",
+          "url": "https://eki.jr-odekake.net/premises?id=0800613",
+          "observedResponseSha256": "6700092f920ed5ca8044fe44f45145e7135d74d23257c2bfa2b8a874011a99c5"
+        },
+        {
+          "sourceActionId": "hub:jr-west:hiroshima-and-kobe-current-public-subway-tram-connections",
+          "url": "https://eki.jr-odekake.net/premises/0800613_ce85ad2f-c739-41ba-b9f6-bc09a8c9e3b9.pdf",
+          "observedResponseSha256": "f2669eda119fc02b1f1de86096ba05e1b35c55f224c8b4b2b60f4b8136a942cc"
+        }
+      ],
+      "locator": "Current March 28 2026 operator diagram explicitly joins JR Hiroshima central gate public 2F concourse to distinct tram boarding and alighting platforms. Current June 5 2026 JR diagram corroborates city-tram direction from central gate. Use post-August-2025 elevated station relation; historical licensed station geometry is identity provenance, not a current platform coordinate assertion. Cited diagrams individually viewed and hash-matched. Coarse bidirectional passenger relation only; no fare, timing or universal accessibility claim.",
+      "components": [
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "広島駅",
+          "operator": "広島電鉄",
+          "line": "本線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_COMPONENTS_AND_PRIMARY_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kobe-harborland-current-reviewed-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:hiroshima-and-kobe-current-public-subway-tram-connections",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0610145_c0d5c319-999b-4571-8c6b-a3347cd70036.pdf",
+      "observedResponseSha256": "5bf30ba3457c3d408d41d72a598eb22bd6defe954302a402a5fb494585857e0f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:hiroshima-and-kobe-current-public-subway-tram-connections",
+          "url": "https://eki.jr-odekake.net/premises?id=0610145",
+          "observedResponseSha256": "d07e6ae547902b9af9c971dfa1469c632a6412fb3b5eaf45be1423c1a45c01da"
+        }
+      ],
+      "locator": "Current-linked February 4 2025 JR Kobe diagram shows platform stairs to central gate and public south concourse with stairs explicitly labeled municipal Harborland subway. Exclude station shops and unavailable municipal challenge response; retain distinct named operator components. Cited diagrams individually viewed and hash-matched. Coarse bidirectional passenger relation only; no fare, timing or universal accessibility claim.",
+      "components": [
+        {
+          "name": "神戸",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "ハーバーランド",
+          "operator": "神戸市",
+          "line": "海岸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_COMPONENTS_AND_PRIMARY_PUBLIC_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

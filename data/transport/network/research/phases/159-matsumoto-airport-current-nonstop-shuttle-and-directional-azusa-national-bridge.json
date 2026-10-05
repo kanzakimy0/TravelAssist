@@ -1,0 +1,565 @@
+{
+  "phaseId": "159-matsumoto-airport-current-nonstop-shuttle-and-directional-azusa-national-bridge",
+  "strategy": [
+    "EXACT_P11_OPERATOR_STOP_AND_CURRENT_NONSTOP_SHUTTLE",
+    "CURRENT_ACTUAL_DIRECTIONAL_AZUSA_CALLS_WITH_OPERATING_DAY_REVIEW",
+    "EXACT_S12_THROUGH_TRAIN_LINE_COMPONENTS",
+    "CURRENT_PREFECTURAL_AIRPORT_PUBLIC_ACCESS",
+    "EXPLICIT_CARRIER_JR_PUBLIC_EXIT_CROSSWALK_TERMINAL"
+  ],
+  "completedActionIds": [
+    "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+    "hub:alpico:current-matsumoto-public-gate-crosswalk-terminal-eight",
+    "airport:nagano-prefecture:current-matsumoto-arrival-lobby-shuttle-frontage",
+    "rail:jr-east:current-azusa-directional-matsumoto-national-bridge"
+  ],
+  "facts": [
+    {
+      "factId": "alpico-matsumoto-airport-current-airport-bound-actual-nonstop-trip",
+      "kind": "service",
+      "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+      "sourceUrl": "https://www.alpico.co.jp/traffic/datas/files/2026/03/03/1d5662c43a6cc2e8fed13816840d1857f4392a4f.pdf",
+      "observedResponseSha256": "4c1e2ba544b3720ff059ae4c2fafb97c663347156484e0d20b1bb147f30fa719",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+          "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+        },
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/station/airport/",
+          "observedResponseSha256": "aa4c39c55efb8376ee6db9c9ae6a1307588a5be94da814ac205e3859d299088e"
+        }
+      ],
+      "locator": "Individually viewed first actual daily column in each direction of March 29-October 24 2026 PDF. Each complete direct trip has exactly two calls; source explicitly includes every stop. Exclude separately marked summer-only flight/bus columns. Current carrier distinguishes terminal bay 8 direct shuttle from local all-stop airport line bay 5. Retain only ordered calls; no reversed inference, clocks, fares, frequency, copied table or guaranteed flight connection.",
+      "line": "松本空港エアポートシャトル",
+      "operator": "アルピコ交通株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "エアポートシャトル",
+      "direction": "airport-bound",
+      "callingStations": [
+        "松本バスターミナル",
+        "信州まつもと空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "松本バスターミナル",
+          "operator": "アルピコ交通（株）",
+          "line": "p11-stop:P11-22_20:bs4683",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_20:bs4683",
+            "recordSha256": "b1d6d0538dee04cff0a9f0a7eca4e66b81c124b19047a74527e661a0f44aa97b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed P11 same-operator road-stop representative independently matched to current Alpico direct airport shuttle. Preserve historical direct-shuttle route context and independently verified current endpoint service. Exclude municipal, Chikuma, airport-entrance and station-front stops; do not promote representative coordinates to exact platform, doorway or crossing geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "アルピコ交通（株）",
+              "currentOperatorName": "アルピコ交通株式会社",
+              "currentStopName": "松本バスターミナル",
+              "historicalRoute": "【直行】エアポートシャトル",
+              "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+              "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+            }
+          }
+        },
+        {
+          "name": "信州まつもと空港",
+          "operator": "アルピコ交通（株）",
+          "line": "p11-stop:P11-22_20:bs5200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_20:bs5200",
+            "recordSha256": "714a192c2583580fef52725f97481fe695aa2bbefa6c26ae30fe4006ae8c6531",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed P11 same-operator road-stop representative independently matched to current Alpico direct airport shuttle. Preserve historical direct-shuttle route context and independently verified current endpoint service. Exclude municipal, Chikuma, airport-entrance and station-front stops; do not promote representative coordinates to exact platform, doorway or crossing geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "アルピコ交通（株）",
+              "currentOperatorName": "アルピコ交通株式会社",
+              "currentStopName": "信州まつもと空港",
+              "historicalRoute": "【直行】エアポートシャトル",
+              "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+              "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_DIRECTIONAL_ACTUAL_NONSTOP_TRIPS_AND_EXACT_OPERATOR_P11_CONTEXT",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_29_OCTOBER_24_2026_DAILY_COLUMN_EXCLUDING_SEPARATE_SUMMER_ONLY_COLUMNS_NOT_REALTIME"
+    },
+    {
+      "factId": "alpico-matsumoto-airport-current-terminal-bound-actual-nonstop-trip",
+      "kind": "service",
+      "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+      "sourceUrl": "https://www.alpico.co.jp/traffic/datas/files/2026/03/03/1d5662c43a6cc2e8fed13816840d1857f4392a4f.pdf",
+      "observedResponseSha256": "4c1e2ba544b3720ff059ae4c2fafb97c663347156484e0d20b1bb147f30fa719",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+          "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+        },
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/station/airport/",
+          "observedResponseSha256": "aa4c39c55efb8376ee6db9c9ae6a1307588a5be94da814ac205e3859d299088e"
+        }
+      ],
+      "locator": "Individually viewed first actual daily column in each direction of March 29-October 24 2026 PDF. Each complete direct trip has exactly two calls; source explicitly includes every stop. Exclude separately marked summer-only flight/bus columns. Current carrier distinguishes terminal bay 8 direct shuttle from local all-stop airport line bay 5. Retain only ordered calls; no reversed inference, clocks, fares, frequency, copied table or guaranteed flight connection.",
+      "line": "松本空港エアポートシャトル",
+      "operator": "アルピコ交通株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "エアポートシャトル",
+      "direction": "terminal-bound",
+      "callingStations": [
+        "信州まつもと空港",
+        "松本バスターミナル"
+      ],
+      "callingComponents": [
+        {
+          "name": "信州まつもと空港",
+          "operator": "アルピコ交通（株）",
+          "line": "p11-stop:P11-22_20:bs5200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_20:bs5200",
+            "recordSha256": "714a192c2583580fef52725f97481fe695aa2bbefa6c26ae30fe4006ae8c6531",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed P11 same-operator road-stop representative independently matched to current Alpico direct airport shuttle. Preserve historical direct-shuttle route context and independently verified current endpoint service. Exclude municipal, Chikuma, airport-entrance and station-front stops; do not promote representative coordinates to exact platform, doorway or crossing geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "アルピコ交通（株）",
+              "currentOperatorName": "アルピコ交通株式会社",
+              "currentStopName": "信州まつもと空港",
+              "historicalRoute": "【直行】エアポートシャトル",
+              "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+              "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+            }
+          }
+        },
+        {
+          "name": "松本バスターミナル",
+          "operator": "アルピコ交通（株）",
+          "line": "p11-stop:P11-22_20:bs4683",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_20:bs4683",
+            "recordSha256": "b1d6d0538dee04cff0a9f0a7eca4e66b81c124b19047a74527e661a0f44aa97b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed P11 same-operator road-stop representative independently matched to current Alpico direct airport shuttle. Preserve historical direct-shuttle route context and independently verified current endpoint service. Exclude municipal, Chikuma, airport-entrance and station-front stops; do not promote representative coordinates to exact platform, doorway or crossing geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "アルピコ交通（株）",
+              "currentOperatorName": "アルピコ交通株式会社",
+              "currentStopName": "松本バスターミナル",
+              "historicalRoute": "【直行】エアポートシャトル",
+              "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+              "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_DIRECTIONAL_ACTUAL_NONSTOP_TRIPS_AND_EXACT_OPERATOR_P11_CONTEXT",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_29_OCTOBER_24_2026_DAILY_COLUMN_EXCLUDING_SEPARATE_SUMMER_ONLY_COLUMNS_NOT_REALTIME"
+    },
+    {
+      "factId": "jr-east-azusa-current-matsumoto-bound-actual-1m",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:current-azusa-directional-matsumoto-national-bridge",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/005/008041.html",
+      "observedResponseSha256": "b86839567b5c38369bd19bc9e72f1e5f6b2bc323863cc488a7de414432e8cb64",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:current-azusa-directional-matsumoto-national-bridge",
+          "url": "https://timetables.jreast.co.jp/announce.js",
+          "observedResponseSha256": "d73d49917ed2523239fefb58a216bebd07954bca072ec59612b2fe52dfdf19e8"
+        }
+      ],
+      "locator": "Actual Azusa 1 (1M), full twelve-call train Shinjuku to Matsumoto; selected page 008041 calendar explicitly marks October 1 as operating. Different timing variant 008042 is excluded. Independent directional station-call extraction excludes pass-through symbols, blank cells, Tatsuno alternative branch and neighbouring columns. Downbound calls Otsuki; return instead calls Shimosuwa and Fujimi. Matsumoto uses licensed S12 Shinonoi-line identity; Shiojiri and other calls use Chuo-line components. Same actual through train crosses line boundary without invented interchange. No clocks, calendar dataset, artwork, fares, frequency, seat information or union/reversal of optional calls retained.",
+      "line": "中央線・篠ノ井線",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "purpose": "national_backbone",
+      "serviceClass": "特急あずさ",
+      "direction": "matsumoto-bound",
+      "callingStations": [
+        "新宿",
+        "立川",
+        "八王子",
+        "大月",
+        "甲府",
+        "韮崎",
+        "小淵沢",
+        "茅野",
+        "上諏訪",
+        "岡谷",
+        "塩尻",
+        "松本"
+      ],
+      "callingComponents": [
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "立川",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八王子",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大月",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "甲府",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "韮崎",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小淵沢",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "茅野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上諏訪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岡谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "塩尻",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松本",
+          "operator": "東日本旅客鉄道",
+          "line": "篠ノ井線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_DATE_VALID_ACTUAL_TRAIN_CALLS_AND_EXACT_S12_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_OCTOBER_1_OPERATING_DAY_ACTUAL_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "jr-east-azusa-current-shinjuku-bound-actual-5004m",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:current-azusa-directional-matsumoto-national-bridge",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/timetable-v/223u1.html",
+      "observedResponseSha256": "08e4b3629653cb060109562b88ec544a2a5ab1423a2d347df53bfc928f5048b2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:current-azusa-directional-matsumoto-national-bridge",
+          "url": "https://timetables.jreast.co.jp/announce.js",
+          "observedResponseSha256": "d73d49917ed2523239fefb58a216bebd07954bca072ec59612b2fe52dfdf19e8"
+        }
+      ],
+      "locator": "Independent weekday actual Azusa 4 (5004M), first table 201 columns, zero-based column 29. Weekday operation and empty additional operation notes; select contiguous thirteen-call Matsumoto-to-Shinjuku section and omit onward Tokyo without asserting complete train route. Weekend-only individual page 063751 is excluded. Independent directional station-call extraction excludes pass-through symbols, blank cells, Tatsuno alternative branch and neighbouring columns. Downbound calls Otsuki; return instead calls Shimosuwa and Fujimi. Matsumoto uses licensed S12 Shinonoi-line identity; Shiojiri and other calls use Chuo-line components. Same actual through train crosses line boundary without invented interchange. No clocks, calendar dataset, artwork, fares, frequency, seat information or union/reversal of optional calls retained.",
+      "line": "中央線・篠ノ井線",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "purpose": "national_backbone",
+      "serviceClass": "特急あずさ",
+      "direction": "shinjuku-bound",
+      "callingStations": [
+        "松本",
+        "塩尻",
+        "岡谷",
+        "下諏訪",
+        "上諏訪",
+        "茅野",
+        "富士見",
+        "小淵沢",
+        "韮崎",
+        "甲府",
+        "八王子",
+        "立川",
+        "新宿"
+      ],
+      "callingComponents": [
+        {
+          "name": "松本",
+          "operator": "東日本旅客鉄道",
+          "line": "篠ノ井線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "塩尻",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岡谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下諏訪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上諏訪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "茅野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "富士見",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小淵沢",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "韮崎",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "甲府",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八王子",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "立川",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_DATE_VALID_ACTUAL_TRAIN_CALLS_AND_EXACT_S12_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_OCTOBER_1_OPERATING_DAY_ACTUAL_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "matsumoto-airport-current-public-arrival-lobby-to-direct-shuttle-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:nagano-prefecture:current-matsumoto-arrival-lobby-shuttle-frontage",
+      "sourceUrl": "https://www.pref.nagano.lg.jp/airport/kurashi/kotsu/kuko/matsumoto/documents/03291024.pdf",
+      "observedResponseSha256": "cae049ef5742b5926d535305f5a1c8e7a40b4c63e4ddf155f184f733b36aa265",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:nagano-prefecture:current-matsumoto-arrival-lobby-shuttle-frontage",
+          "url": "https://www.pref.nagano.lg.jp/airport/kurashi/kotsu/kuko/matsumoto/bus.html",
+          "observedResponseSha256": "1b6e7b3864d65ba44a36ac67763c41c4bf45f03be4f392623c00288b768982a4"
+        },
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+          "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+        },
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/station/airport/",
+          "observedResponseSha256": "aa4c39c55efb8376ee6db9c9ae6a1307588a5be94da814ac205e3859d299088e"
+        }
+      ],
+      "locator": "Current prefectural airport access page updated May 11 2026 links March 29-October 24 2026 brochure, independently viewed. Explicit passenger instructions and lobby diagram connect public arrival-lobby doors to direct shuttle stop at terminal frontage; carrier current guide independently confirms continuing shuttle service and airport bay 1. Retain coarse public airport-to-exact-operator road-stop relation, not copied diagram, detailed geometry, universal accessibility, clock or guaranteed flight connection. Old searched airportbus.pdf is 404 and supplies no fact. Government attachment URL is internal evidence provenance only; no public embedded deep link or broad raw reuse permission asserted.",
+      "components": [
+        {
+          "name": "松本空港",
+          "operator": "airport-facility:cf03_00068",
+          "line": "airport:cf03_00068",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00068",
+            "requirementId": "review:transport-node:15b146de-08df-5dd9-ace7-877cc110be9d",
+            "expectedRequirementName": "松本",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current prefectural airport access page updated May 11 2026 links March 29-October 24 2026 brochure, independently viewed. Explicit passenger instructions and lobby diagram connect public arrival-lobby doors to direct shuttle stop at terminal frontage; carrier current guide independently confirms continuing shuttle service and airport bay 1. Retain coarse public airport-to-exact-operator road-stop relation, not copied diagram, detailed geometry, universal accessibility, clock or guaranteed flight connection. Old searched airportbus.pdf is 404 and supplies no fact."
+          }
+        },
+        {
+          "name": "信州まつもと空港",
+          "operator": "アルピコ交通（株）",
+          "line": "p11-stop:P11-22_20:bs5200",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_20:bs5200",
+            "recordSha256": "714a192c2583580fef52725f97481fe695aa2bbefa6c26ae30fe4006ae8c6531",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed P11 same-operator road-stop representative independently matched to current Alpico direct airport shuttle. Preserve historical direct-shuttle route context and independently verified current endpoint service. Exclude municipal, Chikuma, airport-entrance and station-front stops; do not promote representative coordinates to exact platform, doorway or crossing geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "アルピコ交通（株）",
+              "currentOperatorName": "アルピコ交通株式会社",
+              "currentStopName": "信州まつもと空港",
+              "historicalRoute": "【直行】エアポートシャトル",
+              "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+              "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PREFECTURAL_PUBLIC_ARRIVAL_ACCESS_AND_CURRENT_CARRIER_SHUTTLE_STOP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "matsumoto-jr-east-public-oshiroguchi-crosswalk-to-airport-shuttle-terminal",
+      "kind": "transfer",
+      "sourceActionId": "hub:alpico:current-matsumoto-public-gate-crosswalk-terminal-eight",
+      "sourceUrl": "https://www.alpico.co.jp/traffic/station/matsumoto_sta/",
+      "observedResponseSha256": "62d9c95797e5d421f5f823511af1d3c384e7626ee5e16223fbc0f80be343e709",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:alpico:current-matsumoto-public-gate-crosswalk-terminal-eight",
+          "url": "https://www.alpico.co.jp/traffic/datas/cache/images/2026/01/13/1200x1200_ea1e9d427fb5664c32c517a73e421e58_42465e5cc44452b2c0f8135d48f6568e9d365b4c.png",
+          "observedResponseSha256": "274bbada40775411c73b076d5ee3ca13eadfc85dcbca61cef1b19005b5e323dd"
+        },
+        {
+          "sourceActionId": "hub:alpico:current-matsumoto-public-gate-crosswalk-terminal-eight",
+          "url": "https://www.alpico.co.jp/traffic/datas/cache/images/2026/01/13/1200x1200_ea1e9d427fb5664c32c517a73e421e58_8737f9e724bbe2cd4eb5b39d2a7a5188d46e483f.png",
+          "observedResponseSha256": "835947975d17db433ba0e63ca6f21c37c0b92e537c84d65580d223528f7dec7f"
+        },
+        {
+          "sourceActionId": "bus:alpico:current-matsumoto-airport-independent-nonstop-trips",
+          "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+          "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+        },
+        {
+          "sourceActionId": "rail:jr-east:current-azusa-directional-matsumoto-national-bridge",
+          "url": "https://timetables.jreast.co.jp/2610/train/005/008041.html",
+          "observedResponseSha256": "b86839567b5c38369bd19bc9e72f1e5f6b2bc323863cc488a7de414432e8cb64"
+        },
+        {
+          "sourceActionId": "rail:jr-east:current-azusa-directional-matsumoto-national-bridge",
+          "url": "https://timetables.jreast.co.jp/2610/timetable-v/223u1.html",
+          "observedResponseSha256": "08e4b3629653cb060109562b88ec544a2a5ab1423a2d347df53bfc928f5048b2"
+        }
+      ],
+      "locator": "Current carrier station guide explicitly describes JR Matsumoto gate, public stairs/escalator, road crosswalk and Matsumoto bus terminal; separately identifies nearer station-front stops. Independently viewed January 2026 maps confirm Oshiro-guchi (お城口, Castle east exit) public road crossings to Alpico Plaza first-floor terminal and internal public access to direct airport shuttle bay 8. Bind exact S12 JR East Shinonoi-line Matsumoto component to exact single-operator P11 bus terminal representative. Preserve coarse bidirectional public walk; no platform-equivalence, station-front substitution, copied diagram, precise path coordinates, walking duration or universal step-free claim.",
+      "components": [
+        {
+          "name": "松本",
+          "operator": "東日本旅客鉄道",
+          "line": "篠ノ井線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松本バスターミナル",
+          "operator": "アルピコ交通（株）",
+          "line": "p11-stop:P11-22_20:bs4683",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_20:bs4683",
+            "recordSha256": "b1d6d0538dee04cff0a9f0a7eca4e66b81c124b19047a74527e661a0f44aa97b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed P11 same-operator road-stop representative independently matched to current Alpico direct airport shuttle. Preserve historical direct-shuttle route context and independently verified current endpoint service. Exclude municipal, Chikuma, airport-entrance and station-front stops; do not promote representative coordinates to exact platform, doorway or crossing geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "アルピコ交通（株）",
+              "currentOperatorName": "アルピコ交通株式会社",
+              "currentStopName": "松本バスターミナル",
+              "historicalRoute": "【直行】エアポートシャトル",
+              "url": "https://www.alpico.co.jp/traffic/local/matsumoto/airport_shuttle/",
+              "observedResponseSha256": "2e8d4051842828942b7f530511569341758331b04d63af5f172715afabd9d200"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CARRIER_JR_GATE_PUBLIC_CROSSWALK_TERMINAL_GUIDE_AND_CURRENT_SHUTTLE",
+      "hubScopeComplete": false
+    }
+  ]
+}

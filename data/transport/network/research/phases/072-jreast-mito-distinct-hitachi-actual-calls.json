@@ -1,0 +1,241 @@
+{
+  "phaseId": "072-jreast-mito-distinct-hitachi-actual-calls",
+  "strategy": [
+    "ACTUAL_JR_EAST_TRAIN_COLUMNS",
+    "T1_MITO_REQUIRED_RAIL_CLOSURE",
+    "conventional_rail"
+  ],
+  "completedActionIds": [
+    "rail:jreast:mito-hitachi-actual-trips"
+  ],
+  "facts": [
+    {
+      "factId": "jreast-hitachi-1-actual-calls",
+      "sourceActionId": "rail:jreast:mito-hitachi-actual-trips",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/045/047841.html",
+      "line": "常磐線・ひたち",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "ひたち",
+      "serviceNumber": "1",
+      "direction": "outbound",
+      "reviewedColumnIndex": 0,
+      "reviewedTableColumns": 1,
+      "kind": "service",
+      "callingStations": [
+        "品川",
+        "東京",
+        "上野",
+        "土浦",
+        "水戸",
+        "勝田",
+        "日立",
+        "高萩",
+        "勿来",
+        "泉",
+        "湯本",
+        "いわき"
+      ],
+      "observedResponseSha256": "cdb1a75514d6fc9d1b7f05be6d2befb5eb8a35cbcf493a13dc5f9eef3d3904ef",
+      "locator": "Actual train table column 1/1; ひたち 1; explicit call rows only, no blank-cell inheritance; October 1 weekday calendar independently reviewed; opposite direction is a separately parsed actual train, not reversed or unioned calls.",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "品川",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上野",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "土浦",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "水戸",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "勝田",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "日立",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高萩",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "勿来",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "泉",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "湯本",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "いわき",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "jreast-hitachi-2-actual-calls",
+      "sourceActionId": "rail:jreast:mito-hitachi-actual-trips",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/045/048451.html",
+      "line": "常磐線・ひたち",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "ひたち",
+      "serviceNumber": "2",
+      "direction": "inbound",
+      "reviewedColumnIndex": 0,
+      "reviewedTableColumns": 1,
+      "kind": "service",
+      "callingStations": [
+        "いわき",
+        "湯本",
+        "泉",
+        "勿来",
+        "磯原",
+        "高萩",
+        "日立",
+        "常陸多賀",
+        "勝田",
+        "水戸",
+        "土浦",
+        "上野",
+        "東京",
+        "品川"
+      ],
+      "observedResponseSha256": "be8b9b0b2605f65103ba7333b7166e4825b2976fb9705ddef0d33ee944120c84",
+      "locator": "Actual train table column 1/1; ひたち 2; explicit call rows only, no blank-cell inheritance; October 1 weekday calendar independently reviewed; opposite direction is a separately parsed actual train, not reversed or unioned calls.",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "いわき",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "湯本",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "泉",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "勿来",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "磯原",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高萩",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "日立",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "常陸多賀",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "勝田",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "水戸",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "土浦",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上野",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "品川",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ]
+    }
+  ]
+}

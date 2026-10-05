@@ -1,0 +1,1668 @@
+{
+  "phaseId": "152-wakkanai-current-directional-airport-all-stop-service-and-public-jr-gateway",
+  "strategy": [
+    "EXACT_P11_SAME_OPERATOR_ROAD_STOPS",
+    "CURRENT_ACTUAL_TRIPS_WITH_EXPLICIT_ALL_STOPS_RULE",
+    "INDEPENDENT_ASYMMETRIC_DIRECTIONAL_MAPS",
+    "CURRENT_PUBLIC_TERMINAL_AND_JR_CONNECTIONS"
+  ],
+  "completedActionIds": [
+    "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+    "airport:wakkanai:current-carrier-and-public-passenger-facility",
+    "hub:north-hokkaido-dmo:current-wakkanai-jr-connected-bus-terminal"
+  ],
+  "facts": [
+    {
+      "factId": "soya-wakkanai-current-airport-bound-actual-all-stop-trip",
+      "kind": "service",
+      "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+      "sourceUrl": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/airport/Airport_2026_0329-1024.pdf",
+      "observedResponseSha256": "cbf9debb99344b0d66df5513b5989e5bb5a7e8fb012849dd5a7a2cdc34af9812",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/airport",
+          "observedResponseSha256": "3aec562222b124e26d2ceadc4c295d89879993afb5185e8684fd54cafa9a1f5d"
+        },
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+          "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+        },
+        {
+          "sourceActionId": "airport:wakkanai:current-carrier-and-public-passenger-facility",
+          "url": "https://www.hokkaido-airports.com/ja/wakkanai/access/",
+          "observedResponseSha256": "8d4c49c13320ea9e03d9bb2809ec0d8adea0003142f89cf2abed3cf70de01f3e"
+        }
+      ],
+      "locator": "Individually viewed current March 29-October 24 2026 directional actual table column 2, excluding expired seasonal column 3. Explicit all-stops-on-route rule expands omitted minor stops using independently reviewed full directional map page 1 currently linked by carrier, dated December 2022; 2026 schematic corroborates same direction-specific route and return-only Minato 1-chome. Retain 25 ordered calls with exact P11 road-stop IDs; no reverse inference, omitted-stop express, clocks, fares, route artwork, promised flight/train/ferry connection or daily realtime guarantee.",
+      "line": "稚内空港連絡バス",
+      "operator": "宗谷バス株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港連絡バス",
+      "direction": "airport-bound",
+      "callingStations": [
+        "稚内フェリーターミナル",
+        "サフィールホテル前",
+        "稚内駅前ターミナル",
+        "中央三丁目",
+        "中央四丁目",
+        "中央五丁目",
+        "港二丁目",
+        "港三丁目",
+        "鈴蘭幼稚園前",
+        "港四丁目",
+        "南駅前",
+        "大黒三丁目",
+        "大黒五丁目",
+        "潮見一丁目",
+        "潮見三丁目",
+        "潮見五丁目",
+        "はまなす一丁目",
+        "はまなす団地",
+        "はまなす三丁目",
+        "はまなす四丁目",
+        "はまなす五丁目",
+        "声問一丁目",
+        "声問局前",
+        "声問ふれあい橋",
+        "稚内空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "稚内フェリーターミナル",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs60",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs60",
+            "recordSha256": "757e4265080d7d864d824c0a38593a7b4901a65bde096919611763e6aa4e3bbb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内フェリーターミナル",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "サフィールホテル前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs54",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs54",
+            "recordSha256": "e54ac489adfeec8db56db14b01d71ad31d7b080c1e6c4c012a8d0feb6f47d73b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "サフィールホテル前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "稚内駅前ターミナル",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs56",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs56",
+            "recordSha256": "42fc55cac63934fab0fdac9a5fda2091d0b3efadc8b0a27683fcc89318b92405",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内駅前ターミナル",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "中央三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs59",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs59",
+            "recordSha256": "0dae5efb5b0c217828b78ad319140e5425aef5e30299f14516eef056047fe7fb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "中央三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "中央四丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs64",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs64",
+            "recordSha256": "1965e4b3d3bce604338b4eb7b6e29a6b7d415ecf57395de28b11cd96e32f14d2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "中央四丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "中央五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs65",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs65",
+            "recordSha256": "fe36b0037159da37caae31b00d4e4a05aec1a6f2c7494316b062c17e774a9900",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "中央五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港二丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs71",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs71",
+            "recordSha256": "df724cdd3fb5be29b2b08dad0f69c308429b547f5a807e9c29a5555620d57d19",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港二丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs77",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs77",
+            "recordSha256": "edf22bcf425825af868192024aef5b3ba5e5f5eb846add81b2de7213a782700c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "鈴蘭幼稚園前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs83",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs83",
+            "recordSha256": "1c56aa937d68fd290e6db9bf4dc6242dc11437b4537784c10bbe8020ba0c27ae",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "鈴蘭幼稚園前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港四丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs86",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs86",
+            "recordSha256": "50af5d0d69fb869ec415d2dff723d6452ea7dfe461eec3de76d49b627dd4afc1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港四丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "南駅前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs93",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs93",
+            "recordSha256": "7d07711c4b3e44e902e128c7cb750cd07976db125ef95256ab5f02fdd868bca7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "南駅前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "大黒三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs97",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs97",
+            "recordSha256": "1bb9c3a32bd83a04b403f2c2ff190b685a76a733ae6a12b988bc60a99b6819b3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "大黒三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "大黒五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs104",
+            "recordSha256": "db12b23f8cede43246bc3358adf7ca8df7a13b66e30b60325fcfab88aca228a5",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "大黒五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "潮見一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs102",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs102",
+            "recordSha256": "95f9ca18e7c987b65d12ade2794ec538d934c01bdfff4884e58fa0ceb3c7769c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "潮見一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "潮見三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs105",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs105",
+            "recordSha256": "0797811e57d668897452b1618ce233c8e0c8481c9b883e70419ef4356e748808",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "潮見三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "潮見五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs109",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs109",
+            "recordSha256": "4cc40838813a404e4b40b0d2aa640aa2b8e31eb56d79b351ae1eaa390c48a1b8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "潮見五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs108",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs108",
+            "recordSha256": "877618dcb48047a80223cfaa62e57c4d200a6a32220574f87832ce0036e3cd4a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす団地",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs107",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs107",
+            "recordSha256": "bca143fa9ba65f8957695f0536d7e8796a3cfa2898a1727d3e29d8fa882685a6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす団地",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs103",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs103",
+            "recordSha256": "d214d9b598e64467445331eb3a5f52b36e2f6ba0e0d07d544fcede37ef550c70",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす四丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs99",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs99",
+            "recordSha256": "2139855ccccc9920bd91979f91b29485c9a045aa178642d2f00603fc8c69c67f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす四丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs94",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs94",
+            "recordSha256": "b59179d2a54a748ab60a4e5d6d239191bd21dae0b937a1aa4f695827dc223a44",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "声問一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs73",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs73",
+            "recordSha256": "d910f043775dccb51c8c1f524c0807bb6bf5be610c722e2d5b70dba9bae659d3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "声問一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "声問局前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs78",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs78",
+            "recordSha256": "1e33083ab8177bb1ad30fb4f9122ee34805884c374baa57ea4465eb77b7e7ad8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "声問局前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "声問ふれあい橋",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs82",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs82",
+            "recordSha256": "fa884e5cd13e4cd4dd2a948423cf101dd3a4ffae6bea46527bc773aea273021e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "声問ふれあい橋",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "稚内空港",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs87",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs87",
+            "recordSha256": "e4873d53a0a27725959ea55bc90a833cdb3fe2e2b97431ac219c5eace0bb48c9",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内空港",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_TRIP_AND_EXPLICIT_ALL_STOPS_RULE_WITH_INDEPENDENT_DIRECTIONAL_MAPS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_29_TO_OCTOBER_24_2026_FLIGHT_LINKED_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "soya-wakkanai-current-city-bound-actual-all-stop-trip",
+      "kind": "service",
+      "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+      "sourceUrl": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/airport/Airport_2026_0329-1024.pdf",
+      "observedResponseSha256": "cbf9debb99344b0d66df5513b5989e5bb5a7e8fb012849dd5a7a2cdc34af9812",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/airport",
+          "observedResponseSha256": "3aec562222b124e26d2ceadc4c295d89879993afb5185e8684fd54cafa9a1f5d"
+        },
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+          "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+        },
+        {
+          "sourceActionId": "airport:wakkanai:current-carrier-and-public-passenger-facility",
+          "url": "https://www.hokkaido-airports.com/ja/wakkanai/access/",
+          "observedResponseSha256": "8d4c49c13320ea9e03d9bb2809ec0d8adea0003142f89cf2abed3cf70de01f3e"
+        }
+      ],
+      "locator": "Individually viewed current March 29-October 24 2026 directional actual table column 2, excluding expired seasonal column 3. Explicit all-stops-on-route rule expands omitted minor stops using independently reviewed full directional map page 2 currently linked by carrier, dated December 2022; 2026 schematic corroborates same direction-specific route and return-only Minato 1-chome. Retain 26 ordered calls with exact P11 road-stop IDs; no reverse inference, omitted-stop express, clocks, fares, route artwork, promised flight/train/ferry connection or daily realtime guarantee.",
+      "line": "稚内空港連絡バス",
+      "operator": "宗谷バス株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港連絡バス",
+      "direction": "city-bound",
+      "callingStations": [
+        "稚内空港",
+        "声問ふれあい橋",
+        "声問局前",
+        "声問一丁目",
+        "はまなす五丁目",
+        "はまなす四丁目",
+        "はまなす三丁目",
+        "はまなす団地",
+        "はまなす一丁目",
+        "潮見五丁目",
+        "潮見三丁目",
+        "潮見一丁目",
+        "大黒五丁目",
+        "大黒三丁目",
+        "南駅前",
+        "港四丁目",
+        "鈴蘭幼稚園前",
+        "港三丁目",
+        "港二丁目",
+        "港一丁目",
+        "中央五丁目",
+        "中央四丁目",
+        "中央三丁目",
+        "稚内駅前ターミナル",
+        "サフィールホテル前",
+        "稚内フェリーターミナル"
+      ],
+      "callingComponents": [
+        {
+          "name": "稚内空港",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs87",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs87",
+            "recordSha256": "e4873d53a0a27725959ea55bc90a833cdb3fe2e2b97431ac219c5eace0bb48c9",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内空港",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "声問ふれあい橋",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs82",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs82",
+            "recordSha256": "fa884e5cd13e4cd4dd2a948423cf101dd3a4ffae6bea46527bc773aea273021e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "声問ふれあい橋",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "声問局前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs78",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs78",
+            "recordSha256": "1e33083ab8177bb1ad30fb4f9122ee34805884c374baa57ea4465eb77b7e7ad8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "声問局前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "声問一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs73",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs73",
+            "recordSha256": "d910f043775dccb51c8c1f524c0807bb6bf5be610c722e2d5b70dba9bae659d3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "声問一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs94",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs94",
+            "recordSha256": "b59179d2a54a748ab60a4e5d6d239191bd21dae0b937a1aa4f695827dc223a44",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす四丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs99",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs99",
+            "recordSha256": "2139855ccccc9920bd91979f91b29485c9a045aa178642d2f00603fc8c69c67f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす四丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs103",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs103",
+            "recordSha256": "d214d9b598e64467445331eb3a5f52b36e2f6ba0e0d07d544fcede37ef550c70",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす団地",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs107",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs107",
+            "recordSha256": "bca143fa9ba65f8957695f0536d7e8796a3cfa2898a1727d3e29d8fa882685a6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす団地",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "はまなす一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs108",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs108",
+            "recordSha256": "877618dcb48047a80223cfaa62e57c4d200a6a32220574f87832ce0036e3cd4a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "はまなす一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "潮見五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs109",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs109",
+            "recordSha256": "4cc40838813a404e4b40b0d2aa640aa2b8e31eb56d79b351ae1eaa390c48a1b8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "潮見五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "潮見三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs105",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs105",
+            "recordSha256": "0797811e57d668897452b1618ce233c8e0c8481c9b883e70419ef4356e748808",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "潮見三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "潮見一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs102",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs102",
+            "recordSha256": "95f9ca18e7c987b65d12ade2794ec538d934c01bdfff4884e58fa0ceb3c7769c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "潮見一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "大黒五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs104",
+            "recordSha256": "db12b23f8cede43246bc3358adf7ca8df7a13b66e30b60325fcfab88aca228a5",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "大黒五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "大黒三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs97",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs97",
+            "recordSha256": "1bb9c3a32bd83a04b403f2c2ff190b685a76a733ae6a12b988bc60a99b6819b3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "大黒三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "南駅前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs93",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs93",
+            "recordSha256": "7d07711c4b3e44e902e128c7cb750cd07976db125ef95256ab5f02fdd868bca7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "南駅前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港四丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs86",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs86",
+            "recordSha256": "50af5d0d69fb869ec415d2dff723d6452ea7dfe461eec3de76d49b627dd4afc1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港四丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "鈴蘭幼稚園前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs83",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs83",
+            "recordSha256": "1c56aa937d68fd290e6db9bf4dc6242dc11437b4537784c10bbe8020ba0c27ae",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "鈴蘭幼稚園前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs77",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs77",
+            "recordSha256": "edf22bcf425825af868192024aef5b3ba5e5f5eb846add81b2de7213a782700c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港二丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs71",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs71",
+            "recordSha256": "df724cdd3fb5be29b2b08dad0f69c308429b547f5a807e9c29a5555620d57d19",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港二丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "港一丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs67",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs67",
+            "recordSha256": "4a838f10462e4f45193b5d8d105f35a7131c7991e85f8903f7e1a6b8facc3710",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "港一丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "中央五丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs65",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs65",
+            "recordSha256": "fe36b0037159da37caae31b00d4e4a05aec1a6f2c7494316b062c17e774a9900",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "中央五丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "中央四丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs64",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs64",
+            "recordSha256": "1965e4b3d3bce604338b4eb7b6e29a6b7d415ecf57395de28b11cd96e32f14d2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "中央四丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "中央三丁目",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs59",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs59",
+            "recordSha256": "0dae5efb5b0c217828b78ad319140e5425aef5e30299f14516eef056047fe7fb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "中央三丁目",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "稚内駅前ターミナル",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs56",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs56",
+            "recordSha256": "42fc55cac63934fab0fdac9a5fda2091d0b3efadc8b0a27683fcc89318b92405",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内駅前ターミナル",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "サフィールホテル前",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs54",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs54",
+            "recordSha256": "e54ac489adfeec8db56db14b01d71ad31d7b080c1e6c4c012a8d0feb6f47d73b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "サフィールホテル前",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        },
+        {
+          "name": "稚内フェリーターミナル",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs60",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs60",
+            "recordSha256": "757e4265080d7d864d824c0a38593a7b4901a65bde096919611763e6aa4e3bbb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内フェリーターミナル",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_TRIP_AND_EXPLICIT_ALL_STOPS_RULE_WITH_INDEPENDENT_DIRECTIONAL_MAPS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_29_TO_OCTOBER_24_2026_FLIGHT_LINKED_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "wakkanai-airport-current-explicit-public-boarding-and-alighting-doors",
+      "kind": "transfer",
+      "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+      "sourceUrl": "http://www.soyabus.co.jp/airport",
+      "observedResponseSha256": "3aec562222b124e26d2ceadc4c295d89879993afb5185e8684fd54cafa9a1f5d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+          "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+        },
+        {
+          "sourceActionId": "airport:wakkanai:current-carrier-and-public-passenger-facility",
+          "url": "https://www.hokkaido-airports.com/ja/wakkanai/access/",
+          "observedResponseSha256": "8d4c49c13320ea9e03d9bb2809ec0d8adea0003142f89cf2abed3cf70de01f3e"
+        },
+        {
+          "sourceActionId": "airport:wakkanai:current-carrier-and-public-passenger-facility",
+          "url": "https://www.hokkaido-airports.com/ja/wakkanai/floormap/",
+          "observedResponseSha256": "b207a7c987f4dc0543ca8b12cb65e8d1e939b511e72fe0a4d93445f894f742ad"
+        }
+      ],
+      "locator": "Current carrier airport page separately identifies public arrival exit toward boarding stop and alighting area toward departure-lobby entrance. Official airport independently links this carrier airport service. Preserve whole C28 airport and exact Soya P11 road-stop representative without equating a road coordinate with a door/platform or inferring airside access. Retain no source directions, distances, fare, walking-time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "稚内空港",
+          "operator": "airport-facility:cf03_00007",
+          "line": "airport:cf03_00007",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00007",
+            "requirementId": "review:transport-node:7e100c00-e725-56ff-a1db-21630312ecfd",
+            "expectedRequirementName": "稚内",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current carrier airport page separately identifies public arrival exit toward boarding stop and alighting area toward departure-lobby entrance. Official airport independently links this carrier airport service. Preserve whole C28 airport and exact Soya P11 road-stop representative without equating a road coordinate with a door/platform or inferring airside access."
+          }
+        },
+        {
+          "name": "稚内空港",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs87",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs87",
+            "recordSha256": "e4873d53a0a27725959ea55bc90a833cdb3fe2e2b97431ac219c5eace0bb48c9",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内空港",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_CARRIER_EXPLICIT_PUBLIC_ARRIVAL_BOARDING_AND_ALIGHTING_DEPARTURE_ACCESS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "wakkanai-jr-current-connected-kitacolor-airport-bus-terminal",
+      "kind": "transfer",
+      "sourceActionId": "hub:north-hokkaido-dmo:current-wakkanai-jr-connected-bus-terminal",
+      "sourceUrl": "https://www.north-hokkaido.com/access/detail_1167.html",
+      "observedResponseSha256": "37707fcb35f807c3a0a9e40885230797311b8f370af1a695fbbd3c5dcc255925",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:north-hokkaido-dmo:current-wakkanai-jr-connected-bus-terminal",
+          "url": "https://www.north-hokkaido.com/spot/detail_1069.html",
+          "observedResponseSha256": "ea572a81f48a423fbb8795b9462b4529238adbbd94981626788d22612eed614d"
+        },
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/about/guidances",
+          "observedResponseSha256": "a040a44654d3aa62fa0b334bc846a364af7ee0206a8c5361f196ed235cff90cd"
+        },
+        {
+          "sourceActionId": "bus:soya:current-wakkanai-airport-directional-all-stop-patterns",
+          "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+          "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+        }
+      ],
+      "locator": "Current official DMO explicitly identifies first-floor bus terminal as connected to JR Wakkanai; current Kitacolor facility description and exact Soya terminal listing corroborate. Current full carrier route map locates airport boarding stand 1 and distinct return alighting route at this same operator road-stop representative. Retain only coarse ordinary passenger connection, no invented detailed gate geometry, nearby-name merge, guaranteed timed transfer or airport-bus through train.",
+      "components": [
+        {
+          "name": "稚内",
+          "operator": "北海道旅客鉄道",
+          "line": "宗谷線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "稚内駅前ターミナル",
+          "operator": "宗谷バス（株）",
+          "line": "p11-stop:P11-22_01:bs56",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs56",
+            "recordSha256": "42fc55cac63934fab0fdac9a5fda2091d0b3efadc8b0a27683fcc89318b92405",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Soya P11 road-stop representative is independently matched to current-linked full directional carrier map and current 2026 actual trip/all-stops rule. Preserve canonical Japanese names, translating Arabic chome numerals to the identical P11 Japanese numeral spelling only. This is not a stop-name change or an inferred platform identity. Historical route labels select raw identity only. Current all-stop directions differ at Minato 1-chome and boarding is restricted by direction.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宗谷バス（株）",
+              "currentOperatorName": "宗谷バス株式会社",
+              "currentStopName": "稚内駅前ターミナル",
+              "historicalRoute": "稚内空港線",
+              "url": "http://www.soyabus.co.jp/app-wp/wp-content/themes/Souyabus-child/images/routemap/w_kukousen.pdf",
+              "observedResponseSha256": "08254dc7e93e8df5275bf42df596b601d40167a816f123c21a0154142177d77b"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_SAME_BUILDING_JR_PASSENGER_CONNECTION_AND_CARRIER_TERMINAL",
+      "hubScopeComplete": false
+    }
+  ]
+}

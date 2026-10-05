@@ -1,0 +1,95 @@
+{
+  "phaseId": "231-kochi-bridge-hasuike-reviewed-public-sidewalk",
+  "strategy": [
+    "ORIGINAL_TOSADEN_AIRPORT_DIRECTION_ROOTS_ONLY",
+    "EXACT_OSM_CONNECTED_PUBLIC_SIDEWALK_CHAIN",
+    "PRESERVE_DISTINCT_NATIVE_STOPS",
+    "NO_NEW_NODES"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231",
+    "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:operator-direction-map",
+    "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:ana",
+    "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:apa",
+    "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:replacement"
+  ],
+  "facts": [
+    {
+      "factId": "kochi-bridge-alight-to-hasuike-board-public-sidewalk-walk",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=133.5425,33.5618,133.5455,33.5653",
+      "observedResponseSha256": "19ccb8a83243edfd1d03aec221d63eeb15e7ef811bdd6e88240e6b4b89cdabdf",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:operator-direction-map",
+          "url": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+          "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:ana",
+          "url": "https://www.ana.co.jp/domtour/booking/csm/search/DSEP0080/init?coptCd=19769&faclCd=00&screenCls=1",
+          "observedResponseSha256": "51d95940afe8539b05464771fde66855f614a75db73810f74057ac39ebd39456"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:apa",
+          "url": "https://www.apahotel.com/hotel/chushikoku/kochi/kochi/",
+          "observedResponseSha256": "462fc796d43b8c197130fd4c1b68e91bb2efe110ae4e6245cdeb711044a2b60d"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:kochi-hasuike-current-public-sidewalk-231:replacement",
+          "url": "https://kochiekimaekanko.jp/wp-content/uploads/%E8%93%AE%E6%B1%A0%E7%94%BA%E9%80%9A%E5%BE%A9%E8%B7%AF%E3%83%90%E3%82%B9%E5%81%9C%E5%BB%83%E6%AD%A2%EF%BC%88%EF%BC%B28.2.1%EF%BC%89.pdf",
+          "observedResponseSha256": "ad1a49cd64a9105d79200ddfe19f98d96a1e7d2808f7de3a1a86a812302d82bf"
+        }
+      ],
+      "components": [
+        {
+          "name": "高知橋",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3903_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "8265713729e77cb2b34b03e4f07b1c9abfa01187856e44b4206956b7a0af670c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current2026 operator airport map and Jan8/Feb1 replacement notice preserve exact airport-bound Hasuike boarding. ANA public hotel guide explicitly approaches eastward, crosses the tram-street intersection and turns right to the named airport Hasuike boarding point; separately Kochibashi alighting proceeds south over Kochibashi bridge. Current APA owner confirms same廿代町1-18 landmark and Kochibashi airport access afterMar2026 rebrand. These independent facts bind east-side3904_02 public boarding access and west-side3903_01 alighting. Cached OSM public sidewalk/crossing ways556416254,602443312,602443311,602443310,602443309,556416240,602443308,602443307,602443306,601551382 join by9exact native nodes. The mapped path crosses to the east side north of the bridge; ANA is side/access evidence, not asserted to narrate every selected way. Coarse public component relation only: no native-coordinate snap, same-name tram join, hotel/private passage, precise curb/door, accessibility/time or image claim."
+          }
+        },
+        {
+          "name": "蓮池町通",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3904_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "4c9b090224cc930ed718cf4ffacb899a33f16e8de09e17797d6c8897ee65502a",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current2026 operator airport map and Jan8/Feb1 replacement notice preserve exact airport-bound Hasuike boarding. ANA public hotel guide explicitly approaches eastward, crosses the tram-street intersection and turns right to the named airport Hasuike boarding point; separately Kochibashi alighting proceeds south over Kochibashi bridge. Current APA owner confirms same廿代町1-18 landmark and Kochibashi airport access afterMar2026 rebrand. These independent facts bind east-side3904_02 public boarding access and west-side3903_01 alighting. Cached OSM public sidewalk/crossing ways556416254,602443312,602443311,602443310,602443309,556416240,602443308,602443307,602443306,601551382 join by9exact native nodes. The mapped path crosses to the east side north of the bridge; ANA is side/access evidence, not asserted to narrate every selected way. Coarse public component relation only: no native-coordinate snap, same-name tram join, hotel/private passage, precise curb/door, accessibility/time or image claim."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_DIRECTIONAL_GTFS_PLUS_CURRENT_OPERATOR_POLES_AND_ODBL_CONTIGUOUS_PUBLIC_WAYS",
+      "hubScopeComplete": false,
+      "locator": "Current2026 operator airport map and Jan8/Feb1 replacement notice preserve exact airport-bound Hasuike boarding. ANA public hotel guide explicitly approaches eastward, crosses the tram-street intersection and turns right to the named airport Hasuike boarding point; separately Kochibashi alighting proceeds south over Kochibashi bridge. Current APA owner confirms same廿代町1-18 landmark and Kochibashi airport access afterMar2026 rebrand. These independent facts bind east-side3904_02 public boarding access and west-side3903_01 alighting. Cached OSM public sidewalk/crossing ways556416254,602443312,602443311,602443310,602443309,556416240,602443308,602443307,602443306,601551382 join by9exact native nodes. The mapped path crosses to the east side north of the bridge; ANA is side/access evidence, not asserted to narrate every selected way. Coarse public component relation only: no native-coordinate snap, same-name tram join, hotel/private passage, precise curb/door, accessibility/time or image claim."
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "phaseId": "126-four-tama-area-hubs-with-six-reviewed-component-pairs",
+  "strategy": [
+    "CURRENT_BILATERAL_PUBLIC_PASSENGER_PASSAGES",
+    "SEPARATE_NORTH_SOUTH_MONORAIL_COMPONENTS",
+    "BASIC_LICENSE_CATALOG_REFERENCE_ONLY"
+  ],
+  "completedActionIds": [
+    "hub:tama-monorail:four-interchange-current-exit-passages",
+    "hub:seibu:tamagawa-josui-current-monorail-footbridge",
+    "hub:keio:takahata-and-tama-center-current-public-exits",
+    "hub:odakyu:tama-center-current-monorail-public-approach",
+    "hub:jr-east:tachikawa-current-north-south-public-concourse",
+    "rail:tama-monorail:odpt-basic-license-catalog-alternative-review"
+  ],
+  "facts": [
+    {
+      "factId": "tama-keio-current-bilateral-public-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+      "sourceUrl": "https://www.tama-monorail.co.jp/monorail/station/img_tama-center.gif",
+      "observedResponseSha256": "2bb257014ad93898604361174f9e497bdf6ea1d7c55d9a255222368b90124397",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+          "url": "https://www.tama-monorail.co.jp/monorail/station/tama-center/",
+          "observedResponseSha256": "e6a313c3c762cc672d669ea5ad46be1d87991203f23958fa87632d29fc462b44"
+        },
+        {
+          "sourceActionId": "hub:keio:takahata-and-tama-center-current-public-exits",
+          "url": "https://www.keio.co.jp/train/station/ko41_keio-tama-center/",
+          "observedResponseSha256": "5da7eb310bd694ced15328d49ebbd6d5bb977a07adec3110a55faaffbee04d61"
+        },
+        {
+          "sourceActionId": "hub:keio:takahata-and-tama-center-current-public-exits",
+          "url": "https://www.keio.co.jp/train/station/ko41_keio-tama-center/images/station_map.png",
+          "observedResponseSha256": "46e413ea77d51a4c13723cf3e366af30609b560ed336f182f84d572a36350d28"
+        }
+      ],
+      "locator": "Monorail current concourse diagram explicitly directs passengers to Keio Tama-Center; Keio current March 2026 diagram joins both platform islands to the central exit and public forecourt, and current station page identifies the monorail interchange. Retain the public out-of-gate connection only. Both operators diagrams individually viewed and their fingerprints matched. Minimum physical relation only; no all-hours, fare or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "多摩センター",
+          "operator": "多摩都市モノレール",
+          "line": "多摩都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "京王多摩センター",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_BOTH_OPERATOR_DIAGRAMS_AND_NAMED_PUBLIC_PASSAGES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tama-odakyu-current-bilateral-public-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+      "sourceUrl": "https://www.tama-monorail.co.jp/monorail/station/img_tama-center.gif",
+      "observedResponseSha256": "2bb257014ad93898604361174f9e497bdf6ea1d7c55d9a255222368b90124397",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+          "url": "https://www.tama-monorail.co.jp/monorail/station/tama-center/",
+          "observedResponseSha256": "e6a313c3c762cc672d669ea5ad46be1d87991203f23958fa87632d29fc462b44"
+        },
+        {
+          "sourceActionId": "hub:odakyu:tama-center-current-monorail-public-approach",
+          "url": "https://www.odakyu.jp/station/odakyu_tama_center/index.html",
+          "observedResponseSha256": "dcee5881b9d81bcc1c91fb9de96cfec62345e276f3500b4a58674e651444a43f"
+        },
+        {
+          "sourceActionId": "hub:odakyu:tama-center-current-monorail-public-approach",
+          "url": "https://www.odakyu.jp/station/data/o5oaa10000000mnz-img/odakyu_tama_center_all.jpg",
+          "observedResponseSha256": "e04b5d0e202e38bdfd06e073c8985214ed65d326a248d867b53626ec5a145547"
+        }
+      ],
+      "locator": "Monorail current diagram explicitly labels Odakyu Tama-Center outside its gate; current August 2026 Odakyu diagram joins both used platforms to the west gate and the public approach explicitly labeled toward the monorail. No connection through shops or cross-operator paid-area shortcut. Both operators diagrams individually viewed and their fingerprints matched. Minimum physical relation only; no all-hours, fare or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "多摩センター",
+          "operator": "多摩都市モノレール",
+          "line": "多摩都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "小田急多摩センター",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_BOTH_OPERATOR_DIAGRAMS_AND_NAMED_PUBLIC_PASSAGES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "josui-current-bilateral-public-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+      "sourceUrl": "https://www.tama-monorail.co.jp/monorail/station/17_img_tamagawajosui.gif",
+      "observedResponseSha256": "b32f32153bff068fec86cecb28a0b8eed2150911a65e23dffb1f94bdcd9a9681",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+          "url": "https://www.tama-monorail.co.jp/monorail/station/tamagawajosui/",
+          "observedResponseSha256": "6ba5da10d7ddb3af7569baa13666ec4cf48696c7f910e7d484ffda62a796c9cc"
+        },
+        {
+          "sourceActionId": "hub:seibu:tamagawa-josui-current-monorail-footbridge",
+          "url": "https://www.seiburailway.jp/railway/station/tamagawa-josui/",
+          "observedResponseSha256": "a1df4ef36049c20edbebcebffe5d255e9ca89e3da4d74dbb3bc3ded72ab2922f"
+        },
+        {
+          "sourceActionId": "hub:seibu:tamagawa-josui-current-monorail-footbridge",
+          "url": "https://www.seiburailway.jp/railway/station/image/SS33.png",
+          "observedResponseSha256": "b926d9bfbe6595dd5f5f30bd93b16239830320f1e53772eb21f8fa06a83fa1e5"
+        }
+      ],
+      "locator": "Monorail diagram joins both direction platforms to its concourse and explicitly labels Seibu Tamagawa-Josui; Seibu February 2026 diagram independently shows both platform islands joining the 2F public bridge and monorail station entrance. Same station name alone is not evidence. Both operators diagrams individually viewed and their fingerprints matched. Minimum physical relation only; no all-hours, fare or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "玉川上水",
+          "operator": "多摩都市モノレール",
+          "line": "多摩都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "玉川上水",
+          "operator": "西武鉄道",
+          "line": "拝島線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_BOTH_OPERATOR_DIAGRAMS_AND_NAMED_PUBLIC_PASSAGES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "takahata-current-bilateral-public-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+      "sourceUrl": "https://www.tama-monorail.co.jp/monorail/station/07_img_takahatafudo.gif",
+      "observedResponseSha256": "8ee895358f0ef91036c0d1b88f384901e8450c1039aa05f93c891c03eda05cf3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+          "url": "https://www.tama-monorail.co.jp/monorail/station/takahatafudo/",
+          "observedResponseSha256": "ed1a987cabca4e5e13f47646b3df18e4f4f9f90f35f343f28f9c98a364954b08"
+        },
+        {
+          "sourceActionId": "hub:keio:takahata-and-tama-center-current-public-exits",
+          "url": "https://www.keio.co.jp/train/station/ko29_takahatafudo/",
+          "observedResponseSha256": "d347a7f0766b5301e915f75774ae8f01d0a83e4795bfc2106fd72582736eab78"
+        },
+        {
+          "sourceActionId": "hub:keio:takahata-and-tama-center-current-public-exits",
+          "url": "https://www.keio.co.jp/train/station/ko29_takahatafudo/images/station_map.png",
+          "observedResponseSha256": "5f08944b1167dff54495fb879e300ac0094c9d77c1f3e3d85a776e83762e40e1"
+        }
+      ],
+      "locator": "Monorail diagram joins both direction platforms to concourse and explicitly names the Keio station exit. Current-linked March 2025 Keio diagram joins both mainline platform islands to the 3F gate and public bridge explicitly labeled toward the monorail. Retain coarse passenger interchange without a shop shortcut. Both operators diagrams individually viewed and their fingerprints matched. Minimum physical relation only; no all-hours, fare or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "高幡不動",
+          "operator": "多摩都市モノレール",
+          "line": "多摩都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "高幡不動",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_BOTH_OPERATOR_DIAGRAMS_AND_NAMED_PUBLIC_PASSAGES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tachikawa-north-current-bilateral-public-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+      "sourceUrl": "https://www.tama-monorail.co.jp/monorail/station/12_img_tachikawa-kita.gif",
+      "observedResponseSha256": "81a27e32026334c678d9a605b5c90238105c394594aa71beaf985cdea4ea2274",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+          "url": "https://www.tama-monorail.co.jp/monorail/station/tachikawa-kita/",
+          "observedResponseSha256": "32546fe010cd397d940bbceb266912f4b73d17e8c556f31de13b15c707bdd581"
+        },
+        {
+          "sourceActionId": "hub:jr-east:tachikawa-current-north-south-public-concourse",
+          "url": "https://www.jreast.co.jp/estation/stations/958.html",
+          "observedResponseSha256": "18580bd2ab147ed7c76ec15c06951ea298c1b11422eb9e5630d8fd4790c76205"
+        },
+        {
+          "sourceActionId": "hub:jr-east:tachikawa-current-north-south-public-concourse",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0958_1f-2f.png",
+          "observedResponseSha256": "0eb7d36ff1bfcf3f66c7179a6bffb8249aacd0cd5078e8b6bb9571bf83cd1fea"
+        }
+      ],
+      "locator": "Current monorail diagram joins both direction platforms to concourse and southern public exit explicitly labeled JR Tachikawa; current-linked May 2025 JR diagram joins Chuo platforms to the east gate and public central passage north exit explicitly labeled Tachikawa-Kita. Exclude Isetan/retail entrances and time-limited JR specialty gates. Both operators diagrams individually viewed and their fingerprints matched. Minimum physical relation only; no all-hours, fare or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "立川北",
+          "operator": "多摩都市モノレール",
+          "line": "多摩都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "立川",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_BOTH_OPERATOR_DIAGRAMS_AND_NAMED_PUBLIC_PASSAGES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tachikawa-south-current-bilateral-public-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+      "sourceUrl": "https://www.tama-monorail.co.jp/monorail/station/11_img_tachikawa-minami.gif",
+      "observedResponseSha256": "3b03d1c5fc961e659b6561617561833f2a889465d9ea3d91ec4210b7bd3ced37",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tama-monorail:four-interchange-current-exit-passages",
+          "url": "https://www.tama-monorail.co.jp/monorail/station/tachikawa-minami/",
+          "observedResponseSha256": "a42a076f22f5e79cc011e825960a344d8d51f6829fbb10d72ca99c27b1980ba0"
+        },
+        {
+          "sourceActionId": "hub:jr-east:tachikawa-current-north-south-public-concourse",
+          "url": "https://www.jreast.co.jp/estation/stations/958.html",
+          "observedResponseSha256": "18580bd2ab147ed7c76ec15c06951ea298c1b11422eb9e5630d8fd4790c76205"
+        },
+        {
+          "sourceActionId": "hub:jr-east:tachikawa-current-north-south-public-concourse",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0958_1f-2f.png",
+          "observedResponseSha256": "0eb7d36ff1bfcf3f66c7179a6bffb8249aacd0cd5078e8b6bb9571bf83cd1fea"
+        }
+      ],
+      "locator": "Current monorail diagram joins both direction platforms to concourse and public JR entrance approach; current station introduction explicitly describes the JR pedestrian deck. May 2025 JR diagram joins Chuo platforms to the east gate and central public passage south exit explicitly labeled Tachikawa-Minami. This is distinct from Tachikawa-Kita; no direct monorail ride between them is generated. Both operators diagrams individually viewed and their fingerprints matched. Minimum physical relation only; no all-hours, fare or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "立川南",
+          "operator": "多摩都市モノレール",
+          "line": "多摩都市モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "立川",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_BOTH_OPERATOR_DIAGRAMS_AND_NAMED_PUBLIC_PASSAGES",
+      "hubScopeComplete": false
+    }
+  ]
+}

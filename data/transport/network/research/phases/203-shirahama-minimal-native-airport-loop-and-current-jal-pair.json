@@ -1,0 +1,296 @@
+{
+  "phaseId": "203-shirahama-minimal-native-airport-loop-and-current-jal-pair",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT",
+    "LICENSED_NATIVE_DIRECTED_CYCLE",
+    "EXACT_SAME_NATIVE_STOP_INTERCHANGE",
+    "PUBLIC_TERMINAL_FRONTAGE",
+    "SEPARATELY_REVIEWED_FLIGHT_PAIR_AND_ACTUAL_CARRIER"
+  ],
+  "completedActionIds": [
+    "bus:meiko:licensed-current-shirahama-airport-chain",
+    "airport:shirahama:current-public-terminal-frontage",
+    "flight:shirahama:airport-dated-pair-and-prefecture-2026-actual-jal"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "meiko-shirahama-minimal-airport-loop.json",
+      "packageSha256": "bdb4a8b05206c8787a2bc550d10e41be48898607a9234d03b9c5bd78491537b1",
+      "sourceActionId": "bus:meiko:licensed-current-shirahama-airport-chain",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "shirahama-public-terminal-to-distinct-meiko-stop-1_01",
+      "kind": "transfer",
+      "sourceActionId": "airport:shirahama:current-public-terminal-frontage",
+      "sourceUrl": "https://shirahama-airport.jp/kannai",
+      "observedResponseSha256": "8d3e9d2e400328b2a1da284290b3de9d92350558b4f224ac994fafe162d056e1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:shirahama:current-public-terminal-frontage",
+          "url": "https://shirahama-airport.jp/application/files/7616/6514/3550/map_kangai202210.png",
+          "observedResponseSha256": "186303b926b7412adcdac0d19e463ddfc39d00fd181c7ea606057e8345829d05"
+        },
+        {
+          "sourceActionId": "airport:shirahama:current-public-terminal-frontage",
+          "url": "https://www.pref.wakayama.lg.jp/prefg/082400/shirap/index.html",
+          "observedResponseSha256": "f279a65cc04ae4c93f1243a3542ffb2c8a2120db653ea3aba0078f7ef78e6ade"
+        },
+        {
+          "sourceActionId": "bus:meiko:licensed-current-shirahama-airport-chain",
+          "url": "https://api.gtfs-data.jp/v2/organizations/meikobus/feeds/meikobus/files/feed.zip?uid=cf49374d-ff03-426d-ad60-4828ce950cdc",
+          "observedResponseSha256": "0ea42ef84abca5874f03a0d68e44bfba05422d522e80f04e4844aaaff6e3cf9b"
+        }
+      ],
+      "locator": "Airport facilities > 館外駐車場等 > バス・タクシー乗り場 explicitly places bus stands by the arrivals-lobby exit; current-linked map labels 白浜空港バス停 at the terminal, separately from 空港口. Native active GTFS stop 1_01 remains distinct; no numbered bay claimed.",
+      "components": [
+        {
+          "name": "南紀白浜空港",
+          "operator": "airport-facility:cf03_00038",
+          "line": "airport:cf03_00038",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00038",
+            "requirementId": "review:official-airport:南紀白浜",
+            "expectedRequirementName": "南紀白浜",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport facilities page expressly locates bus stands by the public arrivals-lobby exit. Its currently linked outside map locates 白浜空港バス停 at the passenger terminal, distinct from 空港口. Prefecture binds current public alias to formal 南紀白浜空港. Coarse public frontage only; no precise stand, distance or accessibility assertion."
+          }
+        },
+        {
+          "name": "南紀白浜空港",
+          "operator": "明光バス",
+          "line": "gtfs:meiko-shirahama-20260907:route:21",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:meiko-shirahama-20260907",
+            "stopId": "1_01",
+            "sourceArchiveSha256": "0ea42ef84abca5874f03a0d68e44bfba05422d522e80f04e4844aaaff6e3cf9b",
+            "recordSha256": "54581f9e99885db1b2f060bd17390413a7d6eabe6656900139ba355de873c056",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native 1_01 at named airport terminal service joined through official public arrivals-exit frontage evidence. Distinct native stop retained, no coordinate-only join or opposite-direction collapse."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_EXIT_AND_NAMED_BUS_FRONTAGE_PLUS_EXACT_ACTIVE_LICENSED_STOP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shirahama-public-terminal-to-distinct-meiko-stop-1_02",
+      "kind": "transfer",
+      "sourceActionId": "airport:shirahama:current-public-terminal-frontage",
+      "sourceUrl": "https://shirahama-airport.jp/kannai",
+      "observedResponseSha256": "8d3e9d2e400328b2a1da284290b3de9d92350558b4f224ac994fafe162d056e1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:shirahama:current-public-terminal-frontage",
+          "url": "https://shirahama-airport.jp/application/files/7616/6514/3550/map_kangai202210.png",
+          "observedResponseSha256": "186303b926b7412adcdac0d19e463ddfc39d00fd181c7ea606057e8345829d05"
+        },
+        {
+          "sourceActionId": "airport:shirahama:current-public-terminal-frontage",
+          "url": "https://www.pref.wakayama.lg.jp/prefg/082400/shirap/index.html",
+          "observedResponseSha256": "f279a65cc04ae4c93f1243a3542ffb2c8a2120db653ea3aba0078f7ef78e6ade"
+        },
+        {
+          "sourceActionId": "bus:meiko:licensed-current-shirahama-airport-chain",
+          "url": "https://api.gtfs-data.jp/v2/organizations/meikobus/feeds/meikobus/files/feed.zip?uid=cf49374d-ff03-426d-ad60-4828ce950cdc",
+          "observedResponseSha256": "0ea42ef84abca5874f03a0d68e44bfba05422d522e80f04e4844aaaff6e3cf9b"
+        }
+      ],
+      "locator": "Airport facilities > 館外駐車場等 > バス・タクシー乗り場 explicitly places bus stands by the arrivals-lobby exit; current-linked map labels 白浜空港バス停 at the terminal, separately from 空港口. Native active GTFS stop 1_02 remains distinct; no numbered bay claimed.",
+      "components": [
+        {
+          "name": "南紀白浜空港",
+          "operator": "airport-facility:cf03_00038",
+          "line": "airport:cf03_00038",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00038",
+            "requirementId": "review:official-airport:南紀白浜",
+            "expectedRequirementName": "南紀白浜",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport facilities page expressly locates bus stands by the public arrivals-lobby exit. Its currently linked outside map locates 白浜空港バス停 at the passenger terminal, distinct from 空港口. Prefecture binds current public alias to formal 南紀白浜空港. Coarse public frontage only; no precise stand, distance or accessibility assertion."
+          }
+        },
+        {
+          "name": "南紀白浜空港",
+          "operator": "明光バス",
+          "line": "gtfs:meiko-shirahama-20260907:route:28",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:meiko-shirahama-20260907",
+            "stopId": "1_02",
+            "sourceArchiveSha256": "0ea42ef84abca5874f03a0d68e44bfba05422d522e80f04e4844aaaff6e3cf9b",
+            "recordSha256": "a3d99e3bb6fc0e2562e47f27f573ec2a90d2384b481a518b2f4c6b9739c8d8d3",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native 1_02 at named airport terminal service joined through official public arrivals-exit frontage evidence. Distinct native stop retained, no coordinate-only join or opposite-direction collapse."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_EXIT_AND_NAMED_BUS_FRONTAGE_PLUS_EXACT_ACTIVE_LICENSED_STOP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shirahama-airport-current-jal213-hnd-shm",
+      "kind": "service",
+      "sourceActionId": "flight:shirahama:airport-dated-pair-and-prefecture-2026-actual-jal",
+      "sourceUrl": "https://shirahama-airport.jp/",
+      "observedResponseSha256": "b20da0010306f29906219af90bb2839de967835fa9d35cb3e8c295a451f4a1ba",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:shirahama:airport-dated-pair-and-prefecture-2026-actual-jal",
+          "url": "https://www.pref.wakayama.lg.jp/prefg/080100/kendo/kendo_d/fil/2026gaiyou_all.pdf",
+          "observedResponseSha256": "d786a444d7fc651e0d7aa61b4709147b2f89f2fb3b4159ad83e0c5158a6af72e"
+        }
+      ],
+      "operator": "日本航空",
+      "line": "羽田・南紀白浜国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HND-SHM",
+      "serviceState": "active",
+      "serviceStateScope": "AIRPORT_PUBLISHED_20260901_20261024_STATIC_SERVICE_NOT_REALTIME",
+      "callingStations": [
+        "東京国際空港",
+        "南紀白浜空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport current dated table explicitly names Tokyo Haneda endpoints; reuse admitted C28 Tokyo International Airport cf03_00030 and already reviewed national ground interface. No new terminal/gate implied."
+          }
+        },
+        {
+          "name": "南紀白浜空港",
+          "operator": "airport-facility:cf03_00038",
+          "line": "airport:cf03_00038",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00038",
+            "requirementId": "review:official-airport:南紀白浜",
+            "expectedRequirementName": "南紀白浜",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport facilities page expressly locates bus stands by the public arrivals-lobby exit. Its currently linked outside map locates 白浜空港バス停 at the passenger terminal, distinct from 空港口. Prefecture binds current public alias to formal 南紀白浜空港. Coarse public frontage only; no precise stand, distance or accessibility assertion."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "SEPARATE_AIRPORT_DATED_FLIGHT_ROWS_AND_PREFECTURE_2026_ACTUAL_OPERATING_CARRIER",
+      "locator": "Airport own table valid2026-09-01 through2026-10-24 separately publishes flight213 in the HND-SHM direction. Reviewed20261002 service falls within stated validity; no applicable exclusion shown for this row. Prefecture2026 infrastructure overview PDFp7 explicitly lists SHM-HND route 日本航空 B737-800. Marketing code alone is not the carrier evidence; no clock/fare/seat-count persisted. No reversal or third-party rail timetable reuse."
+    },
+    {
+      "factId": "shirahama-airport-current-jal212-shm-hnd",
+      "kind": "service",
+      "sourceActionId": "flight:shirahama:airport-dated-pair-and-prefecture-2026-actual-jal",
+      "sourceUrl": "https://shirahama-airport.jp/",
+      "observedResponseSha256": "b20da0010306f29906219af90bb2839de967835fa9d35cb3e8c295a451f4a1ba",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:shirahama:airport-dated-pair-and-prefecture-2026-actual-jal",
+          "url": "https://www.pref.wakayama.lg.jp/prefg/080100/kendo/kendo_d/fil/2026gaiyou_all.pdf",
+          "observedResponseSha256": "d786a444d7fc651e0d7aa61b4709147b2f89f2fb3b4159ad83e0c5158a6af72e"
+        }
+      ],
+      "operator": "日本航空",
+      "line": "羽田・南紀白浜国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "SHM-HND",
+      "serviceState": "active",
+      "serviceStateScope": "AIRPORT_PUBLISHED_20260901_20261024_STATIC_SERVICE_NOT_REALTIME",
+      "callingStations": [
+        "南紀白浜空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "南紀白浜空港",
+          "operator": "airport-facility:cf03_00038",
+          "line": "airport:cf03_00038",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00038",
+            "requirementId": "review:official-airport:南紀白浜",
+            "expectedRequirementName": "南紀白浜",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport facilities page expressly locates bus stands by the public arrivals-lobby exit. Its currently linked outside map locates 白浜空港バス停 at the passenger terminal, distinct from 空港口. Prefecture binds current public alias to formal 南紀白浜空港. Coarse public frontage only; no precise stand, distance or accessibility assertion."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport current dated table explicitly names Tokyo Haneda endpoints; reuse admitted C28 Tokyo International Airport cf03_00030 and already reviewed national ground interface. No new terminal/gate implied."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "SEPARATE_AIRPORT_DATED_FLIGHT_ROWS_AND_PREFECTURE_2026_ACTUAL_OPERATING_CARRIER",
+      "locator": "Airport own table valid2026-09-01 through2026-10-24 separately publishes flight212 in the SHM-HND direction. Reviewed20261002 service falls within stated validity; no applicable exclusion shown for this row. Prefecture2026 infrastructure overview PDFp7 explicitly lists SHM-HND route 日本航空 B737-800. Marketing code alone is not the carrier evidence; no clock/fare/seat-count persisted. No reversal or third-party rail timetable reuse."
+    }
+  ],
+  "scope": "Original Shirahama airport with six necessary distinct native stops; five bus rides, four public airport transfers and two independently evidenced flight directions. No railway or unrelated bus expansion."
+}

@@ -1,0 +1,1032 @@
+{
+  "phaseId": "162-fukuoka-meinohama-noko-oro-ferry-current-asymmetric-bus-and-public-gateways",
+  "strategy": [
+    "CURRENT_ACTUAL_CARRIER_ASYMMETRIC_LOOP_SECTIONS",
+    "EXACT_P11_SINGLE_OPERATOR_ROAD_STOP_SCOPE",
+    "SOURCE_BOUND_HISTORICAL_CURRENT_QUALIFIED_STOP_CONTINUITY",
+    "CURRENT_PUBLIC_NORTH_GATE_AND_EXISTING_LICENSED_FERRY_TERMINAL"
+  ],
+  "completedActionIds": [
+    "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+    "ferry:fukuoka-city:current-meinohama-noko-public-bus-gateway",
+    "hub:fukuoka-subway:current-meinohama-public-north-exit"
+  ],
+  "facts": [
+    {
+      "factId": "nishitetsu-98-current-actual-loop-meinohama-bound-twelve-call-section",
+      "kind": "service",
+      "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+      "sourceUrl": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+      "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+          "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10041&ns=1",
+          "observedResponseSha256": "4e73a1380b4be18d8a20ed3d737c4cd13b468b7bdec8bc628c3d17dcb6e60ad5"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10042&ns=1",
+          "observedResponseSha256": "87372d3d031d71d6601f67a90c7a0dfc1aeed776533c4f20d173c667be4e9d46"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10056&ns=1",
+          "observedResponseSha256": "2e9262f7d15cc4aa3015b91238baa535c0f02736ae40d6949b16724933b79219"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0001%2C560210&ns=1",
+          "observedResponseSha256": "263dec448f29a7d9593ea8af65441453fbd16ffce01877c3f9da7a0c83b3449e"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0001%2C722011&ns=1",
+          "observedResponseSha256": "087706f1efa227cbd42f8165a4701b7d61ab3fc5bab45dfd507ecb941fdd1c44"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "locator": "Current official actual weekday loop, use_st_date 2026/07/04, keito_cd 154102, yobi_cd 1, bin_no 014, observed October 2. Independently read calls 1–12 to Meinohama north as one contiguous section. Both sections come from the full actual 23-call loop, not an inferred reverse. Preserve Yubinkyoku-mae only on the Meinohama section and Meinohama-gochome only on the Noko section. Current qualified labels reviewed: 郵便局前（姪浜方面） (名柄&rarr;姪浜方面); 姪浜（西鉄ストア側） (姪浜駅方面). P11 canonical calls are whole single-operator road-stop representatives. First full-loop stop is explicitly boarding-only and final full-loop stop alighting-only. No clocks, fare, frequency, dataset copy, precise platform or new crossing inferred.",
+      "line": "西鉄98・能古渡船場姪浜駅北口マリナタウン循環",
+      "operator": "西日本鉄道株式会社",
+      "mode": "local_bus",
+      "purpose": "required_gateway",
+      "serviceClass": "一般旅客バス98",
+      "direction": "meinohama-bound",
+      "callingStations": [
+        "能古渡船場",
+        "福岡女子高前",
+        "愛宕浜二丁目",
+        "マリナタウン第二",
+        "愛宕浜一丁目",
+        "マリナタウン第一",
+        "郵便局前",
+        "愛宕浜四丁目",
+        "名柄団地",
+        "姪浜三丁目",
+        "姪浜",
+        "姪浜駅北口"
+      ],
+      "callingComponents": [
+        {
+          "name": "能古渡船場",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4489",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4489",
+            "recordSha256": "73a402a5751a5399a1bcc064bd06765fcb8776a4759cbafe0a6488fcbfaa718c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "能古渡船場",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "福岡女子高前",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4525",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4525",
+            "recordSha256": "c98f6fbed669a52db93956fc12168db5a0d1417f9fc769ff83def192004d7402",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "福岡女子高前",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "愛宕浜二丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4548",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4548",
+            "recordSha256": "8e95bb201db05c49942839a41ab2834ee06dcde2726ee53b3764eddde1d7246e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "愛宕浜二丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "マリナタウン第二",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4561",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4561",
+            "recordSha256": "674ae6d4ba53986bd8ef909a384973d86d741daf14f52bc897789f571aec3365",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "マリナタウン第二",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "愛宕浜一丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4596",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4596",
+            "recordSha256": "26f6044f9c3be01dc63363234c40e59a88de203ac3c925e6aca65b6405bc175b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "愛宕浜一丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "マリナタウン第一",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4646",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4646",
+            "recordSha256": "3e39322d3bd90679e7eb52f1d559d51c55eba5a6823cad28acf2abb0979ba2d4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "マリナタウン第一",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "郵便局前",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4657",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4657",
+            "recordSha256": "ae57adc9ceb1e3b6abf096f6d81b3fd1b7176b99987c4e7e68d441b2397c019a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "郵便局前（姪浜方面）",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10056&ns=1",
+              "observedResponseSha256": "2e9262f7d15cc4aa3015b91238baa535c0f02736ae40d6949b16724933b79219"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "郵便局前",
+              "currentStopName": "郵便局前（姪浜方面）",
+              "operator": "西日本鉄道（株）",
+              "physicalContinuityReview": "P11-22_40 bs4657 / n4657 explicitly retains same-operator 郵便局前 and historical 98 Meinohama-Noko route, as a representative rather than separate directional poles. Current carrier exact qualified stop-group page and actual loop calls retain the base name and explicitly identify 郵便局前（姪浜方面）. These are roadside/direction disambiguators, not a new operator or assertion of an official renaming date. Current same-area stop detail and the independent archive record were compared with route context; coordinate proximity alone does not establish this relation. For Meinohama both west-store and post-office labels remain in their actual calls; the P11 representative does not authorise crossing between poles. Preserve historical canonical name, archive coordinates and whole-stop scope.",
+              "historicalEvidence": {
+                "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+                "stopName": "郵便局前",
+                "operator": "西日本鉄道（株）",
+                "locator": "P11-22_40_GML.zip / P11-22_40_GML/P11-22_40.xml / bs4657 joins point n4657; exact name, operator and historical 98 route, not current service evidence."
+              },
+              "currentEvidence": {
+                "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+                "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10056&ns=1",
+                "observedResponseSha256": "2e9262f7d15cc4aa3015b91238baa535c0f02736ae40d6949b16724933b79219",
+                "stopName": "郵便局前（姪浜方面）",
+                "operator": "西日本鉄道（株）",
+                "locator": "Current carrier stop-group header 郵便局前（姪浜方面） explicitly lists 98 service; independently cross-checked against its actual July-4-revision weekday bin 014 loop observed October 2. No timetable clocks retained."
+              }
+            }
+          }
+        },
+        {
+          "name": "愛宕浜四丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4635",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4635",
+            "recordSha256": "1c6d2908c763f8950950873b3519e715b20e3be4cee70276912ac6834aeae7d0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "愛宕浜四丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "名柄団地",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4605",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4605",
+            "recordSha256": "74ced05406f83d9d8bc51d30287ff1f413f437d2b8dbad192c66c06ca493a44d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "名柄団地",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "姪浜三丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4689",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4689",
+            "recordSha256": "49ddf5269d138015223d98e9b2e60183cc666533a0cc7dcdc3fd23afc29e2e8b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜三丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "姪浜",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4737",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4737",
+            "recordSha256": "c662f88b645e7d1c369f61941179a16a0b521196c382cb253f1d9dc0157d2bc8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜（西鉄ストア側）",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10041&ns=1",
+              "observedResponseSha256": "4e73a1380b4be18d8a20ed3d737c4cd13b468b7bdec8bc628c3d17dcb6e60ad5"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "姪浜",
+              "currentStopName": "姪浜（西鉄ストア側）",
+              "operator": "西日本鉄道（株）",
+              "physicalContinuityReview": "P11-22_40 bs4737 / n4737 explicitly retains same-operator 姪浜 and historical 98 Meinohama-Noko route, as a representative rather than separate directional poles. Current carrier exact qualified stop-group page and actual loop calls retain the base name and explicitly identify 姪浜（西鉄ストア側）. These are roadside/direction disambiguators, not a new operator or assertion of an official renaming date. Current same-area stop detail and the independent archive record were compared with route context; coordinate proximity alone does not establish this relation. For Meinohama both west-store and post-office labels remain in their actual calls; the P11 representative does not authorise crossing between poles. Preserve historical canonical name, archive coordinates and whole-stop scope.",
+              "historicalEvidence": {
+                "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+                "stopName": "姪浜",
+                "operator": "西日本鉄道（株）",
+                "locator": "P11-22_40_GML.zip / P11-22_40_GML/P11-22_40.xml / bs4737 joins point n4737; exact name, operator and historical 98 route, not current service evidence."
+              },
+              "currentEvidence": {
+                "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+                "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10041&ns=1",
+                "observedResponseSha256": "4e73a1380b4be18d8a20ed3d737c4cd13b468b7bdec8bc628c3d17dcb6e60ad5",
+                "stopName": "姪浜（西鉄ストア側）",
+                "operator": "西日本鉄道（株）",
+                "locator": "Current carrier stop-group header 姪浜（西鉄ストア側） explicitly lists 98 service; independently cross-checked against its actual July-4-revision weekday bin 014 loop observed October 2. No timetable clocks retained."
+              }
+            }
+          }
+        },
+        {
+          "name": "姪浜駅北口",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4825",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4825",
+            "recordSha256": "64c6ad0056f9ca9adcbad8535b108fbcc9bdf21921ee6b69e213a356a43376fc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜駅北口",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_LOOP_TWO_INDEPENDENT_CONTIGUOUS_ASYMMETRIC_SECTIONS_AND_EXACT_P11",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_JULY_4_2026_REVISION_ACTUAL_WEEKDAY_LOOP_OBSERVED_OCTOBER_2_NOT_REALTIME"
+    },
+    {
+      "factId": "nishitetsu-98-current-actual-loop-noko-wharf-bound-twelve-call-section",
+      "kind": "service",
+      "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+      "sourceUrl": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+      "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+          "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10041&ns=1",
+          "observedResponseSha256": "4e73a1380b4be18d8a20ed3d737c4cd13b468b7bdec8bc628c3d17dcb6e60ad5"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10042&ns=1",
+          "observedResponseSha256": "87372d3d031d71d6601f67a90c7a0dfc1aeed776533c4f20d173c667be4e9d46"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10056&ns=1",
+          "observedResponseSha256": "2e9262f7d15cc4aa3015b91238baa535c0f02736ae40d6949b16724933b79219"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0001%2C560210&ns=1",
+          "observedResponseSha256": "263dec448f29a7d9593ea8af65441453fbd16ffce01877c3f9da7a0c83b3449e"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0001%2C722011&ns=1",
+          "observedResponseSha256": "087706f1efa227cbd42f8165a4701b7d61ab3fc5bab45dfd507ecb941fdd1c44"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "locator": "Current official actual weekday loop, use_st_date 2026/07/04, keito_cd 154102, yobi_cd 1, bin_no 014, observed October 2. Independently read calls 12–23 to Noko wharf as one contiguous section. Both sections come from the full actual 23-call loop, not an inferred reverse. Preserve Yubinkyoku-mae only on the Meinohama section and Meinohama-gochome only on the Noko section. Current qualified labels reviewed: 姪浜（郵便局側） (藤崎方面). P11 canonical calls are whole single-operator road-stop representatives. First full-loop stop is explicitly boarding-only and final full-loop stop alighting-only. No clocks, fare, frequency, dataset copy, precise platform or new crossing inferred.",
+      "line": "西鉄98・能古渡船場姪浜駅北口マリナタウン循環",
+      "operator": "西日本鉄道株式会社",
+      "mode": "local_bus",
+      "purpose": "required_gateway",
+      "serviceClass": "一般旅客バス98",
+      "direction": "noko-wharf-bound",
+      "callingStations": [
+        "姪浜駅北口",
+        "姪浜五丁目",
+        "姪浜",
+        "姪浜三丁目",
+        "名柄団地",
+        "愛宕浜四丁目",
+        "マリナタウン第一",
+        "愛宕浜一丁目",
+        "マリナタウン第二",
+        "愛宕浜二丁目",
+        "福岡女子高前",
+        "能古渡船場"
+      ],
+      "callingComponents": [
+        {
+          "name": "姪浜駅北口",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4825",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4825",
+            "recordSha256": "64c6ad0056f9ca9adcbad8535b108fbcc9bdf21921ee6b69e213a356a43376fc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜駅北口",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "姪浜五丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4777",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4777",
+            "recordSha256": "0eca9b66933c35134aa4148cad62c1c396d1fb59310bb4663431b0cc9042943a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜五丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "姪浜",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4737",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4737",
+            "recordSha256": "c662f88b645e7d1c369f61941179a16a0b521196c382cb253f1d9dc0157d2bc8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜（郵便局側）",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10042&ns=1",
+              "observedResponseSha256": "87372d3d031d71d6601f67a90c7a0dfc1aeed776533c4f20d173c667be4e9d46"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "姪浜",
+              "currentStopName": "姪浜（郵便局側）",
+              "operator": "西日本鉄道（株）",
+              "physicalContinuityReview": "P11-22_40 bs4737 / n4737 explicitly retains same-operator 姪浜 and historical 98 Meinohama-Noko route, as a representative rather than separate directional poles. Current carrier exact qualified stop-group page and actual loop calls retain the base name and explicitly identify 姪浜（郵便局側）. These are roadside/direction disambiguators, not a new operator or assertion of an official renaming date. Current same-area stop detail and the independent archive record were compared with route context; coordinate proximity alone does not establish this relation. For Meinohama both west-store and post-office labels remain in their actual calls; the P11 representative does not authorise crossing between poles. Preserve historical canonical name, archive coordinates and whole-stop scope.",
+              "historicalEvidence": {
+                "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+                "stopName": "姪浜",
+                "operator": "西日本鉄道（株）",
+                "locator": "P11-22_40_GML.zip / P11-22_40_GML/P11-22_40.xml / bs4737 joins point n4737; exact name, operator and historical 98 route, not current service evidence."
+              },
+              "currentEvidence": {
+                "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+                "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0000%2CD10042&ns=1",
+                "observedResponseSha256": "87372d3d031d71d6601f67a90c7a0dfc1aeed776533c4f20d173c667be4e9d46",
+                "stopName": "姪浜（郵便局側）",
+                "operator": "西日本鉄道（株）",
+                "locator": "Current carrier stop-group header 姪浜（郵便局側） explicitly lists 98 service; independently cross-checked against its actual July-4-revision weekday bin 014 loop observed October 2. No timetable clocks retained."
+              }
+            }
+          }
+        },
+        {
+          "name": "姪浜三丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4689",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4689",
+            "recordSha256": "49ddf5269d138015223d98e9b2e60183cc666533a0cc7dcdc3fd23afc29e2e8b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜三丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "名柄団地",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4605",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4605",
+            "recordSha256": "74ced05406f83d9d8bc51d30287ff1f413f437d2b8dbad192c66c06ca493a44d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "名柄団地",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "愛宕浜四丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4635",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4635",
+            "recordSha256": "1c6d2908c763f8950950873b3519e715b20e3be4cee70276912ac6834aeae7d0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "愛宕浜四丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "マリナタウン第一",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4646",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4646",
+            "recordSha256": "3e39322d3bd90679e7eb52f1d559d51c55eba5a6823cad28acf2abb0979ba2d4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "マリナタウン第一",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "愛宕浜一丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4596",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4596",
+            "recordSha256": "26f6044f9c3be01dc63363234c40e59a88de203ac3c925e6aca65b6405bc175b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "愛宕浜一丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "マリナタウン第二",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4561",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4561",
+            "recordSha256": "674ae6d4ba53986bd8ef909a384973d86d741daf14f52bc897789f571aec3365",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "マリナタウン第二",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "愛宕浜二丁目",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4548",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4548",
+            "recordSha256": "8e95bb201db05c49942839a41ab2834ee06dcde2726ee53b3764eddde1d7246e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "愛宕浜二丁目",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "福岡女子高前",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4525",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4525",
+            "recordSha256": "c98f6fbed669a52db93956fc12168db5a0d1417f9fc769ff83def192004d7402",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "福岡女子高前",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "能古渡船場",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4489",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4489",
+            "recordSha256": "73a402a5751a5399a1bcc064bd06765fcb8776a4759cbafe0a6488fcbfaa718c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "能古渡船場",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_LOOP_TWO_INDEPENDENT_CONTIGUOUS_ASYMMETRIC_SECTIONS_AND_EXACT_P11",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_JULY_4_2026_REVISION_ACTUAL_WEEKDAY_LOOP_OBSERVED_OCTOBER_2_NOT_REALTIME"
+    },
+    {
+      "factId": "meinohama-subway-west-public-gate-north-exit-to-current-nishitetsu-road-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:fukuoka-subway:current-meinohama-public-north-exit",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_meinohama.jpg",
+      "observedResponseSha256": "fbe881eab2bb0ef7e2e762cb75b423b52d345e74965ebe5d5bb5ac1ed3b0121f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:fukuoka-subway:current-meinohama-public-north-exit",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/meinohama.php?lan=ja",
+          "observedResponseSha256": "4987464f667f1b2f539c23ef5a458b24676e8713c9bd8b186f18e33baf516cbe"
+        },
+        {
+          "sourceActionId": "hub:fukuoka-subway:current-meinohama-public-north-exit",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/meinohama_sisetu.php",
+          "observedResponseSha256": "2501de4dc806bf36bb2b829e85b417aa641ff27e66d4ad16610bcc28c93f507f"
+        },
+        {
+          "sourceActionId": "ferry:fukuoka-city:current-meinohama-noko-public-bus-gateway",
+          "url": "https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/qa_1.html",
+          "observedResponseSha256": "0a0c2179a329f3d6cb98a85e8dd36c8996d67e4b95593471041244f2761b08e1"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0001%2C560210&ns=1",
+          "observedResponseSha256": "263dec448f29a7d9593ea8af65441453fbd16ffce01877c3f9da7a0c83b3449e"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+          "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+        }
+      ],
+      "locator": "Individually viewed current subway map explicitly connects platform access and west fare gate with the public ground-level north exit. Ferry-authority current FAQ explicitly instructs Meinohama north-stop 1/98, independently corroborated by current actual carrier loop. Coarse whole Airport-line railway to exact P11 Nishitetsu north road-stop only. Exclude south exit wording on conflicting city route-index page, other operators at the station, pole-level paths, bus-as-walk substitution, timing, paid-gate bypass and universal step-free claims.",
+      "components": [
+        {
+          "name": "姪浜",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "姪浜駅北口",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4825",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4825",
+            "recordSha256": "64c6ad0056f9ca9adcbad8535b108fbcc9bdf21921ee6b69e213a356a43376fc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "姪浜駅北口",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_SUBWAY_PUBLIC_NORTH_EXIT_AND_EXPLICIT_CARRIER_FERRY_ACCESS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "meinohama-existing-licensed-ferry-terminal-current-noko-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "ferry:fukuoka-city:current-meinohama-noko-public-bus-gateway",
+      "sourceUrl": "https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/qa_1.html",
+      "observedResponseSha256": "0a0c2179a329f3d6cb98a85e8dd36c8996d67e4b95593471041244f2761b08e1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "ferry:fukuoka-city:current-meinohama-noko-public-bus-gateway",
+          "url": "https://www.city.fukuoka.lg.jp/kowan/somu/hakata-port/access.html",
+          "observedResponseSha256": "4b28ea3c56576fade184571be47efdcb6b3bbb499c5240d698197a2fcab962e0"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busikisaki&list=0001%2C722011&ns=1",
+          "observedResponseSha256": "087706f1efa227cbd42f8165a4701b7d61ab3fc5bab45dfd507ecb941fdd1c44"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu:current-meinohama-noko-ferry-loop",
+          "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+          "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+        }
+      ],
+      "locator": "Current ferry authority FAQ specifically names Meinohama waiting terminal for Noko/Oro services and directs passengers to alight at Noko Tosenba bus stop. Current August 27 port access page confirms this exact passenger terminal, while current carrier loop identifies its boarding-only and alighting-only stop. Bind existing licensed ferry [04] terminal and exact P11 Nishitetsu wharf road-stop at whole-facility scope, preserving ferries and restrictions. No other harbour, parking facility, island-side Noko terminal, cross-operator join, precise pole/berth or walking-time claim.",
+      "components": [
+        {
+          "name": "能古渡船場",
+          "operator": "西日本鉄道（株）",
+          "line": "p11-stop:P11-22_40:bs4489",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs4489",
+            "recordSha256": "73a402a5751a5399a1bcc064bd06765fcb8776a4759cbafe0a6488fcbfaa718c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Licensed P11 exact single-operator road-stop representative and historical 98 route context independently match current carrier actual 98 calls. This identity is the same-operator whole road stop, not a current directional pole. Current side/direction descriptors are retained in source-bound continuity review; no other operators, municipal community stops, street-crossing edges, precise pole coordinates or nearby-name substitution.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西日本鉄道（株）",
+              "currentOperatorName": "西日本鉄道株式会社",
+              "currentStopName": "能古渡船場",
+              "historicalRoute": "98［能古渡船場～姪浜駅］",
+              "url": "https://jik.nishitetsu.jp/busroute?f=busbin&f_list=0001,560210,02&t_list=0001,722011,06&jigyosha_cd=0001&use_st_date=2026/07/04&keito_cd=154102&yobi_cd=1&bin_no=014&forder_cd=012&torder_cd=023&keito_no=0&jkn_busnavi=1&sdate=2026/10/02",
+              "observedResponseSha256": "72376bc7a7cbf4e7201e2b349b2daa833e47098e1d6682a35ddcebc7b7aee0fa"
+            }
+          }
+        },
+        {
+          "name": "姪浜旅客待合所",
+          "operator": "福岡市営渡船",
+          "line": "gtfs:fukuoka-ferry:route:[02]能古航路",
+          "nodeKind": "ferry_port",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:fukuoka-ferry",
+            "stopId": "[04]姪浜旅客待合所",
+            "sourceArchiveSha256": "b39a7590d454e37a400f724472e4969133c7b9f54b8600dce68bc47fa0da1b9e",
+            "recordSha256": "e844d8cdbd185ab7d6bdfdde6b4ea77d5f398588d854233422c9f807a5af4cdf",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current ferry authority FAQ specifically names Meinohama waiting terminal for Noko/Oro services and directs passengers to alight at Noko Tosenba bus stop. Current August 27 port access page confirms this exact passenger terminal, while current carrier loop identifies its boarding-only and alighting-only stop. Bind existing licensed ferry [04] terminal and exact P11 Nishitetsu wharf road-stop at whole-facility scope, preserving ferries and restrictions. No other harbour, parking facility, island-side Noko terminal, cross-operator join, precise pole/berth or walking-time claim."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_FERRY_AUTHORITY_EXPLICIT_NAMED_BUS_STOP_AND_EXISTING_LICENSED_TERMINAL",
+      "hubScopeComplete": false
+    }
+  ]
+}

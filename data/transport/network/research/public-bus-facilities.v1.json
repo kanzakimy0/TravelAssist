@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "facilities": [
+    {
+      "archivePath": "sources/raw/niijima-p05-tokyo.zip",
+      "extraction": {
+        "dataset": "P05-22",
+        "archiveSha256": "576e86da9142bedb839cae3b09e074a1c1a63264349b8adc41365c7574a309e5",
+        "nativeRecordSha256": "034630300011ea35ee6ae683e33be60e195f2406f1faafbe6166d55918b54f91",
+        "member": "P05-22_13.geojson",
+        "memberSha256": "df3bdefc71b1d9e22cdfe90405374f022fe7637ec0460c5b3995cbc276d46156",
+        "featureIndex": 2898
+      },
+      "nativeIdentity": {
+        "dataset": "P05-22",
+        "nativeRecord": {
+          "type": "Feature",
+          "properties": {
+            "P05_001": "13363",
+            "P05_002": "5",
+            "P05_003": "新島住民センター",
+            "P05_004": "新島村本村1-1-1"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              139.256576,
+              34.377138
+            ]
+          }
+        },
+        "nativeRecordSha256": "034630300011ea35ee6ae683e33be60e195f2406f1faafbe6166d55918b54f91",
+        "archiveSha256": "576e86da9142bedb839cae3b09e074a1c1a63264349b8adc41365c7574a309e5",
+        "memberSha256": "df3bdefc71b1d9e22cdfe90405374f022fe7637ec0460c5b3995cbc276d46156",
+        "featureIndex": 2898,
+        "name": "新島住民センター",
+        "address": "新島村本村1-1-1",
+        "latitude": 34.377138,
+        "longitude": 139.256576,
+        "municipalityCode": "13363",
+        "identityAnchor": "mlit-p05:22:13:新島住民センター:新島村本村1-1-1"
+      },
+      "nativeIdentityEvidenceRef": "transport-evidence:086:01c137baf90dde66e3978659265b251f",
+      "componentEvidenceRefs": [
+        "transport-evidence:086:6f962c40c21e0c40de50b04df93d415d",
+        "transport-evidence:086:75cc748ebd4df13257d61209c7dda29e"
+      ],
+      "sourcePackagePaths": [
+        "sources/niijima-static-5181a2e5a8ab3ba2.json",
+        "sources/niijima-static-ccfb159d7262a88a.json",
+        "sources/niijima-static-6f6b5aaf80c0196a.json",
+        "sources/niijima-static-6a7ed6b070cc7cc5.json",
+        "sources/niijima-static-3e438b6d1a8c6819.json",
+        "sources/niijima-static-b2806eab4ab0009c.json"
+      ],
+      "serviceOperator": "新島村",
+      "lineRef": "niijima:fureai-bus"
+    },
+    {
+      "archivePath": "sources/raw/niijima-tokyo-official-evacuation.csv",
+      "extraction": {
+        "dataset": "TOKYO_PUBLIC_EVACUATION_FACILITIES",
+        "archiveSha256": "dc6cc97a78d613ae4beab1dfbbd56280a3652d67f5f49ba31c39a5579d22483d",
+        "nativeRecordSha256": "e9789a74635796b403c501c7cf3ed85ce6b132c89ae39c0f3cf937e7d1084d43",
+        "header": [
+          "避難所_施設名称",
+          "地方公共団体コード",
+          "都道府県",
+          "指定市区町村名",
+          "所在地住所",
+          "緯度",
+          "経度",
+          "エレベーター有/\n避難スペースが１階",
+          "スロープ等",
+          "点字ブロック",
+          "車椅子使用者対応トイレ",
+          "その他"
+        ],
+        "headerRowIndex": 1,
+        "rowCount": 1046315,
+        "emptyRowCount": 1043754,
+        "logicalRowIndex": 2503
+      },
+      "nativeIdentity": {
+        "dataset": "TOKYO_PUBLIC_EVACUATION_FACILITIES",
+        "nativeRecord": {
+          "避難所_施設名称": "さわやか健康センター",
+          "地方公共団体コード": "133639",
+          "都道府県": "東京都",
+          "指定市区町村名": "新島村",
+          "所在地住所": "新島村本村3-12-8",
+          "緯度": "34.37261000 ",
+          "経度": "139.25970500 ",
+          "エレベーター有/\n避難スペースが１階": "○",
+          "スロープ等": "",
+          "点字ブロック": "",
+          "車椅子使用者対応トイレ": "",
+          "その他": "自動ドア"
+        },
+        "nativeRecordSha256": "e9789a74635796b403c501c7cf3ed85ce6b132c89ae39c0f3cf937e7d1084d43",
+        "archiveSha256": "dc6cc97a78d613ae4beab1dfbbd56280a3652d67f5f49ba31c39a5579d22483d",
+        "logicalRowIndex": 2503,
+        "name": "さわやか健康センター",
+        "address": "新島村本村3-12-8",
+        "latitude": 34.37261,
+        "longitude": 139.259705,
+        "municipalityCode": "133639",
+        "identityAnchor": "tokyo-evacuation-facility:133639:さわやか健康センター:新島村本村3-12-8"
+      },
+      "nativeIdentityEvidenceRef": "transport-evidence:086:82bee0949d9f80c4eeb8517727f7b13f",
+      "componentEvidenceRefs": [
+        "transport-evidence:086:278689cc7dc1ec77259aebfd92b9ea5a",
+        "transport-evidence:086:48ccc3cff0689c1e1ee071e751c964c7"
+      ],
+      "sourcePackagePaths": [
+        "sources/niijima-static-5181a2e5a8ab3ba2.json",
+        "sources/niijima-static-ccfb159d7262a88a.json",
+        "sources/niijima-static-6f6b5aaf80c0196a.json",
+        "sources/niijima-static-6a7ed6b070cc7cc5.json",
+        "sources/niijima-static-3e438b6d1a8c6819.json",
+        "sources/niijima-static-b2806eab4ab0009c.json"
+      ],
+      "serviceOperator": "新島村",
+      "lineRef": "niijima:fureai-bus"
+    },
+    {
+      "archivePath": "sources/raw/kikai-p04-20_46.zip",
+      "extraction": {
+        "dataset": "P04-20",
+        "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+        "member": "P04-20_46_GML/P04-20_46.geojson",
+        "memberSha256": "76a22c6e5c92674648099a96c7dbc8ca0e97a3e61e47c505a44f0a23a6f684a0",
+        "featureIndex": 466,
+        "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235"
+      },
+      "nativeIdentity": {
+        "dataset": "P04-20",
+        "member": "P04-20_46_GML/P04-20_46.geojson",
+        "featureIndex": 466,
+        "nativeRecord": {
+          "type": "Feature",
+          "properties": {
+            "P04_001": 1,
+            "P04_002": "医療法人徳洲会　喜界徳洲会病院",
+            "P04_003": "大島郡喜界町湾字前金久３１５",
+            "P04_004": "内　神内　消　循　小　外　整　脳　皮　泌　産婦　眼　耳　リハ　形",
+            "P04_005": null,
+            "P04_006": null,
+            "P04_007": 4,
+            "P04_008": 89,
+            "P04_009": 1,
+            "P04_010": 9
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              129.93325886725643,
+              28.31792737863217
+            ]
+          }
+        },
+        "nativeRecordSha256": "388739034cb5caa0ad68d27bdb8698dc289159d0fe2e2a5864a8948e44eec235",
+        "archiveSha256": "7df01d1bd444b62af89714eb0df07612cd18a29cfd32001e63a159b940a6562d",
+        "memberSha256": "76a22c6e5c92674648099a96c7dbc8ca0e97a3e61e47c505a44f0a23a6f684a0",
+        "name": "医療法人徳洲会　喜界徳洲会病院",
+        "address": "大島郡喜界町湾字前金久３１５",
+        "longitude": 129.93325886725643,
+        "latitude": 28.31792737863217,
+        "identityAnchor": "mlit-p04:20:46:feature466:historical-hospital-front-stop",
+        "nativeFacilityStatus": "HISTORICAL_2020_SITE_NOT_CURRENT_HOSPITAL",
+        "coordinateScope": "OFFICIAL_HISTORICAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+      },
+      "nativeIdentityEvidenceRef": "transport-evidence:086:5361d1d37e8c004264bccdce641439c9",
+      "componentEvidenceRefs": [
+        "transport-evidence:086:ad856a77d2ed8e26f6f8f060718090e2",
+        "transport-evidence:086:d57294d16aa010c4dc7fc0362a867ae0"
+      ],
+      "serviceOperator": "喜界町",
+      "lineRef": "kikai:municipal-central",
+      "sourcePackagePaths": [
+        "sources/kikai226-static-fb15e72a06798a8e.json",
+        "sources/kikai226-static-3639f8ab8ce6a8e0.json",
+        "sources/kikai226-static-76b139fcd3854b12.json",
+        "sources/kikai226-static-f948176cb8237d52.json"
+      ]
+    },
+    {
+      "archivePath": "sources/raw/hateruma-abr-master-473812.zip",
+      "positionArchivePath": "sources/raw/hateruma-abr-position-473812.zip",
+      "extraction": {
+        "dataset": "ABR_EXACT_MUNICIPAL_PUBLIC_FACILITY_PARCEL",
+        "archiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+        "positionArchiveSha256": "a5ec9ac3cac764b83f198c636877d142e37969d6bda5b7099e151854ab800092",
+        "review": {
+          "nativeKey": {
+            "lg_code": "473812",
+            "machiaza_id": "0009000",
+            "prc_id": "027800000000000"
+          },
+          "masterRecordSha256": "7a716b135d568798350b45d42b596dfbd0000b18b0efd91164802fc0b15c5c6a",
+          "positionRecordSha256": "54217f71f4ec300e76e2221a9f09c43cf4a66d0b100305e5390339e3b78dc699",
+          "municipalFacilityAddressReview": {
+            "kind": "REVIEWED_OFFICIAL_NAMED_FACILITY_EXACT_PARCEL",
+            "sourceFactId": "hateruma:municipal-park-exact-address:2016:p8",
+            "sourceActionId": "hateruma:municipal-park-identity",
+            "sourceUrl": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+            "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925",
+            "municipalityCode": "473812",
+            "city": "竹富町",
+            "oazaCho": "字波照間",
+            "parcelNumbers": [
+              "2780",
+              "",
+              ""
+            ],
+            "facilityName": "ムシャマー公園",
+            "officialAddress": "竹富町字波照間2780番地",
+            "areaSquareMetres": 4000,
+            "physicalPage": 8,
+            "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "coordinateProximityUsed": false,
+            "googleCoordinatesUsed": false
+          },
+          "municipalFacilityAddressReviewSha256": "9dd38d3240acc83f91922e4b634dd19b910f36e1efa3a92a6bb34dc8e8e95c60",
+          "masterArchiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+          "masterMember": "mt_parcel_city473812.csv",
+          "masterMemberSha256": "2cce18c452ac061563c465c50970cb942247047b134d50ab95030f1e81fdec4f",
+          "positionArchiveSha256": "a5ec9ac3cac764b83f198c636877d142e37969d6bda5b7099e151854ab800092",
+          "positionMember": "mt_parcel_pos_city473812.csv",
+          "positionMemberSha256": "c88c3374661801a3a9e8447ffd2d97575a5fe85b77f27179dbb9377325abb440"
+        }
+      },
+      "nativeIdentity": {
+        "dataset": "ABR_EXACT_MUNICIPAL_PUBLIC_FACILITY_PARCEL",
+        "nativeRecord": {
+          "master": {
+            "lg_code": "473812",
+            "machiaza_id": "0009000",
+            "prc_id": "027800000000000",
+            "city": "竹富町",
+            "ward": "",
+            "oaza_cho": "字波照間",
+            "chome": "",
+            "koaza": "",
+            "machiaza_dist": "",
+            "prc_num1": "2780",
+            "prc_num2": "",
+            "prc_num3": "",
+            "rsdt_addr_flg": "0",
+            "prc_rec_flg": "1",
+            "prc_area_code": "",
+            "efct_date": "1947-04-17",
+            "ablt_date": "",
+            "src_code": "1",
+            "remarks": "",
+            "real_prop_num": ""
+          },
+          "position": {
+            "lg_code": "473812",
+            "machiaza_id": "0009000",
+            "prc_id": "027800000000000",
+            "rep_lon": "123.775640806",
+            "rep_lat": "24.060652813",
+            "rep_srid": "EPSG:6668",
+            "rep_scale": "500",
+            "rep_src_code": "1",
+            "plygn_fname": "",
+            "plygn_kcode": "",
+            "plygn_fmt": "",
+            "plygn_srid": "EPSG:6668",
+            "plygn_scale": "500",
+            "plygn_src_code": "1",
+            "moj_map_city_code": "47381",
+            "moj_map_oaza_code": "007",
+            "moj_map_chome_code": "000",
+            "moj_map_koaza_code": "0000",
+            "moj_map_spare_code": "00",
+            "moj_map_brushid": "H000001154"
+          },
+          "municipalFacilityAddressReview": {
+            "kind": "REVIEWED_OFFICIAL_NAMED_FACILITY_EXACT_PARCEL",
+            "sourceFactId": "hateruma:municipal-park-exact-address:2016:p8",
+            "sourceActionId": "hateruma:municipal-park-identity",
+            "sourceUrl": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+            "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925",
+            "municipalityCode": "473812",
+            "city": "竹富町",
+            "oazaCho": "字波照間",
+            "parcelNumbers": [
+              "2780",
+              "",
+              ""
+            ],
+            "facilityName": "ムシャマー公園",
+            "officialAddress": "竹富町字波照間2780番地",
+            "areaSquareMetres": 4000,
+            "physicalPage": 8,
+            "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "coordinateProximityUsed": false,
+            "googleCoordinatesUsed": false
+          }
+        },
+        "nativeRecordSha256": "ed9053109691fbe8f0be97f941abb6d97539f55d61f0cca1440b2d51a48d5d33",
+        "archiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+        "positionArchiveSha256": "a5ec9ac3cac764b83f198c636877d142e37969d6bda5b7099e151854ab800092",
+        "memberSha256": "2cce18c452ac061563c465c50970cb942247047b134d50ab95030f1e81fdec4f",
+        "positionMemberSha256": "c88c3374661801a3a9e8447ffd2d97575a5fe85b77f27179dbb9377325abb440",
+        "name": "ムシャマー公園",
+        "address": "竹富町字波照間2780番地",
+        "municipalityCode": "473812",
+        "latitude": 24.060652813,
+        "longitude": 123.775640806,
+        "coordinateReferenceSystem": "EPSG:6668",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "identityAnchor": "abr-parcel:473812:0009000:027800000000000:municipal-public-facility"
+      },
+      "nativeIdentityEvidenceRef": "transport-evidence:086:cb8fca4343719348f9c99d9df3eba5a2",
+      "nativeSupplementalEvidenceRefs": [
+        "transport-evidence:086:9530875139412c6f0503c1eda4447676",
+        "transport-evidence:086:8bcd4d18662a54e34693cc31e40af6bd",
+        "transport-evidence:086:9d5ea227ca3a5b3f6aa2c0eeeb3b0be7",
+        "transport-evidence:086:5c8b8f8357a313e8ab6d6933c8515dfe",
+        "transport-evidence:086:64543feb963618c7a01362a2b25e8c3d"
+      ],
+      "componentEvidenceRefs": [
+        "transport-evidence:086:c380646d30e0e70d652548f97b6c6d58",
+        "transport-evidence:086:273b676cdfbdc8e6e4d0d0126e536b70"
+      ],
+      "serviceOperator": "竹富町",
+      "lineRef": "hateruma:airport-public-shuttle",
+      "sourcePackagePaths": [
+        "sources/hateruma229-2fc6122fecb6.json",
+        "sources/hateruma229-8d1638aaca2a.json",
+        "sources/hateruma229-fcff3db5a91a.json",
+        "sources/hateruma229-9ca8e7bd4c8a.json",
+        "sources/hateruma229-b021c3c9b5b8.json",
+        "sources/hateruma229-5b7e14ddd8e9.json",
+        "sources/hateruma229-9b8779587104.json",
+        "sources/hateruma229-bae01130a05f.json",
+        "sources/hateruma229-e0443037cd5f.json",
+        "sources/hateruma229-87f82cad6d12.json"
+      ]
+    }
+  ]
+}

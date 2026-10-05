@@ -1,0 +1,245 @@
+{
+  "phaseId": "091-tokyo-four-hub-passages-and-narimasu-t1-connection",
+  "strategy": [
+    "CURRENT_PRIMARY_METRO_INTERCHANGE_DIAGRAMS",
+    "INDEPENDENT_KEISEI_PASSAGE_CORROBORATION",
+    "MUNICIPAL_AND_CURRENT_METRO_LAWFUL_TOBU_ALTERNATIVE"
+  ],
+  "completedActionIds": [
+    "hub:tokyo:current-metro-four-concourses",
+    "hub:ueno:current-keisei-metro-passage",
+    "hub:narimasu:municipal-and-metro-public-connection"
+  ],
+  "facts": [
+    {
+      "factId": "ueno-metro-keisei-public-underground-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_ueno_all.jpg",
+      "observedResponseSha256": "339fec845b1f66a7255e271acc1c100e9ab62b6eaa718f11123d3c62ce9f96eb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+          "url": "https://www.tokyometro.jp/station/ueno/index.html",
+          "observedResponseSha256": "6d86c4eccb5cef2216d986272708bf55aeee284fa64ecd60baa69b71e28dfa85"
+        },
+        {
+          "sourceActionId": "hub:ueno:current-keisei-metro-passage",
+          "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/traffic/ueno.php",
+          "observedResponseSha256": "975586c2979044686f02dc9c39e71b79b4c6b00a23a0f35eb7f0b23effebf2e3"
+        },
+        {
+          "sourceActionId": "hub:ueno:current-keisei-metro-passage",
+          "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/assets/images/traffic/ueno/02ueno03.jpg",
+          "observedResponseSha256": "78b49b2f17f75bb0bd9c8b0a5cb47e8e48cae1e0b0160d85fe9e6a4c54ed499c"
+        }
+      ],
+      "locator": "The Metro Ueno current-linked layout explicitly directs passengers from its west public concourse toward Keisei Line near exit 6. The independent current Keisei Ueno concourse diagram labels a Tokyo Metro connecting passage outside its ticket gate and front entrance, establishing both ends of the public underground connection. This is an out-of-paid-area walking transfer. Bind independently reviewed exact S12 operator/line components. No copied artwork, same-name merge, proximity-derived edge, live platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "上野",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        },
+        {
+          "name": "京成上野",
+          "operator": "京成電鉄",
+          "line": "本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_PASSAGE_AND_INDEPENDENT_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mitsukoshimae-shinnihombashi-public-underground-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_mitsukoshimae_all.jpg",
+      "observedResponseSha256": "d9b2400fcf13ac1a5ab42a642d877348a2dd8af7d45ce9db72b87d3337d80fc2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+          "url": "https://www.tokyometro.jp/station/mitsukoshimae/index.html",
+          "observedResponseSha256": "8f3b095156a3f34552a8f86cdc0822e8dc0e437f91c6075d3bf7a3d958f4cbb0"
+        }
+      ],
+      "locator": "The current-linked May 2025 Mitsukoshimae diagram depicts the northern Ginza Line gate/public passage alongside A8/A10 explicitly continuing to JR Line, the independently identified Shin-Nihombashi Sobu Line station. Preserve the separate JR and Metro components and this physical underground walking connection. Bind independently reviewed exact S12 operator/line components. No copied artwork, same-name merge, proximity-derived edge, live platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "三越前",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        },
+        {
+          "name": "新日本橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_PASSAGE_AND_INDEPENDENT_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "akasakamitsuke-nagatacho-continuous-paid-passages",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_akasaka-mitsuke_all.jpg",
+      "observedResponseSha256": "ea962fc97aef49395b5e7adc15bc4e89964b61699b12e090163fb2d40135b308",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+          "url": "https://www.tokyometro.jp/station/akasaka-mitsuke/index.html",
+          "observedResponseSha256": "a8116e9509e7df8695931156729ca3e6e70733879db52f83aabccb8030da8b5e"
+        }
+      ],
+      "locator": "The current-linked November 2025 joint Akasaka-mitsuke/Nagatacho layout explicitly depicts continuous paid passenger corridors and vertical links from the Marunouchi/Ginza platforms via the Hanzomon connection to the Yurakucho/Namboku concourse. Review the actual inter-station passenger connection between the two existing physical Metro components. Bind independently reviewed exact S12 operator/line components. No copied artwork, same-name merge, proximity-derived edge, live platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "赤坂見附",
+          "operator": "東京地下鉄",
+          "line": "4号線丸ノ内線",
+          "mode": "metro"
+        },
+        {
+          "name": "永田町",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_PASSAGE_AND_INDEPENDENT_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "ayase-jr-metro-shared-platform-concourse",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_ayase_all.jpg",
+      "observedResponseSha256": "4f6f13f60e6d8f31853f3b46bf2cf5a2e3ab84312c74bc85b4e7d5ec5679f29d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-metro-four-concourses",
+          "url": "https://www.tokyometro.jp/station/ayase/index.html",
+          "observedResponseSha256": "a494aff6afa126f81fdc27295031b9f42ab9af64aae17dfe2dfa778190008860"
+        }
+      ],
+      "locator": "The current-linked September 2025 Ayase layout explicitly labels JR Joban Line Abiko direction on the common platforms and depicts their stairs/lifts to the shared east/west gate concourses. Review the physical passenger interchange of the independently admitted JR and Metro components. This transfer does not invent a through-service train or collapse company identities. Bind independently reviewed exact S12 operator/line components. No copied artwork, same-name merge, proximity-derived edge, live platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "綾瀬",
+          "operator": "東京地下鉄",
+          "line": "9号線千代田線",
+          "mode": "metro"
+        },
+        {
+          "name": "綾瀬",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_PASSAGE_AND_INDEPENDENT_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "narimasu-metro-tobu-public-south-entrance-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:narimasu:municipal-and-metro-public-connection",
+      "sourceUrl": "https://www.tokyometro.jp/station/chikatetsu-narimasu/accessibility/index.html",
+      "observedResponseSha256": "b9b5707f038cbdebda385ed3f5d05e350331d03612d061007957635763dc55de",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:narimasu:municipal-and-metro-public-connection",
+          "url": "https://www.tokyometro.jp/station/chikatetsu-narimasu/yardmap/index.html",
+          "observedResponseSha256": "9fe43e9df7135f982b479b6d7a5c7247114455f3dd50d71618f876f10b056c29"
+        },
+        {
+          "sourceActionId": "hub:narimasu:municipal-and-metro-public-connection",
+          "url": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_chikatetsu-narimasu_all.jpg",
+          "observedResponseSha256": "2797526152ab22b66766ada93903374ed3f0c43766628652d686cca68941a2bc"
+        },
+        {
+          "sourceActionId": "hub:narimasu:municipal-and-metro-public-connection",
+          "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/023/407/r20615_tou_2.pdf",
+          "observedResponseSha256": "f85b76f6c357381ca9d16922698d3efb12e472e738ca88d1bacd616df4dfd8e2"
+        },
+        {
+          "sourceActionId": "hub:narimasu:municipal-and-metro-public-connection",
+          "url": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/061/951/r80217_to_2-2-2.pdf",
+          "observedResponseSha256": "909ba7bb13639a50385405d859d75946d34301630b1526657d6f92e73236202e"
+        }
+      ],
+      "locator": "The city 2020 station-condition review page 4 explicitly identifies the Tobu Narimasu south entrance pedestrian connection to Chikatetsu-narimasu along the shopping-street flow. Current Metro guidance independently names the Tobu Narimasu-direction gate and public exits 4/5; its current-linked December 2023 diagram shows their passenger connection to the Metro platforms. The 2026 municipal station-area plan corroborates continuing station identities. Review this public surface walking connection between two distinct stations, not paid-area continuity or an invented Tobu train pattern. Historical city evidence is used with current operator exit guidance, without asserting unchanged temporary construction conditions. Bind independently reviewed exact S12 operator/line components. No copied artwork, same-name merge, proximity-derived edge, live platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "地下鉄成増",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        },
+        {
+          "name": "成増",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_PASSAGE_AND_INDEPENDENT_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    }
+  ]
+}

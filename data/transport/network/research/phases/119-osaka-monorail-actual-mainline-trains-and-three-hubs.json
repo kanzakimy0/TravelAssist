@@ -1,0 +1,427 @@
+{
+  "phaseId": "119-osaka-monorail-actual-mainline-trains-and-three-hubs",
+  "strategy": [
+    "ACTUAL_CURRENT_DIRECTIONAL_MAINLINE_TRAIN_COLUMNS",
+    "EXPAND_PREVIOUS_SHORT_AIRPORT_SECTION",
+    "PUBLIC_HANKYU_AND_METRO_PASSAGE_CORRESPONDENCE"
+  ],
+  "completedActionIds": [
+    "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+    "hub:hankyu:yamada-minamiibaraki-current-monorail-passages"
+  ],
+  "facts": [
+    {
+      "factId": "osaka-monorail-mainline-actual-weekday-1001",
+      "kind": "service",
+      "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/upload/info/newPDF/he5(1).pdf",
+      "observedResponseSha256": "7215b584bf77c4599094f752f9aba4e1401653b912b14e6be0a7cc82e5c7c840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/info/detail/804",
+          "observedResponseSha256": "6d4224ac69c5d5357c0c1f7aefd48680b024da4eae67127bf59abd2c1ae153d0"
+        },
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/station/",
+          "observedResponseSha256": "ceaa55b5ac8b6e5562829e15cf514836bf37125a7f850bbdbbf648c134a48553"
+        },
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/upload/news/pdf/20260314weekday_main_kudari_2.pdf",
+          "observedResponseSha256": "ab118a22cc50083e9524648268704a17e611ac5f681d5be970e3b1445202db3a"
+        }
+      ],
+      "locator": "Individually viewed March 14 2026 weekday sheet 5, actual down train column 1001. All 14 retained stations have explicit departure/arrival entries. The opposite direction uses its own independently observed train column, not reversal of one train or adjacent-station inference. Only station calls, train identity and direction retained; no clock values or schedule reproduction. Current official timetable announcement and directional station compilation corroborate current operation.",
+      "line": "大阪モノレール本線・大阪空港門真市",
+      "operator": "大阪モノレール",
+      "mode": "fixed_guideway",
+      "serviceClass": "本線旅客列車",
+      "direction": "kadoma-bound",
+      "callingStations": [
+        "大阪空港",
+        "蛍池",
+        "柴原阪大前",
+        "少路",
+        "千里中央",
+        "山田",
+        "万博記念公園",
+        "宇野辺",
+        "南茨木",
+        "沢良宜",
+        "摂津",
+        "南摂津",
+        "大日",
+        "門真市"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪空港",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "蛍池",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "柴原阪大前",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "少路",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "千里中央",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "山田",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "万博記念公園",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "宇野辺",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "南茨木",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "沢良宜",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "摂津",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "南摂津",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大日",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "門真市",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_LICENSED_STATION_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "osaka-monorail-mainline-actual-weekday-1010",
+      "kind": "service",
+      "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/upload/info/newPDF/he5(1).pdf",
+      "observedResponseSha256": "7215b584bf77c4599094f752f9aba4e1401653b912b14e6be0a7cc82e5c7c840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/info/detail/804",
+          "observedResponseSha256": "6d4224ac69c5d5357c0c1f7aefd48680b024da4eae67127bf59abd2c1ae153d0"
+        },
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/station/",
+          "observedResponseSha256": "ceaa55b5ac8b6e5562829e15cf514836bf37125a7f850bbdbbf648c134a48553"
+        },
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/upload/news/pdf/20260314weekday_main_nobori.pdf",
+          "observedResponseSha256": "5948096ec3ae641b63d53ff8f6785af0f3681ed8c73f96a0d5a3c55834701f79"
+        }
+      ],
+      "locator": "Individually viewed March 14 2026 weekday sheet 5, actual up train column 1010. All 14 retained stations have explicit departure/arrival entries. The opposite direction uses its own independently observed train column, not reversal of one train or adjacent-station inference. Only station calls, train identity and direction retained; no clock values or schedule reproduction. Current official timetable announcement and directional station compilation corroborate current operation.",
+      "line": "大阪モノレール本線・大阪空港門真市",
+      "operator": "大阪モノレール",
+      "mode": "fixed_guideway",
+      "serviceClass": "本線旅客列車",
+      "direction": "airport-bound",
+      "callingStations": [
+        "門真市",
+        "大日",
+        "南摂津",
+        "摂津",
+        "沢良宜",
+        "南茨木",
+        "宇野辺",
+        "万博記念公園",
+        "山田",
+        "千里中央",
+        "少路",
+        "柴原阪大前",
+        "蛍池",
+        "大阪空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "門真市",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大日",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "南摂津",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "摂津",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "沢良宜",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "南茨木",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "宇野辺",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "万博記念公園",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "山田",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "千里中央",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "少路",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "柴原阪大前",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "蛍池",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大阪空港",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_LICENSED_STATION_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "osaka-monorail-r16_yamada-reviewed-public-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/station/pdf/r16_yamada_s.pdf",
+      "observedResponseSha256": "e374c4f13063dd88c63c35909973496db2f33e27eeb929ebc043f0c717f5c896",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/station/r16_yamada/",
+          "observedResponseSha256": "9995dc796391d4883a8e258a65f998a3a1f194ad0b3bdc7ae137a042b62bcce8"
+        },
+        {
+          "sourceActionId": "hub:hankyu:yamada-minamiibaraki-current-monorail-passages",
+          "url": "https://www.hankyu.co.jp/station/yamada.html",
+          "observedResponseSha256": "214eb2c3d5df836c90e621c6e7dd167707dd2a10ad3f2acf62fc970fe48d684a"
+        },
+        {
+          "sourceActionId": "hub:hankyu:yamada-minamiibaraki-current-monorail-passages",
+          "url": "https://www.hankyu.co.jp/station/map/img/yamada.svg",
+          "observedResponseSha256": "cbbdbf0b949cd41ccbc889bc3bbcdbd0251ca45e1885b76b3b5514164ceee1b6"
+        }
+      ],
+      "locator": "Individually viewed July 2022 diagram still linked by current operator station page. Monorail 3F platforms descend to the 2F gate and the public approach marked Hankyu/Dew Yamada; current Hankyu diagram reciprocally signs Osaka Monorail from its west gate. Keep minimum physical relation and separate operator identities; no raw map, paid-area equivalence, walking duration or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "山田",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "山田",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-monorail-r19_minami_iba-reviewed-public-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/station/pdf/r19_minami_iba_s.pdf",
+      "observedResponseSha256": "452f352360d9d03e09deca2361cc6d042dba56910695225f1c13d583674724b6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/station/r19_minami_iba/",
+          "observedResponseSha256": "19661bd272bfe16cce0ce9cfeeadbd9caf904a7334453468ed5a5217c6542b21"
+        },
+        {
+          "sourceActionId": "hub:hankyu:yamada-minamiibaraki-current-monorail-passages",
+          "url": "https://www.hankyu.co.jp/station/minamiibaraki.html",
+          "observedResponseSha256": "86e66cc4c233a8b557a9c5676a5f84ac6c543f276feed2f272574c242775b0b1"
+        },
+        {
+          "sourceActionId": "hub:hankyu:yamada-minamiibaraki-current-monorail-passages",
+          "url": "https://www.hankyu.co.jp/station/map/img/minamiibaraki.svg",
+          "observedResponseSha256": "feb46ee750151137d2d005ad31a5e4e12ca286df0a7d95774b28cae4739e6b08"
+        }
+      ],
+      "locator": "Individually viewed July 2022 diagram still linked by current operator station page. Monorail 3F platforms descend to the 2F gate and the public concourse marked Hankyu; current Hankyu diagram explicitly joins its public concourse to Osaka Monorail Minamiibaraki. Keep minimum physical relation and separate operator identities; no raw map, paid-area equivalence, walking duration or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "南茨木",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "南茨木",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-monorail-r23_dainichi-reviewed-public-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/station/pdf/r23_dainichi_s.pdf",
+      "observedResponseSha256": "629bac56a4afbdd2e85d97032b5361f806cd01c79a563f7948d1fd860efb5497",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:osaka-monorail:current-mainline-train-1001-1010-and-three-hubs",
+          "url": "https://www.osaka-monorail.co.jp/station/r23_dainichi/",
+          "observedResponseSha256": "2782a9af1725b4d68c08bd5d40769ed54f0910ba0eb0a0a90b4995e19cd084e5"
+        }
+      ],
+      "locator": "Individually viewed July 2022 diagram still linked by current operator station page. Monorail platforms connect to both 2F and 1F gates; the 1F public passage is explicitly signed for subway Tanimachi line. Keep minimum physical relation and separate operator identities; no raw map, paid-area equivalence, walking duration or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "大日",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大日",
+          "operator": "大阪市高速電気軌道",
+          "line": "2号線(谷町線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

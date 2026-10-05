@@ -1,0 +1,183 @@
+{
+  "scope": "publication-only pre-push working tree checks; not a new-head CI assertion",
+  "records": [
+    {
+      "step": "publication-artifact-internal-dependencies",
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T10:59:57.466719+00:00",
+      "endedAt": "2026-10-05T10:59:59.591047+00:00",
+      "elapsedSeconds": 2.12,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-artifact-internal-dependencies.log",
+      "logSha256": "aa3e7698a99f3da17fc98e62ab4ec4887a20b48e4e388d8fb91e9ea768fa5889"
+    },
+    {
+      "step": "publication-assets-after-manifest-rename",
+      "command": [
+        "node",
+        "tools/qa/task-086-regression-lanes.mjs",
+        "assets"
+      ],
+      "timeoutSeconds": 300,
+      "status": "FAIL",
+      "exitCode": 1,
+      "startedAt": "2026-10-05T10:57:22.823118+00:00",
+      "endedAt": "2026-10-05T10:58:23.742642+00:00",
+      "elapsedSeconds": 60.92,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-assets-after-manifest-rename.log",
+      "logSha256": "2f6ea9ef3d2266694c5cc83184495b1eb51ac3ef0d850f3b5032d7b68900ef3b"
+    },
+    {
+      "step": "publication-assets-stable-dependencies",
+      "command": [
+        "node",
+        "tools/qa/task-086-regression-lanes.mjs",
+        "assets"
+      ],
+      "timeoutSeconds": 300,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T11:01:11.378527+00:00",
+      "endedAt": "2026-10-05T11:02:33.876452+00:00",
+      "elapsedSeconds": 82.5,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-assets-stable-dependencies.log",
+      "logSha256": "ea161dc7674581d2f986512db9502bdc9059f7cc4563c9898d1688dd79b2fdda"
+    },
+    {
+      "step": "publication-binding-focused",
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "tests/task-086-publication-recovery.test.mjs"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T10:59:44.651836+00:00",
+      "endedAt": "2026-10-05T10:59:45.544789+00:00",
+      "elapsedSeconds": 0.89,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-binding-focused.log",
+      "logSha256": "677dbe796fde78ce16e805638bc2386154f58633080aeedd2fb67647bb33a4ab"
+    },
+    {
+      "step": "publication-build-internal-dependencies",
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:build:local"
+      ],
+      "timeoutSeconds": 600,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T10:58:24.574706+00:00",
+      "endedAt": "2026-10-05T10:59:57.341540+00:00",
+      "elapsedSeconds": 92.77,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-build-internal-dependencies.log",
+      "logSha256": "c80498ead76b6f6eeb3c004b10a19eade5809cd9e3a45cdba9a802db013763b2"
+    },
+    {
+      "step": "publication-final-scoped-quality",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "tools/transport/task-086-verify.mjs",
+        "tools/transport/task-086-validation-lanes.mjs",
+        "tools/transport/task-086-validation.mjs",
+        "tools/qa/task-086-regression-lanes.mjs",
+        "tests/task-086-publication-recovery.test.mjs"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T11:02:34.003591+00:00",
+      "endedAt": "2026-10-05T11:03:15.141741+00:00",
+      "elapsedSeconds": 41.14,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-final-scoped-quality.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "publication-focused",
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "tests/task-086-publication-recovery.test.mjs",
+        "tests/task-086-b-mobility-backbone.test.mjs",
+        "tests/task-086-b-autonomous-remediation.test.mjs",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-native-gtfs-transfer.test.mjs"
+      ],
+      "timeoutSeconds": 600,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T10:48:00.962468+00:00",
+      "endedAt": "2026-10-05T10:48:12.480495+00:00",
+      "elapsedSeconds": 11.52,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-focused.log",
+      "logSha256": "142382e8a968e5d5a44fc1772c94590d90d28ed2bfcbf747feec85e46e93cb78"
+    },
+    {
+      "step": "publication-local-assets",
+      "command": [
+        "node",
+        "tools/qa/task-086-regression-lanes.mjs",
+        "assets"
+      ],
+      "timeoutSeconds": 300,
+      "status": "FAIL",
+      "exitCode": 1,
+      "startedAt": "2026-10-05T10:50:34.382577+00:00",
+      "endedAt": "2026-10-05T10:52:09.195711+00:00",
+      "elapsedSeconds": 94.81,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-local-assets.log",
+      "logSha256": "02ce6bf2d741f59c9ff300ae8bd47edcbc7e13cc55a37fd5ed522bc38ea3b7d3"
+    },
+    {
+      "step": "publication-quality-local",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "npm run deploy:validate:local; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run lint; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run typecheck; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run format:check:deploy; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run deploy:build:local; if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}; npm run deploy:verify-artifact; exit $LASTEXITCODE"
+      ],
+      "timeoutSeconds": 900,
+      "status": "FAIL",
+      "exitCode": 1,
+      "startedAt": "2026-10-05T10:49:56.923999+00:00",
+      "endedAt": "2026-10-05T10:52:04.561721+00:00",
+      "elapsedSeconds": 127.64,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-quality-local.log",
+      "logSha256": "3e4c5a9fe682079aea6dca014f43684ed41bb043979357ffb1b7df0f8894358c"
+    },
+    {
+      "step": "publication-retained-transfer",
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "tests/task-086-retained-cross-package-transfer.test.mjs"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T10:52:09.328598+00:00",
+      "endedAt": "2026-10-05T10:52:10.299247+00:00",
+      "elapsedSeconds": 0.97,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\publication-retained-transfer.log",
+      "logSha256": "8aeea6d9d44d301d9e8bb80286da74387bea0646d9f9349e7c8921c8be74a144"
+    }
+  ],
+  "unchangedCodeAfterFailedBuild": "Only dependency layout fixed; no Next/product configuration changes",
+  "assetTransientFailure": "One intermediate asset lane loaded detect-libc while dependency copy was in progress; record preserved. Final asset validation requires settled dependencies."
+}

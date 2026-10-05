@@ -1,0 +1,510 @@
+{
+  "agencyId": "9330001006723",
+  "archiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+  "attribution": "九州産交バス / 産交バス GTFS repository, CC BY 4.0; TravelAssist selected active-trip topology extraction, 2026-10-01; https://gtfs-data.jp/search?pref=%E7%86%8A%E6%9C%AC%E7%9C%8C&target_feed=sankobus%2Asankobus",
+  "baseSource": {
+    "agencies": [
+      {
+        "agency_fare_url": "",
+        "agency_id": "9330001006723",
+        "agency_lang": "ja",
+        "agency_name": "九州産交バス",
+        "agency_phone": "0963258243",
+        "agency_timezone": "Asia/Tokyo",
+        "agency_url": "https://www.sankobus.jp/"
+      }
+    ],
+    "attribution": "九州産交バス / 産交バス GTFS repository, CC BY 4.0; TravelAssist selected active-trip topology extraction, 2026-10-01; https://gtfs-data.jp/search?pref=%E7%86%8A%E6%9C%AC%E7%9C%8C&target_feed=sankobus%2Asankobus",
+    "contentSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+    "datasetUrl": "https://gtfs-data.jp/search?pref=%E7%86%8A%E6%9C%AC%E7%9C%8C&target_feed=sankobus%2Asankobus",
+    "derivedDataAllowed": true,
+    "feedInfo": {
+      "feed_end_date": "20270102",
+      "feed_lang": "ja",
+      "feed_publisher_name": "九州産交バス",
+      "feed_publisher_url": "https://www.sankobus.jp/",
+      "feed_start_date": "20261001",
+      "feed_version": "20261001_20261001"
+    },
+    "freshnessClass": "SCHEDULED_SOURCE_SNAPSHOT",
+    "license": "CC BY 4.0",
+    "observedAt": "2026-10-01",
+    "persistenceAllowed": true,
+    "redistributionAllowed": true,
+    "retainedArchive": "sources/raw/sankobus-20261001.zip",
+    "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+    "rightsDecision": "PASS_CC_BY_4_0_ATTRIBUTION",
+    "sourceId": "gtfs:sankobus-airport",
+    "url": "https://api.gtfs-data.jp/v2/organizations/sankobus/feeds/sankobus/files/feed.zip?rid=current",
+    "validFrom": "20261001",
+    "validTo": "20270102"
+  },
+  "datasetUrl": "https://gtfs-data.jp/search?pref=%E7%86%8A%E6%9C%AC%E7%9C%8C&target_feed=sankobus%2Asankobus",
+  "existingAnchorReuse": {
+    "existingDatasetRecordSha256": "2796486263bbd4613c41f558570aa86a3b4cfa73b4272b93376eb1bea9447ca7",
+    "existingDatasetStopId": "100339_7",
+    "method": "EXACT_EXISTING_GTFS_DATASET_SAME_ARCHIVE",
+    "sourceDescriptorSha256": "12eccd10f282d84df9b45b2c6f8c196ffd62a8a7a72c81ded785c30719d5aedb"
+  },
+  "mode": "local_bus",
+  "observedAt": "2026-10-01",
+  "operator": "九州産交バス",
+  "purpose": "required_gateway",
+  "requestPath": "research/sankobus-local-sections185-selection.json",
+  "retainedArchive": "sources/raw/sankobus-20261001.zip",
+  "serviceDate": "20261002",
+  "sourceActionId": "bus:sankobus:licensed-current-airport-trips",
+  "sourceId": "gtfs:sankobus-airport",
+  "sourceUrl": "https://api.gtfs-data.jp/v2/organizations/sankobus/feeds/sankobus/files/feed.zip?rid=current",
+  "trips": [
+    {
+      "publishedLineName": "東町中学西口→自衛隊～熊本駅前→田崎橋",
+      "reviewedStopIds": [
+        "102664_1",
+        "100339_8"
+      ],
+      "routeId": "155_155051_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100687_1>100613_2",
+        "fromStopSequence": 5,
+        "fullParentCallsSha256": "227c3bd084a1f980e887098375d7ebfe1ca1382d52ad64f6ce943625fd006e3b",
+        "toStopSequence": 6
+      },
+      "sourceTripId": "122001_8486_20261001"
+    },
+    {
+      "publishedLineName": "特急：熊本駅→九産→大分",
+      "reviewedStopIds": [
+        "103922_2",
+        "104244_2",
+        "102112_3",
+        "101724_1"
+      ],
+      "routeId": "704_704090_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100339_7>101666_2",
+        "fromStopSequence": 8,
+        "fullParentCallsSha256": "43301258bd93a4661e909c0f3578d7393b74148c21c46185c6ad6aedb5b90468",
+        "toStopSequence": 11
+      },
+      "sourceTripId": "122001_8589_20261001"
+    },
+    {
+      "publishedLineName": "特急：大分→九産→熊本駅",
+      "reviewedStopIds": [
+        "101724_1",
+        "102112_4",
+        "104244_1",
+        "103922_1"
+      ],
+      "routeId": "704_704091_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102325_1>100339_8",
+        "fromStopSequence": 16,
+        "fullParentCallsSha256": "f2475980e9f7c665c59aa9cc2a57190309cdb2227fc4d0e3c39a5c806f2fe98f",
+        "toStopSequence": 19
+      },
+      "sourceTripId": "122001_8591_20261001"
+    },
+    {
+      "publishedLineName": "熊本駅前→阿蘇～黒川→別府",
+      "reviewedStopIds": [
+        "100339_7",
+        "103622_1",
+        "100002_6",
+        "100003_2",
+        "100183_2",
+        "104244_2",
+        "102112_3",
+        "101724_1"
+      ],
+      "routeId": "720_720030_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100339_7>104098_2",
+        "fromStopSequence": 1,
+        "fullParentCallsSha256": "fa33fd88b84c1fc8208394b46afecfd08019ba5e7c6c8c0355340e60d6a1f131",
+        "toStopSequence": 8
+      },
+      "sourceTripId": "122001_8595_20261001"
+    },
+    {
+      "publishedLineName": "別府→黒川～阿蘇→熊本駅前",
+      "reviewedStopIds": [
+        "102112_4",
+        "104244_1",
+        "100183_1",
+        "100003_1",
+        "100002_9",
+        "100666_1"
+      ],
+      "routeId": "720_720031_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:104098_1>100339_8",
+        "fromStopSequence": 22,
+        "fullParentCallsSha256": "936f9b544017edd2a87c60ee2218136fa62154e33cadbf28530c24d643d498cc",
+        "toStopSequence": 27
+      },
+      "sourceTripId": "122001_8596_20261001"
+    },
+    {
+      "publishedLineName": "AP-1：桜町バスターミナル→通町筋→阿蘇くまもと空港",
+      "reviewedStopIds": [
+        "100002_6",
+        "100003_2",
+        "102112_1"
+      ],
+      "routeId": "721_721060_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100002_6>102112_1",
+        "fromStopSequence": 1,
+        "fullParentCallsSha256": "affea3133371efa7c7ff2472d42f37cea7d176396267861d1453049012e45ec3",
+        "toStopSequence": 3
+      },
+      "sourceTripId": "122001_8641_20261001"
+    },
+    {
+      "publishedLineName": "AP-1：阿蘇くまもと空港→通町筋→桜町バスターミナル",
+      "reviewedStopIds": [
+        "102112_3",
+        "100003_1"
+      ],
+      "routeId": "721_721061_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102112_3>100002_9",
+        "fromStopSequence": 1,
+        "fullParentCallsSha256": "78c395e6a8b3b1c5552d7db5b5479b18d996d2d82a9c67dcf82b24b41a76076d",
+        "toStopSequence": 2
+      },
+      "sourceTripId": "122001_8659_20261001"
+    },
+    {
+      "publishedLineName": "阿蘇くまもと空港→熊本駅直行便→熊本駅・西部車庫",
+      "reviewedStopIds": [
+        "102664_1",
+        "100339_8",
+        "100664_2",
+        "100613_2",
+        "100441_1"
+      ],
+      "routeId": "731_731041_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102112_5>100441_1",
+        "fromStopSequence": 9,
+        "fullParentCallsSha256": "1140aa1e16b51d42a2137c6d6e0d143359150769f454e5f0ba11ca88102d1d1e",
+        "toStopSequence": 13
+      },
+      "sourceTripId": "122001_8737_20261001"
+    },
+    {
+      "publishedLineName": "K3-2/S4-1：沼山津→市民病院～県庁→アクアドーム",
+      "reviewedStopIds": [
+        "104944_1",
+        "102664_1"
+      ],
+      "routeId": "3_3121_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:103661_1>100455_1",
+        "fromStopSequence": 14,
+        "fullParentCallsSha256": "fc17af4cac13eb46ebabaee6ef8d9b8d8c9f9f0500e71dd87dace6a1a438e04c",
+        "toStopSequence": 15
+      },
+      "sourceTripId": "127105_16225_20261001"
+    },
+    {
+      "publishedLineName": "K4-2：阿蘇くまもと空港→テクノ～県庁→熊本駅",
+      "reviewedStopIds": [
+        "103333_1",
+        "102178_1"
+      ],
+      "routeId": "3_3481_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102112_5>100339_3",
+        "fromStopSequence": 3,
+        "fullParentCallsSha256": "00d775a0b6dff8c9edfd88a510b1030d3e2120f585415bd7d4e8f49822ed3599",
+        "toStopSequence": 4
+      },
+      "sourceTripId": "127105_16257_20261001"
+    },
+    {
+      "publishedLineName": "SS：熊本駅前→桜町～城彩苑→熊本城周遊バス",
+      "reviewedStopIds": [
+        "100002_4",
+        "100343_2",
+        "100666_1",
+        "100339_3"
+      ],
+      "routeId": "10_10031_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100339_2>100339_3",
+        "fromStopSequence": 17,
+        "fullParentCallsSha256": "fce03d9cc462064f8caeed6da5135b86f3e93d6edd5c7b8920d76f7f93d0267e",
+        "toStopSequence": 20
+      },
+      "sourceTripId": "127105_16445_20261001"
+    },
+    {
+      "publishedLineName": "A2-1：木留→植木宮の前～京町本丁→田崎橋",
+      "reviewedStopIds": [
+        "100339_8",
+        "100664_2"
+      ],
+      "routeId": "17_17181_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102051_1>100613_2",
+        "fromStopSequence": 43,
+        "fullParentCallsSha256": "cada63f26073e389668220f0b4a63e1ef8fee040bd863ac98f1180cbb9cf3255",
+        "toStopSequence": 44
+      },
+      "sourceTripId": "128005_16703_20261001"
+    },
+    {
+      "publishedLineName": "L6-3/T2-1：木山→健軍～西高→小島",
+      "reviewedStopIds": [
+        "100003_1",
+        "100001_1",
+        "100002_4"
+      ],
+      "routeId": "1_1171_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102021_1>101609_2",
+        "fromStopSequence": 38,
+        "fullParentCallsSha256": "a89f17aeaf2ef376862e1107303eca77904678f19b7fbd3194b37ffc1ef40e97",
+        "toStopSequence": 40
+      },
+      "sourceTripId": "128505_16089_20261001"
+    },
+    {
+      "publishedLineName": "L6-3/T2-1：木山→健軍～西高→小島",
+      "reviewedStopIds": [
+        "100300_2",
+        "100343_2"
+      ],
+      "routeId": "1_1171_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102021_1>101609_2",
+        "fromStopSequence": 41,
+        "fullParentCallsSha256": "a89f17aeaf2ef376862e1107303eca77904678f19b7fbd3194b37ffc1ef40e97",
+        "toStopSequence": 42
+      },
+      "sourceTripId": "128505_16089_20261001"
+    },
+    {
+      "publishedLineName": "L6-3/T2-1：木山→健軍～西高→小島",
+      "reviewedStopIds": [
+        "100664_2",
+        "100613_2",
+        "103052_2",
+        "103054_2",
+        "101816_2"
+      ],
+      "routeId": "1_1171_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102021_1>101609_2",
+        "fromStopSequence": 47,
+        "fullParentCallsSha256": "a89f17aeaf2ef376862e1107303eca77904678f19b7fbd3194b37ffc1ef40e97",
+        "toStopSequence": 51
+      },
+      "sourceTripId": "128505_16089_20261001"
+    },
+    {
+      "publishedLineName": "K4-3：桜町バスターミナル→自衛隊～佐土原→木山",
+      "reviewedStopIds": [
+        "102664_2",
+        "103922_2"
+      ],
+      "routeId": "3_3020_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100002_25>102021_2",
+        "fromStopSequence": 18,
+        "fullParentCallsSha256": "d3a40df449ac4ceaedea04e123b61a5db779f2aec41b8299222190c7a9c02c41",
+        "toStopSequence": 19
+      },
+      "sourceTripId": "128505_16110_20261001"
+    },
+    {
+      "publishedLineName": "K4-3：木山→佐土原～自衛隊→桜町バスターミナル",
+      "reviewedStopIds": [
+        "103922_1",
+        "102664_1"
+      ],
+      "routeId": "3_3021_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102021_1>100002_9",
+        "fromStopSequence": 23,
+        "fullParentCallsSha256": "d8eb7b56eddc3d021d8af9362c587eb126d041ef22782632037d4ecb7d3d4f3c",
+        "toStopSequence": 24
+      },
+      "sourceTripId": "128505_16124_20261001"
+    },
+    {
+      "publishedLineName": "K3-3/T3-0：木山→県庁→西部車庫",
+      "reviewedStopIds": [
+        "101816_2",
+        "103791_2",
+        "100440_2",
+        "100441_1"
+      ],
+      "routeId": "3_3051_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:102021_1>100441_1",
+        "fromStopSequence": 55,
+        "fullParentCallsSha256": "e8b914a912b973231ebbcfbba8991d354a18e74c8033d8c31a2760322650296e",
+        "toStopSequence": 58
+      },
+      "sourceTripId": "128505_16177_20261001"
+    },
+    {
+      "publishedLineName": "K3-2/S4-1：アクアドーム→県庁～市民病院→沼山津",
+      "reviewedStopIds": [
+        "102664_2",
+        "104944_1"
+      ],
+      "routeId": "3_3120_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100455_1>103661_1",
+        "fromStopSequence": 36,
+        "fullParentCallsSha256": "7766cae0ab14a532024cab95aadc51cc97ee686a3427388eb2d64f92b65efb17",
+        "toStopSequence": 37
+      },
+      "sourceTripId": "128505_16216_20261001"
+    },
+    {
+      "publishedLineName": "K4-2：熊本駅→県庁～テクノ→阿蘇くまもと空港",
+      "reviewedStopIds": [
+        "102178_1",
+        "103333_2"
+      ],
+      "routeId": "3_3480_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100339_1>102112_1",
+        "fromStopSequence": 36,
+        "fullParentCallsSha256": "359d38a649ba62c42c257597ff38973909220607e7ed19833b8311738e0492b1",
+        "toStopSequence": 37
+      },
+      "sourceTripId": "128505_16255_20261001"
+    },
+    {
+      "publishedLineName": "S3-2：桜町バスターミナル→蓮台寺～西区役所→熊本港",
+      "reviewedStopIds": [
+        "100729_2",
+        "102810_2",
+        "100440_2"
+      ],
+      "routeId": "20_20011_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100002_3>102170_1",
+        "fromStopSequence": 14,
+        "fullParentCallsSha256": "194d02500ecccdf4e31edd2b5339a97037995a927ec27f92aa822553580668c4",
+        "toStopSequence": 16
+      },
+      "sourceTripId": "128505_16791_20261001"
+    },
+    {
+      "publishedLineName": "TM：高森駅交流施設→空港→西部車庫",
+      "reviewedStopIds": [
+        "104244_1",
+        "103922_1"
+      ],
+      "routeId": "723_723101_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:105106_1>100441_1",
+        "fromStopSequence": 22,
+        "fullParentCallsSha256": "821c9bf9f55c282f12df3da084771cfa053cedeb73d2a7359527ac4449a00db4",
+        "toStopSequence": 23
+      },
+      "sourceTripId": "728405_18516_20261001"
+    },
+    {
+      "publishedLineName": "TM：高森駅交流施設→空港→西部車庫",
+      "reviewedStopIds": [
+        "100183_1",
+        "100572_1",
+        "100715_1",
+        "100176_1",
+        "100003_1",
+        "100002_9",
+        "100300_2"
+      ],
+      "routeId": "723_723101_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:105106_1>100441_1",
+        "fromStopSequence": 25,
+        "fullParentCallsSha256": "821c9bf9f55c282f12df3da084771cfa053cedeb73d2a7359527ac4449a00db4",
+        "toStopSequence": 31
+      },
+      "sourceTripId": "728405_18516_20261001"
+    },
+    {
+      "publishedLineName": "TM：高森駅交流施設→空港→西部車庫",
+      "reviewedStopIds": [
+        "100666_1",
+        "100339_5",
+        "100729_2",
+        "100441_1"
+      ],
+      "routeId": "723_723101_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:105106_1>100441_1",
+        "fromStopSequence": 33,
+        "fullParentCallsSha256": "821c9bf9f55c282f12df3da084771cfa053cedeb73d2a7359527ac4449a00db4",
+        "toStopSequence": 36
+      },
+      "sourceTripId": "728405_18516_20261001"
+    },
+    {
+      "publishedLineName": "TM：西部車庫→空港→高森駅交流施設",
+      "reviewedStopIds": [
+        "100441_1",
+        "100729_1",
+        "100339_7",
+        "103622_1",
+        "100300_1",
+        "100002_6",
+        "100003_2",
+        "100176_2",
+        "100715_2",
+        "100572_2",
+        "100183_2",
+        "102664_2"
+      ],
+      "routeId": "723_723100_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100441_1>105106_1",
+        "fromStopSequence": 1,
+        "fullParentCallsSha256": "7f74b472454327cafde8147865c20dd1e5723da0dc78a3a70c5ebce27c093204",
+        "toStopSequence": 12
+      },
+      "sourceTripId": "728605_18513_20261001"
+    },
+    {
+      "publishedLineName": "TM：西部車庫→空港→高森駅交流施設",
+      "reviewedStopIds": [
+        "103922_2",
+        "104244_2"
+      ],
+      "routeId": "723_723100_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100441_1>105106_1",
+        "fromStopSequence": 13,
+        "fullParentCallsSha256": "7f74b472454327cafde8147865c20dd1e5723da0dc78a3a70c5ebce27c093204",
+        "toStopSequence": 14
+      },
+      "sourceTripId": "728605_18513_20261001"
+    },
+    {
+      "publishedLineName": "TM：西部車庫→空港→高森駅交流施設",
+      "reviewedStopIds": [
+        "103319_2",
+        "102112_3"
+      ],
+      "routeId": "723_723100_1_20261001",
+      "section": {
+        "expectedDirectionId": "ordered:100441_1>105106_1",
+        "fromStopSequence": 17,
+        "fullParentCallsSha256": "7f74b472454327cafde8147865c20dd1e5723da0dc78a3a70c5ebce27c093204",
+        "toStopSequence": 18
+      },
+      "sourceTripId": "728605_18513_20261001"
+    }
+  ]
+}

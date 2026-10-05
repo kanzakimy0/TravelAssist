@@ -1,0 +1,723 @@
+{
+  "phaseId": "163-core-seven-kagoshima-kitakyushu-directed-surface-chains",
+  "strategy": [
+    "FIXED_SEVEN_CORE_AIRPORT_SCOPE",
+    "EXACT_LICENSED_SAME_OPERATOR_P11_IDENTITIES",
+    "INDEPENDENT_ACTUAL_DIRECTIONAL_CALLS",
+    "DISTINCT_KOKURA_NORTH_ALIGHTING_AND_SOUTH_BOARDING",
+    "CURRENT_EXPLICIT_PUBLIC_GATEWAYS"
+  ],
+  "completedActionIds": [
+    "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+    "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+    "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages"
+  ],
+  "facts": [
+    {
+      "factId": "core-seven-kagoshima-nangoku-first-outbound-direct",
+      "kind": "service",
+      "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+      "sourceUrl": "https://nangoku-kotsu.com/wp-content/uploads/pdf/airport_2026_0401.pdf",
+      "observedResponseSha256": "0dde56773a70b09a68a6b24ee24ff32d5ce13398173c25811b95193a33c35fbd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+          "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+        },
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/busstop/",
+          "observedResponseSha256": "73feed2cd133b30d167bd0ff860778365a93c9b5355159018cc7a0b5cfb8acd1"
+        }
+      ],
+      "callingStations": [
+        "鹿児島中央駅",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島中央駅",
+          "operator": "鹿児島交通（株）・南国交通（株）",
+          "line": "p11-stop:P11-22_46:bs5907",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs5907",
+            "recordSha256": "b6be8da98bb0bdf240850d5fba2035c5954a320dcc00b36bf18c3eaeebf84240",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed jointly operated city-airport road component; current Nangoku timetable explicitly identifies both operators and same named stops. Do not substitute neighboring single-operator P11 local stops. Public component only, not exact bay or copied geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "鹿児島交通（株）・南国交通（株）",
+              "currentOperatorName": "鹿児島交通株式会社・南国交通株式会社",
+              "currentStopName": "鹿児島中央駅",
+              "historicalRoute": "【空港連絡バス】鹿児島市内線",
+              "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+              "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+            }
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "鹿児島交通（株）・南国交通（株）",
+          "line": "p11-stop:P11-22_46:bs2875",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs2875",
+            "recordSha256": "e714169864ea03ef0188c296ab941a1c05882ddf6802a8ac3098c8cd1ddb8519",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed jointly operated city-airport road component; current Nangoku timetable explicitly identifies both operators and same named stops. Do not substitute neighboring single-operator P11 local stops. Public component only, not exact bay or copied geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "鹿児島交通（株）・南国交通（株）",
+              "currentOperatorName": "鹿児島交通株式会社・南国交通株式会社",
+              "currentStopName": "鹿児島空港",
+              "historicalRoute": "【空港連絡バス】鹿児島市内線",
+              "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+              "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TRIP_CONTIGUOUS_CALLS_WITH_EXPLICIT_PASSENGER_SCOPE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "line": "鹿児島空港連絡バス・鹿児島市内線",
+      "operator": "南国交通株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港連絡バス",
+      "locator": "Visually inspected April 1 2026 first independently published Nangoku outbound actual two-call column. Board at Chuo, alight at airport. No intermediate stop, reversed trip, clock, fare or frequency."
+    },
+    {
+      "factId": "core-seven-kagoshima-nangoku-first-inbound-contiguous-section",
+      "kind": "service",
+      "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+      "sourceUrl": "https://nangoku-kotsu.com/wp-content/uploads/pdf/airport_2026_0401.pdf",
+      "observedResponseSha256": "0dde56773a70b09a68a6b24ee24ff32d5ce13398173c25811b95193a33c35fbd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+          "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+        },
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/busstop/",
+          "observedResponseSha256": "73feed2cd133b30d167bd0ff860778365a93c9b5355159018cc7a0b5cfb8acd1"
+        }
+      ],
+      "callingStations": [
+        "鹿児島空港",
+        "鹿児島中央駅"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "鹿児島交通（株）・南国交通（株）",
+          "line": "p11-stop:P11-22_46:bs2875",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs2875",
+            "recordSha256": "e714169864ea03ef0188c296ab941a1c05882ddf6802a8ac3098c8cd1ddb8519",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed jointly operated city-airport road component; current Nangoku timetable explicitly identifies both operators and same named stops. Do not substitute neighboring single-operator P11 local stops. Public component only, not exact bay or copied geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "鹿児島交通（株）・南国交通（株）",
+              "currentOperatorName": "鹿児島交通株式会社・南国交通株式会社",
+              "currentStopName": "鹿児島空港",
+              "historicalRoute": "【空港連絡バス】鹿児島市内線",
+              "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+              "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+            }
+          }
+        },
+        {
+          "name": "鹿児島中央駅",
+          "operator": "鹿児島交通（株）・南国交通（株）",
+          "line": "p11-stop:P11-22_46:bs5907",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs5907",
+            "recordSha256": "b6be8da98bb0bdf240850d5fba2035c5954a320dcc00b36bf18c3eaeebf84240",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed jointly operated city-airport road component; current Nangoku timetable explicitly identifies both operators and same named stops. Do not substitute neighboring single-operator P11 local stops. Public component only, not exact bay or copied geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "鹿児島交通（株）・南国交通（株）",
+              "currentOperatorName": "鹿児島交通株式会社・南国交通株式会社",
+              "currentStopName": "鹿児島中央駅",
+              "historicalRoute": "【空港連絡バス】鹿児島市内線",
+              "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+              "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TRIP_CONTIGUOUS_CALLS_WITH_EXPLICIT_PASSENGER_SCOPE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "line": "鹿児島空港連絡バス・鹿児島市内線",
+      "operator": "南国交通株式会社",
+      "direction": "chuo-bound",
+      "serviceClass": "空港連絡バス",
+      "locator": "Visually inspected first independently published inbound Nangoku column; retain airport-to-Chuo contiguous two-call section only, not downstream city/ferry-terminal calls. Airport pickup only, Chuo alighting only. Exclude Yoshino variants and arrival-dispatched late-night promise."
+    },
+    {
+      "factId": "core-seven-kitakyushu-outbound-direct-bus-center-section",
+      "kind": "service",
+      "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+      "sourceUrl": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+      "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/archives/9209",
+          "observedResponseSha256": "5daad2107950c8c3152d06be1d6e61ce3c372be43d80737054dd16ae1e37cb6a"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/noribaannai/img/01-kokura_20251001.jpg",
+          "observedResponseSha256": "b8f860fddf5a9c6d03721883eb1c3b6934218756f5fe8c6dfccfc8066f080b07"
+        },
+        {
+          "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+          "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+          "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+        }
+      ],
+      "callingStations": [
+        "小倉駅バスセンター",
+        "北九州空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "小倉駅バスセンター",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs514",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs514",
+            "recordSha256": "0a77e5336ef67d12e19fda997021b944e3f7540d4b96b8bb4d9302befc6f174e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "小倉駅バスセンター",
+              "historicalRoute": "小倉記念病院～小倉駅BC",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        },
+        {
+          "name": "北九州空港",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs1416",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs1416",
+            "recordSha256": "3acb9daa7909619acbe75f090cb09a5c9857eb1cfe745c601149d59be054f71d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "北九州空港",
+              "historicalRoute": "51系統",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TRIP_CONTIGUOUS_CALLS_WITH_EXPLICIT_PASSENGER_SCOPE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "line": "北九州空港エアポートバス・小倉線",
+      "operator": "西鉄バス北九州株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "エアポートバス",
+      "locator": "Visually inspected printed booklet pages 13-14, first red direct actual row: retain Bus Center-to-airport contiguous section, omitting preceding Sunatsu. All intermediate rows explicitly dash. Published March29-October24 scope; no inferred reverse or schedules retained."
+    },
+    {
+      "factId": "core-seven-kitakyushu-inbound-direct-shinkansen-exit-section",
+      "kind": "service",
+      "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+      "sourceUrl": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+      "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/archives/9209",
+          "observedResponseSha256": "5daad2107950c8c3152d06be1d6e61ce3c372be43d80737054dd16ae1e37cb6a"
+        },
+        {
+          "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+          "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+          "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+        }
+      ],
+      "callingStations": [
+        "北九州空港",
+        "小倉駅新幹線口"
+      ],
+      "callingComponents": [
+        {
+          "name": "北九州空港",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs1416",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs1416",
+            "recordSha256": "3acb9daa7909619acbe75f090cb09a5c9857eb1cfe745c601149d59be054f71d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "北九州空港",
+              "historicalRoute": "51系統",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        },
+        {
+          "name": "小倉駅新幹線口",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs478",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs478",
+            "recordSha256": "15e2e3d7e80afc5b2895bb7423a4e4cccf3373041ccde9a1508abe98d486a510",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "小倉駅新幹線口",
+              "historicalRoute": "99系統",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TRIP_CONTIGUOUS_CALLS_WITH_EXPLICIT_PASSENGER_SCOPE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "line": "北九州空港エアポートバス・小倉線",
+      "operator": "西鉄バス北九州株式会社",
+      "direction": "kokura-shinkansen-exit-bound",
+      "serviceClass": "エアポートバス",
+      "locator": "Visually inspected booklet pages15-16 first independently published red inbound actual row. First alighting call is Kokura Shinkansen Exit, explicitly alighting only. Retain only this contiguous section; exclude later Bus Center/Sunatsu calls and different blue/green local variants. No clocks or guaranteed train connection."
+    },
+    {
+      "factId": "core-seven-kagoshima-public-airport-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+      "sourceUrl": "https://nangoku-kotsu.com/wp-content/themes/nkkwp_tpl/img/img_noriba_koj_200717.jpg",
+      "observedResponseSha256": "0abe34a98ab98feeef59d95177c583c5a6b4c9c2652d41f8d241e41e75745af5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+          "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+        },
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/busstop/",
+          "observedResponseSha256": "73feed2cd133b30d167bd0ff860778365a93c9b5355159018cc7a0b5cfb8acd1"
+        }
+      ],
+      "components": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier current stop guide and visually reviewed terminal diagram explicitly identify public arrival/check-in hall exits and city-airport bus frontage. Bind coarse whole-airport C28 identity to exact joint P11 road component; no bay coordinate, airside shortcut or accessibility guarantee."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "鹿児島交通（株）・南国交通（株）",
+          "line": "p11-stop:P11-22_46:bs2875",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs2875",
+            "recordSha256": "e714169864ea03ef0188c296ab941a1c05882ddf6802a8ac3098c8cd1ddb8519",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed jointly operated city-airport road component; current Nangoku timetable explicitly identifies both operators and same named stops. Do not substitute neighboring single-operator P11 local stops. Public component only, not exact bay or copied geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "鹿児島交通（株）・南国交通（株）",
+              "currentOperatorName": "鹿児島交通株式会社・南国交通株式会社",
+              "currentStopName": "鹿児島空港",
+              "historicalRoute": "【空港連絡バス】鹿児島市内線",
+              "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+              "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "locator": "Carrier current stop guide and visually reviewed terminal diagram explicitly identify public arrival/check-in hall exits and city-airport bus frontage. Bind coarse whole-airport C28 identity to exact joint P11 road component; no bay coordinate, airside shortcut or accessibility guarantee.",
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_PRIMARY_PUBLIC_EXIT_AND_STOP_GUIDE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "core-seven-kagoshima-jr-sakura-exit-public-underpass-to-airport-terminal",
+      "kind": "transfer",
+      "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+      "sourceUrl": "https://nangoku-kotsu.com/wp-content/themes/nkkwp_tpl/img/img_noriba_chuost1.gif",
+      "observedResponseSha256": "f45697e48f10e7dc7808bb2a5dde09a4e554b78518ba4802c4a9b68febb58888",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+          "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+        },
+        {
+          "sourceActionId": "bus:nangoku:core-seven-kagoshima-independent-direct-calls-and-public-gateways",
+          "url": "https://nangoku-kotsu.com/busstop/",
+          "observedResponseSha256": "73feed2cd133b30d167bd0ff860778365a93c9b5355159018cc7a0b5cfb8acd1"
+        }
+      ],
+      "components": [
+        {
+          "name": "鹿児島中央",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鹿児島中央駅",
+          "operator": "鹿児島交通（株）・南国交通（株）",
+          "line": "p11-stop:P11-22_46:bs5907",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs5907",
+            "recordSha256": "b6be8da98bb0bdf240850d5fba2035c5954a320dcc00b36bf18c3eaeebf84240",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed jointly operated city-airport road component; current Nangoku timetable explicitly identifies both operators and same named stops. Do not substitute neighboring single-operator P11 local stops. Public component only, not exact bay or copied geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "鹿児島交通（株）・南国交通（株）",
+              "currentOperatorName": "鹿児島交通株式会社・南国交通株式会社",
+              "currentStopName": "鹿児島中央駅",
+              "historicalRoute": "【空港連絡バス】鹿児島市内線",
+              "url": "https://nangoku-kotsu.com/ashuttle/kagoshima/",
+              "observedResponseSha256": "6d6d1c7a2118221f5da22139d20c5a87d9dcf681cb45c2ecc399f9c1441c83cd"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "locator": "Carrier station guide explicitly maps JR Sakura exit, public underpass and airport terminal East21. Current operating page confirms airport boarding there and distinct alighting around the same road component. Retain coarse public station-exit to operator road-component relation; no paid-area shortcut, invented walking time, map redistribution or exact-bay merge.",
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_PRIMARY_PUBLIC_EXIT_AND_STOP_GUIDE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "core-seven-kitakyushu-public-terminal-exit-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+      "sourceUrl": "https://www.kitakyu-air.jp/rev-access/img/busstopmap-airport-20260413.png",
+      "observedResponseSha256": "eac1a2a8dd6aeefe5bb1d09539b7768cb7ef427a71d607e0f632a39d832e2b62",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+          "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+          "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+        },
+        {
+          "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+          "url": "https://www.kitakyu-air.jp/rev-access/rev-bus.php",
+          "observedResponseSha256": "cd21912ec3a783d1ee5e40247e177c0323d93cd99573772cbbb3d1f40a7eb924"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/archives/9209",
+          "observedResponseSha256": "5daad2107950c8c3152d06be1d6e61ce3c372be43d80737054dd16ae1e37cb6a"
+        }
+      ],
+      "components": [
+        {
+          "name": "北九州空港",
+          "operator": "airport-facility:cf03_00002",
+          "line": "airport:cf03_00002",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00002",
+            "requirementId": "review:transport-node:fbaf00c2-a946-52b8-9920-9a493ad20d20",
+            "expectedRequirementName": "北九州",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport bus guide explicitly maps terminal public exit toward Kokura bus stand and separate terminal entrance; booklet terminal map distinguishes public arrival/entrance areas. Whole-airport to same-operator road-stop component only; no airside access, precise platform geometry or universal accessibility."
+          }
+        },
+        {
+          "name": "北九州空港",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs1416",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs1416",
+            "recordSha256": "3acb9daa7909619acbe75f090cb09a5c9857eb1cfe745c601149d59be054f71d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "北九州空港",
+              "historicalRoute": "51系統",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "locator": "Current airport bus guide explicitly maps terminal public exit toward Kokura bus stand and separate terminal entrance; booklet terminal map distinguishes public arrival/entrance areas. Whole-airport to same-operator road-stop component only; no airside access, precise platform geometry or universal accessibility.",
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_PRIMARY_PUBLIC_EXIT_AND_STOP_GUIDE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "core-seven-kokura-public-concourse-to-airport-bus-center",
+      "kind": "transfer",
+      "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+      "sourceUrl": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+      "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+          "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+          "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/noribaannai/img/01-kokura_20251001.jpg",
+          "observedResponseSha256": "b8f860fddf5a9c6d03721883eb1c3b6934218756f5fe8c6dfccfc8066f080b07"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/archives/9209",
+          "observedResponseSha256": "5daad2107950c8c3152d06be1d6e61ce3c372be43d80737054dd16ae1e37cb6a"
+        }
+      ],
+      "components": [
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小倉駅バスセンター",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs514",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs514",
+            "recordSha256": "0a77e5336ef67d12e19fda997021b944e3f7540d4b96b8bb4d9302befc6f174e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "小倉駅バスセンター",
+              "historicalRoute": "小倉記念病院～小倉駅BC",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "locator": "Visually inspected booklet page13-14 explicit public station2F passage and descent to Bus Center1F, corroborated by carrier current Bus Center guide. Retain ordinary exit/public passage only; exclude free paid-area access, detailed geometry and walking-time guarantee.",
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_PRIMARY_PUBLIC_EXIT_AND_STOP_GUIDE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "core-seven-kokura-shinkansen-exit-alighting-public-station-entrance",
+      "kind": "transfer",
+      "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+      "sourceUrl": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+      "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kitakyushu:core-seven-current-public-terminal-and-kokura-passages",
+          "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+          "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+        },
+        {
+          "sourceActionId": "bus:nishitetsu-kitakyushu:core-seven-distinct-outbound-bus-center-and-inbound-shinkansen-exit",
+          "url": "https://nishitetsu-ktq.jp/archives/9209",
+          "observedResponseSha256": "5daad2107950c8c3152d06be1d6e61ce3c372be43d80737054dd16ae1e37cb6a"
+        }
+      ],
+      "components": [
+        {
+          "name": "小倉駅新幹線口",
+          "operator": "西鉄バス北九州（株）",
+          "line": "p11-stop:P11-22_40:bs478",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_40:bs478",
+            "recordSha256": "15e2e3d7e80afc5b2895bb7423a4e4cccf3373041ccde9a1508abe98d486a510",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact licensed Nishitetsu Kitakyushu same-operator road component. Historical 51/99/8 route code establishes P11 identity only. Current independently published airport service and public guide establish current role. Keep Kokura Bus Center and Shinkansen Exit separate; no platform merge or proximity walk.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西鉄バス北九州（株）",
+              "currentOperatorName": "西鉄バス北九州株式会社",
+              "currentStopName": "小倉駅新幹線口",
+              "historicalRoute": "99系統",
+              "url": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+              "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f"
+            }
+          }
+        },
+        {
+          "name": "小倉",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "locator": "Visually inspected booklet pages15-16 dedicated Shinkansen Exit alighting diagram, marked dropoff only at public JR north frontage. Retain alighting-to-public-station entry direction only; do not permit boarding here, infer a reversed bus trip, or merge with south Bus Center. Ordinary ticketed rail admission remains required.",
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_PRIMARY_PUBLIC_EXIT_AND_STOP_GUIDE",
+      "hubScopeComplete": false
+    }
+  ]
+}

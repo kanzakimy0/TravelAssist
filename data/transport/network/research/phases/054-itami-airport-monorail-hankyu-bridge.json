@@ -1,0 +1,177 @@
+{
+  "phaseId": "054-itami-airport-monorail-hankyu-bridge",
+  "strategy": [
+    "OSAKA_MONORAIL_ADJACENT_DIRECTIONAL_SERVICE",
+    "C28_AIRPORT_AND_HANKYU_BUILDING_CONNECTION",
+    "fixed_guideway"
+  ],
+  "completedActionIds": [
+    "rail:osaka-monorail:itami-airport-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "osaka-monorail-airport-adjacent-hotarugaike-bound",
+      "kind": "service",
+      "sourceActionId": "rail:osaka-monorail:itami-airport-gateway",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/upload/timetable/r11_osaka_air_t2026.pdf",
+      "observedResponseSha256": "01503f387bd9d8b394bc54ac3e422ef67389ce59d0e3cc0e14b2b79ebf4a4723",
+      "locator": "Directional standard passenger departures effective 2026-03-14, cross-checked with both official station pages naming the immediately adjacent station. Retain only Osaka-Airport/Hotarugaike two-station section with no intermediate station; no full Kadoma/Saito calling pattern inferred, no train number or clock values claimed. Each direction has its own published departure evidence.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.osaka-monorail.co.jp/station/r11_osaka_air/",
+          "observedResponseSha256": "886a5beacbde4c6d9d965fb8d3559ff1cc54e1387aae5890bdbeca7046ac58df"
+        },
+        {
+          "url": "https://www.osaka-monorail.co.jp/station/r12_hotarugaike/",
+          "observedResponseSha256": "7608c555a02a14daaf553a752434ca4c593b22a8d0fea788016c10ab7193d1a7"
+        }
+      ],
+      "line": "大阪モノレール・大阪空港蛍池区間",
+      "operator": "大阪モノレール",
+      "mode": "fixed_guideway",
+      "serviceClass": "本線旅客列車",
+      "direction": "hotarugaike-bound",
+      "callingStations": [
+        "大阪空港",
+        "蛍池"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪空港",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "蛍池",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_TIMETABLE_AND_EXPLICIT_ADJACENT_STATION_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SECTION_NOT_REALTIME"
+    },
+    {
+      "factId": "osaka-monorail-airport-adjacent-airport-bound",
+      "kind": "service",
+      "sourceActionId": "rail:osaka-monorail:itami-airport-gateway",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/upload/timetable/r12_hotarugaike_t2026.pdf",
+      "observedResponseSha256": "eeedbca261ae2f373ee1a2710eb4b1d0060698d1666741afb9b2c3e20910a922",
+      "locator": "Directional standard passenger departures effective 2026-03-14, cross-checked with both official station pages naming the immediately adjacent station. Retain only Osaka-Airport/Hotarugaike two-station section with no intermediate station; no full Kadoma/Saito calling pattern inferred, no train number or clock values claimed. Each direction has its own published departure evidence.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.osaka-monorail.co.jp/station/r11_osaka_air/",
+          "observedResponseSha256": "886a5beacbde4c6d9d965fb8d3559ff1cc54e1387aae5890bdbeca7046ac58df"
+        },
+        {
+          "url": "https://www.osaka-monorail.co.jp/station/r12_hotarugaike/",
+          "observedResponseSha256": "7608c555a02a14daaf553a752434ca4c593b22a8d0fea788016c10ab7193d1a7"
+        }
+      ],
+      "line": "大阪モノレール・大阪空港蛍池区間",
+      "operator": "大阪モノレール",
+      "mode": "fixed_guideway",
+      "serviceClass": "本線旅客列車",
+      "direction": "airport-bound",
+      "callingStations": [
+        "蛍池",
+        "大阪空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "蛍池",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大阪空港",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_TIMETABLE_AND_EXPLICIT_ADJACENT_STATION_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SECTION_NOT_REALTIME"
+    },
+    {
+      "factId": "hotarugaike-monorail-hankyu-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:osaka-monorail:itami-airport-gateway",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/station/r12_hotarugaike/",
+      "observedResponseSha256": "7608c555a02a14daaf553a752434ca4c593b22a8d0fea788016c10ab7193d1a7",
+      "locator": "Official station interchange section explicitly identifies Hankyu Takarazuka Hotarugaike and says the station buildings directly connect with separate gates. Exact S12 operator components, no co-location-only inference.",
+      "components": [
+        {
+          "name": "蛍池",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "蛍池",
+          "operator": "阪急電鉄",
+          "line": "宝塚線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_EXPLICIT_CONNECTED_STATION_BUILDINGS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "itami-airport-monorail-gateway",
+      "kind": "transfer",
+      "sourceActionId": "rail:osaka-monorail:itami-airport-gateway",
+      "sourceUrl": "https://www.osaka-monorail.co.jp/station/r11_osaka_air/",
+      "observedResponseSha256": "886a5beacbde4c6d9d965fb8d3559ff1cc54e1387aae5890bdbeca7046ac58df",
+      "locator": "Official Osaka Monorail airport-station guide explicitly describes the public connecting deck to Osaka International Airport north and south terminals. Whole-airport gateway to the independently resolved monorail station; no internal airport shortcut or duration.",
+      "components": [
+        {
+          "name": "大阪国際空港",
+          "operator": "airport-facility:cf03_00005",
+          "line": "airport:cf03_00005",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00005",
+            "requirementId": "review:transport-node:7115be0a-ae95-5112-9ab6-9737311708e4",
+            "expectedRequirementName": "大阪国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Official Osaka Monorail airport-station guide explicitly describes the public connecting deck to Osaka International Airport north and south terminals. Whole-airport gateway to the independently resolved monorail station; no internal airport shortcut or duration."
+          }
+        },
+        {
+          "name": "大阪空港",
+          "operator": "大阪モノレール",
+          "line": "大阪モノレール線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_C28_AND_EXPLICIT_AIRPORT_STATION_DECK",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "phaseId": "050-narita-kansai-airport-jr-gateways",
+  "strategy": [
+    "CURRENT_JR_AIRPORT_TERMINAL_GUIDES",
+    "C28_S12_INDEPENDENT_IDENTITY",
+    "airport"
+  ],
+  "completedActionIds": [
+    "airport:narita:jr-terminal-access",
+    "airport:kansai:jr-terminal-access"
+  ],
+  "facts": [
+    {
+      "factId": "airport-narita-jr-gateway",
+      "kind": "transfer",
+      "sourceActionId": "airport:narita:jr-terminal-access",
+      "sourceUrl": "https://www.jreast.co.jp/en/multi/nex/",
+      "observedResponseSha256": "6143d83b5d63778654041d671e97df66a525fba0a05d3e1448e94f422cf71233",
+      "locator": "JR East current NEX guide (updated 2026-03-14) identifies Narita Airport Terminal 1 station inside the airport, with outbound and return journeys. Connect whole-airport gateway to the JR Terminal 1 physical station. No inferred terminal-to-terminal shortcut.",
+      "components": [
+        {
+          "name": "成田国際空港",
+          "operator": "airport-facility:cf03_00090",
+          "line": "airport:cf03_00090",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00090",
+            "requirementId": "review:transport-node:cba82b32-9253-5631-95ae-5f2020772d9b",
+            "expectedRequirementName": "成田国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "JR East current NEX guide (updated 2026-03-14) identifies Narita Airport Terminal 1 station inside the airport, with outbound and return journeys. Connect whole-airport gateway to the JR Terminal 1 physical station. No inferred terminal-to-terminal shortcut."
+          }
+        },
+        {
+          "name": "成田空港",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_C28_S12_AND_CURRENT_JR_TERMINAL_ACCESS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "airport-kansai-jr-gateway",
+      "kind": "transfer",
+      "sourceActionId": "airport:kansai:jr-terminal-access",
+      "sourceUrl": "https://www.westjr.co.jp/travel-information/en/train-usage-guide/howto/guide/",
+      "observedResponseSha256": "e565063e05bf5810c3f5c921faa68d65c66be755809f7a30ae20f36e6adb742b",
+      "locator": "Current JR West usage guide identifies the airport terminal and Kansai-airport station connected via the second-floor public bridge and JR entrance, with services to and from the airport. Connect only this physical terminal-station gateway; no Terminal 2 shuttle shortcut.",
+      "components": [
+        {
+          "name": "関西国際空港",
+          "operator": "airport-facility:cf03_00094",
+          "line": "airport:cf03_00094",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00094",
+            "requirementId": "review:transport-node:2c900a60-217b-55cc-8279-99709df32a8d",
+            "expectedRequirementName": "関西国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current JR West usage guide identifies the airport terminal and Kansai-airport station connected via the second-floor public bridge and JR entrance, with services to and from the airport. Connect only this physical terminal-station gateway; no Terminal 2 shuttle shortcut."
+          }
+        },
+        {
+          "name": "関西空港",
+          "operator": "西日本旅客鉄道",
+          "line": "関西空港線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_C28_S12_AND_CURRENT_JR_TERMINAL_ACCESS",
+      "hubScopeComplete": false
+    }
+  ]
+}

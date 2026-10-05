@@ -1,0 +1,741 @@
+{
+  "phaseId": "166-akita-airport-asymmetric-bus-komachi-national-chain",
+  "strategy": [
+    "FULL_ORIGINAL_CONTINUOUS_SCOPE",
+    "REUSED_LEGAL_CACHE_AND_EXACT_P11_S12",
+    "ASYMMETRIC_ACTUAL_CALLS",
+    "CORRECT_DATE_VARIANT_AND_TRAIN_COLUMN",
+    "EXPLICIT_PUBLIC_FRONTAGE_AND_REAL_THROUGH_SERVICE"
+  ],
+  "completedActionIds": [
+    "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+    "rail:jr-east:akita-komachi-3006m-3009m-october2-national-chain",
+    "public:akita-airportliner:arrival-exit-to-public-limousine-frontage"
+  ],
+  "facts": [
+    {
+      "factId": "akita-core-airport-bus-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+      "sourceUrl": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=0&term=0&busstop=1",
+      "observedResponseSha256": "06e36b098f369796ee0aec258e7101efcf2ba92f5f779dd1826d942e43be9ee2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+          "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+        },
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=tab&tab=0&term=0&busstop=1",
+          "observedResponseSha256": "01d7d4e256750603270af7b49d5d039e3e7c00affcc329531f253ab7e6ff43cb"
+        },
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=0&term=0&busstop=1",
+          "observedResponseSha256": "06e36b098f369796ee0aec258e7101efcf2ba92f5f779dd1826d942e43be9ee2"
+        }
+      ],
+      "callingStations": [
+        "秋田駅西口",
+        "木内前",
+        "北都銀行前",
+        "卸センター入口",
+        "牛島市営住宅前",
+        "仁井田中丁",
+        "秋田空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "秋田駅西口",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2353",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2353",
+            "recordSha256": "448d704128f5ab55575718467842fb8d0ce8405f9246287cb70854f6c1d7b73e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "秋田駅西口",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "木内前",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2335",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2335",
+            "recordSha256": "68e53b10c22063f3be6beb6967a7fe1ba2f2c676bddc6fbb67cf8eb904b0d578",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "木内前",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "北都銀行前",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2394",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2394",
+            "recordSha256": "d0bbfd0386665aa4b4e0e3f4e234e37cad6f350a71c14a9a20b72ceb33560dff",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "北都銀行前",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "卸センター入口",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2513",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2513",
+            "recordSha256": "0b7e8c1d812be13c0c28064cc38e0ea58bcbd339daff0ba92d931431db3ab56d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "卸センター入口",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "牛島市営住宅前",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2573",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2573",
+            "recordSha256": "2182d1e11e541914f1b653f46c368a09dab88f39bb48d4b230a89456b7874215",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "牛島市営住宅前",
+              "historicalRoute": "柳原経由御野場団地線",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "仁井田中丁",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2664",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2664",
+            "recordSha256": "f8532f245b2762d99ffa786b5d0238804a92200f87d210731e3b5ffa76f4135e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "仁井田中丁",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "秋田空港",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2905",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2905",
+            "recordSha256": "5ecc8a4d32fe0e3219a7b9e46bcf69d82981592df4d870fe3d0d18521c4967ef",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "秋田空港",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "boardingEvidenceScope": "Published airport-bound intermediate alighting prohibition",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "秋田空港リムジンバス",
+      "operator": "秋田中央交通株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港リムジンバス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_FIRST_ROW_CONTIGUOUS_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2_2026_WITHIN_OCTOBER1_24_PUBLISHED_REGULAR_SERVICE_NOT_REALTIME",
+      "locator": "Independent seven-call contiguous actual section; city-bound Kiuchimae occurs after JRstation, unlike outbound beforeHokutoBank. AdditionalKiuchimae required to connect necessaryoutboundcall; no further city expansion. Unknownintermediatepickup excluded without carrierprohibitionclaim. Airportdepartures may follow aircraftarrivals; fullseat capacity may prevent boarding; no clocks/frequency/connectionpromise."
+    },
+    {
+      "factId": "akita-core-airport-bus-city-bound",
+      "kind": "service",
+      "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+      "sourceUrl": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=1&term=0&busstop=1",
+      "observedResponseSha256": "23c962731484a0ce3e258517491798f54672c227308ae3648a1d5b562cafdef7",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+          "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+        },
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=tab&tab=0&term=0&busstop=1",
+          "observedResponseSha256": "01d7d4e256750603270af7b49d5d039e3e7c00affcc329531f253ab7e6ff43cb"
+        },
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.php?action=table&tab=1&term=0&busstop=1",
+          "observedResponseSha256": "23c962731484a0ce3e258517491798f54672c227308ae3648a1d5b562cafdef7"
+        }
+      ],
+      "callingStations": [
+        "秋田空港",
+        "仁井田中丁",
+        "牛島市営住宅前",
+        "卸センター入口",
+        "北都銀行前",
+        "秋田駅西口",
+        "木内前"
+      ],
+      "callingComponents": [
+        {
+          "name": "秋田空港",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2905",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2905",
+            "recordSha256": "5ecc8a4d32fe0e3219a7b9e46bcf69d82981592df4d870fe3d0d18521c4967ef",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "秋田空港",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "仁井田中丁",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2664",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2664",
+            "recordSha256": "f8532f245b2762d99ffa786b5d0238804a92200f87d210731e3b5ffa76f4135e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "仁井田中丁",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "牛島市営住宅前",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2573",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2573",
+            "recordSha256": "2182d1e11e541914f1b653f46c368a09dab88f39bb48d4b230a89456b7874215",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "牛島市営住宅前",
+              "historicalRoute": "柳原経由御野場団地線",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "卸センター入口",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2513",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2513",
+            "recordSha256": "0b7e8c1d812be13c0c28064cc38e0ea58bcbd339daff0ba92d931431db3ab56d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "卸センター入口",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "北都銀行前",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2394",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2394",
+            "recordSha256": "d0bbfd0386665aa4b4e0e3f4e234e37cad6f350a71c14a9a20b72ceb33560dff",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "北都銀行前",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "秋田駅西口",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2353",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2353",
+            "recordSha256": "448d704128f5ab55575718467842fb8d0ce8405f9246287cb70854f6c1d7b73e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "秋田駅西口",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        },
+        {
+          "name": "木内前",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2335",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2335",
+            "recordSha256": "68e53b10c22063f3be6beb6967a7fe1ba2f2c676bddc6fbb67cf8eb904b0d578",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "木内前",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "boardingEvidenceScope": "Airport pickup and city alighting admitted only. Intermediate city pickup SOURCE_UNKNOWN and NOT_ADMITTED_IN_THIS_PATTERN; pickupType1 here is conservative model admission scope, NOT claimed published prohibition.",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "秋田空港リムジンバス",
+      "operator": "秋田中央交通株式会社",
+      "direction": "city-bound",
+      "serviceClass": "空港リムジンバス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_FIRST_ROW_CONTIGUOUS_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2_2026_WITHIN_OCTOBER1_24_PUBLISHED_REGULAR_SERVICE_NOT_REALTIME",
+      "locator": "Independent seven-call contiguous actual section; city-bound Kiuchimae occurs after JRstation, unlike outbound beforeHokutoBank. AdditionalKiuchimae required to connect necessaryoutboundcall; no further city expansion. Unknownintermediatepickup excluded without carrierprohibitionclaim. Airportdepartures may follow aircraftarrivals; fullseat capacity may prevent boarding; no clocks/frequency/connectionpromise."
+    },
+    {
+      "factId": "akita-core-komachi-3006M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:akita-komachi-3006m-3009m-october2-national-chain",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/030/033011.html",
+      "observedResponseSha256": "5dc7855da5f6b4868bd8750bb9b96d026fe3e749f86c6f76360baa6a1bd06566",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:akita-komachi-3006m-3009m-october2-national-chain",
+          "url": "https://timetables.jreast.co.jp/2610/train/030/033011.html",
+          "observedResponseSha256": "5dc7855da5f6b4868bd8750bb9b96d026fe3e749f86c6f76360baa6a1bd06566"
+        }
+      ],
+      "callingStations": [
+        "秋田",
+        "大曲",
+        "盛岡"
+      ],
+      "callingComponents": [
+        {
+          "name": "秋田",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大曲",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "盛岡",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "mode": "shinkansen",
+      "purpose": "intercity",
+      "line": "秋田新幹線・こまち",
+      "operator": "東日本旅客鉄道",
+      "direction": "morioka-bound",
+      "serviceClass": "こまち",
+      "serviceNumber": "3006M",
+      "reviewMethod": "INDEPENDENT_ACTUAL_KOMACHI_COLUMN_OCTOBER2_CALENDAR_AND_EXPLICIT_PHYSICAL_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "3006M actual continuous Akita-Morioka section, correct column and October2td.ok; no Hayabusacalls inherited. Ou/Tazawako physicalconventionalcomponents; MoriokaactualShinkansenplatform11 outbound/14 inbound establishesthroughservicetoexistingnationalnode. No invented interchange, prices, clocks or busconnection guarantee."
+    },
+    {
+      "factId": "akita-core-komachi-3009M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:akita-komachi-3006m-3009m-october2-national-chain",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/095/098191.html",
+      "observedResponseSha256": "d93478f6357f983816091aceca9644ea9f78ee104e52852b141739c5bd92a1be",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:akita-komachi-3006m-3009m-october2-national-chain",
+          "url": "https://timetables.jreast.co.jp/2610/train/095/098191.html",
+          "observedResponseSha256": "d93478f6357f983816091aceca9644ea9f78ee104e52852b141739c5bd92a1be"
+        }
+      ],
+      "callingStations": [
+        "盛岡",
+        "雫石",
+        "田沢湖",
+        "角館",
+        "大曲",
+        "秋田"
+      ],
+      "callingComponents": [
+        {
+          "name": "盛岡",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "雫石",
+          "operator": "東日本旅客鉄道",
+          "line": "田沢湖線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "田沢湖",
+          "operator": "東日本旅客鉄道",
+          "line": "田沢湖線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "角館",
+          "operator": "東日本旅客鉄道",
+          "line": "田沢湖線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大曲",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "秋田",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "shinkansen",
+      "purpose": "intercity",
+      "line": "秋田新幹線・こまち",
+      "operator": "東日本旅客鉄道",
+      "direction": "akita-bound",
+      "serviceClass": "こまち",
+      "serviceNumber": "3009M",
+      "reviewMethod": "INDEPENDENT_ACTUAL_KOMACHI_COLUMN_OCTOBER2_CALENDAR_AND_EXPLICIT_PHYSICAL_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "3009M actual continuous Akita-Morioka section, correct column and October2td.ok; no Hayabusacalls inherited. Ou/Tazawako physicalconventionalcomponents; MoriokaactualShinkansenplatform11 outbound/14 inbound establishesthroughservicetoexistingnationalnode. No invented interchange, prices, clocks or busconnection guarantee."
+    },
+    {
+      "factId": "akita-core-airport-public-exit-limousine-frontage",
+      "kind": "transfer",
+      "sourceActionId": "public:akita-airportliner:arrival-exit-to-public-limousine-frontage",
+      "sourceUrl": "https://akita.airportliner.net/jp/taxi_stand/",
+      "observedResponseSha256": "8b669565f56aefae58ac96be0bbb517cf180781161f93d8556bd0a48903156d9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:akita-airportliner:arrival-exit-to-public-limousine-frontage",
+          "url": "https://akita.airportliner.net/jp/imgs/taxi_stand/taxistand_03.jpg",
+          "observedResponseSha256": "ce026b82bb9c11775983b03d4d3550a5c38b03dde026f24b140b4fd5b359111b"
+        },
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+          "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+        }
+      ],
+      "components": [
+        {
+          "name": "秋田空港",
+          "operator": "airport-facility:cf03_00023",
+          "line": "airport:cf03_00023",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00023",
+            "requirementId": "review:transport-node:8d87ee3a-7f0b-541e-b717-9cd0baf1844c",
+            "expectedRequirementName": "秋田",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independent publicgroundoperator explicitly identifies domesticarrivalexit and limousinebus directional sign; currentcarrierP11stop corroboration. Coarse publicfrontage only, no airside or exactgeometry."
+          }
+        },
+        {
+          "name": "秋田空港",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2905",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2905",
+            "recordSha256": "5ecc8a4d32fe0e3219a7b9e46bcf69d82981592df4d870fe3d0d18521c4967ef",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "秋田空港",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PUBLIC_ARRIVAL_EXIT_AND_VISUALLY_REVIEWED_BUS_SIGN",
+      "hubScopeComplete": false,
+      "locator": "Publicarrivalexit instructions and viewed sign explicitly directlimousinebusleft. Do notfolloworadmit distinct sharedtaxicrosswalk pickup. Currentcarrier sameexactroadstop, no geometry/timepromise."
+    },
+    {
+      "factId": "akita-core-jr-public-west-poporoado-airport-bus1",
+      "kind": "transfer",
+      "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+      "sourceUrl": "https://www2.akita-chuoukotsu.co.jp/pdf/noriba-map.pdf",
+      "observedResponseSha256": "28e9dbd8add54655dcf119d6cabc8eea250067b6e1f4eabba0d2b71282b9dac9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:akita-chuo:airport-current-directional-calls-and-west-public-frontage",
+          "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+          "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+        }
+      ],
+      "components": [
+        {
+          "name": "秋田",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "秋田駅西口",
+          "operator": "秋田中央交通（株）",
+          "line": "p11-stop:P11-22_05:bs2353",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_05:bs2353",
+            "recordSha256": "448d704128f5ab55575718467842fb8d0ce8405f9246287cb70854f6c1d7b73e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same Akita Chuo operator road-stop record with current actual limousine call corroboration. Historical route name supplies identity context only; current service separately evidenced. Kiuchimae current limousine bay is betweenlocal1/2, do not assign exact historicalbay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "秋田中央交通（株）",
+              "currentOperatorName": "秋田中央交通株式会社",
+              "currentStopName": "秋田駅西口",
+              "historicalRoute": "リムジンバス空港⇒市内",
+              "url": "https://www2.akita-chuoukotsu.co.jp/rimzin.html",
+              "observedResponseSha256": "7ebb08fef85676528491e6d7457ed9708985fb3bd9a12bea664349ad13e38e06"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_CARRIER_PUBLIC_WEST_EXIT_AND_BUS_TERMINAL",
+      "hubScopeComplete": false,
+      "locator": "Current-linked carrier stationmap explicitly shows publicwestexit/Poporoado stairs to terminal and assignsairportlimousine1; carrier mainpage independently confirmswest1. No paid-area crosslink, precise coordinates or walkingtime. SamepublicstationcomponentusedbyKomachitrains."
+    }
+  ]
+}

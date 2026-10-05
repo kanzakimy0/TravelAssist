@@ -1,0 +1,704 @@
+{
+  "phaseId": "074-keisei-matsudo-current-operator-and-local-calls",
+  "strategy": [
+    "OFFICIAL_COMPLETED_OPERATOR_MERGER",
+    "EXACT_ARCHIVAL_STATION_CODE_CROSSWALK",
+    "CURRENT_ORDINARY_STOPPING_ROW",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:keisei:matsudo-reviewed-2025-merger"
+  ],
+  "facts": [
+    {
+      "factId": "keisei-matsudo-current-local-down",
+      "kind": "service",
+      "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+      "sourceUrl": "https://www.keisei.co.jp/keisei/tetudou/railmap/railmap.php",
+      "observedResponseSha256": "51f1dcab5d858618b6765f456bc763bd93d8d1cbc3a6549fceda33640d407f4f",
+      "operatorTransitions": [
+        {
+          "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+          "fromOperator": "新京成電鉄",
+          "fromLine": "新京成線",
+          "toOperator": "京成電鉄",
+          "toLine": "松戸線",
+          "effectiveDate": "2025-04-01",
+          "method": "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS",
+          "evidence": {
+            "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+            "url": "https://www.keisei.co.jp/news/detail.php?CN=6808",
+            "observedResponseSha256": "e79f428f9dbcaaef42de17ba744eca9415437ebeb321a9f7e72ea57c0ade4eb5"
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+          "url": "https://www.keisei.co.jp/news/detail.php?CN=6808",
+          "observedResponseSha256": "e79f428f9dbcaaef42de17ba744eca9415437ebeb321a9f7e72ea57c0ade4eb5"
+        },
+        {
+          "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+          "url": "https://www.keisei.co.jp/keisei/corporate/profile/history/",
+          "observedResponseSha256": "4f350c4f20b8fcee25a957dbb2c08169b565d936bf5fe5707dfb401880c2ba9a"
+        }
+      ],
+      "locator": "Current 2025-04-01 official stopping diagram: black ordinary row follows Matsudo KS88 through Shin-Tsudanuma KS66 to Keisei-Tsudanuma KS26. Every white call on this branch retained in physical order. Separate official completed-merger fact maps each exact archival S12 station code from Shin-Keisei to current Keisei Matsudo Line; source geometry and original inventory identity are preserved. No timetable clocks or full diagram retained.",
+      "operator": "京成電鉄",
+      "line": "松戸線",
+      "mode": "private_rail",
+      "direction": "down",
+      "serviceClass": "普通",
+      "callingStations": [
+        "松戸",
+        "上本郷",
+        "松戸新田",
+        "みのり台",
+        "八柱",
+        "常盤平",
+        "五香",
+        "元山",
+        "くぬぎ山",
+        "北初富",
+        "新鎌ヶ谷",
+        "初富",
+        "鎌ヶ谷大仏",
+        "二和向台",
+        "三咲",
+        "滝不動",
+        "高根公団",
+        "高根木戸",
+        "北習志野",
+        "習志野",
+        "薬園台",
+        "前原",
+        "新津田沼",
+        "京成津田沼"
+      ],
+      "callingComponents": [
+        {
+          "name": "松戸",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003138"
+          }
+        },
+        {
+          "name": "上本郷",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003115"
+          }
+        },
+        {
+          "name": "松戸新田",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003109"
+          }
+        },
+        {
+          "name": "みのり台",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003116"
+          }
+        },
+        {
+          "name": "八柱",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003105"
+          }
+        },
+        {
+          "name": "常盤平",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003085"
+          }
+        },
+        {
+          "name": "五香",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003095"
+          }
+        },
+        {
+          "name": "元山",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003111"
+          }
+        },
+        {
+          "name": "くぬぎ山",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003143"
+          }
+        },
+        {
+          "name": "北初富",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003164"
+          }
+        },
+        {
+          "name": "新鎌ヶ谷",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003149"
+          }
+        },
+        {
+          "name": "初富",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003178"
+          }
+        },
+        {
+          "name": "鎌ヶ谷大仏",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003227"
+          }
+        },
+        {
+          "name": "二和向台",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003238"
+          }
+        },
+        {
+          "name": "三咲",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003265"
+          }
+        },
+        {
+          "name": "滝不動",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003327"
+          }
+        },
+        {
+          "name": "高根公団",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003388"
+          }
+        },
+        {
+          "name": "高根木戸",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003425"
+          }
+        },
+        {
+          "name": "北習志野",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003463"
+          }
+        },
+        {
+          "name": "習志野",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003493"
+          }
+        },
+        {
+          "name": "薬園台",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003535"
+          }
+        },
+        {
+          "name": "前原",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003603"
+          }
+        },
+        {
+          "name": "新津田沼",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003694"
+          }
+        },
+        {
+          "name": "京成津田沼",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003747"
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_ORDINARY_STOPPING_ROW_AND_EXACT_REVIEWED_OPERATOR_TRANSITION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OFFICIAL_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "keisei-matsudo-current-local-up",
+      "kind": "service",
+      "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+      "sourceUrl": "https://www.keisei.co.jp/keisei/tetudou/railmap/railmap.php",
+      "observedResponseSha256": "51f1dcab5d858618b6765f456bc763bd93d8d1cbc3a6549fceda33640d407f4f",
+      "operatorTransitions": [
+        {
+          "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+          "fromOperator": "新京成電鉄",
+          "fromLine": "新京成線",
+          "toOperator": "京成電鉄",
+          "toLine": "松戸線",
+          "effectiveDate": "2025-04-01",
+          "method": "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS",
+          "evidence": {
+            "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+            "url": "https://www.keisei.co.jp/news/detail.php?CN=6808",
+            "observedResponseSha256": "e79f428f9dbcaaef42de17ba744eca9415437ebeb321a9f7e72ea57c0ade4eb5"
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+          "url": "https://www.keisei.co.jp/news/detail.php?CN=6808",
+          "observedResponseSha256": "e79f428f9dbcaaef42de17ba744eca9415437ebeb321a9f7e72ea57c0ade4eb5"
+        },
+        {
+          "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+          "url": "https://www.keisei.co.jp/keisei/corporate/profile/history/",
+          "observedResponseSha256": "4f350c4f20b8fcee25a957dbb2c08169b565d936bf5fe5707dfb401880c2ba9a"
+        }
+      ],
+      "locator": "Current 2025-04-01 official stopping diagram: black ordinary row follows Matsudo KS88 through Shin-Tsudanuma KS66 to Keisei-Tsudanuma KS26. Every white call on this branch retained in physical order. Separate official completed-merger fact maps each exact archival S12 station code from Shin-Keisei to current Keisei Matsudo Line; source geometry and original inventory identity are preserved. No timetable clocks or full diagram retained.",
+      "operator": "京成電鉄",
+      "line": "松戸線",
+      "mode": "private_rail",
+      "direction": "up",
+      "serviceClass": "普通",
+      "callingStations": [
+        "京成津田沼",
+        "新津田沼",
+        "前原",
+        "薬園台",
+        "習志野",
+        "北習志野",
+        "高根木戸",
+        "高根公団",
+        "滝不動",
+        "三咲",
+        "二和向台",
+        "鎌ヶ谷大仏",
+        "初富",
+        "新鎌ヶ谷",
+        "北初富",
+        "くぬぎ山",
+        "元山",
+        "五香",
+        "常盤平",
+        "八柱",
+        "みのり台",
+        "松戸新田",
+        "上本郷",
+        "松戸"
+      ],
+      "callingComponents": [
+        {
+          "name": "京成津田沼",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003747"
+          }
+        },
+        {
+          "name": "新津田沼",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003694"
+          }
+        },
+        {
+          "name": "前原",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003603"
+          }
+        },
+        {
+          "name": "薬園台",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003535"
+          }
+        },
+        {
+          "name": "習志野",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003493"
+          }
+        },
+        {
+          "name": "北習志野",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003463"
+          }
+        },
+        {
+          "name": "高根木戸",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003425"
+          }
+        },
+        {
+          "name": "高根公団",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003388"
+          }
+        },
+        {
+          "name": "滝不動",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003327"
+          }
+        },
+        {
+          "name": "三咲",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003265"
+          }
+        },
+        {
+          "name": "二和向台",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003238"
+          }
+        },
+        {
+          "name": "鎌ヶ谷大仏",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003227"
+          }
+        },
+        {
+          "name": "初富",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003178"
+          }
+        },
+        {
+          "name": "新鎌ヶ谷",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003149"
+          }
+        },
+        {
+          "name": "北初富",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003164"
+          }
+        },
+        {
+          "name": "くぬぎ山",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003143"
+          }
+        },
+        {
+          "name": "元山",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003111"
+          }
+        },
+        {
+          "name": "五香",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003095"
+          }
+        },
+        {
+          "name": "常盤平",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003085"
+          }
+        },
+        {
+          "name": "八柱",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003105"
+          }
+        },
+        {
+          "name": "みのり台",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003116"
+          }
+        },
+        {
+          "name": "松戸新田",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003109"
+          }
+        },
+        {
+          "name": "上本郷",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003115"
+          }
+        },
+        {
+          "name": "松戸",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003138"
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_ORDINARY_STOPPING_ROW_AND_EXACT_REVIEWED_OPERATOR_TRANSITION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OFFICIAL_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "matsudo-keisei-current-jr-interchange",
+      "kind": "transfer",
+      "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+      "sourceUrl": "https://www.keisei.co.jp/keisei/tetudou/accessj/matsudo.php",
+      "observedResponseSha256": "4ab2b95f72d197563200b02680793756db4f3f061ebefca9c9424606e9b24f88",
+      "operatorTransitions": [
+        {
+          "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+          "fromOperator": "新京成電鉄",
+          "fromLine": "新京成線",
+          "toOperator": "京成電鉄",
+          "toLine": "松戸線",
+          "effectiveDate": "2025-04-01",
+          "method": "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS",
+          "evidence": {
+            "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+            "url": "https://www.keisei.co.jp/news/detail.php?CN=6808",
+            "observedResponseSha256": "e79f428f9dbcaaef42de17ba744eca9415437ebeb321a9f7e72ea57c0ade4eb5"
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+          "url": "https://www.keisei.co.jp/news/detail.php?CN=6808",
+          "observedResponseSha256": "e79f428f9dbcaaef42de17ba744eca9415437ebeb321a9f7e72ea57c0ade4eb5"
+        },
+        {
+          "sourceActionId": "private:keisei:matsudo-reviewed-2025-merger",
+          "url": "https://www.keisei.co.jp/keisei/corporate/profile/history/",
+          "observedResponseSha256": "4f350c4f20b8fcee25a957dbb2c08169b565d936bf5fe5707dfb401880c2ba9a"
+        }
+      ],
+      "locator": "Current Keisei Matsudo station page explicitly lists JR Joban rapid and local under interchange lines. Bind the same physical JR Joban component once; no transfer time or same-ticket-area promise. Keisei component current operator is separately mapped from exact S12 archival Shin-Keisei station identity.",
+      "components": [
+        {
+          "name": "松戸",
+          "operator": "京成電鉄",
+          "line": "松戸線",
+          "mode": "private_rail",
+          "operatorTransitionReview": {
+            "transitionId": "shin-keisei-to-keisei-matsudo-20250401",
+            "stationCode": "003138"
+          }
+        },
+        {
+          "name": "松戸",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_OFFICIAL_INTERCHANGE_WITH_REVIEWED_MERGER",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,878 @@
+{
+  "task": "TASK-086-B",
+  "recordedAt": "2026-10-03T18:59:34.553645+00:00",
+  "terminal": false,
+  "phase": 220,
+  "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
+  "validationParentHead": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+  "branch": "feature/b-transport-node-mobility-backbone",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+  "manifestSha256": "e6027531c3522dada93fc11e2eb69bb3ef7186d00590b64631eae935dc1cb5a0",
+  "fullRegression": {
+    "status": "PASS",
+    "tests": 3411,
+    "pass": 3411,
+    "fail": 0,
+    "skipped": 0,
+    "freshExecutionTotals": {
+      "tests": 3411,
+      "pass": 3411,
+      "fail": 0,
+      "skipped": 0
+    },
+    "reusedUnchangedRebuildTests": 0,
+    "logSha256": "2f2c3c4390b24f1037798b7cabd1204e22fdfdd5475b7d93d295a713bedabceb",
+    "timing": {
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "tests/browser-trip-save.test.mjs",
+        "tests/bulk-booking.test.mjs",
+        "tests/detail-card-actions.test.mjs",
+        "tests/detail-compact-board.test.mjs",
+        "tests/detail-overview-locations.test.mjs",
+        "tests/planner-artwork.test.mjs",
+        "tests/planner-audit-fixes.test.mjs",
+        "tests/planner-audit-regressions.test.mjs",
+        "tests/planner-concept-refinement.test.mjs",
+        "tests/planner-local-integration.test.mjs",
+        "tests/planner-meal-booking-refinement.test.mjs",
+        "tests/planner-quick-menu-design.test.mjs",
+        "tests/planner-range-enrichment.test.mjs",
+        "tests/planner-responsive-density.test.mjs",
+        "tests/planner-route-board.test.mjs",
+        "tests/planner-sight-timeline.test.mjs",
+        "tests/planner-status-stack.test.mjs",
+        "tests/planner-track-actions.test.mjs",
+        "tests/planner-working-plan.test.mjs",
+        "tests/poi-remaining-review.test.mjs",
+        "tests/pr-governance.test.mjs",
+        "tests/task-007-background.test.mjs",
+        "tests/task-007-calendar.test.mjs",
+        "tests/task-007-info-popover.test.mjs",
+        "tests/task-008-planner.test.mjs",
+        "tests/task-0081-map-booking.test.mjs",
+        "tests/task-0082-visuals.test.mjs",
+        "tests/task-0083-interactions.test.mjs",
+        "tests/task-010-b-global-logo-navigation.test.mjs",
+        "tests/task-010-navigation.test.mjs",
+        "tests/task-011-trip-detail-workspace.test.mjs",
+        "tests/task-012-planner-v05.test.mjs",
+        "tests/task-013-1-asset-variants.test.mjs",
+        "tests/task-013-2-core-generation-manifest.test.mjs",
+        "tests/task-013-3-1-japan-destination-closure.test.mjs",
+        "tests/task-013-3-japan-destination-resolution.test.mjs",
+        "tests/task-013-assets.test.mjs",
+        "tests/task-015-db-foundation.test.mjs",
+        "tests/task-016-user-profile.test.mjs",
+        "tests/task-018-authentication.test.mjs",
+        "tests/task-019-trip-plan.test.mjs",
+        "tests/task-022-ekiworld-routing.test.mjs",
+        "tests/task-022-route-contract.test.mjs",
+        "tests/task-022-routing-boundary.test.mjs",
+        "tests/task-023-planner-route-integration.test.mjs",
+        "tests/task-024-main-shell.test.mjs",
+        "tests/task-025-2-concept-fidelity.test.mjs",
+        "tests/task-025-2-coral-palette.test.mjs",
+        "tests/task-025-2-v11.test.mjs",
+        "tests/task-025-environment-deployment.test.mjs",
+        "tests/task-036-planning-contracts.test.mjs",
+        "tests/task-037-planning-contract-soak.test.mjs",
+        "tests/task-041-region-graph-pilot.test.mjs",
+        "tests/task-042-preference-schema.test.mjs",
+        "tests/task-043-master-code-registry.test.mjs",
+        "tests/task-044-companion-schema.test.mjs",
+        "tests/task-045-preference-api.test.mjs",
+        "tests/task-045-region-master-code-integration.test.mjs",
+        "tests/task-046-preference-contract.test.mjs",
+        "tests/task-047-companion-api.test.mjs",
+        "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+        "tests/task-048-trip-persistence-model.test.mjs",
+        "tests/task-049-trip-library-api.test.mjs",
+        "tests/task-050-a-poi-schema.test.mjs",
+        "tests/task-050-profile-api.test.mjs",
+        "tests/task-051-a-planner-store.test.mjs",
+        "tests/task-052-account-deletion.test.mjs",
+        "tests/task-053-preference-presets.test.mjs",
+        "tests/task-054-personal-center-migration.test.mjs",
+        "tests/task-055-private-boundaries.test.mjs",
+        "tests/task-055-test-runner.test.mjs",
+        "tests/task-060-profile-ui.test.mjs",
+        "tests/task-061-trip-library-live.test.mjs",
+        "tests/task-062-schema-union.test.mjs",
+        "tests/task-063-engine-apply.test.mjs",
+        "tests/task-064-runtime-rollback.test.mjs",
+        "tests/task-065-engine-certification.test.mjs",
+        "tests/task-067-main-system-state.test.mjs",
+        "tests/task-068-candidate-enrichment.test.mjs",
+        "tests/task-068-corpus-combination.test.mjs",
+        "tests/task-070-p0-evidence-review.test.mjs",
+        "tests/task-076-ai-runtime.test.mjs",
+        "tests/task-081-a-poi-detail-api.test.mjs",
+        "tests/task-082-a-poi-edge-graph.test.mjs",
+        "tests/task-082-personal-ai-history.test.mjs",
+        "tests/task-083-a-poi-runtime.test.mjs",
+        "tests/task-083-canonical-owner-correction.test.mjs",
+        "tests/task-084-a-canonical100-boundary.test.mjs",
+        "tests/task-084-a-real-pilot100.test.mjs",
+        "tests/task-084-a-recommendation-scoring.test.mjs",
+        "tests/task-084-v2-amendment.test.mjs",
+        "tests/task-086-airport-selector-preflight.test.mjs",
+        "tests/task-086-b-autonomous-remediation.test.mjs",
+        "tests/task-086-b-ci-revision.test.mjs",
+        "tests/task-086-b-derived-gtfs.test.mjs",
+        "tests/task-086-b-gtfs-sections.test.mjs",
+        "tests/task-086-b-mobility-backbone.test.mjs",
+        "tests/task-086-b-p11-succession.test.mjs",
+        "tests/task-086-b-pattern-corrections.test.mjs",
+        "tests/task-086-b-rebuild.test.mjs",
+        "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+        "tests/task-086-b-selected-gtfs.test.mjs",
+        "tests/task-086-b-sonic-corrections.test.mjs",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-conditional-query-cache.test.mjs",
+        "tests/task-086-dynamic-od.test.mjs",
+        "tests/task-086-fixed-phone-reception.test.mjs",
+        "tests/task-086-od-production-pipeline.test.mjs",
+        "tests/task-086-od-registry.test.mjs",
+        "tests/task-086-phase-header-preflight.test.mjs",
+        "tests/task-086-public-conditional-applicability.test.mjs",
+        "tests/task-086-rights-binding.test.mjs",
+        "tests/task-086-service-access-contract.test.mjs",
+        "tests/task-086-service-access-pipeline.test.mjs",
+        "tests/task-088-a-trusted-baseline.test.mjs",
+        "tests/trip-preparation.test.mjs",
+        "tests/trip-status-personal-center-followup.test.mjs",
+        "tests/wbs-4-17-trip-contract.test.mjs",
+        "tests/wbs-4-21-rule-feasibility.test.mjs",
+        "tests/wbs-5-10-trip-library.test.mjs",
+        "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+        "tests/wbs-5-3-auth-callback.test.mjs",
+        "tests/wbs-5-3-auth-user-flow.test.mjs",
+        "tests/wbs-5-5-preferences.test.mjs",
+        "tests/wbs-5-6-companions.test.mjs",
+        "tests/wbs-5-7-mobility-preference.test.mjs",
+        "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+        "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+        "tests/wbs-5.4-v2.test.mjs",
+        "tests/wbs-9-12-personal-center-qa.test.mjs"
+      ],
+      "elapsedSeconds": 3409.6189941000193,
+      "exitCode": 0,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+      "startedAt": "2026-10-03T17:55:17.845017+00:00",
+      "node": "v24.18.0",
+      "python": "3.14.6",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "codeAndDependencySha256Before": {
+        "tools/transport/task-086-acceptance-inputs.mjs": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248",
+        "tools/transport/task-086-airport-identities.mjs": "6a901c30356befbd9f297f88b43e72a9b6b1c0a16f776286e8c0b4a75b8ff7e5",
+        "tools/transport/task-086-batches.mjs": "665081fc8aaa0e5305923aa53c0b79619ec25fb23d6760e9d79f91f8c69edad0",
+        "tools/transport/task-086-bus-identities.mjs": "1697df2766b83cbab53af5efbd84df0a37e84cecc90cd4e09c0d1785ddfa9142",
+        "tools/transport/task-086-condition-evidence.mjs": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+        "tools/transport/task-086-derived-gtfs.mjs": "2838bbc2e53d64aeead0f01957406f6d236b0e1c9b9ef74b0775334bd35ead2d",
+        "tools/transport/task-086-dynamic-od-intake.mjs": "9fbda24789b21396e3ac774fc97c93b625f88386d8d17f83df97f2825be27dc4",
+        "tools/transport/task-086-dynamic-od-registry.mjs": "df3a0b7c4765e0c0275b5bc16f08305a5b43772a409e935f79685b5e716436fb",
+        "tools/transport/task-086-dynamic-od.mjs": "761cc7e7304fe87bf072b7e386aa4c5d935e779a122b70927011b3f2b823e36f",
+        "tools/transport/task-086-licensed-package.mjs": "d6b234d94e5c4ba027ef53c42b5eb391808a0891ce07b5bcb22be0199359d959",
+        "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
+        "tools/transport/task-086-model.mjs": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+        "tools/transport/task-086-pattern-corrections.mjs": "eeb984885836fb947e1fdfbaa06863817d2dcfa094ea53258f6160085135a323",
+        "tools/transport/task-086-public-conditional-applicability.mjs": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+        "tools/transport/task-086-public-od-facility.mjs": "ab97fcc99b4e1ce4c41866192007c704343804bf157a3e312d214c64605778c7",
+        "tools/transport/task-086-remediate.mjs": "187e970e7cc2fe977188779fe8e8a6793e7d2511e79d3d58c8bd294e553fd641",
+        "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
+        "tools/transport/task-086-run.mjs": "4c9b870c57d7fe715e3df9f2f96b68a703fdc58d245bb2155c1db8dcbf0f728c",
+        "tools/transport/task-086-service-access-contract.mjs": "6ccd583f357d79222014b07fe7d4c8308acc2c5da1303948cec3594e4303620d",
+        "tools/transport/task-086-source-actions.mjs": "c7d8926fe735c89145d14b0abe4f29c9addb6a5164a9bcf99ce8c64411206052",
+        "tools/transport/task-086-source-cache.mjs": "613d58ba082ed380e5d288ad43f8a236c348143fecec99f23c8b390b9961ca25",
+        "tools/transport/task-086-stage.mjs": "392f8e1bc58931bbcbf66270c1a749d54dfba04cef28305aadf928581869388b",
+        "tools/transport/task-086-verify.mjs": "a3a989bf18ce2c98fcd611fd748b92630972d981dae6e58ebca671fcc8123d8f",
+        "tests/task-086-airport-selector-preflight.test.mjs": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3",
+        "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9",
+        "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
+        "tests/task-086-b-derived-gtfs.test.mjs": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f",
+        "tests/task-086-b-gtfs-sections.test.mjs": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44",
+        "tests/task-086-b-mobility-backbone.test.mjs": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d",
+        "tests/task-086-b-p11-succession.test.mjs": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c",
+        "tests/task-086-b-pattern-corrections.test.mjs": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c",
+        "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
+        "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1",
+        "tests/task-086-b-selected-gtfs.test.mjs": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b",
+        "tests/task-086-b-sonic-corrections.test.mjs": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3",
+        "tests/task-086-b-stage-closeout.test.mjs": "e4b17d351b84e58efd468de1225aba79d032b063800cd3d77c9c60f4011b813d",
+        "tests/task-086-conditional-query-cache.test.mjs": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f",
+        "tests/task-086-dynamic-od.test.mjs": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51",
+        "tests/task-086-fixed-phone-reception.test.mjs": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea",
+        "tests/task-086-od-production-pipeline.test.mjs": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338",
+        "tests/task-086-od-registry.test.mjs": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21",
+        "tests/task-086-phase-header-preflight.test.mjs": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26",
+        "tests/task-086-public-conditional-applicability.test.mjs": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a",
+        "tests/task-086-rights-binding.test.mjs": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+        "tests/task-086-service-access-contract.test.mjs": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b",
+        "tests/task-086-service-access-pipeline.test.mjs": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24",
+        "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+        "package.json": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c"
+      },
+      "logSha256": "2f2c3c4390b24f1037798b7cabd1204e22fdfdd5475b7d93d295a713bedabceb",
+      "allTestsIncludingFreshRebuild": true,
+      "reusedPriorPhaseValidation": false
+    },
+    "coverage": "Every repository test executed, including fresh deterministic rebuild, resume and corruption negatives. No previous scope proof reused."
+  },
+  "deterministicRebuildReceiptSha256": "eb5b18445b4c533c775d7a92d1289c73cc1c7800c129e794bba7ac77f757d5f0",
+  "checks": [
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "lint"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "lint"
+        ],
+        "elapsedSeconds": 72.50057039997773,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+        "startedAt": "2026-10-03T17:26:39.665587+00:00",
+        "node": "v24.18.0",
+        "python": "3.14.6",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "codeAndDependencySha256Before": {
+          "tools/transport/task-086-acceptance-inputs.mjs": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248",
+          "tools/transport/task-086-airport-identities.mjs": "6a901c30356befbd9f297f88b43e72a9b6b1c0a16f776286e8c0b4a75b8ff7e5",
+          "tools/transport/task-086-batches.mjs": "665081fc8aaa0e5305923aa53c0b79619ec25fb23d6760e9d79f91f8c69edad0",
+          "tools/transport/task-086-bus-identities.mjs": "1697df2766b83cbab53af5efbd84df0a37e84cecc90cd4e09c0d1785ddfa9142",
+          "tools/transport/task-086-condition-evidence.mjs": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+          "tools/transport/task-086-derived-gtfs.mjs": "2838bbc2e53d64aeead0f01957406f6d236b0e1c9b9ef74b0775334bd35ead2d",
+          "tools/transport/task-086-dynamic-od-intake.mjs": "9fbda24789b21396e3ac774fc97c93b625f88386d8d17f83df97f2825be27dc4",
+          "tools/transport/task-086-dynamic-od-registry.mjs": "df3a0b7c4765e0c0275b5bc16f08305a5b43772a409e935f79685b5e716436fb",
+          "tools/transport/task-086-dynamic-od.mjs": "761cc7e7304fe87bf072b7e386aa4c5d935e779a122b70927011b3f2b823e36f",
+          "tools/transport/task-086-licensed-package.mjs": "d6b234d94e5c4ba027ef53c42b5eb391808a0891ce07b5bcb22be0199359d959",
+          "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
+          "tools/transport/task-086-model.mjs": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+          "tools/transport/task-086-pattern-corrections.mjs": "eeb984885836fb947e1fdfbaa06863817d2dcfa094ea53258f6160085135a323",
+          "tools/transport/task-086-public-conditional-applicability.mjs": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+          "tools/transport/task-086-public-od-facility.mjs": "ab97fcc99b4e1ce4c41866192007c704343804bf157a3e312d214c64605778c7",
+          "tools/transport/task-086-remediate.mjs": "187e970e7cc2fe977188779fe8e8a6793e7d2511e79d3d58c8bd294e553fd641",
+          "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
+          "tools/transport/task-086-run.mjs": "4c9b870c57d7fe715e3df9f2f96b68a703fdc58d245bb2155c1db8dcbf0f728c",
+          "tools/transport/task-086-service-access-contract.mjs": "6ccd583f357d79222014b07fe7d4c8308acc2c5da1303948cec3594e4303620d",
+          "tools/transport/task-086-source-actions.mjs": "c7d8926fe735c89145d14b0abe4f29c9addb6a5164a9bcf99ce8c64411206052",
+          "tools/transport/task-086-source-cache.mjs": "613d58ba082ed380e5d288ad43f8a236c348143fecec99f23c8b390b9961ca25",
+          "tools/transport/task-086-stage.mjs": "392f8e1bc58931bbcbf66270c1a749d54dfba04cef28305aadf928581869388b",
+          "tools/transport/task-086-verify.mjs": "a3a989bf18ce2c98fcd611fd748b92630972d981dae6e58ebca671fcc8123d8f",
+          "tests/task-086-airport-selector-preflight.test.mjs": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3",
+          "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9",
+          "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
+          "tests/task-086-b-derived-gtfs.test.mjs": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f",
+          "tests/task-086-b-gtfs-sections.test.mjs": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44",
+          "tests/task-086-b-mobility-backbone.test.mjs": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d",
+          "tests/task-086-b-p11-succession.test.mjs": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c",
+          "tests/task-086-b-pattern-corrections.test.mjs": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c",
+          "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1",
+          "tests/task-086-b-selected-gtfs.test.mjs": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b",
+          "tests/task-086-b-sonic-corrections.test.mjs": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3",
+          "tests/task-086-b-stage-closeout.test.mjs": "e4b17d351b84e58efd468de1225aba79d032b063800cd3d77c9c60f4011b813d",
+          "tests/task-086-conditional-query-cache.test.mjs": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f",
+          "tests/task-086-dynamic-od.test.mjs": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51",
+          "tests/task-086-fixed-phone-reception.test.mjs": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea",
+          "tests/task-086-od-production-pipeline.test.mjs": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338",
+          "tests/task-086-od-registry.test.mjs": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21",
+          "tests/task-086-phase-header-preflight.test.mjs": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26",
+          "tests/task-086-public-conditional-applicability.test.mjs": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a",
+          "tests/task-086-rights-binding.test.mjs": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+          "tests/task-086-service-access-contract.test.mjs": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b",
+          "tests/task-086-service-access-pipeline.test.mjs": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24",
+          "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+          "package.json": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c"
+        },
+        "logSha256": "f032046d5b27d4e570f9d737aa5a5c0690a843ac7d1c95bf793b68d8a99ba0be",
+        "allTestsIncludingFreshRebuild": false,
+        "reusedPriorPhaseValidation": false
+      },
+      "logSha256": "f032046d5b27d4e570f9d737aa5a5c0690a843ac7d1c95bf793b68d8a99ba0be"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "typecheck"
+        ],
+        "elapsedSeconds": 5.957435499993153,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+        "startedAt": "2026-10-03T17:27:52.382452+00:00",
+        "node": "v24.18.0",
+        "python": "3.14.6",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "codeAndDependencySha256Before": {
+          "tools/transport/task-086-acceptance-inputs.mjs": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248",
+          "tools/transport/task-086-airport-identities.mjs": "6a901c30356befbd9f297f88b43e72a9b6b1c0a16f776286e8c0b4a75b8ff7e5",
+          "tools/transport/task-086-batches.mjs": "665081fc8aaa0e5305923aa53c0b79619ec25fb23d6760e9d79f91f8c69edad0",
+          "tools/transport/task-086-bus-identities.mjs": "1697df2766b83cbab53af5efbd84df0a37e84cecc90cd4e09c0d1785ddfa9142",
+          "tools/transport/task-086-condition-evidence.mjs": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+          "tools/transport/task-086-derived-gtfs.mjs": "2838bbc2e53d64aeead0f01957406f6d236b0e1c9b9ef74b0775334bd35ead2d",
+          "tools/transport/task-086-dynamic-od-intake.mjs": "9fbda24789b21396e3ac774fc97c93b625f88386d8d17f83df97f2825be27dc4",
+          "tools/transport/task-086-dynamic-od-registry.mjs": "df3a0b7c4765e0c0275b5bc16f08305a5b43772a409e935f79685b5e716436fb",
+          "tools/transport/task-086-dynamic-od.mjs": "761cc7e7304fe87bf072b7e386aa4c5d935e779a122b70927011b3f2b823e36f",
+          "tools/transport/task-086-licensed-package.mjs": "d6b234d94e5c4ba027ef53c42b5eb391808a0891ce07b5bcb22be0199359d959",
+          "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
+          "tools/transport/task-086-model.mjs": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+          "tools/transport/task-086-pattern-corrections.mjs": "eeb984885836fb947e1fdfbaa06863817d2dcfa094ea53258f6160085135a323",
+          "tools/transport/task-086-public-conditional-applicability.mjs": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+          "tools/transport/task-086-public-od-facility.mjs": "ab97fcc99b4e1ce4c41866192007c704343804bf157a3e312d214c64605778c7",
+          "tools/transport/task-086-remediate.mjs": "187e970e7cc2fe977188779fe8e8a6793e7d2511e79d3d58c8bd294e553fd641",
+          "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
+          "tools/transport/task-086-run.mjs": "4c9b870c57d7fe715e3df9f2f96b68a703fdc58d245bb2155c1db8dcbf0f728c",
+          "tools/transport/task-086-service-access-contract.mjs": "6ccd583f357d79222014b07fe7d4c8308acc2c5da1303948cec3594e4303620d",
+          "tools/transport/task-086-source-actions.mjs": "c7d8926fe735c89145d14b0abe4f29c9addb6a5164a9bcf99ce8c64411206052",
+          "tools/transport/task-086-source-cache.mjs": "613d58ba082ed380e5d288ad43f8a236c348143fecec99f23c8b390b9961ca25",
+          "tools/transport/task-086-stage.mjs": "392f8e1bc58931bbcbf66270c1a749d54dfba04cef28305aadf928581869388b",
+          "tools/transport/task-086-verify.mjs": "a3a989bf18ce2c98fcd611fd748b92630972d981dae6e58ebca671fcc8123d8f",
+          "tests/task-086-airport-selector-preflight.test.mjs": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3",
+          "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9",
+          "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
+          "tests/task-086-b-derived-gtfs.test.mjs": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f",
+          "tests/task-086-b-gtfs-sections.test.mjs": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44",
+          "tests/task-086-b-mobility-backbone.test.mjs": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d",
+          "tests/task-086-b-p11-succession.test.mjs": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c",
+          "tests/task-086-b-pattern-corrections.test.mjs": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c",
+          "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1",
+          "tests/task-086-b-selected-gtfs.test.mjs": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b",
+          "tests/task-086-b-sonic-corrections.test.mjs": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3",
+          "tests/task-086-b-stage-closeout.test.mjs": "e4b17d351b84e58efd468de1225aba79d032b063800cd3d77c9c60f4011b813d",
+          "tests/task-086-conditional-query-cache.test.mjs": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f",
+          "tests/task-086-dynamic-od.test.mjs": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51",
+          "tests/task-086-fixed-phone-reception.test.mjs": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea",
+          "tests/task-086-od-production-pipeline.test.mjs": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338",
+          "tests/task-086-od-registry.test.mjs": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21",
+          "tests/task-086-phase-header-preflight.test.mjs": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26",
+          "tests/task-086-public-conditional-applicability.test.mjs": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a",
+          "tests/task-086-rights-binding.test.mjs": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+          "tests/task-086-service-access-contract.test.mjs": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b",
+          "tests/task-086-service-access-pipeline.test.mjs": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24",
+          "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+          "package.json": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c"
+        },
+        "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4",
+        "allTestsIncludingFreshRebuild": false,
+        "reusedPriorPhaseValidation": false
+      },
+      "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "format:check:deploy"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "format:check:deploy"
+        ],
+        "elapsedSeconds": 13.856019300001208,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+        "startedAt": "2026-10-03T17:27:58.378526+00:00",
+        "node": "v24.18.0",
+        "python": "3.14.6",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "codeAndDependencySha256Before": {
+          "tools/transport/task-086-acceptance-inputs.mjs": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248",
+          "tools/transport/task-086-airport-identities.mjs": "6a901c30356befbd9f297f88b43e72a9b6b1c0a16f776286e8c0b4a75b8ff7e5",
+          "tools/transport/task-086-batches.mjs": "665081fc8aaa0e5305923aa53c0b79619ec25fb23d6760e9d79f91f8c69edad0",
+          "tools/transport/task-086-bus-identities.mjs": "1697df2766b83cbab53af5efbd84df0a37e84cecc90cd4e09c0d1785ddfa9142",
+          "tools/transport/task-086-condition-evidence.mjs": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+          "tools/transport/task-086-derived-gtfs.mjs": "2838bbc2e53d64aeead0f01957406f6d236b0e1c9b9ef74b0775334bd35ead2d",
+          "tools/transport/task-086-dynamic-od-intake.mjs": "9fbda24789b21396e3ac774fc97c93b625f88386d8d17f83df97f2825be27dc4",
+          "tools/transport/task-086-dynamic-od-registry.mjs": "df3a0b7c4765e0c0275b5bc16f08305a5b43772a409e935f79685b5e716436fb",
+          "tools/transport/task-086-dynamic-od.mjs": "761cc7e7304fe87bf072b7e386aa4c5d935e779a122b70927011b3f2b823e36f",
+          "tools/transport/task-086-licensed-package.mjs": "d6b234d94e5c4ba027ef53c42b5eb391808a0891ce07b5bcb22be0199359d959",
+          "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
+          "tools/transport/task-086-model.mjs": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+          "tools/transport/task-086-pattern-corrections.mjs": "eeb984885836fb947e1fdfbaa06863817d2dcfa094ea53258f6160085135a323",
+          "tools/transport/task-086-public-conditional-applicability.mjs": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+          "tools/transport/task-086-public-od-facility.mjs": "ab97fcc99b4e1ce4c41866192007c704343804bf157a3e312d214c64605778c7",
+          "tools/transport/task-086-remediate.mjs": "187e970e7cc2fe977188779fe8e8a6793e7d2511e79d3d58c8bd294e553fd641",
+          "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
+          "tools/transport/task-086-run.mjs": "4c9b870c57d7fe715e3df9f2f96b68a703fdc58d245bb2155c1db8dcbf0f728c",
+          "tools/transport/task-086-service-access-contract.mjs": "6ccd583f357d79222014b07fe7d4c8308acc2c5da1303948cec3594e4303620d",
+          "tools/transport/task-086-source-actions.mjs": "c7d8926fe735c89145d14b0abe4f29c9addb6a5164a9bcf99ce8c64411206052",
+          "tools/transport/task-086-source-cache.mjs": "613d58ba082ed380e5d288ad43f8a236c348143fecec99f23c8b390b9961ca25",
+          "tools/transport/task-086-stage.mjs": "392f8e1bc58931bbcbf66270c1a749d54dfba04cef28305aadf928581869388b",
+          "tools/transport/task-086-verify.mjs": "a3a989bf18ce2c98fcd611fd748b92630972d981dae6e58ebca671fcc8123d8f",
+          "tests/task-086-airport-selector-preflight.test.mjs": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3",
+          "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9",
+          "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
+          "tests/task-086-b-derived-gtfs.test.mjs": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f",
+          "tests/task-086-b-gtfs-sections.test.mjs": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44",
+          "tests/task-086-b-mobility-backbone.test.mjs": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d",
+          "tests/task-086-b-p11-succession.test.mjs": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c",
+          "tests/task-086-b-pattern-corrections.test.mjs": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c",
+          "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1",
+          "tests/task-086-b-selected-gtfs.test.mjs": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b",
+          "tests/task-086-b-sonic-corrections.test.mjs": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3",
+          "tests/task-086-b-stage-closeout.test.mjs": "e4b17d351b84e58efd468de1225aba79d032b063800cd3d77c9c60f4011b813d",
+          "tests/task-086-conditional-query-cache.test.mjs": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f",
+          "tests/task-086-dynamic-od.test.mjs": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51",
+          "tests/task-086-fixed-phone-reception.test.mjs": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea",
+          "tests/task-086-od-production-pipeline.test.mjs": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338",
+          "tests/task-086-od-registry.test.mjs": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21",
+          "tests/task-086-phase-header-preflight.test.mjs": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26",
+          "tests/task-086-public-conditional-applicability.test.mjs": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a",
+          "tests/task-086-rights-binding.test.mjs": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+          "tests/task-086-service-access-contract.test.mjs": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b",
+          "tests/task-086-service-access-pipeline.test.mjs": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24",
+          "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+          "package.json": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c"
+        },
+        "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e",
+        "allTestsIncludingFreshRebuild": false,
+        "reusedPriorPhaseValidation": false
+      },
+      "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:build:local"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:build:local"
+        ],
+        "elapsedSeconds": 65.87032379995799,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+        "startedAt": "2026-10-03T18:52:07.801840+00:00",
+        "node": "v24.18.0",
+        "python": "3.14.6",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "codeAndDependencySha256Before": {
+          "tools/transport/task-086-acceptance-inputs.mjs": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248",
+          "tools/transport/task-086-airport-identities.mjs": "6a901c30356befbd9f297f88b43e72a9b6b1c0a16f776286e8c0b4a75b8ff7e5",
+          "tools/transport/task-086-batches.mjs": "665081fc8aaa0e5305923aa53c0b79619ec25fb23d6760e9d79f91f8c69edad0",
+          "tools/transport/task-086-bus-identities.mjs": "1697df2766b83cbab53af5efbd84df0a37e84cecc90cd4e09c0d1785ddfa9142",
+          "tools/transport/task-086-condition-evidence.mjs": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+          "tools/transport/task-086-derived-gtfs.mjs": "2838bbc2e53d64aeead0f01957406f6d236b0e1c9b9ef74b0775334bd35ead2d",
+          "tools/transport/task-086-dynamic-od-intake.mjs": "9fbda24789b21396e3ac774fc97c93b625f88386d8d17f83df97f2825be27dc4",
+          "tools/transport/task-086-dynamic-od-registry.mjs": "df3a0b7c4765e0c0275b5bc16f08305a5b43772a409e935f79685b5e716436fb",
+          "tools/transport/task-086-dynamic-od.mjs": "761cc7e7304fe87bf072b7e386aa4c5d935e779a122b70927011b3f2b823e36f",
+          "tools/transport/task-086-licensed-package.mjs": "d6b234d94e5c4ba027ef53c42b5eb391808a0891ce07b5bcb22be0199359d959",
+          "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
+          "tools/transport/task-086-model.mjs": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+          "tools/transport/task-086-pattern-corrections.mjs": "eeb984885836fb947e1fdfbaa06863817d2dcfa094ea53258f6160085135a323",
+          "tools/transport/task-086-public-conditional-applicability.mjs": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+          "tools/transport/task-086-public-od-facility.mjs": "ab97fcc99b4e1ce4c41866192007c704343804bf157a3e312d214c64605778c7",
+          "tools/transport/task-086-remediate.mjs": "187e970e7cc2fe977188779fe8e8a6793e7d2511e79d3d58c8bd294e553fd641",
+          "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
+          "tools/transport/task-086-run.mjs": "4c9b870c57d7fe715e3df9f2f96b68a703fdc58d245bb2155c1db8dcbf0f728c",
+          "tools/transport/task-086-service-access-contract.mjs": "6ccd583f357d79222014b07fe7d4c8308acc2c5da1303948cec3594e4303620d",
+          "tools/transport/task-086-source-actions.mjs": "c7d8926fe735c89145d14b0abe4f29c9addb6a5164a9bcf99ce8c64411206052",
+          "tools/transport/task-086-source-cache.mjs": "613d58ba082ed380e5d288ad43f8a236c348143fecec99f23c8b390b9961ca25",
+          "tools/transport/task-086-stage.mjs": "392f8e1bc58931bbcbf66270c1a749d54dfba04cef28305aadf928581869388b",
+          "tools/transport/task-086-verify.mjs": "a3a989bf18ce2c98fcd611fd748b92630972d981dae6e58ebca671fcc8123d8f",
+          "tests/task-086-airport-selector-preflight.test.mjs": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3",
+          "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9",
+          "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
+          "tests/task-086-b-derived-gtfs.test.mjs": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f",
+          "tests/task-086-b-gtfs-sections.test.mjs": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44",
+          "tests/task-086-b-mobility-backbone.test.mjs": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d",
+          "tests/task-086-b-p11-succession.test.mjs": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c",
+          "tests/task-086-b-pattern-corrections.test.mjs": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c",
+          "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1",
+          "tests/task-086-b-selected-gtfs.test.mjs": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b",
+          "tests/task-086-b-sonic-corrections.test.mjs": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3",
+          "tests/task-086-b-stage-closeout.test.mjs": "e4b17d351b84e58efd468de1225aba79d032b063800cd3d77c9c60f4011b813d",
+          "tests/task-086-conditional-query-cache.test.mjs": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f",
+          "tests/task-086-dynamic-od.test.mjs": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51",
+          "tests/task-086-fixed-phone-reception.test.mjs": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea",
+          "tests/task-086-od-production-pipeline.test.mjs": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338",
+          "tests/task-086-od-registry.test.mjs": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21",
+          "tests/task-086-phase-header-preflight.test.mjs": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26",
+          "tests/task-086-public-conditional-applicability.test.mjs": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a",
+          "tests/task-086-rights-binding.test.mjs": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+          "tests/task-086-service-access-contract.test.mjs": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b",
+          "tests/task-086-service-access-pipeline.test.mjs": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24",
+          "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+          "package.json": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c"
+        },
+        "logSha256": "9ae144450531bdf51ccf8a3676c356f824f8ab588f8a6e5d37246ef4e8ed3028",
+        "allTestsIncludingFreshRebuild": false,
+        "reusedPriorPhaseValidation": false
+      },
+      "logSha256": "9ae144450531bdf51ccf8a3676c356f824f8ab588f8a6e5d37246ef4e8ed3028"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        "elapsedSeconds": 1.9067620999994688,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE220-v2",
+        "startedAt": "2026-10-03T18:53:13.727746+00:00",
+        "node": "v24.18.0",
+        "python": "3.14.6",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "codeAndDependencySha256Before": {
+          "tools/transport/task-086-acceptance-inputs.mjs": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248",
+          "tools/transport/task-086-airport-identities.mjs": "6a901c30356befbd9f297f88b43e72a9b6b1c0a16f776286e8c0b4a75b8ff7e5",
+          "tools/transport/task-086-batches.mjs": "665081fc8aaa0e5305923aa53c0b79619ec25fb23d6760e9d79f91f8c69edad0",
+          "tools/transport/task-086-bus-identities.mjs": "1697df2766b83cbab53af5efbd84df0a37e84cecc90cd4e09c0d1785ddfa9142",
+          "tools/transport/task-086-condition-evidence.mjs": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+          "tools/transport/task-086-derived-gtfs.mjs": "2838bbc2e53d64aeead0f01957406f6d236b0e1c9b9ef74b0775334bd35ead2d",
+          "tools/transport/task-086-dynamic-od-intake.mjs": "9fbda24789b21396e3ac774fc97c93b625f88386d8d17f83df97f2825be27dc4",
+          "tools/transport/task-086-dynamic-od-registry.mjs": "df3a0b7c4765e0c0275b5bc16f08305a5b43772a409e935f79685b5e716436fb",
+          "tools/transport/task-086-dynamic-od.mjs": "761cc7e7304fe87bf072b7e386aa4c5d935e779a122b70927011b3f2b823e36f",
+          "tools/transport/task-086-licensed-package.mjs": "d6b234d94e5c4ba027ef53c42b5eb391808a0891ce07b5bcb22be0199359d959",
+          "tools/transport/task-086-log-safety.mjs": "c3ab20925c90ae46f238c29a62d7d41467d02c99d90685b1d3a45f8e91c900c0",
+          "tools/transport/task-086-model.mjs": "0379868e3eb79b8de7abeff40936583823750e804b3e92b46455e48834acb920",
+          "tools/transport/task-086-pattern-corrections.mjs": "eeb984885836fb947e1fdfbaa06863817d2dcfa094ea53258f6160085135a323",
+          "tools/transport/task-086-public-conditional-applicability.mjs": "cf211df872e5985efb37258cb0457546a63bd9ecd8422454524bcc389699f2c3",
+          "tools/transport/task-086-public-od-facility.mjs": "ab97fcc99b4e1ce4c41866192007c704343804bf157a3e312d214c64605778c7",
+          "tools/transport/task-086-remediate.mjs": "187e970e7cc2fe977188779fe8e8a6793e7d2511e79d3d58c8bd294e553fd641",
+          "tools/transport/task-086-road-identities.mjs": "e83a12af722f3e3eb56f2767a4515e614900b24333e36eb95a6b7c9738a1962a",
+          "tools/transport/task-086-run.mjs": "4c9b870c57d7fe715e3df9f2f96b68a703fdc58d245bb2155c1db8dcbf0f728c",
+          "tools/transport/task-086-service-access-contract.mjs": "6ccd583f357d79222014b07fe7d4c8308acc2c5da1303948cec3594e4303620d",
+          "tools/transport/task-086-source-actions.mjs": "c7d8926fe735c89145d14b0abe4f29c9addb6a5164a9bcf99ce8c64411206052",
+          "tools/transport/task-086-source-cache.mjs": "613d58ba082ed380e5d288ad43f8a236c348143fecec99f23c8b390b9961ca25",
+          "tools/transport/task-086-stage.mjs": "392f8e1bc58931bbcbf66270c1a749d54dfba04cef28305aadf928581869388b",
+          "tools/transport/task-086-verify.mjs": "a3a989bf18ce2c98fcd611fd748b92630972d981dae6e58ebca671fcc8123d8f",
+          "tests/task-086-airport-selector-preflight.test.mjs": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3",
+          "tests/task-086-b-autonomous-remediation.test.mjs": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9",
+          "tests/task-086-b-ci-revision.test.mjs": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d",
+          "tests/task-086-b-derived-gtfs.test.mjs": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f",
+          "tests/task-086-b-gtfs-sections.test.mjs": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44",
+          "tests/task-086-b-mobility-backbone.test.mjs": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d",
+          "tests/task-086-b-p11-succession.test.mjs": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c",
+          "tests/task-086-b-pattern-corrections.test.mjs": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c",
+          "tests/task-086-b-rebuild.test.mjs": "95fea8003acf8d2147a85338371d844af221e1284226eb6a7a9470a392c529d5",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1",
+          "tests/task-086-b-selected-gtfs.test.mjs": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b",
+          "tests/task-086-b-sonic-corrections.test.mjs": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3",
+          "tests/task-086-b-stage-closeout.test.mjs": "e4b17d351b84e58efd468de1225aba79d032b063800cd3d77c9c60f4011b813d",
+          "tests/task-086-conditional-query-cache.test.mjs": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f",
+          "tests/task-086-dynamic-od.test.mjs": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51",
+          "tests/task-086-fixed-phone-reception.test.mjs": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea",
+          "tests/task-086-od-production-pipeline.test.mjs": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338",
+          "tests/task-086-od-registry.test.mjs": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21",
+          "tests/task-086-phase-header-preflight.test.mjs": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26",
+          "tests/task-086-public-conditional-applicability.test.mjs": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a",
+          "tests/task-086-rights-binding.test.mjs": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+          "tests/task-086-service-access-contract.test.mjs": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b",
+          "tests/task-086-service-access-pipeline.test.mjs": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24",
+          "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+          "package.json": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c"
+        },
+        "logSha256": "8f3d79d0d5851b6a56742e922b6877ba24d7cb85f9a33b91271c4c71b6084461",
+        "allTestsIncludingFreshRebuild": false,
+        "reusedPriorPhaseValidation": false
+      },
+      "logSha256": "8f3d79d0d5851b6a56742e922b6877ba24d7cb85f9a33b91271c4c71b6084461"
+    }
+  ],
+  "validationEnvironment": {
+    "node": "v24.18.0",
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packageLockSha256": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+    "packageSha256": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c",
+    "configHashes": {
+      ".nvmrc": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+      "tsconfig.json": "ff91c38f2cb3aafd505312ef01f1300200562d7683b9b539f6331e4ad16d2e55",
+      "eslint.config.mjs": "7754db6914dbabce8895021567beec069ff65ec22abe6e23c5b052110cef6323",
+      ".github/workflows/quality-gate.yml": "1ea179b70b970a05fbefd1497bef1facad28ee8f16ffc927337d0c17ef09047a"
+    },
+    "reusedPriorHeadValidation": false
+  },
+  "historicalQualityGates": [
+    {
+      "phase": 159,
+      "status": "PASS",
+      "runId": 36966963730,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36966963730",
+      "branchHeadSha": "431986ba92a0b0f41ee4429f7c78f8850f827474",
+      "checkoutSha": "3cafe580888266e07922d838055f8dbcb3d41f35",
+      "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+      "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+      "directBranchHeadTest": false
+    },
+    {
+      "phase": 162,
+      "status": "PASS",
+      "runId": 36995377311,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36995377311",
+      "branchHeadSha": "5f8533de99ee4397fa404c202e02c37c120d67ad",
+      "checkoutSha": "cdb4369dd6087273274a1b18af4cbcadb95fcc4b",
+      "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+      "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+      "directBranchHeadTest": false
+    }
+  ],
+  "phase214QualityGates": {
+    "schemaVersion": 1,
+    "observedAt": "2026-10-03T14:43:15.701630+00:00",
+    "branchHeadSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+    "records": [
+      {
+        "runId": 37129801318,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37129801318",
+        "status": "PASS",
+        "event": "workflow_dispatch",
+        "revision": {
+          "schemaVersion": 1,
+          "eventName": "workflow_dispatch",
+          "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
+          "branchHeadSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "checkoutSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "checkoutParents": [
+            "4d040627d1f2cebf0030ca5cb68395e699b4ec14"
+          ],
+          "eventSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "baseSha": null,
+          "pullRequestNumber": null,
+          "checkoutKind": "BRANCH_HEAD_DIRECT",
+          "directBranchHeadTest": true
+        },
+        "tests": {
+          "tests": 3205,
+          "pass": 3205,
+          "fail": 0,
+          "skipped": 0
+        },
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record branch HEAD and actual checkout revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install locked dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Validate local deployment contract",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run repository tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success"
+          },
+          {
+            "name": "Typecheck",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check formatting",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and audit standalone artifact",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify artifact again before use",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check whitespace",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "logSha256": "3f9df46dcdc10308b2afc312fdc9caf821c7ffb85940450f6c67a93b293f1dfc"
+      },
+      {
+        "runId": 37129777619,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37129777619",
+        "status": "PASS",
+        "event": "pull_request",
+        "revision": {
+          "schemaVersion": 1,
+          "eventName": "pull_request",
+          "ref": "refs/pull/466/merge",
+          "branchHeadSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "checkoutSha": "223e4ee9f456471e81ebc3cc3217c7abe32ee1c6",
+          "checkoutParents": [
+            "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+            "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a"
+          ],
+          "eventSha": "223e4ee9f456471e81ebc3cc3217c7abe32ee1c6",
+          "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+          "pullRequestNumber": 466,
+          "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+          "directBranchHeadTest": false
+        },
+        "tests": {
+          "tests": 3205,
+          "pass": 3205,
+          "fail": 0,
+          "skipped": 0
+        },
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record branch HEAD and actual checkout revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install locked dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Validate local deployment contract",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run repository tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success"
+          },
+          {
+            "name": "Typecheck",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check formatting",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and audit standalone artifact",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify artifact again before use",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check whitespace",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "logSha256": "f3890725385b2c7ae9800b6d13bcf7fffad28230cbcae6a3349a83a4668d76f0"
+      }
+    ],
+    "rawLogsRetained": false
+  },
+  "currentQualityGate": {
+    "status": "PASS_FOR_PHASE220_COMMIT_ONLY",
+    "branchHeadSha": "406d31f0a6b52f321b79fa4694f985709288407f",
+    "evidencePath": "docs/qa/TASK-086-B/phase220-ci-revisions.json",
+    "evidenceSha256": "495974091447d264afa1bdf2b44ba09bd979109f7b5aa9c92e95e59791f6cf5b",
+    "runs": [
+      {
+        "runId": 37146456508,
+        "event": "workflow_dispatch",
+        "checkoutSha": "406d31f0a6b52f321b79fa4694f985709288407f",
+        "directBranchHeadTest": true,
+        "tests": {
+          "tests": 3411,
+          "pass": 3411,
+          "fail": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "runId": 37146405841,
+        "event": "pull_request",
+        "checkoutSha": "797fb54b3d2efdaf492d333381186139797b305c",
+        "directBranchHeadTest": false,
+        "tests": {
+          "tests": 3411,
+          "pass": 3411,
+          "fail": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "laterUncommittedInputsCovered": false
+  },
+  "artifactIsCleanHeadBuild": false
+}

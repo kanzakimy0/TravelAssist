@@ -1,0 +1,93 @@
+{
+  "status": "CORRECTED_UNREGISTERED_DRAFT_EXTRACTION_REFERENCES",
+  "reason": "Two superseded private v33 candidate fact IDs were never registered as phase facts and were mistakenly retained in two new source-action inputs. Remove only these draft references, preserve their raw private research and all actual admitted facts; no graph service, evidence, obligation, or threshold is changed. Full deterministic rebuild remains pending.",
+  "at": "2026-10-03T17:42:16.179414+00:00",
+  "changes": [
+    {
+      "path": ".cache/task-086/jr-timetable-rights/sonic219-private/actions219-private.jsonl",
+      "beforeSha256": "5059a8eb33be6f934db1d2d9980973eab62e715c6d4eca6f28d34c8bba31eed8",
+      "afterSha256": "cc57c3fccaa591236adc8d09254c39b8ab1a11857efcbbe73c0b378540ccfeb6",
+      "changes": [
+        {
+          "actionId": "rail:phase219:sonic-independent-static-north-v28:jnto",
+          "before": [
+            "nippo-tateishi-kitsuki-static-community-ordinary-north-v33",
+            "nippo-tateishi-kitsuki-static-community-ordinary-south-v33",
+            "nippo-yanagigaura-kokura-independent-static-local-v28"
+          ],
+          "after": [
+            "nippo-yanagigaura-kokura-independent-static-local-v28"
+          ]
+        },
+        {
+          "actionId": "rail:phase219:sonic-independent-static-north-v28:n02",
+          "before": [
+            "nippo-tateishi-kitsuki-static-community-ordinary-north-v33",
+            "nippo-tateishi-kitsuki-static-community-ordinary-south-v33",
+            "nippo-yanagigaura-kokura-independent-static-local-v28",
+            "sonic31-independent-nakatsu-usa-three-call-section-v32"
+          ],
+          "after": [
+            "nippo-yanagigaura-kokura-independent-static-local-v28",
+            "sonic31-independent-nakatsu-usa-three-call-section-v32"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "beforeSha256": "3155204be61f52e2518c46c3162f52a852d91f7d50da6279d80690c4094c8849",
+      "afterSha256": "bd1951da420cbb8573fbd62fa26fc9eafdfb31d3fe7b8c3eca30d8780a5dccfd",
+      "changes": [
+        {
+          "actionId": "rail:phase219:sonic-independent-static-north-v28:jnto",
+          "before": [
+            "nippo-beppu-nakatsu-static-local-north-v37",
+            "nippo-beppu-oita-static-local-south-v37",
+            "nippo-kokura-yoshitomi-static-local-south-v37",
+            "nippo-kusami-nakatsu-static-local-south-v37",
+            "nippo-oita-beppudaigaku-static-local-north-v37",
+            "nippo-tateishi-kitsuki-static-community-ordinary-north-v33",
+            "nippo-tateishi-kitsuki-static-community-ordinary-south-v33",
+            "nippo-usa-beppu-static-ordinary-return-v35",
+            "nippo-yanagigaura-kokura-independent-static-local-v28"
+          ],
+          "after": [
+            "nippo-beppu-nakatsu-static-local-north-v37",
+            "nippo-beppu-oita-static-local-south-v37",
+            "nippo-kokura-yoshitomi-static-local-south-v37",
+            "nippo-kusami-nakatsu-static-local-south-v37",
+            "nippo-oita-beppudaigaku-static-local-north-v37",
+            "nippo-usa-beppu-static-ordinary-return-v35",
+            "nippo-yanagigaura-kokura-independent-static-local-v28"
+          ]
+        },
+        {
+          "actionId": "rail:phase219:sonic-independent-static-north-v28:n02",
+          "before": [
+            "nippo-beppu-nakatsu-static-local-north-v37",
+            "nippo-beppu-oita-static-local-south-v37",
+            "nippo-kokura-yoshitomi-static-local-south-v37",
+            "nippo-kusami-nakatsu-static-local-south-v37",
+            "nippo-oita-beppudaigaku-static-local-north-v37",
+            "nippo-tateishi-kitsuki-static-community-ordinary-north-v33",
+            "nippo-tateishi-kitsuki-static-community-ordinary-south-v33",
+            "nippo-usa-beppu-static-ordinary-return-v35",
+            "nippo-yanagigaura-kokura-independent-static-local-v28",
+            "sonic31-independent-nakatsu-usa-three-call-section-v32"
+          ],
+          "after": [
+            "nippo-beppu-nakatsu-static-local-north-v37",
+            "nippo-beppu-oita-static-local-south-v37",
+            "nippo-kokura-yoshitomi-static-local-south-v37",
+            "nippo-kusami-nakatsu-static-local-south-v37",
+            "nippo-oita-beppudaigaku-static-local-north-v37",
+            "nippo-usa-beppu-static-ordinary-return-v35",
+            "nippo-yanagigaura-kokura-independent-static-local-v28",
+            "sonic31-independent-nakatsu-usa-three-call-section-v32"
+          ]
+        }
+      ]
+    }
+  ]
+}

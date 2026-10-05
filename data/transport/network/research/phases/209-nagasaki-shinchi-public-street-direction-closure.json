@@ -1,0 +1,79 @@
+{
+  "phaseId": "209-nagasaki-shinchi-public-street-direction-closure",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOTS",
+    "EXPLICIT_PUBLIC_STREET_PEDESTRIAN_GUIDE",
+    "PRESERVE_NATIVE_POLES_AND_CALL_RESTRICTIONS",
+    "ONLY_NECESSARY_ARRIVAL_TO_DEPARTURE_WALK"
+  ],
+  "completedActionIds": [
+    "transfer:nagasaki:shinchi-current-public-street-arrival-to-departure"
+  ],
+  "facts": [
+    {
+      "factId": "shinchi-explicit-public-street-arrival5-to-departure1",
+      "kind": "transfer",
+      "sourceActionId": "transfer:nagasaki:shinchi-current-public-street-arrival-to-departure",
+      "sourceUrl": "https://www.nagasaki.jalcity.co.jp/common/pdf/20210601.pdf",
+      "observedResponseSha256": "1f0067d61dc3a6ef7c6adc0e0afc022be4366dd80b309e813ece5e388f809835",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:nagasaki:shinchi-current-public-street-arrival-to-departure",
+          "url": "https://www.nagasaki.jalcity.co.jp/access/",
+          "observedResponseSha256": "7b21e09bc872497f7db3aec512d7126c0832d041e88e1d885efee5a0a40d8a4f"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:shinchi-current-public-street-arrival-to-departure",
+          "url": "https://www.keneibus.jp/limousine/nagasaki",
+          "observedResponseSha256": "e38c2cd220be8f3ee8b1702f4506104ce9bfd735b620b7b4dd68565dc1dadd5c"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:shinchi-current-public-street-arrival-to-departure",
+          "url": "https://nbth.co.jp/feature/?id=hotel",
+          "observedResponseSha256": "93f99a363c4b3c134612e4b33d58e6e774db13555b8606f59dd010f1e69bc25d"
+        }
+      ],
+      "components": [
+        {
+          "name": "新地中華街",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:20",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "881740_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "db7735206b128801c5b14e177411a9689218b210f4c5e4f289941b987231a607",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current Hotel JAL City Nagasaki access page explicitly names both Nagasaki Bus Airportliner and Nagasaki Keneibus airport limousine and currently links its own airport-bus boarding/alighting pedestrian guide. The guide marks airport-bus alighting at NTT Nagasaki and airport-bound boarding at Nagasaki Bus Terminal Hotel. Its directed public-street pedestrian arrows connect the alighting frontage east to the marked street crossing, south along the Chinatown river-side public street, west along the hotel-front public street, then north along the Chinatown street and east to the boarding frontage. The selected relation follows these drawn public-street portions continuously; it does not enter either hotel, reserve a room, use a guest-only facility, cross between poles by proximity, or infer a shortcut. Current Keneibus native page identifies named Shinchi Chinatown pole5 as alighting-only and pole1 as boarding-only for the Dejima airport route. Exact retained GTFS881740_05 and881740_01 have those same distinct roles and route20 records; suffixes alone are not a global alias rule. Terminal Hotel current own page corroborates arrival frontage, departure at its entrance, and public ticket/waiting access for non-guests; the selected walk does not require its interior. The linked map filename dates20210601 and no2026 map edition is claimed: current publication and exact current producer stop roles provide continuity. No route geometry, distance, clocks, accessibility, opening-hours or raw-map reuse is claimed."
+          }
+        },
+        {
+          "name": "新地中華街",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:20",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "881740_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "57058a45013138d5d2f35b6471a41513d62662a50cb0d10442897c7f96b9dd6a",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current Hotel JAL City Nagasaki access page explicitly names both Nagasaki Bus Airportliner and Nagasaki Keneibus airport limousine and currently links its own airport-bus boarding/alighting pedestrian guide. The guide marks airport-bus alighting at NTT Nagasaki and airport-bound boarding at Nagasaki Bus Terminal Hotel. Its directed public-street pedestrian arrows connect the alighting frontage east to the marked street crossing, south along the Chinatown river-side public street, west along the hotel-front public street, then north along the Chinatown street and east to the boarding frontage. The selected relation follows these drawn public-street portions continuously; it does not enter either hotel, reserve a room, use a guest-only facility, cross between poles by proximity, or infer a shortcut. Current Keneibus native page identifies named Shinchi Chinatown pole5 as alighting-only and pole1 as boarding-only for the Dejima airport route. Exact retained GTFS881740_05 and881740_01 have those same distinct roles and route20 records; suffixes alone are not a global alias rule. Terminal Hotel current own page corroborates arrival frontage, departure at its entrance, and public ticket/waiting access for non-guests; the selected walk does not require its interior. The linked map filename dates20210601 and no2026 map edition is claimed: current publication and exact current producer stop roles provide continuity. No route geometry, distance, clocks, accessibility, opening-hours or raw-map reuse is claimed."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_HOTEL_PUBLIC_STREET_GUIDE_AND_OPERATOR_DIRECTIONAL_STOP_BINDING",
+      "hubScopeComplete": false,
+      "locator": "Current Hotel JAL City Nagasaki access page explicitly names both Nagasaki Bus Airportliner and Nagasaki Keneibus airport limousine and currently links its own airport-bus boarding/alighting pedestrian guide. The guide marks airport-bus alighting at NTT Nagasaki and airport-bound boarding at Nagasaki Bus Terminal Hotel. Its directed public-street pedestrian arrows connect the alighting frontage east to the marked street crossing, south along the Chinatown river-side public street, west along the hotel-front public street, then north along the Chinatown street and east to the boarding frontage. The selected relation follows these drawn public-street portions continuously; it does not enter either hotel, reserve a room, use a guest-only facility, cross between poles by proximity, or infer a shortcut. Current Keneibus native page identifies named Shinchi Chinatown pole5 as alighting-only and pole1 as boarding-only for the Dejima airport route. Exact retained GTFS881740_05 and881740_01 have those same distinct roles and route20 records; suffixes alone are not a global alias rule. Terminal Hotel current own page corroborates arrival frontage, departure at its entrance, and public ticket/waiting access for non-guests; the selected walk does not require its interior. The linked map filename dates20210601 and no2026 map edition is claimed: current publication and exact current producer stop roles provide continuity. No route geometry, distance, clocks, accessibility, opening-hours or raw-map reuse is claimed."
+    }
+  ]
+}

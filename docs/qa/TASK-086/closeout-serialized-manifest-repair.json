@@ -1,0 +1,77 @@
+{
+  "diagnosis": {
+    "runId": 37301471450,
+    "head": "b0dda83e958e97b011369ed22dd7e498cc46d7b4",
+    "manifestByteIdentical": true,
+    "manifestSha256": "39ba210105acdd7a641f556a9a547916e003c422a87934fe608ff910befc6642",
+    "artifactCount": 27,
+    "changedArtifacts": [],
+    "originalValidationStatus": "FAIL",
+    "originalError": "Resume changes full manifest: in-memory undefined attribution entries differ from serialized null",
+    "thisComparisonIsNotReplacementCurrentHeadProof": true
+  },
+  "repair": "Compare the actual manifest bytes before/after production replay, then seal all actual persisted artifact/batch files; preserve all original counts/checks. In-memory undefined in attribution arrays becomes null under JSON serialization. No production generator or data changed.",
+  "negativeTests": [
+    "actual node metadata change rejected",
+    "serialized byte/format drift rejected"
+  ],
+  "checks": [
+    {
+      "step": "serialized-manifest-focused",
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "tests/task-086-publication-recovery.test.mjs"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T12:13:36.443517+00:00",
+      "endedAt": "2026-10-05T12:13:37.344081+00:00",
+      "elapsedSeconds": 0.9,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\serialized-manifest-focused.log",
+      "logSha256": "d8bb5cd41a51e3b45385127fcf6e6966cb863ecb375b43318d451bf3c26e0541"
+    },
+    {
+      "step": "serialized-manifest-eslint",
+      "command": [
+        "cmd",
+        "/c",
+        "npx",
+        "eslint",
+        "tools/transport/task-086-validation-lanes.mjs",
+        "tests/task-086-publication-recovery.test.mjs"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T12:13:37.468089+00:00",
+      "endedAt": "2026-10-05T12:13:43.353124+00:00",
+      "elapsedSeconds": 5.88,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\serialized-manifest-eslint.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "serialized-manifest-format",
+      "command": [
+        "cmd",
+        "/c",
+        "npx",
+        "prettier",
+        "--check",
+        "tools/transport/task-086-validation-lanes.mjs",
+        "tests/task-086-publication-recovery.test.mjs"
+      ],
+      "timeoutSeconds": 180,
+      "status": "PASS",
+      "exitCode": 0,
+      "startedAt": "2026-10-05T12:13:43.477193+00:00",
+      "endedAt": "2026-10-05T12:13:45.048030+00:00",
+      "elapsedSeconds": 1.57,
+      "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\publication-recovery\\serialized-manifest-format.log",
+      "logSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    }
+  ]
+}

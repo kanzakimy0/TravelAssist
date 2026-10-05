@@ -1,0 +1,65 @@
+{
+  "phaseId": "012-tokyo-kyoto-hubs",
+  "strategy": [
+    "JR_CENTRAL_OFFICIAL_INTERCHANGE_MAPS",
+    "S12_RAW_COMPONENT_BINDING",
+    "transfer"
+  ],
+  "facts": [
+    {
+      "factId": "tokyo-shinkansen-conventional-gates",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/tokyo/_img/tokyo_260123.gif",
+      "locator": "Official station map; 新幹線中央乗換口 and 新幹線南乗換口 / 新幹線北乗換口 connect Shinkansen and conventional concourses; physical pedestrian interchange in both directions",
+      "components": [
+        {
+          "name": "東京",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_GATES_AND_PLATFORM_LEGEND",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kyoto-shinkansen-conventional-gates",
+      "kind": "transfer",
+      "sourceActionId": "hub:kyoto",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/kyoto/_img/kyoto_260420.gif",
+      "locator": "Official station map; 新幹線中央乗換口 and 新幹線東乗換口 connect Shinkansen and conventional concourses; physical pedestrian interchange in both directions",
+      "components": [
+        {
+          "name": "京都",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "京都",
+          "operator": "西日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_GATES_AND_PLATFORM_LEGEND",
+      "hubScopeComplete": false
+    }
+  ],
+  "completedActionIds": ["hub:tokyo", "hub:kyoto"]
+}

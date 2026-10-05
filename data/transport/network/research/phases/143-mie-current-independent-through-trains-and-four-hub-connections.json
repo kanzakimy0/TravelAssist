@@ -1,0 +1,540 @@
+{
+  "phaseId": "143-mie-current-independent-through-trains-and-four-hub-connections",
+  "strategy": [
+    "CURRENT_ACTUAL_MIE_DIRECTIONAL_CALLS",
+    "EXPLICIT_JR_ISE_OPERATOR_BOUNDARIES_WITHOUT_FAKE_CALLS",
+    "CURRENT_JR_PLATFORM_BRIDGES_AND_SEPARATE_OPERATOR_GATES"
+  ],
+  "completedActionIds": [
+    "rail:jr-central:current-mie3-and-mie14-full-calling-sequences",
+    "rail:ise-railway:current-mie-through-train-and-boundary-review",
+    "hub:jr-central:four-mie-current-platform-and-interchange-diagrams"
+  ],
+  "facts": [
+    {
+      "factId": "current-mie3-nagoya-toba",
+      "kind": "service",
+      "sourceActionId": "rail:jr-central:current-mie3-and-mie14-full-calling-sequences",
+      "sourceUrl": "https://railway.jr-central.co.jp/time-schedule/srch/_pdf/data/202603/kansai_Nagoya_B_wh_d.pdf",
+      "observedResponseSha256": "f3c8bd2d3993e8c9210e726c38edbac33fd00ddc8c1737a02fa795b6c3c53278",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/pdf/down_timetable/file/3",
+          "observedResponseSha256": "10e9e70934bdbe1f982aa470eff264ceafd6a1818609eb0822f740fda42fe2e7"
+        },
+        {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/station/",
+          "observedResponseSha256": "1412e6b348cda37a7681a2685b88a5b455b0b6fcc269c93fb637d66830a2aebc"
+        },
+        {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/",
+          "observedResponseSha256": "f60abf98aa7fdd5d014ea58cbc57435622ba9f1ddff005f02bc108c9db19b4ab"
+        },
+        {
+          "sourceActionId": "rail:jr-central:current-mie3-and-mie14-full-calling-sequences",
+          "url": "https://railway.jr-central.co.jp/time-schedule/search/ResultControl?st=f1&tm=1",
+          "observedResponseSha256": "fb6eb339c56648634b28cd5e101484e44156602f3f5e89d224c2b6422d885b45"
+        }
+      ],
+      "locator": "Individually viewed current March 2026 JR departure sheet: selected weekday みえ3号 has no A/B/C optional-local-stop mark, and no Nakaseko stop mark. Match mandatory circles only; exclude optional diamonds and the separate Kameyama route. Independent current March 14 2026 Ise directional actual-train column confirms Suzuka and Tsu calls and explicit pass marks at all intervening Ise stations, including Nakaseko. Ise publication explicitly labels JR sections as major-stations-only, so full JR calls come from JR Central sheet. The current primary public station API resolves the exact sheet. Independently reviewed actual trip in this direction; no reverse inference. Physical operator changes at non-stopping Kawarada between Yokkaichi/Suzuka calls, and at Tsu between the Suzuka/JR Tsu endpoints; preserve both operators on each affected interval without inventing a Kawarada stop or passenger interchange. No clocks, fares, artwork or full timetable retained.",
+      "line": "快速みえ・関西伊勢紀勢参宮直通",
+      "operator": "東海旅客鉄道・伊勢鉄道",
+      "mode": "conventional_rail",
+      "modeScope": "JR_CONVENTIONAL_THROUGH_SERVICE_OVER_ISE_RAILWAY_WITH_SEPARATE_OPERATOR_COMPONENTS",
+      "serviceClass": "快速みえ",
+      "reviewedTrainCode": "みえ3号",
+      "direction": "outbound",
+      "callingStations": [
+        "名古屋",
+        "桑名",
+        "四日市",
+        "鈴鹿",
+        "津",
+        "松阪",
+        "多気",
+        "伊勢市",
+        "二見浦",
+        "鳥羽"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桑名",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "四日市",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鈴鹿",
+          "operator": "伊勢鉄道",
+          "line": "伊勢線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "津",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松阪",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "多気",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊勢市",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "二見浦",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳥羽",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "segmentOperatorRefs": [
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道",
+          "伊勢鉄道"
+        ],
+        [
+          "伊勢鉄道",
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ]
+      ],
+      "throughServiceReview": {
+        "kind": "EXPLICIT_CURRENT_THROUGH_TRAIN",
+        "serviceIdentifier": "みえ3号",
+        "operatorRefs": [
+          "東海旅客鉄道",
+          "伊勢鉄道"
+        ],
+        "passengerInterchangeRequired": false,
+        "boundaryScope": "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+        "evidence": {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/pdf/down_timetable/file/3",
+          "observedResponseSha256": "10e9e70934bdbe1f982aa470eff264ceafd6a1818609eb0822f740fda42fe2e7"
+        }
+      },
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_TRAIN_COLUMNS_AND_OPTIONAL_STOP_NOTES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_MARCH_2026_STATIC_TOPOLOGY_NOT_REALTIME"
+    },
+    {
+      "factId": "current-mie14-toba-nagoya",
+      "kind": "service",
+      "sourceActionId": "rail:jr-central:current-mie3-and-mie14-full-calling-sequences",
+      "sourceUrl": "https://railway.jr-central.co.jp/time-schedule/srch/_pdf/data/202603/sangu_Toba_B_wh_u.pdf",
+      "observedResponseSha256": "a856de7dca88ac5baa8daab78a7fa18989003f28c49fd1e0c124c34f2960eb24",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/pdf/up_timetable/file/3",
+          "observedResponseSha256": "e7ac8c8bcb66e6c7aa64c1522a05b5a91ed39c77d07acbc9c32773a6d512dfc3"
+        },
+        {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/station/",
+          "observedResponseSha256": "1412e6b348cda37a7681a2685b88a5b455b0b6fcc269c93fb637d66830a2aebc"
+        },
+        {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/",
+          "observedResponseSha256": "f60abf98aa7fdd5d014ea58cbc57435622ba9f1ddff005f02bc108c9db19b4ab"
+        },
+        {
+          "sourceActionId": "rail:jr-central:current-mie3-and-mie14-full-calling-sequences",
+          "url": "https://railway.jr-central.co.jp/time-schedule/search/ResultControl?st=l11&tm=1",
+          "observedResponseSha256": "c4a03bc71c7e87f7e564b5d5a725bb31b26013d2bc2d4125360429daa3d0f24c"
+        }
+      ],
+      "locator": "Individually viewed current March 2026 JR departure sheet: selected weekday みえ14号 has no A/B/C optional-local-stop mark, and no Nakaseko stop mark. Match mandatory circles only; exclude optional diamonds and the separate Kameyama route. Independent current March 14 2026 Ise directional actual-train column confirms Suzuka and Tsu calls and explicit pass marks at all intervening Ise stations, including Nakaseko. Ise publication explicitly labels JR sections as major-stations-only, so full JR calls come from JR Central sheet. The current primary public station API resolves the exact sheet. Independently reviewed actual trip in this direction; no reverse inference. Physical operator changes at non-stopping Kawarada between Yokkaichi/Suzuka calls, and at Tsu between the Suzuka/JR Tsu endpoints; preserve both operators on each affected interval without inventing a Kawarada stop or passenger interchange. No clocks, fares, artwork or full timetable retained.",
+      "line": "快速みえ・関西伊勢紀勢参宮直通",
+      "operator": "東海旅客鉄道・伊勢鉄道",
+      "mode": "conventional_rail",
+      "modeScope": "JR_CONVENTIONAL_THROUGH_SERVICE_OVER_ISE_RAILWAY_WITH_SEPARATE_OPERATOR_COMPONENTS",
+      "serviceClass": "快速みえ",
+      "reviewedTrainCode": "みえ14号",
+      "direction": "inbound",
+      "callingStations": [
+        "鳥羽",
+        "二見浦",
+        "伊勢市",
+        "多気",
+        "松阪",
+        "津",
+        "鈴鹿",
+        "四日市",
+        "桑名",
+        "名古屋"
+      ],
+      "callingComponents": [
+        {
+          "name": "鳥羽",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "二見浦",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊勢市",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "多気",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松阪",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鈴鹿",
+          "operator": "伊勢鉄道",
+          "line": "伊勢線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "四日市",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桑名",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名古屋",
+          "operator": "東海旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "segmentOperatorRefs": [
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道",
+          "伊勢鉄道"
+        ],
+        [
+          "伊勢鉄道",
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ],
+        [
+          "東海旅客鉄道"
+        ]
+      ],
+      "throughServiceReview": {
+        "kind": "EXPLICIT_CURRENT_THROUGH_TRAIN",
+        "serviceIdentifier": "みえ14号",
+        "operatorRefs": [
+          "東海旅客鉄道",
+          "伊勢鉄道"
+        ],
+        "passengerInterchangeRequired": false,
+        "boundaryScope": "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+        "evidence": {
+          "sourceActionId": "rail:ise-railway:current-mie-through-train-and-boundary-review",
+          "url": "https://www.isetetu.co.jp/pdf/up_timetable/file/3",
+          "observedResponseSha256": "e7ac8c8bcb66e6c7aa64c1522a05b5a91ed39c77d07acbc9c32773a6d512dfc3"
+        }
+      },
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_TRAIN_COLUMNS_AND_OPTIONAL_STOP_NOTES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_MARCH_2026_STATIC_TOPOLOGY_NOT_REALTIME"
+    },
+    {
+      "factId": "mie-current-tsu-ise-component-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/tsu/_img/tsu_220927.gif",
+      "observedResponseSha256": "7e1892561bd22e55f9f31ac13de526249636eedf6caa788fe2b87f9662a3700d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/tsu/map.html",
+          "observedResponseSha256": "c37e0d8a88457a38524db1e8b40022d31e8a571c330b3d314a2842a4db45b3ca"
+        }
+      ],
+      "locator": "Individually viewed diagram currently linked by the official JR station page. JR Kisei platforms 2-4 and Ise Railway platform 1 share the explicitly drawn ordinary passenger overbridge and stairs. Preserve independently licensed operator/line components. No inferred through service from proximity, no limited retail route, no accessibility or transfer-time claim.",
+      "components": [
+        {
+          "name": "津",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津",
+          "operator": "伊勢鉄道",
+          "line": "伊勢線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_OFFICIAL_EXPLICIT_PLATFORM_BRIDGE_AND_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mie-current-tsu-kintetsu-component-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/tsu/_img/tsu_220927.gif",
+      "observedResponseSha256": "7e1892561bd22e55f9f31ac13de526249636eedf6caa788fe2b87f9662a3700d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/tsu/map.html",
+          "observedResponseSha256": "c37e0d8a88457a38524db1e8b40022d31e8a571c330b3d314a2842a4db45b3ca"
+        }
+      ],
+      "locator": "Individually viewed diagram currently linked by the official JR station page. JR Kisei platforms and Kintetsu platforms 5-6 connect through the ordinary passenger overbridge. Exclude the limited-hours Chum retail entrance. Preserve independently licensed operator/line components. No inferred through service from proximity, no limited retail route, no accessibility or transfer-time claim.",
+      "components": [
+        {
+          "name": "津",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津",
+          "operator": "近畿日本鉄道",
+          "line": "名古屋線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_OFFICIAL_EXPLICIT_PLATFORM_BRIDGE_AND_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mie-current-matsusaka-kintetsu-component-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/matsusaka/_img/matsusaka_200508.gif",
+      "observedResponseSha256": "c5ff8cdad425a9b59771dc7eb296fb794eb9a049e98f4bf5437c735568ad5aa5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/matsusaka/map.html",
+          "observedResponseSha256": "a3f6e05b46cc233a434aef5b3e43c3e3187c466045841a418d4843725fccc788"
+        }
+      ],
+      "locator": "Individually viewed diagram currently linked by the official JR station page. JR Kisei/Meisho platforms and Kintetsu platforms 6-8 connect by the explicitly drawn station passenger overbridge. Preserve independently licensed operator/line components. No inferred through service from proximity, no limited retail route, no accessibility or transfer-time claim.",
+      "components": [
+        {
+          "name": "松阪",
+          "operator": "東海旅客鉄道",
+          "line": "紀勢線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松阪",
+          "operator": "近畿日本鉄道",
+          "line": "山田線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_OFFICIAL_EXPLICIT_PLATFORM_BRIDGE_AND_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mie-current-iseshi-kintetsu-component-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/iseshi/_img/iseshi_200312.gif",
+      "observedResponseSha256": "b2df6237f91ca875a7fe4c6f57e5343adcb193148bf86066dabdd486928ea6c3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/iseshi/map.html",
+          "observedResponseSha256": "68a6ced2af58e6791e0a35b1d766fbe8f43c9a220789b27e7f8674d5ba32879e"
+        }
+      ],
+      "locator": "Individually viewed diagram currently linked by the official JR station page. JR Sangu platforms 1-3 connect through the eastern passenger overbridge to Kintetsu Yamada platforms 4-5. Preserve independently licensed operator/line components. No inferred through service from proximity, no limited retail route, no accessibility or transfer-time claim.",
+      "components": [
+        {
+          "name": "伊勢市",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊勢市",
+          "operator": "近畿日本鉄道",
+          "line": "山田線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_OFFICIAL_EXPLICIT_PLATFORM_BRIDGE_AND_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mie-current-toba-kintetsu-component-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/tokai/toba/_img/toba110119.gif",
+      "observedResponseSha256": "6c6facea633a6d44e3605cef832e0480bf5eabf24bdbaa6a4a46eafdfe608104",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:four-mie-current-platform-and-interchange-diagrams",
+          "url": "https://railway.jr-central.co.jp/station-guide/tokai/toba/map.html",
+          "observedResponseSha256": "71f4ac31f34d81c5befface3bcaacf214a4c29b53534298c9fb006c10ff2adfe"
+        }
+      ],
+      "locator": "Individually viewed diagram currently linked by the official JR station page. Separate JR and Kintetsu gates open to the same upper passenger concourse with explicit internal stairs to their separate platforms. Preserve independently licensed operator/line components. No inferred through service from proximity, no limited retail route, no accessibility or transfer-time claim.",
+      "components": [
+        {
+          "name": "鳥羽",
+          "operator": "東海旅客鉄道",
+          "line": "参宮線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳥羽",
+          "operator": "近畿日本鉄道",
+          "line": "鳥羽線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_OFFICIAL_EXPLICIT_PLATFORM_BRIDGE_AND_GATE_DIAGRAM",
+      "hubScopeComplete": false
+    }
+  ]
+}

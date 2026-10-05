@@ -1,0 +1,107 @@
+{
+  "status": "READ_ONLY_NORMATIVE_REVIEW_SUPPORTS_UNKNOWN_LEAD_TYPED_CONFIRMATION_NOT_AUTOMATIC_PASS",
+  "recordedAt": "2026-10-03T21:05:04.915979+00:00",
+  "scope": "Original Aguni and Okushiri airport OD applicability only. No code/input/generator changes, no contacts/bookings/forms.",
+  "primaryConclusion": "Original TASK086 does not impose a numerical minimum reservation lead on every real service. Required broad reservation semantics and real directional service/endpoint/source proof remain. Unknown minimum lead must stay null/UNKNOWN, never zero or inherited30. A genuinely operator-confirmed exact reservation can satisfy a confirmation-dependent use predicate without reverse-engineering an unpublished deadline; a request/plan/user promise cannot. This review does not claim that any actual reservation has been obtained.",
+  "spec": {
+    "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+    "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2",
+    "clauses": [
+      {
+        "lines": "112-127",
+        "quote": "Static topology and dynamic metrics are separate acceptance layers.",
+        "effect": "Missing dynamic detail cannot erase otherwise proven topology; this is not permission to invent a usable departure."
+      },
+      {
+        "lines": "182,194-202",
+        "quote": "A directed topology segment supported by a real line / route / service pattern.",
+        "effect": "Exact identities, direction, mode/service reference and provenance required; no mandatory numeric booking field."
+      },
+      {
+        "lines": "294-298",
+        "quote": "reservation?: \"not_required\" | \"recommended\" | \"required\" | \"unknown\"",
+        "effect": "Original schema explicitly permits unresolved reservation metadata. For these services reservation REQUIRED is known; only cutoff value is UNKNOWN."
+      },
+      {
+        "lines": "320-334",
+        "quote": "broad reservation semantics",
+        "effect": "Source-dependent broad conditions are static; original task does not demand one universal30-minute lead."
+      },
+      {
+        "lines": "338-351",
+        "quote": "If dynamic fields are unavailable, use explicit unresolved reasons. Topology can still PASS without them.",
+        "effect": "Do not present time feasibility/live availability/dispatch as resolved."
+      },
+      {
+        "lines": "732-748",
+        "quote": "topology-confirmed edge provenance = 100%; both endpoints admitted = 100%; directed semantics = 100%",
+        "effect": "Confirmation does not waive lawful sources, endpoint identity, service directions, required national path or boarding restrictions."
+      },
+      {
+        "lines": "757",
+        "quote": "airport-to-surface-network structural coverage PASS where service exists",
+        "effect": "Gate is structural. A later numeric-lead profile cannot silently become a new universal original requirement."
+      },
+      {
+        "lines": "793-815",
+        "quote": "reservation metadata coverage",
+        "effect": "Report unresolved booking detail independently with source/freshness/reason."
+      }
+    ]
+  },
+  "currentAdapterCorrection": {
+    "path": "tools/transport/task-086-dynamic-od.mjs",
+    "sha256": "45d846bc7c686a73e0364488edaf4a9ae672fbc58dd09f90082756c8e7b6f2c9",
+    "minimum30": "Lines144-147 belong to the original narrow PUBLIC_VISITOR PHONE profile (SouthDaito), not Noto.",
+    "noto": "Noto explicit separate contractKind NOTO_FLIGHT_ASSOCIATED_PUBLIC_OD_V1 uses previous-day15:00 and assigned-place/operator-confirmation conditions (lines39-64,652-681); it does not use30minutes.",
+    "constraint": "Neither source-specific contract may be silently generalized or weakened. New operator-specific unknown-cutoff semantics would be a separate reviewed profile, leaving both prior contracts/negatives unchanged."
+  },
+  "semanticSeparation": {
+    "staticService": "Prove current shared/demand passenger service, public or exact qualification, actual airport and exact supported other endpoint/area, independent directions, lawful provenance and operating validity. No fixed calls from OD area membership.",
+    "deadline": "minimumLeadMinutes:null, leadTimeKnowledge:UNKNOWN_NOT_PUBLISHED; known reception and operating windows separate. Never evaluate null as0.",
+    "request": "REQUESTED / INTENDED / WILL_CONFIRM / user acceptance of uncertainty does not imply accepted booking; no confirmed-status witness from these states.",
+    "confirmedUse": "A distinct operator-confirmed use context binds exact service/contract/source version, operator, two selected endpoint identities, direction, service date and accepted pickup arrangement. An inbound confirmation cannot automatically authorize return; both directions need separate confirmations if actual use is the witness.",
+    "confirmationEvidence": "Do not accept an unbound operatorConfirmed:true boolean. Existing permitted confirmation information must identify provenance/trusted origin and exact booking scope; no real customer details need enter the public static dataset. No confirmation artifact was supplied in current caches, so this review supplies no actual-confirmed-use PASS.",
+    "structuralVsBooking": "A structural conditional capability proposition is not a claim that somebody has booked. Original spec does not require procuring customer reservations to prove a service exists. If introducing a separate reviewed structural capability view, label that proposition explicitly and prove original structural obligations; never feed its assumed conditions into the ordinary actual-confirmed query as real confirmation. This is a separate design choice for root review, not implemented here.",
+    "expiry": "Cancellation, denied/revoked/expired confirmation, changed endpoints/operator, wrong date, withdrawn source permission, changed source/native hashes or service outside published validity must deny/reopen; a confirmation does not authorize service beyond its source scope.",
+    "unknowns": "Keep payment/precise route/dispatch/capacity UNKNOWN where unpublished; do not inherit Noto cash, SouthDaito cash/30min, or Yamato 24h actual ride service."
+  },
+  "aguni": {
+    "reviewPath": ".cache/task-086/aguni-next/aguni-current-transition-review-v2.json",
+    "reviewSha256": "dc88dd34cd829b85f93686e156e9004ef64c3ba14526b71097ce8b55f261134e",
+    "supported": "Current2026 plan/system table explicitly preserves area OD and airport connection; current access describes reservation-based shared taxi with reception08:30-16:15/service08:30-16:30. Native exact village-office P05 identity already retained privately.",
+    "lead": "2023prefer30 remains historical only. The2025 unchanged statement concerns registration fields, not a current cutoff.",
+    "remaining": "Resolve current October OD operating instructions/old timetable conflict only to extent material to selected service/confirmation; bind precise accepted office/airport endpoint or published service-area obligation. Keep October fixed-bus abolition counterevidence. No invented reverse fixed service or extra poles. Existing candidate hard-denial reflects then-selected query contract, not proof the original spec universally requires numeric lead.",
+    "scopeBoundary": "Unknown-cutoff profile feasibility is supported by original spec, but this review does not rewrite existing hard-deny candidate or claim a real operator confirmation. Existing flight operating date must independently remain valid."
+  },
+  "okushiri": {
+    "sourceUrl": "https://www.kuronekoyamato.co.jp/ytc/info/info_261001_1.html",
+    "originalResponseSha256": "393f1e6e857c08c615075503f9ff74b9c8e4692e380a6ad8d0012e7f14e51ac4",
+    "sanitizedCacheSha256": "b83d52a44b4d196f481a4fda15c4028aea193d336e62e83ff662096be573ae51",
+    "metadataSha256": "9bc67216e4dc80c6e11d83e11ca654ed86f8df8d68780eb90bc2c58511d87744",
+    "textSha256": "794f0672e94bcab577297289050eadec78b4142a65591778f3e0d77c49662a22",
+    "supported": "Operator2026-10-01 release explicitly identifies island-wide 島のりあい paid public rideshare demonstration Oct1-Jan31(planned),06:00-23:00 service, phone/LINE24h reception, human08:30-18:30 and AI outside; booking/operation may prevent boarding.",
+    "separateServices": "The same page also describes Yamato-contracted fixed route buses throughMar31 and8-person wagon. Those terms are not automatically island-wide rideshare terms. Rideshare uses distinct4-person collection vehicle or town-managed/leasing vehicle up to9; driver/time allocation must be preserved.",
+    "remaining": "Bind current lawful source-specific rights and exact airport/necessary endpoint/OD area relation. Island-wide published area supports research, not a fabricated fixed two-stop pattern or precise curb. Numeric minimum lead is not published; neither24h reception nor human hours means immediate dispatch.",
+    "confirmation": "Exact independently accepted reservation for the chosen published service and direction can satisfy a future typed confirmed-use context; no current artifact in this review proves such acceptance."
+  },
+  "minimalNegativeTestsProposed": [
+    "Unknown lead cannot be treated as0 or satisfied by any elapsed30-minute interval.",
+    "REQUESTED/INTENDED/FUTURE_CONFIRMATION and bare unbound operatorConfirmed flag reject.",
+    "Confirmed other service/operator/endpoint/date/direction rejects; one direction does not prove reverse.",
+    "Expired/cancelled/revoked or denied confirmation rejects; no seat/dispatch guarantee inferred.",
+    "Default ordinary query cannot use confirmation-required OD; PUBLIC eligibility alone is insufficient confirmation.",
+    "Changed native facility/source/rights/version or missing mandatory condition rejects/reopens.",
+    "Reception24h is not operation24h; pickup outside published service/validity rejects.",
+    "SouthDaito30 and Noto previous-day15 contracts/old outputs stay identical.",
+    "Aguni old fixed timetable cannot be admitted through UNKNOWN-lead branch, and historical30 cannot be relabeled current.",
+    "Okushiri fixed-bus terms cannot be substituted for island-wide ride-share terms.",
+    "No source assertion of precise service endpoint/area cannot be repaired by coordinate proximity or an invented confirmation."
+  ],
+  "nextConcreteAction": "First choose explicit structural-capability versus actual-confirmed-use scope and make them visibly distinct. Then source-bound independent profile can reuse native OD admission and strict graph validation; no arbitrary numeric cutoff. Do not contact operator, submit forms or fabricate bookings. Existing factual service/source/endpoint review can proceed from current caches while actual-use confirmation remains absent.",
+  "newHTTP": 0,
+  "newWebQueries": 0,
+  "productionWrites": 0,
+  "codeChanges": 0,
+  "claimedCurrentClosure": false
+}

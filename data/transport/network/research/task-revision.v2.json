@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "revisionId": "TASK086-FINAL-CERTIFIED-CLOSEOUT-20261005",
+  "asOf": "2026-10-05",
+  "supersedes": "Continuous discovery and previous bounded closeout instructions",
+  "scope": "ALL_ORIGINAL_TASK086_REQUIREMENTS_AND_NECESSARY_DEPENDENCIES",
+  "continueAfterMilestones": true,
+  "newSourceAcquisitionAuthorized": true,
+  "ordinaryWorkRequiresNewPermission": false,
+  "completion": "PASS_CERTIFIED_NATIONAL_BACKBONE_OR_BLOCKED_CERTIFIED_NATIONAL_BACKBONE_THEN_STOP",
+  "exceptionPolicy": "Audit exceptions under original specification; never describe exceptions or external approval as completed data. Continue all independent ordinary work first.",
+  "firstAirportNames": [
+    "青森",
+    "秋田",
+    "松山",
+    "新潟"
+  ],
+  "then": [
+    "Remaining original airport roots",
+    "Bus direction and public-transfer roots grouped by researchBatchKey",
+    "Original special-transport applicability"
+  ],
+  "excluded": [
+    "Optional coverage expansion",
+    "Paid access",
+    "Extra permissions",
+    "Access restriction bypass",
+    "Unlicensed data use",
+    "Production import",
+    "Routing API",
+    "Planner integration",
+    "Merge",
+    "Release"
+  ],
+  "maxDirectedEdgesPerBatch": 200,
+  "sharedWriters": "SERIAL_OR_ISOLATED",
+  "research": "No new ordinary discovery. Only final acceptance blocking defects may be repaired.",
+  "cache": "One retrieval per source/version/rights scope. Record methods, result, failure and retry conditions; do not retry identical failed inputs. Change evidence-based method on repeated no improvement; never infer exhaustion from attempt count.",
+  "validation": "Preserve identity, rights, directions, ordered calls, boarding/alighting, public transfers, hashes and thresholds; affected tests per package, broaden shared algorithm tests; final full regression, deterministic rebuild, resume and corruption tests, lint/types/build and CI. Reuse only identical code/input/config/dependency/environment fingerprints.",
+  "ci": "Record branch HEAD and actual checkout SHA separately; PR merge tests are not direct HEAD tests.",
+  "secrets": "Redact signed URL secrets in all evidence/logs; do not rewrite history, close alerts or rotate credentials.",
+  "metrics": "Actual elapsed time/search/HTTP/cache hits/unique roots closed; token/cache billing/cost only when available. No invented savings.",
+  "communication": "Deliver certified national PASS or BLOCKED with precise evidence; stop after report.",
+  "git": "Continue existing branch and Draft PR466; commit/push use existing authorization.",
+  "finalCloseoutOnly": true
+}

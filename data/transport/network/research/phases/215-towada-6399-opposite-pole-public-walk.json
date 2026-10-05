@@ -1,0 +1,102 @@
+{
+  "phaseId": "215-towada-6399-opposite-pole-public-walk",
+  "strategy": [
+    "EXACT_LICENSED_GTFS_NATIVE_COMPONENTS",
+    "PRESERVE_DIRECTIONAL_PICKUP_DROPOFF",
+    "OFFICIAL_OPPOSITE_POLE_GUIDE",
+    "ODBL_PUBLIC_PATH_TOPOLOGY",
+    "GSI_PDL1_PHOTO_CORROBORATION",
+    "NO_NEW_NODES",
+    "NO_SERVICE_REVERSAL"
+  ],
+  "completedActionIds": [
+    "transfer:towada:official-opposite-pole-guide",
+    "transfer:towada:odbl-connected-sidewalk-crossing",
+    "transfer:towada:gsi-pdl1-photo-corroboration",
+    "transfer:towada:current-city-directional-passenger-roles"
+  ],
+  "facts": [
+    {
+      "factId": "towada-6399-opposite-poles-public-bidirectional-walk",
+      "kind": "transfer",
+      "sourceActionId": "transfer:towada:odbl-connected-sidewalk-crossing",
+      "sourceUrl": "https://overpass-api.de/api/interpreter",
+      "observedResponseSha256": "91205fec6c5473b9c5d15f2b4f7e3d8b56740bfa170fce0c66180a908245da39",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:towada:official-opposite-pole-guide",
+          "url": "https://www.toutetsu.co.jp/img/hachinohe-noriba.pdf",
+          "observedResponseSha256": "09a0ab950df66b707c8d1c1dee9bfda49ab4f82e1f9ef846b4d26d4d592ba501"
+        },
+        {
+          "sourceActionId": "transfer:towada:gsi-pdl1-photo-corroboration",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/234064/98718.jpg",
+          "observedResponseSha256": "7825f1e577642d768df873559118472c236cb54e744a7b444304445e4b988f8b"
+        },
+        {
+          "sourceActionId": "transfer:towada:gsi-pdl1-photo-corroboration",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/234065/98719.jpg",
+          "observedResponseSha256": "10aa022c2a3fed479ecce8d2b88389a47b22f59c0fd3b4dce3dcf72d0071a52d"
+        },
+        {
+          "sourceActionId": "transfer:towada:current-city-directional-passenger-roles",
+          "url": "https://www.city.misawa.lg.jp/index.cfm/22,2371,66,294,html",
+          "observedResponseSha256": "96ee183174941f2e0f7496e87cce3e1a2e1c0d635558803dab227a43ff5526ae"
+        }
+      ],
+      "components": [
+        {
+          "name": "ハイテクパーク入口",
+          "operator": "十和田観光電鉄",
+          "line": "gtfs:towada-misawa-airport:route:31",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:towada-misawa-airport",
+            "stopId": "6399_02",
+            "sourceArchiveSha256": "ad05f644d863cde05badb4d1a9c609e90695f406633f3b086ada5cf8e6e0658e",
+            "recordSha256": "31ef045a7a626903e3768a63a9603701ebe72dd1e46cc704c407affcaa3ad47c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Airport-origin route permits drop-off only; exact active 2026-10-01 service pattern confirms pickup_type=1, drop_off_type=0 at this native stop. Native names match, but records, poles, coordinates, directions and passenger restrictions remain distinct. No same-name node collapse."
+          }
+        },
+        {
+          "name": "ハイテクパーク入口",
+          "operator": "十和田観光電鉄",
+          "line": "gtfs:towada-misawa-airport:route:31",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:towada-misawa-airport",
+            "stopId": "6399_01",
+            "sourceArchiveSha256": "ad05f644d863cde05badb4d1a9c609e90695f406633f3b086ada5cf8e6e0658e",
+            "recordSha256": "4214070aff344d7923786d60e64b304e20c9ebe76da3d4c248cbfb5a3c745b66",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Airport-bound route permits boarding only; exact active 2026-10-01 service pattern confirms pickup_type=0, drop_off_type=1 at this native stop. Native names match, but records, poles, coordinates, directions and passenger restrictions remain distinct. No same-name node collapse."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXACT_GTFS_COMPONENTS_PLUS_OFFICIAL_DIRECTIONAL_POLE_MAP_AND_PUBLIC_PATH_TOPOLOGY",
+      "hubScopeComplete": false,
+      "locator": "The current Toutetsu pole guide (https://www.toutetsu.co.jp/img/hachinohe-noriba.pdf; response SHA 09a0ab950df66b707c8d1c1dee9bfda49ab4f82e1f9ef846b4d26d4d592ba501) labels ハイテクパーク入口 and separately marks 乗車位置 and 降車位置 at opposite roadside positions. Current licensed GTFS keeps exact native records 6399_01 (city-to-airport boarding allowed only) and 6399_02 (airport-to-city alighting allowed only); current Misawa City page confirms those directional passenger roles. Corrected path after spatial review: reject the earlier short chain 595671466→777713479→595686216 because it only reached a northeast-side branch and did not demonstrate passage across the divided arterial. Candidate public route is sidewalk 595674938 → crossing 777713477 → sidewalk 595686219 → crossing 777713478 → sidewalk 595686216. Each crossing-way endpoint shares an exact OSM geometry vertex with its adjoining sidewalk geometry; both crossings are tagged highway=footway, footway=crossing. This two-crossing route is the topological basis for a public connection across the divided road, not straight-line proximity. The zoom-18 GSI photographs provide only low-resolution road/approach context; they do not independently establish crosswalk paint. Their capture date is unknown. Physical pedestrian paths are bidirectional absent one-way/private restrictions in the mapped ways; the reverse walk follows that same public path and is not inferred from reversing bus service. No curb/platform point, door, accessibility, or unrestricted detailed walking route is asserted. For any published OSM-derived database retain attribution and comply with ODbL share-alike.",
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only the two OSM-derived transfer topology records/edges if publicly distributed; downstream derived database must be made available under ODbL 1.0. This does not classify unrelated canonical records as OSM-derived."
+      },
+      "rightsBindingSchemaVersion": 1
+    }
+  ],
+  "decision": "PRIVATE_CANDIDATE_REQUIRES_ROOT_REVIEW_OF_TWO_CROSSING_ROUTE"
+}

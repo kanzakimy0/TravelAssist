@@ -1,0 +1,1300 @@
+{
+  "phaseId": "107-fda-nine-required-airports-current-directional-flight-pairs",
+  "strategy": [
+    "CURRENT_INDEPENDENT_DIRECTIONAL_DIRECT_FLIGHTS",
+    "EXCLUDE_EXPIRED_SEASONAL_AND_CONNECTION_SUGGESTIONS",
+    "EXACT_C28_AIRPORT_AND_PREFECTURAL_NAGOYA_AIRFIELD_NAME_PROOF"
+  ],
+  "completedActionIds": [
+    "flight:fda:current-required-airports-directional-pairs",
+    "airport:nagoya:prefectural-formal-airfield-name-review"
+  ],
+  "facts": [
+    {
+      "factId": "fda-current-福岡-名古屋-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000005866.html",
+          "observedResponseSha256": "036469390aa2ceb1da865c0334fc834973e7461ffd055f2782e5201303056f07"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_nkm.html",
+          "observedResponseSha256": "7a9b41c5627ea9df55ca3dfe724bdcdf3cfbd6d71af902e38b4ce6589b73d2d9"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 4, direct-departure table for 福岡, actual FDA310 toward 名古屋. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・名古屋国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA310",
+      "direction": "福岡空港→名古屋飛行場",
+      "callingStations": [
+        "福岡空港",
+        "名古屋飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-名古屋-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000005866.html",
+          "observedResponseSha256": "036469390aa2ceb1da865c0334fc834973e7461ffd055f2782e5201303056f07"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_nkm.html",
+          "observedResponseSha256": "7a9b41c5627ea9df55ca3dfe724bdcdf3cfbd6d71af902e38b4ce6589b73d2d9"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 3, direct-departure table for 名古屋, actual FDA303 toward 福岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・名古屋国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA303",
+      "direction": "名古屋飛行場→福岡空港",
+      "callingStations": [
+        "名古屋飛行場",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-名古屋-青森-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000005866.html",
+          "observedResponseSha256": "036469390aa2ceb1da865c0334fc834973e7461ffd055f2782e5201303056f07"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_nkm.html",
+          "observedResponseSha256": "7a9b41c5627ea9df55ca3dfe724bdcdf3cfbd6d71af902e38b4ce6589b73d2d9"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 3, direct-departure table for 名古屋, actual FDA361 toward 青森. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "名古屋・青森国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA361",
+      "direction": "名古屋飛行場→青森空港",
+      "callingStations": [
+        "名古屋飛行場",
+        "青森空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        },
+        {
+          "name": "青森空港",
+          "operator": "airport-facility:cf03_00020",
+          "line": "airport:cf03_00020",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00020",
+            "requirementId": "review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8",
+            "expectedRequirementName": "青森",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-名古屋-青森-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000005866.html",
+          "observedResponseSha256": "036469390aa2ceb1da865c0334fc834973e7461ffd055f2782e5201303056f07"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_nkm.html",
+          "observedResponseSha256": "7a9b41c5627ea9df55ca3dfe724bdcdf3cfbd6d71af902e38b4ce6589b73d2d9"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 1, direct-departure table for 青森, actual FDA362 toward 名古屋. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "名古屋・青森国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA362",
+      "direction": "青森空港→名古屋飛行場",
+      "callingStations": [
+        "青森空港",
+        "名古屋飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "青森空港",
+          "operator": "airport-facility:cf03_00020",
+          "line": "airport:cf03_00020",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00020",
+            "requirementId": "review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8",
+            "expectedRequirementName": "青森",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-新潟-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 4, direct-departure table for 福岡, actual FDA505 toward 新潟. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・新潟国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA505",
+      "direction": "福岡空港→新潟空港",
+      "callingStations": [
+        "福岡空港",
+        "新潟空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "新潟空港",
+          "operator": "airport-facility:cf03_00039",
+          "line": "airport:cf03_00039",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00039",
+            "requirementId": "review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af",
+            "expectedRequirementName": "新潟",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-新潟-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 新潟, actual FDA504 toward 福岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・新潟国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA504",
+      "direction": "新潟空港→福岡空港",
+      "callingStations": [
+        "新潟空港",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "新潟空港",
+          "operator": "airport-facility:cf03_00039",
+          "line": "airport:cf03_00039",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00039",
+            "requirementId": "review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af",
+            "expectedRequirementName": "新潟",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-花巻-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 4, direct-departure table for 福岡, actual FDA525 toward 花巻. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・花巻国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA525",
+      "direction": "福岡空港→花巻空港",
+      "callingStations": [
+        "福岡空港",
+        "花巻空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "花巻空港",
+          "operator": "airport-facility:cf03_00024",
+          "line": "airport:cf03_00024",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00024",
+            "requirementId": "review:official-airport:花巻",
+            "expectedRequirementName": "花巻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-花巻-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 花巻, actual FDA524 toward 福岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・花巻国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA524",
+      "direction": "花巻空港→福岡空港",
+      "callingStations": [
+        "花巻空港",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "花巻空港",
+          "operator": "airport-facility:cf03_00024",
+          "line": "airport:cf03_00024",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00024",
+            "requirementId": "review:official-airport:花巻",
+            "expectedRequirementName": "花巻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-松本-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 4, direct-departure table for 福岡, actual FDA200 toward 松本. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・松本国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA200",
+      "direction": "福岡空港→松本空港",
+      "callingStations": [
+        "福岡空港",
+        "松本空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "松本空港",
+          "operator": "airport-facility:cf03_00068",
+          "line": "airport:cf03_00068",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00068",
+            "requirementId": "review:transport-node:15b146de-08df-5dd9-ace7-877cc110be9d",
+            "expectedRequirementName": "松本",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-松本-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 松本, actual FDA201 toward 福岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・松本国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA201",
+      "direction": "松本空港→福岡空港",
+      "callingStations": [
+        "松本空港",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "松本空港",
+          "operator": "airport-facility:cf03_00068",
+          "line": "airport:cf03_00068",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00068",
+            "requirementId": "review:transport-node:15b146de-08df-5dd9-ace7-877cc110be9d",
+            "expectedRequirementName": "松本",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-新千歳-山形-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 1, direct-departure table for 新千歳, actual FDA603 toward 山形. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "新千歳・山形国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA603",
+      "direction": "新千歳空港→山形空港",
+      "callingStations": [
+        "新千歳空港",
+        "山形空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "新千歳空港",
+          "operator": "airport-facility:cf03_00016",
+          "line": "airport:cf03_00016",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00016",
+            "requirementId": "review:transport-node:25482cb1-a14e-575b-a551-bb475842ea29",
+            "expectedRequirementName": "新千歳",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "山形空港",
+          "operator": "airport-facility:cf03_00026",
+          "line": "airport:cf03_00026",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00026",
+            "requirementId": "review:transport-node:717612ec-e655-5ac0-855a-d2afaf8ab1c0",
+            "expectedRequirementName": "山形",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-新千歳-山形-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 山形, actual FDA602 toward 新千歳. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "新千歳・山形国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA602",
+      "direction": "山形空港→新千歳空港",
+      "callingStations": [
+        "山形空港",
+        "新千歳空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "山形空港",
+          "operator": "airport-facility:cf03_00026",
+          "line": "airport:cf03_00026",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00026",
+            "requirementId": "review:transport-node:717612ec-e655-5ac0-855a-d2afaf8ab1c0",
+            "expectedRequirementName": "山形",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "新千歳空港",
+          "operator": "airport-facility:cf03_00016",
+          "line": "airport:cf03_00016",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00016",
+            "requirementId": "review:transport-node:25482cb1-a14e-575b-a551-bb475842ea29",
+            "expectedRequirementName": "新千歳",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-名古屋-出雲-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000005866.html",
+          "observedResponseSha256": "036469390aa2ceb1da865c0334fc834973e7461ffd055f2782e5201303056f07"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_nkm.html",
+          "observedResponseSha256": "7a9b41c5627ea9df55ca3dfe724bdcdf3cfbd6d71af902e38b4ce6589b73d2d9"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 3, direct-departure table for 名古屋, actual FDA411 toward 出雲. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "名古屋・出雲国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA411",
+      "direction": "名古屋飛行場→出雲空港",
+      "callingStations": [
+        "名古屋飛行場",
+        "出雲空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        },
+        {
+          "name": "出雲空港",
+          "operator": "airport-facility:cf03_00078",
+          "line": "airport:cf03_00078",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00078",
+            "requirementId": "review:official-airport:出雲",
+            "expectedRequirementName": "出雲",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-名古屋-出雲-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000005866.html",
+          "observedResponseSha256": "036469390aa2ceb1da865c0334fc834973e7461ffd055f2782e5201303056f07"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_nkm.html",
+          "observedResponseSha256": "7a9b41c5627ea9df55ca3dfe724bdcdf3cfbd6d71af902e38b4ce6589b73d2d9"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 3, direct-departure table for 出雲, actual FDA412 toward 名古屋. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "名古屋・出雲国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA412",
+      "direction": "出雲空港→名古屋飛行場",
+      "callingStations": [
+        "出雲空港",
+        "名古屋飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "出雲空港",
+          "operator": "airport-facility:cf03_00078",
+          "line": "airport:cf03_00078",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00078",
+            "requirementId": "review:official-airport:出雲",
+            "expectedRequirementName": "出雲",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-静岡-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_fsz.html",
+          "observedResponseSha256": "05901ee0f338b238e9e1731255acb1f88b124a0845f5671913524f4586ec3268"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 4, direct-departure table for 福岡, actual FDA142 toward 静岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・静岡国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA142",
+      "direction": "福岡空港→静岡空港",
+      "callingStations": [
+        "福岡空港",
+        "静岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "静岡空港",
+          "operator": "airport-facility:cf03_00093",
+          "line": "airport:cf03_00093",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00093",
+            "requirementId": "review:transport-node:6e4a29e1-46af-5d04-926f-d248759e7203",
+            "expectedRequirementName": "静岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-福岡-静岡-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_fsz.html",
+          "observedResponseSha256": "05901ee0f338b238e9e1731255acb1f88b124a0845f5671913524f4586ec3268"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 静岡, actual FDA143 toward 福岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "福岡・静岡国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA143",
+      "direction": "静岡空港→福岡空港",
+      "callingStations": [
+        "静岡空港",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "静岡空港",
+          "operator": "airport-facility:cf03_00093",
+          "line": "airport:cf03_00093",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00093",
+            "requirementId": "review:transport-node:6e4a29e1-46af-5d04-926f-d248759e7203",
+            "expectedRequirementName": "静岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-静岡-鹿児島-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_fsz.html",
+          "observedResponseSha256": "05901ee0f338b238e9e1731255acb1f88b124a0845f5671913524f4586ec3268"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 静岡, actual FDA133 toward 鹿児島. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "静岡・鹿児島国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA133",
+      "direction": "静岡空港→鹿児島空港",
+      "callingStations": [
+        "静岡空港",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "静岡空港",
+          "operator": "airport-facility:cf03_00093",
+          "line": "airport:cf03_00093",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00093",
+            "requirementId": "review:transport-node:6e4a29e1-46af-5d04-926f-d248759e7203",
+            "expectedRequirementName": "静岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fda-current-静岡-鹿児島-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+      "sourceUrl": "https://www.fujidream.co.jp/wp-content/uploads/2026/03/flight_schedule_20260329-20261024.pdf",
+      "observedResponseSha256": "b71c3f2c5e8485be1408c1f3de1a0d6d81ba4b7534d20ec9c6ac71ea6e728840",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/timetable/",
+          "observedResponseSha256": "8e6892678a1822171ff51e90db9b707d95132747cacc1b84aa41c858c4066eb0"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/",
+          "observedResponseSha256": "9bc4f4a5b10df39866389143c39d86a143ad1dbef11dbda2d553a55115f789ff"
+        },
+        {
+          "sourceActionId": "flight:fda:current-required-airports-directional-pairs",
+          "url": "https://www.fujidream.co.jp/checkin/airport/airport_fsz.html",
+          "observedResponseSha256": "05901ee0f338b238e9e1731255acb1f88b124a0845f5671913524f4586ec3268"
+        }
+      ],
+      "locator": "Visually reviewed PDF page 2, direct-departure table for 鹿児島, actual FDA134 toward 静岡. Valid period 2026-03-29 through 2026-10-24 includes current October 2; selected actual direct flight has no date restriction excluding this day. Each direction is independently observed. Connecting-flight suggestion tables are excluded. Expired Aomori-Kobe and Shizuoka-Izumo seasonal pairs are excluded. Preserve only ordered airport relationship and carrier identity, without clocks, fares or timetable compilation.",
+      "line": "静岡・鹿児島国内線",
+      "operator": "フジドリームエアラインズ",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "FDA134",
+      "direction": "鹿児島空港→静岡空港",
+      "callingStations": [
+        "鹿児島空港",
+        "静岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "静岡空港",
+          "operator": "airport-facility:cf03_00093",
+          "line": "airport:cf03_00093",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00093",
+            "requirementId": "review:transport-node:6e4a29e1-46af-5d04-926f-d248759e7203",
+            "expectedRequirementName": "静岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECT_FLIGHT_AND_EXACT_C28_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    }
+  ]
+}
