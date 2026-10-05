@@ -17,3 +17,7 @@ data/transport/network/** -text whitespace=blank-at-eol,blank-at-eof,space-befor
 tools/transport/task-086-extract-abr-facility.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 tools/transport/task-086-extract-abr-private-hotel.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 tools/transport/task-086-extract-official-bus-facility.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Native hash-bound test snapshots must retain exact bytes from the persisted original.
+tests/fixtures/task-086-noto-od/data/noto-native/P04-20_17.xml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/fixtures/task-086-onboard-request/registration/sources/raw/niijima-tokyo-official-evacuation.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

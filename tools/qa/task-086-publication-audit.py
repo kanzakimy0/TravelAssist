@@ -26,8 +26,10 @@ def tree(revision):
 def allowed(name):
     if name == 'data/transport/network/core-stage-acceptance.json':
         return 'OMITTED_OVERSIZED_DERIVED_EVIDENCE'
-    if name in ['.gitignore', '.github/workflows/quality-gate.yml', 'tools/transport/task-086-verify.mjs', 'tools/transport/task-086-validation-lanes.mjs', 'tools/transport/task-086-validation.mjs', 'tools/qa/task-086-regression-lanes.mjs', 'tools/qa/task-086-publication-audit.py', 'tests/task-086-publication-recovery.test.mjs']:
+    if name in ['.gitattributes', '.gitignore', '.github/workflows/quality-gate.yml', 'tools/transport/task-086-verify.mjs', 'tools/transport/task-086-validation-lanes.mjs', 'tools/transport/task-086-validation.mjs', 'tools/qa/task-086-regression-lanes.mjs', 'tools/qa/task-086-publication-audit.py', 'tests/task-086-publication-recovery.test.mjs']:
         return 'PUBLICATION_VALIDATION_ONLY'
+    if name in ['tests/fixtures/task-086-noto-od/data/noto-native/P04-20_17.xml', 'tests/fixtures/task-086-onboard-request/registration/sources/raw/niijima-tokyo-official-evacuation.csv']:
+        return 'VALIDATION_FIXTURE_NATIVE_BYTE_RESTORE'
     if name.startswith('docs/qa/TASK-086/') or name in ['docs/qa/TASK-086-B/phase244-bounded-closeout-ledger.v1.json', 'docs/tasks/TASK-086-b-closeout-publication-recovery.md', 'docs/tasks/RESULT-TASK-086-b-japan-mobility-backbone.md', 'docs/project/WBS-TravelAssist.md']:
         return 'DOCUMENTED_CLOSEOUT_QA_UPDATE'
     return None

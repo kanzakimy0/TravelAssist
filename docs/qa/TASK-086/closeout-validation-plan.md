@@ -21,3 +21,7 @@ Previous full verifier serially recomputed244research phases over1337batch recei
 ## Exact-head identity
 
 Each job records branch event SHA and actual checkout SHA via tools/qa/ci-revision.mjs. workflow_dispatch expectedHead must equal GITHUB_SHA and checked-out HEAD. PR merge-test receipts are secondary and labelled as such. Final direct-head Quality Gate must succeed on the current remote SHA; historical PASS is never substituted. Tests/proof receipts and immutable logs are retained as GitHub artifacts. Final result will distinguish publication recovery from BLOCKED_CERTIFIED_NATIONAL_BACKBONE.
+
+## First actual exact-head CI and fixture recovery
+
+Run37300605866 explicitly checked out d8e09f2ed70bc41269b3d3b27105deac2f80cfc8. Quality/assets/raw-extraction and regression0/2 passed. Regression1 and3 failed real P04/CSV hash assertions: Git had converted two native hash-bound fixtures fromCRLF toLF. Original native ZIP and production retained CSV prove byte-only drift; no expectation/assertion changed. Exact native bytes restored with two precise -text attributes, related negative/positive tests pass. These two fixture paths are explicitly documented publication/validation exceptions to tree equivalence; all traffic/certification inputs and251roots unchanged. First failed CI's still-running heavy generations cancelled to avoid redundant work; they are CANCELLED, neverPASS. The replacement direct-head run must complete every lane.
