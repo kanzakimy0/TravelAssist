@@ -6,6 +6,7 @@ import path from "node:path";
 import { regressionInventory } from "../tools/qa/task-086-regression-lanes.mjs";
 import {
   assertLaneBinding,
+  assertSerializedManifestStable,
   verifyCompletedLanes,
 } from "../tools/transport/task-086-validation-lanes.mjs";
 test("publication recovery lanes cover every regression file exactly once", () => {
@@ -58,4 +59,32 @@ test("publication rebuild cannot claim PASS without every current-head lane rece
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "task086-missing-lanes-"));
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
   assert.throws(() => verifyCompletedLanes(dir), /ENOENT/);
+});
+
+test("stable resume compares actual serialized bytes and rejects metadata or byte drift", () => {
+  const memory = { attributions: [undefined, "operator"], nodeCount: 4061 };
+  const bytes = Buffer.from(JSON.stringify(memory, null, 2) + "\n");
+  assert.notDeepEqual(memory, JSON.parse(bytes.toString("utf8")));
+  assert.deepEqual(assertSerializedManifestStable(bytes, Buffer.from(bytes)), {
+    attributions: [null, "operator"],
+    nodeCount: 4061,
+  });
+  assert.throws(
+    () =>
+      assertSerializedManifestStable(
+        bytes,
+        Buffer.from(
+          JSON.stringify({ ...memory, nodeCount: 4060 }, null, 2) + "\n",
+        ),
+      ),
+    /Resume changes serialized full manifest/,
+  );
+  assert.throws(
+    () =>
+      assertSerializedManifestStable(
+        bytes,
+        Buffer.from(JSON.stringify(memory)),
+      ),
+    /Resume changes serialized full manifest/,
+  );
 });

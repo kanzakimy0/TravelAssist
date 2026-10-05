@@ -101,16 +101,26 @@ function sealGraph(output, manifest) {
   }
   return actual;
 }
+export function assertSerializedManifestStable(beforeBytes, afterBytes) {
+  assert.deepEqual(
+    afterBytes,
+    beforeBytes,
+    "Resume changes serialized full manifest",
+  );
+  return JSON.parse(afterBytes.toString("utf8"));
+}
 export function graphLane(lane, directory) {
   assert.ok(["first", "second", "resume"].includes(lane));
   const binding = validationBinding();
   const startedAt = new Date().toISOString();
   const output = path.join(directory, lane === "resume" ? "first" : lane);
   let before;
+  let beforeBytes;
   if (lane === "resume") {
     const first = readJson(path.join(directory, "first.receipt.json"));
     assertLaneBinding(first, binding);
-    before = readJson(path.join(output, "manifest.json"));
+    beforeBytes = fs.readFileSync(path.join(output, "manifest.json"));
+    before = JSON.parse(beforeBytes.toString("utf8"));
     sealGraph(output, before);
   } else
     assert.ok(
@@ -118,14 +128,17 @@ export function graphLane(lane, directory) {
       "Clean lane output must not already exist",
     );
   const result = run({ output });
+  const manifestBytes = fs.readFileSync(path.join(output, "manifest.json"));
+  const manifest = JSON.parse(manifestBytes.toString("utf8"));
   if (lane === "resume") {
-    assert.deepEqual(result.manifest, before, "Resume changes full manifest");
+    assertSerializedManifestStable(beforeBytes, manifestBytes);
+    assert.deepEqual(manifest, before, "Resume changes full manifest");
     assert.equal(
       result.batchDispositions.CHECKSUM_SKIP,
       before.batchReceipts.length,
     );
   }
-  const artifactHashes = sealGraph(output, result.manifest);
+  const artifactHashes = sealGraph(output, manifest);
   const proofs = loadAcceptanceInputs(network);
   assert.equal(proofs.proofInputSha256, binding.proofInputSha256);
   assert.deepEqual(
