@@ -71,6 +71,8 @@ export function currentBinding() {
       "package.json",
       "package-lock.json",
       "tools/transport/task-086-final-closeout.mjs",
+      "docs/qa/TASK-086/readmittable-closeout/reviewed-evidence.json",
+      "docs/tasks/TASK-086-b-final-unverifiable-quarantine-closeout.md",
     ]),
   ].sort();
   const hashes = Object.fromEntries(
@@ -211,12 +213,94 @@ export function classifySource(
   };
 }
 
-export function certify() {
+// Supplements repair descriptor bindings, never alter retained candidate evidence.
+export function applyRetainedSourceSupplements(
+  sources,
+  supplements,
+  actions,
+  directory,
+) {
+  const updates = new Map();
+  for (const review of supplements) {
+    if (updates.has(review.sourceId))
+      throw new Error("Duplicate source supplement");
+    const source = sources.find((s) => s.sourceId === review.sourceId);
+    if (
+      !source ||
+      source.contentSha256 !== review.sourceSha256 ||
+      source.rightsDecision !== "CC_BY_4_0" ||
+      !/^https:\/\/nlftp\.mlit\.go\.jp\/ksj\/gml\/data\/P05\/P05-22\/P05-22_\d{2}_GML\.zip$/.test(
+        source.url,
+      ) ||
+      review.kind !== "MLIT_P05_2022_RETAINED_SNAPSHOT_BINDING" ||
+      !review.attribution
+    )
+      throw new Error("Unbound or inapplicable source supplement");
+    const archive = path.resolve(directory, review.retainedArchive);
+    if (
+      !archive.startsWith(path.resolve(directory) + path.sep) ||
+      hash(fs.readFileSync(archive)) !== source.contentSha256
+    )
+      throw new Error("Retained source archive hash mismatch");
+    for (const observation of [
+      review.termsObservation,
+      review.catalogObservation,
+    ]) {
+      const action = actions.find((a) => a.actionId === observation.actionId);
+      if (
+        !action?.sourcesChecked?.some(
+          (o) =>
+            o.url === observation.url &&
+            o.status === 200 &&
+            o.contentSha256 === observation.contentSha256,
+        )
+      )
+        throw new Error("License observation missing or changed");
+    }
+    if (
+      review.termsObservation.url !== source.rightsReview.termsUrl ||
+      !/^https:\/\/nlftp\.mlit\.go\.jp\/ksj\/gml\/datalist\/KsjTmplt-P05-(2022|v3_0)\.html$/.test(
+        review.catalogObservation.url,
+      )
+    )
+      throw new Error("License scope does not match P05 dataset");
+    updates.set(source.sourceId, {
+      ...source,
+      retainedArchive: review.retainedArchive,
+      retainedArchiveSha256: source.contentSha256,
+      license: "CC BY 4.0",
+      attribution: review.attribution,
+      licenseEvidence: {
+        observedResponseSha256: review.termsObservation.contentSha256,
+        catalogObservation: review.catalogObservation,
+        supplementSha256: hash(review),
+      },
+    });
+  }
+  return sources.map((s) => updates.get(s.sourceId) ?? s);
+}
+
+export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
+  // Historical callers retain their original outputs. The amended closeout uses
+  // an isolated directory; it must not rewrite previous BLOCKED findings.
+  const qa = path.resolve(outputDirectory);
+  const write = (name, value) => {
+    fs.mkdirSync(qa, { recursive: true });
+    fs.writeFileSync(
+      path.join(qa, name),
+      typeof value === "string" ? value : JSON.stringify(value, null, 2) + "\n",
+    );
+  };
   const binding = currentBinding();
   const nodes = rows("node-downstream-admission.jsonl"),
     edges = rows("transport-node-edges.jsonl"),
     patterns = rows("service-patterns.jsonl");
-  const sourceRows = json("source-rights.json").sources;
+  const sourceRows = applyRetainedSourceSupplements(
+    json("source-rights.json").sources,
+    sourceSupplements,
+    rows("next-source-actions.jsonl"),
+    base,
+  );
   const sources = new Map(sourceRows.map((s) => [s.sourceId, s]));
   const evidenceRows = rows("topology-evidence.jsonl"),
     evidence = new Map(evidenceRows.map((e) => [e.evidenceId, e]));

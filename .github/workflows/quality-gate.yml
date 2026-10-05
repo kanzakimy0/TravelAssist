@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
   verify:
-    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone') }}
+    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop') }}
     name: Install, test and build
     runs-on: ubuntu-latest
     timeout-minutes: ${{ fromJSON(inputs.validationTimeoutMinutes || '35') }}
@@ -92,7 +92,7 @@ jobs:
 
   regression:
     name: Full Node regression / ${{ matrix.lane }}
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
@@ -128,7 +128,7 @@ jobs:
 
   graph:
     name: Clean graph / ${{ matrix.lane }}
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
@@ -165,7 +165,7 @@ jobs:
 
   extraction:
     name: Retained raw source reproduction
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -199,7 +199,7 @@ jobs:
   resume:
     name: Stable complete graph resume
     needs: graph
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -237,7 +237,7 @@ jobs:
   proof:
     name: Deterministic, recovery and published-artifact proof
     needs: [graph, extraction, resume]
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -289,7 +289,7 @@ jobs:
 
   quality:
     name: Lint, types, formatting and build
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -328,7 +328,7 @@ jobs:
   closeout-quality-gate:
     name: TASK086 exact-head Quality Gate
     needs: [regression, graph, extraction, resume, proof, quality]
-    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone') }}
+    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -336,6 +336,12 @@ jobs:
         if: ${{ needs.proof.result == 'success' }}
         with:
           name: task086-proof-${{ github.sha }}
+          path: .artifacts
+      - uses: actions/download-artifact@v4
+        if: ${{ needs.regression.result == 'success' }}
+        with:
+          pattern: task086-regression-*-${{ github.sha }}
+          merge-multiple: true
           path: .artifacts
       - name: Fail closed unless every required lane completed
         env:
@@ -366,6 +372,19 @@ jobs:
           receipt['coreArtifactHashes']=proof['coreArtifactHashes']
           receipt['deterministicRecoveryProofSha256']=hashlib.sha256(Path('.artifacts/task086-lanes/deterministic-recovery-proof.json').read_bytes()).hexdigest()
           receipt['regressionInventory']=inventory
+          eligibility=json.loads(Path('.artifacts/ci/routing-eligibility-receipt.json').read_text())
+          assert eligibility['status']=='PASS'
+          assert eligibility['checkoutSha']==os.environ['GITHUB_SHA']
+          assert eligibility['runId']==os.environ['GITHUB_RUN_ID']
+          assert eligibility['runAttempt']==os.environ['GITHUB_RUN_ATTEMPT']
+          assert eligibility['terminalRoots']==251 and eligibility['pendingRoots']==0
+          assert eligibility['failClosedBoundary']=='PASS'
+          receipt['status']='COMPLETE_WITH_READMITTABLE_UNVERIFIED_EXCLUSIONS'
+          receipt['historicalCertificationRoots']=receipt.pop('certificationBlockersUnchanged')
+          receipt['pendingCertificationRoots']=0
+          receipt['wbs']='B / 待审查（exact-head technical gate PASS; authorized normal merge pending）'
+          receipt['eligibility']=eligibility
+          receipt['eligibilityReceiptSha256']=hashlib.sha256(Path('.artifacts/ci/routing-eligibility-receipt.json').read_bytes()).hexdigest()
           output=Path('.artifacts/ci/closeout-publication-final-receipt.json')
           output.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
           print(json.dumps({k:receipt[k] for k in ['status','actualCheckoutSha','fullRegressionFiles','batchCount','executionBlockers','qualityGateUrl']}))
