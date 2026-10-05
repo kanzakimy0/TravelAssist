@@ -37,7 +37,7 @@ Reproduction: `node tools/transport/task-086-routing-eligibility.mjs`. This uses
 
 ## Validation and publication
 
-Candidate input/code SHA: `407171ffb20338b013990c654f4f1e3f5f2932c9f1cd144dc362911c769f1861`. Graph integrity zero counts are in `closeout-summary.json`; disconnected components are accurate coverage metrics. Two independent complete certification projections and serialization byte comparisons are tested in `tests/task-086-readmittable-closeout.test.mjs`. Current-head deterministic, exclusion leak and GTFS/unknown-metric receipts are emitted under `.artifacts/ci/routing-eligibility-receipt.json`.
+Candidate input/code SHA: `0575ae7e0f3a43ee3e7fe756a86561fb2aa98799f1d209dd788d885fdc6a6188`. Graph integrity zero counts are in `closeout-summary.json`; disconnected components are accurate coverage metrics. Two independent complete certification projections and serialization byte comparisons are tested in `tests/task-086-readmittable-closeout.test.mjs`. Current-head deterministic, exclusion leak and GTFS/unknown-metric receipts are emitted under `.artifacts/ci/routing-eligibility-receipt.json`.
 
 The final exact-head gate must still complete on the final published implementation SHA. It retains all repository test files, two clean full raw generations, all 27 artifact comparisons, actual checksum resume, corruption/recovery and raw GTFS extraction; no assertion/test is omitted. The final job requires both that proof and the same-run/same-checkout routing receipt. Final head, run URL, actual exit results and merge SHA are recorded by the final CI receipt and subsequent merge record; no future PASS is predeclared here.
 

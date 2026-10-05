@@ -1,0 +1,9 @@
+{
+  "runId": "37334189915",
+  "head": "cf9241ec110cd779d114abda83d61d584eee680b",
+  "overallConclusion": "failure",
+  "technicalLanes": "ALL_SUCCESS",
+  "finalCollectorConclusion": "failure",
+  "cause": "Regression artifacts flatten the uploaded .artifacts/ci directory; final collector downloaded them one directory above its read path. FileNotFoundError for routing-eligibility-receipt.json.",
+  "repair": "Download regression receipts into .artifacts/ci; actual receipt fields/IDs and proof assertions checked locally against real completed artifacts. Local check does not replace a successful remote final gate."
+}

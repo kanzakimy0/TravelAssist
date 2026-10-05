@@ -342,7 +342,7 @@ jobs:
         with:
           pattern: task086-regression-*-${{ github.sha }}
           merge-multiple: true
-          path: .artifacts
+          path: .artifacts/ci
       - name: Fail closed unless every required lane completed
         env:
           RESULTS: ${{ toJSON(needs) }}
