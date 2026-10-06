@@ -85,7 +85,11 @@ test("Quality gate retains PR and develop triggers and its verification steps", 
   )?.source;
   assert.ok(quality);
   assert.match(quality, /pull_request:/);
-  assert.match(quality, /push:\s*\n\s*branches: \[develop\]/);
+  // TASK-035 permits only its original implementation branch as dispatch fallback.
+  assert.match(
+    quality,
+    /push:\s*\n\s*branches: \[develop, codex\/a-test-baseline-freeze\]/,
+  );
   assert.match(quality, /permissions:\s*\n\s*contents: read/);
   for (const command of [
     "npm ci",

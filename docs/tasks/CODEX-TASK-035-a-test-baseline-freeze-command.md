@@ -1,3 +1,5 @@
+> 2026-10-06：以下为原 TASK035 的历史命令，不能据此启动旧全环境计划。当前执行以 [Phase2 Amendment](AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md) 为准；入口为 `npm test`、`npm run test:baseline:inventory -- --check`、`npm run test:baseline:lane -- --lane <lane>`。不运行 db:reset/生产 Provider，不重复创建 PR，不合并或自动关闭 #265。
+
 # Codex Command — TASK-035-A
 
 Execute TASK-035-A from latest develop on `codex/a-test-baseline-freeze`.

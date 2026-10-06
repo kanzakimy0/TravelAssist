@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "phase": "TASK-035-A Phase 2",
+  "state": "IN_PROGRESS",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "inventoryValidation": {
+    "status": "PASS",
+    "directFiles": 154,
+    "indirectFiles": 4,
+    "counts": "dynamic; not a constant selection threshold"
+  },
+  "runnerTests": {
+    "status": "PASS_INITIAL_FOCUSED",
+    "note": "Windows reporter URL defect found and fixed before candidate; final focused rerun pending after final review"
+  },
+  "baselineExecution": {
+    "status": "PASS_VERIFIED_HISTORICAL_RUN",
+    "sha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+    "runId": "37422119153",
+    "evidence": "baseline-evidence.json",
+    "tests": 3887
+  },
+  "candidateExecution": {
+    "status": "IN_PROGRESS",
+    "localInitialRegression0": {
+      "status": "PASS",
+      "tests": 861,
+      "node": "v24.18.0",
+      "os": "win32",
+      "trackedWorktreeClean": false,
+      "note": "development diagnostic, not final exact-head acceptance"
+    },
+    "completeUnifiedEntry": "PENDING_HOSTED_PROOF"
+  },
+  "deltaComparison": {
+    "status": "NOT_COMPARABLE",
+    "newFailures": null,
+    "reason": "candidate full execution pending; historical baseline Python version not emitted; Windows local differs from Linux hosted"
+  },
+  "ciStatus": {
+    "status": "PENDING",
+    "finalExactHead": "PENDING",
+    "prMergeResult": "PENDING",
+    "note": "Final commit SHA/run/attempt are published in external Issue/PR receipts after final validation; do not reuse old-head results"
+  },
+  "qualityGates": {
+    "status": "PENDING"
+  },
+  "optionalEnvironmentTests": {
+    "status": "NOT_RUN",
+    "categories": [
+      "Local DB/Auth",
+      "browser/real devices",
+      "bundle/replay/TASK055/059 local aggregate",
+      "TASK084 optional Python",
+      "live Provider/OAuth/SMS/cloud"
+    ],
+    "reason": "unchanged opt-in environments outside default completion gates"
+  },
+  "scopeValidation": {
+    "status": "PENDING"
+  },
+  "wbs": "进行中；非已完成",
+  "pullRequest": {
+    "number": 272,
+    "state": "OPEN",
+    "isDraft": true,
+    "autoMerge": false
+  },
+  "issue": {
+    "number": 265,
+    "state": "OPEN"
+  }
+}

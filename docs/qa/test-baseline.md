@@ -1,6 +1,12 @@
 # TravelAssist test framework and global baseline
 
-Status: **review baseline for WBS 9.1**
+Status: **Phase 2 in progress — Canonical Owner A, B implementation/QA**
+
+Current normative map: [TASK035 Phase2](TASK-035/phase-2/README.md), [execution policy](TASK-035/phase-2/execution-policy.json), [inventory](TASK-035/phase-2/test-inventory.json). `npm test` uses the route loader through a thin adapter and executes the entire current top-level Node set, including rebuild. `npm run test:baseline:inventory -- --check` is read-only; `npm run test:baseline:lane -- --lane <lane>` preserves the TASK086 selector. Local DB/browser/live-provider are explicit opt-in environments.
+
+Counts and actual gates are in [validation-summary](TASK-035/phase-2/validation-summary.json). PR merge-ref and branch exact-head are distinct evidence. No skipped/empty/failed/unverified run is PASS. Never silently skip required tests. The original Task/Result and the dated section below are retained as historical evidence only.
+
+## Historical 2026-09-10 snapshot (not current acceptance)
 
 Measured revision: `origin/develop@171900698180b80220017c9c4bec551b72792f27`
 

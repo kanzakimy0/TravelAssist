@@ -7,10 +7,7 @@ const qualityGate = readFileSync(".github/workflows/quality-gate.yml", "utf8");
 const baseline = readFileSync("docs/qa/test-baseline.md", "utf8");
 
 test("repository test entry uses the existing Node harness and TypeScript resolver", () => {
-  assert.equal(
-    packageJson.scripts.test,
-    'node --import ./tests/register-planner-ts.mjs --test "tests/*.test.mjs"',
-  );
+  assert.equal(packageJson.scripts.test, "node tools/qa/task-035-baseline.mjs");
   assert.equal(packageJson.devDependencies.playwright, undefined);
   assert.equal(packageJson.devDependencies.vitest, undefined);
   assert.equal(packageJson.devDependencies.jest, undefined);
@@ -22,7 +19,7 @@ test("repository test entry uses the existing Node harness and TypeScript resolv
 });
 
 test("quality gate invokes the canonical repository test entry", () => {
-  assert.match(qualityGate, /- name: Run repository tests\s+run: npm test/);
+  assert.match(qualityGate, /run: npm test/);
   assert.doesNotMatch(
     qualityGate,
     /run: node --test ["']tests\/\*\.test\.mjs["']/,

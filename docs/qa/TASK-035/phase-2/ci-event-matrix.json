@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "baseline": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "events": [
+    {
+      "event": "pull_request ordinary branch",
+      "before": [
+        "all current tests/*.test.mjs including original serial rebuild",
+        "lint",
+        "typecheck",
+        "format:check:deploy",
+        "local deploy validate/build/artifact",
+        "diff-check"
+      ],
+      "after": [
+        "all current tests/*.test.mjs including original serial rebuild",
+        "lint",
+        "typecheck",
+        "format:check:deploy",
+        "local deploy validate/build/artifact",
+        "diff-check"
+      ],
+      "revision": "PR_MERGE_RESULT"
+    },
+    {
+      "event": "pull_request codex/a-test-baseline-freeze",
+      "before": [
+        "all current tests/*.test.mjs including original serial rebuild",
+        "lint",
+        "typecheck",
+        "format:check:deploy",
+        "local deploy validate/build/artifact",
+        "diff-check"
+      ],
+      "after": [
+        "assets",
+        "regression-0",
+        "regression-1",
+        "regression-2",
+        "regression-3",
+        "rebuild",
+        "graph-first",
+        "graph-second",
+        "extraction",
+        "resume",
+        "quality",
+        "ordinary (additional unified-entry verification)",
+        "legacy TASK086 aggregate",
+        "TASK035 receipt aggregate"
+      ],
+      "revision": "PR_MERGE_RESULT",
+      "reason": "Measured baseline graph26m29 + resume28m01 plus second exceeds35m serial verify; existing full proof substituted, unified full set still executed; no removed assertion"
+    },
+    {
+      "event": "pull_request backbone",
+      "before": [
+        "assets",
+        "regression-0",
+        "regression-1",
+        "regression-2",
+        "regression-3",
+        "rebuild",
+        "graph-first",
+        "graph-second",
+        "extraction",
+        "resume",
+        "quality",
+        "legacy TASK086 aggregate"
+      ],
+      "after": [
+        "assets",
+        "regression-0",
+        "regression-1",
+        "regression-2",
+        "regression-3",
+        "rebuild",
+        "graph-first",
+        "graph-second",
+        "extraction",
+        "resume",
+        "quality",
+        "ordinary (additional unified-entry verification)",
+        "legacy TASK086 aggregate",
+        "TASK035 receipt aggregate"
+      ],
+      "revision": "PR_MERGE_RESULT"
+    },
+    {
+      "event": "push develop",
+      "before": "existing TASK086 full chain",
+      "after": [
+        "assets",
+        "regression-0",
+        "regression-1",
+        "regression-2",
+        "regression-3",
+        "rebuild",
+        "graph-first",
+        "graph-second",
+        "extraction",
+        "resume",
+        "quality",
+        "ordinary (additional unified-entry verification)",
+        "legacy TASK086 aggregate",
+        "TASK035 receipt aggregate"
+      ],
+      "revision": "BRANCH_EXACT_HEAD"
+    },
+    {
+      "event": "push codex/a-test-baseline-freeze",
+      "before": "NOT_APPLICABLE",
+      "after": [
+        "assets",
+        "regression-0",
+        "regression-1",
+        "regression-2",
+        "regression-3",
+        "rebuild",
+        "graph-first",
+        "graph-second",
+        "extraction",
+        "resume",
+        "quality",
+        "ordinary (additional unified-entry verification)",
+        "legacy TASK086 aggregate",
+        "TASK035 receipt aggregate"
+      ],
+      "revision": "BRANCH_EXACT_HEAD",
+      "reason": "Task-authorized narrow fallback: Quality gate is absent on default main (404), no main/develop edit"
+    },
+    {
+      "event": "workflow_dispatch task086FinalCloseout=true",
+      "before": "existing TASK086 full chain",
+      "after": [
+        "assets",
+        "regression-0",
+        "regression-1",
+        "regression-2",
+        "regression-3",
+        "rebuild",
+        "graph-first",
+        "graph-second",
+        "extraction",
+        "resume",
+        "quality",
+        "ordinary (additional unified-entry verification)",
+        "legacy TASK086 aggregate",
+        "TASK035 receipt aggregate"
+      ],
+      "revision": "BRANCH_EXACT_HEAD"
+    },
+    {
+      "event": "workflow_dispatch false on non-special branch",
+      "before": [
+        "all current tests/*.test.mjs including original serial rebuild",
+        "lint",
+        "typecheck",
+        "format:check:deploy",
+        "local deploy validate/build/artifact",
+        "diff-check"
+      ],
+      "after": [
+        "all current tests/*.test.mjs including original serial rebuild",
+        "lint",
+        "typecheck",
+        "format:check:deploy",
+        "local deploy validate/build/artifact",
+        "diff-check"
+      ],
+      "revision": "BRANCH_EXACT_HEAD"
+    },
+    {
+      "event": "release-rehearsal dispatch",
+      "before": "trusted current develop equality gate + Node full set + quality + local rehearsal",
+      "after": "same trusted boundary and assertions; npm test + Python setup + revision/always receipt artifacts",
+      "revision": "BRANCH_EXACT_HEAD",
+      "execution": "NOT_RUN; no deployment"
+    },
+    {
+      "event": "other pushes/schedules",
+      "before": "NOT_APPLICABLE",
+      "after": "NOT_APPLICABLE"
+    }
+  ],
+  "timeout": {
+    "validationTimeoutMinutes": "only ordinary verify job35/90; not global",
+    "regression": 35,
+    "graph": 45,
+    "extraction": 25,
+    "resume": 45,
+    "proof": 25,
+    "quality": 25,
+    "aggregate": 5
+  },
+  "invariants": [
+    "No pull_request_target",
+    "contents:read only",
+    "No continue-on-error/skip/retry-to-green",
+    "Original six-lane union and all native proof assertions retained",
+    "ExpectedHead nonempty format+checkout equality in ci-revision on every relevant job",
+    "No production Provider, db:reset, dependency/lock/Node version change"
+  ],
+  "jobs": {
+    "verify": {
+      "if": "${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze') }}",
+      "needs": [],
+      "matrix": null,
+      "timeout": "${{ fromJSON(inputs.validationTimeoutMinutes || '35') }}"
+    },
+    "regression": {
+      "if": "${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}",
+      "needs": [],
+      "matrix": {
+        "lane": [
+          "assets",
+          "regression-0",
+          "regression-1",
+          "regression-2",
+          "regression-3"
+        ]
+      },
+      "timeout": 35
+    },
+    "graph": {
+      "if": "${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}",
+      "needs": [],
+      "matrix": {
+        "lane": ["first", "second"]
+      },
+      "timeout": 45
+    },
+    "extraction": {
+      "if": "${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}",
+      "needs": [],
+      "matrix": null,
+      "timeout": 25
+    },
+    "resume": {
+      "if": "${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}",
+      "needs": "graph",
+      "matrix": null,
+      "timeout": 45
+    },
+    "proof": {
+      "if": "${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}",
+      "needs": ["graph", "extraction", "resume"],
+      "matrix": null,
+      "timeout": 25
+    },
+    "quality": {
+      "if": "${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}",
+      "needs": [],
+      "matrix": null,
+      "timeout": 25
+    },
+    "closeout-quality-gate": {
+      "if": "${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze') }}",
+      "needs": [
+        "regression",
+        "graph",
+        "extraction",
+        "resume",
+        "proof",
+        "quality"
+      ],
+      "matrix": null,
+      "timeout": 5
+    }
+  }
+}
