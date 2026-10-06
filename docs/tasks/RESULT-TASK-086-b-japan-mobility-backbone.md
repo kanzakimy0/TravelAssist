@@ -206,3 +206,32 @@ The accepted Backbone scope is 4,061 nodes / 9,409 directed edges / 1,072 transf
 The six retained historical obligations comprise five native GTFS platform bidirectional-coverage gaps (武部町 886930_01 / 886930_05, 雲仙 888190_01 / 888190_05, 波佐見有田インター 887550_05) and one historical special-tourism proof-binding obligation. Their original records, permissions and historical BLOCKED conclusions remain preserved; they do not reopen the A+B-confirmed Backbone scope. No platform merge, fabricated reverse service or walking edge, assertion reduction, or new discovery is authorized by this scope confirmation.
 
 Historical PR #466 acceptance and immutable receipt above remain unchanged. Previous repair exact-head Quality Gate [37397580451](https://github.com/kanzakimy0/TravelAssist/actions/runs/37397580451) SUCCESS certifies only `54457f5d031f728d98ffc8d4c2604db3150851ea`; its unchanged observed receipt is [REMOTE-EXACT-HEAD-RESULT.json](../qa/TASK-086/certification-engine-repair/REMOTE-EXACT-HEAD-RESULT.json). Integration with develop requires a new exact-head full gate before normal merge of PR #468. WBS 7.16 remains B / 待审查 until that merge actually completes. Issue #443 was already CLOSED/completed.
+
+## Final integration, normal merge and WBS tracking closeout — 2026-10-06 JST
+
+**WBS 7.16 = B / 已完成：全国 Mobility Backbone。** A+B confirmed the frozen Backbone scope of 4,061 nodes / 9,409 directed edges / 1,072 transfers. Exhaustive coverage of all Japanese local public-transport facilities is not this WBS acceptance boundary. Historical platform permissions, six legacy obligations, prior BLOCKED statements and PR #466 evidence remain preserved as dated records; no topology expansion or downstream task follows this closeout.
+
+| Actual observation | Value |
+| --- | --- |
+| develop before integration | `21d83d853a1e04c256beddf64e5740f2b3a5d226` |
+| Previous repair exact head | `54457f5d031f728d98ffc8d4c2604db3150851ea` |
+| Standalone historical CI receipt commit | `a0c1a72a930a9171bebf0b443f040b957d1c1b24` |
+| PR #468 final integration exact head / actual CI checkout | `846aac66939881ba0a61116e28b444498c4f17c6` |
+| New exact-head Quality Gate | [37416856708](https://github.com/kanzakimy0/TravelAssist/actions/runs/37416856708) **SUCCESS**, `workflow_dispatch`, all 12 required jobs successful |
+| Complete regression | 152 repository test files; certification engine, Tokyo/Ueno formal export, TransportNode v2 and Route Schema compatibility passed |
+| Clean generation and recovery | Two clean rebuilds, deterministic comparison, raw extraction, checksum resume, corruption invalidation and published-artifact comparison PASS |
+| Quality checks | Lint, types, formatting, build, artifact audit and diff checks PASS |
+| Backbone acceptance | 4,061 certified nodes / 9,409 directed edges / 1,072 transfers; 16 national corridor pairs PASS both directions; 86/86 gateways PASS |
+| Graph integrity | Eight gated defect counters zero; serialization PASS; 17 certified passenger components retain the frozen raw component partition, no certification-induced component cut |
+| PR #468 review / merge | Ready, `MERGEABLE` / `CLEAN` before merge; ordinary merge completed at `2026-10-06T06:05:26Z`; no auto/squash/rebase merge |
+| PR #468 actual merge SHA | `4e3a327acb3be06de836627562d171a477f85519` |
+| develop SHA immediately after merge | `4e3a327acb3be06de836627562d171a477f85519` |
+| Accepted head ancestry | `git merge-base --is-ancestor 846aac66939881ba0a61116e28b444498c4f17c6 origin/develop` exit 0; entire merged tree identical to accepted integration tree |
+| Issue #443 | CLOSED / COMPLETED; not reopened or reclosed |
+| WBS 7.16 | B / 已完成 under the A+B-confirmed national Backbone scope |
+
+Downloaded same-run `closeout-publication-final-receipt.json`: 122364 bytes, SHA-256 `bee0763ced3836e20e9601ce2ef7d12a5bd80f2ff844227b751c080e99c1cae0`. Full validation input/code SHA-256 `0fa74aa47b3910ea9821bbf883116789954129d7d56e2eb4b617dde9f644ef2e`; certification input SHA-256 `f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305`. The receipt binds checkout `846aac66939881ba0a61116e28b444498c4f17c6` and run `37416856708`, all 11,556 historical typed exclusions recomputed, and zero currently disabled nodes/edges/transfers. No previous-head PASS was substituted. Artifact: `task086-final-exact-head-846aac66939881ba0a61116e28b444498c4f17c6` on that run; local recovery copy remains under `.cache/task-086/final-integration/remote-proof/`.
+
+Conflict resolution preserved develop's historical #466 merge/acceptance text and the complete certification repair section, then appended A+B scope confirmation. The immutable `readmittable-closeout/final-acceptance-receipt.json` remains byte-identical to develop's historical version. The standalone `REMOTE-EXACT-HEAD-RESULT.json` remains the unchanged observation of previous head `54457f5d031f728d98ffc8d4c2604db3150851ea` / run `37397580451`, not proof for the integration head.
+
+Local `develop` was occupied by worktree `F:/CodexWorktrees/TravelAssist-WBS421`. To preserve that checkout, this task's existing dedicated worktree checked out `origin/develop` detached and performed the authorized documentation-only tracking commit for normal fast-forward `HEAD:develop` publication. This tracking changes only WBS and Result, not graph, engine, source evidence or frozen inputs. The Quality Gate above certifies the accepted integration SHA, not the later documentation-only commit SHA. Original large evidence, backup bundle, downloaded CI receipts and local logs remain intentionally local; no force push, history rewrite, new implementation PR or follow-on discovery was performed.
