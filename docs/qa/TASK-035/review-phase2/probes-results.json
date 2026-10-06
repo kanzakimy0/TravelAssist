@@ -1,0 +1,282 @@
+{
+  "reviewedHeadSha": "a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c",
+  "runtime": {
+    "node": "v24.18.0",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "scratch": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl",
+  "checks": [
+    {
+      "id": "windows-npm",
+      "actualCommand": [
+        "npm",
+        "--version"
+      ],
+      "direct": {
+        "exitCode": -4058,
+        "signal": null,
+        "timeout": false,
+        "error": "ENOENT",
+        "timeoutMs": 10000,
+        "startedAt": "2026-10-06T22:26:33.153Z",
+        "endedAt": "2026-10-06T22:26:33.161Z",
+        "argv": [
+          "npm",
+          "--version"
+        ],
+        "cwd": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl\\working directory with spaces"
+      },
+      "control": {
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 10000,
+        "startedAt": "2026-10-06T22:26:33.161Z",
+        "endedAt": "2026-10-06T22:26:33.509Z",
+        "argv": [
+          "C:\\WINDOWS\\system32\\cmd.exe",
+          "/d",
+          "/s",
+          "/c",
+          "npm --version"
+        ],
+        "cwd": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl\\working directory with spaces"
+      },
+      "controlLog": "11.16.0\n"
+    },
+    {
+      "id": "node-spaces",
+      "execution": {
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 10000,
+        "startedAt": "2026-10-06T22:26:33.511Z",
+        "endedAt": "2026-10-06T22:26:33.563Z",
+        "argv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "-e",
+          "console.log(JSON.stringify(process.argv[1]))",
+          "value with spaces & literal"
+        ],
+        "cwd": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl\\working directory with spaces"
+      },
+      "output": "\"value with spaces & literal\"\n"
+    },
+    {
+      "id": "valid-count-control",
+      "accepted": true,
+      "result": {
+        "tests": 2,
+        "passed": 2,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "suites": 0,
+        "topLevel": 2,
+        "definition": "Node final summary, excludes suite containers; nested child TAP/stdout is not added. Indirect Python/projection assertions are represented by parent tests."
+      }
+    },
+    {
+      "id": "inconsistent-final-count",
+      "accepted": true,
+      "result": {
+        "tests": 999,
+        "passed": 999,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "suites": 0,
+        "topLevel": 999,
+        "definition": "Node final summary, excludes suite containers; nested child TAP/stdout is not added. Indirect Python/projection assertions are represented by parent tests."
+      }
+    },
+    {
+      "id": "missing-pass-count",
+      "accepted": true,
+      "result": {
+        "tests": 2,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "suites": 0,
+        "topLevel": 2,
+        "definition": "Node final summary, excludes suite containers; nested child TAP/stdout is not added. Indirect Python/projection assertions are represented by parent tests."
+      }
+    },
+    {
+      "id": "negative-pass-count",
+      "accepted": true,
+      "result": {
+        "tests": 2,
+        "passed": -7,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "suites": 0,
+        "topLevel": 2,
+        "definition": "Node final summary, excludes suite containers; nested child TAP/stdout is not added. Indirect Python/projection assertions are represented by parent tests."
+      }
+    },
+    {
+      "id": "timeout-process-tree",
+      "execution": {
+        "exitCode": 1,
+        "signal": null,
+        "timeout": true,
+        "error": null,
+        "timeoutMs": 1000,
+        "startedAt": "2026-10-06T22:26:33.570Z",
+        "endedAt": "2026-10-06T22:26:34.749Z",
+        "argv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl\\child.mjs",
+          "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl\\pids.json"
+        ],
+        "cwd": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl"
+      },
+      "pids": {
+        "parent": 31240,
+        "child": 35972
+      },
+      "aliveAfter": {
+        "parent": false,
+        "child": false
+      }
+    },
+    {
+      "id": "simulated-parent-cancellation",
+      "method": "process.emit(SIGTERM), not a Windows console/CI cancellation",
+      "wrapper": {
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 10000,
+        "startedAt": "2026-10-06T22:26:34.752Z",
+        "endedAt": "2026-10-06T22:26:36.196Z",
+        "argv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl\\cancel.mjs"
+        ],
+        "cwd": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl"
+      },
+      "childResult": "{\"exitCode\":1,\"signal\":\"SIGTERM\",\"timeout\":false,\"error\":null,\"timeoutMs\":10000,\"startedAt\":\"2026-10-06T22:26:34.795Z\",\"endedAt\":\"2026-10-06T22:26:36.184Z\",\"argv\":[\"C:\\\\Program Files\\\\nodejs\\\\node.exe\",\"I:\\\\CodexWorktrees\\\\TravelAssist-TASK035-ReviewCode\\\\.artifacts\\\\review-task035\\\\probe-yqLQAl\\\\child.mjs\",\"I:\\\\CodexWorktrees\\\\TravelAssist-TASK035-ReviewCode\\\\.artifacts\\\\review-task035\\\\probe-yqLQAl\\\\pids.json\"],\"cwd\":\"I:\\\\CodexWorktrees\\\\TravelAssist-TASK035-ReviewCode\\\\.artifacts\\\\review-task035\\\\probe-yqLQAl\"}\n",
+      "pids": {
+        "parent": 33720,
+        "child": 36752
+      },
+      "aliveAfter": {
+        "parent": false,
+        "child": false
+      }
+    },
+    {
+      "id": "log-overflow",
+      "execution": {
+        "exitCode": 1,
+        "signal": null,
+        "timeout": false,
+        "error": "LOG_LIMIT",
+        "timeoutMs": 10000,
+        "startedAt": "2026-10-06T22:26:36.198Z",
+        "endedAt": "2026-10-06T22:26:36.759Z",
+        "argv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "-e",
+          "const b=Buffer.alloc(1024*1024,'x');for(let i=0;i<66;i++)process.stdout.write(b);setInterval(()=>{},1000)"
+        ],
+        "cwd": "I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts\\review-task035\\probe-yqLQAl"
+      },
+      "retainedBytes": 67108864
+    },
+    {
+      "id": "synthetic-aggregate-inconsistent-count",
+      "accepted": true,
+      "result": {
+        "status": "PASS",
+        "required": [
+          "assets",
+          "regression-0",
+          "regression-1",
+          "regression-2",
+          "regression-3",
+          "rebuild",
+          "ordinary",
+          "graph-first",
+          "graph-second",
+          "extraction",
+          "resume",
+          "quality"
+        ],
+        "counts": [
+          {
+            "lane": "assets",
+            "tests": 999
+          },
+          {
+            "lane": "extraction"
+          },
+          {
+            "lane": "graph-first"
+          },
+          {
+            "lane": "graph-second"
+          },
+          {
+            "lane": "ordinary",
+            "tests": 999
+          },
+          {
+            "lane": "quality"
+          },
+          {
+            "lane": "rebuild",
+            "tests": 999
+          },
+          {
+            "lane": "regression-0",
+            "tests": 999
+          },
+          {
+            "lane": "regression-1",
+            "tests": 999
+          },
+          {
+            "lane": "regression-2",
+            "tests": 999
+          },
+          {
+            "lane": "regression-3",
+            "tests": 999
+          },
+          {
+            "lane": "resume"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aggregate-negative-runAttempt",
+      "accepted": false,
+      "error": "RECEIPT_BINDING:runAttempt\n\n'wrong' !== '1'\n"
+    },
+    {
+      "id": "aggregate-negative-checkoutSha",
+      "accepted": false,
+      "error": "RECEIPT_BINDING:checkoutSha\n+ actual - expected\n\n+ 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'\n- 'a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c'\n"
+    },
+    {
+      "id": "aggregate-negative-logSha256",
+      "accepted": false,
+      "error": "LOG_HASH_MISMATCH\n+ actual - expected\n\n+ 'b7ec0ea9814e33f7e829de13030fd8ab278f4159bdd5d8a15d1a23a04af50f6a'\n- '0000000000000000000000000000000000000000000000000000000000000000'\n"
+    }
+  ]
+}

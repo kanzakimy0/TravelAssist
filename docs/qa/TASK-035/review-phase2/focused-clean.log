@@ -1,0 +1,37 @@
+✖ read-only selector is deterministic and imports no targets (128.4584ms)
+✔ real runner events prove nested tests without counting child TAP (162.2726ms)
+✔ process failure, timeout, signal and spawn errors stay failures (441.0998ms)
+✔ zero tests, skipped tests, absent/malformed summaries cannot pass (277.3432ms)
+✔ aggregation rejects missing, duplicate, failed and cross-bound receipts (1.2855ms)
+✔ expectedHead is checked and production credentials are excluded (0.5421ms)
+✔ artifact validation rejects missing logs and altered log/event bytes (6.1669ms)
+✔ a forged PASS without execution, event or native proof is rejected (0.5879ms)
+✔ event conditions preserve every TASK086 dependency and reachable ordinary receipts (7.9788ms)
+✔ repository test entry uses the existing Node harness and TypeScript resolver (0.7577ms)
+✔ quality gate invokes the canonical repository test entry (0.2724ms)
+✔ baseline documents every required execution class and non-pass state (0.3345ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1137.5359
+
+✖ failing tests:
+
+test at tests\task-035-runner.test.mjs:32:1
+✖ read-only selector is deterministic and imports no targets (128.4584ms)
+  Error: ENOENT: no such file or directory, scandir 'I:\CodexWorktrees\TravelAssist-TASK035-ReviewCode\.artifacts'
+      at Object.readdirSync (node:fs:1570:26)
+      at TestContext.<anonymous> (file:///I:/CodexWorktrees/TravelAssist-TASK035-ReviewCode/tests/task-035-runner.test.mjs:44:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'scandir',
+    path: 'I:\\CodexWorktrees\\TravelAssist-TASK035-ReviewCode\\.artifacts'
+  }

@@ -1,5 +1,12 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-035-A / WBS 9.1 Phase 2 审核追踪（2026-10-07）
+
+- Canonical Owner **A**；B 审核支持；沿用 #265 / Draft #272。受审 head `a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c`，develop/merge-base `4888b4d507ee75d4f6b9914eb1a8d5661813f64b`。
+- 本次审核工作 COMPLETE；核心代码 **REQUEST_CHANGES**，集成门 **BLOCKED**，PR 建议 **DO_NOT_MERGE**；并非实现验收完成。4 项核心缺陷已有隔离复现，3 项原强制认证失败在两个最终远端事件重新核验；原完整链未完成。
+- PR 仍 Open / Draft / 未合并，受审 head 不是远端 develop 的祖先。父 WBS 9.1 保持原 **阻塞**，不置待审查、不完成；其他 WBS 状态及历史记录不变。
+- [审核 Result](../tasks/RESULT-REVIEW-TASK-035-b-wbs-9-1-phase2-acceptance.md) · [findings](../qa/TASK-035/review-phase2/findings.md) · [review-evidence](../qa/TASK-035/review-phase2/review-evidence.json)。仅发布审核文档与说明性回执，未修改实现/CI/测试/数据/冻结证明，不自动修复或启动下游。
+
 ## TASK-035-A / WBS 9.1 Phase 2（2026-10-06）
 
 - **阻塞（TASK-035-A Phase 2；TASK086冻结认证绑定失效；A Owner，B执行；#265/#272）**。原分支正常整合 develop `4888b4d` 与任务发布 `997ce9e`；Canonical Owner 保持 A。

@@ -1,0 +1,645 @@
+{
+  "schemaVersion": 1,
+  "task": "REVIEW-TASK-035-B / TASK-035-A / WBS9.1",
+  "reviewDate": "2026-10-07",
+  "timezone": "Asia/Tokyo",
+  "canonicalOwner": "A",
+  "reviewer": "B",
+  "reviewedHeadSha": "a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c",
+  "reviewedDevelopSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "mergeBase": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "taskPublicationSha": "0804879aa3c7537c2048d0c309328c815e9a75b5",
+  "reviewBranch": "docs/b-wbs-9-1-review-task-20261007",
+  "conclusions": {
+    "reviewWork": "COMPLETE",
+    "coreReview": "REQUEST_CHANGES",
+    "integrationGate": "BLOCKED",
+    "mergeRecommendation": "DO_NOT_MERGE",
+    "mergedIntoDevelop": "NO"
+  },
+  "findings": [
+    {
+      "id": "R035-01",
+      "priority": "P1",
+      "category": "CORE_IMPLEMENTATION",
+      "status": "REPRODUCED",
+      "file": "tools/qa/task-035-receipt.mjs",
+      "line": 37,
+      "evidence": "assertion-file-result.json"
+    },
+    {
+      "id": "R035-02",
+      "priority": "P2",
+      "category": "CORE_IMPLEMENTATION",
+      "status": "REPRODUCED",
+      "file": "tools/qa/task-035-baseline.mjs",
+      "line": 63,
+      "evidence": "probes-results.json#windows-npm"
+    },
+    {
+      "id": "R035-03",
+      "priority": "P2",
+      "category": "CORE_IMPLEMENTATION",
+      "status": "REPRODUCED",
+      "file": "tests/task-035-runner.test.mjs",
+      "line": 44,
+      "evidence": "focused-clean.log"
+    },
+    {
+      "id": "R035-04",
+      "priority": "P2",
+      "category": "CORE_IMPLEMENTATION",
+      "status": "REPRODUCED_SYNTHETIC",
+      "file": "tools/qa/task-035-receipt.mjs",
+      "line": 35,
+      "evidence": "probes-results.json#inconsistent-final-count"
+    },
+    {
+      "id": "R035-05",
+      "priority": "P1",
+      "category": "SHARED_CI_INTEGRATION",
+      "status": "VERIFIED_EXISTING_FAILURE",
+      "file": "tools/transport/task-086-final-closeout.mjs",
+      "line": 79,
+      "evidence": "remote-verification.json"
+    }
+  ],
+  "environment": {
+    "node": "v24.18.0",
+    "platform": "win32",
+    "arch": "x64",
+    "npm": "11.16.0",
+    "python": "3.14.6 (version only; no Python business tests)",
+    "install": {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund --cache <isolated-review-cache>",
+      "exitCode": 0,
+      "installedPackages": 396,
+      "lifecycle": "disabled; no native/full build claim",
+      "packageOrLockChanges": 0
+    },
+    "testedWorktree": "I:/CodexWorktrees/TravelAssist-TASK035-ReviewCode",
+    "reportWorktree": "I:/CodexWorktrees/TravelAssist-TASK035-ReviewDocs",
+    "reportCheckout": "docs sparse; never test target",
+    "worktreeCreationFallback": "App-managed C: creations failed ENOSPC and rolled back. Created new I: worktrees; no existing worktree cleanup."
+  },
+  "preinstallObservation": {
+    "status": "OBSERVED_BEFORE_INSTALL",
+    "checkout": "a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c",
+    "nodeModulesExists": false,
+    "artifactsExists": false,
+    "commands": [
+      {
+        "command": "node --input-type=module -e \"import './tools/qa/task-035-receipt.mjs'; console.log('RECEIPT_IMPORT_OK_WITHOUT_NODE_MODULES');\"",
+        "exitCode": 0,
+        "stdout": "RECEIPT_IMPORT_OK_WITHOUT_NODE_MODULES"
+      },
+      {
+        "command": "node tools/qa/task-035-inventory.mjs --check",
+        "exitCode": 0,
+        "counts": {
+          "directFiles": 154,
+          "indirectFiles": 4,
+          "uniqueSelectedFiles": 158,
+          "cases": null
+        }
+      }
+    ],
+    "note": "Captured in tool output before npm ci. Does not prove production artifact aggregation success."
+  },
+  "selection": {
+    "directFiles": 154,
+    "indirectFiles": 4,
+    "uniqueSelectedFiles": 158,
+    "cases": null,
+    "lanes": {
+      "assets": 5,
+      "regression-0": 37,
+      "regression-1": 37,
+      "regression-2": 37,
+      "regression-3": 37,
+      "rebuild": 1
+    },
+    "indirect": [
+      {
+        "path": "tests/task-019-projection.cases.mjs",
+        "parent": "tests/task-019-trip-plan.test.mjs"
+      },
+      {
+        "path": "tests/poi-remaining-review.test.py",
+        "parent": "tests/poi-remaining-review.test.mjs"
+      },
+      {
+        "path": "tests/python/task_086_selected_gtfs_trailing_fields.py",
+        "parent": "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs"
+      },
+      {
+        "path": "tests/task-086-hateruma-abr.test.py",
+        "parent": "tests/task-086-hateruma-air-passenger.test.mjs"
+      }
+    ],
+    "readOnlyCheck": "PASS",
+    "limitation": "Selection correct; execution-kind compatibility has R035-01. No full repository re-audit."
+  },
+  "focusedRuns": [
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-035-test-baseline.test.mjs tests/task-035-runner.test.mjs",
+      "prerequisite": ".artifacts absent, locked JS dependencies installed",
+      "exitCode": 1,
+      "tests": 12,
+      "pass": 11,
+      "fail": 1,
+      "log": "focused-clean.log"
+    },
+    {
+      "command": "same focused command",
+      "prerequisite": ".artifacts exists from review artifacts; diagnostic comparison only",
+      "exitCode": 0,
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "log": "focused-with-artifacts-diagnostic.log"
+    },
+    {
+      "command": "npm run test:baseline:inventory -- --check",
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "node assertion-file-probe.mjs <checkout> <out>",
+      "exitCode": 0,
+      "meaning": "probe harness succeeded in reproducing validator failure",
+      "evidence": "assertion-file-result.json"
+    },
+    {
+      "command": "node probes.mjs <checkout> <out>",
+      "exitCode": 0,
+      "meaning": "diagnostic harness; individual accepted/rejected outcomes are in evidence, not all product checks PASS",
+      "evidence": "probes-results.json"
+    },
+    {
+      "command": "node verify-remote.mjs <checkout> <out>",
+      "exitCode": 0,
+      "evidence": "remote-verification.json",
+      "note": "Read-only historical artifact verification; no target tests/CI dispatch"
+    }
+  ],
+  "remoteSummary": [
+    {
+      "runId": "37467190704",
+      "attempt": "1",
+      "checkoutSha": "a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c",
+      "event": "push",
+      "tests": 3898,
+      "passed": 3895,
+      "failed": 3,
+      "directFiles": 153,
+      "missingLanes": [
+        "rebuild",
+        "ordinary",
+        "graph-first",
+        "graph-second",
+        "resume"
+      ],
+      "conclusion": "cancelled",
+      "legacyAggregateJob": "failure at needs fail-closed",
+      "newGlobalAggregateStep": "skipped"
+    },
+    {
+      "runId": "37467203410",
+      "attempt": "1",
+      "checkoutSha": "f15d9bfa8062605c6f13829ef70f2981d955da2b",
+      "event": "pull_request",
+      "tests": 3898,
+      "passed": 3895,
+      "failed": 3,
+      "directFiles": 153,
+      "missingLanes": [
+        "rebuild",
+        "ordinary",
+        "graph-first",
+        "graph-second",
+        "resume"
+      ],
+      "conclusion": "cancelled",
+      "legacyAggregateJob": "failure at needs fail-closed",
+      "newGlobalAggregateStep": "skipped"
+    }
+  ],
+  "baseline": {
+    "runId": "37422119153",
+    "sha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+    "tests": 3887,
+    "files": 152,
+    "checkedInputBindings": 516,
+    "status": "HISTORICAL_ARTIFACTS_VERIFIED_NOT_RERUN",
+    "limitation": "Large graph output archives not re-downloaded; final proof and 516 input bindings, six lane logs and remote job outcomes checked. Baseline Python version not recorded."
+  },
+  "ciReview": {
+    "events": "ordinary PR/non-special dispatch -> verify; PR272/branch push/develop/backbone/full dispatch -> full chain; rehearsal -> trusted current develop",
+    "dependencyImportRisk": "NOT_CONFIRMED: actual no-node_modules import succeeded; imports built-ins only",
+    "uploadFailureEvidence": "Final failed lanes retain events/log/FAIL receipt; cancelled graph has partial log without receipt",
+    "failureCounts": "FAIL regression receipts explicitly UNVERIFIED/null; independent event parsing proves 3898/3895/3",
+    "timeoutRisk": "NOT_VERIFIED: ordinary30m vs serial rebuild; proof25m duplicate full set budget",
+    "completeProductionAggregation": "NOT_COMPLETED_ON_REVIEWED_HEAD",
+    "expectedHead": "format/equality reviewed, focused negative tests pass",
+    "quality": "Existing final Linux job argv/exit/log hashes verified; not rerun locally"
+  },
+  "notVerified": [
+    "complete npm test on reviewed head",
+    "complete graph/resume/rebuild/proof/aggregate on reviewed head",
+    "ordinary/rehearsal/proof timing budget",
+    "real Windows console cancellation",
+    "Linux OS-signal process-tree cleanup experiment",
+    "GitHub hard-cancel complete receipt retention",
+    "fresh full lifecycle npm ci/build",
+    "DB/Auth",
+    "browser/real devices",
+    "bundle/replay",
+    "live Provider/OAuth/SMS",
+    "cloud rehearsal/deployment",
+    "db:reset"
+  ],
+  "sourcesRead": [
+    "AGENTS.md",
+    "docs/tasks/REVIEW-TASK-035-b-wbs-9-1-phase2-acceptance.md",
+    "docs/tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md",
+    "docs/tasks/RESULT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md",
+    "docs/tasks/TASK-035-a-test-baseline-freeze.md",
+    "docs/tasks/RESULT-TASK-035-a-test-baseline-freeze.md",
+    "docs/project/WBS-TravelAssist.md",
+    "docs/qa/TASK-035/phase-2/README.md",
+    "docs/qa/TASK-035/phase-2/execution-policy.json",
+    "docs/qa/TASK-035/phase-2/test-inventory.json",
+    "docs/qa/TASK-035/phase-2/ci-event-matrix.json",
+    "docs/qa/TASK-035/phase-2/execution-path-review.md",
+    "docs/qa/TASK-035/phase-2/legacy-integration-review.md",
+    "docs/qa/TASK-035/phase-2/validation-summary.json",
+    "docs/qa/TASK-035/phase-2/baseline-evidence.json",
+    "docs/qa/TASK-035/phase-2/candidate-evidence.json",
+    "docs/qa/TASK-035/phase-2/binding-blocker.json",
+    "docs/qa/test-baseline.md",
+    ".github/workflows/quality-gate.yml",
+    ".github/workflows/release-rehearsal.yml",
+    "package.json",
+    "tests/pr-governance.test.mjs",
+    "tests/task-035-runner.test.mjs",
+    "tests/task-035-test-baseline.test.mjs",
+    "tools/qa/ci-revision.mjs",
+    "tools/qa/task-035-baseline.mjs",
+    "tools/qa/task-035-inventory.mjs",
+    "tools/qa/task-035-process.mjs",
+    "tools/qa/task-035-receipt.mjs",
+    "tools/qa/task-035-reporter.mjs",
+    "tools/qa/task-086-regression-lanes.mjs"
+  ],
+  "prChangedPaths": [
+    {
+      "path": ".github/workflows/quality-gate.yml",
+      "category": "CI",
+      "sha256": "df2f134fc72c6547e079c421ad3f00ad73249a90c21143587173710c51520413"
+    },
+    {
+      "path": ".github/workflows/release-rehearsal.yml",
+      "category": "CI",
+      "sha256": "7bb1284a96f1a85df94eb7f55ee998d0f0e2fe2c74845cdf4c2bd44b6d279224"
+    },
+    {
+      "path": "docs/project/WBS-TravelAssist.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "5aebc9b665dfb459f2f36dec6e8c0d3ce44bd21c8637a75c6b51d88476636780"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/README.md",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "0f7a835d64feb03769a476ce48ef87d48473bbfe8d9e70e9b5d5f0200b659a43"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/audit-validation.json",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "7438ee85b4a97abeb3a184395c60997f5c9c29da981cc4711160f5ad351b8f02"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/ci-coverage-map.json",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "5154df62190b6435d2e27b968bca19c64acb164c5c5713950c95c339edad9ee9"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/inventory-audit.mjs",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "03f392919d4cbd681c5e03d9830ac66e26baa83e276cd63b059c04e289614ac8"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/legacy-pr-reuse-review.md",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "1669beb732674cd6c1af809e0bd4c92da7b6987c6866fc2d312f77e25d3bfd65"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/next-phase-recommendation.md",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "3816ecc76170fee5eda6a83adb53f98d740e2229311fbd6d0a7150815c95e9d5"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/scope-validation.json",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "e283ff3ee7cd593479072906cc95606e1fcb600edbf09ea5299f24cca6b073b9"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/source-observations.json",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "3499214318a38c73e9aa3f655b932e77d8043e0d0212cded6db34cb58d4d3d83"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/test-inventory.json",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "bbcd120346fa729442c67613caf72c84af88fa9b906801a466d67c08e793484a"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-1/validate-delivery.mjs",
+      "category": "PRESERVED_PHASE1_SNAPSHOT",
+      "sha256": "b9efc41c89d30605440f7e9512f156e71056994a236ef3455997b1f20e2e542e"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/README.md",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "65645eb707cff529793e691b66736f144eb906d7d84e4ace41fb6fa244b7bf9b"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/baseline-evidence.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "7aebb35d8980946e771965d140bb70cf8ab58506a60d43464fe4410f004a316a"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/binding-blocker.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "2adf7772837d6cb430f283bb2768abda19a52d6f2fc9c0936b569069af31865f"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/candidate-evidence.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "7cb0efc726e99c32c9fdb6f4a322a80aca50ec8957404bdaa9cb5e4861f91eb0"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/ci-event-matrix.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "4c26809781ead64e6e302606204b26f61080599c7a2b31b25046f52abd50507d"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/execution-path-review.md",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "6a861fdf29a644452fee9c3f8c86051ba88e5c1eede605e4db345ffdd0b49de0"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/execution-policy.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "23b0a88f03addd1877377506335611c43a1e74c23a4b54b6f0c7e29f4ef65aa2"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/legacy-integration-review.md",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "3605157f69edf3eee5470cadeca48556809d56abcc6c43272e6e950c8e5238b3"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/scope-validation.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "c438cbd04deeb324a4f617dd9c8cb89de30a84411ac9defd984e4dde4d164723"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/test-inventory.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "1003337a5dbc504b54b4cf626f30db1bb3fc98dfdd090ffc432806d6104a3751"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/validate-scope.mjs",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "2096ce07e99d80527c91809f4ff856f54336ae100b49225c0d0784e7c0c0f6b7"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/validation-summary.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "57ba07ced27669e1706bb4b7b39ceb7e5103ed11d58b7ccbc0aa788e4d8fe331"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/verify-baseline.mjs",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "ad898adea505f7a6e262c0c19be91a2740a4a1794d740e8739c3ebefb38bbc7d"
+    },
+    {
+      "path": "docs/qa/TASK-035/phase-2/windows-asset-comparison.json",
+      "category": "PHASE2_POLICY_OR_EVIDENCE",
+      "sha256": "235ecc5001f0cfad6848062450c7882a1269c9ed91706ca254d0d0cbb7c6fbc7"
+    },
+    {
+      "path": "docs/qa/test-baseline.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "fa9bb2f3378489e95c297835f145e505f8e1ae1c1934223a14b0b502e1f64888"
+    },
+    {
+      "path": "docs/tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase1-audit-only.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "024f67305b07031db87fc513e002b398d2033a73bf2d5db5274a4c016cbc868c"
+    },
+    {
+      "path": "docs/tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "f2b327a5ffbad3e18c1f5bcc1d0205e28b84516142f185b429ec638cabea2c10"
+    },
+    {
+      "path": "docs/tasks/CODEX-TASK-035-a-test-baseline-freeze-command.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "a1b722ac58dbdb0256122b5b5ba0d0e47a2f824b68a9deb445e127af9d8406dd"
+    },
+    {
+      "path": "docs/tasks/RESULT-TASK-035-a-test-baseline-freeze.md",
+      "category": "PRESERVED_ORIGINAL_PR",
+      "sha256": "aecf3ed90f7fdfe2b672b80e55c89b58fa99300473da05d4c2e3f002474bc5ba"
+    },
+    {
+      "path": "docs/tasks/RESULT-TASK-035-b-wbs-9-1-phase1-audit-only.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "08ab8f0e103b654ec073b1078377f89c93aba880bbeb78b8915ea3e21fb5b2cc"
+    },
+    {
+      "path": "docs/tasks/RESULT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md",
+      "category": "TASK_RESULT_TRACKING_OR_COMMAND",
+      "sha256": "6a74790cf8c159feab92c6c231b793fc1d2094dabc80a445394a293e76c357ad"
+    },
+    {
+      "path": "docs/tasks/TASK-035-a-test-baseline-freeze.md",
+      "category": "PRESERVED_ORIGINAL_PR",
+      "sha256": "8f7f6a7b6a7064884fc60e97c2ba14835afbd0dc46566d3dcde82828e28a3b2c"
+    },
+    {
+      "path": "package.json",
+      "category": "PACKAGE_SCRIPTS",
+      "sha256": "cf33b865d403a142d09bd514ba507aef0a984807f25d477bbe6cb6b1261e85ec"
+    },
+    {
+      "path": "tests/pr-governance.test.mjs",
+      "category": "GOVERNANCE_TEST",
+      "sha256": "11f9483195dcab0668722fed3a09e5d0084ae5fe5ff902e1a84d01957b163786"
+    },
+    {
+      "path": "tests/task-035-runner.test.mjs",
+      "category": "GOVERNANCE_TEST",
+      "sha256": "50c829a121b3982eab3344e423baec2574e52aa7f2bd8a25ff98a421b260cd9f"
+    },
+    {
+      "path": "tests/task-035-test-baseline.test.mjs",
+      "category": "GOVERNANCE_TEST",
+      "sha256": "e45996a7995eb3a8be5ba9b14191a8f3e5e6e435fbbfea23d8143fe0093a49a5"
+    },
+    {
+      "path": "tools/qa/ci-revision.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "0eade432e6f9e5bee4171d33c8a076244d67f7dd7c7a1c50040b0d3b0a3441fe"
+    },
+    {
+      "path": "tools/qa/task-035-baseline.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "9f4e9c324613f7a2131905652fcb839f1d30ef59d3f1071dae39ac18a7c7cc58"
+    },
+    {
+      "path": "tools/qa/task-035-browser-smoke.mjs",
+      "category": "PRESERVED_ORIGINAL_PR",
+      "sha256": "5b0d1016d3d7943a9ff35b96455cb4a95cbaf04f114fdbc90e9221a5c0b39aa5"
+    },
+    {
+      "path": "tools/qa/task-035-inventory.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "1354ba9c006cf3077146b720a1c6fb6d2519608f2af12a92b41d943190730cd9"
+    },
+    {
+      "path": "tools/qa/task-035-process.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "4d3df23f6f6bfcf28d8399ad8be4b3aa4b98f83c6a0099ccffcd4c7454642eda"
+    },
+    {
+      "path": "tools/qa/task-035-receipt.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "53ab542a02037e584f68ab9126f21e0e85b4d7a6f0026e4a5f5efe150a13ff78"
+    },
+    {
+      "path": "tools/qa/task-035-reporter.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "b27b8028e05dd2d6a9b073471986f294447955f9f4f761c4d9cd237ce6f7f503"
+    },
+    {
+      "path": "tools/qa/task-086-regression-lanes.mjs",
+      "category": "RUNNER_OR_ADAPTER",
+      "sha256": "e234040d6e05dde5f73dc2b05d07b1f660a5405fedaaf4d3d1dc4fbd356461c4"
+    }
+  ],
+  "externalPriorReceipts": [
+    "https://github.com/kanzakimy0/TravelAssist/issues/265#issuecomment-6016911171",
+    "https://github.com/kanzakimy0/TravelAssist/pull/272#issuecomment-6016912905"
+  ],
+  "scope": "scope-validation.json",
+  "remoteState": "remote-final-snapshot.json",
+  "evidenceFiles": [
+    {
+      "file": "artifacts-37467190704.json",
+      "sha256": "ba1661175e9b6bbc467f55292fddb2b2ed6bef60534795b629e02272bf228b50",
+      "bytes": 13719
+    },
+    {
+      "file": "artifacts-37467203410.json",
+      "sha256": "b25c9ce216dfd8bcf729bee48b1c86ea823726230484fd71bd187b630d03618d",
+      "bytes": 13719
+    },
+    {
+      "file": "assertion-file-events.jsonl",
+      "sha256": "a8c7d0531bba2748be0594bbc2fbbd224911e2d7f121a8dce13b69ce1d8cc924",
+      "bytes": 430
+    },
+    {
+      "file": "assertion-file-probe.mjs",
+      "sha256": "ec86151cf5440aa92c2fd10d528b0c99ae9cd4aca4c353181e36258dbd2713fc",
+      "bytes": 2454
+    },
+    {
+      "file": "assertion-file-result.json",
+      "sha256": "5e11ce9fd7140e79447492be70af37807c2efc38d397cb9de2e8b0225703854e",
+      "bytes": 1855
+    },
+    {
+      "file": "assertion-file.log",
+      "sha256": "6c1c50a929487c8e6c0f5f61006caef0bdcd510fb19bca91ec3a5dea03ae2ee2",
+      "bytes": 1188
+    },
+    {
+      "file": "findings.md",
+      "sha256": "6d73dbba7e0aa876525204ee0755614cd286456b7d32969d59c19d097f4f3d7e",
+      "bytes": 13237
+    },
+    {
+      "file": "focused-clean.log",
+      "sha256": "7a034bcec6acfa8df439d5f6a115d125719078bcf088746aec232a133499a39d",
+      "bytes": 1984
+    },
+    {
+      "file": "focused-with-artifacts-diagnostic.log",
+      "sha256": "fd4e438fd07c590045ee01f6223496547ea9af80cc7f7f58358210c942278e0f",
+      "bytes": 1135
+    },
+    {
+      "file": "jobs-37422119153.json",
+      "sha256": "cd5fb90438b836a7a022d3582838c892cb6cdefd2d5139e26145a37d6dfa8c57",
+      "bytes": 33486
+    },
+    {
+      "file": "jobs-37467190704.json",
+      "sha256": "88352d1075e9a304cc4dd35600d4b9e64f17dff0856e91857b09ad402f5a8b9c",
+      "bytes": 36363
+    },
+    {
+      "file": "jobs-37467203410.json",
+      "sha256": "7c79913aa9c2be5dedbdb22e69c813f49607cbe63662146084925f7f7a928bff",
+      "bytes": 36363
+    },
+    {
+      "file": "probe-log-hashes.json",
+      "sha256": "cbc45aae4ae38b8ae80bf4709124b2442b5421b5bd20525bc7d6b65b59c7befa",
+      "bytes": 954
+    },
+    {
+      "file": "probes-results.json",
+      "sha256": "9d5b4eca07f37ea7ebf451c94c598105ea8b0123601a1b3ac79ada1eeeddc766",
+      "bytes": 8911
+    },
+    {
+      "file": "probes.mjs",
+      "sha256": "78939d515a35d7c4cccfd80cd8ed48aef2986de0eeccb5eba06f836cd065d9a3",
+      "bytes": 9828
+    },
+    {
+      "file": "remote-final-snapshot.json",
+      "sha256": "6b36772b38db0864ad7170c9ab7e3b90e130dc5268b9b2d9ff257a4b44f64ffb",
+      "bytes": 899
+    },
+    {
+      "file": "remote-issue-initial.json",
+      "sha256": "3baf7399061783e34edf1954c00a8d0a32faf36953ef6c6dfcc0817abbdac967",
+      "bytes": 13672
+    },
+    {
+      "file": "remote-pr-initial.json",
+      "sha256": "85b50eb3d359134d9a15f6d2b90fc3a2bafb9db83dc276d83b894fc1a26500d6",
+      "bytes": 18579
+    },
+    {
+      "file": "remote-verification.json",
+      "sha256": "26e54968798a2ab0b52706c19d1281a63dd0f6786ff17738e0239e2b81afec7a",
+      "bytes": 50648
+    },
+    {
+      "file": "scope-validation.json",
+      "sha256": "e46b9420753e550363d8ecf77d54087449fa9e6b69d26485e2e3649215dc7b22",
+      "bytes": 2180
+    },
+    {
+      "file": "verify-remote.mjs",
+      "sha256": "a5dfcc5249d01dfdab8f7219a4601ad17f5b78952c4f9619eda115dbac0df3b0",
+      "bytes": 11315
+    }
+  ]
+}
