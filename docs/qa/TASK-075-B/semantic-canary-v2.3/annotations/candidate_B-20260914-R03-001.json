@@ -1,0 +1,57 @@
+{
+  "candidateKey": "candidate:B-20260914-R03-001",
+  "sourceRef": "task-075-v23-canary-source:a677fceb616a528857871e05",
+  "sourceTier": "OFFICIAL_SITE_OR_TOURISM",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/a677fceb616a528857871e05297a906da7ab9f565449d675cfc5e4e43ad62abf.txt",
+    "locator": {
+      "offset": 0,
+      "length": 585,
+      "locatorSha256": "a677fceb616a528857871e05297a906da7ab9f565449d675cfc5e4e43ad62abf",
+      "contentSha256": "a677fceb616a528857871e05297a906da7ab9f565449d675cfc5e4e43ad62abf"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "05",
+      "sourceFact": "五城目朝市の開催日とアクセス 五城目朝市五城目朝市は約530年続く露店市です。 野菜や魚、果物やお菓子など、生活に密着した商品を販売するほか、 春は山菜、秋はきのこなど、旬の食材を提供しています。 開催日 日付の末尾に2、5、7、0のつく日(1月2日を除く。)に開催 開催時間 午前7時から正午まで(午前10時前後が最も賑わいます) 開催場所 五城目町下タ町通り(通称:朝市通り) https://goo.gl/maps/BdGrh6U4TscEFywS9 アクセス ・マイタウンバス JR八郎潟駅から五城目バスターミナルまで (時刻表等は こちら からご確認ください 料金:片道200円) ・乗合タクシー ",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    },
+    {
+      "featureCode": "07",
+      "sourceFact": "五城目朝市の開催日とアクセス 五城目朝市五城目朝市は約530年続く露店市です。 野菜や魚、果物やお菓子など、生活に密着した商品を販売するほか、 春は山菜、秋はきのこなど、旬の食材を提供しています。 開催日 日付の末尾に2、5、7、0のつく日(1月2日を除く。)に開催 開催時間 午前7時から正午まで(午前10時前後が最も賑わいます) 開催場所 五城目町下タ町通り(通称:朝市通り) https://goo.gl/maps/BdGrh6U4TscEFywS9 アクセス ・マイタウンバス JR八郎潟駅から五城目バスターミナルまで (時刻表等は こちら からご確認ください 料金:片道200円) ・乗合タクシー ４路線運行しております。詳しくは こちら からご確認ください。",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "featureCodeCandidates": [
+    "05",
+    "07"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "05",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped food, dining, or a food market; the frozen rubric maps that fact to food."
+    },
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "05",
+      "value": 7
+    },
+    {
+      "featureCode": "07",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

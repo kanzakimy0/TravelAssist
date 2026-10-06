@@ -1,0 +1,363 @@
+{
+  "phaseId": "226-yoron-qualified-hotel-shuttle",
+  "strategy": "Original Yoron airport ground dependency through independently evidenced guest-qualified hotel shuttle; default/PUBLIC denied, same reviewed actual lodging qualification both directions.",
+  "completedActionIds": [
+    "yoron:qualified:pricia-shuttle",
+    "yoron:qualified:pricia-access",
+    "yoron:qualified:pricia-osm-map221"
+  ],
+  "facts": [
+    {
+      "kind": "service",
+      "factId": "pricia-hotel-arrival",
+      "operator": "プリシアリゾートヨロン（ホテル提供者）",
+      "operatorRole": "HOTEL_SHUTTLE_PROVIDER_NOT_VERIFIED_LEGAL_MOTOR_CARRIER",
+      "mode": "airport_bus",
+      "serviceClass": "hotel_shuttle",
+      "callingStations": [
+        "与論空港",
+        "プリシアリゾートヨロン"
+      ],
+      "direction": "ARRIVAL",
+      "purpose": "airport",
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "callingComponents": [
+        {
+          "name": "与論空港",
+          "operator": "airport-facility:cf03_00057",
+          "line": "airport:cf03_00057",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00057",
+            "requirementId": "review:official-airport:与論",
+            "expectedRequirementName": "与論",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Hotel operator explicitly identifies current passenger arrival outside Yoron airport lobby and return airport shuttle. Whole official airport reference identity only; no inferred terminal geometry."
+          }
+        },
+        {
+          "name": "プリシアリゾートヨロン",
+          "operator": "facility:pricia-hotel",
+          "line": "facility:pricia-hotel",
+          "mode": "airport_bus",
+          "privateHotelIdentity": {
+            "identityAnchor": "osm:way:1353020075:pricia-hotel",
+            "recordSha256": "9a2da197c80a4c79e02b2aa478b7d0e134d82de049fb0ea240f5dea0898abc6a"
+          }
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "QUALIFIED_HOTEL_SHUTTLE",
+        "profile": "PRICIA_LODGING_GUEST_SHUTTLE_V1",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "pricia:lodging-guest"
+        ],
+        "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+        "qualificationBasis": "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+        "contact": {
+          "advanceContact": "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+          "unbookedBoarding": "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+          "deadline": null
+        },
+        "flightAssociation": "ARRIVAL",
+        "boardingRules": {
+          "reportToStaff": true,
+          "departureMayOccurWithoutUnreportedPassenger": true,
+          "hotelDepartureLobbyLeadMinutes": 10,
+          "otherDestinationsAllowed": false
+        },
+        "unknowns": {
+          "legalMotorCarrier": null,
+          "exactTimetable": null,
+          "price": null,
+          "dispatchGuarantee": null
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:656322ac414c416700bff108a9b5fc33",
+          "transport-evidence:086:b075a15c7504f1461c31c7417e17fce9"
+        ]
+      },
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:656322ac414c416700bff108a9b5fc33",
+        "transport-evidence:086:b075a15c7504f1461c31c7417e17fce9"
+      ],
+      "line": "与論空港・ホテル宿泊客送迎",
+      "sourceActionId": "yoron:qualified:pricia-shuttle",
+      "sourceUrl": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "observedResponseSha256": "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439",
+      "locator": "Independently published ARRIVAL shuttle direction; minimum service and mandatory conditions only, no timetable reproduction.",
+      "serviceState": "active",
+      "serviceStateScope": "STATIC_CURRENT_OPERATOR_SERVICE_GUIDE_NOT_EXACT_DATE_DISPATCH",
+      "conditionEvidence": [
+        {
+          "conditionId": "pricia-arrival-shuttle-rules",
+          "sourceActionId": "yoron:qualified:pricia-shuttle",
+          "sourceUrl": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+          "observedResponseSha256": "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439",
+          "locator": "Hotel shuttle: actual two directions, flight association, staff report, departure risk, hotel lobby ten-minute request, no other destinations.",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "QUALIFIED_HOTEL_SHUTTLE",
+            "profile": "PRICIA_LODGING_GUEST_SHUTTLE_V1",
+            "audience": "ELIGIBILITY_RESTRICTED",
+            "eligibilityKeys": [
+              "pricia:lodging-guest"
+            ],
+            "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+            "qualificationBasis": "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+            "contact": {
+              "advanceContact": "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+              "unbookedBoarding": "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+              "deadline": null
+            },
+            "flightAssociation": "ARRIVAL",
+            "boardingRules": {
+              "reportToStaff": true,
+              "departureMayOccurWithoutUnreportedPassenger": true,
+              "hotelDepartureLobbyLeadMinutes": 10,
+              "otherDestinationsAllowed": false
+            },
+            "unknowns": {
+              "legalMotorCarrier": null,
+              "exactTimetable": null,
+              "price": null,
+              "dispatchGuarantee": null
+            }
+          }
+        },
+        {
+          "conditionId": "pricia-arrival-current-contact",
+          "sourceActionId": "yoron:qualified:pricia-access",
+          "sourceUrl": "https://www.pricia.co.jp/access/",
+          "observedResponseSha256": "c4ecb6d645e2cd250ff5c6c4558cf0ee63a88b27815d3b4469783b61ad23a1b8",
+          "locator": "Current access: airport arrival associated shuttle; advance contact requested.",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "QUALIFIED_HOTEL_SHUTTLE",
+            "profile": "PRICIA_LODGING_GUEST_SHUTTLE_V1",
+            "audience": "ELIGIBILITY_RESTRICTED",
+            "eligibilityKeys": [
+              "pricia:lodging-guest"
+            ],
+            "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+            "qualificationBasis": "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+            "contact": {
+              "advanceContact": "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+              "unbookedBoarding": "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+              "deadline": null
+            },
+            "flightAssociation": "ARRIVAL",
+            "boardingRules": {
+              "reportToStaff": true,
+              "departureMayOccurWithoutUnreportedPassenger": true,
+              "hotelDepartureLobbyLeadMinutes": 10,
+              "otherDestinationsAllowed": false
+            },
+            "unknowns": {
+              "legalMotorCarrier": null,
+              "exactTimetable": null,
+              "price": null,
+              "dispatchGuarantee": null
+            }
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "yoron:qualified:pricia-access",
+          "url": "https://www.pricia.co.jp/access/",
+          "observedResponseSha256": "c4ecb6d645e2cd250ff5c6c4558cf0ee63a88b27815d3b4469783b61ad23a1b8",
+          "role": "CURRENT_EXACT_HOTEL_ADDRESS"
+        }
+      ]
+    },
+    {
+      "kind": "service",
+      "factId": "pricia-hotel-departure",
+      "operator": "プリシアリゾートヨロン（ホテル提供者）",
+      "operatorRole": "HOTEL_SHUTTLE_PROVIDER_NOT_VERIFIED_LEGAL_MOTOR_CARRIER",
+      "mode": "airport_bus",
+      "serviceClass": "hotel_shuttle",
+      "callingStations": [
+        "プリシアリゾートヨロン",
+        "与論空港"
+      ],
+      "direction": "DEPARTURE",
+      "purpose": "airport",
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "callingComponents": [
+        {
+          "name": "プリシアリゾートヨロン",
+          "operator": "facility:pricia-hotel",
+          "line": "facility:pricia-hotel",
+          "mode": "airport_bus",
+          "privateHotelIdentity": {
+            "identityAnchor": "osm:way:1353020075:pricia-hotel",
+            "recordSha256": "9a2da197c80a4c79e02b2aa478b7d0e134d82de049fb0ea240f5dea0898abc6a"
+          }
+        },
+        {
+          "name": "与論空港",
+          "operator": "airport-facility:cf03_00057",
+          "line": "airport:cf03_00057",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00057",
+            "requirementId": "review:official-airport:与論",
+            "expectedRequirementName": "与論",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Hotel operator explicitly identifies current passenger arrival outside Yoron airport lobby and return airport shuttle. Whole official airport reference identity only; no inferred terminal geometry."
+          }
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "QUALIFIED_HOTEL_SHUTTLE",
+        "profile": "PRICIA_LODGING_GUEST_SHUTTLE_V1",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "pricia:lodging-guest"
+        ],
+        "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+        "qualificationBasis": "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+        "contact": {
+          "advanceContact": "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+          "unbookedBoarding": "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+          "deadline": null
+        },
+        "flightAssociation": "DEPARTURE",
+        "boardingRules": {
+          "reportToStaff": true,
+          "departureMayOccurWithoutUnreportedPassenger": true,
+          "hotelDepartureLobbyLeadMinutes": 10,
+          "otherDestinationsAllowed": false
+        },
+        "unknowns": {
+          "legalMotorCarrier": null,
+          "exactTimetable": null,
+          "price": null,
+          "dispatchGuarantee": null
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:e680ef48e16c0703ad621f55cd20a223",
+          "transport-evidence:086:e6199f8d2d159a327a2bfd59c1b84103"
+        ]
+      },
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:e680ef48e16c0703ad621f55cd20a223",
+        "transport-evidence:086:e6199f8d2d159a327a2bfd59c1b84103"
+      ],
+      "line": "与論空港・ホテル宿泊客送迎",
+      "sourceActionId": "yoron:qualified:pricia-shuttle",
+      "sourceUrl": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "observedResponseSha256": "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439",
+      "locator": "Independently published DEPARTURE shuttle direction; minimum service and mandatory conditions only, no timetable reproduction.",
+      "serviceState": "active",
+      "serviceStateScope": "STATIC_CURRENT_OPERATOR_SERVICE_GUIDE_NOT_EXACT_DATE_DISPATCH",
+      "conditionEvidence": [
+        {
+          "conditionId": "pricia-departure-shuttle-rules",
+          "sourceActionId": "yoron:qualified:pricia-shuttle",
+          "sourceUrl": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+          "observedResponseSha256": "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439",
+          "locator": "Hotel shuttle: actual two directions, flight association, staff report, departure risk, hotel lobby ten-minute request, no other destinations.",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "QUALIFIED_HOTEL_SHUTTLE",
+            "profile": "PRICIA_LODGING_GUEST_SHUTTLE_V1",
+            "audience": "ELIGIBILITY_RESTRICTED",
+            "eligibilityKeys": [
+              "pricia:lodging-guest"
+            ],
+            "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+            "qualificationBasis": "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+            "contact": {
+              "advanceContact": "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+              "unbookedBoarding": "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+              "deadline": null
+            },
+            "flightAssociation": "DEPARTURE",
+            "boardingRules": {
+              "reportToStaff": true,
+              "departureMayOccurWithoutUnreportedPassenger": true,
+              "hotelDepartureLobbyLeadMinutes": 10,
+              "otherDestinationsAllowed": false
+            },
+            "unknowns": {
+              "legalMotorCarrier": null,
+              "exactTimetable": null,
+              "price": null,
+              "dispatchGuarantee": null
+            }
+          }
+        },
+        {
+          "conditionId": "pricia-departure-current-contact",
+          "sourceActionId": "yoron:qualified:pricia-access",
+          "sourceUrl": "https://www.pricia.co.jp/access/",
+          "observedResponseSha256": "c4ecb6d645e2cd250ff5c6c4558cf0ee63a88b27815d3b4469783b61ad23a1b8",
+          "locator": "Current access: airport arrival associated shuttle; advance contact requested.",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "QUALIFIED_HOTEL_SHUTTLE",
+            "profile": "PRICIA_LODGING_GUEST_SHUTTLE_V1",
+            "audience": "ELIGIBILITY_RESTRICTED",
+            "eligibilityKeys": [
+              "pricia:lodging-guest"
+            ],
+            "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+            "qualificationBasis": "OFFICIAL_HOTEL_ACCESS_CUSTOMER_CONTEXT_NOT_EXCLUSIVE_NON_GUEST_BAN",
+            "contact": {
+              "advanceContact": "REQUESTED_ON_CURRENT_ACCESS_PAGE",
+              "unbookedBoarding": "ALLOWED_IN_OPERATOR_SHUTTLE_DESCRIPTION_WITH_DEPARTURE_RISK",
+              "deadline": null
+            },
+            "flightAssociation": "DEPARTURE",
+            "boardingRules": {
+              "reportToStaff": true,
+              "departureMayOccurWithoutUnreportedPassenger": true,
+              "hotelDepartureLobbyLeadMinutes": 10,
+              "otherDestinationsAllowed": false
+            },
+            "unknowns": {
+              "legalMotorCarrier": null,
+              "exactTimetable": null,
+              "price": null,
+              "dispatchGuarantee": null
+            }
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "yoron:qualified:pricia-access",
+          "url": "https://www.pricia.co.jp/access/",
+          "observedResponseSha256": "c4ecb6d645e2cd250ff5c6c4558cf0ee63a88b27815d3b4469783b61ad23a1b8",
+          "role": "CURRENT_EXACT_HOTEL_ADDRESS"
+        }
+      ]
+    }
+  ]
+}

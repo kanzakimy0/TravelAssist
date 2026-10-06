@@ -1,0 +1,140 @@
+{
+  "baseline": "166f996eab3d75fb5afabc4ad7cb9f3d265c54c1",
+  "hashConvention": "SHA-256 of Git text, LF normalized; CRLF checkout does not rewrite history",
+  "migrations": [
+    {
+      "path": "supabase/migrations/20260908083000_create_user_profile_schema.sql",
+      "sha256": "04155bd2e4673eb971a39b5a9d4941d3ba8d57d05f8c648fa67ba508c4c94606"
+    },
+    {
+      "path": "supabase/migrations/20260911090000_create_travel_preferences.sql",
+      "sha256": "46598b54fb008353a1b1b8dcfb5513bf9abdafb95adcaac51d503586c17ea48a"
+    },
+    {
+      "path": "supabase/migrations/20260911100000_create_companion_schema.sql",
+      "sha256": "4143775d488293bb6946dcc82e4617095bc6eb752be79012c40c228cb112211b"
+    },
+    {
+      "path": "supabase/migrations/20260912090000_add_companion_transaction_api.sql",
+      "sha256": "3036ea718306f10e8daef5c788a6ca6a54b18330ea0d95e0f2b31287bfa26cd6"
+    },
+    {
+      "path": "supabase/migrations/20260912100000_create_trip_library_records.sql",
+      "sha256": "21c9750a750fd39859c04ef65dd074666ab3776df18f967dd79e7d4eecffcd3b"
+    },
+    {
+      "path": "supabase/migrations/20260912120000_trip_library_creation_intent.sql",
+      "sha256": "f4a812c648c615a4c0c98e751c9d12ebf06ad5ea360616b039f405c338f0e47c"
+    }
+  ],
+  "generatedTypes": {
+    "path": "src/types/database.generated.ts",
+    "sha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91"
+  },
+  "drizzleFiles": [
+    {
+      "path": "src/db/schema/companions.ts",
+      "sha256": "251d7c6ad630354d49c160b036ad5e4a2bc3c5c5d64fdf6b2e30c1e394f0a3a1"
+    },
+    {
+      "path": "src/db/schema/emergency-contacts.ts",
+      "sha256": "35883cb7f1fe350d5147496fcaed1c27496ec62edf5ed720ad6938c619199c08"
+    },
+    {
+      "path": "src/db/schema/index.ts",
+      "sha256": "7e490c23c305923192b3af28310934ed05892c4a21b835950ddf6f5d85ca1ad3"
+    },
+    {
+      "path": "src/db/schema/profile-common.ts",
+      "sha256": "c6293c3340226ce51ec23defd7f8914152a72250308206c2b762eab4db281693"
+    },
+    {
+      "path": "src/db/schema/profile-settings.ts",
+      "sha256": "64bc02d19abca7c19ce26e140ccf0834a038739f14421ab53afd567edabf4085"
+    },
+    {
+      "path": "src/db/schema/profiles.ts",
+      "sha256": "0a8d4d47766e2f0e936a2b27eb5a562da60dacdedcd6885e6022b15a275a3c6b"
+    },
+    {
+      "path": "src/db/schema/travel-preferences.ts",
+      "sha256": "6a75dc41afa9fcbc306dc65928deaa1ad152d05bd367a222c3feda4cd7c0323b"
+    },
+    {
+      "path": "src/db/schema/trip-library.ts",
+      "sha256": "41c87d94ce90a48bfd267b649c1ce3b0af17627b17cf4667c85e22984931229f"
+    }
+  ],
+  "tables": [
+    "companion_group_members",
+    "companion_groups",
+    "companions",
+    "emergency_contacts",
+    "profile_settings",
+    "profiles",
+    "travel_preferences",
+    "trip_library_records"
+  ],
+  "functions": [
+    "guard_companion_birth_date",
+    "guard_companion_member_audit",
+    "guard_companion_revision",
+    "guard_travel_preference_revision",
+    "guard_trip_library_creation_intent_v1",
+    "guard_trip_library_record_v1",
+    "is_companion_travel_profile_v1",
+    "is_travel_preference_v1",
+    "is_trip_library_envelope_v1",
+    "is_trip_party_snapshot_v1",
+    "mutate_companion_group_v1",
+    "mutate_companion_v1",
+    "set_profile_audit_timestamps"
+  ],
+  "triggers": [
+    "companion_group_members_audit",
+    "companion_groups_revision",
+    "companions_birth_date",
+    "companions_revision",
+    "emergency_contacts_audit_timestamps",
+    "profile_settings_audit_timestamps",
+    "profiles_audit_timestamps",
+    "travel_preferences_revision",
+    "trip_library_creation_intent_guard",
+    "trip_library_records_guard"
+  ],
+  "policies": [
+    "companion_group_members_delete_own",
+    "companion_group_members_insert_own",
+    "companion_group_members_select_own",
+    "companion_group_members_update_own",
+    "companion_groups_delete_own",
+    "companion_groups_insert_own",
+    "companion_groups_select_own",
+    "companion_groups_update_own",
+    "companions_delete_own",
+    "companions_insert_own",
+    "companions_select_own",
+    "companions_update_own",
+    "emergency_contacts_delete_own",
+    "emergency_contacts_insert_own",
+    "emergency_contacts_select_own",
+    "emergency_contacts_update_own",
+    "profile_settings_insert_own",
+    "profile_settings_select_own",
+    "profile_settings_update_own",
+    "profiles_insert_own",
+    "profiles_select_own",
+    "profiles_update_own",
+    "travel_preferences_insert_own",
+    "travel_preferences_select_own",
+    "travel_preferences_update_own",
+    "trip_library_records_select_own"
+  ],
+  "baselineTests": {
+    "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\"",
+    "tests": 2476,
+    "pass": 2476,
+    "fail": 0,
+    "skipped": 0
+  }
+}

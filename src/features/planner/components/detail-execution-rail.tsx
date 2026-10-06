@@ -26,6 +26,7 @@ export function DetailExecutionRail({
   draft,
   onDraft,
   onMissing,
+  onBreakfastChoice,
 }: {
   overview?: boolean;
   onOverview: () => void;
@@ -44,6 +45,7 @@ export function DetailExecutionRail({
     kind: "hotel" | "restaurant",
     slot?: "breakfast" | "lunch" | "dinner",
   ) => void;
+  onBreakfastChoice: (day: number, choice: "hotel" | "simple") => void;
   onAdd: (trigger: HTMLButtonElement) => void;
   actions?: ReactNode;
   onMinimize?: () => void;
@@ -123,6 +125,7 @@ export function DetailExecutionRail({
           selectedId={selectedId}
           onItem={onItem}
           onMissing={onMissing}
+          onBreakfastChoice={onBreakfastChoice}
         />
       )}
     </section>

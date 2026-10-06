@@ -1,0 +1,25 @@
+{
+  "realAuthUsers": 2,
+  "realBrowserCookieSessions": 2,
+  "browser": "headless msedge",
+  "expectedScenarios": 16,
+  "completedScenarios": [
+    "anon and malformed/invalid explicit Bearer rejected, including valid Cookie fallback",
+    "GET missing rev 0 and missing Reset do not create rows; both auth paths",
+    "Cookie mutations reject foreign/missing Origin and non-JSON; explicit Bearer owns identity",
+    "first Cookie PATCH 0→1; sequential Bearer PATCH; stale PATCH and owner injection rejected",
+    "concurrent first writes have one winner and one 409; existing same-revision race too",
+    "malformed/invalid Preference, oversized 80KiB and wrong revisions fail without writes",
+    "whole map replacement and explicit unset preserve unrelated fields",
+    "real Reset, stale Reset, already-empty Reset and second Cookie session restore",
+    "real RLS and SQL trigger/validator still protect the API table",
+    "UI explicit Save survives reload and a second real Cookie session",
+    "UI stale session shows 409, preserves draft and requires explicit server reload",
+    "network failure retains draft, Cancel restores saved and dirty navigation guard remains",
+    "real overview Reset reloads empty; guest and empty second account never write defaults",
+    "all category routes load canonical controls, mobile layout and no JS errors",
+    "category adapters persist explicit neutral/false/style and whole interest maps",
+    "real Auth deletion cascades A preference and preserves B; fixture cleanup"
+  ],
+  "complete": true
+}

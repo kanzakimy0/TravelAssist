@@ -2,6 +2,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 import type { PlannerPlace, TripItem } from "../model/trip-model";
 import type { DetailRailItem } from "../model/detail-workspace";
 import { PlaceArtwork } from "./place-details";
+import { PlannerIcon } from "./planner-icon";
 import css from "../detail-map-inspector.module.css";
 
 export function DetailMapInspector({
@@ -62,7 +63,7 @@ export function DetailMapInspector({
             </h2>
           </div>
           <button type="button" onClick={onClose} aria-label="关闭项目详情框">
-            ×
+            <PlannerIcon name="close" />
           </button>
         </header>
         {editor ? (
@@ -133,7 +134,7 @@ export function DetailMapInspector({
           )}
         </div>
         <button type="button" onClick={onClose} aria-label="关闭项目详情框">
-          ×
+          <PlannerIcon name="close" />
         </button>
       </header>
       {editor ? (

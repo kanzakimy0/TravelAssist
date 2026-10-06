@@ -28,9 +28,8 @@ export type EmergencyContact = {
 };
 
 export type AvatarState = {
-  kind: "current" | "default" | "local";
-  fileName?: string;
-  previewUrl?: string;
+  kind: "current" | "default";
+  path?: string;
 };
 
 export type AccountDraft = {
@@ -42,41 +41,31 @@ export type AccountDraft = {
 
 export const initialAccountDraft: AccountDraft = {
   profile: {
-    displayName: "Yuki",
-    legalName: "山田由纪",
-    birthday: "1995-08-12",
-    gender: "女",
-    countryRegion: "日本",
-    city: "东京",
+    displayName: "",
+    legalName: "",
+    birthday: "",
+    gender: "",
+    countryRegion: "",
+    city: "",
   },
   settings: {
-    language: "简体中文",
-    region: "日本",
-    timezone: "Asia/Tokyo",
-    currency: "JPY (¥)",
-    distanceUnit: "公里 (km)",
-    temperatureUnit: "摄氏度 (°C)",
-    timeFormat: "24 小时制 (13:00)",
+    language: "",
+    region: "",
+    timezone: "",
+    currency: "",
+    distanceUnit: "",
+    temperatureUnit: "",
+    timeFormat: "",
   },
-  contacts: [
-    {
-      id: "contact-yamada-taro",
-      name: "山田 太郎",
-      relationship: "父亲",
-      countryCode: "+81",
-      phone: "90-1234-5678",
-      email: "",
-      note: "",
-    },
-  ],
-  avatar: { kind: "current" },
+  contacts: [],
+  avatar: { kind: "default" },
 };
 
 export const emptyEmergencyContact = (): EmergencyContact => ({
   id: `contact-${Date.now()}`,
   name: "",
   relationship: "",
-  countryCode: "+81",
+  countryCode: "",
   phone: "",
   email: "",
   note: "",

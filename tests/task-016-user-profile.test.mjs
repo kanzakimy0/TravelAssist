@@ -29,7 +29,8 @@ function mappingProbe(server = true) {
       "./tests/register-planner-ts.mjs",
       "--input-type=module",
       "-e",
-      `import * as schema from './src/db/schema/index.ts';
+      `import { profiles, profileSettings, emergencyContacts } from './src/db/schema/index.ts';
+     const schema = { profiles, profileSettings, emergencyContacts };
      import { getTableConfig, PgDialect } from 'drizzle-orm/pg-core';
      const dialect = new PgDialect();
      console.log(JSON.stringify(Object.values(schema).map(table => {

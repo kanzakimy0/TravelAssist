@@ -1,0 +1,739 @@
+{
+  "task": "TASK-086-B",
+  "recordedAt": "2026-10-03T14:16:35.521289+00:00",
+  "taskAcceptanceStatus": "IN_PROGRESS_AUTO_REMEDIATION",
+  "terminal": false,
+  "phase": 214,
+  "validationParentHead": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+  "branch": "feature/b-transport-node-mobility-backbone",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2",
+  "manifestSha256": "0d419104b4e16471cde12f0f809e39d17b11c3325c626a4a8fbba57ed8178c4a",
+  "fullRegression": {
+    "status": "PASS",
+    "tests": 3205,
+    "pass": 3205,
+    "fail": 0,
+    "skipped": 0,
+    "freshExecutionTotals": {
+      "tests": 3204,
+      "pass": 3204,
+      "fail": 0,
+      "skipped": 0
+    },
+    "reusedUnchangedRebuildTests": 1,
+    "rebuildReuseReceipt": "phase214-rebuild-reuse-fingerprint.json",
+    "logSha256": "202539090e60e006135b4bc9780abb71588ef300172bf2756c190c83564a68d1",
+    "timing": {
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "tests/browser-trip-save.test.mjs",
+        "tests/bulk-booking.test.mjs",
+        "tests/detail-card-actions.test.mjs",
+        "tests/detail-compact-board.test.mjs",
+        "tests/detail-overview-locations.test.mjs",
+        "tests/planner-artwork.test.mjs",
+        "tests/planner-audit-fixes.test.mjs",
+        "tests/planner-audit-regressions.test.mjs",
+        "tests/planner-concept-refinement.test.mjs",
+        "tests/planner-local-integration.test.mjs",
+        "tests/planner-meal-booking-refinement.test.mjs",
+        "tests/planner-quick-menu-design.test.mjs",
+        "tests/planner-range-enrichment.test.mjs",
+        "tests/planner-responsive-density.test.mjs",
+        "tests/planner-route-board.test.mjs",
+        "tests/planner-sight-timeline.test.mjs",
+        "tests/planner-status-stack.test.mjs",
+        "tests/planner-track-actions.test.mjs",
+        "tests/planner-working-plan.test.mjs",
+        "tests/poi-remaining-review.test.mjs",
+        "tests/pr-governance.test.mjs",
+        "tests/task-007-background.test.mjs",
+        "tests/task-007-calendar.test.mjs",
+        "tests/task-007-info-popover.test.mjs",
+        "tests/task-008-planner.test.mjs",
+        "tests/task-0081-map-booking.test.mjs",
+        "tests/task-0082-visuals.test.mjs",
+        "tests/task-0083-interactions.test.mjs",
+        "tests/task-010-b-global-logo-navigation.test.mjs",
+        "tests/task-010-navigation.test.mjs",
+        "tests/task-011-trip-detail-workspace.test.mjs",
+        "tests/task-012-planner-v05.test.mjs",
+        "tests/task-013-1-asset-variants.test.mjs",
+        "tests/task-013-2-core-generation-manifest.test.mjs",
+        "tests/task-013-3-1-japan-destination-closure.test.mjs",
+        "tests/task-013-3-japan-destination-resolution.test.mjs",
+        "tests/task-013-assets.test.mjs",
+        "tests/task-015-db-foundation.test.mjs",
+        "tests/task-016-user-profile.test.mjs",
+        "tests/task-018-authentication.test.mjs",
+        "tests/task-019-trip-plan.test.mjs",
+        "tests/task-022-ekiworld-routing.test.mjs",
+        "tests/task-022-route-contract.test.mjs",
+        "tests/task-022-routing-boundary.test.mjs",
+        "tests/task-023-planner-route-integration.test.mjs",
+        "tests/task-024-main-shell.test.mjs",
+        "tests/task-025-2-concept-fidelity.test.mjs",
+        "tests/task-025-2-coral-palette.test.mjs",
+        "tests/task-025-2-v11.test.mjs",
+        "tests/task-025-environment-deployment.test.mjs",
+        "tests/task-036-planning-contracts.test.mjs",
+        "tests/task-037-planning-contract-soak.test.mjs",
+        "tests/task-041-region-graph-pilot.test.mjs",
+        "tests/task-042-preference-schema.test.mjs",
+        "tests/task-043-master-code-registry.test.mjs",
+        "tests/task-044-companion-schema.test.mjs",
+        "tests/task-045-preference-api.test.mjs",
+        "tests/task-045-region-master-code-integration.test.mjs",
+        "tests/task-046-preference-contract.test.mjs",
+        "tests/task-047-companion-api.test.mjs",
+        "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+        "tests/task-048-trip-persistence-model.test.mjs",
+        "tests/task-049-trip-library-api.test.mjs",
+        "tests/task-050-a-poi-schema.test.mjs",
+        "tests/task-050-profile-api.test.mjs",
+        "tests/task-051-a-planner-store.test.mjs",
+        "tests/task-052-account-deletion.test.mjs",
+        "tests/task-053-preference-presets.test.mjs",
+        "tests/task-054-personal-center-migration.test.mjs",
+        "tests/task-055-private-boundaries.test.mjs",
+        "tests/task-055-test-runner.test.mjs",
+        "tests/task-060-profile-ui.test.mjs",
+        "tests/task-061-trip-library-live.test.mjs",
+        "tests/task-062-schema-union.test.mjs",
+        "tests/task-063-engine-apply.test.mjs",
+        "tests/task-064-runtime-rollback.test.mjs",
+        "tests/task-065-engine-certification.test.mjs",
+        "tests/task-067-main-system-state.test.mjs",
+        "tests/task-068-candidate-enrichment.test.mjs",
+        "tests/task-068-corpus-combination.test.mjs",
+        "tests/task-070-p0-evidence-review.test.mjs",
+        "tests/task-076-ai-runtime.test.mjs",
+        "tests/task-081-a-poi-detail-api.test.mjs",
+        "tests/task-082-a-poi-edge-graph.test.mjs",
+        "tests/task-082-personal-ai-history.test.mjs",
+        "tests/task-083-a-poi-runtime.test.mjs",
+        "tests/task-083-canonical-owner-correction.test.mjs",
+        "tests/task-084-a-canonical100-boundary.test.mjs",
+        "tests/task-084-a-real-pilot100.test.mjs",
+        "tests/task-084-a-recommendation-scoring.test.mjs",
+        "tests/task-084-v2-amendment.test.mjs",
+        "tests/task-086-b-autonomous-remediation.test.mjs",
+        "tests/task-086-b-ci-revision.test.mjs",
+        "tests/task-086-b-derived-gtfs.test.mjs",
+        "tests/task-086-b-gtfs-sections.test.mjs",
+        "tests/task-086-b-mobility-backbone.test.mjs",
+        "tests/task-086-b-p11-succession.test.mjs",
+        "tests/task-086-b-pattern-corrections.test.mjs",
+        "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+        "tests/task-086-b-selected-gtfs.test.mjs",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-service-access-contract.test.mjs",
+        "tests/task-086-service-access-pipeline.test.mjs",
+        "tests/task-088-a-trusted-baseline.test.mjs",
+        "tests/trip-preparation.test.mjs",
+        "tests/trip-status-personal-center-followup.test.mjs",
+        "tests/wbs-4-17-trip-contract.test.mjs",
+        "tests/wbs-4-21-rule-feasibility.test.mjs",
+        "tests/wbs-5-10-trip-library.test.mjs",
+        "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+        "tests/wbs-5-3-auth-callback.test.mjs",
+        "tests/wbs-5-3-auth-user-flow.test.mjs",
+        "tests/wbs-5-5-preferences.test.mjs",
+        "tests/wbs-5-6-companions.test.mjs",
+        "tests/wbs-5-7-mobility-preference.test.mjs",
+        "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+        "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+        "tests/wbs-5.4-v2.test.mjs",
+        "tests/wbs-9-12-personal-center-qa.test.mjs"
+      ],
+      "elapsedSeconds": 381.53752370004077,
+      "exitCode": 0,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+    },
+    "coverage": "Complete coverage combines fresh execution of every other test with one already-PASS rebuild test under339 exact input/generator/test/dependency fingerprints and the unchanged environment. Both earlier full attempts and their failures are retained; no failing test or quality check removed."
+  },
+  "priorFailedFullAttempts": [
+    {
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "tests/*.test.mjs"
+      ],
+      "elapsedSeconds": 765.1779322999646,
+      "exitCode": 4294967295,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "tests/*.test.mjs"
+      ],
+      "elapsedSeconds": 1470.382456100022,
+      "exitCode": 1,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+    }
+  ],
+  "priorFailedFullDiagnostic": {
+    "status": "STOPPED_AFTER_CONFIRMED_REGRESSION_FAILURES_PENDING_FIX_AND_COMPLETE_RERUN",
+    "at": "2026-10-03T13:21:32.993060+00:00",
+    "failureLines": [
+      "✖ TASK086 flight reachability does not substitute for airport surface access (2.3213ms)",
+      "✖ TASK086 admitted legacy GTFS bus stops satisfy only real bidirectional airport surface access (0.4804ms)"
+    ],
+    "logSha256": "52edecf919a377fc006b507f90d42accd31b43bd51ccc6d3ee7e70bb541dd598",
+    "reason": "Two airport surface regression failures found. Stop remaining known-invalid calculation; retain all checks, apply role predicate and real-service fixture repair, then rerun complete repository gate.",
+    "taskOwnedProcessesStopped": [
+      11164,
+      35692
+    ],
+    "taskAcceptance": "UNVERIFIED_NOT_COMPLETE"
+  },
+  "deterministicRebuildReceiptSha256": "dae3fc8c904a69bae45040e83e49d0f82d09a98179cb6d905a993e860c9d4d7a",
+  "checks": [
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "lint"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "lint"
+        ],
+        "elapsedSeconds": 59.770413500024006,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+      },
+      "logSha256": "a7acfff4ca0961fb22b0abb212b120ea07064bc7fc5fb078c9c1eb217ab7434a"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "typecheck"
+        ],
+        "elapsedSeconds": 6.032643900020048,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+      },
+      "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "format:check:deploy"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "format:check:deploy"
+        ],
+        "elapsedSeconds": 13.53766849997919,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+      },
+      "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:build:local"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:build:local"
+        ],
+        "elapsedSeconds": 60.37158209999325,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+      },
+      "logSha256": "d38ba57cf5f56d37bc35ca6a8de5aa0833a082a8b369af829338f21045b46a21"
+    },
+    {
+      "command": [
+        "npm.cmd",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "status": "PASS",
+      "timing": {
+        "command": [
+          "npm.cmd",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        "elapsedSeconds": 1.9007311000023037,
+        "exitCode": 0,
+        "scopeId": "TASK086-FULL-ORIGINAL-PHASE214-v2"
+      },
+      "logSha256": "24566579d67747acbe211d6e8496717ff0f8daa658c4095a9a8e8ed5f3b0f66f"
+    }
+  ],
+  "validationEnvironment": {
+    "node": "v24.18.0",
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packageLockSha256": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+    "packageSha256": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c",
+    "configHashes": {
+      ".nvmrc": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+      "tsconfig.json": "ff91c38f2cb3aafd505312ef01f1300200562d7683b9b539f6331e4ad16d2e55",
+      "eslint.config.mjs": "7754db6914dbabce8895021567beec069ff65ec22abe6e23c5b052110cef6323",
+      ".github/workflows/quality-gate.yml": "1ea179b70b970a05fbefd1497bef1facad28ee8f16ffc927337d0c17ef09047a"
+    },
+    "reusedPriorHeadValidation": false
+  },
+  "historicalQualityGates": [
+    {
+      "phase": 159,
+      "status": "PASS",
+      "runId": 36966963730,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36966963730",
+      "branchHeadSha": "431986ba92a0b0f41ee4429f7c78f8850f827474",
+      "checkoutSha": "3cafe580888266e07922d838055f8dbcb3d41f35",
+      "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+      "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+      "directBranchHeadTest": false
+    },
+    {
+      "phase": 162,
+      "status": "PASS",
+      "runId": 36995377311,
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/36995377311",
+      "branchHeadSha": "5f8533de99ee4397fa404c202e02c37c120d67ad",
+      "checkoutSha": "cdb4369dd6087273274a1b18af4cbcadb95fcc4b",
+      "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+      "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+      "directBranchHeadTest": false
+    }
+  ],
+  "phase211QualityGates": {
+    "schemaVersion": 1,
+    "observedAt": "2026-10-03T12:18:06.796906+00:00",
+    "branchHeadSha": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+    "records": [
+      {
+        "runId": 37121563938,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37121563938",
+        "status": "PASS",
+        "event": "workflow_dispatch",
+        "revision": {
+          "schemaVersion": 1,
+          "eventName": "workflow_dispatch",
+          "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
+          "branchHeadSha": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+          "checkoutSha": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+          "checkoutParents": [
+            "3255a9bd3ed3ae92c051a0e5396ac046fdc9388f"
+          ],
+          "eventSha": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+          "baseSha": null,
+          "pullRequestNumber": null,
+          "checkoutKind": "BRANCH_HEAD_DIRECT",
+          "directBranchHeadTest": true
+        },
+        "tests": {
+          "tests": 3085,
+          "pass": 3085,
+          "fail": 0,
+          "skipped": 0
+        },
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record branch HEAD and actual checkout revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install locked dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Validate local deployment contract",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run repository tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success"
+          },
+          {
+            "name": "Typecheck",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check formatting",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and audit standalone artifact",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify artifact again before use",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check whitespace",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "logSha256": "935bc12ce55cf23f14ba732279149491125ecc4b2cd0f29ac319a5dd7bae2bc2"
+      },
+      {
+        "runId": 37121568046,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37121568046",
+        "status": "PASS",
+        "event": "pull_request",
+        "revision": {
+          "schemaVersion": 1,
+          "eventName": "pull_request",
+          "ref": "refs/pull/466/merge",
+          "branchHeadSha": "4d040627d1f2cebf0030ca5cb68395e699b4ec14",
+          "checkoutSha": "07c9ddb7fe17e8f5dee4a200e6a060e90a834978",
+          "checkoutParents": [
+            "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+            "4d040627d1f2cebf0030ca5cb68395e699b4ec14"
+          ],
+          "eventSha": "07c9ddb7fe17e8f5dee4a200e6a060e90a834978",
+          "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+          "pullRequestNumber": 466,
+          "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+          "directBranchHeadTest": false
+        },
+        "tests": {
+          "tests": 3085,
+          "pass": 3085,
+          "fail": 0,
+          "skipped": 0
+        },
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record branch HEAD and actual checkout revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install locked dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Validate local deployment contract",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run repository tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success"
+          },
+          {
+            "name": "Typecheck",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check formatting",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and audit standalone artifact",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify artifact again before use",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check whitespace",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "logSha256": "322b2f8cf62cc02c3692942091245dcb0077b9cfbf0a376d3d44e03398033d81"
+      }
+    ],
+    "rawLogsRetained": false
+  },
+  "currentQualityGate": {
+    "status": "PASS",
+    "branchHeadSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+    "revisionReceipt": "phase214-ci-revisions.json",
+    "records": [
+      {
+        "runId": 37129801318,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37129801318",
+        "status": "PASS",
+        "event": "workflow_dispatch",
+        "revision": {
+          "schemaVersion": 1,
+          "eventName": "workflow_dispatch",
+          "ref": "refs/heads/feature/b-transport-node-mobility-backbone",
+          "branchHeadSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "checkoutSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "checkoutParents": [
+            "4d040627d1f2cebf0030ca5cb68395e699b4ec14"
+          ],
+          "eventSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "baseSha": null,
+          "pullRequestNumber": null,
+          "checkoutKind": "BRANCH_HEAD_DIRECT",
+          "directBranchHeadTest": true
+        },
+        "tests": {
+          "tests": 3205,
+          "pass": 3205,
+          "fail": 0,
+          "skipped": 0
+        },
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record branch HEAD and actual checkout revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install locked dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Validate local deployment contract",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run repository tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success"
+          },
+          {
+            "name": "Typecheck",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check formatting",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and audit standalone artifact",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify artifact again before use",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check whitespace",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "logSha256": "3f9df46dcdc10308b2afc312fdc9caf821c7ffb85940450f6c67a93b293f1dfc"
+      },
+      {
+        "runId": 37129777619,
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37129777619",
+        "status": "PASS",
+        "event": "pull_request",
+        "revision": {
+          "schemaVersion": 1,
+          "eventName": "pull_request",
+          "ref": "refs/pull/466/merge",
+          "branchHeadSha": "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a",
+          "checkoutSha": "223e4ee9f456471e81ebc3cc3217c7abe32ee1c6",
+          "checkoutParents": [
+            "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+            "658f3a5d6708d4233b3f808537c1ab5c5dbbc48a"
+          ],
+          "eventSha": "223e4ee9f456471e81ebc3cc3217c7abe32ee1c6",
+          "baseSha": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+          "pullRequestNumber": 466,
+          "checkoutKind": "PULL_REQUEST_MERGE_TEST",
+          "directBranchHeadTest": false
+        },
+        "tests": {
+          "tests": 3205,
+          "pass": 3205,
+          "fail": 0,
+          "skipped": 0
+        },
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record branch HEAD and actual checkout revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install locked dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Validate local deployment contract",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run repository tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success"
+          },
+          {
+            "name": "Typecheck",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check formatting",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build and audit standalone artifact",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify artifact again before use",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check whitespace",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Use repository Node version",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the exact event revision",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "logSha256": "f3890725385b2c7ae9800b6d13bcf7fffad28230cbcae6a3349a83a4668d76f0"
+      }
+    ],
+    "scope": "Validates commit658f3a5d6708d4233b3f808537c1ab5c5dbbc48a only. Subsequent source/code/input edits require their own applicable gates."
+  },
+  "artifactIsCleanHeadBuild": false,
+  "gitCheckoutBytePreservation": {
+    "status": "PASS",
+    "receipt": "phase214-git-input-byte-preservation.json",
+    "attributesSha256": "188b5bfdf695de6378e2d74c58903e3cdc61cebef74223f44b7a780094c72de6",
+    "scope": "Only the two immutable hash-bound audit JSON inputs retain their original CRLF bytes; all other repository files keep existing LF policy. No graph input/generator bytes changed."
+  }
+}

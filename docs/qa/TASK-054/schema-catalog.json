@@ -1,0 +1,2462 @@
+{
+  "migrations": [
+    {
+      "version": "20260908083000"
+    },
+    {
+      "version": "20260911090000"
+    },
+    {
+      "version": "20260911100000"
+    },
+    {
+      "version": "20260912090000"
+    },
+    {
+      "version": "20260912100000"
+    },
+    {
+      "version": "20260912120000"
+    }
+  ],
+  "tables": [
+    {
+      "relname": "companion_group_members",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "companion_groups",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "companions",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "emergency_contacts",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "profile_settings",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "profiles",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "travel_preferences",
+      "relrowsecurity": true
+    },
+    {
+      "relname": "trip_library_records",
+      "relrowsecurity": true
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "companion_group_members",
+      "column_name": "owner_user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "companion_group_members",
+      "column_name": "group_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "companion_group_members",
+      "column_name": "companion_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "companion_group_members",
+      "column_name": "sort_order",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "companion_group_members",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "owner_user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "description",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "includes_owner",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": "false",
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "revision",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "1",
+      "ordinal_position": 6
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 7
+    },
+    {
+      "table_name": "companion_groups",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 8
+    },
+    {
+      "table_name": "companions",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "companions",
+      "column_name": "owner_user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "companions",
+      "column_name": "display_name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "companions",
+      "column_name": "relationship_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "companions",
+      "column_name": "relationship_label",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "companions",
+      "column_name": "birth_date",
+      "data_type": "date",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_name": "companions",
+      "column_name": "age_group_fallback",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_name": "companions",
+      "column_name": "gender_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_name": "companions",
+      "column_name": "avatar_path",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "table_name": "companions",
+      "column_name": "travel_profile",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'{\"diningNeeds\": [], \"mobilityNeeds\": [], \"schemaVersion\": \"1.0\", \"activityInterests\": []}'::jsonb",
+      "ordinal_position": 10
+    },
+    {
+      "table_name": "companions",
+      "column_name": "revision",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "1",
+      "ordinal_position": 11
+    },
+    {
+      "table_name": "companions",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 12
+    },
+    {
+      "table_name": "companions",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 13
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "name",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "relationship",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "phone_e164",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "country_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "email",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "note",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 9
+    },
+    {
+      "table_name": "emergency_contacts",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 10
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "locale",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "region_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "timezone",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "currency_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "distance_unit",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "temperature_unit",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "time_format",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 9
+    },
+    {
+      "table_name": "profile_settings",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 10
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "display_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "full_name",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "birth_date",
+      "data_type": "date",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "gender_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "residence_country_code",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "residence_city",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "avatar_path",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 9
+    },
+    {
+      "table_name": "profiles",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 10
+    },
+    {
+      "table_name": "travel_preferences",
+      "column_name": "owner_user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "travel_preferences",
+      "column_name": "payload",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'{\"values\": {}, \"schemaVersion\": \"1.0\"}'::jsonb",
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "travel_preferences",
+      "column_name": "revision",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "1",
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "travel_preferences",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "travel_preferences",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "ordinal_position": 1
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "owner_user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "creation_key",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "library_state",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "'draft'::text",
+      "ordinal_position": 4
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "canonical_trip_id",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "draft_facts",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "wizard_progress",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "plan_snapshot",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "preference_snapshot",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "preference_source_revision",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 10
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "preference_override_patch",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'{\"set\": {}, \"unset\": [], \"schemaVersion\": \"1.0\"}'::jsonb",
+      "ordinal_position": 11
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "party_snapshot",
+      "data_type": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 12
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "storage_revision",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "1",
+      "ordinal_position": 13
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "frozen_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 14
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 15
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 16
+    },
+    {
+      "table_name": "trip_library_records",
+      "column_name": "creation_intent_hash",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 17
+    }
+  ],
+  "constraints": [
+    {
+      "table_name": "companion_group_members",
+      "conname": "companion_group_members_companion_owner_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (companion_id, owner_user_id) REFERENCES companions(id, owner_user_id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "companion_group_members",
+      "conname": "companion_group_members_group_owner_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (group_id, owner_user_id) REFERENCES companion_groups(id, owner_user_id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "companion_group_members",
+      "conname": "companion_group_members_pk",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (group_id, companion_id)",
+      "expression": null
+    },
+    {
+      "table_name": "companion_group_members",
+      "conname": "companion_group_members_sort_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((sort_order >= 0))",
+      "expression": "(sort_order >= 0)"
+    },
+    {
+      "table_name": "companion_group_members",
+      "conname": "companion_group_members_sort_unique",
+      "contype": "u",
+      "confdeltype": " ",
+      "definition": "UNIQUE (group_id, sort_order)",
+      "expression": null
+    },
+    {
+      "table_name": "companion_groups",
+      "conname": "companion_groups_auth_user_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "companion_groups",
+      "conname": "companion_groups_description_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((char_length(description) <= 300))",
+      "expression": "(char_length(description) <= 300)"
+    },
+    {
+      "table_name": "companion_groups",
+      "conname": "companion_groups_id_owner_unique",
+      "contype": "u",
+      "confdeltype": " ",
+      "definition": "UNIQUE (id, owner_user_id)",
+      "expression": null
+    },
+    {
+      "table_name": "companion_groups",
+      "conname": "companion_groups_name_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(name) >= 1) AND (char_length(name) <= 100)) AND (name = btrim(name))))",
+      "expression": "(((char_length(name) >= 1) AND (char_length(name) <= 100)) AND (name = btrim(name)))"
+    },
+    {
+      "table_name": "companion_groups",
+      "conname": "companion_groups_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (id)",
+      "expression": null
+    },
+    {
+      "table_name": "companion_groups",
+      "conname": "companion_groups_revision_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((revision > 0))",
+      "expression": "(revision > 0)"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_age_group_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((age_group_fallback = ANY (ARRAY['infant'::text, 'child'::text, 'adult'::text, 'senior'::text])))",
+      "expression": "(age_group_fallback = ANY (ARRAY['infant'::text, 'child'::text, 'adult'::text, 'senior'::text]))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_age_source_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (((birth_date IS NOT NULL) <> (age_group_fallback IS NOT NULL)))",
+      "expression": "((birth_date IS NOT NULL) <> (age_group_fallback IS NOT NULL))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_auth_user_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_avatar_path_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(avatar_path) >= 1) AND (char_length(avatar_path) <= 1024)) AND (avatar_path = btrim(avatar_path)) AND (avatar_path !~ '(^/|:|(^|/)\\.\\.?(/|$))'::text) AND (POSITION((chr(92)) IN (avatar_path)) = 0)))",
+      "expression": "(((char_length(avatar_path) >= 1) AND (char_length(avatar_path) <= 1024)) AND (avatar_path = btrim(avatar_path)) AND (avatar_path !~ '(^/|:|(^|/)\\.\\.?(/|$))'::text) AND (POSITION((chr(92)) IN (avatar_path)) = 0))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_birth_date_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (((birth_date >= '0001-01-01'::date) AND (birth_date <= '9999-12-31'::date)))",
+      "expression": "((birth_date >= '0001-01-01'::date) AND (birth_date <= '9999-12-31'::date))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_display_name_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(display_name) >= 1) AND (char_length(display_name) <= 100)) AND (display_name = btrim(display_name))))",
+      "expression": "(((char_length(display_name) >= 1) AND (char_length(display_name) <= 100)) AND (display_name = btrim(display_name)))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_gender_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((gender_code = ANY (ARRAY['female'::text, 'male'::text, 'other'::text])))",
+      "expression": "(gender_code = ANY (ARRAY['female'::text, 'male'::text, 'other'::text]))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_id_owner_unique",
+      "contype": "u",
+      "confdeltype": " ",
+      "definition": "UNIQUE (id, owner_user_id)",
+      "expression": null
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (id)",
+      "expression": null
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_relationship_code_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((relationship_code = ANY (ARRAY['family'::text, 'partner'::text, 'friend'::text, 'colleague'::text, 'other'::text])))",
+      "expression": "(relationship_code = ANY (ARRAY['family'::text, 'partner'::text, 'friend'::text, 'colleague'::text, 'other'::text]))"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_relationship_label_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((char_length(relationship_label) <= 100))",
+      "expression": "(char_length(relationship_label) <= 100)"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_revision_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((revision > 0))",
+      "expression": "(revision > 0)"
+    },
+    {
+      "table_name": "companions",
+      "conname": "companions_travel_profile_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (is_companion_travel_profile_v1(travel_profile))",
+      "expression": "is_companion_travel_profile_v1(travel_profile)"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_auth_user_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_country_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((country_code ~ '^[A-Z]{2}$'::text))",
+      "expression": "(country_code ~ '^[A-Z]{2}$'::text)"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_email_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(email) >= 3) AND (char_length(email) <= 254)) AND (email ~ '^[^[:space:]@]+@[^[:space:]@]+[.][^[:space:]@]+$'::text)))",
+      "expression": "(((char_length(email) >= 3) AND (char_length(email) <= 254)) AND (email ~ '^[^[:space:]@]+@[^[:space:]@]+[.][^[:space:]@]+$'::text))"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_name_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(name) >= 1) AND (char_length(name) <= 200)) AND (btrim(name) <> ''::text)))",
+      "expression": "(((char_length(name) >= 1) AND (char_length(name) <= 200)) AND (btrim(name) <> ''::text))"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_note_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(note) >= 1) AND (char_length(note) <= 2000)) AND (btrim(note) <> ''::text)))",
+      "expression": "(((char_length(note) >= 1) AND (char_length(note) <= 2000)) AND (btrim(note) <> ''::text))"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_phone_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((phone_e164 ~ '^[+][1-9][0-9]{1,14}$'::text))",
+      "expression": "(phone_e164 ~ '^[+][1-9][0-9]{1,14}$'::text)"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (id)",
+      "expression": null
+    },
+    {
+      "table_name": "emergency_contacts",
+      "conname": "emergency_contacts_relationship_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(relationship) >= 1) AND (char_length(relationship) <= 100)) AND (btrim(relationship) <> ''::text)))",
+      "expression": "(((char_length(relationship) >= 1) AND (char_length(relationship) <= 100)) AND (btrim(relationship) <> ''::text))"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_auth_user_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_currency_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((currency_code ~ '^[A-Z]{3}$'::text))",
+      "expression": "(currency_code ~ '^[A-Z]{3}$'::text)"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_distance_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((distance_unit = ANY (ARRAY['km'::text, 'mi'::text])))",
+      "expression": "(distance_unit = ANY (ARRAY['km'::text, 'mi'::text]))"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_locale_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(locale) >= 1) AND (char_length(locale) <= 255)) AND (locale ~ '^[A-Za-z]{1,8}(-[A-Za-z0-9]{1,8})*$'::text)))",
+      "expression": "(((char_length(locale) >= 1) AND (char_length(locale) <= 255)) AND (locale ~ '^[A-Za-z]{1,8}(-[A-Za-z0-9]{1,8})*$'::text))"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (user_id)",
+      "expression": null
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_region_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((region_code ~ '^[A-Z]{2}$'::text))",
+      "expression": "(region_code ~ '^[A-Z]{2}$'::text)"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_temperature_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((temperature_unit = ANY (ARRAY['celsius'::text, 'fahrenheit'::text])))",
+      "expression": "(temperature_unit = ANY (ARRAY['celsius'::text, 'fahrenheit'::text]))"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_time_format_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((time_format = ANY (ARRAY['12h'::text, '24h'::text])))",
+      "expression": "(time_format = ANY (ARRAY['12h'::text, '24h'::text]))"
+    },
+    {
+      "table_name": "profile_settings",
+      "conname": "profile_settings_timezone_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(timezone) >= 1) AND (char_length(timezone) <= 100)) AND (timezone ~ '^[A-Za-z0-9_+-]+(/[A-Za-z0-9_+-]+)*$'::text)))",
+      "expression": "(((char_length(timezone) >= 1) AND (char_length(timezone) <= 100)) AND (timezone ~ '^[A-Za-z0-9_+-]+(/[A-Za-z0-9_+-]+)*$'::text))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_auth_user_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_avatar_path_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(avatar_path) >= 1) AND (char_length(avatar_path) <= 1024)) AND (btrim(avatar_path) <> ''::text)))",
+      "expression": "(((char_length(avatar_path) >= 1) AND (char_length(avatar_path) <= 1024)) AND (btrim(avatar_path) <> ''::text))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_birth_date_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (((birth_date >= '0001-01-01'::date) AND (birth_date <= '9999-12-31'::date)))",
+      "expression": "((birth_date >= '0001-01-01'::date) AND (birth_date <= '9999-12-31'::date))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_city_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(residence_city) >= 1) AND (char_length(residence_city) <= 200)) AND (btrim(residence_city) <> ''::text)))",
+      "expression": "(((char_length(residence_city) >= 1) AND (char_length(residence_city) <= 200)) AND (btrim(residence_city) <> ''::text))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_country_code_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((residence_country_code ~ '^[A-Z]{2}$'::text))",
+      "expression": "(residence_country_code ~ '^[A-Z]{2}$'::text)"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_display_name_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(display_name) >= 1) AND (char_length(display_name) <= 100)) AND (btrim(display_name) <> ''::text)))",
+      "expression": "(((char_length(display_name) >= 1) AND (char_length(display_name) <= 100)) AND (btrim(display_name) <> ''::text))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_full_name_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(full_name) >= 1) AND (char_length(full_name) <= 200)) AND (btrim(full_name) <> ''::text)))",
+      "expression": "(((char_length(full_name) >= 1) AND (char_length(full_name) <= 200)) AND (btrim(full_name) <> ''::text))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_gender_code_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((char_length(gender_code) >= 1) AND (char_length(gender_code) <= 64)) AND (btrim(gender_code) <> ''::text)))",
+      "expression": "(((char_length(gender_code) >= 1) AND (char_length(gender_code) <= 64)) AND (btrim(gender_code) <> ''::text))"
+    },
+    {
+      "table_name": "profiles",
+      "conname": "profiles_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (id)",
+      "expression": null
+    },
+    {
+      "table_name": "travel_preferences",
+      "conname": "travel_preferences_auth_user_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "travel_preferences",
+      "conname": "travel_preferences_payload_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (is_travel_preference_v1(payload))",
+      "expression": "is_travel_preference_v1(payload)"
+    },
+    {
+      "table_name": "travel_preferences",
+      "conname": "travel_preferences_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (owner_user_id)",
+      "expression": null
+    },
+    {
+      "table_name": "travel_preferences",
+      "conname": "travel_preferences_revision_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((revision > 0))",
+      "expression": "(revision > 0)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_creation_intent_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((creation_intent_hash ~ '^[0-9a-f]{64}$'::text))",
+      "expression": "(creation_intent_hash ~ '^[0-9a-f]{64}$'::text)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_canonical_id_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (((canonical_trip_id IS NULL) OR (((char_length(canonical_trip_id) >= 1) AND (char_length(canonical_trip_id) <= 160)) AND (canonical_trip_id !~ '[[:space:][:cntrl:]]'::text) AND (NOT (jsonb_typeof((plan_snapshot #> '{trip,id}'::text[])) IS DISTINCT FROM 'string'::text)) AND ((canonical_trip_id = (plan_snapshot #>> '{trip,id}'::text[])) IS TRUE))))",
+      "expression": "((canonical_trip_id IS NULL) OR (((char_length(canonical_trip_id) >= 1) AND (char_length(canonical_trip_id) <= 160)) AND (canonical_trip_id !~ '[[:space:][:cntrl:]]'::text) AND (NOT (jsonb_typeof((plan_snapshot #> '{trip,id}'::text[])) IS DISTINCT FROM 'string'::text)) AND ((canonical_trip_id = (plan_snapshot #>> '{trip,id}'::text[])) IS TRUE)))"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_creation_unique",
+      "contype": "u",
+      "confdeltype": " ",
+      "definition": "UNIQUE (owner_user_id, creation_key)",
+      "expression": null
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_draft_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (is_trip_library_envelope_v1(draft_facts, 'contractVersion'::text, 262144))",
+      "expression": "is_trip_library_envelope_v1(draft_facts, 'contractVersion'::text, 262144)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_lifecycle_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((((library_state = 'draft'::text) AND (canonical_trip_id IS NULL) AND (plan_snapshot IS NULL) AND (frozen_at IS NULL)) OR ((library_state = 'saved'::text) AND (canonical_trip_id IS NOT NULL) AND (plan_snapshot IS NOT NULL) AND (frozen_at IS NULL)) OR ((library_state = 'history'::text) AND (canonical_trip_id IS NOT NULL) AND (plan_snapshot IS NOT NULL) AND (frozen_at IS NOT NULL))))",
+      "expression": "(((library_state = 'draft'::text) AND (canonical_trip_id IS NULL) AND (plan_snapshot IS NULL) AND (frozen_at IS NULL)) OR ((library_state = 'saved'::text) AND (canonical_trip_id IS NOT NULL) AND (plan_snapshot IS NOT NULL) AND (frozen_at IS NULL)) OR ((library_state = 'history'::text) AND (canonical_trip_id IS NOT NULL) AND (plan_snapshot IS NOT NULL) AND (frozen_at IS NOT NULL)))"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_owner_fk",
+      "contype": "f",
+      "confdeltype": "c",
+      "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE CASCADE",
+      "expression": null
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_party_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (is_trip_party_snapshot_v1(party_snapshot))",
+      "expression": "is_trip_party_snapshot_v1(party_snapshot)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_patch_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((is_trip_library_envelope_v1(preference_override_patch, 'schemaVersion'::text, 65536) AND ((((preference_override_patch - 'schemaVersion'::text) - 'set'::text) - 'unset'::text) = '{}'::jsonb) AND is_travel_preference_v1(jsonb_build_object('schemaVersion', '1.0', 'values', (preference_override_patch -> 'set'::text))) AND (NOT (jsonb_typeof((preference_override_patch -> 'unset'::text)) IS DISTINCT FROM 'array'::text))))",
+      "expression": "(is_trip_library_envelope_v1(preference_override_patch, 'schemaVersion'::text, 65536) AND ((((preference_override_patch - 'schemaVersion'::text) - 'set'::text) - 'unset'::text) = '{}'::jsonb) AND is_travel_preference_v1(jsonb_build_object('schemaVersion', '1.0', 'values', (preference_override_patch -> 'set'::text))) AND (NOT (jsonb_typeof((preference_override_patch -> 'unset'::text)) IS DISTINCT FROM 'array'::text)))"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_pkey",
+      "contype": "p",
+      "confdeltype": " ",
+      "definition": "PRIMARY KEY (id)",
+      "expression": null
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_plan_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (((plan_snapshot IS NULL) OR is_trip_library_envelope_v1(plan_snapshot, 'contractVersion'::text, 4194304)))",
+      "expression": "((plan_snapshot IS NULL) OR is_trip_library_envelope_v1(plan_snapshot, 'contractVersion'::text, 4194304))"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_preference_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (is_travel_preference_v1(preference_snapshot))",
+      "expression": "is_travel_preference_v1(preference_snapshot)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_progress_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (is_trip_library_envelope_v1(wizard_progress, 'contractVersion'::text, 4096))",
+      "expression": "is_trip_library_envelope_v1(wizard_progress, 'contractVersion'::text, 4096)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_source_revision_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK (((preference_source_revision >= 0) AND ((preference_source_revision <> 0) OR (preference_snapshot = '{\"values\": {}, \"schemaVersion\": \"1.0\"}'::jsonb))))",
+      "expression": "((preference_source_revision >= 0) AND ((preference_source_revision <> 0) OR (preference_snapshot = '{\"values\": {}, \"schemaVersion\": \"1.0\"}'::jsonb)))"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_state_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((library_state = ANY (ARRAY['draft'::text, 'saved'::text, 'history'::text])))",
+      "expression": "(library_state = ANY (ARRAY['draft'::text, 'saved'::text, 'history'::text]))"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_storage_revision_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((storage_revision > 0))",
+      "expression": "(storage_revision > 0)"
+    },
+    {
+      "table_name": "trip_library_records",
+      "conname": "trip_library_records_timestamps_check",
+      "contype": "c",
+      "confdeltype": " ",
+      "definition": "CHECK ((isfinite(created_at) AND isfinite(updated_at) AND ((frozen_at IS NULL) OR isfinite(frozen_at))))",
+      "expression": "(isfinite(created_at) AND isfinite(updated_at) AND ((frozen_at IS NULL) OR isfinite(frozen_at)))"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "companion_group_members",
+      "indexname": "companion_group_members_companion_idx",
+      "indexdef": "CREATE INDEX companion_group_members_companion_idx ON public.companion_group_members USING btree (companion_id, owner_user_id)"
+    },
+    {
+      "tablename": "companion_group_members",
+      "indexname": "companion_group_members_owner_idx",
+      "indexdef": "CREATE INDEX companion_group_members_owner_idx ON public.companion_group_members USING btree (owner_user_id)"
+    },
+    {
+      "tablename": "companion_group_members",
+      "indexname": "companion_group_members_pk",
+      "indexdef": "CREATE UNIQUE INDEX companion_group_members_pk ON public.companion_group_members USING btree (group_id, companion_id)"
+    },
+    {
+      "tablename": "companion_group_members",
+      "indexname": "companion_group_members_sort_unique",
+      "indexdef": "CREATE UNIQUE INDEX companion_group_members_sort_unique ON public.companion_group_members USING btree (group_id, sort_order)"
+    },
+    {
+      "tablename": "companion_groups",
+      "indexname": "companion_groups_id_owner_unique",
+      "indexdef": "CREATE UNIQUE INDEX companion_groups_id_owner_unique ON public.companion_groups USING btree (id, owner_user_id)"
+    },
+    {
+      "tablename": "companion_groups",
+      "indexname": "companion_groups_owner_idx",
+      "indexdef": "CREATE INDEX companion_groups_owner_idx ON public.companion_groups USING btree (owner_user_id)"
+    },
+    {
+      "tablename": "companion_groups",
+      "indexname": "companion_groups_pkey",
+      "indexdef": "CREATE UNIQUE INDEX companion_groups_pkey ON public.companion_groups USING btree (id)"
+    },
+    {
+      "tablename": "companions",
+      "indexname": "companions_id_owner_unique",
+      "indexdef": "CREATE UNIQUE INDEX companions_id_owner_unique ON public.companions USING btree (id, owner_user_id)"
+    },
+    {
+      "tablename": "companions",
+      "indexname": "companions_owner_idx",
+      "indexdef": "CREATE INDEX companions_owner_idx ON public.companions USING btree (owner_user_id)"
+    },
+    {
+      "tablename": "companions",
+      "indexname": "companions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX companions_pkey ON public.companions USING btree (id)"
+    },
+    {
+      "tablename": "emergency_contacts",
+      "indexname": "emergency_contacts_pkey",
+      "indexdef": "CREATE UNIQUE INDEX emergency_contacts_pkey ON public.emergency_contacts USING btree (id)"
+    },
+    {
+      "tablename": "emergency_contacts",
+      "indexname": "emergency_contacts_user_id_idx",
+      "indexdef": "CREATE INDEX emergency_contacts_user_id_idx ON public.emergency_contacts USING btree (user_id)"
+    },
+    {
+      "tablename": "profile_settings",
+      "indexname": "profile_settings_pkey",
+      "indexdef": "CREATE UNIQUE INDEX profile_settings_pkey ON public.profile_settings USING btree (user_id)"
+    },
+    {
+      "tablename": "profiles",
+      "indexname": "profiles_pkey",
+      "indexdef": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)"
+    },
+    {
+      "tablename": "travel_preferences",
+      "indexname": "travel_preferences_pkey",
+      "indexdef": "CREATE UNIQUE INDEX travel_preferences_pkey ON public.travel_preferences USING btree (owner_user_id)"
+    },
+    {
+      "tablename": "trip_library_records",
+      "indexname": "trip_library_records_canonical_unique",
+      "indexdef": "CREATE UNIQUE INDEX trip_library_records_canonical_unique ON public.trip_library_records USING btree (owner_user_id, canonical_trip_id) WHERE (canonical_trip_id IS NOT NULL)"
+    },
+    {
+      "tablename": "trip_library_records",
+      "indexname": "trip_library_records_creation_unique",
+      "indexdef": "CREATE UNIQUE INDEX trip_library_records_creation_unique ON public.trip_library_records USING btree (owner_user_id, creation_key)"
+    },
+    {
+      "tablename": "trip_library_records",
+      "indexname": "trip_library_records_owner_page_idx",
+      "indexdef": "CREATE INDEX trip_library_records_owner_page_idx ON public.trip_library_records USING btree (owner_user_id, updated_at DESC, id DESC)"
+    },
+    {
+      "tablename": "trip_library_records",
+      "indexname": "trip_library_records_owner_updated_idx",
+      "indexdef": "CREATE INDEX trip_library_records_owner_updated_idx ON public.trip_library_records USING btree (owner_user_id, updated_at DESC, id)"
+    },
+    {
+      "tablename": "trip_library_records",
+      "indexname": "trip_library_records_pkey",
+      "indexdef": "CREATE UNIQUE INDEX trip_library_records_pkey ON public.trip_library_records USING btree (id)"
+    }
+  ],
+  "policies": [
+    {
+      "tablename": "companion_group_members",
+      "policyname": "companion_group_members_delete_own",
+      "cmd": "DELETE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "companion_group_members",
+      "policyname": "companion_group_members_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "companion_group_members",
+      "policyname": "companion_group_members_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "companion_group_members",
+      "policyname": "companion_group_members_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "companion_groups",
+      "policyname": "companion_groups_delete_own",
+      "cmd": "DELETE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "companion_groups",
+      "policyname": "companion_groups_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "companion_groups",
+      "policyname": "companion_groups_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "companion_groups",
+      "policyname": "companion_groups_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "companions",
+      "policyname": "companions_delete_own",
+      "cmd": "DELETE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "companions",
+      "policyname": "companions_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "companions",
+      "policyname": "companions_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "companions",
+      "policyname": "companions_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "emergency_contacts",
+      "policyname": "emergency_contacts_delete_own",
+      "cmd": "DELETE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "emergency_contacts",
+      "policyname": "emergency_contacts_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "tablename": "emergency_contacts",
+      "policyname": "emergency_contacts_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "emergency_contacts",
+      "policyname": "emergency_contacts_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "tablename": "profile_settings",
+      "policyname": "profile_settings_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "tablename": "profile_settings",
+      "policyname": "profile_settings_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "profile_settings",
+      "policyname": "profile_settings_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "tablename": "profiles",
+      "policyname": "profiles_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = id)"
+    },
+    {
+      "tablename": "profiles",
+      "policyname": "profiles_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = id)",
+      "with_check": null
+    },
+    {
+      "tablename": "profiles",
+      "policyname": "profiles_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = id)"
+    },
+    {
+      "tablename": "travel_preferences",
+      "policyname": "travel_preferences_insert_own",
+      "cmd": "INSERT",
+      "roles": ["authenticated"],
+      "qual": null,
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "travel_preferences",
+      "policyname": "travel_preferences_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    },
+    {
+      "tablename": "travel_preferences",
+      "policyname": "travel_preferences_update_own",
+      "cmd": "UPDATE",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": "(( SELECT auth.uid() AS uid) = owner_user_id)"
+    },
+    {
+      "tablename": "trip_library_records",
+      "policyname": "trip_library_records_select_own",
+      "cmd": "SELECT",
+      "roles": ["authenticated"],
+      "qual": "(( SELECT auth.uid() AS uid) = owner_user_id)",
+      "with_check": null
+    }
+  ],
+  "triggers": [
+    {
+      "table_name": "companion_group_members",
+      "tgname": "companion_group_members_audit",
+      "definition": "CREATE TRIGGER companion_group_members_audit BEFORE INSERT OR UPDATE ON public.companion_group_members FOR EACH ROW EXECUTE FUNCTION guard_companion_member_audit()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "companion_groups",
+      "tgname": "companion_groups_revision",
+      "definition": "CREATE TRIGGER companion_groups_revision BEFORE INSERT OR UPDATE ON public.companion_groups FOR EACH ROW EXECUTE FUNCTION guard_companion_revision()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "companions",
+      "tgname": "companions_birth_date",
+      "definition": "CREATE TRIGGER companions_birth_date BEFORE INSERT OR UPDATE ON public.companions FOR EACH ROW EXECUTE FUNCTION guard_companion_birth_date()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "companions",
+      "tgname": "companions_revision",
+      "definition": "CREATE TRIGGER companions_revision BEFORE INSERT OR UPDATE ON public.companions FOR EACH ROW EXECUTE FUNCTION guard_companion_revision()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "tgname": "emergency_contacts_audit_timestamps",
+      "definition": "CREATE TRIGGER emergency_contacts_audit_timestamps BEFORE INSERT OR UPDATE ON public.emergency_contacts FOR EACH ROW EXECUTE FUNCTION set_profile_audit_timestamps()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "profile_settings",
+      "tgname": "profile_settings_audit_timestamps",
+      "definition": "CREATE TRIGGER profile_settings_audit_timestamps BEFORE INSERT OR UPDATE ON public.profile_settings FOR EACH ROW EXECUTE FUNCTION set_profile_audit_timestamps()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "profiles",
+      "tgname": "profiles_audit_timestamps",
+      "definition": "CREATE TRIGGER profiles_audit_timestamps BEFORE INSERT OR UPDATE ON public.profiles FOR EACH ROW EXECUTE FUNCTION set_profile_audit_timestamps()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "travel_preferences",
+      "tgname": "travel_preferences_revision",
+      "definition": "CREATE TRIGGER travel_preferences_revision BEFORE INSERT OR UPDATE ON public.travel_preferences FOR EACH ROW EXECUTE FUNCTION guard_travel_preference_revision()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "trip_library_records",
+      "tgname": "trip_library_creation_intent_guard",
+      "definition": "CREATE TRIGGER trip_library_creation_intent_guard BEFORE UPDATE ON public.trip_library_records FOR EACH ROW EXECUTE FUNCTION guard_trip_library_creation_intent_v1()",
+      "tgenabled": "O"
+    },
+    {
+      "table_name": "trip_library_records",
+      "tgname": "trip_library_records_guard",
+      "definition": "CREATE TRIGGER trip_library_records_guard BEFORE INSERT OR UPDATE ON public.trip_library_records FOR EACH ROW EXECUTE FUNCTION guard_trip_library_record_v1()",
+      "tgenabled": "O"
+    }
+  ],
+  "functions": [
+    {
+      "proname": "guard_companion_birth_date",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.guard_companion_birth_date()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nbegin\n  -- A stable write-time UTC calendar date; no volatile CHECK or session TZ drift.\n  if new.birth_date > (statement_timestamp() at time zone 'UTC')::date then\n    raise exception using errcode = '23514', message = 'FUTURE_COMPANION_BIRTH_DATE';\n  end if;\n  return new;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "guard_companion_member_audit",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.guard_companion_member_audit()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nbegin\n  if tg_op = 'INSERT' then\n    new.created_at := clock_timestamp();\n  else\n    if new.owner_user_id is distinct from old.owner_user_id then\n      raise exception using errcode = '55000', message = 'IMMUTABLE_COMPANION_MEMBER_OWNER';\n    end if;\n    new.created_at := old.created_at;\n  end if;\n  return new;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "guard_companion_revision",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.guard_companion_revision()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nbegin\n  if tg_op = 'INSERT' then\n    if new.revision is distinct from 1 then\n      raise exception using errcode = '23514', message = 'INITIAL_REVISION_MUST_BE_ONE';\n    end if;\n    new.created_at := clock_timestamp();\n  else\n    if new.owner_user_id is distinct from old.owner_user_id or new.id is distinct from old.id then\n      raise exception using errcode = '55000', message = 'IMMUTABLE_COMPANION_IDENTITY';\n    end if;\n    if new.revision is distinct from old.revision + 1 then\n      raise exception using errcode = '40001', message = 'STALE_COMPANION_REVISION';\n    end if;\n    new.created_at := old.created_at;\n  end if;\n  new.updated_at := clock_timestamp();\n  return new;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "guard_travel_preference_revision",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.guard_travel_preference_revision()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nbegin\n  if tg_op = 'INSERT' then\n    if new.revision is distinct from 1 then\n      raise exception using errcode = '23514', message = 'INITIAL_REVISION_MUST_BE_ONE';\n    end if;\n    new.created_at := clock_timestamp();\n  else\n    if new.owner_user_id is distinct from old.owner_user_id then\n      raise exception using errcode = '55000', message = 'IMMUTABLE_PREFERENCE_OWNER';\n    end if;\n    if new.revision is distinct from old.revision + 1 then\n      raise exception using errcode = '40001', message = 'STALE_PREFERENCE_REVISION';\n    end if;\n    new.created_at := old.created_at;\n  end if;\n  new.updated_at := clock_timestamp();\n  return new;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "guard_trip_library_creation_intent_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.guard_trip_library_creation_intent_v1()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nbegin\n  if new.creation_intent_hash is distinct from old.creation_intent_hash then\n    raise exception using errcode='55000', message='IMMUTABLE_TRIP_CREATION_INTENT';\n  end if;\n  return new;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "guard_trip_library_record_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.guard_trip_library_record_v1()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\ndeclare write_time timestamptz := clock_timestamp();\nbegin\n  if tg_op = 'INSERT' then\n    if new.storage_revision is distinct from 1 then\n      raise exception using errcode='23514', message='INITIAL_STORAGE_REVISION_MUST_BE_ONE';\n    end if;\n    -- Creation may start as draft or saved. History is entered only from an existing saved row.\n    if new.library_state = 'history' then\n      raise exception using errcode='23514', message='HISTORY_REQUIRES_SAVED_TRANSITION';\n    end if;\n    new.created_at := write_time;\n  else\n    if old.library_state = 'history' then\n      raise exception using errcode='55000', message='IMMUTABLE_TRIP_HISTORY';\n    end if;\n    if new.id is distinct from old.id or new.owner_user_id is distinct from old.owner_user_id\n      or new.creation_key is distinct from old.creation_key\n      or new.preference_snapshot is distinct from old.preference_snapshot\n      or new.preference_source_revision is distinct from old.preference_source_revision then\n      raise exception using errcode='55000', message='IMMUTABLE_TRIP_CREATION';\n    end if;\n    if old.storage_revision = 2147483647 or new.storage_revision is distinct from old.storage_revision + 1 then\n      raise exception using errcode='40001', message='STALE_STORAGE_REVISION';\n    end if;\n    if not ((old.library_state='draft' and new.library_state in ('draft','saved'))\n      or (old.library_state='saved' and new.library_state in ('saved','history'))) then\n      raise exception using errcode='23514', message='INVALID_TRIP_LIBRARY_TRANSITION';\n    end if;\n    new.created_at := old.created_at;\n    if new.library_state = 'history' then\n      -- One DB-owned instant, ignoring caller-supplied freeze time; never date-driven.\n      new.frozen_at := write_time;\n    end if;\n  end if;\n  new.updated_at := write_time;\n  return new;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "is_companion_travel_profile_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": ["payload"],
+      "argtypes": "jsonb",
+      "pronargdefaults": 0,
+      "result": "boolean",
+      "definition": "CREATE OR REPLACE FUNCTION public.is_companion_travel_profile_v1(payload jsonb)\n RETURNS boolean\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO 'pg_catalog'\nAS $function$\ndeclare\n  allowed constant jsonb := '{\n    \"mobilityNeeds\":[\"reduce_walking\",\"reduce_stairs\",\"stroller\",\"child_seat\",\"accessible_route\",\"more_rest\"],\n    \"diningNeeds\":[\"dietary_restriction\",\"food_allergy_notice\",\"vegetarian\",\"child_meal\",\"other_dietary_need\"],\n    \"activityInterests\":[\"animals\",\"outdoor\",\"museums\",\"photography\",\"rides\"]\n  }';\n  item record;\nbegin\n  if payload is null or jsonb_typeof(payload) <> 'object' then return false; end if;\n  if octet_length(payload::text) > 8192 or\n    not payload ?& array['schemaVersion','mobilityNeeds','diningNeeds','activityInterests'] or\n    (select count(*) from jsonb_object_keys(payload)) <> 4 or\n    payload->'schemaVersion' <> '\"1.0\"'::jsonb then return false; end if;\n  for item in select * from jsonb_each(allowed) loop\n    if jsonb_typeof(payload->item.key) <> 'array' then return false; end if;\n    if jsonb_array_length(payload->item.key) > jsonb_array_length(item.value) or\n      (select count(*) <> count(distinct value) from jsonb_array_elements(payload->item.key)) or\n      exists (\n        select 1 from jsonb_array_elements(payload->item.key) candidate\n        where not exists (\n          select 1 from jsonb_array_elements(item.value) permitted\n          where permitted.value = candidate.value\n        )\n      ) then return false; end if;\n  end loop;\n  return true;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}"
+    },
+    {
+      "proname": "is_travel_preference_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": ["payload"],
+      "argtypes": "jsonb",
+      "pronargdefaults": 0,
+      "result": "boolean",
+      "definition": "CREATE OR REPLACE FUNCTION public.is_travel_preference_v1(payload jsonb)\n RETURNS boolean\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO 'pg_catalog'\nAS $function$\ndeclare\n  rules constant jsonb := '{\n  \"mobility.fewerTransfers\": \"boolean\",\n  \"mobility.walkingTolerance\": [\n    \"veryLow\",\n    \"low\",\n    \"standard\",\n    \"high\",\n    \"veryHigh\"\n  ],\n  \"mobility.noPublicTransit\": \"boolean\",\n  \"mobility.noBus\": \"boolean\",\n  \"mobility.noFerry\": \"boolean\",\n  \"dining.localCuisine\": [\n    \"deprioritize\",\n    \"neutral\",\n    \"prioritize\"\n  ],\n  \"dining.smallShops\": [\n    \"deprioritize\",\n    \"neutral\",\n    \"prioritize\"\n  ],\n  \"dining.queueTolerance\": [\n    \"low\",\n    \"medium\",\n    \"high\"\n  ],\n  \"accommodation.transportConvenience\": [\n    \"deprioritize\",\n    \"neutral\",\n    \"prioritize\"\n  ],\n  \"accommodation.comfort\": [\n    \"deprioritize\",\n    \"neutral\",\n    \"prioritize\"\n  ],\n  \"accommodation.fewerHotelChanges\": [\n    \"deprioritize\",\n    \"neutral\",\n    \"prioritize\"\n  ],\n  \"budget.spendingTendency\": [\n    \"economical\",\n    \"moderate\",\n    \"flexible\"\n  ],\n  \"budget.prioritizeAccommodation\": \"boolean\",\n  \"budget.prioritizeExperience\": \"boolean\",\n  \"interests.preferences\": \"signals\",\n  \"interests.details\": \"details\",\n  \"style.pace\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ],\n  \"style.depth\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ],\n  \"style.discovery\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ],\n  \"style.movement\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ],\n  \"style.coverage\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ],\n  \"style.priority\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ],\n  \"style.planning\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ]\n}'::jsonb;\n  detail_options constant jsonb := '{\n  \"nature_scenery\": [\n    \"mountain\",\n    \"coast\",\n    \"lake\",\n    \"forest\",\n    \"flower_field\"\n  ],\n  \"history_culture\": [\n    \"shrine_temple\",\n    \"castle\",\n    \"museum\",\n    \"historic_district\"\n  ],\n  \"food\": [\n    \"sushi\",\n    \"ramen\",\n    \"regional_cuisine\",\n    \"dessert\",\n    \"sake\"\n  ],\n  \"photography\": [\n    \"street_photography\",\n    \"landscape\",\n    \"nightscape\",\n    \"architecture\",\n    \"people_culture\"\n  ],\n  \"onsen_wellness\": [\n    \"ryokan_onsen\",\n    \"open_air_bath\",\n    \"forest_wellness\",\n    \"sea_view_onsen\"\n  ],\n  \"art_museums\": [\n    \"contemporary_art\",\n    \"traditional_crafts\",\n    \"architecture\",\n    \"design_exhibition\"\n  ],\n  \"anime_entertainment\": [\n    \"anime_pilgrimage\",\n    \"gaming\",\n    \"themed_cafe\",\n    \"merchandise\"\n  ],\n  \"shopping\": [\n    \"department_store\",\n    \"vintage\",\n    \"drugstore\",\n    \"local_specialties\"\n  ],\n  \"urban_exploration\": [\n    \"distinctive_neighborhood\",\n    \"architecture_walk\",\n    \"cafe\",\n    \"city_nightscape\"\n  ],\n  \"outdoor_activity\": [\n    \"hiking\",\n    \"cycling\",\n    \"skiing\",\n    \"water_activity\"\n  ],\n  \"night_experience\": [\n    \"izakaya\",\n    \"nightscape\",\n    \"performance\",\n    \"night_walk\"\n  ],\n  \"family_activity\": [\n    \"zoo\",\n    \"science_museum\",\n    \"family_crafts\",\n    \"park\"\n  ],\n  \"traditional_experience\": [\n    \"tea_ceremony\",\n    \"kimono\",\n    \"crafts\",\n    \"traditional_performance\"\n  ],\n  \"theme_parks\": [\n    \"major_theme_park\",\n    \"character_park\",\n    \"aquarium\",\n    \"immersive_exhibition\"\n  ],\n  \"rural_towns\": [\n    \"historic_town\",\n    \"fishing_village\",\n    \"countryside\",\n    \"local_market\"\n  ],\n  \"seasonal_events\": [\n    \"cherry_blossom\",\n    \"autumn_leaves\",\n    \"snow_scenery\",\n    \"festival\",\n    \"fireworks\"\n  ]\n}'::jsonb;\n  item record;\n  parent record;\n  rule jsonb;\nbegin\n  if payload is null or jsonb_typeof(payload) <> 'object' or\n    payload->'schemaVersion' is distinct from '\"1.0\"'::jsonb or\n    jsonb_typeof(payload->'values') is distinct from 'object' or\n    (payload - 'schemaVersion' - 'values') <> '{}'::jsonb or\n    octet_length(payload::text) > 65536 then return false; end if;\n\n  for item in select * from jsonb_each(payload->'values') loop\n    rule := rules->item.key;\n    if rule is null then return false;\n    elsif rule = '\"boolean\"'::jsonb then\n      if jsonb_typeof(item.value) <> 'boolean' then return false; end if;\n    elsif rule = '\"signals\"'::jsonb or rule = '\"details\"'::jsonb then\n      if jsonb_typeof(item.value) <> 'object' then return false; end if;\n      for parent in select * from jsonb_each(item.value) loop\n        if not detail_options ? parent.key then return false; end if;\n        if rule = '\"signals\"'::jsonb then\n          if parent.value not in ('\"like\"'::jsonb, '\"dislike\"'::jsonb) then return false; end if;\n        else\n          if jsonb_typeof(parent.value) <> 'array' then return false; end if;\n          if jsonb_array_length(parent.value) > jsonb_array_length(detail_options->parent.key) or\n            (select count(*) <> count(distinct value) from jsonb_array_elements(parent.value)) or\n            exists (\n              select 1 from jsonb_array_elements(parent.value) child\n              where not exists (\n                select 1 from jsonb_array_elements(detail_options->parent.key) allowed\n                where allowed.value = child.value\n              )\n            ) then return false; end if;\n          if jsonb_array_length(parent.value) > 0 and\n            payload->'values'->'interests.preferences'->parent.key = '\"dislike\"'::jsonb\n            then return false; end if;\n        end if;\n      end loop;\n    -- Exact scalar membership, not JSON containment (which can accept nested arrays).\n    elsif not exists (select 1 from jsonb_array_elements(rule) allowed where allowed.value = item.value)\n      then return false;\n    end if;\n  end loop;\n  return true;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}"
+    },
+    {
+      "proname": "is_trip_library_envelope_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": ["payload", "version_key", "max_bytes"],
+      "argtypes": "jsonb, text, integer",
+      "pronargdefaults": 0,
+      "result": "boolean",
+      "definition": "CREATE OR REPLACE FUNCTION public.is_trip_library_envelope_v1(payload jsonb, version_key text, max_bytes integer)\n RETURNS boolean\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO 'pg_catalog'\nAS $function$\n  select coalesce(jsonb_typeof(payload) = 'object'\n    and payload->version_key = '\"1.0\"'::jsonb\n    and octet_length(payload::text) <= max_bytes, false)\n$function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "is_trip_party_snapshot_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": ["payload"],
+      "argtypes": "jsonb",
+      "pronargdefaults": 0,
+      "result": "boolean",
+      "definition": "CREATE OR REPLACE FUNCTION public.is_trip_party_snapshot_v1(payload jsonb)\n RETURNS boolean\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO 'pg_catalog'\nAS $function$\ndeclare member jsonb; reference_date text; parsed_date date;\nbegin\n  if not public.is_trip_library_envelope_v1(payload, 'schemaVersion', 131072)\n    or (payload - 'schemaVersion' - 'includesOwner' - 'ageReferenceDate' - 'members') <> '{}'::jsonb\n    or jsonb_typeof(payload->'includesOwner') is distinct from 'boolean'\n    or jsonb_typeof(payload->'ageReferenceDate') is distinct from 'string'\n    or jsonb_typeof(payload->'members') is distinct from 'array'\n    then return false; end if;\n  reference_date := payload->>'ageReferenceDate';\n  if reference_date !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' then return false; end if;\n  parsed_date := make_date(substring(reference_date,1,4)::integer,\n    substring(reference_date,6,2)::integer,substring(reference_date,9,2)::integer);\n  if extract(year from parsed_date) < 1 or extract(year from parsed_date) > 9999 then return false; end if;\n  -- MAX_COMPANIONS_PER_USER, reused from accepted Companion v1; trace IDs have no FK.\n  if jsonb_array_length(payload->'members') > 100 then return false; end if;\n  for member in select value from jsonb_array_elements(payload->'members') loop\n    if jsonb_typeof(member) <> 'object'\n      or (member - 'sourceCompanionId' - 'displayName' - 'planningAgeGroup' - 'travelProfile') <> '{}'::jsonb\n      or jsonb_typeof(member->'sourceCompanionId') is distinct from 'string'\n      or coalesce(member->>'sourceCompanionId' !~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', true)\n      or jsonb_typeof(member->'displayName') is distinct from 'string'\n      or coalesce(char_length(member->>'displayName') not between 1 and 100, true)\n      or member->>'displayName' <> btrim(member->>'displayName', E' \\t\\n\\r\\f\\v')\n      or coalesce(member->>'planningAgeGroup' not in ('infant','child','adult','senior'), true)\n      or not public.is_companion_travel_profile_v1(member->'travelProfile') then return false; end if;\n  end loop;\n  if (select count(*) <> count(distinct value->>'sourceCompanionId') from jsonb_array_elements(payload->'members'))\n    then return false; end if;\n  return true;\nexception when datetime_field_overflow or invalid_datetime_format then return false;\nend $function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "mutate_companion_group_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": [
+        "p_action",
+        "p_id",
+        "p_expected_revision",
+        "p_name",
+        "p_includes_owner",
+        "p_member_ids"
+      ],
+      "argtypes": "text, uuid, integer, text, boolean, uuid[]",
+      "pronargdefaults": 5,
+      "result": "jsonb",
+      "definition": "CREATE OR REPLACE FUNCTION public.mutate_companion_group_v1(p_action text, p_id uuid DEFAULT NULL::uuid, p_expected_revision integer DEFAULT NULL::integer, p_name text DEFAULT NULL::text, p_includes_owner boolean DEFAULT NULL::boolean, p_member_ids uuid[] DEFAULT NULL::uuid[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\ndeclare\n  actor uuid := auth.uid();\n  saved public.companion_groups;\n  current_revision integer;\n  members jsonb;\nbegin\n  if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n  perform pg_advisory_xact_lock(hashtextextended(actor::text, 517));\n  if p_action not in ('create','update','delete') or p_action is null then raise exception 'INVALID_REQUEST'; end if;\n  if p_action <> 'create' then\n    if p_expected_revision is null or p_expected_revision < 1 then raise exception 'INVALID_REQUEST'; end if;\n    select revision into current_revision from public.companion_groups where id = p_id and owner_user_id = actor for update;\n    if not found then raise exception 'COMPANION_GROUP_NOT_FOUND'; end if;\n    if current_revision <> p_expected_revision then raise exception 'STALE_COMPANION_GROUP_REVISION'; end if;\n  elsif p_id is not null or p_expected_revision is not null then\n    raise exception 'INVALID_REQUEST';\n  end if;\n  if p_action = 'delete' then\n    delete from public.companion_groups where id = p_id and owner_user_id = actor and revision = p_expected_revision;\n    return null;\n  end if;\n  if p_member_ids is null or cardinality(p_member_ids) > 20 or\n     (select count(*) <> count(distinct member) from unnest(p_member_ids) member) then raise exception 'INVALID_COMPANION_GROUP_INPUT'; end if;\n  if exists(select 1 from unnest(p_member_ids) member where member is null or not exists(\n    select 1 from public.companions c where c.id = member and c.owner_user_id = actor)) then raise exception 'COMPANION_GROUP_MEMBER_INVALID'; end if;\n  if p_action = 'create' then\n    if (select count(*) from public.companion_groups where owner_user_id = actor) >= 20 then raise exception 'COMPANION_GROUP_LIMIT_REACHED'; end if;\n    insert into public.companion_groups(owner_user_id, name, includes_owner) values(actor, p_name, p_includes_owner) returning * into saved;\n  else\n    update public.companion_groups set name = p_name, includes_owner = p_includes_owner, revision = revision + 1\n      where id = p_id and owner_user_id = actor and revision = p_expected_revision returning * into saved;\n    if not found then raise exception 'STALE_COMPANION_GROUP_REVISION'; end if;\n    delete from public.companion_group_members where group_id = p_id and owner_user_id = actor;\n  end if;\n  insert into public.companion_group_members(owner_user_id,group_id,companion_id,sort_order)\n    select actor,saved.id,member,(ordinality-1)::integer from unnest(p_member_ids) with ordinality as x(member,ordinality);\n  select coalesce(jsonb_agg(to_jsonb(m) order by m.sort_order),'[]'::jsonb) into members\n    from public.companion_group_members m where m.group_id = saved.id and m.owner_user_id = actor;\n  return jsonb_build_object('group',to_jsonb(saved),'members',members);\nend $function$\n",
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "mutate_companion_v1",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": ["p_action", "p_id", "p_expected_revision", "p_input"],
+      "argtypes": "text, uuid, integer, jsonb",
+      "pronargdefaults": 3,
+      "result": "jsonb",
+      "definition": "CREATE OR REPLACE FUNCTION public.mutate_companion_v1(p_action text, p_id uuid DEFAULT NULL::uuid, p_expected_revision integer DEFAULT NULL::integer, p_input jsonb DEFAULT NULL::jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\ndeclare\n  actor uuid := auth.uid();\n  saved public.companions;\n  current_revision integer;\nbegin\n  if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n  perform pg_advisory_xact_lock(hashtextextended(actor::text, 517));\n  if p_action not in ('create','update','delete') or p_action is null then raise exception 'INVALID_REQUEST'; end if;\n  if p_action <> 'create' then\n    if p_expected_revision is null or p_expected_revision < 1 then raise exception 'INVALID_REQUEST'; end if;\n    select revision into current_revision from public.companions where id = p_id and owner_user_id = actor for update;\n    if not found then raise exception 'COMPANION_NOT_FOUND'; end if;\n    if current_revision <> p_expected_revision then raise exception 'STALE_COMPANION_REVISION'; end if;\n  elsif p_id is not null or p_expected_revision is not null then\n    raise exception 'INVALID_REQUEST';\n  end if;\n  if p_action = 'delete' then\n    -- Cascade changes the aggregate snapshot: invalidate every affected group\n    -- revision in the same transaction so an old editor cannot resurrect it.\n    update public.companion_groups g set revision = g.revision + 1\n      where g.owner_user_id = actor and exists (\n        select 1 from public.companion_group_members m\n        where m.group_id = g.id and m.owner_user_id = actor and m.companion_id = p_id);\n    delete from public.companions where id = p_id and owner_user_id = actor and revision = p_expected_revision;\n    return null;\n  end if;\n  if p_input is null or jsonb_typeof(p_input) <> 'object' or\n     not p_input ?& array['display_name','relationship_code','relationship_label','birth_date','age_group_fallback','gender_code','avatar_path','travel_profile'] or\n     (select count(*) from jsonb_object_keys(p_input)) <> 8 then raise exception 'INVALID_COMPANION_INPUT'; end if;\n  if p_action = 'create' then\n    -- Count limits mirror the sole domain constants; TASK-047 tests check parity.\n    if (select count(*) from public.companions where owner_user_id = actor) >= 100 then raise exception 'COMPANION_LIMIT_REACHED'; end if;\n    insert into public.companions(owner_user_id, display_name, relationship_code, relationship_label, birth_date, age_group_fallback, gender_code, avatar_path, travel_profile)\n      values(actor, p_input->>'display_name', p_input->>'relationship_code', p_input->>'relationship_label', (p_input->>'birth_date')::date, p_input->>'age_group_fallback', p_input->>'gender_code', p_input->>'avatar_path', p_input->'travel_profile')\n      returning * into saved;\n  else\n    update public.companions set\n      display_name = p_input->>'display_name', relationship_code = p_input->>'relationship_code',\n      relationship_label = p_input->>'relationship_label', birth_date = (p_input->>'birth_date')::date,\n      age_group_fallback = p_input->>'age_group_fallback', gender_code = p_input->>'gender_code',\n      avatar_path = p_input->>'avatar_path', travel_profile = p_input->'travel_profile', revision = revision + 1\n      where id = p_id and owner_user_id = actor and revision = p_expected_revision returning * into saved;\n    if not found then raise exception 'STALE_COMPANION_REVISION'; end if;\n  end if;\n  return to_jsonb(saved);\nend $function$\n",
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "proname": "set_profile_audit_timestamps",
+      "prosecdef": false,
+      "proconfig": ["search_path=pg_catalog"],
+      "proargnames": null,
+      "argtypes": "",
+      "pronargdefaults": 0,
+      "result": "trigger",
+      "definition": "CREATE OR REPLACE FUNCTION public.set_profile_audit_timestamps()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nbegin\n  if TG_OP = 'INSERT' then\n    NEW.created_at := statement_timestamp();\n  else\n    NEW.created_at := OLD.created_at;\n  end if;\n  NEW.updated_at := statement_timestamp();\n  return NEW;\nend;\n$function$\n",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    }
+  ],
+  "grants": [
+    {
+      "table_name": "companion_group_members",
+      "grantee": "authenticated",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "companion_group_members",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "authenticated",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "companion_groups",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "authenticated",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "companions",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "authenticated",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "emergency_contacts",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "profile_settings",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "profiles",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "authenticated",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "authenticated",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "travel_preferences",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "authenticated",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "postgres",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "DELETE"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "INSERT"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "SELECT"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "table_name": "trip_library_records",
+      "grantee": "service_role",
+      "privilege_type": "UPDATE"
+    }
+  ]
+}

@@ -201,7 +201,7 @@ test("Trip snapshots are isolated copies and never write back to long-term state
   assert.equal(companions[1].mobilityNeeds.includes("本次临时调整"), false);
 });
 
-test("runtime preserves local-only companion library and navigation guard", () => {
+test("runtime preserves API-backed companion drafts and navigation guard", () => {
   const center = read("src/features/companions/companion-center.tsx");
   const styles = read("src/features/companions/companion-center.module.css");
   const route = read("src/app/(account)/personal-center/companions/page.tsx");
@@ -217,7 +217,8 @@ test("runtime preserves local-only companion library and navigation guard", () =
     `${center}\n${read("src/features/companions/companion-view-model.ts")}`,
     /sessionStorage|fetch\(|cookies?\(|supabase|prisma|route\.ts/i,
   );
-  assert.match(center, /writeCompanionLibrary/);
-  assert.match(center, /parseCompanionLibrary/);
+  assert.match(center, /companionClient/);
+  assert.match(center, /loadLibrary/);
+  assert.doesNotMatch(center, /localStorage|initialCompanions/);
   assert.equal(initialCompanionGroups.length >= 2, true);
 });

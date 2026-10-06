@@ -4,22 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { describePreference } from "./preference-model";
+import { emptyPreference } from "./domain/preference-v1";
 import {
-  countConfiguredPreferences,
-  createDefaultPreferenceState,
-  createResetPreferenceState,
-  describePreference,
-} from "./preference-model";
+  preferenceOverview,
+  categorySummary,
+} from "./persistence/preference-adapter";
+import { usePreferenceResource } from "./persistence/use-preference-resource";
+import { PreferenceStatus } from "./persistence/preference-status";
 import { PreferenceIcon } from "./preference-icon";
 import { PreferenceRadar } from "./preference-radar";
 import styles from "./preference-center.module.css";
 
 export function PreferenceCenter() {
-  const [preferences, setPreferences] = useState(createDefaultPreferenceState);
+  const state = usePreferenceResource();
+  const preference = state.resource?.preference ?? emptyPreference();
+  const preferences = preferenceOverview(preference);
   const [resetOpen, setResetOpen] = useState(false);
   const cancelButtonRef = useRef<HTMLButtonElement>(null);
   const portrait = describePreference(preferences);
-  const configuredCount = countConfiguredPreferences(preferences);
+  const configuredCount = Object.keys(preference.values).length;
 
   useEffect(() => {
     if (resetOpen) cancelButtonRef.current?.focus();
@@ -54,6 +58,7 @@ export function PreferenceCenter() {
           <button
             type="button"
             className={styles.resetButton}
+            disabled={state.busy || !state.resource}
             onClick={() => setResetOpen(true)}
           >
             <PreferenceIcon name="reset" />
@@ -61,6 +66,7 @@ export function PreferenceCenter() {
           </button>
         </div>
       </header>
+      <PreferenceStatus state={state} />
 
       <section className={styles.radarGrid} aria-label="长期偏好画像">
         <PreferenceRadar
@@ -69,7 +75,7 @@ export function PreferenceCenter() {
           axes={preferences.attractions}
           image="/media/personal-center/preferences/radar-attractions.webp"
           icon="attractions"
-          summary="偏爱自然、历史与摄影，也喜欢有人文气息的目的地。"
+          summary={categorySummary(preference, "attractions")}
         />
         <PreferenceRadar
           title="旅行风格画像"
@@ -77,7 +83,7 @@ export function PreferenceCenter() {
           axes={preferences.travelStyle}
           image="/media/personal-center/preferences/radar-travel-style.webp"
           icon="experience"
-          summary="喜欢轻松、有计划的旅程，也愿意体验当地文化与深度探索。"
+          summary={categorySummary(preference, "experience")}
         />
       </section>
 
@@ -178,13 +184,14 @@ export function PreferenceCenter() {
         <button
           type="button"
           className={styles.preferenceAction}
+          disabled={state.busy || !state.resource}
           onClick={() => setResetOpen(true)}
         >
           <span className={styles.actionIcon} aria-hidden="true">
             <PreferenceIcon name="reset" />
           </span>
           <strong>重置偏好</strong>
-          <small>将所有偏好恢复为默认设置。</small>
+          <small>清空已保存的长期显式偏好。</small>
           <span className={styles.actionArrow} aria-hidden="true">
             <PreferenceIcon name="arrow" />
           </span>
@@ -209,6 +216,7 @@ export function PreferenceCenter() {
               <PreferenceIcon name="reset" />
             </span>
             <h2 id="reset-title">重置长期偏好？</h2>
+            <PreferenceStatus state={state} />
             <p id="reset-description">
               这只会重置您的长期旅行偏好，不会删除账户、同行人或已保存的旅行。
             </p>
@@ -224,9 +232,11 @@ export function PreferenceCenter() {
               <button
                 type="button"
                 className={styles.confirmResetButton}
-                onClick={() => {
-                  setPreferences(createResetPreferenceState());
-                  setResetOpen(false);
+                disabled={
+                  state.busy || state.error === "STALE_PREFERENCE_REVISION"
+                }
+                onClick={async () => {
+                  if (await state.reset()) setResetOpen(false);
                 }}
               >
                 重置偏好

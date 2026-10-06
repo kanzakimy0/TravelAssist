@@ -1,0 +1,66 @@
+{
+  "phaseId": "190-sakuramachi-reviewed-public-red-concourse",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOTS",
+    "OPERATOR_EXPLICIT_PUBLIC_CONCOURSE",
+    "PRESERVE_NATIVE_PLATFORMS_AND_ALIGHTING_ONLY"
+  ],
+  "completedActionIds": [
+    "transfer:sankobus:sakuramachi-red-public-concourse-nine-to-six"
+  ],
+  "facts": [
+    {
+      "factId": "sakuramachi-arrival-nine-to-airport-boarding-six-public-red-concourse",
+      "kind": "transfer",
+      "sourceActionId": "transfer:sankobus:sakuramachi-red-public-concourse-nine-to-six",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/noriba_kuma-bt.pdf",
+      "observedResponseSha256": "1e85b3fa2d096c2b0cafd56ced9d9cb2f6e943cfd47fb45e045a159b5a5a65ca",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "桜町バスターミナル",
+          "operator": "九州産交バス",
+          "line": "gtfs:sankobus-airport:route:721_721071_1_20261001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:sankobus-airport",
+            "stopId": "100002_9",
+            "sourceArchiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+            "recordSha256": "8a7ed5cc651807ebc4989cabadc962c2f2d05166e0370139435f0583a6527fab",
+            "expectedPlatformCode": "9",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator linked October2025 boarding map places native platform9 (arrival/alighting-only) and platform6 (airport boarding) on the same continuous red-side public pedestrian concourse. Follow that concourse around its northeast bend, without entering bus lanes or blue-platform island. Independently reviewed actual terminal diagram, exact licensedGTFS platform_code9/6 corroborate identity; no same-name or distance join. Native platform9 remains alighting-only for bus service. Walking access/egress does not make platform9 a boarding stop. Retain only coarse public transfer, no geometry, timing, step-free or round-the-clock claim."
+          }
+        },
+        {
+          "name": "桜町バスターミナル",
+          "operator": "九州産交バス",
+          "line": "gtfs:sankobus-airport:route:721_721070_1_20261001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:sankobus-airport",
+            "stopId": "100002_6",
+            "sourceArchiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+            "recordSha256": "662fb6bf0dcb9cdeede5646510efc6e5bfc92365b8a7e54583de874be96a7517",
+            "expectedPlatformCode": "6",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator linked October2025 boarding map places native platform9 (arrival/alighting-only) and platform6 (airport boarding) on the same continuous red-side public pedestrian concourse. Follow that concourse around its northeast bend, without entering bus lanes or blue-platform island. Independently reviewed actual terminal diagram, exact licensedGTFS platform_code9/6 corroborate identity; no same-name or distance join. Native platform9 remains alighting-only for bus service. Walking access/egress does not make platform9 a boarding stop. Retain only coarse public transfer, no geometry, timing, step-free or round-the-clock claim."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_DIAGRAM_SAME_PUBLIC_CONCOURSE_DISTINCT_PLATFORMS",
+      "hubScopeComplete": false,
+      "locator": "Current operator linked October2025 boarding map places native platform9 (arrival/alighting-only) and platform6 (airport boarding) on the same continuous red-side public pedestrian concourse. Follow that concourse around its northeast bend, without entering bus lanes or blue-platform island. Independently reviewed actual terminal diagram, exact licensedGTFS platform_code9/6 corroborate identity; no same-name or distance join. Native platform9 remains alighting-only for bus service. Walking access/egress does not make platform9 a boarding stop. Retain only coarse public transfer, no geometry, timing, step-free or round-the-clock claim."
+    }
+  ]
+}

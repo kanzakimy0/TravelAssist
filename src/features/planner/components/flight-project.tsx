@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { flightError, type Flight } from "../model/trip-preparation";
+import { PlannerIcon } from "./planner-icon";
 import css from "../trip-preparation.module.css";
 import project from "../detail-map-inspector.module.css";
 
@@ -62,7 +63,7 @@ export function FlightProject({
           <p>当地时间 + UTC 时差 · 支持跨日</p>
         </div>
         <button type="button" aria-label="关闭项目详情框" onClick={onClose}>
-          ×
+          <PlannerIcon name="close" />
         </button>
       </header>
       <div className={`${project.editor} ${css.flightForm}`}>

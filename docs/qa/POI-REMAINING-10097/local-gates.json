@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "remaining-local-gates-v1",
+  "nodeTests": 2683,
+  "nodeTestFiles": 93,
+  "pythonOfflineTests": 10,
+  "gates": [
+    {
+      "command": "npm ci",
+      "status": "PASS",
+      "logFile": "npm-ci.log",
+      "logSha256": "73169c63c0b0a734b0987d286a7c4f070345c4146de9ef041469a28509e0f369"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/*.test.mjs",
+      "status": "PASS",
+      "logFile": "full-node-final.log",
+      "logSha256": "dfb0c40564b40b4ecd94d2c7982f8bf6455c26f20382d7e41b5950b9da68280d"
+    },
+    {
+      "command": "python -X utf8 tests/poi-remaining-review.test.py",
+      "status": "PASS",
+      "logFile": "python-fault-tests-final.log",
+      "logSha256": "2c97e804cdecc5be6461f85eed2cd903072aaa0d1fca415ac21300fa4148e00b"
+    },
+    {
+      "command": "npm run lint",
+      "status": "PASS",
+      "logFile": "lint-final.log",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "logFile": "typecheck-final.log",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+    },
+    {
+      "command": "npm run format:check:deploy",
+      "status": "PASS",
+      "logFile": "format-check-final.log",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "logFile": "build.log",
+      "logSha256": "be38d451dc6f9fc20f407a38f36a826918600fa0911ded98b2e40d28ed42726a"
+    },
+    {
+      "command": "npm run deploy:validate:local",
+      "status": "PASS",
+      "logFile": "deploy-validate.log",
+      "logSha256": "2701fa9eab8acb2268d6b616b65b03ef2a523032b6592f41c1f11262b75a934b"
+    },
+    {
+      "command": "npm run deploy:build:local",
+      "status": "PASS",
+      "logFile": "deploy-build.log",
+      "logSha256": "acfedd605d3e563c081963e93b9711d41af247e95dce444ae839d4a1bc202260"
+    },
+    {
+      "command": "npm run deploy:verify-artifact",
+      "status": "PASS",
+      "logFile": "deploy-verify.log",
+      "logSha256": "68add1ed9ce4b4bd72fd226e4bf516bb9837e95e0acbf6a99d18105d992bc41b"
+    },
+    {
+      "command": "51 source batches identical resume",
+      "status": "PASS",
+      "logFile": "source-identical-resume.log",
+      "logSha256": "d1bc6399a40d9b4aa1dbed405f46cad668a7ba0cdb244adec79e9314f52440b6"
+    },
+    {
+      "command": "review final deterministic replay: zero changes",
+      "status": "PASS",
+      "logFile": "review-identical-resume.json",
+      "logSha256": "502cd5d3770350fa9b27b1368b2bf6f4bda1a3888b93a4370df3ddd3d089f30d"
+    },
+    {
+      "command": "review final content/hash/locator check",
+      "status": "PASS",
+      "logFile": "review-final-check.json",
+      "logSha256": "8d73c787e3bf87cc2e0c5e1b51e8afa83e22f99f6c8d7cb65b2dbaf4bd657d9a"
+    },
+    {
+      "command": "read current unique candidate view",
+      "status": "PASS",
+      "logFile": "current-view-final.json",
+      "logSha256": "fc7f9355814f5168c35ed70cf0dec93fedf055b7731a2c1b371974290e58a1f4"
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "command": "exact final-head GitHub Quality Gate",
+      "status": "SEE_PR_HEAD_WORKFLOW_DISPATCH",
+      "reason": "Final SHA and run URL/conclusion are recorded in PR description and delivery message; do not substitute an earlier head."
+    }
+  ],
+  "notes": [
+    "Initial shared-dependency junction build failed. Fresh npm ci and subsequent build/artifact verification passed.",
+    "No DB, production import, runtime change, merge or issue closure."
+  ]
+}

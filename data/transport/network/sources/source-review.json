@@ -1,0 +1,150 @@
+{
+  "task": "TASK-086-B",
+  "observedAt": "2026-10-02",
+  "conclusion": "VERSIONED_PER_OBLIGATION_REVIEW_REPLACES_UNCONDITIONAL_EARLY_GAPS",
+  "gaps": [
+    {
+      "deficitId": "source:national-stopping-patterns",
+      "class": "SOURCE_LICENSE_GAP",
+      "mode": "rail",
+      "reason": "REUSABLE_NATIONAL_SERVICE_PATTERN_SOURCE_NOT_ESTABLISHED",
+      "reviewIds": [
+        "official-shinkansen",
+        "odpt-national-rail",
+        "government-s12",
+        "government-n02",
+        "alternative-network"
+      ]
+    },
+    {
+      "deficitId": "service:shinkansen-continuity",
+      "class": "SERVICE_PATTERN_GAP",
+      "mode": "shinkansen",
+      "reason": "OFFICIAL_STOPPING_PATTERNS_AND_COMPONENT_ADMISSION_UNRESOLVED"
+    },
+    {
+      "deficitId": "service:major-rail-private-metro",
+      "class": "SERVICE_PATTERN_GAP",
+      "mode": "rail",
+      "reason": "NATIONAL_PATTERN_DISCOVERY_AND_IDENTITY_REVIEW_OPEN"
+    },
+    {
+      "deficitId": "mode:required-highway-gateways",
+      "class": "HIGHWAY_BUS_GAP",
+      "mode": "highway_bus",
+      "reason": "NATIONAL_TERMINAL_COMPONENTS_AND_BRIDGES_UNRESOLVED"
+    },
+    {
+      "deficitId": "mode:required-special-tourism",
+      "class": "TOURISM_SPECIAL_MODE_GAP",
+      "mode": "ropeway",
+      "reason": "REQUIRED_TOURISM_SPECIAL_MODE_INVENTORY_AND_PRIMARY_EVIDENCE_OPEN"
+    }
+  ],
+  "historicalReviews": [
+    {
+      "reviewId": "official-shinkansen",
+      "category": "official_operator",
+      "url": "https://global.jr-central.co.jp/en/info/timetable/",
+      "termsUrl": "https://jr-central.co.jp/policy/index.html",
+      "outcome": "Official schedules exist; site copyright policy does not establish bulk snapshot redistribution rights for this repository. No permission record is present. No operator payload has been ingested.",
+      "decision": "HOLD_LICENSE_SCOPE",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Explicit permitted static calling-sequence extraction scope or independently licensed service patterns."
+    },
+    {
+      "reviewId": "odpt-national-rail",
+      "category": "licensed_static",
+      "url": "https://ckan.odpt.org/en/dataset/?res_format=JSON",
+      "termsUrl": "https://developer.odpt.org/challenge_license",
+      "outcome": "JR East catalogue marks Challenge 2026-only regional conventional-rail data and excludes Shinkansen. Reviewed limited license imposes contest purpose, reusable-data redistribution restrictions and end-of-authorization deletion. This is not an authorization for permanent national backbone artifacts.",
+      "decision": "HOLD_LICENSE_SCOPE_AND_COVERAGE",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Applicable non-contest perpetual static derived-data permission and required operator coverage."
+    },
+    {
+      "reviewId": "government-s12",
+      "category": "government_open_data",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+      "outcome": "CC BY 4.0 station/operator/line/usage dataset supports identity research, but its spatial station-group code and annual usage do not establish service direction or ordered calling patterns.",
+      "decision": "IDENTITY_DISCOVERY_ONLY",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Independently reviewed components plus actual service stopping sequence."
+    },
+    {
+      "reviewId": "government-n02",
+      "category": "government_open_data",
+      "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-v3_0.html",
+      "outcome": "Rail geometry, stations and route/operator attributes describe infrastructure. Physical adjacency does not prove express/local calling sequence. No service edges generated from geometry.",
+      "decision": "TOPOLOGY_PATTERN_NOT_PROVEN",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Primary operator stopping-pattern evidence matched to exact components."
+    },
+    {
+      "reviewId": "regional-open-gtfs",
+      "category": "mode_specific",
+      "url": "https://data.bodik.jp/dataset/420000_nagasakikeneibus",
+      "additionalUrl": "https://data.bodik.jp/dataset/9938b52c-e54c-4d92-9975-a98c5f60e727",
+      "outcome": "CC BY 4.0 licensed passenger ferry and purpose-bounded airport/highway/tourism bus patterns acquired and independently parsed. These regional feeds cannot establish national rail or airport-to-airport connectivity.",
+      "decision": "ADMITTED_SCOPED_GTFS",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Additional licensed regional-to-national bridge and airport/rail interchange sources."
+    },
+    {
+      "reviewId": "v2-identity",
+      "category": "identity",
+      "path": "docs/qa/TASK-084-B/v2-user-acceptance-closeout.json",
+      "outcome": "User accepted corrective deliverables; formalAcceptedV2NodeCount remains zero. Candidate high tiers and required Shinkansen components stay visible in a protected discovery denominator until independent admission.",
+      "decision": "NO_BULK_PROMOTION",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Per-component identity, source, rights, current service and interchange decisions."
+    },
+    {
+      "reviewId": "alternative-network",
+      "category": "alternative_connection",
+      "url": "https://gtfs-data.jp/",
+      "outcome": "Additional municipal/open feeds are discoverable. Their existence is not proof that they connect the held national components. Repository Route provider policies do not authorize permanent derived route snapshots. National alternatives have NOT been exhausted.",
+      "decision": "OPEN_DISCOVERY_NOT_FIXPOINT",
+      "ordinaryWorkRemaining": true,
+      "nextEvidence": "Deficit-targeted licensed feeds or official static relationship evidence; never all-pairs Provider lookup."
+    }
+  ],
+  "currentReviewInput": "research/global-review.v1.json",
+  "reviews": [
+    {
+      "deficitId": "source:national-stopping-patterns",
+      "status": "REVIEWED_CLOSED",
+      "currentReason": "Current individually reviewed minimal rail facts and licensed GTFS have replaced the historical requirement for one redistributable nationwide timetable. Raw expression redistribution is not assumed.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
+    },
+    {
+      "deficitId": "service:shinkansen-continuity",
+      "status": "REVIEWED_CLOSED",
+      "currentReason": "Reviewed actual directional Shinkansen services now cover the frozen required components, with exact source and identity binding.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
+    },
+    {
+      "deficitId": "service:major-rail-private-metro",
+      "status": "REVIEWED_CLOSED",
+      "currentReason": "Reviewed actual conventional/private/metro services now cover the frozen required rail components. This does not claim every Japanese service variant.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
+    },
+    {
+      "deficitId": "mode:required-highway-gateways",
+      "status": "OPEN",
+      "currentReason": "Some existing licensed highway service components remain disconnected from the national backbone; public gateway/transfer evidence is still required.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
+    },
+    {
+      "deficitId": "mode:required-special-tourism",
+      "status": "OPEN",
+      "currentReason": "The inherited special-tourism obligation lacks an enumerated ropeway/funicular target inventory. Existing monorail/tram coverage alone does not prove it fulfilled; scope and primary service evidence remain to be reviewed.",
+      "scope": "FROZEN_PHASE162_REQUIRED_INVENTORY_AND_RETAINED_SERVICE_PATTERNS",
+      "reviewedAt": "2026-10-02"
+    }
+  ]
+}

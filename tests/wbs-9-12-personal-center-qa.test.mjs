@@ -308,8 +308,9 @@ test("9.12 presentation components retain their no-integration boundary", () => 
     "serviceWorker.register",
   ])
     assert.equal(implementation.includes(forbidden), false, forbidden);
-  // TASK-TRIP-PREPARATION-A explicitly authorizes the shared browser-only library.
-  assert.ok(companionCenter.includes("writeCompanionLibrary"));
+  // TASK-047 replaces only Companion persisted truth with authenticated API.
+  assert.ok(companionCenter.includes("companionClient"));
+  assert.equal(companionCenter.includes("localStorage"), false);
   assert.equal(
     read(
       "src/app/(account)/personal-center/preferences/[category]/page.tsx",

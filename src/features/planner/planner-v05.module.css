@@ -13,10 +13,10 @@
   align-items: center;
   gap: 6px;
   margin-left: auto;
-  width: calc(25vw - 32px);
+  width: calc(25vw - 20px);
   min-width: 0;
   position: absolute;
-  right: 16px;
+  right: 10px;
 }
 .search {
   position: relative;
@@ -360,4 +360,23 @@
   .chain button {
     flex-basis: 145px;
   }
+}
+
+.accountMenu {
+  display: grid;
+  gap: 0.5rem;
+}
+.accountMenu strong {
+  overflow-wrap: anywhere;
+}
+.accountMenu a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+}
+.accountMenu a:hover {
+  background: var(--color-bg-muted);
 }

@@ -1,0 +1,119 @@
+{
+  "task": "TASK-061-B",
+  "status": "PASS",
+  "base": "86585600689e3a673ba17156c2ff513db24c7a86",
+  "gates": [
+    {
+      "name": "deploy-validate",
+      "exitCode": 0
+    },
+    {
+      "name": "deploy-build",
+      "exitCode": 0
+    },
+    {
+      "name": "deploy-verify",
+      "exitCode": 0
+    },
+    {
+      "name": "lint",
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "exitCode": 0
+    },
+    {
+      "name": "format",
+      "exitCode": 0
+    }
+  ],
+  "unit": {
+    "tests": 6,
+    "pass": 6,
+    "fail": 0
+  },
+  "fullRepository": {
+    "tests": 2504,
+    "pass": 2504,
+    "fail": 0,
+    "skip": 0
+  },
+  "tripApiLocal": {
+    "tests": 35,
+    "pass": 35,
+    "fail": 0,
+    "skip": 0
+  },
+  "browser": {
+    "task": "TASK-061-B",
+    "completed": [
+      "empty authenticated library has no fixture trips or fabricated statistics",
+      "51 actual records cross API cursor boundary; Draft Saved History render for both isolated owners",
+      "read failure shows retry instead of fake empty state and recovers real rows",
+      "failed delete retains row; confirmed browser delete persists after reload",
+      "real stale revision rejects destructive action until explicit reload",
+      "lost copy response retries same intent once, preserves history and other owner, survives relogin"
+    ],
+    "stage": "lost copy response retries same intent once, preserves history and other owner, survives relogin",
+    "cleanupErrors": [],
+    "remaining": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "localOnly": true,
+    "browser": "Edge",
+    "users": 2,
+    "viewports": ["1440x900", "390x844"],
+    "cursorObserved": true,
+    "externalBrowserRequests": 0,
+    "pageErrors": 0,
+    "failureInjection": [
+      "GET 500",
+      "DELETE 500",
+      "successful copy response lost before client receipt"
+    ],
+    "realConcurrencyCheck": "stale revision 409 via actual separate API update"
+  },
+  "artifactFiles": 1869,
+  "localRuntimeStopped": true,
+  "visualReview": {
+    "desktopControlsDoNotOverlap": true,
+    "mobileRecordActionTargetsAtLeast44px": true,
+    "paginationAndBoundaryReachableDesktopAndMobile": true,
+    "horizontalOverflow": false,
+    "screenshotsReviewed": ["desktop.png", "mobile.png", "mobile-bottom.png"],
+    "screenshotSha256": {
+      "desktop-bottom.png": "812b6eb277869f291776af7978c1e0385c2171b99f3028e5172c7c44036aedbf",
+      "desktop.png": "4e97e06159836c71f56cd77c22c5ec5db65937a77729fa5915fa6d39aac5967f",
+      "mobile-bottom.png": "e572542df4d34dab910067823a4f3bb148db443f494c51f53e746d76003a03dd",
+      "mobile.png": "be7f21e6a0e406b1e0be732e36b76e1baa067f78460d48548f42932bd17123a4"
+    }
+  },
+  "sourceSha256": {
+    "src/features/trip-library/trip-library-page.tsx": "a061a2622cf1882554dee32710b624ae2e369106264944faec09e41a93a2ca68",
+    "src/features/trip-library/trip-library.module.css": "29613f983682b52540cbfc50d4a690b9bf37baf6e3a360a2f4ac574aefd908af",
+    "src/features/trip-library/persistence/live-trip-model.ts": "e0023899c38cdf24fd30383d8f96a8342dea428ddcc730f1e5a2eab207a2f5d3",
+    "src/features/trip-library/persistence/use-trip-library.ts": "ec0701ffe1e52702f134d8015a034a88072fbe8e02bd2b00784f76dfbaa79797",
+    "tests/task-061-trip-library-live.test.mjs": "3ac762825c17e06d5f1cd6587326c1b6fd4eeef5836b174331a0a63a9de9f37a",
+    "tests/task-061-trip-library-live.runtime.mjs": "f11aaa0ed120fe44be0fb15d9367ce6bb416a96772fb06ee61c7a6e816e4d739",
+    "tests/wbs-5-10-trip-library.test.mjs": "f7f07488484af4176926e86fc872a43a5b70ff4e44a2cafc9f7df14f2a844c63",
+    "tests/trip-status-personal-center-followup.test.mjs": "cf290b9280f2f2026f100b8f9cbdbf1d3929e4cfe5778c1a61c66ff6a4b07f16",
+    "package.json": "90adbc9cb77a515f68c820389ea11c8500a25405e3ccf85271749385f8a90f65"
+  },
+  "initialCorrections": [
+    "Test fixture PUT aligned to accepted update DTO: preferenceOverridePatch required; no create-only schemaVersion. Copy idempotent replay correctly expects HTTP 200 after original creation 201.",
+    "Display-page lookup waits for owned record/title; total count uses visible pagination rather than hidden legacy desktop badge.",
+    "Live layout grows with content in all tabs; desktop header clearance and 44px record actions verified after screenshot review."
+  ],
+  "githubQualityGate": "Exact final source head and workflow_dispatch run are recorded in the PR body before authorized merge."
+}

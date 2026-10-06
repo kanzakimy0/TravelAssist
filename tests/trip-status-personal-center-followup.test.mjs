@@ -218,7 +218,7 @@ test("existing Draft delete, History clone and Favorites stay immutable and in-m
   );
 });
 
-test("Home and library import the same portable helper; no persistence or business integration added", () => {
+test("Home and live library share portable calendar timing; no direct DB or partner integration", () => {
   const helper = read("src/features/trip-library/trip-timing.ts");
   assert.doesNotMatch(helper, /from ["']react|Date\.now|new Date\(\)/);
   for (const file of [
@@ -226,7 +226,10 @@ test("Home and library import the same portable helper; no persistence or busine
     "src/features/trip-library/trip-library-page.tsx",
   ]) {
     const source = read(file);
-    assert.match(source, /selectHeroTrip/);
+    assert.match(
+      source,
+      file.includes("personal-home") ? /selectHeroTrip/ : /getTripTiming/,
+    );
     assert.match(source, /tripTimingLabels/);
     assert.doesNotMatch(
       source,

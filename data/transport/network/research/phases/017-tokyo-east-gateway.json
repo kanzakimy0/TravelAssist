@@ -1,0 +1,46 @@
+{
+  "phaseId": "017-tokyo-east-gateway",
+  "strategy": [
+    "JR_CENTRAL_TOKYO_OFFICIAL_STATION_MAP",
+    "ALL_EXPECTED_COMPONENT_GRAPH_REVIEW",
+    "transfer"
+  ],
+  "facts": [
+    {
+      "factId": "tokyo-east-shinkansen-and-metro-concourse",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/tokyo/_img/tokyo_260123.gif",
+      "locator": "Official map: JR East Shinkansen platforms 20-23 to conventional via gates 11/12; Marunouchi underground central exit 21 physically connects to Marunouchi Line ticket gates. Both pedestrian directions inspected; no walking duration asserted.",
+      "components": [
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "東京",
+          "operator": "東京地下鉄",
+          "line": "4号線丸ノ内線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_GATE_NUMBERS_AND_UNDERGROUND_PASSAGE",
+      "hubScopeComplete": true
+    }
+  ],
+  "completedActionIds": []
+}

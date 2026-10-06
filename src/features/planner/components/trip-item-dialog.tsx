@@ -9,6 +9,7 @@ import styles from "../detail-workspace.module.css";
 import { validDetailLocation } from "../model/detail-workspace";
 import type { PlannerPlace } from "../model/trip-model";
 import { validateSchedule } from "../model/schedule-check";
+import { PlannerIcon } from "./planner-icon";
 
 function trapDialogFocus(
   dialog: HTMLDialogElement,
@@ -91,7 +92,7 @@ export function TripItemDialog({
           <h2 id="trip-item-dialog-title">{item.title}</h2>
         </div>
         <button type="button" onClick={onClose} aria-label="关闭行程项目详情">
-          ×
+          <PlannerIcon name="close" />
         </button>
       </header>
 
@@ -217,20 +218,25 @@ export function AddTripItemDialog({
   trigger,
   onClose,
   onAdd,
-  validate,
   places = [],
   initialType = "attraction",
   onConflictTest,
+  mapPick,
 }: {
   embedded?: boolean;
   day: number;
   trigger: HTMLElement | null;
   onClose: () => void;
   onAdd: (item: DetailDraftItem) => void;
-  validate?: (item: DetailDraftItem) => string;
   places?: PlannerPlace[];
   initialType?: DetailItemKind;
   onConflictTest?: () => void;
+  mapPick?: {
+    active: boolean;
+    coordinates: [number, number] | null;
+    onToggle: () => void;
+    onClear: () => void;
+  };
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [type, setType] = useState<DetailItemKind>(initialType);
@@ -260,6 +266,13 @@ export function AddTripItemDialog({
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
 
+  const visibleLongitude = mapPick?.coordinates
+    ? mapPick.coordinates[0].toFixed(6)
+    : longitude;
+  const visibleLatitude = mapPick?.coordinates
+    ? mapPick.coordinates[1].toFixed(6)
+    : latitude;
+
   useEffect(() => {
     if (embedded) return;
     const element = dialog.current;
@@ -283,13 +296,15 @@ export function AddTripItemDialog({
                 placeId: place.id,
                 label: place.name,
               }
-            : locationMode === "manual" && longitude.trim() && latitude.trim()
+            : locationMode === "manual" &&
+                visibleLongitude.trim() &&
+                visibleLatitude.trim()
               ? {
                   source: "manual" as const,
-                  coordinates: [Number(longitude), Number(latitude)] as [
-                    number,
-                    number,
-                  ],
+                  coordinates: [
+                    Number(visibleLongitude),
+                    Number(visibleLatitude),
+                  ] as [number, number],
                   label: title.trim(),
                 }
               : undefined;
@@ -303,7 +318,7 @@ export function AddTripItemDialog({
           note: note.trim(),
           ...(location ? { location } : {}),
         };
-        const invalid = validateSchedule(item) || validate?.(item);
+        const invalid = validateSchedule(item);
         if (invalid) {
           setError(invalid);
           return;
@@ -323,7 +338,7 @@ export function AddTripItemDialog({
           <h2 id="add-trip-item-title">新增项目</h2>
         </div>
         <button type="button" onClick={onClose} aria-label="关闭新增项目">
-          ×
+          <PlannerIcon name="close" />
         </button>
       </header>
       <p className={styles.dialogNotice}>
@@ -405,8 +420,11 @@ export function AddTripItemDialog({
                   经度
                   <input
                     inputMode="decimal"
-                    value={longitude}
-                    onChange={(event) => setLongitude(event.target.value)}
+                    value={visibleLongitude}
+                    onChange={(event) => {
+                      mapPick?.onClear();
+                      setLongitude(event.target.value);
+                    }}
                     placeholder="例如 139.7454"
                   />
                 </label>
@@ -414,11 +432,30 @@ export function AddTripItemDialog({
                   纬度
                   <input
                     inputMode="decimal"
-                    value={latitude}
-                    onChange={(event) => setLatitude(event.target.value)}
+                    value={visibleLatitude}
+                    onChange={(event) => {
+                      mapPick?.onClear();
+                      setLatitude(event.target.value);
+                    }}
                     placeholder="例如 35.6586"
                   />
                 </label>
+                {mapPick && (
+                  <button
+                    type="button"
+                    className={styles.mapPickButton}
+                    aria-pressed={mapPick.active}
+                    onClick={mapPick.onToggle}
+                  >
+                    {mapPick.active ? "请点击左侧地图…" : "在地图上点选位置"}
+                  </button>
+                )}
+                {mapPick?.coordinates && (
+                  <p className={styles.mapPickStatus} role="status">
+                    已从地图获取：{mapPick.coordinates[1].toFixed(5)},{" "}
+                    {mapPick.coordinates[0].toFixed(5)}
+                  </p>
+                )}
               </div>
             )}
             <small>

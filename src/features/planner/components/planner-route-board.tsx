@@ -1,3 +1,4 @@
+import { StateNotice } from "../../../components/ui/state-notice";
 import { useEffect, useRef, useState, type Dispatch } from "react";
 import {
   currentPlan,
@@ -99,9 +100,13 @@ export function PlannerRouteBoard({
                       </div>
                     ))}
                     {all.length < 2 && (
-                      <p className={css.empty}>
-                        至少两个行程项目才能编辑移动段；可先在行程页加入景点。
-                      </p>
+                      <StateNotice
+                        compact
+                        kind="empty"
+                        announcement="off"
+                        title="尚无可查看的移动段"
+                        description="至少两个行程项目才能编辑移动段；可先在行程页加入景点。"
+                      />
                     )}
                   </div>
                 </>

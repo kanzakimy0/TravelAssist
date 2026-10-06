@@ -1520,3 +1520,39 @@ dialog.modalBackdrop {
     font-size: 0.8rem;
   }
 }
+
+/* TASK-047: only API status and ordered membership controls. */
+.persistenceStatus {
+  margin: 12px 24px;
+  padding: 12px 14px;
+  border: 1px solid var(--companion-border);
+  border-radius: 12px;
+  background: var(--companion-accent-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.persistenceStatus p {
+  margin: 0 0 8px;
+}
+.persistenceStatus button,
+.memberOrder button {
+  min-height: 44px;
+  min-width: 44px;
+}
+.memberOrder {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.memberOrder > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.memberOrder button:disabled,
+.drawerActions button:disabled,
+.persistenceStatus button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

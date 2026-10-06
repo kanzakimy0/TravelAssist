@@ -2685,3 +2685,17 @@
     background-position: 72% center;
   }
 }
+
+/* Account adaptation stays inside the existing 44px header row. */
+.accountName {
+  max-width: 6rem;
+  margin-inline: 0.35rem 0.65rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .accountName {
+    display: none;
+  }
+}

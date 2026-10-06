@@ -1,0 +1,177 @@
+{
+  "phaseId": "066-rinkai-explicit-all-stations-service",
+  "strategy": [
+    "RINKAI_EXPLICIT_ALL_STATIONS_RULE",
+    "KOKUSAI_TENJIJO_T1_CLOSURE",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:rinkai:explicit-all-stations-rule"
+  ],
+  "facts": [
+    {
+      "factId": "rinkai-all-stations-osaki-bound",
+      "kind": "service",
+      "sourceActionId": "private:rinkai:explicit-all-stations-rule",
+      "sourceUrl": "https://www.twr.co.jp/Default.aspx?TabId=113&TabModule1398=2",
+      "observedResponseSha256": "d1360a48cad1e5b79d0f04aee4a35aee76be1c499f7d2ab96bfb3e2f146147cd",
+      "locator": "2026-03-14 timetable explanatory rule explicitly states that commuter rapid, rapid and local trains all call at every station within Rinkai. Retain local eight-station branch only, in each stated Osaki/Shin-Kiba direction. Current official route page supplies ordered station list; existing phase039 Oimachi interchange joins national graph. No JR through-running timetable or clock values retained.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.twr.co.jp/route/tabid/105/Default.aspx",
+          "observedResponseSha256": "32310c00c3d4a5db1ef72e97aea0ee3a95d0974c26c22f5bb2a7a225385e265a"
+        }
+      ],
+      "line": "臨海副都心線",
+      "operator": "東京臨海高速鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "osaki-bound",
+      "callingStations": [
+        "新木場",
+        "東雲",
+        "国際展示場",
+        "東京テレポート",
+        "天王洲アイル",
+        "品川シーサイド",
+        "大井町",
+        "大崎"
+      ],
+      "callingComponents": [
+        {
+          "name": "新木場",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東雲",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "国際展示場",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東京テレポート",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天王洲アイル",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "品川シーサイド",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大井町",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大崎",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_ALL_STATIONS_CALLING_RULE_PLUS_OFFICIAL_ORDER_AND_S12",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_RULE_NOT_REALTIME"
+    },
+    {
+      "factId": "rinkai-all-stations-shinkiba-bound",
+      "kind": "service",
+      "sourceActionId": "private:rinkai:explicit-all-stations-rule",
+      "sourceUrl": "https://www.twr.co.jp/Default.aspx?TabId=113&TabModule1398=2",
+      "observedResponseSha256": "d1360a48cad1e5b79d0f04aee4a35aee76be1c499f7d2ab96bfb3e2f146147cd",
+      "locator": "2026-03-14 timetable explanatory rule explicitly states that commuter rapid, rapid and local trains all call at every station within Rinkai. Retain local eight-station branch only, in each stated Osaki/Shin-Kiba direction. Current official route page supplies ordered station list; existing phase039 Oimachi interchange joins national graph. No JR through-running timetable or clock values retained.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.twr.co.jp/route/tabid/105/Default.aspx",
+          "observedResponseSha256": "32310c00c3d4a5db1ef72e97aea0ee3a95d0974c26c22f5bb2a7a225385e265a"
+        }
+      ],
+      "line": "臨海副都心線",
+      "operator": "東京臨海高速鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "shinkiba-bound",
+      "callingStations": [
+        "大崎",
+        "大井町",
+        "品川シーサイド",
+        "天王洲アイル",
+        "東京テレポート",
+        "国際展示場",
+        "東雲",
+        "新木場"
+      ],
+      "callingComponents": [
+        {
+          "name": "大崎",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大井町",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "品川シーサイド",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "天王洲アイル",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東京テレポート",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "国際展示場",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東雲",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新木場",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_ALL_STATIONS_CALLING_RULE_PLUS_OFFICIAL_ORDER_AND_S12",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_RULE_NOT_REALTIME"
+    }
+  ]
+}

@@ -13,11 +13,21 @@ import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { getTableConfig, PgDialect } from "drizzle-orm/pg-core";
 import { localEnv, assertLocalEndpoint } from "../tools/db/local.mjs";
-import * as schema from "../src/db/schema/index.ts";
+import {
+  profiles,
+  profileSettings,
+  emergencyContacts,
+} from "../src/db/schema/index.ts";
+const schema = { profiles, profileSettings, emergencyContacts };
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const require = createRequire(import.meta.url);
-const tables = Object.values(schema).map(getTableConfig);
+// Keep TASK-016's exact profile assertions scoped as independently owned schemas grow.
+const tables = [
+  schema.profiles,
+  schema.profileSettings,
+  schema.emergencyContacts,
+].map(getTableConfig);
 const dialect = new PgDialect();
 const ident = (value) => '"' + value.replaceAll('"', '""') + '"';
 

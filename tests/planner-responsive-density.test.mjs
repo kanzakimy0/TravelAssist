@@ -73,7 +73,13 @@ test("full-screen rails prioritize card and panel content", async () => {
   const css = await source("planner.module.css");
   assert.match(
     css,
-    /\.quickSettings,\s*\.recommendations\s*\{\s*padding-inline: 15px;/s,
+    /\.rightPanel \.quickSettings,\s*\.rightPanel \.recommendations\s*\{\s*padding-inline: 10px;/s,
+  );
+  assert.match(css, /container: recommendation-panel \/ size;/);
+  assert.match(css, /@container recommendation-panel \(max-width: 330px\)/);
+  assert.match(
+    css,
+    /@container recommendation-panel \(min-width: 370px\) and \(min-height: 370px\)/,
   );
   assert.match(
     css,
@@ -82,5 +88,13 @@ test("full-screen rails prioritize card and panel content", async () => {
   assert.match(
     css,
     /\.bottomPanel \.bottomTabs button\s*\{[^}]*min-height: clamp\(32px, 3\.8dvh, 42px\);/s,
+  );
+  assert.match(
+    css,
+    /\.quickSettings\s*\{[^}]*grid-template-rows:[^}]*clamp\(38px, 5\.2dvh, 62px\)[^}]*clamp\(40px, 5\.8dvh, 72px\)[^}]*32px;/s,
+  );
+  assert.match(
+    css,
+    /\.quickSettings \.mockStatus\s*\{[^}]*height: 32px;[^}]*max-height: 32px;[^}]*overflow: hidden;/s,
   );
 });

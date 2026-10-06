@@ -1,0 +1,389 @@
+{
+  "phaseId": "032-shikoku-seto-ohashi-gateway",
+  "strategy": [
+    "JR_SHIKOKU_AND_JR_WEST_SELECTED_ACTUAL_TRAINS",
+    "OKAYAMA_KOJIMA_SHARED_CONCOURSE_BRIDGES",
+    "rail"
+  ],
+  "completedActionIds": [
+    "rail:jr-shikoku"
+  ],
+  "facts": [
+    {
+      "factId": "marine-3135M-west",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/29181?date=20261001",
+      "observedResponseSha256": "7e1f7fd185aadf3e3021e8c69deffa9ece24cefd6670862496b371a013ce30ec",
+      "locator": "Exact current train マリンライナー35号 / 3135M; only explicit clock-bearing station rows are retained as calls, passing rows are excluded. Contiguous operator section at Kojima; not the union of optional stops in the overview.",
+      "line": "瀬戸大橋線マリンライナー",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速マリンライナー",
+      "direction": "outbound",
+      "parentCallingStations": [
+        "岡山",
+        "早島",
+        "茶屋町",
+        "児島",
+        "坂出",
+        "高松"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "岡山",
+        "早島",
+        "茶屋町",
+        "児島"
+      ],
+      "callingComponents": [
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "早島",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "茶屋町",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "児島",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_NAMED_TRAIN_TABLE_AND_CONTIGUOUS_OPERATOR_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_2026_10_01_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "marine-3135M-shikoku",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/tokushima_takamatsu.pdf",
+      "observedResponseSha256": "9330450f0ec2a1a25a27dfb1295d39b4beb9f7ebe1237d8ecac5a31dffe8a213",
+      "locator": "Operator current 2026-03-14 native major-train publication independently shows this section core sequence for Marine Liner 35. Complete operator stop diagram marks four potentially optional calls between Sakaide and Takamatsu. All four current-linked native station-posted notices (Kinashi, Hashioka, Kokubu, Kamogawa), each printed 2025-03-15, visually reviewed across both directions: optional Marine calls are confined to train numbers 2/70/71/73/75 as applicable, never 10 or 35. No unmarked Rapid Sunport is relabelled Marine. Reconcile current 2026 core publication with current-linked older unchanged station notices; this is an explicitly bounded inference, not a claim the older notices were revised in 2026. No exact clocks, dates, artwork, fare or general all-Marine pattern. Review applies only to the independently established three-call Kojima-Sakaide-Takamatsu section, in the stated direction. No complete parent calling sequence west of Kojima is asserted; the two JR-West facts remain separately unresolved and are not supplied as parent proof.",
+      "line": "瀬戸大橋線マリンライナー",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速マリンライナー",
+      "direction": "outbound",
+      "callingStations": [
+        "児島",
+        "坂出",
+        "高松"
+      ],
+      "callingComponents": [
+        {
+          "name": "児島",
+          "operator": "四国旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "坂出",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_NATIVE_CORE_SECTION_AND_FOUR_OPTIONAL_STATION_EXCLUSION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_VARIANT_WITH_CURRENT_LINKED_2025_STATION_NOTICES_NOT_DATE_OR_REALTIME",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/",
+          "observedResponseSha256": "00b2650e50cd4a02c5b9882909b0527009309a2c7c7411f887383448f3f8dab5"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/kinashi.pdf",
+          "observedResponseSha256": "ed7c93ff6f638f6f974461f722b45aa5c4fa672061f4986b1dde12bafa99ae7a"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/hashioka.pdf",
+          "observedResponseSha256": "a61bcf9eb309257e6ee9f47893abe7d450614279857fc4368104ec6c64af1d1c"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/kokubu.pdf",
+          "observedResponseSha256": "a74f1ce4ea2bf5592d244e2312ae3ef12942f168b424d62edf4f73ee4fa14a0a"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/kamogawa.pdf",
+          "observedResponseSha256": "affdc9bfe20e0e128a903eb282d18a2a23b727de6b678b9e1daadc6d4b7b6bd6"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/images/train/stop-marine.png",
+          "observedResponseSha256": "3dae8039d7806e25cb14a8c506f46bc33aabc053743d1d57497b27633864284a"
+        }
+      ]
+    },
+    {
+      "factId": "marine-3110M-shikoku",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/tokushima_takamatsu.pdf",
+      "observedResponseSha256": "9330450f0ec2a1a25a27dfb1295d39b4beb9f7ebe1237d8ecac5a31dffe8a213",
+      "locator": "Operator current 2026-03-14 native major-train publication independently shows this section core sequence for Marine Liner 10. Complete operator stop diagram marks four potentially optional calls between Sakaide and Takamatsu. All four current-linked native station-posted notices (Kinashi, Hashioka, Kokubu, Kamogawa), each printed 2025-03-15, visually reviewed across both directions: optional Marine calls are confined to train numbers 2/70/71/73/75 as applicable, never 10 or 35. No unmarked Rapid Sunport is relabelled Marine. Reconcile current 2026 core publication with current-linked older unchanged station notices; this is an explicitly bounded inference, not a claim the older notices were revised in 2026. No exact clocks, dates, artwork, fare or general all-Marine pattern. Review applies only to the independently established three-call Kojima-Sakaide-Takamatsu section, in the stated direction. No complete parent calling sequence west of Kojima is asserted; the two JR-West facts remain separately unresolved and are not supplied as parent proof.",
+      "line": "瀬戸大橋線マリンライナー",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速マリンライナー",
+      "direction": "inbound",
+      "callingStations": [
+        "高松",
+        "坂出",
+        "児島"
+      ],
+      "callingComponents": [
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "坂出",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "児島",
+          "operator": "四国旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_NATIVE_CORE_SECTION_AND_FOUR_OPTIONAL_STATION_EXCLUSION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_VARIANT_WITH_CURRENT_LINKED_2025_STATION_NOTICES_NOT_DATE_OR_REALTIME",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/",
+          "observedResponseSha256": "00b2650e50cd4a02c5b9882909b0527009309a2c7c7411f887383448f3f8dab5"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/kinashi.pdf",
+          "observedResponseSha256": "ed7c93ff6f638f6f974461f722b45aa5c4fa672061f4986b1dde12bafa99ae7a"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/hashioka.pdf",
+          "observedResponseSha256": "a61bcf9eb309257e6ee9f47893abe7d450614279857fc4368104ec6c64af1d1c"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/kokubu.pdf",
+          "observedResponseSha256": "a74f1ce4ea2bf5592d244e2312ae3ef12942f168b424d62edf4f73ee4fa14a0a"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/pdf/kamogawa.pdf",
+          "observedResponseSha256": "affdc9bfe20e0e128a903eb282d18a2a23b727de6b678b9e1daadc6d4b7b6bd6"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-marine-section-and-optional-station-exclusion",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/vehicle-info/images/train/stop-marine.png",
+          "observedResponseSha256": "3dae8039d7806e25cb14a8c506f46bc33aabc053743d1d57497b27633864284a"
+        }
+      ]
+    },
+    {
+      "factId": "marine-3110M-west",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/75481?date=20261001",
+      "observedResponseSha256": "4a0b86baee046dc5a7a8d537160b5f3cae4df9e60c51a93ce6c77277fd9c03d5",
+      "locator": "Exact current train マリンライナー10号 / 3110M; only explicit clock-bearing station rows are retained as calls, passing rows are excluded. Contiguous operator section at Kojima; not the union of optional stops in the overview.",
+      "line": "瀬戸大橋線マリンライナー",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速マリンライナー",
+      "direction": "inbound",
+      "parentCallingStations": [
+        "高松",
+        "坂出",
+        "児島",
+        "上の町",
+        "木見",
+        "植松",
+        "茶屋町",
+        "早島",
+        "妹尾",
+        "備前西市",
+        "大元",
+        "岡山"
+      ],
+      "sectionStartIndex": 2,
+      "callingStations": [
+        "児島",
+        "上の町",
+        "木見",
+        "植松",
+        "茶屋町",
+        "早島",
+        "妹尾",
+        "備前西市",
+        "大元",
+        "岡山"
+      ],
+      "callingComponents": [
+        {
+          "name": "児島",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上の町",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "木見",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "植松",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "茶屋町",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "早島",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "妹尾",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備前西市",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大元",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_NAMED_TRAIN_TABLE_AND_CONTIGUOUS_OPERATOR_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_2026_10_01_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "okayama-shinkansen-conventional",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-shikoku",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0650608_215bfe14-24a7-4098-9c4a-afb3c33ffcaa.pdf",
+      "observedResponseSha256": "0d2acdf717f045604347e7d092d71585dbd2e9303330a87f279e37e1018d202e",
+      "locator": "2026-08-20 station map: Shinkansen platforms 21-24 join conventional concourse/platforms 1-10 via explicit Shinkansen transfer gates A/B; both pedestrian directions reviewed.",
+      "components": [
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_PHYSICAL_CONCOURSE_AND_GATE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kojima-company-concourse",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-shikoku",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0651304_dff6c2ce-32d5-42b3-8b88-b0e5a1d55a0c.pdf",
+      "observedResponseSha256": "443674b64e03a1af14bc7ea061ebc9485a6b1477b4e43ef78b80f064eaf1473d",
+      "locator": "2026-03-10 map: one physical station, platforms 1-4 joined by the same gated concourse, with Okayama and Takamatsu/Matsuyama/Kochi directions. Independently bound company-boundary components share the shown station concourse; no inferred journey duration.",
+      "components": [
+        {
+          "name": "児島",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "児島",
+          "operator": "四国旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_PHYSICAL_CONCOURSE_AND_GATE_REVIEW",
+      "hubScopeComplete": false
+    }
+  ]
+}

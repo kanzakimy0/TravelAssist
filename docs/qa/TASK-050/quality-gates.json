@@ -1,0 +1,57 @@
+{
+  "task": "TASK-050-B",
+  "baseline": "1af8d7feac7fa2d254ca85a00061bf6d6b0e7940",
+  "tests": {
+    "baselineFull": 1743,
+    "candidateFull": 1847,
+    "focused": 104,
+    "localRuntime": 25,
+    "task016Rls": 25,
+    "failures": 0
+  },
+  "gates": {
+    "npmCi": "PASS",
+    "lint": "BASELINE ONLY: 7 errors in historical ignored .cache/qa/task024-worktree; byte-identical before/after",
+    "changedLint": "PASS: 0 errors / 0 warnings",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "deployFormat": "PASS",
+    "deployValidateLocal": "PASS",
+    "deployBuildLocal": "PASS",
+    "deployVerifyArtifact": "PASS: 1860 files",
+    "diffWhitespace": "PASS",
+    "github": "PASS: exact implementation head; clean-runner lint and all Quality Gate steps"
+  },
+  "localDatabase": {
+    "start": "PASS",
+    "status": "PASS",
+    "reset": "PASS",
+    "types": "Not required: no migration, RPC or generated-type changes",
+    "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91"
+  },
+  "baselineLintSha256": "a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084",
+  "candidateLintSha256": "a16851c43da73e4710f03d11bc5b9f24ec8926eb34e35eafe48f1edc47e72084",
+  "unchangedPaths": [
+    "src/db",
+    "supabase",
+    "src/types/database.generated.ts",
+    "src/lib/auth",
+    "src/server/private-http.ts",
+    "src/server/companions",
+    "src/server/preferences",
+    "src/server/trip-library",
+    "src/shared/contracts",
+    "src/features/planner",
+    "src/features/profile/profile-account.tsx",
+    "src/features/profile/profile-data.ts"
+  ],
+  "githubInitialRun": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34680346747",
+  "implementationHead": "96038570c6c9557855f4461c45550c493ebaa48f",
+  "githubImplementationRun": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34680751816",
+  "pullRequest": "https://github.com/kanzakimy0/TravelAssist/pull/337",
+  "masterWbs": {
+    "linesRead": 1288,
+    "allOtherLinesUnchanged": true,
+    "status": "待审查（#336 / TASK-050-B；Draft PR #337）"
+  }
+}

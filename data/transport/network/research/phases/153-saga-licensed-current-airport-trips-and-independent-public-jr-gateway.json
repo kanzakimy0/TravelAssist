@@ -1,0 +1,166 @@
+{
+  "phaseId": "153-saga-licensed-current-airport-trips-and-independent-public-jr-gateway",
+  "strategy": [
+    "PREFECTURAL_DATASET_SPECIFIC_CC_BY_4_0",
+    "EXACT_ACTUAL_TRIPS_AND_CALENDAR_DATE_OVERRIDES",
+    "CURRENT_DOMESTIC_AIRPORT_PUBLIC_FRONTAGE",
+    "CURRENT_JR_AND_FACILITY_OWNER_EXPLICIT_BUS_CENTER_PASSAGE",
+    "RESTRICTIVE_CARRIER_AND_CLOSED_ASSOCIATION_REFERENCE_ONLY"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "saga-city-airport.json",
+      "packageSha256": "cbb40481daecb3a2cf5cbbf529450a709ec1358f3ab56d70aeed483e5b3c2315",
+      "sourceActionId": "bus:saga-prefecture:licensed-current-saga-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:saga-prefecture:licensed-current-saga-airport-trips",
+    "airport:saga-building:current-domestic-lobby-public-bus-frontage",
+    "airport:saga-prefecture:current-domestic-arrival-bus-access",
+    "hub:jr-kyushu:saga-current-public-bus-center-connection",
+    "hub:jr-kyushu-building:saga-east-hall-current-bus-center-passage",
+    "reference:saga-city-bus:separate-restrictive-site-terms",
+    "reference:saga-bustaxi:closed-old-association-site"
+  ],
+  "facts": [
+    {
+      "factId": "saga-airport-current-domestic-public-frontage-licensed-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:saga-building:current-domestic-lobby-public-bus-frontage",
+      "sourceUrl": "https://saga-ab.jp/wp-content/uploads/2026/09/1fmap-scaled.png",
+      "observedResponseSha256": "7a3c3dc1438d2fa57fb358967a09faa720665695a92925e80fc64fe2f4e30457",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:saga-building:current-domestic-lobby-public-bus-frontage",
+          "url": "https://saga-ab.jp/furniture_service/floormap/",
+          "observedResponseSha256": "b356ab46656c30ac3fc0706c0d913a71284fb243f79a6244f0a258ccc73341be"
+        },
+        {
+          "sourceActionId": "airport:saga-building:current-domestic-lobby-public-bus-frontage",
+          "url": "https://saga-ab.jp/access/",
+          "observedResponseSha256": "6427fd83bd9e8ee07d7d9dd146a7835ff345f880008a0c55af16db0c2ebfd230"
+        },
+        {
+          "sourceActionId": "airport:saga-prefecture:current-domestic-arrival-bus-access",
+          "url": "https://www.pref.saga.lg.jp/kiji00312854/index.html",
+          "observedResponseSha256": "c8715a45d52be9bbb7610d430422babbdf6171e20b692f5d97b86ad219efa461"
+        },
+        {
+          "sourceActionId": "bus:saga-prefecture:licensed-current-saga-airport-trips",
+          "url": "http://opendata.sagabus.info/saga-current.zip",
+          "observedResponseSha256": "4d62d561b77bb1551ade8c487c817c7f9cb5a41093f40fba25a80ec94f99db8f"
+        }
+      ],
+      "locator": "Current airport-building September 2026 first-floor plan explicitly depicts domestic arrival lobby doors and public frontage with bus boarding. Current October 1 prefectural original access text independently states domestic-arrival-lobby-front boarding. Exact licensed stop 1001001-20 is used by both independently selected actual domestic trips; return headsign explicitly identifies domestic-arrival-lobby boarding. Preserve raw name Saga Airport(2) and blank platform_code: the suffix is not inferred to mean bay 2 or international terminal. Bind whole C28 airport to this actual public domestic stop; retain no floor pixels, source prose, clocks, fares, detailed coordinates, guaranteed connection or universal accessible path.",
+      "components": [
+        {
+          "name": "佐賀空港",
+          "operator": "airport-facility:cf03_00084",
+          "line": "airport:cf03_00084",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00084",
+            "requirementId": "review:official-airport:佐賀",
+            "expectedRequirementName": "佐賀",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-building September 2026 first-floor plan explicitly depicts domestic arrival lobby doors and public frontage with bus boarding. Current October 1 prefectural original access text independently states domestic-arrival-lobby-front boarding. Exact licensed stop 1001001-20 is used by both independently selected actual domestic trips; return headsign explicitly identifies domestic-arrival-lobby boarding. Preserve raw name Saga Airport(2) and blank platform_code: the suffix is not inferred to mean bay 2 or international terminal. Bind whole C28 airport to this actual public domestic stop; retain no floor pixels, source prose, clocks, fares, detailed coordinates, guaranteed connection or universal accessible path."
+          }
+        },
+        {
+          "name": "佐賀空港(2)",
+          "operator": "佐賀市交通局",
+          "line": "gtfs:saga-city-airport:route:1佐賀空港線",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:saga-city-airport",
+            "stopId": "1001001-20",
+            "sourceArchiveSha256": "4d62d561b77bb1551ade8c487c817c7f9cb5a41093f40fba25a80ec94f99db8f",
+            "recordSha256": "3b311a710525ee9315b07fe84f3c28c1083da2ffdb88db8b2620fa422c355b8b",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport-building September 2026 first-floor plan explicitly depicts domestic arrival lobby doors and public frontage with bus boarding. Current October 1 prefectural original access text independently states domestic-arrival-lobby-front boarding. Exact licensed stop 1001001-20 is used by both independently selected actual domestic trips; return headsign explicitly identifies domestic-arrival-lobby boarding. Preserve raw name Saga Airport(2) and blank platform_code: the suffix is not inferred to mean bay 2 or international terminal. Bind whole C28 airport to this actual public domestic stop; retain no floor pixels, source prose, clocks, fares, detailed coordinates, guaranteed connection or universal accessible path."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_DOMESTIC_PUBLIC_LOBBY_AND_EXACT_LICENSED_ACTUAL_TRIP_STOP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "saga-jr-current-east-hall-passenger-passage-to-airport-bus-center",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-kyushu:saga-current-public-bus-center-connection",
+      "sourceUrl": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2024/05/07/sagaeki_kounaizu_2024.5.7.pdf",
+      "observedResponseSha256": "ae9b866a03a81029e225d4155d801d9fc7d3283a57152f037c421082b6c42b60",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-kyushu:saga-current-public-bus-center-connection",
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191586_1601.html",
+          "observedResponseSha256": "a362a48339d7efee0f71d37ae84c1435bf04ceda53c1998aaa27a953b71f6b26"
+        },
+        {
+          "sourceActionId": "hub:jr-kyushu-building:saga-east-hall-current-bus-center-passage",
+          "url": "https://www.ekimachi1.com/saga/floor.html",
+          "observedResponseSha256": "73bac861ae0a8a9cb6032a007cfebdca15cbb6215176e73d41f1b2ff49ae4eae"
+        },
+        {
+          "sourceActionId": "hub:jr-kyushu-building:saga-east-hall-current-bus-center-passage",
+          "url": "https://www.ekimachi1.com/saga/upload/map_east231201.jpg",
+          "observedResponseSha256": "08c1ae314261538217c21c8bc64458915e66dbd11781a2387088a1b7b38fdd4c"
+        },
+        {
+          "sourceActionId": "bus:saga-prefecture:licensed-current-saga-airport-trips",
+          "url": "http://opendata.sagabus.info/saga-current.zip",
+          "observedResponseSha256": "4d62d561b77bb1551ade8c487c817c7f9cb5a41093f40fba25a80ec94f99db8f"
+        }
+      ],
+      "locator": "Current JR Saga station index links the individually viewed March 2024 station plan, which explicitly joins fare gates to public concourse and the passenger passage toward the bus center through Ekimachi east hall. Current facility-owner floor guide links an independently viewed east-hall public passage terminating toward the bus center. Exact licensed current airport trip boards and alights at bus-center stop 1001002-01, named 1st boarding area by the feed; blank platform_code remains blank. Retain the coarse ordinary passenger connection from the exact JR Nagasaki-line station to this bus-center boarding point. No proximity-only merge, copied route prose, detailed crossing geometry, invented bay code, opening-hour guarantee, transfer time or universal accessibility claim. Closed former association page and restrictive carrier website remain reference-only.",
+      "components": [
+        {
+          "name": "佐賀",
+          "operator": "九州旅客鉄道",
+          "line": "長崎線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "佐賀駅バスセンター 1番のりば",
+          "operator": "佐賀市交通局",
+          "line": "gtfs:saga-city-airport:route:1佐賀空港線",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:saga-city-airport",
+            "stopId": "1001002-01",
+            "sourceArchiveSha256": "4d62d561b77bb1551ade8c487c817c7f9cb5a41093f40fba25a80ec94f99db8f",
+            "recordSha256": "2a3616b1be0427493bc801ef9a689384d3448c250e205f6ebf4c1d34b719e523",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current JR Saga station index links the individually viewed March 2024 station plan, which explicitly joins fare gates to public concourse and the passenger passage toward the bus center through Ekimachi east hall. Current facility-owner floor guide links an independently viewed east-hall public passage terminating toward the bus center. Exact licensed current airport trip boards and alights at bus-center stop 1001002-01, named 1st boarding area by the feed; blank platform_code remains blank. Retain the coarse ordinary passenger connection from the exact JR Nagasaki-line station to this bus-center boarding point. No proximity-only merge, copied route prose, detailed crossing geometry, invented bay code, opening-hour guarantee, transfer time or universal accessibility claim. Closed former association page and restrictive carrier website remain reference-only."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_GATE_CONCOURSE_AND_FACILITY_OWNER_BUS_CENTER_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

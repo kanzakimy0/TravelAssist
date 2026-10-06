@@ -1,0 +1,356 @@
+{
+  "task": "TASK-067-B",
+  "capturedAt": "2026-09-17T11:57:29.103Z",
+  "executionBase": "3a2779aee65c7335413adcc53ee5b4f7135c654c",
+  "latestDevelop": "3a2779aee65c7335413adcc53ee5b4f7135c654c",
+  "branch": "codex/b-wbs-3-7-main-system-state-runtime",
+  "publicationHead": "3bd28dc789bd54030a7768d7ac760a8f64c4fbf1",
+  "finalHeadBinding": "Final PR delivery receipt supplies immutable SHA and workflow_dispatch exact-head Quality gate. Local build used dirty candidate sources atop ea32ef9; runtime/test hashes below bind these checks to the final submitted tree.",
+  "startGate": {
+    "task": "TASK-067-B",
+    "capturedAt": "2026-09-17T10:58:39.011Z",
+    "rootWorkspace": {
+      "head": "5240ff8f7a91c1e36e90449d0f619de93f795472",
+      "branch": "",
+      "status": "?? outputs/\n",
+      "preservedUntracked": ["outputs/"]
+    },
+    "fetchAllPrune": "Executed successfully before worktree creation; new publication branch fetched",
+    "executionBase": "3a2779aee65c7335413adcc53ee5b4f7135c654c",
+    "publicationHead": "3bd28dc789bd54030a7768d7ac760a8f64c4fbf1",
+    "latestDevelopLog": "3a2779a docs(task-066): close accepted WBS 1.20 design freeze\nded9a7c Merge pull request #390 from kanzakimy0/codex/b-wbs-1-20-main-system-state-design\ned80da9 docs(TASK-066-B): link Draft PR 390 and mark WBS 1.20 for review\n76fad5e docs(TASK-066-B): specify main-system states and design acceptance\n0c6b92d docs(TASK-066-B): start WBS 1.20 authorized design freeze\nf5e3ca6 docs(TASK-065-B): record acceptance and complete WBS 4.24\nc368c97 Merge pull request #388 from kanzakimy0/codex/b-wbs-4-24-engine-integration-certification\nd4b3f8e docs(TASK-065-B): link Draft PR 388 and mark WBS 4.24 for review\ncfd6a7b docs(TASK-065-B): record Engine certification and complete Local acceptance\nf4dfcad test(TASK-065-B): certify Engine replay concurrency and compensation\n3d6c326 Merge pull request #386 from kanzakimy0/codex/b-task-064-wbs-sync\n7f20109 docs(TASK-064-B): synchronize completed WBS after acceptance\nb76cff4 Merge pull request #385 from kanzakimy0/docs/b-wbs-4-23-acceptance-closeout\n1f97ab9 docs(TASK-064-B): record WBS 4.23 acceptance closeout\n5084b01 Merge pull request #384 from kanzakimy0/codex/b-wbs-4-23-runtime-recompute-rollback\n436521d docs(TASK-064-B): record Draft PR 384 and acceptance evidence\ne8cce1e feat(TASK-064-B): add local recompute and compensating rollback\nb3c37a4 docs(TASK-063-B): record user acceptance and PR 382 merge\n47c9f48 Merge pull request #382 from kanzakimy0/codex/b-wbs-4-22-engine-transaction-apply\n03136fb docs(TASK-063-B): record Draft PR 382 and review handoff\n",
+    "branch": "codex/b-wbs-3-7-main-system-state-runtime",
+    "initialWorktreeStatus": "",
+    "publicationDrift": false
+  },
+  "commands": [
+    {
+      "command": "npm ci",
+      "exitCode": 0,
+      "logPath": "../npm-ci.log",
+      "logSha256": "cf9d1d3ca335b8bf0a7dfa72d2603bd5a1e2ebd4452a7cf05f1152e064d8e099",
+      "tail": "153 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\nnpm warn allow-scripts 3 packages have install scripts not yet covered by allowScripts:\nnpm warn allow-scripts   esbuild@0.25.12 (postinstall: node install.js)\nnpm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn allow-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)\nnpm warn allow-scripts\nnpm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.\n"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\" (clean develop runtime baseline)",
+      "exitCode": 0,
+      "logPath": "../baseline-node.log",
+      "logSha256": "71b116c4d916026f36e6fdb62fa6746c1bca1d25665d9d3516952971a2a96f73",
+      "counts": {
+        "tests": 2598,
+        "pass": 2598,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tail": "✔ browser harness records real engine selection diagnostics and evidence (0.3601ms)\n✔ 9.12 presentation components retain their no-integration boundary (3.4209ms)\nℹ tests 2598\nℹ suites 0\nℹ pass 2598\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 104842.5524\n"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-067-main-system-state.test.mjs",
+      "exitCode": 0,
+      "logPath": "../focused-task067-final.log",
+      "logSha256": "572ca3f9c3a8c1657c54e94f0960e8cb4c0f31ffc93b9bdd5321bade1da0d5e6",
+      "counts": {
+        "tests": 37,
+        "pass": 37,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tail": "✔ actual Planner timeline Empty preserves other dates and settings (33.3769ms)\n✔ existing region filter only renders Empty for confirmed zero results (1.3186ms)\nℹ tests 37\nℹ suites 0\nℹ pass 37\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1504.1139\n"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-067-main-system-state.test.mjs tests/task-025-2-concept-fidelity.test.mjs tests/task-023-planner-route-integration.test.mjs tests/browser-trip-save.test.mjs tests/task-008-planner.test.mjs tests/task-012-planner.test.mjs",
+      "exitCode": 0,
+      "logPath": "../focused-final.log",
+      "logSha256": "207ac16e7af4f6d9f5025362190870700eda1ba29d7e104d84a8fc36f2b0d33a",
+      "counts": {
+        "tests": 83,
+        "pass": 83,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tail": "✔ actual Planner timeline Empty preserves other dates and settings (19.1844ms)\n✔ existing region filter only renders Empty for confirmed zero results (2.597ms)\nℹ tests 83\nℹ suites 0\nℹ pass 83\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1562.0915\n"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\" (final candidate)",
+      "exitCode": 0,
+      "logPath": "../candidate-node-final.log",
+      "logSha256": "1f9c4cb2a6d1958e6f41878f2faace78229ae192f705231da1848e8a3da274e6",
+      "counts": {
+        "tests": 2635,
+        "pass": 2635,
+        "fail": 0,
+        "skipped": 0
+      },
+      "tail": "✔ browser harness records real engine selection diagnostics and evidence (0.3671ms)\n✔ 9.12 presentation components retain their no-integration boundary (3.5567ms)\nℹ tests 2635\nℹ suites 0\nℹ pass 2635\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 117820.1087\n"
+    },
+    {
+      "command": "npm run deploy:validate:local",
+      "exitCode": 0,
+      "logPath": "../deploy-validate-final.log",
+      "logSha256": "fd399538f62ffc72676b2409ab370e49d7e5a3a10bf04c54a56e52507742e45d",
+      "tail": "    \"mapProviderMode\": \"fallback\",\n    \"routingProviderMode\": \"disabled\",\n    \"observabilityExportMode\": \"disabled\"\n  },\n  \"fingerprint\": \"0436bcb1968c48019d71aaceab121ad06aabe0033cbf4c3770c0b8a8b2081ce2\"\n}\n(node:5040) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task067/worktree/src/server/environment/contract.ts is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to \\\\?\\C:\\Users\\Administrator\\Documents\\ChatGPT\\TravelAssist\\.artifacts\\task067\\worktree\\package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "startedAt": "2026-09-17T11:42:03.1004505Z",
+      "finishedAt": "2026-09-17T11:42:04.0839232Z"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "logPath": "../build-final.log",
+      "logSha256": "55a075f147cf2dd4ee54d8ab112a59aa187e294e72d7e47c064384b3ffc3eff9",
+      "tail": "├ ƒ /reset-password\n├ ƒ /start\n└ ○ /terms\n\n\nƒ Proxy (Middleware)\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "startedAt": "2026-09-17T11:42:04.1077974Z",
+      "finishedAt": "2026-09-17T11:42:26.1877604Z"
+    },
+    {
+      "command": "npm run deploy:build:local",
+      "exitCode": 0,
+      "logPath": "../deploy-build-final.log",
+      "logSha256": "1d98af5d7cf45809dce63e6a2fb39782b32e4d3041bf33d37cf862a34f3b81ca",
+      "tail": "    \"targetId\": \"local\",\n    \"nodeVersion\": \"v24.18.0\",\n    \"configFingerprint\": \"0436bcb1968c48019d71aaceab121ad06aabe0033cbf4c3770c0b8a8b2081ce2\",\n    \"createdAt\": \"2026-09-17T11:42:46.887Z\"\n  },\n  \"artifactAudit\": {\n    \"ok\": true,\n    \"fileCount\": 1873\n  }\n}\n",
+      "startedAt": "2026-09-17T11:42:26.1909285Z",
+      "finishedAt": "2026-09-17T11:43:05.5183078Z"
+    },
+    {
+      "command": "npm run deploy:verify-artifact",
+      "exitCode": 0,
+      "logPath": "../deploy-verify-final.log",
+      "logSha256": "97c0eae9a4970662c374a0a3eb8fd8ab81a9ef1a44facbbc940e8121b93a377d",
+      "tail": "(node:27304) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/Documents/ChatGPT/TravelAssist/.artifacts/task067/worktree/src/server/environment/contract.ts is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to \\\\?\\C:\\Users\\Administrator\\Documents\\ChatGPT\\TravelAssist\\.artifacts\\task067\\worktree\\package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\n{\n  \"status\": \"verified\",\n  \"commitSha\": \"ea32ef9bf9bdf3a9df69753a49b87ca5934f4a58\",\n  \"fileCount\": 1873,\n  \"failures\": []\n}\n",
+      "startedAt": "2026-09-17T11:43:05.5221540Z",
+      "finishedAt": "2026-09-17T11:43:08.0117535Z"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "logPath": "../typecheck-final.log",
+      "logSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f",
+      "tail": "\n> travel-assist@0.1.0 typecheck\n> next typegen && tsc --noEmit\n\nGenerating route types...\n✓ Types generated successfully\n",
+      "startedAt": "2026-09-17T11:43:08.0139637Z",
+      "finishedAt": "2026-09-17T11:43:15.7107546Z"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "logPath": "../lint-final.log",
+      "logSha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762",
+      "tail": "\n> travel-assist@0.1.0 lint\n> eslint .\n\n",
+      "startedAt": "2026-09-17T11:43:15.7138545Z",
+      "finishedAt": "2026-09-17T11:43:51.8275495Z"
+    },
+    {
+      "command": "npm run format:check:deploy",
+      "exitCode": 0,
+      "logPath": "../format-deploy-final.log",
+      "logSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885",
+      "tail": "\n> travel-assist@0.1.0 format:check:deploy\n> prettier --check \"src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tools/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tests/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \".github/**/*.{yml,yaml,md}\" \"docs/deployment/**/*.md\" \"*.{ts,mjs,json}\"\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+      "startedAt": "2026-09-17T11:43:51.8296385Z",
+      "finishedAt": "2026-09-17T11:44:08.1429354Z"
+    },
+    {
+      "command": "npx prettier --check docs/qa/TASK-067/*.md docs/qa/TASK-067/*.json docs/tasks/*TASK-067*.md docs/project/WBS-3.7-owner-correction.md",
+      "exitCode": 0,
+      "logPath": "../format-task-owned.log",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "src/components/ui/state-action.tsx",
+      "sha256": "2af11616f8de82f3e434f4c08724e4deac913f4184d5644169f65ae934a941d1"
+    },
+    {
+      "path": "src/components/ui/state-notice.module.css",
+      "sha256": "f47396ab6af4d5d3290a3efd21cfc6f5c86d0092468e9982c68e9a241cfde9dd"
+    },
+    {
+      "path": "src/components/ui/state-notice.tsx",
+      "sha256": "e13ac7c2d00d3a6c1f0005a1d0c68fb4d56a63e51f9c582b8f7ca105cfa6a779"
+    },
+    {
+      "path": "src/features/home/components/ai-conversation-panel.module.css",
+      "sha256": "8f414dd59defeab55895e7c1e374e011e13aff083d13bb24c73074b78293707e"
+    },
+    {
+      "path": "src/features/home/components/ai-conversation-panel.tsx",
+      "sha256": "df8300e13e0db5a9cced23837386a0178d66bcd90a9139dc8e1947eca6e31d14"
+    },
+    {
+      "path": "src/features/planner/browser-trip.module.css",
+      "sha256": "d33a68c3c04b9e6dcb4fdb71a8b601cd42ba67317f0468f924213e0b93a234ad"
+    },
+    {
+      "path": "src/features/planner/components/detail-itinerary-board.tsx",
+      "sha256": "71cd8d08390313173a95ce12d833cc8839190646bd63a7b61201b37152b0abc8"
+    },
+    {
+      "path": "src/features/planner/components/planner-map-shell.tsx",
+      "sha256": "4e7a31ae2c9a492c2ccc8f45caf7cf7fbcf1d78ba51b2c7c2182489f6177bda1"
+    },
+    {
+      "path": "src/features/planner/components/planner-page.tsx",
+      "sha256": "5e50d5d0361f3134140ce445e280afabcee20fbb54f34bfd9355726007cb1829"
+    },
+    {
+      "path": "src/features/planner/components/planner-route-board.tsx",
+      "sha256": "b5b15505d423118cdd2d1589876984868c231f292ec65fefb015be96420254c8"
+    },
+    {
+      "path": "src/features/planner/components/planner-route-query.tsx",
+      "sha256": "db3b1b4375b14344e73c10e7ce782d534d830c3b2464862822c9d3dc81dec1b3"
+    },
+    {
+      "path": "src/features/planner/components/planner-sight-timeline.tsx",
+      "sha256": "aaeaeed1fe2ebf550889e78ab2e10915455f33b63a2c324e036f0dacbcfd8fb6"
+    },
+    {
+      "path": "src/features/planner/components/use-browser-trip.ts",
+      "sha256": "bf6015543d7cc6a2e4e5a443f069d8e44de368668b94738d58908191160e227a"
+    },
+    {
+      "path": "src/features/planner/model/browser-trip-error.ts",
+      "sha256": "73b7bd6d2aae42145c35fe8feaa0b7928c435faa8fa72d7489eee0e3d607ff3c"
+    },
+    {
+      "path": "src/features/planner/model/route-presentation.ts",
+      "sha256": "f9fb8cb9e8aa4a4859a394bad3df1370520189ae02b528ca787ebf30ce6023f2"
+    },
+    {
+      "path": "src/features/planner/planner-route-board.module.css",
+      "sha256": "f59ab94e53bdea45b22115ed52bd54746e72f14b31b6e207aa131ee59e53a22c"
+    },
+    {
+      "path": "src/features/start-flow/components/generation-step.tsx",
+      "sha256": "da50782b06639b710d32e89a5e2c0d37ff28a277c3757cb077d458610edda919"
+    },
+    {
+      "path": "src/features/start-flow/components/more-regions-modal.tsx",
+      "sha256": "ec74202be10d9d813f71a8b90438596973ae691c5eda8060c9a9a38f00824c5e"
+    },
+    {
+      "path": "src/features/start-flow/components/start-flow-shell.tsx",
+      "sha256": "7cc53cd8239e256d25c620a4d3a8816351a84b1a7c57a1b5a55f627364dcdd53"
+    },
+    {
+      "path": "src/features/start-flow/components/wizard-layout.tsx",
+      "sha256": "e91ae20708b5abc2b3f0484217e4c4a981f667f2473fecefdb5bd3bbe5934f18"
+    },
+    {
+      "path": "tests/task-025-2-concept-fidelity.test.mjs",
+      "sha256": "551c3b8115e687ea3c487903446ce51b68136531d325e51c8d711a19f8367ed1"
+    },
+    {
+      "path": "tests/task-067-main-system-state.browser.mjs",
+      "sha256": "343fcb0523201c51fd0f0528e68657cd17b353d88af9b05cd378e5650168c4a7"
+    },
+    {
+      "path": "tests/task-067-main-system-state.test.mjs",
+      "sha256": "f101b86d73145b2035a756630d194048f6bff7692bfd7fa4763dda5f336ac7fc"
+    },
+    {
+      "path": "tests/task-067-ui-loader.mjs",
+      "sha256": "db3f304e71fa94aaa7f2bac68ebb90f2327dbcc0f82787817775c427a6c33203"
+    }
+  ],
+  "changedFiles": [
+    "docs/project/WBS-3.7-owner-correction.md",
+    "docs/project/WBS-TravelAssist.md",
+    "docs/qa/TASK-067/README.md",
+    "docs/qa/TASK-067/browser-development.json",
+    "docs/qa/TASK-067/browser-production.json",
+    "docs/qa/TASK-067/gate-evidence.json",
+    "docs/qa/TASK-067/state-runtime-matrix.json",
+    "docs/tasks/CODEX-TASK-067-b-wbs-3-7-main-system-state-runtime.md",
+    "docs/tasks/RESULT-TASK-067-b-wbs-3-7-main-system-state-runtime.md",
+    "docs/tasks/TASK-067-b-wbs-3-7-main-system-state-runtime.md",
+    "src/components/ui/state-action.tsx",
+    "src/components/ui/state-notice.module.css",
+    "src/components/ui/state-notice.tsx",
+    "src/features/home/components/ai-conversation-panel.module.css",
+    "src/features/home/components/ai-conversation-panel.tsx",
+    "src/features/planner/browser-trip.module.css",
+    "src/features/planner/components/detail-itinerary-board.tsx",
+    "src/features/planner/components/planner-map-shell.tsx",
+    "src/features/planner/components/planner-page.tsx",
+    "src/features/planner/components/planner-route-board.tsx",
+    "src/features/planner/components/planner-route-query.tsx",
+    "src/features/planner/components/planner-sight-timeline.tsx",
+    "src/features/planner/components/use-browser-trip.ts",
+    "src/features/planner/model/browser-trip-error.ts",
+    "src/features/planner/model/route-presentation.ts",
+    "src/features/planner/planner-route-board.module.css",
+    "src/features/start-flow/components/generation-step.tsx",
+    "src/features/start-flow/components/more-regions-modal.tsx",
+    "src/features/start-flow/components/start-flow-shell.tsx",
+    "src/features/start-flow/components/wizard-layout.tsx",
+    "tests/task-025-2-concept-fidelity.test.mjs",
+    "tests/task-067-main-system-state.browser.mjs",
+    "tests/task-067-main-system-state.test.mjs",
+    "tests/task-067-ui-loader.mjs"
+  ],
+  "staticChecks": {
+    "authorizedFileScope": true,
+    "otherNumericWbsRowsUnchanged": true,
+    "frozenDesignUnchanged": true,
+    "globalsUnchanged": true,
+    "matrixRows": 48,
+    "matrixCounts": {
+      "IMPLEMENTED_AND_TESTED": 31,
+      "CONDITIONAL_NOT_CURRENTLY_REACHABLE": 9,
+      "OUTSIDE_CURRENT_RUNTIME_CAPABILITY": 5,
+      "ALREADY_SATISFIED_UNCHANGED": 3
+    },
+    "localMarkdownLinksChecked": 11,
+    "diffCheck": true,
+    "taskOwnedFormatting": true,
+    "runtimeAndTestHashesReverified": true,
+    "existingWbsFileFormatting": "Only 3.7 row/tracking changed; unrelated historical table formatting retained. git diff --check passed."
+  },
+  "screenshotSamples": [],
+  "limitations": [
+    "No DB/Supabase run required or performed",
+    "No Production/Staging operation or deployment",
+    "No live/paid Provider calls",
+    "No physical device keyboard or human screen-reader session",
+    "No real Mapbox-token/provider failure run",
+    "No remote Trip/AI/recommendation/summary/unknown-commit UI capability added"
+  ],
+  "initialFailedRuns": [
+    {
+      "run": "candidate-node.log",
+      "tests": 2634,
+      "pass": 2632,
+      "fail": 2,
+      "causes": [
+        "TASK-033 expected old AI copy; narrowly updated assertion, semantics retained",
+        "asset nightly --dry-run existing 30s child timeout while builds ran; final full suite independently rerun unchanged"
+      ]
+    },
+    {
+      "run": "https://github.com/kanzakimy0/TravelAssist/actions/runs/35217842652",
+      "head": "92384d11b61e2c4a595cf8ac3334d2b95a23e7d1",
+      "tests": 2635,
+      "pass": 2633,
+      "fail": 2,
+      "logSha256": "290a1e2b3eaa44d3c7842d218f86794fd46f2a04d5d3b6b09831ffd558b61098",
+      "causes": [
+        "Five optional QA PNG copies were committed after the local full suite and became new uncatalogued asset sources."
+      ],
+      "resolution": "Remove only the five optional committed copies, retain all local originals and screenshot hashes, do not modify asset catalog/scanner/assertions. Rerun full Node 2635/2635 after removal; require a new exact-head CI run."
+    }
+  ],
+  "syntheticCleanup": "Playwright contexts/browser closed in finally; local servers stopped; no synthetic DB fixtures; no production debug switches.",
+  "pullRequest": {
+    "number": 392,
+    "url": "https://github.com/kanzakimy0/TravelAssist/pull/392",
+    "isDraft": true,
+    "state": "OPEN",
+    "base": "develop"
+  },
+  "screenshotStorage": {
+    "committed": false,
+    "reason": "Repository-wide asset catalog invariant; evidence is retained as JSON plus original PNGs outside tracked sources.",
+    "development": "../browser-development-final",
+    "production": "../browser-production",
+    "count": 40
+  }
+}

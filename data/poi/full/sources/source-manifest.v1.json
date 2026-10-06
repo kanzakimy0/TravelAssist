@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "task068-source-audit-v1",
+  "baseSha": "45e9f8830ac66d03b3ace6480d36d3ee31907a2e",
+  "publicationSha": "1622eb076a9b023a643b845d66007f4eef7f83ad",
+  "inputs": [
+    {
+      "id": "geoshape-dataset",
+      "path": ".artifacts/task068/nrct-poi-20250515.csv",
+      "sha256": "d4cd6bebb27378a57545829a30249439a7d2a30c68f280e669faef1f32a3d9c6",
+      "bytes": 5576569
+    },
+    {
+      "id": "identity-v38",
+      "path": ".artifacts/task068/artifact-v38/expansion8000-remaining-real-identity-v3.8.jsonl",
+      "sha256": "fbe023b3a5b78d10002080c2e898dd98371f6186269bbe27a8b3b71fbe25d58a",
+      "bytes": 5459764
+    },
+    {
+      "id": "identity-v371",
+      "path": ".artifacts/task068/reproduced-v371/remaining5021-real-identity-v3.7.jsonl",
+      "sha256": "e42300b3a486acb812d27928522d92db07d97dd94b0a2e65b80e634968c6fdcb",
+      "bytes": 4992286
+    },
+    {
+      "id": "old2979-source-ids",
+      "path": ".artifacts/task068/artifact-v38/used-geoshape-source-ids-v3.6.zlib.b64",
+      "sha256": "fe2c7a232c572bb27f9c4a464da57be0a56f840ae5bf525cabfa5471cee1c4a4",
+      "bytes": 9448
+    },
+    {
+      "id": "B-v1",
+      "path": "outputs/poi-b-20260914/work/workbook-data.json",
+      "sha256": "0a603a66d658266a279c29ad7815a2b0620c4b2e45b9ad5b83af55b20bb1eb41",
+      "bytes": 1896771
+    },
+    {
+      "id": "B-cumulative",
+      "path": "outputs/poi-b-sns-20260915/combined/Cumulative B.json",
+      "sha256": "d274af73be82bca15e901535c6f061e3662a0082d4f61f7bbf4f13c67e8a6ed5",
+      "bytes": 3814282
+    },
+    {
+      "id": "cross-family-multi",
+      "path": "outputs/poi-b-multiround-20260914/combined/recommended-candidates.json",
+      "sha256": "3eaff90f2c26ffecac0aa5dcef02a310f23df9276c8e639269d548f0915aeccd",
+      "bytes": 59455
+    },
+    {
+      "id": "cross-family-sns",
+      "path": "outputs/poi-b-sns-20260915/combined/Latest Candidate Ledger.json",
+      "sha256": "8120f9ad297b722221371acd748729fd5cc7c0c8461098fa4afdf0d8d2d9e8db",
+      "bytes": 2475040
+    },
+    {
+      "id": "pilot",
+      "path": ".artifacts/task068/pilot-sample.json",
+      "sha256": "e8a3108a68d2dafff9ee16c0d0ff8f4f04e2fb9a2818bfbea267345b5bf8bf40",
+      "bytes": 83141
+    }
+  ],
+  "normalizedInputSha256": "6a60eab7d673a8b706ac1c6f404380b78913fc755dec543d60c1285fe5c01e6b",
+  "inputObservationCount": 10491,
+  "geoshapeAttribution": {
+    "credit": "『日本歴史地名大系』施設・地点項目データセット（CODH作成） doi:10.20676/00000456",
+    "license": "CC BY 4.0",
+    "url": "https://geoshape.ex.nii.ac.jp/nrct-poi/",
+    "version": "2025-05-15",
+    "transform": "Selected already observed source IDs; translated field names; retained historical coordinate limitations. No new Master Code allocated."
+  },
+  "recoveredV371": {
+    "workflowRun": 34542822317,
+    "headSha": "de795f7a9957d7c78b08dfd9f30e3a883dba1628",
+    "identitySha256": "e42300b3a486acb812d27928522d92db07d97dd94b0a2e65b80e634968c6fdcb",
+    "matchesHistoricLog": true
+  },
+  "excluded": {
+    "unresolvedAttractionSlots": 9000,
+    "regionalDestinationRows": 300,
+    "canonicalRegionEntities": 50,
+    "canonicalReservedSentinel": 1,
+    "unapprovedOrClosedCandidateObservations": "Retained in original local audit files; not promoted into the combined identity candidate list."
+  },
+  "scope": "Combined candidate identities. NOT a canonical allocation registry; NOT proof of full occupied corpus."
+}

@@ -1,0 +1,573 @@
+{
+  "phaseId": "137-yamaguchi-ube-current-express-public-gateways-and-ana-bridge",
+  "strategy": [
+    "EXACT_MUNICIPAL_OPERATOR_P11_STOP_IDENTITIES",
+    "CURRENT_INDEPENDENT_THREE_CALL_EXPRESS_TRIPS",
+    "ACTUAL_JR_GATE_AND_PUBLIC_NORTH_BUS_TERMINAL",
+    "INDEPENDENT_CURRENT_ANA_FLIGHT_PAIR"
+  ],
+  "completedActionIds": [
+    "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+    "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+    "hub:jr-west:shin-yamaguchi-current-north-public-airport-bus"
+  ],
+  "facts": [
+    {
+      "factId": "ube-current-three-call-express-airport-to-jr",
+      "kind": "service",
+      "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+      "sourceUrl": "https://ubebus.jp/files/libs/4780/202608211650566134.pdf",
+      "observedResponseSha256": "260d9ee3189b351122413057b95cecd6c4b3be384e49f2e43c864d4f20c7ea4a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/62/",
+          "observedResponseSha256": "cd508dd73a4da2a2e665421f77d588d0687deb6b6be85e40132c3a5f38713ebf"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/532/",
+          "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/files/libs/4778/202407021443395196.pdf",
+          "observedResponseSha256": "5fa27ce81fb66df98c6850669695f5167858f0cb97680c06962be7e1ae4bff5e"
+        },
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/mapaccess/bus/bus_shin_yamaguchi/",
+          "observedResponseSha256": "dcb06ba39385361c75364d004d3042fb4669f9bc39e84a82a320ce14f4f6c44a"
+        }
+      ],
+      "locator": "Current operator-linked October 1-24 2026 table individually viewed. Lower-left actual first trip, airport to Shin-Yamaguchi. Both three-call directions separately reviewed. Current linked segment matrix independently lists airport/Tokiwa-Station-Entrance/Shin-Yamaguchi passenger segments. Preserve ordered calls only, without clocks, fares, raw table, guessed ordinary-route stops, automatic reverse or archived route order.",
+      "line": "山口宇部空港連絡バス（新山口駅行き）",
+      "operator": "宇部市交通局",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "特急バス",
+      "direction": "山口宇部空港→常盤駅入口→新山口駅",
+      "callingStations": ["山口宇部空港", "常盤駅入口", "新山口駅"],
+      "callingComponents": [
+        {
+          "name": "山口宇部空港",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs4240",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs4240",
+            "recordSha256": "d3e64b7768b78b8370e9b55a9e4c3157ba24d6dd8037037d2ff2a533e4dd6bf3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "山口宇部空港",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        },
+        {
+          "name": "常盤駅入口",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs4175",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs4175",
+            "recordSha256": "6eeed9523447145c2d4804485d3e17f37800fcc6ebaa2a676159ba2914088a58",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "常盤駅入口",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        },
+        {
+          "name": "新山口駅",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs2273",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs2273",
+            "recordSha256": "d9f1f29a2e77c4cfdeefdd8485ef5dbfaa1d2b429e8d52a40233293b211fb289",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "新山口駅",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_THREE_CALL_EXPRESS_TRIPS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_TO_24_2026_CURRENT_PUBLISHED_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "ube-current-three-call-express-jr-to-airport",
+      "kind": "service",
+      "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+      "sourceUrl": "https://ubebus.jp/files/libs/4780/202608211650566134.pdf",
+      "observedResponseSha256": "260d9ee3189b351122413057b95cecd6c4b3be384e49f2e43c864d4f20c7ea4a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/62/",
+          "observedResponseSha256": "cd508dd73a4da2a2e665421f77d588d0687deb6b6be85e40132c3a5f38713ebf"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/532/",
+          "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/files/libs/4778/202407021443395196.pdf",
+          "observedResponseSha256": "5fa27ce81fb66df98c6850669695f5167858f0cb97680c06962be7e1ae4bff5e"
+        },
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/mapaccess/bus/bus_shin_yamaguchi/",
+          "observedResponseSha256": "dcb06ba39385361c75364d004d3042fb4669f9bc39e84a82a320ce14f4f6c44a"
+        }
+      ],
+      "locator": "Current operator-linked October 1-24 2026 table individually viewed. Upper-left actual first trip, Shin-Yamaguchi to airport. Both three-call directions separately reviewed. Current linked segment matrix independently lists airport/Tokiwa-Station-Entrance/Shin-Yamaguchi passenger segments. Preserve ordered calls only, without clocks, fares, raw table, guessed ordinary-route stops, automatic reverse or archived route order.",
+      "line": "山口宇部空港連絡バス（新山口駅行き）",
+      "operator": "宇部市交通局",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "特急バス",
+      "direction": "新山口駅→常盤駅入口→山口宇部空港",
+      "callingStations": ["新山口駅", "常盤駅入口", "山口宇部空港"],
+      "callingComponents": [
+        {
+          "name": "新山口駅",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs2273",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs2273",
+            "recordSha256": "d9f1f29a2e77c4cfdeefdd8485ef5dbfaa1d2b429e8d52a40233293b211fb289",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "新山口駅",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        },
+        {
+          "name": "常盤駅入口",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs4175",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs4175",
+            "recordSha256": "6eeed9523447145c2d4804485d3e17f37800fcc6ebaa2a676159ba2914088a58",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "常盤駅入口",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        },
+        {
+          "name": "山口宇部空港",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs4240",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs4240",
+            "recordSha256": "d3e64b7768b78b8370e9b55a9e4c3157ba24d6dd8037037d2ff2a533e4dd6bf3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "山口宇部空港",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_THREE_CALL_EXPRESS_TRIPS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_TO_24_2026_CURRENT_PUBLISHED_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "ube-airport-current-public-domestic-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+      "sourceUrl": "https://www.yamaguchiube-airport.jp/terminal/domestic_terminal/",
+      "observedResponseSha256": "fe7e27f70808d41a5adb93540de9ee6b6cfbdc5e1dd5bfeac5ce40154508b31e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/wp-content/themes/air-temp/images/terminal/img_domestic_check-in21.png",
+          "observedResponseSha256": "b4c6dc2823f138dd45838191134607845c24825dd75bcca04b5894699d15dcbe"
+        },
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/mapaccess/bus/bus_shin_yamaguchi/",
+          "observedResponseSha256": "dcb06ba39385361c75364d004d3042fb4669f9bc39e84a82a320ce14f4f6c44a"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/263/",
+          "observedResponseSha256": "e8cf4d17f8bde421a1d8c97c2e82036e9493aa37e9c8962699d6b1475927dbdb"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/files/libs/1768/20231225085429936.png?1703462072",
+          "observedResponseSha256": "993ea0dc595451506e067abe759268f04ad4dffd924a95ea6b9f97d8681b9c86"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/532/",
+          "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+        }
+      ],
+      "locator": "Current airport domestic floor plan shows public arrival/check-in lobby doors onto the terminal forecourt. Airport current bus page assigns Shin-Yamaguchi service to stand 1; independently viewed operator boarding plan places stand 1 at the domestic-terminal frontage. Together these explicitly assigned public facilities bind whole C28 airport to exact P11 municipal airport road stop. P11 does not locate an individual bay; no terminal-name-only collapse, precise bay coordinate, airside shortcut, walking time or accessibility promise.",
+      "components": [
+        {
+          "name": "山口宇部空港",
+          "operator": "airport-facility:cf03_00082",
+          "line": "airport:cf03_00082",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00082",
+            "requirementId": "review:transport-node:bbbf31f1-fddf-5ada-9334-259ee13fce66",
+            "expectedRequirementName": "山口宇部",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport domestic floor plan shows public arrival/check-in lobby doors onto the terminal forecourt. Airport current bus page assigns Shin-Yamaguchi service to stand 1; independently viewed operator boarding plan places stand 1 at the domestic-terminal frontage. Together these explicitly assigned public facilities bind whole C28 airport to exact P11 municipal airport road stop. P11 does not locate an individual bay; no terminal-name-only collapse, precise bay coordinate, airside shortcut, walking time or accessibility promise."
+          }
+        },
+        {
+          "name": "山口宇部空港",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs4240",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs4240",
+            "recordSha256": "d3e64b7768b78b8370e9b55a9e4c3157ba24d6dd8037037d2ff2a533e4dd6bf3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "山口宇部空港",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_DOMESTIC_TERMINAL_AND_ASSIGNED_PUBLIC_BUS_FRONTAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shin-yamaguchi-sanyo-current-north-public-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:shin-yamaguchi-current-north-public-airport-bus",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0800646_055e9a3a-307b-429c-86cf-b59c320878ee.pdf",
+      "observedResponseSha256": "74d1f8b7318bd55587b9c41534aba98129fc8f197480ac892843720ef9ac5bf9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:shin-yamaguchi-current-north-public-airport-bus",
+          "url": "https://eki.jr-odekake.net/premises?id=0800646",
+          "observedResponseSha256": "fde04a3caf7711e257a4355b9ff0d9440c8da6ca7e1c8956371a29b791da001a"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/262/",
+          "observedResponseSha256": "0dcd2070def0738f969f9a0813bd5526a511967b3cf99d5cb05dbac2e368b0ec"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/files/libs/1769/202312250854434810.png?1703462090",
+          "observedResponseSha256": "3c0d3f2289f93e187eca27ec4960018ae4c1d8d08935b2b4863c037666564552"
+        },
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/qa/",
+          "observedResponseSha256": "3487738bed19934b9ea500fb324e7466552c339282c2fa6afdbadb70dd1473eb"
+        },
+        {
+          "sourceActionId": "bus:ube-city:current-three-call-airport-express-and-stop-identities",
+          "url": "https://ubebus.jp/pages/532/",
+          "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+        }
+      ],
+      "locator": "Current JR map dated February 27 2025 individually viewed: Sanyo conventional platforms 4-7 join the overbridge and 2F conventional ticket gate toward north public exit and bus guidance/waiting area. Current operator north-terminal plan explicitly assigns airport stand 1 beside the station. Airport FAQ independently directs passengers to change between this bus and JR at Shin-Yamaguchi. Exact S12 Sanyo component and municipal P11 road-stop identity remain distinct. No distance/name-only inference, invented walking geometry, fare, time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "新山口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新山口駅",
+          "operator": "宇部市",
+          "line": "p11-stop:P11-22_35:bs2273",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs2273",
+            "recordSha256": "d9f1f29a2e77c4cfdeefdd8485ef5dbfaa1d2b429e8d52a40233293b211fb289",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal Ube City stop matches the current municipal Transport Bureau airport-express stop. The airport independently identifies Ube City Transport Bureau as carrier. Exclude colocated Bocho Kotsu identities. Current actual trip order comes from October 1-24 2026 operator table, not archived P11 route labels. P11 represents same-operator road-stop directions rather than individual boarding platforms.",
+            "currentOperatorEvidence": {
+              "recordOperator": "宇部市",
+              "currentOperatorName": "宇部市交通局",
+              "currentStopName": "新山口駅",
+              "historicalRoute": "山口宇部空港連絡バス（新山口駅行き）",
+              "url": "https://ubebus.jp/pages/532/",
+              "observedResponseSha256": "1f699a6ace10ebe9542cdacc269a89564dfb498d822fe3e2eae8d27e176983b1"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_RAIL_CONCOURSE_GATE_AND_OPERATOR_NORTH_TERMINAL_PLAN",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shin-yamaguchi-current-shinkansen-sanyo-transfer-gate",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:shin-yamaguchi-current-north-public-airport-bus",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0800646_055e9a3a-307b-429c-86cf-b59c320878ee.pdf",
+      "observedResponseSha256": "74d1f8b7318bd55587b9c41534aba98129fc8f197480ac892843720ef9ac5bf9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:shin-yamaguchi-current-north-public-airport-bus",
+          "url": "https://eki.jr-odekake.net/premises?id=0800646",
+          "observedResponseSha256": "fde04a3caf7711e257a4355b9ff0d9440c8da6ca7e1c8956371a29b791da001a"
+        }
+      ],
+      "locator": "Current-linked JR map individually viewed: Shinkansen platforms 11/12 join the concourse and explicitly labeled Shinkansen transfer gate to the conventional overbridge, with Sanyo platforms 4-7 independently assigned on the same current station page. This is the paid-area passenger transfer gate; no through train, free access, fare exemption, universal accessibility or all-hours claim. Add only exact S12 Shinkansen/Sanyo component pair; do not claim every possible Shin-Yamaguchi rail component reviewed.",
+      "components": [
+        {
+          "name": "新山口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新山口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_JR_SHINKANSEN_CONVENTIONAL_TRANSFER_GATE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "ana-yamaguchi-ube-haneda-current-nh692",
+      "kind": "service",
+      "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+      "sourceUrl": "https://www.yamaguchiube-airport.jp/flight/domestic/",
+      "observedResponseSha256": "d187fb100417af439806b098625b04621f00ea37d321951af840b40cc2740198",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/",
+          "observedResponseSha256": "bec3b61c0f5a5dc814eb01b645b27ecad97f8697655f2ac3fe4e7a2a8c0d43ba"
+        },
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/mapaccess/bus/bus_shin_yamaguchi/",
+          "observedResponseSha256": "dcb06ba39385361c75364d004d3042fb4669f9bc39e84a82a320ce14f4f6c44a"
+        }
+      ],
+      "locator": "Current airport October 1-24 2026 domestic table separately lists ANA692 Ube-to-Tokyo and ANA693 Tokyo-to-Ube, with ANA carrier logo alt text. Its homepage explicitly labels the Tokyo destination Haneda, preserving previously reviewed Tokyo International/Haneda C28 binding. Select NH692 only; no SFJ codeshare or J-AIR operated flight is mislabeled ANA. Preserve only minimum actual directed service, carrier and flight code; no timetable clocks, logo, payload, fares or live availability.",
+      "line": "羽田・山口宇部国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH692",
+      "direction": "山口宇部空港→東京国際空港",
+      "callingStations": ["山口宇部空港", "東京国際空港"],
+      "callingComponents": [
+        {
+          "name": "山口宇部空港",
+          "operator": "airport-facility:cf03_00082",
+          "line": "airport:cf03_00082",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00082",
+            "requirementId": "review:transport-node:bbbf31f1-fddf-5ada-9334-259ee13fce66",
+            "expectedRequirementName": "山口宇部",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport domestic floor plan shows public arrival/check-in lobby doors onto the terminal forecourt. Airport current bus page assigns Shin-Yamaguchi service to stand 1; independently viewed operator boarding plan places stand 1 at the domestic-terminal frontage. Together these explicitly assigned public facilities bind whole C28 airport to exact P11 municipal airport road stop. P11 does not locate an individual bay; no terminal-name-only collapse, precise bay coordinate, airside shortcut, walking time or accessibility promise."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Naha Airport October 2026 regular passenger flight schedule identifies HND / Haneda Airport. Explicit reviewed facility correspondence to Tokyo International Airport (Haneda); existing separately reviewed phase-48 Keikyu terminal access is preserved. This flight fact does not create or infer an internal terminal transfer."
+          }
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_AIRPORT_ANA_DIRECTIONAL_FLIGHT_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_TO_24_2026_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "ana-yamaguchi-ube-haneda-current-nh693",
+      "kind": "service",
+      "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+      "sourceUrl": "https://www.yamaguchiube-airport.jp/flight/domestic/",
+      "observedResponseSha256": "d187fb100417af439806b098625b04621f00ea37d321951af840b40cc2740198",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/",
+          "observedResponseSha256": "bec3b61c0f5a5dc814eb01b645b27ecad97f8697655f2ac3fe4e7a2a8c0d43ba"
+        },
+        {
+          "sourceActionId": "airport:yamaguchi-ube:current-public-bus-frontage-and-ana-directions",
+          "url": "https://www.yamaguchiube-airport.jp/mapaccess/bus/bus_shin_yamaguchi/",
+          "observedResponseSha256": "dcb06ba39385361c75364d004d3042fb4669f9bc39e84a82a320ce14f4f6c44a"
+        }
+      ],
+      "locator": "Current airport October 1-24 2026 domestic table separately lists ANA692 Ube-to-Tokyo and ANA693 Tokyo-to-Ube, with ANA carrier logo alt text. Its homepage explicitly labels the Tokyo destination Haneda, preserving previously reviewed Tokyo International/Haneda C28 binding. Select NH693 only; no SFJ codeshare or J-AIR operated flight is mislabeled ANA. Preserve only minimum actual directed service, carrier and flight code; no timetable clocks, logo, payload, fares or live availability.",
+      "line": "羽田・山口宇部国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH693",
+      "direction": "東京国際空港→山口宇部空港",
+      "callingStations": ["東京国際空港", "山口宇部空港"],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Naha Airport October 2026 regular passenger flight schedule identifies HND / Haneda Airport. Explicit reviewed facility correspondence to Tokyo International Airport (Haneda); existing separately reviewed phase-48 Keikyu terminal access is preserved. This flight fact does not create or infer an internal terminal transfer."
+          }
+        },
+        {
+          "name": "山口宇部空港",
+          "operator": "airport-facility:cf03_00082",
+          "line": "airport:cf03_00082",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00082",
+            "requirementId": "review:transport-node:bbbf31f1-fddf-5ada-9334-259ee13fce66",
+            "expectedRequirementName": "山口宇部",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport domestic floor plan shows public arrival/check-in lobby doors onto the terminal forecourt. Airport current bus page assigns Shin-Yamaguchi service to stand 1; independently viewed operator boarding plan places stand 1 at the domestic-terminal frontage. Together these explicitly assigned public facilities bind whole C28 airport to exact P11 municipal airport road stop. P11 does not locate an individual bay; no terminal-name-only collapse, precise bay coordinate, airside shortcut, walking time or accessibility promise."
+          }
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_AIRPORT_ANA_DIRECTIONAL_FLIGHT_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_TO_24_2026_PUBLISHED_STATIC_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

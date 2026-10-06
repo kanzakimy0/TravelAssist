@@ -1,0 +1,527 @@
+{
+  "task": "TASK-059-B",
+  "disposition": "COMPLETED FOR REVIEW",
+  "initialBaseline": "5240ff8f7a91c1e36e90449d0f619de93f795472",
+  "resumedDevelop": "56901c3a18703105442f9c566406f041c0660fbe",
+  "sourceCandidate": "87345968754456b4b7d7ce3ae58c84f10566853b",
+  "candidateSourceHashes": {
+    "tests/task-059-personal-center-e2e.runtime.mjs": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+    "tools/qa/personal-center-e2e.mjs": "bd87d436f0c2f8baf030320491e2dddb33a866030992143b0267c08fc917f16b",
+    "package.json": "7eb9425fc9994a2a777812a7460592903ea616e5c8179c20ef32846537b1bb5b"
+  },
+  "mergedDependencies": [
+    {
+      "task": "TASK-060-B",
+      "resolves": "J3",
+      "pullRequest": 368,
+      "sourceHead": "eddef67d5c3c8caf24b5bc8802f6ddf3dbeeb1f6",
+      "mergeCommit": "86585600689e3a673ba17156c2ff513db24c7a86",
+      "sourceQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34759637270"
+      },
+      "mergedQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34759840124"
+      }
+    },
+    {
+      "task": "TASK-061-B",
+      "resolves": "J6",
+      "pullRequest": 370,
+      "sourceHead": "9e4a9883d5e072e79445806f1634d0469b411f3f",
+      "mergeCommit": "05cbc4ea0f771ea27d4927466d516e8ace3bce6b",
+      "sourceQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34761925414"
+      },
+      "mergedQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34762252161"
+      }
+    }
+  ],
+  "mergeVerification": {
+    "method": "normal git merge origin/develop; no rebase or force push",
+    "candidateIsMergeCommit": true,
+    "conflict": "package.json adjacent new scripts; retained TASK-059/060/061 commands",
+    "task059ProductSourceDiffAgainstDevelop": false,
+    "schemaMigrationGeneratedTypesChanged": false,
+    "lockfileChanged": false
+  },
+  "npmCi": {
+    "status": "PASS",
+    "command": "npm ci",
+    "artifactSha256": "9adc713b531558db55c481d0e6c09747f6607d1bf136c50358b52edbefa7246c"
+  },
+  "originalBaselineFull": {
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\"",
+    "counts": {
+      "tests": 2493,
+      "pass": 2493,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "sha256": "028f83e30796f93d15cf8a202602fae33da4affe5e677e38e2a434e9cdc3b1e7"
+  },
+  "originalBaselineNonLocal": {
+    "status": "PASS",
+    "suiteCount": 28,
+    "nodeSuiteCount": 28,
+    "bundleAudits": 0,
+    "counts": {
+      "tests": 1823,
+      "pass": 1823,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "started": "2026-09-13T11:34:14.720Z",
+    "finished": "2026-09-13T11:34:36.236Z",
+    "dbBefore": null,
+    "dbAfter": null,
+    "generatedTypesSha256": null,
+    "artifact": {
+      "path": ".artifacts/task059/baseline-non-local.json",
+      "sha256": "23265681f1fe12ec8485d56a6b2953006ad35c2357a410be520423ddf8dad735"
+    }
+  },
+  "originalBaselineLocal": {
+    "status": "PASS",
+    "suiteCount": 15,
+    "nodeSuiteCount": 13,
+    "bundleAudits": 2,
+    "counts": {
+      "tests": 877,
+      "pass": 877,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "started": "2026-09-13T11:44:16.552Z",
+    "finished": "2026-09-13T11:50:57.883Z",
+    "dbBefore": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "dbAfter": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+    "artifact": {
+      "path": ".artifacts/task059/baseline-local-prepared.json",
+      "sha256": "314561ab8c5c69705c94b9d5ebf06c69ffd8a73aa2c551bdca17eb9ecca783aa"
+    }
+  },
+  "followupIntegrationBaselineFull": {
+    "status": "PASS",
+    "sourceHead": "9e4a9883d5e072e79445806f1634d0469b411f3f",
+    "mergeHead": "05cbc4ea0f771ea27d4927466d516e8ace3bce6b",
+    "sourceAndMergeTreesEqual": true,
+    "counts": {
+      "tests": 2504,
+      "pass": 2504,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "sha256": "6765574a8c19965141e5a3071e8a6753bd9eaeb9c7539d365dba6713d216cc03",
+    "source": "TASK-061 final full regression, exact equal tree merged before subsequent A PR352 changes; post-merge exact-head CI also SUCCESS"
+  },
+  "candidateFull": {
+    "status": "PASS",
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\"",
+    "counts": {
+      "tests": 2516,
+      "pass": 2516,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "sha256": "6a001c70c5b70ffa2e357d5a2267d56fc6557fd1d007eee5651f5338ef44fbe8"
+  },
+  "candidateNonLocal": {
+    "status": "PASS",
+    "suiteCount": 28,
+    "nodeSuiteCount": 28,
+    "bundleAudits": 0,
+    "counts": {
+      "tests": 1823,
+      "pass": 1823,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "started": "2026-09-15T13:26:25.587Z",
+    "finished": "2026-09-15T13:26:51.680Z",
+    "dbBefore": null,
+    "dbAfter": null,
+    "generatedTypesSha256": null,
+    "artifact": {
+      "path": ".artifacts/task059/latest-non-local.json",
+      "sha256": "abc2ee226430e534b1fc6fce613901c7640e862c2afc7caeb5ce01ccd1b6cc11"
+    }
+  },
+  "candidateLocal": {
+    "status": "PASS",
+    "suiteCount": 15,
+    "nodeSuiteCount": 13,
+    "bundleAudits": 2,
+    "counts": {
+      "tests": 877,
+      "pass": 877,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "started": "2026-09-15T13:28:09.069Z",
+    "finished": "2026-09-15T13:34:23.467Z",
+    "dbBefore": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "dbAfter": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "generatedTypesSha256": "c8914dc706c1ceb9383a56abb8a27a6fcc81e17010482355febf96fa473fac91",
+    "artifact": {
+      "path": ".artifacts/task059/latest-local.json",
+      "sha256": "b23a9e37e1e913ed98f22b40f4d7ddca545593ab311bad290f01a8530434dab0"
+    }
+  },
+  "existingBrowserBaseline": {
+    "status": "PASS",
+    "command": "node tools/qa/task-047-browser-baseline.mjs",
+    "scope": "Existing 25 page checks / five viewports; regenerated ignored geometry before complete 9.5 Local aggregate, no 9.7/9.8 journey",
+    "logSha256": "432d11f3e82c3477ebe0bf4661e2b8b0ffe23a4359fcf674b735c699faff66f7"
+  },
+  "localGates": [
+    {
+      "name": "non-local",
+      "command": "npm run test:personal-center",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:26:24.827217Z",
+      "finished": "2026-09-15T13:26:51.7191633Z",
+      "log": ".artifacts/task059/latest-non-local.log",
+      "sha256": "1464a0fed36dfda4b7a8db39dd74e2e9aa827bffac7f350d2a121e390663aff1"
+    },
+    {
+      "name": "baseline-db-start",
+      "command": "npm run db:start",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:26:51.7936277Z",
+      "finished": "2026-09-15T13:27:33.0345129Z",
+      "log": ".artifacts/task059/latest-baseline-db-start.log",
+      "sha256": "ee1cc9c884f7f31b4674e5972800c4eedb30d3cd72b67a2dbda433c1e6c0120f"
+    },
+    {
+      "name": "browser-baseline",
+      "command": "node tools/qa/task-047-browser-baseline.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:27:33.0453628Z",
+      "finished": "2026-09-15T13:28:00.8827935Z",
+      "log": ".artifacts/task059/latest-browser-baseline.log",
+      "sha256": "432d11f3e82c3477ebe0bf4661e2b8b0ffe23a4359fcf674b735c699faff66f7"
+    },
+    {
+      "name": "baseline-db-stop",
+      "command": "npm run db:stop",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:28:00.8958157Z",
+      "finished": "2026-09-15T13:28:08.4567275Z",
+      "log": ".artifacts/task059/latest-baseline-db-stop.log",
+      "sha256": "d8d601c847317969e5aa4665b3e5ba5cce0d4b766ab20a42d2d426f5e9b3af8c"
+    },
+    {
+      "name": "local",
+      "command": "npm run test:personal-center:local",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:28:08.4666907Z",
+      "finished": "2026-09-15T13:34:23.509006Z",
+      "log": ".artifacts/task059/latest-local.log",
+      "sha256": "12e74b2bafc8113bdecc52e272cde415fc3313d226ce96ce371d7271e8a9981e"
+    },
+    {
+      "name": "historical-evidence-format",
+      "command": "npx prettier --write docs/qa/TASK-053/local-evidence.json",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:34:23.5309419Z",
+      "finished": "2026-09-15T13:34:32.7000883Z",
+      "log": ".artifacts/task059/latest-historical-evidence-format.log",
+      "sha256": "128eeb54719045b11c7676db1a4f11737ee937ef2eddb07022a06c8a8df95eac"
+    },
+    {
+      "name": "historical-evidence-unchanged",
+      "command": "git diff --exit-code -- docs/qa/TASK-053/local-evidence.json src/types/database.generated.ts",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:34:32.7104913Z",
+      "finished": "2026-09-15T13:34:32.8061467Z",
+      "log": ".artifacts/task059/latest-historical-evidence-unchanged.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "full",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap \"tests/*.test.mjs\"",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:34:32.8088117Z",
+      "finished": "2026-09-15T13:35:18.3189416Z",
+      "log": ".artifacts/task059/latest-full.log",
+      "sha256": "6a001c70c5b70ffa2e357d5a2267d56fc6557fd1d007eee5651f5338ef44fbe8"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:35:18.3451245Z",
+      "finished": "2026-09-15T13:36:25.5215587Z",
+      "log": ".artifacts/task059/latest-lint.log",
+      "sha256": "90fc093f70aa63fac6cd16a38f591fdeaffbb51b0184b38a6d6dc328f57f9762"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:36:25.531005Z",
+      "finished": "2026-09-15T13:36:35.0571875Z",
+      "log": ".artifacts/task059/latest-typecheck.log",
+      "sha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+    },
+    {
+      "name": "build-final",
+      "command": "npm run build",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:36:35.0666977Z",
+      "finished": "2026-09-15T13:36:59.1064055Z",
+      "log": ".artifacts/task059/latest-build-final.log",
+      "sha256": "01517f9db4d99a5f5e66a31b39a900f11d09e3eb40477da13384f4ef2ecbc3c1"
+    },
+    {
+      "name": "deploy-validate",
+      "command": "npm run deploy:validate:local",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:36:59.1200873Z",
+      "finished": "2026-09-15T13:36:59.9782Z",
+      "log": ".artifacts/task059/latest-deploy-validate.log",
+      "sha256": "9d3884caf17d742e35a12c17820073216c029d023129dc54714606ff01b147d6"
+    },
+    {
+      "name": "deploy-build",
+      "command": "npm run deploy:build:local",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:36:59.9959033Z",
+      "finished": "2026-09-15T13:37:37.7188292Z",
+      "log": ".artifacts/task059/latest-deploy-build.log",
+      "sha256": "961b9324df1577b35561c43a6e0062ed33581799f3b623549f342db31e4eb691"
+    },
+    {
+      "name": "deploy-verify",
+      "command": "npm run deploy:verify-artifact",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:37:37.737716Z",
+      "finished": "2026-09-15T13:37:39.6661838Z",
+      "log": ".artifacts/task059/latest-deploy-verify.log",
+      "sha256": "e425b97f81c4978fe0869fd2eb30dac7b81e33671523c12e2505d5b12887d816"
+    },
+    {
+      "name": "format-deploy",
+      "command": "npm run format:check:deploy",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:41:46.5482563Z",
+      "finished": "2026-09-15T13:42:04.7061847Z",
+      "log": ".artifacts/task059/latest-format-deploy.log",
+      "sha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    {
+      "name": "format-scoped",
+      "command": "npx prettier --check docs/qa/TASK-059 docs/tasks/RESULT-TASK-059-b-wbs-9-6-personal-center-e2e.md tests/task-059-personal-center-e2e.runtime.mjs tools/qa/personal-center-e2e.mjs package.json",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:42:04.7466219Z",
+      "finished": "2026-09-15T13:42:06.7801411Z",
+      "log": ".artifacts/task059/latest-format-scoped.log",
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "name": "diff",
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "started": "2026-09-15T13:42:06.7909601Z",
+      "finished": "2026-09-15T13:42:06.8748662Z",
+      "log": ".artifacts/task059/latest-diff.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "primaryE2E": {
+    "status": "PASS",
+    "twoRuns": {
+      "sameHead": true,
+      "sameSource": true,
+      "sameNodeCounts": true,
+      "sameJourneyResults": true,
+      "sameMandatoryChecks": true,
+      "bothPass": true,
+      "conclusion": "PASS: two complete primary-browser runs on the same source candidate; 8/8 mandatory journeys and 9/9 TAP tests each, no skips/todos/cancellations. Fresh synthetic identities per run."
+    },
+    "failedMandatoryJourneys": []
+  },
+  "formatScope": "TASK-059 docs/tests/runner and package.json, canonical format:check:deploy. Master WBS only 9.6 status cell; no other row/Owner edits.",
+  "ci": {
+    "status": "Exact final documentation head is verified in Draft PR #366 Exact final-head verification ledger",
+    "workflow": "quality-gate.yml",
+    "ledgerUrl": "https://github.com/kanzakimy0/TravelAssist/pull/366",
+    "whyExternalLedger": "Commit cannot contain its own SHA and subsequently completed workflow result. PR ledger records actual final head, matching workflow headSha, run URL and conclusion, without another self-referential commit.",
+    "doesNotRunLocalE2E": true
+  },
+  "safety": {
+    "productionMutation": false,
+    "stagingMutation": false,
+    "externalProviderMutation": false,
+    "syntheticAuthUsersRemaining": 0,
+    "syntheticBOwnedRowsRemaining": 0,
+    "credentialsInCommittedEvidence": false,
+    "wbs97Started": false,
+    "wbs98Started": false,
+    "otherDownstreamStarted": false
+  },
+  "artifactVerification": {
+    "status": "verified",
+    "commitSha": "87345968754456b4b7d7ce3ae58c84f10566853b",
+    "fileCount": 1869,
+    "failures": []
+  },
+  "latestDevelopQualityGate": {
+    "headSha": "56901c3a18703105442f9c566406f041c0660fbe",
+    "status": "SUCCESS",
+    "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34769032218",
+    "fullRepositoryNodeCounts": {
+      "tests": 2516,
+      "pass": 2516,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "logSha256": "034f74d5a2f6157ab8bb25b746f2fa4be4be82b7732ec7411d6e39a27c368d6b"
+  },
+  "exactGitSourceVerification": [
+    {
+      "path": "tests/task-059-personal-center-e2e.runtime.mjs",
+      "workingSha256": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+      "gitSha256": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+      "exactBytesMatch": true,
+      "normalizedMatch": true
+    },
+    {
+      "path": "tools/qa/personal-center-e2e.mjs",
+      "workingSha256": "bd87d436f0c2f8baf030320491e2dddb33a866030992143b0267c08fc917f16b",
+      "gitSha256": "bd87d436f0c2f8baf030320491e2dddb33a866030992143b0267c08fc917f16b",
+      "exactBytesMatch": true,
+      "normalizedMatch": true
+    },
+    {
+      "path": "package.json",
+      "workingSha256": "7eb9425fc9994a2a777812a7460592903ea616e5c8179c20ef32846537b1bb5b",
+      "gitSha256": "7eb9425fc9994a2a777812a7460592903ea616e5c8179c20ef32846537b1bb5b",
+      "exactBytesMatch": true,
+      "normalizedMatch": true
+    }
+  ],
+  "formatRecovery": {
+    "firstCheck": "FAIL: local TASK-059 runtime formatting",
+    "firstLogSha256": "f02ff60572a09aae0d673b4b85f93c96bf5495ca0a8223db788fae44f86889f1",
+    "resolution": "Prettier normalized runtime to exact Git blob; no tracked source diff or head change. Final complete Edge twice and Chromium once rerun using formatted source. Canonical/scoped checks then PASS."
+  },
+  "environmentRecovery": {
+    "context": "Interrupted Local startup; Docker was stopped on resumption. Inaccessible zero-byte runtime socket reparse points prevented engine startup.",
+    "action": "Verified no running Docker processes and only zero-byte socket entries, preserved inactive runtime directories by rename, recreated empty runtime directories and restarted Docker. No factory reset, data/volume deletion or credential contents read.",
+    "dockerVersion": "29.7.2",
+    "dataBeforeFreshRuns": {
+      "auth.users": 0,
+      "public.profiles": 0,
+      "public.profile_settings": 0,
+      "public.emergency_contacts": 0,
+      "public.travel_preferences": 0,
+      "public.companions": 0,
+      "public.companion_groups": 0,
+      "public.companion_group_members": 0,
+      "public.trip_library_records": 0,
+      "storage.objects": 0,
+      "storage.buckets": 0
+    },
+    "preRunStopLogSha256": "d8d601c847317969e5aa4665b3e5ba5cce0d4b766ab20a42d2d426f5e9b3af8c",
+    "backupRetention": "Inactive runtime sockets preserved under LocalAppData/Docker/run.task059-preserved-* and LocalAppData/docker-secrets-engine.task059-preserved-20260915; no database volumes moved."
+  },
+  "finalDocumentationValidation": {
+    "scopedFormat": {
+      "status": "PASS",
+      "logSha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    "gitDiffCheck": {
+      "status": "PASS",
+      "logSha256": "cc434d33131b61a8c2a57dfbd33d057157d0807e7c9c0db2c61b2f78e3807c39"
+    },
+    "wbsScope": "Only WBS 9.6 status cell differs from latest origin/develop; all other rows and Owners preserved"
+  }
+}

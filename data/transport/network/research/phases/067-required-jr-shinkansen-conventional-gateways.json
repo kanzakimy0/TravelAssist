@@ -1,0 +1,150 @@
+{
+  "phaseId": "067-required-jr-shinkansen-conventional-gateways",
+  "strategy": [
+    "T1_EXPLICIT_SHINKANSEN_CONVENTIONAL_GATES",
+    "JR_EAST_WEST_OPERATOR_COMPONENT_IDENTITY",
+    "transfer"
+  ],
+  "completedActionIds": [
+    "hub:jrwest:hiroshima-kokura-shinkansen-conventional",
+    "hub:jreast:niigata-sendai-shinkansen-conventional"
+  ],
+  "facts": [
+    {
+      "factId": "jr-required-interchange-hiroshima",
+      "kind": "transfer",
+      "sourceActionId": "hub:jrwest:hiroshima-kokura-shinkansen-conventional",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0800613_ce85ad2f-c739-41ba-b9f6-bc09a8c9e3b9.pdf",
+      "observedResponseSha256": "f2669eda119fc02b1f1de86096ba05e1b35c55f224c8b4b2b60f4b8136a942cc",
+      "locator": "2026-06-05 official map explicitly marks the Shinkansen/conventional transfer gate at 2F connecting 3F Shinkansen platforms to 1F conventional platforms. Closed underground north entrance and IC-only Minamoa entrance are not used.",
+      "components": [
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_SHINKANSEN_INTERCHANGE_PLUS_EXACT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "jr-required-interchange-kokura",
+      "kind": "transfer",
+      "sourceActionId": "hub:jrwest:hiroshima-kokura-shinkansen-conventional",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0910106_6de30db3-7fc4-4b04-b0e0-aa7b1da872eb.pdf",
+      "observedResponseSha256": "e148066f718731113d6aea2d6905ddbb21d3abab75a51f867bbdc036a25118e4",
+      "locator": "Current linked 2025-07-18 map shows 3F transfer gate between JR West Shinkansen concourse and JR Kyushu conventional concourse, separately from ordinary public entrances. Both components independently matched by operator and physical line.",
+      "components": [
+        {
+          "name": "小倉",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "小倉",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_SHINKANSEN_INTERCHANGE_PLUS_EXACT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "jr-required-interchange-niigata",
+      "kind": "transfer",
+      "sourceActionId": "hub:jreast:niigata-sendai-shinkansen-conventional",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/1137.html",
+      "observedResponseSha256": "822619040d5c1beff5b9820047b2172ee6df618bd06924a0b75142c18c340d52",
+      "locator": "Current official station page explicitly identifies Shinkansen interchange with conventional Shinetsu/Hakushin/Uetsu/Echigo services, including adjacent-platform connection. Retain component connectivity only, not published standard times.",
+      "components": [
+        {
+          "name": "新潟",
+          "operator": "東日本旅客鉄道",
+          "line": "上越新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新潟",
+          "operator": "東日本旅客鉄道",
+          "line": "信越線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_SHINKANSEN_INTERCHANGE_PLUS_EXACT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "jr-required-interchange-sendai",
+      "kind": "transfer",
+      "sourceActionId": "hub:jreast:niigata-sendai-shinkansen-conventional",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/913.html",
+      "observedResponseSha256": "560398001dd290700682c005f26f81625633758dfc57f6ef4e804ad1b9bd2801",
+      "locator": "Current official station page explicitly identifies Shinkansen interchange with Tohoku/Joban/Senzan/Senseki conventional services. Exact S12 Tohoku conventional component is bound separately from Shinkansen; no published standard times retained.",
+      "components": [
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_SHINKANSEN_INTERCHANGE_PLUS_EXACT_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

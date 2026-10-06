@@ -1,0 +1,95 @@
+{
+  "phaseId": "234-tosaden-saenbacho-public-crossing",
+  "strategy": [
+    "ORIGINAL_TOSADEN_AIRPORT_DIRECTION_ROOTS_ONLY",
+    "EXACT_OSM_CONNECTED_PUBLIC_SIDEWALK_CHAIN",
+    "PRESERVE_DISTINCT_NATIVE_STOPS",
+    "NO_NEW_NODES"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:saenbacho-reviewed-public-crossing-234",
+    "transfer:tosaden:saenbacho-reviewed-public-crossing-234:operator-direction-map",
+    "transfer:tosaden:saenbacho-reviewed-public-crossing-234:jea",
+    "transfer:tosaden:saenbacho-reviewed-public-crossing-234:southbreeze",
+    "transfer:tosaden:saenbacho-reviewed-public-crossing-234:omo7"
+  ],
+  "facts": [
+    {
+      "factId": "saenbacho-alight-to-airport-board-public-crossing",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:saenbacho-reviewed-public-crossing-234",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=133.5468,33.5558,133.5725,33.5596",
+      "observedResponseSha256": "c183490ae21209d24fafbcf9eb1f3fff31d7ca0d7b5d7357dcd5f3d9693df1bd",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tosaden:saenbacho-reviewed-public-crossing-234:operator-direction-map",
+          "url": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+          "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:saenbacho-reviewed-public-crossing-234:jea",
+          "url": "https://jeaweb.jp/activities/annual_meetings/no35/pdf/jea2025_airport-venue_0210.pdf",
+          "observedResponseSha256": "8cab853d8c9f1297449214c09be1d0edd039a499adb0b48d468dd5734cfb34be"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:saenbacho-reviewed-public-crossing-234:southbreeze",
+          "url": "https://sbh.co.jp/access/",
+          "observedResponseSha256": "dd6ebefdd8b8c40c08dab92e4ec74d489039ecd656ecd13bcb1f204b3a27639b"
+        },
+        {
+          "sourceActionId": "transfer:tosaden:saenbacho-reviewed-public-crossing-234:omo7",
+          "url": "https://hoshinoresorts.com/ja/hotels/omo7kochi/access/",
+          "observedResponseSha256": "4b6b3d4235dffced548ff74c5954444a346a3e183102ff57214189bf51ef1d53"
+        }
+      ],
+      "components": [
+        {
+          "name": "菜園場町",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3907_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "5a280006077bff282d43eb66f648ee8a1554117d202dc84be8d9687d2cfb3c7c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator opposite public-road components plus independently explicit pedestrian crossing-side instruction and actual OSM traffic-signal/zebra/sidewalk chain support coarse passenger-component relation. No coordinate proximity/snapping, exact curb/pole/door, accessibility, travel time or hotel node. JEA does not narrate every selected way. Personally viewed2026map: separate south-side alight and north-side airport boarding markers along tram street; exact current GTFS retains both records and directions. Personally rendered/viewed JEA organizer2025-02-10 guide: airportbound Saenbacho lies across tram street from Karupoto; walk east from venue. Historical walking-side corroboration only, never treated as2026 timetable/version. Current SouthBreeze hotel own access independently distinguishes airport bus Saenba alight/walk from tram Saenba walk; OMO7 own current access also names airportbus Saenbacho walk. Neither claims a crossing; no private hotel traversal used."
+          }
+        },
+        {
+          "name": "菜園場町",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3907_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "a6addf3d43f7b7f405143b57d127acced98a6e885fbfeecd8fcdb4846eaf8d8a",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator opposite public-road components plus independently explicit pedestrian crossing-side instruction and actual OSM traffic-signal/zebra/sidewalk chain support coarse passenger-component relation. No coordinate proximity/snapping, exact curb/pole/door, accessibility, travel time or hotel node. JEA does not narrate every selected way. Personally viewed2026map: separate south-side alight and north-side airport boarding markers along tram street; exact current GTFS retains both records and directions. Personally rendered/viewed JEA organizer2025-02-10 guide: airportbound Saenbacho lies across tram street from Karupoto; walk east from venue. Historical walking-side corroboration only, never treated as2026 timetable/version. Current SouthBreeze hotel own access independently distinguishes airport bus Saenba alight/walk from tram Saenba walk; OMO7 own current access also names airportbus Saenbacho walk. Neither claims a crossing; no private hotel traversal used."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_DIRECTIONAL_GTFS_PLUS_CURRENT_OPERATOR_POLES_AND_ODBL_CONTIGUOUS_PUBLIC_WAYS",
+      "hubScopeComplete": false,
+      "locator": "Current operator opposite public-road components plus independently explicit pedestrian crossing-side instruction and actual OSM traffic-signal/zebra/sidewalk chain support coarse passenger-component relation. No coordinate proximity/snapping, exact curb/pole/door, accessibility, travel time or hotel node. JEA does not narrate every selected way. Personally viewed2026map: separate south-side alight and north-side airport boarding markers along tram street; exact current GTFS retains both records and directions. Personally rendered/viewed JEA organizer2025-02-10 guide: airportbound Saenbacho lies across tram street from Karupoto; walk east from venue. Historical walking-side corroboration only, never treated as2026 timetable/version. Current SouthBreeze hotel own access independently distinguishes airport bus Saenba alight/walk from tram Saenba walk; OMO7 own current access also names airportbus Saenbacho walk. Neither claims a crossing; no private hotel traversal used."
+    }
+  ]
+}

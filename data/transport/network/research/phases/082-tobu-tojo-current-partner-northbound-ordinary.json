@@ -1,0 +1,185 @@
+{
+  "phaseId": "082-tobu-tojo-current-partner-northbound-ordinary",
+  "strategy": [
+    "CURRENT_THROUGH_OPERATOR_LOCAL_CLASS",
+    "HISTORICAL_EXPLICIT_RULE_CROSS_CHECKED_WITH_CURRENT_STATION_ORDER",
+    "SINGLE_SUPPORTED_DIRECTION_ONLY"
+  ],
+  "completedActionIds": [
+    "private:tobu:tojo-current-partner-northbound-local"
+  ],
+  "facts": [
+    {
+      "factId": "tojo-current-partner-northbound-ordinary-wakoshi-shinrinkoen",
+      "kind": "service",
+      "sourceActionId": "private:tobu:tojo-current-partner-northbound-local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/timetable/pdf/202603_ty01_shibuya_1.pdf",
+      "observedResponseSha256": "65e870fdc458d8a1f78e9118167d8f8fc5bcab9a3656f4c7684a3cc2a0c3ace9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:tobu:tojo-current-partner-northbound-local",
+          "url": "https://www.mm21railway.co.jp/info/pdf/sougorosen.pdf?202403=",
+          "observedResponseSha256": "4d807d1de67ca8ea90386003e3a60cab9032b2a637159edd8d7c042990907fac"
+        },
+        {
+          "sourceActionId": "private:tobu:tojo-current-partner-northbound-local",
+          "url": "https://www.tokyometro.jp/news/2013/pdf/metroNews20130122_1306-1.pdf",
+          "observedResponseSha256": "2148f378878d3e8c6e292c3757690dcd37ddf10a02f9a99d2d5b8fda56b5f63f"
+        }
+      ],
+      "locator": "Tokyu 2026-03-14 Shibuya northbound timetable, weekday panel: Shinrin-koen destination departures carry the explicit Tobu-line ordinary code, decoded by the current legend. Model only the northbound Wako-shi to Shinrin-koen physical Tobu section. Its ordinary all-station rule is explicitly illustrated in Metro 2013 reference page 4 and the twenty station names/order are cross-checked against the current Minatomirai through-route diagram and independently bound S12 records. Do not import the obsolete 2013 statement that all through trains are local, do not treat unclassified gray map lines as stopping patterns, and do not create an unsupported reverse service or a multi-operator end-to-end trip. No timetable clock values are retained.",
+      "operator": "東武鉄道",
+      "line": "東上本線",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "northbound",
+      "callingStations": [
+        "和光市",
+        "朝霞",
+        "朝霞台",
+        "志木",
+        "柳瀬川",
+        "みずほ台",
+        "鶴瀬",
+        "ふじみ野",
+        "上福岡",
+        "新河岸",
+        "川越",
+        "川越市",
+        "霞ヶ関",
+        "鶴ヶ島",
+        "若葉",
+        "坂戸",
+        "北坂戸",
+        "高坂",
+        "東松山",
+        "森林公園"
+      ],
+      "callingComponents": [
+        {
+          "name": "和光市",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "朝霞",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "朝霞台",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "志木",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柳瀬川",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "みずほ台",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴瀬",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ふじみ野",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上福岡",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新河岸",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "川越",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "川越市",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "霞ヶ関",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴ヶ島",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "若葉",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "坂戸",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北坂戸",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高坂",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東松山",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "森林公園",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_PARTNER_DESTINATION_AND_LOCAL_CLASS_WITH_EXPLICIT_RULE_AND_CURRENT_STATION_ORDER",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_PARTNER_SCHEDULED_CLASS_NOT_REALTIME"
+    }
+  ]
+}

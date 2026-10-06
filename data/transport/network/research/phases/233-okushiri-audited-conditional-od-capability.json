@@ -1,0 +1,481 @@
+{
+  "phaseId": "233-okushiri-audited-conditional-od-capability",
+  "strategy": [
+    "Preserve original Okushiri requirement",
+    "Exact C28/P05 source identities",
+    "Two municipal positive October5 directions JAL2791/2792 with prefectural actual HAC carrier",
+    "Separate source-audited whole-island OD capability; unknown lead/payment; no actual booking or dispatch"
+  ],
+  "completedActionIds": [
+    "airport:okushiri:yamato-public-od233",
+    "airport:okushiri:town-facts233",
+    "airport:okushiri:pref-carrier233",
+    "airport:okushiri:p05-native233"
+  ],
+  "facts": [
+    {
+      "factId": "okushiri-hac-oct05-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:okushiri:town-facts233",
+      "sourceUrl": "https://www.town.okushiri.lg.jp/hotnews/detail/00009927.html",
+      "observedResponseSha256": "002724c6b62e3df063c61740cf9f2e9fea76134e94ecfe6f0272e13be492c63c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:okushiri:pref-carrier233",
+          "url": "https://www.pref.hokkaido.lg.jp/fs/1/3/1/3/6/2/9/7/_/R8.04.01%E5%A5%A5%E5%B0%BB%E7%A9%BA%E6%B8%AF%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%86%85%E5%AE%B9%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%83%85%E5%A0%B1.pdf",
+          "observedResponseSha256": "830896af8fac5ce1fa6bccfbd067f0392d4743a0a0a604e34308829f1c1a6ed4"
+        }
+      ],
+      "operator": "株式会社北海道エアシステム",
+      "line": "函館・奥尻旅客航空路",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "函館→奥尻",
+      "serviceState": "active",
+      "serviceStateScope": "Municipal published September24–November30 service Mon Tue Wed Thu Sat except October10/12; October5 Monday is positive. Not Oct4 service or real-time/timed-transfer guarantee. Prefecture lists HAC as operating carrier independently of JAL marketing code.",
+      "reviewedServiceDate": "20261005",
+      "callingStations": [
+        "函館空港",
+        "奥尻空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "函館空港",
+          "operator": "airport-facility:cf03_00018",
+          "line": "airport:cf03_00018",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00018",
+            "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+            "expectedRequirementName": "函館",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse exact admitted C28 Hakodate gateway; no terminal merge or new surface shortcut."
+          }
+        },
+        {
+          "name": "奥尻空港",
+          "operator": "airport-facility:cf03_00019",
+          "line": "airport:cf03_00019",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00019",
+            "requirementId": "review:official-airport:奥尻",
+            "expectedRequirementName": "奥尻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Exact C28 airport gateway; current municipal October5 passenger flights with prefectural HAC carrier; current operator whole-island public OD. No curb coordinate or fixed bus claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Municipal actual separate directional JAL2791 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+    },
+    {
+      "factId": "okushiri-hac-oct05-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:okushiri:town-facts233",
+      "sourceUrl": "https://www.town.okushiri.lg.jp/hotnews/detail/00009927.html",
+      "observedResponseSha256": "002724c6b62e3df063c61740cf9f2e9fea76134e94ecfe6f0272e13be492c63c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:okushiri:pref-carrier233",
+          "url": "https://www.pref.hokkaido.lg.jp/fs/1/3/1/3/6/2/9/7/_/R8.04.01%E5%A5%A5%E5%B0%BB%E7%A9%BA%E6%B8%AF%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%86%85%E5%AE%B9%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%83%85%E5%A0%B1.pdf",
+          "observedResponseSha256": "830896af8fac5ce1fa6bccfbd067f0392d4743a0a0a604e34308829f1c1a6ed4"
+        }
+      ],
+      "operator": "株式会社北海道エアシステム",
+      "line": "函館・奥尻旅客航空路",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "奥尻→函館",
+      "serviceState": "active",
+      "serviceStateScope": "Municipal published September24–November30 service Mon Tue Wed Thu Sat except October10/12; October5 Monday is positive. Not Oct4 service or real-time/timed-transfer guarantee. Prefecture lists HAC as operating carrier independently of JAL marketing code.",
+      "reviewedServiceDate": "20261005",
+      "callingStations": [
+        "奥尻空港",
+        "函館空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "奥尻空港",
+          "operator": "airport-facility:cf03_00019",
+          "line": "airport:cf03_00019",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00019",
+            "requirementId": "review:official-airport:奥尻",
+            "expectedRequirementName": "奥尻",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Exact C28 airport gateway; current municipal October5 passenger flights with prefectural HAC carrier; current operator whole-island public OD. No curb coordinate or fixed bus claim."
+          }
+        },
+        {
+          "name": "函館空港",
+          "operator": "airport-facility:cf03_00018",
+          "line": "airport:cf03_00018",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00018",
+            "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+            "expectedRequirementName": "函館",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse exact admitted C28 Hakodate gateway; no terminal merge or new surface shortcut."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Municipal actual separate directional JAL2792 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+    },
+    {
+      "factId": "okushiri-public-od-capability-0",
+      "kind": "dynamic_od",
+      "sourceActionId": "airport:okushiri:yamato-public-od233",
+      "sourceUrl": "https://www.kuronekoyamato.co.jp/ytc/info/info_261001_1.html",
+      "observedResponseSha256": "393f1e6e857c08c615075503f9ff74b9c8e4692e380a6ad8d0012e7f14e51ac4",
+      "operator": "奥尻町（ヤマト運輸・町民ドライバー）",
+      "endpointNames": [
+        "奥尻空港",
+        "神威脇生活改善センター"
+      ],
+      "endpointIdentityAnchors": [
+        "review:official-airport:奥尻",
+        "p05:22:01:P05_2451"
+      ],
+      "accessTerms": {
+        "contractKind": "OKUSHIRI_PUBLIC_OD_CAPABILITY_V1",
+        "audience": "PUBLIC",
+        "profile": "PUBLIC_VISITOR",
+        "channels": [
+          "PHONE",
+          "LINE"
+        ],
+        "reservationRequired": true,
+        "currentMinimumLeadMinutes": null,
+        "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+        "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+        "publishedReceptionWindows": [
+          {
+            "channels": [
+              "PHONE",
+              "LINE"
+            ],
+            "hours": "24H",
+            "humanPhoneWindow": [
+              "08:30",
+              "18:30"
+            ],
+            "outsideHumanPhone": "AI_VOICE_RECEPTION"
+          }
+        ],
+        "publishedServiceWindows": [
+          [
+            "06:00",
+            "23:00"
+          ]
+        ],
+        "timeZone": "Asia/Tokyo",
+        "serviceArea": "WHOLE_OKUSHIRI_ISLAND_INCLUDING_AIRPORT_AND_REVIEWED_PUBLIC_FACILITY",
+        "serviceType": "PUBLIC_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS",
+        "operatorAcceptanceRequired": true,
+        "pickupPlaceAgreementRequired": true,
+        "dispatchGuarantee": false,
+        "routePolicy": "OPERATOR_DISPATCH_SHARED_PASSENGER_SERVICE_NOT_EXCLUSIVE_DIRECT_TAXI",
+        "reviewedStructuralDate": "2026-10-05",
+        "periodStart": "2026-10-01",
+        "plannedPeriodEnd": "2027-01-31",
+        "periodEndIsPlanned": true,
+        "dispatchManagement": "奥尻町",
+        "driverAlternatives": [
+          {
+            "driver": "YAMATO_SALES_DRIVER",
+            "hours": [
+              "08:00",
+              "18:30"
+            ],
+            "vehicle": "DELIVERY_WAGON",
+            "maxPassengers": 4
+          },
+          {
+            "driver": "TOWN_RESIDENT_DRIVER",
+            "hours": null,
+            "publishedTiming": "PRIMARILY_EVENING_AND_NIGHT",
+            "vehicle": "TOWN_MANAGED_OR_LEASED",
+            "maxPassengers": 9
+          }
+        ],
+        "publishedInitialFareJPY": 700,
+        "fareBasis": "DISTANCE_BASED_NOT_A_FARE_ENGINE",
+        "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+      },
+      "conditionObservations": [
+        {
+          "conditionId": "okushiri:current-public-island-od",
+          "sourceActionId": "airport:okushiri:yamato-public-od233",
+          "sourceUrl": "https://www.kuronekoyamato.co.jp/ytc/info/info_261001_1.html",
+          "observedResponseSha256": "393f1e6e857c08c615075503f9ff74b9c8e4692e380a6ad8d0012e7f14e51ac4",
+          "claims": {
+            "contractKind": "OKUSHIRI_PUBLIC_OD_CAPABILITY_V1",
+            "audience": "PUBLIC",
+            "profile": "PUBLIC_VISITOR",
+            "channels": [
+              "PHONE",
+              "LINE"
+            ],
+            "reservationRequired": true,
+            "currentMinimumLeadMinutes": null,
+            "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+            "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+            "publishedReceptionWindows": [
+              {
+                "channels": [
+                  "PHONE",
+                  "LINE"
+                ],
+                "hours": "24H",
+                "humanPhoneWindow": [
+                  "08:30",
+                  "18:30"
+                ],
+                "outsideHumanPhone": "AI_VOICE_RECEPTION"
+              }
+            ],
+            "publishedServiceWindows": [
+              [
+                "06:00",
+                "23:00"
+              ]
+            ],
+            "timeZone": "Asia/Tokyo",
+            "serviceArea": "WHOLE_OKUSHIRI_ISLAND_INCLUDING_AIRPORT_AND_REVIEWED_PUBLIC_FACILITY",
+            "serviceType": "PUBLIC_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS",
+            "operatorAcceptanceRequired": true,
+            "pickupPlaceAgreementRequired": true,
+            "dispatchGuarantee": false,
+            "routePolicy": "OPERATOR_DISPATCH_SHARED_PASSENGER_SERVICE_NOT_EXCLUSIVE_DIRECT_TAXI",
+            "reviewedStructuralDate": "2026-10-05",
+            "periodStart": "2026-10-01",
+            "plannedPeriodEnd": "2027-01-31",
+            "periodEndIsPlanned": true,
+            "dispatchManagement": "奥尻町",
+            "driverAlternatives": [
+              {
+                "driver": "YAMATO_SALES_DRIVER",
+                "hours": [
+                  "08:00",
+                  "18:30"
+                ],
+                "vehicle": "DELIVERY_WAGON",
+                "maxPassengers": 4
+              },
+              {
+                "driver": "TOWN_RESIDENT_DRIVER",
+                "hours": null,
+                "publishedTiming": "PRIMARILY_EVENING_AND_NIGHT",
+                "vehicle": "TOWN_MANAGED_OR_LEASED",
+                "maxPassengers": 9
+              }
+            ],
+            "publishedInitialFareJPY": 700,
+            "fareBasis": "DISTANCE_BASED_NOT_A_FARE_ENGINE",
+            "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+          },
+          "locator": "Operator Oct1 announcement separate paid whole-island area-demand section: Oct1–Jan31planned,6–23,24h phone/LINE,4person Yamato day vehicle OR9person resident-driver vehicle; may refuse. Unknown lead/payment are explicitly reviewed unknown, not promises."
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:okushiri:town-facts233",
+          "url": "https://www.town.okushiri.lg.jp/hotnews/files/00005400/00005446/20260904113326.pdf",
+          "observedResponseSha256": "5e1bfdb84d022e1609ada123147b65d68f5836ae7bceabff2ebc3d0030b97db5"
+        }
+      ],
+      "locator": "Separate airport-to-publicfacility and reverse demand capability within currently published whole-island service. Exact passenger gateway and public named facility; operator must accept pickup/dropoff and dispatch. No fixedbus reverse,8seat condition,actual booking or clock inference."
+    },
+    {
+      "factId": "okushiri-public-od-capability-1",
+      "kind": "dynamic_od",
+      "sourceActionId": "airport:okushiri:yamato-public-od233",
+      "sourceUrl": "https://www.kuronekoyamato.co.jp/ytc/info/info_261001_1.html",
+      "observedResponseSha256": "393f1e6e857c08c615075503f9ff74b9c8e4692e380a6ad8d0012e7f14e51ac4",
+      "operator": "奥尻町（ヤマト運輸・町民ドライバー）",
+      "endpointNames": [
+        "神威脇生活改善センター",
+        "奥尻空港"
+      ],
+      "endpointIdentityAnchors": [
+        "p05:22:01:P05_2451",
+        "review:official-airport:奥尻"
+      ],
+      "accessTerms": {
+        "contractKind": "OKUSHIRI_PUBLIC_OD_CAPABILITY_V1",
+        "audience": "PUBLIC",
+        "profile": "PUBLIC_VISITOR",
+        "channels": [
+          "PHONE",
+          "LINE"
+        ],
+        "reservationRequired": true,
+        "currentMinimumLeadMinutes": null,
+        "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+        "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+        "publishedReceptionWindows": [
+          {
+            "channels": [
+              "PHONE",
+              "LINE"
+            ],
+            "hours": "24H",
+            "humanPhoneWindow": [
+              "08:30",
+              "18:30"
+            ],
+            "outsideHumanPhone": "AI_VOICE_RECEPTION"
+          }
+        ],
+        "publishedServiceWindows": [
+          [
+            "06:00",
+            "23:00"
+          ]
+        ],
+        "timeZone": "Asia/Tokyo",
+        "serviceArea": "WHOLE_OKUSHIRI_ISLAND_INCLUDING_AIRPORT_AND_REVIEWED_PUBLIC_FACILITY",
+        "serviceType": "PUBLIC_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS",
+        "operatorAcceptanceRequired": true,
+        "pickupPlaceAgreementRequired": true,
+        "dispatchGuarantee": false,
+        "routePolicy": "OPERATOR_DISPATCH_SHARED_PASSENGER_SERVICE_NOT_EXCLUSIVE_DIRECT_TAXI",
+        "reviewedStructuralDate": "2026-10-05",
+        "periodStart": "2026-10-01",
+        "plannedPeriodEnd": "2027-01-31",
+        "periodEndIsPlanned": true,
+        "dispatchManagement": "奥尻町",
+        "driverAlternatives": [
+          {
+            "driver": "YAMATO_SALES_DRIVER",
+            "hours": [
+              "08:00",
+              "18:30"
+            ],
+            "vehicle": "DELIVERY_WAGON",
+            "maxPassengers": 4
+          },
+          {
+            "driver": "TOWN_RESIDENT_DRIVER",
+            "hours": null,
+            "publishedTiming": "PRIMARILY_EVENING_AND_NIGHT",
+            "vehicle": "TOWN_MANAGED_OR_LEASED",
+            "maxPassengers": 9
+          }
+        ],
+        "publishedInitialFareJPY": 700,
+        "fareBasis": "DISTANCE_BASED_NOT_A_FARE_ENGINE",
+        "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+      },
+      "conditionObservations": [
+        {
+          "conditionId": "okushiri:current-public-island-od",
+          "sourceActionId": "airport:okushiri:yamato-public-od233",
+          "sourceUrl": "https://www.kuronekoyamato.co.jp/ytc/info/info_261001_1.html",
+          "observedResponseSha256": "393f1e6e857c08c615075503f9ff74b9c8e4692e380a6ad8d0012e7f14e51ac4",
+          "claims": {
+            "contractKind": "OKUSHIRI_PUBLIC_OD_CAPABILITY_V1",
+            "audience": "PUBLIC",
+            "profile": "PUBLIC_VISITOR",
+            "channels": [
+              "PHONE",
+              "LINE"
+            ],
+            "reservationRequired": true,
+            "currentMinimumLeadMinutes": null,
+            "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+            "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+            "publishedReceptionWindows": [
+              {
+                "channels": [
+                  "PHONE",
+                  "LINE"
+                ],
+                "hours": "24H",
+                "humanPhoneWindow": [
+                  "08:30",
+                  "18:30"
+                ],
+                "outsideHumanPhone": "AI_VOICE_RECEPTION"
+              }
+            ],
+            "publishedServiceWindows": [
+              [
+                "06:00",
+                "23:00"
+              ]
+            ],
+            "timeZone": "Asia/Tokyo",
+            "serviceArea": "WHOLE_OKUSHIRI_ISLAND_INCLUDING_AIRPORT_AND_REVIEWED_PUBLIC_FACILITY",
+            "serviceType": "PUBLIC_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS",
+            "operatorAcceptanceRequired": true,
+            "pickupPlaceAgreementRequired": true,
+            "dispatchGuarantee": false,
+            "routePolicy": "OPERATOR_DISPATCH_SHARED_PASSENGER_SERVICE_NOT_EXCLUSIVE_DIRECT_TAXI",
+            "reviewedStructuralDate": "2026-10-05",
+            "periodStart": "2026-10-01",
+            "plannedPeriodEnd": "2027-01-31",
+            "periodEndIsPlanned": true,
+            "dispatchManagement": "奥尻町",
+            "driverAlternatives": [
+              {
+                "driver": "YAMATO_SALES_DRIVER",
+                "hours": [
+                  "08:00",
+                  "18:30"
+                ],
+                "vehicle": "DELIVERY_WAGON",
+                "maxPassengers": 4
+              },
+              {
+                "driver": "TOWN_RESIDENT_DRIVER",
+                "hours": null,
+                "publishedTiming": "PRIMARILY_EVENING_AND_NIGHT",
+                "vehicle": "TOWN_MANAGED_OR_LEASED",
+                "maxPassengers": 9
+              }
+            ],
+            "publishedInitialFareJPY": 700,
+            "fareBasis": "DISTANCE_BASED_NOT_A_FARE_ENGINE",
+            "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+          },
+          "locator": "Operator Oct1 announcement separate paid whole-island area-demand section: Oct1–Jan31planned,6–23,24h phone/LINE,4person Yamato day vehicle OR9person resident-driver vehicle; may refuse. Unknown lead/payment are explicitly reviewed unknown, not promises."
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:okushiri:town-facts233",
+          "url": "https://www.town.okushiri.lg.jp/hotnews/files/00005400/00005446/20260904113326.pdf",
+          "observedResponseSha256": "5e1bfdb84d022e1609ada123147b65d68f5836ae7bceabff2ebc3d0030b97db5"
+        }
+      ],
+      "locator": "Separate airport-to-publicfacility and reverse demand capability within currently published whole-island service. Exact passenger gateway and public named facility; operator must accept pickup/dropoff and dispatch. No fixedbus reverse,8seat condition,actual booking or clock inference."
+    }
+  ]
+}

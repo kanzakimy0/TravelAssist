@@ -188,6 +188,15 @@ test("timeline labels and card style toggle form aligned vertical rails", () => 
     css,
     /\.timeline\[data-time-aligned="true"\] \.labels,[\s\S]*grid-template-rows: minmax\(0, 1fr\) 54px;/,
   );
+  assert.match(
+    css,
+    /\.alignedStop \.card\s*\{[\s\S]*grid-template-columns: minmax\(0, 1fr\) 24px/,
+  );
+  assert.match(css, /\.alignedStop \.actions\s*\{\s*display: grid/);
+  assert.match(
+    css,
+    /\.alignedStop \.info strong\s*\{[\s\S]*white-space: normal;[\s\S]*overflow-wrap: anywhere/,
+  );
 });
 test("desktop preview origin is allowed to hydrate planner interactions", () => {
   const config = readFileSync(

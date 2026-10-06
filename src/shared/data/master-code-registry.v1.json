@@ -1,0 +1,3226 @@
+{
+  "schemaVersion": "1.0",
+  "registryRevision": "task-083-a-pilot100-r1",
+  "governanceStatus": "candidate",
+  "entries": [
+    {
+      "masterCode": "00000",
+      "entityType": "system.reserved",
+      "entityRef": null,
+      "lifecycleStatus": "reserved",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "master-code-range-v0.3"
+        }
+      ],
+      "allocationReason": "Inherited unknown and reserved sentinel; never an entity allocation.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00100",
+      "entityType": "region.country",
+      "entityRef": "region-japan",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-japan",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-japan"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "First stable country root in the inherited city and large-region namespace; identity remains external to the code.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00101",
+      "entityType": "region.macro_area",
+      "entityRef": "region-kanto",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kanto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-kanto"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable macro-area allocation in the inherited large-region namespace.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00102",
+      "entityType": "region.macro_area",
+      "entityRef": "region-chubu",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-chubu",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-chubu"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable macro-area allocation in the inherited large-region namespace.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00103",
+      "entityType": "region.macro_area",
+      "entityRef": "region-kansai",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kansai",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-kansai"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable macro-area allocation in the inherited large-region namespace.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00051",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-tokyo",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-tokyo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-tokyo"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00052",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-kanagawa",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-kanagawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-kanagawa"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00053",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-yamanashi",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-yamanashi",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-yamanashi"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00054",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-nagano",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-nagano",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-nagano"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00055",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-gifu",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-gifu",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-gifu"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00056",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-ishikawa",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-ishikawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-ishikawa"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00057",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-kyoto",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-kyoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-kyoto"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00058",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-nara",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-nara",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-nara"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00059",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-osaka",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-osaka",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-osaka"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00060",
+      "entityType": "region.prefecture",
+      "entityRef": "prefecture-hyogo",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#prefecture-hyogo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-prefecture-hyogo"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Registry allocation in the inherited prefecture range; deliberately distinct from administrative codes.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00110",
+      "entityType": "region.travel_region",
+      "entityRef": "region-tokyo",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-tokyo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-tokyo"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00111",
+      "entityType": "region.municipality",
+      "entityRef": "region-odawara",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-odawara",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-odawara"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable municipality allocation independent of the external administrative code.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00112",
+      "entityType": "region.travel_region",
+      "entityRef": "region-fuji-five-lakes",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-fuji-five-lakes",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-fuji-five-lakes"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00113",
+      "entityType": "region.municipality",
+      "entityRef": "region-fujikawaguchiko",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-fujikawaguchiko",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-fujikawaguchiko"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable municipality allocation independent of the external administrative code.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00114",
+      "entityType": "region.travel_region",
+      "entityRef": "region-nagano",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-nagano",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-nagano"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00115",
+      "entityType": "region.travel_region",
+      "entityRef": "region-matsumoto",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-matsumoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-matsumoto"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00116",
+      "entityType": "region.travel_region",
+      "entityRef": "region-kamikochi",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kamikochi",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-kamikochi"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00117",
+      "entityType": "region.travel_region",
+      "entityRef": "region-takayama",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-takayama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-takayama"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00118",
+      "entityType": "region.travel_region",
+      "entityRef": "region-shirakawa-go",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-shirakawa-go",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-shirakawa-go"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00119",
+      "entityType": "region.travel_region",
+      "entityRef": "region-kanazawa",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kanazawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-kanazawa"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00120",
+      "entityType": "region.travel_region",
+      "entityRef": "region-kyoto",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kyoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-kyoto"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00121",
+      "entityType": "region.travel_region",
+      "entityRef": "region-nara",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-nara",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-nara"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00122",
+      "entityType": "region.travel_region",
+      "entityRef": "region-osaka",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-osaka",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-osaka"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "00123",
+      "entityType": "region.travel_region",
+      "entityRef": "region-kobe",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-kobe",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-kobe"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable travel-region allocation in the inherited city and large-region range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01001",
+      "entityType": "region.district",
+      "entityRef": "district-shinjuku",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-shinjuku",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-shinjuku"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01002",
+      "entityType": "region.district",
+      "entityRef": "district-shibuya-harajuku",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-shibuya-harajuku",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-shibuya-harajuku"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01003",
+      "entityType": "region.district",
+      "entityRef": "district-asakusa-ueno",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-asakusa-ueno",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-asakusa-ueno"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01004",
+      "entityType": "region.district",
+      "entityRef": "district-central-tokyo",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-central-tokyo",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-central-tokyo"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01005",
+      "entityType": "region.district",
+      "entityRef": "district-higashiyama",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-higashiyama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-higashiyama"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01006",
+      "entityType": "region.district",
+      "entityRef": "district-arashiyama",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-arashiyama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-arashiyama"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01007",
+      "entityType": "region.district",
+      "entityRef": "district-namba-dotonbori",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-namba-dotonbori",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-namba-dotonbori"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "01008",
+      "entityType": "region.district",
+      "entityRef": "district-kobe-waterfront",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#district-kobe-waterfront",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-district-kobe-waterfront"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable district allocation in the inherited district and tourism-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "02001",
+      "entityType": "region.stay_cluster",
+      "entityRef": "stay-tokyo-station",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-tokyo-station",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-stay-tokyo-station"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "02002",
+      "entityType": "region.stay_cluster",
+      "entityRef": "stay-shinjuku",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-shinjuku",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-stay-shinjuku"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "02003",
+      "entityType": "region.stay_cluster",
+      "entityRef": "stay-kyoto-station",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-kyoto-station",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-stay-kyoto-station"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "02004",
+      "entityType": "region.stay_cluster",
+      "entityRef": "stay-umeda",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#stay-umeda",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-stay-umeda"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable lodging-area allocation in the inherited stay-area range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "03001",
+      "entityType": "region.onsen_resort",
+      "entityRef": "region-hakone",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#region-hakone",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-region-hakone"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Stable onsen-resort allocation in the inherited onsen and resort range.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04001",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-tokyo-rail",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-tokyo-rail",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-tokyo-rail"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04002",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-haneda",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-haneda",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-haneda"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04003",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-hakone-yumoto",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-hakone-yumoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-hakone-yumoto"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04004",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-kawaguchiko",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-kawaguchiko",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-kawaguchiko"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04005",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-matsumoto",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-matsumoto",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-matsumoto"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04006",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-takayama",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-takayama",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-takayama"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04007",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-kanazawa",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-kanazawa",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-kanazawa"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04008",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-kyoto-rail",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-kyoto-rail",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-kyoto-rail"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "04009",
+      "entityType": "region.gateway",
+      "entityRef": "gateway-osaka-rail",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "docs/qa/TASK-041/region-nodes.json#gateway-osaka-rail",
+        "docs/architecture/trip-engine-poi-ai-provider-design-v0.3.md#8.1"
+      ],
+      "provenance": [
+        {
+          "kind": "repository_contract",
+          "ref": "task-041-gateway-osaka-rail"
+        },
+        {
+          "kind": "allocation_review",
+          "ref": "task-043-candidate-r1"
+        }
+      ],
+      "allocationReason": "Travel gateway business identity; distinct from transport-node identifiers.",
+      "createdRevision": "task-043-candidate-r1",
+      "updatedRevision": "task-043-candidate-r1"
+    },
+    {
+      "masterCode": "11043",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:888efb66-91c6-52b2-b0d6-ea9787b59750",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11366295",
+        "source:v166:888efb66-91c6-52b2-b0d6-ea9787b59750"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11044",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:32b28653-3a4d-5649-bf60-3ecf2553e4f1",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q849183",
+        "source:v166:32b28653-3a4d-5649-bf60-3ecf2553e4f1"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11045",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:b80a118b-8df3-521b-8a3c-b7f2a8f129b5",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q6360900",
+        "source:v166:b80a118b-8df3-521b-8a3c-b7f2a8f129b5"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11046",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:094c9022-adb8-50e5-94b2-6a04b4184d8a",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11262858",
+        "source:v166:094c9022-adb8-50e5-94b2-6a04b4184d8a"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11047",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:c462498c-0e8d-5992-bbc3-f61b84c962ce",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11374783",
+        "source:v166:c462498c-0e8d-5992-bbc3-f61b84c962ce"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11048",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:b656925b-c77f-52e7-a261-9d955c430e4f",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11523139",
+        "source:v166:b656925b-c77f-52e7-a261-9d955c430e4f"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11049",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:9981f34a-0f72-5e09-b08e-21e4c6ab8625",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q6429613",
+        "source:v166:9981f34a-0f72-5e09-b08e-21e4c6ab8625"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11050",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:c58bdc2f-3452-57ef-8955-e8d7ad81f0eb",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11501451",
+        "source:v166:c58bdc2f-3452-57ef-8955-e8d7ad81f0eb"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11051",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:5ff08697-3bf3-5528-9ae6-8701bd091e20",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q412824",
+        "source:v166:5ff08697-3bf3-5528-9ae6-8701bd091e20"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11052",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:6013cd32-977a-500b-9de7-a7a2538f7594",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q7039909",
+        "source:v166:6013cd32-977a-500b-9de7-a7a2538f7594"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21241",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:b1277a73-9711-5369-9ef1-72ae2d3d734c",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q3191243",
+        "source:v166:b1277a73-9711-5369-9ef1-72ae2d3d734c"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21258",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:c04e3ef2-6eca-5b1d-81d9-fa78405e81e2",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q570624",
+        "source:v166:c04e3ef2-6eca-5b1d-81d9-fa78405e81e2"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21260",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:d5f73f4e-cd84-5205-b32c-c26c799950bb",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11438707",
+        "source:v166:d5f73f4e-cd84-5205-b32c-c26c799950bb"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21266",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:dba65e59-e523-5687-b6cc-2793d5f2a40d",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11576407",
+        "source:v166:dba65e59-e523-5687-b6cc-2793d5f2a40d"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21298",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:f5e68e8a-a0c8-57ca-97dd-6179fc1e1b36",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q270983",
+        "source:v166:f5e68e8a-a0c8-57ca-97dd-6179fc1e1b36"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21302",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:44a81589-ab82-5923-8b3b-4be32cf612bf",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11535102",
+        "source:v166:44a81589-ab82-5923-8b3b-4be32cf612bf"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21307",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:8b06ee03-d4cb-5987-8f95-e8d23c290af8",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11358418",
+        "source:v166:8b06ee03-d4cb-5987-8f95-e8d23c290af8"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21329",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:c64bfcca-37a6-50ff-9817-ca543bb6b152",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11580783",
+        "source:v166:c64bfcca-37a6-50ff-9817-ca543bb6b152"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21341",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:294d96f2-512c-5b4c-a8b7-a5220bc827ff",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11590603",
+        "source:v166:294d96f2-512c-5b4c-a8b7-a5220bc827ff"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21354",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:c163d26e-0d3c-5d59-b998-b313a9e1f9c9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11647655",
+        "source:v166:c163d26e-0d3c-5d59-b998-b313a9e1f9c9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31507",
+      "entityType": "poi.nature",
+      "entityRef": "poi:5701cc10-2614-5a31-9ea3-6ebccf834fdc",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q258070",
+        "source:v166:5701cc10-2614-5a31-9ea3-6ebccf834fdc"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31509",
+      "entityType": "poi.nature",
+      "entityRef": "poi:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q30937665",
+        "source:v166:12b4c7d2-a94a-56a6-9fe8-1b04aa57d044"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31513",
+      "entityType": "poi.nature",
+      "entityRef": "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q49507",
+        "source:v166:e202dd40-4017-5b70-b5db-a8f3092bb3ca"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31518",
+      "entityType": "poi.nature",
+      "entityRef": "poi:64b5ce2b-9bfe-560a-a87b-a556b01b30d9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11660676",
+        "source:v166:64b5ce2b-9bfe-560a-a87b-a556b01b30d9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31521",
+      "entityType": "poi.nature",
+      "entityRef": "poi:339abeaf-b6c9-566d-a6e2-e16fd27c5d82",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11657656",
+        "source:v166:339abeaf-b6c9-566d-a6e2-e16fd27c5d82"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31533",
+      "entityType": "poi.nature",
+      "entityRef": "poi:8fd0cd02-a6df-5a91-8929-982947a4e831",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11353873",
+        "source:v166:8fd0cd02-a6df-5a91-8929-982947a4e831"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31534",
+      "entityType": "poi.nature",
+      "entityRef": "poi:23f1ea70-dd52-5271-8117-0bb6d53cbd85",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11634881",
+        "source:v166:23f1ea70-dd52-5271-8117-0bb6d53cbd85"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31560",
+      "entityType": "poi.nature",
+      "entityRef": "poi:ee495165-9514-5de2-a97f-be8f1259e01d",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11603215",
+        "source:v166:ee495165-9514-5de2-a97f-be8f1259e01d"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31568",
+      "entityType": "poi.nature",
+      "entityRef": "poi:6814946e-289b-5931-8f0f-e397e0073627",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q117100545",
+        "source:v166:6814946e-289b-5931-8f0f-e397e0073627"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31573",
+      "entityType": "poi.nature",
+      "entityRef": "poi:bf217543-5ae2-5cea-91b5-b000c5adcb5b",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q3695494",
+        "source:v166:bf217543-5ae2-5cea-91b5-b000c5adcb5b"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41193",
+      "entityType": "poi.experience",
+      "entityRef": "poi:e4b341b3-940f-56fc-adc9-6c7dd68e44d6",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q24873809",
+        "source:v166:e4b341b3-940f-56fc-adc9-6c7dd68e44d6"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41194",
+      "entityType": "poi.experience",
+      "entityRef": "poi:0eb953aa-6d4e-55e7-83cc-a46011af5f7a",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11326405",
+        "source:v166:0eb953aa-6d4e-55e7-83cc-a46011af5f7a"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41195",
+      "entityType": "poi.experience",
+      "entityRef": "poi:fbf5ebbc-208c-59aa-acf4-2b39f9e68033",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11579546",
+        "source:v166:fbf5ebbc-208c-59aa-acf4-2b39f9e68033"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41196",
+      "entityType": "poi.experience",
+      "entityRef": "poi:9d994722-9e38-5337-91fe-92285a27b689",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11438299",
+        "source:v166:9d994722-9e38-5337-91fe-92285a27b689"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41197",
+      "entityType": "poi.experience",
+      "entityRef": "poi:185c6d0a-7362-54e2-9e4b-af977202e7eb",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q140429909",
+        "source:v166:185c6d0a-7362-54e2-9e4b-af977202e7eb"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41198",
+      "entityType": "poi.experience",
+      "entityRef": "poi:d2161ffe-3262-5dd9-82a3-425160873f91",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11233807",
+        "source:v166:d2161ffe-3262-5dd9-82a3-425160873f91"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41199",
+      "entityType": "poi.experience",
+      "entityRef": "poi:7e12e85d-5d15-5fc7-9c55-b9346a5053d9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q34894297",
+        "source:v166:7e12e85d-5d15-5fc7-9c55-b9346a5053d9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41200",
+      "entityType": "poi.experience",
+      "entityRef": "poi:4542c90e-26b4-57fe-8f78-94e7c1813b88",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q6875079",
+        "source:v166:4542c90e-26b4-57fe-8f78-94e7c1813b88"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41201",
+      "entityType": "poi.experience",
+      "entityRef": "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q17211017",
+        "source:v166:1f4f9320-e27e-5ab5-9adb-e9e13a78b254"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41202",
+      "entityType": "poi.experience",
+      "entityRef": "poi:8a0df5b2-0299-5e46-8cd9-816f598ef494",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q49492343",
+        "source:v166:8a0df5b2-0299-5e46-8cd9-816f598ef494"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51044",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:2f6d987d-750a-5cc2-9443-e4a779eea8a5",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11656463",
+        "source:v166:2f6d987d-750a-5cc2-9443-e4a779eea8a5"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51045",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:dc558f18-a997-55dc-8e86-9213ea9c7848",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11667705",
+        "source:v166:dc558f18-a997-55dc-8e86-9213ea9c7848"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51046",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:9f237288-43f8-5a48-a20f-d238c620dd06",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q139784060",
+        "source:v166:9f237288-43f8-5a48-a20f-d238c620dd06"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51047",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:2d2615f4-ef0e-512d-bd1f-032bd2e3e689",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q2496472",
+        "source:v166:2d2615f4-ef0e-512d-bd1f-032bd2e3e689"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51048",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:b46f29d1-d7d2-53d2-ae42-faaaeb5281c5",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11597800",
+        "source:v166:b46f29d1-d7d2-53d2-ae42-faaaeb5281c5"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51049",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:f97aa155-3902-5069-b925-81cfe24fe549",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11610945",
+        "source:v166:f97aa155-3902-5069-b925-81cfe24fe549"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51050",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:96ff0342-4041-5f98-b968-e61382585e19",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11534403",
+        "source:v166:96ff0342-4041-5f98-b968-e61382585e19"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51051",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:c7230113-7bfc-5028-b9fb-7fb033d9b91c",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11502154",
+        "source:v166:c7230113-7bfc-5028-b9fb-7fb033d9b91c"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51052",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:3f5ed623-1dd3-57b5-9d6b-7d1d219bc6e2",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11095134",
+        "source:v166:3f5ed623-1dd3-57b5-9d6b-7d1d219bc6e2"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51053",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:fbb4b97c-149c-5ac5-9089-a165a97f1753",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q28687167",
+        "source:v166:fbb4b97c-149c-5ac5-9089-a165a97f1753"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "60000",
+      "entityType": "poi.religious_historic",
+      "entityRef": "poi:e8d5a670-65a9-5f6e-8ae7-df83719e1cd7",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q670049",
+        "source:v166:e8d5a670-65a9-5f6e-8ae7-df83719e1cd7"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "70000",
+      "entityType": "poi.shopping",
+      "entityRef": "poi:7bbe7bac-a8fa-59f6-ae16-924a9dfe8ce1",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q28685888",
+        "source:v166:7bbe7bac-a8fa-59f6-ae16-924a9dfe8ce1"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11053",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:5680b3e1-d51c-55bc-98ce-c9aa31a8e2b1",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11609251",
+        "source:v166:5680b3e1-d51c-55bc-98ce-c9aa31a8e2b1"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11054",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:572873f6-5068-5527-a2bc-d4a9be311f1d",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q65292007",
+        "source:v166:572873f6-5068-5527-a2bc-d4a9be311f1d"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11055",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11489025",
+        "source:v166:0af92bf8-9b9b-59b3-9bb4-dd6024dfe5d1"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11056",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q5369910",
+        "source:v166:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11057",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:523f05af-7594-5cf3-8133-55951647b8a4",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11372482",
+        "source:v166:523f05af-7594-5cf3-8133-55951647b8a4"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11058",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:b20c863a-6e32-53ef-a02c-4e408be2d398",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11559352",
+        "source:v166:b20c863a-6e32-53ef-a02c-4e408be2d398"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11059",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:1a534236-6dbc-57d0-8c3e-94c305ecd381",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11551547",
+        "source:v166:1a534236-6dbc-57d0-8c3e-94c305ecd381"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11060",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:2ac81798-9854-587f-a5ef-606abfef172b",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q128836",
+        "source:v166:2ac81798-9854-587f-a5ef-606abfef172b"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11061",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:1b3c680d-e276-56dd-af72-f0cb53e433e4",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q269261",
+        "source:v166:1b3c680d-e276-56dd-af72-f0cb53e433e4"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "11062",
+      "entityType": "poi.cityscape_landmark",
+      "entityRef": "poi:c1d57555-6064-554f-8587-c228fa7a480c",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11469670",
+        "source:v166:c1d57555-6064-554f-8587-c228fa7a480c"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21356",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:2d7f78fb-92d1-5dbb-a478-d44d7c84398e",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11377573",
+        "source:v166:2d7f78fb-92d1-5dbb-a478-d44d7c84398e"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21387",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:2325dcca-3a21-5c05-a6e7-f2a472dd2ab9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q10311926",
+        "source:v166:2325dcca-3a21-5c05-a6e7-f2a472dd2ab9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21393",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:1288a150-e90b-55d0-b52b-7c2c447b5efd",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q3342007",
+        "source:v166:1288a150-e90b-55d0-b52b-7c2c447b5efd"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21400",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:0eeb21ca-4e78-5f67-9290-9c38992156d9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q615465",
+        "source:v166:0eeb21ca-4e78-5f67-9290-9c38992156d9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21432",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:b1bba5a0-2f84-5b0f-b68e-16f45dfe4f44",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q17025628",
+        "source:v166:b1bba5a0-2f84-5b0f-b68e-16f45dfe4f44"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21438",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:f8e64c41-ab6a-521b-9001-fb04ac521581",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11437203",
+        "source:v166:f8e64c41-ab6a-521b-9001-fb04ac521581"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21445",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:fb12d93b-3414-58dd-aa53-a76c334d601a",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q3816159",
+        "source:v166:fb12d93b-3414-58dd-aa53-a76c334d601a"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21476",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:b3158801-63a3-5ec0-b8e5-78d581cb28c3",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q3608523",
+        "source:v166:b3158801-63a3-5ec0-b8e5-78d581cb28c3"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21509",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:04a3612d-f1a1-5771-b2da-e07998eac7a3",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q249139",
+        "source:v166:04a3612d-f1a1-5771-b2da-e07998eac7a3"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "21518",
+      "entityType": "poi.culture_history",
+      "entityRef": "poi:d0013bd7-f084-5d70-a265-d707f887049f",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11644535",
+        "source:v166:d0013bd7-f084-5d70-a265-d707f887049f"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31575",
+      "entityType": "poi.nature",
+      "entityRef": "poi:09ae3454-e0fc-5377-873e-2a78294c20e3",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11665780",
+        "source:v166:09ae3454-e0fc-5377-873e-2a78294c20e3"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31587",
+      "entityType": "poi.nature",
+      "entityRef": "poi:5eac5b0f-10cb-5d54-a810-ab2d6e9b70c6",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11379339",
+        "source:v166:5eac5b0f-10cb-5d54-a810-ab2d6e9b70c6"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31588",
+      "entityType": "poi.nature",
+      "entityRef": "poi:77b9a54f-4d4a-51b9-a718-86a62e1bfb31",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11438532",
+        "source:v166:77b9a54f-4d4a-51b9-a718-86a62e1bfb31"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31589",
+      "entityType": "poi.nature",
+      "entityRef": "poi:e1b1d952-32c7-56e4-b75b-4f5c66983de1",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q37988",
+        "source:v166:e1b1d952-32c7-56e4-b75b-4f5c66983de1"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31590",
+      "entityType": "poi.nature",
+      "entityRef": "poi:0cd98b4c-93f5-56ac-a386-b36fc071ec80",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q6434159",
+        "source:v166:0cd98b4c-93f5-56ac-a386-b36fc071ec80"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31591",
+      "entityType": "poi.nature",
+      "entityRef": "poi:d46dabd5-c737-5e19-b6a0-5eb091f8b627",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q728107",
+        "source:v166:d46dabd5-c737-5e19-b6a0-5eb091f8b627"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31592",
+      "entityType": "poi.nature",
+      "entityRef": "poi:62b68eb4-6f4e-5fd3-9261-70dfee43d805",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q860627",
+        "source:v166:62b68eb4-6f4e-5fd3-9261-70dfee43d805"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31593",
+      "entityType": "poi.nature",
+      "entityRef": "poi:b090d500-10e9-5ed0-a393-2ac5315f84e5",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q2565996",
+        "source:v166:b090d500-10e9-5ed0-a393-2ac5315f84e5"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31594",
+      "entityType": "poi.nature",
+      "entityRef": "poi:a4c10e0a-3b43-52ba-9c85-bb842ebcc3c3",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q473472",
+        "source:v166:a4c10e0a-3b43-52ba-9c85-bb842ebcc3c3"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "31595",
+      "entityType": "poi.nature",
+      "entityRef": "poi:8076b2ec-9416-5b4f-b473-07cf7811d11a",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q615767",
+        "source:v166:8076b2ec-9416-5b4f-b473-07cf7811d11a"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41203",
+      "entityType": "poi.experience",
+      "entityRef": "poi:9e408f49-ffe2-59e3-96d9-8ebc639ab787",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11507877",
+        "source:v166:9e408f49-ffe2-59e3-96d9-8ebc639ab787"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41204",
+      "entityType": "poi.experience",
+      "entityRef": "poi:1af29a8e-80b7-58c6-ae45-36980161f966",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q18700915",
+        "source:v166:1af29a8e-80b7-58c6-ae45-36980161f966"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41205",
+      "entityType": "poi.experience",
+      "entityRef": "poi:7d45165f-9312-57c9-ba68-66efbf115ec4",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11496930",
+        "source:v166:7d45165f-9312-57c9-ba68-66efbf115ec4"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41206",
+      "entityType": "poi.experience",
+      "entityRef": "poi:00368a84-f7d1-54e4-9f3f-4a5567d4aa5f",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q720883",
+        "source:v166:00368a84-f7d1-54e4-9f3f-4a5567d4aa5f"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41207",
+      "entityType": "poi.experience",
+      "entityRef": "poi:09d65274-ee89-5f3b-9a17-1cd1167338f4",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q15229013",
+        "source:v166:09d65274-ee89-5f3b-9a17-1cd1167338f4"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41208",
+      "entityType": "poi.experience",
+      "entityRef": "poi:80a56c00-303f-58e9-bc00-041993342ed2",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11336587",
+        "source:v166:80a56c00-303f-58e9-bc00-041993342ed2"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41209",
+      "entityType": "poi.experience",
+      "entityRef": "poi:383a37aa-400b-5c90-aa81-ef524e3eeb4f",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q115057248",
+        "source:v166:383a37aa-400b-5c90-aa81-ef524e3eeb4f"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41210",
+      "entityType": "poi.experience",
+      "entityRef": "poi:9ea49010-7198-586c-afbe-d63f4f64a834",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11257046",
+        "source:v166:9ea49010-7198-586c-afbe-d63f4f64a834"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41211",
+      "entityType": "poi.experience",
+      "entityRef": "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q132859055",
+        "source:v166:208288db-abad-5e91-ab74-4a74d6a6cd68"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "41212",
+      "entityType": "poi.experience",
+      "entityRef": "poi:842c0c75-e702-5c35-87d4-6acf676d25b7",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11306009",
+        "source:v166:842c0c75-e702-5c35-87d4-6acf676d25b7"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51054",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:c5e676b6-3669-5dba-aad8-21d7b257e8da",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11559022",
+        "source:v166:c5e676b6-3669-5dba-aad8-21d7b257e8da"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51055",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:afba14c1-cfe6-5b7a-9c76-8114da8e1091",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11556534",
+        "source:v166:afba14c1-cfe6-5b7a-9c76-8114da8e1091"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51056",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:6717c4a6-f53a-53e0-a8b1-ad6b9aa9d4f9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11420187",
+        "source:v166:6717c4a6-f53a-53e0-a8b1-ad6b9aa9d4f9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51057",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:51483535-a03f-5fbe-851b-a0a02d0be9c6",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q85869186",
+        "source:v166:51483535-a03f-5fbe-851b-a0a02d0be9c6"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51058",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:c92ec63d-3139-513d-9852-a34ae74da64d",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11630696",
+        "source:v166:c92ec63d-3139-513d-9852-a34ae74da64d"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51059",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:608a6e66-f282-51a2-8b35-ccc6efc448f2",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11631898",
+        "source:v166:608a6e66-f282-51a2-8b35-ccc6efc448f2"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51060",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:01cd46b4-5082-5837-b393-57c118c58e27",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11620899",
+        "source:v166:01cd46b4-5082-5837-b393-57c118c58e27"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    },
+    {
+      "masterCode": "51061",
+      "entityType": "poi.museum_art",
+      "entityRef": "poi:1257b6b9-514c-59a1-bd04-e5de53208fb9",
+      "lifecycleStatus": "active",
+      "supersededBy": null,
+      "sourceRefs": [
+        "source:wikidata:Q11441681",
+        "source:v166:1257b6b9-514c-59a1-bd04-e5de53208fb9"
+      ],
+      "provenance": [
+        {
+          "kind": "allocation_review",
+          "ref": "docs/qa/TASK-083/allocation-audit.v1.json"
+        }
+      ],
+      "allocationReason": "Lowest safe free code after current registry and all discovered v1.66/historical/unknown/conflict claims were excluded; legacy claim not preserved without authoritative lineage.",
+      "createdRevision": "task-083-a-pilot100-r1",
+      "updatedRevision": "task-083-a-pilot100-r1"
+    }
+  ]
+}

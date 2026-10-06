@@ -1,0 +1,37 @@
+# TASK-048-B — PR #221 file audit
+
+Audited PR #221 head `929529be302b60c84ace3a580461de95e04de461`, branch
+`feature/b-step-preference-trip-draft-persistence`, against execution baseline
+`b7eb931698da69cec73f7a0399897dbb5caab8c2`. Issue #207 and PR #221 are historical
+Partial references. No merge, cherry-pick, closure or edits to that branch occurred.
+All 23 changed files were inspected; no old runtime file was copied.
+
+| Legacy file                                                              | Disposition | Decision for TASK-048                                                                                                                                                              |
+| ------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `docs/architecture/step-preference-persistence.md`                       | SUPERSEDE   | Historical four-table/30-key/API proposal; current 5.18 frozen design is authoritative.                                                                                            |
+| `docs/project/WBS-TravelAssist.md`                                       | SUPERSEDE   | Preserve current develop and all historical entries; change only current 5.18 status.                                                                                              |
+| `docs/tasks/RESULT-TASK-017-b-step-preference-trip-draft-persistence.md` | DEFER       | Retain historical Partial results on their original branch; not current acceptance evidence.                                                                                       |
+| `docs/tasks/TASK-017-b-step-preference-trip-draft-persistence.md`        | SUPERSEDE   | TASK-048 governs this model-only scope; old Step/API goals are not executed.                                                                                                       |
+| `package.json`                                                           | SUPERSEDE   | Preserve current scripts/dependencies; add distinct Trip persistence test commands.                                                                                                |
+| `src/app/api/travel-persistence/route.ts`                                | DEFER       | HTTP write/read contract belongs to 5.19.                                                                                                                                          |
+| `src/db/schema/index.ts`                                                 | REWORK      | Keep accepted current exports and add the single new aggregate mirror.                                                                                                             |
+| `src/db/schema/travel-preferences.ts`                                    | SUPERSEDE   | Accepted 5.11/5.16 Preference mirror stays byte-identical. Old trip sub-tables are superseded by one aggregate.                                                                    |
+| `src/features/start-flow/model/server-draft-autosave.ts`                 | DEFER       | Debounce/retry/resume/UI wiring belongs to 5.19 or later.                                                                                                                          |
+| `src/server/preferences/http.ts`                                         | DEFER       | Old multiplexer and authentication transport are outside model scope; accepted 5.16 HTTP is retained.                                                                              |
+| `src/server/preferences/repository.ts`                                   | REWORK      | Retain owner-scoped creation-key uniqueness as a design idea; replace multi-table snapshots/overrides with one row. No repository or write API is imported.                        |
+| `src/server/preferences/service.ts`                                      | DEFER       | Service orchestration/claims/locking needs the future 5.19 contract. Do not overwrite current services.                                                                            |
+| `src/shared/contracts/preferences/drafts.ts`                             | REWORK      | Reuse the idea of direct A parser delegation; new B-local parser adds saved/history and keeps canonical Trip IDs separate from UUIDs.                                              |
+| `src/shared/contracts/preferences/index.ts`                              | SUPERSEDE   | Old 30-key vocabulary, UI imports and sparse override envelope replaced by accepted PreferenceV1/PreferencePatchV1.                                                                |
+| `src/types/database.generated.ts`                                        | SUPERSEDE   | Generate from real current Local Supabase, never copy legacy generated types.                                                                                                      |
+| `supabase/migrations/20260908130000_create_trip_preference_drafts.sql`   | REWORK      | Trip aggregate/creation-key idea reworked into one additive migration. Old Preference DDL is SUPERSEDED by 5.11/5.16; no root-copy trigger or four-table architecture is restored. |
+| `tests/register-preference-ts.mjs`                                       | SUPERSEDE   | Use existing route/planner test loaders; no extra loader.                                                                                                                          |
+| `tests/task-016-user-profile.runtime.mjs`                                | REUSE       | Current accepted Profile suite already isolates its three tables; run unchanged.                                                                                                   |
+| `tests/task-016-user-profile.test.mjs`                                   | REUSE       | Current accepted Profile scope/bundle checks already cover this concern; run unchanged.                                                                                            |
+| `tests/task-017-api.runtime.mjs`                                         | DEFER       | HTTP/autosave acceptance is outside 5.18; current Preference/Companion API regressions run independently.                                                                          |
+| `tests/task-017-local-db.mjs`                                            | SUPERSEDE   | Reuse accepted current localhost-only runtime helpers with redacted errors and fixture cleanup.                                                                                    |
+| `tests/task-017-persistence.runtime.mjs`                                 | REWORK      | Scenario references for real Auth, RLS, revision, uniqueness and detached snapshots; write new single-aggregate tests.                                                             |
+| `tests/task-017-persistence.test.mjs`                                    | REWORK      | Preserve missing/false/neutral and canonical delegation scenarios using accepted keys; autosave cases deferred.                                                                    |
+
+A file has exactly one disposition in the matrix. For mixed files, the row explains
+which obsolete component is superseded while the selected disposition describes
+the whole file's treatment. No legacy migration is added to current SQL history.

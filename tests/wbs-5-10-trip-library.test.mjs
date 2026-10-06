@@ -183,14 +183,10 @@ test("route replaces the placeholder and page declares required UI boundaries", 
   assert.match(styles, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
   assert.match(styles, /\.draftCard:first-child/);
   assert.match(styles, /grid-column: 1 \/ -1/);
-  for (const copy of [
-    "Persistence: Mock / in-memory only",
-    "WBS 5.18 Trip 数据聚合与映射：未实现",
-    "WBS 5.19 预订同步：未实现",
-    "A Trip Plan Contract：未集成",
-    "Reservation Hub：未实现",
-  ])
-    assert.match(page, new RegExp(copy));
+  assert.match(page, /useTripLibrary/);
+  assert.doesNotMatch(page, /createTripLibraryFixture|Persistence: Mock/);
+  assert.match(page, /预订、收藏和封面资料暂未提供/);
+  assert.match(page, /继续编辑行程的入口暂不可用/);
 });
 
 test("page includes empty states, external warning, recap and deferred booking", () => {
@@ -204,7 +200,7 @@ test("page includes empty states, external warning, recap and deferred booking",
     "完成旅行后，它会出现在这里",
     "还没有收藏",
     "不会取消酒店、门票、餐厅或交通合作方的预订",
-    "旅行回顾",
+    "行程摘要",
     "复制为新草稿",
     "价格与预订操作暂不可用",
   ])
@@ -228,7 +224,7 @@ test("all selected local assets exist", () => {
   }
 });
 
-test("implementation adds no persistence network or partner-write surface", () => {
+test("presentation delegates authorized TASK-061 persistence without direct DB or partner-write access", () => {
   const source = [
     read("src/features/trip-library/trip-library-page.tsx"),
     read("src/features/trip-library/trip-library-model.ts"),

@@ -190,25 +190,25 @@
 .alignedStop {
   position: absolute;
   inset-block: 2px 0;
-  min-width: 46px;
+  min-width: 60px;
   container-type: inline-size;
 }
 .alignedStop .card {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 24px;
   height: 100%;
 }
 .alignedStop .actions {
-  display: none;
+  display: grid;
 }
 .alignedStop .info {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
   padding: 2px 5px;
 }
-.alignedStop .info small,
-.alignedStop .info strong {
+.alignedStop .info small {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -219,6 +219,15 @@
 .alignedStop .info strong {
   display: block;
   font-size: 9px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.15;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+.alignedStop .actions svg {
+  width: 10px;
+  height: 10px;
 }
 .card[data-continuation="true"] {
   grid-template-columns: minmax(0, 1fr);
@@ -226,14 +235,17 @@
 }
 @container (max-width: 78px) {
   .alignedStop .card {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 20px;
   }
   .alignedStop .info {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding-inline: 3px;
   }
   .alignedStop .info strong {
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: unset;
+    white-space: normal;
     font-size: 9px;
   }
   .alignedStop .info small {

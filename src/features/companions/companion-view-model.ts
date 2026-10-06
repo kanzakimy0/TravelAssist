@@ -52,6 +52,7 @@ export const mobilityNeedOptions = [
 
 export const diningNeedOptions = [
   "饮食限制",
+  "食物过敏提醒",
   "素食",
   "儿童餐需求",
   "其他饮食说明",

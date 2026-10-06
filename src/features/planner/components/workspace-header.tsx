@@ -1,11 +1,26 @@
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { AccountAvatar } from "@/components/ui/account-avatar";
+import { authHref } from "@/features/auth/auth-ui-model";
+import type { HomeViewer } from "@/lib/auth/home-viewer";
+
 import { useEffect, useRef, useState } from "react";
 import { PlannerIcon } from "./planner-icon";
 import { PlannerPopover } from "./planner-popover";
 import styles from "../planner.module.css";
 import ui from "../planner-v05.module.css";
 
-export function WorkspaceHeader() {
+export function WorkspaceHeader({
+  viewer = null,
+}: {
+  viewer?: HomeViewer | null;
+}) {
+  const pathname = usePathname();
+  const returnQuery = useSearchParams().toString();
+  const loginHref = authHref(
+    "/login",
+    pathname + (returnQuery ? "?" + returnQuery : ""),
+  );
   const [open, setOpen] = useState<
     "search" | "notifications" | "account" | null
   >(null);
@@ -113,13 +128,15 @@ export function WorkspaceHeader() {
           className={ui.headerIcon}
           ref={account}
           type="button"
-          aria-label="个人中心菜单"
+          aria-label={
+            viewer ? `${viewer.name} · 个人中心菜单` : "登录或个人中心菜单"
+          }
+          aria-controls={open === "account" ? "header-account" : undefined}
+          aria-haspopup="dialog"
           aria-expanded={open === "account"}
           onClick={() => setOpen(open === "account" ? null : "account")}
         >
-          <span className={styles.avatar}>
-            <PlannerIcon name="users" />
-          </span>
+          <AccountAvatar src={viewer?.avatar} unoptimized />
         </button>
       </div>
       {open && (
@@ -161,7 +178,20 @@ export function WorkspaceHeader() {
           ) : open === "notifications" ? (
             <p>暂无新通知 · 本地演示</p>
           ) : (
-            <Link href="/personal-center">进入个人中心</Link>
+            <nav className={ui.accountMenu} aria-label="账户入口">
+              <strong>{viewer?.name ?? "游客"}</strong>
+              {!viewer && (
+                <Link href={loginHref} data-popover-autofocus>
+                  登录
+                </Link>
+              )}
+              <Link
+                href="/personal-center"
+                data-popover-autofocus={viewer ? true : undefined}
+              >
+                进入个人中心
+              </Link>
+            </nav>
           )}
         </PlannerPopover>
       )}

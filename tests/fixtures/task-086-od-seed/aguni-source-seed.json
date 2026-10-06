@@ -1,0 +1,409 @@
+{
+  "source": {
+    "sourceId": "transport-source:086:27b3d3d2b7ae5ab2470d60822858a752",
+    "url": "https://www.vill.aguni.okinawa.jp/sonsei/60.html",
+    "contentSha256": "171f06f67de3cf71ddc51c4cb68a95a7613585f3a154f0cacfd3277d9b5d71df",
+    "evidenceContentSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T17:57:01.045286+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.vill.aguni.okinawa.jp/10/71.html",
+      "reason": "Minimum independently structured municipal public-service/identity/request facts only; DAI flight authorship explicit. No raw timetable/map/prose redistribution. Advertising policy is not a license. Current OD cutoff remains UNKNOWN; separate structural capability proof is not a booking or dispatch claim."
+    },
+    "attribution": "https://www.vill.aguni.okinawa.jp/sonsei/60.html; operator factual topology; reviewed 2026-10-03T17:57:01.045286+00:00"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:e263ff962879fd0db71d89a9a3498d9c",
+      "sourceId": "transport-source:086:27b3d3d2b7ae5ab2470d60822858a752",
+      "sourceSha256": "171f06f67de3cf71ddc51c4cb68a95a7613585f3a154f0cacfd3277d9b5d71df",
+      "record": {
+        "factId": "aguni-public-od-capability-0",
+        "kind": "dynamic_od",
+        "sourceActionId": "airport:aguni:public-source-review232",
+        "sourceUrl": "https://www.vill.aguni.okinawa.jp/sonsei/60.html",
+        "observedResponseSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b",
+        "operator": "粟国村",
+        "endpointNames": ["粟国空港", "粟国村役場"],
+        "endpointIdentityAnchors": [
+          "review:official-airport:粟国",
+          "p05:22:47:P05_845"
+        ],
+        "accessTerms": {
+          "contractKind": "AGUNI_PUBLIC_OD_CAPABILITY_V1",
+          "audience": "PUBLIC",
+          "profile": "PUBLIC_VISITOR",
+          "channel": "PHONE",
+          "reservationRequired": true,
+          "currentMinimumLeadMinutes": null,
+          "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+          "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+          "publishedReceptionWindows": [
+            {
+              "source": "access.html",
+              "start": "08:30",
+              "end": "16:15"
+            },
+            {
+              "source": "bus-timetable.pdf",
+              "start": "08:00",
+              "end": "16:15"
+            }
+          ],
+          "publishedServiceWindows": [
+            {
+              "source": "access.html",
+              "windows": [["08:30", "16:30"]]
+            },
+            {
+              "source": "bus-timetable.pdf",
+              "windows": [
+                ["10:30", "11:20"],
+                ["12:35", "17:00"]
+              ]
+            }
+          ],
+          "timeZone": "Asia/Tokyo",
+          "serviceArea": "AGUNI_HAMA_NISHI_HIGASHI_INCLUDING_AIRPORT",
+          "serviceType": "SHARED_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS",
+          "operatorAcceptanceRequired": true,
+          "pickupPlaceAgreementRequired": true,
+          "dispatchGuarantee": false,
+          "routePolicy": "SHARED_RIDE_VIA_OPERATOR_ROUTE_NOT_EXCLUSIVE_DIRECT_TAXI",
+          "reviewedStructuralDate": "2026-10-17",
+          "validToClaim": null,
+          "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+        },
+        "conditionObservations": [
+          {
+            "conditionId": "aguni:access.html",
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "sourceUrl": "https://www.vill.aguni.okinawa.jp/sonsei/60.html",
+            "observedResponseSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b",
+            "claims": {
+              "contractKind": "AGUNI_PUBLIC_OD_CAPABILITY_V1",
+              "channel": "PHONE",
+              "reservationRequired": true,
+              "publishedReceptionWindows": [
+                {
+                  "source": "access.html",
+                  "start": "08:30",
+                  "end": "16:15"
+                },
+                {
+                  "source": "bus-timetable.pdf",
+                  "start": "08:00",
+                  "end": "16:15"
+                }
+              ],
+              "publishedServiceWindows": [
+                {
+                  "source": "access.html",
+                  "windows": [["08:30", "16:30"]]
+                },
+                {
+                  "source": "bus-timetable.pdf",
+                  "windows": [
+                    ["10:30", "11:20"],
+                    ["12:35", "17:00"]
+                  ]
+                }
+              ],
+              "timeZone": "Asia/Tokyo",
+              "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+              "dispatchGuarantee": false,
+              "operatorAcceptanceRequired": true,
+              "pickupPlaceAgreementRequired": true,
+              "routePolicy": "SHARED_RIDE_VIA_OPERATOR_ROUTE_NOT_EXCLUSIVE_DIRECT_TAXI",
+              "reviewedStructuralDate": "2026-10-17",
+              "validToClaim": null,
+              "currentMinimumLeadMinutes": null,
+              "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+              "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+            },
+            "locator": "Current owner-operated booking-based shared destination service; source windows retained with old linked timetable conflict. Unknown current numerical cutoff/payment and separate structural proof classification are explicitly reviewed unknowns, not operator-published promises.",
+            "corroboratingEvidence": [
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/basu_unnkouzikokuhyou_3.pdf",
+                "observedResponseSha256": "3a2f3eb6f212732a7f29d0bd96aef8842f2e91e00ef1cc1960fddacdbf1cc9ec"
+              },
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/20260901_kouhou9.pdf",
+                "observedResponseSha256": "58c06350e407005e64fbef577b6133aadc1ec866a9377d2b2df4d27f0c8c5bf4"
+              }
+            ]
+          },
+          {
+            "conditionId": "aguni:renewal-application2025.pdf",
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "sourceUrl": "https://www.vill.aguni.okinawa.jp/material/files/group/1/7_kousinnsinnsei_R7_1.pdf",
+            "observedResponseSha256": "c2a8a1a256c40a9e150f9b34be5668903bdbb8cbcb64db021b27a9ef8f524abc",
+            "claims": {
+              "audience": "PUBLIC",
+              "profile": "PUBLIC_VISITOR"
+            },
+            "locator": "Published municipal passenger scope 地域住民・来島者, corroborated by maintained2026 visitor use. No lodging/flight-user restriction introduced.",
+            "corroboratingEvidence": [
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+                "observedResponseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+              }
+            ]
+          },
+          {
+            "conditionId": "aguni:current-od-systems2026.pdf",
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "sourceUrl": "https://www.vill.aguni.okinawa.jp/material/files/group/1/3_hyou1_R8_1.pdf",
+            "observedResponseSha256": "e7780fc7b56e3c3d298ce24a0f8cd352a718373e9e4365f45c5582e44d5384b4",
+            "claims": {
+              "serviceArea": "AGUNI_HAMA_NISHI_HIGASHI_INCLUDING_AIRPORT",
+              "serviceType": "SHARED_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS"
+            },
+            "locator": "R8 official row: village demand operator, 浜西東, 区域運行, 海港等と空港接続; note2 confirms no fixed origin/destination lists for area service. Two selected facility-direction capability requests, not a fixed loop or dispatch.",
+            "corroboratingEvidence": [
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+                "observedResponseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+              },
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2026_giziroku.pdf",
+                "observedResponseSha256": "56a14159c2f48306ec4c10561d8e2192bf1cdc3cf97a5ab1040baaed734596f1"
+              }
+            ]
+          }
+        ],
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/3_hyou1_R8_1.pdf",
+            "observedResponseSha256": "e7780fc7b56e3c3d298ce24a0f8cd352a718373e9e4365f45c5582e44d5384b4"
+          },
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+            "observedResponseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+          },
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/7_kousinnsinnsei_R7_1.pdf",
+            "observedResponseSha256": "c2a8a1a256c40a9e150f9b34be5668903bdbb8cbcb64db021b27a9ef8f524abc"
+          },
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2026_giziroku.pdf",
+            "observedResponseSha256": "56a14159c2f48306ec4c10561d8e2192bf1cdc3cf97a5ab1040baaed734596f1"
+          }
+        ],
+        "locator": "Separately represented airport-to-office and office-to-airport capability for current public area demand service. Published current R8 area/airport connection + named East facility + shared destination service. No fixed calls, old-loop reversal, customer booking or dispatch assertion."
+      },
+      "recordSha256": "e6085f8beb8be5248e74b1f19d383724bed9e15fcb917c15eec6f1db2e894025",
+      "locator": "Separately represented airport-to-office and office-to-airport capability for current public area demand service. Published current R8 area/airport connection + named East facility + shared destination service. No fixed calls, old-loop reversal, customer booking or dispatch assertion."
+    },
+    {
+      "evidenceId": "transport-evidence:086:e255534539d3097d411bfb82f5836a60",
+      "sourceId": "transport-source:086:27b3d3d2b7ae5ab2470d60822858a752",
+      "sourceSha256": "171f06f67de3cf71ddc51c4cb68a95a7613585f3a154f0cacfd3277d9b5d71df",
+      "record": {
+        "factId": "aguni-public-od-capability-1",
+        "kind": "dynamic_od",
+        "sourceActionId": "airport:aguni:public-source-review232",
+        "sourceUrl": "https://www.vill.aguni.okinawa.jp/sonsei/60.html",
+        "observedResponseSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b",
+        "operator": "粟国村",
+        "endpointNames": ["粟国村役場", "粟国空港"],
+        "endpointIdentityAnchors": [
+          "p05:22:47:P05_845",
+          "review:official-airport:粟国"
+        ],
+        "accessTerms": {
+          "contractKind": "AGUNI_PUBLIC_OD_CAPABILITY_V1",
+          "audience": "PUBLIC",
+          "profile": "PUBLIC_VISITOR",
+          "channel": "PHONE",
+          "reservationRequired": true,
+          "currentMinimumLeadMinutes": null,
+          "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+          "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+          "publishedReceptionWindows": [
+            {
+              "source": "access.html",
+              "start": "08:30",
+              "end": "16:15"
+            },
+            {
+              "source": "bus-timetable.pdf",
+              "start": "08:00",
+              "end": "16:15"
+            }
+          ],
+          "publishedServiceWindows": [
+            {
+              "source": "access.html",
+              "windows": [["08:30", "16:30"]]
+            },
+            {
+              "source": "bus-timetable.pdf",
+              "windows": [
+                ["10:30", "11:20"],
+                ["12:35", "17:00"]
+              ]
+            }
+          ],
+          "timeZone": "Asia/Tokyo",
+          "serviceArea": "AGUNI_HAMA_NISHI_HIGASHI_INCLUDING_AIRPORT",
+          "serviceType": "SHARED_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS",
+          "operatorAcceptanceRequired": true,
+          "pickupPlaceAgreementRequired": true,
+          "dispatchGuarantee": false,
+          "routePolicy": "SHARED_RIDE_VIA_OPERATOR_ROUTE_NOT_EXCLUSIVE_DIRECT_TAXI",
+          "reviewedStructuralDate": "2026-10-17",
+          "validToClaim": null,
+          "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+        },
+        "conditionObservations": [
+          {
+            "conditionId": "aguni:access.html",
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "sourceUrl": "https://www.vill.aguni.okinawa.jp/sonsei/60.html",
+            "observedResponseSha256": "7018d3970cf08b70b4a0778210305c912c18e98517c18696c0acb5eb9932114b",
+            "claims": {
+              "contractKind": "AGUNI_PUBLIC_OD_CAPABILITY_V1",
+              "channel": "PHONE",
+              "reservationRequired": true,
+              "publishedReceptionWindows": [
+                {
+                  "source": "access.html",
+                  "start": "08:30",
+                  "end": "16:15"
+                },
+                {
+                  "source": "bus-timetable.pdf",
+                  "start": "08:00",
+                  "end": "16:15"
+                }
+              ],
+              "publishedServiceWindows": [
+                {
+                  "source": "access.html",
+                  "windows": [["08:30", "16:30"]]
+                },
+                {
+                  "source": "bus-timetable.pdf",
+                  "windows": [
+                    ["10:30", "11:20"],
+                    ["12:35", "17:00"]
+                  ]
+                }
+              ],
+              "timeZone": "Asia/Tokyo",
+              "payment": "NOT_PUBLISHED_IN_REVIEWED_SOURCES",
+              "dispatchGuarantee": false,
+              "operatorAcceptanceRequired": true,
+              "pickupPlaceAgreementRequired": true,
+              "routePolicy": "SHARED_RIDE_VIA_OPERATOR_ROUTE_NOT_EXCLUSIVE_DIRECT_TAXI",
+              "reviewedStructuralDate": "2026-10-17",
+              "validToClaim": null,
+              "currentMinimumLeadMinutes": null,
+              "currentLeadTimeEvidenceStatus": "NOT_PUBLISHED_IN_CURRENT_REVIEWED_SOURCES",
+              "queryUse": "AUDITED_CONDITIONAL_CAPABILITY_ONLY_NOT_ACTUAL_BOOKING"
+            },
+            "locator": "Current owner-operated booking-based shared destination service; source windows retained with old linked timetable conflict. Unknown current numerical cutoff/payment and separate structural proof classification are explicitly reviewed unknowns, not operator-published promises.",
+            "corroboratingEvidence": [
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/basu_unnkouzikokuhyou_3.pdf",
+                "observedResponseSha256": "3a2f3eb6f212732a7f29d0bd96aef8842f2e91e00ef1cc1960fddacdbf1cc9ec"
+              },
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/20260901_kouhou9.pdf",
+                "observedResponseSha256": "58c06350e407005e64fbef577b6133aadc1ec866a9377d2b2df4d27f0c8c5bf4"
+              }
+            ]
+          },
+          {
+            "conditionId": "aguni:renewal-application2025.pdf",
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "sourceUrl": "https://www.vill.aguni.okinawa.jp/material/files/group/1/7_kousinnsinnsei_R7_1.pdf",
+            "observedResponseSha256": "c2a8a1a256c40a9e150f9b34be5668903bdbb8cbcb64db021b27a9ef8f524abc",
+            "claims": {
+              "audience": "PUBLIC",
+              "profile": "PUBLIC_VISITOR"
+            },
+            "locator": "Published municipal passenger scope 地域住民・来島者, corroborated by maintained2026 visitor use. No lodging/flight-user restriction introduced.",
+            "corroboratingEvidence": [
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+                "observedResponseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+              }
+            ]
+          },
+          {
+            "conditionId": "aguni:current-od-systems2026.pdf",
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "sourceUrl": "https://www.vill.aguni.okinawa.jp/material/files/group/1/3_hyou1_R8_1.pdf",
+            "observedResponseSha256": "e7780fc7b56e3c3d298ce24a0f8cd352a718373e9e4365f45c5582e44d5384b4",
+            "claims": {
+              "serviceArea": "AGUNI_HAMA_NISHI_HIGASHI_INCLUDING_AIRPORT",
+              "serviceType": "SHARED_AREA_DEMAND_PASSENGER_SERVICE_NOT_FIXED_CALLS"
+            },
+            "locator": "R8 official row: village demand operator, 浜西東, 区域運行, 海港等と空港接続; note2 confirms no fixed origin/destination lists for area service. Two selected facility-direction capability requests, not a fixed loop or dispatch.",
+            "corroboratingEvidence": [
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+                "observedResponseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+              },
+              {
+                "sourceActionId": "airport:aguni:public-source-review232",
+                "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2026_giziroku.pdf",
+                "observedResponseSha256": "56a14159c2f48306ec4c10561d8e2192bf1cdc3cf97a5ab1040baaed734596f1"
+              }
+            ]
+          }
+        ],
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/3_hyou1_R8_1.pdf",
+            "observedResponseSha256": "e7780fc7b56e3c3d298ce24a0f8cd352a718373e9e4365f45c5582e44d5384b4"
+          },
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2_keikaku_R8_1.pdf",
+            "observedResponseSha256": "23a12274de5a9cbeb10545fc005736edb4f2f77e97c8580bb8ce83fa473d111d"
+          },
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/7_kousinnsinnsei_R7_1.pdf",
+            "observedResponseSha256": "c2a8a1a256c40a9e150f9b34be5668903bdbb8cbcb64db021b27a9ef8f524abc"
+          },
+          {
+            "sourceActionId": "airport:aguni:public-source-review232",
+            "url": "https://www.vill.aguni.okinawa.jp/material/files/group/1/2026_giziroku.pdf",
+            "observedResponseSha256": "56a14159c2f48306ec4c10561d8e2192bf1cdc3cf97a5ab1040baaed734596f1"
+          }
+        ],
+        "locator": "Separately represented airport-to-office and office-to-airport capability for current public area demand service. Published current R8 area/airport connection + named East facility + shared destination service. No fixed calls, old-loop reversal, customer booking or dispatch assertion."
+      },
+      "recordSha256": "d962fcf6324e5fcfc94d4151ff2bd9a2ec5bf3337062d4582d4eebd5c54862ee",
+      "locator": "Separately represented airport-to-office and office-to-airport capability for current public area demand service. Published current R8 area/airport connection + named East facility + shared destination service. No fixed calls, old-loop reversal, customer booking or dispatch assertion."
+    }
+  ],
+  "candidates": [],
+  "patterns": [],
+  "transfers": []
+}

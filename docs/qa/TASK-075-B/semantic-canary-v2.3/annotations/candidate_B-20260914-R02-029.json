@@ -1,0 +1,57 @@
+{
+  "candidateKey": "candidate:B-20260914-R02-029",
+  "sourceRef": "task-075-v23-canary-source:63074fdd2940b41b090cabb0",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/63074fdd2940b41b090cabb052767e83cad370842fa9c1dee2d3e8b5fdb1e61d.txt",
+    "locator": {
+      "offset": 0,
+      "length": 619,
+      "locatorSha256": "63074fdd2940b41b090cabb052767e83cad370842fa9c1dee2d3e8b5fdb1e61d",
+      "contentSha256": "63074fdd2940b41b090cabb052767e83cad370842fa9c1dee2d3e8b5fdb1e61d"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "07",
+      "sourceFact": "寺院概要 宝徳寺は臨済宗大本山建長寺第73世仏印大光禅師を開山として、桐生地域の領主であった、桐生正綱公の開基により室町時代の宝徳年間(1450年頃)に創建された禅寺です。当山の場所は桐生城（柄杓山城）の裏側に位置し、名久木の砦の入口を見渡す所にあります。これは城の裏口を護るための要害としてこの場所を選び建てられました。天正元年に桐生家が太田の由良家に滅ぼされると、当山は保護者を失い荒廃してしまいました。しかし地域の人々の力により、再び隆盛となり江戸中期には当山17世の天渓和尚が大本山建長寺186代管長を務めました。また明治初年には大間々第一分",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    },
+    {
+      "featureCode": "12",
+      "sourceFact": "寺院概要 宝徳寺は臨済宗大本山建長寺第73世仏印大光禅師を開山として、桐生地域の領主であった、桐生正綱公の開基により室町時代の宝徳年間(1450年頃)に創建された禅寺です。当山の場所は桐生城（柄杓山城）の裏側に位置し、名久木の砦の入口を見渡す所にあります。これは城の裏口を護るための要害としてこの場所を選び建てられました。天正元年に桐生家が太田の由良家に滅ぼされると、当山は保護者を失い荒廃してしまいました。しかし地域の人々の力により、再び隆盛となり江戸中期には当山17世の天渓和尚が大本山建長寺186代管長を務めました。また明治初年には大間々第一分校（旧川内北小学校）が当山において開校されました",
+      "proposedValue": 5,
+      "rationale": "The official target page ties the target to local culture, locality, or community use; the frozen rubric maps that fact to local."
+    }
+  ],
+  "featureCodeCandidates": [
+    "07",
+    "12"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    },
+    {
+      "featureCode": "12",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page ties the target to local culture, locality, or community use; the frozen rubric maps that fact to local."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "07",
+      "value": 7
+    },
+    {
+      "featureCode": "12",
+      "value": 5
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

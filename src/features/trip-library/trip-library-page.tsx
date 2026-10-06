@@ -1,385 +1,182 @@
 "use client";
 
-import Image from "next/image";
-import { useMemo, useRef, useState } from "react";
-
+import { useEffect, useMemo, useRef, useState } from "react";
 import { GuardedLink } from "@/features/personal-center/components/guarded-link";
 import { PersonalIcon } from "@/features/personal-center/components/personal-icon";
-
-import { createTripLibraryFixture } from "./trip-library-data";
 import styles from "./trip-library.module.css";
 import {
-  activeTrips,
-  asHistoryTrip,
-  buildAllTripItems,
-  getTripTiming,
-  paginateAllTrips,
-  selectHeroTrip,
-  sortAllTripItems,
-  tripTimingLabels,
-} from "./trip-timing";
-import { useTripToday } from "./use-trip-today";
-import {
-  cloneHistoryTripToDraft,
-  deleteDraft,
-  deriveDestinationOptions,
-  favoriteCategoryFilters,
-  filterDrafts,
-  filterFavorites,
-  filterHistory,
-  filterTrips,
-  groupHistoryByYear,
   newTripHref,
-  plannerBridgeHref,
-  removeFavorite,
-  sortDrafts,
-  sortTrips,
-  toggleHistoryFavorite,
-  tripLibraryEmptyCopy,
   tripLibraryTabs,
   tripSortOptions,
-  type DraftTripViewModel,
-  type FavoriteFilter,
-  type FavoriteViewModel,
-  type HistoryTripViewModel,
-  type TripCardViewModel,
   type TripLibraryTab,
   type TripSortKey,
 } from "./trip-library-model";
+import {
+  getTripTiming,
+  tripTimingLabels,
+  ALL_TRIPS_PAGE_SIZE,
+} from "./trip-timing";
+import { useTripToday } from "./use-trip-today";
+import { useTripLibrary } from "./persistence/use-trip-library";
+import {
+  belongsToTab,
+  visibleTrips,
+  selectLiveHero,
+  libraryStateLabels,
+  wizardPhaseLabels,
+  tripDateLabel,
+  type TripSummary,
+} from "./persistence/live-trip-model";
 
-const categoryLabels: Record<FavoriteViewModel["category"], string> = {
-  trip: "行程",
-  attraction: "景点",
-  accommodation: "住宿",
-  dining: "餐饮",
-  activity: "活动",
-};
-
-function ReservationSummary({
-  trip,
-  compact = false,
-}: {
-  trip: TripCardViewModel;
-  compact?: boolean;
-}) {
+function TripFacts({ trip }: { trip: TripSummary }) {
   return (
-    <div className={compact ? styles.compactReservation : styles.reservation}>
-      <div className={styles.completionLine}>
-        <span>预订完成度</span>
-        <strong>{trip.reservation.completion}%</strong>
-      </div>
-      <progress
-        value={trip.reservation.completion}
-        max="100"
-        aria-label={`${trip.name}预订完成度 ${trip.reservation.completion}%`}
-      />
-      <ul className={styles.categorySummary} aria-label="预订分类摘要">
-        {trip.reservation.categories.map((item) => (
-          <li key={item.label}>
-            <span>{item.label}</span>
-            <strong>
-              {item.completed}/{item.total}
-            </strong>
-          </li>
-        ))}
-      </ul>
-      <p data-tone={trip.reservation.attentionTone}>
-        {trip.reservation.attentionLabel}
+    <>
+      <p className={styles.tripDate}>
+        <PersonalIcon name="calendar" />
+        {tripDateLabel(trip)}
       </p>
-    </div>
+      <p className={styles.tripDate}>
+        <PersonalIcon name="people" />
+        {trip.participantCount} 人同行
+      </p>
+      <p className={styles.tripDate}>
+        规划阶段：{wizardPhaseLabels[trip.wizardPhase]}
+      </p>
+      <p className={styles.tripDate}>
+        最后编辑：
+        <time dateTime={trip.updatedAt}>{trip.updatedAt.slice(0, 10)}</time>
+      </p>
+    </>
   );
 }
-
-function TripCard({
-  trip,
-  statusLabel,
-  onDetail,
-}: {
-  trip: TripCardViewModel;
-  statusLabel: string;
-  onDetail: (trip: TripCardViewModel) => void;
-}) {
-  return (
-    <article className={styles.tripCard} data-testid={`trip-card-${trip.id}`}>
-      <div className={styles.cardImage}>
-        <Image
-          src={trip.cover}
-          alt=""
-          fill
-          sizes="(max-width: 767px) 100vw, (max-width: 1200px) 45vw, 360px"
-          style={{ objectPosition: trip.coverPosition }}
-        />
-        <span className={styles.statusChip}>{statusLabel}</span>
-      </div>
-      <div className={styles.tripCardBody}>
-        <div className={styles.cardTitleLine}>
-          <div>
-            <p>{trip.destination}</p>
-            <h3>{trip.name}</h3>
-          </div>
-          <details className={styles.moreMenu}>
-            <summary aria-label={`${trip.name}更多操作`}>•••</summary>
-            <div>
-              <button type="button" onClick={() => onDetail(trip)}>
-                查看摘要
-              </button>
-            </div>
-          </details>
-        </div>
-        <p className={styles.tripDate}>
-          <PersonalIcon name="calendar" />
-          {trip.dateLabel} · {trip.durationLabel}
-        </p>
-        <p className={styles.tripDate}>
-          <PersonalIcon name="people" />
-          {trip.companionCount} 人同行
-        </p>
-        <ReservationSummary trip={trip} compact />
-        <GuardedLink className={styles.primaryButton} href={plannerBridgeHref}>
-          {trip.phase === "history" ? "查看原行程" : "继续规划"}
-          <PersonalIcon name="arrow" />
-        </GuardedLink>
-      </div>
-    </article>
-  );
-}
-
-function AllDraftCard({ draft }: { draft: DraftTripViewModel }) {
-  return (
-    <article
-      className={`${styles.tripCard} ${styles.allDraftCard}`}
-      data-testid={`draft-card-${draft.id}`}
-    >
-      <div className={styles.cardImage}>
-        <Image
-          src={draft.cover}
-          alt=""
-          fill
-          sizes="(max-width: 767px) 100vw, 360px"
-        />
-        <span className={styles.statusChip}>草稿</span>
-      </div>
-      <div className={styles.tripCardBody}>
-        <div className={styles.cardTitleLine}>
-          <div>
-            <p>{draft.destination}</p>
-            <h3>{draft.name}</h3>
-          </div>
-        </div>
-        <p className={styles.tripDate}>{draft.dateLabel}</p>
-        <div className={styles.draftProgress}>
-          <span>
-            规划完成度 <strong>{draft.progress}%</strong>
-          </span>
-          <progress
-            max="100"
-            value={draft.progress}
-            aria-label={`${draft.name}规划完成度`}
-          />
-        </div>
-        <p className={styles.tripDate}>
-          最后编辑时间：
-          <time dateTime={draft.updatedAt}>{draft.lastEditedLabel}</time>
-        </p>
-        <GuardedLink className={styles.primaryButton} href={plannerBridgeHref}>
-          继续编辑草稿 <PersonalIcon name="arrow" />
-        </GuardedLink>
-      </div>
-    </article>
-  );
-}
-
-function EmptyState({
-  title,
-  body,
-  withAction = false,
-}: {
-  title: string;
-  body?: string;
-  withAction?: boolean;
-}) {
+function EmptyState({ title, body }: { title: string; body?: string }) {
   return (
     <section className={styles.emptyState} aria-live="polite">
       <span aria-hidden="true">旅</span>
       <h2>{title}</h2>
       {body ? <p>{body}</p> : null}
-      {withAction ? (
-        <GuardedLink className={styles.primaryButton} href={newTripHref}>
-          <PersonalIcon name="plus" />
-          {tripLibraryEmptyCopy.all.action}
-        </GuardedLink>
-      ) : null}
     </section>
   );
 }
 
 export function TripLibraryPage() {
-  const fixture = useMemo(() => createTripLibraryFixture(), []);
+  const { items, busy, error, feedback, load, remove, copy } = useTripLibrary();
   const today = useTripToday();
-  const destinations = useMemo(
-    () => deriveDestinationOptions(fixture),
-    [fixture],
-  );
   const [activeTab, setActiveTab] = useState<TripLibraryTab>("all");
-  const [query, setQuery] = useState("");
-  const [destination, setDestination] = useState("all");
-  const [sort, setSort] = useState<TripSortKey>("departureAsc");
-  const [requestedPage, setRequestedPage] = useState(1);
-  const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
-  const [drafts, setDrafts] = useState(fixture.drafts);
-  const [history, setHistory] = useState(() => [
-    ...fixture.history,
-    ...fixture.trips.map(asHistoryTrip),
-  ]);
-  const [favorites, setFavorites] = useState(fixture.favorites);
-  const [deleteTarget, setDeleteTarget] = useState<DraftTripViewModel | null>(
-    null,
+  const [query, setQuery] = useState(""),
+    [destination, setDestination] = useState("all"),
+    [sort, setSort] = useState<TripSortKey>("departureAsc"),
+    [requestedPage, setRequestedPage] = useState(1);
+  const [target, setTarget] = useState<{
+    id: string;
+    mode: "detail" | "delete";
+  } | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null),
+    returnFocus = useRef<HTMLElement | null>(null),
+    refreshRef = useRef<HTMLButtonElement>(null);
+  const selected = items?.find((trip) => trip.id === target?.id);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (selected && !dialog.open) dialog.showModal();
+    if (!selected && dialog.open) dialog.close();
+  }, [selected]);
+  const destinations = useMemo(
+    () =>
+      [...new Set(items?.flatMap((trip) => trip.destinations) ?? [])].sort(),
+    [items],
   );
-  const [recapTarget, setRecapTarget] = useState<HistoryTripViewModel | null>(
-    null,
+  const visible = useMemo(
+    () => visibleTrips(items ?? [], activeTab, today, query, destination, sort),
+    [items, activeTab, today, query, destination, sort],
   );
-  const [detailTarget, setDetailTarget] = useState<
-    TripCardViewModel | FavoriteViewModel | null
-  >(null);
-  const [addedFavorites, setAddedFavorites] = useState<Set<string>>(new Set());
-  const [feedback, setFeedback] = useState("");
-  const deleteDialogRef = useRef<HTMLDialogElement>(null);
-  const recapDialogRef = useRef<HTMLDialogElement>(null);
-  const detailDialogRef = useRef<HTMLDialogElement>(null);
-
-  const active = activeTrips(fixture.trips, today);
-  const completed = history.filter(
-    (trip) =>
-      getTripTiming(trip.startDate, trip.endDate, today) === "completed",
+  const hero =
+    activeTab === "all" || activeTab === "upcoming"
+      ? selectLiveHero(visible, today)
+      : null;
+  const timing = hero
+    ? getTripTiming(hero.departure ?? "", hero.returning ?? "", today)
+    : null;
+  const cards = visible.filter((trip) => trip.id !== hero?.id);
+  const pageCount = Math.max(1, Math.ceil(cards.length / ALL_TRIPS_PAGE_SIZE)),
+    page = Math.min(pageCount, requestedPage);
+  const pageItems = cards.slice(
+    (page - 1) * ALL_TRIPS_PAGE_SIZE,
+    page * ALL_TRIPS_PAGE_SIZE,
   );
-  const visibleTrips = sortTrips(
-    filterTrips(
-      activeTab === "upcoming"
-        ? active.filter(
-            (trip) =>
-              getTripTiming(trip.startDate, trip.endDate, today) === "upcoming",
-          )
-        : active,
-      "all",
-      query,
-      destination,
-    ),
-    sort,
-  );
-  const visibleDrafts = sortDrafts(
-    filterDrafts(drafts, query, destination),
-    sort,
-  );
-  const visibleHistory = sortTrips(
-    filterHistory(completed, query, destination),
-    sort,
-  );
-  const visibleFavorites = filterFavorites(favorites, favoriteFilter).filter(
-    (item) =>
-      (!query ||
-        `${item.name} ${item.destination}`
-          .toLocaleLowerCase("zh-CN")
-          .includes(query.trim().toLocaleLowerCase("zh-CN"))) &&
-      (destination === "all" || item.destination === destination),
-  );
-  const nextTrip = selectHeroTrip(visibleTrips, today);
-  const heroStatus =
-    nextTrip && getTripTiming(nextTrip.startDate, nextTrip.endDate, today);
-  const allItems = sortAllTripItems(
-    buildAllTripItems(
-      visibleTrips,
-      activeTab === "all" ? visibleDrafts : [],
-      today,
-      nextTrip?.id,
-    ),
-    sort,
-  );
-  const pagination = paginateAllTrips(allItems, requestedPage);
-
   function changeTab(tab: TripLibraryTab) {
     setActiveTab(tab);
-    setQuery("");
-    setDestination("all");
-    setFavoriteFilter("all");
-    setSort(
-      tab === "all" || tab === "upcoming" ? "departureAsc" : "updatedDesc",
-    );
     setRequestedPage(1);
-    setFeedback("");
   }
-
-  function closeDeleteDialog() {
-    deleteDialogRef.current?.close();
-    setDeleteTarget(null);
+  function open(trip: TripSummary, mode: "detail" | "delete") {
+    returnFocus.current = document.activeElement as HTMLElement;
+    setTarget({ id: trip.id, mode });
   }
-  function confirmDeleteDraft() {
-    if (!deleteTarget) return;
-    const result = deleteDraft(drafts, deleteTarget.id);
-    setDrafts(result.drafts);
-    setFeedback(
-      `已从本页移除草稿“${deleteTarget.name}”；未触发任何合作方取消。`,
+  function close() {
+    if (busy) return;
+    setTarget(null);
+    window.requestAnimationFrame(() => {
+      const previous = returnFocus.current;
+      if (previous?.isConnected) previous.focus();
+      else refreshRef.current?.focus();
+    });
+  }
+  function refresh() {
+    if (busy) return;
+    setTarget(null);
+    setRequestedPage(1);
+    void load();
+  }
+  async function confirmDelete() {
+    if (selected && (await remove(selected))) close();
+  }
+  async function copyHistory(trip: TripSummary) {
+    if (await copy(trip)) {
+      setTarget(null);
+      changeTab("drafts");
+      window.requestAnimationFrame(() =>
+        document.getElementById("trip-tab-drafts")?.focus(),
+      );
+    }
+  }
+  function actions(trip: TripSummary) {
+    return (
+      <div className={styles.cardActions}>
+        <button
+          type="button"
+          disabled={busy}
+          onClick={() => open(trip, "detail")}
+        >
+          查看摘要
+        </button>
+        {trip.libraryState === "draft" ? (
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => open(trip, "delete")}
+          >
+            删除草稿
+          </button>
+        ) : null}
+        {trip.libraryState === "history" ? (
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => void copyHistory(trip)}
+          >
+            复制为新草稿
+          </button>
+        ) : null}
+      </div>
     );
-    closeDeleteDialog();
   }
-  function closeRecap() {
-    recapDialogRef.current?.close();
-    setRecapTarget(null);
-  }
-  function copyHistory(trip: HistoryTripViewModel) {
-    const copy = cloneHistoryTripToDraft(trip);
-    setDrafts((current) => [
-      copy,
-      ...current.filter((item) => item.id !== copy.id),
-    ]);
-    setActiveTab("drafts");
-    setQuery("");
-    setDestination("all");
-    setSort("updatedDesc");
-    setFeedback(`已把“${trip.name}”的展示快照复制为页内草稿。`);
-    closeRecap();
-  }
-  function toggleFavorite(trip: HistoryTripViewModel) {
-    const nextFavorite = !trip.favorite;
-    setHistory((current) => toggleHistoryFavorite(current, trip.id));
-    setRecapTarget((current) =>
-      current?.id === trip.id
-        ? { ...current, favorite: nextFavorite }
-        : current,
-    );
-    setFeedback(
-      nextFavorite ? `已收藏“${trip.name}”。` : `已取消收藏“${trip.name}”。`,
-    );
-  }
-  function closeDetail() {
-    detailDialogRef.current?.close();
-    setDetailTarget(null);
-  }
-  function openDetail(item: TripCardViewModel | FavoriteViewModel) {
-    setDetailTarget(item);
-    detailDialogRef.current?.showModal();
-  }
-
-  function addFavoriteToTrip(item: FavoriteViewModel) {
-    setAddedFavorites((current) => new Set(current).add(item.id));
-    setFeedback(`已将“${item.name}”加入本页行程候选（未写入 Planner）。`);
-  }
-
-  const tabCounts: Record<TripLibraryTab, number> = {
-    all: active.length + drafts.length,
-    upcoming: active.filter(
-      (trip) =>
-        getTripTiming(trip.startDate, trip.endDate, today) === "upcoming",
-    ).length,
-    drafts: drafts.length,
-    history: completed.length,
-    favorites: favorites.length,
-  };
-
   return (
     <div
       className={styles.page}
       data-trip-library-page
+      data-live-trip-library
       data-active-tab={activeTab}
+      aria-busy={busy}
     >
       <header className={styles.pageHeader}>
         <div>
@@ -392,17 +189,16 @@ export function TripLibraryPage() {
           </i>
           <p className={styles.eyebrow}>TRIP LIBRARY</p>
           <h1 data-primary-page-title>我的旅行</h1>
-          <p>管理行程、预订与收藏</p>
+          <p>查看已保存的行程、草稿与历史</p>
         </div>
         <GuardedLink className={styles.newTripButton} href={newTripHref}>
           <PersonalIcon name="plus" />
           新建旅程
         </GuardedLink>
       </header>
-
       <nav className={styles.tabs} aria-label="旅行资料库分类">
         <div role="tablist" aria-label="旅行资料库分类">
-          {tripLibraryTabs.map((tab) => (
+          {tripLibraryTabs.map((tab, index) => (
             <button
               key={tab.key}
               id={`trip-tab-${tab.key}`}
@@ -410,15 +206,39 @@ export function TripLibraryPage() {
               role="tab"
               aria-selected={activeTab === tab.key}
               aria-controls="trip-library-panel"
+              tabIndex={activeTab === tab.key ? 0 : -1}
               onClick={() => changeTab(tab.key)}
+              onKeyDown={(event) => {
+                const next =
+                  event.key === "ArrowRight"
+                    ? (index + 1) % tripLibraryTabs.length
+                    : event.key === "ArrowLeft"
+                      ? (index + tripLibraryTabs.length - 1) %
+                        tripLibraryTabs.length
+                      : event.key === "Home"
+                        ? 0
+                        : event.key === "End"
+                          ? tripLibraryTabs.length - 1
+                          : null;
+                if (next !== null) {
+                  event.preventDefault();
+                  const key = tripLibraryTabs[next].key;
+                  changeTab(key);
+                  document.getElementById("trip-tab-" + key)?.focus();
+                }
+              }}
             >
               {tab.label}
-              <span>{tabCounts[tab.key]}</span>
+              <span>
+                {tab.key === "favorites" || !items
+                  ? "—"
+                  : items.filter((trip) => belongsToTab(trip, tab.key, today))
+                      .length}
+              </span>
             </button>
           ))}
         </div>
       </nav>
-
       <section className={styles.toolbar} aria-label="搜索、筛选与排序">
         <label className={styles.searchField}>
           <span className={styles.srOnly}>搜索行程名称或目的地</span>
@@ -443,578 +263,221 @@ export function TripLibraryPage() {
             }}
           >
             <option value="all">全部目的地</option>
-            {destinations.map((item) => (
-              <option key={item} value={item}>
-                {item}
+            {destinations.map((value) => (
+              <option key={value}>{value}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span className={styles.srOnly}>排序方式</span>
+          <select
+            value={sort}
+            onChange={(event) => {
+              setSort(event.target.value as TripSortKey);
+              setRequestedPage(1);
+            }}
+          >
+            {tripSortOptions.map((option) => (
+              <option key={option.key} value={option.key}>
+                {option.label}
               </option>
             ))}
           </select>
         </label>
-        {activeTab !== "favorites" ? (
-          <label>
-            <span className={styles.srOnly}>排序方式</span>
-            <select
-              value={sort}
-              onChange={(event) => {
-                setSort(event.target.value as TripSortKey);
-                setRequestedPage(1);
-              }}
-            >
-              {tripSortOptions.map((option) => (
-                <option key={option.key} value={option.key}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
-        ) : null}
       </section>
-
+      <div className={styles.liveStatus}>
+        <button
+          ref={refreshRef}
+          type="button"
+          disabled={busy}
+          onClick={refresh}
+        >
+          重新读取列表
+        </button>
+        {busy ? (
+          <p role="status">{items ? "正在处理…" : "正在读取旅行资料…"}</p>
+        ) : null}
+      </div>
       {feedback ? (
         <p className={styles.feedback} role="status">
-          <PersonalIcon name="check" />
           {feedback}
         </p>
       ) : null}
-
-      <main
+      {error && !selected ? <p role="alert">{error}</p> : null}
+      <section
         id="trip-library-panel"
         className={styles.panel}
         role="tabpanel"
         aria-labelledby={`trip-tab-${activeTab}`}
+        tabIndex={0}
       >
-        {(activeTab === "all" || activeTab === "upcoming") &&
-        nextTrip &&
-        heroStatus ? (
+        {items && activeTab === "favorites" ? (
+          <EmptyState
+            title="收藏资料暂未提供"
+            body="这里暂时无法读取收藏，不显示示例收藏或虚构数量。"
+          />
+        ) : null}
+        {items && activeTab !== "favorites" && visible.length === 0 ? (
+          <EmptyState
+            title={
+              query || destination !== "all"
+                ? "没有匹配的旅行"
+                : activeTab === "drafts"
+                  ? "没有未完成的草稿"
+                  : activeTab === "history"
+                    ? "还没有历史行程"
+                    : activeTab === "upcoming"
+                      ? "近期没有即将出发的行程"
+                      : "还没有旅行"
+            }
+            body="可调整分类或筛选条件，或重新读取列表。"
+          />
+        ) : null}
+        {items && hero && timing ? (
           <section
             className={styles.nextTripHero}
             aria-labelledby="next-trip-heading"
-            data-trip-hero={nextTrip.id}
-            data-trip-status={heroStatus}
+            data-trip-hero={hero.id}
+            data-trip-status={timing}
+            data-record-id={hero.id}
           >
-            <div className={styles.heroImage}>
-              <Image
-                src={nextTrip.cover}
-                alt={`${nextTrip.destination}旅行示例照片`}
-                fill
-                priority
-                sizes="(max-width: 767px) 100vw, 55vw"
-                style={{ objectPosition: nextTrip.coverPosition }}
-              />
+            <div
+              className={`${styles.heroImage} ${styles.liveCover}`}
+              role="img"
+              aria-label="封面未提供"
+            >
+              <PersonalIcon name="calendar" />
             </div>
             <div className={styles.heroBody}>
-              <p className={styles.eyebrow}>{tripTimingLabels[heroStatus]}</p>
-              <h2 id="next-trip-heading">{nextTrip.name}</h2>
-              <p className={styles.heroMeta}>
-                <span>
-                  <PersonalIcon name="calendar" />
-                  {nextTrip.dateLabel}
-                </span>
-                <span>{nextTrip.durationLabel}</span>
-                <span>
-                  <PersonalIcon name="people" />
-                  {nextTrip.companionCount} 人同行
-                </span>
+              <p>
+                {tripTimingLabels[timing]} ·{" "}
+                {libraryStateLabels[hero.libraryState]}
               </p>
-              <ReservationSummary trip={nextTrip} />
-              <GuardedLink
-                className={styles.primaryButton}
-                href={plannerBridgeHref}
-              >
-                继续规划
-                <PersonalIcon name="arrow" />
-              </GuardedLink>
+              <h2 id="next-trip-heading">{hero.title ?? "未命名旅行"}</h2>
+              <p>{hero.destinations.join(" · ") || "目的地未设置"}</p>
+              <TripFacts trip={hero} />
+              {actions(hero)}
             </div>
           </section>
         ) : null}
-
-        {activeTab === "all" || activeTab === "upcoming" ? (
-          allItems.length || nextTrip ? (
-            <section
-              className={styles.librarySection}
-              data-library-section="active"
-              aria-labelledby="active-trip-heading"
-            >
-              <div className={styles.sectionHeading}>
-                <div>
-                  <p className={styles.eyebrow}>
-                    {activeTab === "all" ? "ALL TRIPS" : "UPCOMING TRIPS"}
-                  </p>
-                  <h2 id="active-trip-heading">
-                    {activeTab === "upcoming" ? "即将出发" : "全部旅行"}
-                  </h2>
-                </div>
-                <span>
-                  {allItems.length} 个项目
-                  {nextTrip ? "（不含上方重点旅行）" : ""}
-                </span>
-              </div>
-              <div
-                className={`${styles.cardGrid} ${styles.allCardGrid}`}
-                id="all-trip-cards"
+        {items && pageItems.length > 0 ? (
+          <div className={styles.cardGrid}>
+            {pageItems.map((trip) => (
+              <article
+                key={trip.id}
+                className={styles.tripCard}
+                data-record-id={trip.id}
+                data-testid={`trip-card-${trip.id}`}
               >
-                {pagination.items.map((entry) =>
-                  entry.kind === "trip" ? (
-                    <TripCard
-                      key={entry.item.id}
-                      trip={entry.item}
-                      statusLabel={
-                        tripTimingLabels[
-                          getTripTiming(
-                            entry.item.startDate,
-                            entry.item.endDate,
-                            today,
-                          )!
-                        ]
-                      }
-                      onDetail={openDetail}
-                    />
-                  ) : (
-                    <AllDraftCard key={entry.item.id} draft={entry.item} />
-                  ),
-                )}
-              </div>
-              {allItems.length === 0 && nextTrip ? (
-                <p className={styles.onlyHeroNote}>
-                  符合条件的旅行已在上方重点展示。
-                </p>
-              ) : null}
-              {pagination.pageCount > 1 ? (
-                <nav className={styles.pagination} aria-label="全部旅行分页">
-                  <button
-                    type="button"
-                    aria-controls="all-trip-cards"
-                    disabled={pagination.page === 1}
-                    onClick={() => setRequestedPage(pagination.page - 1)}
-                  >
-                    上一页
-                  </button>
-                  <span role="status">
-                    第 {pagination.page} / {pagination.pageCount} 页 · 共{" "}
-                    {pagination.total} 个项目
-                  </span>
-                  <button
-                    type="button"
-                    aria-controls="all-trip-cards"
-                    disabled={pagination.page === pagination.pageCount}
-                    onClick={() => setRequestedPage(pagination.page + 1)}
-                  >
-                    下一页
-                  </button>
-                </nav>
-              ) : null}
-            </section>
-          ) : (
-            <EmptyState
-              title={
-                activeTab === "upcoming"
-                  ? "当前没有即将出发的旅行"
-                  : tripLibraryEmptyCopy.all.title
-              }
-              body={tripLibraryEmptyCopy.all.body}
-              withAction
-            />
-          )
-        ) : null}
-
-        {activeTab === "all" && visibleHistory.length ? (
-          <section
-            className={styles.librarySection}
-            data-library-section="recent"
-            aria-labelledby="recent-trip-heading"
-          >
-            <div className={styles.sectionHeading}>
-              <div>
-                <p className={styles.eyebrow}>RECENT JOURNEYS</p>
-                <h2 id="recent-trip-heading">最近完成</h2>
-              </div>
-              <button
-                type="button"
-                className={styles.textButton}
-                onClick={() => changeTab("history")}
-              >
-                查看全部历史 <PersonalIcon name="chevronRight" />
-              </button>
-            </div>
-            <div className={styles.cardGrid}>
-              {[...visibleHistory]
-                .sort((a, b) => b.endDate.localeCompare(a.endDate))
-                .slice(0, 2)
-                .map((trip) => (
-                  <TripCard
-                    key={trip.id}
-                    trip={trip}
-                    statusLabel="已完成"
-                    onDetail={openDetail}
-                  />
-                ))}
-            </div>
-          </section>
-        ) : null}
-
-        {activeTab === "drafts" ? (
-          visibleDrafts.length ? (
-            <section
-              className={styles.librarySection}
-              data-library-section="drafts"
-              aria-labelledby="draft-heading"
-            >
-              <div className={styles.sectionHeading}>
-                <div>
-                  <p className={styles.eyebrow}>DRAFTS</p>
-                  <h2 id="draft-heading">未完成的旅行草稿</h2>
-                </div>
-                <span>{visibleDrafts.length} 个草稿</span>
-              </div>
-              <div className={styles.draftGrid}>
-                {visibleDrafts.map((draft) => (
-                  <article className={styles.draftCard} key={draft.id}>
-                    <div className={styles.draftImage}>
-                      <Image
-                        src={draft.cover}
-                        alt=""
-                        fill
-                        sizes="(max-width: 767px) 100vw, 280px"
-                      />
-                    </div>
-                    <div className={styles.draftBody}>
-                      <span className={styles.draftChip}>
-                        草稿 · {draft.progress}%
-                      </span>
-                      <h3>{draft.name}</h3>
-                      <p>
-                        {draft.destination} · {draft.dateLabel}
-                      </p>
-                      <p>{draft.lastEditedLabel}</p>
-                      {draft.hasExternalReservation ? (
-                        <p className={styles.externalNote}>
-                          <PersonalIcon name="info" />含{" "}
-                          {draft.reservationCount} 项外部预订记录
-                        </p>
-                      ) : null}
-                      <div className={styles.cardActions}>
-                        <GuardedLink
-                          className={styles.primaryButton}
-                          href={plannerBridgeHref}
-                        >
-                          继续编辑
-                        </GuardedLink>
-                        <button
-                          type="button"
-                          className={styles.dangerButton}
-                          onClick={() => {
-                            setDeleteTarget(draft);
-                            deleteDialogRef.current?.showModal();
-                          }}
-                        >
-                          <PersonalIcon name="trash" />
-                          删除
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ) : (
-            <EmptyState title={tripLibraryEmptyCopy.drafts.title} />
-          )
-        ) : null}
-
-        {activeTab === "history" ? (
-          visibleHistory.length ? (
-            <section
-              className={styles.librarySection}
-              data-library-section="history"
-              aria-labelledby="history-heading"
-            >
-              <div className={styles.sectionHeading}>
-                <div>
-                  <p className={styles.eyebrow}>HISTORY</p>
-                  <h2 id="history-heading">旅行足迹</h2>
-                </div>
-                <span>{visibleHistory.length} 段旅程</span>
-              </div>
-              <div className={styles.timeline}>
-                {groupHistoryByYear(visibleHistory).map((group) => (
-                  <section
-                    key={group.year}
-                    className={styles.yearGroup}
-                    aria-labelledby={`year-${group.year}`}
-                  >
-                    <h3 id={`year-${group.year}`}>{group.year}</h3>
-                    <div className={styles.historyGrid}>
-                      {group.trips.map((trip) => (
-                        <article className={styles.historyCard} key={trip.id}>
-                          <div className={styles.historyImage}>
-                            <Image
-                              src={trip.cover}
-                              alt=""
-                              fill
-                              sizes="(max-width: 767px) 100vw, 300px"
-                            />
-                          </div>
-                          <div>
-                            <p>
-                              {trip.destination} · {trip.durationLabel}
-                            </p>
-                            <h4>{trip.name}</h4>
-                            <p>
-                              {trip.dateLabel} · {trip.companionCount} 人同行
-                            </p>
-                            <div className={styles.historyActions}>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setRecapTarget(trip);
-                                  recapDialogRef.current?.showModal();
-                                }}
-                              >
-                                旅行回顾
-                              </button>
-                              <button
-                                type="button"
-                                aria-label={
-                                  trip.favorite
-                                    ? `取消收藏${trip.name}`
-                                    : `收藏${trip.name}`
-                                }
-                                onClick={() => toggleFavorite(trip)}
-                              >
-                                {trip.favorite ? "♥ 已收藏" : "♡ 收藏"}
-                              </button>
-                            </div>
-                          </div>
-                        </article>
-                      ))}
-                    </div>
-                  </section>
-                ))}
-              </div>
-            </section>
-          ) : (
-            <EmptyState title={tripLibraryEmptyCopy.history.title} />
-          )
-        ) : null}
-
-        {activeTab === "favorites" ? (
-          <section
-            className={styles.librarySection}
-            data-library-section="favorites"
-            aria-labelledby="favorite-heading"
-          >
-            <div className={styles.sectionHeading}>
-              <div>
-                <p className={styles.eyebrow}>FAVORITES</p>
-                <h2 id="favorite-heading">我的收藏</h2>
-              </div>
-              <span>{visibleFavorites.length} 项</span>
-            </div>
-            <div className={styles.filterChips} aria-label="收藏类型筛选">
-              {favoriteCategoryFilters.map((filter) => (
-                <button
-                  key={filter.key}
-                  type="button"
-                  aria-pressed={favoriteFilter === filter.key}
-                  onClick={() => setFavoriteFilter(filter.key)}
+                <div
+                  className={`${styles.cardImage} ${styles.liveCover}`}
+                  role="img"
+                  aria-label="封面未提供"
                 >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
-            {visibleFavorites.length ? (
-              <div className={styles.favoriteGrid}>
-                {visibleFavorites.map((item) => (
-                  <article className={styles.favoriteCard} key={item.id}>
-                    <div className={styles.favoriteImage}>
-                      <Image
-                        src={item.cover}
-                        alt=""
-                        fill
-                        sizes="(max-width: 767px) 100vw, 300px"
-                      />
-                      <span>{categoryLabels[item.category]}</span>
+                  <PersonalIcon name="calendar" />
+                  <span className={styles.statusChip}>
+                    {libraryStateLabels[trip.libraryState]}
+                  </span>
+                </div>
+                <div className={styles.tripCardBody}>
+                  <div className={styles.cardTitleLine}>
+                    <div>
+                      <p>{trip.destinations.join(" · ") || "目的地未设置"}</p>
+                      <h3>{trip.title ?? "未命名旅行"}</h3>
                     </div>
-                    <div className={styles.favoriteBody}>
-                      <p>{item.destination}</p>
-                      <h3>{item.name}</h3>
-                      <p>{item.summary}</p>
-                      <div className={styles.favoriteActions}>
-                        <button type="button" onClick={() => openDetail(item)}>
-                          查看详情
-                        </button>
-                        <button
-                          type="button"
-                          disabled={addedFavorites.has(item.id)}
-                          onClick={() => addFavoriteToTrip(item)}
-                        >
-                          {addedFavorites.has(item.id)
-                            ? "已加入候选"
-                            : "加入行程"}
-                        </button>
-                        <button
-                          type="button"
-                          className={styles.removeFavorite}
-                          onClick={() => {
-                            setFavorites((current) =>
-                              removeFavorite(current, item.id),
-                            );
-                            setFeedback(`已从本页收藏中移除“${item.name}”。`);
-                          }}
-                        >
-                          移除
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <EmptyState
-                title={tripLibraryEmptyCopy.favorites.title}
-                body={tripLibraryEmptyCopy.favorites.body}
-              />
-            )}
-          </section>
+                  </div>
+                  <TripFacts trip={trip} />
+                  {actions(trip)}
+                </div>
+              </article>
+            ))}
+          </div>
         ) : null}
-      </main>
-
-      <aside className={styles.boundaryNote} aria-label="当前实现边界">
-        <strong>当前为 UI 演示资料库</strong>
-        <span>Persistence: Mock / in-memory only</span>
-        <span>WBS 5.18 Trip 数据聚合与映射：未实现</span>
-        <span>WBS 5.19 预订同步：未实现</span>
-        <span>A Trip Plan Contract：未集成</span>
-        <span>Reservation Hub：未实现</span>
-      </aside>
-
-      <dialog
-        ref={deleteDialogRef}
-        className={styles.dialog}
-        aria-labelledby="delete-draft-title"
-        onCancel={(event) => {
-          event.preventDefault();
-          closeDeleteDialog();
-        }}
-      >
-        <div className={styles.dialogHeading}>
-          <div>
-            <p className={styles.eyebrow}>DELETE DRAFT</p>
-            <h2 id="delete-draft-title">删除“{deleteTarget?.name}”？</h2>
-          </div>
-          <button
-            type="button"
-            aria-label="关闭删除确认"
-            onClick={closeDeleteDialog}
-          >
-            <PersonalIcon name="close" />
-          </button>
-        </div>
-        {deleteTarget?.hasExternalReservation ? (
-          <div className={styles.dialogWarning}>
-            <PersonalIcon name="info" />
-            <p>
-              此草稿含 {deleteTarget.reservationCount}{" "}
-              项外部预订记录。删除只会移除本页展示草稿，
-              <strong>不会取消酒店、门票、餐厅或交通合作方的预订。</strong>
-            </p>
-          </div>
-        ) : (
-          <p>此操作只影响当前页面内存中的草稿，刷新页面后会恢复演示数据。</p>
-        )}
-        <div className={styles.dialogActions}>
-          <button type="button" onClick={closeDeleteDialog}>
-            取消
-          </button>
-          <button
-            type="button"
-            className={styles.confirmDanger}
-            onClick={confirmDeleteDraft}
-          >
-            确认删除
-          </button>
-        </div>
-      </dialog>
-
-      <dialog
-        ref={recapDialogRef}
-        className={styles.dialog}
-        aria-labelledby="recap-title"
-        onCancel={(event) => {
-          event.preventDefault();
-          closeRecap();
-        }}
-      >
-        <div className={styles.dialogHeading}>
-          <div>
-            <p className={styles.eyebrow}>TRIP RECAP</p>
-            <h2 id="recap-title">{recapTarget?.name}</h2>
-          </div>
-          <button type="button" aria-label="关闭旅行回顾" onClick={closeRecap}>
-            <PersonalIcon name="close" />
-          </button>
-        </div>
-        <p>
-          {recapTarget?.dateLabel} · {recapTarget?.durationLabel}
-        </p>
-        <ul className={styles.recapList}>
-          {recapTarget?.recap.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-        <div className={styles.dialogActions}>
-          {recapTarget ? (
-            <button type="button" onClick={() => toggleFavorite(recapTarget)}>
-              {recapTarget.favorite ? "♥ 取消收藏" : "♡ 收藏旅程"}
-            </button>
-          ) : null}
-          {recapTarget ? (
+        {items && visible.length > 0 ? (
+          <nav className={styles.pagination} aria-label="旅行列表分页">
             <button
               type="button"
-              className={styles.dialogPrimary}
-              onClick={() => copyHistory(recapTarget)}
+              disabled={page <= 1}
+              onClick={() => setRequestedPage(page - 1)}
             >
-              复制为新草稿
+              上一页
             </button>
-          ) : null}
-        </div>
-      </dialog>
-
+            <span>
+              第 {page} / {pageCount} 页 · 共 {visible.length} 条行程
+            </span>
+            <button
+              type="button"
+              disabled={page >= pageCount}
+              onClick={() => setRequestedPage(page + 1)}
+            >
+              下一页
+            </button>
+          </nav>
+        ) : null}
+      </section>
+      <p className={styles.liveBoundary}>
+        预订、收藏和封面资料暂未提供；本页不显示相应统计。价格与预订操作暂不可用。继续编辑行程的入口暂不可用。
+      </p>
       <dialog
-        ref={detailDialogRef}
+        ref={dialogRef}
         className={styles.dialog}
-        aria-labelledby="detail-title"
+        aria-labelledby="trip-dialog-title"
         onCancel={(event) => {
           event.preventDefault();
-          closeDetail();
+          close();
         }}
       >
-        <div className={styles.dialogHeading}>
-          <div>
-            <p className={styles.eyebrow}>VIEW-ONLY DETAIL</p>
-            <h2 id="detail-title">{detailTarget?.name}</h2>
-          </div>
-          <button type="button" aria-label="关闭详情" onClick={closeDetail}>
-            <PersonalIcon name="close" />
-          </button>
-        </div>
-        <p>
-          {detailTarget?.destination} ·{" "}
-          {detailTarget && "summary" in detailTarget
-            ? detailTarget.summary
-            : detailTarget?.dateLabel}
-        </p>
-        <div className={styles.deferredBox}>
-          <strong>价格与预订操作暂不可用</strong>
-          <span>
-            正式详情、实时价格与 Reservation Hub 将在后续契约落地后接入。
-          </span>
-        </div>
-        <div className={styles.dialogActions}>
-          <button type="button" onClick={closeDetail}>
-            关闭
-          </button>
-        </div>
+        {selected ? (
+          <>
+            <div className={styles.dialogHeading}>
+              <h2 id="trip-dialog-title">
+                {target?.mode === "delete" ? "删除这份草稿？" : "行程摘要"}
+              </h2>
+              <button
+                type="button"
+                disabled={busy}
+                aria-label="关闭"
+                onClick={close}
+              >
+                <PersonalIcon name="close" />
+              </button>
+            </div>
+            <h3>{selected.title ?? "未命名旅行"}</h3>
+            <p>
+              {libraryStateLabels[selected.libraryState]} ·{" "}
+              {selected.destinations.join(" · ") || "目的地未设置"}
+            </p>
+            <TripFacts trip={selected} />
+            {target?.mode === "delete" ? (
+              <p>只删除此草稿，不会取消酒店、门票、餐厅或交通合作方的预订。</p>
+            ) : (
+              <p>方案状态：{selected.planStatus ?? "未提供"}</p>
+            )}
+            {error ? (
+              <div role="alert">
+                <p>{error}</p>
+                <button type="button" disabled={busy} onClick={refresh}>
+                  重新读取列表
+                </button>
+              </div>
+            ) : null}
+            <div className={styles.dialogActions}>
+              <button type="button" disabled={busy} onClick={close}>
+                取消
+              </button>
+              {target?.mode === "delete" ? (
+                <button
+                  type="button"
+                  disabled={busy}
+                  className={styles.confirmDanger}
+                  onClick={() => void confirmDelete()}
+                >
+                  删除草稿
+                </button>
+              ) : null}
+            </div>
+          </>
+        ) : null}
       </dialog>
     </div>
   );

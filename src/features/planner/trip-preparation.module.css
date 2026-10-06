@@ -77,6 +77,21 @@ dialog.completion[data-kind="detail"] {
   color: #46555c;
   font: inherit;
 }
+.completion > header button[aria-label^="关闭"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  line-height: 0;
+}
+.completion > header button[aria-label^="关闭"] svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
 .completion button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -216,6 +231,16 @@ dialog.completion[data-kind="detail"] {
 }
 .flightProject {
   min-width: 0;
+}
+.flightProject > header button[aria-label^="关闭"] {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  line-height: 0;
 }
 .flightProject h2 {
   margin: 0;

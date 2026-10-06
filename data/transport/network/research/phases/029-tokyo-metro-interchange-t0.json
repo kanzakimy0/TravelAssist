@@ -1,0 +1,691 @@
+{
+  "phaseId": "029-tokyo-metro-interchange-t0",
+  "strategy": [
+    "TOKYO_METRO_EXPLICIT_INTERCHANGE_TABLE",
+    "EXACT_OPERATOR_COMPONENT_PAIR_REVIEW",
+    "transfer"
+  ],
+  "completedActionIds": [],
+  "facts": [
+    {
+      "factId": "metro-official-interchange-marunouchi-新宿",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_marunouchi/index.html",
+      "observedResponseSha256": "e77938ac5073d9797fb98a89fd6bc02bff9603fb05934433c88c677f12aaf11a",
+      "locator": "Official のりかえ路線 station row 新宿. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "新宿",
+          "operator": "東京地下鉄",
+          "line": "4号線丸ノ内線",
+          "mode": "metro"
+        },
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "東京都",
+          "line": "12号線大江戸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+        [0, 3],
+        [3, 0],
+        [0, 4],
+        [4, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-marunouchi-大手町",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_marunouchi/index.html",
+      "observedResponseSha256": "e77938ac5073d9797fb98a89fd6bc02bff9603fb05934433c88c677f12aaf11a",
+      "locator": "Official のりかえ路線 station row 大手町. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "大手町",
+          "operator": "東京地下鉄",
+          "line": "4号線丸ノ内線",
+          "mode": "metro"
+        },
+        {
+          "name": "大手町",
+          "operator": "東京都",
+          "line": "6号線三田線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-marunouchi-池袋",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_marunouchi/index.html",
+      "observedResponseSha256": "e77938ac5073d9797fb98a89fd6bc02bff9603fb05934433c88c677f12aaf11a",
+      "locator": "Official のりかえ路線 station row 池袋. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "池袋",
+          "operator": "東京地下鉄",
+          "line": "4号線丸ノ内線",
+          "mode": "metro"
+        },
+        {
+          "name": "池袋",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "池袋",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "池袋",
+          "operator": "西武鉄道",
+          "line": "池袋線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+        [0, 3],
+        [3, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-ginza-渋谷",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_ginza/index.html",
+      "observedResponseSha256": "b4d4b9a167f3b803e169808e951319c70d6d2f1b0bd7ad49c901ed0fa5f7d434",
+      "locator": "Official のりかえ路線 station row 渋谷. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "渋谷",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+        [0, 3],
+        [3, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-ginza-新橋",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_ginza/index.html",
+      "observedResponseSha256": "b4d4b9a167f3b803e169808e951319c70d6d2f1b0bd7ad49c901ed0fa5f7d434",
+      "locator": "Official のりかえ路線 station row 新橋. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "新橋",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        },
+        {
+          "name": "新橋",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新橋",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-ginza-上野",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_ginza/index.html",
+      "observedResponseSha256": "b4d4b9a167f3b803e169808e951319c70d6d2f1b0bd7ad49c901ed0fa5f7d434",
+      "locator": "Official のりかえ路線 station row 上野. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "上野",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        },
+        {
+          "name": "上野",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-hibiya-中目黒",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+      "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3",
+      "locator": "Official のりかえ路線 station row 中目黒. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "中目黒",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "中目黒",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-hibiya-恵比寿",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+      "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3",
+      "locator": "Official のりかえ路線 station row 恵比寿. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "恵比寿",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "恵比寿",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-hibiya-秋葉原",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+      "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3",
+      "locator": "Official のりかえ路線 station row 秋葉原. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "秋葉原",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "秋葉原",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "秋葉原",
+          "operator": "首都圏新都市鉄道",
+          "line": "常磐新線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-hibiya-北千住",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hibiya/index.html",
+      "observedResponseSha256": "3f9b92a026f6acd9a0bb87d60b2f9a41242ed33736658ff0642e1beff166cec3",
+      "locator": "Official のりかえ路線 station row 北千住. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "北千住",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "北千住",
+          "operator": "東日本旅客鉄道",
+          "line": "常磐線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北千住",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北千住",
+          "operator": "首都圏新都市鉄道",
+          "line": "常磐新線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+        [0, 3],
+        [3, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-chiyoda-代々木上原",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_chiyoda/index.html",
+      "observedResponseSha256": "c42272af6ef302c137435ffbba02569c7c8803e1dd009c0c74315e3367e4e729",
+      "locator": "Official のりかえ路線 station row 代々木上原. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "代々木上原",
+          "operator": "東京地下鉄",
+          "line": "9号線千代田線",
+          "mode": "metro"
+        },
+        {
+          "name": "代々木上原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-yurakucho-和光市",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_yurakucho/index.html",
+      "observedResponseSha256": "4d64406f8062fc371ea753bc60951c0e2766d1caf5ce3df21cf276cb9476656b",
+      "locator": "Official のりかえ路線 station row 和光市. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "和光市",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        },
+        {
+          "name": "和光市",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-yurakucho-小竹向原",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_yurakucho/index.html",
+      "observedResponseSha256": "4d64406f8062fc371ea753bc60951c0e2766d1caf5ce3df21cf276cb9476656b",
+      "locator": "Official のりかえ路線 station row 小竹向原. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "小竹向原",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        },
+        {
+          "name": "小竹向原",
+          "operator": "西武鉄道",
+          "line": "西武有楽町線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-yurakucho-有楽町",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_yurakucho/index.html",
+      "observedResponseSha256": "4d64406f8062fc371ea753bc60951c0e2766d1caf5ce3df21cf276cb9476656b",
+      "locator": "Official のりかえ路線 station row 有楽町. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "有楽町",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        },
+        {
+          "name": "有楽町",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-hanzomon-九段下",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hanzomon/index.html",
+      "observedResponseSha256": "822ee6e6986921f53ff320d33df2eb3187a1fcadba82046a373f52ab6abfe5a2",
+      "locator": "Official のりかえ路線 station row 九段下. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "九段下",
+          "operator": "東京地下鉄",
+          "line": "11号線半蔵門線",
+          "mode": "metro"
+        },
+        {
+          "name": "九段下",
+          "operator": "東京都",
+          "line": "10号線新宿線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-hanzomon-押上",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_hanzomon/index.html",
+      "observedResponseSha256": "822ee6e6986921f53ff320d33df2eb3187a1fcadba82046a373f52ab6abfe5a2",
+      "locator": "Official のりかえ路線 station row 押上〈スカイツリー前〉. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "押上",
+          "operator": "東京地下鉄",
+          "line": "11号線半蔵門線",
+          "mode": "metro"
+        },
+        {
+          "name": "押上",
+          "operator": "京成電鉄",
+          "line": "押上線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "押上",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-namboku-目黒",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_namboku/index.html",
+      "observedResponseSha256": "79485e5d0a5639a36538c3b6955d6b34a5adeea6d231b2c89292c5e8f1395f23",
+      "locator": "Official のりかえ路線 station row 目黒. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "目黒",
+          "operator": "東京地下鉄",
+          "line": "7号線南北線",
+          "mode": "metro"
+        },
+        {
+          "name": "目黒",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "目黒",
+          "operator": "東急電鉄",
+          "line": "目黒線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-tozai-中野",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_tozai/index.html",
+      "observedResponseSha256": "44abf8795d2be09fba51f0cac13bc896f9258306651ab5b111a1f1c5b373b605",
+      "locator": "Official のりかえ路線 station row 中野. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "中野",
+          "operator": "東京地下鉄",
+          "line": "5号線東西線",
+          "mode": "metro"
+        },
+        {
+          "name": "中野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-tozai-高田馬場",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_tozai/index.html",
+      "observedResponseSha256": "44abf8795d2be09fba51f0cac13bc896f9258306651ab5b111a1f1c5b373b605",
+      "locator": "Official のりかえ路線 station row 高田馬場. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "高田馬場",
+          "operator": "東京地下鉄",
+          "line": "5号線東西線",
+          "mode": "metro"
+        },
+        {
+          "name": "高田馬場",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高田馬場",
+          "operator": "西武鉄道",
+          "line": "新宿線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "metro-official-interchange-tozai-西船橋",
+      "kind": "transfer",
+      "sourceActionId": "metro:tokyo:local",
+      "sourceUrl": "https://www.tokyometro.jp/station/line_tozai/index.html",
+      "observedResponseSha256": "44abf8795d2be09fba51f0cac13bc896f9258306651ab5b111a1f1c5b373b605",
+      "locator": "Official のりかえ路線 station row 西船橋. Each retained pair is explicitly listed from the Metro component to the named other operator; only matched physical station components are bound. Alternate-name footnote stations without an independently matched component are not inferred. Bidirectional physical interchange only; no duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "西船橋",
+          "operator": "東京地下鉄",
+          "line": "5号線東西線",
+          "mode": "metro"
+        },
+        {
+          "name": "西船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西船橋",
+          "operator": "東葉高速鉄道",
+          "line": "東葉高速線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_TABLE_AND_EXACT_S12_COMPONENT",
+      "hubScopeComplete": false
+    }
+  ]
+}

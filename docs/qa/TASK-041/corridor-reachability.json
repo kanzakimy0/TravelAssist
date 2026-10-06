@@ -1,0 +1,87 @@
+{
+  "graphDataRevision": "task-041-japan-pilot-2026-09-11-r2",
+  "providerQueries": 0,
+  "checks": [
+    {
+      "checkId": "tokyo_to_hakone",
+      "from": "region-tokyo",
+      "to": "region-hakone",
+      "reachable": true,
+      "shortestPath": ["region-tokyo", "region-hakone"],
+      "requiredPlanningPathPresent": true,
+      "interpretation": "provider-free graph reachability only"
+    },
+    {
+      "checkId": "alpine_chain",
+      "from": "region-tokyo",
+      "to": "region-kanazawa",
+      "reachable": true,
+      "shortestPath": ["region-tokyo", "region-kyoto", "region-kanazawa"],
+      "requiredPlanningPathPresent": true,
+      "interpretation": "provider-free graph reachability only"
+    },
+    {
+      "checkId": "kansai_chain",
+      "from": "region-kyoto",
+      "to": "region-kobe",
+      "reachable": true,
+      "shortestPath": ["region-kyoto", "region-kobe"],
+      "requiredPlanningPathPresent": true,
+      "interpretation": "provider-free graph reachability only"
+    },
+    {
+      "checkId": "tokyo_to_kyoto",
+      "from": "region-tokyo",
+      "to": "region-kyoto",
+      "reachable": true,
+      "shortestPath": ["region-tokyo", "region-kyoto"],
+      "requiredPlanningPathPresent": true,
+      "interpretation": "provider-free graph reachability only"
+    },
+    {
+      "checkId": "tokyo_to_osaka",
+      "from": "region-tokyo",
+      "to": "region-osaka",
+      "reachable": true,
+      "shortestPath": ["region-tokyo", "region-osaka"],
+      "requiredPlanningPathPresent": true,
+      "interpretation": "provider-free graph reachability only"
+    }
+  ],
+  "allReachable": true,
+  "allRequiredPlanningPathsPresent": true,
+  "corridors": {
+    "tokyo": [
+      "region-tokyo",
+      "district-shinjuku",
+      "district-shibuya-harajuku",
+      "district-asakusa-ueno",
+      "gateway-tokyo-rail",
+      "gateway-haneda"
+    ],
+    "hakoneFuji": [
+      "region-hakone",
+      "region-odawara",
+      "region-fuji-five-lakes",
+      "region-fujikawaguchiko",
+      "gateway-hakone-yumoto",
+      "gateway-kawaguchiko"
+    ],
+    "alpineHokuriku": [
+      "region-nagano",
+      "region-matsumoto",
+      "region-kamikochi",
+      "region-takayama",
+      "region-shirakawa-go",
+      "region-kanazawa"
+    ],
+    "kansai": [
+      "region-kyoto",
+      "region-nara",
+      "region-osaka",
+      "region-kobe",
+      "gateway-kyoto-rail",
+      "gateway-osaka-rail"
+    ]
+  }
+}

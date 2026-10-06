@@ -10,6 +10,126 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      companion_group_members: {
+        Row: {
+          companion_id: string;
+          created_at: string;
+          group_id: string;
+          owner_user_id: string;
+          sort_order: number;
+        };
+        Insert: {
+          companion_id: string;
+          created_at?: string;
+          group_id: string;
+          owner_user_id: string;
+          sort_order: number;
+        };
+        Update: {
+          companion_id?: string;
+          created_at?: string;
+          group_id?: string;
+          owner_user_id?: string;
+          sort_order?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "companion_group_members_companion_owner_fk";
+            columns: ["companion_id", "owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "companions";
+            referencedColumns: ["id", "owner_user_id"];
+          },
+          {
+            foreignKeyName: "companion_group_members_group_owner_fk";
+            columns: ["group_id", "owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "companion_groups";
+            referencedColumns: ["id", "owner_user_id"];
+          },
+        ];
+      };
+      companion_groups: {
+        Row: {
+          created_at: string;
+          description: string | null;
+          id: string;
+          includes_owner: boolean;
+          name: string;
+          owner_user_id: string;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          description?: string | null;
+          id?: string;
+          includes_owner?: boolean;
+          name: string;
+          owner_user_id: string;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          description?: string | null;
+          id?: string;
+          includes_owner?: boolean;
+          name?: string;
+          owner_user_id?: string;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      companions: {
+        Row: {
+          age_group_fallback: string | null;
+          avatar_path: string | null;
+          birth_date: string | null;
+          created_at: string;
+          display_name: string;
+          gender_code: string | null;
+          id: string;
+          owner_user_id: string;
+          relationship_code: string | null;
+          relationship_label: string | null;
+          revision: number;
+          travel_profile: Json;
+          updated_at: string;
+        };
+        Insert: {
+          age_group_fallback?: string | null;
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name: string;
+          gender_code?: string | null;
+          id?: string;
+          owner_user_id: string;
+          relationship_code?: string | null;
+          relationship_label?: string | null;
+          revision?: number;
+          travel_profile?: Json;
+          updated_at?: string;
+        };
+        Update: {
+          age_group_fallback?: string | null;
+          avatar_path?: string | null;
+          birth_date?: string | null;
+          created_at?: string;
+          display_name?: string;
+          gender_code?: string | null;
+          id?: string;
+          owner_user_id?: string;
+          relationship_code?: string | null;
+          relationship_label?: string | null;
+          revision?: number;
+          travel_profile?: Json;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       emergency_contacts: {
         Row: {
           country_code: string | null;
@@ -48,6 +168,388 @@ export type Database = {
           user_id?: string;
         };
         Relationships: [];
+      };
+      engine_apply_audits: {
+        Row: {
+          before_plan_revision: number;
+          before_trip_revision: number;
+          context_fingerprint: string;
+          created_at: string;
+          operation_refs: Json;
+          outcome: string;
+          preview_hash: string;
+          receipt_id: string;
+          resulting_plan_revision: number;
+          resulting_trip_revision: number;
+        };
+        Insert: {
+          before_plan_revision: number;
+          before_trip_revision: number;
+          context_fingerprint: string;
+          created_at?: string;
+          operation_refs: Json;
+          outcome?: string;
+          preview_hash: string;
+          receipt_id: string;
+          resulting_plan_revision: number;
+          resulting_trip_revision: number;
+        };
+        Update: {
+          before_plan_revision?: number;
+          before_trip_revision?: number;
+          context_fingerprint?: string;
+          created_at?: string;
+          operation_refs?: Json;
+          outcome?: string;
+          preview_hash?: string;
+          receipt_id?: string;
+          resulting_plan_revision?: number;
+          resulting_trip_revision?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_audits_receipt_fkey";
+            columns: ["receipt_id", "outcome"];
+            isOneToOne: false;
+            referencedRelation: "engine_apply_receipts";
+            referencedColumns: ["id", "outcome"];
+          },
+        ];
+      };
+      engine_apply_compensations: {
+        Row: {
+          compensation_receipt_id: string;
+          created_at: string;
+          original_receipt_id: string;
+        };
+        Insert: {
+          compensation_receipt_id: string;
+          created_at?: string;
+          original_receipt_id: string;
+        };
+        Update: {
+          compensation_receipt_id?: string;
+          created_at?: string;
+          original_receipt_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_compensations_compensation_receipt_id_fkey";
+            columns: ["compensation_receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_audits";
+            referencedColumns: ["receipt_id"];
+          },
+          {
+            foreignKeyName: "engine_apply_compensations_original_receipt_id_fkey";
+            columns: ["original_receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_preimages";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
+      engine_apply_outbox: {
+        Row: {
+          attempts: number;
+          available_at: string;
+          created_at: string;
+          event_type: string;
+          failure_code: string | null;
+          finished_at: string | null;
+          lease_expires_at: string | null;
+          lease_token: string | null;
+          receipt_id: string;
+          status: string;
+        };
+        Insert: {
+          attempts?: number;
+          available_at?: string;
+          created_at?: string;
+          event_type?: string;
+          failure_code?: string | null;
+          finished_at?: string | null;
+          lease_expires_at?: string | null;
+          lease_token?: string | null;
+          receipt_id: string;
+          status?: string;
+        };
+        Update: {
+          attempts?: number;
+          available_at?: string;
+          created_at?: string;
+          event_type?: string;
+          failure_code?: string | null;
+          finished_at?: string | null;
+          lease_expires_at?: string | null;
+          lease_token?: string | null;
+          receipt_id?: string;
+          status?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_outbox_receipt_id_fkey";
+            columns: ["receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_audits";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
+      engine_apply_preimages: {
+        Row: {
+          created_at: string;
+          preimage: Json;
+          receipt_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          preimage: Json;
+          receipt_id: string;
+        };
+        Update: {
+          created_at?: string;
+          preimage?: Json;
+          receipt_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_apply_preimages_receipt_id_fkey";
+            columns: ["receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_audits";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
+      engine_apply_receipts: {
+        Row: {
+          actor_user_id: string;
+          change_set_id: string;
+          created_at: string;
+          id: string;
+          idempotency_key: string;
+          outcome: string;
+          payload_hash: string;
+          plan_id: string;
+          result: Json;
+          trip_id: string;
+        };
+        Insert: {
+          actor_user_id: string;
+          change_set_id: string;
+          created_at?: string;
+          id?: string;
+          idempotency_key: string;
+          outcome: string;
+          payload_hash: string;
+          plan_id: string;
+          result: Json;
+          trip_id: string;
+        };
+        Update: {
+          actor_user_id?: string;
+          change_set_id?: string;
+          created_at?: string;
+          id?: string;
+          idempotency_key?: string;
+          outcome?: string;
+          payload_hash?: string;
+          plan_id?: string;
+          result?: Json;
+          trip_id?: string;
+        };
+        Relationships: [];
+      };
+      engine_rollback_receipts: {
+        Row: {
+          actor_user_id: string;
+          apply_receipt_id: string | null;
+          created_at: string;
+          id: string;
+          idempotency_key: string;
+          issue_codes: string[];
+          observed_plan_revision: number;
+          observed_trip_revision: number;
+          original_receipt_id: string;
+          outcome: string;
+          payload_hash: string;
+          request_id: string;
+          resulting_plan_revision: number | null;
+          resulting_trip_revision: number | null;
+        };
+        Insert: {
+          actor_user_id: string;
+          apply_receipt_id?: string | null;
+          created_at?: string;
+          id?: string;
+          idempotency_key: string;
+          issue_codes: string[];
+          observed_plan_revision: number;
+          observed_trip_revision: number;
+          original_receipt_id: string;
+          outcome: string;
+          payload_hash: string;
+          request_id: string;
+          resulting_plan_revision?: number | null;
+          resulting_trip_revision?: number | null;
+        };
+        Update: {
+          actor_user_id?: string;
+          apply_receipt_id?: string | null;
+          created_at?: string;
+          id?: string;
+          idempotency_key?: string;
+          issue_codes?: string[];
+          observed_plan_revision?: number;
+          observed_trip_revision?: number;
+          original_receipt_id?: string;
+          outcome?: string;
+          payload_hash?: string;
+          request_id?: string;
+          resulting_plan_revision?: number | null;
+          resulting_trip_revision?: number | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_rollback_receipts_apply_receipt_id_fkey";
+            columns: ["apply_receipt_id"];
+            isOneToOne: false;
+            referencedRelation: "engine_apply_receipts";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "engine_rollback_receipts_original_receipt_id_fkey";
+            columns: ["original_receipt_id"];
+            isOneToOne: false;
+            referencedRelation: "engine_apply_receipts";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      engine_runtime_results: {
+        Row: {
+          contract_version: string;
+          created_at: string;
+          fingerprint: string;
+          issue_codes: string[];
+          issues_truncated: boolean;
+          observed_plan_revision: number | null;
+          observed_trip_revision: number | null;
+          receipt_id: string;
+          recompute_status: string;
+        };
+        Insert: {
+          contract_version?: string;
+          created_at?: string;
+          fingerprint: string;
+          issue_codes: string[];
+          issues_truncated?: boolean;
+          observed_plan_revision?: number | null;
+          observed_trip_revision?: number | null;
+          receipt_id: string;
+          recompute_status: string;
+        };
+        Update: {
+          contract_version?: string;
+          created_at?: string;
+          fingerprint?: string;
+          issue_codes?: string[];
+          issues_truncated?: boolean;
+          observed_plan_revision?: number | null;
+          observed_trip_revision?: number | null;
+          receipt_id?: string;
+          recompute_status?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "engine_runtime_results_receipt_id_fkey";
+            columns: ["receipt_id"];
+            isOneToOne: true;
+            referencedRelation: "engine_apply_outbox";
+            referencedColumns: ["receipt_id"];
+          },
+        ];
+      };
+      itinerary_items: {
+        Row: {
+          assessment: string;
+          booking_reference_id: string | null;
+          booking_status: string;
+          booking_verified_at: string | null;
+          created_at: string;
+          day_id: string;
+          end_at: string | null;
+          end_timezone: string | null;
+          id: string;
+          kind: string;
+          latitude: number | null;
+          lock_level: string;
+          longitude: number | null;
+          place_name: string | null;
+          place_reference_id: string | null;
+          placement: string;
+          position: number;
+          start_at: string | null;
+          start_timezone: string | null;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          assessment: string;
+          booking_reference_id?: string | null;
+          booking_status: string;
+          booking_verified_at?: string | null;
+          created_at?: string;
+          day_id: string;
+          end_at?: string | null;
+          end_timezone?: string | null;
+          id?: string;
+          kind: string;
+          latitude?: number | null;
+          lock_level: string;
+          longitude?: number | null;
+          place_name?: string | null;
+          place_reference_id?: string | null;
+          placement: string;
+          position: number;
+          start_at?: string | null;
+          start_timezone?: string | null;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          assessment?: string;
+          booking_reference_id?: string | null;
+          booking_status?: string;
+          booking_verified_at?: string | null;
+          created_at?: string;
+          day_id?: string;
+          end_at?: string | null;
+          end_timezone?: string | null;
+          id?: string;
+          kind?: string;
+          latitude?: number | null;
+          lock_level?: string;
+          longitude?: number | null;
+          place_name?: string | null;
+          place_reference_id?: string | null;
+          placement?: string;
+          position?: number;
+          start_at?: string | null;
+          start_timezone?: string | null;
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "itinerary_items_day_id_fkey";
+            columns: ["day_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_days";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       profile_settings: {
         Row: {
@@ -127,12 +629,255 @@ export type Database = {
         };
         Relationships: [];
       };
+      travel_preferences: {
+        Row: {
+          created_at: string;
+          owner_user_id: string;
+          payload: Json;
+          revision: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          owner_user_id: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          owner_user_id?: string;
+          payload?: Json;
+          revision?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      trip_days: {
+        Row: {
+          created_at: string;
+          day_number: number;
+          id: string;
+          local_date: string;
+          plan_id: string;
+          timezone: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          day_number: number;
+          id?: string;
+          local_date: string;
+          plan_id: string;
+          timezone: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          day_number?: number;
+          id?: string;
+          local_date?: string;
+          plan_id?: string;
+          timezone?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trip_days_plan_id_fkey";
+            columns: ["plan_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_plans";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      trip_library_records: {
+        Row: {
+          canonical_trip_id: string | null;
+          created_at: string;
+          creation_intent_hash: string | null;
+          creation_key: string;
+          draft_facts: Json;
+          frozen_at: string | null;
+          id: string;
+          library_state: string;
+          owner_user_id: string;
+          party_snapshot: Json;
+          plan_snapshot: Json | null;
+          preference_override_patch: Json;
+          preference_snapshot: Json;
+          preference_source_revision: number;
+          storage_revision: number;
+          updated_at: string;
+          wizard_progress: Json;
+        };
+        Insert: {
+          canonical_trip_id?: string | null;
+          created_at?: string;
+          creation_intent_hash?: string | null;
+          creation_key: string;
+          draft_facts: Json;
+          frozen_at?: string | null;
+          id?: string;
+          library_state?: string;
+          owner_user_id: string;
+          party_snapshot: Json;
+          plan_snapshot?: Json | null;
+          preference_override_patch?: Json;
+          preference_snapshot: Json;
+          preference_source_revision: number;
+          storage_revision?: number;
+          updated_at?: string;
+          wizard_progress: Json;
+        };
+        Update: {
+          canonical_trip_id?: string | null;
+          created_at?: string;
+          creation_intent_hash?: string | null;
+          creation_key?: string;
+          draft_facts?: Json;
+          frozen_at?: string | null;
+          id?: string;
+          library_state?: string;
+          owner_user_id?: string;
+          party_snapshot?: Json;
+          plan_snapshot?: Json | null;
+          preference_override_patch?: Json;
+          preference_snapshot?: Json;
+          preference_source_revision?: number;
+          storage_revision?: number;
+          updated_at?: string;
+          wizard_progress?: Json;
+        };
+        Relationships: [];
+      };
+      trip_plans: {
+        Row: {
+          created_at: string;
+          id: string;
+          position: number;
+          revision: number;
+          revision_txid: number;
+          title: string;
+          trip_id: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          position: number;
+          revision?: number;
+          revision_txid?: number;
+          title: string;
+          trip_id: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          position?: number;
+          revision?: number;
+          revision_txid?: number;
+          title?: string;
+          trip_id?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trip_plans_trip_id_fkey";
+            columns: ["trip_id"];
+            isOneToOne: false;
+            referencedRelation: "trips";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      trips: {
+        Row: {
+          active_plan_id: string | null;
+          created_at: string;
+          default_timezone: string;
+          id: string;
+          owner_user_id: string;
+          provenance: string;
+          revision: number;
+          revision_txid: number;
+          status: string;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          active_plan_id?: string | null;
+          created_at?: string;
+          default_timezone: string;
+          id?: string;
+          owner_user_id: string;
+          provenance: string;
+          revision?: number;
+          revision_txid?: number;
+          status: string;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          active_plan_id?: string | null;
+          created_at?: string;
+          default_timezone?: string;
+          id?: string;
+          owner_user_id?: string;
+          provenance?: string;
+          revision?: number;
+          revision_txid?: number;
+          status?: string;
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trips_active_plan_fk";
+            columns: ["id", "active_plan_id"];
+            isOneToOne: false;
+            referencedRelation: "trip_plans";
+            referencedColumns: ["trip_id", "id"];
+          },
+        ];
+      };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      is_companion_travel_profile_v1: {
+        Args: { payload: Json };
+        Returns: boolean;
+      };
+      is_engine_preimage_v1: { Args: { value: Json }; Returns: boolean };
+      is_travel_preference_v1: { Args: { payload: Json }; Returns: boolean };
+      is_trip_library_envelope_v1: {
+        Args: { max_bytes: number; payload: Json; version_key: string };
+        Returns: boolean;
+      };
+      is_trip_party_snapshot_v1: { Args: { payload: Json }; Returns: boolean };
+      mutate_companion_group_v1: {
+        Args: {
+          p_action: string;
+          p_expected_revision?: number;
+          p_id?: string;
+          p_includes_owner?: boolean;
+          p_member_ids?: string[];
+          p_name?: string;
+        };
+        Returns: Json;
+      };
+      mutate_companion_v1: {
+        Args: {
+          p_action: string;
+          p_expected_revision?: number;
+          p_id?: string;
+          p_input?: Json;
+        };
+        Returns: Json;
+      };
     };
     Enums: {
       [_ in never]: never;

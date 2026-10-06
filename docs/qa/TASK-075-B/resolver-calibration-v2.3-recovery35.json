@@ -1,0 +1,799 @@
+{
+  "schemaVersion": "task-075-b-correction-v2.3-benchmark-v1",
+  "resolverVersion": "task-075-b-resolver-v2.3-expanded-pool-recovery35-canonical-accounting",
+  "sourceBackedTargetPool": 12647,
+  "benchmark": {
+    "tuning": 600,
+    "development": 300,
+    "finalBlind": 300,
+    "previouslyInspectedHoldoutReused": false
+  },
+  "strataCoverage": {
+    "development": {
+      "same_name_near_name_hard": 35,
+      "historical_alias_renamed": 20,
+      "area_district_non_point": 20,
+      "duplicate_invalid_non_poi": 20,
+      "wrong_municipality_prefecture_type_conflict_decoy": 25,
+      "common_temple_shrine": 7,
+      "generic_park_nature": 20,
+      "jp_en_alias": 15,
+      "balanced_fill": 138
+    },
+    "finalBlind": {
+      "same_name_near_name_hard": 35,
+      "historical_alias_renamed": 20,
+      "area_district_non_point": 20,
+      "duplicate_invalid_non_poi": 20,
+      "wrong_municipality_prefecture_type_conflict_decoy": 25,
+      "generic_park_nature": 20,
+      "jp_en_alias": 15,
+      "balanced_fill": 145
+    }
+  },
+  "tuning": {
+    "counts": {
+      "candidateGenerationHitAt1Count": 65,
+      "candidateGenerationHitAt5Count": 150,
+      "candidateGenerationHitAt20Count": 153,
+      "candidateGenerationHitAt50Count": 153,
+      "top1CorrectCount": 131,
+      "evaluatedCount": 153,
+      "high": {
+        "correct": 80,
+        "predicted": 80
+      },
+      "medium": {
+        "correct": 0,
+        "predicted": 0
+      },
+      "provisional": {
+        "correct": 21,
+        "predicted": 23
+      },
+      "hardConflictAutoMatch": 0
+    },
+    "micro": {
+      "candidateGenerationRecallAt1": 0.42483660130718953,
+      "candidateGenerationRecallAt5": 0.9803921568627451,
+      "candidateGenerationRecallAt20": 1,
+      "candidateGenerationRecallAt50": 1,
+      "top1Accuracy": 0.8562091503267973,
+      "highPrecision": 1,
+      "mediumPrecision": 1,
+      "provisionalPrecision": 0.9130434782608695
+    },
+    "macro": {
+      "perStratum": [
+        {
+          "stratum": "tuning",
+          "counts": {
+            "candidateGenerationHitAt1Count": 65,
+            "candidateGenerationHitAt5Count": 150,
+            "candidateGenerationHitAt20Count": 153,
+            "candidateGenerationHitAt50Count": 153,
+            "top1CorrectCount": 131,
+            "evaluatedCount": 153,
+            "high": {
+              "correct": 80,
+              "predicted": 80
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 21,
+              "predicted": 23
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0.42483660130718953,
+            "candidateGenerationRecallAt5": 0.9803921568627451,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 0.8562091503267973,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 0.9130434782608695
+          }
+        }
+      ],
+      "macroRates": {
+        "candidateGenerationRecallAt1": 0.42483660130718953,
+        "candidateGenerationRecallAt5": 0.9803921568627451,
+        "top1Accuracy": 0.8562091503267973,
+        "highPrecision": 1,
+        "mediumPrecision": 1,
+        "provisionalPrecision": 0.9130434782608695
+      }
+    }
+  },
+  "development": {
+    "counts": {
+      "candidateGenerationHitAt1Count": 0,
+      "candidateGenerationHitAt5Count": 260,
+      "candidateGenerationHitAt20Count": 260,
+      "candidateGenerationHitAt50Count": 260,
+      "top1CorrectCount": 258,
+      "evaluatedCount": 260,
+      "high": {
+        "correct": 257,
+        "predicted": 257
+      },
+      "medium": {
+        "correct": 0,
+        "predicted": 0
+      },
+      "provisional": {
+        "correct": 1,
+        "predicted": 1
+      },
+      "hardConflictAutoMatch": 0
+    },
+    "micro": {
+      "candidateGenerationRecallAt1": 0,
+      "candidateGenerationRecallAt5": 1,
+      "candidateGenerationRecallAt20": 1,
+      "candidateGenerationRecallAt50": 1,
+      "top1Accuracy": 0.9923076923076923,
+      "highPrecision": 1,
+      "mediumPrecision": 1,
+      "provisionalPrecision": 1
+    },
+    "macro": {
+      "perStratum": [
+        {
+          "stratum": "same_name_near_name_hard",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 35,
+            "candidateGenerationHitAt20Count": 35,
+            "candidateGenerationHitAt50Count": 35,
+            "top1CorrectCount": 35,
+            "evaluatedCount": 35,
+            "high": {
+              "correct": 35,
+              "predicted": 35
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "historical_alias_renamed",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 20,
+            "candidateGenerationHitAt20Count": 20,
+            "candidateGenerationHitAt50Count": 20,
+            "top1CorrectCount": 20,
+            "evaluatedCount": 20,
+            "high": {
+              "correct": 20,
+              "predicted": 20
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "area_district_non_point",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 0,
+            "candidateGenerationHitAt20Count": 0,
+            "candidateGenerationHitAt50Count": 0,
+            "top1CorrectCount": 0,
+            "evaluatedCount": 0,
+            "high": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": null,
+            "candidateGenerationRecallAt5": null,
+            "candidateGenerationRecallAt20": null,
+            "candidateGenerationRecallAt50": null,
+            "top1Accuracy": null,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "duplicate_invalid_non_poi",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 0,
+            "candidateGenerationHitAt20Count": 0,
+            "candidateGenerationHitAt50Count": 0,
+            "top1CorrectCount": 0,
+            "evaluatedCount": 0,
+            "high": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": null,
+            "candidateGenerationRecallAt5": null,
+            "candidateGenerationRecallAt20": null,
+            "candidateGenerationRecallAt50": null,
+            "top1Accuracy": null,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "wrong_municipality_prefecture_type_conflict_decoy",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 25,
+            "candidateGenerationHitAt20Count": 25,
+            "candidateGenerationHitAt50Count": 25,
+            "top1CorrectCount": 25,
+            "evaluatedCount": 25,
+            "high": {
+              "correct": 25,
+              "predicted": 25
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "common_temple_shrine",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 7,
+            "candidateGenerationHitAt20Count": 7,
+            "candidateGenerationHitAt50Count": 7,
+            "top1CorrectCount": 7,
+            "evaluatedCount": 7,
+            "high": {
+              "correct": 7,
+              "predicted": 7
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "generic_park_nature",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 20,
+            "candidateGenerationHitAt20Count": 20,
+            "candidateGenerationHitAt50Count": 20,
+            "top1CorrectCount": 20,
+            "evaluatedCount": 20,
+            "high": {
+              "correct": 20,
+              "predicted": 20
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "jp_en_alias",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 15,
+            "candidateGenerationHitAt20Count": 15,
+            "candidateGenerationHitAt50Count": 15,
+            "top1CorrectCount": 15,
+            "evaluatedCount": 15,
+            "high": {
+              "correct": 15,
+              "predicted": 15
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "balanced_fill",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 138,
+            "candidateGenerationHitAt20Count": 138,
+            "candidateGenerationHitAt50Count": 138,
+            "top1CorrectCount": 136,
+            "evaluatedCount": 138,
+            "high": {
+              "correct": 135,
+              "predicted": 135
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 1,
+              "predicted": 1
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 0.9855072463768116,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        }
+      ],
+      "macroRates": {
+        "candidateGenerationRecallAt1": null,
+        "candidateGenerationRecallAt5": null,
+        "top1Accuracy": null,
+        "highPrecision": 1,
+        "mediumPrecision": 1,
+        "provisionalPrecision": 1
+      }
+    },
+    "missTaxonomy": {},
+    "pass": true
+  },
+  "finalBlind": {
+    "counts": {
+      "candidateGenerationHitAt1Count": 0,
+      "candidateGenerationHitAt5Count": 260,
+      "candidateGenerationHitAt20Count": 260,
+      "candidateGenerationHitAt50Count": 260,
+      "top1CorrectCount": 260,
+      "evaluatedCount": 260,
+      "high": {
+        "correct": 260,
+        "predicted": 260
+      },
+      "medium": {
+        "correct": 0,
+        "predicted": 0
+      },
+      "provisional": {
+        "correct": 0,
+        "predicted": 0
+      },
+      "hardConflictAutoMatch": 0
+    },
+    "micro": {
+      "candidateGenerationRecallAt1": 0,
+      "candidateGenerationRecallAt5": 1,
+      "candidateGenerationRecallAt20": 1,
+      "candidateGenerationRecallAt50": 1,
+      "top1Accuracy": 1,
+      "highPrecision": 1,
+      "mediumPrecision": 1,
+      "provisionalPrecision": 1
+    },
+    "macro": {
+      "perStratum": [
+        {
+          "stratum": "same_name_near_name_hard",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 35,
+            "candidateGenerationHitAt20Count": 35,
+            "candidateGenerationHitAt50Count": 35,
+            "top1CorrectCount": 35,
+            "evaluatedCount": 35,
+            "high": {
+              "correct": 35,
+              "predicted": 35
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "historical_alias_renamed",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 20,
+            "candidateGenerationHitAt20Count": 20,
+            "candidateGenerationHitAt50Count": 20,
+            "top1CorrectCount": 20,
+            "evaluatedCount": 20,
+            "high": {
+              "correct": 20,
+              "predicted": 20
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "area_district_non_point",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 0,
+            "candidateGenerationHitAt20Count": 0,
+            "candidateGenerationHitAt50Count": 0,
+            "top1CorrectCount": 0,
+            "evaluatedCount": 0,
+            "high": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": null,
+            "candidateGenerationRecallAt5": null,
+            "candidateGenerationRecallAt20": null,
+            "candidateGenerationRecallAt50": null,
+            "top1Accuracy": null,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "duplicate_invalid_non_poi",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 0,
+            "candidateGenerationHitAt20Count": 0,
+            "candidateGenerationHitAt50Count": 0,
+            "top1CorrectCount": 0,
+            "evaluatedCount": 0,
+            "high": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": null,
+            "candidateGenerationRecallAt5": null,
+            "candidateGenerationRecallAt20": null,
+            "candidateGenerationRecallAt50": null,
+            "top1Accuracy": null,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "wrong_municipality_prefecture_type_conflict_decoy",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 25,
+            "candidateGenerationHitAt20Count": 25,
+            "candidateGenerationHitAt50Count": 25,
+            "top1CorrectCount": 25,
+            "evaluatedCount": 25,
+            "high": {
+              "correct": 25,
+              "predicted": 25
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "generic_park_nature",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 20,
+            "candidateGenerationHitAt20Count": 20,
+            "candidateGenerationHitAt50Count": 20,
+            "top1CorrectCount": 20,
+            "evaluatedCount": 20,
+            "high": {
+              "correct": 20,
+              "predicted": 20
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "jp_en_alias",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 15,
+            "candidateGenerationHitAt20Count": 15,
+            "candidateGenerationHitAt50Count": 15,
+            "top1CorrectCount": 15,
+            "evaluatedCount": 15,
+            "high": {
+              "correct": 15,
+              "predicted": 15
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        },
+        {
+          "stratum": "balanced_fill",
+          "counts": {
+            "candidateGenerationHitAt1Count": 0,
+            "candidateGenerationHitAt5Count": 145,
+            "candidateGenerationHitAt20Count": 145,
+            "candidateGenerationHitAt50Count": 145,
+            "top1CorrectCount": 145,
+            "evaluatedCount": 145,
+            "high": {
+              "correct": 145,
+              "predicted": 145
+            },
+            "medium": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "provisional": {
+              "correct": 0,
+              "predicted": 0
+            },
+            "hardConflictAutoMatch": 0
+          },
+          "rates": {
+            "candidateGenerationRecallAt1": 0,
+            "candidateGenerationRecallAt5": 1,
+            "candidateGenerationRecallAt20": 1,
+            "candidateGenerationRecallAt50": 1,
+            "top1Accuracy": 1,
+            "highPrecision": 1,
+            "mediumPrecision": 1,
+            "provisionalPrecision": 1
+          }
+        }
+      ],
+      "macroRates": {
+        "candidateGenerationRecallAt1": null,
+        "candidateGenerationRecallAt5": null,
+        "top1Accuracy": null,
+        "highPrecision": 1,
+        "mediumPrecision": 1,
+        "provisionalPrecision": 1
+      }
+    },
+    "pass": true
+  },
+  "resolverFreeze": "FROZEN_BEFORE_BLIND_EVALUATION",
+  "deterministicRepeat": "PASS",
+  "gate": "PASS",
+  "candidateStrategies": [
+    "municipality_exact",
+    "municipality_fuzzy",
+    "alias",
+    "address_locality",
+    "historical_municipality",
+    "official_url_domain",
+    "category_assisted",
+    "access_context",
+    "external_authoritative_discovery"
+  ],
+  "note": "Benchmark expected targets are canonical Master Codes when source rows provide candidate_id plus master_code; this is general source-to-canonical accounting, not a candidateKey whitelist. Final blind rows are aggregate-only and were not used to tune rules."
+}

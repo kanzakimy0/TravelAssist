@@ -1,0 +1,4239 @@
+{
+  "task": "TASK-055-B",
+  "baseline": "3850ec91a94b96f61800a9e45ba7792d07bb1c44",
+  "scope": "B Personal Center; all matching tests/ files audited, including files with no npm alias; A-owned Planner/Engine excluded",
+  "counts": {
+    "suites": 62,
+    "supportFiles": 15,
+    "byMode": {
+      "non-local": 28,
+      "local": 15,
+      "excluded": 19
+    },
+    "byPrimaryLayer": {
+      "E2E candidate deferred to 9.6": 8,
+      "pure unit/domain": 16,
+      "contract/parser": 8,
+      "DB integration": 5,
+      "Auth/RLS integration": 9,
+      "API/server integration": 6,
+      "browser-boundary integration without full user journey": 10
+    }
+  },
+  "suites": [
+    {
+      "file": "tests/personal-center-followup.browser.mjs",
+      "sourceTask": "Personal Center navigation/follow-up",
+      "sourceWbs": ["5.1", "5.10", "5.20"],
+      "domain": "shared boundary",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Home/Trips/Companion/Account multi-page visual and date/pagination checks"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/task-010-b-global-logo-navigation.test.mjs",
+      "sourceTask": "Personal Center navigation/follow-up",
+      "sourceWbs": ["5.1", "5.10", "5.20"],
+      "domain": "shared boundary",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-010-b-global-logo-navigation.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 43,
+          "test": "\"product brands target home, both account variants retain GuardedLink\""
+        },
+        {
+          "line": 77,
+          "test": "\"Personal Home and Trips expose exact destinations without enabling fake features\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-016-client-bundle.mjs",
+      "sourceTask": "TASK-016-B",
+      "sourceWbs": ["8.2"],
+      "domain": "Profile",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": ["tests/task-016-client-bundle.mjs"]
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Built browser chunks and/or Auth browser dependency graph exclude server-only credentials and helpers"
+        }
+      ],
+      "environmentConstraints": [
+        "Existing production .next/static output; no Local database needed"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-016-user-profile.runtime.mjs",
+      "sourceTask": "TASK-016-B",
+      "sourceWbs": ["8.2"],
+      "domain": "Profile",
+      "layer": "DB integration",
+      "additionalLayers": ["API/server integration"],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-016-user-profile.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 92,
+          "test": "\"TASK-016 real Local schema, Drizzle parity, constraints and RLS isolation\""
+        },
+        {
+          "line": 139,
+          "test": "\"catalog matches Drizzle columns, PK/FK/cascade, checks, RLS and policies\""
+        },
+        {
+          "line": 233,
+          "test": "\"Auth fixture creation does not automatically create product profiles\""
+        },
+        {
+          "line": 245,
+          "test": "`User ${index === 0 ? \"A\" : \"B\"} can create minimal own profile/settings and multiple contacts`"
+        },
+        {
+          "line": 276,
+          "test": "`User ${index === 0 ? \"A\" : \"B\"}: ${table.name} own read/update, other read/update denied`"
+        },
+        {
+          "line": 357,
+          "test": "`Anon cannot SELECT/INSERT/UPDATE/DELETE ${table.name}`"
+        },
+        {
+          "line": 372,
+          "test": "\"Authenticated role without a subject sees no private rows\""
+        },
+        {
+          "line": 385,
+          "test": "\"Database audit triggers ignore client timestamp spoofing\""
+        },
+        {
+          "line": 445,
+          "test": "`${table.name}: live SQL and ORM check expressions reject boundary-invalid values`"
+        },
+        {
+          "line": 485,
+          "test": "\"Optional representations and display overrides remain extensible and independent\""
+        },
+        {
+          "line": 501,
+          "test": "\"User A can delete own contacts without affecting B\""
+        },
+        {
+          "line": 519,
+          "test": "\"PK uniqueness, required contact fields and nonexistent-auth FKs are enforced\""
+        },
+        {
+          "line": 562,
+          "test": "\"Auth deletion cascades all three domains without orphaning or touching another owner\""
+        },
+        {
+          "line": 594,
+          "test": "\"Real Drizzle transaction inserts/reads typed own rows under RLS and rolls back\""
+        },
+        {
+          "line": 636,
+          "test": "\"All synthetic users and product rows rolled back\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-016-user-profile.test.mjs",
+      "sourceTask": "TASK-016-B",
+      "sourceWbs": ["8.2"],
+      "domain": "Profile",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-016-user-profile.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 54,
+          "test": "\"TASK-016 maps only three private product tables and preserves progressive onboarding\""
+        },
+        {
+          "line": 104,
+          "test": "\"TASK-016 migration is additive, private, single-history and has no auth signup side effects\""
+        },
+        {
+          "line": 127,
+          "test": "\"Drizzle schema entry rejects non-server imports and existing UI remains disconnected\""
+        },
+        {
+          "line": 147,
+          "test": "\"browser leakage detector fails closed on private markers and absent build output\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-018-authentication.runtime.mjs",
+      "sourceTask": "TASK-018-B",
+      "sourceWbs": ["8.3"],
+      "domain": "Auth",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": ["API/server integration"],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-018-authentication.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 19,
+          "test": "\"TASK-018 actual Local Auth + production Next HTTP + real-session RLS\""
+        },
+        {
+          "line": 55,
+          "test": "\"Missing runtime config fails safely; ordinary pages still render\""
+        },
+        {
+          "line": 70,
+          "test": "\"Technical POST rejects cross-origin, missing Origin, malformed and oversized JSON\""
+        },
+        {
+          "line": 111,
+          "test": "\"Explicit signup and real Local email confirmation for user \" +\n          (i ? \"B\" : \"A\")"
+        },
+        {
+          "line": 163,
+          "test": "\"Email/password login succeeds; wrong password has normalized safe error\""
+        },
+        {
+          "line": 191,
+          "test": "\"Forged cookie user payload cannot impersonate user B; invalid JWT fails closed\""
+        },
+        {
+          "line": 214,
+          "test": "\"Expired cookie triggers real Proxy refresh, rotation, no-store and persistent next request\""
+        },
+        {
+          "line": 246,
+          "test": "\"Real A/B JWTs enforce TASK-016 own CRUD and bilateral cross-user denial on all tables\""
+        },
+        {
+          "line": 357,
+          "test": "\"Anonymous public-key client cannot SELECT/INSERT/UPDATE/DELETE private tables\""
+        },
+        {
+          "line": 386,
+          "test": "\"Unregistered email OTP explicitly offers signup and leaves Auth user count unchanged\""
+        },
+        {
+          "line": 398,
+          "test": "\"Registered email OTP signs in using a real Local capture code\""
+        },
+        {
+          "line": 432,
+          "test": "\"Fictional phone OTP creates one minimal user; repeat login never duplicates it\""
+        },
+        {
+          "line": 479,
+          "test": "\"Recovery email -> real PKCE callback -> validated update -> new password login\""
+        },
+        {
+          "line": 536,
+          "test": "\"Google/Apple real SDK PKCE initiation and hostile/missing callback contract\""
+        },
+        {
+          "line": 584,
+          "test": "\"Current-session logout clears SDK cookies and revokes refresh without logging out another session\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-018-authentication.test.mjs",
+      "sourceTask": "TASK-018-B",
+      "sourceWbs": ["8.3"],
+      "domain": "Auth",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-018-authentication.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 18,
+          "test": "\"TASK-018 password and E164 input policy is reusable without React\""
+        },
+        {
+          "line": 31,
+          "test": "\"TASK-018 returnTo preserves in-app intent and rejects layered open redirects\""
+        },
+        {
+          "line": 65,
+          "test": "\"TASK-018 core enforces password boundary before SDK and keeps normalized results token-free\""
+        },
+        {
+          "line": 107,
+          "test": "\"TASK-018 opposite OTP creation policies, exact verification types and local-only signout\""
+        },
+        {
+          "line": 148,
+          "test": "\"TASK-018 OAuth Google/Apple and PKCE callback use only explicit provider contract\""
+        },
+        {
+          "line": 200,
+          "test": "\"TASK-018 errors never serialize provider detail and distinguish server failure\""
+        },
+        {
+          "line": 212,
+          "test": "\"TASK-018 public config is lazy, denies private-key-shaped input, and never echoes it\""
+        },
+        {
+          "line": 241,
+          "test": "\"TASK-018 guarded helpers are server-only and trust getUser, never getSession\""
+        },
+        {
+          "line": 296,
+          "test": "\"TASK-018 SSR dependency is locked and core has no business persistence or admin authority\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-018-client-bundle.mjs",
+      "sourceTask": "TASK-018-B",
+      "sourceWbs": ["8.3"],
+      "domain": "Auth",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": ["tests/task-018-client-bundle.mjs"]
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Built browser chunks and/or Auth browser dependency graph exclude server-only credentials and helpers"
+        }
+      ],
+      "environmentConstraints": [
+        "Existing production .next/static output; no Local database needed"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-042-preference-schema.runtime.mjs",
+      "sourceTask": "TASK-042-B",
+      "sourceWbs": ["5.11"],
+      "domain": "Preference",
+      "layer": "DB integration",
+      "additionalLayers": ["API/server integration"],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preferences:db"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-042-preference-schema.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 56,
+          "test": "\"TASK-042 real Local Auth, SQL validation, Drizzle and RLS\""
+        },
+        {
+          "line": 67,
+          "test": "\"table, exact Drizzle columns/checks/FK/policies and invoker functions\""
+        },
+        {
+          "line": 166,
+          "test": "\"two real Auth users insert/read/update only their own roots\""
+        },
+        {
+          "line": 202,
+          "test": "\"cross-user select/update/upsert/insert fail; owner and anon cannot delete\""
+        },
+        {
+          "line": 266,
+          "test": "\"DB accepts independent valid vector \" + i"
+        },
+        {
+          "line": 278,
+          "test": "\"DB rejects independent invalid vector \" + i"
+        },
+        {
+          "line": 290,
+          "test": "\"DB rejects malformed JSON text and oversized payload independently\""
+        },
+        {
+          "line": 308,
+          "test": "\"revision guard, immutable owner, server audit timestamps and reset\""
+        },
+        {
+          "line": 365,
+          "test": "\"Drizzle real query under owner RLS and mirrored checks\""
+        },
+        {
+          "line": 403,
+          "test": "\"real Auth deletion cascades A, preserves B, and fixtures are removed\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-042-preference-schema.test.mjs",
+      "sourceTask": "TASK-042-B",
+      "sourceWbs": ["5.11"],
+      "domain": "Preference",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preferences"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-042-preference-schema.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 22,
+          "test": "\"TASK-042 exact frozen registry and hard/soft/UI metadata\""
+        },
+        {
+          "line": 67,
+          "test": "\"TASK-042 valid vector \" + i"
+        },
+        {
+          "line": 71,
+          "test": "\"TASK-042 rejected vector \" + i"
+        },
+        {
+          "line": 74,
+          "test": "\"TASK-042 sparse values preserve false/neutral without injecting defaults\""
+        },
+        {
+          "line": 85,
+          "test": "\"TASK-042 size, non-JSON objects, getters, hidden/symbol keys and cycles fail closed\""
+        },
+        {
+          "line": 142,
+          "test": "\"TASK-042 set/unset, explicit false, detached results and whole-map replacement\""
+        },
+        {
+          "line": 184,
+          "test": "\"TASK-042 strict patch parser rejects ambiguous/duplicate/unknown input\""
+        },
+        {
+          "line": 204,
+          "test": "\"TASK-042 patches reparse existing input and final cross-field interests\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-044-companion-schema.runtime.mjs",
+      "sourceTask": "TASK-044-B",
+      "sourceWbs": ["5.12"],
+      "domain": "Companion",
+      "layer": "DB integration",
+      "additionalLayers": ["API/server integration"],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:companions:db"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-044-companion-schema.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 77,
+          "test": "\"TASK-044 real Local Auth / DB / RLS acceptance\""
+        },
+        {
+          "line": 90,
+          "test": "\"exact tables, Drizzle columns/constraints/indexes, RLS and invoker functions\""
+        },
+        {
+          "line": 201,
+          "test": "\"two real Auth owners CRUD; defaults never infer needs; virtual owner groups\""
+        },
+        {
+          "line": 303,
+          "test": "name +\n            \" owner \" +\n            i +\n            \" cannot access/spoof other owner; anon CRUD denied\""
+        },
+        {
+          "line": 374,
+          "test": "name +\n          \" initial/update revision, immutable identity and DB audit guards\""
+        },
+        {
+          "line": 445,
+          "test": "\"real SQL/TS valid profile \" + name"
+        },
+        {
+          "line": 460,
+          "test": "\"real SQL/TS invalid profile \" + name"
+        },
+        {
+          "line": 474,
+          "test": "\"8191-byte legal serialization normalizes; SQL NULL and oversized JSON rejected\""
+        },
+        {
+          "line": 495,
+          "test": "\"DOB/fallback XOR, finite date bounds, UTC future guard and stored age boundaries\""
+        },
+        {
+          "line": 578,
+          "test": "\"scalar bounds, stable optional metadata and storage-only avatar path\""
+        },
+        {
+          "line": 655,
+          "test": "\"same-owner composite FKs survive trusted SQL bypass; membership uniqueness and audit\""
+        },
+        {
+          "line": 768,
+          "test": "\"Drizzle real roundtrip, Companion and Group delete cascade only their memberships\""
+        },
+        {
+          "line": 872,
+          "test": "\"Auth A deletion cascades all A rows, preserves every B table\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-044-companion-schema.test.mjs",
+      "sourceTask": "TASK-044-B",
+      "sourceWbs": ["5.12"],
+      "domain": "Companion",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:companions"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-044-companion-schema.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 32,
+          "test": "\"Companion profile accepts \" + name"
+        },
+        {
+          "line": 36,
+          "test": "\"Companion profile rejects \" + name"
+        },
+        {
+          "line": 40,
+          "test": "\"Planning age \" + birth + \" at \" + reference"
+        },
+        {
+          "line": 44,
+          "test": "\"Strict calendar \" + String(value)"
+        },
+        {
+          "line": 48,
+          "test": "\"future date rejected; century leap calendar; timezone independent\""
+        },
+        {
+          "line": 76,
+          "test": "\"strict age source XOR; identity never supplies needs\""
+        },
+        {
+          "line": 107,
+          "test": "\"frozen registry and metadata exactly match the design\""
+        },
+        {
+          "line": 147,
+          "test": "\"defensive independent arrays, no invoking getters or accepting exotic JS\""
+        },
+        {
+          "line": 201,
+          "test": "\"real generated types contain the three canonical tables and composite relationships\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-045-preference-api.runtime.mjs",
+      "sourceTask": "TASK-045-B",
+      "sourceWbs": ["5.16"],
+      "domain": "Preference",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preference-api:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-045-preference-api.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 24,
+          "test": "\"TASK-045 real Local Auth/API/UI acceptance\""
+        },
+        {
+          "line": 120,
+          "test": "\"anon and malformed/invalid explicit Bearer rejected, including valid Cookie fallback\""
+        },
+        {
+          "line": 144,
+          "test": "\"GET missing rev 0 and missing Reset do not create rows; both auth paths\""
+        },
+        {
+          "line": 185,
+          "test": "\"Cookie mutations reject foreign/missing Origin and non-JSON; explicit Bearer owns identity\""
+        },
+        {
+          "line": 214,
+          "test": "\"first Cookie PATCH 0→1; sequential Bearer PATCH; stale PATCH and owner injection rejected\""
+        },
+        {
+          "line": 258,
+          "test": "\"concurrent first writes have one winner and one 409; existing same-revision race too\""
+        },
+        {
+          "line": 275,
+          "test": "\"malformed/invalid Preference, oversized 80KiB and wrong revisions fail without writes\""
+        },
+        {
+          "line": 307,
+          "test": "\"whole map replacement and explicit unset preserve unrelated fields\""
+        },
+        {
+          "line": 348,
+          "test": "\"real Reset, stale Reset, already-empty Reset and second Cookie session restore\""
+        },
+        {
+          "line": 394,
+          "test": "\"real RLS and SQL trigger/validator still protect the API table\""
+        },
+        {
+          "line": 490,
+          "test": "\"UI explicit Save survives reload and a second real Cookie session\""
+        },
+        {
+          "line": 523,
+          "test": "\"UI stale session shows 409, preserves draft and requires explicit server reload\""
+        },
+        {
+          "line": 565,
+          "test": "\"network failure retains draft, Cancel restores saved and dirty navigation guard remains\""
+        },
+        {
+          "line": 612,
+          "test": "\"real overview Reset reloads empty; guest and empty second account never write defaults\""
+        },
+        {
+          "line": 701,
+          "test": "\"all category routes load canonical controls, mobile layout and no JS errors\""
+        },
+        {
+          "line": 776,
+          "test": "\"category adapters persist explicit neutral/false/style and whole interest maps\""
+        },
+        {
+          "line": 855,
+          "test": "\"real Auth deletion cascades A preference and preserves B; fixture cleanup\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-045-preference-api.test.mjs",
+      "sourceTask": "TASK-045-B",
+      "sourceWbs": ["5.16"],
+      "domain": "Preference",
+      "layer": "API/server integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preference-api"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-045-preference-api.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 31,
+          "test": "\"missing resource is detached empty revision zero\""
+        },
+        {
+          "line": 50,
+          "test": "\"strict request envelope \" + JSON.stringify(value)"
+        },
+        {
+          "line": 64,
+          "test": "\"reject revision \" + String(expectedRevision)"
+        },
+        {
+          "line": 75,
+          "test": "\"canonical patch and reset request parsers\""
+        },
+        {
+          "line": 97,
+          "test": "\"legacy key rejected \" + key"
+        },
+        {
+          "line": 118,
+          "test": "\"invalid resource \" + JSON.stringify(invalid)"
+        },
+        {
+          "line": 122,
+          "test": "\"resource parsing is independent and accepts committed DB timestamps\""
+        },
+        {
+          "line": 138,
+          "test": "\"page field mappings cover exactly the 23 existing canonical keys\""
+        },
+        {
+          "line": 152,
+          "test": "\"missing, false, neutral and mid style remain distinct through roundtrip\""
+        },
+        {
+          "line": 172,
+          "test": "\"map edit preserves untouched map entries, API patch replaces whole values\""
+        },
+        {
+          "line": 199,
+          "test": "\"empty overview has no mock traits and reset remains empty\""
+        },
+        {
+          "line": 213,
+          "test": "\"overview derives from canonical interests and explicit style; no key is invented\""
+        },
+        {
+          "line": 234,
+          "test": "\"HTTP parser enforces actual streamed bytes, JSON media type and UTF-8\""
+        },
+        {
+          "line": 284,
+          "test": "\"client uses private same-origin fetch and preserves draft on network/409 failure\""
+        },
+        {
+          "line": 325,
+          "test": "\"production preference surfaces reuse accepted parsers/Auth and expose no defaults/legacy persistence\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-046-preference-contract.runtime.mjs",
+      "sourceTask": "TASK-046-B / TASK-051-B",
+      "sourceWbs": ["5.14"],
+      "domain": "Preference",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preference-contract:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-046-preference-contract.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 18,
+          "test": "\"TASK-046 real Local public contract/Auth/API/browser acceptance\""
+        },
+        {
+          "line": 198,
+          "test": "\"public Cookie/Bearer missing reads and missing reset do not create rows\""
+        },
+        {
+          "line": 218,
+          "test": "\"anon and invalid explicit Bearer stay failures without Cookie fallback\""
+        },
+        {
+          "line": 244,
+          "test": "\"unchanged PATCH then public read preserves values/time/revision and isolates equal revisions\""
+        },
+        {
+          "line": 274,
+          "test": "\"R1 business Cookie/Bearer query is isolated, owner/body cannot switch account and read never writes\""
+        },
+        {
+          "line": 300,
+          "test": "\"R1 business invalid Bearer cannot fall back to Cookie; explicit valid Bearer owns identity\""
+        },
+        {
+          "line": 319,
+          "test": "\"R1 direct external preference GET still rejects all query parameters\""
+        },
+        {
+          "line": 345,
+          "test": "\"R1 business request cancellation remains a distinct failure\""
+        },
+        {
+          "line": 356,
+          "test": "\"real expired Cookie refresh forwarded by server finalizer and usable in next request\""
+        },
+        {
+          "line": 371,
+          "test": "\"stale PATCH/reset remain 409 and reset reads positive-revision empty\""
+        },
+        {
+          "line": 413,
+          "test": "\"real A-like browser GET facade uses two Cookie accounts without cache or writes\""
+        },
+        {
+          "line": 447,
+          "test": "\"real browser cancellation/network rejection are distinct failures, never empty success\""
+        },
+        {
+          "line": 480,
+          "test": "\"Auth delete cascade and complete fixture cleanup\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-046-preference-contract.test.mjs",
+      "sourceTask": "TASK-046-B / TASK-051-B",
+      "sourceWbs": ["5.14"],
+      "domain": "Preference",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preference-contract"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-046-preference-contract.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 34,
+          "test": "\"single canonical implementation and compatibility references, mechanical extraction\""
+        },
+        {
+          "line": 68,
+          "test": "\"public projection preserves independent 5.11 valid vector \" + i"
+        },
+        {
+          "line": 80,
+          "test": "\"public projection rejects independent 5.11 invalid vector \" + i"
+        },
+        {
+          "line": 86,
+          "test": "\"missing and persisted reset-empty are distinct and exact\""
+        },
+        {
+          "line": 109,
+          "test": "\"all interests/details with absent parent remain detached and deeply frozen\""
+        },
+        {
+          "line": 136,
+          "test": "\"strengths derive from registry without exposing field parsers or UI tiers\""
+        },
+        {
+          "line": 172,
+          "test": "\"reject invalid source revision \" + String(rev)"
+        },
+        {
+          "line": 188,
+          "test": "\"reject malformed instant \" + instant"
+        },
+        {
+          "line": 197,
+          "test": "\"preserve valid ISO instant \" + instant"
+        },
+        {
+          "line": 203,
+          "test": "\"exact envelope, descriptors and unsupported versions fail safely\""
+        },
+        {
+          "line": 296,
+          "test": "\"GET reader failure remains failure: \" + name"
+        },
+        {
+          "line": 303,
+          "test": "\"GET only, same-origin/no-store, no owner or cross-account cache\""
+        },
+        {
+          "line": 327,
+          "test": "\"cancellation before fetch, during fetch and during body decoding remains cancellation\""
+        },
+        {
+          "line": 358,
+          "test": "\"server finalizer forwards refresh/deletion cookies and private headers on success or failure\""
+        },
+        {
+          "line": 394,
+          "test": "\"public runtime exports are explicit and read-only\""
+        },
+        {
+          "line": 417,
+          "test": "\"complete transitive graph stays pure and A-like consumer bundles for browser\""
+        },
+        {
+          "line": 473,
+          "test": "\"type system rejects 23→43 assignment and nested mutation without modifying A\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-047-companion-api.runtime.mjs",
+      "sourceTask": "TASK-047-B",
+      "sourceWbs": ["5.17"],
+      "domain": "Companion",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:companion-api:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-047-companion-api.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 49,
+          "test": "\"TASK-047 real Local Auth/API/RLS/CAS/browser acceptance\""
+        },
+        {
+          "line": 163,
+          "test": "\"real Cookie/Bearer auth, anon denial and invalid Bearer never falls back\""
+        },
+        {
+          "line": 204,
+          "test": "\"HTTP strict envelopes, unsafe fields, IDs, revisions, CSRF and bounded JSON\""
+        },
+        {
+          "line": 267,
+          "test": "\"Companion create/list/read/update with canonical DB timestamps and revision increments\""
+        },
+        {
+          "line": 295,
+          "test": "\"cross-user Companion/Group IDs are indistinguishable from missing resources\""
+        },
+        {
+          "line": 355,
+          "test": "\"Companion real concurrent CAS has exactly one commit; stale update/delete zero writes\""
+        },
+        {
+          "line": 383,
+          "test": "\"groups preserve includesOwner and order; duplicate/foreign/max members reject with zero writes\""
+        },
+        {
+          "line": 447,
+          "test": "\"group CAS race returns one snapshot winner; stale update/delete preserve complete aggregate\""
+        },
+        {
+          "line": 477,
+          "test": "\"real SQL failure during membership insertion rolls back both create and replacement\""
+        },
+        {
+          "line": 519,
+          "test": "\"direct real RLS denies foreign and anon CRUD; RPC security is invoker\""
+        },
+        {
+          "line": 662,
+          "test": "\"count boundaries and concurrent create cannot exceed the per-owner caps\""
+        },
+        {
+          "line": 737,
+          "test": "\"hard delete cascades memberships, advances affected group CAS, and group delete preserves masters\""
+        },
+        {
+          "line": 880,
+          "test": "\"browser \" +\n          width +\n          \"x\" +\n          height +\n          \" load/create/edit/reload/group order/owner/delete\""
+        },
+        {
+          "line": 1079,
+          "test": "\"browser dirty guard, companion conflict preserves draft and explicit reload recovery\""
+        },
+        {
+          "line": 1163,
+          "test": "\"browser group conflict preserves full draft and reloads canonical ordered membership\""
+        },
+        {
+          "line": 1209,
+          "test": "\"browser API loading/error/retry and unauthenticated navigation\""
+        },
+        {
+          "line": 1249,
+          "test": "\"browser diagnostics: zero JS/console errors and zero unexpected mutations\""
+        },
+        {
+          "line": 1259,
+          "test": "\"Auth user deletion cascades owned rows while other account remains\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-047-companion-api.test.mjs",
+      "sourceTask": "TASK-047-B",
+      "sourceWbs": ["5.17"],
+      "domain": "Companion",
+      "layer": "API/server integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:companion-api"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-047-companion-api.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 53,
+          "test": "\"domain -> DB -> canonical round trip excludes owner and DB-only keys\""
+        },
+        {
+          "line": 84,
+          "test": "\"reject malformed/unsafe companion \" + Object.keys(patch).join(\",\")"
+        },
+        {
+          "line": 91,
+          "test": "\"DOB uses sole domain age rules; no age or gender inference\""
+        },
+        {
+          "line": 109,
+          "test": "\"all functional codes map round trip and sensitive UI notes are excluded\""
+        },
+        {
+          "line": 136,
+          "test": "\"group full ordered snapshot round trip including virtual owner\""
+        },
+        {
+          "line": 168,
+          "test": "\"reject invalid or excessive group members \" + members.length"
+        },
+        {
+          "line": 177,
+          "test": "\"reject duplicate IDs after UUID normalization\""
+        },
+        {
+          "line": 187,
+          "test": "\"group limit boundary and strict keys\""
+        },
+        {
+          "line": 218,
+          "test": "\"If-Match rejects \" + value"
+        },
+        {
+          "line": 221,
+          "test": "\"If-Match valid positive DB integer\""
+        },
+        {
+          "line": 225,
+          "test": "\"transaction limits match domain source and invoker RLS remains mandatory\""
+        },
+        {
+          "line": 241,
+          "test": "\"all Companion routes deny anon without configuring credentials\""
+        },
+        {
+          "line": 254,
+          "test": "\"client sends If-Match, never retries 409, and leaves caller draft untouched\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-048-trip-persistence-model.runtime.mjs",
+      "sourceTask": "TASK-048-B",
+      "sourceWbs": ["5.18"],
+      "domain": "Trip Library",
+      "layer": "DB integration",
+      "additionalLayers": ["API/server integration"],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:trip-persistence:db"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-048-trip-persistence-model.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 51,
+          "test": "\"TASK-048 real Local Auth / aggregate / RLS / revision / history acceptance\""
+        },
+        {
+          "line": 63,
+          "test": "\"Drizzle mirrors real columns, constraints, indexes, RLS and a single owner SELECT policy\""
+        },
+        {
+          "line": 198,
+          "test": "\"real Auth A/B owner reads and cross-owner filters return no rows; anon and no credentials denied\""
+        },
+        {
+          "line": 266,
+          "test": "\"Drizzle real roundtrip delegates to canonical parser and keeps non-UUID ID / A revisions\""
+        },
+        {
+          "line": 294,
+          "test": "\"owner-scoped creation and canonical uniqueness include saved/history; multiple null Trip IDs allowed\""
+        },
+        {
+          "line": 335,
+          "test": "`real lifecycle ${from} -> ${to}`"
+        },
+        {
+          "line": 372,
+          "test": "\"storage revision insert/stale/gaps/NULL guards and a real simultaneous update race\""
+        },
+        {
+          "line": 415,
+          "test": "\"immutable IDs / owner / creation preference, timestamp ownership and atomic rejected aggregate\""
+        },
+        {
+          "line": 455,
+          "test": "\"history rejects every UPDATE including no-op, allows hard delete and keeps other records\""
+        },
+        {
+          "line": 492,
+          "test": "\"long-term Preference changes never rewrite snapshots; trip patches never write back\""
+        },
+        {
+          "line": 534,
+          "test": "\"Companion master deletion and edits never rewrite detached party; no source FK\""
+        },
+        {
+          "line": 585,
+          "test": "`SQL ${column} rejects wrong envelope/version/type`"
+        },
+        {
+          "line": 612,
+          "test": "\"SQL lifecycle nullability, canonical ID match and finite history cannot be bypassed\""
+        },
+        {
+          "line": 660,
+          "test": "\"SQL party enforces minimized shape, strict dates, count, unique ordered UUID traces\""
+        },
+        {
+          "line": 716,
+          "test": "\"SQL/TS caps and serialized UTF-8 fixture sizes agree at the exact canonical plan boundary\""
+        },
+        {
+          "line": 797,
+          "test": "\"Auth deletion cascades only A's aggregate; B records survive with their original contents\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-048-trip-persistence-model.test.mjs",
+      "sourceTask": "TASK-048-B",
+      "sourceWbs": ["5.18"],
+      "domain": "Trip Library",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:trip-persistence"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-048-trip-persistence-model.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 48,
+          "test": "`canonical detached ${state} roundtrip`"
+        },
+        {
+          "line": 71,
+          "test": "\"minimal canonical facts and a non-UUID Trip ID remain separate from B UUID and revision\""
+        },
+        {
+          "line": 131,
+          "test": "`fail closed: ${name}`"
+        },
+        {
+          "line": 147,
+          "test": "\"saved needs plan/id and history needs a finite freeze instant\""
+        },
+        {
+          "line": 164,
+          "test": "`lifecycle ${from} -> ${to}`"
+        },
+        {
+          "line": 184,
+          "test": "\"updates require exactly one storage revision; canonical revisions never substitute\""
+        },
+        {
+          "line": 211,
+          "test": "`immutable creation field: ${key}`"
+        },
+        {
+          "line": 230,
+          "test": "\"missing preference, explicit false/neutral, set/unset and no writeback\""
+        },
+        {
+          "line": 271,
+          "test": "`old PR #221 key rejected: ${key}`"
+        },
+        {
+          "line": 280,
+          "test": "\"ambiguous patch, unknown unset and invalid effective preference fail closed\""
+        },
+        {
+          "line": 299,
+          "test": "\"party self flag, order, duplicates and maximum follow Companion v1\""
+        },
+        {
+          "line": 343,
+          "test": "`party never accepts privacy field: ${key}`"
+        },
+        {
+          "line": 351,
+          "test": "\"departure-local age reference, explicit fallback date, leap birthday and detached minimized capture\""
+        },
+        {
+          "line": 394,
+          "test": "\"copy history demands both new identities and captures current creation preference explicitly\""
+        },
+        {
+          "line": 424,
+          "test": "\"strict JSON boundary rejects getters, hidden keys, toJSON, symbols, sparse arrays and cycles without execution\""
+        },
+        {
+          "line": 472,
+          "test": "\"payload caps mirror SQL and reuse existing Preference/Companion constants\""
+        },
+        {
+          "line": 505,
+          "test": "`bounded UTF-8 input rejects oversized ${key} before semantic delegation`"
+        },
+        {
+          "line": 517,
+          "test": "\"server schema rejects browser import and B model has no server/client I/O\""
+        },
+        {
+          "line": 544,
+          "test": "\"canonical plan at exact UTF-8 cap roundtrips; one extra byte fails\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-049-trip-library-api.runtime.mjs",
+      "sourceTask": "TASK-049-B",
+      "sourceWbs": ["5.19"],
+      "domain": "Trip Library",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:trip-library-api:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-049-trip-library-api.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 63,
+          "test": "\"TASK-049 real Local Auth/DB/HTTP/CAS/browser contract acceptance\""
+        },
+        {
+          "line": 200,
+          "test": "\"Bearer/Cookie verified; anonymous and malformed/invalid Bearer fail without Cookie fallback\""
+        },
+        {
+          "line": 227,
+          "test": "\"Cookie mutations require exact trusted Origin\""
+        },
+        {
+          "line": 237,
+          "test": "\"server captures current Preference and ordered owner Companions with minimized privacy\""
+        },
+        {
+          "line": 299,
+          "test": "\"Bearer create with missing Preference uses empty revision zero and distinct B identity\""
+        },
+        {
+          "line": 310,
+          "test": "\"strict client owner/snapshot fields rejected before write\""
+        },
+        {
+          "line": 337,
+          "test": "\"canonical draft/progress and selection errors have no partial insert\""
+        },
+        {
+          "line": 359,
+          "test": "\"create idempotency compatible retries and incompatible key conflict, also concurrent first create\""
+        },
+        {
+          "line": 388,
+          "test": "\"owner-scoped creation key may independently exist for another owner\""
+        },
+        {
+          "line": 397,
+          "test": "\"owner list isolation and identical 404 for cross-owner or missing id on every operation\""
+        },
+        {
+          "line": 424,
+          "test": "\"GET exact resource/ETag and query defaults remain isolated from older APIs\""
+        },
+        {
+          "line": 456,
+          "test": "\"Draft update snapshots current selected Companions but never replaces creation Preference\""
+        },
+        {
+          "line": 494,
+          "test": "\"original create retry remains idempotent after draft edit and source Preference/Companion changes\""
+        },
+        {
+          "line": 503,
+          "test": "\"all non-create writes require exact If-Match; no weak, wildcard, malformed or absent tags\""
+        },
+        {
+          "line": 538,
+          "test": "\"two concurrent Draft CAS updates produce exactly one success and one 409\""
+        },
+        {
+          "line": 571,
+          "test": "\"Draft to Saved keeps canonical non-UUID string ID and independent revisions\""
+        },
+        {
+          "line": 589,
+          "test": "\"Saved refresh uses CAS; established canonical ID cannot change\""
+        },
+        {
+          "line": 628,
+          "test": "\"owner canonical ID uniqueness prevents a second aggregate claiming the same A trip\""
+        },
+        {
+          "line": 646,
+          "test": "\"summary excludes multi-MiB plans and all invented reservation/favorite fields\""
+        },
+        {
+          "line": 671,
+          "test": "\"valid exact 4MiB JSONB plan succeeds over real HTTP with ETag\""
+        },
+        {
+          "line": 687,
+          "test": "\"over storage/HTTP caps and semantic-invalid payloads leave full aggregate unchanged\""
+        },
+        {
+          "line": 732,
+          "test": "\"history/delete require empty body and invalid transitions do not mutate\""
+        },
+        {
+          "line": 755,
+          "test": "\"Saved to History freezes at DB-owned timestamp, no date-driven archival\""
+        },
+        {
+          "line": 779,
+          "test": "\"History rejects every API mutation and direct privileged no-op update\""
+        },
+        {
+          "line": 801,
+          "test": "\"source Companion deletion and long-term changes never rewrite History or create retry\""
+        },
+        {
+          "line": 820,
+          "test": "\"History copy creates new draft identity and current Preference, preserving original context\""
+        },
+        {
+          "line": 851,
+          "test": "\"copy retries ignore subsequent Preference edits, conflict with create intent or wrong source\""
+        },
+        {
+          "line": 897,
+          "test": "\"concurrent copy with one key returns one new identity and existing retry\""
+        },
+        {
+          "line": 925,
+          "test": "\"stable owner keyset pagination preserves microsecond ordering without duplicates/omissions\""
+        },
+        {
+          "line": 951,
+          "test": "\"timestamp ties and sub-millisecond pairs preserve all rows (controlled Local fixture)\""
+        },
+        {
+          "line": 980,
+          "test": "\"direct authenticated/anonymous INSERT UPDATE DELETE upsert stay denied; own SELECT RLS remains\""
+        },
+        {
+          "line": 1035,
+          "test": "\"additive intent metadata is immutable and legacy NULL cannot falsely claim retry equivalence\""
+        },
+        {
+          "line": 1072,
+          "test": "\"Draft delete is CAS protected and returns 204; stale revision cannot delete\""
+        },
+        {
+          "line": 1080,
+          "test": "\"production gateway has no service-role path; server ran with service credentials removed\""
+        },
+        {
+          "line": 1096,
+          "test": "\"real browser Cookie fetch + public A save client + reload + read/history/copy/delete\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-049-trip-library-api.test.mjs",
+      "sourceTask": "TASK-049-B",
+      "sourceWbs": ["5.19"],
+      "domain": "Trip Library",
+      "layer": "API/server integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:trip-library-api"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-049-trip-library-api.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 41,
+          "test": "\"create delegates canonical content and normalizes absent patch/reference date\""
+        },
+        {
+          "line": 69,
+          "test": "\"create rejects client \" + key"
+        },
+        {
+          "line": 79,
+          "test": "\"create requires \" + field"
+        },
+        {
+          "line": 85,
+          "test": "\"reject invalid create input \" + JSON.stringify(value)"
+        },
+        {
+          "line": 88,
+          "test": "\"no hidden/accessor top-level fields execute\""
+        },
+        {
+          "line": 100,
+          "test": "\"planned/undecided dates require explicit strict date; exact departure wins\""
+        },
+        {
+          "line": 117,
+          "test": "\"party bounds, duplicates after UUID normalization, unknown snapshot fields\""
+        },
+        {
+          "line": 132,
+          "test": "\"canonical invalid draft and progress have stable errors\""
+        },
+        {
+          "line": 140,
+          "test": "\"patch remains accepted sparse set/unset semantics\""
+        },
+        {
+          "line": 155,
+          "test": "\"PUT full replacement has exactly four fields and no creation identity\""
+        },
+        {
+          "line": 180,
+          "test": "\"If-Match rejects \" + JSON.stringify(value)"
+        },
+        {
+          "line": 183,
+          "test": "\"If-Match accepts exact positive int32\""
+        },
+        {
+          "line": 187,
+          "test": "\"save delegates exact A plan without inventing canonical IDs or revisions\""
+        },
+        {
+          "line": 209,
+          "test": "\"save rejects \" + key"
+        },
+        {
+          "line": 218,
+          "test": "\"copy strict versioned new key only\""
+        },
+        {
+          "line": 247,
+          "test": "\"list rejects \" + query.slice(0, 65)"
+        },
+        {
+          "line": 250,
+          "test": "\"strict opaque cursor roundtrip retains microseconds and ordering tuple\""
+        },
+        {
+          "line": 277,
+          "test": "\"original intent hashing ignores object key order but keeps ordered companions and copy source\""
+        },
+        {
+          "line": 299,
+          "test": "\"HTTP cap is independent of JSONB storage size, exact four MiB valid plan passes\""
+        },
+        {
+          "line": 316,
+          "test": "\"bounded streaming reader keeps existing 80KiB default and explicit larger opt-in\""
+        },
+        {
+          "line": 349,
+          "test": "\"chunked cap works without trusting Content-Length\""
+        },
+        {
+          "line": 375,
+          "test": "\"A-like browser consumer bundles without server or B-private imports\""
+        },
+        {
+          "line": 400,
+          "test": "\"server repository import is poisoned outside server conditions\""
+        },
+        {
+          "line": 418,
+          "test": "\"public save transport sends exact CAS and extracts safe result, preserving failures\""
+        },
+        {
+          "line": 471,
+          "test": "\"new routes delegate only to B server; unchanged UI and canonical types are not imported\""
+        },
+        {
+          "line": 490,
+          "test": "\"browser summary parser rejects hidden full plans, fabricated fields and oversized pages\""
+        },
+        {
+          "line": 518,
+          "test": "\"B read client validates page DTO and sends only whitelisted query choices\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-050-profile-api.runtime.mjs",
+      "sourceTask": "TASK-050-B",
+      "sourceWbs": ["5.15"],
+      "domain": "Profile",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:profile-api:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-050-profile-api.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 34,
+          "test": "\"TASK-050 real Local Supabase/Auth/RLS/Profile HTTP acceptance\""
+        },
+        {
+          "line": 162,
+          "test": "\"anonymous reads and mutations denied on all six routes\""
+        },
+        {
+          "line": 179,
+          "test": "\"first GET is nullable, read-only, and verified Auth projection ignores metadata\""
+        },
+        {
+          "line": 205,
+          "test": "\"cookie GET and same-origin save work; wrong/missing Origin denied\""
+        },
+        {
+          "line": 231,
+          "test": "\"explicit malformed/invalid Bearer never falls back to valid cookie; valid Bearer wins\""
+        },
+        {
+          "line": 265,
+          "test": "\"owner spoof via root/nested/query/path rejected\""
+        },
+        {
+          "line": 288,
+          "test": "\"actual SQL writes execute as authenticated with exact verified auth.uid\""
+        },
+        {
+          "line": 314,
+          "test": "\"profile/settings round-trip, independent defaults and DB-owned audits\""
+        },
+        {
+          "line": 334,
+          "test": "\"missing unchanged, null clears all nullable fields; empty save rejected\""
+        },
+        {
+          "line": 356,
+          "test": "\"all invalid/future/locale/timezone/currency/units/unknown payloads fail closed without writes\""
+        },
+        {
+          "line": 366,
+          "test": "\"Auth contact readonly; unverified Auth state comes from fresh Auth user\""
+        },
+        {
+          "line": 392,
+          "test": "\"profile/settings pair rolls back after second table SQL failure\""
+        },
+        {
+          "line": 425,
+          "test": "\"concurrent disjoint PATCH fields preserve each other without adding revision/CAS\""
+        },
+        {
+          "line": 451,
+          "test": "\"existing owner-only RLS through real user clients and anon denies direct cross-user writes\""
+        },
+        {
+          "line": 482,
+          "test": "\"emergency contact create/list and stable ordering with equal created_at\""
+        },
+        {
+          "line": 535,
+          "test": "\"contact patch missing/null semantics and audit preservation\""
+        },
+        {
+          "line": 554,
+          "test": "\"invalid contact required/null/email/E164/length payloads reject without writes\""
+        },
+        {
+          "line": 581,
+          "test": "\"contact UUID rejected before DB SQL; cross-user/nonexistent mutation same 404\""
+        },
+        {
+          "line": 642,
+          "test": "\"cookie Origin protection also guards contact POST/PATCH/DELETE; query/body spoof denied\""
+        },
+        {
+          "line": 694,
+          "test": "\"bounded JSON rejects wrong content type, malformed JSON, excess and invalid UTF8\""
+        },
+        {
+          "line": 717,
+          "test": "\"real browser cookies persist profile and contact operations; unauthenticated browser denied\""
+        },
+        {
+          "line": 782,
+          "test": "\"deleting one contact preserves populated Profile/Preference/Companion/Trip and Auth\""
+        },
+        {
+          "line": 855,
+          "test": "\"production client chunks exclude server DB/Auth implementation\""
+        },
+        {
+          "line": 861,
+          "test": "\"backend unavailable returns sanitized 503; malformed contact id still rejects before DB lookup\""
+        },
+        {
+          "line": 894,
+          "test": "\"clean fixture Auth user deletion exercises existing FK cascades only\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-050-profile-api.test.mjs",
+      "sourceTask": "TASK-050-B",
+      "sourceWbs": ["5.15"],
+      "domain": "Profile",
+      "layer": "API/server integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:profile-api"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-050-profile-api.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 29,
+          "test": "`TASK-050 invalid profile/settings case ${i + 1}`"
+        },
+        {
+          "line": 32,
+          "test": "`TASK-050 invalid contact case ${i + 1}`"
+        },
+        {
+          "line": 34,
+          "test": "\"TASK-050 complete profile round-trip and explicit missing/null semantics\""
+        },
+        {
+          "line": 48,
+          "test": "\"TASK-050 profile normalizes text/locale and bounds Unicode code points\""
+        },
+        {
+          "line": 62,
+          "test": "\"TASK-050 birth date uses explicit UTC date and real leap days\""
+        },
+        {
+          "line": 72,
+          "test": "\"TASK-050 no getters/prototypes/symbols/non-enumerable keys accepted\""
+        },
+        {
+          "line": 96,
+          "test": "\"TASK-050 contact create requires all three fields, defaults remain missing\""
+        },
+        {
+          "line": 119,
+          "test": "\"TASK-050 strict UUID syntax normalizes case\""
+        },
+        {
+          "line": 133,
+          "test": "\"TASK-050 response contract strips nothing silently and exposes no metadata\""
+        },
+        {
+          "line": 161,
+          "test": "\"TASK-050 pure contract builds for a browser without DB/Auth imports\""
+        },
+        {
+          "line": 174,
+          "test": "\"TASK-050 server repository imports are poisoned outside server context\""
+        },
+        {
+          "line": 194,
+          "test": "\"TASK-050 only prescribed methods have thin Node private route handlers\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-052-account-deletion.runtime.mjs",
+      "sourceTask": "TASK-052-B",
+      "sourceWbs": ["5.21"],
+      "domain": "Account Deletion",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:account-deletion:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-052-account-deletion.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 65,
+          "test": "\"TASK-052 real Local cascade/Auth/Storage/browser acceptance\""
+        },
+        {
+          "line": 264,
+          "test": "\"execution-time catalog: eight product tables, seven Auth cascades, both member parent cascades\""
+        },
+        {
+          "line": 325,
+          "test": "\"A and B each populate every product table and Draft/Saved/History through accepted private APIs\""
+        },
+        {
+          "line": 382,
+          "test": "\"signed-out deletion page guard, exact phrase plus checkbox, cancel and unavailable export\""
+        },
+        {
+          "line": 428,
+          "test": "\"missing server credential: actual browser sanitized 503, account remains intact\""
+        },
+        {
+          "line": 451,
+          "test": "\"malformed execution credential: actual HTTP 503, no product/Auth changes\""
+        },
+        {
+          "line": 460,
+          "test": "\"anon, missing/wrong Cookie Origin, explicit malformed/invalid Bearer plus valid Cookie fail closed\""
+        },
+        {
+          "line": 482,
+          "test": "\"strict unknown/missing/wrong payloads and target injection never reach deletion\""
+        },
+        {
+          "line": 510,
+          "test": "\"bounded request body rejects 4097 bytes without mutation\""
+        },
+        {
+          "line": 520,
+          "test": "\"real owned Storage object blocks deletion, no object name disclosure or removal\""
+        },
+        {
+          "line": 568,
+          "test": "\"browser double-click dispatches one real Cookie DELETE; pending disables controls and success leaves private page\""
+        },
+        {
+          "line": 628,
+          "test": "\"Auth hard-delete cascades every A product row, including immutable history; B exact rows unchanged\""
+        },
+        {
+          "line": 648,
+          "test": "\"retained A Cookie and Bearer denied across all current B private resource endpoints\""
+        },
+        {
+          "line": 712,
+          "test": "\"deleted identity cannot refresh, getUser or sign in; B separate browser remains usable\""
+        },
+        {
+          "line": 750,
+          "test": "\"explicit valid Bearer deletes only its verified owner despite a different valid Cookie\""
+        },
+        {
+          "line": 762,
+          "test": "\"production browser HTML/chunks have no execution credential or Account Admin implementation\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-052-account-deletion.test.mjs",
+      "sourceTask": "TASK-052-B",
+      "sourceWbs": ["5.21"],
+      "domain": "Account Deletion",
+      "layer": "API/server integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:account-deletion"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-052-account-deletion.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 44,
+          "test": "\"exact current-user confirmation and detached canonical request\""
+        },
+        {
+          "line": 50,
+          "test": "\"reject \" + name"
+        },
+        {
+          "line": 53,
+          "test": "\"descriptor/accessor/prototype/symbol input never invokes code\""
+        },
+        {
+          "line": 111,
+          "test": "\"verified Auth first, exact current owner hard delete, private 204\""
+        },
+        {
+          "line": 121,
+          "test": "\"owner injection fails before admin\""
+        },
+        {
+          "line": 129,
+          "test": "\"bounded streamed body before privileged execution\""
+        },
+        {
+          "line": 137,
+          "test": "\"no query arguments; malformed explicit Bearer never falls back to Cookie\""
+        },
+        {
+          "line": 163,
+          "test": "\"missing/malformed execution credential fails closed: \" +\n      String(secret === undefined ? \"missing\" : secret.length)"
+        },
+        {
+          "line": 184,
+          "test": "\"owned Storage blocks without admin operation or object disclosure\""
+        },
+        {
+          "line": 195,
+          "test": "\"admin failure never leaks upstream details\""
+        },
+        {
+          "line": 204,
+          "test": "\"admin operation rejects malformed owner before any network\""
+        },
+        {
+          "line": 212,
+          "test": "\"browser client sends only frozen body once, same-origin no-store\""
+        },
+        {
+          "line": 249,
+          "test": "\"client sanitizes \" + label + \" without retry\""
+        },
+        {
+          "line": 261,
+          "test": "\"valid blocked error is preserved for safe UI copy\""
+        },
+        {
+          "line": 273,
+          "test": "\"browser import graph cannot bring in Account Admin or DB/private Auth\""
+        },
+        {
+          "line": 299,
+          "test": "\"narrow runtime has one Admin operation and no manual cascade/delete chain\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-053-preference-presets.runtime.mjs",
+      "sourceTask": "TASK-053-B",
+      "sourceWbs": ["5.13"],
+      "domain": "Preference",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preference-presets:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-053-preference-presets.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 31,
+          "test": "\"TASK-053 real Local Auth, browser draft templates and downstream contracts\""
+        },
+        {
+          "line": 122,
+          "test": "\"fresh A/B GET has no row side effect; anon denied\""
+        },
+        {
+          "line": 204,
+          "test": "\"page open, template click, cancel and unsaved reload cause zero mutation\""
+        },
+        {
+          "line": 230,
+          "test": "\"real click/save/reload exact canonical round trip \" + preset.id"
+        },
+        {
+          "line": 256,
+          "test": "\"switch template and manual edit become exact custom; cancel restores server\""
+        },
+        {
+          "line": 283,
+          "test": "\"category clear is draft-only then saves unset preserving every other category\""
+        },
+        {
+          "line": 298,
+          "test": "\"two real Cookie sessions stale revision returns 409 without overwriting draft\""
+        },
+        {
+          "line": 334,
+          "test": "\"5.14 verified read carries canonical values and source revision without metadata\""
+        },
+        {
+          "line": 356,
+          "test": "\"Trip Library draft and saved snapshots contain canonical preference and source revision only\""
+        },
+        {
+          "line": 393,
+          "test": "\"desktop and mobile templates render without overflow or script errors\""
+        },
+        {
+          "line": 418,
+          "test": "\"global reset is empty/unset; no template auto-applied\""
+        },
+        {
+          "line": 442,
+          "test": "\"B remains unchanged; cross-user RLS and guest page denied\""
+        },
+        {
+          "line": 468,
+          "test": "\"production browser JS and HTML contain no DB, private Auth or server implementation\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free",
+        "Existing Playwright via CODEX_PLAYWRIGHT_PATH; installed Edge"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-053-preference-presets.test.mjs",
+      "sourceTask": "TASK-053-B",
+      "sourceWbs": ["5.13"],
+      "domain": "Preference",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:preference-presets"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-053-preference-presets.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 111,
+          "test": "\"TASK-053 catalog has only the nine frozen templates; defaults remain sparse\""
+        },
+        {
+          "line": 138,
+          "test": "\"TASK-053 frozen patch \" + id"
+        },
+        {
+          "line": 150,
+          "test": "\"TASK-053 scope, repeatability, immutability and exact match \" + id"
+        },
+        {
+          "line": 193,
+          "test": "\"TASK-053 catalog is deeply immutable, derived arrays cannot mutate registry\""
+        },
+        {
+          "line": 204,
+          "test": "\"TASK-053 explicit false and neutral are not unset\""
+        },
+        {
+          "line": 218,
+          "test": "\"TASK-053 browser registry graph has one canonical parser and no private dependencies\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-054-personal-center-migration.runtime.mjs",
+      "sourceTask": "TASK-054-B",
+      "sourceWbs": ["8.6"],
+      "domain": "Migration",
+      "layer": "Auth/RLS integration",
+      "additionalLayers": ["API/server integration"],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:personal-center-migration:local"],
+      "execution": {
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-054-personal-center-migration.runtime.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 34,
+          "test": "\"TASK-054 real migration catalog, two-user isolation, invariants and accepted account-delete cascade\""
+        },
+        {
+          "line": 56,
+          "test": "\"replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree\""
+        },
+        {
+          "line": 125,
+          "test": "\"positive own reads and denied SELECT/INSERT/UPDATE/DELETE for every data family in both directions\""
+        },
+        {
+          "line": 189,
+          "test": "\"RPC cross-owner update/delete and foreign membership fail without aggregate changes\""
+        },
+        {
+          "line": 242,
+          "test": "\"accepted CAS, immutable ownership, JSON versions and Trip creation intent survive replay\""
+        },
+        {
+          "line": 309,
+          "test": "\"DELETE /api/account removes populated owner and all eight B families, preserving second user\""
+        }
+      ],
+      "environmentConstraints": [
+        "Existing local travelassist project; no hosted credentials",
+        "Production build and ports 3000/3001 free"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-054-personal-center-migration.test.mjs",
+      "sourceTask": "TASK-054-B",
+      "sourceWbs": ["8.6"],
+      "domain": "Migration",
+      "layer": "contract/parser",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": ["test:personal-center-migration"],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-054-personal-center-migration.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 13,
+          "test": "\"TASK-054 accepted migration inventory is immutable and has one formal history\""
+        },
+        {
+          "line": 17,
+          "test": "\"TASK-054 audited SQL objects cover all Personal Center mirrors and cascade inventory\""
+        },
+        {
+          "line": 36,
+          "test": "\"TASK-054 generated Row/Insert/Update agree with every Drizzle column and default\""
+        },
+        {
+          "line": 45,
+          "test": "\"TASK-054 drift checks reject missing columns, wrong nullability, defaults and scalar types\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-054-personal-center-replay.mjs",
+      "sourceTask": "TASK-054-B",
+      "sourceWbs": ["8.6"],
+      "domain": "Migration",
+      "layer": "DB integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": true,
+      "npmEntryPoints": ["test:personal-center-migration:replay"],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "line": 40,
+          "test": "\"replay-start\""
+        },
+        {
+          "line": 42,
+          "test": "\"replay-initial-status\""
+        },
+        {
+          "line": 66,
+          "test": "\"replay-\" + pass + \"-reset\""
+        },
+        {
+          "line": 69,
+          "test": "\"replay-\" + pass + \"-types\""
+        },
+        {
+          "line": 78,
+          "test": "\"replay-\" + pass + \"-static\""
+        },
+        {
+          "line": 86,
+          "test": "\"replay-\" + pass + \"-runtime\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "Existing reset guard and fixture finally; caller stops Local runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Reference accepted TASK-054 two-replay evidence; rerun non-destructive catalog/RLS/types checks in 9.5"
+    },
+    {
+      "file": "tests/task-055-private-boundaries.test.mjs",
+      "sourceTask": "TASK-055-B",
+      "sourceWbs": ["9.5"],
+      "domain": "shared boundary",
+      "layer": "API/server integration",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-055-private-boundaries.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 75,
+          "test": "`TASK-055 ${domain}: Auth outage is private AUTH_UNAVAILABLE before product I/O`"
+        },
+        {
+          "line": 126,
+          "test": "`TASK-055 Profile second live verification: ${name} prevents writes`"
+        },
+        {
+          "line": 156,
+          "test": "\"TASK-055 streamed Unicode decodes across byte splits at the exact cap and releases its reader\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/task-055-test-runner.test.mjs",
+      "sourceTask": "TASK-055-B",
+      "sourceWbs": ["9.5"],
+      "domain": "shared boundary",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-055-test-runner.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 18,
+          "test": "\"TASK-055 aggregate validates real child TAP: \" + label"
+        },
+        {
+          "line": 32,
+          "test": "\"TASK-055 aggregate rejects a successful child that ran zero tests\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/trip-status-personal-center-followup.test.mjs",
+      "sourceTask": "Personal Center navigation/follow-up",
+      "sourceWbs": ["5.1", "5.10", "5.20"],
+      "domain": "Trip Library",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/trip-status-personal-center-followup.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 43,
+          "test": "`date-only boundary: ${description}`"
+        },
+        {
+          "line": 46,
+          "test": "\"calendar boundaries, leap dates, DST and invalid dates\""
+        },
+        {
+          "line": 68,
+          "test": "\"Hero prioritizes ongoing > upcoming > next, then earliest start, deterministic id tie\""
+        },
+        {
+          "line": 86,
+          "test": "\"dated and undated Drafts, ended Trips and History never become Hero\""
+        },
+        {
+          "line": 107,
+          "test": "\"All includes active formal Trips + Draft, excludes history/favorites/completed and Hero\""
+        },
+        {
+          "line": 136,
+          "test": "\"default mixed dates ascending, no-date drafts last sorted updatedAt descending, inputs immutable\""
+        },
+        {
+          "line": 169,
+          "test": "\"eight actual cards per page, every ninth-plus card reachable, clamping and empties\""
+        },
+        {
+          "line": 195,
+          "test": "\"existing Draft delete, History clone and Favorites stay immutable and in-memory\""
+        },
+        {
+          "line": 221,
+          "test": "\"Home and library import the same portable helper; no persistence or business integration added\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-10-trip-library.browser.mjs",
+      "sourceTask": "WBS-5.10-B",
+      "sourceWbs": ["5.10"],
+      "domain": "Trip Library",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Trip library tabs, sorting, history copy/favorites and layout on legacy in-memory UI"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-10-trip-library.test.mjs",
+      "sourceTask": "WBS-5.10-B",
+      "sourceWbs": ["5.10"],
+      "domain": "Trip Library",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-10-trip-library.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 31,
+          "test": "\"library exposes exactly the five frozen tabs in order\""
+        },
+        {
+          "line": 38,
+          "test": "\"new trip and planner bridge routes are exact\""
+        },
+        {
+          "line": 43,
+          "test": "\"search matches trip name and destination\""
+        },
+        {
+          "line": 55,
+          "test": "\"destination filters trips drafts and history independently\""
+        },
+        {
+          "line": 78,
+          "test": "\"all four requested sort modes are stable\""
+        },
+        {
+          "line": 90,
+          "test": "\"draft sort supports recent edit and create without mutation\""
+        },
+        {
+          "line": 101,
+          "test": "\"next-trip hero selects nearest upcoming and only shows in all or upcoming\""
+        },
+        {
+          "line": 111,
+          "test": "\"hero fixture contains completion categories and attention summary\""
+        },
+        {
+          "line": 121,
+          "test": "\"draft deletion never triggers partner cancellation\""
+        },
+        {
+          "line": 133,
+          "test": "\"history groups strictly by descending year\""
+        },
+        {
+          "line": 141,
+          "test": "\"copy-to-new preserves the original history snapshot\""
+        },
+        {
+          "line": 152,
+          "test": "\"history favorite toggle is immutable\""
+        },
+        {
+          "line": 160,
+          "test": "\"favorites expose exactly six filters and can filter or remove\""
+        },
+        {
+          "line": 175,
+          "test": "\"route replaces the placeholder and page declares required UI boundaries\""
+        },
+        {
+          "line": 196,
+          "test": "\"page includes empty states, external warning, recap and deferred booking\""
+        },
+        {
+          "line": 214,
+          "test": "\"all selected local assets exist\""
+        },
+        {
+          "line": 231,
+          "test": "\"implementation adds no persistence network or partner-write surface\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-20-personal-center-responsive-states.browser.mjs",
+      "sourceTask": "WBS-5.20-B",
+      "sourceWbs": ["5.20"],
+      "domain": "shared boundary",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Responsive drawer/focus/navigation and page status visuals across route/viewport matrix"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+      "sourceTask": "WBS-5.20-B",
+      "sourceWbs": ["5.20"],
+      "domain": "shared boundary",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-20-personal-center-responsive-states.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 29,
+          "test": "\"four frozen responsive modes retain exact breakpoint boundaries\""
+        },
+        {
+          "line": 41,
+          "test": "\"primary navigation is exactly five routes with frozen mobile labels\""
+        },
+        {
+          "line": 53,
+          "test": "\"compact rail exposes visible hover and focus tooltips without title-only fallback\""
+        },
+        {
+          "line": 63,
+          "test": "\"tablet drawer implements initial focus focus trap escape and focus return\""
+        },
+        {
+          "line": 81,
+          "test": "\"drawer locks document and content scrolling then restores each value\""
+        },
+        {
+          "line": 93,
+          "test": "\"mobile bottom navigation has safe area non-color selection and touch sizing\""
+        },
+        {
+          "line": 108,
+          "test": "\"page module and action presentation state vocabularies are explicit\""
+        },
+        {
+          "line": 135,
+          "test": "\"loading route renders structural skeleton rather than a central spinner\""
+        },
+        {
+          "line": 146,
+          "test": "\"radar skeleton is geometric and shimmer stops with reduced motion\""
+        },
+        {
+          "line": 157,
+          "test": "\"empty state actions are optional and preserve caller-owned business copy\""
+        },
+        {
+          "line": 164,
+          "test": "\"page error is recoverable and never exposes the internal error\""
+        },
+        {
+          "line": 176,
+          "test": "\"partial module errors remain local presentation components\""
+        },
+        {
+          "line": 186,
+          "test": "\"offline auth-expired and permission states are presentation-only\""
+        },
+        {
+          "line": 195,
+          "test": "\"action feedback is an accessible live region with distinct tones\""
+        },
+        {
+          "line": 202,
+          "test": "\"existing responsive navigation still uses the shared unsaved guard\""
+        },
+        {
+          "line": 213,
+          "test": "\"5.20 source adds no API persistence auth service worker or booking integration\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-3-auth-callback.browser.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Real registration/recovery, captured mail links, multi-tab PKCE flow binding and browser storage lifecycle"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-5-3-auth-callback.runtime.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Real registration/recovery, captured mail links, multi-tab PKCE flow binding and browser storage lifecycle"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical WSL-to-Windows launcher; complete signup/callback or account journey; not a 9.5 runner"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-5-3-auth-callback.test.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-3-auth-callback.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 14,
+          "test": "\"WBS-5.3 callback failure navigation is bounded, strips provider details and preserves safe intent\""
+        },
+        {
+          "line": 51,
+          "test": "\"WBS-5.3 browser HTML errors do not replace the existing JSON callback contract\""
+        },
+        {
+          "line": 79,
+          "test": "\"WBS-5.3 confirmation check uses bounded server session status and fails closed\""
+        },
+        {
+          "line": 128,
+          "test": "\"WBS-5.3 confirmation no-op is replaced by pending/error feedback without a fake auth authority\""
+        },
+        {
+          "line": 157,
+          "test": "\"WBS-5.3 registration callback selects its own SDK PKCE slot and rejects malformed flow IDs\""
+        },
+        {
+          "line": 217,
+          "test": "\"WBS-5.3 only registration opts into SDK flow binding and retains its own navigation hint\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-3-auth-navigation.browser.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Anonymous Auth page navigation/pending state (no Auth mutation)"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Anonymous navigation/visual-only historical harness; Auth navigation model is covered by included unit suite. Broad browser QA remains existing 9.12/9.6 scope."
+    },
+    {
+      "file": "tests/wbs-5-3-auth-surfaces.browser.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Anonymous Auth artwork/autofill/feedback layout; no Auth integration"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-3-auth-user-flow.browser.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Full signup/confirmation/login/OTP/recovery/password/logout browser account journey"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-5-3-auth-user-flow.runtime.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [
+        "API/server integration",
+        "browser-boundary integration without full user journey"
+      ],
+      "localSupabaseRequired": true,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Full signup/confirmation/login/OTP/recovery/password/logout browser account journey"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical WSL-to-Windows launcher; complete signup/callback or account journey; not a 9.5 runner"
+      ],
+      "cleanup": {
+        "strategy": "Existing finally/rollback cleanup; aggregate verifies zero Auth/eight B tables/Storage and free ports after every suite",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-5-3-auth-user-flow.test.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "Auth",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-3-auth-user-flow.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 11,
+          "test": "\"WBS-5.3 visual routes remain separate from technical Auth endpoints\""
+        },
+        {
+          "line": 22,
+          "test": "\"WBS-5.3 only phone/email tabs and in-card password/OTP mode\""
+        },
+        {
+          "line": 31,
+          "test": "\"WBS-5.3 canonical returnTo plus auth-loop prevention\""
+        },
+        {
+          "line": 60,
+          "test": "\"WBS-5.3 password and confirmation follow core policy without extra strength rules\""
+        },
+        {
+          "line": 67,
+          "test": "\"WBS-5.3 phone agreement and minimal confirmation-aware registration\""
+        },
+        {
+          "line": 81,
+          "test": "\"WBS-5.3 unregistered email CTA is not a verification or implicit signup claim\""
+        },
+        {
+          "line": 91,
+          "test": "\"WBS-5.3 reset requires trusted session and private PC stays server-verified\""
+        },
+        {
+          "line": 108,
+          "test": "\"WBS-5.3 signout preserves error and dirty-state confirmation\""
+        },
+        {
+          "line": 120,
+          "test": "\"WBS-5.3 logout has hover, pressed, keyboard and disabled feedback\""
+        },
+        {
+          "line": 137,
+          "test": "\"WBS-5.3 Auth routes share a stable canvas and reserve feedback without clipping\""
+        },
+        {
+          "line": 149,
+          "test": "\"WBS-5.3 Auth navigation has inline pending feedback without bypassing server identity\""
+        },
+        {
+          "line": 166,
+          "test": "\"WBS-5.3 Auth surfaces reuse artwork, clip decoration and preserve autofill accessibility\""
+        },
+        {
+          "line": 185,
+          "test": "\"WBS-5.3 legal names, no fictional legal links, accessible status and secret-safe forms\""
+        },
+        {
+          "line": 197,
+          "test": "\"WBS-5.3 adapters use bounded existing HTTP operations, ignore unexpected credentials\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-3-login-layout.browser.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "shared boundary",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Login form layout/geometry across viewport sizes"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-3-logout-style.browser.mjs",
+      "sourceTask": "WBS-5.3-B",
+      "sourceWbs": ["5.3"],
+      "domain": "shared boundary",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Logout button interaction/visual states with controlled response interception"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-5-preferences.browser.mjs",
+      "sourceTask": "WBS-5.5-B",
+      "sourceWbs": ["5.5"],
+      "domain": "Preference",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Preference overview radar/summary/reset presentation in legacy UI"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-5-preferences.test.mjs",
+      "sourceTask": "WBS-5.5-B",
+      "sourceWbs": ["5.5"],
+      "domain": "Preference",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-5-preferences.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 20,
+          "test": "\"WBS 5.5 freezes both six-axis portraits and semantic levels\""
+        },
+        {
+          "line": 41,
+          "test": "\"radar geometry creates six finite vertices\""
+        },
+        {
+          "line": 54,
+          "test": "\"portrait summary selects only the strongest two to four traits\""
+        },
+        {
+          "line": 72,
+          "test": "\"reset clears radar semantics, summary and category presentation state\""
+        },
+        {
+          "line": 85,
+          "test": "\"all category routes are stable and include advanced settings\""
+        },
+        {
+          "line": 100,
+          "test": "\"trip temporary preferences remain isolated from long-term state\""
+        },
+        {
+          "line": 117,
+          "test": "\"overview exposes required content without persistence or schema expansion\""
+        },
+        {
+          "line": 149,
+          "test": "\"overview keeps the supplied concept hierarchy compact and readable\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-6-companions.browser.mjs",
+      "sourceTask": "WBS-5.6-B",
+      "sourceWbs": ["5.6"],
+      "domain": "Companion",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Companion/group UI control and privacy summary interactions"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-6-companions.test.mjs",
+      "sourceTask": "WBS-5.6-B",
+      "sourceWbs": ["5.6"],
+      "domain": "Companion",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-6-companions.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 83,
+          "test": "\"self companion cannot be deleted\""
+        },
+        {
+          "line": 92,
+          "test": "\"cards expose at most three summary tags plus overflow\""
+        },
+        {
+          "line": 100,
+          "test": "\"summary counts adult child infant and senior without gender split\""
+        },
+        {
+          "line": 110,
+          "test": "\"DOB age is derived by a pure calendar function\""
+        },
+        {
+          "line": 116,
+          "test": "\"age group never creates inferred travel needs\""
+        },
+        {
+          "line": 130,
+          "test": "\"companion add validation, create and edit are deterministic\""
+        },
+        {
+          "line": 156,
+          "test": "\"group requires one member and supports create/edit\""
+        },
+        {
+          "line": 178,
+          "test": "\"special-needs summary counts people and exposes names only\""
+        },
+        {
+          "line": 185,
+          "test": "\"private dining and health notes never enter list summaries\""
+        },
+        {
+          "line": 195,
+          "test": "\"Trip snapshots are isolated copies and never write back to long-term state\""
+        },
+        {
+          "line": 204,
+          "test": "\"runtime preserves API-backed companion drafts and navigation guard\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-7-mobility-preference.browser.mjs",
+      "sourceTask": "WBS-5.7-B",
+      "sourceWbs": ["5.7"],
+      "domain": "Preference",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Mobility controls, independent toggles and draft save/cancel presentation"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-7-mobility-preference.test.mjs",
+      "sourceTask": "WBS-5.7-B",
+      "sourceWbs": ["5.7"],
+      "domain": "Preference",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-7-mobility-preference.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 21,
+          "test": "\"default fixture is balanced with both common tendencies\""
+        },
+        {
+          "line": 32,
+          "test": "\"default factory returns independent values\""
+        },
+        {
+          "line": 39,
+          "test": "\"preset selection is immutable and changes only preset\""
+        },
+        {
+          "line": 46,
+          "test": "\"fewer transfers and less walking toggle independently\""
+        },
+        {
+          "line": 59,
+          "test": "\"each allowed transport restriction toggles independently\""
+        },
+        {
+          "line": 74,
+          "test": "\"default summary contains no more than three main items\""
+        },
+        {
+          "line": 81,
+          "test": "\"summary prioritizes explicit restrictions\""
+        },
+        {
+          "line": 94,
+          "test": "\"summary maximum is clamped to three\""
+        },
+        {
+          "line": 104,
+          "test": "\"summary still exposes the selected preset when item limit is one\""
+        },
+        {
+          "line": 111,
+          "test": "\"default fixture has no compatibility notice\""
+        },
+        {
+          "line": 118,
+          "test": "\"less walking plus no public transit produces a warning\""
+        },
+        {
+          "line": 129,
+          "test": "\"warning calculation never changes conflicting selections\""
+        },
+        {
+          "line": 139,
+          "test": "\"public transit plus bus restrictions produce redundancy info\""
+        },
+        {
+          "line": 152,
+          "test": "\"conflict and redundancy notices can coexist\""
+        },
+        {
+          "line": 164,
+          "test": "\"save creates a detached in-memory snapshot\""
+        },
+        {
+          "line": 175,
+          "test": "\"cancel restores a detached saved snapshot\""
+        },
+        {
+          "line": 185,
+          "test": "\"restore default returns presentation fixture\""
+        },
+        {
+          "line": 191,
+          "test": "\"state equality checks every supported field\""
+        },
+        {
+          "line": 200,
+          "test": "\"trip-temporary mobility values do not write back to long-term state\""
+        },
+        {
+          "line": 210,
+          "test": "\"mobility route is split while other category shell remains intact\""
+        },
+        {
+          "line": 219,
+          "test": "\"page reuses guarded navigation and beforeunload-backed dirty state\""
+        },
+        {
+          "line": 234,
+          "test": "\"implementation uses only the three requested restriction labels\""
+        },
+        {
+          "line": 246,
+          "test": "\"legacy mobility fixture stays side-effect free; page delegates persistence\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-8-attraction-activity-preference.browser.mjs",
+      "sourceTask": "WBS-5.8-B",
+      "sourceWbs": ["5.8"],
+      "domain": "Preference",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Attraction/activity controls and summary/draft presentation"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+      "sourceTask": "WBS-5.8-B",
+      "sourceWbs": ["5.8"],
+      "domain": "Preference",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-8-attraction-activity-preference.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 22,
+          "test": "\"six attraction dimensions are frozen in the required order\""
+        },
+        {
+          "line": 29,
+          "test": "\"there is no seventh formal attraction dimension\""
+        },
+        {
+          "line": 33,
+          "test": "\"all dimension descriptions match the frozen meaning\""
+        },
+        {
+          "line": 47,
+          "test": "\"quick presentation exposes exactly four preference levels\""
+        },
+        {
+          "line": 54,
+          "test": "\"default UI fixture is stable\""
+        },
+        {
+          "line": 68,
+          "test": "\"default factory returns independent nested state\""
+        },
+        {
+          "line": 75,
+          "test": "\"unset is represented separately from dislike\""
+        },
+        {
+          "line": 83,
+          "test": "\"a single dimension can change without affecting the others\""
+        },
+        {
+          "line": 91,
+          "test": "\"dimension updates are immutable\""
+        },
+        {
+          "line": 99,
+          "test": "\"multiple dimensions can be edited independently\""
+        },
+        {
+          "line": 114,
+          "test": "\"default summary contains no more than three entries\""
+        },
+        {
+          "line": 123,
+          "test": "\"summary prioritizes veryLike before like\""
+        },
+        {
+          "line": 134,
+          "test": "\"summary uses fixed dimension order within the same level\""
+        },
+        {
+          "line": 145,
+          "test": "\"neutral dislike and unset do not enter the main summary\""
+        },
+        {
+          "line": 155,
+          "test": "\"summary maximum is clamped to three\""
+        },
+        {
+          "line": 163,
+          "test": "\"summary supports a single-item display limit\""
+        },
+        {
+          "line": 173,
+          "test": "\"photo experience toggles independently\""
+        },
+        {
+          "line": 181,
+          "test": "\"save creates a detached in-memory snapshot\""
+        },
+        {
+          "line": 193,
+          "test": "\"cancel restores a detached saved snapshot\""
+        },
+        {
+          "line": 202,
+          "test": "\"restore returns the UI fixture without mutating saved state\""
+        },
+        {
+          "line": 209,
+          "test": "\"dirty equality checks all dimensions and photo experience\""
+        },
+        {
+          "line": 225,
+          "test": "\"attractions route is split while mobility and generic shells remain\""
+        },
+        {
+          "line": 236,
+          "test": "\"page uses guarded navigation and the shared dirty-state provider\""
+        },
+        {
+          "line": 251,
+          "test": "\"photography uses canonical interest/details instead of the retired photo boolean\""
+        },
+        {
+          "line": 267,
+          "test": "\"canonical editor keeps summary, field and interest-detail hierarchy\""
+        },
+        {
+          "line": 277,
+          "test": "\"canonical editor preserves long-term scope without Trip or Companion writes\""
+        },
+        {
+          "line": 289,
+          "test": "\"implementation reuses the repository attraction image\""
+        },
+        {
+          "line": 299,
+          "test": "\"no score weight percentage or durable storage contract is introduced\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5-9-dining-accommodation-budget.browser.mjs",
+      "sourceTask": "WBS-5.9-B",
+      "sourceWbs": ["5.9"],
+      "domain": "Preference",
+      "layer": "browser-boundary integration without full user journey",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Dining/accommodation/budget control independence and draft presentation"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Legacy visual control harness is outside unit/API baseline; current feature browser/API boundary is rerun in its accepted runtime suite"
+    },
+    {
+      "file": "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+      "sourceTask": "WBS-5.9-B",
+      "sourceWbs": ["5.9"],
+      "domain": "Preference",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-9-dining-accommodation-budget.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 36,
+          "test": "\"dining exposes only the three frozen presentation controls\""
+        },
+        {
+          "line": 56,
+          "test": "\"default dining fixture and summary are stable\""
+        },
+        {
+          "line": 69,
+          "test": "\"dining controls update independently and immutably\""
+        },
+        {
+          "line": 82,
+          "test": "\"dining save cancel restore and dirty equality use detached snapshots\""
+        },
+        {
+          "line": 96,
+          "test": "\"accommodation exposes exactly one presentation-only three-level scale\""
+        },
+        {
+          "line": 103,
+          "test": "\"default accommodation fixture and summary are stable\""
+        },
+        {
+          "line": 116,
+          "test": "\"accommodation dimensions update independently and do not create hotel enums\""
+        },
+        {
+          "line": 125,
+          "test": "\"accommodation has an explicit no-prominent-preference summary\""
+        },
+        {
+          "line": 133,
+          "test": "\"accommodation save cancel restore and dirty equality use detached snapshots\""
+        },
+        {
+          "line": 144,
+          "test": "\"budget exposes exactly three overall spending tendencies\""
+        },
+        {
+          "line": 151,
+          "test": "\"default budget fixture and summary are stable\""
+        },
+        {
+          "line": 164,
+          "test": "\"budget allocations are independent and can both be off\""
+        },
+        {
+          "line": 172,
+          "test": "\"budget tendency changes without creating a concrete amount\""
+        },
+        {
+          "line": 182,
+          "test": "\"budget save cancel restore and dirty equality use detached snapshots\""
+        },
+        {
+          "line": 193,
+          "test": "\"all default factories return independent state\""
+        },
+        {
+          "line": 210,
+          "test": "\"the three routes replace generic shells while 5.7 and 5.8 stay split\""
+        },
+        {
+          "line": 227,
+          "test": "\"category pages delegate canonical controls and retain shared dirty guard\""
+        },
+        {
+          "line": 239,
+          "test": "\"canonical category controls keep unsupported Trip and detailed fields out\""
+        },
+        {
+          "line": 251,
+          "test": "\"implementation uses all three repository assets\""
+        },
+        {
+          "line": 277,
+          "test": "\"legacy category fixtures remain pure and unsupported fields stay absent\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-5.4-v2.browser.mjs",
+      "sourceTask": "WBS-5.4-B",
+      "sourceWbs": ["5.4"],
+      "domain": "Profile",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Personal Center multi-page layout/profile editing/unsaved guard visual journey"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-5.4-v2.test.mjs",
+      "sourceTask": "WBS-5.4-B",
+      "sourceWbs": ["5.4"],
+      "domain": "Profile",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5.4-v2.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 60,
+          "test": "\"approved concept assets are wired to the Personal Center visual layer\""
+        },
+        {
+          "line": 120,
+          "test": "\"desktop home keeps a floating sidebar and first-screen feature modules\""
+        },
+        {
+          "line": 154,
+          "test": "\"Profile Account remains explicit in-memory UI with required flows\""
+        },
+        {
+          "line": 178,
+          "test": "\"unsaved edits guard sidebar, avatar links and browser unload\""
+        },
+        {
+          "line": 196,
+          "test": "\"account management entries have dedicated non-business routes\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    },
+    {
+      "file": "tests/wbs-9-12-personal-center-qa.browser.mjs",
+      "sourceTask": "WBS-9.12-B",
+      "sourceWbs": ["9.12"],
+      "domain": "shared boundary",
+      "layer": "E2E candidate deferred to 9.6",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": true,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      "criticalBehaviors": [
+        {
+          "test": "Previously accepted broad responsive/accessibility route and browser matrix"
+        }
+      ],
+      "environmentConstraints": [
+        "Historical visual/user-journey harness; some fixtures predate live Auth/API wiring"
+      ],
+      "cleanup": {
+        "strategy": "Historical harness owns browser context; excluded from canonical runtime",
+        "verification": "Not rerun by TASK-055; no new PASS claim"
+      },
+      "exclusionReason": "Full browser navigation/registration/multi-page matrix belongs to 9.6 (or previously accepted 9.12 visual scope); lower-level critical API/Auth coverage is rerun"
+    },
+    {
+      "file": "tests/wbs-9-12-personal-center-qa.test.mjs",
+      "sourceTask": "WBS-9.12-B",
+      "sourceWbs": ["9.12"],
+      "domain": "shared boundary",
+      "layer": "pure unit/domain",
+      "additionalLayers": [],
+      "localSupabaseRequired": false,
+      "browserRuntimeRequired": false,
+      "destructiveLocalResetRequired": false,
+      "npmEntryPoints": [],
+      "execution": {
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-9-12-personal-center-qa.test.mjs"
+        ]
+      },
+      "criticalBehaviors": [
+        {
+          "line": 75,
+          "test": "\"the mandatory B-owned route and viewport matrices are exact\""
+        },
+        {
+          "line": 100,
+          "test": "\"all mandatory route entry points exist without adding business routes\""
+        },
+        {
+          "line": 136,
+          "test": "\"route props typecheck independently of generated .next types\""
+        },
+        {
+          "line": 145,
+          "test": "\"four responsive bands retain their frozen boundaries\""
+        },
+        {
+          "line": 157,
+          "test": "\"Tab and Shift+Tab order has a visible skip target and no positive tabindex\""
+        },
+        {
+          "line": 192,
+          "test": "\"drawer and account popover expose complete keyboard focus lifecycles\""
+        },
+        {
+          "line": 205,
+          "test": "\"native and custom dialogs support Escape, trap focus, and restore focus\""
+        },
+        {
+          "line": 220,
+          "test": "\"mobile controls preserve 44px sizing and safe-area clearance\""
+        },
+        {
+          "line": 233,
+          "test": "\"semantic states cover loading empty error and live feedback\""
+        },
+        {
+          "line": 273,
+          "test": "\"reduced motion removes nonessential transitions and skeleton shimmer\""
+        },
+        {
+          "line": 282,
+          "test": "\"browser harness records real engine selection diagnostics and evidence\""
+        },
+        {
+          "line": 294,
+          "test": "\"9.12 presentation components retain their no-integration boundary\""
+        }
+      ],
+      "environmentConstraints": [
+        "Locked Node/npm dependencies; existing TypeScript loader"
+      ],
+      "cleanup": {
+        "strategy": "No retained product data or task server",
+        "verification": "Required on both candidate aggregate runs"
+      },
+      "exclusionReason": null
+    }
+  ],
+  "supportFiles": [
+    {
+      "file": "tests/task-018-local-helpers.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-042-preference-fixtures.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-044-companion-fixtures.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-045-local-helpers.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-048-trip-fixtures.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-050-profile-fixtures.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-052-account-deletion-fixtures.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-052-local-helpers.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-052-network-guard.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-054-catalog.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/task-054-migration-helpers.mjs",
+      "role": "Existing suite fixture/helper; not independently executed or counted"
+    },
+    {
+      "file": "tests/register-route-ts.mjs",
+      "role": "Existing loader or consumer fixture reused by accepted suites"
+    },
+    {
+      "file": "tests/register-planner-ts.mjs",
+      "role": "Existing loader or consumer fixture reused by accepted suites"
+    },
+    {
+      "file": "tests/fixtures/task-046-a-consumer.ts",
+      "role": "Existing loader or consumer fixture reused by accepted suites"
+    },
+    {
+      "file": "tests/fixtures/task-046-type-boundary.ts",
+      "role": "Existing loader or consumer fixture reused by accepted suites"
+    }
+  ],
+  "discovery": {
+    "root": "tests/",
+    "rule": "task-010-b, task-016/018/042/044/045/046/047/048/049/050/052/053/054/055, wbs-5.*, wbs-5-*, wbs-9-12, personal-center-followup, trip-status-personal-center-followup",
+    "sharedBoundaryDecision": "A-owned generic DB foundation, deployment, main Header/home, Planner/Trip Plan/Engine tests remain in full-repository QA. B-specific global logo/navigation is included.",
+    "historicalFixtureDecision": "Old UI model tests remain useful pure-model regressions, never evidence that presentation defaults are persisted. Canonical TASK-042/045/046/053 tests define current saved Preference semantics."
+  }
+}

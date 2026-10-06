@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R02-012",
+  "sourceRef": "task-075-v23-canary-source:daf11d7431f66e70407d68f9",
+  "sourceTier": "OFFICIAL_SITE_OR_TOURISM",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/daf11d7431f66e70407d68f9306a673a704aa5be5678aa99660dc039a2c61cb1.txt",
+    "locator": {
+      "offset": 0,
+      "length": 557,
+      "locatorSha256": "daf11d7431f66e70407d68f9306a673a704aa5be5678aa99660dc039a2c61cb1",
+      "contentSha256": "daf11d7431f66e70407d68f9306a673a704aa5be5678aa99660dc039a2c61cb1"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": "お店だけあって、店内は新鮮な魚介類が種類も豊富に溢れています。 持ち帰りはもちろん、人気のお寿司をはじめその場でいただけるのも楽しみのひとつ。 漁れたての魚介の美味しさを存分に味わえます。 基本データ 電話番号 0120-502-318 住所 〒981-0213 宮城県宮城郡松島町松島普賢堂４−１０ アクセス JR仙石線松島海岸駅徒歩10分。みちのく伊達政宗歴史館隣。 営業時間 平日 9時00分～16時00分 土日祝日 8時00分～16時00分 ホームページ http://www.sakana-ichiba.co.jp アクセスマップ ← スポット一覧に戻る Copyright &copy; 松島観光協会 All Rights Reserved. 本文及び写真の無断転載を禁じます。",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "sourceFact": "クセス JR仙石線松島海岸駅徒歩10分。みちのく伊達政宗歴史館隣。 営業時間 平日 9時00分～16時00分 土日祝日 8時00分～16時00分 ホームページ http://www.sakana-ichiba.co.jp アクセスマップ ← スポット一覧に戻る Copyright &copy; 松島観光協会 All Rights Reserved. 本文及び写真の無断転載を禁じます。",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "sourceFact": "を持つ船主「昭福丸」が初めて持ったお店だけあって、店内は新鮮な魚介類が種類も豊富に溢れています。 持ち帰りはもちろん、人気のお寿司をはじめその場でいただけるのも楽しみのひとつ。 漁れたての魚介の美味しさを存分に味わえます。 基本データ 電話番号 0120-502-318 住所 〒981-0213 宮城県宮城郡松島町松島普賢堂４−１０ アクセス JR仙石線松島海岸駅徒歩10分。みちのく伊達政宗歴史館隣。 営業時間 平日 9時00分～16時00分 土日祝日 8時00分～16時00分 ホームページ http://www.sakana-ichiba.co.jp アクセスマップ ← スポット一覧に戻る Copyright &copy; 松島観光協会 All Rights Reserved. 本文及び写真の無断転載を禁じます。",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "04",
+    "07"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "07",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

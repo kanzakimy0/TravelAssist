@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R01-023",
+  "sourceRef": "task-075-v23-canary-source:b8ae1f6c8931d51a2256bd6a",
+  "sourceTier": "OFFICIAL_SITE_OR_TOURISM",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/b8ae1f6c8931d51a2256bd6a4dc293d1e3acd24d75741a66dcf57b7db4674249.txt",
+    "locator": {
+      "offset": 0,
+      "length": 766,
+      "locatorSha256": "b8ae1f6c8931d51a2256bd6a4dc293d1e3acd24d75741a66dcf57b7db4674249",
+      "contentSha256": "b8ae1f6c8931d51a2256bd6a4dc293d1e3acd24d75741a66dcf57b7db4674249"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": "かんのん としても広い地域から信仰されてきたこの仏像は秘仏であり、12年に一度、巳年にのみ拝観することができます。「意の如くなる」つまり思いが叶う観音様として篤い信仰を集めています。 【住所】 小郡市横隈1729 【アクセス】 西鉄大牟田線「三沢駅」 より徒歩15分 【TEL】 如意輪寺 0942-75-5294 小郡市観光協会 0942-72-4008 【歴史について】 小郡市文化財課 0942-75-7555 投稿 観光情報 、 神社・仏閣 、 観光スポット",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "07",
+      "sourceFact": "清影山 如意輪寺(かえる寺) 観光情報 神社・仏閣 観光スポット 公開日:2021.04.05 最終更新日:2025.01.16 横隈観音とも呼ばれる 如意輪寺 にょいりんじ 。奈良時代前期、西暦７２９年に 行基 ぎょうき によって開基されたと伝えられています。御本尊は如意輪観音（県指定文化財）で、皆さんの願いを思い通りに叶えてくださる観音様です。「かえる寺」の愛称でも知られ、約10,000体のかえるの置物が出迎えてくれます。また桜やあじさい、新緑や紅葉など季節の移ろいを楽しめるのも魅力のひとつ。特に夏には、願いごとをか",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    },
+    {
+      "featureCode": "12",
+      "sourceFact": "づくり ）、平安時代後期の作と言われています。顔は１つ、腕は６本の 一面六臂 いちめんろっぴ という形式で、名前の由来でもある 如意宝珠 にょいほうじゅ と 法輪 ほうりん を持っていらっしゃいます。如意輪観音像には、 坐像 ざぞう と 半跏像 はんかぞう がほとんどで、立像の如意輪観音は全国的に非常に貴重なものです。 子安観音 こやすかんのん としても広い地域から信仰されてきたこの仏像は秘仏であり、12年に一度、巳年にのみ拝観することができます。「意の如くなる」つまり思いが叶う観音様として篤い信仰を集めています。 【住所】 小郡市横隈1729 【アクセス】 西鉄大牟田線「三沢駅」 より徒歩15分 【TEL】 如意輪寺 0942-75-5294 小郡市観光協会 0942-72-4008 【歴史について】 小郡市文化財課 0942-75-7555 投稿 観光情報 、 神社・仏閣 、 観光スポット",
+      "proposedValue": 5,
+      "rationale": "The official target page ties the target to local culture, locality, or community use; the frozen rubric maps that fact to local."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "07",
+    "12"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    },
+    {
+      "featureCode": "12",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page ties the target to local culture, locality, or community use; the frozen rubric maps that fact to local."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "07",
+      "value": 7
+    },
+    {
+      "featureCode": "12",
+      "value": 5
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

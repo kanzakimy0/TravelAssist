@@ -1,0 +1,229 @@
+{
+  "phaseId": "204-tarama-coarse-airport-native-bus-and-current-rac-pair",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT",
+    "EXACT_C28_AIRPORT_IDENTITY",
+    "LICENSED_TWO_DIRECTION_NATIVE_GTFS_PAIR",
+    "COARSE_PUBLIC_AIRPORT_GATEWAY_TO_NATIVE_S1759",
+    "CURRENT_RAC891_892_ACTUAL_CARRIER_PAIR"
+  ],
+  "completedActionIds": [
+    "bus:tarama:licensed-current-airport-adjacent-pair",
+    "airport:tarama:current-faq-access-and-plan",
+    "flight:tarama:current-miyako-rac891-892-pair"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "tarama-village-airport-package.json",
+      "packageSha256": "886dfa75854c86bd40fd3cc17593b8528bf20875e44b1c22804b70054aec2b4c",
+      "sourceActionId": "bus:tarama:licensed-current-airport-adjacent-pair",
+      "reviewedServiceDate": "20261003",
+      "archiveSha256": "51511cab51a97b6411a871a7038dc08c6c42616f49fae3d51a6666773c4fecff"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "tarama-coarse-public-airport-gateway-to-native-s1759",
+      "kind": "transfer",
+      "sourceActionId": "airport:tarama:current-faq-access-and-plan",
+      "sourceUrl": "https://www.vill.tarama.okinawa.jp/faq/faq005/",
+      "observedResponseSha256": "5138965186349ccacf78de02ff35a111b2a6f2d0434542ab90be0ebd633ab493",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tarama:current-faq-access-and-plan",
+          "url": "https://www.vill.tarama.okinawa.jp/about/access/hikouki/",
+          "observedResponseSha256": "4c3f6204e658f9f2bef5c00c77d5f77109099c43a508da8ec638a550db5f436b"
+        },
+        {
+          "sourceActionId": "airport:tarama:current-faq-access-and-plan",
+          "url": "https://www.vill.tarama.okinawa.jp/common/uploads/c92996217010f9c2404cb56936a5158c.pdf",
+          "observedResponseSha256": "693e5e4385cfe05affaa2e1fba5cbf766e668c02451bf1b011be4107459b6269"
+        },
+        {
+          "sourceActionId": "bus:tarama:licensed-current-airport-adjacent-pair",
+          "url": "https://api3.ottop.org/download/gtfs/ooXuXei4op7y/4000020473758",
+          "observedResponseSha256": "51511cab51a97b6411a871a7038dc08c6c42616f49fae3d51a6666773c4fecff"
+        }
+      ],
+      "locator": "2021 FAQ remains published: question “空港から村内までの移動手段はありますか？” and answer “現在村営の有償バスが通っております。バス乗り場からご利用ください。” Airport access page section “多良間空港から集落へのアクセス” says a paid bus operates. 2025 village plan route includes airport. Current bus feed supplies exact S1759. These support only a coarse public airport-facility gateway relation; no exact frontage asserted.",
+      "components": [
+        {
+          "name": "多良間空港",
+          "operator": "airport-facility:cf03_00067",
+          "line": "airport:cf03_00067",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00067",
+            "requirementId": "review:official-airport:多良間",
+            "expectedRequirementName": "多良間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Coarse whole-airport gateway only. The village FAQ title asks about travel from airport to village and its answer says the village paid bus is available at the bus boarding place; the airport access page has a dedicated section “多良間空港から集落へのアクセス” and says the paid bus operates. The official 2025 village transport plan includes the airport route. Bind only the exact licensed native GTFS stop S1759 to the whole C28 airport facility. No door, curb, bay, platform, accessibility, or proximity claim."
+          }
+        },
+        {
+          "name": "多良間空港",
+          "operator": "多良間村",
+          "line": "gtfs:tarama-village-current:route:179",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tarama-village-current",
+            "stopId": "S1759",
+            "sourceArchiveSha256": "51511cab51a97b6411a871a7038dc08c6c42616f49fae3d51a6666773c4fecff",
+            "recordSha256": "43cdc6136aa798c206d0a510ed227ef44c459a0dcfcb6ccbb0dcca71a817dde7",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native stop identity from the licensed OTTOP GTFS trip; coarse whole-airport passenger-access relation is supported by the municipality airport-specific FAQ/access section and 2025 plan. Stop remains distinct with blank platform; no coordinate or stop-name join."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "AIRPORT_SPECIFIC_PUBLIC_ACCESS_FAQ_AND_OFFICIAL_PLAN_PLUS_EXACT_ACTIVE_LICENSED_STOP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tarama-current-rac891-mmy-to-tarama",
+      "kind": "service",
+      "sourceActionId": "flight:tarama:current-miyako-rac891-892-pair",
+      "sourceUrl": "https://miyakoap.co.jp/schedule/",
+      "observedResponseSha256": "15bab2001869195c6a0a36a5a110b3153d397ffb8ab08a4c2f582d7323a8bca9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tarama:current-faq-access-and-plan",
+          "url": "https://www.vill.tarama.okinawa.jp/about/access/hikouki/",
+          "observedResponseSha256": "4c3f6204e658f9f2bef5c00c77d5f77109099c43a508da8ec638a550db5f436b"
+        }
+      ],
+      "operator": "琉球エアーコミューター",
+      "line": "RAC 宮古・多良間",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "MMY-TME",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_Miyako_Airport_schedule_observed_2026-10-03_STATIC_NOT_REALTIME",
+      "callingStations": [
+        "宮古空港",
+        "多良間空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "宮古空港",
+          "operator": "airport-facility:cf03_00062",
+          "line": "airport:cf03_00062",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00062",
+            "requirementId": "review:transport-node:0dcd77e4-39ae-5d32-8802-decc25c29434",
+            "expectedRequirementName": "宮古",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse existing admitted Miyako Airport C28 identity and its independently reviewed airport facility node; no new ground interface is asserted."
+          }
+        },
+        {
+          "name": "多良間空港",
+          "operator": "airport-facility:cf03_00067",
+          "line": "airport:cf03_00067",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00067",
+            "requirementId": "review:official-airport:多良間",
+            "expectedRequirementName": "多良間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Coarse whole-airport gateway only. The village FAQ title asks about travel from airport to village and its answer says the village paid bus is available at the bus boarding place; the airport access page has a dedicated section “多良間空港から集落へのアクセス” and says the paid bus operates. The official 2025 village transport plan includes the airport route. Bind only the exact licensed native GTFS stop S1759 to the whole C28 airport facility. No door, curb, bay, platform, accessibility, or proximity claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_DIRECTIONAL_ROW_AND_EXPLICIT_MUNICIPAL_CARRIER_NAME",
+      "locator": "Miyako Airport schedule page observed 2026-10-03 lists RAC891 under the RAC-branded “宮古 ⇒ 多良間” section. Tarama airport access page explicitly identifies RAC (琉球エアコミューター). Preserve directed passenger service and flight identifier only; no clock, fare, or realtime assertion."
+    },
+    {
+      "factId": "tarama-current-rac892-tarama-to-mmy",
+      "kind": "service",
+      "sourceActionId": "flight:tarama:current-miyako-rac891-892-pair",
+      "sourceUrl": "https://miyakoap.co.jp/schedule/",
+      "observedResponseSha256": "15bab2001869195c6a0a36a5a110b3153d397ffb8ab08a4c2f582d7323a8bca9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tarama:current-faq-access-and-plan",
+          "url": "https://www.vill.tarama.okinawa.jp/about/access/hikouki/",
+          "observedResponseSha256": "4c3f6204e658f9f2bef5c00c77d5f77109099c43a508da8ec638a550db5f436b"
+        }
+      ],
+      "operator": "琉球エアーコミューター",
+      "line": "RAC 宮古・多良間",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "TME-MMY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_Miyako_Airport_schedule_observed_2026-10-03_STATIC_NOT_REALTIME",
+      "callingStations": [
+        "多良間空港",
+        "宮古空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "多良間空港",
+          "operator": "airport-facility:cf03_00067",
+          "line": "airport:cf03_00067",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00067",
+            "requirementId": "review:official-airport:多良間",
+            "expectedRequirementName": "多良間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Coarse whole-airport gateway only. The village FAQ title asks about travel from airport to village and its answer says the village paid bus is available at the bus boarding place; the airport access page has a dedicated section “多良間空港から集落へのアクセス” and says the paid bus operates. The official 2025 village transport plan includes the airport route. Bind only the exact licensed native GTFS stop S1759 to the whole C28 airport facility. No door, curb, bay, platform, accessibility, or proximity claim."
+          }
+        },
+        {
+          "name": "宮古空港",
+          "operator": "airport-facility:cf03_00062",
+          "line": "airport:cf03_00062",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00062",
+            "requirementId": "review:transport-node:0dcd77e4-39ae-5d32-8802-decc25c29434",
+            "expectedRequirementName": "宮古",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse existing admitted Miyako Airport C28 identity and its independently reviewed airport facility node; no new ground interface is asserted."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_DIRECTIONAL_ROW_AND_EXPLICIT_MUNICIPAL_CARRIER_NAME",
+      "locator": "Miyako Airport schedule page observed 2026-10-03 lists RAC892 under the RAC-branded “多良間 ⇒ 宮古” section. Tarama airport access page explicitly identifies RAC (琉球エアコミューター). Preserve directed passenger service and flight identifier only; no clock, fare, or realtime assertion."
+    }
+  ],
+  "scope": "One original Tarama airport: two selected adjacent native bus directions over the exact cached licensed feed, coarse public airport-facility↔S1759 relation supported by airport-specific public facts, and two independently directed RAC flight identifiers to existing Miyako Airport. No terminal frontage precision, clock times, railway, or island-wide expansion."
+}

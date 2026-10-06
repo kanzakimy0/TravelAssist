@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R04-001",
+  "sourceRef": "task-075-v23-canary-source:180c8904d48fdc0c3d6b1182",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/180c8904d48fdc0c3d6b1182edc7646f8efa4b879340fdb0100a8c76a80fe5d5.txt",
+    "locator": {
+      "offset": 0,
+      "length": 11457,
+      "locatorSha256": "180c8904d48fdc0c3d6b1182edc7646f8efa4b879340fdb0100a8c76a80fe5d5",
+      "contentSha256": "180c8904d48fdc0c3d6b1182edc7646f8efa4b879340fdb0100a8c76a80fe5d5"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": " natural light coming in from the ceiling, producing dramatic changes in the room's illumination depending on the hour. Walter De Maria Born in 1935 in Albany, California. Studied history and obtained a master's degree in art at the University of California, Berkeley from 1953 to 1959. Died in 2013 (at age 77). Significant Works: The Lightning Field (1977, New Mexico), The New York Earth Room (1977, New York), The Broken Kilometer (1979, New Y",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "sourceFact": "ore The museum shop attached to the Chichu Art Museum. The Chichu store sells merchandise that bring visitors closer to the museum, including books published by the museum itself, photography collections, and original goods. Hours： 10:00 a.m.-5:00 p.m. Closed： The store is closed when the museum is closed. Tel： +81-(0)87-892-3755 (Chichu Art Museum) * Entrance ticket are required in order to visit the Chichu Store. Café, Store＆Garden Ticket ",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "sourceFact": "Chichu Art Museum Chichu Art Museum was constructed in 2004 as a site rethinking the relationship between nature and people. The museum was built mostly underground to avoid affecting the beautiful natural scenery of the Seto Inland sea. Artworks by Claude Monet, James Turrell, and Walter De Maria are on permanent display in this building designed by Tadao Ando. Despite",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "04",
+    "07"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "07",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

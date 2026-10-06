@@ -1,0 +1,81 @@
+{
+  "kind": "REVIEWED_NATIVE_OR_MINIMAL_FACTS",
+  "source": {
+    "sourceId": "transport-source:086:c4108116289b0d286a2187271f853c92",
+    "url": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+    "contentSha256": "ce238662383e7e925255342483f8e4f226c1ef48d9ee181426335b9b0b1cd06b",
+    "evidenceContentSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T18:06:36.035271+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "reason": "Town own current Jan2026 service and flyer. Minimum two direct service directions and all passenger restrictions only; no raw HTML/PDF/layout/image/clocks publication or open license inferred."
+    }
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:c4108116289b0d286a2187271f853c92",
+      "sourceId": "transport-source:086:c4108116289b0d286a2187271f853c92",
+      "sourceSha256": "ce238662383e7e925255342483f8e4f226c1ef48d9ee181426335b9b0b1cd06b",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hateruma229-flight-user-0",
+        "sourceActionId": "hateruma229:bus",
+        "sourceUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+        "observedResponseSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "CURRENT_LINKED_FLIGHT_USER",
+            "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+          ],
+          "reservationRequirement": "NOT_REQUIRED",
+          "reviewedServiceDate": "2026-10-05",
+          "conditionsEvidenceRef": "transport-evidence:086:fcf7701cb42324a068dd6e4366754b1e",
+          "passengerRules": {
+            "maximumPartySize": 9,
+            "overcrowdingMayRefuse": true,
+            "noCapacityGuarantee": true,
+            "wetBodyAllowed": false,
+            "intermediateAlightingAllowed": false,
+            "eatingAllowed": false,
+            "drinkingAllowed": false,
+            "smokingIncludingHeatedAndElectronicAllowed": false,
+            "lodgingVisitorPolicy": "PRINCIPALLY_ACCOMMODATION_PICKUP_EXCLUDED_FROM_THIS_REVIEW"
+          },
+          "flightService": {
+            "servicePatternId": "transport-pattern:086:c584c7278457d517b94ae6f170cd30ff",
+            "sourceFactRef": "transport-evidence:086:cb16de8abab78dfdd528062d2a3cb463",
+            "reviewedServiceDate": "20261005",
+            "relation": "DEPARTURE",
+            "airportNodeId": "transport-node:086:ba6e999225700e3dceac70cd28323a5c",
+            "calendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3"
+          }
+        },
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "hateruma229:bus",
+            "url": "https://www.town.taketomi.lg.jp/userfiles/files/topics/seisakusuishin/koustu-syoko/080105haterumabasu.pdf",
+            "observedResponseSha256": "41e15a42ebd4c35db848d65e2a8353941738f9d45daa4284bcdf457a65482f8e"
+          },
+          {
+            "sourceActionId": "hateruma229:calendar-static",
+            "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+            "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+          }
+        ]
+      },
+      "recordSha256": "ce238662383e7e925255342483f8e4f226c1ef48d9ee181426335b9b0b1cd06b",
+      "locator": "All town passenger conditions and independent airport operating-day rule, with separate carrier date evidence. No reservation or capacity guarantee."
+    }
+  ]
+}

@@ -3,49 +3,28 @@ import type { RefObject } from "react";
 import styles from "../start-flow.module.css";
 import { SectionHeader } from "./section-header";
 import { WizardStepBody } from "./wizard-step-body";
-import { InfoPopover } from "./info-popover";
-
-const STAGES = [
-  "分析您的旅行偏好",
-  "筛选适合的目的地",
-  "组合最佳路线",
-  "优化交通与移动时间",
-  "匹配住宿与餐饮区域",
-  "生成不同风格的旅行方案",
-] as const;
-
-const STAGE_HELP = [
-  "整理熟悉度、兴趣和旅行风格，建立本次旅行的偏好概况。",
-  "结合已选地区与旅行时间，整理适合的目的地组合。",
-  "串联目的地，并把已确定的机票、酒店和活动纳入考虑。",
-  "结合交通偏好，调整跨城顺序和每天的移动负担。",
-  "根据路线和预算，整理适合停留、住宿和用餐的区域。",
-  "按不同节奏整理三个候选方案，供您比较与选择。",
-] as const;
+import { StateNotice, StateSkeleton } from "@/components/ui/state-notice";
+import { StateAction } from "@/components/ui/state-action";
 
 interface GenerationStepProps {
-  activeStage: number;
+  onBack: () => void;
   headingRef: RefObject<HTMLHeadingElement | null>;
 }
 
-export function GenerationStep({
-  activeStage,
-  headingRef,
-}: GenerationStepProps) {
+export function GenerationStep({ onBack, headingRef }: GenerationStepProps) {
   return (
     <section
       aria-labelledby="generation-title"
-      aria-live="polite"
       className={`${styles.step} ${styles.generationStep}`}
     >
       <SectionHeader
-        eyebrow="STEP 4 · 生成方案"
+        eyebrow="STEP 4 · 本地示例"
         id="generation-title"
-        title="正在为您规划旅行…"
+        title="正在准备本地示例方案…"
         headingRef={headingRef}
       >
         <p className={styles.stepDescription}>
-          根据您的偏好，生成最合适的行程方案
+          示例用于比较展示，不代表真实 AI 或路线计算
         </p>
       </SectionHeader>
       <WizardStepBody>
@@ -70,36 +49,14 @@ export function GenerationStep({
             opacity=".45"
           />
         </svg>
-        <ol className={styles.generationStages}>
-          {STAGES.map((stage, index) => {
-            const status =
-              index < activeStage
-                ? "complete"
-                : index === activeStage
-                  ? "current"
-                  : "pending";
-            return (
-              <li data-status={status} key={stage}>
-                <span aria-hidden="true" className={styles.generationMarker}>
-                  {status === "complete" ? "✓" : index + 1}
-                </span>
-                <span>
-                  <strong className={styles.generationStageLabel}>
-                    {stage}{" "}
-                    <InfoPopover
-                      label={`${stage}说明`}
-                      text={STAGE_HELP[index]}
-                    />
-                  </strong>
-                  {status === "current" ? <small>正在处理</small> : null}
-                </span>
-              </li>
-            );
-          })}
-        </ol>
-        <p className={styles.generationNote}>
-          方案会综合您的草稿与确定安排，生成期间可放心返回调整。
-        </p>
+        <StateNotice
+          kind="loading"
+          title="本地示例准备中"
+          description="准备好后会显示已有示例；您可以返回修改需求。"
+        >
+          <StateSkeleton />
+        </StateNotice>
+        <StateAction onAction={onBack}>返回修改需求</StateAction>
       </WizardStepBody>
     </section>
   );

@@ -1,0 +1,458 @@
+{
+  "phaseId": "221-noto-public-flight-associated-od-national-chain",
+  "facts": [
+    {
+      "factId": "noto-ana-747-independent-flight-dependency",
+      "kind": "service",
+      "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+      "sourceUrl": "https://www.noto-airport.jp/flight/",
+      "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/flight/",
+          "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.pref.ishikawa.lg.jp/chiji/kisya/r7_3_28/1.html",
+          "observedResponseSha256": "6d1d0b974bba4a21bff39e30c68619beb8864f8591a9aaa88d414e46f02c2c87"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/facilities/",
+          "observedResponseSha256": "45a26fb2e6262943d950851808cc9487da28c41561565dee482b3a5dafdda64d"
+        }
+      ],
+      "operator": "全日本空輸株式会社",
+      "line": "羽田・能登国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HND-NTQ",
+      "serviceState": "active",
+      "serviceStateScope": "Airport-published2026-03-29 through2026-10-24; prefecture2025-03-28 independently confirms actual ANA operator, still published. Static service topology, not real-time operation or booking guarantee.",
+      "reviewedServiceDate": "20261003",
+      "reviewedFlightCode": "NH747",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "のと里山ポケモン・ウィズ・ユー空港",
+          "canonicalAirportName": "能登空港",
+          "referencePointId": "cf03_00069"
+        },
+        {
+          "sourceName": "羽田空港",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "callingStations": [
+        "東京国際空港",
+        "能登空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Noto official schedule explicitly names Haneda in both directions; reuse existing admitted C28 Tokyo International/Haneda facility and current national attachment. No terminal/gate assertion."
+          }
+        },
+        {
+          "name": "能登空港",
+          "operator": "airport-facility:cf03_00069",
+          "line": "airport:cf03_00069",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00069",
+            "requirementId": "review:official-airport:能登",
+            "expectedRequirementName": "能登",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current own-airport facilities page explicitly locates passenger public bus stop at terminal exit and separate1F furusato taxi boarding facility; current airport schedule independently lists Haneda inbound/outbound flights. C28 exact formal Noto airport and original requirement preserved; temporary promotional public brand is not a new facility. This review admits only existing whole-airport flight facility, not a new ground stop."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Own-airport current flight schedule separately publishes NH747 Haneda to Noto and NH748 Noto to Haneda. Prefecture conference2025-03-28 explicitly labels ANA the sole Noto operating company. Promotional airport name refers to same original facility; no codeshare expansion, clock publication, invented gate or terminal."
+    },
+    {
+      "factId": "noto-ana-748-independent-flight-dependency",
+      "kind": "service",
+      "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+      "sourceUrl": "https://www.noto-airport.jp/flight/",
+      "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/flight/",
+          "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.pref.ishikawa.lg.jp/chiji/kisya/r7_3_28/1.html",
+          "observedResponseSha256": "6d1d0b974bba4a21bff39e30c68619beb8864f8591a9aaa88d414e46f02c2c87"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/facilities/",
+          "observedResponseSha256": "45a26fb2e6262943d950851808cc9487da28c41561565dee482b3a5dafdda64d"
+        }
+      ],
+      "operator": "全日本空輸株式会社",
+      "line": "羽田・能登国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "NTQ-HND",
+      "serviceState": "active",
+      "serviceStateScope": "Airport-published2026-03-29 through2026-10-24; prefecture2025-03-28 independently confirms actual ANA operator, still published. Static service topology, not real-time operation or booking guarantee.",
+      "reviewedServiceDate": "20261003",
+      "reviewedFlightCode": "NH748",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "のと里山ポケモン・ウィズ・ユー空港",
+          "canonicalAirportName": "能登空港",
+          "referencePointId": "cf03_00069"
+        },
+        {
+          "sourceName": "羽田空港",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "callingStations": [
+        "能登空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "能登空港",
+          "operator": "airport-facility:cf03_00069",
+          "line": "airport:cf03_00069",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00069",
+            "requirementId": "review:official-airport:能登",
+            "expectedRequirementName": "能登",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current own-airport facilities page explicitly locates passenger public bus stop at terminal exit and separate1F furusato taxi boarding facility; current airport schedule independently lists Haneda inbound/outbound flights. C28 exact formal Noto airport and original requirement preserved; temporary promotional public brand is not a new facility. This review admits only existing whole-airport flight facility, not a new ground stop."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Noto official schedule explicitly names Haneda in both directions; reuse existing admitted C28 Tokyo International/Haneda facility and current national attachment. No terminal/gate assertion."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Own-airport current flight schedule separately publishes NH747 Haneda to Noto and NH748 Noto to Haneda. Prefecture conference2025-03-28 explicitly labels ANA the sole Noto operating company. Promotional airport name refers to same original facility; no codeshare expansion, clock publication, invented gate or terminal."
+    },
+    {
+      "factId": "noto-public-od221:0",
+      "kind": "dynamic_od",
+      "sourceActionId": "od:noto:airport-flight-associated-public:221",
+      "sourceUrl": "https://www.noto-airport.jp/access/furutaku.html",
+      "observedResponseSha256": "d805ac40711903ee54ada66643f540a8e59856b2821900d6947aec5a54163044",
+      "operator": "株式会社恋路観光バス",
+      "endpointNames": [
+        "能登空港",
+        "公立宇出津総合病院"
+      ],
+      "endpointIdentityAnchors": [
+        "review:official-airport:能登",
+        "p04:20:17:DE01_721"
+      ],
+      "accessTerms": {
+        "contractKind": "NOTO_FLIGHT_ASSOCIATED_PUBLIC_OD_V1",
+        "audience": "PUBLIC",
+        "profile": "PUBLIC_AIRPORT_SERVICE_REQUEST",
+        "channels": [
+          "PHONE",
+          "INTERNET"
+        ],
+        "reservationDeadline": {
+          "dayOffset": -1,
+          "localTime": "15:00",
+          "timeZone": "Asia/Tokyo"
+        },
+        "timeZone": "Asia/Tokyo",
+        "payment": "CASH",
+        "operation": "FOLLOW_SELECTED_AIRPORT_FLIGHT_SERVICE",
+        "noReservationNoDispatch": true,
+        "divertedArrivalCancelsMatchingTaxi": true,
+        "capacityGuaranteed": false,
+        "dispatchGuarantee": false,
+        "assignedPlaceRequired": true,
+        "operatorConfirmationRequired": true,
+        "airportBoundConfirmation": "PREVIOUS_DAY_18:00",
+        "routePolicy": "MAJOR_ROADS_PROVIDER_SELECTED_POSSIBLE_SHARED_STOPS",
+        "validFrom": "2026-03-29",
+        "validTo": "2026-10-24",
+        "flightService": {
+          "servicePatternId": "transport-pattern:086:f094ff84190b073675733e885f4f7d0d",
+          "sourceFactRef": "transport-evidence:086:409e42e97cf03de65e950a5e844f9ba9",
+          "flightCode": "NH747",
+          "reviewedServiceDate": "20261003"
+        }
+      },
+      "conditionObservations": [
+        {
+          "conditionId": "noto-public-booking-operation",
+          "sourceActionId": "od:noto:airport-flight-associated-public:221",
+          "sourceUrl": "https://www.noto-airport.jp/access/furutaku.html",
+          "observedResponseSha256": "d805ac40711903ee54ada66643f540a8e59856b2821900d6947aec5a54163044",
+          "claims": {
+            "contractKind": "NOTO_FLIGHT_ASSOCIATED_PUBLIC_OD_V1",
+            "audience": "PUBLIC",
+            "profile": "PUBLIC_AIRPORT_SERVICE_REQUEST",
+            "channels": [
+              "PHONE",
+              "INTERNET"
+            ],
+            "reservationDeadline": {
+              "dayOffset": -1,
+              "localTime": "15:00",
+              "timeZone": "Asia/Tokyo"
+            },
+            "timeZone": "Asia/Tokyo",
+            "payment": "CASH",
+            "operation": "FOLLOW_SELECTED_AIRPORT_FLIGHT_SERVICE",
+            "noReservationNoDispatch": true,
+            "divertedArrivalCancelsMatchingTaxi": true,
+            "capacityGuaranteed": false,
+            "dispatchGuarantee": false,
+            "assignedPlaceRequired": true,
+            "operatorConfirmationRequired": true,
+            "airportBoundConfirmation": "PREVIOUS_DAY_18:00",
+            "routePolicy": "MAJOR_ROADS_PROVIDER_SELECTED_POSSIBLE_SHARED_STOPS"
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "od:noto:airport-flight-associated-public:221",
+              "url": "https://www.noto-airport.jp/access/furutaku_internet.html",
+              "observedResponseSha256": "065c843f2174ec8d7e8969b7d8a826134c3d4d6b461183c1560714c489dbe426"
+            },
+            {
+              "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+              "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html",
+              "observedResponseSha256": "2aa08d5e31b1f8c2c7e72b4636f7da3bc9d0e82bca46d01b2f5a5e380fb9429f"
+            }
+          ],
+          "locator": "Current bidirectional requested pickup/drop-off places; phone/web previous-day15 deadline; flight-linked dispatch and assignment/capacity rules. PUBLIC profile is the bounded reviewed public service request, not ticket-holder or residency condition. ContractKind is derived protocol label, not quoted source."
+        },
+        {
+          "conditionId": "noto-reviewed-flight-operation-association:0",
+          "sourceActionId": "od:noto:airport-flight-associated-public:221",
+          "sourceUrl": "https://www.noto-airport.jp/flight/",
+          "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020",
+          "claims": {
+            "validFrom": "2026-03-29",
+            "validTo": "2026-10-24",
+            "flightService": {
+              "servicePatternId": "transport-pattern:086:f094ff84190b073675733e885f4f7d0d",
+              "sourceFactRef": "transport-evidence:086:409e42e97cf03de65e950a5e844f9ba9",
+              "flightCode": "NH747",
+              "reviewedServiceDate": "20261003"
+            }
+          },
+          "locator": "Own-airport current Mar29-Oct24 directional ANA service; source-bound internal pattern/fact association, not newly copied clocks or actual live-flight status."
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+          "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html",
+          "observedResponseSha256": "2aa08d5e31b1f8c2c7e72b4636f7da3bc9d0e82bca46d01b2f5a5e380fb9429f"
+        },
+        {
+          "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+          "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/4979.html",
+          "observedResponseSha256": "1a31a4934e03be3784a11b3ce310cc4db1cbf493c368ba027a0fe3f629423f20"
+        },
+        {
+          "sourceActionId": "od:noto:airport-flight-associated-public:221",
+          "url": "https://www.noto-airport.jp/facilities/service.html",
+          "observedResponseSha256": "23f3858f0281d7b9f066f462d4268b4f7f2b5dc669b6c69b38d8d7e80e1b1533"
+        }
+      ],
+      "locator": "Exact Nototown zone3 airport/hospital conditional public OD request in this direction; no fixed calls, guaranteed curb, route or confirmed booking. Published各地→airport supports requested hospital pickup; independent Q1 confirms named airport→hospital service."
+    },
+    {
+      "factId": "noto-public-od221:1",
+      "kind": "dynamic_od",
+      "sourceActionId": "od:noto:airport-flight-associated-public:221",
+      "sourceUrl": "https://www.noto-airport.jp/access/furutaku.html",
+      "observedResponseSha256": "d805ac40711903ee54ada66643f540a8e59856b2821900d6947aec5a54163044",
+      "operator": "株式会社恋路観光バス",
+      "endpointNames": [
+        "公立宇出津総合病院",
+        "能登空港"
+      ],
+      "endpointIdentityAnchors": [
+        "p04:20:17:DE01_721",
+        "review:official-airport:能登"
+      ],
+      "accessTerms": {
+        "contractKind": "NOTO_FLIGHT_ASSOCIATED_PUBLIC_OD_V1",
+        "audience": "PUBLIC",
+        "profile": "PUBLIC_AIRPORT_SERVICE_REQUEST",
+        "channels": [
+          "PHONE",
+          "INTERNET"
+        ],
+        "reservationDeadline": {
+          "dayOffset": -1,
+          "localTime": "15:00",
+          "timeZone": "Asia/Tokyo"
+        },
+        "timeZone": "Asia/Tokyo",
+        "payment": "CASH",
+        "operation": "FOLLOW_SELECTED_AIRPORT_FLIGHT_SERVICE",
+        "noReservationNoDispatch": true,
+        "divertedArrivalCancelsMatchingTaxi": true,
+        "capacityGuaranteed": false,
+        "dispatchGuarantee": false,
+        "assignedPlaceRequired": true,
+        "operatorConfirmationRequired": true,
+        "airportBoundConfirmation": "PREVIOUS_DAY_18:00",
+        "routePolicy": "MAJOR_ROADS_PROVIDER_SELECTED_POSSIBLE_SHARED_STOPS",
+        "validFrom": "2026-03-29",
+        "validTo": "2026-10-24",
+        "flightService": {
+          "servicePatternId": "transport-pattern:086:560f56a69faa3d0dd2cd0b773fe870b8",
+          "sourceFactRef": "transport-evidence:086:49055ce5c0531803e6968d93ddc8db9a",
+          "flightCode": "NH748",
+          "reviewedServiceDate": "20261003"
+        }
+      },
+      "conditionObservations": [
+        {
+          "conditionId": "noto-public-booking-operation",
+          "sourceActionId": "od:noto:airport-flight-associated-public:221",
+          "sourceUrl": "https://www.noto-airport.jp/access/furutaku.html",
+          "observedResponseSha256": "d805ac40711903ee54ada66643f540a8e59856b2821900d6947aec5a54163044",
+          "claims": {
+            "contractKind": "NOTO_FLIGHT_ASSOCIATED_PUBLIC_OD_V1",
+            "audience": "PUBLIC",
+            "profile": "PUBLIC_AIRPORT_SERVICE_REQUEST",
+            "channels": [
+              "PHONE",
+              "INTERNET"
+            ],
+            "reservationDeadline": {
+              "dayOffset": -1,
+              "localTime": "15:00",
+              "timeZone": "Asia/Tokyo"
+            },
+            "timeZone": "Asia/Tokyo",
+            "payment": "CASH",
+            "operation": "FOLLOW_SELECTED_AIRPORT_FLIGHT_SERVICE",
+            "noReservationNoDispatch": true,
+            "divertedArrivalCancelsMatchingTaxi": true,
+            "capacityGuaranteed": false,
+            "dispatchGuarantee": false,
+            "assignedPlaceRequired": true,
+            "operatorConfirmationRequired": true,
+            "airportBoundConfirmation": "PREVIOUS_DAY_18:00",
+            "routePolicy": "MAJOR_ROADS_PROVIDER_SELECTED_POSSIBLE_SHARED_STOPS"
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "od:noto:airport-flight-associated-public:221",
+              "url": "https://www.noto-airport.jp/access/furutaku_internet.html",
+              "observedResponseSha256": "065c843f2174ec8d7e8969b7d8a826134c3d4d6b461183c1560714c489dbe426"
+            },
+            {
+              "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+              "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html",
+              "observedResponseSha256": "2aa08d5e31b1f8c2c7e72b4636f7da3bc9d0e82bca46d01b2f5a5e380fb9429f"
+            }
+          ],
+          "locator": "Current bidirectional requested pickup/drop-off places; phone/web previous-day15 deadline; flight-linked dispatch and assignment/capacity rules. PUBLIC profile is the bounded reviewed public service request, not ticket-holder or residency condition. ContractKind is derived protocol label, not quoted source."
+        },
+        {
+          "conditionId": "noto-reviewed-flight-operation-association:1",
+          "sourceActionId": "od:noto:airport-flight-associated-public:221",
+          "sourceUrl": "https://www.noto-airport.jp/flight/",
+          "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020",
+          "claims": {
+            "validFrom": "2026-03-29",
+            "validTo": "2026-10-24",
+            "flightService": {
+              "servicePatternId": "transport-pattern:086:560f56a69faa3d0dd2cd0b773fe870b8",
+              "sourceFactRef": "transport-evidence:086:49055ce5c0531803e6968d93ddc8db9a",
+              "flightCode": "NH748",
+              "reviewedServiceDate": "20261003"
+            }
+          },
+          "locator": "Own-airport current Mar29-Oct24 directional ANA service; source-bound internal pattern/fact association, not newly copied clocks or actual live-flight status."
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+          "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html",
+          "observedResponseSha256": "2aa08d5e31b1f8c2c7e72b4636f7da3bc9d0e82bca46d01b2f5a5e380fb9429f"
+        },
+        {
+          "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+          "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/4979.html",
+          "observedResponseSha256": "1a31a4934e03be3784a11b3ce310cc4db1cbf493c368ba027a0fe3f629423f20"
+        },
+        {
+          "sourceActionId": "od:noto:airport-flight-associated-public:221",
+          "url": "https://www.noto-airport.jp/facilities/service.html",
+          "observedResponseSha256": "23f3858f0281d7b9f066f462d4268b4f7f2b5dc669b6c69b38d8d7e80e1b1533"
+        }
+      ],
+      "locator": "Exact Nototown zone3 airport/hospital conditional public OD request in this direction; no fixed calls, guaranteed curb, route or confirmed booking. Published各地→airport supports requested hospital pickup; independent Q1 confirms named airport→hospital service."
+    }
+  ],
+  "completedActionIds": [
+    "airport:noto:independent-ana-flight-dependency-private",
+    "od:noto:airport-flight-associated-public:221",
+    "od:noto:town-hospital-current-public-endpoint:221",
+    "identity:noto:p04-20-17-hospital:221"
+  ],
+  "strategy": [
+    "ORIGINAL_AIRPORT_IDENTITY_UPGRADE",
+    "TWO_ACTUAL_FLIGHT_DIRECTIONS",
+    "EXACT_NATIVE_P04_HOSPITAL",
+    "SOURCE_BOUND_PUBLIC_FLIGHT_ASSOCIATED_OD",
+    "DEFAULT_DENIAL_PUBLIC_CONDITIONAL_STRUCTURAL_VIEW"
+  ]
+}

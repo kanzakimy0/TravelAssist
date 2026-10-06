@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-11T00:00:00+09:00",
+  "policy": {
+    "sourcePriority": [
+      "repository pinned Japan destination evidence",
+      "JNTO official destination material",
+      "TASK-041 explicitly labeled editorial planning prior"
+    ],
+    "liveProviderQueries": false,
+    "exactTimetableFacts": false,
+    "note": "Editorial priors express graph-search usefulness only; they are not live route facts."
+  },
+  "sources": [
+    {
+      "sourceRef": "source-repository-japan-destinations",
+      "kind": "repository_evidence_catalog",
+      "url": null,
+      "repositoryPaths": [
+        "docs/assets/catalog/core-destination-generation-manifest.v1.csv",
+        "docs/assets/catalog/japan-destination-entity-evidence.v1.jsonl"
+      ],
+      "supports": "Pinned identity, multilingual name, representative center and JNTO directory linkage for resolved pilot destinations."
+    },
+    {
+      "sourceRef": "source-region-graph-codebook-v0-1",
+      "kind": "repository_contract_codebook",
+      "url": null,
+      "repositoryPaths": [
+        "docs/architecture/travel-region-graph-codebook-v0.1.md"
+      ],
+      "supports": "Region type, relation, directional edge and planning-prior semantics."
+    },
+    {
+      "sourceRef": "source-task-041-editorial-prior",
+      "kind": "human_curated_pilot_prior",
+      "url": null,
+      "repositoryPaths": ["docs/tasks/TASK-041-a-region-graph-pilot.md"],
+      "supports": "Sparse corridor selection and nullable, reviewable compatibility priors; never live route truth."
+    },
+    {
+      "sourceRef": "source-jnto-tokyo",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kanto/tokyo/",
+      "repositoryPaths": [],
+      "supports": "Tokyo tourism-region identity, districts and air/rail gateway context."
+    },
+    {
+      "sourceRef": "source-jnto-shinjuku",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kanto/tokyo/shinjuku/",
+      "repositoryPaths": [],
+      "supports": "Shinjuku district and gateway role."
+    },
+    {
+      "sourceRef": "source-jnto-shibuya",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/spot/2109/",
+      "repositoryPaths": [],
+      "supports": "Shibuya tourism district identity."
+    },
+    {
+      "sourceRef": "source-jnto-asakusa",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/spot/ma_36/",
+      "repositoryPaths": [],
+      "supports": "Asakusa tourism district identity."
+    },
+    {
+      "sourceRef": "source-jnto-hakone",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kanto/kanagawa/hakone-and-around/",
+      "repositoryPaths": [],
+      "supports": "Hakone onsen-resort identity, Odawara/Hakone-Yumoto gateway pattern and broad rail access prior."
+    },
+    {
+      "sourceRef": "source-jnto-fuji-five-lakes",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/tokai/yamanashi/fuji-five-lakes/",
+      "repositoryPaths": [],
+      "supports": "Fuji Five Lakes tourism-region identity and Kawaguchiko anchor."
+    },
+    {
+      "sourceRef": "source-jnto-nagano",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/hokuriku-shinetsu/nagano/",
+      "repositoryPaths": [],
+      "supports": "Nagano/Matsumoto corridor and gateway context."
+    },
+    {
+      "sourceRef": "source-jnto-matsumoto",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/spot/ma_99/",
+      "repositoryPaths": [],
+      "supports": "Matsumoto as Alps gateway and broad Tokyo/Nagano/Takayama transport modes."
+    },
+    {
+      "sourceRef": "source-jnto-shirakawa-go",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/spot/2031/",
+      "repositoryPaths": [],
+      "supports": "Shirakawa-go tourism identity and broad bus access from Takayama."
+    },
+    {
+      "sourceRef": "source-jnto-kansai",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kansai/",
+      "repositoryPaths": [],
+      "supports": "Kansai macro-area and Kyoto/Nara/Osaka/Kobe corridor grouping."
+    },
+    {
+      "sourceRef": "source-jnto-kyoto",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kansai/kyoto/",
+      "repositoryPaths": [],
+      "supports": "Kyoto travel region, districts and station-area gateway context."
+    },
+    {
+      "sourceRef": "source-jnto-nara",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kansai/nara/",
+      "repositoryPaths": [],
+      "supports": "Nara identity and planning connectivity with Kyoto/Osaka."
+    },
+    {
+      "sourceRef": "source-jnto-osaka",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kansai/osaka/",
+      "repositoryPaths": [],
+      "supports": "Osaka identity, Namba/Umeda anchors and Kansai base connectivity."
+    },
+    {
+      "sourceRef": "source-jnto-kobe",
+      "kind": "official_tourism",
+      "url": "https://www.japan.travel/en/destinations/kansai/hyogo/kobe-and-around",
+      "repositoryPaths": [],
+      "supports": "Kobe travel-region identity and waterfront context."
+    }
+  ]
+}

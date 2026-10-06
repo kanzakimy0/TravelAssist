@@ -1,7 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
+import { StateNotice } from "@/components/ui/state-notice";
+import { StateAction } from "@/components/ui/state-action";
 import { Button } from "@/components/ui/button";
 
 import { ALL_PREFECTURES, JAPAN_REGIONS } from "../model/japan-regions";
@@ -22,6 +24,7 @@ export function MoreRegionsModal({
   const [pending, setPending] = useState(selected);
   const [activeRegion, setActiveRegion] = useState("kanto");
   const [query, setQuery] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
   const normalizedQuery = query.trim().toLowerCase();
   const currentRegion =
     JAPAN_REGIONS.find((region) => region.id === activeRegion) ??
@@ -129,6 +132,7 @@ export function MoreRegionsModal({
           <label className={styles.searchField}>
             <span>搜索 47 都道府县</span>
             <input
+              ref={searchRef}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="例如：长野、京都、冲绳"
               type="search"
@@ -140,6 +144,23 @@ export function MoreRegionsModal({
               {normalizedQuery ? "搜索结果" : currentRegion.name} · 共{" "}
               {visiblePrefectures.length} 项
             </p>
+            {visiblePrefectures.length === 0 && (
+              <StateNotice
+                compact
+                kind="empty"
+                title="没有找到符合条件的结果"
+                description="试着调整搜索条件，已选择的地区不会因此清空。"
+              >
+                <StateAction
+                  onAction={() => {
+                    setQuery("");
+                    searchRef.current?.focus();
+                  }}
+                >
+                  清除搜索
+                </StateAction>
+              </StateNotice>
+            )}
             <div>
               {visiblePrefectures.map((prefecture) => (
                 <label key={prefecture.id}>

@@ -1,0 +1,91 @@
+{
+  "phaseId": "244-yamano-ue-public-junction-crossing",
+  "strategy": [
+    "ORIGINAL_TWO_YAMANO_UE_DIRECTION_ROOTS",
+    "LICENSED_GSI_CONTIGUOUS_PUBLIC_JUNCTION_ZEBRA_AND_ROADSIDES",
+    "NATIVE_IDENTITIES_AND_RESTRICTIONS_PRESERVED",
+    "ONE_NECESSARY_DIRECTED_WALK"
+  ],
+  "completedActionIds": [
+    "transfer:yamano-ue:public-junction-crossing-candidate:gsi-continuous-roadside-junction-zebra",
+    "transfer:yamano-ue:public-junction-crossing-candidate:current-directional-passenger-components"
+  ],
+  "facts": [
+    {
+      "factId": "yamano-ue-north-to-south-via-public-junction-zebra",
+      "kind": "transfer",
+      "sourceActionId": "transfer:yamano-ue:public-junction-crossing-candidate:gsi-continuous-roadside-junction-zebra",
+      "sourceUrl": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225884/105831.jpg",
+      "observedResponseSha256": "b1bc25198f712025c76f82dd73425f45e2323841c5514599183846619b974ffc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:yamano-ue:public-junction-crossing-candidate:gsi-continuous-roadside-junction-zebra",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225884/105832.jpg",
+          "observedResponseSha256": "99ac595f3853816009c9c3635a9bbf85a8c8b0abd40988212cdda1e151db2c00"
+        },
+        {
+          "sourceActionId": "transfer:yamano-ue:public-junction-crossing-candidate:gsi-continuous-roadside-junction-zebra",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225885/105832.jpg",
+          "observedResponseSha256": "ec5456f815eebd29eb88e8367a9276ed952402cb84c1010adf30f074874377a4"
+        },
+        {
+          "sourceActionId": "transfer:yamano-ue:public-junction-crossing-candidate:current-directional-passenger-components",
+          "url": "https://www.keneibus.jp/fs/2/2/7/5/8/_/_035___________.pdf",
+          "observedResponseSha256": "e3d0883c5144ec839d10b18f03a9ff0b0359ce03b63fb6ff0cc8a07d5930749c"
+        },
+        {
+          "sourceActionId": "gtfs:nagasaki:retained-licensed-dataset",
+          "url": "https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download",
+          "observedResponseSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc"
+        }
+      ],
+      "components": [
+        {
+          "name": "山の上",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "888125_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "db892306b6e25fab18db55701b3d8842b61db59094f8d5a54fb9d996d05884c8",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact retained native888125_01, current operator 山の上8125-1 downbound toUnzen, active route50 pickup0/dropoff0. North/eastbound public-roadside passenger component independently located by the licensed native record and current direction source, approaching the marked T-junction zebra westwards. No exact curb/pole or numeric-suffix-only association."
+          }
+        },
+        {
+          "name": "山の上",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "888125_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "41e053d4afc0ed2de77824e69b79e0a6e6e2e686101ac0833edae312498eba4d",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact retained native888125_05, current operator 山の上8125-5 upbound toNagasaki, active route50 pickup0/dropoff0. South/westbound public-roadside passenger component independently located by the licensed native record and current direction source, west of the marked T-junction zebra. No new identity or OSM proximity merge."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_CURRENT_OPERATOR_DIRECTIONAL_GTFS_PLUS_CONTIGUOUS_LICENSED_GSI_PUBLIC_JUNCTION_ZEBRA_AND_ROADSIDES",
+      "hubScopeComplete": false,
+      "locator": "Exact licensed route50 native888125_01 and888125_05 remain separate with pickup0/dropoff0 and empty platform_code. Operator own2026-04-01 stop sheet independently identifies 山の上8125-1 Unzen/downbound and8125-5 Nagasaki/upbound, corroborating each native passenger-direction component without a suffix-only join. Three unchanged licensed GSI tiles18/225884/105831,18/225884/105832,18/225885/105832 were reviewed together at exact shared tile boundaries. Native01 belongs to the north-side eastbound road component east of the T-junction; native05 belongs to the south-side westbound component west of that junction. Follow visible public north roadside west from01 to the zebra immediately east of the north-branch T-junction, cross the national road on the zebra, and follow public south roadside west to05. No north-side branch crossing, shortcut through houses/parking, arbitrary coordinate straight line, OSM platform snap or same-name collapse. The GSI view establishes a coarse continuous public roadside/crossing connection, not exact pole/curb geometry, segregated sidewalk or width, step-free access, signalization, trip time or current disruption status. CaptureDateUNKNOWN. OSM stop-area grouping and signal node are research context only and are not used as a nonexistent pedestrian way.",
+      "captureDate": "UNKNOWN"
+    }
+  ],
+  "notes": [
+    "No newnodes or services. Only necessary01→05 public walking relation via actual T-junction zebra; no direct crossing between separated stop coordinates.",
+    "Earlier paired review kept roots open because OSM lacked a pedestrian way. This new review directly inspects the complete contiguous licensed aerial view, without fabricating an OSM way.",
+    "Capture date unknown; no exact-pole, accessibility, signal or travel-time claim. Original paired-root-review remains unchanged."
+  ]
+}

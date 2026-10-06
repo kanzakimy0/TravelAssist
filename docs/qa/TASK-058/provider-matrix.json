@@ -1,0 +1,4093 @@
+{
+  "schemaVersion": 1,
+  "task": "TASK-058-B",
+  "issue": 361,
+  "researchTimestamp": "2026-09-13T07:04:31Z",
+  "researchAccessDate": "2026-09-13",
+  "reviewedDevelopSha": "c8290b199fad0828245b355f231743b67d2eaad2",
+  "branch": "codex/b-wbs-7-2-poi-provider-selection",
+  "scope": "Official-document research only; no accounts, API calls, data downloads or implementation. Public documentation/PDF retrieval is not a provider API call.",
+  "decision": "CONDITIONAL",
+  "primary": {
+    "provider": "geoapify",
+    "productionApproved": false,
+    "scope": "Preferred paid-plan candidate after all outstanding gates close."
+  },
+  "fallback": {
+    "productionProvider": null,
+    "strategy": "Fail closed; no automatic secondary provider approved. Retained licensed records can only be used after their future freshness/retention rules are defined.",
+    "contingencies": [
+      "Self-hosted OSM service would need separate implementation and operations approval.",
+      "HERE or NAVITIME could complement Japan coverage only after negotiated rights and empirical gates.",
+      "Foursquare OS Places is a separate open dataset, not licensed API-cache export."
+    ]
+  },
+  "runnerUp": {
+    "provider": "here",
+    "reason": "Stronger explicit Japan technical evidence; weaker established persistent/derived lifecycle and current commercial clarity."
+  },
+  "method": {
+    "ordering": "Hard gates first, comparative fit second; no weighted score overrides rights.",
+    "factStatuses": ["confirmed", "partial", "unknown", "not-supported"],
+    "gateStatuses": ["PASS", "CONDITIONAL", "FAIL", "UNKNOWN"],
+    "unknownPolicy": "Unknown permission is not permission; UNKNOWN also records inaccessible or conflicting current sources.",
+    "empiricalJapanEvaluation": "NOT RUN; no recalled or fabricated provider quality scores.",
+    "sourcePrecision": "accessedAt dates are actual retrieval dates, not invented per-request clock times. Timestamped PDF downloads include exact metadata.",
+    "commercialAssumption": "Public standard/direct plans only; no undisclosed enterprise exception assumed; legal billing jurisdiction UNKNOWN."
+  },
+  "requiredDimensions": [
+    "japanCoverage",
+    "textSearch",
+    "autocomplete",
+    "nearbyCategory",
+    "details",
+    "identity",
+    "coordinates",
+    "multilingual",
+    "categoriesFit",
+    "hoursStatus",
+    "contactRating",
+    "photosRights",
+    "freshness",
+    "mapbox",
+    "normalization",
+    "retention",
+    "derivedMixing",
+    "webMobile",
+    "attribution",
+    "pricing",
+    "quotaOperations",
+    "securityRegional",
+    "fallbackLockIn"
+  ],
+  "requiredHardGates": [
+    "japan",
+    "coreApi",
+    "stableIdentity",
+    "multilingual",
+    "mapbox",
+    "retention",
+    "attribution",
+    "webMobile",
+    "commercial",
+    "operational"
+  ],
+  "sources": [
+    {
+      "id": "g-api",
+      "url": "https://developers.google.com/maps/documentation/places/web-service/overview",
+      "title": "Google Places API New overview",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-fields",
+      "url": "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places",
+      "title": "Google Place resource",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-japan",
+      "url": "https://developers.google.com/maps/documentation/places/web-service/release-notes",
+      "title": "Google Places release notes; Japan postal addresses",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-lang",
+      "url": "https://developers.google.com/maps/faq",
+      "title": "Google language and credential FAQ",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-id",
+      "url": "https://developers.google.com/maps/documentation/places/web-service/place-id",
+      "title": "Google Place IDs and refresh",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-policy",
+      "url": "https://developers.google.com/maps/documentation/places/web-service/policies",
+      "title": "Google Places policies and attribution",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-terms",
+      "url": "https://cloud.google.com/maps-platform/terms",
+      "title": "Google Maps Platform terms",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-service",
+      "url": "https://cloud.google.com/maps-platform/terms/maps-service-terms",
+      "title": "Google service terms sections 14 and 15",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-price",
+      "url": "https://developers.google.com/maps/billing-and-pricing/pricing",
+      "title": "Google current global SKU list",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-bill",
+      "url": "https://developers.google.com/maps/documentation/places/web-service/usage-and-billing",
+      "title": "Google field masks, sessions and quotas",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-kit",
+      "url": "https://developers.google.com/maps/documentation/javascript/places-js",
+      "title": "Google Places Library and UI Kit",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "g-kit-mobile",
+      "url": "https://developers.google.com/maps/documentation/places/ios-sdk/places-ui-kit-custom-styling",
+      "title": "Google UI Kit platform styling",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "m-api",
+      "url": "https://docs.mapbox.com/api/search/search-box/",
+      "title": "Mapbox Search Box current reference",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "m-japan",
+      "url": "https://docs.mapbox.com/help/troubleshooting/japan-specific-considerations-search-api/",
+      "title": "Mapbox Japan search beta considerations",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "m-geocode",
+      "url": "https://docs.mapbox.com/api/search/geocoding/",
+      "title": "Mapbox Geocoding v6; no POI data",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "m-terms",
+      "url": "https://www.mapbox.com/legal/product-terms",
+      "title": "Mapbox product terms landing and July 2026 PDFs",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "m-global-pdf",
+      "url": "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf",
+      "title": "Mapbox global product terms July 21 2026",
+      "accessedAt": "2026-09-13T06:50:49.864915+00:00",
+      "accessPrecision": "instant",
+      "authority": "official",
+      "sha256": "8462b80946abe90c4996577262928c7987ec2066e464c997869c4d82ebb9ec1c",
+      "reviewedSections": ["2.7.1–2.7.7"]
+    },
+    {
+      "id": "m-japan-pdf",
+      "url": "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60465a368781cecd02ca6b_Japan%20Product%20Terms%20%28July%2021%2C%202026%29.pdf",
+      "title": "Mapbox Japan product terms July 21 2026",
+      "accessedAt": "2026-09-13T06:50:52.412666+00:00",
+      "accessPrecision": "instant",
+      "authority": "official",
+      "sha256": "c4be9379003f14d881bfd224fa6dd3167200aaba10f7a6d612db27366c6ceb5f",
+      "reviewedSections": ["2.7.1–2.7.7"]
+    },
+    {
+      "id": "m-price",
+      "url": "https://www.mapbox.com/pricing",
+      "title": "Mapbox sessions versus requests and preview versus standard prices",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-api",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/place-search",
+      "title": "Foursquare current Place Search",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-details",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/place-details",
+      "title": "Foursquare current Place Details",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-fields",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md",
+      "title": "Foursquare Pro and Premium fields",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-lang",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/localization.md",
+      "title": "Foursquare supported locales",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-usage",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/usage-guidelines.md",
+      "title": "Foursquare data retention policy",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-credit",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/visual-crediting-policy.md",
+      "title": "Foursquare links and visual credit",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-rate",
+      "url": "https://docs.foursquare.com/fsq-developers-places/reference/rate-limits.md",
+      "title": "Foursquare rate limits",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-license",
+      "url": "https://foursquare.com/legal/terms/apilicenseagreement/",
+      "title": "Foursquare API license",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-aup",
+      "url": "https://foursquare.com/legal/terms/aup/",
+      "title": "Foursquare acceptable use restrictions",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-price",
+      "url": "https://foursquare.com/pricing/",
+      "title": "Foursquare Pro and Premium pricing",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-migrate",
+      "url": "https://docs.foursquare.com/developer/reference/upcoming-changes",
+      "title": "Foursquare API migration and June 2026 rates",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-sla",
+      "url": "https://foursquare.com/legal/terms/places-api/sla/",
+      "title": "Foursquare SLA eligibility; August 27 2026",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-global",
+      "url": "https://docs.foursquare.com/data-products/docs/places-overview",
+      "title": "Foursquare global Places coverage claim",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-os-access",
+      "url": "https://docs.foursquare.com/data-products/docs/access-fsq-os-places",
+      "title": "Foursquare OS Places current Iceberg access",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-os-schema",
+      "url": "https://docs.foursquare.com/data-products/docs/places-os-data-schema",
+      "title": "Foursquare OS Places fields and freshness meaning",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "f-os-license",
+      "url": "https://huggingface.co/datasets/foursquare/fsq-os-places",
+      "title": "Publisher Foursquare dataset card and Apache 2.0 license",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-japan",
+      "url": "https://docs.here.com/geocoding-and-search/docs/search-local-coverage",
+      "title": "HERE search coverage: Japan Full, Japanese and English",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-api",
+      "url": "https://docs.here.com/geocoding-and-search/docs/japan",
+      "title": "HERE Japan search, browse, autosuggest and lookup examples",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-terms",
+      "url": "https://legal.here.com/us-en/terms/here-platform-terms",
+      "title": "HERE Platform Terms sections 5, 6 and 21",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-suppliers",
+      "url": "https://legal.here.com/terms/general-content-supplier-terms-and-notices",
+      "title": "HERE supplier notices; exact applicable Japan obligations unresolved",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-price",
+      "url": "https://www.here.com/get-started/pricing",
+      "title": "HERE Base Plan widget; numeric rates not recoverable in retrieved page",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-quota",
+      "url": "https://docs.here.com/policies/docs/limits-and-quotas",
+      "title": "HERE throttling and quota policy",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-sla",
+      "url": "https://docs.here.com/policies/docs/service-availability",
+      "title": "HERE service availability policy",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "h-mobile",
+      "url": "https://docs.here.com/here-sdk/docs/flutter-search",
+      "title": "HERE SDK online search and plan boundaries",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-api",
+      "url": "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction",
+      "title": "TomTom Orbis Places Search v3, July 2026",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-details",
+      "url": "https://docs.tomtom.com/places-search-api/documentation/places-search/details",
+      "title": "TomTom v3 Details attributes, language and errors",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-old-coverage",
+      "url": "https://docs.tomtom.com/search-api/documentation/product-information/market-coverage",
+      "title": "Legacy Search v2 coverage; not a v3 POI coverage guarantee",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-price",
+      "url": "https://docs.tomtom.com/pricing",
+      "title": "TomTom current monthly allowances and automotive POI offering",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-terms",
+      "url": "https://docs.tomtom.com/legal/terms-and-conditions",
+      "title": "TomTom current legal landing; body absent in retrieved HTML",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-faq",
+      "url": "https://docs.tomtom.com/platform/documentation/status-and-support/faqs",
+      "title": "TomTom commercial use and limits FAQ",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "t-key",
+      "url": "https://docs.tomtom.com/platform/documentation/my-tomtom/api-key-management",
+      "title": "TomTom API key handling",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-places",
+      "url": "https://apidocs.geoapify.com/docs/places/",
+      "title": "Geoapify v2 Places reference",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-details",
+      "url": "https://apidocs.geoapify.com/docs/place-details/",
+      "title": "Geoapify Place Details and Mapbox GL display example",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-autocomplete",
+      "url": "https://apidocs.geoapify.com/docs/geocoding/address-autocomplete/",
+      "title": "Geoapify address/amenity autocomplete",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-product",
+      "url": "https://www.geoapify.com/places-api/",
+      "title": "Geoapify storage, redistribution, attribution and open-data source",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-price",
+      "url": "https://www.geoapify.com/pricing/",
+      "title": "Geoapify monthly plans, daily credits and rates",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-units",
+      "url": "https://www.geoapify.com/pricing-details/",
+      "title": "Geoapify per-operation credit accounting",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "a-terms",
+      "url": "https://www.geoapify.com/terms-and-conditions/",
+      "title": "Geoapify terms v5 February 2 2024; paid SLA and commercial use",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "o-license",
+      "url": "https://www.openstreetmap.org/copyright",
+      "title": "OSM ODbL permissions and responsibilities",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "o-credit",
+      "url": "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines",
+      "title": "OSMF attribution guidelines",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "o-policy",
+      "url": "https://operations.osmfoundation.org/policies/nominatim/",
+      "title": "OSMF public Nominatim policy",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "o-api",
+      "url": "https://nominatim.org/release-docs/latest/api/Overview/",
+      "title": "Nominatim 5.3.2 endpoints and self-host administration links",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "o-id",
+      "url": "https://nominatim.org/release-docs/latest/api/Output/",
+      "title": "Nominatim output and nonpersistent place_id",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-api",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html",
+      "title": "NAVITIME spot search, fields and multilingual options",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-auto",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot-autocomplete.html",
+      "title": "NAVITIME spot autocomplete",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-id",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot-code.html",
+      "title": "NAVITIME spot lookup by code",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-terms",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html",
+      "title": "NAVITIME direct contract; order defines storable data and uses",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-market",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/description/rapid_tou.html",
+      "title": "NAVITIME RapidAPI terms; no storing spot data",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-price",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/description/about_navitime_api.html",
+      "title": "NAVITIME API list and separately priced options",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-rate",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/description/about_rate_limit.html",
+      "title": "NAVITIME request limits require sales confirmation",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    },
+    {
+      "id": "n-fresh",
+      "url": "https://api-sdk.navitime.co.jp/api/specs/tips/data_update.html",
+      "title": "NAVITIME supplier and user-driven spot updates",
+      "accessedAt": "2026-09-13",
+      "accessPrecision": "day",
+      "authority": "official"
+    }
+  ],
+  "providers": [
+    {
+      "id": "google",
+      "name": "Google Places API (New)",
+      "classification": "excluded-as-persistent-primary",
+      "officialSourceIds": [
+        "g-api",
+        "g-bill",
+        "g-fields",
+        "g-id",
+        "g-japan",
+        "g-lang",
+        "g-policy",
+        "g-price",
+        "g-service",
+        "g-terms"
+      ],
+      "facts": [
+        {
+          "provider": "google",
+          "fact": "japanCoverage",
+          "status": "partial",
+          "sourceIds": ["g-japan"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/release-notes"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Places release notes explicitly cover Japanese postal addresses.",
+          "confidence": "medium",
+          "limitation": "No independent Japan business completeness measurement."
+        },
+        {
+          "provider": "google",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["g-api"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/overview"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Text Search (New).",
+          "confidence": "high",
+          "limitation": "Field mask and regional terms apply."
+        },
+        {
+          "provider": "google",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["g-bill"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/usage-and-billing"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Autocomplete (New), single-use session tokens.",
+          "confidence": "high",
+          "limitation": "Abandoned sessions have different billing."
+        },
+        {
+          "provider": "google",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["g-api"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/overview"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Nearby Search with place-type filters.",
+          "confidence": "high",
+          "limitation": "Not exhaustive bulk extraction."
+        },
+        {
+          "provider": "google",
+          "fact": "details",
+          "status": "confirmed",
+          "sourceIds": ["g-fields"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Place details expose structured place information.",
+          "confidence": "high",
+          "limitation": "Fields may be absent or trigger higher SKUs."
+        },
+        {
+          "provider": "google",
+          "fact": "identity",
+          "status": "confirmed",
+          "sourceIds": ["g-id"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/place-id"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Place IDs may be stored; refresh IDs older than 12 months.",
+          "confidence": "high",
+          "limitation": "IDs can change, expire or identify moved businesses."
+        },
+        {
+          "provider": "google",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["g-fields"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Location coordinates and address fields.",
+          "confidence": "high",
+          "limitation": "Coordinate access does not grant derivation rights."
+        },
+        {
+          "provider": "google",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["g-lang", "g-fields"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/faq",
+            "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Japanese and English supported; localized text structures.",
+          "confidence": "medium",
+          "limitation": "No promise every business has both names."
+        },
+        {
+          "provider": "google",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["g-fields"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Place types support tourism and business categories.",
+          "confidence": "medium",
+          "limitation": "Onsen/local subtype coverage requires later taxonomy audit."
+        },
+        {
+          "provider": "google",
+          "fact": "hoursStatus",
+          "status": "confirmed",
+          "sourceIds": ["g-fields"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Regular/current opening hours and business status fields.",
+          "confidence": "high",
+          "limitation": "Availability is not real-time truth or guaranteed coverage."
+        },
+        {
+          "provider": "google",
+          "fact": "contactRating",
+          "status": "confirmed",
+          "sourceIds": ["g-fields"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Phone, website, ratings and reviews available.",
+          "confidence": "high",
+          "limitation": "Field-specific SKU and attribution apply."
+        },
+        {
+          "provider": "google",
+          "fact": "photosRights",
+          "status": "partial",
+          "sourceIds": ["g-policy"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/policies"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Photos require supplied author attribution.",
+          "confidence": "medium",
+          "limitation": "No bulk download, binary rehosting or asset-library ownership grant."
+        },
+        {
+          "provider": "google",
+          "fact": "freshness",
+          "status": "partial",
+          "sourceIds": ["g-id"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/place-id"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Refresh and obsolete-ID behavior documented.",
+          "confidence": "medium",
+          "limitation": "Per-business update SLA unknown."
+        },
+        {
+          "provider": "google",
+          "fact": "mapbox",
+          "status": "not-supported",
+          "sourceIds": ["g-service"],
+          "officialSourceUrls": [
+            "https://cloud.google.com/maps-platform/terms/maps-service-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Standard Places API terms section 14.2 prohibit use with non-Google maps.",
+          "confidence": "high",
+          "limitation": "Section 15.1 separately permits UI Kit; EEA/account terms need separate applicability check."
+        },
+        {
+          "provider": "google",
+          "fact": "normalization",
+          "status": "not-supported",
+          "sourceIds": ["g-terms"],
+          "officialSourceUrls": [
+            "https://cloud.google.com/maps-platform/terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Persistent extraction into an independent master database conflicts with standard restrictions.",
+          "confidence": "high",
+          "limitation": "Do not infer permission from JSON API availability."
+        },
+        {
+          "provider": "google",
+          "fact": "retention",
+          "status": "partial",
+          "sourceIds": ["g-service", "g-id"],
+          "officialSourceUrls": [
+            "https://cloud.google.com/maps-platform/terms/maps-service-terms",
+            "https://developers.google.com/maps/documentation/places/web-service/place-id"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "IDs may be retained; Places coordinates up to 30 consecutive days.",
+          "confidence": "medium",
+          "limitation": "No general permission to retain names, addresses, reviews or whole responses."
+        },
+        {
+          "provider": "google",
+          "fact": "derivedMixing",
+          "status": "not-supported",
+          "sourceIds": ["g-terms"],
+          "officialSourceUrls": [
+            "https://cloud.google.com/maps-platform/terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Restrictions cover content derivation, result modification and AI/model improvement.",
+          "confidence": "high",
+          "limitation": "A provider ID exception does not authorize category/region/feature derivation."
+        },
+        {
+          "provider": "google",
+          "fact": "webMobile",
+          "status": "confirmed",
+          "sourceIds": ["g-api"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/overview"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Web, iOS and Android paths are documented.",
+          "confidence": "high",
+          "limitation": "All remain subject to product and account terms."
+        },
+        {
+          "provider": "google",
+          "fact": "attribution",
+          "status": "confirmed",
+          "sourceIds": ["g-policy"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/policies"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Google branding and relevant third-party/author credit required.",
+          "confidence": "high",
+          "limitation": "Existing Mapbox attribution alone is insufficient."
+        },
+        {
+          "provider": "google",
+          "fact": "pricing",
+          "status": "confirmed",
+          "sourceIds": ["g-price", "g-bill"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/billing-and-pricing/pricing",
+            "https://developers.google.com/maps/documentation/places/web-service/usage-and-billing"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "SKU/field-based USD per 1,000; monthly free caps vary.",
+          "confidence": "high",
+          "limitation": "Global list, not India rates; do not reuse expired $200 monthly credit."
+        },
+        {
+          "provider": "google",
+          "fact": "quotaOperations",
+          "status": "partial",
+          "sourceIds": ["g-bill"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/documentation/places/web-service/usage-and-billing"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "New API minute quotas are per method per project.",
+          "confidence": "medium",
+          "limitation": "Actual project quotas and contracted SLA not inspected."
+        },
+        {
+          "provider": "google",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["g-lang", "g-service"],
+          "officialSourceUrls": [
+            "https://developers.google.com/maps/faq",
+            "https://cloud.google.com/maps-platform/terms/maps-service-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "API restrictions by platform; billing jurisdiction changes terms.",
+          "confidence": "medium",
+          "limitation": "TravelAssist legal entity and billing address unknown; no account accessed."
+        },
+        {
+          "provider": "google",
+          "fact": "fallbackLockIn",
+          "status": "not-supported",
+          "sourceIds": ["g-service", "g-terms"],
+          "officialSourceUrls": [
+            "https://cloud.google.com/maps-platform/terms/maps-service-terms",
+            "https://cloud.google.com/maps-platform/terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Raw Places API is unsuitable as automatic Mapbox data fallback.",
+          "confidence": "high",
+          "limitation": "UI Kit is a separate display-only evaluation option, not a persistence escape hatch."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Documented Japan capability; no sampled quality claim."
+        },
+        {
+          "gate": "coreApi",
+          "status": "PASS",
+          "evidenceFacts": [
+            "textSearch",
+            "autocomplete",
+            "nearbyCategory",
+            "details"
+          ],
+          "explanation": "Core API surface exists."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "PASS",
+          "evidenceFacts": ["identity"],
+          "explanation": "Retainable IDs and documented refresh model."
+        },
+        {
+          "gate": "multilingual",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Japanese-first path; field completeness unmeasured."
+        },
+        {
+          "gate": "mapbox",
+          "status": "FAIL",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Standard Places API non-Google-map restriction."
+        },
+        {
+          "gate": "retention",
+          "status": "FAIL",
+          "evidenceFacts": ["retention", "normalization"],
+          "explanation": "Persistent master lifecycle not permitted by standard terms."
+        },
+        {
+          "gate": "attribution",
+          "status": "PASS",
+          "evidenceFacts": ["attribution"],
+          "explanation": "Documented obligations can be designed for."
+        },
+        {
+          "gate": "webMobile",
+          "status": "PASS",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "Three platform paths."
+        },
+        {
+          "gate": "commercial",
+          "status": "PASS",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Public SKU model understood."
+        },
+        {
+          "gate": "operational",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["quotaOperations", "securityRegional"],
+          "explanation": "Account quotas and applicability unresolved."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Confirm applicable billing jurisdiction before any future Google evaluation.",
+        "If separately requested, assess UI Kit against frozen UI without exporting component data."
+      ]
+    },
+    {
+      "id": "mapbox",
+      "name": "Mapbox Search Box / Geocoding v6",
+      "classification": "session-only-pending-Japan-confirmation",
+      "officialSourceIds": [
+        "m-api",
+        "m-geocode",
+        "m-global-pdf",
+        "m-japan",
+        "m-japan-pdf",
+        "m-price"
+      ],
+      "facts": [
+        {
+          "provider": "mapbox",
+          "fact": "japanCoverage",
+          "status": "unknown",
+          "sourceIds": ["m-api", "m-japan"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/",
+            "https://docs.mapbox.com/help/troubleshooting/japan-specific-considerations-search-api/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search Box support list names US/Canada/Europe; linked Japan guide describes Japanese-language public beta.",
+          "confidence": "low",
+          "limitation": "Japan business POI entitlement, coverage and English queries not reconciled."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search Box forward text search.",
+          "confidence": "high",
+          "limitation": "Geocoding v6 is not a POI substitute."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Suggest/retrieve session flow.",
+          "confidence": "high",
+          "limitation": "Each request still consumes rate limit."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Category search with spatial controls.",
+          "confidence": "high",
+          "limitation": "Japan availability remains unresolved."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "details",
+          "status": "partial",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Retrieve supports basic plus photos/visit/venue attribute sets.",
+          "confidence": "medium",
+          "limitation": "Do not equate retrieve with guaranteed rich Japan details."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "identity",
+          "status": "partial",
+          "sourceIds": ["m-global-pdf", "m-japan-pdf"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf",
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60465a368781cecd02ca6b_Japan%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Feature IDs may be stored for internal business use under 2.7.6.",
+          "confidence": "medium",
+          "limitation": "IDs and associated content can change or disappear without notice."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "GeoJSON geometry and feature context.",
+          "confidence": "high",
+          "limitation": "Temporary-use rules still apply."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["m-api", "m-japan"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/",
+            "https://docs.mapbox.com/help/troubleshooting/japan-specific-considerations-search-api/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search Box lists Japanese and English; Japan beta guide is Japanese-only.",
+          "confidence": "medium",
+          "limitation": "Actual Japanese/English business data path unresolved."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "POI category IDs support category filters.",
+          "confidence": "medium",
+          "limitation": "TravelAssist local/onsen subtype fit not demonstrated."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Operational status and richer attribute groups exist.",
+          "confidence": "medium",
+          "limitation": "No Japan hours/status completeness or freshness proof."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "contactRating",
+          "status": "partial",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Venue metadata capability exists.",
+          "confidence": "medium",
+          "limitation": "Japan phone/site/rating field population unknown."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "photosRights",
+          "status": "unknown",
+          "sourceIds": ["m-global-pdf", "m-japan-pdf"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf",
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60465a368781cecd02ca6b_Japan%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Section 2.7.7 says URL data grants no rights to linked content.",
+          "confidence": "low",
+          "limitation": "Photo display/rehosting rights must be obtained separately."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "freshness",
+          "status": "partial",
+          "sourceIds": ["m-global-pdf"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Feature IDs/content may be modified or removed.",
+          "confidence": "medium",
+          "limitation": "No per-POI update SLA established."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "mapbox",
+          "status": "confirmed",
+          "sourceIds": ["m-global-pdf", "m-japan-pdf"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf",
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60465a368781cecd02ca6b_Japan%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "POI results must be used with a Mapbox map.",
+          "confidence": "high",
+          "limitation": "Current outdoors-v12 meets map-brand condition only."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "normalization",
+          "status": "not-supported",
+          "sourceIds": ["m-global-pdf"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "General POI database development is prohibited in 2.7.1.",
+          "confidence": "high",
+          "limitation": "Separate negotiated permission would be required."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "retention",
+          "status": "not-supported",
+          "sourceIds": ["m-api", "m-geocode"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/",
+            "https://docs.mapbox.com/api/search/geocoding/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search Box data is temporary; permanent Geocoding v6 has no POI data.",
+          "confidence": "high",
+          "limitation": "Do not turn on permanent geocoding and assume persistent POIs."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "derivedMixing",
+          "status": "not-supported",
+          "sourceIds": ["m-global-pdf"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "No general POI database; POI profile/audience derivation is restricted.",
+          "confidence": "high",
+          "limitation": "Future personalization requires use-specific rights review."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "webMobile",
+          "status": "confirmed",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search JS plus Android/iOS Search SDKs.",
+          "confidence": "high",
+          "limitation": "Japan/account product coverage still unresolved."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "attribution",
+          "status": "partial",
+          "sourceIds": ["m-global-pdf", "m-api"],
+          "officialSourceUrls": [
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf",
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Preserve Mapbox and applicable third-party attribution.",
+          "confidence": "medium",
+          "limitation": "Rich photo/link obligations unresolved."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "pricing",
+          "status": "partial",
+          "sourceIds": ["m-price"],
+          "officialSourceUrls": ["https://www.mapbox.com/pricing"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Separate session/request pricing; both preview and standard tables shown.",
+          "confidence": "medium",
+          "limitation": "Applicable schedule, new rich attributes and ETA extras need confirmation."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "quotaOperations",
+          "status": "confirmed",
+          "sourceIds": ["m-api"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Default 10 requests/second; sessions require unique tokens.",
+          "confidence": "high",
+          "limitation": "Higher limits require sales; Japan beta production terms unknown."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["m-api", "m-japan-pdf"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/",
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60465a368781cecd02ca6b_Japan%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Token/URL restrictions and Japan-specific product terms exist.",
+          "confidence": "medium",
+          "limitation": "Billing entity and actual entitlement not inspected."
+        },
+        {
+          "provider": "mapbox",
+          "fact": "fallbackLockIn",
+          "status": "not-supported",
+          "sourceIds": ["m-api", "m-global-pdf"],
+          "officialSourceUrls": [
+            "https://docs.mapbox.com/api/search/search-box/",
+            "https://cdn.prod.website-files.com/609ed46055e27a02ffc0749b/6a60463142f6478d57642594_Mapbox%20Product%20Terms%20%28July%2021%2C%202026%29.pdf"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Transient Mapbox-only POIs cannot replenish persistent master data.",
+          "confidence": "high",
+          "limitation": "Retained feature IDs do not permit retained field values."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Official pages conflict in scope."
+        },
+        {
+          "gate": "coreApi",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["details", "textSearch"],
+          "explanation": "API surface exists outside unresolved Japan scope."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["identity"],
+          "explanation": "IDs retainable but removable; refresh continuity unproven."
+        },
+        {
+          "gate": "multilingual",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Japan guide versus global language list."
+        },
+        {
+          "gate": "mapbox",
+          "status": "PASS",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Explicit Mapbox map requirement fits current map."
+        },
+        {
+          "gate": "retention",
+          "status": "FAIL",
+          "evidenceFacts": ["retention", "normalization"],
+          "explanation": "Temporary POIs; no general POI database."
+        },
+        {
+          "gate": "attribution",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["attribution", "photosRights"],
+          "explanation": "Basic map credit feasible; rich media unknown."
+        },
+        {
+          "gate": "webMobile",
+          "status": "PASS",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "Web and native SDK paths documented."
+        },
+        {
+          "gate": "commercial",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Preview/standard applicability unresolved."
+        },
+        {
+          "gate": "operational",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["quotaOperations", "japanCoverage"],
+          "explanation": "10 RPS documented; Japan service viability not established."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Obtain written Japan POI/English/GA and retention terms if reconsidered.",
+        "Do not infer photo rights from returned URLs."
+      ]
+    },
+    {
+      "id": "foursquare",
+      "name": "Foursquare current Places API",
+      "classification": "session-only; OS dataset separately evaluated",
+      "officialSourceIds": [
+        "f-api",
+        "f-aup",
+        "f-credit",
+        "f-details",
+        "f-fields",
+        "f-global",
+        "f-lang",
+        "f-license",
+        "f-migrate",
+        "f-os-access",
+        "f-os-license",
+        "f-os-schema",
+        "f-price",
+        "f-rate",
+        "f-sla",
+        "f-usage"
+      ],
+      "facts": [
+        {
+          "provider": "foursquare",
+          "fact": "japanCoverage",
+          "status": "partial",
+          "sourceIds": ["f-global"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/data-products/docs/places-overview"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Global Places product covers international businesses.",
+          "confidence": "medium",
+          "limitation": "No country-specific Japan completeness/quality measurement."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["f-api"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/place-search"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search by name, category, phone, chain or taste.",
+          "confidence": "high",
+          "limitation": "Current places-api service; not deprecated legacy v3."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["f-price"],
+          "officialSourceUrls": ["https://foursquare.com/pricing/"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Autocomplete included in Pro endpoints.",
+          "confidence": "high",
+          "limitation": "No live Japanese suggestion quality test."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["f-api"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/place-search"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Coordinates/radius, locality, bbox and category filters.",
+          "confidence": "high",
+          "limitation": "No exhaustive ingestion authorization."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "details",
+          "status": "confirmed",
+          "sourceIds": ["f-details", "f-fields"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/place-details",
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Place Details with Pro/Premium fields.",
+          "confidence": "high",
+          "limitation": "Premium field selection changes billing."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "identity",
+          "status": "confirmed",
+          "sourceIds": ["f-fields", "f-usage"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md",
+            "https://docs.foursquare.com/fsq-developers-places/reference/usage-guidelines.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "fsq_place_id is unique and may be cached for application performance.",
+          "confidence": "high",
+          "limitation": "No immutable identity guarantee; OS dataset provenance is separate."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["f-fields"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Latitude/longitude and address fields.",
+          "confidence": "high",
+          "limitation": "PAYG retention restrictions still apply."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["f-lang"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/localization.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "ja and en locales supported.",
+          "confidence": "medium",
+          "limitation": "Venue names and tips may remain untranslated."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["f-fields"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Hierarchical categories and chains.",
+          "confidence": "medium",
+          "limitation": "Local subtype mapping and Japan coverage not tested."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["f-fields"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Hours/Premium data and date_closed/quality flags exist.",
+          "confidence": "medium",
+          "limitation": "Closure recording date is not necessarily actual closure date."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "contactRating",
+          "status": "confirmed",
+          "sourceIds": ["f-fields"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Pro contact fields and richer Premium fields.",
+          "confidence": "high",
+          "limitation": "Missing values and premium entitlement apply."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "photosRights",
+          "status": "partial",
+          "sourceIds": ["f-credit", "f-usage"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/visual-crediting-policy.md",
+            "https://docs.foursquare.com/fsq-developers-places/reference/usage-guidelines.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Photo use requires visual credit plus venue link; photo IDs retainable.",
+          "confidence": "medium",
+          "limitation": "No API photo binary retention or repository asset license established."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "freshness",
+          "status": "partial",
+          "sourceIds": ["f-os-schema", "f-fields"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/data-products/docs/places-os-data-schema",
+            "https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Refresh/closure metadata and unresolved quality flags.",
+          "confidence": "medium",
+          "limitation": "Any-reference refresh is not complete field revalidation."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "mapbox",
+          "status": "unknown",
+          "sourceIds": ["f-license", "f-credit"],
+          "officialSourceUrls": [
+            "https://foursquare.com/legal/terms/apilicenseagreement/",
+            "https://docs.foursquare.com/fsq-developers-places/reference/visual-crediting-policy.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Application display and credit are described.",
+          "confidence": "low",
+          "limitation": "Specific mixed-map/display entitlement for the intended pattern not explicitly settled."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "normalization",
+          "status": "not-supported",
+          "sourceIds": ["f-usage", "f-aup"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/usage-guidelines.md",
+            "https://foursquare.com/legal/terms/aup/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "PAYG cannot cache other attributes; harvesting/database enhancement restricted.",
+          "confidence": "high",
+          "limitation": "Persistent server normalization needs different agreement."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "retention",
+          "status": "partial",
+          "sourceIds": ["f-usage"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/usage-guidelines.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Place/photo/address IDs retainable; PAYG other attributes no cache; Enterprise default device-only 24 hours.",
+          "confidence": "medium",
+          "limitation": "Enterprise label alone does not authorize server cache."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "derivedMixing",
+          "status": "not-supported",
+          "sourceIds": ["f-license", "f-aup"],
+          "officialSourceUrls": [
+            "https://foursquare.com/legal/terms/apilicenseagreement/",
+            "https://foursquare.com/legal/terms/aup/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "API derivative/harvesting restrictions block assumed independent master enrichment.",
+          "confidence": "high",
+          "limitation": "Do not transfer OS dataset Apache rights onto API responses."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "webMobile",
+          "status": "partial",
+          "sourceIds": ["f-license", "f-credit"],
+          "officialSourceUrls": [
+            "https://foursquare.com/legal/terms/apilicenseagreement/",
+            "https://docs.foursquare.com/fsq-developers-places/reference/visual-crediting-policy.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Application/site service and mobile linking documented.",
+          "confidence": "medium",
+          "limitation": "App-specific entitlement still needs confirmation."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "attribution",
+          "status": "confirmed",
+          "sourceIds": ["f-credit"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/visual-crediting-policy.md"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Search lists visual credit; non-basic data link plus visual credit.",
+          "confidence": "high",
+          "limitation": "Preserve venue attribution independently of map provider."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "pricing",
+          "status": "confirmed",
+          "sourceIds": ["f-price", "f-migrate"],
+          "officialSourceUrls": [
+            "https://foursquare.com/pricing/",
+            "https://docs.foursquare.com/developer/reference/upcoming-changes"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "June 2026 Pro: 500 free calls then $15/1,000 first tier; Premium $18.75/1,000 first tier.",
+          "confidence": "high",
+          "limitation": "Volume tiers and premium field selection apply; Ask excluded."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "quotaOperations",
+          "status": "partial",
+          "sourceIds": ["f-rate", "f-sla"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/fsq-developers-places/reference/rate-limits.md",
+            "https://foursquare.com/legal/terms/places-api/sla/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "PAYG 50 QPS total; Enterprise 100. Published 99.90% SLA excludes PAYG/trial/beta.",
+          "confidence": "medium",
+          "limitation": "Do not advertise enterprise SLA for sandbox/PAYG."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["f-license", "f-migrate"],
+          "officialSourceUrls": [
+            "https://foursquare.com/legal/terms/apilicenseagreement/",
+            "https://docs.foursquare.com/developer/reference/upcoming-changes"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Current service and paid plan require proper authenticated application use.",
+          "confidence": "medium",
+          "limitation": "No account/region entitlements inspected."
+        },
+        {
+          "provider": "foursquare",
+          "fact": "fallbackLockIn",
+          "status": "partial",
+          "sourceIds": ["f-os-access", "f-os-license"],
+          "officialSourceUrls": [
+            "https://docs.foursquare.com/data-products/docs/access-fsq-os-places",
+            "https://huggingface.co/datasets/foursquare/fsq-os-places"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Separately sourced OS Places dataset is Apache 2.0; current access uses portal tokens/Iceberg.",
+          "confidence": "medium",
+          "limitation": "It needs a new search/index/operations project, lacks API Premium parity and is not deployed fallback."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Global coverage does not prove Japan quality."
+        },
+        {
+          "gate": "coreApi",
+          "status": "PASS",
+          "evidenceFacts": [
+            "textSearch",
+            "autocomplete",
+            "nearbyCategory",
+            "details"
+          ],
+          "explanation": "Core endpoint family exists."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "PASS",
+          "evidenceFacts": ["identity"],
+          "explanation": "Retainable unique lookup ID."
+        },
+        {
+          "gate": "multilingual",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Venue names not necessarily translated."
+        },
+        {
+          "gate": "mapbox",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Intended mixed-map rights not explicit enough."
+        },
+        {
+          "gate": "retention",
+          "status": "FAIL",
+          "evidenceFacts": ["retention", "normalization"],
+          "explanation": "PAYG field caching incompatible with master persistence."
+        },
+        {
+          "gate": "attribution",
+          "status": "PASS",
+          "evidenceFacts": ["attribution"],
+          "explanation": "Detailed implementable credit policy."
+        },
+        {
+          "gate": "webMobile",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "Technical path exists; agreement applicability unresolved."
+        },
+        {
+          "gate": "commercial",
+          "status": "PASS",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Current Pro/Premium rates known."
+        },
+        {
+          "gate": "operational",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["quotaOperations"],
+          "explanation": "Quota known; PAYG lacks cited SLA."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Separate API and OS dataset licenses, sources and update processes.",
+        "Obtain negotiated storage/mixed-map terms before reconsidering API as primary."
+      ]
+    },
+    {
+      "id": "here",
+      "name": "HERE Geocoding & Search v7",
+      "classification": "runner-up; contract-gated",
+      "officialSourceIds": [
+        "h-api",
+        "h-japan",
+        "h-mobile",
+        "h-price",
+        "h-quota",
+        "h-sla",
+        "h-suppliers",
+        "h-terms"
+      ],
+      "facts": [
+        {
+          "provider": "here",
+          "fact": "japanCoverage",
+          "status": "confirmed",
+          "sourceIds": ["h-japan"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/search-local-coverage"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Japan search quality classified Full; Japanese and English queries explicitly supported.",
+          "confidence": "high",
+          "limitation": "Vendor quality classification, not our empirical acceptance."
+        },
+        {
+          "provider": "here",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Discover supports Japan place queries.",
+          "confidence": "high",
+          "limitation": "No live request made."
+        },
+        {
+          "provider": "here",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Autosuggest covers Japan places.",
+          "confidence": "high",
+          "limitation": "Address autocomplete is not substituted for POI autosuggest."
+        },
+        {
+          "provider": "here",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Browse example covers Japan convenience stores.",
+          "confidence": "high",
+          "limitation": "Local taxonomy completeness unmeasured."
+        },
+        {
+          "provider": "here",
+          "fact": "details",
+          "status": "confirmed",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Lookup by HERE place ID shown for Sapporo Station.",
+          "confidence": "high",
+          "limitation": "Not a guarantee all optional details are present."
+        },
+        {
+          "provider": "here",
+          "fact": "identity",
+          "status": "partial",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "HERE place ID supports lookup.",
+          "confidence": "medium",
+          "limitation": "Long-term ID retention/redirect lifecycle under intended license unresolved."
+        },
+        {
+          "provider": "here",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Position/access coordinates in search output.",
+          "confidence": "high",
+          "limitation": "Supplier and Japan terms apply."
+        },
+        {
+          "provider": "here",
+          "fact": "multilingual",
+          "status": "confirmed",
+          "sourceIds": ["h-japan"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/search-local-coverage"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Japanese and English query support is explicit.",
+          "confidence": "high",
+          "limitation": "No guarantee of dual names for every POI."
+        },
+        {
+          "provider": "here",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Category IDs and business categories in Japan examples.",
+          "confidence": "medium",
+          "limitation": "Onsen/local-category coverage requires targeted evaluation."
+        },
+        {
+          "provider": "here",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Japan sample includes openingHours.",
+          "confidence": "medium",
+          "limitation": "Closure-status completeness and freshness unknown."
+        },
+        {
+          "provider": "here",
+          "fact": "contactRating",
+          "status": "partial",
+          "sourceIds": ["h-api"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Contacts available in Japan sample.",
+          "confidence": "medium",
+          "limitation": "Rating/review coverage not established."
+        },
+        {
+          "provider": "here",
+          "fact": "photosRights",
+          "status": "unknown",
+          "sourceIds": ["h-terms", "h-suppliers"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms",
+            "https://legal.here.com/terms/general-content-supplier-terms-and-notices"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "No broad reusable Japan POI-photo grant established.",
+          "confidence": "low",
+          "limitation": "Use approved asset fallback; do not infer rights from URLs."
+        },
+        {
+          "provider": "here",
+          "fact": "freshness",
+          "status": "unknown",
+          "sourceIds": ["h-api", "h-sla"],
+          "officialSourceUrls": [
+            "https://docs.here.com/geocoding-and-search/docs/japan",
+            "https://docs.here.com/policies/docs/service-availability"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Service availability policy is separate from place freshness.",
+          "confidence": "low",
+          "limitation": "Per-place update frequency and correction latency unknown."
+        },
+        {
+          "provider": "here",
+          "fact": "mapbox",
+          "status": "partial",
+          "sourceIds": ["h-terms"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "6.4(a) permits distinguishable attributed layers; Japan exception includes POI.",
+          "confidence": "medium",
+          "limitation": "Exact applicable subscription/supplier notice still needs confirmation."
+        },
+        {
+          "provider": "here",
+          "fact": "normalization",
+          "status": "unknown",
+          "sourceIds": ["h-terms"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "6.4(c/e) restrict modification/derivatives; narrow combined search/route exception exists.",
+          "confidence": "low",
+          "limitation": "Persistent canonical feature extraction is not automatically authorized."
+        },
+        {
+          "provider": "here",
+          "fact": "retention",
+          "status": "partial",
+          "sourceIds": ["h-terms"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "General external cache limit 30 days; Japan 24-hour rule references a GS exception.",
+          "confidence": "medium",
+          "limitation": "Exact Japan GS scope and persistent master/ID exception remain UNKNOWN."
+        },
+        {
+          "provider": "here",
+          "fact": "derivedMixing",
+          "status": "not-supported",
+          "sourceIds": ["h-terms"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "AI/inferencing use prohibited; incompatible open-license exposure and request fan-out also restricted.",
+          "confidence": "high",
+          "limitation": "Future scoring/AI or ODbL database mixing requires express resolution."
+        },
+        {
+          "provider": "here",
+          "fact": "webMobile",
+          "status": "confirmed",
+          "sourceIds": ["h-mobile", "h-terms"],
+          "officialSourceUrls": [
+            "https://docs.here.com/here-sdk/docs/flutter-search",
+            "https://legal.here.com/us-en/terms/here-platform-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Online SDK search and web/mobile application definitions.",
+          "confidence": "high",
+          "limitation": "Offline Navigate data is a separate entitlement."
+        },
+        {
+          "provider": "here",
+          "fact": "attribution",
+          "status": "partial",
+          "sourceIds": ["h-terms", "h-suppliers"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms",
+            "https://legal.here.com/terms/general-content-supplier-terms-and-notices"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Source distinction, HERE notices and end-user/privacy terms required.",
+          "confidence": "medium",
+          "limitation": "Exact Japan supplier credit package unresolved."
+        },
+        {
+          "provider": "here",
+          "fact": "pricing",
+          "status": "unknown",
+          "sourceIds": ["h-price"],
+          "officialSourceUrls": ["https://www.here.com/get-started/pricing"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Official Base Plan page retrieved, but pricing widget values unavailable.",
+          "confidence": "low",
+          "limitation": "No copied historical free tier or invented transaction price."
+        },
+        {
+          "provider": "here",
+          "fact": "quotaOperations",
+          "status": "partial",
+          "sourceIds": ["h-quota", "h-sla"],
+          "officialSourceUrls": [
+            "https://docs.here.com/policies/docs/limits-and-quotas",
+            "https://docs.here.com/policies/docs/service-availability"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "429/503 throttling possible even below quotas after traffic spikes; availability policy exists.",
+          "confidence": "medium",
+          "limitation": "Plan-specific rates, limits and SLA applicability unknown."
+        },
+        {
+          "provider": "here",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["h-terms", "h-api"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms",
+            "https://docs.here.com/geocoding-and-search/docs/japan"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Authenticated service and Japan content conditions apply.",
+          "confidence": "medium",
+          "limitation": "Business account, subscription and data-processing terms uninspected."
+        },
+        {
+          "provider": "here",
+          "fact": "fallbackLockIn",
+          "status": "not-supported",
+          "sourceIds": ["h-terms"],
+          "officialSourceUrls": [
+            "https://legal.here.com/us-en/terms/here-platform-terms"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Not an automatic master-data fallback under standard restrictions.",
+          "confidence": "high",
+          "limitation": "Commercial fallback only after rights, attribution, quota and identity gates close."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "PASS",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Explicit official Japan GS evidence."
+        },
+        {
+          "gate": "coreApi",
+          "status": "PASS",
+          "evidenceFacts": [
+            "textSearch",
+            "autocomplete",
+            "nearbyCategory",
+            "details"
+          ],
+          "explanation": "All core methods documented for Japan."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["identity"],
+          "explanation": "Lookup works; retention and lifecycle unresolved."
+        },
+        {
+          "gate": "multilingual",
+          "status": "PASS",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Japanese and English query support."
+        },
+        {
+          "gate": "mapbox",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Layering exception identified; subscription/supplier review needed."
+        },
+        {
+          "gate": "retention",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["retention", "normalization"],
+          "explanation": "Japan GS and persistent normalized lifecycle unresolved."
+        },
+        {
+          "gate": "attribution",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["attribution"],
+          "explanation": "Supplier-specific package outstanding."
+        },
+        {
+          "gate": "webMobile",
+          "status": "PASS",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "Web/mobile technical and application path."
+        },
+        {
+          "gate": "commercial",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Current numeric pricing not verifiable in retrieved widget."
+        },
+        {
+          "gate": "operational",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["quotaOperations"],
+          "explanation": "Plan and operational acceptance outstanding."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Confirm Japan GS cache TTL, ID lifetime and permitted persistent fields.",
+        "Confirm canonical normalization, cross-user use and future scoring/AI rights in writing.",
+        "Obtain applicable price/SKU/limits and attribution schedule."
+      ]
+    },
+    {
+      "id": "tomtom",
+      "name": "TomTom Orbis Places Search v3 (legacy v2 checked separately)",
+      "classification": "evaluation-only",
+      "officialSourceIds": [
+        "t-api",
+        "t-details",
+        "t-faq",
+        "t-key",
+        "t-old-coverage",
+        "t-price",
+        "t-terms"
+      ],
+      "facts": [
+        {
+          "provider": "tomtom",
+          "fact": "japanCoverage",
+          "status": "unknown",
+          "sourceIds": ["t-api", "t-old-coverage"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction",
+            "https://docs.tomtom.com/search-api/documentation/product-information/market-coverage"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Current v3 offering exists; legacy table is address/road/EV coverage.",
+          "confidence": "low",
+          "limitation": "Neither city-level legacy coverage nor Japan EV support proves v3 Japan POI quality."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["t-api"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Discover resolves completed queries.",
+          "confidence": "high",
+          "limitation": "Suggest is a different stage."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["t-api"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Suggest supports as-you-type sessions.",
+          "confidence": "high",
+          "limitation": "Japanese behavior not measured."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["t-api"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Discover supports nearby/filter discovery.",
+          "confidence": "high",
+          "limitation": "Japan coverage unresolved."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "details",
+          "status": "confirmed",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Details returns selected attributes for a location.",
+          "confidence": "high",
+          "limitation": "Attributes header required; implicit field expansion may affect billing."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "identity",
+          "status": "partial",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Unique result id plus type used for lookup.",
+          "confidence": "medium",
+          "limitation": "Long-term persistence and version migration contract unknown."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "GeoJSON position and access points.",
+          "confidence": "high",
+          "limitation": "Returned geometry does not settle storage rights."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Accept-Language uses best effort then local-language fallback.",
+          "confidence": "medium",
+          "limitation": "Japan ja/en availability not specifically established."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "POI type IDs/names and brands.",
+          "confidence": "medium",
+          "limitation": "Onsen/local Japanese subtype coverage unknown."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Opening hours have local dates, time ranges and UTC offsets.",
+          "confidence": "medium",
+          "limitation": "Closed-business status coverage not established."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "contactRating",
+          "status": "partial",
+          "sourceIds": ["t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Contacts and TripAdvisor identifier documented.",
+          "confidence": "medium",
+          "limitation": "An external TripAdvisor ID is not review/rating display permission."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "photosRights",
+          "status": "unknown",
+          "sourceIds": ["t-price", "t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/pricing",
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Separate rich POI details/photos offering is marked automotive-only on pricing page.",
+          "confidence": "low",
+          "limitation": "Do not apply that entitlement to Web/mobile Places Search v3."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "freshness",
+          "status": "unknown",
+          "sourceIds": ["t-api"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Current API product/release dates are visible.",
+          "confidence": "low",
+          "limitation": "Data update cadence and place quality SLA unknown."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "mapbox",
+          "status": "unknown",
+          "sourceIds": ["t-terms"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/legal/terms-and-conditions"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Current legal landing returned navigation without operative terms.",
+          "confidence": "low",
+          "limitation": "Mixed Mapbox display permission not verified."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "normalization",
+          "status": "unknown",
+          "sourceIds": ["t-terms"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/legal/terms-and-conditions"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "No recovered operative license for server normalization.",
+          "confidence": "low",
+          "limitation": "No presumed permission."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "retention",
+          "status": "unknown",
+          "sourceIds": ["t-terms"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/legal/terms-and-conditions"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Cache, ID and field retention rules not verifiable from retrieved current legal page.",
+          "confidence": "low",
+          "limitation": "Require official applicable terms."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "derivedMixing",
+          "status": "unknown",
+          "sourceIds": ["t-terms"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/legal/terms-and-conditions"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Derived feature and provider-mixing rights unresolved.",
+          "confidence": "low",
+          "limitation": "Technical API interoperability is not a license."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "webMobile",
+          "status": "partial",
+          "sourceIds": ["t-api", "t-faq"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/product-information/introduction",
+            "https://docs.tomtom.com/platform/documentation/status-and-support/faqs"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "HTTP API and commercial application use described.",
+          "confidence": "medium",
+          "limitation": "Exact v3 native/platform entitlements remain unverified."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "attribution",
+          "status": "unknown",
+          "sourceIds": ["t-terms"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/legal/terms-and-conditions"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Applicable v3 data/brand/third-party credit package unknown.",
+          "confidence": "low",
+          "limitation": "Cannot reuse basemap credit blindly."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "pricing",
+          "status": "partial",
+          "sourceIds": ["t-price", "t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/pricing",
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Monthly free allowances: Suggest 10k, Discover 5k, Details 5k.",
+          "confidence": "medium",
+          "limitation": "Paid unit prices/selected-attribute costs not verified; old daily quota not current."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "quotaOperations",
+          "status": "partial",
+          "sourceIds": ["t-faq", "t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/platform/documentation/status-and-support/faqs",
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "429 on QPS overage; generic platform QPS guidance exists.",
+          "confidence": "medium",
+          "limitation": "Actual v3 account limits/SLA unknown."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["t-key", "t-details"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/platform/documentation/my-tomtom/api-key-management",
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Protect API keys; geopolitical view and entitlement can cause 403.",
+          "confidence": "medium",
+          "limitation": "No production account accessed."
+        },
+        {
+          "provider": "tomtom",
+          "fact": "fallbackLockIn",
+          "status": "unknown",
+          "sourceIds": ["t-details", "t-terms"],
+          "officialSourceUrls": [
+            "https://docs.tomtom.com/places-search-api/documentation/places-search/details",
+            "https://docs.tomtom.com/legal/terms-and-conditions"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Versioned IDs, attribute billing and unknown reuse rights impede fallback approval.",
+          "confidence": "low",
+          "limitation": "Remain evaluation-only."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "No current v3 Japan proof."
+        },
+        {
+          "gate": "coreApi",
+          "status": "PASS",
+          "evidenceFacts": [
+            "textSearch",
+            "autocomplete",
+            "nearbyCategory",
+            "details"
+          ],
+          "explanation": "Current API family covers core functions."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["identity"],
+          "explanation": "Lookup identifier exists, lifecycle unresolved."
+        },
+        {
+          "gate": "multilingual",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Best-effort language header is not Japan data proof."
+        },
+        {
+          "gate": "mapbox",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Applicable license not recovered."
+        },
+        {
+          "gate": "retention",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["retention"],
+          "explanation": "Persistent field rights unknown."
+        },
+        {
+          "gate": "attribution",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["attribution"],
+          "explanation": "No verified applicable credit package."
+        },
+        {
+          "gate": "webMobile",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "HTTP path exists; rights unresolved."
+        },
+        {
+          "gate": "commercial",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Free quotas alone cannot estimate production cost."
+        },
+        {
+          "gate": "operational",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["quotaOperations"],
+          "explanation": "Applicable limits/SLA unknown."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Obtain current v3 Japan coverage, paid attribute rates and operative license.",
+        "Do not inherit legacy v2 limits or automotive-photo rights."
+      ]
+    },
+    {
+      "id": "geoapify",
+      "name": "Geoapify managed OSM Places + Details + Autocomplete",
+      "classification": "conditional-preferred-primary",
+      "officialSourceIds": [
+        "a-autocomplete",
+        "a-details",
+        "a-places",
+        "a-price",
+        "a-product",
+        "a-terms",
+        "a-units",
+        "o-credit",
+        "o-license"
+      ],
+      "facts": [
+        {
+          "provider": "geoapify",
+          "fact": "japanCoverage",
+          "status": "partial",
+          "sourceIds": ["a-product", "a-details"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/places-api/",
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "OSM-backed global POIs; available data can be incomplete or outdated.",
+          "confidence": "medium",
+          "limitation": "Japan business recall, rural/onsen coverage and quality remain UNKNOWN."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "textSearch",
+          "status": "partial",
+          "sourceIds": ["a-places", "a-autocomplete"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/places/",
+            "https://apidocs.geoapify.com/docs/geocoding/address-autocomplete/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Places name filter plus category/spatial context; autocomplete accepts partial place names.",
+          "confidence": "medium",
+          "limitation": "Not proven equivalent to broad Japanese natural-language business search."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["a-autocomplete"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/geocoding/address-autocomplete/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Autocomplete includes amenity type and partial place names.",
+          "confidence": "high",
+          "limitation": "Do not mislabel as address-only; Japanese suggestion quality untested."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["a-places"],
+          "officialSourceUrls": ["https://apidocs.geoapify.com/docs/places/"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Category/condition filters with radius, rectangle or area.",
+          "confidence": "high",
+          "limitation": "No canonical TravelAssist tag mapping supplied."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "details",
+          "status": "confirmed",
+          "sourceIds": ["a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Details endpoint accepts Geoapify place ID.",
+          "confidence": "high",
+          "limitation": "Some details/features require extra credits."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "identity",
+          "status": "partial",
+          "sourceIds": ["a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Unique place_id supports details lookup and permitted storage.",
+          "confidence": "medium",
+          "limitation": "ID stability across updates/reimports, redirects and deletion behavior UNKNOWN."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Coordinates, structured address and geometry.",
+          "confidence": "high",
+          "limitation": "OSM object centroid may not be a validated visitor entrance."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["a-places", "a-autocomplete", "a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/places/",
+            "https://apidocs.geoapify.com/docs/geocoding/address-autocomplete/",
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "ja/en language parameters and international-name fields exist.",
+          "confidence": "medium",
+          "limitation": "Translations depend on source data; no complete bilingual guarantee."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["a-places"],
+          "officialSourceUrls": ["https://apidocs.geoapify.com/docs/places/"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Broad tourism, food, accommodation, shopping, transit and entertainment categories.",
+          "confidence": "medium",
+          "limitation": "API and marketing category counts differ; onsen/local semantic fit needs audit."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Opening-hours strings supplied when present in OSM.",
+          "confidence": "medium",
+          "limitation": "No current open/closed-business completeness or freshness guarantee."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "contactRating",
+          "status": "partial",
+          "sourceIds": ["a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Optional website/phone/contact fields.",
+          "confidence": "medium",
+          "limitation": "Reliable ratings/reviews not established by the response schema despite marketing wording."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "photosRights",
+          "status": "unknown",
+          "sourceIds": ["a-details", "a-terms"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/",
+            "https://www.geoapify.com/terms-and-conditions/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Open-data details do not establish independent photograph rights.",
+          "confidence": "low",
+          "limitation": "Photos disabled until individual license/attribution/asset approval."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "freshness",
+          "status": "partial",
+          "sourceIds": ["a-details"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Provider warns source data may be missing or outdated.",
+          "confidence": "medium",
+          "limitation": "Japan update latency and correction SLA unknown; fetched time is not observed time."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "mapbox",
+          "status": "confirmed",
+          "sourceIds": ["a-details", "a-product", "o-license"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/place-details/",
+            "https://www.geoapify.com/places-api/",
+            "https://www.openstreetmap.org/copyright"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Official details docs show Mapbox GL GeoJSON rendering; OSM permits attributed use.",
+          "confidence": "high",
+          "limitation": "Keep OSM/data credits in addition to current Mapbox map credit."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "normalization",
+          "status": "partial",
+          "sourceIds": ["a-product", "o-license"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/places-api/",
+            "https://www.openstreetmap.org/copyright"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Storage/adaptation possible under Geoapify and ODbL obligations.",
+          "confidence": "medium",
+          "limitation": "Future master structure and derived/collective database treatment require explicit audit."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "retention",
+          "status": "confirmed",
+          "sourceIds": ["a-product"],
+          "officialSourceUrls": ["https://www.geoapify.com/places-api/"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Caching, storage and redistribution expressly allowed with attribution obligations.",
+          "confidence": "high",
+          "limitation": "No vendor TTL found; ODbL still applies, and photo rights are separate."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "derivedMixing",
+          "status": "partial",
+          "sourceIds": ["o-license", "o-credit", "a-terms"],
+          "officialSourceUrls": [
+            "https://www.openstreetmap.org/copyright",
+            "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines",
+            "https://www.geoapify.com/terms-and-conditions/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "OSM adaptation is allowed subject to license/share-alike responsibilities.",
+          "confidence": "medium",
+          "limitation": "Do not mix restricted proprietary fields into an ODbL derivative database without compatible rights."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "webMobile",
+          "status": "partial",
+          "sourceIds": ["a-terms", "a-details", "o-license"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/terms-and-conditions/",
+            "https://apidocs.geoapify.com/docs/place-details/",
+            "https://www.openstreetmap.org/copyright"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "HTTP/GeoJSON supports Web and future native clients; OSM covers apps.",
+          "confidence": "medium",
+          "limitation": "Explicit subscription applicability to TravelAssist Web+iOS+Android remains UNKNOWN."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "attribution",
+          "status": "confirmed",
+          "sourceIds": ["a-product", "o-credit"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/places-api/",
+            "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "OSM credit and ODbL link; Geoapify credit additionally on Free plan.",
+          "confidence": "high",
+          "limitation": "Must remain visible on maps, details and derived exported works as applicable."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "pricing",
+          "status": "confirmed",
+          "sourceIds": ["a-price", "a-units"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/pricing/",
+            "https://www.geoapify.com/pricing-details/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Paid API10 $59/month, API25 $109, API50 $179; daily credits and RPS caps.",
+          "confidence": "high",
+          "limitation": "Taxes, overages, support upgrades and other APIs excluded from scenarios."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "quotaOperations",
+          "status": "partial",
+          "sourceIds": ["a-price", "a-terms"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/pricing/",
+            "https://www.geoapify.com/terms-and-conditions/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Paid terms state 99.5% monthly availability; plan rate limits published.",
+          "confidence": "medium",
+          "limitation": "Availability is not POI accuracy; latency/failover not empirically measured."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["a-places", "a-terms"],
+          "officialSourceUrls": [
+            "https://apidocs.geoapify.com/docs/places/",
+            "https://www.geoapify.com/terms-and-conditions/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Key restrictions by IP/referrer/origin/CORS; paid commercial plans exist.",
+          "confidence": "medium",
+          "limitation": "DPA/processing region and multi-platform subscription scope need confirmation."
+        },
+        {
+          "provider": "geoapify",
+          "fact": "fallbackLockIn",
+          "status": "partial",
+          "sourceIds": ["a-product", "o-license"],
+          "officialSourceUrls": [
+            "https://www.geoapify.com/places-api/",
+            "https://www.openstreetmap.org/copyright"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Retainable OSM-source fields ease provider exit.",
+          "confidence": "medium",
+          "limitation": "Opaque IDs and category semantics still require migration; same-source backup cannot fix OSM coverage gaps."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Japan quality evidence insufficient for plain recommendation."
+        },
+        {
+          "gate": "coreApi",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["textSearch", "autocomplete", "details"],
+          "explanation": "API building blocks exist; business-name/core journey fit unmeasured."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["identity"],
+          "explanation": "Lookup IDs present; change/refresh lifecycle unresolved."
+        },
+        {
+          "gate": "multilingual",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Parameters exist; source-name completeness unknown."
+        },
+        {
+          "gate": "mapbox",
+          "status": "PASS",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Official Mapbox GL example plus permitted attributed open-data use."
+        },
+        {
+          "gate": "retention",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["retention", "normalization", "derivedMixing"],
+          "explanation": "Storage permission clear; intended ODbL persistence/derivation design not yet approved."
+        },
+        {
+          "gate": "attribution",
+          "status": "PASS",
+          "evidenceFacts": ["attribution"],
+          "explanation": "Published credit obligations are implementable."
+        },
+        {
+          "gate": "webMobile",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "REST feasibility is not explicit all-platform subscription permission."
+        },
+        {
+          "gate": "commercial",
+          "status": "PASS",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Paid tiers and credit formula understood for bounded scenarios."
+        },
+        {
+          "gate": "operational",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["quotaOperations", "securityRegional"],
+          "explanation": "Published limits/SLA; regional/privacy and practical service fit outstanding."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Measure Japan coverage, ja/en names and name autocomplete in separately authorized evaluation.",
+        "Obtain ID lifecycle and deletion/refresh documentation.",
+        "Confirm Web+iOS+Android subscription rights, data-processing region/DPA and exact support scope.",
+        "Approve ODbL derivative/collective database treatment before canonical persistence design."
+      ]
+    },
+    {
+      "id": "osm",
+      "name": "OSM self-hosted Nominatim plus separately designed POI index",
+      "classification": "contingency architecture only; public endpoint excluded",
+      "officialSourceIds": [
+        "o-api",
+        "o-credit",
+        "o-id",
+        "o-license",
+        "o-policy"
+      ],
+      "facts": [
+        {
+          "provider": "osm",
+          "fact": "japanCoverage",
+          "status": "partial",
+          "sourceIds": ["o-license"],
+          "officialSourceUrls": ["https://www.openstreetmap.org/copyright"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Global contributor data includes cafes, stations and other POIs.",
+          "confidence": "medium",
+          "limitation": "Japan business density and completeness unmeasured."
+        },
+        {
+          "provider": "osm",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["o-api"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Overview/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Nominatim search by name/type.",
+          "confidence": "high",
+          "limitation": "A broad production POI index would be separate work."
+        },
+        {
+          "provider": "osm",
+          "fact": "autocomplete",
+          "status": "not-supported",
+          "sourceIds": ["o-policy"],
+          "officialSourceUrls": [
+            "https://operations.osmfoundation.org/policies/nominatim/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Public Nominatim prohibits client autocomplete.",
+          "confidence": "high",
+          "limitation": "Self-hosting removes public-server policy dependency but needs a suitable separately operated engine."
+        },
+        {
+          "provider": "osm",
+          "fact": "nearbyCategory",
+          "status": "partial",
+          "sourceIds": ["o-api", "o-policy"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Overview/",
+            "https://operations.osmfoundation.org/policies/nominatim/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Name/type lookup is available; public systematic area extraction forbidden.",
+          "confidence": "medium",
+          "limitation": "No public-server bulk/nearby discovery fallback approved."
+        },
+        {
+          "provider": "osm",
+          "fact": "details",
+          "status": "partial",
+          "sourceIds": ["o-api"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Overview/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Lookup returns OSM object/address details.",
+          "confidence": "medium",
+          "limitation": "Debug details endpoint is not a rich business-details API."
+        },
+        {
+          "provider": "osm",
+          "fact": "identity",
+          "status": "partial",
+          "sourceIds": ["o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Use typed OSM object references; Nominatim place_id is not persistent.",
+          "confidence": "medium",
+          "limitation": "OSM object recreation/split/deletion still requires lifecycle handling."
+        },
+        {
+          "provider": "osm",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Coordinates, optional geometry and address fields.",
+          "confidence": "high",
+          "limitation": "May be centroids rather than entrance points."
+        },
+        {
+          "provider": "osm",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Name details can expose available alternative names.",
+          "confidence": "medium",
+          "limitation": "ja/en data completeness is contributor-dependent."
+        },
+        {
+          "provider": "osm",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "OSM key/value tags describe objects.",
+          "confidence": "medium",
+          "limitation": "No TravelAssist canonical taxonomy or local-category quality guarantee."
+        },
+        {
+          "provider": "osm",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Extra tags may carry operational metadata.",
+          "confidence": "medium",
+          "limitation": "No uniform complete hours/closure feed."
+        },
+        {
+          "provider": "osm",
+          "fact": "contactRating",
+          "status": "partial",
+          "sourceIds": ["o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Extra tags may include contact/site values.",
+          "confidence": "medium",
+          "limitation": "No standard verified rating/review service."
+        },
+        {
+          "provider": "osm",
+          "fact": "photosRights",
+          "status": "unknown",
+          "sourceIds": ["o-license"],
+          "officialSourceUrls": ["https://www.openstreetmap.org/copyright"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Database license does not establish licenses for externally linked photos.",
+          "confidence": "low",
+          "limitation": "Each image requires separate rights verification."
+        },
+        {
+          "provider": "osm",
+          "fact": "freshness",
+          "status": "partial",
+          "sourceIds": ["o-api"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Overview/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Self-host administration includes updates and maintenance.",
+          "confidence": "medium",
+          "limitation": "Operator owns replication/lag monitoring; edits need not reflect real-world change immediately."
+        },
+        {
+          "provider": "osm",
+          "fact": "mapbox",
+          "status": "confirmed",
+          "sourceIds": ["o-license", "o-credit"],
+          "officialSourceUrls": [
+            "https://www.openstreetmap.org/copyright",
+            "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "ODbL permits attributed data display.",
+          "confidence": "high",
+          "limitation": "Data credit and map credit must both survive."
+        },
+        {
+          "provider": "osm",
+          "fact": "normalization",
+          "status": "partial",
+          "sourceIds": ["o-license"],
+          "officialSourceUrls": ["https://www.openstreetmap.org/copyright"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Adaptation permitted under ODbL.",
+          "confidence": "medium",
+          "limitation": "Derivative database/share-alike assessment required."
+        },
+        {
+          "provider": "osm",
+          "fact": "retention",
+          "status": "confirmed",
+          "sourceIds": ["o-license"],
+          "officialSourceUrls": ["https://www.openstreetmap.org/copyright"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Licensed data can be stored and redistributed.",
+          "confidence": "high",
+          "limitation": "License obligations survive export and change of host."
+        },
+        {
+          "provider": "osm",
+          "fact": "derivedMixing",
+          "status": "partial",
+          "sourceIds": ["o-license"],
+          "officialSourceUrls": ["https://www.openstreetmap.org/copyright"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "ODbL obligations apply to adapted databases.",
+          "confidence": "medium",
+          "limitation": "No blanket permission to merge proprietary content."
+        },
+        {
+          "provider": "osm",
+          "fact": "webMobile",
+          "status": "confirmed",
+          "sourceIds": ["o-license"],
+          "officialSourceUrls": ["https://www.openstreetmap.org/copyright"],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Data license supports websites and mobile applications.",
+          "confidence": "high",
+          "limitation": "Hosting software licenses and operating service are separate."
+        },
+        {
+          "provider": "osm",
+          "fact": "attribution",
+          "status": "confirmed",
+          "sourceIds": ["o-credit"],
+          "officialSourceUrls": [
+            "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "OSM contributor credit and license notice.",
+          "confidence": "high",
+          "limitation": "Produced work and interactive display rules differ."
+        },
+        {
+          "provider": "osm",
+          "fact": "pricing",
+          "status": "unknown",
+          "sourceIds": ["o-license", "o-api"],
+          "officialSourceUrls": [
+            "https://www.openstreetmap.org/copyright",
+            "https://nominatim.org/release-docs/latest/api/Overview/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Open data is not a free managed service.",
+          "confidence": "low",
+          "limitation": "Hosting, search, backups, bandwidth and on-call cost not estimated without capacity design."
+        },
+        {
+          "provider": "osm",
+          "fact": "quotaOperations",
+          "status": "not-supported",
+          "sourceIds": ["o-policy"],
+          "officialSourceUrls": [
+            "https://operations.osmfoundation.org/policies/nominatim/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Public endpoint max 1 request/second, no autocomplete, access can be withdrawn.",
+          "confidence": "high",
+          "limitation": "Self-host operational SLA/capacity currently nonexistent."
+        },
+        {
+          "provider": "osm",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["o-policy", "o-api"],
+          "officialSourceUrls": [
+            "https://operations.osmfoundation.org/policies/nominatim/",
+            "https://nominatim.org/release-docs/latest/api/Overview/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Public service needs identifiable requests; self-host operation is possible.",
+          "confidence": "medium",
+          "limitation": "Own TLS, abuse controls and regional processing would need design."
+        },
+        {
+          "provider": "osm",
+          "fact": "fallbackLockIn",
+          "status": "partial",
+          "sourceIds": ["o-api", "o-id"],
+          "officialSourceUrls": [
+            "https://nominatim.org/release-docs/latest/api/Overview/",
+            "https://nominatim.org/release-docs/latest/api/Output/"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Self-host path avoids vendor API dependence.",
+          "confidence": "medium",
+          "limitation": "Not implemented; shares OSM quality limitations; public Nominatim is not emergency fallback."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Open-data availability, unmeasured Japan quality."
+        },
+        {
+          "gate": "coreApi",
+          "status": "FAIL",
+          "evidenceFacts": ["autocomplete", "nearbyCategory", "details"],
+          "explanation": "No ready operated complete POI service in repository."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["identity"],
+          "explanation": "Typed OSM references possible; lifecycle needed."
+        },
+        {
+          "gate": "multilingual",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Source-dependent translations."
+        },
+        {
+          "gate": "mapbox",
+          "status": "PASS",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Attribution-compliant display allowed."
+        },
+        {
+          "gate": "retention",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["retention", "derivedMixing"],
+          "explanation": "ODbL licensed persistence requires compatible design."
+        },
+        {
+          "gate": "attribution",
+          "status": "PASS",
+          "evidenceFacts": ["attribution"],
+          "explanation": "Published obligations."
+        },
+        {
+          "gate": "webMobile",
+          "status": "PASS",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "Data license covers platform-neutral use."
+        },
+        {
+          "gate": "commercial",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["pricing"],
+          "explanation": "No self-host operations cost baseline."
+        },
+        {
+          "gate": "operational",
+          "status": "FAIL",
+          "evidenceFacts": ["quotaOperations"],
+          "explanation": "Public server unsuitable; no private service commissioned."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Only consider a separately authorized owned service after operations/cost and ODbL review.",
+        "Never use public Nominatim as production autocomplete or automatic outage fallback."
+      ]
+    },
+    {
+      "id": "navitime",
+      "name": "NAVITIME Japan API spot family (direct contract)",
+      "classification": "Japan-focused contract candidate",
+      "officialSourceIds": [
+        "n-api",
+        "n-auto",
+        "n-fresh",
+        "n-id",
+        "n-market",
+        "n-price",
+        "n-rate",
+        "n-terms"
+      ],
+      "facts": [
+        {
+          "provider": "navitime",
+          "fact": "japanCoverage",
+          "status": "confirmed",
+          "sourceIds": ["n-api", "n-fresh"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html",
+            "https://api-sdk.navitime.co.jp/api/specs/tips/data_update.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Japanese domestic spot/business families and supplier update process documented.",
+          "confidence": "high",
+          "limitation": "No independent coverage or onsen quality measurement."
+        },
+        {
+          "provider": "navitime",
+          "fact": "textSearch",
+          "status": "confirmed",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Keyword spot search, nationwide or spatially constrained.",
+          "confidence": "high",
+          "limitation": "Dedicated spot-data option contract required."
+        },
+        {
+          "provider": "navitime",
+          "fact": "autocomplete",
+          "status": "confirmed",
+          "sourceIds": ["n-auto"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot-autocomplete.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Spot autocomplete endpoint.",
+          "confidence": "high",
+          "limitation": "Entitlement and multilingual options required."
+        },
+        {
+          "provider": "navitime",
+          "fact": "nearbyCategory",
+          "status": "confirmed",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Radius/category search parameters.",
+          "confidence": "high",
+          "limitation": "Search ranking is provider-specific."
+        },
+        {
+          "provider": "navitime",
+          "fact": "details",
+          "status": "confirmed",
+          "sourceIds": ["n-id"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot-code.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Spot-code lookup returns spot data.",
+          "confidence": "high",
+          "limitation": "No permission to retain all returned fields implied."
+        },
+        {
+          "provider": "navitime",
+          "fact": "identity",
+          "status": "partial",
+          "sourceIds": ["n-id"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot-code.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Spot code provides lookup identity.",
+          "confidence": "medium",
+          "limitation": "Code stability and retention need contract confirmation."
+        },
+        {
+          "provider": "navitime",
+          "fact": "coordinates",
+          "status": "confirmed",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "WGS84/tokyo datum and degree/millisecond options.",
+          "confidence": "high",
+          "limitation": "Future use must select correct datum/units; no conversion implementation now."
+        },
+        {
+          "provider": "navitime",
+          "fact": "multilingual",
+          "status": "partial",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "ja/en and other languages via paid multilingual option.",
+          "confidence": "medium",
+          "limitation": "Some spots omitted when translation missing; unavailable through API-market option described in docs."
+        },
+        {
+          "provider": "navitime",
+          "fact": "categoriesFit",
+          "status": "partial",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Local facilities, tourism, food, hotels and shops.",
+          "confidence": "medium",
+          "limitation": "Exact local subtype-to-canonical alignment unverified."
+        },
+        {
+          "provider": "navitime",
+          "fact": "hoursStatus",
+          "status": "partial",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Opening-hours option exists.",
+          "confidence": "medium",
+          "limitation": "Business closure status completeness unknown."
+        },
+        {
+          "provider": "navitime",
+          "fact": "contactRating",
+          "status": "partial",
+          "sourceIds": ["n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Spot detail information available when supplied.",
+          "confidence": "medium",
+          "limitation": "Uniform contact/rating availability not confirmed."
+        },
+        {
+          "provider": "navitime",
+          "fact": "photosRights",
+          "status": "unknown",
+          "sourceIds": ["n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Photo reuse/hosting permissions are not established by general direct terms.",
+          "confidence": "low",
+          "limitation": "Require field/media-specific contract."
+        },
+        {
+          "provider": "navitime",
+          "fact": "freshness",
+          "status": "confirmed",
+          "sourceIds": ["n-fresh"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/tips/data_update.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Supplier feeds and user reports drive updates; some store data updated daily.",
+          "confidence": "high",
+          "limitation": "Not a universal per-field daily freshness SLA."
+        },
+        {
+          "provider": "navitime",
+          "fact": "mapbox",
+          "status": "unknown",
+          "sourceIds": ["n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Direct agreement scope is set by application/order.",
+          "confidence": "low",
+          "limitation": "Explicit Mapbox display permission for spot data unresolved."
+        },
+        {
+          "provider": "navitime",
+          "fact": "normalization",
+          "status": "unknown",
+          "sourceIds": ["n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Order determines permitted data and purposes.",
+          "confidence": "low",
+          "limitation": "No presumed normalized database right."
+        },
+        {
+          "provider": "navitime",
+          "fact": "retention",
+          "status": "unknown",
+          "sourceIds": ["n-terms", "n-market"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html",
+            "https://api-sdk.navitime.co.jp/api/specs/description/rapid_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Direct terms reserve storable data to order; marketplace terms prohibit spot storage/accumulation/modification.",
+          "confidence": "low",
+          "limitation": "Do not substitute marketplace access for negotiated persistence."
+        },
+        {
+          "provider": "navitime",
+          "fact": "derivedMixing",
+          "status": "unknown",
+          "sourceIds": ["n-api", "n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html",
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Use-specific restrictions exist, including parking-price sort prohibition.",
+          "confidence": "low",
+          "limitation": "Feature derivation, mixing and personalization require approval under applicable order."
+        },
+        {
+          "provider": "navitime",
+          "fact": "webMobile",
+          "status": "unknown",
+          "sourceIds": ["n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Usage scope determined by direct contract.",
+          "confidence": "low",
+          "limitation": "HTTP capability alone does not establish Web/iOS/Android license coverage."
+        },
+        {
+          "provider": "navitime",
+          "fact": "attribution",
+          "status": "unknown",
+          "sourceIds": ["n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Applicable display/credit obligations need order and supplier confirmation.",
+          "confidence": "low",
+          "limitation": "No generic Mapbox attribution substitute."
+        },
+        {
+          "provider": "navitime",
+          "fact": "pricing",
+          "status": "partial",
+          "sourceIds": ["n-price", "n-terms"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/about_navitime_api.html",
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Base service plus spot/multilingual options and order-specific charges.",
+          "confidence": "medium",
+          "limitation": "Actual TravelAssist quote, field entitlements and overage unit rates unknown."
+        },
+        {
+          "provider": "navitime",
+          "fact": "quotaOperations",
+          "status": "unknown",
+          "sourceIds": ["n-rate"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/about_rate_limit.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Official limits page directs customers to sales.",
+          "confidence": "low",
+          "limitation": "Numeric applicable RPS/quota/SLA unknown."
+        },
+        {
+          "provider": "navitime",
+          "fact": "securityRegional",
+          "status": "partial",
+          "sourceIds": ["n-terms", "n-api"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html",
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Direct-contract client scope and dedicated data access.",
+          "confidence": "medium",
+          "limitation": "Credential setup and regional/mobile rights not commissioned."
+        },
+        {
+          "provider": "navitime",
+          "fact": "fallbackLockIn",
+          "status": "unknown",
+          "sourceIds": ["n-terms", "n-id"],
+          "officialSourceUrls": [
+            "https://api-sdk.navitime.co.jp/api/specs/description/ntj_tou.html",
+            "https://api-sdk.navitime.co.jp/api/specs/api_guide/spot-code.html"
+          ],
+          "accessedAt": "2026-09-13",
+          "evidenceNote": "Potential Japan data complement under separate agreement.",
+          "confidence": "low",
+          "limitation": "Opaque codes, license and operational terms prevent automatic fallback approval."
+        }
+      ],
+      "hardGates": [
+        {
+          "gate": "japan",
+          "status": "PASS",
+          "evidenceFacts": ["japanCoverage"],
+          "explanation": "Explicit Japan domestic spot product."
+        },
+        {
+          "gate": "coreApi",
+          "status": "PASS",
+          "evidenceFacts": [
+            "textSearch",
+            "autocomplete",
+            "nearbyCategory",
+            "details"
+          ],
+          "explanation": "Spot family covers core API functions."
+        },
+        {
+          "gate": "stableIdentity",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["identity"],
+          "explanation": "Lookup code exists; lifecycle unresolved."
+        },
+        {
+          "gate": "multilingual",
+          "status": "CONDITIONAL",
+          "evidenceFacts": ["multilingual"],
+          "explanation": "Paid option, missing translations can suppress results."
+        },
+        {
+          "gate": "mapbox",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["mapbox"],
+          "explanation": "Requires applicable direct scope."
+        },
+        {
+          "gate": "retention",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["retention"],
+          "explanation": "Order-specific storable data/purpose not obtained."
+        },
+        {
+          "gate": "attribution",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["attribution"],
+          "explanation": "Supplier/order requirements not settled."
+        },
+        {
+          "gate": "webMobile",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["webMobile"],
+          "explanation": "Platform scope needs direct agreement."
+        },
+        {
+          "gate": "commercial",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["pricing"],
+          "explanation": "Required options and actual quote unknown."
+        },
+        {
+          "gate": "operational",
+          "status": "UNKNOWN",
+          "evidenceFacts": ["quotaOperations"],
+          "explanation": "Sales-confirmed limits required."
+        }
+      ],
+      "unresolvedQuestions": [
+        "Request a scope-specific spot/multilingual/storage/Mapbox/mobile quote only in a later authorized commercial step.",
+        "Confirm code lifecycle, field/media attribution and rate limits."
+      ]
+    }
+  ],
+  "offeringVariants": [
+    {
+      "provider": "google",
+      "offering": "Places UI Kit",
+      "classification": "display-only evaluation; not selected",
+      "hardGates": {
+        "japan": "CONDITIONAL",
+        "coreApi": "FAIL",
+        "stableIdentity": "PASS",
+        "multilingual": "CONDITIONAL",
+        "mapbox": "PASS",
+        "retention": "FAIL",
+        "attribution": "PASS",
+        "webMobile": "PASS",
+        "commercial": "PASS",
+        "operational": "CONDITIONAL"
+      },
+      "sourceIds": ["g-service", "g-kit", "g-kit-mobile", "g-price"],
+      "explanation": "Section 15 permits non-Google maps. Components have Web/native paths; they do not authorize extraction into a persistent normalized master, and adopting them would require separate frozen-UI review."
+    },
+    {
+      "provider": "foursquare",
+      "offering": "Foursquare OS Places dataset",
+      "classification": "separate data-source contingency, not deployed API fallback",
+      "hardGates": {
+        "japan": "CONDITIONAL",
+        "coreApi": "FAIL",
+        "stableIdentity": "CONDITIONAL",
+        "multilingual": "UNKNOWN",
+        "mapbox": "PASS",
+        "retention": "PASS",
+        "attribution": "CONDITIONAL",
+        "webMobile": "PASS",
+        "commercial": "CONDITIONAL",
+        "operational": "FAIL"
+      },
+      "sourceIds": ["f-os-access", "f-os-schema", "f-os-license"],
+      "explanation": "Publisher confirms Apache 2.0 dataset license. Preserve license/NOTICE/change notices; do not inherit API photos/hours/reviews. Current portal/token/Iceberg access and own search/index/capacity need separate work. No dataset downloaded."
+    },
+    {
+      "provider": "osm",
+      "offering": "OSMF public Nominatim",
+      "classification": "excluded as runtime fallback",
+      "hardGates": {
+        "japan": "CONDITIONAL",
+        "coreApi": "FAIL",
+        "stableIdentity": "CONDITIONAL",
+        "multilingual": "CONDITIONAL",
+        "mapbox": "PASS",
+        "retention": "CONDITIONAL",
+        "attribution": "PASS",
+        "webMobile": "PASS",
+        "commercial": "CONDITIONAL",
+        "operational": "FAIL"
+      },
+      "sourceIds": ["o-policy", "o-id", "o-license"],
+      "explanation": "One request/second, no client autocomplete or systematic POI extraction, no production service promise. These are public-server rules, not a ban on self-hosting or managed OSM providers."
+    }
+  ],
+  "pricingFacts": [
+    {
+      "provider": "google",
+      "status": "confirmed",
+      "sourceIds": ["g-price", "g-bill"],
+      "currency": "USD",
+      "unit": "1,000 billable events",
+      "examples": {
+        "detailsEssentials": {
+          "freeMonthly": 10000,
+          "firstPaidTier": 5
+        },
+        "detailsPro": {
+          "freeMonthly": 5000,
+          "firstPaidTier": 17
+        },
+        "textSearchPro": {
+          "freeMonthly": 5000,
+          "firstPaidTier": 32
+        },
+        "nearbySearchPro": {
+          "freeMonthly": 5000,
+          "firstPaidTier": 32
+        },
+        "photos": {
+          "freeMonthly": 1000,
+          "firstPaidTier": 7
+        }
+      },
+      "limitation": "Global first paid band through 100k; fields determine highest SKU. Illustrative facts, not chosen implementation."
+    },
+    {
+      "provider": "mapbox",
+      "status": "partial",
+      "sourceIds": ["m-price"],
+      "currency": "USD",
+      "unit": "1,000 sessions",
+      "examples": {
+        "preview": {
+          "freeMonthly": 500,
+          "firstPaidTier": 3
+        },
+        "standard": {
+          "freeMonthly": 2500,
+          "firstPaidTier": 11.5
+        }
+      },
+      "limitation": "Both schedules visible; applicable contract and rich-attribute charges unknown. Per-request endpoints billed separately."
+    },
+    {
+      "provider": "foursquare",
+      "status": "confirmed",
+      "sourceIds": ["f-price", "f-migrate"],
+      "currency": "USD",
+      "unit": "1,000 calls",
+      "examples": {
+        "pro": {
+          "freeMonthly": 500,
+          "firstPaidTier": 15
+        },
+        "premium": {
+          "firstPaidTier": 18.75
+        }
+      },
+      "limitation": "June 2026 schedule; field selection can make search/details Premium. No Premium free allowance inferred."
+    },
+    {
+      "provider": "here",
+      "status": "unknown",
+      "sourceIds": ["h-price"],
+      "limitation": "Current official pricing widget numeric values unavailable in fetched page; no estimate."
+    },
+    {
+      "provider": "tomtom",
+      "status": "partial",
+      "sourceIds": ["t-price", "t-details"],
+      "freeMonthly": {
+        "suggest": 10000,
+        "discover": 5000,
+        "details": 5000
+      },
+      "limitation": "Current monthly allowances; paid/attribute unit prices unresolved, no estimate."
+    },
+    {
+      "provider": "geoapify",
+      "status": "confirmed",
+      "sourceIds": ["a-price", "a-units", "a-autocomplete"],
+      "currency": "USD",
+      "plans": [
+        {
+          "name": "Free",
+          "monthlyPrice": 0,
+          "creditsPerDay": 3000,
+          "rps": 5,
+          "commercial": "limited, not assumed for production"
+        },
+        {
+          "name": "API10",
+          "monthlyPrice": 59,
+          "creditsPerDay": 10000,
+          "rps": 12
+        },
+        {
+          "name": "API25",
+          "monthlyPrice": 109,
+          "creditsPerDay": 25000,
+          "rps": 15
+        },
+        {
+          "name": "API50",
+          "monthlyPrice": 179,
+          "creditsPerDay": 50000,
+          "rps": 20
+        }
+      ],
+      "units": {
+        "placesUpTo20Results": 1,
+        "autocompleteRequest": 1,
+        "detailsBase": 1
+      },
+      "limitation": "Additional groups of 20 results and requested details features add credits; taxes excluded."
+    },
+    {
+      "provider": "osm",
+      "status": "unknown",
+      "sourceIds": ["o-license", "o-api"],
+      "limitation": "Data license is not hosting cost; self-host infrastructure estimate absent."
+    },
+    {
+      "provider": "navitime",
+      "status": "unknown",
+      "sourceIds": ["n-price", "n-terms"],
+      "limitation": "Spot/multilingual/storage quote required; no production estimate."
+    }
+  ],
+  "costScenarios": [
+    {
+      "provider": "geoapify",
+      "label": "low",
+      "kind": "TravelAssist assumption, not official traffic forecast",
+      "assumedMonthDays": 30,
+      "searches": 3000,
+      "maxResultsPerSearch": 20,
+      "autocompleteSessions": 3000,
+      "autocompleteRequests": 12000,
+      "requestsPerAutocompleteSession": 4,
+      "detailsCalls": 1500,
+      "photosCalls": 0,
+      "extraDetailsFeatures": 0,
+      "cacheSavingsAssumed": 0,
+      "formula": "credits = searches + autocompleteRequests + detailsCalls; monthly credits/30 gives average; assumed peak day = 2 * average; choose listed paid plan covering peak day",
+      "creditsPerMonth": 16500,
+      "averageCreditsPerDay": 550,
+      "assumedPeakCreditsPerDay": 1100,
+      "planDailyCap": 10000,
+      "plan": "API10",
+      "estimatedUsdPerMonth": 59,
+      "sourceIds": ["a-price", "a-units", "a-autocomplete"],
+      "excludedOrUnknown": [
+        "Taxes, exchange rates, overages, support upgrades",
+        "Mapbox maps, routes, hosting, data storage and photo/media costs",
+        "Additional results/features, retries or autocomplete requests",
+        "Actual peak RPS and multi-platform commercial entitlement"
+      ],
+      "interpretation": "Paid plan chosen for commercial clarity; no purchase. Peak RPS must separately stay within plan. Shared credits across other APIs reduce available headroom."
+    },
+    {
+      "provider": "geoapify",
+      "label": "medium",
+      "kind": "TravelAssist assumption, not official traffic forecast",
+      "assumedMonthDays": 30,
+      "searches": 30000,
+      "maxResultsPerSearch": 20,
+      "autocompleteSessions": 30000,
+      "autocompleteRequests": 120000,
+      "requestsPerAutocompleteSession": 4,
+      "detailsCalls": 15000,
+      "photosCalls": 0,
+      "extraDetailsFeatures": 0,
+      "cacheSavingsAssumed": 0,
+      "formula": "credits = searches + autocompleteRequests + detailsCalls; monthly credits/30 gives average; assumed peak day = 2 * average; choose listed paid plan covering peak day",
+      "creditsPerMonth": 165000,
+      "averageCreditsPerDay": 5500,
+      "assumedPeakCreditsPerDay": 11000,
+      "planDailyCap": 25000,
+      "plan": "API25",
+      "estimatedUsdPerMonth": 109,
+      "sourceIds": ["a-price", "a-units", "a-autocomplete"],
+      "excludedOrUnknown": [
+        "Taxes, exchange rates, overages, support upgrades",
+        "Mapbox maps, routes, hosting, data storage and photo/media costs",
+        "Additional results/features, retries or autocomplete requests",
+        "Actual peak RPS and multi-platform commercial entitlement"
+      ],
+      "interpretation": "Paid plan chosen for commercial clarity; no purchase. Peak RPS must separately stay within plan. Shared credits across other APIs reduce available headroom."
+    },
+    {
+      "provider": "geoapify",
+      "label": "high",
+      "kind": "TravelAssist assumption, not official traffic forecast",
+      "assumedMonthDays": 30,
+      "searches": 120000,
+      "maxResultsPerSearch": 20,
+      "autocompleteSessions": 120000,
+      "autocompleteRequests": 480000,
+      "requestsPerAutocompleteSession": 4,
+      "detailsCalls": 60000,
+      "photosCalls": 0,
+      "extraDetailsFeatures": 0,
+      "cacheSavingsAssumed": 0,
+      "formula": "credits = searches + autocompleteRequests + detailsCalls; monthly credits/30 gives average; assumed peak day = 2 * average; choose listed paid plan covering peak day",
+      "creditsPerMonth": 660000,
+      "averageCreditsPerDay": 22000,
+      "assumedPeakCreditsPerDay": 44000,
+      "planDailyCap": 50000,
+      "plan": "API50",
+      "estimatedUsdPerMonth": 179,
+      "sourceIds": ["a-price", "a-units", "a-autocomplete"],
+      "excludedOrUnknown": [
+        "Taxes, exchange rates, overages, support upgrades",
+        "Mapbox maps, routes, hosting, data storage and photo/media costs",
+        "Additional results/features, retries or autocomplete requests",
+        "Actual peak RPS and multi-platform commercial entitlement"
+      ],
+      "interpretation": "Paid plan chosen for commercial clarity; no purchase. Peak RPS must separately stay within plan. Shared credits across other APIs reduce available headroom."
+    }
+  ],
+  "recommendedNextActions": [
+    {
+      "id": "C1",
+      "blocking": true,
+      "action": "Obtain Geoapify Japan/identity lifecycle and explicit Web+iOS+Android subscription documentation; confirm DPA/region/support.",
+      "execution": "Not initiated; user authorization needed for external outreach/account use."
+    },
+    {
+      "id": "C2",
+      "blocking": true,
+      "action": "In a separately authorized empirical evaluation, check Japanese/English business-name suggestions, attraction/restaurant/hotel/shopping/station/onsen/entertainment/local coverage, IDs and hours across urban/rural Japan.",
+      "execution": "Not run; agree sample, reference rights, success criteria and non-billable access first."
+    },
+    {
+      "id": "C3",
+      "blocking": true,
+      "action": "Approve ODbL provenance separation, derivative/collective database treatment, notices and future snapshot/expiry policy before 7.4 persistence design.",
+      "execution": "Design constraint only; no schema or ingestion."
+    },
+    {
+      "id": "C4",
+      "blocking": true,
+      "action": "Define operational budget/peak limits, credential model and approved degradation path before 7.6/7.7.",
+      "execution": "No service activated and no code implemented."
+    },
+    {
+      "id": "C5",
+      "blocking": false,
+      "action": "Keep provider photos disabled until individual rights and frozen asset rules pass; use approved icon/asset path.",
+      "execution": "No photo API requests or binary download."
+    }
+  ]
+}

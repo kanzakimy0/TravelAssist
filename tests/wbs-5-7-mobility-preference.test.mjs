@@ -217,7 +217,12 @@ test("mobility route is split while other category shell remains intact", () => 
 });
 
 test("page reuses guarded navigation and beforeunload-backed dirty state", () => {
-  const page = read("src/features/preferences/mobility-preference-page.tsx");
+  const page =
+    read("src/features/preferences/mobility-preference-page.tsx") +
+    read(
+      "src/features/preferences/persistence/canonical-preference-editor.tsx",
+    ) +
+    read("src/features/preferences/persistence/preference-adapter.ts");
   assert.match(page, /GuardedLink/);
   assert.match(page, /setIsDirty\(isDirty\)/);
   const guard = read(
@@ -227,13 +232,18 @@ test("page reuses guarded navigation and beforeunload-backed dirty state", () =>
 });
 
 test("implementation uses only the three requested restriction labels", () => {
-  const page = read("src/features/preferences/mobility-preference-page.tsx");
+  const page =
+    read("src/features/preferences/mobility-preference-page.tsx") +
+    read(
+      "src/features/preferences/persistence/canonical-preference-editor.tsx",
+    ) +
+    read("src/features/preferences/persistence/preference-adapter.ts");
   const labels = ["不乘坐公共交通", "不乘坐公交", "不乘坐游船"];
   for (const label of labels) assert.match(page, new RegExp(label));
   assert.doesNotMatch(page, /不乘坐飞机|不乘坐出租车|不乘坐铁路/);
 });
 
-test("no durable persistence or network storage is introduced", () => {
+test("legacy mobility fixture stays side-effect free; page delegates persistence", () => {
   const files = [
     read("src/features/preferences/mobility-preference-page.tsx"),
     read("src/features/preferences/mobility-preference-model.ts"),

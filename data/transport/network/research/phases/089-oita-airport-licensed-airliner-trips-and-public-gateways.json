@@ -1,0 +1,190 @@
+{
+  "phaseId": "089-oita-airport-licensed-airliner-trips-and-public-gateways",
+  "strategy": [
+    "LICENSED_CURRENT_OITA_AIRPORT_SELECTED_TRIPS",
+    "PRESERVE_DISTINCT_ACTUAL_DIRECTION_ORDERS",
+    "CURRENT_JR_AND_AIRPORT_PUBLIC_PASSAGES"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "oitakotsu-airport.json",
+      "packageSha256": "49dbd62a233da792c41ff0bc8457469f027b1ab7facf67e5c2e259e89d5992a6",
+      "sourceActionId": "bus:oitakotsu:licensed-current-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:oitakotsu:licensed-current-airport-trips",
+    "hub:oita:current-jr-airliner-public-forecourt",
+    "airport:oita:current-terminal-airliner-public-passage"
+  ],
+  "facts": [
+    {
+      "factId": "oita-jr-public-forecourt-to-gtfs-82_3",
+      "kind": "transfer",
+      "sourceActionId": "hub:oita:current-jr-airliner-public-forecourt",
+      "sourceUrl": "https://www.oitakotsu.co.jp/rosenzu/noriba_oitastation.pdf",
+      "observedResponseSha256": "39f3ea3431236fa5484163b7f19a3f8397b191c57919ab3b5ae53f3842ae8988",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:oita:current-jr-airliner-public-forecourt",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/rosen/40.php",
+          "observedResponseSha256": "d18850dde6a394e1b65a77b2fd8614916d57994cc6a8cc1ebd8660b9eb97d37f"
+        },
+        {
+          "sourceActionId": "hub:oita:current-jr-airliner-public-forecourt",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/rosen/41.php",
+          "observedResponseSha256": "e355ad6a32fb65326a9f7b6792e61d72c768ea619a79cd3446959975a49686da"
+        }
+      ],
+      "locator": "The operator current Oita station diagram explicitly depicts the Funai Chuo north exit, public sidewalks/crossings around the station forecourt, airport Airliner departure bay 1 and the distinct eastern bus alighting frontage. Its current route pages independently identify the station in each airport direction. Bind exact licensed departure stop 82 3 and separate return-trip stop 82 0 to JR Oita Nippo Line through those depicted public connections. Preserve raw platform 1/blank respectively, the distinct identities and all provider call restrictions. No suffix-derived bay, distance-only edge, precise live curb, walking duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "大分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大分駅前",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:30",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "82 3",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "ad054d8fa7ed1f65ba2e5e202f606d349d2abae657ef17a1469bef1ec5297a16",
+            "expectedPlatformCode": "1",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The operator current Oita station diagram explicitly depicts the Funai Chuo north exit, public sidewalks/crossings around the station forecourt, airport Airliner departure bay 1 and the distinct eastern bus alighting frontage. Its current route pages independently identify the station in each airport direction. Bind exact licensed departure stop 82 3 and separate return-trip stop 82 0 to JR Oita Nippo Line through those depicted public connections. Preserve raw platform 1/blank respectively, the distinct identities and all provider call restrictions. No suffix-derived bay, distance-only edge, precise live curb, walking duration or accessibility guarantee."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_FORECOURT_AND_EXACT_GTFS_BOARDING_POINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "oita-jr-public-forecourt-to-gtfs-82_0",
+      "kind": "transfer",
+      "sourceActionId": "hub:oita:current-jr-airliner-public-forecourt",
+      "sourceUrl": "https://www.oitakotsu.co.jp/rosenzu/noriba_oitastation.pdf",
+      "observedResponseSha256": "39f3ea3431236fa5484163b7f19a3f8397b191c57919ab3b5ae53f3842ae8988",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:oita:current-jr-airliner-public-forecourt",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/rosen/40.php",
+          "observedResponseSha256": "d18850dde6a394e1b65a77b2fd8614916d57994cc6a8cc1ebd8660b9eb97d37f"
+        },
+        {
+          "sourceActionId": "hub:oita:current-jr-airliner-public-forecourt",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/rosen/41.php",
+          "observedResponseSha256": "e355ad6a32fb65326a9f7b6792e61d72c768ea619a79cd3446959975a49686da"
+        }
+      ],
+      "locator": "The operator current Oita station diagram explicitly depicts the Funai Chuo north exit, public sidewalks/crossings around the station forecourt, airport Airliner departure bay 1 and the distinct eastern bus alighting frontage. Its current route pages independently identify the station in each airport direction. Bind exact licensed departure stop 82 3 and separate return-trip stop 82 0 to JR Oita Nippo Line through those depicted public connections. Preserve raw platform 1/blank respectively, the distinct identities and all provider call restrictions. No suffix-derived bay, distance-only edge, precise live curb, walking duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "大分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大分駅前",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:51",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "82 0",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "b9656b765ed427c9b097b512ef05d500cc78e0fe5d6615d9ec9ed390967fc9c8",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The operator current Oita station diagram explicitly depicts the Funai Chuo north exit, public sidewalks/crossings around the station forecourt, airport Airliner departure bay 1 and the distinct eastern bus alighting frontage. Its current route pages independently identify the station in each airport direction. Bind exact licensed departure stop 82 3 and separate return-trip stop 82 0 to JR Oita Nippo Line through those depicted public connections. Preserve raw platform 1/blank respectively, the distinct identities and all provider call restrictions. No suffix-derived bay, distance-only edge, precise live curb, walking duration or accessibility guarantee."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_FORECOURT_AND_EXACT_GTFS_BOARDING_POINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "oita-airport-public-terminal-to-airliner-gtfs-2032_0",
+      "kind": "transfer",
+      "sourceActionId": "airport:oita:current-terminal-airliner-public-passage",
+      "sourceUrl": "https://oita-airport.jp/access/img/bus/map_bus4.gif",
+      "observedResponseSha256": "d779e355bea13610d833880798e712844adcf5f92641073621f229efa7127efd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:oita:current-terminal-airliner-public-passage",
+          "url": "https://oita-airport.jp/access/bus.html",
+          "observedResponseSha256": "d28debdab0ee6664826d3f369477dbfee2230a871560bad46b295042af78e01f"
+        }
+      ],
+      "locator": "The airport current official first-floor bus diagram depicts the public arrivals lobby, exit and terminal frontage used by Airliner X/Z departures at bay 1. The current airport bus page corroborates Oita Kotsu service in both directions. Bind exact licensed stop 2032 0, used in both independently reviewed active trips, to the independently identified C28 whole-airport passenger facility through the explicit public terminal connection. The raw platform is blank and remains blank; this facility-level access does not assert a precise arrival curb or use the diagram bay as a replacement for provider metadata. No distance inference, live platform, walking duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "大分空港",
+          "operator": "airport-facility:cf03_00096",
+          "line": "airport:cf03_00096",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00096",
+            "requirementId": "review:transport-node:130b5876-1b9d-51e8-b8ac-715cfb04d935",
+            "expectedRequirementName": "大分",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The airport current official first-floor bus diagram depicts the public arrivals lobby, exit and terminal frontage used by Airliner X/Z departures at bay 1. The current airport bus page corroborates Oita Kotsu service in both directions. Bind exact licensed stop 2032 0, used in both independently reviewed active trips, to the independently identified C28 whole-airport passenger facility through the explicit public terminal connection. The raw platform is blank and remains blank; this facility-level access does not assert a precise arrival curb or use the diagram bay as a replacement for provider metadata. No distance inference, live platform, walking duration or accessibility guarantee."
+          }
+        },
+        {
+          "name": "大分空港",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:30",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "2032 0",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "8488533066c3d0c648776583708ff2757642b5e58725d1a4f62f3e92a3057959",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The airport current official first-floor bus diagram depicts the public arrivals lobby, exit and terminal frontage used by Airliner X/Z departures at bay 1. The current airport bus page corroborates Oita Kotsu service in both directions. Bind exact licensed stop 2032 0, used in both independently reviewed active trips, to the independently identified C28 whole-airport passenger facility through the explicit public terminal connection. The raw platform is blank and remains blank; this facility-level access does not assert a precise arrival curb or use the diagram bay as a replacement for provider metadata. No distance inference, live platform, walking duration or accessibility guarantee."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_AIRPORT_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

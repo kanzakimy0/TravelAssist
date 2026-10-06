@@ -1,0 +1,73 @@
+{
+  "candidateKey": "candidate:B-20260914-R04-008",
+  "sourceRef": "task-075-v23-canary-source:0e063fd97919527bb3bb1a0e",
+  "sourceTier": "AUTHORITATIVE_SECONDARY",
+  "retainedTextRef": {
+    "path": "docs/qa/TASK-075-B/semantic-canary-v2.3/retained-text/0e063fd97919527bb3bb1a0e6c988f150fe2598ddc1da12f8824801673807a42.txt",
+    "locator": {
+      "offset": 0,
+      "length": 9103,
+      "locatorSha256": "0e063fd97919527bb3bb1a0e6c988f150fe2598ddc1da12f8824801673807a42",
+      "contentSha256": "0e063fd97919527bb3bb1a0e6c988f150fe2598ddc1da12f8824801673807a42"
+    }
+  },
+  "facts": [
+    {
+      "featureCode": "02",
+      "sourceFact": "with the surrounding landscape of the Honmura area. The architecture and the approach leading up to the entrance are designed to connect the experience of visitors with Naoshima's history and people's lives. Tadao Ando Born in Osaka in 1941. A self-taught architect who founded Tadao Ando Architects & Associates in 1969. Recipient of many notable awards including the Architectural Institute of Japan Prize for \"Row House in Sumiyoshi\" (1979), th",
+      "proposedValue": 7,
+      "rationale": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "sourceFact": "try if they appear intoxicated or otherwise pose a disturbance to other visitors. When viewing the artworks ・Please do not touch the walls, the glass, or the artworks themselves. ・Photography is allowed, except for some works. Please be considerate of other visitors. ・Please do not take videos, or make sketches in the museum. Visitors are also requested not to use fountain pens, ink, etc. About using drone ・It's strictly prohibited to operat",
+      "proposedValue": 7,
+      "rationale": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "sourceFact": " museum interconnects with the existing art facilities on the islands, this constellation of venues will offer more integrated art encounters, deeply resonant with the surrounding nature and communities. As the first museum to bear the name of Naoshima, it aims to further explore what it means to be a museum profoundly connected to the spirit of the local community, creating an even greater harmony between art, architecture, nature, and daily",
+      "proposedValue": 7,
+      "rationale": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "featureCodeCandidates": [
+    "02",
+    "04",
+    "07"
+  ],
+  "rubricMapping": [
+    {
+      "featureCode": "02",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page gives historical or heritage context; the frozen rubric maps that target-scoped context to history."
+    },
+    {
+      "featureCode": "04",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page explicitly presents target-scoped photography or photo-viewing value; the frozen rubric maps that fact to photo."
+    },
+    {
+      "featureCode": "07",
+      "rubricVersion": "candidate-recovery-1.0",
+      "rule": "The official target page describes target-scoped natural scenery or a natural formation; the frozen rubric maps that fact to nature."
+    }
+  ],
+  "proposedValue": [
+    {
+      "featureCode": "02",
+      "value": 7
+    },
+    {
+      "featureCode": "04",
+      "value": 7
+    },
+    {
+      "featureCode": "07",
+      "value": 7
+    }
+  ],
+  "rationale": "Target-scoped page text was opened and retained; semantic review was performed before applying the frozen rubric mapping.",
+  "confidence": 0.82,
+  "annotationMethod": "model_semantic_review_v2_1"
+}

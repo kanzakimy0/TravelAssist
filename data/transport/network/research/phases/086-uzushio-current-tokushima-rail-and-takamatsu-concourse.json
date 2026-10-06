@@ -1,0 +1,214 @@
+{
+  "phaseId": "086-uzushio-current-tokushima-rail-and-takamatsu-concourse",
+  "strategy": [
+    "JR_SHIKOKU_EXACT_CURRENT_UZUSHIO_CALLS",
+    "CURRENT_TAKAMATSU_SHARED_CONCOURSE",
+    "TOKUSHIMA_AIRPORT_BACKBONE_PREREQUISITE"
+  ],
+  "completedActionIds": [
+    "rail:jr-shikoku:uzushio-current-tokushima-backbone",
+    "hub:takamatsu:current-yosan-kotoku-common-concourse"
+  ],
+  "facts": [
+    {
+      "factId": "uzushio-3009D-current-takamatsu-tokushima",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:independent-native-minimum-uzushio086",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/tokushima_takamatsu.pdf",
+      "observedResponseSha256": "9330450f0ec2a1a25a27dfb1295d39b4beb9f7ebe1237d8ecac5a31dffe8a213",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-minimum-uzushio086",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/",
+          "observedResponseSha256": "00b2650e50cd4a02c5b9882909b0527009309a2c7c7411f887383448f3f8dab5"
+        }
+      ],
+      "locator": "Independent current operator-hosted PDF, 2026-03-14 edition, 3009D column visually inspected against every candidate calling row. Tokushima/Takamatsu section: explicit pass markers at Shozui, Sanuki-Shirotori, Sanuki-Tsuda and Orange Town excluded; Ikenotani is an actual call in each selected independent column. Retain only a minimal static ordered station relation; no clocks, full table, artwork, train/date/calendar promise or raw database retained. Legacy factId remains opaque for exact pattern continuity.",
+      "line": "うずしお・高松徳島区間",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急うずしお",
+      "direction": "outbound",
+      "callingStations": [
+        "高松",
+        "栗林",
+        "屋島",
+        "志度",
+        "三本松",
+        "引田",
+        "板野",
+        "池谷",
+        "徳島"
+      ],
+      "callingComponents": [
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "栗林",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "屋島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "志度",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三本松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "引田",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "板野",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "池谷",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "徳島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_OPERATOR_NATIVE_PUBLICATION_MINIMUM_STATIC_CALL_RELATION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_VARIANT_NO_TRAIN_DATE_CALENDAR_OR_REALTIME",
+      "samePhysicalOperatorComponentReview": {
+        "name": "高松",
+        "operator": "四国旅客鉄道",
+        "stationCodes": [
+          "008163",
+          "008164"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    },
+    {
+      "factId": "uzushio-3010D-current-takamatsu-tokushima",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:independent-native-minimum-uzushio086",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/tokushima_takamatsu.pdf",
+      "observedResponseSha256": "9330450f0ec2a1a25a27dfb1295d39b4beb9f7ebe1237d8ecac5a31dffe8a213",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:independent-native-minimum-uzushio086",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/",
+          "observedResponseSha256": "00b2650e50cd4a02c5b9882909b0527009309a2c7c7411f887383448f3f8dab5"
+        }
+      ],
+      "locator": "Independent current operator-hosted PDF, 2026-03-14 edition, 3010D column visually inspected against every candidate calling row. Tokushima/Takamatsu section: explicit pass markers at Shozui, Sanuki-Shirotori, Sanuki-Tsuda and Orange Town excluded; Ikenotani is an actual call in each selected independent column. Retain only a minimal static ordered station relation; no clocks, full table, artwork, train/date/calendar promise or raw database retained. Legacy factId remains opaque for exact pattern continuity.",
+      "line": "うずしお・高松徳島区間",
+      "operator": "四国旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "特急うずしお",
+      "direction": "inbound",
+      "callingStations": [
+        "徳島",
+        "池谷",
+        "板野",
+        "引田",
+        "三本松",
+        "志度",
+        "屋島",
+        "栗林",
+        "高松"
+      ],
+      "callingComponents": [
+        {
+          "name": "徳島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "池谷",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "板野",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "引田",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三本松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "志度",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "屋島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "栗林",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_OPERATOR_NATIVE_PUBLICATION_MINIMUM_STATIC_CALL_RELATION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_VARIANT_NO_TRAIN_DATE_CALENDAR_OR_REALTIME",
+      "samePhysicalOperatorComponentReview": {
+        "name": "高松",
+        "operator": "四国旅客鉄道",
+        "stationCodes": [
+          "008163",
+          "008164"
+        ],
+        "method": "EXACT_TWO_RAW_LINE_RECORDS_AND_CURRENT_COMMON_CONCOURSE",
+        "newTransferRequired": false
+      }
+    }
+  ]
+}

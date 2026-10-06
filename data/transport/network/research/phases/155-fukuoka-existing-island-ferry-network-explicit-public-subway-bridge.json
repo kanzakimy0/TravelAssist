@@ -1,0 +1,84 @@
+{
+  "phaseId": "155-fukuoka-existing-island-ferry-network-explicit-public-subway-bridge",
+  "strategy": [
+    "PRESERVE_LICENSED_ACTUAL_FERRY_STOP_ID_AND_SERVICE",
+    "CURRENT_MUNICIPAL_EXPLICIT_OUTDOOR_PASSENGER_WALK",
+    "CURRENT_SUBWAY_EXIT_AND_TERMINAL_COMPONENT_CORROBORATION"
+  ],
+  "completedActionIds": [
+    "ferry:fukuoka-city:hakata-terminal-explicit-subway-public-walk",
+    "hub:fukuoka-subway:nakasu-current-exit-seven-municipal-ferry-access"
+  ],
+  "facts": [
+    {
+      "factId": "fukuoka-hakata-first-ferry-terminal-current-public-walk-from-nakasu",
+      "kind": "transfer",
+      "sourceActionId": "ferry:fukuoka-city:hakata-terminal-explicit-subway-public-walk",
+      "sourceUrl": "https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/kohro_top.html",
+      "observedResponseSha256": "6f4c2fa5a7c6465d81e0fce4dfd465fed000c8efa2d9353cc789ca28820ddb03",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "ferry:fukuoka-city:hakata-terminal-explicit-subway-public-walk",
+          "url": "https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/qa_1.html",
+          "observedResponseSha256": "0a0c2179a329f3d6cb98a85e8dd36c8996d67e4b95593471041244f2761b08e1"
+        },
+        {
+          "sourceActionId": "ferry:fukuoka-city:hakata-terminal-explicit-subway-public-walk",
+          "url": "https://www.city.fukuoka.lg.jp/kowan/somu/hakata-port/access.html",
+          "observedResponseSha256": "4b28ea3c56576fade184571be47efdcb6b3bbb499c5240d698197a2fcab962e0"
+        },
+        {
+          "sourceActionId": "hub:fukuoka-subway:nakasu-current-exit-seven-municipal-ferry-access",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/nakasu.php",
+          "observedResponseSha256": "9ddcf50aa41c376f2703bd04eed390965d2466937844f5b1b7e204e0c457a080"
+        },
+        {
+          "sourceActionId": "hub:fukuoka-subway:nakasu-current-exit-seven-municipal-ferry-access",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/nakasu_sisetu.php",
+          "observedResponseSha256": "4f3e10cd1dbb2be297f82eebd4f4d59874bc5f66d9d5fce76f4cc1681c65adde"
+        },
+        {
+          "sourceActionId": "hub:fukuoka-subway:nakasu-current-exit-seven-municipal-ferry-access",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_nakasu.jpg",
+          "observedResponseSha256": "49d2af8b224504f3ac34c637cb4f571cbc5e884cc2815978c274b41df8339c6c"
+        }
+      ],
+      "locator": "Current municipal ferry authority explicitly describes a public walk from Nakasu-Kawabata exit 7 to Hakata waiting terminal; current port access page identifies first terminal as the municipal Shikanoshima/Saitozaki and Genkaijima facility. This independently matches retained licensed actual-trip stop [01] Hakata Pier First Terminal. Subway map and exit list confirm paid gate to public exit. Keep coarse outdoor pedestrian transfer, not a same-building interchange, bus ride, second-terminal connection, guaranteed timed connection or universally accessible route. No time/distance, fare, route geometry, source prose or artwork retained.",
+      "components": [
+        {
+          "name": "中洲川端",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "博多ふ頭第一ターミナル",
+          "operator": "福岡市営渡船",
+          "line": "gtfs:fukuoka-ferry:route:[01]志賀島航路",
+          "nodeKind": "ferry_port",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:fukuoka-ferry",
+            "stopId": "[01]博多ふ頭第一ターミナル",
+            "sourceArchiveSha256": "b39a7590d454e37a400f724472e4969133c7b9f54b8600dce68bc47fa0da1b9e",
+            "recordSha256": "8435f121fae1ce8ca8fdaeecb3abd8a740ccc402173b76e56274c0a128690d64",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current municipal ferry authority explicitly describes a public walk from Nakasu-Kawabata exit 7 to Hakata waiting terminal; current port access page identifies first terminal as the municipal Shikanoshima/Saitozaki and Genkaijima facility. This independently matches retained licensed actual-trip stop [01] Hakata Pier First Terminal. Subway map and exit list confirm paid gate to public exit. Keep coarse outdoor pedestrian transfer, not a same-building interchange, bus ride, second-terminal connection, guaranteed timed connection or universally accessible route."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_FERRY_AUTHORITY_EXPLICIT_PUBLIC_WALK_AND_SUBWAY_EXIT_REVIEW",
+      "hubScopeComplete": false
+    }
+  ]
+}

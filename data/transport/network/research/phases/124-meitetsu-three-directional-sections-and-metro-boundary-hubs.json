@@ -1,0 +1,869 @@
+{
+  "phaseId": "124-meitetsu-three-directional-sections-and-metro-boundary-hubs",
+  "strategy": [
+    "ACTUAL_CURRENT_DIRECTIONAL_TRAIN_SECTIONS",
+    "PRESERVE_CALLED_OPERATOR_BOUNDARY_COMPONENTS",
+    "EXPLICIT_SHARED_PLATFORMS_AND_CONCOURSES"
+  ],
+  "completedActionIds": [
+    "private:meitetsu:three-actual-directional-metro-boundary-sections",
+    "hub:nagoya:three-meitetsu-boundary-platform-correspondences"
+  ],
+  "facts": [
+    {
+      "factId": "meitetsu-tt-actual-530-w1-bounded-section",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_TT_W1.pdf",
+      "observedResponseSha256": "2ddd8a876f690a170a23a21ab97ce13614ad027d41160baa80d6b1e44271bc01",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/index.html",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday PDF printed page 62, upper table, actual ordinary train 530 column. Retain the contiguous 赤池 to 梅坪 section with 8 explicit calls; this is not a claim that the complete train starts/ends at these boundaries. Repeated arrival/departure rows at one station are a single call. Both directions were independently read from their own columns. Calls beyond the selected Meitetsu line/operator scope and all clock values are omitted. No line adjacency, generic local-class assumption, or mere reverse generation is used as service evidence.",
+      "line": "豊田線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通・実列車の連続区間",
+      "direction": "published-down",
+      "callingStations": [
+        "赤池",
+        "日進",
+        "米野木",
+        "黒笹",
+        "三好ヶ丘",
+        "浄水",
+        "上豊田",
+        "梅坪"
+      ],
+      "callingComponents": [
+        {
+          "name": "赤池",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "日進",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "米野木",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "黒笹",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三好ヶ丘",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "浄水",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上豊田",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "梅坪",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_EXACT_LICENSED_OPERATOR_LINE_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-tt-actual-531-w2-bounded-section",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_TT_W2.pdf",
+      "observedResponseSha256": "63df04ef5cfd39f098180ee801774babb07c9e528e0aa1d6c14240199b603fff",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/index.html",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday PDF printed page 66, upper table, actual ordinary train 531 column. Retain the contiguous 梅坪 to 赤池 section with 8 explicit calls; this is not a claim that the complete train starts/ends at these boundaries. Repeated arrival/departure rows at one station are a single call. Both directions were independently read from their own columns. Calls beyond the selected Meitetsu line/operator scope and all clock values are omitted. No line adjacency, generic local-class assumption, or mere reverse generation is used as service evidence.",
+      "line": "豊田線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通・実列車の連続区間",
+      "direction": "published-up",
+      "callingStations": [
+        "梅坪",
+        "上豊田",
+        "浄水",
+        "三好ヶ丘",
+        "黒笹",
+        "米野木",
+        "日進",
+        "赤池"
+      ],
+      "callingComponents": [
+        {
+          "name": "梅坪",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上豊田",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "浄水",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三好ヶ丘",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "黒笹",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "米野木",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "日進",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "赤池",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_EXACT_LICENSED_OPERATOR_LINE_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-iy-actual-593-w1-bounded-section",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_IY_W1.pdf",
+      "observedResponseSha256": "947229f62d74c44ce423be5dafde60e25f1e9e7c0ff23e0c90b833be714af465",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/index.html",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday PDF printed page 124, actual ordinary train 593 column. Retain the contiguous 上小田井 to 犬山 section with 13 explicit calls; this is not a claim that the complete train starts/ends at these boundaries. Repeated arrival/departure rows at one station are a single call. Both directions were independently read from their own columns. Calls beyond the selected Meitetsu line/operator scope and all clock values are omitted. No line adjacency, generic local-class assumption, or mere reverse generation is used as service evidence.",
+      "line": "犬山線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通・実列車の連続区間",
+      "direction": "published-down",
+      "callingStations": [
+        "上小田井",
+        "西春",
+        "徳重・名古屋芸大",
+        "大山寺",
+        "岩倉",
+        "石仏",
+        "布袋",
+        "江南",
+        "柏森",
+        "扶桑",
+        "木津用水",
+        "犬山口",
+        "犬山"
+      ],
+      "callingComponents": [
+        {
+          "name": "上小田井",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西春",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "徳重・名古屋芸大",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大山寺",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岩倉",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石仏",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "布袋",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "江南",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柏森",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "扶桑",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "木津用水",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "犬山口",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "犬山",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_EXACT_LICENSED_OPERATOR_LINE_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-iy-actual-694-w2-bounded-section",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_IY_W2.pdf",
+      "observedResponseSha256": "279e44a61d875a0966dc8d0743078ead7d9837d7f6d3442727d1c92058426503",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/index.html",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday PDF printed page 138, actual ordinary train 694 column. Retain the contiguous 犬山 to 上小田井 section with 13 explicit calls; this is not a claim that the complete train starts/ends at these boundaries. Repeated arrival/departure rows at one station are a single call. Both directions were independently read from their own columns. Calls beyond the selected Meitetsu line/operator scope and all clock values are omitted. No line adjacency, generic local-class assumption, or mere reverse generation is used as service evidence.",
+      "line": "犬山線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通・実列車の連続区間",
+      "direction": "published-up",
+      "callingStations": [
+        "犬山",
+        "犬山口",
+        "木津用水",
+        "扶桑",
+        "柏森",
+        "江南",
+        "布袋",
+        "石仏",
+        "岩倉",
+        "大山寺",
+        "徳重・名古屋芸大",
+        "西春",
+        "上小田井"
+      ],
+      "callingComponents": [
+        {
+          "name": "犬山",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "犬山口",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "木津用水",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "扶桑",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柏森",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "江南",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "布袋",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石仏",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岩倉",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大山寺",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "徳重・名古屋芸大",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西春",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上小田井",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_EXACT_LICENSED_OPERATOR_LINE_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-km-actual-531-w1-bounded-section",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_KM_W1.pdf",
+      "observedResponseSha256": "3a6285e7308505131b21b1b7a460c0525a58488d3070b8b34087d44ec3943add",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/index.html",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday PDF printed page 158, actual ordinary train 531 column. Retain the contiguous 上飯田 to 犬山 section with 14 explicit calls; this is not a claim that the complete train starts/ends at these boundaries. Repeated arrival/departure rows at one station are a single call. Both directions were independently read from their own columns. Calls beyond the selected Meitetsu line/operator scope and all clock values are omitted. No line adjacency, generic local-class assumption, or mere reverse generation is used as service evidence.",
+      "line": "小牧線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通・実列車の連続区間",
+      "direction": "published-down",
+      "callingStations": [
+        "上飯田",
+        "味鋺",
+        "味美",
+        "春日井",
+        "牛山",
+        "間内",
+        "小牧口",
+        "小牧",
+        "小牧原",
+        "味岡",
+        "田県神社前",
+        "楽田",
+        "羽黒",
+        "犬山"
+      ],
+      "callingComponents": [
+        {
+          "name": "上飯田",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味鋺",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味美",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日井",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "牛山",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "間内",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小牧口",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小牧",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小牧原",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味岡",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "田県神社前",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "楽田",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "羽黒",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "犬山",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_EXACT_LICENSED_OPERATOR_LINE_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-km-actual-530-w2-bounded-section",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_KM_W2.pdf",
+      "observedResponseSha256": "839a9a678bfb36e8bfa98de552bb9f910080fe498ea54e9f68d963b7f8c8cffd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/index.html",
+          "observedResponseSha256": "d63c7bbd6e10c1e4cd0d8813006b546fa17612e7efa25a93e4a56921fbf2c4d7"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday PDF printed page 161, actual ordinary train 530 column. Retain the contiguous 犬山 to 上飯田 section with 14 explicit calls; this is not a claim that the complete train starts/ends at these boundaries. Repeated arrival/departure rows at one station are a single call. Both directions were independently read from their own columns. Calls beyond the selected Meitetsu line/operator scope and all clock values are omitted. No line adjacency, generic local-class assumption, or mere reverse generation is used as service evidence.",
+      "line": "小牧線",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通・実列車の連続区間",
+      "direction": "published-up",
+      "callingStations": [
+        "犬山",
+        "羽黒",
+        "楽田",
+        "田県神社前",
+        "味岡",
+        "小牧原",
+        "小牧",
+        "小牧口",
+        "間内",
+        "牛山",
+        "春日井",
+        "味美",
+        "味鋺",
+        "上飯田"
+      ],
+      "callingComponents": [
+        {
+          "name": "犬山",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "羽黒",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "楽田",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "田県神社前",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味岡",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小牧原",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小牧",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小牧口",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "間内",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "牛山",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日井",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味美",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "味鋺",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上飯田",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DIRECTIONAL_TRAIN_COLUMNS_AND_EXACT_LICENSED_OPERATOR_LINE_IDENTITIES",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-赤池-reviewed-distinct-operator-platform-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/T20_Akaike.gif",
+      "observedResponseSha256": "a9e6825bbffebfe30ebdc81d5d3dbe7a8fda10b8449452509813ee04b4df726a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E8%B5%A4%E6%B1%A0",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/TICKET/TRP0000310.htm",
+          "observedResponseSha256": "05dfa071c8f00d1d0c7dfb0f5d8cc19325ae007b70a19a7b879d883e269c3664"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001156.htm",
+          "observedResponseSha256": "b7d9e8b67d73c5583d5b3e41292e077df54eeb76b2ce90b0c874d732e0d930d3"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_TT_W1.pdf",
+          "observedResponseSha256": "2ddd8a876f690a170a23a21ab97ce13614ad027d41160baa80d6b1e44271bc01"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_TT_W2.pdf",
+          "observedResponseSha256": "63df04ef5cfd39f098180ee801774babb07c9e528e0aa1d6c14240199b603fff"
+        }
+      ],
+      "locator": "Current municipal diagram and platform guide show the Toyota-bound side and the returning Fushimi/Kamiotai side joined by the common B1 concourse stairs. The independently viewed current actual trains cross the operator boundary at the same passenger station. Admit only this physical station relation; platform 2 is alighting-only, and no service call is assigned to a platform without evidence. Minimum factual connection only; no artwork, distance threshold, fare, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "赤池",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "赤池",
+          "operator": "名古屋鉄道",
+          "line": "豊田線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_REVIEWED_SHARED_STATION_PLATFORM_AND_DISTINCT_OPERATOR_BOUNDARY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "meitetsu-上小田井-reviewed-distinct-operator-platform-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/T01_Kami_Otai.gif",
+      "observedResponseSha256": "6e3d4d7e03df577284e83a97062fad647c0b2025f3ad3804f206cc110e57646f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E4%B8%8A%E5%B0%8F%E7%94%B0%E4%BA%95",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/TICKET/TRP0000310.htm",
+          "observedResponseSha256": "05dfa071c8f00d1d0c7dfb0f5d8cc19325ae007b70a19a7b879d883e269c3664"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/TRP0005489.htm",
+          "observedResponseSha256": "de3a5a2b6d255826a339394d4227a3d3c73837e16447a67b7516492967b73f45"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line12/station/3113.html",
+          "observedResponseSha256": "74d0c3e248b8fde78b87fa2e1b101c048c05c949889b52885d404d96a440adb0"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/guidance/barrier_free/data12/data/__icsFiles/afieldfile/2026/06/03/kamiotai.jpg",
+          "observedResponseSha256": "e7885b45ecabe96ba6aff217ada781051fa790c27106c606b0d554064e7bb068"
+        }
+      ],
+      "locator": "Current municipal platform guide explicitly places Tsurumai on faces 2/3 and Meitetsu-only faces 1/4 on the same two islands; June 2026 current-linked Meitetsu diagram individually viewed shows both islands connected through shared 1F stairs and concourse. Keep only station-level physical transfer; no train-specific platform or universal cross-platform claim. Minimum factual connection only; no artwork, distance threshold, fare, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "上小田井",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "上小田井",
+          "operator": "名古屋鉄道",
+          "line": "犬山線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_REVIEWED_SHARED_STATION_PLATFORM_AND_DISTINCT_OPERATOR_BOUNDARY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "meitetsu-上飯田-reviewed-distinct-operator-platform-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/K01_Kamiiida.gif",
+      "observedResponseSha256": "922cbd16866c31babb520d3dd3b3c8e5f0277b7de1bbdadb1e0d1c8ec30de671",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E4%B8%8A%E9%A3%AF%E7%94%B0",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/TICKET/TRP0000310.htm",
+          "observedResponseSha256": "05dfa071c8f00d1d0c7dfb0f5d8cc19325ae007b70a19a7b879d883e269c3664"
+        },
+        {
+          "sourceActionId": "hub:nagoya:three-meitetsu-boundary-platform-correspondences",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0005202.htm",
+          "observedResponseSha256": "98ed4b055d93e4dcc217421813929b8bf221c664cae4a195b90428bffe071b7a"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line14/station/3501.html",
+          "observedResponseSha256": "9d87c5433da34a9397e8a72d1362adedfcdad2d472fa8f2dedf90345bcc5ac3c"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_KM_W1.pdf",
+          "observedResponseSha256": "3a6285e7308505131b21b1b7a460c0525a58488d3070b8b34087d44ec3943add"
+        },
+        {
+          "sourceActionId": "private:meitetsu:three-actual-directional-metro-boundary-sections",
+          "url": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_KM_W2.pdf",
+          "observedResponseSha256": "839a9a678bfb36e8bfa98de552bb9f910080fe498ea54e9f68d963b7f8c8cffd"
+        }
+      ],
+      "locator": "Current municipal diagram and platform guide show the single shared island, face 1 toward Heian-dori and face 2 toward Komaki/Inuyama, connected to the common gate concourse. Independently viewed actual current trains 531/530 pass the municipal/Meitetsu boundary at this called station. Separate railway operator components remain; no permission to ride beyond the passenger ticket is implied. Minimum factual connection only; no artwork, distance threshold, fare, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "上飯田",
+          "operator": "名古屋市",
+          "line": "上飯田線",
+          "mode": "metro"
+        },
+        {
+          "name": "上飯田",
+          "operator": "名古屋鉄道",
+          "line": "小牧線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_REVIEWED_SHARED_STATION_PLATFORM_AND_DISTINCT_OPERATOR_BOUNDARY",
+      "hubScopeComplete": false
+    }
+  ]
+}

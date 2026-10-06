@@ -151,13 +151,14 @@ test("desktop home keeps a floating sidebar and first-screen feature modules", (
   );
 });
 
-test("Profile Account remains explicit in-memory UI with required flows", () => {
+test("Profile Account retains its required flows with TASK-060 persistence", () => {
   const account = read("src/features/profile/profile-account.tsx");
   const route = read("src/app/(account)/personal-center/account/page.tsx");
 
   assert.match(route, /<ProfileAccount/);
   assert.match(account, /管理您的个人资料与基本设置/);
-  assert.match(account, /更换头像/);
+  assert.match(account, /头像上传暂不可用/);
+  assert.match(account, /useProfileResource/);
   assert.match(account, /删除头像/);
   assert.match(account, /恢复默认头像/);
   assert.match(account, /已验证/);

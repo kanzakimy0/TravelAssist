@@ -34,6 +34,9 @@ test("all lower cards share map-side inspection and no no-booking placeholder re
   assert.doesNotMatch(component, /<PlannerPopover/);
   assert.match(component, /showReservation && canonical/);
   assert.doesNotMatch(component, /无需预约可留空|为\$\{item.title\}添加预约/);
+  assert.match(component, /data-reservation-pending/);
+  assert.match(component, /酒店早餐/);
+  assert.match(component, /简易早餐/);
 });
 test("Detail inspector shares one mounted map and exposes an explicit edit action", () => {
   const workspace = read("components/trip-workspace.tsx");
@@ -46,4 +49,48 @@ test("Detail inspector shares one mounted map and exposes an explicit edit actio
     ),
   );
   assert.match(read("components/detail-map-inspector.tsx"), /调整行程/);
+  assert.match(workspace, /mapPickMode/);
+  assert.match(workspace, /onMapPick/);
+  const addDialog = read("components/trip-item-dialog.tsx");
+  assert.match(addDialog, /在地图上点选位置/);
+  assert.match(addDialog, /已从地图获取/);
+});
+test("planner close controls use one centered icon contract", () => {
+  for (const component of [
+    "components/detail-map-inspector.tsx",
+    "components/flight-project.tsx",
+    "components/map-quick-card.tsx",
+    "components/trip-item-dialog.tsx",
+  ]) {
+    assert.match(read(component), /<PlannerIcon name="close" \/>/);
+  }
+
+  const inspectorCss = read("detail-map-inspector.module.css");
+  assert.match(
+    inspectorCss,
+    /\.editor form > header > button\[aria-label\^="关闭"\][\s\S]*?width: 34px;[\s\S]*?height: 34px;[\s\S]*?padding: 0;/,
+  );
+  assert.match(
+    read("trip-preparation.module.css"),
+    /\.completion > header button\[aria-label\^="关闭"\][\s\S]*?width: 32px;[\s\S]*?height: 32px;[\s\S]*?padding: 0;/,
+  );
+});
+test("new items defer overlap detection to the itinerary rail", () => {
+  const addDialog = read("components/trip-item-dialog.tsx");
+  const plannerPage = read("components/planner-page.tsx");
+  assert.match(addDialog, /const invalid = validateSchedule\(item\);/);
+  assert.doesNotMatch(addDialog, /validate\?:/);
+  assert.doesNotMatch(addDialog, /validate\?\.\(item\)/);
+  assert.doesNotMatch(plannerPage, /<AddTripItemDialog[\s\S]{0,1200}validate=/);
+});
+test("detail day cards resize with the viewport and overflow on their own axis", () => {
+  const css = read("detail-workspace.module.css");
+  assert.match(
+    css,
+    /\.daySelector\s*\{[^}]*overflow-x: auto;[^}]*overflow-y: hidden;[^}]*scroll-snap-type: inline proximity;/s,
+  );
+  assert.match(
+    css,
+    /\.daySelector button\s*\{[^}]*flex: 1 1 clamp\(96px, 11vw, 168px\);[^}]*min-width: 96px;[^}]*min-height: 44px;/s,
+  );
 });

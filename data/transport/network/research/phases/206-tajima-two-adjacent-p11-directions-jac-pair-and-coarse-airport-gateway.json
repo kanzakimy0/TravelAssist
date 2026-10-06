@@ -1,0 +1,559 @@
+{
+  "phaseId": "206-tajima-two-adjacent-p11-directions-jac-pair-and-coarse-airport-gateway",
+  "strategy": [
+    "EXACT_P11_STOP_IDENTITIES",
+    "TWO_CURRENT_DIRECTIONAL_ADJACENT_BUS_SEGMENTS",
+    "EXPLICIT_CURRENT_P11_AIRPORT_NAME_VARIANT",
+    "C28_AIRFIELD_SUFFIX_PUBLIC_NAME_EVIDENCE",
+    "ACTUAL_JAC_FLIGHT_PAIR",
+    "COARSE_PUBLIC_WHOLE_AIRPORT_TO_NATIVE_STOP"
+  ],
+  "completedActionIds": [
+    "bus:tajima:current-directed-adjacent-airport-pair",
+    "airport:tajima:current-public-bus-endpoint-and-airfield-name",
+    "flight:tajima:current-october-jac-2323-2324-pair"
+  ],
+  "facts": [
+    {
+      "factId": "tajima-2026-airport-adjacent-UPPER-SANO-TO-AIRPORT",
+      "kind": "service",
+      "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+      "sourceUrl": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+      "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+          "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/wp-content/uploads/2025/02/f-10_tjh_20250301.png",
+          "observedResponseSha256": "a2cf12bec6628e3e0f39fbebd229576e1da7cf59e38655c40159212c20c1f346"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/company/",
+          "observedResponseSha256": "1efd77c129f5fedb04a20fb71a2e8e2ffa49b3948923f72fdd617974502f9d08"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "operator": "全但バス（株）",
+      "line": "但馬空港線（空港リムジンバス）",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港連絡路線",
+      "direction": "UPPER-SANO-TO-AIRPORT",
+      "serviceDate": "20261003",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OPERATOR_TABLE_EFFECTIVE_2026_04_01_DAILY_SERVICE_NOT_REALTIME",
+      "callingStations": [
+        "上佐野",
+        "但馬空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "上佐野",
+          "operator": "全但バス（株）",
+          "line": "p11-stop:P11-22_28:bs448",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_28:bs448",
+            "recordSha256": "6e125d06bc583e154a2cc9ef92af8e802605120b93240a7e47d850c3a84f69fa",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 road-stop feature bs448 on the same airport bus line; adjacent to bs422 in the independently published all-stop order and in both current directional diagrams.",
+            "currentOperatorEvidence": {
+              "recordOperator": "全但バス（株）",
+              "currentOperatorName": "全但バス株式会社",
+              "currentStopName": "上佐野",
+              "historicalRoute": "但馬空港線（空港リムジンバス）",
+              "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+              "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+            }
+          }
+        },
+        {
+          "name": "但馬空港",
+          "operator": "全但バス（株）",
+          "line": "p11-stop:P11-22_28:bs422",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_28:bs422",
+            "recordSha256": "fc09343f7077dc354482064821e7961dd29cceedbbc59fdbd95e059c22cb3708",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 road-stop feature bs422 kept distinct from C28 whole-airport identity. Current official airport access page names airport-originating/terminating bus routes, and current route plus all-stop order bind only coarse access; no platform or frontage geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "全但バス（株）",
+              "currentOperatorName": "全但バス株式会社",
+              "currentStopName": "コウノトリ但馬空港",
+              "historicalRoute": "但馬空港線（空港リムジンバス）",
+              "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+              "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "但馬空港",
+              "currentStopName": "コウノトリ但馬空港",
+              "operator": "全但バス（株）",
+              "physicalContinuityReview": "P11 bs422 is the exact historic operator/route road-stop identity named 但馬空港. The current same-operator current-route diagram displays the endpoint as コウノトリ但馬空港[TJH]; the airport official access page identifies the bus route endpoint as コウノトリ但馬空港, and the official prefecture identifies 但馬空港 as the facility public short name and コウノトリ但馬空港 as its nickname. Keep the P11 feature identity separate and do not normalize by coordinates.",
+              "historicalEvidence": {
+                "stopName": "但馬空港",
+                "operator": "全但バス（株）",
+                "locator": "P11-22_28_GML.xml exact bs422 road-stop record with historical route 但馬空港線（空港リムジンバス）",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+              },
+              "currentEvidence": {
+                "stopName": "コウノトリ但馬空港",
+                "operator": "全但バス（株）",
+                "locator": "Current operator 2026-04-01 timetable airport-side route stop at コウノトリ但馬空港[TJH]; legal operator is bound by company page.",
+                "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+                "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+              }
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_TWO_DIRECTION_SELECTED_STOP_DIAGRAM_PLUS_ALL_STOP_ADJACENCY_TABLE",
+      "locator": "Current operator diagram effective 2026-04-01 shows the airport-side adjacent selected stop pair in this independent direction: UPPER-SANO-TO-AIRPORT. The current diagram is explicitly selected-stop only; a separate 2025 all-stop ordinary-fare order shows 上佐野 immediately adjacent to 但馬空港. The pair is isolated as one actual scheduled segment; no other stops are added and no fare/clock is persisted."
+    },
+    {
+      "factId": "tajima-2026-airport-adjacent-AIRPORT-TO-UPPER-SANO",
+      "kind": "service",
+      "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+      "sourceUrl": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+      "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+          "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/wp-content/uploads/2025/02/f-10_tjh_20250301.png",
+          "observedResponseSha256": "a2cf12bec6628e3e0f39fbebd229576e1da7cf59e38655c40159212c20c1f346"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/company/",
+          "observedResponseSha256": "1efd77c129f5fedb04a20fb71a2e8e2ffa49b3948923f72fdd617974502f9d08"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "operator": "全但バス（株）",
+      "line": "但馬空港線（空港リムジンバス）",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港連絡路線",
+      "direction": "AIRPORT-TO-UPPER-SANO",
+      "serviceDate": "20261003",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OPERATOR_TABLE_EFFECTIVE_2026_04_01_DAILY_SERVICE_NOT_REALTIME",
+      "callingStations": [
+        "但馬空港",
+        "上佐野"
+      ],
+      "callingComponents": [
+        {
+          "name": "但馬空港",
+          "operator": "全但バス（株）",
+          "line": "p11-stop:P11-22_28:bs422",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_28:bs422",
+            "recordSha256": "fc09343f7077dc354482064821e7961dd29cceedbbc59fdbd95e059c22cb3708",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 road-stop feature bs422 kept distinct from C28 whole-airport identity. Current official airport access page names airport-originating/terminating bus routes, and current route plus all-stop order bind only coarse access; no platform or frontage geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "全但バス（株）",
+              "currentOperatorName": "全但バス株式会社",
+              "currentStopName": "コウノトリ但馬空港",
+              "historicalRoute": "但馬空港線（空港リムジンバス）",
+              "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+              "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "但馬空港",
+              "currentStopName": "コウノトリ但馬空港",
+              "operator": "全但バス（株）",
+              "physicalContinuityReview": "P11 bs422 is the exact historic operator/route road-stop identity named 但馬空港. The current same-operator current-route diagram displays the endpoint as コウノトリ但馬空港[TJH]; the airport official access page identifies the bus route endpoint as コウノトリ但馬空港, and the official prefecture identifies 但馬空港 as the facility public short name and コウノトリ但馬空港 as its nickname. Keep the P11 feature identity separate and do not normalize by coordinates.",
+              "historicalEvidence": {
+                "stopName": "但馬空港",
+                "operator": "全但バス（株）",
+                "locator": "P11-22_28_GML.xml exact bs422 road-stop record with historical route 但馬空港線（空港リムジンバス）",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+              },
+              "currentEvidence": {
+                "stopName": "コウノトリ但馬空港",
+                "operator": "全但バス（株）",
+                "locator": "Current operator 2026-04-01 timetable airport-side route stop at コウノトリ但馬空港[TJH]; legal operator is bound by company page.",
+                "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+                "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+              }
+            }
+          }
+        },
+        {
+          "name": "上佐野",
+          "operator": "全但バス（株）",
+          "line": "p11-stop:P11-22_28:bs448",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_28:bs448",
+            "recordSha256": "6e125d06bc583e154a2cc9ef92af8e802605120b93240a7e47d850c3a84f69fa",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 road-stop feature bs448 on the same airport bus line; adjacent to bs422 in the independently published all-stop order and in both current directional diagrams.",
+            "currentOperatorEvidence": {
+              "recordOperator": "全但バス（株）",
+              "currentOperatorName": "全但バス株式会社",
+              "currentStopName": "上佐野",
+              "historicalRoute": "但馬空港線（空港リムジンバス）",
+              "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+              "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_TWO_DIRECTION_SELECTED_STOP_DIAGRAM_PLUS_ALL_STOP_ADJACENCY_TABLE",
+      "locator": "Current operator diagram effective 2026-04-01 shows the airport-side adjacent selected stop pair in this independent direction: AIRPORT-TO-UPPER-SANO. The current diagram is explicitly selected-stop only; a separate 2025 all-stop ordinary-fare order shows 上佐野 immediately adjacent to 但馬空港. The pair is isolated as one actual scheduled segment; no other stops are added and no fare/clock is persisted."
+    },
+    {
+      "factId": "tajima-current-jal2323-ITM-TJH",
+      "kind": "service",
+      "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+      "sourceUrl": "https://www.tajima-airport.jp/airplane_ride/",
+      "observedResponseSha256": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+          "url": "https://www.tajima-airport.jp/airplane_ride/",
+          "observedResponseSha256": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282"
+        },
+        {
+          "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+          "url": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+          "observedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+        },
+        {
+          "sourceActionId": "airport:tajima:current-public-bus-endpoint-and-airfield-name",
+          "url": "https://www.tajima-airport.jp/access/",
+          "observedResponseSha256": "ac6e07935735abfe48ca984042eb1f0a8bbf9f7809247538d37e376596ee9998"
+        }
+      ],
+      "operator": "日本エアコミューター株式会社",
+      "line": "但馬・大阪伊丹定期便",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "ITM-TJH",
+      "serviceIdentifier": "JAL2323",
+      "serviceDate": "20261003",
+      "serviceState": "active",
+      "serviceStateScope": "AIRPORT_SCHEDULE_VALID_20261001_TO_20261024_STATIC_NOT_REALTIME",
+      "callingStations": [
+        "大阪国際空港",
+        "但馬飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪国際空港",
+          "operator": "airport-facility:cf03_00005",
+          "line": "airport:cf03_00005",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00005",
+            "requirementId": "review:transport-node:7115be0a-ae95-5112-9ab6-9737311708e4",
+            "expectedRequirementName": "大阪国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse the existing admitted C28 Osaka International Airport identity and existing national graph attachment; no new local ground transfer is asserted."
+          }
+        },
+        {
+          "name": "但馬飛行場",
+          "operator": "airport-facility:cf03_00073",
+          "line": "airport:cf03_00073",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00073",
+            "requirementId": "review:official-airport:但馬",
+            "expectedRequirementName": "但馬",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "但馬飛行場",
+              "requirementName": "但馬",
+              "publicName": "但馬空港",
+              "locator": "Hyogo prefecture official airport page section (2) states 但馬空港 is the name used to make the facility more familiar and identifies コウノトリ但馬空港 as its 愛称; exact public short form 但馬空港 is used for this C28 suffix review.",
+              "url": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+              "observedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+            },
+            "currentPassengerAccessReview": "Coarse airport-facility gateway only. The airport official access page has a dedicated bus section and explicitly lists routes between コウノトリ但馬空港 and JR豊岡駅/JR城崎温泉駅, links the official operator timetable and identifies 全但バス. The current route display and all-stop adjacent-call table bind the exact P11 stop component. No doorway, curb, platform, bay, distance, path geometry or accessibility claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_DIRECTIONAL_ITINERARY_AND_EXPLICIT_CURRENT_PREFECTURAL_ACTUAL_OPERATOR",
+      "locator": "Airport published next-period timetable valid 2026-10-01 through 2026-10-24 separately shows JAL2323 in the Itami→Tajima itinerary segment. Hyogo Prefecture current page updated 2026-03-17 states Japan Air Commuter operates the daily Tajima–Itami route. Preserve the segment’s direction and identifier; do not include connecting legs, clocks, or realtime guarantee."
+    },
+    {
+      "factId": "tajima-current-jal2324-TJH-ITM",
+      "kind": "service",
+      "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+      "sourceUrl": "https://www.tajima-airport.jp/airplane_ride/",
+      "observedResponseSha256": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+          "url": "https://www.tajima-airport.jp/airplane_ride/",
+          "observedResponseSha256": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282"
+        },
+        {
+          "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+          "url": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+          "observedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+        },
+        {
+          "sourceActionId": "airport:tajima:current-public-bus-endpoint-and-airfield-name",
+          "url": "https://www.tajima-airport.jp/access/",
+          "observedResponseSha256": "ac6e07935735abfe48ca984042eb1f0a8bbf9f7809247538d37e376596ee9998"
+        }
+      ],
+      "operator": "日本エアコミューター株式会社",
+      "line": "但馬・大阪伊丹定期便",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "TJH-ITM",
+      "serviceIdentifier": "JAL2324",
+      "serviceDate": "20261003",
+      "serviceState": "active",
+      "serviceStateScope": "AIRPORT_SCHEDULE_VALID_20261001_TO_20261024_STATIC_NOT_REALTIME",
+      "callingStations": [
+        "但馬飛行場",
+        "大阪国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "但馬飛行場",
+          "operator": "airport-facility:cf03_00073",
+          "line": "airport:cf03_00073",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00073",
+            "requirementId": "review:official-airport:但馬",
+            "expectedRequirementName": "但馬",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "但馬飛行場",
+              "requirementName": "但馬",
+              "publicName": "但馬空港",
+              "locator": "Hyogo prefecture official airport page section (2) states 但馬空港 is the name used to make the facility more familiar and identifies コウノトリ但馬空港 as its 愛称; exact public short form 但馬空港 is used for this C28 suffix review.",
+              "url": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+              "observedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+            },
+            "currentPassengerAccessReview": "Coarse airport-facility gateway only. The airport official access page has a dedicated bus section and explicitly lists routes between コウノトリ但馬空港 and JR豊岡駅/JR城崎温泉駅, links the official operator timetable and identifies 全但バス. The current route display and all-stop adjacent-call table bind the exact P11 stop component. No doorway, curb, platform, bay, distance, path geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "大阪国際空港",
+          "operator": "airport-facility:cf03_00005",
+          "line": "airport:cf03_00005",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00005",
+            "requirementId": "review:transport-node:7115be0a-ae95-5112-9ab6-9737311708e4",
+            "expectedRequirementName": "大阪国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse the existing admitted C28 Osaka International Airport identity and existing national graph attachment; no new local ground transfer is asserted."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_DIRECTIONAL_ITINERARY_AND_EXPLICIT_CURRENT_PREFECTURAL_ACTUAL_OPERATOR",
+      "locator": "Airport published next-period timetable valid 2026-10-01 through 2026-10-24 separately shows JAL2324 in the Tajima→Itami itinerary segment. Hyogo Prefecture current page updated 2026-03-17 states Japan Air Commuter operates the daily Tajima–Itami route. Preserve the segment’s direction and identifier; do not include connecting legs, clocks, or realtime guarantee."
+    },
+    {
+      "factId": "tajima-coarse-airport-to-exact-p11-bs422-public-access",
+      "kind": "transfer",
+      "sourceActionId": "airport:tajima:current-public-bus-endpoint-and-airfield-name",
+      "sourceUrl": "https://www.tajima-airport.jp/access/",
+      "observedResponseSha256": "ac6e07935735abfe48ca984042eb1f0a8bbf9f7809247538d37e376596ee9998",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tajima:current-public-bus-endpoint-and-airfield-name",
+          "url": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+          "observedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+          "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/wp-content/uploads/2025/02/f-10_tjh_20250301.png",
+          "observedResponseSha256": "a2cf12bec6628e3e0f39fbebd229576e1da7cf59e38655c40159212c20c1f346"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://www.zentanbus.co.jp/company/",
+          "observedResponseSha256": "1efd77c129f5fedb04a20fb71a2e8e2ffa49b3948923f72fdd617974502f9d08"
+        },
+        {
+          "sourceActionId": "bus:tajima:current-directed-adjacent-airport-pair",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "flight:tajima:current-october-jac-2323-2324-pair",
+          "url": "https://www.tajima-airport.jp/airplane_ride/",
+          "observedResponseSha256": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282"
+        }
+      ],
+      "locator": "Airport official access page under バスでお越しの方 explicitly names two bus routes starting/ending at コウノトリ但馬空港 and links/identifies 全但バス. Current bus route image labels its airport endpoint コウノトリ但馬空港[TJH]; all-stop route order and exact P11 feature/operator/route support the native endpoint. Public whole-airport gateway only; no exact terminal/curb location.",
+      "components": [
+        {
+          "name": "但馬飛行場",
+          "operator": "airport-facility:cf03_00073",
+          "line": "airport:cf03_00073",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00073",
+            "requirementId": "review:official-airport:但馬",
+            "expectedRequirementName": "但馬",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "但馬飛行場",
+              "requirementName": "但馬",
+              "publicName": "但馬空港",
+              "locator": "Hyogo prefecture official airport page section (2) states 但馬空港 is the name used to make the facility more familiar and identifies コウノトリ但馬空港 as its 愛称; exact public short form 但馬空港 is used for this C28 suffix review.",
+              "url": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+              "observedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+            },
+            "currentPassengerAccessReview": "Coarse airport-facility gateway only. The airport official access page has a dedicated bus section and explicitly lists routes between コウノトリ但馬空港 and JR豊岡駅/JR城崎温泉駅, links the official operator timetable and identifies 全但バス. The current route display and all-stop adjacent-call table bind the exact P11 stop component. No doorway, curb, platform, bay, distance, path geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "但馬空港",
+          "operator": "全但バス（株）",
+          "line": "p11-stop:P11-22_28:bs422",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_28:bs422",
+            "recordSha256": "fc09343f7077dc354482064821e7961dd29cceedbbc59fdbd95e059c22cb3708",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 road-stop feature bs422 kept distinct from C28 whole-airport identity. Current official airport access page names airport-originating/terminating bus routes, and current route plus all-stop order bind only coarse access; no platform or frontage geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "全但バス（株）",
+              "currentOperatorName": "全但バス株式会社",
+              "currentStopName": "コウノトリ但馬空港",
+              "historicalRoute": "但馬空港線（空港リムジンバス）",
+              "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+              "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "但馬空港",
+              "currentStopName": "コウノトリ但馬空港",
+              "operator": "全但バス（株）",
+              "physicalContinuityReview": "P11 bs422 is the exact historic operator/route road-stop identity named 但馬空港. The current same-operator current-route diagram displays the endpoint as コウノトリ但馬空港[TJH]; the airport official access page identifies the bus route endpoint as コウノトリ但馬空港, and the official prefecture identifies 但馬空港 as the facility public short name and コウノトリ但馬空港 as its nickname. Keep the P11 feature identity separate and do not normalize by coordinates.",
+              "historicalEvidence": {
+                "stopName": "但馬空港",
+                "operator": "全但バス（株）",
+                "locator": "P11-22_28_GML.xml exact bs422 road-stop record with historical route 但馬空港線（空港リムジンバス）",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+              },
+              "currentEvidence": {
+                "stopName": "コウノトリ但馬空港",
+                "operator": "全但バス（株）",
+                "locator": "Current operator 2026-04-01 timetable airport-side route stop at コウノトリ但馬空港[TJH]; legal operator is bound by company page.",
+                "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+                "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257"
+              }
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_AIRPORT_BUS_ENDPOINT_AND_OPERATOR_PLUS_CURRENT_P11_ROUTE_NATIVE_IDENTITY",
+      "hubScopeComplete": false
+    }
+  ],
+  "scope": "Only two adjacent road stops bs448 上佐野 and bs422 但馬空港 on the 但馬空港線; two independent actual 2026 directions, two distinct JAC-operated airport flight directions to already admitted Osaka International Airport, and a coarse bidirectional public airport-facility↔P11 bs422 relation. No other bus stops, terminal geometry, coordinates, timetable clocks, fare values, or GTFS."
+}

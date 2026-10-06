@@ -1,0 +1,235 @@
+{
+  "source": {
+    "sourceId": "transport-source:086:c1fa4b617fa3bdb8e74997d96274e6c5",
+    "url": "https://www.town.okushiri.lg.jp/hotnews/detail/00009927.html",
+    "contentSha256": "3ca5c9a3b0abe00c2fb59038e0926ae3a24cc99ee90a9b8647f793be34df7efb",
+    "evidenceContentSha256": "002724c6b62e3df063c61740cf9f2e9fea76134e94ecfe6f0272e13be492c63c",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T03:18:38.553194+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.town.okushiri.lg.jp/hotnews/detail/00000002.html",
+      "reason": "Municipal copyright reserves expressive material, permits law-allowed uses. Minimum independent facility/directional service facts only; no raw timetable/clocks/maps/prose. Commercial-link policy is not claimed as permission; no raw public reuse."
+    },
+    "attribution": "https://www.town.okushiri.lg.jp/hotnews/detail/00009927.html; operator factual topology; reviewed 2026-10-03T03:18:38.553194+00:00"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:773c3591517c46950f8a96e8366a6e95",
+      "sourceId": "transport-source:086:c1fa4b617fa3bdb8e74997d96274e6c5",
+      "sourceSha256": "3ca5c9a3b0abe00c2fb59038e0926ae3a24cc99ee90a9b8647f793be34df7efb",
+      "record": {
+        "factId": "okushiri-hac-oct05-direction-0",
+        "kind": "service",
+        "sourceActionId": "airport:okushiri:town-facts233",
+        "sourceUrl": "https://www.town.okushiri.lg.jp/hotnews/detail/00009927.html",
+        "observedResponseSha256": "002724c6b62e3df063c61740cf9f2e9fea76134e94ecfe6f0272e13be492c63c",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "airport:okushiri:pref-carrier233",
+            "url": "https://www.pref.hokkaido.lg.jp/fs/1/3/1/3/6/2/9/7/_/R8.04.01%E5%A5%A5%E5%B0%BB%E7%A9%BA%E6%B8%AF%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%86%85%E5%AE%B9%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%83%85%E5%A0%B1.pdf",
+            "observedResponseSha256": "830896af8fac5ce1fa6bccfbd067f0392d4743a0a0a604e34308829f1c1a6ed4"
+          }
+        ],
+        "operator": "株式会社北海道エアシステム",
+        "line": "函館・奥尻旅客航空路",
+        "mode": "flight",
+        "serviceClass": "定期旅客便",
+        "direction": "函館→奥尻",
+        "serviceState": "active",
+        "serviceStateScope": "Municipal published September24–November30 service Mon Tue Wed Thu Sat except October10/12; October5 Monday is positive. Not Oct4 service or real-time/timed-transfer guarantee. Prefecture lists HAC as operating carrier independently of JAL marketing code.",
+        "reviewedServiceDate": "20261005",
+        "callingStations": [
+          "函館空港",
+          "奥尻空港"
+        ],
+        "callingComponents": [
+          {
+            "name": "函館空港",
+            "operator": "airport-facility:cf03_00018",
+            "line": "airport:cf03_00018",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00018",
+              "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+              "expectedRequirementName": "函館",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Reuse exact admitted C28 Hakodate gateway; no terminal merge or new surface shortcut."
+            }
+          },
+          {
+            "name": "奥尻空港",
+            "operator": "airport-facility:cf03_00019",
+            "line": "airport:cf03_00019",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00019",
+              "requirementId": "review:official-airport:奥尻",
+              "expectedRequirementName": "奥尻",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Exact C28 airport gateway; current municipal October5 passenger flights with prefectural HAC carrier; current operator whole-island public OD. No curb coordinate or fixed bus claim."
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "locator": "Municipal actual separate directional JAL2791 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+      },
+      "recordSha256": "35e5871ea2128f822c83863bfbd213ac95a92a087f685e2267416356e45d30d4",
+      "locator": "Municipal actual separate directional JAL2791 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:34d5bc812453b059ccdde6733a30f55a",
+      "sourceId": "transport-source:086:c1fa4b617fa3bdb8e74997d96274e6c5",
+      "sourceSha256": "3ca5c9a3b0abe00c2fb59038e0926ae3a24cc99ee90a9b8647f793be34df7efb",
+      "record": {
+        "factId": "okushiri-hac-oct05-direction-0",
+        "callingNodes": [
+          {
+            "nodeId": "transport-node:086:b1579ba58f849d49acf249bbe5c74ada",
+            "sequence": 1,
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "nodeId": "transport-node:086:9c3fcc5b5b9fb587be9156b15db50278",
+            "sequence": 2,
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "lineRef": "transport-line:086:def36f553461c0b353e149a34657a829",
+        "operatorRef": "株式会社北海道エアシステム",
+        "mode": "flight",
+        "serviceClass": "定期旅客便",
+        "direction": "函館→奥尻",
+        "sourceFactRef": "transport-evidence:086:773c3591517c46950f8a96e8366a6e95"
+      },
+      "recordSha256": "d19e4f0814e16492f2b31c22083f081acd55cbccdeb45c67a137bd3b58a0a64a",
+      "locator": "Municipal actual separate directional JAL2791 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:b72761a680ad79646c0efdefe4944a38",
+      "sourceId": "transport-source:086:c1fa4b617fa3bdb8e74997d96274e6c5",
+      "sourceSha256": "3ca5c9a3b0abe00c2fb59038e0926ae3a24cc99ee90a9b8647f793be34df7efb",
+      "record": {
+        "factId": "okushiri-hac-oct05-direction-1",
+        "kind": "service",
+        "sourceActionId": "airport:okushiri:town-facts233",
+        "sourceUrl": "https://www.town.okushiri.lg.jp/hotnews/detail/00009927.html",
+        "observedResponseSha256": "002724c6b62e3df063c61740cf9f2e9fea76134e94ecfe6f0272e13be492c63c",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "airport:okushiri:pref-carrier233",
+            "url": "https://www.pref.hokkaido.lg.jp/fs/1/3/1/3/6/2/9/7/_/R8.04.01%E5%A5%A5%E5%B0%BB%E7%A9%BA%E6%B8%AF%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%86%85%E5%AE%B9%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%83%85%E5%A0%B1.pdf",
+            "observedResponseSha256": "830896af8fac5ce1fa6bccfbd067f0392d4743a0a0a604e34308829f1c1a6ed4"
+          }
+        ],
+        "operator": "株式会社北海道エアシステム",
+        "line": "函館・奥尻旅客航空路",
+        "mode": "flight",
+        "serviceClass": "定期旅客便",
+        "direction": "奥尻→函館",
+        "serviceState": "active",
+        "serviceStateScope": "Municipal published September24–November30 service Mon Tue Wed Thu Sat except October10/12; October5 Monday is positive. Not Oct4 service or real-time/timed-transfer guarantee. Prefecture lists HAC as operating carrier independently of JAL marketing code.",
+        "reviewedServiceDate": "20261005",
+        "callingStations": [
+          "奥尻空港",
+          "函館空港"
+        ],
+        "callingComponents": [
+          {
+            "name": "奥尻空港",
+            "operator": "airport-facility:cf03_00019",
+            "line": "airport:cf03_00019",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00019",
+              "requirementId": "review:official-airport:奥尻",
+              "expectedRequirementName": "奥尻",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Exact C28 airport gateway; current municipal October5 passenger flights with prefectural HAC carrier; current operator whole-island public OD. No curb coordinate or fixed bus claim."
+            }
+          },
+          {
+            "name": "函館空港",
+            "operator": "airport-facility:cf03_00018",
+            "line": "airport:cf03_00018",
+            "mode": "flight",
+            "airportIdentity": {
+              "dataset": "C28-21",
+              "referencePointId": "cf03_00018",
+              "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+              "expectedRequirementName": "函館",
+              "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+              "currentPassengerAccessReview": "Reuse exact admitted C28 Hakodate gateway; no terminal merge or new surface shortcut."
+            }
+          }
+        ],
+        "callingRestrictions": [
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "locator": "Municipal actual separate directional JAL2792 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+      },
+      "recordSha256": "4776aefb266d27bf75ad77854b7beeaf13ea1b2ff02a048eaa7f81adfc09b918",
+      "locator": "Municipal actual separate directional JAL2792 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+    },
+    {
+      "evidenceId": "transport-evidence:086:a26b9815fd27c57b7a3d1394d3145a5d",
+      "sourceId": "transport-source:086:c1fa4b617fa3bdb8e74997d96274e6c5",
+      "sourceSha256": "3ca5c9a3b0abe00c2fb59038e0926ae3a24cc99ee90a9b8647f793be34df7efb",
+      "record": {
+        "factId": "okushiri-hac-oct05-direction-1",
+        "callingNodes": [
+          {
+            "nodeId": "transport-node:086:9c3fcc5b5b9fb587be9156b15db50278",
+            "sequence": 1,
+            "pickupType": "0",
+            "dropOffType": "0"
+          },
+          {
+            "nodeId": "transport-node:086:b1579ba58f849d49acf249bbe5c74ada",
+            "sequence": 2,
+            "pickupType": "0",
+            "dropOffType": "0"
+          }
+        ],
+        "lineRef": "transport-line:086:def36f553461c0b353e149a34657a829",
+        "operatorRef": "株式会社北海道エアシステム",
+        "mode": "flight",
+        "serviceClass": "定期旅客便",
+        "direction": "奥尻→函館",
+        "sourceFactRef": "transport-evidence:086:b72761a680ad79646c0efdefe4944a38"
+      },
+      "recordSha256": "5ff850ffb27643fcc9efc047074eac2b89f3d640d3e7f4ad6ab6fed1a1baafea",
+      "locator": "Municipal actual separate directional JAL2792 entry; marketing code distinct from actual HAC carrier. No clocks/table expression copied."
+    }
+  ],
+  "candidates": [],
+  "patterns": [],
+  "transfers": []
+}

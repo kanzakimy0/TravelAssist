@@ -1,0 +1,406 @@
+{
+  "task": "TASK-067-B",
+  "design": "../../ui/main-system-loading-empty-error-skeleton.md",
+  "designVersion": "Frozen v0.1",
+  "executionBase": "3a2779aee65c7335413adcc53ee5b4f7135c654c",
+  "classificationRule": "Classifies the current reachable subset, not every future stimulus in a Frozen row. Read currentEvidence and limits together. IMPLEMENTED_AND_TESTED does not claim unavailable referenced cases or unexecuted manual/device tests passed.",
+  "evidence": {
+    "pure": "../../../tests/task-067-main-system-state.test.mjs",
+    "browser": "../../../tests/task-067-main-system-state.browser.mjs",
+    "development": "browser-development.json",
+    "production": "browser-production.json",
+    "gates": "gate-evidence.json"
+  },
+  "acceptance": [
+    {
+      "id": "AC-01",
+      "topic": "首次页面加载",
+      "frozenCases": ["P01", "D01", "S01"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Start hydration and Planner/Detail browser restore retain their existing shell; shared pending skeleton precedes restore.",
+      "limits": "SSR/source regression plus real Start pending browser coverage; no remote Trip loading."
+    },
+    {
+      "id": "AC-02",
+      "topic": "局部加载",
+      "frozenCases": ["R01", "D02", "O01"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Route section loading is tested in the existing movement overlay.",
+      "limits": "The exact R01/D02 asynchronous recommendation/detail-body loaders do not exist."
+    },
+    {
+      "id": "AC-03",
+      "topic": "Skeleton 几何",
+      "frozenCases": ["R01", "T01"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Shared skeleton is tested as static, decorative, at most 3 rows × 3 blocks.",
+      "limits": "R01/T01 async recommendation/timeline data does not exist; no invented progress."
+    },
+    {
+      "id": "AC-04",
+      "topic": "首次 Empty",
+      "frozenCases": ["S03", "P02"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "An absent Start record uses the existing first-use form; browser archive Empty is tested.",
+      "limits": "P02 empty authoritative plan is not a current path: existing local sample plans remain."
+    },
+    {
+      "id": "AC-05",
+      "topic": "No-result Empty",
+      "frozenCases": ["S04", "M04", "R03", "T03", "O04"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Existing 47-prefecture search: zero results, selections retained, clear existing query, keyboard focus restored; Timeline empty renderer preserves other dates.",
+      "limits": "No async recommendation no-result capability; Map empty branch is source-audited, not live Mapbox-tested."
+    },
+    {
+      "id": "AC-06",
+      "topic": "可恢复错误",
+      "frozenCases": ["P03", "R04", "Q04", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Route retry repeats only the existing authorized query, preserving map and local records.",
+      "limits": "Other future recommendation/summary/remote reads remain conditional."
+    },
+    {
+      "id": "AC-07",
+      "topic": "不可恢复错误",
+      "frozenCases": ["H06", "S08", "P04", "D04"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Current Route unsupported/unauthorized branches have safe fixed copy and no invalid retry.",
+      "limits": "Frozen H06/P04/D04 authoritative page/remote-resource failures do not currently exist."
+    },
+    {
+      "id": "AC-08",
+      "topic": "局部降级",
+      "frozenCases": ["P05", "M02", "R04"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Existing unconfigured Map fallback remains usable while a Route query fails.",
+      "limits": "The exact simultaneous Map failure + recommendation failure stimulus is unavailable without owning runtime/provider."
+    },
+    {
+      "id": "AC-09",
+      "topic": "Retry 成功",
+      "frozenCases": ["T05", "Q04", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Route error → retry → ready retains the same focused action; removal/cancellation returns to the regional heading.",
+      "limits": "Only the current Route operation; no synthetic summary retry."
+    },
+    {
+      "id": "AC-10",
+      "topic": "Retry 再失败",
+      "frozenCases": ["T05", "R04", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Route retry → error stops busy, keeps the same action/focus and permits a later authorized retry.",
+      "limits": "Current equivalent of retry invariant; R04/T05 async owners are absent."
+    },
+    {
+      "id": "AC-11",
+      "topic": "会话失效",
+      "frozenCases": ["H02", "D07", "Q07"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Home public shell stays independent; Route unauthorized presentation is pure-tested with retry absent.",
+      "limits": "No real expired Auth browser session or remote Detail permission was exercised."
+    },
+    {
+      "id": "AC-12",
+      "topic": "Trip 缺失/无权",
+      "frozenCases": ["P04", "D04"],
+      "classification": "OUTSIDE_CURRENT_RUNTIME_CAPABILITY",
+      "currentEvidence": "No new remote Trip not-found/permission state was introduced.",
+      "limits": "4.19 remote persistence is outside TASK-067."
+    },
+    {
+      "id": "AC-13",
+      "topic": "地图 unavailable",
+      "frozenCases": ["M02", "M05"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Missing Map capability keeps the existing schematic and list with explicit non-road copy and no fake retry.",
+      "limits": "Browser covers missing-token fallback; live Mapbox load/failure is not executed."
+    },
+    {
+      "id": "AC-14",
+      "topic": "Route unavailable vs no_route",
+      "frozenCases": ["Q03", "Q04", "Q06"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Local 7.5 normalized fixtures cover timeout/error retry versus no_route; disabled production gate has no action.",
+      "limits": "No external Provider call; existing development gate only."
+    },
+    {
+      "id": "AC-15",
+      "topic": "AI 未接入 vs 暂不可用",
+      "frozenCases": ["A01", "A02", "A03"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Current AI shell explicitly says not connected; Send remains disabled; input/close/focus remain functional.",
+      "limits": "Future AI loading/error is outside current capability."
+    },
+    {
+      "id": "AC-16",
+      "topic": "Home",
+      "frozenCases": ["H01", "H02", "H03"],
+      "classification": "ALREADY_SATISFIED_UNCHANGED",
+      "currentEvidence": "Public Hero/Header/CTA and static image baseline are retained; browser exercises the public Home and AI entry.",
+      "limits": "No injected real Auth outage or decorative-image network failure; existing safe viewer fallback is covered by repository tests."
+    },
+    {
+      "id": "AC-17",
+      "topic": "Start",
+      "frozenCases": ["S05", "S06", "S07", "S08"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Real local generation pending uses honest sample copy and a safe return action; input fields survive return and Storage failure.",
+      "limits": "Existing local timer is unchanged; no AI/network progress."
+    },
+    {
+      "id": "AC-18",
+      "topic": "Planner",
+      "frozenCases": ["P05", "M02", "R04", "T04"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Route error/retry/cancel preserves the mounted map element and measured rectangle; current stored wizard fields and saved Trip bytes remain intact.",
+      "limits": "No Grid tracks/breakpoints/store architecture change; no asynchronous recommendation failure exists."
+    },
+    {
+      "id": "AC-19",
+      "topic": "Detail",
+      "frozenCases": ["D01", "D05", "D06"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Detail remains the same Planner workspace; actual Storage write fault preserves the original saved bytes, recovery succeeds, read failure leaves current Trip intact.",
+      "limits": "No remote Trip loading or API integration."
+    },
+    {
+      "id": "AC-20",
+      "topic": "1440+",
+      "frozenCases": ["P01", "M02", "R01", "T04"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "1440×900 representative loading/error/empty/AI interactions and overflow checks.",
+      "limits": "1600×900 was not separately executed; TASK-067 minimum is desktop >=1440."
+    },
+    {
+      "id": "AC-21",
+      "topic": "约 1024",
+      "frozenCases": ["P05", "R04", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "1024×768 checks current Drawer/overlay hosts, wrapping, recovery and no horizontal overflow.",
+      "limits": "No fabricated recommendation failure/automatic drawer opening."
+    },
+    {
+      "id": "AC-22",
+      "topic": "约 390",
+      "frozenCases": ["S07", "M02", "O02", "A01"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "390×844 checks recovery target size, state wrapping, existing modal scroll and keyboard actions.",
+      "limits": "Desktop browser viewport emulation; no physical-device soft-keyboard verification."
+    },
+    {
+      "id": "AC-23",
+      "topic": "约 320",
+      "frozenCases": ["H04", "R04", "D05", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "320×568 checks Chinese recovery copy, no horizontal overflow and reachable controls in the short-height host.",
+      "limits": "No full translated Japanese/English UI or physical soft-keyboard run."
+    },
+    {
+      "id": "AC-24",
+      "topic": "键盘与焦点",
+      "frozenCases": ["O01", "O02", "O06", "A01"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Keyboard Enter/Tab/Escape, focused action retention, clear-search focus return, route cancellation heading and overlay trigger return.",
+      "limits": "Existing host owns focus trapping; no new trap."
+    },
+    {
+      "id": "AC-25",
+      "topic": "读屏与 busy",
+      "frozenCases": ["P01", "R04", "T05"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "SSR checks one status/alert summary, decorative hidden skeleton and scoped busy outside the live copy; browser checks actual pending status.",
+      "limits": "ARIA/DOM verification only; no human screen-reader speech session."
+    },
+    {
+      "id": "AC-26",
+      "topic": "Reduced motion",
+      "frozenCases": ["R01", "Q02", "A02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Reduced-motion browser contexts and computed-style checks show static skeletons; CSS removes state transitions/hover transforms.",
+      "limits": "Future AI/recommendation pending not created."
+    },
+    {
+      "id": "AC-27",
+      "topic": "几何保留",
+      "frozenCases": ["M02", "R04", "T05", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Map DOM identity and its rectangle survive Route failure/retry; all four viewport hosts retain their current layout.",
+      "limits": "No live Mapbox geometry/failure run and no broad layout redesign."
+    },
+    {
+      "id": "AC-28",
+      "topic": "无虚假业务结论",
+      "frozenCases": ["S05", "D05", "D08", "Q05", "A01"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Local generation says sample, Storage success follows actual write, route/AI capability labels remain explicit; no percentages/stage success.",
+      "limits": "Remote unknown commit is not wired."
+    },
+    {
+      "id": "AC-29",
+      "topic": "重复提交",
+      "frozenCases": ["S05", "T05", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Sixteen immediate activations of the current route control result in one request; hook and shared action have synchronous guards.",
+      "limits": "This is read-query single-flight, not a new transaction/idempotency system."
+    },
+    {
+      "id": "AC-30",
+      "topic": "连接丢失",
+      "frozenCases": ["H05", "S09", "P06", "A04"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Route transport failure uses bounded safe copy and no offline/automatic-sync promise.",
+      "limits": "The exact H05/S09/P06/A04 network-owner paths are unavailable."
+    },
+    {
+      "id": "AC-31",
+      "topic": "旧 Route fact",
+      "frozenCases": ["Q05", "Q06"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Actual stale Route rendering hides old usable metrics; existing identity tests and browser delayed-response race reject superseded results.",
+      "limits": "No Provider or canonical fact contract changed; browser cancellation race complements deterministic stale-state tests."
+    },
+    {
+      "id": "AC-32",
+      "topic": "已加载内容保留",
+      "frozenCases": ["R05", "T04"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Current recommendation and summary values are synchronous local data and remain untouched.",
+      "limits": "No refresh owner exists for R05/T04; no fabricated refresh/skeleton."
+    },
+    {
+      "id": "AC-33",
+      "topic": "模态性",
+      "frozenCases": ["O01", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Existing Start modal hosts the truthful zero-result state; existing Planner overlay hosts save failure and Route loading; safe close/return are retained.",
+      "limits": "No new modal controller or network cancellation promise."
+    },
+    {
+      "id": "AC-34",
+      "topic": "非模态 Popover",
+      "frozenCases": ["O03", "O06"],
+      "classification": "ALREADY_SATISFIED_UNCHANGED",
+      "currentEvidence": "Shared state primitives introduce no dialog/inert/trap; Home AI remains a nonmodal region, while existing popovers are unchanged.",
+      "limits": "A generic async popover body is not currently owned."
+    },
+    {
+      "id": "AC-35",
+      "topic": "说明 Tooltip",
+      "frozenCases": ["O05"],
+      "classification": "CONDITIONAL_NOT_CURRENTLY_REACHABLE",
+      "currentEvidence": "Read-only InfoPopover is unchanged and receives no retry action.",
+      "limits": "No current tooltip failure/loading data source to execute O05."
+    },
+    {
+      "id": "AC-36",
+      "topic": "视觉 token",
+      "frozenCases": ["M02", "R04", "D04"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Only accepted semantic tokens and existing Button are reused; task-owned CSS introduces no palette or token declarations.",
+      "limits": "Scope audit includes unchanged globals and design-token files."
+    },
+    {
+      "id": "AC-37",
+      "topic": "对比度",
+      "frozenCases": ["H04", "S07", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Actual computed opaque button foreground/background in normal/hover/focus/pending meet >=4.5:1 (recorded browser evidence).",
+      "limits": "This is scoped new recovery-action contrast, not certification of every legacy control or manual screen-reader audit."
+    },
+    {
+      "id": "AC-38",
+      "topic": "目标尺寸",
+      "frozenCases": ["O02", "Q07", "D05"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "New recovery actions and touched AI close are measured at least 44×44 across four viewports.",
+      "limits": "Existing unrelated small controls are outside this scoped change."
+    },
+    {
+      "id": "AC-39",
+      "topic": "Unknown write outcome",
+      "frozenCases": ["D08"],
+      "classification": "OUTSIDE_CURRENT_RUNTIME_CAPABILITY",
+      "currentEvidence": "No new server save or idempotency identity was added; synchronous browser Storage outcome only.",
+      "limits": "Unknown COMMIT/reconcile belongs to Engine/remote persistence, not current main UI."
+    },
+    {
+      "id": "AC-40",
+      "topic": "Permission 与保留冲突",
+      "frozenCases": ["P04", "D04", "D07"],
+      "classification": "OUTSIDE_CURRENT_RUNTIME_CAPABILITY",
+      "currentEvidence": "Existing local browser Trip is not a new remote protected resource; no private remote snapshot introduced.",
+      "limits": "Remote permission revocation needs its owning future integration."
+    },
+    {
+      "id": "AC-41",
+      "topic": "异步晚到结果",
+      "frozenCases": ["S06", "R05", "Q05", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "A delayed aborted Route ready response cannot replace the later no_route result; current sequence identity and cancel boundary preserved.",
+      "limits": "No separate recommendation/AI async owner added."
+    },
+    {
+      "id": "AC-42",
+      "topic": "应用范围",
+      "frozenCases": [],
+      "classification": "OUTSIDE_CURRENT_RUNTIME_CAPABILITY",
+      "currentEvidence": "AC-42 is the historical TASK-066 docs-only scope gate; TASK-067 independently authorizes 3.7 runtime.",
+      "limits": "Frozen TASK-066 evidence is unchanged. TASK-067 scope guard checks only authorized presentation/tests/docs."
+    },
+    {
+      "id": "AC-43",
+      "topic": "本地保存边界",
+      "frozenCases": ["S07", "D05", "D06"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Start read fault preserves the original raw record and prevents auto/manual overwrite; write faults retain current form, safe warning and real recovery.",
+      "limits": "The guard is local failure presentation, no storage schema/migration or remote persistence."
+    },
+    {
+      "id": "AC-44",
+      "topic": "动画时长",
+      "frozenCases": ["S05", "R01", "T05"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "New skeletons are static with no minimum delay; actual operation state controls appearance and recovery.",
+      "limits": "Existing sample generator timer remains unchanged; no invented stages."
+    },
+    {
+      "id": "AC-45",
+      "topic": "异步错误公告",
+      "frozenCases": ["R04", "D05", "O02"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Route/background messages use one polite region; actual blocking save errors use alert with duplicate toolbar announcement suppressed.",
+      "limits": "No future asynchronous recommendation refresh to execute."
+    },
+    {
+      "id": "AC-46",
+      "topic": "Localization-ready",
+      "frozenCases": ["R04", "Q04", "D04"],
+      "classification": "IMPLEMENTED_AND_TESTED",
+      "currentEvidence": "Route categories and exact local error allowlist produce bounded copy; unknown SQL/Auth/Provider canaries never reach rendered text.",
+      "limits": "No localization platform or arbitrary raw-error substitution added."
+    },
+    {
+      "id": "AC-47",
+      "topic": "N/A 的真实性",
+      "frozenCases": ["H03", "A01", "Q06"],
+      "classification": "ALREADY_SATISFIED_UNCHANGED",
+      "currentEvidence": "Matrix explicitly separates unsupported and conditional states; current Route gate and AI disabled behavior stay truthful.",
+      "limits": "Conditional entries are not counted as runtime PASS."
+    },
+    {
+      "id": "AC-48",
+      "topic": "设计与实测区分",
+      "frozenCases": [],
+      "classification": "OUTSIDE_CURRENT_RUNTIME_CAPABILITY",
+      "currentEvidence": "AC-48 describes the historical design-only deliverable. TASK-067 has separately dated runtime/browser evidence.",
+      "limits": "Frozen design evidence remains untouched and is never relabeled as browser PASS."
+    }
+  ],
+  "counts": {
+    "IMPLEMENTED_AND_TESTED": 31,
+    "CONDITIONAL_NOT_CURRENTLY_REACHABLE": 9,
+    "OUTSIDE_CURRENT_RUNTIME_CAPABILITY": 5,
+    "ALREADY_SATISFIED_UNCHANGED": 3
+  }
+}

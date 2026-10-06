@@ -1,0 +1,874 @@
+{
+  "task": "TASK-059-B",
+  "disposition": "COMPLETED FOR REVIEW",
+  "initialBaseline": "5240ff8f7a91c1e36e90449d0f619de93f795472",
+  "resumedDevelop": "56901c3a18703105442f9c566406f041c0660fbe",
+  "candidate": "87345968754456b4b7d7ce3ae58c84f10566853b",
+  "candidateSourceHashes": {
+    "tests/task-059-personal-center-e2e.runtime.mjs": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+    "tools/qa/personal-center-e2e.mjs": "bd87d436f0c2f8baf030320491e2dddb33a866030992143b0267c08fc917f16b",
+    "package.json": "7eb9425fc9994a2a777812a7460592903ea616e5c8179c20ef32846537b1bb5b"
+  },
+  "mergedDependencies": [
+    {
+      "task": "TASK-060-B",
+      "resolves": "J3",
+      "pullRequest": 368,
+      "sourceHead": "eddef67d5c3c8caf24b5bc8802f6ddf3dbeeb1f6",
+      "mergeCommit": "86585600689e3a673ba17156c2ff513db24c7a86",
+      "sourceQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34759637270"
+      },
+      "mergedQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34759840124"
+      }
+    },
+    {
+      "task": "TASK-061-B",
+      "resolves": "J6",
+      "pullRequest": 370,
+      "sourceHead": "9e4a9883d5e072e79445806f1634d0469b411f3f",
+      "mergeCommit": "05cbc4ea0f771ea27d4927466d516e8ace3bce6b",
+      "sourceQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34761925414"
+      },
+      "mergedQualityGate": {
+        "status": "SUCCESS",
+        "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/34762252161"
+      }
+    }
+  ],
+  "fixtureStrategy": "A journey and C disposable register/confirm via real browser + Local mailbox; B control uses accepted Local Auth fixture and real browser sign-in. Three distinct users per run plus anonymous context. Fresh unique identities per run; no UUID/email/password/token in public evidence.",
+  "runs": [
+    {
+      "id": "verified-edge-1",
+      "command": "$env:WBS_BROWSER='edge'; npm run test:personal-center:e2e",
+      "head": "87345968754456b4b7d7ce3ae58c84f10566853b",
+      "sourceSha256": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+      "started": "2026-09-15T13:41:32.511Z",
+      "finished": "2026-09-15T13:44:37.898Z",
+      "status": "PASS",
+      "browser": "edge",
+      "browserVersion": "153.0.4234.32",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "nodeTapCounts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "journeyCounts": {
+        "total": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "journeys": [
+        {
+          "id": "J1",
+          "name": "anonymous guard, return flow and client boundary",
+          "status": "PASS",
+          "checks": [
+            "all protected routes reject anonymous owner injection without private DOM",
+            "guest public payload and built client bundles contain no admin secret"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J2",
+          "name": "registration, multipage use, logout and relogin",
+          "status": "PASS",
+          "checks": [
+            "real browser registration and Local email confirmation",
+            "authenticated multipage navigation retains the same Local account",
+            "explicit preference save survives logout, protected redirect and browser login"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J3",
+          "name": "Profile explicit save and cross-session persistence",
+          "status": "PASS",
+          "checks": [
+            "representative invalid nickname has deterministic validation",
+            "valid UI edit and explicit save are observable",
+            "mandatory Profile UI persists and renders the verified owner record"
+          ],
+          "observations": {
+            "afterNavigation": true,
+            "afterHardReload": true,
+            "afterRelogin": true,
+            "realOwnedRowSaved": true,
+            "controlOwnProfileRendered": true,
+            "noCrossUserName": true
+          }
+        },
+        {
+          "id": "J4",
+          "name": "Preference categories, explicit preset save and unset reset",
+          "status": "PASS",
+          "checks": [
+            "all exposed representative categories persist after save, navigation and reload",
+            "preset selection and cancellation do not persist; explicit save preserves unrelated keys",
+            "browser owners see distinct preferences; reset persists unset without preset"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J5",
+          "name": "Companion and group browser lifecycle with separate owners",
+          "status": "PASS",
+          "checks": [
+            "create and edit companion through accepted browser UI",
+            "group membership and companion survive navigation, reload and relogin",
+            "different browsers never render another owner's companions or groups",
+            "delete group and companion through browser; removal survives relogin"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J6",
+          "name": "Real B Trip Library Draft/Saved/History render and isolation",
+          "status": "PASS",
+          "checks": [
+            "seed real owned B contracts without A Planner or A 8.5",
+            "mandatory owned persisted records render correctly for both browser owners"
+          ],
+          "observations": {
+            "draftOwnedRecordVisible": true,
+            "savedOwnedRecordVisible": true,
+            "historyOwnedRecordVisible": true,
+            "afterHardReload": true,
+            "noControlTripsInJourneyBrowser": true,
+            "controlOwnedRecordsVisible": true,
+            "noJourneyTripsInControlBrowser": true
+          }
+        },
+        {
+          "id": "J7",
+          "name": "Complete canonical desktop and mobile Personal Center navigation",
+          "status": "PASS",
+          "checks": [
+            "1440x900 avatar, full navigation, history and user switch",
+            "390x844 avatar, full navigation, history and user switch",
+            "no page errors, unexpected console errors or external requests"
+          ],
+          "observations": {
+            "completedViewports": [
+              {
+                "width": 1440,
+                "height": 900
+              },
+              {
+                "width": 390,
+                "height": 844
+              }
+            ]
+          }
+        },
+        {
+          "id": "J8",
+          "name": "Disposable real browser registration through complete account deletion",
+          "status": "PASS",
+          "checks": [
+            "disposable user is registered and confirmed by Local browser flow",
+            "meaningful owned data exists across all accepted B tables before deletion",
+            "real UI enforces exact confirmation and deletes verified current user only",
+            "deleted user cannot reload private routes or log in again",
+            "Auth plus B-owned rows are gone; control account exact data and browser remain intact"
+          ],
+          "observations": {
+            "beforeDeletion": {
+              "auth_users": 1,
+              "profiles": 1,
+              "profile_settings": 1,
+              "emergency_contacts": 1,
+              "travel_preferences": 1,
+              "companions": 1,
+              "companion_groups": 1,
+              "companion_group_members": 1,
+              "trip_library_records": 3
+            },
+            "afterDeletion": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            },
+            "controlExactRowsUnchanged": true
+          }
+        }
+      ],
+      "metrics": {
+        "externalBrowserRequests": 0,
+        "pageErrors": 0,
+        "unexpectedConsoleErrors": 0,
+        "knownFavicon404": 0,
+        "expectedAuthErrors": 1,
+        "secretLeaks": 0
+      },
+      "serverNetwork": {
+        "localRequests": 417,
+        "externalRequests": 0
+      },
+      "usersCreated": 3,
+      "cleanup": {
+        "browserClosed": true,
+        "serverStopped": true,
+        "errors": [],
+        "users": [
+          {
+            "alias": "synthetic-0",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          },
+          {
+            "alias": "synthetic-1",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          },
+          {
+            "alias": "synthetic-2",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          }
+        ]
+      },
+      "dbBefore": {
+        "auth.users": 0,
+        "public.profiles": 0,
+        "public.profile_settings": 0,
+        "public.emergency_contacts": 0,
+        "public.travel_preferences": 0,
+        "public.companions": 0,
+        "public.companion_groups": 0,
+        "public.companion_group_members": 0,
+        "public.trip_library_records": 0,
+        "storage.objects": 0,
+        "storage.buckets": 0
+      },
+      "dbAfter": {
+        "auth.users": 0,
+        "public.profiles": 0,
+        "public.profile_settings": 0,
+        "public.emergency_contacts": 0,
+        "public.travel_preferences": 0,
+        "public.companions": 0,
+        "public.companion_groups": 0,
+        "public.companion_group_members": 0,
+        "public.trip_library_records": 0,
+        "storage.objects": 0,
+        "storage.buckets": 0
+      },
+      "dbStatusExit": 0,
+      "dbStopExit": 0,
+      "localStopped": true,
+      "rawArtifact": {
+        "path": ".artifacts/task059/verified-edge-1-report.json",
+        "sha256": "d58cc81f636cc436da4804ac24eeae30eae675f51118a365a5f3243e1805ab99",
+        "retention": "ignored execution worktree; sanitized essential data retained here"
+      }
+    },
+    {
+      "id": "verified-edge-2",
+      "command": "$env:WBS_BROWSER='edge'; npm run test:personal-center:e2e",
+      "head": "87345968754456b4b7d7ce3ae58c84f10566853b",
+      "sourceSha256": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+      "started": "2026-09-15T13:44:38.651Z",
+      "finished": "2026-09-15T13:47:39.049Z",
+      "status": "PASS",
+      "browser": "edge",
+      "browserVersion": "153.0.4234.32",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "nodeTapCounts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "journeyCounts": {
+        "total": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "journeys": [
+        {
+          "id": "J1",
+          "name": "anonymous guard, return flow and client boundary",
+          "status": "PASS",
+          "checks": [
+            "all protected routes reject anonymous owner injection without private DOM",
+            "guest public payload and built client bundles contain no admin secret"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J2",
+          "name": "registration, multipage use, logout and relogin",
+          "status": "PASS",
+          "checks": [
+            "real browser registration and Local email confirmation",
+            "authenticated multipage navigation retains the same Local account",
+            "explicit preference save survives logout, protected redirect and browser login"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J3",
+          "name": "Profile explicit save and cross-session persistence",
+          "status": "PASS",
+          "checks": [
+            "representative invalid nickname has deterministic validation",
+            "valid UI edit and explicit save are observable",
+            "mandatory Profile UI persists and renders the verified owner record"
+          ],
+          "observations": {
+            "afterNavigation": true,
+            "afterHardReload": true,
+            "afterRelogin": true,
+            "realOwnedRowSaved": true,
+            "controlOwnProfileRendered": true,
+            "noCrossUserName": true
+          }
+        },
+        {
+          "id": "J4",
+          "name": "Preference categories, explicit preset save and unset reset",
+          "status": "PASS",
+          "checks": [
+            "all exposed representative categories persist after save, navigation and reload",
+            "preset selection and cancellation do not persist; explicit save preserves unrelated keys",
+            "browser owners see distinct preferences; reset persists unset without preset"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J5",
+          "name": "Companion and group browser lifecycle with separate owners",
+          "status": "PASS",
+          "checks": [
+            "create and edit companion through accepted browser UI",
+            "group membership and companion survive navigation, reload and relogin",
+            "different browsers never render another owner's companions or groups",
+            "delete group and companion through browser; removal survives relogin"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J6",
+          "name": "Real B Trip Library Draft/Saved/History render and isolation",
+          "status": "PASS",
+          "checks": [
+            "seed real owned B contracts without A Planner or A 8.5",
+            "mandatory owned persisted records render correctly for both browser owners"
+          ],
+          "observations": {
+            "draftOwnedRecordVisible": true,
+            "savedOwnedRecordVisible": true,
+            "historyOwnedRecordVisible": true,
+            "afterHardReload": true,
+            "noControlTripsInJourneyBrowser": true,
+            "controlOwnedRecordsVisible": true,
+            "noJourneyTripsInControlBrowser": true
+          }
+        },
+        {
+          "id": "J7",
+          "name": "Complete canonical desktop and mobile Personal Center navigation",
+          "status": "PASS",
+          "checks": [
+            "1440x900 avatar, full navigation, history and user switch",
+            "390x844 avatar, full navigation, history and user switch",
+            "no page errors, unexpected console errors or external requests"
+          ],
+          "observations": {
+            "completedViewports": [
+              {
+                "width": 1440,
+                "height": 900
+              },
+              {
+                "width": 390,
+                "height": 844
+              }
+            ]
+          }
+        },
+        {
+          "id": "J8",
+          "name": "Disposable real browser registration through complete account deletion",
+          "status": "PASS",
+          "checks": [
+            "disposable user is registered and confirmed by Local browser flow",
+            "meaningful owned data exists across all accepted B tables before deletion",
+            "real UI enforces exact confirmation and deletes verified current user only",
+            "deleted user cannot reload private routes or log in again",
+            "Auth plus B-owned rows are gone; control account exact data and browser remain intact"
+          ],
+          "observations": {
+            "beforeDeletion": {
+              "auth_users": 1,
+              "profiles": 1,
+              "profile_settings": 1,
+              "emergency_contacts": 1,
+              "travel_preferences": 1,
+              "companions": 1,
+              "companion_groups": 1,
+              "companion_group_members": 1,
+              "trip_library_records": 3
+            },
+            "afterDeletion": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            },
+            "controlExactRowsUnchanged": true
+          }
+        }
+      ],
+      "metrics": {
+        "externalBrowserRequests": 0,
+        "pageErrors": 0,
+        "unexpectedConsoleErrors": 0,
+        "knownFavicon404": 0,
+        "expectedAuthErrors": 1,
+        "secretLeaks": 0
+      },
+      "serverNetwork": {
+        "localRequests": 417,
+        "externalRequests": 0
+      },
+      "usersCreated": 3,
+      "cleanup": {
+        "browserClosed": true,
+        "serverStopped": true,
+        "errors": [],
+        "users": [
+          {
+            "alias": "synthetic-0",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          },
+          {
+            "alias": "synthetic-1",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          },
+          {
+            "alias": "synthetic-2",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          }
+        ]
+      },
+      "dbBefore": {
+        "auth.users": 0,
+        "public.profiles": 0,
+        "public.profile_settings": 0,
+        "public.emergency_contacts": 0,
+        "public.travel_preferences": 0,
+        "public.companions": 0,
+        "public.companion_groups": 0,
+        "public.companion_group_members": 0,
+        "public.trip_library_records": 0,
+        "storage.objects": 0,
+        "storage.buckets": 0
+      },
+      "dbAfter": {
+        "auth.users": 0,
+        "public.profiles": 0,
+        "public.profile_settings": 0,
+        "public.emergency_contacts": 0,
+        "public.travel_preferences": 0,
+        "public.companions": 0,
+        "public.companion_groups": 0,
+        "public.companion_group_members": 0,
+        "public.trip_library_records": 0,
+        "storage.objects": 0,
+        "storage.buckets": 0
+      },
+      "dbStatusExit": 0,
+      "dbStopExit": 0,
+      "localStopped": true,
+      "rawArtifact": {
+        "path": ".artifacts/task059/verified-edge-2-report.json",
+        "sha256": "a0086a84a0f4fe434faf890c2f6ecd96e1f80cf96d28fea019c24c047ef0a709",
+        "retention": "ignored execution worktree; sanitized essential data retained here"
+      }
+    },
+    {
+      "id": "verified-chromium",
+      "command": "$env:WBS_BROWSER='chromium'; npm run test:personal-center:e2e",
+      "head": "87345968754456b4b7d7ce3ae58c84f10566853b",
+      "sourceSha256": "f39fd395ce5956b1c18f95d8eb8103a7a1a196361d25ad7d4b34e4e5d5eee42f",
+      "started": "2026-09-15T13:47:39.650Z",
+      "finished": "2026-09-15T13:50:29.393Z",
+      "status": "PASS",
+      "browser": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "nodeTapCounts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "journeyCounts": {
+        "total": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "journeys": [
+        {
+          "id": "J1",
+          "name": "anonymous guard, return flow and client boundary",
+          "status": "PASS",
+          "checks": [
+            "all protected routes reject anonymous owner injection without private DOM",
+            "guest public payload and built client bundles contain no admin secret"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J2",
+          "name": "registration, multipage use, logout and relogin",
+          "status": "PASS",
+          "checks": [
+            "real browser registration and Local email confirmation",
+            "authenticated multipage navigation retains the same Local account",
+            "explicit preference save survives logout, protected redirect and browser login"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J3",
+          "name": "Profile explicit save and cross-session persistence",
+          "status": "PASS",
+          "checks": [
+            "representative invalid nickname has deterministic validation",
+            "valid UI edit and explicit save are observable",
+            "mandatory Profile UI persists and renders the verified owner record"
+          ],
+          "observations": {
+            "afterNavigation": true,
+            "afterHardReload": true,
+            "afterRelogin": true,
+            "realOwnedRowSaved": true,
+            "controlOwnProfileRendered": true,
+            "noCrossUserName": true
+          }
+        },
+        {
+          "id": "J4",
+          "name": "Preference categories, explicit preset save and unset reset",
+          "status": "PASS",
+          "checks": [
+            "all exposed representative categories persist after save, navigation and reload",
+            "preset selection and cancellation do not persist; explicit save preserves unrelated keys",
+            "browser owners see distinct preferences; reset persists unset without preset"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J5",
+          "name": "Companion and group browser lifecycle with separate owners",
+          "status": "PASS",
+          "checks": [
+            "create and edit companion through accepted browser UI",
+            "group membership and companion survive navigation, reload and relogin",
+            "different browsers never render another owner's companions or groups",
+            "delete group and companion through browser; removal survives relogin"
+          ],
+          "observations": {}
+        },
+        {
+          "id": "J6",
+          "name": "Real B Trip Library Draft/Saved/History render and isolation",
+          "status": "PASS",
+          "checks": [
+            "seed real owned B contracts without A Planner or A 8.5",
+            "mandatory owned persisted records render correctly for both browser owners"
+          ],
+          "observations": {
+            "draftOwnedRecordVisible": true,
+            "savedOwnedRecordVisible": true,
+            "historyOwnedRecordVisible": true,
+            "afterHardReload": true,
+            "noControlTripsInJourneyBrowser": true,
+            "controlOwnedRecordsVisible": true,
+            "noJourneyTripsInControlBrowser": true
+          }
+        },
+        {
+          "id": "J7",
+          "name": "Complete canonical desktop and mobile Personal Center navigation",
+          "status": "PASS",
+          "checks": [
+            "1440x900 avatar, full navigation, history and user switch",
+            "390x844 avatar, full navigation, history and user switch",
+            "no page errors, unexpected console errors or external requests"
+          ],
+          "observations": {
+            "completedViewports": [
+              {
+                "width": 1440,
+                "height": 900
+              },
+              {
+                "width": 390,
+                "height": 844
+              }
+            ]
+          }
+        },
+        {
+          "id": "J8",
+          "name": "Disposable real browser registration through complete account deletion",
+          "status": "PASS",
+          "checks": [
+            "disposable user is registered and confirmed by Local browser flow",
+            "meaningful owned data exists across all accepted B tables before deletion",
+            "real UI enforces exact confirmation and deletes verified current user only",
+            "deleted user cannot reload private routes or log in again",
+            "Auth plus B-owned rows are gone; control account exact data and browser remain intact"
+          ],
+          "observations": {
+            "beforeDeletion": {
+              "auth_users": 1,
+              "profiles": 1,
+              "profile_settings": 1,
+              "emergency_contacts": 1,
+              "travel_preferences": 1,
+              "companions": 1,
+              "companion_groups": 1,
+              "companion_group_members": 1,
+              "trip_library_records": 3
+            },
+            "afterDeletion": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            },
+            "controlExactRowsUnchanged": true
+          }
+        }
+      ],
+      "metrics": {
+        "externalBrowserRequests": 0,
+        "pageErrors": 0,
+        "unexpectedConsoleErrors": 0,
+        "knownFavicon404": 0,
+        "expectedAuthErrors": 1,
+        "secretLeaks": 0
+      },
+      "serverNetwork": {
+        "localRequests": 416,
+        "externalRequests": 0
+      },
+      "usersCreated": 3,
+      "cleanup": {
+        "browserClosed": true,
+        "serverStopped": true,
+        "errors": [],
+        "users": [
+          {
+            "alias": "synthetic-0",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          },
+          {
+            "alias": "synthetic-1",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          },
+          {
+            "alias": "synthetic-2",
+            "remaining": {
+              "auth_users": 0,
+              "profiles": 0,
+              "profile_settings": 0,
+              "emergency_contacts": 0,
+              "travel_preferences": 0,
+              "companions": 0,
+              "companion_groups": 0,
+              "companion_group_members": 0,
+              "trip_library_records": 0
+            }
+          }
+        ]
+      },
+      "dbBefore": {
+        "auth.users": 0,
+        "public.profiles": 0,
+        "public.profile_settings": 0,
+        "public.emergency_contacts": 0,
+        "public.travel_preferences": 0,
+        "public.companions": 0,
+        "public.companion_groups": 0,
+        "public.companion_group_members": 0,
+        "public.trip_library_records": 0,
+        "storage.objects": 0,
+        "storage.buckets": 0
+      },
+      "dbAfter": {
+        "auth.users": 0,
+        "public.profiles": 0,
+        "public.profile_settings": 0,
+        "public.emergency_contacts": 0,
+        "public.travel_preferences": 0,
+        "public.companions": 0,
+        "public.companion_groups": 0,
+        "public.companion_group_members": 0,
+        "public.trip_library_records": 0,
+        "storage.objects": 0,
+        "storage.buckets": 0
+      },
+      "dbStatusExit": 0,
+      "dbStopExit": 0,
+      "localStopped": true,
+      "rawArtifact": {
+        "path": ".artifacts/task059/verified-chromium-report.json",
+        "sha256": "9ef3d6d93d7c4fb6431baef214e90c86872218573f8852e93dee42e74d5bbca1",
+        "retention": "ignored execution worktree; sanitized essential data retained here"
+      }
+    }
+  ],
+  "history": {
+    "priorCandidate": "6f64889b39db28a890a9e309388ab22e3063b929",
+    "priorDisposition": "PARTIAL / BLOCKED: J3/J6 UI persistence gaps",
+    "resumption": "User authorized separate TASK-060/061 integration and merges, followed by normal latest-develop merge. J3 now waits for completed real asynchronous save. Three complete passing runs on 21b55fc were retained as history; after an interruption and new develop 56901c3, develop was merged again and all browser/regression gates rerun on 8734596. A local test-file formatting discrepancy was then normalized to the exact committed Git blob; the final full browser matrix was rerun as verified-* reports with matching current source hash. Earlier passing browser reports are historical only. All original persistence/ownership assertions remain mandatory. Prior failed runs are not included in this passing determinism comparison."
+  }
+}

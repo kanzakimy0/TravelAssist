@@ -1,0 +1,1076 @@
+{
+  "task": "TASK-055-B",
+  "baseline": "3850ec91a94b96f61800a9e45ba7792d07bb1c44",
+  "definition": "Behavior-to-executable-assertion matrix, not an instrumented line coverage percentage. Status means covered by actual selected tests; execution results are in quality-gates.json.",
+  "criticalRows": 46,
+  "uncovered9_5": 0,
+  "rows": [
+    {
+      "id": "AUTH-01",
+      "domain": "Auth",
+      "behavior": "Unauthenticated private API reads/mutations fail closed",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 162,
+          "test": "\"anonymous reads and mutations denied on all six routes\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-047-companion-api.runtime.mjs",
+          "line": 163,
+          "test": "\"real Cookie/Bearer auth, anon denial and invalid Bearer never falls back\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 460,
+          "test": "\"anon, missing/wrong Cookie Origin, explicit malformed/invalid Bearer plus valid Cookie fail closed\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "AUTH-02",
+      "domain": "Auth",
+      "behavior": "Cookie-authenticated owner read/write and exact Origin enforcement",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 205,
+          "test": "\"cookie GET and same-origin save work; wrong/missing Origin denied\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 227,
+          "test": "\"Cookie mutations require exact trusted Origin\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-045-preference-api.runtime.mjs",
+          "line": 185,
+          "test": "\"Cookie mutations reject foreign/missing Origin and non-JSON; explicit Bearer owns identity\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "AUTH-03",
+      "domain": "Auth",
+      "behavior": "Explicit Bearer works, wins conflicting Cookie and never falls back",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-045-preference-api.runtime.mjs",
+          "line": 120,
+          "test": "\"anon and malformed/invalid explicit Bearer rejected, including valid Cookie fallback\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-047-companion-api.runtime.mjs",
+          "line": 163,
+          "test": "\"real Cookie/Bearer auth, anon denial and invalid Bearer never falls back\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 200,
+          "test": "\"Bearer/Cookie verified; anonymous and malformed/invalid Bearer fail without Cookie fallback\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 231,
+          "test": "\"explicit malformed/invalid Bearer never falls back to valid cookie; valid Bearer wins\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 750,
+          "test": "\"explicit valid Bearer deletes only its verified owner despite a different valid Cookie\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "AUTH-04",
+      "domain": "Auth",
+      "behavior": "Owner cannot be selected via client input, query, metadata or forged Cookie",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-018-authentication.runtime.mjs",
+          "line": 191,
+          "test": "\"Forged cookie user payload cannot impersonate user B; invalid JWT fails closed\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 265,
+          "test": "\"owner spoof via root/nested/query/path rejected\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 310,
+          "test": "\"strict client owner/snapshot fields rejected before write\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 482,
+          "test": "\"strict unknown/missing/wrong payloads and target injection never reach deletion\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "AUTH-05",
+      "domain": "Auth",
+      "behavior": "Expired session refresh and retained deleted/invalid identity access",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-018-authentication.runtime.mjs",
+          "line": 214,
+          "test": "\"Expired cookie triggers real Proxy refresh, rotation, no-store and persistent next request\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 648,
+          "test": "\"retained A Cookie and Bearer denied across all current B private resource endpoints\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 712,
+          "test": "\"deleted identity cannot refresh, getUser or sign in; B separate browser remains usable\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "AUTH-06",
+      "domain": "Auth",
+      "behavior": "Secrets/admin helpers absent from client contracts, build and evidence",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-018-client-bundle.mjs",
+          "test": "Built browser chunks and/or Auth browser dependency graph exclude server-only credentials and helpers",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-016-client-bundle.mjs",
+          "test": "Built browser chunks and/or Auth browser dependency graph exclude server-only credentials and helpers",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 762,
+          "test": "\"production browser HTML/chunks have no execution credential or Account Admin implementation\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.test.mjs",
+          "line": 195,
+          "test": "\"admin failure never leaks upstream details\"",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "AUTH-07",
+      "domain": "Auth",
+      "behavior": "Auth service failure stops all five private mutation families before product I/O",
+      "status": "covered-by-focused-TASK-055-test",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-055-private-boundaries.test.mjs",
+          "line": 75,
+          "test": "`TASK-055 ${domain}: Auth outage is private AUTH_UNAVAILABLE before product I/O`",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-01",
+      "domain": "Profile",
+      "behavior": "Input validation, Unicode/date/null/strict descriptors and deterministic contract",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-050-profile-api.test.mjs",
+          "line": 48,
+          "test": "\"TASK-050 profile normalizes text/locale and bounds Unicode code points\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-050-profile-api.test.mjs",
+          "line": 72,
+          "test": "\"TASK-050 no getters/prototypes/symbols/non-enumerable keys accepted\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 356,
+          "test": "\"all invalid/future/locale/timezone/currency/units/unknown payloads fail closed without writes\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-02",
+      "domain": "Profile",
+      "behavior": "Owner read/update round-trip and independent settings defaults",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 314,
+          "test": "\"profile/settings round-trip, independent defaults and DB-owned audits\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 425,
+          "test": "\"concurrent disjoint PATCH fields preserve each other without adding revision/CAS\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-03",
+      "domain": "Profile",
+      "behavior": "Bilateral cross-user profile/settings/contact ownership",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-016-user-profile.runtime.mjs",
+          "line": 276,
+          "test": "`User ${index === 0 ? \"A\" : \"B\"}: ${table.name} own read/update, other read/update denied`",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 451,
+          "test": "\"existing owner-only RLS through real user clients and anon denies direct cross-user writes\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-04",
+      "domain": "Profile",
+      "behavior": "Emergency-contact validation, ordering, mutation and owner-scoped 404",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 482,
+          "test": "\"emergency contact create/list and stable ordering with equal created_at\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 535,
+          "test": "\"contact patch missing/null semantics and audit preservation\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 581,
+          "test": "\"contact UUID rejected before DB SQL; cross-user/nonexistent mutation same 404\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-05",
+      "domain": "Profile",
+      "behavior": "Auth truth independent of product profile and metadata, GET creates no defaults",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-016-user-profile.runtime.mjs",
+          "line": 233,
+          "test": "\"Auth fixture creation does not automatically create product profiles\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 179,
+          "test": "\"first GET is nullable, read-only, and verified Auth projection ignores metadata\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 366,
+          "test": "\"Auth contact readonly; unverified Auth state comes from fresh Auth user\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-06",
+      "domain": "Profile",
+      "behavior": "Profile/settings transaction rollback and sanitized API errors",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 392,
+          "test": "\"profile/settings pair rolls back after second table SQL failure\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-050-profile-api.runtime.mjs",
+          "line": 861,
+          "test": "\"backend unavailable returns sanitized 503; malformed contact id still rejects before DB lookup\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PROFILE-07",
+      "domain": "Profile",
+      "behavior": "Second live Profile verification must retain same owner before writes",
+      "status": "covered-by-focused-TASK-055-test",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-055-private-boundaries.test.mjs",
+          "line": 126,
+          "test": "`TASK-055 Profile second live verification: ${name} prevents writes`",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-01",
+      "domain": "Preference",
+      "behavior": "Missing equals unset; false/neutral never defaulted",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-042-preference-schema.test.mjs",
+          "line": 74,
+          "test": "\"TASK-042 sparse values preserve false/neutral without injecting defaults\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-046-preference-contract.test.mjs",
+          "line": 86,
+          "test": "\"missing and persisted reset-empty are distinct and exact\"",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-02",
+      "domain": "Preference",
+      "behavior": "Canonical parsing, patch/set/unset and detached results",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-042-preference-schema.test.mjs",
+          "line": 184,
+          "test": "\"TASK-042 strict patch parser rejects ambiguous/duplicate/unknown input\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-042-preference-schema.test.mjs",
+          "line": 142,
+          "test": "\"TASK-042 set/unset, explicit false, detached results and whole-map replacement\"",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-03",
+      "domain": "Preference",
+      "behavior": "CAS/stale patch and reset rejected with 409",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-046-preference-contract.runtime.mjs",
+          "line": 371,
+          "test": "\"stale PATCH/reset remain 409 and reset reads positive-revision empty\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 298,
+          "test": "\"two real Cookie sessions stale revision returns 409 without overwriting draft\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-04",
+      "domain": "Preference",
+      "behavior": "Reset returns empty/unset rather than applying a preset",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 418,
+          "test": "\"global reset is empty/unset; no template auto-applied\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-046-preference-contract.runtime.mjs",
+          "line": 198,
+          "test": "\"public Cookie/Bearer missing reads and missing reset do not create rows\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-05",
+      "domain": "Preference",
+      "behavior": "Preset selection/cancel/reload remains draft-only until Save",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 204,
+          "test": "\"page open, template click, cancel and unsaved reload cause zero mutation\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 256,
+          "test": "\"switch template and manual edit become exact custom; cancel restores server\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-06",
+      "domain": "Preference",
+      "behavior": "Preset application preserves out-of-scope keys and canonical semantics",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-053-preference-presets.test.mjs",
+          "line": 150,
+          "test": "\"TASK-053 scope, repeatability, immutability and exact match \" + id",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 283,
+          "test": "\"category clear is draft-only then saves unset preserving every other category\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-07",
+      "domain": "Preference",
+      "behavior": "Planner public read returns only saved canonical values and source revision",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-046-preference-contract.runtime.mjs",
+          "line": 244,
+          "test": "\"unchanged PATCH then public read preserves values/time/revision and isolates equal revisions\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 334,
+          "test": "\"5.14 verified read carries canonical values and source revision without metadata\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-08",
+      "domain": "Preference",
+      "behavior": "No preset metadata in public read or Trip creation snapshots",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 334,
+          "test": "\"5.14 verified read carries canonical values and source revision without metadata\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-053-preference-presets.runtime.mjs",
+          "line": 356,
+          "test": "\"Trip Library draft and saved snapshots contain canonical preference and source revision only\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "PREF-09",
+      "domain": "Preference",
+      "behavior": "Cross-user RLS, owner-free HTTP and cancellation/error isolation",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-042-preference-schema.runtime.mjs",
+          "line": 202,
+          "test": "\"cross-user select/update/upsert/insert fail; owner and anon cannot delete\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-046-preference-contract.runtime.mjs",
+          "line": 274,
+          "test": "\"R1 business Cookie/Bearer query is isolated, owner/body cannot switch account and read never writes\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-046-preference-contract.runtime.mjs",
+          "line": 447,
+          "test": "\"real browser cancellation/network rejection are distinct failures, never empty success\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "COMP-01",
+      "domain": "Companion",
+      "behavior": "Owner-only Companion CRUD with deterministic private 404",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-047-companion-api.runtime.mjs",
+          "line": 163,
+          "test": "\"real Cookie/Bearer auth, anon denial and invalid Bearer never falls back\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-044-companion-schema.runtime.mjs",
+          "line": 201,
+          "test": "\"two real Auth owners CRUD; defaults never infer needs; virtual owner groups\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "COMP-02",
+      "domain": "Companion",
+      "behavior": "Same-owner group/member constraints reject foreign injection",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-044-companion-schema.runtime.mjs",
+          "line": 655,
+          "test": "\"same-owner composite FKs survive trusted SQL bypass; membership uniqueness and audit\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-054-personal-center-migration.runtime.mjs",
+          "line": 189,
+          "test": "\"RPC cross-owner update/delete and foreign membership fail without aggregate changes\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "COMP-03",
+      "domain": "Companion",
+      "behavior": "Companion and Group revision/CAS conflict and concurrent winner",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-047-companion-api.runtime.mjs",
+          "line": 355,
+          "test": "\"Companion real concurrent CAS has exactly one commit; stale update/delete zero writes\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-047-companion-api.runtime.mjs",
+          "line": 447,
+          "test": "\"group CAS race returns one snapshot winner; stale update/delete preserve complete aggregate\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "COMP-04",
+      "domain": "Companion",
+      "behavior": "Atomic multi-row group mutation rollback",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-047-companion-api.runtime.mjs",
+          "line": 477,
+          "test": "\"real SQL failure during membership insertion rolls back both create and replacement\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "COMP-05",
+      "domain": "Companion",
+      "behavior": "DOB/fallback and travel profile/version validity",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-044-companion-schema.runtime.mjs",
+          "line": 495,
+          "test": "\"DOB/fallback XOR, finite date bounds, UTC future guard and stored age boundaries\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-044-companion-schema.test.mjs",
+          "line": 36,
+          "test": "\"Companion profile rejects \" + name",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "COMP-06",
+      "domain": "Companion",
+      "behavior": "Auth/parent deletion cascades without orphaned memberships or other owner changes",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-044-companion-schema.runtime.mjs",
+          "line": 872,
+          "test": "\"Auth A deletion cascades all A rows, preserves every B table\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-044-companion-schema.runtime.mjs",
+          "line": 768,
+          "test": "\"Drizzle real roundtrip, Companion and Group delete cascade only their memberships\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-01",
+      "domain": "Trip Library",
+      "behavior": "Accepted Draft/Saved/History lifecycle without automatic archival",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-048-trip-persistence-model.test.mjs",
+          "line": 164,
+          "test": "`lifecycle ${from} -> ${to}`",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 755,
+          "test": "\"Saved to History freezes at DB-owned timestamp, no date-driven archival\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-02",
+      "domain": "Trip Library",
+      "behavior": "Create/read/update/save/copy/delete and history immutability",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 1096,
+          "test": "\"real browser Cookie fetch + public A save client + reload + read/history/copy/delete\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 779,
+          "test": "\"History rejects every API mutation and direct privileged no-op update\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 1072,
+          "test": "\"Draft delete is CAS protected and returns 204; stale revision cannot delete\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-03",
+      "domain": "Trip Library",
+      "behavior": "Creation intent and idempotent concurrent retries",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 359,
+          "test": "\"create idempotency compatible retries and incompatible key conflict, also concurrent first create\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 851,
+          "test": "\"copy retries ignore subsequent Preference edits, conflict with create intent or wrong source\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 897,
+          "test": "\"concurrent copy with one key returns one new identity and existing retry\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-04",
+      "domain": "Trip Library",
+      "behavior": "Revision/If-Match protection and simultaneous update race",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 503,
+          "test": "\"all non-create writes require exact If-Match; no weak, wildcard, malformed or absent tags\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 538,
+          "test": "\"two concurrent Draft CAS updates produce exactly one success and one 409\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-05",
+      "domain": "Trip Library",
+      "behavior": "Canonical Preference snapshot remains detached and source edits never write back",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-048-trip-persistence-model.runtime.mjs",
+          "line": 492,
+          "test": "\"long-term Preference changes never rewrite snapshots; trip patches never write back\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 456,
+          "test": "\"Draft update snapshots current selected Companions but never replaces creation Preference\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-06",
+      "domain": "Trip Library",
+      "behavior": "Cross-user and anonymous read/mutation denial",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 397,
+          "test": "\"owner list isolation and identical 404 for cross-owner or missing id on every operation\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 980,
+          "test": "\"direct authenticated/anonymous INSERT UPDATE DELETE upsert stay denied; own SELECT RLS remains\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "TRIP-07",
+      "domain": "Trip Library",
+      "behavior": "No invented main Trip Plan schema/IDs; bounded payload and exact pagination",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-048-trip-persistence-model.test.mjs",
+          "line": 71,
+          "test": "\"minimal canonical facts and a non-UUID Trip ID remain separate from B UUID and revision\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 951,
+          "test": "\"timestamp ties and sub-millisecond pairs preserve all rows (controlled Local fixture)\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-049-trip-library-api.runtime.mjs",
+          "line": 671,
+          "test": "\"valid exact 4MiB JSONB plan succeeds over real HTTP with ETag\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "DELETE-01",
+      "domain": "Account Deletion",
+      "behavior": "Verified current user only; no arbitrary target ID",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 482,
+          "test": "\"strict unknown/missing/wrong payloads and target injection never reach deletion\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 750,
+          "test": "\"explicit valid Bearer deletes only its verified owner despite a different valid Cookie\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "DELETE-02",
+      "domain": "Account Deletion",
+      "behavior": "All eight B tables and immutable History cascade; second user unchanged",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 628,
+          "test": "\"Auth hard-delete cascades every A product row, including immutable history; B exact rows unchanged\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-054-personal-center-migration.runtime.mjs",
+          "line": 309,
+          "test": "\"DELETE /api/account removes populated owner and all eight B families, preserving second user\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "DELETE-03",
+      "domain": "Account Deletion",
+      "behavior": "Retained Cookie/Bearer and refresh/login rejected after deletion",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 648,
+          "test": "\"retained A Cookie and Bearer denied across all current B private resource endpoints\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 712,
+          "test": "\"deleted identity cannot refresh, getUser or sign in; B separate browser remains usable\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "DELETE-04",
+      "domain": "Account Deletion",
+      "behavior": "Owned Storage blocks deletion without disclosure/removal",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 520,
+          "test": "\"real owned Storage object blocks deletion, no object name disclosure or removal\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "DELETE-05",
+      "domain": "Account Deletion",
+      "behavior": "No external provider/booking mutations",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-052-account-deletion.runtime.mjs",
+          "line": 762,
+          "test": "\"production browser HTML/chunks have no execution credential or Account Admin implementation\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-052-account-deletion.test.mjs",
+          "line": 299,
+          "test": "\"narrow runtime has one Admin operation and no manual cascade/delete chain\"",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "MIG-01",
+      "domain": "Migration",
+      "behavior": "Accepted migration history immutable, SQL/Drizzle/generated types coherent",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-054-personal-center-migration.test.mjs",
+          "line": 13,
+          "test": "\"TASK-054 accepted migration inventory is immutable and has one formal history\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-054-personal-center-migration.runtime.mjs",
+          "line": 56,
+          "test": "\"replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "MIG-02",
+      "domain": "Migration",
+      "behavior": "Local type regeneration has no drift; reuse accepted immutable double-replay evidence",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-054-personal-center-migration.test.mjs",
+          "line": 36,
+          "test": "\"TASK-054 generated Row/Insert/Update agree with every Drizzle column and default\"",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-054-personal-center-migration.runtime.mjs",
+          "line": 56,
+          "test": "\"replayed history, all tables/columns/defaults/checks/keys/indexes/policies/triggers/RPC types agree\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "MIG-03",
+      "domain": "Migration",
+      "behavior": "Synthetic users/data removed after every Local suite",
+      "status": "covered-by-reused-accepted-tests",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-054-personal-center-migration.runtime.mjs",
+          "line": 309,
+          "test": "\"DELETE /api/account removes populated owner and all eight B families, preserving second user\"",
+          "mode": "local"
+        },
+        {
+          "file": "tests/task-016-user-profile.runtime.mjs",
+          "line": 636,
+          "test": "\"All synthetic users and product rows rolled back\"",
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "HTTP-01",
+      "domain": "shared boundary",
+      "behavior": "Split multibyte UTF-8 accepted at exact byte cap; one byte below rejects and reader unlocked",
+      "status": "covered-by-focused-TASK-055-test",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-055-private-boundaries.test.mjs",
+          "line": 156,
+          "test": "\"TASK-055 streamed Unicode decodes across byte splits at the exact cap and releases its reader\"",
+          "mode": "non-local"
+        }
+      ]
+    },
+    {
+      "id": "RUN-01",
+      "domain": "shared boundary",
+      "behavior": "Aggregate runs real children and rejects failing/skipped/zero-test success",
+      "status": "covered-by-focused-TASK-055-test",
+      "scope": "9.5",
+      "evidence": [
+        {
+          "file": "tests/task-055-test-runner.test.mjs",
+          "line": 18,
+          "test": "\"TASK-055 aggregate validates real child TAP: \" + label",
+          "mode": "non-local"
+        },
+        {
+          "file": "tests/task-055-test-runner.test.mjs",
+          "line": 32,
+          "test": "\"TASK-055 aggregate rejects a successful child that ran zero tests\"",
+          "mode": "non-local"
+        }
+      ]
+    }
+  ],
+  "deferredTo9_6": [
+    {
+      "id": "E2E-01",
+      "behavior": "Complete registration/confirmation/login across Personal Center pages then logout/login",
+      "reason": "Requires a continuous multi-page browser session and real user navigation; isolated Auth/API results cannot prove full journey continuity",
+      "expected9_6": "User completes registration, confirmation, navigation, logout and login; correct return destination and session across pages"
+    },
+    {
+      "id": "E2E-02",
+      "behavior": "Cross-module browser persistence journey",
+      "reason": "Requires user edits and refresh/navigation spanning Profile, Preference, Companion and Trip Library; API isolation already covered in 9.5",
+      "expected9_6": "Save through each accepted UI integration, reload and revisit modules; distinguish still-deferred UI wiring without inventing persistence"
+    },
+    {
+      "id": "E2E-03",
+      "behavior": "Desktop/mobile complete navigation and broad browser matrix",
+      "reason": "Multi-route, viewport and browser journey is full E2E/visual scope; existing 9.12 evidence remains historical",
+      "expected9_6": "Complete keyboard/touch navigation with dirty guards and persisted session on authorized browser/viewport matrix"
+    },
+    {
+      "id": "E2E-04",
+      "behavior": "Complete browser account lifecycle across modules ending in deletion",
+      "reason": "Requires one end-user session from account creation through multi-module edits and deletion; the narrow accepted deletion API/UI boundary is already rerun",
+      "expected9_6": "Create/use/delete account through accepted UI, then reject old session and login; preserve independent second user"
+    }
+  ],
+  "additionalVerification": {
+    "typeDrift": "personal-center-tests.mjs compares real db:types before/after on each local aggregate; accepted TASK-054 two-replay hashes remain unchanged",
+    "cleanup": "emptyLocal queries Auth/eight B tables/Storage and checks task server ports before and after every included Local step; final db:status/db:stop",
+    "externalMutation": "TASK-052 server fetch network guard plus browser request assertions; no real provider/booking calls"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "task": "TASK-051-A",
+  "status": "PASS",
+  "authoritativePlannerWorkingStoreRoots": 1,
+  "duplicateWritableBusinessTruth": 0,
+  "entries": [
+    {
+      "location": "PlannerStoreState.working",
+      "fields": [
+        "workingPlanId",
+        "plans[].id/name/summary/days/items/reserveItems/hotelEndpointsReady/movementLegs",
+        "places",
+        "areas",
+        "settings",
+        "configuration.travelers/returnDate/preferences/budget/pace/alternatives/movementAdvice",
+        "pendingSettingsBaseline"
+      ],
+      "classification": "DOMAIN_WORKING",
+      "authority": "PlannerStore via trip.apply -> tripReducer",
+      "persistence": "Snapshot projection"
+    },
+    {
+      "location": "PlannerStoreState.ui",
+      "fields": [
+        "currentPlanId",
+        "rangeMode",
+        "selectedDay",
+        "threeDayStart",
+        "selectedTripItemId",
+        "focusedDay/focusRevision",
+        "inspection",
+        "mealSlot/detailFocus",
+        "activeBottomTab",
+        "bookingOpen",
+        "panel and layer collapse flags",
+        "notice"
+      ],
+      "classification": "UI",
+      "authority": "PlannerStore via UI TripAction",
+      "persistence": "Excluded"
+    },
+    {
+      "location": "PlannerStoreState.draft",
+      "fields": [
+        "items",
+        "completedIds",
+        "preparations",
+        "railResponses",
+        "bookingMessages",
+        "version"
+      ],
+      "classification": "DRAFT",
+      "authority": "PlannerStore via draft.replace",
+      "persistence": "Snapshot projection"
+    },
+    {
+      "location": "PlannerStoreState.meta",
+      "fields": [
+        "localRevision",
+        "persistedFingerprint",
+        "hydratedFrom",
+        "canonicalRevision"
+      ],
+      "classification": "PERSISTENCE_METADATA",
+      "authority": "PlannerStore reducer",
+      "persistence": "In-memory metadata only"
+    },
+    {
+      "location": "TripSnapshot / SavedTrip",
+      "fields": [
+        "plans/settings/configuration/pendingSettingsBaseline/currentPlanId/workingPlanId/draft",
+        "version/savedAt"
+      ],
+      "classification": "PERSISTENCE_METADATA",
+      "authority": "Derived projection only",
+      "persistence": "travelassist.saved-workspace.v1"
+    },
+    {
+      "location": "WorkingDraft",
+      "fields": ["id", "name", "savedAt", "snapshot"],
+      "classification": "PERSISTENCE_METADATA",
+      "authority": "Validated archive directory only",
+      "persistence": "travelassist.working-drafts.v1"
+    },
+    {
+      "location": "Legacy Detail draft import",
+      "fields": ["travelassist.detail-draft.v1"],
+      "classification": "PERSISTENCE_METADATA",
+      "authority": "Read-only validated migration input into PlannerStore.draft",
+      "persistence": "Not a current-trip source and never written by TASK-051-A"
+    },
+    {
+      "location": "PlannerPage local React state",
+      "fields": [
+        "layers/terrain/detailMinimized/refreshing",
+        "dialogs/triggers/map pick/selection helpers",
+        "viewport collapse",
+        "temporary booking and flight presentation state"
+      ],
+      "classification": "EPHEMERAL",
+      "authority": "Mounted component only",
+      "persistence": "Excluded"
+    },
+    {
+      "location": "URL search params",
+      "fields": ["view", "day", "scope"],
+      "classification": "NAVIGATION",
+      "authority": "Router",
+      "persistence": "URL only"
+    },
+    {
+      "location": "Selectors and map/rail/timeline views",
+      "fields": [
+        "selectPlannerTrip",
+        "detailRailItems",
+        "mapView",
+        "presentationPlan"
+      ],
+      "classification": "DERIVED",
+      "authority": "None",
+      "persistence": "Excluded"
+    },
+    {
+      "location": "src/shared/contracts/trips and Mutation Engine",
+      "fields": [
+        "canonical Trip schema",
+        "revision",
+        "ChangeSet",
+        "permissions",
+        "audit",
+        "outbox",
+        "idempotency"
+      ],
+      "classification": "EXTERNAL_AUTHORITY",
+      "authority": "Canonical contract / server Mutation Engine",
+      "persistence": "Outside this Store"
+    }
+  ]
+}

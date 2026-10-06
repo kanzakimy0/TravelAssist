@@ -1,0 +1,184 @@
+{
+  "phaseId": "private-noto-ana-national-dependency-only",
+  "facts": [
+    {
+      "factId": "noto-ana-747-independent-flight-dependency",
+      "kind": "service",
+      "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+      "sourceUrl": "https://www.noto-airport.jp/flight/",
+      "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/flight/",
+          "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.pref.ishikawa.lg.jp/chiji/kisya/r7_3_28/1.html",
+          "observedResponseSha256": "6d1d0b974bba4a21bff39e30c68619beb8864f8591a9aaa88d414e46f02c2c87"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/facilities/",
+          "observedResponseSha256": "45a26fb2e6262943d950851808cc9487da28c41561565dee482b3a5dafdda64d"
+        }
+      ],
+      "operator": "全日本空輸株式会社",
+      "line": "羽田・能登国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HND-NTQ",
+      "serviceState": "active",
+      "serviceStateScope": "Airport-published2026-03-29 through2026-10-24; prefecture2025-03-28 independently confirms actual ANA operator, still published. Static service topology, not real-time operation or booking guarantee.",
+      "reviewedServiceDate": "20261003",
+      "reviewedFlightCode": "NH747",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "のと里山ポケモン・ウィズ・ユー空港",
+          "canonicalAirportName": "能登空港",
+          "referencePointId": "cf03_00069"
+        },
+        {
+          "sourceName": "羽田空港",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "callingStations": ["東京国際空港", "能登空港"],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Noto official schedule explicitly names Haneda in both directions; reuse existing admitted C28 Tokyo International/Haneda facility and current national attachment. No terminal/gate assertion."
+          }
+        },
+        {
+          "name": "能登空港",
+          "operator": "airport-facility:cf03_00069",
+          "line": "airport:cf03_00069",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00069",
+            "requirementId": "review:official-airport:能登",
+            "expectedRequirementName": "能登",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current own-airport facilities page explicitly locates passenger public bus stop at terminal exit and separate1F furusato taxi boarding facility; current airport schedule independently lists Haneda inbound/outbound flights. C28 exact formal Noto airport and original requirement preserved; temporary promotional public brand is not a new facility. This review admits only existing whole-airport flight facility, not a new ground stop."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Own-airport current flight schedule separately publishes NH747 Haneda to Noto and NH748 Noto to Haneda. Prefecture conference2025-03-28 explicitly labels ANA the sole Noto operating company. Promotional airport name refers to same original facility; no codeshare expansion, clock publication, invented gate or terminal."
+    },
+    {
+      "factId": "noto-ana-748-independent-flight-dependency",
+      "kind": "service",
+      "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+      "sourceUrl": "https://www.noto-airport.jp/flight/",
+      "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/flight/",
+          "observedResponseSha256": "e3698a7bc5e52395dfb4f6d74668d67b08de0ec0403b47b49c29df93e95a5020"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.pref.ishikawa.lg.jp/chiji/kisya/r7_3_28/1.html",
+          "observedResponseSha256": "6d1d0b974bba4a21bff39e30c68619beb8864f8591a9aaa88d414e46f02c2c87"
+        },
+        {
+          "sourceActionId": "airport:noto:independent-ana-flight-dependency-private",
+          "url": "https://www.noto-airport.jp/facilities/",
+          "observedResponseSha256": "45a26fb2e6262943d950851808cc9487da28c41561565dee482b3a5dafdda64d"
+        }
+      ],
+      "operator": "全日本空輸株式会社",
+      "line": "羽田・能登国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "NTQ-HND",
+      "serviceState": "active",
+      "serviceStateScope": "Airport-published2026-03-29 through2026-10-24; prefecture2025-03-28 independently confirms actual ANA operator, still published. Static service topology, not real-time operation or booking guarantee.",
+      "reviewedServiceDate": "20261003",
+      "reviewedFlightCode": "NH748",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "のと里山ポケモン・ウィズ・ユー空港",
+          "canonicalAirportName": "能登空港",
+          "referencePointId": "cf03_00069"
+        },
+        {
+          "sourceName": "羽田空港",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        }
+      ],
+      "callingStations": ["能登空港", "東京国際空港"],
+      "callingComponents": [
+        {
+          "name": "能登空港",
+          "operator": "airport-facility:cf03_00069",
+          "line": "airport:cf03_00069",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00069",
+            "requirementId": "review:official-airport:能登",
+            "expectedRequirementName": "能登",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current own-airport facilities page explicitly locates passenger public bus stop at terminal exit and separate1F furusato taxi boarding facility; current airport schedule independently lists Haneda inbound/outbound flights. C28 exact formal Noto airport and original requirement preserved; temporary promotional public brand is not a new facility. This review admits only existing whole-airport flight facility, not a new ground stop."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Noto official schedule explicitly names Haneda in both directions; reuse existing admitted C28 Tokyo International/Haneda facility and current national attachment. No terminal/gate assertion."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Own-airport current flight schedule separately publishes NH747 Haneda to Noto and NH748 Noto to Haneda. Prefecture conference2025-03-28 explicitly labels ANA the sole Noto operating company. Promotional airport name refers to same original facility; no codeshare expansion, clock publication, invented gate or terminal."
+    }
+  ],
+  "scope": "PRIVATE_DEPENDENCY_ONLY_GROUND_CHAIN_INCOMPLETE",
+  "completedActionIds": [
+    "airport:noto:independent-ana-flight-dependency-private"
+  ],
+  "readyForCanonicalRegistration": false
+}
