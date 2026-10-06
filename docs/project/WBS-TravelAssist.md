@@ -1069,7 +1069,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
 | 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（2026-09-30 用户明确验收当前 v2 纠错成果物，普通合入 develop，#441 关闭；来源权利、逐组件 runtime 接收及下游机器门禁按现有证据保留；见 v2 用户验收收口记录） |
 | 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
-| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 待审查（#466 / TASK-086-B；最终有界再认证和fail-closed终态分类已保存；251历史根因均有终态、未决0；仍缺证据项可未来重新认证；待本次exact-head门禁与已授权的普通合并，不宣称全国连通；docs/qa/TASK-086/readmittable-closeout/FINAL-READMITTABLE-CLOSEOUT.md） |
+| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 待审查（TASK086认证引擎修复及全量重新认证：4061节点/9409边/1072换乘可认证，旧隔离逐项重算，16全国走廊与东京上野双向通过；保留5站台覆盖及旧证明共6原始义务，原全国验收仍BLOCKED；PR466先前已合并，本轮尚未合入develop，待当前exact-head门禁及发布路径确认；docs/qa/TASK-086/certification-engine-repair/FINAL-CERTIFICATION-ENGINE-REPAIR.md） |
 
 TASK-084-B v2 用户验收收口（2026-09-30）：
 

@@ -26,7 +26,7 @@ def tree(revision):
 def allowed(name):
     if name == 'data/transport/network/core-stage-acceptance.json':
         return 'OMITTED_OVERSIZED_DERIVED_EVIDENCE'
-    if name in ['tools/transport/task-086-final-closeout.mjs', 'tools/transport/task-086-routing-eligibility.mjs', 'tests/task-086-readmittable-closeout.test.mjs', 'docs/tasks/TASK-086-b-final-unverifiable-quarantine-closeout.md']:
+    if name in ['tools/transport/task-086-certification-facts.mjs', 'tools/transport/task-086-recertification-report.mjs', 'tests/task-086-certification-engine-repair.test.mjs', 'docs/tasks/TASK-086-b-certification-engine-repair-full-recertification.md', 'tools/transport/task-086-final-closeout.mjs', 'tools/transport/task-086-routing-eligibility.mjs', 'tests/task-086-readmittable-closeout.test.mjs', 'docs/tasks/TASK-086-b-final-unverifiable-quarantine-closeout.md']:
         return 'USER_AUTHORIZED_BOUNDED_RE_CERTIFICATION_AND_FAIL_CLOSED_BOUNDARY'
     if name in ['.gitattributes', '.gitignore', '.github/workflows/quality-gate.yml', 'tools/transport/task-086-verify.mjs', 'tools/transport/task-086-validation-lanes.mjs', 'tools/transport/task-086-validation.mjs', 'tools/qa/task-086-regression-lanes.mjs', 'tools/qa/task-086-publication-audit.py', 'tests/task-086-publication-recovery.test.mjs']:
         return 'PUBLICATION_VALIDATION_ONLY'

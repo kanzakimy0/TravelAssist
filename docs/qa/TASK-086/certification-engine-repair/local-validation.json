@@ -1,0 +1,115 @@
+{
+  "inputSha256": "5d875e0e8061f560aced89f1f5732cd9ae692dd1b02ec76a5d0c242287a7d0a6",
+  "finalFrozenGeneration": {
+    "stage": "FINAL_EXACT_CODE_FROZEN_GENERATION",
+    "exitCode": 0,
+    "elapsedMs": 45323,
+    "stdout": "{\"enabled\":{\"nodes\":4061,\"edges\":9409,\"transfers\":1072,\"sources\":734},\"disabled\":{\"nodes\":0,\"edges\":0,\"transfers\":0,\"sources\":0},\"input\":\"5d875e0e8061f560aced89f1f5732cd9ae692dd1b02ec76a5d0c242287a7d0a6\"}\n",
+    "stderr": ""
+  },
+  "priorFocusedRegression": {
+    "stage": "FOCUSED_CERTIFICATION_V2_ROUTE_SCHEMA",
+    "exitCode": 0,
+    "elapsedMs": 111709,
+    "command": [
+      "node",
+      "--import",
+      "./tests/register-route-ts.mjs",
+      "--test",
+      "--test-concurrency=1",
+      "tests/task-086-certification-engine-repair.test.mjs",
+      "tests/task-086-final-closeout.test.mjs",
+      "tests/task-086-readmittable-closeout.test.mjs",
+      "tests/task-086-publication-recovery.test.mjs",
+      "tests/task-084-v2-amendment.test.mjs",
+      "tests/task-022-route-contract.test.mjs"
+    ],
+    "log": "I:\\CodexWorktrees\\TravelAssist-TASK086-PublicationRecovery\\.cache\\task-086\\engine-repair-baseline\\focused-final.log"
+  },
+  "priorFocusedTestCount": 45,
+  "currentFocusedEngineTestCount": 19,
+  "currentFocusedEngineExitCode": 0,
+  "localQuality": [
+    {
+      "stage": "lint",
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "elapsedMs": 37765,
+      "timeoutSeconds": 300,
+      "logSha256": "efb6565d539c08f5d11bc4ebd7ad3469fddfc8a1f0aecc68195708131eabb76a"
+    },
+    {
+      "stage": "typecheck",
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "elapsedMs": 30664,
+      "timeoutSeconds": 300,
+      "logSha256": "6316727962e7d7f87e0676b9717beeb16de5614f6b031510c5266683d5f4fcd4"
+    },
+    {
+      "stage": "format",
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "npm",
+        "run",
+        "format:check:deploy"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "elapsedMs": 16024,
+      "timeoutSeconds": 300,
+      "logSha256": "34d369bf9d7e4f24ac5a57c167d628fec7fbe0778713040aed8166ce7b28142e"
+    },
+    {
+      "stage": "build_artifact",
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "npm",
+        "run",
+        "deploy:build:local"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "elapsedMs": 74532,
+      "timeoutSeconds": 600,
+      "logSha256": "4d8cd2bfdc90b44d21af62985c2d6dfbe3fac650b1822eddac2e9a60060ab658"
+    },
+    {
+      "stage": "verify_artifact",
+      "command": [
+        "cmd",
+        "/d",
+        "/c",
+        "npm",
+        "run",
+        "deploy:verify-artifact"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "elapsedMs": 2080,
+      "timeoutSeconds": 120,
+      "logSha256": "80577e94e2f591d103d0940740cd99b8c69477b0b0ac5c5fd421e5e0f3d9feee"
+    }
+  ],
+  "fingerprintDisclosure": "45-test run preceded final witness/report field completion; final19 used current inputs. Final remote exact-head full gate is required independently."
+}
