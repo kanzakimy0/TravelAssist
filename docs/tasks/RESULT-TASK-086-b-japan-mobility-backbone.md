@@ -132,6 +132,18 @@ Canonical manifests and evidence: [Final bounded closeout](../qa/TASK-086/readmi
 
 Validation: focused TASK-086, v2 compatibility and Route Schema tests; actual deterministic dual generation and excluded-entity leak tests; final exact-head Quality Gate requires every original bounded regression/build/recovery lane plus the same-run routing receipt. Exact final branch head and immutable Quality Gate URL/conclusion are emitted in `task086-final-exact-head-<SHA>` → `closeout-publication-final-receipt.json`. Historical prior-head PASS is not substituted. Push is normal automatic push if successful, otherwise explicitly reported manual publication. PR #466 merge and Issue #443 closure will be recorded only after their actual completion.
 
+### Observed final acceptance and normal merge — 2026-10-06 JST
+
+**COMPLETE_WITH_READMITTABLE_UNVERIFIED_EXCLUSIONS**. Exact-head Quality Gate: [run 37343069533](https://github.com/kanzakimy0/TravelAssist/actions/runs/37343069533) **SUCCESS**, event `workflow_dispatch`; requested branch head and actual checkout both `26644283ba6b4cb9f8fa259654fc347685ccfc1b`. All 151 repository Node test files ran exactly once. Lint, types, formatting, standalone build/artifact, all 27 generated artifacts, two clean deterministic rebuilds, checksum resume, raw GTFS extraction and actual recovery/corruption checks passed. Same-run routing receipt passed independent deterministic terminal generation, unknown metrics/GTFS restrictions and excluded-entity leak checks. Earlier failure/cancellation is preserved in `prior-exact-head-attempt.json`; it was not treated as PASS.
+
+Frozen input/code SHA: `0575ae7e0f3a43ee3e7fe756a86561fb2aa98799f1d209dd788d885fdc6a6188`. Newly certified: 2 sources, 0 nodes/edges/transfers. Route enabled: 1174 nodes / 2460 edges / 37 transfers / 49 sources. Disabled/readmittable: 2887 nodes / 6949 edges / 1035 transfers / 685 sources. Historical roots: 251 terminal, 1 source-binding root certified, 250 accepted readmittable exclusions, pending 0. Integrity defects: 0. Recovered corridors/gateways: 0; 16 corridor and 86 gateway queries remain unavailable, not national PASS.
+
+Publication was normal automatic fast-forward push, without force/squash/history rewrite. Existing [PR #466](https://github.com/kanzakimy0/TravelAssist/pull/466) was normally merged after the actual gate. Merge SHA: `38f2f445fc4153e74832aaf9d4804d5220d2adc8`; accepted implementation head: `26644283ba6b4cb9f8fa259654fc347685ccfc1b`. [Issue #443](https://github.com/kanzakimy0/TravelAssist/issues/443) is CLOSED/completed. WBS 7.16 is B / 已完成 under the user-directed inventory/classification/export-boundary definition; all coverage exclusions remain visible. Future dedicated re-admission does not reopen TASK-086. No follow-on discovery, downstream task or production/Planner integration starts.
+
+[Final compact observed receipt](../qa/TASK-086/readmittable-closeout/final-acceptance-receipt.json). This documentation-only post-merge record changes neither the accepted branch head nor frozen code/data/eligibility hashes. Official observation dates in the frozen review input are UTC; the user-facing closeout date is 2026-10-06 JST.
+
+Primary exclusion reason counts (typed entities; transfers are also edges): `{"edge": {"ROUTE_DISABLED_IDENTITY_UNRESOLVED": 210, "ROUTE_DISABLED_RIGHTS_UNVERIFIED": 6739}, "node": {"ROUTE_DISABLED_RIGHTS_UNVERIFIED": 2887}, "source_dependency": {"ROUTE_DISABLED_RIGHTS_UNVERIFIED": 685}, "transfer": {"ROUTE_DISABLED_RIGHTS_UNVERIFIED": 1035}}`.
+
 ## Final Certification Engine Repair + Full Quarantine Re-certification
 
 Frozen input `5d875e0e8061f560aced89f1f5732cd9ae692dd1b02ec76a5d0c242287a7d0a6`. Authority `67bf222e3d697186be43cf98c4d7299e41015e70`. Original candidate input and requirements unchanged.
@@ -183,3 +195,14 @@ Original large evidence and verified backup bundle remain local. Git retains com
 ## Published-byte proof binding correction
 
 First remote run [37396583941](https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941) exposed a Windows CRLF versus published Git LF binding mismatch in osm-terms-observation.json. Record semantics and the official HTTP response SHA are unchanged. The old local input `5d875e0e8061f560aced89f1f5732cd9ae692dd1b02ec76a5d0c242287a7d0a6` is superseded by actual published-byte frozen input `f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305`. Formal generation exited0 (44,979ms) and current engine tests19/19 passed. Projection and re-certification reports were regenerated through production code; no proof/result hash was hand-edited. Earlier failed-run results are retained; its remaining obsolete-head clean runs were cancelled to avoid duplicate computation. A new exact-head workflow must execute every full regression, clean/recovery and quality lane independently. No old PASS substituted.
+
+
+## Final Backbone scope confirmation and PR #468 integration
+
+A+B 于最终收口确认 WBS 7.16 目标为全国 Mobility Backbone，而非全国所有公共交通节点、地方站点及全部换乘的穷尽式数据库。因此当前冻结 Backbone scope 的完整性和全国主干连通性作为本 WBS 最终 coverage acceptance；未来更细粒度地方交通扩展属于独立 enhancement，不阻塞 TASK-086。
+
+The accepted Backbone scope is 4,061 nodes / 9,409 directed edges / 1,072 transfers, with 16 national corridor pairs passing in both directions and 86/86 gateways passing. These counts describe the frozen Backbone, not every transport facility in Japan. Identity, source rights, transfer certification and actual direction/boarding restrictions remain enforced.
+
+The six retained historical obligations comprise five native GTFS platform bidirectional-coverage gaps (武部町 886930_01 / 886930_05, 雲仙 888190_01 / 888190_05, 波佐見有田インター 887550_05) and one historical special-tourism proof-binding obligation. Their original records, permissions and historical BLOCKED conclusions remain preserved; they do not reopen the A+B-confirmed Backbone scope. No platform merge, fabricated reverse service or walking edge, assertion reduction, or new discovery is authorized by this scope confirmation.
+
+Historical PR #466 acceptance and immutable receipt above remain unchanged. Previous repair exact-head Quality Gate [37397580451](https://github.com/kanzakimy0/TravelAssist/actions/runs/37397580451) SUCCESS certifies only `54457f5d031f728d98ffc8d4c2604db3150851ea`; its unchanged observed receipt is [REMOTE-EXACT-HEAD-RESULT.json](../qa/TASK-086/certification-engine-repair/REMOTE-EXACT-HEAD-RESULT.json). Integration with develop requires a new exact-head full gate before normal merge of PR #468. WBS 7.16 remains B / 待审查 until that merge actually completes. Issue #443 was already CLOSED/completed.
