@@ -6,7 +6,7 @@
 - 沿用 Issue：#265；沿用原实现 PR：#272，不新建第二套实现任务。
 - Canonical Owner：A / Shared Infrastructure / QA；本次执行支持：B。
 - 本阶段：Phase 1 / Audit only。用户已同意“先审计和 Test Inventory，不改 CI；审查后再决定 runner + CI”。
-- 发布状态：READY FOR AUDIT；仅发布任务不代表已开始执行、不代表 WBS 已完成。
+- 发布状态：Phase 1 审计成果待人工审查（2026-10-06，B 执行）；runner/CI 后续阶段未授权，父 WBS 9.1 未完成。原 READY FOR AUDIT 发布快照见 `4fbbe4a12626b41ddcad15cc9ebf9440698192fc`。
 - 执行工具不限：人工、Codex 或其他本地开发工具均可。
 - 审计文档分支：`docs/b-wbs-9-1-phase1-audit-20261006`。
 - 原实现分支：`codex/a-test-baseline-freeze`，本阶段只读，不推送修改。
@@ -136,18 +136,20 @@ Task / Result / QA / WBS 改动提交并推送到审计文档分支；第一阶�
 
 ## 9. 第一阶段验收表
 
-- [ ] 复用 #265 / TASK-035-A，核实 #272 当前状态；未另起实现。
-- [ ] 固定并记录实际受审 develop 与旧 PR head。
-- [ ] 全部已发现候选文件被归类；未知项显式记录，无静默漏项。
-- [ ] 用途、测试层级、执行环境、资源属性与执行状态分开。
-- [ ] CI 按事件/条件/入口映射，含间接 harness 与分片。
-- [ ] 旧 PR 逐项 REUSE / REWORK / SUPERSEDED / DEFER，有证据。
-- [ ] 同输入两次清单一致，去重/计数/引用校验通过。
-- [ ] 未执行的业务测试明确标记；未复用历史 PASS 充当前结果。
-- [ ] CI、package、既有测试、业务源码与数据均零修改。
-- [ ] WBS Owner A 不变，父任务未标完成；Task/Result/WBS 追踪一致。
+- [x] 复用 #265 / TASK-035-A，核实 #272 当前状态；未另起实现。
+- [x] 固定并记录实际受审 develop 与旧 PR head。
+- [x] 全部已发现候选文件被归类；未知项显式记录，无静默漏项。
+- [x] 用途、测试层级、执行环境、资源属性与执行状态分开。
+- [x] CI 按事件/条件/入口映射，含间接 harness 与分片。
+- [x] 旧 PR 逐项 REUSE / REWORK / SUPERSEDED / DEFER，有证据。
+- [x] 同输入两次清单一致，去重/计数/引用校验通过。
+- [x] 未执行的业务测试明确标记；未复用历史 PASS 充当前结果。
+- [x] CI、package、既有测试、业务源码与数据均零修改。
+- [x] WBS Owner A 不变，父任务未标完成；Task/Result/WBS 追踪一致。
 - [ ] 成果已推送审计分支；原 PR 未合并，未关闭 Issue。
 - [ ] 停在人工审查点，没有进入 runner/CI 实现。
+
+执行回执：实际 develop `4888b4d507ee75d4f6b9914eb1a8d5661813f64b`、旧 PR head `f157f23ba1b93def006c2703ea8f42dcd9266c01`；586 候选 / 183 测试文件；两次只读清单一致；业务运行 NOT_EXECUTED。详见 [Phase 1 Result](RESULT-TASK-035-b-wbs-9-1-phase1-audit-only.md) 与 [QA](../qa/TASK-035/phase-1/README.md)。最后两项须以推送后的 #265/#272 外部交付回执确认，保留发布前未勾选状态，不为包含自身 SHA 再追加提交。
 
 ## 10. 证据入口
 

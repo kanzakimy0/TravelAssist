@@ -1,5 +1,14 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-035-A / WBS 9.1 Phase 1 审计追踪（2026-10-06）
+
+- Canonical Owner：A / Shared Infrastructure / QA；执行支持：B；沿用 [Issue #265](https://github.com/kanzakimy0/TravelAssist/issues/265) 与 [原实现 PR #272](https://github.com/kanzakimy0/TravelAssist/pull/272)。
+- 开始状态：进行中（#265 / TASK-035-A；B 执行 Phase 1 audit；原实现 PR #272 未合并）。仅审计，不授权 runner/CI 实现。
+- 审计基线：develop `4888b4d507ee75d4f6b9914eb1a8d5661813f64b`；旧 PR head `f157f23ba1b93def006c2703ea8f42dcd9266c01`；任务发布 `4fbbe4a12626b41ddcad15cc9ebf9440698192fc`。
+- 历史保留：原 PR 2026-09-10 的“待审查”、713 cases / 711 PASS / 2 FAIL 是旧分支证据；并非当前 develop 的验收或本阶段实测。原 PR 仍 Open / Draft。
+- 本阶段任务：[Audit-only Amendment](../tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase1-audit-only.md)；审计文档分支 `docs/b-wbs-9-1-phase1-audit-20261006`。父 WBS 9.1 不标记完成。
+- 阶段交付：**进行中（Phase 1 审计成果待人工审查；runner/CI 后续阶段未授权）**。586 候选全部归类，183 测试文件；CI 静态直接/间接选择 156 文件，27 文件未证明覆盖。两次清单生成一致；业务测试、图重建、DB/browser/Provider 未执行。详见 [审计报告](../qa/TASK-035/phase-1/README.md) 与 [本阶段 Result](../tasks/RESULT-TASK-035-b-wbs-9-1-phase1-audit-only.md)。原 PR 历史“待审查”不替代本阶段人工审查。
+
 ## TASK-083-A / WBS 7.4.1 Real 100 POI Canonical Admission（2026-09-27）
 
 - 2026-09-27 历史 checkpoint：Issue #438；[PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444) 当时为 Draft；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 当时为 **A / 待审查**。
@@ -1142,7 +1151,7 @@ TASK-023-A tracking (2026-09-09):
 
 | WBS ID | 工作项                                  | 负责人 | 优先级 | 依赖            | 状态   |
 | ------ | --------------------------------------- | ------ | ------ | --------------- | ------ |
-| 9.1    | 测试框架与全局基线                      | A      | P1     | 2.9,2.10        | 未开始 |
+| 9.1    | 测试框架与全局基线                      | A      | P1     | 2.9,2.10        | 进行中（Phase 1 审计成果待人工审查；runner/CI 后续阶段未授权；#265 / TASK-035-A，B 支持，原 PR #272 未合并） |
 | 9.2    | Planner / Map / Route 单元与集成测试    | A      | P1     | 4.x,7.x         | 未开始 |
 | 9.3    | AI 集成测试                             | A      | P1     | 6.x             | 未开始 |
 | 9.4    | 主系统 E2E                              | A      | P1     | 3.x,4.x,6.x,7.x | 未开始 |
