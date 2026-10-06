@@ -1,0 +1,829 @@
+{
+  "schemaVersion": 1,
+  "candidateSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+  "status": "FAIL_REQUIRED_CERTIFICATION_BINDING",
+  "runs": [
+    {
+      "runId": "37465820154",
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37465820154",
+      "headShaFromApi": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+      "event": "push",
+      "attempt": 1,
+      "conclusion": "",
+      "jobs": [
+        {
+          "name": "Clean graph / second",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "Lint, types, formatting and build",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / assets",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-3",
+          "conclusion": "failure",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-2",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Clean graph / first",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-1",
+          "conclusion": "failure",
+          "status": "completed"
+        },
+        {
+          "name": "Retained raw source reproduction",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-0",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Install, test and build",
+          "conclusion": "skipped",
+          "status": "completed"
+        },
+        {
+          "name": "Stable complete graph resume",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "Deterministic, recovery and published-artifact proof",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "TASK086 exact-head Quality Gate",
+          "conclusion": "",
+          "status": "queued"
+        }
+      ],
+      "receipts": [
+        {
+          "lane": "assets",
+          "status": "PASS",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 165,
+            "failed": 0,
+            "passed": 165,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 165,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "a146ba3b60c7cc655d1c8ad65757cac08cc90629ee3a974813e676140fac93e0",
+          "eventsSha256": "72b495b7c08d8b4b8505c9be720a327955a4ec0fc27233c188018bb3c3673fb3",
+          "receiptSha256": "9fea6f3c9b09a361d34315566d6df93acfed06cf77acbb5a09449f435168dc49",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 5
+        },
+        {
+          "lane": "extraction",
+          "status": "PASS",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.15",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": null,
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "12f06740d16b22dc525fca239a84aba44bde5a90a16e2b55c3ad390118ace622",
+          "eventsSha256": null,
+          "receiptSha256": "83254ecea8a2e5ca8a2ed618f399032e50b5db0d4b05156b3e995a15b0bbbf97",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 0
+        },
+        {
+          "lane": "quality",
+          "status": "PASS",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": null,
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "58ee69c675ef1264923ec804262cbaf43cfdeaef26281e905a915b1cb8f636a2",
+          "eventsSha256": null,
+          "receiptSha256": "ba8afdddeeb3d63f1c0969e5c69467d6eb2e8e0ac53f10c8af10312d83a9ecb8",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 0
+        },
+        {
+          "lane": "regression-0",
+          "status": "PASS",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 861,
+            "failed": 0,
+            "passed": 861,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 861,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "f070ceb825e3fca10b7d9acb782b4babbb78ebf03508b15a98954802c1e8c2f1",
+          "eventsSha256": "5714d865187bbf306bac7150c018fe0b4fd47c066445072f1c582c129ab5318d",
+          "receiptSha256": "b9a5005505777577f56866decbfbec4a671fd75b7ff1231c2c913b25e330833e",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        },
+        {
+          "lane": "regression-1",
+          "status": "FAIL",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 522,
+            "failed": 2,
+            "passed": 520,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 482,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "7a46cebd32f40b33108e4ee06a98c85db4128b1ecae714941810a6479acd841b",
+          "eventsSha256": "bf1901666b15f3bd82726d4da9ebeefaa341d92b8d4b7bef91b9b9caeeb0303e",
+          "receiptSha256": "67edba7905d8ceefaeaae8e5dcd1557d2e1ccc14e32ef9e95baeb77253060f21",
+          "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+          "executions": [
+            {
+              "exitCode": 1,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        },
+        {
+          "lane": "regression-2",
+          "status": "PASS",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 1157,
+            "failed": 0,
+            "passed": 1157,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 1157,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "28bd5d798c218d3b004afa6a7cc04b3de164a5998a7f35642ef1c4381695c713",
+          "eventsSha256": "4182c6e704e8551094a4c5eab63a4bc98160e62ab8e3940fa88b639c3ca49b17",
+          "receiptSha256": "8ec9287dad080a36dfbc65ebd44d3e36e7a1f953f82efe24dd0c2211781c118a",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        },
+        {
+          "lane": "regression-3",
+          "status": "FAIL",
+          "checkoutSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "prHeadSha": null,
+          "baseSha": null,
+          "eventSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "revisionKind": "BRANCH_EXACT_HEAD",
+          "runId": "37465820154",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 1193,
+            "failed": 1,
+            "passed": 1192,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 1193,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "64ba0a95ac18cb9b3ca97fdfbee70f1d818650c3f2b4630b1e1115452f5a73f7",
+          "eventsSha256": "597a2345462ea847882adc4a31e0586991090dd1e7a62ed3c32444d956c3e48a",
+          "receiptSha256": "663298ef18f1a3321328b746712e33b2494a7f27f54bf906322aae3d965dd5c9",
+          "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+          "executions": [
+            {
+              "exitCode": 1,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        }
+      ],
+      "cancellationReason": "Cancelled remaining costly graph work after three deterministic mandatory certification-binding assertion failures demonstrated an out-of-scope blocker; cancelled/unexecuted graph/resume/proof/ordinary/aggregate are NOT PASS"
+    },
+    {
+      "runId": "37465826108",
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37465826108",
+      "headShaFromApi": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+      "event": "pull_request",
+      "attempt": 1,
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "name": "Retained raw source reproduction",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Clean graph / second",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-2",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / assets",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Lint, types, formatting and build",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Clean graph / first",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-3",
+          "conclusion": "failure",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-1",
+          "conclusion": "failure",
+          "status": "completed"
+        },
+        {
+          "name": "Full Node regression / regression-0",
+          "conclusion": "success",
+          "status": "completed"
+        },
+        {
+          "name": "Install, test and build",
+          "conclusion": "skipped",
+          "status": "completed"
+        },
+        {
+          "name": "Stable complete graph resume",
+          "conclusion": "cancelled",
+          "status": "completed"
+        },
+        {
+          "name": "TASK086 exact-head Quality Gate",
+          "conclusion": "failure",
+          "status": "completed"
+        },
+        {
+          "name": "Deterministic, recovery and published-artifact proof",
+          "conclusion": "cancelled",
+          "status": "completed"
+        }
+      ],
+      "receipts": [
+        {
+          "lane": "assets",
+          "status": "PASS",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 165,
+            "failed": 0,
+            "passed": 165,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 165,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "591ecc92644d5c199af0a75a4bdf86df76e79e94c2ad8e7637a2eb7060ad3226",
+          "eventsSha256": "586071beee5c353980526e71ae469702405fc6955fce4427c7e062c99839634a",
+          "receiptSha256": "8c906a03d280e247a715310d5f71e727e000dbb7cfabd432d13aefd2c104ef0d",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 5
+        },
+        {
+          "lane": "extraction",
+          "status": "PASS",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": null,
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "27d6a8016bbc8915d5d8e425cb0fa07c4bcf16931afcc9c2bc994532a8b42c85",
+          "eventsSha256": null,
+          "receiptSha256": "5d739c4f972c4ee505b6803aa41ef13dd7d0cb7975aa07dbed2cb907c5f8238d",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 0
+        },
+        {
+          "lane": "quality",
+          "status": "PASS",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": null,
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "dd836d38f3f32eb5087904a6101b160429a13160531bb1afd0cb87f2127238d8",
+          "eventsSha256": null,
+          "receiptSha256": "0f6114c4e1f2d8d828457e1e4b1cff47dbd97a5b276bebfea020c8c546807a21",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            },
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 0
+        },
+        {
+          "lane": "regression-0",
+          "status": "PASS",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.15",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 861,
+            "failed": 0,
+            "passed": 861,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 861,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "81fd030ff3d8c864ed797249959c36ecde509106e40e190b1a1a02801b38a374",
+          "eventsSha256": "6cfa0cb4b107685c211ce4ab70cca76c19b81fc9d6b1eddee90b701b04dff264",
+          "receiptSha256": "b74bea9824f8eb96c128c17d2ec4f61b537faa51a55def237e0f17c020eb81c2",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        },
+        {
+          "lane": "regression-1",
+          "status": "FAIL",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 522,
+            "failed": 2,
+            "passed": 520,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 482,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "8a57bb201bd1fb4505056fc47ba6704186cca82c332a3a77cf7e2d8f1fac074e",
+          "eventsSha256": "7d28737b8a0872883dbdab77196ad4c5697d485666b221e2f403da5ed5fd2844",
+          "receiptSha256": "abb43fbe93205a25aad13a8ac7299867d9611448725f68d269bb6b4bc349dd39",
+          "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+          "executions": [
+            {
+              "exitCode": 1,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        },
+        {
+          "lane": "regression-2",
+          "status": "PASS",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 1157,
+            "failed": 0,
+            "passed": 1157,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 1157,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "2eb56c3bff731605ea83a127b0c39d0768da3b7f50b56402c47cb4a6b6206e5e",
+          "eventsSha256": "ec4a7ba98980a01beb5d11df6c77a18a16846a8566c249eab5eb7c279728243c",
+          "receiptSha256": "29139e2ed8df935e552cf561a96162a296dba59a7e4d671c80c8172f69024a53",
+          "validationError": null,
+          "executions": [
+            {
+              "exitCode": 0,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        },
+        {
+          "lane": "regression-3",
+          "status": "FAIL",
+          "checkoutSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "prHeadSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+          "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+          "eventSha": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+          "revisionKind": "PR_MERGE_RESULT",
+          "runId": "37465826108",
+          "runAttempt": "1",
+          "trackedWorktreeClean": true,
+          "protectedWorktreeClean": true,
+          "runtime": {
+            "node": "v24.21.0",
+            "npm": "11.19.0",
+            "python": "Python 3.12.14",
+            "pythonCommand": "python3",
+            "os": "linux",
+            "arch": "x64"
+          },
+          "observedNodeCounts": {
+            "tests": 1193,
+            "failed": 1,
+            "passed": 1192,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "topLevel": 1193,
+            "suites": 0
+          },
+          "countMeaning": "Observed final runner event; a failed run remains FAIL even when most cases pass",
+          "logSha256": "0fdd92a910b050fd9ed9d797a7dc80af4ea004fd134b2e1d7a2606d81f656fb9",
+          "eventsSha256": "435338e2d77ec4cacf29dbc70c21ad674345bf40fad3021b84b666dee607dbd0",
+          "receiptSha256": "851eff9c111be32dd53b802e494bdd3c4e704c7dfe36b013bbc6f6e18bee0449",
+          "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+          "executions": [
+            {
+              "exitCode": 1,
+              "signal": null,
+              "timeout": false,
+              "error": null
+            }
+          ],
+          "selectedFiles": 37
+        }
+      ],
+      "cancellationReason": "Cancelled remaining costly graph work after three deterministic mandatory certification-binding assertion failures demonstrated an out-of-scope blocker; cancelled/unexecuted graph/resume/proof/ordinary/aggregate are NOT PASS"
+    }
+  ]
+}

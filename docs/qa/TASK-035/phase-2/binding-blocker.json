@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCKED_SCOPE",
+  "candidateSha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+  "baselineSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "bindingImplementation": "tools/transport/task-086-final-closeout.mjs:62 currentBinding()",
+  "boundInfrastructureChanges": [
+    {
+      "path": ".github/workflows/quality-gate.yml",
+      "baselineSha256": "d377b59ddb6d147a54d1b982ece03962c1d8bc98803d05bee8f4fc6b700f4ccc",
+      "candidateSha256": "df2f134fc72c6547e079c421ad3f00ad73249a90c21143587173710c51520413"
+    },
+    {
+      "path": "package.json",
+      "baselineSha256": "b0786ee1d23be9e698fd9356d0d9d5a9f26d67f41632390cbd8936a1d946049c",
+      "candidateSha256": "cf33b865d403a142d09bd514ba507aef0a984807f25d477bbe6cb6b1261e85ec"
+    }
+  ],
+  "currentInputSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+  "frozenCertifiedInputSha256": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+  "baselineBytesOnlyCounterfactualSha256": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+  "counterfactualMeaning": "Read-only in-memory hash comparison; files/expected values were NOT replaced and tests were NOT run against substituted inputs",
+  "staleManifestBindings": [],
+  "failedAssertions": [
+    "task-086-certification-engine-repair.test.mjs:369 stale eligibility input",
+    "task-086-certification-engine-repair.test.mjs:403 current certified report binding",
+    "task-086-readmittable-closeout.test.mjs:167 generated vs tracked closeout artifact hashes"
+  ],
+  "owner": "A / TASK-086 certification evidence owner; B reports blocker under TASK-035",
+  "requiresDecision": "Separately authorize certification evidence refresh or revise binding semantics in its owning task; current Task prohibits frozen evidence/data/business-rule changes",
+  "forbiddenWorkarounds": [
+    "restore old package/workflow during tests",
+    "rewrite expected hashes",
+    "skip/quarantine failing mandatory tests",
+    "claim required success from zero business-semantic diff"
+  ]
+}

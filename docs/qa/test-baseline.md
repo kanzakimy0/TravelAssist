@@ -1,6 +1,6 @@
 # TravelAssist test framework and global baseline
 
-Status: **Phase 2 in progress — Canonical Owner A, B implementation/QA**
+Status: **Phase 2 BLOCKED by frozen TASK086 certification binding — Owner A, B implementation/QA**
 
 Current normative map: [TASK035 Phase2](TASK-035/phase-2/README.md), [execution policy](TASK-035/phase-2/execution-policy.json), [inventory](TASK-035/phase-2/test-inventory.json). `npm test` uses the route loader through a thin adapter and executes the entire current top-level Node set, including rebuild. `npm run test:baseline:inventory -- --check` is read-only; `npm run test:baseline:lane -- --lane <lane>` preserves the TASK086 selector. Local DB/browser/live-provider are explicit opt-in environments.
 

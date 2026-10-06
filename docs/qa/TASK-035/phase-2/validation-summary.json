@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "phase": "TASK-035-A Phase 2",
-  "state": "IN_PROGRESS",
+  "state": "BLOCKED",
   "canonicalOwner": "A",
   "executor": "B",
   "inventoryValidation": {
@@ -11,8 +11,11 @@
     "counts": "dynamic; not a constant selection threshold"
   },
   "runnerTests": {
-    "status": "PASS_INITIAL_FOCUSED",
-    "note": "Windows reporter URL defect found and fixed before candidate; final focused rerun pending after final review"
+    "status": "PASS",
+    "focusedGovernanceTests": 9,
+    "legacyTask035Tests": 3,
+    "compatibilityTests": 23,
+    "note": "Synthetic nonzero/timeout/signal/spawn/empty/skip/nested/false-receipt/hash/SHA/attempt and event/dependency tests; initial Windows reporter defect fixed, retained as development history"
   },
   "baselineExecution": {
     "status": "PASS_VERIFIED_HISTORICAL_RUN",
@@ -22,30 +25,57 @@
     "tests": 3887
   },
   "candidateExecution": {
-    "status": "IN_PROGRESS",
-    "localInitialRegression0": {
-      "status": "PASS",
-      "tests": 861,
-      "node": "v24.18.0",
-      "os": "win32",
-      "trackedWorktreeClean": false,
-      "note": "development diagnostic, not final exact-head acceptance"
-    },
-    "completeUnifiedEntry": "PENDING_HOSTED_PROOF"
+    "status": "FAIL_REQUIRED",
+    "sha": "72fe79f299f87ac87a8d48f86b8291312f26a87e",
+    "evidence": "candidate-evidence.json",
+    "failedTests": 3,
+    "failedLanes": ["regression-1", "regression-3"],
+    "localAssetDiagnostic": "FAIL_BOTH_BASELINE_AND_CANDIDATE; windows-asset-comparison.json",
+    "notCompleted": [
+      "graph-first/second cancelled after blocker",
+      "resume NOT_RUN",
+      "rebuild/proof NOT_RUN",
+      "complete npm test NOT_RUN (scheduled after proof prerequisites)",
+      "full global aggregate NOT_RUN"
+    ]
   },
   "deltaComparison": {
-    "status": "NOT_COMPARABLE",
-    "newFailures": null,
-    "reason": "candidate full execution pending; historical baseline Python version not emitted; Windows local differs from Linux hosted"
+    "status": "BLOCKED",
+    "introducedBindingAssertionFailures": 3,
+    "allRequiredPassed": false,
+    "baseline": "verified complete hosted4888b4d",
+    "candidate": "72fe79f29 push and PR integration receipts",
+    "environmentComparability": "Node24.21.0/Linux matches; exact baseline Python version unknown, so not identical-environment comparison",
+    "causeProven": "binding-blocker.json: replacing only two file hashes in memory reconstructs frozen binding; no filesystem substitution or baseline-input masquerade"
   },
   "ciStatus": {
-    "status": "PENDING",
-    "finalExactHead": "PENDING",
-    "prMergeResult": "PENDING",
-    "note": "Final commit SHA/run/attempt are published in external Issue/PR receipts after final validation; do not reuse old-head results"
+    "status": "BLOCKED",
+    "candidateExactHeadRun": "37465820154",
+    "candidatePrMergeResultRun": "37465826108",
+    "candidatePrActualCheckout": "4201e4d5136b96f97d457019a3e5b2b66696a4bb",
+    "finalExactHead": "NOT_RUN_AT_COMMIT; final run/attempt/checkouts and results in #265/#272 external delivery receipt",
+    "finalPrIntegration": "NOT_RUN_AT_COMMIT; separately recorded externally",
+    "note": "Candidate and final evidence are never interchanged; final commit includes blocked WBS/Result before push validation"
   },
   "qualityGates": {
-    "status": "PENDING"
+    "status": "PASS_CANDIDATE",
+    "hosted": [
+      "deploy validate local",
+      "lint",
+      "typecheck",
+      "format:check:deploy",
+      "deploy build local",
+      "artifact verification",
+      "diff-check"
+    ],
+    "hostedRun": "37465820154",
+    "local": [
+      "lint exit0 with69 existing warnings",
+      "typecheck exit0",
+      "format:check:deploy exit0",
+      "diff-check exit0"
+    ],
+    "scope": "candidate only, final-head outcome external"
   },
   "optionalEnvironmentTests": {
     "status": "NOT_RUN",
@@ -59,9 +89,10 @@
     "reason": "unchanged opt-in environments outside default completion gates"
   },
   "scopeValidation": {
-    "status": "PENDING"
+    "status": "PASS",
+    "evidence": "scope-validation.json"
   },
-  "wbs": "进行中；非已完成",
+  "wbs": "阻塞（Phase2；TASK086 frozen certification binds modified package/workflow bytes）；非待审查、非已完成",
   "pullRequest": {
     "number": 272,
     "state": "OPEN",
@@ -71,5 +102,6 @@
   "issue": {
     "number": 265,
     "state": "OPEN"
-  }
+  },
+  "blocker": "binding-blocker.json"
 }
