@@ -379,7 +379,18 @@ jobs:
           assert eligibility['runAttempt']==os.environ['GITHUB_RUN_ATTEMPT']
           assert eligibility['terminalRoots']==251 and eligibility['pendingRoots']==0
           assert eligibility['failClosedBoundary']=='PASS'
-          receipt['status']='COMPLETE_WITH_READMITTABLE_UNVERIFIED_EXCLUSIONS'
+          engine=json.loads(Path('.artifacts/ci/certification-engine-repair-receipt.json').read_text())
+          assert engine['status']=='PASS'
+          assert engine['checkoutSha']==os.environ['GITHUB_SHA']
+          assert engine['runId']==os.environ['GITHUB_RUN_ID']
+          assert engine['runAttempt']==os.environ['GITHUB_RUN_ATTEMPT']
+          assert engine['inputSha256']==eligibility['inputSha256']
+          assert engine['entireQuarantineCount']==11556
+          assert engine['tokyoUeno']=='PASS_FORMAL_EXPORT_BOTH_DIRECTIONS'
+          assert engine['eightZeroIntegrityChecks']=='PASS'
+          receipt['certificationEngineRepair']=engine
+          receipt['certificationEngineRepairReceiptSha256']=hashlib.sha256(Path('.artifacts/ci/certification-engine-repair-receipt.json').read_bytes()).hexdigest()
+          receipt['status']='PASS_CERTIFICATION_ENGINE_REPAIR_AND_FULL_RECERTIFICATION'
           receipt['historicalCertificationRoots']=receipt.pop('certificationBlockersUnchanged')
           receipt['pendingCertificationRoots']=0
           receipt['wbs']='B / 待审查（exact-head technical gate PASS; authorized normal merge pending）'

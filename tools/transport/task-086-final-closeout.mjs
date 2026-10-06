@@ -7,12 +7,21 @@ import {
   canonical,
   sourceAllowed,
   admitNodes,
-  verifyEvidence,
   validateEdges,
   anchorQueries,
   generateTransfer,
   generatePattern,
 } from "./task-086-model.mjs";
+import {
+  sourceCapabilities,
+  applyCapabilityReviews,
+  identityEvidenceRefs,
+  requiredEvidenceClosure,
+  certifyFact,
+  segmentRequiredFacts,
+  patternRequiredRefs,
+  validateSegmentFact,
+} from "./task-086-certification-facts.mjs";
 import { passengerComponents } from "./task-086-stage.mjs";
 import { loadPublishedODContext } from "./task-086-dynamic-od-registry.mjs";
 
@@ -71,6 +80,10 @@ export function currentBinding() {
       "package.json",
       "package-lock.json",
       "tools/transport/task-086-final-closeout.mjs",
+      "tests/task-086-certification-engine-repair.test.mjs",
+      "docs/qa/TASK-086/certification-engine-repair/capability-reviews.json",
+      "docs/qa/TASK-086/certification-engine-repair/osm-terms-observation.json",
+      "docs/tasks/TASK-086-b-certification-engine-repair-full-recertification.md",
       "docs/qa/TASK-086/readmittable-closeout/reviewed-evidence.json",
       "docs/tasks/TASK-086-b-final-unverifiable-quarantine-closeout.md",
     ]),
@@ -182,34 +195,29 @@ export function classifySource(
   evidenceBound,
   rightsEvidence = false,
 ) {
+  const capabilities = sourceCapabilities(
+    source,
+    snapshot,
+    evidenceBound,
+    rightsEvidence,
+  );
   const reasons = [];
   if (!sourceAllowed(source)) reasons.push("EXISTING_SOURCE_ADMISSION_INVALID");
   if (!snapshot) reasons.push("SNAPSHOT_BINDING_NOT_REPRODUCIBLE");
   if (!evidenceBound) reasons.push("SOURCE_EVIDENCE_HASH_INVALID");
-  const explicit =
-    /^(CC[- ]?BY(?:[- ]|$)|CC0|PDL-1\.0(?:\+MOJ-MAP-DATA-TERMS)?|MLIT legacy commercial-use terms|ODbL 1\.0|Operator unrestricted-use terms|Tokachi Bus static GTFS route-guidance use grant)/.test(
-      source?.license ?? "",
-    );
-  if (!explicit)
-    reasons.push(
-      "NO_EXPLICIT_RIGHTS_BASIS_FOR_PERSISTENCE_DERIVATION_AND_RUNTIME",
-    );
-  if (explicit && !rightsEvidence)
-    reasons.push("LICENSE_OR_TERMS_OBSERVATION_NOT_BOUND");
-  if (explicit && !source.attribution && source.license !== "CC0")
-    reasons.push("ATTRIBUTION_MISSING");
-  if (
-    source.license === "ODbL 1.0" &&
-    (!source.shareAlikeRequired || !source.shareAlikeScope)
-  )
-    reasons.push("SHARE_ALIKE_DISTRIBUTION_SCOPE_NOT_CLOSED");
+  if (!capabilities.runtimeDerivedFact.allowed && reasons.length === 0)
+    reasons.push("RIGHTS_UNVERIFIED_FOR_REQUIRED_FACT");
   return {
     status: reasons.some((r) => /INVALID|NOT_REPRODUCIBLE/.test(r))
       ? "QUARANTINED"
-      : reasons.length
-        ? "REVIEW_REQUIRED"
-        : "CERTIFIED",
+      : capabilities.runtimeDerivedFact.allowed
+        ? "CERTIFIED"
+        : "REVIEW_REQUIRED",
     reasons,
+    capabilities,
+    rawUseCertified:
+      capabilities.rawPersistence.allowed &&
+      capabilities.rawRedistribution.allowed,
   };
 }
 
@@ -280,7 +288,19 @@ export function applyRetainedSourceSupplements(
   return sources.map((s) => updates.get(s.sourceId) ?? s);
 }
 
-export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
+export function certify({
+  outputDirectory = qa,
+  sourceSupplements = [],
+  capabilityReviews = JSON.parse(
+    fs.readFileSync(
+      path.join(
+        root,
+        "docs/qa/TASK-086/certification-engine-repair/capability-reviews.json",
+      ),
+      "utf8",
+    ),
+  ).reviews,
+} = {}) {
   // Historical callers retain their original outputs. The amended closeout uses
   // an isolated directory; it must not rewrite previous BLOCKED findings.
   const qa = path.resolve(outputDirectory);
@@ -295,10 +315,15 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
   const nodes = rows("node-downstream-admission.jsonl"),
     edges = rows("transport-node-edges.jsonl"),
     patterns = rows("service-patterns.jsonl");
-  const sourceRows = applyRetainedSourceSupplements(
-    json("source-rights.json").sources,
-    sourceSupplements,
-    rows("next-source-actions.jsonl"),
+  const sourceRows = applyCapabilityReviews(
+    applyRetainedSourceSupplements(
+      json("source-rights.json").sources,
+      sourceSupplements,
+      rows("next-source-actions.jsonl"),
+      base,
+    ),
+    capabilityReviews,
+    rows("topology-evidence.jsonl"),
     base,
   );
   const sources = new Map(sourceRows.map((s) => [s.sourceId, s]));
@@ -314,49 +339,38 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
     patternById,
     actions,
   });
-  const sourceDeps = (refs, seen = new Set()) => {
-    const ids = new Set();
-    for (const ref of refs ?? []) {
-      if (seen.has(ref)) continue;
-      seen.add(ref);
-      const row = evidence.get(ref);
-      if (!row) {
-        ids.add("UNKNOWN_EVIDENCE:" + ref);
-        continue;
-      }
-      ids.add(row.sourceId);
-      const nested = [];
-      const visit = (value) => {
-        if (Array.isArray(value)) value.forEach(visit);
-        else if (value && typeof value === "object")
-          for (const [key, v] of Object.entries(value)) {
-            if (
-              (key === "sourceFactRef" || key === "parentEvidenceRef") &&
-              typeof v === "string"
-            )
-              nested.push(v);
-            if (key.endsWith("EvidenceRefs") && Array.isArray(v))
-              nested.push(...v);
-            visit(v);
-          }
-      };
-      visit(row.record);
-      for (const s of sourceDeps(nested, seen)) ids.add(s);
-    }
-    return [...ids].sort();
-  };
-  const nodeDeps = new Map(
-    nodes.map((n) => [n.nodeId, sourceDeps(n.evidenceRefs)]),
+  const sourceDeps = (refs) =>
+    [
+      ...new Set(
+        requiredEvidenceClosure(refs, evidence).map(
+          (ref) => evidence.get(ref)?.sourceId ?? "UNKNOWN_EVIDENCE:" + ref,
+        ),
+      ),
+    ].sort();
+  const nodeRequiredRefs = new Map(
+    nodes.map((n) => [n.nodeId, identityEvidenceRefs(n, evidence)]),
   );
-  const edgeDeps = new Map(
+  const nodeDeps = new Map(
+    nodes.map((n) => [n.nodeId, sourceDeps(nodeRequiredRefs.get(n.nodeId))]),
+  );
+  const edgeRequiredRefs = new Map(
     edges.map((e) => [
       e.edgeId,
-      sourceDeps([
-        ...e.topologyEvidenceRefs,
-        ...(patternById.get(e.servicePatternRef)?.evidenceRefs ?? []),
-        ...(e.accessContract?.sourceEvidenceRefs ?? []),
-      ]),
+      e.edgeKind === "service_segment"
+        ? [
+            ...new Set([
+              ...patternRequiredRefs(
+                patternById.get(e.servicePatternRef),
+                evidence,
+              ),
+              ...(e.accessContract?.sourceEvidenceRefs ?? []),
+            ]),
+          ]
+        : e.topologyEvidenceRefs,
     ]),
+  );
+  const edgeDeps = new Map(
+    edges.map((e) => [e.edgeId, sourceDeps(edgeRequiredRefs.get(e.edgeId))]),
   );
   const used = new Set([...nodeDeps.values(), ...edgeDeps.values()].flat());
   const evidenceBySource = new Map(
@@ -517,8 +531,8 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
       derivedDataPermission: s.derivedDataAllowed,
       runtimePermissionBasis:
         decision.status === "CERTIFIED"
-          ? effectiveLicense
-          : "NOT_PROVEN_BY_CURRENT_EXPLICIT_GRANT",
+          ? decision.capabilities.runtimeDerivedFact.basis
+          : "UNVERIFIED_REQUIRED_FACT_USAGE_BASIS",
       attribution: s.attribution ?? null,
       shareAlikeScope: s.shareAlikeScope ?? null,
       snapshotReproducibility: snapshot
@@ -548,13 +562,47 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
       )
       .map((n) => n.identityAnchor),
   );
-  const rawAdmissions = admitNodes(nodes, sources, evidence, [], rawContext);
+  const factContext = {
+    sources,
+    evidence,
+    nodes: nodeMap,
+    sourceAudits: new Map(sourceAudit.map((s) => [s.sourceId, s])),
+  };
+  const identityProofs = new Map(
+    nodes.map((n) => [
+      n.nodeId,
+      certifyFact(
+        "REQUIRED_IDENTITY",
+        "identityFact",
+        nodeRequiredRefs.get(n.nodeId),
+        factContext,
+      ),
+    ]),
+  );
+  const identityCandidates = nodes.map((n) => ({
+    ...n,
+    evidenceRefs: nodeRequiredRefs.get(n.nodeId),
+  }));
+  const rawAdmissions = admitNodes(
+    identityCandidates,
+    sources,
+    evidence,
+    [],
+    rawContext,
+  );
   const nodeAudit = rawAdmissions.map((n) => {
-    const reasons = [...n.reasons];
+    const proof = identityProofs.get(n.nodeId);
+    const reasons = [
+      ...new Set([
+        ...n.reasons.map((r) =>
+          r === "SOURCE_LICENSE_OR_PROVENANCE" ? "IDENTITY_UNRESOLVED" : r,
+        ),
+        ...proof.blockers.map((b) => b.reason),
+      ]),
+    ];
     if (duplicateAnchors.has(n.identityAnchor))
       reasons.push("DUPLICATE_CANONICAL_IDENTITY");
-    if (nodeDeps.get(n.nodeId).some((s) => sourceStatus.get(s) !== "CERTIFIED"))
-      reasons.push("UNCERTIFIED_IDENTITY_SOURCE_DEPENDENCY");
+
     return {
       nodeId: n.nodeId,
       canonicalNameJa: n.canonicalNameJa,
@@ -576,6 +624,18 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
         ),
       ].sort(),
       sourceIds: nodeDeps.get(n.nodeId),
+      requiredFacts: [proof],
+      ignoredEvidence: (nodeMap.get(n.nodeId).evidenceRefs ?? [])
+        .filter((ref) => !nodeRequiredRefs.get(n.nodeId).includes(ref))
+        .map((evidenceId) => ({ evidenceId, role: "AUXILIARY" })),
+      blockers: [
+        ...proof.blockers,
+        ...n.reasons.map((reason) => ({
+          reason: "IDENTITY_UNRESOLVED",
+          detail: reason,
+          nodeId: n.nodeId,
+        })),
+      ],
       status: reasons.length ? "QUARANTINED" : "CERTIFIED",
       reasons,
     };
@@ -583,7 +643,9 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
   const certifiedNodeIds = new Set(
     nodeAudit.filter((n) => n.status === "CERTIFIED").map((n) => n.nodeId),
   );
-  const certifiedNodes = nodes.filter((n) => certifiedNodeIds.has(n.nodeId));
+  const certifiedNodes = nodes
+    .filter((n) => certifiedNodeIds.has(n.nodeId))
+    .map((n) => ({ ...n, evidenceRefs: nodeRequiredRefs.get(n.nodeId) }));
   const certifiedNodeMap = new Map(certifiedNodes.map((n) => [n.nodeId, n]));
   const validationContext = {
     ...rawContext,
@@ -598,7 +660,7 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
   for (const p of patterns) {
     try {
       for (const e of generatePattern(
-        p,
+        { ...p, evidenceRefs: patternRequiredRefs(p, evidence) },
         nodeMap,
         sources,
         evidence,
@@ -631,36 +693,90 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
   };
   for (const e of edges) {
     const reasons = [];
-    if (e.edgeKind === "service_segment") {
-      if (
-        patternById
-          .get(e.servicePatternRef)
-          ?.callingNodes.some((c) => !certifiedNodeIds.has(c.nodeId))
-      )
-        reasons.push("UNCERTIFIED_PATTERN_CALLING_NODE");
-      if (patternFailures.has(e.servicePatternRef))
-        reasons.push(patternFailures.get(e.servicePatternRef));
-      else if (canonical(expectedSegments.get(e.edgeId)) !== canonical(e))
-        reasons.push(
-          "SERVICE_SEQUENCE_DIRECTION_ACCESS_OR_SERIALIZATION_MISMATCH",
-        );
+    const requiredFacts =
+      e.edgeKind === "service_segment"
+        ? segmentRequiredFacts(
+            e,
+            patternById.get(e.servicePatternRef),
+            factContext,
+          )
+        : [
+            certifyFact(
+              e.edgeKind === "hub_transfer"
+                ? "REQUIRED_TRANSFER"
+                : "REQUIRED_SERVICE_TOPOLOGY",
+              e.edgeKind === "hub_transfer"
+                ? "transferFact"
+                : "serviceTopologyFact",
+              edgeRequiredRefs.get(e.edgeId),
+              factContext,
+            ),
+          ];
+    for (const endpoint of [e.fromTransportNodeId, e.toTransportNodeId]) {
+      const identity = identityProofs.get(endpoint);
+      if (identity) requiredFacts.push({ ...identity, nodeId: endpoint });
     }
-    if (
-      !certifiedNodeIds.has(e.fromTransportNodeId) ||
-      !certifiedNodeIds.has(e.toTransportNodeId)
-    )
-      reasons.push("UNCERTIFIED_ENDPOINT");
-    if (edgeDeps.get(e.edgeId).some((s) => sourceStatus.get(s) !== "CERTIFIED"))
-      reasons.push("UNCERTIFIED_EDGE_SOURCE_DEPENDENCY");
-    if (!verifyEvidence(e.topologyEvidenceRefs, sources, evidence))
-      reasons.push("INVALID_PROVENANCE");
+    const requiredSourceIds = [
+      ...new Set(requiredFacts.flatMap((f) => f.sourceIds)),
+    ].sort();
+    const factBlockers = requiredFacts.flatMap((f) => f.blockers);
+    for (const endpoint of [e.fromTransportNodeId, e.toTransportNodeId])
+      if (!certifiedNodeIds.has(endpoint))
+        factBlockers.push({
+          reason: "IDENTITY_UNRESOLVED",
+          role: "REQUIRED_IDENTITY",
+          nodeId: endpoint,
+          detail: "This interval endpoint identity failed",
+          requiredFacts: identityProofs.get(endpoint) ?? null,
+        });
+    if (e.edgeKind === "service_segment") {
+      const invalid = validateSegmentFact(
+        e,
+        patternById.get(e.servicePatternRef),
+        factContext,
+      );
+      if (invalid) factBlockers.push(invalid);
+      const expected = expectedSegments.get(e.edgeId);
+      if (expected) {
+        const core = (x) => {
+          const result = { ...x };
+          delete result.topologyEvidenceRefs;
+          delete result.sourceRefs;
+          delete result.metrics;
+          return result;
+        };
+        if (canonical(core(expected)) !== canonical(core(e)))
+          factBlockers.push({
+            reason: "SERVICE_DIRECTION_UNRESOLVED",
+            detail: "Production interval regeneration/serialization mismatch",
+          });
+      } else if (
+        e.accessContract ||
+        patternById.get(e.servicePatternRef)?.sequenceEvidence !==
+          "OFFICIAL_CALLING_SEQUENCE"
+      )
+        factBlockers.push({
+          reason: "SERVICE_DIRECTION_UNRESOLVED",
+          detail:
+            patternFailures.get(e.servicePatternRef) ??
+            "Production pattern missing",
+        });
+    }
+    reasons.push(...new Set(factBlockers.map((b) => b.reason)));
     try {
-      validateEdges([e], {
-        ...rawContext,
-        dynamicODValidationScope: "PARTIAL_BATCH",
-      });
+      validateEdges(
+        [{ ...e, topologyEvidenceRefs: edgeRequiredRefs.get(e.edgeId) }],
+        {
+          ...rawContext,
+          dynamicODValidationScope: "PARTIAL_BATCH",
+        },
+      );
     } catch (error) {
-      reasons.push(error.message);
+      reasons.push("BOARDING_ALIGHTING_UNRESOLVED");
+      factBlockers.push({
+        reason: "BOARDING_ALIGHTING_UNRESOLVED",
+        detail: error.message,
+      });
     }
     if (e.fromTransportNodeId === e.toTransportNodeId)
       reasons.push("SELF_EDGE");
@@ -681,7 +797,11 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
         if (canonical(regenerated) !== canonical(e))
           reasons.push("TRANSFER_SERIALIZATION_OR_METRIC_BINDING_MISMATCH");
       } catch (error) {
-        reasons.push(error.message);
+        reasons.push("TRANSFER_RELATION_UNRESOLVED");
+        factBlockers.push({
+          reason: "TRANSFER_RELATION_UNRESOLVED",
+          detail: error.message,
+        });
       }
       transferAudit.push({
         transferId: e.edgeId,
@@ -689,8 +809,10 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
         to: e.toTransportNodeId,
         directed: e.directed,
         transferTimeMin: e.metrics.transferTimeMin,
-        sourceIds: edgeDeps.get(e.edgeId),
-        evidenceRefs: e.topologyEvidenceRefs,
+        sourceIds: requiredSourceIds,
+        evidenceRefs: edgeRequiredRefs.get(e.edgeId),
+        requiredFacts,
+        blockers: factBlockers,
         status: reasons.length ? "QUARANTINED" : "CERTIFIED",
         reasons,
       });
@@ -699,7 +821,9 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
       edgeId: e.edgeId,
       status: reasons.length ? "QUARANTINED" : "CERTIFIED",
       reasons,
-      sourceIds: edgeDeps.get(e.edgeId),
+      sourceIds: requiredSourceIds,
+      requiredFacts,
+      blockers: factBlockers,
     });
   }
   const certifiedEdgeIds = new Set(
@@ -710,11 +834,13 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
     .filter((e) => certifiedEdgeIds.has(e.edgeId))
     .map((e) => ({
       ...e,
+      topologyEvidenceRefs: edgeRequiredRefs.get(e.edgeId),
       metrics: Object.fromEntries(
         Object.entries(e.metrics).map(([key, value]) => {
           if (
             value.sourceId &&
-            sourceStatus.get(value.sourceId) !== "CERTIFIED"
+            !sourceAudit.find((s) => s.sourceId === value.sourceId)
+              ?.capabilities.metricFact.allowed
           ) {
             quarantinedMetricCount++;
             return [
@@ -733,44 +859,53 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
   const certifiedPatternIds = new Set(
     certifiedEdges.map((e) => e.servicePatternRef).filter(Boolean),
   );
-  const certifiedPatterns = patterns.filter((p) =>
-    certifiedPatternIds.has(p.servicePatternId),
-  );
+  const certifiedPatterns = patterns
+    .filter((p) => certifiedPatternIds.has(p.servicePatternId))
+    .map((p) => ({
+      servicePatternId: p.servicePatternId,
+      lineRef: p.lineRef,
+      operatorRef: p.operatorRef,
+      mode: p.mode,
+      direction: p.direction,
+      serviceClass: p.serviceClass,
+      evidenceRefs: patternRequiredRefs(p, evidence),
+      eligibleSegments: certifiedEdges
+        .filter((e) => e.servicePatternRef === p.servicePatternId)
+        .map((e) => ({
+          edgeId: e.edgeId,
+          segmentIndex: e.segmentIndex,
+          from: e.fromTransportNodeId,
+          to: e.toTransportNodeId,
+          boardAllowed: e.boardAllowed,
+          alightAllowed: e.alightAllowed,
+        })),
+      expansionPolicy: "EXPLICIT_CERTIFIED_SEGMENTS_ONLY",
+      fullPatternExpansionAllowed: false,
+    }));
   const certifiedEvidenceIds = new Set();
-  const collectEvidence = (refs) => {
-    for (const ref of refs ?? []) {
-      if (certifiedEvidenceIds.has(ref)) continue;
-      const row = evidence.get(ref);
-      if (!row || sourceStatus.get(row.sourceId) !== "CERTIFIED")
-        throw Error("CERTIFIED_PROJECTION_EVIDENCE_NOT_AUTHORIZED:" + ref);
-      certifiedEvidenceIds.add(ref);
-      const nested = [];
-      const visit = (v) => {
-        if (Array.isArray(v)) v.forEach(visit);
-        else if (v && typeof v === "object")
-          for (const [k, x] of Object.entries(v)) {
-            if (
-              (k === "sourceFactRef" || k === "parentEvidenceRef") &&
-              typeof x === "string"
-            )
-              nested.push(x);
-            if (k.endsWith("EvidenceRefs") && Array.isArray(x))
-              nested.push(...x);
-            visit(x);
-          }
-      };
-      visit(row.record);
-      collectEvidence(nested);
-    }
+  const collectEvidence = (refs, capability) => {
+    const proof = certifyFact(
+      "EXPORT_REQUIRED_FACT",
+      capability,
+      refs,
+      factContext,
+    );
+    if (proof.status !== "PASS")
+      throw Error(
+        "CERTIFIED_PROJECTION_REQUIRED_FACT_FAILED:" +
+          canonical(proof.blockers),
+      );
+    proof.evidenceIds.forEach((ref) => certifiedEvidenceIds.add(ref));
   };
-  certifiedNodes.forEach((n) => collectEvidence(n.evidenceRefs));
-  certifiedEdges.forEach((e) =>
-    collectEvidence([
-      ...e.topologyEvidenceRefs,
-      ...(e.accessContract?.sourceEvidenceRefs ?? []),
-    ]),
+  certifiedNodes.forEach((n) =>
+    collectEvidence(n.evidenceRefs, "identityFact"),
   );
-  certifiedPatterns.forEach((p) => collectEvidence(p.evidenceRefs));
+  certifiedEdges.forEach((e) => {
+    const audit = edgeAudit.find((a) => a.edgeId === e.edgeId);
+    audit.requiredFacts.forEach((f) =>
+      collectEvidence(f.evidenceIds, f.capability),
+    );
+  });
   validateEdges(certifiedEdges, validationContext);
   const rawComponents = passengerComponents(nodes, edges),
     components = passengerComponents(certifiedNodes, certifiedEdges);
@@ -1213,7 +1348,14 @@ export function certify({ outputDirectory = qa, sourceSupplements = [] } = {}) {
     ],
     [
       "sources.json",
-      sourceRows.filter((s) => sourceStatus.get(s.sourceId) === "CERTIFIED"),
+      sourceRows
+        .filter((s) => sourceStatus.get(s.sourceId) === "CERTIFIED")
+        .map((s) => ({
+          ...s,
+          certificationCapabilities: sourceAudit.find(
+            (a) => a.sourceId === s.sourceId,
+          ).capabilities,
+        })),
     ],
   ])
     fs.writeFileSync(

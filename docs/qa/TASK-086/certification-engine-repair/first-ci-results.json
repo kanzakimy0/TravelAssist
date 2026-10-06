@@ -1,0 +1,966 @@
+{
+  "conclusion": "cancelled",
+  "event": "workflow_dispatch",
+  "headSha": "4a8b7a5ec3a874b53c0fbe0f1d8afc4de2c93afb",
+  "jobs": [
+    {
+      "completedAt": "2026-10-06T00:58:48Z",
+      "conclusion": "success",
+      "databaseId": 112053922211,
+      "name": "Lint, types, formatting and build",
+      "startedAt": "2026-10-06T00:56:19Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:59Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:04Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:05Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:20Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:20Z",
+          "conclusion": "success",
+          "name": "Run npm run deploy:validate:local",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:40Z",
+          "conclusion": "success",
+          "name": "Run npm run lint",
+          "number": 7,
+          "startedAt": "2026-10-06T00:57:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:54Z",
+          "conclusion": "success",
+          "name": "Run npm run typecheck",
+          "number": 8,
+          "startedAt": "2026-10-06T00:57:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:05Z",
+          "conclusion": "success",
+          "name": "Run npm run format:check:deploy",
+          "number": 9,
+          "startedAt": "2026-10-06T00:57:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:44Z",
+          "conclusion": "success",
+          "name": "Run npm run deploy:build:local",
+          "number": 10,
+          "startedAt": "2026-10-06T00:58:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:45Z",
+          "conclusion": "success",
+          "name": "Run npm run deploy:verify-artifact",
+          "number": 11,
+          "startedAt": "2026-10-06T00:58:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:45Z",
+          "conclusion": "success",
+          "name": "Run git diff --check",
+          "number": 12,
+          "startedAt": "2026-10-06T00:58:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:46Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:58:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:46Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 25,
+          "startedAt": "2026-10-06T00:58:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:46Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 26,
+          "startedAt": "2026-10-06T00:58:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:47Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 27,
+          "startedAt": "2026-10-06T00:58:46Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922211"
+    },
+    {
+      "completedAt": "2026-10-06T00:57:53Z",
+      "conclusion": "success",
+      "databaseId": 112053922362,
+      "name": "Full Node regression / regression-0",
+      "startedAt": "2026-10-06T00:56:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:22Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:56Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:00Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:00Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:17Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:49Z",
+          "conclusion": "success",
+          "name": "Run node tools/qa/task-086-regression-lanes.mjs regression-0",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:50Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T00:57:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:50Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:57:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:50Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T00:57:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:50Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T00:57:50Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922362"
+    },
+    {
+      "completedAt": "2026-10-06T00:58:19Z",
+      "conclusion": "success",
+      "databaseId": 112053922369,
+      "name": "Full Node regression / assets",
+      "startedAt": "2026-10-06T00:56:19Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:58Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:19Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:15Z",
+          "conclusion": "success",
+          "name": "Run node tools/qa/task-086-regression-lanes.mjs assets",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:16Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T00:58:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:16Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:58:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:16Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T00:58:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:16Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T00:58:16Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922369"
+    },
+    {
+      "completedAt": "2026-10-06T01:05:27Z",
+      "conclusion": "cancelled",
+      "databaseId": 112053922408,
+      "name": "Clean graph / first",
+      "startedAt": "2026-10-06T00:56:19Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:20Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:53Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:56Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:56Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:56:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:14Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:56:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:25Z",
+          "conclusion": "cancelled",
+          "name": "Run timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs first .artifacts/task086-lanes",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:26Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T01:05:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:26Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T01:05:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:26Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T01:05:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:26Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T01:05:26Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922408"
+    },
+    {
+      "completedAt": "2026-10-06T00:57:38Z",
+      "conclusion": "success",
+      "databaseId": 112053922411,
+      "name": "Retained raw source reproduction",
+      "startedAt": "2026-10-06T00:56:19Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:59Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:05Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:06Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:21Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:06Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:34Z",
+          "conclusion": "success",
+          "name": "Run timeout --signal=TERM --kill-after=30s 1200s node tools/transport/task-086-validation.mjs extract .artifacts/task086-lanes",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:35Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T00:57:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:35Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:57:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:35Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T00:57:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:35Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T00:57:35Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922411"
+    },
+    {
+      "completedAt": "2026-10-06T01:05:29Z",
+      "conclusion": "cancelled",
+      "databaseId": 112053922422,
+      "name": "Clean graph / second",
+      "startedAt": "2026-10-06T00:56:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:59Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:17Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:25Z",
+          "conclusion": "cancelled",
+          "name": "Run timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs second .artifacts/task086-lanes",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:26Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T01:05:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:26Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T01:05:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:27Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T01:05:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:27Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T01:05:27Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922422"
+    },
+    {
+      "completedAt": "2026-10-06T00:59:41Z",
+      "conclusion": "failure",
+      "databaseId": 112053922424,
+      "name": "Full Node regression / regression-3",
+      "startedAt": "2026-10-06T00:56:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:56Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:58Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:58Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:56:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:15Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:56:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:59:38Z",
+          "conclusion": "failure",
+          "name": "Run node tools/qa/task-086-regression-lanes.mjs regression-3",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:59:39Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T00:59:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:59:39Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:59:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:59:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T00:59:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:59:39Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T00:59:39Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922424"
+    },
+    {
+      "completedAt": "2026-10-06T00:58:55Z",
+      "conclusion": "failure",
+      "databaseId": 112053922431,
+      "name": "Full Node regression / regression-1",
+      "startedAt": "2026-10-06T00:56:19Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:21Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:56Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:20Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:51Z",
+          "conclusion": "failure",
+          "name": "Run node tools/qa/task-086-regression-lanes.mjs regression-1",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:52Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T00:58:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:52Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:58:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T00:58:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:58:52Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T00:58:52Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922431"
+    },
+    {
+      "completedAt": "2026-10-06T00:57:33Z",
+      "conclusion": "success",
+      "databaseId": 112053922440,
+      "name": "Full Node regression / regression-2",
+      "startedAt": "2026-10-06T00:56:19Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T00:56:20Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T00:56:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:56:52Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T00:56:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T00:56:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:02Z",
+          "conclusion": "success",
+          "name": "Verify and record actual event checkout",
+          "number": 4,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:18Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 5,
+          "startedAt": "2026-10-06T00:57:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:30Z",
+          "conclusion": "success",
+          "name": "Run node tools/qa/task-086-regression-lanes.mjs regression-2",
+          "number": 6,
+          "startedAt": "2026-10-06T00:57:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:31Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 7,
+          "startedAt": "2026-10-06T00:57:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 13,
+          "startedAt": "2026-10-06T00:57:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:32Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 14,
+          "startedAt": "2026-10-06T00:57:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T00:57:32Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-10-06T00:57:32Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053922440"
+    },
+    {
+      "completedAt": "2026-10-06T00:56:16Z",
+      "conclusion": "skipped",
+      "databaseId": 112053923494,
+      "name": "Install, test and build",
+      "startedAt": "2026-10-06T00:56:17Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112053923494"
+    },
+    {
+      "completedAt": "2026-10-06T01:05:36Z",
+      "conclusion": "failure",
+      "databaseId": 112056481940,
+      "name": "TASK086 exact-head Quality Gate",
+      "startedAt": "2026-10-06T01:05:32Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-06T01:05:34Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-06T01:05:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:34Z",
+          "conclusion": "skipped",
+          "name": "Run actions/download-artifact@v4",
+          "number": 2,
+          "startedAt": "2026-10-06T01:05:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:34Z",
+          "conclusion": "skipped",
+          "name": "Run actions/download-artifact@v4",
+          "number": 3,
+          "startedAt": "2026-10-06T01:05:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:34Z",
+          "conclusion": "failure",
+          "name": "Fail closed unless every required lane completed",
+          "number": 4,
+          "startedAt": "2026-10-06T01:05:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:34Z",
+          "conclusion": "skipped",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 5,
+          "startedAt": "2026-10-06T01:05:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-06T01:05:34Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 6,
+          "startedAt": "2026-10-06T01:05:34Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112056481940"
+    },
+    {
+      "completedAt": "2026-10-06T01:05:29Z",
+      "conclusion": "cancelled",
+      "databaseId": 112056482396,
+      "name": "Stable complete graph resume",
+      "startedAt": "2026-10-06T01:05:30Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112056482396"
+    },
+    {
+      "completedAt": "2026-10-06T01:05:29Z",
+      "conclusion": "cancelled",
+      "databaseId": 112056483092,
+      "name": "Deterministic, recovery and published-artifact proof",
+      "startedAt": "2026-10-06T01:05:30Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941/job/112056483092"
+    }
+  ],
+  "status": "completed",
+  "failedLogSha256": "0bcdb9e1333a7c9fb463fe03f52e53da5f6796084c29987b7355f0aabb3b13b8",
+  "failedLogFetchExitCode": 0
+}

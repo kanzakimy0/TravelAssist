@@ -1069,7 +1069,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.13 | POI Edge Graph / Mobility Edge | A | P0 | 7.4,7.5 | 阻塞（#439 / TASK-082-A；图契约与确定性生成器已实现，develop 已有 Pilot-100 runtime 授权；旧 0-POI Pilot replay 待本 Task 重跑；Provider 批量/留存/生产权限未确认） |
 | 7.14 | Japan TransportNode Master / 全国交通节点库 | B | P0 | 7.4,7.5 | 已完成（2026-09-30 用户明确验收当前 v2 纠错成果物，普通合入 develop，#441 关闭；来源权利、逐组件 runtime 接收及下游机器门禁按现有证据保留；见 v2 用户验收收口记录） |
 | 7.15 | POI→TransportNode Access Edge 全量生成 | B | P0 | 7.14,7.4,7.5 | 未开始（#442 / TASK-085-B；须先通过 084，再读取执行当时正式 runtime 授权的 Canonical POI 集；当前 Pilot-100=100，候选语料不可用） |
-| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 已完成（B / #466已正常合并；最终有界再认证完成；认证项进入可路由子图；仍无法取证/权限未确认/身份未闭合项以可未来重新认证的route-disabled终态隔离；覆盖缺口保留但不再阻塞TASK-086；251终态、未决0；docs/qa/TASK-086/readmittable-closeout/final-acceptance-receipt.json） |
+| 7.16 | TransportNode→TransportNode Japan Mobility Backbone | B | P0 | 7.14,7.5 | 待审查（#466 已正常合并，历史验收收据保留；认证引擎误隔离已修复，4,061 Backbone nodes / 9,409 directed edges / 1,072 transfers 已全量重新认证，16 个全国主干 corridor 双向及 86/86 gateway 骨干验证通过；A+B 确认范围为全国 Mobility Backbone，不要求全国全部地方交通节点；等待 PR #468 新 integration exact-head 门禁及最终合并；docs/qa/TASK-086/certification-engine-repair/FINAL-CERTIFICATION-ENGINE-REPAIR.md） |
 
 TASK-084-B v2 用户验收收口（2026-09-30）：
 

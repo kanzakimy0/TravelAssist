@@ -15,11 +15,11 @@
 
 ### Certified inventory
 
-| Inventory | Certified | Quarantined |
-|---|---:|---:|
-| Nodes | 1174 | 2887 |
-| Directed edges | 2460 | 6949 |
-| Transfers | 37 | 1035 |
+| Inventory      | Certified | Quarantined |
+| -------------- | --------: | ----------: |
+| Nodes          |      1174 |        2887 |
+| Directed edges |      2460 |        6949 |
+| Transfers      |        37 |        1035 |
 
 Certified passenger components: 476. Original required1038 + necessary3023 + optional0 =4061 preserved. Candidate graph contains 9409 edges; the legitimate one-way桜馬場 transfer is in the formal output and its original candidate direction root closes. No GTFS permissions changed. Certified source exclusions can still prevent national certification.
 
@@ -27,37 +27,37 @@ Source certification: {"certified_source_count": 47, "review_source_count": 685,
 
 ### National connectivity
 
-| Region | Status |
-|---|---|
+| Region | Status  |
+| ------ | ------- |
 | 北海道 | BLOCKED |
-| 东北 | BLOCKED |
-| 关东 | BLOCKED |
-| 中部 | BLOCKED |
-| 北陆 | BLOCKED |
-| 近畿 | BLOCKED |
-| 中国 | BLOCKED |
-| 四国 | BLOCKED |
-| 九州 | BLOCKED |
-| 冲绳 | BLOCKED |
+| 东北   | BLOCKED |
+| 关东   | BLOCKED |
+| 中部   | BLOCKED |
+| 北陆   | BLOCKED |
+| 近畿   | BLOCKED |
+| 中国   | BLOCKED |
+| 四国   | BLOCKED |
+| 九州   | BLOCKED |
+| 冲绳   | BLOCKED |
 
-| Corridor | Status |
-|---|---|
-| 東京 ↔ 京都 | BLOCKED |
-| 東京 ↔ 大阪 | BLOCKED |
-| 東京 ↔ 河口湖 | BLOCKED |
-| 大阪 ↔ 京都 | BLOCKED |
-| 大阪 ↔ 三ノ宮 | BLOCKED |
-| 大阪 ↔ 奈良 | BLOCKED |
-| 博多 ↔ 熊本 | BLOCKED |
-| 札幌 ↔ 旭川 | BLOCKED |
-| 札幌 ↔ 函館 | BLOCKED |
-| Hokkaido ↔ Honshu | BLOCKED |
-| Tohoku ↔ Kanto | BLOCKED |
+| Corridor                       | Status  |
+| ------------------------------ | ------- |
+| 東京 ↔ 京都                    | BLOCKED |
+| 東京 ↔ 大阪                    | BLOCKED |
+| 東京 ↔ 河口湖                  | BLOCKED |
+| 大阪 ↔ 京都                    | BLOCKED |
+| 大阪 ↔ 三ノ宮                  | BLOCKED |
+| 大阪 ↔ 奈良                    | BLOCKED |
+| 博多 ↔ 熊本                    | BLOCKED |
+| 札幌 ↔ 旭川                    | BLOCKED |
+| 札幌 ↔ 函館                    | BLOCKED |
+| Hokkaido ↔ Honshu              | BLOCKED |
+| Tohoku ↔ Kanto                 | BLOCKED |
 | Kanto ↔ Chubu / Tokyo ↔ Nagoya | BLOCKED |
-| Tokyo ↔ Kansai | BLOCKED |
-| Kansai ↔ Chugoku | BLOCKED |
-| Honshu ↔ Shikoku | BLOCKED |
-| Chugoku ↔ Kyushu | BLOCKED |
+| Tokyo ↔ Kansai                 | BLOCKED |
+| Kansai ↔ Chugoku               | BLOCKED |
+| Honshu ↔ Shikoku               | BLOCKED |
+| Chugoku ↔ Kyushu               | BLOCKED |
 
 All applicable recorded national corridors retain their requirements. Flight booking/search and realtime route integration are OUT_OF_SCOPE. Certification exclusions break the national graph; candidate connectivity does not satisfy this gate.
 
@@ -143,3 +143,66 @@ Publication was normal automatic fast-forward push, without force/squash/history
 [Final compact observed receipt](../qa/TASK-086/readmittable-closeout/final-acceptance-receipt.json). This documentation-only post-merge record changes neither the accepted branch head nor frozen code/data/eligibility hashes. Official observation dates in the frozen review input are UTC; the user-facing closeout date is 2026-10-06 JST.
 
 Primary exclusion reason counts (typed entities; transfers are also edges): `{"edge": {"ROUTE_DISABLED_IDENTITY_UNRESOLVED": 210, "ROUTE_DISABLED_RIGHTS_UNVERIFIED": 6739}, "node": {"ROUTE_DISABLED_RIGHTS_UNVERIFIED": 2887}, "source_dependency": {"ROUTE_DISABLED_RIGHTS_UNVERIFIED": 685}, "transfer": {"ROUTE_DISABLED_RIGHTS_UNVERIFIED": 1035}}`.
+
+## Final Certification Engine Repair + Full Quarantine Re-certification
+
+Frozen input `5d875e0e8061f560aced89f1f5732cd9ae692dd1b02ec76a5d0c242287a7d0a6`. Authority `67bf222e3d697186be43cf98c4d7299e41015e70`. Original candidate input and requirements unchanged.
+
+| Inventory | Before | Current | Recovered | Disabled |
+| --------- | -----: | ------: | --------: | -------: |
+| node      |   1174 |    4061 |      2887 |        0 |
+| edge      |   2460 |    9409 |      6949 |        0 |
+| transfer  |     37 |    1072 |      1035 |        0 |
+
+Transfers are a subset of edges. All11,556 typed prior exclusions including685 sources recomputed, no sampling or inherited quarantine decision. Engine-only recovery2,886 nodes/6,947 edges/1,035 transfers; exact ODbL obligation supplement1 node/2 edges/0 transfers. All734 descriptors certify their required derived-fact uses, without granting raw redistribution. 236 recovered source-family associations; counts overlap.
+
+## Actual Tokyo/Ueno witnesses
+
+- 東京→上野: 東海道・高崎線上野東京ライン / 普通 1822E / northbound; board/alight allowed. Pattern `transport-pattern:086:ce8a53e67add47698dca2e4a37f7cc5f`; edge `transport-edge:086:0559c955e0138e163409d97b4f842551`; [official train](https://timetables.jreast.co.jp/2610/train/040/040331.html).
+- 上野→東京: 東海道・高崎線上野東京ライン / 普通 1825E / southbound; board/alight allowed. Pattern `transport-pattern:086:b1f2e13173d3a2002f256bb5a362864c`; edge `transport-edge:086:bf473ab41fdac48d9c756c803eaae958`; [official train](https://timetables.jreast.co.jp/2610/train/035/039741.html).
+
+Tokyo and Otemachi retain separate canonical identities. No direct walking relation invented; unknown duration is not zero. No Yamanote/Keihin-Tohoku/Shinkansen conflation.
+
+## Connectivity and integrity
+
+16 frozen national corridor pairs pass both directions in actual certified export. Gateways 86/86. Candidate and certified passenger partitions match:17 existing components, zero certification-induced partition changes. Eight required numeric defects zero. Static topology is not guaranteed realtime service.
+
+## Remaining original obligations
+
+No certification-disabled entities remain. Original national acceptance remains BLOCKED: valid platform identity does not imply bidirectional access, and expired global proofs remain invalid. These6 roots are preserved, not waived.
+
+| Stable root                                     | Remaining fact/proof                                                                                              |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `root:direction:component:4516374f05cda3a3809f` | Existing review proof invalidated by changed current input: data/transport/network/next-source-actions.jsonl      |
+| `root:direction:component:662a9755abeab5d52770` | DIRECTION_BOARDING_OR_PUBLIC_TRANSFER_CONTINUITY_UNPROVEN                                                         |
+| `root:direction:component:91378025a59875422ee5` | DIRECTION_BOARDING_OR_PUBLIC_TRANSFER_CONTINUITY_UNPROVEN                                                         |
+| `root:direction:component:bcb8e18cee0bb3319142` | DIRECTION_BOARDING_OR_PUBLIC_TRANSFER_CONTINUITY_UNPROVEN                                                         |
+| `root:direction:component:cdb5939683ed546563ce` | DIRECTION_BOARDING_OR_PUBLIC_TRANSFER_CONTINUITY_UNPROVEN                                                         |
+| `root:obligation:mode:required-special-tourism` | Existing review proof invalidated by changed current input: data/transport/network/research/task-revision.v2.json |
+
+Five native platforms:武部町886930_01/_05,雲仙888190_01/_05,波佐見有田インター887550_05. Preserve real pickup/dropoff restrictions. Missing complete public interchange or genuine direction service still needs evidence. 武部町_01 also has a stale public-conditional/highway audit binding; special-tourism scope proof references changed task-revision input. No hand-written hash/proof update or new ordinary discovery.
+
+## Validation and publication
+
+Current input engine tests19/19. Earlier45 focused/v2/Route Schema and dual-production projection checks passed; prior run preceded final witness/report-field completion. Lint/type/format/build/artifact checks exit0. Final remote gate independently covers all regression, deterministic clean raw/recovery and current engine receipt.
+
+Actual final HEAD, CI URL/conclusion are published in the same-run `closeout-publication-final-receipt.json` artifact `task086-final-exact-head-<SHA>` of the Quality gate workflow. This source report does not predeclare remote PASS; old merged head is never reused.
+
+PR466 was already merged at38f2f445fc4153e74832aaf9d4804d5220d2adc8, head26644283ba6b4cb9f8fa259654fc347685ccfc1b. Normal fast-forward publication goes to existing feature branch. A closed PR cannot merge new repair commits; no second PR/force push authorized. WBS pending review/publication, current repair not yet in develop. Issue443 already closed before repair.
+
+Original large evidence and verified backup bundle remain local. Git retains compact receipts and bounded proof chunks. No second Backbone/TASK087/downstream task.
+
+## Published-byte proof binding correction
+
+First remote run [37396583941](https://github.com/kanzakimy0/TravelAssist/actions/runs/37396583941) exposed a Windows CRLF versus published Git LF binding mismatch in osm-terms-observation.json. Record semantics and the official HTTP response SHA are unchanged. The old local input `5d875e0e8061f560aced89f1f5732cd9ae692dd1b02ec76a5d0c242287a7d0a6` is superseded by actual published-byte frozen input `f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305`. Formal generation exited0 (44,979ms) and current engine tests19/19 passed. Projection and re-certification reports were regenerated through production code; no proof/result hash was hand-edited. Earlier failed-run results are retained; its remaining obsolete-head clean runs were cancelled to avoid duplicate computation. A new exact-head workflow must execute every full regression, clean/recovery and quality lane independently. No old PASS substituted.
+
+
+## Final Backbone scope confirmation and PR #468 integration
+
+A+B 于最终收口确认 WBS 7.16 目标为全国 Mobility Backbone，而非全国所有公共交通节点、地方站点及全部换乘的穷尽式数据库。因此当前冻结 Backbone scope 的完整性和全国主干连通性作为本 WBS 最终 coverage acceptance；未来更细粒度地方交通扩展属于独立 enhancement，不阻塞 TASK-086。
+
+The accepted Backbone scope is 4,061 nodes / 9,409 directed edges / 1,072 transfers, with 16 national corridor pairs passing in both directions and 86/86 gateways passing. These counts describe the frozen Backbone, not every transport facility in Japan. Identity, source rights, transfer certification and actual direction/boarding restrictions remain enforced.
+
+The six retained historical obligations comprise five native GTFS platform bidirectional-coverage gaps (武部町 886930_01 / 886930_05, 雲仙 888190_01 / 888190_05, 波佐見有田インター 887550_05) and one historical special-tourism proof-binding obligation. Their original records, permissions and historical BLOCKED conclusions remain preserved; they do not reopen the A+B-confirmed Backbone scope. No platform merge, fabricated reverse service or walking edge, assertion reduction, or new discovery is authorized by this scope confirmation.
+
+Historical PR #466 acceptance and immutable receipt above remain unchanged. Previous repair exact-head Quality Gate [37397580451](https://github.com/kanzakimy0/TravelAssist/actions/runs/37397580451) SUCCESS certifies only `54457f5d031f728d98ffc8d4c2604db3150851ea`; its unchanged observed receipt is [REMOTE-EXACT-HEAD-RESULT.json](../qa/TASK-086/certification-engine-repair/REMOTE-EXACT-HEAD-RESULT.json). Integration with develop requires a new exact-head full gate before normal merge of PR #468. WBS 7.16 remains B / 待审查 until that merge actually completes. Issue #443 was already CLOSED/completed.

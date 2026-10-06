@@ -12,12 +12,12 @@ Two existing P05-22 MLIT source descriptors were repaired using their already re
 
 ## Final inventory
 
-| Kind | Frozen candidates | Route enabled | Route disabled |
-| --- | ---: | ---: | ---: |
-| Nodes | 4061 | 1174 | 2887 |
-| Directed edges | 9409 | 2460 | 6949 |
-| Transfers (subset of edges) | 1072 | 37 | 1035 |
-| Sources | 734 | 49 | 685 |
+| Kind                        | Frozen candidates | Route enabled | Route disabled |
+| --------------------------- | ----------------: | ------------: | -------------: |
+| Nodes                       |              4061 |          1174 |           2887 |
+| Directed edges              |              9409 |          2460 |           6949 |
+| Transfers (subset of edges) |              1072 |            37 |           1035 |
+| Sources                     |               734 |            49 |            685 |
 
 All disabled entities are future READMITTABLE; none was labelled REJECTED without contrary evidence. Transfers also appear as directed edges, so do not add these columns to infer unique physical entity counts. Terminal roots: **251**; certified source-binding root: **1**; accepted readmittable exclusion roots: **250**; pending acceptance roots: **0**.
 
@@ -42,3 +42,7 @@ Candidate input/code SHA: `0575ae7e0f3a43ee3e7fe756a86561fb2aa98799f1d209dd788d8
 The final exact-head gate must still complete on the final published implementation SHA. It retains all repository test files, two clean full raw generations, all 27 artifact comparisons, actual checksum resume, corruption/recovery and raw GTFS extraction; no assertion/test is omitted. The final job requires both that proof and the same-run/same-checkout routing receipt. Final head, run URL, actual exit results and merge SHA are recorded by the final CI receipt and subsequent merge record; no future PASS is predeclared here.
 
 The historical 156,850,452-byte `core-stage-acceptance.json` remains intentionally local in the preserved F: worktree, SHA-256 `4bb963ea8edc65a38e0cb4f089352fc05a1f08887ab8427f9b1d46e51c6694f6`; its compact receipt remains tracked. Normal push only; PR #466 remains the sole implementation PR. Normal merge and Issue #443 completion are authorized only after the new exact-head gate succeeds. After that actual merge, the WBS definition is inventory/eligibility closeout with accepted readmittable exclusions, not full Japan route coverage. Future dedicated re-admission work does not reopen TASK-086.
+
+## Certification engine repair supersedes the prior projection
+
+Authority67bf222e3d697186be43cf98c4d7299e41015e70 requires recomputing every old quarantine rather than retaining these historic decisions. Current formal projection contains4061 certified nodes,9409 edges and1072 transfers; no disabled entities remain. The16 mandatory national corridor pairs and Tokyo/Ueno both directions pass actual passenger queries. The previous bounded closeout narrative above is historical. Original platform coverage and stale global-proof obligations remain separately preserved. See [full repair report](../certification-engine-repair/FINAL-CERTIFICATION-ENGINE-REPAIR.md) and current routing-eligibility.json; no old head CI is substituted.

@@ -1,5 +1,12 @@
 # TASK-086-B FINAL — Unverifiable Quarantine Acceptance & WBS 7.16 Full Closeout
 
+> **SUPERCEDING REPAIR AUTHORITY — 2026-10-06**
+>
+> Before executing this closeout, execute and satisfy:
+> `docs/tasks/TASK-086-b-certification-engine-repair-full-recertification.md`.
+>
+> That repair task has higher authority for certification semantics, evidence dependency scope, source capability handling, full quarantine re-certification, Tokyo/Ueno acceptance, and national connectivity re-evaluation. Do not classify existing quarantined entities as accepted exclusions until they have been re-evaluated by the repaired engine.
+>
 ## Authority
 
 User directive: 2026-10-05.

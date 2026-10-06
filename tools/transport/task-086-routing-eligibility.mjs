@@ -27,16 +27,12 @@ const write = (p, value) => {
   fs.mkdirSync(path.dirname(p), { recursive: true });
   fs.writeFileSync(p, canonical(value) + "\n");
 };
-const stateFor = (audit, sources) => {
+const stateFor = (audit) => {
   if (audit.status === "CERTIFIED") return "ROUTE_ENABLED";
   if (audit.status === "REJECTED") return "ROUTE_DISABLED_REJECTED";
-  if (
-    (audit.sourceIds ?? []).some(
-      (id) => sources.get(id)?.status !== "CERTIFIED",
-    )
-  )
-    return "ROUTE_DISABLED_RIGHTS_UNVERIFIED";
-  return "ROUTE_DISABLED_IDENTITY_UNRESOLVED";
+  return (audit.reasons ?? []).includes("RIGHTS_UNVERIFIED_FOR_REQUIRED_FACT")
+    ? "ROUTE_DISABLED_RIGHTS_UNVERIFIED"
+    : "ROUTE_DISABLED_IDENTITY_UNRESOLVED";
 };
 
 // This is the WBS 7.16 export boundary, not a Planner or production integration.
@@ -253,6 +249,8 @@ export function generateCloseout({
         state,
         certification: audit.status,
         reasonCodes: audit.reasons ?? [],
+        requiredFacts: audit.requiredFacts ?? [],
+        factScopedBlockers: audit.blockers ?? [],
         sourceIds,
         evidenceRefs:
           raw?.evidenceRefs ??
@@ -361,9 +359,9 @@ export function generateCloseout({
               ? null
               : "Reused phase244/245 retained GTFS direction and four external map observations, plus existing scope audit. No fresh map visit claimed; no complete public walk/reverse boarding evidence supplied. Stale proofs are not rebound or promoted.",
           decision: rightsClosed
-            ? "Matched actual retained P05-22 archive, native dataset review, catalog and explicit CC BY terms; descriptor defect repaired."
+            ? "Required source capabilities passed existing reviewed fact-only policy or bound explicit terms; no raw reuse inferred."
             : r.type === "SOURCE_CERTIFICATION"
-              ? "Current retained rights/snapshot/identity audit still insufficient. No applicable exact-field grant or independently reviewed lawful reuse basis established in bounded pass; stop equivalent retries."
+              ? "Remaining required facts failed capability, identity, snapshot or direction certification; exact entity proofs are retained. No blanket unlock or raw reuse inferred."
               : "Retained truthful platform/service identity remains certified where applicable; absent connection/changed audit proof cannot establish the extra scope relationship. Accept unavailable relationship under new policy, not under historical national PASS gate.",
         },
         futureReadmission: rightsClosed ? null : r.requiredRemediation,
