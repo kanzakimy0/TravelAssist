@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "PENDING_FULL_INTEGRATION",
+  "status": "CANDIDATE_FULL_INTEGRATION_PASS",
   "canonicalOwner": "A",
   "executor": "B",
   "sourceCheckoutSha": "48bac2f2184c352b3d829165b2597851b4dbf45a",
@@ -81,10 +81,60 @@
     }
   ],
   "coreFixes": "R035-01..04 preserved; governance 18/18 including Windows npm subprocess regression",
-  "R03505": "FIXED_IN_LOCAL_CANDIDATE",
-  "fullNpmTest": "PENDING",
-  "branchExactHead": "PENDING",
-  "prMergeResult": "PENDING",
-  "completeAggregate": "PENDING",
-  "humanAcceptanceReady": false
+  "R03505": "FIXED",
+  "fullNpmTest": "PASS",
+  "branchExactHead": "PASS_AT_CANDIDATE_SHA",
+  "prMergeResult": "PASS_AT_CANDIDATE_SHA",
+  "completeAggregate": "PASS_AT_CANDIDATE_SHA",
+  "humanAcceptanceReady": "Candidate passed; final documentation HEAD requires its own two hosted runs. Final immutable head/results are recorded in the external delivery receipts on #265/#272.",
+  "archiveNote": "Initial local archive attempt hit Windows MAX_PATH. Retried with short hash-prefixed filenames and originalArtifactPath mapping; original decompressed bytes/hashes are preserved. No CI or test failure.",
+  "candidateHead": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+  "finalDocumentationHead": "SELF_REFERENCE_RECORDED_EXTERNALLY",
+  "finalDocumentationCi": "See final delivery comments on Issue #265 and PR #272; never transfer candidate results to a different SHA.",
+  "hostedRuns": [
+    {
+      "runId": "37618811966",
+      "runAttempt": "1",
+      "actualCheckoutSha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "expectedBranchHead": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "baseSha": null,
+      "event": "push",
+      "status": "PASS",
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37618811966",
+      "ordinaryCounts": {
+        "tests": 3905,
+        "passed": 3905,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 3865,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "evidence": "candidate-remote/37618811966/verification.json"
+    },
+    {
+      "runId": "37618817480",
+      "runAttempt": "1",
+      "actualCheckoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "expectedBranchHead": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+      "event": "pull_request",
+      "status": "PASS",
+      "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37618817480",
+      "ordinaryCounts": {
+        "tests": 3905,
+        "passed": 3905,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 3865,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "evidence": "candidate-remote/37618817480/verification.json"
+    }
+  ]
 }
